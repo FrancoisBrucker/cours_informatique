@@ -7,6 +7,8 @@ source "https://rubygems.org"
 #
 # This will help ensure the proper Jekyll version is running.
 # Happy Jekylling!
+gem 'http_parser.rb', git: "https://github.com/tmm1/http_parser.rb.git"
+#line above is to prevent a bug with macos.
 gem "jekyll", "~> 4.1.1"
 # This is the default theme for new Jekyll sites. You may change this to anything you like.
 gem "minima", "~> 2.5"
