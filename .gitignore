@@ -2,7 +2,6 @@
 .idea
 *.log
 tmp/
-Gemfile.lock
 
 # emacs stuff
 .dir-locals.el
