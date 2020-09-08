@@ -1,0 +1,95 @@
+#+TITLE: Todos and hints
+
+* intstallation
+** [[https://jekyllrb.com/][jekyll]]
+Générateur de site web statique. On peut créer les pages en [[https://github.github.com/gfm/][markown]] (on utilisera le markdown de github qui est une instanciation populaire de markdown)
+*** [[https://jekyllrb.com/docs/][installation]]
+Comme on le voit il y a des [[https://jekyllrb.com/docs/installation/#requirements][prés-requis]], en particulier [[https://www.ruby-lang.org/en/][ruby]] qui est le langage dans le lequel jekyll est écrit.
+**** Sous mac avec [[https://brew.sh/][brew]], les `gem` ne sont pas automatiquement mis dans un endroit exécutable. Pour savoir où elles sont :
+#+BEGIN_SRC shell :results raw
+gem info jekyll
+#+END_SRC
+
+#+RESULTS:
+jekyll (4.1.1)
+    Authors: Tom Preston-Werner, Parker Moore, Matt Rogers
+    Homepage: https://jekyllrb.com
+    License: MIT
+    Installed at: /usr/local/lib/ruby/gems/2.7.0
+
+    A simple, blog aware, static site generator.
+
+ On peut maintenant ajouter le chemin dans le path. J'ai la ligne suivante dans mon `.zshrc` pour gérer les gem ruby.
+#+BEGIN_SRC shell :results silent
+export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/2.7.0/bin:$PATH"
+#+END_SRC
+**** bundle
+[[https://bundler.io/][bundler]] est l'installeur de paquet de ruby, qui sont appelées *gems*. Comme jekyll est un package ruby, on va l'utiliser pour gérer les différents package que l'on va installer.
+
+****** on se place à la racine du site et on initialise bundle.
+
+#+BEGIN_SRC shell :dir ../ :results silent
+bundle init
+#+END_SRC
+
+Si la commande ci-dessus ne fonctionne pas c'est que [[https://bundler.io][bundler]] n'est pas installé, donc commencez par l'installer avec (`gem install bundler`)
+Il va créer un fichier `Gemfile` qui va contenir les différents package que l'on veut installer. Nous on aura besoin de jekyll :
+
+#+BEGIN_SRC shell :dir ../ :results silent
+bundle add jekyll
+#+END_SRC
+
+Cela va ajouter la dépendance de jekyll au fichier `Gemfile` et créer un fichier [[https://bundler.io/rationale.html#checking-your-code-into-version-control ][`Gemfile.lock`]].
+**** initialisation du site
+On créer un site jekyll vide qui va contenir tous les fichiers sources nécessaires à la création du site. On utilise la commande bundle et son action exec pour exécuter une gem, ici jekyll.
+
+#+BEGIN_SRC shell :dir ../ :results silent
+bundle exec jekyll new docs
+
+#+END_SRC
+
+Kekyll a crée un template de site dans le dossier `docs`.
+
+#+BEGIN_SRC shell :dir ../ :results raw
+tree site
+#+END_SRC
+
+#+RESULTS:
+docs
+├── 404.html
+├── Gemfile
+├── Gemfile.lock
+├── _config.yml
+├── _posts
+│   └── 2020-08-28-welcome-to-jekyll.markdown
+├── _site
+│   ├── 404.html
+│   ├── about
+│   │   └── index.html
+│   ├── assets
+│   │   ├── main.css
+│   │   ├── main.css.map
+│   │   └── minima-social-icons.svg
+│   ├── feed.xml
+│   ├── index.html
+│   └── jekyll
+│       └── update
+│           └── 2020
+│               └── 08
+│                   └── 28
+│                       └── welcome-to-jekyll.html
+├── about.markdown
+└── index.markdown
+
+9 directories, 15 files
+
+****  exécution du site en mode preview. Il exécute un serveur que l'on peut consulter avec votre navigateur favori.
+#+BEGIN_SRC shell :dir ../ :results silent
+cd docs
+bundle exec jekyll serve
+#+END_SRC
+
+**** github et jekyll
+On utilisera github pour mettre en place notre site jekyll. On va suivre les instruction de la
+[[https://docs.github.com/en/github/working-with-github-pages/setting-up-a-github-pages-site-with-jekyll][doc]]
+
