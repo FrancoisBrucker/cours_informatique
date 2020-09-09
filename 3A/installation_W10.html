@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Installation W10 pour le développement | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Installation W10 pour le développement" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Préparation" />
+<meta property="og:description" content="Préparation" />
+<link rel="canonical" href="/cours_informatique/3A/installation_W10.html" />
+<meta property="og:url" content="/cours_informatique/3A/installation_W10.html" />
+<meta property="og:site_name" content="cours d’informatique" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-09-09T11:25:55+00:00" />
+<script type="application/ld+json">
+{"description":"Préparation","@type":"BlogPosting","headline":"Installation W10 pour le développement","dateModified":"2020-09-09T11:25:55+00:00","datePublished":"2020-09-09T11:25:55+00:00","url":"/cours_informatique/3A/installation_W10.html","mainEntityOfPage":{"@type":"WebPage","@id":"/cours_informatique/3A/installation_W10.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/cours_informatique/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Installation W10 pour le développement</h1>
+  </header>
+
+  <div class="post-content">
+    <h1 id="préparation">Préparation</h1>
+
+<p>Pour éviter tout conflit avec une configuration existante, on utilisera une installation fraîche de la dernière version de W10.
+On va suivre la procédure de <a href="https://support.microsoft.com/fr-tn/help/4000735/windows-10-reinstall">mirosoft</a>
+Pour éviter tout soucis ou regrets :</p>
+<ul>
+  <li><strong>notez</strong> le numéro de série de votre W10 ou ayez votre compte d’activé</li>
+  <li>sauvegardez vos données (vos images, vos documents, etc)</li>
+  <li>notez tous les programmes que vous voulez conserver</li>
+</ul>
+
+<h1 id="réglages">Réglages</h1>
+<h2 id="confidentialité">confidentialité</h2>
+
+<p>Une fois l’installation terminée, vous pouvez cliquer sur <strong>non</strong> à chaque fois que Windows (ou Cortana) vous demande de partager vos données.</p>
+<ul>
+  <li>Allez dans <code class="language-plaintext highlighter-rouge">Démarrer &gt; Paramètres &gt; Confidentialité</code> et vérifier pour chaque onglet à gauche que les paramètres d’envoi de vos données vous satisfont (je ne donne que ce que je considère être le stricte nécessaire, à chacun de faire comme il le souhaite)</li>
+  <li>pour les paramètres de sécurité, vous pouvez toujours aller voir la <a href="https://www.cnil.fr/fr/reglez-les-parametres-vie-privee-de-windows-10-apres-installation">cnil</a> ou <a href="http://www.win10.fr/reglages-confidentialite-windows10">ce site</a></li>
+</ul>
+
+<h2 id="compte">compte</h2>
+<p>J’utilise un compte local et pas mon compte Microsoft pour me connecter. Assurez vous que le nom de votre compte ne contient aucun espace ou accent (on le voit avec l’explorateur de fichier <code class="language-plaintext highlighter-rouge">c:\Utilisateurs</code>) et que c’est un compte administrateur.</p>
+
+<h2 id="windows-update">Windows update</h2>
+
+<p>Vérifier que votre système est à jour en cliquant sur <code class="language-plaintext highlighter-rouge">Démarrer &gt; Paramètres &gt; mise à jour et sécurité &gt; Windows update</code></p>
+
+<h2 id="version-du-système">Version du système</h2>
+<p>Pour installer la wsl 2, il faut nécessairement avoir une version de w10 supérieure ou égale à la 2004.
+Pour connaître votre version : <code class="language-plaintext highlighter-rouge">Menu Démarrer &gt; Paramètres &gt; Système &gt; information système</code> Dans la partie Spécification de Windows.</p>
+
+<h2 id="explorer">explorer</h2>
+
+<p>Affichez les fichier caché dans l’explorer. Cela va être utile à de nombreuses reprises. Pour cela, ouvrez un explorateur de fichier puis choisissez affichage et cochez la case <em>Éléments masqués</em></p>
+
+<h1 id="premières-installations-indispensable">Premières installations indispensable</h1>
+<h2 id="un-navigateur">un navigateur</h2>
+<p>Prenez celui de votre choix, personnellement j’utilise <a href="https://www.google.com/intl/fr_fr/chrome/">chrome</a> que je mets en navigateur par défaut.</p>
+
+<h2 id="drivers">drivers</h2>
+
+<ul>
+  <li>carte graphique</li>
+  <li>clavier/souris si nécessaire</li>
+  <li>imprimante</li>
+  <li>autres trucs bas niveau (icloud drive, tablette, …)</li>
+</ul>
+
+<h2 id="un-éditeur-de-texte">Un éditeur de texte</h2>
+<p>On en installera d’autres par la suite, mais il est toujours appréciable d’avoir un éditeur de texte sous la main pour modifier rapidement un fichier de conf. J’utilise <a href="https://notepad-plus-plus.org/downloads/">notepad++</a> pour ce genre d’opérations.</p>
+
+<h1 id="autres-installations-non-développement">Autres installations non développement</h1>
+
+<h2 id="outil-de-décompression">outil de décompression</h2>
+
+<p>Il y en a plusieurs. <a href="https://www.7-zip.org/">7zip</a> est simple d’utilisation et très complet.</p>
+
+<h2 id="utilitaires-de-tout-les-jours">utilitaires de tout les jours</h2>
+
+<p>Non indispensable mais que vous utilisez tous les jours</p>
+
+<ul>
+  <li>steam, gog, epic, battle.net, origin, uplay, etc</li>
+  <li>vlc, office 360</li>
+  <li>discord</li>
+  <li>…</li>
+</ul>
+
+<h1 id="développement">Développement</h1>
+
+<p>Pour utiliser une machine windows en développement, il va être nécessaire d’installer plusieurs logiciels qui vous nous permettre d’utiliser peu ou prou windows comme une machine unix</p>
+
+<h2 id="openssh">openssh</h2>
+
+<p>Protocole de communication sécurisé. On en installera un autre avec la wsl2mais c’est pas mal d’avoir celui de widows opérationel.</p>
+
+<h3 id="client">client</h3>
+<p>Le client openssh de windows devrait être installé. Pour le vérifier, aller dans <code class="language-plaintext highlighter-rouge">démarrer &gt; Paramètres &gt; Applications &gt; fonctionnalités facultatives</code> et vérifiez que <em>Client OpenSSH</em> est installé (si vous cliquez dessus, il vous propose de le désinstaller. ne le faites pas…).</p>
+
+<h3 id="serveur-ssh">serveur ssh</h3>
+
+<ol>
+  <li>Cliquez sur ajouter une fonctionnalité et installez le /serveur OpenSSH/</li>
+  <li>la configuration initiale du serveur se fait via le powershell. Ouvrez un terminal <code class="language-plaintext highlighter-rouge">powershell</code> en mode administrateur (taper <code class="language-plaintext highlighter-rouge">powershell</code> dans la barre de recherche puis choisissez <em>Exécuter en tant qu’administrateur</em>). On copie colle les lignes de <a href="https://docs.microsoft.com/fr-fr/windows-server/administration/openssh/openssh_install_firstuse#initial-configuration-of-ssh-server">la doc</a>  qui vont permette au serveur ssh de se lancer à chaque démarrage :
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">Start-Service</span><span class="w"> </span><span class="nx">sshd</span><span class="w">
+</span><span class="c"># OPTIONAL but recommended:</span><span class="w">
+</span><span class="nf">Set-Service</span><span class="w"> </span><span class="nt">-Name</span><span class="w"> </span><span class="nx">sshd</span><span class="w"> </span><span class="nt">-StartupType</span><span class="w"> </span><span class="s1">'Automatic'</span><span class="w">
+</span><span class="c"># Confirm the Firewall rule is configured. It should be created automatically by setup.</span><span class="w">
+</span><span class="nf">Get-NetFirewallRule</span><span class="w"> </span><span class="nt">-Name</span><span class="w"> </span><span class="o">*</span><span class="nx">ssh</span><span class="o">*</span><span class="w">
+</span><span class="c"># There should be a firewall rule named "OpenSSH-Server-In-TCP", which should be enabled</span><span class="w">
+</span><span class="c"># If the firewall does not exist, create one</span><span class="w">
+</span><span class="nf">New-NetFirewallRule</span><span class="w"> </span><span class="nt">-Name</span><span class="w"> </span><span class="nx">sshd</span><span class="w"> </span><span class="nt">-DisplayName</span><span class="w"> </span><span class="s1">'OpenSSH Server (sshd)'</span><span class="w"> </span><span class="nt">-Enabled</span><span class="w"> </span><span class="nx">True</span><span class="w"> </span><span class="nt">-Direction</span><span class="w"> </span><span class="nx">Inbound</span><span class="w"> </span><span class="nt">-Protocol</span><span class="w"> </span><span class="nx">TCP</span><span class="w"> </span><span class="nt">-Action</span><span class="w"> </span><span class="nx">Allow</span><span class="w"> </span><span class="nt">-LocalPort</span><span class="w"> </span><span class="nx">22</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+</ol>
+
+<p>Une fois le serveur ssh configuré redémarrer votre ordinateur.</p>
+
+<h3 id="doc">doc</h3>
+<ul>
+  <li>https://docs.microsoft.com/fr-fr/windows-server/administration/openssh/openssh_install_firstuse</li>
+  <li>https://stackoverflow.com/questions/52113738/starting-ssh-agent-on-windows-10-fails-unable-to-start-ssh-agent-service-erro</li>
+</ul>
+
+<h3 id="vérifier-que-ça-fonctionne">vérifier que ça fonctionne</h3>
+<p>Ouvrez une fenêtre powershell   et, en remplaçant login par votre login unix de l’école tapez la commande : <code class="language-plaintext highlighter-rouge">ssh-add -l</code></p>
+
+<p>Vous devriez avoir une phrase vous disant que l’agent n’a pas d’identité. Si vous n’avez pas d’agent installé (ou si vous l’avez stoppé) cela devrait vous dire qu’on arrive pas à se connecter à l’agent.</p>
+
+<h2 id="wsl-2">wsl 2</h2>
+
+<p>Wsl 2 est une installation linux qui cohabitera avec votre windows. Vous interagirez via une fenêtre terminal (<em>NB:</em> coller = click droit).</p>
+
+<h3 id="installation">installation</h3>
+
+<p>On suit les directives de <a href="https://docs.microsoft.com/fr-fr/windows/wsl/install-win10">la doc</a>. Vous installerez une distribution <em>debian</em>. Lorsque vous lancerez l’application, elle se met à jour. Profitez en pour cliquer-droit sur l’îcone et de cocher /épingler à la barre des tâches/. Comme ça vous aurez toujours un terminal sous la main.</p>
+
+<p>On vous demandera de créer un nom de compte. Perso, je choisit toujours le même login qui correspond à celui de l’école.</p>
+
+<h3 id="mise-à-jour">mise à jour</h3>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt update
+<span class="nb">sudo </span>apt upgrade
+</code></pre></div></div>
+
+<p>On peut maintenant installer nos package</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>ssh
+<span class="nb">sudo </span>apt <span class="nb">install </span>vim
+</code></pre></div></div>
+
+<h3 id="ssh-agent">ssh-agent</h3>
+
+<p>On va suivre les instructions de <a href="https://www.scivision.dev/ssh-agent-windows-linux/">ce site</a> et ajouter à la fin de notre <code class="language-plaintext highlighter-rouge">~/.bashrc</code> les lignes suivantes qui permettrons d’avoir un ssh-agent d’opérationnel en wsl.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="o">[</span> <span class="nt">-z</span> <span class="s2">"</span><span class="si">$(</span>pgrep ssh-agent<span class="si">)</span><span class="s2">"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then
+   </span><span class="nb">rm</span> <span class="nt">-rf</span> /tmp/ssh-<span class="k">*</span>
+   <span class="nb">eval</span> <span class="si">$(</span>ssh-agent <span class="nt">-s</span><span class="si">)</span> <span class="o">&gt;</span> /dev/null
+<span class="k">else
+   </span><span class="nb">export </span><span class="nv">SSH_AGENT_PID</span><span class="o">=</span><span class="si">$(</span>pgrep ssh-agent<span class="si">)</span>
+   <span class="nb">export </span><span class="nv">SSH_AUTH_SOCK</span><span class="o">=</span><span class="si">$(</span>find /tmp/ssh-<span class="k">*</span> <span class="nt">-name</span> agent.<span class="k">*</span><span class="si">)</span>
+<span class="k">fi</span>
+</code></pre></div></div>
+
+<p>Cette configuration a cependant toujours 2 agents différent, celui de windows et celui de wsl. Selon qu’on cherche à se connecter depuis windows ou depuis wsl, on utilisera l’un ou l’autre des agents.</p>
+
+<h3 id="les-fichiers">les fichiers</h3>
+
+<ul>
+  <li>les fichiers windows sont accessible depuis wsl via le répertoire <code class="language-plaintext highlighter-rouge">/mnt/</code>`</li>
+  <li>les fichiers wsl sont accessible depuis l’<a href="https://devblogs.microsoft.com/commandline/whats-new-for-wsl-in-windows-10-version-1903/">explorateur windows</a>. Dans un terminal wsl, tapez les commandes suivante :
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ~
+explorer.exe <span class="nb">.</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>Une fenêtre d’explorateur doit s’ouvrir dans le dossier home de votre compte wsl.</p>
+
+<h3 id="les-fenêtres">les fenêtres</h3>
+
+<p>Les fenêtres unix fonctionnent avec un protocole x11. Il faut installer un serveur x11 dans windows pour pouvoir ouvrir des fenêtres unix dans windows.</p>
+
+<p>Pour faire nos tests de fenêtre on utilisera la commande <code class="language-plaintext highlighter-rouge">xeyes</code>. Il faut commencer par l’installer</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>x11-apps
+</code></pre></div></div>
+
+<h4 id="lancer-un-serveur-x-sous-windows">lancer un serveur X sous windows</h4>
+
+<p>On va installer <a href="https://sourceforge.net/projects/vcxsrv/">vcxsrv</a>.</p>
+
+<p>Vous lancez un serveur X en exécutant <code class="language-plaintext highlighter-rouge">XLaunch</code>. Les paramètres du serveur X sont :</p>
+
+<ul>
+  <li>Multiple windows et display windows -1 (paramètres par défaut),</li>
+  <li>Start no client (paramètres par défaut),</li>
+  <li>cochez toutes les cases. Celles déjà cochées (clipoard, Primary Selection ; Native opengl) celle qui n’est pas cochée par défaut (Disable access control)</li>
+</ul>
+
+<h4 id="associer-le-serveurs-aux-fenêtres-depuis-wsl">associer le serveurs aux fenêtres depuis wsl</h4>
+
+<p>Maintenant que votre serveur X est lancé il faut l’associer aux fenêtre depuis wsl. <a href="https://stackoverflow.com/questions/61110603/how-to-set-up-working-x11-forwarding-on-wsl2/61110604#61110604">ceci se fait</a> en positionnant deux variables :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">DISPLAY</span><span class="o">=</span><span class="si">$(</span><span class="nb">awk</span> <span class="s1">'/nameserver / {print $2; exit}'</span> /etc/resolv.conf 2&gt;/dev/null<span class="si">)</span>:0
+<span class="nb">export </span><span class="nv">LIBGL_ALWAYS_INDIRECT</span><span class="o">=</span>1
+</code></pre></div></div>
+
+<p>Vous pouvez ensuite taper <code class="language-plaintext highlighter-rouge">xeyes</code>` dans un terminal wsl et vous obtiendrez une paire d’yeux qui vous regarde.</p>
+
+<p>Vous pouvez ajouter les deux ligne ci-dessus à votre fichier <code class="language-plaintext highlighter-rouge">~/.bashrc</code> pour qu’il soit exécuté à chaque session si vous le souhaitez.</p>
+
+<h3 id="brew">brew</h3>
+<p>[[https://brew.sh/index_fr][brew]] est le célèbre installeur de packages sous macos. Nous allons également l’installer pour wsl, pour que nous n’ayons qu’une même commande pour l’installation de package por tous les systèmes.</p>
+
+<p>Pour [[https://docs.brew.sh/Homebrew-on-Linux][installer brew]], il faut commencer par installer des packages avec apt :
+#+BEGIN_SRC sh
+sudo apt-get install build-essential curl file git
+#+END_SRC</p>
+
+<p>Une fois tout ça d’installé, on peut installer brew :</p>
+
+<p>#+BEGIN_SRC sh
+/bin/bash -c “$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)”
+#+END_SRC</p>
+
+<p>Lisez ce que vous dit brew et faites les dernières manipulations :</p>
+<ul>
+  <li>faire en sorte de retrouver la commande brew l’ajoutant dans le =PATH=</li>
+  <li>installer gcc</li>
+</ul>
+
+<p>On teste si on arrive à installer des choses :</p>
+
+<p>#+BEGIN_SRC sh
+brew install hello
+hello
+#+END_SRC</p>
+
+<h2 id="anaconda">anaconda</h2>
+<p>Anaconda est ue distribution python oriente data science. Commençons par [[https://www.anaconda.com/products/individual][installer]] :</p>
+<ul>
+  <li>on utilisera la version windows 64bits utilisant python3,</li>
+  <li>installez là pour tous les utilisateurs</li>
+  <li>laissez coché la case qui lie l’interpréteur python d’anaconda au système.</li>
+</ul>
+
+<p>Anaconda est maintenant installé sur votre disque dur dans le dossier : =c:\ProgramData\Anaconda3= et vous trouverez un dossier Anaconda3 dans le menu démarrer</p>
+
+<h3 id="pycharm">pycharm</h3>
+
+<p>Installez [[https://www.jetbrains.com/fr-fr/pycharm/download/][pycharm professionnel]]. En tant qu’étudiant vous pouvez obtenir une licence gratuite du logiciel. Faites le pour pouvoir utiliser les fonctionnalités avancées de pycharm, comme l’utilisation d’un python de wsl.</p>
+
+<p>Une fois l’installation terminée créer un nouveau projet en utilisant l’interpréteur d’anaconda. POur cela, une fois avoir choisi de faire un nouveau projet :
+1) choisissez /existing interpreter/ puis cliquez sur les /…/
+2) cliquez sur /Conda Environment/ puis sur les /…/ pour trouver l’interpréteur.</p>
+<ul>
+  <li>Si vous avez installé anaconda pour tous les utilisateur, il doit se trouver dans =c:\ProgramData\Anaconda3\Scripts\python.exe=
+3) Avant de cliquer sur /Ok/, n’oubliez pas de cocher la case /Make available to all projects/ pour ne pas avoir a rechercher l’interpréteur à chaque fois.
+4) Votre interpréteur est crée, vous pouvez maintenant cliquer sur Create/ pour générer votre projet.</li>
+</ul>
+
+<p>Créer un fichier =hello_world.py= :</p>
+
+<p>#+BEGIN_SRC python
+print(“hello world!”)
+#+END_SRC</p>
+
+<p>Puis exécutez le pour vérifier que tout fonctionne.</p>
+<h4 id="odds-and-ends">odds and ends</h4>
+<ul>
+  <li>Il est possible que le triangle vert de l’exécution ne soit pas disponible. C’est le cas lorsque pycharm /”travaille”/ : la ligne de status, tout en bas de la fenêtre, indique en bleue /process running…/ (vous pouvez cliquer dessus pour voir ce que pycharm est entrain de faire). Une fois qu’il a fini de travailler, vous pourrez exécuter votre code.</li>
+  <li>j’ai récemment eu des soucis avec pycharm qui ne voulait pas se relancer après l’avoir fermé. C’est parce que le programme pycharm ne s’était pas bien arrêté. Donc ctrl+alt+supr &gt; gestionnaire des taches &gt; processus en arrière plan et cherchez pycharm. Fermez le et on peut réouvrir le programme.
+    <h3 id="jupyter">jupyter</h3>
+  </li>
+</ul>
+
+<p>Depuis le /menu démarrer &gt; Anaconda3/ vous pouvez lancer le programme Anaconda navigator qui vous permettra d’exécuter jupyter sur votre navigateur.</p>
+<h3 id="installer-de-nouveau-packages-dans-anacoda">installer de nouveau packages dans anacoda</h3>
+
+<p>Vous pouvez le faire via anaconda navigator, mais le plus simple est encore d’installer directement.</p>
+
+<p>Cliquer sur /menu démarrer &gt; Anaconda3 &gt; Aanconda powershell prompt/. Une fenêtre poershell se lance aliée avec l’interpréteur python d’anaconda.</p>
+
+<p>Vous pouvez ainsi taper directement la commande pip pour installer des modules python :</p>
+<ul>
+  <li>tapez /python/ dans cette fenêtre et vous exécuterez l’interpréteur pyhton d’anaconda (/exit()/ puis entrée ou control+D pour sortir de l’interpréteur)</li>
+  <li>La commande /pip list/ va lister tous les modules que vous avez installé par exemple.</li>
+</ul>
+
+<h2 id="un-python-dans-wsl-et-son-utilisation-dans-pycharm">un python dans wsl et son utilisation dans pycharm</h2>
+
+<p>#+BEGIN_SRC sh
+brew install python3
+#+END_SRC</p>
+
+<p>Vous pouvez maintenant [[https://www.jetbrains.com/help/pycharm/using-wsl-as-a-remote-interpreter.html][choisir un interpréteur python de votre distribution wsl]] :</p>
+<ul>
+  <li>dans un shell wsl tapez =which python3= pour connaitre l’emplacement de l’interpréteur python3 (c’est celui de brew que l’on vient d’installer)</li>
+  <li>Ouvrez un projet pycharm existant (le hello world de l’installation d’anacoda par exemple) et allez dans les /file &gt; settings &gt; project interpreter/. Cliquez sur l’engrenage à droite du nom de votre interpreteur :
+1) choisissez wsl (à gauche, c’est le manchot)
+2) choisissez existing environnment puis cliquez sur les /…/
+3) retrouvez le chemin de l’interpréteur de wsl. Le chemin commence forcément par =\wsl\Debian=</li>
+</ul>
+
+<p>Une fois que pycharm aura fini d’nalyser le nouvel interpréteur, vous pourrez l’exécuter.</p>
+
+<p>Vous pouvez même [[https://www.jetbrains.com/help/pycharm/using-wsl-as-a-remote-interpreter.html#wsl-terminal][configurer le terminal]] pour que ce soit celui du wsl et pas celui de votre windows.</p>
+
+<h4 id="odds-and-ends-1">odds and ends</h4>
+<ul>
+  <li>en créant un nouveau projet, ça ne marche pas. Il faut modifier un projet existant. e ne sais pas pourquoi.</li>
+</ul>
+
+<h2 id="docker">docker</h2>
+<h2 id="virtualbox">virtualbox</h2>
+
+<h2 id="sdkman">sdkman</h2>
+
+<h1 id="autres">autres</h1>
+<ul>
+  <li>scoop</li>
+  <li>git bash ?</li>
+</ul>
+
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d&#39;informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d&#39;informatique</li><li><a class="u-email" href="mailto:francois.brucker@centrale-marseille.fr">francois.brucker@centrale-marseille.fr</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li><li><a href="https://www.twitter.com/p_____p___"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">p_____p___</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.
+A destination des 1A (tronc commun), des 2A (de l&#39;approfondissement MIE) et des 3A (de l&#39;option digital·e)</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
