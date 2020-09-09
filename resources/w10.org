@@ -1,6 +1,5 @@
 #+TITLE: Installation W10 pour le développement
 
-sprout
 
 * Préparation
 Pour éviter tout conflit avec une configuration existante, on utilisera une installation fraîche de la dernière version de W10.
