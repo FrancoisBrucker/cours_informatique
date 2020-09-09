@@ -18,22 +18,35 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Cours d'informatique de l'ecm (en tout les cas certains di'entres eux)
+title: cours d'informatique
 email: francois.brucker@centrale-marseille.fr
 description: >- # this means to ignore newlines until "baseurl:"
-  Support de cours/td pour des cours d'informatique de l'école centrale marseille.
-  A destination des 1A pour le tronc commun, des 2A de l'approfondissement MIE et des 3A de l'option digital·e
+  Support de cours/td d'informatique à l'école centrale marseille.
+
+  A destination des 1A (tronc commun), des 2A (de l'approfondissement MIE) et des 3A (de l'option digital·e)
+
+#urls
 baseurl: "/cours_informatique" # the subpath of your site, e.g. /blog
 assets:
   baseurl: /cours_informatique/assets
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: "excellence&modestie"
+
+twitter_username: p_____p___
 github_username:  FrancoisBrucker
 
 # Build settings
 theme: minima
 plugins:
   - jekyll-feed
+
+# collections
+collections:
+  1A:
+    output: true
+  2A:
+    output: true
+  3A:
+    output: true
 
 # Exclude from processing.
 # The following items will not be processed, by default.

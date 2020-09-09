@@ -1,0 +1,69 @@
+---
+# Feel free to add content and custom Front Matter to this file.
+# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
+
+layout: home
+---
+
+{% if  site.1A.size  > 0 %}
+<div>
+    <h2 class="post-list-heading">{{ page.list_title | default: "1A" }}</h2>
+    <ul class="post-list">
+      {%- for post in site.1A -%}
+      <li>
+        <span class="post-meta">{{ post.category }}</span>
+        <h3>
+          <a class="post-link" href="{{ post.url | relative_url }}">
+            {{ post.title | escape }}
+          </a>
+        </h3>
+        {%- if site.show_excerpts -%}
+          {{ post.excerpt }}
+        {%- endif -%}
+      </li>
+      {%- endfor -%}
+    </ul>
+</div>
+{% endif %}
+
+
+{% if  site.2A.size  > 0 %}
+<div>
+    <h2 class="post-list-heading">{{ page.list_title | default: "2A" }}</h2>
+    <ul class="post-list">
+      {%- for post in site.2A -%}
+      <li>
+        <span class="post-meta">{{ post.category }}</span>
+        <h3>
+          <a class="post-link" href="{{ post.url | relative_url }}">
+            {{ post.title | escape }}
+          </a>
+        </h3>
+        {%- if site.show_excerpts -%}
+          {{ post.excerpt }}
+        {%- endif -%}
+      </li>
+      {%- endfor -%}
+    </ul>
+</div>
+{% endif %}
+{% if  site.3A.size  > 0 %}
+<div>
+    <h2 class="post-list-heading">{{ page.list_title | default: "3A" }}</h2>
+    <ul class="post-list">
+      {%- for post in site.3A -%}
+      <li>
+        <span class="post-meta">{{ post.category }}</span>
+        <h3>
+          <a class="post-link" href="{{ post.url | relative_url }}">
+            {{ post.title | escape }}
+          </a>
+        </h3>
+        {%- if site.show_excerpts -%}
+          {{ post.excerpt }}
+        {%- endif -%}
+      </li>
+      {%- endfor -%}
+    </ul>
+</div>
+{% endif %}

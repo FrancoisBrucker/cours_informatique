@@ -93,3 +93,6 @@ bundle exec jekyll serve
 On utilisera github pour mettre en place notre site jekyll. On va suivre les instruction de la
 [[https://docs.github.com/en/github/working-with-github-pages/setting-up-a-github-pages-site-with-jekyll][doc]]
 
+
+** site
+*** TODO duplicate code in index.html
