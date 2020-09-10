@@ -11,11 +11,13 @@ tags: combat w10
 Pour éviter tout conflit avec une configuration existante, on utilisera une installation fraîche de la dernière version de W10.
 On va suivre la procédure de [mirosoft](https://support.microsoft.com/fr-tn/help/4000735/windows-10-reinstall)
 Pour éviter tout soucis ou regrets :
-  - **notez** le numéro de série de votre W10 ou ayez votre compte d'activé
+
+- **notez** le numéro de série de votre W10 ou ayez votre compte d'activé
   - sauvegardez vos données (vos images, vos documents, etc)
   - notez tous les programmes que vous voulez conserver
   
 # Réglages
+
 ## confidentialité
 
 Une fois l'installation terminée, vous pouvez cliquer sur **non** à chaque fois que Windows (ou Cortana) vous demande de partager vos données.
@@ -23,6 +25,7 @@ Une fois l'installation terminée, vous pouvez cliquer sur **non** à chaque foi
 - pour les paramètres de sécurité, vous pouvez toujours aller voir la [cnil](https://www.cnil.fr/fr/reglez-les-parametres-vie-privee-de-windows-10-apres-installation) ou [ce site](http://www.win10.fr/reglages-confidentialite-windows10)
 
 ## compte
+
 J'utilise un compte local et pas mon compte Microsoft pour me connecter. Assurez vous que le nom de votre compte ne contient aucun espace ou accent (on le voit avec l'explorateur de fichier `c:\Utilisateurs`) et que c'est un compte administrateur.
 
 
@@ -265,10 +268,10 @@ print("hello world!")
 
 Puis exécutez le pour vérifier que tout fonctionne.
 
-**odds and ends** :
-
-  - Il est possible que le triangle vert de l'exécution ne soit pas disponible. C'est le cas lorsque pycharm *"travaille"* : la ligne de status, tout en bas de la fenêtre, indique en bleue *process running...* (vous pouvez cliquer dessus pour voir ce que pycharm est entrain de faire). Une fois qu'il a fini de travailler, vous pourrez exécuter votre code.
-  - j'ai récemment eu des soucis avec pycharm qui ne voulait pas se relancer après l'avoir fermé. C'est parce que le programme pycharm ne s'était pas bien arrêté. Donc `ctrl+alt+supr > gestionnaire des taches > processus en arrière plan` et cherchez pycharm. Fermez le et on peut réouvrir le programme.
+>**odds and ends** :
+>
+>  - Il est possible que le triangle vert de l'exécution ne soit pas disponible. C'est le cas lorsque pycharm *"travaille"* : la ligne de status, tout en bas de la fenêtre, indique en bleue *process running...* (vous pouvez cliquer dessus pour voir ce que pycharm est entrain de faire). Une fois qu'il a fini de travailler, vous pourrez exécuter votre code.
+>  - j'ai récemment eu des soucis avec pycharm qui ne voulait pas se relancer après l'avoir fermé. C'est parce que le programme pycharm ne s'était pas bien arrêté. Donc `ctrl+alt+supr > gestionnaire des taches > processus en arrière plan` et cherchez pycharm. Fermez le et on peut réouvrir le programme.
   
 
 ### un python dans wsl et son utilisation dans pycharm
@@ -291,8 +294,9 @@ Une fois que pycharm aura fini d'analyser le nouvel interpréteur, vous pourrez 
 
 Vous pouvez même [configurer le terminal](https://www.jetbrains.com/help/pycharm/using-wsl-as-a-remote-interpreter.html#wsl-terminal) pour que ce soit celui du wsl et pas celui de votre windows.
 
-**odds and ends** :
-  - en créant un nouveau projet, ça ne marche pas. Il faut modifier un projet existant. e ne sais pas pourquoi.
+>**odds and ends** :
+>
+>  - en créant un nouveau projet, ça ne marche pas. Il faut modifier un projet existant. Je ne sais pas pourquoi.
 
 ## docker
 ## virtualbox
