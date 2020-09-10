@@ -13,9 +13,9 @@
 <meta property="og:url" content="/cours_informatique/3A/installation_W10.html" />
 <meta property="og:site_name" content="cours d’informatique" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2020-09-09T11:25:55+00:00" />
+<meta property="article:published_time" content="2020-09-10T07:05:57+00:00" />
 <script type="application/ld+json">
-{"description":"Préparation","@type":"BlogPosting","headline":"Installation W10 pour le développement","dateModified":"2020-09-09T11:25:55+00:00","datePublished":"2020-09-09T11:25:55+00:00","url":"/cours_informatique/3A/installation_W10.html","mainEntityOfPage":{"@type":"WebPage","@id":"/cours_informatique/3A/installation_W10.html"},"@context":"https://schema.org"}</script>
+{"description":"Préparation","@type":"BlogPosting","headline":"Installation W10 pour le développement","dateModified":"2020-09-10T07:05:57+00:00","datePublished":"2020-09-10T07:05:57+00:00","url":"/cours_informatique/3A/installation_W10.html","mainEntityOfPage":{"@type":"WebPage","@id":"/cours_informatique/3A/installation_W10.html"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /></head>
 <body><header class="site-header" role="banner">
@@ -47,13 +47,18 @@
 <p>Pour éviter tout conflit avec une configuration existante, on utilisera une installation fraîche de la dernière version de W10.
 On va suivre la procédure de <a href="https://support.microsoft.com/fr-tn/help/4000735/windows-10-reinstall">mirosoft</a>
 Pour éviter tout soucis ou regrets :</p>
+
 <ul>
-  <li><strong>notez</strong> le numéro de série de votre W10 ou ayez votre compte d’activé</li>
-  <li>sauvegardez vos données (vos images, vos documents, etc)</li>
-  <li>notez tous les programmes que vous voulez conserver</li>
+  <li><strong>notez</strong> le numéro de série de votre W10 ou ayez votre compte d’activé
+    <ul>
+      <li>sauvegardez vos données (vos images, vos documents, etc)</li>
+      <li>notez tous les programmes que vous voulez conserver</li>
+    </ul>
+  </li>
 </ul>
 
 <h1 id="réglages">Réglages</h1>
+
 <h2 id="confidentialité">confidentialité</h2>
 
 <p>Une fois l’installation terminée, vous pouvez cliquer sur <strong>non</strong> à chaque fois que Windows (ou Cortana) vous demande de partager vos données.</p>
@@ -63,6 +68,7 @@ Pour éviter tout soucis ou regrets :</p>
 </ul>
 
 <h2 id="compte">compte</h2>
+
 <p>J’utilise un compte local et pas mon compte Microsoft pour me connecter. Assurez vous que le nom de votre compte ne contient aucun espace ou accent (on le voit avec l’explorateur de fichier <code class="language-plaintext highlighter-rouge">c:\Utilisateurs</code>) et que c’est un compte administrateur.</p>
 
 <h2 id="windows-update">Windows update</h2>
@@ -234,72 +240,55 @@ explorer.exe <span class="nb">.</span>
 <p>Vous pouvez ajouter les deux ligne ci-dessus à votre fichier <code class="language-plaintext highlighter-rouge">~/.bashrc</code> pour qu’il soit exécuté à chaque session si vous le souhaitez.</p>
 
 <h3 id="brew">brew</h3>
-<p>[[https://brew.sh/index_fr][brew]] est le célèbre installeur de packages sous macos. Nous allons également l’installer pour wsl, pour que nous n’ayons qu’une même commande pour l’installation de package por tous les systèmes.</p>
 
-<p>Pour [[https://docs.brew.sh/Homebrew-on-Linux][installer brew]], il faut commencer par installer des packages avec apt :
-#+BEGIN_SRC sh
-sudo apt-get install build-essential curl file git
-#+END_SRC</p>
+<p><a href="https://brew.sh/index_fr">brew</a> est un célèbre installeur de packages sous macos. Nous allons également l’installer pour wsl, histoire de n’avoir qu’une commande pour l’installation de package quelque soit le système utilisé.</p>
+
+<p>Pour <a href="https://docs.brew.sh/Homebrew-on-Linux">installer brew</a>, il faut commencer par installer des packages avec apt :</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get <span class="nb">install </span>build-essential curl file git
+</code></pre></div></div>
 
 <p>Une fois tout ça d’installé, on peut installer brew :</p>
 
-<p>#+BEGIN_SRC sh
-/bin/bash -c “$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)”
-#+END_SRC</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/bin/bash <span class="nt">-c</span> <span class="s2">"</span><span class="si">$(</span>curl <span class="nt">-fsSL</span> https://raw.githubusercontent.com/Homebrew/install/master/install.sh<span class="si">)</span><span class="s2">"</span>
+</code></pre></div></div>
 
 <p>Lisez ce que vous dit brew et faites les dernières manipulations :</p>
+
 <ul>
-  <li>faire en sorte de retrouver la commande brew l’ajoutant dans le =PATH=</li>
-  <li>installer gcc</li>
+  <li>faire en sorte de retrouver la commande brew l’ajoutant dans le <code class="language-plaintext highlighter-rouge">PATH</code>
+    <ul>
+      <li>installer <code class="language-plaintext highlighter-rouge">gcc</code></li>
+    </ul>
+  </li>
 </ul>
 
 <p>On teste si on arrive à installer des choses :</p>
 
-<p>#+BEGIN_SRC sh
-brew install hello
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew <span class="nb">install </span>hello
 hello
-#+END_SRC</p>
+</code></pre></div></div>
 
-<h2 id="anaconda">anaconda</h2>
-<p>Anaconda est ue distribution python oriente data science. Commençons par [[https://www.anaconda.com/products/individual][installer]] :</p>
+<h2 id="python">python</h2>
+
+<p>Avoir un interpréteur python est très pratique pour faire de petits programmes et/ou de la data science. Pour le dev proprement dit, python sera installé sur la wsl, voir installé pour chaque projet, mais pour des besoins plus ponctuel on va installer anaconda sur la système windows.</p>
+
+<h3 id="anaconda">anaconda</h3>
+
+<p>Anaconda est une distribution python oriente data science. Commençons par l’<a href="https://www.anaconda.com/products/individual">installer</a> :</p>
+
 <ul>
-  <li>on utilisera la version windows 64bits utilisant python3,</li>
-  <li>installez là pour tous les utilisateurs</li>
+  <li>on utilisera la version windows 64bits utilisant <code class="language-plaintext highlighter-rouge">python3</code>,</li>
+  <li>installez la pour tous les utilisateurs</li>
   <li>laissez coché la case qui lie l’interpréteur python d’anaconda au système.</li>
 </ul>
 
-<p>Anaconda est maintenant installé sur votre disque dur dans le dossier : =c:\ProgramData\Anaconda3= et vous trouverez un dossier Anaconda3 dans le menu démarrer</p>
+<p>Anaconda est maintenant installé sur votre disque dur dans le dossier : <code class="language-plaintext highlighter-rouge">c:\ProgramData\Anaconda3</code> et vous trouverez un dossier <em>Anaconda3</em> dans le menu démarrer</p>
 
-<h3 id="pycharm">pycharm</h3>
+<h4 id="jupyter">jupyter</h4>
 
-<p>Installez [[https://www.jetbrains.com/fr-fr/pycharm/download/][pycharm professionnel]]. En tant qu’étudiant vous pouvez obtenir une licence gratuite du logiciel. Faites le pour pouvoir utiliser les fonctionnalités avancées de pycharm, comme l’utilisation d’un python de wsl.</p>
+<p>Depuis le <em>menu démarrer &gt; Anaconda3</em> vous pouvez lancer le programme <code class="language-plaintext highlighter-rouge">Anaconda navigator</code>` qui vous permettra d’exécuter jupyter sur votre navigateur.</p>
 
-<p>Une fois l’installation terminée créer un nouveau projet en utilisant l’interpréteur d’anaconda. POur cela, une fois avoir choisi de faire un nouveau projet :
-1) choisissez /existing interpreter/ puis cliquez sur les /…/
-2) cliquez sur /Conda Environment/ puis sur les /…/ pour trouver l’interpréteur.</p>
-<ul>
-  <li>Si vous avez installé anaconda pour tous les utilisateur, il doit se trouver dans =c:\ProgramData\Anaconda3\Scripts\python.exe=
-3) Avant de cliquer sur /Ok/, n’oubliez pas de cocher la case /Make available to all projects/ pour ne pas avoir a rechercher l’interpréteur à chaque fois.
-4) Votre interpréteur est crée, vous pouvez maintenant cliquer sur Create/ pour générer votre projet.</li>
-</ul>
-
-<p>Créer un fichier =hello_world.py= :</p>
-
-<p>#+BEGIN_SRC python
-print(“hello world!”)
-#+END_SRC</p>
-
-<p>Puis exécutez le pour vérifier que tout fonctionne.</p>
-<h4 id="odds-and-ends">odds and ends</h4>
-<ul>
-  <li>Il est possible que le triangle vert de l’exécution ne soit pas disponible. C’est le cas lorsque pycharm /”travaille”/ : la ligne de status, tout en bas de la fenêtre, indique en bleue /process running…/ (vous pouvez cliquer dessus pour voir ce que pycharm est entrain de faire). Une fois qu’il a fini de travailler, vous pourrez exécuter votre code.</li>
-  <li>j’ai récemment eu des soucis avec pycharm qui ne voulait pas se relancer après l’avoir fermé. C’est parce que le programme pycharm ne s’était pas bien arrêté. Donc ctrl+alt+supr &gt; gestionnaire des taches &gt; processus en arrière plan et cherchez pycharm. Fermez le et on peut réouvrir le programme.
-    <h3 id="jupyter">jupyter</h3>
-  </li>
-</ul>
-
-<p>Depuis le /menu démarrer &gt; Anaconda3/ vous pouvez lancer le programme Anaconda navigator qui vous permettra d’exécuter jupyter sur votre navigateur.</p>
-<h3 id="installer-de-nouveau-packages-dans-anacoda">installer de nouveau packages dans anacoda</h3>
+<h4 id="installer-de-nouveau-packages-dans-anacoda">installer de nouveau packages dans anacoda</h4>
 
 <p>Vous pouvez le faire via anaconda navigator, mais le plus simple est encore d’installer directement.</p>
 
@@ -311,29 +300,67 @@ print(“hello world!”)
   <li>La commande /pip list/ va lister tous les modules que vous avez installé par exemple.</li>
 </ul>
 
-<h2 id="un-python-dans-wsl-et-son-utilisation-dans-pycharm">un python dans wsl et son utilisation dans pycharm</h2>
+<h3 id="pycharm">pycharm</h3>
 
-<p>#+BEGIN_SRC sh
-brew install python3
-#+END_SRC</p>
+<p>Installez <a href="https://www.jetbrains.com/fr-fr/pycharm/download/">pycharm professionnel</a>. En tant qu’étudiant vous pouvez obtenir une licence gratuite du logiciel. Faites le pour pouvoir utiliser les fonctionnalités avancées de pycharm, comme l’utilisation d’un python de wsl.</p>
 
-<p>Vous pouvez maintenant [[https://www.jetbrains.com/help/pycharm/using-wsl-as-a-remote-interpreter.html][choisir un interpréteur python de votre distribution wsl]] :</p>
+<p>Une fois l’installation terminée créer un nouveau projet en utilisant l’interpréteur d’anaconda. Pour cela, une fois avoir choisi de faire un nouveau projet :</p>
+
+<ol>
+  <li>choisissez /existing interpreter/ puis cliquez sur les /…/</li>
+  <li>cliquez sur /Conda Environment/ puis sur les /…/ pour trouver l’interpréteur.
+Si vous avez installé anaconda pour tous les utilisateur, il doit se trouver dans <code class="language-plaintext highlighter-rouge">c:\ProgramData\Anaconda3\Scripts\python.exe</code></li>
+  <li>Avant de cliquer sur <em>Ok</em>, n’oubliez pas de cocher la case <em>Make available to all projects</em> pour ne pas avoir a rechercher l’interpréteur à chaque fois.</li>
+  <li>Votre interpréteur est crée, vous pouvez maintenant cliquer sur <em>Create</em> pour générer votre projet.</li>
+</ol>
+
+<p>Créer un fichier <code class="language-plaintext highlighter-rouge">hello_world.py</code> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">"hello world!"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Puis exécutez le pour vérifier que tout fonctionne.</p>
+
+<blockquote>
+  <p><strong>odds and ends</strong> :</p>
+
+  <ul>
+    <li>Il est possible que le triangle vert de l’exécution ne soit pas disponible. C’est le cas lorsque pycharm <em>“travaille”</em> : la ligne de status, tout en bas de la fenêtre, indique en bleue <em>process running…</em> (vous pouvez cliquer dessus pour voir ce que pycharm est entrain de faire). Une fois qu’il a fini de travailler, vous pourrez exécuter votre code.</li>
+    <li>j’ai récemment eu des soucis avec pycharm qui ne voulait pas se relancer après l’avoir fermé. C’est parce que le programme pycharm ne s’était pas bien arrêté. Donc <code class="language-plaintext highlighter-rouge">ctrl+alt+supr &gt; gestionnaire des taches &gt; processus en arrière plan</code> et cherchez pycharm. Fermez le et on peut réouvrir le programme.</li>
+  </ul>
+</blockquote>
+
+<h3 id="un-python-dans-wsl-et-son-utilisation-dans-pycharm">un python dans wsl et son utilisation dans pycharm</h3>
+
+<p>Pour utiliser python sur la wsl, on peut l’installer avec <code class="language-plaintext highlighter-rouge">brew</code> :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew <span class="nb">install </span>python3
+</code></pre></div></div>
+
+<p>Ce qui est chouette avec pycharm, c’est qu’il peut utiliser un interpréteur python distant. Faisons en sorte que le pycharm sous windows utilise l’<a href="https://www.jetbrains.com/help/pycharm/using-wsl-as-a-remote-interpreter.html">interpréteur python de la wsl</a> :</p>
+
 <ul>
-  <li>dans un shell wsl tapez =which python3= pour connaitre l’emplacement de l’interpréteur python3 (c’est celui de brew que l’on vient d’installer)</li>
-  <li>Ouvrez un projet pycharm existant (le hello world de l’installation d’anacoda par exemple) et allez dans les /file &gt; settings &gt; project interpreter/. Cliquez sur l’engrenage à droite du nom de votre interpreteur :
-1) choisissez wsl (à gauche, c’est le manchot)
-2) choisissez existing environnment puis cliquez sur les /…/
-3) retrouvez le chemin de l’interpréteur de wsl. Le chemin commence forcément par =\wsl\Debian=</li>
+  <li>dans un shell wsl tapez <code class="language-plaintext highlighter-rouge">which python3</code> pour connaître l’emplacement de l’interpréteur python3 (c’est celui de brew que l’on vient d’installer)</li>
+  <li>Ouvrez un projet pycharm existant (le hello world de l’installation d’anacoda par exemple) et allez dans les <em>file &gt; settings &gt; project interpreter</em>. Cliquez sur l’engrenage à droite du nom de votre interpreteur :
+    <ol>
+      <li>choisissez wsl (à gauche, c’est le manchot)</li>
+      <li>choisissez existing environnment puis cliquez sur les <em>…</em></li>
+      <li>retrouvez le chemin de l’interpréteur de wsl. Le chemin commence forcément par <code class="language-plaintext highlighter-rouge">\\wsl\Debian\</code></li>
+    </ol>
+  </li>
 </ul>
 
-<p>Une fois que pycharm aura fini d’nalyser le nouvel interpréteur, vous pourrez l’exécuter.</p>
+<p>Une fois que pycharm aura fini d’analyser le nouvel interpréteur, vous pourrez exécuter le fichier.</p>
 
-<p>Vous pouvez même [[https://www.jetbrains.com/help/pycharm/using-wsl-as-a-remote-interpreter.html#wsl-terminal][configurer le terminal]] pour que ce soit celui du wsl et pas celui de votre windows.</p>
+<p>Vous pouvez même <a href="https://www.jetbrains.com/help/pycharm/using-wsl-as-a-remote-interpreter.html#wsl-terminal">configurer le terminal</a> pour que ce soit celui du wsl et pas celui de votre windows.</p>
 
-<h4 id="odds-and-ends-1">odds and ends</h4>
-<ul>
-  <li>en créant un nouveau projet, ça ne marche pas. Il faut modifier un projet existant. e ne sais pas pourquoi.</li>
-</ul>
+<blockquote>
+  <p><strong>odds and ends</strong> :</p>
+
+  <ul>
+    <li>en créant un nouveau projet, ça ne marche pas. Il faut modifier un projet existant. Je ne sais pas pourquoi.</li>
+  </ul>
+</blockquote>
 
 <h2 id="docker">docker</h2>
 <h2 id="virtualbox">virtualbox</h2>
