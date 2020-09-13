@@ -13,9 +13,9 @@
 <meta property="og:url" content="/cours_informatique/2A/mie_developpement_objet.html" />
 <meta property="og:site_name" content="cours d’informatique" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2020-09-11T10:02:48+00:00" />
+<meta property="article:published_time" content="2020-09-13T12:45:59+00:00" />
 <script type="application/ld+json">
-{"description":"Introduction","@type":"BlogPosting","headline":"Développement Objet","dateModified":"2020-09-11T10:02:48+00:00","datePublished":"2020-09-11T10:02:48+00:00","url":"/cours_informatique/2A/mie_developpement_objet.html","mainEntityOfPage":{"@type":"WebPage","@id":"/cours_informatique/2A/mie_developpement_objet.html"},"@context":"https://schema.org"}</script>
+{"description":"Introduction","@type":"BlogPosting","headline":"Développement Objet","dateModified":"2020-09-13T12:45:59+00:00","datePublished":"2020-09-13T12:45:59+00:00","url":"/cours_informatique/2A/mie_developpement_objet.html","mainEntityOfPage":{"@type":"WebPage","@id":"/cours_informatique/2A/mie_developpement_objet.html"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /></head>
 <body><header class="site-header" role="banner">
@@ -30,7 +30,9 @@
           </span>
         </label>
 
-        <div class="trigger"><a class="page-link" href="/cours_informatique/about/">About</a></div>
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
       </nav></div>
 </header>
 <main class="page-content" aria-label="Content">
@@ -48,13 +50,76 @@
 
 <h2 id="plan">Plan</h2>
 
-<p>Le cours est découpé en quatre parties, chacune d’entres elles formée d’une partie <em>papier</em> et d’une partie <em>code</em></p>
+<p>Le cours est découpé en quatre parties, chacune d’elles formées d’une séance <em>papier</em> et d’une séance de <em>code</em>.</p>
+
+<ol>
+  <li>Classes et objets</li>
+  <li>Composition et agrégation</li>
+  <li>héritage</li>
+  <li>UI et programmation évènementielle</li>
+</ol>
+
+<p>Le cours proprement dit sera précédé d’une séance introductive (séance 0.) dédiée à l’installation des différents outils nécessaires à la suite du cours (<a href="https://www.anaconda.com/">anaconda</a>, <a href="https://www.jetbrains.com/pycharm/">pycharm</a> et <a href="https://docs.pytest.org/en/stable/">pytest</a>).</p>
 
 <h2 id="mise-en-œuvre-en-2020">Mise en œuvre en 2020</h2>
 
-<p>CV et autres trucs.</p>
+<blockquote>
+  <p><strong>Nota Bene :</strong></p>
+  <ul>
+    <li>Les séances <em>papier</em> seront majoritairement en classe virtuelle, ou en autonomie. Ne pas suivre ou faire ces séances avant la séance de code est idiot car vous ne comprendrez rien vous faisant perdre votre temps et celui de votre encadrant.</li>
+    <li>Les horaires sont en horaire de Marseille, c’est à dire <strong>UTC+2</strong>.</li>
+  </ul>
 
-<p>#</p>
+</blockquote>
+
+<ul>
+  <li>Un <a href="https://discord.gg/Tb4UDPS">discord</a> est mis à disposition pour les cours d’informatique, en particulier ceux de MIE.</li>
+  <li>Les différentes séances sont disponibles sur le <a href="https://docs.google.com/spreadsheets/d/1Oc4rvDWhG7L0u9xAGtTpK8GPA_eI7rgDYNoTgMzIWss/edit#gid=628527506">drive</a></li>
+  <li>Les classes virtuelles on lieu sur le <a href="https://webconf.centrale-marseille.fr/mie-informatique">chan MIE-informatique</a> du webconf de l’école.</li>
+</ul>
+
+<p>L’organisation globale est la suivante :</p>
+
+<ul>
+  <li>Séance 0 : installation d’anaconda, pycharm et tests de fonctionnement
+Par demi groupes (<strong>lundi 8h et mercredi 10h de la première semaine</strong>), les autres demi groupes sont en autonomie autonome.</li>
+  <li>Séance 1 :
+    <ul>
+      <li><em>papier</em> en classe virtuelle (<strong>lundi 10h de la première semaine</strong>),</li>
+      <li><em>code</em> en demi-groupes (<strong>lundi 8h et mercredi 10h de la deuxième semaine</strong>).</li>
+    </ul>
+  </li>
+  <li>Séance 2 :
+    <ul>
+      <li><em>papier</em> autonomie (<strong>l’autonomie de la deuxième semaine</strong>)</li>
+      <li><em>code</em> en demi-groupes (<strong>lundi 8h et mercredi 10h de la troisième semaine</strong>)</li>
+    </ul>
+  </li>
+  <li>Séance 3 :
+    <ul>
+      <li><em>papier</em> autonomie (<strong>l’autonomie de la troisième semaine</strong>)</li>
+      <li><em>code</em> en classe virtuelle (<strong>lundi 10h de la quatrième semaine</strong>)</li>
+    </ul>
+  </li>
+  <li>Séance 4 :
+    <ul>
+      <li><em>papier</em> et <em>code</em> en autonomie de la quatrième semaine</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="notation">Notation</h2>
+
+<p>Sous la forme de 3 examen de 15min avant les séances de code en demi groupe des séances 2 et 3 et avant la classe virtuelle de la troisième séance.</p>
+
+<p>La partie code de la séance 4 sera également noté en groupe.</p>
+
+<h1 id="les-séances">Les séances</h1>
+
+<ul>
+  <li><a href="/cours_informatique/cours/mie/seance_0.html">séance 0</a></li>
+  <li><a href="/cours_informatique/cours/mie/seance_1.html">séance 1</a></li>
+</ul>
 
   </div>
 

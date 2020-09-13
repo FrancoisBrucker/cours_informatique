@@ -1,0 +1,81 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage[pdftex,a4paper,bookmarks]{hyperref}
+\usepackage{fullpage}
+
+
+\usepackage{url}
+\usepackage{listings}
+
+\begin{document}
+
+
+    \begin{center}
+      \begin{tabular}{c}
+      \hline
+    \\
+        {\bf \textsf {\Large Programmation orientée objet}}\\
+    \\
+        {\bf \textsf {\Large TD 3 : Héritage}}\\
+    \\
+        \hline
+      \end{tabular}
+    \end{center}
+    \vspace{15mm}
+
+\section{Héritage simple}
+\subsection{Un point}
+On veut créer une classe \texttt{Point} représentant un point en deux dimensions qui pourra calculer sa distance à un autre point. Proposer une modélisation UML de cette classe.\\
+
+\subsection{Un polygone}
+En utilisant cette classe \texttt{Point}, proposer une modélisation UML d'une classe \texttt{Polygon} qui doit être capable de :
+\begin{itemize}
+	\item créer un polygone à partir d'une liste de sommets donnée
+	\item calculer son aire
+	\item calculer son périmètre.
+\end{itemize}
+Quel lien y a-t-il entre la classe \texttt{Point} et la classe \texttt{Polygon} ?
+
+\subsection{Un polygone particulier}
+On souhaite créer une version plus spécifique d'un polygone : un \texttt{Triangle}. Proposer une modélisation UML de cette classe. Quel est son lien avec la classe \texttt{Polygon}.
+
+
+\section{Héritage un peu plus compliqué}
+\subsection{Des personnages}
+Créer une classe \texttt{Personnage} qui représente un personnage qui possède un score d'attaque et des points de vie et qui peut :
+\begin{itemize}
+	\item donner et modifier sa vie ainsi que son score d'attaque
+	\item taper un autre personnage
+	\item se faire taper par un autre personnage
+\end{itemize}
+
+\subsection{Des personnages spéciaux}
+On souhaite donner naissance à des personnages plus spécifiques : une guerrière et un magicien.\\
+La guerrière dispose d'un score de bloquage qui représente son pourcentage de chances de ne pas perdre de vie quand un autre personnage l'attaque. Proposer une modélisation UML de la classe \texttt{Guerrière}. \\
+Le magicien peut faire tout ce que peut faire un personnage normal mais il dispose en plus d'un score d'attaque magique qui détermine les dégâts qu'il fait en lançant un sort. Modéliser la classe \texttt{Magicien}.
+
+\section{Design pattern composite}
+\subsection{Expression arithmétique}
+On suppose que l'on a deux opérations : + et *. En représentant chaque opération par un noeud, proposer une structure en arbre pour représenter l'expression : $2*(3*x+y+z)+t$.
+
+\subsection{Composite}
+Le design pattern composite, qui permet d'utiliser un ensemble d'objets comme on utiliserait un objet simple comprend plusieurs modèles de classes :
+\begin{itemize}
+	\item la \emph{feuille} : l'objet de base,
+	\item les \emph{composites} qui représentent les composants qui ont des enfants et qui permettent la manipulation de ces enfants,
+	\item le \emph{composant} qui est l'abstraction de tous les composants (incluant les composites et les feuilles).
+\end{itemize}
+
+Que sont concrètement les \emph{feuilles}, \emph{composites}, \emph{composant} dans le cas de l'expression arithmétique ?
+
+On souhaite pouvoir faire des opérations de dés et faire par exemple \texttt{3 * d6 + d6} en écrivant \texttt{d6.mult(3).add(d6)}.
+
+Proposer une classe \texttt{MultDice} représentant la multiplication par un facteur multiplicateur d'un dé. On voudra pouvoir obtenir la valeur de cet objet et le faire rouler.
+
+De la même manière proposez une classe \texttt{SumDice} représentant la somme de deux dés.
+
+Compléter la modélisation par une classe \texttt{DiceComponent} représentant les expressions de dés et l'utiliser pour que \texttt{SumDice} et \texttt{MultDice} soient des opérations d'expressions de dés.
+
+\end{document}
+

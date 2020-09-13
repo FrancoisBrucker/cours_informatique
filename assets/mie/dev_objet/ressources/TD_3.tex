@@ -1,0 +1,59 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage[pdftex,a4paper,bookmarks]{hyperref}
+\usepackage{fullpage}
+
+
+\usepackage{url}
+\usepackage{listings}
+
+\begin{document}
+
+
+    \begin{center}
+      \begin{tabular}{c}
+      \hline
+    \\
+        {\bf \textsf {\Large Programmation orientée objet}}\\
+    \\
+        {\bf \textsf {\Large TD 3 : Héritage}}\\
+    \\
+        \hline
+      \end{tabular}
+    \end{center}
+    \vspace{15mm}
+
+\section{Héritage simple}
+\subsection{Un point}
+On veut créer une classe \texttt{Point} représentant un point en deux dimensions qui pourra calculer sa distance à un autre point. Proposer une modélisation UML de cette classe.\\
+
+\subsection{Un polygone}
+En utilisant cette classe \texttt{Point}, proposer une modélisation UML d'une classe \texttt{Polygon} qui doit être capable de :
+\begin{itemize}
+	\item créer un polygone à partir d'une liste de sommets donnée
+	\item calculer son aire
+	\item calculer son périmètre.
+\end{itemize}
+Quel lien y a-t-il entre la classe \texttt{Point} et la classe \texttt{Polygon} ?
+
+\subsection{Un polygone particulier}
+On souhaite créer une version plus spécifique d'un polygone : un \texttt{Triangle}. Proposer une modélisation UML de cette classe. Quel est son lien avec la classe \texttt{Polygon}.
+
+
+\section{Héritage un peu plus compliqué}
+\subsection{Des personnages}
+Créer une classe \texttt{Personnage} qui représente un personnage qui possède un score d'attaque et des points de vie et qui peut :
+\begin{itemize}
+	\item donner et modifier sa vie ainsi que son score d'attaque
+	\item taper un autre personnage
+	\item se faire taper par un autre personnage
+\end{itemize}
+
+\subsection{Des personnages spéciaux}
+On souhaite donner naissance à des personnages plus spécifiques : une guerrière et un magicien.\\
+La guerrière dispose d'un score de bloquage qui représente son pourcentage de chances de ne pas perdre de vie quand un autre personnage l'attaque. Proposer une modélisation UML de la classe \texttt{Guerrière}. \\
+Le magicien peut faire tout ce que peut faire un personnage normal mais il dispose en plus d'un score d'attaque magique qui détermine les dégâts qu'il fait en lançant un sort. Modéliser la classe \texttt{Magicien}.
+
+\end{document}
+

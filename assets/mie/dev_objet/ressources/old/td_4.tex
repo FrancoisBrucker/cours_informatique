@@ -1,0 +1,106 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage[pdftex,a4paper,bookmarks]{hyperref}
+\usepackage{fullpage}
+
+
+\usepackage{url}
+\usepackage{listings}
+\usepackage{courier}
+\lstset{basicstyle=\ttfamily}
+
+
+\begin{document}
+
+
+    \begin{center}
+      \begin{tabular}{c}
+      \hline
+    \\
+        {\bf \textsf {\Large Programmation orientée objet}}\\
+    \\
+        {\bf \textsf {\Large TD 4 : Design Pattern}}\\
+    \\
+        \hline
+      \end{tabular}
+    \end{center}
+    \vspace{15mm}
+
+
+
+Nous allons ici utiliser des {\em design pattern}. Ce sont des façons d'organiser ses classes en vue de résoudre des problèmes courants en développement.
+
+\section{Observer}
+
+Le pattern {\em observer} permet de faire fonctionner la programmation évènementielle. Il est utile lorsque plusieurs sources sont dépendantes d'une donnée et veulent être informées lorsque sa valeur change. 
+
+\subsection{Score à jour}
+
+Supposons que l'on possède une classe \texttt{MatchDeFoot}, chaque match réel étant un objet de cette classe. On voudrait être tenu au courant à chaque but. 
+Proposez donc : 
+\begin{enumerate}
+    \item un modèle minimal de la classe \texttt{MatchDeFoot} pour notre problème
+    \item un moyen pour des objets extérieurs d'être informés d'un but en temps réel
+    \item codez ces classes en python
+\end{enumerate}
+
+
+\subsection{Observer et UI}
+
+Comment mettre en place le mécanisme précédent pour la gestion d'interfaces ?
+
+\section{Memento}
+
+Le pattern {\em memento} permet de sauvegarder une information et de la redonner via une méthode \verb|restore| plus tard dans le temps. Ce pattern est souvent la première brique d'une méthode d'UNDO/REDO.
+
+
+Proposez une modélisation UML de ce pattern. Déclinez-le pour stocker/replacer la valeur d'un dé.
+
+\subsection{Undo}
+Proposez un modèle UML et une façon de faire algorithmique du UNDO. 
+
+\subsection{Redo}
+
+Que faudrait-il ajouter pour faire également un REDO?
+
+
+\section{Iterator}
+
+Ce pattern permet d'accéder itérativement à des objets. Il est très présent en python et on peut facilement en créer pour nos objets.
+
+\subsection{Modèle UML}
+
+En utilisant le code suivant (tiré de \url{https://www.programiz.com/python-programming/iterator}) essayez de construire un modèle UML d'un itérateur.
+
+\lstset{language=Python}
+\begin{lstlisting}
+# define a list
+my_list = [4, 7, 0, 3]
+my_iter = iter(my_list) # get an iterator using iter()
+
+## iterate through it using next() 
+print(next(my_iter)) #prints 4
+print(next(my_iter)) #prints 7
+
+## next(obj) is same as obj.__next__()
+print(my_iter.__next__()) #prints 0
+print(my_iter.__next__()) #prints 3
+
+## This will raise error, no items left
+next(my_iter) # StopIteration exception
+\end{lstlisting}
+
+\subsection{Itération pour un deck}
+
+Créer une classe iterateur pour un deck (un ensemble de cartes, rappelez-vous du TP2). Cet itérateur va rendre les cartes du deck une à une.
+
+Vous proposerez le modèle UML, le code python de la classe et une façon de l'implémenter dans la classe \verb|Deck|.
+
+\end{document}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
