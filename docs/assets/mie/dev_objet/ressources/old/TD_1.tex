@@ -1,0 +1,81 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage[pdftex,a4paper,bookmarks]{hyperref}
+\usepackage{fullpage}
+
+
+\usepackage{url}
+\usepackage{listings}
+\usepackage{courier}
+\lstset{basicstyle=\ttfamily}
+
+\begin{document}
+
+
+    \begin{center}
+      \begin{tabular}{c}
+      \hline
+    \\
+        {\bf \textsf {\Large Programmation Orientée Objet}}\\
+    \\
+        {\bf \textsf {\Large TD 1 : Classes et objets}}\\
+    \\
+        \hline
+      \end{tabular}
+    \end{center}
+    \vspace{15mm}
+
+\section{Un Dé}
+
+\subsection{Modèle d'un dé classique}
+
+On veut créer une classe \verb|Dice|. Elle doit être capable de :
+\begin{itemize}
+	\item créer un objet sans paramètre,
+	\item créer un objet avec sa valeur initiale,
+	\item connaître et donner la valeur du dé (avec les méthodes \verb|get_position| et \verb|set_position|),
+	\item lancer un dé,
+	\item connaître le nombre maximum de faces (\verb|NUMBER_FACES|), commun à tous les dés.
+\end{itemize}
+
+Proposez une modélisation UML de la classe \verb|Dice| et écrivez des tests (en python) permettant de vérifier que tout se passe comme prévu.
+
+\subsection{Modèle d'un dé pipé}
+
+On souhaite améliorer notre classe \verb|Dice| pour pouvoir tricher. Complétez la modélisation UML précédente afin d'associer à chaque dé une liste correspondant aux probabilités de tomber sur chaque face.
+
+Que faut-il modifier ?
+
+
+\subsection{Namespaces}
+
+Exécutez le code suivant en montrant toutes les lignes de codes et les {\em Namespaces} utilisés.
+
+\lstset{language=Python}
+\begin{lstlisting}
+from dice import Dice
+
+dice = Dice()
+print(dice.position)
+dice.roll()
+print(dice.get_position())
+print(dice.NUMBER_FACES)
+\end{lstlisting}
+
+\section{Des Dés}
+
+Pour pouvoir jouer à des jeux de dés, implémentons une classe \verb|TapisVert|. Cette classe doit avoir~:
+\begin{itemize}
+	\item 5 dés comme attribut,
+	\item pouvoir lancer les 5 dés simultanément ou individuellement,
+	\item Connaître la valeur d'un dé spécifique.
+\end{itemize}
+
+\end{document}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
