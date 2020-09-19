@@ -99,6 +99,8 @@ Le client openssh de windows devrait être installé. Pour le vérifier, aller d
      
 Une fois le serveur ssh configuré redémarrer votre ordinateur.
 
+Si la configuration précédente ne fonctionne pas, essayer de suivre les instruction de [cette question](https://stackoverflow.com/questions/52113738/starting-ssh-agent-on-windows-10-fails-unable-to-start-ssh-agent-service-erro). Ils vous conseillent de commencer par l'arrêter puis le mettre en manuel. 
+
 ### doc
 - https://docs.microsoft.com/fr-fr/windows-server/administration/openssh/openssh_install_firstuse
 - https://stackoverflow.com/questions/52113738/starting-ssh-agent-on-windows-10-fails-unable-to-start-ssh-agent-service-erro

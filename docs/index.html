@@ -5,65 +5,27 @@
 layout: home
 ---
 
-{% if  site.1A.size  > 0 %}
-<div>
-    <h2 class="post-list-heading">{{ page.list_title | default: "1A" }}</h2>
-    <ul class="post-list">
-      {%- for post in site.1A -%}
-      <li>
-        <span class="post-meta">{{ post.category }}</span>
-        <h3>
-          <a class="post-link" href="{{ post.url | relative_url }}">
-            {{ post.title | escape }}
-          </a>
-        </h3>
-        {%- if site.show_excerpts -%}
-          {{ post.excerpt }}
-        {%- endif -%}
-      </li>
-      {%- endfor -%}
-    </ul>
-</div>
-{% endif %}
+{% for collection in site.collections %}
+    {% if  site.[collection.label].size  > 0 %}
+    <div>
+        <h2 class="post-list-heading">{{ page.list_title | default: collection.label}}</h2>
+        <ul class="post-list">
+            {%- for post in site.[collection.label].-%}
+            <li>
+                <span class="post-meta">{{ post.category }}</span>
+                <h3>
+                    <a class="post-link" href="{{ post.url | relative_url }}">
+                        {{ post.title | escape }}
+                    </a>
+                </h3>
+                {%- if site.show_excerpts -%}
+                  {{ post.excerpt }}
+                {%- endif -%}
+            </li>
+            {%- endfor -%}
+        </ul>
+    </div>
+    {% endif %}
+{% endfor %}
 
 
-{% if  site.2A.size  > 0 %}
-<div>
-    <h2 class="post-list-heading">{{ page.list_title | default: "2A" }}</h2>
-    <ul class="post-list">
-      {%- for post in site.2A -%}
-      <li>
-        <span class="post-meta">{{ post.category }}</span>
-        <h3>
-          <a class="post-link" href="{{ post.url | relative_url }}">
-            {{ post.title | escape }}
-          </a>
-        </h3>
-        {%- if site.show_excerpts -%}
-          {{ post.excerpt }}
-        {%- endif -%}
-      </li>
-      {%- endfor -%}
-    </ul>
-</div>
-{% endif %}
-{% if  site.3A.size  > 0 %}
-<div>
-    <h2 class="post-list-heading">{{ page.list_title | default: "3A" }}</h2>
-    <ul class="post-list">
-      {%- for post in site.3A -%}
-      <li>
-        <span class="post-meta">{{ post.category }}</span>
-        <h3>
-          <a class="post-link" href="{{ post.url | relative_url }}">
-            {{ post.title | escape }}
-          </a>
-        </h3>
-        {%- if site.show_excerpts -%}
-          {{ post.excerpt }}
-        {%- endif -%}
-      </li>
-      {%- endfor -%}
-    </ul>
-</div>
-{% endif %}
