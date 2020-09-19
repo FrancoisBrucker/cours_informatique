@@ -149,6 +149,6 @@ Le projet contient deux dossiers :
 
 ### site
  
-Le site (dans le dossier `docs`) contient 3 collections, *_1A*, *_2A* et *_3A* dont les fichiers sont automatiquement ajoutés au site. Ces collections correspondent aux déroulé du cours et des UEes, et inclut les *vrais* cours qui sont eux dans le dossier *cours*. 
+Le site (dans le dossier `docs`) contient 3 collections : *_1A*, *_2A* et *_3A* dont les fichiers sont automatiquement ajoutés au site. Ces collections correspondent aux déroulé du cours et des UEes, et inclut les *vrais* cours qui sont eux dans le dossier *cours*. 
 
 Le dossier *assets* contient les images, et autres pdf nécessaire aux pages générales. Chaque cours contient ses propres assets.
