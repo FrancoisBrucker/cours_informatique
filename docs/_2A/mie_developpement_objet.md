@@ -33,10 +33,9 @@ Le cours est découpé en quatre parties, chacune d'elles formées d'une séance
 
 L'organisation globale est la suivante :
 
-  - Séance 0 : installation d'anaconda, pycharm et tests de fonctionnement
-    Par demi groupes (**lundi 8h et mercredi 10h de la première semaine**), les autres demi groupes sont en autonomie autonome. 
+  - Séance 0 : installation d'anaconda, pycharm et tests de fonctionnement (**lundi 10h de la première semaine**),
   - Séance 1 : 
-    - *papier* en classe virtuelle (**lundi 10h de la première semaine**),
+    - *papier* par demi groupes (**lundi 8h et mercredi 10h de la première semaine**), les autres demi groupes sont en autonomie autonome. 
     - *code* en demi-groupes (**lundi 8h et mercredi 10h de la deuxième semaine**).
   - Séance 2 :
     - *papier* autonomie (**l'autonomie de la deuxième semaine**)

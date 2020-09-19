@@ -116,7 +116,7 @@ Pour plus d'informations, reportez vous à [la documentation de pycharm](https:/
 
 Les préférences de pycharm sont accessibles via le menu *File > Settings...*. La fenêtre de préférences ressemble à ça : 
 
-![un projet vide]({{ "/assets/img/pycharm/settings/settings.jpg"  | relative_url }})
+![un projet vide]({{ "settings/settings.jpg" }})
 
 On peut quasiment tout changer, de l'apparence à l'interpréteur en passant par les raccourcis clavier.
 
@@ -127,22 +127,22 @@ On peut quasiment tout changer, de l'apparence à l'interpréteur en passant par
 L'interpréteur du projet se trouve dans la partie *Project* de la fenêtre des préférences.
 
 
-![un projet vide]({{ "/assets/img/pycharm/settings/interpreter.jpg" | relative_url }})
+![l'interpréteur]({{ "settings/interpreter.jpg" }})
 
 
 Pour créer un nouvel interpréteur à partir de la fenêtre de l'interpréteur, il suffit de cliquer sur l'engrenage dans la partie réservée à l'interpréteur : 
 
-![un projet vide]({{ "/assets/img/pycharm/settings/engrenage.png" | relative_url }})
+![engrenage]({{ "settings/engrenage.png" }})
 
 Si l'on veut ajouter un programme python déjà présent sur la machine, on choisit *Add...*.
 
 Une nouvelle fenêtre s'affiche, qui doit ressembler à ça : 
 
-![ajout d'un interpréteur]({{ "/assets/img/pycharm/settings/nouvel_interpreteur_venv.png"  | relative_url }})
+![ajout d'un interpréteur]({{ "settings/nouvel_interpreteur_venv.png" }})
 
 Attention, par défaut `virtualenv environment` (en haut à gauche de la fenêtre) est utilisé. Dans l'absolu [c'est très bien](http://sametmax.com/les-environnement-virtuels-python-virtualenv-et-virtualenvwrapper/), mais pour nous, ça va plus nous embêter qu'autre chose (en particulier il faudrait réinstaller numpy à chaque tp...). On choisi donc *Conda Environment* ou *system interpréteur*  et un python 3 d'installé : 
 
-![interpréteur python]({{ "/assets/img/pycharm/settings/interpreteur_python.png"  | relative_url }})
+![interpréteur python]({{ "settings/interpreteur_python.png"  }})
 
 
 Dans l'image ci-dessus, mon interpréteur python3 (python3.6) était dans le dossier `/usr/local/bin` (ce qui est souvent le cas dans le monde unix ou mac)
@@ -151,11 +151,11 @@ Dans l'image ci-dessus, mon interpréteur python3 (python3.6) était dans le dos
 
 On commence par aller trouver son interpréteur via le menu *File > Settings...* (je l'ai trouvé en tapant `interp` dans l'onglet de recherche) : 
 
-![python]({{ "/assets/img/pycharm/settings/interpreteur_par_recherche.png"  | relative_url }})
+![interpréteur par recherche]({{ "settings/interpreteur_par_recherche.png" }})
 
 Les packages installé sont listé dans la fenêtre, avec le numéro de version installé et la dernère version disponible. Pour installer le package `numpy` on commence par cliquer sur le bouton `+` en bas à gauche de la fenêtre. Un zillion de package sont disponible. On cherche numpy : 
 
-![python]({{ "/assets/img/pycharm/settings/package_numpy.png"  | relative_url }})
+![package numpy]({{ "settings/package_numpy.png" }})
 
 On peut ensuite cliquer sur `install package` en bas à gauche pour installer le package.
 
@@ -173,7 +173,7 @@ Par exemple, sous unix :
 L'utilisation des raccourcis clavier est décrite dans  l'aide en ligne de pycharm sur les [keymap](https://www.jetbrains.com/help/pycharm/keymap.html).
 Si une commande possède un raccourci clavier, il est montré à droite de son nom : 
 
-![commande rename]({{ "/assets/img/pycharm/keymap/raccourci_clavier.png"  | relative_url }})
+![commande rename]({{ "keymap/raccourci_clavier.png"  }})
 
 L'image ci-dessus montre la commande *Rename* et son raccourci clavier *shift + F6* (cette commande est très très utile et vous l'utiliserez souvent car elle permet de renommer n'importe quoi. Le nom est modifié dans tout le fichier et dans d'autres fichiers du même projet). 
 
@@ -184,14 +184,14 @@ Selon la plateforme, les raccourcis par défaut changent :
  
  Tous les raccourcis sont disponibles dans les préférences (menu *File > Settings...*) dans la partie keymap : 
  
- ![raccourcis claviers]({{ "/assets/img/pycharm/keymap/keymap_settings.jpg"  | relative_url }})
+ ![raccourcis claviers]({{ "keymap/keymap_settings.jpg" }})
 
  
 Le raccourci clavier pour commenter automatiquement une ligne ou une partie de texte sélectionné par défaut de Pycharm n'est pas fonctionnel avec un clavier Français. 
 
 Le raccourci concerne les commentaires : *comment* en anglais. Pour trouver rapidement les raccourcis on tape donc *comment* dans la barre de recherche de la partie *keymap* de la fenêtre des paramètres : 
 
- ![raccourcis comments]({{ "/assets/img/pycharm/keymap/keymap_comment.jpg"  | relative_url }})
+ ![raccourcis comments]({{ "keymap/keymap_comment.jpg" }})
 
 
 Il y a 2 types de commentaires : commentaire d'une ligne et d'un bloc de texte. Certains langages utilisent ces deux types de commentaires (le C++ ou le Java par exemple), mais pas python puisqu'il suffit de mettre un `#` devant la ligne à commenter. Nous n'aurons à modifier que le raccourci : *Comment with Line Comment*.
@@ -203,11 +203,11 @@ Dans de nombreux éditeurs, ce raccourci est sur *ctrl + /* (`//` est le comment
  
  Après avoir double cliqué sur la ligne *Comment with Line Comment* et choisi d'ajouter un raccourci clavier, effectuez la combinaison de touche puis cliquez sur *Ok* (appuyer sur *Entrée* change le raccourci...) : 
  
- ![raccourcis comments]({{ "/assets/img/pycharm/keymap/keymap_shortcut.jpg"  | relative_url }})
+ ![changement de raccourcis comments]({{ "keymap/keymap_shortcut.jpg" }})
  
 Le raccourci est alors ajouté :
 
-![raccourcis comments]({{ "/assets/img/pycharm/keymap/keymap_result.jpg" | relative_url}})
+![raccourcis comments ajouté]({{ "keymap/keymap_result.jpg" }})
 
 Testez le !
 
