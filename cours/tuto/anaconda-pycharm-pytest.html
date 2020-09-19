@@ -181,7 +181,7 @@ Il se peut que pycharm ne réponde pas bien au début. C’est normal, il est en
 
 <p>Les préférences de pycharm sont accessibles via le menu <em>File &gt; Settings…</em>. La fenêtre de préférences ressemble à ça :</p>
 
-<p><img src="/cours_informatique/assets/img/pycharm/settings/settings.jpg" alt="un projet vide" /></p>
+<p><img src="settings/settings.jpg" alt="un projet vide" /></p>
 
 <p>On peut quasiment tout changer, de l’apparence à l’interpréteur en passant par les raccourcis clavier.</p>
 
@@ -193,21 +193,21 @@ En haut à gauche se trouve un champ texte. Il permet de réduire les préféren
 
 <p>L’interpréteur du projet se trouve dans la partie <em>Project</em> de la fenêtre des préférences.</p>
 
-<p><img src="/cours_informatique/assets/img/pycharm/settings/interpreter.jpg" alt="un projet vide" /></p>
+<p><img src="settings/interpreter.jpg" alt="l'interpréteur" /></p>
 
 <p>Pour créer un nouvel interpréteur à partir de la fenêtre de l’interpréteur, il suffit de cliquer sur l’engrenage dans la partie réservée à l’interpréteur :</p>
 
-<p><img src="/cours_informatique/assets/img/pycharm/settings/engrenage.png" alt="un projet vide" /></p>
+<p><img src="settings/engrenage.png" alt="engrenage" /></p>
 
 <p>Si l’on veut ajouter un programme python déjà présent sur la machine, on choisit <em>Add…</em>.</p>
 
 <p>Une nouvelle fenêtre s’affiche, qui doit ressembler à ça :</p>
 
-<p><img src="/cours_informatique/assets/img/pycharm/settings/nouvel_interpreteur_venv.png" alt="ajout d'un interpréteur" /></p>
+<p><img src="settings/nouvel_interpreteur_venv.png" alt="ajout d'un interpréteur" /></p>
 
 <p>Attention, par défaut <code class="language-plaintext highlighter-rouge">virtualenv environment</code> (en haut à gauche de la fenêtre) est utilisé. Dans l’absolu <a href="http://sametmax.com/les-environnement-virtuels-python-virtualenv-et-virtualenvwrapper/">c’est très bien</a>, mais pour nous, ça va plus nous embêter qu’autre chose (en particulier il faudrait réinstaller numpy à chaque tp…). On choisi donc <em>Conda Environment</em> ou <em>system interpréteur</em>  et un python 3 d’installé :</p>
 
-<p><img src="/cours_informatique/assets/img/pycharm/settings/interpreteur_python.png" alt="interpréteur python" /></p>
+<p><img src="settings/interpreteur_python.png" alt="interpréteur python" /></p>
 
 <p>Dans l’image ci-dessus, mon interpréteur python3 (python3.6) était dans le dossier <code class="language-plaintext highlighter-rouge">/usr/local/bin</code> (ce qui est souvent le cas dans le monde unix ou mac)</p>
 
@@ -215,11 +215,11 @@ En haut à gauche se trouve un champ texte. Il permet de réduire les préféren
 
 <p>On commence par aller trouver son interpréteur via le menu <em>File &gt; Settings…</em> (je l’ai trouvé en tapant <code class="language-plaintext highlighter-rouge">interp</code> dans l’onglet de recherche) :</p>
 
-<p><img src="/cours_informatique/assets/img/pycharm/settings/interpreteur_par_recherche.png" alt="python" /></p>
+<p><img src="settings/interpreteur_par_recherche.png" alt="interpréteur par recherche" /></p>
 
 <p>Les packages installé sont listé dans la fenêtre, avec le numéro de version installé et la dernère version disponible. Pour installer le package <code class="language-plaintext highlighter-rouge">numpy</code> on commence par cliquer sur le bouton <code class="language-plaintext highlighter-rouge">+</code> en bas à gauche de la fenêtre. Un zillion de package sont disponible. On cherche numpy :</p>
 
-<p><img src="/cours_informatique/assets/img/pycharm/settings/package_numpy.png" alt="python" /></p>
+<p><img src="settings/package_numpy.png" alt="package numpy" /></p>
 
 <p>On peut ensuite cliquer sur <code class="language-plaintext highlighter-rouge">install package</code> en bas à gauche pour installer le package.</p>
 
@@ -238,7 +238,7 @@ En haut à gauche se trouve un champ texte. Il permet de réduire les préféren
 <p>L’utilisation des raccourcis clavier est décrite dans  l’aide en ligne de pycharm sur les <a href="https://www.jetbrains.com/help/pycharm/keymap.html">keymap</a>.
 Si une commande possède un raccourci clavier, il est montré à droite de son nom :</p>
 
-<p><img src="/cours_informatique/assets/img/pycharm/keymap/raccourci_clavier.png" alt="commande rename" /></p>
+<p><img src="keymap/raccourci_clavier.png" alt="commande rename" /></p>
 
 <p>L’image ci-dessus montre la commande <em>Rename</em> et son raccourci clavier <em>shift + F6</em> (cette commande est très très utile et vous l’utiliserez souvent car elle permet de renommer n’importe quoi. Le nom est modifié dans tout le fichier et dans d’autres fichiers du même projet).</p>
 
@@ -250,13 +250,13 @@ Si une commande possède un raccourci clavier, il est montré à droite de son n
 
 <p>Tous les raccourcis sont disponibles dans les préférences (menu <em>File &gt; Settings…</em>) dans la partie keymap :</p>
 
-<p><img src="/cours_informatique/assets/img/pycharm/keymap/keymap_settings.jpg" alt="raccourcis claviers" /></p>
+<p><img src="keymap/keymap_settings.jpg" alt="raccourcis claviers" /></p>
 
 <p>Le raccourci clavier pour commenter automatiquement une ligne ou une partie de texte sélectionné par défaut de Pycharm n’est pas fonctionnel avec un clavier Français.</p>
 
 <p>Le raccourci concerne les commentaires : <em>comment</em> en anglais. Pour trouver rapidement les raccourcis on tape donc <em>comment</em> dans la barre de recherche de la partie <em>keymap</em> de la fenêtre des paramètres :</p>
 
-<p><img src="/cours_informatique/assets/img/pycharm/keymap/keymap_comment.jpg" alt="raccourcis comments" /></p>
+<p><img src="keymap/keymap_comment.jpg" alt="raccourcis comments" /></p>
 
 <p>Il y a 2 types de commentaires : commentaire d’une ligne et d’un bloc de texte. Certains langages utilisent ces deux types de commentaires (le C++ ou le Java par exemple), mais pas python puisqu’il suffit de mettre un <code class="language-plaintext highlighter-rouge">#</code> devant la ligne à commenter. Nous n’aurons à modifier que le raccourci : <em>Comment with Line Comment</em>.</p>
 
@@ -266,11 +266,11 @@ Si une commande possède un raccourci clavier, il est montré à droite de son n
 
 <p>Après avoir double cliqué sur la ligne <em>Comment with Line Comment</em> et choisi d’ajouter un raccourci clavier, effectuez la combinaison de touche puis cliquez sur <em>Ok</em> (appuyer sur <em>Entrée</em> change le raccourci…) :</p>
 
-<p><img src="/cours_informatique/assets/img/pycharm/keymap/keymap_shortcut.jpg" alt="raccourcis comments" /></p>
+<p><img src="keymap/keymap_shortcut.jpg" alt="changement de raccourcis comments" /></p>
 
 <p>Le raccourci est alors ajouté :</p>
 
-<p><img src="/cours_informatique/assets/img/pycharm/keymap/keymap_result.jpg" alt="raccourcis comments" /></p>
+<p><img src="keymap/keymap_result.jpg" alt="raccourcis comments ajouté" /></p>
 
 <p>Testez le !</p>
 
