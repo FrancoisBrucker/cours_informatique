@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>git et github | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="git et github" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)" />
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)" />
+<link rel="canonical" href="/cours_informatique/cours/dfs/git_et_github.html" />
+<meta property="og:url" content="/cours_informatique/cours/dfs/git_et_github.html" />
+<meta property="og:site_name" content="cours d’informatique" />
+<script type="application/ld+json">
+{"description":"Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)","@type":"WebPage","headline":"git et github","url":"/cours_informatique/cours/dfs/git_et_github.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">git et github</h1>
+  </header>
+
+  <div class="post-content">
+    <h1 id="but">But</h1>
+
+<p>Base de l’utilisation de git et de github comme <em>origin</em>.</p>
+
+<p>Git est le logiciel de <a href="https://fr.wikipedia.org/wiki/Gestion_de_versions">gestion de versions</a> actuel et [github)[https://github.com/] un moyen pratique de stocker et diffuser ses projets en utilisant git.</p>
+
+<p>On va vous montrer ici comment utiliser les deux de concert.</p>
+
+<p>Ce n’est pas un cours avancé de git/github, mais il devrait vous permettre de vous en sortir et d’utiliser correctement ces deux outils complémentaires.</p>
+
+<ul>
+  <li>gestion de l’origin comme source. Dire que c’est une convention</li>
+  <li>origin -&gt; changement dans la config.</li>
+  <li>rebase on pull</li>
+  <li>revenir à une version précédente</li>
+  <li>dire que l’on commite souvent et une fois par jour à l’origin
+  -github organisation ?</li>
+  <li>TBD élèves :
+    <ul>
+      <li>un récap des commandes et ajout de trucs qu’ils connaissent.</li>
+      <li>un lien vers le projet fini ?</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="initialisation">initialisation</h1>
+
+<p>Commencer par installer <code class="language-plaintext highlighter-rouge">git</code> si ce n’est pas encore fait et créez vous un compte sur <a href="https://github.com/">github</a>. Ce compte github sera utilisé pour tout le cours et vous pourrez  placer vos projet personnels montrable à vos futurs employeurs. Donc utilisez une adresse mail de contact ainsi qu’une photo de profil et un nom présentable.</p>
+
+<h2 id="configuration-minimale-git">Configuration minimale git</h2>
+
+<p>Vous allez travailler sur vos projets git à plusieurs. Il faut pouvoir à tout moment savoir qui a fait quoi sur le projet. Il est donc impératif que vos données personnelles soient à jour.</p>
+
+<p>Renseigner ces infos de façon globale pour tout projet (vous pourrez changer ces infos pour chaque projet, mais mettez des infos corrects par défaut) :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config <span class="nt">--global</span> user.name <span class="s2">"Your name here"</span>
+git config <span class="nt">--global</span> user.email <span class="s2">"your_email@example.com"</span>
+</code></pre></div></div>
+
+<p>On va mettre vim comme éditeur par défaut pour renseigner les commit :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config <span class="nt">--global</span> core.editor vim
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>Nota Bene :</strong> Vous n’utiliserez que très peu l’éditeur par défaut une fois que vous ferez vos commit avec l’option <code class="language-plaintext highlighter-rouge">-m</code></p>
+</blockquote>
+
+<p>On met de la couleur dans le terminal par défaut :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config <span class="nt">--global</span> core.editor vim
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>Nota Bene :</strong> 
+Vous pouvez mette votre <a href="https://docs.github.com/en/github/using-git/associating-text-editors-with-git">éditeur favori</a> bien sur, mais <code class="language-plaintext highlighter-rouge">vim</code> sera toujours présent quelque soit l’endroit où au aurez besoin de faire un commit (genre un serveur distant). Il est donc bien d’avoir quelque notions de vim et de les utiliser de temps en temps, d’où cette configuration.</p>
+</blockquote>
+
+<p>Pour éviter d’avoir un pager lors des <code class="language-plaintext highlighter-rouge">git log</code> :</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config <span class="nt">--global</span> pager.log <span class="nb">false</span>
+</code></pre></div></div>
+
+<p>Si l’on ne met pas cette option, les logs seront automatiquement passé à <code class="language-plaintext highlighter-rouge">more</code> par défaut pour paginer les résultats.</p>
+
+<blockquote>
+  <p><strong>Nota Bene :</strong>
+On obtiendrait le même résultat sans utiliser la config ci-dessus en utilisant l’argument de git <code class="language-plaintext highlighter-rouge">--no-pager</code>, par exemple :<code class="language-plaintext highlighter-rouge">git --no-pager log</code>. Notez que <code class="language-plaintext highlighter-rouge">--no-pager</code> est un argument de git, pas de sa commande <code class="language-plaintext highlighter-rouge">log</code>, il est donc placé avant celle-ci.</p>
+</blockquote>
+
+<h2 id="config-minimale-github">config minimale github</h2>
+
+<p>Créez vous un compte github si ce n’est déjà fait. Github va vous permettre de travailler en groupe et de montrer ce que vous savez faire, c’est un peu votre <em>book</em> de développeur.</p>
+
+<p>Donc :</p>
+
+<ul>
+  <li>utilisez votre nom/prénom ou un pseudo présentable</li>
+  <li>utiliser une adresse mail que vous lisez</li>
+  <li>ne mettez dessus que les projets que vous pourriez mettre sur votre cv.</li>
+</ul>
+
+<p>Rien ne vous empêche d’avoir d’autres comptes github pour vos projets plus perso mais celui-là c’est votre vitrine légale numérique.</p>
+
+<p>Pour que vous puissiez facilement avoir accès à ce compte, 
+<a href="https://docs.github.com/en/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account">ajouter votre clé publique dans github</a>.</p>
+
+<p>Vous pourrez donner votre clé publique pour être ajouté comme contributeur d’un projet. C’est un moyen pratique de gérer les personnes d’un projet.</p>
+
+<h1 id="git">git</h1>
+
+<h2 id="but-1">But</h2>
+
+<p>Utilisation courante de git/github grâce à un petit projet web. On suppose que vous avez fait la partie concernant l’initialisation de git et de github.</p>
+
+<h2 id="création-du-projet-git">création du projet git</h2>
+
+<p>Munissez vous d’un terminal et placez vous dans un dossier vierge :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir </span>mon_projet_web
+<span class="nb">cd </span>mon_projet_web 
+</code></pre></div></div>
+
+<p>On peut maintenant initialiser un projet git :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git init
+</code></pre></div></div>
+
+<h2 id="le-dossier-git">le dossier <em>.git</em></h2>
+
+<blockquote>
+  <p><a href="https://git-scm.com/book/fr/v2/Les-tripes-de-Git-Plomberie-et-porcelaine"><strong>Dans la doc</strong></a></p>
+</blockquote>
+
+<p>La commande précédente a initialisé <code class="language-plaintext highlighter-rouge">git</code> en créant un dossier caché <em>.git</em>. Git ne fonctionne que comme ça, tout est mis dans ce dossier. Chez moi, il ressemble à ça (j’ai utilisé la commande <code class="language-plaintext highlighter-rouge">tree -a</code> pour afficher l’arborescence et les fichiers cachés) :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">.</span>
+└── .git
+    ├── HEAD
+    ├── config
+    ├── description
+    ├── hooks
+    │   ├── applypatch-msg.sample
+    │   ├── commit-msg.sample
+    │   ├── fsmonitor-watchman.sample
+    │   ├── post-update.sample
+    │   ├── pre-applypatch.sample
+    │   ├── pre-commit.sample
+    │   ├── pre-merge-commit.sample
+    │   ├── pre-push.sample
+    │   ├── pre-rebase.sample
+    │   ├── pre-receive.sample
+    │   ├── prepare-commit-msg.sample
+    │   └── update.sample
+    ├── info
+    │   └── exclude
+    ├── objects
+    │   ├── info
+    │   └── pack
+    └── refs
+        ├── heads
+        └── tags
+
+9 directories, 16 files
+
+</code></pre></div></div>
+
+<p>Le fichier de configuration est également décrit <a href="https://www.daolf.com/posts/git-series-part-1/">dans ce post</a>. En deux mots :</p>
+<ul>
+  <li><em>HEAD</em> : la branche courant, pour l’instant <strong>Master</strong> (vérifiez le en lisant le fichier avec la commande <code class="language-plaintext highlighter-rouge">cat</code>)</li>
+  <li><em>config</em> : le fichier de configuration.</li>
+  <li><em>description</em> : descriptiopn du projet, pas vraiment utilisé</li>
+  <li><em>hooks/</em> : contient des scripts que l’on peu utiliser à chaque qu’une commande git particulieère est utilisée. C’est une utilisation avancée de git, qui permet par exemple de lancer tous les tests à chaque push, etc.</li>
+  <li><em>info/exclude/</em> un <em>.gitignore</em> pour tout le projet.</li>
+  <li><em>objects/</em> : contient votre projet actuel et passé en plein de petits bouts. Pour l’instant il n’y a rien.</li>
+  <li><em>refs/</em> : contient les commit. Pour l’instant il n’y a rien.</li>
+</ul>
+
+<h2 id="fonctionnement-de-git">fonctionnement de git</h2>
+
+<p>Le but de git est de garder un historique d’un projet, en conservant les fichiers du projets et leurs modifications au cours du temps. Cet historique est composé de <strong>commit</strong> qui stock l’état d’un projet à un instant donné. Plus précisément il stocke la différence en l’état précédent et le nouvel état, formant un graphe direct et acyclique (si je jargonne)</p>
+
+<p>Pour démarrer cet historique faisons notre premier commit.</p>
+
+<h3 id="premier-commit">premier commit</h3>
+
+<p>Pour cela, il faut que l’on ait quelque chose à stocker.  Créons un petit fichier <em>index.html</em> à la racine de notre projet (donc ne soyez plus dans le dossier <em>.git</em>) :</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!doctype html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;title&gt;</span>My homepage<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+<span class="nt">&lt;h1&gt;</span>Hello World !<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>Pour faire un <em>commit</em> (stocker l’état d’un projet) il faut commencer par dire à git ce que l’on veut <em>“commiter</em>, ici notre fichier <em>index.html</em> :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add index.html
+</code></pre></div></div>
+
+<p>On place le fichier <em>index.html</em> courant dans le <strong>stage</strong> c’est à dire l’endroit où son mis les fichier qui seront inclus dans le <em>commit</em>. Pour voir tout ça, la commande <code class="language-plaintext highlighter-rouge">status</code> est super utile :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git  status
+</code></pre></div></div>
+
+<p>Cette commande dit chez moi (et en couleur) :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Sur la branche master
+
+Aucun commit
+
+Modifications qui seront validées :
+  <span class="o">(</span>utilisez <span class="s2">"git rm --cached &lt;fichier&gt;..."</span> pour désindexer<span class="o">)</span>
+	nouveau fichier : index.html
+</code></pre></div></div>
+
+<p>On a bien un nouveau fichier que l’on veut garder. On peut fait notre premier commit :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git  commit
+</code></pre></div></div>
+
+<p>Cette commande va lancer l’éditeur que vous avez configuré (<code class="language-plaintext highlighter-rouge">vim</code> si vous avez suivi mes recommandations) et va vous demander de décrire votre commit. Cette étape est <strong>obligatoire</strong> et <strong>très importante</strong>, ne mettez donc pas de message fantaisiste : décrivez en une ligne ce que vous avez fait. 
+Ici, par exemple : <em>“first commit”</em>. Sauvez et sortez de <code class="language-plaintext highlighter-rouge">vim</code>, vous avez fait votre premier commit. On le voit en tapant la commande <code class="language-plaintext highlighter-rouge">git status</code> (qui dit que tout est ok, que le stage est vide et que l’on a aucun fichier non suivi par git).</p>
+
+<p>La commande <code class="language-plaintext highlighter-rouge">git log</code> vous donne un historique des <em>commit</em> avec le nom, l’heure et le message. Chez moi ça donne :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>commit 3b8c0a8836050e58ec8cf8bd24f3d06b0bf39613 <span class="o">(</span>HEAD -&gt; master<span class="o">)</span>
+Author: François Brucker &lt;francois.brucker@gmail.com&gt;
+Date:   Sat Sep 19 14:35:41 2020 +0200
+
+    First commit <span class="o">!</span>
+</code></pre></div></div>
+
+<h3 id="les-objets">les objets</h3>
+
+<blockquote>
+  <p><a href="https://git-scm.com/book/fr/v2/Les-tripes-de-Git-Les-objets-de-Git"><strong>Dans la doc</strong></a></p>
+</blockquote>
+
+<p>Git va tout (oui tout) stocker dans le dossier <code class="language-plaintext highlighter-rouge">.git/objects</code> sous la forme d’un fichier compressé de nom égal à sa valeur de hash <a href="https://fr.wikipedia.org/wiki/SHA-1">SHA-1</a> sur 40 octets.</p>
+
+<blockquote>
+  <p><strong>Nota Bene :</strong> Il est possible mais hautement improbable que 2 fichiers différents aient la même valeur de hash SHA-1. Dans ce cas là git sera perdu. Mais bon, que cela arrive c’st rare, et dans un même projet c’est encore plus rare…. Voir n’est pas encore arrivé.</p>
+</blockquote>
+
+<p>Chez moi j’ai, avec la commande <code class="language-plaintext highlighter-rouge">tree objects</code> exécutée dans le dossier git :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>objects
+├── 3b
+│   └── 8c0a8836050e58ec8cf8bd24f3d06b0bf39613
+├── 4b
+│   └── 825dc642cb6eb9a060e54bf8d69288fbee4904
+├── aa
+│   └── e16b7870ad8867b12184215adf9063afc800c1
+├── ab
+│   └── 3401bd309f7e474cba48b2ecc06c09543a1e0d
+├── info
+└── pack
+</code></pre></div></div>
+
+<p>Ce dossier est la base de donnée de notre projet. Chaque objet est stocké avec une signature SHA-1 de 40 octets, les deux premiers étant le nom du dossier, les 38 autres le nom du fichier.</p>
+
+<p>Si je veux savoir ce qu’il y a dans le fichier <em>ab/3401bd309f7e474cba48b2ecc06c09543a1e0d</em> du dossier objet, je tape : <code class="language-plaintext highlighter-rouge">git cat-file -p ab3401bd309f7e474cba48b2ecc06c09543a1e0d</code> et j’obtiens :</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="cp">&lt;!doctype html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;title&gt;</span>My homepage<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+<span class="nt">&lt;h1&gt;</span>Hello World !<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>C’est notre fichier html ! Les autres objets correspondent à l’arborescence de projet (pour l’instant un unique nœud, notre commit) et le commit en lui même. Il aura un autre nom chez vous, mais chez moi c’est celui de nom <em>3b/8c0a8836050e58ec8cf8bd24f3d06b0bf39613</em> (c’est le numéro donné dans le commit).</p>
+
+<h3 id="les-références">Les références</h3>
+
+<p>Le dossier référence contient les références des commits de toutes les branches et ou tags de notre projet. Nous n’avons qu’une seule branche, nommée <em>master</em> commit des différentes branches. En regardant ce qu’il y a dans le fichier <code class="language-plaintext highlighter-rouge">refs/heads/master</code> je retrouve bien le numéro de commit.</p>
+
+<p>On peut accéder à tout dans git en utilisant ces numéros (en entier ou  les 4 ou plus premiers chiffres). Par exemple si jeu veux voir le log de mon commit de numéro <em>3b8c0a8836050e58ec8cf8bd24f3d06b0bf39613</em>, je peux taper <code class="language-plaintext highlighter-rouge">git log 3b8c0a8836050e58ec8cf8bd24f3d06b0bf39613</code>, <code class="language-plaintext highlighter-rouge">git log 3b8c</code> ou encore <code class="language-plaintext highlighter-rouge">git log 3b8c0a8</code></p>
+
+<h2 id="avancer-dans-larbre">avancer dans l’arbre</h2>
+
+<p>Modifions notre fichier <em>index.html</em> :</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!doctype html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Ma maison page<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+<span class="nt">&lt;h1&gt;</span>Hello World !<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;h2&gt;</span>et bonjour Monde !<span class="nt">&lt;/h2&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>La commande <code class="language-plaintext highlighter-rouge">git status</code> nous donne ce qui a changé :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+Sur la branche master
+Modifications qui ne seront pas validées :
+  <span class="o">(</span>utilisez <span class="s2">"git add &lt;fichier&gt;..."</span> pour mettre à jour ce qui sera validé<span class="o">)</span>
+  <span class="o">(</span>utilisez <span class="s2">"git restore &lt;fichier&gt;..."</span> pour annuler les modifications dans le répertoire de travail<span class="o">)</span>
+	modifié :         index.html
+
+aucune modification n<span class="s1">'a été ajoutée à la validation (utilisez "git add" ou "git commit -a")
+</span></code></pre></div></div>
+
+<p>Un fichier a été modifié. Comme on a pas de nouveaux fichiers, et que l’on veut juste mettre à jour les fichiers déjà suivis, on peut utiliser l’argument <code class="language-plaintext highlighter-rouge">-a</code> de la commande <code class="language-plaintext highlighter-rouge">git commit</code> qui place dans le stage tous les fichiers suivi et modifiés. On ajoute un autre argument, <code class="language-plaintext highlighter-rouge">-m</code>, qui permet d’ajouter le message de commit directement dans la commande sans passer par l’éditeur.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git commit <span class="nt">-a</span> <span class="nt">-m</span><span class="s2">"add french"</span>
+</code></pre></div></div>
+
+<p>On peut voir les logs (avec en prime deux nouvelles options, une de git pour ne pas avoir de pager une option de log pour  juste afficher  le message et le numéro du commit) : <code class="language-plaintext highlighter-rouge">git log --pretty=oneline</code>. J’obtiens :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>11f5564cda69451538ff8036c1eb92834a585884 <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> add french
+3b8c0a8836050e58ec8cf8bd24f3d06b0bf39613 First commit <span class="o">!</span>
+</code></pre></div></div>
+
+<h3 id="ajout-de-fichiers">ajout de fichiers</h3>
+
+<p>Ajoutons un fichier css à notre projet et faisons les liens avec le fichier html.</p>
+
+<p><em>main.css</em> :</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="nt">h1</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">olive</span><span class="p">;</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<p>et le fichier <em>index.html</em> modifié :</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="cp">&lt;!doctype html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Ma maison page<span class="nt">&lt;/title&gt;</span>
+    
+    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"main.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+<span class="nt">&lt;h1&gt;</span>Hello World !<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;h2&gt;</span>et bonjour Monde !<span class="nt">&lt;/h2&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>La commande <code class="language-plaintext highlighter-rouge">git status</code> m’indique qu’il existe un fichier non suivi (<em>main.css</em>) et que le fichier <em>index.html</em> a été modifié :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Sur la branche master
+Modifications qui ne seront pas validées :
+  <span class="o">(</span>utilisez <span class="s2">"git add &lt;fichier&gt;..."</span> pour mettre à jour ce qui sera validé<span class="o">)</span>
+  <span class="o">(</span>utilisez <span class="s2">"git restore &lt;fichier&gt;..."</span> pour annuler les modifications dans le répertoire de travail<span class="o">)</span>
+	modifié :         index.html
+
+Fichiers non suivis:
+  <span class="o">(</span>utilisez <span class="s2">"git add &lt;fichier&gt;..."</span> pour inclure dans ce qui sera validé<span class="o">)</span>
+	main.css
+
+aucune modification n<span class="s1">'a été ajoutée à la validation (utilisez "git add" ou "git commit -a")
+
+</span></code></pre></div></div>
+
+<p>Faites un commit de tout ça (en n’oubliant pas d’ajouter <em>main.css</em> au stage avant le commit car l’option <code class="language-plaintext highlighter-rouge">-a</code> n’ajoute pas automatiquement au stage les fichiers non suivis) :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add main.css
+git add index.html
+
+git status
+<span class="c"># on vérifie bien tout avant le commit</span>
+git commit <span class="nt">-m</span><span class="s2">"add css and link to html"</span>
+git status
+<span class="c"># on vérifie que tout s'est bien passé.</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>Nota Bene :</strong> Prenez l’habitude de faire un <code class="language-plaintext highlighter-rouge">git status</code> avant et après chaque commit, histoire d’être sur que l’on ne va rien oublier dans le commit.</p>
+</blockquote>
+
+<p>Un <code class="language-plaintext highlighter-rouge">git log --oneline</code> nous montre que l’on a 3 commits (notez que l’option <code class="language-plaintext highlighter-rouge">--oneline</code> ne garde que les 7 premiers chiffres de chaque commit).</p>
+
+<p>diff avant le commit pour voir la diff avec ce qui a été enregistré.</p>
+
+<h3 id="historique">historique</h3>
+
+<p>Vous pouvez voir ce qu’il y avait dans chaque commit, <a href="https://git-scm.com/book/fr/v2/Les-bases-de-Git-Visualiser-l%E2%80%99historique-des-validations">cette doc</a> vous montre plein de chouettes exemples. En particulier : <code class="language-plaintext highlighter-rouge">git log -p</code> qui montre ce que l’on a fait avec chaque commit. Le <a href="https://www.oreilly.com/library/view/git-pocket-guide/9781449327507/ch11.html">format de git diff</a> est un format étonnamment lisible qui montre distinctement les différences entre les versions.</p>
+
+<h3 id="diff">diff</h3>
+
+<p>On peut également voir les différences entre le dernier commit et ce que l’on a fait en utilisant la commande <a href="https://git-scm.com/docs/git-diff/fr"><code class="language-plaintext highlighter-rouge">git diff</code></a>.</p>
+
+<p>Commençons par modifiez nos fichiers <em>main.css</em> et <em>index.html</em> :</p>
+
+<p>On ajoute une règle pur les <code class="language-plaintext highlighter-rouge">&lt;h2&gt;</code> dans <em>main.css</em> :</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">h2</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">blue</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">h1</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">olive</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Egt un petti paragraphe dans <em>index.html</em> :</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!doctype html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Ma maison page<span class="nt">&lt;/title&gt;</span>
+    
+    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"main.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+<span class="nt">&lt;h1&gt;</span>Hello World !<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;h2&gt;</span>et bonjour Monde !<span class="nt">&lt;/h2&gt;</span>
+<span class="nt">&lt;p&gt;</span>Comment allez-vous ? <span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>La commande <code class="language-plaintext highlighter-rouge">git diff</code> nous indique les différences entre le dernier commit et ce qeu je n’ai pas encore mis en stage. Donc ici <code class="language-plaintext highlighter-rouge">git diff</code> nous donne les différences pour <em>main.css</em> et <em>index.html</em> :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>diff <span class="nt">--git</span> a/index.html b/index.html
+index b73fc14..17c8556 100644
+<span class="nt">---</span> a/index.html
++++ b/index.html
+@@ <span class="nt">-9</span>,5 +9,6 @@
+ &lt;body&gt;
+ &lt;h1&gt;Hello World <span class="o">!</span>&lt;/h1&gt;
+ &lt;h2&gt;et bonjour Monde <span class="o">!</span>&lt;/h2&gt;
++&lt;p&gt;Comment allez-vous ? &lt;/p&gt;
+ &lt;/body&gt;
+ &lt;/html&gt;
+diff <span class="nt">--git</span> a/main.css b/main.css
+index 4a4e8ca..aca9293 100644
+<span class="nt">---</span> a/main.css
++++ b/main.css
+@@ <span class="nt">-1</span>,3 +1,6 @@
++h2 <span class="o">{</span>
++  color: blue<span class="p">;</span>
++<span class="o">}</span>
+ h1 <span class="o">{</span>
+   color: olive<span class="p">;</span>
+ <span class="o">}</span>
+
+</code></pre></div></div>
+
+<p>Mettons le fichier index.html en stage (<code class="language-plaintext highlighter-rouge">git add index.html</code>) et refaisons la commande <code class="language-plaintext highlighter-rouge">git diff</code> :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>diff <span class="nt">--git</span> a/main.css b/main.css
+index 4a4e8ca..aca9293 100644
+<span class="nt">---</span> a/main.css
++++ b/main.css
+@@ <span class="nt">-1</span>,3 +1,6 @@
++h2 <span class="o">{</span>
++  color: blue<span class="p">;</span>
++<span class="o">}</span>
+ h1 <span class="o">{</span>
+   color: olive<span class="p">;</span>
+ <span class="o">}</span>
+
+</code></pre></div></div>
+
+<p>Nous n’avons bien plus que les différences avec <em>main.css</em>.</p>
+
+<p>Allez commitons tout ça : <code class="language-plaintext highlighter-rouge">git commit -a -m"h2 rule in css and p in html"</code>. Notez que le fichier <em>main.css</em> a bien été ajouté au stage avant le commit grâce à l’argument <code class="language-plaintext highlighter-rouge">-a</code>. Vérifiez le avec <code class="language-plaintext highlighter-rouge">git status</code> voir même un <code class="language-plaintext highlighter-rouge">git diff</code>.</p>
+
+<blockquote>
+  <p>**Nota Bene : ** la commande <code class="language-plaintext highlighter-rouge">git diff --cached</code> permet de faire le diff en prenant en compte le stage. Vous avez donc un diff entre le dernier commit et ce que vous avez fait depuis.</p>
+</blockquote>
+
+<h3 id="modifier-le-dernier-commit">modifier le dernier commit</h3>
+
+<p>Il arrive parfois (souvent) de se rendre compte juste après un commit que l’on a pas tout envoyé (le <code class="language-plaintext highlighter-rouge">git status</code> n’est pas clean) ou que l’on a fait une faute dans le message accompagnant le commit. C’est pour ça qu’il existe l’argument <code class="language-plaintext highlighter-rouge">--amend</code> à commit qui vous permet de modifier le dernier commit que vous avez fait.</p>
+
+<p><a href="https://git-scm.com/book/fr/v2/Utilitaires-Git-R%C3%A9%C3%A9crire-l%E2%80%99historique">Lisez la doc</a> pour voir comment faire. C’est super utile pour tous ceux qui, comme moi, ont un peu la tête en l’air.</p>
+
+<h2 id="gitignore">.gitignore</h2>
+
+<p>Il est impératif qu’avant chaque commit il ne reste aucun fichier non suivi. Cependant, certains fichiers sont pré&amp;sent dans le dossier mais on ne veut pas les inclure dans le projet git. On peut citer :</p>
+
+<ul>
+  <li>les fichiers <em>.DS_STORE</em> des macs,</li>
+  <li>les fichiers des IDE, comme les ficheirs <em>.idea</em> de intellij</li>
+  <li>les fichiers de bibliothèques, comme le dossier <em>node_modules</em> lorsque l’on fait du web</li>
+  <li>…</li>
+</ul>
+
+<p>Pour que git ignore ces fichiers on utilise un fichier <em>.gitignore</em>) qui liste ces fichiers. Son <a href="https://git-scm.com/docs/gitignore">format</a> est à la fois simple et efficace. On peut même avoir un fichier <em>.gitignore</em> par dossier du projet, donc utilisez le !</p>
+
+<p>Vous trouverez plein d’<a href="https://github.com/github/gitignore">exemples de .gitingore</a>, je vous conseille ne pas mettre plein de choses dont vous n’avez pas besoin. Ajoutez des lignes au <em>.gitingore</em> uniquement lorsque vous en avez besoin.</p>
+
+<p>Par exemple, après avoir supprimé un fichier via le finder sur mon mac, <code class="language-plaintext highlighter-rouge">git status</code> me donne ça :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Sur la branche master
+Fichiers non suivis:
+  <span class="o">(</span>utilisez <span class="s2">"git add &lt;fichier&gt;..."</span> pour inclure dans ce qui sera validé<span class="o">)</span>
+	.DS_Store
+
+aucune modification ajoutée à la validation mais des fichiers non suivis sont présents <span class="o">(</span>utilisez <span class="s2">"git add"</span> pour les suivre<span class="o">)</span>
+
+</code></pre></div></div>
+
+<p>On va donc créer un fichier <em>.gitingore</em> contenant uniquement la ligne <code class="language-plaintext highlighter-rouge">.DS_STORE</code>, l’ajouter au stage et refaire un <code class="language-plaintext highlighter-rouge">git status</code> pour obtenir :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Sur la branche master
+Modifications qui seront validées :
+  <span class="o">(</span>utilisez <span class="s2">"git restore --staged &lt;fichier&gt;..."</span> pour désindexer<span class="o">)</span>
+	nouveau fichier : .gitignore
+</code></pre></div></div>
+
+<p>On fini par l’ajouter au projet par un commit : <code class="language-plaintext highlighter-rouge">git commit -m"add .gitignore"</code>.</p>
+
+<h2 id="branches">branches</h2>
+
+<p>Les <a href="https://git-scm.com/book/fr/v2/Les-branches-avec-Git-Les-branches-en-bref">branches</a> de git permettent d’avoir plusieurs histoires possible de mon projet.</p>
+
+<p>La principale utilisation des branches en développement est :</p>
+
+<ul>
+  <li>l’ajout de nouvelles fonctionnalités. La fonctionnalité n’est ajoutée au master qu’une fois finie. .</li>
+  <li>la correction de bug. Une fois le bug corrigé, on ajoute la correction au master.</li>
+</ul>
+
+<p>Ceci nous assure que la branche <code class="language-plaintext highlighter-rouge">master</code> est <strong>TOUJOURS</strong> un projet fonctionnel.</p>
+
+<p>A part ces branches temporaires, on a parfois besoin de branches plus pérennes comme :</p>
+
+<ul>
+  <li>la gestion des versions différentes de l’application à maintenir</li>
+  <li>une branche qui contient le build d’un site web statique par exemple.</li>
+</ul>
+
+<p>La commande <code class="language-plaintext highlighter-rouge">git branch</code> nous indique les branches que nous avons. Pour l’instant nous n’avons que la branche par défaut : <code class="language-plaintext highlighter-rouge">master</code>.</p>
+
+<h3 id="créer-une-branche">créer une branche</h3>
+
+<p>Nous allons créer une branche pour voir s’il est possible d’ajouter du javascript à notre projet : <code class="language-plaintext highlighter-rouge">git branch js</code>.</p>
+
+<p>Si l’on refait la commande <code class="language-plaintext highlighter-rouge">git branch</code>, on voit qu’on a deux branches et qu’on est toujorus sur la branche <code class="language-plaintext highlighter-rouge">master</code>. Allons vers la branche <code class="language-plaintext highlighter-rouge">js</code> avec la commande : <code class="language-plaintext highlighter-rouge">git checkout js</code></p>
+
+<p>On peut maintenant tranquillement ajouter du js à notre projet :</p>
+
+<ul>
+  <li>On ajoute le fichier <em>main.js</em>
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">paragraph</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">couleur</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">paragraph</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">mouseenter</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">event</span> <span class="p">)</span> <span class="p">{</span>   
+  <span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">color</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">purple</span><span class="dl">"</span><span class="p">;</span>
+<span class="p">},</span> <span class="kc">false</span><span class="p">);</span>
+
+<span class="nx">paragraph</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">mouseleave</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">event</span> <span class="p">)</span> <span class="p">{</span>   
+  <span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">color</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">black</span><span class="dl">"</span><span class="p">;</span>
+<span class="p">},</span> <span class="kc">false</span><span class="p">);</span>
+</code></pre></div>    </div>
+  </li>
+  <li>et on modifie le fichier <em>index.html</em> :
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!doctype html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Ma maison page<span class="nt">&lt;/title&gt;</span>
+        
+    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"main.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+<span class="nt">&lt;h1&gt;</span>Hello World !<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;h2&gt;</span>et bonjour Monde !<span class="nt">&lt;/h2&gt;</span>
+<span class="nt">&lt;p</span> <span class="na">id=</span><span class="s">"couleur"</span><span class="nt">&gt;</span>Comment allez-vous ? <span class="nt">&lt;/p&gt;</span>
+    
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"main.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>On peut maintenant commiter le tout (en commençant pas ajouter les fichiers <em>main.js</em> et <em>index.html</em> au stage bien sur avec la commande <code class="language-plaintext highlighter-rouge">git add main.js index.html
+</code>) : <code class="language-plaintext highlighter-rouge">git commit m"add js"</code>.</p>
+
+<p>Un <code class="language-plaintext highlighter-rouge">git log --oneline</code> nous montre bien que l’on est maintenant sur une nouvelle branche :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>f7907be <span class="o">(</span>HEAD -&gt; js<span class="o">)</span> add js
+35609dd <span class="o">(</span>master<span class="o">)</span> add .gitignore
+7d2fd72 h2 rule <span class="k">in </span>css and p <span class="k">in </span>html
+a3c3fdc add css and <span class="nb">link </span>to html
+11f5564 add french
+3b8c0a8 First commit <span class="o">!</span>
+</code></pre></div></div>
+
+<h3 id="voir-des-branches">voir des branches</h3>
+
+<p>Si l’on revient à la branche <code class="language-plaintext highlighter-rouge">master</code> avec la commande <code class="language-plaintext highlighter-rouge">git checkout master</code> on voit que le fichier <em>main.js</em> a disparu et que le fichier <em>index.html</em> est remis à sa position sans le js.</p>
+
+<p>Faisons une modification du fichier <em>index.html</em> de la branche master en ajoutant une phrase au paragraphe :</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!doctype html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Ma maison page<span class="nt">&lt;/title&gt;</span>
+
+    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"main.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+<span class="nt">&lt;h1&gt;</span>Hello World !<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;h2&gt;</span>et bonjour Monde !<span class="nt">&lt;/h2&gt;</span>
+<span class="nt">&lt;p&gt;</span>Comment allez-vous ?  Bien ou quoi ?<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>Et on commit le tout : <code class="language-plaintext highlighter-rouge">git commit -am"parlons jeune"</code></p>
+
+<p>On remarque que la commande <code class="language-plaintext highlighter-rouge">git log --oneline</code> ne montre que l’histoire du dernier commit, on ne montre donc pas la modification de la branche <code class="language-plaintext highlighter-rouge">js</code> qui est inutile pour notre dernier commit.</p>
+
+<p>Pour voir tous les log, on peut ajouter l’argument <code class="language-plaintext highlighter-rouge">--all</code>. Du coup : <code class="language-plaintext highlighter-rouge">git log --oneline --all</code> donne :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a2ac886 <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> parlons jeune
+f7907be <span class="o">(</span>js<span class="o">)</span> add js
+35609dd add .gitignore
+7d2fd72 h2 rule <span class="k">in </span>css and p <span class="k">in </span>html
+a3c3fdc add css and <span class="nb">link </span>to html
+11f5564 add french
+3b8c0a8 First commit <span class="o">!</span>
+
+</code></pre></div></div>
+
+<p>Et si l’on veut voir le graphe des dépendances on peut ajouter l’argument <code class="language-plaintext highlighter-rouge">--graph</code> : <code class="language-plaintext highlighter-rouge">git log --oneline --all --graph</code> :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">*</span> a2ac886 <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> parlons jeune
+| <span class="k">*</span> f7907be <span class="o">(</span>js<span class="o">)</span> add js
+|/  
+<span class="k">*</span> 35609dd add .gitignore
+<span class="k">*</span> 7d2fd72 h2 rule <span class="k">in </span>css and p <span class="k">in </span>html
+<span class="k">*</span> a3c3fdc add css and <span class="nb">link </span>to html
+<span class="k">*</span> 11f5564 add french
+<span class="k">*</span> 3b8c0a8 First commit <span class="o">!</span>
+</code></pre></div></div>
+
+<h3 id="réconcilier-les-branches">réconcilier les branches</h3>
+
+<p>Si l’on veut maintenant mettre notre branche expérimentale (<code class="language-plaintext highlighter-rouge">js</code>) dans la branche <code class="language-plaintext highlighter-rouge">master</code>, il va falloir réconcillier les branches. Cela peut se faire de nombreuses manière mais la méthode couramment utilisée actuellement est celle du <a href="https://www.miximum.fr/blog/git-rebase/">rebase</a></p>
+
+<p>Nous allons donc procéder comme suit :</p>
+
+<ol>
+  <li>depuis la branche <code class="language-plaintext highlighter-rouge">js</code>, on va la faire commencer à la fin de <code class="language-plaintext highlighter-rouge">master</code></li>
+  <li>on va “<em>merger</em>” la branche <code class="language-plaintext highlighter-rouge">js</code> à la suite de la branche <code class="language-plaintext highlighter-rouge">master</code>.</li>
+</ol>
+
+<p>On aura donc à la fin un joli historique qui fait comme si j’avais ajouter mon <code class="language-plaintext highlighter-rouge">js</code> à la suite du <code class="language-plaintext highlighter-rouge">master</code> sans autres branches.</p>
+
+<h4 id="git-rebase">git rebase</h4>
+
+<p>Sur la branche <code class="language-plaintext highlighter-rouge">js</code> on excute la commande : <code class="language-plaintext highlighter-rouge">git rebase master</code> et on obtient le résultat :</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Fusion automatique de index.html
+CONFLIT (contenu) : Conflit de fusion dans index.html
+error: impossible d'appliquer f7907be... add js
+Resolve all conflicts manually, mark them as resolved with
+"git add/rm &lt;conflicted_files&gt;", then run "git rebase --continue".
+You can instead skip this commit: run "git rebase --skip".
+To abort and get back to the state before "git rebase", run "git rebase --abort".
+impossible d'appliquer f7907be... add js
+
+</code></pre></div></div>
+
+<p>En essayant d’ajouter les derniers commits de master au début de js, git a un soucis. Il n’arrive pas à le faire tout seul. Il va falloir l’aider.</p>
+
+<p>Son soucis est dans le ficier <em>index.html</em>. Regardons le :</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!doctype html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Ma maison page<span class="nt">&lt;/title&gt;</span>
+
+    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"main.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+<span class="nt">&lt;h1&gt;</span>Hello World !<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;h2&gt;</span>et bonjour Monde !<span class="nt">&lt;/h2&gt;</span>
+<span class="nt">&lt;</span><span class="err">&lt;&lt;&lt;&lt;&lt;&lt;</span> <span class="na">HEAD</span>
+<span class="err">&lt;</span><span class="na">p</span><span class="nt">&gt;</span>Comment allez-vous ?  Bien ou quoi ?<span class="nt">&lt;/p&gt;</span>
+=======
+<span class="nt">&lt;p</span> <span class="na">id=</span><span class="s">"couleur"</span><span class="nt">&gt;</span>Comment allez-vous ? <span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"main.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; f7907be... add js
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>Horreur, c’est tout cassé. Mais au final c’est compréhensible. Le haut est <code class="language-plaintext highlighter-rouge">HEAD</code> (donc master) et le bas c’est ce que j’ai (la branche <code class="language-plaintext highlighter-rouge">js</code>). Pour que les deux soient cohérent on modifie le fichier pour qu’il intègre nos modifications conjointes  :</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!doctype html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Ma maison page<span class="nt">&lt;/title&gt;</span>
+
+    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"main.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+<span class="nt">&lt;h1&gt;</span>Hello World !<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;h2&gt;</span>et bonjour Monde !<span class="nt">&lt;/h2&gt;</span>
+<span class="nt">&lt;p</span> <span class="na">id=</span><span class="s">"couleur"</span><span class="nt">&gt;</span>Comment allez-vous ?  Bien ou quoi ?<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"main.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>On peut ensuite l’ajouter au stage pour signifier à git qu’on a résolu son problème : <code class="language-plaintext highlighter-rouge">git add index.html</code> et on continue jusqu’à la fin ou jusqu’au nouveau problème : <code class="language-plaintext highlighter-rouge">git rebase --continue</code>. Il n’y a plus d’erreur et on arrive dans <code class="language-plaintext highlighter-rouge">vim</code> pour donner le message de commit. On laisse celui par défaut et on obtient la jolie liste de commit suivant (<code class="language-plaintext highlighter-rouge">git log --oneline --all --graph</code>):</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* fe850ac (HEAD -&gt; js) add js
+* a2ac886 (master) parlons jeune
+* 35609dd add .gitignore
+* 7d2fd72 h2 rule in css and p in html
+* a3c3fdc add css and link to html
+* 11f5564 add french
+* 3b8c0a8 First commit !
+</code></pre></div></div>
+
+<p>On est passé de ça :</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A---B---C---D ← master
+         \
+          F---G ← js
+</code></pre></div></div>
+
+<p>à ça :</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A---B---C---D ← master
+             \
+               F'---G' ← js
+</code></pre></div></div>
+
+<p>Il ne nous reste plus qu’à fusionner <code class="language-plaintext highlighter-rouge">js</code> dans <code class="language-plaintext highlighter-rouge">master</code> (ce qui devrait se faire sans soucis puisqu’elles se suivent). Pour cela :</p>
+
+<ol>
+  <li>on se place sur la branche <code class="language-plaintext highlighter-rouge">master</code> : <code class="language-plaintext highlighter-rouge">git checkout master</code></li>
+  <li>on fusionne la branche <code class="language-plaintext highlighter-rouge">js</code> sur <code class="language-plaintext highlighter-rouge">master</code> : <code class="language-plaintext highlighter-rouge">git merge js</code></li>
+</ol>
+
+<p>Un <code class="language-plaintext highlighter-rouge">it log --oneline --all --graph</code> montre que les deux branches sont identique, on peut maintenant supprimer la branche <code class="language-plaintext highlighter-rouge">js</code> : <code class="language-plaintext highlighter-rouge">git branch -d js</code></p>
+
+<h4 id="merge">merge</h4>
+
+<p>“<em>Merger</em>” revient à fusionner une branche dans une autre. Si les deux branches ne sont pas linéairement dépendante, par exemple comme ça :</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A---B---C---D ← master
+         \
+          F---G ← js
+</code></pre></div></div>
+
+<p>Le résultat du merge sera :</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A---B---C---D---H ← master
+         \     /
+          F---G ← js
+</code></pre></div></div>
+
+<p>Ce qui induit des “boucle” et n’est pas pratique lorsque l’on veut connaître l’historique du projet. Une droite c’est mieux pour voir ce qu’il s’est passé. Dans l’exemple ci-dessus, un même fichier a pu être modifié en D et en G avant d’être fusionné.</p>
+
+<p>On évitera donc au maximum un merge comme ça et on ne l’utilisera que si les branches sont linéairement dépendante comme çà :</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A---B---C---D ← master
+             \
+              E---F ← js
+</code></pre></div></div>
+
+<p>Rendant l’historique lisible et le merge facile (c’est le rebase qui pourra être compliqué)</p>
+
+<h1 id="github">github</h1>
+
+<p><a href="https://github.com/">github</a> est un endroit où l’on peut stocker ses projets. Ces projets seront identiques aux projets que vous avez sur votre machine (un projet git contient tout le temps tout l’historique de celui-ci) mais leurs état sera la référence pour tous les contributeur du projet. On appelle cet endroit <em>origin</em>.</p>
+
+<blockquote>
+  <p>**Nota Bene : ** A priori rien de différentie ce repository d’un autre, juste une convention qui déscide qu’un des repository d’un projet sera l’origin.</p>
+</blockquote>
+
+<h2 id="initalisation-dun-projet">Initalisation d’un projet</h2>
+
+<p>Il y a deux façon d’initialiser un projet sur github :</p>
+
+<ul>
+  <li>le projet existe déjà sur github et je le <em>clone</em> chez moi : <a href="https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository">la doc github pour le cloning</a></li>
+  <li>le projet existe en dehors de github et je veux le mettre sur github : <a href="https://docs.github.com/en/github/importing-your-projects-to-github/adding-an-existing-project-to-github-using-the-command-line">la doc d’import d’un projet dans github</a>
+origin</li>
+</ul>
+
+<h3 id="clone">clone</h3>
+
+<p>Vous allez cloner le projet du cours qui est là : https://github.com/FrancoisBrucker/cours_informatique</p>
+
+<ol>
+  <li>placez vous dans le dossier parent où vous voulez que votre projet soit</li>
+  <li><code class="language-plaintext highlighter-rouge">git clone git@github.com:FrancoisBrucker/cours_informatique.git</code></li>
+</ol>
+
+<p>Un dossier <em>cours_informatique</em> a été créé. Regardez le fichier <em>.git/config</em> de ce projet :</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+	ignorecase = true
+	precomposeunicode = true
+[remote "origin"]
+	url = git@github.com:FrancoisBrucker/cours_informatique.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master
+</code></pre></div></div>
+
+<p>Par rapport au projet précédent, deux entrées ont fait leurs apparitions :</p>
+
+<ul>
+  <li>“origin” : qui est le dépôt origin de notre projet maintenant, sur <a href="https://github.com/">github</a>.</li>
+  <li>“master” qui est la branche principale sur le projet origin.</li>
+</ul>
+
+<h3 id="ajouter-un-projet-existant-à-github">ajouter un projet existant à github</h3>
+
+<p>Ajoutons notre petit projet web à github :</p>
+
+<ol>
+  <li>créez un <em>repository</em> sur github</li>
+  <li>on va ajouter à la main l’origin et le master dans le projet sur notre ordinateur. Pour moi, avec <em>my_web_test</em> comme nom de projet ça donne (il suffit de copier/coller ce qeu nous donne github après la création du projet) :
+    - origin :
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">git remote add origin git@github.com:FrancoisBrucker/my_web_test.git</code></li>
+      <li>on se place dans la branche de notre projet qui va être le master et on tape <code class="language-plaintext highlighter-rouge">git branch -M master</code> si elle ne s’appelle pas encore master.</li>
+    </ul>
+  </li>
+  <li>on pousse tout notre projet sur github : <code class="language-plaintext highlighter-rouge">git push --set-upstream origin master</code>. Cette commande a à la fois pousser tout notre projet sur github et placé le master de l’origin par défaut. Il suffira ensuite de taper <code class="language-plaintext highlighter-rouge">git push</code> pour que ce soit equivalent à <code class="language-plaintext highlighter-rouge">git push origin master</code>.</li>
+</ol>
+
+<h2 id="récupérer-les-données-du-serveur-origin">récupérer les données du serveur origin</h2>
+
+<p>On utilise la commande <code class="language-plaintext highlighter-rouge">git pull</code> (ou <code class="language-plaintext highlighter-rouge">git pull origin master</code> si l’on a pas défini une branche par défaut).</p>
+
+<p>Pour que cette commande fonctionne il faut que l’origin soit plus loin en commit que vous et que n’ayez pas fait de modification par rapport à l’histoire de l’origin (vous devez juste être en retard, pas autre part)</p>
+
+<h2 id="envoyer-ses-données-à-lorigin">envoyer ses données à l’origin</h2>
+
+<p>Pour envoyer ses données à l’origin il faut que vous soyez en avance sur lui. Donc que l’origin se trouve à un endroit du passé de votre historique. Il doit être en retard par rapport à vous, pas autre part.</p>
+
+<p>Il y a alors  deux façons de faire, que l’on soit un contributeur authentifié du projet (on utilise alors push sur la branche comme on le ferait en local) ou pas (on fait un push mais il faut demander la permission au propriétaire du projet de la publier. C’est ce que l’on appelle un <em>pull-request</em>)</p>
+
+<h3 id="push">push</h3>
+
+<p>Si une <em>origin</em> de notre projet est déterminée, <code class="language-plaintext highlighter-rouge">git push</code> envoie les derniers commits sur celle-ci.</p>
+
+<h3 id="pull-request">pull request</h3>
+
+<p>Si l’on a cloné un projet et que l’on est pas un de ses contributeur mais que l’on aimerait tout de même contribuer (comme vous devrez/pouvez le faire pour ce cours), vous pouvez faire une <a href="http://thelia-school.com/faire-une-pull-request-sur-un-projet-thelia/faire-une-pull-request.html">pull request</a>, c’est à dire envoyez vos modification au responsable du projet pour qu’il l’intègre s’il le veut au projet.</p>
+
+<h2 id="synchronisation">synchronisation</h2>
+
+<p>Si l’origin et votre dossier local n’est pas synchronisé, il faut faire un rebase comme pour les branches pour la synchronisation puisse se faire.</p>
+
+<h1 id="mettre-en-production">mettre en production</h1>
+
+<p>Pour mettre un site en production, il suffit de cloner son projet git et de pull les dernières versions du projet.</p>
+
+<p>On a parfois une branche dédiée qui s’appelle production, mais souvent la branche master suffit.</p>
+
+<h1 id="revenir-en-arrière-dans-lhistorique">revenir en arrière dans l’historique</h1>
+
+<p>Il arrive parfois qu’on a complètement raté un truc et que l’on veuille revenir en arrière dans le projet. C’est super car c’est justement là où git est fort.</p>
+
+<p>Attention cependant, ces opérations modifient l’historique du projet, chose que l’on aime pas trop faire. Il est donc recommandé de ne faire ça que sur des commits qui n’ont pas été publiés sur l’origin.</p>
+
+<p>Je ne vais ici que résumer les possibilités. Allez voir sur 
+<a href="https://www.youtube.com/watch?v=ZY5A7kUR0S4">cette vidéo</a> pour avoir un apperçu de ce que l’on peut faire en situation, ou encore 
+<a href="https://delicious-insights.com/fr/articles/git-reset/">cette doc</a>, plus velue.</p>
+
+<p>Pour l’instant l’historique de notre projet est (<code class="language-plaintext highlighter-rouge">git log --oneline</code>) :</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fe850ac (HEAD -&gt; master, origin/master) add js
+a2ac886 parlons jeune
+35609dd add .gitignore
+7d2fd72 h2 rule in css and p in html
+a3c3fdc add css and link to html
+11f5564 add french
+3b8c0a8 First commit !
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>Nota Bene :</strong> c’est queand on veut faire ce genre de chose ou que l’on cherche quand un bug a été introduit dans le projet que l’on est bien content d’avoir mis des message de commit explicite.</p>
+</blockquote>
+
+<p>Il y a 3 commandes git qui permettent de gérer l’historique <a href="https://git-scm.com/docs/git#_reset_restore_and_revert">reset, restore et revert</a>, chacune a ses spécificités et ses utilités.</p>
+
+<blockquote>
+  <p>**Nota Bene : ** la commande <code class="language-plaintext highlighter-rouge">git reflog</code> montre tous les commits du projet. Cela peut être super utile si on a fait un <code class="language-plaintext highlighter-rouge">git reset</code> à un ancien commit et que l’on veut finalement revenir à un endroit dans le futur par rapport à ce commit.</p>
+</blockquote>
+
+<p>On va voir plusieurs cas pratiques :</p>
+
+<ul>
+  <li>revenir au dernier commit. Le dernier commit est appelé <em>HEAD</em> par git.
+    <ul>
+      <li>supprimer  des modifications faites à un fichier pour revenir à sa version <em>HEAD</em> : <code class="language-plaintext highlighter-rouge">git restore index.html</code> par exemple reprend la version du <code class="language-plaintext highlighter-rouge">index.html</code> du dernier commit de l’historique.</li>
+      <li>vider le stage : <code class="language-plaintext highlighter-rouge">git reset</code> (ou <code class="language-plaintext highlighter-rouge">git reset HEAD nom_de-fichier</code> pour un stager un unique fichier).</li>
+      <li>revenir au dernier commit et supprimer toutes les modification faites  : <code class="language-plaintext highlighter-rouge">git reset --hard</code>. Attention cela supprime du code…</li>
+    </ul>
+  </li>
+  <li>revenir à un commit plus éloignés. On peut y acceder par son numéro ou par une reférence par rapport au dernier commit (nommé aussi HEAD). Ainsi HEAD signifie le dernier commit, HEAD~1 l’avant dernier, HEAD~2 l’antépénultième et ainsi de suite.
+    <ul>
+      <li>regarder un ancien endroit dans le projet : <code class="language-plaintext highlighter-rouge">git checkout 7d2fd72</code> par exemple crée une nouvelle branche temporaire (nommée <em>HEAD détachée</em>) pour voir à quoi ressemblait notre projet au commit <em>7d2fd72</em> (on a bien une règle h2 à notre css). Si l’on a rien modifié, un simple <code class="language-plaintext highlighter-rouge">git checkout master</code> reviendra à l’état courant du projet. Si l’on a modifié des fichiers, il faut commencer par revenir à l’état initial</li>
+      <li>revenir à un commit plus lointain :
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">git reset numéro_commit</code> reviendra au commit déterminé mais laissera vos modifications.</li>
+          <li><code class="language-plaintext highlighter-rouge">git reset numéro_commit --hard</code> reviendra au commit déterminé mais supprimera vos modifications. Attention vous allez perdre des modifications !</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>remettre un seul fichier à un état antérieur : <code class="language-plaintext highlighter-rouge">git checkout 7d2fd72 index.html</code> prend le fichier dans l’état où il était au commit précisé, l’importe à l’état actuel et le met dans le stage, prêt à être commité. Si on ne veut plus de ce fichier, on peut revenir à l’état initial en important le fichier du master : <code class="language-plaintext highlighter-rouge">git checkout master index.html</code></li>
+  <li>undo un commit : <code class="language-plaintext highlighter-rouge">git revert 7d2fd72</code> va créer un commit qui défait un ancien commit (ce commit pouvant être aussi loin que l’on veut). Cela ne change pas l’historique en supprimant le commit undoé, ça rajoute un commit qui le undo.</li>
+</ul>
+
+<h1 id="ressources">ressources</h1>
+<ul>
+  <li><a href="https://github.com/Gazler/githug">githug</a> apprenez git par l’exemple.</li>
+  <li>initialisation git/github par défaut :
+    <ul>
+      <li><a href="https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup">doc officielle</a></li>
+      <li><a href="https://kbroman.org/github_tutorial/pages/first_time.html">git et github</a></li>
+    </ul>
+  </li>
+  <li>guide général :
+    <ul>
+      <li><a href="https://www.miximum.fr/blog/decouvrir-git/">sympa et en français</a></li>
+      <li><a href="https://kbroman.org/github_tutorial/">guide de Karl Broman</a>. Très bien fait et va au but.</li>
+      <li><a href="https://git-scm.com/book/en/v2">pro git</a>. Y’a tout. Peut-être parfois un peu trop. Mais si on a un problème il y a forcément la solution là dedans.</li>
+      <li><a href="http://www-cs-students.stanford.edu/~blynn/gitmagic/intl/fr/index.html">git magic</a>. En français. Très intéressant à suivre également, il donne des infos différente du tuto de Karl Broman.</li>
+      <li>playlist youtube :
+        <ul>
+          <li><a href="https://www.youtube.com/playlist?list=PLRqwX-V7Uu6ZF9C0YMKuns9sLDzK6zoiV">coding train playlist</a>. Sympa à écouter et faire. Passe pas mal de temps au début avec github.</li>
+          <li><a href="https://www.youtube.com/watch?v=rP3T0Ee6pLU&amp;list=PLjwdMgw5TTLXuY5i7RW0QqGdW0NZntqiP">grafikart</a>. En français s’il vous plait.</li>
+        </ul>
+      </li>
+      <li><a href="https://www.amazon.fr/Version-Control-Git-collaborative-development-ebook/dp/B008Y4OR3A">version control with git</a>. Un très bon livre qui explique en détail le fonctionnement de git.</li>
+    </ul>
+  </li>
+  <li>commandes :
+    <ul>
+      <li><a href="https://git-scm.com/docs/git#_git_commands">toutes les commandes</a></li>
+      <li><a href="https://www.hostinger.fr/tutoriels/commandes-git/">commandes courante</a></li>
+      <li><a href="https://training.github.com/downloads/fr/github-git-cheat-sheet.pdf">une cheat sheet</a></li>
+    </ul>
+  </li>
+  <li>misc :
+    <ul>
+      <li>du git en 3 parties <a href="https://www.daolf.com/posts/git-series-part-1/">partie 1</a></li>
+      <li>tout ce que vous avez toujours voulu savoir sur <a href="https://delicious-insights.com/fr/articles/bien-utiliser-git-merge-et-rebase">rebase t quand l’utiliser</a></li>
+    </ul>
+  </li>
+</ul>
+
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d&#39;informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d&#39;informatique</li><li><a class="u-email" href="mailto:francois.brucker@centrale-marseille.fr">francois.brucker@centrale-marseille.fr</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li><li><a href="https://www.twitter.com/p_____p___"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">p_____p___</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.
+A destination des 1A (tronc commun), des 2A (de l&#39;approfondissement MIE) et des 3A (de l&#39;option digital·e)</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
