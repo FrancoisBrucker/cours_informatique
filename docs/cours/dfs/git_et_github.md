@@ -490,6 +490,14 @@ Allez commitons tout ça : `git commit -a -m"h2 rule in css and p in html"`. Not
 
 > **Nota Bene : ** la commande `git diff --cached` permet de faire le diff en prenant en compte le stage. Vous avez donc un diff entre le dernier commit et ce que vous avez fait depuis.
 
+
+### modifier le dernier commit
+
+Il arrive parfois (souvent) de se rendre compte juste après un commit que l'on a pas tout envoyé (le `git status` n'est pas clean) ou que l'on a fait une faute dans le message accompagnant le commit. C'est pour ça qu'il existe l'argument `--amend` à commit qui vous permet de modifier le dernier commit que vous avez fait. 
+
+[Lisez la doc](https://git-scm.com/book/fr/v2/Utilitaires-Git-R%C3%A9%C3%A9crire-l%E2%80%99historique) pour voir comment faire. C'est super utile pour tous ceux qui, comme moi, ont un peu la tête en l'air.
+
+
 ## .gitignore
 
 Il est impératif qu'avant chaque commit il ne reste aucun fichier non suivi. Cependant, certains fichiers sont pré&sent dans le dossier mais on ne veut pas les inclure dans le projet git. On peut citer :
@@ -891,46 +899,46 @@ On a parfois une branche dédiée qui s'appelle production, mais souvent la bran
 
 Il arrive parfois qu'on a complètement raté un truc et que l'on veuille revenir en arrière dans le projet. C'est super car c'est justement là où git est fort.
 
+
+Attention cependant, ces opérations modifient l'historique du projet, chose que l'on aime pas trop faire. Il est donc recommandé de ne faire ça que sur des commits qui n'ont pas été publiés sur l'origin.
+
+
+Je ne vais ici que résumer les possibilités. Allez voir sur 
+[cette vidéo](https://www.youtube.com/watch?v=ZY5A7kUR0S4) pour avoir un apperçu de ce que l'on peut faire en situation, ou encore 
+[cette doc](https://delicious-insights.com/fr/articles/git-reset/), plus velue.
+
+Pour l'instant l'historique de notre projet est (`git log --oneline`) :
+
+~~~
+fe850ac (HEAD -> master, origin/master) add js
+a2ac886 parlons jeune
+35609dd add .gitignore
+7d2fd72 h2 rule in css and p in html
+a3c3fdc add css and link to html
+11f5564 add french
+3b8c0a8 First commit !
+~~~
+
+> **Nota Bene :** c'est queand on veut faire ce genre de chose ou que l'on cherche quand un bug a été introduit dans le projet que l'on est bien content d'avoir mis des message de commit explicite.
+
+Il y a 3 commandes git qui permettent de gérer l'historique [reset, restore et revert](https://git-scm.com/docs/git#_reset_restore_and_revert), chacune a ses spécificités et ses utilités. 
+
+> **Nota Bene : ** la commande `git reflog` montre tous les commits du projet. Cela peut être super utile si on a fait un `git reset` à un ancien commit et que l'on veut finalement revenir à un endroit dans le futur par rapport à ce commit.
+
 On va voir plusieurs cas pratiques : 
 
-- regarder un ancien endroit dans le projet.
-- revenir au dernier commit
-- revenir à un commit plus lointain
-- remettre un seul fichier à un état antérieur
-
-TBD : comme l'autre, on supprime le html, ou un autre turc pour le commit.
-
-Puis revenir en arrière avec juste les façon de faire
-
-
-
--  `git checkout 3b8c` va créer une branche temporaire
-- `git checkout 3b8c index.html` va reprendre le fichier html de 3b8c
-- `git revert` : enlève juste le commit
-- `git reset --hard`  (`git reflog`) revient en arrière. Attention supprime tout l'historique.
-
-head~1 (avant dernier)
-
-
-Si ce commit ne me plait pas, je peux revenir à un commit précédent en utilisant `git reset`. Si je veux revenir au commit initial : `git reset 3b8c`
-
-[revenir en arrière](https://www.youtube.com/watch?v=ZY5A7kUR0S4)
-
-[commande reset](https://delicious-insights.com/fr/articles/git-reset/)
-
-# récap.
-
-**TBD**
-
-
-Commande qu'on a utilisé :
-
-  - `git init`
-  - `git add`
-  - `git status`
-  - `git commit`
-  - `git log`
-  - `git cat-file -p`
+  - revenir au dernier commit. Le dernier commit est appelé *HEAD* par git. 
+    - supprimer  des modifications faites à un fichier pour revenir à sa version *HEAD* : `git restore index.html` par exemple reprend la version du `index.html` du dernier commit de l'historique.
+    - vider le stage : `git reset` (ou `git reset HEAD nom_de-fichier` pour un stager un unique fichier).
+    - revenir au dernier commit et supprimer toutes les modification faites  : `git reset --hard`. Attention cela supprime du code...
+ 
+  - revenir à un commit plus éloignés. On peut y acceder par son numéro ou par une reférence par rapport au dernier commit (nommé aussi HEAD). Ainsi HEAD signifie le dernier commit, HEAD~1 l'avant dernier, HEAD~2 l'antépénultième et ainsi de suite.
+    - regarder un ancien endroit dans le projet : `git checkout 7d2fd72` par exemple crée une nouvelle branche temporaire (nommée *HEAD détachée*) pour voir à quoi ressemblait notre projet au commit *7d2fd72* (on a bien une règle h2 à notre css). Si l'on a rien modifié, un simple `git checkout master` reviendra à l'état courant du projet. Si l'on a modifié des fichiers, il faut commencer par revenir à l'état initial
+    - revenir à un commit plus lointain : 
+      - `git reset numéro_commit` reviendra au commit déterminé mais laissera vos modifications.
+      - `git reset numéro_commit --hard` reviendra au commit déterminé mais supprimera vos modifications. Attention vous allez perdre des modifications !
+  - remettre un seul fichier à un état antérieur : `git checkout 7d2fd72 index.html` prend le fichier dans l'état où il était au commit précisé, l'importe à l'état actuel et le met dans le stage, prêt à être commité. Si on ne veut plus de ce fichier, on peut revenir à l'état initial en important le fichier du master : `git checkout master index.html`
+  - undo un commit : `git revert 7d2fd72` va créer un commit qui défait un ancien commit (ce commit pouvant être aussi loin que l'on veut). Cela ne change pas l'historique en supprimant le commit undoé, ça rajoute un commit qui le undo.
 
 # ressources
   - [githug](https://github.com/Gazler/githug) apprenez git par l'exemple.
