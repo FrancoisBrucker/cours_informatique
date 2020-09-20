@@ -18,15 +18,14 @@ Ce n'est pas un cours avancé de git/github, mais il devrait vous permettre de v
   - gestion de l'origin comme source. Dire que c'est une convention
   - origin -> changement dans la config.
   - rebase on pull
-  - faire un merge qui merde
-  - les branches (un peu)
   - revenir à une version précédente
-  - diff outil pour le merge
   - dire que l'on commite souvent et une fois par jour à l'origin
-  - github clé ssh
   -github organisation ?
-  - si diff sur pas le même fichier ok. mais faut pas se force à le faire. Il y a le merge au pire.
-  - .gitignore : toujours avoir un status propre à la fin d'un commit. Pas de truc "à la con"
+  - TBD élèves : 
+    - un récap des commandes et ajout de trucs qu'ils connaissent.
+    - un lien vers le projet fini ?
+  
+  
 
 # initialisation 
 
@@ -65,13 +64,29 @@ Pour éviter d'avoir un pager lors des `git log` :
 git config --global pager.log false
 ~~~
 
+Si l'on ne met pas cette option, les logs seront automatiquement passé à `more` par défaut pour paginer les résultats. 
+
+> **Nota Bene :**
+> On obtiendrait le même résultat sans utiliser la config ci-dessus en utilisant l'argument de git `--no-pager`, par exemple :`git --no-pager log`. Notez que `--no-pager` est un argument de git, pas de sa commande `log`, il est donc placé avant celle-ci.
+
 ## config minimale github
 
-[Ajouter votre clé publique dans github](https://docs.github.com/en/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account) pour pouvoir y accéder sans mot de passe.
+Créez vous un compte github si ce n'est déjà fait. Github va vous permettre de travailler en groupe et de montrer ce que vous savez faire, c'est un peu votre *book* de développeur.
+
+Donc :
+
+  - utilisez votre nom/prénom ou un pseudo présentable
+  - utiliser une adresse mail que vous lisez
+  - ne mettez dessus que les projets que vous pourriez mettre sur votre cv.
+  
+Rien ne vous empêche d'avoir d'autres comptes github pour vos projets plus perso mais celui-là c'est votre vitrine légale numérique.
+
+Pour que vous puissiez facilement avoir accès à ce compte, 
+[ajouter votre clé publique dans github](https://docs.github.com/en/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account).
 
 Vous pourrez donner votre clé publique pour être ajouté comme contributeur d'un projet. C'est un moyen pratique de gérer les personnes d'un projet.
 
-# Un projet tuto
+# git
 
 ## But 
 
@@ -234,7 +249,7 @@ objects
 └── pack
 ~~~
 
-Ce dossier est la base de donnée de notre projet. Chaque objet est stocké avec une signature SHA-1 de 40 octets, les deux proemiers étant le nom du dossier, les 38 autres le nom du fichier.
+Ce dossier est la base de donnée de notre projet. Chaque objet est stocké avec une signature SHA-1 de 40 octets, les deux premiers étant le nom du dossier, les 38 autres le nom du fichier.
 
 Si je veux savoir ce qu'il y a dans le fichier *ab/3401bd309f7e474cba48b2ecc06c09543a1e0d* du dossier objet, je tape : `git cat-file -p ab3401bd309f7e474cba48b2ecc06c09543a1e0d` et j'obtiens :
 
@@ -258,17 +273,10 @@ C'est notre fichier html ! Les autres objets correspondent à l'arborescence de 
 
 Le dossier référence contient les références des commits de toutes les branches et ou tags de notre projet. Nous n'avons qu'une seule branche, nommée *master* commit des différentes branches. En regardant ce qu'il y a dans le fichier `refs/heads/master` je retrouve bien le numéro de commit.
 
-On peut accéder à tout dans git en utilisant ces numéro (en entier ou les premiers chiffres (4 ou 7), qui sont normalement suffisant). Par exemple si jeu veux voir le log de mon commit de numéro *3b8c0a8836050e58ec8cf8bd24f3d06b0bf39613*, je peux taper `git log 3b8c0a8836050e58ec8cf8bd24f3d06b0bf39613` ou `git log 3b8c`.
+On peut accéder à tout dans git en utilisant ces numéros (en entier ou  les 4 ou plus premiers chiffres). Par exemple si jeu veux voir le log de mon commit de numéro *3b8c0a8836050e58ec8cf8bd24f3d06b0bf39613*, je peux taper `git log 3b8c0a8836050e58ec8cf8bd24f3d06b0bf39613`, `git log 3b8c` ou encore `git log 3b8c0a8`
 
-###  gestion des commit
 
-#### .gitignore
-
-exemple mac .DS_store, l'ide, le build, etc.
-
-Doit être dans le commit.
-
-#### avancer dans l'arbre
+## avancer dans l'arbre
 
 Modifions notre fichier *index.html* :
 
@@ -300,11 +308,13 @@ Modifications qui ne seront pas validées :
 aucune modification n'a été ajoutée à la validation (utilisez "git add" ou "git commit -a")
 ~~~
 
-Un fichier a été modifié. Comme on a pas de nouveaux fichiers, et que l'on veut juste mettre à jour les fichiers déjà suivis, on peut se passr de passr par le stage et tout faire en une seule fois (la commande `-a` permet de commiter tous les fichiers suivi et modifié qu'ils soient ou pas dans le stage et la commande -`m` permet d'ajouter le message sans passer par `vim`) :
+Un fichier a été modifié. Comme on a pas de nouveaux fichiers, et que l'on veut juste mettre à jour les fichiers déjà suivis, on peut utiliser l'argument `-a` de la commande `git commit` qui place dans le stage tous les fichiers suivi et modifiés. On ajoute un autre argument, `-m`, qui permet d'ajouter le message de commit directement dans la commande sans passer par l'éditeur. 
 
-`git commit -a -m"add french"`
+~~~ shell
+git commit -a -m"add french"
+~~~
 
-On peut voir les logs (avec en prime deux nouvelles options, une de git pour ne pas avoir de pager une option de log pour  juste afficher  le message et le numéro du commit) : `git --no-pager log --pretty=oneline`. J'obtiens :
+On peut voir les logs (avec en prime deux nouvelles options, une de git pour ne pas avoir de pager une option de log pour  juste afficher  le message et le numéro du commit) : `git log --pretty=oneline`. J'obtiens :
 
 ~~~ shell
 11f5564cda69451538ff8036c1eb92834a585884 (HEAD -> master) add french
@@ -312,9 +322,581 @@ On peut voir les logs (avec en prime deux nouvelles options, une de git pour ne 
 ~~~
 
 
-Je peux voir les différences pour les commit, je peux utiliser la commande `git log` en se concentrant sur un fichier, ici `index.html` : `git`
+### ajout de fichiers
 
-#### revenir en arrière
+Ajoutons un fichier css à notre projet et faisons les liens avec le fichier html.
+
+*main.css* : 
+
+~~~ css
+
+h1 {
+  color: olive;
+}
+
+~~~
+
+et le fichier *index.html* modifié :
+
+~~~ html
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Ma maison page</title>
+    
+    <link href="main.css" rel="stylesheet">
+</head>
+<body>
+<h1>Hello World !</h1>
+<h2>et bonjour Monde !</h2>
+</body>
+</html>
+~~~
+
+
+La commande `git status` m'indique qu'il existe un fichier non suivi (*main.css*) et que le fichier *index.html* a été modifié :
+
+~~~ shell
+Sur la branche master
+Modifications qui ne seront pas validées :
+  (utilisez "git add <fichier>..." pour mettre à jour ce qui sera validé)
+  (utilisez "git restore <fichier>..." pour annuler les modifications dans le répertoire de travail)
+	modifié :         index.html
+
+Fichiers non suivis:
+  (utilisez "git add <fichier>..." pour inclure dans ce qui sera validé)
+	main.css
+
+aucune modification n'a été ajoutée à la validation (utilisez "git add" ou "git commit -a")
+
+~~~
+
+
+Faites un commit de tout ça (en n'oubliant pas d'ajouter *main.css* au stage avant le commit car l'option `-a` n'ajoute pas automatiquement au stage les fichiers non suivis) :
+
+~~~ shell
+git add main.css
+git add index.html
+
+git status
+# on vérifie bien tout avant le commit
+git commit -m"add css and link to html"
+git status
+# on vérifie que tout s'est bien passé.
+~~~
+
+> **Nota Bene :** Prenez l'habitude de faire un `git status` avant et après chaque commit, histoire d'être sur que l'on ne va rien oublier dans le commit.
+
+
+Un `git log --oneline` nous montre que l'on a 3 commits (notez que l'option `--oneline` ne garde que les 7 premiers chiffres de chaque commit).
+
+
+diff avant le commit pour voir la diff avec ce qui a été enregistré.
+
+### historique
+
+Vous pouvez voir ce qu'il y avait dans chaque commit, [cette doc](https://git-scm.com/book/fr/v2/Les-bases-de-Git-Visualiser-l%E2%80%99historique-des-validations) vous montre plein de chouettes exemples. En particulier : `git log -p` qui montre ce que l'on a fait avec chaque commit. Le [format de git diff](https://www.oreilly.com/library/view/git-pocket-guide/9781449327507/ch11.html) est un format étonnamment lisible qui montre distinctement les différences entre les versions. 
+
+
+### diff
+
+On peut également voir les différences entre le dernier commit et ce que l'on a fait en utilisant la commande [`git diff`](https://git-scm.com/docs/git-diff/fr).
+
+Commençons par modifiez nos fichiers *main.css* et *index.html* :
+
+On ajoute une règle pur les `<h2>` dans *main.css* :
+~~~ css
+h2 {
+  color: blue;
+}
+h1 {
+  color: olive;
+}
+~~~
+
+Egt un petti paragraphe dans *index.html* :
+
+~~~ html
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Ma maison page</title>
+    
+    <link href="main.css" rel="stylesheet">
+</head>
+<body>
+<h1>Hello World !</h1>
+<h2>et bonjour Monde !</h2>
+<p>Comment allez-vous ? </p>
+</body>
+</html>
+~~~
+
+
+La commande `git diff` nous indique les différences entre le dernier commit et ce qeu je n'ai pas encore mis en stage. Donc ici `git diff` nous donne les différences pour *main.css* et *index.html* :
+
+~~~ shell
+diff --git a/index.html b/index.html
+index b73fc14..17c8556 100644
+--- a/index.html
++++ b/index.html
+@@ -9,5 +9,6 @@
+ <body>
+ <h1>Hello World !</h1>
+ <h2>et bonjour Monde !</h2>
++<p>Comment allez-vous ? </p>
+ </body>
+ </html>
+diff --git a/main.css b/main.css
+index 4a4e8ca..aca9293 100644
+--- a/main.css
++++ b/main.css
+@@ -1,3 +1,6 @@
++h2 {
++  color: blue;
++}
+ h1 {
+   color: olive;
+ }
+
+~~~
+
+Mettons le fichier index.html en stage (`git add index.html`) et refaisons la commande `git diff` :
+
+~~~ shell
+diff --git a/main.css b/main.css
+index 4a4e8ca..aca9293 100644
+--- a/main.css
++++ b/main.css
+@@ -1,3 +1,6 @@
++h2 {
++  color: blue;
++}
+ h1 {
+   color: olive;
+ }
+
+~~~
+
+Nous n'avons bien plus que les différences avec *main.css*. 
+
+
+
+Allez commitons tout ça : `git commit -a -m"h2 rule in css and p in html"`. Notez que le fichier *main.css* a bien été ajouté au stage avant le commit grâce à l'argument `-a`. Vérifiez le avec `git status` voir même un `git diff`.
+
+
+> **Nota Bene : ** la commande `git diff --cached` permet de faire le diff en prenant en compte le stage. Vous avez donc un diff entre le dernier commit et ce que vous avez fait depuis.
+
+## .gitignore
+
+Il est impératif qu'avant chaque commit il ne reste aucun fichier non suivi. Cependant, certains fichiers sont pré&sent dans le dossier mais on ne veut pas les inclure dans le projet git. On peut citer :
+
+  - les fichiers *.DS_STORE* des macs,
+  - les fichiers des IDE, comme les ficheirs *.idea* de intellij
+  - les fichiers de bibliothèques, comme le dossier *node_modules* lorsque l'on fait du web
+  - ...
+
+Pour que git ignore ces fichiers on utilise un fichier *.gitignore*) qui liste ces fichiers. Son [format](https://git-scm.com/docs/gitignore) est à la fois simple et efficace. On peut même avoir un fichier *.gitignore* par dossier du projet, donc utilisez le !
+
+Vous trouverez plein d'[exemples de .gitingore](https://github.com/github/gitignore), je vous conseille ne pas mettre plein de choses dont vous n'avez pas besoin. Ajoutez des lignes au *.gitingore* uniquement lorsque vous en avez besoin.
+
+Par exemple, après avoir supprimé un fichier via le finder sur mon mac, `git status` me donne ça :
+
+~~~ shell
+Sur la branche master
+Fichiers non suivis:
+  (utilisez "git add <fichier>..." pour inclure dans ce qui sera validé)
+	.DS_Store
+
+aucune modification ajoutée à la validation mais des fichiers non suivis sont présents (utilisez "git add" pour les suivre)
+
+~~~ 
+
+On va donc créer un fichier *.gitingore* contenant uniquement la ligne `.DS_STORE`, l'ajouter au stage et refaire un `git status` pour obtenir : 
+
+~~~ shell
+Sur la branche master
+Modifications qui seront validées :
+  (utilisez "git restore --staged <fichier>..." pour désindexer)
+	nouveau fichier : .gitignore
+~~~
+
+On fini par l'ajouter au projet par un commit : `git commit -m"add .gitignore"`.
+
+## branches
+
+Les [branches](https://git-scm.com/book/fr/v2/Les-branches-avec-Git-Les-branches-en-bref) de git permettent d'avoir plusieurs histoires possible de mon projet.
+
+La principale utilisation des branches en développement est :
+  
+  - l'ajout de nouvelles fonctionnalités. La fonctionnalité n'est ajoutée au master qu'une fois finie. .
+  - la correction de bug. Une fois le bug corrigé, on ajoute la correction au master.
+
+
+Ceci nous assure que la branche `master` est **TOUJOURS** un projet fonctionnel. 
+
+A part ces branches temporaires, on a parfois besoin de branches plus pérennes comme :
+
+  - la gestion des versions différentes de l'application à maintenir
+  - une branche qui contient le build d'un site web statique par exemple.
+
+La commande `git branch` nous indique les branches que nous avons. Pour l'instant nous n'avons que la branche par défaut : `master`.
+
+### créer une branche
+
+Nous allons créer une branche pour voir s'il est possible d'ajouter du javascript à notre projet : `git branch js`. 
+
+Si l'on refait la commande `git branch`, on voit qu'on a deux branches et qu'on est toujorus sur la branche `master`. Allons vers la branche `js` avec la commande : `git checkout js` 
+
+On peut maintenant tranquillement ajouter du js à notre projet :
+
+  - On ajoute le fichier *main.js*
+    ~~~ javascript
+    let paragraph = document.getElementById("couleur");
+
+    paragraph.addEventListener("mouseenter", function( event ) {   
+      event.target.style.color = "purple";
+    }, false);
+
+    paragraph.addEventListener("mouseleave", function( event ) {   
+      event.target.style.color = "black";
+    }, false);
+    ~~~
+
+  - et on modifie le fichier *index.html* :
+    ~~~ html
+    <!doctype html>
+    <html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Ma maison page</title>
+        
+        <link href="main.css" rel="stylesheet">
+    </head>
+    <body>
+    <h1>Hello World !</h1>
+    <h2>et bonjour Monde !</h2>
+    <p id="couleur">Comment allez-vous ? </p>
+    
+    <script src="main.js"></script>
+    </body>
+    </html>
+    ~~~
+    
+On peut maintenant commiter le tout (en commençant pas ajouter les fichiers *main.js* et *index.html* au stage bien sur avec la commande `git add main.js index.html
+`) : `git commit m"add js"`.
+
+Un `git log --oneline` nous montre bien que l'on est maintenant sur une nouvelle branche :
+
+~~~ shell
+f7907be (HEAD -> js) add js
+35609dd (master) add .gitignore
+7d2fd72 h2 rule in css and p in html
+a3c3fdc add css and link to html
+11f5564 add french
+3b8c0a8 First commit !
+~~~
+
+
+### voir des branches
+
+Si l'on revient à la branche `master` avec la commande `git checkout master` on voit que le fichier *main.js* a disparu et que le fichier *index.html* est remis à sa position sans le js.
+
+
+Faisons une modification du fichier *index.html* de la branche master en ajoutant une phrase au paragraphe :
+~~~ html
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Ma maison page</title>
+
+    <link href="main.css" rel="stylesheet">
+</head>
+<body>
+<h1>Hello World !</h1>
+<h2>et bonjour Monde !</h2>
+<p>Comment allez-vous ?  Bien ou quoi ?</p>
+</body>
+</html>
+~~~
+
+Et on commit le tout : `git commit -am"parlons jeune"`
+
+On remarque que la commande `git log --oneline` ne montre que l'histoire du dernier commit, on ne montre donc pas la modification de la branche `js` qui est inutile pour notre dernier commit.
+
+Pour voir tous les log, on peut ajouter l'argument `--all`. Du coup : `git log --oneline --all` donne :
+
+~~~ shell
+a2ac886 (HEAD -> master) parlons jeune
+f7907be (js) add js
+35609dd add .gitignore
+7d2fd72 h2 rule in css and p in html
+a3c3fdc add css and link to html
+11f5564 add french
+3b8c0a8 First commit !
+
+~~~
+
+Et si l'on veut voir le graphe des dépendances on peut ajouter l'argument `--graph` : `git log --oneline --all --graph` :
+
+~~~ shell
+* a2ac886 (HEAD -> master) parlons jeune
+| * f7907be (js) add js
+|/  
+* 35609dd add .gitignore
+* 7d2fd72 h2 rule in css and p in html
+* a3c3fdc add css and link to html
+* 11f5564 add french
+* 3b8c0a8 First commit !
+~~~
+
+
+### réconcilier les branches
+
+Si l'on veut maintenant mettre notre branche expérimentale (`js`) dans la branche `master`, il va falloir réconcillier les branches. Cela peut se faire de nombreuses manière mais la méthode couramment utilisée actuellement est celle du [rebase](https://www.miximum.fr/blog/git-rebase/)
+
+Nous allons donc procéder comme suit : 
+
+  1. depuis la branche `js`, on va la faire commencer à la fin de `master`
+  2. on va "*merger*" la branche `js` à la suite de la branche `master`.
+
+On aura donc à la fin un joli historique qui fait comme si j'avais ajouter mon `js` à la suite du `master` sans autres branches.
+
+#### git rebase
+
+Sur la branche `js` on excute la commande : `git rebase master` et on obtient le résultat : 
+
+~~~ 
+Fusion automatique de index.html
+CONFLIT (contenu) : Conflit de fusion dans index.html
+error: impossible d'appliquer f7907be... add js
+Resolve all conflicts manually, mark them as resolved with
+"git add/rm <conflicted_files>", then run "git rebase --continue".
+You can instead skip this commit: run "git rebase --skip".
+To abort and get back to the state before "git rebase", run "git rebase --abort".
+impossible d'appliquer f7907be... add js
+
+~~~
+
+En essayant d'ajouter les derniers commits de master au début de js, git a un soucis. Il n'arrive pas à le faire tout seul. Il va falloir l'aider.
+
+Son soucis est dans le ficier *index.html*. Regardons le :
+
+~~~ html
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Ma maison page</title>
+
+    <link href="main.css" rel="stylesheet">
+</head>
+<body>
+<h1>Hello World !</h1>
+<h2>et bonjour Monde !</h2>
+<<<<<<< HEAD
+<p>Comment allez-vous ?  Bien ou quoi ?</p>
+=======
+<p id="couleur">Comment allez-vous ? </p>
+
+<script src="main.js"></script>
+>>>>>>> f7907be... add js
+</body>
+</html>
+~~~
+
+Horreur, c'est tout cassé. Mais au final c'est compréhensible. Le haut est `HEAD` (donc master) et le bas c'est ce que j'ai (la branche `js`). Pour que les deux soient cohérent on modifie le fichier pour qu'il intègre nos modifications conjointes  :
+
+~~~ html
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Ma maison page</title>
+
+    <link href="main.css" rel="stylesheet">
+</head>
+<body>
+<h1>Hello World !</h1>
+<h2>et bonjour Monde !</h2>
+<p id="couleur">Comment allez-vous ?  Bien ou quoi ?</p>
+
+<script src="main.js"></script>
+</body>
+</html>
+~~~
+
+On peut ensuite l'ajouter au stage pour signifier à git qu'on a résolu son problème : `git add index.html` et on continue jusqu'à la fin ou jusqu'au nouveau problème : `git rebase --continue`. Il n'y a plus d'erreur et on arrive dans `vim` pour donner le message de commit. On laisse celui par défaut et on obtient la jolie liste de commit suivant (`git log --oneline --all --graph`):
+
+~~~ 
+* fe850ac (HEAD -> js) add js
+* a2ac886 (master) parlons jeune
+* 35609dd add .gitignore
+* 7d2fd72 h2 rule in css and p in html
+* a3c3fdc add css and link to html
+* 11f5564 add french
+* 3b8c0a8 First commit !
+~~~
+
+On est passé de ça :
+
+~~~
+A---B---C---D ← master
+         \
+          F---G ← js
+~~~
+
+à ça :
+
+~~~
+A---B---C---D ← master
+             \
+               F'---G' ← js
+~~~
+
+Il ne nous reste plus qu'à fusionner `js` dans `master` (ce qui devrait se faire sans soucis puisqu'elles se suivent). Pour cela :
+
+  1. on se place sur la branche `master` : `git checkout master`
+  2. on fusionne la branche `js` sur `master` : `git merge js`
+
+Un `it log --oneline --all --graph` montre que les deux branches sont identique, on peut maintenant supprimer la branche `js` : `git branch -d js`
+
+#### merge
+
+"*Merger*" revient à fusionner une branche dans une autre. Si les deux branches ne sont pas linéairement dépendante, par exemple comme ça : 
+
+~~~
+A---B---C---D ← master
+         \
+          F---G ← js
+~~~
+
+Le résultat du merge sera : 
+
+~~~
+A---B---C---D---H ← master
+         \     /
+          F---G ← js
+~~~
+
+Ce qui induit des "boucle" et n'est pas pratique lorsque l'on veut connaître l'historique du projet. Une droite c'est mieux pour voir ce qu'il s'est passé. Dans l'exemple ci-dessus, un même fichier a pu être modifié en D et en G avant d'être fusionné.
+
+On évitera donc au maximum un merge comme ça et on ne l'utilisera que si les branches sont linéairement dépendante comme çà :
+
+~~~
+A---B---C---D ← master
+             \
+              E---F ← js
+~~~
+
+Rendant l'historique lisible et le merge facile (c'est le rebase qui pourra être compliqué)
+
+
+# github
+
+[github](https://github.com/) est un endroit où l'on peut stocker ses projets. Ces projets seront identiques aux projets que vous avez sur votre machine (un projet git contient tout le temps tout l'historique de celui-ci) mais leurs état sera la référence pour tous les contributeur du projet. On appelle cet endroit *origin*. 
+
+> **Nota Bene : ** A priori rien de différentie ce repository d'un autre, juste une convention qui déscide qu'un des repository d'un projet sera l'origin.
+
+## Initalisation d'un projet
+
+Il y a deux façon d'initialiser un projet sur github :
+
+  - le projet existe déjà sur github et je le *clone* chez moi : [la doc github pour le cloning](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository)
+  - le projet existe en dehors de github et je veux le mettre sur github : [la doc d'import d'un projet dans github](https://docs.github.com/en/github/importing-your-projects-to-github/adding-an-existing-project-to-github-using-the-command-line)
+origin
+
+### clone
+
+Vous allez cloner le projet du cours qui est là : https://github.com/FrancoisBrucker/cours_informatique
+
+  1. placez vous dans le dossier parent où vous voulez que votre projet soit
+  2. `git clone git@github.com:FrancoisBrucker/cours_informatique.git` 
+  
+Un dossier *cours_informatique* a été créé. Regardez le fichier *.git/config* de ce projet :
+
+~~~
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+	ignorecase = true
+	precomposeunicode = true
+[remote "origin"]
+	url = git@github.com:FrancoisBrucker/cours_informatique.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master
+~~~
+
+Par rapport au projet précédent, deux entrées ont fait leurs apparitions :
+
+  - "origin" : qui est le dépôt origin de notre projet maintenant, sur [github](https://github.com/).
+  - "master" qui est la branche principale sur le projet origin.
+
+### ajouter un projet existant à github
+
+Ajoutons notre petit projet web à github :
+
+  1. créez un *repository* sur github
+  2. on va ajouter à la main l'origin et le master dans le projet sur notre ordinateur. Pour moi, avec *my_web_test* comme nom de projet ça donne (il suffit de copier/coller ce qeu nous donne github après la création du projet) :
+    - origin : 
+        - `git remote add origin git@github.com:FrancoisBrucker/my_web_test.git`
+        - on se place dans la branche de notre projet qui va être le master et on tape `git branch -M master` si elle ne s'appelle pas encore master.
+  3. on pousse tout notre projet sur github : `git push --set-upstream origin master`. Cette commande a à la fois pousser tout notre projet sur github et placé le master de l'origin par défaut. Il suffira ensuite de taper `git push` pour que ce soit equivalent à `git push origin master`.
+
+
+## récupérer les données du serveur origin
+
+On utilise la commande `git pull` (ou `git pull origin master` si l'on a pas défini une branche par défaut).
+
+Pour que cette commande fonctionne il faut que l'origin soit plus loin en commit que vous et que n'ayez pas fait de modification par rapport à l'histoire de l'origin (vous devez juste être en retard, pas autre part)
+
+
+## envoyer ses données à l'origin
+
+Pour envoyer ses données à l'origin il faut que vous soyez en avance sur lui. Donc que l'origin se trouve à un endroit du passé de votre historique. Il doit être en retard par rapport à vous, pas autre part.
+
+
+Il y a alors  deux façons de faire, que l'on soit un contributeur authentifié du projet (on utilise alors push sur la branche comme on le ferait en local) ou pas (on fait un push mais il faut demander la permission au propriétaire du projet de la publier. C'est ce que l'on appelle un *pull-request*)
+
+### push
+
+Si une *origin* de notre projet est déterminée, `git push` envoie les derniers commits sur celle-ci. 
+
+### pull request
+
+Si l'on a cloné un projet et que l'on est pas un de ses contributeur mais que l'on aimerait tout de même contribuer (comme vous devrez/pouvez le faire pour ce cours), vous pouvez faire une [pull request](http://thelia-school.com/faire-une-pull-request-sur-un-projet-thelia/faire-une-pull-request.html), c'est à dire envoyez vos modification au responsable du projet pour qu'il l'intègre s'il le veut au projet.
+
+
+## synchronisation
+
+Si l'origin et votre dossier local n'est pas synchronisé, il faut faire un rebase comme pour les branches pour la synchronisation puisse se faire.
+
+
+# mettre en production
+
+Pour mettre un site en production, il suffit de cloner son projet git et de pull les dernières versions du projet.
+
+On a parfois une branche dédiée qui s'appelle production, mais souvent la branche master suffit.
+
+
+# revenir en arrière dans l'historique
+
+Il arrive parfois qu'on a complètement raté un truc et que l'on veuille revenir en arrière dans le projet. C'est super car c'est justement là où git est fort.
+
+On va voir plusieurs cas pratiques : 
+
+- regarder un ancien endroit dans le projet.
+- revenir au dernier commit
+- revenir à un commit plus lointain
+- remettre un seul fichier à un état antérieur
 
 TBD : comme l'autre, on supprime le html, ou un autre turc pour le commit.
 
@@ -336,29 +918,9 @@ Si ce commit ne me plait pas, je peux revenir à un commit précédent en utilis
 
 [commande reset](https://delicious-insights.com/fr/articles/git-reset/)
 
-## Les branches
+# récap.
 
-### créations
-
-### merge
-
-## github
-
-origin
-
-### push
-
-### pull
-
-### rebase
-
-## mettre en production
-
-parfois branche prod (des versions différentes etc)
-
-on se connecte sur l'ovh et pull (on a bien amené avec nous l'agent...). Parfois une clé qui a juste le droit de pull.
-
-#### récap.
+**TBD**
 
 
 Commande qu'on a utilisé :
@@ -369,12 +931,14 @@ Commande qu'on a utilisé :
   - `git commit`
   - `git log`
   - `git cat-file -p`
-## ressources
 
+# ressources
+  - [githug](https://github.com/Gazler/githug) apprenez git par l'exemple.
   - initialisation git/github par défaut :
     - [doc officielle](https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup)
     - [git et github](https://kbroman.org/github_tutorial/pages/first_time.html) 
   - guide général :
+    - [sympa et en français](https://www.miximum.fr/blog/decouvrir-git/)
     - [guide de Karl Broman](https://kbroman.org/github_tutorial/). Très bien fait et va au but.
     - [pro git](https://git-scm.com/book/en/v2). Y'a tout. Peut-être parfois un peu trop. Mais si on a un problème il y a forcément la solution là dedans.
     - [git magic](http://www-cs-students.stanford.edu/~blynn/gitmagic/intl/fr/index.html). En français. Très intéressant à suivre également, il donne des infos différente du tuto de Karl Broman.
@@ -387,4 +951,6 @@ Commande qu'on a utilisé :
     - [commandes courante](https://www.hostinger.fr/tutoriels/commandes-git/)
     - [une cheat sheet](https://training.github.com/downloads/fr/github-git-cheat-sheet.pdf)
   - misc :
-      du git en 3 parties [partie 1](https://www.daolf.com/posts/git-series-part-1/)
+      - du git en 3 parties [partie 1](https://www.daolf.com/posts/git-series-part-1/)
+      - tout ce que vous avez toujours voulu savoir sur [rebase t quand l'utiliser](https://delicious-insights.com/fr/articles/bien-utiliser-git-merge-et-rebase)
+      
