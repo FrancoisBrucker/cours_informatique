@@ -25,7 +25,6 @@ Cours d'apprentissages des différents outils de développement et les bases du 
 
 ## Outils de développements
 
-
 ## html/css/js
 
 ## méthodes de packaging
