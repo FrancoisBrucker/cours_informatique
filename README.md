@@ -20,7 +20,7 @@ Nous utiliserons le langage [markdown](https://fr.wikipedia.org/wiki/Markdown) c
 
 Ces pages sont ensuite *compilée* en html par jekyll en utilisant des templates, ce qui permet de garder une unité au site.
 
-Ces fichiers compilées forment un site qui peut ensuite être placé sur n'importe quel serveur admettant des site statique (par défaut, le site compilé est placé dans le dossier build).
+Ces fichiers compilés forment un site qui peut ensuite être placé sur n'importe quel serveur admettant des site statique (par défaut, le site compilé est placé dans le dossier build).
 
 ### installation
 
