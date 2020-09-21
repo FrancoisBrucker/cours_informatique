@@ -8,4 +8,6 @@
 * cours
 ** 3A
 *** dfs
-**** git revenir en arrière
+**** TODO git revenir en arrière
+* tuto
+** TODO remettre tuto python

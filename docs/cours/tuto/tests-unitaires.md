@@ -76,7 +76,7 @@ Ainsi, si tout se passe bien, nos tests sont passés, si le programme s'arrête 
 
 Placez la fonction de test (et son exécution) dans un fichier que vous nommerez `test_aide_mathematiques.py`. 
 
-Faites en sorte qu'il s'exécute sans problème (attention aux `import`).
+Faites en sorte qu'il s'exécute sans problème (attention aux `import`. Vous pouvez [lire la doc officielle](https://docs.python.org/fr/3.7/tutorial/modules.html),  un [petit tuto bien fait](https://www.learnpython.org/en/Modules_and_Packages) ou encore [le tuto de sam&max](http://sametmax.com/les-imports-en-python/) qui est un peu vieux (en particulier la partie absolue_import n'est plus du `__future__` mais est implémenté dans python3) mais toujours éclairant).
 
 > **Attention :**
 >On séparera toujours les tests du code. Tout fichier de test commence par ''test_''.
