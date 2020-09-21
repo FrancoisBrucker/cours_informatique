@@ -23,6 +23,10 @@ Cours d'apprentissages des différents outils de développement et les bases du 
 
 # web
 
+# Jekyll
+
+  [Jekyll]({% link cours/dfs/jekyll.md %}) 
+
 ## Outils de développements
 
 ## html/css/js
