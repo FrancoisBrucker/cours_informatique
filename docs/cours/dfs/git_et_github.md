@@ -53,7 +53,7 @@ git config --global core.editor vim
 On met de la couleur dans le terminal par défaut : 
 
 ~~~ shell
-git config --global core.editor vim
+git config --global color.ui true
 ~~~
 
 > **Nota Bene :** 
