@@ -887,6 +887,22 @@ origin</li>
 
 <p>Pour que cette commande fonctionne il faut que l’origin soit plus loin en commit que vous et que n’ayez pas fait de modification par rapport à l’histoire de l’origin (vous devez juste être en retard, pas autre part)</p>
 
+<p><strong>Attention :</strong> Le <code class="language-plaintext highlighter-rouge">git pull</code> fera un merge par défaut, brisant la jolie linéarité de l’historique. Il faut, comme pour la synchronisation des branche faire un rebase. Je vous conseille la lecture de <a href="https://delicious-insights.com/fr/articles/bien-utiliser-git-merge-et-rebase/">cet article</a> qui explique bien comment faire.</p>
+
+<p>Pour se fixer les idées, on ne fera jamais un <code class="language-plaintext highlighter-rouge">gill pull</code> depuis l’origin, mais un : <code class="language-plaintext highlighter-rouge">git pull --rebase=preserve</code>. Ceci permet de :</p>
+
+<ul>
+  <li>faire un rebase de l’origin sur votre branche locale</li>
+  <li>de préserver les merge (fusion) de branches déjà présentes (et qui donc, si elles existent, ont une fonction <em>sémantique</em> dans votre projet)</li>
+</ul>
+
+<p>Pour ne pas avoir à se soucier de toujours ajouter ces options aux git pull, on en fait des options globales :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  git config <span class="nt">--global</span> pull.rebase preserve
+</code></pre></div></div>
+
+<p>Vous pourrez ensuite faire des <code class="language-plaintext highlighter-rouge">git pull</code> tout seul et ils seront rebasé par défaut et préserveront les merges existant. Le meilleur des deux monde en somme.</p>
+
 <h2 id="envoyer-ses-données-à-lorigin">envoyer ses données à l’origin</h2>
 
 <p>Pour envoyer ses données à l’origin il faut que vous soyez en avance sur lui. Donc que l’origin se trouve à un endroit du passé de votre historique. Il doit être en retard par rapport à vous, pas autre part.</p>
