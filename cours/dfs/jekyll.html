@@ -49,7 +49,7 @@
   <div class="post-content">
     <h2 id="quest-ce-que-cest-">Qu’est-ce que c’est ?</h2>
 
-<p><a href="https://jekyllrb.com/">Jekyll</a> est un <code class="language-plaintext highlighter-rouge">générateur</code> de site statique à partir de languages qui ne sont pas dédiés au web (type Marckdown et Yaln)? Jekyll est écrit en <a href="https://www.ruby-lang.org/fr/">Ruby</a> et requiert le programme <code class="language-plaintext highlighter-rouge">gem</code> pour l’installation.</p>
+<p><a href="https://jekyllrb.com/">Jekyll</a> est un <code class="language-plaintext highlighter-rouge">générateur</code> de site statique à partir de languages qui ne sont pas lu par le navigateur (type Marckdown et Yaln). Jekyll est écrit en <a href="https://www.ruby-lang.org/fr/">Ruby</a> et requiert le programme <code class="language-plaintext highlighter-rouge">gem</code> pour l’installation.</p>
 
 <h2 id="installation">Installation</h2>
 
@@ -88,6 +88,16 @@ bundle <span class="nb">exec </span>jekyll serve
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>jekyll build
 </code></pre></div></div>
 <p>Cette commande créer un dossier <code class="language-plaintext highlighter-rouge">.jekyll-cache</code> où le site compilé sera stocké.</p>
+
+<h2 id="le-langage-markdown">Le langage Markdown</h2>
+
+<p>Dans notre site Jekyll il va falloir “coder” en Markdown. Comme le HTML le Markdown et un langage de <strong>balisage</strong> qui se veut être facile à lire par les humains (mais du coup moins facile pour les navigateurs…).</p>
+
+<p>C’est le langages de base des fichiers README sur GitHub. Les fichiers <code class="language-plaintext highlighter-rouge">.md</code> et <code class="language-plaintext highlighter-rouge">.marckdown</code> sont les fichiers interprétés en Markdown.</p>
+
+<p>Jekyll utilise un sous-type de Markdown, le <strong>kramdown</strong> de Github.</p>
+
+<p>Une bonne overview de Markdown <a href="https://guides.github.com/features/mastering-markdown/">ici</a></p>
 
   </div>
 
