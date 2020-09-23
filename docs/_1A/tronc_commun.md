@@ -37,11 +37,14 @@ Le Programme détaillé du tronc commun est :
   4. [séance tableau] complexité
 
 
+**MAJ :** bon ben le cours a raté. Il va être rattrapé
+
 ## Les séances
 
-### classe virtuelle complétité
+### 1. classe virtuelle complétité
 
 en visio depuis le plot 1 et le bureau de Pascal.
+
 
 ### classe virtuelle graphes
 
