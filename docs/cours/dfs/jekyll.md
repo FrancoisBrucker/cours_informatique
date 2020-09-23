@@ -3,7 +3,9 @@ layout: page
 title:  "Jekyll"
 category: cours
 tags: combat web
+author: Baptiste Mahé
 ---
+*TODO: logo Jekyll*
 
 ## Qu'est-ce que c'est ?
 
@@ -44,7 +46,7 @@ Démarrer un **server local** pour développer le projet Jeckyll
 cd my-jekyll-site
 bundle exec jekyll serve
 ~~~
-(executer cette commande dans le dossier cours_informatique/docs/ pour servir le site de M. Brucker)
+(executer cette commande dans le dossier cours_informatique/docs/ pour servir le site de M. Brucker) *TODO: image du site de base*
 
 Ensuite naviguer à l'adresse `http://127.0.0.1:4000` avec votre navigateur et votre site Jekyll devrait y être affiché. (rajouter `/cours_informatiques/` pour le site de M. Brucker)
 
@@ -52,7 +54,7 @@ Une fois l'application fini il faut la **compiler** en html pour qu'elle soit co
 ~~~ sh
 bundle exec jekyll build
 ~~~
-Cette commande créer un dossier `.jekyll-cache` où le site compilé sera stocké.
+Cette commande créer un dossier `_site` où le site compilé sera stocké.
 
 ## Le langage Markdown
 
@@ -63,3 +65,9 @@ C'est le langages de base des fichiers README sur GitHub. Les fichiers `.md` et 
 Jekyll utilise un sous-type de Markdown, le **kramdown** de Github.
 
 Une bonne overview de Markdown [ici](https://guides.github.com/features/mastering-markdown/)
+
+## La configuration
+
+La configuration du projet est contenu dans le fichier YAML `_config.yml` généré automatiquement par la création du projet jekyll. YAML ou Yet Another Markup Language, est un format de représentation des données comme XML.
+
+*TODO: finir explications configs*
