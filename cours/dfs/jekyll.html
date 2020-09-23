@@ -70,6 +70,25 @@
 </code></pre></div></div>
 <p>vous devriez obtenir quelque chose comme : <code class="language-plaintext highlighter-rouge">jekyll 4.X.X</code></p>
 
+<h2 id="quelques-fonctionalités">Quelques fonctionalités</h2>
+
+<p><strong>Créer</strong> un projet Jekyll :</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>jekyll new my-jekyll-site
+</code></pre></div></div>
+
+<p>Démarrer un <strong>server local</strong> pour développer le projet Jeckyll</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>my-jekyll-site
+bundle <span class="nb">exec </span>jekyll serve
+</code></pre></div></div>
+<p>(executer cette commande dans le dossier cours_informatique/docs/ pour servir le site de M. Brucker)</p>
+
+<p>Ensuite naviguer à l’adresse <code class="language-plaintext highlighter-rouge">http://127.0.0.1:4000</code> avec votre navigateur et votre site Jekyll devrait y être affiché. (rajouter <code class="language-plaintext highlighter-rouge">/cours_informatiques/</code> pour le site de M. Brucker)</p>
+
+<p>Une fois l’application fini il faut la <strong>compiler</strong> en html pour qu’elle soit comprise par le navigateur en production :</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>jekyll build
+</code></pre></div></div>
+<p>Cette commande créer un dossier <code class="language-plaintext highlighter-rouge">.jekyll-cache</code> où le site compilé sera stocké.</p>
+
   </div>
 
 </article>
