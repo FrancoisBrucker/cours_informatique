@@ -6,6 +6,7 @@
 <title>Jekyll | cours d’informatique</title>
 <meta name="generator" content="Jekyll v4.1.1" />
 <meta property="og:title" content="Jekyll" />
+<meta name="author" content="Baptiste Mahé" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)" />
 <meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)" />
@@ -13,7 +14,7 @@
 <meta property="og:url" content="/cours_informatique/cours/dfs/jekyll.html" />
 <meta property="og:site_name" content="cours d’informatique" />
 <script type="application/ld+json">
-{"description":"Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)","@type":"WebPage","headline":"Jekyll","url":"/cours_informatique/cours/dfs/jekyll.html","@context":"https://schema.org"}</script>
+{"description":"Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)","@type":"WebPage","headline":"Jekyll","url":"/cours_informatique/cours/dfs/jekyll.html","author":{"@type":"Person","name":"Baptiste Mahé"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
   <script type="text/javascript" async
@@ -47,7 +48,9 @@
   </header>
 
   <div class="post-content">
-    <h2 id="quest-ce-que-cest-">Qu’est-ce que c’est ?</h2>
+    <p><em>TODO: logo Jekyll</em></p>
+
+<h2 id="quest-ce-que-cest-">Qu’est-ce que c’est ?</h2>
 
 <p><a href="https://jekyllrb.com/">Jekyll</a> est un <code class="language-plaintext highlighter-rouge">générateur</code> de site statique à partir de languages qui ne sont pas lu par le navigateur (type Marckdown et Yaln). Jekyll est écrit en <a href="https://www.ruby-lang.org/fr/">Ruby</a> et requiert le programme <code class="language-plaintext highlighter-rouge">gem</code> pour l’installation.</p>
 
@@ -80,14 +83,14 @@
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>my-jekyll-site
 bundle <span class="nb">exec </span>jekyll serve
 </code></pre></div></div>
-<p>(executer cette commande dans le dossier cours_informatique/docs/ pour servir le site de M. Brucker)</p>
+<p>(executer cette commande dans le dossier cours_informatique/docs/ pour servir le site de M. Brucker) <em>TODO: image du site de base</em></p>
 
 <p>Ensuite naviguer à l’adresse <code class="language-plaintext highlighter-rouge">http://127.0.0.1:4000</code> avec votre navigateur et votre site Jekyll devrait y être affiché. (rajouter <code class="language-plaintext highlighter-rouge">/cours_informatiques/</code> pour le site de M. Brucker)</p>
 
 <p>Une fois l’application fini il faut la <strong>compiler</strong> en html pour qu’elle soit comprise par le navigateur en production :</p>
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>jekyll build
 </code></pre></div></div>
-<p>Cette commande créer un dossier <code class="language-plaintext highlighter-rouge">.jekyll-cache</code> où le site compilé sera stocké.</p>
+<p>Cette commande créer un dossier <code class="language-plaintext highlighter-rouge">_site</code> où le site compilé sera stocké.</p>
 
 <h2 id="le-langage-markdown">Le langage Markdown</h2>
 
@@ -98,6 +101,12 @@ bundle <span class="nb">exec </span>jekyll serve
 <p>Jekyll utilise un sous-type de Markdown, le <strong>kramdown</strong> de Github.</p>
 
 <p>Une bonne overview de Markdown <a href="https://guides.github.com/features/mastering-markdown/">ici</a></p>
+
+<h2 id="la-configuration">La configuration</h2>
+
+<p>La configuration du projet est contenu dans le fichier YAML <code class="language-plaintext highlighter-rouge">_config.yml</code> généré automatiquement par la création du projet jekyll. YAML ou Yet Another Markup Language, est un format de représentation des données comme XML.</p>
+
+<p><em>TODO: finir explications configs</em></p>
 
   </div>
 
