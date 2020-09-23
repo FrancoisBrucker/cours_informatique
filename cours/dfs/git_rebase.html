@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>git rebase, la tronçonneuse magique | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="git rebase, la tronçonneuse magique" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)" />
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)" />
+<link rel="canonical" href="/cours_informatique/cours/dfs/git_rebase.html" />
+<meta property="og:url" content="/cours_informatique/cours/dfs/git_rebase.html" />
+<meta property="og:site_name" content="cours d’informatique" />
+<script type="application/ld+json">
+{"description":"Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)","@type":"WebPage","headline":"git rebase, la tronçonneuse magique","url":"/cours_informatique/cours/dfs/git_rebase.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+</head>
+
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">git rebase, la tronçonneuse magique</h1>
+  </header>
+
+  <div class="post-content">
+    <h1 id="but">But</h1>
+
+<p>Le but de ce tuto est de comprendre pourquoi et comment utiliser <code class="language-plaintext highlighter-rouge">git rebase</code>.</p>
+
+<p>Sommaire :</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td><a href="#pourquoi">Le pourquoi</a></td>
+    </tr>
+    <tr>
+      <td><a href="#quoi">Le quoi</a></td>
+    </tr>
+    <tr>
+      <td><a href="#usage">Cas d’usage</a></td>
+    </tr>
+    <tr>
+      <td>Récapitulatif des commandes</td>
+    </tr>
+    <tr>
+      <td><a href="#sources">Sources et ressources</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h1 id="pourquoi">Pourquoi</h1>
+
+<p>Pourquoi donc s’embêter à utiliser une commande comme <code class="language-plaintext highlighter-rouge">rebase</code>, souvent perçue comme obscure, même pour certains vétérans du git, alors qu’il existe quelque chose de simple et de connu comme <code class="language-plaintext highlighter-rouge">git merge</code> ? Pour deux raisons principales, que nous détaillerons par la suite :</p>
+
+<ol>
+  <li>En fait, contrairement à ce qu’on peut penser, <code class="language-plaintext highlighter-rouge">git rebase</code> n’est pas obscure du tout</li>
+  <li>Et c’est même souvent mieux qu’une bonne vieille fusion, pour plein de raisons.</li>
+</ol>
+
+<h1 id="quoi">Quoi</h1>
+
+<p>Tout d’abord, que fait exactement la commande <code class="language-plaintext highlighter-rouge">git rebase</code> ? Elle permet ni plus ni moins de prendre une branche, de la découper, puis de la recoller ailleurs. En général, on veut la recoller au bout de la branche <em>master</em>, avec la commande suivante :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git rebase master mabranche
+</code></pre></div></div>
+
+<p>Mais pourquoi donc s’embêter à faire ça ? Voyons sur un petit exemple : j’ai créée une branche <em>mabranche</em> à partir de <em>master</em>, et je souhaite maintenait amener les modifications effectuées dans <em>mabranche</em> sur <em>master</em>.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A---B---C---D ← master
+     <span class="se">\</span>
+      E---F---G ← mabranche
+</code></pre></div></div>
+
+<p>Il y a en gros deux écoles qui s’affrontent dans un combat titanesque : merge vs rebase.</p>
+
+<p>Les partisans du <em>merge</em> vont se contenter de fusionner <em>mabranche</em> dans <em>master</em> à l’aide de la commande :</p>
+
+<pre><code class="language-shel">git merge mabranche
+</code></pre>
+
+<p>Ce qui donne graphiquement quelque chose comme ça :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A---B---C---D---H ← master
+     <span class="se">\ </span>        /
+      E---F---G ← mabranche
+</code></pre></div></div>
+
+<p>De leur côté, les défenseurs du rebase préconisent d’agir en deux temps :</p>
+<ol>
+  <li>On découpe la branche <em>mabranche</em> là où elle est reliée à <em>master</em> (en B) et on la recolle à la fin (en H)</li>
+  <li>Ensuite, on peut “merger” de façon triviale <em>mabranche</em> dans <em>master</em>.</li>
+</ol>
+
+<p>Graphiquement, le rebase donne ceci :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A---B---C---D ← master
+             <span class="se">\</span>
+              E---F---G ← mabranche
+</code></pre></div></div>
+
+<p>Et à l’issue de la fusion :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A---B---C---D---E---F---G ← master
+                         <span class="se">\</span>
+                          mabranche
+</code></pre></div></div>
+
+<p>On peut ensuite supprimer <em>mabranche</em>, devenue inutile, en utilisant :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git branch <span class="nt">-d</span> mabranche
+</code></pre></div></div>
+
+<p>On obtient donc un historique linéaire, clair, là où auparavant on aurait eu des diverticules :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A---B---C---D---E---F---G ← master
+</code></pre></div></div>
+
+<h1 id="usage">Usage</h1>
+
+<p>Tout cela est bien joli, mais à quoi est-ce que ça sert de découper une branche pour la recoller à la fin avant de fusionner sur <em>master</em> ? Cela peut en effet sembler être une perte de temps, dans la mesure où les problèmes (notamment les conflits) qui se déclarent habituellement lors d’un merge se déclareront lors du rebase. Petit panorama de l’utilité du rebase.</p>
+
+<h2 id="un-historique-propre">Un historique propre</h2>
+
+<h2 id="corriger-des-erreurs">Corriger des erreurs</h2>
+
+<h2 id="diviser-pour-mieux-régner">Diviser pour mieux régner</h2>
+
+<h2 id="le-rebase-interactif">Le rebase interactif</h2>
+
+<h1 id="sources">Sources</h1>
+
+<ul>
+  <li>Ce superbe <a href="https://www.miximum.fr/blog/git-rebase/">tuto</a> réalisé par Thibault Jouannic, et sur lequel se base une bonne partie du présent tuto.</li>
+</ul>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d&#39;informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d&#39;informatique</li><li><a class="u-email" href="mailto:francois.brucker@centrale-marseille.fr">francois.brucker@centrale-marseille.fr</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li><li><a href="https://www.twitter.com/p_____p___"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">p_____p___</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.
+A destination des 1A (tronc commun), des 2A (de l&#39;approfondissement MIE) et des 3A (de l&#39;option digital·e)</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
