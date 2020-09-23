@@ -17,6 +17,12 @@ Cours d'apprentissages des différents outils de développement et les bases du 
 
   [git et github]({% link cours/dfs/git_et_github.md %})
 
+  [les commandes indispensables]({% link cours/dfs/git_commands.md %})
+
+  [git rebase, la tronçonneuse magique]({% link cours/dfs/git_rebase.md %})
+
+  [les commits atomiques]({% link cours/dfs/git_commits_atomiques.md %})
+
 # shell
 
 # ssh 
