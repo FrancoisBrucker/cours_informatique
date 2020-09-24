@@ -1,17 +1,17 @@
 ---
 layout: page
-title: "Packaing"
+title: "Packaging"
 category: cours
-tags: packing web front
+tags: packaging web front
 author: Adèle Bourgeix & Maxime Vivier
 ---
-# Problèmes actuels:
+## Problèmes actuels:
 
-## Problèmes de support web : 
+# Problèmes de support web : 
 
 Les navigateurs supportent mal les modules JavaScript et particulièrement la syntaxe CommonJS utilisée par les développeurs pour résoudre les problèmes d’import/export sur NodeJS.  Cela montre la nécessité d’avoir un outil qui permet l’écriture et le support des modules JS sur le web. 
 
-## Problèmes de gestion des ressources: 
+# Problèmes de gestion des ressources: 
 
 Charger un script JavaScript peut se faire de deux manières :
 - via plusieurs scripts importés dans un seul fichier principal (mais les imports successifs peuvent être chronophages)
@@ -19,14 +19,14 @@ Charger un script JavaScript peut se faire de deux manières :
 
 De même la gestion des ressources (css, images..) peut être compliquée. 
 
-# Solution ? Le packaging 
+## Solution ? Le packaging 
 
 Les modules bundlers sont des outils utilisés par les développeurs pour empaqueter leurs modules JS dans un seul fichier JavaScript qui peut être exécuté dans le navigateur. 
 
 Un des avantages est que le packaging permet de charger à la fois les modules mais aussi les ressources dans leur ordre de dépendance défini dans le code. 
 
 
-# Pourquoi et comment Webpack?
+## Pourquoi et comment Webpack?
 
 Webpack permet aux développeurs de :
 - écrire et charger des modules JS 
