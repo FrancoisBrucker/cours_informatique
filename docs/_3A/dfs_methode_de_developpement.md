@@ -40,3 +40,5 @@ Cours d'apprentissages des différents outils de développement et les bases du 
 ## méthodes de packaging
 
   [Packaging]({% link cours/dfs/packaging.md %})
+  [Webpack]({% link cours/dfs/webpack.md %})
+
