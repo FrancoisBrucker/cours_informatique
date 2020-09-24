@@ -37,7 +37,7 @@ Ma méthode sera exacte.
 
 On utilise le mot clé [assert](http://www.tutorialspoint.com/python/assertions_in_python.htm) pour créer notre fonction de test. 
 
-> **Attention : **
+> **Attention :**
 > Les fonctions de tests doivent toutes commencer par ''test_''.
 >
 
@@ -90,7 +90,7 @@ Nous allons demander à l'environnement [py.test](http://pytest.org/latest/) d'e
 
 Commencez par supprimer l'exécution de `test_double` dans le fichier `test_aide_mathematiques.py`. 
 
-> **Attention :**
+>**Attention :**
 >Un fichier de tests ne doit contenir que des fonctions.
 >
 

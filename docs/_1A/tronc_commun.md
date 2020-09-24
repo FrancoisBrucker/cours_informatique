@@ -16,44 +16,70 @@ Ce cours comporte deux parties :
 
 Chaque partie est organisée en 3 types d'enseignements :
 
-  - séance de cours : magistral.
+  - séance de cours (**C,M**) : magistral.
     > pour acquérir  des connaissances de base
-  - séance tableau : exercices fait sans machine, accompagné d'un prof ou d'un corrigé
+  - séance tableau (**ST**) : exercices fait sans machine, accompagné d'un prof ou d'un corrigé
     > pour travailler/acquérir des connaissances théoriques
-  - séance machine : exercices fait avec votre machine, accompagné d'un prof ou d'un corrigé
+  - séance machine (**SM**) : exercices fait avec votre machine, accompagné d'un prof ou d'un corrigé
     > pour travailler/acquérir des connaissances pratiques
 
-## Mise en œuvre en 2020
-
-Un [discord](https://discord.gg/Tb4UDPS) est mis à disposition pour les cours d'informatique, en particulier ceux du tronc commun.
-
-Le Programme détaillé du tronc commun est : 
-
-  1. [classe virtuelle] compléxité
-  2. [classe virtuelle] graphes
-  3. en 2 parties :
-    - installation IDE python et premiers exercices
-    - algorithmes gloutons
-  4. [séance tableau] complexité
+Nous allons ici uniquement parler de la partie algorithmie du tronc commun. Pour toute question n'hésitez pas à nous écrire soit par mail soit sur le discord ([coordonnées]({{ "/about/" | relative_url }}))
 
 
-**MAJ :** bon ben le cours a raté. Il va être rattrapé
+## Ordonancement
 
-## Les séances
+### Dates
 
-### 1. classe virtuelle complétité
+  - 29/09/2020 13h30 : **C,M** : *Graphes* [**Pour tous**, Classe virtuelle]
+  - 02/10/2020 
+      - 13h30 :
+        - **ST** : *algorithmes gloutons, 1/2* [**Groupes 1 à 5**, Présentiel]
+        - **SM** : *installations d'un environnement de développement* [**Groupes 6 à 10**, Autonomie]
+      - 15h45 : **C,M** : *Complexités* [**Pour tous**, Classe virtuelle]
+  - 13/10/2020 13h30 
+      - **ST** : *algorithmes gloutons, 2/2* [**Groupes 1 à 5**, Présentiel]
+      - **ST** : *TD complexités* [**Groupes 6 à 10**, Autonomie]
+  - 20/10/2020 13h30 : **C,M** : *Données* [**Pour tous**, Classe virtuelle]
+  - 23/10/2020 
+      - 13h30 :
+        - **SM** : *installations d'un environnement de développement* [**Groupes 1 à 5**, Autonomie]
+        - **ST** : *algorithmes gloutons, 1/2* [**Groupes 6 à 10**, Présentiel]
+      - 15h45 : 
+        - **SM** : *TD complexités* [**Groupes 1 à 5**, Autonomie]
+        - **ST** : *algorithmes gloutons, 2/2* [**Groupes 6 à 10**, Présentiel]
+  - 13/11/2020 
+      - 13h30 :
+        - **ST** : *parcours de graphes* [**Groupes 1 à 5**, Présentiel]
+        - **ST** : *arbres de recherche, 1/2* [**Groupes 6 à 10**, Autonomie]
+      - 15h45 : 
+        - **ST** : *algorithmes de textes* [**Groupes 1 à 5**, Présentiel]
+        - **SM** : *arbres de recherche, 2/2* [**Groupes 6 à 10**, Autonomie]
+  - 17/11/2020 13h30 : **C,M** : *révision programmation* [**Pour tous**, Classe virtuelle]
+  - 20/11/2020 
+      - 13h30 :
+        - **ST** : *arbres de recherche, 1/2* [**Groupes 1 à 5**, Autonomie]
+        - **ST** : *parcours de graphes* [**Groupes 6 à 10**,  Présentiel]
+      - 15h45 : 
+        - **SM** : *arbres de recherche, 2/2* [**Groupes 1 à 5**, Autonomie]
+        - **ST** : *algorithmes de textes* [**Groupes 6 à 10**,  Présentiel]
+  - 24/11/2020 13h30 : **SM** *algo révisions* [**Pour tous**, Autonomie]
+      - 13h30 :
+        - **ST** : *flots 1/2* [**Pour tous**, Autonomie]
+      - 15h45 : 
+        - **SM** : *flots 2/2* [**Pour tous**, Autonomie]
+  
+        
+## Séances
 
-en visio depuis le plot 1 et le bureau de Pascal.
 
-
-### classe virtuelle graphes
+### Graphes
 
 Le support du cours d'[Introduction aux graphes]({% link cours/tronc_commun/introduction_aux_graphes.md %})
 
-### séance tableau/machine
+### gloutons 1/2 et 2/2
+[séance en deux parties sur les algorithmes gloutons]({% link cours/tronc_commun/algorithmes_gloutons.md %}). Leurs vies leurs œuvres et comment les reconnaître.
 
-Première séance tableau/code. 
-#### Installation d'un IDE python
+### installations d'un environnement de développement
 
 Le but de cette séance est d'installer un environnement de développement python et de se familiariser avec les tests unitaires.
 
@@ -61,11 +87,44 @@ Le but de cette séance est d'installer un environnement de développement pytho
   2. **tests unitaires**. Suivez ce [tutorial sur les tests unitaires]({% link cours/tuto/tests-unitaires.md %}) pour mettre en place un environnement de test, puis vous pourrez faire les exercices ci-après.
   3. **code**. Suivez ce [tutorial sur les circuits eulérien]({% link cours/tronc_commun/circuits-euleriens.md %}) pour utiliser pycharm et les tests.
 
+### Complexités
+
+> Il faudra/faut/fallait être là.
+
+### TD complexités
+
+TBD
+
+### Données
+
+TBD
+
+### parcours de graphes
+
+TBD
+
+### Arbres de recherche 1/2 et 2/2
+
+TBD
+
+### Algorithmes de textes
+
+TBD
+
+### Révision programmation et algo révisions
+
+TBD
+
+### flots 1/2 et 2/2
+
+TBD
+
+#### Installation d'un IDE python
+
+
 #### algorithmes gloutons
 
 
-Cours en 2 parties sur les algorithmes gloutons. Leurs vies leurs œuvres et comment les reconnaître.
 
 
-  [algorithmes gloutons]({% link cours/tronc_commun/algorithmes_gloutons.md %})
   
