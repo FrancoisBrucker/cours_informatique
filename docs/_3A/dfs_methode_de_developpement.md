@@ -41,7 +41,8 @@ Cours d'apprentissages des différents outils de développement et les bases du 
 ## Outils de développements
 
 ## html/css/js
-
+   [html/css/js]({% link cours/dfs/html_css_js.md %})
+   
 ## méthodes de packaging
 
   [Packaging]({% link cours/dfs/packaging.md %})
