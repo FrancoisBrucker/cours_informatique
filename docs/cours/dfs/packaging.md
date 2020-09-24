@@ -14,7 +14,7 @@ Les navigateurs supportent mal les modules des applications JavaScript et partic
 **Nota Bene**: Les modules sont des morceaux de code réutilisables créés à partir du JavaScript, des node_modules, des images et des styles CSS de votre application, conçus pour être facilement utilisés dans votre site Web.
 
 
- Cela montre la nécessité d’avoir un outil qui permet l’écriture et le support des modules sur le web. 
+Cela montre la nécessité d’avoir un outil qui permet l’écriture et le support des modules sur le web. 
 
 #### Et d'ailleurs c'est quoi ces import/export ?
 
