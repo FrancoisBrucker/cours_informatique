@@ -48,7 +48,26 @@
   </header>
 
   <div class="post-content">
-    <h1 id="welcome-to-webpack">Welcome to Webpack</h1>
+    <h2 id="pourquoi-webpack-">Pourquoi Webpack ?</h2>
+
+<p>Webpack permet à la fois :</p>
+<ul>
+  <li>d’écrire et charger des modules sous n’importe quel format dans le navigateur</li>
+  <li>d’optimiser l’utilisation des ressources et assets (css, images…)</li>
+</ul>
+
+<h2 id="comment-ça-marche-">Comment ça marche ?</h2>
+
+<p>Pour faire simple, Webpack réalise une concaténation “intelligente” des fichiers: chaque fichier indique ses dépendances, qui sont incluses dans un graphe global. 
+Pour cela, Webpack fonctionne alors en deux étapes.</p>
+
+<h1 id="une-étape-de-détermination-des-dépendances">Une étape de détermination des dépendances</h1>
+
+<p>Webpack part du fichier “entrée” spécifié dans la configuration, puis parcourt le fichier à la recherche de modules dépendant de cette entrée. Il parcourt ensuite chacun de ses modules à la recherche de modules qui en dépendent, construisant alors un graphe de dépendance. Ainsi de suite, jusqu’à ce que toute l’arborescence des dépendances soit épuisée.</p>
+
+<h1 id="une-étape-dempaquetage">Une étape d’empaquetage</h1>
+
+<h2 id="et-comment-on-utilise-webpack-">Et comment on utilise Webpack ?</h2>
 
   </div>
 
