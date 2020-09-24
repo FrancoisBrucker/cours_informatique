@@ -22,4 +22,16 @@ Webpack part du fichier "entrée" spécifié dans la configuration, puis parcour
 
 # Une étape d'empaquetage
 
-## Et comment on utilise Webpack ? 
+Webpack empaquete alors les fichiers dans un seul même fichier n'utilisant que le nécesaire à chaque module. Par exemple, si une seule fonction d'un module est utilisée, seule cette fonction sera compilée dans le fichier de sortie.
+
+
+## Et comment on utilise Webpack ?
+
+# Tutoriel 
+
+Webpack propose un tutoriel simple pour pouvoir comprendre le fonctionnement du bundling. L'idée de ce tutoriel est d'abord d'importer le module lodash directement dans le fichier de départ index.html. Avec Webpack, on importe le module dans le fichier entrée script et au moment de compiler, webpack introduit un fichier bundle.js en sortie qui compile le script source avec les fonctions du module lodash qui sont utilisées.
+
+ 
+Ici, le tutoriel
+
+#  Paramétrer le fichier de configurations 
