@@ -1,11 +1,11 @@
 ---
 layout: page
-title:  "Jekyll"
+title:  ""
 category: cours
 tags: combat web
 author: Baptiste Mahé
 ---
-*TODO: logo Jekyll*
+![Jekyll logo](../../assets/jekyll_logo.png)
 
 ## Qu'est-ce que c'est ?
 
@@ -46,7 +46,7 @@ Démarrer un **server local** pour développer le projet Jeckyll
 cd my-jekyll-site
 bundle exec jekyll serve
 ~~~
-(executer cette commande dans le dossier cours_informatique/docs/ pour servir le site de M. Brucker) *TODO: image du site de base*
+(executer cette commande dans le dossier cours_informatique/docs/ pour servir le site de M. Brucker)
 
 Ensuite naviguer à l'adresse `http://127.0.0.1:4000` avec votre navigateur et votre site Jekyll devrait y être affiché. (rajouter `/cours_informatiques/` pour le site de M. Brucker)
 
