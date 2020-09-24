@@ -8,8 +8,10 @@ author : "François Brucker"
 
 ## Introduction
 
-Le but de ce cours est d'apprendre à coder un (multi-)graphe dirigé et de s'en servir pour trouver un circuit eulérien d'un de ces graphes (s'il existe). .
+Le but de ce cours est d'apprendre à coder un (multi-)graphe dirigé et de s'en servir pour trouver un circuit eulérien d'un de ces graphes (s'il existe). 
 
+
+Le code complet de ce tuto est disponible sur [le github du projet](https://github.com/FrancoisBrucker/cours_informatique/tree/master/docs/cours/tronc_commun/circuits-euleriens-code). Essayez totu de même de résoudre les questions par vous-même, vous apprendrez plus que juste lire le corrigé.
 
 ## Outils
 
@@ -407,9 +409,5 @@ def test_eulerian_circuit():
 Et [voilà, c'est fini](https://www.youtube.com/watch?v=EVDlleOUQXY), il ne vous reste plus qu'à faire votre programme principal qui, à partir d'un multi-graphe vérifie qu'il est eulérien et si c'est le cas, rend un circuit eulérien du graphe.
 
 Pour cela, prenez un graphe du court permettant de trouver une [suite de Brujin](https://fr.wikipedia.org/wiki/Suite_de_de_Bruijn) (c'est une variante des mots de brujin vus en cours) des mots de longueur 3 de l'alphabet $${0, 1}$$
-
-## un corrigé du code
-
-Le code complet de ce tuto est disponible sur [le github du projet](https://github.com/FrancoisBrucker/cours_informatique/tree/master/docs/cours/tronc_commun/circuits-euleriens-code).
 
 

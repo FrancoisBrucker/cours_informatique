@@ -23,7 +23,7 @@ Chaque partie est organisée en 3 types d'enseignements :
   - séance machine (**SM**) : exercices fait avec votre machine, accompagné d'un prof ou d'un corrigé
     > pour travailler/acquérir des connaissances pratiques
 
-Nous allons ici uniquement parler de la partie algorithmie du tronc commun. Pour toute question n'hésitez pas à nous écrire soit par mail soit sur le discord ([coordonnées]({{ "/about/" | relative_url }}))
+Nous allons ici uniquement parler de la partie algorithmie du tronc commun. Pour toute question n'hésitez pas à nous écrire soit par mail soit sur le discord ([coordonnées]({{ "/about/" | relative_url }})).
 
 
 ## Ordonancement
@@ -74,7 +74,13 @@ Nous allons ici uniquement parler de la partie algorithmie du tronc commun. Pour
 
 ### Graphes
 
-Le support du cours d'[Introduction aux graphes]({% link cours/tronc_commun/introduction_aux_graphes.md %})
+Connections :
+
+  - [le discord](https://discord.gg/4UkDeAT)
+  - lien de connection TBD
+
+
+Le support du cours : [Introduction aux graphes]({% link cours/tronc_commun/introduction_aux_graphes.md %})
 
 ### gloutons 1/2 et 2/2
 [séance en deux parties sur les algorithmes gloutons]({% link cours/tronc_commun/algorithmes_gloutons.md %}). Leurs vies leurs œuvres et comment les reconnaître.
@@ -89,6 +95,12 @@ Le but de cette séance est d'installer un environnement de développement pytho
 
 ### Complexités
 
+Connections :
+
+- [le discord](https://discord.gg/4UkDeAT)
+  - lien de connection TBD
+
+> Pour le Support de cours  
 > Il faudra/faut/fallait être là.
 
 ### TD complexités
