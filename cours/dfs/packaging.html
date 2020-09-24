@@ -50,19 +50,26 @@
   <div class="post-content">
     <h2 id="problèmes-actuels">Problèmes actuels:</h2>
 
-<h1 id="problèmes-de-support-web-">Problèmes de support web :</h1>
+<h3 id="problème-de-support-web-">Problème de support web :</h3>
 
-<p>Les navigateurs supportent mal les modules JavaScript et particulièrement la syntaxe CommonJS utilisée par les développeurs pour résoudre les problèmes d’import/export sur NodeJS.  Cela montre la nécessité d’avoir un outil qui permet l’écriture et le support des modules JS sur le web.</p>
+<p>Les navigateurs supportent mal les modules des applications JavaScript et particulièrement la syntaxe CommonJS utilisée par les développeurs pour résoudre les problèmes d’import/export sur NodeJS.</p>
 
-<h1 id="problèmes-de-gestion-des-ressources">Problèmes de gestion des ressources:</h1>
+<p><strong>Nota Bene</strong>: Les modules sont des morceaux de code réutilisables créés à partir du JavaScript, des node_modules, des images et des styles CSS de votre application, conçus pour être facilement utilisés dans votre site Web.</p>
 
-<p>Charger un script JavaScript peut se faire de deux manières :</p>
+<p>Cela montre la nécessité d’avoir un outil qui permet l’écriture et le support des modules sur le web.</p>
+
+<h4 id="et-dailleurs-cest-quoi-ces-importexport-">Et d’ailleurs c’est quoi ces import/export ?</h4>
+
+<h3 id="problème-de-gestion-des-ressources">Problème de gestion des ressources:</h3>
+
+<p>Par exemple, charger un script JavaScript peut se faire de deux manières :</p>
 <ul>
   <li>via plusieurs scripts importés dans un seul fichier principal (mais les imports successifs peuvent être chronophages)</li>
   <li>via un seul même fichier JS qui contient tout le script nécessaire (mais cela induit des problèmes de portée des variables, de lisibilité…)</li>
 </ul>
 
-<p>De même la gestion des ressources (css, images..) peut être compliquée.</p>
+<p>De même la gestion des ressources (css, images..) peut être compliquée.
+Cet exemple montre la necessité d’optimiser la gestion des modules.</p>
 
 <h2 id="solution--le-packaging">Solution ? Le packaging</h2>
 
@@ -70,13 +77,6 @@
 
 <p>Un des avantages est que le packaging permet de charger à la fois les modules mais aussi les ressources dans leur ordre de dépendance défini dans le code.</p>
 
-<h2 id="pourquoi-et-comment-webpack">Pourquoi et comment Webpack?</h2>
-
-<p>Webpack permet aux développeurs de :</p>
-<ul>
-  <li>écrire et charger des modules JS</li>
-  <li>charger les ressources (JS inclus) d’une manière plus simple</li>
-</ul>
 
   </div>
 
