@@ -12,7 +12,7 @@ Le web front est partie d'un tout contenant le front, le back et l'ops.
 Le front (client) est celui qui va afficher le contenu HTML, CSS et js (JavaScript).
 Le back (serveur) peut lui dans un sens assez large servir du contenu (html, css, js), ou des fichiers (binaires ou textes).  
 
-##HTML
+## HTML
 Le HTML est un langage à balises, par exemple `<head></head>` `<body></body>`. Il y a des balises ouvrantes et fermantes, marquées par un `/`.\
 [Liste des balises HTML](https://openclassrooms.com/fr/courses/1603881-apprenez-a-creer-votre-site-web-avec-html5-et-css3/1608357-memento-des-balises-html)
 
@@ -20,10 +20,10 @@ Dans le tutoriel suivant le navigateur interprétera directement le fichier sans
 Il trouve le fichier à afficher via une [uri](https://fr.wikipedia.org/wiki/Uniform_Resource_Identifier) : `file://chemin/absolu/vers/fichier.html`. \
 On ne traitera pas tous les détails depuis la base de la base. \
 Il existe pleins de tutos pour apprendre les bases sur l'internet mondial :
-- https://internetingishard.com/html-and-css/
-- https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web
-- http://www.thenetninja.co.uk/
-- http://www.w3schools.com/
+- [https://internetingishard.com/html-and-css/](https://internetingishard.com/html-and-css/)
+- [https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web)
+- [http://www.thenetninja.co.uk/](http://www.thenetninja.co.uk/)
+- [http://www.w3schools.com/](http://www.w3schools.com/)
 \
 Vérifier bien cependant que les tutos traitent de la dernière version, ici HTML5 et CSS3
 
@@ -64,7 +64,7 @@ On obtient donc le code suivant :
 </body>
 </html>
 ~~~~
-####Quelques balises courantes 
+#### Quelques balises courantes 
 ``<head>`` : en-tête de la page \
 ``<body>`` : corps de la page \
 ``<hx>`` : titre de niveau x (x=1,2,3...)\
@@ -74,16 +74,19 @@ On obtient donc le code suivant :
 ``<strong>`` : permet d'accentuer un élément du texte \
 Il existe des dizaines de balises différentes qui permettent d'insérer des liens, des images, créer des listes ...\
 Vous pouvez facilement trouver des listes de ces balises sur internet, en voici quelques exemples:
-- https://openclassrooms.com/fr/courses/1603881-apprenez-a-creer-votre-site-web-avec-html5-et-css3/1608357-memento-des-balises-html
-- https://www.w3schools.com/tags/
-- https://eastmanreference.com/complete-list-of-html-tags
+- [https://openclassrooms.com/fr/courses/1603881-apprenez-a-creer-votre-site-web-avec-html5-et-css3/1608357-memento-des-balises-html](https://openclassrooms.com/fr/courses/1603881-apprenez-a-creer-votre-site-web-avec-html5-et-css3/1608357-memento-des-balises-html)
+- [https://www.w3schools.com/tags/](https://www.w3schools.com/tags/)
+- [https://eastmanreference.com/complete-list-of-html-tags](https://eastmanreference.com/complete-list-of-html-tags)
 
-####Les div 
+#### Les div 
 Les div sont des blocs anonymes. Elles seront caractérisées uniquement par les `class` et les `id`. 
 Plusieurs éléments peuvent partager une même classe, mais un id est unique pour un élément.
 On les utilise principalement pour structurer la page. 
-##CSS
-##js
+
+## CSS
+
+
+## js
 
 https://www.w3schools.com/js/js_htmldom.asp
 
