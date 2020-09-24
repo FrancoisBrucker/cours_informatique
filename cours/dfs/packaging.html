@@ -3,19 +3,18 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>DFS : méthodes de développement | cours d’informatique</title>
+<title>Packaing | cours d’informatique</title>
 <meta name="generator" content="Jekyll v4.1.1" />
-<meta property="og:title" content="DFS : méthodes de développement" />
+<meta property="og:title" content="Packaing" />
+<meta name="author" content="Adèle Bourgeix & Maxime Vivier" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Introduction" />
-<meta property="og:description" content="Introduction" />
-<link rel="canonical" href="/cours_informatique/3A/dfs_methode_de_developpement.html" />
-<meta property="og:url" content="/cours_informatique/3A/dfs_methode_de_developpement.html" />
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)" />
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)" />
+<link rel="canonical" href="/cours_informatique/cours/dfs/packaging.html" />
+<meta property="og:url" content="/cours_informatique/cours/dfs/packaging.html" />
 <meta property="og:site_name" content="cours d’informatique" />
-<meta property="og:type" content="article" />
-<meta property="article:published_time" content="2020-09-24T09:01:49+00:00" />
 <script type="application/ld+json">
-{"description":"Introduction","@type":"BlogPosting","headline":"DFS : méthodes de développement","dateModified":"2020-09-24T09:01:49+00:00","datePublished":"2020-09-24T09:01:49+00:00","url":"/cours_informatique/3A/dfs_methode_de_developpement.html","mainEntityOfPage":{"@type":"WebPage","@id":"/cours_informatique/3A/dfs_methode_de_developpement.html"},"@context":"https://schema.org"}</script>
+{"description":"Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)","@type":"WebPage","headline":"Packaing","url":"/cours_informatique/cours/dfs/packaging.html","author":{"@type":"Person","name":"Adèle Bourgeix & Maxime Vivier"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
   <script type="text/javascript" async
@@ -45,45 +44,39 @@
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">DFS : méthodes de développement</h1>
+    <h1 class="post-title">Packaing</h1>
   </header>
 
   <div class="post-content">
-    <h1 id="introduction">Introduction</h1>
+    <h1 id="problèmes-actuels">Problèmes actuels:</h1>
 
-<p>Cours d’apprentissages des différents outils de développement et les bases du web.</p>
+<h2 id="problèmes-de-support-web-">Problèmes de support web :</h2>
 
-<h1 id="préparation-dun-windows">Préparation d’un windows</h1>
+<p>Les navigateurs supportent mal les modules JavaScript et particulièrement la syntaxe CommonJS utilisée par les développeurs pour résoudre les problèmes d’import/export sur NodeJS.  Cela montre la nécessité d’avoir un outil qui permet l’écriture et le support des modules JS sur le web.</p>
 
-<p><a href="/cours_informatique/cours/dfs/installation_W10.html">Installation w10</a></p>
+<h2 id="problèmes-de-gestion-des-ressources">Problèmes de gestion des ressources:</h2>
 
-<h1 id="git-et-github">git et github</h1>
+<p>Charger un script JavaScript peut se faire de deux manières :</p>
+<ul>
+  <li>via plusieurs scripts importés dans un seul fichier principal (mais les imports successifs peuvent être chronophages)</li>
+  <li>via un seul même fichier JS qui contient tout le script nécessaire (mais cela induit des problèmes de portée des variables, de lisibilité…)</li>
+</ul>
 
-<p><a href="/cours_informatique/cours/dfs/git_et_github.html">git et github</a></p>
+<p>De même la gestion des ressources (css, images..) peut être compliquée.</p>
 
-<p><a href="/cours_informatique/cours/dfs/git_commands.html">les commandes indispensables</a></p>
+<h1 id="solution--le-packaging">Solution ? Le packaging</h1>
 
-<p><a href="/cours_informatique/cours/dfs/git_rebase.html">git rebase, la tronçonneuse magique</a></p>
+<p>Les modules bundlers sont des outils utilisés par les développeurs pour empaqueter leurs modules JS dans un seul fichier JavaScript qui peut être exécuté dans le navigateur.</p>
 
-<p><a href="/cours_informatique/cours/dfs/git_commits_atomiques.html">les commits atomiques</a></p>
+<p>Un des avantages est que le packaging permet de charger à la fois les modules mais aussi les ressources dans leur ordre de dépendance défini dans le code.</p>
 
-<h1 id="shell">shell</h1>
+<h1 id="pourquoi-et-comment-webpack">Pourquoi et comment Webpack?</h1>
 
-<h1 id="ssh">ssh</h1>
-
-<h1 id="web">web</h1>
-
-<h1 id="jekyll">Jekyll</h1>
-
-<p><a href="/cours_informatique/cours/dfs/jekyll.html">Jekyll</a></p>
-
-<h2 id="outils-de-développements">Outils de développements</h2>
-
-<h2 id="htmlcssjs">html/css/js</h2>
-
-<h2 id="méthodes-de-packaging">méthodes de packaging</h2>
-
-<p><a href="/cours_informatique/cours/dfs/packaging.html">Packaging</a></p>
+<p>Webpack permet aux développeurs de :</p>
+<ul>
+  <li>écrire et charger des modules JS</li>
+  <li>charger les ressources (JS inclus) d’une manière plus simple</li>
+</ul>
 
   </div>
 
