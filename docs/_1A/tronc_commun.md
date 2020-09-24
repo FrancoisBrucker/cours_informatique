@@ -63,4 +63,9 @@ Le but de cette séance est d'installer un environnement de développement pytho
 
 #### algorithmes gloutons
 
-TBD
+
+Cours en 2 parties sur les algorithmes gloutons. Leurs vies leurs œuvres et comment les reconnaître.
+
+
+  [algorithmes gloutons]({% link cours/tronc_commun/algorithmes_gloutons.md %})
+  
