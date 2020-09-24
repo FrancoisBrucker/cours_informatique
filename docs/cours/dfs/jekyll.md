@@ -40,6 +40,19 @@ vous devriez obtenir quelque chose comme : `jekyll 4.X.X`
 ~~~ sh
 sudo jekyll new my-jekyll-site
 ~~~
+
+Avec la commande `tree my-jekyll-site` on peut voir la **structure** d'un projet jekyll vierge
+~~~ sh
+my-jekyll-site
+├── 404.html
+├── about.markdown
+├── _config.yml
+├── Gemfile
+├── Gemfile.lock
+├── index.markdown
+└── _posts
+    └── 2020-09-24-welcome-to-jekyll.markdown
+~~~
  
 Démarrer un **server local** pour développer le projet Jeckyll
 ~~~ sh
