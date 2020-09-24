@@ -1,3 +1,10 @@
+---
+layout: page
+title: "Packaing"
+category: cours
+tags: packing web front
+author: Adèle Bourgeix & Maxime Vivier
+---
 # Problèmes actuels:
 
 ## Problèmes de support web : 
