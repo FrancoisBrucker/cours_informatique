@@ -74,13 +74,15 @@ Nous allons ici uniquement parler de la partie algorithmie du tronc commun. Pour
 
 ### Graphes
 
+> Par François Brucker 
+
 Connections :
 
   - [le discord](https://discord.gg/4UkDeAT)
   - lien de connection TBD
 
 
-Le support du cours : [Introduction aux graphes]({% link cours/tronc_commun/introduction_aux_graphes.md %})
+Le support du cours d'[Introduction aux graphes]({% link cours/tronc_commun/introduction_aux_graphes.md %})
 
 ### gloutons 1/2 et 2/2
 [séance en deux parties sur les algorithmes gloutons]({% link cours/tronc_commun/algorithmes_gloutons.md %}). Leurs vies leurs œuvres et comment les reconnaître.
@@ -95,9 +97,9 @@ Le but de cette séance est d'installer un environnement de développement pytho
 
 ### Complexités
 
-Connections :
+> Par Pascal Préa
 
-- [le discord](https://discord.gg/4UkDeAT)
+  - [le discord](https://discord.gg/4UkDeAT)
   - lien de connection TBD
 
 > Pour le Support de cours  
@@ -108,6 +110,8 @@ Connections :
 TBD
 
 ### Données
+
+> Par Emmanuel Daucé
 
 TBD
 

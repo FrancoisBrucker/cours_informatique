@@ -54,7 +54,7 @@ Pour bien faire, créez votre structure de façon itérative en commençant par 
 
 
 #### code
-
+ 
 La structure de votre projet sera :
 
   - un fichier *multi_graph.py* contenant tout le code relatif à la structure de multi-graphe,
