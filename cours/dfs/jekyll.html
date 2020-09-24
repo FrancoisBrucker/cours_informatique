@@ -52,34 +52,65 @@
 
 <h2 id="quest-ce-que-cest-">Qu’est-ce que c’est ?</h2>
 
-<p><a href="https://jekyllrb.com/">Jekyll</a> est un <code class="language-plaintext highlighter-rouge">générateur</code> de site statique à partir de languages qui ne sont pas lu par le navigateur (type Marckdown et Yaln). Jekyll est écrit en <a href="https://www.ruby-lang.org/fr/">Ruby</a> et requiert le programme <code class="language-plaintext highlighter-rouge">gem</code> pour l’installation.</p>
+<p><a href="https://jekyllrb.com/">Jekyll</a> est un <code class="language-plaintext highlighter-rouge">générateur</code> de site statique à partir de languages qui ne sont pas lu par le navigateur (type Marckdown et Yaln). Jekyll un package <a href="https://www.ruby-lang.org/en/">Ruby</a> et requiert le programme <code class="language-plaintext highlighter-rouge">gem</code> pour l’installation et <code class="language-plaintext highlighter-rouge">bundle</code> le gestionnaire de packages de Ruby.</p>
 
-<h2 id="installation">Installation</h2>
+<h2 id="ruby-gem-et-bundle--installation">Ruby, Gem et Bundle (+ installation)</h2>
 
-<p>Installer Ruby :</p>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>ruby-full
+<p>Ruby est un <strong>langage de programmation</strong> open-source dynamique qui met l’accent sur la simplicité et la productivité. Sa syntaxe élégante en facilite la lecture et l’écriture. <a href="https://www.includehelp.com/ruby/programs.aspx">Example</a>, Hello World en ruby :</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">=begin 
+Ruby program to print Hello World.
+=end</span>
+
+<span class="nb">puts</span> <span class="s2">"Hello World!"</span>
 </code></pre></div></div>
 
-<p>En plus de Ruby il va nous falloir les programmes de compilation en C et C++, si vous ne les avez pas encore :</p>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>make gcc g++
+<p>Output : <code class="language-plaintext highlighter-rouge">Hello World!</code></p>
+
+<p>Pour installer Ruby sur votre machine :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>ruby-full <span class="c"># pour Linux/WLS</span>
+<span class="nb">sudo </span>brew <span class="nb">install </span>ruby-full <span class="c"># pour MacOS</span>
 </code></pre></div></div>
 
-<p>Gem est le progamme d’installation de logiciels Ruby nous allons l’utiliser pour installer Jekyll :</p>
+<p>Les fichiers ruby sont en <code class="language-plaintext highlighter-rouge">.rb</code> et la commande pour les executer est : <code class="language-plaintext highlighter-rouge">ruby filename.rb</code>. Pour un tuto c’est <a href="https://www.youtube.com/watch?v=vgSQ97FDSvM&amp;list=PLjwdMgw5TTLVVJHvstDYgqTCao-e-BgA8&amp;ab_channel=Grafikart.fr">ici</a></p>
+
+<p>En installant Ruby on installe aussi son <strong>package manager</strong> <code class="language-plaintext highlighter-rouge">gem</code> (comme <code class="language-plaintext highlighter-rouge">pip</code> pour Python). Gem sert à gérer (installer, supprimer, chercher, etc…) les packages Ruby.</p>
+
+<p>Pour l’utiliser il est nécessaire d’avoir les programmes de compilation en C et C++, si vous ne les avez pas encore :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>make gcc g++ <span class="c"># pour Linux/WLS</span>
+<span class="nb">sudo </span>brew <span class="nb">install </span>make gcc g++ <span class="c"># pour MacOs</span>
+</code></pre></div></div>
+
+<p>Pour installer des packages à l’aide de <code class="language-plaintext highlighter-rouge">gem</code> :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>gem <span class="nb">install </span>package-name
+</code></pre></div></div>
+
+<p>Pour plus de documentation sur <code class="language-plaintext highlighter-rouge">gem</code> voir <a href="https://guides.rubygems.org/rubygems-basics/">ici.</a></p>
+
+<p>Nous pouvons donc maintenant utiliser <code class="language-plaintext highlighter-rouge">gem</code> pour installer Jekyll et Blunder :</p>
+
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>gem <span class="nb">install </span>bundler jekyll
 </code></pre></div></div>
 
 <p>Pour tester l’installation :</p>
+
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jekyll <span class="nt">-v</span>
 </code></pre></div></div>
+
 <p>vous devriez obtenir quelque chose comme : <code class="language-plaintext highlighter-rouge">jekyll 4.X.X</code></p>
 
 <h2 id="quelques-fonctionalités">Quelques fonctionalités</h2>
 
 <p><strong>Créer</strong> un projet Jekyll :</p>
+
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>jekyll new my-jekyll-site
 </code></pre></div></div>
 
 <p>Avec la commande <code class="language-plaintext highlighter-rouge">tree my-jekyll-site</code> on peut voir la <strong>structure</strong> d’un projet jekyll vierge</p>
+
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>my-jekyll-site
 ├── 404.html
 ├── about.markdown
@@ -92,27 +123,31 @@
 </code></pre></div></div>
 
 <p>Démarrer un <strong>server local</strong> pour développer le projet Jeckyll</p>
+
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>my-jekyll-site
 bundle <span class="nb">exec </span>jekyll serve
 </code></pre></div></div>
+
 <p>(executer cette commande dans le dossier cours_informatique/docs/ pour servir le site de M. Brucker)</p>
 
 <p>Ensuite naviguer à l’adresse <code class="language-plaintext highlighter-rouge">http://127.0.0.1:4000</code> avec votre navigateur et votre site Jekyll devrait y être affiché. (rajouter <code class="language-plaintext highlighter-rouge">/cours_informatiques/</code> pour le site de M. Brucker)</p>
 
 <p>Une fois l’application fini il faut la <strong>compiler</strong> en html pour qu’elle soit comprise par le navigateur en production :</p>
+
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>jekyll build
 </code></pre></div></div>
+
 <p>Cette commande créer un dossier <code class="language-plaintext highlighter-rouge">_site</code> où le site compilé sera stocké.</p>
 
 <h2 id="le-langage-markdown">Le langage Markdown</h2>
 
 <p>Dans notre site Jekyll il va falloir “coder” en Markdown. Comme le HTML le Markdown et un langage de <strong>balisage</strong> qui se veut être facile à lire par les humains (mais du coup moins facile pour les navigateurs…).</p>
 
-<p>C’est le langages de base des fichiers README sur GitHub. Les fichiers <code class="language-plaintext highlighter-rouge">.md</code> et <code class="language-plaintext highlighter-rouge">.marckdown</code> sont les fichiers interprétés en Markdown.</p>
+<p>C’est le langages de base des fichiers README sur GitHub. Les fichiers <code class="language-plaintext highlighter-rouge">.md</code> et <code class="language-plaintext highlighter-rouge">.markdown</code> sont les fichiers interprétés en Markdown.</p>
 
 <p>Jekyll utilise un sous-type de Markdown, le <strong>kramdown</strong> de Github.</p>
 
-<p>Une bonne overview de Markdown <a href="https://guides.github.com/features/mastering-markdown/">ici</a></p>
+<p>Une bonne overview de Markdown <a href="https://guides.github.com/features/mastering-markdown/">ici.</a></p>
 
 <h2 id="la-configuration">La configuration</h2>
 
