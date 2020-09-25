@@ -13,7 +13,7 @@ Webpack permet à la fois :
 
 ## Comment ça marche ? 
 
-Pour faire simple, Webpack réalise une concaténation "intelligente" des fichiers: chaque fichier indique ses dépendances, qui sont incluses dans un graphe global. 
+Pour faire simple, Webpack réalise une concaténation "intelligente" des fichiers en un seul et même fichier: chaque fichier indique ses dépendances, qui sont incluses dans un graphe global. 
 Pour cela, Webpack fonctionne alors en deux étapes. 
 
 # Une étape de détermination des dépendances
@@ -29,9 +29,32 @@ Webpack empaquete alors les fichiers dans un seul même fichier n'utilisant que 
 
 # Tutoriel 
 
-Webpack propose un tutoriel simple pour pouvoir comprendre le fonctionnement du bundling. L'idée de ce tutoriel est d'abord d'importer le module lodash directement dans le fichier de départ index.html. Avec Webpack, on importe le module dans le fichier entrée script et au moment de compiler, webpack introduit un fichier bundle.js en sortie qui compile le script source avec les fonctions du module lodash qui sont utilisées.
+Webpack propose un tutoriel simple pour pouvoir comprendre le fonctionnement du bundling. L'idée de ce tutoriel est d'abord d'importer le module lodash directement dans le fichier de départ index.html via une balise script.
+
+En utilisant Webpack, on importe directement le module dans le fichier script d'entrée dit "source" et au moment de compiler, Webpack créée en sortie un fichier bundle.js dit de "distribution" qui compile le script source avec les fonctions du module lodash qui sont utilisées.
 
  
 Ici, le tutoriel
 
 #  Paramétrer le fichier de configurations 
+
+Depuis la version 4 de Webpack, une configuration préalable n'est pas nécessaire mais il est possible de paramétrer un fichier de configuration pour pouvoir changer les fichiers d'entrée et sortie et aussi spécifier les "loaders" pour chaque type de ressource rencontré.
+
+
+> **Nota Bene**: les loaders permettent de spécifier à Webpack comment traiter la ressource en
+ fonction de son type (c'est à dire la nature de son extension).
+
+
+~~~
+const path= require('path');
+
+module.exports = {
+	entry: './src/index.js', 
+	output: { 
+	filename: 'main.js',
+	path: path.resolve(__dirname, 'dist'),
+		},
+	};
+~~~
+
+ 
