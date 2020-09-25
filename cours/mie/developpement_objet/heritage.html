@@ -61,7 +61,137 @@
 
 <h2 id="séance-code">Séance code</h2>
 
-<p>TBD</p>
+<h3 id="les-bases-de-lhéritage">Les bases de l’héritage</h3>
+
+<h4 id="héritage-de-méthodes">héritage de méthodes</h4>
+
+<p>Écrivez une classe <code class="language-plaintext highlighter-rouge">A</code> qui a :</p>
+
+<ul>
+  <li>un attribut <code class="language-plaintext highlighter-rouge">a</code></li>
+  <li>une méthode <code class="language-plaintext highlighter-rouge">truc_que_fait_a()</code> qui affiche “Truc défini dans la classe mère”</li>
+  <li>une méthode <code class="language-plaintext highlighter-rouge">autre_truc()</code> qui affiche “Autre truc dans la classe mère”</li>
+</ul>
+
+<p>Écrivez une classe <code class="language-plaintext highlighter-rouge">B</code> qui hérite de A et qui a :</p>
+
+<ul>
+  <li>un attribut <code class="language-plaintext highlighter-rouge">b</code></li>
+  <li>le constructeur à 2 paramètres, un qui est initialisé dans la classe A, l’autre initialisé dans B</li>
+  <li>une méthode <code class="language-plaintext highlighter-rouge">autre_truc()</code> qui affiche “C’est mon autre truc à moi”</li>
+  <li>une méthode <code class="language-plaintext highlighter-rouge">que_de_b()</code> qui affiche “Méthode seulement de la classe fille”</li>
+</ul>
+
+<p>Faites bien attention à utiliser proprement le mot-clé <code class="language-plaintext highlighter-rouge">super</code> dans le constructeur de la classe fille.</p>
+
+<p>Créez un objet <code class="language-plaintext highlighter-rouge">objet_a</code> de la classe <code class="language-plaintext highlighter-rouge">A</code> et un objet <code class="language-plaintext highlighter-rouge">objet_b</code> de la classe <code class="language-plaintext highlighter-rouge">B</code>. Essayez les lignes suivantes (une à la
+fois) et prenez le temps de comprendre ce qu’elles font et pourquoi.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">objet_a</span><span class="p">.</span><span class="n">a</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">objet_a</span><span class="p">.</span><span class="n">b</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">objet_b</span><span class="p">.</span><span class="n">a</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">objet_b</span><span class="p">.</span><span class="n">b</span><span class="p">)</span>
+<span class="n">objet_a</span><span class="p">.</span><span class="n">truc_que_fait_a</span><span class="p">()</span>
+<span class="n">objet_a</span><span class="p">.</span><span class="n">autre_truc</span><span class="p">()</span>
+<span class="n">objet_a</span><span class="p">.</span><span class="n">que_de_b</span><span class="p">()</span>
+<span class="n">objet_b</span><span class="p">.</span><span class="n">truc_que_fait_a</span><span class="p">()</span>
+<span class="n">objet_b</span><span class="p">.</span><span class="n">autre_truc</span><span class="p">()</span>
+<span class="n">objet_b</span><span class="p">.</span><span class="n">que_de_b</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h4 id="combinaison-de-méthodes">combinaison de méthodes</h4>
+
+<p>Ajoutez :</p>
+
+<ul>
+  <li>dans la  classe <code class="language-plaintext highlighter-rouge">A</code> : une méthode <code class="language-plaintext highlighter-rouge">j_herite(x)</code> qui prend un paramètre <code class="language-plaintext highlighter-rouge">x</code> qui est une chaine de caractère et affiche la valeur de x</li>
+  <li>dans la  classe <code class="language-plaintext highlighter-rouge">B</code> : une méthode <code class="language-plaintext highlighter-rouge">j_herite(x)</code> qui commence par appeler la méthode de la classe mère puis affiche la valeur de x en majuscules</li>
+</ul>
+
+<p>Vérifiez que tout se passe comme prévu.</p>
+
+<h3 id="le-dé">Le dé</h3>
+
+<p>Nous allons ici réutiliser la classe <code class="language-plaintext highlighter-rouge">Dice</code> entamée la dernière fois. Pour être sûr de repartir sur de bonnes bases, utilisez l’implémentation minimale suivante (dans un fichier <code class="language-plaintext highlighter-rouge">dice.py</code>) :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy.random</span>
+
+
+<span class="k">class</span> <span class="nc">Dice</span><span class="p">:</span>
+    <span class="n">NUMBER_FACES</span> <span class="o">=</span> <span class="mi">6</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">probabilities</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">position</span> <span class="o">=</span> <span class="n">position</span>
+        <span class="k">if</span> <span class="n">probabilities</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">probabilities</span> <span class="o">=</span> <span class="n">probabilities</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">probabilities</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="o">/</span> <span class="bp">self</span><span class="p">.</span><span class="n">NUMBER_FACES</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="p">.</span><span class="n">NUMBER_FACES</span>
+
+    <span class="k">def</span> <span class="nf">get_position</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">position</span>
+
+    <span class="k">def</span> <span class="nf">set_position</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_position</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">position</span> <span class="o">=</span> <span class="n">new_position</span>
+
+    <span class="k">def</span> <span class="nf">roll</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">set_position</span><span class="p">(</span><span class="n">numpy</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">choice</span><span class="p">([</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">NUMBER_FACES</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)],</span> <span class="n">p</span><span class="o">=</span><span class="bp">self</span><span class="p">.</span><span class="n">probabilities</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>ainsi que les tests associés (dans un fichier <code class="language-plaintext highlighter-rouge">test_dice.py</code>):</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">test_dice_creation_no_argument</span><span class="p">():</span>
+    <span class="n">dice</span> <span class="o">=</span> <span class="n">Dice</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">dice</span><span class="p">.</span><span class="n">get_position</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span>
+    <span class="k">assert</span> <span class="n">dice</span><span class="p">.</span><span class="n">probabilities</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">test_dice_creation_initial_position</span><span class="p">():</span>
+    <span class="n">dice</span> <span class="o">=</span> <span class="n">Dice</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">dice</span><span class="p">.</span><span class="n">get_position</span><span class="p">()</span> <span class="o">==</span> <span class="mi">5</span>
+    <span class="k">assert</span> <span class="n">dice</span><span class="p">.</span><span class="n">probabilities</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">test_set_position</span><span class="p">():</span>
+    <span class="n">dice</span> <span class="o">=</span> <span class="n">Dice</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">dice</span><span class="p">.</span><span class="n">get_position</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span>
+    <span class="n">dice</span><span class="p">.</span><span class="n">set_position</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">dice</span><span class="p">.</span><span class="n">get_position</span><span class="p">()</span> <span class="o">==</span> <span class="mi">3</span>
+
+
+<span class="k">def</span> <span class="nf">test_roll_no_proba</span><span class="p">():</span>
+    <span class="n">dice</span> <span class="o">=</span> <span class="n">Dice</span><span class="p">()</span>
+    <span class="n">dice</span><span class="p">.</span><span class="n">roll</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">dice</span><span class="p">.</span><span class="n">get_position</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="n">dice</span><span class="p">.</span><span class="n">NUMBER_FACES</span>
+
+
+<span class="k">def</span> <span class="nf">test_roll_proba</span><span class="p">():</span>
+    <span class="n">dice</span> <span class="o">=</span> <span class="n">Dice</span><span class="p">(</span><span class="n">probabilities</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+    <span class="n">dice</span><span class="p">.</span><span class="n">roll</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">dice</span><span class="p">.</span><span class="n">get_position</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span>
+</code></pre></div></div>
+
+<p>Créez un environnement de tests et vérifiez que les tests passent.</p>
+
+<h3 id="un-dé-qui-compte">Un dé qui compte</h3>
+
+<p>Nous voulons créer une version particulière d’un dé : un dé permettant de conserver les statistiques de ses lancers. Vous ferez des tests unitaires pour chaque fonctionnalité de ce nouvel objet.</p>
+
+<p>Implémentez la classe <code class="language-plaintext highlighter-rouge">StatDice</code> qui hérite de <code class="language-plaintext highlighter-rouge">Dice</code>, retient le nombre de fois que chaque valeur possible a été obtenue et permet de calculer les statistiques associées. Vous devez donc écrire :</p>
+
+<ul>
+  <li>la méthode <code class="language-plaintext highlighter-rouge">__init__</code> sans oublier d’appeler le constructeur de la classe mère,</li>
+  <li>une nouvelle méthode <code class="language-plaintext highlighter-rouge">set_position</code> qui utilise la méthode <code class="language-plaintext highlighter-rouge">set_position</code> du dé classique et met à jour les décomptes de lancers du dé et un test unitaire pour vérifier que les comptes sont mis à jour,</li>
+  <li>une méthode <code class="language-plaintext highlighter-rouge">stats</code> qui renvoie les fréquences d’apparition de chaque valeur et un test unitaire qui vérifie que le calcul est bien fait,</li>
+  <li>une méthode <code class="language-plaintext highlighter-rouge">mean</code> qui renvoie la moyenne des lancers du dé et un test unitaire.</li>
+</ul>
+
+<p>On pourra stocker le nombre d’apparition de chaque face dans une liste où l’index + 1 correspond à la face.</p>
+
+<p>Prenez le temps de tester votre code (vous pourrez entre autres faire beaucoup de lancers d’un dé et vérifier qu’il suit la loi de probabilité que vous lui avez donnée) et de bien comprendre quelle méthode est appelée et pourquoi quand vous utilisez un <code class="language-plaintext highlighter-rouge">StatDice</code>.</p>
+
+<h4 id="pour-aller-plus-loin">Pour aller plus loin</h4>
+
+<p>On pourra utiliser les <a href="https://docs.python.org/3.8/tutorial/datastructures.html#dictionaries">dictionnaires</a> qui permettent d’associer une clé à une valeur pour faciliter certaines opérations.</p>
 
   </div>
 
