@@ -28,7 +28,6 @@ Nous allons ici uniquement parler de la partie algorithmie du tronc commun. Pour
 
 ## Ordonancement
 
-### Dates
 
   - 29/09/2020 13h30 : **C,M** : *Graphes* [**Pour tous**, Classe virtuelle]
   - 02/10/2020 
