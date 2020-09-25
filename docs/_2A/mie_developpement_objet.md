@@ -53,7 +53,7 @@ La partie code de la séance 4 sera également noté en groupe.
   
 ## Séances
 
-  - [Installation d'un environnement d'installation]({% link cours/mie/installation_environnement_developpement %})
+  - [Installation d'un environnement d'installation]({% link cours/mie/installation_environnement_developpement.md %})
   - Classes et objets
   - Composition et agrégation
   - Héritage
