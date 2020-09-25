@@ -34,7 +34,7 @@ Webpack propose un tutoriel simple pour pouvoir comprendre le fonctionnement du 
 En utilisant Webpack, on importe directement le module dans le fichier script d'entrée dit "source" et au moment de compiler, Webpack créée en sortie un fichier bundle.js dit de "distribution" qui compile le script source avec les fonctions du module lodash qui sont utilisées.
 
  
-Ici, le tutoriel
+[Ici le tutoriel](https://webpack.js.org/guides/getting-started/ )
 
 #  Paramétrer le fichier de configurations 
 
@@ -51,10 +51,15 @@ const path= require('path');
 module.exports = {
 	entry: './src/index.js', 
 	output: { 
-	filename: 'main.js',
-	path: path.resolve(__dirname, 'dist'),
+		filename: 'main.js',
+		path: path.resolve(__dirname, 'dist'),
 		},
+	module: {
+		rules : [ 
+			{test:  /\.txt$/, use: 'raw-loader' }
+			]
+		}
 	};
 ~~~
-
+> **Nota Bene** : Cette configuration spécifie entre autres que pour chaque fichier ".txt" rencontré, le loader qui doit être utilisé est le "raw-loader". 
  
