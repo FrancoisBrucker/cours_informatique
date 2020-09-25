@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Composition et agrégation | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Composition et agrégation" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)" />
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)" />
+<link rel="canonical" href="/cours_informatique/cours/mie/developpement_objet/composition_et_agregation.html" />
+<meta property="og:url" content="/cours_informatique/cours/mie/developpement_objet/composition_et_agregation.html" />
+<meta property="og:site_name" content="cours d’informatique" />
+<script type="application/ld+json">
+{"description":"Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)","@type":"WebPage","headline":"Composition et agrégation","url":"/cours_informatique/cours/mie/developpement_objet/composition_et_agregation.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+</head>
+
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Composition et agrégation</h1>
+  </header>
+
+  <div class="post-content">
+    <h2 id="but">But</h2>
+
+<p>Le but de cette séance est de consolider les concepts fondamentaux de classe et d’objet et d’ajouter les notions de
+composition, d’agrégation et d’attributs de classe. Vous (re)découvrirez aussi les tests unitaires.</p>
+
+<blockquote>
+  <p><strong>Elements de corrigé :</strong> Ils sont disponibles <a href="/cours_informatique/cours/mie/developpement_objet/composition_et_agregation_corrige.html">là</a>. Cependant, ils ne dispensent pas d’aller en cours, c’est une aide à la compréhension.</p>
+</blockquote>
+
+<h2 id="séance-tableau">Séance tableau</h2>
+
+<p>Le <a href="ressources/TD_2_impression.pdf">sujet au format pdf</a>.</p>
+
+<h2 id="séance-code">Séance code</h2>
+
+<h3 id="dice-et-tests-unitaires">Dice et tests unitaires</h3>
+
+<p>On vous propose l’implémentation minimale suivante de la classe <code class="language-plaintext highlighter-rouge">Dice</code> que vous avez du réaliser la dernière fois.</p>
+
+<h4 id="dicepy">dice.py</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy.random</span>
+
+<span class="k">class</span> <span class="nc">Dice</span><span class="p">:</span>
+  <span class="n">NUMBER_FACES</span> <span class="o">=</span> <span class="mi">6</span>
+
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">probabilities</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="bp">self</span><span class="p">.</span><span class="n">position</span> <span class="o">=</span> <span class="n">position</span>
+    <span class="k">if</span> <span class="n">probabilities</span><span class="p">:</span>
+      <span class="bp">self</span><span class="p">.</span><span class="n">probabilities</span> <span class="o">=</span> <span class="n">probabilities</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="bp">self</span><span class="p">.</span><span class="n">probabilities</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="o">/</span> <span class="bp">self</span><span class="p">.</span><span class="n">NUMBER_FACES</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="p">.</span><span class="n">NUMBER_FACES</span>
+
+  <span class="k">def</span> <span class="nf">get_position</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">position</span>
+
+  <span class="k">def</span> <span class="nf">set_position</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_position</span><span class="p">):</span>
+    <span class="bp">self</span><span class="p">.</span><span class="n">position</span> <span class="o">=</span> <span class="n">new_position</span>
+
+  <span class="k">def</span> <span class="nf">roll</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="bp">self</span><span class="p">.</span><span class="n">position</span> <span class="o">=</span> <span class="n">numpy</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">choice</span><span class="p">([</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">NUMBER_FACES</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)],</span> <span class="n">p</span><span class="o">=</span><span class="bp">self</span><span class="p">.</span><span class="n">probabilities</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="mainpy">main.py</h4>
+
+<p>Ecrivez un petit programme qui crée 5 dés, les lance 10 fois et affiche à l’écran la moyenne de la somme des 5 dés.</p>
+
+<h4 id="test_dicepy">test_dice.py</h4>
+
+<p>Pour être sur que l’on puisse utiliser nos dés, on ajoute des tests permettant de vérifier le bon fonctionnement de nos classes.</p>
+
+<p>Tout ce que vous allez implémenter dans tous les TP à partir de celui-ci doit être vérifié par des tests unitaires.</p>
+
+<p>Configurez l’environnement de tests pour faire passer les tests unitaires. Prenez le temps de
+regarder la structure des tests. Si tous ces tests passent êtes vous assurés que l’implémentation est correcte ?</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">dice</span> <span class="kn">import</span> <span class="n">Dice</span>
+
+<span class="k">def</span> <span class="nf">test_dice_creation_no_argument</span><span class="p">():</span>
+    <span class="n">dice</span> <span class="o">=</span> <span class="n">Dice</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">dice</span><span class="p">.</span><span class="n">get_position</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span>
+
+<span class="k">def</span> <span class="nf">test_set_position</span><span class="p">():</span>
+    <span class="n">dice</span> <span class="o">=</span> <span class="n">Dice</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">dice</span><span class="p">.</span><span class="n">get_position</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span>
+    <span class="n">dice</span><span class="p">.</span><span class="n">set_position</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">dice</span><span class="p">.</span><span class="n">get_position</span><span class="p">()</span> <span class="o">==</span> <span class="mi">3</span>
+
+<span class="k">def</span> <span class="nf">test_roll</span><span class="p">():</span>
+    <span class="n">dice</span> <span class="o">=</span> <span class="n">Dice</span><span class="p">()</span>
+    <span class="n">dice</span><span class="p">.</span><span class="n">roll</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">dice</span><span class="p">.</span><span class="n">get_position</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="n">dice</span><span class="p">.</span><span class="n">NUMBER_FACES</span>
+</code></pre></div></div>
+
+<p>On n’a pas testé :</p>
+
+<ul>
+  <li>la création avec un argument. Ajoutez un test qui vérifie que l’argument est bien la position du dé.</li>
+  <li>les probabilités. Ajoutez un test qui vérifie que si une probabilité est à 1 et les autres à 0, on trouve bien la bonne valeur après un roll.</li>
+</ul>
+
+<h3 id="greencarpet">GreenCarpet</h3>
+
+<p>Implémentez la classe <code class="language-plaintext highlighter-rouge">GreenCarpet</code> vue en TD.</p>
+
+<p>On va utiliser les tests pour la créer <strong>au fur et à mesure</strong>. L’idée est de rajouter un test d’une petite fonctionnalité que l’on n’a pas encore puis de rajouter le code correspondant. Cette méthode est appelée <em>Test Driven Development</em>. Elle se décompose en plusieurs étapes :</p>
+
+<ul>
+  <li>écrire un test qui teste une fonctionnalité qu’on veut implémenter,</li>
+  <li>vérifier qu’il échoue (car le code qu’il teste n’existe pas), afin de vérifier que le test est valide,</li>
+  <li>écrire juste le code correspondant au test,</li>
+  <li>vérifier que le test passe,</li>
+  <li>recommencer avec une autre fonctionnalité.</li>
+</ul>
+
+<p>On pourra ainsi. Dans l’ordre :</p>
+
+<ul>
+  <li>commencer par vérifier que l’on peut créer un objet de la classe GreenCarpet</li>
+  <li>qu’un objet de la classe <code class="language-plaintext highlighter-rouge">GreenCarpet</code> a un attribut nommé <code class="language-plaintext highlighter-rouge">dice</code> qui contient 5 dés.</li>
+  <li>que la classe <code class="language-plaintext highlighter-rouge">GreenCarpet</code> contient une méthode roll() qui lance tous les dés.</li>
+  <li>que la classe <code class="language-plaintext highlighter-rouge">GreenCarpet</code> contient une méthode somme() qui rend la somme de la valeur des 5 dés.</li>
+</ul>
+
+<p>Une fois ceci fait, créez un fichier <em>main.py</em> qui modifie le programme de la question précédente en utilisant la classe <code class="language-plaintext highlighter-rouge">GreenCarpet</code>.</p>
+
+<h3 id="pour-aller-plus-loin">Pour aller plus loin</h3>
+
+<p>Ajoutez une méthode permettant de relancer les dés tant qu’on n’obtient pas une paire, un brelan, etc.</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d&#39;informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d&#39;informatique</li><li><a class="u-email" href="mailto:francois.brucker@centrale-marseille.fr">francois.brucker@centrale-marseille.fr</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li><li><a href="https://www.twitter.com/p_____p___"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">p_____p___</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.
+A destination des 1A (tronc commun), des 2A (de l&#39;approfondissement MIE) et des 3A (de l&#39;option digital·e)</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
