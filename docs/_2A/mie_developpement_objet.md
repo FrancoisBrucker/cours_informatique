@@ -53,10 +53,12 @@ La partie code de la séance 4 sera également noté en groupe.
   
 ## Séances
 
-  - [Installation d'un environnement d'installation]({% link cours/mie/installation_environnement_developpement.md %})
-  - Classes et objets
-  - Composition et agrégation
-  - Héritage
-  - UI et programmation événementielle
+  - [Installation d'un environnement d'installation]({% link cours/mie/developpement_objet/installation_environnement_developpement.md %})
+  - [Classes et objets]({% link cours/mie/developpement_objet/classes_et_objets.md %})
+  - [Composition et agrégation]({% link cours/mie/developpement_objet/composition_et_agregation.md %})
+  - [Héritage]({% link cours/mie/developpement_objet/heritage.md %})
+  - [UI et programmation événementielle]({% link cours/mie/developpement_objet/programmation_evenementielle.md %})
+  
+  
 
 

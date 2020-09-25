@@ -36,4 +36,4 @@ On suppose que vous avez une liste de 5 entiers allant de 1 à 6. Créer les tes
 Est-ce que ces fonctions marcheraient aussi si on avait une liste de 5 réels ? De 5 chaînes de caractères ? Pourquoi ?
 
 
-> Lien vers [le code d'un possible corrigé](https://github.com/FrancoisBrucker/cours_informatique/tree/master/docs/cours/mie/code_installation_environnement)
+> Lien vers [le code d'un possible corrigé](https://github.com/FrancoisBrucker/cours_informatique/tree/master/docs/cours/mie/developpement_objet/code_installation_environnement)
