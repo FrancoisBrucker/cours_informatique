@@ -59,6 +59,7 @@ La partie code de la séance 4 sera également noté en groupe.
   - [Héritage]({% link cours/mie/developpement_objet/heritage.md %})
   - [UI et programmation événementielle]({% link cours/mie/developpement_objet/programmation_evenementielle.md %})
   
-  
+## Bonus 
 
-
+ - [test driven development]({% link cours/mie/developpement_objet/tdd_et_test_pattern.md %}) pour vous entraîner à programmer par les tests.
+ - [design pattern]() pour aller un peu plus loin dans le développement objet avec des design patterns.
