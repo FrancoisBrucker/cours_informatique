@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Design Patterns corrigé | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Design Patterns corrigé" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)" />
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)" />
+<link rel="canonical" href="/cours_informatique/cours/mie/developpement_objet/design_patterns_corrige.html" />
+<meta property="og:url" content="/cours_informatique/cours/mie/developpement_objet/design_patterns_corrige.html" />
+<meta property="og:site_name" content="cours d’informatique" />
+<script type="application/ld+json">
+{"description":"Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)","@type":"WebPage","headline":"Design Patterns corrigé","url":"/cours_informatique/cours/mie/developpement_objet/design_patterns_corrige.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+</head>
+
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Design Patterns corrigé</h1>
+  </header>
+
+  <div class="post-content">
+    <h2 id="but">But</h2>
+
+<p>Eléments de corrigé de la séance  <a href="/cours_informatique/cours/mie/developpement_objet/design_patterns.html">design patterns</a>.</p>
+
+<h2 id="éléments-de-cours">Éléments de cours</h2>
+
+<p>IL existe 3 grands types de design pattern, on pourra en donner un exemple pour chaque.</p>
+
+<p>On peut prendre la liste initiale des design pattern du <a href="https://en.wikipedia.org/wiki/Design_Patterns">GOF</a> mais je déconseille singleton qui tient plus de l’anti-pattern que du pattern…</p>
+
+<p>Pour les trois types, on verra :</p>
+
+<ul>
+  <li><strong>type creational</strong> : <em>factory</em>. Créer les objets via des méthodes presque sans paramètre et avec un nom adapté plutôt qu’avec un contructeur avec des milliers de paramètres</li>
+  <li><strong>type structural</strong> : <em>composite</em>. On essayera de le voir dans la prochaine séance.</li>
+  <li><strong>type behavioural</strong> : <em>strategy</em>. Même fonction mais algorithmes différents (pour un tri par exemple)</li>
+</ul>
+
+<p>Parler aussi des anti-pattern, c’est à dire des mauvaises façons de faire qui arrivent d’elles-mêmes si on ne fait pas attention. Voir par exemple : <a href="http://sahandsaba.com/nine-anti-patterns-every-programmer-should-be-aware-of-with-examples.html">là</a></p>
+
+<h2 id="fun-fact">Fun fact</h2>
+
+<p>Le nom de <em>duck typing</em>  vient des Monty Python et plus particulièrement la séquence où <a href="https://www.youtube.com/watch?v=gUXB_jLiT3A">l’on brûle une sorcière</a> dans Sacré Graal. Le <a href="https://en.wikipedia.org/wiki/Python_(programming_language)#History">nom même du langage</a> vient d’eux et pas de l’<a href="https://www.youtube.com/watch?v=NoX-4Hm1rPU">animal</a>. Les informaticiens ont une passion presque maladive pour les Monthy Python. Par exemple le terme de spam vient aussi d’eux, ou plutôt d’un de <a href="https://www.youtube.com/watch?v=cFrtpT1mKy8">leur sketch</a> de leur émission de la BBC qui s’appelait le Monthy Python’s flying circus (un de mes sketch préféré étant l’<a href="https://www.youtube.com/watch?v=1T9Yp-2TYzo">expédition au Kilimandjaro</a> mais on pourrait en citer des dizaines d’autres)),</p>
+
+<p>Cela ne résout bien sûr pas des problèmes aussi compliqués que <a href="https://www.youtube.com/watch?time_continue=2&amp;v=BKorP55Aqvg">tracer 7 lignes rouges perpendiculaires entre elles</a></p>
+
+<h2 id="première-amélioration">Première amélioration</h2>
+
+<p>Il est important que les propriétés d’un objet soient protégées. Ici, on fait rentrer une liste (<code class="language-plaintext highlighter-rouge">choices</code>) dans l’objet. Comme on ne veut pas qu’elle puisse être modifiée, il faut la recopier dans l’objet.</p>
+
+<p>La méthode <code class="language-plaintext highlighter-rouge">roll</code> rend <code class="language-plaintext highlighter-rouge">self</code> ce qui permet de chainer les instructions et rend possible des choses du genre : 
+<code class="language-plaintext highlighter-rouge">print(Choice([1, 2, 2, 3]).roll().get_position())</code>. C’est important de comprendre comment tout ça fonctionne :</p>
+
+<ol>
+  <li>on lit de droite à gauche</li>
+  <li>on applique la méthode à l’objet à gauche du point.</li>
+  <li>puis on remonte les appels pour voir si cela marche.</li>
+</ol>
+
+<p>Pour l’instruction précédente :</p>
+
+<ul>
+  <li>on affiche à l’écran (c’est la méthode <code class="language-plaintext highlighter-rouge">print</code>) l’objet <code class="language-plaintext highlighter-rouge">A</code> qui est le résultat de <code class="language-plaintext highlighter-rouge">Choice([1, 2, 2, 3]).roll().get_position()</code></li>
+  <li>cet objet <code class="language-plaintext highlighter-rouge">A</code> est le résultat de la méthode <code class="language-plaintext highlighter-rouge">get_position()</code> appliquée à l’objet <code class="language-plaintext highlighter-rouge">B</code> qui est <code class="language-plaintext highlighter-rouge">Choice([1, 2, 2, 3]).roll()</code></li>
+  <li>cet objet est <code class="language-plaintext highlighter-rouge">B</code> le résultat de <code class="language-plaintext highlighter-rouge">roll()</code> appliqué à l’objet <code class="language-plaintext highlighter-rouge">C</code> qui est le résultat de <code class="language-plaintext highlighter-rouge">Choice([1, 2, 2, 3])</code></li>
+  <li>l’objet <code class="language-plaintext highlighter-rouge">C</code> et un objet de classe <code class="language-plaintext highlighter-rouge">Choice</code></li>
+</ul>
+
+<p>On peut donc remonter :</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">C</code> est un objet de classe Choice</li>
+  <li><code class="language-plaintext highlighter-rouge">B</code> est le résultat de <code class="language-plaintext highlighter-rouge">roll</code> appliqué à <code class="language-plaintext highlighter-rouge">C</code>, c’est donc <code class="language-plaintext highlighter-rouge">C</code></li>
+  <li><code class="language-plaintext highlighter-rouge">A</code> est un entier valant 1, 2, ou 3</li>
+  <li>on affiche <code class="language-plaintext highlighter-rouge">A</code>, c’est à dire 1, 2 ou 3</li>
+</ul>
+
+<h4 id="choicepy">choice.py</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">random</span>
+
+
+<span class="k">class</span> <span class="nc">Choice</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">choices</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">choices</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">choices</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_position</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    
+    <span class="k">def</span> <span class="nf">get_position</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">_position</span>
+
+    <span class="k">def</span> <span class="nf">roll</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">position</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">choices</span><span class="p">[</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">choices</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)]</span>
+        <span class="k">return</span> <span class="bp">self</span>
+</code></pre></div></div>
+
+<p>Dans le constructeur, on utilise <code class="language-plaintext highlighter-rouge">self.choices[0]</code> car on sait que cela va marcher : c’est un tuple. Si on avait écrit : <code class="language-plaintext highlighter-rouge">self._position = choices[0]</code> on essaie d’obtenir le 1er élément du paramètre choices qui peut être un itérable sans être une liste ou un tuple (un ensemble, un dictionnaire).</p>
+
+<h4 id="testspy">tests.py</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pytest</span>
+
+<span class="kn">from</span> <span class="nn">choice</span> <span class="kn">import</span> <span class="n">Choice</span>
+
+
+<span class="k">def</span> <span class="nf">test_init</span><span class="p">():</span>
+    <span class="n">d1</span> <span class="o">=</span> <span class="n">Choice</span><span class="p">([</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">assert</span> <span class="n">d1</span><span class="p">.</span><span class="n">choices</span> <span class="o">==</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">test_initial_position</span><span class="p">():</span>
+    <span class="n">d1</span> <span class="o">=</span> <span class="n">Choice</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+    <span class="k">assert</span> <span class="n">d1</span><span class="p">.</span><span class="n">get_position</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span>
+
+
+<span class="k">def</span> <span class="nf">test_roll</span><span class="p">():</span>
+    <span class="n">d1</span> <span class="o">=</span> <span class="n">Choice</span><span class="p">([</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">d1</span><span class="p">.</span><span class="n">roll</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">d1</span><span class="p">.</span><span class="n">get_position</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span>
+
+
+<span class="k">def</span> <span class="nf">test_copy_choices</span><span class="p">():</span>
+    <span class="n">initial_list</span> <span class="o">=</span> <span class="p">[</span><span class="s">"a"</span><span class="p">]</span>
+    <span class="n">d1</span> <span class="o">=</span> <span class="n">Choice</span><span class="p">(</span><span class="n">initial_list</span><span class="p">)</span>
+    <span class="n">initial_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s">"CHANGE"</span>
+    <span class="n">d1</span><span class="p">.</span><span class="n">roll</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">d1</span><span class="p">.</span><span class="n">get_position</span><span class="p">()</span> <span class="o">==</span> <span class="s">"a"</span>
+
+
+<span class="k">def</span> <span class="nf">test_no_modification</span><span class="p">():</span>
+    <span class="n">d1</span> <span class="o">=</span> <span class="n">Choice</span><span class="p">([</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">with</span> <span class="n">pytest</span><span class="p">.</span><span class="n">raises</span><span class="p">(</span><span class="nb">Exception</span><span class="p">):</span>
+        <span class="n">d1</span><span class="p">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+</code></pre></div></div>
+
+<h2 id="factory">factory</h2>
+
+<p>Ce <a href="https://www.geeksforgeeks.org/design-patterns-set-2-factory-method/">pattern</a> est super pour créer des objets. En gros, plutôt que d’apprendre par cœur des paramètres d’initialisation, les objets courants sont créés par des méthodes.</p>
+
+<p>On va procéder par étapes.</p>
+
+<h3 id="des-dés-dans-le-main">des dés dans le main.</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">a_dice</span><span class="p">():</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="mi">1000</span>
+    <span class="n">d6</span> <span class="o">=</span> <span class="n">Choice</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)))</span>
+
+    <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+        <span class="n">results</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">d6</span><span class="p">.</span><span class="n">roll</span><span class="p">().</span><span class="n">get_position</span><span class="p">())</span>
+
+    <span class="n">count</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">count</span><span class="p">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="s">"proba: "</span><span class="p">,</span> <span class="n">value</span> <span class="o">/</span> <span class="n">N</span><span class="p">,</span> <span class="s">"; number: "</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">two_dice</span><span class="p">():</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="mi">1000</span>
+    <span class="n">two_d6_choices</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">):</span>
+            <span class="n">two_d6_choices</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">)</span>
+
+    <span class="n">two_d6</span> <span class="o">=</span> <span class="n">Choice</span><span class="p">(</span><span class="n">two_d6_choices</span><span class="p">)</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+        <span class="n">results</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">two_d6</span><span class="p">.</span><span class="n">roll</span><span class="p">().</span><span class="n">get_position</span><span class="p">())</span>
+
+    <span class="n">count</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">count</span><span class="p">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="s">"proba: "</span><span class="p">,</span> <span class="n">value</span> <span class="o">/</span> <span class="n">N</span><span class="p">,</span> <span class="s">"; number: "</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="on-place-le-tout-dans-le-fichier-de-la-classe">On place le tout dans le fichier de la classe</h3>
+
+<h4 id="choicepy-1">choice.py</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="k">class</span> <span class="nc">Choice</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">choices</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">choices</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">choices</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">position</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">get_position</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">position</span>
+
+    <span class="k">def</span> <span class="nf">roll</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">position</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">choices</span><span class="p">[</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">choices</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)]</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+
+<span class="k">def</span> <span class="nf">dice</span><span class="p">():</span>
+        <span class="k">return</span> <span class="n">Choice</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>    
+
+<span class="k">def</span> <span class="nf">two_dices</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">Choice</span><span class="p">([</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)])</span>
+</code></pre></div></div>
+
+<h4 id="testspy-1">tests.py</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pytest</span>
+
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+
+<span class="kn">from</span> <span class="nn">choice</span> <span class="kn">import</span> <span class="n">Choice</span>
+<span class="kn">import</span> <span class="nn">choice</span>
+
+
+<span class="k">def</span> <span class="nf">test_init</span><span class="p">():</span>
+    <span class="n">d1</span> <span class="o">=</span> <span class="n">Choice</span><span class="p">([</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">assert</span> <span class="n">d1</span><span class="p">.</span><span class="n">choices</span> <span class="o">==</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">test_initial_position</span><span class="p">():</span>
+    <span class="n">d1</span> <span class="o">=</span> <span class="n">Choice</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+    <span class="k">assert</span> <span class="n">d1</span><span class="p">.</span><span class="n">get_position</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span>
+
+
+<span class="k">def</span> <span class="nf">test_roll</span><span class="p">():</span>
+    <span class="n">d1</span> <span class="o">=</span> <span class="n">Choice</span><span class="p">([</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">d1</span><span class="p">.</span><span class="n">roll</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">d1</span><span class="p">.</span><span class="n">get_position</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span>
+
+
+<span class="k">def</span> <span class="nf">test_sets</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">Choice</span><span class="p">({</span><span class="mi">1</span><span class="p">}).</span><span class="n">roll</span><span class="p">().</span><span class="n">get_position</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span>
+
+
+<span class="k">def</span> <span class="nf">test_copy_choices</span><span class="p">():</span>
+    <span class="n">initial_list</span> <span class="o">=</span> <span class="p">[</span><span class="s">"a"</span><span class="p">]</span>
+    <span class="n">d1</span> <span class="o">=</span> <span class="n">Choice</span><span class="p">(</span><span class="n">initial_list</span><span class="p">)</span>
+    <span class="n">initial_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s">"CHANGE"</span>
+    <span class="n">d1</span><span class="p">.</span><span class="n">roll</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">d1</span><span class="p">.</span><span class="n">get_position</span><span class="p">()</span> <span class="o">==</span> <span class="s">"a"</span>
+
+
+<span class="k">def</span> <span class="nf">test_no_modification</span><span class="p">():</span>
+    <span class="n">d1</span> <span class="o">=</span> <span class="n">Choice</span><span class="p">([</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">with</span> <span class="n">pytest</span><span class="p">.</span><span class="n">raises</span><span class="p">(</span><span class="nb">Exception</span><span class="p">):</span>
+        <span class="n">d1</span><span class="p">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+
+
+<span class="k">def</span> <span class="nf">test_factory_dice</span><span class="p">():</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">choice</span><span class="p">.</span><span class="n">dice</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">d</span><span class="p">.</span><span class="n">choices</span> <span class="o">==</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">test_factory_two_dice</span><span class="p">():</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">choice</span><span class="p">.</span><span class="n">two_dices</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">Counter</span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">choices</span><span class="p">)</span> <span class="o">==</span> <span class="p">{</span><span class="mi">2</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">11</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="memento">Memento</h2>
+
+<p>Pour créer un <a href="https://www.geeksforgeeks.org/memento-design-pattern/">Memento</a>, la façon la plus simple est d’utiliser des conventions. On dira que le Memento fonctionne pour tout objet ayant deux méthodes :</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">get_position</code></li>
+  <li><code class="language-plaintext highlighter-rouge">set_position</code></li>
+</ul>
+
+<p>Ce qui donne :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Memento</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">object_to_save</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_stored_state</span> <span class="o">=</span> <span class="n">object_to_save</span><span class="p">.</span><span class="n">get_position</span><span class="p">()</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_object_to_restore</span> <span class="o">=</span> <span class="n">object_to_save</span>
+    
+    <span class="k">def</span> <span class="nf">restore</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_object_to_restore</span><span class="p">.</span><span class="n">set_position</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">_stored_state</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="choicepy-2">choice.py</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="k">class</span> <span class="nc">Choice</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">choices</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">choices</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">choices</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">position</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">get_position</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">position</span>
+        
+    <span class="k">def</span> <span class="nf">set_position</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">position</span> <span class="o">=</span> <span class="n">new</span>
+        
+
+    <span class="k">def</span> <span class="nf">roll</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">set_position</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">choices</span><span class="p">[</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">choices</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)])</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+
+<span class="k">def</span> <span class="nf">dice</span><span class="p">():</span>
+        <span class="k">return</span> <span class="n">Choice</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>    
+
+<span class="k">def</span> <span class="nf">two_dices</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">Choice</span><span class="p">([</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)])</span>
+</code></pre></div></div>
+
+<h4 id="mementopy">memento.py</h4>
+
+<p>On stocke un état et un objet pour pouvoir le restaurer plus tard :</p>
+
+<ul>
+  <li>l’objet et son état sont stockés à l’initialisation</li>
+  <li>une méthode <code class="language-plaintext highlighter-rouge">restore()</code> permet de remettre l’objet à l’état qu’il avait à l’initialisation du Memento.</li>
+</ul>
+
+<h4 id="test_mementopy">test_memento.py</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">choice</span>
+<span class="kn">from</span> <span class="nn">memento</span> <span class="kn">import</span> <span class="n">Memento</span>
+
+
+<span class="k">def</span> <span class="nf">test_memento</span><span class="p">():</span>
+    <span class="n">dice</span> <span class="o">=</span> <span class="n">choice</span><span class="p">.</span><span class="n">dice</span><span class="p">()</span>
+    <span class="n">dice</span><span class="p">.</span><span class="n">set_position</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="n">memento</span> <span class="o">=</span> <span class="n">Memento</span><span class="p">(</span><span class="n">dice</span><span class="p">)</span>
+    <span class="n">dice</span><span class="p">.</span><span class="n">set_position</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+
+    <span class="n">memento</span><span class="p">.</span><span class="n">restore</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">dice</span><span class="p">.</span><span class="n">get_position</span><span class="p">()</span> <span class="o">==</span> <span class="mi">2</span>
+</code></pre></div></div>
+
+<h2 id="undo">Undo</h2>
+
+<h4 id="undopy">undo.py</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">memento</span> <span class="kn">import</span> <span class="n">Memento</span>
+
+<span class="k">class</span> <span class="nc">Undo</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_actions</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">nb_undos</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">_actions</span><span class="p">)</span>
+        
+    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dice</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_actions</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">Memento</span><span class="p">(</span><span class="n">dice</span><span class="p">))</span>
+    
+    <span class="k">def</span> <span class="nf">restore</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">_actions</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">_actions</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span>
+            <span class="n">x</span><span class="p">.</span><span class="n">restore</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h4 id="test_undopy">test_undo.py</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">choice</span>
+<span class="kn">from</span> <span class="nn">undo</span> <span class="kn">import</span> <span class="n">Undo</span>
+
+<span class="k">def</span> <span class="nf">test_init</span><span class="p">():</span>
+    <span class="n">dice</span> <span class="o">=</span> <span class="n">choice</span><span class="p">.</span><span class="n">dice</span><span class="p">()</span>
+    <span class="n">dice</span><span class="p">.</span><span class="n">set_position</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">undo</span> <span class="o">=</span> <span class="n">Undo</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">undo</span><span class="p">.</span><span class="n">nb_undos</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span>
+    
+
+<span class="k">def</span> <span class="nf">test_save_restore_once</span><span class="p">():</span>
+    <span class="n">dice</span> <span class="o">=</span> <span class="n">choice</span><span class="p">.</span><span class="n">dice</span><span class="p">()</span>
+    <span class="n">undo</span> <span class="o">=</span> <span class="n">Undo</span><span class="p">()</span>
+
+    <span class="n">dice</span><span class="p">.</span><span class="n">set_position</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">undo</span><span class="p">.</span><span class="n">save</span><span class="p">(</span><span class="n">dice</span><span class="p">)</span>
+    <span class="n">dice</span><span class="p">.</span><span class="n">set_position</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+    
+    
+    <span class="k">assert</span> <span class="n">undo</span><span class="p">.</span><span class="n">nb_undos</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span>
+    
+    <span class="n">undo</span><span class="p">.</span><span class="n">restore</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">dice</span><span class="p">.</span><span class="n">get_position</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span>
+
+<span class="k">def</span> <span class="nf">test_save_restore_several</span><span class="p">():</span>
+    <span class="n">dice</span> <span class="o">=</span> <span class="n">choice</span><span class="p">.</span><span class="n">dice</span><span class="p">()</span>
+    <span class="n">undo</span> <span class="o">=</span> <span class="n">Undo</span><span class="p">()</span>
+
+    <span class="n">dice</span><span class="p">.</span><span class="n">set_position</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    
+    <span class="n">undo</span><span class="p">.</span><span class="n">save</span><span class="p">(</span><span class="n">dice</span><span class="p">)</span>
+    <span class="n">dice</span><span class="p">.</span><span class="n">set_position</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+    <span class="n">undo</span><span class="p">.</span><span class="n">save</span><span class="p">(</span><span class="n">dice</span><span class="p">)</span>
+    <span class="n">dice</span><span class="p">.</span><span class="n">set_position</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+    
+    
+    <span class="k">assert</span> <span class="n">undo</span><span class="p">.</span><span class="n">nb_undos</span><span class="p">()</span> <span class="o">==</span> <span class="mi">2</span>
+    
+    <span class="n">undo</span><span class="p">.</span><span class="n">restore</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">dice</span><span class="p">.</span><span class="n">get_position</span><span class="p">()</span> <span class="o">==</span> <span class="mi">5</span>
+    <span class="k">assert</span> <span class="n">undo</span><span class="p">.</span><span class="n">nb_undos</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span>
+    
+    <span class="n">undo</span><span class="p">.</span><span class="n">restore</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">dice</span><span class="p">.</span><span class="n">get_position</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span>
+    <span class="k">assert</span> <span class="n">undo</span><span class="p">.</span><span class="n">nb_undos</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span>
+</code></pre></div></div>
+
+<h4 id="mainpy">main.py</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">choice</span>
+<span class="kn">from</span> <span class="nn">undo</span> <span class="kn">import</span> <span class="n">Undo</span>
+
+<span class="n">dice</span> <span class="o">=</span> <span class="n">choice</span><span class="p">.</span><span class="n">dice</span><span class="p">()</span>
+
+<span class="n">undo</span> <span class="o">=</span> <span class="n">Undo</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">undo</span><span class="p">.</span><span class="n">save</span><span class="p">(</span><span class="n">dice</span><span class="p">)</span>
+    <span class="n">dice</span><span class="p">.</span><span class="n">roll</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">dice</span><span class="p">.</span><span class="n">get_position</span><span class="p">())</span>
+    
+<span class="k">print</span><span class="p">(</span><span class="s">"--------"</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">undo</span><span class="p">.</span><span class="n">restore</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">dice</span><span class="p">.</span><span class="n">get_position</span><span class="p">())</span>
+</code></pre></div></div>
+
+<p>Qui pourra rendre le code suivant :</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    1
+    2
+    4
+    3
+    2
+    5
+    3
+    2
+    4
+    4
+    --------
+    4
+    4
+    2
+    3
+    5
+    2
+    3
+    4
+    2
+    1
+</code></pre></div></div>
+
+<h3 id="un-undo-dans-dice">Un undo dans dice</h3>
+
+<h4 id="choiceundopy">choiceUndo.py</h4>
+
+<p>On a bien fait de modifier la méthode <code class="language-plaintext highlighter-rouge">roll</code> de <code class="language-plaintext highlighter-rouge">Choice</code> pour qu’elle utilise <code class="language-plaintext highlighter-rouge">set_position</code>, ceci nous permet de ne modifier que <code class="language-plaintext highlighter-rouge">set_position</code> pour la classe <code class="language-plaintext highlighter-rouge">ChoiceUndo</code>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">choice</span> <span class="kn">import</span> <span class="n">Choice</span>
+
+<span class="k">class</span> <span class="nc">ChoiceUndo</span><span class="p">(</span><span class="n">Choice</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">choices</span><span class="p">,</span> <span class="n">undo</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">().</span><span class="n">__init__</span><span class="p">(</span><span class="n">choices</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">undo</span> <span class="o">=</span> <span class="n">undo</span>
+
+    <span class="k">def</span> <span class="nf">set_position</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">undo</span><span class="p">.</span><span class="n">save</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">().</span><span class="n">set_position</span><span class="p">(</span><span class="n">new</span><span class="p">)</span>
+</code></pre></div></div>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d&#39;informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d&#39;informatique</li><li><a class="u-email" href="mailto:francois.brucker@centrale-marseille.fr">francois.brucker@centrale-marseille.fr</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li><li><a href="https://www.twitter.com/p_____p___"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">p_____p___</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.
+A destination des 1A (tronc commun), des 2A (de l&#39;approfondissement MIE) et des 3A (de l&#39;option digital·e)</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
