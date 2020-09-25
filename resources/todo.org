@@ -8,11 +8,11 @@
 * cours
 ** 3A
 *** dfs
-**** TODO git revenir en arrière et faire sauter des commit (commer jardiner ses commits).
+**** DONE git revenir en arrière et faire sauter des commit (commer jardiner ses commits).
 **** TODO add all global settings for git
 ** 2A
 *** MIE
-**** TODO remettre les tdd et le design pattern
+**** DONE remettre les tdd et le design pattern
 
 * tuto
 ** TODO remettre tuto python

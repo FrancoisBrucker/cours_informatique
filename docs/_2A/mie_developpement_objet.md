@@ -62,4 +62,4 @@ La partie code de la séance 4 sera également noté en groupe.
 ## Bonus 
 
  - [test driven development]({% link cours/mie/developpement_objet/tdd_et_test_pattern.md %}) pour vous entraîner à programmer par les tests.
- - [design pattern]() pour aller un peu plus loin dans le développement objet avec des design patterns.
+ - [design patterns]({% link cours/mie/developpement_objet/design_patterns.md %}). Pour aller un peu plus loin dans le développement objet avec des design patterns.
