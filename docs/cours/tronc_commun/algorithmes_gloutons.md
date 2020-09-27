@@ -25,6 +25,9 @@ Problème :
 
 Pour beaucoup de problèmes d'optimisation, un algorithme glouton est optimal pour une version simplifiée du problème. Comme l'algorithme va vite, on peut recommencer plusieurs fois pour trouver une meilleure solution.
 
+
+> Une version [pdf pour les TDs]({{ "ressources/algorithmes_gloutons/latex/algorithmes_gloutons.pdf" }}) est disponible.
+
 > Le corrigé est [disponible]({% link cours/tronc_commun/algorithmes_gloutons_corrige.md %})
 
 ## optimalité et glouton
