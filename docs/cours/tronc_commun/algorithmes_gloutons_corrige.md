@@ -25,7 +25,7 @@ La constante $$\alpha$$ est un paramètre dit de vitesse de convergence. Vous po
   
 De part la définition de la dérivée, l'algorithme va suivre la pente et se loger dans un minimum : il va osciller autour d'une valeur où la dérivée change. Si la fonction est concave on va bien trouver le minimum global, sinon on peut se retrouver dans un minimum local.
 
-## ordonnancement
+## exercice 2 : ordonnancement
 
 ### ensemble compatible
 
@@ -37,9 +37,8 @@ De part la définition de la dérivée, l'algorithme va suivre la pente et se lo
   - initialisation : si une solution ne contient pas l'élément de prix maximum on l'échange avec le 1er élément choisi et la solution reste compatible tout en ayant un profit plus grand
   - récurrence : clair. S'il reste dans les solutions possible l'élément qu'on rajoute à l'étape $$i$$ on peut toujours le rendre à la place de celui pris par l'autre solution pour augmenter le profit.
 
-## optimalité
+## exercice 3 : le rendu de pièces
 
-### Algo général de rendu de pièces
 
 * **Problème** : "comment rendre R sous en un nombre minimum de pièces"
 * **algo glouton** : 
@@ -93,7 +92,8 @@ Le système de pièce européen fonctionne puisque l'on a des pièces billets de
 * peut poser des soucis : les machines à café vous indiquent qu'elles ne peuvent plus vous rendre la monnaie car il n'y a plus de pièces d'une valeur particulière, alors qu'en réalité elle disposent de la somme à rendre en utilisant une autre combinaison.
 
 
-## Problèmes de salles de cinéma
+##  exercice 4 :  allocation de salles de cinéma
+
 
 Chaque film est décrit par un couple $(d, f)$ où $d$ est la date de début du film et $f$ la date de fin. 
 
@@ -200,7 +200,8 @@ def nombre_salle_min_films(films):
 
 La preuve est ici aisée car si on rajoute une salle pour loger un nouveau film $f$, ca veut dire que pour toutes les $k$ salles actuelle il y a un film qui n'est pas fini pendant le début du nouveau film. Ca signifie qu'il existe $k$ films dont le début est avant $f$ et la fin après $f$ : il faut donc au moins $k+1$ salles pour jouer tous ces films en parallèle.
 
-## sac à dos 
+## exercice 5 : le problème du sac à dos
+
 
 ### on essaie 
 
@@ -281,12 +282,13 @@ Donc :
 
 Notre hypothèse arrivant à une contradiction, elle était fausse : la solution de l'algorithme glouton est optimale.
 
+
+
+### sac à dos non fractionnel
+
 #### si on ne peut pas couper ?
 
-Notre algorithme ne fonctionne pas si on ne peut pas prendre de factions. En effet il rendrait : "A" et "B" (puisque une fois mis "A" on ne peut pas mettre "C") de prix total 110€, alors que la réponse optimale serait de prendre "C" qui rapporte 120€.
-
-
-### sac à dos non fractionnel optimal
+Notre algorithme glouton ne fonctionne pas si on ne peut pas prendre de factions. En effet il rendrait : "A" et "B" (puisque une fois mis "A" on ne peut pas mettre "C") de prix total 110€, alors que la réponse optimale serait de prendre "C" qui rapporte 120€.
 
 #### algorithme
 
@@ -312,8 +314,8 @@ La complexité en nombre d'opération de l'algorithme est en $$\mathcal{O}(n * W
 
 #### hein ?
 
-Ca semble peut, mais en fait c'est beacuoup ! Cette complexité ne dépend pas polynomialement de la taille du problème en entrée. En effet, le poids $$W$$ est codé avec $$log_2(W)$$ bits en machine, donc le nombre d'opérations pour résoudre le problème du sac à dos est ici exponentiel par rapport à la taille en entrée.
+Ca semble être une complexité polynomiale, mais c'est dans le stockage des variables qu'on prend une place exponentielle par rapport à la taille en entrée du problème ! En effet, le poids $$W$$ est codé avec $$log_2(W)$$ bits en machine, donc la place mêmoire prise pour stocker notre tableau  est ici exponentiel par rapport à la taille en entrée.
 
-Ouf, nous voilà rassuré. Ce n'est pas la peine de brûler tous les livres d'algortihmie. Les problèmes les plus dur du monde sont effectivement dur à résoudre (un nombre exponentiel d'opérations).
+Ouf, nous voilà rassuré. Ce n'est pas la peine de brûler tous les livres d'algortihmie. Les problèmes les plus dur du monde sont effectivement dur à résoudre (un nombre exponentiel d'opérations en temps et/ou en mémoire).
 
 

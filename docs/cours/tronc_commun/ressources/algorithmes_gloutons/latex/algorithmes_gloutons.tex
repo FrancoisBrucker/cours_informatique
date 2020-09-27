@@ -58,6 +58,12 @@
 \hypertarget{but}{%
 \subsection{But}\label{but}}
 
+Montrer l'intérêt des algorithmes gloutons, la façon de les construire
+et de prouver qu'ils fonctionnent.
+
+\hypertarget{algortihme-glouton}{%
+\subsection{Algortihme glouton}\label{algortihme-glouton}}
+
 Un \href{https://fr.wikipedia.org/wiki/Algorithme_glouton}{algorithme
 glouton} choisi à chaque étape la meilleure possibilité localement. Ce
 type d'algorithme est très utilisé pour résoudre des problèmes où l'on
@@ -94,7 +100,7 @@ solution.
 
 
 \hypertarget{optimalituxe9-et-glouton}{%
-\subsection{optimalité et glouton}\label{optimalituxe9-et-glouton}}
+\subsubsection{optimalité et glouton}\label{optimalituxe9-et-glouton}}
 
 Les problèmes d'optimalité demandent de trouver, parmi un ensemble de
 solutions possible, une solution minimisant (ou maximisant) un critère.
@@ -127,26 +133,6 @@ petit pour trouver une solution approchée à un problème plus général.
 Cette classe d'algorithme qui construit itérativement d'une solution est
 appelée \emph{algorithmes gloutons}.
 
-\hypertarget{exercice-1-le-gradient}{%
-\subsubsection{exercice 1 : le gradient}\label{exercice-1-le-gradient}}
-
-On suppose que l'on feuille trouver le minimum d'une fonction $f$
-dérivable.
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  Décrivez l'algorithme du gradient sous la forme d'un algorithme
-  glouton
-\item
-  montrer qu'il peut converger vers la solution
-\item
-  montrer qu'il peut ne pas converger vers la solution
-\end{enumerate}
-
-L'algorithme de la descente de gradiant : qu'un minimum local.
-
 \hypertarget{condition-nuxe9cessaire-et-suffisante-doptimalituxe9.}{%
 \subsubsection{condition nécessaire et suffisante
 d'optimalité.}\label{condition-nuxe9cessaire-et-suffisante-doptimalituxe9.}}
@@ -168,8 +154,27 @@ faut :
   la fin.
 \end{itemize}
 
-\hypertarget{ordonnancement}{%
-\subsection{ordonnancement}\label{ordonnancement}}
+\hypertarget{exercice-1-le-gradient}{%
+\subsection{exercice 1 : le gradient}\label{exercice-1-le-gradient}}
+
+On suppose que l'on feuille trouver le minimum d'une fonction \(f\)
+dérivable.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Décrivez l'algorithme du gradient sous la forme d'un algorithme
+  glouton
+\item
+  montrer qu'il peut converger vers la solution
+\item
+  montrer qu'il peut ne pas converger vers la solution
+\end{enumerate}
+
+\hypertarget{exercice-2-ordonnancement}{%
+\subsection{exercice 2 :
+ordonnancement}\label{exercice-2-ordonnancement}}
 
 Les problèmes d'ordonnancement son multiples. Certains sont durs
 d'autres faciles. Mais un algorithme glouton permet de trouver souvent
@@ -215,9 +220,13 @@ Montrer que l'algorithme glouton suivant est optimal :
 optimale et la solution donnée par notre algorithme en regardant la
 première différence.
 
-\hypertarget{application-le-rendu-de-piuxe8ces}{%
-\subsection{Application le rendu de
-pièces}\label{application-le-rendu-de-piuxe8ces}}
+\hypertarget{exercice-3-le-rendu-de-piuxe8ces}{%
+\subsection{exercice 3 : le rendu de
+pièces}\label{exercice-3-le-rendu-de-piuxe8ces}}
+
+\hypertarget{un-systuxe8me-de-piuxe8ce-particulier}{%
+\subsubsection{Un système de pièce
+particulier}\label{un-systuxe8me-de-piuxe8ce-particulier}}
 
 Proposez un algorithme glouton permettant de rendre la monnaie d'un
 achat en un nombre minimum de pièces valant 5, 3 et 1 pokédollar.
@@ -232,23 +241,23 @@ Démontrez que votre algorithme est bien optimal.
 \tightlist
 \item
   donnez une version générale de votre algorithme de rendu de pièce,
-  c'est à dire où l'on a $n$ pièces valant
-  $p_1 < p_2 < \dots < p_n$.
+  c'est à dire où l'on a \(n\) pièces valant
+  \(p_1 < p_2 < \dots < p_n\).
 \item
   Cet algorithme glouton de va pas donner de solution optimale quelque
   soit le système de pièce, donnez un exemple pour lequel ça ne
   fonctionne pas.
 \item
   montrer que l'algorithme glouton fonctionne pour un système de pièces
-  supercroissant, c'est à dire où $p_i \geq \sum_{j< i} p_j$ avec
+  supercroissant, c'est à dire où \(p_i \geq \sum_{j< i} p_j\) avec
   \(_i\) les valeurs de pièces rangés par ordre croissant.
 \item
-  donnez un exemple de système de pièce supercroissant.
+  donnez un exemple de système de pièces supercroissant.
 \end{itemize}
 
-\hypertarget{probluxe8mes-de-salles-de-cinuxe9ma}{%
-\subsection{Problèmes de salles de
-cinéma}\label{probluxe8mes-de-salles-de-cinuxe9ma}}
+\hypertarget{exercice-4-allocation-de-salles-de-cinuxe9ma}{%
+\subsection{exercice 4 : allocation de salles de
+cinéma}\label{exercice-4-allocation-de-salles-de-cinuxe9ma}}
 
 Un gérant de cinéma a en sa possession \(m\) films caractérisés chacun
 par un couple (\(d_i\), \(f_i\)) où \(d_i\) est l'heure de début du film
@@ -269,9 +278,9 @@ Proposez (et prouvez) un algorithme permettant de rendre le nombre
 minium de salle et son organisation permettant de projeter tous les
 films.
 
-\hypertarget{le-probluxe8me-du-sac-uxe0-dos}{%
-\subsection{Le problème du sac à
-dos}\label{le-probluxe8me-du-sac-uxe0-dos}}
+\hypertarget{exercice-5-le-probluxe8me-du-sac-uxe0-dos}{%
+\subsection{exercice 5 : le problème du sac à
+dos}\label{exercice-5-le-probluxe8me-du-sac-uxe0-dos}}
 
 Le
 \href{https://fr.wikipedia.org/wiki/Probl\%C3\%A8me_du_sac_\%C3\%A0_dos}{problème
@@ -299,8 +308,8 @@ On dispose de :
 \begin{itemize}
 \tightlist
 \item
-  $n$ objets ayant chacun un poids $w_i$ (\emph{weight}) et une
-  valeur nutritionnelle $p_i$ ($1 \leq i \leq n$)
+  \(n\) objets ayant chacun un poids \(w_i\) (\emph{weight}) et une
+  valeur nutritionnelle \(p_i\) (\(1 \leq i \leq n\))
 \item
   d'un sac à dos d'une contenance de W
 \end{itemize}
@@ -309,7 +318,7 @@ On veut maximiser la valeur nutritionnelle que l'on peut emporter avec
 notre sac.
 
 \hypertarget{on-essaie}{%
-\subsubsection{On essaie}\label{on-essaie}}
+\subsubsection{on essaie}\label{on-essaie}}
 
 On suppose que l'on est un voleur et que l'on peut voler 3 produits :
 
@@ -364,48 +373,59 @@ leurs valeurs et que notre sac à une capacité de 4kg et de 5kg.
 Proposez un algorithme glouton pour résoudre ce problème et montrer
 qu'il est optimal.
 
+\hypertarget{sac-uxe0-dos-non-fractionnel}{%
+\subsubsection{sac à dos non
+fractionnel}\label{sac-uxe0-dos-non-fractionnel}}
+
 \hypertarget{si-on-ne-peut-pas-couper}{%
 \paragraph{si on ne peut pas couper ?}\label{si-on-ne-peut-pas-couper}}
 
-Monter un exemple où le glouton ne marche pas si l'on ne peut pas
-prendre une partie fractionnelle d'un produit.
+Donner un exemple où l'algorithme glouton ne donne pas la solution
+optimale pas si l'on ne peut pas prendre une partie fractionnelle d'un
+produit.
 
-\hypertarget{sac-uxe0-dos-non-fractionnel-optimal}{%
-\subsubsection{sac à dos non fractionnel
-optimal}\label{sac-uxe0-dos-non-fractionnel-optimal}}
+\hypertarget{solution-optimale}{%
+\paragraph{solution optimale}\label{solution-optimale}}
 
 On peut trouver un algorithme optimal pour le problème du sac à dos en
 remarquant que l'on peut construire une solution optimale avec \(i\)
-objets à partir d'une solution optimale à \$i-1 objets.
+objets à partir d'une solution optimale à \(i-1\) objets.
 
-En effet la solution optimale à $i$ objets pour une capacité $W$ est
+En effet la solution optimale à \(i\) objets pour une capacité \(W\) est
 soit :
 
 \begin{itemize}
 \tightlist
 \item
-  une solution optimale à $i-1$ objets pour une capacité $W$ si on
+  une solution optimale à \(i-1\) objets pour une capacité \(W\) si on
   ne prend pas l'objet \(i\),
 \item
-  une solution optimale à $i-1$ objets pour une capacité $W - w_i$
+  une solution optimale à \(i-1\) objets pour une capacité \(W - w_i\)
   si on prend l'objet \(i\).
 \end{itemize}
 
-\hypertarget{algorithme-1}{%
-\paragraph{algorithme}\label{algorithme-1}}
+\hypertarget{algorithme-optimal}{%
+\paragraph{algorithme optimal}\label{algorithme-optimal}}
 
 Ecrivez l'algorithme permettant de résoudre le problème.
 
 Et explicitez pourquoi cet algorithme n'est pas glouton.
 
-\hypertarget{on-maurait-menti}{%
-\paragraph{on m'aurait menti ?}\label{on-maurait-menti}}
+\hypertarget{complexituxe9-de-lalgorithme}{%
+\paragraph{Complexité de
+l'algorithme}\label{complexituxe9-de-lalgorithme}}
 
 Quel est la complexité de cet algorithme.
 
-\hypertarget{hein}{%
-\paragraph{hein ?}\label{hein}}
+\hypertarget{le-millions-de-dollars}{%
+\paragraph{Le millions de dollars}\label{le-millions-de-dollars}}
 
-Quel est le piège ?
+Le progblème du sac à dos fait partie des problème ``les plus dur de
+l'informatique'', or on a un algorithme polynomial pour le
+résoudre\ldots{} Soit on vient de démontrer
+\href{https://fr.wikipedia.org/wiki/Probl\%C3\%A8mes_du_prix_du_mill\%C3\%A9naire\#Probl\%C3\%A8me_ouvert_P_=_NP}{P
+= NP} et on a gagné 1millions de dollars, soit il y a un piège.
+
+Quel est ce piège ?
 
 \end{document}
