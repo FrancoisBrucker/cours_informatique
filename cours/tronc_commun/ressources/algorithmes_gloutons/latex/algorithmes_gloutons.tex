@@ -67,9 +67,9 @@ et de prouver qu'ils fonctionnent.
 Un \href{https://fr.wikipedia.org/wiki/Algorithme_glouton}{algorithme
 glouton} choisi à chaque étape la meilleure possibilité localement. Ce
 type d'algorithme est très utilisé pour résoudre des problèmes où l'on
-veut une réponse rapide à un problème, mais pas forcment une réponse
-optimale. D'un point de vue théorique, ces algorithmes extrêmement
-important, il sont par exemple en bijection avec la
+veut une réponse rapide, mais pas forcément une réponse optimale. D'un
+point de vue théorique, ces algorithmes extrêmement important, il sont
+par exemple en bijection avec la
 \href{https://fr.wikipedia.org/wiki/Matro\%C3\%AFde}{structure de
 matroïde}.
 
@@ -88,7 +88,7 @@ Problème :
 \begin{itemize}
 \tightlist
 \item
-  ne donne pas forcément le meilleur résultat : une \emph{heursitique}
+  ne donne pas forcément le meilleur résultat : une \emph{heurstique}
 \item
   pas forcément de solution unique
 \end{itemize}
@@ -97,7 +97,6 @@ Pour beaucoup de problèmes d'optimisation, un algorithme glouton est
 optimal pour une version simplifiée du problème. Comme l'algorithme va
 vite, on peut recommencer plusieurs fois pour trouver une meilleure
 solution.
-
 
 \hypertarget{optimalituxe9-et-glouton}{%
 \subsubsection{optimalité et glouton}\label{optimalituxe9-et-glouton}}
@@ -113,7 +112,7 @@ Par exemple :
   trouver celle qui minimise le coûts tout en maximisant la qualité
   totale des pièces,
 \item
-  parmis tous les parcours passant par un ensemble de villes données,
+  parmi tous les parcours passant par un ensemble de villes données,
   choisir celui qui minimise le nombre de kilomètres parcourus
 \item
   maximiser le nombre de films projetés dans un multiplexe de cinéma
@@ -127,7 +126,7 @@ beaucoup de solutions ça peut prendre vraiment beaucoup de temps.
 
 Certains problèmes cependant permettent d'être résolus en construisant
 petit à petit une solution, sans jamais remettre en cause ses choix. On
-peut alors souvent trouver très rapidement la meilleurs solution
+peut alors souvent trouver très rapidement la meilleure solution
 possible. On peut également utiliser cette solution construite petit à
 petit pour trouver une solution approchée à un problème plus général.
 Cette classe d'algorithme qui construit itérativement d'une solution est
@@ -157,7 +156,7 @@ faut :
 \hypertarget{exercice-1-le-gradient}{%
 \subsection{exercice 1 : le gradient}\label{exercice-1-le-gradient}}
 
-On suppose que l'on feuille trouver le minimum d'une fonction \(f\)
+On suppose que l'on veuille trouver le minimum d'une fonction \(f\)
 dérivable.
 
 \begin{enumerate}
@@ -176,23 +175,23 @@ dérivable.
 \subsection{exercice 2 :
 ordonnancement}\label{exercice-2-ordonnancement}}
 
-Les problèmes d'ordonnancement son multiples. Certains sont durs
+Les problèmes d'ordonnancement sont multiples. Certains sont durs
 d'autres faciles. Mais un algorithme glouton permet de trouver souvent
 une solution acceptable pour beaucoup d'entres eux et même parfois
 optimale pour certains problèmes.
 
-Celui ci est résoluble par un algorithme glouton : On considère \(m\)
-produits de durée 1 à fabriquer. Si le produit \(i\) est réalisée avant
-la date \(d_i\) on peut le vendre pour un prix \(p_i\), sinon il est
-invendable. Proposez un algorithme permettant de maximiser les profits
-en considérant que l'on a qu'un seul ouvrier.
+Le problème suivant est résoluble par un algorithme glouton : On
+considère \(m\) produits de durée 1 à fabriquer. Si le produit \(i\) est
+réalisée avant la date \(d_i\) on peut le vendre pour un prix \(p_i\),
+sinon il est invendable. Proposez un algorithme permettant de maximiser
+les profits en considérant que l'on a qu'un seul ouvrier.
 
 \hypertarget{ensemble-compatible}{%
 \subsubsection{ensemble compatible}\label{ensemble-compatible}}
 
-Un ensemble de produit est dit \emph{compatible} s'il existe un
-ordonnancement de leur de production permettant de tous les vendre
-(chaque produit est fabriqué avant sa date de péremption).
+Un ensemble de produits est dit \emph{compatible} s'il existe un
+ordonnancement de leur production permettant de tous les vendre (chaque
+produit est fabriqué avant sa date de péremption).
 
 Montrer qu'un ensemble de produits est compatible si et seulement
 l'ordonnancement par date \(d_i\) croissante permet de tous les vendre.
@@ -216,9 +215,11 @@ Montrer que l'algorithme glouton suivant est optimal :
   rendre ensemble (qui est un ensemble de profit maximal)
 \end{enumerate}
 
-\emph{Nota bene} : pour la preuve, on pourra comparer une solution
+\begin{quote}
+\textbf{Nota bene :} pour la preuve, on pourra comparer une solution
 optimale et la solution donnée par notre algorithme en regardant la
 première différence.
+\end{quote}
 
 \hypertarget{exercice-3-le-rendu-de-piuxe8ces}{%
 \subsection{exercice 3 : le rendu de
@@ -245,7 +246,7 @@ Démontrez que votre algorithme est bien optimal.
   \(p_1 < p_2 < \dots < p_n\).
 \item
   Cet algorithme glouton de va pas donner de solution optimale quelque
-  soit le système de pièce, donnez un exemple pour lequel ça ne
+  soit le système de pièces, donnez un exemple pour lequel ça ne
   fonctionne pas.
 \item
   montrer que l'algorithme glouton fonctionne pour un système de pièces
@@ -286,8 +287,8 @@ Le
 \href{https://fr.wikipedia.org/wiki/Probl\%C3\%A8me_du_sac_\%C3\%A0_dos}{problème
 du sac à dos} est un exemple de problème d'optimisation. Il fait parti
 des problèmes les plus dur du monde car les solutions n'entretiennent
-pas de relation les unes avec les autres, il faut a priori toutes les
-regarder pour trouver la meilleur, et il y en a beaucoup.
+pas de relations les unes avec les autres, il faut a priori toutes les
+regarder pour trouver la meilleure, et il y en a beaucoup.
 
 Il est possible de modéliser beaucoup de problèmes courant par un
 problème de sac dos, en particuliers les:
@@ -311,7 +312,7 @@ On dispose de :
   \(n\) objets ayant chacun un poids \(w_i\) (\emph{weight}) et une
   valeur nutritionnelle \(p_i\) (\(1 \leq i \leq n\))
 \item
-  d'un sac à dos d'une contenance de W
+  d'un sac à dos d'une contenance de \(W\)
 \end{itemize}
 
 On veut maximiser la valeur nutritionnelle que l'on peut emporter avec
@@ -319,6 +320,9 @@ notre sac.
 
 \hypertarget{on-essaie}{%
 \subsubsection{on essaie}\label{on-essaie}}
+
+Une petite variante crapuleuse du problème du sac à dos où l'on remplace
+la valeur nutritionnelle par un prix.
 
 On suppose que l'on est un voleur et que l'on peut voler 3 produits :
 
@@ -365,7 +369,8 @@ Problème :
 précédentes}\label{ruxe9solvez-le-probluxe8me-avec-les-donnuxe9es-pruxe9cuxe9dentes}}
 
 On suppose que l'on peut découper les objet pour obtenir une fraction de
-leurs valeurs et que notre sac à une capacité de 4kg et de 5kg.
+leurs valeurs. résolvez le problème pour une capacité de sac de 4kg et
+de 5kg.
 
 \hypertarget{algorithme-glouton}{%
 \paragraph{algorithme glouton}\label{algorithme-glouton}}
@@ -389,7 +394,7 @@ produit.
 
 On peut trouver un algorithme optimal pour le problème du sac à dos en
 remarquant que l'on peut construire une solution optimale avec \(i\)
-objets à partir d'une solution optimale à \(i-1\) objets.
+objets à partir de solutions optimales à \(i-1\) objets.
 
 En effet la solution optimale à \(i\) objets pour une capacité \(W\) est
 soit :
@@ -420,7 +425,7 @@ Quel est la complexité de cet algorithme.
 \hypertarget{le-millions-de-dollars}{%
 \paragraph{Le millions de dollars}\label{le-millions-de-dollars}}
 
-Le progblème du sac à dos fait partie des problème ``les plus dur de
+Le problème du sac à dos fait partie des problème ``les plus dur de
 l'informatique'', or on a un algorithme polynomial pour le
 résoudre\ldots{} Soit on vient de démontrer
 \href{https://fr.wikipedia.org/wiki/Probl\%C3\%A8mes_du_prix_du_mill\%C3\%A9naire\#Probl\%C3\%A8me_ouvert_P_=_NP}{P
