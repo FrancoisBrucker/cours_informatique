@@ -90,6 +90,77 @@ Il est possible d'avoir plusieurs méthodes roll car elles ne seront jamais appl
 
 Lorsque l'on exécute la méthode roll d'un objet de type `GreenCarpet`, on exécutera la ligne `self.dices[i].roll()` (ou un truc du genre). Donc la méthode `roll` sera cherché dans l'objet à gauche du `.` donc `self.dices[i]`. De là, on cherchera l'objet de numéro `i` de `self.dices` donc de la liste de nom `dices` appartenant à l'objet de nom `self` qui est un objet de la classe `GreenCarpet` : cet objet est un objet de la classe `Dice` qui possède une méthode `roll` (cette méthode n'a rien à voir avec la méthode `roll` des `GreenCarpet`). 
 
+
+#### Les espaces de noms
+
+On suppose qu'on a le code suivant pour la classe `GreenCarpet` :
+
+~~~ python
+class GreenCarpet:
+    # ...
+    def roll(self):
+        for dice in self.dices:
+            dice.roll()
+    # ...
+~~~
+
+Et dans la classe `Dice` :
+
+~~~ python
+import random
+
+# ...
+
+class Dice:
+    # ...
+    def roll(self):
+        self.set_position(randam.randint(1, 6))
+    # ...
+~~~
+
+On suppose que l'on veuille exécuter le fichier *main.py* qui contient les lignes :
+
+~~~ python
+from GreenCarpet import GreenCarpet
+
+# ...
+
+tapis_vert = GreenCarpet()
+
+# ...
+
+tapis_vert.roll()
+
+~~~
+
+Les différents objets et espaces de noms (les flèches avec un petit carré) sont rassemblés dans la figure ci-après :
+
+![espaces de noms]( {{ "ressources/td2_1_2_5.png" }} )
+
+L'exécution de la commande `tapis_vert.roll()` se déroule alors comme suit (on a mis le début jusqu'à l'excution de la méthode `dice.roll`) :
+
+  1. c'est une l'exécution du nom `roll` de l'espace de nom associé à l'objet de nom `tapis_vert` de l'espace de nom de *main.py*
+  2. il existe un nom `tapis_vert` dans l'espace de nom de *main.py* associé à un objet de la classe `GreenCarpet`.
+  3. on cherche donc le nom `roll` dans l'espace de nom de cet objet. Il n'y est pas
+  4. lorsqu'un nom n'est pas dans l'espace de nom d'un objet, on cherche dans sa classe et *bingo* c'est un nom de méthode. On exécute alors cette méthode :
+     
+     1. on crée un espace de nom pour cette méthode
+     2. on place les paramètre de la méthode dans cet espace de nom. Ici il n'y a qu'un paramètre de nom `self` associé à l'objet appelant (c'est à dire l'objet de la classe `GreenCarpet`) 
+     3. la méthode consiste en une boucle for, qui itère sur l'objet associé au nom `self.dices` dans l'espace de nom de la méthode.
+     4. comme `self` est l'objet de la classe `GreenCarpet`, il possède un nom `dices` dans son espace de nom qui est une liste de 5 objets de la classe `Dice`
+     5. lors de l'itération le nom `dice` crée par la boucle for sera associé itérativement à chaque élément de la liste, c'est à dire à chaque objet de la classe `Dice`
+     6. La boucle for exécute l'objet associé au nom  `dice.roll`. 
+     7. le nom `roll` n'existe pas dans l'objet de nom `dice` dans l'espace de nom de la méthode. Mais il existe dans sa classe, la classe `Dice`.
+     8. on exécute la méthode `roll` de la classe dice :
+        
+        1. on crée un espace de nom pour cette méthode et on y place le nom `self` correspondant à l'objet à gauche du point, ici l'objet associé au nom `dice` dans l'espace de nom de la méthode `roll` de la classe `GreenCarpet`
+        2. l'exécution de cette méthode cherche un nom `random.randint`. Ce nom n'existe pas dans l'espace de nom de la méthode, du coup on remonte. Quand un objet n'existe pas dans l'espace de nom d'une méthode, on cherche dans l'espace de nom principal. Notez que c'est différent du fait de cherche un nom dans un objet, pour lequel on remonte à sa classe. Pour un espace de nom de méthode, on monte à l'esapce de nom du fichier. Ici on le trouve puisque c'est dans un import. Le nom correspont au nom `randint` dans l'espace de nom `random` qui existe dans l'espace de nom du fichier *dice.py* (ouf).
+        3. l'exécution du nom `random.randint` rend un entier qui est associé au nom `position` dans l'espace de nom de l'objet associé à `self` dans l'espace de nom de la méthode roll de `Dice`, ici un des dés.
+    9. la méthode `roll` de la classe `Dice` est finie, son espace de nom disparait.
+  5. une fois la boucle for finie, la méthode `roll` de `GreenCarpet` est finie, son espace de nom disparait. 
+
+
+
 ### 2
 
 #### 2.1
@@ -271,6 +342,7 @@ def test_green_carpet_creation():
 
 def test_green_carpet_roll():
     carpet = GreenCarpet()
+    carpet.roll()
     for dice in carpet.get_dices():
         assert 1 <= dice.position <= dice.NUMBER_FACES
 
