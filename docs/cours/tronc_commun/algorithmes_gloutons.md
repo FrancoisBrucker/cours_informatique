@@ -14,7 +14,7 @@ Montrer l'intérêt des algorithmes gloutons, la façon de les construire et de 
 
 ## Algortihme glouton
 
-Un [algorithme glouton](https://fr.wikipedia.org/wiki/Algorithme_glouton) choisi à chaque étape la meilleure possibilité localement. Ce type d'algorithme est très utilisé pour résoudre des problèmes où l'on veut une réponse rapide, mais pas forcément une réponse optimale. D'un point de vue théorique, ces algorithmes extrêmement important, il sont par exemple en bijection avec la [structure de matroïde](https://fr.wikipedia.org/wiki/Matro%C3%AFde).
+Un [algorithme glouton](https://fr.wikipedia.org/wiki/Algorithme_glouton) choisit à chaque étape la meilleure possibilité localement. Ce type d'algorithme est très utilisé pour résoudre des problèmes où l'on veut une réponse rapide, mais pas forcément une réponse optimale. D'un point de vue théorique, ces algorithmes sont extrêmement important, il sont par exemple en bijection avec la [structure de matroïde](https://fr.wikipedia.org/wiki/Matro%C3%AFde).
 
 Intérêt :
 
@@ -24,7 +24,7 @@ Intérêt :
 
 Problème :
 
-  - ne donne pas forcément le meilleur résultat : une *heurstique*
+  - ne donne pas forcément le meilleur résultat : une *heuristique*
   - pas forcément de solution unique
 
 
@@ -40,7 +40,7 @@ Pour beaucoup de problèmes d'optimisation, un algorithme glouton est optimal po
 Les problèmes d'optimalité demandent de trouver, parmi un ensemble de solutions possible, une solution minimisant (ou maximisant) un critère. Par exemple : 
 
   - pour un ensemble de coûts de constructions possibles d'une voiture, trouver celle qui minimise le coûts tout en maximisant la qualité totale des pièces,
-  - parmi tous les parcours passant par un ensemble de villes données, choisir celui qui minimise le nombre de kilomètres parcourus
+  - parmi tous les parcours passant par un ensemble de villes donné, choisir celui qui minimise le nombre de kilomètres parcourus
   - maximiser le nombre de films projetés dans un multiplexe de cinéma
   - ...
  
@@ -67,7 +67,24 @@ On suppose que l'on veuille trouver le minimum d'une fonction $$f$$ dérivable.
   3. montrer qu'il peut ne pas converger vers la solution
   
 
-## exercice 2 : ordonnancement
+##  exercice 2 :  le rendu de pièces
+
+
+### Un système de pièce particulier
+
+
+Proposez un algorithme glouton permettant de rendre la monnaie d'un achat en un nombre minimum de pièces valant 5, 3 et 1 pokédollar.
+
+Démontrez que votre algorithme est bien optimal.
+
+### système de pièces quelconque ?
+
+  - donnez une version générale de votre algorithme de rendu de pièce, c'est à dire où l'on a $$n$$ pièces valant $$p_1 < p_2 < \dots < p_n$$. 
+  - Cet algorithme glouton de va pas donner de solution optimale quelque soit le système de pièces, donnez un exemple pour lequel ça ne fonctionne pas.
+  - montrer que l'algorithme glouton fonctionne pour un système de pièces supercroissant, c'est à dire où $$p_i \geq \sum_{j< i} p_j$$ avec $$_i$$ les valeurs de pièces rangés par ordre croissant. 
+  - donnez un exemple de système de pièces supercroissant.
+
+## exercice 3 : ordonnancement
 
 Les problèmes d'ordonnancement sont multiples. Certains sont durs d'autres faciles. Mais un algorithme glouton permet de trouver souvent une solution acceptable pour beaucoup d'entres eux et même parfois optimale pour certains problèmes.
 
@@ -89,23 +106,6 @@ Montrer que l'algorithme glouton suivant est optimal :
 4. rendre ensemble (qui est un ensemble de profit maximal)
 
 >**Nota bene :** pour la preuve, on pourra comparer une solution optimale et la solution donnée par notre algorithme en regardant la première différence.
-
-##  exercice 3 :  le rendu de pièces
-
-
-### Un système de pièce particulier
-
-
-Proposez un algorithme glouton permettant de rendre la monnaie d'un achat en un nombre minimum de pièces valant 5, 3 et 1 pokédollar.
-
-Démontrez que votre algorithme est bien optimal.
-
-### système de pièces quelconque ?
-
-  - donnez une version générale de votre algorithme de rendu de pièce, c'est à dire où l'on a $$n$$ pièces valant $$p_1 < p_2 < \dots < p_n$$. 
-  - Cet algorithme glouton de va pas donner de solution optimale quelque soit le système de pièces, donnez un exemple pour lequel ça ne fonctionne pas.
-  - montrer que l'algorithme glouton fonctionne pour un système de pièces supercroissant, c'est à dire où $$p_i \geq \sum_{j< i} p_j$$ avec $$_i$$ les valeurs de pièces rangés par ordre croissant. 
-  - donnez un exemple de système de pièces supercroissant.
 
 
 ##  exercice 4 :  allocation de salles de cinéma
@@ -142,13 +142,12 @@ On veut maximiser la valeur nutritionnelle que l'on peut emporter avec notre sac
 
 ### on essaie
 
-Une petite variante crapuleuse du problème du sac à dos où l'on remplace la valeur nutritionnelle par un prix.
 
-On suppose que l'on est un voleur et que l'on peut voler 3 produits : 
+On suppose que l'on est un randonneur et que l'on peut emporter 3 produits : 
 
-  - produit A, 2kg, 100€
-  - produit B, 2kg, 10€
-  - produit C, 3kg, 120€
+  - produit A, 2kg, 100kcal
+  - produit B, 2kg, 10kcal
+  - produit C, 3kg, 120kcal
   
 Selon la valeur du sac à dos quel est la quantité maximale d'argent que le voleur peut se faire ? 
 

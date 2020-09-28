@@ -65,11 +65,11 @@ et de prouver qu'ils fonctionnent.
 \subsection{Algortihme glouton}\label{algortihme-glouton}}
 
 Un \href{https://fr.wikipedia.org/wiki/Algorithme_glouton}{algorithme
-glouton} choisi à chaque étape la meilleure possibilité localement. Ce
+glouton} choisit à chaque étape la meilleure possibilité localement. Ce
 type d'algorithme est très utilisé pour résoudre des problèmes où l'on
 veut une réponse rapide, mais pas forcément une réponse optimale. D'un
-point de vue théorique, ces algorithmes extrêmement important, il sont
-par exemple en bijection avec la
+point de vue théorique, ces algorithmes sont extrêmement important, il
+sont par exemple en bijection avec la
 \href{https://fr.wikipedia.org/wiki/Matro\%C3\%AFde}{structure de
 matroïde}.
 
@@ -88,7 +88,7 @@ Problème :
 \begin{itemize}
 \tightlist
 \item
-  ne donne pas forcément le meilleur résultat : une \emph{heurstique}
+  ne donne pas forcément le meilleur résultat : une \emph{heuristique}
 \item
   pas forcément de solution unique
 \end{itemize}
@@ -112,7 +112,7 @@ Par exemple :
   trouver celle qui minimise le coûts tout en maximisant la qualité
   totale des pièces,
 \item
-  parmi tous les parcours passant par un ensemble de villes données,
+  parmi tous les parcours passant par un ensemble de villes donné,
   choisir celui qui minimise le nombre de kilomètres parcourus
 \item
   maximiser le nombre de films projetés dans un multiplexe de cinéma
@@ -156,7 +156,7 @@ faut :
 \hypertarget{exercice-1-le-gradient}{%
 \subsection{exercice 1 : le gradient}\label{exercice-1-le-gradient}}
 
-On suppose que l'on veuille trouver le minimum d'une fonction \(f\)
+On suppose que l'on veuille trouver le minimum d'une fonction $f$
 dérivable.
 
 \begin{enumerate}
@@ -171,9 +171,44 @@ dérivable.
   montrer qu'il peut ne pas converger vers la solution
 \end{enumerate}
 
-\hypertarget{exercice-2-ordonnancement}{%
-\subsection{exercice 2 :
-ordonnancement}\label{exercice-2-ordonnancement}}
+\hypertarget{exercice-2-le-rendu-de-piuxe8ces}{%
+\subsection{exercice 2 : le rendu de
+pièces}\label{exercice-2-le-rendu-de-piuxe8ces}}
+
+\hypertarget{un-systuxe8me-de-piuxe8ce-particulier}{%
+\subsubsection{Un système de pièce
+particulier}\label{un-systuxe8me-de-piuxe8ce-particulier}}
+
+Proposez un algorithme glouton permettant de rendre la monnaie d'un
+achat en un nombre minimum de pièces valant 5, 3 et 1 pokédollar.
+
+Démontrez que votre algorithme est bien optimal.
+
+\hypertarget{systuxe8me-de-piuxe8ces-quelconque}{%
+\subsubsection{système de pièces quelconque
+?}\label{systuxe8me-de-piuxe8ces-quelconque}}
+
+\begin{itemize}
+\tightlist
+\item
+  donnez une version générale de votre algorithme de rendu de pièce,
+  c'est à dire où l'on a $n$ pièces valant
+  $p_1 < p_2 < \dots < p_n$.
+\item
+  Cet algorithme glouton de va pas donner de solution optimale quelque
+  soit le système de pièces, donnez un exemple pour lequel ça ne
+  fonctionne pas.
+\item
+  montrer que l'algorithme glouton fonctionne pour un système de pièces
+  supercroissant, c'est à dire où $p_i \geq \sum_{j< i} p_j$ avec
+  $_i$ les valeurs de pièces rangés par ordre croissant.
+\item
+  donnez un exemple de système de pièces supercroissant.
+\end{itemize}
+
+\hypertarget{exercice-3-ordonnancement}{%
+\subsection{exercice 3 :
+ordonnancement}\label{exercice-3-ordonnancement}}
 
 Les problèmes d'ordonnancement sont multiples. Certains sont durs
 d'autres faciles. Mais un algorithme glouton permet de trouver souvent
@@ -181,8 +216,8 @@ une solution acceptable pour beaucoup d'entres eux et même parfois
 optimale pour certains problèmes.
 
 Le problème suivant est résoluble par un algorithme glouton : On
-considère \(m\) produits de durée 1 à fabriquer. Si le produit \(i\) est
-réalisée avant la date \(d_i\) on peut le vendre pour un prix \(p_i\),
+considère $m$ produits de durée 1 à fabriquer. Si le produit $i$ est
+réalisée avant la date $d_i$ on peut le vendre pour un prix $p_i$,
 sinon il est invendable. Proposez un algorithme permettant de maximiser
 les profits en considérant que l'on a qu'un seul ouvrier.
 
@@ -194,7 +229,7 @@ ordonnancement de leur production permettant de tous les vendre (chaque
 produit est fabriqué avant sa date de péremption).
 
 Montrer qu'un ensemble de produits est compatible si et seulement
-l'ordonnancement par date \(d_i\) croissante permet de tous les vendre.
+l'ordonnancement par date $d_i$ croissante permet de tous les vendre.
 
 \hypertarget{algorithme}{%
 \subsubsection{algorithme}\label{algorithme}}
@@ -221,48 +256,13 @@ optimale et la solution donnée par notre algorithme en regardant la
 première différence.
 \end{quote}
 
-\hypertarget{exercice-3-le-rendu-de-piuxe8ces}{%
-\subsection{exercice 3 : le rendu de
-pièces}\label{exercice-3-le-rendu-de-piuxe8ces}}
-
-\hypertarget{un-systuxe8me-de-piuxe8ce-particulier}{%
-\subsubsection{Un système de pièce
-particulier}\label{un-systuxe8me-de-piuxe8ce-particulier}}
-
-Proposez un algorithme glouton permettant de rendre la monnaie d'un
-achat en un nombre minimum de pièces valant 5, 3 et 1 pokédollar.
-
-Démontrez que votre algorithme est bien optimal.
-
-\hypertarget{systuxe8me-de-piuxe8ces-quelconque}{%
-\subsubsection{système de pièces quelconque
-?}\label{systuxe8me-de-piuxe8ces-quelconque}}
-
-\begin{itemize}
-\tightlist
-\item
-  donnez une version générale de votre algorithme de rendu de pièce,
-  c'est à dire où l'on a \(n\) pièces valant
-  \(p_1 < p_2 < \dots < p_n\).
-\item
-  Cet algorithme glouton de va pas donner de solution optimale quelque
-  soit le système de pièces, donnez un exemple pour lequel ça ne
-  fonctionne pas.
-\item
-  montrer que l'algorithme glouton fonctionne pour un système de pièces
-  supercroissant, c'est à dire où \(p_i \geq \sum_{j< i} p_j\) avec
-  \(_i\) les valeurs de pièces rangés par ordre croissant.
-\item
-  donnez un exemple de système de pièces supercroissant.
-\end{itemize}
-
 \hypertarget{exercice-4-allocation-de-salles-de-cinuxe9ma}{%
 \subsection{exercice 4 : allocation de salles de
 cinéma}\label{exercice-4-allocation-de-salles-de-cinuxe9ma}}
 
-Un gérant de cinéma a en sa possession \(m\) films caractérisés chacun
-par un couple (\(d_i\), \(f_i\)) où \(d_i\) est l'heure de début du film
-et \(f_i\) l'heure de fin. Il se pose 2 problèmes
+Un gérant de cinéma a en sa possession $m$ films caractérisés chacun
+par un couple ($d_i$, $f_i$) où $d_i$ est l'heure de début du film
+et $f_i$ l'heure de fin. Il se pose 2 problèmes
 
 \hypertarget{voir-un-maximum-de-films}{%
 \subsubsection{voir un maximum de
@@ -309,10 +309,10 @@ On dispose de :
 \begin{itemize}
 \tightlist
 \item
-  \(n\) objets ayant chacun un poids \(w_i\) (\emph{weight}) et une
-  valeur nutritionnelle \(p_i\) (\(1 \leq i \leq n\))
+  $n$ objets ayant chacun un poids $w_i$ (\emph{weight}) et une
+  valeur nutritionnelle $p_i$ ($1 \leq i \leq n$)
 \item
-  d'un sac à dos d'une contenance de \(W\)
+  d'un sac à dos d'une contenance de $W$
 \end{itemize}
 
 On veut maximiser la valeur nutritionnelle que l'on peut emporter avec
@@ -321,19 +321,17 @@ notre sac.
 \hypertarget{on-essaie}{%
 \subsubsection{on essaie}\label{on-essaie}}
 
-Une petite variante crapuleuse du problème du sac à dos où l'on remplace
-la valeur nutritionnelle par un prix.
-
-On suppose que l'on est un voleur et que l'on peut voler 3 produits :
+On suppose que l'on est un randonneur et que l'on peut emporter 3
+produits :
 
 \begin{itemize}
 \tightlist
 \item
-  produit A, 2kg, 100€
+  produit A, 2kg, 100kcal
 \item
-  produit B, 2kg, 10€
+  produit B, 2kg, 10kcal
 \item
-  produit C, 3kg, 120€
+  produit C, 3kg, 120kcal
 \end{itemize}
 
 Selon la valeur du sac à dos quel est la quantité maximale d'argent que
@@ -393,20 +391,20 @@ produit.
 \paragraph{solution optimale}\label{solution-optimale}}
 
 On peut trouver un algorithme optimal pour le problème du sac à dos en
-remarquant que l'on peut construire une solution optimale avec \(i\)
-objets à partir de solutions optimales à \(i-1\) objets.
+remarquant que l'on peut construire une solution optimale avec $i$
+objets à partir de solutions optimales à $i-1$ objets.
 
-En effet la solution optimale à \(i\) objets pour une capacité \(W\) est
+En effet la solution optimale à $i$ objets pour une capacité $W$ est
 soit :
 
 \begin{itemize}
 \tightlist
 \item
-  une solution optimale à \(i-1\) objets pour une capacité \(W\) si on
-  ne prend pas l'objet \(i\),
+  une solution optimale à $i-1$ objets pour une capacité $W$ si on
+  ne prend pas l'objet $i$,
 \item
-  une solution optimale à \(i-1\) objets pour une capacité \(W - w_i\)
-  si on prend l'objet \(i\).
+  une solution optimale à $i-1$ objets pour une capacité $W - w_i$
+  si on prend l'objet $i$.
 \end{itemize}
 
 \hypertarget{algorithme-optimal}{%
