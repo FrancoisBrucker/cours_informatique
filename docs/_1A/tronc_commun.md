@@ -78,7 +78,7 @@ Nous allons ici uniquement parler de la partie algorithmie du tronc commun. Pour
 Connections :
 
   - [le discord](https://discord.gg/4UkDeAT)
-  - lien de connection TBD
+  - lien de connection [big blue button](https://moodle.centrale-marseille.fr/mod/bigbluebuttonbn/view.php?id=11017) 
 
 
 Le support du cours d'[Introduction aux graphes]({% link cours/tronc_commun/introduction_aux_graphes.md %})
