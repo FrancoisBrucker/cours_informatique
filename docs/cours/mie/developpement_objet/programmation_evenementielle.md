@@ -3,6 +3,9 @@ layout: page
 title:  "Programmation événementielle"
 category: cours
 tags: mie
+authors: 
+  - Célia Châtel
+  - François Brucker
 ---
 
 ## But
@@ -275,7 +278,7 @@ Vous pouvez une fois ceci réalisé ajouter deux chaînes de caractères permett
 
 #### Comparaisons de cartes
 
-En utilisant les méthodes de comparaison vues à [la toute fin du TP1]({{< ref "/apprendre/classe-et-objet.md#pour-aller-plus-loin" >}}), codez les méthodes permettant de faire passer les tests suivants : 
+En utilisant les méthodes de comparaison vues à [la toute fin de la première séance de code](({% link cours/mie/developpement_objet/classes_et_objets.md %})), codez les méthodes permettant de faire passer les tests suivants : 
 
 ~~~ python
 def test_card_equality():
