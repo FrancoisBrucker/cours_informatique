@@ -138,7 +138,6 @@ class StatDice(Dice):
         return sum(value * self.memory[value] for value in self.memory) / n_roll
 ~~~
 
-
 ## PlantUML
 
 Pour https://www.planttext.com/

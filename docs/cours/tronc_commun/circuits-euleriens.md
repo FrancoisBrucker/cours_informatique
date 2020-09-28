@@ -30,7 +30,7 @@ Les tests vont s'ajouter petit à petit et à la fin de la séance votre fichier
 
 ## code
 
-Les fonctions que l'on vous demande de coder sont la plupart du temps simple, mais certaines nécessitent de réfléchir et — surtout — de se tromper un peu avant de voir la lumière. Comme cous avez le corrigé et les tests que l'on vous demande de faire passer, vous savez lorsque vous avez bon. On vous demande donc :
+Les fonctions que l'on vous demande de coder sont la plupart du temps simples, mais certaines nécessitent de réfléchir et — surtout — de se tromper un peu avant de voir la lumière. Comme cous avez le corrigé et les tests que l'on vous demande de faire passer, vous savez lorsque vous avez bon. On vous demande donc :
 
   - de ne pas regarder la solution avant que vous ayez fait passer les tests
   - de vous creuser la tête pour faire marcher l'algorithme
@@ -64,7 +64,7 @@ Tout ce qui concerne la structure de multi-graphe doit être stockée dans un fi
 
 #### Points critiques 
 
-  - Les tests vous montrent l'implémentation demandée, sous la forme d'un dictionnaire les sommets étant les clés et les arêtes les valeurs codées sous la forme d'une [liste d'adgacence](https://fr.wikipedia.org/wiki/Liste_d%27adjacence).
+  - Les tests vous montrent l'implémentation demandée, sous la forme d'un dictionnaire les sommets étant les clés et les arêtes les valeurs codées sous la forme d'une [liste d'adjacence](https://fr.wikipedia.org/wiki/Liste_d%27adjacence).
   - on essaie (dans la mesure du possible) de coder en anglais. Vous aurez dans votre vie professionnels à travailler avec des personnes de nationalités différentes et l'anglais est la langue de communication. 
 
 #### tests
@@ -233,7 +233,7 @@ def test_circuit_loop():
 
 #### un circuit
 
-Pour ces tests on a un petit soucis. Un graphe eulérien va avoir plein de circuits possible. Il faut donc dans les tests prévoir tous les cas car on ne sait pas a priori quel chemin va trouver l'algorithme.
+Pour ces tests on a un petit soucis. Un graphe eulérien va avoir plein de circuits possibles. Il faut donc dans les tests prévoir tous les cas car on ne sait pas a priori quel chemin va trouver l'algorithme.
 
 ~~~ pyhton
 def test_circuit():
@@ -271,7 +271,7 @@ Créez une fonction qui, à partir d'un multi-graph et d'un cycle rend un **autr
 ### points critiques
 
   - utilisez les fonctions créees précédemment comme `copy_multi_graph`
-  - la structure de multi-graphe est stockées sous la forme de listes d'adjacence et le circuit est une succession d'arêtes
+  - la structure de multi-graphe est stockée sous la forme de listes d'adjacence et le circuit est une succession d'arêtes
   - la méthode [.remove()](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists) des listes peut être super utile.
 
 ### tests 
@@ -303,8 +303,8 @@ Créez une fonction qui, à partir d'un multi-graphe eulérien, rend une suite d
 
   - on a créé pratiquement toutes les fonctions utiles à cet algorithme.
   - une liste vide en python est considérée comme `False` pour ce qui est de tests booléens.
-  - le dernier test est un peu tricky, car il ne compare pas des listes de listes mais des ensembles d'ensemble. On est obligé de faire comme ça car on ne sais pas a priori dans quel ordre l'algorithme va trouver les cycle ni dans quel ordre il va les écrire (`[1, 2, 3]` et `[3, 1, 2]` correspondent au même circuit et sont tous les deux représenté par l'ensemble `{1, 2, 3}`)
-  - un `set` est mutable et ne peut contenir comme éléments que des objets non mutable. On utilise ainsi dans les tests des `frozenset` qui sont des objet ensemble non mutable. Voir [là](https://www.python-course.eu/sets_frozensets.php) par exemple pour une petite étude sur leurs différence.
+  - le dernier test est un peu tricky, car il ne compare pas des listes de listes mais des ensembles d'ensembles. On est obligé de faire comme ça car on ne sais pas a priori dans quel ordre l'algorithme va trouver les cycles ni dans quel ordre il va les écrire (`[1, 2, 3]` et `[3, 1, 2]` correspondent au même circuit et sont tous les deux représentés par l'ensemble `{1, 2, 3}`)
+  - un `set` est mutable et ne peut contenir comme élément que des objets non mutable. On utilise ainsi dans les tests des `frozenset` qui sont des objets ensembles non mutable. Voir [là](https://www.python-course.eu/sets_frozensets.php) par exemple pour une petite étude sur leurs différences.
   - en python `{1, 2, 3, 4}` est un ensemble et `{1: 2, 3: 4}` un dictionnaire avec deux clés 1 et 3.
 
 ### tests
@@ -345,8 +345,8 @@ Maintenant qu'on a une liste de circuits d'un multi-graphe eulérien, il faut le
 
 ### points critiques
 
-  - il faut trouver un élément commun aux deux circuits. On peut faire ça facilement en intersectant les ensembles crées à parrir des listes de sommets des deux circuits.
-  - en manipulant les [slycing](https://railsware.com/blog/python-for-machine-learning-indexing-and-slicing-for-lists-tuples-strings-and-other-sequential-types/) des listes, rabouter ceux cycle devient facile.
+  - il faut trouver un élément commun aux deux circuits. On peut faire ça facilement en intersectant les ensembles créés à partir des listes de sommets des deux circuits.
+  - en manipulant les [slycing](https://railsware.com/blog/python-for-machine-learning-indexing-and-slicing-for-lists-tuples-strings-and-other-sequential-types/) des listes, rabouter ceux cycles devient facile.
 
 ### tests
 
@@ -372,12 +372,12 @@ def test_raboutage():
 
 ## raboutage de circuits en un circuit eulérien
 
-Prenez un muti-graphe euliérien et rendez un de ses circuits eulérien
+Prenez un muti-graphe euliérien et rendez un de ses circuits eulériens
 
 ### points critiques
 
   - si vous êtes arrivé jusque là vous avez codé toutes les fonctions utile à cet algorithme.
-  - faite grossir un circuit initalement vide en le raboutant le raboutage itératif des circuits peut se faire en parcourant les éléments de la liste des circuits et 
+  - faite grossir un circuit initialement vide en le raboutant le raboutage itératif des circuits peut se faire en parcourant les éléments de la liste des circuits et 
 
 ### tests 
 
