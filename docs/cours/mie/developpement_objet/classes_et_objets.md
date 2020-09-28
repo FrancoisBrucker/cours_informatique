@@ -20,7 +20,7 @@ Le [sujet au format pdf]({{ "ressources/TD_1_impression.pdf" }}).
 
 ## Séance code
 
-> **Warning :** On suppose que vous avez tous fait du python dans votre vie. Si ce n'est pas le cas, faites quelqeus tutos pour vous mettre en jambe.
+> **Warning :** On suppose que vous avez tous fait du python dans votre vie. Si ce n'est pas le cas, faites quelques tutos pour vous mettre en jambe.
 
 
 ### Dice
@@ -48,7 +48,7 @@ Nous allons maintenant améliorer notre dé avec la deuxième version de la clas
 
 Pour l'initialisation, ajoutez cet attribut et essayez de créer un nouveau dé en utilisant ce paramètre.
 
-Modifiez la méthode `roll` pour prendre en compte les probabilités. Pour lancer le dé au hasard en respectant les probabilités voulues, vous pouvez utiliser `numpy.random.choice`. Regardez la [doc](https://docs.scipy.org/doc/numpy-dev/reference/generated/numpy.random.choice.html) pour savoir comment l'utiliser et avec quels paramètres.
+Modifiez la méthode `roll` pour prendre en compte les probabilités. Pour lancer le dé au hasard en respectant les probabilités voulues, vous pouvez utiliser `numpy.random.choice`. Regardez la [doc](https://numpy.org/doc/stable/reference/random/generated/numpy.random.choice.html) pour savoir comment l'utiliser et avec quels paramètres.
 
 > **Nota Bene :**
 >Pour utiliser numpy, vous devez l'importer en haut de votre fichier avec `import numpy`.
