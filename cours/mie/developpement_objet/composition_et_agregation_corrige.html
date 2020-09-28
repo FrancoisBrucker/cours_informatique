@@ -131,6 +131,81 @@ Il se passe la même chose lorsqu’une méthode retourne un objet qui est un at
 
 <p>Lorsque l’on exécute la méthode roll d’un objet de type <code class="language-plaintext highlighter-rouge">GreenCarpet</code>, on exécutera la ligne <code class="language-plaintext highlighter-rouge">self.dices[i].roll()</code> (ou un truc du genre). Donc la méthode <code class="language-plaintext highlighter-rouge">roll</code> sera cherché dans l’objet à gauche du <code class="language-plaintext highlighter-rouge">.</code> donc <code class="language-plaintext highlighter-rouge">self.dices[i]</code>. De là, on cherchera l’objet de numéro <code class="language-plaintext highlighter-rouge">i</code> de <code class="language-plaintext highlighter-rouge">self.dices</code> donc de la liste de nom <code class="language-plaintext highlighter-rouge">dices</code> appartenant à l’objet de nom <code class="language-plaintext highlighter-rouge">self</code> qui est un objet de la classe <code class="language-plaintext highlighter-rouge">GreenCarpet</code> : cet objet est un objet de la classe <code class="language-plaintext highlighter-rouge">Dice</code> qui possède une méthode <code class="language-plaintext highlighter-rouge">roll</code> (cette méthode n’a rien à voir avec la méthode <code class="language-plaintext highlighter-rouge">roll</code> des <code class="language-plaintext highlighter-rouge">GreenCarpet</code>).</p>
 
+<h4 id="les-espaces-de-noms">Les espaces de noms</h4>
+
+<p>On suppose qu’on a le code suivant pour la classe <code class="language-plaintext highlighter-rouge">GreenCarpet</code> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">GreenCarpet</span><span class="p">:</span>
+    <span class="c1"># ...
+</span>    <span class="k">def</span> <span class="nf">roll</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">dice</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">.</span><span class="n">dices</span><span class="p">:</span>
+            <span class="n">dice</span><span class="p">.</span><span class="n">roll</span><span class="p">()</span>
+    <span class="c1"># ...
+</span></code></pre></div></div>
+
+<p>Et dans la classe <code class="language-plaintext highlighter-rouge">Dice</code> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="c1"># ...
+</span>
+<span class="k">class</span> <span class="nc">Dice</span><span class="p">:</span>
+    <span class="c1"># ...
+</span>    <span class="k">def</span> <span class="nf">roll</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">set_position</span><span class="p">(</span><span class="n">randam</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    <span class="c1"># ...
+</span></code></pre></div></div>
+
+<p>On suppose que l’on veuille exécuter le fichier <em>main.py</em> qui contient les lignes :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">GreenCarpet</span> <span class="kn">import</span> <span class="n">GreenCarpet</span>
+
+<span class="c1"># ...
+</span>
+<span class="n">tapis_vert</span> <span class="o">=</span> <span class="n">GreenCarpet</span><span class="p">()</span>
+
+<span class="c1"># ...
+</span>
+<span class="n">tapis_vert</span><span class="p">.</span><span class="n">roll</span><span class="p">()</span>
+
+</code></pre></div></div>
+
+<p>Les différents objets et espaces de noms (les flèches avec un petit carré) sont rassemblés dans la figure ci-après :</p>
+
+<p><img src="ressources/td2_1_2_5.png" alt="espaces de noms" /></p>
+
+<p>L’exécution de la commande <code class="language-plaintext highlighter-rouge">tapis_vert.roll()</code> se déroule alors comme suit (on a mis le début jusqu’à l’excution de la méthode <code class="language-plaintext highlighter-rouge">dice.roll</code>) :</p>
+
+<ol>
+  <li>c’est une l’exécution du nom <code class="language-plaintext highlighter-rouge">roll</code> de l’espace de nom associé à l’objet de nom <code class="language-plaintext highlighter-rouge">tapis_vert</code> de l’espace de nom de <em>main.py</em></li>
+  <li>il existe un nom <code class="language-plaintext highlighter-rouge">tapis_vert</code> dans l’espace de nom de <em>main.py</em> associé à un objet de la classe <code class="language-plaintext highlighter-rouge">GreenCarpet</code>.</li>
+  <li>on cherche donc le nom <code class="language-plaintext highlighter-rouge">roll</code> dans l’espace de nom de cet objet. Il n’y est pas</li>
+  <li>
+    <p>lorsqu’un nom n’est pas dans l’espace de nom d’un objet, on cherche dans sa classe et <em>bingo</em> c’est un nom de méthode. On exécute alors cette méthode :</p>
+
+    <ol>
+      <li>on crée un espace de nom pour cette méthode</li>
+      <li>on place les paramètre de la méthode dans cet espace de nom. Ici il n’y a qu’un paramètre de nom <code class="language-plaintext highlighter-rouge">self</code> associé à l’objet appelant (c’est à dire l’objet de la classe <code class="language-plaintext highlighter-rouge">GreenCarpet</code>)</li>
+      <li>la méthode consiste en une boucle for, qui itère sur l’objet associé au nom <code class="language-plaintext highlighter-rouge">self.dices</code> dans l’espace de nom de la méthode.</li>
+      <li>comme <code class="language-plaintext highlighter-rouge">self</code> est l’objet de la classe <code class="language-plaintext highlighter-rouge">GreenCarpet</code>, il possède un nom <code class="language-plaintext highlighter-rouge">dices</code> dans son espace de nom qui est une liste de 5 objets de la classe <code class="language-plaintext highlighter-rouge">Dice</code></li>
+      <li>lors de l’itération le nom <code class="language-plaintext highlighter-rouge">dice</code> crée par la boucle for sera associé itérativement à chaque élément de la liste, c’est à dire à chaque objet de la classe <code class="language-plaintext highlighter-rouge">Dice</code></li>
+      <li>La boucle for exécute l’objet associé au nom  <code class="language-plaintext highlighter-rouge">dice.roll</code>.</li>
+      <li>le nom <code class="language-plaintext highlighter-rouge">roll</code> n’existe pas dans l’objet de nom <code class="language-plaintext highlighter-rouge">dice</code> dans l’espace de nom de la méthode. Mais il existe dans sa classe, la classe <code class="language-plaintext highlighter-rouge">Dice</code>.</li>
+      <li>
+        <p>on exécute la méthode <code class="language-plaintext highlighter-rouge">roll</code> de la classe dice :</p>
+
+        <ol>
+          <li>on crée un espace de nom pour cette méthode et on y place le nom <code class="language-plaintext highlighter-rouge">self</code> correspondant à l’objet à gauche du point, ici l’objet associé au nom <code class="language-plaintext highlighter-rouge">dice</code> dans l’espace de nom de la méthode <code class="language-plaintext highlighter-rouge">roll</code> de la classe <code class="language-plaintext highlighter-rouge">GreenCarpet</code></li>
+          <li>l’exécution de cette méthode cherche un nom <code class="language-plaintext highlighter-rouge">random.randint</code>. Ce nom n’existe pas dans l’espace de nom de la méthode, du coup on remonte. Quand un objet n’existe pas dans l’espace de nom d’une méthode, on cherche dans l’espace de nom principal. Notez que c’est différent du fait de cherche un nom dans un objet, pour lequel on remonte à sa classe. Pour un espace de nom de méthode, on monte à l’esapce de nom du fichier. Ici on le trouve puisque c’est dans un import. Le nom correspont au nom <code class="language-plaintext highlighter-rouge">randint</code> dans l’espace de nom <code class="language-plaintext highlighter-rouge">random</code> qui existe dans l’espace de nom du fichier <em>dice.py</em> (ouf).</li>
+          <li>l’exécution du nom <code class="language-plaintext highlighter-rouge">random.randint</code> rend un entier qui est associé au nom <code class="language-plaintext highlighter-rouge">position</code> dans l’espace de nom de l’objet associé à <code class="language-plaintext highlighter-rouge">self</code> dans l’espace de nom de la méthode roll de <code class="language-plaintext highlighter-rouge">Dice</code>, ici un des dés.</li>
+          <li>la méthode <code class="language-plaintext highlighter-rouge">roll</code> de la classe <code class="language-plaintext highlighter-rouge">Dice</code> est finie, son espace de nom disparait.</li>
+        </ol>
+      </li>
+    </ol>
+  </li>
+  <li>une fois la boucle for finie, la méthode <code class="language-plaintext highlighter-rouge">roll</code> de <code class="language-plaintext highlighter-rouge">GreenCarpet</code> est finie, son espace de nom disparait.</li>
+</ol>
+
 <h3 id="2">2</h3>
 
 <h4 id="21">2.1</h4>
@@ -303,6 +378,7 @@ sont des tas de cartes qui existent déjà indépendamment.</p>
 
 <span class="k">def</span> <span class="nf">test_green_carpet_roll</span><span class="p">():</span>
     <span class="n">carpet</span> <span class="o">=</span> <span class="n">GreenCarpet</span><span class="p">()</span>
+    <span class="n">carpet</span><span class="p">.</span><span class="n">roll</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">dice</span> <span class="ow">in</span> <span class="n">carpet</span><span class="p">.</span><span class="n">get_dices</span><span class="p">():</span>
         <span class="k">assert</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">dice</span><span class="p">.</span><span class="n">position</span> <span class="o">&lt;=</span> <span class="n">dice</span><span class="p">.</span><span class="n">NUMBER_FACES</span>
 
