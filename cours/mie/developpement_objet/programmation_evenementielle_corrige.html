@@ -51,13 +51,520 @@
 
 <p>Eléments de corrigé de la séance  <a href="/cours_informatique/cours/mie/developpement_objet/programmation_evenementielle.html">programmation événementielle</a>.</p>
 
+<h2 id="elements-de-cours">Elements de cours</h2>
+
+<p>On utiise <a href="http://appjar.info">appjar</a> une bibliothèque graphique permettant d’apprendre les interfaces graphiques. On la déconseille fortement pour des applications pro, mais pour apprendre, elle est très bien.</p>
+
+<p>On utilisera le <a href="http://sametmax.com/quest-de-que-mvc-et-a-quoi-ca-sert/">pattern MVC</a> pour la création de nos interfaces, c’est un pattern très pratique pour gérer des systèmes avec des <a href="https://fr.wikipedia.org/wiki/Programmation_événementielle">événements</a></p>
+
+<p>POur vous initier doucements aux interfaces, en particulier web, je ne saurais trop vous conseiller de lire <a href="https://www.amazon.fr/KRUG-DONT-MAKE-THINK-_p2/dp/0321344758/ref=sr_1_2?adgrpid=56877079420">Don’t make me think</a>, qui est à la bibliothèque. Il est certes un peu vieux maintenant mais il est otujours éclairant sur ce que cherche un utilisateur.</p>
+
 <h2 id="séance-tableau">Séance tableau</h2>
 
-<p>TBD</p>
+<h3 id="programmation-dui">Programmation d’UI</h3>
+
+<p>Pour tout design d’UI on prendra soin de tout justifier. C’est la partie visible de notre code, il est donc indispensable que ce soit travaillé. Une mauvaise UI est  synonyme de mauvaise application.</p>
+
+<h4 id="design">Design</h4>
+
+<p><img src="img/fenetre_1_bouton.png" alt="me2" /></p>
+
+<p>La fenêtre ci-dessus est un exemple possible. D’autres design sont bien sûr acceptables, mais on doit pouvoir tout justifier. Ici :</p>
+
+<ul>
+  <li>tout doit avoir un nom (boutons et fenêtre ici)</li>
+  <li>on a mis le bouton à droite pour que le rapport avec le texte soit clair</li>
+</ul>
+
+<p>On testerait en vérifiant que :</p>
+
+<ul>
+  <li>initialement la valeur du champ texte vaut 1</li>
+  <li>en cliquant sur le bouton, la valeur augmente (on clique 2 fois pour être sur)</li>
+</ul>
+
+<h4 id="modèle-mvc">Modèle MVC</h4>
+
+<p>Le modèle <a href="https://fr.wikipedia.org/wiki/Modèle-vue-contrôleur">MVC</a> n’est qu’une possiblité pour créer des interfaces de façon <em>propre</em> (c’est à dire facilement modifiable). Le principe directeur de toute méthode est de pouvoir retrouver facilement ses petits et donc de séparer au maximum les rôles de chaque partie. POur le modèle MVC on a 3 parties : l’affichage (Vue), les données (Modèle) et les liens entre les 2 (Contrôleur).</p>
+
+<p>Tout ce qui est affiché dans une interface, ou tapé par un utilisateur est du texte (même ce qui est entier) : il ne faut pas utiliser le champ texte comme zone de stockage.</p>
+
+<p>Parlez également du fait que l’on ne contrôle pas lorsque le bouton est appelé. Il faut créer une fonction/méthode qui sera appelée lorsque le bouton sera cliqué. On appelle cela de la programmation évènementielle : on ne fait que réagir aux actions de l’utilisateur ou du système.</p>
+
+<p><img src="img/MVC.png" alt="mvc" /></p>
+
+<p>Note sur les UML :</p>
+
+<ul>
+  <li>on n’a pas mis de type pour le bouton. Le type en uml est facultatif.</li>
+  <li>on n’a pas mis de nom de variable pour les méthodes</li>
+</ul>
+
+<p>Pour le test unitaire, il ne faut pas utiliser la vue. On vérifie donc uniquement que le contrôleur fonctionne et modifie bien le modèle.</p>
+
+<h4 id="mvc-et-appjarinfo">MVC et appjar.info</h4>
+
+<p>On va lier les lignes de code au modèle MVC. On doit retrouver les différentes parties, mais agencées à la mode appjar. En utilisant un autre gestionnaire de fenêtre (comme QT, par exemple) on aurait eu un autre découpage. L’important est de bien décomposer son UI en 3 parties au moins formellement.</p>
+
+<p>Le modèle MVC permet de créer des classes, mais dans l’application elles ne sont pas forcément nécessaires :</p>
+
+<ul>
+  <li>pour le modèle, il n’y a que des attributs auxquels on accède. Le fait qu’ils soient privé n’est vraiment pas indispensable. Du coup, pour ne pas réinventer la roue, on utilise un dictionnaire pour cette classe.</li>
+  <li>pour le contrôleur, il n’y a qu’une méthode. On le remplace par une unique fonction.</li>
+</ul>
+
+<p>Le modèle UML n’est qu’une aide pour le découpage du code. Le suivre aveuglément ajoute de la complexité inutilement :</p>
+
+<ul>
+  <li>Vue : l’objet de nom <code class="language-plaintext highlighter-rouge">app</code> et de classe <code class="language-plaintext highlighter-rouge">gui</code>.</li>
+  <li>Modèle : le dictionnaire de nom <code class="language-plaintext highlighter-rouge">model</code></li>
+  <li>Contrôleur : la fonction <code class="language-plaintext highlighter-rouge">press</code></li>
+</ul>
+
+<p>La bibliothèque <a href="http://appjar.info/">appjar</a> est documentée et utile pour s’initier aux UIs.</p>
+
+<p>Pour le code :</p>
+
+<ul>
+  <li>la vue : on crée des objets graphiques de noms <code class="language-plaintext highlighter-rouge">"valeur"</code> (un label) et <code class="language-plaintext highlighter-rouge">"plus_un"</code> (un bouton). Les getter et setter sont accessibles via ces noms. On crée les objets (<code class="language-plaintext highlighter-rouge">addLabel</code> par exemple), puis on les manipule (<code class="language-plaintext highlighter-rouge">setLabel</code>). Les nombres à la fin de la création correspondent à ligne et colonne de la fenêtre.</li>
+  <li>on peut utiliser dans la fonction <code class="language-plaintext highlighter-rouge">press</code> des choses qui ne sont pas encore définies puisque le code ne sera lu que lorsque l’on pressera le bouton. A cette étape là tout sera défini.</li>
+  <li>l’action du contrôleur est passé à la vue en donnant la fonction utilisée pour le clic : lorsque l’on clique sur l’entité de la vue appelée “plus_un”, on exécute la fonction <code class="language-plaintext highlighter-rouge">press</code> avec comme paramètre ce sur quoi on a cliqué (ie. le bouton). On n’a pas besoin de ce paramètre ici.</li>
+  <li><code class="language-plaintext highlighter-rouge">app.go()</code> crée la fenêtre. Tout le code en-dessous n’est donc pas lu tant que la fenêtre est active. Il faut donc que tout le contrôleur soit défini avant cette ligne.</li>
+</ul>
+
+<p>Dans le contrôleur, on utilise une structure du type <code class="language-plaintext highlighter-rouge">value = value + 1</code>. On crée donc un nouveau nom <code class="language-plaintext highlighter-rouge">value</code> dans le namespace concerné qui est égal à la valeur de l’ancien nom <code class="language-plaintext highlighter-rouge">value</code> + 1.</p>
+
+<p>On ne peut donc pas utiliser uniquement comme Modèle une variable nommée <code class="language-plaintext highlighter-rouge">value</code> dans le namespace global car si on peut lire un nom (donc <code class="language-plaintext highlighter-rouge">value</code>) on ne peut créer de nom que dans son propre namespace, ici celui de la fonction (à moins de dire que <code class="language-plaintext highlighter-rouge">value</code> est de type <code class="language-plaintext highlighter-rouge">global</code> mais il est déconseillé de faire ce genre de choses. Les namespaces existent pour une raison et passer outre va <em>forcement</em> finir en catastrophe).</p>
+
+<p>Ici, on utilise le nom <code class="language-plaintext highlighter-rouge">model</code> du namespace global, mais on modifie une variable de son namespace à lui de nom <code class="language-plaintext highlighter-rouge">value</code>.</p>
+
+<h4 id="fenêtre-2-boutons">Fenêtre 2 boutons</h4>
+
+<p><img src="img/fenetre_2_boutons.png" alt="me2" /></p>
+
+<p>Le bouton <code class="language-plaintext highlighter-rouge">-1</code> a été mis à gauche car on lit de gauche à droite (-1, texte, +1 se comprend <em>intuitivement</em>)</p>
+
+<p>En rendant le texte éditable, il faut interdire de taper autre chose que des entiers et copier la nouvelle valeur dans le modèle.</p>
+
+<p>En créant des interfaces qui interagissent avec un utilisateur, il faut toujours avoir à l’esprit la règle de Murphy qui stipule que s’il peut y avoir des erreurs, il y en aura. Il faut donc toujours faire en sorte que l’erreur ne soit pas possible ou tout du moins vérifier ce qui est écrit par un utilisateur.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	<span class="kn">from</span> <span class="nn">appJar</span> <span class="kn">import</span> <span class="n">gui</span>
+
+	<span class="n">model</span> <span class="o">=</span> <span class="p">{</span>
+	    <span class="s">"value"</span><span class="p">:</span> <span class="mi">0</span>
+	<span class="p">}</span>
+
+	<span class="k">def</span> <span class="nf">press_plus1</span><span class="p">(</span><span class="n">button</span><span class="p">):</span>
+	    <span class="n">model</span><span class="p">[</span><span class="s">"value"</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+	    <span class="n">app</span><span class="p">.</span><span class="n">setLabel</span><span class="p">(</span><span class="s">"value"</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">model</span><span class="p">[</span><span class="s">"value"</span><span class="p">]))</span>
+
+	<span class="k">def</span> <span class="nf">press_moins1</span><span class="p">(</span><span class="n">button</span><span class="p">):</span>
+	    <span class="k">if</span> <span class="n">model</span><span class="p">[</span><span class="s">"value"</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+	         <span class="n">model</span><span class="p">[</span><span class="s">"value"</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">1</span>
+         
+	    <span class="n">app</span><span class="p">.</span><span class="n">setLabel</span><span class="p">(</span><span class="s">"value"</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">model</span><span class="p">[</span><span class="s">"value"</span><span class="p">]))</span>
+
+
+	<span class="n">app</span> <span class="o">=</span> <span class="n">gui</span><span class="p">()</span>
+	<span class="n">app</span><span class="p">.</span><span class="n">addButton</span><span class="p">(</span><span class="s">"-1"</span><span class="p">,</span> <span class="n">press_moins1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+	<span class="n">app</span><span class="p">.</span><span class="n">addLabel</span><span class="p">(</span><span class="s">"value"</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">model</span><span class="p">[</span><span class="s">"value"</span><span class="p">]),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+	<span class="n">app</span><span class="p">.</span><span class="n">addButton</span><span class="p">(</span><span class="s">"+1"</span><span class="p">,</span> <span class="n">press_plus1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+	<span class="n">app</span><span class="p">.</span><span class="n">go</span><span class="p">()</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">"c'est fini."</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>On a mis le bouton <code class="language-plaintext highlighter-rouge">-1</code> à gauche pour que l’on comprenne mieux la relation entre les différentes parties de l’UI.</p>
+
+<h3 id="fonctions-et-namespaces">Fonctions et namespaces</h3>
+
+<p>Cette partie est là pour expliquer comment on peut associer une action à un click sur un bouton en ne passant que le nom de la fonction.</p>
+
+<p>Voir le corrigé de la première séance pour les namespaces. Ici on montre que :</p>
+
+<ul>
+  <li>une méthode ou fonction est une variable comme une autre</li>
+  <li>l’ordre d’évaluation des namespace permet de créer des fonctions à partir de fonctions</li>
+</ul>
+
+<h4 id="les-fonctions-sont-des-variables-comme-les-autres">Les fonctions sont des variables comme les autres</h4>
+
+<p>Pas de réelles difficultés, on associe juste la méthode append définie dans la class <code class="language-plaintext highlighter-rouge">list</code> et appliquée à l’objet <code class="language-plaintext highlighter-rouge">une_liste</code> à une variable nommée <code class="language-plaintext highlighter-rouge">ma_liste</code> du namespace global.</p>
+
+<p>Lorsque l’on utilise cette variable, c’est une fonction (elle est de type <code class="language-plaintext highlighter-rouge">&lt;class 'builtin_function_or_method'&gt;</code>) et elle ajoute l’argument à la liste de nom <code class="language-plaintext highlighter-rouge">ma_liste</code>.</p>
+
+<h4 id="fonctions-de-fonction">Fonctions de fonction</h4>
+
+<p>La première fonction teste que le retour est bien une fonction et que 0 est un élément neutre.
+La seconde essai sur un exemple différent de 0.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">test_ajoute_0</span><span class="p">():</span>
+    <span class="n">ajoute_0</span> <span class="o">=</span> <span class="n">ajoute</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">ajoute_0</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+
+<span class="k">def</span> <span class="nf">test_ajoute_different</span><span class="p">():</span>
+	<span class="k">assert</span> <span class="n">ajoute</span><span class="p">(</span><span class="mi">41</span><span class="p">)(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="n">ajoute</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="mi">41</span><span class="p">)</span> <span class="o">==</span> <span class="mi">42</span>
+</code></pre></div></div>
+
+<p>Question piège. Qu’est censé rendre <code class="language-plaintext highlighter-rouge">ajoute("truc")("bidule")</code> ? Si on est dans le mode de pensée python, on utilise la concaténation de chaînes de caractères et donc c’est censé rendre “trucbidule”. Et c’est le cas avec la proposition de code suivant (attention, pour les chaînes de caractères, <code class="language-plaintext highlighter-rouge">+</code> n’est pas commutatif…):</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">ajoute</span><span class="p">(</span><span class="n">valeur_a_ajouter</span><span class="p">):</span>
+	<span class="k">def</span> <span class="nf">ajoute</span><span class="p">(</span><span class="n">valeur</span><span class="p">):</span>
+		<span class="k">return</span> <span class="n">valeur_a_ajouter</span> <span class="o">+</span> <span class="n">valeur</span>
+	<span class="k">return</span> <span class="n">ajoute</span>
+</code></pre></div></div>
+
+<p>Bien faire les namespaces et les noms pour comprendre comment tout ça marche pour de vrai (ici le <code class="language-plaintext highlighter-rouge">ajoute</code> local masque le <code class="language-plaintext highlighter-rouge">ajoute</code> du namespace qui possède le nom de la fonction <code class="language-plaintext highlighter-rouge">ajoute</code> du dessus).</p>
+
+<h3 id="les-dés">Les dés</h3>
+
+<p>Une façon de faire le code ci-après. L’UML est quasi-identique au précédent. J’ai ajouté la bonne pratique de mettre les noms des boutons en constante et un moyen de dimensionner la fenêtre.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="kn">from</span> <span class="nn">appJar</span> <span class="kn">import</span> <span class="n">gui</span>
+    <span class="kn">from</span> <span class="nn">dice</span> <span class="kn">import</span> <span class="n">Dice</span>
+
+
+    <span class="n">dice</span> <span class="o">=</span> <span class="n">Dice</span><span class="p">()</span>
+    <span class="n">DICE_LABEL</span> <span class="o">=</span> <span class="s">"dice value"</span>
+
+
+    <span class="k">def</span> <span class="nf">on_click</span><span class="p">(</span><span class="n">button</span><span class="p">):</span>
+        <span class="n">dice</span><span class="p">.</span><span class="n">roll</span><span class="p">()</span>
+
+        <span class="n">app</span><span class="p">.</span><span class="n">setLabel</span><span class="p">(</span><span class="n">DICE_LABEL</span><span class="p">,</span> <span class="n">dice</span><span class="p">.</span><span class="n">get_value</span><span class="p">())</span>
+
+    <span class="n">app</span> <span class="o">=</span> <span class="n">gui</span><span class="p">()</span>
+    <span class="n">app</span><span class="p">.</span><span class="n">setGeometry</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+    
+    <span class="n">app</span><span class="p">.</span><span class="n">addLabel</span><span class="p">(</span><span class="n">DICE_LABEL</span><span class="p">,</span> <span class="n">dice</span><span class="p">.</span><span class="n">get_value</span><span class="p">(),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">app</span><span class="p">.</span><span class="n">addButton</span><span class="p">(</span><span class="s">"roll"</span><span class="p">,</span> <span class="n">on_click</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+
+    <span class="n">app</span><span class="p">.</span><span class="n">go</span><span class="p">()</span>
+</code></pre></div></div>
 
 <h2 id="séance-code">séance code</h2>
 
-<p>TBD</p>
+<h3 id="cardpy">card.py</h3>
+
+<p>On a mis les deux classes dans le même fichier. On aurait tout aussi bien pu mettre une classe par fichier comme en Java. Comme le fichier reste petit en taille, on a considéré que c’est encore OK de ne garder qu’un unique fichier. Dans cette correction, on utilise <code class="language-plaintext highlighter-rouge">__len__</code> pour la classe <code class="language-plaintext highlighter-rouge">Deck</code> pour pouvoir utiliser la commande <code class="language-plaintext highlighter-rouge">len</code> de python et être plus lisible mais on demande aux étudiants d’écrire plutôt une méthode <code class="language-plaintext highlighter-rouge">nb_cards</code> pour ne pas les embrouiller avec les méthodes spécifiques de python.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Card</span><span class="p">:</span>
+    <span class="n">SPADES</span> <span class="o">=</span> <span class="s">"spade"</span>
+    <span class="n">HEARTS</span> <span class="o">=</span> <span class="s">"heart"</span>
+    <span class="n">CLUBS</span> <span class="o">=</span> <span class="s">"club"</span>
+    <span class="n">DIAMONDS</span> <span class="o">=</span> <span class="s">"diamond"</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_value</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_color</span> <span class="o">=</span> <span class="n">color</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">"Card("</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">_value</span><span class="p">)</span> <span class="o">+</span> <span class="s">", "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">_color</span><span class="p">)</span> <span class="o">+</span> <span class="s">")"</span>
+
+    <span class="k">def</span> <span class="nf">image</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">"resources/Playing_card_"</span> <span class="o">+</span> <span class="bp">self</span><span class="p">.</span><span class="n">_color</span> <span class="o">+</span> <span class="s">"_"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">_value</span><span class="p">)</span> <span class="o">+</span> <span class="s">".gif"</span>
+
+
+<span class="k">class</span> <span class="nc">Deck</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_cards</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">_cards</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">card</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_cards</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">card</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">_cards</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">remove</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">_cards</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">_cards</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">None</span>
+
+    <span class="k">def</span> <span class="nf">image</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">_cards</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s">'resources/empty.gif'</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">show</span><span class="p">().</span><span class="n">image</span><span class="p">()</span>    
+</code></pre></div></div>
+
+<h3 id="test_cardpy">test_card.py</h3>
+
+<p>On a été obligé de tester des attributs privés dans test <code class="language-plaintext highlighter-rouge">test_creation</code> (la variable <a href="https://www.youtube.com/watch?v=aSsqavYIgNc">motorhead</a>). On n’aime pas trop faire ça, normalement, on préfère ne tester que les fonctionnalités. Ce test est un état intermédiaire. Une fois le test du <code class="language-plaintext highlighter-rouge">==</code> réalisé (voir “pour aller plus loin”), on pourra supprimer ce test.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="kn">from</span> <span class="nn">card</span> <span class="kn">import</span> <span class="n">Card</span><span class="p">,</span> <span class="n">Deck</span>
+
+
+    <span class="k">def</span> <span class="nf">test_creation</span><span class="p">():</span>
+        <span class="n">motorhead</span> <span class="o">=</span> <span class="n">Card</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">Card</span><span class="p">.</span><span class="n">SPADES</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">motorhead</span><span class="p">.</span><span class="n">_value</span> <span class="o">==</span> <span class="mi">1</span>
+        <span class="k">assert</span> <span class="n">motorhead</span><span class="p">.</span><span class="n">_color</span> <span class="o">==</span> <span class="n">Card</span><span class="p">.</span><span class="n">SPADES</span>
+
+
+    <span class="k">def</span> <span class="nf">test_str</span><span class="p">():</span>
+        <span class="k">assert</span> <span class="nb">str</span><span class="p">(</span><span class="n">Card</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">Card</span><span class="p">.</span><span class="n">SPADES</span><span class="p">))</span> <span class="o">==</span> <span class="s">'Card(1, spade)'</span>
+
+
+    <span class="k">def</span> <span class="nf">test_image</span><span class="p">():</span>
+        <span class="k">assert</span> <span class="n">Card</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="n">Card</span><span class="p">.</span><span class="n">DIAMONDS</span><span class="p">).</span><span class="n">image</span><span class="p">()</span> <span class="o">==</span> <span class="s">"resources/Playing_card_diamond_11.gif"</span>
+
+
+    <span class="k">def</span> <span class="nf">test_deck_creation</span><span class="p">():</span>
+        <span class="n">deck</span> <span class="o">=</span> <span class="n">Deck</span><span class="p">()</span>
+        <span class="k">assert</span> <span class="n">deck</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span>
+
+
+    <span class="k">def</span> <span class="nf">test_deck_empty_at_creation</span><span class="p">():</span>
+        <span class="n">deck</span> <span class="o">=</span> <span class="n">Deck</span><span class="p">()</span>
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">deck</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+
+
+    <span class="k">def</span> <span class="nf">test_add_card</span><span class="p">():</span>
+        <span class="n">deck</span> <span class="o">=</span> <span class="n">Deck</span><span class="p">()</span>
+        <span class="n">deck</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">Card</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">Card</span><span class="p">.</span><span class="n">SPADES</span><span class="p">))</span>
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">deck</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+
+
+    <span class="k">def</span> <span class="nf">test_show</span><span class="p">():</span>
+        <span class="n">deck</span> <span class="o">=</span> <span class="n">Deck</span><span class="p">()</span>
+        <span class="n">deck</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">Card</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">Card</span><span class="p">.</span><span class="n">SPADES</span><span class="p">))</span>
+        <span class="n">card</span> <span class="o">=</span> <span class="n">Card</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">Card</span><span class="p">.</span><span class="n">SPADES</span><span class="p">)</span>
+        <span class="n">deck</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">card</span><span class="p">)</span>
+
+        <span class="k">assert</span> <span class="n">deck</span><span class="p">.</span><span class="n">show</span><span class="p">()</span> <span class="ow">is</span> <span class="n">card</span>
+
+
+    <span class="k">def</span> <span class="nf">test_remove_from_empty_deck</span><span class="p">():</span>
+        <span class="n">deck</span> <span class="o">=</span> <span class="n">Deck</span><span class="p">()</span>
+
+        <span class="k">assert</span> <span class="n">deck</span><span class="p">.</span><span class="n">remove</span><span class="p">()</span> <span class="ow">is</span> <span class="bp">None</span>
+
+
+    <span class="k">def</span> <span class="nf">test_remove</span><span class="p">():</span>
+        <span class="n">deck</span> <span class="o">=</span> <span class="n">Deck</span><span class="p">()</span>
+        <span class="n">deck</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">Card</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">Card</span><span class="p">.</span><span class="n">SPADES</span><span class="p">))</span>
+        <span class="n">card</span> <span class="o">=</span> <span class="n">Card</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">Card</span><span class="p">.</span><span class="n">SPADES</span><span class="p">)</span>
+        <span class="n">deck</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">card</span><span class="p">)</span>
+
+        <span class="k">assert</span> <span class="n">deck</span><span class="p">.</span><span class="n">remove</span><span class="p">()</span> <span class="ow">is</span> <span class="n">card</span>
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">deck</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+
+
+    <span class="k">def</span> <span class="nf">test_image_emty_deck</span><span class="p">():</span>
+        <span class="k">assert</span> <span class="n">Deck</span><span class="p">().</span><span class="n">image</span><span class="p">()</span> <span class="o">==</span> <span class="s">'resources/empty.gif'</span>
+</code></pre></div></div>
+
+<h3 id="mainpy">main.py</h3>
+
+<p>On a fabriqué une méthode <code class="language-plaintext highlighter-rouge">update_ui</code> qui est appelée à chaque fois que l’UI change. Ceci permet de ne mettre qu’à un endroit toutes les modifications possibles.</p>
+
+<p>On a également lié la même méthode à deux boutons différents : <code class="language-plaintext highlighter-rouge">on_click_move_card</code>. La différence se fait à l’appel, le paramètre de la méthode étant le label (qui sert également d’identifiant) du bouton.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">appJar</span> <span class="kn">import</span> <span class="n">gui</span>
+
+<span class="kn">from</span> <span class="nn">card</span> <span class="kn">import</span> <span class="n">Card</span><span class="p">,</span> <span class="n">Deck</span>
+
+<span class="n">deck_left</span> <span class="o">=</span> <span class="n">Deck</span><span class="p">()</span>
+<span class="n">deck_right</span> <span class="o">=</span> <span class="n">Deck</span><span class="p">()</span>
+
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">gui</span><span class="p">()</span>
+
+
+<span class="n">app</span><span class="p">.</span><span class="n">addLabelOptionBox</span><span class="p">(</span><span class="s">"color"</span><span class="p">,</span> <span class="p">[</span><span class="n">Card</span><span class="p">.</span><span class="n">DIAMONDS</span><span class="p">,</span> <span class="n">Card</span><span class="p">.</span><span class="n">SPADES</span><span class="p">,</span> <span class="n">Card</span><span class="p">.</span><span class="n">CLUBS</span><span class="p">,</span> <span class="n">Card</span><span class="p">.</span><span class="n">HEARTS</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">app</span><span class="p">.</span><span class="n">addLabelOptionBox</span><span class="p">(</span><span class="s">"value"</span><span class="p">,</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">14</span><span class="p">)],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">update_ui</span><span class="p">():</span>
+    <span class="n">app</span><span class="p">.</span><span class="n">setImage</span><span class="p">(</span><span class="s">"left_deck_image"</span><span class="p">,</span> <span class="n">deck_left</span><span class="p">.</span><span class="n">image</span><span class="p">())</span>
+    <span class="n">app</span><span class="p">.</span><span class="n">setImage</span><span class="p">(</span><span class="s">"right_deck_image"</span><span class="p">,</span> <span class="n">deck_right</span><span class="p">.</span><span class="n">image</span><span class="p">())</span>
+    <span class="n">app</span><span class="p">.</span><span class="n">setLabel</span><span class="p">(</span><span class="s">"left_len"</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">deck_left</span><span class="p">)))</span>
+    <span class="n">app</span><span class="p">.</span><span class="n">setLabel</span><span class="p">(</span><span class="s">"right_len"</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">deck_right</span><span class="p">)))</span>
+
+
+<span class="k">def</span> <span class="nf">on_click</span><span class="p">(</span><span class="n">button</span><span class="p">):</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="n">app</span><span class="p">.</span><span class="n">getOptionBox</span><span class="p">(</span><span class="s">"color"</span><span class="p">)</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">app</span><span class="p">.</span><span class="n">getOptionBox</span><span class="p">(</span><span class="s">"value"</span><span class="p">)</span>
+    <span class="n">deck_left</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">Card</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">value</span><span class="p">),</span> <span class="n">color</span><span class="p">))</span>
+    <span class="n">update_ui</span><span class="p">()</span>
+
+<span class="n">app</span><span class="p">.</span><span class="n">addButton</span><span class="p">(</span><span class="s">"add card"</span><span class="p">,</span> <span class="n">on_click</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">app</span><span class="p">.</span><span class="n">addImage</span><span class="p">(</span><span class="s">"left_deck_image"</span><span class="p">,</span> <span class="n">deck_left</span><span class="p">.</span><span class="n">image</span><span class="p">(),</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">app</span><span class="p">.</span><span class="n">addImage</span><span class="p">(</span><span class="s">"right_deck_image"</span><span class="p">,</span> <span class="n">deck_right</span><span class="p">.</span><span class="n">image</span><span class="p">(),</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">app</span><span class="p">.</span><span class="n">addLabel</span><span class="p">(</span><span class="s">"left_len"</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">deck_left</span><span class="p">)),</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">app</span><span class="p">.</span><span class="n">addLabel</span><span class="p">(</span><span class="s">"right_len"</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">deck_right</span><span class="p">)),</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">on_click_move_card</span><span class="p">(</span><span class="n">button</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">button</span> <span class="o">==</span> <span class="s">"-&gt;"</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">deck_left</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">deck_right</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">deck_left</span><span class="p">.</span><span class="n">remove</span><span class="p">())</span>
+    <span class="k">elif</span> <span class="n">button</span> <span class="o">==</span> <span class="s">"&lt;-"</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">deck_right</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">deck_left</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">deck_right</span><span class="p">.</span><span class="n">remove</span><span class="p">())</span>
+
+    <span class="n">update_ui</span><span class="p">()</span>
+
+<span class="n">app</span><span class="p">.</span><span class="n">addButton</span><span class="p">(</span><span class="s">"-&gt;"</span><span class="p">,</span> <span class="n">on_click_move_card</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">app</span><span class="p">.</span><span class="n">addButton</span><span class="p">(</span><span class="s">"&lt;-"</span><span class="p">,</span> <span class="n">on_click_move_card</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">app</span><span class="p">.</span><span class="n">go</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="pour-aller-plus-loin">Pour aller plus loin.</h3>
+
+<p>Tout est placé dans un unique code.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">appJar</span> <span class="kn">import</span> <span class="n">gui</span>
+
+<span class="k">class</span> <span class="nc">Card</span><span class="p">:</span>
+    <span class="n">SPADES</span> <span class="o">=</span> <span class="s">"spade"</span>
+    <span class="n">HEARTS</span> <span class="o">=</span> <span class="s">"heart"</span>
+    <span class="n">CLUBS</span> <span class="o">=</span> <span class="s">"club"</span>
+    <span class="n">DIAMONDS</span> <span class="o">=</span> <span class="s">"diamond"</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_value</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_color</span> <span class="o">=</span> <span class="n">color</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">"Card("</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">_value</span><span class="p">)</span> <span class="o">+</span> <span class="s">", "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">_color</span><span class="p">)</span> <span class="o">+</span> <span class="s">")"</span>
+
+    <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">_value</span> <span class="o">==</span> <span class="n">other</span><span class="p">.</span><span class="n">_value</span> <span class="ow">and</span> <span class="bp">self</span><span class="p">.</span><span class="n">_color</span> <span class="o">==</span> <span class="n">other</span><span class="p">.</span><span class="n">_color</span>
+
+    <span class="k">def</span> <span class="nf">__lt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="n">_value</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="bp">self</span><span class="p">.</span><span class="n">_value</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">or</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="p">.</span><span class="n">_value</span> <span class="o">&lt;</span> <span class="n">other</span><span class="p">.</span><span class="n">_value</span>
+
+    <span class="k">def</span> <span class="nf">__gt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">_value</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">other</span><span class="p">.</span><span class="n">_value</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">or</span> <span class="bp">self</span><span class="p">.</span><span class="n">_value</span> <span class="o">&gt;</span> <span class="n">other</span><span class="p">.</span><span class="n">_value</span> <span class="o">&gt;</span> <span class="mi">1</span>
+
+    <span class="k">def</span> <span class="nf">image</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">"resources/Playing_card_"</span> <span class="o">+</span> <span class="bp">self</span><span class="p">.</span><span class="n">_color</span> <span class="o">+</span> <span class="s">"_"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">_value</span><span class="p">)</span> <span class="o">+</span> <span class="s">".gif"</span>
+
+
+<span class="k">class</span> <span class="nc">Deck</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_cards</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">_cards</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">card</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_cards</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">card</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">_cards</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">remove</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">_cards</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">_cards</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">None</span>
+
+    <span class="k">def</span> <span class="nf">image</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">_cards</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s">'resources/empty.gif'</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">show</span><span class="p">().</span><span class="n">image</span><span class="p">()</span>
+
+
+<span class="n">deck_left</span> <span class="o">=</span> <span class="n">Deck</span><span class="p">()</span>
+<span class="n">deck_right</span> <span class="o">=</span> <span class="n">Deck</span><span class="p">()</span>
+
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">gui</span><span class="p">()</span>
+
+
+<span class="n">app</span><span class="p">.</span><span class="n">addLabelOptionBox</span><span class="p">(</span><span class="s">"color"</span><span class="p">,</span> <span class="p">[</span><span class="n">Card</span><span class="p">.</span><span class="n">DIAMONDS</span><span class="p">,</span> <span class="n">Card</span><span class="p">.</span><span class="n">SPADES</span><span class="p">,</span> <span class="n">Card</span><span class="p">.</span><span class="n">CLUBS</span><span class="p">,</span> <span class="n">Card</span><span class="p">.</span><span class="n">HEARTS</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">app</span><span class="p">.</span><span class="n">addLabelOptionBox</span><span class="p">(</span><span class="s">"value"</span><span class="p">,</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">14</span><span class="p">)],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">update_ui</span><span class="p">():</span>
+    <span class="n">app</span><span class="p">.</span><span class="n">setImage</span><span class="p">(</span><span class="s">"left_deck_image"</span><span class="p">,</span> <span class="n">deck_left</span><span class="p">.</span><span class="n">image</span><span class="p">())</span>
+    <span class="n">app</span><span class="p">.</span><span class="n">setImage</span><span class="p">(</span><span class="s">"right_deck_image"</span><span class="p">,</span> <span class="n">deck_right</span><span class="p">.</span><span class="n">image</span><span class="p">())</span>
+    <span class="n">app</span><span class="p">.</span><span class="n">setLabel</span><span class="p">(</span><span class="s">"left_len"</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">deck_left</span><span class="p">)))</span>
+    <span class="n">app</span><span class="p">.</span><span class="n">setLabel</span><span class="p">(</span><span class="s">"right_len"</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">deck_right</span><span class="p">)))</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">deck_left</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">deck_right</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">app</span><span class="p">.</span><span class="n">setLabel</span><span class="p">(</span><span class="s">"compare"</span><span class="p">,</span> <span class="s">"?"</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">deck_left</span><span class="p">.</span><span class="n">show</span><span class="p">()</span> <span class="o">==</span> <span class="n">deck_right</span><span class="p">.</span><span class="n">show</span><span class="p">():</span>
+        <span class="n">app</span><span class="p">.</span><span class="n">setLabel</span><span class="p">(</span><span class="s">"compare"</span><span class="p">,</span> <span class="s">"="</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">deck_left</span><span class="p">.</span><span class="n">show</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">deck_right</span><span class="p">.</span><span class="n">show</span><span class="p">():</span>
+        <span class="n">app</span><span class="p">.</span><span class="n">setLabel</span><span class="p">(</span><span class="s">"compare"</span><span class="p">,</span> <span class="s">"&gt;"</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">app</span><span class="p">.</span><span class="n">setLabel</span><span class="p">(</span><span class="s">"compare"</span><span class="p">,</span> <span class="s">"&lt;"</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">on_click</span><span class="p">(</span><span class="n">button</span><span class="p">):</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="n">app</span><span class="p">.</span><span class="n">getOptionBox</span><span class="p">(</span><span class="s">"color"</span><span class="p">)</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">app</span><span class="p">.</span><span class="n">getOptionBox</span><span class="p">(</span><span class="s">"value"</span><span class="p">)</span>
+    <span class="n">deck_left</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">Card</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">value</span><span class="p">),</span> <span class="n">color</span><span class="p">))</span>
+    <span class="n">update_ui</span><span class="p">()</span>
+
+<span class="n">app</span><span class="p">.</span><span class="n">addButton</span><span class="p">(</span><span class="s">"add card"</span><span class="p">,</span> <span class="n">on_click</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">app</span><span class="p">.</span><span class="n">addImage</span><span class="p">(</span><span class="s">"left_deck_image"</span><span class="p">,</span> <span class="n">deck_left</span><span class="p">.</span><span class="n">image</span><span class="p">(),</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">app</span><span class="p">.</span><span class="n">addImage</span><span class="p">(</span><span class="s">"right_deck_image"</span><span class="p">,</span> <span class="n">deck_right</span><span class="p">.</span><span class="n">image</span><span class="p">(),</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">app</span><span class="p">.</span><span class="n">addLabel</span><span class="p">(</span><span class="s">"left_len"</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">deck_left</span><span class="p">)),</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">app</span><span class="p">.</span><span class="n">addLabel</span><span class="p">(</span><span class="s">"right_len"</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">deck_right</span><span class="p">)),</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">app</span><span class="p">.</span><span class="n">addLabel</span><span class="p">(</span><span class="s">"compare"</span><span class="p">,</span> <span class="s">"?"</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">on_click_move_card</span><span class="p">(</span><span class="n">button</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">button</span> <span class="o">==</span> <span class="s">"-&gt;"</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">deck_left</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">deck_right</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">deck_left</span><span class="p">.</span><span class="n">remove</span><span class="p">())</span>
+    <span class="k">elif</span> <span class="n">button</span> <span class="o">==</span> <span class="s">"&lt;-"</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">deck_right</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">deck_left</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">deck_right</span><span class="p">.</span><span class="n">remove</span><span class="p">())</span>
+
+    <span class="n">update_ui</span><span class="p">()</span>
+
+<span class="n">app</span><span class="p">.</span><span class="n">addButton</span><span class="p">(</span><span class="s">"-&gt;"</span><span class="p">,</span> <span class="n">on_click_move_card</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">app</span><span class="p">.</span><span class="n">addButton</span><span class="p">(</span><span class="s">"&lt;-"</span><span class="p">,</span> <span class="n">on_click_move_card</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">app</span><span class="p">.</span><span class="n">go</span><span class="p">()</span>   
+</code></pre></div></div>
+
+<h2 id="ressources">Ressources</h2>
+
+<p>Pour https://www.planttext.com/</p>
+
+<pre><code class="language-uml">@startuml
+@startuml
+
+title Modèle MVC
+
+
+class Vue {
+  - str texte
+  - bouton
+  
+  + str get_texte()
+  + set_texte(str)
+  + associe_action(fct)
+}
+
+
+class Modèle {
+    - int valeur
+    
+    +int get_valeur()
+    + set_valeur(int)
+}
+class Contrôleur {
+  + ajoute_1()
+}
+
+Vue &lt;|-up- Modèle: Mise à jour
+Contrôleur  &lt;|-up-|&gt; Vue
+Contrôleur  &lt;|-up-|&gt; Modèle
+
+@enduml
+</code></pre>
 
   </div>
 
