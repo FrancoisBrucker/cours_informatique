@@ -12,10 +12,10 @@ Essentiellement du vocabulaire de théorie des graphe. Histoire de fixer un peu 
 
 ##  définition générale
 
-Dans toute sa généralité, on peut définir un *multi-graphe* comme étant un couple $$G = (V, E)$$ où :
+Dans toute sa généralité, on peut définir un *multi-graphe* comme étant un couple $G = (V, E)$ où :
 
-  - $$V$$ est un ensemble de d'éléments appelés *sommets* (*vertices*)
-  - $$E$$ est une liste de couples d'éléments de $$V$$ appelés *arc* ou *arêtes* (*edges*)
+  - $V$ est un ensemble de d'éléments appelés *sommets* (*vertices*)
+  - $E$ est une liste de couples d'éléments de $V$ appelés *arc* ou *arêtes* (*edges*)
   
 ### exemples
 
@@ -87,15 +87,15 @@ Une *arc* est un élément de $E$ pour les graphes orientés. On le représente 
   - $x$ est l'origine de l'arc,
   - $y$ est la destination de l'arc
   
-L'ensemble des arcs sortants de $x$ est appelé *voisinage sortant de $x$* (*neighbors*) et vaut : $N^+(x) = \{ y \vert xy \in E\}$. Le *degré* sortant de $x$ vaut  $\delta^+(x) = \vert N^+(x) \vert$. 
-De la même manière l'ensemble des arcs entrant en $y$ est appelé  *voisinage entrant en $y$* et vaut : $N^-(y) = \{ x \mid xy \in E\}$. Le degré entrant de $y$ vaut $\delta^-(y) = \vert N^-(y) \vert$. 
+L'ensemble des arcs sortants de $x$ est appelé *voisinage sortant de $x$* (*neighbors*) et vaut : $N^+(x) = \\{ y \vert xy \in E\\}$. Le *degré* sortant de $x$ vaut  $\delta^+(x) = \vert N^+(x) \vert$. 
+De la même manière l'ensemble des arcs entrant en $y$ est appelé  *voisinage entrant en $y$* et vaut : $N^-(y) = \\{ x \mid xy \in E\\}$. Le degré entrant de $y$ vaut $\delta^-(y) = \vert N^-(y) \vert$. 
 
 ### graphe non orienté 
 
 Une *arête* est un élément de $E$ pour les graphes non orienté. On la représente graphiquement comme ça : ![arête]({{ "ressources/arete.png" }})
 
 
-Il n'y a pas de différence entre voisinage sortant et voisinage entrant pour un graphe non orienté. On note simplement le *voisinage de $x$* comme étant : $N(x) = \{ y \mid  xy \in E\}$ et son *degré* comme étant : $\delta(x) = \vert N(x) \vert$.
+Il n'y a pas de différence entre voisinage sortant et voisinage entrant pour un graphe non orienté. On note simplement le *voisinage de $x$* comme étant : $N(x) = \\{ y \mid  xy \in E\\}$ et son *degré* comme étant : $\delta(x) = \vert N(x) \vert$.
 
 
 ## exemple
@@ -124,7 +124,7 @@ La version non orienté du graphe précédent est :
 On a : 
 
   - $\delta(a) = 3$,
-  - $N(a) = \{b, d, e\}\}$.
+  - $N(a) = \\{b, d, e\\}$.
 
 Que vaut $\sum_x \delta(x)$ ?
 

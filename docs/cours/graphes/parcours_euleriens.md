@@ -74,28 +74,33 @@ Si le graphe est orienté, il est dit *fortement connexe* s'il existe pour toute
 
 La connexité est une notion très importante en théorie des graphes. Elle permet de relier deux sommets entre eux par des relations. 
 
-### chemins élémentaires
+### propriétés
+
+On va montrer deux propriétés, l'une sur les chemin l'autre sur les cycles.
+
+#### chemins élémentaires
 
 Un chemin $ C = u_0u_1\dots u_i \dots u_k$ est dit *élémentaire* si les $u_i$ sont tous distincts deux à deux.
 
-#### propriété
-
 On peut extraire de tout chemin un chemin élémentaire.
 
-#### preuve
+**Preuve :**
 
 Soit $C = u_0 \dots u_k$ un chemin avec $u_0 \neq u_k$ et on suppose qu'il existe $i < j$ tel que $u_i = u_j$.
 
-La suite $C' = u_0 \dots u_i u_{j+1} \dots u_k$ est toujours un chemin. On peut donc itérativement supprimer toutes les boucles d'un chemin de longueur finie.
+La suite $C' = u_0 \dots u_i u_{j+1} \dots u_k$ est toujours un chemin de longueur strictement plus petite que le chemin initial. La longueur minimale d'un chemin étant positive, on a une procédure qui diminue strictement le chemin s'il existe un cycle dans ce chemin, on va donc arriver à un minimum, c'est à dire un chemin sans cycle.
 
+#### existence de cycles
 
-### existence de cycles
+On suppose qu'un graphe $G=(V, E)$ est tel que $\delta(x) \geq 2$ quelque soit le sommet $x$. Il existe alors un cycle dans ce graphe.
 
-On suppose qu'un graphe $G=(V, E)$ est tel que $\delta(x) > 2$ quelque soit le sommet $x$. Il existe alors un cycle dans ce graphe.
+**Preuve :**
 
-#### preuve
+Soit $x \in V$. Il y a au moins 2 arêtes qui contiennent $x$, prenons en une. Si cette arête est une boucle on peut s'arrêter puisqu'on a trouvé notre cycle. Sinon, il existe une arête $xy$ avec $x\neq y$. 
 
-TBD
+Il existe au moins 2 arêtes contenant $y$. On en a déjà une (l'arête $xy$), considérons en une autre. Si cette arête contient $x$ ou $y$ on a notre cycle (soit $xyx$ soit $xyy$), sinon il existe $z \not\in \\{ x, y\\}$ telle que $yz$ soit une arête. On a un chemin de longueur 3 : $xyz$.
+
+On peut continuer comme ça en étendant itérativement le chemin et, comme le graphe est fini, on va forcément arriver à un chemin $u_0\dots u_k$ avec une arête $u_ku$ qui n'est pas encore dans le chemin mais tel que $x = u_i$ ($1\leq i \leq k$). Il existe donc bien  un cycle : $u_i \dots u_ku_i$
 
 ## retour au problème
 
@@ -135,6 +140,30 @@ Un graphe connexe  admet un cycle eulérien si et seulement si le degré de tout
 
 On l'a déjà prouvé, mais refaisons le pour la complétion.
 
-Si un cycle eulerien $u_0 \dots u_k$ existe, à chaque $u_i$,- : $u_{i-1}u_i$ et $u_iu_{i+1}$ sont des arêtes du graphes. Comme le chemin passe une seule fois par chaque arête du graphe on en conclut que $\delta(u_i)$ est paire.
+Si un cycle eulerien $u_0 \dots u_k$ existe, à chaque $u_i$ : $u_{i-1}u_i$ et $u_iu_{i+1}$ sont des arêtes du graphes.  Comme le chemin passe une seule fois par chaque arête du graphe, à chaque fois que l'on rencontre un sommet donné $x$, on lui trouve 2 nouvelles arêtes. On en conclut que $\delta(x)$ est égal au nombre de fois où $x$ apparaît dans le cycle fois 2 : c'est donc pair.
 
 #### de l'autre
+
+  1. Comme notre graphe est eulérien et connexe, les degrés de tous les sommets sont pairs et strictement positif : donc supérieur ou égal à 2. Il existe alors un cycle dans notre graphe.
+  2. en supprimant le cycle du graphe, on obtient toujours un graphe dont les degrés sont pairs (en supprimant un cycle on a supprimé un nombre pair d'arête pour chaque sommet apparaissant dans le cycle)
+  3. on supprime tous les sommets de degrés 0.
+  4. on est ramené à notre hypothèse de départ, c'est à dire un graphe où tous les sommets sont de degrés pairs et strictement positif.
+  
+  L'algorithme ci-dessus nous permet de décomposer notre graphe en une série de cycles, disons qu'il y en a $m$. Il nous reste à former un énorme cycle à partir de ces petits cycle.
+  
+  Pour cela, comme le graphe est connexe il va exister deux cycles $C_1$ et $C_2$ qui partagent un sommet $x$. On peut alors faire commencer les cycles $C_1$ et $C_2$ par $x$ et on peut coller les deux cycles ensemble en formant le cycle : $C_1 + C_2[1:]$. On est passé de $m$ cycles à $m-1$ cycles et on peut recommencer la procédure jusqu'à n'obtenir qu'un unique cycle qui est notre cycle eulérien.
+  
+
+### exemple
+  
+On a le graphe : ![exemple euler]({{"ressources/euler_exemple_1.png"}})
+  
+  1. Le [premier cycle trouvé]({{"ressources/euler_exemple_2.png"}}) est $1231$
+  2. Le [second cycle trouvé]({{"ressources/euler_exemple_3.png"}}) est $35243$
+  3. Le [troisième cycle trouvé]({{"ressources/euler_exemple_4.png"}}) est $4564$
+  
+  On raboute les second et troisième cycle ensembles : $43524$ et $4564$ en $43524564$ que l'on peut ensuite rajouter au premier cycle pour donner le cycle $43523124564$.
+  
+## généralisation
+  
+  TBD
