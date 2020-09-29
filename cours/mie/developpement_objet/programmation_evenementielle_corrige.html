@@ -16,6 +16,15 @@
 {"description":"Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)","@type":"WebPage","headline":"Programmation événementielle corrigé","url":"/cours_informatique/cours/mie/developpement_objet/programmation_evenementielle_corrige.html","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        processEscapes: true
+      }
+    });
+  </script>
+  
   <script type="text/javascript" async
     src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
   </script>
@@ -128,7 +137,7 @@
 <ul>
   <li>la vue : on crée des objets graphiques de noms <code class="language-plaintext highlighter-rouge">"valeur"</code> (un label) et <code class="language-plaintext highlighter-rouge">"plus_un"</code> (un bouton). Les getter et setter sont accessibles via ces noms. On crée les objets (<code class="language-plaintext highlighter-rouge">addLabel</code> par exemple), puis on les manipule (<code class="language-plaintext highlighter-rouge">setLabel</code>). Les nombres à la fin de la création correspondent à ligne et colonne de la fenêtre.</li>
   <li>on peut utiliser dans la fonction <code class="language-plaintext highlighter-rouge">press</code> des choses qui ne sont pas encore définies puisque le code ne sera lu que lorsque l’on pressera le bouton. A cette étape là tout sera défini.</li>
-  <li>l’action du contrôleur est passé à la vue en donnant la fonction utilisée pour le clic : lorsque l’on clique sur l’entité de la vue appelée “plus_un”, on exécute la fonction <code class="language-plaintext highlighter-rouge">press</code> avec comme paramètre ce sur quoi on a cliqué (ie. le bouton). On n’a pas besoin de ce paramètre ici.</li>
+  <li>l’action du contrôleur est passé à la vue en donnant la fonction utilisée pour le clic : lorsque l’on clique sur l’entité de la vue appelée “plus_un”, on exécute la fonction <code class="language-plaintext highlighter-rouge">press</code> avec comme paramètre ce sur quoi on a cliqué (ie . le bouton). On n’a pas besoin de ce paramètre ici.</li>
   <li><code class="language-plaintext highlighter-rouge">app.go()</code> crée la fenêtre. Tout le code en-dessous n’est donc pas lu tant que la fenêtre est active. Il faut donc que tout le contrôleur soit défini avant cette ligne.</li>
 </ul>
 
