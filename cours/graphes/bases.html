@@ -63,11 +63,11 @@
 
 <h2 id="définition-générale">définition générale</h2>
 
-<p>Dans toute sa généralité, on peut définir un <em>multi-graphe</em> comme étant un couple \(G = (V, E)\) où :</p>
+<p>Dans toute sa généralité, on peut définir un <em>multi-graphe</em> comme étant un couple $G = (V, E)$ où :</p>
 
 <ul>
-  <li>\(V\) est un ensemble de d’éléments appelés <em>sommets</em> (<em>vertices</em>)</li>
-  <li>\(E\) est une liste de couples d’éléments de \(V\) appelés <em>arc</em> ou <em>arêtes</em> (<em>edges</em>)</li>
+  <li>$V$ est un ensemble de d’éléments appelés <em>sommets</em> (<em>vertices</em>)</li>
+  <li>$E$ est une liste de couples d’éléments de $V$ appelés <em>arc</em> ou <em>arêtes</em> (<em>edges</em>)</li>
 </ul>
 
 <h3 id="exemples">exemples</h3>
@@ -156,14 +156,14 @@ Ils sont très utilisés lorsque l’on cherche <strong>une solution globale à 
   <li>$y$ est la destination de l’arc</li>
 </ul>
 
-<p>L’ensemble des arcs sortants de $x$ est appelé <em>voisinage sortant de $x$</em> (<em>neighbors</em>) et vaut : $N^+(x) = { y \vert xy \in E}$. Le <em>degré</em> sortant de $x$ vaut  $\delta^+(x) = \vert N^+(x) \vert$. 
-De la même manière l’ensemble des arcs entrant en $y$ est appelé  <em>voisinage entrant en $y$</em> et vaut : $N^-(y) = { x \mid xy \in E}$. Le degré entrant de $y$ vaut $\delta^-(y) = \vert N^-(y) \vert$.</p>
+<p>L’ensemble des arcs sortants de $x$ est appelé <em>voisinage sortant de $x$</em> (<em>neighbors</em>) et vaut : $N^+(x) = \{ y \vert xy \in E\}$. Le <em>degré</em> sortant de $x$ vaut  $\delta^+(x) = \vert N^+(x) \vert$. 
+De la même manière l’ensemble des arcs entrant en $y$ est appelé  <em>voisinage entrant en $y$</em> et vaut : $N^-(y) = \{ x \mid xy \in E\}$. Le degré entrant de $y$ vaut $\delta^-(y) = \vert N^-(y) \vert$.</p>
 
 <h3 id="graphe-non-orienté">graphe non orienté</h3>
 
 <p>Une <em>arête</em> est un élément de $E$ pour les graphes non orienté. On la représente graphiquement comme ça : <img src="ressources/arete.png" alt="arête" /></p>
 
-<p>Il n’y a pas de différence entre voisinage sortant et voisinage entrant pour un graphe non orienté. On note simplement le <em>voisinage de $x$</em> comme étant : $N(x) = { y \mid  xy \in E}$ et son <em>degré</em> comme étant : $\delta(x) = \vert N(x) \vert$.</p>
+<p>Il n’y a pas de différence entre voisinage sortant et voisinage entrant pour un graphe non orienté. On note simplement le <em>voisinage de $x$</em> comme étant : $N(x) = \{ y \mid  xy \in E\}$ et son <em>degré</em> comme étant : $\delta(x) = \vert N(x) \vert$.</p>
 
 <h2 id="exemple">exemple</h2>
 
@@ -194,7 +194,7 @@ De la même manière l’ensemble des arcs entrant en $y$ est appelé  <em>voisi
 
 <ul>
   <li>$\delta(a) = 3$,</li>
-  <li>$N(a) = {b, d, e}}$.</li>
+  <li>$N(a) = \{b, d, e\}$.</li>
 </ul>
 
 <p>Que vaut $\sum_x \delta(x)$ ?</p>
