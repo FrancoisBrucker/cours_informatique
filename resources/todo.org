@@ -4,6 +4,8 @@
 * site
 ** TODO add authors and show them when rendering course
 ** TODO add tag browsing
+** TODO taille des images bien trop grosses
+** TODO comment centrer les images
 
 * cours
 ** 3A
@@ -16,3 +18,5 @@
 
 * tuto
 ** TODO remettre tuto python
+** TODO gloutons voyageur de commerce
+** TODO gloutons coloriage

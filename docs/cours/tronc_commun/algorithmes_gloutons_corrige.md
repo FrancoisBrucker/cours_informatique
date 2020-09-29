@@ -9,16 +9,17 @@ author: "François Brucker"
 
 ## exercice 1 : le gradient
 
-On suppose que l'on a une fonction $$f$$ continue et dérivable sur $$\mathbb{R}$$. 
+On suppose que l'on a une fonction $f$ continue et dérivable sur $\mathbb{R}$. 
 
-l'algorithme fonctionne avec un élément initial $$x_0$$. A l'étape $i$ de l'algorithme on pose 
-
-\$$x_{i+1} = x_i - \alpha f'(x_i) $$
+l'algorithme fonctionne avec un élément initial $x_0$. A l'étape $i$ de l'algorithme on pose
 
 
-C'est bien un algorithme glouton puisque la construction de la solution ne dépend que d'une condition initiale et que la solution au pas $$i+1$$ est construite à partir de la solution au pas $$i$$ sans jamais remettre en cause les décisions prises aux pas précédents.
+$$x_{i+1} = x_i - \alpha f'(x_i) $$
 
-La constante $$\alpha$$ est un paramètre dit de vitesse de convergence. Vous pouvez allez voir [ce tuto](https://www.charlesbordet.com/fr/gradient-descent/#cest-quoi-la-descente-de-gradient-) pour une petite explication sur cet algorithme. Il faut faire un peu attention avec le paramètre de pente parce que :
+
+C'est bien un algorithme glouton puisque la construction de la solution ne dépend que d'une condition initiale et que la solution au pas $i+1$ est construite à partir de la solution au pas $i$ sans jamais remettre en cause les décisions prises aux pas précédents.
+
+La constante $\alpha$ est un paramètre dit de vitesse de convergence. Vous pouvez allez voir [ce tuto](https://www.charlesbordet.com/fr/gradient-descent/#cest-quoi-la-descente-de-gradient-) pour une petite explication sur cet algorithme. Il faut faire un peu attention avec le paramètre de pente parce que :
 
   - il doit être positif car il se dirige à l'oppose de la valeur de la dérivée
   - s'il est trop petit, on va converger trop lentement
@@ -31,11 +32,11 @@ De part la définition de la dérivée, l'algorithme va suivre la pente et se lo
 
 * **Problème** : "comment rendre R sous en un nombre minimum de pièces"
 * **algo glouton** : 
-    * "répéter : choisir la pièce de plus grande valeur $$v$$ qui ne dépasse pas la somme restante R puis poser R = R - v". 
+    * "répéter : choisir la pièce de plus grande valeur $v$ qui ne dépasse pas la somme restante R puis poser R = R - v". 
     * ce qui est équivalent à :
-        1. choisir la plus grande valeur $$v$$ de pièce plus petite que $$R$$
-        2. donner $$p = R // v$$ pièces
-        3. $$R = R - p * v$$
+        1. choisir la plus grande valeur $v$ de pièce plus petite que $R$
+        2. donner $p = R // v$ pièces
+        3. $R = R - p * v$
         4. revenir en 1. si R > 0
     * **complexité** : tri des valeur de pièce + une opération par pièce (division puis soustraction). Comme il suffit de trier une fois pour toute, la complexité peut être de l'ordre du nombre de pièces.
 
@@ -55,7 +56,7 @@ Pour prouver l'algorithme on doit prouver les 2 propriétés :
 
 * initialisation : On regarde le 1er choix de l'algorithme.
     * Si le nombre de pièce à rendre est 0, 1, 2, 3 ou 4, notre algorithme va rendre à chaque fois le nombre optimal de pièce. Son premier choix est donc toujours contenu dans une solution optimale : la propriété est ok.
-    * si le nombre de pièce est plus grand ou égal à 5, l'algorithme va choisir de rendre $$p = R // 5$$ pièces de 5.  si on suppose que toute solution optimale rend un nombre différent de $p$ pièces de 5, toute solution optimale en rend forcement strictement moins que $$p$$ puisque $$(p+1) * 5$$ est strictement plus grand que le nombre de sous à rendre initial. Mais si les solutions optimales rendent moins de $$p$$ pièces de 5 la somme à rendre en pièce de 2 et de 1 est strictement plus grande que 5 ce qui est impossible : la propriété est ok.
+    * si le nombre de pièce est plus grand ou égal à 5, l'algorithme va choisir de rendre $p = R // 5$ pièces de 5.  si on suppose que toute solution optimale rend un nombre différent de $p$ pièces de 5, toute solution optimale en rend forcement strictement moins que $p$ puisque $(p+1) * 5$ est strictement plus grand que le nombre de sous à rendre initial. Mais si les solutions optimales rendent moins de $p$ pièces de 5 la somme à rendre en pièce de 2 et de 1 est strictement plus grande que 5 ce qui est impossible : la propriété est ok.
 * récurrence : Les solutions optimales choisissent toute le même nombre de pièce de 5 que notre algorithme. La valeur totale des pièces de 2 et de 1 ne peut donc pas excéder 4 pour les solutions optimales et donc le nombre de pièces coïncide avec notre algorithme (puisqu'il est optimal lorsqu'il faut rendre 4 ou moins).
 
 ### système de pièces quelconque ?
@@ -81,22 +82,10 @@ Le système de pièce européen fonctionne puisque l'on a des pièces billets de
 * peut poser des soucis : les machines à café vous indiquent qu'elles ne peuvent plus vous rendre la monnaie car il n'y a plus de pièces d'une valeur particulière, alors qu'en réalité elle disposent de la somme à rendre en utilisant une autre combinaison.
 
 
-## exercice 3 : ordonnancement
-
-### ensemble compatible
-
-- si l'ordonnancement par date croissante permet de tout vendre il est compatible
-- s'il existe un autre ordonnancement avec la tâche $$j$$ placé avant la tâche $$i$$ alors que $$d_j > d_i$$, on peut échanger la tâche $$i$$ et la tâche $$j$$ et l'ordonnancement reste compatible
-
-### algorithme
-
-  - initialisation : si une solution ne contient pas l'élément de prix maximum on l'échange avec le 1er élément choisi et la solution reste compatible tout en ayant un profit plus grand
-  - récurrence : clair. S'il reste dans les solutions possible l'élément qu'on rajoute à l'étape $$i$$ on peut toujours le rendre à la place de celui pris par l'autre solution pour augmenter le profit.
-
-##  exercice 4 :  allocation de salles de cinéma
+##  exercice 3 :  allocation de salles de cinéma
 
 
-Chaque film est décrit par un couple $$(d, f)$$ où $$d$$ est la date de début du film et $$f$$ la date de fin. 
+Chaque film est décrit par un couple $(d, f)$ où $d$ est la date de début du film et $f$ la date de fin. 
 
 ### voir un maximum de films
 
@@ -106,8 +95,8 @@ L'ordre que l'on va choisir est celui de la date de fin croissante.
 
 En effet, si l'on classe les séances de cinéma par 
 
-* durée croissante : l'ensemble de films $$[(1, 3), (3, 5), (5, 7), (2.5, 3.5), (4.5, 5.5)]$$ produit un contre exemple,
-* date de début croissante : l'ensemble de films $$[(1, 10), (2, 3), (3, 4)]$$ produit un contre exemple,
+* durée croissante : l'ensemble de films $[(1, 3), (3, 5), (5, 7), (2.5, 3.5), (4.5, 5.5)]$ produit un contre exemple,
+* date de début croissante : l'ensemble de films $[(1, 10), (2, 3), (3, 4)]$ produit un contre exemple,
 
 #### algorithme
 
@@ -147,12 +136,12 @@ La sortie de l'algorithme glouton correspond à un ordre de visionnage de films 
 
 On prouve notre algorithme comme tout algorithme glouton : on suppose que l'algorithme glouton ne donne pas une solution optimale et on considère une solution optimale coïncidant le plus longtemps possible avec la solution donnée par celui-ci.
 
-Soit $$i$$ l'indice de la première différence. On note $$f_i$$ le film choisi par le glouton et $$f'_i$$ le film (différent de $$f_i$$) choisi par la solution optimale :
+Soit $i$ l'indice de la première différence. On note $f_i$ le film choisi par le glouton et $f'_i$ le film (différent de $f_i$) choisi par la solution optimale :
 
-* la date de fin de $$f'_i$$ est plus grande que la date de fin de $$f_i$$ par construction de la solution par l'algorithme glouton.
-* la date de début de $$f'_i$$ est avant la date de fin de $$f_i$$ sinon on pourrait ajouter $$f_i$$ à la solution optimale et rendre une solution avec strictement plus de films
+* la date de fin de $f'_i$ est plus grande que la date de fin de $f_i$ par construction de la solution par l'algorithme glouton.
+* la date de début de $f'_i$ est avant la date de fin de $f_i$ sinon on pourrait ajouter $f_i$ à la solution optimale et rendre une solution avec strictement plus de films
 
-Les deux remarques ci-dessus amènent au fait que l'on peut construire une nouvelle solution en échangeant $$f'_i$$ par $$f_i$$ dans la solution optimale. Comme cette nouvelle solution a autant de films que la solution optimale, elle est aussi optimale. Ceci est impossible par hypothèse (on prend une solution optimale coïncidant le plus longtemps possible avec la solution de l'algorithme glouton) : notre hypothèse était fausse, l'algorithme glouton est optimal.
+Les deux remarques ci-dessus amènent au fait que l'on peut construire une nouvelle solution en échangeant $f'_i$ par $f_i$ dans la solution optimale. Comme cette nouvelle solution a autant de films que la solution optimale, elle est aussi optimale. Ceci est impossible par hypothèse (on prend une solution optimale coïncidant le plus longtemps possible avec la solution de l'algorithme glouton) : notre hypothèse était fausse, l'algorithme glouton est optimal.
 
 ### nombre minium de salles pour placer tous les films en stock
 
@@ -199,7 +188,19 @@ def nombre_salle_min_films(films):
  
 #### Preuve
 
-La preuve est ici aisée car si on rajoute une salle pour loger un nouveau film $$f$$, ca veut dire que pour toutes les $$k$$ salles actuelle il y a un film qui n'est pas fini pendant le début du nouveau film. Ca signifie qu'il existe $$k$$ films dont le début est avant $$f$$ et la fin après $$f$$ : il faut donc au moins $$k+1$$ salles pour jouer tous ces films en parallèle.
+La preuve est ici aisée car si on rajoute une salle pour loger un nouveau film $f$, ca veut dire que pour toutes les $k$ salles actuelle il y a un film qui n'est pas fini pendant le début du nouveau film. Ca signifie qu'il existe $k$ films dont le début est avant $f$ et la fin après $f$ : il faut donc au moins $k+1$ salles pour jouer tous ces films en parallèle.
+
+## exercice 4 : ordonnancement
+
+### ensemble compatible
+
+- si l'ordonnancement par date croissante permet de tout vendre il est compatible
+- s'il existe un autre ordonnancement avec la tâche $j$ placé avant la tâche $i$ alors que $d_j > d_i$, on peut échanger la tâche $i$ et la tâche $j$ et l'ordonnancement reste compatible
+
+### algorithme
+
+  - initialisation : si une solution ne contient pas l'élément de prix maximum on l'échange avec le 1er élément choisi et la solution reste compatible tout en ayant un profit plus grand
+  - récurrence : clair. S'il reste dans les solutions possible l'élément qu'on rajoute à l'étape $i$ on peut toujours le rendre à la place de celui pris par l'autre solution pour augmenter le profit.
 
 ## exercice 5 : le problème du sac à dos
 
@@ -274,12 +275,12 @@ En exécutant le programme avec ces paramètres : `[[100, 2, "A"], [10, 2, "B"],
 
 #### Preuve
 
-Même place dans le sac-à-dos et pour notre algorithme et pour la solution optimale. De là, par construction de l'algorithme glouton (on prend à chaque choix soit tout le produit soit juste assez pour finir de remplir tout le sac) le ratio $$r'_i$$ de la solution optimale pour le produit d'indice $$i$$ est forcément plus petit strictement que $$r_i$$.
+Même place dans le sac-à-dos et pour notre algorithme et pour la solution optimale. De là, par construction de l'algorithme glouton (on prend à chaque choix soit tout le produit soit juste assez pour finir de remplir tout le sac) le ratio $r'_i$ de la solution optimale pour le produit d'indice $i$ est forcément plus petit strictement que $r_i$.
 
 Donc : 
 
-* soit $$r'_j = 0$$ pour tout $$j > i$$ et notre solution est meilleure que la solution optimale, ce qui est impossible par hypothèse,
-* soit il existe $$r'_j >0$$ pour un $$j>i$$. On pose alors $$\epsilon = \min ((r_i -r'_i) * p_i, r'_j * p_j)$$ avec $$p_k$$ la quantité du produit $$k$$. On a que $$\epsilon >0$$ et  la solution $$(r_1, \dots, r_{i-1}, r'_i + \epsilon / p_i, r'_{i+1}, \dots r'_{j-1}, r'_j - \epsilon / p_j, r'_{j+1}, \dots, r'_n)$$ est admissible, est meilleure que la solution optimale car le prix volumique du produit $$j$$ est inférieur à celui du produit $$i$$ et est telle que le ratio du produit $$i$$ est strictement plus grand que celui de la solution optimale. Ceci est impossible par hypothèse.
+* soit $r'_j = 0$ pour tout $j > i$ et notre solution est meilleure que la solution optimale, ce qui est impossible par hypothèse,
+* soit il existe $r'_j >0$ pour un $j>i$. On pose alors $\epsilon = \min ((r_i -r'_i) * p_i, r'_j * p_j)$ avec $p_k$ la quantité du produit $k$. On a que $\epsilon >0$ et  la solution $(r_1, \dots, r_{i-1}, r'_i + \epsilon / p_i, r'_{i+1}, \dots r'_{j-1}, r'_j - \epsilon / p_j, r'_{j+1}, \dots, r'_n)$ est admissible, est meilleure que la solution optimale car le prix volumique du produit $j$ est inférieur à celui du produit $i$ et est telle que le ratio du produit $i$ est strictement plus grand que celui de la solution optimale. Ceci est impossible par hypothèse.
 
 Notre hypothèse arrivant à une contradiction, elle était fausse : la solution de l'algorithme glouton est optimale.
 
@@ -293,16 +294,16 @@ Notre algorithme glouton ne fonctionne pas si on ne peut pas prendre de factions
 
 #### algorithme
 
-On suppose que l'on a une matrice $$S[i][j]$$ correspondant à un couple $$(w, elements)$$, où $$w$$ est la valeur de la solution optimale pour les $i$ premiers objets et un poids de $j$ kilos et $$elements$$ la listes des objets pris dans ce sac optimal.
+On suppose que l'on a une matrice $S[i][j]$ correspondant à un couple $(w, elements)$, où $w$ est la valeur de la solution optimale pour les $i$ premiers objets et un poids de $j$ kilos et $elements$ la listes des objets pris dans ce sac optimal.
 
 L'algorithme est alors : 
 
-  - pour $$i$$ allant de $$1$$ à $$n$$
-    - pour $$j$$ allant de $$0$$ à $$W$$ kilos
-      - si $$j \geq w_i$$ alors la valeur de $$S[i][j]$$ est le maximum de :
-        - la valeur de $$S[i-1][j]$$ (dans ce cas là on ne prenant pas l'objet $$i$$ dans la solution)
-        - la valeur de $$S[i-1][j - w_i]$$ plus $$p_i$$ (dans ce cas on prend l'objet $$i$$ dans la solution)
-      - sinon la soluton $$S[i][j]$$ est égale à la solution $$S[i-1][j]$$
+  - pour $i$ allant de $1$ à $n$
+    - pour $j$ allant de $0$ à $W$ kilos
+      - si $j \geq w_i$ alors la valeur de $S[i][j]$ est le maximum de :
+        - la valeur de $S[i-1][j]$ (dans ce cas là on ne prenant pas l'objet $i$ dans la solution)
+        - la valeur de $S[i-1][j - w_i]$ plus $p_i$ (dans ce cas on prend l'objet $i$ dans la solution)
+      - sinon la soluton $S[i][j]$ est égale à la solution $S[i-1][j]$
 
 
 Il est clair que l'algorithme ci-dessus est juste une écriture de l'équation de récurrence, il est donc exact.
@@ -311,7 +312,7 @@ Il n'est pas glouton car on ne peut utiliser la technique de preuve par récurre
 
 #### complexité
 
-La complexité en nombre d'opération de l'algorithme est en $$\mathcal{O}(n * W)$$
+La complexité en nombre d'opération de l'algorithme est en $\mathcal{O}(n * W)$
 
 #### hein ?
 
@@ -319,19 +320,19 @@ Ca semble être une complexité polynomiale, mais c'est dans le stockage des var
 
 **En algorithmie la complexité est calculée en nombre d'opérations par rapport à la taille de l'entrée.**
 
-Ici, le poids $$W$$ est codé avec $$\ln_2(W)$$ bits en machine, donc la place mémoire prise pour stocker nos entrées est de : 
+Ici, le poids $W$ est codé avec $\ln_2(W)$ bits en machine, donc la place mémoire prise pour stocker nos entrées est de : 
 
-  - $$\ln_2(W)$$ pour encoder le poids du sac à dos
-  - $$n * \ln_2(P)$$ où $$P$$ est la valeur nutritionnelle max pour stocker les poids des $$n$$ produits,
-  - $$n * \ln_2(W)$$  pour stocker les poids des $$n$$ produits (on suppose que chaque produit pèse moins que le poids du sac  dos),
+  - $\ln_2(W)$ pour encoder le poids du sac à dos
+  - $n * \ln_2(P)$ où $P$ est la valeur nutritionnelle max pour stocker les poids des $n$ produits,
+  - $n * \ln_2(W)$  pour stocker les poids des $n$ produits (on suppose que chaque produit pèse moins que le poids du sac  dos),
 
-On a donc besoin en tout de $$\mathcal{O}(n * \ln_2(A))$$ cases mémoires pour stocker toute notre entrée (avec $$A$$ le plus grand nombre)
+On a donc besoin en tout de $\mathcal{O}(n * \ln_2(A))$ cases mémoires pour stocker toute notre entrée (avec $A$ le plus grand nombre)
 
-Notre tableau à $$n * W$$ cases, donc le seul fait de le parcourir prend un nombre exponentiel d'opérations par rapport à notre taille d'entrée.
+Notre tableau à $n * W$ cases, donc le seul fait de le parcourir prend un nombre exponentiel d'opérations par rapport à notre taille d'entrée.
 
 
 Ouf, nous voilà rassuré. Ce n'est pas la peine de brûler tous les livres d'algortihmie. Les problèmes les plus dur du monde sont effectivement dur à résoudre (un nombre exponentiel d'opérations en temps et/ou en mémoire).
 
 
-> **Nota Bene :** commencer à regarder les nombres comme prenant de la place ($$\ln_2(x)$$ case pour un nombre valant $$x$$) peut vous doner le tourni. En effet, que devient la complexité d'un tri par exemple ? Est-ce toujours $$\mathcal{O}(n\ln(n))$$ opérations ? Cela ne dépend pas de la valeur des nombres à trier ? 
-> Si bien sur ça dépend des nombres à trier. Mais si P est la valeur max des nombres à trier. On a besoin de $$\mathcal{O}(n\ln_2(P))$$ places mémoire pour les stocker et comme la comparaisons de deux nombres prend $$\mathcal{O}(\ln_2(P))$$ opérations, la complexité toale de l'algorithme est alors de $$\mathcal{O}(n\ln(n)\ln_2(P))$$ opérations qui est toujours en  $$\mathcal{O}(n\ln(n))$$ opérations par rapport à la taille en entrée.
+> **Nota Bene :** commencer à regarder les nombres comme prenant de la place ($\ln_2(x)$ case pour un nombre valant $x$) peut vous doner le tourni. En effet, que devient la complexité d'un tri par exemple ? Est-ce toujours $\mathcal{O}(n\ln(n))$ opérations ? Cela ne dépend pas de la valeur des nombres à trier ? 
+> Si bien sur ça dépend des nombres à trier. Mais si P est la valeur max des nombres à trier. On a besoin de $\mathcal{O}(n\ln_2(P))$ places mémoire pour les stocker et comme la comparaisons de deux nombres prend $\mathcal{O}(\ln_2(P))$ opérations, la complexité toale de l'algorithme est alors de $\mathcal{O}(n\ln(n)\ln_2(P))$ opérations qui est toujours en  $\mathcal{O}(n\ln(n))$ opérations par rapport à la taille en entrée.

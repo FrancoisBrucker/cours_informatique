@@ -60,7 +60,7 @@ Pour qu'un algorithme glouton **trouve une solution optimale** il faut :
 
 ## exercice 1 : le gradient
 
-On suppose que l'on veuille trouver le minimum d'une fonction $$f$$ dérivable.
+On suppose que l'on veuille trouver le minimum d'une fonction $f$ dérivable.
 
   1. Décrivez l'algorithme du gradient sous la forme d'un algorithme glouton
   2. montrer qu'il peut converger vers la solution
@@ -79,22 +79,35 @@ Démontrez que votre algorithme est bien optimal.
 
 ### système de pièces quelconque ?
 
-  - donnez une version générale de votre algorithme de rendu de pièce, c'est à dire où l'on a $$n$$ pièces valant $$p_1 < p_2 < \dots < p_n$$. 
+  - donnez une version générale de votre algorithme de rendu de pièce, c'est à dire où l'on a $n$ pièces valant $p_1 < p_2 < \dots < p_n$. 
   - Cet algorithme glouton de va pas donner de solution optimale quelque soit le système de pièces, donnez un exemple pour lequel ça ne fonctionne pas.
-  - montrer que l'algorithme glouton fonctionne pour un système de pièces supercroissant, c'est à dire où $$p_i \geq \sum_{j< i} p_j$$ avec $$_i$$ les valeurs de pièces rangés par ordre croissant. 
+  - montrer que l'algorithme glouton fonctionne pour un système de pièces supercroissant, c'est à dire où $p_i \geq \sum_{j< i} p_j$ avec $_i$ les valeurs de pièces rangés par ordre croissant. 
   - donnez un exemple de système de pièces supercroissant.
 
-## exercice 3 : ordonnancement
+##  exercice 3 :  allocation de salles de cinéma
+
+Un gérant de cinéma a en sa possession $m$ films caractérisés chacun par un couple ($d_i$, $f_i$) où $d_i$ est l'heure de début du film et $f_i$ l'heure de fin. Il se pose 2 problèmes
+
+
+### voir un maximum de films
+
+Proposez (et prouvez) un algorithme permettant de rendre une liste maximale de film à voir en une journée.
+
+### nombre minium de salles pour placer tous les films en stock
+
+Proposez (et prouvez) un algorithme permettant de rendre le nombre minium de salle et son organisation permettant de projeter tous les films.
+
+## exercice 4 : ordonnancement
 
 Les problèmes d'ordonnancement sont multiples. Certains sont durs d'autres faciles. Mais un algorithme glouton permet de trouver souvent une solution acceptable pour beaucoup d'entres eux et même parfois optimale pour certains problèmes.
 
-Le problème suivant est résoluble par un algorithme glouton : On considère $$m$$ produits de durée 1 à fabriquer. Si le produit $$i$$ est réalisée avant la date $$d_i$$ on peut le vendre pour un prix $$p_i$$, sinon il est invendable. Proposez un algorithme permettant de maximiser les profits en considérant que l'on a qu'un seul ouvrier.
+Le problème suivant est résoluble par un algorithme glouton : On considère $m$ produits de durée 1 à fabriquer. Si le produit $i$ est réalisée avant la date $d_i$ on peut le vendre pour un prix $p_i$, sinon il est invendable. Proposez un algorithme permettant de maximiser les profits en considérant que l'on a qu'un seul ouvrier.
 
 ### ensemble compatible
 
 Un ensemble de produits est dit *compatible* s'il existe un ordonnancement de leur production permettant de tous les vendre (chaque produit est fabriqué avant sa date de péremption).
 
-Montrer qu'un ensemble de produits est compatible si et seulement l'ordonnancement par date $$d_i$$ croissante permet de tous les vendre.
+Montrer qu'un ensemble de produits est compatible si et seulement l'ordonnancement par date $d_i$ croissante permet de tous les vendre.
 
 ### algorithme
 
@@ -107,19 +120,6 @@ Montrer que l'algorithme glouton suivant est optimal :
 
 >**Nota bene :** pour la preuve, on pourra comparer une solution optimale et la solution donnée par notre algorithme en regardant la première différence.
 
-
-##  exercice 4 :  allocation de salles de cinéma
-
-Un gérant de cinéma a en sa possession $$m$$ films caractérisés chacun par un couple ($$d_i$$, $$f_i$$) où $$d_i$$ est l'heure de début du film et $$f_i$$ l'heure de fin. Il se pose 2 problèmes
-
-
-### voir un maximum de films
-
-Proposez (et prouvez) un algorithme permettant de rendre une liste maximale de film à voir en une journée.
-
-### nombre minium de salles pour placer tous les films en stock
-
-Proposez (et prouvez) un algorithme permettant de rendre le nombre minium de salle et son organisation permettant de projeter tous les films.
 
 
 ## exercice 5 : le problème du sac à dos
@@ -135,8 +135,8 @@ Il est possible de modéliser beaucoup de problèmes courant par un problème de
 
 On dispose de :
 
-  - $$n$$ objets ayant chacun un poids $$w_i$$ (*weight*) et une valeur nutritionnelle $$p_i$$ ($$1 \leq i \leq n$$)
-  - d'un sac à dos d'une contenance de $$W$$
+  - $n$ objets ayant chacun un poids $w_i$ (*weight*) et une valeur nutritionnelle $p_i$ ($1 \leq i \leq n$)
+  - d'un sac à dos d'une contenance de $W$
   
 On veut maximiser la valeur nutritionnelle que l'on peut emporter avec notre sac.
 
@@ -182,12 +182,12 @@ Donner un exemple où l'algorithme glouton ne donne pas la solution optimale pas
 
 #### solution optimale
 
-On peut trouver un algorithme optimal pour le problème du sac à dos en remarquant que l'on peut construire une solution optimale avec $$i$$ objets à partir de solutions optimales à $$i-1$$ objets. 
+On peut trouver un algorithme optimal pour le problème du sac à dos en remarquant que l'on peut construire une solution optimale avec $i$ objets à partir de solutions optimales à $i-1$ objets. 
 
-En effet la solution optimale à $$i$$ objets pour une capacité $$W$$ est soit :
+En effet la solution optimale à $i$ objets pour une capacité $W$ est soit :
 
-  - une solution optimale à $$i-1$$ objets pour une capacité $$W$$ si on ne prend pas l'objet $$i$$,
-  - une solution optimale à $$i-1$$ objets pour une capacité $$W - w_i$$ si on prend l'objet $$i$$.
+  - une solution optimale à $i-1$ objets pour une capacité $W$ si on ne prend pas l'objet $i$,
+  - une solution optimale à $i-1$ objets pour une capacité $W - w_i$ si on prend l'objet $i$.
   
 #### algorithme optimal
 

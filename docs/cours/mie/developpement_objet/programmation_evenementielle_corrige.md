@@ -90,7 +90,7 @@ Pour le code :
 
   - la vue : on crée des objets graphiques de noms `"valeur"` (un label) et `"plus_un"` (un bouton). Les getter et setter sont accessibles via ces noms. On crée les objets (`addLabel` par exemple), puis on les manipule (`setLabel`). Les nombres à la fin de la création correspondent à ligne et colonne de la fenêtre.
   - on peut utiliser dans la fonction `press` des choses qui ne sont pas encore définies puisque le code ne sera lu que lorsque l'on pressera le bouton. A cette étape là tout sera défini.
-  - l'action du contrôleur est passé à la vue en donnant la fonction utilisée pour le clic : lorsque l'on clique sur l'entité de la vue appelée "plus_un", on exécute la fonction `press` avec comme paramètre ce sur quoi on a cliqué (ie. le bouton). On n'a pas besoin de ce paramètre ici.
+  - l'action du contrôleur est passé à la vue en donnant la fonction utilisée pour le clic : lorsque l'on clique sur l'entité de la vue appelée "plus_un", on exécute la fonction `press` avec comme paramètre ce sur quoi on a cliqué (ie . le bouton). On n'a pas besoin de ce paramètre ici.
   - `app.go()` crée la fenêtre. Tout le code en-dessous n'est donc pas lu tant que la fenêtre est active. Il faut donc que tout le contrôleur soit défini avant cette ligne.
  
 
