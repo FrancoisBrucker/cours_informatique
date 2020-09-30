@@ -84,9 +84,16 @@ Connections :
 Le support du cours d'[Introduction aux graphes]({% link cours/tronc_commun/introduction_aux_graphes.md %})
 
 ### gloutons 1/2 et 2/2
-[séance en deux parties sur les algorithmes gloutons]({% link cours/tronc_commun/algorithmes_gloutons.md %}). Leurs vies leurs œuvres et comment les reconnaître.
 
-### installations d'un environnement de développement
+La séance sur les algorithmes gloutons est séparée en deux parties :
+
+  - séance 1 : [les gloutons exacts]({% link cours/tronc_commun/algorithmes_gloutons_1_2.md %})
+  - séance 2 : [les gloutons approchés]({% link cours/tronc_commun/algorithmes_gloutons_2_2.md %})
+
+
+Après cette séance vous connaîtrez presque tout sur la vie l'œuvre et comment reconnaître un glouton.
+
+### installation d'un environnement de développement
 
 Le but de cette séance est d'installer un environnement de développement python et de se familiariser avec les tests unitaires.
 

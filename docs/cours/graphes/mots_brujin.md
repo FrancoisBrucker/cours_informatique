@@ -67,5 +67,25 @@ Enfin, pour un sommet $x$ donné, il possède $n$ arc entrant (correspondant à 
 ### cycle eulérien
 
 Un cycle eulérien du graphe $G$ correspond à une suite comprenant tous les mots de longueur $p$. En analysant 3 sommets successifs de ce cycle $u_{i-1}u_iu_{i+1}$ on remarque que le mot correspondant à l'arc $u_{i-1}u_i$ et celui correspondant à l'arc $u_iu_{i+1}$ sont tels
+que les $p-1$ derniers caractères de l'un son les $p-1$ premiers caractères de l'autre.
+
+
+### mot de brujin
+
+Le cycle eulérien $u_0\dots u_k$ nous permet de construire les $n^p différents mots : c'est les mots correspondants aux arcs $u_iu_{i+1}$.
+
+De là on construit le mot qui commence par le mot associé à $u_0u_1$ puis on ajoute itérativement le dernier caractère du sommet $u_i$ pour $i > 1$.
+
+> **remarque :** la construction ci-dessus est équivalente à commencer par le mot associé à $u_0$ et à ajouter itérativement les derniers caractères de tous les $u_i$, $i > 0$.
+
+Ce mot, appelé *mot de brujin* a bien les propriétés suivantes :
+
+  - il contient tous les mots de longueur $p$ de l'alphabet à n caractères,
+  - il a une taille de $p +(n^p -1)$ caractères
 
 ### exemple
+
+Le graphe de brujin associé aux mots de longueur 3 de l'alphabet $\\{0, 1\\}$ est : 
+ ![graphe de brujin]({{"ressources/mot_3_01.png"}})
+
+Un cycle eulérien associé est alors 10-01-11-11-10-00-00-01-10 ce qui donne le mot de Brujin associé : 1011100010.
