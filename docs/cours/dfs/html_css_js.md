@@ -338,8 +338,69 @@ On les utilise principalement pour structurer la page.
 
 
 ## js
+Lors de la génération d'une page html, on crée ce qu'on appelle un ardre DOM (Document Object Model) de la page.\
+Cet arbre contient tous les éléments html présents sur la page (plus de précisions [ici](https://www.w3schools.com/js/js_htmldom.asp)).
+L'ajout d'un script javascript sur une page html permet de modifier cet arbre DOM, sans avoir besoin de recharger la page.
+Ces modifications ce font via des événements : [https://www.w3schools.com/jsref/dom_obj_event.asp](https://www.w3schools.com/jsref/dom_obj_event.asp)
 
-https://www.w3schools.com/js/js_htmldom.asp
+Prenons un exemple pour illustrer nos propos. Dans premier temps on écrira le script js dans le fichier html. Cependant pour avoir un code plus propre il est recommandé de séparer le code et de créer un fichier en ``.js``en parallèle.
+
+~~~html
+<html lang="fr">
+  <head>
+    <title>Ma Page</title>
+  </head>
+  <body>
+    <style>
+      html, body {
+        margin: 0;
+        padding:0;
+        }
+      .milieu {
+        margin: 10px auto;
+        height: 50px;
+        width: 20px;
+      }
+      .color {
+        background-color: red;
+      }
+    </style>
+
+    <div id="mon_div" class="milieu color"></div>
+
+    <script>
+      document.getElementById("mon_div").onclick = function() {
+        document.getElementById("mon_div").style.backgroundColor = "blue"
+      }
+
+    </script>
+  </body>
+</html>
+~~~
+
+Ici, on a crée un div dans la page html, originellement de couleur rouge. Le script js va permettre de changer la couleur de ce div en bleu lorsque l'on clique dessus avec la souris.\
+Il faut bien noter que l'on écrit le script dans le code à l'endroit où il va être exécuté. 
+
+On peut faire plus compliqué, si l'on souhaite que le div retrouve sa couleur d'origine si on re-clique dessus par exemple:
+~~~~html
+<script>
+  blue = false;
+  document.getElementById("mon_div").onclick = function() {
+    if (blue) {
+      blue = false;
+      document.getElementById("mon_div").style.backgroundColor = "red"
+    }
+    else {
+      blue = true;
+      document.getElementById("mon_div").style.backgroundColor = "blue"
+    }
+
+  }
+</script>
+~~~~
+Cela devient vite compliqué, on préfére alors utiliser des bibliothèques, comme [jQuery](https://jquery.com)
+
+
 
 
 
