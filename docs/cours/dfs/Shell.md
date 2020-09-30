@@ -184,7 +184,7 @@ Pour plus d'information concernant les redirections : [Lien utile](https://putai
 
 ## Cheat-Sheet
  
- Voici une [Cheat-Sheet]({% link cours/dfs/Shell-Cheat-Sheet.md %}) récapitulant la plupart des commandes dont vous aurez besoin.
+ Voici une [Cheat-Sheet]({% link cours/dfs/shell_cheat_sheet.md %}) récapitulant la plupart des commandes dont vous aurez besoin.
 
 
 

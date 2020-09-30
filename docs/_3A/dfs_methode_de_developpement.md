@@ -25,7 +25,7 @@ Cours d'apprentissages des différents outils de développement et les bases du 
 
 # shell
 
-	[Shell]({% link cours/dfs/Shell.md %})
+	[Shell]({% link cours/dfs/shell.md %})
 
 # ssh 
 
