@@ -79,12 +79,87 @@ Vous pouvez facilement trouver des listes de ces balises sur internet, en voici 
 - [https://eastmanreference.com/complete-list-of-html-tags](https://eastmanreference.com/complete-list-of-html-tags)
 
 #### Les div 
-Les div sont des blocs anonymes. Elles seront caractérisées uniquement par les `class` et les `id`. 
+Les div sont des blocs anonymes. Elles seront caractérisées uniquement par les `class` et les `id`. (ils seront expliqués dans la partie CSS)
 Plusieurs éléments peuvent partager une même classe, mais un id est unique pour un élément.
 On les utilise principalement pour structurer la page. 
 
 ## CSS
+CSS est un langage qui permet de gérer la mise en forme de votre site.
 
+comment utilisé CSS?
+
+Tout d'abord, il faut créer un ficher `.css`. Vous pouvez par exemple le nommer style.css.
+Une fois que c'est fait, il faut que vous relier votre fichier html avec votre fichier css.
+Pour cela, mettez vos deux fichier dans un même dossier. Puis il faut rajouter dans la partie `head` de votre fichier html :
+~~~~html
+    <link rel="stylesheet" href="style.css" />
+~~~~
+Voila, maintenant votre fichier html est relié au fichier css. Vous pouvez commencer à mettre en page!
+
+Par exemple, copier ce code dans votre ficher css :
+~~~~CSS
+p
+{
+    color: red;
+}
+~~~~
+
+Ce code est coposé de 3 élements :
+- la `balise` (p) : il suffit de noter le nom des balises que l'on veut modifier. On aurait pu utiliser `h1`,`em`ou n'importe quelle autre balise.
+
+- une `propriété CSS` (color): cela permet de définir ce que l'on veut modifier. cela peut être la couleur, la taille (font-size) ou autre.
+
+-une `valeur`(red) : ici c'es le nom de la couleur. Pour chaque propriété, une valeur doit être donnée.
+
+Il existe de nombreuse propriétés, vous pouvez en retrouver [ici](https://websitesetup.org/css3-cheat-sheet/)
+
+Il y a tout de même un problème. Comment faire si l'on veut avoir des formats différents pour plusieurs paragraphe ? en effet, tout les paragraphe ont la même balise :`p`
+
+Pour resoudre ce problème, il existe deux solutions:
+- `les classes` : qui peuvent etre utilisés en même temps par plusieurs balises
+- `les id`: qui doivent être unique pour chaque élément.
+
+#### les classes 
+
+Il s'agit d'un atribut que l'on peut mettre sur n'importe quelle balise 
+
+~~~~HTML
+<h1 class=""> </h1>
+<p class=""> </p>
+<img class="" />
+~~~~
+
+Comme valeur pour la classe, nous pouvons utiliser n'importe quel nom par exemple :
+
+~~~~HTML
+<h1 class="test"> ce titre est de la classe test</h1>
+~~~~
+on peut ensuite réutiliser ce nom pour changer l'affichage des balises de cette classe. Il suffit de le définir dans notre fichier CSS.
+
+~~~~CSS
+.test
+{
+    color: red;
+}
+~~~~
+
+Ainsi, toutes les balises de classe test auront un texte rouge.
+
+#### les id
+
+Ils s'utilisent de la même facon que les classe, à la différence qu'il ne peuvent être utilisé que par une balise à la fois.
+~~~~CSS
+#logo
+{
+    /* Indiquez les propriétés CSS ici */
+}
+~~~~
+
+#### les autres selecteurs
+
+Il existe de nombreuses autres façons pour selectioner un element précis du fichier html. voir [ici](https://ensweb.users.info.unicaen.fr/pres/sel/intro.php)
+
+Pour la suite, vous pouvez apprendre à structurer vos pages [ici](https://openclassrooms.com/fr/courses/1603881-apprenez-a-creer-votre-site-web-avec-html5-et-css3/1605881-structurez-votre-page) et continuer ce tuto!
 
 ## js
 
