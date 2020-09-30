@@ -866,9 +866,10 @@ On utilise la commande `git pull` (ou `git pull origin master` si l'on a pas dé
 
 Pour que cette commande fonctionne il faut que l'origin soit plus loin en commit que vous et que n'ayez pas fait de modification par rapport à l'histoire de l'origin (vous devez juste être en retard, pas autre part)
 
-**Attention :** Le `git pull` fera un merge par défaut, brisant la jolie linéarité de l'historique. Il faut, comme pour la synchronisation des branche faire un rebase. Je vous conseille la lecture de [cet article](https://delicious-insights.com/fr/articles/bien-utiliser-git-merge-et-rebase/) qui explique bien comment faire. 
+> **Attention :** Le `git pull` fera un merge par défaut, brisant la jolie linéarité de l'historique. Il faut, comme pour la synchronisation des branche faire un rebase. Je vous conseille la lecture de [cet article](https://delicious-insights.com/fr/articles/bien-utiliser-git-merge-et-rebase/) qui explique bien comment faire. L'article vous demande d'utiliser `--rebase=preserve` comme option mais cette commande est obsolète et remplacée par `--rebase-merges`qui fonctionne de la même manière.
+ 
 
-Pour se fixer les idées, on ne fera jamais un `gill pull` depuis l'origin, mais un : `git pull --rebase=preserve`. Ceci permet de :
+Pour se fixer les idées, on ne fera jamais un `gill pull` depuis l'origin, mais un : `git pull --rebase-merges`. Ceci permet de :
 
   - faire un rebase de l'origin sur votre branche locale
   - de préserver les merge (fusion) de branches déjà présentes (et qui donc, si elles existent, ont une fonction *sémantique* dans votre projet)
@@ -876,7 +877,7 @@ Pour se fixer les idées, on ne fera jamais un `gill pull` depuis l'origin, mais
   Pour ne pas avoir à se soucier de toujours ajouter ces options aux git pull, on en fait des options globales :
   
   ~~~ shell
-  git config --global pull.rebase preserve
+  git config --global pull.rebase merges
   ~~~
 
 Vous pourrez ensuite faire des `git pull` tout seul et ils seront rebasé par défaut et préserveront les merges existant. Le meilleur des deux monde en somme.

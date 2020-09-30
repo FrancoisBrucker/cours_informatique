@@ -20,7 +20,6 @@ Ce cours est la partie introductive d'un [cours plus vaste]({% link cours/graphe
 
   1. [bases]({% link cours/graphes/bases.md %})
   2. [parcours eulériens]({% link cours/graphes/parcours_euleriens.md %})
-  3. encodage d'un graphes
-  4. mots de Brujin
-  
+  3. [mots de Brujin]({% link cours/graphes/mots_brujin.md %})
+  4. [encodage de graphes]({% link cours/graphes/encodage_graphes.md %})
 

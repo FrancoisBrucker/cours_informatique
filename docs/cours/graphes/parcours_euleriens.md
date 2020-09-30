@@ -162,8 +162,21 @@ On a le graphe : ![exemple euler]({{"ressources/euler_exemple_1.png"}})
   2. Le [second cycle trouvé]({{"ressources/euler_exemple_3.png"}}) est $35243$
   3. Le [troisième cycle trouvé]({{"ressources/euler_exemple_4.png"}}) est $4564$
   
-  On raboute les second et troisième cycle ensembles : $43524$ et $4564$ en $43524564$ que l'on peut ensuite rajouter au premier cycle pour donner le cycle $43523124564$.
+  On raboute les second et troisième cycle ensembles : $43524$ et $4564$ en $43524564$. On peut ensuite rajouter le premier cycle en l'écrivant $2312$ et en l'insérant à la place du $2$ pour donner le ccle eulérien final : $43523124564$.
   
 ## généralisation
-  
-  TBD
+
+IL existe de nombreuses généralisations aux cycles eulérien. Citons en deux : les chemins eulériens et les cycles eulériens des graphes orientés.
+
+### chemin eulérien
+
+
+Un *chemin eulérien entre $x$ et $y$* est un chemin entre $x$ et $y$ qui prend toutes les arêtes.
+
+On prouve que les graphes dont tous les sommets sont de degré pair sauf $x$ et $y$ sont solution de ce problème. En effet, on ajoute une arête entre $x$ et $y$ et on est ramené aux problème du cycle eulérien.
+
+### graphes orientés
+
+Les graphes orientés qui possèdent un *cycle eulériens* sont exactement les graphes où $\delta^+(x) = \delta^-(x)$ pour tout sommet $x$.
+
+
