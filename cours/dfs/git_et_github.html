@@ -896,9 +896,11 @@ origin</li>
 
 <p>Pour que cette commande fonctionne il faut que l’origin soit plus loin en commit que vous et que n’ayez pas fait de modification par rapport à l’histoire de l’origin (vous devez juste être en retard, pas autre part)</p>
 
-<p><strong>Attention :</strong> Le <code class="language-plaintext highlighter-rouge">git pull</code> fera un merge par défaut, brisant la jolie linéarité de l’historique. Il faut, comme pour la synchronisation des branche faire un rebase. Je vous conseille la lecture de <a href="https://delicious-insights.com/fr/articles/bien-utiliser-git-merge-et-rebase/">cet article</a> qui explique bien comment faire.</p>
+<blockquote>
+  <p><strong>Attention :</strong> Le <code class="language-plaintext highlighter-rouge">git pull</code> fera un merge par défaut, brisant la jolie linéarité de l’historique. Il faut, comme pour la synchronisation des branche faire un rebase. Je vous conseille la lecture de <a href="https://delicious-insights.com/fr/articles/bien-utiliser-git-merge-et-rebase/">cet article</a> qui explique bien comment faire. L’article vous demande d’utiliser <code class="language-plaintext highlighter-rouge">--rebase=preserve</code> comme option mais cette commande est obsolète et remplacée par <code class="language-plaintext highlighter-rouge">--rebase-merges</code>qui fonctionne de la même manière.</p>
+</blockquote>
 
-<p>Pour se fixer les idées, on ne fera jamais un <code class="language-plaintext highlighter-rouge">gill pull</code> depuis l’origin, mais un : <code class="language-plaintext highlighter-rouge">git pull --rebase=preserve</code>. Ceci permet de :</p>
+<p>Pour se fixer les idées, on ne fera jamais un <code class="language-plaintext highlighter-rouge">gill pull</code> depuis l’origin, mais un : <code class="language-plaintext highlighter-rouge">git pull --rebase-merges</code>. Ceci permet de :</p>
 
 <ul>
   <li>faire un rebase de l’origin sur votre branche locale</li>
@@ -907,7 +909,7 @@ origin</li>
 
 <p>Pour ne pas avoir à se soucier de toujours ajouter ces options aux git pull, on en fait des options globales :</p>
 
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  git config <span class="nt">--global</span> pull.rebase preserve
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  git config <span class="nt">--global</span> pull.rebase merges
 </code></pre></div></div>
 
 <p>Vous pourrez ensuite faire des <code class="language-plaintext highlighter-rouge">git pull</code> tout seul et ils seront rebasé par défaut et préserveront les merges existant. Le meilleur des deux monde en somme.</p>
