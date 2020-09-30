@@ -9,14 +9,14 @@ author: Baptiste Mahé
 
 ## Qu'est-ce que c'est ?
 
-[Jekyll](https://jekyllrb.com/) est un `générateur` de site statique à partir de languages qui ne sont pas lu par le navigateur (type Marckdown et Yaln). Jekyll un package [Ruby](https://www.ruby-lang.org/en/) et requiert le programme `gem` pour l'installation et `bundle` le gestionnaire de packages de Ruby.
+[Jekyll](https://jekyllrb.com/) est un `générateur` de sites statiques à partir de languages qui ne sont pas lus par le navigateur (type Markdown et Yaln). Jekyll un package [Ruby](https://www.ruby-lang.org/en/) et requiert le programme `gem` pour l'installation et `bundle` le gestionnaire de packages de Ruby.
 
 ## Ruby, Gem et Bundle (+ installation)
 
 Ruby est un **langage de programmation** open-source dynamique qui met l'accent sur la simplicité et la productivité. Sa syntaxe élégante en facilite la lecture et l'écriture. [Example](https://www.includehelp.com/ruby/programs.aspx), Hello World en ruby :
 
 ~~~ ruby
-=begin 
+=begin
 Ruby program to print Hello World.
 =end
 
@@ -25,23 +25,23 @@ puts "Hello World!"
 
 Output : `Hello World!`
 
-Pour installer Ruby sur votre machine :
+Avant d'installer `ruby` il est nécessaire d'avoir les programmes de compilation en C et C++, si vous ne les avez pas encore :
+
+~~~ sh
+sudo apt install make gcc g++ # pour Linux/WLS
+xcode-select --install # pour MacOS
+~~~
+
+On peut maintenant installer ruby :
 
 ~~~ sh
 sudo apt install ruby-full # pour Linux/WLS
-sudo brew install ruby-full # pour MacOS
+brew install ruby  # pour MacOS
 ~~~
 
 Les fichiers ruby sont en `.rb` et la commande pour les executer est : `ruby filename.rb`. Pour un tuto c'est [ici](https://www.youtube.com/watch?v=vgSQ97FDSvM&list=PLjwdMgw5TTLVVJHvstDYgqTCao-e-BgA8&ab_channel=Grafikart.fr)
 
 En installant Ruby on installe aussi son **package manager** `gem` (comme `pip` pour Python). Gem sert à gérer (installer, supprimer, chercher, etc...) les packages Ruby.
-
-Pour l'utiliser il est nécessaire d'avoir les programmes de compilation en C et C++, si vous ne les avez pas encore :
-
-~~~ sh
-sudo apt install make gcc g++ # pour Linux/WLS
-sudo brew install make gcc g++ # pour MacOs
-~~~
 
 Pour installer des packages à l'aide de `gem` :
 
@@ -51,7 +51,7 @@ sudo gem install package-name
 
 Pour plus de documentation sur `gem` voir [ici.](https://guides.rubygems.org/rubygems-basics/)
 
-Nous pouvons donc maintenant utiliser `gem` pour installer Jekyll et Blunder :
+Nous pouvons donc maintenant utiliser `gem` pour installer Jekyll et Bundler :
 
 ~~~ sh
 sudo gem install bundler jekyll
@@ -63,7 +63,7 @@ Pour tester l'installation :
 jekyll -v
 ~~~
 
-vous devriez obtenir quelque chose comme : `jekyll 4.X.X`
+Vous devriez obtenir quelque chose comme : `jekyll 4.X.X`
 
 ## Quelques fonctionalités
 
@@ -94,11 +94,11 @@ cd my-jekyll-site
 bundle exec jekyll serve
 ~~~
 
-(executer cette commande dans le dossier cours_informatique/docs/ pour servir le site de M. Brucker)
+(executer cette commande dans le dossier `cours_informatique/docs/` pour servir le site de M. Brucker)
 
 Ensuite naviguer à l'adresse `http://127.0.0.1:4000` avec votre navigateur et votre site Jekyll devrait y être affiché. (rajouter `/cours_informatiques/` pour le site de M. Brucker)
 
-Une fois l'application fini il faut la **compiler** en html pour qu'elle soit comprise par le navigateur en production :
+Une fois l'application finie il faut la **compiler** en html pour qu'elle soit comprise par le navigateur en production :
 
 ~~~ sh
 bundle exec jekyll build
@@ -118,6 +118,34 @@ Une bonne overview de Markdown [ici.](https://guides.github.com/features/masteri
 
 ## La configuration
 
-La configuration du projet est contenu dans le fichier YAML `_config.yml` généré automatiquement par la création du projet jekyll. YAML ou Yet Another Markup Language, est un format de représentation des données comme XML.
+La configuration du projet est contenue dans le fichier YAML `_config.yml` généré automatiquement par la création du projet jekyll. YAML ou Yet Another Markup Language, est un format de représentation des données comme XML.
 
-*TODO: finir explications configs*
+A l'initialisation, le fichier `_config.yml` contient les informations suivnates :
+
+~~~yml
+title: Your awesome title
+email: your-email@example.com
+description: >- # this means to ignore newlines until "baseurl:"
+  Write an awesome description for your new site here. You can edit this
+  line in _config.yml. It will appear in your document head meta (for
+  Google search results) and in your feed.xml site description.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+twitter_username: jekyllrb
+github_username:  jekyll
+
+# Build settings
+theme: minima
+plugins:
+  - jekyll-feed
+~~~
+
+`title` permet de modifier le titre affiché dans l'onglet du site.
+
+`email` `description` `twitter_username` et `github_username` sont des donées que l'ont peut accéder dans toute l'application à travers les templates.
+
+`theme` définit le thème Jekyll de l'application. [Tuto sur les thèmes Jekyll.](https://jekyllrb.com/docs/themes/)
+
+`plugins` défnit les plugins Jekyll utilisés dans l'applications. [Tuto sur les plugins Jekyll.](https://jekyllrb.com/docs/plugins/)
+
+`baseurl` et `url` permettent de gérer le rooting de l'application.
