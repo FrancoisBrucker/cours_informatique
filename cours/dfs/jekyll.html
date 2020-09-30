@@ -61,13 +61,13 @@
 
 <h2 id="quest-ce-que-cest-">Qu’est-ce que c’est ?</h2>
 
-<p><a href="https://jekyllrb.com/">Jekyll</a> est un <code class="language-plaintext highlighter-rouge">générateur</code> de site statique à partir de languages qui ne sont pas lu par le navigateur (type Marckdown et Yaln). Jekyll un package <a href="https://www.ruby-lang.org/en/">Ruby</a> et requiert le programme <code class="language-plaintext highlighter-rouge">gem</code> pour l’installation et <code class="language-plaintext highlighter-rouge">bundle</code> le gestionnaire de packages de Ruby.</p>
+<p><a href="https://jekyllrb.com/">Jekyll</a> est un <code class="language-plaintext highlighter-rouge">générateur</code> de sites statiques à partir de languages qui ne sont pas lus par le navigateur (type Markdown et Yaln). Jekyll un package <a href="https://www.ruby-lang.org/en/">Ruby</a> et requiert le programme <code class="language-plaintext highlighter-rouge">gem</code> pour l’installation et <code class="language-plaintext highlighter-rouge">bundle</code> le gestionnaire de packages de Ruby.</p>
 
 <h2 id="ruby-gem-et-bundle--installation">Ruby, Gem et Bundle (+ installation)</h2>
 
 <p>Ruby est un <strong>langage de programmation</strong> open-source dynamique qui met l’accent sur la simplicité et la productivité. Sa syntaxe élégante en facilite la lecture et l’écriture. <a href="https://www.includehelp.com/ruby/programs.aspx">Example</a>, Hello World en ruby :</p>
 
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">=begin 
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">=begin
 Ruby program to print Hello World.
 =end</span>
 
@@ -76,21 +76,21 @@ Ruby program to print Hello World.
 
 <p>Output : <code class="language-plaintext highlighter-rouge">Hello World!</code></p>
 
-<p>Pour installer Ruby sur votre machine :</p>
+<p>Avant d’installer <code class="language-plaintext highlighter-rouge">ruby</code> il est nécessaire d’avoir les programmes de compilation en C et C++, si vous ne les avez pas encore :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>make gcc g++ <span class="c"># pour Linux/WLS</span>
+xcode-select <span class="nt">--install</span> <span class="c"># pour MacOS</span>
+</code></pre></div></div>
+
+<p>On peut maintenant installer ruby :</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>ruby-full <span class="c"># pour Linux/WLS</span>
-<span class="nb">sudo </span>brew <span class="nb">install </span>ruby-full <span class="c"># pour MacOS</span>
+brew <span class="nb">install </span>ruby  <span class="c"># pour MacOS</span>
 </code></pre></div></div>
 
 <p>Les fichiers ruby sont en <code class="language-plaintext highlighter-rouge">.rb</code> et la commande pour les executer est : <code class="language-plaintext highlighter-rouge">ruby filename.rb</code>. Pour un tuto c’est <a href="https://www.youtube.com/watch?v=vgSQ97FDSvM&amp;list=PLjwdMgw5TTLVVJHvstDYgqTCao-e-BgA8&amp;ab_channel=Grafikart.fr">ici</a></p>
 
 <p>En installant Ruby on installe aussi son <strong>package manager</strong> <code class="language-plaintext highlighter-rouge">gem</code> (comme <code class="language-plaintext highlighter-rouge">pip</code> pour Python). Gem sert à gérer (installer, supprimer, chercher, etc…) les packages Ruby.</p>
-
-<p>Pour l’utiliser il est nécessaire d’avoir les programmes de compilation en C et C++, si vous ne les avez pas encore :</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>make gcc g++ <span class="c"># pour Linux/WLS</span>
-<span class="nb">sudo </span>brew <span class="nb">install </span>make gcc g++ <span class="c"># pour MacOs</span>
-</code></pre></div></div>
 
 <p>Pour installer des packages à l’aide de <code class="language-plaintext highlighter-rouge">gem</code> :</p>
 
@@ -99,7 +99,7 @@ Ruby program to print Hello World.
 
 <p>Pour plus de documentation sur <code class="language-plaintext highlighter-rouge">gem</code> voir <a href="https://guides.rubygems.org/rubygems-basics/">ici.</a></p>
 
-<p>Nous pouvons donc maintenant utiliser <code class="language-plaintext highlighter-rouge">gem</code> pour installer Jekyll et Blunder :</p>
+<p>Nous pouvons donc maintenant utiliser <code class="language-plaintext highlighter-rouge">gem</code> pour installer Jekyll et Bundler :</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>gem <span class="nb">install </span>bundler jekyll
 </code></pre></div></div>
@@ -109,7 +109,7 @@ Ruby program to print Hello World.
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jekyll <span class="nt">-v</span>
 </code></pre></div></div>
 
-<p>vous devriez obtenir quelque chose comme : <code class="language-plaintext highlighter-rouge">jekyll 4.X.X</code></p>
+<p>Vous devriez obtenir quelque chose comme : <code class="language-plaintext highlighter-rouge">jekyll 4.X.X</code></p>
 
 <h2 id="quelques-fonctionalités">Quelques fonctionalités</h2>
 
@@ -137,11 +137,11 @@ Ruby program to print Hello World.
 bundle <span class="nb">exec </span>jekyll serve
 </code></pre></div></div>
 
-<p>(executer cette commande dans le dossier cours_informatique/docs/ pour servir le site de M. Brucker)</p>
+<p>(executer cette commande dans le dossier <code class="language-plaintext highlighter-rouge">cours_informatique/docs/</code> pour servir le site de M. Brucker)</p>
 
 <p>Ensuite naviguer à l’adresse <code class="language-plaintext highlighter-rouge">http://127.0.0.1:4000</code> avec votre navigateur et votre site Jekyll devrait y être affiché. (rajouter <code class="language-plaintext highlighter-rouge">/cours_informatiques/</code> pour le site de M. Brucker)</p>
 
-<p>Une fois l’application fini il faut la <strong>compiler</strong> en html pour qu’elle soit comprise par le navigateur en production :</p>
+<p>Une fois l’application finie il faut la <strong>compiler</strong> en html pour qu’elle soit comprise par le navigateur en production :</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>jekyll build
 </code></pre></div></div>
@@ -160,9 +160,36 @@ bundle <span class="nb">exec </span>jekyll serve
 
 <h2 id="la-configuration">La configuration</h2>
 
-<p>La configuration du projet est contenu dans le fichier YAML <code class="language-plaintext highlighter-rouge">_config.yml</code> généré automatiquement par la création du projet jekyll. YAML ou Yet Another Markup Language, est un format de représentation des données comme XML.</p>
+<p>La configuration du projet est contenue dans le fichier YAML <code class="language-plaintext highlighter-rouge">_config.yml</code> généré automatiquement par la création du projet jekyll. YAML ou Yet Another Markup Language, est un format de représentation des données comme XML.</p>
 
-<p><em>TODO: finir explications configs</em></p>
+<p>A l’initialisation, le fichier <code class="language-plaintext highlighter-rouge">_config.yml</code> contient les informations suivnates :</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">title</span><span class="pi">:</span> <span class="s">Your awesome title</span>
+<span class="na">email</span><span class="pi">:</span> <span class="s">your-email@example.com</span>
+<span class="na">description</span><span class="pi">:</span> <span class="pi">&gt;-</span> <span class="c1"># this means to ignore newlines until "baseurl:"</span>
+  <span class="s">Write an awesome description for your new site here. You can edit this</span>
+  <span class="s">line in _config.yml. It will appear in your document head meta (for</span>
+  <span class="s">Google search results) and in your feed.xml site description.</span>
+<span class="na">baseurl</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span> <span class="c1"># the subpath of your site, e.g. /blog</span>
+<span class="na">url</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span> <span class="c1"># the base hostname &amp; protocol for your site, e.g. http://example.com</span>
+<span class="na">twitter_username</span><span class="pi">:</span> <span class="s">jekyllrb</span>
+<span class="na">github_username</span><span class="pi">:</span>  <span class="s">jekyll</span>
+
+<span class="c1"># Build settings</span>
+<span class="na">theme</span><span class="pi">:</span> <span class="s">minima</span>
+<span class="na">plugins</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">jekyll-feed</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">title</code> permet de modifier le titre affiché dans l’onglet du site.</p>
+
+<p><code class="language-plaintext highlighter-rouge">email</code> <code class="language-plaintext highlighter-rouge">description</code> <code class="language-plaintext highlighter-rouge">twitter_username</code> et <code class="language-plaintext highlighter-rouge">github_username</code> sont des donées que l’ont peut accéder dans toute l’application à travers les templates.</p>
+
+<p><code class="language-plaintext highlighter-rouge">theme</code> définit le thème Jekyll de l’application. <a href="https://jekyllrb.com/docs/themes/">Tuto sur les thèmes Jekyll.</a></p>
+
+<p><code class="language-plaintext highlighter-rouge">plugins</code> défnit les plugins Jekyll utilisés dans l’applications. <a href="https://jekyllrb.com/docs/plugins/">Tuto sur les plugins Jekyll.</a></p>
+
+<p><code class="language-plaintext highlighter-rouge">baseurl</code> et <code class="language-plaintext highlighter-rouge">url</code> permettent de gérer le rooting de l’application.</p>
 
   </div>
 
