@@ -37,7 +37,7 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \hypersetup{
-  pdftitle={Algorithmes gloutons},
+  pdftitle={Algorithmes gloutons : comme solution exacte},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 \urlstyle{same} % disable monospaced font for URLs
@@ -49,7 +49,7 @@
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
 
-\title{Algorithmes gloutons}
+\title{Algorithmes gloutons : comme solution exacte}
 \author{}
 \date{}
 
@@ -60,7 +60,9 @@
 \subsection{But}\label{but}}
 
 Montrer l'intérêt des algorithmes gloutons, la façon de les construire
-et de prouver qu'ils fonctionnent.
+et de prouver qu'ils fonctionnent. On s'attachera dans cette séance
+tableau à prouver qu'ils rende une solution optimale à un problème
+donné.
 
 \hypertarget{algortihme-glouton}{%
 \subsection{Algortihme glouton}\label{algortihme-glouton}}
@@ -69,8 +71,8 @@ Un \href{https://fr.wikipedia.org/wiki/Algorithme_glouton}{algorithme
 glouton} choisit à chaque étape la meilleure possibilité localement. Ce
 type d'algorithme est très utilisé pour résoudre des problèmes où l'on
 veut une réponse rapide, mais pas forcément une réponse optimale. D'un
-point de vue théorique, ces algorithmes sont extrêmement important, il
-sont par exemple en bijection avec la
+point de vue théorique, ces algorithmes sont extrêmement importants. Il
+sont, par exemple, en bijection avec la
 \href{https://fr.wikipedia.org/wiki/Matro\%C3\%AFde}{structure de
 matroïde}.
 
@@ -98,7 +100,6 @@ Pour beaucoup de problèmes d'optimisation, un algorithme glouton est
 optimal pour une version simplifiée du problème. Comme l'algorithme va
 vite, on peut recommencer plusieurs fois pour trouver une meilleure
 solution.
-
 
 \hypertarget{optimalituxe9-et-glouton}{%
 \subsubsection{optimalité et glouton}\label{optimalituxe9-et-glouton}}
@@ -202,8 +203,8 @@ Démontrez que votre algorithme est bien optimal.
   fonctionne pas.
 \item
   montrer que l'algorithme glouton fonctionne pour un système de pièces
-  supercroissant, c'est à dire où \(p_i \geq \sum_{j< i} p_j\) avec
-  \(_i\) les valeurs de pièces rangés par ordre croissant.
+  supercroissant, c'est à dire où \(p_i > \sum_{j< i} p_j\) avec \(_i\)
+  les valeurs de pièces rangés par ordre croissant.
 \item
   donnez un exemple de système de pièces supercroissant.
 \end{itemize}
@@ -214,21 +215,36 @@ cinéma}\label{exercice-3-allocation-de-salles-de-cinuxe9ma}}
 
 Un gérant de cinéma a en sa possession \(m\) films caractérisés chacun
 par un couple (\(d_i\), \(f_i\)) où \(d_i\) est l'heure de début du film
-et \(f_i\) l'heure de fin. Il se pose 2 problèmes
+et \(f_i\) l'heure de fin. Il se pose 2 problèmes :
+
+\begin{itemize}
+\tightlist
+\item
+  Quel est le nombre maximum de films que je peux voir en une journée ?
+\item
+  Quel est le nombre minimum de salles à avoir pour visionner tous les
+  films en stock.
+\end{itemize}
+
+\begin{quote}
+\textbf{Nota Bene :} Si vous êtes d'humeur programmatrice, codez les
+algorithmes de cet exercice. Si vous séchez, une solution possible vous
+est donnée dans le corrigé.
+\end{quote}
 
 \hypertarget{voir-un-maximum-de-films}{%
 \subsubsection{voir un maximum de
 films}\label{voir-un-maximum-de-films}}
 
 Proposez (et prouvez) un algorithme permettant de rendre une liste
-maximale de film à voir en une journée.
+maximale de films à voir en une journée.
 
-\hypertarget{nombre-minium-de-salles-pour-placer-tous-les-films-en-stock}{%
-\subsubsection{nombre minium de salles pour placer tous les films en
-stock}\label{nombre-minium-de-salles-pour-placer-tous-les-films-en-stock}}
+\hypertarget{nombre-minimum-de-salles-pour-placer-tous-les-films-en-stock}{%
+\subsubsection{nombre minimum de salles pour placer tous les films en
+stock}\label{nombre-minimum-de-salles-pour-placer-tous-les-films-en-stock}}
 
 Proposez (et prouvez) un algorithme permettant de rendre le nombre
-minium de salle et son organisation permettant de projeter tous les
+minimum de salles et son organisation permettant de projeter tous les
 films.
 
 \hypertarget{exercice-4-ordonnancement}{%
@@ -253,7 +269,7 @@ Un ensemble de produits est dit \emph{compatible} s'il existe un
 ordonnancement de leur production permettant de tous les vendre (chaque
 produit est fabriqué avant sa date de péremption).
 
-Montrer qu'un ensemble de produits est compatible si et seulement
+Montrer qu'un ensemble de produits est compatible si et seulement si
 l'ordonnancement par date \(d_i\) croissante permet de tous les vendre.
 
 \hypertarget{algorithme}{%
@@ -280,157 +296,5 @@ Montrer que l'algorithme glouton suivant est optimal :
 optimale et la solution donnée par notre algorithme en regardant la
 première différence.
 \end{quote}
-
-\hypertarget{exercice-5-le-probluxe8me-du-sac-uxe0-dos}{%
-\subsection{exercice 5 : le problème du sac à
-dos}\label{exercice-5-le-probluxe8me-du-sac-uxe0-dos}}
-
-Le
-\href{https://fr.wikipedia.org/wiki/Probl\%C3\%A8me_du_sac_\%C3\%A0_dos}{problème
-du sac à dos} est un exemple de problème d'optimisation. Il fait parti
-des problèmes les plus dur du monde car les solutions n'entretiennent
-pas de relations les unes avec les autres, il faut a priori toutes les
-regarder pour trouver la meilleure, et il y en a beaucoup.
-
-Il est possible de modéliser beaucoup de problèmes courant par un
-problème de sac dos, en particuliers les:
-
-\begin{itemize}
-\tightlist
-\item
-  problème de découpe pour minimiser les chutes
-\item
-  problème de remplissage (déménagement)
-\end{itemize}
-
-\hypertarget{uxe9noncuxe9-du-probluxe8me}{%
-\subsubsection{énoncé du problème}\label{uxe9noncuxe9-du-probluxe8me}}
-
-On dispose de :
-
-\begin{itemize}
-\tightlist
-\item
-  \(n\) objets ayant chacun un poids \(w_i\) (\emph{weight}) et une
-  valeur nutritionnelle \(p_i\) (\(1 \leq i \leq n\))
-\item
-  d'un sac à dos d'une contenance de \(W\)
-\end{itemize}
-
-On veut maximiser la valeur nutritionnelle que l'on peut emporter avec
-notre sac.
-
-\hypertarget{on-essaie}{%
-\subsubsection{on essaie}\label{on-essaie}}
-
-On suppose que l'on est un randonneur et que l'on peut emporter 3
-produits :
-
-\begin{itemize}
-\tightlist
-\item
-  produit A, 2kg, 100kcal
-\item
-  produit B, 2kg, 10kcal
-\item
-  produit C, 3kg, 120kcal
-\end{itemize}
-
-Selon la valeur du sac à dos quel est la quantité maximale d'argent que
-le voleur peut se faire ?
-
-\hypertarget{sac-uxe0-doc-fractionnel}{%
-\subsubsection{sac à doc fractionnel}\label{sac-uxe0-doc-fractionnel}}
-
-Si l'on peut prendre qu'une partie des objets (comme pour une poudre ou
-un liquide), le problème peut être résolu par un algorithme glouton.
-
-Problème :
-
-\begin{itemize}
-\tightlist
-\item
-  entrée :
-
-  \begin{itemize}
-  \tightlist
-  \item
-    liste de produits décrit par leur masse et le prix total
-  \item
-    une masse totale transportable
-  \end{itemize}
-\item
-  sortie : une liste une de produit et leur masse qui maximise le prix
-  pour une masse ne dépassant pas la masse transportable
-\end{itemize}
-
-\hypertarget{ruxe9solvez-le-probluxe8me-avec-les-donnuxe9es-pruxe9cuxe9dentes}{%
-\paragraph{résolvez le problème avec les données
-précédentes}\label{ruxe9solvez-le-probluxe8me-avec-les-donnuxe9es-pruxe9cuxe9dentes}}
-
-On suppose que l'on peut découper les objet pour obtenir une fraction de
-leurs valeurs. résolvez le problème pour une capacité de sac de 4kg et
-de 5kg.
-
-\hypertarget{algorithme-glouton}{%
-\paragraph{algorithme glouton}\label{algorithme-glouton}}
-
-Proposez un algorithme glouton pour résoudre ce problème et montrer
-qu'il est optimal.
-
-\hypertarget{sac-uxe0-dos-non-fractionnel}{%
-\subsubsection{sac à dos non
-fractionnel}\label{sac-uxe0-dos-non-fractionnel}}
-
-\hypertarget{si-on-ne-peut-pas-couper}{%
-\paragraph{si on ne peut pas couper ?}\label{si-on-ne-peut-pas-couper}}
-
-Donner un exemple où l'algorithme glouton ne donne pas la solution
-optimale pas si l'on ne peut pas prendre une partie fractionnelle d'un
-produit.
-
-\hypertarget{solution-optimale}{%
-\paragraph{solution optimale}\label{solution-optimale}}
-
-On peut trouver un algorithme optimal pour le problème du sac à dos en
-remarquant que l'on peut construire une solution optimale avec \(i\)
-objets à partir de solutions optimales à \(i-1\) objets.
-
-En effet la solution optimale à \(i\) objets pour une capacité \(W\) est
-soit :
-
-\begin{itemize}
-\tightlist
-\item
-  une solution optimale à \(i-1\) objets pour une capacité \(W\) si on
-  ne prend pas l'objet \(i\),
-\item
-  une solution optimale à \(i-1\) objets pour une capacité \(W - w_i\)
-  si on prend l'objet \(i\).
-\end{itemize}
-
-\hypertarget{algorithme-optimal}{%
-\paragraph{algorithme optimal}\label{algorithme-optimal}}
-
-Ecrivez l'algorithme permettant de résoudre le problème.
-
-Et explicitez pourquoi cet algorithme n'est pas glouton.
-
-\hypertarget{complexituxe9-de-lalgorithme}{%
-\paragraph{Complexité de
-l'algorithme}\label{complexituxe9-de-lalgorithme}}
-
-Quel est la complexité de cet algorithme.
-
-\hypertarget{le-millions-de-dollars}{%
-\paragraph{Le millions de dollars}\label{le-millions-de-dollars}}
-
-Le problème du sac à dos fait partie des problème ``les plus dur de
-l'informatique'', or on a un algorithme polynomial pour le
-résoudre\ldots{} Soit on vient de démontrer
-\href{https://fr.wikipedia.org/wiki/Probl\%C3\%A8mes_du_prix_du_mill\%C3\%A9naire\#Probl\%C3\%A8me_ouvert_P_=_NP}{P
-= NP} et on a gagné 1millions de dollars, soit il y a un piège.
-
-Quel est ce piège ?
 
 \end{document}

@@ -3,17 +3,17 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Algorithmes gloutons | cours d’informatique</title>
+<title>Algorithmes gloutons : comme solution exacte | cours d’informatique</title>
 <meta name="generator" content="Jekyll v4.1.1" />
-<meta property="og:title" content="Algorithmes gloutons" />
+<meta property="og:title" content="Algorithmes gloutons : comme solution exacte" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)" />
 <meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)" />
-<link rel="canonical" href="/cours_informatique/cours/tronc_commun/algorithmes_gloutons.html" />
-<meta property="og:url" content="/cours_informatique/cours/tronc_commun/algorithmes_gloutons.html" />
+<link rel="canonical" href="/cours_informatique/cours/tronc_commun/algorithmes_gloutons_1_2.html" />
+<meta property="og:url" content="/cours_informatique/cours/tronc_commun/algorithmes_gloutons_1_2.html" />
 <meta property="og:site_name" content="cours d’informatique" />
 <script type="application/ld+json">
-{"description":"Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)","@type":"WebPage","headline":"Algorithmes gloutons","url":"/cours_informatique/cours/tronc_commun/algorithmes_gloutons.html","@context":"https://schema.org"}</script>
+{"description":"Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)","@type":"WebPage","headline":"Algorithmes gloutons : comme solution exacte","url":"/cours_informatique/cours/tronc_commun/algorithmes_gloutons_1_2.html","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
   <script type="text/x-mathjax-config">
@@ -52,17 +52,17 @@
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Algorithmes gloutons</h1>
+    <h1 class="post-title">Algorithmes gloutons : comme solution exacte</h1>
   </header>
 
   <div class="post-content">
     <h2 id="but">But</h2>
 
-<p>Montrer l’intérêt des algorithmes gloutons, la façon de les construire et de prouver qu’ils fonctionnent.</p>
+<p>Montrer l’intérêt des algorithmes gloutons, la façon de les construire et de prouver qu’ils fonctionnent. On s’attachera dans cette séance tableau à prouver qu’ils rende une solution optimale à un problème donné.</p>
 
 <h2 id="algortihme-glouton">Algortihme glouton</h2>
 
-<p>Un <a href="https://fr.wikipedia.org/wiki/Algorithme_glouton">algorithme glouton</a> choisit à chaque étape la meilleure possibilité localement. Ce type d’algorithme est très utilisé pour résoudre des problèmes où l’on veut une réponse rapide, mais pas forcément une réponse optimale. D’un point de vue théorique, ces algorithmes sont extrêmement important, il sont par exemple en bijection avec la <a href="https://fr.wikipedia.org/wiki/Matro%C3%AFde">structure de matroïde</a>.</p>
+<p>Un <a href="https://fr.wikipedia.org/wiki/Algorithme_glouton">algorithme glouton</a> choisit à chaque étape la meilleure possibilité localement. Ce type d’algorithme est très utilisé pour résoudre des problèmes où l’on veut une réponse rapide, mais pas forcément une réponse optimale. D’un point de vue théorique, ces algorithmes sont extrêmement importants. Il sont, par exemple, en bijection avec la <a href="https://fr.wikipedia.org/wiki/Matro%C3%AFde">structure de matroïde</a>.</p>
 
 <p>Intérêt :</p>
 
@@ -81,11 +81,11 @@
 <p>Pour beaucoup de problèmes d’optimisation, un algorithme glouton est optimal pour une version simplifiée du problème. Comme l’algorithme va vite, on peut recommencer plusieurs fois pour trouver une meilleure solution.</p>
 
 <blockquote>
-  <p>Une version <a href="ressources/algorithmes_gloutons/latex/algorithmes_gloutons.pdf">pdf pour les TDs</a> est disponible.</p>
+  <p>Une version <a href="ressources/algorithmes_gloutons/latex/algorithmes_gloutons_1_2.pdf">pdf pour les TDs</a> est disponible.</p>
 </blockquote>
 
 <blockquote>
-  <p>Le corrigé est <a href="/cours_informatique/cours/tronc_commun/algorithmes_gloutons_corrige.html">disponible</a></p>
+  <p>Le corrigé est <a href="/cours_informatique/cours/tronc_commun/algorithmes_gloutons_corrige_1_2.html">disponible</a></p>
 </blockquote>
 
 <h3 id="optimalité-et-glouton">optimalité et glouton</h3>
@@ -135,21 +135,30 @@
 <ul>
   <li>donnez une version générale de votre algorithme de rendu de pièce, c’est à dire où l’on a $n$ pièces valant $p_1 &lt; p_2 &lt; \dots &lt; p_n$.</li>
   <li>Cet algorithme glouton de va pas donner de solution optimale quelque soit le système de pièces, donnez un exemple pour lequel ça ne fonctionne pas.</li>
-  <li>montrer que l’algorithme glouton fonctionne pour un système de pièces supercroissant, c’est à dire où $p_i \geq \sum_{j&lt; i} p_j$ avec $_i$ les valeurs de pièces rangés par ordre croissant.</li>
+  <li>montrer que l’algorithme glouton fonctionne pour un système de pièces supercroissant, c’est à dire où $p_i &gt; \sum_{j&lt; i} p_j$ avec $_i$ les valeurs de pièces rangés par ordre croissant.</li>
   <li>donnez un exemple de système de pièces supercroissant.</li>
 </ul>
 
 <h2 id="exercice-3---allocation-de-salles-de-cinéma">exercice 3 :  allocation de salles de cinéma</h2>
 
-<p>Un gérant de cinéma a en sa possession $m$ films caractérisés chacun par un couple ($d_i$, $f_i$) où $d_i$ est l’heure de début du film et $f_i$ l’heure de fin. Il se pose 2 problèmes</p>
+<p>Un gérant de cinéma a en sa possession $m$ films caractérisés chacun par un couple ($d_i$, $f_i$) où $d_i$ est l’heure de début du film et $f_i$ l’heure de fin. Il se pose 2 problèmes :</p>
+
+<ul>
+  <li>Quel est le nombre maximum de films que je peux voir en une journée ?</li>
+  <li>Quel est le nombre minimum de salles à avoir pour visionner tous les films en stock.</li>
+</ul>
+
+<blockquote>
+  <p><strong>Nota Bene :</strong> Si vous êtes d’humeur programmatrice, codez les algorithmes de cet exercice. Si vous séchez, une solution possible vous est donnée dans le corrigé.</p>
+</blockquote>
 
 <h3 id="voir-un-maximum-de-films">voir un maximum de films</h3>
 
-<p>Proposez (et prouvez) un algorithme permettant de rendre une liste maximale de film à voir en une journée.</p>
+<p>Proposez (et prouvez) un algorithme permettant de rendre une liste maximale de films à voir en une journée.</p>
 
-<h3 id="nombre-minium-de-salles-pour-placer-tous-les-films-en-stock">nombre minium de salles pour placer tous les films en stock</h3>
+<h3 id="nombre-minimum-de-salles-pour-placer-tous-les-films-en-stock">nombre minimum de salles pour placer tous les films en stock</h3>
 
-<p>Proposez (et prouvez) un algorithme permettant de rendre le nombre minium de salle et son organisation permettant de projeter tous les films.</p>
+<p>Proposez (et prouvez) un algorithme permettant de rendre le nombre minimum de salles et son organisation permettant de projeter tous les films.</p>
 
 <h2 id="exercice-4--ordonnancement">exercice 4 : ordonnancement</h2>
 
@@ -161,7 +170,7 @@
 
 <p>Un ensemble de produits est dit <em>compatible</em> s’il existe un ordonnancement de leur production permettant de tous les vendre (chaque produit est fabriqué avant sa date de péremption).</p>
 
-<p>Montrer qu’un ensemble de produits est compatible si et seulement l’ordonnancement par date $d_i$ croissante permet de tous les vendre.</p>
+<p>Montrer qu’un ensemble de produits est compatible si et seulement si l’ordonnancement par date $d_i$ croissante permet de tous les vendre.</p>
 
 <h3 id="algorithme">algorithme</h3>
 
@@ -177,97 +186,6 @@
 <blockquote>
   <p><strong>Nota bene :</strong> pour la preuve, on pourra comparer une solution optimale et la solution donnée par notre algorithme en regardant la première différence.</p>
 </blockquote>
-
-<h2 id="exercice-5--le-problème-du-sac-à-dos">exercice 5 : le problème du sac à dos</h2>
-
-<p>Le <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_sac_%C3%A0_dos">problème du sac à dos</a> est un exemple de problème d’optimisation. Il fait parti des problèmes les plus dur du monde car les solutions n’entretiennent pas de relations les unes avec les autres, il faut a priori toutes les regarder pour trouver la meilleure, et il y en a beaucoup.</p>
-
-<p>Il est possible de modéliser beaucoup de problèmes courant par un problème de sac dos, en particuliers les:</p>
-
-<ul>
-  <li>problème de découpe pour minimiser les chutes</li>
-  <li>problème de remplissage (déménagement)</li>
-</ul>
-
-<h3 id="énoncé-du-problème">énoncé du problème</h3>
-
-<p>On dispose de :</p>
-
-<ul>
-  <li>$n$ objets ayant chacun un poids $w_i$ (<em>weight</em>) et une valeur nutritionnelle $p_i$ ($1 \leq i \leq n$)</li>
-  <li>d’un sac à dos d’une contenance de $W$</li>
-</ul>
-
-<p>On veut maximiser la valeur nutritionnelle que l’on peut emporter avec notre sac.</p>
-
-<h3 id="on-essaie">on essaie</h3>
-
-<p>On suppose que l’on est un randonneur et que l’on peut emporter 3 produits :</p>
-
-<ul>
-  <li>produit A, 2kg, 100kcal</li>
-  <li>produit B, 2kg, 10kcal</li>
-  <li>produit C, 3kg, 120kcal</li>
-</ul>
-
-<p>Selon la valeur du sac à dos quel est la quantité maximale d’argent que le voleur peut se faire ?</p>
-
-<h3 id="sac-à-doc-fractionnel">sac à doc fractionnel</h3>
-
-<p>Si l’on peut prendre qu’une partie des objets (comme pour une poudre ou un liquide), le problème peut être résolu par un algorithme glouton.</p>
-
-<p>Problème :</p>
-
-<ul>
-  <li>entrée :
-    <ul>
-      <li>liste de produits décrit par leur masse et le prix total</li>
-      <li>une masse totale transportable</li>
-    </ul>
-  </li>
-  <li>sortie : une liste une de produit et leur masse qui maximise le prix pour une masse ne dépassant pas la masse transportable</li>
-</ul>
-
-<h4 id="résolvez-le-problème-avec-les-données-précédentes">résolvez le problème avec les données précédentes</h4>
-
-<p>On suppose que l’on peut découper les objet pour obtenir une fraction de leurs valeurs. résolvez le problème pour une capacité de sac de 4kg et de 5kg.</p>
-
-<h4 id="algorithme-glouton">algorithme glouton</h4>
-
-<p>Proposez un algorithme glouton pour résoudre ce problème et montrer qu’il est optimal.</p>
-
-<h3 id="sac-à-dos-non-fractionnel">sac à dos non fractionnel</h3>
-
-<h4 id="si-on-ne-peut-pas-couper-">si on ne peut pas couper ?</h4>
-
-<p>Donner un exemple où l’algorithme glouton ne donne pas la solution optimale pas si l’on ne peut pas prendre une partie fractionnelle d’un produit.</p>
-
-<h4 id="solution-optimale">solution optimale</h4>
-
-<p>On peut trouver un algorithme optimal pour le problème du sac à dos en remarquant que l’on peut construire une solution optimale avec $i$ objets à partir de solutions optimales à $i-1$ objets.</p>
-
-<p>En effet la solution optimale à $i$ objets pour une capacité $W$ est soit :</p>
-
-<ul>
-  <li>une solution optimale à $i-1$ objets pour une capacité $W$ si on ne prend pas l’objet $i$,</li>
-  <li>une solution optimale à $i-1$ objets pour une capacité $W - w_i$ si on prend l’objet $i$.</li>
-</ul>
-
-<h4 id="algorithme-optimal">algorithme optimal</h4>
-
-<p>Ecrivez l’algorithme permettant de résoudre le problème.</p>
-
-<p>Et explicitez pourquoi cet algorithme n’est pas glouton.</p>
-
-<h4 id="complexité-de-lalgorithme">Complexité de l’algorithme</h4>
-
-<p>Quel est la complexité de cet algorithme.</p>
-
-<h4 id="le-millions-de-dollars">Le millions de dollars</h4>
-
-<p>Le problème du sac à dos fait partie des problème “les plus dur de l’informatique”, or on a un algorithme polynomial pour le résoudre… Soit on vient de démontrer <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8mes_du_prix_du_mill%C3%A9naire#Probl%C3%A8me_ouvert_P_=_NP">P = NP</a> et on a gagné 1millions de dollars, soit il y a un piège.</p>
-
-<p>Quel est ce piège ?</p>
 
 
   </div>
