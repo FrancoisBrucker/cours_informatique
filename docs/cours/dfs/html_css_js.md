@@ -3,6 +3,7 @@ layout: page
 title:  "HTML CSS JS"
 category: tutorial
 tags: web
+authors : Yi Mei JIANG, Théophile BONNEAU
 ---
 
 
@@ -86,7 +87,7 @@ On les utilise principalement pour structurer la page.
 ## CSS
 CSS est un langage qui permet de gérer la mise en forme de votre site. c'est à dire qu'avec le CSS vous allez pouvoir mettre de la couleur,changer les styles d'écriture, la mise en page...
 
-comment utilisé CSS?
+Comment utiliser CSS?
 
 Une 1ère technique consiste à écrire directement dans le fichier HTML, au niveau de `head` grâce à la balise `<style>`.
 
@@ -130,7 +131,7 @@ p
 }
 ~~~~
 
-Ce code est coposé de 3 élements :
+Ce code est composé de 3 éléments :
 - la `balise` (p) : il suffit de noter le nom des balises que l'on veut modifier. On aurait pu utiliser `h1`,`em`ou n'importe quelle autre balise.
 
 - une `propriété CSS` (color): cela permet de définir ce que l'on veut modifier. cela peut être la couleur, la taille (font-size) ou autre.
@@ -398,7 +399,106 @@ On peut faire plus compliqué, si l'on souhaite que le div retrouve sa couleur d
   }
 </script>
 ~~~~
-Cela devient vite compliqué, on préfére alors utiliser des bibliothèques, comme [jQuery](https://jquery.com)
+Cela devient vite compliqué, on préfére alors utiliser des bibliothèques, comme [jQuery](https://jquery.com).
+Cela nous permet de simplifier un peu la syntaxe, mais aussi de nous faciliter la vie. 
+On va reprendre l'exemple pour illustrer l'utilité d'une bibliothèque telle que jQuery.
+
+####jQuery
+Imaginons maintenant que nous n'avons plus un seul div, mais deux.
+~~~~html
+<!doctype html>
+<html lang="fr">
+<head>
+    <title>Ma Page</title>
+</head>
+<body>
+<style>
+    html, body {
+        margin: 0;
+        padding:0;
+    }
+    .milieu {
+        margin: 10px auto;
+        height: 50px;
+        width: 20px;
+    }
+    .color {
+        background-color: red;
+    }
+</style>
+
+<div id="mon_div" class="milieu color"></div>
+
+<div id="div2" class="milieu color"></div>
+</body>
+</html>
+~~~~
+Cette fois on souhaite pouvoir changer la couleur de nos DEUX div, alors pourquoi pas attraper les éléments par ``class`` plutôt que par `id` ?
+~~~~~html
+<script>
+    bleu=false;
+    document.getElementsByClassName("color").onclick=function (){
+        if(bleu){
+            bleu=false;
+            document.getElementsByClassName("color").style.backgroundColor = "red"
+        }
+        else{
+            bleu=true;
+            document.getElementsByClassName("color").style.backgroundColor = "blue"
+        }
+    }
+</script>
+~~~~~
+Malheureusement ce code ne code ne fonctionne pas. En effet la fonction ``getElementsByClassName`` renvoie un array et le reste du code n'est pas applicable tel quel à un array.
+Si l'on souhaite faire exactement la même chose mais cette fois sur tous les éléments de la classe ``.color`` il faut passer par une boucle sur les éléments de l'array.
+~~~~~html
+<script>
+    var array = document.getElementsByClassName("color");
+    blue = false;
+    function change (){
+        if(blue){
+            bleu=false;
+            this.style.backgroundColor= "red"
+        }
+        else{
+            blue=true;
+            this.style.backgroundColor= "blue"
+        }
+        }
+
+    for (let element of array ){
+        element.onclick = change
+    }
+</script>
+~~~~~
+Ce qui est assez long à écrire, alors que la bibliothèque jQuery prend en charge ce genre de problème.
+Pour pouvoir l'utiliser il faut d'abord l'importer, ici on va passer pas un [CND](https://en.wikipedia.org/wiki/Content_delivery_network)
+
+~~~~html
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+<script>
+    blue=false;
+    console.log($(".color"))
+    $(".color").click(function (){
+        if(red){
+            blue=false;
+            $(this).css("backgroundColor","red");
+        }
+        else{
+            blue=true;
+            $(this).css("backgroundColor","blue");
+        }
+
+    })
+</script>
+~~~~
+Ici on retrouve le code écrit en jQuery, il a exactement la même fonctionnalité. On remarque bien que l'on n'a pas besoin de passer par la boucle ``for``. 
+
+Pour en savoir plus sur l'utilisation de jQuery, il existe de nombreux tutos sur l'internet mondial : 
+- [https://www.w3schools.com/jquery/jquery_get_started.asp](https://www.w3schools.com/jquery/jquery_get_started.asp)
+- [https://www.digitalocean.com/community/tutorials/an-introduction-to-jquery](https://www.digitalocean.com/community/tutorials/an-introduction-to-jquery)
+- [https://www.youtube.com/playlist?list=PL4cUxeGkcC9hNUJ0j6ccnOAcJIPoTRpO4](https://www.youtube.com/playlist?list=PL4cUxeGkcC9hNUJ0j6ccnOAcJIPoTRpO4)
 
 
 
