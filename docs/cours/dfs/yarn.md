@@ -1,27 +1,28 @@
 ---
 layout: page
-title:  "cd_yarn"
+title:  "cdn_yarn"
 category: tutorial
 tags: web
+author: Tina ALAEI
 ---
 
 
-#Imports de modules
+# Imports de modules
 
 En pratique, un développeur ne code pas lui même toutes ses pages à partir de rien. Souvent, il utilise des 
 "paquets", ou modules, qui sont des codes déjà existants qui permettent d'implémenter différentes fonctionnalités sans 
 avoir à les coder de zéro. 
 
-Nous allons ici illustrer notre cours à l'aide de purecss (https://purecss.io/), qui est un template très simpliste 
+Nous allons ici illustrer notre cours à l'aide de [purecss](https://purecss.io/), qui est un template très simpliste 
 offrant des styles prédéfinis en css.
 
-##Télécharger les fichiers
+## Télécharger les fichiers
 
 Il est parfois possible, depuis la documentation des modules, de télécharger directement les fichiers sources 
 nécessaires. Cependant, c'est assez peu recommendé dans le cadre d'un projet à plusieurs. En effet, ce cas 
 d'utilisation force le partage de tous les fichiers du module, ce qui est assez lourd au final.
 
-##CDN
+## CDN
 
 Il est aussi possible d'inclure les fichiers à l'aide d'un **CDN (content delivery network)**, ou réseau de 
 diffusion de 
@@ -51,7 +52,7 @@ téléchargé à chaque fois.
 
 ### Installation
 
-Avant toute chose, il faut **installer Node.js** (https://nodejs.org/en/download/package-manager/). Il est plus propre 
+Avant toute chose, il faut [**installer Node.js**](https://nodejs.org/en/download/package-manager/). Il est plus propre 
 d'installer ça vient un 
 gestionnaires de packets.
 
@@ -66,7 +67,7 @@ En théorie, **npm est installé avec Node.js** donc vous l'aurez déjà sur vot
 _Vous pouvez là encore verifier via la commande_ ``npm -v``.
 
 
-Une alternative, parfois plus stable, de npm existe : **yarn** (https://classic.yarnpkg.com/en/docs/install). 
+Une alternative, parfois plus stable, de npm existe : [**yarn**](https://classic.yarnpkg.com/en/docs/install). 
 
 - Windows : ``scoop install yarn``
 - Mac : ``brew install yarn``
@@ -165,7 +166,31 @@ métadonnées sous des variables telles que ``description``, ``author``, ``repos
 
 Les variables ``dependencies`` et ``devDependencies`` listent les packets que l'on a voulu installer via npm.
 
-D'autres variables peuvent néanmoins être très utilisées lorsque l'on parle d'un projet
+D'autres variables peuvent néanmoins être très utilisées lorsque l'on parle d'un projet.
 
-##References
+#### scripts
+La variable script au sein du package.json permet de faire des "raccourcis" pour des commandes que l'on va souvent 
+utiliser.
+
+Synthaxe de la variable ``scripts`` :
+~~~ json
+"scripts": {
+    "build": "<commande à exécuter>",
+    "watch": "<commande à exécuter>",
+  }
+~~~
+_Nous illustrons ici avec "build" et "watch" mises comme commandes raccourcies mais leurs noms et nombre sont le choix du
+ développeur qui les met en place._
+
+Une fois que nous avons mis en place ces "raccourcis", il suffit de lancer la commande ``npm run <nom du raccourci>``
+ afin d'executer la commande à laquelle le raccourci correspond.
+
+#### config - ou autres -
+Cette variable n'est pas "officielle". Elle est seulement créé selon le bon vouloir de la personne qui veut 
+l'utiliser. Cependant, quelle que soit son nom, il est parfois utile de créer des variables pour ne pas avoir à 
+réecrire pusieurs fois la même chose.
+
+Cet article explique assez bien l'utilité que cela peut avoir : [Variables in package.json](https://brianchildress.co/variables-in-package-json/)
+
+## References
 
