@@ -18,7 +18,7 @@ L'idée est donc de pouvoir utiliser ce tuto de deux façons : soit avec une id�
 
 ### Initialiser un nouveau projet
 
-**Description :** on va créer en local notre nouveau projet, créer un répertoire sur Github et lier les deux.
+**Description :** on va créer en local notre nouveau projet, créer un répertoire sur GitHub et lier les deux.
 
 1. Création du répertoire sur Github
 2. Création du répertoire en local
@@ -27,7 +27,7 @@ L'idée est donc de pouvoir utiliser ce tuto de deux façons : soit avec une id�
 
 **Commandes :**
 
-1. Pour cette première étape, on peut soit opérer depuis un navigateur, soit en ligne de commande avec gh.
+1. Pour cette première étape, on peut soit opérer depuis un [navigateur](https://github.com), soit en ligne de commande avec [GitHub CLI](https://cli.github.com/).
 
 2. 
 ~~~ shell
@@ -48,7 +48,7 @@ git remote add origin https://github.com/USER/monprojet.git
 
 ### Récupérer (cloner) en local un projet existant
 
-**Description :** on souhaite travailler sur un projet donc le code est disponible sur Github (ou équivalent). Pour se faire, on va cloner le répertoire en local sur sa machine.
+**Description :** on souhaite travailler sur un projet donc le code est disponible sur Github (ou équivalent). Pour ce faire, on va cloner le répertoire en local sur sa machine.
 
 **Commandes :**
 
@@ -158,14 +158,14 @@ Commande | Effet | Option(s) |
 `git checkout <branche>` | change de branche pour aller sur "branche" | `-b <nouvelle branche>` pour créer une nouvelle branche et s'y placer |
 `git clone <url>` | clone en local un répertoire distant |  |
 `git commit` | publie les changements dans l'arbre git local | `-a` commit tous les changements présents dans le stage <br> `-m "mon_message"` permet d'écrire le message de commit sans passer par l'éditeur |
-`git diff` | X | X |
+`git diff` | indique les différences entre le dernier commit et ce qui n'est pas encore mis dans le *stage* |  |
 `git init` | initialise git pour le dossier où la commande est lancée |  |
 `git log` | affiche l'historique git complet du projet | `--oneline` affiche les commits sous forme condensée pour plus de lisibilité <br> `--graph` représentation visuelle de l'arbre (avec les branches éventuelles) |
-`git merge` | X | X |
-`git pull` | X | X |
-`git push` | X | X |
-`git rebase` | X | X |
-`git stash` | X | X |
+`git merge <branche>` | applique les modifications portées par "<branche>" à la branche mère dont elle est issue | `--no-ff` (*no fast forward*) permer de créer un commit de fusion dans tous les cas, même cas quand la fusion pourrait être résolue trivialement (*fast-forward*). Utile pour conserver l'historique des branches lors d'un *merge* suivant un *rebase* |
+`git pull` | télécharge en local les modifications présentes sur le serveur (*a priori* ajoutées par d'autres développeurs) | `--rebase=preverse` permet de conserver les commits de fusion, utile pour garder une trace de l'existence de certaines branches |
+`git push` | pousse sur le serveur les modifications locales |  |
+`git rebase <ici> <branche>` | découpe la branche `branche` à sa base et la recolle `ici`. `ici` peut-être le nom d'une branche, auquel cas la branche `branche` est recollée à la fin de la branche `ici`, ou un numéro de commtit. Voir le tuto complet sur rebase ici. | X |
+`git stash` | permet de mettre temporairement de côté les modifications en attente de *commit* afin de revenir au dernier *commit*. Les modifications ainsi mises de côté peuvent ensuite être réappliqués (éventuellement après que d'autres commits ont été effectués) ou supprimées. | `git stash list` pour lister les éléments mis de côté <br> `git stash apply` pour faire revenir les modifcations dans l'espace de travail <br> `git stash clear` pour abandonner complètemet les modifications mises de côté |
 `git status` | affiche les fichiers prêts à être *commit* et ceux qui ne sont pas encore dans le *stage* |  |
 
 
