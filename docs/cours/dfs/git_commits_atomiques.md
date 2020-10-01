@@ -63,9 +63,68 @@ Une fois que l'on a fini de cracher du code, vient le moment de réorganiser un 
 git rebase -i HEAD~10
 ~~~
 
-L'option `-i` signifiant "interactif", et pour cause : la commande nous a ouvert vim, où une infinité de possibilités s'offre à nous :
+L'option `-i` signifiant "interactif", et pour cause : la commande nous a ouvert vim, où les 10 derniers commits s'offrent à nous :
+
+~~~ shell
+pick d2eb036 updta td gloutons
+pick 88af96b add extended git rebase tuto
+pick 4da9c73 add how to and first cheatsheet lines
+pick 43d2f7e add file
+pick 7431bbd add last commands to cheatsheet
+pick 40900b9 delete erronous line
+pick 298dead add merge how-to
+pick ca7b5db add first part
+pick 289eb2a add link to rebase tuto
+pick a2ce5c6 continue tuto
+~~~
+
+**Note :** on remarque que l'ordre de présentation est ici inversé par rapport à celui de la commande `git log` : les plus vieux *commits* sont en haut (c'est donc plus une stalagtique qu'un arbre, ou alors un arbre planté à l'envers).
+
+Nous verrons dans quelques instants ce que signifie le "pick". Détaillons d'abord comment déplacer les lignes. Pour cela, il suffit de déplacer la ligne d'un *commit* à l'endroit où on veut qu'elle apparaisse. Sur vim, `dd` pour couper une ligne, et `p` pour la coller.
+
+~~~ shell
+pick 88af96b add extended git rebase tuto
+pick 4da9c73 add how to and first cheatsheet lines
+pick 7431bbd add last commands to cheatsheet
+pick 298dead add merge how-to
+pick 43d2f7e add file
+pick ca7b5db add first part
+pick a2ce5c6 continue tuto
+pick d2eb036 updta td gloutons
+pick 40900b9 delete erronous line
+pick 289eb2a add link to rebase tuto
+~~~
+
+Une fois qu'on a tout organisé comme il faut, on va pouvoir passer à l'étape de fusion des commits entre eux. Cela fonctionne un peu à la manière de la coalescence des gouttes d'eau : je peux demander à git de fusionner un *commit* avec celui du dessus. On utilise pour cela `pick` et `squash` : `pick` va conserver un commit, et `squash` va fusionner un commit avec celui juste au-dessus.
+
+~~~ shell
+pick 88af96b add extended git rebase tuto
+squash 4da9c73 add how to and first cheatsheet lines
+squash 7431bbd add last commands to cheatsheet
+squash 298dead add merge how-to
+pick 43d2f7e add file
+squash ca7b5db add first part
+squash a2ce5c6 continue tuto
+pick d2eb036 updta td gloutons
+pick 40900b9 delete erronous line
+squash 289eb2a add link to rebase tuto
+~~~
+
+On ferme ensuite l'éditeur (en enregistrant bien sûr). Celui-ci va se rouvrir pour que l'on rentre le message de commit du premier groupe de commits (de 88af96b à 298dead, maintenant fusionnés en un seul). On l'écrit, on enregistre et on ferme. L'éditeur se rouvre pour faire de même avec le second groupe, et ainsi de suite. On notera que l'on aurait aussi pu utiliser `fixup`, qui converse le message de commit du commit dans lequel les autres se fusionnent, à la place de `squash`.
+
+Et voilà le résultat, 4 commits au lieu de 10 :
+
+~~~ shell
+88af96b add how-to tuto
+43d2f7e add atomic commits tuto
+d2eb036 updta td gloutons
+40900b9 refactor old tutos
+~~~
 
 
+## Conclusion
+
+Les commits atomiques sont un excellent moyen de réorganiser l'historique git, en particulier pour le rendre plus clair pour des relecteurs (ce qui est particulièrement utile sur de gros projets, qu'ils soient internes ou *open source*). Comme on l'a vu, ce n'est absolument pas synonyme de "je pousse plein de petits commits tout le temps", puisque la pratique du commit atomique s'accompagne d'une réorganisation de ces-derniers (encore une fois, pour plus de clarté). Même si cela peut sembler fastidieux à mettre en pratique au début, cela devient rapidement très efficace et rapide à utiliser, une fois qu'on s'est familiarisé avec les outils, et peut réellement augmenter la lisibilité de vos publications et votre clarté mentale.
 
 ## Sources et ressources
 
