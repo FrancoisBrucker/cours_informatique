@@ -57,7 +57,15 @@ On s'en rend compte, c'est un outil très puissant, permettant d'aller vite en r
 
 ### Jardinage
 
-Une fois que l'on a fini de cracher du code, vient le moment de réorganiser un peu tout ça pour plus de clarté (notamment à la relecture). Pour cela, on va déplacer les *commits* pour mettre ensemble (côte-à-côte) les *commits* de fonctionnalité, et ensemble ceux qui concernent des fioritures ou de petites modifications éparses.
+Une fois que l'on a fini de cracher du code, vient le moment de réorganiser un peu tout ça pour plus de clarté (notamment à la relecture). Pour cela, on va déplacer les *commits* pour mettre ensemble (côte-à-côte) les *commits* de fonctionnalité, et ensemble ceux qui concernent des fioritures ou de petites modifications éparses. Si j'ai 10 *commits" à réorganiser, il suffit pour commancer d'utiliser :
+
+~~~ shell
+git rebase -i HEAD~10
+~~~
+
+L'option `-i` signifiant "interactif", et pour cause : la commande nous a ouvert vim, où une infinité de possibilités s'offre à nous :
+
+
 
 ## Sources et ressources
 
