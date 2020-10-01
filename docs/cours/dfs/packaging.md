@@ -3,7 +3,7 @@ layout: page
 title: "Packaging"
 category: cours
 tags: packaging web front
-author:
+authors:
 	- "Adèle Bourgeix"
 	- "Maxime Vivier"
 ---

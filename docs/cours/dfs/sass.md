@@ -3,7 +3,9 @@ layout: page
 title: "Sass"
 category: cours
 tags: packaging sass web front
-author: Adèle Bourgeix & Maxime Vivier 
+authors:
+	- "Adèle Bourgeix"
+	- "Maxime Vivier"
 ---
 # Sass, c'est quoi ?
 
