@@ -29,6 +29,8 @@ Cours d'apprentissages des différents outils de développement et les bases du 
 
 # ssh 
   [SSH]({% link cours/dfs/ssh.md %}) 
+  [Le chiffrement RSA ]({% link cours/dfs/ssh_rsa.md %}) (/!\ des maths)
+  [Copie sécurisée scp]({% link cours/dfs/ssh_scp.md %}) 
 
 # web
 

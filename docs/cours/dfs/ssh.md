@@ -8,8 +8,6 @@ tags: combat web
 
 # Zéro tracash, Zéro blablash, SSH
 
-Mettre des sites / refs / sources
-
 L’étape numéro 1 est d’avoir la bonne console. Moi, j’utilise Ubuntu (WSL 2).
 
 L’étape numéro 2 est d’avoir un agent ssh, c’est le maître des clefs. 
@@ -24,12 +22,12 @@ Ouvrez une fenêtre powershell et, en remplaçant login par votre login unix de 
 Vous devriez avoir une phrase vous disant que l’agent n’a pas d’identité. Si vous n’avez pas d’agent installé (ou si vous l’avez stoppé) cela devrait vous dire qu’on arrive pas à se connecter à l’agent.
  
 ## SSH, c’est quoi ?
+
 **Secure Shell (SSH)** est à la fois un programme informatique et un protocole de communication sécurisé. Le protocole de connexion impose un échange de clés de chiffrement en début de connexion. Par la suite, tous les segments TCP sont authentifiés et chiffrés. Il devient donc impossible d'utiliser un sniffer pour voir ce que fait l'utilisateur.
 Avec SSH, l'authentification peut se faire sans l'utilisation de mot de passe ou de phrase secrète en utilisant la cryptographie asymétrique. Le protocole utilise deux clés complémentaires, la clé publique et la clé privée.
 La clé publique est distribuée sur les systèmes auxquels on souhaite se connecter. La clé privée, qu'on prendra le soin de protéger par un mot de passe (elle est donc stockée cryptée), reste uniquement sur le poste à partir duquel on se connecte. L'utilisation de l’agent ssh permet de stocker le mot de passe de la clé privée pendant la durée de la session utilisateur.
- 
 
-
+Pour plein d'info et d'explication sur le chiffrement des clés voir [ici]({% link cours/dfs/ssh_rsa.md %}) 
 ## Générer une clé
 
 ### Et ne pas se la faire voler par des hackers malveillants
@@ -47,13 +45,13 @@ ajouter la clé à son porte clé :
   $ ssh-add chemin/nom_de_la_clé
 ~~~
 ### Pour créer sa paire de clés
-Où ranger sa clé ?
+#### Où ranger sa clé ?
 
 Il est préférable de se placer dans un dossier adapté au stockage de données sensibles, en général on stockera les clés dans .ssh.
 
 Avec `$ ls -la` on peut voir tous les fichiers et leurs permissions. La ligne de .ssh devrait commencer par 
 `drwx______`, `d` indique qu'il s'agit d'un dossier, les trois caractères suivants `rwx` que le *propriétaire* peut lire, 
-écrire et exécuter son contenu et les tirets suivants que les autres utilisateurs n'ont aucun droit dessus. 
+écrire et exécuter son contenu et les tirets suivants que les autres utilisateurs n'ont aucun droit dessus (plus d'info sur les permissions [ici](https://www.linux.com/training-tutorials/understanding-linux-file-permissions/)). 
 
 
 Pour les clés on se place donc dans .ssh puis on génère une paire de clés : 
@@ -85,6 +83,22 @@ Et faire oublier toutes les clés connues de son agent avec :
   $ ssh-add -D 
 ~~~
 
+## A chaque nouvelle session
+
+A chaque fois que vous fermez votre session utilisateur 
+(donc notamment lorsque vous éteignez votre ordinateur), 
+votre agent ssh perd les clés publiques qu'il possédait. 
+En démarrant une nouvelle session et en affichant la liste des identités 
+représentées par l'agent avec `ssh-add -l`, 
+vous obtenez donc le message suivant : 
+~~~sh
+the agent has no identities
+~~~
+
+Il faut donc récupérer votre clé ssh là où vous l'avez laissée. 
+Rien de nouveau ici, c'est simplement une routine à prendre.
+
+
 ## Authorized keys
 ### Reconnaître les machines qu’on connaît
 
@@ -112,47 +126,5 @@ On pourra ensuite accéder à ovh1 depuis le terminal :
   $ mon_herbe@ovh1.ec-m.fr
 ~~~
 
-Serveur et Identifiant que l'on utilisera pour la suite des cours.
-
-
-explication encryption : https://www.hostinger.com/tutorials/ssh-tutorial-how-does-ssh-work
-
-DES MATHS
-
-
-scp  : copier un dossier d’un ordi vers un autre
-changement de port redirection
-prendre une clé usb, copier les fichiers.
-Aller sous le cri, brancher la clé sur le troisième serveur de la deuxième rangée.
-
-
-
-
-
-cp : copier un fichier (sur une même machine)
-cp -r => récursif
-cp -p => garde les droits
-cp [option] source destination
-
-scp : commande pour transfert de fichiers via connexion ssh
-s pour secure
-
-monde UNIX: archives tar (mieux que zip car conserve les droits ?)
-
-bsdtar cvf /tmp/node_ssh_keys.tar node.ssh.keys
-/!\ fichier tar n’est pas encore compressé
-
-xz /tmp/node_ssh_keys.tar
-=> devient /tmp/node_ssh_keys.tar.xz
-désormais compressé
-
-bsdtar cf - node_ssh_keys | ssh herbe@ovh1.ec-m.fr “cd /tmp: tar xJf -”
-
-tar      c        v         x           f
-       créer   voir  extraire  utilise
-                                      fichier en paramètres
-
-
-scp fichier_source fichier_destination:www/
-
+Serveur et Identifiant que l'on utilisera pour [la suite du cours]({% link cours/dfs/ssh_scp.md %}).
 
