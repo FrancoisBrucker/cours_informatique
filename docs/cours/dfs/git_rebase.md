@@ -147,7 +147,6 @@ git merge fonctionnalite1 --no-ff
 git branch -d fonctionnalite1
 git rebase master fonctionnalite2
 git checkout master
-git merge fonctionnalite2
 git merge fonctionnalite2 --no-ff
 git branch -d fonctionnalite2
 ~~~
