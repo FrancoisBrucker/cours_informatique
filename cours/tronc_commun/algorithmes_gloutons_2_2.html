@@ -68,7 +68,49 @@
   <p>Le corrigé est <a href="/cours_informatique/cours/tronc_commun/algorithmes_gloutons_corrige_2_2.html">disponible</a></p>
 </blockquote>
 
-<h2 id="exercice-5--le-problème-du-sac-à-dos">exercice 5 : le problème du sac à dos</h2>
+<h2 id="exercice-1--le-problème-du-voyageur-de-commerce">exercice 1 : le problème du voyageur de commerce</h2>
+
+<p>Le <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_voyageur_de_commerce">problème du voyageur de commerce</a> peut s’énoncer comme suit :</p>
+
+<p>étant donné un ensemble de villes reliées entre elles par des routes, trouver l’itinéraire le plus court passant par chaque ville une et une seule fois.</p>
+
+<p>On suppose dans la suite de cet exercice que l’on connaît la distance $d(u, v)$ pour n’importe quel couple de villes $u$ et $v$.</p>
+
+<h3 id="nombre-de-solutions">nombre de solutions</h3>
+
+<p>combien de solutions possible possède un problème du voyageur de commerce à $n$ villes ?</p>
+
+<h3 id="algorithme-glouton">algorithme glouton</h3>
+
+<ol>
+  <li>Proposez un algorithme glouton qui résout ce problème.</li>
+  <li>Montrer que l’algorithme glouton n’est pas optimal :
+    <ul>
+      <li>pour des longueurs qui ne sont pas forcément des distances (l’inégalité triangulaire n’est pas respectée)</li>
+      <li>pour des distances (qui respectent l’inégalité triangulaire)</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="optimisation">optimisation</h3>
+
+<p>Proposez un moyen d’optimiser la solution obtenue par l’algorithme glouton. On pourra par exemple itérativement diminuer le coût du cycle en modifiant localement le cycle.</p>
+
+<h2 id="exercice-2---coloration-de-graphes">exercice 2 :  coloration de graphes</h2>
+
+<h3 id="problème-général-de-la-coloration">problème général de la coloration</h3>
+
+<h3 id="glouton">glouton</h3>
+
+<h3 id="glouton-avec-ordre-choisi">glouton avec ordre choisi</h3>
+
+<h3 id="prouvons-avec-glouton">prouvons avec glouton</h3>
+
+<h3 id="cas-des-cartes-de-géographie">cas des cartes de géographie</h3>
+
+<h3 id="combien-de-couleurs-">combien de couleurs ?</h3>
+
+<h2 id="exercice-3--le-problème-du-sac-à-dos">exercice 3 : le problème du sac à dos</h2>
 
 <p>Le <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_sac_%C3%A0_dos">problème du sac à dos</a> est un exemple de problème d’optimisation. Il fait parti des problèmes les plus durs du monde car les solutions n’entretiennent pas de relations les unes avec les autres, il faut a priori toutes les regarder pour trouver la meilleure, et il y en a beaucoup.</p>
 
@@ -122,7 +164,7 @@
 
 <p>On suppose que l’on peut découper les objet pour obtenir une fraction de leurs valeurs. résolvez le problème pour une capacité de sac de 4kg et de 5kg.</p>
 
-<h4 id="algorithme-glouton">algorithme glouton</h4>
+<h4 id="algorithme-glouton-1">algorithme glouton</h4>
 
 <p>Proposez un algorithme glouton pour résoudre ce problème et montrer qu’il est optimal.</p>
 

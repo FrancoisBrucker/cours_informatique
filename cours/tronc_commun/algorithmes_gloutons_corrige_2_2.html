@@ -57,7 +57,55 @@
   </header>
 
   <div class="post-content">
-    <h2 id="exercice-5--le-problème-du-sac-à-dos">exercice 5 : le problème du sac à dos</h2>
+    <h2 id="exercice-1--le-problème-du-voyageur-de-commerce">exercice 1 : le problème du voyageur de commerce</h2>
+
+<h3 id="nombre-de-solutions">nombre de solutions</h3>
+
+<p>$n!$</p>
+
+<h3 id="algorithme-glouton">Algorithme glouton</h3>
+
+<p>Il y a plusieurs possiblités, on en montre 2</p>
+
+<h4 id="ajout-brutal-dune-ville">ajout brutal d’une ville</h4>
+
+<ul>
+  <li>étape $0$ on commence par choisir une ville $v_1$</li>
+  <li>à l’étape $i&gt;0$ on visite la ville la plus proche de $v_{i-1}$ que l’on a pas encore visité et on la nomme $v_i$</li>
+  <li>au bout de $n$ étapes on a visité les $n$ villes.</li>
+</ul>
+
+<h4 id="ajout-dune-ville-dans-un-cycle">ajout d’une ville dans un cycle</h4>
+
+<ul>
+  <li>à l’étape $0$ on prend 3 villes au hasard (ou minimum) et on les relie ensemble en triangle.</li>
+  <li>à l’étape $i &gt;0$ on  possède un cycle entre 4 - i villes. On ajoute alors la ville qui augmente le moins le cycle en la plaçant entre 2 villes adjacentes du cycle de départ.</li>
+  <li>au bout de $n-3$ étapes on a relié toutes les villes</li>
+</ul>
+
+<h4 id="non-optimalité">non optimalité.</h4>
+
+<p>Les deux algorithmes ne sont pas optimaux car on ne peux pas construire de solution optimale à $n$ éléments en considérant uniquement une solution optimale à $n-1$ éléments.</p>
+
+<p>La non optimalité du second algorithme pour le cas métrique dans le plan est <a href="http://labo.algo.free.fr/pvc/algorithme_glouton.html">montrée ici</a>. Elle peut servir également pour montrer la non optimalité du 1er. L’idée est de rajouter un sommet pour lequel il faut remettre en cause plus d’une chose que juste une arête.</p>
+
+<ol>
+  <li>Un <a href="ressources/algorithmes_gloutons/voyageur_commerce_glouton_sans_F.png">cycle optimal sans la ville F</a></li>
+  <li>En ajoutant la ville F, <a href="ressources/algorithmes_gloutons/voyageur_commerce_glouton_avec_F.png">avec l’algorithme glouton</a></li>
+  <li>la <a href="ressources/algorithmes_gloutons/voyageur_commerce_opti.png">solution optimale</a></li>
+</ol>
+
+<p>C’est bien plus compliqué de trouver un contre-exemple lorsque l’inégalité triangulaire est respectée. Et encore plus lorsque c’est des distances dans le plan… C’est ce qui fait que l’algorithme glouton trouve très souvent une bonne solution, à défaut de trouver la meilleure.</p>
+
+<h3 id="optimisation">optimisation</h3>
+
+<p>C’est le principe général d’optimisation a posteriori d’une solution appelée <a href="https://fr.wikipedia.org/wiki/2-opt">2-opt</a></p>
+
+<p>A partir d’un cycle solution, on supprime deux arêtes $xy$ et $zt$ de celui-ci et on ajoute les arêtes $xz$ et $yt$ qui permettent de conserver le fait que c’est un cycle. On regarde ensuite si la solution est meilleure. On peut faire cette suppression en considérant toutes les paires, ou uniquement quelques unes prisent au hasard si le nombre de villes est très important.</p>
+
+<h2 id="exercice-2---coloration-de-graphes">exercice 2 :  coloration de graphes</h2>
+
+<h2 id="exercice-3--le-problème-du-sac-à-dos">exercice 3 : le problème du sac à dos</h2>
 
 <h3 id="on-essaie">on essaie</h3>
 
@@ -90,7 +138,7 @@
   <li>sac de 5 kg : 3kg de C , 2kg de A</li>
 </ul>
 
-<h3 id="algorithme-glouton">algorithme glouton</h3>
+<h3 id="algorithme-glouton-1">algorithme glouton</h3>
 
 <ul>
   <li>entrée : liste de produits, chaque produit étant une liste [prix, kg, nom].</li>
