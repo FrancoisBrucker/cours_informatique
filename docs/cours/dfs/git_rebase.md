@@ -195,9 +195,7 @@ Après, il y a peut-être deux écoles, comme entre ceux qui préfèrent faire l
 
 ### Le jardinage de commits (rebase interactif)
 
-sd
-
-TODO once the commits atomiques tuto is finished and we know what is useful here.
+Le rebase interactif (`git rebase -i`) est très utile dans le cadre de l'utilisation de commits atomiques, afin de réorganiser l'historique et de fusionner plusieurs commits entre eux. Pour plus de détails, voir le tuto détaillé sur les [commits atomiques]({% link cours/dfs/git_commits_atomiques.md %}).
 
 ## Sources
 
