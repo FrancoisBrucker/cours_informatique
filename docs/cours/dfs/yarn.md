@@ -1,13 +1,11 @@
 ---
 layout: page
-title:  "cdn_yarn"
+title:  "Imports de Modules"
 category: tutorial
 tags: web
 author: Tina ALAEI
 ---
 
-
-# Imports de modules
 
 En pratique, un développeur ne code pas lui même toutes ses pages à partir de rien. Souvent, il utilise des 
 "paquets", ou modules, qui sont des codes déjà existants qui permettent d'implémenter différentes fonctionnalités sans 
