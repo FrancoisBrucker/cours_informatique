@@ -84,13 +84,39 @@ Plusieurs éléments peuvent partager une même classe, mais un id est unique po
 On les utilise principalement pour structurer la page. 
 
 ## CSS
-CSS est un langage qui permet de gérer la mise en forme de votre site.
+CSS est un langage qui permet de gérer la mise en forme de votre site. c'est à dire qu'avec le CSS vous llez pouvoir mettre de la couleur,changer les styles d'écriture, la mise en page...
 
 comment utilisé CSS?
 
+Une 1ère technique consiste à écrire directement dans le fichier HTML, au niveau de la `head` grâce à la balise `<style>`.
+
+~~~html 
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Maison page</title>
+    <style>
+        p
+        {
+            color: red;
+        }
+        </style>
+</head>
+<body>
+<h1>Bonjour Monde</h1>
+<p>Bienvenue sur ma page web.</p>
+</body>
+</html>
+~~~
+
+Vous pouvez voir que le texte dans le paragraphe est devenu rouge.
+
+Une autre technique, plus propre, consite à travailler directement dans un fichier CSS, lui-même relié au fichier HTML.
+
 Tout d'abord, il faut créer un ficher `.css`. Vous pouvez par exemple le nommer style.css.
-Une fois que c'est fait, il faut que vous relier votre fichier html avec votre fichier css.
-Pour cela, mettez vos deux fichier dans un même dossier. Puis il faut rajouter dans la partie `head` de votre fichier html :
+Une fois que c'est fait, il faut que vous reliez votre fichier html avec votre fichier css.
+Pour cela, mettez vos deux fichiers dans un même dossier. Puis il faut rajouter dans la partie `head` de votre fichier html :
 ~~~~html
     <link rel="stylesheet" href="style.css" />
 ~~~~
@@ -109,15 +135,15 @@ Ce code est coposé de 3 élements :
 
 - une `propriété CSS` (color): cela permet de définir ce que l'on veut modifier. cela peut être la couleur, la taille (font-size) ou autre.
 
--une `valeur`(red) : ici c'es le nom de la couleur. Pour chaque propriété, une valeur doit être donnée.
+- une `valeur`(red) : ici c'est le nom de la couleur. Pour chaque propriété, une valeur doit être donnée.
 
-Il existe de nombreuse propriétés, vous pouvez en retrouver [ici](https://websitesetup.org/css3-cheat-sheet/)
+Il existe de nombreuse propriétés, vous pouvez les principales [ici](https://openclassrooms.com/fr/courses/1603881-apprenez-a-creer-votre-site-web-avec-html5-et-css3/1608902-memento-des-proprietes-css)
 
 Il y a tout de même un problème. Comment faire si l'on veut avoir des formats différents pour plusieurs paragraphe ? en effet, tout les paragraphe ont la même balise :`p`
 
 Pour resoudre ce problème, il existe deux solutions:
-- `les classes` : qui peuvent etre utilisés en même temps par plusieurs balises
-- `les id`: qui doivent être unique pour chaque élément.
+- `les classes` : qui peuvent être utilisées en même temps par plusieurs balises
+- `les id`: qui doivent être uniques pour chaque élément.
 
 #### les classes 
 
@@ -139,21 +165,23 @@ on peut ensuite réutiliser ce nom pour changer l'affichage des balises de cette
 ~~~~CSS
 .test
 {
-    color: red;
+    font-size: 16px;
 }
 ~~~~
 
-Ainsi, toutes les balises de classe test auront un texte rouge.
+Ainsi, toutes les balises de classe test auront un texte de taille 16 pixels.
 
 #### les id
 
-Ils s'utilisent de la même facon que les classe, à la différence qu'il ne peuvent être utilisé que par une balise à la fois.
+Ils s'utilisent de la même facon que les classes, à la différence qu'ils ne peuvent être utilisés que par une balise à la fois.
+
 ~~~~CSS
 #logo
 {
-    /* Indiquez les propriétés CSS ici */
+    background-color : blue;
 }
 ~~~~
+La balise d'id logo aura donc un fond bleu.
 
 #### les autres selecteurs
 
