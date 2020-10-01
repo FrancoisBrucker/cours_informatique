@@ -56,9 +56,9 @@
   </header>
 
   <div class="post-content">
-    <h1 id="but">But</h1>
+    <h2 id="but">But</h2>
 
-<p>Le but de ce tuto est de comprendre pourquoi et comment utiliser <code class="language-plaintext highlighter-rouge">git rebase</code>.</p>
+<p>Le but de ce tuto est de comprendre pourquoi et comment utiliser <code class="language-plaintext highlighter-rouge">git rebase</code>. Il s’agit d’une version allégée du déjà très digeste <a href="https://www.miximum.fr/blog/git-rebase/">article</a> de Thibault Jouannic. Une bonne idée pourrait être de commencer par celui-ci, puis de lire le tuto originel pour approfondir.</p>
 
 <p>Sommaire :</p>
 
@@ -82,7 +82,7 @@
   </tbody>
 </table>
 
-<h1 id="pourquoi">Pourquoi</h1>
+<h2 id="pourquoi">Pourquoi</h2>
 
 <p>Pourquoi donc s’embêter à utiliser une commande comme <code class="language-plaintext highlighter-rouge">rebase</code>, souvent perçue comme obscure, même pour certains vétérans du git, alors qu’il existe quelque chose de simple et de connu comme <code class="language-plaintext highlighter-rouge">git merge</code> ? Pour deux raisons principales, que nous détaillerons par la suite :</p>
 
@@ -91,7 +91,7 @@
   <li>Et c’est même souvent mieux qu’une bonne vieille fusion, pour plein de raisons.</li>
 </ol>
 
-<h1 id="quoi">Quoi</h1>
+<h2 id="quoi">Quoi</h2>
 
 <p>Tout d’abord, que fait exactement la commande <code class="language-plaintext highlighter-rouge">git rebase</code> ? Elle permet ni plus ni moins de prendre une branche, de la découper, puis de la recoller ailleurs. En général, on veut la recoller au bout de la branche <em>master</em>, avec la commande suivante :</p>
 
@@ -149,19 +149,106 @@
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A---B---C---D---E---F---G ← master
 </code></pre></div></div>
 
-<h1 id="usage">Usage</h1>
+<h2 id="usage">Usage</h2>
 
 <p>Tout cela est bien joli, mais à quoi est-ce que ça sert de découper une branche pour la recoller à la fin avant de fusionner sur <em>master</em> ? Cela peut en effet sembler être une perte de temps, dans la mesure où les problèmes (notamment les conflits) qui se déclarent habituellement lors d’un merge se déclareront lors du rebase. Petit panorama de l’utilité du rebase.</p>
 
-<h2 id="un-historique-propre">Un historique propre</h2>
+<h3 id="un-historique-propre">Un historique propre</h3>
 
-<h2 id="corriger-des-erreurs">Corriger des erreurs</h2>
+<p>En découpant les branches pour les recoller plus loin, <code class="language-plaintext highlighter-rouge">git rebase</code> permet de conserver un historique de modification plus clair, qu’on décide ensuite de fusionner la branche fille à <em>master</em> ou non.</p>
 
-<h2 id="diviser-pour-mieux-régner">Diviser pour mieux régner</h2>
+<p>On peut ainsi décider de fusionner une branche peu importante, comme une simple correction de bug par exemple, sans que celle-ci n’apparaisse comme une excroissance de la branche principale. Pour se faire, on commence par rebaser la branche de correction de bug (appelée <em>bug</em>) sur <em>master</em>, puis on merge, et enfin on supprime la branche :</p>
 
-<h2 id="le-rebase-interactif">Le rebase interactif</h2>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git rebase master bug
+git checkout master
+git merge bug
+git branch <span class="nt">-d</span> bug
+</code></pre></div></div>
 
-<h1 id="sources">Sources</h1>
+<p>Cela nous permet d’obtenir un bel historique bien plat au lieu de quelque chose de plus alambiqué et qui, à la longue, les corrections de bug se succédant, risque d’alourdir inutilement l’arbre de l’historique de version.</p>
+
+<p>On pourrait aussi vouloir, pour certaines raisons, conserver dans l’historique la trace de branches passées et de leur existence. Autrement dit, on peut désirer qu’il soit visible que tel ou tel développement a été effectué sur une branche bien précise, avant d’être fusionné dans la branche principale. Dans ce cas, l’utilisation de <code class="language-plaintext highlighter-rouge">rebase</code> permet tout de même un historique plus clair (un arbre moins touffu), en particulier lorsque plusieures branches existent en parallèle.</p>
+
+<p>Imaginons que j’ai deux fonctionnalités, 1 et 2, qui évoluent en parallèle, chacune sur sa branche dérivée de <em>master</em>.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>          F---G ← fonctionnalité 2
+         /
+A---B---E---H---I ← master
+     <span class="se">\</span>
+      C---D ← fonctionnalité 1
+</code></pre></div></div>
+
+<p>L’une des deux fonctionnalités va être achévée (disons la 2), après tests je la merge dans master. Puis, vient le tour de la fonctionnalité 1. Ce qui donne quelque chose comme ça :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>          F---G ← fonctionnalité 2
+         /     <span class="se">\</span>
+A---B---E---H---I---L ← master
+     <span class="se">\ </span>            / 
+      C---D---J---K ← fonctionnalité 1
+</code></pre></div></div>
+
+<p>On a donc deux branches qui s’échappent du tronc et, visuellement, ça peut déjà sembler un peu brouillon. On va donc astucieusement utiliser rebase pour que, à la fin, les branches filles se succèdent les unes après les autres plutôt que se superposer :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A---B---E---H-------I---------------L ← master
+             <span class="se">\ </span>    / <span class="se">\ </span>            / 
+              F---G   C---D---J---K 
+</code></pre></div></div>
+
+<p>On conserve donc bien l’historique en branches, mais avec beaucoup plus de clarté. Pour se faire, on va à chaque fois se rebaser sur <em>master</em> avant de fusionner, comme on le faisait avant. Mais en plus, on va utiliser l’option de merge “no fast forward” (<code class="language-plaintext highlighter-rouge">--no-ff</code>) pour que git conserve la trace des branches dans l’historique :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git rebase master fonctionnalite1
+git checkout master
+git merge fonctionnalite1 <span class="nt">--no-ff</span>
+git branch <span class="nt">-d</span> fonctionnalite1
+git rebase master fonctionnalite2
+git checkout master
+git merge fonctionnalite2 <span class="nt">--no-ff</span>
+git branch <span class="nt">-d</span> fonctionnalite2
+</code></pre></div></div>
+
+<h3 id="corriger-des-erreurs">Corriger des erreurs</h3>
+
+<p>Git rebase permet également de réparer certaines boulettes, particulièrement celles que l’on a tendance à commettre tôt le matin ou tard le soir. L’une d’elles consiste par exemple à créer une nouvelle branche à partir d’une branche fille plutôt qu’à partir de master :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A---B---H---I ← master
+     <span class="se">\</span>
+      C---D---G ← bug1
+       <span class="se">\</span>
+        E---F ← bug2
+</code></pre></div></div>
+
+<p>Sans rebase, il faudrait donc d’abord terminer bug2 et le fusionner dans bug1, avant de pouvoir espérer fusionner bug1 (et donc bug2) dans master. Pas pratique du tout ! On va donc pouvoir utiliser rebase pour découper la petite brindille bug2 pour la coller au bout de master. Ainsi, on peut maintenant traiter les branches et les fusionner dans l’ordre le plus opportun. L’option <code class="language-plaintext highlighter-rouge">--onto</code> nous permet même de spécifier l’endroit de <em>master</em> où l’on souhaite coller <em>bug2</em>.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git rebase bug1 bug2 <span class="nt">--onto</span> B
+</code></pre></div></div>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      E---F ← bug2
+     /
+A---B---H---I ← production
+     <span class="se">\</span>
+      C---D---G ← bug1
+</code></pre></div></div>
+
+<p>Où B, pour rappel, est l’étiquette d’un commit (<code class="language-plaintext highlighter-rouge">e73f3d6</code> par exemple).</p>
+
+<h3 id="diviser-pour-mieux-régner">Diviser pour mieux régner</h3>
+
+<p>Parfois, on peut se traîner pendant de longues semaines la branche d’une fonctionnalité particulièrement longue à développer. Pendant ce temps, la branche <em>master</em> a le temps de connaître de nombreuses évolutions, et on risque donc de passer toute une demi-journée à résoudre des conflits lors de la fusion de notre branche avec <em>master</em>. Sauf si …</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A---B---H---I--- … <span class="nt">---J---E---F</span> ← master
+      <span class="se">\</span>
+       C---D---G--- … <span class="nt">---H---I</span> ← longue_fonctionnalite
+</code></pre></div></div>
+
+<p>Sauf si on a pris le temps, tous les matins par exemple, de rebaser notre branche sur <em>master</em> pour prendre en compte les dernières modifications et corriger régulièrement les conflits, plutôt que tous à la fois à la fin.</p>
+
+<p>Après, il y a peut-être deux écoles, comme entre ceux qui préfèrent faire la vaisselle après chaque repas, et ceux qui donnent un bon coup à la fin de la semaine.</p>
+
+<h3 id="le-jardinage-de-commits-rebase-interactif">Le jardinage de commits (rebase interactif)</h3>
+
+<p>Le rebase interactif (<code class="language-plaintext highlighter-rouge">git rebase -i</code>) est très utile dans le cadre de l’utilisation de commits atomiques, afin de réorganiser l’historique et de fusionner plusieurs commits entre eux. Pour plus de détails, voir le tuto détaillé sur les commits atomiques.</p>
+
+<h2 id="sources">Sources</h2>
 
 <ul>
   <li>Ce superbe <a href="https://www.miximum.fr/blog/git-rebase/">tuto</a> réalisé par Thibault Jouannic, et sur lequel se base une bonne partie du présent tuto.</li>

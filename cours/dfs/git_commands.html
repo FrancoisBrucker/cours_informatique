@@ -56,11 +56,260 @@
   </header>
 
   <div class="post-content">
-    <h1 id="but">But</h1>
+    <h2 id="but">But</h2>
 
-<p>Les indispensables à connaître.</p>
+<p>Les indispensables à connaître. Ce tuto comporte deux sections :</p>
+<ol>
+  <li>La section <a href="#comment-faire-">Comment faire …</a> qui donne la marche à suivre pour les opérations courantes,</li>
+  <li>La section <a href="#cheatsheet">Cheatsheet</a>, un tableau récapitulant les commandes les plus utiles et leurs variations (notamment les options qu’il est important de connaître).</li>
+</ol>
 
-<h1 id="sources-et-ressources">Sources et ressources</h1>
+<p>L’idée est donc de pouvoir utiliser ce tuto de deux façons : soit avec une idée de ce qu’on veut faire, obtenir les différentes commandes à utiliser ; soit pour se rafraichir la mémoire sur une commande bien précise.</p>
+
+<h2 id="comment-faire-">Comment faire …</h2>
+
+<h3 id="initialiser-un-nouveau-projet">Initialiser un nouveau projet</h3>
+
+<p><strong>Description :</strong> on va créer en local notre nouveau projet, créer un répertoire sur GitHub et lier les deux.</p>
+
+<ol>
+  <li>Création du répertoire sur Github</li>
+  <li>Création du répertoire en local</li>
+  <li>Initialisation de git</li>
+  <li>La liaison (pas dangereuse)</li>
+</ol>
+
+<p><strong>Commandes :</strong></p>
+
+<ol>
+  <li>
+    <p>Pour cette première étape, on peut soit opérer depuis un <a href="https://github.com">navigateur</a>, soit en ligne de commande avec <a href="https://cli.github.com/">GitHub CLI</a>.</p>
+  </li>
+  <li>
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> &lt;là où on veut mettre le dossier&gt;
+<span class="nb">mkdir</span> &lt;monprojet&gt;
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> &lt;monprojet&gt;
+git init
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git remote add origin https://github.com/USER/monprojet.git
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="récupérer-cloner-en-local-un-projet-existant">Récupérer (cloner) en local un projet existant</h3>
+
+<p><strong>Description :</strong> on souhaite travailler sur un projet donc le code est disponible sur Github (ou équivalent). Pour ce faire, on va cloner le répertoire en local sur sa machine.</p>
+
+<p><strong>Commandes :</strong></p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone &lt;url&gt;
+</code></pre></div></div>
+
+<h3 id="récupérer-en-local-les-modifications-effectuées-sur-le-répertoire-distant">Récupérer en local les modifications effectuées sur le répertoire distant</h3>
+
+<p><strong>Description :</strong> Sur un projet informatique, il arrive souvent que plusieurs développeurs travaillent de concert (c’est d’ailleurs toute l’utilité d’un logiciel tel que git). Afin de rester syncrhonisé avec le travail des collègues, on est régulièrement amené à télécharger depuis le serveur commun les apports qu’ils y ont déposé.</p>
+
+<p><strong>Commandes :</strong></p>
+
+<p>Depuis la racine du projet (là où se trouve le dossier .git) :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git pull
+</code></pre></div></div>
+
+<p>En général, l’url peut être trouvée sous le menu “Code” ou “Clone” sur la page principale d’un projet.</p>
+
+<h3 id="créer-une-nouvelle-branche">Créer une nouvelle branche</h3>
+
+<p><strong>Description :</strong> pour travailler sur un aspect particulier, qu’il s’agisse d’une résolution de bug ou de l’élaboration d’une nouvelle fonctionnalité, on veut créer une nouvelle branche. Cette nouvelle branche va dériver d’une branche-mère (en général, il s’agit de la branche <em>master</em>, aussi appelée <em>main</em>, et ce sera aussi le cas dans notre exemple).</p>
+
+<p><strong>Commandes :</strong></p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout master
+git branch ma_nouvelle_branche
+git checkout ma_nouvelle_branche
+</code></pre></div></div>
+
+<p>Ou sous une forme plus condensée :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout master
+git checkout <span class="nt">-b</span> ma_nouvelle_branche
+</code></pre></div></div>
+
+<p>L’option <code class="language-plaintext highlighter-rouge">-b</code> appliquée à la commande <code class="language-plaintext highlighter-rouge">checkout</code> permet en effet de créer la branche de destination si celle-ci n’existe pas.</p>
+
+<h3 id="pousser-une-branche-nouvelle-locale-sur-le-serveur-distant">Pousser une branche (nouvelle) locale sur le serveur distant</h3>
+
+<p><strong>Description :</strong> on a créé en local une nouvelle branche, qui n’existe pas encore sur le serveur distant. On souhaite créer la branche du même nom sur le serveur distant et pousser nos modifications dessus.</p>
+
+<p><strong>Commandes :</strong></p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout &lt;branche&gt;
+git push <span class="nt">--set-upstream</span> origin &lt;branche&gt;
+</code></pre></div></div>
+
+<p>Version condensée :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout &lt;branche&gt;
+git push <span class="nt">-u</span> origin &lt;branche&gt;
+</code></pre></div></div>
+
+<h3 id="pousser-ses-modifications-sur-le-serveur">Pousser ses modifications sur le serveur</h3>
+
+<p><strong>Description :</strong> on veut “enregistrer” les modifications apportées au code et les partager avec ses collaborateurs en les poussant sur le serveur. On peut décomposer la marche à suivre en deux grandes étapes :</p>
+<ol>
+  <li>On ajoute localement ses modifications à l’historique git, suivant la fréquence qui nous convient le mieux</li>
+  <li>On pousse tout ça sur le serveur.</li>
+</ol>
+
+<p>La fréquence d’ajout des modifications au git est variable suivant les développeurs. Certains aiment faire un gros ajout (<em>commit</em>) une fois de temps en temps, quand d’autres sont partisans de <em>commits</em> dits atomiques (pour chaque modification), quitte à retravailler ensuite l’historique ensuite pour le rendre plus concis si besoin.</p>
+
+<p>Concernant la fréquence d’envoi sur le serveur (<em>push</em>), la seule règle vraiment importante est de bien avoir en tête que, tant que du code n’est pas poussé, il n’existe que sur votre ordinateur. Et si celui-ci est endommagé ou perdu … Un <em>push</em> régulier est donc gage d’esprit léger !</p>
+
+<p><strong>Commandes :</strong></p>
+
+<ol>
+  <li>L’ajout des modifications au git se fait en plusieurs étapes : on ajoute d’abord les modifications qui nous intéressent au <em>stage</em>, puis on les <em>commit</em>. On peut voir le <em>stage</em> comme une sorte de bassine où l’on dépose tous les fichiers que l’on veut sauver.</li>
+</ol>
+
+<p>En général, on a pris soin de placer les fichiers qu’on ne veut de toute façon pas voir dans git dans le fichier .gitignore. Donc, souvent, on va vouloir tout ajouter dans le stage pour tout commit :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add <span class="nb">.</span>
+git commit <span class="nt">-am</span> <span class="s2">"mon_message_decrivant_le_commit"</span>
+</code></pre></div></div>
+
+<p>Si l’on souhaite <em>commit</em> seulement un fichier (ou un groupe de fichiers) :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add fichier1.md fichier2.html
+git commit <span class="nt">-am</span> <span class="s2">"mon_message_de_commit"</span>
+</code></pre></div></div>
+
+<p><em>Note :</em> <code class="language-plaintext highlighter-rouge">git status</code>est très utile pour voir ce qui est dans le <em>stage</em> et ce qui n’y est pas encore. Abusez-en !</p>
+
+<ol>
+  <li>Une fois qu’on a <em>commit</em> nos changements, que tout est testé (mais c’est un autre sujet), etc., on va pouvoir pousser notre code sur le serveur. Rien de plus simple :</li>
+</ol>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push
+</code></pre></div></div>
+
+<p>Si la branche sur laquelle on travaille existe aussi sur le serveur et que les deux branches sont liées, tout devrait bien se passer. Sinon, c’est qu’on a mal fait <a href="#pousser-une-branche-nouvelle-locale-sur-le-serveur-distant">ça</a>.</p>
+
+<h3 id="fusionner-une-branche">Fusionner une branche</h3>
+
+<p><strong>Description :</strong> on souhaite fusionner une branche dans sa branche d’origine (par exemple <em>master</em>), c’est-à-dire appliquer toutes les modifications portées par une branche dans sa branche d’origine.</p>
+
+<p>Nous proposons ici une méthode consistant à utiliser <code class="language-plaintext highlighter-rouge">git rebase</code> conjointement à <code class="language-plaintext highlighter-rouge">git merge</code> pour obtenir un historique plus “propre” (i.e. plus linéaire). Pour plus détails, voir le tuto sur git rebase.</p>
+
+<p><strong>Commandes :</strong></p>
+
+<p>Pour ne garder aucune trace de la branche (et obtenir ainsi un historique complètement linéaire, plat) :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git rebase master branche
+git checkout master
+git merge branche
+git branch <span class="nt">-d</span> branche
+</code></pre></div></div>
+
+<p>Pour conserver une trace de la branche (par exemple parce qu’elle est significante) mais conserver une certaines linéarité (dans l’enchaînement des branches notamment) :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git rebase master branche
+git checkout master
+git merge branche <span class="nt">--no-ff</span>
+git branch <span class="nt">-d</span> branche
+</code></pre></div></div>
+
+<h2 id="cheatsheet">Cheatsheet</h2>
+
+<p>Par ordre alphabétique ;)</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Commande</th>
+      <th>Effet</th>
+      <th>Option(s)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">git add &lt;fichier&gt;</code></td>
+      <td>ajoute des fichiers au stage en vue de les commit</td>
+      <td><code class="language-plaintext highlighter-rouge">git add .</code> pour ajouter tous les fichiers modifiés</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">git branch</code></td>
+      <td>affiche les branches existantes (en local, par défaut). La branche actuelle est mise en évidence par un astérisque</td>
+      <td><code class="language-plaintext highlighter-rouge">-d &lt;branche&gt;</code> supprime la branche <em>branche</em></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">git checkout &lt;branche&gt;</code></td>
+      <td>change de branche pour aller sur “branche”</td>
+      <td><code class="language-plaintext highlighter-rouge">-b &lt;nouvelle branche&gt;</code> pour créer une nouvelle branche et s’y placer</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">git clone &lt;url&gt;</code></td>
+      <td>clone en local un répertoire distant</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">git commit</code></td>
+      <td>publie les changements dans l’arbre git local</td>
+      <td><code class="language-plaintext highlighter-rouge">-a</code> commit tous les changements présents dans le stage <br /> <code class="language-plaintext highlighter-rouge">-m "mon_message"</code> permet d’écrire le message de commit sans passer par l’éditeur</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">git diff</code></td>
+      <td>indique les différences entre le dernier commit et ce qui n’est pas encore mis dans le <em>stage</em></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">git init</code></td>
+      <td>initialise git pour le dossier où la commande est lancée</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">git log</code></td>
+      <td>affiche l’historique git complet du projet</td>
+      <td><code class="language-plaintext highlighter-rouge">--oneline</code> affiche les commits sous forme condensée pour plus de lisibilité <br /> <code class="language-plaintext highlighter-rouge">--graph</code> représentation visuelle de l’arbre (avec les branches éventuelles)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">git merge &lt;branche&gt;</code></td>
+      <td>applique les modifications portées par “<branche>" à la branche mère dont elle est issue</branche></td>
+      <td><code class="language-plaintext highlighter-rouge">--no-ff</code> (<em>no fast forward</em>) permer de créer un commit de fusion dans tous les cas, même cas quand la fusion pourrait être résolue trivialement (<em>fast-forward</em>). Utile pour conserver l’historique des branches lors d’un <em>merge</em> suivant un <em>rebase</em></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">git pull</code></td>
+      <td>télécharge en local les modifications présentes sur le serveur (<em>a priori</em> ajoutées par d’autres développeurs)</td>
+      <td><code class="language-plaintext highlighter-rouge">--rebase=preverse</code> permet de conserver les commits de fusion, utile pour garder une trace de l’existence de certaines branches</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">git push</code></td>
+      <td>pousse sur le serveur les modifications locales</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">git rebase &lt;ici&gt; &lt;branche&gt;</code></td>
+      <td>découpe la branche <code class="language-plaintext highlighter-rouge">branche</code> à sa base et la recolle <code class="language-plaintext highlighter-rouge">ici</code>. <code class="language-plaintext highlighter-rouge">ici</code> peut-être le nom d’une branche, auquel cas la branche <code class="language-plaintext highlighter-rouge">branche</code> est recollée à la fin de la branche <code class="language-plaintext highlighter-rouge">ici</code>, ou un numéro de commtit. Voir le tuto complet sur rebase.</td>
+      <td>X</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">git stash</code></td>
+      <td>permet de mettre temporairement de côté les modifications en attente de <em>commit</em> afin de revenir au dernier <em>commit</em>. Les modifications ainsi mises de côté peuvent ensuite être réappliqués (éventuellement après que d’autres commits ont été effectués) ou supprimées.</td>
+      <td><code class="language-plaintext highlighter-rouge">git stash list</code> pour lister les éléments mis de côté <br /> <code class="language-plaintext highlighter-rouge">git stash apply</code> pour faire revenir les modifcations dans l’espace de travail <br /> <code class="language-plaintext highlighter-rouge">git stash clear</code> pour abandonner complètemet les modifications mises de côté</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">git status</code></td>
+      <td>affiche les fichiers prêts à être <em>commit</em> et ceux qui ne sont pas encore dans le <em>stage</em></td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="sources-et-ressources">Sources et ressources</h2>
 
 
   </div>
