@@ -42,10 +42,11 @@ Cet exemple montre la necessité d'optimiser la gestion des modules.
 
 Les modules bundlers sont des outils utilisés par les développeurs pour empaqueter leurs modules JS dans un seul fichier JavaScript qui peut être exécuté dans le navigateur. 
 
-Le packaging a deux buts principaux dans la compilation de votre JS :
+Le packaging a trois buts principaux dans la compilation de votre JS :
 * L'optimisation de rendu du code
 	* charger tous les modules différents, même ce qui n'est pas utilisé. Le principal problème est avec les nodes_modules qui est un dossier très lourd. Ainsi le principe de "tree-shaking" vient palier à ce problème ne gardant que les objets utilisés dans les librairies et modules.
 	* En plus d'être lourd, le node_modules prend du temps à être scanné entièrement pour chercher les dépendances. De même, si le nombre de module devient grand, cela peut prendre un peu plus de temps pour tous les charger. En regroupant tout dans un seul et même fichier (ou parfois plusieurs si c'est nécessaire), le packager réunit déjà dans le script tout ce qui est nécessaire pour fonctionner. 
 * Il facilite la gestion des ressources statiques (CSS, images, fontes) en les considérant égalament comme module au même titre que les autres vrais modules.
+* Il gomme les problèmes d'ordre d'imports de scripts interdépendants qui peut faire crasher la page.
 
 Un des avantages est que le packaging permet de charger à la fois les modules mais aussi les ressources dans leur ordre de dépendance défini dans le code.
