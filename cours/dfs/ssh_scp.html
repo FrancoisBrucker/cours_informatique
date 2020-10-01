@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Copie sécurisée | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Copie sécurisée" />
+<meta name="author" content="Herbelleau Romain" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)" />
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)" />
+<link rel="canonical" href="/cours_informatique/cours/dfs/ssh_scp.html" />
+<meta property="og:url" content="/cours_informatique/cours/dfs/ssh_scp.html" />
+<meta property="og:site_name" content="cours d’informatique" />
+<script type="application/ld+json">
+{"description":"Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)","@type":"WebPage","headline":"Copie sécurisée","url":"/cours_informatique/cours/dfs/ssh_scp.html","author":{"@type":"Person","name":"Herbelleau Romain"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        processEscapes: true
+      }
+    });
+  </script>
+  
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+</head>
+
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Copie sécurisée</h1>
+  </header>
+
+  <div class="post-content">
+    <h1 id="copie-sécurisée-via-le-protocole-ssh">Copie sécurisée via le protocole SSH</h1>
+
+<p>Pour créer sa clé et s’identifier sur ovh1 voir <a href="/cours_informatique/cours/dfs/ssh.html">le début du cours</a>.</p>
+
+<p>Une fois connecté, vous pouvez trouver le dossier <code class="language-plaintext highlighter-rouge">www</code>. 
+C’est ici que vous allez mettre le contenu de votre site. 
+Pour l’instant il contient juste le fichier <code class="language-plaintext highlighter-rouge">index.html</code>. 
+Vous pouvez lire et modifier ce fichier directement via la console, 
+mais ce n’est pas très pratique…</p>
+
+<p>On va donc plutôt créer nos fichiers sur notre ordinateur, 
+puis les copier et les envoyer au serveur ovh1.</p>
+
+<p>Pour copier un fichier, il existe la commande <code class="language-plaintext highlighter-rouge">cp</code>. 
+On l’utilise comme ça :</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span><span class="nb">cp</span> <span class="o">[</span>option] fichier_source fichier_destination
+</code></pre></div></div>
+<p>Si aucun fichier de ce nom n’existe à la destination, il sera créé. 
+S’il existe déjà, il sera remplacé.</p>
+
+<p>On peut également copier des dossiers. 
+Vous en trouverez quelques utilisations de base 
+dans <a href="http://www.commandeslinux.fr/commande-cp/">ce tuto</a>. 
+On peut notamment retenir :</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span><span class="nb">cp</span> <span class="nt">-r</span> <span class="nb">source </span>destination  <span class="c"># Copie récursive (pour copier des dossiers)</span>
+</code></pre></div></div>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span><span class="nb">cp</span> <span class="nt">-p</span> <span class="nb">source </span>destination  <span class="c"># Copie en conservant les droits du fichier</span>
+</code></pre></div></div>
+
+<p>Le problème de <code class="language-plaintext highlighter-rouge">cp</code>, c’est qu’on ne peut l’utiliser que localement 
+pour faire une copie sur notre machine.</p>
+
+<p>Pour copier un fichier vers un serveur (et inversement), on utilise 
+donc la commande <code class="language-plaintext highlighter-rouge">scp</code>, signifiant <em>Secure Copy Protocol</em>. 
+Cette copie utilise le protocole SSH pour assurer l’authenticité 
+et la confidentialité du transfert.</p>
+
+<p>Elle s’utilise de la même manière que <code class="language-plaintext highlighter-rouge">cp</code> :</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span>scp <span class="o">[</span>option] fichier_source fichier_destination
+</code></pre></div></div>
+
+<p>Pour l’essayer, créez un index.html sur votre machine et copiez-le vers ovh1 
+dans le dossier www/.</p>
+
+<p>Depuis votre machine (sans être déjà connecté à ovh1), ça donne :</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span>scp chemin/index.html mon_herbe@ovh1.ec-m.fr:www/index.html
+</code></pre></div></div>
+
+<p>Si vous allez vérifier sur ovh1, 
+votre fichier a bien remplacé l’ancien index.html . 
+Incroyable.</p>
+
+<h2 id="copie-et-compression-de-dossiers">Copie et Compression de dossiers</h2>
+
+<p>Comme pour <code class="language-plaintext highlighter-rouge">cp</code>, vous pouvez utiliser <code class="language-plaintext highlighter-rouge">scp</code> pour copier des dossiers. 
+Le problème, c’est que les copier tels quels prend du temps. On veut donc 
+les compresser avant de les transférer. 
+Dans le monde UNIX, on utilise les archives GNU tar avec la commande <code class="language-plaintext highlighter-rouge">tar</code>. 
+Cette commande permet de concaténer plusieurs fichiers en un seul et même 
+fichier. En l’utilisant sur un dossier, cela conserve sa structure et ses 
+droits. La syntaxe est la suivante :</p>
+
+<p>Pour créer l’archive d’un dossier :</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span><span class="nb">tar</span> <span class="nt">-cvf</span> archive_dossier.tar dossier/
+</code></pre></div></div>
+<p><code class="language-plaintext highlighter-rouge">c</code> signifie qu’on crée une archive. 
+<code class="language-plaintext highlighter-rouge">v</code> désigne le mode “verbeux” (il affiche ce qu’il fait). 
+<code class="language-plaintext highlighter-rouge">f</code> signifie qu’on utilise le fichier en paramètre.</p>
+
+<p>Ensuite, pour extraire ce dossier :</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span><span class="nb">tar</span> <span class="nt">-xvf</span> archive_dossier.tar
+</code></pre></div></div>
+<p><code class="language-plaintext highlighter-rouge">x</code> signifie qu’on extrait l’archive.</p>
+
+<p>Attention cependant : ici le fichier .tar <strong>n’est pas encore compressé</strong>. 
+Pour le compresser, on va ici choisir Lzma, la méhode utilisée 
+par 7zip.</p>
+
+<p>Vous pouvez compresser votre archive manuellement avec la commande <code class="language-plaintext highlighter-rouge">xz</code> :</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span>xz archive_dossier.tar
+</code></pre></div></div>
+<p>Un fichier <em>archive_dossier.tar.xz</em> est alors créé. 
+Pour le décompresser, on utilise :</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span>xz <span class="nt">-d</span> archive_dossier.tar.xz
+</code></pre></div></div>
+
+<p>Une autre méthode plus simple est de compresser lors de l’archivage <code class="language-plaintext highlighter-rouge">tar</code>, 
+en rajoutant <code class="language-plaintext highlighter-rouge">J</code> en option :</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span><span class="nb">tar</span> <span class="nt">-Jcvf</span> archive_dossier.tar.xz dossier/
+</code></pre></div></div>
+<p>Et idem lors de l’extraction.</p>
+
+<p>Pour tester par vous-même : Créez un petit projet contenant par exemple 
+un fichier html, un fichier css et un fichier js, puis copiez-le vers ovh1 
+en utilisant l’archivage et la compression !</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d&#39;informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d&#39;informatique</li><li><a class="u-email" href="mailto:francois.brucker@centrale-marseille.fr">francois.brucker@centrale-marseille.fr</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li><li><a href="https://www.twitter.com/p_____p___"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">p_____p___</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.
+A destination des 1A (tronc commun), des 2A (de l&#39;approfondissement MIE) et des 3A (de l&#39;option digital·e)</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

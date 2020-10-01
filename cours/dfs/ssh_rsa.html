@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Chiffrement RSA | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Chiffrement RSA" />
+<meta name="author" content="Herbelleau Romain" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)" />
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)" />
+<link rel="canonical" href="/cours_informatique/cours/dfs/ssh_rsa.html" />
+<meta property="og:url" content="/cours_informatique/cours/dfs/ssh_rsa.html" />
+<meta property="og:site_name" content="cours d’informatique" />
+<script type="application/ld+json">
+{"description":"Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)","@type":"WebPage","headline":"Chiffrement RSA","url":"/cours_informatique/cours/dfs/ssh_rsa.html","author":{"@type":"Person","name":"Herbelleau Romain"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        processEscapes: true
+      }
+    });
+  </script>
+  
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+</head>
+
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Chiffrement RSA</h1>
+  </header>
+
+  <div class="post-content">
+    <h1 id="le-chiffrement-rsa">Le chiffrement RSA</h1>
+
+<p>Cet algorithme a été présenté en 1977 par Ronald Rivest, Adi Shamir et Leonard Adleman.</p>
+
+<p>Le chiffrement RSA s’appuie sur le fait que factoriser un produit de deux nombres premiers distincts est difficile.</p>
+
+<p>La clé publique et la clé secrète sont calculées grâce a l’<strong>algorithme d’Euclide</strong> et aux <strong>coefficients de Bézout</strong>, et le déchiffrement grâce au <strong>petit théorème de Fermat</strong>.</p>
+
+<p>Quelques outils mathématiques et algorithmiques nécessaires :</p>
+
+<ul>
+  <li>
+    <p>Le <strong>petit théorème de Fermat</strong> dit :
+Si p est un nombre premier et a un entier alors <em>a^p = a mod p</em>.
+<strong>Corollaire</strong> : si p ne divise pas a alors <em>a^(p-1) = 1 mod p</em>.</p>
+  </li>
+  <li>
+    <p>La <strong>version améliorée du petit théorème de Fermat</strong> nous donne :
+Soient p et q deux nombres premiers distincts et soit n = pq. Pour tout a entier tel que pgcd(a,n) = 1 (cad n ne divise pas a) alors : <em>a^((p-1)(q-1)) = 1 mod n</em>.</p>
+  </li>
+  <li>
+    <p>L’<strong>algorithme d’Euclide</strong> permet de retourner facilement le reste d’une division euclidienne.</p>
+  </li>
+</ul>
+
+<p>L’<strong>algorithme d’Euclide étendu</strong> permet d’obtenir les coefficients de Bézout.</p>
+
+<ul>
+  <li>Soit a un entier, on dit que x entier est un <strong>inverse de a modulo n</strong> si <em>ax = 1 mod n</em>. a admet un inverse modulo n si et seulement si pgcd(a,n)=1. De plus si au + nv = 1 (coefficient de bézout) alors u est un inverse de a modulo n.</li>
+</ul>
+
+<p><strong>Générer une paire de clés :</strong></p>
+
+<ul>
+  <li>
+    <p>Choix de deux nombres premiers distincts p et q.</p>
+  </li>
+  <li>
+    <p>Calcul de n = p x q.</p>
+  </li>
+  <li>
+    <p>Calcul de <strong>l’indicatrice d’Euler</strong> Phi(n) = (p-1) x (q-1). <em>Pour calculer cette fonction il faut connaître p et q, d’où son caractère privé</em>.</p>
+  </li>
+  <li>
+    <p>Choix d’un exposant e tq pgcd(e,Phi(n))=1.</p>
+  </li>
+  <li>
+    <p>Calcul de l’inverse d de e mod Phi(n) par l’<strong>algorithme d’Euclide</strong> étendu : d x e = 1 mod Phi(n)</p>
+  </li>
+  <li>
+    <p>La clé publique est constituée de <strong>n et e</strong> et la clé privée de <strong>d</strong>.</p>
+  </li>
+</ul>
+
+<p><strong>Chiffrement du message :</strong></p>
+
+<ul>
+  <li>
+    <p>II faut décomposer le message secret en paquets de taille <strong>m &lt;n</strong>.</p>
+  </li>
+  <li>
+    <p>Calcul du message chiffré <strong>x =  m^e mod n</strong>. <em>n et e sont connus car on dispose de la clé publique</em>.</p>
+  </li>
+</ul>
+
+<p><strong>Déchiffrement du message :</strong></p>
+
+<ul>
+  <li>
+    <p>le message x est décrypté à l’aide de sa clé privée d : m = x^d mod n</p>
+  </li>
+  <li>
+    <p>En effet le <strong>petit théorème de Fermat amélioré</strong> permet d’écrire : Soit d l’inverse de e modulo Phi(n) avec n = pq. Si <strong>x = m^e mod n</strong> alors <strong>m=x^d mod n</strong>.</p>
+  </li>
+</ul>
+
+<p><strong>Preuve :</strong></p>
+
+<ul>
+  <li>
+    <p>d est l’inverse de e mod Phi(n) <em>donc * d.e = 1 mod Phi(n) *donc</em> il existe k entier tq d.e = 1+ k Phi(n)</p>
+  </li>
+  <li>
+    <p>Le petit th de Fermat amélioré donne : si pgcd(m,n)=1 alors m^Phi(n)=m^(p-1)(q-1)= 1 mod n.</p>
+  </li>
+  <li>
+    <p>Si pgcd(m,n) = 1 alors modulo n :
+ <strong>x</strong> = (m^e)^d = m^(1+k Phi(n)) = m x m^(k Phi(n)) = m x (m^Phi(n))^k = (Fermat) m x 1^k <strong>= m (mod n)^</strong>.</p>
+  </li>
+  <li>
+    <p>Si pgcd(m,n) != 1, alors pgcd(m,n)=p et pgcd(m,q)=1 ou inversement.</p>
+  </li>
+</ul>
+
+<p>Si p divise m, alors modulo p : m = 0, <strong>x</strong> = m^(ed) = 0 mod p, donc m^(ed) <strong>= m mod p</strong>.
+Et modulo q : <strong>x</strong> = m^(ed) = m x (m^Phi(n))^k = m x (m^(q-1))^k (p-1) <strong>=(Fermat) m mod q</strong>.</p>
+
+<p>pgcd(p,q)=1 permet de conclure <strong>x=m^ed=m (mod n)</strong>.</p>
+
+<p><strong>Conclusion : on a donc des algorithmes permettant de générer une paire de clés, et on peut chiffrer un message avec une clé, déchiffrable uniquement avec l’autre clé.</strong></p>
+
+<p>Pour plus d’informations voir cette vidéo sur le <a href="https://www.youtube.com/watch?v=Xlal_d4zyfo">chiffrement RSA</a>.</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d&#39;informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d&#39;informatique</li><li><a class="u-email" href="mailto:francois.brucker@centrale-marseille.fr">francois.brucker@centrale-marseille.fr</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li><li><a href="https://www.twitter.com/p_____p___"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">p_____p___</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.
+A destination des 1A (tronc commun), des 2A (de l&#39;approfondissement MIE) et des 3A (de l&#39;option digital·e)</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
