@@ -151,7 +151,7 @@ Si la branche sur laquelle on travaille existe aussi sur le serveur et que les d
 
 **Description :** on souhaite fusionner une branche dans sa branche d'origine (par exemple *master*), c'est-à-dire appliquer toutes les modifications portées par une branche dans sa branche d'origine.
 
-Nous proposons ici une méthode consistant à utiliser `git rebase` conjointement à `git merge` pour obtenir un historique plus "propre" (i.e. plus linéaire). Pour plus détails, voir le tuto sur [git rebase]({% link cours/dfs/git_rebase.md %}).
+Nous proposons ici une méthode consistant à utiliser `git rebase` conjointement à `git merge` pour obtenir un historique plus "propre" (i.e. plus linéaire). Pour plus détails, voir le tuto sur git rebase.
 
 **Commandes :**
 
@@ -190,7 +190,7 @@ Commande | Effet | Option(s) |
 `git merge <branche>` | applique les modifications portées par "<branche>" à la branche mère dont elle est issue | `--no-ff` (*no fast forward*) permer de créer un commit de fusion dans tous les cas, même cas quand la fusion pourrait être résolue trivialement (*fast-forward*). Utile pour conserver l'historique des branches lors d'un *merge* suivant un *rebase* |
 `git pull` | télécharge en local les modifications présentes sur le serveur (*a priori* ajoutées par d'autres développeurs) | `--rebase=preverse` permet de conserver les commits de fusion, utile pour garder une trace de l'existence de certaines branches |
 `git push` | pousse sur le serveur les modifications locales |  |
-`git rebase <ici> <branche>` | découpe la branche `branche` à sa base et la recolle `ici`. `ici` peut-être le nom d'une branche, auquel cas la branche `branche` est recollée à la fin de la branche `ici`, ou un numéro de commtit. Voir le tuto complet sur rebase [ici]({% link cours/dfs/git_rebase.md %}). | X |
+`git rebase <ici> <branche>` | découpe la branche `branche` à sa base et la recolle `ici`. `ici` peut-être le nom d'une branche, auquel cas la branche `branche` est recollée à la fin de la branche `ici`, ou un numéro de commtit. Voir le tuto complet sur rebase. | X |
 `git stash` | permet de mettre temporairement de côté les modifications en attente de *commit* afin de revenir au dernier *commit*. Les modifications ainsi mises de côté peuvent ensuite être réappliqués (éventuellement après que d'autres commits ont été effectués) ou supprimées. | `git stash list` pour lister les éléments mis de côté <br> `git stash apply` pour faire revenir les modifcations dans l'espace de travail <br> `git stash clear` pour abandonner complètemet les modifications mises de côté |
 `git status` | affiche les fichiers prêts à être *commit* et ceux qui ne sont pas encore dans le *stage* |  |
 
