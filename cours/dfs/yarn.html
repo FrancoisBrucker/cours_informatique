@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Imports de Modules | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Imports de Modules" />
+<meta name="author" content="Tina ALAEI" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)" />
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)" />
+<link rel="canonical" href="/cours_informatique/cours/dfs/yarn.html" />
+<meta property="og:url" content="/cours_informatique/cours/dfs/yarn.html" />
+<meta property="og:site_name" content="cours d’informatique" />
+<script type="application/ld+json">
+{"description":"Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)","@type":"WebPage","headline":"Imports de Modules","url":"/cours_informatique/cours/dfs/yarn.html","author":{"@type":"Person","name":"Tina ALAEI"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        processEscapes: true
+      }
+    });
+  </script>
+  
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+</head>
+
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Imports de Modules</h1>
+  </header>
+
+  <div class="post-content">
+    <p>En pratique, un développeur ne code pas lui-même toutes ses pages à partir de rien. Souvent, il utilise des 
+“paquets”, ou modules, qui sont des codes déjà existants qui permettent d’implémenter différentes fonctionnalités sans 
+avoir à les coder de zéro.</p>
+
+<p>Nous allons ici illustrer notre cours à l’aide de <a href="https://purecss.io/">purecss</a>, qui est un template très simpliste 
+offrant des styles prédéfinis en css.</p>
+
+<h2 id="télécharger-les-fichiers">Télécharger les fichiers</h2>
+
+<p>Il est parfois possible, depuis la documentation des modules, de télécharger directement les fichiers sources 
+nécessaires. Cependant, c’est assez peu recommendé dans le cadre d’un projet à plusieurs. En effet, ce cas 
+d’utilisation force le partage de tous les fichiers du module, ce qui est assez lourd au final.</p>
+
+<h2 id="cdn">CDN</h2>
+
+<p>Il est aussi possible d’inclure les fichiers à l’aide d’un <strong>CDN (content delivery network)</strong>, ou réseau de 
+diffusion de 
+contenu en français. Un CDN est un réseau de serveurs qui coopèrent afin de mettre du contenu à disposition sur 
+l’internet mondial.</p>
+
+<p>L’ajout par CDN se présente toujours par une balise <code class="language-plaintext highlighter-rouge">&lt;link /&gt;</code> à ajouter dans la balise <code class="language-plaintext highlighter-rouge">&lt;head&gt;</code> quand il s’agit de 
+css, et par une balise <code class="language-plaintext highlighter-rouge">&lt;script&gt;</code> dans le cas de javascript. Les balises en questions sont disponibles sur la 
+documentation des modules.</p>
+
+<p>En l’occurence, ici, pour Purecss, la balise à ajouter dans le <code class="language-plaintext highlighter-rouge">&lt;head&gt;</code> est :</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"https://unpkg.com/purecss@2.0.3/build/pure-min.css"</span> <span class="na">integrity=</span><span class="s">"sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ"</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+
+<p>Cette ligne de code va importer tout le style compris dans Purecss, ce qui nous permettra d’utiliser les élements 
+compris dans le template.</p>
+
+<h2 id="npmyarn">NPM/YARN</h2>
+
+<p>Npm et Yarn sont tous deux des gestionnaires de paquets de Node.js. Ils permettent à l’utilisateur d’installer 
+facilement des packets sur des projets. Là où cette solution diffère du simple téléchargement des fichiers en local, 
+c’est que ces gestionnaires de paquets gèrent eux même les dépendances utiles au projet, mais aussi qu’il est 
+possible de réinstaller tous les packets à partir d’un seul fichier. Il n’y aura donc pas à téléverser chaque module 
+téléchargé à chaque fois.</p>
+
+<h3 id="installation">Installation</h3>
+
+<p>Avant toute chose, il faut <a href="https://nodejs.org/en/download/package-manager/"><strong>installer Node.js</strong></a>. Il est plus propre 
+d’installer ça vient un 
+gestionnaires de packets.</p>
+
+<ul>
+  <li>Windows : <code class="language-plaintext highlighter-rouge">scoop install nodejs</code></li>
+  <li>Mac : <code class="language-plaintext highlighter-rouge">brew install nodejs</code></li>
+</ul>
+
+<p><em>Verifiez toutefois que Node.js ne soit pas déjà installé sur votre machine avec</em> <code class="language-plaintext highlighter-rouge">node -v</code>.</p>
+
+<p>En théorie, <strong>npm est installé avec Node.js</strong> donc vous l’aurez déjà sur votre machine.</p>
+
+<p><em>Vous pouvez là encore vérifier via la commande</em> <code class="language-plaintext highlighter-rouge">npm -v</code>.</p>
+
+<p>Une alternative, parfois plus stable, de npm existe : <a href="https://classic.yarnpkg.com/en/docs/install"><strong>yarn</strong></a>.</p>
+
+<ul>
+  <li>Windows : <code class="language-plaintext highlighter-rouge">scoop install yarn</code></li>
+  <li>Mac : <code class="language-plaintext highlighter-rouge">brew install yarn</code></li>
+</ul>
+
+<h3 id="utilité">Utilité</h3>
+
+<p>Yarn ou Npm vont générer un fichier <code class="language-plaintext highlighter-rouge">package.json</code>. Ce fichier peut être vu comme un répertoire des informations 
+relatives à notre projet, et en particulier la liste de packages présents/utiles au projet.</p>
+
+<h3 id="initialisation">Initialisation</h3>
+
+<blockquote>
+  <p><strong><em>Remarque :</em></strong>  Nous illustrons ici l’initialisation avec yarn, mais je préciserais à chaque fois l’équivalent npm 
+des commandes.</p>
+</blockquote>
+
+<p>On initialise le projet via la commande <code class="language-plaintext highlighter-rouge">yarn init</code> (ou <code class="language-plaintext highlighter-rouge">npm init</code> si vous utilisez npm) que l’on exécute - en 
+général - dans le dossier racine du projet. Yarn vous posera 
+plusieurs questions - relatives aux métadonnées du projet, i.e. nom du projet, description … - à 
+l’issue desquelles il créera un fichier <code class="language-plaintext highlighter-rouge">package.json</code>.</p>
+
+<h3 id="ajouter-des-modules">Ajouter des modules</h3>
+
+<p>Pour ajouter des packets au projet, il faut executer la commande <code class="language-plaintext highlighter-rouge">yarn add &lt;nom du packet&gt;</code> (ou <code class="language-plaintext highlighter-rouge">npm install &lt;nom 
+du packet&gt;</code>). Cela va installer le nouveau packet dans un dossier <code class="language-plaintext highlighter-rouge">node_module</code>, et ajouter le nom du packet 
+ainsi que sa version dans une section <code class="language-plaintext highlighter-rouge">dependencies</code> dans le <code class="language-plaintext highlighter-rouge">package.json</code>.</p>
+
+<blockquote>
+  <p><strong><em>Remarque :</em></strong>  Il y a ici cependant une petite subtilité. En effet, il est aussi possible d’installer un package
+ en <code class="language-plaintext highlighter-rouge">devDependencies</code>.
+ On peut installer ainsi les modules qui doivent toujours être inclus avec le projet pour son
+  bon fonctionnement avec les <code class="language-plaintext highlighter-rouge">dependencies</code>, et ceux qui ne sont utiles que pendant le développement avec les
+  <code class="language-plaintext highlighter-rouge">devDependencies</code>.</p>
+</blockquote>
+
+<p>On peut ainsi ajouter purecss à notre projet via la commande :</p>
+<ul>
+  <li>Si on veut l’installer avec les <code class="language-plaintext highlighter-rouge">dependencies</code> :
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">yarn add purecss
+</span></code></pre></div>    </div>
+  </li>
+  <li>Si on veut l’installer avec les <code class="language-plaintext highlighter-rouge">devDependencies</code> :
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">yarn add --dev purecss
+</span></code></pre></div>    </div>
+    <p><em>ou</em> <code class="language-plaintext highlighter-rouge">npm install purecss --save-dev</code> <em>pour la version npm.</em></p>
+  </li>
+</ul>
+
+<h3 id="génerer-linstallation-des-modules">Génerer l’installation des modules</h3>
+
+<p>Lorsque l’on execute les commandes ci-dessus, le gestionnaire de packet que l’on utilise installe dans la version du 
+projet en local. Cependant, lorsque l’on développe à plusieurs, on ne transmettra jamais le dossier <code class="language-plaintext highlighter-rouge">node_module</code>. 
+On ne transmettra que le fichier <code class="language-plaintext highlighter-rouge">package.json</code> grace auquel nous allons pouvoir re-génerer en local le dossier 
+<code class="language-plaintext highlighter-rouge">node_module</code>.</p>
+
+<p>Ainsi, pour réinstaller tous les modules, on utilise la commande :</p>
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">yarn
+</span></code></pre></div></div>
+<p><em>Il est aussi possible d’utiliser</em> <code class="language-plaintext highlighter-rouge">yarn install</code>. <em>Pour npm, on utilisera</em> <code class="language-plaintext highlighter-rouge">npm install</code>.</p>
+
+<p>Si l’on souhaite ignorer les dépendances de développement dans l’installation, notamment dans le cas où l’on veut 
+générer les dépendances pour la version en production, il suffit d’ajouter <code class="language-plaintext highlighter-rouge">--production</code> à la commande ci-dessus.</p>
+
+<blockquote>
+  <p><strong><em>Remarque :</em></strong>  Selon le gestionnaire utilisé, nous avons un fichier <code class="language-plaintext highlighter-rouge">yarn.lock</code> ou <code class="language-plaintext highlighter-rouge">package-lock.json</code>. Ce 
+fichier décrit le contenu véritable du <code class="language-plaintext highlighter-rouge">node_module</code> : l’integralités des packages installés, leur version, et 
+les dépendances qui viennent avec. Ce fichier ne doit pas être transféré.</p>
+</blockquote>
+
+<h3 id="comment-utiliser-les-modules-installés">Comment utiliser les modules installés</h3>
+
+<p>En général, il faudra “build” le package via npm build.</p>
+
+<p>Cependant, dans le cas ici présent, avec purecss, les fichier sont déjà buildés, et donc le template est utilisable 
+dès son installation. Il suffit d’ajouter le fichier de la même façon qu’on ajoute un css local.</p>
+
+<blockquote>
+  <p><strong><em>Remarque :</em></strong>  En pratique, on ne fera jamais ça. En effet, rares sont les bibliothèques déjà compilées, mais 
+c’est aussi pas commun de faire référence au dossier <code class="language-plaintext highlighter-rouge">node_module</code> dans le code. En général on va passer par 
+<strong>webpack</strong>, qui va nous permettre de packager tous les modules que l’on utilise dans des fichiers js 
+compréhensibles et optimisés pour le navigateur.</p>
+</blockquote>
+
+<h3 id="variables-du-packagejson">Variables du package.json</h3>
+
+<p>Voici un exemple de ce à quoi votre fichier <code class="language-plaintext highlighter-rouge">package.json</code> peut ressembler à présent :</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"license"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MIT"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"purecss"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^2.0.3"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Les variables <code class="language-plaintext highlighter-rouge">name</code>, <code class="language-plaintext highlighter-rouge">version</code>, <code class="language-plaintext highlighter-rouge">license</code> sont des métadonnées liés au projet. On peut aussi parfois voir des 
+métadonnées sous des variables telles que <code class="language-plaintext highlighter-rouge">description</code>, <code class="language-plaintext highlighter-rouge">author</code>, <code class="language-plaintext highlighter-rouge">repository</code> (si le projet a un git) …</p>
+
+<p>Les variables <code class="language-plaintext highlighter-rouge">dependencies</code> et <code class="language-plaintext highlighter-rouge">devDependencies</code> listent les packets que l’on a voulu installer via npm.</p>
+
+<p>D’autres variables peuvent néanmoins être très utilisées lorsque l’on parle d’un projet.</p>
+
+<h4 id="scripts">scripts</h4>
+<p>La variable script au sein du package.json permet de faire des “raccourcis” pour des commandes que l’on va souvent 
+utiliser.</p>
+
+<p>Synthaxe de la variable <code class="language-plaintext highlighter-rouge">scripts</code> :</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"build"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;commande à exécuter&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"watch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;commande à exécuter&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+<p><em>Nous illustrons ici avec “build” et “watch” mises comme commandes raccourcies mais leurs noms et nombre sont le choix du
+ développeur qui les met en place.</em></p>
+
+<p>Une fois que nous avons mis en place ces “raccourcis”, il suffit de lancer la commande <code class="language-plaintext highlighter-rouge">npm run &lt;nom du raccourci&gt;</code>
+ afin d’executer la commande à laquelle le raccourci correspond.</p>
+
+<h4 id="config---ou-autres--">config - ou autres -</h4>
+<p>Cette variable n’est pas “officielle”. Elle est seulement créé selon le bon vouloir de la personne qui veut 
+l’utiliser. Cependant, quelle que soit son nom, il est parfois utile de créer des variables pour ne pas avoir à 
+réecrire pusieurs fois la même chose.</p>
+
+<p>Cet article explique assez bien l’utilité que cela peut avoir : <a href="https://brianchildress.co/variables-in-package-json/">Variables in package.json</a></p>
+
+<h2 id="references">References</h2>
+
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d&#39;informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d&#39;informatique</li><li><a class="u-email" href="mailto:francois.brucker@centrale-marseille.fr">francois.brucker@centrale-marseille.fr</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li><li><a href="https://www.twitter.com/p_____p___"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">p_____p___</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.
+A destination des 1A (tronc commun), des 2A (de l&#39;approfondissement MIE) et des 3A (de l&#39;option digital·e)</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
