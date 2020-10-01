@@ -4,8 +4,8 @@ title: "Packaging"
 category: cours
 tags: packaging web front
 authors:
-	- "Adèle Bourgeix"
-	- "Maxime Vivier"
+  - "Adèle Bourgeix"
+  - "Maxime Vivier"
 ---
 ## Problèmes actuels:
 

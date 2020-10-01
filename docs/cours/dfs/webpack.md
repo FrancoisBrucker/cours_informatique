@@ -4,8 +4,8 @@ title: "Webpack"
 category: cours
 tags: packaging webpack front
 authors:
-	- "Adèle Bourgeix"
-	- "Maxime Vivier"
+  - "Adèle Bourgeix"
+  - "Maxime Vivier"
 ---
 # Pourquoi Webpack ?
 
