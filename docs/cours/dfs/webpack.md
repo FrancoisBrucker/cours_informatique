@@ -5,11 +5,11 @@ category: cours
 tags: packaging webpack front
 author: Adèle Bourgeix & Maxime Vivier
 ---
-## Pourquoi Webpack ?
+# Pourquoi Webpack ?
 
 Webpack permet à la fois : 
-+ d'écrire et charger des modules sous n'importe quel format dans le navigateur 
-+ d'optimiser l'utilisation des ressources et assets (css, images...)
++ d'écrire et charger des modules sous n'importe quel format dans le navigateur. 
++ d'optimiser l'utilisation des ressources et assets (css, images...). Le "Lazy Loading" est ce qui permet d'optimiser la navigation dans une application en ne chargeant que ce que l'utilisateur va voir. Certains blocks ne seront même peut-être pas chargés, ce qui joue énormément sur les performances.
 
 # Comment ça marche ? 
 
