@@ -147,6 +147,32 @@ git push
 
 Si la branche sur laquelle on travaille existe aussi sur le serveur et que les deux branches sont liées, tout devrait bien se passer. Sinon, c'est qu'on a mal fait [ça](#pousser-une-branche-nouvelle-locale-sur-le-serveur-distant).
 
+### Fusionner une branche
+
+**Description :** on souhaite fusionner une branche dans sa branche d'origine (par exemple *master*), c'est-à-dire appliquer toutes les modifications portées par une branche dans sa branche d'origine.
+
+Nous proposons ici une méthode consistant à utiliser `git rebase` conjointement à `git merge` pour obtenir un historique plus "propre" (i.e. plus linéaire). Pour plus détails, voir le tuto sur [git rebase]({% link cours/dfs/git_rebase.md %}).
+
+**Commandes :**
+
+Pour ne garder aucune trace de la branche (et obtenir ainsi un historique complètement linéaire, plat) :
+
+~~~ shell
+git rebase master branche
+git checkout master
+git merge branche
+git branch -d branche
+~~~
+
+Pour conserver une trace de la branche (par exemple parce qu'elle est significante) mais conserver une certaines linéarité (dans l'enchaînement des branches notamment) :
+
+~~~ shell
+git rebase master branche
+git checkout master
+git merge branche --no-ff
+git branch -d branche
+~~~
+
 ## Cheatsheet
 
 Par ordre alphabétique ;)
