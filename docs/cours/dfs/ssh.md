@@ -3,6 +3,10 @@ layout: page
 title:  "SSH"
 category: cours
 tags: combat web
+authors: 
+  - "Herbelleau Romain"
+  - "Laurent Léo"
+  - "Dégeorges Laurie"
 ---
 
 
@@ -37,13 +41,15 @@ Pour plein d'info et d'explication sur le chiffrement des clés voir [ici]({% li
 accéder au serveur de Centrale :  # pour retrouver ses données où que l'on soit 
   $ ssh -A identifiant@sas1.ec-m.fr
 
-créer sa clé :
+# ne pas créer de clé si on en a déjà une !
+créer sa clé : 
   $ cd .ssh  # facultatif mais les clés seront plus en sécurité dans un dossier protégé 
   $ ssh-keygen
 
 ajouter la clé à son porte clé :
   $ ssh-add chemin/nom_de_la_clé
 ~~~
+
 ### Pour créer sa paire de clés
 #### Où ranger sa clé ?
 
@@ -85,7 +91,7 @@ Et faire oublier toutes les clés connues de son agent avec :
 
 ## A chaque nouvelle session
 
-A chaque fois que vous fermez votre session utilisateur 
+À chaque fois que vous fermez votre session utilisateur 
 (donc notamment lorsque vous éteignez votre ordinateur), 
 votre agent ssh perd les clés publiques qu'il possédait. 
 En démarrant une nouvelle session et en affichant la liste des identités 

@@ -3,6 +3,10 @@ layout: page
 title:  "Chiffrement RSA"
 category: cours
 tags: combat web
+authors: 
+  - "Herbelleau Romain"
+  - "Laurent Léo"
+  - "Dégeorges Laurie"
 ---
 
 # Le chiffrement RSA
@@ -74,4 +78,4 @@ pgcd(p,q)=1 permet de conclure **x=m^ed=m (mod n)**.
 
 **Conclusion : on a donc des algorithmes permettant de générer une paire de clés, et on peut chiffrer un message avec une clé, déchiffrable uniquement avec l’autre clé.**
 
-Pour plus d'informations voir : [chiffrement RSA](https://www.youtube.com/watch?v=Xlal_d4zyfo)
+Pour plus d'informations voir cette vidéo sur le [chiffrement RSA](https://www.youtube.com/watch?v=Xlal_d4zyfo).

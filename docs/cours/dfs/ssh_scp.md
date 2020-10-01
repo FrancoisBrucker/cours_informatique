@@ -3,6 +3,10 @@ layout: page
 title:  "Copie sécurisée"
 category: cours
 tags: combat web
+authors: 
+  - "Herbelleau Romain"
+  - "Laurent Léo"
+  - "Dégeorges Laurie"
 ---
 
 # Copie sécurisée via le protocole SSH 
