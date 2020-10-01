@@ -64,7 +64,7 @@ _Verifiez toutefois que Node.js ne soit pas déjà installé sur votre machine a
 
 En théorie, **npm est installé avec Node.js** donc vous l'aurez déjà sur votre machine.
 
-_Vous pouvez là encore verifier via la commande_ ``npm -v``.
+_Vous pouvez là encore vérifier via la commande_ ``npm -v``.
 
 
 Une alternative, parfois plus stable, de npm existe : [**yarn**](https://classic.yarnpkg.com/en/docs/install). 
@@ -74,7 +74,7 @@ Une alternative, parfois plus stable, de npm existe : [**yarn**](https://classic
 
 ### Utilité
 
-Yarn ou Npm vont générer un fichier ``package.json``. Ce fichier peut être vu comme un répertoire des information 
+Yarn ou Npm vont générer un fichier ``package.json``. Ce fichier peut être vu comme un répertoire des informations 
 relatives à notre projet, et en particulier la liste de packages présents/utiles au projet.
 
 
@@ -83,12 +83,10 @@ relatives à notre projet, et en particulier la liste de packages présents/util
 > **_Remarque :_**  Nous illustrons ici l'initialisation avec yarn, mais je préciserais à chaque fois l'équivalent npm 
 des commandes.
 
-On initialise le projet via la commande ``yarn init`` (ou ``npm init`` si vous utilisez npm) que l'on execute - en 
-général - 
-dans le
- dossier racine du projet. Yarn vous posera 
+On initialise le projet via la commande ``yarn init`` (ou ``npm init`` si vous utilisez npm) que l'on exécute - en 
+général - dans le dossier racine du projet. Yarn vous posera 
 plusieurs questions - relatives aux métadonnées du projet, i.e. nom du projet, description ... - à 
-l'issues desquelles il créera un fichier ``package.json``.
+l'issue desquelles il créera un fichier ``package.json``.
 
 ### Ajouter des modules
 
