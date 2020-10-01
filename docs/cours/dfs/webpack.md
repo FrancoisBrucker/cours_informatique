@@ -116,7 +116,7 @@ D'autres paramètres sont configurables comme Plugins, Mode ou Browser Compatibi
 
 ##Comment React l'utilise
 Savoir comment React utilise webpack pour contruire la page est un avantage pour comprendre webpack lui-même.
-Ce tuto vous mène à travers la construction (ultra simplifié certes) d'une application React sans utiliser le create-react-app CLI qui fait tout le travail en background.
+Ce [tuto](https://freecodecamp.org/news/an-intro-to-webpack-what-it-is-and-how-to-use-it-8304ecdc3c60) vous mène à travers la construction (ultra simplifié certes) d'une application React sans utiliser le create-react-app CLI qui fait tout le travail en background.
 La puissance de webpack quand il créé son graphe de dépendances, permet de créé des pages web avec un seul fichier html. On peut utiliser une architecture en composants et écrire notre html directement dans du JS pour l'injecter à l'endroit voulu dans la page. En faisant ainsi on peut très facilement créer une pages à plusieurs onglets en ayant qu'un seul fichier html. Cette façon de procéder est à la base de nombreux framework fronts, notamment les plus connus React Angular et Vue. Et l'avantage principal est la rapidité des applications produites ainsi, car la page n'est pas rechargé à chaque fois qu'on veut changer d'onglet.
 
 Ainsi à la fin de ce tutoriel on obtient un seul fichier html dans lequel on a une balise `<div>` dans le corps du fichier, et cette balise est le point d'injection du reste de l'application qui est codé dans des fichiers JS.
