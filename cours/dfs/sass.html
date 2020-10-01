@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Sass | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Sass" />
+<meta name="author" content="Adèle Bourgeix" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)" />
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)" />
+<link rel="canonical" href="/cours_informatique/cours/dfs/sass.html" />
+<meta property="og:url" content="/cours_informatique/cours/dfs/sass.html" />
+<meta property="og:site_name" content="cours d’informatique" />
+<script type="application/ld+json">
+{"description":"Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)","@type":"WebPage","headline":"Sass","url":"/cours_informatique/cours/dfs/sass.html","author":{"@type":"Person","name":"Adèle Bourgeix"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        processEscapes: true
+      }
+    });
+  </script>
+  
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+</head>
+
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Sass</h1>
+  </header>
+
+  <div class="post-content">
+    <h1 id="sass-cest-quoi-">Sass, c’est quoi ?</h1>
+
+<p>Au fil du temps, les développeurs se sont rendus compte de la difficulté d’écrire des feuilles de style (.css) efficientes et optimisées: ces fichiers deviennent de plus en plus longs, complexes et difficiles de maintenir. Il est donc devenu évident qu’une solution était nécessaire.</p>
+
+<p>Sass est un préprocesseur CSS, une couche entre les feuilles de style que l’on écrit et les fichiers .css qui sont envoyés  au navigateur. Sass (abréviation de Syntactically Awesome Stylesheets) comble les lacunes de CSS en développant un langage permettant d’écrire du code DRY qui sera plus rapide, plus efficace et plus facile à maintenir.</p>
+
+<blockquote>
+  <p><strong>Nota Bene</strong> : c’est quoi le code DRY ?</p>
+
+  <p>DRY pour Don’t Repeat Yourself c’est une “bonne pratique” de développement qui consiste à éviter la duplication des lignes de code pour permettre une optimisation de celui-ci.</p>
+</blockquote>
+
+<h1 id="comment-ça-marche">Comment ça marche?</h1>
+
+<ul>
+  <li>Sass permet la création de variables globales.</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$font-stack:    Helvetica, sans-serif;
+$primary-color: #333;
+
+body {
+  font: 100% $font-stack;
+  color: $primary-color;
+}
+</code></pre></div></div>
+
+<p>Ici, la création des variables $font-stack et $primary-color permettent la réutilisation de la même police et de la même couleur à plusieurs endroits de la feuille de style. Si besoin est, il n’est pas nécessaire de devoir changer la couleur ou la police à chaque occurrence.</p>
+
+<ul>
+  <li>Sass permet aussi l’encapsulation, impossible en .css. En effet, on peut se rendre compte rapidement de l’existence de cette encapsulation dans un fichier .html, il serait donc plus logique de réutiliser cette structure dans un fichier de style.</li>
+</ul>
+
+<p>fichier <strong>styles.scss</strong> de sass:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nav {
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li { display: inline-block; }
+
+  a {
+    display: block;
+    padding: 6px 12px;
+    text-decoration: none;
+  }
+}
+</code></pre></div></div>
+
+<p>fichier <strong>styles.css</strong> généré après compilation:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+nav li {
+  display: inline-block;
+}
+nav a {
+  display: block;
+  padding: 6px 12px;
+  text-decoration: none;
+}
+</code></pre></div></div>
+
+<ul>
+  <li>Sass permet aussi de découper les feuilles de style en plusieurs fichiers et permer de charger différents fichiers Sass comme des modules. On peut donc accéder à la fois aux variables et fonctions d’autres feuilles de style.</li>
+</ul>
+
+<p>fichier <strong>base.scss</strong> de Sass qui pose des règles de base pour l’ensemble du corps de texte:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$font-stack:    Helvetica, sans-serif;
+$primary-color: #333;
+
+body {
+  font: 100% $font-stack;
+  color: $primary-color;
+}
+</code></pre></div></div>
+
+<p>fichier <strong>styles.scss</strong> de sass qui réutilise le style imposé par le fichier base.scss:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@use 'base';
+
+.inverse {
+  background-color: base.$primary-color;
+  color: white;
+}
+</code></pre></div></div>
+
+<p>génèrent le fichier <strong>styles.css</strong> suivant:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>body {
+  font: 100% Helvetica, sans-serif;
+  color: #333;
+}
+
+.inverse {
+  background-color: #333;
+  color: white;
+}
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>Nota Bene</strong>: En programmation orientée objet, l’héritage est le principe selon lequel les classes filles héritent des propriété des classes mères.</p>
+</blockquote>
+
+<ul>
+  <li>Sass permet aussi de réutiliser le concept d’héritage : des propriétés peuvent se partager d’un selecteur à l’autre.</li>
+</ul>
+
+<p>Par exemple le fichier <strong>styles.scss</strong> suivant :</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%message-shared {
+  border: 1px solid #ccc;
+  padding: 10px;
+  color: #333;
+}
+
+%equal-heights {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.message {
+  @extend %message-shared;
+}
+
+.success {
+  @extend %message-shared;
+  border-color: green;
+}
+
+.error {
+  @extend %message-shared;
+  border-color: red;
+}
+
+.warning {
+  @extend %message-shared;
+  border-color: yellow;
+}
+
+</code></pre></div></div>
+
+<p>génère le fichier <strong>styles.css</strong> suivant après compilation:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.message, .success, .error, .warning {
+  border: 1px solid #ccc;
+  padding: 10px;
+  color: #333;
+}
+
+.success {
+  border-color: green;
+}
+
+.error {
+  border-color: red;
+}
+
+.warning {
+  border-color: yellow;
+}
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>Nota Bene:</strong> On peut remarquer que la classe equal-heights ne sera générée car elle n’est jamais “étendue”.</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>Nota Bene</strong>: Les classes success, error et warning héritent donc toutes les trois des propriétés de la classe message, qui a son tour hérite de la classe message-shared.</p>
+</blockquote>
+
+<ul>
+  <li>Finalement, Sass permet l’introduction d’opérateurs mathématiques comme + - /.</li>
+</ul>
+
+<p>Par exemple, ce fichier <strong>styles.scss</strong>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.container {
+  width: 100%;
+}
+
+article[role="main"] {
+  float: left;
+  width: 600px / 960px * 100%;
+}
+
+aside[role="complementary"] {
+  float: right;
+  width: 300px / 960px * 100%;
+}
+</code></pre></div></div>
+
+<p>permet de génerer le fichier <strong>styles.css</strong> suivant :</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.container {
+  width: 100%;
+}
+
+article[role="main"] {
+  float: left;
+  width: 62.5%;
+}
+
+aside[role="complementary"] {
+  float: right;
+  width: 31.25%;
+}
+</code></pre></div></div>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d&#39;informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d&#39;informatique</li><li><a class="u-email" href="mailto:francois.brucker@centrale-marseille.fr">francois.brucker@centrale-marseille.fr</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li><li><a href="https://www.twitter.com/p_____p___"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">p_____p___</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.
+A destination des 1A (tronc commun), des 2A (de l&#39;approfondissement MIE) et des 3A (de l&#39;option digital·e)</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
