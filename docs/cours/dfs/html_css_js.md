@@ -84,11 +84,11 @@ Plusieurs éléments peuvent partager une même classe, mais un id est unique po
 On les utilise principalement pour structurer la page. 
 
 ## CSS
-CSS est un langage qui permet de gérer la mise en forme de votre site. c'est à dire qu'avec le CSS vous llez pouvoir mettre de la couleur,changer les styles d'écriture, la mise en page...
+CSS est un langage qui permet de gérer la mise en forme de votre site. c'est à dire qu'avec le CSS vous allez pouvoir mettre de la couleur,changer les styles d'écriture, la mise en page...
 
 comment utilisé CSS?
 
-Une 1ère technique consiste à écrire directement dans le fichier HTML, au niveau de la `head` grâce à la balise `<style>`.
+Une 1ère technique consiste à écrire directement dans le fichier HTML, au niveau de `head` grâce à la balise `<style>`.
 
 ~~~html 
 <!doctype html>
@@ -137,11 +137,11 @@ Ce code est coposé de 3 élements :
 
 - une `valeur`(red) : ici c'est le nom de la couleur. Pour chaque propriété, une valeur doit être donnée.
 
-Il existe de nombreuse propriétés, vous pouvez les principales [ici](https://openclassrooms.com/fr/courses/1603881-apprenez-a-creer-votre-site-web-avec-html5-et-css3/1608902-memento-des-proprietes-css)
+Il existe de nombreuses propriétés, vous pouvez retrouver les principales [ici](https://openclassrooms.com/fr/courses/1603881-apprenez-a-creer-votre-site-web-avec-html5-et-css3/1608902-memento-des-proprietes-css)
 
-Il y a tout de même un problème. Comment faire si l'on veut avoir des formats différents pour plusieurs paragraphe ? en effet, tout les paragraphe ont la même balise :`p`
+Il y a tout de même un problème. Comment faire si l'on veut avoir des formats différents pour plusieurs paragraphes ? en effet, tous les paragraphes ont la même balise :`p`
 
-Pour resoudre ce problème, il existe deux solutions:
+Pour resoudre ce problème, il existe des solutions:
 - `les classes` : qui peuvent être utilisées en même temps par plusieurs balises
 - `les id`: qui doivent être uniques pour chaque élément.
 
