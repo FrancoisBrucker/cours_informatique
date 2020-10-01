@@ -3,7 +3,7 @@ layout: page
 title:  "HTML CSS JS"
 category: tutorial
 tags: web
-authors : Yi Mei JIANG, Théophile BONNEAU
+authors : "Yi Mei JIANG, Théophile BONNEAU"
 ---
 
 
@@ -479,7 +479,6 @@ Pour pouvoir l'utiliser il faut d'abord l'importer, ici on va passer pas un [CND
 
 <script>
     blue=false;
-    console.log($(".color"))
     $(".color").click(function (){
         if(red){
             blue=false;
