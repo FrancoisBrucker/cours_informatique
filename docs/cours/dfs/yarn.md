@@ -7,7 +7,7 @@ author: Tina ALAEI
 ---
 
 
-En pratique, un développeur ne code pas lui même toutes ses pages à partir de rien. Souvent, il utilise des 
+En pratique, un développeur ne code pas lui-même toutes ses pages à partir de rien. Souvent, il utilise des 
 "paquets", ou modules, qui sont des codes déjà existants qui permettent d'implémenter différentes fonctionnalités sans 
 avoir à les coder de zéro. 
 
@@ -43,7 +43,7 @@ compris dans le template.
 
 
 Npm et Yarn sont tous deux des gestionnaires de paquets de Node.js. Ils permettent à l'utilisateur d'installer 
-facilement des packets sur des projet. Là où cette solution diffère du simple téléchargement des fichiers en local, 
+facilement des packets sur des projets. Là où cette solution diffère du simple téléchargement des fichiers en local, 
 c'est que ces gestionnaires de paquets gèrent eux même les dépendances utiles au projet, mais aussi qu'il est 
 possible de réinstaller tous les packets à partir d'un seul fichier. Il n'y aura donc pas à téléverser chaque module 
 téléchargé à chaque fois.
