@@ -69,12 +69,12 @@ module.exports = {
 	};
 ~~~
 
-##### Entry point
+#### Entry point
 Un Entry Point indique avec quel module webpack doit commancer à construire son graphe de dépendance des modules. Il sélectionne uniquement ce dont il a besoin dans chaque module et librairie selon toutes ses dépendances. Dans le fichier de configuration de webpack on précise donc le chemin de ce fichier.
 
  On peut vouloir avoir plusieurs points d'entrée, par exemple quand vous faites deux applications dans le même projet (app visiteur lambda et app admin). Dans ce cas là deux Output seront contruites, mais l'avantage est qu'en fonction de l'ordre de chargement des fichiers, les librairies en commun ne seront chargées qu'une seule fois. Webpack optimise ceci.
 
-##### Output point
+#### Output point
 Le champ Output indique à webpack où mettre et comment nommer les bundles qu'il créé.
 En fait ainsi on peut set up plusieurs output.
 ~~~
@@ -90,8 +90,9 @@ module.exports = {
 };
 ~~~
 
-##### Loaders
+#### Loaders
 La configuration dans le code ci-dessus spécifie que pour chaque fichier ".txt" rencontré, le loader qui doit être utilisé est le "raw-loader".
+
 Comme indiqué dans la partie de l'empaquetage, les `import`/`export` sont les seules lignes de codes qui sont modifiées par Webpack pour produire un seul fichier recueillant tous les modules. Cepandant ces syntaxes ne sont pas supportées par tous les browsers donc Webpack nécessite l'utilisation d'un transpiler pour l'adapter à tous les types de browsers.
 
 C'est donc dans l'objet module que tu précises le loader pour l'importation de chaque type de fichier que tu utilises.
@@ -108,15 +109,16 @@ module.exports = {
 };
 ~~~
 
-##### Autres
+#### Autres
 Les 3 points précédants sont les points les plus importants à comprendre pour commencer la configaration de webpack.
 Et chacun de ces points a plus de spécifités que tu peux découvrir dans la documentation de webpack.
 
 D'autres paramètres sont configurables comme Plugins, Mode ou Browser Compatibility. La [documentation](https://webpack.js.org/concepts) sur ces concepts se suffit à elle-même.
 
-##Comment React l'utilise
+## Comment React l'utilise
 Savoir comment React utilise webpack pour contruire la page est un avantage pour comprendre webpack lui-même.
-Ce [tuto](https://freecodecamp.org/news/an-intro-to-webpack-what-it-is-and-how-to-use-it-8304ecdc3c60) vous mène à travers la construction (ultra simplifié certes) d'une application React sans utiliser le create-react-app CLI qui fait tout le travail en background.
+Ce [tuto](https://freecodecamp.org/news/an-intro-to-webpack-what-it-is-and-how-to-use-it-8304ecdc3c60) vous mène à travers la construction (ultra simplifié certes) d'une application React sans utiliser le create-react-app CLI qui fait tout le travail en background. Ce tuto est aggrémenté de nombreuses explications claires.
+
 La puissance de webpack quand il créé son graphe de dépendances, permet de créé des pages web avec un seul fichier html. On peut utiliser une architecture en composants et écrire notre html directement dans du JS pour l'injecter à l'endroit voulu dans la page. En faisant ainsi on peut très facilement créer une pages à plusieurs onglets en ayant qu'un seul fichier html. Cette façon de procéder est à la base de nombreux framework fronts, notamment les plus connus React Angular et Vue. Et l'avantage principal est la rapidité des applications produites ainsi, car la page n'est pas rechargé à chaque fois qu'on veut changer d'onglet.
 
 Ainsi à la fin de ce tutoriel on obtient un seul fichier html dans lequel on a une balise `<div>` dans le corps du fichier, et cette balise est le point d'injection du reste de l'application qui est codé dans des fichiers JS.
