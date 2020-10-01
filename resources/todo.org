@@ -12,6 +12,9 @@
 *** dfs
 **** DONE git revenir en arrière et faire sauter des commit (commer jardiner ses commits).
 **** TODO add all global settings for git
+**** TODO https://www.twilio.com/blog/sdkman-work-with-multiple-versions-java
+**** TODO https://dev.to/evantahler/testing-javascript-applications-with-selenium-async-await-and-jest-5515 or https://www.lambdatest.com/blog/jest-tutorial-for-selenium-javascript-testing-with-examples/
+**** TODO https://openbase.io/js/jest-environment-webdriver/documentation
 ** 2A
 *** MIE
 **** DONE remettre les tdd et le design pattern

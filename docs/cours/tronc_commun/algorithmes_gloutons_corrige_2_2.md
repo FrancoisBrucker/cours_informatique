@@ -7,7 +7,54 @@ author: "François Brucker"
 ---
 
 
-## exercice 5 : le problème du sac à dos
+## exercice 1 : le problème du voyageur de commerce
+
+
+### nombre de solutions
+
+$n!$
+
+
+### Algorithme glouton
+
+Il y a plusieurs possiblités, on en montre 2
+
+#### ajout brutal d'une ville
+
+  - étape $0$ on commence par choisir une ville $v_1$
+  - à l'étape $i>0$ on visite la ville la plus proche de $v_{i-1}$ que l'on a pas encore visité et on la nomme $v_i$
+  - au bout de $n$ étapes on a visité les $n$ villes.
+
+#### ajout d'une ville dans un cycle
+
+
+  - à l'étape $0$ on prend 3 villes au hasard (ou minimum) et on les relie ensemble en triangle.
+  - à l'étape $i >0$ on  possède un cycle entre 4 - i villes. On ajoute alors la ville qui augmente le moins le cycle en la plaçant entre 2 villes adjacentes du cycle de départ.
+  - au bout de $n-3$ étapes on a relié toutes les villes
+  
+#### non optimalité.
+
+Les deux algorithmes ne sont pas optimaux car on ne peux pas construire de solution optimale à $n$ éléments en considérant uniquement une solution optimale à $n-1$ éléments. 
+
+La non optimalité du second algorithme pour le cas métrique dans le plan est [montrée ici](http://labo.algo.free.fr/pvc/algorithme_glouton.html). Elle peut servir également pour montrer la non optimalité du 1er. L'idée est de rajouter un sommet pour lequel il faut remettre en cause plus d'une chose que juste une arête.
+
+  1. Un [cycle optimal sans la ville F]({{ "ressources/algorithmes_gloutons/voyageur_commerce_glouton_sans_F.png" }})
+  2. En ajoutant la ville F, [avec l'algorithme glouton]({{ "ressources/algorithmes_gloutons/voyageur_commerce_glouton_avec_F.png" }})
+  3. la [solution optimale]({{"ressources/algorithmes_gloutons/voyageur_commerce_opti.png"}})
+
+C'est bien plus compliqué de trouver un contre-exemple lorsque l'inégalité triangulaire est respectée. Et encore plus lorsque c'est des distances dans le plan... C'est ce qui fait que l'algorithme glouton trouve très souvent une bonne solution, à défaut de trouver la meilleure.
+
+
+### optimisation
+
+C'est le principe général d'optimisation a posteriori d'une solution appelée [2-opt](https://fr.wikipedia.org/wiki/2-opt)
+
+A partir d'un cycle solution, on supprime deux arêtes $xy$ et $zt$ de celui-ci et on ajoute les arêtes $xz$ et $yt$ qui permettent de conserver le fait que c'est un cycle. On regarde ensuite si la solution est meilleure. On peut faire cette suppression en considérant toutes les paires, ou uniquement quelques unes prisent au hasard si le nombre de villes est très important.
+
+
+## exercice 2 :  coloration de graphes
+
+## exercice 3 : le problème du sac à dos
 
 
 ### on essaie 

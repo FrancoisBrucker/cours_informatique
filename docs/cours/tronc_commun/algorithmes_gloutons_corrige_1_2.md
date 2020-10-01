@@ -61,11 +61,13 @@ Pour prouver l'algorithme on doit prouver les 2 propriétés :
 
 ### système de pièces quelconque ?
 
-Attention, ne marche pas pour tous les systèmes de pièces  : exemple 1, 3, 4. Pour rendre 6 il donne 4 + 1 + 1 alors que c'est 3 + 3 le mieux.
+Attention, ne marche pas pour tous les systèmes de pièces : 
 
-Il est clair que le système supercroissant fonctionne car c'est exactement la condition de la preuve pour que ça fonctionne.
+  - exemple 1, 3, 4. Pour rendre 6 il donne 4 + 1 + 1 alors que c'est 3 + 3 le mieux.
+  - 1, 6, 11, 19 ne fonctionne pas non plus pour 22 par exemple (le système est cependant super-croissant).
 
-Le système de pièce européen fonctionne puisque l'on a des pièces billets de : 1, 2, 5, 10, 20, 50, 100 et 200 :
+
+On peut démontrer que [le système de pièce européen fonctionne](https://cm2.ens.fr/sites/default/files/Algorithmes%20gloutons%20avec%20la%20classe_v4.pdf) (page 7. Mais tout le reste est bien intéressant aussi) avec les pièces et billets de : 1, 2, 5, 10, 20, 50, 100 et 200 :
 
   - 5 > 2+1
   - 10 > 5+2+1

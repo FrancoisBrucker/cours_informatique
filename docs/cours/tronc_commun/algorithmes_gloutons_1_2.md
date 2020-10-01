@@ -10,11 +10,11 @@ authors: "François Brucker"
 
 ## But
 
-Montrer l'intérêt des algorithmes gloutons, la façon de les construire et de prouver qu'ils fonctionnent. On s'attachera dans cette séance tableau à prouver qu'ils rende une solution optimale à un problème donné.
+Montrer l'intérêt des algorithmes gloutons, la façon de les construire et de prouver qu'ils fonctionnent. On s'attachera dans cette séance tableau à prouver qu'ils rendent une solution optimale à un problème donné.
 
 ## Algortihme glouton
 
-Un [algorithme glouton](https://fr.wikipedia.org/wiki/Algorithme_glouton) choisit à chaque étape la meilleure possibilité localement. Ce type d'algorithme est très utilisé pour résoudre des problèmes où l'on veut une réponse rapide, mais pas forcément une réponse optimale. D'un point de vue théorique, ces algorithmes sont extrêmement importants. Il sont, par exemple, en bijection avec la [structure de matroïde](https://fr.wikipedia.org/wiki/Matro%C3%AFde).
+Un [algorithme glouton](https://fr.wikipedia.org/wiki/Algorithme_glouton) choisit à chaque étape la meilleure possibilité localement. Ce type d'algorithmes est très utilisé pour résoudre des problèmes où l'on veut une réponse rapide, mais pas forcément une réponse optimale. D'un point de vue théorique, ces algorithmes sont extrêmement importants. Il sont, par exemple, en bijection avec la [structure de matroïde](https://fr.wikipedia.org/wiki/Matro%C3%AFde).
 
 Intérêt :
 
@@ -46,7 +46,7 @@ Les problèmes d'optimalité demandent de trouver, parmi un ensemble de solution
  
 La difficulté de ces problèmes vient du fait que l'on ne peut a priori pas trouver la meilleure solution sans les examiner toutes. Et s'il y a beaucoup de solutions ça peut prendre vraiment beaucoup de temps. 
 
-Certains problèmes cependant permettent d'être résolus en construisant petit à petit une solution, sans jamais remettre en cause ses choix. On peut alors souvent trouver très rapidement la meilleure solution possible. On peut également utiliser cette solution construite petit à petit pour trouver une solution approchée à un problème plus général. Cette classe d'algorithme qui construit itérativement d'une solution est appelée *algorithmes gloutons*.
+Certains problèmes cependant permettent d'être résolus en construisant petit à petit une solution, sans jamais remettre en cause ses choix. On peut alors souvent trouver très rapidement la meilleure solution possible. On peut également utiliser cette solution construite petit à petit pour trouver une solution approchée à un problème plus général. Cette classe d'algorithmes qui construit itérativement d'une solution est appelée *algorithmes gloutons*.
 
 
 ### condition nécessaire et suffisante d'optimalité.
@@ -79,14 +79,14 @@ Démontrez que votre algorithme est bien optimal.
 
 ### système de pièces quelconque ?
 
-  - donnez une version générale de votre algorithme de rendu de pièce, c'est à dire où l'on a $n$ pièces valant $p_1 < p_2 < \dots < p_n$. 
+  - donnez une version générale de votre algorithme de rendu de pièces, c'est à dire où l'on a $n$ pièces valant $p_1 < p_2 < \dots < p_n$. 
   - Cet algorithme glouton de va pas donner de solution optimale quelque soit le système de pièces, donnez un exemple pour lequel ça ne fonctionne pas.
-  - montrer que l'algorithme glouton fonctionne pour un système de pièces supercroissant, c'est à dire où $p_i > \sum_{j< i} p_j$ avec $_i$ les valeurs de pièces rangés par ordre croissant. 
-  - donnez un exemple de système de pièces supercroissant.
-
+ 
+ 
+  
 ##  exercice 3 :  allocation de salles de cinéma
 
-Un gérant de cinéma a en sa possession $m$ films caractérisés chacun par un couple ($d_i$, $f_i$) où $d_i$ est l'heure de début du film et $f_i$ l'heure de fin. Il se pose 2 problèmes : 
+Un gérant de cinéma a en sa possession $m$ films caractérisés chacun par des couples ($d_i$, $f_i$) où $d_i$ est l'heure de début du film et $f_i$ l'heure de fin. Il se pose 2 problèmes : 
   
   - Quel est le nombre maximum de films que je peux voir en une journée ?
   - Quel est le nombre minimum de salles à avoir pour visionner tous les films en stock.

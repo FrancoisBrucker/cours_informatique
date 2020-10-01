@@ -19,7 +19,46 @@ Montrer que, même s'ils ne réussissent pas toujorus à trouver la solution opt
 > Le corrigé est [disponible]({% link cours/tronc_commun/algorithmes_gloutons_corrige_2_2.md %})
 
 
-## exercice 5 : le problème du sac à dos
+## exercice 1 : le problème du voyageur de commerce
+
+Le [problème du voyageur de commerce](https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_voyageur_de_commerce) peut s'énoncer comme suit : 
+
+étant donné un ensemble de villes reliées entre elles par des routes, trouver l'itinéraire le plus court passant par chaque ville une et une seule fois. 
+
+On suppose dans la suite de cet exercice que l'on connaît la distance $d(u, v)$ pour n'importe quel couple de villes $u$ et $v$.
+
+### nombre de solutions
+
+combien de solutions possible possède un problème du voyageur de commerce à $n$ villes ?
+
+### algorithme glouton
+
+
+  1. Proposez un algorithme glouton qui résout ce problème. 
+  2. Montrer que l'algorithme glouton n'est pas optimal :
+     - pour des longueurs qui ne sont pas forcément des distances (l'inégalité triangulaire n'est pas respectée)
+     - pour des distances (qui respectent l'inégalité triangulaire)
+
+### optimisation 
+
+Proposez un moyen d'optimiser la solution obtenue par l'algorithme glouton. On pourra par exemple itérativement diminuer le coût du cycle en modifiant localement le cycle.
+
+## exercice 2 :  coloration de graphes
+
+### problème général de la coloration
+
+### glouton
+
+### glouton avec ordre choisi
+
+### prouvons avec glouton
+
+### cas des cartes de géographie
+
+### combien de couleurs ?
+
+
+## exercice 3 : le problème du sac à dos
 
 Le [problème du sac à dos](https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_sac_%C3%A0_dos) est un exemple de problème d'optimisation. Il fait parti des problèmes les plus durs du monde car les solutions n'entretiennent pas de relations les unes avec les autres, il faut a priori toutes les regarder pour trouver la meilleure, et il y en a beaucoup. 
 

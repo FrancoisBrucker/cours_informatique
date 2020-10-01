@@ -61,7 +61,7 @@
 
 Montrer l'intérêt des algorithmes gloutons, la façon de les construire
 et de prouver qu'ils fonctionnent. On s'attachera dans cette séance
-tableau à prouver qu'ils rende une solution optimale à un problème
+tableau à prouver qu'ils rendent une solution optimale à un problème
 donné.
 
 \hypertarget{algortihme-glouton}{%
@@ -69,7 +69,7 @@ donné.
 
 Un \href{https://fr.wikipedia.org/wiki/Algorithme_glouton}{algorithme
 glouton} choisit à chaque étape la meilleure possibilité localement. Ce
-type d'algorithme est très utilisé pour résoudre des problèmes où l'on
+type d'algorithmes est très utilisé pour résoudre des problèmes où l'on
 veut une réponse rapide, mais pas forcément une réponse optimale. D'un
 point de vue théorique, ces algorithmes sont extrêmement importants. Il
 sont, par exemple, en bijection avec la
@@ -132,8 +132,8 @@ petit à petit une solution, sans jamais remettre en cause ses choix. On
 peut alors souvent trouver très rapidement la meilleure solution
 possible. On peut également utiliser cette solution construite petit à
 petit pour trouver une solution approchée à un problème plus général.
-Cette classe d'algorithme qui construit itérativement d'une solution est
-appelée \emph{algorithmes gloutons}.
+Cette classe d'algorithmes qui construit itérativement d'une solution
+est appelée \emph{algorithmes gloutons}.
 
 \hypertarget{condition-nuxe9cessaire-et-suffisante-doptimalituxe9.}{%
 \subsubsection{condition nécessaire et suffisante
@@ -194,19 +194,13 @@ Démontrez que votre algorithme est bien optimal.
 \begin{itemize}
 \tightlist
 \item
-  donnez une version générale de votre algorithme de rendu de pièce,
+  donnez une version générale de votre algorithme de rendu de pièces,
   c'est à dire où l'on a \(n\) pièces valant
   \(p_1 < p_2 < \dots < p_n\).
 \item
   Cet algorithme glouton de va pas donner de solution optimale quelque
   soit le système de pièces, donnez un exemple pour lequel ça ne
   fonctionne pas.
-\item
-  montrer que l'algorithme glouton fonctionne pour un système de pièces
-  supercroissant, c'est à dire où \(p_i > \sum_{j< i} p_j\) avec \(_i\)
-  les valeurs de pièces rangés par ordre croissant.
-\item
-  donnez un exemple de système de pièces supercroissant.
 \end{itemize}
 
 \hypertarget{exercice-3-allocation-de-salles-de-cinuxe9ma}{%
@@ -214,8 +208,8 @@ Démontrez que votre algorithme est bien optimal.
 cinéma}\label{exercice-3-allocation-de-salles-de-cinuxe9ma}}
 
 Un gérant de cinéma a en sa possession \(m\) films caractérisés chacun
-par un couple (\(d_i\), \(f_i\)) où \(d_i\) est l'heure de début du film
-et \(f_i\) l'heure de fin. Il se pose 2 problèmes :
+par des couples (\(d_i\), \(f_i\)) où \(d_i\) est l'heure de début du
+film et \(f_i\) l'heure de fin. Il se pose 2 problèmes :
 
 \begin{itemize}
 \tightlist
