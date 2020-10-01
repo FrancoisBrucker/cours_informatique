@@ -25,7 +25,7 @@ Les modules permettent :
 - Une meilleure réutilisation du code : comme le disait un saint homme, appliquez la méthode DRY (Don't Repeat Yourself).
 
 Pour réaliser cette structure on exporte une variable, une fonction ou même une classe d'un fichier JS pour pouvoir l'importer dans d'autres fichiers où on aurai besoin de la fonctionnalité en uestion. On choisit donc les éléments d'un module que l'on veut exposer en les précédant d'une déclaration `export`. Ces éléments pourront être importés avec la syntaxe `import` dans d'autres modules.
-Les détails de toutes les différentes syntaxes d'[import](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Instructions/export)/[export](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Instructions/import) sont très bien expliqués sur le site developer mozilla.
+Les détails de toutes les différentes syntaxes d'[import](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Instructions/import)/[export](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Instructions/export) sont très bien expliqués sur le site developer mozilla.
 
 Ce qu'il faut savoir c'est que JS, quand il voit un `export` il va exposer aux autres fichiers ce qu'il exporte sous la forme d'un objet. De l'autre côté quand JS voit un `import` dans un fichier il va importer l'objet qui était exposé dans l'autre fichier.
 
