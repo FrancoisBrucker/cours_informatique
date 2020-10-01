@@ -3,7 +3,7 @@ layout: page
 title:  "git rebase, la tronçonneuse magique"
 category: tutorial
 tags: dev git 
-authors: "Fanis Michalakis"
+author: "Fanis Michalakis"
 ---
 
 ## But

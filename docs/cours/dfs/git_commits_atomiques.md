@@ -3,6 +3,7 @@ layout: page
 title:  "les commits atomiques"
 category: tutorial
 tags: dev git 
+author: "Fanis Michalakis"
 ---
 
 ## But
