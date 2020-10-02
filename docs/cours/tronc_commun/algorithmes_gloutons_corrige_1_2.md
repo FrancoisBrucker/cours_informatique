@@ -40,6 +40,7 @@ De part la définition de la dérivée, l'algorithme va suivre la pente et se lo
         4. revenir en 1. si R > 0
     * **complexité** : tri des valeur de pièce + une opération par pièce (division puis soustraction). Comme il suffit de trier une fois pour toute, la complexité peut être de l'ordre du nombre de pièces.
 
+
 ### Preuve d'optimalité pour un système de pièce valant 1, 2 et 5
 
 
