@@ -78,39 +78,105 @@
 
 <h3 id="nombre-de-solutions">nombre de solutions</h3>
 
-<p>combien de solutions possible possède un problème du voyageur de commerce à $n$ villes ?</p>
+<p>combien de solutions possibles possède un problème du voyageur de commerce à $n$ villes ?</p>
 
 <h3 id="algorithme-glouton">algorithme glouton</h3>
 
 <ol>
   <li>Proposez un algorithme glouton qui résout ce problème.</li>
-  <li>Montrer que l’algorithme glouton n’est pas optimal :
-    <ul>
-      <li>pour des longueurs qui ne sont pas forcément des distances (l’inégalité triangulaire n’est pas respectée)</li>
-      <li>pour des distances (qui respectent l’inégalité triangulaire)</li>
-    </ul>
-  </li>
+  <li>Montrer que votre algorithme glouton n’est pas toujours optimal pour un ensemble de points du plan.</li>
 </ol>
 
 <h3 id="optimisation">optimisation</h3>
 
-<p>Proposez un moyen d’optimiser la solution obtenue par l’algorithme glouton. On pourra par exemple itérativement diminuer le coût du cycle en modifiant localement le cycle.</p>
+<p>Proposez un moyen d’optimiser la solution obtenue par l’algorithme glouton. On pourra par exemple remarquer que si l’on supprime 2 arêtes disjointes d’un cycle on peut créer un autre cycle en ajoutant seulement 2 autres arêtes disjointes.</p>
 
 <h2 id="exercice-2---coloration-de-graphes">exercice 2 :  coloration de graphes</h2>
 
-<h3 id="problème-général-de-la-coloration">problème général de la coloration</h3>
+<p>Le problème de la <a href="https://fr.wikipedia.org/wiki/Coloration_de_graphe">coloration de graphes</a> peut s’écrire comme suit :</p>
+
+<p>Soit un graphe (simple) $G = (V, E)$. Une fonction $f$ de $V$ dans $\{1, \dots, \vert k \vert \}$ (avec $k \leq \vert V \vert$) est une <em>coloration</em> de $G$ si $f(x) \neq f(y)$ pour toute arête $xy$ du graphe. Le nombre de couleurs différentes utilisées est $k$.</p>
+
+<p>Le <em>nombre chromatique</em> d’un graphe $G$, noté $\chi(G)$ est le nombre minimum de couleur qu’il faut pour le colorier.</p>
+
+<p>Cette notion modélise très bien les problèmes de ressources partagées (interférences entres antennes), d’incompatibilités ou encore de coloration de cartes de géographie (ce que nous verrons).</p>
+
+<h3 id="exemples">exemples</h3>
+
+<p>Montrez que :</p>
+
+<ul>
+  <li>les cycles paires sont 2 coloriables</li>
+  <li>les cycles impairs sont 3 coloriables et pas 2 coloriables</li>
+  <li>un graphe $G=(V, E)$ est 2-coloriable si et seulement si il est <a href="https://fr.wikipedia.org/wiki/Graphe_biparti"><em>bi-parti</em></a> (si on eut partitionner $V$ en deux ensembles $V_1$ et $V_2$ tel que chaque arête a un sommet dans $V_1$ et un autre dans $V_2$).</li>
+</ul>
 
 <h3 id="glouton">glouton</h3>
 
+<p>Connaître le nombre chromatique d’un graphe est un problème NP-difficile (un des problème les plus durs en informatique).</p>
+
+<p>Proposez un algorithme glouton pour résoudre ce problème. Cet algorithme doit prendre itérativement un sommet du graphe (dans un ordre quelconque) et lui donner une couleur (qu’il ne remettra jamais en cause).</p>
+
+<p>Quel est sa complexité ?</p>
+
+<p>Essayez sur le graphe suivant en prenant les sommet par ordre alphabétique : <img src="ressources/algorithmes_gloutons/couleur_graphe.png" alt="couleurs" /></p>
+
 <h3 id="glouton-avec-ordre-choisi">glouton avec ordre choisi</h3>
+
+<p>Quel ordre pensez-vous prendre ? Testez le sur le graphe précédent.</p>
 
 <h3 id="prouvons-avec-glouton">prouvons avec glouton</h3>
 
-<h3 id="cas-des-cartes-de-géographie">cas des cartes de géographie</h3>
+<p>Montrez en utilisant l’algorithme que pour un graphe donné $\chi(G) \leq max_x(\delta(x)) +1$. Est-ce que cette borne est atteinte ?</p>
 
-<h3 id="combien-de-couleurs-">combien de couleurs ?</h3>
+<h3 id="exemple">exemple</h3>
 
-<h2 id="exercice-3--le-problème-du-sac-à-dos">exercice 3 : le problème du sac à dos</h2>
+<p>On reprend l’exemple des salles de cinéma de la première partie. Ecrivez le problème du nombre minimum de salles de cinéma pour faire passer tous les films sous forme d’un problème de coloration.</p>
+
+<p>Application aux films :</p>
+
+<ul>
+  <li>a : (2, 6)</li>
+  <li>b : (3, 8)</li>
+  <li>c : (5, 12)</li>
+  <li>d : (7, 9)</li>
+  <li>e : (11, 15)</li>
+  <li>f : (12, 17)</li>
+  <li>g : (13, 20)</li>
+  <li>h : (1, 4)</li>
+</ul>
+
+<h2 id="exercice-3--cartes-de-géographie">exercice 3 : cartes de géographie</h2>
+
+<p>Le problème est, étant donné une carte de géographie, on veut la colorier de telle sorte que chaque pays est une couleur différente de ses voisins.</p>
+
+<h3 id="coloration-de-cartes">coloration de cartes</h3>
+
+<p>Montrez que l’on peut modéliser ce problème comme un problème de coloration.</p>
+
+<p>Et testez le sur l’exemple suivant :  <img src="ressources/algorithmes_gloutons/carte.png" alt="carte" /></p>
+
+<h3 id="planarité">planarité</h3>
+
+<p>Un graphe est dit <em>planaire</em> si on peut le représenter graphiquement dans le plan sans arête qui se croise.</p>
+
+<p>Montrez que le graphe de coloration d’une carte est planaire.</p>
+
+<h3 id="formule-deuler">formule d’Euler</h3>
+
+<p>Soit $G = (V, E)$ un graphe planaire (avec $n = \vert V \vert$ et $m = \vert E \vert$). On note $F$ le nombre de face (le bord extérieur étant considéré comme une face).</p>
+
+<p>Montrez que : $n - m + F = 2$ (cette relation est appelée <em>formule d’Euler</em>).</p>
+
+<p>De là :</p>
+
+<ol>
+  <li>en utilisant le fait que toute arête sépare exactement 2 faces et qu’une face a au moins 3 arêtes démontrez que $m\leq 3n - 6$</li>
+  <li>de l’inégalité ci-dessus, déduisez-en qu’il existe toujours un sommet de degré au plus 5</li>
+  <li>enfin, en utilisant l’algorithme de coloration prouver qu’il faut au maximum 6 couleurs pour coloriez toute carte de géographie</li>
+</ol>
+
+<h2 id="exercice-4--le-problème-du-sac-à-dos">exercice 4 : le problème du sac à dos</h2>
 
 <p>Le <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_sac_%C3%A0_dos">problème du sac à dos</a> est un exemple de problème d’optimisation. Il fait parti des problèmes les plus durs du monde car les solutions n’entretiennent pas de relations les unes avec les autres, il faut a priori toutes les regarder pour trouver la meilleure, et il y en a beaucoup.</p>
 
@@ -195,9 +261,9 @@
 
 <p>Quel est la complexité de cet algorithme.</p>
 
-<h4 id="le-millions-de-dollars">Le millions de dollars</h4>
+<h4 id="le-million-de-dollars">Le million de dollars</h4>
 
-<p>Le problème du sac à dos fait partie des problème “les plus dur de l’informatique”, or on a un algorithme polynomial pour le résoudre… Soit on vient de démontrer <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8mes_du_prix_du_mill%C3%A9naire#Probl%C3%A8me_ouvert_P_=_NP">P = NP</a> et on a gagné 1millions de dollars, soit il y a un piège.</p>
+<p>Le problème du sac à dos fait partie des problème “les plus durs de l’informatique”, or on a un algorithme polynomial pour le résoudre… Soit on vient de démontrer <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8mes_du_prix_du_mill%C3%A9naire#Probl%C3%A8me_ouvert_P_=_NP">P = NP</a> et on a gagné 1millions de dollars, soit il y a un piège.</p>
 
 <p>Quel est ce piège ?</p>
 
