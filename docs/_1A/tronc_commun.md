@@ -113,7 +113,7 @@ Le but de cette séance est d'installer un environnement de développement pytho
 
 ### TD complexités
 
-TBD
+[sujet du TD]({{ "https://wiki.centrale-marseille.fr/informatique/tc_info:2020_td_comp" }})
 
 ### Données
 

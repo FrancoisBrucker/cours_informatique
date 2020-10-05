@@ -15,34 +15,35 @@ author: "François Brucker"
 $n!$
 
 
-### Algorithme glouton
+### Algorithmes gloutons
 
-Il y a plusieurs possiblités, on en montre 2
+Il y a plusieurs possibilités, on en montre 2. Ils dépendent tous deux fortement de la position de départ, mais, comme ils sont rapide à exécuter, on peut faire plusieurs essais. De même lorsqu'on a le choix on utilisera toujours des optimisations locales plutôt que globale. L'algorithme 2, on cherche à ajouter le moins de chose dans le cycle que l'on a déjà créé plutôt que de choisir le point minimum à ajouter qui ferait passer notre algorithme à une complexité trop importante ($\mathcal{O}(n^3)$ plutôt que $\mathcal{O}(n^2)$).
 
-#### ajout brutal d'une ville
+
+####  Algorithme 1 : ajout itératif de la ville la plus proche
 
   - étape $0$ on commence par choisir une ville $v_1$
   - à l'étape $i>0$ on visite la ville la plus proche de $v_{i-1}$ que l'on a pas encore visité et on la nomme $v_i$
   - au bout de $n$ étapes on a visité les $n$ villes.
 
-#### ajout d'une ville dans un cycle
+L'algorithme n'est pas optimal en commençant par A : ![glouton non optimal]({{ "ressources/algorithmes_gloutons/voyageur_commerce_1_1.png" }})
+
+Il n'est jamais optimal pour : ![glouton non optimal]({{ "ressources/algorithmes_gloutons/voyageur_commerce_1_2.png" }})
 
 
-  - à l'étape $0$ on prend 3 villes au hasard (ou minimum) et on les relie ensemble en triangle.
-  - à l'étape $i >0$ on  possède un cycle entre 4 - i villes. On ajoute alors la ville qui augmente le moins le cycle en la plaçant entre 2 villes adjacentes du cycle de départ.
+#### Algorithme 2 : ajout d'une ville dans un cycle
+
+
+  - à l'étape $0$ on prend 3 villes au hasard et on les relie ensemble en triangle.
+  - à l'étape $i >0$ on  possède un cycle entre 4 - i villes. On ajoute alors une ville (quelconque) en la plaçant entre 2 villes adjacentes du cycle de départ. On choisit les villes adjacentes pour que l'ajout en distance soit minimal
   - au bout de $n-3$ étapes on a relié toutes les villes
-  
-#### non optimalité.
 
-Les deux algorithmes ne sont pas optimaux car on ne peux pas construire de solution optimale à $n$ éléments en considérant uniquement une solution optimale à $n-1$ éléments. 
 
-La non optimalité du second algorithme pour le cas métrique dans le plan est [montrée ici](http://labo.algo.free.fr/pvc/algorithme_glouton.html). Elle peut servir également pour montrer la non optimalité du 1er. L'idée est de rajouter un sommet pour lequel il faut remettre en cause plus d'une chose que juste une arête.
+La non optimalité du second algorithme pour le cas métrique dans le plan est [montrée ici](http://labo.algo.free.fr/pvc/algorithme_glouton.html). L'idée est de rajouter un sommet pour lequel il faut remettre en cause plus d'une chose que juste une arête.
 
-  1. Un [cycle optimal sans la ville F]({{ "ressources/algorithmes_gloutons/voyageur_commerce_glouton_sans_F.png" }})
+  1. Un [cycle optimal sans la ville F]({{ "ressources/algorithmes_gloutons/voyageur_commerce_glouton_sans_F.png" }}). 
   2. En ajoutant la ville F, [avec l'algorithme glouton]({{ "ressources/algorithmes_gloutons/voyageur_commerce_glouton_avec_F.png" }})
   3. la [solution optimale]({{"ressources/algorithmes_gloutons/voyageur_commerce_opti.png"}})
-
-C'est bien plus compliqué de trouver un contre-exemple lorsque l'inégalité triangulaire est respectée. Et encore plus lorsque c'est des distances dans le plan... C'est ce qui fait que l'algorithme glouton trouve très souvent une bonne solution, à défaut de trouver la meilleure.
 
 
 ### optimisation
@@ -54,7 +55,107 @@ A partir d'un cycle solution, on supprime deux arêtes $xy$ et $zt$ de celui-ci 
 
 ## exercice 2 :  coloration de graphes
 
-## exercice 3 : le problème du sac à dos
+### exemples
+
+La 2 coloriabilité des cycles paires et la 3 coloriabilité des cycles impaires est claire. 
+
+Pour un graphe bi-parti :
+
+  - s'il est biparti, on colorie chaque partie avec une couleur,
+  - s'il est 2-coloriable, chaque couleur est une partie.
+
+On peut montrer qu'un graphe est bi-parti si et seulement si il ne contient pas de cycle de longueur impaire, mais cela dépasse de peu le cadre de cette séance.
+
+### glouton
+
+On va prendre les sommets un a un et ajouter une couleur différente à celle de tous ses voisins déjà vus.
+
+Ce qui donne : 
+
+- les couleurs sont des nombres
+- on ordonne les sommets selon $x_1, \dots, x_n$
+- on donne à $x_i$ **la plus petite couleur** non encore utilisée pour ses voisins
+
+On prend la plus petite couleur non utilisée pour minimiser le nombre de couleurs.
+
+Pour chaque sommet, regarde tous ses voisins, la complexité totale de l'algorithme est donc en $\mathcal{O}(\sum_x\delta(x)) = \mathcal{O}(\vert E\vert)$, c'est linéaire en la taille du graphe !
+
+
+Avec l'exemple on a comme couleurs :
+
+ A | B | C | D | E | F | G
+---|---|---|---|---|---|---
+ 1 | 2 | 1 | 2 | 3 | 1 | 4  
+  
+###  ordre choisi
+
+C'est l'algorithme de [Welsh Powell](https://fr.wikipedia.org/wiki/Coloration_de_graphe#Algorithme_de_Welsh_et_Powell). On range les sommets par degré décroissant.
+
+Avec l'exemple on a comme couleurs :
+
+ G | E | A | D | B | C | F
+---|---|---|---|---|---|---
+ 1 | 2 | 3 | 1 | 2 | 3 | 2  
+
+Mettre les plus gros d'abord nous permet de mettre une petite couleur à ceux qui ont des gros degrés puisque sa couleur sera au pire : $\min(\delta(x_i), i-1) +1$ :
+  
+  - les gros degré auront une couleurs relevant de l'ordre dans lequel on les a pris,
+  - les petites degré conserveront au pire leur degré comme couleur.
+
+### Prouvons avec glouton
+
+La formule ci-dessus nous donne directement le résultat. La borne est atteinte pour les graphes complets et les cycles impaires.
+
+Notez que  si le graphe n'est pas complet et n'est pas un cycle impaire on peut prouver que $\chi(G) \leq  max_x(\delta(x))$ ([Brooks (1941)](https://en.wikipedia.org/wiki/Brooks%27_theorem)). On peut le prouver en utilisant notre algorithme glouton, mais nous ne le détaillerons pas ici.
+
+### exemple
+
+Chaque film est un sommet et on met une arête entre 2 films si leurs intervalles se chevauchent. 
+
+Dans l'exemple, les arêtes sont : ha, hb, ab, bc, ac, bd, dc, ce, ef, eg, fg. Et on a une coloration en 3 couleurs. 
+
+## exercice 3 : cartes de géographie
+
+### coloration
+
+Chaque pays est un sommet et une arêtes est placé entre chaque pays voisins.
+
+Le graphe assoié à la carte est :  ![carte_couleur]({{ "ressources/algorithmes_gloutons/carte_graphe.png" }})
+
+Et ses couleurs :
+
+ H | A | F | B | C | D | E | G
+---|---|---|---|---|---|---|---
+ 1 | 2 | 3 | 3 | 2 | 3 | 2 | 4 
+
+Il y a 4 couleurs uniquement alors quele degré de  H est 7.
+
+### planarité
+
+Comme une carte est planaire on peut associer chaque sommet à un point de la carte et comme les pays forment des courbes fermées, on peut les traverser sans se croiser s'ils partagent un bout de frontière. 
+
+### formule d'Euler
+
+On prouve la formule d'Euler par récurrence sur $n$. 
+
+  - $n = 0$. 
+    - $m = 0$ on a qu'une seule face extérieure
+    - $m >0$ : le graphe est une successions de "disques" : ![carte]({{ "ressources/algorithmes_gloutons/graphe_n_0_m.png" }}). Il y a donc $m$ faces intérieures plus la face extérieure : $F = m + 1 = m - 1 + 2$
+  - $n >1$. Il existe une arête $xy$. On peut la contracter en 1 seul sommet (voir exemple ci-après). Cela ne change pas sa planarité ni son nombre de face. Ce nouveau graphe à une nombre de face $F' = F$, un nombre de sommets $n' = n - 1$ et un nombre d'arêtes $m' = m-1$. Comme l'hypothèse de récurrence fonctionne pour le graphe contracté, on a $F' = m'-n' +2$ donc $F = (m-1) -(n-1) + 2 = m-n+2$.
+  
+Exemple de contractation : ![contraction]({{ "ressources/algorithmes_gloutons/contraction_graphe.png" }})
+  
+
+Comme chaque arête départage toujours 2 faces exactement Si on somme le nombre d'arête de chaque face, on  obtient $2m$. Comme chaque face a au moins 3 arêtes, on en déduit : $2m \geq 3F$, si on remplace $F$ part $m-n+2$ on obtient : $m\leq 3n - 6$. Un graphe planaire a très peu d'arêtes.
+
+La somme des degrés de chaque sommet vaut $2m$ et est plus grand que $n\cdot \min_x\delta(x)$. On a alors les 2 inégalités : $n\cdot \min_x\delta(x) \leq 2m \leq 2(3n-6) = 6n - 12$ et donc $\min_x(\delta(x)) < 6$.
+
+Enfin, il est clair que si l'on supprime un sommet à un graphe planaire, il reste planaire. On peut donc choisir comme ordre $x_1, \dots x_n$ de choix de l'algorithme de coloration un ordre tel que $\delta(x_i) < 6$ pour le graphe planaire $G$ restreint à $\\{x_1,\dots, x_i\\}$ sa couleur sera toujours plus petite que son degré plus 1, c'st à dire 6. 
+
+On peut démontrer qu'il ne faut pas plus que 4 couleurs pour colorier une carte de géogrpahie. C'est la première démonstration faite par ordinateur (il y a trop de cas particulier à regarder pour un humain). La preuve qu'il faut moins que 5 couleurs est atteignable, mais (la encore) c'est un peut trop pour cette séance.
+
+
+## exercice 4 : le problème du sac à dos
 
 
 ### on essaie 
@@ -129,10 +230,10 @@ En exécutant le programme avec ces paramètres : `[[100, 2, "A"], [10, 2, "B"],
 
 Même place dans le sac-à-dos et pour notre algorithme et pour la solution optimale. De là, par construction de l'algorithme glouton (on prend à chaque choix soit tout le produit soit juste assez pour finir de remplir tout le sac) le ratio $r'_i$ de la solution optimale pour le produit d'indice $i$ est forcément plus petit strictement que $r_i$.
 
-Donc : 
+Donc : soit $r'_j = 0$ pour tout $j > i$ et notre solution est meilleure que la solution optimale, ce qui est impossible par hypothèse soit il existe $r'_j >0$  pour un $j>i$. 
 
-* soit $r'_j = 0$ pour tout $j > i$ et notre solution est meilleure que la solution optimale, ce qui est impossible par hypothèse,
-* soit il existe $r'_j >0$ pour un $j>i$. On pose alors $\epsilon = \min ((r_i -r'_i) * p_i, r'_j * p_j)$ avec $p_k$ la quantité du produit $k$. On a que $\epsilon >0$ et  la solution $(r_1, \dots, r_{i-1}, r'_i + \epsilon / p_i, r'_{i+1}, \dots r'_{j-1}, r'_j - \epsilon / p_j, r'_{j+1}, \dots, r'_n)$ est admissible, est meilleure que la solution optimale car le prix volumique du produit $j$ est inférieur à celui du produit $i$ et est telle que le ratio du produit $i$ est strictement plus grand que celui de la solution optimale. Ceci est impossible par hypothèse.
+On pose alors $\epsilon = \min((r_i -r'_i) \cdot p_i, r'_j \cdot p_j)$ avec $p_k$ la quantité du produit $k$. 
+On a que $\epsilon >0$ et la solution $$(r_1, \dots, r_{i-1}, r'_i + \epsilon / p_i, r'_{i+1}, \dots r'_{j-1}, r'_j - \epsilon / p_j, r'_{j+1}, \dots, r'_n)$$ est admissible, est meilleure que la solution optimale car le prix volumique du produit $j$ est inférieur à celui du produit $i$ et est telle que le ratio du produit $i$ est strictement plus grand que celui de la solution optimale. Ceci est impossible par hypothèse.
 
 Notre hypothèse arrivant à une contradiction, elle était fausse : la solution de l'algorithme glouton est optimale.
 
