@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>serveur Web avec node | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="serveur Web avec node" />
+<meta name="author" content="François Brucker" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)" />
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)" />
+<link rel="canonical" href="/cours_informatique/cours/dfs/web_serveur.html" />
+<meta property="og:url" content="/cours_informatique/cours/dfs/web_serveur.html" />
+<meta property="og:site_name" content="cours d’informatique" />
+<script type="application/ld+json">
+{"description":"Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)","@type":"WebPage","headline":"serveur Web avec node","url":"/cours_informatique/cours/dfs/web_serveur.html","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        processEscapes: true
+      }
+    });
+  </script>
+  
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+</head>
+
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">serveur Web avec node</h1>
+  </header>
+
+  <div class="post-content">
+    <h2 id="but">But</h2>
+
+<p>Un (trop) long tutorial pour mettre en place un serveur web et la plupart des outils nécessaires pour son développement et son maintient.</p>
+
+<p>On prendra comme exemple un site de numérologie qui associe un numéro à chaque prénom.</p>
+
+<p>On aimerait avoir un site :</p>
+
+<ul>
+  <li>dont le titre serait numérologie</li>
+  <li>et où on pourrait taper son prénom pour en connaître son numéro</li>
+  <li>si l’on ne tape aucun prénom, le site devrait afficher un ‘?’</li>
+</ul>
+
+<h2 id="initialisation-du-projet">initialisation du projet</h2>
+
+<p>On va écrire le code en <a href="https://nodejs.org/en/">node</a>, donc commencez par l’installer (avec apt-get ou brew) si ce n’est pas déjà le cas.</p>
+
+<h3 id="node">node</h3>
+
+<p><a href="https://nodejs.org/en/">Node</a> est un interpréteur <a href="https://fr.wikipedia.org/wiki/V8_(moteur_JavaScript)">javascript V8</a> performant, très utilisé pour créer des serveur web. On va commencer par découvrir un peu ses fonctionnalités en console. Tapez <code class="language-plaintext highlighter-rouge">node</code> dans un terminal pour entrer en mode interpréteur où chque ligne tapée est directement interprétée ;</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fbrucker@emma » node
+Welcome to Node.js v14.13.0.
+Type <span class="s2">".help"</span> <span class="k">for </span>more information.
+<span class="o">&gt;</span> console.log<span class="o">(</span><span class="s2">"Hello World!"</span><span class="o">)</span>
+Hello World!
+undefined
+<span class="o">&gt;</span> x <span class="o">=</span> 1
+1
+<span class="o">&gt;</span> console.log<span class="o">(</span>x<span class="o">)</span>
+1
+undefined
+<span class="o">&gt;</span> f <span class="o">=</span> <span class="o">()</span> <span class="o">=&gt;</span> <span class="o">{</span> <span class="k">return</span> <span class="s2">"je suis une fonction"</span><span class="o">}</span>
+<span class="o">[</span>Function: f]
+<span class="o">&gt;</span> f<span class="o">()</span>
+<span class="s1">'je suis une fonction'</span>
+</code></pre></div></div>
+
+<p>Chaque ligne est exécutée puis son résultat est donné. C’est pour ça qu’il y a de temps en temps des <code class="language-plaintext highlighter-rouge">undefined</code>, c’est des retour de fonctions (comme <code class="language-plaintext highlighter-rouge">console.log</code> qui ne rend <strong>RIEN</strong>, elle ne fait qu’afficher à l’écran)</p>
+
+<p>C’est idéal pour tester des choses, en particulier pour reprendre les exemples de <a href="https://www.destroyallsoftware.com/talks/wat">cette fameuse comparaison entre ruby et js</a> (même si les plus terribles exemples ont été corrigés…).</p>
+
+<h3 id="git">git</h3>
+
+<p>On suit le tuto et on crée notre projet git, que l’on synchronise avec notre github.</p>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">git init</code></li>
+  <li>synchronise avec github</li>
+  <li>on crée un fichier <code class="language-plaintext highlighter-rouge">main.js</code> vide et on commit le tout.</li>
+</ol>
+
+<h2 id="un-peut-de-js">Un peut de js</h2>
+
+<p>On va créer un site de numérologie du prénom qui associera un nombre à chaque prénom écrit en utf8. On va s’inspirer de <a href="https://numerologist.com/numerology/the-numerology-of-your-first-name-decoded-explained/">cet article scientifique</a> mais permettre tout prénom écrit en unicode. Il nous faut donc :</p>
+
+<ul>
+  <li>pouvoir associer un chiffre à chaque lettre</li>
+  <li>sommer tout ça et, si le nombre est plus grand que 10, re-sommer les chiffres sauf si la somme fait 11, 22, ou 33.</li>
+</ul>
+
+<p>On ne va cependant pas commencer à coder directement, on va utiliser une bibliothèque de tests unitaires, <a href="https://jestjs.io/">jest</a> et créer un projet node avec <a href="https://classic.yarnpkg.com/en/">yarn</a> (<code class="language-plaintext highlighter-rouge">yarn init</code> pour initialiser le projet, suivez le tuto dédié si vous avez du mal)</p>
+
+<h3 id="jest">jest</h3>
+
+<p>On installe jest comme dépendance de développement au projet, on en aura en effet pas besoin en production : <code class="language-plaintext highlighter-rouge">yarn add --dev jest</code>. <code class="language-plaintext highlighter-rouge">git status</code> devient fou, on ajute donc ce qu’il faut dans le <code class="language-plaintext highlighter-rouge">.gitignore</code> et on commit le tout.</p>
+
+<p>Remarquez que le fichier <code class="language-plaintext highlighter-rouge">package.json</code> contient les dépendances de développement.</p>
+
+<p>On va tout de suite ajouter une ligne pour que les tests s’exécutent via une commande <code class="language-plaintext highlighter-rouge">yarn</code> en ajoutant les lignes suivantes à votre fichier <em>package.json</em> :</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"scripts": {
+    "test": "jest"
+  },
+</code></pre></div></div>
+
+<p>On pourra ensuite exécuter la commande <code class="language-plaintext highlighter-rouge">yarn run test</code> pour exécuter tous les tests. Pour l’instant il n’y en a pas.</p>
+
+<blockquote>
+  <p><strong>Nota Bene :</strong> Si l’on ne veut pas passer par une commande de <code class="language-plaintext highlighter-rouge">yarn</code>, il faut trouver l’exécutable <code class="language-plaintext highlighter-rouge">jest</code> qui se trouve dans <em>node_modules/.bin</em></p>
+</blockquote>
+
+<p>Par défaut, <em>jest</em> va exécuter tous les fichier qui finissent par <em>test.js</em> récursivement dans tout le projet et tous les fichiers dans le dossier <strong>__tests__</strong>.</p>
+
+<p>Essayons ça en créant un fichier <em>main.test.js</em> :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">test</span><span class="p">(</span><span class="dl">'</span><span class="s1">empty test</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">expect</span><span class="p">(</span><span class="kc">true</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>Puis <code class="language-plaintext highlighter-rouge">yarn run test</code> (ou <code class="language-plaintext highlighter-rouge">./node_modules/.bin/jest</code>) pour voir le résultat.</p>
+
+<p>Changez ensuite le vrai en faux pour voir le test planter.</p>
+
+<h3 id="import">import</h3>
+
+<p>Nos tests doivent importer des fonctions définies autre part. Typiquement le fichier de test <em>main.test.js</em> doit importer des fonctions définies dans <em>main.js</em>. La gestion des imports est spéciale en js, et suit deux modèles celui de commonJs et l’autre ES6. Nous allons ici suivre celui classique dans node de commonJS.</p>
+
+<p>Tout est expliqué <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Modules">dans cet excellent guide</a>, mais en deux mots :</p>
+
+<ul>
+  <li>on n’exporte qu’un nom <code class="language-plaintext highlighter-rouge">module.exports</code>. Ce nom peut alors être plein de choses mais c’est typiquement une fonction ou un objet.</li>
+  <li>on importe un nom via la commande <code class="language-plaintext highlighter-rouge">require</code>.</li>
+</ul>
+
+<h4 id="exemple">exemple</h4>
+
+<p><em>main.js</em> :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">numerologie</span><span class="p">(</span><span class="nx">prenom</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="mi">22</span>
+<span class="p">}</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">numerologie</span>
+</code></pre></div></div>
+
+<p><em>main.test.js</em> :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">numerologie</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">./main</span><span class="dl">"</span><span class="p">)</span>
+
+<span class="nx">test</span><span class="p">(</span><span class="dl">"</span><span class="s2">numerologie</span><span class="dl">"</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">numerologie</span><span class="p">(</span><span class="dl">"</span><span class="s2">moi</span><span class="dl">"</span><span class="p">)).</span><span class="nx">toBe</span><span class="p">(</span><span class="mi">22</span><span class="p">)</span>
+<span class="p">})</span>
+
+</code></pre></div></div>
+
+<h4 id="plusieurs-imports">plusieurs imports</h4>
+
+<p>Si l’on veut importer plusieurs choses, on a coutume de rendre un objet dont les clés sont les noms et les valeurs le fonctions associées.</p>
+
+<p><em>main.js</em> :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">numerologie</span><span class="p">(</span><span class="nx">prenom</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="mi">22</span>
+<span class="p">}</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">numerologie</span><span class="p">:</span> <span class="nx">numerologie</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>et le <em>main.test.js</em> :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">main</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">./main</span><span class="dl">"</span><span class="p">)</span>
+
+<span class="nx">test</span><span class="p">(</span><span class="dl">"</span><span class="s2">numerologie</span><span class="dl">"</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">main</span><span class="p">.</span><span class="nx">numerologie</span><span class="p">(</span><span class="dl">"</span><span class="s2">moi</span><span class="dl">"</span><span class="p">)).</span><span class="nx">toBe</span><span class="p">(</span><span class="mi">22</span><span class="p">)</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h4 id="retour-de-fonctions">retour de fonctions</h4>
+
+<p>L’intérêt de rendre une fonciton plutôt qu’un module est que l’on peut ainsi paramétrer ce que l’on rend.</p>
+
+<p>Exemple :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">(</span><span class="nx">parametre</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="na">addition</span><span class="p">:</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="k">return</span> <span class="nx">data</span> <span class="o">+</span> <span class="nx">parametre</span><span class="p">},</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>et le test :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">main</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">./main</span><span class="dl">"</span><span class="p">)(</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="nx">test</span><span class="p">(</span><span class="dl">"</span><span class="s2">numerologie</span><span class="dl">"</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">main</span><span class="p">.</span><span class="nx">addition</span><span class="p">(</span><span class="mi">8</span><span class="p">)).</span><span class="nx">toBe</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<span class="p">})</span>
+
+</code></pre></div></div>
+
+<h3 id="le-code-and-mainjson">le code and main.json</h3>
+
+<ul>
+  <li>trouver le code associé à un caractère est facile en js en utilisant <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/String/charCodeAt">charCodeAt</a>. Testez dans un node ` (‘coucou’).charCodeAt(1)<code class="language-plaintext highlighter-rouge"> par exemple ou encore </code>(‘你好’).charCodeAt(0)`</li>
+  <li>pour associer un chiffre à un nombre en sommant ses composantes on peut tricher en utilisant les chaînes de caractères. Cela va être notre premier test.</li>
+</ul>
+
+<p>On va mettre tout ça dans les fichiers <em>numerologie.js</em> et <em>numerologie.test.js</em></p>
+
+<p>On ajoute une <a href="https://jestjs.io/docs/en/api#describename-fn">suite de test</a> qui va correspondre à l’association d’un chiffre à un prénom. Commençons par le test :</p>
+
+<h4 id="boilerplate">boilerplate</h4>
+
+<p><em>numerologie.js</em> :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">somme</span><span class="p">:</span> <span class="p">(</span><span class="nx">nombre</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="mi">6</span><span class="o">+</span><span class="mi">5</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<p><em>numerologie.test.js</em> :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">numerologie</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">./numerologie</span><span class="dl">"</span><span class="p">)</span>
+
+<span class="nx">describe</span><span class="p">(</span><span class="dl">"</span><span class="s2">Un chiffre à un prenom</span><span class="dl">"</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">test</span><span class="p">(</span><span class="dl">"</span><span class="s2">somme des nombres</span><span class="dl">"</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">numerologie</span><span class="p">.</span><span class="nx">somme</span><span class="p">(</span><span class="mi">65</span><span class="p">)).</span><span class="nx">toBe</span><span class="p">(</span><span class="mi">6</span><span class="o">+</span><span class="mi">5</span><span class="p">)</span>
+    <span class="p">})</span>
+
+<span class="p">})</span>
+
+</code></pre></div></div>
+
+<h4 id="on-résoud-le-problème">on résoud le problème</h4>
+
+<p><em>numerologie.js</em> :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">somme</span><span class="p">:</span> <span class="p">(</span><span class="nx">nombre</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">somme</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="nx">chaine</span> <span class="o">=</span> <span class="nb">String</span><span class="p">(</span><span class="nx">nombre</span><span class="p">)</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">chaine</span><span class="p">.</span><span class="nx">length</span> <span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">somme</span> <span class="o">+=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">chaine</span><span class="p">.</span><span class="nx">charAt</span><span class="p">(</span><span class="nx">i</span><span class="p">))</span>
+        <span class="p">}</span>        
+        <span class="k">return</span> <span class="nx">somme</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<p>Ce qui nous permet de transformer tout nombre en somme de ses chiffres tant que sa valeur est &gt;9.</p>
+
+<p>En ajoutant un test :</p>
+
+<p><em>numerologie.test.js</em> :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">numerologie</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">./numerologie</span><span class="dl">"</span><span class="p">)</span>
+
+<span class="nx">describe</span><span class="p">(</span><span class="dl">"</span><span class="s2">Un chiffre à un prenom</span><span class="dl">"</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">test</span><span class="p">(</span><span class="dl">"</span><span class="s2">somme des nombres</span><span class="dl">"</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">numerologie</span><span class="p">.</span><span class="nx">somme</span><span class="p">(</span><span class="mi">65</span><span class="p">)).</span><span class="nx">toBe</span><span class="p">(</span><span class="mi">6</span><span class="o">+</span><span class="mi">5</span><span class="p">)</span>
+    <span class="p">})</span>
+    <span class="nx">test</span><span class="p">(</span><span class="dl">"</span><span class="s2">&lt;=9</span><span class="dl">"</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">numerologie</span><span class="p">.</span><span class="nx">sommeFinale</span><span class="p">(</span><span class="mi">65</span><span class="p">)).</span><span class="nx">toBe</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="p">})</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p>et le code :</p>
+
+<p><em>numerologie.js</em></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">somme</span><span class="p">(</span><span class="nx">nombre</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">somme</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="nx">chaine</span> <span class="o">=</span> <span class="nb">String</span><span class="p">(</span><span class="nx">nombre</span><span class="p">)</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">chaine</span><span class="p">.</span><span class="nx">length</span> <span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">somme</span> <span class="o">+=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">chaine</span><span class="p">.</span><span class="nx">charAt</span><span class="p">(</span><span class="nx">i</span><span class="p">))</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">somme</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">sommeFinale</span><span class="p">(</span><span class="nx">nombre</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">while</span> <span class="p">(</span><span class="nx">nombre</span> <span class="o">&gt;</span> <span class="mi">9</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">nombre</span> <span class="o">=</span> <span class="nx">somme</span><span class="p">(</span><span class="nx">nombre</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">nombre</span>
+<span class="p">}</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">somme</span><span class="p">:</span> <span class="nx">somme</span><span class="p">,</span>
+    <span class="na">sommeFinale</span><span class="p">:</span> <span class="nx">sommeFinale</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>Nota Bene :</strong> Attention à la blague lorsque l’on enlève le <code class="language-plaintext highlighter-rouge">var</code> à la première ligne de la fonction somme. La variable n’est plus locale et elle remplace donc la valeur de la fonction…</p>
+</blockquote>
+
+<h4 id="le-nombre-associé-à-un-prenom">le nombre associé à un prenom</h4>
+
+<p><em>numerologie.test.js</em> :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">numerologie</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">./numerologie</span><span class="dl">"</span><span class="p">)</span>
+
+<span class="nx">describe</span><span class="p">(</span><span class="dl">"</span><span class="s2">Un chiffre à un prenom</span><span class="dl">"</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">test</span><span class="p">(</span><span class="dl">"</span><span class="s2">somme des nombres</span><span class="dl">"</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">numerologie</span><span class="p">.</span><span class="nx">somme</span><span class="p">(</span><span class="mi">65</span><span class="p">)).</span><span class="nx">toBe</span><span class="p">(</span><span class="mi">6</span><span class="o">+</span><span class="mi">5</span><span class="p">)</span>
+    <span class="p">})</span>
+    <span class="nx">test</span><span class="p">(</span><span class="dl">"</span><span class="s2">&lt;=9</span><span class="dl">"</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">numerologie</span><span class="p">.</span><span class="nx">sommeFinale</span><span class="p">(</span><span class="mi">65</span><span class="p">)).</span><span class="nx">toBe</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="p">})</span>
+    <span class="nx">test</span><span class="p">(</span><span class="dl">"</span><span class="s2">nombre associé au prénom d'une lettre</span><span class="dl">"</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">numerologie</span><span class="p">.</span><span class="nx">nombre</span><span class="p">(</span><span class="dl">"</span><span class="s2">A</span><span class="dl">"</span><span class="p">)).</span><span class="nx">toBe</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="p">})</span>
+    <span class="nx">test</span><span class="p">(</span><span class="dl">"</span><span class="s2">nombre associé au prénom de plusieurs lettres</span><span class="dl">"</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">numerologie</span><span class="p">.</span><span class="nx">nombre</span><span class="p">(</span><span class="dl">"</span><span class="s2">A</span><span class="dl">"</span><span class="p">)).</span><span class="nx">toBe</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">numerologie</span><span class="p">.</span><span class="nx">nombre</span><span class="p">(</span><span class="dl">"</span><span class="s2">m</span><span class="dl">"</span><span class="p">)).</span><span class="nx">toBe</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">numerologie</span><span class="p">.</span><span class="nx">nombre</span><span class="p">(</span><span class="dl">"</span><span class="s2">y</span><span class="dl">"</span><span class="p">)).</span><span class="nx">toBe</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">numerologie</span><span class="p">.</span><span class="nx">nombre</span><span class="p">(</span><span class="dl">"</span><span class="s2">Amy</span><span class="dl">"</span><span class="p">)).</span><span class="nx">toBe</span><span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">4</span><span class="p">)</span>
+    <span class="p">})</span>
+
+<span class="p">})</span>
+
+</code></pre></div></div>
+
+<p>Le code :</p>
+
+<p><em>numerologie.js</em></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kd">function</span> <span class="nx">somme</span><span class="p">(</span><span class="nx">nombre</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">somme</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="nx">chaine</span> <span class="o">=</span> <span class="nb">String</span><span class="p">(</span><span class="nx">nombre</span><span class="p">)</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">chaine</span><span class="p">.</span><span class="nx">length</span> <span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">somme</span> <span class="o">+=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">chaine</span><span class="p">.</span><span class="nx">charAt</span><span class="p">(</span><span class="nx">i</span><span class="p">))</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">somme</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">sommeFinale</span><span class="p">(</span><span class="nx">nombre</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">while</span> <span class="p">(</span><span class="nx">nombre</span> <span class="o">&gt;</span> <span class="mi">9</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">nombre</span> <span class="o">=</span> <span class="nx">somme</span><span class="p">(</span><span class="nx">nombre</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">nombre</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">nombre</span><span class="p">(</span><span class="nx">chaine</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">somme</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span> <span class="nx">chaine</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">somme</span> <span class="o">+=</span> <span class="nx">sommeFinale</span><span class="p">(</span><span class="nx">chaine</span><span class="p">.</span><span class="nx">charCodeAt</span><span class="p">(</span><span class="nx">i</span><span class="p">))</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">sommeFinale</span><span class="p">(</span><span class="nx">somme</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">somme</span><span class="p">:</span> <span class="nx">somme</span><span class="p">,</span>
+    <span class="na">sommeFinale</span><span class="p">:</span> <span class="nx">sommeFinale</span><span class="p">,</span>
+    <span class="na">nombre</span><span class="p">:</span> <span class="nx">nombre</span><span class="p">,</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>Nota Bene :</strong> On a pas ici traité le cas particuliers des prénoms valant 11, 22, ou 33;</p>
+</blockquote>
+
+<h2 id="une-page-web">Une page web</h2>
+
+<p>On va créer une page <em>index.html</em> qui nous permettra d’associer un chiffre à chaque prénom</p>
+
+<p>On va d’abord créer le html puis le rendre joli et enfin ajouter le js.</p>
+
+<h3 id="html">html</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!doctype html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"fr"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;title&gt;</span>Numérologie<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+        <span class="nt">&lt;form&gt;</span>
+            <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"prenom"</span><span class="nt">&gt;</span>Prénom :<span class="nt">&lt;/label&gt;</span>
+            <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"prenom"</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"prenom"</span><span class="nt">/&gt;</span>
+
+            <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span><span class="nt">&gt;</span>Envoi<span class="nt">&lt;/button&gt;</span>
+        <span class="nt">&lt;/form&gt;</span>
+        <span class="nt">&lt;p&gt;</span>7<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+
+</code></pre></div></div>
+
+<h3 id="css">css</h3>
+
+<p>On va le rendre joli. D’abord en mettant un peu de css puis en ajoutant la lib <a href="https://purecss.io/">purecss</a>.</p>
+
+<h4 id="maincss">main.css</h4>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">html</span><span class="o">,</span> <span class="nt">body</span> <span class="p">{</span>
+    <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="no">azure</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.body</span> <span class="p">{</span>
+    <span class="nl">margin-top</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+    <span class="nl">margin-left</span><span class="p">:</span> <span class="nb">auto</span><span class="p">;</span>
+    <span class="nl">margin-right</span><span class="p">:</span> <span class="nb">auto</span><span class="p">;</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">600px</span><span class="p">;</span>
+    <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">p</span> <span class="p">{</span>
+    <span class="nl">font-size</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<p>en modifiant un peu le html :</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!doctype html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"fr"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;title&gt;</span>Numérologie<span class="nt">&lt;/title&gt;</span>
+
+        <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"main.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"body"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;form&gt;</span>
+                <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"prenom"</span><span class="nt">&gt;</span>Prénom :<span class="nt">&lt;/label&gt;</span>
+                <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"prenom"</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"prenom"</span><span class="nt">/&gt;</span>
+
+                <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span><span class="nt">&gt;</span>Envoi<span class="nt">&lt;/button&gt;</span>
+            <span class="nt">&lt;/form&gt;</span>
+            <span class="nt">&lt;p&gt;</span>7<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<h4 id="on-ajoute-purecss">on ajoute purecss</h4>
+
+<p>Pour cela on va le rajouter à nos dépendances du projet : <code class="language-plaintext highlighter-rouge">yarn add purecss</code></p>
+
+<p>E l’ajouter, avec son style dans le <em>index.html</em> :</p>
+
+<ul>
+  <li>on le rajoute avant le link du <em>main.css</em> car on doit avoir le dernier mot pour les propriétés css</li>
+  <li>on prend la version <em>-min</em> qui est “minified” pour être chargée plus vite.</li>
+</ul>
+
+<p>On a du coup :</p>
+
+<p><em>main.css</em> :</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">html</span><span class="o">,</span> <span class="nt">body</span> <span class="p">{</span>
+    <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="no">azure</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.body</span> <span class="p">{</span>
+    <span class="nl">margin-top</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+    <span class="nl">margin-left</span><span class="p">:</span> <span class="nb">auto</span><span class="p">;</span>
+    <span class="nl">margin-right</span><span class="p">:</span> <span class="nb">auto</span><span class="p">;</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">600px</span><span class="p">;</span>
+    <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">p</span> <span class="p">{</span>
+    <span class="nl">margin-top</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+    <span class="nl">margin-bottom</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+    <span class="nl">font-family</span><span class="p">:</span> <span class="s2">'Lobster'</span><span class="p">,</span> <span class="nb">cursive</span><span class="p">;</span>
+    <span class="nl">font-size</span><span class="p">:</span> <span class="m">200px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><em>index.html</em> :</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!doctype html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"fr"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;title&gt;</span>Numérologie<span class="nt">&lt;/title&gt;</span>
+
+        <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"./node_modules/purecss/build/pure-min.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"https://fonts.googleapis.com/css2?family=Lobster&amp;display=swap"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"main.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"body"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">"pure-form"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"prenom"</span><span class="nt">&gt;</span>Prénom :<span class="nt">&lt;/label&gt;</span>
+                <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"prenom"</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"prenom"</span><span class="nt">/&gt;</span>
+
+                <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span><span class="na">class=</span><span class="s">"pure-button pure-button-primary"</span><span class="nt">&gt;</span>Envoi<span class="nt">&lt;/button&gt;</span>
+            <span class="nt">&lt;/form&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pure-g"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pure-u-1-3"</span><span class="nt">&gt;&lt;/div&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pure-u-1-3"</span><span class="nt">&gt;&lt;p&gt;</span>7<span class="nt">&lt;/p&gt;&lt;/div&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pure-u-1-3"</span><span class="nt">&gt;&lt;/div&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<h3 id="js">js</h3>
+
+<p>Pour l’instant appuyer sur le bouton ne sert à rien. On va donc faire en sorte que lorsque’on appuie sur le bouton le chiffre change.</p>
+
+<p>On ne peut pas utiliser require dans le browser… Pour le pas avoir besoin de compiler notre js on fait des choses un peu sales.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!doctype html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"fr"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;title&gt;</span>Numérologie<span class="nt">&lt;/title&gt;</span>
+
+        <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"./node_modules/purecss/build/pure-min.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"https://fonts.googleapis.com/css2?family=Lobster&amp;display=swap"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"main.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"body"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">"pure-form"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"prenom"</span><span class="nt">&gt;</span>Prénom :<span class="nt">&lt;/label&gt;</span>
+                <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"prenom"</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"prenom"</span><span class="nt">/&gt;</span>
+
+                <span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">"button-form"</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"pure-button pure-button-primary"</span><span class="nt">&gt;</span>Envoi<span class="nt">&lt;/button&gt;</span>
+            <span class="nt">&lt;/form&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pure-g"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pure-u-1-3"</span><span class="nt">&gt;&lt;/div&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pure-u-1-3"</span><span class="nt">&gt;&lt;p</span> <span class="na">id=</span><span class="s">"get-value"</span><span class="nt">&gt;</span>7<span class="nt">&lt;/p&gt;&lt;/div&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pure-u-1-3"</span><span class="nt">&gt;&lt;/div&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+
+        <span class="nt">&lt;/div&gt;</span>
+
+        <span class="nt">&lt;script&gt;</span>
+         <span class="nx">module</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="nt">&lt;/script&gt;</span>
+        <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"numerologie.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+        <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"main.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p><em>main.js</em></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">change_value</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">prenom</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#prenom</span><span class="dl">"</span><span class="p">).</span><span class="nx">value</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">prenom</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#get-value</span><span class="dl">"</span><span class="p">).</span><span class="nx">textContent</span> <span class="o">=</span> <span class="nx">nombre</span><span class="p">(</span><span class="nx">prenom</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">prout</span><span class="dl">"</span><span class="p">)</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#get-value</span><span class="dl">"</span><span class="p">).</span><span class="nx">textContent</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">?</span><span class="dl">"</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+<span class="nx">change_value</span><span class="p">()</span>
+
+<span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#button-form</span><span class="dl">"</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">change_value</span><span class="p">()</span>
+    <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">()</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>Nota Bene :</strong> on pourrait ajouter une animation pour savoir que le code est exécuté.</p>
+</blockquote>
+
+<h2 id="on-met-en-prod-">on met en prod !</h2>
+
+<p>On envoie le tout sur l’ovh !</p>
+
+<ol>
+  <li>une fois sur l’ovh (on fait attention d’être bien parti avec son agent) on clone notre répo dans le dossier <code class="language-plaintext highlighter-rouge">~/www</code></li>
+  <li>on procède à un <code class="language-plaintext highlighter-rouge">yarn install --production</code> qui va mettre à jour tous nos packages, exepté ceux liés au développement. On a donc uniquement <code class="language-plaintext highlighter-rouge">purecss</code>. Comparez avec la taille en dev.</li>
+</ol>
+
+<h2 id="tests-fonctionnelsusers-stories">tests fonctionnels/users stories</h2>
+
+<p>Lorsque l’on fabrique un site, on a envie de l’utiliser d’une certaine manière, de pouvoir naviguer et récupérer des informations. On peut regrouper ces utilisations en  petites saynètes d’utilisation 
+appelées <em>user stories</em>.</p>
+
+<p>On a déjà notre première user story, c’est notre but. Il est atteint puisqu’on peut faire cette user story sur l’ovh.</p>
+
+<p>Comme toujours, on va automatiser ce processus en utilisant un script qui fera les manipulation et vérifiera le résultat pour nous.</p>
+
+<h3 id="selenium">selenium</h3>
+
+<p><a href="https://www.selenium.dev/">selenium</a> est un outil, écrit en java, qui permet d’automatiser un browser.</p>
+
+<p>Cet outils est très générique car :
+    - de nombreux browsers sont supportés
+    - on peut utiliser selenium en codant avec de nombreux langages.</p>
+
+<p>Avant d’utiliser selenium pour notre site, faisons le fonctionner.</p>
+
+<h4 id="exemple-1">exemple</h4>
+
+<p>Pour que l’on puisse faire fonctionner selenium vous devez avoir un java d’installé (vous devriez le faire avec <a href="https://sdkman.io/">sdkman</a>)</p>
+
+<p>On va avoir besoin de plusieurs bibliothèques : <code class="language-plaintext highlighter-rouge">yarn add --dev selenium-webdriver chromedriver jest-environment-webdriver</code> :</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">selenium-webdriver</code> est selenium proprement dit,</li>
+  <li><code class="language-plaintext highlighter-rouge">chromedriver</code> est l’utilsation de chrome comme browser. Il en existe  d’autres, comme <code class="language-plaintext highlighter-rouge">geckodriver</code> pour firefox et <code class="language-plaintext highlighter-rouge">safaridriver</code> pour safari.</li>
+  <li><a href="https://github.com/alexeyraspopov/jest-webdriver/tree/master/packages/jest-environment-webdriver"><code class="language-plaintext highlighter-rouge">jest-environment-webdriver</code></a> qui permet de paramétrer jest pour qu’il puisse utiliser webdriver.</li>
+</ul>
+
+<p>Pour finir la paramétrisation, voilà le <em>package.json</em> :</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  "name": "web_serveur",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:FrancoisBrucker/web_serveur_cours.git",
+  "author": "François Brucker &lt;francois.brucker@centrale-marseille.fr&gt;",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "chromedriver": "^85.0.1",
+    "jest": "^26.5.0",
+    "jest-environment-webdriver": "^0.2.0",
+    "selenium-webdriver": "^4.0.0-alpha.7"
+  },
+  "dependencies": {
+    "purecss": "^2.0.3"
+  },
+  "jest": {
+    "testEnvironment": "jest-environment-webdriver",
+    "testEnvironmentOptions": {
+      "browser": "chrome"
+    }
+  }
+}
+</code></pre></div></div>
+
+<p>Vous remarquez qu’on a ajouté des commandes pour jest, en particulier le browser qu’il doit utiliser (mettez <code class="language-plaintext highlighter-rouge">"firefox"</code> si vous préférer tester avec firefox).</p>
+
+<p>On place notre premier essai dans le fichier : <em>user-story/look-at-google.user-story.js</em> (on a pas mis l’extension test sinon il serait exécuté tout le temps avec les tests unitaires et ça prend un peu de temps…)</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * @jest-environment jest-environment-webdriver
+ */</span>
+
+<span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">fs</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="p">{</span><span class="nx">By</span><span class="p">,</span> <span class="nx">Key</span><span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">selenium-webdriver</span><span class="dl">'</span><span class="p">);</span>
+
+
+<span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">https://www.google.com</span><span class="dl">'</span>
+
+
+<span class="nx">describe</span><span class="p">(</span><span class="dl">'</span><span class="s1">Google renders</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">test</span><span class="p">(</span><span class="dl">'</span><span class="s1">it renders</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">await</span> <span class="nx">browser</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
+    <span class="kd">const</span> <span class="nx">title</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">browser</span><span class="p">.</span><span class="nx">getTitle</span><span class="p">()</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">title</span><span class="p">).</span><span class="nx">toContain</span><span class="p">(</span><span class="dl">'</span><span class="s1">Google</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">})</span>
+
+  <span class="nx">test</span><span class="p">(</span><span class="dl">'</span><span class="s1">save a picture</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="c1">// files saved in ./reports/screenshots by default</span>
+      <span class="k">await</span> <span class="nx">browser</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
+      <span class="kd">const</span> <span class="nx">iframe</span> <span class="o">=</span> <span class="nx">browser</span><span class="p">.</span><span class="nx">findElement</span><span class="p">(</span><span class="nx">By</span><span class="p">.</span><span class="nx">css</span><span class="p">(</span><span class="dl">'</span><span class="s1">iframe</span><span class="dl">'</span><span class="p">));</span>
+      <span class="k">await</span> <span class="nx">browser</span><span class="p">.</span><span class="nx">switchTo</span><span class="p">().</span><span class="nx">frame</span><span class="p">(</span><span class="nx">iframe</span><span class="p">);</span>
+      
+      <span class="k">await</span> <span class="nx">browser</span><span class="p">.</span><span class="nx">findElement</span><span class="p">(</span><span class="nx">By</span><span class="p">.</span><span class="nx">id</span><span class="p">(</span><span class="dl">"</span><span class="s2">introAgreeButton</span><span class="dl">"</span><span class="p">)).</span><span class="nx">click</span><span class="p">()</span>
+      
+      <span class="k">await</span> <span class="nx">browser</span><span class="p">.</span><span class="nx">findElement</span><span class="p">(</span><span class="nx">By</span><span class="p">.</span><span class="nx">name</span><span class="p">(</span><span class="dl">"</span><span class="s2">q</span><span class="dl">"</span><span class="p">)).</span><span class="nx">sendKeys</span><span class="p">(</span><span class="dl">"</span><span class="s2">Carole Deumié</span><span class="dl">"</span><span class="p">,</span> <span class="nx">Key</span><span class="p">.</span><span class="nx">ENTER</span><span class="p">);</span>
+      
+      
+      <span class="nx">browser</span><span class="p">.</span><span class="nx">takeScreenshot</span><span class="p">().</span><span class="nx">then</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">fs</span><span class="p">.</span><span class="nx">writeFileSync</span><span class="p">(</span><span class="dl">'</span><span class="s1">img.png</span><span class="dl">'</span><span class="p">,</span> <span class="nx">data</span><span class="p">,</span> <span class="dl">'</span><span class="s1">base64</span><span class="dl">'</span><span class="p">)</span>
+      <span class="p">})</span>
+  <span class="p">})</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p>Que l’on lance avec la commande : <code class="language-plaintext highlighter-rouge">yarn run test --testRegex="user-story.js"</code></p>
+
+<p>Testez le. Ca fait plein de trucs. Attention, c’est comme si vous faisiez une naviguation privée, auun cookie n’est placé. <a href="https://www.selenium.dev/documentation/en/getting_started/">La doc</a> est très bien faite et explique beaucoup de choses.</p>
+
+<p>Les commandes <code class="language-plaintext highlighter-rouge">await</code> (et <code class="language-plaintext highlighter-rouge">async</code> que vous ne voyez pas là mais qui existent) permettent de gérer les événemnts asynchrones (le temps que la commande se fasse). C’est lié aux <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Utiliser_les_promesses">Promises</a>. Regardez ce <a href="https://www.grafikart.fr/tutoriels/promise-async-await-875">tuto</a> si vous voulez tout savoir sur les promesses (le tuto date un peu donc tout ce qu’il dit est maintenant implémenté dans les browser modernes. Vous pouvez le voir sur <a href="https://caniuse.com/?search=async">ce site</a> par exemple).</p>
+
+<h4 id="tests-en-local">tests en local</h4>
+
+<p>On ne va pas faire nos tests en production. On aimerait tout tester en local, comme nos tests unitaires. Pour l’instant on peut utiliser le protocole file des browser.</p>
+
+<p><em>numerologie.user-story.js</em> :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * @jest-environment jest-environment-webdriver
+ */</span>
+
+<span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">fs</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">file://</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">__dirname</span> <span class="o">+</span><span class="dl">'</span><span class="s1">/../index.html</span><span class="dl">'</span>
+
+
+
+<span class="nx">describe</span><span class="p">(</span><span class="dl">'</span><span class="s1">Le site fonctionne</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">test</span><span class="p">(</span><span class="dl">'</span><span class="s1">it renders</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">await</span> <span class="nx">browser</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
+    <span class="kd">const</span> <span class="nx">title</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">browser</span><span class="p">.</span><span class="nx">getTitle</span><span class="p">()</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">title</span><span class="p">).</span><span class="nx">toContain</span><span class="p">(</span><span class="dl">'</span><span class="s1">Numérologie</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">})</span>
+<span class="p">})</span>
+
+</code></pre></div></div>
+
+<h4 id="pour-notre-site">pour notre site</h4>
+
+<p>Transformons notre user-story en test selenium.</p>
+
+<p>TBD</p>
+
+<h2 id="node-1">node</h2>
+
+<p>Nos allons enfin utiliser <a href="https://nodejs.org/en/">node</a> sous la forme d’un serveur web.</p>
+
+<p>On a souvent besoin d’un petit serveur web, en particulier pour la gestion des données. L’usage courant est de faire son appli front avec une bibliothèque front comme <a href="https://vuejs.org/">vuejs</a> ou <a href="https://fr.reactjs.org/">react</a> et de gérer les données via le serveur node (en utilsant une architecture <a href="https://fr.wikipedia.org/wiki/Representational_state_transfer">REST</a> et/ou <a href="https://graphql.org/">graphql</a>).</p>
+
+<p>Cette partie sera décorrelée  du site front. On y reviendra lorsque l’on utilisera <a href="https://expressjs.com/fr/">express</a>, un module quasi indispensable pour créer des serveur web en node. On expliquera ici comment fonctionne node et son utilisation avec l’ovh.</p>
+
+<h3 id="mon-premier-serveur-node">mon premier serveur node</h3>
+
+<p>On va le mettre dans le fichier <em>index.js</em> qui était là depuis le début dans le fichier <em>package.json</em>.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kd">const</span> <span class="nx">hostname</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">127.0.0.1</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">port</span> <span class="o">=</span> <span class="mi">3000</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">server</span> <span class="o">=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">text/plain</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="dl">'</span><span class="s1">Hello World</span><span class="se">\n</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">server</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">port</span><span class="p">,</span> <span class="nx">hostname</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Server running at http://</span><span class="p">${</span><span class="nx">hostname</span><span class="p">}</span><span class="s2">:</span><span class="p">${</span><span class="nx">port</span><span class="p">}</span><span class="s2">/`</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>On exécute ce fichier en console : <code class="language-plaintext highlighter-rouge">node index.js</code></p>
+
+<p>Et on peut ensuite voir le résultat dans un navigateur à l’url : http://localhost:3000.</p>
+
+<p>Le code précédent crée un serveur <em>http</em> qui répond toujours la même chose dès qu’on le contacte. Il affiche en log la requête reçue, qui elle dépend de l’url donnée.</p>
+
+<p>Regardons le code de près :</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">const</code> : déclaration de constantes. Changer port par exemple produit une erreur.</li>
+  <li><code class="language-plaintext highlighter-rouge">require</code> : importation d’une bibliothèque  et affectation de celle-ci à une constante.</li>
+  <li>les fonctions peuvent se créer à la volée avec : <code class="language-plaintext highlighter-rouge">nomFonction((paramètres) =&gt; {})</code></li>
+  <li>création d’un objet serveur avec une fonction ayant 2 paramètres, la requête et la réponse (voir <a href="https://nodejs.org/dist/latest-v14.x/docs/api/http.html#http_http_createserver_options_requestlistener">doc</a>).</li>
+  <li><code class="language-plaintext highlighter-rouge">listen</code> : lien entre le serveur et le couple adresse + port.</li>
+</ul>
+
+<p>On peut afficher l’url de la requête : On récupère les variables <em>hostname</em> et <em>port</em> et on les affiche dans la console.</p>
+
+<p>Détails, en utilisant la <a href="https://nodejs.org/en/docs/">documentation</a> de nodejs :</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">http</code> : C’est le module s’occupant des échanges et du codage des données.</li>
+  <li><code class="language-plaintext highlighter-rouge">http.createServer</code> : demande un <a href="https://www.w3schools.com/nodejs/func_http_requestlistener.asp"><code class="language-plaintext highlighter-rouge">requestListener</code></a> qui est ajouté à l’événement request.</li>
+  <li>event request : deux paramètres <code class="language-plaintext highlighter-rouge">http.IncomingMessage</code>  et <code class="language-plaintext highlighter-rouge">http.ServerResponse</code>. Il est émit à chaque fois qu’un <em>request</em> est demandé</li>
+  <li><code class="language-plaintext highlighter-rouge">http.IncomingMessage</code> a un attribut url : il sert à générer le <em>Readable Stream interface</em> et beaucoup d’autres choses (événements, méthodes, …).</li>
+</ul>
+
+<p>La <a href="https://nodejs.org/api/">documentation</a> de nodejs est très bien faite. Trouvez tous les éléments mentionnés ci-dessus.</p>
+
+<p>Tout est orienté autour d’évènements auxquels le serveur doit répondre.</p>
+
+<h3 id="on-regarde-ce-que-ça-donne-sur-lovh">on regarde ce que ça donne sur l’ovh</h3>
+
+<p>Le serveur est local. Pour l’exécuter sur l’ovh il va falloir faire des trucs.</p>
+
+<h4 id="ports">ports</h4>
+
+<p>La configuration du serveur est la suivante :</p>
+
+<ul>
+  <li>chaque étudiant a un certain nombre de ports alloués pour ses serveurs, un par techno. Les ports sont visibles dans le fichier <em>readme.txt</em> à la racine de votre site.</li>
+  <li>le nginx de l’ovh enverra toutes les requêtes arrivant pour l’adresse <code class="language-plaintext highlighter-rouge">node.herbe.ovh1.ec-m.fr</code> (où <em>herbe</em> est votre herbe) à <code class="language-plaintext highlighter-rouge">127.0.0.1:port</code> (où <em>pour</em> est votre port)</li>
+</ul>
+
+<p>La conf du <a href="https://www.nginx.com/">nginx</a> (<a href="https://www.grafikart.fr/tutoriels/nginx-692">un petit tuto</a>) est :</p>
+
+<ol>
+  <li>chargée lors du lancement du démon et est le fichier <em>/etc/nginx.conf</em></li>
+  <li>ce fichier charge tous les fichiers de <em>/etc/nginx/conf.d/*.conf</em></li>
+  <li>regardons celui appelé <em>nodejs.conf</em> :
+    - il regarde la liste des port par herbe
+    - et envoie toutes les requêtes sur le démon qui écoute le port de votre herbe
+    - il n’envoie cependant pas les adresse qui commencent par <code class="language-plaintext highlighter-rouge">/static</code> qui eux sont traitées directement en cherchant un fichier dans le dossier <em>static/</em> du <code class="language-plaintext highlighter-rouge">root</code> de cette configuration : <code class="language-plaintext highlighter-rouge">/home/$user/node</code>.</li>
+</ol>
+
+<h4 id="exemple-dorganisation">exemple d’organisation</h4>
+
+<p>dans le dossier <code class="language-plaintext highlighter-rouge">~/node</code></p>
+
+<ul>
+  <li>un fichier <em>index.js</em> qui va contenir notre serveur</li>
+  <li>un dossier static contenant une image <code class="language-plaintext highlighter-rouge">img.png</code></li>
+</ul>
+
+<p>Par défaut l’adresse <code class="language-plaintext highlighter-rouge">http://node.herbe.ovh1.ec-m.fr</code> ne rend rien, juste un <a href="https://http.cat/502">502</a>.</p>
+
+<p>Lançons notre serveur ! (mais pas trop loin) : <code class="language-plaintext highlighter-rouge">node index.js</code> :</p>
+
+<ul>
+  <li>Maintenant l’adresse fonctionne et nous accueille avec un <code class="language-plaintext highlighter-rouge">Hello World</code> bien mérité.</li>
+  <li><code class="language-plaintext highlighter-rouge">http://node.herbe.ovh1.ec-m.fr/static/img.png</code> fonctionne aussi.</li>
+</ul>
+
+<p>Sauf qu’en se déconnectant, le terminal et tous ses process attachés disparaissent, dont notre serveur.</p>
+
+<p>En revanche, l’adresse  <code class="language-plaintext highlighter-rouge">http://node.herbe.ovh1.ec-m.fr/static/img.png</code> continue de fonctionner puisqu’elle n’est pas dépendante du serveur node…</p>
+
+<h4 id="le-démon">le démon</h4>
+
+<p>On va utiliser la commande <a href="https://linuxize.com/post/how-to-use-linux-screen/">screen</a> qui nous permet de détacher des process. Elle possède pleins de paramètres mais, pour nous, on va exécuter le screen avec la commande : <code class="language-plaintext highlighter-rouge">/usr/bin/screen -d -m -S node node index.js</code> :</p>
+
+<ul>
+  <li>-S : When creating a new session, this option can be used to specify a meaningful name for the session. This name  identifies
+        the session for “screen -list” and “screen -r” actions. It substitutes the default [tty.host] suffix.</li>
+  <li>-d -m :  Start  screen  in  “detached”  mode.  This  creates a new session but doesn’t attach to it. This is useful for system startup scripts.</li>
+</ul>
+
+<p>Après la commande, l’adresse <code class="language-plaintext highlighter-rouge">http://node.herbe.ovh1.ec-m.fr</code> répond, et on peut se déconnecter, ça marche toujours.</p>
+
+<p>Le process <code class="language-plaintext highlighter-rouge">screen</code> est détaché de notre shell et reste donc effectif après déconnection. On le retrouve en regardant tous nos processes : <code class="language-plaintext highlighter-rouge">ps aux | grep herbe</code>. On retrouve le process <em>screen</em>. On va le tuer et voir ce qu’il se passe : <code class="language-plaintext highlighter-rouge">kill numero_du_process</code> (le premier numéro). Le serveur a disparu et le process aussi.</p>
+
+<p>Relançons le : <code class="language-plaintext highlighter-rouge">/usr/bin/screen -d -m -S node node index.js</code>. On peut manager ses process screen sans avoir beoin de les tuer sauvagement avec <a href="https://korben.info/commande-kill-linux-tuer-processus.html">kill</a> :</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">screen -ls</code> : trouve les différents screen</li>
+  <li><code class="language-plaintext highlighter-rouge">screen -X -S [nom de la session à tuer, pour nous node] quit</code> : tue le screen</li>
+</ul>
+
+<h4 id="conf-dun-app-node">conf d’un app node</h4>
+
+<ul>
+  <li>front dans <code class="language-plaintext highlighter-rouge">~/node/static/</code>. Les fichiers html, css de l’app mais aussi ses node_modules. Le mieux est de faire un lien de votre dossier front vers <em>static</em></li>
+  <li>back dans le dossier <code class="language-plaintext highlighter-rouge">~ /node/</code> avec ses fichiers js, mais aussi ses templates si vous en avez et son dossier node_module</li>
+</ul>
+
+<h3 id="globaux-et-asynchrones">Globaux et Asynchrones</h3>
+
+<p>Node est un interpréteur javascript, mais sa grande force est dans ses modules et son fonctionnement purement asynchrone :</p>
+
+<blockquote>
+  <p>Lorsque cet évènement se produit ou lorsque j’ai fini de faire quelque chose, j’exécute une fonction.</p>
+</blockquote>
+
+<p>Par exemple, on utilise la méthode <code class="language-plaintext highlighter-rouge">setInterval</code> utilisable par défaut en node car définit dans https://nodejs.org/api/globals.html</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">affiche_bloup</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">bloup</span><span class="dl">"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">timer1</span> <span class="o">=</span> <span class="nx">setInterval</span><span class="p">(</span> <span class="nx">affiche_bloup</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span> <span class="c1">// un intervalle</span>
+
+<span class="kd">var</span> <span class="nx">timer2</span> <span class="o">=</span> <span class="nx">setInterval</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="c1">// un deuxième avec une function anonyme</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">bim</span><span class="dl">"</span><span class="p">)</span>
+<span class="p">},</span> <span class="mi">2000</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Tout est asynchrone, lorsque la condition est vérifiée la fonction est exécutée. On peut donc en ajouter plusieurs sans problème.</p>
+
+<h3 id="les-routes">les routes</h3>
+
+<p>Le but d’un serveur web est de répondre à des requêtes (une url). Cette réponse peut être beaucoup de choses (défini dans son <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types">type mime</a> qui permet au navigateur de savoir ce que c’est), les plus courantes étant du html ou des données aux format json (le reste étant souvent des fichiers statiques).</p>
+
+<p>Nodejs gère les routes de façon assez frustre, nous utiliserons ensuite  <a href="https://expressjs.com/fr/">expressjs</a> pour gérer tout ça de façon plus simple. Mais voici un exemple avec 3 routes (une où la réponse est directe, une qui charge un fichier local et une qui charge un fichier distant) et un 404 :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">http</span><span class="dl">'</span><span class="p">)</span>
+<span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">fs</span><span class="dl">'</span><span class="p">)</span>
+
+<span class="kd">var</span> <span class="nx">server</span> <span class="o">=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">((</span><span class="nx">request</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span><span class="p">{</span>
+    <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span>
+    <span class="nx">response</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">text/html</span><span class="dl">'</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">url</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">/</span><span class="dl">"</span> <span class="o">||</span> <span class="nx">request</span><span class="p">.</span><span class="nx">url</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">/home</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">response</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span>  <span class="p">{</span><span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">text/html</span><span class="dl">'</span><span class="p">})</span>
+        <span class="kd">var</span> <span class="nx">readStream</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">createReadStream</span><span class="p">(</span><span class="nx">__dirname</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">/index.html</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">utf8</span><span class="dl">"</span><span class="p">)</span>
+        <span class="nx">readStream</span><span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">url</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">/contact</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">response</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="dl">"</span><span class="s2">&lt;html&gt;&lt;head&gt;&lt;title&gt;contact&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;contact&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;</span><span class="dl">"</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">url</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">/lecture</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span>
+		<span class="nx">response</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">text/plain</span><span class="dl">'</span><span class="p">);</span>
+	
+        <span class="nx">http</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">http://www.gutenberg.org/files/4300/4300-0.txt</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">response_get</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">response_get</span><span class="p">.</span><span class="nx">setEncoding</span><span class="p">(</span><span class="dl">'</span><span class="s1">utf8</span><span class="dl">'</span><span class="p">);</span>
+            <span class="nx">response_get</span><span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
+        <span class="p">})</span>
+    <span class="p">}</span> 
+    <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">=</span> <span class="mi">404</span><span class="p">;</span>
+        <span class="nx">response</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">text/plain</span><span class="dl">'</span><span class="p">);</span>
+        <span class="nx">response</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">})</span>
+
+<span class="nx">server</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mi">3000</span><span class="p">,</span> <span class="dl">'</span><span class="s1">localhost</span><span class="dl">'</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">c'est parti</span><span class="dl">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Notez comment un fichier local et distant sont chargés. En particulier comment la réponse du ficher distant est rendue immédiatement. Ceci permet de donner une réponse même si tout n’est pas chargé.</p>
+
+<h2 id="separation-frontback">separation front/back</h2>
+
+<p>Avant de rajouter un serveur web à notre projet, on va commencer par le réorganiser.</p>
+
+<ul>
+  <li>On va créer un dossier static dans lequel on mettra le front static (pour l’instant tout notre site), avec ses modules front.</li>
+  <li>mettre tous nos tests unitaires et de user stories dans un dossier test (pas <code class="language-plaintext highlighter-rouge">__tests__</code> car par défaut tous les fichiers de ce dossier sont exécutés en tant que tests, et nous on veut séparer tests unitaires et tests de users stories).</li>
+</ul>
+
+<p>Il faut un peu jardiner le code pour qu’il continue de fonctionner :</p>
+
+<ul>
+  <li>Il faut changer les chemin d’import des tests</li>
+  <li>il faut faire deux package.json (un pour le back et un pour le front) et procéder aux imports. Le plus simple est de supprimer les fichiers node_modules et de les laisser se recréer avec un <code class="language-plaintext highlighter-rouge">yarn install</code> côté front et côté back</li>
+  <li>il faut un peut changer la configuration de jest pour qu’il ne voitpas le dossier static et son <em>package.json</em></li>
+</ul>
+
+<p>On a alors une architechture qui ressemble à (commande <code class="language-plaintext highlighter-rouge">tree -I node_modules </code>) :</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.
+├── index.js
+├── package.json
+├── static
+│   ├── index.html
+│   ├── main.css
+│   ├── main.js
+│   ├── numerologie.js
+│   ├── package.json
+│   └── yarn.lock
+├── tests
+│   ├── numerologie.test.js
+│   └── user-stories
+│       ├── look-at-google.user-story.js
+│       └── numerologie.user-story.js
+└── yarn.lock
+
+</code></pre></div></div>
+
+<p>Avec le fichier <em>package.json</em> du back qui ressemble à :</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  "name": "web_serveur",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:FrancoisBrucker/web_serveur_cours.git",
+  "author": "François Brucker &lt;francois.brucker@centrale-marseille.fr&gt;",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest",
+    "user-story": "jest --testRegex=\"user-story.js\""
+  },
+  "devDependencies": {
+    "chromedriver": "^85.0.1",
+    "jest": "^26.5.0",
+    "jest-environment-webdriver": "^0.2.0",
+    "selenium-webdriver": "^4.0.0-alpha.7"
+  },
+  "jest": {
+    "testEnvironment": "jest-environment-webdriver",
+    "testEnvironmentOptions": {
+      "browser": "chrome"
+    },
+    "modulePathIgnorePatterns": ["&lt;rootDir&gt;/static"]
+  }
+}
+
+
+</code></pre></div></div>
+
+<blockquote>
+  <p>Notes la modification des paramètres de jest.</p>
+</blockquote>
+
+<p>Et celui du du <em>static/package.json</em> qui ne contient plus que la dépendance purecss :</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  "name": "web_serveur",
+  "version": "1.0.0",
+  "main": "index.html",
+  "repository": "git@github.com:FrancoisBrucker/web_serveur_cours.git",
+  "author": "François Brucker &lt;francois.brucker@centrale-marseille.fr&gt;",
+  "license": "MIT",
+  "dependencies": {
+    "purecss": "^2.0.3"
+  }
+}
+
+</code></pre></div></div>
+
+<h2 id="express">express</h2>
+
+<p>On va ajouter le module <a href="https://expressjs.com/fr/">expressjs</a> à notre projet back : <code class="language-plaintext highlighter-rouge">yarn add express</code></p>
+
+<p>Après une courte intro vous montrant comment tout ça se passe, on changera notre site pour qu’il prenne en compte express</p>
+
+<h3 id="les-requêtes-en-express">les requêtes en express</h3>
+
+<p>Comme toute bibliothèque node pour l’utiliser on utilise <code class="language-plaintext highlighter-rouge">require</code> :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">express</span><span class="dl">'</span><span class="p">)</span>
+<span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>Notez que l’import est une fonction, ce qui permettrait de passer des paramètres à l’app express si besoin.</p>
+
+<p>Tout va maintenant passer via l’objet <code class="language-plaintext highlighter-rouge">app</code>. Chaque requête va passer dans les appels successifs jusqu’à être <em>“consommée”</em>.</p>
+
+<p>On utilisera essentiellement quatre méthodes de <code class="language-plaintext highlighter-rouge">app</code> :</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">app.set()</code> : qui s’occupe des paramètres de express,</li>
+  <li><code class="language-plaintext highlighter-rouge">app.use()</code> : qui reçoit toutes les requêtes</li>
+  <li><code class="language-plaintext highlighter-rouge">app.get()</code>, <code class="language-plaintext highlighter-rouge">app.post()</code> : qui reçoivent respectivement les requêtes http get et post.</li>
+</ul>
+
+<p>Avant d’expliquer comment tout ça se passe, regardons un exemple en recréant un fichier <em>index.js</em> utilisant express dans notre projet :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kd">var</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">express</span><span class="dl">'</span><span class="p">)</span>
+<span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">()</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Time:</span><span class="dl">'</span><span class="p">,</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">());</span>
+    <span class="nx">next</span><span class="p">();</span> <span class="c1">// sans cette ligne on ne pourra pas poursuivre.</span>
+<span class="p">})</span>
+
+
+
+<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span>
+    <span class="nx">response</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">text/html</span><span class="dl">'</span><span class="p">);</span>
+
+    <span class="nx">response</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="dl">"</span><span class="s2">&lt;html&gt;&lt;head&gt;&lt;title&gt;index&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;Hello world&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">})</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">ensuite</span><span class="dl">"</span><span class="p">);</span>
+    <span class="nx">next</span><span class="p">();</span> <span class="c1">// sans cette ligne on ne pourra pas poursuivre.</span>
+<span class="p">})</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/contact</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span>
+    <span class="nx">response</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">text/html</span><span class="dl">'</span><span class="p">);</span>
+
+    <span class="nx">response</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="dl">"</span><span class="s2">&lt;html&gt;&lt;head&gt;&lt;title&gt;contact&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;contact&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">})</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">request</span><span class="p">,</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">et c'est le 404</span><span class="dl">"</span><span class="p">);</span>
+    
+    <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span>
+    <span class="nx">response</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">text/html</span><span class="dl">'</span><span class="p">);</span>
+
+    <span class="nx">response</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="dl">"</span><span class="s2">&lt;html&gt;&lt;head&gt;&lt;title&gt;quatre cent quatre&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;404&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;</span><span class="dl">"</span><span class="p">);</span>
+    
+<span class="p">})</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mi">3000</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">c'est parti</span><span class="dl">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Lorsque vous exécutez votre code vous voyez des choses qui s’affichent dans la console :</p>
+
+<ul>
+  <li>“Time” s’affiche à chaque appel</li>
+  <li>“ensuite” ne s’affiche que si notre requête est différente de ‘/’</li>
+  <li>“et c’est le 404” s’affiche si l’on demande une url différente de <code class="language-plaintext highlighter-rouge">/</code> ou <code class="language-plaintext highlighter-rouge">contact</code></li>
+</ul>
+
+<p>Ceci s’explique par les différentes manières dont peuvent s’appeler les méthodes de <code class="language-plaintext highlighter-rouge">app</code> :</p>
+
+<ul>
+  <li>
+    <p>un unique paramètre qui est une <code class="language-plaintext highlighter-rouge">fonction(request, response)</code> :</p>
+  </li>
+  <li>un unique paramètre qui est une <code class="language-plaintext highlighter-rouge">fonction(request, response, next)</code></li>
+  <li>deux paramètres un premier qui est un <em>“filtre à requête</em> et le second la fonction à 2 ou 3 paramètres.</li>
+</ul>
+
+<p>TBD : expliquer le next.</p>
+
+<h3 id="les-fichiers-statiques">les fichiers statiques</h3>
+
+<p>On serait tenté de :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">response</span><span class="p">.</span><span class="nx">sendFile</span><span class="p">(</span><span class="nx">__dirname</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">/static/index.html</span><span class="dl">"</span><span class="p">)</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p>TBD</p>
+
+<h3 id="pour-notre-site-1">pour notre site</h3>
+
+<p>Pour l’instant pas de routes, que des fichiers statiques. On utilise le middleware e pour le dev. En prod le nginx passera outre, le node ne le verra même pas (à tester)</p>
+
+<ul>
+  <li>404.</li>
+</ul>
+
+<h3 id="tests-avec-supertests">tests avec supertests</h3>
+
+<p><a href="https://dev.to/nedsoft/testing-nodejs-express-api-with-jest-and-supertest-1km6">un tuto</a></p>
+
+<p>On teste toutes les routes du serveur pour être sur de ne pas avoir de 404.</p>
+
+<p>Pas une user story ni un test unitaire, on vérifie que nos routes sont ok.</p>
+
+<h2 id="loggeur">loggeur</h2>
+
+<h2 id="on-déporte-notre-calcul-de-numérologue-dans-un-appel-serveur">on déporte notre calcul de numérologue dans un appel serveur.</h2>
+
+<ul>
+  <li>requetes get et post test avec super test et postman</li>
+  <li>fetch coté front</li>
+  <li>
+    <p>routes et sous routes avec les API</p>
+  </li>
+  <li>grapheql ?</li>
+</ul>
+
+<h2 id="à-faire-">à faire ?</h2>
+
+<ul>
+  <li>templating express ?</li>
+</ul>
+
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d&#39;informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d&#39;informatique</li><li><a class="u-email" href="mailto:francois.brucker@centrale-marseille.fr">francois.brucker@centrale-marseille.fr</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li><li><a href="https://www.twitter.com/p_____p___"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">p_____p___</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.
+A destination des 1A (tronc commun), des 2A (de l&#39;approfondissement MIE) et des 3A (de l&#39;option digital·e)</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
