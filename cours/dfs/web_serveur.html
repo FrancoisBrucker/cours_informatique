@@ -645,61 +645,60 @@ appelées <em>user stories</em>.</p>
 
 <p>Pour que l’on puisse faire fonctionner selenium vous devez avoir un java d’installé (vous devriez le faire avec <a href="https://sdkman.io/">sdkman</a>)</p>
 
-<p>On va avoir besoin de plusieurs bibliothèques : <code class="language-plaintext highlighter-rouge">yarn add --dev selenium-webdriver chromedriver jest-environment-webdriver</code> :</p>
+<p>On va avoir besoin de plusieurs bibliothèques : <code class="language-plaintext highlighter-rouge">yarn add --dev selenium-webdriver chromedriver</code> :</p>
 
 <ul>
   <li><code class="language-plaintext highlighter-rouge">selenium-webdriver</code> est selenium proprement dit,</li>
-  <li><code class="language-plaintext highlighter-rouge">chromedriver</code> est l’utilsation de chrome comme browser. Il en existe  d’autres, comme <code class="language-plaintext highlighter-rouge">geckodriver</code> pour firefox et <code class="language-plaintext highlighter-rouge">safaridriver</code> pour safari.</li>
-  <li><a href="https://github.com/alexeyraspopov/jest-webdriver/tree/master/packages/jest-environment-webdriver"><code class="language-plaintext highlighter-rouge">jest-environment-webdriver</code></a> qui permet de paramétrer jest pour qu’il puisse utiliser webdriver.</li>
+  <li>un driver de navigateur (<code class="language-plaintext highlighter-rouge">geckodriver</code> pour firefox ou <code class="language-plaintext highlighter-rouge">chromedriver</code> pour chrome)</li>
 </ul>
 
-<p>Pour finir la paramétrisation, voilà le <em>package.json</em> :</p>
+<p>Pour finir la paramétrisation, voilà le <em>package.json</em> avec les deux driver de navigateurs installés :</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
-  "name": "web_serveur",
+  "name": "selenium_jest",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git@github.com:FrancoisBrucker/web_serveur_cours.git",
-  "author": "François Brucker &lt;francois.brucker@centrale-marseille.fr&gt;",
   "license": "MIT",
-  "scripts": {
-    "test": "jest"
-  },
   "devDependencies": {
-    "chromedriver": "^85.0.1",
-    "jest": "^26.5.0",
-    "jest-environment-webdriver": "^0.2.0",
-    "selenium-webdriver": "^4.0.0-alpha.7"
-  },
-  "dependencies": {
-    "purecss": "^2.0.3"
-  },
-  "jest": {
-    "testEnvironment": "jest-environment-webdriver",
-    "testEnvironmentOptions": {
-      "browser": "chrome"
-    }
+    "geckodriver": "^1.20.0",
+    "jest": "^26.5.2",
+    "selenium-webdriver": "^4.0.0-alpha.7",
+    "chromedriver": "85.0.0"
   }
 }
 </code></pre></div></div>
 
-<p>Vous remarquez qu’on a ajouté des commandes pour jest, en particulier le browser qu’il doit utiliser (mettez <code class="language-plaintext highlighter-rouge">"firefox"</code> si vous préférer tester avec firefox).</p>
+<blockquote>
+  <p><strong>Nota Bene :</strong> On a mis la version 85 de chromedriver car la version 86 n’est pas encore supportée chez moi.</p>
+</blockquote>
 
 <p>On place notre premier essai dans le fichier : <em>user-story/look-at-google.user-story.js</em> (on a pas mis l’extension test sinon il serait exécuté tout le temps avec les tests unitaires et ça prend un peu de temps…)</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
- * @jest-environment jest-environment-webdriver
- */</span>
-
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 <span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">fs</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">const</span> <span class="p">{</span><span class="nx">By</span><span class="p">,</span> <span class="nx">Key</span><span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">selenium-webdriver</span><span class="dl">'</span><span class="p">);</span>
-
 
 <span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">https://www.google.com</span><span class="dl">'</span>
 
 
+
+<span class="kd">const</span> <span class="p">{</span><span class="nx">By</span><span class="p">,</span> <span class="nx">Key</span><span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">selenium-webdriver</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">webdriver</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">selenium-webdriver</span><span class="dl">'</span><span class="p">);</span>
+ 
+ 
 <span class="nx">describe</span><span class="p">(</span><span class="dl">'</span><span class="s1">Google renders</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+
+    <span class="c1">// beforeEach(() =&gt; {</span>
+    <span class="c1">//     require('chromedriver');</span>
+    <span class="c1">//     browser =  new webdriver.Builder().forBrowser('chrome').build()</span>
+    <span class="c1">// })</span>
+
+    <span class="nx">beforeEach</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">geckodriver</span><span class="dl">'</span><span class="p">);</span>
+        <span class="nx">browser</span> <span class="o">=</span>  <span class="k">new</span> <span class="nx">webdriver</span><span class="p">.</span><span class="nx">Builder</span><span class="p">().</span><span class="nx">forBrowser</span><span class="p">(</span><span class="dl">'</span><span class="s1">firefox</span><span class="dl">'</span><span class="p">).</span><span class="nx">build</span><span class="p">()</span>
+    <span class="p">})</span>
+
+
   <span class="nx">test</span><span class="p">(</span><span class="dl">'</span><span class="s1">it renders</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="k">await</span> <span class="nx">browser</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
     <span class="kd">const</span> <span class="nx">title</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">browser</span><span class="p">.</span><span class="nx">getTitle</span><span class="p">()</span>
@@ -707,20 +706,25 @@ appelées <em>user stories</em>.</p>
   <span class="p">})</span>
 
   <span class="nx">test</span><span class="p">(</span><span class="dl">'</span><span class="s1">save a picture</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-      <span class="c1">// files saved in ./reports/screenshots by default</span>
-      <span class="k">await</span> <span class="nx">browser</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
-      <span class="kd">const</span> <span class="nx">iframe</span> <span class="o">=</span> <span class="nx">browser</span><span class="p">.</span><span class="nx">findElement</span><span class="p">(</span><span class="nx">By</span><span class="p">.</span><span class="nx">css</span><span class="p">(</span><span class="dl">'</span><span class="s1">iframe</span><span class="dl">'</span><span class="p">));</span>
-      <span class="k">await</span> <span class="nx">browser</span><span class="p">.</span><span class="nx">switchTo</span><span class="p">().</span><span class="nx">frame</span><span class="p">(</span><span class="nx">iframe</span><span class="p">);</span>
+        <span class="c1">// files saved in ./reports/screenshots by default</span>
+        <span class="k">await</span> <span class="nx">browser</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
+        <span class="kd">const</span> <span class="nx">iframe</span> <span class="o">=</span> <span class="nx">browser</span><span class="p">.</span><span class="nx">findElement</span><span class="p">(</span><span class="nx">By</span><span class="p">.</span><span class="nx">css</span><span class="p">(</span><span class="dl">'</span><span class="s1">iframe</span><span class="dl">'</span><span class="p">));</span>
+        <span class="k">await</span> <span class="nx">browser</span><span class="p">.</span><span class="nx">switchTo</span><span class="p">().</span><span class="nx">frame</span><span class="p">(</span><span class="nx">iframe</span><span class="p">);</span>
       
-      <span class="k">await</span> <span class="nx">browser</span><span class="p">.</span><span class="nx">findElement</span><span class="p">(</span><span class="nx">By</span><span class="p">.</span><span class="nx">id</span><span class="p">(</span><span class="dl">"</span><span class="s2">introAgreeButton</span><span class="dl">"</span><span class="p">)).</span><span class="nx">click</span><span class="p">()</span>
+        <span class="k">await</span> <span class="nx">browser</span><span class="p">.</span><span class="nx">findElement</span><span class="p">(</span><span class="nx">By</span><span class="p">.</span><span class="nx">id</span><span class="p">(</span><span class="dl">"</span><span class="s2">introAgreeButton</span><span class="dl">"</span><span class="p">)).</span><span class="nx">click</span><span class="p">()</span>
+
+        <span class="k">await</span> <span class="nx">browser</span><span class="p">.</span><span class="nx">switchTo</span><span class="p">().</span><span class="nx">defaultContent</span><span class="p">();</span>
+        <span class="k">await</span> <span class="nx">browser</span><span class="p">.</span><span class="nx">findElement</span><span class="p">(</span><span class="nx">By</span><span class="p">.</span><span class="nx">name</span><span class="p">(</span><span class="dl">"</span><span class="s2">q</span><span class="dl">"</span><span class="p">)).</span><span class="nx">sendKeys</span><span class="p">(</span><span class="dl">"</span><span class="s2">Carole Deumié</span><span class="dl">"</span><span class="p">,</span> <span class="nx">Key</span><span class="p">.</span><span class="nx">ENTER</span><span class="p">);</span>
       
-      <span class="k">await</span> <span class="nx">browser</span><span class="p">.</span><span class="nx">findElement</span><span class="p">(</span><span class="nx">By</span><span class="p">.</span><span class="nx">name</span><span class="p">(</span><span class="dl">"</span><span class="s2">q</span><span class="dl">"</span><span class="p">)).</span><span class="nx">sendKeys</span><span class="p">(</span><span class="dl">"</span><span class="s2">Carole Deumié</span><span class="dl">"</span><span class="p">,</span> <span class="nx">Key</span><span class="p">.</span><span class="nx">ENTER</span><span class="p">);</span>
       
-      
-      <span class="nx">browser</span><span class="p">.</span><span class="nx">takeScreenshot</span><span class="p">().</span><span class="nx">then</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-        <span class="nx">fs</span><span class="p">.</span><span class="nx">writeFileSync</span><span class="p">(</span><span class="dl">'</span><span class="s1">img.png</span><span class="dl">'</span><span class="p">,</span> <span class="nx">data</span><span class="p">,</span> <span class="dl">'</span><span class="s1">base64</span><span class="dl">'</span><span class="p">)</span>
-      <span class="p">})</span>
-  <span class="p">})</span>
+        <span class="nx">browser</span><span class="p">.</span><span class="nx">takeScreenshot</span><span class="p">().</span><span class="nx">then</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="nx">fs</span><span class="p">.</span><span class="nx">writeFileSync</span><span class="p">(</span><span class="dl">'</span><span class="s1">img.png</span><span class="dl">'</span><span class="p">,</span> <span class="nx">data</span><span class="p">,</span> <span class="dl">'</span><span class="s1">base64</span><span class="dl">'</span><span class="p">)</span>
+        <span class="p">})</span>
+    <span class="p">},</span> <span class="mi">10000</span><span class="p">)</span>
+    
+    <span class="nx">afterEach</span><span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">await</span> <span class="nx">browser</span><span class="p">.</span><span class="nx">quit</span><span class="p">()</span>
+    <span class="p">})</span>
 <span class="p">})</span>
 </code></pre></div></div>
 
@@ -729,6 +733,8 @@ appelées <em>user stories</em>.</p>
 <p>Testez le. Ca fait plein de trucs. Attention, c’est comme si vous faisiez une naviguation privée, auun cookie n’est placé. <a href="https://www.selenium.dev/documentation/en/getting_started/">La doc</a> est très bien faite et explique beaucoup de choses.</p>
 
 <p>Les commandes <code class="language-plaintext highlighter-rouge">await</code> (et <code class="language-plaintext highlighter-rouge">async</code> que vous ne voyez pas là mais qui existent) permettent de gérer les événemnts asynchrones (le temps que la commande se fasse). C’est lié aux <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Utiliser_les_promesses">Promises</a>. Regardez ce <a href="https://www.grafikart.fr/tutoriels/promise-async-await-875">tuto</a> si vous voulez tout savoir sur les promesses (le tuto date un peu donc tout ce qu’il dit est maintenant implémenté dans les browser modernes. Vous pouvez le voir sur <a href="https://caniuse.com/?search=async">ce site</a> par exemple).</p>
+
+<p>Enfin, on a augmenté le temps disponible du second test à 10s.</p>
 
 <h4 id="tests-en-local">tests en local</h4>
 
