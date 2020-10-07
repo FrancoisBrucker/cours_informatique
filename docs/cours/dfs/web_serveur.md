@@ -613,62 +613,61 @@ Avant d'utiliser selenium pour notre site, faisons le fonctionner.
 
 Pour que l'on puisse faire fonctionner selenium vous devez avoir un java d'installé (vous devriez le faire avec [sdkman](https://sdkman.io/))
 
-On va avoir besoin de plusieurs bibliothèques : `yarn add --dev selenium-webdriver chromedriver jest-environment-webdriver` :
+
+On va avoir besoin de plusieurs bibliothèques : `yarn add --dev selenium-webdriver chromedriver` :
 
   - `selenium-webdriver` est selenium proprement dit,
-  - `chromedriver` est l'utilsation de chrome comme browser. Il en existe  d'autres, comme `geckodriver` pour firefox et `safaridriver` pour safari.
-  - [`jest-environment-webdriver`](https://github.com/alexeyraspopov/jest-webdriver/tree/master/packages/jest-environment-webdriver) qui permet de paramétrer jest pour qu'il puisse utiliser webdriver.
+  - un driver de navigateur (`geckodriver` pour firefox ou `chromedriver` pour chrome)
+  
 
-Pour finir la paramétrisation, voilà le *package.json* :
+Pour finir la paramétrisation, voilà le *package.json* avec les deux driver de navigateurs installés :
 
 ~~~
 {
-  "name": "web_serveur",
+  "name": "selenium_jest",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git@github.com:FrancoisBrucker/web_serveur_cours.git",
-  "author": "François Brucker <francois.brucker@centrale-marseille.fr>",
   "license": "MIT",
-  "scripts": {
-    "test": "jest"
-  },
   "devDependencies": {
-    "chromedriver": "^85.0.1",
-    "jest": "^26.5.0",
-    "jest-environment-webdriver": "^0.2.0",
-    "selenium-webdriver": "^4.0.0-alpha.7"
-  },
-  "dependencies": {
-    "purecss": "^2.0.3"
-  },
-  "jest": {
-    "testEnvironment": "jest-environment-webdriver",
-    "testEnvironmentOptions": {
-      "browser": "chrome"
-    }
+    "geckodriver": "^1.20.0",
+    "jest": "^26.5.2",
+    "selenium-webdriver": "^4.0.0-alpha.7",
+    "chromedriver": "85.0.0"
   }
 }
 ~~~
 
-Vous remarquez qu'on a ajouté des commandes pour jest, en particulier le browser qu'il doit utiliser (mettez `"firefox"` si vous préférer tester avec firefox).
+> **Nota Bene :** On a mis la version 85 de chromedriver car la version 86 n'est pas encore supportée chez moi.
 
-  
+
 On place notre premier essai dans le fichier : *user-story/look-at-google.user-story.js* (on a pas mis l'extension test sinon il serait exécuté tout le temps avec les tests unitaires et ça prend un peu de temps...)
 
 ~~~ js
-/**
- * @jest-environment jest-environment-webdriver
- */
 
 var fs = require('fs');
-
-const {By, Key} = require('selenium-webdriver');
-
 
 const url = 'https://www.google.com'
 
 
+
+const {By, Key} = require('selenium-webdriver');
+
+const webdriver = require('selenium-webdriver');
+ 
+ 
 describe('Google renders', () => {
+
+    // beforeEach(() => {
+    //     require('chromedriver');
+    //     browser =  new webdriver.Builder().forBrowser('chrome').build()
+    // })
+
+    beforeEach(() => {
+        require('geckodriver');
+        browser =  new webdriver.Builder().forBrowser('firefox').build()
+    })
+
+
   test('it renders', async () => {
     await browser.get(url)
     const title = await browser.getTitle()
@@ -676,20 +675,25 @@ describe('Google renders', () => {
   })
 
   test('save a picture', async () => {
-      // files saved in ./reports/screenshots by default
-      await browser.get(url)
-      const iframe = browser.findElement(By.css('iframe'));
-      await browser.switchTo().frame(iframe);
+        // files saved in ./reports/screenshots by default
+        await browser.get(url)
+        const iframe = browser.findElement(By.css('iframe'));
+        await browser.switchTo().frame(iframe);
       
-      await browser.findElement(By.id("introAgreeButton")).click()
+        await browser.findElement(By.id("introAgreeButton")).click()
+
+        await browser.switchTo().defaultContent();
+        await browser.findElement(By.name("q")).sendKeys("Carole Deumié", Key.ENTER);
       
-      await browser.findElement(By.name("q")).sendKeys("Carole Deumié", Key.ENTER);
       
-      
-      browser.takeScreenshot().then((data) => {
-        fs.writeFileSync('img.png', data, 'base64')
-      })
-  })
+        browser.takeScreenshot().then((data) => {
+          fs.writeFileSync('img.png', data, 'base64')
+        })
+    }, 10000)
+    
+    afterEach(async () => {
+        await browser.quit()
+    })
 })
 ~~~
 
@@ -698,6 +702,8 @@ Que l'on lance avec la commande : `yarn run test --testRegex="user-story.js"`
 Testez le. Ca fait plein de trucs. Attention, c'est comme si vous faisiez une naviguation privée, auun cookie n'est placé. [La doc](https://www.selenium.dev/documentation/en/getting_started/) est très bien faite et explique beaucoup de choses. 
 
 Les commandes `await` (et `async` que vous ne voyez pas là mais qui existent) permettent de gérer les événemnts asynchrones (le temps que la commande se fasse). C'est lié aux [Promises](https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Utiliser_les_promesses). Regardez ce [tuto](https://www.grafikart.fr/tutoriels/promise-async-await-875) si vous voulez tout savoir sur les promesses (le tuto date un peu donc tout ce qu'il dit est maintenant implémenté dans les browser modernes. Vous pouvez le voir sur [ce site](https://caniuse.com/?search=async) par exemple).
+
+Enfin, on a augmenté le temps disponible du second test à 10s.
 
 
 #### tests en local
