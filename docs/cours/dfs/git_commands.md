@@ -3,6 +3,7 @@ layout: page
 title:  "git : les commandes"
 category: tutorial
 tags: dev git 
+author: "François Brucker"
 ---
 
 ## But
