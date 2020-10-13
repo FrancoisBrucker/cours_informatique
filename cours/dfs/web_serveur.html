@@ -965,100 +965,9 @@ appelées <em>user stories</em>.</p>
 
 <p>Notez comment un fichier local et distant sont chargés. En particulier comment la réponse du ficher distant est rendue immédiatement. Ceci permet de donner une réponse même si tout n’est pas chargé.</p>
 
-<h2 id="separation-frontback">separation front/back</h2>
-
-<p>Avant de rajouter un serveur web à notre projet, on va commencer par le réorganiser.</p>
-
-<ul>
-  <li>On va créer un dossier static dans lequel on mettra le front static (pour l’instant tout notre site), avec ses modules front.</li>
-  <li>mettre tous nos tests unitaires et de user stories dans un dossier test (pas <code class="language-plaintext highlighter-rouge">__tests__</code> car par défaut tous les fichiers de ce dossier sont exécutés en tant que tests, et nous on veut séparer tests unitaires et tests de users stories).</li>
-</ul>
-
-<p>Il faut un peu jardiner le code pour qu’il continue de fonctionner :</p>
-
-<ul>
-  <li>Il faut changer les chemin d’import des tests</li>
-  <li>il faut faire deux package.json (un pour le back et un pour le front) et procéder aux imports. Le plus simple est de supprimer les fichiers node_modules et de les laisser se recréer avec un <code class="language-plaintext highlighter-rouge">yarn install</code> côté front et côté back</li>
-  <li>il faut un peut changer la configuration de jest pour qu’il ne voitpas le dossier static et son <em>package.json</em></li>
-</ul>
-
-<p>On a alors une architechture qui ressemble à (commande <code class="language-plaintext highlighter-rouge">tree -I node_modules </code>) :</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.
-├── index.js
-├── package.json
-├── static
-│   ├── index.html
-│   ├── main.css
-│   ├── main.js
-│   ├── numerologie.js
-│   ├── package.json
-│   └── yarn.lock
-├── tests
-│   ├── numerologie.test.js
-│   └── user-stories
-│       ├── look-at-google.user-story.js
-│       └── numerologie.user-story.js
-└── yarn.lock
-
-</code></pre></div></div>
-
-<p>Avec le fichier <em>package.json</em> du back qui ressemble à :</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
-  "name": "web_serveur",
-  "version": "1.0.0",
-  "main": "index.js",
-  "repository": "git@github.com:FrancoisBrucker/web_serveur_cours.git",
-  "author": "François Brucker &lt;francois.brucker@centrale-marseille.fr&gt;",
-  "license": "MIT",
-  "scripts": {
-    "test": "jest",
-    "user-story": "jest --testRegex=\"user-story.js\""
-  },
-  "devDependencies": {
-    "chromedriver": "^85.0.1",
-    "jest": "^26.5.0",
-    "jest-environment-webdriver": "^0.2.0",
-    "selenium-webdriver": "^4.0.0-alpha.7"
-  },
-  "jest": {
-    "testEnvironment": "jest-environment-webdriver",
-    "testEnvironmentOptions": {
-      "browser": "chrome"
-    },
-    "modulePathIgnorePatterns": ["&lt;rootDir&gt;/static"]
-  }
-}
-
-
-</code></pre></div></div>
-
-<blockquote>
-  <p>Notes la modification des paramètres de jest.</p>
-</blockquote>
-
-<p>Et celui du du <em>static/package.json</em> qui ne contient plus que la dépendance purecss :</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
-  "name": "web_serveur",
-  "version": "1.0.0",
-  "main": "index.html",
-  "repository": "git@github.com:FrancoisBrucker/web_serveur_cours.git",
-  "author": "François Brucker &lt;francois.brucker@centrale-marseille.fr&gt;",
-  "license": "MIT",
-  "dependencies": {
-    "purecss": "^2.0.3"
-  }
-}
-
-</code></pre></div></div>
-
 <h2 id="express">express</h2>
 
-<p>On va ajouter le module <a href="https://expressjs.com/fr/">expressjs</a> à notre projet back : <code class="language-plaintext highlighter-rouge">yarn add express</code></p>
-
-<p>Après une courte intro vous montrant comment tout ça se passe, on changera notre site pour qu’il prenne en compte express</p>
+<p>La gestion de différentes routes est malaisée en node pure, on se perd vite dans tous ces else/if. C’est pourquoi on va utiliser la bibliothèque <a href="https://expressjs.com/fr/">expressjs</a> à notre projet back : <code class="language-plaintext highlighter-rouge">yarn add express</code></p>
 
 <h3 id="les-requêtes-en-express">les requêtes en express</h3>
 
@@ -1115,7 +1024,7 @@ appelées <em>user stories</em>.</p>
 <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">request</span><span class="p">,</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">et c'est le 404</span><span class="dl">"</span><span class="p">);</span>
     
-    <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span>
+    <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">=</span> <span class="mi">404</span><span class="p">;</span>
     <span class="nx">response</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">text/html</span><span class="dl">'</span><span class="p">);</span>
 
     <span class="nx">response</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="dl">"</span><span class="s2">&lt;html&gt;&lt;head&gt;&lt;title&gt;quatre cent quatre&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;404&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;</span><span class="dl">"</span><span class="p">);</span>
@@ -1129,9 +1038,9 @@ appelées <em>user stories</em>.</p>
 <p>Lorsque vous exécutez votre code vous voyez des choses qui s’affichent dans la console :</p>
 
 <ul>
-  <li>“Time” s’affiche à chaque appel</li>
-  <li>“ensuite” ne s’affiche que si notre requête est différente de ‘/’</li>
-  <li>“et c’est le 404” s’affiche si l’on demande une url différente de <code class="language-plaintext highlighter-rouge">/</code> ou <code class="language-plaintext highlighter-rouge">contact</code></li>
+  <li><em>“Time”</em> s’affiche à chaque appel</li>
+  <li><em>“ensuite”</em> ne s’affiche que si notre requête est différente de ‘/’</li>
+  <li><em>“et c’est le 404”</em> s’affiche si l’on demande une url différente de <code class="language-plaintext highlighter-rouge">/</code> ou <code class="language-plaintext highlighter-rouge">contact</code></li>
 </ul>
 
 <p>Ceci s’explique par les différentes manières dont peuvent s’appeler les méthodes de <code class="language-plaintext highlighter-rouge">app</code> :</p>
@@ -1141,31 +1050,196 @@ appelées <em>user stories</em>.</p>
     <p>un unique paramètre qui est une <code class="language-plaintext highlighter-rouge">fonction(request, response)</code> :</p>
   </li>
   <li>un unique paramètre qui est une <code class="language-plaintext highlighter-rouge">fonction(request, response, next)</code></li>
-  <li>deux paramètres un premier qui est un <em>“filtre à requête</em> et le second la fonction à 2 ou 3 paramètres.</li>
+  <li>deux paramètres un premier qui est un <em>“filtre à requête</em> (<code class="language-plaintext highlighter-rouge">get</code> dans l’exemple) et le second la fonction à 2 ou 3 paramètres.</li>
 </ul>
 
-<p>TBD : expliquer le next.</p>
+<p>Les deux ou trois paramètres de la requetes sont des objets qui permettent de gérer :</p>
+
+<ul>
+  <li>la <a href="https://expressjs.com/fr/api.html#req">requête</a> (paramètre <code class="language-plaintext highlighter-rouge">request</code>) qui permet de tout savoir sur la requête,</li>
+  <li>la <a href="http://expressjs.com/fr/api.html#res">réponse</a> (paramètre <code class="language-plaintext highlighter-rouge">response</code>) qui permet de gérer la réponse que va envoyer le serveur</li>
+  <li>lorsque l’on exécute ce paramètre, la requête est envoyé à la prochaine route possible (l’ordre est déterminé par l’ordre dans le quel ces routes sont écrites dans le code). S’il n’y a pas de paramètre <code class="language-plaintext highlighter-rouge">next</code> ou que la fonction n’est pas appelée, la requête est consommée : elle ne sera pas passé à d’autres routes.</li>
+</ul>
+
+<blockquote>
+  <p>**Nota Bene : ** essayez d’enlever un next() n’une route pour voir l’effet que ça fait. Il faudra bien sur relancer le serveur avant que les modifications prennent effet.</p>
+</blockquote>
 
 <h3 id="les-fichiers-statiques">les fichiers statiques</h3>
 
-<p>On serait tenté de :</p>
+<p>On serait tenté de charger à la main chaque fichier :</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
         <span class="nx">response</span><span class="p">.</span><span class="nx">sendFile</span><span class="p">(</span><span class="nx">__dirname</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">/static/index.html</span><span class="dl">"</span><span class="p">)</span>
 <span class="p">})</span>
 </code></pre></div></div>
 
-<p>TBD</p>
+<p>Mais ce n’est pas une bonne idée pour plusieurs raisons :</p>
 
-<h3 id="pour-notre-site-1">pour notre site</h3>
+<ol>
+  <li>on ne sais pas combien de fichier statique on va avoir besoin, car ce n’est pas que les fichiers html, c’est aussi les images, les css, tous les fichiers js, etc. Bref il y en a beaucoup trop</li>
+  <li>si l’on laisse node charger les fichiers statiques, on ajoute le délais de traitement des fichiers de node dans chaque traitmeent de la requête</li>
+  <li>on ne peut pas gérer le cache web.</li>
+</ol>
 
-<p>Pour l’instant pas de routes, que des fichiers statiques. On utilise le middleware e pour le dev. En prod le nginx passera outre, le node ne le verra même pas (à tester)</p>
+<p>On laisse donc nginx gerer les fichiers statiques pour nous dans la configuration de l’ovh (regardez la doc) : toutes les requetes qui commencent par <code class="language-plaintext highlighter-rouge">/static</code> sont gérées immédiatement par nginx et ne passent même pas par le serveur node.</p>
+
+<p>Mais en développement, à moins de simuler la production, on ne peut pas faire ça. Du coup, on ajoute un middleware dont le boulot est de gérer les fichiers statiques en simulant ce que ferait le nginx en production.</p>
+
+<p>On ajoute donc la ligne :</p>
+
+<pre><code class="language- js">app.use("/static", express.static(__dirname + '/static'))
+</code></pre>
+
+<p>Au début des routes.</p>
+
+<h2 id="notre-site-avec-express">Notre site avec express</h2>
+
+<p>Pour l’instant pas de routes, que des fichiers statiques.  Ca va changer bientôt, mais pour l’instant on prépare le tout.</p>
 
 <ul>
-  <li>404.</li>
+  <li>Il va falloir créer un dossier <em>static</em> qui
+    <ul>
+      <li>contiendra nos pages statiques</li>
+      <li>possédera un fichier <em>package.json</em> (et donc un dossier <em>node_modules</em>) pour toutes les bibliothèques front (ici purecss)</li>
+    </ul>
+  </li>
+  <li>On épure le fichier <em>package.json</em> côté serveur pour qu’il ne possède plus que les bibliothèques nécessaires au back.</li>
+  <li>mettre tous nos tests unitaires et de user stories dans un dossier <em>tests</em> (pas <em><strong>tests</strong></em> car par défaut tous les fichiers de ce dossier sont exécutés en tant que tests, et nous on veut séparer tests unitaires et tests de users stories).</li>
 </ul>
 
-<h3 id="tests-avec-supertests">tests avec supertests</h3>
+<p>Il faut un peu jardiner le code pour qu’il continue de fonctionner :</p>
+
+<ul>
+  <li>Il faut changer les chemin d’import des tests</li>
+  <li>il faut faire deux package.json (un pour le back et un pour le front) et procéder aux imports. Le plus simple est de supprimer les fichiers node_modules et de les laisser se recréer avec un <code class="language-plaintext highlighter-rouge">yarn install</code> côté front et côté back</li>
+  <li>il faut un peut changer la configuration de jest pour qu’il ne voit pas le dossier static et son <em>package.json</em></li>
+  <li>On <a href="https://expressjs.com/fr/api.html#res.redirect">redirige</a> la route <code class="language-plaintext highlighter-rouge">/</code> vers <code class="language-plaintext highlighter-rouge">static/index.html</code>.</li>
+</ul>
+
+<p>On a alors une architecture qui ressemble à (commande <code class="language-plaintext highlighter-rouge">tree -I node_modules </code>) :</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.
+├── index.js
+├── package.json
+├── static
+│   ├── index.html
+│   ├── main.css
+│   ├── main.js
+│   ├── numerologie.js
+│   ├── package.json
+│   └── yarn.lock
+├── tests
+│   ├── numerologie.test.js
+│   └── user-stories
+│       ├── look-at-google.user-story.js
+│       └── numerologie.user-story.js
+└── yarn.lock
+
+</code></pre></div></div>
+
+<p>Avec le fichier <em>package.json</em> du back qui ressemble à :</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  "name": "web_serveur",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:FrancoisBrucker/web_serveur_cours.git",
+  "author": "François Brucker &lt;francois.brucker@centrale-marseille.fr&gt;",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest",
+    "user-story": "jest --testRegex=\"user-story.js\""
+  },
+  "devDependencies": {
+    "selenium-webdriver": "^4.0.0-alpha.7",
+    "geckodriver": "^1.20.0",
+    "chromedriver": "85.0.1",
+    "jest": "^26.5.0"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "jest": {
+    "modulePathIgnorePatterns": [
+      "&lt;rootDir&gt;/static"
+    ]
+  }
+}
+</code></pre></div></div>
+
+<blockquote>
+  <p>Notez la modification des paramètres de jest.</p>
+</blockquote>
+
+<p>Et celui du du <em>static/package.json</em> qui ne contient plus que la dépendance purecss :</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  "name": "web_serveur",
+  "version": "1.0.0",
+  "main": "index.html",
+  "repository": "git@github.com:FrancoisBrucker/web_serveur_cours.git",
+  "author": "François Brucker &lt;francois.brucker@centrale-marseille.fr&gt;",
+  "license": "MIT",
+  "dependencies": {
+    "purecss": "^2.0.3"
+  }
+}
+
+</code></pre></div></div>
+
+<p>Enfin, le ficher <em>index.js</em> qui ne continent que gestion des fichiers statiques, une route (une redirection) et la gestion des 404 :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">express</span><span class="dl">'</span><span class="p">)</span>
+<span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">()</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Time:</span><span class="dl">'</span><span class="p">,</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">());</span>
+    <span class="nx">next</span><span class="p">();</span> <span class="c1">// sans cette ligne on ne pourra pas poursuivre.</span>
+<span class="p">})</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="dl">"</span><span class="s2">/static</span><span class="dl">"</span><span class="p">,</span> <span class="nx">express</span><span class="p">.</span><span class="kd">static</span><span class="p">(</span><span class="nx">__dirname</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">/static</span><span class="dl">'</span><span class="p">))</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">response</span>
+        <span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span class="mi">301</span><span class="p">,</span> <span class="dl">'</span><span class="s1">/static/index.html</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">})</span>
+
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">request</span><span class="p">,</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">et c'est le 404 : </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">request</span><span class="p">.</span><span class="nx">url</span><span class="p">);</span>
+
+    <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">=</span> <span class="mi">404</span><span class="p">;</span>
+    <span class="nx">response</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">text/html</span><span class="dl">'</span><span class="p">);</span>
+
+    <span class="nx">response</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="dl">"</span><span class="s2">&lt;html&gt;&lt;head&gt;&lt;title&gt;la quatre cent quatre&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;Et c'est la 404.&lt;/h1&gt;&lt;img  src=</span><span class="se">\"</span><span class="s2">https://www.leblogauto.com/wp-content/uploads/2020/04/Peugeot-404-1.jpg</span><span class="se">\"</span><span class="s2"> /&gt;&lt;/body&gt;&lt;/html&gt;</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="p">})</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mi">3000</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">c'est parti</span><span class="dl">"</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<blockquote>
+  <p>**Nota Bene : ** On a mis du contenu dans la 404 (toute une famille).</p>
+</blockquote>
+
+<h2 id="tests-de-routes">tests de routes</h2>
+
+<p>Pour être sur que notre serveur fonctionne, on va tester les routes qu’il produit. Ceci peut se faire avec un outil spécialisé comme <a href="https://www.postman.com/">postman</a> ou une bibliothèque de test comme <a href="https://github.com/visionmedia/supertest">supertest</a>.</p>
+
+<h3 id="postman">postman</h3>
+
+<p>Très utile lorsque l’on veut tester nos routes en post (ce qui est dur/impossible à faire avec un navigateur), <a href="https://www.postman.com/">postman</a> permet aussi de tester nos routes toute simple en get.</p>
+
+<p>Attention, postman va vouloir vous enregistrer, mais ce n’est pas nécessaire. Il faut  juste bien lire toutes les petites lignes avant de cliquer.</p>
+
+<p>On commence par <a href="https://www.postman.com/downloads/">télécharger le client</a>. Lorsque vous le lancez il va vous ouvrir une fenêtre de login. Lisez la petite ligne tout en bas de la fenêtre pour<em>skip sign in</em></p>
+
+<p>Cliquez sur le <em>+</em> de la fenêtre pour ouvrir un testeur de requête. On choisit get et</p>
+
+<h3 id="supertest">supertest</h3>
 
 <p><a href="https://dev.to/nedsoft/testing-nodejs-express-api-with-jest-and-supertest-1km6">un tuto</a></p>
 
@@ -1175,15 +1249,22 @@ appelées <em>user stories</em>.</p>
 
 <h2 id="loggeur">loggeur</h2>
 
-<h2 id="on-déporte-notre-calcul-de-numérologue-dans-un-appel-serveur">on déporte notre calcul de numérologue dans un appel serveur.</h2>
+<h2 id="transfert-de-données-en-post-et-fetch">transfert de données en post et fetch</h2>
 
 <ul>
   <li>requetes get et post test avec super test et postman</li>
   <li>fetch coté front</li>
+</ul>
+
+<h2 id="on-déporte-notre-calcul-de-numérologue-dans-un-appel-serveur">on déporte notre calcul de numérologue dans un appel serveur.</h2>
+
+<ul>
   <li>
     <p>routes et sous routes avec les API</p>
   </li>
-  <li>grapheql ?</li>
+  <li>
+    <p>graphql ?</p>
+  </li>
 </ul>
 
 <h2 id="à-faire-">à faire ?</h2>
