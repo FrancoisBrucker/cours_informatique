@@ -932,98 +932,10 @@ console.log("c'est parti")
 
 Notez comment un fichier local et distant sont chargés. En particulier comment la réponse du ficher distant est rendue immédiatement. Ceci permet de donner une réponse même si tout n'est pas chargé.
 
-## separation front/back
-
-Avant de rajouter un serveur web à notre projet, on va commencer par le réorganiser.
-
-  - On va créer un dossier static dans lequel on mettra le front static (pour l'instant tout notre site), avec ses modules front.
-  - mettre tous nos tests unitaires et de user stories dans un dossier test (pas `__tests__` car par défaut tous les fichiers de ce dossier sont exécutés en tant que tests, et nous on veut séparer tests unitaires et tests de users stories).
-
-Il faut un peu jardiner le code pour qu'il continue de fonctionner :
-  
-  - Il faut changer les chemin d'import des tests
-  - il faut faire deux package.json (un pour le back et un pour le front) et procéder aux imports. Le plus simple est de supprimer les fichiers node_modules et de les laisser se recréer avec un `yarn install` côté front et côté back
-  - il faut un peut changer la configuration de jest pour qu'il ne voitpas le dossier static et son *package.json*
-
-On a alors une architechture qui ressemble à (commande `tree -I node_modules `) :
-
-~~~
-.
-├── index.js
-├── package.json
-├── static
-│   ├── index.html
-│   ├── main.css
-│   ├── main.js
-│   ├── numerologie.js
-│   ├── package.json
-│   └── yarn.lock
-├── tests
-│   ├── numerologie.test.js
-│   └── user-stories
-│       ├── look-at-google.user-story.js
-│       └── numerologie.user-story.js
-└── yarn.lock
-
-~~~
-
-Avec le fichier *package.json* du back qui ressemble à :
-
-~~~ 
-{
-  "name": "web_serveur",
-  "version": "1.0.0",
-  "main": "index.js",
-  "repository": "git@github.com:FrancoisBrucker/web_serveur_cours.git",
-  "author": "François Brucker <francois.brucker@centrale-marseille.fr>",
-  "license": "MIT",
-  "scripts": {
-    "test": "jest",
-    "user-story": "jest --testRegex=\"user-story.js\""
-  },
-  "devDependencies": {
-    "chromedriver": "^85.0.1",
-    "jest": "^26.5.0",
-    "jest-environment-webdriver": "^0.2.0",
-    "selenium-webdriver": "^4.0.0-alpha.7"
-  },
-  "jest": {
-    "testEnvironment": "jest-environment-webdriver",
-    "testEnvironmentOptions": {
-      "browser": "chrome"
-    },
-    "modulePathIgnorePatterns": ["<rootDir>/static"]
-  }
-}
-
-
-~~~
-
-> Notes la modification des paramètres de jest.
-
-Et celui du du *static/package.json* qui ne contient plus que la dépendance purecss :
-
-~~~ 
-{
-  "name": "web_serveur",
-  "version": "1.0.0",
-  "main": "index.html",
-  "repository": "git@github.com:FrancoisBrucker/web_serveur_cours.git",
-  "author": "François Brucker <francois.brucker@centrale-marseille.fr>",
-  "license": "MIT",
-  "dependencies": {
-    "purecss": "^2.0.3"
-  }
-}
-
-~~~
-
 ## express 
 
+La gestion de différentes routes est malaisée en node pure, on se perd vite dans tous ces else/if. C'est pourquoi on va utiliser la bibliothèque [expressjs](https://expressjs.com/fr/) à notre projet back : `yarn add express`
 
-On va ajouter le module [expressjs](https://expressjs.com/fr/) à notre projet back : `yarn add express`
-
-Après une courte intro vous montrant comment tout ça se passe, on changera notre site pour qu'il prenne en compte express
 
 ### les requêtes en express
 
@@ -1080,7 +992,7 @@ app.get('/contact', (request, response) => {
 app.use(function (request,response) {
     console.log("et c'est le 404");
     
-    response.statusCode = 200;
+    response.statusCode = 404;
     response.setHeader('Content-Type', 'text/html');
 
     response.end("<html><head><title>quatre cent quatre</title></head><body><h1>404</h1></body></html>");
@@ -1093,23 +1005,29 @@ console.log("c'est parti")
 
 Lorsque vous exécutez votre code vous voyez des choses qui s'affichent dans la console :
 
-  - "Time" s'affiche à chaque appel
-  - "ensuite" ne s'affiche que si notre requête est différente de '/'
-  - "et c'est le 404" s'affiche si l'on demande une url différente de `/` ou `contact`
+  - *"Time"* s'affiche à chaque appel
+  - *"ensuite"* ne s'affiche que si notre requête est différente de '/'
+  - *"et c'est le 404"* s'affiche si l'on demande une url différente de `/` ou `contact`
 
 Ceci s'explique par les différentes manières dont peuvent s'appeler les méthodes de `app` :
 
   - un unique paramètre qui est une `fonction(request, response)` :
       
   - un unique paramètre qui est une `fonction(request, response, next)`
-  - deux paramètres un premier qui est un *"filtre à requête* et le second la fonction à 2 ou 3 paramètres.
+  - deux paramètres un premier qui est un *"filtre à requête* (`get` dans l'exemple) et le second la fonction à 2 ou 3 paramètres.
 
-TBD : expliquer le next.
+Les deux ou trois paramètres de la requetes sont des objets qui permettent de gérer :
+
+  - la [requête](https://expressjs.com/fr/api.html#req) (paramètre `request`) qui permet de tout savoir sur la requête,
+  - la [réponse](http://expressjs.com/fr/api.html#res) (paramètre `response`) qui permet de gérer la réponse que va envoyer le serveur
+  - lorsque l'on exécute ce paramètre, la requête est envoyé à la prochaine route possible (l'ordre est déterminé par l'ordre dans le quel ces routes sont écrites dans le code). S'il n'y a pas de paramètre `next` ou que la fonction n'est pas appelée, la requête est consommée : elle ne sera pas passé à d'autres routes.
+  
+>**Nota Bene : ** essayez d'enlever un next() n'une route pour voir l'effet que ça fait. Il faudra bien sur relancer le serveur avant que les modifications prennent effet.
 
 
 ### les fichiers statiques
 
-On serait tenté de : 
+On serait tenté de charger à la main chaque fichier : 
 
 ~~~ js
 app.get('/', (request, response) => {
@@ -1117,17 +1035,168 @@ app.get('/', (request, response) => {
 })
 ~~~
 
-TBD
+Mais ce n'est pas une bonne idée pour plusieurs raisons : 
 
-### pour notre site
+  1. on ne sais pas combien de fichier statique on va avoir besoin, car ce n'est pas que les fichiers html, c'est aussi les images, les css, tous les fichiers js, etc. Bref il y en a beaucoup trop
+  2. si l'on laisse node charger les fichiers statiques, on ajoute le délais de traitement des fichiers de node dans chaque traitmeent de la requête
+  3. on ne peut pas gérer le cache web.
+  
+On laisse donc nginx gerer les fichiers statiques pour nous dans la configuration de l'ovh (regardez la doc) : toutes les requetes qui commencent par `/static` sont gérées immédiatement par nginx et ne passent même pas par le serveur node.
 
-Pour l'instant pas de routes, que des fichiers statiques. On utilise le middleware e pour le dev. En prod le nginx passera outre, le node ne le verra même pas (à tester)
+Mais en développement, à moins de simuler la production, on ne peut pas faire ça. Du coup, on ajoute un middleware dont le boulot est de gérer les fichiers statiques en simulant ce que ferait le nginx en production. 
 
-+ 404.
+On ajoute donc la ligne : 
+
+~~~ js
+app.use("/static", express.static(__dirname + '/static'))
+~~~
+
+Au début des routes.
 
 
 
-### tests avec supertests
+## Notre site avec express
+
+Pour l'instant pas de routes, que des fichiers statiques.  Ca va changer bientôt, mais pour l'instant on prépare le tout. 
+
+  - Il va falloir créer un dossier *static* qui 
+    - contiendra nos pages statiques
+    - possédera un fichier *package.json* (et donc un dossier *node_modules*) pour toutes les bibliothèques front (ici purecss)
+  - On épure le fichier *package.json* côté serveur pour qu'il ne possède plus que les bibliothèques nécessaires au back. 
+  - mettre tous nos tests unitaires et de user stories dans un dossier *tests* (pas *__tests__* car par défaut tous les fichiers de ce dossier sont exécutés en tant que tests, et nous on veut séparer tests unitaires et tests de users stories).
+  
+
+Il faut un peu jardiner le code pour qu'il continue de fonctionner :
+  
+  - Il faut changer les chemin d'import des tests
+  - il faut faire deux package.json (un pour le back et un pour le front) et procéder aux imports. Le plus simple est de supprimer les fichiers node_modules et de les laisser se recréer avec un `yarn install` côté front et côté back
+  - il faut un peut changer la configuration de jest pour qu'il ne voit pas le dossier static et son *package.json*
+  - On [redirige](https://expressjs.com/fr/api.html#res.redirect) la route `/` vers `static/index.html`.
+
+On a alors une architecture qui ressemble à (commande `tree -I node_modules `) :
+
+~~~
+.
+├── index.js
+├── package.json
+├── static
+│   ├── index.html
+│   ├── main.css
+│   ├── main.js
+│   ├── numerologie.js
+│   ├── package.json
+│   └── yarn.lock
+├── tests
+│   ├── numerologie.test.js
+│   └── user-stories
+│       ├── look-at-google.user-story.js
+│       └── numerologie.user-story.js
+└── yarn.lock
+
+~~~
+
+Avec le fichier *package.json* du back qui ressemble à :
+
+~~~ 
+{
+  "name": "web_serveur",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:FrancoisBrucker/web_serveur_cours.git",
+  "author": "François Brucker <francois.brucker@centrale-marseille.fr>",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest",
+    "user-story": "jest --testRegex=\"user-story.js\""
+  },
+  "devDependencies": {
+    "selenium-webdriver": "^4.0.0-alpha.7",
+    "geckodriver": "^1.20.0",
+    "chromedriver": "85.0.1",
+    "jest": "^26.5.0"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "jest": {
+    "modulePathIgnorePatterns": [
+      "<rootDir>/static"
+    ]
+  }
+}
+~~~
+
+> Notez la modification des paramètres de jest.
+
+Et celui du du *static/package.json* qui ne contient plus que la dépendance purecss :
+
+~~~ 
+{
+  "name": "web_serveur",
+  "version": "1.0.0",
+  "main": "index.html",
+  "repository": "git@github.com:FrancoisBrucker/web_serveur_cours.git",
+  "author": "François Brucker <francois.brucker@centrale-marseille.fr>",
+  "license": "MIT",
+  "dependencies": {
+    "purecss": "^2.0.3"
+  }
+}
+
+~~~
+
+Enfin, le ficher *index.js* qui ne continent que gestion des fichiers statiques, une route (une redirection) et la gestion des 404 : 
+
+~~~ js
+var express = require('express')
+var app = express()
+
+app.use(function (req, res, next) {
+    console.log('Time:', Date.now());
+    next(); // sans cette ligne on ne pourra pas poursuivre.
+})
+
+app.use("/static", express.static(__dirname + '/static'))
+
+app.get('/', (request, response) => {
+    response
+        .redirect(301, '/static/index.html')
+})
+
+
+app.use(function (request,response) {
+    console.log("et c'est le 404 : " + request.url);
+
+    response.statusCode = 404;
+    response.setHeader('Content-Type', 'text/html');
+
+    response.end("<html><head><title>la quatre cent quatre</title></head><body><h1>Et c'est la 404.</h1><img  src=\"https://www.leblogauto.com/wp-content/uploads/2020/04/Peugeot-404-1.jpg\" /></body></html>");
+
+})
+
+app.listen(3000);
+console.log("c'est parti")
+
+~~~
+
+> **Nota Bene : ** On a mis du contenu dans la 404 (toute une famille).
+
+
+## tests de routes
+
+Pour être sur que notre serveur fonctionne, on va tester les routes qu'il produit. Ceci peut se faire avec un outil spécialisé comme [postman](https://www.postman.com/) ou une bibliothèque de test comme [supertest](https://github.com/visionmedia/supertest).
+
+### postman
+
+Très utile lorsque l'on veut tester nos routes en post (ce qui est dur/impossible à faire avec un navigateur), [postman](https://www.postman.com/) permet aussi de tester nos routes toute simple en get.
+
+Attention, postman va vouloir vous enregistrer, mais ce n'est pas nécessaire. Il faut  juste bien lire toutes les petites lignes avant de cliquer. 
+
+On commence par [télécharger le client](https://www.postman.com/downloads/). Lorsque vous le lancez il va vous ouvrir une fenêtre de login. Lisez la petite ligne tout en bas de la fenêtre pour*skip sign in*
+
+Cliquez sur le *+* de la fenêtre pour ouvrir un testeur de requête. On choisit get et
+
+### supertest
 
 [un tuto](https://dev.to/nedsoft/testing-nodejs-express-api-with-jest-and-supertest-1km6)
 
@@ -1138,13 +1207,17 @@ Pas une user story ni un test unitaire, on vérifie que nos routes sont ok.
 ## loggeur
 
 
-## on déporte notre calcul de numérologue dans un appel serveur.
+## transfert de données en post et fetch
+
 
    - requetes get et post test avec super test et postman
    - fetch coté front
+
+## on déporte notre calcul de numérologue dans un appel serveur.
+
    - routes et sous routes avec les API
    
-   - grapheql ?
+   - graphql ?
 
 ## à faire ?
 
