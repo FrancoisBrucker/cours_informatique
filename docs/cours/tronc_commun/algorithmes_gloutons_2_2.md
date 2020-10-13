@@ -111,6 +111,8 @@ Un graphe est dit *planaire* si on peut le représenter graphiquement dans le pl
 
 Montrez que le graphe de coloration d'une carte est planaire.
 
+Pour une représentation planaire donnée, les nœuds et les arêtes sont représentés par des courbes. on appelle alors *face* une surface maximale sans arête ou nœud du graphe. Notez que selon la représentation planaire du graphe ses faces peuvent changer (mais sont liées par la formule d'Euler).
+
 ### formule d'Euler
 
 Soit $G = (V, E)$ un graphe planaire (avec $n = \vert V \vert$ et $m = \vert E \vert$). On note $F$ le nombre de face (le bord extérieur étant considéré comme une face). 
