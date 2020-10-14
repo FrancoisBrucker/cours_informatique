@@ -1053,8 +1053,6 @@ app.use("/static", express.static(__dirname + '/static'))
 
 Au début des routes.
 
-
-
 ## Notre site avec express
 
 Pour l'instant pas de routes, que des fichiers statiques.  Ca va changer bientôt, mais pour l'instant on prépare le tout. 
@@ -1194,32 +1192,535 @@ Attention, postman va vouloir vous enregistrer, mais ce n'est pas nécessaire. I
 
 On commence par [télécharger le client](https://www.postman.com/downloads/). Lorsque vous le lancez il va vous ouvrir une fenêtre de login. Lisez la petite ligne tout en bas de la fenêtre pour*skip sign in*
 
-Cliquez sur le *+* de la fenêtre pour ouvrir un testeur de requête. On choisit get et
+Cliquez sur le *+* de la fenêtre pour ouvrir un testeur de requête. On choisit get et vous pouvez ensuite tester une route de votre serveur. Ces routes sont conservées dans l'historique pour pouvoir être réutilisées facilement ensuite. 
+
+Si cette méthode est idéale en développementpour configurer une route récalcitrante, elle n'est pas recommandée pour faires des tests réguliers. Pour ça on va les automatiser avec la bibliothèque supertest.
 
 ### supertest
 
+[supertest](https://github.com/visionmedia/supertest) est une bibliothèque permettant de tester facilement les routes. On commence par l'installer : `yarn add --dev supertest`
+
+
 [un tuto](https://dev.to/nedsoft/testing-nodejs-express-api-with-jest-and-supertest-1km6)
 
-On teste toutes les routes du serveur pour être sur de ne pas avoir de 404.
+On teste toutes les routes du serveur pour être sur de ne pas avoir de 404. Ce n'est pas la peine de tester l'algorithmie des routes s'il y en a, puisque ceci est fait avec des tests unitaires.
+
 
 Pas une user story ni un test unitaire, on vérifie que nos routes sont ok.
 
+Pour que supertest fonctionne, il faut pouvoir lancer le serveur à la volée ce qui est impossible actuellement puisque *index.js* crée les routes et lance le serveur tout seul. On sépare donc tout ça en deux fichiers. 
+
+*app.js* qui crée les routes :
+
+~~~ js
+var express = require('express')
+var app = express()
+
+app.use(function (req, res, next) {
+    console.log('Time:', Date.now());
+    next(); // sans cette ligne on ne pourra pas poursuivre.
+})
+
+app.use("/static", express.static(__dirname + '/static'))
+
+app.get('/', (request, response) => {
+    response
+        .redirect(301, '/static/index.html')
+})
+
+
+app.use(function (request,response) {
+    console.log("et c'est le 404 : " + request.url);
+
+    response.statusCode = 404;
+    response.setHeader('Content-Type', 'text/html');
+
+    response.end("<html><head><title>la quatre cent quatre</title></head><body><h1>Et c'est la 404.</h1><img  src=\"https://www.leblogauto.com/wp-content/uploads/2020/04/Peugeot-404-1.jpg\" /></body></html>");
+
+})
+
+module.exports = app
+
+~~~
+
+Et *index.js* qui ne fait que lancer le serveur :
+~~~js
+const app = require('./app');
+
+config = {
+    baseUrl: "localhost",
+    port: 3000
+}
+
+
+app.listen(config.port, () => {
+    console.log('server is running at: ' + 'http://' + config.baseUrl + ':' + config.port);
+});
+
+~~~
+
+ Du coup nos tests de routes peuvent s'écrire par exemple (fichier *test/routes.test.js*) :
+ 
+~~~ js
+
+const request = require('supertest');
+
+const app = require('../app');
+
+let user;
+let server;
+
+beforeAll(async () => {
+    user = await request.agent(app);
+    server = await app.listen(3000);
+});
+
+afterAll(async () => {
+    await server.close();
+});
+
+
+test('GET index.html', (done) => {
+    user
+        .get('/')
+        .expect(301)
+        .expect(function(res) {
+            expect(res.headers.location).toBe('/static/index.html')
+        })
+        .end((err, res) => {
+            if (err) {
+                return done(err);
+            }
+            done()
+        })
+})
+
+test('GET 404', (done) => {
+    user
+        .get('/not here')
+        .expect(404)
+        .end((err) => {
+            done(err)
+        })
+})
+ 
+~~~
+
+
+On teste qu'il y a une redirection vers `/static/index/html` et que les 404 sont mis en œuvre.
+
 ## loggeur
 
+Lorsqu'il y a une erreur sur un serveur distant, il est très rare qu'elle se produise alors que le développeur la regarde. Il faut donc pouvoir a posteriori retrouver ce qu'il s'est passé.
+
+On va en utiliser deux : [morgan](https://github.com/expressjs/morgan) et [winston](https://github.com/winstonjs/winston).
+
+### morgan
+
+Le loggeur  [morgan](https://github.com/expressjs/morgan) permet d'intercepter toutes les requêtes http. Il permet de savoir exactement ce qu'il se passe sur notre serveur.
+
+On l'ajoute en commençant par l'installer : `yarn add morgan`
+
+  - on l'importe : `var morgan = require('morgan')`
+  - puis on ajoute la ligne `app.use(morgan('dev'))` au début des routes pour l'utiliser.
+
+Selon ce que l'on veut logger, il y a plein de possibilités, essayez par exemple `'combined'` ou `'tiny'` à la place de `'dev'` par exemple.
+
+
+### winston
+
+[winston](https://github.com/winstonjs/winston) permet lui de loggeur tout ce que l'on veut. L'idée est de **pouvoir** tout loger pour retrouver un bug, mais de ne pas tout stocker pour éviter d'avoir des fichiers de logs énorme et pour le coup non utile.
+
+L’usage veut que l’on donne donc des niveaux de log et que ne sont stockés que les log de niveau inférieur à un seuil donné. Pour winston les logging levels sont :
+
+~~~ js
+const levels = { 
+  error: 0,
+  warn: 1,
+  info: 2,
+  http: 3,
+  verbose: 4,
+  debug: 5,
+  silly: 6
+};
+~~~ 
+
+En production on pourra par exemple utiliser le level 0, en développement le 2 et en debug le 4.
+
+Commençons par ajouter winston : `yarn add winston` 
+
+Et créons un loggeur. Pour cela, on va créer un fichier *logger.js* et mettre notre configuration winston à l'intérieur. Ce fichier sera ensuite importé dans tous les fichiers nécessitant des logs. Comme l'import est fait avec un [require] ), ce sera le *même* loggeur qui sera utilisé partout (c'est ce qu'on appelle le [caching](https://nodejs.org/docs/latest/api/modules.html#modules_caching)).
+
+Fichier *logger.js* :
+
+~~~ js
+const winston = require('winston');
+
+const logger = winston.createLogger({
+  level: 'info',
+  format: winston.format.combine(
+      winston.format.timestamp(),
+      winston.format.json()),
+  transports: [
+    new winston.transports.File({ filename: 'error.log', level: 'error' }),
+    new winston.transports.Console(),
+  ],
+});
+
+module.exports = logger
+~~~
+
+On a deux sorties, une dans la console pour (défini dans les options) tous les log de criticité inférieur à `'info'`  et dans un fichier pour toute les erreurs. 
+
+Puis on l'importe dans *app.js* pour :
+
+  - inclure les messages de morgan dans winston au level `http`
+
+~~~ js
+var express = require('express')
+var app = express()
+
+var morgan = require('morgan')
+
+const logger = require('./logger')
+
+app.use(morgan('dev', {stream: {write:(log) => {logger.http(log)}}}))
+
+app.use("/static", express.static(__dirname + '/static'))
+
+app.get('/', (request, response) => {
+    response
+        .redirect(301, '/static/index.html')
+})
+
+
+app.use(function (request,response) {
+
+    response.statusCode = 404;
+    response.setHeader('Content-Type', 'text/html');
+
+    response.end("<html><head><title>la quatre cent quatre</title></head><body><h1>Et c'est la 404.</h1><img  src=\"https://www.leblogauto.com/wp-content/uploads/2020/04/Peugeot-404-1.jpg\" /></body></html>");
+
+})
+
+module.exports = app
+~~~
+
+Et enfin dans *index.js* pour un petit message au démarrage du serveur : 
+
+~~~ js
+const logger = require('./logger')
+const app = require('./app');
+
+config = {
+    baseUrl: "localhost",
+    port: 3000
+}
+
+
+app.listen(config.port, () => {
+    logger.info('server is running at: ' + 'http://' + config.baseUrl + ':' + config.port);
+});
+~~~
+
+Essayer de changer le level par défaut pour voir les messages de niveau http dans la console.
+
+
+### winston daily rotate
+
+[winston daily rotate](https://github.com/winstonjs/winston-daily-rotate-file) est un plugin winston qui permet de faire des log qui ne maintiennent qu'une durée fixe de log (une journée, semaine, etc) permettant ainsi aux logs de ne pas grossir indéfiniment.
+
+Il existe aussi des outils unix pour cela, comme [logrotate](https://doc.ubuntu-fr.org/logrotate) par exemple (voir [tuto](https://medium.com/techiee/log-rotation-with-forever-6d8a1797355b)).
+
+
+TBD
 
 ## transfert de données en post et fetch
 
+Pour l'instant, le code js de calcul du nombre est inclus dans le front. On va le mettre dans une route. On va mettre ces nouvelles routes dans un fichier séparé.
 
-   - requetes get et post test avec super test et postman
-   - fetch coté front
 
-## on déporte notre calcul de numérologue dans un appel serveur.
+### API et nouvelle route
 
-   - routes et sous routes avec les API
-   
-   - graphql ?
+On va créer une route commençant par `/api` qui contiendra notre appel à la fonction numérologie. 
+
+L'usage veut également que l'on conserve les différentes versions des api pour pouvoir changer nos appels sans perturber les sites utilisant ceux-ci. On va donc avoir les routes suivantes : 
+
+  - `/api/current/` qui sera la route pour la version actuelle de l'api 
+  - `/api/v1/` qui sera un lien vers la version courante. 
+  
+Ceci nous permettra de maintenir la version `v1` de l'api lorsque la version courante changera en `v1.2` ou `v2`.
+  
+On aura aussi pour l'instant qu'une unique méthode : `numerologie/<prenom>` qui prend une chaîne de caractère en *"paramètre"*.
+  
+Construisons ces routes. Pour cela on crée des dossiers que l'on importera (importer un dossier revient à importer le fichier *index.js* qui s'y trouve). 
+
+Notre site correspond maintenant à ça : 
+
+~~~
+├── app.js
+├── error.log
+├── index.js
+├── logger.js
+├── package.json
+├── routes
+│   ├── index.js
+│   └── v1
+│       └── index.js
+├── static
+│   ├── index.html
+│   ├── main.css
+│   ├── main.js
+│   ├── numerologie.js
+│   ├── package.json
+│   └── yarn.lock
+├── tests
+│   ├── numerologie.test.js
+│   ├── routes.test.js
+│   └── user-stories
+│       ├── look-at-google.user-story.js
+│       └── numerologie.user-story.js
+└── yarn.lock
+
+~~~
+
+On a ajouté un dossier *routes* contenant un fichier *index.js*. Ce fichier est importé dans *app.js*, juste avant la gestion des 404 avec 2 lignes : 
+
+~~~js
+var express = require('express')
+var app = express()
+
+var morgan = require('morgan')
+
+const logger = require('./logger')
+
+app.use(morgan('dev', {stream: {write:(log) => {logger.http(log)}}}))
+
+app.use("/static", express.static(__dirname + '/static'))
+
+app.get('/', (request, response) => {
+    response
+        .redirect(301, '/static/index.html')
+})
+
+api = require('./routes')
+app.use('/api', api)
+
+
+app.use(function (request,response) {
+
+    response.statusCode = 404;
+    response.setHeader('Content-Type', 'text/html');
+
+    response.end("<html><head><title>la quatre cent quatre</title></head><body><h1>Et c'est la 404.</h1><img  src=\"https://www.leblogauto.com/wp-content/uploads/2020/04/Peugeot-404-1.jpg\" /></body></html>");
+
+})
+
+module.exports = app
+~~~
+
+Le fichier *index.js* contient le code suivant :
+
+~~~js
+var express = require('express');
+var router = express.Router();
+
+module.exports = router
+
+router.use('/current', require('./v1'))
+router.use('/v1', require('./v1'))
+
+~~~
+
+Son boulot est de créer (et de rendre) un router qui contient deux routes `/current` et `/v1` qui seront identiques. 
+
+Le fichier *index.js* contient la route proprement dite de notre api. Pour l'instant c'est un fake. On fera le lien avec notre code js plus tard :
+
+~~~ js
+var express = require('express');
+var router = express.Router();
+
+module.exports = router
+
+router.get('/numerologie/:prenom', (req, res) => {
+    res.json({
+        "prenom": req.params.prenom,
+        "numero": 4,
+    })
+})
+
+~~~
+
+Remarquez que cette route prend un paramètre nommé `:prenom` que l'on peut ensuite reprendre and le code. 
+
+Pour l'instant le code rend un objet [json](https://www.json.org/json-fr.html) contenant 2 champ, le prénom (le paramètre de notre route) et le code (pour l'instnant toujours 4) 
+
+Pour savoir comment appeler cette route depuis notre server, regardons comment elle est appelée : 
+
+  1. on commence par l'appeler depuis *./app.js* : `app.use('/api', api)` où `api = require('./routes')`
+  2. cela continue dans *./routes/index.js* avec `router.use('/current', require('./v1'))` et `router.use('/v1', require('./v1'))`
+  3. on arrive enfin au *./routes/v1/index.js* qui crée la route : `router.get('/numerologie/:prenom', ...`
+
+En combinant tout ça on arrive à une route : `http://localhost:3000/api/current/numerologie/un truc` qui est la même que `http://localhost:3000/api/v1/numerologie/un truc`. Onpeut bien sur remplacer "un truc" par ce qu'on veut du moment que ce n'est pas vide.
+
+
+### tests
+
+On peut tester notre route directement dans un navigateur (puisque c'est une requête get), mais aussi avec postman. 
+
+Remarquez que :
+
+  - le corps de la réponse est notre objet json
+  - le type (dans les header) est bien placé à json. C'est express qui a fait ça.
+  
+
+Ajoutons un test avec supertest en créant le fichier *./tests/routes.api.test.js* : 
+
+~~~ js
+
+const request = require('supertest');
+
+const app = require('../app');
+
+let user;
+let server;
+
+beforeAll(async () => {
+    user = await request.agent(app);
+    server = await app.listen(3000);
+});
+
+afterAll(async () => {
+    await server.close();
+});
+
+
+test('GET /api/current/numerologie/François', (done) => {
+    user
+        .get('/api/current/numerologie/François')
+        .expect(200)
+        .expect(function(res) {
+            expect(res.body).toBe(
+                {
+                    "prenom": "François",
+                    "numero": 8,
+                }
+            )
+        })
+        .end((err, res) => {
+            if (err) {
+                return done(err);
+            }
+            done()
+        })
+})
+
+
+~~~
+
+Pour l'instant notre test rate (puisque l'on ne rend que 4. Changez le 8 en 4 dans le test pour voir le test réussir), mais on va le faire marcher dans la suite.
+
+
+### mise à jour du site 
+
+#### côté back 
+
+Commençons par faire marcher les tests. Pour cela, il faut rapatrier le fichier *static/numerologie.js* dans la racine du site et l'utiliser dans */routes/v1/numerologie.js* :
+
+~~~js
+var express = require('express');
+var router = express.Router();
+
+module.exports = router
+
+const numerologie = require('../../numerologie')
+
+
+router.get('/numerologie/:prenom', (req, res) => {
+    res.json({
+        "prenom": req.params.prenom,
+        "numero": numerologie.nombre(req.params.prenom),
+    })
+})
+~~~
+
+Les tests doivent maintenant passer (si vous avez bien changé le path pour le require du test de numérologie). On ne fait pas de tests supplémentaire dans supertest, les tests unitaires de *numerologie.js* nous assurant que la fonction `numerologie.nombre` fonctionne.
+#### côté front
+
+
+Enfin, il faut modifier le fichier *static/main.js* pour qu'il cherche la réponse dans le serveur plutôt que par une fonction js. On utilise pour ça la fonction [fetch](https://developer.mozilla.org/fr/docs/Web/API/Fetch_API/Using_Fetch), très pratique, qui permet de récupérer des choses sur internet avec des promesses :
+
+
+~~~ js
+function change_value() {
+    prenom = document.querySelector("#prenom").value
+    if (prenom) {
+        fetch('/api/current/numerologie/' + prenom)
+            .then(response => response.json())
+            .then(data => {
+                document.querySelector("#get-value").textContent = data.numero
+                console.log(data)
+            })
+    } else {
+        document.querySelector("#get-value").textContent = "?"
+    }
+
+}
+change_value()
+
+document.querySelector("#button-form").addEventListener("click", (event) => {
+    change_value()
+    event.preventDefault()
+})
+
+~~~
+
+
+Regardez la console pour voir ce que reçoit le fetch : les données brutes sont d'abort converties en json avant d'être utilisées (c'est le double `then`) 
+
+On oublie pas de modifier *static/index.html* pour supprimer les imports non nécessaires
+
+~~~html
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>Numérologie</title>
+
+        <link href="./node_modules/purecss/build/pure-min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+        <link href="main.css" rel="stylesheet">
+
+    </head>
+    <body>
+        <div class="body">
+            <form class="pure-form">
+                <label for="prenom">Prénom :</label>
+                <input id="prenom" type="text" name="prenom"/>
+
+                <button id="button-form" type="submit" class="pure-button pure-button-primary">Envoi</button>
+            </form>
+            <div class="pure-g">
+                <div class="pure-u-1-3"></div>
+                <div class="pure-u-1-3"><p id="get-value">7</p></div>
+                <div class="pure-u-1-3"></div>
+            </div>
+
+        </div>
+
+        <script src="main.js"></script>
+    </body>
+</html>
+~~~
+
 
 ## à faire ?
+   - graphql ?
 
  - templating express ?
+ - gestion des environnements de prod, test, etc
+ - bases de données et requêtes post
+ - compilation du front
+ - gestion des routes dans des fichiers séparés
+ 
  

@@ -111,7 +111,7 @@ Un graphe est dit *planaire* si on peut le représenter graphiquement dans le pl
 
 Montrez que le graphe de coloration d'une carte est planaire.
 
-Pour une représentation planaire donnée, les nœuds et les arêtes sont représentés par des courbes (les arêtes) et des points (les nœuds). Le dessin défini ainsi une partition du plan ou chaque composante connexe est appelée *face*. Notez que selon la représentation planaire du graphe ses faces peuvent changer (mais sont liées par la formule d'Euler).
+Pour une représentation planaire donnée, les nœuds et les arêtes sont représentés par des courbes (les arêtes) et des points (les nœuds). Le dessin défini ainsi une partition du plan ou chaque composante connexe est appelée *face*. Notez que selon la représentation planaire du graphe ses faces peuvent changer (mais sont  liées par la formule d'Euler).
 
 ### formule d'Euler
 
