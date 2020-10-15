@@ -1634,7 +1634,7 @@ appelées <em>user stories</em>.</p>
         <span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/current/numerologie/François</span><span class="dl">'</span><span class="p">)</span>
         <span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
         <span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">expect</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">body</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span>
+            <span class="nx">expect</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">body</span><span class="p">).</span><span class="nx">toMatchObject</span><span class="p">(</span>
                 <span class="p">{</span>
                     <span class="dl">"</span><span class="s2">prenom</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">François</span><span class="dl">"</span><span class="p">,</span>
                     <span class="dl">"</span><span class="s2">numero</span><span class="dl">"</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
