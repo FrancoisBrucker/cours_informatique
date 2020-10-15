@@ -1600,7 +1600,7 @@ test('GET /api/current/numerologie/François', (done) => {
         .get('/api/current/numerologie/François')
         .expect(200)
         .expect(function(res) {
-            expect(res.body).toBe(
+            expect(res.body).toMatchObject(
                 {
                     "prenom": "François",
                     "numero": 8,
