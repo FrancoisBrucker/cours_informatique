@@ -69,8 +69,7 @@ L’**algorithme d’Euclide étendu** permet d’obtenir les coefficients de B�
 - Si $$pgcd(m,n) = 1$$ alors modulo $n$ :
  **$x$** $$= (m^e)^d = m^{1+k Phi(n)} = m * m^{k \Phi(n)} = m *(m^{\Phi(n)})^k = $$(Fermat) $$m * 1^k$$ $$= m \mod n$$.
 
-- Si $$pgcd(m,n) \ne 1$$, alors $$pgcd(m,n)=p$$ et $$pgcd(m,q)=1$$ ou inversement.
-
+- Si $$pgcd(m,n) \ne 1$$, alors $$pgcd(m,n)=p$$ et $$pgcd(m,q)=1$$ ou inversement.:wq:
 Si $p$ divise $m$, alors modulo $p$ : $$m = 0$$, $$x = m^{ed} = 0 \mod p$$, donc $$m^{ed} = m \mod p$$.
 Et modulo *q* : $$x = m^{ed} = m * (m^{\Phi(n)})^k = m * (m^{q-1})^{k (p-1)} =$$(Fermat) $$m \mod q$$.
 
