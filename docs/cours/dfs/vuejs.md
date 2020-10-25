@@ -29,7 +29,7 @@ Cette pratique rapide est assez efficace pour du prototypage mais elle est déco
 
 ### 2. L'importer comme package npm
 
-Pour un import un peu *propre* on peut utiliser le Node Package Manager (ajouter lien vers tuto Node pas ecore écrit). Pour cela on va lancer la commande suivante dans le dossier `root` du projet :
+Pour un import un peu plus *propre* on peut utiliser le Node Package Manager (ajouter lien vers tuto Node pas ecore écrit). Pour cela on va lancer la commande suivante dans le dossier `root` du projet :
 
 ```shell
 npm install vue@next # avec npm directement
@@ -37,7 +37,7 @@ npm install vue@next # avec npm directement
 yarn add vue@next # en passant par yarn
 ```
 
-Cette commande va installer la dernière version de Vue.js dans le dossier node_modules ainsi que toutes ces dépendances.
+Cette commande va installer la dernière version de Vue.js dans le dossier node_modules ainsi que toutes ses dépendances.
 
 ### 3. Utiliser le CLI (Command Line Interface) officiel de Vue
 
@@ -66,7 +66,7 @@ Pour utiliser le CLI avec Vue 3.0 il nous faut `@vue/cli 4.5` ou supérieur.
 
 ## Les débuts, initialisation d'un projet Vue.js
 
-Parmis les 3 méthodes si-dessus nous allons utilisé la 3ème dans la suite de ce tuto. Assurez-vous d'avoir bien installé le CLI.
+Parmis les 3 méthodes si-dessus nous allons utilisé la 3ème pour la suite de ce tuto. Assurez-vous d'avoir bien installé le CLI.
 
 Pour initialiser un projet Vue.js à l'aide du CLI :
 
@@ -75,7 +75,7 @@ vue create my-first-vue-project
 ```
 
 Une fois cette commande exécutée on va choisir `Default (Vue 3 Preview) ([Vue 3] babel, eslint)` pour le type de projet et `NPM` pour le management des packages. \
-On peut ensuite naviguer dans le projet crée par le CLI :
+On peut ensuite naviguer dans le projet créé par le CLI :
 
 ```shell
 cd my-first-vue-project
@@ -177,14 +177,14 @@ On remarque 3 parties différentes dans la définition du composants :
 - `<style>` : Des règles CSS qui vont être appliquées au composant.
 
 Nous voila donc devant le grand intéret de Vue : **1 COMPOSANT = 1 FICHIER** \
-Mais cela signifie aussi jongler entre 3 languages différent dans un même fichier : le **html** pour le template, le **js** pour le script et le **css** pour les styles.
+Mais cela signifie aussi jongler entre 3 languages différents dans un même fichier : le **html** pour le template, le **js** pour le script et le **css** pour les styles.
 
-En regardant d'un peu plus prés on peut voir que notre `<template>` comporte un élément HTML que l'on connait pas : `<HelloWorld msg="Welcome to Your Vue.js App" />`. On peut voir dans le script que cet élément est importé depuis le fichier `components/HelloWorld.vue`. \
+En regardant d'un peu plus près on peut voir que notre `<template>` comporte un élément HTML que l'on connait pas : `<HelloWorld msg="Welcome to Your Vue.js App" />`. On peut voir dans le script que cet élément est importé depuis le fichier `components/HelloWorld.vue`. \
 **Encore un composant Vue !** Et oui, comme dans React et Angular les composants Vue, une fois bien défénis, peuvent être utilisés comme des balises HTML de base.
 
 Allons découvrir ce qu'il y a dans notre fichier  `components/HelloWorld.vue` !
 
-[//]: <> (TODO : {{ msg }} dans le h1 de l'HTML ne s'affiche pas dans le site compilé par Jekyll pour une raison inconnue)
+[//]: <> (TODO : {{ msg }} dans le h1 de l'HTML ne s'affiche pas dans le site compilé par Jekyll pour une raison inconnue, à résoudre)
 
 ```html
 <template>
@@ -255,4 +255,4 @@ On remarque néanmoins certaines particularités dans ce composant :
 
 Le reste des éléments dans le template de ce composant correspond aux éléments affichés dans notre browser (liens GitHub et réseaux sociaux).
 
-Cette petite présentation de Vue est terminée, pour poursuivre votre formation avec ce Framework nous vous proposons la création d'une application TODO liste dans [ce tuto]({% link cours/dfs/todolist_vuejs.md %})
+Cette petite présentation de Vue est terminée, pour poursuivre votre formation avec ce framework nous vous proposons la création d'une application todolist dans [ce tuto]({% link cours/dfs/todolist_vuejs.md %}).
