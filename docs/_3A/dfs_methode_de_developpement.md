@@ -5,15 +5,15 @@ category: cours
 tags: combat web
 ---
 
-# Introduction
+## Introduction
 
 Cours d'apprentissages des différents outils de développement et les bases du web.
 
-# Préparation d'un windows
+## Préparation d'un windows
 
   [Installation w10]({% link cours/dfs/installation_W10.md %})
 
-# git et github
+## git et github
 
   [git et github]({% link cours/dfs/git_et_github.md %})
 
@@ -23,26 +23,30 @@ Cours d'apprentissages des différents outils de développement et les bases du 
 
   [les commits atomiques]({% link cours/dfs/git_commits_atomiques.md %})
 
-# shell
+## shell
 
   [shell]({% link cours/dfs/le_shell.md %})
 
-# ssh 
-  [SSH]({% link cours/dfs/ssh.md %}) 
+## ssh
+
+  [SSH]({% link cours/dfs/ssh.md %})
+
   [Le chiffrement RSA ]({% link cours/dfs/ssh_rsa.md %}) (/!\ des maths)
-  [Copie sécurisée scp]({% link cours/dfs/ssh_scp.md %}) 
 
-# web
+  [Copie sécurisée scp]({% link cours/dfs/ssh_scp.md %})
 
-# Jekyll
+## **Outils de développements web**
 
-  [Jekyll]({% link cours/dfs/jekyll.md %}) 
+## Jekyll
 
-## Outils de développements
+  [Jekyll]({% link cours/dfs/jekyll.md %})
 
 ## html/css/js/imports
-   [html/css/js]({% link cours/dfs/html_css_js.md %})\
-   [imports]({% link cours/dfs/yarn.md %})
+
+  [html/css/js]({% link cours/dfs/html_css_js.md %})
+
+  [imports]({% link cours/dfs/yarn.md %})
+
 ## méthodes de packaging
 
   [Packaging]({% link cours/dfs/packaging.md %})
