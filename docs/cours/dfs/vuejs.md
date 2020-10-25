@@ -41,7 +41,7 @@ Cette commande va installer la dernière version de Vue.js dans le dossier node_
 
 ### 3. Utiliser le CLI (Command Line Interface) officiel de Vue
 
-Vue nous offre un CLI avec beaucoup de fonctionnalités trés itéressantes pour développement d'applications web basées sur le framework :
+Vue nous offre une [CLI](https://cli.vuejs.org/guide) avec beaucoup de fonctionnalités trés itéressantes pour le développement d'applications web basées sur le framework :
 
 - génération de composants Vuejs
 - local server avec hot-reload
@@ -51,7 +51,15 @@ Vue nous offre un CLI avec beaucoup de fonctionnalités trés itéressantes pour
 Il faut d'abord installer le CLI globalement sur notre machine pour pouvoir l'utiliser directement depuis n'importe où :
 
 ```shell
-npm install -g @vue/cli # avec npm directement
+npm install -g @vue/cli @vue/cli-service-global # avec npm directement
 # OU
-yarn global add @vue/cli # en passant par yarn
+yarn global add @vue/cli @vue/cli-service-global # en passant par yarn
 ```
+
+Pour tester l'installation on peut executer la commande suivante :
+
+```shell
+vue --version
+```
+
+Pour utiliser le CLI avec Vue 3.0 il nous faut `@vue/cli 4.5` ou supérieur.
