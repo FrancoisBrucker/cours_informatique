@@ -245,4 +245,10 @@ a {
 </style>
 ```
 
-On retrouve nos 3 parties `template`, `script` et `style` comme pour App.
+On retrouve nos 3 parties `template`, `script` et `style` comme pour App. \
+On remarque néanmoins certaines particularités dans ce composant :
+
+- On peut voir la propriété `msg` du composant qui est un example de propagation d'information entre composants. Nous avons vu dans `App.vue` quand on a déclaré l'élément `HelloWorld` l'assignation `msg="Welcome to Your Vue.js App"` qui signifie que l'on passse le **string "Welcome to Your Vue.js App"** depuis le composant `App` au composant `HelloWorld`. Du côté du composant `HelloWord` on définit `props: { msg: String }` dans le `script`. On utilise ensuite cette propriété dans le template de HelloWorld `<h1>{{ msg }}</h1>`, on affiche le string dans une balise `h1`.
+- On voit l'attribut `scoped` dans la définition des styles. Cela signifie que les règles CSS définies ici ne seront appliquées que dans le composant `HelloWorld` et pas dans le reste de l'application.
+
+Le reste des éléments dans le template de ce composant correspond aux éléments affichés dans notre browser (liens GitHub et réseaux sociaux).
