@@ -184,7 +184,9 @@ En regardant d'un peu plus prés on peut voir que notre `<template>` comporte un
 
 Allons découvrir ce qu'il y a dans notre fichier  `components/HelloWorld.vue` !
 
-```vue
+[//]: <> (TODO : {{ msg }} dans le h1 de l'HTML ne s'affiche pas dans le site compilé par Jekyll pour une raison inconnue)
+
+```html
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
@@ -252,3 +254,5 @@ On remarque néanmoins certaines particularités dans ce composant :
 - On voit l'attribut `scoped` dans la définition des styles. Cela signifie que les règles CSS définies ici ne seront appliquées que dans le composant `HelloWorld` et pas dans le reste de l'application.
 
 Le reste des éléments dans le template de ce composant correspond aux éléments affichés dans notre browser (liens GitHub et réseaux sociaux).
+
+Cette petite présentation de Vue est terminée, pour poursuivre votre formation avec ce Framework nous vous proposons la création d'une application TODO liste dans [ce tuto]({% link cours/dfs/todolist_vuejs.md %})
