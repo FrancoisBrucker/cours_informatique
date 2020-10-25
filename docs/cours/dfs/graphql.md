@@ -227,6 +227,75 @@ module.exports = new GraphQLSchema({
 });
 ~~~
 
-## Du côté client: les opérations 
+## Du côté client: les opérations
+
+Maintenant que les schémas et opérations sont définies du côté du serveur, on peut commencer à formuler des requêtes du côté client.
+
+Pour ça, il faut définir les différentes requêtes dans un fichier à part de l'application client. 
+
+Les différentes requêtes s'écrivent entre ** ' ' ** et se passent comme paramètre à graphql. 
+
+  
 ###Queries 
+
+Pour récupérer tous les livres de l'application avec leur nom et leur identifiant, il suffit d'écrire : 
+
+~~~
+const getBooksQuery=gql`
+{
+    books {
+        name
+        id
+    }
+}
+`
+~~~
+
+On peut aussi récupérer des informations sur un livre en particulier et en même temps, des informations sur son auteur : 
+
+~~~
+const getBookQuery=gql`
+query($id:String!){
+    book(id:$id){
+    id
+    name
+    genre
+    author{
+        id
+        name
+        age
+        books {
+            name
+            id
+        }
+        }
+    }
+
+}
+`
+~~~
+
+> **Nota Bene** : il faut donc préciser les paramètres de la query ainsi que son type !
+
 ###Mutations   
+
+Pour préciser une mutation, c'est un peu pareil. On précise aussi les attributs en arguments.  Par exemple: 
+
+~~~
+const addBookMutation=gql`
+mutation($name: String!, $genre: String!, $authorId:ID!){
+    addBook(name:$name,genre:$genre,authorId:$authorId){
+        name
+        id
+    
+    }
+}
+`
+~~~
+### Validations 
+
+En revanche,il existe quelques règles à respecter pour que les requêtes soient validées par GraphQL. 
+
+GraphQL termine de parcourir le graphe de requête lorsqu'il rencontre un scalaire (chaîne de caractères, entier, flottant), il faut ddonc préciser les champs que l'on souhaite recevoir. Si un des champs est du type d'une autre entité qui a été définie, il faut continuer à demander des attributs jusqu'a n'avoir que sur les feuilles du graphe, des sclaires. 
+
+On ne peut bien sûr que demander des champs du modèle concerné.  
