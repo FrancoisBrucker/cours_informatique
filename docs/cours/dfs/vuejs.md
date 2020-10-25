@@ -63,3 +63,36 @@ vue --version
 ```
 
 Pour utiliser le CLI avec Vue 3.0 il nous faut `@vue/cli 4.5` ou supérieur.
+
+## Les débuts, initialisation d'un projet Vue.js
+
+Parmis les 3 méthodes si-dessus nous allons utilisé la 3ème dans la suite de ce tuto. Assurez-vous d'avoir bien installé le CLI.
+
+Pour initialiser un projet Vue.js à l'aide du CLI :
+
+```shell
+vue create my-first-vue-project
+```
+
+Une fois cette commande exécutée on va choisir `Default (Vue 3 Preview) ([Vue 3] babel, eslint)` pour le type de projet et `NPM` pour le management des packages. \
+On peut ensuite naviguer dans le projet crée par le CLI :
+
+```shell
+cd my-first-vue-project
+```
+
+On remarque 2 choses à l'intérieur du dossier :
+
+- un repo `git` a été initialisé
+- un projet `node` a aussi été initialisé
+
+Si l'on regarde dans le `README.md` on peut voir les différentes commandes possibles dans le repo avec le CLI. \
+Essayons d'abord de servir notre porjet en local avec la commande :
+
+```shell
+npm run serve
+```
+
+Si l'on va avec notre navigateur à l'addresse indiquée `http://localhost:8080`, on peut voir notre toute première application Vue.js exécutée !
+
+![Vue Screen](../../assets/vue-project-capture.png)
