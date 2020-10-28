@@ -60,6 +60,10 @@ Cours d'apprentissages des différents outils de développement et les bases du 
 ## Web seveur
 
   [Serveurs web]({% link cours/dfs/web_serveur.md %})
+  
+## Cookies
+
+  [Cookies]({% link cours/dfs/cookies.md %})
 
 ## Bases de données
 
