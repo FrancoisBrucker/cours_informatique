@@ -184,12 +184,10 @@ En regardant d'un peu plus près on peut voir que notre `<template>` comporte un
 
 Allons découvrir ce qu'il y a dans notre fichier  `components/HelloWorld.vue` !
 
-[//]: <> (TODO : {{ msg }} dans le h1 de l'HTML ne s'affiche pas dans le site compilé par Jekyll pour une raison inconnue, à résoudre)
-
-```html
+```vue
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    {% raw %}<h1>{{ msg }}</h1>{% endraw %}
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
       check out the
