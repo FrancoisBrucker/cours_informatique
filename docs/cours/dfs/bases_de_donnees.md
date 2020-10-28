@@ -168,3 +168,19 @@ On obtient en résultat le tableau suivant des romans écrit par un auteur amér
 | :-: |
 | Les Raisins de la colère |
 | Sur la Route |
+
+## Utiliser sqlite avec Nodejs
+
+Dans les faits, on n'utilisera pas nécessairement sqlite depuis l'interface de commande, mais plutôt depuis un programme qui utilisera une base de données sqlite. Dans la dernière partie de ce tutoriel, nous verrons donc comment relier une base de données sqlite à un programme écrit en nodejs, et comment faire des requêtes en lecture et en écriture à cette base de données, depuis le programme.
+
+NB : la plupart des langages de programmation disposent d'une librairie sqlite. Nous avons fait le choix de présenter celle de Nodejs, mais il en existe bien d'autres, suivant les langages utilisés dans votre projet.
+
+Globalement, l'ordre des opérations est un peu toujours le même :
+1. Installer le module sqlite
+2. L'importer dans le projet
+3. Créer un objet "base de données", en mémoire ou sur le disque dur
+4. Ouvrir la connexion à la base de données
+5. Manipuler les données (lecture/écriture)
+6. Fermer la connexion à la base de données
+
+Pour plus de détails, voir les très bons tutos de [sqlitetutorial](https://www.sqlitetutorial.net/sqlite-nodejs/), à suivre dans l'ordre.
