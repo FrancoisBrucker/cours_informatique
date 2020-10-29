@@ -11,7 +11,8 @@ authors: "Baptiste Mahé, Maxime Vivier"
 Attention ce tutoriel est la suite de l'introduction à Vue 3.0 présente [ici]({% link cours/dfs/vuejs.md %}). Si vous êtes un débutant en Vue.js je vous conseille de passer d'abord par l'introduction.
 
 Nous allons ici créer une application type 'TodoList' à partir d'un projet Vue.js généré avec le CLI.
-Si vous comptez coder l'application en même temps que nous ici je vous conseille d'exécuter la commande `npm run serve` dans le dossier généré par le CLI pour voir l'évoution de l'app à mesure de sa création et pouvoir débuger facilement. Sinon vous pouvez accéder au repo GitHub du projet ici (à chaque titre sa branche) : [https://github.com/BaptisteMahe/vuejs-todolist](https://github.com/BaptisteMahe/vuejs-todolist)
+Si vous comptez coder l'application en même temps que nous ici je vous conseille d'exécuter la commande `npm run serve` dans le dossier généré par le CLI pour voir l'évoution de l'app à mesure de sa création et pouvoir débuger facilement. Sinon vous pouvez accéder au repo GitHub du projet ici : [https://github.com/BaptisteMahe/vuejs-todolist](https://github.com/BaptisteMahe/vuejs-todolist) \
+Si vous souhaitez utiliser le repo sachez qu'a chaque étape correspond sa branche avec le code qui va avec.
 
 Tout d'abord il nous faut supprimer le composant `HelloWorld`. Pour cela on supprime le fichier `HelloWorld.vue` et on supprime toutes références à ce fichier and `App.vue`. \
 On obtient donc un fichier `App.vue` qui doit ressembler à cela :
@@ -102,4 +103,42 @@ Ajoutons plusieurs balises `Todo` dans le template de notre `App` :
 
 Et on voit apparaitre nos todos sur l'application.
 
-## Creation d'une liste de Todos
+Pas soucis d'hestétique nous allons rajouter quelques **règles CSS** : \
+Pour `App.vue`:
+
+```vue
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #2c3e50;
+  margin: 60px 25% 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.5em;
+}
+</style>
+```
+
+Pour `Todo.vue`:
+
+```vue
+<style scoped>
+.todo {
+  padding: 5px;
+  margin: 5px;
+  width: 100%;
+  border-radius: 10px;
+  color: #2c3e50;
+  border-style: solid;
+}
+
+.todo:hover {
+  background-color: rgb(44, 62, 80, 0.1);
+}
+</style>
+```
+
+## 2. Creation d'une liste de Todos
