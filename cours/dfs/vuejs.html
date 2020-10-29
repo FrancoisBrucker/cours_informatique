@@ -78,14 +78,14 @@ La dernière majeure version <strong>Vue.js 3.0</strong> est sortie le 18 septem
 
 <h3 id="2-limporter-comme-package-npm">2. L’importer comme package npm</h3>
 
-<p>Pour un import un peu <em>propre</em> on peut utiliser le Node Package Manager (ajouter lien vers tuto Node pas ecore écrit). Pour cela on va lancer la commande suivante dans le dossier <code class="language-plaintext highlighter-rouge">root</code> du projet :</p>
+<p>Pour un import un peu plus <em>propre</em> on peut utiliser le Node Package Manager (ajouter lien vers tuto Node pas ecore écrit). Pour cela on va lancer la commande suivante dans le dossier <code class="language-plaintext highlighter-rouge">root</code> du projet :</p>
 
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install </span>vue@next <span class="c"># avec npm directement</span>
 <span class="c"># OU</span>
 yarn add vue@next <span class="c"># en passant par yarn</span>
 </code></pre></div></div>
 
-<p>Cette commande va installer la dernière version de Vue.js dans le dossier node_modules ainsi que toutes ces dépendances.</p>
+<p>Cette commande va installer la dernière version de Vue.js dans le dossier node_modules ainsi que toutes ses dépendances.</p>
 
 <h3 id="3-utiliser-le-cli-command-line-interface-officiel-de-vue">3. Utiliser le CLI (Command Line Interface) officiel de Vue</h3>
 
@@ -114,7 +114,7 @@ yarn global add @vue/cli @vue/cli-service-global <span class="c"># en passant pa
 
 <h2 id="les-débuts-initialisation-dun-projet-vuejs">Les débuts, initialisation d’un projet Vue.js</h2>
 
-<p>Parmis les 3 méthodes si-dessus nous allons utilisé la 3ème dans la suite de ce tuto. Assurez-vous d’avoir bien installé le CLI.</p>
+<p>Parmis les 3 méthodes si-dessus nous allons utilisé la 3ème pour la suite de ce tuto. Assurez-vous d’avoir bien installé le CLI.</p>
 
 <p>Pour initialiser un projet Vue.js à l’aide du CLI :</p>
 
@@ -122,7 +122,7 @@ yarn global add @vue/cli @vue/cli-service-global <span class="c"># en passant pa
 </code></pre></div></div>
 
 <p>Une fois cette commande exécutée on va choisir <code class="language-plaintext highlighter-rouge">Default (Vue 3 Preview) ([Vue 3] babel, eslint)</code> pour le type de projet et <code class="language-plaintext highlighter-rouge">NPM</code> pour le management des packages. <br />
-On peut ensuite naviguer dans le projet crée par le CLI :</p>
+On peut ensuite naviguer dans le projet créé par le CLI :</p>
 
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>my-first-vue-project
 </code></pre></div></div>
@@ -143,6 +143,165 @@ Essayons d’abord de servir notre porjet en local avec la commande :</p>
 <p>Si l’on va avec notre navigateur à l’addresse indiquée <code class="language-plaintext highlighter-rouge">http://localhost:8080</code>, on peut voir notre toute première application Vue.js exécutée !</p>
 
 <p><img src="../../assets/vue-project-capture.png" alt="Vue Screen" /></p>
+
+<p>Nous allons maintenant regarder dans les fichiers généré par le CLI pour comprendre comment la page que l’on a sous les yeux fonctionne.</p>
+
+<h3 id="tout-dabord-le-dossier-public">Tout d’abord le dossier <code class="language-plaintext highlighter-rouge">public</code></h3>
+
+<p>On peut y voir 2 fichiers :</p>
+
+<ul>
+  <li>favicon.ico : l’icône vue affichée dans l’escpace tab de notre browser.</li>
+  <li>index.html : le fichier HTML qui est rendu dans notre borwser.</li>
+</ul>
+
+<p>Dans ce fichier html on peut déjà voir certaines lignes intéréssantes dans le <code class="language-plaintext highlighter-rouge">head</code>:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"icon"</span> <span class="na">href=</span><span class="s">"&lt;%= BASE_URL %&gt;favicon.ico"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;title&gt;&lt;</span><span class="err">%=</span> <span class="na">htmlWebpackPlugin.options.title</span> <span class="err">%</span><span class="nt">&gt;&lt;/title&gt;</span>
+</code></pre></div></div>
+
+<p>Ces lignes nous permettent de définir l’icône et le titre de l’application dans la zone de tab du site. <br />
+Il s’agit pour l’instant que de code html simple avec un peu de WebPack rien à voir avec Vue.js…</p>
+
+<p>Ensuite on peut s’intérésser au <code class="language-plaintext highlighter-rouge">body</code> de notre page html :</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="c">&lt;!-- built files will be auto injected --&gt;</span>
+</code></pre></div></div>
+
+<p>Cette <code class="language-plaintext highlighter-rouge">div</code> avec un <strong>id</strong> “app” est en réalité la <code class="language-plaintext highlighter-rouge">div</code> qui va contenir toute notre application. Vue.js va injecter nos composants Vue dans cette <code class="language-plaintext highlighter-rouge">div</code>.</p>
+
+<h3 id="ensuite-le-dossier-src">Ensuite le dossier <code class="language-plaintext highlighter-rouge">src</code></h3>
+
+<p>Le fichier <code class="language-plaintext highlighter-rouge">main.js</code> est le fichier qui va nous permettre injecter notre application dans la <code class="language-plaintext highlighter-rouge">div</code> app de l’<code class="language-plaintext highlighter-rouge">index.html</code> que l’on vient de voir. <br />
+On y retrouve le code suivant :</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">createApp</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">vue</span><span class="dl">'</span>
+<span class="k">import</span> <span class="nx">App</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./App.vue</span><span class="dl">'</span>
+
+<span class="nx">createApp</span><span class="p">(</span><span class="nx">App</span><span class="p">).</span><span class="nx">mount</span><span class="p">(</span><span class="dl">'</span><span class="s1">#app</span><span class="dl">'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>La fonction <code class="language-plaintext highlighter-rouge">createApp</code> est une fonction native de Vue qui permet de build l’application. Son paramètre doit être un composant Vue définie dans <code class="language-plaintext highlighter-rouge">App.vue</code>. Cette fonction renvoi un objet <code class="language-plaintext highlighter-rouge">App</code> sur lequel on execute la méthode <code class="language-plaintext highlighter-rouge">mount</code> qui va nous permettre d’indiquer sur quel composant nous souhaitons monter notre application. Ici le <code class="language-plaintext highlighter-rouge">#app</code> signifie que l’on souhaite monter notre application sur un élément avec un <code class="language-plaintext highlighter-rouge">id</code> égale à <code class="language-plaintext highlighter-rouge">app</code> donc notre <code class="language-plaintext highlighter-rouge">div</code> de toute à l’heure.</p>
+
+<p>Allons donc voir comment est défini notre composant <code class="language-plaintext highlighter-rouge">App</code> dans <code class="language-plaintext highlighter-rouge">App.vue</code>!</p>
+
+<div class="language-vue highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;</span><span class="k">template</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;img</span> <span class="na">alt=</span><span class="s">"Vue logo"</span> <span class="na">src=</span><span class="s">"./assets/logo.png"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;HelloWorld</span> <span class="na">msg=</span><span class="s">"Welcome to Your Vue.js App"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/</span><span class="k">template</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;</span><span class="k">script</span><span class="nt">&gt;</span>
+<span class="k">import</span> <span class="nx">HelloWorld</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./components/HelloWorld.vue</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">App</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">components</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">HelloWorld</span><span class="p">,</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+<span class="nt">&lt;/</span><span class="k">script</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;</span><span class="k">style</span><span class="nt">&gt;</span>
+<span class="nf">#app</span> <span class="p">{</span>
+  <span class="nl">font-family</span><span class="p">:</span> <span class="n">Avenir</span><span class="p">,</span> <span class="n">Helvetica</span><span class="p">,</span> <span class="n">Arial</span><span class="p">,</span> <span class="nb">sans-serif</span><span class="p">;</span>
+  <span class="nl">-webkit-font-smoothing</span><span class="p">:</span> <span class="n">antialiased</span><span class="p">;</span>
+  <span class="nl">-moz-osx-font-smoothing</span><span class="p">:</span> <span class="n">grayscale</span><span class="p">;</span>
+  <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#2c3e50</span><span class="p">;</span>
+  <span class="nl">margin-top</span><span class="p">:</span> <span class="m">60px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">&lt;/</span><span class="k">style</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+
+<p>On remarque 3 parties différentes dans la définition du composants :</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">&lt;template&gt;</code> : La définition HTML du template du composant, de quelles balises HTML ce composant est-il composée (tiens, tiens, tiens une balise HelloWorld…).</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;script&gt;</code> : La définition logique du composant.</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;style&gt;</code> : Des règles CSS qui vont être appliquées au composant.</li>
+</ul>
+
+<p>Nous voila donc devant le grand intéret de Vue : <strong>1 COMPOSANT = 1 FICHIER</strong> <br />
+Mais cela signifie aussi jongler entre 3 languages différents dans un même fichier : le <strong>html</strong> pour le template, le <strong>js</strong> pour le script et le <strong>css</strong> pour les styles.</p>
+
+<p>En regardant d’un peu plus près on peut voir que notre <code class="language-plaintext highlighter-rouge">&lt;template&gt;</code> comporte un élément HTML que l’on connait pas : <code class="language-plaintext highlighter-rouge">&lt;HelloWorld msg="Welcome to Your Vue.js App" /&gt;</code>. On peut voir dans le script que cet élément est importé depuis le fichier <code class="language-plaintext highlighter-rouge">components/HelloWorld.vue</code>. <br />
+<strong>Encore un composant Vue !</strong> Et oui, comme dans React et Angular les composants Vue, une fois bien défénis, peuvent être utilisés comme des balises HTML de base.</p>
+
+<p>Allons découvrir ce qu’il y a dans notre fichier  <code class="language-plaintext highlighter-rouge">components/HelloWorld.vue</code> !</p>
+
+<div class="language-vue highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;</span><span class="k">template</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"hello"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h1&gt;</span><span class="si">{{</span> <span class="nx">msg</span> <span class="si">}}</span><span class="nt">&lt;/h1&gt;</span>
+    <span class="nt">&lt;p&gt;</span>
+      For a guide and recipes on how to configure / customize this project,<span class="nt">&lt;br&gt;</span>
+      check out the
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://cli.vuejs.org"</span> <span class="na">target=</span><span class="s">"_blank"</span> <span class="na">rel=</span><span class="s">"noopener"</span><span class="nt">&gt;</span>vue-cli documentation<span class="nt">&lt;/a&gt;</span>.
+    <span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;h3&gt;</span>Installed CLI Plugins<span class="nt">&lt;/h3&gt;</span>
+    <span class="nt">&lt;ul&gt;</span>
+      <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel"</span> <span class="na">target=</span><span class="s">"_blank"</span> <span class="na">rel=</span><span class="s">"noopener"</span><span class="nt">&gt;</span>babel<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+      <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint"</span> <span class="na">target=</span><span class="s">"_blank"</span> <span class="na">rel=</span><span class="s">"noopener"</span><span class="nt">&gt;</span>eslint<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+    <span class="nt">&lt;h3&gt;</span>Essential Links<span class="nt">&lt;/h3&gt;</span>
+    <span class="nt">&lt;ul&gt;</span>
+      <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"https://vuejs.org"</span> <span class="na">target=</span><span class="s">"_blank"</span> <span class="na">rel=</span><span class="s">"noopener"</span><span class="nt">&gt;</span>Core Docs<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+      <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"https://forum.vuejs.org"</span> <span class="na">target=</span><span class="s">"_blank"</span> <span class="na">rel=</span><span class="s">"noopener"</span><span class="nt">&gt;</span>Forum<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+      <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"https://chat.vuejs.org"</span> <span class="na">target=</span><span class="s">"_blank"</span> <span class="na">rel=</span><span class="s">"noopener"</span><span class="nt">&gt;</span>Community Chat<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+      <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"https://twitter.com/vuejs"</span> <span class="na">target=</span><span class="s">"_blank"</span> <span class="na">rel=</span><span class="s">"noopener"</span><span class="nt">&gt;</span>Twitter<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+      <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"https://news.vuejs.org"</span> <span class="na">target=</span><span class="s">"_blank"</span> <span class="na">rel=</span><span class="s">"noopener"</span><span class="nt">&gt;</span>News<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+    <span class="nt">&lt;h3&gt;</span>Ecosystem<span class="nt">&lt;/h3&gt;</span>
+    <span class="nt">&lt;ul&gt;</span>
+      <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"https://router.vuejs.org"</span> <span class="na">target=</span><span class="s">"_blank"</span> <span class="na">rel=</span><span class="s">"noopener"</span><span class="nt">&gt;</span>vue-router<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+      <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"https://vuex.vuejs.org"</span> <span class="na">target=</span><span class="s">"_blank"</span> <span class="na">rel=</span><span class="s">"noopener"</span><span class="nt">&gt;</span>vuex<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+      <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"https://github.com/vuejs/vue-devtools#vue-devtools"</span> <span class="na">target=</span><span class="s">"_blank"</span> <span class="na">rel=</span><span class="s">"noopener"</span><span class="nt">&gt;</span>vue-devtools<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+      <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"https://vue-loader.vuejs.org"</span> <span class="na">target=</span><span class="s">"_blank"</span> <span class="na">rel=</span><span class="s">"noopener"</span><span class="nt">&gt;</span>vue-loader<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+      <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"https://github.com/vuejs/awesome-vue"</span> <span class="na">target=</span><span class="s">"_blank"</span> <span class="na">rel=</span><span class="s">"noopener"</span><span class="nt">&gt;</span>awesome-vue<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/</span><span class="k">template</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;</span><span class="k">script</span><span class="nt">&gt;</span>
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">HelloWorld</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">props</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">msg</span><span class="p">:</span> <span class="nb">String</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="nt">&lt;/</span><span class="k">script</span><span class="nt">&gt;</span>
+
+<span class="c">&lt;!-- Add "scoped" attribute to limit CSS to this component only --&gt;</span>
+<span class="nt">&lt;</span><span class="k">style</span> <span class="na">scoped</span><span class="nt">&gt;</span>
+<span class="nt">h3</span> <span class="p">{</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">40px</span> <span class="m">0</span> <span class="m">0</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">ul</span> <span class="p">{</span>
+  <span class="nl">list-style-type</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">li</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">inline-block</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span> <span class="m">10px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">a</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#42b983</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">&lt;/</span><span class="k">style</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+
+<p>On retrouve nos 3 parties <code class="language-plaintext highlighter-rouge">template</code>, <code class="language-plaintext highlighter-rouge">script</code> et <code class="language-plaintext highlighter-rouge">style</code> comme pour App. <br />
+On remarque néanmoins certaines particularités dans ce composant :</p>
+
+<ul>
+  <li>On peut voir la propriété <code class="language-plaintext highlighter-rouge">msg</code> du composant qui est un example de propagation d’information entre composants. Nous avons vu dans <code class="language-plaintext highlighter-rouge">App.vue</code> quand on a déclaré l’élément <code class="language-plaintext highlighter-rouge">HelloWorld</code> l’assignation <code class="language-plaintext highlighter-rouge">msg="Welcome to Your Vue.js App"</code> qui signifie que l’on passse le <strong>string “Welcome to Your Vue.js App”</strong> depuis le composant <code class="language-plaintext highlighter-rouge">App</code> au composant <code class="language-plaintext highlighter-rouge">HelloWorld</code>. Du côté du composant <code class="language-plaintext highlighter-rouge">HelloWord</code> on définit <code class="language-plaintext highlighter-rouge">props: { msg: String }</code> dans le <code class="language-plaintext highlighter-rouge">script</code>. On utilise ensuite cette propriété dans le template de HelloWorld <code class="language-plaintext highlighter-rouge">&lt;h1&gt;&lt;/h1&gt;</code>, on affiche le string dans une balise <code class="language-plaintext highlighter-rouge">h1</code>.</li>
+  <li>On voit l’attribut <code class="language-plaintext highlighter-rouge">scoped</code> dans la définition des styles. Cela signifie que les règles CSS définies ici ne seront appliquées que dans le composant <code class="language-plaintext highlighter-rouge">HelloWorld</code> et pas dans le reste de l’application.</li>
+</ul>
+
+<p>Le reste des éléments dans le template de ce composant correspond aux éléments affichés dans notre browser (liens GitHub et réseaux sociaux).</p>
+
+<p>Cette petite présentation de Vue est terminée, pour poursuivre votre formation avec ce framework nous vous proposons la création d’une application todolist dans <a href="/cours_informatique/cours/dfs/todolist_vuejs.html">ce tuto</a>.</p>
 
   </div>
 
