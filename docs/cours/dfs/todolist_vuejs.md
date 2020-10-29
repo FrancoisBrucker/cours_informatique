@@ -194,7 +194,7 @@ Une fois ces modifications appliquée on peut voir que rien n'a changé dans not
 
 Nous allons maintenat transporter toute cette logique dans un nouveau composant : `TodoList.vue` :  
 
-`TodoList.vue`:
+`TodoList.vue` (dans le dossier **components**):
 
 ```vue
 <template>
@@ -248,23 +248,52 @@ export default {
   },
 };
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-  margin: 60px 25% 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 1.5em;
-}
-</style>
 ```
 
 Pourquoi ce changement ? Me diriez vous. C'est l'esprit de frameworks tels que Vue Angular ou React, componentariser un maximum pour avoir un code flexible et scalable.
 
 ## 3. Un composant pour ajouter des Todos
 
+Nous allons tout d'abord créer un nouveau fichier `AddTodo.vue` (toujours dans le dossier **components**) qui contiendra notre composant permettant d'ajouer des todos :
+
+```vue
+<template>
+  <div>hello</div>
+</template>
+
+<script>
+export default {
+  name: "AddTodo",
+};
+</script>
+
+<style scoped>
+</style>
+```
+
+On peut maintenant l'importer et l'utiliser dans `App.vue` :
+
+```vue
+<template>
+  <img alt="Vue logo" src="./assets/logo.png" />
+  <AddTodo />
+  <TodoList />
+</template>
+
+<script>
+import AddTodo from "./components/AddTodo.vue";
+import TodoList from "./components/TodoList.vue";
+
+export default {
+  name: "App",
+  components: {
+    AddTodo,
+    TodoList,
+  },
+};
+</script>
+```
+
+Superbe, on a maintenant un petit **hello** afficher au dessus de notre liste de `Todos`...
+
+Plus qu'à ajouter un `input`, et envoyer la valeur de cette `input` dans notre liste de `Todos`. \
