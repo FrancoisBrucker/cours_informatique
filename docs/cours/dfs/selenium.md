@@ -16,4 +16,5 @@ Le concept de User Story rejoint celui d'expérience utilisateur.  En effet il s
 C’est un outil très générique puisqu’il supporte de nombreux browser, il est utilisable avec de nombreux langages également. 
 Selenium est écrit en Java, avant de l’utiliser assurez-vous d’avoir Java installé sur votre machine. Vous pouvez le faire en passant par l’installer [sdkman](https://sdkman.io).
 
-Pour bien prendre en main selenium, faisons [quelques tests](https://www.selenium.dev/documentation/en/).
+Pour bien prendre en main selenium, faisons quelques tests\
+[Doc de Selenium](https://www.selenium.dev/documentation/en/).
