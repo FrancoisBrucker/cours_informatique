@@ -141,4 +141,130 @@ Pour `Todo.vue`:
 </style>
 ```
 
+![project-capture-1](../../assets/vue-project-capture1.png)
+
 ## 2. Creation d'une liste de Todos
+
+C'est bien beau de pouvoir afficher plusieurs Todo dans notre `App` mais il serait plus simple d'avoir un **array** de todos que l'on afficherai à l'aide de plusieurs composants `Todo`.
+
+Il nous faut d'abord déclarer les todos en tant que `data` du composant `App.vue`. Pour cela nous allons ajouter une methode `data()` qui va retourner notre **array** dans la déclaration du composant `App` :
+
+```vue
+<script>
+import Todo from "./components/Todo.vue";
+
+export default {
+  name: "App",
+  components: {
+    Todo,
+  },
+  data() {
+    return {
+      todos: [
+        "Faire les courses",
+        "Faire le tuto Vue",
+        "Faire une liste de Todo",
+      ],
+    };
+  },
+};
+</script>
+```
+
+Maintenant nous allons utiliser une **directive** de vue pour *itérer* à travers cet array directement dans le **template**. \
+Cette **directive** s'appelle `v-for` et permet de *simuler* une boucle `for` en *html* :
+
+```vue
+<template>
+  <img alt="Vue logo" src="./assets/logo.png" />
+  <Todo v-for="todo in todos" :key="todo" v-bind:todo="todo" />
+</template>
+```
+
+Voilà une belle ligne de html où on comprend plus rien... \
+Nous allons décortiquer ce code pour comprendre à quoi servent les différents éléments :
+
+- `v-for="todo in todos"` c'est la directive vue qui nous permet de créer cette boucle for dans le html (on reconnait la syntaxe `for element in list`). Cela instancie une nouvelle variable locale `todo` et pour chaque todo cette directive va créer un nouvel élément `Todo`.
+- `:key="todo"` cela permet de dire à vue que `todo` est la variable de l'itération (elle va de paire avec `v-for`).
+- `v-bind:todo="todo"` cela remplace `todo="un string affiché dans le todo"`. Cette syntaxe permet de dire à vue que l'on souhaite passer le contenu de la variable `todo` (celle en guillemets) dans la propriété `todo` (spécifiée aprés le `v-bin:`) du composant `App.vue`.
+
+Pour résumé cette ligne créer autant d'élément `Todo` (le composant `Todo.vue`) qu'il n'y a de `todo` dans `todos` (l'array de strings instancié dans les `data()` de App) et **bind** le string `todo` à la propriété `todo` pour chaque `Todo` instancié. (ça fait beaucoup de todo...)
+
+Une fois ces modifications appliquée on peut voir que rien n'a changé dans notre site compilé. Et c'est normal, on a simplement changer la manière dont sont récupéré les `todo`.
+
+Nous allons maintenat transporter toute cette logique dans un nouveau composant : `TodoList.vue` :  
+
+`TodoList.vue`:
+
+```vue
+<template>
+  <div class="todo-list">
+    <Todo v-for="todo in todos" :key="todo" v-bind:todo="todo" />
+  </div>
+</template>
+
+<script>
+import Todo from "./Todo.vue";
+
+export default {
+  name: "TodoList",
+  components: {
+    Todo,
+  },
+  data() {
+    return {
+      todos: [
+        "Faire les courses",
+        "Faire le tuto Vue",
+        "Faire une liste de Todo",
+      ],
+    };
+  },
+};
+</script>
+
+<style scoped>
+.todo-list {
+  width: 100%;
+}
+</style>
+```
+
+`App.vue` :
+
+```vue
+<template>
+  <img alt="Vue logo" src="./assets/logo.png" />
+  <TodoList />
+</template>
+
+<script>
+import TodoList from "./components/TodoList.vue";
+
+export default {
+  name: "App",
+  components: {
+    TodoList,
+  },
+};
+</script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #2c3e50;
+  margin: 60px 25% 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.5em;
+}
+</style>
+```
+
+Pourquoi ce changement ? Me diriez vous. C'est l'esprit de frameworks tels que Vue Angular ou React, componentariser un maximum pour avoir un code flexible et scalable.
+
+## 3. Un composant pour ajouter des Todos
+
