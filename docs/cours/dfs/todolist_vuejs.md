@@ -297,3 +297,72 @@ export default {
 Superbe, on a maintenant un petit **hello** afficher au dessus de notre liste de `Todos`...
 
 Plus qu'à ajouter un `input`, et envoyer la valeur de cette `input` dans notre liste de `Todos`. \
+Dans notre `AddTodo.vue` :
+
+```vue
+<template>
+  <input class="todo-input" v-model="todo" placeholder="Ajoutez un todo !" />
+</template>
+
+<script>
+export default {
+  name: "AddTodo",
+  data() {
+    return {
+      todo: "",
+    };
+  },
+};
+</script>
+```
+
+Comme on peut le voir au dessus, on va utiliser une autre directive spéciale de vue : `v-model`. \
+Cette directive permet de binder le string contenu dans l'`input` (les données rentrées par l'utilisateur) diretement à une variable de notre composant, ici la variable `todo`. \
+Et si l'on rajoute une ligne du style {% raw %}`<div> {{ todo }} </div>` {% endraw %} en dessous de l'`input` on peut voir que cette variable est updatée à chaque nouvel input de l'utilisateur !
+
+Nous allons donc maintenant ajouter un event listener sur cette input pour executer une action quand l'utilisateur appui sur la touche entrée :
+
+```vue
+<template>
+  <input
+    class="todo-input"
+    v-on:keyup.enter="onSubmit"
+    v-model="todo"
+    placeholder="Ajoutez un todo !"
+  />
+</template>
+
+<script>
+export default {
+  name: "AddTodo",
+  methods: {
+    onSubmit: function () {
+      console.log(this.todo);
+    },
+  },
+  data() {
+    return {
+      todo: "",
+    };
+  },
+};
+</script>
+
+<style scoped>
+.todo-input {
+  width: 50%;
+  font-size: 1.5em;
+  margin: 20px;
+  color: #2c3e50;
+}
+</style>
+```
+
+On voit ici deux choses en même temps :
+
+- `v-on:keyup.enter="onSubmit"` : Une nouvelle directive de vue `v-on`, c'est le raccourci pour créer un **event listener**. L'event que l'on recherche est précisé aprés les deux points, ici on a pris `keyup.enter` qui correspond à quand l'utilisateur relâche la touche entrée (après l'avoir enfoncée au préalable). Derrière le `=` se trouve la **référence de la méthode** que l'on souhaite appeler quand l'event est détecté.
+- `methods: {onSubmit: function () {...}}` : Il s'agit de la déclaration d'une **méthode** pour le composant `AddTodo`. Ici ce sera cette fonction qui va être exécutée quand l'event est détecté. Notez que pour accéder aux données (contenu de `data()`) du composant dans une méthode il faut utiliser le préfixe `this`.
+
+Pour l'instant `onSubmit` ne fait qu'afficher la valeur de l'input de l'utilsateur dans la console du navigateur, il va falloir réussir à faire passer le string au composant `TodoList`...
+
+## 4. Passer le todo à TodoList
