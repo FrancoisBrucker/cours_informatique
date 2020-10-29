@@ -365,4 +365,6 @@ On voit ici deux choses en même temps :
 
 Pour l'instant `onSubmit` ne fait qu'afficher la valeur de l'input de l'utilsateur dans la console du navigateur, il va falloir réussir à faire passer le string au composant `TodoList`...
 
+![project-capture-2](../../assets/vue-project-capture2.png)
+
 ## 4. Passer le todo à TodoList
