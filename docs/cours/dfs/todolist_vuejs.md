@@ -6,7 +6,7 @@ tags: combat web
 authors: "Baptiste Mahé, Maxime Vivier"
 ---
 
-[//]: <> (TODO : Ajouter photo avec screen de l'appli finie)
+![Todo list finie](../../assets/vue-project-capture4.png)
 
 Attention ce tutoriel est la suite de l'introduction à Vue 3.0 présente [ici]({% link cours/dfs/vuejs.md %}). Si vous êtes un débutant en Vue.js je vous conseille de passer d'abord par l'introduction.
 
@@ -368,3 +368,273 @@ Pour l'instant `onSubmit` ne fait qu'afficher la valeur de l'input de l'utilsate
 ![project-capture-2](../../assets/vue-project-capture2.png)
 
 ## 4. Passer le todo à TodoList
+
+Maintenant que nous avons avons créé le composant permettant de demander l'input de l'utilisateur, il faut utiliser la donnée que l'utilisateur nous donne. Au même titre que nous avons utilisé un event listener pour repérer l'event `keyup.enter`, nous allons créer un event personnalisé et mettre en place un event listener pour celui-ci. L'event personnalisé est trigger dans le composant enfant, `addTodo.vue` ici. Il est écouté par le composant parent, `App.vue` ici.
+
+Ceci est la deuxième méthode pour passer de l'information d'un composant à un autre. La prmeière était les props pour passer de la donnée depuis un composant parent à un composant enfant. Maintenant la deuxième est de passer de la donnée depuis le composant enfant vers le composant parent.
+
+Mettons en place l'emission d'un event personnalisé dans `AddTodo.vue`:
+```vue
+<!-- AddTodo.vue -->
+<template>
+  <input
+    class="todo-input"
+    v-on:keyup.enter="onSubmit"
+    v-model="todo"
+    placeholder="Ajoutez un todo !"
+  />
+</template>
+
+<script>
+export default {
+  name: "AddTodo",
+  methods: {
+    onSubmit: function () {
+      // ------------------- Début changements --------------------
+      if (!(this.todo === '')) {
+        // Si une todo est non vide on émet un event 
+        this.$emit('add-to-do', this.todo);
+        // On peut spécifier de la donnée que l'on veut passer en même temps en 2ème argument
+        this.todo = '';
+        // On reset l'input à un string vide après avoir rajouté la todo à la liste
+      } else {
+        // S'il n'y a rien marqué on n'ajoute rien, sinon on va ajouter des cases vides
+        console.log('There is no todo to add');
+        
+      }
+      // -------------------- Fin changements ---------------------
+    },
+  },
+  data() {
+    return {
+      todo: '',
+    };
+  },
+};
+</script>
+
+<style scoped>
+.todo-input {
+  width: 50%;
+  font-size: 1.5em;
+  margin: 20px;
+  color: #2c3e50;
+}
+</style>
+```
+Maintenant que nous émettons l'event, il est nécessaire de le capter et récupérer la donnée qui lui est associée.
+`v-on:add-to-do="addToDo"` est ce qu'il faut préciser en attribu de la balise du composant `AddTodo`. `v-on` signifie qu'on écoute l'événement qui est spécifié juste après. `add-to-do` est le nom de l'événement qu'on a configuré dans `AddTodo`. Et enfin le `addToDo` est le nom de la méthode qui est trigger lorsque l'événement est capté.
+
+```vue
+<!-- App.vue -->
+<template>
+  <img alt="Vue logo" src="./assets/logo.png" />
+  <!-- Ajout de l'event listener dans le composant App.vue sur le composant AddTodo -->
+  <AddTodo
+    v-on:add-to-do="addToDo"
+  />
+  <!-- fin ajout -->
+  <TodoList/>
+</template>
+
+<script>
+import AddTodo from "./components/AddTodo.vue";
+import TodoList from "./components/TodoList.vue";
+
+export default {
+  name: "App",
+  components: {
+    AddTodo,
+    TodoList,
+  },
+  // Ajout option methods pour créer la fonction addToDo
+  // Elle est trigger losque l'event add-to-do est repéré
+  methods: {
+    addToDo: function (todo) {
+      // faire qqch de todo
+    }
+  }
+  // Fin ajout
+};
+</script>
+```
+
+Mais pour l'instant on a encore rien fait de la string de la nouvelle todo, il faut l'afficher. Pour cela il faut l'ajouter à l'array todos du composant TodoList. Nous allons faire cela dans la méthode `addToDo`.
+```vue
+<template>
+  <img alt="Vue logo" src="./assets/logo.png" />
+  <AddTodo
+    v-on:add-to-do="addToDo"
+  />
+  <TodoList ref="todoListComp"/>
+  <!-- On référence le composant pour pouvoir l'utiliser dans les méthodes -->
+</template>
+
+<script>
+import AddTodo from "./components/AddTodo.vue";
+import TodoList from "./components/TodoList.vue";
+
+export default {
+  name: "App",
+  components: {
+    AddTodo,
+    TodoList,
+  },
+  methods: {
+    addToDo: function (todo) {
+      // On attrape le composant dans le DOM grâce à la référence
+      // Avec ceci on peut accéder à l'array todos du comosant enfant
+      // On peut donc le modifier en ajoutant le todo
+      this.$refs.todoListComp.todos.push(todo);
+    }
+  }
+};
+</script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #2c3e50;
+  margin: 60px 25% 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.5em;
+}
+</style>
+
+```
+
+Avec ces dernières modifs le tour est joué et on peut ajouter des todo à notre liste.
+
+![project-capture-3](../../assets/vue-project-capture3.png)
+
+## 5. Supprimer un todo
+
+Finalement une todolist où on peut ajouter des éléments c'est cool parce qu'on doit souvent faire des nouveaux trucs. Mais une fois qu'on a fait une tâche c'est mieux si on peut la retirer de cette liste. Et voilà la dernière feature que nous allons créer ici.
+
+Pour cela il faut trouver un moyen dans le composant todolist de repérer l'élément à retirer pour le supprimer de la list de todos. La manière de faire ceci est de s'aider de l'index de l'élément. Une fois qu'on a l'index dans le composant enfant Todo, on refait un event personnalisé pour prévenir le composant parent quand on désire supprimer tel élément.
+
+`v-on:click="$emit('delete-todo', index)"` : avec ceci on émet l'événement. En l'associant à l'événement click d'un bouton on s'assure de lancer l'événement `'delete-todo'` lorsque l'on clique sur le bouton.
+
+`emits: ["delete-todo"]` La version Vue 3.0 conseille de lister les event custom dans l'options `emits` maintenant que c'est possible.
+
+```vue
+<!-- Todo.vue -->
+<template>
+  <div class="todo">
+    <p>{{ todo }}</p>
+    <!-- On émet tout simplement un événement à l'aide d'un bouton et d'un click event sur celui-ci -->
+    <!-- On notera que l'on peut simplifier l'écriture en implémentant directement l'émission dans l'attribut -->
+    <!-- Et on passe l'index de l'élément que l'on désire supprimer -->
+    <button v-on:click="$emit('delete-todo', index)">delete</button>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "Todo",
+  props: {
+    todo: String,
+    // On se fait passer la props index qui donne l'index de l'élément dans l'array todos
+    index: Number,
+  }, 
+  emits: ["delete-todo"]
+};
+</script>
+
+<style scoped>
+.todo {
+  padding: 5px;
+  margin: 5px;
+  width: 100%;
+  border-radius: 10px;
+  color: #2c3e50;
+  border-style: solid;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.todo:hover {
+  background-color: rgb(44, 62, 80, 0.1);
+}
+
+button {
+  width: 70px;
+  height: 30px;
+  border-radius: 15px;
+  border-color: rgb(182, 80, 80);
+  border-width: 3px;
+  background-color: rgb(255, 202, 202);
+}
+
+p {
+  margin: 5px;
+}
+</style>
+```
+La pochiane et dernière étape est de mettre en place l'event listener et l'associer à la fonction qui va supprimer l'élément de la liste.
+
+`v-on:delete-todo="deleteThisTodo"` event listener qui trigger `deleteThisTodo` quand `delete-todo` est capté.
+
+`v-bind:index="index"` passe index en props au composant enfant Todo.
+
+```vue
+<!-- TodoList.vue -->
+<template>
+  <div class="todo-list">
+    <!-- On remarquera la syntaxe particulière ici dela boucle for -->
+    <!-- On spécifie un deuxième argument qui nous permet de sortir l'index lié à un élément -->
+    <!-- On le passe en props ce qui nous permet de l'utiliser dans l'event qu'on l'on envoie -->
+    <!-- Enfin on spécifie un event listener ici pour trigger deleteThisTodo sur l'event delete-todo -->
+    <Todo
+      v-for="(todo, index) in todos"
+      :key="todo"
+      v-bind:todo="todo"
+      v-bind:index="index"
+      v-on:delete-todo="deleteThisTodo"
+    />
+  </div>
+</template>
+
+<script>
+import Todo from "./Todo.vue";
+
+export default {
+  name: "TodoList",
+  components: {
+    Todo,
+  },
+  // On crée un méthode deleteThisTodo qui est appelé lorsque l'event delete-todo est capté
+  // La méthode splice permet de retirer l'élément d'index todoIndex de la liste todos
+  methods: {
+    deleteThisTodo: function (todoIndex) {
+      console.log(todoIndex);
+      this.todos.splice(todoIndex, 1);
+    }
+  },
+  data() {
+    return {
+      todos: [
+        "Faire les courses",
+        "Faire le tuto Vue",
+        "Faire une liste de Todo",
+      ],
+    };
+  }
+};
+</script>
+
+<style scoped>
+.todo-list {
+  width: 100%;
+}
+</style>
+```
+
+Et voilà!!
+
+![project-capture-4](../../assets/vue-project-capture4.png)
