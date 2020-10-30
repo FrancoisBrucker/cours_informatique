@@ -374,6 +374,7 @@ Maintenant que nous avons avons créé le composant permettant de demander l'inp
 Ceci est la deuxième méthode pour passer de l'information d'un composant à un autre. La prmeière était les props pour passer de la donnée depuis un composant parent à un composant enfant. Maintenant la deuxième est de passer de la donnée depuis le composant enfant vers le composant parent.
 
 Mettons en place l'emission d'un event personnalisé dans `AddTodo.vue`:
+
 ```vue
 <!-- AddTodo.vue -->
 <template>
@@ -392,7 +393,7 @@ export default {
     onSubmit: function () {
       // ------------------- Début changements --------------------
       if (!(this.todo === '')) {
-        // Si une todo est non vide on émet un event 
+        // Si une todo est non vide on émet un event
         this.$emit('add-to-do', this.todo);
         // On peut spécifier de la donnée que l'on veut passer en même temps en 2ème argument
         this.todo = '';
@@ -400,7 +401,7 @@ export default {
       } else {
         // S'il n'y a rien marqué on n'ajoute rien, sinon on va ajouter des cases vides
         console.log('There is no todo to add');
-        
+
       }
       // -------------------- Fin changements ---------------------
     },
@@ -422,6 +423,7 @@ export default {
 }
 </style>
 ```
+
 Maintenant que nous émettons l'event, il est nécessaire de le capter et récupérer la donnée qui lui est associée.
 `v-on:add-to-do="addToDo"` est ce qu'il faut préciser en attribu de la balise du composant `AddTodo`. `v-on` signifie qu'on écoute l'événement qui est spécifié juste après. `add-to-do` est le nom de l'événement qu'on a configuré dans `AddTodo`. Et enfin le `addToDo` est le nom de la méthode qui est trigger lorsque l'événement est capté.
 
@@ -460,6 +462,7 @@ export default {
 ```
 
 Mais pour l'instant on a encore rien fait de la string de la nouvelle todo, il faut l'afficher. Pour cela il faut l'ajouter à l'array todos du composant TodoList. Nous allons faire cela dans la méthode `addToDo`.
+
 ```vue
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
@@ -504,7 +507,6 @@ export default {
   font-size: 1.5em;
 }
 </style>
-
 ```
 
 Avec ces dernières modifs le tour est joué et on peut ajouter des todo à notre liste.
@@ -540,7 +542,7 @@ export default {
     todo: String,
     // On se fait passer la props index qui donne l'index de l'élément dans l'array todos
     index: Number,
-  }, 
+  },
   emits: ["delete-todo"]
 };
 </script>
@@ -576,6 +578,7 @@ p {
 }
 </style>
 ```
+
 La pochiane et dernière étape est de mettre en place l'event listener et l'associer à la fonction qui va supprimer l'élément de la liste.
 
 `v-on:delete-todo="deleteThisTodo"` event listener qui trigger `deleteThisTodo` quand `delete-todo` est capté.
