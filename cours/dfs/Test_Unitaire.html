@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Tests Unitaires | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Tests Unitaires" />
+<meta name="author" content="Romain Herbelleau" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)" />
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)" />
+<link rel="canonical" href="/cours_informatique/cours/dfs/Test_Unitaire.html" />
+<meta property="og:url" content="/cours_informatique/cours/dfs/Test_Unitaire.html" />
+<meta property="og:site_name" content="cours d’informatique" />
+<script type="application/ld+json">
+{"description":"Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)","@type":"WebPage","headline":"Tests Unitaires","url":"/cours_informatique/cours/dfs/Test_Unitaire.html","author":{"@type":"Person","name":"Romain Herbelleau"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        processEscapes: true
+      }
+    });
+  </script>
+  
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+</head>
+
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Tests Unitaires</h1>
+  </header>
+
+  <div class="post-content">
+    <p>Les tests unitaires permettent d’automatiser la vérification du bon fonctionnement d’une partie du site que l’on est entrain de développer.
+Pour cela on utilise la bibliothèque <a href="https://jestjs.io/">jest</a></p>
+
+<h2 id="mise-en-place-de-jest">Mise en place de Jest</h2>
+
+<ul>
+  <li>Tout d’abord on crée un projet node avec <a href="https://classic.yarnpkg.com/en/">yarn</a>, pour créer ce projet on utilise <code class="language-plaintext highlighter-rouge">yarn init</code></li>
+  <li>On installe jest <code class="language-plaintext highlighter-rouge">yarn add --dev jest</code>.</li>
+  <li>On place dans <code class="language-plaintext highlighter-rouge">.gitignore</code> les fichiers et dossiers de jest car cette dépendance ne nous intéresse qu’en local pour développer.</li>
+  <li>Dans <em>package.json</em> on ajoute</li>
+</ul>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>”scripts”: <span class="o">{</span>
+	“test”: “jest”
+<span class="o">}</span>,
+</code></pre></div></div>
+
+<p>On pourra ensuite exécuter la commande <code class="language-plaintext highlighter-rouge">yarn run test</code> pour exécuter tous les tests.</p>
+
+<p>Par défaut, <em>jest</em> va exécuter tous les fichiers qui finissent par test.js récursivement dans tout le projet et tous les fichiers dans le dossier <strong>__tests__</strong>.</p>
+
+<p><code class="language-plaintext highlighter-rouge">yarn run test</code> (ou <code class="language-plaintext highlighter-rouge">./node_modules/.bin/jes</code>) permet de déclencher les tests.</p>
+
+<p>Voila, normalement tout est en place pour programmer des tests unitaires.</p>
+
+<p>On peut tester si cela marche bien en créant par exemple le fichier <em>main.test.js</em>:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">test</span><span class="o">(</span><span class="s1">'empty test'</span>, <span class="o">()</span> <span class="o">=&gt;</span> <span class="o">{</span>
+  expect<span class="o">(</span><span class="nb">true</span><span class="o">)</span>.toBe<span class="o">(</span><span class="nb">true</span><span class="o">)</span><span class="p">;</span>
+<span class="o">})</span><span class="p">;</span>
+</code></pre></div></div>
+<p>Puis on l’exécute avec <code class="language-plaintext highlighter-rouge">yarn run test</code>.</p>
+
+<p>##Import
+Un import, créer le lien entre <em>main.js</em> et <em>main.test.js</em>.
+L’intérêt d’un test est de tester une fonction dans notre programme. Généralement, un fichier test <code class="language-plaintext highlighter-rouge">main.test.js</code>, teste les fonctions qui existent dans <code class="language-plaintext highlighter-rouge">main.js</code>. Pour que cela fonctionne, il faut importer les fonctions de <code class="language-plaintext highlighter-rouge">main.js</code> dans le fichier test.</p>
+
+<p>Pour cela :</p>
+<ul>
+  <li>On exporte avec <code class="language-plaintext highlighter-rouge">module.exporte</code>. On peut choisir d’exporter différentes choses : objets, fonction…</li>
+  <li>On importe grâce à la commande <code class="language-plaintext highlighter-rouge">require</code></li>
+</ul>
+
+<p>Exemple :</p>
+
+<p><em>main.js</em></p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function </span>addCinq <span class="o">(</span>nombre<span class="o">)</span> <span class="o">{</span>
+	<span class="k">return </span>nombre +5
+<span class="o">}</span>
+module.exports <span class="o">=</span> addCinq
+</code></pre></div></div>
+<p><em>main.test.js</em></p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>addCinq <span class="o">=</span> require <span class="o">(</span>“./main”<span class="o">)</span>
+
+<span class="nb">test</span><span class="o">(</span>“addition”, <span class="o">()</span> <span class="o">=&gt;{</span>
+	expect<span class="o">(</span>addCinq<span class="o">(</span>7<span class="o">))</span>.toBe<span class="o">(</span>12<span class="o">)</span>
+<span class="o">})</span>
+</code></pre></div></div>
+
+<p>##Plusieurs imports</p>
+
+<p>Bien évidement on voudra tester plusieurs choses lors de nos tests. Pour cela il exciste deux solutions :</p>
+
+<ul>
+  <li>La première est de passer tous les paramètres dans l’<em>export</em>.</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">module.export = {addCinq, mulCinq}</code></p>
+
+<p>et de les récupérer dans le <em>require</em>.</p>
+
+<p><code class="language-plaintext highlighter-rouge">{addCinq, mulCinq} = require  (“./main”)</code></p>
+
+<ul>
+  <li>La deuxième, et la plus courante, est de passer un objet contenant les différents éléments que l’on veut transférer.</li>
+</ul>
+
+<p><em>main.js</em></p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+module.exports <span class="o">=</span> <span class="o">{</span>
+    add: addCinq,
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><em>main.test.js</em></p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+main <span class="o">=</span> require<span class="o">(</span><span class="s2">"./main"</span><span class="o">)</span>
+
+<span class="nb">test</span><span class="o">(</span><span class="s2">"addition"</span>, <span class="o">()</span> <span class="o">=&gt;</span> <span class="o">{</span>
+    expect<span class="o">(</span>main.add<span class="o">(</span>7<span class="o">))</span>.toBe<span class="o">(</span>12<span class="o">)</span>
+<span class="o">})</span>
+</code></pre></div></div>
+
+<p>##Retour de fonction</p>
+
+<p>Il est aussi possible, et intéressant dans certains cas, de retourner une fonction plutot que des modules. Cela permet de rentrer un paramètre dans la fonction importée.</p>
+
+<p><em>main.js</em></p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+module.exports <span class="o">=</span> <span class="o">(</span>parametre<span class="o">)</span> <span class="o">=&gt;</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="o">{</span>
+        addition: <span class="o">(</span>data<span class="o">)</span> <span class="o">=&gt;</span> <span class="o">{</span><span class="k">return </span>data + parametre<span class="o">}</span>,
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<p><em>main.test.js</em></p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+main <span class="o">=</span> require<span class="o">(</span><span class="s2">"./main"</span><span class="o">)(</span>5<span class="o">)</span>
+
+<span class="nb">test</span><span class="o">(</span><span class="s2">"addition"</span>, <span class="o">()</span> <span class="o">=&gt;</span> <span class="o">{</span>
+    expect<span class="o">(</span>main.addition<span class="o">(</span>7<span class="o">))</span>.toBe<span class="o">(</span>12<span class="o">)</span>
+<span class="o">})</span>
+</code></pre></div></div>
+
+<p>##Tests groupés</p>
+
+<p>Il est possible de grouper les tests par unit si par exemple ces tests sont reliés. Cela permet de paramétrer différents setup pour les différentes units. Pour les setup, on utilise <code class="language-plaintext highlighter-rouge">beforeAll()</code>.</p>
+
+<p><em>main.test.js</em>
+~~~ shellIl est possible de grouper les tests par unit si par exemple ces tests sont reliés. Cela permet de paramétrer différents setup pour les différentes units. Pour les setup, on utilise <code class="language-plaintext highlighter-rouge">beforeAll()</code>.</p>
+
+<p>main = require(./main)
+let chiffre;
+let somme;
+let multiplication;</p>
+
+<p>describe(‘testing math utilities’, () =&gt; {
+    beforeAll(() =&gt; {
+        chiffre = 7;
+        somme = 12;
+        multiplication = 35;
+    })</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>test('la somme doit faire 12', () =&gt; {
+    expect(add(chiffre)).toBe(somme);
+});
+
+test('la multiplication doit faire 35', () =&gt; {
+    expect(mulCinq(chiffre)).toBe(multiplication);
+}); }); ~~~
+</code></pre></div></div>
+
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d&#39;informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d&#39;informatique</li><li><a class="u-email" href="mailto:francois.brucker@centrale-marseille.fr">francois.brucker@centrale-marseille.fr</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li><li><a href="https://www.twitter.com/p_____p___"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">p_____p___</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.
+A destination des 1A (tronc commun), des 2A (de l&#39;approfondissement MIE) et des 3A (de l&#39;option digital·e)</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
