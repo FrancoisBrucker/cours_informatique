@@ -90,8 +90,9 @@ Pour cela on utilise la bibliothèque <a href="https://jestjs.io/">jest</a></p>
 </code></pre></div></div>
 <p>Puis on l’exécute avec <code class="language-plaintext highlighter-rouge">yarn run test</code>.</p>
 
-<p>##Import
-Un import, créer le lien entre <em>main.js</em> et <em>main.test.js</em>.
+<h2 id="import">Import</h2>
+
+<p>Un import, créer le lien entre <em>main.js</em> et <em>main.test.js</em>.
 L’intérêt d’un test est de tester une fonction dans notre programme. Généralement, un fichier test <code class="language-plaintext highlighter-rouge">main.test.js</code>, teste les fonctions qui existent dans <code class="language-plaintext highlighter-rouge">main.js</code>. Pour que cela fonctionne, il faut importer les fonctions de <code class="language-plaintext highlighter-rouge">main.js</code> dans le fichier test.</p>
 
 <p>Pour cela :</p>
@@ -116,7 +117,7 @@ module.exports <span class="o">=</span> addCinq
 <span class="o">})</span>
 </code></pre></div></div>
 
-<p>##Plusieurs imports</p>
+<h2 id="plusieurs-imports">Plusieurs imports</h2>
 
 <p>Bien évidement on voudra tester plusieurs choses lors de nos tests. Pour cela il exciste deux solutions :</p>
 
@@ -150,7 +151,7 @@ main <span class="o">=</span> require<span class="o">(</span><span class="s2">".
 <span class="o">})</span>
 </code></pre></div></div>
 
-<p>##Retour de fonction</p>
+<h2 id="retour-de-fonction">Retour de fonction</h2>
 
 <p>Il est aussi possible, et intéressant dans certains cas, de retourner une fonction plutot que des modules. Cela permet de rentrer un paramètre dans la fonction importée.</p>
 
@@ -171,32 +172,32 @@ main <span class="o">=</span> require<span class="o">(</span><span class="s2">".
 <span class="o">})</span>
 </code></pre></div></div>
 
-<p>##Tests groupés</p>
+<h2 id="tests-groupés">Tests groupés</h2>
 
 <p>Il est possible de grouper les tests par unit si par exemple ces tests sont reliés. Cela permet de paramétrer différents setup pour les différentes units. Pour les setup, on utilise <code class="language-plaintext highlighter-rouge">beforeAll()</code>.</p>
 
-<p><em>main.test.js</em>
-~~~ shellIl est possible de grouper les tests par unit si par exemple ces tests sont reliés. Cela permet de paramétrer différents setup pour les différentes units. Pour les setup, on utilise <code class="language-plaintext highlighter-rouge">beforeAll()</code>.</p>
+<p><em>main.test.js</em></p>
 
-<p>main = require(./main)
-let chiffre;
-let somme;
-let multiplication;</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>main <span class="o">=</span> require<span class="o">(</span>./main<span class="o">)</span>
+<span class="nb">let </span>chiffre<span class="p">;</span>
+<span class="nb">let </span>somme<span class="p">;</span>
+<span class="nb">let </span>multiplication<span class="p">;</span>
 
-<p>describe(‘testing math utilities’, () =&gt; {
-    beforeAll(() =&gt; {
-        chiffre = 7;
-        somme = 12;
-        multiplication = 35;
-    })</p>
+describe<span class="o">(</span><span class="s1">'testing math utilities'</span>, <span class="o">()</span> <span class="o">=&gt;</span> <span class="o">{</span>
+    beforeAll<span class="o">(()</span> <span class="o">=&gt;</span> <span class="o">{</span>
+        chiffre <span class="o">=</span> 7<span class="p">;</span>
+        somme <span class="o">=</span> 12<span class="p">;</span>
+        multiplication <span class="o">=</span> 35<span class="p">;</span>
+    <span class="o">})</span>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>test('la somme doit faire 12', () =&gt; {
-    expect(add(chiffre)).toBe(somme);
-});
+    <span class="nb">test</span><span class="o">(</span><span class="s1">'la somme doit faire 12'</span>, <span class="o">()</span> <span class="o">=&gt;</span> <span class="o">{</span>
+        expect<span class="o">(</span>add<span class="o">(</span>chiffre<span class="o">))</span>.toBe<span class="o">(</span>somme<span class="o">)</span><span class="p">;</span>
+    <span class="o">})</span><span class="p">;</span>
 
-test('la multiplication doit faire 35', () =&gt; {
-    expect(mulCinq(chiffre)).toBe(multiplication);
-}); }); ~~~
+    <span class="nb">test</span><span class="o">(</span><span class="s1">'la multiplication doit faire 35'</span>, <span class="o">()</span> <span class="o">=&gt;</span> <span class="o">{</span>
+        expect<span class="o">(</span>mulCinq<span class="o">(</span>chiffre<span class="o">))</span>.toBe<span class="o">(</span>multiplication<span class="o">)</span><span class="p">;</span>
+    <span class="o">})</span><span class="p">;</span>
+<span class="o">})</span><span class="p">;</span>
 </code></pre></div></div>
 
 
