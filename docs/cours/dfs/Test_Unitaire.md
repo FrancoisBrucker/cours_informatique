@@ -128,7 +128,8 @@ test("addition", () => {
 Il est possible de grouper les tests par unit si par exemple ces tests sont reliés. Cela permet de paramétrer différents setup pour les différentes units. Pour les setup, on utilise ``beforeAll()``.
 
 *main.test.js*
-~~~ shell
+~~~ shellIl est possible de grouper les tests par unit si par exemple ces tests sont reliés. Cela permet de paramétrer différents setup pour les différentes units. Pour les setup, on utilise ``beforeAll()``.
+
 main = require(./main)
 let chiffre;
 let somme;
