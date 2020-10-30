@@ -42,9 +42,9 @@ export default {
 
 ## 1. Affichage d'un Todo
 
-Nous allons d'abord créer le composant `Todo.vue`. Tout d'abord il nous faut créer ce fichier dans `scr/components`.
+Nous allons d'abord créer le composant `Todo.vue`. Tout d'abord il nous faut créer ce fichier dans `src/components`.
 
-Ensuite on va ensuite remplir ce composant comme suit :
+On va ensuite remplir ce composant comme suit :
 
 ```vue
 <template>
@@ -103,7 +103,7 @@ Ajoutons plusieurs balises `Todo` dans le template de notre `App` :
 
 Et on voit apparaitre nos todos sur l'application.
 
-Pas soucis d'hestétique nous allons rajouter quelques **règles CSS** : \
+Pars soucis d'hestétique nous allons rajouter quelques **règles CSS** : \
 Pour `App.vue`:
 
 ```vue
@@ -147,7 +147,7 @@ Pour `Todo.vue`:
 
 C'est bien beau de pouvoir afficher plusieurs Todo dans notre `App` mais il serait plus simple d'avoir un **array** de todos que l'on afficherai à l'aide de plusieurs composants `Todo`.
 
-Il nous faut d'abord déclarer les todos en tant que `data` du composant `App.vue`. Pour cela nous allons ajouter une methode `data()` qui va retourner notre **array** dans la déclaration du composant `App` :
+Il nous faut d'abord déclarer les todos en tant que `data` du composant `App.vue`. Pour cela nous allons ajouter une methode spéciale `data()` qui va retourner notre **array** dans la déclaration du composant `App` :
 
 ```vue
 <script>
@@ -188,9 +188,9 @@ Nous allons décortiquer ce code pour comprendre à quoi servent les différents
 - `:key="todo"` cela permet de dire à vue que `todo` est la variable de l'itération (elle va de paire avec `v-for`).
 - `v-bind:todo="todo"` cela remplace `todo="un string affiché dans le todo"`. Cette syntaxe permet de dire à vue que l'on souhaite passer le contenu de la variable `todo` (celle en guillemets) dans la propriété `todo` (spécifiée aprés le `v-bin:`) du composant `App.vue`.
 
-Pour résumé cette ligne créer autant d'élément `Todo` (le composant `Todo.vue`) qu'il n'y a de `todo` dans `todos` (l'array de strings instancié dans les `data()` de App) et **bind** le string `todo` à la propriété `todo` pour chaque `Todo` instancié. (ça fait beaucoup de todo...)
+Pour résumé cette ligne créer autant d'éléments `Todo` (le composant `Todo.vue`) qu'il n'y a de `todo` dans `todos` (l'array de strings instancié dans `data()` de App) et **bind** le string `todo` à la propriété `todo` pour chaque `Todo` instancié. (ça fait beaucoup de todo...)
 
-Une fois ces modifications appliquée on peut voir que rien n'a changé dans notre site compilé. Et c'est normal, on a simplement changer la manière dont sont récupéré les `todo`.
+Une fois ces modifications appliquées on peut voir que rien n'a changé dans notre site compilé. Et c'est normal, on a simplement changer la manière dont sont récupérés les `todo`.
 
 Nous allons maintenat transporter toute cette logique dans un nouveau composant : `TodoList.vue` :  
 
@@ -527,7 +527,7 @@ Pour cela il faut trouver un moyen dans le composant todolist de repérer l'él�
 <!-- Todo.vue -->
 <template>
   <div class="todo">
-    <p>{{ todo }}</p>
+    {% raw %}<p>{{ todo }}</p> {% endraw %}
     <!-- On émet tout simplement un événement à l'aide d'un bouton et d'un click event sur celui-ci -->
     <!-- On notera que l'on peut simplifier l'écriture en implémentant directement l'émission dans l'attribut -->
     <!-- Et on passe l'index de l'élément que l'on désire supprimer -->
