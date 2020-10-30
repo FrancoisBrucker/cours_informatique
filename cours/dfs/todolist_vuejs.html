@@ -56,7 +56,8 @@
   </header>
 
   <div class="post-content">
-    
+    <p><img src="../../assets/vue-project-capture4.png" alt="Todo list finie" /></p>
+
 <p>Attention ce tutoriel est la suite de l’introduction à Vue 3.0 présente <a href="/cours_informatique/cours/dfs/vuejs.html">ici</a>. Si vous êtes un débutant en Vue.js je vous conseille de passer d’abord par l’introduction.</p>
 
 <p>Nous allons ici créer une application type ‘TodoList’ à partir d’un projet Vue.js généré avec le CLI.
@@ -90,9 +91,9 @@ On obtient donc un fichier <code class="language-plaintext highlighter-rouge">Ap
 
 <h2 id="1-affichage-dun-todo">1. Affichage d’un Todo</h2>
 
-<p>Nous allons d’abord créer le composant <code class="language-plaintext highlighter-rouge">Todo.vue</code>. Tout d’abord il nous faut créer ce fichier dans <code class="language-plaintext highlighter-rouge">scr/components</code>.</p>
+<p>Nous allons d’abord créer le composant <code class="language-plaintext highlighter-rouge">Todo.vue</code>. Tout d’abord il nous faut créer ce fichier dans <code class="language-plaintext highlighter-rouge">src/components</code>.</p>
 
-<p>Ensuite on va ensuite remplir ce composant comme suit :</p>
+<p>On va ensuite remplir ce composant comme suit :</p>
 
 <div class="language-vue highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;</span><span class="k">template</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"todo"</span><span class="nt">&gt;</span>
@@ -148,7 +149,7 @@ Ajoutons plusieurs balises <code class="language-plaintext highlighter-rouge">To
 
 <p>Et on voit apparaitre nos todos sur l’application.</p>
 
-<p>Pas soucis d’hestétique nous allons rajouter quelques <strong>règles CSS</strong> : <br />
+<p>Pars soucis d’hestétique nous allons rajouter quelques <strong>règles CSS</strong> : <br />
 Pour <code class="language-plaintext highlighter-rouge">App.vue</code>:</p>
 
 <div class="language-vue highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;</span><span class="k">style</span><span class="nt">&gt;</span>
@@ -190,7 +191,7 @@ Pour <code class="language-plaintext highlighter-rouge">App.vue</code>:</p>
 
 <p>C’est bien beau de pouvoir afficher plusieurs Todo dans notre <code class="language-plaintext highlighter-rouge">App</code> mais il serait plus simple d’avoir un <strong>array</strong> de todos que l’on afficherai à l’aide de plusieurs composants <code class="language-plaintext highlighter-rouge">Todo</code>.</p>
 
-<p>Il nous faut d’abord déclarer les todos en tant que <code class="language-plaintext highlighter-rouge">data</code> du composant <code class="language-plaintext highlighter-rouge">App.vue</code>. Pour cela nous allons ajouter une methode <code class="language-plaintext highlighter-rouge">data()</code> qui va retourner notre <strong>array</strong> dans la déclaration du composant <code class="language-plaintext highlighter-rouge">App</code> :</p>
+<p>Il nous faut d’abord déclarer les todos en tant que <code class="language-plaintext highlighter-rouge">data</code> du composant <code class="language-plaintext highlighter-rouge">App.vue</code>. Pour cela nous allons ajouter une methode spéciale <code class="language-plaintext highlighter-rouge">data()</code> qui va retourner notre <strong>array</strong> dans la déclaration du composant <code class="language-plaintext highlighter-rouge">App</code> :</p>
 
 <div class="language-vue highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;</span><span class="k">script</span><span class="nt">&gt;</span>
 <span class="k">import</span> <span class="nx">Todo</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./components/Todo.vue</span><span class="dl">"</span><span class="p">;</span>
@@ -231,9 +232,9 @@ Nous allons décortiquer ce code pour comprendre à quoi servent les différents
   <li><code class="language-plaintext highlighter-rouge">v-bind:todo="todo"</code> cela remplace <code class="language-plaintext highlighter-rouge">todo="un string affiché dans le todo"</code>. Cette syntaxe permet de dire à vue que l’on souhaite passer le contenu de la variable <code class="language-plaintext highlighter-rouge">todo</code> (celle en guillemets) dans la propriété <code class="language-plaintext highlighter-rouge">todo</code> (spécifiée aprés le <code class="language-plaintext highlighter-rouge">v-bin:</code>) du composant <code class="language-plaintext highlighter-rouge">App.vue</code>.</li>
 </ul>
 
-<p>Pour résumé cette ligne créer autant d’élément <code class="language-plaintext highlighter-rouge">Todo</code> (le composant <code class="language-plaintext highlighter-rouge">Todo.vue</code>) qu’il n’y a de <code class="language-plaintext highlighter-rouge">todo</code> dans <code class="language-plaintext highlighter-rouge">todos</code> (l’array de strings instancié dans les <code class="language-plaintext highlighter-rouge">data()</code> de App) et <strong>bind</strong> le string <code class="language-plaintext highlighter-rouge">todo</code> à la propriété <code class="language-plaintext highlighter-rouge">todo</code> pour chaque <code class="language-plaintext highlighter-rouge">Todo</code> instancié. (ça fait beaucoup de todo…)</p>
+<p>Pour résumé cette ligne créer autant d’éléments <code class="language-plaintext highlighter-rouge">Todo</code> (le composant <code class="language-plaintext highlighter-rouge">Todo.vue</code>) qu’il n’y a de <code class="language-plaintext highlighter-rouge">todo</code> dans <code class="language-plaintext highlighter-rouge">todos</code> (l’array de strings instancié dans <code class="language-plaintext highlighter-rouge">data()</code> de App) et <strong>bind</strong> le string <code class="language-plaintext highlighter-rouge">todo</code> à la propriété <code class="language-plaintext highlighter-rouge">todo</code> pour chaque <code class="language-plaintext highlighter-rouge">Todo</code> instancié. (ça fait beaucoup de todo…)</p>
 
-<p>Une fois ces modifications appliquée on peut voir que rien n’a changé dans notre site compilé. Et c’est normal, on a simplement changer la manière dont sont récupéré les <code class="language-plaintext highlighter-rouge">todo</code>.</p>
+<p>Une fois ces modifications appliquées on peut voir que rien n’a changé dans notre site compilé. Et c’est normal, on a simplement changer la manière dont sont récupérés les <code class="language-plaintext highlighter-rouge">todo</code>.</p>
 
 <p>Nous allons maintenat transporter toute cette logique dans un nouveau composant : <code class="language-plaintext highlighter-rouge">TodoList.vue</code> :</p>
 
@@ -407,6 +408,274 @@ Et si l’on rajoute une ligne du style <code class="language-plaintext highligh
 <p><img src="../../assets/vue-project-capture2.png" alt="project-capture-2" /></p>
 
 <h2 id="4-passer-le-todo-à-todolist">4. Passer le todo à TodoList</h2>
+
+<p>Maintenant que nous avons avons créé le composant permettant de demander l’input de l’utilisateur, il faut utiliser la donnée que l’utilisateur nous donne. Au même titre que nous avons utilisé un event listener pour repérer l’event <code class="language-plaintext highlighter-rouge">keyup.enter</code>, nous allons créer un event personnalisé et mettre en place un event listener pour celui-ci. L’event personnalisé est trigger dans le composant enfant, <code class="language-plaintext highlighter-rouge">addTodo.vue</code> ici. Il est écouté par le composant parent, <code class="language-plaintext highlighter-rouge">App.vue</code> ici.</p>
+
+<p>Ceci est la deuxième méthode pour passer de l’information d’un composant à un autre. La prmeière était les props pour passer de la donnée depuis un composant parent à un composant enfant. Maintenant la deuxième est de passer de la donnée depuis le composant enfant vers le composant parent.</p>
+
+<p>Mettons en place l’emission d’un event personnalisé dans <code class="language-plaintext highlighter-rouge">AddTodo.vue</code>:</p>
+
+<div class="language-vue highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- AddTodo.vue --&gt;</span>
+<span class="nt">&lt;</span><span class="k">template</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span>
+    <span class="na">class=</span><span class="s">"todo-input"</span>
+    <span class="na">v-on:keyup.enter=</span><span class="s">"onSubmit"</span>
+    <span class="na">v-model=</span><span class="s">"todo"</span>
+    <span class="na">placeholder=</span><span class="s">"Ajoutez un todo !"</span>
+  <span class="nt">/&gt;</span>
+<span class="nt">&lt;/</span><span class="k">template</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;</span><span class="k">script</span><span class="nt">&gt;</span>
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">AddTodo</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">methods</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">onSubmit</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="c1">// ------------------- Début changements --------------------</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">todo</span> <span class="o">===</span> <span class="dl">''</span><span class="p">))</span> <span class="p">{</span>
+        <span class="c1">// Si une todo est non vide on émet un event</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">$emit</span><span class="p">(</span><span class="dl">'</span><span class="s1">add-to-do</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">todo</span><span class="p">);</span>
+        <span class="c1">// On peut spécifier de la donnée que l'on veut passer en même temps en 2ème argument</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">todo</span> <span class="o">=</span> <span class="dl">''</span><span class="p">;</span>
+        <span class="c1">// On reset l'input à un string vide après avoir rajouté la todo à la liste</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="c1">// S'il n'y a rien marqué on n'ajoute rien, sinon on va ajouter des cases vides</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">There is no todo to add</span><span class="dl">'</span><span class="p">);</span>
+
+      <span class="p">}</span>
+      <span class="c1">// -------------------- Fin changements ---------------------</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="na">todo</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span>
+    <span class="p">};</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+<span class="nt">&lt;/</span><span class="k">script</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;</span><span class="k">style</span> <span class="na">scoped</span><span class="nt">&gt;</span>
+<span class="nc">.todo-input</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">50%</span><span class="p">;</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">1.5em</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#2c3e50</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">&lt;/</span><span class="k">style</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+
+<p>Maintenant que nous émettons l’event, il est nécessaire de le capter et récupérer la donnée qui lui est associée.
+<code class="language-plaintext highlighter-rouge">v-on:add-to-do="addToDo"</code> est ce qu’il faut préciser en attribu de la balise du composant <code class="language-plaintext highlighter-rouge">AddTodo</code>. <code class="language-plaintext highlighter-rouge">v-on</code> signifie qu’on écoute l’événement qui est spécifié juste après. <code class="language-plaintext highlighter-rouge">add-to-do</code> est le nom de l’événement qu’on a configuré dans <code class="language-plaintext highlighter-rouge">AddTodo</code>. Et enfin le <code class="language-plaintext highlighter-rouge">addToDo</code> est le nom de la méthode qui est trigger lorsque l’événement est capté.</p>
+
+<div class="language-vue highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- App.vue --&gt;</span>
+<span class="nt">&lt;</span><span class="k">template</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;img</span> <span class="na">alt=</span><span class="s">"Vue logo"</span> <span class="na">src=</span><span class="s">"./assets/logo.png"</span> <span class="nt">/&gt;</span>
+  <span class="c">&lt;!-- Ajout de l'event listener dans le composant App.vue sur le composant AddTodo --&gt;</span>
+  <span class="nt">&lt;AddTodo</span>
+    <span class="na">v-on:add-to-do=</span><span class="s">"addToDo"</span>
+  <span class="nt">/&gt;</span>
+  <span class="c">&lt;!-- fin ajout --&gt;</span>
+  <span class="nt">&lt;TodoList/&gt;</span>
+<span class="nt">&lt;/</span><span class="k">template</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;</span><span class="k">script</span><span class="nt">&gt;</span>
+<span class="k">import</span> <span class="nx">AddTodo</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./components/AddTodo.vue</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">TodoList</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./components/TodoList.vue</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">App</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">components</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">AddTodo</span><span class="p">,</span>
+    <span class="nx">TodoList</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="c1">// Ajout option methods pour créer la fonction addToDo</span>
+  <span class="c1">// Elle est trigger losque l'event add-to-do est repéré</span>
+  <span class="na">methods</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">addToDo</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">todo</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// faire qqch de todo</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="c1">// Fin ajout</span>
+<span class="p">};</span>
+<span class="nt">&lt;/</span><span class="k">script</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+
+<p>Mais pour l’instant on a encore rien fait de la string de la nouvelle todo, il faut l’afficher. Pour cela il faut l’ajouter à l’array todos du composant TodoList. Nous allons faire cela dans la méthode <code class="language-plaintext highlighter-rouge">addToDo</code>.</p>
+
+<div class="language-vue highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;</span><span class="k">template</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;img</span> <span class="na">alt=</span><span class="s">"Vue logo"</span> <span class="na">src=</span><span class="s">"./assets/logo.png"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;AddTodo</span>
+    <span class="na">v-on:add-to-do=</span><span class="s">"addToDo"</span>
+  <span class="nt">/&gt;</span>
+  <span class="nt">&lt;TodoList</span> <span class="na">ref=</span><span class="s">"todoListComp"</span><span class="nt">/&gt;</span>
+  <span class="c">&lt;!-- On référence le composant pour pouvoir l'utiliser dans les méthodes --&gt;</span>
+<span class="nt">&lt;/</span><span class="k">template</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;</span><span class="k">script</span><span class="nt">&gt;</span>
+<span class="k">import</span> <span class="nx">AddTodo</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./components/AddTodo.vue</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">TodoList</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./components/TodoList.vue</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">App</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">components</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">AddTodo</span><span class="p">,</span>
+    <span class="nx">TodoList</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">methods</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">addToDo</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">todo</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// On attrape le composant dans le DOM grâce à la référence</span>
+      <span class="c1">// Avec ceci on peut accéder à l'array todos du comosant enfant</span>
+      <span class="c1">// On peut donc le modifier en ajoutant le todo</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">$refs</span><span class="p">.</span><span class="nx">todoListComp</span><span class="p">.</span><span class="nx">todos</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">todo</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+<span class="nt">&lt;/</span><span class="k">script</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;</span><span class="k">style</span><span class="nt">&gt;</span>
+<span class="nf">#app</span> <span class="p">{</span>
+  <span class="nl">font-family</span><span class="p">:</span> <span class="n">Avenir</span><span class="p">,</span> <span class="n">Helvetica</span><span class="p">,</span> <span class="n">Arial</span><span class="p">,</span> <span class="nb">sans-serif</span><span class="p">;</span>
+  <span class="nl">-webkit-font-smoothing</span><span class="p">:</span> <span class="n">antialiased</span><span class="p">;</span>
+  <span class="nl">-moz-osx-font-smoothing</span><span class="p">:</span> <span class="n">grayscale</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#2c3e50</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">60px</span> <span class="m">25%</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+  <span class="nl">flex-direction</span><span class="p">:</span> <span class="n">column</span><span class="p">;</span>
+  <span class="nl">align-items</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">1.5em</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">&lt;/</span><span class="k">style</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+
+<p>Avec ces dernières modifs le tour est joué et on peut ajouter des todo à notre liste.</p>
+
+<p><img src="../../assets/vue-project-capture3.png" alt="project-capture-3" /></p>
+
+<h2 id="5-supprimer-un-todo">5. Supprimer un todo</h2>
+
+<p>Finalement une todolist où on peut ajouter des éléments c’est cool parce qu’on doit souvent faire des nouveaux trucs. Mais une fois qu’on a fait une tâche c’est mieux si on peut la retirer de cette liste. Et voilà la dernière feature que nous allons créer ici.</p>
+
+<p>Pour cela il faut trouver un moyen dans le composant todolist de repérer l’élément à retirer pour le supprimer de la list de todos. La manière de faire ceci est de s’aider de l’index de l’élément. Une fois qu’on a l’index dans le composant enfant Todo, on refait un event personnalisé pour prévenir le composant parent quand on désire supprimer tel élément.</p>
+
+<p><code class="language-plaintext highlighter-rouge">v-on:click="$emit('delete-todo', index)"</code> : avec ceci on émet l’événement. En l’associant à l’événement click d’un bouton on s’assure de lancer l’événement <code class="language-plaintext highlighter-rouge">'delete-todo'</code> lorsque l’on clique sur le bouton.</p>
+
+<p><code class="language-plaintext highlighter-rouge">emits: ["delete-todo"]</code> La version Vue 3.0 conseille de lister les event custom dans l’options <code class="language-plaintext highlighter-rouge">emits</code> maintenant que c’est possible.</p>
+
+<div class="language-vue highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- Todo.vue --&gt;</span>
+<span class="nt">&lt;</span><span class="k">template</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"todo"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;p&gt;</span><span class="si">{{</span> <span class="nx">todo</span> <span class="si">}}</span><span class="nt">&lt;/p&gt;</span> 
+    <span class="c">&lt;!-- On émet tout simplement un événement à l'aide d'un bouton et d'un click event sur celui-ci --&gt;</span>
+    <span class="c">&lt;!-- On notera que l'on peut simplifier l'écriture en implémentant directement l'émission dans l'attribut --&gt;</span>
+    <span class="c">&lt;!-- Et on passe l'index de l'élément que l'on désire supprimer --&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">v-on:click=</span><span class="s">"$emit('delete-todo', index)"</span><span class="nt">&gt;</span>delete<span class="nt">&lt;/button&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/</span><span class="k">template</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;</span><span class="k">script</span><span class="nt">&gt;</span>
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Todo</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">props</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">todo</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+    <span class="c1">// On se fait passer la props index qui donne l'index de l'élément dans l'array todos</span>
+    <span class="na">index</span><span class="p">:</span> <span class="nb">Number</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">emits</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">delete-todo</span><span class="dl">"</span><span class="p">]</span>
+<span class="p">};</span>
+<span class="nt">&lt;/</span><span class="k">script</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;</span><span class="k">style</span> <span class="na">scoped</span><span class="nt">&gt;</span>
+<span class="nc">.todo</span> <span class="p">{</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="m">5px</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">5px</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+  <span class="nl">border-radius</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#2c3e50</span><span class="p">;</span>
+  <span class="nl">border-style</span><span class="p">:</span> <span class="nb">solid</span><span class="p">;</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+  <span class="nl">justify-content</span><span class="p">:</span> <span class="n">space-between</span><span class="p">;</span>
+  <span class="nl">align-items</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.todo</span><span class="nd">:hover</span> <span class="p">{</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="nb">rgb</span><span class="p">(</span><span class="m">44</span><span class="p">,</span> <span class="m">62</span><span class="p">,</span> <span class="m">80</span><span class="p">,</span> <span class="m">0.1</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nt">button</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">70px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">30px</span><span class="p">;</span>
+  <span class="nl">border-radius</span><span class="p">:</span> <span class="m">15px</span><span class="p">;</span>
+  <span class="nl">border-color</span><span class="p">:</span> <span class="nb">rgb</span><span class="p">(</span><span class="m">182</span><span class="p">,</span> <span class="m">80</span><span class="p">,</span> <span class="m">80</span><span class="p">);</span>
+  <span class="nl">border-width</span><span class="p">:</span> <span class="m">3px</span><span class="p">;</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="nb">rgb</span><span class="p">(</span><span class="m">255</span><span class="p">,</span> <span class="m">202</span><span class="p">,</span> <span class="m">202</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nt">p</span> <span class="p">{</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">5px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">&lt;/</span><span class="k">style</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+
+<p>La pochiane et dernière étape est de mettre en place l’event listener et l’associer à la fonction qui va supprimer l’élément de la liste.</p>
+
+<p><code class="language-plaintext highlighter-rouge">v-on:delete-todo="deleteThisTodo"</code> event listener qui trigger <code class="language-plaintext highlighter-rouge">deleteThisTodo</code> quand <code class="language-plaintext highlighter-rouge">delete-todo</code> est capté.</p>
+
+<p><code class="language-plaintext highlighter-rouge">v-bind:index="index"</code> passe index en props au composant enfant Todo.</p>
+
+<div class="language-vue highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- TodoList.vue --&gt;</span>
+<span class="nt">&lt;</span><span class="k">template</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"todo-list"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- On remarquera la syntaxe particulière ici dela boucle for --&gt;</span>
+    <span class="c">&lt;!-- On spécifie un deuxième argument qui nous permet de sortir l'index lié à un élément --&gt;</span>
+    <span class="c">&lt;!-- On le passe en props ce qui nous permet de l'utiliser dans l'event qu'on l'on envoie --&gt;</span>
+    <span class="c">&lt;!-- Enfin on spécifie un event listener ici pour trigger deleteThisTodo sur l'event delete-todo --&gt;</span>
+    <span class="nt">&lt;Todo</span>
+      <span class="na">v-for=</span><span class="s">"(todo, index) in todos"</span>
+      <span class="na">:key=</span><span class="s">"todo"</span>
+      <span class="na">v-bind:todo=</span><span class="s">"todo"</span>
+      <span class="na">v-bind:index=</span><span class="s">"index"</span>
+      <span class="na">v-on:delete-todo=</span><span class="s">"deleteThisTodo"</span>
+    <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/</span><span class="k">template</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;</span><span class="k">script</span><span class="nt">&gt;</span>
+<span class="k">import</span> <span class="nx">Todo</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./Todo.vue</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">TodoList</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">components</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">Todo</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="c1">// On crée un méthode deleteThisTodo qui est appelé lorsque l'event delete-todo est capté</span>
+  <span class="c1">// La méthode splice permet de retirer l'élément d'index todoIndex de la liste todos</span>
+  <span class="na">methods</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">deleteThisTodo</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">todoIndex</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">todoIndex</span><span class="p">);</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">todos</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="nx">todoIndex</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="na">todos</span><span class="p">:</span> <span class="p">[</span>
+        <span class="dl">"</span><span class="s2">Faire les courses</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">Faire le tuto Vue</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">Faire une liste de Todo</span><span class="dl">"</span><span class="p">,</span>
+      <span class="p">],</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+<span class="nt">&lt;/</span><span class="k">script</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;</span><span class="k">style</span> <span class="na">scoped</span><span class="nt">&gt;</span>
+<span class="nc">.todo-list</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">&lt;/</span><span class="k">style</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+
+<p>Et voilà!!</p>
+
+<p><img src="../../assets/vue-project-capture4.png" alt="project-capture-4" /></p>
 
   </div>
 
