@@ -42,7 +42,8 @@ test('empty test', () => {
 Puis on l'exécute avec ``yarn run test``.
 
 
-##Import
+## Import
+
 Un import, créer le lien entre *main.js* et *main.test.js*.
 L'intérêt d’un test est de tester une fonction dans notre programme. Généralement, un fichier test ``main.test.js``, teste les fonctions qui existent dans ``main.js``. Pour que cela fonctionne, il faut importer les fonctions de ``main.js`` dans le fichier test. 
 
@@ -68,7 +69,7 @@ test(“addition”, () =>{
 })
 ~~~
 
-##Plusieurs imports
+## Plusieurs imports
 
 Bien évidement on voudra tester plusieurs choses lors de nos tests. Pour cela il exciste deux solutions :
 
@@ -100,7 +101,7 @@ test("addition", () => {
 })
 ~~~
 
-##Retour de fonction
+## Retour de fonction
 
 Il est aussi possible, et intéressant dans certains cas, de retourner une fonction plutot que des modules. Cela permet de rentrer un paramètre dans la fonction importée.
 
@@ -123,13 +124,13 @@ test("addition", () => {
 })
 ~~~
 
-##Tests groupés
+## Tests groupés
 
 Il est possible de grouper les tests par unit si par exemple ces tests sont reliés. Cela permet de paramétrer différents setup pour les différentes units. Pour les setup, on utilise ``beforeAll()``.
 
 *main.test.js*
-~~~ shellIl est possible de grouper les tests par unit si par exemple ces tests sont reliés. Cela permet de paramétrer différents setup pour les différentes units. Pour les setup, on utilise ``beforeAll()``.
 
+~~~ shell
 main = require(./main)
 let chiffre;
 let somme;
