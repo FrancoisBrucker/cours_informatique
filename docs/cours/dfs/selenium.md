@@ -64,12 +64,12 @@ var fs = require('fs');
 
 const url = "url";
 
-// On importe le webdriver
+// On charge le webdriver
 const webdriver = require('selenium-webdriver');
 
 describe('Le site fonctionne', () => {
     beforeEach(() => { // Avant chaque test...
-        require('geckodriver'); // On importe le driver
+        require('geckodriver'); // On charge le driver
         browser =  new webdriver.Builder().forBrowser('firefox').build() // On ouvre le navigateur web
     })
 
@@ -103,7 +103,7 @@ et de stocker cet objet dans la variable intro :
 ~~~js
 const intro = driver.findElement(By.id("introduction")); 
 ~~~
-Pensez à importer `By` au début du fichier en rajoutant la ligne suivante :
+*Pensez à charger le module `By` au début du fichier en rajoutant la ligne suivante :*
 ~~~js
 const {By} = require('selenium-webdriver');
 ~~~
