@@ -32,9 +32,11 @@ Pour bien prendre en main selenium, faisons quelques tests\
 
 ## Trouver un Élément Web
 
-Pour trouver un élément sur une page web, on utilise `findElement` qui prend en argument un contexte de recherche.
-Cette fonction renvoie un objet WebElement qui représente un noeud de l'arbre DOM.
-Par exemple, la ligne suivante permet de trouver l'élément dont l'id est "fromage", 
+Pour trouver un élément sur une page web, on utilise `findElement`.
+
+Cette fonction renvoie un objet WebElement qui représente un noeud de l'arbre DOM,
+en prenant en argument un contexte de recherche.
+Par exemple, la ligne suivante permet de trouver l'élément dont l'id est "introduction", 
 et de stocker cet objet dans la variable intro :
 ~~~js
 const intro = driver.findElement(By.id("introduction")); 
@@ -45,18 +47,21 @@ Ensuite, si on veut trouver un élément contenu dans l'objet intro (par exemple
 const imgIntro = intro.findElement(By.id("img-intro")); 
 ~~~
 
-On peut rechercher un Élément en fonction de divers contextes. En voici quelques-uns:
-
-On peut utiliser la fonction `By`:
+On peut rechercher un Élément en fonction de divers sélecteurs grâce à `By`. En voici quelques-uns:
 ~~~js
 // dont le nom est "a" (un lien):
 const element = driver.findElement(By.name("a"));
 // dont l'id est "truc":
 const element = driver.findElement(By.id("truc"));
-// possédant au moins la classe css "machin":
-const element = driver.findElement(By.class("machin"));
+// possédant a minima les attributs css "#machin" et "bidule":
+const element = driver.findElement(By.cssSelector("#machin bidule"));
 ~~~
-Plus d'infos sur `By` [ici](https://www.selenium.dev/selenium/docs/api/java/org/openqa/selenium/By.html#linkText-java.lang.String-).
+
+De manière générale, il est conseillé de rechercher des éléments par leur id unique s'il existe,
+ou par leurs sélecteurs CSS.
+Cela évite de arcourir l'arbre DOM avec plusieurs recherches, ce qui prend plus de temps.
+
+
 
 
 ## Attendre la réponse du navigateur
