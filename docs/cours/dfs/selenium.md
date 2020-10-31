@@ -92,11 +92,6 @@ On peut de la même manière utiliser d'autres navigateurs comme Chromium, Edge,
 Il suffit dans le code de changer les noms du driver et du navigateur.
 Pour installer et utiliser d'autres drivers [consultez cette page](https://www.selenium.dev/documentation/fr/webdriver/driver_requirements/).
 
-## Attendre la réponse du navigateur
-
-
-
-
 ## Trouver un Élément Web
 
 Pour trouver un élément sur une page web, on utilise `findElement`.
@@ -172,6 +167,10 @@ Des actions plus précises peuvent être faites
 comme [au clavier](https://www.selenium.dev/documentation/fr/webdriver/keyboard/).
 
 ## Quelques commandes utiles
+
+
+
+## Attendre la réponse du navigateur
 
 
 
