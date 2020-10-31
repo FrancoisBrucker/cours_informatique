@@ -47,6 +47,11 @@ Ensuite, si on veut trouver un élément contenu dans l'objet intro (par exemple
 const imgIntro = intro.findElement(By.id("img-intro")); 
 ~~~
 
+`findElements` renvoie une liste des éléments respectant les critères de recherche :
+~~~js
+const listLinks = intro.findElements(By.name("a")); 
+~~~
+
 On peut rechercher un Élément en fonction de divers sélecteurs grâce à `By`. En voici quelques-uns:
 ~~~js
 // dont le nom est "a" (un lien):
