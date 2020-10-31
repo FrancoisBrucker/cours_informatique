@@ -173,6 +173,23 @@ comme [au clavier](https://www.selenium.dev/documentation/fr/webdriver/keyboard/
 
 ## Quelques commandes utiles
 
+Pour prendre une capture d'écran et l'enregistrer, on utilise :
+~~~js
+browser.takeScreenshot().then((data) => {
+      fs.writeFileSync('img.png', data, 'base64')
+    })
+~~~
+
+Certaines pages comme Google font apparaitre un popup dans une [iframe](https://developer.mozilla.org/fr/docs/Web/HTML/Element/iframe). 
+Dans ce cas, on doit utiliser `switchTo` pour accéder à son contenu : 
+
+~~~js
+const iframe = browser.findElement(By.css('iframe')); // On trouve d'abord l'iframe
+
+await browser.switchTo().frame(iframe); // On rentre dans l'iframe
+// On fait ici nos actions / recherches dans l'iframe
+await browser.switchTo().defaultContent(); // On sort de l'iframe
+~~~
 
 
 ## Attendre la réponse du navigateur
