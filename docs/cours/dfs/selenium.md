@@ -91,9 +91,18 @@ const button = await driver.findElement(withTagName("button")
 
 ## Réaliser des actions sur la page
 
+Une fois qu'un élément est trouvé, on peut automatiser les actions de l'utilisateur sur le site.
+Les exemples les plus fréquents sont : 
+~~~js
+// Cliquer sur un bouton
+await driver.findElement(By.name("button")).click();
+// Remplir un champ et valider
+await driver.findElement(By.name('name')).sendKeys("Manu");
+~~~
 
-
-
+Des actions plus précises peuvent être faites 
+[à la souris](https://www.selenium.dev/documentation/fr/support_packages/mouse_and_keyboard_actions_in_detail/) 
+comme [au clavier](https://www.selenium.dev/documentation/fr/webdriver/keyboard/).
 
 ## Attendre la réponse du navigateur
 
