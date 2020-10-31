@@ -56,6 +56,7 @@ const element = driver.findElement(By.id("truc"));
 // possédant au moins la classe css "machin":
 const element = driver.findElement(By.class("machin"));
 ~~~
+Plus d'infos sur `By` [ici](https://www.selenium.dev/selenium/docs/api/java/org/openqa/selenium/By.html#linkText-java.lang.String-).
 
 
 ## Attendre la réponse du navigateur
