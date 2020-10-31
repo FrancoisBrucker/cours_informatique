@@ -55,6 +55,38 @@ On peut réaliser des tests en local. Par exemple pour partir du fichier index.h
 const url = "file://" + __dirname +'/../index.html'
 ~~~
 
+Pour réaliser des tests en ligne depuis un navigateur web, on utilise le WebDriver.
+Celui-ci communique avec un driver dépendant du navigateur web qu'on souhaite utiliser.
+Voici à quoi ressemble le code dans ce cas:
+
+~~~js
+var fs = require('fs');
+
+const url = "url";
+
+// On importe le webdriver
+const webdriver = require('selenium-webdriver');
+
+describe('Le site fonctionne', () => {
+    beforeEach(() => { // Avant chaque test...
+        require('geckodriver'); // On importe le driver
+        browser =  new webdriver.Builder().forBrowser('firefox').build() // On ouvre le navigateur web
+    })
+
+  test('premier test', async () => {
+      // Contenu du test
+  });
+
+  test('second test', async () => {
+      // Contenu du test
+  });
+
+    afterEach(async () => { // Après chaque test...
+        await browser.quit() // On ferme le navigateur
+    })
+});
+~~~
+
 
 
 ## Attendre la réponse du navigateur
