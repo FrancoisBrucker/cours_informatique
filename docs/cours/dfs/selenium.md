@@ -59,10 +59,30 @@ const element = driver.findElement(By.cssSelector("#machin bidule"));
 
 De manière générale, il est conseillé de rechercher des éléments par leur id unique s'il existe,
 ou par leurs sélecteurs CSS.
-Cela évite de arcourir l'arbre DOM avec plusieurs recherches, ce qui prend plus de temps.
+Cela évite de parcourir l'arbre DOM avec plusieurs recherches, ce qui prend plus de temps.
 
+On peut aussi rechercher un élément en fonction de sa position par rapport à un autre élément:
+~~~js
+// Trouve un bouton en dessous de intro
+const intro = driver.findElement(By.id("introduction"));
+const button = driver.findElement(withTagName("button")
+                                    .below("intro"));
+~~~
+On utilise `withTagName` qui remplace `By.name`.
+On peut rechercher:
+- au dessus avec `.above`
+- en dessous avec `.below`
+- à gauche avec `.toLeftOf`
+- à droite avec `.toRightOf`
+- à moins de 50px avec `.near`
 
+On peut utiliser plusieurs de ces sélecteurs en même temps :
 
+~~~js
+const button = driver.findElement(withTagName("button")
+                                    .above(By.id("introduction"))
+                                    .toRightOf(By.cssSelector("#menu")));
+~~~
 
 ## Attendre la réponse du navigateur
 
