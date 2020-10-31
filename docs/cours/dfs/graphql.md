@@ -233,10 +233,10 @@ Maintenant que les schémas et opérations sont définies du côté du serveur, 
 
 Pour ça, il faut définir les différentes requêtes dans un fichier à part de l'application client. 
 
-Les différentes requêtes s'écrivent entre ** ' ' ** et se passent comme paramètre à graphql. 
+Les différentes requêtes s'écrivent entre  ```` `` ````  et se passent comme paramètre à graphql. 
 
   
-###Queries 
+### Queries 
 
 Pour récupérer tous les livres de l'application avec leur nom et leur identifiant, il suffit d'écrire : 
 
@@ -277,7 +277,7 @@ query($id:String!){
 
 > **Nota Bene** : il faut donc préciser les paramètres de la query ainsi que son type !
 
-###Mutations   
+### Mutations   
 
 Pour préciser une mutation, c'est un peu pareil. On précise aussi les attributs en arguments.  Par exemple: 
 
