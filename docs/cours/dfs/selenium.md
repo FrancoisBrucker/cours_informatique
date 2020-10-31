@@ -25,3 +25,26 @@ Selenium est écrit en Java, avant de l’utiliser assurez-vous d’avoir Java i
 
 Pour bien prendre en main selenium, faisons quelques tests\
 [Doc de Selenium](https://www.selenium.dev/documentation/en/).
+
+## Le WebDriver
+
+
+
+## Trouver un Élément Web
+
+
+
+## Attendre la réponse du navigateur
+
+
+
+## Quelques commandes utiles
+
+
+
+## Petite recherche sur Google
+
+
+
+## CheatSheet
+
