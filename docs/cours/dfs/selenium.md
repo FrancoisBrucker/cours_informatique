@@ -35,10 +35,16 @@ Pour bien prendre en main selenium, faisons quelques tests\
 Pour trouver un élément sur une page web, on utilise `findElement`.
 Cette fonction renvoie un objet WebElement qui représente un noeud de l'arbre DOM.
 Par exemple, la ligne suivante permet de trouver l'élément dont l'id est "fromage", 
-et de stocker cet objet dans la variable Introduction :
+et de stocker cet objet dans la variable intro :
 ~~~js
-Introduction = driver.findElement(By.id("introduction")); 
+const intro = driver.findElement(By.id("introduction")); 
 ~~~
+
+Ensuite, si on veut trouver un élément contenu dans l'objet intro (par exemple l'image d'id "img-intro"), on écrit :
+~~~js
+const imgIntro = intro.findElement(By.id("img-intro")); 
+~~~
+
 
 
 ## Attendre la réponse du navigateur
