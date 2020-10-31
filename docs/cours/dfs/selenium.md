@@ -30,6 +30,12 @@ Pour bien prendre en main selenium, faisons quelques tests\
 
 
 
+
+## Attendre la réponse du navigateur
+
+
+
+
 ## Trouver un Élément Web
 
 Pour trouver un élément sur une page web, on utilise `findElement`.
@@ -103,10 +109,6 @@ await driver.findElement(By.name('name')).sendKeys("Manu");
 Des actions plus précises peuvent être faites 
 [à la souris](https://www.selenium.dev/documentation/fr/support_packages/mouse_and_keyboard_actions_in_detail/) 
 comme [au clavier](https://www.selenium.dev/documentation/fr/webdriver/keyboard/).
-
-## Attendre la réponse du navigateur
-
-
 
 ## Quelques commandes utiles
 
