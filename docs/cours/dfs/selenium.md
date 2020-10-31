@@ -87,7 +87,10 @@ describe('Le site fonctionne', () => {
 });
 ~~~
 
-
+Ici on a utilisé firefox et son driver associé geckodriver.
+On peut de la même manière utiliser d'autres navigateurs comme Chromium, Edge, Opera...
+Il suffit dans le code de changer les noms du driver et du navigateur.
+Pour installer et utiliser d'autres drivers [consultez cette page](https://www.selenium.dev/documentation/fr/webdriver/driver_requirements/).
 
 ## Attendre la réponse du navigateur
 
