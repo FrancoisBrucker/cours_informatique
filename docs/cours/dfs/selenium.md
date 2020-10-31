@@ -54,7 +54,7 @@ const element = driver.findElement(By.name("a"));
 // dont l'id est "truc":
 const element = driver.findElement(By.id("truc"));
 // possédant a minima les attributs css "#machin" et "bidule":
-const element = driver.findElement(By.cssSelector("#machin bidule"));
+const element = driver.findElement(By.css("#machin bidule"));
 ~~~
 
 De manière générale, il est conseillé de rechercher des éléments par leur id unique s'il existe,
@@ -65,8 +65,8 @@ On peut aussi rechercher un élément en fonction de sa position par rapport à 
 ~~~js
 // Trouve un bouton en dessous de intro
 const intro = driver.findElement(By.id("introduction"));
-const button = driver.findElement(withTagName("button")
-                                    .below("intro"));
+const button = await driver.findElement(withTagName("button")
+                                        .below("intro"));
 ~~~
 On utilise `withTagName` qui remplace `By.name`.
 On peut rechercher:
@@ -79,10 +79,16 @@ On peut rechercher:
 On peut utiliser plusieurs de ces sélecteurs en même temps :
 
 ~~~js
-const button = driver.findElement(withTagName("button")
-                                    .above(By.id("introduction"))
-                                    .toRightOf(By.cssSelector("#menu")));
+const button = await driver.findElement(withTagName("button")
+                                        .above(By.id("introduction"))
+                                        .toRightOf(By.cssSelector("#menu")));
 ~~~
+
+## Réaliser des actions sur la page
+
+
+
+
 
 ## Attendre la réponse du navigateur
 
