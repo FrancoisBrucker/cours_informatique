@@ -28,6 +28,25 @@ Pour bien prendre en main selenium, faisons quelques tests\
 
 ## Le WebDriver
 
+On peut maintenant créer notre premier fichier de test selenium.
+La base du fichier doit ressembler à ça :
+
+~~~js
+var fs = require('fs');
+
+const url = "url";
+
+describe('Le site fonctionne', () => {
+
+  test('premier test', async () => {
+      // Contenu du test
+  });
+
+  test('second test', async () => {
+      // Contenu du test
+  });
+});
+~~~
 
 
 
