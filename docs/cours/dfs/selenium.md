@@ -32,6 +32,13 @@ Pour bien prendre en main selenium, faisons quelques tests\
 
 ## Trouver un Élément Web
 
+Pour trouver un élément sur une page web, on utilise `findElement`.
+Cette fonction renvoie un objet WebElement qui représente un noeud de l'arbre DOM.
+Par exemple, la ligne suivante permet de trouver l'élément dont l'id est "fromage", 
+et de stocker cet objet dans la variable Introduction :
+~~~js
+Introduction = driver.findElement(By.id("introduction")); 
+~~~
 
 
 ## Attendre la réponse du navigateur
