@@ -103,6 +103,10 @@ et de stocker cet objet dans la variable intro :
 ~~~js
 const intro = driver.findElement(By.id("introduction")); 
 ~~~
+Pensez à importer `By` au début du fichier en rajoutant la ligne suivante :
+~~~js
+const {By} = require('selenium-webdriver');
+~~~
 
 Ensuite, si on veut trouver un élément contenu dans l'objet intro (par exemple l'image d'id "img-intro"), on écrit :
 ~~~js
