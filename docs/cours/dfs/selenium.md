@@ -26,7 +26,7 @@ Selenium est écrit en Java, avant de l’utiliser assurez-vous d’avoir Java i
 Pour bien prendre en main selenium, faisons quelques tests\
 [Doc de Selenium](https://www.selenium.dev/documentation/en/).
 
-## Le WebDriver
+## Structure de base du fichier de test
 
 On peut maintenant créer notre premier fichier de test selenium.
 La base du fichier doit ressembler à ça :
@@ -94,6 +94,7 @@ Pour installer et utiliser d'autres drivers [consultez cette page](https://www.s
 
 ## Trouver un Élément Web
 
+Pour naviguer sur le site, on recherche en général des éléments précis sur cette page avec lesquels interagir.
 Pour trouver un élément sur une page web, on utilise `findElement`.
 
 Cette fonction renvoie un objet WebElement qui représente un noeud de l'arbre DOM,
