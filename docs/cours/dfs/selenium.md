@@ -100,7 +100,7 @@ describe('Le site fonctionne', () => {
 ~~~
 
 Dans la variable url, on met le lien vers la page de départ de notre test.
-On peut réaliser des tests en local. Par exemple pour partir du fichier index.html, on utilise :
+On peut réaliser des tests en local. Par exemple pour partir du fichier *index.html*, on utilise :
 
 ~~~js
 const url = "file://" + __dirname +'/../index.html'
