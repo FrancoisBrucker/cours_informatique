@@ -673,9 +673,80 @@ Et si l’on rajoute une ligne du style <code class="language-plaintext highligh
 <span class="nt">&lt;/</span><span class="k">style</span><span class="nt">&gt;</span>
 </code></pre></div></div>
 
-<p>Et voilà!!</p>
+<p>Et voilà le résultat :</p>
 
 <p><img src="../../assets/vue-project-capture4.png" alt="project-capture-4" /></p>
+
+<h2 id="6-derniers-ajustements">6. Derniers ajustements</h2>
+
+<p>Notre todo liste est quasiment finie, il nous reste à supprimer les todos ajoutés en <strong>dur</strong> dans le composant <code class="language-plaintext highlighter-rouge">TodoList</code> :</p>
+
+<div class="language-vue highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;</span><span class="k">script</span><span class="nt">&gt;</span>
+<span class="k">import</span> <span class="nx">Todo</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./Todo.vue</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">TodoList</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">components</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">Todo</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">methods</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">deleteThisTodo</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">todoIndex</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">todoIndex</span><span class="p">);</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">todos</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="nx">todoIndex</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="c1">// On a retiré les strings présents ici</span>
+      <span class="na">todos</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="p">};</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+<span class="nt">&lt;/</span><span class="k">script</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+
+<p>Mais on souhaite quand même afficher un petit message quand la liste de todos est <strong>vide</strong>.</p>
+
+<p>Pour cela nous allons utiliser la directive <code class="language-plaintext highlighter-rouge">v-if</code> de vue qui nous permets d’évaluer des <strong>assertions</strong> dans le template et d’afficher certains élément en fonction de l’évalutation de cette assertion.</p>
+
+<div class="language-vue highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;</span><span class="k">template</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"todo-list"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- On ajoute l'évaluation de l'assertion ici, si cela return true on affiche cette div sinon on affiche la div marquée v-else --&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">v-if=</span><span class="s">"todos.length &gt; 0"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;Todo</span>
+        <span class="na">v-for=</span><span class="s">"(todo, index) in todos"</span>
+        <span class="na">:key=</span><span class="s">"todo"</span>
+        <span class="na">v-bind:todo=</span><span class="s">"todo"</span>
+        <span class="na">v-bind:index=</span><span class="s">"index"</span>
+        <span class="na">v-on:delete-todo=</span><span class="s">"deleteThisTodo"</span>
+      <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="c">&lt;!-- Voilà la div qu'on affiche si le tableau todos est vide --&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">v-else</span> <span class="na">class=</span><span class="s">"todo-list-empty"</span><span class="nt">&gt;</span>
+      Vous n'avez plus rien à faire, bien joué !
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/</span><span class="k">template</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+
+<p>On peut ensuite ajouter quelques <strong>styles</strong> à cette nouvelle <code class="language-plaintext highlighter-rouge">div</code> :</p>
+
+<div class="language-vue highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;</span><span class="k">style</span> <span class="na">scoped</span><span class="nt">&gt;</span>
+<span class="nc">.todo-list</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.todo-list-empty</span> <span class="p">{</span>
+  <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">green</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">&lt;/</span><span class="k">style</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+
+<p>Et voilà le résultat :</p>
+
+<p><img src="../../assets/vue-project-capture5.png" alt="project-capture-5" /></p>
+
+<p>Enfin pour plus d’informations, nous vous conseillons d’aller checker <a href="https://v3.vuejs.org/">la documentation officielle de Vue 3.0</a>.</p>
 
   </div>
 
