@@ -128,7 +128,8 @@ générer les dépendances pour la version en production, il suffit d'ajouter ``
 
 > **_Remarque :_**  Selon le gestionnaire utilisé, nous avons un fichier ``yarn.lock`` ou ``package-lock.json``. Ce 
 fichier décrit le contenu véritable du ``node_module`` : l'integralités des packages installés, leur version, et 
-les dépendances qui viennent avec. Ce fichier ne doit pas être transféré.
+les dépendances qui viennent avec. Ce fichier doit être transféré car il répertorie les versions de toutes les 
+dépendances de votre projet.
 
 ### Comment utiliser les modules installés
 
@@ -188,5 +189,4 @@ réecrire pusieurs fois la même chose.
 
 Cet article explique assez bien l'utilité que cela peut avoir : [Variables in package.json](https://brianchildress.co/variables-in-package-json/)
 
-## References
 
