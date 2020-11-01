@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Les routes | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Les routes" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)" />
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)" />
+<link rel="canonical" href="/cours_informatique/cours/dfs/routes.html" />
+<meta property="og:url" content="/cours_informatique/cours/dfs/routes.html" />
+<meta property="og:site_name" content="cours d’informatique" />
+<script type="application/ld+json">
+{"description":"Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)","@type":"WebPage","headline":"Les routes","url":"/cours_informatique/cours/dfs/routes.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        processEscapes: true
+      }
+    });
+  </script>
+  
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+</head>
+
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Les routes</h1>
+  </header>
+
+  <div class="post-content">
+    <p>Le but d’un serveur web est de répondre à des requêtes (une url). Cette réponse peut prendre des formes très diverses, les plus courantes étant du html ou des données aux format json. Nous allos donc apprendre a mettre en place des routes. Chaque différente url sera une route qui nous renverra à une réponse que l’on lui aura assigné.</p>
+
+<h2 id="concept">Concept</h2>
+
+<p>Dans un nouveau fichier <code class="language-plaintext highlighter-rouge">app.js</code> nous allons définir les réponses des requêtes possible sur note site web.</p>
+
+<p>Un exemple de ce à quoi se fichier peut ressember se presente ainsi :</p>
+
+<p><em>app.js</em></p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">server</span> <span class="o">=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">((</span><span class="nx">request</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span><span class="p">{</span>
+    <span class="nx">reponse</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span> <span class="c1">//La réponse type aura comme code http 200 : OK</span>
+    <span class="nx">response</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">text/html</span><span class="dl">'</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">url</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">/</span><span class="dl">"</span> <span class="o">||</span> <span class="nx">request</span><span class="p">.</span><span class="nx">url</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">/home</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// réponse au navigateur pour les routes "/" et "/home"</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">url</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">/contact</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// réponse au navigateur pour la route "/contact"</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+    	<span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">=</span> <span class="mi">404</span><span class="p">;</span> <span class="c1">//Si la route n'a pas été définie, la reponse aura comme code http 404 : Not found</span>
+        <span class="c1">// réponse pour les routes non définies</span>
+    <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong><em>Remarque :</em></strong> Les codes http permettent d’identifier le resultat d’une requête et eventuellement de renvoyer une erreur au client si celle-ci n’aboutit pas. Pour avoir le détail des codes vous pouvez consulter <a href="http.cat">http.cat</a>, mais les plus courants sont le 200, qui indique le succés de la requête, le 401 pour non-authorisé (si l’utilisateur est non connecté par exemple), le 403 pour accès refusé, et le 404 pour une page non trouvée.</p>
+</blockquote>
+
+<blockquote>
+  <p><strong><em>Remarque :</em></strong> Le Header correspond aux en-têtes HTTP. Ils permettent la transmission d’informations supplémentaires avec une requête ou une réponse. Ici le set Header indique le <em>Content-Type</em> dans lequel on renseingne le type de média de la ressource. Vous pourrez avoir plus d’informations concernant les headers en vous rendant <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/Headers">ici</a>.</p>
+</blockquote>
+
+<p>Pour avoir la liste des méthodes que l’on peut associer à une réponse en Node.js, vous pouvez les voir <a href="https://nodejs.org/api/http.html#http_class_http_serverresponse">ici dans la documentation</a>.</p>
+
+<p>Les réponses au navigateur pour chaque route peuvent prendre des formes diverses, dont voici un exemple :</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">fs</span><span class="dl">'</span><span class="p">)</span>
+
+<span class="kd">var</span> <span class="nx">server</span> <span class="o">=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">((</span><span class="nx">request</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span><span class="p">{</span>
+	<span class="p">...</span>
+
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">url</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">/contact</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">response</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span>  <span class="p">{</span><span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">text/html</span><span class="dl">'</span><span class="p">})</span> <span class="c1">//Cette ligne écrit le header de notre page</span>
+        <span class="kd">var</span> <span class="nx">readStream</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">createReadStream</span><span class="p">(</span><span class="nx">__dirname</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">/contact.html</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">utf8</span><span class="dl">"</span><span class="p">)</span> <span class="c1">//fs signifie File System : cette ligne va chercher le fichier html qui nous intéresse</span>
+        <span class="nx">readStream</span><span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="c1">// cette ligne envoie notre fichier en réponse</span>
+    <span class="p">}</span>
+    <span class="p">...</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h2 id="express">Express</h2>
+
+<p>Nous remarquons que la gestion des routes en Node.js est peu pratique. En effet, un site avec plus de ressources sera
+ une énorme imbrication de if/else - ou de switch/case - ce qui n’est pas très propre.</p>
+
+<p>Express est un framework pour Node.js qui va nous faciliter l’écriture de ce fichier <code class="language-plaintext highlighter-rouge">app.js</code>.</p>
+
+<h3 id="installation">Installation</h3>
+
+<p>Express se met en place dans votre projet à l’aide de la commande <code class="language-plaintext highlighter-rouge">yarn add express</code> (ou <code class="language-plaintext highlighter-rouge">npm install express</code>).</p>
+
+<p>On l’importe alors dans notre fichier <code class="language-plaintext highlighter-rouge">app.js</code> avec <code class="language-plaintext highlighter-rouge">require</code>:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">express</span><span class="dl">'</span><span class="p">)</span>
+<span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="utilisation">Utilisation</h3>
+
+<blockquote>
+  <p><strong><em>Remarque :</em></strong> La documentation pour le routage en Express est accessible <a href="https://expressjs.com/fr/guide/routing.html">ici</a>.</p>
+</blockquote>
+
+<p>Via, l’import d’express montré dans <strong><em>Installation</em></strong>, nous avons créé une insatnce dans la classe <code class="language-plaintext highlighter-rouge">express</code> dans <code class="language-plaintext highlighter-rouge">app</code>.</p>
+
+<p>Notre code pour <code class="language-plaintext highlighter-rouge">app.js</code> devient :</p>
+
+<p><em>app.js</em></p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">express</span><span class="dl">'</span><span class="p">)</span>
+<span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">()</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="kd">function</span> <span class="nx">timeLog</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Time: </span><span class="dl">'</span><span class="p">,</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">());</span>
+  <span class="nx">next</span><span class="p">();</span>
+<span class="p">});</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span>
+    <span class="nx">response</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">text/html</span><span class="dl">'</span><span class="p">);</span>
+    <span class="c1">// réponse au navigateur pour la route "/"</span>
+<span class="p">})</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/contact</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span>
+    <span class="nx">response</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">text/html</span><span class="dl">'</span><span class="p">);</span>
+    <span class="c1">// réponse au navigateur pour la route "/contact"</span>
+<span class="p">})</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">request</span><span class="p">,</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">=</span> <span class="mi">404</span><span class="p">;</span>
+    <span class="c1">// réponse pour les routes non définies</span>
+    
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p>Comme vous pouvez le voir, nos appels passent par l’instance de la classe <code class="language-plaintext highlighter-rouge">express</code> dans <code class="language-plaintext highlighter-rouge">app</code>. On utilise essentiellement trois méthodes de <code class="language-plaintext highlighter-rouge">app</code> :</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">app.use()</code> : qui reçoit tout type de requêtes,</li>
+  <li><code class="language-plaintext highlighter-rouge">app.get()</code>, <code class="language-plaintext highlighter-rouge">app.post()</code> : qui reçoivent respectivement les requêtes http get et post.</li>
+</ul>
+
+<h4 id="contexte-dutilisation-pour-appuse">Contexte d’utilisation pour <code class="language-plaintext highlighter-rouge">app.use()</code></h4>
+
+<p><code class="language-plaintext highlighter-rouge">app.use()</code> va établir une fonction qui va s’executer lorsque la base du path de la requête concorde avec celui spécifié dans la fonction. Par défaut, ce path est <code class="language-plaintext highlighter-rouge">'/'</code>. Ainsi, lorsque l’argument path n’est pas spécifié, la fonction peut s’executer pour toutes les requêtes.</p>
+
+<blockquote>
+  <p><strong><em>Exemple :</em></strong> Si on écrit <code class="language-plaintext highlighter-rouge">app.use('/api', ...)</code>, le contenu de la fonction pourra être appelé par les requêtes de types <code class="language-plaintext highlighter-rouge">'/api/images'</code>, <code class="language-plaintext highlighter-rouge">'/api/images/profile'</code>, …</p>
+</blockquote>
+
+<p><em>Exemple d’application courant dans le <code class="language-plaintext highlighter-rouge">app.js</code></em></p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="kd">function</span> <span class="nx">timeLog</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Time: </span><span class="dl">'</span><span class="p">,</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">());</span>
+  <span class="nx">next</span><span class="p">();</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>Dans cet exemple, à chaque requête envoyée, la console va afficher l’heure de son arrivée dans la fonction <em>timeLog</em>.</p>
+
+<blockquote>
+  <p><strong><em>Remarque :</em></strong> <code class="language-plaintext highlighter-rouge">next()</code>va nous permettre de sortir du <code class="language-plaintext highlighter-rouge">app.use()</code>, pour que la requête puisse être trouvée par les autres fonctions.</p>
+</blockquote>
+
+<p>Un autre exemple d’utilisation est lors du chargement de fichiers statiques. Nous allons le voir plus tard, mais lorsque l’on va créer une route qui renvoie à un fichier html, nous allors devoir charger le ficher dans la réponse. Pour éviter le chargement de ces fichiers à la main à chaque fois, on ajoute un middleware dont le boulot est de gérer les fichiers statiques : <code class="language-plaintext highlighter-rouge">express.statique()</code> va nous servir à cela.</p>
+
+<p>Ainsi, dans notre code, nous allons ajouter une ligne :</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="dl">"</span><span class="s2">/static</span><span class="dl">"</span><span class="p">,</span> <span class="nx">express</span><span class="p">.</span><span class="kd">static</span><span class="p">(</span><span class="nx">__dirname</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">/static</span><span class="dl">'</span><span class="p">))</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong><em>Remarque :</em></strong> Notez le <code class="language-plaintext highlighter-rouge">"/static"</code> qui correspond ici à la base du path dont nous parlions au début de cette partie.</p>
+</blockquote>
+
+<p>Pour plus d’informations : <a href="https://expressjs.com/en/api.html#app.use">https://expressjs.com/en/api.html#app.use</a></p>
+
+<h4 id="contexte-dutilisation-pour-appget-et-apppost">Contexte d’utilisation pour <code class="language-plaintext highlighter-rouge">app.get()</code> et <code class="language-plaintext highlighter-rouge">app.post()</code></h4>
+
+<p>GET et POST sont des méthodes de requête HTTP. On dit qu’on utilise en principe la méthode 
+GET pour récupérer des données, et la méthode POST pour envoyer des données au serveur.</p>
+
+<p>La méthode GET passe en Express, sans grandes surprises, par <code class="language-plaintext highlighter-rouge">app.get()</code> et la méthode POST passe par <code class="language-plaintext highlighter-rouge">app.post()</code>.</p>
+
+<p><em>Exemple d’application</em></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span>
+    <span class="nx">response</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">text/html</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nx">response</span><span class="p">.</span><span class="nx">sendFile</span><span class="p">(</span><span class="dl">'</span><span class="s1">./index.html</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p>Ici, la requete <code class="language-plaintext highlighter-rouge">'/'</code> renvoie à la page <code class="language-plaintext highlighter-rouge">index.html</code>. On peut éventuellement aussi utiliser une redirection, 
+avec <code class="language-plaintext highlighter-rouge">response.redirect(301, "index.html")</code>.</p>
+
+<p>Pour avoir la liste des méthodes que l’on peut associer à une réponse en Express, vous pouvez les voir <a href="https://expressjs.com/en/api.html#res">ici dans la 
+documentation</a>.</p>
+
+<p><strong>Passer des paramètres dans l’url</strong></p>
+
+<p>Pour indiquer un passage de paramètre dans l’url, on va écrire la requête telle que <code class="language-plaintext highlighter-rouge">:nom-du-paramètre</code>. Par 
+exemple une route telle que <code class="language-plaintext highlighter-rouge">'/article/:idArticle'</code> prend en paramètre un id d’article.</p>
+
+<p><em>Exemples d’utilisation :</em></p>
+<ul>
+  <li>Le passage de paramètre à une route API</li>
+  <li>Utiliser le template mais pour des routes différentes (par exemple, l’affichage d’articles dans un blog : on ne va pas créer une nouvelle page à chaque fois, on va faire appel au même template, que l’on remplira selon ce qui est dans l’article appelé par la requête)</li>
+</ul>
+
+<h4 id="gestion-de-plusieurs-fichiers-de-route">Gestion de plusieurs fichiers de route</h4>
+
+<p>Si vous voulez mettre les routes dans un fichier séparé (par ex <code class="language-plaintext highlighter-rouge">routes.js</code>) , vous pouvez créer le structurer de 
+cette façon:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">app</span><span class="p">){</span>
+    <span class="c1">// placer ici les app.use(), app.get() ...</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>et depuis votre fichier de routes principal :</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">./routes</span><span class="dl">'</span><span class="p">)(</span><span class="nx">app</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="tests-de-routes">Tests de routes</h2>
+
+<p>Pour tester nos routes, on peut utiliser un outil spécialisé comme postman ou une bibliothèque de test comme supertest.</p>
+
+<h3 id="postman">Postman</h3>
+
+<p>Postman est un outil plutôt utilisé dans le cadre des routes des APIs.</p>
+
+<p>Vous pouvez le télécharger ici : <a href="https://www.postman.com/downloads/">https://www.postman.com/downloads/</a>.</p>
+
+<p>En ouvrant un testeur de requêtes (cadre 1), on peut entrer une url qu’on veut tester avec la méthode HTTP correspondante (cadre 2) et éventuellement ajouter les paramètres que l’on veut envoyer avec la route dans <em>Query Params</em> (cadre 3). En cliquant sur <em>Send</em>, on verra la réponse de l’url dans la partie <em>Response</em> (cadre 4). Les routes que l’ont teste sont conservées dans l’historique (cadre 5) pour pouvoir être réutilisées facilement ensuite.</p>
+
+<p><em>Interface de postman :</em>
+<img src="images/postman.png" alt="Interface de postman" /></p>
+
+<p>Cet outil est particulièrement utile en développement, mais pour des tests à refaire régulièrement ce n’est pas recommandé.</p>
+
+<blockquote>
+  <p><strong><em>Remarque :</em></strong> Cela peut se faire avec la partie <em>Collections</em> dans postman. Vous pouvez consulter ce tuto openclassroom pour plus d’information : <a href="https://openclassrooms.com/fr/courses/4668056-construisez-des-microservices/5123020-testez-votre-api-grace-a-postman">Testez votre API grâce à Postman</a> dans la partie <em>Comprendre Postman</em>.</p>
+</blockquote>
+
+<h3 id="supertest">Supertest</h3>
+
+<p>Supertest est une bibliothèque qui va justement nous permettre de faire des tests réguliers.</p>
+
+<h4 id="installation-1">Installation</h4>
+
+<p>Express se met en place dans votre projet à l’aide de la commande <code class="language-plaintext highlighter-rouge">yarn add --dev supertest</code> (ou <code class="language-plaintext highlighter-rouge">npm install supertest --save-dev</code>).</p>
+
+<p>On y fera appel grâce à la ligne :</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">supertest</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h4 id="utilisation-1">Utilisation</h4>
+
+<p>Les test de routes servent essentiellement à verifier que nos routes aboutissent correctement, par exemple, lorsque nous voulons être sûrs que telle route n’aboutisse pas à un 404, que telle route est bien innaccessible sous certaines conditions, etc … Notez donc que ces tests ne vont pas avoir le même objectif que les tests unitaires et les user story.</p>
+
+<blockquote>
+  <p><strong><em>Remarque :</em></strong> Pour le bon fonctionnement de supertest, il faut d’abord bien vous assurer que le serveur de votre application se lance bien dans un autre fichier que vos routes.</p>
+</blockquote>
+
+<p>On crée alors nos tests de routes dans un fichier <code class="language-plaintext highlighter-rouge">routes.test.js</code>.</p>
+
+<p>Un exemple de ce à quoi se fichier peut ressembler se presente ainsi :</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">supertest</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">../app</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">let</span> <span class="nx">user</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">server</span><span class="p">;</span>
+
+<span class="nx">beforeAll</span><span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">user</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">request</span><span class="p">.</span><span class="nx">agent</span><span class="p">(</span><span class="nx">app</span><span class="p">);</span>
+    <span class="nx">server</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mi">3000</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">afterAll</span><span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">await</span> <span class="nx">server</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+<span class="p">});</span>
+
+
+<span class="nx">test</span><span class="p">(</span><span class="dl">'</span><span class="s1">GET index.html</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="c1">//Le test</span>
+<span class="p">})</span>
+
+<span class="nx">test</span><span class="p">(</span><span class="dl">'</span><span class="s1">GET 404</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="c1">//Le test</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p>Vous pouvez trouver la <a href="https://jestjs.io/docs/en/api.html">documentation pour les fonctions de jest</a> telle que <code class="language-plaintext highlighter-rouge">beforeAll()</code>, <code class="language-plaintext highlighter-rouge">afterAll()</code>, <code class="language-plaintext highlighter-rouge">test()</code>.</p>
+
+<p>Vous pouvez trouver une <a href="https://npmdoc.github.io/node-npmdoc-supertest/build/apidoc.html">documentation pour les fonctions de supertest</a> grâce à laquelle vous allez pouvoir construire l’intérieur des fonctions de test.</p>
+
+<p>Un exemple avec ‘GET index.html’ :</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">test</span><span class="p">(</span><span class="dl">'</span><span class="s1">GET index.html</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">user</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="mi">301</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">expect</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">location</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="dl">'</span><span class="s1">/static/index.html</span><span class="dl">'</span><span class="p">)</span>
+        <span class="p">})</span>
+        <span class="p">.</span><span class="nx">end</span><span class="p">((</span><span class="nx">err</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="nx">done</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="nx">done</span><span class="p">()</span>
+        <span class="p">})</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h3 id="liens-importants">Liens importants</h3>
+
+<p>Cette partie répertorie les liens de documentation utiles cités plus haut.</p>
+
+<p><a href="https://nodejs.org/api/http.html#http_class_http_serverresponse">Documentation pour les réponses des requêtes HTTP en Node.js</a></p>
+
+<p><a href="https://expressjs.com/fr/guide/routing.html">Documentation pour le routage en Express</a></p>
+
+<p><a href="https://expressjs.com/en/api.html#app.use">Documentation pour l’utilisation de app.use() en Express</a></p>
+
+<p><a href="https://expressjs.com/en/api.html#res">Documentation pour les réponses des requêtes HTTP en Express</a></p>
+
+<p><a href="https://jestjs.io/docs/en/api.html">Documentation pour les fonctions de jest</a></p>
+
+<p><a href="https://npmdoc.github.io/node-npmdoc-supertest/build/apidoc.html">Documentation pour les fonctions de supertest</a></p>
+
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d&#39;informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d&#39;informatique</li><li><a class="u-email" href="mailto:francois.brucker@centrale-marseille.fr">francois.brucker@centrale-marseille.fr</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li><li><a href="https://www.twitter.com/p_____p___"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">p_____p___</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.
+A destination des 1A (tronc commun), des 2A (de l&#39;approfondissement MIE) et des 3A (de l&#39;option digital·e)</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
