@@ -26,9 +26,60 @@ Selenium est écrit en Java, avant de l’utiliser assurez-vous d’avoir Java i
 Pour bien prendre en main selenium, faisons quelques tests\
 [Doc de Selenium](https://www.selenium.dev/documentation/en/).
 
+
+## Petite recherche sur Google
+
+Pour commencer, voici un petit exemple de fichier de test selenium. 
+Créez un fichier *look-at-google.user-story.js* et mettez-y le code ci-dessous :  
+~~~js
+var fs = require('fs');
+const url = 'https://www.google.com'
+
+const {By, Key} = require('selenium-webdriver');
+const webdriver = require('selenium-webdriver');
+
+describe('Google renders', () => {
+    beforeEach(() => {
+        require('geckodriver');
+        browser =  new webdriver.Builder().forBrowser('firefox').build()
+    })
+
+  test('it renders', async () => {
+    await browser.get(url)
+    const title = await browser.getTitle()
+    expect(title).toContain('Google')
+  })
+
+  test('save a picture', async () => {
+        // files saved in ./reports/screenshots by default
+        await browser.get(url)
+        const iframe = browser.findElement(By.css('iframe'));
+        await browser.switchTo().frame(iframe);
+        await browser.findElement(By.id("introAgreeButton")).click()
+        await browser.switchTo().defaultContent();
+        await browser.findElement(By.name("q")).sendKeys("Carole Deumié", Key.ENTER);
+        
+        browser.takeScreenshot().then((data) => {
+          fs.writeFileSync('img.png', data, 'base64')
+        })
+    }, 10000)
+    
+    afterEach(async () => {
+        await browser.quit()
+    })
+})
+~~~
+
+Ce code va sur Google et teste les User Stories suivantes:
+- Le site s'affiche
+- L'utilisateur peut faire une recherche de mots clés sur le site 
+
+En plus de cela, le second test prend une photo à la fin des actions et l'enregistre dans *img.png*.
+Vous allez apprendre ici à créer un fichier du même genre, mais pour votre propre site.
+
 ## Structure de base du fichier de test
 
-On peut maintenant créer notre premier fichier de test selenium.
+Voyons comment créer votre premier fichier de test selenium.
 La base du fichier doit ressembler à ça :
 
 ~~~js
@@ -193,10 +244,6 @@ await browser.switchTo().defaultContent(); // On sort de l'iframe
 
 
 ## Attendre la réponse du navigateur
-
-
-
-## Petite recherche sur Google
 
 
 
