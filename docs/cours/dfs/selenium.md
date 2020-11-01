@@ -23,8 +23,31 @@ C’est un outil très générique puisqu’il supporte de nombreux navigateurs,
 
 Selenium est écrit en Java, avant de l’utiliser assurez-vous d’avoir Java installé sur votre machine. Vous pouvez le faire en passant par l’installer [sdkman](https://sdkman.io).
 
+Pour utiliser Selenium on va avoir besoin de plusieurs bibliothèques:
+- ``selenium-webdriver``, la bibliothèque de Selenium proprement dit
+- un navigateur web (``geckodriver`` pour firefox, ``chromedriver`` pour chrome)
+
+On peut les installer avec la commande : ``yarn add --dev selenium-webdriver chromedriver``
+
+Voici le package.json avec les deux drivers de navigateur installés:
+``{
+    "name": "selenium_jest",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "devDependencies": {
+      "geckodriver": "^1.20.0",
+      "jest": "^26.5.2",
+      "selenium-webdriver": "^4.0.0-alpha.7",
+      "chromedriver": "85.0.0"
+    }
+  }``
+
+On peut aussi installer les bibliothèques en copiant les devDepedencies dans votre package.json, puis en tapant le commande ``yarn add``
+
+
 Pour bien prendre en main selenium, faisons quelques tests\
-[Doc de Selenium](https://www.selenium.dev/documentation/en/).
+[Doc de Selenium](https://www.selenium.dev/documentation/en/)
 
 
 ## Petite recherche sur Google
