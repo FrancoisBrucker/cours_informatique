@@ -30,7 +30,8 @@ Pour utiliser Selenium on va avoir besoin de plusieurs bibliothèques:
 On peut les installer avec la commande : ``yarn add --dev selenium-webdriver chromedriver``
 
 Voici le package.json avec les deux drivers de navigateur installés:
-``{
+~~~json
+{
     "name": "selenium_jest",
     "version": "1.0.0",
     "main": "index.js",
@@ -41,7 +42,8 @@ Voici le package.json avec les deux drivers de navigateur installés:
       "selenium-webdriver": "^4.0.0-alpha.7",
       "chromedriver": "85.0.0"
     }
-  }``
+  }
+~~~
 
 On peut aussi installer les bibliothèques en copiant les devDepedencies dans votre package.json, puis en tapant le commande ``yarn add``
 
