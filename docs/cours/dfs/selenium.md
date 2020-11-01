@@ -214,8 +214,8 @@ Les exemples les plus fréquents sont :
 ~~~js
 // Cliquer sur un bouton
 await driver.findElement(By.name("button")).click();
-// Remplir un champ et valider
-await driver.findElement(By.name('name')).sendKeys("Manu");
+// Remplir un champ et valider (penser à charger Key au début du fichier)
+await driver.findElement(By.name('name')).sendKeys("Manu", Key.ENTER);
 ~~~
 
 Des actions plus précises peuvent être faites 
