@@ -638,6 +638,80 @@ export default {
 </style>
 ```
 
-Et voilà!!
+Et voilà le résultat :
 
 ![project-capture-4](../../assets/vue-project-capture4.png)
+
+## 6. Derniers ajustements
+
+Notre todo liste est quasiment finie, il nous reste à supprimer les todos ajoutés en **dur** dans le composant `TodoList` :
+
+```vue
+<script>
+import Todo from "./Todo.vue";
+
+export default {
+  name: "TodoList",
+  components: {
+    Todo,
+  },
+  methods: {
+    deleteThisTodo: function (todoIndex) {
+      console.log(todoIndex);
+      this.todos.splice(todoIndex, 1);
+    },
+  },
+  data() {
+    return {
+      // On a retiré les strings présents ici
+      todos: [],
+    };
+  },
+};
+</script>
+```
+
+Mais on souhaite quand même afficher un petit message quand la liste de todos est **vide**.
+
+Pour cela nous allons utiliser la directive `v-if` de vue qui nous permets d'évaluer des **assertions** dans le template et d'afficher certains élément en fonction de l'évalutation de cette assertion.
+
+```vue
+<template>
+  <div class="todo-list">
+  <!-- On ajoute l'évaluation de l'assertion ici, si cela return true on affiche cette div sinon on affiche la div marquée v-else -->
+    <div v-if="todos.length > 0">
+      <Todo
+        v-for="(todo, index) in todos"
+        :key="todo"
+        v-bind:todo="todo"
+        v-bind:index="index"
+        v-on:delete-todo="deleteThisTodo"
+      />
+    </div>
+    <!-- Voilà la div qu'on affiche si le tableau todos est vide -->
+    <div v-else class="todo-list-empty">
+      Vous n'avez plus rien à faire, bien joué !
+    </div>
+  </div>
+</template>
+```
+
+On peut ensuite ajouter quelques **styles** à cette nouvelle `div` :
+
+```vue
+<style scoped>
+.todo-list {
+  width: 100%;
+}
+.todo-list-empty {
+  text-align: center;
+  color: green;
+}
+</style>
+```
+
+Et voilà le résultat :
+
+![project-capture-5](../../assets/vue-project-capture5.png)
+
+Enfin pour plus d'informations, nous vous conseillons d'aller checker [la documentation officielle de Vue 3.0](https://v3.vuejs.org/).
