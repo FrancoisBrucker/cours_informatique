@@ -12,7 +12,7 @@ authors:
 
 Le concept de User Story rejoint celui d'expérience utilisateur.  En effet il s’agit de comment on imagine que l’utilisateur va utiliser le produit, quel est le chemin qu’il va parcourir, surtout quel est le chemin qu’on veut qu’il parcoure. Définir une user story permet également de définir comment sera utilisé le site qu’on va écrire. 
 
-Pour tester notre code, on a déjà vu les [tests unitaires] qui permettent de vérifier que des petites portions du code fonctionnent correctement. 
+Pour tester notre code, on a déjà vu les [tests unitaires]({% link cours/dfs/Test_Unitaire.md %}) qui permettent de vérifier que des petites portions du code fonctionnent correctement. 
 Ici, on souhaite tester le comportement du site en fonction du parcours d'un utilisateur. 
 On doit donc réaliser des tests fonctionnels: On veut observer le résultat d'une séquence d'opérations complexes.
 
