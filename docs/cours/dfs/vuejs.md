@@ -253,4 +253,15 @@ On remarque néanmoins certaines particularités dans ce composant :
 
 Le reste des éléments dans le template de ce composant correspond aux éléments affichés dans notre browser (liens GitHub et réseaux sociaux).
 
+## La fin, Builder l'application Vue
+
+Comme on a pu le remarquer les fichiers `.vue` ne sont pas des fichiers `.js`, `.html` ou `.css` de base or les navigateurs ne lisent que ces fichiers là. Il faut donc **compiler** notre application avant de la mettre sur un serveur. \
+Pour compiler notre application nous allons utiliser le super **CLI** de Vue avec la commande (à executer dans le fichier *root* du projet):
+
+```shell
+npm run build
+```
+
+Le **CLI** va générer notre application compilée dans le dossier `dist` de notre projet. Il suffit maintenant de copier le contenu de ce dossier sur le server (et bien faire servir l'`index.html`) pour avoir notre application *up and running* comme on dit dans le jargon !
+
 Cette petite présentation de Vue est terminée, pour poursuivre votre formation avec ce framework nous vous proposons la création d'une application todolist dans [ce tuto]({% link cours/dfs/todolist_vuejs.md %}).
