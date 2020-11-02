@@ -301,6 +301,16 @@ On remarque néanmoins certaines particularités dans ce composant :</p>
 
 <p>Le reste des éléments dans le template de ce composant correspond aux éléments affichés dans notre browser (liens GitHub et réseaux sociaux).</p>
 
+<h2 id="la-fin-builder-lapplication-vue">La fin, Builder l’application Vue</h2>
+
+<p>Comme on a pu le remarquer les fichiers <code class="language-plaintext highlighter-rouge">.vue</code> ne sont pas des fichiers <code class="language-plaintext highlighter-rouge">.js</code>, <code class="language-plaintext highlighter-rouge">.html</code> ou <code class="language-plaintext highlighter-rouge">.css</code> de base or les navigateurs ne lisent que ces fichiers là. Il faut donc <strong>compiler</strong> notre application avant de la mettre sur un serveur. <br />
+Pour compiler notre application nous allons utiliser le super <strong>CLI</strong> de Vue avec la commande (à executer dans le fichier <em>root</em> du projet):</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run build
+</code></pre></div></div>
+
+<p>Le <strong>CLI</strong> va générer notre application compilée dans le dossier <code class="language-plaintext highlighter-rouge">dist</code> de notre projet. Il suffit maintenant de copier le contenu de ce dossier sur le server (et bien faire servir l’<code class="language-plaintext highlighter-rouge">index.html</code>) pour avoir notre application <em>up and running</em> comme on dit dans le jargon !</p>
+
 <p>Cette petite présentation de Vue est terminée, pour poursuivre votre formation avec ce framework nous vous proposons la création d’une application todolist dans <a href="/cours_informatique/cours/dfs/todolist_vuejs.html">ce tuto</a>.</p>
 
   </div>
