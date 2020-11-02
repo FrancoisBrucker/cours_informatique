@@ -69,6 +69,8 @@ test(“addition”, () =>{
 })
 ~~~
 
+Retrouvez [ici](https://jestjs.io/docs/en/expect.html#content) toutes toute une série d’assertions (ou *matchers*), telles que  `.toEqual()`  ,  `.toContain()`  ou  `.toHaveBeenCalled()`.
+
 ## Plusieurs imports
 
 Bien évidement on voudra tester plusieurs choses lors de nos tests. Pour cela il exciste deux solutions :
