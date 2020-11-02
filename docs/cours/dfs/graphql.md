@@ -23,6 +23,15 @@ Encore une fois, les développeurs utilisent maintenant GraphQL dans une optique
 
 Voilà pourquoi GraphQL c'est super top : GraphQL récupère exactement les données qu'on lui demande, ni plus ni moins. Par exemple, si on souhaite récupérer le titre d'un livre, on récupère seulement le titre et pas l'auteur, l'éditeur, l'identifiant, l'année de parution ou n'importe quel autre renseignement que l'on n'avait pas demandé. Ca peut paraître anodin mais si cela concerne un fichier JSON de plusieurs dizaines de paramètres et qu'on multiplie les requêtes, ça peut vite devenir long de récupérer trop de données inutiles.  
 
+> **Nota Bene :** et d'ailleurs une requête c'est quoi ? 
+Le protocole HTTP permet la transmission d'informations au serveur via différentes requêtes dont les deux plus connues sont GET et POST. 
+Pour récupérer des données, on utilise en général la requête GET qui est une requête de consultation. 
+Il est parfois nécessaire de modifier les données du serveur. C’est notamment ce qui se passe lorsqu’on utilise un formulaire HTML (par exemple pour poster un billet de blog ou passer une commande). Dans ce cas, il est nécessaire d'utiliser une requête POST. Dans une requête POST, l'adresse où vont être envoyées les données (généralement celle du serveur) est précisée dans l'attribut action de la balise form. 
+
+> **Nota Bene:** Il est aussi possible d'envoyer des données au serveur via une requête GET, la grande différence est qu'avec POST, les données sont envoyées de manière confidentielle. On s'explique: les paramètres envoyés au serveur avec une méthode GET sont directement ajoutés à l'URL ce qui fait que tout le monde peut y avoir accès, pas très safe !
+
+ 
+
 Une autre raison pour utiliser GraphQL c'est qu'on permet au client d'encapsuler les requêtes. On s'explique : si on récupère tous les livres de Steinbeck, on peut lui demander en même temps de récupérer leur titre et leur année de parution. Pas besoin de refaire une seconde requête pour chaque livre comme avec REST!
 Donc en fait, GraphQL nous permet de récupérer des données sous forme d'un graphe (d'ou ce fameux nom!). 
 
@@ -299,3 +308,7 @@ En revanche,il existe quelques règles à respecter pour que les requêtes soien
 GraphQL termine de parcourir le graphe de requête lorsqu'il rencontre un scalaire (chaîne de caractères, entier, flottant), il faut ddonc préciser les champs que l'on souhaite recevoir. Si un des champs est du type d'une autre entité qui a été définie, il faut continuer à demander des attributs jusqu'a n'avoir que sur les feuilles du graphe, des sclaires. 
 
 On ne peut bien sûr que demander des champs du modèle concerné.  
+
+
+
+Un lien utile pour utiliser GraphQL avec MongoDB : [ici](https://www.youtube.com/watch?v=Y0lDGjwRYKw&list=PL4cUxeGkcC9iK6Qhn-QLcXCXPQUov1U7f)
