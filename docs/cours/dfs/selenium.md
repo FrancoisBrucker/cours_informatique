@@ -266,11 +266,3 @@ await browser.switchTo().frame(iframe); // On rentre dans l'iframe
 // On fait ici nos actions / recherches dans l'iframe
 await browser.switchTo().defaultContent(); // On sort de l'iframe
 ~~~
-
-
-## Attendre la réponse du navigateur
-
-
-
-## CheatSheet
-
