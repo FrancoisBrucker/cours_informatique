@@ -55,11 +55,19 @@ Cours d'apprentissages des différents outils de développement et les bases du 
 
   [Sass]({% link cours/dfs/sass.md %})
 
-  [Vue.js]({% link cours/dfs/vuejs.md %})
+## Vue.js
+
+  [Introduction à Vue.js 3.0]({% link cours/dfs/vuejs.md %})
+
+  [Application Todo list avec Vue]({% link cours/dfs/todolist_vuejs.md %})
 
 ## Web seveur
 
   [Serveurs web]({% link cours/dfs/web_serveur.md %})
+  
+  [Tests Unitaires]({% link cours/dfs/Test_Unitaire.md %})
+  
+  [Routes]({% link cours/dfs/routes.md %})
   
 ## Cookies
 
