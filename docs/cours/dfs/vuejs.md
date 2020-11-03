@@ -264,4 +264,14 @@ npm run build
 
 Le **CLI** va générer notre application compilée dans le dossier `dist` de notre projet. Il suffit maintenant de copier le contenu de ce dossier sur le server (et bien faire servir l'`index.html`) pour avoir notre application *up and running* comme on dit dans le jargon !
 
+**ATTENTION** : Par défault le cli de vue va avoir un *publicPath* égale à `'/'` ce qui souvent ne va pas fonctionner avec notre intégration sur le serveur (sauf si le `index.html` se trouve à la racine du server ce qui arrive rarement...). Pour palier à ce problème il va falloir indiquer au cli un publicPath vide `''` pour notre `build`. Pour cela on va créer un nouveau fichier (attention aux tipos !) `vue.config.js` à la racine de notre projet vue et y écrire :
+
+```js
+module.exports = {
+  publicPath: ''
+}
+```
+
+Une fois cela fait on peut exécuter la commande `npm run build` et build notre site pour l'envoyer où on veut sur le server (l'`index.html` va chercher les sources par rapport à son PATH **relatif** et non depuis **la racine du server**).
+
 Cette petite présentation de Vue est terminée, pour poursuivre votre formation avec ce framework nous vous proposons la création d'une application todolist dans [ce tuto]({% link cours/dfs/todolist_vuejs.md %}).
