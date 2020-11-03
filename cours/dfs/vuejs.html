@@ -311,6 +311,15 @@ Pour compiler notre application nous allons utiliser le super <strong>CLI</stron
 
 <p>Le <strong>CLI</strong> va générer notre application compilée dans le dossier <code class="language-plaintext highlighter-rouge">dist</code> de notre projet. Il suffit maintenant de copier le contenu de ce dossier sur le server (et bien faire servir l’<code class="language-plaintext highlighter-rouge">index.html</code>) pour avoir notre application <em>up and running</em> comme on dit dans le jargon !</p>
 
+<p><strong>ATTENTION</strong> : Par défault le cli de vue va avoir un <em>publicPath</em> égale à <code class="language-plaintext highlighter-rouge">'/'</code> ce qui souvent ne va pas fonctionner avec notre intégration sur le serveur (sauf si le <code class="language-plaintext highlighter-rouge">index.html</code> se trouve à la racine du server ce qui arrive rarement…). Pour palier à ce problème il va falloir indiquer au cli un publicPath vide <code class="language-plaintext highlighter-rouge">''</code> pour notre <code class="language-plaintext highlighter-rouge">build</code>. Pour cela on va créer un nouveau fichier (attention aux tipos !) <code class="language-plaintext highlighter-rouge">vue.config.js</code> à la racine de notre projet vue et y écrire :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">publicPath</span><span class="p">:</span> <span class="dl">''</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Une fois cela fait on peut exécuter la commande <code class="language-plaintext highlighter-rouge">npm run build</code> et build notre site pour l’envoyer où on veut sur le server (l’<code class="language-plaintext highlighter-rouge">index.html</code> va chercher les sources par rapport à son PATH <strong>relatif</strong> et non depuis <strong>la racine du server</strong>).</p>
+
 <p>Cette petite présentation de Vue est terminée, pour poursuivre votre formation avec ce framework nous vous proposons la création d’une application todolist dans <a href="/cours_informatique/cours/dfs/todolist_vuejs.html">ce tuto</a>.</p>
 
   </div>
