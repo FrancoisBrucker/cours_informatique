@@ -87,3 +87,5 @@ Cours d'apprentissages des différents outils de développement et les bases du 
   
   
   [Squizz](https://github.com/LeoLaurent/projet-dfs-quizz-vue2)
+
+  [FastFlash](https://github.com/fanismichalakis/fastflash)
