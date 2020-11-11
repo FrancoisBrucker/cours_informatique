@@ -65,6 +65,8 @@ Cours d'apprentissages des différents outils de développement et les bases du 
 
   [Serveurs web]({% link cours/dfs/web_serveur.md %})
   
+  [Frontend / Backend]({% link cours/dfs/front_back.md %})
+  
   [Tests Unitaires]({% link cours/dfs/Test_Unitaire.md %})
   
   [Tests Selenium]({% link cours/dfs/selenium.md %})
