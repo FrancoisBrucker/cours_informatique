@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Front back | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Front back" />
+<meta name="author" content="Laurie Dégeorges" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)" />
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)" />
+<link rel="canonical" href="/cours_informatique/cours/dfs/front_back.html" />
+<meta property="og:url" content="/cours_informatique/cours/dfs/front_back.html" />
+<meta property="og:site_name" content="cours d’informatique" />
+<script type="application/ld+json">
+{"description":"Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)","@type":"WebPage","headline":"Front back","url":"/cours_informatique/cours/dfs/front_back.html","author":{"@type":"Person","name":"Laurie Dégeorges"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        processEscapes: true
+      }
+    });
+  </script>
+  
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+</head>
+
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Front back</h1>
+  </header>
+
+  <div class="post-content">
+    <h1 id="frontend-backend-et-ce-quil-manque-entre-les-deux">Frontend, Backend et ce qu’il manque entre les deux</h1>
+
+<p>De la structure d’un projet et de la séparation entre front et back.</p>
+
+<h4 id="comme-partout-ailleurs-commençons-par-créer-un-projet">Comme partout ailleurs, commençons par créer un projet</h4>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nb">mkdir </span>project <span class="o">&amp;&amp;</span> <span class="nb">cd </span>project
+    git init
+    yarn init <span class="nt">-y</span>
+</code></pre></div></div>
+<p>Le dossier <em>projet</em> contient alors un <em>.git</em> et un <em>package.json</em>, que l’on peut commit pour en garder une trace.
+Nous sommes maintenant prêts à commencer.</p>
+
+<h2 id="frontend-ou-ce-qui-se-voit">Frontend ou ce qui se voit</h2>
+<p>Le front correspond à ce que l’utilisateur peut voir depuis son navigateur lorsqu’il appelle un url, c’est-à-dire les visuels du site, les images et les scripts permettant de gérer l’affichage.</p>
+
+<h3 id="static-">Static <img src="images/static-resize.png" alt="Pikachu attaque static !" /></h3>
+
+<p>Pour bien s’y retrouver tout ce qui concerne le front sera placé dans un dossier <em>static</em>. Ce dossier contiendra un package.json où seront répertoriés les modules qui seront utilisés pour l’affichage.</p>
+
+<p>Initialisation de static</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    mkdir static &amp;&amp; cd static
+    yarn init -y
+</code></pre></div></div>
+
+<p>On crée un <em>index.html</em> dans static pour la démo</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!doctype html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"fr"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;title&gt;</span>Titre trop stylé<span class="nt">&lt;/title&gt;</span> 
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"body"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;h1&gt;</span> Une page web <span class="nt">&lt;/h1&gt;</span>
+            <span class="nt">&lt;div&gt;</span> Et son contenu 
+                <span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">"pure-form"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"mot"</span><span class="nt">&gt;</span>Ecrivez ici :<span class="nt">&lt;/label&gt;</span>
+                    <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"mot"</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"mot"</span><span class="nt">/&gt;</span>
+                    <span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">"press"</span> <span class="na">class=</span><span class="s">"pure-button"</span> <span class="na">type=</span><span class="s">"submit"</span><span class="nt">&gt;</span>Bouton inutile ?<span class="nt">&lt;/button&gt;</span>
+                <span class="nt">&lt;/form&gt;</span>            
+                <span class="nt">&lt;p</span> <span class="na">id=</span><span class="s">"get-value"</span><span class="nt">&gt;</span>Valeureuse valeur<span class="nt">&lt;/p&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>On crée <em>style.css</em> pour le styliser un peu</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">html</span><span class="o">,</span> <span class="nt">body</span> <span class="p">{</span>
+    <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="no">sandybrown</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.body</span> <span class="p">{</span>
+    <span class="nl">font-family</span><span class="p">:</span> <span class="n">Dyuthi</span><span class="p">,</span> <span class="nb">serif</span><span class="p">;</span>
+    <span class="nl">margin-top</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+    <span class="nl">margin-left</span><span class="p">:</span> <span class="nb">auto</span><span class="p">;</span>
+    <span class="nl">margin-right</span><span class="p">:</span> <span class="nb">auto</span><span class="p">;</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">80%</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">p</span> <span class="p">{</span>
+    <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+    <span class="nl">margin-top</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+    <span class="nl">margin-bottom</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+    <span class="nl">font-size</span><span class="p">:</span> <span class="m">50px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Allons même jusqu’à utiliser Pure css juste pour pouvoir briller en soirée mondaine.
+Il suffit de lancer la commande <code class="language-plaintext highlighter-rouge">yarn add purecss</code> et voilà ! Pure css est ajouté au node_modules de <em>static</em> exactement comme prévu.</p>
+
+<p>N’oublions pas d’éditer <em>index.html</em> pour importer notre style</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!doctype html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"fr"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;title&gt;</span>Titre trop stylé<span class="nt">&lt;/title&gt;</span> 
+
+        <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"./node_modules/purecss/build/pure-min.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"style.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"body"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;h1&gt;</span> Une page web <span class="nt">&lt;/h1&gt;</span>
+            <span class="nt">&lt;div&gt;</span> Et son contenu 
+                <span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">"pure-form"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"mot"</span><span class="nt">&gt;</span>Ecrivez ici :<span class="nt">&lt;/label&gt;</span>
+                    <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"mot"</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"mot"</span><span class="nt">/&gt;</span>
+                    <span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">"press"</span> <span class="na">class=</span><span class="s">"pure-button"</span> <span class="na">type=</span><span class="s">"submit"</span><span class="nt">&gt;</span>Bouton inutile ?<span class="nt">&lt;/button&gt;</span>
+                <span class="nt">&lt;/form&gt;</span>            
+                <span class="nt">&lt;p</span> <span class="na">id=</span><span class="s">"get-value"</span><span class="nt">&gt;</span>Valeureuse valeur<span class="nt">&lt;/p&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<h3 id="un-peu-daction">Un peu d’action</h3>
+
+<p>Créons dans <em>static/</em> un fichier <em>main.js</em></p>
+
+<p><em>static/main.js</em></p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">change_value</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">mot</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#mot</span><span class="dl">"</span><span class="p">).</span><span class="nx">value</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">mot</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#get-value</span><span class="dl">"</span><span class="p">).</span><span class="nx">textContent</span> <span class="o">=</span> <span class="nx">mot</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#get-value</span><span class="dl">"</span><span class="p">).</span><span class="nx">textContent</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Valeureuse valeur</span><span class="dl">"</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+<span class="nx">change_value</span><span class="p">()</span>
+
+<span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#press</span><span class="dl">"</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">change_value</span><span class="p">()</span>
+    <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">()</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p>Enfin il faut ajouter <code class="language-plaintext highlighter-rouge">&lt;script src="main.js"&gt;&lt;/script&gt;</code> à la fin de index.html</p>
+
+<h2 id="back-la-face-cachée-de-liceberg-immergé-">Back, la face cachée de l’iceberg immergé !</h2>
+<p><img src="images/termin.png" alt="I'll be back" /></p>
+
+<p>C’est ce qui se passe côté serveur, tous les calculs, les fonctions et les traitements de base de données compliqués qui seront envoyés au navigateur.</p>
+
+<p><strong>Pour la suite sortons de <em>static/</em> et replaçons-nous à la racine du projet.</strong></p>
+
+<h3 id="lancer-notre-site">Lancer notre site</h3>
+<p>Nous aurons besoin d’express, ajoutons le donc simplement à node_modules avec <code class="language-plaintext highlighter-rouge">yarn add express</code> (bien sortir du dossier <em>static</em>)</p>
+
+<p>A ce stade le projet s’organise comme suit</p>
+
+<p>(<code class="language-plaintext highlighter-rouge">tree -I node_modules</code>)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.
+├── package.json
+├── static
+│ ├── index.html
+│ ├── main.js
+│ ├── package.json
+│ ├── style.css
+│ └── yarn.lock
+└── yarn.lock
+</code></pre></div></div>
+
+<p>Avec express dans le package.json de la racine et pure css dans celui de static.</p>
+
+<h3 id="des-routes">Des routes</h3>
+<p>Créons un fichier <em>app.js</em> permettant de lancer notre site</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">express</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
+<span class="kd">var</span> <span class="nx">port</span> <span class="o">=</span> <span class="mi">8000</span><span class="p">;</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span><span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="dl">'</span><span class="s1">Hello World!</span><span class="dl">'</span><span class="p">);});</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">port</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Listening to Port </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">port</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>Ainsi il se lance avec <code class="language-plaintext highlighter-rouge">node app.js</code>, et devrait aimablement nous dire <strong>Hello World</strong> en se connectant à localhost:8000/</p>
+
+<p>Mais Hello World n’a jamais été un résultat très passionnant (bien que la politesse soit importante), remplaçons cela par des routes plus intéressantes.</p>
+
+<p><em>app.js</em></p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">express</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
+<span class="kd">var</span> <span class="nx">port</span> <span class="o">=</span> <span class="mi">8000</span><span class="p">;</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="dl">"</span><span class="s2">/static</span><span class="dl">"</span><span class="p">,</span> <span class="nx">express</span><span class="p">.</span><span class="kd">static</span><span class="p">(</span><span class="nx">__dirname</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">/static</span><span class="dl">'</span><span class="p">))</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">response</span>
+        <span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span class="mi">301</span><span class="p">,</span> <span class="dl">'</span><span class="s1">/static/index.html</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">})</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">port</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Listening to Port </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">port</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>Dès à présent lancer le serveur avec <code class="language-plaintext highlighter-rouge">node app.js</code> permet d’aller voir notre site !</p>
+
+<p>Il est capable d’afficher un mot écrit par l’utilisateur ! Impressionnant n’est-ce pas ? Non !? Tssk jamais contents ces développeurs…</p>
+
+<h2 id="et-une-api-pour-la-route">Et une API pour la route</h2>
+
+<p>Créons une route commençant par <code class="language-plaintext highlighter-rouge">/api</code> qui permettra à des applications tierces d’utiliser notre site.</p>
+
+<p>L’usage veut également que les différentes versions des api soient conservées pour pouvoir changer nos appels sans perturber les sites utilisant ceux-ci. On va donc avoir les routes suivantes :</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">/api/current/</code> qui sera la route pour la version actuelle de l’API</li>
+  <li><code class="language-plaintext highlighter-rouge">/api/v1/</code> qui sera un lien vers la version courante.</li>
+</ul>
+
+<p>Ceci nous permettra de maintenir la version <code class="language-plaintext highlighter-rouge">v1</code> de l’API lorsque la version courante changera en <code class="language-plaintext highlighter-rouge">v1.2</code> ou <code class="language-plaintext highlighter-rouge">v2</code>.</p>
+
+<p>On aura aussi pour l’instant qu’une unique méthode : <code class="language-plaintext highlighter-rouge">affichage/&lt;mot&gt;</code> qui prend une chaîne de caractère en <em>“paramètre”</em>.</p>
+
+<p>Construisons ces routes, et pour cela créons des dossiers que l’on importera (importer un dossier revient à importer le fichier <em>index.js</em> qui s’y trouve).</p>
+
+<p>Notre site correspond maintenant à ça :</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>├── app.js
+├── package.json
+├── routes
+│ ├── index.js
+│ └── v1
+│     └── index.js
+├── static
+│ ├── index.html
+│ ├── style.css
+│ ├── main.js
+│ ├── package.json
+│ └── yarn.lock
+└── yarn.lock
+
+</code></pre></div></div>
+
+<p>Le dossier <em>routes</em> contient un fichier <em>index.js</em>. Ce fichier est importé dans <em>app.js</em> avec 2 lignes :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">express</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="dl">"</span><span class="s2">/static</span><span class="dl">"</span><span class="p">,</span> <span class="nx">express</span><span class="p">.</span><span class="kd">static</span><span class="p">(</span><span class="nx">__dirname</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">/static</span><span class="dl">'</span><span class="p">))</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">response</span>
+        <span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span class="mi">301</span><span class="p">,</span> <span class="dl">'</span><span class="s1">/static/index.html</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">})</span>
+
+<span class="nx">api</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">./routes</span><span class="dl">'</span><span class="p">)</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api</span><span class="dl">'</span><span class="p">,</span> <span class="nx">api</span><span class="p">)</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mi">8000</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Listening to Port 8000</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>Le fichier <em>routes/index.js</em> contient le code suivant :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">express</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">router</span> <span class="o">=</span> <span class="nx">express</span><span class="p">.</span><span class="nx">Router</span><span class="p">();</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">router</span>
+
+<span class="nx">router</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="dl">'</span><span class="s1">/current</span><span class="dl">'</span><span class="p">,</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">./v1</span><span class="dl">'</span><span class="p">))</span>
+<span class="nx">router</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="dl">'</span><span class="s1">/v1</span><span class="dl">'</span><span class="p">,</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">./v1</span><span class="dl">'</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>Son boulot est de créer (et de rendre) un router qui contient deux routes <code class="language-plaintext highlighter-rouge">/current</code> et <code class="language-plaintext highlighter-rouge">/v1</code> qui seront identiques.</p>
+
+<p>Le fichier <em>routes/v1/index.js</em> contient la route proprement dite de notre api. Pour l’instant c’est un fake. On fera le lien avec notre code js plus tard :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">express</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">router</span> <span class="o">=</span> <span class="nx">express</span><span class="p">.</span><span class="nx">Router</span><span class="p">();</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">router</span>
+
+<span class="nx">router</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/affichage/:mot</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span>
+        <span class="dl">"</span><span class="s2">mot</span><span class="dl">"</span><span class="p">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">mot</span><span class="p">,</span>
+    <span class="p">})</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p>Remarquez que cette route prend un paramètre nommé <code class="language-plaintext highlighter-rouge">:mot</code> que l’on peut ensuite reprendre dans le code.</p>
+
+<p>Pour l’instant le code rend un objet <a href="https://www.json.org/json-fr.html">json</a> contenant 1 champ, le mot (le paramètre de notre route).</p>
+
+<p>Pour savoir comment appeler cette route depuis notre server, regardons comment elle est appelée :</p>
+
+<ol>
+  <li>on commence par l’appeler depuis <em>./app.js</em> : <code class="language-plaintext highlighter-rouge">app.use('/api', api)</code> où <code class="language-plaintext highlighter-rouge">api = require('./routes')</code></li>
+  <li>cela continue dans <em>./routes/index.js</em> avec <code class="language-plaintext highlighter-rouge">router.use('/current', require('./v1'))</code> et <code class="language-plaintext highlighter-rouge">router.use('/v1', require('./v1'))</code></li>
+  <li>on arrive enfin au <em>./routes/v1/index.js</em> qui crée la route : <code class="language-plaintext highlighter-rouge">router.get('/affichage/:mot', ...</code></li>
+</ol>
+
+<p>En combinant tout ça on arrive à une route : <code class="language-plaintext highlighter-rouge">http://localhost:3000/api/current/affichage/un truc</code> qui est la même que <code class="language-plaintext highlighter-rouge">http://localhost:3000/api/v1/affichage/un truc</code>. On peut bien sur remplacer “un truc” par ce qu’on veut du moment que ce n’est pas vide.</p>
+
+<h2 id="pour-déplacer-notre-projet">Pour déplacer notre projet</h2>
+
+<p>Pour lancer le projet depuis une autre machine ou l’héberger sur un serveur il suffit de :</p>
+
+<ul>
+  <li>
+    <p>Copier le répertoire à l’endroit voulu</p>
+  </li>
+  <li>
+    <p>Lancer <code class="language-plaintext highlighter-rouge">yarn install</code> à la racine</p>
+  </li>
+  <li>
+    <p>Lancer <code class="language-plaintext highlighter-rouge">yarn install</code> dans static</p>
+  </li>
+</ul>
+
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d&#39;informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d&#39;informatique</li><li><a class="u-email" href="mailto:francois.brucker@centrale-marseille.fr">francois.brucker@centrale-marseille.fr</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li><li><a href="https://www.twitter.com/p_____p___"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">p_____p___</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.
+A destination des 1A (tronc commun), des 2A (de l&#39;approfondissement MIE) et des 3A (de l&#39;option digital·e)</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
