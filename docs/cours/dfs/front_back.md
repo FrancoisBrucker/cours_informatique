@@ -14,12 +14,12 @@ De la structure d'un projet et de la séparation entre front et back.
 #### Comme partout ailleurs, commençons par créer un projet
 
 ~~~ sh
-    $ mkdir project && cd project
-    $ git init
-    $ yarn init -y
+    mkdir project && cd project
+    git init
+    yarn init -y
 ~~~
 Le dossier *projet* contient alors un *.git* et un *package.json*, que l'on peut commit pour en garder une trace.
-Nous sommes maintenant prêt à commencer.
+Nous sommes maintenant prêts à commencer.
 
 ## Frontend ou ce qui se voit
 Le front correspond à ce que l'utilisateur peut voir depuis son navigateur lorsqu'il appelle un url, c'est-à-dire les visuels du site, les images et les scripts permettant de gérer l'affichage. 
@@ -32,8 +32,8 @@ Pour bien s'y retrouver tout ce qui concerne le front sera placé dans un dossie
 Initialisation de static
 
 ~~~    
-    $ mkdir static && cd static
-    $ yarn init -y
+    mkdir static && cd static
+    yarn init -y
 ~~~
 
 
@@ -118,9 +118,7 @@ N'oublions pas d'éditer *index.html* pour importer notre style
 </html>
 ~~~
 
-### Un peu d'action (il était temps)
-
-Faisons lui faire quelque chose d'autre que d'afficher notre <s>joli</s> index.
+### Un peu d'action
 
 Créons dans *static/* un fichier *main.js*
 
@@ -153,7 +151,7 @@ C'est ce qui se passe côté serveur, tous les calculs, les fonctions et les tra
 **Pour la suite sortons de *static/* et replaçons-nous à la racine du projet.**
 
 ### Lancer notre site
-Nous aurons besoin d'express, ajoutons le donc simplement à node_modules avec `yarn add express`
+Nous aurons besoin d'express, ajoutons le donc simplement à node_modules avec `yarn add express` (bien sortir du dossier *static*)
 
 A ce stade le projet s'organise comme suit
 
@@ -163,12 +161,13 @@ A ce stade le projet s'organise comme suit
     ├── package.json
     ├── static
     │ ├── index.html
+    │ ├── main.js
     │ ├── package.json
     │ ├── style.css
     │ └── yarn.lock
     └── yarn.lock
 
-Avec express dans le package.json de la racine et purecss dans celui de static.
+Avec express dans le package.json de la racine et pure css dans celui de static.
 
 
 ### Des routes
@@ -208,9 +207,9 @@ app.listen(port, function () {
 });
 ~~~
 
-Dès à présent lancer le serveur permettra d'aller voir notre site !
+Dès à présent lancer le serveur avec `node app.js` permet d'aller voir notre site !
 
-Il permet d'afficher un mot en l'écrivant ! Impressionnant n'est-ce pas ? Non !? Tssk jamais contents ces développeurs...
+Il est capable d'afficher un mot écrit par l'utilisateur ! Impressionnant n'est-ce pas ? Non !? Tssk jamais contents ces développeurs...
 
 ## Et une API pour la route
 
@@ -218,10 +217,10 @@ Créons une route commençant par `/api` qui permettra à des applications tierc
 
 L'usage veut également que les différentes versions des api soient conservées pour pouvoir changer nos appels sans perturber les sites utilisant ceux-ci. On va donc avoir les routes suivantes : 
 
-  - `/api/current/` qui sera la route pour la version actuelle de l'api 
+  - `/api/current/` qui sera la route pour la version actuelle de l'API 
   - `/api/v1/` qui sera un lien vers la version courante. 
   
-Ceci nous permettra de maintenir la version `v1` de l'api lorsque la version courante changera en `v1.2` ou `v2`.
+Ceci nous permettra de maintenir la version `v1` de l'API lorsque la version courante changera en `v1.2` ou `v2`.
 
 On aura aussi pour l'instant qu'une unique méthode : `affichage/<mot>` qui prend une chaîne de caractère en *"paramètre"*.
 
@@ -231,7 +230,6 @@ Notre site correspond maintenant à ça :
 
 ~~~
 ├── app.js
-├── index.js
 ├── package.json
 ├── routes
 │ ├── index.js
@@ -268,7 +266,7 @@ app.listen(8000, function () {
 });
 ~~~
 
-Le fichier *index.js* contient le code suivant :
+Le fichier *routes/index.js* contient le code suivant :
 
 ~~~ js
 var express = require('express');
@@ -282,7 +280,7 @@ router.use('/v1', require('./v1'))
 
 Son boulot est de créer (et de rendre) un router qui contient deux routes `/current` et `/v1` qui seront identiques. 
 
-Le fichier *index.js* contient la route proprement dite de notre api. Pour l'instant c'est un fake. On fera le lien avec notre code js plus tard :
+Le fichier *routes/v1/index.js* contient la route proprement dite de notre api. Pour l'instant c'est un fake. On fera le lien avec notre code js plus tard :
 
 ~~~ js
 var express = require('express');
@@ -307,11 +305,16 @@ Pour savoir comment appeler cette route depuis notre server, regardons comment e
   2. cela continue dans *./routes/index.js* avec `router.use('/current', require('./v1'))` et `router.use('/v1', require('./v1'))`
   3. on arrive enfin au *./routes/v1/index.js* qui crée la route : `router.get('/affichage/:mot', ...`
 
-En combinant tout ça on arrive à une route : `http://localhost:3000/api/current/numerologie/un truc` qui est la même que `http://localhost:3000/api/v1/affichage/un truc`. On peut bien sur remplacer "un truc" par ce qu'on veut du moment que ce n'est pas vide.
+En combinant tout ça on arrive à une route : `http://localhost:3000/api/current/affichage/un truc` qui est la même que `http://localhost:3000/api/v1/affichage/un truc`. On peut bien sur remplacer "un truc" par ce qu'on veut du moment que ce n'est pas vide.
 
 
-## on l'envoie sur ovh ?
+## Pour déplacer notre projet
 
- 
-    créer main.js dans static ?
+Pour lancer le projet depuis une autre machine ou l'héberger sur un serveur il suffit de :
+
+- Copier le répertoire à l'endroit voulu
+
+- Lancer `yarn install` à la racine
+
+- Lancer `yarn install` dans static
     
