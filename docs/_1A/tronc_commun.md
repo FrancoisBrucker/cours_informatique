@@ -115,11 +115,11 @@ Le but de cette séance est d'installer un environnement de développement pytho
 
 [sujet du TD]({{ "https://wiki.centrale-marseille.fr/informatique/tc_info:2020_td_comp" }})
 
-### Données
+### Données texte
 
 > Par Emmanuel Daucé
 
-TBD
+[sujet du TD]({% link cours/tronc_commun/2020_td_texte.md %})
 
 ### parcours de graphes
 
