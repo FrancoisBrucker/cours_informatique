@@ -123,11 +123,11 @@ Le but de cette séance est d'installer un environnement de développement pytho
 
 ### parcours de graphes
 
-TBD
+[sujet du TD]({% link cours/tronc_commun/parcours_graphes.md %})
 
 ### Arbres de recherche 1/2 et 2/2
 
-TBD
+Le sujet est disponible sur le [wiki de l'informatique](https://wiki.centrale-marseille.fr/informatique/tc_info:2020_td-tp_abr).
 
 ### Algorithmes de textes
 
@@ -140,12 +140,6 @@ TBD
 ### flots 1/2 et 2/2
 
 TBD
-
-#### Installation d'un IDE python
-
-
-#### algorithmes gloutons
-
 
 
 
