@@ -129,9 +129,6 @@ Le but de cette séance est d'installer un environnement de développement pytho
 
 Le sujet est disponible sur le [wiki de l'informatique](https://wiki.centrale-marseille.fr/informatique/tc_info:2020_td-tp_abr).
 
-### Algorithmes de textes
-
-TBD
 
 ### Révision programmation et algo révisions
 
