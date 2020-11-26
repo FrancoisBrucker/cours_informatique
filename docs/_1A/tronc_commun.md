@@ -127,8 +127,9 @@ Le but de cette séance est d'installer un environnement de développement pytho
 
 ### Arbres de recherche 1/2 et 2/2
 
-Le sujet est disponible sur le [wiki de l'informatique](https://wiki.centrale-marseille.fr/informatique/tc_info:2020_td-tp_abr).
+> Par Pascal Préa
 
+Le sujet est disponible sur le [wiki de l'informatique](https://wiki.centrale-marseille.fr/informatique/tc_info:2020_td-tp_abr).
 
 ### Révision programmation et algo révisions
 
@@ -136,7 +137,9 @@ TBD
 
 ### flots 1/2 et 2/2
 
-TBD
+> Par Pascal Préa
+
+[sujet du TD]({{ "https://wiki.centrale-marseille.fr/informatique/tc_info:2020_td-tp_flo" }})
 
 
 
