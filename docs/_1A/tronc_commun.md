@@ -142,6 +142,5 @@ TBD
 
 [sujet du TD]({{ "https://wiki.centrale-marseille.fr/informatique/tc_info:2020_td-tp_flo" }})
 
-[hello world]({% link cours/tronc_commun/hello.md %})
 
   
