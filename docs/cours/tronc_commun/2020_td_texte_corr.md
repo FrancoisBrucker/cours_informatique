@@ -61,7 +61,6 @@ On regardera une version simplifiée de l\'algo de Knuth-Morris-Pratt :
 -   Si on ne trouve rien, le décalage vaut `m`
 
 A illustrer au tableau :
-![](/tc_info/corr/reherche-chine.png){width="400"}
 
 Si vous en avez le courage, voici le code :
 
@@ -99,7 +98,6 @@ Si vous en avez le courage, voici le code :
 ### exo 2
 
 Algorithme à expliquer avec un petit automate fini à deux états
-![](/tc_info/corr/automate-s5-1.png){width="400"}
 
 ``` {.python}
 def compte_mots(d):
@@ -121,7 +119,6 @@ montrer un automate qui reconnaît les nombres entiers
 -   il n'y a pas de 0 au début de la partie entière
 -   il n'y a pas de caractère entre, seulement des chiffres au milieu.
 
-![](/tc_info/automate-s5-2-alt.png){width="400"}
 
 }
 
@@ -180,7 +177,6 @@ programmation dynamique.
 -   la distance au niveau de la case (m,n) vaut 0
 -   la distance d\'édition est donnée par la valeur dans la case (0,0)
 
-![](/tc_info/corr/td3-alignement.png){width="400"}
 
 #### 3. Algorithme
 
@@ -210,4 +206,3 @@ Récursif!!
 
 #### 4.Alignement glouton
 
-![](/tc_info/corr/alignement_glouton.png){width="600"}
