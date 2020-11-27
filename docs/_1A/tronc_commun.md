@@ -119,7 +119,8 @@ Le but de cette séance est d'installer un environnement de développement pytho
 
 > Par Emmanuel Daucé
 
-[sujet du TD]({% link cours/tronc_commun/2020_td_texte.md %})
+  - [sujet du TD]({% link cours/tronc_commun/2020_td_texte.md %})
+  - [corrigé]({% link cours/tronc_commun/2020_td_texte_corr.md %})
 
 ### parcours de graphes
 
