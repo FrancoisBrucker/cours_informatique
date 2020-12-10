@@ -66,6 +66,14 @@ Nous allons ici uniquement parler de la partie algorithmie du tronc commun. Pour
         - **ST** : *flots 1/2* [**Pour tous**, Autonomie]
       - 15h45 : 
         - **SM** : *flots 2/2* [**Pour tous**, Autonomie]
+  - 8/12/2020 13h30 : **C,M** : *fichiers et indexation* [**Pour tous**, Classe virtuelle]
+  - 11/12/2020 
+      - 13h30 :
+        - **ST** : *fichiers et indexation* [**Groupes 1 à 5**, Présentiel]
+        - **SM** : expressions régulières [**Groupes 6 à 10**, Autonomie]
+      - 15h45 :
+        - **SM** : *fichiers et indexation* [**Groupes 1 à 5**, Présentiel]
+        - **SM** : dictionnaires, H-codes [**Groupes 6 à 10**, Autonomie]
   
         
 ## Séances
