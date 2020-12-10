@@ -150,5 +150,15 @@ TBD
 
 [sujet du TD]({{ "https://wiki.centrale-marseille.fr/informatique/tc_info:2020_td-tp_flo" }})
 
+### Fichiers et indexation 
+
+> Par Emmanuel Daucé
+
+Les sujets sont disponibles sur le [wiki de l'informatique]
+  - [sujet de TD](https://wiki.centrale-marseille.fr/informatique/tc_info:td2)
+  - [corrigé](https://wiki.centrale-marseille.fr/informatique/tc_info:corr:td2)
+  - [sujet de TP](https://wiki.centrale-marseille.fr/informatique/tc_info:tp2)
+  - [corrigé](https://wiki.centrale-marseille.fr/informatique/tc_info:corr:tp2)
+
 
   
