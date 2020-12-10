@@ -129,6 +129,7 @@ Le but de cette séance est d'installer un environnement de développement pytho
 
   - [sujet du TD]({% link cours/tronc_commun/2020_td_texte.md %})
   - [corrigé]({% link cours/tronc_commun/2020_td_texte_corr.md %})
+  - [sujet de TP](https://wiki.centrale-marseille.fr/informatique/tc_info:tp3)
 
 ### parcours de graphes
 
@@ -154,11 +155,16 @@ TBD
 
 > Par Emmanuel Daucé
 
-Les sujets sont disponibles sur le [wiki de l'informatique]
+Les sujets sont disponibles sur le wiki de l'informatique
   - [sujet de TD](https://wiki.centrale-marseille.fr/informatique/tc_info:td2)
   - [corrigé](https://wiki.centrale-marseille.fr/informatique/tc_info:corr:td2)
   - [sujet de TP](https://wiki.centrale-marseille.fr/informatique/tc_info:tp2)
   - [corrigé](https://wiki.centrale-marseille.fr/informatique/tc_info:corr:tp2)
+  
+### Dictionnaires, H-codes
+
+> Par Emmanuel Daucé et Pascal Préa
+  - [séance TA](https://wiki.centrale-marseille.fr/informatique/tc_info:private_s5-tpa2)
 
 
   
