@@ -70,18 +70,26 @@ Nous allons ici uniquement parler de la partie algorithmie du tronc commun. Pour
   - 11/12/2020 
       - 13h30 :
         - **ST** : *fichiers et indexation* [**Groupes 1 à 5**, Présentiel]
-        - **SM** : expressions régulières [**Groupes 6 à 10**, Autonomie]
+        - **SM** : *expressions régulières* [**Groupes 6 à 10**, Autonomie]
       - 15h45 :
         - **SM** : *fichiers et indexation* [**Groupes 1 à 5**, Présentiel]
-        - **SM** : dictionnaires, H-codes [**Groupes 6 à 10**, Autonomie]
+        - **SM** : *dictionnaires, H-codes* [**Groupes 6 à 10**, Autonomie]
   - 15/12/2020 13h30 : **C,M** : *langage SQL* [**Pour tous**, Classe virtuelle]
   - 18/12/2020
       - 13h30 
         - **ST** : *fichiers et indexation* [**Groupes 6 à 10**, Présentiel]
-        - **SM** : expressions régulières [**Groupes 1 à 5**, Autonomie]
+        - **SM** : *expressions régulières* [**Groupes 1 à 5**, Autonomie]
       - 15h45 :
         - **SM** : *fichiers et indexation* [**Groupes 6 à 10**, Présentiel]
-        - **SM** : dictionnaires, H-codes [**Groupes 1 à 5**, Autonomie]
+        - **SM** : *dictionnaires, H-codes* [**Groupes 1 à 5**, Autonomie]
+  - 05/01/2020 13h30 : **C,M** : *Modélisation* [**Pour tous**, Classe virtuelle]
+  - 08/01/2020
+      - 13h30 : 
+        - **ST** : *récursivité* [**Groupes 1 à 5**, Autonomie]
+        - **SM** : *Tic-tac-toe* [**Groupes 6 à 10**, Autonomie]
+      - 15h45 :
+        - **SM** : *récursivité* [**Groupes 1 à 5**, Autonomie]
+        - **ST** : *révisions* [**Groupes 6 à 10**, Autonomie]
         
 ## Séances
 
