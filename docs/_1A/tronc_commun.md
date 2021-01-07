@@ -26,7 +26,7 @@ Chaque partie est organisée en 3 types d'enseignements :
 Nous allons ici uniquement parler de la partie algorithmie du tronc commun. Pour toute question n'hésitez pas à nous écrire soit par mail soit sur le discord ([coordonnées]({{ "/about/" | relative_url }})).
 
 
-## Ordonancement
+## Ordonnancement
 
 
   - 29/09/2020 13h30 : **C,M** : *Graphes* [**Pour tous**, Classe virtuelle]
@@ -74,7 +74,14 @@ Nous allons ici uniquement parler de la partie algorithmie du tronc commun. Pour
       - 15h45 :
         - **SM** : *fichiers et indexation* [**Groupes 1 à 5**, Présentiel]
         - **SM** : dictionnaires, H-codes [**Groupes 6 à 10**, Autonomie]
-  
+  - 15/12/2020 13h30 : **C,M** : *langage SQL* [**Pour tous**, Classe virtuelle]
+  - 18/12/2020
+      - 13h30 
+        - **ST** : *fichiers et indexation* [**Groupes 6 à 10**, Présentiel]
+        - **SM** : expressions régulières [**Groupes 1 à 5**, Autonomie]
+      - 15h45 :
+        - **SM** : *fichiers et indexation* [**Groupes 6 à 10**, Présentiel]
+        - **SM** : dictionnaires, H-codes [**Groupes 1 à 5**, Autonomie]
         
 ## Séances
 
