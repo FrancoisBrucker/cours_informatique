@@ -100,6 +100,22 @@
 
 <p>Vous devriez voir le texte <code class="language-plaintext highlighter-rouge">Hello World</code> en sortie de votre cellule.</p>
 
+<h3 id="anaconda-avec-un-terminal">anaconda avec un terminal</h3>
+
+<p>Dans l’<em>anaconda navigator</em>, cliquez sur <em>Environnements</em> dans le menu de gauche (c’est le deuxième choix, après <em>Home</em> et avant <em>Learning</em>).</p>
+
+<p>Vous devez avoir un unique environnement : <em>base (root)</em>. Un environnement est un interpréteur python et tous ses packages installés. On aura parfois envie de créer ses propres environnements pour installer soit une version spécifique de python, soit n’installer que certains packages.</p>
+
+<p>Pour l’instant utilisons l’environnement de base. En cliquant sur le triangle vert à droite de l’environnement <em>base (root)</em>, vous pouvez cliquer sur <em>open terminal</em>, ce qui ouvrira un terminal. Une fois le terminal ouvert, remarquez qu’à gauche de l’invit de commande vous avez <code class="language-plaintext highlighter-rouge">(base)</code> d’acrit. Ceci montre quel environnement python vous avez.</p>
+
+<p>Vos pouvez <a href="https://docs.anaconda.com/anaconda/user-guide/tasks/integration/python-path/">connaitre l’interpréteur</a> proprement dit (on en aura besoin plus tard) en tapant :</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">which python3</code> pour un mac ou un linux,</li>
+  <li><code class="language-plaintext highlighter-rouge">where python</code> pour un windows,</li>
+</ul>
+
+<p>Le résultat de la commande vous donnera le chemin sur votre disque dur pour trouver l’interpréteur python.</p>
+
 <h2 id="pycharm">pycharm</h2>
 
 <p>Commencez par <a href="https://www.jetbrains.com/fr-fr/pycharm/download">télécharger</a> la version professionnels de <em>pycharm</em>. En temps qu’étudiant vous avez droit à une licence gratuite pendant 1an (renouvelable temps que vous êtes étudiant). Puis installez le logiciel.</p>
@@ -120,19 +136,10 @@
   <li>Dans la partie dédiée à l’interpréteur, vous voyez plusieurs choix. Nous allons utiliser un interpréteur existant (choisissez cette option) en cherchant le python d’anaconda. Pour cela :
     <ul>
       <li>cliquez sur les <em>“…”</em> à droite de la ligne de choix de l’interpréteur,</li>
-      <li>dans la nouvelle fenêtre, choisissez <em>Conda Environnement</em>. Il faut maintenant savoir où vous avez installé anaconda. Si vous avez suivi les étapes précédentes (donc une intstallation pour tous les utilisateurs) il est placé dans le dossier <code class="language-plaintext highlighter-rouge">c:\Anaconda3</code> pour windows et <code class="language-plaintext highlighter-rouge">/opt/anaconda3</code> pour un mac. On a trois choses à faire : trouver l’interpréteur pytho, l’éxécutable anaconda et faire en sorte que pycharm se rappelle de tout ça.</li>
-      <li>interpréteur python. Cliquer sur <em>“…”</em> puis trouvez l’interpréteur :
-        <ul>
-          <li><strong>pour un mac</strong> : /opt/anaconda3/bin/python3</li>
-          <li><strong>pour un windows</strong> : j’en sais encore rien</li>
-        </ul>
-      </li>
-      <li>l’exécutable conda :
-        <ul>
-          <li><strong>pour un mac</strong> : /opt/anaconda3/bin/conda</li>
-          <li><strong>pour un windows</strong> : j’en sais encore rien</li>
-        </ul>
-      </li>
+      <li>dans la nouvelle fenêtre, choisissez <em>Conda Environnement</em>. Il faut maintenant savoir où vous avez installé anaconda. En trouvant où se trouve votre interpréteur (voir <a href="#anaconda-avec-un-terminal">partie précédente</a>) vous trouverez où se trouve anaconda</li>
+      <li>On a trois choses à faire : trouver l’interpréteur python, l’éxécutable anaconda et faire en sorte que pycharm se rappelle de tout ça.</li>
+      <li>interpréteur python. Il suffit de suivre <a href="#anaconda-avec-un-terminal">cette partie</a>. Pour mon mac <code class="language-plaintext highlighter-rouge">which python3</code> me rend : <code class="language-plaintext highlighter-rouge">/opt/anaconda3/bin/python3</code></li>
+      <li>l’exécutable conda : c’est le début du chemin de l’interpréteur, jusqu’à <code class="language-plaintext highlighter-rouge">anaconda3</code>. (pour mon mac, à partir de la ligne précédente, j’en débuit qu’anaconda est dans le dossier : <code class="language-plaintext highlighter-rouge">/opt/anaconda3/</code>)</li>
       <li>cochez la case <em>Make avaliable to all projects</em> pour que vous puissiez retrouver cet environnement à chaque nouveau projet.</li>
       <li>cliquez sur le bouton <em>OK</em></li>
     </ul>
