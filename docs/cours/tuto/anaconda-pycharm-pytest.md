@@ -41,6 +41,23 @@ Lancez l'application *Notebook* puis :
   
   Vous devriez voir le texte `Hello World` en sortie de votre cellule.
   
+### anaconda avec un terminal 
+
+Dans l'*anaconda navigator*, cliquez sur *Environnements* dans le menu de gauche (c'est le deuxième choix, après *Home* et avant *Learning*).
+
+Vous devez avoir un unique environnement : *base (root)*. Un environnement est un interpréteur python et tous ses packages installés. On aura parfois envie de créer ses propres environnements pour installer soit une version spécifique de python, soit n'installer que certains packages.
+
+Pour l'instant utilisons l'environnement de base. En cliquant sur le triangle vert à droite de l'environnement *base (root)*, vous pouvez cliquer sur *open terminal*, ce qui ouvrira un terminal. Une fois le terminal ouvert, remarquez qu'à gauche de l'invit de commande vous avez `(base)` d'acrit. Ceci montre quel environnement python vous avez.
+
+Vos pouvez [connaitre l'interpréteur](https://docs.anaconda.com/anaconda/user-guide/tasks/integration/python-path/) proprement dit (on en aura besoin plus tard) en tapant : 
+* `which python3` pour un mac ou un linux,
+* `where python` pour un windows,
+
+Le résultat de la commande vous donnera le chemin sur votre disque dur pour trouver l'interpréteur python.
+
+
+
+
 
 ## pycharm
 
@@ -57,16 +74,13 @@ Lorsque vous lancez *pycharm* une fenêtre de choix apparaît.
      - cliquez sur le triangle pour étendre la partie consacrée à l'interpréteur.
   3. Dans la partie dédiée à l'interpréteur, vous voyez plusieurs choix. Nous allons utiliser un interpréteur existant (choisissez cette option) en cherchant le python d'anaconda. Pour cela :
      - cliquez sur les *"..."* à droite de la ligne de choix de l'interpréteur,
-     - dans la nouvelle fenêtre, choisissez *Conda Environnement*. Il faut maintenant savoir où vous avez installé anaconda. Si vous avez suivi les étapes précédentes (donc une intstallation pour tous les utilisateurs) il est placé dans le dossier `c:\Anaconda3` pour windows et `/opt/anaconda3` pour un mac. On a trois choses à faire : trouver l'interpréteur pytho, l'éxécutable anaconda et faire en sorte que pycharm se rappelle de tout ça.
-     - interpréteur python. Cliquer sur *"..."* puis trouvez l'interpréteur : 
-       - **pour un mac** : /opt/anaconda3/bin/python3
-       - **pour un windows** : j'en sais encore rien
-     - l'exécutable conda : 
-       - **pour un mac** : /opt/anaconda3/bin/conda
-       - **pour un windows** : j'en sais encore rien
+     - dans la nouvelle fenêtre, choisissez *Conda Environnement*. Il faut maintenant savoir où vous avez installé anaconda. En trouvant où se trouve votre interpréteur (voir [partie précédente](#anaconda-avec-un-terminal)) vous trouverez où se trouve anaconda
+     -  On a trois choses à faire : trouver l'interpréteur python, l'éxécutable anaconda et faire en sorte que pycharm se rappelle de tout ça.
+     - interpréteur python. Il suffit de suivre [cette partie](#anaconda-avec-un-terminal). Pour mon mac `which python3` me rend : `/opt/anaconda3/bin/python3`
+     - l'exécutable conda : c'est le début du chemin de l'interpréteur, jusqu'à `anaconda3`. (pour mon mac, à partir de la ligne précédente, j'en débuit qu'anaconda est dans le dossier : `/opt/anaconda3/`)
      - cochez la case *Make avaliable to all projects* pour que vous puissiez retrouver cet environnement à chaque nouveau projet.
      - cliquez sur le bouton *OK*
-  4. cliquez sur le bouton *Create* pour créer le projet avec notre nouvel environnement conda.
+  1. cliquez sur le bouton *Create* pour créer le projet avec notre nouvel environnement conda.
       
 Une nouvelle fenêtre apparaît avec votre projet. 
 
