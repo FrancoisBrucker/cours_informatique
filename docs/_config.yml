@@ -47,6 +47,8 @@ collections:
     output: true
   3A:
     output: true
+  autre:
+    output: true
 
 # Exclude from processing.
 # The following items will not be processed, by default.

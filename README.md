@@ -30,8 +30,8 @@ Comme on le voit, il y a des [prés-requis](https://jekyllrb.com/docs/installati
 
 Commencez donc par installer ruby.
 
-> **Nota Bene :** Sous mac avec Brew, il faudra rajouter le chemin de ruby de brew dans le
-> PATH pour ne plus utiliser le ruby de mac.
+>**Nota Bene** : Sous mac avec Brew, il faudra rajouter le chemin de ruby de brew dans le
+>PATH pour ne plus utiliser le ruby de mac.
 
 #### ruby et ses gems
 
@@ -52,7 +52,7 @@ jekyll (4.1.1)
 ~~~
 
 
-> **Nota Bene : ** Sous mac avec [[https://brew.sh/][brew]], les *gems* ne sont pas
+> **Nota Bene : ** Sous mac avec [https://brew.sh/](brew), les *gems* ne sont pas
 > automatiquement mis dans un endroit exécutable. Il faut rajouter le chemin dans le path. 
 > Chez moi, ça donne (en utilisant le chemin de la gem liée à Jekyll) à la fin de mon `.zshrc` (ou `.bashrc` si vous êtes avec bash ) : `export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/2.7.0/bin:$PATH"`
 
@@ -83,7 +83,7 @@ On peut maintenant créer un site jekyll vide qui va contenir tous les fichiers 
 bundle exec jekyll new docs
 ~~~
 
-La commande précédante a créé un template de site dans le dossier `docs`. Ce dossier va contenir plein de fichiers. Chez moi la commande `tree docs` donne : 
+La commande précédente a créé un template de site dans le dossier `docs`. Ce dossier va contenir plein de fichiers. Chez moi la commande `tree docs` donne : 
 
 ~~~ shell
 docs
@@ -117,6 +117,19 @@ docs
 
 ### voir et/ou compiler son site
 
+#### installer les packages si nécessaire
+
+Si c'est la première fois que vous téléchargez le site depuis github, il vous faudra, après avoir installé `bundle`, télécharger les différents plugins nécessaires pour faire fonctionner le tout.
+
+La commande `bundle install` va télécharger les différentes gem nécessaires (elles sont listées dans le fichier `Gemfile`).
+
+>**Fun Fact** une bibliothèque ne s'installe pas s'il y a [un espace dans le nom du dossier d'installation](https://github.com/tmm1/http_parser.rb/issues/47). Il faut déplacer le projet, installer les gems, puis redéplacer le projet si vous voulez que ça fonctionne.
+
+Jeckyll fait parti des prérequis du site, il n'est donc pas nécessaire de l'avoir préalablement installé.
+
+
+#### voir le site
+
 Si l'on veut juste voir son et qu'il se mette à jour à chaque modification, on utilise le mode *preview* de jekyll qui crée un serveur web temporaire qui compile à la volée vos fichiers et les montre en local sur le port 4000 par défaut (http://127.0.0.1:4000) :
 
 ~~~ shell
@@ -149,6 +162,22 @@ Le projet contient deux dossiers :
 
 ### site
  
-Le site (dans le dossier `docs`) contient 3 collections : *_1A*, *_2A* et *_3A* dont les fichiers sont automatiquement ajoutés au site. Ces collections correspondent aux déroulé du cours et des UEes, et inclut les *vrais* cours qui sont eux dans le dossier *cours*. 
+Le site (dans le dossier `docs`) contient 4 collections : *_1A*, *_2A*, *_3A* et *_autre* dont les fichiers sont automatiquement ajoutés au site. Ces collections correspondent aux déroulés du cours et des UEes, et inclut les *vrais* cours qui sont eux dans le dossier *cours*. 
 
 Le dossier *assets* contient les images, et autres pdf nécessaire aux pages générales. Chaque cours contient ses propres assets.
+
+### pages
+
+Les pages snt au format markdown. En revanche, il ne faut pas oublier les entêtes, sinon votre fichier ne sera pas converti.
+
+
+Exemple d'entête : 
+
+```text
+---
+layout: page
+title:  "Tronc commun d'informatique"
+category: cours
+tags: informatique cours 
+---
+```
