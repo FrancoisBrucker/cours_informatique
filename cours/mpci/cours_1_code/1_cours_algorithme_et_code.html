@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Introduction : Algorithme ? Code ? | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Introduction : Algorithme ? Code ?" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)" />
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)" />
+<link rel="canonical" href="/cours_informatique/cours/mpci/cours_1_code/1_cours_algorithme_et_code.html" />
+<meta property="og:url" content="/cours_informatique/cours/mpci/cours_1_code/1_cours_algorithme_et_code.html" />
+<meta property="og:site_name" content="cours d’informatique" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Introduction : Algorithme ? Code ?" />
+<script type="application/ld+json">
+{"description":"Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)","headline":"Introduction : Algorithme ? Code ?","@type":"WebPage","url":"/cours_informatique/cours/mpci/cours_1_code/1_cours_algorithme_et_code.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        processEscapes: true
+      }
+    });
+  </script>
+  
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+</head>
+
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Introduction : Algorithme ? Code ?</h1>
+  </header>
+
+  <div class="post-content">
+    <h2 id="introduction">Introduction</h2>
+
+<p>Définition du ‘Petit Robert’  d’un <em>algorithme</em> :</p>
+
+<blockquote>
+  <p>ensemble des règles opératoires propres à un <em>calcul</em></p>
+</blockquote>
+
+<p>Quest-ce que ça veut dire ?</p>
+
+<ul>
+  <li><strong>algorithme</strong> : ensemble des règles opératoires propres à un <em>calcul</em></li>
+  <li><strong>calcul</strong> : enchaînement des actions nécessaires à l’accomplissement d’une <em>tâche</em></li>
+  <li><strong>tâche</strong> : …</li>
+</ul>
+
+<p>On a utilisé un algorithme pour comprendre ce qu’est un algorithme :</p>
+
+<ul>
+  <li><em>Nom</em> : définition_petit_robert
+    <ul>
+      <li><em>paramètres</em> : un <em>mot_à_définir</em></li>
+      <li><em>sortie</em> : aucune</li>
+      <li><em>description</em> : comprendre la définition d’un mot dans le ‘Petit Robert’</li>
+    </ul>
+  </li>
+  <li><em>corps de l’algorithme</em> :
+    <ol>
+      <li>étant donné la définition nommée <em>définition</em> de <em>mot_à_définir</em> dans le ‘Petit Robert’</li>
+      <li>afficher <em>définition</em> à l’écran.</li>
+      <li>pour chaque <em>mot</em> non compris dans <em>définition_mot</em> :
+        <ol>
+          <li><em>définition_petit_robert(mot)</em></li>
+        </ol>
+      </li>
+    </ol>
+  </li>
+</ul>
+
+<p>Nota Bene :</p>
+
+<ul>
+  <li>afficher à l’écran n’est <strong>PAS</strong> un retour de fonction/méthode/algorithme.</li>
+  <li>différence entre nom d’algorithme et exécution de fonction/méthode/algorithme avec des parenthèses</li>
+  <li><strong>des</strong> paramètres en entrée mais <strong>une</strong> sortie (qui peut être une structure composée comme une liste ou un dictionnaire)</li>
+</ul>
+
+<p>Donald Knuth (1938-) liste, comme prérequis d’un algorithme, <a href="https://fr.wikipedia.org/wiki/Algorithme">cinq propriétés</a> :</p>
+
+<ul>
+  <li>finitude : <em>« Un algorithme doit toujours se terminer après un nombre fini d’étapes. »</em></li>
+  <li>définition précise : <em>« Chaque étape d’un algorithme doit être définie précisément, les actions à transposer doivent être spécifiées rigoureusement et sans ambiguïté pour chaque cas. »</em></li>
+  <li>entrées : <em>« […] des quantités qui lui sont données avant qu’un algorithme ne commence. Ces entrées sont prises dans un ensemble d’objets spécifié. »</em></li>
+  <li>sortie : <em>« […] des quantités ayant une relation spécifiée avec les entrées. »</em></li>
+  <li>rendement : <em>« […] toutes les opérations que l’algorithme doit accomplir doivent être suffisamment basiques pour pouvoir être en principe réalisées dans une durée finie par un homme utilisant un papier et un crayon. »</em></li>
+</ul>
+
+<p>On voit en creux que des notions de <strong>vérification</strong> (preuve que l’algorithme fait bien ce qu’on pense qu’il fait) et de <strong>complexité</strong> (nombre d’opérations nécessaire à son fonctionnement) apparaissent.</p>
+
+<blockquote>
+  <p><strong>algorithme != code</strong> (recopiez le 100 fois)</p>
+</blockquote>
+
+<p>Pour que l’algorithme soit implémentable pour de vrai, il est nécessaire que sa description soit facilement transposable d’une langue à un langage de programmation.</p>
+
+<p>Le code va dépendre du langage, pour nous le python. Cela permet de voir si notre algorithme marche “en vrai”. On utilisera les même principes, mais de façon différente. Ce sont deux face d’une même pièce. On ne peut pas faire l’un sans l’autre.</p>
+
+<h2 id="algorithme">algorithme</h2>
+
+<p>Pour nos algorithmes on voudra :</p>
+
+<ul>
+  <li>qu’ils soient lisibles,</li>
+  <li>qu’ils soient justes,</li>
+  <li>en connaître les performances.</li>
+</ul>
+
+<h3 id="lisible">lisible</h3>
+
+<h4 id="pseudo-code">pseudo-code</h4>
+
+<p>Le but d’un algorithme papier est d’être compris. On utilisera pour l’écrire une série de règles compréhensibles par tout le monde : le pseudo-code. Ce n’est ni une langue ni un langage.</p>
+
+<ul>
+  <li>tests et choix :
+    <ul>
+      <li>plus petit que, plus grand que, égal à, etc</li>
+      <li>si … alors … sinon</li>
+      <li>si … alors si … alors … sinon</li>
+    </ul>
+  </li>
+  <li>affectations :
+    <ul>
+      <li>une seule opération modifiant les variables</li>
+    </ul>
+  </li>
+  <li>répétition :
+    <ul>
+      <li>faire … tant que …,</li>
+      <li>tant que … faire …,</li>
+      <li>pour tout … faire …,</li>
+      <li>etc</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Le plus souvent, on utilisera un mix de python et de français.</p>
+
+<h4 id="attentions-aux-excès--trop-détaillé">Attentions aux excès : trop détaillé</h4>
+
+<p>il est plus clair d’écrire ça</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tant que x &gt; 0:
+    x = x - 1
+</code></pre></div></div>
+
+<p>que :</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A: 
+
+if x &lt;= 0 
+goto B
+endif
+
+x=x-1
+goto A
+
+B:
+</code></pre></div></div>
+
+<h4 id="attentions-aux-excès--trop-approximatif">Attentions aux excès : trop approximatif</h4>
+
+<p>éviter le syndrome : “tire la chevillette et la bobinette cherra”</p>
+
+<p>Les opérateurs *complexes** sont des fonctions (d’autres algorithmes) qui doivent être décrits s’il ne sont pas immédiatement compréhensibles.</p>
+
+<h4 id="structures-et-objets-utilisées">Structures et objets utilisées</h4>
+
+<p>Lorsque l’on utilise des méthodes d’objets (comme une <code class="language-plaintext highlighter-rouge">ma_liste.index("?")</code>, <code class="language-plaintext highlighter-rouge">x in ma_chaine_de_caractères</code>) ou des structures compliquées (télécharger un fichier d’internet) on doit en connaître le coût : la complexité, les cas d’usage (être connecté), etc</p>
+
+<h3 id="preuve">preuve</h3>
+
+<p>On <strong>démontrera</strong> le fonctionnement de l’algorithme en utilisant des preuves mathématiques.</p>
+
+<h3 id="performances">performances</h3>
+
+<p>On calculera la complexité de l’algorithme :</p>
+<ul>
+  <li>nombre d’opérations</li>
+  <li>place en mémoire</li>
+</ul>
+
+<p>Ces complexités dépendent des paramètres de l’algorithme et, parfois de circonstances extérieures comme l’état du réseau par exemple.</p>
+
+<h2 id="code">code</h2>
+
+<p>Le code est le passage d’un algorithme <em>papier</em> à un programme informatique ou la modification d’un code existant. La seconde partie étant celle que vous ferez le plus souvent : On passe son temps à modifier du code plutôt que d’implémenter des algorithme (c’est ce que l’on appelle le refactoring).</p>
+
+<p>Il en découle que <strong>Vous allez passer plus de temps à lire du code qu’à en écrire.</strong></p>
+
+<p>Comme il faut que : <em>ce qui se fait souvent doit se faire rapidement</em>, on utilisera une série de règles pour lire aisément son code et se faire comprendre aisément de ses partenaires.
+On ne doit pas passer 5min à chaque lecture pour comprendre ce que fait l’algorithme à son organisation ou se questionner s’il fonctionne, il faut pouvoir aller rapidement là où l’on veut modifier son code et comprendre aisément comment le modifier.</p>
+
+<p>Ce principe est appelé le  <a href="https://fr.wikipedia.org/wiki/Principe_KISS">KISS</a>. Il en découle trois pratiques :</p>
+
+<ul>
+  <li>noms explicites et découpage fonctionnel</li>
+  <li>lisibilité: coding style</li>
+  <li>tests</li>
+</ul>
+
+<h4 id="noms-explicites-et-découpage-fonctionnel">noms explicites et découpage fonctionnel</h4>
+
+<ul>
+  <li>des noms de variables <strong>explicites</strong></li>
+  <li>on préfèrera des <strong>petites fonctions/méthodes</strong> avec noms explicites à de nombreuses lignes de code</li>
+</ul>
+
+<p>On ne mettra <strong>PAS</strong> de commentaires partout !</p>
+
+<ul>
+  <li>souvent on modifie le code et pas le commentaire, au bout d’un moment le commentaire n’est donc plus en relation avec le code : au lieu d’aider à comprendre, il confuse : <strong>un commentaire est donc tôt ou tard un mensonge</strong></li>
+  <li>s’il y a plein de commentaire, on ne les lira plus. Un commentaire se doit d’être rare. S’il est là c’est que l’on a pas pu faire autrement, vous n’en aure pas besoin den 99% des cas…</li>
+</ul>
+
+<p>Une structuration adaptée et des bons noms permettent de se <a href="https://www.developpez.com/actu/150066/Programmation-quand-faut-il-commenter-son-code-Google-s-invite-dans-le-debat-et-montre-que-les-commentaires-peuvent-tres-souvent-etre-evites/">passer de commentaires</a></p>
+
+<blockquote>
+  <p><strong>Attention</strong> : commentaire != documentation (recopiez le 10 000 fois)</p>
+</blockquote>
+
+<ul>
+  <li>Si votre code est déstiné à être utilisé uniquement par vous ou votre équipe, on n’a pas besoin de le documenter. Son organisation et son écriture doit se suffire à lui-même.</li>
+  <li>si votre code va être utilisé par des inconnus (lorsque vous créez une API par exemple), les fonctions publiques doivent être documentées. Un utilisateur doit pouvoir utiliser votre code sans effort.</li>
+</ul>
+
+<h4 id="lisibilité">lisibilité</h4>
+
+<p>Un code est fait pour être relu et amélioré. On doit donc privilégier la lecture à son écriture. Pour que votre équipe ou vous puissiez le relire plus tard sans faire d’effort de compréhension.</p>
+
+<blockquote>
+  <p><strong>Ecrire du code n’est pas un concours d’érudition.</strong></p>
+</blockquote>
+
+<ul>
+  <li>écriture claire du code : si on a le choix entre écrire du code utilisant des subtilités mais difficile à comprendre ou du code plus basique mais lisible on choisira <strong>TOUJOURS</strong> le code lisible.</li>
+  <li>coding style : style commun à toute l’équipe de développement. Par défaut on utilise le standard du langage. En python, c’est la  <a href="https://www.python.org/dev/peps/pep-0008/">PEP8</a> : http://sametmax.com/le-pep8-en-resume/</li>
+</ul>
+
+<h4 id="tests">tests</h4>
+
+<p>Pour s’assurer que notre code fait bien ce qu’il est sensé faire, on effectuera des <strong>tests</strong>. C’est le pendant code de la preuve d’un algorithme.</p>
+
+<p>Comme on passe son temps à modifier son code, il est nécessaire de conserver ses tests pour pouvoir les exéctuer très souvent et vérifier que son code continue de fonctionner.</p>
+
+<p>Lorsque l’on ajoute des fonctionnalités au code ou que l’on corrige un bug, on écrit un test qui vérifie la fonctionnalité ou qui montre que le bug n’existe pas/plus. Ainsi, puisque les tests sont conservées, ce bug ne pourra plus jamais réapparaître et cette fonctionnalité ne pourra plus disparaître.</p>
+
+<p><strong>La fonctionnalités est plus importante que le code</strong> : Le code va changer, les fonctionnalités doivent rester.
+Ce sont de plus des cas d’utilisation de vos programmes qui montrent qu’il fonctionne et comment il fonctionne.</p>
+
+<h2 id="structure-dun-programme">structure d’un programme</h2>
+
+<p>Un programme est composé de trois entités :</p>
+<ul>
+  <li>le <strong>programme principal</strong> (aussi appelé <strong>main</strong>) qui est ce qui sera exécuté</li>
+  <li>le <strong>code</strong> qui regroupe l’ensemble des fonctions utilisée par le programme principal</li>
+  <li>les <strong>tests</strong> qui <em>certifient</em> que le code fonctionne.</li>
+</ul>
+
+<p>Ces trois entités sont d’égale importance et sont <strong>toujours</strong> codées en même temps.</p>
+
+<p>Exemples :</p>
+
+<ul>
+  <li>pour rajouter une fonctionnalité au programme principal, on ajoute du code qui doit lui-même être testé pour vérifier qu’il fonctionne.</li>
+  <li>pour corrigé un bug du programme principal, on modifie du code et on ajoute des tests qui montrent que le bug n’existe plus.</li>
+</ul>
+
+<blockquote>
+  <p><strong>Attention</strong> : le code et ses tests doivent être fait par la <strong>même personne</strong> et au <strong>même moment</strong> (voir avant).</p>
+</blockquote>
+
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d&#39;informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d&#39;informatique</li><li><a class="u-email" href="mailto:francois.brucker@centrale-marseille.fr">francois.brucker@centrale-marseille.fr</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li><li><a href="https://www.twitter.com/p_____p___"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">p_____p___</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.
+A destination des 1A (tronc commun), des 2A (de l&#39;approfondissement MIE) et des 3A (de l&#39;option digital·e)</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
