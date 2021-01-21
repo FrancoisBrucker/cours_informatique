@@ -2,9 +2,9 @@
 <html lang="en"><head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>Installation W10 pour le développement | cours d’informatique</title>
-<meta name="generator" content="Jekyll v4.1.1" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="Installation W10 pour le développement" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)" />
@@ -12,8 +12,10 @@
 <link rel="canonical" href="/cours_informatique/cours/dfs/installation_W10.html" />
 <meta property="og:url" content="/cours_informatique/cours/dfs/installation_W10.html" />
 <meta property="og:site_name" content="cours d’informatique" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Installation W10 pour le développement" />
 <script type="application/ld+json">
-{"description":"Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)","@type":"WebPage","url":"/cours_informatique/cours/dfs/installation_W10.html","headline":"Installation W10 pour le développement","@context":"https://schema.org"}</script>
+{"description":"Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)","headline":"Installation W10 pour le développement","@type":"WebPage","url":"/cours_informatique/cours/dfs/installation_W10.html","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
   <script type="text/x-mathjax-config">
@@ -146,14 +148,14 @@ Pour connaître votre version : <code class="language-plaintext highlighter-roug
 <ol>
   <li>Cliquez sur ajouter une fonctionnalité et installez le /serveur OpenSSH/</li>
   <li>la configuration initiale du serveur se fait via le powershell. Ouvrez un terminal <code class="language-plaintext highlighter-rouge">powershell</code> en mode administrateur (taper <code class="language-plaintext highlighter-rouge">powershell</code> dans la barre de recherche puis choisissez <em>Exécuter en tant qu’administrateur</em>). On copie colle les lignes de <a href="https://docs.microsoft.com/fr-fr/windows-server/administration/openssh/openssh_install_firstuse#initial-configuration-of-ssh-server">la doc</a>  qui vont permette au serveur ssh de se lancer à chaque démarrage :
-    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">Start-Service</span><span class="w"> </span><span class="nx">sshd</span><span class="w">
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Start-Service</span><span class="w"> </span><span class="nx">sshd</span><span class="w">
 </span><span class="c"># OPTIONAL but recommended:</span><span class="w">
-</span><span class="nf">Set-Service</span><span class="w"> </span><span class="nt">-Name</span><span class="w"> </span><span class="nx">sshd</span><span class="w"> </span><span class="nt">-StartupType</span><span class="w"> </span><span class="s1">'Automatic'</span><span class="w">
+</span><span class="n">Set-Service</span><span class="w"> </span><span class="nt">-Name</span><span class="w"> </span><span class="nx">sshd</span><span class="w"> </span><span class="nt">-StartupType</span><span class="w"> </span><span class="s1">'Automatic'</span><span class="w">
 </span><span class="c"># Confirm the Firewall rule is configured. It should be created automatically by setup.</span><span class="w">
-</span><span class="nf">Get-NetFirewallRule</span><span class="w"> </span><span class="nt">-Name</span><span class="w"> </span><span class="o">*</span><span class="nx">ssh</span><span class="o">*</span><span class="w">
+</span><span class="n">Get-NetFirewallRule</span><span class="w"> </span><span class="nt">-Name</span><span class="w"> </span><span class="o">*</span><span class="nx">ssh</span><span class="o">*</span><span class="w">
 </span><span class="c"># There should be a firewall rule named "OpenSSH-Server-In-TCP", which should be enabled</span><span class="w">
 </span><span class="c"># If the firewall does not exist, create one</span><span class="w">
-</span><span class="nf">New-NetFirewallRule</span><span class="w"> </span><span class="nt">-Name</span><span class="w"> </span><span class="nx">sshd</span><span class="w"> </span><span class="nt">-DisplayName</span><span class="w"> </span><span class="s1">'OpenSSH Server (sshd)'</span><span class="w"> </span><span class="nt">-Enabled</span><span class="w"> </span><span class="nx">True</span><span class="w"> </span><span class="nt">-Direction</span><span class="w"> </span><span class="nx">Inbound</span><span class="w"> </span><span class="nt">-Protocol</span><span class="w"> </span><span class="nx">TCP</span><span class="w"> </span><span class="nt">-Action</span><span class="w"> </span><span class="nx">Allow</span><span class="w"> </span><span class="nt">-LocalPort</span><span class="w"> </span><span class="nx">22</span><span class="w">
+</span><span class="n">New-NetFirewallRule</span><span class="w"> </span><span class="nt">-Name</span><span class="w"> </span><span class="nx">sshd</span><span class="w"> </span><span class="nt">-DisplayName</span><span class="w"> </span><span class="s1">'OpenSSH Server (sshd)'</span><span class="w"> </span><span class="nt">-Enabled</span><span class="w"> </span><span class="nx">True</span><span class="w"> </span><span class="nt">-Direction</span><span class="w"> </span><span class="nx">Inbound</span><span class="w"> </span><span class="nt">-Protocol</span><span class="w"> </span><span class="nx">TCP</span><span class="w"> </span><span class="nt">-Action</span><span class="w"> </span><span class="nx">Allow</span><span class="w"> </span><span class="nt">-LocalPort</span><span class="w"> </span><span class="nx">22</span><span class="w">
 </span></code></pre></div>    </div>
   </li>
 </ol>
