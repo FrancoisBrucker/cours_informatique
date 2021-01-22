@@ -96,9 +96,9 @@
 
 <p><em>Note Bene</em> : Un terminal est disponible dans la version pro de pycharm : <a href="https://www.jetbrains.com/help/pycharm/working-with-system-console.html">https://www.jetbrains.com/help/pycharm/working-with-system-console.html</a></p>
 
-<h3 id="visual-code-studio-vsc">visual code studio (vsc)</h3>
+<h3 id="visual-code-studio-vscode">visual code studio (vscode)</h3>
 
-<p>Nous allons juste nous concentrer sur la partie <a href="https://code.visualstudio.com/docs/python/python-tutorial">python de vsc</a> en créant un projet de test et en utilisant tous les outils mis à notre disposition pour faire du bon code.</p>
+<p>Nous allons juste nous concentrer sur la partie <a href="https://code.visualstudio.com/docs/python/python-tutorial">python de vscode</a> en créant un projet de test et en utilisant tous les outils mis à notre disposition pour faire du bon code.</p>
 
 <h2 id="un-projet-test">un projet test</h2>
 
@@ -113,7 +113,7 @@
 <ol>
   <li>On choisit d’ouvrir un nouveau dossier. Je l’ai appelé <code class="language-plaintext highlighter-rouge">hello</code></li>
   <li>dans le tab de gauche (nommé <em>EXPLORER</em>), on clique sur <em>hello</em> pour ouvrir le tab puis <em>clique droit &gt; new file</em> que l’on nomme <em>main.py</em></li>
-  <li>vsc doit comprendre que c’est du python et vous demande peut-être de :
+  <li>vscode doit comprendre que c’est du python et vous demande peut-être de :
     <ol>
       <li>choisir un interpréteur : prenez le python3 de votre distribution</li>
       <li>choisir un lint : supprimer la fenêtre de warning, on fera ça plus tard.</li>
@@ -246,7 +246,7 @@ Bonjour les gens !
 <p>Mettons en place nos tests.</p>
 
 <ol>
-  <li>dans les préférences (<em>file/code &gt; preferences &gt; settings</em>) tapez <code class="language-plaintext highlighter-rouge">python.testing.pytestEnabled</code>  dans la barre de recherche et cochez la case. Ceci dit à vsc que notre framework de test est pytest (il y en a d’autres possible comme <a href="https://docs.python.org/fr/3.9/library/unittest.html">unittest</a> ou encore <a href="https://nose.readthedocs.io/en/latest/">nosetests</a>, mais on ne va pas les utiliser. Assurez vous cependant qu’un seul framework de test soit utilisé à la fois. Ca devrait être le cas si vous n’avez pas cliqué un peu partout).</li>
+  <li>dans les préférences (<em>file/code &gt; preferences &gt; settings</em>) tapez <code class="language-plaintext highlighter-rouge">python.testing.pytestEnabled</code>  dans la barre de recherche et cochez la case. Ceci dit à vscode que notre framework de test est pytest (il y en a d’autres possible comme <a href="https://docs.python.org/fr/3.9/library/unittest.html">unittest</a> ou encore <a href="https://nose.readthedocs.io/en/latest/">nosetests</a>, mais on ne va pas les utiliser. Assurez vous cependant qu’un seul framework de test soit utilisé à la fois. Ca devrait être le cas si vous n’avez pas cliqué un peu partout).</li>
   <li>on configure les tests de notre projet en tapant la commande (ctrl/cmd+shift+p) : <em>python : Configure tests</em> on choisit <em>pytest</em> puis <em>. (root)</em> qui donne le dossier de départ où aller chercher nos tests</li>
   <li>On lance nos tests avec soit :
     <ul>
