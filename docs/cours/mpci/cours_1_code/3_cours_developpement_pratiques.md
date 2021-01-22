@@ -15,7 +15,7 @@ Le but de ce cours est de dérouler la création et la mise en œuvre d'un proje
 
 ### ouverture du dossier
 
-On crée un projet avec vsc, c'est à dire que l'on ouvre un nouveau dossier que l'on nomme `"pourcentage_binaire"`.
+On crée un projet avec vscode, c'est à dire que l'on ouvre un nouveau dossier que l'on nomme `"pourcentage_binaire"`.
 
 ### créations des fichiers
 
@@ -286,7 +286,7 @@ TOTAL                    30     14    53%
 
 1 ligne de `"pourcentage.py"`  n'est pas lue. C'est le corps de la fonction `non_lue`, c'est à dire `pass`.
 
-Un rapport détaillé du couverage est par défaut écrit and le fichier `.coverage` (vérifiez, il y en a bien un dans votre dossier). POur que ce soit visible dans vsc, on va installer l'extension 
+Un rapport détaillé du couverage est par défaut écrit and le fichier `.coverage` (vérifiez, il y en a bien un dans votre dossier). POur que ce soit visible dans vscode, on va installer l'extension 
 [Coverage Gutters](https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters). 
 
 Pour que cette extension comprenne le fichier, il faut qu'il soit en xml ( : `pytest --cov=.  --cov-report xml:cov.xml` 
