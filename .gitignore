@@ -1,8 +1,11 @@
 .DS_Store
 .idea
 *.log
+.vscode
 tmp/
 
 # emacs stuff
 .dir-locals.el
 
+#python stuff
+__pycache__
