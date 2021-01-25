@@ -160,7 +160,7 @@ Bonjour les gens !
 
 <p>Placez vous ous dans l’onglet correspondant à votre code et mettez en route le linter. POur cela :</p>
 <ol>
-  <li>on le choisit en tapant la commande (crtl/cmd+shift+P) : <em>Python: Select Linter</em> et on choisit <code class="language-plaintext highlighter-rouge">pycodelinter</code></li>
+  <li>on le choisit en tapant la commande (crtl/cmd+shift+P) : <em>Python: Select Linter</em> et on choisit <code class="language-plaintext highlighter-rouge">pycodestyle</code></li>
   <li>on le met en route si ce n’est pas déjà le cas avec la commande : <em>python: Enable Linter</em>.</li>
 </ol>
 
@@ -180,9 +180,9 @@ Bonjour les gens !
 
 <h3 id="séparer-code-et-main">séparer code et main</h3>
 
-<p>on va créer deux fichiers, l’un nommé code qui contiendra notre <em>code.py</em> et l’autre nommé <em>main.py</em> qui sera notre programme principal</p>
+<p>on va créer deux fichiers, l’un nommé <em>“le_code.py”</em> qui contiendra notre code et l’autre nommé <em>“main.py”</em> qui sera notre programme principal</p>
 
-<p><em>code.py</em> :</p>
+<p><em>le_code.py</em> :</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">bonjour</span><span class="p">():</span>
     <span class="k">return</span> <span class="s">"Bonjour les gens !"</span>
@@ -197,7 +197,7 @@ Bonjour les gens !
 
 </code></pre></div></div>
 
-<p>On a importer le nom <code class="language-plaintext highlighter-rouge">bonjour</code> défini dans le fichier <code class="language-plaintext highlighter-rouge">le_code</code> grace à un import. L’autre façon aurait été d’importer juste le fichier code. On aurait alors eu :</p>
+<p>On a importer le nom <code class="language-plaintext highlighter-rouge">bonjour</code> défini dans le fichier <em>“le_code.py”</em> grace à un import. L’autre façon aurait été d’importer juste le fichier code. On aurait alors eu :</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">le_code</span>
 
@@ -205,10 +205,10 @@ Bonjour les gens !
 
 </code></pre></div></div>
 
-<p>La notation pointée se lit alors : exécute le nom <code class="language-plaintext highlighter-rouge">bonjour</code> définit dans <code class="language-plaintext highlighter-rouge">le_code</code>.</p>
+<p>La notation pointée se lit alors : exécute le nom <code class="language-plaintext highlighter-rouge">bonjour</code> définit dans <em>“le_code”</em>.</p>
 
 <blockquote>
-  <p><strong>ATTENTION</strong> : ne jamais jamais jamais utiliser <code class="language-plaintext highlighter-rouge">from code import *</code> qui importe tous les noms définis dans <code class="language-plaintext highlighter-rouge">code</code>. On ne sais pas vraiment ce qui a été importé en lisant le code : notre code n’est pas lisible ! Le gain d’écriture de <code class="language-plaintext highlighter-rouge">*</code> plutôt que <code class="language-plaintext highlighter-rouge">bonjour</code> sera perdu au centuple plus tard lorsque l’on devra chercher dans tous les fichiers du projet où l’on a bien pu définir <code class="language-plaintext highlighter-rouge">bonjour</code>…</p>
+  <p><strong>ATTENTION</strong> : ne jamais jamais jamais utiliser <code class="language-plaintext highlighter-rouge">from le_code import *</code> qui importe tous les noms définis dans <em>“le_code.py”</em>. On ne sais pas vraiment ce qui a été importé en lisant <em>“le_code.py”</em>: notre code n’est pas lisible ! Le gain d’écriture de <code class="language-plaintext highlighter-rouge">*</code> plutôt que <code class="language-plaintext highlighter-rouge">bonjour</code> sera perdu au centuple plus tard lorsque l’on devra chercher dans tous les fichiers du projet où l’on a bien pu définir <code class="language-plaintext highlighter-rouge">bonjour</code>…</p>
 </blockquote>
 
 <p>En code comme dans la vie, il faut faire rapidement ce que l’on fait souvent. Comme on va passer plus de temps à lire/comprendre du code qu’à l’écrire, il faut optimiser la lecture et non l’écriture. D’où l’utilisation de nom explicites et on préférera toujours la lisibilité à la rapidité.</p>
@@ -225,16 +225,21 @@ Bonjour les gens !
 
 <p>Le boulot d’une bibliothèque de test est d’exécuter toutes les fonction commençant par <code class="language-plaintext highlighter-rouge">test_</code> de tous les fichiers commençant par <code class="language-plaintext highlighter-rouge">test_</code> d’un projet.</p>
 
+<p>Les tests sont de petites fonction dont le but est de <em>tester</em> une fonctionnalité du programme( souvent l’exécution d’une fonction). On utilisera l’instruction <a href="https://docs.python.org/fr/3/reference/simple_stmts.html#the-assert-statement">assert</a> pour ces tests : si ce qui est à droite d’assert est juste, le programme continue sans encombre, si c’est faux, le programme plante.</p>
+
 <p>On va donc créer dans notre projet situé dans le dossier <em>hello</em> un fichier nommé <em>test_projet.py</em> qui contiendra :</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">test_oui</span><span class="p">():</span>
-    <span class="k">assert</span> <span class="bp">True</span>
+    <span class="k">assert</span> <span class="mi">1</span> <span class="o">==</span> <span class="mi">1</span>
 
 
 <span class="k">def</span> <span class="nf">test_non</span><span class="p">():</span>
-    <span class="k">assert</span> <span class="bp">False</span>
+    <span class="k">assert</span> <span class="mi">1</span> <span class="o">==</span> <span class="mi">2</span>
 
 </code></pre></div></div>
+<blockquote>
+  <p><em>*Remarque</em> : le premier test est vrai : <code class="language-plaintext highlighter-rouge">1 == 1</code> est <code class="language-plaintext highlighter-rouge">True</code> donc assert ne va rien faire. Le second va planter car <code class="language-plaintext highlighter-rouge">1== 2</code>va rendre <code class="language-plaintext highlighter-rouge">False</code> et assert va sarrêter le programme.</p>
+</blockquote>
 
 <p>Vous ne devriez pas avoir de rouge, le linter doit être content :</p>
 
@@ -262,8 +267,8 @@ Bonjour les gens !
   <li>dans le tab des tests qu’un test est vert, l’autre rouge</li>
   <li>le test qui est rouge est marqué dans la sortie complète :
     <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>          def test_non():
-      &gt;       assert False
-      E       assert False
+      &gt;       assert 1 == 2
+      E       assert 1 == 2
 </code></pre></div>    </div>
   </li>
 </ul>
@@ -282,11 +287,17 @@ Bonjour les gens !
 
 <p><em>test_le_code.py</em> :</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">code</span> <span class="kn">import</span> <span class="n">bonjour</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">le_code</span> <span class="kn">import</span> <span class="n">bonjour</span>
 
 <span class="k">def</span> <span class="nf">test_bonjour</span><span class="p">():</span>
     <span class="k">assert</span> <span class="n">bonjour</span><span class="p">().</span><span class="n">startswith</span><span class="p">(</span><span class="s">'Bonjour'</span><span class="p">)</span>
 </code></pre></div></div>
+
+<h2 id="tbd">TBD</h2>
+
+<ul>
+  <li>voir avec windows si tout va bien. En particulier avec l’invit de commande</li>
+</ul>
 
   </div>
 
