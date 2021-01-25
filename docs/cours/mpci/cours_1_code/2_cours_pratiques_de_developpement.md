@@ -96,7 +96,7 @@ On va utiliser [pycodestyle](https://pycodestyle.pycqa.org/en/latest/intro.html)
 On commence par l'installer avec la commande : `pip3 install pycodestyle` (ou `pip install pycodestyle` sous windows).
 
 Placez vous ous dans l'onglet correspondant à votre code et mettez en route le linter. POur cela :
-1. on le choisit en tapant la commande (crtl/cmd+shift+P) : *Python: Select Linter* et on choisit `pycodelinter`
+1. on le choisit en tapant la commande (crtl/cmd+shift+P) : *Python: Select Linter* et on choisit `pycodestyle`
 2. on le met en route si ce n'est pas déjà le cas avec la commande : *python: Enable Linter*.
 
 Une fois le fichier sauvé, on voit s'il y a des soucis ou pas. Créons en un pour voir si le linter fonctionne : 
@@ -116,9 +116,9 @@ Vous devriez peut-être aussi avoir la parenthèse de fin souligné en jaune. C'
 
 ### séparer code et main
 
-on va créer deux fichiers, l'un nommé code qui contiendra notre *code.py* et l'autre nommé *main.py* qui sera notre programme principal
+on va créer deux fichiers, l'un nommé *"le_code.py"* qui contiendra notre code et l'autre nommé *"main.py"* qui sera notre programme principal
 
-*code.py* :
+*le_code.py* :
 
 ```python
 def bonjour():
@@ -135,7 +135,7 @@ print(bonjour())
 
 ``` 
 
-On a importer le nom `bonjour` défini dans le fichier `le_code` grace à un import. L'autre façon aurait été d'importer juste le fichier code. On aurait alors eu :
+On a importer le nom `bonjour` défini dans le fichier *"le_code.py"* grace à un import. L'autre façon aurait été d'importer juste le fichier code. On aurait alors eu :
 
 ```python
 import le_code
@@ -144,9 +144,9 @@ le_code.bonjour()
 
 ``` 
 
-La notation pointée se lit alors : exécute le nom `bonjour` définit dans `le_code`.
+La notation pointée se lit alors : exécute le nom `bonjour` définit dans *"le_code"*.
 
->**ATTENTION** : ne jamais jamais jamais utiliser `from code import *` qui importe tous les noms définis dans `code`. On ne sais pas vraiment ce qui a été importé en lisant le code : notre code n'est pas lisible ! Le gain d'écriture de `*` plutôt que `bonjour` sera perdu au centuple plus tard lorsque l'on devra chercher dans tous les fichiers du projet où l'on a bien pu définir `bonjour`...
+>**ATTENTION** : ne jamais jamais jamais utiliser `from le_code import *` qui importe tous les noms définis dans *"le_code.py"*. On ne sais pas vraiment ce qui a été importé en lisant *"le_code.py"*: notre code n'est pas lisible ! Le gain d'écriture de `*` plutôt que `bonjour` sera perdu au centuple plus tard lorsque l'on devra chercher dans tous les fichiers du projet où l'on a bien pu définir `bonjour`...
 
 En code comme dans la vie, il faut faire rapidement ce que l'on fait souvent. Comme on va passer plus de temps à lire/comprendre du code qu'à l'écrire, il faut optimiser la lecture et non l'écriture. D'où l'utilisation de nom explicites et on préférera toujours la lisibilité à la rapidité.
 
@@ -163,17 +163,21 @@ On va juste ici vérifier que tout fonctionne. Il existe de nombreuse bibliothè
 
 Le boulot d'une bibliothèque de test est d'exécuter toutes les fonction commençant par `test_` de tous les fichiers commençant par `test_` d'un projet.
 
+Les tests sont de petites fonction dont le but est de *tester* une fonctionnalité du programme( souvent l'exécution d'une fonction). On utilisera l'instruction [assert](https://docs.python.org/fr/3/reference/simple_stmts.html#the-assert-statement) pour ces tests : si ce qui est à droite d'assert est juste, le programme continue sans encombre, si c'est faux, le programme plante.
+
+
 On va donc créer dans notre projet situé dans le dossier *hello* un fichier nommé *test_projet.py* qui contiendra :
 
 ```python
 def test_oui():
-    assert True
+    assert 1 == 1
 
 
 def test_non():
-    assert False
+    assert 1 == 2
 
 ``` 
+>**Remarque* : le premier test est vrai : `1 == 1` est `True` donc assert ne va rien faire. Le second va planter car `1== 2`va rendre `False` et assert va sarrêter le programme.
 
 Vous ne devriez pas avoir de rouge, le linter doit être content :
 
@@ -195,8 +199,8 @@ Vous devriez voir :
 * le test qui est rouge est marqué dans la sortie complète : 
     ```text
             def test_non():
-        >       assert False
-        E       assert False
+        >       assert 1 == 2
+        E       assert 1 == 2
     ```
 
 Ceci est normal car le but d'assert est de vérifier que ce qui suit est juste. Si c'est le cas il ne se passe rien, si c'est faux le programme s'arrête.
@@ -212,8 +216,12 @@ On va juste faire un test qui vérifie que notre fonction rend bien une chaîne 
 *test_le_code.py* :
 
 ```python
-from code import bonjour
+from le_code import bonjour
 
 def test_bonjour():
     assert bonjour().startswith('Bonjour')
 ```
+
+## TBD
+
+* voir avec windows si tout va bien. En particulier avec l'invit de commande

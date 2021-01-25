@@ -27,7 +27,7 @@ Chaque séance, à partir de la deuxième, commence par un test de 15min qui por
 
 
 * vendredi 4h : **C,M** suivi d'un **SM** : [pratiques de développement et développements pratique](#pratiques-de-développement-et-développements-pratique).
-* mercredi 2h : **C,M** : preuve et complexité
+* mercredi 2h : **C,M** : [complexité et preuve](#complexité-et-preuve)
 * vendredi 4h : **ST** suivi d'un **SM** : exponentiation rapide
 
 * mercredi 2h : **C,M** : tris
@@ -49,6 +49,11 @@ Chaque séance, à partir de la deuxième, commence par un test de 15min qui por
 2. [pratiques de développement]({% link cours/mpci/cours_1_code/2_cours_pratiques_de_developpement.md %})
 3. [développements pratiques]({% link cours/mpci/cours_1_code/3_cours_developpement_pratiques.md %})
 4. [A vous]({% link cours/mpci/cours_1_code/4_a_vous_code.md %})
+
+### complexité et preuve
+
+1. [complexité]({% link cours/mpci/cours_2_complexité_et_preuve/1_cours_complexite.md %})
+2. [preuve]({% link cours/mpci/cours_2_complexité_et_preuve/2_cours_preuve.md %})
 
 ## Misc
 
