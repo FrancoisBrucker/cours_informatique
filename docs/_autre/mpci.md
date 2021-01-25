@@ -52,8 +52,8 @@ Chaque séance, à partir de la deuxième, commence par un test de 15min qui por
 
 ### complexité et preuve
 
-1. [complexité]({% link cours/mpci/cours_2_complexité_et_preuve/1_cours_complexite.md %})
-2. [preuve]({% link cours/mpci/cours_2_complexité_et_preuve/2_cours_preuve.md %})
+1. [complexité]({% link cours/mpci/cours_2_complexite_et_preuve/1_cours_complexite.md %})
+2. [preuve]({% link cours/mpci/cours_2_complexite_et_preuve/2_cours_preuve.md %})
 
 ## Misc
 
