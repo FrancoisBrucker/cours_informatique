@@ -78,10 +78,19 @@ En revanche, ça prend un nombre maximum d'opérations qui est indépendant des 
 
 Exemple : 
 ```python
-ma_chaine = "C'est vraiment très intéressant !" # O(1)
-ma_chaine_majuscule = ma_chaine.upper() # O(n) opérations où n est la longueur de la chaine
-print(ma_chaine_majuscule) # O(n) opérations
+
+def imprime_majuscule(ma_chaine):
+    ma_chaine_majuscule = ma_chaine.upper() # O(n) opérations où n est la longueur de la chaine
+    print(ma_chaine_majuscule) # O(n) opérations
 ```
+
+Attention cependant : dans l'exemple suivant, on manipule des constantes (la chaine est affectée et n'est pas un paramètre), tout est donc en $\mathcal{O}(1)$ :
+
+```python
+ma_chaine = "c'est vraiment très intéressant !"
+print(ma_chaine)
+```
+
 
 ### Qu'est-ce les paramètres d'une entrée ?
 

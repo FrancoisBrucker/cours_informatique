@@ -100,7 +100,7 @@ def euclide(a, b):
 >**Remarque** : 
 >
 >* on utilise les raccourci python pour -b et +1. 
->* on rend bien un unique objet tuple (une liste où on ne peut pas bouger les éléments) : https://docs.python.org/fr/3/tutorial/datastructures.html#tuples-and-sequences 
+>* on rend bien un unique objet [tuple](https://docs.python.org/fr/3/tutorial/datastructures.html#tuples-and-sequences ) (une liste où on ne peut pas bouger les éléments).
 
 ### finitude
 
