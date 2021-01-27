@@ -146,10 +146,17 @@ Comme $N^2$ est en $\mathcal{O}(N^3)$, $\mathcal{O}(N^2) + \mathcal{O}(N^3) = \m
 </blockquote>
 
 <p>Exemple :</p>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ma_chaine</span> <span class="o">=</span> <span class="s">"C'est vraiment très intéressant !"</span> <span class="c1"># O(1)
-</span><span class="n">ma_chaine_majuscule</span> <span class="o">=</span> <span class="n">ma_chaine</span><span class="p">.</span><span class="n">upper</span><span class="p">()</span> <span class="c1"># O(n) opérations où n est la longueur de la chaine
-</span><span class="k">print</span><span class="p">(</span><span class="n">ma_chaine_majuscule</span><span class="p">)</span> <span class="c1"># O(n) opérations
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">def</span> <span class="nf">imprime_majuscule</span><span class="p">(</span><span class="n">ma_chaine</span><span class="p">):</span>
+    <span class="n">ma_chaine_majuscule</span> <span class="o">=</span> <span class="n">ma_chaine</span><span class="p">.</span><span class="n">upper</span><span class="p">()</span> <span class="c1"># O(n) opérations où n est la longueur de la chaine
+</span>    <span class="k">print</span><span class="p">(</span><span class="n">ma_chaine_majuscule</span><span class="p">)</span> <span class="c1"># O(n) opérations
 </span></code></pre></div></div>
+
+<p>Attention cependant : dans l’exemple suivant, on manipule des constantes (la chaine est affectée et n’est pas un paramètre), tout est donc en $\mathcal{O}(1)$ :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ma_chaine</span> <span class="o">=</span> <span class="s">"c'est vraiment très intéressant !"</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ma_chaine</span><span class="p">)</span>
+</code></pre></div></div>
 
 <h3 id="quest-ce-les-paramètres-dune-entrée-">Qu’est-ce les paramètres d’une entrée ?</h3>
 
