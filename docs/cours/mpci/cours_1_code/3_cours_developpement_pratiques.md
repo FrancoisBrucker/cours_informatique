@@ -35,7 +35,7 @@ On veut compter le nombre de `0` d'un nombre écrit en binaire.
 `"pourcentage.py"` :
 ```python
 def pourcent(chaîne_de_caractères):
-    nombre_de_0 = chaîne_de_caractères.count(0)
+    nombre_de_0 = chaîne_de_caractères.count('0')
 
     return nombre_de_0 / len(chaîne_de_caractères)
 
