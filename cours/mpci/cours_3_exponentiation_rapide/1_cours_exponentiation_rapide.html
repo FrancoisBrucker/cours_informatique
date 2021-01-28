@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Algorithme Exponentiation rapide | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Algorithme Exponentiation rapide" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)" />
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)" />
+<link rel="canonical" href="/cours_informatique/cours/mpci/cours_3_exponentiation_rapide/1_cours_exponentiation_rapide.html" />
+<meta property="og:url" content="/cours_informatique/cours/mpci/cours_3_exponentiation_rapide/1_cours_exponentiation_rapide.html" />
+<meta property="og:site_name" content="cours d’informatique" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Algorithme Exponentiation rapide" />
+<script type="application/ld+json">
+{"description":"Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)","headline":"Algorithme Exponentiation rapide","@type":"WebPage","url":"/cours_informatique/cours/mpci/cours_3_exponentiation_rapide/1_cours_exponentiation_rapide.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        processEscapes: true
+      }
+    });
+  </script>
+  
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+</head>
+
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Algorithme Exponentiation rapide</h1>
+  </header>
+
+  <div class="post-content">
+    <h1 id="introduction">introduction</h1>
+
+<p>On veut écrire un algorithme qui, à partir de deux nombres $a$ et $b$ rend $a^b$.</p>
+
+<p>On va voir 2 algorithmes dont l’un est bien plus rapide que l’autre.</p>
+
+<h2 id="simple">simple</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">puissance</span><span class="p">(</span><span class="n">nombre</span><span class="p">,</span> <span class="n">exposant</span><span class="p">):</span>
+    <span class="n">resultat</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">compteur</span> <span class="o">=</span> <span class="n">exposant</span>
+    <span class="k">while</span> <span class="n">compteur</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    	<span class="n">resultat</span> <span class="o">*=</span> <span class="n">nombre</span>
+    	<span class="n">compteur</span> <span class="o">-=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">resultat</span>
+</code></pre></div></div>
+
+<h3 id="est-ce-que-ça-mache-">est-ce que ça mache ?</h3>
+
+<p>On teste sur de petits nombres en se mettant à la place de l’ordinateur.</p>
+
+<ul>
+  <li>on numérote chaque ligne</li>
+  <li>on note sur une feuille les variable</li>
+  <li>on exécute ligne à ligne en notant les différents résultats.</li>
+  <li>à la fin on vérifie que <code class="language-plaintext highlighter-rouge">résultat</code> vaut bien ce qu’il doit valoir.</li>
+</ul>
+
+<p>Les cas simples que l’on peut essayer sans peine, et permet de <strong>tester les cas limites</strong> :</p>
+
+<ul>
+  <li>exposant vaut 0 ou 1</li>
+  <li>nombre vaut 2 ou 3 (un peu plus que les cas triviaux)</li>
+</ul>
+
+<p>Puis un cas un peu plus compliqué pour <strong>tester si les boucles fonctionnent bien</strong> :</p>
+
+<ul>
+  <li>exposant vaut 2 ou 3</li>
+  <li>nombre vaut 2 ou 3</li>
+</ul>
+
+<p>Une fois qu’on est convaincu que ça fonctionne, on peut essayer de prouver la finitude, la complexité et la preuve.</p>
+
+<h3 id="preuve-de-finitude">preuve de finitude</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">compteur</code> diminue strictement à chaque boucle et la condition d’arrêt est lorsqu’il vaut 0</li>
+  <li>condition : il faut que <code class="language-plaintext highlighter-rouge">compteur</code> soit un nombre &gt;= 0 pour que l’algorithme s’arrête. Donc <code class="language-plaintext highlighter-rouge">exposant</code> doit être un nombre positif.</li>
+</ul>
+
+<p><strong>Remarque</strong> : pour des nombres, on préférera toujours des conditions d’arrêt larges (plus petit que, plus grand que, différent de) plutôt que des conditions sur l’égalité stricte. Ceci pour deux raisons majeures :</p>
+
+<ul>
+  <li>L’égalité entre réels n’existe pas en informatique par exemple.</li>
+  <li>dans l’exemple ci-dessus mettre des exposants négatifs ou des nombres rées ne fait pas boucler infiniment notre algorithme</li>
+</ul>
+
+<h3 id="preuve-de-lalgorihtme">preuve de l’algorihtme</h3>
+
+<p>En utilisant l’opération <code class="language-plaintext highlighter-rouge">**</code> qui signifie exposant en python, on a :</p>
+
+<ul>
+  <li>invariant de boucle : <code class="language-plaintext highlighter-rouge">resultat * nombre ** compteur = nombre ** exposant</code></li>
+  <li>condition sur les entrées : <code class="language-plaintext highlighter-rouge">nombre</code> et <code class="language-plaintext highlighter-rouge">exposant</code> sont des entiers naturels</li>
+</ul>
+
+<p>Juste avant la première itération de la boucle, <code class="language-plaintext highlighter-rouge">resulat = 1</code> et <code class="language-plaintext highlighter-rouge">compteur = exposant</code> notre invariant est donc vérifié.</p>
+
+<p>Après une itération de la boucle on a :</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">nombre' = nombre</code></li>
+  <li><code class="language-plaintext highlighter-rouge">exposant' = exposant</code></li>
+  <li><code class="language-plaintext highlighter-rouge">resulat' = resultat * nombre</code></li>
+  <li><code class="language-plaintext highlighter-rouge">compteur' = compteur - 1</code></li>
+</ul>
+
+<p>Ceci donne : <code class="language-plaintext highlighter-rouge">resultat' * nombre' ** compteur' = (resultat * nombre) * nombre ** (compteur - 1) = resultat * nombre ** compteur = nombre ** exposant = nombre' ** exposant'</code></p>
+
+<p>L’invariant est donc vrai aussi à la fin de l’algorithme, lorsque <code class="language-plaintext highlighter-rouge">compteur = 0</code>. Et là : <code class="language-plaintext highlighter-rouge">resultat * nombre ** compteur = resultat = nombre ** exposant</code></p>
+
+<h3 id="complexité">complexité</h3>
+
+<ul>
+  <li>un boucle en $\mathcal{O}(exposant)$</li>
+  <li>des lignes en $\mathcal{O}(1)$</li>
+</ul>
+
+<p>Donc : complexité en $\mathcal{O}(exposant)$</p>
+
+<h2 id="rapide">rapide</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">puissance</span><span class="p">(</span><span class="n">nombre</span><span class="p">,</span> <span class="n">exposant</span><span class="p">):</span>
+    <span class="n">resultat</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">compteur</span> <span class="o">=</span> <span class="n">exposant</span>
+
+    <span class="k">while</span> <span class="n">compteur</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    	<span class="k">if</span> <span class="n">compteur</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+    		<span class="n">resultat</span> <span class="o">*=</span> <span class="n">nombre</span>
+    		<span class="n">compteur</span> <span class="o">-=</span> <span class="mi">1</span>
+    	<span class="k">else</span><span class="p">:</span>
+    		<span class="n">nombre</span> <span class="o">*=</span> <span class="n">nombre</span>
+    		<span class="n">compteur</span> <span class="o">/=</span> <span class="mi">2</span>
+
+    <span class="k">return</span> <span class="n">resultat</span>
+</code></pre></div></div>
+
+<p><strong>Remarques</strong> :</p>
+
+<ul>
+  <li>On utilise l’opérateur <em>modulo</em> qui se note <code class="language-plaintext highlighter-rouge">%</code> en python. Il retourne le reste de la divison entière.</li>
+  <li>Ici on vérifie si <code class="language-plaintext highlighter-rouge">compteur</code> est pair (reste de la division entière par 2 vaut 0) ou impair (reste de la division entière par 2 vaut 1).</li>
+</ul>
+
+<h3 id="est-ce-que-ça-mache--1">est-ce que ça mache ?</h3>
+
+<p>Comme avant avec les cas simples :</p>
+
+<ul>
+  <li>exposant vaut 0 ou 1</li>
+  <li>nombre vaut 2 ou 3 (un peu plus que les cas triviaux)</li>
+</ul>
+
+<p>L’algorithme vérifie si <code class="language-plaintext highlighter-rouge">compteur</code> est pair ou impair, donc pour rentrer dans les boucle on va prendre un exposant un peu plus grand, par exemple <code class="language-plaintext highlighter-rouge">exposant = 7</code>.
+On peut garder nombre petit pour calculer facilement les résultats, comme <code class="language-plaintext highlighter-rouge">nombre = 2</code>.</p>
+
+<h3 id="preuve-de-finitude-1">preuve de finitude</h3>
+
+<p>De même que pour l’algorithme simple, <code class="language-plaintext highlighter-rouge">compteur</code> diminue strictement à chaque boucle (ou il diminue de <code class="language-plaintext highlighter-rouge">-1</code> ou il est divisé par 2). Si <code class="language-plaintext highlighter-rouge">exposant</code> est un entier naturel en entrée, <code class="language-plaintext highlighter-rouge">compteur</code> reste entier après chaque boucle (on ne le divise par 2 que s’il est pair) et est strictement plus petit : l’algorihtme va s’arrêter à un moment.</p>
+
+<h3 id="preuve-de-lalgorihtme-1">preuve de l’algorihtme</h3>
+
+<p>On a le même invariant de boucle que pour l’algorithme simple. En notant <code class="language-plaintext highlighter-rouge">compteur_initial</code>, la valeur de compteur en entrée de l’algorithme on a : <code class="language-plaintext highlighter-rouge">resultat * nombre ** compteur = nombre_initial ** exposant</code></p>
+
+<p>Pour le prouver, si on a une variable de nom <code class="language-plaintext highlighter-rouge">x</code> en entrée de boucle, on note sa valeur en sortie de boucle <code class="language-plaintext highlighter-rouge">x'</code></p>
+
+<p>de là :</p>
+
+<ul>
+  <li>si compteur est impair on a :
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">compteur' = compteur -1</code></li>
+      <li><code class="language-plaintext highlighter-rouge">resultat' = resultat * nombre</code></li>
+      <li><code class="language-plaintext highlighter-rouge">nombre' = nombre</code></li>
+      <li><code class="language-plaintext highlighter-rouge">resultat * nombre ** compteur = (resultat * nombre) * nombre ** (compteur - 1) = resultat' * nombre' ** compteur'</code></li>
+    </ul>
+  </li>
+  <li>si compteur est impair on a :
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">compteur' = compteur - 1</code></li>
+      <li><code class="language-plaintext highlighter-rouge">resultat' = resultat</code></li>
+      <li><code class="language-plaintext highlighter-rouge">nombre' = nombre * nombre</code></li>
+      <li><code class="language-plaintext highlighter-rouge">resultat * nombre ** compteur = resultat * (nombre * nombre) ** (compteur / 2)  = resultat' * nombre' ** compteur'</code></li>
+    </ul>
+  </li>
+</ul>
+
+<p>L’invariant de boucle est démontré.</p>
+
+<h3 id="complexité-1">complexité</h3>
+
+<p>Pourquoi s’embêter avec la parité de compteur ? Parce que ça permet d’aller vachement plus vite !</p>
+
+<p>On va le démontrer petit à petit.</p>
+
+<h4 id="nombre-de-fois-où-compteur-est-impair">nombre de fois où compteur est impair</h4>
+
+<p>Si à l’itération numéro $i$ compteur est impair, il sera pair à l’itération $i + 1$ car <code class="language-plaintext highlighter-rouge">compteur' = compteur = 1</code> dans ce cas là. De là, <strong>le nombre d’itérations où compteur est impair est au pire égal au nombre de fois où il est pair</strong></p>
+
+<h4 id="nombre-de-fois-où-le-compteur-est-pair">nombre de fois où le compteur est pair</h4>
+
+<p>A chaque fois où compteur est pair, on le divise par 2. Si $k$ est le nombre de fois où le compteur a été pair, on a que : <code class="language-plaintext highlighter-rouge">2 ** k &lt;= nombre</code> (avec  <code class="language-plaintext highlighter-rouge">nombre</code> le paramètre d’entrée).</p>
+
+<p>Comme le <code class="language-plaintext highlighter-rouge">nombre</code> est un entier, il existe un nombre $p$ tel que : <code class="language-plaintext highlighter-rouge">2 ** p &lt;= nombre &lt; 2 ** (p + 1)</code>.</p>
+
+<p>On ne peut donc pas diviser par 2 <code class="language-plaintext highlighter-rouge">nombre</code> ou un nombre plus petit que lui plus de <code class="language-plaintext highlighter-rouge">p</code> fois : <code class="language-plaintext highlighter-rouge">&lt;= p</code>.</p>
+
+<p><strong>Remarque</strong> :</p>
+
+<ul>
+  <li>par définition, le nombre de fois où l’on peut diviser un nombre $x$ par 2 est la partie entière de $\log_2(x) = \mbox{ln}$</li>
+  <li>pour tout nombre k, le nombre de fois où l’on peut diviser un nombre $x$ par $k$ est $\log_k(x)$</li>
+  <li>comme $\log_k(x) = \mbox{ln}(x) / \mbox{ln}(k)$, les $\mbox{ln}$ et $\log_k$ sont proportionnels entres eux. D’un point de vue algorithmique ça signifie que $\mathcal{O}(\log_k(x)) = \mathcal{O}(\mbox{ln}(x))$ pour tout entier $k$</li>
+</ul>
+
+<h4 id="nombre-de-fois-où-lon-rentre-dans-la-boucle">nombre de fois où l’on rentre dans la boucle</h4>
+
+<p>C’est au pire deux fois le nombre de fois où compteur est paire et donc au pire de l’ordre $2 * \mbox{ln}(\mbox{compteur})$ pour une valeur de compteur donnée. Comme <code class="language-plaintext highlighter-rouge">compteur</code> vaut initialement <code class="language-plaintext highlighter-rouge">exposant</code>, le nombre de fois où l’on rentre dans la boucle est de l’ordre de $\mathcal{O}(\log_2(\mbox{exposant}))$.</p>
+
+<p>Comme les autres lignes sont en $\mathcal{O}(1)$ on a une compexité de l’algorithme en $\mathcal{O}(\log_2(\mbox{exposant}))$.</p>
+
+<p>Comme la fonction $\mbox{ln}$ est proportionnelle à $\log_k$ pour tout $k$, on a aussi que notre algorithme est en : $\mathcal{O}(ln(\mbox{exposant}))$.</p>
+
+<p>Cette complexité est très faible ! Comparez par exemple :</p>
+
+<blockquote>
+  <p>$2^{16} = 65536$ opérations et $\log_2(65536) = 16$ opérations.</p>
+</blockquote>
+
+<p>Cette différence va aller exponentiellement lorsque compteur augmente, par exemple entre</p>
+
+<blockquote>
+  <p>$2^{100} = 1267650600228229401496703205376$ et $100$ opérations</p>
+</blockquote>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d&#39;informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d&#39;informatique</li><li><a class="u-email" href="mailto:francois.brucker@centrale-marseille.fr">francois.brucker@centrale-marseille.fr</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li><li><a href="https://www.twitter.com/p_____p___"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">p_____p___</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.
+A destination des 1A (tronc commun), des 2A (de l&#39;approfondissement MIE) et des 3A (de l&#39;option digital·e)</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
