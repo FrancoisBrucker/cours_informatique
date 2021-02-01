@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Méthodes de tris | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Méthodes de tris" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)" />
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)" />
+<link rel="canonical" href="/cours_informatique/cours/mpci/cours_4_tris/1_cours_tris.html" />
+<meta property="og:url" content="/cours_informatique/cours/mpci/cours_4_tris/1_cours_tris.html" />
+<meta property="og:site_name" content="cours d’informatique" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Méthodes de tris" />
+<script type="application/ld+json">
+{"description":"Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)","headline":"Méthodes de tris","@type":"WebPage","url":"/cours_informatique/cours/mpci/cours_4_tris/1_cours_tris.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        processEscapes: true
+      }
+    });
+  </script>
+  
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+</head>
+
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Méthodes de tris</h1>
+  </header>
+
+  <div class="post-content">
+    <h2 id="introduction">Introduction</h2>
+
+<p>On verra quelques algorithmes de tris et cela nous permettra de parler de complexité min/ max et en moyenne.</p>
+
+<p>En plus, les tris c’est chouette parce qu’il y a <a href="https://fr.wikipedia.org/wiki/Algorithme_de_tri">plein de façon de trier</a></p>
+
+<h2 id="tris-simple">tris simple</h2>
+
+<h3 id="tri-par-sélection">tri par sélection</h3>
+
+<p>en entrée, un tableau <code class="language-plaintext highlighter-rouge">tab</code> remplit de nombre et de taille $n$.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">selection</span><span class="p">(</span><span class="n">tab</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tab</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">min_index</span> <span class="o">=</span> <span class="n">i</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">tab</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">tab</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">tab</span><span class="p">[</span><span class="n">min_index</span><span class="p">]:</span>
+                <span class="n">min_index</span> <span class="o">=</span> <span class="n">j</span>
+        <span class="n">tab</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">tab</span><span class="p">[</span><span class="n">min_index</span><span class="p">]</span> <span class="o">=</span> <span class="n">tab</span><span class="p">[</span><span class="n">min_index</span><span class="p">],</span> <span class="n">tab</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+</code></pre></div></div>
+
+<h4 id="preuve-que-ça-trie">preuve que ça trie</h4>
+
+<p>Il y a 2 boucles imbriquées. La raison d’être de la boucle faisant varier j est de faire en sorte que <code class="language-plaintext highlighter-rouge">min_index</code> soit l’indice de de la plus petite valeur du tableau pour les indices plus grand que $i$.</p>
+
+<p>Ensuite on échange cette valeur avec celle initialement à l’indice $i$.</p>
+
+<p>Notre invariant de boucle peut donc être : <em>“à la fin de chaque étape $i$ de l’algorithme les $i$ plus petites valeurs du tableaux sont triées aux $i$ premiers indices du tableau”</em></p>
+
+<h4 id="complexités">complexités</h4>
+
+<p>deux boucles imbriquées :</p>
+
+<ul>
+  <li>la boucle extérieure est en $\mathcal{O}(n)$</li>
+  <li>la boucle intérieure est d’itérations variables mais décroissantes de $n$ à 1 itérations : on utilise la règle qui dit que globalement, sa complexité est donc en nombre d’itérations max : $\mathcal{O}(n)$.</li>
+</ul>
+
+<p>L’échange étant en $\mathcal{O}(1)$ la complexité totales est en $\mathcal{O}(n) * \mathcal{O}(n) = \mathcal{O}(^2)$.</p>
+
+<p>Le nombre d’itérations n’est pas dépendant du tableau.</p>
+
+<h3 id="tri-par-insertion">tri par insertion</h3>
+
+<p>en entrée, un tableau <code class="language-plaintext highlighter-rouge">tab</code> remplit de nombre et de taille $n$.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">insertion</span><span class="p">(</span><span class="n">tab</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">tab</span><span class="p">)):</span>
+        <span class="n">actu</span> <span class="o">=</span> <span class="n">tab</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">j</span> <span class="o">=</span> <span class="n">i</span>
+        <span class="k">while</span> <span class="n">j</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">tab</span><span class="p">[</span><span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">actu</span><span class="p">:</span>
+            <span class="n">tab</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">tab</span><span class="p">[</span><span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="n">j</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="n">tab</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">actu</span>
+</code></pre></div></div>
+
+<h4 id="preuve-que-ça-trie-1">preuve que ça trie</h4>
+
+<p>A chaque itération $i$ l’algorithme remonte la valeur initialement en position $i$ à la première position pour laquelle il est plus grand que le précédent. Remarquez bien que nous n’avons jamais changé les différentes valeurs du tableau.</p>
+
+<p>Notre invariant de boucle peut donc être : “à la fin de l’itération $i$, les $i$ premiers éléments du tableau sont triés”</p>
+
+<h4 id="complexités-1">complexités</h4>
+
+<p>La complexité va changer selon la nature du tableau :</p>
+
+<ul>
+  <li>si le tableau est déjà trié : je ne rentre jamais dans la boucle du <em>tant que</em> : la complexité est en $\mathcal{O}(n)$</li>
+  <li>si le tableau est trié à l’envers : on effectue à chaque itération $i$, $i$ étapes dans la boucle du <em>tant que</em> : la complexité est en $\mathcal{O}(n^2)$</li>
+</ul>
+
+<p>Ceci est problématique. La complexité (le cas le pire) arrive-t-elle souvent ou pas pour des données “normales” ?</p>
+
+<p>Pour le savoir, on calcule la complexité en moyenne de notre algorithme. La complexité en moyenne dépend d’un modèle de donnée.</p>
+
+<p>Par exemple, pour un modèle de données où nos données sont toujours tries ou juste quelques inversions : la complexité en moyenne va être $\mathcal{O}(n)$.</p>
+
+<p>Souvent, pour la complexité en moyenne on considère des données aléatoires. C’est à dire que tout peut se passer de façon équiprobable : dans notre cas, au doigt mouillé, ça veut dire que notre boucle tant que va tout le temps remonter de la moitié de ce qui est possible (donc $i /2$ opérations) : pour un élement donné (aléatoire) il y a autant de nombre plus petit que lui que de nombre plus grand.</p>
+
+<p>En moyenne, la boucle <em>tant que</em> effectue donc un nombre d’itérations égal à $i /2$ : ça croit de 1 à $n/2$ : elle est donc de complexité $\mathcal{O}(n)$. Au final, la complexité moyenne de l’algorithme est donc en $\mathcal{O}(n^2)$</p>
+
+<p>Pour notre algorithme cela veut dire que le cas le meilleur arrive très rarement par rapport au cas le pire (parmi les $n!$ ordres possible, il y en a très peut qui sont presque triés).</p>
+
+<p>Vous allez le prouver expérimentalement.</p>
+
+<h3 id="différence-de-traitement-des-données-">différence de traitement des données ?</h3>
+
+<p>Chaque tri a une façon bien à lui de trier les objets. C’est pour ça qu’un informaticien aime les tris : il a plein de façon différente de faire.</p>
+
+<p>On va le <em>voir</em>.</p>
+
+<p>On dessine le tableau à chaque modification de celui-ci. On voit la différence de traitement des algorithmes de tris.</p>
+
+<p>Exemple pour le tri par inserstion/sélection. On a tout mis dans un unique fichier <em>“main.py”</em> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+
+<span class="k">def</span> <span class="nf">draw_tab</span><span class="p">(</span><span class="n">tab</span><span class="p">):</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tab</span><span class="p">,</span> <span class="s">'ro'</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">pause</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">cla</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">selection</span><span class="p">(</span><span class="n">tab</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tab</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">min_index</span> <span class="o">=</span> <span class="n">i</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">tab</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">tab</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">tab</span><span class="p">[</span><span class="n">min_index</span><span class="p">]:</span>
+                <span class="n">min_index</span> <span class="o">=</span> <span class="n">j</span>
+        <span class="n">tab</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">tab</span><span class="p">[</span><span class="n">min_index</span><span class="p">]</span> <span class="o">=</span> <span class="n">tab</span><span class="p">[</span><span class="n">min_index</span><span class="p">],</span> <span class="n">tab</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">draw_tab</span><span class="p">(</span><span class="n">tab</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">insertion</span><span class="p">(</span><span class="n">tab</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">tab</span><span class="p">)):</span>
+        <span class="n">actu</span> <span class="o">=</span> <span class="n">tab</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">j</span> <span class="o">=</span> <span class="n">i</span>
+        <span class="k">while</span> <span class="n">j</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">tab</span><span class="p">[</span><span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">actu</span><span class="p">:</span>
+            <span class="n">tab</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">tab</span><span class="p">[</span><span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="n">draw_tab</span><span class="p">(</span><span class="n">tab</span><span class="p">)</span>
+            <span class="n">j</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="n">tab</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">actu</span>
+        <span class="n">draw_tab</span><span class="p">(</span><span class="n">tab</span><span class="p">)</span>
+
+
+<span class="n">tab</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">30</span><span class="p">))</span>
+<span class="n">random</span><span class="p">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">tab</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">tab</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tab</span><span class="p">,</span> <span class="s">'ro'</span><span class="p">)</span>
+<span class="c1"># selection(tab)
+</span><span class="n">insertion</span><span class="p">(</span><span class="n">tab</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">tab</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><em>Nota Bene</em> : Cela fonctionne parce que le nom matplotlib est défini en-dehors des fonctions.</p>
+
+<h2 id="complexité-du-tri-">complexité du tri ?</h2>
+
+<p>Mais au final, parmis tous les algorithmes de tris, c’est les quels qui vont le plus vite ? Et est-ce le minimum possible ?</p>
+
+<p>nombre de cas différents que peut traiter un algorithme : Dépend du nombre de tests que fait l’algorithme pour pouvoir les différentier :</p>
+
+<ul>
+  <li>0 test -&gt; 1 cas (l’algorithme répond toujours la même chose)</li>
+  <li>1 test -&gt; 2 cas</li>
+  <li>2 tests -&gt; $4 = 2^2$ cas</li>
+  <li>p tests -&gt; $2^p$ cas</li>
+</ul>
+
+<p>Si on veut distinguer $n$ cas il faut ainsi au moins $\ln_2(n)$ tests. Donc un algorithme qui doit traiter $n$ cas différents aura au moins une complexité de $\mathcal{O}(\ln_2(n))$ opérations (les tests).</p>
+
+<p>Nombre de cas différents pour trier tri une liste de $n$ éléments ? Toutes les permutations possibles donc $n!$ façons de ranger $n$ éléments.</p>
+
+<p>comme $n! = n * (n-1) * (n-2) * … * 2 * 1$, on arrive à obtenir l’encadrement suivant :</p>
+
+<ul>
+  <li>comme $n$ est plus grand que tous les éléments du produit on à $n! \leq n^n$</li>
+  <li>comme $n! \geq n * (n-1) * … * (n/2 + 1) * (n/2)$ et que  $n/2$ est plus petit que les éléments du produit, on a 
+$n! &gt; (n/2)^{(n/2)}$</li>
+</ul>
+
+<p>donc :</p>
+
+<ul>
+  <li>$(n/2)^{(n/2)} \leq n! \leq n^n$</li>
+  <li>en passant au log : $\ln_2 ((n/2)^{(n/2)}) &lt;= \ln_2(n!) &lt;= \ln_2 (n^n)$</li>
+  <li>donc $n/2 * \ln_2 (n/2) &lt;= \ln_2(n!) &lt;= n \ln_2(n)$</li>
+</ul>
+
+<p>Comme $\ln_2 (n/2) = \ln_2 (n) + \ln_2(1/2) = \ln_2 (n) - \ln_2(2) = \ln_2 (n) - 1$, on a que :</p>
+
+\[\frac{1}{2} n\ln(n) - \frac{n}{2} \leq \ln(n!) \leq n\ln_2(n)\]
+
+<p>Ce qui donne :</p>
+
+\[\frac{1}{2} - \frac{1}{\ln_2(n)} \leq \frac{\ln(n!)}{n\ln_2(n)} \leq 1\]
+
+<p>Et puisque pour tout $n &gt; 4$  on a que $\ln_2(n) &gt; 2$, on a pour $n &gt; 4$ :</p>
+
+\[\frac{1}{4} \leq \frac{\ln(n!)}{n\ln_2(n)} \leq 1\]
+
+<p>Cette inégalité nous permet facilement de montrer qu’une fonction en $\mathcal{O}(\ln_2(n!))$ sera aussi en $\mathcal{O}(n \ln_2(n))$ et donc qu’il faut au moins $\mathcal{O}(n \ln_2(n))$ tests pour distinguer parmi $n!$ possibilités.</p>
+
+<p><strong>Conclusion</strong> : Tout algorithme de tri aura une complexité de au moins $\mathcal{O}(n \ln_2(n))$  opérations.</p>
+
+<p>Pour finir, notez qu’il existe des algorithmes de tri en $\mathcal{O}(n \ln_2(n))$  opérations comme le <a href="https://fr.wikipedia.org/wiki/Tri_fusion">tri fusion par exemple</a> par exemple.</p>
+
+<blockquote>
+  <p><strong>Remarque</strong> : le tri est le cas heureux d’un problème dont on connaît la complexité (c’est à dire que l’on a un algorithme de cmplexité (maximale) minimale). Ce n’est pas le cas pour tous les problèmes. Genre la <a href="https://fr.wikipedia.org/wiki/Produit_matriciel">multiplication de matrices</a>, ou une borne min est de $\mathcal{O}(n^2)$ (avec $n$ le nombre de lignes de la matrice), mais on ne sait pas s’il existe des algorithme pour le faire. Le mieux que l’on sait faire pour l’instant c’est en $\mathcal{O}(n^{2.376})$.</p>
+</blockquote>
+
+<h2 id="tri-rapide">tri rapide</h2>
+
+<p>Le tri rapide est une méthode de tri d’une liste à $n$ éléments dont :</p>
+<ul>
+  <li>la complexité (maximale) est $\mathcal{O}(n^2)$,</li>
+  <li>la complexité en moyenne est $\mathcal{O}(n\ln_2 (n))$,</li>
+  <li>la complexité minimale est $\mathcal{O}(n\ln_2 (n))$,</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">rapide</span><span class="p">(</span><span class="n">tab</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tab</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">tab</span>
+
+    <span class="n">pivot</span> <span class="o">=</span> <span class="n">tab</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="n">tab_gauche</span> <span class="o">=</span> <span class="p">[</span><span class="n">tab</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">tab</span><span class="p">))</span> <span class="k">if</span> <span class="n">tab</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">pivot</span><span class="p">]</span>
+    <span class="n">tab_droite</span> <span class="o">=</span> <span class="p">[</span><span class="n">tab</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">tab</span><span class="p">))</span> <span class="k">if</span> <span class="n">tab</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">pivot</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">rapide</span><span class="p">(</span><span class="n">tab_gauche</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="n">pivot</span><span class="p">]</span> <span class="o">+</span> <span class="n">rapide</span><span class="p">(</span><span class="n">tab_droite</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>On utilise les <a href="https://python.doctor/page-comprehension-list-listes-python-cours-debutants">list comprehension</a> de python. C’est un moyen clair et efficace de générer des listes.</p>
+
+<h3 id="preuve">preuve</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">tab_gauche</code> contient tous les élements du tableau d’indice <code class="language-plaintext highlighter-rouge">&gt; 0</code> et plus petit ou égal à <code class="language-plaintext highlighter-rouge">pivot</code> qui est égal à <code class="language-plaintext highlighter-rouge">tab[0]</code></li>
+  <li><code class="language-plaintext highlighter-rouge">tab_droite</code> contient tous les élements du tableau d’indice <code class="language-plaintext highlighter-rouge">&gt; 0</code> et plus plus grand strictement à <code class="language-plaintext highlighter-rouge">pivot</code></li>
+</ul>
+
+<p>Si rapide fonctionne pour des tableaux de longeurs strictement plus petit que $n$, il fonctionne également pour des tableaux de longueur $n$ : le tableau rendu est le tableau des valeurs plus petite que <code class="language-plaintext highlighter-rouge">pivot</code> triées (ce tableau est de longueur <code class="language-plaintext highlighter-rouge">&lt; n</code>, donc c’est trié par hypothèse de récurence) + <code class="language-plaintext highlighter-rouge">[pivot]</code> + le tableau des valeurs plus grande que <code class="language-plaintext highlighter-rouge">pivot</code> triées (ce tableau est de longueur <code class="language-plaintext highlighter-rouge">&lt; n</code>, donc c’est trié par hypothèse de récurence)</p>
+
+<p>On il fonctionne pour des tableau de longueur 0 ou 1, donc par récurrence, c’est ok.</p>
+
+<h3 id="complexité">complexité</h3>
+
+<p>Nous n’allons pas faire ici de calcul rigoureux. Si ça vous intéresse, reportez vous là : <a href="http://perso.eleves.ens-rennes.fr/~mruffini/Files/Other/rapide.pdf">http://perso.eleves.ens-rennes.fr/~mruffini/Files/Other/rapide.pdf</a></p>
+
+<p>En notant $n$ la taille de la liste on a comme équation de récurrence pour la complexité $C(n)$ :</p>
+
+\[C(n) = \mathcal{O}(n) + C(n_1) + C(n_2)\]
+
+<p>Où $n_1$ est la taille du tableau de gauche et $n_2$ celle de droite ($n_1 + n_2 = n$)</p>
+
+<p>On voit que la complexité du tri rapide tient dans le nombre de récursions qui est fait.</p>
+
+<h4 id="maximale">maximale</h4>
+
+<p>Un tableau de n-1 case et l’autre tout petit. Ca arrive pour des tableaux déjà triés. La complexité est alors de :</p>
+
+\[C(n) = \mathcal{O}(n) + C(n-1)\]
+
+<p>Donc $C(n) = \mathcal{O}(n) + \dots + \mathcal{O}(n)$ où l’on additionne $n$ fois $\mathcal{O}(n)$ : la complexité est de $C(n) = \mathcal{O}(n^2)$.</p>
+
+<p><strong>Attention</strong> : on additionne $n$ fois $\mathcal{O}(n)$. Comme $n$ n’est pas une constante, il <strong>FAUT</strong> le rentrer dans le $\mathcal{O}$.</p>
+
+<h4 id="en-moyenne">en moyenne</h4>
+
+<p>On coupe toujours le tableau en 2 parties égales. Si les nombres sont répartiés aléatoirement, il n’y a en effet aucune raison que notre pivot sot le plus petit ou le plus grand. Intuitivement, la plus grande probabilité est qu’il soit environ plus grand que la moitié des valeurs restantes et plus petit que l’autre moitié.</p>
+
+<p>Si l’on coupe toujours au milieu on a alors :</p>
+
+\[C(n) = \mathcal{O}(n) + 2 * C(\frac{n}{2})\]
+
+<p>Ce qui donne :</p>
+
+\[C(n) = \mathcal{O}(n) + 2 * (\mathcal{O}(\frac{n}{2}) + 2 * C(\frac{n}{4})) = 2 * \mathcal{O}(n) + 4 * C(\frac{n}{4})\]
+
+<blockquote>
+  <p><strong>Attention</strong> : Comme on est entrain de tout calculer, il ne faut pas simplifier les $2 * \mathcal{O}(n)$. Si vous avez du mal, remplacez tous les $\mathcal{O}(n)$ par une constante $K$ et poursuivez le calcul jusqu’au baut, c’est à dire jusqu’à éliminer les $C(n)$.</p>
+</blockquote>
+
+<p>Une rapide récurrence nous donne alors :</p>
+
+\[C(n) = i * \mathcal{O}(n) + 2^{i} * C(\frac{n}{2^{i}})\]
+
+<p>Au maximum $i = \ln_2(n)$ (après, $\frac{n}{2^{i}} &lt; 1$) et dans ce cas là :</p>
+
+\[C(n) = \ln_2(n) * \mathcal{O}(n) + 2^{\ln_2(n)} * C(\frac{n}{2^{\ln_2(n)}})\]
+
+\[C(n) = \ln_2(n) * \mathcal{O}(n) + n * C(1)\]
+
+<p>On en conclut que la complexité vaut : \(C(n) = \mathcal{O}(\ln_2(n) * n)\)</p>
+
+<h4 id="complexité-minimale">complexité minimale</h4>
+
+<p>Si l’on découpe notre tableau de façon  non équilibrée, une branche de la récursion va faire plus d’opérations que $C(n/2)$. La complexité minimale est ainsi atteinte lorsque l’on coupe notre tableau exactement en 2.</p>
+
+<h4 id="conclusion">Conclusion</h4>
+
+<p>Le tri rapide est donc rigolo :</p>
+
+<ul>
+  <li>il a une complexité moyenne qui vaut sa complexité minimale et qui est $\mathcal{O}(n * \ln(n))$, donc la meilleur possible</li>
+  <li>il est très rapide pour les tableaux en désordre et très lent pour les tableaux déjà triés.</li>
+</ul>
+
+<p>En pratique, on commence donc par mélanger le tableau pour le trier ensuite, c’est plus rapide que le trier tout court.</p>
+
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d&#39;informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d&#39;informatique</li><li><a class="u-email" href="mailto:francois.brucker@centrale-marseille.fr">francois.brucker@centrale-marseille.fr</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li><li><a href="https://www.twitter.com/p_____p___"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">p_____p___</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.
+A destination des 1A (tronc commun), des 2A (de l&#39;approfondissement MIE) et des 3A (de l&#39;option digital·e)</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
