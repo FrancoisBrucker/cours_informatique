@@ -30,7 +30,7 @@ Chaque séance, à partir de la deuxième, commence par un test de 15min qui por
 * mercredi 2h : **C,M** : [complexité et preuve](#complexité-et-preuve)
 * vendredi 4h : **ST** suivi d'un **SM** : [exponentiation rapide](#exponentiation-rapide)
 
-* mercredi 2h : **C,M** : tris
+* mercredi 2h : **C,M** : [tris](#tris)
 * vendredi 4h : **ST** suivi d'un **SM** : tris
 
 * mercredi 2h : **DS** devoir surveillé
@@ -59,6 +59,12 @@ Chaque séance, à partir de la deuxième, commence par un test de 15min qui por
 
 1. [Algorithme de l'exponentiation rapide]({% link cours/mpci/cours_3_exponentiation_rapide/1_cours_exponentiation_rapide.md %})
 2. [Code de l'exponentiation rapide]({% link cours/mpci/cours_3_exponentiation_rapide/2_code_exponentiation_rapide.md %})
+
+### tris
+
+1. [les tris]({% link cours/mpci/cours_4_tris/1_cours_tris.md %})
+
+
 ## Misc
 
 ### tuto visual studio code
