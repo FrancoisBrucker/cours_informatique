@@ -68,7 +68,7 @@
 
 <h3 id="tri-par-sélection">tri par sélection</h3>
 
-<p>en entrée, un tableau <code class="language-plaintext highlighter-rouge">tab</code> remplit de nombre et de taille $n$.</p>
+<p>En entrée, un tableau <code class="language-plaintext highlighter-rouge">tab</code> remplit de nombre et de taille $n$ :</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">selection</span><span class="p">(</span><span class="n">tab</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tab</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
@@ -80,7 +80,7 @@
 
 </code></pre></div></div>
 
-<h4 id="preuve-que-ça-trie">preuve que ça trie</h4>
+<h4 id="preuve-que-sélection-trie">preuve que sélection trie</h4>
 
 <p>Il y a 2 boucles imbriquées. La raison d’être de la boucle faisant varier j est de faire en sorte que <code class="language-plaintext highlighter-rouge">min_index</code> soit l’indice de de la plus petite valeur du tableau pour les indices plus grand que $i$.</p>
 
@@ -88,7 +88,7 @@
 
 <p>Notre invariant de boucle peut donc être : <em>“à la fin de chaque étape $i$ de l’algorithme les $i$ plus petites valeurs du tableaux sont triées aux $i$ premiers indices du tableau”</em></p>
 
-<h4 id="complexités">complexités</h4>
+<h4 id="complexités-du-tri-par-sélection">complexités du tri par sélection</h4>
 
 <p>deux boucles imbriquées :</p>
 
@@ -115,13 +115,13 @@
         <span class="n">tab</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">actu</span>
 </code></pre></div></div>
 
-<h4 id="preuve-que-ça-trie-1">preuve que ça trie</h4>
+<h4 id="preuve-quinsertion-trie">preuve qu’insertion trie</h4>
 
 <p>A chaque itération $i$ l’algorithme remonte la valeur initialement en position $i$ à la première position pour laquelle il est plus grand que le précédent. Remarquez bien que nous n’avons jamais changé les différentes valeurs du tableau.</p>
 
 <p>Notre invariant de boucle peut donc être : “à la fin de l’itération $i$, les $i$ premiers éléments du tableau sont triés”</p>
 
-<h4 id="complexités-1">complexités</h4>
+<h4 id="complexités-du-tri-par-insertions">complexités du tri par insertions</h4>
 
 <p>La complexité va changer selon la nature du tableau :</p>
 
@@ -136,7 +136,7 @@
 
 <p>Par exemple, pour un modèle de données où nos données sont toujours tries ou juste quelques inversions : la complexité en moyenne va être $\mathcal{O}(n)$.</p>
 
-<p>Souvent, pour la complexité en moyenne on considère des données aléatoires. C’est à dire que tout peut se passer de façon équiprobable : dans notre cas, au doigt mouillé, ça veut dire que notre boucle tant que va tout le temps remonter de la moitié de ce qui est possible (donc $i /2$ opérations) : pour un élement donné (aléatoire) il y a autant de nombre plus petit que lui que de nombre plus grand.</p>
+<p>Souvent, pour la complexité en moyenne on considère des données aléatoires. C’est à dire que tout peut se passer de façon équiprobable : dans notre cas, au doigt mouillé, ça veut dire que notre boucle tant que va tout le temps remonter de la moitié de ce qui est possible (donc $i /2$ opérations) : pour un élément donné (aléatoire) il y a autant de nombre plus petit que lui que de nombre plus grand.</p>
 
 <p>En moyenne, la boucle <em>tant que</em> effectue donc un nombre d’itérations égal à $i /2$ : ça croit de 1 à $n/2$ : elle est donc de complexité $\mathcal{O}(n)$. Au final, la complexité moyenne de l’algorithme est donc en $\mathcal{O}(n^2)$</p>
 
@@ -152,7 +152,7 @@
 
 <p>On dessine le tableau à chaque modification de celui-ci. On voit la différence de traitement des algorithmes de tris.</p>
 
-<p>Exemple pour le tri par inserstion/sélection. On a tout mis dans un unique fichier <em>“main.py”</em> :</p>
+<p>Exemple pour le tri par insertion/sélection. On a tout mis dans un unique fichier <em>“main.py”</em> :</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">random</span>
 
@@ -160,9 +160,10 @@
 
 
 <span class="k">def</span> <span class="nf">draw_tab</span><span class="p">(</span><span class="n">tab</span><span class="p">):</span>
-    <span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tab</span><span class="p">,</span> <span class="s">'ro'</span><span class="p">)</span>
-    <span class="n">plt</span><span class="p">.</span><span class="n">pause</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
-    <span class="n">plt</span><span class="p">.</span><span class="n">cla</span><span class="p">()</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">cla</span><span class="p">()</span>  <span class="c1"># on efface le dessin 
+</span>    <span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tab</span><span class="p">,</span> <span class="s">'ro'</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">pause</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span> <span class="c1"># on pause le dessin
+</span>    
 
 
 <span class="k">def</span> <span class="nf">selection</span><span class="p">(</span><span class="n">tab</span><span class="p">):</span>
@@ -199,11 +200,9 @@
 <span class="k">print</span><span class="p">(</span><span class="n">tab</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p><em>Nota Bene</em> : Cela fonctionne parce que le nom matplotlib est défini en-dehors des fonctions.</p>
-
 <h2 id="complexité-du-tri-">complexité du tri ?</h2>
 
-<p>Mais au final, parmis tous les algorithmes de tris, c’est les quels qui vont le plus vite ? Et est-ce le minimum possible ?</p>
+<p>Mais au final, parmi tous les algorithmes de tris, c’est les quels qui vont le plus vite ? Et est-ce le minimum possible ?</p>
 
 <p>nombre de cas différents que peut traiter un algorithme : Dépend du nombre de tests que fait l’algorithme pour pouvoir les différentier :</p>
 
@@ -218,12 +217,11 @@
 
 <p>Nombre de cas différents pour trier tri une liste de $n$ éléments ? Toutes les permutations possibles donc $n!$ façons de ranger $n$ éléments.</p>
 
-<p>comme $n! = n * (n-1) * (n-2) * … * 2 * 1$, on arrive à obtenir l’encadrement suivant :</p>
+<p>comme $n! = n * (n-1) * (n-2) * \dots * 2 * 1$, on arrive à obtenir l’encadrement suivant :</p>
 
 <ul>
   <li>comme $n$ est plus grand que tous les éléments du produit on à $n! \leq n^n$</li>
-  <li>comme $n! \geq n * (n-1) * … * (n/2 + 1) * (n/2)$ et que  $n/2$ est plus petit que les éléments du produit, on a 
-$n! &gt; (n/2)^{(n/2)}$</li>
+  <li>comme $n! \geq n * (n-1) * … * (n/2 + 1) * (n/2)$ et que  $n/2$ est plus petit que les éléments du produit, on a $n! &gt; (n/2)^{(n/2)}$</li>
 </ul>
 
 <p>donc :</p>
@@ -259,6 +257,7 @@ $n! &gt; (n/2)^{(n/2)}$</li>
 <h2 id="tri-rapide">tri rapide</h2>
 
 <p>Le tri rapide est une méthode de tri d’une liste à $n$ éléments dont :</p>
+
 <ul>
   <li>la complexité (maximale) est $\mathcal{O}(n^2)$,</li>
   <li>la complexité en moyenne est $\mathcal{O}(n\ln_2 (n))$,</li>
@@ -279,7 +278,7 @@ $n! &gt; (n/2)^{(n/2)}$</li>
 
 <p>On utilise les <a href="https://python.doctor/page-comprehension-list-listes-python-cours-debutants">list comprehension</a> de python. C’est un moyen clair et efficace de générer des listes.</p>
 
-<h3 id="preuve">preuve</h3>
+<h3 id="preuve-du-tri-rapide">preuve du tri rapide</h3>
 
 <ul>
   <li><code class="language-plaintext highlighter-rouge">tab_gauche</code> contient tous les élements du tableau d’indice <code class="language-plaintext highlighter-rouge">&gt; 0</code> et plus petit ou égal à <code class="language-plaintext highlighter-rouge">pivot</code> qui est égal à <code class="language-plaintext highlighter-rouge">tab[0]</code></li>
@@ -290,7 +289,7 @@ $n! &gt; (n/2)^{(n/2)}$</li>
 
 <p>On il fonctionne pour des tableau de longueur 0 ou 1, donc par récurrence, c’est ok.</p>
 
-<h3 id="complexité">complexité</h3>
+<h3 id="complexités-du-tri-rapide">complexités du tri rapide</h3>
 
 <p>Nous n’allons pas faire ici de calcul rigoureux. Si ça vous intéresse, reportez vous là : <a href="http://perso.eleves.ens-rennes.fr/~mruffini/Files/Other/rapide.pdf">http://perso.eleves.ens-rennes.fr/~mruffini/Files/Other/rapide.pdf</a></p>
 
@@ -302,7 +301,7 @@ $n! &gt; (n/2)^{(n/2)}$</li>
 
 <p>On voit que la complexité du tri rapide tient dans le nombre de récursions qui est fait.</p>
 
-<h4 id="maximale">maximale</h4>
+<h4 id="complexité-maximale-du-tri-rapide">complexité (maximale) du tri rapide</h4>
 
 <p>Un tableau de n-1 case et l’autre tout petit. Ca arrive pour des tableaux déjà triés. La complexité est alors de :</p>
 
@@ -312,7 +311,7 @@ $n! &gt; (n/2)^{(n/2)}$</li>
 
 <p><strong>Attention</strong> : on additionne $n$ fois $\mathcal{O}(n)$. Comme $n$ n’est pas une constante, il <strong>FAUT</strong> le rentrer dans le $\mathcal{O}$.</p>
 
-<h4 id="en-moyenne">en moyenne</h4>
+<h4 id="complexité-en-moyenne-du-tri-rapide">complexité en moyenne du tri rapide</h4>
 
 <p>On coupe toujours le tableau en 2 parties égales. Si les nombres sont répartiés aléatoirement, il n’y a en effet aucune raison que notre pivot sot le plus petit ou le plus grand. Intuitivement, la plus grande probabilité est qu’il soit environ plus grand que la moitié des valeurs restantes et plus petit que l’autre moitié.</p>
 
@@ -340,11 +339,11 @@ $n! &gt; (n/2)^{(n/2)}$</li>
 
 <p>On en conclut que la complexité vaut : \(C(n) = \mathcal{O}(\ln_2(n) * n)\)</p>
 
-<h4 id="complexité-minimale">complexité minimale</h4>
+<h4 id="complexité-minimale-du-tri-rapide">complexité minimale du tri rapide</h4>
 
 <p>Si l’on découpe notre tableau de façon  non équilibrée, une branche de la récursion va faire plus d’opérations que $C(n/2)$. La complexité minimale est ainsi atteinte lorsque l’on coupe notre tableau exactement en 2.</p>
 
-<h4 id="conclusion">Conclusion</h4>
+<h4 id="conclusion">conclusion</h4>
 
 <p>Le tri rapide est donc rigolo :</p>
 
@@ -354,7 +353,6 @@ $n! &gt; (n/2)^{(n/2)}$</li>
 </ul>
 
 <p>En pratique, on commence donc par mélanger le tableau pour le trier ensuite, c’est plus rapide que le trier tout court.</p>
-
 
   </div>
 

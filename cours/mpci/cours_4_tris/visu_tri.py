@@ -4,9 +4,9 @@ import matplotlib.pyplot as plt
 
 
 def draw_tab(tab):
+    plt.cla()
     plt.plot(tab, 'ro')
     plt.pause(0.1)
-    plt.cla()
 
 
 def selection(tab):
