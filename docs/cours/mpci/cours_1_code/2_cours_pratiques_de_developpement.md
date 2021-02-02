@@ -177,7 +177,7 @@ def test_non():
     assert 1 == 2
 
 ``` 
->**Remarque* : le premier test est vrai : `1 == 1` est `True` donc assert ne va rien faire. Le second va planter car `1== 2`va rendre `False` et assert va sarrêter le programme.
+>**Remarque* : le premier test est vrai : `1 == 1` est `True` donc assert ne va rien faire. Le second va planter car `1== 2`va rendre `False` et assert va arrêter le programme.
 
 Vous ne devriez pas avoir de rouge, le linter doit être content :
 
@@ -190,7 +190,7 @@ Mettons en place nos tests.
 2. on configure les tests de notre projet en tapant la commande (ctrl/cmd+shift+p) : *python : Configure tests* on choisit *pytest* puis *. (root)* qui donne le dossier de départ où aller chercher nos tests
 3. On lance nos tests avec soit :
    * la commande : *Python: Discover Tests* puis on clique sur *run tests* en bas à gauche de la fenêtre (à côté du nom de l'interpréteur), on choisit *Run all Tests*
-   * il y a un petit bécher dans la colonne de gauche de la fenêtre, c'est les tests. On pet les exécuter tous en cliquant sur les 2 triangles verts dans le tab des tests. Vous pouvez voir le résultat complet en cliquant sur le petit terminal (5ème icône du tab des tests.)
+   * il y a un petit erlenmeyer dans la colonne de gauche de la fenêtre, c'est les tests. On pet les exécuter tous en cliquant sur les 2 triangles verts dans le tab des tests. Vous pouvez voir le résultat complet en cliquant sur le petit terminal (5ème icône du tab des tests.)
    * dans un terminal en tapant `pytest` alors que vous êtes dans le dossier du projet.
 
 

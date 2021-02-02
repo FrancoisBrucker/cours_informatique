@@ -69,10 +69,29 @@ Chaque séance, à partir de la deuxième, commence par un test de 15min qui por
 
 ### tuto visual studio code
 
-https://code.visualstudio.com/docs/editor/codebasics
+<https://code.visualstudio.com/docs/editor/codebasics>
 
-TBD
 
 ### Tuto markdown
 
+[Le format markdown]({% link cours/tuto/format_markdown.md %})
+
+### tuto python
+
 TBD
+
+#### eval
+
+#### import 
+
+* `import truc` et pas `import truc.py`
+* qu'est ce que *"__pycache__"* ?
+* si on fait `from toto import toto` `toto`n'est plus le fichier *"toto.py"* mais le nom importé. SI ensuite on fait `from toto import tata` ça va planter.
+
+#### tests
+
+Si les tests ne sont pas révélé alors que vous avez des fichiers de tests. regardez les messages d'erreurs (où ?). SOuvent c'est du au fait qu'au moins un fichier de test ne peut être lu à cause d'erreurs (de syntaxe, d'import qui ne fonctionnent pas, ...)
+
+#### bases de python
+
+listes, variables etc.
