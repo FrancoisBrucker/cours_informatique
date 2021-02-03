@@ -120,7 +120,7 @@ $$C(n) = 2 * C(n/2) + \mathcal{O}(n)$$
 
 Pour connaître la valeur de la complexité on utilise le [master theorem](https://fr.wikipedia.org/wiki/Master_theorem) qui est **LE** théorème des complexités pour les algorithmes récursifs. Sa preuve dépasse (de loin) le cadre de ce cours, mais son énoncé sous la  [notation de Landau](https://fr.wikipedia.org/wiki/Master_theorem#%C3%89nonc%C3%A9_avec_la_notation_de_Landau), nous permet de déterminer aisément la complexité de nombreux algorithmes récursifs, dont le notre : $\mathcal{O}(n\ln_2(n))$, puisque $1 = \ln_2(2)$.
 
-Cet algorithme a la particularité d'avoir toujours le même nombre d'opérations quelque soit la liste en entrée. Il est donc aisé de mesurer sa complexité. Faites le et vérifier que c'est bien $\mathcal{O}(n\ln_2(n))$. 
+Cet algorithme a la particularité d'avoir toujours le même nombre d'opérations quelque soit la liste en entrée. Il est donc aisé de mesurer sa complexité. Faites le et vérifier que c'est bien $\mathcal{O}(n\ln_2(n))$. Regardez le aussi trier, c'est très différent des autres tris.
 
 ## mélanger des listes ?
 
