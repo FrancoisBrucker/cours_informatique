@@ -15,7 +15,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Code Exponentiation rapide" />
 <script type="application/ld+json">
-{"description":"Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)","headline":"Code Exponentiation rapide","@type":"WebPage","url":"/cours_informatique/cours/mpci/cours_3_exponentiation_rapide/2_code_exponentiation_rapide.html","@context":"https://schema.org"}</script>
+{"description":"Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)","@type":"WebPage","headline":"Code Exponentiation rapide","url":"/cours_informatique/cours/mpci/cours_3_exponentiation_rapide/2_code_exponentiation_rapide.html","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
   <script type="text/x-mathjax-config">
@@ -92,8 +92,8 @@
 <p>On crée 2 fichiers :</p>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">exponentielle.py</code></li>
-  <li><code class="language-plaintext highlighter-rouge">test_exponentielle.py</code></li>
+  <li><em>“exponentielle.py”</em></li>
+  <li><em>“test_exponentielle.py”</em></li>
 </ul>
 
 <h4 id="exponentielle-simple">exponentielle simple</h4>
@@ -138,18 +138,22 @@
 
 <p>Mais pour ce qui nous importe, on va dire que c’est pas grave parce que ça ne prend pas tellement de temps que ça. On va utiliser les fonctions simple du module <a href="https://docs.python.org/3/library/time.html">time</a>. Faisons une petite fonction de validation dans un nouveau fichier (que vous pourrez appeler <em>“expérimentation.py”</em> par exemple) pour voir comment on peut utiliser la mesure du temps dans notre programme.</p>
 
+<p>Utilisation de la fonction <a href="https://docs.python.org/fr/3/library/time.html#time.time">time</a> du module <a href="https://docs.python.org/3/library/time.html">time</a> de python :</p>
+
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">time</span>
 
-
 <span class="n">depart</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
-<span class="n">time</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># ne fait rien pendant 2 secondes
-</span><span class="n">fin</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
+
+<span class="c1"># le code dont on veut mesurer le temps d'exécution
+</span>
+<span class="n">fin</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
 
 <span class="k">print</span><span class="p">(</span><span class="n">fin</span> <span class="o">-</span> <span class="n">depart</span><span class="p">)</span>  <span class="c1"># doit afficher environ 2
-</span>
-</code></pre></div></div>
+</span></code></pre></div></div>
 
-<p>Adaptez le code ci-dessus pour que notre programme principal donne le temps mis pour faire tous les calculs avec simple et tous les calculs avec rapide. Pour cela, mesurez le temps avant et après vos calculs, la différence vous donnera le temps pris par vos calculs.</p>
+<p>Testez le code ci-dessus en utilisant la fonction <code class="language-plaintext highlighter-rouge">sleep</code> (cherchez là dans la doc du <a href="https://docs.python.org/3/library/time.html">module time</a>) du module time (que fait-elle ?)</p>
+
+<p>Adaptez ensuite le code pour que le programme principal donne le temps mis pour faire tous les calculs avec simple et tous les calculs avec rapide.</p>
 
 <h2 id="on-raffine">On raffine</h2>
 
@@ -170,14 +174,29 @@
 
 <p>On va utiliser <a href="https://matplotlib.org/">matplotlib</a> pour représenter graphiquement nos temps.</p>
 
+<h4 id="installation-de-matplotlib">installation de matplotlib</h4>
+
+<p>Pour installer matplotlib plusieurs possibilités :</p>
+
+<ul>
+  <li>directement via pip3/pip :
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">pip install matplotlib</code> sous windows</li>
+      <li><code class="language-plaintext highlighter-rouge">pip3 install matplotlib</code> sous mac/linux (voir <code class="language-plaintext highlighter-rouge">sudo pip3 install matplotlib</code> sur unix ou si vous n’avez pas installé python3 avec <a href="https://brew.sh/">brew</a>)</li>
+      <li>avec <a href="https://www.anaconda.com/">anaconda</a>, matplotlib est déjà installé.</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="utilisation-basique-de-matplotlib">utilisation basique de matplotlib</h4>
+
 <blockquote>
   <p><strong>Remarque</strong> : je vais utiliser les lignes de codes trouvées sur le net et je vais me conformer à l’usage en utilisant <code class="language-plaintext highlighter-rouge">import matplotlib.pyplot as plt</code> même si ça viole toutes les règles et bonnes pratiques en informatique.</p>
 </blockquote>
 
 <p>Pour utiliser la  bibliothèque  :</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 </code></pre></div></div>
 
 <p>Ensuite, la façon dont on procède pour dessier est la suivante :</p>
@@ -269,7 +288,9 @@
 <span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p>Utilisez les codes ci-dessus  pour superposer les deux listes de temps et voir si l’on obtient bien les courbes théoriques de complexité.</p>
+<h4 id="à-vous">à vous</h4>
+
+<p>Utilisez les codes précédents  pour superposer les deux listes de temps et voir si l’on obtient bien les courbes théoriques de complexité.</p>
 
   </div>
 
