@@ -32,8 +32,8 @@ suivez le guide.
 
 On crée 2 fichiers :
 
-* `exponentielle.py`
-* `test_exponentielle.py`
+* _"exponentielle.py"_
+* _"test_exponentielle.py"_
 
 #### exponentielle simple
 
@@ -70,19 +70,23 @@ mesurer le temps c'est pas simple parce que :
 
 Mais pour ce qui nous importe, on va dire que c'est pas grave parce que ça ne prend pas tellement de temps que ça. On va utiliser les fonctions simple du module [time](https://docs.python.org/3/library/time.html). Faisons une petite fonction de validation dans un nouveau fichier (que vous pourrez appeler *"expérimentation.py"* par exemple) pour voir comment on peut utiliser la mesure du temps dans notre programme.
 
+Utilisation de la fonction [time](https://docs.python.org/fr/3/library/time.html#time.time) du module [time](https://docs.python.org/3/library/time.html) de python :
+
 ```python
 import time
 
-
 depart = time.time()
-time.sleep(2)  # ne fait rien pendant 2 secondes
+
+# le code dont on veut mesurer le temps d'exécution
+
 fin = time.time()
 
 print(fin - depart)  # doit afficher environ 2
-
 ```
 
-Adaptez le code ci-dessus pour que notre programme principal donne le temps mis pour faire tous les calculs avec simple et tous les calculs avec rapide. Pour cela, mesurez le temps avant et après vos calculs, la différence vous donnera le temps pris par vos calculs.
+Testez le code ci-dessus en utilisant la fonction `sleep` (cherchez là dans la doc du [module time](https://docs.python.org/3/library/time.html)) du module time (que fait-elle ?)
+
+Adaptez ensuite le code pour que le programme principal donne le temps mis pour faire tous les calculs avec simple et tous les calculs avec rapide.
 
 ## On raffine
 
@@ -99,14 +103,24 @@ Vérifiez le expérimentalement.
 
 ### dessin des complexité
 
-On va utiliser [matplotlib](https://matplotlib.org/) pour représenter graphiquement nos temps. 
+On va utiliser [matplotlib](https://matplotlib.org/) pour représenter graphiquement nos temps.
+
+#### installation de matplotlib
+
+Pour installer matplotlib plusieurs possibilités :
+
+* directement via pip3/pip :
+  * `pip install matplotlib` sous windows
+  * `pip3 install matplotlib` sous mac/linux (voir `sudo pip3 install matplotlib` sur unix ou si vous n'avez pas installé python3 avec [brew](https://brew.sh/))
+  * avec [anaconda](https://www.anaconda.com/), matplotlib est déjà installé.
+
+#### utilisation basique de matplotlib
 
 > **Remarque** : je vais utiliser les lignes de codes trouvées sur le net et je vais me conformer à l'usage en utilisant `import matplotlib.pyplot as plt` même si ça viole toutes les règles et bonnes pratiques en informatique.
 
 Pour utiliser la  bibliothèque  :
 
 ```python
-
 import matplotlib.pyplot as plt
 ```
 
@@ -198,4 +212,6 @@ plt.plot(x, x_log_x, color="#0000ff")
 plt.show()
 ```
 
-Utilisez les codes ci-dessus  pour superposer les deux listes de temps et voir si l'on obtient bien les courbes théoriques de complexité.
+#### à vous
+
+Utilisez les codes précédents  pour superposer les deux listes de temps et voir si l'on obtient bien les courbes théoriques de complexité.
