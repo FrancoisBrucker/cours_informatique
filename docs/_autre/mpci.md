@@ -31,7 +31,7 @@ Chaque séance, à partir de la deuxième, commence par un test de 15min qui por
 * vendredi 4h : **ST** suivi d'un **SM** : [exponentiation rapide](#exponentiation-rapide)
 
 * mercredi 2h : **C,M** : [tris](#tris)
-* vendredi 4h : **ST** suivi d'un **SM** : tris
+* vendredi 4h : **ST** suivi d'un **SM** : [tris](#tris)
 
 * mercredi 2h : **DS** devoir surveillé
 * vendredi 4h : **C,M** suivi d'un **SM** : classes et objets
@@ -63,7 +63,7 @@ Chaque séance, à partir de la deuxième, commence par un test de 15min qui por
 ### tris
 
 1. [les tris]({% link cours/mpci/cours_4_tris/1_cours_tris.md %})
-
+1. [session de code sur les tris]({% link cours/mpci/cours_4_tris/2_code_tris.md %})
 
 ## Misc
 
