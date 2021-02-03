@@ -11,6 +11,74 @@ On verra quelques algorithmes de tris et cela nous permettra de parler de comple
 
 En plus, les tris c'est chouette parce qu'il y a [plein de façon de trier](https://fr.wikipedia.org/wiki/Algorithme_de_tri)
 
+## différentes complexités
+
+Les méthodes des tri vont nous permettre d'introduire différentes notions de complexité.
+
+On va prendre l'exemple de la recherche d'un élément dans une liste :
+
+```python
+def recherche(element, liste):
+    for x in liste:
+        if element == x:
+            return True
+    return False
+```
+
+La fonction `recherche` va rendre `True` si l'entrée `element` est dans la liste en entrée nommée `liste`.
+
+On voit que le nombre d'opérations va varier selon la taille de `liste` et si `element` est dans la liste ou non.
+
+### complexité ou complexité maximale
+
+Lorsque l'on parle de *complexité* sans rien ajouter c'est **toujours** de la *complexité maximale* dont on parle. C'est à dire le nombre d'opérations maximale mesurée en $\mathcal{O}$ qu'effectue la fonction pour une taille d'entrée donnée. On donnera également une entrée particulière réalisant cette complexité.
+
+Pour la fonction `recherche` la **complexité maximale** est atteinte lorsque tous les éléments de `liste` sont parcourus sans trouver `element`.
+
+Donc : la complexité de recherche est $\mathcal{O}(n)$  où $n$ est la longueur de `liste` et elle est atteinte pour une `liste` ne contenant pas `element`.
+
+On voit qu'on a :
+
+* donné la complexité de la fonction en fonction de la taille des entrées (ici la taille de la liste)
+* on a donné un exemple d'entrée réalisant cette complexité : une `liste` de taille quelconque ne contenant pas `element`.
+
+> On ne peut pas juste donner une taille de liste particulière come exemple. Il faut que tous les paramètres de la complexité (ici uniquement la taille), puisse varier jusqu'à l'infini.
+
+### complexité minimale
+
+La *complexité minimale*  nombre d'opérations minimale mesurée en $\mathcal{O}$ qu'effectue la fonction pour une taille d'entrée donnée.
+
+C'est à dire que l'on cherche une entrée particulière qui va produire le moins d'opérations possible.
+
+Pour la fonction `recherche` la **complexité minimale** est atteinte lorsque `element` est le premier élément de `liste`.
+
+Donc : la **complexité minimale** de recherche est $\mathcal{O}(1)$   et elle est atteinte pour une `liste` de taille quelconque dont le premier élément est `element`.
+
+### complexité en moyenne
+
+La complexité en moyenne est calculée en considérant le nombre d'opérations moyenne pris pour toutes les entrées d'une taille fixée.
+
+Pour pouvoir la calculer, il faut se donner un modèle aléatoire de données et calculer l'espérance (la moyenne) du nombre d'opérations pour ce modèle.
+
+POur recherche, regardons combien d'opérations va prendre notre algorithme selon la position de `element` dans `liste`. On voit rapidement que si `element` est à la $i$ème position de `liste` le nombre d'opérations va être proportionnelle à $i$, disons $K * i$ opérations.
+
+Le nombre d'opérations moyen est alors :
+
+$$\sum_{i=0}^{i < n} (p_i * K * i)$$
+
+Où $p_i$ est la probabilité qu'`element` soit à la $i$ème position de `liste`. Comme on a aucune raison de privilégier une position par rapport à une autre, on considère que notre modèle de donnée est équi-probable et donc que $p_i = \frac{1}{n}$  pour tout $i$. La complexité en moyenne vaut alors :
+
+$$\sum_{i=0}^{i < n}() \frac{1}{n} * K * i )= \frac{K}{n}\sum_{i=0}^{i < n} i = \frac{K * (n-1)}{2} = \mathcal{O}(n)$$
+
+La complexité en moyenne est égale à la complexité : il y a beaucoup plus de cas où la complexité effective est proche de la complexité maximale que de la complexité minimale.
+
+> **Remaque** : pour aller plus vite, on aurait pu dire que si notre modèle est équiprobable, `element` va se trouver en moyenne au milieu de notre tableau, et donc qu'il faut parcourir de l'ordre de $\frac{n}{2}$ éléments de `liste`, la complexité en moyenne est de $\mathcal{O}(n/2) = \mathcal{O}(n)$. Attention cependant, c'est un raccourci...Faites très attention à ne pas vous tromper. Si vous avez un doute, faites le calcul effectif.
+Par exemple, pour un modèle de données où nos données sont toujours tries ou juste quelques inversions : la complexité en moyenne va être $\mathcal{O}(n)$.
+
+La complexité en moyenne est très importante en pratique puisque c'est celle là que vous allez la plupart du temps avoir lorsque vous exécuterez votre fonction.
+
+De plus, lorsque vous mesurez le temps d'exécution d'une fonction avec des paramètres aléatoires, c'est cette complexité là que vous mesurez, **pas** la complexité maximale.
+
 ## tris simple
 
 ### tri par sélection
@@ -34,7 +102,7 @@ Il y a 2 boucles imbriquées. La raison d'être de la boucle faisant varier j es
 
 Ensuite on échange cette valeur avec celle initialement à l'indice $i$.
 
-Notre invariant de boucle peut donc être : *"à la fin de chaque étape $i$ de l'algorithme les $i$ plus petites valeurs du tableaux sont triées aux $i$ premiers indices du tableau"*
+Notre invariant de boucle peut donc être : _"à la fin de chaque étape $i$ de l'algorithme les $i$ plus petites valeurs du tableaux sont triées aux $i$ premiers indices du tableau"_
 
 #### complexités du tri par sélection
 
@@ -45,7 +113,7 @@ deux boucles imbriquées :
 
 L'échange étant en $\mathcal{O}(1)$ la complexité totales est en $\mathcal{O}(n) * \mathcal{O}(n) = \mathcal{O}(^2)$.
 
-Le nombre d'itérations n'est pas dépendant du tableau. 
+Le nombre d'itérations n'est pas dépendant du tableau.
 
 ### tri par insertion
 
@@ -66,7 +134,7 @@ def insertion(tab):
 
 A chaque itération $i$ l'algorithme remonte la valeur initialement en position $i$ à la première position pour laquelle il est plus grand que le précédent. Remarquez bien que nous n'avons jamais changé les différentes valeurs du tableau.
 
-Notre invariant de boucle peut donc être : "à la fin de l'itération $i$, les $i$ premiers éléments du tableau sont triés"
+Notre invariant de boucle peut donc être : _"à la fin de l'itération i, les i premiers éléments du tableau sont triés"_
 
 #### complexités du tri par insertions
 
@@ -87,7 +155,7 @@ En moyenne, la boucle *tant que* effectue donc un nombre d'itérations égal à 
 
 Pour notre algorithme cela veut dire que le cas le meilleur arrive très rarement par rapport au cas le pire (parmi les $n!$ ordres possible, il y en a très peut qui sont presque triés).
 
-Vous allez le prouver expérimentalement.
+> **Remarque** : Vous allez le prouver expérimentalement pendant la session de code.
 
 ### différence de traitement des données ?
 
