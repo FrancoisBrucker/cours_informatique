@@ -60,19 +60,53 @@ La complexité en moyenne est calculée en considérant le nombre d'opérations 
 
 Pour pouvoir la calculer, il faut se donner un modèle aléatoire de données et calculer l'espérance (la moyenne) du nombre d'opérations pour ce modèle.
 
-POur recherche, regardons combien d'opérations va prendre notre algorithme selon la position de `element` dans `liste`. On voit rapidement que si `element` est à la $i$ème position de `liste` le nombre d'opérations va être proportionnelle à $i$, disons $K * i$ opérations.
+Pour la fonction `recherche`, regardons combien d'opérations va prendre notre algorithme selon la position de `element` dans `liste`. On voit rapidement que si `element` est à la $i$ème position de `liste` le nombre d'opérations va être $\mathcal{O}(i)$.
+
+Notre complexité moyenne est alors :
+
+$$C = \sum_{i=0}^{i < n} (p_i * \mathcal{O}(i)$$
+
+#### calcul de la complexité moyenne rapide
+
+Comme on somme des $\mathcal{O}(i)$, on peut utiliser la même règle pour pour les complexités des boucles for croissantes : on prend le maximum partout. 
+
+De là : 
+
+$$C = \sum_{i=0}^{i < n} (p_i * \mathcal{O}(n) = \mathcal{O}(n) * \sum_{i=0}^{i < n} (p_i)$$
+
+On suppose que l'élément est dans la liste et donc que $\sum_{i=0}^{n-1}p_i = 1$ (la somme des probabilités vaut 1 si on somme sur toutes les possibilités).
+
+La complexité en moyenne de notre algorithme est ainsi en :
+
+$$C =  \mathcal{O}(n)$$
+
+#### calcul de la complexité moyenne détaillée
+
+Si l'on est pas à l'aise avec les $\mathcal{O}(i)$, on peut les remplacer   par une formule proportionnelle à $i$ : $K * i + K'$ avec $K$ et $K'$ deux constantes.
 
 Le nombre d'opérations moyen est alors :
 
-$$\sum_{i=0}^{i < n} (p_i * K * i)$$
+$$C = \sum_{i=0}^{i < n} (p_i * (K * i + K')$$
 
-Où $p_i$ est la probabilité qu'`element` soit à la $i$ème position de `liste`. Comme on a aucune raison de privilégier une position par rapport à une autre, on considère que notre modèle de donnée est équi-probable et donc que $p_i = \frac{1}{n}$  pour tout $i$. La complexité en moyenne vaut alors :
+Où $p_i$ est la probabilité qu'`element` soit à la $i$ème position de `liste`.
 
-$$\sum_{i=0}^{i < n}() \frac{1}{n} * K * i )= \frac{K}{n}\sum_{i=0}^{i < n} i = \frac{K * (n-1)}{2} = \mathcal{O}(n)$$
+$$C = \sum_{i=0}^{i < n} (p_i * K * i) + \sum_{i=0}^{i < n} (p_i * K')$$
+
+On suppose pour simplifier que l'élément est dans la liste et donc que $\sum_{i=0}^{n-1}p_i = 1$ (la somme des probabilités vaut 1 si on somme sur toutes les possibilités). De là :
+
+$$C = \sum_{i=0}^{i < n} (p_i * K * i) + K' * \sum_{i=0}^{i < n} (p_i)$$
+
+et donc :
+
+$$C = \sum_{i=0}^{i < n} (p_i * K * i) + K'$$
+
+Comme on a aucune raison de privilégier une position par rapport à une autre, on considère que notre modèle de donnée est équiprobable et donc que $p_i = p_j$ pour tous $i$ et $j$. Comme $\sum_{i=0}^{n-1}p_i = 1$, on en déduit que p_i = \frac{1}{n}$  pour tout $i$. La complexité en moyenne vaut alors :
+
+$$C = \sum_{i=0}^{i < n}(\frac{1}{n} * K * i ) + K' = \frac{K}{n}\sum_{i=0}^{i < n} i + K' = \frac{K * (n-1)}{2} + K' = \mathcal{O}(n)$$
 
 La complexité en moyenne est égale à la complexité : il y a beaucoup plus de cas où la complexité effective est proche de la complexité maximale que de la complexité minimale.
 
-> **Remaque** : pour aller plus vite, on aurait pu dire que si notre modèle est équiprobable, `element` va se trouver en moyenne au milieu de notre tableau, et donc qu'il faut parcourir de l'ordre de $\frac{n}{2}$ éléments de `liste`, la complexité en moyenne est de $\mathcal{O}(n/2) = \mathcal{O}(n)$. Attention cependant, c'est un raccourci...Faites très attention à ne pas vous tromper. Si vous avez un doute, faites le calcul effectif.
+> **Remarque** : pour aller plus vite, on aurait pu dire que si notre modèle est équiprobable, `element` va se trouver en moyenne au milieu de notre tableau, et donc qu'il faut parcourir de l'ordre de $\frac{n}{2}$ éléments de `liste`, la complexité en moyenne est de $\mathcal{O}(n/2) = \mathcal{O}(n)$. Attention cependant, c'est un raccourci...Faites très attention à ne pas vous tromper. Si vous avez un doute, faites le calcul effectif.
 Par exemple, pour un modèle de données où nos données sont toujours tries ou juste quelques inversions : la complexité en moyenne va être $\mathcal{O}(n)$.
 
 La complexité en moyenne est très importante en pratique puisque c'est celle là que vous allez la plupart du temps avoir lorsque vous exécuterez votre fonction.
@@ -214,52 +248,6 @@ plt.show()
 print(tab)
 ```
 
-## complexité du tri ?
-
-Mais au final, parmi tous les algorithmes de tris, c'est les quels qui vont le plus vite ? Et est-ce le minimum possible ?
-
-nombre de cas différents que peut traiter un algorithme : Dépend du nombre de tests que fait l'algorithme pour pouvoir les différentier :
-
-* 0 test -> 1 cas (l'algorithme répond toujours la même chose)
-* 1 test -> 2 cas
-* 2 tests -> $4 = 2^2$ cas
-* p tests -> $2^p$ cas
-
-Si on veut distinguer $n$ cas il faut ainsi au moins $\ln_2(n)$ tests. Donc un algorithme qui doit traiter $n$ cas différents aura au moins une complexité de $\mathcal{O}(\ln_2(n))$ opérations (les tests).
-
-Nombre de cas différents pour trier tri une liste de $n$ éléments ? Toutes les permutations possibles donc $n!$ façons de ranger $n$ éléments. 
-
-comme $n! = n * (n-1) * (n-2) * \dots * 2 * 1$, on arrive à obtenir l'encadrement suivant :
-
-* comme $n$ est plus grand que tous les éléments du produit on à $n! \leq n^n$
-* comme $n! \geq n * (n-1) * ... * (n/2 + 1) * (n/2)$ et que  $n/2$ est plus petit que les éléments du produit, on a $n! > (n/2)^{(n/2)}$
-
-donc : 
-
-* $(n/2)^{(n/2)} \leq n! \leq n^n$
-* en passant au log : $\ln_2 ((n/2)^{(n/2)}) <= \ln_2(n!) <= \ln_2 (n^n)$
-* donc $n/2 * \ln_2 (n/2) <= \ln_2(n!) <= n \ln_2(n)$
-
-Comme $\ln_2 (n/2) = \ln_2 (n) + \ln_2(1/2) = \ln_2 (n) - \ln_2(2) = \ln_2 (n) - 1$, on a que :
-
-$$\frac{1}{2} n\ln(n) - \frac{n}{2} \leq \ln(n!) \leq n\ln_2(n)$$
-
-Ce qui donne :
-
-$$\frac{1}{2} - \frac{1}{\ln_2(n)} \leq \frac{\ln(n!)}{n\ln_2(n)} \leq 1$$
-
-Et puisque pour tout $n > 4$  on a que $\ln_2(n) > 2$, on a pour $n > 4$ :
-
-$$\frac{1}{4} \leq \frac{\ln(n!)}{n\ln_2(n)} \leq 1$$
-
-Cette inégalité nous permet facilement de montrer qu'une fonction en $\mathcal{O}(\ln_2(n!))$ sera aussi en $\mathcal{O}(n \ln_2(n))$ et donc qu'il faut au moins $\mathcal{O}(n \ln_2(n))$ tests pour distinguer parmi $n!$ possibilités.
-
-**Conclusion** : Tout algorithme de tri aura une complexité de au moins $\mathcal{O}(n \ln_2(n))$  opérations.
-
-Pour finir, notez qu'il existe des algorithmes de tri en $\mathcal{O}(n \ln_2(n))$  opérations comme le [tri fusion par exemple](https://fr.wikipedia.org/wiki/Tri_fusion) par exemple.
-
-> **Remarque** : le tri est le cas heureux d'un problème dont on connaît la complexité (c'est à dire que l'on a un algorithme de cmplexité (maximale) minimale). Ce n'est pas le cas pour tous les problèmes. Genre la [multiplication de matrices](https://fr.wikipedia.org/wiki/Produit_matriciel), ou une borne min est de $\mathcal{O}(n^2)$ (avec $n$ le nombre de lignes de la matrice), mais on ne sait pas s'il existe des algorithme pour le faire. Le mieux que l'on sait faire pour l'instant c'est en $\mathcal{O}(n^{2.376})$.
-
 ## tri rapide
 
 Le tri rapide est une méthode de tri d'une liste à $n$ éléments dont :
@@ -352,3 +340,92 @@ Le tri rapide est donc rigolo :
 * il est très rapide pour les tableaux en désordre et très lent pour les tableaux déjà triés.
 
 En pratique, on commence donc par mélanger le tableau pour le trier ensuite, c'est plus rapide que le trier tout court.
+
+## complexité du tri ?
+
+Mais au final, parmi tous les algorithmes de tris, c'est les quels qui vont le plus vite ? Et est-ce le minimum possible ?
+
+nombre de cas différents que peut traiter un algorithme : Dépend du nombre de tests que fait l'algorithme pour pouvoir les différentier :
+
+* 0 test -> 1 cas (l'algorithme répond toujours la même chose)
+* 1 test -> 2 cas
+* 2 tests -> $4 = 2^2$ cas
+* p tests -> $2^p$ cas
+
+Si on veut distinguer $k$ cas il faut ainsi au moins $\ln_2(k)$ tests. Donc un algorithme qui doit traiter $k$ cas différents aura au moins une complexité de $\mathcal{O}(\ln_2(k))$ opérations (les tests).
+
+Dans le cas du tri, une liste de $n$ éléments aura $n!$ permutations possibles.
+
+Par exemple pour les 3 premiers entiers on a $[1, 2, 3]$, $[1, 3, 2]$, $[2, 1, 3]$, $[2, 3, 1]$, $[3, 1, 2]$ et $[3, 2, 1]$ : c'est bien 3! possibilités.
+
+>**Remarque** : Si on prend la liste des 1 premiers entiers. Le plus petit entier peut être à $n$ positions différentes. Une fois sa position déterminée, le deuxième plus petit élément n'a plus que $n-1$ positions possibles : Il y a donc $n * (n-1)$ possiblités pour placer les 2 plus petits éléments. Par récurrence on démontre alors que le nombre de possibilités pour ranger les $n$ premiers entiers est $n * (n-1) * \dots * 2 * 1 = n!$.
+
+Un algorithme de tri d'une liste à $n$ éléments quelqu'il soit aura besoin de pouvoir distinguer parmi toutes les permutations possibles de cette liste, donc parmi $n!$ possibilités.
+On en déduit que sa complexité sera au moins de $C = \mathcal{O}(\ln_2(n!))$ opérations.
+
+On peut montrer que cette complexité est équivalente à une complexité de
+$\mathcal{O}(n\ln_2(n))$ opérations (voir les parties suivantes pour le détail).
+
+Tout algorithme de tri dune liste à $n$ élément a donc au moins une complexité de $\mathcal{O}(n\ln_2(n))$.
+
+On n'en connaît pas encore, en effet le tri par insertion, sélection et tri rapide sont tous trois de complexité égale à $\mathcal{O}(n^2)$ (même si le tri rapide est de complexité moyenne $\mathcal{O}(n\ln_2(n))$, il existe des cas où sa complexité est de $\mathcal{O}(n^2)$). Mais il en existe, comme le [tri fusion par exemple](https://fr.wikipedia.org/wiki/Tri_fusion) par exemple.
+
+La borne de $\mathcal{O}(n \ln_2(n))$ est donc atteinte ! 
+
+En appelant *complexité d'un problème*, la complexité (maximale) du meilleur algorithme pour le résoudre, on a que :
+
+La complexité du tri est  de $\mathcal{O}(n\ln_2(n))$ opérations.
+
+> **Remarque** : le tri est le cas heureux d'un problème dont on connaît la complexité (c'est à dire que l'on a un algorithme de cmplexité (maximale) minimale). Ce n'est pas le cas pour tous les problèmes. Genre la [multiplication de matrices](https://fr.wikipedia.org/wiki/Produit_matriciel), ou une borne min est de $\mathcal{O}(n^2)$ (avec $n$ le nombre de lignes de la matrice), mais on ne sait pas s'il existe des algorithme pour le faire. Le mieux que l'on sait faire pour l'instant c'est en $\mathcal{O}(n^{2.376})$.
+
+### calcul rapide de l'équivalence
+
+Comment arrive-t-on à prouver que $\mathcal{O}(\ln_2(n!))$ et $\mathcal{O}(n\ln_2(n))$ sont équivalents ?
+
+En jouant avec les $\mathcal{O}$ :
+
+$$C = \mathcal{O}(\ln_2(n!)) = \mathcal{O}(\ln_2(n * (n-1) * \dots... * 1))$$
+
+en utilisant le fait que $\ln_2(ab) = \ln_2(a) + \ln_2(b)$ on a :
+
+$$ C = \mathcal{O}(\ln_2(n)  + \ln_2(n-1) + \dots + \ln_2(1))$$
+
+comme $\ln_2$ est une fonction croissante on a :
+
+$$ C < \mathcal{O}(\ln_2(n)  + \ln_2(n) + \dots + \ln_2(n)) = \mathcal{O}(n\ln_2(n))$$
+
+Ceci montre que toute fonction en $\mathcal{O}(n\ln_2(n))$ est en $\mathcal{O}(\ln_2(n!))$. L'implication réciproque est plus compliquée à montrer, comme on le verra dans la partie suivante.
+
+### calcul détaillé de l'équivalence des O
+
+Nombre de cas différents pour trier tri une liste de $n$ éléments ? Toutes les permutations possibles donc $n!$ façons de ranger $n$ éléments. 
+
+comme $n! = n * (n-1) * (n-2) * \dots * 2 * 1$, on arrive à obtenir l'encadrement suivant :
+
+* comme $n$ est plus grand que tous les éléments du produit on à $n! \leq n^n$
+* comme $n! \geq n * (n-1) * ... * (n/2 + 1) * (n/2)$ et que  $n/2$ est plus petit que les éléments du produit, on a $n! > (n/2)^{(n/2)}$
+
+donc :
+
+* $(n/2)^{(n/2)} \leq n! \leq n^n$
+* en passant au log : $\ln_2 ((n/2)^{(n/2)}) \leq \ln_2(n!) \leq \ln_2 (n^n)$
+* donc $n/2 * \ln_2 (n/2) \leq \ln_2(n!) \leq n \ln_2(n)$
+
+Comme $\ln_2 (n/2) = \ln_2 (n) + \ln_2(1/2) = \ln_2 (n) - \ln_2(2) = \ln_2 (n) - 1$, on a que :
+
+$$\frac{1}{2} n\ln_2(n) - \frac{n}{2} \leq \ln_2(n!) \leq n\ln_2(n)$$
+
+Ce qui donne :
+
+$$\frac{1}{2} - \frac{1}{\ln_2(n)} \leq \frac{\ln_2(n!)}{n\ln_2(n)} \leq 1$$
+
+Et puisque pour tout $n > 2^4$  on a que $\ln_2(n) > 4$, donc que $\frac{1}{2} - \frac{1}{\ln_2(n)} \leq \frac{1}{2} - \frac{1}{4} = \frac{1}{4}$.
+
+De là,  pour $n > 2^4$ :
+
+$$\frac{1}{4} \leq \frac{\ln_2(n!)}{n\ln_2(n)} \leq 1$$
+
+On peut maintenant montrer l'équivalence de $\mathcal{O}(\ln_2(n!))$ et de  $\mathcal{O}(n\ln_2(n))$ :
+
+* si $g(n)$ est en $\mathcal{O}(\ln_2(n!))$ il existe $n_0$ et $C$ tel que : $g(n) < C * \ln_2(n!)$ pour n > $n_0$. Pour $n_1 = \max(n_0, 2^4)$ on a donc $g(n) < C * \ln_2(n!) < C * n\ln_2(n)$ : $g(n)$ est en $\mathcal{O}(n\ln_2(n))$.
+* si $g(n)$ est en $\mathcal{O}(n\ln_2(n))$ il existe $n_0$ et $C$ tel que : $g(n) < C * n\ln_2(n)$ pour n > $n_0$. Pour $n_1 = \max(n_0, 2^4)$ on a donc $g(n) < C * \ln_2(n!) < C * 4 * \ln_2(n!)$ : $g(n)$ est en $\mathcal{O}(\ln_2(n!))$.
