@@ -5,7 +5,7 @@ category: cours
 tags: informatique cours 
 ---
 
-# Introduction 
+## Introduction
 
 On compte souvent (le nombre d'opération, la même prise, ...) en utilisant les *grand O* : $\mathcal{O}$ .
 
@@ -22,10 +22,10 @@ Ce qui plutôt intéressant en informatique car :
 
 * on veut voir l'évolution de la complexité par rapport à la taille des entrée
 * la complexité d'un algorithme est nichée dans les boucles pas dans les opérations successives qui ne dépendent pas des données
-	* comme les suites d'instructions constantes
-	* ou une succession constante de boucles (seule la boucle est importante).
+  * comme les suites d'instructions constantes
+  * ou une succession constante de boucles (seule la boucle est importante).
 
->**Remarque** : le nombre d'opérations d'un algorithme en grand O est proportionnel à sa durée 
+>**Remarque** : le nombre d'opérations d'un algorithme en grand O est proportionnel à sa durée
 
 ## arithmétique des $\mathcal{O}$ (grand O)
 
@@ -90,7 +90,6 @@ Attention cependant : dans l'exemple suivant, on manipule des constantes (la cha
 ma_chaine = "c'est vraiment très intéressant !"
 print(ma_chaine)
 ```
-
 
 ### Qu'est-ce les paramètres d'une entrée ?
 
@@ -333,15 +332,11 @@ Dans l'algorithme ci-dessous la complexité est maximale pour deux cas :
 
 Car c'est là que l'on parcourt toute la boucle.
 
-complexité : on parcourt tout le tableau et l'interieur de la boucle est en $\mathcal{O}(1)$. La complexité au pire est donc de $\mathcal{O}(len(\mbox{tableau}))$ 
+complexité : on parcourt tout le tableau et l'interieur de la boucle est en $\mathcal{O}(1)$. La complexité au pire est donc de $\mathcal{O}(len(\mbox{tableau}))$
 
-Complexité minimum : dans le meilleur des cas, le premier élément est la valeur et donc le nombre d'opération est $\mathcal{O}(1)$.
+On verra dans le cours sur les tris, qu'il existe encore d'autres notions de complexités : la *complexité minimale* et la *complexité en moyenne*.
 
-
->**TBD** Calculer la complexité moyenne.
-
-
-# structures
+## structures
 
 >**TBD** Exemple du tableau en regardant comment fonctionne la mémoire. Et les complexité de maintien de la structure.
 
