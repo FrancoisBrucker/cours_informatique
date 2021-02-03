@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Code Méthodes de tris | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Code Méthodes de tris" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)" />
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)" />
+<link rel="canonical" href="/cours_informatique/cours/mpci/cours_4_tris/2_code_tris.html" />
+<meta property="og:url" content="/cours_informatique/cours/mpci/cours_4_tris/2_code_tris.html" />
+<meta property="og:site_name" content="cours d’informatique" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Code Méthodes de tris" />
+<script type="application/ld+json">
+{"description":"Support de cours/td d’informatique à l’école centrale marseille. A destination des 1A (tronc commun), des 2A (de l’approfondissement MIE) et des 3A (de l’option digital·e)","@type":"WebPage","headline":"Code Méthodes de tris","url":"/cours_informatique/cours/mpci/cours_4_tris/2_code_tris.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        processEscapes: true
+      }
+    });
+  </script>
+  
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+</head>
+
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Code Méthodes de tris</h1>
+  </header>
+
+  <div class="post-content">
+    <h2 id="introduction">Introduction</h2>
+
+<p>On va s’amuser avec les tris ! On va implémenter des méthodes de tris, mesurer leurs complexités et visualiser leurs méthodes de tri.</p>
+
+<p>Créez un nouveau projet vscode et commencez tout de suite par créer les fichiers :</p>
+
+<ul>
+  <li><em>“main.py”</em>,</li>
+  <li><em>“tests_tris.py”</em></li>
+  <li><em>“tris.py”</em></li>
+</ul>
+
+<h2 id="tris-simple">tris simple</h2>
+
+<h3 id="algorithmes">algorithmes</h3>
+
+<p>Dans <em>“tris.py”</em> et <em>“tests_tris.py”</em> implémentez les tris par sélection et par insertion du cours.</p>
+
+<p>Lorsque l’on teste des méthodes de tris, on a coutume de tester :</p>
+
+<ul>
+  <li>sur une liste vide,</li>
+  <li>sur une liste aléatoire,</li>
+  <li>sur une liste triées par ordre croissant,</li>
+  <li>sur une liste triées par ordre décroissant.</li>
+</ul>
+
+<p>Assurez vous que toutes vos méthodes de tris soient testées par au moins ces 4 types de tests.</p>
+
+<h3 id="visualisation">visualisation</h3>
+
+<p>Reprenez l’exemple du cours qui représente graphiquement les tris. Adaptez le code pour qu’il puisse être intégrer à votre programme principal (<em>“main.py”</em>).</p>
+
+<p>Pour rendre votre programme interactif, vous pourrez demander à l’utilisateur quel tri il veut voir représenté (sélection ou insertion) et la taille de la liste à utiliser.</p>
+
+<h3 id="complexité">complexité</h3>
+
+<p>Pour vérifier expérimentalement nos calculs de complexité, on va procéder comme pour la fonction exponentiation : on va mesurer le temps avant et après l’exécution de notre fonction. Ce temps est proportionnel au nombre d’opérations effectué par la fonction pour les entrées données.</p>
+
+<p>On voit par là que l’on ne peut avec cette méthode que calculer la complexité en moyenne d’un algorithme : on va calculer pour $p$ entrées prises au hasard le temps moyen pris par l’algorithme</p>
+
+<p>On va ici considérer que $p = 10$ et la mesure pour chaque algorithme sera la suivante :</p>
+
+<ul>
+  <li>pour un algorithme donné
+    <ul>
+      <li>on crée une liste <code class="language-plaintext highlighter-rouge">temps_pris</code> initialement vide</li>
+      <li>pour une taille $n$ allant de 0 à 1000 (voir plus si c’est pas assez ou moins si ça rame)
+        <ul>
+          <li>on utilise la liste <code class="language-plaintext highlighter-rouge">L</code> des $n$ premiers entiers strictement positif</li>
+          <li>on répète $p$ fois :
+            <ul>
+              <li>on mélange la liste <code class="language-plaintext highlighter-rouge">L</code> (on pourra utiliser la fonction <a href="https://docs.python.org/3/library/random.html#random.shuffle">shuffle du module random</a>)</li>
+              <li>on mesure le temps pris pour trier cette liste</li>
+            </ul>
+          </li>
+          <li>on calcule la moyenne du temps pris et on l’ajoute à la fin de la liste <code class="language-plaintext highlighter-rouge">temps_pris</code></li>
+        </ul>
+      </li>
+      <li>on affiche le résultat avec matplotlib (on pourra également représenter la courbe de la complexité maximale théorique et moyenne si elle est différente)</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Faite la procédure ci-dessus pour les algorithme par sélection et insertion. Vous pourrez mettre votre code dans deux nouveaux fichiers : <em>“complexite_sélection.py”</em> et <em>“complexite_insertion.py”</em>.</p>
+
+<h2 id="tri-rapide">tri rapide</h2>
+
+<p>Implémentez le tri rapide (avec ses tests bien sur !) et, avoir l’avoir regardé trier des listes (en l’ajoutant à votre programme principal de visualisation) vérifiez que les complexités maximales, minimale et en moyenne correspondent à la théorie (vous pourrez créer un fichier <em>“complexité_rapide.py”</em> pour y mettre votre code)</p>
+
+<h2 id="tri-de-python">tri de python</h2>
+
+<p>Vérifiez expérimentalement que la complexité en moyenne du tri de python (méthode <a href="https://docs.python.org/3/howto/sorting.html">sort des listes</a>) est bien en $\mathcal{O}(n\ln_2(n))$ où $n$ est la taille de la liste à trier.</p>
+
+<p>L’algorithme utiliser est de plus de complexité maximale $\mathcal{O}(n\ln_2(n))$, mais on ne peut pas le vérifier expérimentalement.</p>
+
+<h2 id="tri-fusion">tri fusion</h2>
+
+<p>Le <a href="https://fr.wikipedia.org/wiki/Tri_fusion">tri fusion</a> est un tri de complexité $\mathcal{O}(n\ln_2(n))$ opérations où $n$ est la taille de la liste en entrée.</p>
+
+<p>Une proposition de code est ci-après :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">fusion</span><span class="p">(</span><span class="n">tab</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tab</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">tab</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">milieu</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tab</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+    <span class="k">return</span> <span class="n">fusion_colle</span><span class="p">(</span><span class="n">fusion</span><span class="p">(</span><span class="n">tab</span><span class="p">[:</span><span class="n">milieu</span><span class="p">]),</span> <span class="n">fusion</span><span class="p">(</span><span class="n">tab</span><span class="p">[</span><span class="n">milieu</span><span class="p">:]))</span>
+
+
+<span class="k">def</span> <span class="nf">fusion_colle</span><span class="p">(</span><span class="n">tab1</span><span class="p">,</span> <span class="n">tab2</span><span class="p">):</span>
+    <span class="n">i1</span> <span class="o">=</span> <span class="n">i2</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">tab_colle</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">while</span> <span class="n">i1</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">tab1</span><span class="p">)</span> <span class="ow">and</span> <span class="n">i2</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">tab2</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">tab1</span><span class="p">[</span><span class="n">i1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">tab2</span><span class="p">[</span><span class="n">i2</span><span class="p">]:</span>
+            <span class="n">tab_colle</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">tab1</span><span class="p">[</span><span class="n">i1</span><span class="p">])</span>
+            <span class="n">i1</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">tab_colle</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">tab2</span><span class="p">[</span><span class="n">i2</span><span class="p">])</span>
+            <span class="n">i2</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">i1</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">tab1</span><span class="p">):</span>
+        <span class="n">tab_colle</span><span class="p">.</span><span class="n">extend</span><span class="p">(</span><span class="n">tab2</span><span class="p">[</span><span class="n">i2</span><span class="p">:])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">tab_colle</span><span class="p">.</span><span class="n">extend</span><span class="p">(</span><span class="n">tab1</span><span class="p">[</span><span class="n">i1</span><span class="p">:])</span>
+    <span class="k">return</span> <span class="n">tab_colle</span>
+</code></pre></div></div>
+
+<p>L’algorithme fonctionne ainsi :</p>
+
+<ol>
+  <li>on coupe la liste à trier en 2</li>
+  <li>on trie chacune des sous-listes à part</li>
+  <li>on recolle les deux listes triées en une unique liste (c’est <code class="language-plaintext highlighter-rouge">fusion_colle</code>)</li>
+</ol>
+
+<p>Comme on peut utiliser n’importe quel algorithme pour trier les 2 sous-listes, autant s’utiliser soit-même ! L’algorithme fusion utilise donc l’algorithme fusion pour trier les sous-listes de l’algorithme fusion.</p>
+
+<p>La complexité de l’algorithme est alors :</p>
+
+\[C(n) = 2 * C(n/2) + D(n)\]
+
+<p>Où :</p>
+<ul>
+  <li>$C(n)$ est la complexité de l’algorithme fusion pour une liste à $n$ éléments (algorithme <code class="language-plaintext highlighter-rouge">fusion</code>)</li>
+  <li>$D(n)$ est la complexité de fusionner deux listes triées en une unique liste triées (algorithme <code class="language-plaintext highlighter-rouge">fusion_colle</code>).</li>
+</ul>
+
+<p>Comme l’algorithme <code class="language-plaintext highlighter-rouge">fusion_colle</code> est en $\mathcal{O}(n)$, l’équation de récurrence de la complexité est :</p>
+
+\[C(n) = 2 * C(n/2) + \mathcal{O}(n)\]
+
+<p>Pour connaître la valeur de la complexité on utilise le <a href="https://fr.wikipedia.org/wiki/Master_theorem">master theorem</a> qui est <strong>LE</strong> théorème des complexités pour les algorithmes récursifs. Sa preuve dépasse (de loin) le cadre de ce cours, mais son énoncé sous la  <a href="https://fr.wikipedia.org/wiki/Master_theorem#%C3%89nonc%C3%A9_avec_la_notation_de_Landau">notation de Landau</a>, nous permet de déterminer aisément la complexité de nombreux algorithmes récursifs, dont le notre : $\mathcal{O}(n\ln_2(n))$, puisque $1 = \ln_2(2)$.</p>
+
+<p>Cet algorithme a la particularité d’avoir toujours le même nombre d’opérations quelque soit la liste en entrée. Il est donc aisé de mesurer sa complexité. Faites le et vérifier que c’est bien $\mathcal{O}(n\ln_2(n))$. Regardez le aussi trier, c’est très différent des autres tris.</p>
+
+<h2 id="mélanger-des-listes-">mélanger des listes ?</h2>
+
+<p>On s’est appuyé sur la fonction <a href="https://docs.python.org/3/library/random.html#random.shuffle">shuffle du module random</a> pour mélanger des listes.</p>
+
+<p>Mais sommes-nous bien sur que le mélange est bien équiprobable ? Sinon nos mesures de complexité en moyenne seraient tous faux…</p>
+
+<p>Rassurez vous c’est le cas. Elle utilise la méthode de mélange de <a href="https://fr.wikipedia.org/wiki/M%C3%A9lange_de_Fisher-Yates">Fisher-Yates</a>, qui est un algorithme linéaire permettant d’obtenir toutes les permutations possibles de façon équiprobable.</p>
+
+<p>Ce qui est marrant c’est que cet algorithme est <em>“l’inverse”</em> d’un tri par sélection.</p>
+
+<p>Implémentez cet algorithme et vérifiez que pour la liste des 4 premiers entiers vous obtenez bien (sur un grand nombre d’essais) à peut prêt le même nombre des 24 permutations possibles.</p>
+
+<p>Si vous voulez en savoir un peu plus sur cet algorithme et de comment générer un nombre aléatoire en python : <a href="https://www.stashofcode.fr/tri-aleatoire-des-elements-dun-tableau/">https://www.stashofcode.fr/tri-aleatoire-des-elements-dun-tableau/</a></p>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d&#39;informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d&#39;informatique</li><li><a class="u-email" href="mailto:francois.brucker@centrale-marseille.fr">francois.brucker@centrale-marseille.fr</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li><li><a href="https://www.twitter.com/p_____p___"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">p_____p___</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.
+A destination des 1A (tronc commun), des 2A (de l&#39;approfondissement MIE) et des 3A (de l&#39;option digital·e)</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
