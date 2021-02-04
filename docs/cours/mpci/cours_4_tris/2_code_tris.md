@@ -58,7 +58,7 @@ Faite la procédure ci-dessus pour les algorithme par sélection et insertion. V
 
 ## tri rapide
 
-Implémentez le tri rapide (avec ses tests bien sur !) et, avoir l'avoir regardé trier des listes (en l'ajoutant à votre programme principal de visualisation) vérifiez que les complexités maximales, minimale et en moyenne correspondent à la théorie (vous pourrez créer un fichier *"complexité_rapide.py"* pour y mettre votre code)
+Implémentez le tri rapide (avec ses tests bien sur !) et, après l'avoir regardé trier des listes (en l'ajoutant à votre programme principal de visualisation) vérifiez que les complexités maximales, minimale et en moyenne correspondent à la théorie (vous pourrez créer un fichier *"complexité_rapide.py"* pour y mettre votre code)
 
 ## tri de python
 
