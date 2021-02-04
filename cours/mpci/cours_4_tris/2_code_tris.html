@@ -191,7 +191,32 @@
 
 <p>Pour connaître la valeur de la complexité on utilise le <a href="https://fr.wikipedia.org/wiki/Master_theorem">master theorem</a> qui est <strong>LE</strong> théorème des complexités pour les algorithmes récursifs. Sa preuve dépasse (de loin) le cadre de ce cours, mais son énoncé sous la  <a href="https://fr.wikipedia.org/wiki/Master_theorem#%C3%89nonc%C3%A9_avec_la_notation_de_Landau">notation de Landau</a>, nous permet de déterminer aisément la complexité de nombreux algorithmes récursifs, dont le notre : $\mathcal{O}(n\ln_2(n))$, puisque $1 = \ln_2(2)$.</p>
 
-<p>Cet algorithme a la particularité d’avoir toujours le même nombre d’opérations quelque soit la liste en entrée. Il est donc aisé de mesurer sa complexité. Faites le et vérifier que c’est bien $\mathcal{O}(n\ln_2(n))$.</p>
+<blockquote>
+  <p><strong>Remarque</strong> : tout comme le tri par sélection, le tri fusion a la particularité d’avoir toujours le même nombre d’opérations quelque soit la liste en entrée.</p>
+</blockquote>
+
+<h3 id="fusion-colle-">fusion colle ?</h3>
+
+<p>Comprenez comment la fonction <code class="language-plaintext highlighter-rouge">fusion_colle</code> fonctionne. Une fois que vous avez compris, faites des tests pour cette fonction que vous ajouterez à vos tests.</p>
+
+<h3 id="fusion-">fusion ?</h3>
+
+<p>La logique de l’algorithme <code class="language-plaintext highlighter-rouge">fusion</code> est appelée <em>diviser pour régner</em> : on résous des sous-problèmes puis on crée une solution globale à partir des solutions partielles. Cette stratégie fonctionne lorsque la création d’une solution globale à partir de solutions partielle est aisée.</p>
+
+<p>Pour notre algorithme fusion :</p>
+
+<ul>
+  <li>quels sont les solutions partielles ?</li>
+  <li>comment sont calculées les solutions partielles ?</li>
+  <li>comment est construite la solution globale à partir des solutions partielles ?</li>
+  <li>la construction de la solution globale est-elle facile ? Quelle est sa complexité ?</li>
+</ul>
+
+<h3 id="expérimentation">expérimentation</h3>
+
+<p>Vérifier expérimentalement que la complexité est bien $\mathcal{O}(n\ln_2(n))$. Ici c’est bien la complexité maximale que l’on observe puisque le nombre d’opérations est constant (en grand O) quel que soit la liste à trier.</p>
+
+<p>Regardez le aussi trier, c’est très différent des autres tris.</p>
 
 <h2 id="mélanger-des-listes-">mélanger des listes ?</h2>
 
