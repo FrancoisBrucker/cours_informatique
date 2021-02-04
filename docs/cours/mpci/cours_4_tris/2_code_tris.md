@@ -120,7 +120,28 @@ $$C(n) = 2 * C(n/2) + \mathcal{O}(n)$$
 
 Pour connaître la valeur de la complexité on utilise le [master theorem](https://fr.wikipedia.org/wiki/Master_theorem) qui est **LE** théorème des complexités pour les algorithmes récursifs. Sa preuve dépasse (de loin) le cadre de ce cours, mais son énoncé sous la  [notation de Landau](https://fr.wikipedia.org/wiki/Master_theorem#%C3%89nonc%C3%A9_avec_la_notation_de_Landau), nous permet de déterminer aisément la complexité de nombreux algorithmes récursifs, dont le notre : $\mathcal{O}(n\ln_2(n))$, puisque $1 = \ln_2(2)$.
 
-Cet algorithme a la particularité d'avoir toujours le même nombre d'opérations quelque soit la liste en entrée. Il est donc aisé de mesurer sa complexité. Faites le et vérifier que c'est bien $\mathcal{O}(n\ln_2(n))$. Regardez le aussi trier, c'est très différent des autres tris.
+> **Remarque** : tout comme le tri par sélection, le tri fusion a la particularité d'avoir toujours le même nombre d'opérations quelque soit la liste en entrée. 
+
+### fusion colle ?
+
+Comprenez comment la fonction `fusion_colle` fonctionne. Une fois que vous avez compris, faites des tests pour cette fonction que vous ajouterez à vos tests.
+
+### fusion ?
+
+La logique de l'algorithme `fusion` est appelée *diviser pour régner* : on résous des sous-problèmes puis on crée une solution globale à partir des solutions partielles. Cette stratégie fonctionne lorsque la création d'une solution globale à partir de solutions partielle est aisée. 
+
+Pour notre algorithme fusion :
+
+* quels sont les solutions partielles ?
+* comment sont calculées les solutions partielles ?
+* comment est construite la solution globale à partir des solutions partielles ?
+* la construction de la solution globale est-elle facile ? Quelle est sa complexité ?
+
+### expérimentation
+
+Vérifier expérimentalement que la complexité est bien $\mathcal{O}(n\ln_2(n))$. Ici c'est bien la complexité maximale que l'on observe puisque le nombre d'opérations est constant (en grand O) quel que soit la liste à trier.
+
+Regardez le aussi trier, c'est très différent des autres tris.
 
 ## mélanger des listes ?
 
