@@ -11,20 +11,18 @@ Cours de programmation 2 en S2 MPCI.
 
 Est organisée en 3 types d'enseignements :
 
-  - séance de cours (**C,M**) : magistral.
-    > pour acquérir  des connaissances de base
-  - séance tableau (**ST**) : exercices fait sans machine, accompagné d'un prof ou d'un corrigé
-    > pour travailler/acquérir des connaissances théoriques
-  - séance machine (**SM**) : exercices fait avec votre machine, accompagné d'un prof ou d'un corrigé
-    > pour travailler/acquérir des connaissances pratiques
+* séance de cours (**C,M**) : magistral.
+  > pour acquérir  des connaissances de base
+* séance tableau (**ST**) : exercices fait sans machine, accompagné d'un prof ou d'un corrigé
+  > pour travailler/acquérir des connaissances théoriques
+* séance machine (**SM**) : exercices fait avec votre machine, accompagné d'un prof ou d'un corrigé
+  > pour travailler/acquérir des connaissances pratiques
 
 Les divers contrôles intermédiaires seront à rendre directement sur [ametice](https://ametice.univ-amu.fr/course/view.php?id=70937).
-
 
 ## Séances
 
 Chaque séance, à partir de la deuxième, commence par un test de 15min qui porte sur le cours précédent. Ce test sera à rendre sur [ametice](https://ametice.univ-amu.fr/course/view.php?id=70937).
-
 
 * vendredi 4h : **C,M** suivi d'un **SM** : [pratiques de développement et développements pratique](#pratiques-de-développement-et-développements-pratique).
 * mercredi 2h : **C,M** : [complexité et preuve](#complexité-et-preuve)
@@ -65,12 +63,17 @@ Chaque séance, à partir de la deuxième, commence par un test de 15min qui por
 1. [les tris]({% link cours/mpci/cours_4_tris/1_cours_tris.md %})
 1. [session de code sur les tris]({% link cours/mpci/cours_4_tris/2_code_tris.md %})
 
+## tests
+
+1. code : [sujet]({% link cours/mpci/tests/2020_2021/1_test_sujet.md %}) et [corrigé]({% link cours/mpci/tests/2020_2021/1_test_corrige.md %})
+2. complexité : [sujet]({% link cours/mpci/tests/2020_2021/2_test_sujet.md %}) et [corrigé]({% link cours/mpci/tests/2020_2021/2_test_corrige.md %})
+3. preuve : [sujet]({% link cours/mpci/tests/2020_2021/3_test_sujet.md %}) et [corrigé]({% link cours/mpci/tests/2020_2021/3_test_corrige.md %})
+
 ## Misc
 
 ### tuto visual studio code
 
 <https://code.visualstudio.com/docs/editor/codebasics>
-
 
 ### Tuto markdown
 

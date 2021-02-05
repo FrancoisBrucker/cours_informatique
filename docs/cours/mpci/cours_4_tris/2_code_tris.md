@@ -102,7 +102,7 @@ L'algorithme fonctionne ainsi :
 
 1. on coupe la liste à trier en 2
 2. on trie chacune des sous-listes à part
-3. on recolle les deux listes triées en une unique liste (c'est `fusion_colle`)
+3. on recolle les deux listes triées en une unique liste triée (c'est `fusion_colle`)
 
 Comme on peut utiliser n'importe quel algorithme pour trier les 2 sous-listes, autant s'utiliser soit-même ! L'algorithme fusion utilise donc l'algorithme fusion pour trier les sous-listes de l'algorithme fusion.
 
