@@ -7,179 +7,93 @@ tags: informatique cours
 
 ## Introduction
 
-Tronc commun d'informatique. 
-
-Ce cours comporte deux parties :
-  
-  1. algorithmie
-  2. données
+Le tronc commun d'informatique de l'ecm comporte beaucoup de parties. Ici, nous présentons la partie Algorithmie et données structurées.
 
 Chaque partie est organisée en 3 types d'enseignements :
 
-  - séance de cours (**C,M**) : magistral.
+* séance de cours (**C,M**) : magistral.
     > pour acquérir  des connaissances de base
-  - séance tableau (**ST**) : exercices fait sans machine, accompagné d'un prof ou d'un corrigé
+* séance tableau (**ST**) : exercices fait sans machine, accompagné d'un prof ou d'un corrigé
     > pour travailler/acquérir des connaissances théoriques
-  - séance machine (**SM**) : exercices fait avec votre machine, accompagné d'un prof ou d'un corrigé
+* séance machine (**SM**) : exercices fait avec votre machine, accompagné d'un prof ou d'un corrigé
     > pour travailler/acquérir des connaissances pratiques
 
-Nous allons ici uniquement parler de la partie algorithmie du tronc commun. Pour toute question n'hésitez pas à nous écrire soit par mail soit sur le discord ([coordonnées]({{ "/about/" | relative_url }})).
-
-
-## Ordonnancement
-
-
-  - 29/09/2020 13h30 : **C,M** : *Graphes* [**Pour tous**, Classe virtuelle]
-  - 02/10/2020 
-      - 13h30 :
-        - **ST** : *algorithmes gloutons, 1/2* [**Groupes 1 à 5**, Présentiel]
-        - **SM** : *installations d'un environnement de développement* [**Groupes 6 à 10**, Autonomie]
-      - 15h45 : **C,M** : *Complexités* [**Pour tous**, Classe virtuelle]
-  - 13/10/2020 13h30 
-      - **ST** : *algorithmes gloutons, 2/2* [**Groupes 1 à 5**, Présentiel]
-      - **ST** : *TD complexités* [**Groupes 6 à 10**, Autonomie]
-  - 20/10/2020 13h30 : **C,M** : *Données* [**Pour tous**, Classe virtuelle]
-  - 23/10/2020 
-      - 13h30 :
-        - **SM** : *installations d'un environnement de développement* [**Groupes 1 à 5**, Autonomie]
-        - **ST** : *algorithmes gloutons, 1/2* [**Groupes 6 à 10**, Présentiel]
-      - 15h45 : 
-        - **SM** : *TD complexités* [**Groupes 1 à 5**, Autonomie]
-        - **ST** : *algorithmes gloutons, 2/2* [**Groupes 6 à 10**, Présentiel]
-  - 13/11/2020 
-      - 13h30 :
-        - **ST** : *parcours de graphes* [**Groupes 1 à 5**, Présentiel]
-        - **ST** : *arbres de recherche, 1/2* [**Groupes 6 à 10**, Autonomie]
-      - 15h45 : 
-        - **ST** : *algorithmes de textes* [**Groupes 1 à 5**, Présentiel]
-        - **SM** : *arbres de recherche, 2/2* [**Groupes 6 à 10**, Autonomie]
-  - 17/11/2020 13h30 : **C,M** : *révision programmation* [**Pour tous**, Classe virtuelle]
-  - 20/11/2020 
-      - 13h30 :
-        - **ST** : *arbres de recherche, 1/2* [**Groupes 1 à 5**, Autonomie]
-        - **ST** : *parcours de graphes* [**Groupes 6 à 10**,  Présentiel]
-      - 15h45 : 
-        - **SM** : *arbres de recherche, 2/2* [**Groupes 1 à 5**, Autonomie]
-        - **ST** : *algorithmes de textes* [**Groupes 6 à 10**,  Présentiel]
-  - 24/11/2020 13h30 : **SM** *algo révisions* [**Pour tous**, Autonomie]
-      - 13h30 :
-        - **ST** : *flots 1/2* [**Pour tous**, Autonomie]
-      - 15h45 : 
-        - **SM** : *flots 2/2* [**Pour tous**, Autonomie]
-  - 8/12/2020 13h30 : **C,M** : *fichiers et indexation* [**Pour tous**, Classe virtuelle]
-  - 11/12/2020 
-      - 13h30 :
-        - **ST** : *fichiers et indexation* [**Groupes 1 à 5**, Présentiel]
-        - **SM** : *expressions régulières* [**Groupes 6 à 10**, Autonomie]
-      - 15h45 :
-        - **SM** : *fichiers et indexation* [**Groupes 1 à 5**, Présentiel]
-        - **SM** : *dictionnaires, H-codes* [**Groupes 6 à 10**, Autonomie]
-  - 15/12/2020 13h30 : **C,M** : *langage SQL* [**Pour tous**, Classe virtuelle]
-  - 18/12/2020
-      - 13h30 
-        - **ST** : *fichiers et indexation* [**Groupes 6 à 10**, Présentiel]
-        - **SM** : *expressions régulières* [**Groupes 1 à 5**, Autonomie]
-      - 15h45 :
-        - **SM** : *fichiers et indexation* [**Groupes 6 à 10**, Présentiel]
-        - **SM** : *dictionnaires, H-codes* [**Groupes 1 à 5**, Autonomie]
-  - 05/01/2020 13h30 : **C,M** : *Modélisation* [**Pour tous**, Classe virtuelle]
-  - 08/01/2020
-      - 13h30 : 
-        - **ST** : *récursivité* [**Groupes 1 à 5**, Autonomie]
-        - **SM** : *Tic-tac-toe* [**Groupes 6 à 10**, Autonomie]
-      - 15h45 :
-        - **SM** : *récursivité* [**Groupes 1 à 5**, Autonomie]
-        - **ST** : *révisions* [**Groupes 6 à 10**, Autonomie]
-        
 ## Séances
 
+### C, M : complexités
 
-### Graphes
+> Par Pascal Préa
 
-> Par François Brucker 
+Pour le Support de cours  
+Il faudra/faut/fallait être là.
 
-Connections :
+### C, M :  graphes
 
-  - [le discord](https://discord.gg/4UkDeAT)
-  - lien de connection [big blue button](https://moodle.centrale-marseille.fr/mod/bigbluebuttonbn/view.php?id=11017) 
-
+> Par François Brucker
 
 Le support du cours d'[Introduction aux graphes]({% link cours/tronc_commun/introduction_aux_graphes.md %})
 
-### gloutons 1/2 et 2/2
+### ST : algorithmes gloutons
+
+> Par François Brucker
 
 La séance sur les algorithmes gloutons est séparée en deux parties :
 
-  - séance 1 : [les gloutons exacts]({% link cours/tronc_commun/algorithmes_gloutons_1_2.md %})
-  - séance 2 : [les gloutons approchés]({% link cours/tronc_commun/algorithmes_gloutons_2_2.md %})
-
+* séance 1 : [les gloutons exacts]({% link cours/tronc_commun/algorithmes_gloutons_1_2.md %})
+* séance 2 : [les gloutons approchés]({% link cours/tronc_commun/algorithmes_gloutons_2_2.md %})
 
 Après cette séance vous connaîtrez presque tout sur la vie l'œuvre et comment reconnaître un glouton.
 
-### installation d'un environnement de développement
+### SM : installation d'un environnement de développement
 
-Le but de cette séance est d'installer un environnement de développement python et de se familiariser avec les tests unitaires.
+> Par François Brucker
 
-  1. **environnement de développement**. En suivant ce [tutorial sur anaconda et pycharm]({% link cours/tuto/anaconda-pycharm-pytest.md %}), créez un environnement de développement python cohérent avac anaconda et pycharm.
-  2. **tests unitaires**. Suivez ce [tutorial sur les tests unitaires]({% link cours/tuto/tests-unitaires.md %}) pour mettre en place un environnement de test, puis vous pourrez faire les exercices ci-après.
-  3. **code**. Suivez ce [tutorial sur les circuits eulérien]({% link cours/tronc_commun/circuits-euleriens.md %}) pour utiliser pycharm et les tests.
+Le but de cette séance est que vous installiez un environnement de développement python et de se familiariser avec les tests unitaires.
 
-### Complexités
+1. **environnement de développement**. En suivant ce [tutoriel sur anaconda et pycharm]({% link cours/tuto/anaconda-pycharm-pytest.md %}), créez un environnement de développement python cohérent avac anaconda et pycharm.
+2. **tests unitaires**. Suivez ce [tutorial sur les tests unitaires]({% link cours/tuto/tests-unitaires.md %}) pour mettre en place un environnement de test, puis vous pourrez faire les exercices ci-après.
+3. **code**. Suivez ce [tutorial sur les circuits eulérien]({% link cours/tronc_commun/circuits-euleriens.md %}) pour utiliser pycharm et les tests.
+
+### ST : complexités
 
 > Par Pascal Préa
 
-  - [le discord](https://discord.gg/4UkDeAT)
-  - lien de connection TBD
+[sujet de la ST]({{ "https://wiki.centrale-marseille.fr/informatique/tc_info:2020_td_comp" }})
 
-> Pour le Support de cours  
-> Il faudra/faut/fallait être là.
-
-### TD complexités
-
-[sujet du TD]({{ "https://wiki.centrale-marseille.fr/informatique/tc_info:2020_td_comp" }})
-
-### Données texte
+### ST et SM : Données texte
 
 > Par Emmanuel Daucé
 
-  - [sujet du TD]({% link cours/tronc_commun/2020_td_texte.md %})
-  - [corrigé]({% link cours/tronc_commun/2020_td_texte_corr.md %})
-  - [sujet de TP](https://wiki.centrale-marseille.fr/informatique/tc_info:tp3)
+* [sujet de la ST]({% link cours/tronc_commun/2020_td_texte.md %}) et son [corrigé]({% link cours/tronc_commun/2020_td_texte_corr.md %})
+* [sujet de las SM](https://wiki.centrale-marseille.fr/informatique/tc_info:tp3)
 
-### parcours de graphes
-
-[sujet du TD]({% link cours/tronc_commun/parcours_graphes.md %})
-
-### Arbres de recherche 1/2 et 2/2
+### ST : parcours de graphes
 
 > Par Pascal Préa
 
-Le sujet est disponible sur le [wiki de l'informatique](https://wiki.centrale-marseille.fr/informatique/tc_info:2020_td-tp_abr).
+[sujet de la ST]({% link cours/tronc_commun/parcours_graphes.md %})
 
-### Révision programmation et algo révisions
-
-TBD
-
-### flots 1/2 et 2/2
+### ST : Arbres de recherche
 
 > Par Pascal Préa
 
-[sujet du TD]({{ "https://wiki.centrale-marseille.fr/informatique/tc_info:2020_td-tp_flo" }})
+[Le sujet de la ST](https://wiki.centrale-marseille.fr/informatique/tc_info:2020_td-tp_abr).
 
-### Fichiers et indexation 
+### ST et SM : flots 1/2 et 2/2
+
+> Par Pascal Préa
+
+[les sujets des ST et SM]({{ "https://wiki.centrale-marseille.fr/informatique/tc_info:2020_td-tp_flo" }})
+
+### ST et SM : Fichiers et indexation
 
 > Par Emmanuel Daucé
 
-Les sujets sont disponibles sur le wiki de l'informatique
-  - [sujet de TD](https://wiki.centrale-marseille.fr/informatique/tc_info:td2)
-  - [corrigé](https://wiki.centrale-marseille.fr/informatique/tc_info:corr:td2)
-  - [sujet de TP](https://wiki.centrale-marseille.fr/informatique/tc_info:tp2)
-  - [corrigé](https://wiki.centrale-marseille.fr/informatique/tc_info:corr:tp2)
+* [sujet de la ST](https://wiki.centrale-marseille.fr/informatique/tc_info:td2) et son [corrigé](https://wiki.centrale-marseille.fr/informatique/tc_info:corr:td2)
+*[sujet de la SM](https://wiki.centrale-marseille.fr/informatique/tc_info:tp2) et son [corrigé](https://wiki.centrale-marseille.fr/informatique/tc_info:corr:tp2)
   
-### Dictionnaires, H-codes
+### SM : Dictionnaires, H-codes
 
 > Par Emmanuel Daucé et Pascal Préa
-  - [séance TA](https://wiki.centrale-marseille.fr/informatique/tc_info:private_s5-tpa2)
 
-
-  
+[Sujet de la SM](https://wiki.centrale-marseille.fr/informatique/tc_info:private_s5-tpa2)
