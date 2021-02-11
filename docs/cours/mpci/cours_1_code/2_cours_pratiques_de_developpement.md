@@ -7,7 +7,7 @@ tags: informatique cours
 
 ## Introduction
 
-On va implémenter des algorithmes en vrai et en python. On en profitera pour voir toutes les étapes d'un bon code. 
+On va implémenter des algorithmes en vrai et en python. On en profitera pour voir toutes les étapes d'un bon code.
 
 On va se concentrer sur 3 points :
 

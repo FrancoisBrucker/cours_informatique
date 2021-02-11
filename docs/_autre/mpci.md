@@ -32,7 +32,7 @@ Chaque séance, à partir de la deuxième, commence par un test de 15min qui por
 * vendredi 4h : **ST** suivi d'un **SM** : [tris](#tris)
 
 * mercredi 2h : **DS** devoir surveillé
-* vendredi 4h : **C,M** suivi d'un **SM** : classes et objets
+* vendredi 4h : **C,M** suivi d'un **SM** : [classes et objets](#classes-et-objets)
 
 * mercredi 2h : **C,M** algorithmes gloutons
 * vendredi 4h : **ST** algorithmes gloutons
@@ -61,7 +61,15 @@ Chaque séance, à partir de la deuxième, commence par un test de 15min qui por
 ### tris
 
 1. [les tris]({% link cours/mpci/cours_4_tris/1_cours_tris.md %})
-1. [session de code sur les tris]({% link cours/mpci/cours_4_tris/2_code_tris.md %})
+2. [session de code sur les tris]({% link cours/mpci/cours_4_tris/2_code_tris.md %})
+
+### classes et objets
+
+1. [le cours/ST]({% link cours/mpci/cours_5_classes_et_objets/1_cours_classes_et_objets.md %})
+2. [séance tableau]({% link cours/mpci/cours_5_classes_et_objets/2_exercices_classes_et_objets.md %})
+3. [le code]({% link cours/mpci/cours_5_classes_et_objets/3_code_classes_et_objets.md %})
+4. bonus : [test driven development]({% link cours/mie/developpement_objet/tdd_et_test_pattern.md %}) pour vous entraîner à programmer par les tests en utilisant des classes.
+5. si vous êtes chaud : [design patterns]({% link cours/mie/developpement_objet/design_patterns.md %}). Pour aller un peu plus loin dans le développement objet avec des design patterns.
 
 ## tests
 
