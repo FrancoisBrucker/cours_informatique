@@ -111,7 +111,7 @@ Ils sont très utilisés lorsque l’on cherche <strong>une solution globale à 
   <li>des graphes aléatoire générrés en utilisant par exmple <a href="https://fr.wikipedia.org/wiki/Mod%C3%A8le_de_Barab%C3%A1si-Albert">le modèle de Barabasi-Albert</a> permettent de créer des graphes “<em>petit monde</em>” typiques des réseaux sociaux ou de l’internet.</li>
 </ul>
 
-<p>Enfin, ils procurent une satisfaction purement estétique de part la grande beauté des démonstrations.</p>
+<p>Enfin, ils procurent une satisfaction purement esthétique de part la grande beauté des démonstrations.</p>
 
 <h2 id="restrictions">restrictions</h2>
 
@@ -149,6 +149,18 @@ Ils sont très utilisés lorsque l’on cherche <strong>une solution globale à 
   <li>$E$ est l’ensemble des <em>arcs</em> pour un graphe orienté et des <em>arêtes</em> pour un graphe non orienté et on note $\vert E \vert = m$ la <em>taille</em> de $G$.</li>
 </ul>
 
+<blockquote>
+  <p><strong>Remarque</strong> : Un graphe est dit <em>complet</em> s’il possède toutes les arêtes : pour tous $x, y \in V$ $xy$ est une arête. On le note $K_n$ et $m = n(n-1)/2$. Un graphe orienté est dit complet  si pour tous $x, y \in V$ soit $xy$ soit $yx$ est une arête (il n’est a priori pas nécessaire que $xy$ ety$ $yx$ soient des arêtes).</p>
+</blockquote>
+
+<h3 id="graphe-non-orienté">graphe non orienté</h3>
+
+<p>Une <em>arête</em> est un élément de $E$ pour les graphes non orienté. On la représente graphiquement comme ça : <img src="ressources/arete.png" alt="arête" /></p>
+
+<p>Le <em>voisinage</em> d’un sommet $x$ est l’ensemble des sommets $y$ tels que $xy \in E$ : $N(x) = \{ y \mid  xy \in E\}$.</p>
+
+<p>Le <em>degré</em> d’un sommet est le cardinal du voisinage : $\delta(x) = \vert N(x) \vert$.</p>
+
 <h3 id="graphe-orienté">graphe orienté</h3>
 
 <p>Une <em>arc</em> est un élément de $E$ pour les graphes orientés. On le représente graphiquement comme ça : <img src="ressources/arc.png" alt="arc" /></p>
@@ -158,14 +170,8 @@ Ils sont très utilisés lorsque l’on cherche <strong>une solution globale à 
   <li>$y$ est la destination de l’arc</li>
 </ul>
 
-<p>L’ensemble des arcs sortants de $x$ est appelé <em>voisinage sortant de $x$</em> (<em>neighbors</em>) et vaut : $N^+(x) = \{ y \vert xy \in E\}$. Le <em>degré</em> sortant de $x$ vaut  $\delta^+(x) = \vert N^+(x) \vert$. 
+<p>L’ensemble des arcs sortants de $x$ est appelé <em>voisinage sortant de $x$</em> (<em>neighbors</em>) et vaut : $N^+(x) = \{ y \vert xy \in E\}$. Le <em>degré</em> sortant de $x$ vaut  $\delta^+(x) = \vert N^+(x) \vert$.
 De la même manière l’ensemble des arcs entrant en $y$ est appelé  <em>voisinage entrant en $y$</em> et vaut : $N^-(y) = \{ x \mid xy \in E\}$. Le degré entrant de $y$ vaut $\delta^-(y) = \vert N^-(y) \vert$.</p>
-
-<h3 id="graphe-non-orienté">graphe non orienté</h3>
-
-<p>Une <em>arête</em> est un élément de $E$ pour les graphes non orienté. On la représente graphiquement comme ça : <img src="ressources/arete.png" alt="arête" /></p>
-
-<p>Il n’y a pas de différence entre voisinage sortant et voisinage entrant pour un graphe non orienté. On note simplement le <em>voisinage de $x$</em> comme étant : $N(x) = \{ y \mid  xy \in E\}$ et son <em>degré</em> comme étant : $\delta(x) = \vert N(x) \vert$.</p>
 
 <h2 id="exemple">exemple</h2>
 
@@ -212,7 +218,6 @@ De la même manière l’ensemble des arcs entrant en $y$ est appelé  <em>voisi
 \[\sum_x \delta(x)  = 2\vert E \vert\]
 
 <p>Puisque chaque arête $xy$ est comptée deux fois, une fois dans $N(x)$ et une autre dans $N(y)$.</p>
-
 
   </div>
 
