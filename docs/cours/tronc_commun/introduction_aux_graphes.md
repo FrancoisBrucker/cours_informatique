@@ -18,8 +18,7 @@ Le cours va être séparé en petites entités qui se suivent pour former un tou
 
 Ce cours est la partie introductive d'un [cours plus vaste]({% link cours/graphes/theorie_des_graphes.md %}), donné en 3A.
 
-  1. [bases]({% link cours/graphes/bases.md %})
-  2. [parcours eulériens]({% link cours/graphes/parcours_euleriens.md %})
-  3. [mots de Brujin]({% link cours/graphes/mots_brujin.md %})
-  4. [encodage de graphes]({% link cours/graphes/encodage_graphes.md %})
-
+1. [bases]({% link cours/graphes/bases.md %})
+2. [encodage de graphes]({% link cours/graphes/encodage_graphes.md %})
+3. [parcours eulériens]({% link cours/graphes/parcours_euleriens.md %})
+4. [mots de Brujin]({% link cours/graphes/mots_brujin.md %})
