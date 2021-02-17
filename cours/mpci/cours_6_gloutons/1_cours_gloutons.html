@@ -215,20 +215,15 @@ Démontrez que votre algorithme est bien optimal.</li>
 </ul>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">nombre_films_maximal</span><span class="p">(</span><span class="n">films</span><span class="p">):</span>
-    <span class="n">film_a_trier</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">film</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">films</span><span class="p">):</span>
-        <span class="n">date_depart</span><span class="p">,</span> <span class="n">date_fin</span><span class="p">,</span> <span class="n">nom</span> <span class="o">=</span> <span class="n">film</span>
 
-        <span class="n">film_a_trier</span><span class="p">.</span><span class="n">append</span><span class="p">((</span><span class="n">date_fin</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span>
+    <span class="n">films</span><span class="p">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 
-    <span class="n">film_a_trier</span><span class="p">.</span><span class="n">sort</span><span class="p">()</span>
-
-    <span class="n">films_a_voir</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="k">for</span> <span class="n">fin</span><span class="p">,</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">film_a_trier</span><span class="p">:</span>
-        <span class="n">fin_dernier_film</span> <span class="o">=</span> <span class="n">films</span><span class="p">[</span><span class="n">films_a_voir</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]][</span><span class="mi">1</span><span class="p">]</span>
-        <span class="n">debut_nouveau_film</span> <span class="o">=</span> <span class="n">films</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-        <span class="k">if</span> <span class="n">fin_dernier_film</span> <span class="o">&lt;=</span> <span class="n">debut_nouveau_film</span><span class="p">:</span>
-            <span class="n">films_a_voir</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">films_a_voir</span> <span class="o">=</span> <span class="p">[</span><span class="n">films</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+    <span class="k">for</span> <span class="n">film</span> <span class="ow">in</span> <span class="n">films</span><span class="p">:</span>
+        <span class="n">fin_dernier_film</span> <span class="o">=</span> <span class="n">films_a_voir</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">début_nouveau_film</span> <span class="o">=</span> <span class="n">film</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">fin_dernier_film</span> <span class="o">&lt;=</span> <span class="n">début_nouveau_film</span><span class="p">:</span>
+            <span class="n">films_a_voir</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">film</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">films_a_voir</span>
 </code></pre></div></div>
@@ -238,9 +233,16 @@ Démontrez que votre algorithme est bien optimal.</li>
 <p><strong>remarques</strong> : On a utilisé quelques astuces de programmation python :</p>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">l[-1]</code> rend le dernier élément d’une liste.</li>
-  <li><code class="language-plaintext highlighter-rouge">for a, b in l</code> si chaque élément d’une liste est une liste, on peut mettre autant de variables que d’élément dans une boucle <code class="language-plaintext highlighter-rouge">for</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">l[-1]</code> rend le dernier élément d’une liste.
+boucle <code class="language-plaintext highlighter-rouge">for</code>.</li>
+  <li>on a un peu fait de magie noire sur les tris en utilisant le paramètre <a href="https://docs.python.org/fr/3/howto/sorting.html#key-functions">key</a> qui permet de passer une fonction en paramètre. Cette fonction est appelé pour chaque élément. C’est pratique pour ne trier que selon 1 élément d’une liste (ici le 2ème élément).</li>
 </ul>
+
+<p>On utilise aussi l’écriture lambda qui permet de créer des fonction d’une ligne anonyme. Notre fonction lambda est équivalente à :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">truc</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</code></pre></div></div>
 
 <h4 id="preuve-de-lalgorithme--maximum-de-films">preuve de l’algorithme : maximum de films</h4>
 
