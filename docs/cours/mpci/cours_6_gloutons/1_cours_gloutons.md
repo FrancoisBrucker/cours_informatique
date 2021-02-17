@@ -134,20 +134,15 @@ En effet, si l'on classe les séances de cinéma par :
 
 ```python
 def nombre_films_maximal(films):
-    film_a_trier = []
-    for i, film in enumerate(films):
-        date_depart, date_fin, nom = film
 
-        film_a_trier.append((date_fin, i))
+    films.sort(key=lambda x: x[1])
 
-    film_a_trier.sort()
-
-    films_a_voir = [0]
-    for fin, i in film_a_trier:
-        fin_dernier_film = films[films_a_voir[-1]][1]
-        debut_nouveau_film = films[i][0]
-        if fin_dernier_film <= debut_nouveau_film:
-            films_a_voir.append(i)
+    films_a_voir = [films[0]]
+    for film in films:
+        fin_dernier_film = films_a_voir[-1][1]
+        début_nouveau_film = film[0]
+        if fin_dernier_film <= début_nouveau_film:
+            films_a_voir.append(film)
 
     return films_a_voir
 ```
@@ -157,7 +152,15 @@ La sortie de l'algorithme glouton correspond à un ordre de visionnage de films 
 **remarques** : On a utilisé quelques astuces de programmation python :
 
 * `l[-1]` rend le dernier élément d'une liste.
-* `for a, b in l` si chaque élément d'une liste est une liste, on peut mettre autant de variables que d'élément dans une boucle `for`.
+boucle `for`.
+* on a un peu fait de magie noire sur les tris en utilisant le paramètre [key](https://docs.python.org/fr/3/howto/sorting.html#key-functions) qui permet de passer une fonction en paramètre. Cette fonction est appelé pour chaque élément. C'est pratique pour ne trier que selon 1 élément d'une liste (ici le 2ème élément).
+
+On utilise aussi l'écriture lambda qui permet de créer des fonction d'une ligne anonyme. Notre fonction lambda est équivalente à :
+
+```python
+def truc(x):
+    return x[1]
+```
 
 #### preuve de l'algorithme : maximum de films
 
