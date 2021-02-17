@@ -81,6 +81,8 @@ Chaque séance, à partir de la deuxième, commence par un test de 15min qui por
 1. code : [sujet]({% link cours/mpci/tests/2020_2021/1_test_sujet.md %}) et [corrigé]({% link cours/mpci/tests/2020_2021/1_test_corrige.md %})
 2. complexité : [sujet]({% link cours/mpci/tests/2020_2021/2_test_sujet.md %}) et [corrigé]({% link cours/mpci/tests/2020_2021/2_test_corrige.md %})
 3. preuve : [sujet]({% link cours/mpci/tests/2020_2021/3_test_sujet.md %}) et [corrigé]({% link cours/mpci/tests/2020_2021/3_test_corrige.md %})
+4. [DS]({% link cours/mpci/tests/2020_2021/4_ds_corrige.md %})
+5. modélisation : [sujet]({% link cours/mpci/tests/2020_2021/5_test_sujet.md %}) et [corrigé]({% link cours/mpci/tests/2020_2021/5_test_corrige.md %})
 
 ## Misc
 
