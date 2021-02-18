@@ -82,7 +82,7 @@ Lorsque l’on vous demandera de <em>faire passer un test</em>, il faudra ajoute
   <li>le programme qui trouve un circuit eulérien d’un multi-graphe donné.</li>
 </ol>
 
-<h2 id="code">code</h2>
+<h2 id="code-du-projet">code du projet</h2>
 
 <p>Les fonctions que l’on vous demande de coder sont la plupart du temps simples, mais certaines nécessitent de réfléchir et — surtout — de se tromper un peu avant de voir la lumière. Comme cous avez le corrigé et les tests que l’on vous demande de faire passer, vous savez lorsque vous avez bon. On vous demande donc :</p>
 
@@ -94,38 +94,65 @@ Lorsque l’on vous demandera de <em>faire passer un test</em>, il faudra ajoute
 
 <h2 id="multi-graphe-dirigé">multi-graphe dirigé</h2>
 
-<p>Un multi-graphe dirigé est un couple \(G = (V, E)\) tel que soit une liste de couples \((x, y)\) (que l’on notera \(xy\)) appartenant à \(V^2\). Cette structure de graphe permet :</p>
+<p>Un multi-graphe dirigé est un couple $G = (V, E)$ tel que soit une liste de couples $(x, y)$ (que l’on notera $xy$) appartenant à $V^2$. Cette structure de graphe permet :</p>
 
 <ul>
-  <li>d’avoir des arêtes dirigées (\(xy\) étant différent de \(yx\)),</li>
+  <li>d’avoir des arêtes dirigées ($xy$ étant différent de $yx$),</li>
   <li>d’avoir plusieurs fois la même arête (\(E\) est une liste et non un ensemble)</li>
 </ul>
 
 <h3 id="structure-python">structure python</h3>
 
-<p>Créez une méthode python <code class="language-plaintext highlighter-rouge">create_multi_graph(edges)</code> qui prend en paramètre une liste de couples et rend un multi-graphe. On s’assurera de la validité de la structure choisie en faisant en sorte que les tests suivants passent.</p>
+<p>La structure python que nous utiliserons pour créer un graphe sera la liste d’adjacence. On va donc avoir besoin :</p>
+
+<ul>
+  <li>d’une liste <code class="language-plaintext highlighter-rouge">vertices</code> de noms de sommets. On identifiera le sommet avec son indice dans cette liste.</li>
+  <li>une liste <code class="language-plaintext highlighter-rouge">edges</code> de listes de voisins.</li>
+</ul>
+
+<p>Par exemple, on pourra coder le graphe suivant :</p>
+
+<p><img src="./multi-graphe.png" alt="un multi-graphe" /></p>
+
+<p>Par la liste de sommets :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">vertices</span> <span class="o">=</span> <span class="p">[</span><span class="s">'a'</span><span class="p">,</span> <span class="s">'b'</span><span class="p">,</span> <span class="s">'c'</span><span class="p">,</span> <span class="s">'d'</span><span class="p">,</span> <span class="s">'e'</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>Et les arcs codées sous forme de <a href="https://fr.wikipedia.org/wiki/Liste_d%27adjacence">liste d’adjacence</a> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">edges</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">3</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
+</code></pre></div></div>
+
+<p>Exemple : le sommet d’indice 4 (c’est à dire le sommet de nom <code class="language-plaintext highlighter-rouge">vertices[4]</code>; donc <code class="language-plaintext highlighter-rouge">'e'</code>) à 2 voisins qui correspondent à <code class="language-plaintext highlighter-rouge">edges[4]</code>, c’est à dire les sommets d’indice 3 (<code class="language-plaintext highlighter-rouge">'d'</code>) et d’indice 0 (<code class="language-plaintext highlighter-rouge">'a</code>’).</p>
+
+<h4 id="codage-de-la-structure">codage de la structure</h4>
+
+<p>Créez une méthode python <code class="language-plaintext highlighter-rouge">create_multi_graph(number_vertices, edges)</code> qui prend en paramètre une liste de couples et rend un multi-graphe. On supposera que les sommets sont déjà codés par des entiers allant de <code class="language-plaintext highlighter-rouge">0</code> à <code class="language-plaintext highlighter-rouge">number_vertices-1</code>.</p>
+
+<p>On s’assurera de la validité de la structure choisie en faisant en sorte que les tests suivants passent.</p>
 
 <p>Pour bien faire, créez votre structure de façon itérative en commençant par faire une structure qui fait passer le 1er test. Puis améliorez votre structure pour qu’elle fasse passer les 2 premiers tests, et ainsi de suite jusqu’à avoir une structure qui fasse passer tous les tests.</p>
 
-<blockquote>
-  <p><strong>Bota Bene :</strong> si le graphe ne prend qu’une suite d’arêtes en paramètre, on ne pourra pas créer de graphes avec des sommets isolés. Pour notre application, les circuits eulériens, ce n’est pas très grave, mais autant le noter.</p>
-</blockquote>
-
-<h4 id="code-1">code</h4>
+<h4 id="code">code</h4>
 
 <p>La structure de votre projet sera :</p>
 
 <ul>
-  <li>un fichier <em>multi_graph.py</em> contenant tout le code relatif à la structure de multi-graphe,</li>
-  <li>le fichier <em>main.py</em> contiendra le programme principal avec l’exemple finalisé</li>
+  <li>un fichier <em>“multi_graph.py”</em> contenant tout le code relatif à la structure de multi-graphe,</li>
+  <li>le fichier <em>“main.py”</em> contiendra le programme principal avec l’exemple finalisé</li>
 </ul>
 
-<p>Tout ce qui concerne la structure de multi-graphe doit être stockée dans un fichier nommé <em>multi_graph.py</em>. Ce fichier sera importé dans le fichier <em>main.py</em> pour l’exécution du programme ou importé dans les fichiers de tests.</p>
+<p>Tout ce qui concerne la structure de multi-graphe doit être stockée dans un fichier nommé <em>“multi_graph.py”</em>. Ce fichier sera importé dans le fichier <em>“main.py”</em> pour l’exécution du programme ou importé dans les fichiers de tests.</p>
 
-<h4 id="points-critiques">Points critiques</h4>
+<h4 id="points-critiques--tests-et-code">points critiques : tests et code</h4>
 
 <ul>
-  <li>Les tests vous montrent l’implémentation demandée, sous la forme d’un dictionnaire les sommets étant les clés et les arêtes les valeurs codées sous la forme d’une <a href="https://fr.wikipedia.org/wiki/Liste_d%27adjacence">liste d’adjacence</a>.</li>
+  <li>les tests vous montrent l’implémentation demandée, sous la forme d’une liste de istes de sommets.</li>
   <li>on essaie (dans la mesure du possible) de coder en anglais. Vous aurez dans votre vie professionnels à travailler avec des personnes de nationalités différentes et l’anglais est la langue de communication.</li>
 </ul>
 
@@ -145,134 +172,123 @@ Lorsque l’on vous demandera de <em>faire passer un test</em>, il faudra ajoute
 <h5 id="multi-graphe-vide">multi-graphe vide</h5>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">test_create_multi_graph_empty</span><span class="p">():</span>
-    <span class="k">assert</span> <span class="n">create_multi_graph</span><span class="p">([])</span> <span class="o">==</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">create_multi_graph</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">[])</span> <span class="o">==</span> <span class="p">[]</span>
+
+<span class="k">def</span> <span class="nf">test_create_multi_graph_empty_three_vertices</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">create_multi_graph</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="p">[])</span> <span class="o">==</span> <span class="p">[[],</span> <span class="p">[],</span> <span class="p">[]]</span>
 </code></pre></div></div>
 
 <h5 id="multi-graphe-une-arête">multi-graphe une arête</h5>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">test_multi_graph_one_edge</span><span class="p">():</span>
-    <span class="k">assert</span> <span class="n">create_multi_graph</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span> <span class="o">==</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="mi">2</span><span class="p">:</span> <span class="p">[]}</span>
+    <span class="k">assert</span> <span class="n">create_multi_graph</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span> <span class="o">==</span> <span class="p">[[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[]]</span>
 </code></pre></div></div>
 
 <h5 id="multi-graphe-des-arêtes">multi-graphe des arêtes</h5>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">test_multi_graph_several_edges</span><span class="p">():</span>
-    <span class="k">assert</span> <span class="n">create_multi_graph</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span> <span class="o">==</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> 
-                                                                            <span class="mi">2</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> 
-                                                                            <span class="mi">3</span><span class="p">:</span> <span class="p">[],</span> 
-                                                                            <span class="mi">4</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">]}</span>
+    <span class="n">edges</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span>
+    <span class="k">assert</span> <span class="n">create_multi_graph</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">edges</span><span class="p">)</span> <span class="o">==</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[],</span> <span class="p">[</span><span class="mi">3</span><span class="p">]]</span>
 </code></pre></div></div>
 
 <h4 id="usage">usage</h4>
 
-<p>On a utilisé une structure sous la forme d’un <a href="https://docs.python.org/fr/3/tutorial/datastructures.html#dictionaries">dictionnaire</a> pour stocker notre multi-graphe dirigé.</p>
-
-<p>Par exemple, le multi-graphe dirigé de la figure ci-dessous</p>
+<p>On a utilisé une structure sous la forme de listes pour stocker notre multi-graphe dirigé. En reprenant l’exemple du graphe :</p>
 
 <p><img src="./multi-graphe.png" alt="un multi-graphe" /></p>
 
-<p>s’écrira en python :</p>
+<p>codé en python :</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="s">"a"</span><span class="p">:</span> <span class="p">[</span><span class="s">"b"</span><span class="p">,</span> <span class="s">"e"</span><span class="p">],</span>
- <span class="s">"b"</span><span class="p">:</span> <span class="p">[</span><span class="s">"b"</span><span class="p">,</span> <span class="s">"b"</span><span class="p">,</span> <span class="s">"c"</span><span class="p">],</span>
- <span class="s">"c"</span><span class="p">:</span> <span class="p">[</span><span class="s">"d"</span><span class="p">],</span>
- <span class="s">"d"</span><span class="p">:</span> <span class="p">[</span><span class="s">"a"</span><span class="p">],</span>
- <span class="s">"e"</span><span class="p">:</span> <span class="p">[</span><span class="s">"d"</span><span class="p">,</span> <span class="s">"a"</span><span class="p">],</span>
-<span class="p">}</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">vertices</span> <span class="o">=</span> <span class="p">[</span><span class="s">'a'</span><span class="p">,</span> <span class="s">'b'</span><span class="p">,</span> <span class="s">'c'</span><span class="p">,</span> <span class="s">'d'</span><span class="p">,</span> <span class="s">'e'</span><span class="p">]</span>
+<span class="n">edges</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">3</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
 </code></pre></div></div>
 
-<p>On pourra alors facilement accéder à la structure d’un multi-graphe <code class="language-plaintext highlighter-rouge">g</code>:</p>
+<p>On pourra facilement accéder à :</p>
 
 <ul>
-  <li>tous ses sommets : <code class="language-plaintext highlighter-rouge">set(g.keys())</code> sera l’ensemble de ses sommets</li>
-  <li>savoir si \(xy\) est une arête de <code class="language-plaintext highlighter-rouge">g</code> : <code class="language-plaintext highlighter-rouge">"y" in g["x"]</code></li>
-  <li>les voisins de <code class="language-plaintext highlighter-rouge">"x"</code> : <code class="language-plaintext highlighter-rouge">list(g["x"])</code></li>
+  <li>tous ses sommets : <code class="language-plaintext highlighter-rouge">list(range(len(edges)))</code> ou <code class="language-plaintext highlighter-rouge">list(range(len(vertices)))</code> rendra une liste des indices des différents sommets</li>
+  <li>savoir si $xy$ est une arête (avec $x$ et $y$ des indices) : <code class="language-plaintext highlighter-rouge">y in edges[x]</code> rendra <code class="language-plaintext highlighter-rouge">True</code>si $xy$ est une arête et <code class="language-plaintext highlighter-rouge">False</code> sinon.</li>
+  <li>aux voisins de <code class="language-plaintext highlighter-rouge">x</code> : <code class="language-plaintext highlighter-rouge">list(g[x])</code> (avec <code class="language-plaintext highlighter-rouge">x</code> un indice). On copie la liste plutôt que d’utiliser celle de <code class="language-plaintext highlighter-rouge">edges</code> pour éviter les soucis.</li>
 </ul>
 
 <blockquote>
   <p><strong>Attention :</strong> de part la structure proposée :</p>
+
   <ul>
-    <li>la complexité de <code class="language-plaintext highlighter-rouge">"y" in g["x"]</code> est en \(\mathcal{O}\)(<code class="language-plaintext highlighter-rouge">len(g["x"])</code>),</li>
-    <li>lorsque vous manipulez <code class="language-plaintext highlighter-rouge">g["x"]</code> faites attention à ne pas le modifier sinon vous modifiez la structure du multi-graphe.</li>
+    <li>la complexité de <code class="language-plaintext highlighter-rouge">y in g[x]</code> est en $\mathcal{O}$(<code class="language-plaintext highlighter-rouge">len(g[x])</code>),</li>
+    <li>lorsque vous manipulez <code class="language-plaintext highlighter-rouge">g[x]</code> faites attention à ne pas la modifier sinon vous modifiez la structure du multi-graphe.</li>
   </ul>
 </blockquote>
 
 <h2 id="multi-graphes-eulérien">multi-graphes eulérien</h2>
 
-<p>Créez une fonction <code class="language-plaintext highlighter-rouge">is_eulerian(multi_graph)</code> qui répond <code class="language-plaintext highlighter-rouge">True</code> si le graphe en paramètre est eulérien, et <code class="language-plaintext highlighter-rouge">False</code> sinon.</p>
+<p>Créez une fonction <code class="language-plaintext highlighter-rouge">is_eulerian(edges)</code> qui répond <code class="language-plaintext highlighter-rouge">True</code> si la liste d’adjacence en paramètre est eulérienne, et <code class="language-plaintext highlighter-rouge">False</code> sinon.</p>
 
 <p>On rappelle qu’un multi-graphe est eulérien si chaque sommet à un nombre d’arêtes entrantes et d’arêtes sortantes égal.</p>
 
-<p>Il faut que votre fonction passe les tests ci-après</p>
-
-<h3 id="points-critiques-1">Points critiques</h3>
-
-<ul>
-  <li>on doit savoir si le nombre d’arêtes entrante est égal au nombre d’arêttes sortantes mais seule le nombre d’arête sortante est facilement accessible. Il faut donc commender par trouver ces nombres pour tous les sommets</li>
-  <li>on doit répondre vrai que si l’on a vérifié le nombre d’arêtes sortantes et entrantes pour tous les sommets</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>on peut coder l’algorithme en $$\mathcal{O}(</td>
-          <td>V</td>
-          <td>+</td>
-          <td>E</td>
-          <td>)\(si\)G=(V, E)$$ est le multi-graphe.</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-</ul>
-
-<h3 id="tests-1">tests</h3>
-
-<h4 id="graphe-vide">graphe vide</h4>
+<p>Il faut que votre fonction passe les tests ci-après :</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">test_is_eulerian_empty</span><span class="p">():</span>
-    <span class="k">assert</span> <span class="n">is_eulerian</span><span class="p">(</span><span class="nb">dict</span><span class="p">())</span>
+    <span class="k">assert</span> <span class="n">is_eulerian</span><span class="p">([])</span>
+
+
+<span class="k">def</span> <span class="nf">test_is_eulerian_one_edge</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">is_eulerian</span><span class="p">(</span><span class="n">create_multi_graph</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]))</span> <span class="ow">is</span> <span class="bp">False</span>
+
+
+<span class="k">def</span> <span class="nf">test_is_eulerian_loop</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">is_eulerian</span><span class="p">(</span><span class="n">create_multi_graph</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]))</span>
+
+
+<span class="k">def</span> <span class="nf">test_is_eulerian_cycle</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">is_eulerian</span><span class="p">(</span><span class="n">create_multi_graph</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]))</span>
+
+
+<span class="k">def</span> <span class="nf">test_is_eulerian_no_eulerian</span><span class="p">():</span>
+    <span class="n">edges</span> <span class="o">=</span> <span class="n">create_multi_graph</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
+    <span class="k">assert</span> <span class="n">is_eulerian</span><span class="p">(</span><span class="n">edges</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">False</span>
 </code></pre></div></div>
 
-<h3 id="graphe-1-arête">graphe 1 arête</h3>
+<h3 id="points-critiques--eulérien">Points critiques : eulérien</h3>
 
-<pre><code class="language-pyhton">def test_is_eulerian_one_edge():
-    assert is_eulerian(create_multi_graph([[1, 2]])) is False
-</code></pre>
+<ul>
+  <li>on doit savoir si le nombre d’arêtes entrante est égal au nombre d’arêtes sortantes mais seule le nombre d’arête sortante est facilement accessible. Il faut donc commender par trouver ces nombres pour tous les sommets</li>
+  <li>on doit répondre vrai que si l’on a vérifié le nombre d’arêtes sortantes et entrantes pour tous les sommets
+ on peut coder l’algorithme en \(\mathcal{O}(|V| + |E|)\) si \(G=(V, E)\) est le multi-graphe.</li>
+</ul>
 
-<h3 id="graphe-boucle">graphe boucle</h3>
-
-<pre><code class="language-pyhton">def test_is_eulerian_loop():
-    assert is_eulerian(create_multi_graph([[1, 1]]))
-</code></pre>
-
-<h3 id="un-circuit">un circuit</h3>
-
-<pre><code class="language-pyhton">def test_is_eulerian_cycle():
-    assert is_eulerian(create_multi_graph([[1, 2], [3, 1], [2, 3]]))
-</code></pre>
-
-<h3 id="pas-eulérien-plus-gros">pas eulérien plus gros</h3>
-
-<pre><code class="language-pyhton">def test_is_eulerian_no_eulerian():
-    assert is_eulerian(create_multi_graph([[1, 2], [2, 3], [3, 1], [2, 4]])) is False
-</code></pre>
-
-<h2 id="circuits-dans-un-multi-graphe-eulérien">circuits dans un multi-graphe eulérien.</h2>
+<h2 id="circuits-dans-un-multi-graphe-eulérien">circuits dans un multi-graphe eulérien</h2>
 
 <p>On a vu en cours qu’un graphe dont le degré minimum est &gt; 2 contient un cycle. La même démonstration permet de montrer que pour un multi-graphe connexe, si chaque sommet a au moins 1 arête entrante et 1 arête sortante, il existe un circuit.</p>
 
 <h3 id="circuit">circuit</h3>
 
-<p>Créez un algorithme qui, a partir d’un multi-graphe eulérien (que l’on supposera connexe) :</p>
+<p>Avant de créer la vrai fonction, on va commencer par régler les cas particuliers. Créez un algorithme qui, a partir d’un multi-graphe eulérien (que l’on supposera connexe) :</p>
 
 <ul>
   <li>rend un circuit non vide sous la forme d’une liste si le graphe a au moins 1 arête,</li>
   <li>rend la liste si le graphe est sans arêtes.</li>
 </ul>
 
-<p>Vous implémenterez cet algorithme dans la fonction <code class="language-plaintext highlighter-rouge">circuit_from_eulerian(multi_graph)</code></p>
+<p>Vous implémenterez cet algorithme dans la fonction <code class="language-plaintext highlighter-rouge">circuit_from_eulerian(edges)</code>. Elle doit satisfaire les tests suivants :</p>
 
-<h3 id="points-critiques-2">points critiques</h3>
+<pre><code class="language-pyhton">def test_circuit_empty():
+    assert circuit_from_eulerian([]) == []
+
+
+def test_circuit_no_edge():
+    assert circuit_from_eulerian([[], []]) == []
+
+
+def test_circuit_loop():
+    assert circuit_from_eulerian(create_multi_graph(1, [[0, 0]])) == [0]
+</code></pre>
+
+<h3 id="points-critiques--circuits">points critiques : circuits</h3>
 
 <ul>
   <li>l’algorithme du cours est itératif mais sa boucle est une boucle <code class="language-plaintext highlighter-rouge">while</code> : on essaie d’étendre le chemin courant en cherchant un sommet qui n’est pas encore dans le chemin et qui forme une arête avec le dernier élément du chemin</li>
@@ -280,85 +296,55 @@ Lorsque l’on vous demandera de <em>faire passer un test</em>, il faudra ajoute
   <li>si le multi-graphe ne contient pas de circuit faites en sorte que l’algorithme s’arrête tout de même en rendant <code class="language-plaintext highlighter-rouge">None</code> par exemple.</li>
 </ul>
 
-<h3 id="test">test</h3>
-
-<h4 id="vide">vide</h4>
-
-<pre><code class="language-pyhton">def test_circuit_empty():
-    assert circuit_from_eulerian(dict()) == []
-</code></pre>
-
-<h4 id="sans-arêtes">sans arêtes</h4>
-
-<pre><code class="language-pyhton">def test_circuit_no_edge():
-    assert circuit_from_eulerian({1: [], 2: []}) == []
-</code></pre>
-
-<h4 id="une-boucle">une boucle</h4>
-
-<pre><code class="language-pyhton">def test_circuit_loop():
-    assert circuit_from_eulerian(create_multi_graph([[1, 1]])) == [1]
-</code></pre>
-
-<h4 id="un-circuit-1">un circuit</h4>
+<h4 id="un-circuit">un circuit</h4>
 
 <p>Pour ces tests on a un petit soucis. Un graphe eulérien va avoir plein de circuits possibles. Il faut donc dans les tests prévoir tous les cas car on ne sait pas a priori quel chemin va trouver l’algorithme.</p>
 
-<pre><code class="language-pyhton">def test_circuit():
-    assert circuit_from_euleriancreate_multi_graph([[1, 2], [3, 1], [2, 3]])) in [[1, 2, 3], [2, 3, 1], [3, 1, 2]]
-</code></pre>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">test_circuit</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">circuit_from_eulerian</span><span class="p">(</span><span class="n">create_multi_graph</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]))</span> <span class="ow">in</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+</code></pre></div></div>
 
 <h2 id="copie-de-graphe">copie de graphe</h2>
 
-<p>Pour trouver un circuit eulérien d’un graphe, il faut itérativement supprimer un cycle de celui-ci. On va donc commencer par créer une fonction qui duplique un graphe et appelez-la <code class="language-plaintext highlighter-rouge">copy_multi_graph(multi_graph)</code>.</p>
+<p>Pour trouver un circuit eulérien d’un graphe, il faut itérativement supprimer un cycle de celui-ci. On va donc commencer par créer une fonction qui duplique un graphe et appelez-la <code class="language-plaintext highlighter-rouge">copy_multi_graph(edges)</code>.</p>
 
-<h3 id="points-critiques-3">points critiques</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">test_copy_multi_graph</span><span class="p">():</span>
+    <span class="n">edges</span> <span class="o">=</span> <span class="n">create_multi_graph</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
+    <span class="n">copy_edges</span> <span class="o">=</span> <span class="n">copy_multi_graph</span><span class="p">(</span><span class="n">edges</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">copy_edges</span> <span class="o">==</span> <span class="n">edges</span>
+
+    <span class="n">edges</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">append</span><span class="p">(</span><span class="s">"X"</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">copy_edges</span> <span class="o">!=</span> <span class="n">edges</span>
+</code></pre></div></div>
+
+<h3 id="points-critiques--copie">points critiques : copie</h3>
 
 <ul>
   <li>la liste d’adjacence doit être copiée pas juste donnée au nouveau graphe. Les listes sont en effet des <a href="https://zestedesavoir.com/tutoriels/954/notions-de-python-avancees/1-starters/3-mutables-hashables/">objets</a> (modifiables)</li>
-  <li>regardez du côté de la méthode <a href="https://docs.python.org/3/tutorial/datastructures.html#looping-techniques">.items()</a> des dictionnaires.</li>
 </ul>
-
-<h3 id="tests-2">tests</h3>
-
-<p>Pour vérifier que tout fonctionne assurez vous que le test suivant passe.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">test_copy_multi_graph</span><span class="p">():</span>
-    <span class="n">graph</span> <span class="o">=</span> <span class="n">create_multi_graph</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
-    <span class="n">copy_graph</span> <span class="o">=</span> <span class="n">copy_multi_graph</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span> 
-    <span class="k">assert</span> <span class="n">copy_graph</span> <span class="o">==</span> <span class="n">graph</span>
-    
-    <span class="n">graph</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">append</span><span class="p">(</span><span class="s">"X"</span><span class="p">)</span>
-    <span class="k">assert</span> <span class="n">copy_graph</span> <span class="o">!=</span> <span class="n">graph</span>
-</code></pre></div></div>
 
 <h2 id="suppression-de-circuit">suppression de circuit</h2>
 
-<p>Créez une fonction qui, à partir d’un multi-graph et d’un cycle rend un <strong>autre</strong>* multi-graph correspondant au multi-graph d’origine auquel on a supprimé le cycle.</p>
-
-<h3 id="points-critiques-4">points critiques</h3>
-
-<ul>
-  <li>utilisez les fonctions créees précédemment comme <code class="language-plaintext highlighter-rouge">copy_multi_graph</code></li>
-  <li>la structure de multi-graphe est stockée sous la forme de listes d’adjacence et le circuit est une succession d’arêtes</li>
-  <li>la méthode <a href="https://docs.python.org/3/tutorial/datastructures.html#more-on-lists">.remove()</a> des listes peut être super utile.</li>
-</ul>
-
-<h3 id="tests-3">tests</h3>
-
-<p>Vérifiez qu’elle fonctionne avec les tests suivants :</p>
+<p>Créez une fonction qui, à partir d’un multi-graph et d’un cycle rend un <strong>autre</strong> multi-graph correspondant au multi-graph d’origine auquel on a supprimé le cycle.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">test_delete_cycle</span><span class="p">():</span>
-    <span class="k">assert</span> <span class="n">delete_circuit</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">create_multi_graph</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]))</span> <span class="o">==</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="mi">2</span><span class="p">:</span> <span class="p">[],</span> <span class="mi">3</span><span class="p">:</span> <span class="p">[],</span> <span class="mi">4</span><span class="p">:</span> <span class="p">[]}</span> 
+    <span class="n">new_edges</span> <span class="o">=</span> <span class="n">delete_circuit</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">create_multi_graph</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]))</span>
+    <span class="k">assert</span> <span class="n">new_edges</span> <span class="o">==</span> <span class="p">[[</span><span class="mi">3</span><span class="p">],</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]]</span>
+
+
+<span class="k">def</span> <span class="nf">test_delete_cycle_different_graph</span><span class="p">():</span>
+    <span class="n">initial_graph</span> <span class="o">=</span> <span class="n">create_multi_graph</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
+    <span class="n">delete_circuit</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">initial_graph</span><span class="p">)</span>
+    
+    <span class="k">assert</span> <span class="n">initial_graph</span> <span class="o">==</span> <span class="n">create_multi_graph</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
 </code></pre></div></div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">test_delete_cycle_different_graph</span><span class="p">():</span>
-     
-    <span class="n">initial_graph</span> <span class="o">=</span> <span class="n">create_multi_graph</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
-    <span class="n">delete_circuit</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">create_multi_graph</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]))</span>
-    
-    <span class="k">assert</span> <span class="n">initial_graph</span> <span class="o">==</span> <span class="n">create_multi_graph</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
-</code></pre></div></div>
+<h3 id="points-critiques--suppression-de-circuit">points critiques : suppression de circuit</h3>
+
+<ul>
+  <li>utilisez les fonctions créées précédemment comme <code class="language-plaintext highlighter-rouge">copy_multi_graph</code></li>
+  <li>la structure de multi-graphe est stockée sous la forme de listes d’adjacence et le circuit est une succession d’arêtes</li>
+</ul>
 
 <h2 id="suite-de-circuits">suite de circuits</h2>
 
@@ -366,110 +352,85 @@ Lorsque l’on vous demandera de <em>faire passer un test</em>, il faudra ajoute
 
 <p>Créez une fonction qui, à partir d’un multi-graphe eulérien, rend une suite de circuits permettant de recréer son circuit eulérien.</p>
 
-<h3 id="points-critiques-5">points critiques</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">test_list_of_circuits_empty</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">list_of_circuits</span><span class="p">([])</span> <span class="o">==</span> <span class="p">[]</span>
+
+
+<span class="k">def</span> <span class="nf">test_list_of_circuits_one_circuit</span><span class="p">():</span>
+    <span class="n">circuits</span> <span class="o">=</span> <span class="n">list_of_circuits</span><span class="p">(</span><span class="n">create_multi_graph</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]))</span>
+
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">circuits</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+    <span class="k">assert</span> <span class="nb">set</span><span class="p">(</span><span class="n">circuits</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}</span>
+
+
+<span class="k">def</span> <span class="nf">test_list_of_circuits_several_circuits</span><span class="p">():</span>
+    <span class="n">circuits</span> <span class="o">=</span> <span class="n">list_of_circuits</span><span class="p">(</span><span class="n">create_multi_graph</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]))</span>
+
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">circuits</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>
+    <span class="k">assert</span> <span class="p">{</span><span class="nb">frozenset</span><span class="p">(</span><span class="n">circuits</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">frozenset</span><span class="p">(</span><span class="n">circuits</span><span class="p">[</span><span class="mi">1</span><span class="p">])}</span> <span class="o">==</span> <span class="p">{</span><span class="nb">frozenset</span><span class="p">({</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}),</span> <span class="nb">frozenset</span><span class="p">({</span><span class="mi">0</span><span class="p">})}</span>
+</code></pre></div></div>
+
+<h3 id="points-critiques--suite-de-circuits">points critiques : suite de circuits</h3>
 
 <ul>
   <li>on a créé pratiquement toutes les fonctions utiles à cet algorithme.</li>
   <li>une liste vide en python est considérée comme <code class="language-plaintext highlighter-rouge">False</code> pour ce qui est de tests booléens.</li>
-  <li>le dernier test est un peu tricky, car il ne compare pas des listes de listes mais des ensembles d’ensembles. On est obligé de faire comme ça car on ne sais pas a priori dans quel ordre l’algorithme va trouver les cycles ni dans quel ordre il va les écrire (<code class="language-plaintext highlighter-rouge">[1, 2, 3]</code> et <code class="language-plaintext highlighter-rouge">[3, 1, 2]</code> correspondent au même circuit et sont tous les deux représentés par l’ensemble <code class="language-plaintext highlighter-rouge">{1, 2, 3}</code>)</li>
+  <li>le dernier test est un peu tricky, car il ne compare pas des listes de listes mais des ensembles d’ensembles. On est obligé de faire comme ça car on ne sais pas a priori dans quel ordre l’algorithme va trouver les cycles ni dans quel ordre il va les écrire (<code class="language-plaintext highlighter-rouge">[0, 1, 2]</code> et <code class="language-plaintext highlighter-rouge">[2, 0, 1]</code> correspondent au même circuit et sont tous les deux représentés par l’ensemble <code class="language-plaintext highlighter-rouge">{0, 1, 2}</code>)</li>
   <li>un <code class="language-plaintext highlighter-rouge">set</code> est mutable et ne peut contenir comme élément que des objets non mutable. On utilise ainsi dans les tests des <code class="language-plaintext highlighter-rouge">frozenset</code> qui sont des objets ensembles non mutable. Voir <a href="https://www.python-course.eu/sets_frozensets.php">là</a> par exemple pour une petite étude sur leurs différences.</li>
-  <li>en python <code class="language-plaintext highlighter-rouge">{1, 2, 3, 4}</code> est un ensemble et <code class="language-plaintext highlighter-rouge">{1: 2, 3: 4}</code> un dictionnaire avec deux clés 1 et 3.</li>
+  <li>en python <code class="language-plaintext highlighter-rouge">{0, 1, 2, 3}</code> est un ensemble.</li>
 </ul>
-
-<h3 id="tests-4">tests</h3>
-
-<p>Testez ces fonctions avec les deux tests suivants :</p>
-
-<h4 id="liste-déjà-vide">liste déjà vide</h4>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">test_list_of_circuits_empty</span><span class="p">():</span>
-    <span class="k">assert</span> <span class="n">list_of_circuits</span><span class="p">(</span><span class="nb">dict</span><span class="p">())</span> <span class="o">==</span> <span class="p">[]</span>
-</code></pre></div></div>
-
-<h4 id="un-circuit-2">un circuit</h4>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">test_list_of_circuits_one_circuit</span><span class="p">():</span>
-    <span class="n">circuits</span> <span class="o">=</span> <span class="n">list_of_circuits</span><span class="p">(</span><span class="n">create_multi_graph</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]))</span>
-
-    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">circuits</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
-    <span class="k">assert</span> <span class="nb">set</span><span class="p">(</span><span class="n">circuits</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">}</span>
-</code></pre></div></div>
-
-<h4 id="plusieurs-circuits">plusieurs circuits</h4>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">test_list_of_circuits_several_circuits</span><span class="p">():</span>
-    <span class="n">circuits</span> <span class="o">=</span> <span class="n">list_of_circuits</span><span class="p">(</span><span class="n">create_multi_graph</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]))</span>
-
-    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">circuits</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>
-    <span class="k">assert</span> <span class="p">{</span><span class="nb">frozenset</span><span class="p">(</span><span class="n">circuits</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">frozenset</span><span class="p">(</span><span class="n">circuits</span><span class="p">[</span><span class="mi">1</span><span class="p">])}</span> <span class="o">==</span> <span class="p">{</span><span class="nb">frozenset</span><span class="p">({</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">}),</span> <span class="nb">frozenset</span><span class="p">({</span><span class="mi">1</span><span class="p">})}</span>
-</code></pre></div></div>
 
 <h2 id="raboutage-de-2-circuits-en-un-circuit-plus-gros">raboutage de 2 circuits en un circuit plus gros</h2>
 
 <p>Maintenant qu’on a une liste de circuits d’un multi-graphe eulérien, il faut les rabouter petit à petit pour obtenir un circuit eulérien. Commençons par rabouter 2 circuits en 1 seul.</p>
 
-<h3 id="points-critiques-6">points critiques</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">test_raboutage_left_empty</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">raboutage</span><span class="p">([],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span> <span class="o">==</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">test_raboutage_right_empty</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">raboutage</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[])</span> <span class="o">==</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">test_raboutage</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">raboutage</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span> <span class="ow">in</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
+</code></pre></div></div>
+
+<h3 id="points-critiques">points critiques</h3>
 
 <ul>
   <li>il faut trouver un élément commun aux deux circuits. On peut faire ça facilement en intersectant les ensembles créés à partir des listes de sommets des deux circuits.</li>
   <li>en manipulant les <a href="https://railsware.com/blog/python-for-machine-learning-indexing-and-slicing-for-lists-tuples-strings-and-other-sequential-types/">slycing</a> des listes, rabouter ceux cycles devient facile.</li>
 </ul>
 
-<h3 id="tests-5">tests</h3>
-
-<h4 id="un-circuit-vide">un circuit vide</h4>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">test_raboutage_left_empty</span><span class="p">():</span>
-    <span class="k">assert</span> <span class="n">raboutage</span><span class="p">([],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
-
-
-<span class="k">def</span> <span class="nf">test_raboutage_right_empty</span><span class="p">():</span>
-    <span class="k">assert</span> <span class="n">raboutage</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[])</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
-</code></pre></div></div>
-
-<h4 id="deux-circuits">deux circuits</h4>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">test_raboutage</span><span class="p">():</span>
-    <span class="k">assert</span> <span class="n">raboutage</span><span class="p">([</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span> <span class="ow">in</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
-</code></pre></div></div>
-
 <h2 id="raboutage-de-circuits-en-un-circuit-eulérien">raboutage de circuits en un circuit eulérien</h2>
 
 <p>Prenez un muti-graphe euliérien et rendez un de ses circuits eulériens</p>
 
-<h3 id="points-critiques-7">points critiques</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">test_eulerian_circuit_empty</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">eulerian_circuit</span><span class="p">([])</span> <span class="o">==</span> <span class="p">[]</span>
+
+
+<span class="k">def</span> <span class="nf">test_eulerian_circuit_one_loop</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">eulerian_circuit</span><span class="p">(</span><span class="n">create_multi_graph</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]))</span> <span class="o">==</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">test_eulerian_circuit</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">eulerian_circuit</span><span class="p">(</span><span class="n">create_multi_graph</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]))</span> <span class="ow">in</span> <span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+</code></pre></div></div>
+
+<h3 id="points-critiques--raboutage-de-circuits">points critiques : raboutage de circuits</h3>
 
 <ul>
   <li>si vous êtes arrivé jusque là vous avez codé toutes les fonctions utile à cet algorithme.</li>
-  <li>faite grossir un circuit initialement vide en le raboutant le raboutage itératif des circuits peut se faire en parcourant les éléments de la liste des circuits et</li>
+  <li>faite grossir un circuit initialement vide en le raboutant.</li>
 </ul>
-
-<h3 id="tests-6">tests</h3>
-
-<h4 id="graphe-vide-1">graphe vide</h4>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">test_eulerian_circuit_empty</span><span class="p">():</span>
-    <span class="k">assert</span> <span class="n">eulerian_circuit</span><span class="p">(</span><span class="nb">dict</span><span class="p">())</span> <span class="o">==</span> <span class="p">[]</span>
-</code></pre></div></div>
-
-<h4 id="une-boucle-1">une boucle</h4>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">test_eulerian_circuit_one_loop</span><span class="p">():</span>
-    <span class="k">assert</span> <span class="n">eulerian_circuit</span><span class="p">(</span><span class="n">create_multi_graph</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]))</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-</code></pre></div></div>
-
-<h4 id="2-circuits">2 circuits</h4>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">test_eulerian_circuit</span><span class="p">():</span>
-    <span class="k">assert</span> <span class="n">eulerian_circuit</span><span class="p">(</span><span class="n">create_multi_graph</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]))</span> <span class="ow">in</span> <span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
-</code></pre></div></div>
 
 <h2 id="processus-complet-dans-le-main">processus complet dans le main</h2>
 
 <p>Et <a href="https://www.youtube.com/watch?v=EVDlleOUQXY">voilà, c’est fini</a>, il ne vous reste plus qu’à faire votre programme principal qui, à partir d’un multi-graphe vérifie qu’il est eulérien et si c’est le cas, rend un circuit eulérien du graphe.</p>
 
-<p>Pour cela, prenez un graphe du court permettant de trouver une <a href="https://fr.wikipedia.org/wiki/Suite_de_de_Bruijn">suite de Brujin</a> (c’est une variante des mots de brujin vus en cours) des mots de longueur 3 de l’alphabet \({0, 1}\)</p>
-
+<p>Pour cela, prenez un graphe du court permettant de trouver une <a href="https://fr.wikipedia.org/wiki/Suite_de_de_Bruijn">suite de Brujin</a> (c’est une variante des mots de brujin vus en cours) des mots de longueur 3 de l’alphabet ${0, 1}$</p>
 
   </div>
 
