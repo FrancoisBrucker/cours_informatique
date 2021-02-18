@@ -1,38 +1,34 @@
 
-def create_multi_graph(edges):
-    graph = dict()
-    for x, y in edges:
-        graph[x] = []
-        graph[y] = []
+def create_multi_graph(n, edges):
+    graph = []
+    for i in range(n):
+        graph. append([])
+
     for x, y in edges:
         graph[x].append(y)
     return graph
 
 
-def is_eulerian(multi_graph):
-    number_enter = dict()
-    number_exit = dict()
+def is_eulerian(edges):
+    number_enter = [0] * len(edges)
+    number_exit = [0] * len(edges)
 
-    for vertex in multi_graph:
-        number_enter[vertex] = 0
-        number_exit[vertex] = 0
-
-    for vertex in multi_graph:
-        for neighbor in multi_graph[vertex]:
+    for vertex in range(len(edges)):
+        for neighbor in edges[vertex]:
             number_exit[vertex] += 1
             number_enter[neighbor] += 1
 
-    for vertex in multi_graph:
+    for vertex in range(len(edges)):
         if number_enter[vertex] != number_exit[vertex]:
             return False
     return True
 
 
-def circuit_from_eulerian(multi_graph):
+def circuit_from_eulerian(edges):
 
     current = None
-    for vertex in multi_graph:
-        if len(multi_graph[vertex]) > 0:
+    for vertex in range(len(edges)):
+        if len(edges[vertex]) > 0:
             current = vertex
 
     if current is None:
@@ -43,7 +39,7 @@ def circuit_from_eulerian(multi_graph):
     is_possible = True
     while is_possible:
         is_possible = False
-        for next in multi_graph[circuit[-1]]:
+        for next in edges[circuit[-1]]:
             if next not in circuit:
                 circuit.append(next)
                 is_possible = True
@@ -53,12 +49,12 @@ def circuit_from_eulerian(multi_graph):
     return None
 
 
-def copy_multi_graph(multi_graph):
-    return {x: list(y) for x, y in multi_graph.items()}
+def copy_multi_graph(edges):
+    return [list(x) for x in edges]
 
 
-def delete_circuit(circuit, multi_graph):
-    new = copy_multi_graph(multi_graph)
+def delete_circuit(circuit, edges):
+    new = copy_multi_graph(edges)
 
     x = circuit[0]
 
@@ -68,15 +64,14 @@ def delete_circuit(circuit, multi_graph):
     return new
 
 
-def list_of_circuits(multi_graph):
+def list_of_circuits(edges):
     circuits = []
 
-    next_circuit = circuit_from_eulerian(multi_graph)
-
+    next_circuit = circuit_from_eulerian(edges)
     while next_circuit:
         circuits.append(next_circuit)
-        multi_graph = delete_circuit(next_circuit, multi_graph)
-        next_circuit = circuit_from_eulerian(multi_graph)
+        edges = delete_circuit(next_circuit, edges)
+        next_circuit = circuit_from_eulerian(edges)
 
     return circuits
 
