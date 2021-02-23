@@ -5,7 +5,7 @@ category: cours
 tags: informatique cours 
 ---
 
-## barême
+## barème
 
 * 4pt : 1pt par question
 
@@ -42,9 +42,9 @@ def factorielle( n ):   # O(1)
 * A chaque étape du bloc `while`, n est décrémenté de 1 : on rentre $\mathcal{O}(n)$ fois dans la boucle.
 * Les autres lignes de l'algorithmes sont en $\mathcal{O}(1)$ (affectation, multiplication et soustraction).
 
-La complexité de l'algorihtme est en : $\mathcal{O}(1) + \mathcal{O}(1) +  \mathcal{O}(n) * (\mathcal{O}(1) + \mathcal{O}(1)) + \mathcal{O}(1)$
+La complexité de l'algorithme est en : $\mathcal{O}(1) + \mathcal{O}(1) +  \mathcal{O}(n) * (\mathcal{O}(1) + \mathcal{O}(1)) + \mathcal{O}(1)$
 
-Ce qui se fimplifie en $\mathcal{O}(n)$
+Ce qui se simplifie en $\mathcal{O}(n)$
 
 ## 2. récursif
 
@@ -55,7 +55,7 @@ def factorielle( n ):                # O(1)
     return n * factorielle(n-1)      # O(1) + C(n-1)
 ```
 
-En notant $C(n)$ la complexité de l'algorithme, on obtient l'équation de récurrence : $C(n) = 3 * \mathcal{O}(1) + C(n-1) = \mathcal{O}(1) + C(n-1)$ 
+En notant $C(n)$ la complexité de l'algorithme, on obtient l'équation de récurrence : $C(n) = 3 * \mathcal{O}(1) + C(n-1) = \mathcal{O}(1) + C(n-1)$
 
 Cette équation a été résolue dans le cours et donne : $C(n) = \mathcal{O}(n)$
 
@@ -71,7 +71,7 @@ def puissance(nombre, exposant):     # O(1)
     return resultat                  # O(1)
 ```
 
-Initialement `compteur` vaut `exposant` et à chque itération de la boucle sa valeur est décfrémentée de 1. On rentre donc $\mathcal{O}(exposant)$ fois dans la boucle.
+Initialement `compteur` vaut `exposant` et à chaque itération de la boucle sa valeur est décrémentée de 1. On rentre donc $\mathcal{O}(exposant)$ fois dans la boucle.
 
 Comme toutes les autres lignes sont en $\mathcal{O}(1)$, la complexité totale de l'algorithme est en $\mathcal{O}(n)$.
 

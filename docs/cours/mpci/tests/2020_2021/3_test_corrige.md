@@ -5,7 +5,7 @@ category: cours
 tags: informatique cours 
 ---
 
-## barême
+## barème
 
 * 1pt pour la complexité et 1pt pour la preuve par algorithme
 
