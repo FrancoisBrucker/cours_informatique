@@ -58,15 +58,64 @@
   </header>
 
   <div class="post-content">
-    <h2 id="barême">barême</h2>
+    <h2 id="introduction">introduction</h2>
 
-<p>TBD</p>
+<p>Un code complet est <a href="5_python.py">disponible</a>.</p>
 
 <h2 id="1-créer-le-code-python-de-la-classe-personnage-en-sachant-quil-doit-pouvoir-en-plus-exécuter-le-code-suivant">1) créer le code python de la classe personnage en sachant qu’il doit pouvoir en plus exécuter le code suivant</h2>
 
+<p>La classe <code class="language-plaintext highlighter-rouge">Personnage</code> a tout ce qui est demandé par l’énoncé. On a implémenté la méthode <code class="language-plaintext highlighter-rouge">tape</code> pour qu’elle soit cohérente avec le code : l’assaillant enlève son attaque aux pv de l’assailli.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Personnage</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pv</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">attaque</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">pv</span> <span class="o">=</span> <span class="n">pv</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">attaque</span> <span class="o">=</span> <span class="n">attaque</span>
+
+    <span class="k">def</span> <span class="nf">get_pv</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">pv</span>
+
+    <span class="k">def</span> <span class="nf">get_attaque</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">attaque</span>
+
+    <span class="k">def</span> <span class="nf">set_attaque</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attaque</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">attaque</span> <span class="o">=</span> <span class="n">attaque</span>
+
+    <span class="k">def</span> <span class="nf">tape</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="n">other</span><span class="p">.</span><span class="n">pv</span> <span class="o">=</span> <span class="n">other</span><span class="p">.</span><span class="n">pv</span> <span class="o">-</span> <span class="bp">self</span><span class="p">.</span><span class="n">attaque</span>
+</code></pre></div></div>
+
 <h2 id="2-décrivez-comment-sexécute-la-ligne-balrogtapegandalf-du-code-précédent-en-particulier-les-namespaces-utilisés">2) décrivez comment s’exécute la ligne balrog.tape(gandalf) du code précédent (en particulier les namespaces utilisés)</h2>
 
+<p>Lorsque la méthode s’éxécute, un <em>namespace</em> est crée pour elle.</p>
+
+<ol>
+  <li>dans ce <em>namespace</em> on place les paramètres de la méthode :
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">self</code> : qui vaut l’objet à gauche du <code class="language-plaintext highlighter-rouge">.</code> donc <code class="language-plaintext highlighter-rouge">balrog</code></li>
+      <li><code class="language-plaintext highlighter-rouge">other</code> : qui vaut le 1er paramètre de l’appel donc <code class="language-plaintext highlighter-rouge">gandalf</code></li>
+    </ul>
+  </li>
+  <li>La ligne de code à exécuter est une affectation dnc :
+    <ol>
+      <li>on cherche l’objet à droite du <code class="language-plaintext highlighter-rouge">=</code> : ici c’est une différence de :
+        <ul>
+          <li>l’objet de nom <code class="language-plaintext highlighter-rouge">attaque</code> dans le namespace de l’objet de nom <code class="language-plaintext highlighter-rouge">self</code> : c’est l’attaque de <code class="language-plaintext highlighter-rouge">balrog</code> qui est un entier valant 40.</li>
+          <li>l’objet de nom <code class="language-plaintext highlighter-rouge">pv</code> dans le namespace de l’objet de nom <code class="language-plaintext highlighter-rouge">other</code> : c’est les <code class="language-plaintext highlighter-rouge">pv</code> de <code class="language-plaintext highlighter-rouge">gandalf</code>  qui est un entier valant 4.</li>
+        </ul>
+      </li>
+      <li>le résultat de la soustraction est un entier valant -36</li>
+      <li>on affecte cet entier au nom <code class="language-plaintext highlighter-rouge">pv</code> du namespace <code class="language-plaintext highlighter-rouge">other</code> : les <code class="language-plaintext highlighter-rouge">pv</code> de <code class="language-plaintext highlighter-rouge">gandalf</code> sont maintenant à -36.</li>
+    </ol>
+  </li>
+</ol>
+
+<p>Lorsque la méthode se finie, le <em>namespace</em> créé pour elle disparaît.</p>
+
 <h2 id="3-comment-créer-une-méthode-se_fait_taper_parun_perso-en-utilisant-tape-">3) comment créer une méthode se_fait_taper_par(un_perso) en utilisant tape() ?</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">def</span> <span class="nf">se_faire_taper_par</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="n">other</span><span class="p">.</span><span class="n">tape</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</code></pre></div></div>
 
   </div>
 
