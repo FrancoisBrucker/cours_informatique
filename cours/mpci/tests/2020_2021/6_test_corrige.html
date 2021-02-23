@@ -102,7 +102,7 @@
 <p>Pour notre solution, on note $(k_0, k_1, \dots, k_n)$ les kilos choisis dans l’ordre de choix de l’algorithme glouton.
 On suppose que notre solution n’est pas optimale et, parmi toutes les solutions optimales possible, on en prend une qui correspond le plus longtemps possible avec la solution rendue par l’algorithme. Soit alors $0 \leq i &lt;n$ le plus petit indice telle que la solution optimale et celle rendue par l’algorithme est différente.  La solution optimale est alors $(k_0, \dots, k_{i-1}, k’_i, \dots, k’_n)$.</p>
 
-<p>On peut enfin, sans perte de généralité, choisir la solution optimale ayant $k_i’$ le plus grand possible parmi toutes les solutions optimales coïncidant avec la solution de l’algorithme glouton jusqu’à $r_{i-1}$.</p>
+<p>On peut enfin, sans perte de généralité, choisir la solution optimale ayant $k_i’$ le plus grand possible parmi toutes les solutions optimales coïncidant avec la solution de l’algorithme glouton jusqu’à $k_{i-1}$.</p>
 
 <p>Jusqu’à l’étape $i-1$ tous les choix sont identiques donc une fois placés les $i$ premiers produits (les produits d’indices $0$ à $i-1$) avec le même kilo, il reste la même place dans le sac-à-dos et pour notre algorithme et pour la solution optimale. De là, par construction de l’algorithme glouton (on prend à chaque choix soit tout le produit soit juste assez pour finir de remplir tout le sac) les kilos $k’_i$ de la solution optimale pour le produit d’indice $i$ est forcément plus petit strictement que $k_i$.</p>
 
