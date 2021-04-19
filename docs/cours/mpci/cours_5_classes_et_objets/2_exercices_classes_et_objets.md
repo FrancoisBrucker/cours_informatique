@@ -3,6 +3,7 @@ layout: page
 title:  "séance tableau : classes et objets"
 category: cours
 tags: informatique cours 
+author: "François Brucker"
 ---
 
 ## Introduction

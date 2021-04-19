@@ -3,8 +3,7 @@ layout: page
 title:  "Front back"
 category: tutorial
 tags: dev git 
-authors: 
-    - "Laurie Dégeorges"
+author: Laurie Dégeorges
 ---
 
 # Frontend, Backend et ce qu'il manque entre les deux

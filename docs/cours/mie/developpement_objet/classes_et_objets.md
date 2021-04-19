@@ -3,6 +3,7 @@ layout: page
 title:  "Classes et objets"
 category: cours
 tags: mie
+author: "François Brucker"
 ---
 
 

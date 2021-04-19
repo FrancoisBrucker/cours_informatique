@@ -3,7 +3,9 @@ layout: page
 title:  ""
 category: cours
 tags: combat web
-authors: "Baptiste Mahé, Maxime Vivier"
+authors: 
+  - "Baptiste Mahé"
+  - "Maxime Vivier"
 ---
 
 ![Vue.js Logo](../../assets/vuejs_logo.png)

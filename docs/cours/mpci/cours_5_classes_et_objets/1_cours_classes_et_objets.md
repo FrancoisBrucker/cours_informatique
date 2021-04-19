@@ -3,6 +3,7 @@ layout: page
 title:  "cours : classes et objets"
 category: cours
 tags: informatique cours 
+author: "François Brucker"
 ---
 
 ## Introduction

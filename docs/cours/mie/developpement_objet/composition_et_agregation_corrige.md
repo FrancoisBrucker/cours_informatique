@@ -3,6 +3,7 @@ layout: page
 title:  "Composition et agrégation corrigé"
 category: cours
 tags: mie
+author: "François Brucker"
 ---
 
 

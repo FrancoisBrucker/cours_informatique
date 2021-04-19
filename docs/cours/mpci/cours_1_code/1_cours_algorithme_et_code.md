@@ -2,7 +2,8 @@
 layout: page
 title:  "Introduction : Algorithme ? Code ?"
 category: cours
-tags: informatique cours 
+tags: informatique cours
+author: "François Brucker"
 ---
 
 ## Introduction

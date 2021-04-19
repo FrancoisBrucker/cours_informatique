@@ -3,6 +3,7 @@ layout: page
 title:  "preuve"
 category: cours
 tags: informatique cours 
+author: "François Brucker"
 ---
 
 # Introduction

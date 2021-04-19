@@ -3,7 +3,9 @@ layout: page
 title:  "HTML CSS JS"
 category: tutorial
 tags: web
-authors : "Yi Mei JIANG, Théophile BONNEAU"
+authors : 
+  - "Yi Mei JIANG"
+  - "Théophile BONNEAU"
 ---
 
 

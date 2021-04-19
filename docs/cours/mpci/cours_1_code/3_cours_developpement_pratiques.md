@@ -3,6 +3,7 @@ layout: page
 title:  "Développement pratiques"
 category: cours
 tags: informatique cours 
+author: "François Brucker"
 ---
 
 ## Introduction

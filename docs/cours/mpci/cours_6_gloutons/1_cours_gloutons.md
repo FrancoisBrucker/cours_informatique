@@ -3,7 +3,7 @@ layout: page
 title:  "Algorithmes gloutons"
 category: cours
 tags: informatique cours 
-authors: "François Brucker"
+author: "François Brucker"
 ---
 
 

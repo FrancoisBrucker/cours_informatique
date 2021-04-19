@@ -3,6 +3,7 @@ layout: page
 title:  "à vous"
 category: cours
 tags: informatique cours 
+author: "François Brucker"
 ---
 
 # Introduction

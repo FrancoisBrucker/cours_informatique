@@ -1,8 +1,9 @@
 ---
 layout: page
-title:  "Classes et objets élémnts de corrigé"
+title:  "Classes et objets éléments de corrigé"
 category: cours
 tags: mie corrigé
+author: "François Brucker"
 ---
 
 

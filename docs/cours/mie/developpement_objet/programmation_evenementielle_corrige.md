@@ -3,6 +3,7 @@ layout: page
 title:  "Programmation événementielle corrigé"
 category: cours
 tags: mie
+author: "François Brucker"
 ---
 
 ## But

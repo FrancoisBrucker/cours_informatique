@@ -3,6 +3,7 @@ layout: page
 title:  "Code Exponentiation rapide"
 category: cours
 tags: informatique cours 
+author: "François Brucker"
 ---
 
 # introduction

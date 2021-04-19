@@ -3,6 +3,7 @@ layout: page
 title:  "pratiques de développement"
 category: cours
 tags: informatique cours 
+author: "François Brucker"
 ---
 
 ## Introduction

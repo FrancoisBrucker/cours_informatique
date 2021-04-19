@@ -3,6 +3,7 @@ layout: page
 title:  "Installation W10 pour le développement"
 category: tutorial
 tags: combat w10
+author: "François Brucker"
 ---
 
 

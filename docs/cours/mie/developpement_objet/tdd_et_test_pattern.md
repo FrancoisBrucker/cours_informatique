@@ -3,6 +3,7 @@ layout: page
 title:  "TDD et test pattern"
 category: cours
 tags: MIE python tdd
+author: "François Brucker"
 ---
 
 ## Test Driven Development by example

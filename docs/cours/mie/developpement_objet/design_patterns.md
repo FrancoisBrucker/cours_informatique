@@ -3,6 +3,7 @@ layout: page
 title:  "Design Patterns"
 category: cours
 tags: mie
+author: "François Brucker"
 ---
 
 ## But

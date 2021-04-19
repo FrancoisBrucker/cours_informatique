@@ -3,6 +3,7 @@ layout: page
 title:  "Installation d'un environnement d'installation"
 category: cours
 tags: mie
+author: "François Brucker"
 ---
 
 ## But
