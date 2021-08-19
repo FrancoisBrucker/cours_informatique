@@ -1,2 +1,112 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/cours_informatique/feed.xml" rel="self" type="application/atom+xml" /><link href="/cours_informatique/" rel="alternate" type="text/html" /><updated>2021-04-19T11:59:46+00:00</updated><id>/cours_informatique/feed.xml</id><title type="html">cours d’informatique</title><subtitle>Support de cours/td d'informatique à l'école centrale marseille.
-A destination des 1A (tronc commun), des 2A (de l'approfondissement MIE) et des 3A (de l'option digital·e)</subtitle></feed>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/cours_informatique/feed.xml" rel="self" type="application/atom+xml" /><link href="/cours_informatique/" rel="alternate" type="text/html" /><updated>2021-08-19T08:02:39+00:00</updated><id>/cours_informatique/feed.xml</id><title type="html">cours d’informatique</title><subtitle>Support de cours/td d'informatique à l'école centrale marseille.</subtitle><entry><title type="html">Tests unitaires en Python avec pytest et pycharm</title><link href="/cours_informatique/tutos/python/tests%20unitaires/2021/08/01/tests-unitaires.html" rel="alternate" type="text/html" title="Tests unitaires en Python avec pytest et pycharm" /><published>2021-08-01T00:00:00+00:00</published><updated>2021-08-01T00:00:00+00:00</updated><id>/cours_informatique/tutos/python/tests%20unitaires/2021/08/01/tests-unitaires</id><content type="html" xml:base="/cours_informatique/tutos/python/tests%20unitaires/2021/08/01/tests-unitaires.html">&lt;p&gt;Mise en œuvre de tests unitaires en python avec l’éditeur pycharm.
+&lt;!--more--&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;introduction&quot;&gt;Introduction&lt;/h1&gt;
+
+&lt;p&gt;Nous devons être certains que toutes les méthodes, fonctions ou modules que nous créons sont corrects. On écrira donc des tests pour être moralement sûrs que nos programmes fonctionnent (la plupart du temps une preuve de code est illusoire).&lt;/p&gt;
+
+&lt;p&gt;Pour éviter de retaper tous ces tests à chaque modification du code (ce qui arrive souvent lorsqu’un algorithme ou une application est utilisée longtemps) ou à chaque découverte de bug, ils sont conservés dans un fichier à part. Ceci nous permettra d’exécuter ces tests à loisir (c’est à dire très souvent) et d’être sûrs que &lt;strong&gt;tous&lt;/strong&gt; les tests seront exécutés. Ces  &lt;a href=&quot;[https://fr.wikipedia.org/wiki/Test_unitaire&quot;&gt;tests sont dit unitaires&lt;/a&gt; et sont essentiels dans toutes les pratiques courantes de code.&lt;/p&gt;
+
+&lt;p&gt;De nombreux frameworks de tests existent pour python, le plus connu étant certainement &lt;a href=&quot;https://docs.python.org/3/library/unittest.html&quot;&gt;unittest&lt;/a&gt;, ou encore &lt;a href=&quot;http://nose.readthedocs.io/en/latest/&quot;&gt;nose&lt;/a&gt;. Nous allons utiliser &lt;a href=&quot;http://pytest.org&quot;&gt;pytest&lt;/a&gt;.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Nota Bene :&lt;/strong&gt;
+Une très bonne introduction au développement par les tests est l’inusable Test Driven Development: By Example de Kent Beck. Tous les exemples sont en revanche en Java.
+Sinon en python mais orienté développement web, il y a le bon (mais il faut s’accrocher si on débute) “Test-Driven Development with Python” de Harry J.w Percival.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;un-exemple&quot;&gt;Un exemple&lt;/h1&gt;
+
+&lt;p&gt;Créez un nouveau projet avec pycharm que l’on pourra appeler &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;essai_tests&lt;/code&gt;, puis ajoutez-y un fichier que vous nommerez &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;aide_mathematiques.py&lt;/code&gt;. Ce fichier contiendra le code suivant :&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;double&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;entier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;entier&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Pour tester ce code, j’imagine que si les deux conditions suivantes sont remplies :&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;double(0)&lt;/code&gt; vaut &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0&lt;/code&gt;,&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;double (21)&lt;/code&gt; vaut &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;42&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Ma méthode sera exacte.&lt;/p&gt;
+
+&lt;p&gt;On utilise le mot clé &lt;a href=&quot;http://www.tutorialspoint.com/python/assertions_in_python.htm&quot;&gt;assert&lt;/a&gt; pour créer notre fonction de test.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Attention :&lt;/strong&gt;
+Les fonctions de tests doivent toutes commencer par ‘‘test_’’.&lt;/p&gt;
+
+&lt;/blockquote&gt;
+
+&lt;p&gt;Ajouter la méthode ci-après à votre fichier :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language- python&quot;&gt;
+def test_double():
+  assert double(0) == 0
+  assert double(21) == 42
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;et exécutez là :&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;n&quot;&gt;test_double&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Si tout s’est passé comme prévu, il ne s’est rien passé. Normal, l’ &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;assert&lt;/code&gt; était vérifié. Changez un des &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;assert&lt;/code&gt; de la fonction &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;test_double&lt;/code&gt; pour que le résultat soit faux (par exemple &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;assert double(0) == 7&lt;/code&gt;). Le programme doit maintenant s’arrêter sur une exception. Chez moi, j’obtiens ça :&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Traceback (most recent call last):
+  File &quot;/Users/francois/Documents/pycharm/essai_tests/aide_mathematiques.py&quot;, line 10, in &amp;lt;module&amp;gt;
+    test_double()
+  File &quot;/Users/francois/Documents/pycharm/essai_tests/aide_mathematiques.py&quot;, line 6, in test_double
+    assert double(0) == 7
+AssertionError
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Ainsi, si tout se passe bien, nos tests sont passés, si le programme s’arrête sur une exception de type &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;AssertionError&lt;/code&gt;, nos tests ne correspondent pas à la réalité. Nous sommes en face d’un bug (qu’il faut corriger).&lt;/p&gt;
+
+&lt;h1 id=&quot;séparer-code-et-tests&quot;&gt;Séparer code et tests&lt;/h1&gt;
+
+&lt;p&gt;Placez la fonction de test (et son exécution) dans un fichier que vous nommerez &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;test_aide_mathematiques.py&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Faites en sorte qu’il s’exécute sans problème (attention aux &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;import&lt;/code&gt;. Vous pouvez &lt;a href=&quot;https://docs.python.org/fr/3.7/tutorial/modules.html&quot;&gt;lire la doc officielle&lt;/a&gt;,  un &lt;a href=&quot;https://www.learnpython.org/en/Modules_and_Packages&quot;&gt;petit tuto bien fait&lt;/a&gt; ou encore &lt;a href=&quot;http://sametmax.com/les-imports-en-python/&quot;&gt;le tuto de sam&amp;amp;max&lt;/a&gt; qui est un peu vieux (en particulier la partie absolue_import n’est plus du &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;__future__&lt;/code&gt; mais est implémenté dans python3) mais toujours éclairant).&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Attention :&lt;/strong&gt;
+On séparera toujours les tests du code. Tout fichier de test commence par ‘‘test_’’.&lt;/p&gt;
+
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;utilisation-de-lenvironnement-de-test-avec-pycharm&quot;&gt;Utilisation de l’environnement de test avec pycharm&lt;/h1&gt;
+
+&lt;p&gt;Nous allons demander à l’environnement &lt;a href=&quot;http://pytest.org/latest/&quot;&gt;py.test&lt;/a&gt; d’exécuter nos tests. Il nous donnera plus d’informations sur les tests réussis ou échoués (une application normale contient des centaines de tests).&lt;/p&gt;
+
+&lt;p&gt;Commencez par supprimer l’exécution de &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;test_double&lt;/code&gt; dans le fichier &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;test_aide_mathematiques.py&lt;/code&gt;.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Attention :&lt;/strong&gt;
+Un fichier de tests ne doit contenir que des fonctions.&lt;/p&gt;
+
+&lt;/blockquote&gt;
+
+&lt;p&gt;Puis nous allons demander à &lt;a href=&quot;https://www.jetbrains.com/pycharm/&quot;&gt;Pycharm&lt;/a&gt; d’exécuter &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;test_aide_mathematiques.py&lt;/code&gt; à l’aide de notre environnement de test.&lt;/p&gt;
+
+&lt;p&gt;Pour cela, créez un environnement d’exécution (expliqué dans ce &lt;a href=&quot;/cours_informatique/cours/tuto/anaconda-pycharm-pytest.html&quot;&gt;tuto&lt;/a&gt;) et créez une configuration  &lt;em&gt;pyhton test &amp;gt; pytest&lt;/em&gt;. Ici, les paramètres dont nous aurons besoin sont :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;le champ &lt;em&gt;name&lt;/em&gt;, qui donne un nom à notre contexte. Par exemple &lt;em&gt;“mes tests”&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;le champ &lt;em&gt;target&lt;/em&gt;, qui spécifie quel script utiliser. Cliquez tout à droite de ce champ sur un petit bouton avec &lt;em&gt;…&lt;/em&gt; puis choisissez le fichier &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;test_aide_mathematiques.py&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Une fois ceci configuré, cliquez sur &lt;em&gt;OK&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Un nouvel environnement de tests est créé dans le menu &lt;em&gt;run&lt;/em&gt;. Exécutez le. Vous devriez voir une nouvelle fenêtre en bas de l’écran pycharm apparaître et vos tests s’exécuter. Si tout s’est bien passé, une barre verte doit apparaître.&lt;/p&gt;
+
+&lt;p&gt;Pour finir cette partie :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Séparez votre fonction de tests en 2 fonctions (chaque fonction de test ne doit contenir qu’une chose à tester, donc a priori qu’un seul &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;assert&lt;/code&gt;).&lt;/li&gt;
+  &lt;li&gt;Exécutez votre nouvel environnement.&lt;/li&gt;
+  &lt;li&gt;Ajoutez une fonction de test qui plante. Exécutez votre environnement de test. Voyez la barre rouge. Supprimez ce test non valide.&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="tests unitaires" /><category term="pytest" /><category term="unittest" /><summary type="html">Mise en œuvre de tests unitaires en python avec l’éditeur pycharm.</summary></entry></feed>
