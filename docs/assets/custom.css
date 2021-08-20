@@ -1,0 +1,25 @@
+/**
+ * import ajouté dans _layout/head.html
+ */
+
+blockquote {
+  color: green;
+  border-left: 4px solid green;
+  padding-left: 15px;
+  font-style: normal;
+  background: #FBFFF2;
+}
+
+blockquote:last-child {
+  margin-bottom: 0;
+}
+
+blockquote.attention {
+  color: #FF995A;
+  border-left: 4px solid #FF995A;
+}
+
+blockquote.attention::before {
+  content: "ATTENTION !";
+  font-weight: bold;
+}
