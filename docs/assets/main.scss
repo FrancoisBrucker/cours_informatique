@@ -4,3 +4,27 @@
 @import "{{ site.theme}}";
 
 // mon scss
+
+details {
+    summary {
+        &::before {
+            font-family: FontAwesome;
+            font-size: 1.2em;
+            content: "\f152";
+            float: left;
+            margin-right: 0.4em;
+        }
+        list-style: none;
+
+        &::-webkit-details-marker {
+            display: none;
+        }
+
+        margin-bottom: 0.8em;
+    }
+    &.open, &[open] {
+        summary::before {
+            content: "\f150";
+        }
+    }
+}

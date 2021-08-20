@@ -23,3 +23,14 @@ blockquote.attention::before {
   content: "ATTENTION !";
   font-weight: bold;
 }
+
+blockquote.danger {
+  color: #E0413E;
+  border-left: 4px solid #E0413E;
+}
+
+blockquote.danger::before {
+  content: "DANGER !";
+  font-weight: bold;
+}
+
