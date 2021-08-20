@@ -1,0 +1,40 @@
+---
+# Feel free to add content and custom Front Matter to this file.
+# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
+
+layout: home
+---
+
+<h1>Liste des différents tutos</h1>
+<div>
+    <ul class="post-list">
+        {%- for post in site.posts -%}
+            <li>
+                <span class="post-meta">{{ post.category }}</span>
+                <h3>
+                    <a class="post-link" href="{{ post.url | relative_url }}">
+                      {{ post.title | escape }}
+                    </a>
+                  </h3>
+                  <div style="padding-left:20px;">
+                    <div>
+                        catégories : 
+                        {% for category in post.categories %}
+                        • <span class="post-meta">{{ category }}</span>
+                        {% endfor %}
+                        • 
+                    </div>
+                    <div>
+                        tags : 
+                        {% for tag in post.tags %}
+                        • <span class="post-meta">{{ tag }}</span>
+                        {% endfor %}
+                        •
+                    </div>
+                    <p>
+                        {{ post.excerpt }}
+                    </p>
+            </li>
+        {%- endfor -%}
+    </ul>
+</div>
