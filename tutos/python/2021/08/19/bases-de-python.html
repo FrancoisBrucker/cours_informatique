@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Bases de python | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Bases de python" />
+<meta name="author" content="Augustin Agbo-Kpati" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Notions de base du langage python. Ce n’est cependant pas un cours, on y reprend juste les différentes notions à connaître ainsi que les principales structres de données à utiliser." />
+<meta property="og:description" content="Notions de base du langage python. Ce n’est cependant pas un cours, on y reprend juste les différentes notions à connaître ainsi que les principales structres de données à utiliser." />
+<link rel="canonical" href="/cours_informatique/tutos/python/2021/08/19/bases-de-python.html" />
+<meta property="og:url" content="/cours_informatique/tutos/python/2021/08/19/bases-de-python.html" />
+<meta property="og:site_name" content="cours d’informatique" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-08-19T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Bases de python" />
+<script type="application/ld+json">
+{"description":"Notions de base du langage python. Ce n’est cependant pas un cours, on y reprend juste les différentes notions à connaître ainsi que les principales structres de données à utiliser.","mainEntityOfPage":{"@type":"WebPage","@id":"/cours_informatique/tutos/python/2021/08/19/bases-de-python.html"},"@type":"BlogPosting","url":"/cours_informatique/tutos/python/2021/08/19/bases-de-python.html","headline":"Bases de python","dateModified":"2021-08-19T00:00:00+00:00","datePublished":"2021-08-19T00:00:00+00:00","author":{"@type":"Person","name":"Augustin Agbo-Kpati"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css">
+
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Bases de python</h1>Auteurs :
+      <ul>
+      
+        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Augustin Agbo-Kpati</span></span></li>
+      
+        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></li>
+      
+        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Pascal Préa</span></span></li>
+      
+      </ul></p></p>
+  </header>
+
+  <div class="post-content">
+    <p>Notions de base du langage python. Ce n’est cependant pas un cours, on y reprend juste les différentes notions à connaître ainsi que les principales structres de données à utiliser.</p>
+
+<!--more-->
+
+<p>On supposeras que vous ayez un interpréteur python qui fonctionne ainsi qu’un éditeur de texte pour écrire des programmes.</p>
+
+<blockquote>
+  <p>On utilisera ici la version 3 de python (plus personne — vraiment — ne devrait utiliser la version 2) dans sa dernière itération (3.9.6 à l’heure où je tape ces caractères), mais n’importe quelle version 3 de python devrait faire fonctionner les exemples de ce tuto. Les liens vers la documentation officielle seront toujours ceux de la dernière version stable de python.</p>
+</blockquote>
+
+<h1 id="introduction">Introduction</h1>
+
+<p>Un petit rappel des bases de la programmation en python que vous êtes sensés savoir pour suivre les différents cours d’informatique. On y ajoute quelques exercices pour être sur que l’on a compris.</p>
+
+<blockquote>
+  <p><a href="https://docs.python.org/3/">https://docs.python.org/3/</a> toutes les réponses et bien plus encore s’y trouvent.</p>
+</blockquote>
+
+<p>Nous vous recommendons également de faire le <a href="https://docs.python.org/3/tutorial/index.html">tutoriel</a></p>
+
+<h1 id="les-données">Les données</h1>
+
+<blockquote>
+  <p><a href="https://docs.python.org/3/library/stdtypes.html#built-in-types">Documentation correspondante</a>.</p>
+</blockquote>
+
+<blockquote>
+  <p>Les commentaires en Python se font à l’aide de <code class="language-plaintext highlighter-rouge">#</code>.</p>
+</blockquote>
+
+<h2 id="les-5-classes-de-base">Les 5 classes de base</h2>
+
+<ul>
+  <li>Chaînes de caractères</li>
+  <li>Entiers</li>
+  <li>Réels</li>
+  <li>Complexes (la notation utilise j à la place de i)</li>
+  <li>Booléens</li>
+</ul>
+
+<p>Afin de connaître la classe d’un objet, on peut utiliser la fonction <code class="language-plaintext highlighter-rouge">type</code> :</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span> 
+</code></pre></div></div>
+<p>Rendra : <code class="language-plaintext highlighter-rouge">&lt;class 'int'&gt;</code></p>
+
+<p>On peut créer des objets de classes différentes avec des fonctions telles que:</p>
+
+<ul>
+  <li><a href="https://docs.python.org/3/library/stdtypes.html#str"><code class="language-plaintext highlighter-rouge">str()</code></a> qui représentera les objets <em>chaîne de caractères</em></li>
+  <li><a href="https://docs.python.org/3/library/functions.html#float"><code class="language-plaintext highlighter-rouge">float()</code></a> qui représentera les objets <em>nombres réels</em></li>
+  <li><a href="https://docs.python.org/3/library/functions.html#int"><code class="language-plaintext highlighter-rouge">int()</code></a> qui représentera les objets <em>nombres entiers</em></li>
+  <li><a href="https://docs.python.org/3/library/functions.html#complex"><code class="language-plaintext highlighter-rouge">complex()</code></a> qui représentera les objets <em>nombres complexes</em></li>
+  <li><a href="https://docs.python.org/3/library/functions.html#bool"><code class="language-plaintext highlighter-rouge">bool()</code></a> qui représentera les objets <em>booléens</em></li>
+</ul>
+
+<p>Par exemple, en tapant <code class="language-plaintext highlighter-rouge">str(42)</code>, on rend un objet de classe <code class="language-plaintext highlighter-rouge">str</code> (chaîne de caractères) à partir d’un objet de classe <code class="language-plaintext highlighter-rouge">int</code> (entier).</p>
+
+<h2 id="variables">Variables</h2>
+
+<p>Une variable est un nom auquel est associé un objet. Pour associer un nom à un objet on utilise l’opérateur d’affectation <code class="language-plaintext highlighter-rouge">=</code> tel que:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nom = objet
+</code></pre></div></div>
+
+<p>A gauche de l’opérateur <code class="language-plaintext highlighter-rouge">=</code> se trouve un <strong>nom</strong> (en gros, quelque chose ne pouvant commencer par un nombre) et à droite un <strong>objet</strong>. Dans toute la suite du programme, dès que l’interpréteur python rencontrera le nom, il le remplacera par l’objet.</p>
+
+<blockquote class="attention">
+  <p>Un nom n’est <strong>PAS</strong> une chaîne de caractères. Une chaîne de caractère est un objet alors qu’un nom n’est qu’un alias vers un objet.</p>
+</blockquote>
+
+<p>Il est important de comprendre que l’opérateur d’affectation = n’est pas symétrique. À gauche, des noms et à droite, des objets.</p>
+
+<p>Attardons nous un moment sur ces notions car elles seront cruciales plus tard pour appréhender les possibilités offertes par les objets.</p>
+
+<p>Considérons le programme suivant :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">y</span>
+</code></pre></div></div>
+
+<p><img src="/cours_informatique/assets/tutos/bases-de-python/nom_et_objets.png" alt="association nom variable" style="margin: auto;display: block;" /></p>
+
+<p>La figure montre le résultat après chaque instruction. On voit qu’un même objet peut parfaitement
+avoir plusieurs noms. Cependant, à un nom correspond un unique objet. Les objets qui n’ont plus de
+noms sont supprimés à intervalles réguliers (c’est ce qu’on appelle le <a href="https://towardsdatascience.com/memory-management-and-garbage-collection-in-python-c1cb51d1612c">garbage collector</a>) puisque l’on ne peut plus y accéder.</p>
+
+<p>Le mécanisme décrit précédemment (remplacement des noms par les objets référencés avant exécution
+de l’instruction) montre que l’on peut affecter plusieurs noms en même temps, comme le montre l’exemple
+suivant :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">i</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">j</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="n">j</span><span class="p">,</span> <span class="n">i</span>
+</code></pre></div></div>
+
+<h2 id="les-structures-de-données">Les structures de données</h2>
+
+<h3 id="les-listes">Les listes</h3>
+
+<blockquote>
+  <p><a href="https://docs.python.org/3/tutorial/datastructures.html#more-on-lists">https://docs.python.org/3/tutorial/datastructures.html#more-on-lists</a></p>
+</blockquote>
+
+<h4 id="création-directe">Création directe</h4>
+
+<p>On peut créer une liste directement:</p>
+
+<ul>
+  <li>Soit en créant une liste vide puis en ajoutant des éléments un à un. <code class="language-plaintext highlighter-rouge">l = []</code> <code class="language-plaintext highlighter-rouge">l.append(1)</code></li>
+  <li>Soit en créant la liste déjà pré-remplie. <code class="language-plaintext highlighter-rouge">l = [1, 2, True, "Hello World"]</code>. Cette liste contient 4 éléments et est <strong>indexée à partir de 0</strong>.</li>
+</ul>
+
+<p>La fonction <code class="language-plaintext highlighter-rouge">len()</code> permet d’obtenir la longueur de la liste. Sur le dernier exemple, <code class="language-plaintext highlighter-rouge">len(l)</code> rend <code class="language-plaintext highlighter-rouge">4</code>.
+On peut alors accéder aux éléments de la liste à l’aide d’un indice variant entre <code class="language-plaintext highlighter-rouge">0</code> et <code class="language-plaintext highlighter-rouge">len(l) - 1</code>. Ainsi  avec <code class="language-plaintext highlighter-rouge">l[3]</code> on obtient la chaîne de caractère “Hello World”.</p>
+
+<h4 id="création-à-laide-de-range">Création à l’aide de range()</h4>
+
+<p>La fonction <a href="https://docs.python.org/3/library/stdtypes.html#range">range</a> permet de créer des listes de nombres.</p>
+
+<h4 id="ajout-suppression-déléments-dune-liste">Ajout, suppression d’éléments d’une liste</h4>
+
+<ul>
+  <li>append</li>
+  <li>insert</li>
+  <li>del</li>
+</ul>
+
+<p>Attention à remove, extend ou pop</p>
+
+<p>Voir la <a href="https://docs.python.org/3/tutorial/datastructures.html#more-on-lists">documentation du tutorial</a>.</p>
+
+<h4 id="copie-dune-sous-liste">Copie d’une sous-liste</h4>
+
+<p>On peut copier une partie d’une liste.
+Pour <strong>copier la liste l à partir de l’indice i jusqu’à l’indice j avec un pas de k</strong> par exemple : <code class="language-plaintext highlighter-rouge">l[i:j:k]</code>
+Il n’est pas nécessaire de renseigner tous les champs.</p>
+
+<blockquote>
+  <p>Essayez <code class="language-plaintext highlighter-rouge">l[::3]</code> ou <code class="language-plaintext highlighter-rouge">l[1::5]</code> etc… (il faut bien évidemment des listes assez longues).</p>
+</blockquote>
+
+<h3 id="les-dictionnaires">Les dictionnaires</h3>
+
+<blockquote>
+  <ul>
+    <li><a href="https://docs.python.org/3/tutorial/datastructures.html#dictionaries">https://docs.python.org/3/tutorial/datastructures.html#dictionaries</a></li>
+    <li><a href="https://docs.python.org/3/library/stdtypes.html#mapping-types-dict">https://docs.python.org/3/library/stdtypes.html#mapping-types-dict</a></li>
+  </ul>
+</blockquote>
+
+<p>Un dictionnaire (ou <a href="http://fr.wikipedia.org/wiki/Tableau_associatif">tableau associatif</a>) permet d’associer des clés à des valeurs, ces clés pouvant être des chaines de caractères ou des nombres. C’est en gros comme une ‘liste’ où l’on remplace les indices par à peu près ce que l’on veut.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">d</span> <span class="o">=</span> <span class="p">{}</span> <span class="c1">#on crée un dictionnaire vide
+</span><span class="n">d</span><span class="p">[</span><span class="s">"quarante deux"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">42</span> <span class="c1">#on associe à la clé "quarante deux" la valeur 42
+</span><span class="n">d</span><span class="p">[</span><span class="mf">3.14</span><span class="p">]</span> <span class="o">=</span> <span class="s">"pi"</span> <span class="c1">#on associe à la clé 3.14 la valeur "pi"
+</span><span class="k">print</span><span class="p">(</span><span class="s">"quarante deux"</span> <span class="ow">in</span> <span class="n">d</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="mi">42</span> <span class="ow">in</span> <span class="n">d</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">cle</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"cle :"</span><span class="p">,</span> <span class="n">cle</span><span class="p">,</span> <span class="s">"valeur :"</span><span class="p">,</span> <span class="n">d</span><span class="p">[</span><span class="n">cle</span><span class="p">])</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>Attention</strong> : Un dictionnaire n’est pas ordonné, L’ordre dans lequel les valeurs sont examniés dans une boucle for par exmple n’est pas défini.</p>
+</blockquote>
+
+<h3 id="les-ensembles--set">Les ensembles : set</h3>
+
+<blockquote>
+  <p><a href="https://docs.python.org/3/library/stdtypes.htm#set">https://docs.python.org/3/library/stdtypes.htm#set</a></p>
+</blockquote>
+
+<p>Un ensemble permet de garder des données en mémoire de manière non indexée. Contrairement aux listes, où l’on rangeait les éléments dans des cases distinctes, on ne peut <strong>pas</strong> accéder aux éléments d’un ensemble <code class="language-plaintext highlighter-rouge">d</code> avec <code class="language-plaintext highlighter-rouge">d[i]</code>.</p>
+
+<h3 id="notion-dobjets-mutables">Notion d’objets mutables</h3>
+
+<p>Les objets que nous avons rencontrés sont mutables, c’est à dire que lorsque on crée une liste <code class="language-plaintext highlighter-rouge">l = [1, 2, 3]</code>, il est toujours possible de changer la valeur d’un indice, ou d’ajouter un élément.</p>
+
+<p>Cela n’est toutefois pas possible avec les <a href="https://docs.python.org/3/library/stdtypes.html#tuples">tuples</a> par exemple.</p>
+
+<p>Un tuple peut se créer de la manière suivante :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Essayez maintenant des commandes telles que :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">t</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Cela nous renvoie alors des erreurs.</p>
+
+<p>Pour ajouter un élément, il faut créer un autre tuple :</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">t2</span> <span class="o">=</span> <span class="n">t</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">)</span>
+</code></pre></div></div>
+
+<p>Le <a href="https://docs.python.org/3/library/stdtypes.html#frozenset"><code class="language-plaintext highlighter-rouge">frozenset</code></a> est un <code class="language-plaintext highlighter-rouge">set</code> (ensemble), mais cette fois non mutable.</p>
+
+<h1 id="structures-de-contrôle">Structures de contrôle</h1>
+
+<h2 id="comparaisons">Comparaisons</h2>
+
+<blockquote>
+  <p><a href="https://docs.python.org/3/library/stdtypes.html#comparisons">https://docs.python.org/3/library/stdtypes.html#comparisons</a></p>
+</blockquote>
+
+<h2 id="blocs-id">Blocs</h2>
+
+<p>On a souvent besoin de n’exécuter un certain bout de code que si une comparaison particulière est vraie (True). Ce bout de code est appelé <em>bloc</em>.</p>
+
+<p>Tous les blocs sont définis de la même manière :</p>
+
+<ul>
+  <li>Ce qui va identifier le bloc pour son exécution (une condition, son nombre d’exécution, son nom).</li>
+  <li>Les instructions le constituant.</li>
+</ul>
+
+<p>Pour séparer les blocs les un des autres, et savoir ce qui le définit, le langage Python utilise l’indentation(4 espaces): un bloc est donc une suite d’instructions ayant la même indentation.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">question</span> <span class="o">=</span> <span class="s">"A quelle heure on mange ?"</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Question :"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">question</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Reponse :"</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">question</span> <span class="o">==</span> <span class="s">"la vie, l’univers et le reste"</span><span class="p">:</span>
+    <span class="n">reponse_partielle</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">+</span> <span class="mi">5</span> <span class="o">+</span> <span class="mi">6</span>
+    <span class="n">reponse</span> <span class="o">=</span> <span class="n">reponse_partielle</span> <span class="o">*</span> <span class="mi">2</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">reponse</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"je ne sais pas."</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Ce code contient 3 blocs : le bloc principal, puis les 2 blocs de conditions (respectivement <code class="language-plaintext highlighter-rouge">if</code> et <code class="language-plaintext highlighter-rouge">else</code>).</p>
+
+<blockquote class="attention">
+  <p>L’indentation est  <strong>primordiale</strong> en python.</p>
+</blockquote>
+
+<p>Nous allons utiliser la convention classique : chaque bloc sera indenté de 4 espaces supplémentaire par
+rapport au bloc parent. Pour ne pas passer son temps à compter les espaces à ajouter pour chaque bloc,
+on pourra utiliser la <strong>touche tabulation</strong> en modifiant son fonctionnement (remplacement du caractère
+tabulation par des espaces, cela est déjà prédéfini avec PyCharm) et est disponible dans tout bon éditeur.</p>
+
+<p>En python, toute ligne définissant un nouveau bloc doit être terminée par le caractère <code class="language-plaintext highlighter-rouge">:</code></p>
+
+<h2 id="conditions-sisinon-sisinon-ifelifelse">Conditions si/sinon si/sinon (if/elif/else)</h2>
+
+<blockquote>
+  <p><a href="https://docs.python.org/3/reference/compound_stmts.html#the-if-statement">https://docs.python.org/3/reference/compound_stmts.html#the-if-statement</a></p>
+</blockquote>
+
+<p>Exemple :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Strictement negatif"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"vaut Zero"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"pair strictement positif"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"impair strictement positif"</span><span class="p">)</span><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<p>Il est à noter que <code class="language-plaintext highlighter-rouge">elif</code> et <code class="language-plaintext highlighter-rouge">else</code> sont optionnels.</p>
+
+<h2 id="boucle-while">Boucle while</h2>
+
+<blockquote>
+  <p><a href="https://docs.python.org/3/reference/compound_stmts.html#the-while-statement">https://docs.python.org/3/reference/compound_stmts.html#the-while-statement</a></p>
+</blockquote>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">b</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="k">while</span> <span class="n">b</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="mi">1</span>
+</code></pre></div></div>
+
+<p>On peut aussi inclure des blocs dans des blocs comme le montre le programme suivant :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">b</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="k">while</span> <span class="n">b</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">b</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"b vaut 2"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="boucle-for">Boucle for</h2>
+
+<h3 id="les-itérateurs">Les itérateurs</h3>
+
+<p>Pour faire simple, les itérateurs sont des objets qui permettent de créer des suites de données.
+Prenons un exemple connu: <code class="language-plaintext highlighter-rouge">range()</code></p>
+
+<p>range permet de créer des itérateurs : <code class="language-plaintext highlighter-rouge">range(10)</code> est un itérateur qui va renvoyer les valeurs de 0 à 9.</p>
+
+<p>Pour utiliser <code class="language-plaintext highlighter-rouge">for</code>, il faut un itérateur tel que: <code class="language-plaintext highlighter-rouge">for x in mon_iterateur</code> est la syntaxe.</p>
+
+<p>Exemple :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mon_iterateur</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">mon_iterateur</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Essayez ce code et comprenez le : les itérateurs sont de puissants objets python.</p>
+
+<p>Vous pouvez créer votre propre itérateur à l’aide de l’instruction <code class="language-plaintext highlighter-rouge">yield</code></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">mon_iterateur</span><span class="p">(</span><span class="n">valeur</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">valeur</span><span class="p">):</span>
+        <span class="k">yield</span> <span class="n">valeur</span> <span class="o">*</span> <span class="n">x</span>
+
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">mon_iterateur</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Ce qui va s’afficher sera:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
+5
+10
+15
+20
+</code></pre></div></div>
+
+<p>On peut également boucler sur une liste, qui est un <strong>objet itérable</strong> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Jet fuel"</span><span class="p">,</span> <span class="s">"can't"</span><span class="p">,</span> <span class="s">"melt"</span><span class="p">,</span> <span class="s">"steel beams"</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">mot</span> <span class="ow">in</span> <span class="n">l</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">mot</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h1 id="méthodes-fonctions-et-modules">Méthodes, fonctions et modules</h1>
+
+<h2 id="les-fonctions">Les fonctions</h2>
+
+<h3 id="motivations">Motivations</h3>
+<blockquote>
+  <p><a href="https://docs.python.org/3/reference/compound_stmts.html#function-definitions">https://docs.python.org/3/reference/compound_stmts.html#function-definitions</a></p>
+</blockquote>
+
+<p>Il n’est jamais bon de copier/coller un bout de programme qui se répète plusieurs fois (corriger un problème dans ce bout de code reviendrait à le corriger autant de fois qu’il a été dupliqué…). Il est de plus souvent utile de séparer les éléments logiques d’un programme en unités autonomes, ceci rend le programme plus facile à relire.</p>
+
+<p>Pour cela, on utilise des <em>fonctions</em>.</p>
+
+<p>Une fonction est un <a href="#blocs-id">bloc</a> auquel on donne un nom (le nom de la fonction) qui peut être exécuté lorsqu’on l’invoque par son nom.</p>
+
+<p>La partie de programme suivant définit une fonction:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">bonjour</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Salutations"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>La première ligne est la définition du bloc fonction. Il contient :</p>
+
+<ul>
+  <li>un mot clé spécial précisant que l’on s’apprête à définir une fonction: <code class="language-plaintext highlighter-rouge">def</code></li>
+  <li>le nom de la fonction. Ici <code class="language-plaintext highlighter-rouge">bonjour</code></li>
+  <li>des parenthèses qui pourront contenir des paramètres (on verra ça plus tard)</li>
+  <li>le <code class="language-plaintext highlighter-rouge">:</code> qui indique que la ligne d’après va commencer le bloc proprement dit</li>
+</ul>
+
+<p>Ensuite vient le bloc fonction en lui-même qui ne contient qu’une seule ligne.</p>
+
+<p>Si on exécute le bloc précédent, il ne se passe rien. En effet on n’a fait que définir la fonction. Pour l’utiliser, ajoutez <code class="language-plaintext highlighter-rouge">bonjour()</code> à la suite du bloc.</p>
+
+<blockquote>
+  <p>Une <strong>fonction</strong> s’utilise toujours en faisant suivre son nom d’une parenthèse contenant ses paramètres séparés par une virgule (notre fonction n’a pour l’instant pas de paramètres). Donner juste son nom ne suffit pas à l’invoquer.</p>
+</blockquote>
+
+<h3 id="paramètres-dune-fonction">Paramètres d’une fonction</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">plus_moins</span><span class="p">(</span><span class="n">nombre</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">nombre</span> <span class="o">&gt;</span> <span class="mi">42</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Supérieur à 42"</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Inférieur à 42"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Cette fonction nécessite donc un paramètre pour être invoquée. Testez alors <code class="language-plaintext highlighter-rouge">plus_moins(17)</code>.
+La variable nombre sera associée à l’objet entier de valeur 17 dans la fonction. La variable nombre n’existe que dans la fonction.</p>
+
+<blockquote class="attention">
+  <p>Les <em>paramètres</em> d’une fonction sont des <strong>noms</strong> de variables qui ne seront connus qu’à l’intérieur de la fonction. À l’exécution de la fonction, le nom de chaque paramètre est associé à l’objet correspondant.</p>
+</blockquote>
+
+<h3 id="retour-dune-fonction">Retour d’une fonction</h3>
+
+<p>Toute fonction peut rendre une valeur. On utilise le mot-clef <code class="language-plaintext highlighter-rouge">return</code> suivi de la valeur à rendre pour cela. Le fonction suivante rend le double de la valeur de l’objet passé en paramètre:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">double</span><span class="p">(</span><span class="n">valeur</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">valeur</span> <span class="o">*</span> <span class="mi">2</span>
+    <span class="k">return</span> <span class="n">x</span>
+</code></pre></div></div>
+
+<p>Il ne sert à rien de mettre des instructions après une instruction <code class="language-plaintext highlighter-rouge">return</code> car dès qu’une fonction exécute cette instruction, elle s’arrête en rendant l’objet en paramètre. Le retour d’une fonction est pratique pour calculer des choses et peut ainsi être affecté à une variable.</p>
+
+<p>Ainsi, avec la fonction double précédemment définie, testez :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="n">double</span><span class="p">(</span><span class="mi">21</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Le code précédent exécute la fonction de nom <code class="language-plaintext highlighter-rouge">double</code> avec comme paramètre un entier de valeur 21. La fonction commence par associer à une variable nommée <code class="language-plaintext highlighter-rouge">valeur</code> l’objet passé en paramètre (ici un entier de valeur <code class="language-plaintext highlighter-rouge">21</code>), puis crée une variable de nom <code class="language-plaintext highlighter-rouge">x</code> à laquelle est associée un entier de valeur <code class="language-plaintext highlighter-rouge">42</code> et enfin se termine en retournant comme valeur l’objet de nom <code class="language-plaintext highlighter-rouge">x</code>. Les variables <code class="language-plaintext highlighter-rouge">valeur</code> et <code class="language-plaintext highlighter-rouge">x</code> définies à l’intérieur de la fonction sont ensuite effacées (pas les objets, seulement les noms).</p>
+
+<p>Cette valeur retournée est utilisée par la commande <code class="language-plaintext highlighter-rouge">print</code> pour être affichée à l’écran.</p>
+
+<blockquote class="attention">
+  <p>Les noms de paramètres d’une fonction et les variables déclarée à l’intérieur de la fonction n’existent qu’à l’intérieur de celle-ci. En dehors de ce blocs, ces variables n’existent plus.</p>
+</blockquote>
+
+<h3 id="fonctions-vs-méthodes">Fonctions v.s. méthodes</h3>
+
+<p>Python vient avec de nombreuses fonctions que l’on peut utiliser. Vous en connaissez déjà comme <code class="language-plaintext highlighter-rouge">range</code>, <code class="language-plaintext highlighter-rouge">len</code>, ou encore <code class="language-plaintext highlighter-rouge">type</code>.</p>
+
+<p>Ne confondez pas fonctions et méthodes. Une fonction s’exécute toute seule alors qu’une méthode a besoin d’un objet sur lequel elle s’applique (celui avant le <code class="language-plaintext highlighter-rouge">.</code>). Vous pouvez voir ça comme un 1er paramètre indispensable à l’exécution d’une méthode. Considérez le micro-programme suivant:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ma_liste</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">ma_liste</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>La première ligne exécute une <em>fonction</em> (range) avec un paramètre qui rend une liste. La seconde instruction est une <em>méthode</em> (<code class="language-plaintext highlighter-rouge">append</code>) qui s’applique à l’objet de nom <code class="language-plaintext highlighter-rouge">ma_liste</code> et qui a un paramètre (ici un entier valant <code class="language-plaintext highlighter-rouge">10</code>).</p>
+
+<p>Le point un peu délicat est que certaines méthodes ne rendent rien et modifient l’objet sur lequel elle est appliquée, c’est le cas des méthodes <code class="language-plaintext highlighter-rouge">append</code>, <code class="language-plaintext highlighter-rouge">insert</code> ou encore <code class="language-plaintext highlighter-rouge">reverse</code>, alors que d’autres rendent des objets, c’est le cas de <code class="language-plaintext highlighter-rouge">index</code> par exemple.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ma_liste</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">ma_liste</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s">"coucou"</span><span class="p">)</span>
+<span class="n">un_indice</span> <span class="o">=</span> <span class="n">ma_liste</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="s">"coucou"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">un_indice</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ma_liste</span><span class="p">[</span><span class="n">un_indice</span><span class="p">])</span>
+</code></pre></div></div>
+
+<h2 id="visibilité-dun-objet">Visibilité d’un objet</h2>
+
+<p>Les noms des objets sont accessibles à l’intérieur du ‘‘bloc unitaire’’ dans lequel ils sont déclarés ainsi que dans les blocs unitaires contenus dans celui-ci. Les blocs unitaires sont :</p>
+
+<ul>
+  <li>les fonctions,</li>
+  <li>les modules (nous verrons cela),</li>
+  <li>les classes (que nous ne verrons pas).</li>
+</ul>
+
+<p>Les variables définies dans une fonction cachent les variables définies dans des blocs supérieurs. Ainsi,
+le code suivant imprime 42 puisque la variable <code class="language-plaintext highlighter-rouge">x</code> déclarée dans le bloc unitaire de la fonction n’existe plus dans son bloc parent. La variable <code class="language-plaintext highlighter-rouge">x</code> valant 42 est masquée dans la fonction par une nouvelle variable de nom <code class="language-plaintext highlighter-rouge">x</code> valant 24.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">f</span><span class="p">():</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">24</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="mi">42</span>
+<span class="n">f</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>De la même manière, que donne le programme suivant ? :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">parametre</span><span class="p">):</span>
+    <span class="n">parametre</span> <span class="o">=</span> <span class="mi">24</span>
+
+<span class="n">f</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">parametre</span><span class="p">)</span>
+</code></pre></div></div>
+
+<blockquote class="attention">
+  <p>Les noms déclarés dans une fonction, y compris ses paramètres, restent dans la fonction.</p>
+</blockquote>
+
+<h2 id="récursion">Récursion</h2>
+
+<h3 id="modification-dobjets-dans-une-fonction">Modification d’objets dans une fonction</h3>
+
+<p>Dans un programme récursif, on a souvent besoin de modifier le même objet plusieurs fois. Même si la fonction récursive ne rend rien. Pour cela, on doit modifier les objets passés en paramètres. Pour comprendre comment cela marche, considérez la fonction suivante :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">ajoute_max</span><span class="p">(</span><span class="n">liste_en_parametre</span><span class="p">):</span>
+    <span class="n">maximum_liste</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">liste_en_parametre</span><span class="p">)</span>
+    <span class="n">liste_en_parametre</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">maximum_liste</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Cette fonction ajoute à la fin d’une liste passée en paramètre son maximum (au passage, on a apprit une nouvelle fonction, <code class="language-plaintext highlighter-rouge">max</code>.
+regardons le programme suivant qui utilise cette fonction :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">ajoute_max</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="/cours_informatique/assets/tutos/bases-de-python/obj_nom.png" alt="nom et objets" style="margin: auto;display: block;" /></p>
+
+<p>La figure précédente montre ce qu’il s’est passé dans le monde des noms et des objets. Il reste un objet sans nom après l’exécution de la fonction (un entier valant 9), il est détruit. On a pu ainsi modifier un objet sans utiliser de retour de fonction. C’est une technique puissante mais à n’utiliser qu’à bon escient.</p>
+
+<h2 id="modules">Modules</h2>
+
+<p>Un <em>module</em> (aussi appelé <em>bibliothèque</em> ou <em>library</em>) est un ensemble de fonctions utiles, utilisables dans de nombreux programmes. Plutôt que de refaire à chaque fois ces fonctions ou (c’est pire) de les copier/coller dans chaque programme, on les importe directement pour les utiliser.</p>
+
+<blockquote>
+  <p>Il existe de nombreux modules, réalisant une foultitude d’opérations. Avant de se mettre à coder quelque chose, commencez toujours par vérifier (google
+est votre ami) s’il n’existe pas un module tout fait, vous gagnerez du temps. Python en fournit déjà de <a href="https://docs.python.org/3/library/index.html">nombreux</a></p>
+</blockquote>
+
+<p>Pour utiliser un module, il faut commencer par l’importer avec la commande <code class="language-plaintext highlighter-rouge">import</code>. Par exemple avec le module <code class="language-plaintext highlighter-rouge">math</code>.</p>
+
+<h3 id="importation-directe-du-module">Importation directe du module</h3>
+
+<p>On met le nom complet avant chaque appel :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">math</span>
+<span class="n">pi_sur_deux</span> <span class="o">=</span> <span class="n">math</span><span class="p">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span> <span class="c1">#PI est défini dans le module math
+</span><span class="n">x</span> <span class="o">=</span> <span class="n">math</span><span class="p">.</span><span class="n">cos</span><span class="p">(</span><span class="n">pi_sur_deux</span><span class="p">)</span> <span class="c1">#on utilise la fonction cosinus du module math
+</span></code></pre></div></div>
+
+<h3 id="importation-dune-méthode-particulière">Importation d’une méthode particulière.</h3>
+
+<p>Ceci peut être dangereux si des fonctions différentes possèdent le même nom.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">cos</span><span class="p">,</span> <span class="n">pi</span> <span class="c1">#importation directe de cos et de pi
+</span><span class="n">x</span> <span class="o">=</span> <span class="n">cos</span><span class="p">(</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="importation-de-toutes-les-fonctions-du-modules">Importation de toutes les fonctions du modules</h3>
+
+<p>Déconseillée dans la plupart des cas car on ne sait pas vraiment ce qui a été importé.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">log</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="modules-utiles">Modules utiles</h3>
+
+<p>De nombreux modules existent pour python et permettent de réaliser aisément de très nombreuses tâches. Pour python, si avez les droits administrateurs on pourra utiliser l’utilitaire <a href="https://pypi.org/project/pip/">pip</a> qui est l’installeur de package python3 (attention, si vous tapez juste pip, vous installerez des module pour la version 2 de python…).</p>
+
+<p>Si vous n’avez pas de droits administrateur, ou pour une utilisation plus “pro” des modules, on préfèrera créer des environnements virtuels avec <em>virtualenv</em>, mais ceci  dépasse (de peu) le cadre de notre introduction à python.</p>
+
+<blockquote class="attention">
+  <p>Si vous utilisez un interpréteur qui s’appelle <code class="language-plaintext highlighter-rouge">python3</code> et pas <code class="language-plaintext highlighter-rouge">python</code>, il est fort possible que le programme <code class="language-plaintext highlighter-rouge">python</code>(sans le 3) soit un interpréteur de la version 2 de python. Il vous faut alors utiliser la commande <code class="language-plaintext highlighter-rouge">pip3</code>et non <code class="language-plaintext highlighter-rouge">pip</code> (qui sera elle associée à l’interpréteur <code class="language-plaintext highlighter-rouge">python</code>)</p>
+</blockquote>
+
+<h4 id="le-module-random">Le module random</h4>
+
+<blockquote>
+  <p><a href="https://docs.python.org/3/library/random.html">https://docs.python.org/3/library/random.html</a></p>
+</blockquote>
+
+<p>Regardez <a href="https://python.sdv.univ-paris-diderot.fr/08_modules/#85-module-random-generation-de-nombres-aleatoires">ces exemples</a> pour le module random.</p>
+
+<p>Installé par défaut, il permet notamment de mélanger les éléments d’une liste, générer un nombre aléatoire, choisir un élément aléatoire dans une liste… Vous pouvez même simuler une loi gaussienne (si, si).</p>
+
+<h4 id="openpyxl">openpyxl</h4>
+
+<blockquote>
+  <p><a href="http://openpyxl.readthedocs.org">http://openpyxl.readthedocs.org</a></p>
+</blockquote>
+
+<p>Permet de manipuler des <a href="https://automatetheboringstuff.com/chapter12/">fichiers excel avec python</a>.</p>
+
+<p>Il s’installe avec pip : <code class="language-plaintext highlighter-rouge">pip install openpyxl</code> (ou <code class="language-plaintext highlighter-rouge">sudo pip3 install openpyxl</code> suivi de votre mot de passe si vous êtes sous unix/mac).</p>
+
+<h4 id="matplotlib">matplotlib</h4>
+
+<blockquote>
+  <p><a href="http://matplotlib.org">http://matplotlib.org</a></p>
+</blockquote>
+
+<p>Installé par défaut si vous utilisez l’interpréteur d’<a href="https://www.anaconda.com/">anaconda</a>, ce module permet d’afficher des graphiques en python.</p>
+
+<h4 id="jupyter">Jupyter</h4>
+
+<blockquote>
+  <p><a href="http://jupyter.org">http://jupyter.org</a></p>
+</blockquote>
+
+<p>Permet d’utiliser python de façon interactive (il s’installe aisément avec pip par exemple)</p>
+
+<h1 id="retour-sur-les-objets">Retour sur les objets</h1>
+
+<p>Comme on l’a vu les objets sont partout en python, qu’ils soient int, str, float, ou même des fonctions.
+Si vous avez bien compris l’exemple de la récursion et de la modification d’un objet passé en paramètre, alors vous vous demandez peut-être “pourquoi ne pas envoyer une fonction en paramètre d’une autre fonction ?”</p>
+
+<p>Eh bien cela est tout à fait possible, exemple:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">produit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span>
+
+<span class="k">def</span> <span class="nf">calcul</span><span class="p">(</span><span class="n">fonction</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">z</span> <span class="o">+</span> <span class="n">fonction</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">17</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">calcul</span><span class="p">(</span><span class="n">produit</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span> <span class="c1">#On envoie l'objet associé au nom 'produit' à la fonction 'calcul'
+</span></code></pre></div></div>
+
+<p>Ce programme affichera alors 42 ! Essayez-le pour vous en persuader.</p>
+
+<h1 id="les-fichiers--lecture-écriture">Les fichiers : lecture, écriture</h1>
+
+<blockquote>
+  <p><a href="https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files">https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files</a></p>
+</blockquote>
+
+<h2 id="lecture">Lecture</h2>
+
+<p>Pour lire le fichier ligne par ligne :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">'fichier.txt'</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">ligne</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+<span class="n">f</span><span class="p">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>Ou de façon équivalente avec <code class="language-plaintext highlighter-rouge">with</code>, qui est la façon recommandée  car elle délimite l’utilsation du fichier dans un bloc :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">'fichier.txt'</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">ligne</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>On peut aussi compter le nombre de mots dans le texte, par exemple:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">nombre_mots</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">'fichier.txt'</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">ligne</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">ligne</span> <span class="o">=</span> <span class="n">ligne</span><span class="p">.</span><span class="n">strip</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+        <span class="n">mots</span> <span class="o">=</span> <span class="n">ligne</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">' '</span><span class="p">)</span>
+
+        <span class="n">nombre_mots</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">mots</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">nombre_mots</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="écriture">Écriture</h2>
+
+<p>Pour lire-écrire, ouvrez le fichier avec ‘r+’ au lieu de ‘r’. Pour l’écriture seule, ‘w’.</p>
+
+<blockquote class="attention">
+  <p>Ouvrir en écriture un fichier existant <strong>l’efface</strong>. Pour ajouter des choses à la fin d’un fichier on utilise ‘a’ (pour append)</p>
+</blockquote>
+
+<p>Utilisez ensuite la méthode <code class="language-plaintext highlighter-rouge">write()</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">'fichier.txt'</span><span class="p">,</span> <span class="s">'w'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="s">'For the night is dark and full of terrors'</span><span class="p">)</span>
+</code></pre></div></div>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d&#39;informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d&#39;informatique</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

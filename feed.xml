@@ -1,4 +1,643 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/cours_informatique/feed.xml" rel="self" type="application/atom+xml" /><link href="/cours_informatique/" rel="alternate" type="text/html" /><updated>2021-08-19T08:06:59+00:00</updated><id>/cours_informatique/feed.xml</id><title type="html">cours d’informatique</title><subtitle>Support de cours/td d'informatique à l'école centrale marseille.</subtitle><entry><title type="html">Tests unitaires en Python avec pytest et pycharm</title><link href="/cours_informatique/tutos/python/tests%20unitaires/2021/08/01/tests-unitaires.html" rel="alternate" type="text/html" title="Tests unitaires en Python avec pytest et pycharm" /><published>2021-08-01T00:00:00+00:00</published><updated>2021-08-01T00:00:00+00:00</updated><id>/cours_informatique/tutos/python/tests%20unitaires/2021/08/01/tests-unitaires</id><content type="html" xml:base="/cours_informatique/tutos/python/tests%20unitaires/2021/08/01/tests-unitaires.html">&lt;p&gt;Mise en œuvre de tests unitaires en python avec l’éditeur pycharm.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/cours_informatique/feed.xml" rel="self" type="application/atom+xml" /><link href="/cours_informatique/" rel="alternate" type="text/html" /><updated>2021-08-20T07:17:26+00:00</updated><id>/cours_informatique/feed.xml</id><title type="html">cours d’informatique</title><subtitle>Support de cours/td d'informatique à l'école centrale marseille.</subtitle><entry><title type="html">Bases de python</title><link href="/cours_informatique/tutos/python/2021/08/19/bases-de-python.html" rel="alternate" type="text/html" title="Bases de python" /><published>2021-08-19T00:00:00+00:00</published><updated>2021-08-19T00:00:00+00:00</updated><id>/cours_informatique/tutos/python/2021/08/19/bases-de-python</id><content type="html" xml:base="/cours_informatique/tutos/python/2021/08/19/bases-de-python.html">&lt;p&gt;Notions de base du langage python. Ce n’est cependant pas un cours, on y reprend juste les différentes notions à connaître ainsi que les principales structres de données à utiliser.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;On supposeras que vous ayez un interpréteur python qui fonctionne ainsi qu’un éditeur de texte pour écrire des programmes.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;On utilisera ici la version 3 de python (plus personne — vraiment — ne devrait utiliser la version 2) dans sa dernière itération (3.9.6 à l’heure où je tape ces caractères), mais n’importe quelle version 3 de python devrait faire fonctionner les exemples de ce tuto. Les liens vers la documentation officielle seront toujours ceux de la dernière version stable de python.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;introduction&quot;&gt;Introduction&lt;/h1&gt;
+
+&lt;p&gt;Un petit rappel des bases de la programmation en python que vous êtes sensés savoir pour suivre les différents cours d’informatique. On y ajoute quelques exercices pour être sur que l’on a compris.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;https://docs.python.org/3/&quot;&gt;https://docs.python.org/3/&lt;/a&gt; toutes les réponses et bien plus encore s’y trouvent.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Nous vous recommendons également de faire le &lt;a href=&quot;https://docs.python.org/3/tutorial/index.html&quot;&gt;tutoriel&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;les-données&quot;&gt;Les données&lt;/h1&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;https://docs.python.org/3/library/stdtypes.html#built-in-types&quot;&gt;Documentation correspondante&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Les commentaires en Python se font à l’aide de &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#&lt;/code&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;les-5-classes-de-base&quot;&gt;Les 5 classes de base&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Chaînes de caractères&lt;/li&gt;
+  &lt;li&gt;Entiers&lt;/li&gt;
+  &lt;li&gt;Réels&lt;/li&gt;
+  &lt;li&gt;Complexes (la notation utilise j à la place de i)&lt;/li&gt;
+  &lt;li&gt;Booléens&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Afin de connaître la classe d’un objet, on peut utiliser la fonction &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;type&lt;/code&gt; :&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;42&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Rendra : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;class 'int'&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;On peut créer des objets de classes différentes avec des fonctions telles que:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.python.org/3/library/stdtypes.html#str&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;str()&lt;/code&gt;&lt;/a&gt; qui représentera les objets &lt;em&gt;chaîne de caractères&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.python.org/3/library/functions.html#float&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;float()&lt;/code&gt;&lt;/a&gt; qui représentera les objets &lt;em&gt;nombres réels&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.python.org/3/library/functions.html#int&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;int()&lt;/code&gt;&lt;/a&gt; qui représentera les objets &lt;em&gt;nombres entiers&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.python.org/3/library/functions.html#complex&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;complex()&lt;/code&gt;&lt;/a&gt; qui représentera les objets &lt;em&gt;nombres complexes&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.python.org/3/library/functions.html#bool&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bool()&lt;/code&gt;&lt;/a&gt; qui représentera les objets &lt;em&gt;booléens&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Par exemple, en tapant &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;str(42)&lt;/code&gt;, on rend un objet de classe &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;str&lt;/code&gt; (chaîne de caractères) à partir d’un objet de classe &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;int&lt;/code&gt; (entier).&lt;/p&gt;
+
+&lt;h2 id=&quot;variables&quot;&gt;Variables&lt;/h2&gt;
+
+&lt;p&gt;Une variable est un nom auquel est associé un objet. Pour associer un nom à un objet on utilise l’opérateur d’affectation &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;=&lt;/code&gt; tel que:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nom = objet
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;A gauche de l’opérateur &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;=&lt;/code&gt; se trouve un &lt;strong&gt;nom&lt;/strong&gt; (en gros, quelque chose ne pouvant commencer par un nombre) et à droite un &lt;strong&gt;objet&lt;/strong&gt;. Dans toute la suite du programme, dès que l’interpréteur python rencontrera le nom, il le remplacera par l’objet.&lt;/p&gt;
+
+&lt;blockquote class=&quot;attention&quot;&gt;
+  &lt;p&gt;Un nom n’est &lt;strong&gt;PAS&lt;/strong&gt; une chaîne de caractères. Une chaîne de caractère est un objet alors qu’un nom n’est qu’un alias vers un objet.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Il est important de comprendre que l’opérateur d’affectation = n’est pas symétrique. À gauche, des noms et à droite, des objets.&lt;/p&gt;
+
+&lt;p&gt;Attardons nous un moment sur ces notions car elles seront cruciales plus tard pour appréhender les possibilités offertes par les objets.&lt;/p&gt;
+
+&lt;p&gt;Considérons le programme suivant :&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/cours_informatique/assets/tutos/bases-de-python/nom_et_objets.png&quot; alt=&quot;association nom variable&quot; style=&quot;margin: auto;display: block;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;La figure montre le résultat après chaque instruction. On voit qu’un même objet peut parfaitement
+avoir plusieurs noms. Cependant, à un nom correspond un unique objet. Les objets qui n’ont plus de
+noms sont supprimés à intervalles réguliers (c’est ce qu’on appelle le &lt;a href=&quot;https://towardsdatascience.com/memory-management-and-garbage-collection-in-python-c1cb51d1612c&quot;&gt;garbage collector&lt;/a&gt;) puisque l’on ne peut plus y accéder.&lt;/p&gt;
+
+&lt;p&gt;Le mécanisme décrit précédemment (remplacement des noms par les objets référencés avant exécution
+de l’instruction) montre que l’on peut affecter plusieurs noms en même temps, comme le montre l’exemple
+suivant :&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;les-structures-de-données&quot;&gt;Les structures de données&lt;/h2&gt;
+
+&lt;h3 id=&quot;les-listes&quot;&gt;Les listes&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;https://docs.python.org/3/tutorial/datastructures.html#more-on-lists&quot;&gt;https://docs.python.org/3/tutorial/datastructures.html#more-on-lists&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;création-directe&quot;&gt;Création directe&lt;/h4&gt;
+
+&lt;p&gt;On peut créer une liste directement:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Soit en créant une liste vide puis en ajoutant des éléments un à un. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;l = []&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;l.append(1)&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Soit en créant la liste déjà pré-remplie. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;l = [1, 2, True, &quot;Hello World&quot;]&lt;/code&gt;. Cette liste contient 4 éléments et est &lt;strong&gt;indexée à partir de 0&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;La fonction &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;len()&lt;/code&gt; permet d’obtenir la longueur de la liste. Sur le dernier exemple, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;len(l)&lt;/code&gt; rend &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;4&lt;/code&gt;.
+On peut alors accéder aux éléments de la liste à l’aide d’un indice variant entre &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0&lt;/code&gt; et &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;len(l) - 1&lt;/code&gt;. Ainsi  avec &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;l[3]&lt;/code&gt; on obtient la chaîne de caractère “Hello World”.&lt;/p&gt;
+
+&lt;h4 id=&quot;création-à-laide-de-range&quot;&gt;Création à l’aide de range()&lt;/h4&gt;
+
+&lt;p&gt;La fonction &lt;a href=&quot;https://docs.python.org/3/library/stdtypes.html#range&quot;&gt;range&lt;/a&gt; permet de créer des listes de nombres.&lt;/p&gt;
+
+&lt;h4 id=&quot;ajout-suppression-déléments-dune-liste&quot;&gt;Ajout, suppression d’éléments d’une liste&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;append&lt;/li&gt;
+  &lt;li&gt;insert&lt;/li&gt;
+  &lt;li&gt;del&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Attention à remove, extend ou pop&lt;/p&gt;
+
+&lt;p&gt;Voir la &lt;a href=&quot;https://docs.python.org/3/tutorial/datastructures.html#more-on-lists&quot;&gt;documentation du tutorial&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h4 id=&quot;copie-dune-sous-liste&quot;&gt;Copie d’une sous-liste&lt;/h4&gt;
+
+&lt;p&gt;On peut copier une partie d’une liste.
+Pour &lt;strong&gt;copier la liste l à partir de l’indice i jusqu’à l’indice j avec un pas de k&lt;/strong&gt; par exemple : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;l[i:j:k]&lt;/code&gt;
+Il n’est pas nécessaire de renseigner tous les champs.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Essayez &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;l[::3]&lt;/code&gt; ou &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;l[1::5]&lt;/code&gt; etc… (il faut bien évidemment des listes assez longues).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;les-dictionnaires&quot;&gt;Les dictionnaires&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;https://docs.python.org/3/tutorial/datastructures.html#dictionaries&quot;&gt;https://docs.python.org/3/tutorial/datastructures.html#dictionaries&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;https://docs.python.org/3/library/stdtypes.html#mapping-types-dict&quot;&gt;https://docs.python.org/3/library/stdtypes.html#mapping-types-dict&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Un dictionnaire (ou &lt;a href=&quot;http://fr.wikipedia.org/wiki/Tableau_associatif&quot;&gt;tableau associatif&lt;/a&gt;) permet d’associer des clés à des valeurs, ces clés pouvant être des chaines de caractères ou des nombres. C’est en gros comme une ‘liste’ où l’on remplace les indices par à peu près ce que l’on veut.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#on crée un dictionnaire vide
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;quarante deux&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;42&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#on associe à la clé &quot;quarante deux&quot; la valeur 42
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;3.14&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;pi&quot;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#on associe à la clé 3.14 la valeur &quot;pi&quot;
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;quarante deux&quot;&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;42&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cle&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;cle :&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;valeur :&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Attention&lt;/strong&gt; : Un dictionnaire n’est pas ordonné, L’ordre dans lequel les valeurs sont examniés dans une boucle for par exmple n’est pas défini.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;les-ensembles--set&quot;&gt;Les ensembles : set&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;https://docs.python.org/3/library/stdtypes.htm#set&quot;&gt;https://docs.python.org/3/library/stdtypes.htm#set&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Un ensemble permet de garder des données en mémoire de manière non indexée. Contrairement aux listes, où l’on rangeait les éléments dans des cases distinctes, on ne peut &lt;strong&gt;pas&lt;/strong&gt; accéder aux éléments d’un ensemble &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;d&lt;/code&gt; avec &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;d[i]&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;notion-dobjets-mutables&quot;&gt;Notion d’objets mutables&lt;/h3&gt;
+
+&lt;p&gt;Les objets que nous avons rencontrés sont mutables, c’est à dire que lorsque on crée une liste &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;l = [1, 2, 3]&lt;/code&gt;, il est toujours possible de changer la valeur d’un indice, ou d’ajouter un élément.&lt;/p&gt;
+
+&lt;p&gt;Cela n’est toutefois pas possible avec les &lt;a href=&quot;https://docs.python.org/3/library/stdtypes.html#tuples&quot;&gt;tuples&lt;/a&gt; par exemple.&lt;/p&gt;
+
+&lt;p&gt;Un tuple peut se créer de la manière suivante :&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Essayez maintenant des commandes telles que :&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;42&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Cela nous renvoie alors des erreurs.&lt;/p&gt;
+
+&lt;p&gt;Pour ajouter un élément, il faut créer un autre tuple :&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;t2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Le &lt;a href=&quot;https://docs.python.org/3/library/stdtypes.html#frozenset&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;frozenset&lt;/code&gt;&lt;/a&gt; est un &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;set&lt;/code&gt; (ensemble), mais cette fois non mutable.&lt;/p&gt;
+
+&lt;h1 id=&quot;structures-de-contrôle&quot;&gt;Structures de contrôle&lt;/h1&gt;
+
+&lt;h2 id=&quot;comparaisons&quot;&gt;Comparaisons&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;https://docs.python.org/3/library/stdtypes.html#comparisons&quot;&gt;https://docs.python.org/3/library/stdtypes.html#comparisons&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;blocs-id&quot;&gt;Blocs&lt;/h2&gt;
+
+&lt;p&gt;On a souvent besoin de n’exécuter un certain bout de code que si une comparaison particulière est vraie (True). Ce bout de code est appelé &lt;em&gt;bloc&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Tous les blocs sont définis de la même manière :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Ce qui va identifier le bloc pour son exécution (une condition, son nombre d’exécution, son nom).&lt;/li&gt;
+  &lt;li&gt;Les instructions le constituant.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Pour séparer les blocs les un des autres, et savoir ce qui le définit, le langage Python utilise l’indentation(4 espaces): un bloc est donc une suite d’instructions ayant la même indentation.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;question&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;A quelle heure on mange ?&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Question :&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;question&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Reponse :&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;question&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;la vie, l’univers et le reste&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;reponse_partielle&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;reponse&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;reponse_partielle&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;reponse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;je ne sais pas.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Ce code contient 3 blocs : le bloc principal, puis les 2 blocs de conditions (respectivement &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;if&lt;/code&gt; et &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;else&lt;/code&gt;).&lt;/p&gt;
+
+&lt;blockquote class=&quot;attention&quot;&gt;
+  &lt;p&gt;L’indentation est  &lt;strong&gt;primordiale&lt;/strong&gt; en python.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Nous allons utiliser la convention classique : chaque bloc sera indenté de 4 espaces supplémentaire par
+rapport au bloc parent. Pour ne pas passer son temps à compter les espaces à ajouter pour chaque bloc,
+on pourra utiliser la &lt;strong&gt;touche tabulation&lt;/strong&gt; en modifiant son fonctionnement (remplacement du caractère
+tabulation par des espaces, cela est déjà prédéfini avec PyCharm) et est disponible dans tout bon éditeur.&lt;/p&gt;
+
+&lt;p&gt;En python, toute ligne définissant un nouveau bloc doit être terminée par le caractère &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;conditions-sisinon-sisinon-ifelifelse&quot;&gt;Conditions si/sinon si/sinon (if/elif/else)&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;https://docs.python.org/3/reference/compound_stmts.html#the-if-statement&quot;&gt;https://docs.python.org/3/reference/compound_stmts.html#the-if-statement&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Exemple :&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Strictement negatif&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;vaut Zero&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;pair strictement positif&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;impair strictement positif&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;code&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Il est à noter que &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;elif&lt;/code&gt; et &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;else&lt;/code&gt; sont optionnels.&lt;/p&gt;
+
+&lt;h2 id=&quot;boucle-while&quot;&gt;Boucle while&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;https://docs.python.org/3/reference/compound_stmts.html#the-while-statement&quot;&gt;https://docs.python.org/3/reference/compound_stmts.html#the-while-statement&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;On peut aussi inclure des blocs dans des blocs comme le montre le programme suivant :&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;b vaut 2&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;boucle-for&quot;&gt;Boucle for&lt;/h2&gt;
+
+&lt;h3 id=&quot;les-itérateurs&quot;&gt;Les itérateurs&lt;/h3&gt;
+
+&lt;p&gt;Pour faire simple, les itérateurs sont des objets qui permettent de créer des suites de données.
+Prenons un exemple connu: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;range()&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;range permet de créer des itérateurs : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;range(10)&lt;/code&gt; est un itérateur qui va renvoyer les valeurs de 0 à 9.&lt;/p&gt;
+
+&lt;p&gt;Pour utiliser &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;for&lt;/code&gt;, il faut un itérateur tel que: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;for x in mon_iterateur&lt;/code&gt; est la syntaxe.&lt;/p&gt;
+
+&lt;p&gt;Exemple :&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;mon_iterateur&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mon_iterateur&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Essayez ce code et comprenez le : les itérateurs sont de puissants objets python.&lt;/p&gt;
+
+&lt;p&gt;Vous pouvez créer votre propre itérateur à l’aide de l’instruction &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;yield&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;mon_iterateur&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;valeur&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;valeur&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;valeur&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mon_iterateur&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Ce qui va s’afficher sera:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;0
+5
+10
+15
+20
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;On peut également boucler sur une liste, qui est un &lt;strong&gt;objet itérable&lt;/strong&gt; :&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Jet fuel&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;can't&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;melt&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;steel beams&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mot&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;méthodes-fonctions-et-modules&quot;&gt;Méthodes, fonctions et modules&lt;/h1&gt;
+
+&lt;h2 id=&quot;les-fonctions&quot;&gt;Les fonctions&lt;/h2&gt;
+
+&lt;h3 id=&quot;motivations&quot;&gt;Motivations&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;https://docs.python.org/3/reference/compound_stmts.html#function-definitions&quot;&gt;https://docs.python.org/3/reference/compound_stmts.html#function-definitions&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Il n’est jamais bon de copier/coller un bout de programme qui se répète plusieurs fois (corriger un problème dans ce bout de code reviendrait à le corriger autant de fois qu’il a été dupliqué…). Il est de plus souvent utile de séparer les éléments logiques d’un programme en unités autonomes, ceci rend le programme plus facile à relire.&lt;/p&gt;
+
+&lt;p&gt;Pour cela, on utilise des &lt;em&gt;fonctions&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Une fonction est un &lt;a href=&quot;#blocs-id&quot;&gt;bloc&lt;/a&gt; auquel on donne un nom (le nom de la fonction) qui peut être exécuté lorsqu’on l’invoque par son nom.&lt;/p&gt;
+
+&lt;p&gt;La partie de programme suivant définit une fonction:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;bonjour&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Salutations&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;La première ligne est la définition du bloc fonction. Il contient :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;un mot clé spécial précisant que l’on s’apprête à définir une fonction: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;def&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;le nom de la fonction. Ici &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bonjour&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;des parenthèses qui pourront contenir des paramètres (on verra ça plus tard)&lt;/li&gt;
+  &lt;li&gt;le &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:&lt;/code&gt; qui indique que la ligne d’après va commencer le bloc proprement dit&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Ensuite vient le bloc fonction en lui-même qui ne contient qu’une seule ligne.&lt;/p&gt;
+
+&lt;p&gt;Si on exécute le bloc précédent, il ne se passe rien. En effet on n’a fait que définir la fonction. Pour l’utiliser, ajoutez &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bonjour()&lt;/code&gt; à la suite du bloc.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Une &lt;strong&gt;fonction&lt;/strong&gt; s’utilise toujours en faisant suivre son nom d’une parenthèse contenant ses paramètres séparés par une virgule (notre fonction n’a pour l’instant pas de paramètres). Donner juste son nom ne suffit pas à l’invoquer.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;paramètres-dune-fonction&quot;&gt;Paramètres d’une fonction&lt;/h3&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;plus_moins&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nombre&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nombre&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;42&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Supérieur à 42&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Inférieur à 42&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Cette fonction nécessite donc un paramètre pour être invoquée. Testez alors &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;plus_moins(17)&lt;/code&gt;.
+La variable nombre sera associée à l’objet entier de valeur 17 dans la fonction. La variable nombre n’existe que dans la fonction.&lt;/p&gt;
+
+&lt;blockquote class=&quot;attention&quot;&gt;
+  &lt;p&gt;Les &lt;em&gt;paramètres&lt;/em&gt; d’une fonction sont des &lt;strong&gt;noms&lt;/strong&gt; de variables qui ne seront connus qu’à l’intérieur de la fonction. À l’exécution de la fonction, le nom de chaque paramètre est associé à l’objet correspondant.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;retour-dune-fonction&quot;&gt;Retour d’une fonction&lt;/h3&gt;
+
+&lt;p&gt;Toute fonction peut rendre une valeur. On utilise le mot-clef &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;return&lt;/code&gt; suivi de la valeur à rendre pour cela. Le fonction suivante rend le double de la valeur de l’objet passé en paramètre:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;double&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;valeur&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;valeur&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Il ne sert à rien de mettre des instructions après une instruction &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;return&lt;/code&gt; car dès qu’une fonction exécute cette instruction, elle s’arrête en rendant l’objet en paramètre. Le retour d’une fonction est pratique pour calculer des choses et peut ainsi être affecté à une variable.&lt;/p&gt;
+
+&lt;p&gt;Ainsi, avec la fonction double précédemment définie, testez :&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;double&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;21&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Le code précédent exécute la fonction de nom &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;double&lt;/code&gt; avec comme paramètre un entier de valeur 21. La fonction commence par associer à une variable nommée &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;valeur&lt;/code&gt; l’objet passé en paramètre (ici un entier de valeur &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;21&lt;/code&gt;), puis crée une variable de nom &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;x&lt;/code&gt; à laquelle est associée un entier de valeur &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;42&lt;/code&gt; et enfin se termine en retournant comme valeur l’objet de nom &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;x&lt;/code&gt;. Les variables &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;valeur&lt;/code&gt; et &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;x&lt;/code&gt; définies à l’intérieur de la fonction sont ensuite effacées (pas les objets, seulement les noms).&lt;/p&gt;
+
+&lt;p&gt;Cette valeur retournée est utilisée par la commande &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;print&lt;/code&gt; pour être affichée à l’écran.&lt;/p&gt;
+
+&lt;blockquote class=&quot;attention&quot;&gt;
+  &lt;p&gt;Les noms de paramètres d’une fonction et les variables déclarée à l’intérieur de la fonction n’existent qu’à l’intérieur de celle-ci. En dehors de ce blocs, ces variables n’existent plus.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;fonctions-vs-méthodes&quot;&gt;Fonctions v.s. méthodes&lt;/h3&gt;
+
+&lt;p&gt;Python vient avec de nombreuses fonctions que l’on peut utiliser. Vous en connaissez déjà comme &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;range&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;len&lt;/code&gt;, ou encore &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;type&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Ne confondez pas fonctions et méthodes. Une fonction s’exécute toute seule alors qu’une méthode a besoin d’un objet sur lequel elle s’applique (celui avant le &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.&lt;/code&gt;). Vous pouvez voir ça comme un 1er paramètre indispensable à l’exécution d’une méthode. Considérez le micro-programme suivant:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;ma_liste&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;ma_liste&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;La première ligne exécute une &lt;em&gt;fonction&lt;/em&gt; (range) avec un paramètre qui rend une liste. La seconde instruction est une &lt;em&gt;méthode&lt;/em&gt; (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;append&lt;/code&gt;) qui s’applique à l’objet de nom &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ma_liste&lt;/code&gt; et qui a un paramètre (ici un entier valant &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;10&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;Le point un peu délicat est que certaines méthodes ne rendent rien et modifient l’objet sur lequel elle est appliquée, c’est le cas des méthodes &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;append&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;insert&lt;/code&gt; ou encore &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;reverse&lt;/code&gt;, alors que d’autres rendent des objets, c’est le cas de &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;index&lt;/code&gt; par exemple.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;ma_liste&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;ma_liste&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;insert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;coucou&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;un_indice&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ma_liste&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;coucou&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;un_indice&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ma_liste&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;un_indice&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;visibilité-dun-objet&quot;&gt;Visibilité d’un objet&lt;/h2&gt;
+
+&lt;p&gt;Les noms des objets sont accessibles à l’intérieur du ‘‘bloc unitaire’’ dans lequel ils sont déclarés ainsi que dans les blocs unitaires contenus dans celui-ci. Les blocs unitaires sont :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;les fonctions,&lt;/li&gt;
+  &lt;li&gt;les modules (nous verrons cela),&lt;/li&gt;
+  &lt;li&gt;les classes (que nous ne verrons pas).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Les variables définies dans une fonction cachent les variables définies dans des blocs supérieurs. Ainsi,
+le code suivant imprime 42 puisque la variable &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;x&lt;/code&gt; déclarée dans le bloc unitaire de la fonction n’existe plus dans son bloc parent. La variable &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;x&lt;/code&gt; valant 42 est masquée dans la fonction par une nouvelle variable de nom &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;x&lt;/code&gt; valant 24.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;24&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;42&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;De la même manière, que donne le programme suivant ? :&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parametre&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;parametre&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;24&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parametre&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;blockquote class=&quot;attention&quot;&gt;
+  &lt;p&gt;Les noms déclarés dans une fonction, y compris ses paramètres, restent dans la fonction.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;récursion&quot;&gt;Récursion&lt;/h2&gt;
+
+&lt;h3 id=&quot;modification-dobjets-dans-une-fonction&quot;&gt;Modification d’objets dans une fonction&lt;/h3&gt;
+
+&lt;p&gt;Dans un programme récursif, on a souvent besoin de modifier le même objet plusieurs fois. Même si la fonction récursive ne rend rien. Pour cela, on doit modifier les objets passés en paramètres. Pour comprendre comment cela marche, considérez la fonction suivante :&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ajoute_max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;liste_en_parametre&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;maximum_liste&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;liste_en_parametre&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;liste_en_parametre&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;maximum_liste&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Cette fonction ajoute à la fin d’une liste passée en paramètre son maximum (au passage, on a apprit une nouvelle fonction, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;max&lt;/code&gt;.
+regardons le programme suivant qui utilise cette fonction :&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;ajoute_max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/cours_informatique/assets/tutos/bases-de-python/obj_nom.png&quot; alt=&quot;nom et objets&quot; style=&quot;margin: auto;display: block;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;La figure précédente montre ce qu’il s’est passé dans le monde des noms et des objets. Il reste un objet sans nom après l’exécution de la fonction (un entier valant 9), il est détruit. On a pu ainsi modifier un objet sans utiliser de retour de fonction. C’est une technique puissante mais à n’utiliser qu’à bon escient.&lt;/p&gt;
+
+&lt;h2 id=&quot;modules&quot;&gt;Modules&lt;/h2&gt;
+
+&lt;p&gt;Un &lt;em&gt;module&lt;/em&gt; (aussi appelé &lt;em&gt;bibliothèque&lt;/em&gt; ou &lt;em&gt;library&lt;/em&gt;) est un ensemble de fonctions utiles, utilisables dans de nombreux programmes. Plutôt que de refaire à chaque fois ces fonctions ou (c’est pire) de les copier/coller dans chaque programme, on les importe directement pour les utiliser.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Il existe de nombreux modules, réalisant une foultitude d’opérations. Avant de se mettre à coder quelque chose, commencez toujours par vérifier (google
+est votre ami) s’il n’existe pas un module tout fait, vous gagnerez du temps. Python en fournit déjà de &lt;a href=&quot;https://docs.python.org/3/library/index.html&quot;&gt;nombreux&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Pour utiliser un module, il faut commencer par l’importer avec la commande &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;import&lt;/code&gt;. Par exemple avec le module &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;math&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;importation-directe-du-module&quot;&gt;Importation directe du module&lt;/h3&gt;
+
+&lt;p&gt;On met le nom complet avant chaque appel :&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;math&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;pi_sur_deux&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;math&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pi&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#PI est défini dans le module math
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;math&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pi_sur_deux&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#on utilise la fonction cosinus du module math
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;importation-dune-méthode-particulière&quot;&gt;Importation d’une méthode particulière.&lt;/h3&gt;
+
+&lt;p&gt;Ceci peut être dangereux si des fonctions différentes possèdent le même nom.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;math&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pi&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#importation directe de cos et de pi
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pi&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;importation-de-toutes-les-fonctions-du-modules&quot;&gt;Importation de toutes les fonctions du modules&lt;/h3&gt;
+
+&lt;p&gt;Déconseillée dans la plupart des cas car on ne sait pas vraiment ce qui a été importé.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;math&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;modules-utiles&quot;&gt;Modules utiles&lt;/h3&gt;
+
+&lt;p&gt;De nombreux modules existent pour python et permettent de réaliser aisément de très nombreuses tâches. Pour python, si avez les droits administrateurs on pourra utiliser l’utilitaire &lt;a href=&quot;https://pypi.org/project/pip/&quot;&gt;pip&lt;/a&gt; qui est l’installeur de package python3 (attention, si vous tapez juste pip, vous installerez des module pour la version 2 de python…).&lt;/p&gt;
+
+&lt;p&gt;Si vous n’avez pas de droits administrateur, ou pour une utilisation plus “pro” des modules, on préfèrera créer des environnements virtuels avec &lt;em&gt;virtualenv&lt;/em&gt;, mais ceci  dépasse (de peu) le cadre de notre introduction à python.&lt;/p&gt;
+
+&lt;blockquote class=&quot;attention&quot;&gt;
+  &lt;p&gt;Si vous utilisez un interpréteur qui s’appelle &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python3&lt;/code&gt; et pas &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python&lt;/code&gt;, il est fort possible que le programme &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python&lt;/code&gt;(sans le 3) soit un interpréteur de la version 2 de python. Il vous faut alors utiliser la commande &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pip3&lt;/code&gt;et non &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pip&lt;/code&gt; (qui sera elle associée à l’interpréteur &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python&lt;/code&gt;)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;le-module-random&quot;&gt;Le module random&lt;/h4&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;https://docs.python.org/3/library/random.html&quot;&gt;https://docs.python.org/3/library/random.html&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Regardez &lt;a href=&quot;https://python.sdv.univ-paris-diderot.fr/08_modules/#85-module-random-generation-de-nombres-aleatoires&quot;&gt;ces exemples&lt;/a&gt; pour le module random.&lt;/p&gt;
+
+&lt;p&gt;Installé par défaut, il permet notamment de mélanger les éléments d’une liste, générer un nombre aléatoire, choisir un élément aléatoire dans une liste… Vous pouvez même simuler une loi gaussienne (si, si).&lt;/p&gt;
+
+&lt;h4 id=&quot;openpyxl&quot;&gt;openpyxl&lt;/h4&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;http://openpyxl.readthedocs.org&quot;&gt;http://openpyxl.readthedocs.org&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Permet de manipuler des &lt;a href=&quot;https://automatetheboringstuff.com/chapter12/&quot;&gt;fichiers excel avec python&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Il s’installe avec pip : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pip install openpyxl&lt;/code&gt; (ou &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo pip3 install openpyxl&lt;/code&gt; suivi de votre mot de passe si vous êtes sous unix/mac).&lt;/p&gt;
+
+&lt;h4 id=&quot;matplotlib&quot;&gt;matplotlib&lt;/h4&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;http://matplotlib.org&quot;&gt;http://matplotlib.org&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Installé par défaut si vous utilisez l’interpréteur d’&lt;a href=&quot;https://www.anaconda.com/&quot;&gt;anaconda&lt;/a&gt;, ce module permet d’afficher des graphiques en python.&lt;/p&gt;
+
+&lt;h4 id=&quot;jupyter&quot;&gt;Jupyter&lt;/h4&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;http://jupyter.org&quot;&gt;http://jupyter.org&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Permet d’utiliser python de façon interactive (il s’installe aisément avec pip par exemple)&lt;/p&gt;
+
+&lt;h1 id=&quot;retour-sur-les-objets&quot;&gt;Retour sur les objets&lt;/h1&gt;
+
+&lt;p&gt;Comme on l’a vu les objets sont partout en python, qu’ils soient int, str, float, ou même des fonctions.
+Si vous avez bien compris l’exemple de la récursion et de la modification d’un objet passé en paramètre, alors vous vous demandez peut-être “pourquoi ne pas envoyer une fonction en paramètre d’une autre fonction ?”&lt;/p&gt;
+
+&lt;p&gt;Eh bien cela est tout à fait possible, exemple:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;produit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;calcul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fonction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;z&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fonction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;17&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;calcul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;produit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#On envoie l'objet associé au nom 'produit' à la fonction 'calcul'
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Ce programme affichera alors 42 ! Essayez-le pour vous en persuader.&lt;/p&gt;
+
+&lt;h1 id=&quot;les-fichiers--lecture-écriture&quot;&gt;Les fichiers : lecture, écriture&lt;/h1&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files&quot;&gt;https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;lecture&quot;&gt;Lecture&lt;/h2&gt;
+
+&lt;p&gt;Pour lire le fichier ligne par ligne :&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'fichier.txt'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'r'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ligne&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Ou de façon équivalente avec &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;with&lt;/code&gt;, qui est la façon recommandée  car elle délimite l’utilsation du fichier dans un bloc :&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'fichier.txt'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'r'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ligne&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;On peut aussi compter le nombre de mots dans le texte, par exemple:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;n&quot;&gt;nombre_mots&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'fichier.txt'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'r'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ligne&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;ligne&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ligne&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;strip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;mots&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ligne&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;' '&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;nombre_mots&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nombre_mots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;écriture&quot;&gt;Écriture&lt;/h2&gt;
+
+&lt;p&gt;Pour lire-écrire, ouvrez le fichier avec ‘r+’ au lieu de ‘r’. Pour l’écriture seule, ‘w’.&lt;/p&gt;
+
+&lt;blockquote class=&quot;attention&quot;&gt;
+  &lt;p&gt;Ouvrir en écriture un fichier existant &lt;strong&gt;l’efface&lt;/strong&gt;. Pour ajouter des choses à la fin d’un fichier on utilise ‘a’ (pour append)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Utilisez ensuite la méthode &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;write()&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'fichier.txt'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'w'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'For the night is dark and full of terrors'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Augustin Agbo-Kpati</name></author><category term="tutos" /><category term="python" /><category term="langage" /><category term="python" /><summary type="html">Notions de base du langage python. Ce n’est cependant pas un cours, on y reprend juste les différentes notions à connaître ainsi que les principales structres de données à utiliser.</summary></entry><entry><title type="html">Tests unitaires en Python avec pytest et pycharm</title><link href="/cours_informatique/tutos/python/tests%20unitaires/2021/08/01/tests-unitaires.html" rel="alternate" type="text/html" title="Tests unitaires en Python avec pytest et pycharm" /><published>2021-08-01T00:00:00+00:00</published><updated>2021-08-01T00:00:00+00:00</updated><id>/cours_informatique/tutos/python/tests%20unitaires/2021/08/01/tests-unitaires</id><content type="html" xml:base="/cours_informatique/tutos/python/tests%20unitaires/2021/08/01/tests-unitaires.html">&lt;p&gt;Mise en œuvre de tests unitaires en python avec l’éditeur pycharm.
 &lt;!--more--&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;introduction&quot;&gt;Introduction&lt;/h1&gt;

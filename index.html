@@ -17,7 +17,9 @@
 <script type="application/ld+json">
 {"description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebSite","url":"/cours_informatique/","name":"cours d’informatique","headline":"cours d’informatique","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/cours_informatique/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css">
+
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
   <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
       tex2jax: {
@@ -139,6 +141,14 @@
 
         var id = 0;
         
+        var cats = ["tutos","python"]
+
+        id += 1;
+        var postDiv = document.getElementById(id);
+        postDiv.style.display = (selectedCategory == 'All' || cats.includes(selectedCategory)) 
+            ? 'unset' 
+            : 'none';
+        
         var cats = ["tutos","python","tests unitaires"]
 
         id += 1;
@@ -174,6 +184,43 @@
     
         
         <li id="1">
+            
+            <h3>
+                <a class="post-link" href="/cours_informatique/tutos/python/2021/08/19/bases-de-python.html">
+                  Bases de python
+                </a>
+              </h3>
+              <div style="padding-left:20px;">
+                <div>
+                    catégories : 
+                    
+                    • <span class="post-meta">tutos</span>
+                    
+                    • <span class="post-meta">python</span>
+                    
+                    • 
+                </div>
+                <div>
+                    tags : 
+                    
+                    • <span class="post-meta">langage</span>
+                    
+                    • <span class="post-meta">python</span>
+                    
+                    •
+                </div>
+                <p>
+                    <p>Notions de base du langage python. Ce n’est cependant pas un cours, on y reprend juste les différentes notions à connaître ainsi que les principales structres de données à utiliser.</p>
+
+                </p>
+                
+              </div>
+              
+                
+              
+        </li>
+        
+        <li id="2">
             
             <h3>
                 <a class="post-link" href="/cours_informatique/tutos/python/tests%20unitaires/2021/08/01/tests-unitaires.html">
