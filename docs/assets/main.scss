@@ -27,4 +27,9 @@ details {
             content: "\f150";
         }
     }
+    & > div {
+        padding-left: 1em;
+        margin-left: 1em;
+        border-left: 4px solid;
+    }
 }
