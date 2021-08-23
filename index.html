@@ -149,6 +149,14 @@
             ? 'unset' 
             : 'none';
         
+        var cats = ["tutos","python"]
+
+        id += 1;
+        var postDiv = document.getElementById(id);
+        postDiv.style.display = (selectedCategory == 'All' || cats.includes(selectedCategory)) 
+            ? 'unset' 
+            : 'none';
+        
         var cats = ["tutos","python","tests unitaires"]
 
         id += 1;
@@ -186,6 +194,43 @@
         <li id="1">
             
             <h3>
+                <a class="post-link" href="/cours_informatique/tutos/python/2021/08/20/installation-de-python.html">
+                  Installation de python
+                </a>
+              </h3>
+              <div style="padding-left:20px;">
+                <div>
+                    catégories : 
+                    
+                    • <span class="post-meta">tutos</span>
+                    
+                    • <span class="post-meta">python</span>
+                    
+                    • 
+                </div>
+                <div>
+                    tags : 
+                    
+                    • <span class="post-meta">installation</span>
+                    
+                    • <span class="post-meta">python</span>
+                    
+                    •
+                </div>
+                <p>
+                    <p>Comment installer et utiliser python sur son ordinateur. On y verra différentes solutions.</p>
+
+                </p>
+                
+              </div>
+              
+                
+              
+        </li>
+        
+        <li id="2">
+            
+            <h3>
                 <a class="post-link" href="/cours_informatique/tutos/python/2021/08/19/bases-de-python.html">
                   Bases de python
                 </a>
@@ -220,7 +265,7 @@
               
         </li>
         
-        <li id="2">
+        <li id="3">
             
             <h3>
                 <a class="post-link" href="/cours_informatique/tutos/python/tests%20unitaires/2021/08/01/tests-unitaires.html">

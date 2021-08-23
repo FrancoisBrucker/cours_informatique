@@ -1,4 +1,355 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/cours_informatique/feed.xml" rel="self" type="application/atom+xml" /><link href="/cours_informatique/" rel="alternate" type="text/html" /><updated>2021-08-20T07:17:26+00:00</updated><id>/cours_informatique/feed.xml</id><title type="html">cours d’informatique</title><subtitle>Support de cours/td d'informatique à l'école centrale marseille.</subtitle><entry><title type="html">Bases de python</title><link href="/cours_informatique/tutos/python/2021/08/19/bases-de-python.html" rel="alternate" type="text/html" title="Bases de python" /><published>2021-08-19T00:00:00+00:00</published><updated>2021-08-19T00:00:00+00:00</updated><id>/cours_informatique/tutos/python/2021/08/19/bases-de-python</id><content type="html" xml:base="/cours_informatique/tutos/python/2021/08/19/bases-de-python.html">&lt;p&gt;Notions de base du langage python. Ce n’est cependant pas un cours, on y reprend juste les différentes notions à connaître ainsi que les principales structres de données à utiliser.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/cours_informatique/feed.xml" rel="self" type="application/atom+xml" /><link href="/cours_informatique/" rel="alternate" type="text/html" /><updated>2021-08-23T13:01:06+00:00</updated><id>/cours_informatique/feed.xml</id><title type="html">cours d’informatique</title><subtitle>Support de cours/td d'informatique à l'école centrale marseille.</subtitle><entry><title type="html">Installation de python</title><link href="/cours_informatique/tutos/python/2021/08/20/installation-de-python.html" rel="alternate" type="text/html" title="Installation de python" /><published>2021-08-20T00:00:00+00:00</published><updated>2021-08-20T00:00:00+00:00</updated><id>/cours_informatique/tutos/python/2021/08/20/installation-de-python</id><content type="html" xml:base="/cours_informatique/tutos/python/2021/08/20/installation-de-python.html">&lt;p&gt;Comment installer et utiliser python sur son ordinateur. On y verra différentes solutions.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;plan&quot;&gt;plan&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;#python-&quot;&gt;qu’est que python&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#installation&quot;&gt;installation&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#anaconda-id&quot;&gt;anaconda&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#gestionnaire-package-id&quot;&gt;gestionnaire de paquet&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#interpreteur-id&quot;&gt;tests de fonctionnement avec un terminal&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#packages&quot;&gt;installation de nouveaux packages&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;python-&quot;&gt;python ?&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;https://fr.wikipedia.org/wiki/Python_(langage)&quot;&gt;https://fr.wikipedia.org/wiki/Python_(langage)&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Stricto sensu, &lt;a href=&quot;https://www.python.org/&quot;&gt;Python&lt;/a&gt; est un langage de programmation initialement développé par &lt;a href=&quot;https://fr.wikipedia.org/wiki/Guido_van_Rossum&quot;&gt;Guido van Rossum&lt;/a&gt; pour le bien des développeurs et de l’humanité.&lt;/p&gt;
+
+&lt;p&gt;Pour pouvoir écrire du code python et l’exécuter sur votre ordinateur, il vous faudra quelques outils :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;un &lt;a href=&quot;https://fr.wikipedia.org/wiki/%C3%89diteur_de_texte&quot;&gt;éditeur de texte&lt;/a&gt;&lt;/strong&gt;. Il vous permettra d’écrire du code dans le langage python et de le sauver dans des &lt;a href=&quot;https://fr.wikipedia.org/wiki/Fichier_texte&quot;&gt;fichiers texte&lt;/a&gt;. Par défaut, l’extension de fichier python est &lt;em&gt;“.py”&lt;/em&gt;. Par exemple, un fichier nommé &lt;em&gt;“hello.py”&lt;/em&gt; à toute les chance d’être un programme python.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;un &lt;a href=&quot;https://docs.python.org/fr/3/tutorial/interpreter.html&quot;&gt;interpréteur python&lt;/a&gt;&lt;/strong&gt;. C’est un programme qui &lt;em&gt;exécute&lt;/em&gt; du code python. L’interpréteur python étant un programme, il est différent selon son système d’exploitiation (mac, linux ou windows par exemple). Lorsque l’on &lt;em&gt;installe&lt;/em&gt; python, c’est en fait l’interpréteur qu’on installe sur sa machine.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;des bibliothèques&lt;/strong&gt;. Une bibliothèque, module ou encore package python est un ensemble de fichiers de code permettant de réaliser une ou plusieurs taches précises (comme &lt;a href=&quot;https://numpy.org/&quot;&gt;numpy&lt;/a&gt; pour le calcul scientifique ou &lt;a href=&quot;https://flask.palletsprojects.com/&quot;&gt;flask&lt;/a&gt; pour créer des serveur web). L’utilisation de bibliothèques permet de créer rapidement des programmes python robuste et efficaces (avant de coder quelque chose, vérifiez s’il n’existe pas déjà un module le faisant… Vous gagnerez du temps). Pour installer facilement des modules, on utilise un programme nommé &lt;a href=&quot;https://pypi.org/project/pip/&quot;&gt;&lt;em&gt;“pip”&lt;/em&gt;&lt;/a&gt; (package installer for python) qui va récupérer depuis le site &lt;a href=&quot;https://pypi.org/&quot;&gt;PyPi&lt;/a&gt; (python package index) la bibliothèque demandée et va l’installer sur votre ordinateur.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;quel-python-utiliser-&quot;&gt;quel python utiliser ?&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Utilisez la version 3 de python&lt;/strong&gt;. Il n’est pas nécessaire d’avoir la toute dernière itération de cette version (3.9.6 à l’heure où je tape ces caractères), toute version 3 de python pas trop ancienne doit convenir.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Si vous installez python pour la première fois sur votre ordinateur, choisissez d’installer la dernière version stable de python 3.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Une version de python est composée de 3 nombres &lt;a href=&quot;https://semver.org/&quot;&gt;MAJOR.MINOR.PATCH&lt;/a&gt; :&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;MAJOR&lt;/strong&gt; : pour nous sera 3.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;MINOR&lt;/strong&gt; : chaque année une nouvelle itération arrive, avec son lot de nouveautés en therme de structures de données ou de bibliothèques.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;PATCH&lt;/strong&gt; : correctifs.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Chaque année sort une nouvelle version de python (voir &lt;a href=&quot;https://devguide.python.org/#status-of-python-branches&quot;&gt;https://devguide.python.org/#status-of-python-branches&lt;/a&gt;), les anciennes versions sont maintenues 5 ans avant d’être considérées comme obsolète. Chaque version vient avec son &lt;a href=&quot;https://fr.wikipedia.org/wiki/Changelog&quot;&gt;changelog&lt;/a&gt;, qui donne ses nouveautés et changements par rapport à la version précédente (&lt;a href=&quot;https://docs.python.org/release/3.9.6/whatsnew/changelog.html#changelog&quot;&gt;ici&lt;/a&gt; le changelog de la version 3.9.6)&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;La version majeur actuelle de python est 3, il n’y pas prévu d’en changer avant un certain temps.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;et-python-2-&quot;&gt;et python 2 ?&lt;/h3&gt;
+
+&lt;p&gt;Depuis le 1er janvier 2020, la version majeure 2 de python est &lt;strong&gt;obsolète&lt;/strong&gt;, il est donc fortement recommandé de ne plus l’utiliser. Vos programme seront en effet difficilement maintenance et de plus en plus difficilement utilisable.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Il n’y a &lt;strong&gt;aucune&lt;/strong&gt; bonne raison d’utiliser la version 2 de python pour écrire des programmes actuellement.
+La version de python . Il n’est pas nécessaire
+python2 vs python3&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote class=&quot;attention&quot;&gt;
+  &lt;p&gt;Il existe sur le net encore beaucoup d’exemples utilisant la version2 de python, ou certains profs un peu feignant qui ne passent pas leurs exemple/cours en python3. Plutôt que d’utiliser python2, il est recommandé de convertir ces programmes dans la version 3 et de demander la mise à jour des cours…&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;jai-quoi-comme-python-&quot;&gt;j’ai quoi comme python ?&lt;/h3&gt;
+
+&lt;p&gt;Nous y reviendrons, mais si vous savez exécuter du code python mais vous ne savez pas trop quel interpréteur vous utilisez (par exemple vous utilisez &lt;a href=&quot;https://jupyter.org/&quot;&gt;jupiter&lt;/a&gt; via un intranet ou &lt;a href=&quot;https://www.spyder-ide.org/&quot;&gt;spider&lt;/a&gt;), il existe quelques trucs simple pour savoir quelle version de python on utilise.&lt;/p&gt;
+
+&lt;h4 id=&quot;python-2-ou-python-3&quot;&gt;python 2 ou python 3&lt;/h4&gt;
+
+&lt;p&gt;La différence la plus visible entre une version 2 et une version 3 de python est que pour une version 3 de python, le code suivant :&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;j'utilise un langage obsolète&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;produit l’erreur :&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SyntaxError: Missing parentheses in call to 'print'. Did you mean print(&quot;j'utilise un langage obsolète&quot;)?
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Alors que le code s’exécute sans soucis avec la version 2 de python (il écrit &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;j'utilise un langage obsolète&lt;/code&gt;).&lt;/p&gt;
+
+&lt;h4 id=&quot;quelle-version-de-python&quot;&gt;quelle version de python&lt;/h4&gt;
+
+&lt;p&gt;On suppose que l’on utilise la version 3 de python. Pour connaitre la version spécifique de python, on peut utiliser &lt;a href=&quot;https://docs.python.org/fr/3/library/sys.html#sys.version&quot;&gt;la constante &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;version&lt;/code&gt;du module &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sys&lt;/code&gt;de pyhton&lt;/a&gt; :&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sys&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;qui rend chez moi :&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;3.9.6 (default, Jun 29 2021, 05:25:02) 
+[Clang 12.0.5 (clang-1205.0.22.9)]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;C’est à dire que j’utilise la version 3.9.6 de python et que mon interpréteur a été compilé par &lt;a href=&quot;https://clang.llvm.org/&quot;&gt;Clang&lt;/a&gt; (c’est sur un mac).&lt;/p&gt;
+
+&lt;h2 id=&quot;installation&quot;&gt;installation&lt;/h2&gt;
+
+&lt;p&gt;Nous allons ici nous concentrer sur l’installation de l’interpréteur python. Il existe plusieurs façon de faire. Nous en présenterons 2 :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;solution universelle simple : utilisez la &lt;a href=&quot;#anaconda-id&quot;&gt;distribution anaconda&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;solution informaticienne : à privilégier si vous voulez contrôler toute votre installation (c’est bien). On utilise un &lt;a href=&quot;#gestionnaire-package-id&quot;&gt;gestionnaire de package&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Parfois, il n’y a rien à faire (c’est souvent le cas sous mac ou linux qui arrivent avec des versions de python 2 et 3 déjà installées).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Une fois que vous aurez installé python (ou pour savoir si vous l’avez déjà installé), vérifiez le en tentant d’&lt;a href=&quot;#interpreteur-id&quot;&gt;exécuter l’interpréteur python dans un terminal&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;anaconda-id&quot;&gt;installation d’anaconda&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.anaconda.com/&quot;&gt;Anaconda&lt;/a&gt; est une entreprise gérant des distributions python orientés data-science. L’intérêt d’une telle distribution est qu’elle regroupe et installe de nombreux utilitaires. Le côté négatif est que l’on ne maîtrise pas les paquets installés et l’installation de paquets supplémentaires est parfois problématique.&lt;/p&gt;
+
+&lt;p&gt;Cependant, pour une utilisation basique de python ou une utilisation via jupyter, c’est une solution tout à fait satisfaisante car facile à mettre en œuvre sans être informaticien.&lt;/p&gt;
+
+&lt;h4 id=&quot;téléchargement-de-linstalleur&quot;&gt;Téléchargement de l’installeur&lt;/h4&gt;
+
+&lt;p&gt;Nous allons télécharger la distribution open-source d’anaconda &lt;a href=&quot;https://www.anaconda.com/products/individual&quot;&gt;ici&lt;/a&gt;. Choisissez la version 64bit graphique correspondant à votre système d’installation, puis cliquez sur l’installeur.&lt;/p&gt;
+
+&lt;p&gt;Lors de l’installation vous pourrez choisir de faire une installation uniquement pour vous ou pour tous les utilisateurs. Choisissez &lt;strong&gt;pour tous les utilisateurs&lt;/strong&gt;.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;de personnaliser votre installation&lt;/strong&gt;. Vous aurez une option, initialement cochée, qui fera en sorte qu’anaconda soit votre distribution python par défaut. Personnellement je décoche cette option car je gère mes version de python moi-même. Si vous être un 1A ou un 2A novice, laissez là cochée. Si vous êtes un 3A DFS, décochez là.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote class=&quot;attention&quot;&gt;
+  &lt;p&gt;Si vous avez une ancienne version d’anaconda et que vous souhaitez installer une mise à jour, il vous faudra commencer par supprimer le dossier contenant l’ancienne version&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Anaconda change le chemin par défaut python pour que ce soit celui d’anaconda qui soit utilisé.&lt;/p&gt;
+
+  &lt;p&gt;Sous mac et linux cela se passe en modifiant le fichier de configuration du shell (entre &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;conda initialize&lt;/code&gt;).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;test-de-la-distribution&quot;&gt;test de la distribution&lt;/h4&gt;
+
+&lt;p&gt;Anaconda a installé des choses, en particulier l’application &lt;em&gt;Anaconda-Navigator&lt;/em&gt; qui vous permet de lancer toutes les applications liées à Anaconda.&lt;/p&gt;
+
+&lt;p&gt;Lancez l’application &lt;em&gt;Notebook&lt;/em&gt; puis :&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;créez un nouveau notebook &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python3&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;dans la cellule tapez &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;print(&quot;Hello world!&quot;)&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;cliquez sur l’icone &lt;em&gt;Exécuter&lt;/em&gt; sur la bannière de titre ou appuyer sur &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;shift + entrée&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Vous devriez voir le texte &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Hello World&lt;/code&gt; en sortie de votre cellule.&lt;/p&gt;
+
+&lt;h3 id=&quot;anaconda-avec-un-terminal&quot;&gt;anaconda avec un terminal&lt;/h3&gt;
+
+&lt;p&gt;Dans l’&lt;em&gt;anaconda navigator&lt;/em&gt;, cliquez sur &lt;em&gt;Environnements&lt;/em&gt; dans le menu de gauche (c’est le deuxième choix, après &lt;em&gt;Home&lt;/em&gt; et avant &lt;em&gt;Learning&lt;/em&gt;).&lt;/p&gt;
+
+&lt;p&gt;Vous devez avoir un unique environnement : &lt;em&gt;base (root)&lt;/em&gt;. Un environnement est un interpréteur python et tous ses packages installés. On aura parfois envie de créer ses propres environnements pour installer soit une version spécifique de python, soit n’installer que certains packages.&lt;/p&gt;
+
+&lt;p&gt;Pour l’instant utilisons l’environnement de base. En cliquant sur le triangle vert à droite de l’environnement &lt;em&gt;base (root)&lt;/em&gt;, vous pouvez cliquer sur &lt;em&gt;open terminal&lt;/em&gt;, ce qui ouvrira un terminal. Une fois le terminal ouvert, remarquez qu’à gauche de l’invit de commande vous avez &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(base)&lt;/code&gt; d’acrit. Ceci montre quel environnement python vous avez.&lt;/p&gt;
+
+&lt;p&gt;Vos pouvez &lt;a href=&quot;https://docs.anaconda.com/anaconda/user-guide/tasks/integration/python-path/&quot;&gt;connaitre l’interpréteur&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;gestionnaire-package-id&quot;&gt;installation via un gestionnaire de package&lt;/h3&gt;
+
+&lt;p&gt;Une bonne pratique d’installation de logiciel sur son ordinateur est d’utiliser un gestionnaire de package. Il vous permet de savoir exactement ce qui est utilisé, quelle version, et surtout gère tout seul les mise à jours.&lt;/p&gt;
+
+&lt;p&gt;C’est un peut plus compliqué qu’utiliser anaconda mais si vous voulez faire de l’informatique sérieuse ou sérieusement de l’informatique, il est conseillé d’utiliser cette solution.&lt;/p&gt;
+
+&lt;details&gt;&lt;summary&gt;sous mac&lt;/summary&gt;&lt;div&gt;
+&lt;p&gt;On utilise &lt;a href=&quot;https://brew.sh/index_fr&quot;&gt;brew&lt;/a&gt;. Toutes les commandes se font via le &lt;a href=&quot;https://www.howtogeek.com/682770/how-to-open-the-terminal-on-a-mac/&quot;&gt;terminal&lt;/a&gt; (il est dans Applications/utilitaires)&lt;/p&gt;
+
+&lt;p&gt;Une fois brew installé, vous pouvez installer python en tapant la commande :&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;python
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;/details&gt;
+
+&lt;details&gt;&lt;summary&gt;sous windows&lt;/summary&gt;&lt;div&gt;
+&lt;p&gt;Pour l’instant téléchargez le tout depuis le site de python. Il se placera automatiquement dans les logiciels installés. C’est pas super mais ça marche.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.python.org/downloads/&quot;&gt;https://www.python.org/downloads/&lt;/a&gt;&lt;/p&gt;
+
+&lt;/div&gt;&lt;/details&gt;
+
+&lt;details&gt;&lt;summary&gt;sous linux&lt;/summary&gt;&lt;div&gt;
+&lt;blockquote class=&quot;danger&quot;&gt;
+  &lt;p&gt;TBD : avec apt-get ?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;/div&gt;&lt;/details&gt;
+
+&lt;h2 id=&quot;interpreteur-id&quot;&gt;utiliser l’interpréteur python&lt;/h2&gt;
+
+&lt;h3 id=&quot;ouvrir-terminal-id&quot;&gt;terminal&lt;/h3&gt;
+
+&lt;p&gt;Pour utiliser l’interpréteur python, on ne peut pas directement double-cliquer sur son nom car il ne possède pas d’interface graphique : il faut l’exécuter en mode ligne de commande, via un terminal (pour faire mode, on peut dire &lt;a href=&quot;https://fr.wikipedia.org/wiki/Interface_en_ligne_de_commande&quot;&gt;CLI&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;Trouver l’application terminal :&lt;/p&gt;
+
+&lt;details&gt;&lt;summary&gt;sous mac&lt;/summary&gt;&lt;div&gt;
+&lt;p&gt;Le &lt;a href=&quot;https://www.howtogeek.com/682770/how-to-open-the-terminal-on-a-mac/&quot;&gt;terminal&lt;/a&gt; se trouve dans /Application/utilitaires (finder : menu Aller &amp;gt; Applications puis allez dans le dossier utilitaires). Vous pouvez ensuite cliquer sur l’icône terminal.&lt;/p&gt;
+
+&lt;p&gt;Le terminal est super utile, ça vaut le coup d’ajouter un raccourci dans la barre du finder.&lt;/p&gt;
+
+&lt;/div&gt;&lt;/details&gt;
+
+&lt;details&gt;&lt;summary&gt;sous linux&lt;/summary&gt;&lt;div&gt;
+&lt;p&gt;Si vous êtes sous linux vous devriez savoir ouvrir un terminal. C’est souvent une application avec une télévision comme icône.&lt;/p&gt;
+
+&lt;/div&gt;&lt;/details&gt;
+
+&lt;details&gt;&lt;summary&gt;sous windows&lt;/summary&gt;&lt;div&gt;
+&lt;p&gt;Vous pouvez utiliser l’invit de commande mais c’est une torture (tapez &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cmd&lt;/code&gt; dans l’invit de recherche), ou utiliser le &lt;a href=&quot;https://docs.microsoft.com/fr-fr/powershell/scripting/overview?view=powershell-7.1&quot;&gt;power-shell&lt;/a&gt; qui est semblable au terminal du mac/unix. Pour ouvrir une fenêtre powersheel, il y a &lt;a href=&quot;https://lecrabeinfo.net/ouvrir-powershell-sur-windows-10.html&quot;&gt;plusieurs possiblités&lt;/a&gt;&lt;/p&gt;
+
+&lt;/div&gt;&lt;/details&gt;
+
+&lt;p&gt;Une fois l’application trouée, exécutez là. Une fenêtre doit s’ouvrir, vous permettant de taper des commandes.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;N’ayez pas peur. C’est simple à utiliser. On tape une commande, on appuie sur entrée et la commande s’exécute. 
+Vous pouvez a priori utiliser votre ordinateur uniquement avec un terminal. L’interface graphique n’est qu’un ajout sympathique mais non indispensable à l’utilisation d’n ordinateur.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Si vous voulez utiliser pleinement votre ordinateur, voir devenir informaticien/ne plus tard, il est important que vous sachiez vous en servir (en plus d’avoir cette petite sensation d’interagir directement avec la matrice lorsque l’on tape des commande en mode CLI). Donc autant l’utiliser le plus souvent possible histoire de s’habituer.&lt;/p&gt;
+
+&lt;h3 id=&quot;exécution-de-linterpréteur-python&quot;&gt;exécution de l’interpréteur python&lt;/h3&gt;
+
+&lt;p&gt;L’interpréteur python s’appelle soit &lt;em&gt;“python”&lt;/em&gt;, soit &lt;em&gt;“python3”&lt;/em&gt;. Regardez celui que vous possédez.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Sous windows, c’est souvent &lt;em&gt;“python”&lt;/em&gt; qu’il s’appelle, sous mac et linux c’est &lt;em&gt;“python3”&lt;/em&gt;. Pour le reste du tuto, je considérerai que c’est &lt;em&gt;“python”&lt;/em&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Dans un terminal, tapez la commande :&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Si ça a marché, l’interpréteur aura donné sa version (&lt;strong&gt;assurez vous que c’est bien python 3&lt;/strong&gt;) et vous donnera une invite de commande qui commence par &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/code&gt;.Vous pouvez taper une ligne de python. Lorsque vous taperez sur entrée, votre ligne sera interprétée en python et donnera le résultat.&lt;/p&gt;
+
+&lt;p&gt;Par exemple tapez : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;print(coucou !)&lt;/code&gt;et l’interpréteur vous rendra &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;coucou !&lt;/code&gt;. On ne pourrait utiliser python que comme ça, mais ce n’est pas très pratique.&lt;/p&gt;
+
+&lt;p&gt;Pour quitter l’interpréteur tapez &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;quit()&lt;/code&gt; puis appuyez sur la touche entrée.&lt;/p&gt;
+
+&lt;h3 id=&quot;version-de-linterpréteur-python&quot;&gt;version de l’interpréteur python&lt;/h3&gt;
+
+&lt;p&gt;Beaucoup de programme supportent d’être lancé avec des paramètres, que l’on ajoute à la suite du nom. Par exemple pour connaître la version de l’interpréteur, on tape dans un terminal :&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python &lt;span class=&quot;nt&quot;&gt;--version&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Chez moi ça rend :&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Python 3.9.6
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Pour connaitre tous les paramètres possible, on peut soit se référer à la &lt;a href=&quot;https://docs.python.org/3/using/cmdline.html&quot;&gt;documentation&lt;/a&gt;, soit taper : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python --help&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;emplacement-de-votre-interpréteur&quot;&gt;emplacement de votre interpréteur&lt;/h3&gt;
+
+&lt;p&gt;Dans un terminal tapez la commande :&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;which python&lt;/code&gt; sur un mac ou un linux,&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;where python&lt;/code&gt; sur un windows,&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;La commande devrait vous rendre l’emplacement sur votre disque dur de votre interpréteur. Vérifiez le avec un explorateur de fichier.&lt;/p&gt;
+
+&lt;h2 id=&quot;packages&quot;&gt;packages&lt;/h2&gt;
+
+&lt;p&gt;Python vient avec une &lt;a href=&quot;https://docs.python.org/3/library/&quot;&gt;liste de packages&lt;/a&gt; bien fournie. On peut les utiliser via le mot clé &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;import&lt;/code&gt; en python. Il en existe une foultitude d’autres qui permettent d’aider à coder rapidement. La liste des différents packages est disponible sur &lt;a href=&quot;https://pypi.org/&quot;&gt;https://pypi.org/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;installation-avec-pip&quot;&gt;installation avec pip&lt;/h3&gt;
+
+&lt;p&gt;Pour installer de nouveaux packages python, on utilise la commande &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pip&lt;/code&gt;.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;si votre interpréteur python est &lt;em&gt;“python3”&lt;/em&gt;, vous devez utiliser la commande &lt;em&gt;“pip3”&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Testez le en ouvrant un terminal et en tapant :&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip &lt;span class=&quot;nt&quot;&gt;--version&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;La commande devrait vous rendre le numéro de version de pip ainsi que le chemin du programme python qui lui est associé.&lt;/p&gt;
+
+&lt;p&gt;Les packages déjà installé par pip seront visible avec la commande :&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip list
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Si vous avez une distribution anaconda, vous devriez avoir plein de choses, sinon, beaucoup moins.&lt;/p&gt;
+
+&lt;blockquote class=&quot;attention&quot;&gt;
+  &lt;p&gt;Il est crucial de vérifier que pip est bien lié à l’interpréteur python que vous voulez. Sinon, vous installerez des packages pour un mauvais interpréteur.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;On peut maintenant utiliser pip pour installer un nouveau package. Nous allons installer &lt;a href=&quot;https://pypi.org/project/black/&quot;&gt;black&lt;/a&gt; qui rendra joli tous nos programmes python. Dans un terminal tapez :&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;black
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Une fois l’installation terminée, black devrait apparaitre dans la liste des packages installés (vous pouvez le voir avec &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pip list&lt;/code&gt;).&lt;/p&gt;
+
+&lt;h3 id=&quot;où-sont-les-packages-&quot;&gt;où sont les packages ?&lt;/h3&gt;
+
+&lt;p&gt;Les répertoires où python va cherchez les packages est dans la liste &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sys.path&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;vous pouvez le voir en exécutant le code :&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sys&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dossier&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dossier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;chez moi, ce programme rend :&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/usr/local/Cellar/python@3.9/3.9.6/Frameworks/Python.framework/Versions/3.9/lib/python39.zip
+/usr/local/Cellar/python@3.9/3.9.6/Frameworks/Python.framework/Versions/3.9/lib/python3.9
+/usr/local/Cellar/python@3.9/3.9.6/Frameworks/Python.framework/Versions/3.9/lib/python3.9/lib-dynload
+/usr/local/lib/python3.9/site-packages
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Il y a plusieurs dossiers :&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;em&gt;“/usr/local/Cellar/python@3.9/3.9.6/Frameworks/Python.framework/Versions/3.9/lib/python3.9”&lt;/em&gt; contient les packages de bibliothèque standard (il contient par exemple un fichier &lt;em&gt;“random.py”&lt;/em&gt; qui contient le code du package &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;random&lt;/code&gt;)&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;“/usr/local/Cellar/python@3.9/3.9.6/Frameworks/Python.framework/Versions/3.9/lib/python3.9/lib-dynload”&lt;/em&gt; contient les packages python qui ne sont pas écrit en python mais en C&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;“/usr/local/lib/python3.9/site-packages”&lt;/em&gt; qui contient les packages qui seront installés par pip.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote class=&quot;attention&quot;&gt;
+  &lt;p&gt;La gestion des packages peut être compliquée. Normalement, si vous vous y prenez comme indiqué ici et en utilsant votre ordinateur personnel, tout devrait bien se passer. Si cela commence à ne plus aller, vous pouvez essayer d’installer les packages à un autre en endroit en suivant &lt;a href=&quot;https://opensource.com/article/19/4/managing-python-packages&quot;&gt;ce tuto&lt;/a&gt;, ou, comme on le fera plus tard en utilisant un environnement virtuel. Mais, dans le doute, consultez un prof qui s’y connait.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;éditeur&quot;&gt;éditeur&lt;/h2&gt;
+
+&lt;p&gt;Il en existe une multitude. Prenez en un qui permettent non seulement d’écrire aisément du code python mais aussi d’exécuter facilement tout ce qui va avec écrire du code :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;coloration syntaxique&lt;/li&gt;
+  &lt;li&gt;nommage et renommage de variables sur tout un projet&lt;/li&gt;
+  &lt;li&gt;lancer des tests&lt;/li&gt;
+  &lt;li&gt;…&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;J’en conseille 2 :&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;visual studio code&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.jetbrains.com/fr-fr/pycharm/&quot;&gt;pycharm&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Il existe également d’autres façon d’utiliser python, en mode interactif par exemple en utilisant &lt;a href=&quot;https://jupyter.org/&quot;&gt;jupyter&lt;/a&gt; avec anaconda, ou encore &lt;a href=&quot;https://colab.research.google.com&quot;&gt;colab&lt;/a&gt;.&lt;/p&gt;</content><author><name>François Brucker</name></author><category term="tutos" /><category term="python" /><category term="installation" /><category term="python" /><summary type="html">Comment installer et utiliser python sur son ordinateur. On y verra différentes solutions.</summary></entry><entry><title type="html">Bases de python</title><link href="/cours_informatique/tutos/python/2021/08/19/bases-de-python.html" rel="alternate" type="text/html" title="Bases de python" /><published>2021-08-19T00:00:00+00:00</published><updated>2021-08-19T00:00:00+00:00</updated><id>/cours_informatique/tutos/python/2021/08/19/bases-de-python</id><content type="html" xml:base="/cours_informatique/tutos/python/2021/08/19/bases-de-python.html">&lt;p&gt;Notions de base du langage python. Ce n’est cependant pas un cours, on y reprend juste les différentes notions à connaître ainsi que les principales structres de données à utiliser.&lt;/p&gt;
 
 &lt;!--more--&gt;
 
