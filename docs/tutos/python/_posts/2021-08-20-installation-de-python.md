@@ -120,8 +120,9 @@ Cependant, pour une utilisation basique de python ou une utilisation via jupyter
 Nous allons télécharger la distribution open-source d'anaconda [ici](https://www.anaconda.com/products/individual). Choisissez la version 64bit graphique correspondant à votre système d'installation, puis cliquez sur l'installeur.
 
 
-Lors de l'installation vous pourrez choisir de faire une installation uniquement pour vous ou pour tous les utilisateurs. Choisissez **pour tous les utilisateurs**.
-  * **de personnaliser votre installation**. Vous aurez une option, initialement cochée, qui fera en sorte qu'anaconda soit votre distribution python par défaut. Personnellement je décoche cette option car je gère mes version de python moi-même. Si vous être un 1A ou un 2A novice, laissez là cochée. Si vous êtes un 3A DFS, décochez là.
+Lors de l'installation :
+* vous pourrez choisir de faire une installation uniquement pour vous ou pour tous les utilisateurs. Choisissez **pour tous les utilisateurs**.
+* sous windows, vous pourrez choisir d'ajouter le python d'anaconda au *path* de windows, c'est à dire que lorsque ovus taperez python dans un terminal, ce sera celui d'anaconda qui se lancera. **choisissez cette option**, même si elle n'est pas recommandée.
 
 > Si vous avez une ancienne version d'anaconda et que vous souhaitez installer une mise à jour, il vous faudra commencer par supprimer le dossier contenant l'ancienne version
 {: .attention}
@@ -139,7 +140,7 @@ Lancez l'application *Notebook* puis :
 
   1. créez un nouveau notebook `python3`.
   2. dans la cellule tapez `print("Hello world!")`
-  3. cliquez sur l'icone *Exécuter* sur la bannière de titre ou appuyer sur `shift + entrée`.
+  3. cliquez sur l'icône *Exécuter* sur la bannière de titre ou appuyer sur `shift + entrée`.
   
   Vous devriez voir le texte `Hello World` en sortie de votre cellule.
   
@@ -173,9 +174,7 @@ brew install python
 
 {% details sous windows %}
 
-Pour l'instant téléchargez le tout depuis le site de python. Il se placera automatiquement dans les logiciels installés. C'est pas super mais ça marche.
-
-<https://www.python.org/downloads/>
+Pour l'instant téléchargez le tout depuis le store. Suivez ce [tutoriel](https://docs.microsoft.com/fr-fr/windows/python/beginners) pour l'installation.
 
 {% enddetails %}
 
@@ -215,7 +214,7 @@ Vous pouvez utiliser l'invit de commande mais c'est une torture (tapez `cmd` dan
 
 {% enddetails %}
 
-Une fois l'application trouée, exécutez là. Une fenêtre doit s'ouvrir, vous permettant de taper des commandes. 
+Une fois l'application trouvée, exécutez là. Une fenêtre doit s'ouvrir, vous permettant de taper des commandes. 
 
 > N'ayez pas peur. C'est simple à utiliser. On tape une commande, on appuie sur entrée et la commande s'exécute. 
 >Vous pouvez a priori utiliser votre ordinateur uniquement avec un terminal. L'interface graphique n'est qu'un ajout sympathique mais non indispensable à l'utilisation d'n ordinateur. 
@@ -257,7 +256,7 @@ Python 3.9.6
 
 Dans un terminal tapez la commande : 
 * `which python` sur un mac ou un linux,
-* `where python` sur un windows,
+* `get-command python` sur un windows avec powershell,
 
 La commande devrait vous rendre l'emplacement sur votre disque dur de votre interpréteur. Vérifiez le avec un explorateur de fichier.
 
@@ -308,7 +307,7 @@ import sys
 for dossier in sys.path:
    print(dossier)
 ```
-chez moi, ce programme rend : 
+Chez moi, sur un mac où python est installé avec [brew](https://brew.sh/) ce programme rend : 
 
 ```
 /usr/local/Cellar/python@3.9/3.9.6/Frameworks/Python.framework/Versions/3.9/lib/python39.zip

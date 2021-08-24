@@ -8,13 +8,13 @@ authors:
     - Pascal Préa
 ---
 
-Notions de base du langage python. Ce n'est cependant pas un cours, on y reprend juste les différentes notions à connaître ainsi que les principales structres de données à utiliser.
+Notions de base du langage python. Ce n'est cependant pas un cours, on y reprend juste les différentes notions à connaître ainsi que les principales structures de données à utiliser.
 
 <!--more-->
 
 On supposeras que vous ayez un interpréteur python qui fonctionne ainsi qu'un éditeur de texte pour écrire des programmes. 
 
-> On utilisera ici la version 3 de python (plus personne — vraiment — ne devrait utiliser la version 2) dans sa dernière itération (3.9.6 à l'heure où je tape ces caractères), mais n'importe quelle version 3 de python devrait faire fonctionner les exemples de ce tuto. Les liens vers la documentation officielle seront toujours ceux de la dernière version stable de python.
+> On utilisera ici la version 3 de python (plus personne — vraiment — ne devrait utiliser la version 2) dans sa dernière itération (3.9.6 à l'heure où je tape ces caractères), mais n'importe quelle version 3 de python devrait faire fonctionner les exemples de ce tutoriel. Les liens vers la documentation officielle seront toujours ceux de la dernière version stable de python.
 
 # Introduction
 
@@ -23,7 +23,7 @@ Un petit rappel des bases de la programmation en python que vous êtes sensés s
 
 > <https://docs.python.org/3/> toutes les réponses et bien plus encore s'y trouvent. 
 
-Nous vous recommendons également de faire le [tutoriel](https://docs.python.org/3/tutorial/index.html)
+Nous vous recommandons également de faire le [tutoriel](https://docs.python.org/3/tutorial/index.html)
 
 # Les données
 
@@ -128,14 +128,14 @@ La fonction [range](https://docs.python.org/3/library/stdtypes.html#range) perme
 
 #### Ajout, suppression d'éléments d'une liste 
 
-* append
-* insert
-* del
+* `append`
+* `insert`
+* `del`
 
-Attention à remove, extend ou pop
+Attention à `remove`, `extend` ou `pop`
 
 
-Voir la [documentation du tutorial](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists).
+Voir la [documentation du tutoriel](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists).
 
 
 #### Copie d'une sous-liste 
@@ -562,7 +562,7 @@ Si vous n'avez pas de droits administrateur, ou pour une utilisation plus "pro" 
 
 Regardez [ces exemples](https://python.sdv.univ-paris-diderot.fr/08_modules/#85-module-random-generation-de-nombres-aleatoires) pour le module random.
 
-Installé par défaut, il permet notamment de mélanger les éléments d'une liste, générer un nombre aléatoire, choisir un élément aléatoire dans une liste... Vous pouvez même simuler une loi gaussienne (si, si).
+Installé par défaut, il permet notamment de mélanger les éléments d'une liste, générer un nombre aléatoire, choisir un élément aléatoire dans une liste... Vous pouvez même simuler une loi Gaussienne (si, si).
 
 #### openpyxl 
 
@@ -588,7 +588,7 @@ Permet d'utiliser python de façon interactive (il s'installe aisément avec pip
 
 # Retour sur les objets 
 
-Comme on l'a vu les objets sont partout en python, qu'ils soient int, str, float, ou même des fonctions.
+Comme on l'a vu les objets sont partout en python, qu'ils soient `int`, `str`, `float`, ou même des fonctions.
 Si vous avez bien compris l'exemple de la récursion et de la modification d'un objet passé en paramètre, alors vous vous demandez peut-être "pourquoi ne pas envoyer une fonction en paramètre d'une autre fonction ?"
 
 Eh bien cela est tout à fait possible, exemple:
@@ -623,7 +623,7 @@ for ligne in f:
 f.close()
 ```
 
-Ou de façon équivalente avec `with`, qui est la façon recommandée  car elle délimite l'utilsation du fichier dans un bloc : 
+Ou de façon équivalente avec `with`, qui est la façon recommandée  car elle délimite l'utilisation du fichier dans un bloc : 
 
 ```python
 with open('fichier.txt', 'r') as f:
