@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>naviguer dans un système de fichier | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="naviguer dans un système de fichier" />
+<meta name="author" content="François Brucker" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Qu’est-ce qu’un fichier ? Un dossier ? Comment naviguer dans un système de fichier avec le terminal ou l’explorateur de fichier." />
+<meta property="og:description" content="Qu’est-ce qu’un fichier ? Un dossier ? Comment naviguer dans un système de fichier avec le terminal ou l’explorateur de fichier." />
+<link rel="canonical" href="/cours_informatique/tutos/systeme/fichiers/2021/08/24/fichiers-navigation.html" />
+<meta property="og:url" content="/cours_informatique/tutos/systeme/fichiers/2021/08/24/fichiers-navigation.html" />
+<meta property="og:site_name" content="cours d’informatique" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-08-24T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="naviguer dans un système de fichier" />
+<script type="application/ld+json">
+{"description":"Qu’est-ce qu’un fichier ? Un dossier ? Comment naviguer dans un système de fichier avec le terminal ou l’explorateur de fichier.","datePublished":"2021-08-24T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"/cours_informatique/tutos/systeme/fichiers/2021/08/24/fichiers-navigation.html"},"@type":"BlogPosting","author":{"@type":"Person","name":"François Brucker"},"url":"/cours_informatique/tutos/systeme/fichiers/2021/08/24/fichiers-navigation.html","headline":"naviguer dans un système de fichier","dateModified":"2021-08-24T00:00:00+00:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css">
+
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">naviguer dans un système de fichier</h1>Auteurs :
+      <ul>
+      
+        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></li>
+      
+      </ul></p></p>
+  </header>
+
+  <div class="post-content">
+    <p>Qu’est-ce qu’un fichier ? Un dossier ? Comment naviguer dans un système de fichier avec le terminal ou l’explorateur de fichier.</p>
+
+<!--more-->
+
+<h2 id="système-de-fichier">système de fichier</h2>
+
+<p>Votre ordinateur est composé de fichiers et de dossiers (aussi appelé répertoire) :</p>
+<ul>
+  <li>un <strong>dossier</strong> est un conteneur qui peut contenir soit d’autres dossier, soit des fichiers</li>
+  <li>un <strong>fichier</strong> est ce que vous pouvez utiliser. C’est une image, du texte, ou encore un programme.</li>
+</ul>
+
+<p>Il existe un dossier spécial, appelé <em>racine</em> qui est le départ : on peut atteindre tous les fichiers/dossiers de votre ordinateur à partir de celui-ci.</p>
+
+<p>Cette organisation est appelée <a href="https://fr.wikipedia.org/wiki/R%C3%A9pertoire_(informatique)">arborescence de fichiers</a>.</p>
+
+<h3 id="exploration-de-larborescence">exploration de l’arborescence</h3>
+
+<p>Ouvre une fenêtre de l’explorateur de fichier et placez vous à la racine de votre système de fichier.</p>
+
+<details><summary>sous mac</summary><div>
+<p>Ouvrez une nouvelle fenêtre du <em>Finder</em> et choisissez <a href="https://support.apple.com/fr-fr/HT201732">le mode d’affichage des fichiers</a>) en colonne. Ensuite, choisissez dans le menu : <em>aller &gt; ordinateur</em> et cliquez sur <em>“Macintosh HD”</em>, qui est la racine de votre système de fichier.</p>
+</div></details>
+
+<details><summary>sous windows</summary><div>
+<p>on voit le chemin sur la barre du chemin (si c’est pas un dossier spécial)</p>
+
+<blockquote class="danger">
+  <p>TBD</p>
+</blockquote>
+
+</div></details>
+
+<details><summary>sous unix</summary><div>
+<blockquote class="danger">
+  <p>TBD</p>
+</blockquote>
+
+</div></details>
+
+<p>Vous pourrez ensuite naviguer de dossiers en dossiers, jusqu’à arriver à un fichier d’où vous ne pourrez plus avancer.</p>
+
+<p>Dans l’exemple ci-après, j’ai navigué sur mon mac jusqu’à ma photo d’<a href="https://fr.wikipedia.org/wiki/Ada_Lovelace">Ada Lovelace</a> :</p>
+
+<p><img src="/cours_informatique/assets/tutos/fichiers-navigation/chemin-vers-ada.png" alt="chemin vers le fichier ada_lovelace" style="margin: auto;display: block;" /></p>
+
+<p>On voit bien le chemin parcouru de la racine (appelé <em>“Macintosh HD”</em> sur un mac et le fichier).</p>
+
+<blockquote class="attention">
+  <p>Le nom des dossiers sur le disque dur et celui qui apparait dans l’explorateur de fichier peuvent être différent selon la langue du système d’exploitiation. 
+Ainsi, le nom <em>Bureau</em> dans l’explorateur correspondra au dossier <code class="language-plaintext highlighter-rouge">Desktop</code> sur le disque dur…</p>
+</blockquote>
+
+<h3 id="chemin">chemin</h3>
+
+<p>Le chemin vers un fichier depuis la racine s’écrit en séparant tous les dossiers parcourus par un <code class="language-plaintext highlighter-rouge">/</code>. Dans l’image de la navigation vers Ada Lovelace, son chemin est :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/Users/fbrucker/Desktop/ada_lovelace.png 
+</code></pre></div></div>
+
+<p>Tout fichier ou dossier de l’arborescence de fichier possède un chemin unique depuis la racine, c’est donc un moyen de l’identifier.</p>
+
+<blockquote>
+  <p>Le chemin du dossier racine est <code class="language-plaintext highlighter-rouge">/</code>.</p>
+</blockquote>
+
+<p>Un chemin qui commence par <code class="language-plaintext highlighter-rouge">/</code> est dit <strong>chemin absolu</strong>, puisqu’il part de la racine. On a aussi souvent coutume de parler de <strong>chemin relatif</strong> lorsqu’il part d’un dossier particulier. Dans l’exemple précédent, en partant du dossier <code class="language-plaintext highlighter-rouge">/Users/fbrucker</code>, le chemin relatif vers l’image d’Ada est : <code class="language-plaintext highlighter-rouge">Desktop/ada_lovelace.png</code>.</p>
+
+<blockquote>
+  <p>Un chemin absolu commence toujours par <code class="language-plaintext highlighter-rouge">/</code>. Un chemin qui ne commence pas par <code class="language-plaintext highlighter-rouge">/</code> est <strong>toujours</strong> un chemin relatif.</p>
+</blockquote>
+
+<h3 id="plusieurs-racines">plusieurs racines</h3>
+
+<p>On considère parfois que chaque disque dur, chaque clé usb constitue sa propre racine. Il y a alors une <em>racine des racines</em>, qui contient le départ  vers les racines particulières des différents périphériques de stockages de l’ordinateur.
+disques durs, clés, etc.</p>
+
+<blockquote>
+  <p>C’est en réalité une vue de l’esprit. Il n’existe qu’une seule racine et chaque disque dur est <a href="https://fr.wikipedia.org/wiki/Point_de_montage">monté</a>.</p>
+</blockquote>
+
+<p>Souvent sous windows ces racines sont explicites, c’est <code class="language-plaintext highlighter-rouge">c:</code> par exemple pour le disque dur principal.</p>
+
+<h3 id="dossiers-spéciaux">dossiers spéciaux</h3>
+
+<p>Pour qu’un ordinateur fonctionne, il a besoin d’avoir des dossiers spéciaux contenant le système d’exploitation, ainsi que des fichiers spéciaux contenant des programmes (ces fichiers sont dit exécutables).</p>
+
+<p>Il existe aussi des dossiers pour chaque utilisateurs de l’ordinateur où il peut ranger ses fichiers et où le système stock les préférences de l’utilisateur.</p>
+
+<h3 id="dossiers--et-">dossiers . et ..</h3>
+
+<p>Les dossiers <code class="language-plaintext highlighter-rouge">.</code> et <code class="language-plaintext highlighter-rouge">..</code> sont des dossiers spéciaux qui signifient :</p>
+<ul>
+  <li>le dossiers courant pour <code class="language-plaintext highlighter-rouge">.</code></li>
+  <li>le dossiers précédent du dossiers <code class="language-plaintext highlighter-rouge">.</code> pour <code class="language-plaintext highlighter-rouge">..</code>.</li>
+</ul>
+
+<p>De là les 4 chemins suivants sont identiques :</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">/Users/fbrucker/Desktop/ada_lovelace.png</code></li>
+  <li><code class="language-plaintext highlighter-rouge">/Users/fbrucker/./Desktop/./ada_lovelace.png</code></li>
+  <li><code class="language-plaintext highlighter-rouge">/Users/fbrucker/../fbrucker/Desktop/ada_lovelace.png</code></li>
+  <li><code class="language-plaintext highlighter-rouge">/Users/fbrucker/../fbrucker/./Desktop/ada_lovelace.png</code></li>
+</ul>
+
+<blockquote>
+  <p>On fait souvent commencer un chemin relatif par <code class="language-plaintext highlighter-rouge">.</code> pour bien montrer sa différence par rapport à un chemin absolu qui commence par <code class="language-plaintext highlighter-rouge">/</code>.</p>
+</blockquote>
+
+<h4 id="maison">maison</h4>
+
+<p>La <em>maison</em> est le dossier principal d’un utilisateur.</p>
+
+<blockquote>
+  <p>Pour les utilisateurs de windows : il est recommandé que ce dossier ne comporte ni espace ni accent.</p>
+</blockquote>
+
+<h2 id="fichiers">fichiers</h2>
+
+<h3 id="extension-de-fichier">extension de fichier</h3>
+
+<p>Un nom de fichier comporte souvent un texte, suivi d’un <code class="language-plaintext highlighter-rouge">.</code> puis de deux ou trois lettres qui forme une <a href="https://fr.wikipedia.org/wiki/Extension_de_nom_de_fichier"><em>extension</em></a>.</p>
+
+<p>Cette extension ne sert à rien pour l’ordinateur, c’est seulement une aide pour l’utilisateur et certaines applications. Cela permet à priori de catégoriser un fichier.</p>
+
+<p>Ainsi, même si l’extension d’un fichier texte est <em>“.txt”</em>, rien ne vous empêche de la changer en <em>“.exe”</em> par exemple. Cela ne change en rien la nature du fichier. Cela cependant apporte de la confusion car certaines applications vont penser que c’est un fichier exécutable et cela va planter quand elles vont tenter de le faire.</p>
+
+<blockquote>
+  <p>Dans un éditeur de texte, l’extension d’un fichier permet de charger une coloration syntaxique par défaut : <em>“.py”</em> pour les fichiers python par exemple, <em>“.md”</em> pour les fichier markdown.</p>
+</blockquote>
+
+<blockquote>
+  <p>Ne soyez pas créatifs dans les extensions de fichiers, utilisez celle par défaut selon le type de fichier que vous utilisez.</p>
+</blockquote>
+
+<h3 id="fichiers-exécutables">fichiers exécutables</h3>
+
+<p>Les fichiers exécutables sont le cœur d’un système d’exploitation : ce sont les programmes.</p>
+
+<p>Leur format dépend du système d’exploitation, il est donc impossible d’utiliser un exécutable windows pour l’utiliser sous mac par exemple.</p>
+
+<blockquote>
+  <p>Un fichier python n’est <strong>pas</strong> un fichier exécutable. C’est un fichier texte qui est est lu, on dit <strong>interprété</strong> par l’interpréteur python qui lui est un fichier exécutable.</p>
+</blockquote>
+
+<h2 id="dossiers-et-fichiers-cachés">dossiers et fichiers cachés</h2>
+
+<p>Ce sont souvent des fichiers (ou des dossiers) de préférences, donc pas utile de les voir tout le temps. Dans le monde unix commencent par un <code class="language-plaintext highlighter-rouge">.</code> dans le monde windows commencent par un <code class="language-plaintext highlighter-rouge">_</code> et ils sont invisible lorsque l’on regarde ces fichiers avec un explorateur de fichier.</p>
+
+<p>On peut cependant les afficher dans un explorateur de fichier en effectuant quelques manipulation :</p>
+
+<details><summary>sous windows</summary><div>
+<p><a href="https://support.microsoft.com/fr-fr/windows/voir-les-fichiers-et-les-dossiers-cach%C3%A9s-dans-windows-97fbc472-c603-9d90-91d0-1166d1d9f4b5">afficher les dossiers cachés sous windows</a></p>
+
+</div></details>
+
+<details><summary>sous mac</summary><div>
+<p><a href="https://www.ionos.fr/digitalguide/serveur/configuration/mac-afficher-les-fichiers-et-dossiers-caches/">sous mac</a>.</p>
+
+<blockquote>
+  <p>Pour que la manipulation de touche décrite dans la page fonctionne, il faut également d’appuyer sur la touche <code class="language-plaintext highlighter-rouge">fn</code> en plus.</p>
+</blockquote>
+
+</div></details>
+
+<details><summary>sous linux</summary><div>
+<blockquote class="dancer">
+  <p>TBD</p>
+</blockquote>
+
+</div></details>
+
+<h2 id="terminal">terminal</h2>
+
+<p>Le <a href="/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html">terminal</a> est l’outil permettant d’exécuter des programmes. Il permet de contrôler directement ce qui est exécuté, et est l’endroit où l’on lancera nos scripts python par exemple.</p>
+
+<p>Une ligne du terminal sera toujours :</p>
+<ul>
+  <li>soit un fichier exécutable</li>
+  <li>soit une commande (comme <code class="language-plaintext highlighter-rouge">get-command</code> pour un powershell par exemple)</li>
+</ul>
+
+<p>Etudions par exemple la commande :</p>
+<pre><code class="language-pyhton">python mon_script.py
+</code></pre>
+
+<p>Comme <code class="language-plaintext highlighter-rouge">python</code> n’est pas une commande c’est <strong>forcément</strong> un fichier exécutable.  Le système d’exploitation cherche alors un fichier s’appelant <code class="language-plaintext highlighter-rouge">python</code> (ou <code class="language-plaintext highlighter-rouge">python.exe</code> si on est sous windows) dans un ensemble de dossiers qu’on appelle le <strong>path</strong>.</p>
+
+<p>Connaître le path :</p>
+
+<details><summary>sous windows</summary><div>
+<p><a href="https://java.com/fr/download/help/path_fr.html">affichier et modifier le path</a></p>
+
+</div></details>
+
+<details><summary>sous mac/linux</summary><div>
+<p>Dans un terminal, tapez :</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="nv">$PATH</span>
+</code></pre></div></div>
+<p>Cela affichera les différents dossier dans le path.</p>
+
+</div></details>
+
+<p>Si le fichier <em>“python”</em> (ou <em>“python.exe”</em> si on est sous windows) n’est pas trouvé, le terminal rend une erreur.</p>
+
+<p>S’il est trouvé, il est exécuté.</p>
+
+<blockquote>
+  <p>Souvent <code class="language-plaintext highlighter-rouge">.</code> (le répertoire courant) n’est pas dans le path. Il faut donc taper  <code class="language-plaintext highlighter-rouge">./truc</code> si on veut exécuter  le fichier s’appelant truc dans le dossier courant.</p>
+</blockquote>
+
+<p>La partie suivant le fichier exécutable correspondent aux paramètre du programme. Pour savoir quelles sont les possibilités on regarde la <a href="https://docs.python.org/3/using/cmdline.html">documentation</a> : un nom de fichier en paramètre signifie que l’on souhaite interpréter le fichier décrit par son chemin relatif.</p>
+
+<p>Ici : cela signifie qu’il existe un fichier <em>“mon_script.py”</em> dans le répertoire courant du terminal.</p>
+
+<h3 id="dossier-courant-dun-terminal">dossier courant d’un terminal</h3>
+
+<p>Lorsque l’on lance un terminal il est <strong>toujours</strong> dans un dossier du système. POur le connaitre, on peut taper la commande :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">pwd</span>
+</code></pre></div></div>
+
+<h4 id="se-déplacer-avec-cd">se déplacer avec cd</h4>
+
+<p>Pour changer de dossier, on utiliser la commande <code class="language-plaintext highlighter-rouge">cd</code> suivi d’un chemin absolu ou relatif.</p>
+
+<p>Par exemple, sur mon mac, je crée un nouveau terminal. Par défaut, son dossier courant est la maison. La commande <code class="language-plaintext highlighter-rouge">pwd</code> me rend en effet : <code class="language-plaintext highlighter-rouge">/Users/fbrucker</code>.</p>
+
+<p>Si je veux aller dans le dossier contenant ma photo d’Ada, je peux taper :</p>
+<ul>
+  <li>un chemin absolu : <code class="language-plaintext highlighter-rouge">cd /Users/fbrucker/Desktop</code></li>
+  <li>un chemin relatif : <code class="language-plaintext highlighter-rouge">cd Desktop</code>, ou encore <code class="language-plaintext highlighter-rouge">cd ./Desktop</code> qui est équivalent.</li>
+</ul>
+
+<blockquote class="attention">
+  <p>Notez que je ne peux pas aller dans un fichier.
+ Si j’avais tapé <code class="language-plaintext highlighter-rouge">/Users/fbrucker/Desktop/ada_lovelace.png</code> j’aurais eu une erreur. Sur mon mac, ça dit : <code class="language-plaintext highlighter-rouge">cd: not a directory: /Users/fbrucker/Desktop/ada_lovelace.png</code></p>
+</blockquote>
+
+<blockquote>
+  <p>sous unix, le caractère <code class="language-plaintext highlighter-rouge">~</code> est équivalent au chemin absolu vers la maison. En tapant <code class="language-plaintext highlighter-rouge">cd ~</code> je me retrouve alors directement à la maison. De là, <code class="language-plaintext highlighter-rouge">cd ~/Desktop</code> m’envoie dans le dossier <code class="language-plaintext highlighter-rouge">/Users/fbrucker/Desktop</code> quelque soit l’endroit où je me trouve.</p>
+</blockquote>
+
+<h4 id="lister-avec-ls">lister avec ls</h4>
+
+<p>La commande <code class="language-plaintext highlighter-rouge">ls</code> quand à elle donne les dossier et les fichier du dossier courant (on peut l’utiliser sans paramètre, ou avec un chemin absolu ou relatif).</p>
+
+<p>Par exemple, sur mon mac, si je tape :</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">ls</span> /
+</code></pre></div></div>
+<p>J’obtiens tous les dossier de la racine :</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Applications Users        cores        home         sbin         var
+Library      Volumes      dev          opt          tmp
+System       bin          etc          private      usr
+</code></pre></div></div>
+
+<h3 id="ouvrir-un-terminal-dans-un-dossier-spécifique">ouvrir un terminal dans un dossier spécifique</h3>
+
+<details><summary>sous mac</summary><div>
+<p>Dans le finder cliquez droit sur le dossier, puis <em>services &gt; Nouveau terminal au dossier</em></p>
+
+</div></details>
+
+<details><summary>sous windows</summary><div>
+<p>Dans un explorateur de fichier cliquez sur le dossier, puis dans le menu fichier</p>
+
+</div></details>
+
+<h3 id="copier-le-chemin-absolu">copier le chemin absolu</h3>
+
+<details><summary>sous mac</summary><div>
+<p>Dans le finder cliquez droit sur le dossier, puis copier. Coller ensuite dans le finder.</p>
+
+</div></details>
+
+<details><summary>sous windows</summary><div>
+<p>Dans explorateur de fichier cliquez sur le dossier, puis <em>copier le chemin d’accès</em> dans le menu <em>accueil</em></p>
+
+</div></details>
+
+<h2 id="pour-aller-plus-loin">pour aller plus loin</h2>
+
+<ul>
+  <li>liens</li>
+  <li>permissions</li>
+  <li>unix et tout est fichier</li>
+  <li>fichiers spéciaux (/dev/audio)</li>
+  <li>une application mac est un dossier.</li>
+  <li>comment écrire sur le disque dur, le <a href="https://en.wikipedia.org/wiki/Comparison_of_file_systems">file system</a></li>
+</ul>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d&#39;informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d&#39;informatique</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

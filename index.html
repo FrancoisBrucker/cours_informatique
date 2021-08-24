@@ -141,6 +141,22 @@
 
         var id = 0;
         
+        var cats = ["tutos","systeme","CLI","terminal"]
+
+        id += 1;
+        var postDiv = document.getElementById(id);
+        postDiv.style.display = (selectedCategory == 'All' || cats.includes(selectedCategory)) 
+            ? 'unset' 
+            : 'none';
+        
+        var cats = ["tutos","systeme","fichiers"]
+
+        id += 1;
+        var postDiv = document.getElementById(id);
+        postDiv.style.display = (selectedCategory == 'All' || cats.includes(selectedCategory)) 
+            ? 'unset' 
+            : 'none';
+        
         var cats = ["tutos","python"]
 
         id += 1;
@@ -175,7 +191,19 @@
         
         
             
+            <button id="CLI" onclick="filterUsingCategory(this.id)">CLI</button>
+        
+            
+            <button id="fichiers" onclick="filterUsingCategory(this.id)">fichiers</button>
+        
+            
             <button id="python" onclick="filterUsingCategory(this.id)">python</button>
+        
+            
+            <button id="systeme" onclick="filterUsingCategory(this.id)">systeme</button>
+        
+            
+            <button id="terminal" onclick="filterUsingCategory(this.id)">terminal</button>
         
             
             <button id="tests unitaires" onclick="filterUsingCategory(this.id)">tests unitaires</button>
@@ -192,6 +220,90 @@
     
         
         <li id="1">
+            
+            <h3>
+                <a class="post-link" href="/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html">
+                  Utiliser un terminal
+                </a>
+              </h3>
+              <div style="padding-left:20px;">
+                <div>
+                    catégories : 
+                    
+                    • <span class="post-meta">tutos</span>
+                    
+                    • <span class="post-meta">systeme</span>
+                    
+                    • <span class="post-meta">CLI</span>
+                    
+                    • <span class="post-meta">terminal</span>
+                    
+                    • 
+                </div>
+                <div>
+                    tags : 
+                    
+                    • <span class="post-meta">système</span>
+                    
+                    • <span class="post-meta">terminal</span>
+                    
+                    • <span class="post-meta">CLI</span>
+                    
+                    •
+                </div>
+                <p>
+                    <p>Qu’est-ce que le terminal ? Comment le trouver et taper des commandes.</p>
+
+                </p>
+                
+              </div>
+              
+                
+              
+        </li>
+        
+        <li id="2">
+            
+            <h3>
+                <a class="post-link" href="/cours_informatique/tutos/systeme/fichiers/2021/08/24/fichiers-navigation.html">
+                  naviguer dans un système de fichier
+                </a>
+              </h3>
+              <div style="padding-left:20px;">
+                <div>
+                    catégories : 
+                    
+                    • <span class="post-meta">tutos</span>
+                    
+                    • <span class="post-meta">systeme</span>
+                    
+                    • <span class="post-meta">fichiers</span>
+                    
+                    • 
+                </div>
+                <div>
+                    tags : 
+                    
+                    • <span class="post-meta">système</span>
+                    
+                    • <span class="post-meta">fichiers</span>
+                    
+                    • <span class="post-meta">terminal</span>
+                    
+                    •
+                </div>
+                <p>
+                    <p>Qu’est-ce qu’un fichier ? Un dossier ? Comment naviguer dans un système de fichier avec le terminal ou l’explorateur de fichier.</p>
+
+                </p>
+                
+              </div>
+              
+                
+              
+        </li>
+        
+        <li id="3">
             
             <h3>
                 <a class="post-link" href="/cours_informatique/tutos/python/2021/08/20/installation-de-python.html">
@@ -215,6 +327,8 @@
                     
                     • <span class="post-meta">python</span>
                     
+                    • <span class="post-meta">terminal</span>
+                    
                     •
                 </div>
                 <p>
@@ -228,7 +342,7 @@
               
         </li>
         
-        <li id="2">
+        <li id="4">
             
             <h3>
                 <a class="post-link" href="/cours_informatique/tutos/python/2021/08/19/bases-de-python.html">
@@ -265,7 +379,7 @@
               
         </li>
         
-        <li id="3">
+        <li id="5">
             
             <h3>
                 <a class="post-link" href="/cours_informatique/tutos/python/tests%20unitaires/2021/08/01/tests-unitaires.html">
