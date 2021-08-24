@@ -194,9 +194,10 @@ python2 vs python3</p>
 
 <p>Nous allons télécharger la distribution open-source d’anaconda <a href="https://www.anaconda.com/products/individual">ici</a>. Choisissez la version 64bit graphique correspondant à votre système d’installation, puis cliquez sur l’installeur.</p>
 
-<p>Lors de l’installation vous pourrez choisir de faire une installation uniquement pour vous ou pour tous les utilisateurs. Choisissez <strong>pour tous les utilisateurs</strong>.</p>
+<p>Lors de l’installation :</p>
 <ul>
-  <li><strong>de personnaliser votre installation</strong>. Vous aurez une option, initialement cochée, qui fera en sorte qu’anaconda soit votre distribution python par défaut. Personnellement je décoche cette option car je gère mes version de python moi-même. Si vous être un 1A ou un 2A novice, laissez là cochée. Si vous êtes un 3A DFS, décochez là.</li>
+  <li>vous pourrez choisir de faire une installation uniquement pour vous ou pour tous les utilisateurs. Choisissez <strong>pour tous les utilisateurs</strong>.</li>
+  <li>sous windows, vous pourrez choisir d’ajouter le python d’anaconda au <em>path</em> de windows, c’est à dire que lorsque ovus taperez python dans un terminal, ce sera celui d’anaconda qui se lancera. <strong>choisissez cette option</strong>, même si elle n’est pas recommandée.</li>
 </ul>
 
 <blockquote class="attention">
@@ -218,7 +219,7 @@ python2 vs python3</p>
 <ol>
   <li>créez un nouveau notebook <code class="language-plaintext highlighter-rouge">python3</code>.</li>
   <li>dans la cellule tapez <code class="language-plaintext highlighter-rouge">print("Hello world!")</code></li>
-  <li>cliquez sur l’icone <em>Exécuter</em> sur la bannière de titre ou appuyer sur <code class="language-plaintext highlighter-rouge">shift + entrée</code>.</li>
+  <li>cliquez sur l’icône <em>Exécuter</em> sur la bannière de titre ou appuyer sur <code class="language-plaintext highlighter-rouge">shift + entrée</code>.</li>
 </ol>
 
 <p>Vous devriez voir le texte <code class="language-plaintext highlighter-rouge">Hello World</code> en sortie de votre cellule.</p>
@@ -249,9 +250,7 @@ python2 vs python3</p>
 </div></details>
 
 <details><summary>sous windows</summary><div>
-<p>Pour l’instant téléchargez le tout depuis le site de python. Il se placera automatiquement dans les logiciels installés. C’est pas super mais ça marche.</p>
-
-<p><a href="https://www.python.org/downloads/">https://www.python.org/downloads/</a></p>
+<p>Pour l’instant téléchargez le tout depuis le store. Suivez ce <a href="https://docs.microsoft.com/fr-fr/windows/python/beginners">tutoriel</a> pour l’installation.</p>
 
 </div></details>
 
@@ -287,7 +286,7 @@ python2 vs python3</p>
 
 </div></details>
 
-<p>Une fois l’application trouée, exécutez là. Une fenêtre doit s’ouvrir, vous permettant de taper des commandes.</p>
+<p>Une fois l’application trouvée, exécutez là. Une fenêtre doit s’ouvrir, vous permettant de taper des commandes.</p>
 
 <blockquote>
   <p>N’ayez pas peur. C’est simple à utiliser. On tape une commande, on appuie sur entrée et la commande s’exécute. 
@@ -333,7 +332,7 @@ Vous pouvez a priori utiliser votre ordinateur uniquement avec un terminal. L’
 <p>Dans un terminal tapez la commande :</p>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">which python</code> sur un mac ou un linux,</li>
-  <li><code class="language-plaintext highlighter-rouge">where python</code> sur un windows,</li>
+  <li><code class="language-plaintext highlighter-rouge">get-command python</code> sur un windows avec powershell,</li>
 </ul>
 
 <p>La commande devrait vous rendre l’emplacement sur votre disque dur de votre interpréteur. Vérifiez le avec un explorateur de fichier.</p>
@@ -381,7 +380,7 @@ Vous pouvez a priori utiliser votre ordinateur uniquement avec un terminal. L’
 <span class="k">for</span> <span class="n">dossier</span> <span class="ow">in</span> <span class="n">sys</span><span class="p">.</span><span class="n">path</span><span class="p">:</span>
    <span class="k">print</span><span class="p">(</span><span class="n">dossier</span><span class="p">)</span>
 </code></pre></div></div>
-<p>chez moi, ce programme rend :</p>
+<p>Chez moi, sur un mac où python est installé avec <a href="https://brew.sh/">brew</a> ce programme rend :</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/usr/local/Cellar/python@3.9/3.9.6/Frameworks/Python.framework/Versions/3.9/lib/python39.zip
 /usr/local/Cellar/python@3.9/3.9.6/Frameworks/Python.framework/Versions/3.9/lib/python3.9

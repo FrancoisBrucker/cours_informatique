@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/cours_informatique/feed.xml" rel="self" type="application/atom+xml" /><link href="/cours_informatique/" rel="alternate" type="text/html" /><updated>2021-08-23T13:01:06+00:00</updated><id>/cours_informatique/feed.xml</id><title type="html">cours d’informatique</title><subtitle>Support de cours/td d'informatique à l'école centrale marseille.</subtitle><entry><title type="html">Installation de python</title><link href="/cours_informatique/tutos/python/2021/08/20/installation-de-python.html" rel="alternate" type="text/html" title="Installation de python" /><published>2021-08-20T00:00:00+00:00</published><updated>2021-08-20T00:00:00+00:00</updated><id>/cours_informatique/tutos/python/2021/08/20/installation-de-python</id><content type="html" xml:base="/cours_informatique/tutos/python/2021/08/20/installation-de-python.html">&lt;p&gt;Comment installer et utiliser python sur son ordinateur. On y verra différentes solutions.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/cours_informatique/feed.xml" rel="self" type="application/atom+xml" /><link href="/cours_informatique/" rel="alternate" type="text/html" /><updated>2021-08-24T06:11:10+00:00</updated><id>/cours_informatique/feed.xml</id><title type="html">cours d’informatique</title><subtitle>Support de cours/td d'informatique à l'école centrale marseille.</subtitle><entry><title type="html">Installation de python</title><link href="/cours_informatique/tutos/python/2021/08/20/installation-de-python.html" rel="alternate" type="text/html" title="Installation de python" /><published>2021-08-20T00:00:00+00:00</published><updated>2021-08-20T00:00:00+00:00</updated><id>/cours_informatique/tutos/python/2021/08/20/installation-de-python</id><content type="html" xml:base="/cours_informatique/tutos/python/2021/08/20/installation-de-python.html">&lt;p&gt;Comment installer et utiliser python sur son ordinateur. On y verra différentes solutions.&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -126,9 +126,10 @@ python2 vs python3&lt;/p&gt;
 
 &lt;p&gt;Nous allons télécharger la distribution open-source d’anaconda &lt;a href=&quot;https://www.anaconda.com/products/individual&quot;&gt;ici&lt;/a&gt;. Choisissez la version 64bit graphique correspondant à votre système d’installation, puis cliquez sur l’installeur.&lt;/p&gt;
 
-&lt;p&gt;Lors de l’installation vous pourrez choisir de faire une installation uniquement pour vous ou pour tous les utilisateurs. Choisissez &lt;strong&gt;pour tous les utilisateurs&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Lors de l’installation :&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;de personnaliser votre installation&lt;/strong&gt;. Vous aurez une option, initialement cochée, qui fera en sorte qu’anaconda soit votre distribution python par défaut. Personnellement je décoche cette option car je gère mes version de python moi-même. Si vous être un 1A ou un 2A novice, laissez là cochée. Si vous êtes un 3A DFS, décochez là.&lt;/li&gt;
+  &lt;li&gt;vous pourrez choisir de faire une installation uniquement pour vous ou pour tous les utilisateurs. Choisissez &lt;strong&gt;pour tous les utilisateurs&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;sous windows, vous pourrez choisir d’ajouter le python d’anaconda au &lt;em&gt;path&lt;/em&gt; de windows, c’est à dire que lorsque ovus taperez python dans un terminal, ce sera celui d’anaconda qui se lancera. &lt;strong&gt;choisissez cette option&lt;/strong&gt;, même si elle n’est pas recommandée.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;blockquote class=&quot;attention&quot;&gt;
@@ -150,7 +151,7 @@ python2 vs python3&lt;/p&gt;
 &lt;ol&gt;
   &lt;li&gt;créez un nouveau notebook &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python3&lt;/code&gt;.&lt;/li&gt;
   &lt;li&gt;dans la cellule tapez &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;print(&quot;Hello world!&quot;)&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;cliquez sur l’icone &lt;em&gt;Exécuter&lt;/em&gt; sur la bannière de titre ou appuyer sur &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;shift + entrée&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;cliquez sur l’icône &lt;em&gt;Exécuter&lt;/em&gt; sur la bannière de titre ou appuyer sur &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;shift + entrée&lt;/code&gt;.&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;Vous devriez voir le texte &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Hello World&lt;/code&gt; en sortie de votre cellule.&lt;/p&gt;
@@ -181,9 +182,7 @@ python2 vs python3&lt;/p&gt;
 &lt;/div&gt;&lt;/details&gt;
 
 &lt;details&gt;&lt;summary&gt;sous windows&lt;/summary&gt;&lt;div&gt;
-&lt;p&gt;Pour l’instant téléchargez le tout depuis le site de python. Il se placera automatiquement dans les logiciels installés. C’est pas super mais ça marche.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.python.org/downloads/&quot;&gt;https://www.python.org/downloads/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Pour l’instant téléchargez le tout depuis le store. Suivez ce &lt;a href=&quot;https://docs.microsoft.com/fr-fr/windows/python/beginners&quot;&gt;tutoriel&lt;/a&gt; pour l’installation.&lt;/p&gt;
 
 &lt;/div&gt;&lt;/details&gt;
 
@@ -219,7 +218,7 @@ python2 vs python3&lt;/p&gt;
 
 &lt;/div&gt;&lt;/details&gt;
 
-&lt;p&gt;Une fois l’application trouée, exécutez là. Une fenêtre doit s’ouvrir, vous permettant de taper des commandes.&lt;/p&gt;
+&lt;p&gt;Une fois l’application trouvée, exécutez là. Une fenêtre doit s’ouvrir, vous permettant de taper des commandes.&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;N’ayez pas peur. C’est simple à utiliser. On tape une commande, on appuie sur entrée et la commande s’exécute. 
@@ -265,7 +264,7 @@ Vous pouvez a priori utiliser votre ordinateur uniquement avec un terminal. L’
 &lt;p&gt;Dans un terminal tapez la commande :&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;which python&lt;/code&gt; sur un mac ou un linux,&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;where python&lt;/code&gt; sur un windows,&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;get-command python&lt;/code&gt; sur un windows avec powershell,&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;La commande devrait vous rendre l’emplacement sur votre disque dur de votre interpréteur. Vérifiez le avec un explorateur de fichier.&lt;/p&gt;
@@ -313,7 +312,7 @@ Vous pouvez a priori utiliser votre ordinateur uniquement avec un terminal. L’
 &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dossier&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dossier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;chez moi, ce programme rend :&lt;/p&gt;
+&lt;p&gt;Chez moi, sur un mac où python est installé avec &lt;a href=&quot;https://brew.sh/&quot;&gt;brew&lt;/a&gt; ce programme rend :&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/usr/local/Cellar/python@3.9/3.9.6/Frameworks/Python.framework/Versions/3.9/lib/python39.zip
 /usr/local/Cellar/python@3.9/3.9.6/Frameworks/Python.framework/Versions/3.9/lib/python3.9
@@ -349,14 +348,14 @@ Vous pouvez a priori utiliser votre ordinateur uniquement avec un terminal. L’
   &lt;li&gt;&lt;a href=&quot;https://www.jetbrains.com/fr-fr/pycharm/&quot;&gt;pycharm&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Il existe également d’autres façon d’utiliser python, en mode interactif par exemple en utilisant &lt;a href=&quot;https://jupyter.org/&quot;&gt;jupyter&lt;/a&gt; avec anaconda, ou encore &lt;a href=&quot;https://colab.research.google.com&quot;&gt;colab&lt;/a&gt;.&lt;/p&gt;</content><author><name>François Brucker</name></author><category term="tutos" /><category term="python" /><category term="installation" /><category term="python" /><summary type="html">Comment installer et utiliser python sur son ordinateur. On y verra différentes solutions.</summary></entry><entry><title type="html">Bases de python</title><link href="/cours_informatique/tutos/python/2021/08/19/bases-de-python.html" rel="alternate" type="text/html" title="Bases de python" /><published>2021-08-19T00:00:00+00:00</published><updated>2021-08-19T00:00:00+00:00</updated><id>/cours_informatique/tutos/python/2021/08/19/bases-de-python</id><content type="html" xml:base="/cours_informatique/tutos/python/2021/08/19/bases-de-python.html">&lt;p&gt;Notions de base du langage python. Ce n’est cependant pas un cours, on y reprend juste les différentes notions à connaître ainsi que les principales structres de données à utiliser.&lt;/p&gt;
+&lt;p&gt;Il existe également d’autres façon d’utiliser python, en mode interactif par exemple en utilisant &lt;a href=&quot;https://jupyter.org/&quot;&gt;jupyter&lt;/a&gt; avec anaconda, ou encore &lt;a href=&quot;https://colab.research.google.com&quot;&gt;colab&lt;/a&gt;.&lt;/p&gt;</content><author><name>François Brucker</name></author><category term="tutos" /><category term="python" /><category term="installation" /><category term="python" /><summary type="html">Comment installer et utiliser python sur son ordinateur. On y verra différentes solutions.</summary></entry><entry><title type="html">Bases de python</title><link href="/cours_informatique/tutos/python/2021/08/19/bases-de-python.html" rel="alternate" type="text/html" title="Bases de python" /><published>2021-08-19T00:00:00+00:00</published><updated>2021-08-19T00:00:00+00:00</updated><id>/cours_informatique/tutos/python/2021/08/19/bases-de-python</id><content type="html" xml:base="/cours_informatique/tutos/python/2021/08/19/bases-de-python.html">&lt;p&gt;Notions de base du langage python. Ce n’est cependant pas un cours, on y reprend juste les différentes notions à connaître ainsi que les principales structures de données à utiliser.&lt;/p&gt;
 
 &lt;!--more--&gt;
 
 &lt;p&gt;On supposeras que vous ayez un interpréteur python qui fonctionne ainsi qu’un éditeur de texte pour écrire des programmes.&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;On utilisera ici la version 3 de python (plus personne — vraiment — ne devrait utiliser la version 2) dans sa dernière itération (3.9.6 à l’heure où je tape ces caractères), mais n’importe quelle version 3 de python devrait faire fonctionner les exemples de ce tuto. Les liens vers la documentation officielle seront toujours ceux de la dernière version stable de python.&lt;/p&gt;
+  &lt;p&gt;On utilisera ici la version 3 de python (plus personne — vraiment — ne devrait utiliser la version 2) dans sa dernière itération (3.9.6 à l’heure où je tape ces caractères), mais n’importe quelle version 3 de python devrait faire fonctionner les exemples de ce tutoriel. Les liens vers la documentation officielle seront toujours ceux de la dernière version stable de python.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h1 id=&quot;introduction&quot;&gt;Introduction&lt;/h1&gt;
@@ -367,7 +366,7 @@ Vous pouvez a priori utiliser votre ordinateur uniquement avec un terminal. L’
   &lt;p&gt;&lt;a href=&quot;https://docs.python.org/3/&quot;&gt;https://docs.python.org/3/&lt;/a&gt; toutes les réponses et bien plus encore s’y trouvent.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;Nous vous recommendons également de faire le &lt;a href=&quot;https://docs.python.org/3/tutorial/index.html&quot;&gt;tutoriel&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Nous vous recommandons également de faire le &lt;a href=&quot;https://docs.python.org/3/tutorial/index.html&quot;&gt;tutoriel&lt;/a&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;les-données&quot;&gt;Les données&lt;/h1&gt;
 
@@ -472,14 +471,14 @@ On peut alors accéder aux éléments de la liste à l’aide d’un indice vari
 &lt;h4 id=&quot;ajout-suppression-déléments-dune-liste&quot;&gt;Ajout, suppression d’éléments d’une liste&lt;/h4&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;append&lt;/li&gt;
-  &lt;li&gt;insert&lt;/li&gt;
-  &lt;li&gt;del&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;append&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;insert&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;del&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Attention à remove, extend ou pop&lt;/p&gt;
+&lt;p&gt;Attention à &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;remove&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;extend&lt;/code&gt; ou &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pop&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;Voir la &lt;a href=&quot;https://docs.python.org/3/tutorial/datastructures.html#more-on-lists&quot;&gt;documentation du tutorial&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Voir la &lt;a href=&quot;https://docs.python.org/3/tutorial/datastructures.html#more-on-lists&quot;&gt;documentation du tutoriel&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h4 id=&quot;copie-dune-sous-liste&quot;&gt;Copie d’une sous-liste&lt;/h4&gt;
 
@@ -893,7 +892,7 @@ est votre ami) s’il n’existe pas un module tout fait, vous gagnerez du temps
 
 &lt;p&gt;Regardez &lt;a href=&quot;https://python.sdv.univ-paris-diderot.fr/08_modules/#85-module-random-generation-de-nombres-aleatoires&quot;&gt;ces exemples&lt;/a&gt; pour le module random.&lt;/p&gt;
 
-&lt;p&gt;Installé par défaut, il permet notamment de mélanger les éléments d’une liste, générer un nombre aléatoire, choisir un élément aléatoire dans une liste… Vous pouvez même simuler une loi gaussienne (si, si).&lt;/p&gt;
+&lt;p&gt;Installé par défaut, il permet notamment de mélanger les éléments d’une liste, générer un nombre aléatoire, choisir un élément aléatoire dans une liste… Vous pouvez même simuler une loi Gaussienne (si, si).&lt;/p&gt;
 
 &lt;h4 id=&quot;openpyxl&quot;&gt;openpyxl&lt;/h4&gt;
 
@@ -923,7 +922,7 @@ est votre ami) s’il n’existe pas un module tout fait, vous gagnerez du temps
 
 &lt;h1 id=&quot;retour-sur-les-objets&quot;&gt;Retour sur les objets&lt;/h1&gt;
 
-&lt;p&gt;Comme on l’a vu les objets sont partout en python, qu’ils soient int, str, float, ou même des fonctions.
+&lt;p&gt;Comme on l’a vu les objets sont partout en python, qu’ils soient &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;int&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;str&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;float&lt;/code&gt;, ou même des fonctions.
 Si vous avez bien compris l’exemple de la récursion et de la modification d’un objet passé en paramètre, alors vous vous demandez peut-être “pourquoi ne pas envoyer une fonction en paramètre d’une autre fonction ?”&lt;/p&gt;
 
 &lt;p&gt;Eh bien cela est tout à fait possible, exemple:&lt;/p&gt;
@@ -956,7 +955,7 @@ Si vous avez bien compris l’exemple de la récursion et de la modification d�
 &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Ou de façon équivalente avec &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;with&lt;/code&gt;, qui est la façon recommandée  car elle délimite l’utilsation du fichier dans un bloc :&lt;/p&gt;
+&lt;p&gt;Ou de façon équivalente avec &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;with&lt;/code&gt;, qui est la façon recommandée  car elle délimite l’utilisation du fichier dans un bloc :&lt;/p&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'fichier.txt'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'r'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ligne&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
@@ -988,7 +987,7 @@ Si vous avez bien compris l’exemple de la récursion et de la modification d�
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'fichier.txt'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'w'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'For the night is dark and full of terrors'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Augustin Agbo-Kpati</name></author><category term="tutos" /><category term="python" /><category term="langage" /><category term="python" /><summary type="html">Notions de base du langage python. Ce n’est cependant pas un cours, on y reprend juste les différentes notions à connaître ainsi que les principales structres de données à utiliser.</summary></entry><entry><title type="html">Tests unitaires en Python avec pytest et pycharm</title><link href="/cours_informatique/tutos/python/tests%20unitaires/2021/08/01/tests-unitaires.html" rel="alternate" type="text/html" title="Tests unitaires en Python avec pytest et pycharm" /><published>2021-08-01T00:00:00+00:00</published><updated>2021-08-01T00:00:00+00:00</updated><id>/cours_informatique/tutos/python/tests%20unitaires/2021/08/01/tests-unitaires</id><content type="html" xml:base="/cours_informatique/tutos/python/tests%20unitaires/2021/08/01/tests-unitaires.html">&lt;p&gt;Mise en œuvre de tests unitaires en python avec l’éditeur pycharm.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Augustin Agbo-Kpati</name></author><category term="tutos" /><category term="python" /><category term="langage" /><category term="python" /><summary type="html">Notions de base du langage python. Ce n’est cependant pas un cours, on y reprend juste les différentes notions à connaître ainsi que les principales structures de données à utiliser.</summary></entry><entry><title type="html">Tests unitaires en Python avec pytest et pycharm</title><link href="/cours_informatique/tutos/python/tests%20unitaires/2021/08/01/tests-unitaires.html" rel="alternate" type="text/html" title="Tests unitaires en Python avec pytest et pycharm" /><published>2021-08-01T00:00:00+00:00</published><updated>2021-08-01T00:00:00+00:00</updated><id>/cours_informatique/tutos/python/tests%20unitaires/2021/08/01/tests-unitaires</id><content type="html" xml:base="/cours_informatique/tutos/python/tests%20unitaires/2021/08/01/tests-unitaires.html">&lt;p&gt;Mise en œuvre de tests unitaires en python avec l’éditeur pycharm.
 &lt;!--more--&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;introduction&quot;&gt;Introduction&lt;/h1&gt;
