@@ -1,7 +1,7 @@
 ---
 layout: page
 title:  Installation de python
-tags: installation python
+tags: installation python terminal
 authors: 
     - François Brucker
 ---
@@ -144,13 +144,13 @@ Lancez l'application *Notebook* puis :
   
   Vous devriez voir le texte `Hello World` en sortie de votre cellule.
   
-### anaconda avec un terminal 
+#### anaconda avec un terminal 
 
 Dans l'*anaconda navigator*, cliquez sur *Environnements* dans le menu de gauche (c'est le deuxième choix, après *Home* et avant *Learning*).
 
 Vous devez avoir un unique environnement : *base (root)*. Un environnement est un interpréteur python et tous ses packages installés. On aura parfois envie de créer ses propres environnements pour installer soit une version spécifique de python, soit n'installer que certains packages.
 
-Pour l'instant utilisons l'environnement de base. En cliquant sur le triangle vert à droite de l'environnement *base (root)*, vous pouvez cliquer sur *open terminal*, ce qui ouvrira un terminal. Une fois le terminal ouvert, remarquez qu'à gauche de l'invit de commande vous avez `(base)` d'acrit. Ceci montre quel environnement python vous avez.
+Pour l'instant utilisons l'environnement de base. En cliquant sur le triangle vert à droite de l'environnement *base (root)*, vous pouvez cliquer sur *open terminal*, ce qui ouvrira un terminal. Une fois le terminal ouvert, remarquez qu'à gauche de l'invite de commande vous avez `(base)` d'écrit. Ceci montre quel environnement python vous avez.
 
 Vos pouvez [connaitre l'interpréteur](https://docs.anaconda.com/anaconda/user-guide/tasks/integration/python-path/).
 
@@ -163,7 +163,7 @@ C'est un peut plus compliqué qu'utiliser anaconda mais si vous voulez faire de 
 
 {% details sous mac %}
 
-On utilise [brew](https://brew.sh/index_fr). Toutes les commandes se font via le [terminal](https://www.howtogeek.com/682770/how-to-open-the-terminal-on-a-mac/) (il est dans Applications/utilitaires)
+On utilise [brew](https://brew.sh/index_fr). Toutes les commandes se font via le [terminal]({% post_url /tutos/systeme/2021-08-24-terminal %}).
 
 Une fois brew installé, vous pouvez installer python en tapant la commande : 
 
@@ -189,37 +189,9 @@ Pour l'instant téléchargez le tout depuis le store. Suivez ce [tutoriel](https
 
 ## utiliser l'interpréteur python {#interpreteur-id}
 
-### terminal {#ouvrir-terminal-id}
+Commencer par ouvrir une fenêtre Terminal. Si vous ne savez ps ce que c'est regardez ce [tutoriel]({% post_url /tutos/systeme/2021-08-24-terminal %})
 
-Pour utiliser l'interpréteur python, on ne peut pas directement double-cliquer sur son nom car il ne possède pas d'interface graphique : il faut l'exécuter en mode ligne de commande, via un terminal (pour faire mode, on peut dire [CLI](https://fr.wikipedia.org/wiki/Interface_en_ligne_de_commande)). 
 
-Trouver l'application terminal : 
-
-{% details sous mac %}
-Le [terminal](https://www.howtogeek.com/682770/how-to-open-the-terminal-on-a-mac/) se trouve dans /Application/utilitaires (finder : menu Aller > Applications puis allez dans le dossier utilitaires). Vous pouvez ensuite cliquer sur l'icône terminal.
-
-Le terminal est super utile, ça vaut le coup d'ajouter un raccourci dans la barre du finder.
-
-{% enddetails %}
-
-{% details sous linux %}
-
-Si vous êtes sous linux vous devriez savoir ouvrir un terminal. C'est souvent une application avec une télévision comme icône.
-
-{% enddetails %}
-
-{% details sous windows %}
-
-Vous pouvez utiliser l'invit de commande mais c'est une torture (tapez `cmd` dans l'invit de recherche), ou utiliser le [power-shell](https://docs.microsoft.com/fr-fr/powershell/scripting/overview?view=powershell-7.1) qui est semblable au terminal du mac/unix. Pour ouvrir une fenêtre powersheel, il y a [plusieurs possiblités](https://lecrabeinfo.net/ouvrir-powershell-sur-windows-10.html)
-
-{% enddetails %}
-
-Une fois l'application trouvée, exécutez là. Une fenêtre doit s'ouvrir, vous permettant de taper des commandes. 
-
-> N'ayez pas peur. C'est simple à utiliser. On tape une commande, on appuie sur entrée et la commande s'exécute. 
->Vous pouvez a priori utiliser votre ordinateur uniquement avec un terminal. L'interface graphique n'est qu'un ajout sympathique mais non indispensable à l'utilisation d'n ordinateur. 
-
-Si vous voulez utiliser pleinement votre ordinateur, voir devenir informaticien/ne plus tard, il est important que vous sachiez vous en servir (en plus d'avoir cette petite sensation d'interagir directement avec la matrice lorsque l'on tape des commande en mode CLI). Donc autant l'utiliser le plus souvent possible histoire de s'habituer.
 
 ### exécution de l'interpréteur python
 
