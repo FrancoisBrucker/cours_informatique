@@ -1,6 +1,6 @@
 ---
 layout: page
-title:  naviguer dans un système de fichier
+title:  naviguer dans un système de fichiers
 tags: système fichiers terminal
 category: fichiers
 authors: 
