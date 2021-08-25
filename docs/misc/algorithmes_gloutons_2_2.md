@@ -10,13 +10,13 @@ authors: "François Brucker"
 
 ## But
 
-Montrer que, même s'ils ne réussissent pas toujorus à trouver la solution optimale, les algorithmes gloutons sont souvent des heuristiques bien pratiques.
+Montrer que, même s'ils ne réussissent pas toujours à trouver la solution optimale, les algorithmes gloutons sont souvent des heuristiques bien pratiques.
 
 
 
-> Une version [pdf pour les TDs]({{ "ressources/algorithmes_gloutons/latex/algorithmes_gloutons_2_2.pdf" }}) est disponible.
+> Une version [pdf pour les TDs]({{ "algorithmes_gloutons/latex/algorithmes_gloutons_2_2.pdf" }}) est disponible.
 
-> Le corrigé est [disponible]({% link cours/tronc_commun/algorithmes_gloutons_corrige_2_2.md %})
+> Le corrigé est [disponible]({% link misc/algorithmes_gloutons_corrige_2_2.md %})
 
 
 ## exercice 1 : le problème du voyageur de commerce

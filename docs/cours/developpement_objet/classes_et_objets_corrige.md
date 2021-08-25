@@ -9,7 +9,7 @@ author: "François Brucker"
 
 ## But
 
-Eléments de corrigé de la séance  [Classes et objets]({% link cours/mie/developpement_objet/classes_et_objets.md %}).
+Eléments de corrigé de la séance  [Classes et objets]({% link cours/developpement_objet/classes_et_objets.md %}).
 
 ## Elements de cours
 
@@ -27,7 +27,7 @@ Si un concept objet va à l'encontre de ce principe dans votre programme **NE L'
 
 Un objet est un bout de code auquel est associé :
 
-  - des fonctionnalités (des méthdoes) qui sont communes à tous els objets de sa classe
+  - des fonctionnalités (des méthodes) qui sont communes à tous les objets de sa classe
   - des choses à lui tout seul (des attributs) qui lui permettent de se différentier des autres objets de sa classe même s'il a les fonctionnalités. 
 
 Donc lorsque l'on crée un objet on crée le framework de tous les objets similaire : sa classe. Python utilise les *namespaces* (espaces de noms) pour savoir ce qui est appelé comme objet/méthode et ainsi utiliser le même code pour plusieurs objets.

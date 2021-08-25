@@ -17,5 +17,5 @@ Présentation et utilisation d'algorithmes permettant de parcourir efficacement 
 
 > Une version [pdf pour les TDs]({{ "ressources/TD2.pdf" }}) est disponible.
 
-> Le corrigé est [disponible]({% link cours/tronc_commun/parcours_graphes_corrige.md %})
+> Le corrigé est [disponible]({% link cours/graphes/parcours_graphes_corrige.md %})
 

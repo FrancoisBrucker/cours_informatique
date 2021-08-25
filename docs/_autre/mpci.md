@@ -2,10 +2,12 @@
 layout: page
 title:  "MPCI S2 : Programmation 2"
 category: cours
-tags: informatique cours 
 ---
 
 ## Introduction
+
+> TBD : cours 2020/2021. PAs à jour.
+{: .danger}
 
 Cours de programmation 2 en S2 MPCI.
 
@@ -68,8 +70,8 @@ Chaque séance, à partir de la deuxième, commence par un test de 15min qui por
 1. [le cours/ST]({% link cours/mpci/cours_5_classes_et_objets/1_cours_classes_et_objets.md %})
 2. [séance tableau]({% link cours/mpci/cours_5_classes_et_objets/2_exercices_classes_et_objets.md %})
 3. [le code]({% link cours/mpci/cours_5_classes_et_objets/3_code_classes_et_objets.md %})
-4. bonus : [test driven development]({% link cours/mie/developpement_objet/tdd_et_test_pattern.md %}) pour vous entraîner à programmer par les tests en utilisant des classes.
-5. si vous êtes chaud : [design patterns]({% link cours/mie/developpement_objet/design_patterns.md %}). Pour aller un peu plus loin dans le développement objet avec des design patterns.
+4. bonus : [test driven development]({% link cours/developpement_objet/tdd_et_test_pattern.md %}) pour vous entraîner à programmer par les tests en utilisant des classes.
+5. si vous êtes chaud : [design patterns]({% link cours/developpement_objet/design_patterns.md %}). Pour aller un peu plus loin dans le développement objet avec des design patterns.
 
 ### algorithmes gloutons
 
@@ -109,7 +111,7 @@ TBD
 
 #### tests
 
-Si les tests ne sont pas révélé alors que vous avez des fichiers de tests. regardez les messages d'erreurs (où ?). SOuvent c'est du au fait qu'au moins un fichier de test ne peut être lu à cause d'erreurs (de syntaxe, d'import qui ne fonctionnent pas, ...)
+Si les tests ne sont pas révélé alors que vous avez des fichiers de tests. regardez les messages d'erreurs (où ?). Souvent c'est du au fait qu'au moins un fichier de test ne peut être lu à cause d'erreurs (de syntaxe, d'import qui ne fonctionnent pas, ...)
 
 #### bases de python
 

@@ -8,7 +8,7 @@ author: "François Brucker"
 
 ## But
 
-Eléments de corrigé de la séance  [programmation événementielle]({% link cours/mie/developpement_objet/programmation_evenementielle.md %}).
+Eléments de corrigé de la séance  [programmation événementielle]({% link cours/developpement_objet/programmation_evenementielle.md %}).
 
 ## Elements de cours
 

@@ -12,7 +12,7 @@ Séance consacrée aux [design patterns](https://fr.wikipedia.org/wiki/Patron_de
 
 Comme ce cours est dispensé en utilisant le langage python, on utilisera beaucoup le typage dynamique de celui-ci pour ces exemples (appelé [duck typing](http://sametmax.com/quest-ce-que-le-duck-typing-et-a-quoi-ca-sert/), mais les design pattern fonctionnent quelques soient le langage utilisé (ils ont d'ailleurs [initialement été écrits](https://fr.wikipedia.org/wiki/Design_Patterns) pour le C++).
 
-> **Elements de corrigé :** Ils sont disponibles [là]({% link cours/mie/developpement_objet/design_patterns_corrige.md %}). Cependant, ils ne dispensent pas d'aller en cours, c'est une aide à la compréhension.
+> **Elements de corrigé :** Ils sont disponibles [là]({% link cours/developpement_objet/design_patterns_corrige.md %}). Cependant, ils ne dispensent pas d'aller en cours, c'est une aide à la compréhension.
 
 
 ## Les bases

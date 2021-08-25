@@ -11,7 +11,7 @@ author: "François Brucker"
 Le but de cette séance est de consolider les concepts fondamentaux de classe et d'objet et d'ajouter les notions de
 composition, d'agrégation et d'attributs de classe. Vous (re)découvrirez aussi les tests unitaires.
 
-> **Elements de corrigé :** Ils sont disponibles [là]({% link cours/mie/developpement_objet/composition_et_agregation_corrige.md %}). Cependant, ils ne dispensent pas d'aller en cours, c'est une aide à la compréhension.
+> **Elements de corrigé :** Ils sont disponibles [là]({% link cours/developpement_objet/composition_et_agregation_corrige.md %}). Cependant, ils ne dispensent pas d'aller en cours, c'est une aide à la compréhension.
 
 
 ## Séance tableau

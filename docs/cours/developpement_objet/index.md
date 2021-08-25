@@ -53,13 +53,13 @@ La partie code de la séance 4 sera également noté en groupe.
   
 ## Séances
 
-  - [Installation d'un environnement d'installation]({% link cours/mie/developpement_objet/installation_environnement_developpement.md %})
-  - [Classes et objets]({% link cours/mie/developpement_objet/classes_et_objets.md %})
-  - [Composition et agrégation]({% link cours/mie/developpement_objet/composition_et_agregation.md %})
-  - [Héritage]({% link cours/mie/developpement_objet/heritage.md %})
-  - [UI et programmation événementielle]({% link cours/mie/developpement_objet/programmation_evenementielle.md %})
+  - [Installation d'un environnement d'installation]({% link cours/developpement_objet/installation_environnement_developpement.md %})
+  - [Classes et objets]({% link cours/developpement_objet/classes_et_objets.md %})
+  - [Composition et agrégation]({% link cours/developpement_objet/composition_et_agregation.md %})
+  - [Héritage]({% link cours/developpement_objet/heritage.md %})
+  - [UI et programmation événementielle]({% link cours/developpement_objet/programmation_evenementielle.md %})
   
 ## Bonus 
 
- - [test driven development]({% link cours/mie/developpement_objet/tdd_et_test_pattern.md %}) pour vous entraîner à programmer par les tests.
- - [design patterns]({% link cours/mie/developpement_objet/design_patterns.md %}). Pour aller un peu plus loin dans le développement objet avec des design patterns.
+ - [test driven development]({% link cours/developpement_objet/tdd_et_test_pattern.md %}) pour vous entraîner à programmer par les tests.
+ - [design patterns]({% link cours/developpement_objet/design_patterns.md %}). Pour aller un peu plus loin dans le développement objet avec des design patterns.

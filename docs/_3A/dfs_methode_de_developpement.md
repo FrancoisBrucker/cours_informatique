@@ -1,8 +1,7 @@
 ---
 layout: page
-title:  "DFS : méthodes de développement"
+title:  "MD2 : web serveur"
 category: cours
-tags: combat web
 ---
 
 ## Introduction

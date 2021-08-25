@@ -14,9 +14,10 @@ Il a pour principal objectif d'allumer la petite flamme de l'intrêt pour cette 
 
 Le cours va être séparé en petites entités qui se suivent pour former un tout qu'on espère cohérent.
 
-## Plan du cours
+> TBD : ajouter les algos gloutons graphes de misc en exos
+{: .danger}
 
-Ce cours est la partie introductive d'un [cours plus vaste]({% link cours/graphes/theorie_des_graphes.md %}), donné en 3A.
+## Plan du cours
 
 1. [bases]({% link cours/graphes/bases.md %})
 2. [encodage de graphes]({% link cours/graphes/encodage_graphes.md %})
