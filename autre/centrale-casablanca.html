@@ -13,11 +13,11 @@
 <meta property="og:url" content="/cours_informatique/autre/centrale-casablanca.html" />
 <meta property="og:site_name" content="cours d’informatique" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2021-08-24T10:48:36+00:00" />
+<meta property="article:published_time" content="2021-08-25T10:17:17+00:00" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Centrale Casablanca : programmation objet en python" />
 <script type="application/ld+json">
-{"description":"Introduction","datePublished":"2021-08-24T10:48:36+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"/cours_informatique/autre/centrale-casablanca.html"},"@type":"BlogPosting","url":"/cours_informatique/autre/centrale-casablanca.html","headline":"Centrale Casablanca : programmation objet en python","dateModified":"2021-08-24T10:48:36+00:00","@context":"https://schema.org"}</script>
+{"description":"Introduction","datePublished":"2021-08-25T10:17:17+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"/cours_informatique/autre/centrale-casablanca.html"},"@type":"BlogPosting","url":"/cours_informatique/autre/centrale-casablanca.html","headline":"Centrale Casablanca : programmation objet en python","dateModified":"2021-08-25T10:17:17+00:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
@@ -62,7 +62,7 @@
   <div class="post-content">
     <h2 id="introduction">Introduction</h2>
 
-<p>Cours de programmation 2 en S2 MPCI.</p>
+<p>Cours de programmation objet.</p>
 
 <p>Est organisée en 3 types d’enseignements :</p>
 
@@ -84,124 +84,74 @@
   </li>
 </ul>
 
-<p>Les divers contrôles intermédiaires seront à rendre directement sur <a href="https://ametice.univ-amu.fr/course/view.php?id=70937">ametice</a>.</p>
+<blockquote class="danger">
+  <p>TBD : en chantier
+on va utiliser le cours de <a href="/cours_informatique/cours/developpement_objet/">MCO</a></p>
+</blockquote>
 
 <h2 id="séances">Séances</h2>
 
-<p>Chaque séance, à partir de la deuxième, commence par un test de 15min qui porte sur le cours précédent. Ce test sera à rendre sur <a href="https://ametice.univ-amu.fr/course/view.php?id=70937">ametice</a>.</p>
-
-<ul>
-  <li>vendredi 4h : <strong>C,M</strong> suivi d’un <strong>SM</strong> : <a href="#pratiques-de-développement-et-développements-pratique">pratiques de développement et développements pratique</a>.</li>
-  <li>mercredi 2h : <strong>C,M</strong> : <a href="#complexité-et-preuve">complexité et preuve</a></li>
-  <li>
-    <p>vendredi 4h : <strong>ST</strong> suivi d’un <strong>SM</strong> : <a href="#exponentiation-rapide">exponentiation rapide</a></p>
+<ol>
+  <li>prérequis
+    <ol>
+      <li>outils
+        <ol>
+          <li>python installé sur son ordinateur et  qui fonctionne
+            <ul>
+              <li>exécute l’interpréteur</li>
+              <li>exécute un scripte en se plaçant au bon endroit</li>
+              <li>installe une bibliothèque avec pip et on vérifie avec l’interpréteur que ça fonctionne</li>
+            </ul>
+          </li>
+          <li>vsc d’installé et qui fonctionne.
+            <ul>
+              <li>écrire, sauver et retrouver un fichier texte</li>
+              <li>installation de plugins comme :
+                <ul>
+                  <li>le correcteur orthographique</li>
+                  <li>coloration syntaxique markdown</li>
+                  <li>sauve tout seul</li>
+                </ul>
+              </li>
+              <li>différence entre workspace et user et savoir retrouver et lire les préférences</li>
+            </ul>
+          </li>
+          <li>vsc et python ok
+            <ul>
+              <li>plugin python installé et exécution d’un script python ok</li>
+              <li>installation des QOL comme :
+                <ul>
+                  <li>linter,</li>
+                  <li>black.</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ol>
+      </li>
+      <li>pratique de python
+        <ul>
+          <li>avoir fait un tutorial python</li>
+          <li>connaitre les structures simple comme entier, réels, listes</li>
+          <li>savoir manipuler des liste avec des algorithmes simples</li>
+          <li>pouvoir installer et utiliser une bibliothèque comme numpy (ses arrays)</li>
+        </ul>
+      </li>
+    </ol>
   </li>
-  <li>mercredi 2h : <strong>C,M</strong> : <a href="#tris">tris</a></li>
-  <li>
-    <p>vendredi 4h : <strong>ST</strong> suivi d’un <strong>SM</strong> : <a href="#tris">tris</a></p>
+  <li>les dictionnaires
+    <ol>
+      <li>structure</li>
+      <li>utilisation</li>
+      <li>dictionnaire = première notion d’objet</li>
+      <li>espace de nommage en python avec des dictionnaires</li>
+    </ol>
   </li>
-  <li>mercredi 2h : <strong>DS</strong> devoir surveillé</li>
-  <li>
-    <p>vendredi 4h : <strong>C,M</strong> suivi d’un <strong>SM</strong> : <a href="#classes-et-objets">classes et objets</a></p>
-  </li>
-  <li>mercredi 2h : <strong>C,M</strong> <a href="#algorithmes-gloutons">algorithmes gloutons</a></li>
-  <li>
-    <p>vendredi 4h : <strong>ST</strong> <a href="#algorithmes-gloutons">algorithmes gloutons</a></p>
-  </li>
-  <li>mercredi 2h : <strong>DS</strong> examen final</li>
-</ul>
-
-<h2 id="plan-des-cours">Plan des cours</h2>
-
-<h3 id="pratiques-de-développement-et-développements-pratique">pratiques de développement et développements pratique</h3>
-
-<ol>
-  <li><a href="/cours_informatique/cours/mpci/cours_1_code/1_cours_algorithme_et_code.html">Algorithmie et code</a></li>
-  <li><a href="/cours_informatique/cours/mpci/cours_1_code/2_cours_pratiques_de_developpement.html">pratiques de développement</a></li>
-  <li><a href="/cours_informatique/cours/mpci/cours_1_code/3_cours_developpement_pratiques.html">développements pratiques</a></li>
-  <li><a href="/cours_informatique/cours/mpci/cours_1_code/4_a_vous_code.html">A vous</a></li>
+  <li>classes et objets en python</li>
+  <li>composition et agrégation d’objets</li>
+  <li>héritage</li>
 </ol>
 
-<h3 id="complexité-et-preuve">complexité et preuve</h3>
-
-<ol>
-  <li><a href="/cours_informatique/cours/mpci/cours_2_complexite_et_preuve/1_cours_complexite.html">complexité</a></li>
-  <li><a href="/cours_informatique/cours/mpci/cours_2_complexite_et_preuve/2_cours_preuve.html">preuve</a></li>
-</ol>
-
-<h3 id="exponentiation-rapide">exponentiation rapide</h3>
-
-<ol>
-  <li><a href="/cours_informatique/cours/mpci/cours_3_exponentiation_rapide/1_cours_exponentiation_rapide.html">Algorithme de l’exponentiation rapide</a></li>
-  <li><a href="/cours_informatique/cours/mpci/cours_3_exponentiation_rapide/2_code_exponentiation_rapide.html">Code de l’exponentiation rapide</a></li>
-</ol>
-
-<h3 id="tris">tris</h3>
-
-<ol>
-  <li><a href="/cours_informatique/cours/mpci/cours_4_tris/1_cours_tris.html">les tris</a></li>
-  <li><a href="/cours_informatique/cours/mpci/cours_4_tris/2_code_tris.html">session de code sur les tris</a></li>
-</ol>
-
-<h3 id="classes-et-objets">classes et objets</h3>
-
-<ol>
-  <li><a href="/cours_informatique/cours/mpci/cours_5_classes_et_objets/1_cours_classes_et_objets.html">le cours/ST</a></li>
-  <li><a href="/cours_informatique/cours/mpci/cours_5_classes_et_objets/2_exercices_classes_et_objets.html">séance tableau</a></li>
-  <li><a href="/cours_informatique/cours/mpci/cours_5_classes_et_objets/3_code_classes_et_objets.html">le code</a></li>
-  <li>bonus : <a href="/cours_informatique/cours/mie/developpement_objet/tdd_et_test_pattern.html">test driven development</a> pour vous entraîner à programmer par les tests en utilisant des classes.</li>
-  <li>si vous êtes chaud : <a href="/cours_informatique/cours/mie/developpement_objet/design_patterns.html">design patterns</a>. Pour aller un peu plus loin dans le développement objet avec des design patterns.</li>
-</ol>
-
-<h3 id="algorithmes-gloutons">algorithmes gloutons</h3>
-
-<ol>
-  <li><a href="/cours_informatique/cours/mpci/cours_6_gloutons/1_cours_gloutons.html">cours</a></li>
-  <li><a href="/cours_informatique/cours/mpci/cours_6_gloutons/2_code_gloutons.html">le code</a></li>
-</ol>
-
-<h2 id="tests">tests</h2>
-
-<ol>
-  <li>code : <a href="/cours_informatique/cours/mpci/tests/2020_2021/1_test_sujet.html">sujet</a> et <a href="/cours_informatique/cours/mpci/tests/2020_2021/1_test_corrige.html">corrigé</a></li>
-  <li>complexité : <a href="/cours_informatique/cours/mpci/tests/2020_2021/2_test_sujet.html">sujet</a> et <a href="/cours_informatique/cours/mpci/tests/2020_2021/2_test_corrige.html">corrigé</a></li>
-  <li>preuve : <a href="/cours_informatique/cours/mpci/tests/2020_2021/3_test_sujet.html">sujet</a> et <a href="/cours_informatique/cours/mpci/tests/2020_2021/3_test_corrige.html">corrigé</a></li>
-  <li><a href="/cours_informatique/cours/mpci/tests/2020_2021/4_ds_corrige.html">DS (sujet et corrigé)</a></li>
-  <li>modélisation : <a href="/cours_informatique/cours/mpci/tests/2020_2021/5_test_sujet.html">sujet</a> et <a href="/cours_informatique/cours/mpci/tests/2020_2021/5_test_corrige.html">corrigé</a></li>
-  <li>gloutons : <a href="/cours_informatique/cours/mpci/tests/2020_2021/6_test_sujet.html">sujet</a> et <a href="/cours_informatique/cours/mpci/tests/2020_2021/6_test_corrige.html">corrigé</a></li>
-</ol>
-
-<h2 id="misc">Misc</h2>
-
-<h3 id="tuto-visual-studio-code">tuto visual studio code</h3>
-
-<p><a href="https://code.visualstudio.com/docs/editor/codebasics">https://code.visualstudio.com/docs/editor/codebasics</a></p>
-
-<h3 id="tuto-markdown">Tuto markdown</h3>
-
-<p><a href="/cours_informatique/cours/tuto/format_markdown.html">Le format markdown</a></p>
-
-<h3 id="tuto-python">tuto python</h3>
-
-<p>TBD</p>
-
-<h4 id="eval">eval</h4>
-
-<h4 id="import">import</h4>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">import truc</code> et pas <code class="language-plaintext highlighter-rouge">import truc.py</code></li>
-  <li>qu’est ce que <em>“<strong>pycache</strong>”</em> ?</li>
-  <li>si on fait <code class="language-plaintext highlighter-rouge">from toto import toto</code> <code class="language-plaintext highlighter-rouge">toto</code>n’est plus le fichier <em>“toto.py”</em> mais le nom importé. SI ensuite on fait <code class="language-plaintext highlighter-rouge">from toto import tata</code> ça va planter.</li>
-</ul>
-
-<h4 id="tests-1">tests</h4>
-
-<p>Si les tests ne sont pas révélé alors que vous avez des fichiers de tests. regardez les messages d’erreurs (où ?). SOuvent c’est du au fait qu’au moins un fichier de test ne peut être lu à cause d’erreurs (de syntaxe, d’import qui ne fonctionnent pas, …)</p>
-
-<h4 id="bases-de-python">bases de python</h4>
-
-<p>listes, variables etc.</p>
 
   </div>
 
