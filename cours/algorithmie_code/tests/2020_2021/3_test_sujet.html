@@ -3,20 +3,19 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>Les cours | cours d’informatique</title>
+<title>sujet Test 3 : preuve | cours d’informatique</title>
 <meta name="generator" content="Jekyll v4.2.0" />
-<meta property="og:title" content="Les cours" />
-<meta name="author" content="François Brucker" />
+<meta property="og:title" content="sujet Test 3 : preuve" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
 <meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
-<link rel="canonical" href="/cours_informatique/cours/" />
-<meta property="og:url" content="/cours_informatique/cours/" />
+<link rel="canonical" href="/cours_informatique/cours/algorithmie_code/tests/2020_2021/3_test_sujet.html" />
+<meta property="og:url" content="/cours_informatique/cours/algorithmie_code/tests/2020_2021/3_test_sujet.html" />
 <meta property="og:site_name" content="cours d’informatique" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Les cours" />
+<meta property="twitter:title" content="sujet Test 3 : preuve" />
 <script type="application/ld+json">
-{"description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","author":{"@type":"Person","name":"François Brucker"},"url":"/cours_informatique/cours/","headline":"Les cours","@context":"https://schema.org"}</script>
+{"description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/algorithmie_code/tests/2020_2021/3_test_sujet.html","headline":"sujet Test 3 : preuve","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
@@ -55,28 +54,49 @@
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Les cours</h1></p>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></p>
+    <h1 class="post-title">sujet Test 3 : preuve</h1></p></p>
   </header>
 
   <div class="post-content">
-    <h2 id="plan">Plan</h2>
+    <h2 id="1-suppression-de-valeur">1. suppression de valeur</h2>
 
-<p>Liste des différents cours. La plupart de ceux-ci sont enseignés par bouts dans les différentes années.</p>
-
-<h2 id="liste">Liste</h2>
-
-<blockquote class="danger">
-  <p>TBD</p>
-</blockquote>
+<p>Donnez la complexité et prouvez  que l’algorithme suivant rend  une liste <code class="language-plaintext highlighter-rouge">L2</code>, restriction de L aux valeurs différentes de val.</p>
 
 <ul>
-  <li><a href="/cours_informatique/cours/web/">web</a></li>
-  <li><a href="/cours_informatique/cours/graphes/">graphes</a></li>
-  <li><a href="/cours_informatique/cours/developpement_objet/">développement objet en python</a></li>
-  <li><a href="/cours_informatique/cours/algorithmie_code/">introduction au code et à l’algorithmie</a></li>
-  <li>analyse des données</li>
+  <li><strong>Données</strong> : <code class="language-plaintext highlighter-rouge">val</code> une valeur et <code class="language-plaintext highlighter-rouge">L</code> une liste de n valeurs</li>
+  <li><strong>Début</strong> :
+    <ul>
+      <li>création d’une liste <code class="language-plaintext highlighter-rouge">L2</code> vide</li>
+      <li>pour chaque élément <code class="language-plaintext highlighter-rouge">x</code> de L:
+        <ul>
+          <li>si <code class="language-plaintext highlighter-rouge">x </code>≠ <code class="language-plaintext highlighter-rouge">val</code>: ajoute <code class="language-plaintext highlighter-rouge">x</code> à la fin de <code class="language-plaintext highlighter-rouge">L2</code></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Rendre</strong> : <code class="language-plaintext highlighter-rouge">L2</code></li>
 </ul>
 
+<h2 id="2-suppression-de-doublon">2. suppression de doublon</h2>
+
+<p>Donnez la complexité et prouvez que l’algorithme suivant retourne une liste <code class="language-plaintext highlighter-rouge">L2</code> ne contenant qu’une seule occurrence de chaque valeur de <code class="language-plaintext highlighter-rouge">L</code>, en conservant le même ordre.</p>
+
+<ul>
+  <li><strong>Données</strong> : <code class="language-plaintext highlighter-rouge">L</code> une liste de n valeurs</li>
+  <li><strong>Début</strong> :
+    <ul>
+      <li>création d’une liste <code class="language-plaintext highlighter-rouge">L2</code> vide</li>
+      <li>tant que  <code class="language-plaintext highlighter-rouge">L</code> est non vide:
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">x</code> = <code class="language-plaintext highlighter-rouge">L</code>[0]</li>
+          <li>ajoute <code class="language-plaintext highlighter-rouge">x</code> à <code class="language-plaintext highlighter-rouge">L2</code></li>
+          <li><code class="language-plaintext highlighter-rouge">L</code> = algorithme-question-1(L, x)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Rendre</strong> : <code class="language-plaintext highlighter-rouge">L2</code></li>
+</ul>
 
   </div>
 

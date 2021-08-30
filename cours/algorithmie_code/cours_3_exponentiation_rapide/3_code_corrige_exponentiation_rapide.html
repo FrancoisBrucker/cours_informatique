@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Code Exponentiation rapide | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Code Exponentiation rapide" />
+<meta name="author" content="François Brucker" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
+<link rel="canonical" href="/cours_informatique/cours/algorithmie_code/cours_3_exponentiation_rapide/3_code_corrige_exponentiation_rapide.html" />
+<meta property="og:url" content="/cours_informatique/cours/algorithmie_code/cours_3_exponentiation_rapide/3_code_corrige_exponentiation_rapide.html" />
+<meta property="og:site_name" content="cours d’informatique" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Code Exponentiation rapide" />
+<script type="application/ld+json">
+{"description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","author":{"@type":"Person","name":"François Brucker"},"url":"/cours_informatique/cours/algorithmie_code/cours_3_exponentiation_rapide/3_code_corrige_exponentiation_rapide.html","headline":"Code Exponentiation rapide","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css">
+
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Code Exponentiation rapide</h1></p>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></p>
+  </header>
+
+  <div class="post-content">
+    <h1 id="introduction">introduction</h1>
+
+<p>Vous allez implémenter les 2 algorithmes en vrai et en python.</p>
+
+<p>Vous vous concentrerez  sur 3 points :</p>
+
+<ul>
+  <li>on veut que notre code soit juste</li>
+  <li>on veut pouvoir le modifier/ajouter des fonctionnalités rapidement</li>
+  <li>on veut pouvoir partager notre code avec soit-même dans d’autres projet, son équipe ou le monde)</li>
+</ul>
+
+<h2 id="le-projet-exponentiation">le projet exponentiation.</h2>
+
+<p>suivez le guide.</p>
+
+<h3 id="crée-la-structure-du-projet">crée la structure du projet.</h3>
+
+<ul>
+  <li>on crée le projet dans le bon dossier</li>
+  <li>on choisi son interpréteur. Nous allons utiliser un <code class="language-plaintext highlighter-rouge">system interpreter</code> mais libre à vous de faire un environnement virtuel.</li>
+  <li>on crée fichier <code class="language-plaintext highlighter-rouge">exponentielle.py</code> et on met : <code class="language-plaintext highlighter-rouge">print("Bonjour monde !")</code> dedans</li>
+  <li>on crée une configuration pour exécuter notre programme principal et, mentalement, on note le raccourci clavier.</li>
+</ul>
+
+<p>On teste que si l’on exécute la configuration, il y a bien <code class="language-plaintext highlighter-rouge">bonjour monde !</code> qui s’affiche</p>
+
+<h3 id="le-code">le code</h3>
+
+<p>On peut maintenant recopier le code de nos deux méthodes dans <code class="language-plaintext highlighter-rouge">exponentielle.py</code>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">simple</span><span class="p">(</span><span class="n">nombre</span><span class="p">,</span> <span class="n">exposant</span><span class="p">):</span>
+    <span class="n">resultat</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">compteur</span> <span class="o">=</span> <span class="n">exposant</span>
+
+    <span class="k">while</span> <span class="n">compteur</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">resultat</span> <span class="o">*=</span> <span class="n">nombre</span>
+        <span class="n">compteur</span> <span class="o">-=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">resultat</span>
+
+
+<span class="k">def</span> <span class="nf">rapide</span><span class="p">(</span><span class="n">nombre</span><span class="p">,</span> <span class="n">exposant</span><span class="p">):</span>
+    <span class="n">resultat</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">compteur</span> <span class="o">=</span> <span class="n">exposant</span>
+
+    <span class="k">while</span> <span class="n">compteur</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">compteur</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">resultat</span> <span class="o">*=</span> <span class="n">nombre</span>
+            <span class="n">compteur</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">nombre</span> <span class="o">*=</span> <span class="n">nombre</span>
+            <span class="n">compteur</span> <span class="o">/=</span> <span class="mi">2</span>
+
+    <span class="k">return</span> <span class="n">resultat</span>
+</code></pre></div></div>
+
+<h3 id="les-tests">les tests</h3>
+
+<p>On écrit les tests qui vérifient que ça marche. On pourra ajouter les petits tests effectués lors de la partie analyse du code.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">def</span> <span class="nf">tests</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">simple</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+    <span class="k">assert</span> <span class="n">simple</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>
+    <span class="k">assert</span> <span class="n">simple</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span> <span class="o">**</span> <span class="mi">4</span>
+    <span class="k">assert</span> <span class="n">rapide</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+    <span class="k">assert</span> <span class="n">rapide</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>
+    <span class="k">assert</span> <span class="n">rapide</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span> <span class="o">**</span> <span class="mi">4</span>
+</code></pre></div></div>
+
+<p><em>Nota Bene</em> :</p>
+
+<ul>
+  <li>code et test font parti d’un même ensemble. On ne peut pas avoir du code sans test</li>
+  <li>On a l’habitude d’utiliser les commandes <a href="https://www.tutorialspoint.com/python3/assertions_in_python.htm"><code class="language-plaintext highlighter-rouge">assert</code></a> pour les tests.</li>
+</ul>
+
+<p>Vérifiez que les tests <em>passent</em> : c’est à dire s’exécutent sans erreurs.</p>
+
+<blockquote>
+  <p>Pour cela, après avoir copié/collé la fonction on ajoute à notre programme la ligne <code class="language-plaintext highlighter-rouge">tests()</code> qui va l’exécuter.</p>
+</blockquote>
+
+<p>Ajoutez une erreur pour voir le programme planter.
+Pour l’instant tous os tests doivent être exécutés, et s’il y a une erreur le programme plante à la première erreur : s’il y a plusieurs erreurs, on ne le sais pas.</p>
+
+<p>On verra plus tard comment rendre ce processus automatique. Pour l’instant, on est rassuré, notre code fonctionne.</p>
+
+<h3 id="le-programme-principal">le programme principal</h3>
+
+<p>Maintenant que l’on est sûr que notre code fonctionne, on peut l’utiliser. Pour cela on a l’habitude de mettre cette utilisation dans  une fonction <code class="language-plaintext highlighter-rouge">main()</code> qui sera exécutée : c’est notre <strong>programme principal</strong>.</p>
+
+<p>On va créer une boucle de plus en plus grande qui donnera toutes les puissances de 2, calculées de façon simple et de façon rapide.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"simple :"</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">exposant</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2000</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"2 **"</span><span class="p">,</span> <span class="n">exposant</span><span class="p">,</span><span class="s">"="</span><span class="p">,</span> <span class="n">simple</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">exposant</span><span class="p">))</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="s">"rapide :"</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">exposant</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2000</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"2 **"</span><span class="p">,</span> <span class="n">exposant</span><span class="p">,</span><span class="s">"="</span><span class="p">,</span> <span class="n">rapide</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">exposant</span><span class="p">))</span>
+</code></pre></div></div>
+
+<h4 id="version-2-du-code">version 2 du code</h4>
+
+<p>Une fois la première version du code écrite, on va le regarder et voir ce qui pourrait être améliorer. Ceci est un <em>skill</em> qui se travaille. En progressant, vous allez améliorer votre <a href="https://fr.wikipedia.org/wiki/Code_smell">code smell</a></p>
+
+<p>Là, on pourrait déjà supprimer les <a href="https://en.wikipedia.org/wiki/Magic_number_(programming)#Unnamed_numerical_constants">magic numbers</a> pour que changer une variable nous change les exposants pour <code class="language-plaintext highlighter-rouge">simple</code> et <code class="language-plaintext highlighter-rouge">rapide</code></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">liste_exposants</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="s">"simple :"</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">exposant</span> <span class="ow">in</span> <span class="n">liste_exposants</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"2 **"</span><span class="p">,</span> <span class="n">exposant</span><span class="p">,</span> <span class="s">"="</span><span class="p">,</span> <span class="n">simple</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">exposant</span><span class="p">))</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="s">"rapide :"</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">exposant</span> <span class="ow">in</span> <span class="n">liste_exposants</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"2 **"</span><span class="p">,</span> <span class="n">exposant</span><span class="p">,</span> <span class="s">"="</span><span class="p">,</span> <span class="n">rapide</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">exposant</span><span class="p">))</span>
+</code></pre></div></div>
+
+<h3 id="jouons-avec-notre-code">jouons avec notre code</h3>
+
+<p>En changeant les valeurs de la liste on voit que la version simple va bien plus lentement que la version rapide.</p>
+
+<h2 id="complexité-en-temps">complexité en temps</h2>
+
+<p>mesurer le temps c’est pas simple parce que :</p>
+
+<ul>
+  <li>pas seul sur la machine, tous les programme actif s’exécutent souvent en même temps en se <a href="https://fr.wikipedia.org/wiki/Temps_partag%C3%A9">partageant du temps de processeur</a></li>
+  <li>python fait des trucs sans nous le dire, comme vérifier de temps en temps que les objets ont tous des noms et les supprimer s’ils n’en ont plus (on appelle ça un <a href="https://fr.wikipedia.org/wiki/Ramasse-miettes_(informatique)">ramasse miette</a>)</li>
+</ul>
+
+<p>Mais pour ce qui nous importe, on va dire que c’est pas grave parce que ça ne prend pas tellement de temps que ça. On va utiliser les fonctions simple du module <a href="https://docs.python.org/3/library/time.html">time</a>. Faisons une petite fonction de test pour voir comment on peut utiliser la mesure du temps dans notre programme.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">time</span>
+
+<span class="k">def</span> <span class="nf">test_temps</span><span class="p">():</span>
+    <span class="n">depart</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">time</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># ne fait rien pendant 2 secondes
+</span>    <span class="n">fin</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="n">fin</span> <span class="o">-</span> <span class="n">depart</span><span class="p">)</span>  <span class="c1"># doit afficher environ 2
+</span>
+<span class="n">test_temps</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>Que donne cette mesure pour nos algorithmes ? Est-ce que <code class="language-plaintext highlighter-rouge">rapide</code> est bien plus <code class="language-plaintext highlighter-rouge">efficace</code> que simple ?</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">mesure_temps_algorithmes</span><span class="p">():</span>
+    <span class="n">exposant</span> <span class="o">=</span> <span class="mi">200000</span>
+
+    <span class="n">depart</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">simple</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">exposant</span><span class="p">)</span>
+    <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="s">"simple"</span><span class="p">,</span> <span class="s">"exposant ="</span><span class="p">,</span> <span class="n">exposant</span><span class="p">,</span> <span class="s">"temps ="</span><span class="p">,</span> <span class="n">end</span><span class="o">-</span><span class="n">depart</span><span class="p">)</span>
+
+    <span class="n">depart</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">rapide</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">exposant</span><span class="p">)</span>
+    <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="s">"rapide"</span><span class="p">,</span> <span class="s">"exposant ="</span><span class="p">,</span> <span class="n">exposant</span><span class="p">,</span> <span class="s">"temps ="</span><span class="p">,</span> <span class="n">end</span><span class="o">-</span><span class="n">depart</span><span class="p">)</span>
+
+<span class="n">mesure_temps_algorithmes</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h2 id="dessin-des-complexité">dessin des complexité</h2>
+
+<p><a href="https://matplotlib.org/">https://matplotlib.org/</a></p>
+
+<p>On utilise matplotlib pour supperposer les 2 courbes.</p>
+
+<p>C’est peut-être la pire bibliothèque de dessin avec toutes ses options inconsistantes, ces façons de gérer les import folklorique (en tous les pas informaticienne) et ses exemples qui n’en sont pas mais bon si on cherche un pet on peut faire des choses assez jolies.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">liste_exposants</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">200000</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="s">"simple."</span><span class="p">)</span>
+    <span class="n">temps_simple</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">exposant</span> <span class="ow">in</span> <span class="n">liste_exposants</span><span class="p">:</span>
+        <span class="n">depart</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="n">simple</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">exposant</span><span class="p">)</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
+
+        <span class="n">delta</span> <span class="o">=</span> <span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">depart</span><span class="p">)</span>
+        <span class="n">temps_simple</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">delta</span><span class="p">)</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="s">"rapide."</span><span class="p">)</span>
+    <span class="n">temps_rapide</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">exposant</span> <span class="ow">in</span> <span class="n">liste_exposants</span><span class="p">:</span>
+        <span class="n">depart</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="n">rapide</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">exposant</span><span class="p">)</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
+
+        <span class="n">delta</span> <span class="o">=</span> <span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">depart</span><span class="p">)</span>
+        <span class="n">temps_rapide</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">delta</span><span class="p">)</span>
+
+    <span class="n">matplotlib</span><span class="p">.</span><span class="n">pyplot</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">liste_exposants</span><span class="p">,</span> <span class="n">temps_simple</span><span class="p">)</span>
+    <span class="n">matplotlib</span><span class="p">.</span><span class="n">pyplot</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">liste_exposants</span><span class="p">,</span> <span class="n">temps_rapide</span><span class="p">)</span>
+    <span class="n">matplotlib</span><span class="p">.</span><span class="n">pyplot</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>On voit que la complexité de l’algorithme simple rssemble à ne droite vers la fin et que la complexité de l’algorithme rapide à l’air tout plat en comparaison.</p>
+
+<p>Essayer de ne représenter que le temps de l’algorithme rapide pour voir si cela ressemble à ce que l’on devrait voir.</p>
+
+<h2 id="code-final">code final</h2>
+
+<p><em>Nota Bene</em> : L’ordre des import est important pour la lisibilité. On sépare les 3 blocs par des lignes vides.</p>
+
+<ol>
+  <li>ceux de python</li>
+  <li>les bibliothèque ajoutée mais qui ne sont pas de python (genre matplotlib)</li>
+  <li>les autre fichers de notre projet.</li>
+</ol>
+
+<p>On essaie de respecter la PEP8 au maximum pour avoir un code clair. Pycharm vous aide. Il souligne en jaune les fautes de goûts. Testez le en supprimant aprs une <code class="language-plaintext highlighter-rouge">,</code> ou en ajoutant des lignes vides un peu partout.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span>
+
+
+<span class="k">def</span> <span class="nf">simple</span><span class="p">(</span><span class="n">nombre</span><span class="p">,</span> <span class="n">exposant</span><span class="p">):</span>
+    <span class="n">resultat</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">compteur</span> <span class="o">=</span> <span class="n">exposant</span>
+
+    <span class="k">while</span> <span class="n">compteur</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">resultat</span> <span class="o">*=</span> <span class="n">nombre</span>
+        <span class="n">compteur</span> <span class="o">-=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">resultat</span>
+
+
+<span class="k">def</span> <span class="nf">rapide</span><span class="p">(</span><span class="n">nombre</span><span class="p">,</span> <span class="n">exposant</span><span class="p">):</span>
+    <span class="n">resultat</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">compteur</span> <span class="o">=</span> <span class="n">exposant</span>
+
+    <span class="k">while</span> <span class="n">compteur</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">compteur</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">resultat</span> <span class="o">*=</span> <span class="n">nombre</span>
+            <span class="n">compteur</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">nombre</span> <span class="o">*=</span> <span class="n">nombre</span>
+            <span class="n">compteur</span> <span class="o">/=</span> <span class="mi">2</span>
+
+    <span class="k">return</span> <span class="n">resultat</span>
+
+
+<span class="k">def</span> <span class="nf">tests</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">simple</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+    <span class="k">assert</span> <span class="n">simple</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>
+    <span class="k">assert</span> <span class="n">simple</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span> <span class="o">**</span> <span class="mi">4</span>
+    <span class="k">assert</span> <span class="n">rapide</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+    <span class="k">assert</span> <span class="n">rapide</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>
+    <span class="k">assert</span> <span class="n">rapide</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span> <span class="o">**</span> <span class="mi">4</span>
+
+
+<span class="k">def</span> <span class="nf">test_temps</span><span class="p">():</span>
+    <span class="n">depart</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">time</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">fin</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="n">fin</span> <span class="o">-</span> <span class="n">depart</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">mesure_temps_algorithmes</span><span class="p">():</span>
+    <span class="n">exposant</span> <span class="o">=</span> <span class="mi">200000</span>
+
+    <span class="n">depart</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">simple</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">exposant</span><span class="p">)</span>
+    <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="s">"simple"</span><span class="p">,</span> <span class="s">"exposant ="</span><span class="p">,</span> <span class="n">exposant</span><span class="p">,</span> <span class="s">"temps ="</span><span class="p">,</span> <span class="n">end</span><span class="o">-</span><span class="n">depart</span><span class="p">)</span>
+
+    <span class="n">depart</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">rapide</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">exposant</span><span class="p">)</span>
+    <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="s">"rapide"</span><span class="p">,</span> <span class="s">"exposant ="</span><span class="p">,</span> <span class="n">exposant</span><span class="p">,</span> <span class="s">"temps ="</span><span class="p">,</span> <span class="n">end</span><span class="o">-</span><span class="n">depart</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">liste_exposants</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">200000</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="s">"simple."</span><span class="p">)</span>
+    <span class="n">temps_simple</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">exposant</span> <span class="ow">in</span> <span class="n">liste_exposants</span><span class="p">:</span>
+        <span class="n">depart</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="n">simple</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">exposant</span><span class="p">)</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
+
+        <span class="n">delta</span> <span class="o">=</span> <span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">depart</span><span class="p">)</span>
+        <span class="n">temps_simple</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">delta</span><span class="p">)</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="s">"rapide."</span><span class="p">)</span>
+    <span class="n">temps_rapide</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">exposant</span> <span class="ow">in</span> <span class="n">liste_exposants</span><span class="p">:</span>
+        <span class="n">depart</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="n">rapide</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">exposant</span><span class="p">)</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
+
+        <span class="n">delta</span> <span class="o">=</span> <span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">depart</span><span class="p">)</span>
+        <span class="n">temps_rapide</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">delta</span><span class="p">)</span>
+
+    <span class="n">matplotlib</span><span class="p">.</span><span class="n">pyplot</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">liste_exposants</span><span class="p">,</span> <span class="n">temps_simple</span><span class="p">)</span>
+    <span class="n">matplotlib</span><span class="p">.</span><span class="n">pyplot</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">liste_exposants</span><span class="p">,</span> <span class="n">temps_rapide</span><span class="p">)</span>
+    <span class="n">matplotlib</span><span class="p">.</span><span class="n">pyplot</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># tests()
+# test_temps()
+# mesure_temps_algorithmes()
+</span>
+
+<span class="n">main</span><span class="p">()</span>
+
+</code></pre></div></div>
+
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d&#39;informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d&#39;informatique</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

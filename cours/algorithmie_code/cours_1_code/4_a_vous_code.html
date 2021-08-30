@@ -3,20 +3,20 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>Les cours | cours d’informatique</title>
+<title>à vous | cours d’informatique</title>
 <meta name="generator" content="Jekyll v4.2.0" />
-<meta property="og:title" content="Les cours" />
+<meta property="og:title" content="à vous" />
 <meta name="author" content="François Brucker" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
 <meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
-<link rel="canonical" href="/cours_informatique/cours/" />
-<meta property="og:url" content="/cours_informatique/cours/" />
+<link rel="canonical" href="/cours_informatique/cours/algorithmie_code/cours_1_code/4_a_vous_code.html" />
+<meta property="og:url" content="/cours_informatique/cours/algorithmie_code/cours_1_code/4_a_vous_code.html" />
 <meta property="og:site_name" content="cours d’informatique" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Les cours" />
+<meta property="twitter:title" content="à vous" />
 <script type="application/ld+json">
-{"description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","author":{"@type":"Person","name":"François Brucker"},"url":"/cours_informatique/cours/","headline":"Les cours","@context":"https://schema.org"}</script>
+{"description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","author":{"@type":"Person","name":"François Brucker"},"url":"/cours_informatique/cours/algorithmie_code/cours_1_code/4_a_vous_code.html","headline":"à vous","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
@@ -55,26 +55,59 @@
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Les cours</h1></p>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></p>
+    <h1 class="post-title">à vous</h1></p>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></p>
   </header>
 
   <div class="post-content">
-    <h2 id="plan">Plan</h2>
+    <h1 id="introduction">Introduction</h1>
 
-<p>Liste des différents cours. La plupart de ceux-ci sont enseignés par bouts dans les différentes années.</p>
+<p>Vous allez faire dans cette partie comme dans le cours : créer 3 fichiers pour résoudre un problème donné. Vous devrez vous focaliser sur :</p>
+<ul>
+  <li>la <strong>lisibilité</strong> de votre code : faire des noms de variables explicites (même si long) et découper vos algorithme en <em>petites fonctions</em> d’au plus 4 lignes.</li>
+  <li>les <strong>tests</strong> : toute fonction qeu vous écrirez doit être testée, avec autant de tests que nécessaire pour que vous soyez convaincu que cette fonction soit correcte.</li>
+</ul>
 
-<h2 id="liste">Liste</h2>
+<p>Vous devez <strong>toujours</strong> pouvoir exécuter vos tests :</p>
+<ul>
+  <li>seul le test de ce sur quoi vous travaillez peut être rouge, tous les autres doivent être vert</li>
+  <li>vous devez exécuter vos test</li>
+</ul>
 
-<blockquote class="danger">
-  <p>TBD</p>
+<h2 id="on-met-en-place-le-tout">on met en place le tout</h2>
+
+<p>Commencez par refaire vous même les 2 cours :</p>
+<ul>
+  <li>mise en Œuvre</li>
+  <li>projet complet</li>
+</ul>
+
+<p>Après avec fait <strong>et</strong> compris <strong>et</strong> que tout fonctionne, vous serez parés pour faire les 2 exercices.</p>
+
+<h2 id="exercice-1">exercice 1</h2>
+
+<p>Créez un projet qui permettent de trouver le plus grand élément d’une liste.</p>
+
+<p>Vous pourrez demander à l’utilisateur de rentrer une liste de nombres et utiliser la commande python <a href="https://docs.python.org/fr/3/library/functions.html#eval">eval</a> pour la transformer immédiatement en liste.</p>
+
+<h2 id="exercice-2">exercice 2</h2>
+
+<p>A partir de 2 listes de même taille composées de chiffres (entier de 0 à 9), rendez une autre liste de même taille contenant l’addition des deux listes passées en paramètre.</p>
+
+<blockquote>
+  <p><strong>Exemple</strong> : <code class="language-plaintext highlighter-rouge">addition([1, 2, 9], [2, 4, 9])</code> doit rendre <code class="language-plaintext highlighter-rouge">[3, 7, 8]</code>.</p>
 </blockquote>
 
+<p>Vous ferez attention :</p>
+
 <ul>
-  <li><a href="/cours_informatique/cours/web/">web</a></li>
-  <li><a href="/cours_informatique/cours/graphes/">graphes</a></li>
-  <li><a href="/cours_informatique/cours/developpement_objet/">développement objet en python</a></li>
-  <li><a href="/cours_informatique/cours/algorithmie_code/">introduction au code et à l’algorithmie</a></li>
-  <li>analyse des données</li>
+  <li>à la lisibilité :
+    <ul>
+      <li>les noms de vos variables et fonctions doivent être explicites</li>
+      <li>aucune fonction ne devra faire plus de 4 lignes (environs) et toutes les unité élémentaires de votre algorithmes devront être des fonctions.</li>
+    </ul>
+  </li>
+  <li>aux tests : que voulez vous tester ? Est-ce suffisant ?</li>
+  <li>les cas aux limites ?</li>
 </ul>
 
 

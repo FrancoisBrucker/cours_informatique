@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Complexité | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Complexité" />
+<meta name="author" content="François Brucker" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
+<link rel="canonical" href="/cours_informatique/cours/algorithmie_code/cours_2_complexite_et_preuve/1_cours_complexite.html" />
+<meta property="og:url" content="/cours_informatique/cours/algorithmie_code/cours_2_complexite_et_preuve/1_cours_complexite.html" />
+<meta property="og:site_name" content="cours d’informatique" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Complexité" />
+<script type="application/ld+json">
+{"description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","author":{"@type":"Person","name":"François Brucker"},"url":"/cours_informatique/cours/algorithmie_code/cours_2_complexite_et_preuve/1_cours_complexite.html","headline":"Complexité","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css">
+
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Complexité</h1></p>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></p>
+  </header>
+
+  <div class="post-content">
+    <h2 id="introduction">Introduction</h2>
+
+<p>On compte souvent (le nombre d’opération, la même prise, …) en utilisant les <em>grand O</em> : $\mathcal{O}$ .</p>
+
+<p><strong>Définition</strong> :
+Une fonction $g(N)$ est en $\mathcal{O}(f(N))$ s’il existe 2 constantes $c_0$ et $N_0$ tels que $g(N) &lt; c_0 f(N)$ pour tout $N &gt; N_0$.</p>
+
+<p>Cela permet :</p>
+
+<ul>
+  <li>d’avoir un majorant de notre comptage lorsque $N$ devient grand</li>
+  <li>de ne pas s’occuper des constantes puisque $\mathcal{O}(\mbox{constante}) = \mathcal{O}(1)$</li>
+  <li>de ne pas s’occuper de la proportionnalité $\mathcal{O}(\mbox{constante} * f(N)) = \mathcal{O}(f(N))$</li>
+</ul>
+
+<p>Ce qui plutôt intéressant en informatique car :</p>
+
+<ul>
+  <li>on veut voir l’évolution de la complexité par rapport à la taille des entrée</li>
+  <li>la complexité d’un algorithme est nichée dans les boucles pas dans les opérations successives qui ne dépendent pas des données
+    <ul>
+      <li>comme les suites d’instructions constantes</li>
+      <li>ou une succession constante de boucles (seule la boucle est importante).</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p><strong>Remarque</strong> : le nombre d’opérations d’un algorithme en grand O est proportionnel à sa durée</p>
+</blockquote>
+
+<h2 id="arithmétique-des-mathcalo-grand-o">arithmétique des $\mathcal{O}$ (grand O)</h2>
+
+<p>Par abus de langage, on dira que :</p>
+
+<ul>
+  <li>$f(N) = \mathcal{O}(g(N))$ plutôt que : “la fonction $f(N)$ est en $\mathcal{O}(g(N))$”.</li>
+  <li>$\mathcal{O}(f(N)) = \mathcal{O}(g(N))$ plutôt que “une fonction en $\mathcal{O}(f(N))$ est également en $\mathcal{O}(g(N))$”.</li>
+</ul>
+
+<p>On a alors les règles suivantes :</p>
+
+<ul>
+  <li>$N^p = \mathcal{O}(N^q)$ pour $q \geq p$</li>
+  <li>$\mathcal{O}(1) = \mathcal{O}(2)$</li>
+  <li>$\mathcal{O}(f(N)) + \mathcal{O}(g(N)) = \mathcal{O}(f(N) + g(N))$</li>
+  <li>$\mathcal{O}(A*f(N)) = A * \mathcal{O}(f(N)) = \mathcal{O}(f(N))$</li>
+  <li>$f(N) * \mathcal{O}(g(N)) = \mathcal{O}(f(N)*g(N))$</li>
+</ul>
+
+<h3 id="exemple--quelle-est-la-différence-entre-mathcalon2--n3-et-mathcalon3">exemple : quelle est la différence entre $\mathcal{O}(N^2 + N^3)$ et $\mathcal{O}(N^3)$</h3>
+
+<p>On a
+$\mathcal{O}(N^2 + N^3) = \mathcal{O}(N^2) + \mathcal{O}(N^3)$.
+Comme $N^2$ est en $\mathcal{O}(N^3)$, $\mathcal{O}(N^2) + \mathcal{O}(N^3) = \mathcal{O}(N^3) + \mathcal{O}(N^3) = 2\mathcal{O}(N^3) = \mathcal{O}(N^3)$</p>
+
+<h2 id="nombre-dopérations-dun-algorithme">nombre d’opérations d’un algorithme</h2>
+
+<p>Pour un algorithme sa complexité désigne le <strong>nombre maximum d’opérations</strong> en notation $\mathcal{O}$ (grand O) par rapport aux <strong>entrées</strong>.</p>
+
+<p>Cette complexité est proportionnelle à la durée max, si l’on connaît le temps max mis pour faire 1 opération</p>
+
+<p>On peut aussi, compter le nombre de place mémoire maximum utilisée par l’algorithme par rapport aux entrées. On parle alors de <strong>complexité en mémoire</strong></p>
+
+<h3 id="quest-ce-quune-opération-">Qu’est-ce qu’une opération ?</h3>
+
+<p>C’est compliqué mais en gros c’est une <em>opération élémentaire</em> :</p>
+
+<ul>
+  <li>un test</li>
+  <li>une affectation</li>
+  <li>une opération arithmétique</li>
+</ul>
+
+<p>En vrai :</p>
+
+<ul>
+  <li>tout est fait <a href="https://ensiwiki.ensimag.fr/index.php?title=Constructions_de_base_en_assembleur_x86">avec des registres</a> et donc une somme deux deux entiers fait plus qu’une opération en assembleur</li>
+  <li>personne ne sait vraiment combien de temps va prendre une opération à cause des optimisations du processeur</li>
+</ul>
+
+<p>En revanche, ça prend un nombre maximum d’opérations qui est indépendant des données : c’est en $\mathcal{O}(1)$</p>
+
+<blockquote>
+  <p><strong>Attention</strong> : Toutes les autres opérations doivent être examinée, en particulier les méthodes d’objets qui peuvent prendre plus de temps.</p>
+</blockquote>
+
+<p>Exemple :</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">def</span> <span class="nf">imprime_majuscule</span><span class="p">(</span><span class="n">ma_chaine</span><span class="p">):</span>
+    <span class="n">ma_chaine_majuscule</span> <span class="o">=</span> <span class="n">ma_chaine</span><span class="p">.</span><span class="n">upper</span><span class="p">()</span> <span class="c1"># O(n) opérations où n est la longueur de la chaine
+</span>    <span class="k">print</span><span class="p">(</span><span class="n">ma_chaine_majuscule</span><span class="p">)</span> <span class="c1"># O(n) opérations
+</span></code></pre></div></div>
+
+<p>Attention cependant : dans l’exemple suivant, on manipule des constantes (la chaine est affectée et n’est pas un paramètre), tout est donc en $\mathcal{O}(1)$ :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ma_chaine</span> <span class="o">=</span> <span class="s">"c'est vraiment très intéressant !"</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ma_chaine</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="quest-ce-les-paramètres-dune-entrée-">Qu’est-ce les paramètres d’une entrée ?</h3>
+
+<p>Ca dépend. Le but est juste de lier les entrées au nombre d’entrée. Cela peut être :</p>
+
+<ul>
+  <li>un nombre passé en paramètre</li>
+  <li>la taille d’un conteneur comme un tableau</li>
+  <li>la place mémoire prise les entrées</li>
+  <li>…</li>
+</ul>
+
+<p>Dans nos cas, cela sera toujours presque évident de savoir de quoi dépend la complexité.</p>
+
+<h3 id="exemple-1--quelle-est-la-complexité-de-lalgorithme-suivant">exemple 1 : quelle est la complexité de l’algorithme suivant</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">total</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">de</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span> <span class="n">à</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span> <span class="n">faire</span> <span class="p">:</span>
+    <span class="n">de</span> <span class="n">j</span><span class="o">=</span><span class="mi">1</span>  <span class="n">à</span> <span class="n">n</span> <span class="n">faire</span> <span class="p">:</span>
+		<span class="n">total</span><span class="o">=</span><span class="n">total</span><span class="o">+</span><span class="mi">1</span>
+<span class="n">Rendre</span> <span class="n">total</span>
+</code></pre></div></div>
+
+<p>Cheminement de l’algorithme :</p>
+
+<ul>
+  <li>ligne 1 : une affectation, donc en temps constant, donc $\mathcal{O}(1)$</li>
+  <li>ligne 2 : une affectation (<code class="language-plaintext highlighter-rouge">i=1</code>) donc en $\mathcal{O}(1)$</li>
+  <li>ligne 3:  une affectation (<code class="language-plaintext highlighter-rouge">j=1</code>) donc en $\mathcal{O}(1)$</li>
+  <li>ligne 4 : une opération et une affectation, donc $\mathcal{O}(1) + \mathcal{O}(1)$</li>
+  <li>ligne 3:  une affectation (<code class="language-plaintext highlighter-rouge">j=2</code>) donc en $\mathcal{O}(1)$</li>
+  <li>ligne 4 : une opération et une affectation, donc $\mathcal{O}(1) + \mathcal{O}(1)$</li>
+  <li>…</li>
+  <li>ligne 3:  une affectation (<code class="language-plaintext highlighter-rouge">j=n</code>) donc en $\mathcal{O}(1)$</li>
+  <li>ligne 4 : une opération et une affectation, donc $\mathcal{O}(1) + \mathcal{O}(1)$</li>
+  <li>ligne 2 : une affectation (<code class="language-plaintext highlighter-rouge">i=2</code>) donc en $\mathcal{O}(1)$</li>
+  <li>ligne 3:  une affectation (<code class="language-plaintext highlighter-rouge">j=1</code>) donc en $\mathcal{O}(1)$</li>
+  <li>ligne 4 : une opération et une affectation, donc $\mathcal{O}(1) + \mathcal{O}(1)$</li>
+  <li>…</li>
+  <li>ligne 3:  une affectation (<code class="language-plaintext highlighter-rouge">j=n</code>) donc en $\mathcal{O}(1)$</li>
+  <li>ligne 4 : une opération et une affectation, donc $\mathcal{O}(1) + \mathcal{O}(1)$</li>
+  <li>…</li>
+  <li>ligne 2 : une affectation (<code class="language-plaintext highlighter-rouge">i=n-1</code>) donc en $\mathcal{O}(1)$</li>
+  <li>ligne 3:  une affectation (<code class="language-plaintext highlighter-rouge">j=1</code>) donc en $\mathcal{O}(1)$</li>
+  <li>ligne 4 : une opération et une affectation, donc $\mathcal{O}(1) + \mathcal{O}(1)$</li>
+  <li>…</li>
+  <li>ligne 3:  une affectation (<code class="language-plaintext highlighter-rouge">j=n</code>) donc en $\mathcal{O}(1)$</li>
+  <li>ligne 4 : une opération et une affectation, donc $\mathcal{O}(1) + \mathcal{O}(1)$</li>
+  <li>linge 4 : une affectation $\mathcal{O}(1)$</li>
+</ul>
+
+<p>On peut rassembler les boucles entres-elles :
+Donc l’algorithme :</p>
+
+<ul>
+  <li>ligne 1 : une affectation, donc en temps constant, donc $\mathcal{O}(1)$</li>
+  <li>ligne 2 : une affectation (de la variable i) donc en $\mathcal{O}(1)$ et un début de bloc qui sera effectué $n-1$ fois, donc de l’ordre de $\mathcal{O}(n)$ fois.</li>
+  <li>ligne 3:  une affectation (de la variable j) donc en $\mathcal{O}(1)$ et un début de bloc qui sera effectué $n-1$ fois, donc de l’ordre de $\mathcal{O}(n)$ fois.</li>
+  <li>ligne 4 : une affectation, donc en temps constant, donc $\mathcal{O}(1)$</li>
+  <li>ligne 5 : une affectation, donc en temps constant, donc $\mathcal{O}(1)$</li>
+</ul>
+
+<p>on a donc une complexité de :</p>
+
+\[\mathcal{O}(1) + \mathcal{O}(n) * (\mathcal{O}(1) + \mathcal{O}(n) * (\mathcal{O}(1) + \mathcal{O}(1))) + \mathcal{O}(1)\]
+
+<p>ceci vaut :</p>
+
+\[\mathcal{O}(2) + \mathcal{O}(n) * (\mathcal{O}(1) + \mathcal{O}(n) * \mathcal{O}(2))\]
+
+<p>Comme $\mathcal{O}(2) = \mathcal{O}(1)$ on a : 
+\(\mathcal{O}(1) + \mathcal{O}(n) * (\mathcal{O}(1) + \mathcal{O}(n) * \mathcal{O}(1))\)</p>
+
+<p>donc comme $\mathcal{O}(n) * \mathcal{O}(1) = \mathcal{O}(1 * n) = \mathcal{O}(n)$ :</p>
+
+\[\mathcal{O}(1) + \mathcal{O}(n) * (\mathcal{O}(1) + \mathcal{O}(n))\]
+
+<p>Donc : 
+\(\mathcal{O}(1) + \mathcal{O}(n) + \mathcal{O}(n^2)\)</p>
+
+<p>Comme \(\mathcal{O}(n^2 + n + 1) = \mathcal{O}(n^2)\)</p>
+
+<p>La complexité finale de l’algorithme est en : $\mathcal{O}(n^2)$</p>
+
+<p><strong>Règle de calcul simple :</strong></p>
+
+<ul>
+  <li>on multiplie le nombre de fois où on execute un bloc par la complexité du bloc.</li>
+  <li>on peut die qu’une suite d’instruction en $\mathcal{O}(1)$ est également en $\mathcal{O}(1)$</li>
+</ul>
+
+<h3 id="exemple-2--quelle-est-la-complexité-de-lalgorithme-suivant">exemple 2 : quelle est la complexité de l’algorithme suivant</h3>
+
+<p>Attention à la deuxième boucle. Est-ce important pour le résultat ?</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>total=0
+de i=1 à n-1 faire :
+    de j=i+1 à n faire :
+        total=total+1
+Rendre total
+</code></pre></div></div>
+<p>On va utiliser une autre règle que l’on va montrer par la pratique :</p>
+
+<blockquote>
+  <p>Si une boucle s’exécute un nombre variable de fois, mais que cette variation est croissante (respectivement décroissante), on peut considérer pour le calcul de la complexité qu’elle s’exécute à chaque fois  de l’ordre du maximum de fois.</p>
+</blockquote>
+
+<p>Ici, la boucle de la ligne 3 s’exécute un nombre variable de fois qui dépend de la valeur de $i$. Comme $i$ va croitre, le nombre de fois où cette boucle va s’exécuter va décroitre. Donc on peut dire qu’elle va s’exécuter de l’ordre de $\mathcal{O}(n)$ fois, exactement comme pour l’exemple 1.</p>
+
+<p>On peut donc estimer la complexité de l’algorithme à $\mathcal{O}(n^2)$ fois.</p>
+
+<p>On peut faire un calcul exact de la complexité pour vérifier.</p>
+
+<ul>
+  <li>ligne 1 : $\mathcal{O}(1)$</li>
+  <li>itération pour $i=1$:
+    <ul>
+      <li>une affectation $i=1$ : $\mathcal{O}(1)$</li>
+      <li>boucle pour $j=1$:
+  	* une affectation de $j$ :  $\mathcal{O}(1)$
+  	* la ligne 4 :  $\mathcal{O}(1)$
+  	* le tout $n-1$ fois</li>
+    </ul>
+  </li>
+  <li>itération pour $i=2$:
+    <ul>
+      <li>une affectation $i=2$ : $\mathcal{O}(1)$</li>
+      <li>boucle pour $j=2$:
+  	* une affectation de $j$ :  $\mathcal{O}(1)$
+  	* la ligne 4 :  $\mathcal{O}(1)$
+        <ul>
+          <li>le tout $n-2$ fois</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>…</li>
+  <li>itération pour $i=n-1$:
+    <ul>
+      <li>une affectation $i=n-1$ : $\mathcal{O}(1)$</li>
+      <li>boucle pour $j=n-1$:
+  	* une affectation de $j$ :  $\mathcal{O}(1)$
+  	* la ligne 4 :  $\mathcal{O}(1)$
+        <ul>
+          <li>le tout $1$ fois</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>ligne 5 : $\mathcal{O}(1)$</li>
+</ul>
+
+<p>Notre complexité totale est donc :</p>
+
+\[\mathcal{O}(1) + (\mathcal{O}(1) + (n-1) * (\mathcal{O}(1) + \mathcal{O}(1))) + 
+(\mathcal{O}(1) + (n-2) * (\mathcal{O}(1) + \mathcal{O}(1))) + \dots
+ + (\mathcal{O}(1) + (1) * (\mathcal{O}(1) + \mathcal{O}(1))) + \mathcal{O}(1)\]
+
+<p>comme $\mathcal{O}(1) + \mathcal{O}(1) = \mathcal{O}(1)$, on a :</p>
+
+\[\mathcal{O}(1) + (\mathcal{O}(1) + (n-1) * (\mathcal{O}(1))) + 
+(\mathcal{O}(1) + (n-2) * (\mathcal{O}(1))) + \dots
+ + (\mathcal{O}(1) + (1) * (\mathcal{O}(1))) + \mathcal{O}(1)\]
+
+\[\mathcal{O}(1) + ((n) * (\mathcal{O}(1))) + 
+((n-1) * (\mathcal{O}(1))) + \dots
+ + ((2) * (\mathcal{O}(1))) + \mathcal{O}(1)\]
+
+<p>et donc notre complexité vaut : 
+\(\mathcal{O}(1) + \sum_{1\leq i \leq n} i * \mathcal{O}(1)\)</p>
+
+<p>comme la somme des n premiers entiers vaut $(n+1)(n)/2$ notre complexité devient : 
+\(\mathcal{O}(1) + (n+1)(n)/2 * \mathcal{O}(1)\)</p>
+
+<p>Ce qui est de l’ordre de :</p>
+
+\[\mathcal{O}((n+1)(n)/2) = \mathcal{O}((1/2) * (n^2 +n)) = \mathcal{O}((n^2 +n)) = \mathcal{O}(n^2)\]
+
+<p>On retrouve bien le résultat attendu.</p>
+
+<h3 id="exemple-3--plus-grand-élément-dun-tableau-de-longueur-n">exemple 3 : plus grand élément d’un tableau de longueur $n$.</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">maximum</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="n">si</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span>
+        <span class="k">return</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">sinon</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">maximum</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>On vérifie bien que :</p>
+
+<ol>
+  <li>l’algorithme converge bien</li>
+  <li>il rend bien le maximum d’un tableau</li>
+</ol>
+
+<p>La complexité est définie par l’équation de récurrence $C(n) = \mathcal{O}(1) + C(n-1)$ et $C(0) =  \mathcal{O}(1)$</p>
+
+<p>En bornant le temps constant par $K$, on a l’équation de récurrence suivante : $C(N) = K + C(N-1)$</p>
+
+<p>$C(N) = K + K + C(N-2) = \dots = n * K + C(0) = (n+1) * K = \mathcal{O}(n)$</p>
+
+<h1 id="comparaisons-des-complexités">comparaisons des complexités</h1>
+
+<p>Un mauvais choix d’algorithme peut entraîner une différence très importante (facteur 100, 1000, etc.) alors que l’optimisation du code ne fait gagner a priori qu’un facteur 10 au mieux.</p>
+
+<p>Il existe souvent plusieurs algorithme pour résoudre un problème. De temps en temps un algorithme est meilleurs que tous les autres, mais souvent cela dépend du type de données en entrée (on le verra). Il est donc important non seulement de connaître les complexités des algorithmes pour choisir le meilleurs mais également de connaitre son cas d’utilisation.</p>
+
+<h2 id="temps-pour-résoudre-un-problème-de-taille-n">Temps pour résoudre un problème de taille $n$</h2>
+
+<p>Exemple d’évolution du temps de calcul par rapport à la complexité. En supposant, que l’on ait un ordinateur qui résout des problèmes de complexité $n$ en 0.01 ms pour des données de taille 10, on peut remplir le tableau ci-après.</p>
+
+<p>En colonnes le nombre $n$ de données, en lignes les complexités des algorithmes.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>complexité</th>
+      <th>10</th>
+      <th>20</th>
+      <th>30</th>
+      <th>40</th>
+      <th>50</th>
+      <th>60</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>$n$</td>
+      <td>0.01 ms</td>
+      <td>0.02 ms</td>
+      <td>0.03 ms</td>
+      <td>0.04 ms</td>
+      <td>0.05 ms</td>
+      <td>0.06 ms</td>
+    </tr>
+    <tr>
+      <td>$n^2$</td>
+      <td>0.1 ms</td>
+      <td>0.4 ms</td>
+      <td>0.9 ms</td>
+      <td>1.6 ms</td>
+      <td>2.5 ms</td>
+      <td>3.6 ms</td>
+    </tr>
+    <tr>
+      <td>$n^3$</td>
+      <td>1 ms</td>
+      <td>8 ms</td>
+      <td>27 ms</td>
+      <td>64 ms</td>
+      <td>125 ms</td>
+      <td>216 ms</td>
+    </tr>
+    <tr>
+      <td>$n^5$</td>
+      <td>1s</td>
+      <td>3.2 s</td>
+      <td>24.3 s</td>
+      <td>1.7 min</td>
+      <td>5.2 min</td>
+      <td>13 min</td>
+    </tr>
+    <tr>
+      <td>$2^n$</td>
+      <td>1 ms</td>
+      <td>1s</td>
+      <td>17.9 min</td>
+      <td>12.7 jours</td>
+      <td>35.7 ans</td>
+      <td>36600 ans</td>
+    </tr>
+    <tr>
+      <td>$3^n$</td>
+      <td>59 ms</td>
+      <td>58 min</td>
+      <td>6.5 ans</td>
+      <td>385500 ans</td>
+      <td>2x1010 ans</td>
+      <td>13x1016 siècles</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>L’évolution est dramatique plus la complexité augmente. Pour une complexité polynomiale, la croissance est encore maitrisée même s’il vaut mieux avoir une petite complexité pour traiter plus de données. Pour une complexité exponentielle ($2^n$ et $3^n$) la durée est tout simplement rédhibitoire.</p>
+
+<h2 id="nombre-de-problèmes-résolu-par-heure">Nombre de problèmes résolu par heure</h2>
+
+<p>En colonne la rapidité de la machine, en ligne le nombre de problème d’une complexité donné réalisé en 1 heure.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>complexité</th>
+      <th>machine actuelle</th>
+      <th>100x plus rapide</th>
+      <th>1000x plus rapide</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>$n$</td>
+      <td>N1</td>
+      <td>100xN1</td>
+      <td>1000xN1</td>
+    </tr>
+    <tr>
+      <td>$n^2$</td>
+      <td>N2</td>
+      <td>10xN2</td>
+      <td>31.6xN2</td>
+    </tr>
+    <tr>
+      <td>$n^3$</td>
+      <td>N3</td>
+      <td>4.64xN3</td>
+      <td>10xN3</td>
+    </tr>
+    <tr>
+      <td>$n^5$</td>
+      <td>N4</td>
+      <td>2.5xN4</td>
+      <td>3.98xN4</td>
+    </tr>
+    <tr>
+      <td>$2^n$</td>
+      <td>N5</td>
+      <td>N5+6.64</td>
+      <td>N5+9.97</td>
+    </tr>
+    <tr>
+      <td>$3^n$</td>
+      <td>N6</td>
+      <td>N6+4.19</td>
+      <td>N6+6.29</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>La encore, l’évolution est dramatique plus la complexité augmente. Pour des complexité polynomiales le nombre de problème augmente d’un facteur multiplicatif lorsque la vitesse augment, mais ce n’est pas le cas pour des complexités exponentielles. Pour ces problèmes, augmenter la vitesse de la machine ne change pas fondamentalement le nombre de problèmes que l’on peut résoudre.</p>
+
+<h2 id="trouver-un-élément-dans-un-tableauchaîne-de-caractère">trouver un élément dans un tableau/chaîne de caractère.</h2>
+
+<p>On cherche toujours le cas le pire. Dans des algorithmes dont le nombre d’opérations dépend de l’entrée on choisira des entrées maximisant le nombre d’opérations.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">est_dans_tableau</span><span class="p">(</span><span class="n">valeur</span><span class="p">,</span> <span class="n">tableau</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">tableau</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="n">valeur</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">True</span>
+	<span class="k">return</span> <span class="bp">False</span>
+</code></pre></div></div>
+
+<p>Dans l’algorithme ci-dessous la complexité est maximale pour deux cas :</p>
+
+<ul>
+  <li>l’élément recherché n’est pas dans le tableau</li>
+  <li>l’élément recherché est le dernier élément du tableau</li>
+</ul>
+
+<p>Car c’est là que l’on parcourt toute la boucle.</p>
+
+<p>complexité : on parcourt tout le tableau et l’interieur de la boucle est en $\mathcal{O}(1)$. La complexité au pire est donc de $\mathcal{O}(len(\mbox{tableau}))$</p>
+
+<p>On verra dans le cours sur les tris, qu’il existe encore d’autres notions de complexités : la <em>complexité minimale</em> et la <em>complexité en moyenne</em>.</p>
+
+<h2 id="structures">structures</h2>
+
+<blockquote>
+  <p><strong>TBD</strong> Exemple du tableau en regardant comment fonctionne la mémoire. Et les complexité de maintien de la structure.</p>
+</blockquote>
+
+<p>objet = place dans la mémoire</p>
+
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d&#39;informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d&#39;informatique</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
