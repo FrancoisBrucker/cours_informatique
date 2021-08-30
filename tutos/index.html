@@ -78,7 +78,15 @@
 
         var id = 0;
         
-        var cats = ["tutos","langage markdown"]
+        var cats = ["tutos","editeur","pycharm"]
+
+        id += 1;
+        var postDiv = document.getElementById(id);
+        postDiv.style.display = (selectedCategory == 'All' || cats.includes(selectedCategory)) 
+            ? 'unset' 
+            : 'none';
+        
+        var cats = ["tutos","langage","markdown"]
 
         id += 1;
         var postDiv = document.getElementById(id);
@@ -102,7 +110,7 @@
             ? 'unset' 
             : 'none';
         
-        var cats = ["tutos","python"]
+        var cats = ["tutos","python","installation","terminal"]
 
         id += 1;
         var postDiv = document.getElementById(id);
@@ -110,7 +118,7 @@
             ? 'unset' 
             : 'none';
         
-        var cats = ["tutos","python"]
+        var cats = ["tutos","python","langage"]
 
         id += 1;
         var postDiv = document.getElementById(id);
@@ -139,10 +147,22 @@
             <button id="CLI" onclick="filterUsingCategory(this.id)">CLI</button>
         
             
+            <button id="editeur" onclick="filterUsingCategory(this.id)">editeur</button>
+        
+            
             <button id="fichiers" onclick="filterUsingCategory(this.id)">fichiers</button>
         
             
-            <button id="langage markdown" onclick="filterUsingCategory(this.id)">langage markdown</button>
+            <button id="installation" onclick="filterUsingCategory(this.id)">installation</button>
+        
+            
+            <button id="langage" onclick="filterUsingCategory(this.id)">langage</button>
+        
+            
+            <button id="markdown" onclick="filterUsingCategory(this.id)">markdown</button>
+        
+            
+            <button id="pycharm" onclick="filterUsingCategory(this.id)">pycharm</button>
         
             
             <button id="python" onclick="filterUsingCategory(this.id)">python</button>
@@ -170,7 +190,46 @@
         <li id="1">
             
             <h3>
-                <a class="post-link" href="/cours_informatique/tutos/langage%20markdown/2021/08/30/format-markdown.html">
+                <a class="post-link" href="/cours_informatique/tutos/editeur/pycharm/2021/08/30/configuration-pycharm.html">
+                  Configuration Pycharm
+                </a>
+              </h3>
+              <div style="padding-left:20px;">
+                <div>
+                    catégories : 
+                    
+                    • <span class="post-meta">tutos</span>
+                    
+                    • <span class="post-meta">editeur</span>
+                    
+                    • <span class="post-meta">pycharm</span>
+                    
+                    • 
+                </div>
+                <div>
+                    tags : 
+                    
+                    • <span class="post-meta">python</span>
+                    
+                    • <span class="post-meta">anaconda</span>
+                    
+                    •
+                </div>
+                <p>
+                    <p>Le but de ce tutoriel est d’installer une distribution python avec <a href="https://www.anaconda.com/">anaconda</a> et l’IDE <a href="https://www.jetbrains.com/fr-fr/pycharm/">pycharm</a>. On suppose que vous avez déjà installé une distribution python avec anaconda.</p>
+
+                </p>
+                
+              </div>
+              
+                
+              
+        </li>
+        
+        <li id="2">
+            
+            <h3>
+                <a class="post-link" href="/cours_informatique/tutos/langage/markdown/2021/08/30/format-markdown.html">
                   Format markdown
                 </a>
               </h3>
@@ -180,7 +239,9 @@
                     
                     • <span class="post-meta">tutos</span>
                     
-                    • <span class="post-meta">langage markdown</span>
+                    • <span class="post-meta">langage</span>
+                    
+                    • <span class="post-meta">markdown</span>
                     
                     • 
                 </div>
@@ -204,7 +265,7 @@
               
         </li>
         
-        <li id="2">
+        <li id="3">
             
             <h3>
                 <a class="post-link" href="/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html">
@@ -247,7 +308,7 @@
               
         </li>
         
-        <li id="3">
+        <li id="4">
             
             <h3>
                 <a class="post-link" href="/cours_informatique/tutos/systeme/fichiers/2021/08/24/fichiers-navigation.html">
@@ -288,10 +349,10 @@
               
         </li>
         
-        <li id="4">
+        <li id="5">
             
             <h3>
-                <a class="post-link" href="/cours_informatique/tutos/python/2021/08/20/installation-de-python.html">
+                <a class="post-link" href="/cours_informatique/tutos/python/installation/terminal/2021/08/20/installation-de-python.html">
                   Installation de python
                 </a>
               </h3>
@@ -303,16 +364,14 @@
                     
                     • <span class="post-meta">python</span>
                     
+                    • <span class="post-meta">installation</span>
+                    
+                    • <span class="post-meta">terminal</span>
+                    
                     • 
                 </div>
                 <div>
                     tags : 
-                    
-                    • <span class="post-meta">installation</span>
-                    
-                    • <span class="post-meta">python</span>
-                    
-                    • <span class="post-meta">terminal</span>
                     
                     •
                 </div>
@@ -327,10 +386,10 @@
               
         </li>
         
-        <li id="5">
+        <li id="6">
             
             <h3>
-                <a class="post-link" href="/cours_informatique/tutos/python/2021/08/19/bases-de-python.html">
+                <a class="post-link" href="/cours_informatique/tutos/python/langage/2021/08/19/bases-de-python.html">
                   Bases de python
                 </a>
               </h3>
@@ -342,14 +401,12 @@
                     
                     • <span class="post-meta">python</span>
                     
+                    • <span class="post-meta">langage</span>
+                    
                     • 
                 </div>
                 <div>
                     tags : 
-                    
-                    • <span class="post-meta">langage</span>
-                    
-                    • <span class="post-meta">python</span>
                     
                     •
                 </div>
@@ -364,7 +421,7 @@
               
         </li>
         
-        <li id="6">
+        <li id="7">
             
             <h3>
                 <a class="post-link" href="/cours_informatique/tutos/python/tests%20unitaires/2021/08/01/tests-unitaires.html">

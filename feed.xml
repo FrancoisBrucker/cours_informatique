@@ -1,45 +1,54 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/cours_informatique/feed.xml" rel="self" type="application/atom+xml" /><link href="/cours_informatique/" rel="alternate" type="text/html" /><updated>2021-08-30T06:57:56+00:00</updated><id>/cours_informatique/feed.xml</id><title type="html">cours d’informatique</title><subtitle>Support de cours/td d'informatique à l'école centrale marseille.</subtitle><entry><title type="html">Format markdown</title><link href="/cours_informatique/tutos/langage%20markdown/2021/08/30/format-markdown.html" rel="alternate" type="text/html" title="Format markdown" /><published>2021-08-30T00:00:00+00:00</published><updated>2021-08-30T00:00:00+00:00</updated><id>/cours_informatique/tutos/langage%20markdown/2021/08/30/format-markdown</id><content type="html" xml:base="/cours_informatique/tutos/langage%20markdown/2021/08/30/format-markdown.html">&lt;p&gt;Une introduction au format markdown. C’est le langage que nous utiliserons majoritairement pour écrire les cours.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/cours_informatique/feed.xml" rel="self" type="application/atom+xml" /><link href="/cours_informatique/" rel="alternate" type="text/html" /><updated>2021-08-30T08:37:50+00:00</updated><id>/cours_informatique/feed.xml</id><title type="html">cours d’informatique</title><subtitle>Support de cours/td d'informatique à l'école centrale marseille.</subtitle><entry><title type="html">Format markdown</title><link href="/cours_informatique/tutos/langage/markdown/2021/08/30/format-markdown.html" rel="alternate" type="text/html" title="Format markdown" /><published>2021-08-30T00:00:00+00:00</published><updated>2021-08-30T00:00:00+00:00</updated><id>/cours_informatique/tutos/langage/markdown/2021/08/30/format-markdown</id><content type="html" xml:base="/cours_informatique/tutos/langage/markdown/2021/08/30/format-markdown.html">&lt;p&gt;Une introduction au format markdown. C’est le langage que nous utiliserons majoritairement pour écrire les cours.&lt;/p&gt;
 
 &lt;!--more--&gt;
 
 &lt;h2 id=&quot;quest-ce-&quot;&gt;Qu’est-ce ?&lt;/h2&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://fr.wikipedia.org/wiki/Markdown&quot;&gt;Markdown&lt;/a&gt; est un format de fichier texte, donc éditable par tout éditeur de texte. L’extension de fichier est &lt;em&gt;“.md”&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://fr.wikipedia.org/wiki/Markdown&quot;&gt;Markdown&lt;/a&gt; est un format de fichier texte, donc modifiable par tout éditeur de texte. L’extension de fichier est &lt;em&gt;“.md”&lt;/em&gt;.&lt;/p&gt;
 
 &lt;p&gt;Il est facilement lisible dans un éditeur de texte, et il existe de nombreuses façon de l’exporter que ce soit en html (pour l’ouvrir avec un navigateur comme chrome ou firefox) ou en pdf.&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;Tout ce site a par exemple été écrit en markdown puis transformé en html grace à &lt;a href=&quot;https://jekyllrb.com/&quot;&gt;jekyll&lt;/a&gt;. Le code source du site est &lt;a href=&quot;https://github.com/FrancoisBrucker/cours_informatique&quot;&gt;visible&lt;/a&gt;, en particulier le code source de &lt;a href=&quot;https://github.com/FrancoisBrucker/cours_informatique/blob/master/docs/tutos/_posts/2021-08-30-format-markdown.md&quot;&gt;ce fichier&lt;/a&gt; (cliquez sur le bouton &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;raw&lt;/code&gt; à droite, juste avant que le fichier ne soit représenté).&lt;/p&gt;
+  &lt;p&gt;Tout ce site a par exemple été écrit en markdown puis transformé en html grâce à &lt;a href=&quot;https://jekyllrb.com/&quot;&gt;jekyll&lt;/a&gt;. Le code source du site est &lt;a href=&quot;https://github.com/FrancoisBrucker/cours_informatique&quot;&gt;visible&lt;/a&gt;, en particulier le code source de &lt;a href=&quot;https://github.com/FrancoisBrucker/cours_informatique/blob/master/docs/tutos/_posts/2021-08-30-format-markdown.md&quot;&gt;ce fichier&lt;/a&gt; (cliquez sur le bouton &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;raw&lt;/code&gt; à droite, juste avant que le fichier ne soit représenté).&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h2 id=&quot;syntaxe&quot;&gt;syntaxe&lt;/h2&gt;
 
 &lt;p&gt;Markdown permet facilement d’écrire des titres, des liste, mettre des choses en exergue, etc.&lt;/p&gt;
 
+&lt;blockquote&gt;
+  &lt;p&gt;Pour une introduction et une liste des possibilités offertes, n’hésitez pas à consulter le site : &lt;a href=&quot;https://www.markdownguide.org/&quot;&gt;https://www.markdownguide.org/&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Le format markdown est basique. Il possède plein de variantes qui permettent d’étendre ses fonctionnalités. Les principales variantes utilisées sont :&lt;/p&gt;
+
 &lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://guides.github.com/features/mastering-markdown/&quot;&gt;Une liste de ces possibilités&lt;/a&gt;.&lt;/li&gt;
-  &lt;li&gt;une &lt;a href=&quot;https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet&quot;&gt;cheat sheet&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://docs.zettlr.com/fr/reference/markdown-basics/&quot;&gt;Une introduction en français&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;celle de &lt;a href=&quot;https://guides.github.com/features/mastering-markdown/&quot;&gt;github&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;le &lt;a href=&quot;https://kramdown.gettalong.org/documentation.html&quot;&gt;kramdown&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;Attention&lt;/strong&gt; : le format markdown possède plein de variantes. Une variante populaire est celle de github, mais sachez qu’il en existe de nombreuses, chacune apportant ses spécificités.&lt;/p&gt;
+&lt;blockquote class=&quot;attention&quot;&gt;
+  &lt;p&gt;Nous utilisons pour ce site le &lt;a href=&quot;https://kramdown.gettalong.org/documentation.html&quot;&gt;kramdown&lt;/a&gt; qui est une extension du markdown et est interprété pour le générateur desite statique &lt;a href=&quot;https://jekyllrb.com/&quot;&gt;jekyll&lt;/a&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h2 id=&quot;markdown-avec-vscode&quot;&gt;markdown avec vscode&lt;/h2&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://code.visualstudio.com/docs/languages/markdown&quot;&gt;https://code.visualstudio.com/docs/languages/markdown&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;https://code.visualstudio.com/docs/languages/markdown&quot;&gt;https://code.visualstudio.com/docs/languages/markdown&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;h3 id=&quot;extensions&quot;&gt;extensions&lt;/h3&gt;
 
-&lt;p&gt;On peut ajouter des extensions pour faciliter l’écriture en markdown :&lt;/p&gt;
+&lt;p&gt;vscode possède de nombreux plugins markdown. qui facilitent l’écriture en markdown. On peut par exemple citer :&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://github.com/yzhang-gh/vscode-markdown&quot;&gt;Markdown All in One&lt;/a&gt;. Dans les préférences du module, on décoche &lt;em&gt;Markdown &amp;gt; Extenstion &amp;gt; Math:Enabled&lt;/em&gt;. Les maths seront en effet utilisées avec le module suivant&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://learnbyexample.github.io/customizing-pandoc/&quot;&gt;markdownlint&lt;/a&gt; un linter pour écrire du joli markdown.&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://github.com/goessner/mdmath&quot;&gt;Markdown+Math&lt;/a&gt; pour gérer les formules mathématiques comme :
     &lt;ul&gt;
-      &lt;li&gt;$\frac{1}{2}$&lt;/li&gt;
+      &lt;li&gt;
+\[\frac{1}{2}\]
+      &lt;/li&gt;
       &lt;li&gt;
 \[\sum_{i=1}^n i^2\]
       &lt;/li&gt;
@@ -72,16 +81,16 @@
   &lt;li&gt;un &lt;a href=&quot;https://www.science-emergence.com/Articles/Formules-math%C3%A9matiques-sous-LaTeX/&quot;&gt;tuto&lt;/a&gt; Latex contenant aussi des instructions pour les équations.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;strong&gt;Remarques&lt;/strong&gt; :&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Pour le markdown, il faudra  utiliser  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$$&lt;/code&gt;et &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$&lt;/code&gt; (les notation Tex) plutôt que &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;\[&lt;/code&gt; et  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;\(&lt;/code&gt; (notations latex).&lt;/li&gt;
-  &lt;li&gt;Lorsque vous faites de l’exportation en html, les mathématiques sont représentées en utilisant &lt;a href=&quot;https://www.mathjax.org/&quot;&gt;Mathjax&lt;/a&gt; (voir &lt;a href=&quot;ttps://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference&quot;&gt;une aide&lt;/a&gt; de mathjax)&lt;/li&gt;
-  &lt;li&gt;L’ancêtre de &lt;a href=&quot;https://fr.wikipedia.org/wiki/LaTeX&quot;&gt;Latex&lt;/a&gt; : &lt;a href=&quot;https://fr.wikipedia.org/wiki/TeX&quot;&gt;Tex&lt;/a&gt;, a été créé par le célébrissime informaticien &lt;a href=&quot;https://fr.wikipedia.org/wiki/Donald_Knuth&quot;&gt;Donald Knuth&lt;/a&gt; par ce qu’il n’existait rien sur ordinateur à l’époque pour écrire &lt;a href=&quot;https://fr.wikipedia.org/wiki/The_Art_of_Computer_Programming&quot;&gt;ses livres&lt;/a&gt; en respectant une typographie correcte.&lt;/li&gt;
-&lt;/ul&gt;
-
 &lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;Attention&lt;/strong&gt;, il ne faut pas mettre d’espace après le premier &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$&lt;/code&gt; et avant le dernier &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$&lt;/code&gt; sinon, pandoc ne reconnaîtra pas que ce sont des équations que vous voulez écrire. Ansi &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ \frac{1}{2}$&lt;/code&gt; affichera &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ \frac{1}{2}$&lt;/code&gt;, alors que &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$\frac{1}{2}$&lt;/code&gt; affichera $\frac{1}{2}$.&lt;/p&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Pour le markdown, il faudra  utiliser  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$$&lt;/code&gt;et &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$&lt;/code&gt; (les notation Tex) plutôt que &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;\[&lt;/code&gt; et  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;\(&lt;/code&gt; (notations latex).&lt;/li&gt;
+    &lt;li&gt;Lorsque vous faites de l’exportation en html, les mathématiques sont représentées en utilisant &lt;a href=&quot;https://www.mathjax.org/&quot;&gt;Mathjax&lt;/a&gt; (voir &lt;a href=&quot;ttps://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference&quot;&gt;une aide&lt;/a&gt; de mathjax)&lt;/li&gt;
+    &lt;li&gt;L’ancêtre de &lt;a href=&quot;https://fr.wikipedia.org/wiki/LaTeX&quot;&gt;Latex&lt;/a&gt; : &lt;a href=&quot;https://fr.wikipedia.org/wiki/TeX&quot;&gt;Tex&lt;/a&gt;, a été créé par le célèbre informaticien &lt;a href=&quot;https://fr.wikipedia.org/wiki/Donald_Knuth&quot;&gt;Donald Knuth&lt;/a&gt; par ce qu’il n’existait rien sur ordinateur à l’époque pour écrire &lt;a href=&quot;https://fr.wikipedia.org/wiki/The_Art_of_Computer_Programming&quot;&gt;ses livres&lt;/a&gt; en respectant une typographie correcte.&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote class=&quot;attention&quot;&gt;
+  &lt;p&gt;Il ne faut pas mettre d’espace après le premier &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$&lt;/code&gt; et avant le dernier &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$&lt;/code&gt; sinon, pandoc ne reconnaîtra pas que ce sont des équations que vous voulez écrire. Ansi &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ \frac{1}{2}$&lt;/code&gt; affichera &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ \frac{1}{2}$&lt;/code&gt;, alors que &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$\frac{1}{2}$&lt;/code&gt; affichera $\frac{1}{2}$.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h2 id=&quot;export&quot;&gt;export&lt;/h2&gt;
@@ -135,18 +144,193 @@
 &lt;/ul&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;Remarque&lt;/strong&gt; : Si vous avez à compiler plein de fois votre page, n’oubliez pas qu’utiliser la &lt;em&gt;flèche du haut&lt;/em&gt; dans un terminal rappelle la dernière commande utilisée. Donc même une commande avec plein de paramètres est facile à réutiliser. Il suffit d’appuyer sur la flèche du haut.&lt;/p&gt;
+  &lt;p&gt;Si vous avez à compiler plein de fois votre page, n’oubliez pas qu’utiliser la &lt;em&gt;flèche du haut&lt;/em&gt; dans un terminal rappelle la dernière commande utilisée. Donc même une commande avec plein de paramètres est facile à réutiliser. Il suffit d’appuyer sur la flèche du haut.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;Lorsque je fais mes tests en html, après chaque re-compilation je recharge la page avec &lt;em&gt;“F5”&lt;/em&gt; ou &lt;em&gt;“ctrl+R”&lt;/em&gt; dans le navigateur. Le process est &lt;strong&gt;très rapide&lt;/strong&gt;.&lt;/p&gt;
 
-&lt;h3 id=&quot;pimp-my-markdown&quot;&gt;pimp my markdown&lt;/h3&gt;
+&lt;h2 id=&quot;misc&quot;&gt;misc&lt;/h2&gt;
 
-&lt;p&gt;TBD : mais ça à l’air fascinant&lt;/p&gt;
+&lt;p&gt;Quelques liens potentiellement intéressant :&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://medium.com/@pierrepaci/enhance-your-markdown-experience-using-vscode-3caf489888b8&quot;&gt;https://medium.com/@pierrepaci/enhance-your-markdown-experience-using-vscode-3caf489888b8&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;pimp my markdown dans vsc : &lt;a href=&quot;https://medium.com/@pierrepaci/enhance-your-markdown-experience-using-vscode-3caf489888b8&quot;&gt;https://medium.com/@pierrepaci/enhance-your-markdown-experience-using-vscode-3caf489888b8&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;pimp my pandoc : &lt;a href=&quot;https://learnbyexample.github.io/customizing-pandoc/&quot;&gt;https://learnbyexample.github.io/customizing-pandoc/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="tutos" /><category term="langage" /><category term="markdown" /><category term="informatique" /><category term="cours" /><summary type="html">Une introduction au format markdown. C’est le langage que nous utiliserons majoritairement pour écrire les cours.</summary></entry><entry><title type="html">Configuration Pycharm</title><link href="/cours_informatique/tutos/editeur/pycharm/2021/08/30/configuration-pycharm.html" rel="alternate" type="text/html" title="Configuration Pycharm" /><published>2021-08-30T00:00:00+00:00</published><updated>2021-08-30T00:00:00+00:00</updated><id>/cours_informatique/tutos/editeur/pycharm/2021/08/30/configuration-pycharm</id><content type="html" xml:base="/cours_informatique/tutos/editeur/pycharm/2021/08/30/configuration-pycharm.html">&lt;p&gt;Le but de ce tutoriel est d’installer une distribution python avec &lt;a href=&quot;https://www.anaconda.com/&quot;&gt;anaconda&lt;/a&gt; et l’IDE &lt;a href=&quot;https://www.jetbrains.com/fr-fr/pycharm/&quot;&gt;pycharm&lt;/a&gt;. On suppose que vous avez déjà installé une distribution python avec anaconda.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://learnbyexample.github.io/customizing-pandoc/&quot;&gt;https://learnbyexample.github.io/customizing-pandoc/&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><category term="langage markdown" /><category term="informatique" /><category term="cours" /><summary type="html">Une introduction au format markdown. C’est le langage que nous utiliserons majoritairement pour écrire les cours.</summary></entry><entry><title type="html">naviguer dans un système de fichiers</title><link href="/cours_informatique/tutos/systeme/fichiers/2021/08/24/fichiers-navigation.html" rel="alternate" type="text/html" title="naviguer dans un système de fichiers" /><published>2021-08-24T00:00:00+00:00</published><updated>2021-08-24T00:00:00+00:00</updated><id>/cours_informatique/tutos/systeme/fichiers/2021/08/24/fichiers-navigation</id><content type="html" xml:base="/cours_informatique/tutos/systeme/fichiers/2021/08/24/fichiers-navigation.html">&lt;p&gt;Qu’est-ce qu’un fichier ? Un dossier ? Comment naviguer dans un système de fichier avec le terminal ou l’explorateur de fichier.&lt;/p&gt;
+&lt;h2 id=&quot;pycharm&quot;&gt;pycharm&lt;/h2&gt;
+
+&lt;p&gt;Commencez par &lt;a href=&quot;https://www.jetbrains.com/fr-fr/pycharm/download&quot;&gt;télécharger&lt;/a&gt; la version professionnels de &lt;em&gt;pycharm&lt;/em&gt;. En temps qu’étudiant vous avez droit à une licence gratuite pendant 1an (renouvelable temps que vous êtes étudiant). Puis installez le logiciel.&lt;/p&gt;
+
+&lt;h3 id=&quot;lier-anaconda-et-pycharm&quot;&gt;lier anaconda et pycharm&lt;/h3&gt;
+
+&lt;p&gt;Lorsque vous lancez &lt;em&gt;pycharm&lt;/em&gt; une fenêtre de choix apparaît.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Créez un nouveau projet&lt;/li&gt;
+  &lt;li&gt;une fenêtre apparaît, vous demandant quel type de projet vous voulez faire. Choisissez &lt;em&gt;pure Python&lt;/em&gt; et à droite :
+    &lt;ul&gt;
+      &lt;li&gt;choisissez un dossier où vous mettrez votre projet&lt;/li&gt;
+      &lt;li&gt;décochez la case &lt;em&gt;“Create a main.py welcome script”&lt;/em&gt;&lt;/li&gt;
+      &lt;li&gt;cliquez sur le triangle pour étendre la partie consacrée à l’interpréteur.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Dans la partie dédiée à l’interpréteur, vous voyez plusieurs choix. Nous allons utiliser un interpréteur existant (choisissez cette option) en cherchant le python d’anaconda. Pour cela :
+    &lt;ul&gt;
+      &lt;li&gt;cliquez sur les &lt;em&gt;“…”&lt;/em&gt; à droite de la ligne de choix de l’interpréteur,&lt;/li&gt;
+      &lt;li&gt;dans la nouvelle fenêtre, choisissez &lt;em&gt;Conda Environnement&lt;/em&gt;. Il faut maintenant savoir où vous avez installé anaconda. En trouvant où se trouve votre interpréteur (voir &lt;a href=&quot;#anaconda-avec-un-terminal&quot;&gt;partie précédente&lt;/a&gt;) vous trouverez où se trouve anaconda&lt;/li&gt;
+      &lt;li&gt;On a trois choses à faire : trouver l’interpréteur python, l’éxécutable anaconda et faire en sorte que pycharm se rappelle de tout ça.&lt;/li&gt;
+      &lt;li&gt;interpréteur python. Il suffit de suivre &lt;a href=&quot;#anaconda-avec-un-terminal&quot;&gt;cette partie&lt;/a&gt;. Pour mon mac &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;which python3&lt;/code&gt; me rend : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/opt/anaconda3/bin/python3&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;l’exécutable conda : c’est le début du chemin de l’interpréteur, jusqu’à &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;anaconda3&lt;/code&gt;. (pour mon mac, à partir de la ligne précédente, j’en débuit qu’anaconda est dans le dossier : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/opt/anaconda3/&lt;/code&gt;)&lt;/li&gt;
+      &lt;li&gt;cochez la case &lt;em&gt;Make avaliable to all projects&lt;/em&gt; pour que vous puissiez retrouver cet environnement à chaque nouveau projet.&lt;/li&gt;
+      &lt;li&gt;cliquez sur le bouton &lt;em&gt;OK&lt;/em&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;cliquez sur le bouton &lt;em&gt;Create&lt;/em&gt; pour créer le projet avec notre nouvel environnement conda.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Une nouvelle fenêtre apparaît avec votre projet.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Il se peut que pycharm ne réponde pas bien au début. C’est normal, il est entrain d’analyser votre tout nouvel interpréteur python. Vous voyez une barre de progression en bas à droite qui vous indique ce qu’il fait. Laissez le finir d’indexer tout ça, cela peut durer un certain temps (surtout qu’anaconda a déjà plein de bibliothèque d’installées), mais il ne le fait que lorsque vous changez d’interpréteur.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Notre premier projet avec pycharm :&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;créons un fichier &lt;em&gt;“file &amp;gt; new… &amp;gt; python file”&lt;/em&gt; et appelons le &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;main.py&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;à gauche de la fenêtre vous voyez les différents fichiers et à droite des fichiers. Pour l’instant nous n’en avons qu’un seul et il est vide.&lt;/li&gt;
+  &lt;li&gt;écrivez &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;print(&quot;Hello World&quot;)&lt;/code&gt; dans le fichier. Vous n’avez pas à vous préoccuper de sauver, &lt;em&gt;pycharm&lt;/em&gt; le fait automatiquement.&lt;/li&gt;
+  &lt;li&gt;exécuter votre code en allant dans le menu &lt;em&gt;Run &amp;gt; Run…&lt;/em&gt;, une petite fenêtre s’affiche et choisissez &lt;em&gt;main.py&lt;/em&gt;, c’est le fichier qui sera exécuté.&lt;/li&gt;
+  &lt;li&gt;Regardez la fenêtre du bas de &lt;em&gt;pycharm&lt;/em&gt; où vous voyez le résultat de votre programme.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Vous voyez maintenant en haut à droite de la fenêtre un endroit où est écrit &lt;em&gt;main&lt;/em&gt; et à droite un petit triangle vert. Si vous glissez votre souris sur ce triangle vert vous voyez son raccourci clavier (sur mac c’est &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ctrl + R&lt;/code&gt;). Vous pouvez être n’importe où dans Pycharm, en particulier sur d’autres fichiers, si vous cliquez sur le triangle vert ou si vous utilisez le raccourci clavier (qui correspond au menu &lt;em&gt;Run &amp;gt; Run&lt;/em&gt;, sans les “…”), le fichier main sera exécuté.&lt;/p&gt;
+
+&lt;p&gt;Cela correspond à une configuration d’exécution. Ici &lt;em&gt;main&lt;/em&gt; est le nom de la configuration d’exécution courante. On peut bien sur en créer d’autres, c’est ce qu’on fera lorsque l’on exécutera des tests, par exemple.&lt;/p&gt;
+
+&lt;h3 id=&quot;propriétés-de-pycharm&quot;&gt;Propriétés de pycharm&lt;/h3&gt;
+
+&lt;h4 id=&quot;aide-en-ligne&quot;&gt;aide en ligne&lt;/h4&gt;
+
+&lt;p&gt;PyCharm est un éditeur professionnel, c’est normal que la prise en main soit plus complexe qu’avec un éditeur moins performant (comme notepad++ voir Sublime Text) ou scolaire (comme Spyder). En revanche, bien l’utiliser permet d’une part des gains de productivité importants et d’autre part de coder plus agréablement.&lt;/p&gt;
+
+&lt;p&gt;Le système d’aide de PyCharm est très complet et vous permet de vous familiariser mieux avec la bête. Il est disponible sur le site de l’éditeur : &lt;a href=&quot;https://www.jetbrains.com/help/pycharm/meet-pycharm.html&quot;&gt;aide Pycharm&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;configurations-dexécution&quot;&gt;configurations d’exécution&lt;/h4&gt;
+
+&lt;p&gt;Les configurations d’exécutions permettent d’exécuter des programmes ou des tests python. On les trouve soit grâce au menu &lt;em&gt;Run &amp;gt; edit configurations…&lt;/em&gt;, ou en haut à droite de la fenêtre en cliquant sur le nom de la configuration courante (le nom à gauche du petit triangle vert).&lt;/p&gt;
+
+&lt;p&gt;Pour créer un nouvel environnement d’exécution :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Ouvrez la fenêtre des contextes d’exécution dans le menu &lt;em&gt;Run &amp;gt; Edit configurations…&lt;/em&gt;.&lt;/li&gt;
+  &lt;li&gt;La fenêtre qui s’est ouverte contient tous les contextes d’exécution de votre projet. Cliquez sur le &lt;em&gt;+&lt;/em&gt; en haut à gauche de la fenêtre pour en créer un nouveau.&lt;/li&gt;
+  &lt;li&gt;Choisissez &lt;em&gt;python&lt;/em&gt; si vous voulez exécuter du code ou &lt;em&gt;python tests&lt;/em&gt; pour un framework de test. Paramétrez votre environnement en choisissant le script à exécuter (on pourra également nommer son environnement).&lt;/li&gt;
+  &lt;li&gt;Cliquez sur &lt;em&gt;OK&lt;/em&gt; pour créer l’environnement.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote class=&quot;attention&quot;&gt;
+  &lt;p&gt;Dans la fenêtre de gestion des contextes, ne modifiez pas les contextes par défaut. Ce sont des templates.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Pour plus d’informations, reportez vous à &lt;a href=&quot;https://www.jetbrains.com/help/pycharm/2016.3/working-with-run-debug-configurations.html?search=run&quot;&gt;la documentation de pycharm&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h4 id=&quot;linterpréteur-python-dun-projet-pycharm&quot;&gt;L’interpréteur python d’un projet pycharm&lt;/h4&gt;
+
+&lt;p&gt;Les préférences de pycharm sont accessibles via le menu &lt;em&gt;File &amp;gt; Settings…&lt;/em&gt;. La fenêtre de préférences ressemble à ça :&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/cours_informatique/assets/tutos/pycharm/settings/settings.jpg&quot; alt=&quot;un projet vide&quot; style=&quot;margin: auto;display: block;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;On peut quasiment tout changer, de l’apparence à l’interpréteur en passant par les raccourcis clavier.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;En haut à gauche se trouve un champ texte. Il permet de réduire les préférences à celles contenant le texte tapé (voir image ci-après).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;L’interpréteur du projet se trouve dans la partie &lt;em&gt;Project&lt;/em&gt; de la fenêtre des préférences.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/cours_informatique/assets/tutos/pycharm/settings/interpreter.jpg&quot; alt=&quot;l'interpréteur&quot; style=&quot;margin: auto;display: block;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Pour créer un nouvel interpréteur à partir de la fenêtre de l’interpréteur, il suffit de cliquer sur l’engrenage dans la partie réservée à l’interpréteur :&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/cours_informatique/assets/tutos/pycharm/settings/engrenage.png&quot; alt=&quot;engrenage&quot; style=&quot;margin: auto;display: block;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Si l’on veut ajouter un programme python déjà présent sur la machine, on choisit &lt;em&gt;Add…&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Une nouvelle fenêtre s’affiche, qui doit ressembler à ça :&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/cours_informatique/assets/tutos/pycharm/settings/nouvel_interpreteur_venv.png&quot; alt=&quot;ajout d'un interpréteur&quot; style=&quot;margin: auto;display: block;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Attention, par défaut &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;virtualenv environment&lt;/code&gt; (en haut à gauche de la fenêtre) est utilisé. Dans l’absolu &lt;a href=&quot;http://sametmax.com/les-environnement-virtuels-python-virtualenv-et-virtualenvwrapper/&quot;&gt;c’est très bien&lt;/a&gt;, mais pour nous, ça va plus nous embêter qu’autre chose (en particulier il faudrait réinstaller numpy à chaque tp…). On choisi donc &lt;em&gt;Conda Environment&lt;/em&gt; ou &lt;em&gt;system interpréteur&lt;/em&gt;  et un python 3 d’installé :&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/cours_informatique/assets/tutos/pycharm/settings/interpreteur_python.png&quot; alt=&quot;interpréteur python&quot; style=&quot;margin: auto;display: block;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Dans l’image ci-dessus, mon interpréteur python3 (python3.6) était dans le dossier &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/usr/local/bin&lt;/code&gt; (ce qui est souvent le cas dans le monde unix ou mac)&lt;/p&gt;
+
+&lt;h4 id=&quot;installer-des-modules&quot;&gt;Installer des modules&lt;/h4&gt;
+
+&lt;p&gt;On commence par aller trouver son interpréteur via le menu &lt;em&gt;File &amp;gt; Settings…&lt;/em&gt; (je l’ai trouvé en tapant &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;interp&lt;/code&gt; dans l’onglet de recherche) :&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/cours_informatique/assets/tutos/pycharm/settings/interpreteur_par_recherche.png&quot; alt=&quot;interpréteur par recherche&quot; style=&quot;margin: auto;display: block;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Les packages installé sont listé dans la fenêtre, avec le numéro de version installé et la dernère version disponible. Pour installer le package &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;numpy&lt;/code&gt; on commence par cliquer sur le bouton &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;+&lt;/code&gt; en bas à gauche de la fenêtre. Un zillion de package sont disponible. On cherche numpy :&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/cours_informatique/assets/tutos/pycharm/settings/package_numpy.png&quot; alt=&quot;package numpy&quot; style=&quot;margin: auto;display: block;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;On peut ensuite cliquer sur &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;install package&lt;/code&gt; en bas à gauche pour installer le package.&lt;/p&gt;
+
+&lt;h4 id=&quot;les-raccourcis-claviers&quot;&gt;Les raccourcis claviers&lt;/h4&gt;
+
+&lt;p&gt;De nombreuses actions disponibles via un menu dans pycharm possèdent un raccourci clavier.&lt;/p&gt;
+
+&lt;p&gt;Par exemple, sous unix :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Commenter une ligne ou un bloc : &lt;em&gt;ctrl + /&lt;/em&gt; (Utiliser la touche &lt;em&gt;/&lt;/em&gt; du pavé numérique)&lt;/li&gt;
+  &lt;li&gt;Rechercher : &lt;em&gt;ctrl + F&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;Exécuter la configuration d’exécution courante : &lt;em&gt;shift + F10&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;L’utilisation des raccourcis clavier est décrite dans  l’aide en ligne de pycharm sur les &lt;a href=&quot;https://www.jetbrains.com/help/pycharm/keymap.html&quot;&gt;keymap&lt;/a&gt;.
+Si une commande possède un raccourci clavier, il est montré à droite de son nom :&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/cours_informatique/assets/tutos/pycharm/keymap/raccourci_clavier.png&quot; alt=&quot;commande rename&quot; style=&quot;margin: auto;display: block;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;L’image ci-dessus montre la commande &lt;em&gt;Rename&lt;/em&gt; et son raccourci clavier &lt;em&gt;shift + F6&lt;/em&gt; (cette commande est très très utile et vous l’utiliserez souvent car elle permet de renommer n’importe quoi. Le nom est modifié dans tout le fichier et dans d’autres fichiers du même projet).&lt;/p&gt;
+
+&lt;p&gt;Selon la plateforme, les raccourcis par défaut changent :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://resources.jetbrains.com/storage/products/pycharm/docs/PyCharm_ReferenceCard.pdf&quot;&gt;Raccourcis par défaut unix&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://resources.jetbrains.com/storage/products/pycharm/docs/PyCharm_ReferenceCard_mac.pdf&quot;&gt;Raccourcis par défaut mac&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Tous les raccourcis sont disponibles dans les préférences (menu &lt;em&gt;File &amp;gt; Settings…&lt;/em&gt;) dans la partie keymap :&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/cours_informatique/assets/tutos/pycharm/keymap/keymap_settings.jpg&quot; alt=&quot;raccourcis claviers&quot; style=&quot;margin: auto;display: block;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Le raccourci clavier pour commenter automatiquement une ligne ou une partie de texte sélectionné par défaut de Pycharm n’est pas fonctionnel avec un clavier Français.&lt;/p&gt;
+
+&lt;p&gt;Le raccourci concerne les commentaires : &lt;em&gt;comment&lt;/em&gt; en anglais. Pour trouver rapidement les raccourcis on tape donc &lt;em&gt;comment&lt;/em&gt; dans la barre de recherche de la partie &lt;em&gt;keymap&lt;/em&gt; de la fenêtre des paramètres :&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/cours_informatique/assets/tutos/pycharm/keymap/keymap_comment.jpg&quot; alt=&quot;raccourcis comments&quot; style=&quot;margin: auto;display: block;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Il y a 2 types de commentaires : commentaire d’une ligne et d’un bloc de texte. Certains langages utilisent ces deux types de commentaires (le C++ ou le Java par exemple), mais pas python puisqu’il suffit de mettre un &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#&lt;/code&gt; devant la ligne à commenter. Nous n’aurons à modifier que le raccourci : &lt;em&gt;Comment with Line Comment&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Dans de nombreux éditeurs, ce raccourci est sur &lt;em&gt;ctrl + /&lt;/em&gt; (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;//&lt;/code&gt; est le commentaire de ligne de nombreux langages comme le javascript, Java, C++, …). C’est ce que pense faire Pycharm, et ceci marche avec un clavier Américain. Le clavier Français a la touche &lt;em&gt;/&lt;/em&gt; comme modificateur de la touche &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:&lt;/code&gt;, ce qui confuse python.&lt;/p&gt;
+
+&lt;p&gt;Ajoutons donc le raccourci clavier qui consiste à taper simultanément sur &lt;em&gt;ctrl&lt;/em&gt;, &lt;em&gt;shift&lt;/em&gt; et &lt;em&gt;:&lt;/em&gt;, c’est à dire la combinaison : &lt;em&gt;ctrl + shift + :&lt;/em&gt; (sur mac, vous pouvez remplacer &lt;em&gt;ctrl&lt;/em&gt; par &lt;em&gt;cmd&lt;/em&gt; qui correspond mieux à l’usage courant sur cette plateforme).&lt;/p&gt;
+
+&lt;p&gt;Après avoir double cliqué sur la ligne &lt;em&gt;Comment with Line Comment&lt;/em&gt; et choisi d’ajouter un raccourci clavier, effectuez la combinaison de touche puis cliquez sur &lt;em&gt;Ok&lt;/em&gt; (appuyer sur &lt;em&gt;Entrée&lt;/em&gt; change le raccourci…) :&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/cours_informatique/assets/tutos/pycharm/keymap/keymap_shortcut.jpg&quot; alt=&quot;changement de raccourcis comments&quot; style=&quot;margin: auto;display: block;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Le raccourci est alors ajouté :&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/cours_informatique/assets/tutos/pycharm/keymap/keymap_result.jpg&quot; alt=&quot;raccourcis comments ajouté&quot; style=&quot;margin: auto;display: block;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Testez le !&lt;/p&gt;</content><author><name></name></author><category term="pycharm" /><category term="python" /><category term="anaconda" /><summary type="html">Le but de ce tutoriel est d’installer une distribution python avec anaconda et l’IDE pycharm. On suppose que vous avez déjà installé une distribution python avec anaconda.</summary></entry><entry><title type="html">naviguer dans un système de fichiers</title><link href="/cours_informatique/tutos/systeme/fichiers/2021/08/24/fichiers-navigation.html" rel="alternate" type="text/html" title="naviguer dans un système de fichiers" /><published>2021-08-24T00:00:00+00:00</published><updated>2021-08-24T00:00:00+00:00</updated><id>/cours_informatique/tutos/systeme/fichiers/2021/08/24/fichiers-navigation</id><content type="html" xml:base="/cours_informatique/tutos/systeme/fichiers/2021/08/24/fichiers-navigation.html">&lt;p&gt;Qu’est-ce qu’un fichier ? Un dossier ? Comment naviguer dans un système de fichier avec le terminal ou l’explorateur de fichier.&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -521,7 +705,7 @@ System       bin          etc          private      usr
 
 &lt;blockquote class=&quot;danger&quot;&gt;
   &lt;p&gt;TBD : ajouter si on en trouve&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>François Brucker</name></author><category term="tutos" /><category term="systeme" /><category term="CLI" /><category term="terminal" /><category term="système" /><category term="terminal" /><category term="CLI" /><summary type="html">Qu’est-ce que le terminal ? Comment le trouver et taper des commandes.</summary></entry><entry><title type="html">Installation de python</title><link href="/cours_informatique/tutos/python/2021/08/20/installation-de-python.html" rel="alternate" type="text/html" title="Installation de python" /><published>2021-08-20T00:00:00+00:00</published><updated>2021-08-20T00:00:00+00:00</updated><id>/cours_informatique/tutos/python/2021/08/20/installation-de-python</id><content type="html" xml:base="/cours_informatique/tutos/python/2021/08/20/installation-de-python.html">&lt;p&gt;Comment installer et utiliser python sur son ordinateur. On y verra différentes solutions.&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>François Brucker</name></author><category term="tutos" /><category term="systeme" /><category term="CLI" /><category term="terminal" /><category term="système" /><category term="terminal" /><category term="CLI" /><summary type="html">Qu’est-ce que le terminal ? Comment le trouver et taper des commandes.</summary></entry><entry><title type="html">Installation de python</title><link href="/cours_informatique/tutos/python/installation/terminal/2021/08/20/installation-de-python.html" rel="alternate" type="text/html" title="Installation de python" /><published>2021-08-20T00:00:00+00:00</published><updated>2021-08-20T00:00:00+00:00</updated><id>/cours_informatique/tutos/python/installation/terminal/2021/08/20/installation-de-python</id><content type="html" xml:base="/cours_informatique/tutos/python/installation/terminal/2021/08/20/installation-de-python.html">&lt;p&gt;Comment installer et utiliser python sur son ordinateur. On y verra différentes solutions.&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -841,7 +1025,7 @@ python2 vs python3&lt;/p&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.jetbrains.com/fr-fr/pycharm/&quot;&gt;pycharm&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Il existe également d’autres façon d’utiliser python, en mode interactif par exemple en utilisant &lt;a href=&quot;https://jupyter.org/&quot;&gt;jupyter&lt;/a&gt; avec anaconda, ou encore &lt;a href=&quot;https://colab.research.google.com&quot;&gt;colab&lt;/a&gt;.&lt;/p&gt;</content><author><name>François Brucker</name></author><category term="tutos" /><category term="python" /><category term="installation" /><category term="python" /><category term="terminal" /><summary type="html">Comment installer et utiliser python sur son ordinateur. On y verra différentes solutions.</summary></entry><entry><title type="html">Bases de python</title><link href="/cours_informatique/tutos/python/2021/08/19/bases-de-python.html" rel="alternate" type="text/html" title="Bases de python" /><published>2021-08-19T00:00:00+00:00</published><updated>2021-08-19T00:00:00+00:00</updated><id>/cours_informatique/tutos/python/2021/08/19/bases-de-python</id><content type="html" xml:base="/cours_informatique/tutos/python/2021/08/19/bases-de-python.html">&lt;p&gt;Notions de base du langage python. Ce n’est cependant pas un cours, on y reprend juste les différentes notions à connaître ainsi que les principales structures de données à utiliser.&lt;/p&gt;
+&lt;p&gt;Il existe également d’autres façon d’utiliser python, en mode interactif par exemple en utilisant &lt;a href=&quot;https://jupyter.org/&quot;&gt;jupyter&lt;/a&gt; avec anaconda, ou encore &lt;a href=&quot;https://colab.research.google.com&quot;&gt;colab&lt;/a&gt;.&lt;/p&gt;</content><author><name>François Brucker</name></author><category term="tutos" /><category term="python" /><category term="installation" /><category term="terminal" /><summary type="html">Comment installer et utiliser python sur son ordinateur. On y verra différentes solutions.</summary></entry><entry><title type="html">Bases de python</title><link href="/cours_informatique/tutos/python/langage/2021/08/19/bases-de-python.html" rel="alternate" type="text/html" title="Bases de python" /><published>2021-08-19T00:00:00+00:00</published><updated>2021-08-19T00:00:00+00:00</updated><id>/cours_informatique/tutos/python/langage/2021/08/19/bases-de-python</id><content type="html" xml:base="/cours_informatique/tutos/python/langage/2021/08/19/bases-de-python.html">&lt;p&gt;Notions de base du langage python. Ce n’est cependant pas un cours, on y reprend juste les différentes notions à connaître ainsi que les principales structures de données à utiliser.&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -1480,7 +1664,7 @@ Si vous avez bien compris l’exemple de la récursion et de la modification d�
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'fichier.txt'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'w'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'For the night is dark and full of terrors'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Augustin Agbo-Kpati</name></author><category term="tutos" /><category term="python" /><category term="langage" /><category term="python" /><summary type="html">Notions de base du langage python. Ce n’est cependant pas un cours, on y reprend juste les différentes notions à connaître ainsi que les principales structures de données à utiliser.</summary></entry><entry><title type="html">Tests unitaires en Python avec pytest et pycharm</title><link href="/cours_informatique/tutos/python/tests%20unitaires/2021/08/01/tests-unitaires.html" rel="alternate" type="text/html" title="Tests unitaires en Python avec pytest et pycharm" /><published>2021-08-01T00:00:00+00:00</published><updated>2021-08-01T00:00:00+00:00</updated><id>/cours_informatique/tutos/python/tests%20unitaires/2021/08/01/tests-unitaires</id><content type="html" xml:base="/cours_informatique/tutos/python/tests%20unitaires/2021/08/01/tests-unitaires.html">&lt;p&gt;Mise en œuvre de tests unitaires en python avec l’éditeur pycharm.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Augustin Agbo-Kpati</name></author><category term="tutos" /><category term="python" /><category term="langage" /><summary type="html">Notions de base du langage python. Ce n’est cependant pas un cours, on y reprend juste les différentes notions à connaître ainsi que les principales structures de données à utiliser.</summary></entry><entry><title type="html">Tests unitaires en Python avec pytest et pycharm</title><link href="/cours_informatique/tutos/python/tests%20unitaires/2021/08/01/tests-unitaires.html" rel="alternate" type="text/html" title="Tests unitaires en Python avec pytest et pycharm" /><published>2021-08-01T00:00:00+00:00</published><updated>2021-08-01T00:00:00+00:00</updated><id>/cours_informatique/tutos/python/tests%20unitaires/2021/08/01/tests-unitaires</id><content type="html" xml:base="/cours_informatique/tutos/python/tests%20unitaires/2021/08/01/tests-unitaires.html">&lt;p&gt;Mise en œuvre de tests unitaires en python avec l’éditeur pycharm.
 &lt;!--more--&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;introduction&quot;&gt;Introduction&lt;/h1&gt;
@@ -1492,9 +1676,9 @@ Si vous avez bien compris l’exemple de la récursion et de la modification d�
 &lt;p&gt;De nombreux frameworks de tests existent pour python, le plus connu étant certainement &lt;a href=&quot;https://docs.python.org/3/library/unittest.html&quot;&gt;unittest&lt;/a&gt;, ou encore &lt;a href=&quot;http://nose.readthedocs.io/en/latest/&quot;&gt;nose&lt;/a&gt;. Nous allons utiliser &lt;a href=&quot;http://pytest.org&quot;&gt;pytest&lt;/a&gt;.&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;Nota Bene :&lt;/strong&gt;
-Une très bonne introduction au développement par les tests est l’inusable Test Driven Development: By Example de Kent Beck. Tous les exemples sont en revanche en Java.
-Sinon en python mais orienté développement web, il y a le bon (mais il faut s’accrocher si on débute) “Test-Driven Development with Python” de Harry J.w Percival.&lt;/p&gt;
+  &lt;p&gt;Une très bonne introduction au développement par les tests est l’inusable Test Driven Development: By Example de Kent Beck. Tous les exemples sont en revanche en Java.&lt;/p&gt;
+
+  &lt;p&gt;Sinon en python mais orienté développement web, il y a le bon (mais il faut s’accrocher si on débute) “Test-Driven Development with Python” de Harry J.w Percival.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h1 id=&quot;un-exemple&quot;&gt;Un exemple&lt;/h1&gt;
@@ -1574,7 +1758,7 @@ Un fichier de tests ne doit contenir que des fonctions.&lt;/p&gt;
 
 &lt;p&gt;Puis nous allons demander à &lt;a href=&quot;https://www.jetbrains.com/pycharm/&quot;&gt;Pycharm&lt;/a&gt; d’exécuter &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;test_aide_mathematiques.py&lt;/code&gt; à l’aide de notre environnement de test.&lt;/p&gt;
 
-&lt;p&gt;Pour cela, créez un environnement d’exécution (expliqué dans ce &lt;a href=&quot;/cours_informatique/cours/tuto/anaconda-pycharm-pytest.html&quot;&gt;tuto&lt;/a&gt;) et créez une configuration  &lt;em&gt;pyhton test &amp;gt; pytest&lt;/em&gt;. Ici, les paramètres dont nous aurons besoin sont :&lt;/p&gt;
+&lt;p&gt;Pour cela, créez un environnement d’exécution (expliqué dans ce &lt;a href=&quot;/cours_informatique/tutos/editeur/pycharm/2021/08/30/configuration-pycharm.html&quot;&gt;tuto&lt;/a&gt;) et créez une configuration  &lt;em&gt;pyhton test &amp;gt; pytest&lt;/em&gt;. Ici, les paramètres dont nous aurons besoin sont :&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;le champ &lt;em&gt;name&lt;/em&gt;, qui donne un nom à notre contexte. Par exemple &lt;em&gt;“mes tests”&lt;/em&gt;&lt;/li&gt;
