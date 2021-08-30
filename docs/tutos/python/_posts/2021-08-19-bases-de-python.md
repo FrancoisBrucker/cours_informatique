@@ -16,7 +16,7 @@ On supposeras que vous ayez un interpréteur python qui fonctionne ainsi qu'un �
 
 > On utilisera ici la version 3 de python (plus personne — vraiment — ne devrait utiliser la version 2) dans sa dernière itération (3.9.6 à l'heure où je tape ces caractères), mais n'importe quelle version 3 de python devrait faire fonctionner les exemples de ce tutoriel. Les liens vers la documentation officielle seront toujours ceux de la dernière version stable de python.
 
-# Introduction
+## Introduction
 
 Un petit rappel des bases de la programmation en python que vous êtes sensés savoir pour suivre les différents cours d'informatique. On y ajoute quelques exercices pour être sur que l'on a compris.
 
@@ -25,7 +25,7 @@ Un petit rappel des bases de la programmation en python que vous êtes sensés s
 
 Nous vous recommandons également de faire le [tutoriel](https://docs.python.org/3/tutorial/index.html)
 
-# Les données
+## Les données
 
 >[Documentation correspondante](https://docs.python.org/3/library/stdtypes.html#built-in-types).
 
@@ -33,7 +33,7 @@ Nous vous recommandons également de faire le [tutoriel](https://docs.python.org
 >Les commentaires en Python se font à l'aide de `#`.
 
 
-## Les 5 classes de base 
+### Les 5 classes de base 
 
 * Chaînes de caractères
 * Entiers 
@@ -60,7 +60,7 @@ On peut créer des objets de classes différentes avec des fonctions telles que:
 Par exemple, en tapant `str(42)`, on rend un objet de classe `str` (chaîne de caractères) à partir d'un objet de classe `int` (entier). 
 
 
-## Variables 
+### Variables 
 
 Une variable est un nom auquel est associé un objet. Pour associer un nom à un objet on utilise l’opérateur d’affectation `=` tel que:
 
@@ -104,14 +104,14 @@ j = 3
 i, j = j, i
 ```
 
-## Les structures de données
+### Les structures de données
 
 
-### Les listes 
+#### Les listes 
 
 > <https://docs.python.org/3/tutorial/datastructures.html#more-on-lists>
 
-#### Création directe 
+##### Création directe 
 
 On peut créer une liste directement:
 
@@ -121,12 +121,12 @@ On peut créer une liste directement:
 La fonction `len()` permet d'obtenir la longueur de la liste. Sur le dernier exemple, `len(l)` rend `4`.
 On peut alors accéder aux éléments de la liste à l'aide d'un indice variant entre `0` et `len(l) - 1`. Ainsi  avec `l[3]` on obtient la chaîne de caractère "Hello World".
 
-#### Création à l'aide de range() 
+##### Création à l'aide de range() 
 
 La fonction [range](https://docs.python.org/3/library/stdtypes.html#range) permet de créer des listes de nombres.
 
 
-#### Ajout, suppression d'éléments d'une liste 
+##### Ajout, suppression d'éléments d'une liste 
 
 * `append`
 * `insert`
@@ -138,7 +138,7 @@ Attention à `remove`, `extend` ou `pop`
 Voir la [documentation du tutoriel](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists).
 
 
-#### Copie d'une sous-liste 
+##### Copie d'une sous-liste 
 
 On peut copier une partie d'une liste.
 Pour **copier la liste l à partir de l'indice i jusqu'à l'indice j avec un pas de k** par exemple : `l[i:j:k]`
@@ -146,7 +146,7 @@ Il n'est pas nécessaire de renseigner tous les champs.
 
 >Essayez `l[::3]` ou `l[1::5]` etc... (il faut bien évidemment des listes assez longues).
 
-### Les dictionnaires 
+#### Les dictionnaires 
 
 > * <https://docs.python.org/3/tutorial/datastructures.html#dictionaries>
 > * <https://docs.python.org/3/library/stdtypes.html#mapping-types-dict>
@@ -166,13 +166,13 @@ for cle in d:
 
 > **Attention** : Un dictionnaire n'est pas ordonné, L'ordre dans lequel les valeurs sont examniés dans une boucle for par exmple n'est pas défini.
 
-### Les ensembles : set 
+#### Les ensembles : set 
 
 > <https://docs.python.org/3/library/stdtypes.htm#set>
 
 Un ensemble permet de garder des données en mémoire de manière non indexée. Contrairement aux listes, où l'on rangeait les éléments dans des cases distinctes, on ne peut **pas** accéder aux éléments d'un ensemble `d` avec `d[i]`.
 
-### Notion d'objets mutables 
+#### Notion d'objets mutables 
 
 Les objets que nous avons rencontrés sont mutables, c'est à dire que lorsque on crée une liste `l = [1, 2, 3]`, il est toujours possible de changer la valeur d'un indice, ou d'ajouter un élément.
 
@@ -202,13 +202,13 @@ t2 = t + (1, )
 Le [`frozenset`](https://docs.python.org/3/library/stdtypes.html#frozenset) est un `set` (ensemble), mais cette fois non mutable.
 
 
-# Structures de contrôle
+## Structures de contrôle
 
-## Comparaisons 
+### Comparaisons 
 
 > <https://docs.python.org/3/library/stdtypes.html#comparisons>
 
-## Blocs {#blocs-id}
+### Blocs {#blocs-id}
 
 On a souvent besoin de n'exécuter un certain bout de code que si une comparaison particulière est vraie (True). Ce bout de code est appelé *bloc*.
 
@@ -245,7 +245,7 @@ tabulation par des espaces, cela est déjà prédéfini avec PyCharm) et est dis
 
 En python, toute ligne définissant un nouveau bloc doit être terminée par le caractère `:`
 
-## Conditions si/sinon si/sinon (if/elif/else) 
+### Conditions si/sinon si/sinon (if/elif/else) 
 
 > <https://docs.python.org/3/reference/compound_stmts.html#the-if-statement>
 
@@ -266,7 +266,7 @@ else:
 
 Il est à noter que `elif` et `else` sont optionnels.
 
-## Boucle while 
+### Boucle while 
 
 > <https://docs.python.org/3/reference/compound_stmts.html#the-while-statement>
 
@@ -289,9 +289,9 @@ while b > 0:
         print("b vaut 2")
 ```
 
-## Boucle for 
+### Boucle for 
 
-### Les itérateurs 
+#### Les itérateurs 
 
 Pour faire simple, les itérateurs sont des objets qui permettent de créer des suites de données.
 Prenons un exemple connu: `range()`
@@ -339,11 +339,11 @@ for mot in l:
     print(mot)
 ```
 
-# Méthodes, fonctions et modules
+## Méthodes, fonctions et modules
 
-## Les fonctions 
+### Les fonctions 
 
-### Motivations 
+#### Motivations 
 > <https://docs.python.org/3/reference/compound_stmts.html#function-definitions>
 
 
@@ -376,7 +376,7 @@ Si on exécute le bloc précédent, il ne se passe rien. En effet on n'a fait qu
 >Une **fonction** s'utilise toujours en faisant suivre son nom d'une parenthèse contenant ses paramètres séparés par une virgule (notre fonction n'a pour l'instant pas de paramètres). Donner juste son nom ne suffit pas à l'invoquer.
 
 
-### Paramètres d'une fonction 
+#### Paramètres d'une fonction 
 
 ```python
 def plus_moins(nombre):
@@ -393,7 +393,7 @@ La variable nombre sera associée à l'objet entier de valeur 17 dans la fonctio
 >Les *paramètres* d'une fonction sont des **noms** de variables qui ne seront connus qu'à l'intérieur de la fonction. À l'exécution de la fonction, le nom de chaque paramètre est associé à l'objet correspondant.
 {: .attention}
 
-### Retour d'une fonction 
+#### Retour d'une fonction 
 
 Toute fonction peut rendre une valeur. On utilise le mot-clef `return` suivi de la valeur à rendre pour cela. Le fonction suivante rend le double de la valeur de l'objet passé en paramètre:
 
@@ -420,7 +420,7 @@ Cette valeur retournée est utilisée par la commande `print` pour être affich�
 >Les noms de paramètres d'une fonction et les variables déclarée à l'intérieur de la fonction n'existent qu'à l'intérieur de celle-ci. En dehors de ce blocs, ces variables n'existent plus.
 {: .attention}
 
-### Fonctions v.s. méthodes 
+#### Fonctions v.s. méthodes 
 
 Python vient avec de nombreuses fonctions que l'on peut utiliser. Vous en connaissez déjà comme `range`, `len`, ou encore `type`.
 
@@ -444,7 +444,7 @@ print(un_indice)
 print(ma_liste[un_indice])
 ```
 
-## Visibilité d'un objet
+### Visibilité d'un objet
 
 Les noms des objets sont accessibles à l’intérieur du ''bloc unitaire'' dans lequel ils sont déclarés ainsi que dans les blocs unitaires contenus dans celui-ci. Les blocs unitaires sont :
 
@@ -479,9 +479,9 @@ print(parametre)
 >Les noms déclarés dans une fonction, y compris ses paramètres, restent dans la fonction.
 {: .attention}
 
-## Récursion 
+### Récursion 
 
-### Modification d'objets dans une fonction 
+#### Modification d'objets dans une fonction 
 
 Dans un programme récursif, on a souvent besoin de modifier le même objet plusieurs fois. Même si la fonction récursive ne rend rien. Pour cela, on doit modifier les objets passés en paramètres. Pour comprendre comment cela marche, considérez la fonction suivante :
 
@@ -505,7 +505,7 @@ print(x)
 
 La figure précédente montre ce qu'il s'est passé dans le monde des noms et des objets. Il reste un objet sans nom après l'exécution de la fonction (un entier valant 9), il est détruit. On a pu ainsi modifier un objet sans utiliser de retour de fonction. C'est une technique puissante mais à n'utiliser qu'à bon escient.
 
-## Modules
+### Modules
 
 Un *module* (aussi appelé *bibliothèque* ou *library*) est un ensemble de fonctions utiles, utilisables dans de nombreux programmes. Plutôt que de refaire à chaque fois ces fonctions ou (c'est pire) de les copier/coller dans chaque programme, on les importe directement pour les utiliser.
 
@@ -517,7 +517,7 @@ Un *module* (aussi appelé *bibliothèque* ou *library*) est un ensemble de fonc
 
 Pour utiliser un module, il faut commencer par l'importer avec la commande `import`. Par exemple avec le module `math`.
 
-### Importation directe du module
+#### Importation directe du module
 
 On met le nom complet avant chaque appel :
 
@@ -527,7 +527,7 @@ pi_sur_deux = math.pi / 2 #PI est défini dans le module math
 x = math.cos(pi_sur_deux) #on utilise la fonction cosinus du module math
 ```
 
-### Importation d'une méthode particulière.
+#### Importation d'une méthode particulière.
 
 Ceci peut être dangereux si des fonctions différentes possèdent le même nom.
 
@@ -536,7 +536,7 @@ from math import cos, pi #importation directe de cos et de pi
 x = cos(pi / 2)
 ```
 
-### Importation de toutes les fonctions du modules
+#### Importation de toutes les fonctions du modules
 
 Déconseillée dans la plupart des cas car on ne sait pas vraiment ce qui a été importé.
 
@@ -545,7 +545,7 @@ from math import *
 y = log(e)
 ```
 
-### Modules utiles
+#### Modules utiles
 
 De nombreux modules existent pour python et permettent de réaliser aisément de très nombreuses tâches. Pour python, si avez les droits administrateurs on pourra utiliser l'utilitaire [pip](https://pypi.org/project/pip/) qui est l'installeur de package python3 (attention, si vous tapez juste pip, vous installerez des module pour la version 2 de python...). 
 
@@ -555,7 +555,7 @@ Si vous n'avez pas de droits administrateur, ou pour une utilisation plus "pro" 
 >Si vous utilisez un interpréteur qui s'appelle `python3` et pas `python`, il est fort possible que le programme `python`(sans le 3) soit un interpréteur de la version 2 de python. Il vous faut alors utiliser la commande `pip3`et non `pip` (qui sera elle associée à l'interpréteur `python`)
 {: .attention}
 
-#### Le module random
+##### Le module random
 
 > <https://docs.python.org/3/library/random.html>
 
@@ -564,7 +564,7 @@ Regardez [ces exemples](https://python.sdv.univ-paris-diderot.fr/08_modules/#85-
 
 Installé par défaut, il permet notamment de mélanger les éléments d'une liste, générer un nombre aléatoire, choisir un élément aléatoire dans une liste... Vous pouvez même simuler une loi Gaussienne (si, si).
 
-#### openpyxl 
+##### openpyxl 
 
 > <http://openpyxl.readthedocs.org>
 
@@ -573,20 +573,20 @@ Permet de manipuler des [fichiers excel avec python](https://automatetheboringst
 Il s'installe avec pip : `pip install openpyxl` (ou `sudo pip3 install openpyxl` suivi de votre mot de passe si vous êtes sous unix/mac).
 
 
-#### matplotlib 
+##### matplotlib 
 
 > <http://matplotlib.org>
 
 
 Installé par défaut si vous utilisez l'interpréteur d'[anaconda](https://www.anaconda.com/), ce module permet d'afficher des graphiques en python. 
 
-#### Jupyter 
+##### Jupyter 
 
 > <http://jupyter.org>
 
 Permet d'utiliser python de façon interactive (il s'installe aisément avec pip par exemple) 
 
-# Retour sur les objets 
+## Retour sur les objets 
 
 Comme on l'a vu les objets sont partout en python, qu'ils soient `int`, `str`, `float`, ou même des fonctions.
 Si vous avez bien compris l'exemple de la récursion et de la modification d'un objet passé en paramètre, alors vous vous demandez peut-être "pourquoi ne pas envoyer une fonction en paramètre d'une autre fonction ?"
@@ -606,12 +606,12 @@ print(calcul(produit, 8)) #On envoie l'objet associé au nom 'produit' à la fon
 
 Ce programme affichera alors 42 ! Essayez-le pour vous en persuader.
 
-# Les fichiers : lecture, écriture 
+## Les fichiers : lecture, écriture 
 
 > <https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files>
 
 
-## Lecture 
+### Lecture 
 
 Pour lire le fichier ligne par ligne :
 
@@ -646,7 +646,7 @@ print(nombre_mots)
 ```
 
 
-## Écriture 
+### Écriture 
 
 Pour lire-écrire, ouvrez le fichier avec 'r+' au lieu de 'r'. Pour l'écriture seule, 'w'.
 

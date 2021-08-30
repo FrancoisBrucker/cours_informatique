@@ -6,11 +6,12 @@ tags: informatique graphes
 author: "François Brucker"
 ---
 
-## But
+## Introduction
 
-Ce cours, magistral et introductif, à pour but d'exposer quelques définition, concepts et méthodes de résolution de problèmes propre aux graphes.
+Ce cours, introductif, à pour but d'exposer quelques définitions, concepts et méthodes de résolution de problèmes propre aux graphes.
 
-Il a pour principal objectif d'allumer la petite flamme de l'intrêt pour cette structure à la fois riche en problèmes intéressants et en solutions élégantes permet — via une modélisation adaptée — d'être au cœur de nombres d'applications de tous les jours.
+Il a pour principal objectif d'allumer la petite flamme de l'intérêt pour cette structure à la fois riche en problèmes intéressants et en solutions élégantes ; à la fois théorique — à l'intersection des mathématiques discrètes et de l'informatique théorique — et au cœur de nombre d'applications de tous les jours.
+
 
 Le cours va être séparé en petites entités qui se suivent pour former un tout qu'on espère cohérent.
 

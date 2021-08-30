@@ -23,38 +23,30 @@ Chaque partie est organisée en 3 types d'enseignements :
 
 ## Séances
 
+> TBD : stay tuna pour le support de cours.
+{: .danger}
+
+
 ### C, M :  graphes
 
-> Par François Brucker
-
+> En amphi avec un tableau si on a de la chance.
+> 
 Le support du cours d'[Introduction aux graphes]({% link cours/graphes/index.md %})
+
+### ST : parcours d'arbre
+
+> en TD
+
+### ST et SM : arbres de recherche
+
+> en autonomie avec du code python.
+
 
 ### C, M :  flots
 
-> Par François Brucker
+> En amphi avec un tableau si on a de la chance.
 
-> TBD
-{: .danger}
-
-### ST et SM : flots 1/2 et 2/2
-
-> Par Pascal Préa
-
-> TBD
-{: .danger}
+### ST : flots 
 
 
-[les sujets des ST et SM]({{ "https://wiki.centrale-marseille.fr/informatique/tc_info:2020_td-tp_flo" }})
-
-
-### ST : parcours de graphes
-
-> Par Pascal Préa
-
-[sujet de la ST]({% link cours/graphes/parcours_graphes.md %})
-
-### ST : Arbres de recherche
-
-> Par Pascal Préa
-
-[Le sujet de la ST](https://wiki.centrale-marseille.fr/informatique/tc_info:2020_td-tp_abr).
+### ST : chemin de poids min
