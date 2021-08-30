@@ -1,7 +1,7 @@
 ---
 layout: page
 title:  Bases de python
-tags: langage python
+categories: langage python
 authors: 
     - Augustin Agbo-Kpati
     - François Brucker

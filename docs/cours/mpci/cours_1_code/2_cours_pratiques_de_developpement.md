@@ -24,7 +24,7 @@ Le langage d'application n'a que peut d'intérêt en soit. On choisit celui qui 
 
 ### un interpréteur python qui fonctionne
 
-VOus pouvez soit utiliser l'interpréteur de votre système soit l'installer à la main.Une solution courante et pratique est d'installer [Anaconda](https://www.anaconda.com/) (voir [le début de ce tuto]({% link cours/tuto/anaconda-pycharm-pytest.md %}))
+VOus pouvez soit utiliser l'interpréteur de votre système soit l'installer à la main.Une solution courante et pratique est d'installer [Anaconda](https://www.anaconda.com/) (voir [le début de ce tuto]({% post_url tutos/python/2021-08-20-installation-de-python %})
 
 
 ### interpréteur python

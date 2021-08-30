@@ -1,7 +1,7 @@
 ---
 layout: page
 title:  Installation de python
-tags: installation python terminal
+categories: installation python terminal
 authors: 
     - François Brucker
 ---

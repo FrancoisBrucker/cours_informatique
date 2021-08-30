@@ -1,7 +1,7 @@
 ---
 layout: page
 title:  "Format markdown"
-category: langage markdown
+categories: langage markdown
 tags: informatique cours 
 ---
 
@@ -11,35 +11,41 @@ Une introduction au format markdown. C'est le langage que nous utiliserons major
 
 ## Qu'est-ce ?
 
-[Markdown](https://fr.wikipedia.org/wiki/Markdown) est un format de fichier texte, donc éditable par tout éditeur de texte. L'extension de fichier est *".md"*.
+[Markdown](https://fr.wikipedia.org/wiki/Markdown) est un format de fichier texte, donc modifiable par tout éditeur de texte. L'extension de fichier est *".md"*.
 
 Il est facilement lisible dans un éditeur de texte, et il existe de nombreuses façon de l'exporter que ce soit en html (pour l'ouvrir avec un navigateur comme chrome ou firefox) ou en pdf.
 
-> Tout ce site a par exemple été écrit en markdown puis transformé en html grace à [jekyll](https://jekyllrb.com/). Le code source du site est [visible](https://github.com/FrancoisBrucker/cours_informatique), en particulier le code source de [ce fichier](https://github.com/FrancoisBrucker/cours_informatique/blob/master/docs/tutos/_posts/2021-08-30-format-markdown.md) (cliquez sur le bouton `raw` à droite, juste avant que le fichier ne soit représenté).
+> Tout ce site a par exemple été écrit en markdown puis transformé en html grâce à [jekyll](https://jekyllrb.com/). Le code source du site est [visible](https://github.com/FrancoisBrucker/cours_informatique), en particulier le code source de [ce fichier](https://github.com/FrancoisBrucker/cours_informatique/blob/master/docs/tutos/_posts/2021-08-30-format-markdown.md) (cliquez sur le bouton `raw` à droite, juste avant que le fichier ne soit représenté).
 
 ## syntaxe
 
 Markdown permet facilement d'écrire des titres, des liste, mettre des choses en exergue, etc.
 
-* [Une liste de ces possibilités](https://guides.github.com/features/mastering-markdown/).
-* une [cheat sheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
-* [Une introduction en français](https://docs.zettlr.com/fr/reference/markdown-basics/)
+> Pour une introduction et une liste des possibilités offertes, n'hésitez pas à consulter le site : <https://www.markdownguide.org/>
 
-> **Attention** : le format markdown possède plein de variantes. Une variante populaire est celle de github, mais sachez qu'il en existe de nombreuses, chacune apportant ses spécificités.
+Le format markdown est basique. Il possède plein de variantes qui permettent d'étendre ses fonctionnalités. Les principales variantes utilisées sont :
+
+* celle de [github](https://guides.github.com/features/mastering-markdown/).
+* le [kramdown](https://kramdown.gettalong.org/documentation.html).
+
+
+> Nous utilisons pour ce site le [kramdown](https://kramdown.gettalong.org/documentation.html) qui est une extension du markdown et est interprété pour le générateur desite statique [jekyll](https://jekyllrb.com/).
+{: .attention}
+
 
 ## markdown avec vscode
 
-<https://code.visualstudio.com/docs/languages/markdown>
+> <https://code.visualstudio.com/docs/languages/markdown>
 
 ### extensions
 
-On peut ajouter des extensions pour faciliter l'écriture en markdown :
+vscode possède de nombreux plugins markdown. qui facilitent l'écriture en markdown. On peut par exemple citer :
 
 * [Markdown All in One](https://github.com/yzhang-gh/vscode-markdown). Dans les préférences du module, on décoche *Markdown > Extenstion > Math:Enabled*. Les maths seront en effet utilisées avec le module suivant
 * [markdownlint](https://learnbyexample.github.io/customizing-pandoc/) un linter pour écrire du joli markdown.
 * [Markdown+Math](https://github.com/goessner/mdmath) pour gérer les formules mathématiques comme :
-  * $\frac{1}{2}$
-  * $$ \sum_{i=1}^n i^2$$
+  * $$\frac{1}{2}$$
+  * $$\sum_{i=1}^n i^2$$
 * [Markdown Preview Enhanced](https://shd101wyy.github.io/markdown-preview-enhanced/#/). Permet d'avoir des feuilles de styles jolies lorsque l'on converti du markdown.
 
 ### export et preview
@@ -62,13 +68,14 @@ Quelques aides :
 * Un [résumé](http://tug.ctan.org/info/undergradmath/undergradmath.pdf) des possibibités
 * un [tuto](https://www.science-emergence.com/Articles/Formules-math%C3%A9matiques-sous-LaTeX/) Latex contenant aussi des instructions pour les équations.
 
-**Remarques** :
 
-* Pour le markdown, il faudra  utiliser  `$$`et `$` (les notation Tex) plutôt que `\[` et  `\(` (notations latex).
-* Lorsque vous faites de l'exportation en html, les mathématiques sont représentées en utilisant [Mathjax](https://www.mathjax.org/) (voir [une aide](ttps://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference) de mathjax)
-* L'ancêtre de [Latex](https://fr.wikipedia.org/wiki/LaTeX) : [Tex](https://fr.wikipedia.org/wiki/TeX), a été créé par le célébrissime informaticien [Donald Knuth](https://fr.wikipedia.org/wiki/Donald_Knuth) par ce qu'il n'existait rien sur ordinateur à l'époque pour écrire [ses livres](https://fr.wikipedia.org/wiki/The_Art_of_Computer_Programming) en respectant une typographie correcte.
+>* Pour le markdown, il faudra  utiliser  `$$`et `$` (les notation Tex) plutôt que `\[` et  `\(` (notations latex).
+>* Lorsque vous faites de l'exportation en html, les mathématiques sont représentées en utilisant [Mathjax](https://www.mathjax.org/) (voir [une aide](ttps://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference) de mathjax)
+>* L'ancêtre de [Latex](https://fr.wikipedia.org/wiki/LaTeX) : [Tex](https://fr.wikipedia.org/wiki/TeX), a été créé par le célèbre informaticien [Donald Knuth](https://fr.wikipedia.org/wiki/Donald_Knuth) par ce qu'il n'existait rien sur ordinateur à l'époque pour écrire [ses livres](https://fr.wikipedia.org/wiki/The_Art_of_Computer_Programming) en respectant une typographie correcte.
 
->**Attention**, il ne faut pas mettre d'espace après le premier `$` et avant le dernier `$` sinon, pandoc ne reconnaîtra pas que ce sont des équations que vous voulez écrire. Ansi `$ \frac{1}{2}$` affichera `$ \frac{1}{2}$`, alors que `$\frac{1}{2}$` affichera $\frac{1}{2}$.
+
+>Il ne faut pas mettre d'espace après le premier `$` et avant le dernier `$` sinon, pandoc ne reconnaîtra pas que ce sont des équations que vous voulez écrire. Ansi `$ \frac{1}{2}$` affichera `$ \frac{1}{2}$`, alors que `$\frac{1}{2}$` affichera $\frac{1}{2}$.
+{: .attention}
 
 ## export
 
@@ -111,14 +118,13 @@ Pour l'export en html, j'utilise la commande suivante qui m'écrit de jolies éq
   * `--metadata pagetitle="titre page"`. *Un paramètre avec un argument*. En combinaison avec le paramètre `standalone`. Permet de donner un titre à la page html, ici "titre page".
   * `--metadata charset="UTF-8"`. *Un paramètre avec un argument*. Permet de spécifier l'encodage des caractères (voir cours sur les fichiers). Devrait permettre de voir les accents.
 
->**Remarque** : Si vous avez à compiler plein de fois votre page, n'oubliez pas qu'utiliser la *flèche du haut* dans un terminal rappelle la dernière commande utilisée. Donc même une commande avec plein de paramètres est facile à réutiliser. Il suffit d'appuyer sur la flèche du haut.
+>Si vous avez à compiler plein de fois votre page, n'oubliez pas qu'utiliser la *flèche du haut* dans un terminal rappelle la dernière commande utilisée. Donc même une commande avec plein de paramètres est facile à réutiliser. Il suffit d'appuyer sur la flèche du haut.
 
 Lorsque je fais mes tests en html, après chaque re-compilation je recharge la page avec *"F5"* ou *"ctrl+R"* dans le navigateur. Le process est **très rapide**.
 
-### pimp my markdown
+## misc
 
-TBD : mais ça à l'air fascinant
+Quelques liens potentiellement intéressant :
 
-<https://medium.com/@pierrepaci/enhance-your-markdown-experience-using-vscode-3caf489888b8>
-
-<https://learnbyexample.github.io/customizing-pandoc/>
+* pimp my markdown dans vsc : <https://medium.com/@pierrepaci/enhance-your-markdown-experience-using-vscode-3caf489888b8>
+* pimp my pandoc : <https://learnbyexample.github.io/customizing-pandoc/>

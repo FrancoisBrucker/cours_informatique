@@ -18,8 +18,8 @@ Pour éviter de retaper tous ces tests à chaque modification du code (ce qui ar
 
 De nombreux frameworks de tests existent pour python, le plus connu étant certainement [unittest](https://docs.python.org/3/library/unittest.html), ou encore [nose](http://nose.readthedocs.io/en/latest/). Nous allons utiliser [pytest](http://pytest.org).
 
-> **Nota Bene :**
 >Une très bonne introduction au développement par les tests est l'inusable Test Driven Development: By Example de Kent Beck. Tous les exemples sont en revanche en Java.
+>
 > Sinon en python mais orienté développement web, il y a le bon (mais il faut s'accrocher si on débute) "Test-Driven Development with Python" de Harry J.w Percival.
 
 
@@ -102,7 +102,7 @@ Puis nous allons demander à [Pycharm](https://www.jetbrains.com/pycharm/) d'ex�
 
 
 
- Pour cela, créez un environnement d'exécution (expliqué dans ce [tuto]({% link cours/tuto/anaconda-pycharm-pytest.md %})) et créez une configuration  *pyhton test > pytest*. Ici, les paramètres dont nous aurons besoin sont :
+ Pour cela, créez un environnement d'exécution (expliqué dans ce [tuto]({% post_url tutos/editeur/pycharm/2021-08-30-configuration-pycharm %})) et créez une configuration  *pyhton test > pytest*. Ici, les paramètres dont nous aurons besoin sont :
  
   - le champ *name*, qui donne un nom à notre contexte. Par exemple *"mes tests"*
   - le champ *target*, qui spécifie quel script utiliser. Cliquez tout à droite de ce champ sur un petit bouton avec *…* puis choisissez le fichier `test_aide_mathematiques.py`

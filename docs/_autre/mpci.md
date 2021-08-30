@@ -6,7 +6,7 @@ category: cours
 
 ## Introduction
 
-> TBD : cours 2020/2021. PAs à jour.
+> TBD : cours 2020/2021. Pas à jour.
 {: .danger}
 
 Cours de programmation 2 en S2 MPCI.
@@ -95,7 +95,7 @@ Chaque séance, à partir de la deuxième, commence par un test de 15min qui por
 
 ### Tuto markdown
 
-[Le format markdown]({% link cours/tuto/format_markdown.md %})
+[Le format markdown]({% post_url tutos/2021-08-30-format-markdown %})
 
 ### tuto python
 
