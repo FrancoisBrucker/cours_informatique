@@ -1,92 +1,39 @@
 ---
 layout: page
-title:  "MD2 : web serveur"
+title:  "Méthode de développement"
 category: cours
 ---
 
-## Introduction
 
-Cours d'apprentissages des différents outils de développement et les bases du web.
 
-## Préparation d'un windows
+## Prérequis
 
-  [Installation w10]({% link cours/dfs/installation_W10.md %})
+Les connaissances et les outils que vous devez avoir pour commencer le cours.
 
-## git et github
+### ordinateur pour le développement
 
-  [git et github]({% link cours/dfs/git_et_github.md %})
+Vous devrez écrire du code et installer des applications durant ce cours. Vous devez donc avoir un ordinateur portable en état de marche et des connaissance minimale sur son fonctionnement. 
 
-  [les commandes indispensables]({% link cours/dfs/git_commands.md %})
+Plus précisément, peu importe le système d'exploitation (Linux, Mac ou windows) vous devez :
+* avoir un système sain. Dans le doute [faire une installation fraîche de tout votre système]({% post_url tutos/systeme/2021-09-01-installation-ordinateur %})
+* connaitre les bases d'un système d'exploitation, [les fichiers et les dossiers]({% post_url tutos/systeme/2021-08-24-fichiers-navigation %})
+* avoir accès à un [terminal]({% post_url tutos/systeme/2021-08-24-terminal %})
 
-  [git rebase, la tronçonneuse magique]({% link cours/dfs/git_rebase.md %})
+### bases en programmation
 
-  [les commits atomiques]({% link cours/dfs/git_commits_atomiques.md %})
+Vous devez avoir déjà utilisé un langage de programmation, idéalement python
 
-## shell
+## Plan
 
-  [shell]({% link cours/dfs/le_shell.md %})
+> TBD : [vieux cours à remanier]({% link cours/dfs/index.md %})
+{: .note}
 
-## ssh
+### outils de développements
 
-  [SSH]({% link cours/dfs/ssh.md %})
+On considère que les prérequis sont satisfaits. Première journée consacrée à la description des objectifs et à l'utilisation d'un serveur distant avec et sans git.
 
-  [Le chiffrement RSA ]({% link cours/dfs/ssh_rsa.md %}) (/!\ des maths)
+* [git et github]({% link cours/git_et_github/index.md %})
+* [ssh et shell]({% link cours/ssh_et_shell/index.md %})
 
-  [Copie sécurisée scp]({% link cours/dfs/ssh_scp.md %})
 
-## **Outils de développements web**
 
-## Jekyllme
-
-  [Jekyll]({% link cours/dfs/jekyll.md %})
-
-## html/css/js/imports
-
-  [html/css/js]({% link cours/dfs/html_css_js.md %})
-
-  [imports]({% link cours/dfs/yarn.md %})
-
-## méthodes de packaging
-
-  [Packaging]({% link cours/dfs/packaging.md %})
-
-  [Webpack]({% link cours/dfs/webpack.md %})
-
-  [Sass]({% link cours/dfs/sass.md %})
-
-## Vue.js
-
-  [Introduction à Vue.js 3.0]({% link cours/dfs/vuejs.md %})
-
-  [Application Todo list avec Vue]({% link cours/dfs/todolist_vuejs.md %})
-
-## Web seveur
-
-  [Serveurs web]({% link cours/dfs/web_serveur.md %})
-  
-  [Frontend / Backend]({% link cours/dfs/front_back.md %})
-  
-  [Tests Unitaires]({% link cours/dfs/Test_Unitaire.md %})
-  
-  [Tests Selenium]({% link cours/dfs/selenium.md %})
-  
-  [Routes]({% link cours/dfs/routes.md %})
-  
-## Cookies
-
-  [Cookies]({% link cours/dfs/cookies.md %})
-
-## Bases de données
-
-  [Bases de données relationnelles]({% link cours/dfs/bases_de_donnees.md %})
-
-  [GrahQL]({% link cours/dfs/graphql.md %})
-
-## Projets
-
-  [OvhShare](https://github.com/BaptisteMahe/my-drive)
-  
-  
-  [Squizz](https://github.com/LeoLaurent/projet-dfs-quizz-vue2)
-
-  [FastFlash](https://github.com/fanismichalakis/fastflash)

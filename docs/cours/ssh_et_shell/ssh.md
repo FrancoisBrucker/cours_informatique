@@ -31,7 +31,7 @@ Vous devriez avoir une phrase vous disant que l’agent n’a pas d’identité.
 Avec SSH, l'authentification peut se faire sans l'utilisation de mot de passe ou de phrase secrète en utilisant la cryptographie asymétrique. Le protocole utilise deux clés complémentaires, la clé publique et la clé privée.
 La clé publique est distribuée sur les systèmes auxquels on souhaite se connecter. La clé privée, qu'on prendra le soin de protéger par un mot de passe (elle est donc stockée cryptée), reste uniquement sur le poste à partir duquel on se connecte. L'utilisation de l’agent ssh permet de stocker le mot de passe de la clé privée pendant la durée de la session utilisateur.
 
-Pour plein d'info et d'explication sur le chiffrement des clés voir [ici]({% link cours/dfs/ssh_rsa.md %}) 
+Pour plein d'info et d'explication sur le chiffrement des clés voir [ici]({% link cours/ssh_et_shell/ssh_rsa.md %}) 
 ## Générer une clé
 
 ### Et ne pas se la faire voler par des hackers malveillants
@@ -132,5 +132,5 @@ On pourra ensuite accéder à ovh1 depuis le terminal :
   $ mon_herbe@ovh1.ec-m.fr
 ~~~
 
-Serveur et Identifiant que l'on utilisera pour [la suite du cours]({% link cours/dfs/ssh_scp.md %}).
+Serveur et Identifiant que l'on utilisera pour [la suite du cours]({% link cours/ssh_et_shell/ssh_scp.md %}).
 

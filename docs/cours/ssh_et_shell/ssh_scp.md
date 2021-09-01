@@ -11,7 +11,7 @@ authors:
 
 # Copie sécurisée via le protocole SSH 
   
-Pour créer sa clé et s'identifier sur ovh1 voir [le début du cours]({% link cours/dfs/ssh.md %}). 
+Pour créer sa clé et s'identifier sur ovh1 voir [le début du cours]({% link cours/ssh_et_shell/ssh.md %}). 
 
 Une fois connecté, vous pouvez trouver le dossier `www`. 
 C'est ici que vous allez mettre le contenu de votre site. 
