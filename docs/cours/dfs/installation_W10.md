@@ -1,6 +1,6 @@
 ---
 layout: page
-title:  "Installation W10 pour le développement"
+title:  "Installation d'un nouveau système"
 category: tutorial
 tags: combat w10
 author: "François Brucker"
@@ -10,7 +10,9 @@ author: "François Brucker"
 # Préparation
 
 Pour éviter tout conflit avec une configuration existante, on utilisera une installation fraîche de la dernière version de W10.
-On va suivre la procédure de [mirosoft](https://support.microsoft.com/fr-tn/help/4000735/windows-10-reinstall)
+On va suivre la procédure de [mirosoft](https://support.microsoft.com/fr-fr/windows/r%C3%A9installer-windows-d8369486-3e33-7d9c-dccc-859e2b022fc7#ID0EBD=Windows_10) en suivant les instructions de *Installer une nouvelle installation Windows 10 à l’aide d’un support d’installation*.
+
+
 Pour éviter tout soucis ou regrets :
 
 - **notez** le numéro de série de votre W10 ou ayez votre compte d'activé

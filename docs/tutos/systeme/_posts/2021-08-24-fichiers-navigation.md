@@ -35,7 +35,7 @@ Ouvrez une nouvelle fenêtre du *Finder* et choisissez [le mode d'affichage des 
 on voit le chemin sur la barre du chemin (si c'est pas un dossier spécial)
 
 > TBD
-{: .danger}
+{: .note}
 
 {% enddetails %}
 
