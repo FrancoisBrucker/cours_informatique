@@ -1,4 +1,242 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/cours_informatique/feed.xml" rel="self" type="application/atom+xml" /><link href="/cours_informatique/" rel="alternate" type="text/html" /><updated>2021-08-30T11:44:43+00:00</updated><id>/cours_informatique/feed.xml</id><title type="html">cours d’informatique</title><subtitle>Support de cours/td d'informatique à l'école centrale marseille.</subtitle><entry><title type="html">Format markdown</title><link href="/cours_informatique/tutos/langage/markdown/2021/08/30/format-markdown.html" rel="alternate" type="text/html" title="Format markdown" /><published>2021-08-30T00:00:00+00:00</published><updated>2021-08-30T00:00:00+00:00</updated><id>/cours_informatique/tutos/langage/markdown/2021/08/30/format-markdown</id><content type="html" xml:base="/cours_informatique/tutos/langage/markdown/2021/08/30/format-markdown.html">&lt;p&gt;Une introduction au format markdown. C’est le langage que nous utiliserons majoritairement pour écrire les cours.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/cours_informatique/feed.xml" rel="self" type="application/atom+xml" /><link href="/cours_informatique/" rel="alternate" type="text/html" /><updated>2021-09-01T12:43:41+00:00</updated><id>/cours_informatique/feed.xml</id><title type="html">cours d’informatique</title><subtitle>Support de cours/td d'informatique à l'école centrale marseille.</subtitle><entry><title type="html">Nouvelle installation de son système</title><link href="/cours_informatique/tutos/systeme/installation/2021/09/01/installation-ordinateur.html" rel="alternate" type="text/html" title="Nouvelle installation de son système" /><published>2021-09-01T00:00:00+00:00</published><updated>2021-09-01T00:00:00+00:00</updated><id>/cours_informatique/tutos/systeme/installation/2021/09/01/installation-ordinateur</id><content type="html" xml:base="/cours_informatique/tutos/systeme/installation/2021/09/01/installation-ordinateur.html">&lt;p&gt;Comment bien préparer son ordinateur pour faire du développement. On ne montrera ici que le départ, c’est à dire l’installation fraiche d’un système sur lequel on pourra ensuite installer — proprement — les divers outils et logiciels utiles pour le développement.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;Pouvoir développer des logiciels et exécuter ses propres programmes nécessite quelques connaissances et compétences.&lt;/p&gt;
+
+&lt;p&gt;Rien d’insurmontable, mais si on ne le fait pas on a vite un système instable où rien de marche comme il faudrait.&lt;/p&gt;
+
+&lt;p&gt;Il faut résister à la tentation de faire n’importe quoi en espérant que ça passe car, au bout du compte, on perd plus de temps à réparer qu’on en gagne à installer sans préparation.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Il est recommandé de partir d’un système propre est vierge. En effet, si quelque chose ne fonctionne pas c’est souvent parce qu’on a précédemment installé quelque chose d’incompatible en suivant sans comprendre un tuto de l’internet.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;A la fin de ce tuto vous devez avoir :&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;un système d’installation sain&lt;/li&gt;
+  &lt;li&gt;un gestionnaire de package&lt;/li&gt;
+  &lt;li&gt;un éditeur de texte&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;un-nouveau-compte&quot;&gt;Un nouveau compte&lt;/h2&gt;
+
+&lt;p&gt;Si vous ne vous pouvez pas réinstaller un nouveau système, pour que tout se passe au mieux assurez vous que votre compte :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;soit un compte administrateur (pouvant exécuter sudo si vous êtes sous linux)&lt;/li&gt;
+  &lt;li&gt;votre login ne doit contenir aucun espace, ni accent.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote class=&quot;attention&quot;&gt;
+  &lt;p&gt;le login est différent de votre nom.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;compte admin :  sans accent ni espace&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;administrateur sous windows/mac&lt;/li&gt;
+  &lt;li&gt;pouvant exécuter sudo sous linux&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Il peut être utile d’avoir un compte uniquement pour travailler/développer et un autre pour jouer. Ceci évitera déjà les conflits de configuration.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;un-nouveau-système&quot;&gt;Un nouveau système&lt;/h2&gt;
+
+&lt;p&gt;Il est souvent possible de réinstaller un nouveau système en conservant vos données. C’est souvent très pratique mais pour une première fois, je vous conseille de faire une installation sur un disque vierge, c’est à dire en ne &lt;strong&gt;conservant rien&lt;/strong&gt; de ce qu’il y avait sur votre disque dur.&lt;/p&gt;
+
+&lt;p&gt;Installer un nouveau système nécessite de reformater votre disque dur. Avant cela il vous faut faire trois choses :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;sauvegardez vos données sur une clé pour que vous puissiez facilement les remettre sur votre nouveau système&lt;/li&gt;
+  &lt;li&gt;vérifier les différentes applications actuellement installées et listez celles que vous voulez à nouveau installer.&lt;/li&gt;
+  &lt;li&gt;lister les différents compte et mots de passe dont vous aurez besoin (wifi, steam, google, …)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Avec le cloud (&lt;a href=&quot;https://support.apple.com/fr-fr/guide/icloud/welcome/icloud&quot;&gt;icloud&lt;/a&gt; sur mac ou &lt;a href=&quot;https://www.microsoft.com/fr-fr/microsoft-365/onedrive/online-cloud-storage&quot;&gt;onedrive&lt;/a&gt; sous windows) les données personnelles sont souvent déjà sauvegardées. Mais il faut se souvenir du login/mot de passe pour réactiver le tout sur le nouveau système.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote class=&quot;attention&quot;&gt;
+  &lt;p&gt;Notez votre wifi et son mot de passe, ou mieux connectez le réseau directement avec un fil si possible pour votre installation.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;linux&quot;&gt;Linux&lt;/h3&gt;
+
+&lt;details&gt;&lt;summary&gt;détails&lt;/summary&gt;&lt;div&gt;
+&lt;blockquote class=&quot;note&quot;&gt;
+  &lt;p&gt;TBD&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;/div&gt;&lt;/details&gt;
+
+&lt;h3 id=&quot;mac&quot;&gt;Mac&lt;/h3&gt;
+&lt;details&gt;&lt;summary&gt;détails&lt;/summary&gt;&lt;div&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;https://support.apple.com/fr-fr/guide/mac-help/mchlp1599/mac&quot;&gt;https://support.apple.com/fr-fr/guide/mac-help/mchlp1599/mac&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Le plus simple est d’installer une nouvelle version du système en utilisant internet. Redémarrez votre ordinateur en maintenant enfoncé les touches :  &lt;em&gt;“Maj + Option + Commande + R enfoncées”&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote class=&quot;attention&quot;&gt;
+  &lt;p&gt;Notez votre login et mot de passe icloud. Vous en aurez besoin à l’installation&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;finder&quot;&gt;finder&lt;/h4&gt;
+
+&lt;p&gt;Le finder est l’outil principal qui vous permettra de naviguer dans les fichiers. Pour qu’il soit un peut plus facile d’y naviguer :&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;em&gt;menu présentation &amp;gt; personnaliser la barre d’outils…&lt;/em&gt; ajoutez le “chemin” (trois barres horizontales) aux outils du finder en le glissant/déposant.&lt;/li&gt;
+  &lt;li&gt;ajoutez le dossier “&lt;em&gt;Départ&lt;/em&gt;”, aussi appelé “&lt;em&gt;maison&lt;/em&gt;” (le dossier principal de l’utilisateur) et le dossier “&lt;em&gt;applications&lt;/em&gt;” aux éléments à la gauche du finder. Pour cela, choisissez le dossier dans le menu &lt;em&gt;Aller&lt;/em&gt; puis  avec l’outils chemin que l’on vient d’ajouter sélectionnez le dossier parent(Par exemple pour la maison, le dossier parent est “Utilisateurs” et pour application, le dossier parent est “Macintosh HD”). Vous pouvez ensuite glisser/déposer le dossier à gauche du finder.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;terminal&quot;&gt;terminal&lt;/h4&gt;
+
+&lt;p&gt;Le terminal va être un outil fondamental en développement. Ajoutez le aux icônes du finder. Il est dans le dossier Utilitaires de application.&lt;/p&gt;
+
+&lt;h4 id=&quot;drivers&quot;&gt;drivers&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;imprimante&lt;/li&gt;
+  &lt;li&gt;autres trucs bas niveau (icloud drive, tablette, …)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/div&gt;&lt;/details&gt;
+
+&lt;h3 id=&quot;windows&quot;&gt;Windows&lt;/h3&gt;
+
+&lt;details&gt;&lt;summary&gt;détails&lt;/summary&gt;&lt;div&gt;
+&lt;blockquote class=&quot;attention&quot;&gt;
+  &lt;p&gt;Notez le numéro de série de votre windows 10. Vous en aurez besoin à l’installation&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;On va suivre la procédure de &lt;a href=&quot;https://support.microsoft.com/fr-fr/windows/r%C3%A9installer-windows-d8369486-3e33-7d9c-dccc-859e2b022fc7#ID0EBD=Windows_10&quot;&gt;mirosoft&lt;/a&gt; en suivant les instructions de &lt;em&gt;Installer une nouvelle installation Windows 10 à l’aide d’un support d’installation&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h4 id=&quot;confidentialité&quot;&gt;confidentialité&lt;/h4&gt;
+
+&lt;p&gt;Une fois l’installation terminée, allez dans &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Démarrer &amp;gt; Paramètres &amp;gt; Confidentialité&lt;/code&gt; et vérifier pour chaque onglet à gauche que les paramètres d’envoi de vos données vous satisfont.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Pour les paramètres de sécurité, vous pouvez toujours aller voir la &lt;a href=&quot;https://www.cnil.fr/fr/reglez-les-parametres-vie-privee-de-windows-10-apres-installation&quot;&gt;cnil&lt;/a&gt; ou &lt;a href=&quot;http://www.win10.fr/reglages-confidentialite-windows10&quot;&gt;ce site&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;compte&quot;&gt;compte&lt;/h4&gt;
+
+&lt;p&gt;J’utilise un compte local et pas mon compte Microsoft pour me connecter. Assurez vous que le nom de votre compte ne contient aucun espace ou accent (on le voit avec l’explorateur de fichier &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;c:\Utilisateurs&lt;/code&gt;) et que c’est un compte administrateur.&lt;/p&gt;
+
+&lt;h4 id=&quot;windows-update&quot;&gt;Windows update&lt;/h4&gt;
+
+&lt;p&gt;Vérifier que votre système est à jour en cliquant sur &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Démarrer &amp;gt; Paramètres &amp;gt; mise à jour et sécurité &amp;gt; Windows update&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;version-du-système&quot;&gt;Version du système&lt;/h4&gt;
+
+&lt;p&gt;Pour connaître votre version : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Menu Démarrer &amp;gt; Paramètres &amp;gt; Système &amp;gt; information système&lt;/code&gt; Dans la partie Spécification de Windows.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Pour installer la wsl 2, il faut nécessairement avoir une version de w10 supérieure ou égale à la 2004.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;explorer&quot;&gt;explorer&lt;/h4&gt;
+
+&lt;p&gt;Affichez les fichier caché dans l’explorateur de fichiers. Cela va être utile à de nombreuses reprises. Pour cela, ouvrez un explorateur de fichier puis choisissez affichage et cochez la case &lt;em&gt;Éléments masqués&lt;/em&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;drivers&quot;&gt;drivers&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;carte graphique&lt;/li&gt;
+  &lt;li&gt;clavier/souris si nécessaire&lt;/li&gt;
+  &lt;li&gt;imprimante&lt;/li&gt;
+  &lt;li&gt;autres trucs bas niveau (icloud drive, tablette, …)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/div&gt;&lt;/details&gt;
+
+&lt;h2 id=&quot;applications-indispensables&quot;&gt;Applications indispensables&lt;/h2&gt;
+
+&lt;h3 id=&quot;un-navigateur&quot;&gt;Un navigateur&lt;/h3&gt;
+
+&lt;p&gt;Prenez celui de votre choix, personnellement j’utilise &lt;a href=&quot;https://www.google.com/intl/fr_fr/chrome/&quot;&gt;chrome&lt;/a&gt; que je mets en navigateur par défaut.&lt;/p&gt;
+
+&lt;h3 id=&quot;un-éditeur-de-texte&quot;&gt;Un éditeur de texte&lt;/h3&gt;
+
+&lt;p&gt;On en installera d’autres par la suite, mais il est toujours appréciable d’avoir un éditeur de texte sous la main pour modifier rapidement un fichier de conf.&lt;/p&gt;
+
+&lt;p&gt;Selon le système d’exploitation, mon éditeur à tout faire est différent :&lt;/p&gt;
+
+&lt;details&gt;&lt;summary&gt;Linux&lt;/summary&gt;&lt;div&gt;
+&lt;p&gt;Comme j’utilise linux essentiellement en ligne de commande, mon éditeur de choix est &lt;a href=&quot;https://www.vim.org/&quot;&gt;vim&lt;/a&gt;. Bon, il peut faire un peu peur mais si vous voulez faire de l’informatique votre métier et que vous devrez vous connecter sur des ordinateurs uni distant (un serveur web par exemple) connaitre vim est un gain de temps considérable.&lt;/p&gt;
+
+&lt;p&gt;Sinon, pourquoi pas &lt;a href=&quot;https://atom.io/&quot;&gt;Atom&lt;/a&gt; ?&lt;/p&gt;
+
+&lt;/div&gt;&lt;/details&gt;
+&lt;details&gt;&lt;summary&gt;Mac&lt;/summary&gt;&lt;div&gt;
+&lt;p&gt;J’utilise &lt;a href=&quot;https://macromates.com/&quot;&gt;Textmate&lt;/a&gt;.&lt;/p&gt;
+
+&lt;/div&gt;&lt;/details&gt;
+&lt;details&gt;&lt;summary&gt;Windows&lt;/summary&gt;&lt;div&gt;
+&lt;p&gt;J’utilise &lt;a href=&quot;https://notepad-plus-plus.org/downloads/&quot;&gt;notepad++&lt;/a&gt;.&lt;/p&gt;
+
+&lt;/div&gt;&lt;/details&gt;
+
+&lt;h3 id=&quot;un-gestionnaire-de-package&quot;&gt;Un gestionnaire de package&lt;/h3&gt;
+
+&lt;p&gt;N’installez &lt;strong&gt;RIEN&lt;/strong&gt; sans avoir un installeur de package qui vous permettra de savoir ce que vous avez installé et de mettre à jour le tout.&lt;/p&gt;
+
+&lt;details&gt;&lt;summary&gt;Linux&lt;/summary&gt;&lt;div&gt;
+&lt;p&gt;Déjà installé par défaut. Cela dépend de votre distribution linux, mais c’est souvent 
+&lt;a href=&quot;https://doc.ubuntu-fr.org/apt-get&quot;&gt;Apt-get&lt;/a&gt;. Donc rien à faire.&lt;/p&gt;
+
+&lt;/div&gt;&lt;/details&gt;
+
+&lt;details&gt;&lt;summary&gt;Mac&lt;/summary&gt;&lt;div&gt;
+&lt;p&gt;Pasz vraiment de choix, on installe &lt;a href=&quot;https://brew.sh/&quot;&gt;brew&lt;/a&gt; et plus vite que ça !&lt;/p&gt;
+
+&lt;/div&gt;&lt;/details&gt;
+
+&lt;details&gt;&lt;summary&gt;Windows&lt;/summary&gt;&lt;div&gt;
+&lt;p&gt;Comme j’installe que peu de choses sous windows, je n’utilise pas vraiment de gestionnaire de paquet dédié (ce qui est mal). Je laisse windows gérer le tout dans le menu application des paramètres.&lt;/p&gt;
+
+&lt;p&gt;Il en existe plusieurs mais je ne sais pas trop le quel est le mieux. Trois alternatives a priori :&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.microsoft.com/fr-fr/windows/package-manager/winget/&quot;&gt;winget&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://chocolatey.org/&quot;&gt;chocolately&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://scoop.sh/&quot;&gt;scoop.sh&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://nodachisoft.com/common/en/article/en000009/&quot;&gt;https://nodachisoft.com/common/en/article/en000009/&lt;/a&gt;&lt;/p&gt;
+
+&lt;/div&gt;&lt;/details&gt;
+
+&lt;h3 id=&quot;outils-de-compression&quot;&gt;outils de compression&lt;/h3&gt;
+
+&lt;details&gt;&lt;summary&gt;Linux&lt;/summary&gt;&lt;div&gt;
+&lt;p&gt;Surement déjà installé.&lt;/p&gt;
+
+&lt;/div&gt;&lt;/details&gt;
+
+&lt;details&gt;&lt;summary&gt;Windows&lt;/summary&gt;&lt;div&gt;
+&lt;p&gt;Surement déjà installé.&lt;/p&gt;
+
+&lt;/div&gt;&lt;/details&gt;
+
+&lt;details&gt;&lt;summary&gt;Windows&lt;/summary&gt;&lt;div&gt;
+&lt;p&gt;Il y en a plusieurs. &lt;a href=&quot;https://www.7-zip.org/&quot;&gt;7zip&lt;/a&gt; est simple d’utilisation et très complet.&lt;/p&gt;
+
+&lt;/div&gt;&lt;/details&gt;
+
+&lt;h3 id=&quot;utilitaires-de-tous-les-jours&quot;&gt;utilitaires de tous les jours&lt;/h3&gt;
+
+&lt;p&gt;Non indispensable mais que vous utilisez tous les jours&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;steam, gog, epic, battle.net, origin, uplay, etc&lt;/li&gt;
+  &lt;li&gt;vlc, office 360&lt;/li&gt;
+  &lt;li&gt;discord&lt;/li&gt;
+  &lt;li&gt;…&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>François Brucker</name></author><category term="installation" /><category term="système" /><category term="terminal" /><summary type="html">Comment bien préparer son ordinateur pour faire du développement. On ne montrera ici que le départ, c’est à dire l’installation fraiche d’un système sur lequel on pourra ensuite installer — proprement — les divers outils et logiciels utiles pour le développement.</summary></entry><entry><title type="html">Format markdown</title><link href="/cours_informatique/tutos/langage/markdown/2021/08/30/format-markdown.html" rel="alternate" type="text/html" title="Format markdown" /><published>2021-08-30T00:00:00+00:00</published><updated>2021-08-30T00:00:00+00:00</updated><id>/cours_informatique/tutos/langage/markdown/2021/08/30/format-markdown</id><content type="html" xml:base="/cours_informatique/tutos/langage/markdown/2021/08/30/format-markdown.html">&lt;p&gt;Une introduction au format markdown. C’est le langage que nous utiliserons majoritairement pour écrire les cours.&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -357,7 +595,7 @@ Si une commande possède un raccourci clavier, il est montré à droite de son n
 &lt;details&gt;&lt;summary&gt;sous windows&lt;/summary&gt;&lt;div&gt;
 &lt;p&gt;on voit le chemin sur la barre du chemin (si c’est pas un dossier spécial)&lt;/p&gt;
 
-&lt;blockquote class=&quot;danger&quot;&gt;
+&lt;blockquote class=&quot;note&quot;&gt;
   &lt;p&gt;TBD&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -637,21 +875,17 @@ System       bin          etc          private      usr
 
 &lt;p&gt;Enfin, c’est souvent la seule façon d’interagir avec un ordinateur distant.&lt;/p&gt;
 
-&lt;p&gt;Vous pouvez a priori utiliser votre ordinateur uniquement avec un terminal. L’interface graphique n’est qu’un ajout sympathique mais non indispensable à l’utilisation d’un ordinateur. Alors bien sur vous n’utiliserez pas le terminal tout le temps mais savoir s’en servir pourra vous faire gagner un temps fou lorsque vous faites de l’informatique (en plus de ce petit sentiment grisant de &lt;a href=&quot;https://www.youtube.com/watch?v=MvEXkd3O2ow&quot;&gt;voir directement la matrice&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;Vous pouvez a priori utiliser votre ordinateur uniquement avec un terminal. L’interface graphique n’est qu’un ajout sympathique mais non indispensable à l’utilisation d’un ordinateur. Alors bien sur vous n’utiliserez pas le terminal tout le temps mais savoir s’en servir pourra vous faire gagner un temps fou lorsque vous faites de l’informatique (en plus de ce petit sentiment grisant de &lt;a href=&quot;https://www.youtube.com/watch?v=MvEXkd3O2ow&quot;&gt;voir directement la matrice&lt;/a&gt;).&lt;/p&gt;
 
 &lt;h2 id=&quot;lapplication-terminal&quot;&gt;l’application terminal&lt;/h2&gt;
 
-&lt;p&gt;Selon votre système d’application, le terminal va se touver à des endroits différents :&lt;/p&gt;
+&lt;p&gt;Selon votre système d’application, le terminal va se trouver à des endroits différents :&lt;/p&gt;
 
-&lt;details&gt;&lt;summary&gt;sous windows&lt;/summary&gt;&lt;div&gt;
-&lt;p&gt;IL existe 2 forme de terminal sous windows :&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;em&gt;l’invite de commande&lt;/em&gt; : tapez &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cmd&lt;/code&gt; dans la barre de recherche (juste à droite du drapeau windows tout à gauche de la barrre des tâches) puis appuyez sur la touche entrée&lt;/li&gt;
-  &lt;li&gt;&lt;em&gt;le powershell&lt;/em&gt; : sous w10, cliquez droit sur le drapeau windows tout à gauche de la barre des tâches puis choisissez d’ouvrir une fenêtre powershell (ce n’est pas la peine qu’elle soit en mode administrateur)&lt;/li&gt;
-&lt;/ul&gt;
+&lt;details&gt;&lt;summary&gt;sous linux&lt;/summary&gt;&lt;div&gt;
+&lt;p&gt;Si vous êtes sous linux vous devriez savoir ouvrir un terminal. C’est souvent une application avec une télévision comme icône.&lt;/p&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;Lorsque nous parlerons de terminal sous w10, nous parlerons toujours de powershel car son utilisation est bien plus aisée que l’invit de commande.&lt;/p&gt;
+&lt;blockquote class=&quot;note&quot;&gt;
+  &lt;p&gt;TBD : à faire mieux.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;/div&gt;&lt;/details&gt;
@@ -661,8 +895,8 @@ System       bin          etc          private      usr
 
 &lt;p&gt;Avec le &lt;strong&gt;Finder&lt;/strong&gt; :&lt;/p&gt;
 &lt;ol&gt;
-  &lt;li&gt;menu aller&lt;/li&gt;
-  &lt;li&gt;allez dans le dossier &lt;em&gt;“utilitaires”&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;menu aller,&lt;/li&gt;
+  &lt;li&gt;allez dans le dossier “&lt;em&gt;utilitaires&lt;/em&gt;”,&lt;/li&gt;
   &lt;li&gt;double-cliquez sur l’icône “Terminal”.&lt;/li&gt;
 &lt;/ol&gt;
 
@@ -673,11 +907,18 @@ System       bin          etc          private      usr
 &lt;p&gt;Une fois dans l’application &lt;strong&gt;Terminal&lt;/strong&gt; vous pouvez ouvrir une nouvelle fenêtre dans le menu “Shell &amp;gt; Nouvelle Fenêtre &amp;gt; Nouvelle fenêtre avec le profil - …” (les “…” correspondent à votre profil de fenêtre)&lt;/p&gt;
 &lt;/div&gt;&lt;/details&gt;
 
-&lt;details&gt;&lt;summary&gt;sous linux&lt;/summary&gt;&lt;div&gt;
-&lt;p&gt;Si vous êtes sous linux vous devriez savoir ouvrir un terminal. C’est souvent une application avec une télévision comme icône.&lt;/p&gt;
+&lt;details&gt;&lt;summary&gt;sous windows&lt;/summary&gt;&lt;div&gt;
+&lt;p&gt;Le terminal s’appelle &lt;em&gt;powershell&lt;/em&gt; sous w10.&lt;/p&gt;
 
-&lt;blockquote class=&quot;danger&quot;&gt;
-  &lt;p&gt;TBD : à faire mieux.&lt;/p&gt;
+&lt;p&gt;Pour ouvrir une fenêtre powershell, cliquez droit sur le drapeau windows tout à gauche de la barre des tâches puis choisissez d’ouvrir une fenêtre powershell (ce n’est pas la peine qu’elle soit en mode administrateur)&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Le terminal est super utile, ça vaut le coup d’épingler le powershell dans la barre des raccourcis.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote class=&quot;attention&quot;&gt;
+  &lt;p&gt;Il existe une autre sorte de terminal sous windows, &lt;em&gt;l’invite de commande&lt;/em&gt;. POur la lancer tapez &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cmd&lt;/code&gt; dans la barre de recherche (juste à droite du drapeau windows tout à gauche de la barre des tâches) puis appuyez sur la touche entrée. 
+Il n’est pas recommandé d’utiliser l’invite de commande, à moins que vous soyez un fana de &lt;a href=&quot;https://www.reddit.com/r/Giscardpunk/&quot;&gt;r/giscardpunk&lt;/a&gt;, un &lt;a href=&quot;https://fr.wikipedia.org/wiki/Math%C3%A9maticien&quot;&gt;masochiste&lt;/a&gt; ou les &lt;a href=&quot;https://fr.wikipedia.org/wiki/Chimiste&quot;&gt;deux&lt;/a&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;/div&gt;&lt;/details&gt;
@@ -694,7 +935,7 @@ System       bin          etc          private      usr
   &lt;p&gt;N’ayez pas peur. C’est simple à utiliser. On tape une commande, on appuie sur entrée et la commande s’exécute.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;Vous verrez une utilisation possible du terminal pour naviguer dans le système de fichier dans ce &lt;a href=&quot;/cours_informatique/tutos/systeme/fichiers/2021/08/24/fichiers-navigation.html&quot;&gt;tutoriel&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;On utilisera globalement le terminal pour lancer des applications. Pour cela, vous pouvez regarder ce &lt;a href=&quot;/cours_informatique/tutos/systeme/fichiers/2021/08/24/fichiers-navigation.html&quot;&gt;tutoriel&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;autres-tutos&quot;&gt;autres tutos&lt;/h2&gt;
 
@@ -703,7 +944,7 @@ System       bin          etc          private      usr
   &lt;li&gt;mac : &lt;a href=&quot;https://support.apple.com/fr-fr/guide/terminal/welcome/mac&quot;&gt;https://support.apple.com/fr-fr/guide/terminal/welcome/mac&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;blockquote class=&quot;danger&quot;&gt;
+&lt;blockquote class=&quot;note&quot;&gt;
   &lt;p&gt;TBD : ajouter si on en trouve&lt;/p&gt;
 &lt;/blockquote&gt;</content><author><name>François Brucker</name></author><category term="tutos" /><category term="systeme" /><category term="CLI" /><category term="terminal" /><category term="système" /><category term="terminal" /><category term="CLI" /><summary type="html">Qu’est-ce que le terminal ? Comment le trouver et taper des commandes.</summary></entry><entry><title type="html">Installation de python</title><link href="/cours_informatique/tutos/python/installation/terminal/2021/08/20/installation-de-python.html" rel="alternate" type="text/html" title="Installation de python" /><published>2021-08-20T00:00:00+00:00</published><updated>2021-08-20T00:00:00+00:00</updated><id>/cours_informatique/tutos/python/installation/terminal/2021/08/20/installation-de-python</id><content type="html" xml:base="/cours_informatique/tutos/python/installation/terminal/2021/08/20/installation-de-python.html">&lt;p&gt;Comment installer et utiliser python sur son ordinateur. On y verra différentes solutions.&lt;/p&gt;
 
