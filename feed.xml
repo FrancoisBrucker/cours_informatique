@@ -1,4 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/cours_informatique/feed.xml" rel="self" type="application/atom+xml" /><link href="/cours_informatique/" rel="alternate" type="text/html" /><updated>2021-09-03T06:30:38+00:00</updated><id>/cours_informatique/feed.xml</id><title type="html">cours d’informatique</title><subtitle>Support de cours/td d'informatique à l'école centrale marseille.</subtitle><entry><title type="html">Tests unitaires en Python avec pytest et pycharm</title><link href="/cours_informatique/tutos/editeur/vsc/installation/configuration/2021/09/03/vsc-installation-et-configuration.html" rel="alternate" type="text/html" title="Tests unitaires en Python avec pytest et pycharm" /><published>2021-09-03T00:00:00+00:00</published><updated>2021-09-03T00:00:00+00:00</updated><id>/cours_informatique/tutos/editeur/vsc/installation/configuration/2021/09/03/vsc-installation-et-configuration</id><content type="html" xml:base="/cours_informatique/tutos/editeur/vsc/installation/configuration/2021/09/03/vsc-installation-et-configuration.html">&lt;p&gt;Installation et premières configurations de &lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;visual studio code&lt;/a&gt; (vsc)
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/cours_informatique/feed.xml" rel="self" type="application/atom+xml" /><link href="/cours_informatique/" rel="alternate" type="text/html" /><updated>2021-09-03T06:43:08+00:00</updated><id>/cours_informatique/feed.xml</id><title type="html">cours d’informatique</title><subtitle>Support de cours/td d'informatique à l'école centrale marseille.</subtitle><entry><title type="html">Générateur de site statique jekyll</title><link href="/cours_informatique/tutos/langage/jekyll/2021/09/03/jekyll-et-site.html" rel="alternate" type="text/html" title="Générateur de site statique jekyll" /><published>2021-09-03T00:00:00+00:00</published><updated>2021-09-03T00:00:00+00:00</updated><id>/cours_informatique/tutos/langage/jekyll/2021/09/03/jekyll-et-site</id><content type="html" xml:base="/cours_informatique/tutos/langage/jekyll/2021/09/03/jekyll-et-site.html">&lt;p&gt;Une introduction générateur de site statique &lt;a href=&quot;https://jekyllrb.com/&quot;&gt;jekyll&lt;/a&gt;. On y y verra aussi comment est organisé et fonctionne ce &lt;a href=&quot;https://github.com/FrancoisBrucker/cours_informatique&quot;&gt;site de cours&lt;/a&gt;, généré en jekyll.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;plan&quot;&gt;Plan&lt;/h2&gt;
+
+&lt;blockquote class=&quot;note&quot;&gt;
+  &lt;p&gt;TBD&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;installation&lt;/li&gt;
+  &lt;li&gt;markdown et header&lt;/li&gt;
+  &lt;li&gt;template et liquid&lt;/li&gt;
+  &lt;li&gt;plugins ruby&lt;/li&gt;
+  &lt;li&gt;option clean, serve, compile&lt;/li&gt;
+  &lt;li&gt;github actions&lt;/li&gt;
+  &lt;li&gt;css, sass et assets&lt;/li&gt;
+  &lt;li&gt;_posts et architechture du site&lt;/li&gt;
+  &lt;li&gt;collections&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="tutos" /><category term="langage" /><category term="jekyll" /><summary type="html">Une introduction générateur de site statique jekyll. On y y verra aussi comment est organisé et fonctionne ce site de cours, généré en jekyll.</summary></entry><entry><title type="html">Tests unitaires en Python avec pytest et pycharm</title><link href="/cours_informatique/tutos/editeur/vsc/installation/configuration/2021/09/03/vsc-installation-et-configuration.html" rel="alternate" type="text/html" title="Tests unitaires en Python avec pytest et pycharm" /><published>2021-09-03T00:00:00+00:00</published><updated>2021-09-03T00:00:00+00:00</updated><id>/cours_informatique/tutos/editeur/vsc/installation/configuration/2021/09/03/vsc-installation-et-configuration</id><content type="html" xml:base="/cours_informatique/tutos/editeur/vsc/installation/configuration/2021/09/03/vsc-installation-et-configuration.html">&lt;p&gt;Installation et premières configurations de &lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;visual studio code&lt;/a&gt; (vsc)
 &lt;!--more--&gt;&lt;/p&gt;
 
 &lt;blockquote class=&quot;code&quot;&gt;

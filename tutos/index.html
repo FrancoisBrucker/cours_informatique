@@ -86,6 +86,14 @@
             ? 'unset' 
             : 'none';
         
+        var cats = ["tutos","langage","jekyll"]
+
+        id += 1;
+        var postDiv = document.getElementById(id);
+        postDiv.style.display = (selectedCategory == 'All' || cats.includes(selectedCategory)) 
+            ? 'unset' 
+            : 'none';
+        
         var cats = ["tutos","systeme","installation"]
 
         id += 1;
@@ -175,6 +183,9 @@
             <button id="installation" onclick="filterUsingCategory(this.id)">installation</button>
         
             
+            <button id="jekyll" onclick="filterUsingCategory(this.id)">jekyll</button>
+        
+            
             <button id="langage" onclick="filterUsingCategory(this.id)">langage</button>
         
             
@@ -252,6 +263,41 @@
         <li id="2">
             
             <h3>
+                <a class="post-link" href="/cours_informatique/tutos/langage/jekyll/2021/09/03/jekyll-et-site.html">
+                  Générateur de site statique jekyll
+                </a>
+              </h3>
+              <div style="padding-left:20px;">
+                <div>
+                    catégories : 
+                    
+                    • <span class="post-meta">tutos</span>
+                    
+                    • <span class="post-meta">langage</span>
+                    
+                    • <span class="post-meta">jekyll</span>
+                    
+                    • 
+                </div>
+                <div>
+                    tags : 
+                    
+                    •
+                </div>
+                <p>
+                    <p>Une introduction générateur de site statique <a href="https://jekyllrb.com/">jekyll</a>. On y y verra aussi comment est organisé et fonctionne ce <a href="https://github.com/FrancoisBrucker/cours_informatique">site de cours</a>, généré en jekyll.</p>
+
+                </p>
+                
+              </div>
+              
+                
+              
+        </li>
+        
+        <li id="3">
+            
+            <h3>
                 <a class="post-link" href="/cours_informatique/tutos/systeme/installation/2021/09/01/installation-ordinateur.html">
                   Nouvelle installation de son système
                 </a>
@@ -288,7 +334,7 @@
               
         </li>
         
-        <li id="3">
+        <li id="4">
             
             <h3>
                 <a class="post-link" href="/cours_informatique/tutos/editeur/pycharm/2021/08/30/configuration-pycharm.html">
@@ -327,7 +373,7 @@
               
         </li>
         
-        <li id="4">
+        <li id="5">
             
             <h3>
                 <a class="post-link" href="/cours_informatique/tutos/langage/markdown/2021/08/30/format-markdown.html">
@@ -366,7 +412,7 @@
               
         </li>
         
-        <li id="5">
+        <li id="6">
             
             <h3>
                 <a class="post-link" href="/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html">
@@ -409,7 +455,7 @@
               
         </li>
         
-        <li id="6">
+        <li id="7">
             
             <h3>
                 <a class="post-link" href="/cours_informatique/tutos/systeme/fichiers/2021/08/24/fichiers-navigation.html">
@@ -450,7 +496,7 @@
               
         </li>
         
-        <li id="7">
+        <li id="8">
             
             <h3>
                 <a class="post-link" href="/cours_informatique/tutos/python/installation/terminal/2021/08/20/installation-de-python.html">
@@ -487,7 +533,7 @@
               
         </li>
         
-        <li id="8">
+        <li id="9">
             
             <h3>
                 <a class="post-link" href="/cours_informatique/tutos/python/langage/2021/08/19/bases-de-python.html">
@@ -522,7 +568,7 @@
               
         </li>
         
-        <li id="9">
+        <li id="10">
             
             <h3>
                 <a class="post-link" href="/cours_informatique/tutos/python/tests%20unitaires/2021/08/01/tests-unitaires.html">
