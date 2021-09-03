@@ -8,7 +8,7 @@ tags: pytest unittest
 Mise en œuvre de tests unitaires en python avec l'éditeur pycharm.
 <!--more-->
 
-# Introduction
+## Introduction
 
 
 Nous devons être certains que toutes les méthodes, fonctions ou modules que nous créons sont corrects. On écrira donc des tests pour être moralement sûrs que nos programmes fonctionnent (la plupart du temps une preuve de code est illusoire). 
@@ -23,7 +23,7 @@ De nombreux frameworks de tests existent pour python, le plus connu étant certa
 > Sinon en python mais orienté développement web, il y a le bon (mais il faut s'accrocher si on débute) "Test-Driven Development with Python" de Harry J.w Percival.
 
 
-# Un exemple
+## Un exemple
 
 Créez un nouveau projet avec pycharm que l'on pourra appeler `essai_tests`, puis ajoutez-y un fichier que vous nommerez `aide_mathematiques.py`. Ce fichier contiendra le code suivant :
 ~~~ python
@@ -40,9 +40,8 @@ Ma méthode sera exacte.
 
 On utilise le mot clé [assert](http://www.tutorialspoint.com/python/assertions_in_python.htm) pour créer notre fonction de test. 
 
-> **Attention :**
 > Les fonctions de tests doivent toutes commencer par ''test_''.
->
+{: .attention}
 
 Ajouter la méthode ci-après à votre fichier :
 
@@ -75,27 +74,27 @@ AssertionError
 
 Ainsi, si tout se passe bien, nos tests sont passés, si le programme s'arrête sur une exception de type `AssertionError`, nos tests ne correspondent pas à la réalité. Nous sommes en face d'un bug (qu'il faut corriger).
 
-# Séparer code et tests 
+## Séparer code et tests 
 
 Placez la fonction de test (et son exécution) dans un fichier que vous nommerez `test_aide_mathematiques.py`. 
 
 Faites en sorte qu'il s'exécute sans problème (attention aux `import`. Vous pouvez [lire la doc officielle](https://docs.python.org/fr/3.7/tutorial/modules.html),  un [petit tuto bien fait](https://www.learnpython.org/en/Modules_and_Packages) ou encore [le tuto de sam&max](http://sametmax.com/les-imports-en-python/) qui est un peu vieux (en particulier la partie absolue_import n'est plus du `__future__` mais est implémenté dans python3) mais toujours éclairant).
 
-> **Attention :**
+
 >On séparera toujours les tests du code. Tout fichier de test commence par ''test_''.
->
+{: .attention}
 
 
-# Utilisation de l'environnement de test avec pycharm
+## Utilisation de l'environnement de test avec pycharm
 
 
 Nous allons demander à l'environnement [py.test](http://pytest.org/latest/) d'exécuter nos tests. Il nous donnera plus d'informations sur les tests réussis ou échoués (une application normale contient des centaines de tests). 
 
 Commencez par supprimer l'exécution de `test_double` dans le fichier `test_aide_mathematiques.py`. 
 
->**Attention :**
+
 >Un fichier de tests ne doit contenir que des fonctions.
->
+{: .attention}
 
 
 Puis nous allons demander à [Pycharm](https://www.jetbrains.com/pycharm/) d'exécuter `test_aide_mathematiques.py` à l'aide de notre environnement de test.
@@ -104,8 +103,8 @@ Puis nous allons demander à [Pycharm](https://www.jetbrains.com/pycharm/) d'ex�
 
  Pour cela, créez un environnement d'exécution (expliqué dans ce [tuto]({% post_url tutos/editeur/pycharm/2021-08-30-configuration-pycharm %})) et créez une configuration  *pyhton test > pytest*. Ici, les paramètres dont nous aurons besoin sont :
  
-  - le champ *name*, qui donne un nom à notre contexte. Par exemple *"mes tests"*
-  - le champ *target*, qui spécifie quel script utiliser. Cliquez tout à droite de ce champ sur un petit bouton avec *…* puis choisissez le fichier `test_aide_mathematiques.py`
+* le champ *name*, qui donne un nom à notre contexte. Par exemple *"mes tests"**
+* le champ *target*, qui spécifie quel script utiliser. Cliquez tout à droite de ce champ sur un petit bouton avec *…* puis choisissez le fichier `test_aide_mathematiques.py`
 
 Une fois ceci configuré, cliquez sur *OK*.
 
@@ -114,7 +113,7 @@ Un nouvel environnement de tests est créé dans le menu *run*. Exécutez le. Vo
 
 Pour finir cette partie :
 
-  - Séparez votre fonction de tests en 2 fonctions (chaque fonction de test ne doit contenir qu'une chose à tester, donc a priori qu'un seul `assert`).
-  - Exécutez votre nouvel environnement.
-  - Ajoutez une fonction de test qui plante. Exécutez votre environnement de test. Voyez la barre rouge. Supprimez ce test non valide.
+* Séparez votre fonction de tests en 2 fonctions (chaque fonction de test ne doit contenir qu'une chose à tester, donc a priori qu'un seul `assert`).
+* Exécutez votre nouvel environnement.
+* Ajoutez une fonction de test qui plante. Exécutez votre environnement de test. Voyez la barre rouge. Supprimez ce test non valide.
 
