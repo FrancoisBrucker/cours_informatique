@@ -1,6 +1,6 @@
 ---
 layout: page
-title:  "Format markdown"
+title:  "Générateur de site statique jekyll"
 categories: langage jekyll
 ---
 
