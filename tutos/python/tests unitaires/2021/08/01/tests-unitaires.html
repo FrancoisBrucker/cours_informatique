@@ -63,7 +63,7 @@
     <p>Mise en œuvre de tests unitaires en python avec l’éditeur pycharm.
 <!--more--></p>
 
-<h1 id="introduction">Introduction</h1>
+<h2 id="introduction">Introduction</h2>
 
 <p>Nous devons être certains que toutes les méthodes, fonctions ou modules que nous créons sont corrects. On écrira donc des tests pour être moralement sûrs que nos programmes fonctionnent (la plupart du temps une preuve de code est illusoire).</p>
 
@@ -77,7 +77,7 @@
   <p>Sinon en python mais orienté développement web, il y a le bon (mais il faut s’accrocher si on débute) “Test-Driven Development with Python” de Harry J.w Percival.</p>
 </blockquote>
 
-<h1 id="un-exemple">Un exemple</h1>
+<h2 id="un-exemple">Un exemple</h2>
 
 <p>Créez un nouveau projet avec pycharm que l’on pourra appeler <code class="language-plaintext highlighter-rouge">essai_tests</code>, puis ajoutez-y un fichier que vous nommerez <code class="language-plaintext highlighter-rouge">aide_mathematiques.py</code>. Ce fichier contiendra le code suivant :</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
@@ -95,10 +95,8 @@
 
 <p>On utilise le mot clé <a href="http://www.tutorialspoint.com/python/assertions_in_python.htm">assert</a> pour créer notre fonction de test.</p>
 
-<blockquote>
-  <p><strong>Attention :</strong>
-Les fonctions de tests doivent toutes commencer par ‘‘test_’’.</p>
-
+<blockquote class="attention">
+  <p>Les fonctions de tests doivent toutes commencer par ‘‘test_’’.</p>
 </blockquote>
 
 <p>Ajouter la méthode ci-après à votre fichier :</p>
@@ -128,28 +126,24 @@ AssertionError
 
 <p>Ainsi, si tout se passe bien, nos tests sont passés, si le programme s’arrête sur une exception de type <code class="language-plaintext highlighter-rouge">AssertionError</code>, nos tests ne correspondent pas à la réalité. Nous sommes en face d’un bug (qu’il faut corriger).</p>
 
-<h1 id="séparer-code-et-tests">Séparer code et tests</h1>
+<h2 id="séparer-code-et-tests">Séparer code et tests</h2>
 
 <p>Placez la fonction de test (et son exécution) dans un fichier que vous nommerez <code class="language-plaintext highlighter-rouge">test_aide_mathematiques.py</code>.</p>
 
 <p>Faites en sorte qu’il s’exécute sans problème (attention aux <code class="language-plaintext highlighter-rouge">import</code>. Vous pouvez <a href="https://docs.python.org/fr/3.7/tutorial/modules.html">lire la doc officielle</a>,  un <a href="https://www.learnpython.org/en/Modules_and_Packages">petit tuto bien fait</a> ou encore <a href="http://sametmax.com/les-imports-en-python/">le tuto de sam&amp;max</a> qui est un peu vieux (en particulier la partie absolue_import n’est plus du <code class="language-plaintext highlighter-rouge">__future__</code> mais est implémenté dans python3) mais toujours éclairant).</p>
 
-<blockquote>
-  <p><strong>Attention :</strong>
-On séparera toujours les tests du code. Tout fichier de test commence par ‘‘test_’’.</p>
-
+<blockquote class="attention">
+  <p>On séparera toujours les tests du code. Tout fichier de test commence par ‘‘test_’’.</p>
 </blockquote>
 
-<h1 id="utilisation-de-lenvironnement-de-test-avec-pycharm">Utilisation de l’environnement de test avec pycharm</h1>
+<h2 id="utilisation-de-lenvironnement-de-test-avec-pycharm">Utilisation de l’environnement de test avec pycharm</h2>
 
 <p>Nous allons demander à l’environnement <a href="http://pytest.org/latest/">py.test</a> d’exécuter nos tests. Il nous donnera plus d’informations sur les tests réussis ou échoués (une application normale contient des centaines de tests).</p>
 
 <p>Commencez par supprimer l’exécution de <code class="language-plaintext highlighter-rouge">test_double</code> dans le fichier <code class="language-plaintext highlighter-rouge">test_aide_mathematiques.py</code>.</p>
 
-<blockquote>
-  <p><strong>Attention :</strong>
-Un fichier de tests ne doit contenir que des fonctions.</p>
-
+<blockquote class="attention">
+  <p>Un fichier de tests ne doit contenir que des fonctions.</p>
 </blockquote>
 
 <p>Puis nous allons demander à <a href="https://www.jetbrains.com/pycharm/">Pycharm</a> d’exécuter <code class="language-plaintext highlighter-rouge">test_aide_mathematiques.py</code> à l’aide de notre environnement de test.</p>
@@ -157,7 +151,7 @@ Un fichier de tests ne doit contenir que des fonctions.</p>
 <p>Pour cela, créez un environnement d’exécution (expliqué dans ce <a href="/cours_informatique/tutos/editeur/pycharm/2021/08/30/configuration-pycharm.html">tuto</a>) et créez une configuration  <em>pyhton test &gt; pytest</em>. Ici, les paramètres dont nous aurons besoin sont :</p>
 
 <ul>
-  <li>le champ <em>name</em>, qui donne un nom à notre contexte. Par exemple <em>“mes tests”</em></li>
+  <li>le champ <em>name</em>, qui donne un nom à notre contexte. Par exemple *“mes tests”**</li>
   <li>le champ <em>target</em>, qui spécifie quel script utiliser. Cliquez tout à droite de ce champ sur un petit bouton avec <em>…</em> puis choisissez le fichier <code class="language-plaintext highlighter-rouge">test_aide_mathematiques.py</code></li>
 </ul>
 

@@ -1,4 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/cours_informatique/feed.xml" rel="self" type="application/atom+xml" /><link href="/cours_informatique/" rel="alternate" type="text/html" /><updated>2021-09-03T06:06:50+00:00</updated><id>/cours_informatique/feed.xml</id><title type="html">cours d’informatique</title><subtitle>Support de cours/td d'informatique à l'école centrale marseille.</subtitle><entry><title type="html">Nouvelle installation de son système</title><link href="/cours_informatique/tutos/systeme/installation/2021/09/01/installation-ordinateur.html" rel="alternate" type="text/html" title="Nouvelle installation de son système" /><published>2021-09-01T00:00:00+00:00</published><updated>2021-09-01T00:00:00+00:00</updated><id>/cours_informatique/tutos/systeme/installation/2021/09/01/installation-ordinateur</id><content type="html" xml:base="/cours_informatique/tutos/systeme/installation/2021/09/01/installation-ordinateur.html">&lt;p&gt;Comment bien préparer son ordinateur pour faire du développement. On ne montrera ici que le départ, c’est à dire l’installation fraiche d’un système sur lequel on pourra ensuite installer — proprement — les divers outils et logiciels utiles pour le développement.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/cours_informatique/feed.xml" rel="self" type="application/atom+xml" /><link href="/cours_informatique/" rel="alternate" type="text/html" /><updated>2021-09-03T06:30:38+00:00</updated><id>/cours_informatique/feed.xml</id><title type="html">cours d’informatique</title><subtitle>Support de cours/td d'informatique à l'école centrale marseille.</subtitle><entry><title type="html">Tests unitaires en Python avec pytest et pycharm</title><link href="/cours_informatique/tutos/editeur/vsc/installation/configuration/2021/09/03/vsc-installation-et-configuration.html" rel="alternate" type="text/html" title="Tests unitaires en Python avec pytest et pycharm" /><published>2021-09-03T00:00:00+00:00</published><updated>2021-09-03T00:00:00+00:00</updated><id>/cours_informatique/tutos/editeur/vsc/installation/configuration/2021/09/03/vsc-installation-et-configuration</id><content type="html" xml:base="/cours_informatique/tutos/editeur/vsc/installation/configuration/2021/09/03/vsc-installation-et-configuration.html">&lt;p&gt;Installation et premières configurations de &lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;visual studio code&lt;/a&gt; (vsc)
+&lt;!--more--&gt;&lt;/p&gt;
+
+&lt;blockquote class=&quot;code&quot;&gt;
+  &lt;p&gt;TBD&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name></name></author><category term="tutos" /><category term="editeur" /><category term="vsc" /><category term="installation" /><category term="configuration" /><summary type="html">Installation et premières configurations de visual studio code (vsc)</summary></entry><entry><title type="html">Nouvelle installation de son système</title><link href="/cours_informatique/tutos/systeme/installation/2021/09/01/installation-ordinateur.html" rel="alternate" type="text/html" title="Nouvelle installation de son système" /><published>2021-09-01T00:00:00+00:00</published><updated>2021-09-01T00:00:00+00:00</updated><id>/cours_informatique/tutos/systeme/installation/2021/09/01/installation-ordinateur</id><content type="html" xml:base="/cours_informatique/tutos/systeme/installation/2021/09/01/installation-ordinateur.html">&lt;p&gt;Comment bien préparer son ordinateur pour faire du développement. On ne montrera ici que le départ, c’est à dire l’installation fraiche d’un système sur lequel on pourra ensuite installer — proprement — les divers outils et logiciels utiles pour le développement.&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -1908,7 +1913,7 @@ Si vous avez bien compris l’exemple de la récursion et de la modification d�
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Augustin Agbo-Kpati</name></author><category term="tutos" /><category term="python" /><category term="langage" /><summary type="html">Notions de base du langage python. Ce n’est cependant pas un cours, on y reprend juste les différentes notions à connaître ainsi que les principales structures de données à utiliser.</summary></entry><entry><title type="html">Tests unitaires en Python avec pytest et pycharm</title><link href="/cours_informatique/tutos/python/tests%20unitaires/2021/08/01/tests-unitaires.html" rel="alternate" type="text/html" title="Tests unitaires en Python avec pytest et pycharm" /><published>2021-08-01T00:00:00+00:00</published><updated>2021-08-01T00:00:00+00:00</updated><id>/cours_informatique/tutos/python/tests%20unitaires/2021/08/01/tests-unitaires</id><content type="html" xml:base="/cours_informatique/tutos/python/tests%20unitaires/2021/08/01/tests-unitaires.html">&lt;p&gt;Mise en œuvre de tests unitaires en python avec l’éditeur pycharm.
 &lt;!--more--&gt;&lt;/p&gt;
 
-&lt;h1 id=&quot;introduction&quot;&gt;Introduction&lt;/h1&gt;
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 
 &lt;p&gt;Nous devons être certains que toutes les méthodes, fonctions ou modules que nous créons sont corrects. On écrira donc des tests pour être moralement sûrs que nos programmes fonctionnent (la plupart du temps une preuve de code est illusoire).&lt;/p&gt;
 
@@ -1922,7 +1927,7 @@ Si vous avez bien compris l’exemple de la récursion et de la modification d�
   &lt;p&gt;Sinon en python mais orienté développement web, il y a le bon (mais il faut s’accrocher si on débute) “Test-Driven Development with Python” de Harry J.w Percival.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h1 id=&quot;un-exemple&quot;&gt;Un exemple&lt;/h1&gt;
+&lt;h2 id=&quot;un-exemple&quot;&gt;Un exemple&lt;/h2&gt;
 
 &lt;p&gt;Créez un nouveau projet avec pycharm que l’on pourra appeler &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;essai_tests&lt;/code&gt;, puis ajoutez-y un fichier que vous nommerez &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;aide_mathematiques.py&lt;/code&gt;. Ce fichier contiendra le code suivant :&lt;/p&gt;
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
@@ -1940,10 +1945,8 @@ Si vous avez bien compris l’exemple de la récursion et de la modification d�
 
 &lt;p&gt;On utilise le mot clé &lt;a href=&quot;http://www.tutorialspoint.com/python/assertions_in_python.htm&quot;&gt;assert&lt;/a&gt; pour créer notre fonction de test.&lt;/p&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;Attention :&lt;/strong&gt;
-Les fonctions de tests doivent toutes commencer par ‘‘test_’’.&lt;/p&gt;
-
+&lt;blockquote class=&quot;attention&quot;&gt;
+  &lt;p&gt;Les fonctions de tests doivent toutes commencer par ‘‘test_’’.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;Ajouter la méthode ci-après à votre fichier :&lt;/p&gt;
@@ -1973,28 +1976,24 @@ AssertionError
 
 &lt;p&gt;Ainsi, si tout se passe bien, nos tests sont passés, si le programme s’arrête sur une exception de type &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;AssertionError&lt;/code&gt;, nos tests ne correspondent pas à la réalité. Nous sommes en face d’un bug (qu’il faut corriger).&lt;/p&gt;
 
-&lt;h1 id=&quot;séparer-code-et-tests&quot;&gt;Séparer code et tests&lt;/h1&gt;
+&lt;h2 id=&quot;séparer-code-et-tests&quot;&gt;Séparer code et tests&lt;/h2&gt;
 
 &lt;p&gt;Placez la fonction de test (et son exécution) dans un fichier que vous nommerez &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;test_aide_mathematiques.py&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;Faites en sorte qu’il s’exécute sans problème (attention aux &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;import&lt;/code&gt;. Vous pouvez &lt;a href=&quot;https://docs.python.org/fr/3.7/tutorial/modules.html&quot;&gt;lire la doc officielle&lt;/a&gt;,  un &lt;a href=&quot;https://www.learnpython.org/en/Modules_and_Packages&quot;&gt;petit tuto bien fait&lt;/a&gt; ou encore &lt;a href=&quot;http://sametmax.com/les-imports-en-python/&quot;&gt;le tuto de sam&amp;amp;max&lt;/a&gt; qui est un peu vieux (en particulier la partie absolue_import n’est plus du &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;__future__&lt;/code&gt; mais est implémenté dans python3) mais toujours éclairant).&lt;/p&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;Attention :&lt;/strong&gt;
-On séparera toujours les tests du code. Tout fichier de test commence par ‘‘test_’’.&lt;/p&gt;
-
+&lt;blockquote class=&quot;attention&quot;&gt;
+  &lt;p&gt;On séparera toujours les tests du code. Tout fichier de test commence par ‘‘test_’’.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h1 id=&quot;utilisation-de-lenvironnement-de-test-avec-pycharm&quot;&gt;Utilisation de l’environnement de test avec pycharm&lt;/h1&gt;
+&lt;h2 id=&quot;utilisation-de-lenvironnement-de-test-avec-pycharm&quot;&gt;Utilisation de l’environnement de test avec pycharm&lt;/h2&gt;
 
 &lt;p&gt;Nous allons demander à l’environnement &lt;a href=&quot;http://pytest.org/latest/&quot;&gt;py.test&lt;/a&gt; d’exécuter nos tests. Il nous donnera plus d’informations sur les tests réussis ou échoués (une application normale contient des centaines de tests).&lt;/p&gt;
 
 &lt;p&gt;Commencez par supprimer l’exécution de &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;test_double&lt;/code&gt; dans le fichier &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;test_aide_mathematiques.py&lt;/code&gt;.&lt;/p&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;Attention :&lt;/strong&gt;
-Un fichier de tests ne doit contenir que des fonctions.&lt;/p&gt;
-
+&lt;blockquote class=&quot;attention&quot;&gt;
+  &lt;p&gt;Un fichier de tests ne doit contenir que des fonctions.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;Puis nous allons demander à &lt;a href=&quot;https://www.jetbrains.com/pycharm/&quot;&gt;Pycharm&lt;/a&gt; d’exécuter &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;test_aide_mathematiques.py&lt;/code&gt; à l’aide de notre environnement de test.&lt;/p&gt;
@@ -2002,7 +2001,7 @@ Un fichier de tests ne doit contenir que des fonctions.&lt;/p&gt;
 &lt;p&gt;Pour cela, créez un environnement d’exécution (expliqué dans ce &lt;a href=&quot;/cours_informatique/tutos/editeur/pycharm/2021/08/30/configuration-pycharm.html&quot;&gt;tuto&lt;/a&gt;) et créez une configuration  &lt;em&gt;pyhton test &amp;gt; pytest&lt;/em&gt;. Ici, les paramètres dont nous aurons besoin sont :&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;le champ &lt;em&gt;name&lt;/em&gt;, qui donne un nom à notre contexte. Par exemple &lt;em&gt;“mes tests”&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;le champ &lt;em&gt;name&lt;/em&gt;, qui donne un nom à notre contexte. Par exemple *“mes tests”**&lt;/li&gt;
   &lt;li&gt;le champ &lt;em&gt;target&lt;/em&gt;, qui spécifie quel script utiliser. Cliquez tout à droite de ce champ sur un petit bouton avec &lt;em&gt;…&lt;/em&gt; puis choisissez le fichier &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;test_aide_mathematiques.py&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 

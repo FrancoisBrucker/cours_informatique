@@ -78,6 +78,14 @@
 
         var id = 0;
         
+        var cats = ["tutos","editeur","vsc","installation","configuration"]
+
+        id += 1;
+        var postDiv = document.getElementById(id);
+        postDiv.style.display = (selectedCategory == 'All' || cats.includes(selectedCategory)) 
+            ? 'unset' 
+            : 'none';
+        
         var cats = ["tutos","systeme","installation"]
 
         id += 1;
@@ -155,6 +163,9 @@
             <button id="CLI" onclick="filterUsingCategory(this.id)">CLI</button>
         
             
+            <button id="configuration" onclick="filterUsingCategory(this.id)">configuration</button>
+        
+            
             <button id="editeur" onclick="filterUsingCategory(this.id)">editeur</button>
         
             
@@ -186,6 +197,9 @@
         
             
             <button id="tutos" onclick="filterUsingCategory(this.id)">tutos</button>
+        
+            
+            <button id="vsc" onclick="filterUsingCategory(this.id)">vsc</button>
                 
     </span>
 </div>
@@ -196,6 +210,46 @@
     
         
         <li id="1">
+            
+            <h3>
+                <a class="post-link" href="/cours_informatique/tutos/editeur/vsc/installation/configuration/2021/09/03/vsc-installation-et-configuration.html">
+                  Tests unitaires en Python avec pytest et pycharm
+                </a>
+              </h3>
+              <div style="padding-left:20px;">
+                <div>
+                    catégories : 
+                    
+                    • <span class="post-meta">tutos</span>
+                    
+                    • <span class="post-meta">editeur</span>
+                    
+                    • <span class="post-meta">vsc</span>
+                    
+                    • <span class="post-meta">installation</span>
+                    
+                    • <span class="post-meta">configuration</span>
+                    
+                    • 
+                </div>
+                <div>
+                    tags : 
+                    
+                    •
+                </div>
+                <p>
+                    <p>Installation et premières configurations de <a href="https://code.visualstudio.com/">visual studio code</a> (vsc)
+<!--more--></p>
+
+                </p>
+                
+              </div>
+              
+                
+              
+        </li>
+        
+        <li id="2">
             
             <h3>
                 <a class="post-link" href="/cours_informatique/tutos/systeme/installation/2021/09/01/installation-ordinateur.html">
@@ -234,7 +288,7 @@
               
         </li>
         
-        <li id="2">
+        <li id="3">
             
             <h3>
                 <a class="post-link" href="/cours_informatique/tutos/editeur/pycharm/2021/08/30/configuration-pycharm.html">
@@ -273,7 +327,7 @@
               
         </li>
         
-        <li id="3">
+        <li id="4">
             
             <h3>
                 <a class="post-link" href="/cours_informatique/tutos/langage/markdown/2021/08/30/format-markdown.html">
@@ -312,7 +366,7 @@
               
         </li>
         
-        <li id="4">
+        <li id="5">
             
             <h3>
                 <a class="post-link" href="/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html">
@@ -355,7 +409,7 @@
               
         </li>
         
-        <li id="5">
+        <li id="6">
             
             <h3>
                 <a class="post-link" href="/cours_informatique/tutos/systeme/fichiers/2021/08/24/fichiers-navigation.html">
@@ -396,7 +450,7 @@
               
         </li>
         
-        <li id="6">
+        <li id="7">
             
             <h3>
                 <a class="post-link" href="/cours_informatique/tutos/python/installation/terminal/2021/08/20/installation-de-python.html">
@@ -433,7 +487,7 @@
               
         </li>
         
-        <li id="7">
+        <li id="8">
             
             <h3>
                 <a class="post-link" href="/cours_informatique/tutos/python/langage/2021/08/19/bases-de-python.html">
@@ -468,7 +522,7 @@
               
         </li>
         
-        <li id="8">
+        <li id="9">
             
             <h3>
                 <a class="post-link" href="/cours_informatique/tutos/python/tests%20unitaires/2021/08/01/tests-unitaires.html">
