@@ -188,9 +188,9 @@ Pasz vraiment de choix, on installe [brew](https://brew.sh/) et plus vite que ç
 
 {% details Windows %}
 
-Comme j'installe que peu de choses sous windows, je n'utilise pas vraiment de gestionnaire de paquet dédié (ce qui est mal). Je laisse windows gérer le tout dans le menu application des paramètres. 
+> Je n'utilise pas de gesionnaire de package sous windows.  Je laisse windows gérer le tout dans le menu application des paramètres. 
 
-Il en existe plusieurs mais je ne sais pas trop le quel est le mieux. Trois alternatives a priori : 
+Si vous voulez en installer un, il en existe plusieurs mais je ne sais pas trop le quel est le mieux. Trois alternatives a priori : 
 * [winget](https://docs.microsoft.com/fr-fr/windows/package-manager/winget/). 
 * [chocolately](https://chocolatey.org/)
 * [scoop.sh](https://scoop.sh/)

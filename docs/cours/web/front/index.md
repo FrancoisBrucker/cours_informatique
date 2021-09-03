@@ -15,6 +15,7 @@ Web front
 
 ## refs possible 
 
+* <https://www.internetingishard.com/>
 * <https://sequelize.org/master/>
 * <https://www.sqlitetutorial.net/sqlite-nodejs/>
 * <https://www.tutorialspoint.com/javascript/index.htm>
