@@ -36,7 +36,9 @@ Cours d'apprentissages des différents outils de développement et les bases du 
 
 ## html/css/js/imports
 
-  [html/css/js]({% link cours/dfs/html_css_js.md %})
+> ok. deleted
+{: .note}
+
 
   [imports]({% link cours/dfs/yarn.md %})
 
