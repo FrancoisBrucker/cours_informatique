@@ -34,8 +34,19 @@ On pet ainsi taper du texte qui sera, si ce n'est pas une url, interprétée com
 
 Bon. Ce n'est vraisemblablement pas une URL qu'on a tapé puisque l'on obtient le résultat d'une recherche google. Allons sur le 1er lien proposé, qui est chez moi celui-là : <https://fr.wikipedia.org/wiki/Uniform_Resource_Locator>, et qui est une URL nous dirigeant vers la définition d'une URL.
 
+### url 
+
+Vous pouvez suivre cette petite [intruction aux URLs]({% link cours/web/tuto_url.md %}).
+
+### html/css/js
+
+Vous pouvez faire ce petit [tuto introductif]({% link cours/web/tuto_html_css_js.md %}) pour vous initier aux langages html, le css et javascript.
 
 
+## plan du cours
+
+> TBD
+{: .note}
 
 ### serveur et navigateur web niveau 1
 
@@ -54,12 +65,20 @@ Bon. Ce n'est vraisemblablement pas une URL qu'on a tapé puisque l'on obtient l
 * normes et rfc (pour aller plus loin ?)
 * récupérer un fichier sur ordi avec son terminal (pour aller plus loin ?)
 
+### technos mise en œuvre
+
 ### Front
 
 [Front]({% link cours/web/front/index.md %})
 
+
+### javascript
+
+[cours]({% link cours/web/js/index.md %})
+
 ### Back
 
 [Back]({% link cours/web/back/index.md %})
+
 
 ### serveur et navigateur web niveau 2

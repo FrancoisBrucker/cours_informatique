@@ -38,7 +38,8 @@ Chaque semaine est dédiée à un thème particulier :
 3. on pimp notre serveur en utilisant express et d'autres modules node
 4. on ajoute une base de donnée qu'on attaque avec sequilize.
 
-
+> TBD : serveur python pour le js
+{: .note}
 
 ## Note
 
