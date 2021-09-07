@@ -43,6 +43,10 @@ Vous pouvez suivre cette petite [intruction aux URLs]({% link cours/web/tuto_url
 Vous pouvez faire ce petit [tuto introductif]({% link cours/web/tuto_html_css_js.md %}) pour vous initier aux langages html, le css et javascript.
 
 
+### outils de développement
+
+
+
 ## plan du cours
 
 > TBD

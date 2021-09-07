@@ -20,61 +20,87 @@ Le html est un langage à balises, par exemple `<head></head>` `<body></body>`. 
 >[Liste des balises html](https://openclassrooms.com/fr/courses/1603881-apprenez-a-creer-votre-site-web-avec-html5-et-css3/1608357-memento-des-balises-html)
 
 Dans le tutoriel suivant le navigateur interprétera directement le fichier sans passer par un serveur.
-Il trouve le fichier à afficher via une [uri](https://fr.wikipedia.org/wiki/Uniform_Resource_Identifier) : `file://chemin/absolu/vers/fichier.html`. \
-On ne traitera pas tous les détails depuis la base de la base. \
-Il existe pleins de tutos pour apprendre les bases sur l'internet mondial :
+Il trouve le fichier à afficher via une [uri](https://fr.wikipedia.org/wiki/Uniform_Resource_Identifier) : `file://chemin/absolu/vers/fichier.html`.
+
+
+On ne traitera pas tous les détails depuis la base de la base. Il existe pleins de tutos pour apprendre les bases sur l'internet mondial :
 
 * <https://www.internetingishard.com/>
 * <https://www.theodinproject.com/courses/html-and-css>
 * <https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web>
 * le <http://www.thenetninja.co.uk/> a plein de tutos sur le web.
 * <http://www.w3schools.com/> est le site de référence sur tout ce qui concerne html/css.
+* <https://fr.learnlayout.com/> petits tutos sur le layout css.
 
 
 > Avant de choisir un tuto, Vérifier bien cependant qu'ils traitent de la dernière version, ici html5 et css3.
 
-Pour commencer nous allons créer un nouveau projet vide dans l'[IDE](https://fr.wikipedia.org/wiki/Environnement_de_développement) Webstorm, téléchargeable [ici](https://www.jetbrains.com/fr-fr/webstorm/).
+Prenez votre éditeur de texte favori et créez un nouveau fichier que vous nommerez `index.html` 
 
-> New Projet > Empty Project
-{: .note}
 
-Nous allons créer un premier fichier : `index.html`. 
-> new > file 
-{: .note}
+> Vous pouvez, mais ce n'est pas nécessaire, choisir un l'[IDE](https://fr.wikipedia.org/wiki/Environnement_de_développement) fait pour le web, comme [Webstorm](https://www.jetbrains.com/fr-fr/webstorm/), mais ce n'est pas nécessaire.
 
 ~~~html 
 <!doctype html>
 <html>
-<head>
-    <meta charset="utf-8"/>
-    <title>Maison page</title>
-</head>
-<body>
-<h1>Bonjour Monde</h1>
-<p>Bienvenue sur ma page web.</p>
-</body>
+  <head>
+      <meta charset="utf-8"/>
+      <title>Maison page</title>
+  </head>
+  <body>
+    <h1>Bonjour Monde</h1>
+    <p>Bienvenue sur ma page web.</p>
+  </body>
 </html>
 ~~~
-Ici on définit bien le type de document mais aussi l'encodage (fortement conseillé pour pouvoir écrire correctement).
 
-Webstorm n’est pas content, il souligne la ligne 2. En passant le curseur à droite de l’éditeur, en regard de la ligne 2 sur le trait orange, il est dit : Missing required “lang” attribute. En cliquant dessus une ampoule orange apparait sur le mot html. Si on clique si cette ampoule elle propose un correctif : insert required tag. Faisons-le et choisissons fr comme langue.
+Vous pouvez maintenant l'ouvrir en tant que fichier texte avec chrome : "fichier > ouvrir un fichier ...". 
 
-On obtient donc le code suivant :
+> Si vous modifiez un fichier, chrome ne le mettra par à jour immédiatement. Il faut l'actualiser. Vous pouvez le faire dans le menu : "Afficher > Actualiser cette page"
+
+
+Vous voyez votre fichier html être interprété par chrome, 
+
+>félicitations !
+> Vous venez d'écrire votre 1er fichier html.
+{: .note}
+
+### validation du html 
+
+
+Avant de continuer, vérifions qu'on a bien écrit du html correct. Pour cela, utilisons le [validateur du W3C](https://validator.w3.org/#validate_by_upload+with_options). Choisissez *"Validate by direct input"* et copiez/collez le code html. Puis cliquez sur "check". 
+
+Il y a un soucis, il vous demande d'ajouter la langue dans laquelle est écrit votre texte. Faisons le : 
+
 ~~~~html
 <!doctype html>
 <html lang="fr">
-<head>
-    <meta charset="utf-8"/>
-    <title>Maison page</title>
-</head>
-<body>
-<h1>Bonjour Monde</h1>
-<p>Bienvenue sur ma page web.</p>
-</body>
+  <head>
+      <meta charset="utf-8"/>
+      <title>Maison page</title>
+  </head>
+  <body>
+    <h1>Bonjour Monde</h1>
+    <p>Bienvenue sur ma page web.</p>
+  </body>
 </html>
 ~~~~
 
-### Quelques balises courantes 
+Re-tentez une validation. Tout devrait être ok. 
+
+>Re-Félicitation, vous venez d'écrire votre 1er fichier html correct !
+{: .note}
+
+Cela peut semble anecdotique d'écrire du joli html correct puisque votre navigateur arrive à le lire même s'il est mal écrit. Mais ça ne l'est pas et ce principalement parce que c'est **bad karma** (ça va vous retomber sur le coin de la figure tôt ou tard). En effet, lorsque vous écrivez du code html non correct, le navigateur va essayer de le corriger en l'interprétant. Ca va souvent être ce que vous vouliez, mais le jour où cela ne le sera pas vous ne comprendrez pas pourquoi. Et une succession de petites erreurs va produire un code très difficile à corriger. 
+
+Donc pour vous éviter des erreurs futures, faite de suite du bon html
+
+> Tout éditeur de texte comprenant le html digne de ce nom possède une façon automatique de vérifier que votre html est correct. C'est le cas par défaut de [Webstorm](https://www.jetbrains.com/fr-fr/webstorm/), de [vscode](https://code.visualstudio.com/docs/languages/html) avec des plugin, etc.
+
+
+### les balises c'est balèze
+
+html est un [langage à balises](https://developer.mozilla.org/fr/docs/Learn/Getting_started_with_the_web/HTML_basics) qui s'imbriquent les unes dans les autres en autant de boites. Chaque balise à un sens qu'elle applique à son contenu, c'est à dire ce qui est placé entre ses balises ouvrante et fermante (la même balise avec un `/` devant). Elles permettent de structurer sa page. En voici quelques unes utiles : 
 
 * `<head></head>` : en-tête de la page 
 * `<body></body>` : corps de la page 
@@ -160,7 +186,7 @@ Ce code est composé de 3 éléments :
 
 Il y a tout de même un problème. Comment faire si l'on veut avoir des formats différents pour plusieurs paragraphes ? en effet, tous les paragraphes ont la même balise :`p`
 
-Pour resoudre ce problème, il existe des solutions:
+Pour résoudre ce problème, il existe des solutions:
 * *les classes* : qui peuvent être utilisées en même temps par plusieurs balises
 * `les id* : qui doivent être uniques pour chaque élément.
 
@@ -227,7 +253,7 @@ Cet arbre contient tous les éléments html présents sur la page (plus de préc
 L'ajout d'un script javascript sur une page html permet de modifier cet arbre DOM, sans avoir besoin de recharger la page.
 Ces modifications ce font via des événements : [https://www.w3schools.com/jsref/dom_obj_event.asp](https://www.w3schools.com/jsref/dom_obj_event.asp)
 
-Prenons un exemple pour illustrer nos propos. Dans premier temps on écrira le script js dans le fichier html. Cependant pour avoir un code plus propre il est recommandé de séparer le code et de créer un fichier en ``.js``en parallèle.
+Prenons un exemple pour illustrer nos propos. Commençons par écrire dans un fichier *"rectangle.html"* le code suivant, que vous ouvrirez dans un chrome :
 
 ~~~html
 <html lang="fr">
@@ -240,10 +266,58 @@ Prenons un exemple pour illustrer nos propos. Dans premier temps on écrira le s
         margin: 0;
         padding:0;
         }
-      .milieu {
-        margin: 10px auto;
+      #mon_div {
         height: 50px;
         width: 20px;
+      }
+
+      .milieu {
+        margin: 10px auto;
+      }
+      .color {
+        background-color: red;
+      }
+    </style>
+
+    <div id="mon_div" class="milieu color"></div>
+  </body>
+</html>
+~~~
+
+On y voit un rectangle rouge. Vous devriez comprendre ce qu'il se passe : 
+* on a crée un `<div></div>` vide d'identifiant `mon_div`
+* sans css, il serait de hauteur nulle (un `<div></div>` aura la hauteur de son contenu et la largeur de l'écran par défaut), mais on a ajouté du style pour :
+  * qu'il soit rouge (la classe `color`)
+  * qu'il ait une largeur et une hauteur (l'id `#mon_div`)
+  * qu'il soit au centre (la classe `milieu`) avec la propriété [margin](https://www.w3schools.com/css/css_margin.asp) à 2 paramètres (le 1er paramètre c'est haut et bas (ici `10px` (px pour pixel)) et le second gauche et droite. `auto` voulant dire au milieu).
+
+>Testez le code sans la balise style pour voir la différence 
+{: . note}
+
+
+> `margin auto` ne marche que si la balise a une largeur. Si elle fait la taille de la fenêtre ce qui est le cas par défaut pour la balise `<div></div>` (en vrai, toutes les balises de type [display block](https://developer.mozilla.org/fr/docs/Glossary/Block/CSS)) `margin auto` ne fera rien puisqu'il n'y a rien à centrer.
+{: .attention}
+
+Ajoutons du javascript qui va modifier l'arbre DOM. On va rendre notre rectangle bleu : 
+
+~~~html
+<html lang="fr">
+  <head>
+    <title>Ma Page</title>
+  </head>
+  <body>
+    <style>
+      html, body {
+        margin: 0;
+        padding:0;
+        }
+      #mon_div {
+        height: 50px;
+        width: 20px;
+      }
+
+      .milieu {
+        margin: 10px auto;
       }
       .color {
         background-color: red;
@@ -253,149 +327,115 @@ Prenons un exemple pour illustrer nos propos. Dans premier temps on écrira le s
     <div id="mon_div" class="milieu color"></div>
 
     <script>
-      document.getElementById("mon_div").onclick = function() {
-        document.getElementById("mon_div").style.backgroundColor = "blue"
-      }
+      document.getElementById("mon_div").style.backgroundColor = "blue";
     </script>
   </body>
 </html>
 ~~~
 
-Ici, on a crée un div dans la page html, originellement de couleur rouge. Le script js va permettre de changer la couleur de ce div en bleu lorsque l'on clique dessus avec la souris.\
-Il faut bien noter que l'on écrit le script dans le code à l'endroit où il va être exécuté. 
+Magique, non ? Vous verrez, avec un peu d'entraînement, ça viendra tout seul. Il faut juste comprendre la notation pointée pour que cela devienne évident : on applique la propriété à droite du `.` à ce qu'il y a à gauche du point. Et ça se lit de droite à gauche : 
 
-On peut faire plus compliqué, si l'on souhaite que le div retrouve sa couleur d'origine si on re-clique dessus par exemple :
+1. on affecte `"blue"` à la propriété `backgroundColor` de `document.getElementById("mon_div").style`
+2. `document.getElementById("mon_div").style` est la propriété `style` de `document.getElementById("mon_div")`
+3. `document.getElementById("mon_div")` est le résultat de la fonction `getElementById("mon_div")` appliquée à `document`.
 
+On peut maintenant lire le tout dans l'ordre pour comprendre : On récupère l'élément d'identifiant `mon_div` du `document` et on change la propriété `backgroundColor` (propriété [background-color](https://developer.mozilla.org/fr/docs/Web/CSS/background-color) du css) de son style à `"blue"`.
 
-~~~~html
-<script>
-  blue = false;
-  document.getElementById("mon_div").onclick = function() {
-    if (blue) {
-      blue = false;
-      document.getElementById("mon_div").style.backgroundColor = "red"
-    }
-    else {
-      blue = true;
-      document.getElementById("mon_div").style.backgroundColor = "blue"
-    }
-  }
-</script>
-~~~~
+> Le javascript, comme le html et le css d'ailleurs sont exécutés lorsqu'ils sont lu. Si vous mettez le script en début de la balise `<body></body>` ça ne marchera pas puisque le `<div></div>` d'id `#mon_div`n'exite pas encore.
+> Teste le.
+{: .attention}
+
+### évènements
+
+Le javascript précédent, même s'il est bien d'un point de vue pédagogique, n'a pas vraiment de sens d'un point de vue pratique. Autant mettre  la propriété à `"blue"` tout de suite et *basta*. Le javascript prend tout son sens lorsqu'il se passe quelque chose dans la page. 
+
+On va souvent utiliser le javascript de cette façon, en réaction à un évènement qui s'est produit sur la page : On appelle ça [la programmation évènementielle](https://developer.mozilla.org/fr/docs/Learn/JavaScript/Building_blocks/Events). 
 
 
+Essayez le code suivant, en cliquant sur le rectangle rouge : 
 
-### compliquons les choses
-
-Imaginons maintenant que nous n'avons plus un seul div, mais deux.
-
-~~~~html
-<!doctype html>
+~~~html
 <html lang="fr">
   <head>
-      <title>Ma Page</title>
+    <title>Ma Page</title>
   </head>
   <body>
     <style>
-        html, body {
-            margin: 0;
-            padding:0;
+      html, body {
+        margin: 0;
+        padding:0;
         }
-        .milieu {
-            margin: 10px auto;
-            height: 50px;
-            width: 20px;
-        }
-        .color {
-            background-color: red;
-        }
+      #mon_div {
+        height: 50px;
+        width: 20px;
+      }
+
+      .milieu {
+        margin: 10px auto;
+      }
+      .color {
+        background-color: red;
+      }
     </style>
 
     <div id="mon_div" class="milieu color"></div>
 
-    <div id="div2" class="milieu color"></div>
+    <script>
+      function changeCouleur() {
+        document.getElementById("mon_div").style.backgroundColor = "blue";
+      }
+      document.getElementById("mon_div").onclick = changeCouleur;
+    </script>
   </body>
 </html>
-~~~~
+~~~
 
-Cette fois on souhaite pouvoir changer la couleur de nos **DEUX** div, alors pourquoi pas attraper les éléments par `class` plutôt que par `id` ?
+On a fait exactement pareil que tout à l'heure, sauf que :
+* on a affecté un comportement à un évènement ([onclick](https://developer.mozilla.org/fr/docs/Web/API/GlobalEventHandlers/onclick)) plutôt qu'à une propriété css
+* on a affecté une fonction plutôt qu'une chaine de caractère
 
-~~~~~html
+
+> une fonction est différent de son résultat. Dans l'exemple, `changeCouleur` est la fonction, `changeCouleur()` est le résultat de son exécution. On affecte une fonction à un évènement, pas son exécution.
+{: . attention}
+
+Comme on va passer son temps à créer des fonction qui ne vont être utilisées que lors d'un évènement, javascript permet d'écrire ce que l'on nomme des [fonction anonyme](http://www.coursweb.ch/javascript/anonymous-functions.html) (elles n'ont pas de nom). Remplacez la balise script par ce qui suit pour voir comment définir et utiliser une fonction anonyme :
+
+```html
 <script>
-    bleu = false;
-    document.getElementsByClassName("color").onclick = function() {
-        if(bleu){
-            bleu=false;
-            document.getElementsByClassName("color").style.backgroundColor = "red"
-        }
-        else{
-            bleu=true;
-            document.getElementsByClassName("color").style.backgroundColor = "blue"
-        }
+  document.getElementById("mon_div").onclick = function() {
+    document.getElementById("mon_div").style.backgroundColor = "blue"
+  }      
+</script>
+```
+
+Vous voyez, c'est simple, on défini directement une fonction avec le mot clé `function` ses paramètres (ici il n'y en a pas donc on écrit juste `()`) et le corps e la fonction entre `{}`.
+
+
+### garder en mémoire des changements
+
+Si l'on veut pouvoir recliquer sur le rectangle pour faire repasser sa couleur à rouge, il faut se rappeler de sa couleur actuelle. Par exemple : 
+
+
+```html
+<script>
+  est_bleu = false;
+  document.getElementById("mon_div").onclick = function() {
+    if(est_bleu){
+        est_bleu = false;
+        document.getElementById("mon_div").style.backgroundColor = "red"
     }
-</script>
-~~~~~
-
-Malheureusement ce code ne code ne fonctionne pas. En effet la fonction `getElementsByClassName` renvoie un array et le reste du code n'est pas applicable tel quel à un array.
-Si l'on souhaite faire exactement la même chose mais cette fois sur tous les éléments de la classe ``.color`` il faut passer par une boucle sur les éléments de l'array.
-
-~~~~~html
-<script>
-    var array = document.getElementsByClassName("color");
-    blue = false;
-    function change (){
-        if(blue){
-            bleu=false;
-            this.style.backgroundColor= "red"
-        }
-        else{
-            blue=true;
-            this.style.backgroundColor= "blue"
-        }
-        }
-
-    for (let element of array ){
-        element.onclick = change
+    else{
+        est_bleu = true;
+        document.getElementById("mon_div").style.backgroundColor = "blue"
     }
+  }
 </script>
-~~~~~
+```
 
-Cela devient vite compliqué, on préfère alors utiliser des bibliothèques, comme [jQuery](https://jquery.com).
-
-Cela nous permet de simplifier un peu la syntaxe, mais aussi de nous faciliter la vie. 
-On va reprendre l'exemple pour illustrer l'utilité d'une bibliothèque telle que jQuery.
-
-### bibliothèque jquery
-
-Ce qui est assez long à écrire, o peut alors utilsier des bibliothèques, comme la bibliothèque jQuery par exemple, qui prend en charge ce genre de problème.
-
-Pour pouvoir l'utiliser il faut d'abord l'importer, ici on va passer pas un [cdn](https://en.wikipedia.org/wiki/Content_delivery_network)
-
-~~~~html
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-
-<script>
-    blue=false;
-    $(".color").click(function (){
-        if(red){
-            blue=false;
-            $(this).css("backgroundColor","red");
-        }
-        else{
-            blue=true;
-            $(this).css("backgroundColor","blue");
-        }
-
-    })
-</script>
-~~~~
-
-Ici on retrouve le code écrit en jQuery, il a exactement la même fonctionnalité que l'exemple précédent. On remarque bien que l'on n'a pas besoin de passer par la boucle `for`, elle est caché dans l'appel de la méthode `click`. La fonction en paramètre de click est utilisée pour toute balise satisfaisant le critère, ici qu'elle soit de classe `color`.
-
-Pour en savoir plus sur l'utilisation de jQuery, il existe de nombreux tutos sur l'internet mondial : 
-* <https://www.digitalocean.com/community/tutorials/an-introduction-to-jquery>
-* <https://www.youtube.com/playlist?list=PL4cUxeGkcC9hNUJ0j6ccnOAcJIPoTRpO4>
-
+> En javascript, une variable est globale par défaut. C'est à dire qu'on peu en parler et la modifier partout. 
+> Dans le code ci-dessus par exemple, on modifie la variable dans une fonction alors que celle-ci n'est pas défini dans la fonction. 
+> Cela ne fonction **qu'en javascript**.
+{: .attention}
 
 
 
