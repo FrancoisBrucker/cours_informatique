@@ -434,7 +434,7 @@ Si l'on veut pouvoir recliquer sur le rectangle pour faire repasser sa couleur �
 
 > En javascript, une variable est globale par défaut. C'est à dire qu'on peu en parler et la modifier partout. 
 > Dans le code ci-dessus par exemple, on modifie la variable dans une fonction alors que celle-ci n'est pas défini dans la fonction. 
-> Cela ne fonction **qu'en javascript**.
+> Cela ne fonctionne **qu'en javascript**.
 {: .attention}
 
 
