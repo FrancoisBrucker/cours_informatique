@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Projet numérologie : niveau 1 | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Projet numérologie : niveau 1" />
+<meta name="author" content="François Brucker" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
+<link rel="canonical" href="/cours_informatique/cours/web/projets/numerologie/niveau-1/preparation.html" />
+<meta property="og:url" content="/cours_informatique/cours/web/projets/numerologie/niveau-1/preparation.html" />
+<meta property="og:site_name" content="cours d’informatique" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Projet numérologie : niveau 1" />
+<script type="application/ld+json">
+{"headline":"Projet numérologie : niveau 1","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/web/projets/numerologie/niveau-1/preparation.html","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css">
+
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Projet numérologie : niveau 1</h1></p>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></p>
+  </header>
+
+  <div class="post-content">
+    <blockquote class="note">
+  <p>TBD : en chantier</p>
+</blockquote>
+
+<h2 id="but-du-site">but du site</h2>
+
+<p>On aimerait pouvoir créer un site de numérologie qui associerait à chaque prénom un chiffre. Comme les publications scientifiques sur ce sujet (comme <a href="https://www.parents.fr/prenoms/nos-conseils-prenoms/la-numerologie-des-prenoms-diaporama-307570">là</a>, <a href="https://www.femmeactuelle.fr/horoscope2/numerologie/numerologie-prenom-19618">ici</a> ou <a href="https://www.evozen.fr/numerologie/expression">encore ceci</a>) sont discordantes, nous allons créer le nôtre.</p>
+
+<blockquote>
+  <p>But : associer un chiffre à toute chaine de caractère en [unicode](https://unicode-table.com/fr/</p>
+</blockquote>
+
+<h2 id="prérequis">prérequis</h2>
+
+<p>Avant de se lancer à corps perdu dans le développement et le code, vérifions que nous avons tous les outils nécessaires.</p>
+
+<h3 id="outils-développement">outils développement</h3>
+
+<ul>
+  <li>Il nous faut un éditeur de texte. J’utilise <a href="https://code.visualstudio.com/">vscode</a>, téléchargez le et installez le.</li>
+  <li>Il nous faut du javascript. On utilisera <a href="https://nodejs.org/en/">node</a> : téléchargez le et installez le en <a href="/cours_informatique/cours/web/js/bases.html#bloc-id-installation-node">suivant le tuto</a>.</li>
+  <li>nous utiliserons le terminal, donc jetez un oeil au <a href="/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html">tuto terminal</a> pour pouvoir le dégainer à l’envie.</li>
+</ul>
+
+<h3 id="projet">projet</h3>
+
+<p>Nous allons préparer le projet dans lequel nous allons coder.</p>
+
+<ol>
+  <li>Commencez par créer le dossier <em>“numerologie-niveau-1”</em></li>
+  <li>das vscode, choisissez : “<em>Fichier &gt; open</em>” puis naviguez jusqu’à votre dossier <em>“numerologie-niveau-1”</em>.</li>
+  <li>On vous demande si vous faites confiances aux auteurs, puisque c’est vous dites oui.</li>
+</ol>
+
+<h4 id="vscode-le-tour-du-propriétaire">vscode le tour du propriétaire</h4>
+
+<p>Nous venons de créer un nouveau projet, que vscode appelle un <a href="https://code.visualstudio.com/docs/editor/workspaces#_how-do-i-open-a-vs-code-workspace">workspace</a>. Sur la gauche de la fenêtre, le menu du haut vous permets de choisir :</p>
+<ul>
+  <li>les fichiers et sous-dossiers de votre workspace (pour l’instant il n’y a rien)</li>
+  <li>de chercher du texte dans votre projet</li>
+  <li>la gestion de source avec <a href="https://fr.wikipedia.org/wiki/Git">git</a></li>
+  <li>le debogage</li>
+  <li>les extensions installées.</li>
+</ul>
+
+<p>Le menu du bas :</p>
+<ul>
+  <li>ma gestion des compte</li>
+  <li>les préférences</li>
+</ul>
+
+<p>Vous avez aussi une fenêtre d’ouverte qui s’appelle welcome. Vous pouvez la fermer en cliquant sur la croix à droite de son nom.</p>
+
+<p>Créons un nouveau fichier <em>“fichier &gt; New File”</em>, et sauvons le tout de suite : <em>“fichier &gt; enregistrer”</em> avec le nom <em>“mes_tests.js”</em>.</p>
+
+<blockquote>
+  <p>Lorsque l’on code et que vous ne voulez pas avec de problème, les noms de fichier doivent êtres sans espaces et sans accents.</p>
+</blockquote>
+
+<p>Vscode à compris que c’était du javascript, il l’écrit dans la barre de status (la dernière ligne, en bleu, de la fenêtre vscode, voir <a href="https://code.visualstudio.com/docs/getstarted/userinterface">user interface</a>).</p>
+
+<blockquote>
+  <p>la barre de status est très utile, elle regroupe plein d’infos relative au fichier courant :</p>
+  <ul>
+    <li>où on est : Ln 1; Col 1</li>
+    <li>l’<a href="https://www.w3.org/International/questions/qa-what-is-encoding.fr">encodage des caractères</a> : UTF-8. Vous ne <strong>devez jamais</strong> avoir autre chose lorsque vous écrivez du texte.</li>
+    <li>l’<a href="https://fr.wikipedia.org/wiki/Fin_de_ligne">encodage des fin de ligne</a> : LF (sous unix/mac) ou CRLF (sous windows). On ne s’en occupe pas trop, vscode gère tout ça pour nous</li>
+    <li>le langage : ici javascript</li>
+    <li>d’autres trucs selon les extensions que vous avez ajouté.</li>
+  </ul>
+</blockquote>
+
+<h4 id="écrire-du-javascript">écrire du javascript</h4>
+
+<p>fichier : <em>“mes_tests.js”</em></p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">nom</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">monde</span><span class="dl">"</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">bonjour </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">nom</span> <span class="o">+</span> <span class="dl">"</span><span class="s2"> !</span><span class="dl">"</span><span class="p">)</span>
+</code></pre></div></div>
+<blockquote class="note">
+  <p>Puis sauvez le fichier (<em>Fichier &gt; save</em>).</p>
+</blockquote>
+
+<p>Ce qu’il y a de bien avec vscode c’est que toute commande est aussi appelable par son nom grâce à la <a href="https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette">palette de commande</a> : <em>Affichage &gt; Command Palette…</em>. Vous pouvez taper “save” par exemple pour voir toutes les commandes qui contiennent save, dont celle qui sauve des fichiers <em>File: Save</em>. C’est super utile pour trouver une commande dont ne peut que deviner le nom.</p>
+
+<blockquote>
+  <p>Les commandes de la palette de commande sont accessible si la ligne commence par un “&gt;”. S’il y a un “?” c’est l’aide et s’il n’y a retrouve des fichiers ouverts.</p>
+</blockquote>
+
+<p>Par exemple, tapez dans la palette “&gt;terminal”. Il doit y avoir une commande qui s’appelle *Open new external terminal”. Choisissez là et apuyez sur entrée. Un nouveau terminal s’ouvre directement dans le dossier de votre projet. Magique non ?</p>
+
+<blockquote class="note">
+  <p>On peut Maintenant exécuter notre fichier en tapant dans ce nouveau terminal : <code class="language-plaintext highlighter-rouge">node mes_tests.js</code>.</p>
+</blockquote>
+
+<blockquote>
+  <p>On peut aussi ouvrir un terminal Directement dans node : <em>“affichage &gt; terminal”</em>.
+Les menus du dessus du terminal (PROBLEMS, OUTPUT, DEBUG CONSOLE et TERMINAL) dans vscode sont des sorties d’autres processus dont on a pas besoin pour l’instant : on reste donc sur <em>TERMINAL</em>.</p>
+
+  <p>Vous pouvez la supprimer en cliquant sur la poubelle en haut à droite de la fenêtre et en recréer une autre : <em>“Terminal &gt; new terminal”</em>, ou juste le fermer en appuyant sur la croix (vous ré-ouviriez ce terminal la prochaine fois).</p>
+</blockquote>
+
+<h4 id="vscode-les-préférences">vscode, les préférences</h4>
+
+<blockquote class="note">
+  <p><a href="https://code.visualstudio.com/docs/getstarted/settings">https://code.visualstudio.com/docs/getstarted/settings</a></p>
+</blockquote>
+
+<p>Personnellement, s’il y a bien une chose qui m’ennuie c’est de constamment sauver mes fichiers. Si je fait une modification de mes fichiers, c’est parce que j’en ai envie je ne vois pas l’intérêt de devoir sauver pour confirmer. Heureusement, vscode permet (comme tout éditeur qui se respecte) de faire ça en modifiant ses préférences :</p>
+
+<blockquote class="note">
+  <p>Allez dans les préférences de vscode : <em>icône engrenage &gt; settings</em>.</p>
+</blockquote>
+
+<p>Une fenêtre s’ouvre avec toutes les préférences. Il y a :</p>
+<ul>
+  <li>une barre de recherche</li>
+  <li>deux panels : <em>User</em> et <em>Workspace</em>. Par défaut, on est positionné sur <em>User</em>.</li>
+</ul>
+
+<p>Selon le pannel que vous choisissez vous allez changer les préférences pour ce workspace particulier (panel <em>Workspace</em>) ou pour tous les workspaces (panel <em>User</em>).</p>
+
+<p>Dans le panel <em>User</em> choisissez <em>Text Editor &gt; Files</em> puis cherchez <em>Auto Save</em>. On pet ensuite régler sur <em>afterDelay</em> puis changer le délais dans le champ <em>Auto Save Delay</em>. J’ai mis 1000, ce qui fait qu’après 1seconde de repos mon fichier est sauvé automatiquement.</p>
+
+<blockquote>
+  <p>On aurait pu aussi taper “auto save” dans la barre de recherche pour obtenir directement les champs possibles.</p>
+</blockquote>
+
+<blockquote class="note">
+  <p>Regardez les préférence d’Auto Save* dans le panel <em>Workspace</em>, il devrait toujours être sur <em>off</em>.</p>
+</blockquote>
+
+<blockquote>
+  <p>Les divers extensions et modules sont installés soit dans le dossier de projet pour des préférences <em>Workspace</em> soit dans les dossiers de préférences du compte, comme indiqué dans <a href="https://code.visualstudio.com/docs/getstarted/settings#_settings-file-locations">la doc</a>.</p>
+</blockquote>
+
+<h3 id="docs-utiles">docs utiles</h3>
+
+<p>On va ajouter petit à petit des dossiers à notre projet. Pour l’instant ajoutons y un dossier nommé “user stories” qui nous permettra de stocker toutes les infos non code de notre site et de comment on peut qu’il soit utilisé.</p>
+
+<ol>
+  <li><em>menu Affichage &gt; Explorer</em></li>
+  <li>cliquez sur le nom de dossier du workspace (“numérologie”)</li>
+  <li>une fois le dossier sélectionné, vous pouvez cliquer sur l’icône du dossier avec un petit +</li>
+  <li>écrivez “user stories” puis appuyez sur entrée.</li>
+</ol>
+
+<p>Une fois le dossier crée, on va écrire les utilisation possible de notre site comme si on était un utilisateur.</p>
+
+<h4 id="actions-sur-le-site">actions sur le site</h4>
+
+<blockquote class="note">
+  <p>Créez un fichier nommé <em>“connaitre-son-numero.md”</em> à l’intérieur du dossier <em>“user stories’</em> (cliquez droit sur le nom du dossier, puis “new file”)</p>
+</blockquote>
+
+<p>Ce fichier va être écrit en <a href="/cours_informatique/tutos/langage/markdown/2021/08/30/format-markdown.html">markdown</a></p>
+
+<blockquote class="note">
+  <p>Comme on va écrire en français, vous allez ajouter à vscode les extensions suivantes (*Menu affichage &gt; extensions) :</p>
+  <ul>
+    <li><a href="https://marketplace.visualstudio.com/items?itemName=MS-CEINTL.vscode-language-pack-fr">french langage pack for visual studio code</a> pour écrire presque sans faute d’orthographes</li>
+    <li><a href="https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one">Markdown All in One</a> pour nos aider à écrire du markdown.</li>
+  </ul>
+</blockquote>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gh"># connaître son numéro</span>
+
+<span class="gu">## page générale</span>
+<span class="p">
+1.</span> je rentre mon nom dans un champ texte : François puis j'appuie sur la touche entrée.
+<span class="p">2.</span> En dessous du champ texte, on affiche alors Bonjour François, votre numéro est le X
+
+X est écrit en gros au milieu de la page.
+
+<span class="gu">## page du numéro</span>
+
+<span class="nv">&lt;http://localhost/prénom/XXXX&gt;</span>
+
+doit rendre le numéro associé à XXXX
+</code></pre></div></div>
+
+<blockquote>
+  <p>Remarquez quand vous tapez entrée après avoir écrit le premier item ça passe de suite à 2 ?</p>
+</blockquote>
+
+<blockquote>
+  <p>Dans la palette de commande, regadez tout ce que l’on peut faire en tapant “markdown”.
+Par exemple essayez : <em>Markdown All in One: Print current document to html</em></p>
+</blockquote>
+
+<p>Votre markdown a magiquement été transformé en un joli html que vous pouvez ouvrir avec votre navigateur préféré (c’est tellement beau que j’en ai les larmes aux yeux). Vous pouvez supprimer ce fichier html en lui cliquant droit dessus puis : <em>delete file</em>.</p>
+
+<blockquote>
+  <p>Ces user stories sont important pour garder en mémoire le but qu’on se fixe. Il ne faut pas hésiter à en ajouter, les modifier au cours du projet.</p>
+</blockquote>
+
+<h4 id="todos">todos</h4>
+
+<blockquote class="note">
+  <p>Créez dans le dossier “user stories” un fichier todo.md</p>
+</blockquote>
+
+<p>On va ajouter nos liste des taches à faire, et marquer ces tâches effectuées lorsqu’elles sont réalisées. Le projet sera fini lorsqu’il n’y aura plus de tâche dans le todo.</p>
+
+<blockquote>
+  <p>On nettoiera de temps en temps le fichier en supprimant les lignes effectuée pour garder une taille raisonnable de fichier.</p>
+</blockquote>
+
+<p>fichier todo.md</p>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gh"># Todos</span>
+
+On mettra un 'X' dans la checkbox pour l'item courant
+on ~~barrera~~ lorsque cette item sera réalisé
+<span class="p">
+-</span> [ ] associer un numéro à un nom
+<span class="p">-</span> [ ] créer un champ texte dans un fichier html
+<span class="p">-</span> [ ] récupérer en html le contenu d'un champ texte lorsque l'on appuie sur la touche entrée
+<span class="p">-</span> [ ] modifier l'arbre DOM avec du texte.
+<span class="p">-</span> [ ] récupérer un info de l'url et la traiter
+</code></pre></div></div>
+
+<p>Ce fichier va nous servir à driver nos actions dans le projet. On</p>
+<ul>
+  <li>tests,</li>
+  <li>user stories</li>
+  <li>code</li>
+</ul>
+
+<h4 id="js-">js ?</h4>
+
+<ul>
+  <li>nombre et objet</li>
+</ul>
+
+<h4 id="développement">développement</h4>
+
+<h4 id="code">code</h4>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d&#39;informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d&#39;informatique</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
