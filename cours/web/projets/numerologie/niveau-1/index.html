@@ -21,16 +21,19 @@
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
   <link rel="stylesheet" href="/cours_informatique/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-        processEscapes: true
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
       }
-    });
-  </script>
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
 </head>
 
 <body><header class="site-header" role="banner">
@@ -83,9 +86,40 @@
   <li>nous utiliserons le terminal, donc jetez un oeil au <a href="/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html">tuto terminal</a> pour pouvoir le dégainer à l’envie.</li>
 </ul>
 
-<h3 id="projet">projet</h3>
+<h2 id="plan">plan</h2>
 
-<p><a href="/cours_informatique/cours/web/projets/numerologie/niveau-1/preparation.html">Préparation du projet</a></p>
+<p>En quatre parties et autant de cours</p>
+
+<ol>
+  <li>un premier entièrement en front</li>
+  <li>on ajoute une partie back pour les calculs</li>
+  <li>on polie tout ça avec des routes différentes</li>
+  <li>on ajoute la possibilités de stocker des données</li>
+</ol>
+
+<h2 id="projet-front">projet front</h2>
+
+<ol>
+  <li><a href="/cours_informatique/cours/web/projets/numerologie/niveau-1/preparation.html">oréparation du projet</a></li>
+  <li><a href="/cours_informatique/cours/web/projets/numerologie/niveau-1/front_code_js.html">code js back</a></li>
+  <li>code html/css (ici yarn init pour les framework front)</li>
+  <li>intégration html et js ()</li>
+</ol>
+
+<h3 id="back">back</h3>
+
+<blockquote class="note">
+  <p>TBD : requete post et get
+ne pas s’emèler les pinceaux avec le node_module du back et du front</p>
+</blockquote>
+
+<h3 id="routes">routes</h3>
+
+<p>cookies ?</p>
+
+<h3 id="données">données</h3>
+
+<p>sequilize et compagnie avec sqlite.</p>
 
   </div>
 

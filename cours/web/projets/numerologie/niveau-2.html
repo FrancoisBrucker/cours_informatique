@@ -21,16 +21,19 @@
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
   <link rel="stylesheet" href="/cours_informatique/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-        processEscapes: true
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
       }
-    });
-  </script>
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
 </head>
 
 <body><header class="site-header" role="banner">
@@ -98,6 +101,8 @@ Il n’est pas non plus nécessaire d’y passer trop de temps, cor comme le dit
 </ul>
 
 <h2 id="niveau-2">niveau 2</h2>
+
+<p><code class="language-plaintext highlighter-rouge">yarn init</code></p>
 
 <ul>
   <li>type= module et serveur de base</li>

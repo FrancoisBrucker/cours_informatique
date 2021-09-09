@@ -13,25 +13,28 @@
 <meta property="og:url" content="/cours_informatique/2A/mie_web_back.html" />
 <meta property="og:site_name" content="cours d’informatique" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2021-09-09T14:19:46+00:00" />
+<meta property="article:published_time" content="2021-09-09T16:31:30+00:00" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="MIE I1 : serveur web" />
 <script type="application/ld+json">
-{"headline":"MIE I1 : serveur web","dateModified":"2021-09-09T14:19:46+00:00","datePublished":"2021-09-09T14:19:46+00:00","description":"Introduction","mainEntityOfPage":{"@type":"WebPage","@id":"/cours_informatique/2A/mie_web_back.html"},"@type":"BlogPosting","url":"/cours_informatique/2A/mie_web_back.html","@context":"https://schema.org"}</script>
+{"headline":"MIE I1 : serveur web","dateModified":"2021-09-09T16:31:30+00:00","datePublished":"2021-09-09T16:31:30+00:00","description":"Introduction","mainEntityOfPage":{"@type":"WebPage","@id":"/cours_informatique/2A/mie_web_back.html"},"@type":"BlogPosting","url":"/cours_informatique/2A/mie_web_back.html","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
   <link rel="stylesheet" href="/cours_informatique/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-        processEscapes: true
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
       }
-    });
-  </script>
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
 </head>
 
 <body><header class="site-header" role="banner">
@@ -62,7 +65,11 @@
   <div class="post-content">
     <h2 id="introduction">Introduction</h2>
 
-<p>Cours de développement web. On y verra ce qu’est un serveur web.</p>
+<blockquote>
+  <p>Partie I1 du <a href="https://docs.google.com/document/d/19BjB7vXDtT0gcqS45Z7Ai_G1_S0hFj-Cqv2f78YUy9M">programme MIE</a></p>
+</blockquote>
+
+<p>Cours de développement web. On y verra ce qu’est un serveur web et comment en construire un en node.</p>
 
 <h2 id="prérequis">Prérequis</h2>
 
@@ -83,7 +90,18 @@
 
 <p>Vous devez avoir déjà utilisé un langage de programmation, idéalement python</p>
 
-<h2 id="plan">Plan</h2>
+<h2 id="organisation">Organisation</h2>
+
+<h3 id="semaine-type">semaine type</h3>
+
+<p>En trois parties :</p>
+<ul>
+  <li>cours  : on verra sous la forme d’un tuto/projet</li>
+  <li>autonomie : préparation du TD ou travail sur le TD</li>
+  <li>TD : vous travaillez sur votre propre projet, qui suit la trame du projet du cours.</li>
+</ul>
+
+<h3 id="plan">plan</h3>
 
 <blockquote>
   <p>Un bout du <a href="/cours_informatique/cours/web/">cours web global</a></p>
@@ -98,16 +116,54 @@
   <li>on ajoute une base de donnée qu’on attaque avec sequilize.</li>
 </ol>
 
-<blockquote class="note">
-  <p>TBD : serveur python pour le js</p>
-</blockquote>
+<p>Le cours consistera à suivre <a href="/cours_informatique/cours/web/projets/numerologie/niveau-1/">numérologie niveau 1</a> du <a href="(/cours_informatique/cours/web/)">cours de web</a></p>
 
 <h2 id="note">Note</h2>
 
 <ul>
-  <li>15 min d’exam chaque semaine</li>
-  <li>le travail fourni pendant les TDs</li>
+  <li>On notera la présence ainsi que votre coordination cerveau/clavier lors des TDs.</li>
+  <li>lors de travail en autonomie, on vérifiera votre travail en début de séance suivante.</li>
+  <li>une présentation finale de vos projets aura lieu en fin d’UE</li>
 </ul>
+
+<h2 id="semaines">Semaines</h2>
+
+<blockquote>
+  <p>Semaine 1 à 4 du <a href="https://docs.google.com/spreadsheets/d/1XwjeAgwijaYZJEHFg-t_RHMXgi2Qa3d1">planning MIE</a></p>
+</blockquote>
+
+<h2 id="semaine-1">Semaine 1</h2>
+
+<ol>
+  <li>Lundi 8-10 : cours</li>
+  <li>Lundi 10-12 : autonomie : préparation du TD</li>
+  <li>Mercredi 8-10 : TD</li>
+</ol>
+
+<h2 id="semaine-2">Semaine 2</h2>
+
+<ol>
+  <li>Lundi 8-10 : cours</li>
+  <li>Lundi 10-12 : TD</li>
+  <li>Mercredi 8-10 : autonomie : on finalise le TD</li>
+</ol>
+
+<h2 id="semaine-3">Semaine 3</h2>
+
+<ol>
+  <li>Lundi 8-10 : autonomie : on finalise le TD</li>
+  <li>Lundi 10-12 : cours</li>
+  <li>Mercredi 8-10 : TD</li>
+</ol>
+
+<h2 id="semaine-4">semaine 4</h2>
+
+<ol>
+  <li>Lundi 8-10 : autonomie : on fait le cours/tuto et on l’implémente dans son projet</li>
+  <li>Lundi 10-12 : autonomie : on fait le cours/tuto et on l’implémente dans son projet</li>
+  <li>Mercredi 8-10 : présentation projets</li>
+</ol>
+
 
   </div>
 

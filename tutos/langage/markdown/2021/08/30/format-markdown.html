@@ -22,16 +22,19 @@
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
   <link rel="stylesheet" href="/cours_informatique/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-        processEscapes: true
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
       }
-    });
-  </script>
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
 </head>
 
 <body><header class="site-header" role="banner">
@@ -146,7 +149,7 @@
 <blockquote>
   <ul>
     <li>Pour le markdown, il faudra  utiliser  <code class="language-plaintext highlighter-rouge">$$</code>et <code class="language-plaintext highlighter-rouge">$</code> (les notation Tex) plutôt que <code class="language-plaintext highlighter-rouge">\[</code> et  <code class="language-plaintext highlighter-rouge">\(</code> (notations latex).</li>
-    <li>Lorsque vous faites de l’exportation en html, les mathématiques sont représentées en utilisant <a href="https://www.mathjax.org/">Mathjax</a> (voir <a href="ttps://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference">une aide</a> de mathjax)</li>
+    <li>Lorsque vous faites de l’exportation en html, les mathématiques sont représentées en utilisant <a href="https://www.mathjax.org/">Mathjax</a>  (voir <a href="ttps://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference">une aide</a> de mathjax, et <a href="https://docs.mathjax.org/en/latest/web/configuration.html">ici</a> pour la configuration. Mais normalement, ça doit passer sans rien faire si vous utiliser Markdown all in one)</li>
     <li>L’ancêtre de <a href="https://fr.wikipedia.org/wiki/LaTeX">Latex</a> : <a href="https://fr.wikipedia.org/wiki/TeX">Tex</a>, a été créé par le célèbre informaticien <a href="https://fr.wikipedia.org/wiki/Donald_Knuth">Donald Knuth</a> par ce qu’il n’existait rien sur ordinateur à l’époque pour écrire <a href="https://fr.wikipedia.org/wiki/The_Art_of_Computer_Programming">ses livres</a> en respectant une typographie correcte.</li>
   </ul>
 </blockquote>
