@@ -62,37 +62,18 @@ Vous pouvez [suivre ce tuto]({% link cours/web/tuto_outils_dev.md %}) pour voir 
 > TBD
 {: .note}
 
-### serveur et navigateur web niveau 1
+### projets
 
+* [numérologie]({% link cours/web/projets/numerologie/index.md %})
 
-
-1. url comme protocole/serveur/ressource
-2. fichier dan une url (avec exemple bonjour monde)
-3. interprétation par le navigateur( test avec un docx ?)
-4. expérimentation avec les outils de développement
-
-> pas forcément du html/css, on peut transmettre ce qu'on veut par les tuyaux d'internet
-
-* navigateur [url](https://fr.wikipedia.org/wiki/Uniform_Resource_Locator) (ou [uri](https://fr.wikipedia.org/wiki/Uniform_Resource_Identifier) ) et serveur
-* interpréter l'url en html/css/js
-* réseau ? adresse d'u serveur ? ports d'un ordinateur ? (dans serveur)
-* normes et rfc (pour aller plus loin ?)
-* récupérer un fichier sur ordi avec son terminal (pour aller plus loin ?)
-
-### technos mise en œuvre
-
-### Front
-
-[Front]({% link cours/web/front/index.md %})
-
-
-### javascript
+## langage javascript
 
 [cours]({% link cours/web/js/index.md %})
+
+## Front
+
+[Front]({% link cours/web/front/index.md %})
 
 ### Back
 
 [Back]({% link cours/web/back/index.md %})
-
-
-### serveur et navigateur web niveau 2

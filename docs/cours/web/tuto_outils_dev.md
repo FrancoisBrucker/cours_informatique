@@ -7,12 +7,7 @@ authors :
   - "François Brucker"
 ---
 
-
-
-> TBD : à relire
-{: .note}
-
-
+On découvre les outils de développement d'un navigateur, et on se promet qu'on va l'utiliser pour tous nos développement de pages web.
 
 
 ## installation

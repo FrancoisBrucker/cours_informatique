@@ -27,10 +27,11 @@ On ne traitera pas tous les détails depuis la base de la base. Il existe pleins
 
 * <https://www.internetingishard.com/>
 * <https://www.theodinproject.com/courses/html-and-css>
+* <https://fr.learnlayout.com/> petits tutos sur le layout css. Sympa à voir mais on utilise le plus souvent des framework web or gérer le layout.
 * <https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web>
 * le <http://www.thenetninja.co.uk/> a plein de tutos sur le web.
 * <http://www.w3schools.com/> est le site de référence sur tout ce qui concerne html/css.
-* <https://fr.learnlayout.com/> petits tutos sur le layout css.
+
 
 
 > Avant de choisir un tuto, Vérifier bien cependant qu'ils traitent de la dernière version, ici html5 et css3.
