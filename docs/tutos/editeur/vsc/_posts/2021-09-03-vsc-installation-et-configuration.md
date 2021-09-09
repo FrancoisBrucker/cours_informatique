@@ -13,3 +13,21 @@ Installation et premières configurations de [visual studio code](https://code.v
 
 > TBD
 {: .code}
+
+
+## extensions
+
+
+Allez dans la gestion des modules de vscode : *icône engrenage > settings*.
+{: .note}
+
+#### vscode, les autres modules sympa.
+
+* dico francais
+* markdown
+* python : linter, black
+* git
+
+
+## préferences
+

@@ -21,16 +21,5 @@ On aimerait pouvoir créer un site de numérologie qui associerait à chaque pr�
 
 ## parties
 
-1. [niveau 1]({% link cours/web/projets/numerologie/niveau-1.md %})
-
-## niveau 2
-
-* type= module et serveur de base
-
-On va automatiser :
-
-* les user stories
-* les tests
-
-
-mettre sur l'ovh
+1. [niveau 1]({% link cours/web/projets/numerologie/niveau-1/index.md %})
+2. [niveau 2]({% link cours/web/projets/numerologie/niveau-2.md %})
