@@ -58,7 +58,8 @@ Le fichier html précédent écrit dans la console javascript du navigateur. Vou
 
 [Node](https://nodejs.org/en/) est un interpréteur javascript puissant basé sur la V8 et qui contient des bibliothèques dédiées à la création de serveur web.
 
-Installons Node :
+
+#### installation de node {#bloc-id-installation-node}
 
 {% details sous Linux %}
 Vous pouvez utiliser [nodesource](https://github.com/nodesource/distributions/blob/master/README.md) pour installer node.
@@ -77,6 +78,7 @@ Vous téléchargez la version courante de node : <https://nodejs.org/en/download
 > Il existe 2 versions de Node](https://nodejs.org/en/), la *LTS (long term support)* et la *current*. On choisira la version *current* qui est la plus récente. La version *LTS* est là pour des raisons de compatibilité.
 {: .attention}
 
+#### utilisation de node
 
 Une fois <https://nodejs.org/en/>, tapez `node` dans un [terminal]({% post_url tutos/systeme/2021-08-24-terminal %}). Vous êtes dans un interpréteur javascript. Vous pouvez ensuite taper `console.log("bonjour monde !")`. Vous devriez obtenir quelque chose du genre : 
 
