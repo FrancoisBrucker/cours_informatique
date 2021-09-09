@@ -1,6 +1,6 @@
 ---
 layout: page
-title:  "Projet numérologie : niveau 1"
+title:  "Projet numérologie : niveau 1 - préparation"
 category: cours
 author: "François Brucker"
 ---
@@ -187,24 +187,9 @@ fichier todo.md
 On mettra un 'X' dans la checkbox pour l'item courant
 on ~~barrera~~ lorsque cette item sera réalisé
 
-- [ ] associer un numéro à un nom
+- [ ] associer un chiffre à un nom
 - [ ] créer un champ texte dans un fichier html
 - [ ] récupérer en html le contenu d'un champ texte lorsque l'on appuie sur la touche entrée
 - [ ] modifier l'arbre DOM avec du texte.
 - [ ] récupérer un info de l'url et la traiter
 ```
-
-
-Ce fichier va nous servir à driver nos actions dans le projet. On
-* tests, 
-* user stories
-* code
-
-
-#### js ? 
-
-* nombre et objet
-
-#### développement
-
-#### code

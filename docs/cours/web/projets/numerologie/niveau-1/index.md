@@ -27,6 +27,33 @@ Avant de se lancer à corps perdu dans le développement et le code, vérifions 
 * Il nous faut du javascript. On utilisera [node](https://nodejs.org/en/) : téléchargez le et installez le en [suivant le tuto]({% link cours/web/js/bases.md %}#bloc-id-installation-node). 
 * nous utiliserons le terminal, donc jetez un oeil au [tuto terminal]({% post_url tutos/systeme/2021-08-24-terminal %}) pour pouvoir le dégainer à l'envie.
 
-### projet
+## plan
 
-[Préparation du projet]({% link cours/web/projets/numerologie/niveau-1/preparation.md %})
+En quatre parties et autant de cours
+
+1. un premier entièrement en front
+2. on ajoute une partie back pour les calculs
+3. on polie tout ça avec des routes différentes
+4. on ajoute la possibilités de stocker des données
+
+
+## projet front
+
+1. [oréparation du projet]({% link cours/web/projets/numerologie/niveau-1/preparation.md %})
+2. [code js back]({% link cours/web/projets/numerologie/niveau-1/front_code_js.md %})
+3. code html/css (ici yarn init pour les framework front)
+4. intégration html et js ()
+
+### back 
+
+> TBD : requete post et get
+> ne pas s'emèler les pinceaux avec le node_module du back et du front
+{: .note}
+
+### routes
+
+ cookies ?
+
+### données
+
+sequilize et compagnie avec sqlite.

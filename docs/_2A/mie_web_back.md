@@ -6,7 +6,10 @@ category: cours
 
 ## Introduction
 
-Cours de développement web. On y verra ce qu'est un serveur web.
+> Partie I1 du [programme MIE](https://docs.google.com/document/d/19BjB7vXDtT0gcqS45Z7Ai_G1_S0hFj-Cqv2f78YUy9M)
+
+
+Cours de développement web. On y verra ce qu'est un serveur web et comment en construire un en node.
 
 
 ## Prérequis
@@ -26,8 +29,16 @@ Plus précisément, peu importe le système d'exploitation (Linux, Mac ou window
 
 Vous devez avoir déjà utilisé un langage de programmation, idéalement python
 
+## Organisation
 
-## Plan
+### semaine type
+
+En trois parties : 
+* cours  : on verra sous la forme d'un tuto/projet
+*  autonomie : préparation du TD ou travail sur le TD
+*   TD : vous travaillez sur votre propre projet, qui suit la trame du projet du cours.
+
+### plan
 
 > Un bout du [cours web global]({% link cours/web/index.md %})
 
@@ -38,10 +49,40 @@ Chaque semaine est dédiée à un thème particulier :
 3. on pimp notre serveur en utilisant express et d'autres modules node
 4. on ajoute une base de donnée qu'on attaque avec sequilize.
 
-> TBD : serveur python pour le js
-{: .note}
+Le cours consistera à suivre [numérologie niveau 1]({% link cours/web/projets/numerologie/niveau-1/index.md %}) du [cours de web](({% link cours/web/index.md %}))
+
 
 ## Note
 
-* 15 min d'exam chaque semaine
-* le travail fourni pendant les TDs 
+* On notera la présence ainsi que votre coordination cerveau/clavier lors des TDs.
+* lors de travail en autonomie, on vérifiera votre travail en début de séance suivante.
+* une présentation finale de vos projets aura lieu en fin d'UE
+
+## Semaines
+
+> Semaine 1 à 4 du [planning MIE](https://docs.google.com/spreadsheets/d/1XwjeAgwijaYZJEHFg-t_RHMXgi2Qa3d1)
+
+## Semaine 1 
+
+1. Lundi 8-10 : cours
+2. Lundi 10-12 : autonomie : préparation du TD
+3. Mercredi 8-10 : TD
+
+## Semaine 2
+
+1. Lundi 8-10 : cours
+2. Lundi 10-12 : TD 
+3. Mercredi 8-10 : autonomie : on finalise le TD
+
+## Semaine 3
+
+1. Lundi 8-10 : autonomie : on finalise le TD 
+2. Lundi 10-12 : cours
+3. Mercredi 8-10 : TD
+
+## semaine 4
+
+1. Lundi 8-10 : autonomie : on fait le cours/tuto et on l'implémente dans son projet
+2. Lundi 10-12 : autonomie : on fait le cours/tuto et on l'implémente dans son projet
+3. Mercredi 8-10 : présentation projets
+

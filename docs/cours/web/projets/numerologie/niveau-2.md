@@ -42,6 +42,8 @@ Il y a plein (trop) de résultat. Heureusement, ces extensions sont classées pa
 
 ## niveau 2
 
+`yarn init`
+
 * type= module et serveur de base
 
 On va automatiser :
