@@ -96,7 +96,7 @@
   <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />récupérer un info de l’url et la traiter</li>
 </ul>
 
-<h2 id="première-tâche">première tâche</h2>
+<h2 id="choix-de-la-première-tâche">choix de la première tâche</h2>
 
 <blockquote>
   <p>Quelle est la tâche la plus simple à réaliser dans notre todo ?</p>
@@ -207,7 +207,7 @@ Si ce n’est pas le cas, c’est que vous items sont trop gros et qu’il faut 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">nombre</span><span class="p">(</span><span class="nx">chaine</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">somme</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">chaine</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">somme</span> <span class="o">+=</span> <span class="nx">sommeFinale</span><span class="p">(</span><span class="nx">chaine</span><span class="p">.</span><span class="nx">charCodeAt</span><span class="p">(</span><span class="nx">i</span><span class="p">))</span>
+        <span class="nx">somme</span> <span class="o">+=</span> <span class="nx">chaine</span><span class="p">.</span><span class="nx">charCodeAt</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="nx">somme</span>
 <span class="p">}</span>
@@ -220,8 +220,8 @@ Si ce n’est pas le cas, c’est que vous items sont trop gros et qu’il faut 
 <ul class="task-list">
   <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />associer un chiffre à un nom
     <ul class="task-list">
-      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />numéro unicode/utf8 d’un caractère</li>
-      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />sommer des numéro des caractères d’une chaine de caractères</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>numéro unicode/utf8 d’un caractère</del></li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>sommer des numéro des caractères d’une chaine de caractères</del></li>
       <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />sommer les chiffre d’un nombre</li>
       <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />sommer itérativement jusqu’à convergence (car $10x + y &gt; x+y$ si $x &gt; 0$)</li>
     </ul>
@@ -233,6 +233,262 @@ Si ce n’est pas le cas, c’est que vous items sont trop gros et qu’il faut 
 </ul>
 
 <p>On a bien progressé.</p>
+
+<h2 id="fin-du-code-js">fin du code js</h2>
+
+<p>La tâche qui semble la plus simple maintenant est de finaliser la partie consacrée à l’association d’un chiffre à un nom.</p>
+
+<p>Je choisis de faire :</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />associer un chiffre à un nom
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>numéro unicode/utf8 d’un caractère</del></li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>sommer des numéro des caractères d’une chaine de caractères</del></li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />sommer les chiffre d’un nombre</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />sommer itérativement jusqu’à convergence (car $10x + y &gt; x+y$ si $x &gt; 0$)</li>
+    </ul>
+  </li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />créer un champ texte dans un fichier html</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />récupérer en html le contenu d’un champ texte lorsque l’on appuie sur la touche entrée</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />modifier l’arbre DOM avec du texte.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />récupérer un info de l’url et la traiter</li>
+</ul>
+
+<h3 id="sommer-les-chiffres-dun-nombre">sommer les chiffres d’un nombre</h3>
+
+<p>On pourrait se la jouer matheuse et diviser le nombre par 10 autant de fois que nécessaire et en prenant les parties entières, mais faisons plutôt de la magie en jouant avec les conversions :</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">somme</span><span class="p">(</span><span class="nx">nombre</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">somme</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="nx">chaine</span> <span class="o">=</span> <span class="nb">String</span><span class="p">(</span><span class="nx">nombre</span><span class="p">)</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">chaine</span><span class="p">.</span><span class="nx">length</span> <span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">somme</span> <span class="o">+=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">chaine</span><span class="p">.</span><span class="nx">charAt</span><span class="p">(</span><span class="nx">i</span><span class="p">))</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">somme</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<blockquote class="note">
+  <p>Comment marche ce code ?</p>
+</blockquote>
+
+<p>Pour l’instant, on va tester ce code <em>à la sauvage</em>, c’est à dire en ajoutant du code à la fin de <em>“numerologie.js”</em> et en affichant le résultat à l’écran grâce à la fonction <a href="https://nodejs.org/api/console.html#console_console_log_data_args"><code class="language-plaintext highlighter-rouge">console.log</code></a>.</p>
+
+<p>On peut alors ajouter le code suivant (qu’on enlèvera ensuite…) dans <em>“numerologie.js”</em> :</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// test de la fonction</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">somme</span><span class="p">(</span><span class="dl">"</span><span class="s2">132</span><span class="dl">"</span><span class="p">))</span>
+
+<span class="c1">// avec un chiffre : charAt != charCodeAt</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">somme</span><span class="p">(</span><span class="dl">"</span><span class="s2">4</span><span class="dl">"</span><span class="p">))</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">4</span><span class="dl">"</span><span class="p">.</span><span class="nx">charCodeAt</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">4</span><span class="dl">"</span><span class="p">.</span><span class="nx">charAt</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+
+<span class="c1">// conversion chaine de caracteres et nombre</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">typeof</span> <span class="dl">"</span><span class="s2">4</span><span class="dl">"</span><span class="p">.</span><span class="nx">charAt</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">parseInt</span><span class="p">(</span><span class="dl">"</span><span class="s2">4</span><span class="dl">"</span><span class="p">.</span><span class="nx">charAt</span><span class="p">(</span><span class="mi">0</span><span class="p">)))</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">typeof</span> <span class="nb">parseInt</span><span class="p">(</span><span class="dl">"</span><span class="s2">4</span><span class="dl">"</span><span class="p">.</span><span class="nx">charAt</span><span class="p">(</span><span class="mi">0</span><span class="p">)))</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>Les commentaires en javascript se font en mettant des <code class="language-plaintext highlighter-rouge">//</code> : le reste la ligne n’est pas évaluée.
+ C’est tellement pratique qu’il y a des raccourcis pour cela en vscode : <em>menu édition &gt; comment line comment</em>.
+Pour trouver ce raccourci, je suis allé dans la palette de commande et j’ai tapé <em>comment</em> pour voir mes possibilités.</p>
+</blockquote>
+
+<blockquote class="attention">
+  <p>Ce n’est <strong>pas</strong> de bonnes pratiques. Il faut dissocier le code des tests physiquement (dans des fichiers séparés) pour ne pas faire de bêtises en supprimant du code alors qu’on voulait supprimer des tests ou en oubliant de supprimer des tests lors de l’utilisation du code.
+On verra plus loin comment faire <em>un peu</em> mieux et dans les niveaux suivant comment faire bien.</p>
+</blockquote>
+
+<h3 id="test-du-code">test du code</h3>
+
+<p>Nous n’allons pas encore utiliser des bibliothèques dédiées aux tests (c’est le boulot des niveaux suivants), mais nous allons faire en sorte de pouvoir effectuer des tests de code :</p>
+
+<ul>
+  <li>sans modifier le code,</li>
+  <li>sans avoir à supprimer les tests ensuite.</li>
+</ul>
+
+<p>On va procéder comme si l’on importait du javascript dans une page web : on va lire le fichier de code sous la forme d’une longue chaine de caractère et l’évaluer dans l’interpréteur. On pourra ensuite utiliser les fonctions comme si on venait de les taper.</p>
+
+<blockquote>
+  <p>On ne peut pas utiliser d’import classique de fichier ici, car il faut que le fichier de code soit dans un format spécial, ce qui n’est pas le cas ici.</p>
+</blockquote>
+
+<h4 id="lecture-dun-fichier-texte">lecture d’un fichier texte</h4>
+
+<p>La lecture de fichiers se fait de façon aisé avec node en utilisant la bibliothèque <a href="https://nodejs.org/api/fs.html#fs_file_system"><code class="language-plaintext highlighter-rouge">fs</code></a>. On va utiliser : <a href="https://nodejs.org/api/fs.html#fs_fs_readfilesync_path_options"><code class="language-plaintext highlighter-rouge">fs.readFileSync()</code></a>.</p>
+
+<blockquote>
+  <p>La plupart des méthodes et fonctions de node sont asynchrones, c’est à dire que l’on attend pas que la méthode soit fini pour continuer l’exécution de notre code. Nous n’allons pas faire ça ici car ça complique (même si c’est mieux) le fonctionnement.</p>
+</blockquote>
+
+<p>Testons ça dans un node :</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="nx">contenu_du_fichier</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="dl">"</span><span class="s2">./numerologie.js</span><span class="dl">"</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="nx">Buffer</span> <span class="mi">66</span> <span class="mi">75</span> <span class="mi">6</span><span class="nx">e</span> <span class="mi">63</span> <span class="mi">74</span> <span class="mi">69</span> <span class="mi">6</span><span class="nx">f</span> <span class="mi">6</span><span class="nx">e</span> <span class="mi">20</span> <span class="mi">6</span><span class="nx">e</span> <span class="mi">6</span><span class="nx">f</span> <span class="mi">6</span><span class="nx">d</span> <span class="mi">62</span> <span class="mi">72</span> <span class="mi">65</span> <span class="mi">28</span> <span class="mi">63</span> <span class="mi">68</span> <span class="mi">61</span> <span class="mi">69</span> <span class="mi">6</span><span class="nx">e</span> <span class="mi">65</span> <span class="mi">29</span> <span class="mi">20</span> <span class="mi">7</span><span class="nx">b</span> <span class="mi">0</span><span class="nx">a</span> <span class="mi">20</span> <span class="mi">20</span> <span class="mi">20</span> <span class="mi">20</span> <span class="mi">76</span> <span class="mi">61</span> <span class="mi">72</span> <span class="mi">20</span> <span class="mi">73</span> <span class="mi">6</span><span class="nx">f</span> <span class="mi">6</span><span class="nx">d</span> <span class="mi">6</span><span class="nx">d</span> <span class="mi">65</span> <span class="mi">20</span> <span class="mi">3</span><span class="nx">d</span> <span class="mi">20</span> <span class="mi">30</span> <span class="mi">0</span><span class="nx">a</span> <span class="mi">20</span> <span class="mi">20</span> <span class="mi">20</span> <span class="mi">20</span> <span class="mi">66</span> <span class="mi">6</span><span class="nx">f</span> <span class="p">...</span> <span class="mi">635</span> <span class="nx">more</span> <span class="nx">bytes</span><span class="o">&gt;</span>
+<span class="o">&gt;</span>
+</code></pre></div></div>
+
+<p>Bon ben c’est pas ce qu’on voulait. C’est raté comme un fichier binaire par défaut… On recommence en précisant qu’on veut du texte :</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="nx">contenu_du_fichier</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="dl">"</span><span class="s2">./numerologie.js</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span><span class="na">encoding</span><span class="p">:</span><span class="dl">'</span><span class="s1">utf8</span><span class="dl">'</span><span class="p">})</span>
+<span class="dl">'</span><span class="s1">function nombre(chaine) {</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="s1">    var somme = 0</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="s1">    for (var i=0; i &lt; chaine.length; i++) {</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="s1">        somme += sommeFinale(chaine.charCodeAt(i))</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="s1">    }</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="s1">    return somme</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="s1">}</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="s1">function somme(nombre) {</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="s1">    var somme = 0</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="s1">    chaine = String(nombre)</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="s1">    for (var i=0; i &lt; chaine.length ; i++) {</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="s1">        somme += parseInt(chaine.charAt(i))</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="s1">    }</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="s1">    return somme</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="s1">}</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="s1">// test de la fonction</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="s1">console.log(somme("132"))</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="s1">// avec un chiffre : charAt != charCodeAt</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="s1">console.log(somme("4"))</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="s1">console.log("4".charCodeAt(0))</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="s1">console.log("4".charAt(0))</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="s1">// conversion chaine de caracteres et nombre</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="s1">console.log(typeof "4".charAt(0))</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="s1">console.log(parseInt("4".charAt(0)))</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="s1">console.log(typeof parseInt("4".charAt(0)))</span><span class="dl">'</span>
+<span class="o">&gt;</span> 
+</code></pre></div></div>
+
+<blockquote>
+  <p>C’est une pratique courante en javascript de déclarer tous les paramètres en 1 fois, avec un <a href="https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/Basics">objet</a> (qui ressemble furieusement à un dictionnaire si vous venez de python).</p>
+</blockquote>
+
+<h4 id="évaluation-dun-fichier">évaluation d’un fichier</h4>
+
+<blockquote class="note">
+  <p>commentez nos précédent tests pour qu’ils ne soient pas évalués.</p>
+</blockquote>
+
+<p>Puis on peut utiliser <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/eval">eval</a> :</p>
+
+<p>Dans un nouveau node :</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="nx">contenu_du_fichier</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="dl">"</span><span class="s2">./numerologie.js</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span><span class="na">encoding</span><span class="p">:</span><span class="dl">'</span><span class="s1">utf8</span><span class="dl">'</span><span class="p">})</span>
+<span class="dl">'</span><span class="s1">function nombre(chaine) {</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="s1">    var somme = 0</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="s1">    for (var i=0; i &lt; chaine.length; i++) {</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="s1">        somme += sommeFinale(chaine.charCodeAt(i))</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="s1">    }</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="s1">    return somme</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="s1">}</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="s1">function somme(nombre) {</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="s1">    var somme = 0</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="s1">    chaine = String(nombre)</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="s1">    for (var i=0; i &lt; chaine.length ; i++) {</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="s1">        somme += parseInt(chaine.charAt(i))</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="s1">    }</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="s1">    return somme</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="s1">}</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="s1">// // test de la fonction</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="s1">// console.log(somme("132"))</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="s1">// // avec un chiffre : charAt != charCodeAt</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="s1">// console.log(somme("4"))</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="s1">// console.log("4".charCodeAt(0))</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="s1">// console.log("4".charAt(0))</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="s1">// // conversion chaine de caracteres et nombre</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="s1">// console.log(typeof "4".charAt(0))</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="s1">// console.log(parseInt("4".charAt(0)))</span><span class="se">\n</span><span class="dl">'</span> <span class="o">+</span>
+  <span class="dl">'</span><span class="s1">// console.log(typeof parseInt("4".charAt(0)))</span><span class="dl">'</span>
+<span class="o">&gt;</span> <span class="nb">eval</span><span class="p">(</span><span class="nx">contenu_du_fichier</span><span class="p">)</span>
+<span class="kc">undefined</span>
+<span class="o">&gt;</span> <span class="nx">somme</span><span class="p">(</span><span class="dl">"</span><span class="s2">123</span><span class="dl">"</span><span class="p">)</span>
+<span class="mi">6</span>
+<span class="o">&gt;</span> 
+</code></pre></div></div>
+
+<h4 id="un-fichier-de-test">un fichier de test</h4>
+
+<p>On va déporter les tests du fichier de code à un fichier de test :</p>
+
+<ul>
+  <li>créez un nouveau dossier <em>“numerologie-niveau-1/tests/</em></li>
+  <li>créez un fichier <em>“numerologie-niveau-/tests/tests_numerologie.js</em> où l’on pourra recopier nos tests.</li>
+</ul>
+
+<p>fichier <em>“numerologie-niveau-1/tests/tests_numerologie.js</em> :</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">fs</span><span class="dl">'</span><span class="p">)</span>
+
+<span class="nb">eval</span><span class="p">(</span><span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="dl">"</span><span class="s2">../numerologie.js</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span><span class="na">encoding</span><span class="p">:</span><span class="dl">'</span><span class="s1">utf8</span><span class="dl">'</span><span class="p">}))</span>
+
+<span class="c1">// test de la fonction</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">somme</span><span class="p">(</span><span class="dl">"</span><span class="s2">132</span><span class="dl">"</span><span class="p">))</span>
+
+<span class="c1">// avec un chiffre : charAt != charCodeAt</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">somme</span><span class="p">(</span><span class="dl">"</span><span class="s2">4</span><span class="dl">"</span><span class="p">))</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">4</span><span class="dl">"</span><span class="p">.</span><span class="nx">charCodeAt</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">4</span><span class="dl">"</span><span class="p">.</span><span class="nx">charAt</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+
+<span class="c1">// conversion chaine de caracteres et nombre</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">typeof</span> <span class="dl">"</span><span class="s2">4</span><span class="dl">"</span><span class="p">.</span><span class="nx">charAt</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">parseInt</span><span class="p">(</span><span class="dl">"</span><span class="s2">4</span><span class="dl">"</span><span class="p">.</span><span class="nx">charAt</span><span class="p">(</span><span class="mi">0</span><span class="p">)))</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">typeof</span> <span class="nb">parseInt</span><span class="p">(</span><span class="dl">"</span><span class="s2">4</span><span class="dl">"</span><span class="p">.</span><span class="nx">charAt</span><span class="p">(</span><span class="mi">0</span><span class="p">)))</span>
+</code></pre></div></div>
+
+<p>Plusieurs remarques :</p>
+
+<ul>
+  <li>on a été obligé d’importer la bibliothèque <code class="language-plaintext highlighter-rouge">fs</code>. Dans un interpréteur node elle est importée par défaut, pas lorsque l’on exécute le fichier. Retenez d’un import node que l’on utilise <a href="https://nodejs.org/en/knowledge/getting-started/what-is-require/"><code class="language-plaintext highlighter-rouge">require</code></a> et que l’<strong>on importe quelque chose</strong> : le résultat de l’import doit être placé dans une variable</li>
+  <li>on importe depuis un fichier dans le dossier <em>“tests”</em>. Le fichier <em>“numerologie.js”</em> étant dans le dossier parent, on utilise la <a href="/cours_informatique/tutos/systeme/fichiers/2021/08/24/fichiers-navigation.html#block-.-..">notation <em>”../</em>”</a>.</li>
+  <li>on a combiné la lecture et l’eval en une seule ligne.</li>
+</ul>
+
+<h3 id="somme-itérative">somme itérative</h3>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />associer un chiffre à un nom
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>numéro unicode/utf8 d’un caractère</del></li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>sommer des numéro des caractères d’une chaine de caractères</del></li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>sommer les chiffre d’un nombre</del></li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />sommer itérativement jusqu’à convergence (car $10x + y &gt; x+y$ si $x &gt; 0$)</li>
+    </ul>
+  </li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />créer un champ texte dans un fichier html</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />récupérer en html le contenu d’un champ texte lorsque l’on appuie sur la touche entrée</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />modifier l’arbre DOM avec du texte.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />récupérer un info de l’url et la traiter</li>
+</ul>
+
+<p>On a juste à itérer les somme jusqu’à ce que sa valeur soit $&lt; 10$.</p>
+
+<p>fichier <em>“numerologie-niveau-1/numerologie.js”</em>, on ajoute la fonction <code class="language-plaintext highlighter-rouge">chiffreAssocie</code> :</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ...</span>
+
+<span class="kd">function</span> <span class="nx">chiffreAssocie</span><span class="p">(</span><span class="nx">chaine</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">valeur</span> <span class="o">=</span> <span class="nx">nombre</span><span class="p">(</span><span class="nx">chaine</span><span class="p">)</span>
+
+    <span class="k">while</span> <span class="p">(</span><span class="nx">valeur</span> <span class="o">&gt;</span> <span class="mi">9</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">valeur</span> <span class="o">=</span> <span class="nx">somme</span><span class="p">(</span><span class="nx">valeur</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">valeur</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Et dans nos tests <em>“numerologie-niveau-1/tests/tests_numerologie.js</em> :</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//test valeur </span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">nombre</span><span class="p">(</span><span class="dl">"</span><span class="s2">coucou</span><span class="dl">"</span><span class="p">))</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">chiffreAssocie</span><span class="p">(</span><span class="dl">"</span><span class="s2">coucou</span><span class="dl">"</span><span class="p">))</span>
+</code></pre></div></div>
 
 
   </div>
