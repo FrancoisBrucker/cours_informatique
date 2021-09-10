@@ -132,7 +132,7 @@ function nombre(chaine) {
 }
 ```
 
-### updade toto
+### updade todo
 
 Note todo devient : 
 
