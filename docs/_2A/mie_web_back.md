@@ -9,7 +9,7 @@ category: cours
 > Partie I1 du [programme MIE](https://docs.google.com/document/d/19BjB7vXDtT0gcqS45Z7Ai_G1_S0hFj-Cqv2f78YUy9M)
 
 
-Cours de développement web. On y verra ce qu'est un serveur web et comment en construire un en node.
+Cours de développement web. On y verra ce qu'est un serveur web et comment en construire un en [node](https://nodejs.org/en/).
 
 
 ## Prérequis
@@ -34,9 +34,9 @@ Vous devez avoir déjà utilisé un langage de programmation, idéalement python
 ### semaine type
 
 En trois parties : 
-* cours  : on verra sous la forme d'un tuto/projet
-*  autonomie : préparation du TD ou travail sur le TD
-*   TD : vous travaillez sur votre propre projet, qui suit la trame du projet du cours.
+* **cours**  : on verra sous la forme d'un tuto/projet
+* **autonomie** : préparation du TD ou travail sur le TD
+* **TD** : vous travaillez sur votre propre projet, qui suit la trame du projet du cours.
 
 ### plan
 
@@ -44,17 +44,17 @@ En trois parties :
 
 Chaque semaine est dédiée à un thème particulier : 
 
-1. javascript dans un navigateur et avec node
-2. qu'est-ce qu'un serveur web et on en crée un avec node
-3. on pimp notre serveur en utilisant express et d'autres modules node
-4. on ajoute une base de donnée qu'on attaque avec sequilize.
+1. javascript et dans un navigateur et avec [node](https://nodejs.org/en/)
+2. qu'est-ce qu'un serveur web et on en crée un avec [node](https://nodejs.org/en/)
+3. on pimp notre serveur en utilisant [express](https://expressjs.com/fr/) et d'autres modules [node](https://nodejs.org/en/)
+4. on ajoute une base de donnée qu'on attaque avec [sequilize](https://sequelize.org/).
 
 Le cours consistera à suivre [numérologie niveau 1]({% link cours/web/projets/numerologie/niveau-1/index.md %}) du [cours de web](({% link cours/web/index.md %}))
 
 
 ## Note
 
-* On notera la présence ainsi que votre coordination cerveau/clavier lors des TDs.
+* on notera la présence ainsi que votre coordination cerveau/clavier lors des TDs.
 * lors de travail en autonomie, on vérifiera votre travail en début de séance suivante.
 * une présentation finale de vos projets aura lieu en fin d'UE
 
@@ -70,17 +70,23 @@ Le cours consistera à suivre [numérologie niveau 1]({% link cours/web/projets/
 
 ## Semaine 2
 
+> prérequis : vous avez fini le TD de la semaine 1 [on vérifiera]
+
 1. Lundi 8-10 : cours
 2. Lundi 10-12 : TD 
 3. Mercredi 8-10 : autonomie : on finalise le TD
 
 ## Semaine 3
 
+> prérequis : vous avez fini le TD de la semaine 2 [on vérifiera]
+
 1. Lundi 8-10 : autonomie : on finalise le TD 
 2. Lundi 10-12 : cours
 3. Mercredi 8-10 : TD
 
 ## semaine 4
+
+> prérequis : vous avez fini votre projet [vous le présenterez]
 
 1. Lundi 8-10 : autonomie : on fait le cours/tuto et on l'implémente dans son projet
 2. Lundi 10-12 : autonomie : on fait le cours/tuto et on l'implémente dans son projet
