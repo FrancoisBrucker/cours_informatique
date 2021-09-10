@@ -49,9 +49,8 @@ Chaque semaine est dédiée à un thème particulier :
 3. on pimp notre serveur en utilisant [express](https://expressjs.com/fr/) et d'autres modules [node](https://nodejs.org/en/)
 4. on ajoute une base de donnée qu'on attaque avec [sequilize](https://sequelize.org/).
 
-Le cours consistera à :
-* comprendre [introduction du cours de web]({% link cours/web/index.md %}#introduction)
-* puis à suivre [le projet numérologie niveau 1]({% link cours/web/projets/numerologie/niveau-1/index.md %}).
+> Le cours consistera à  à suivre [le projet numérologie niveau 1]({% link cours/web/projets/numerologie/niveau-1/index.md %}).
+{: .note}
 
 
 > Tout ceci est un bout du [cours de web](({% link cours/web/index.md %}))
@@ -69,7 +68,7 @@ Le cours consistera à :
 ## Semaine 1 
 
 1. Lundi 8-10 : cours
-2. Lundi 10-12 : autonomie : préparation du TD
+2. Lundi 10-12 : autonomie : comprendre/refaire le cours et suivre l'[introduction du cours de web]({% link cours/web/index.md %}#introduction)
 3. Mercredi 8-10 : TD
 
 ## Semaine 2

@@ -14,8 +14,8 @@ author: "François Brucker"
 
 ### dossiers
 
-* dossier : *"numérologie-niveau-1"* :
-    * fichier : *"mes_tests_.js"*
+* dossier : *"numerologie-niveau-1"* :
+    * fichier : *"mes_tests.js"*
     * dossier : *"user stories"*
       * fichier : *"connaitre-son-numero.md"*
       * fichier : *"todo.md"*
