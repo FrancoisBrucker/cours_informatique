@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Projet numérologie : niveau 1 - cours 1/intégration html/js | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Projet numérologie : niveau 1 - cours 1/intégration html/js" />
+<meta name="author" content="François Brucker" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
+<link rel="canonical" href="/cours_informatique/cours/web/projets/numerologie/niveau-1/cours-1-front/front_html_js.html" />
+<meta property="og:url" content="/cours_informatique/cours/web/projets/numerologie/niveau-1/cours-1-front/front_html_js.html" />
+<meta property="og:site_name" content="cours d’informatique" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Projet numérologie : niveau 1 - cours 1/intégration html/js" />
+<script type="application/ld+json">
+{"headline":"Projet numérologie : niveau 1 - cours 1/intégration html/js","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/web/projets/numerologie/niveau-1/cours-1-front/front_html_js.html","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css">
+
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+</head>
+
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Projet numérologie : niveau 1 - cours 1/intégration html/js</h1></p>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></p>
+  </header>
+
+  <div class="post-content">
+    <h2 id="prérequis">Prérequis</h2>
+
+<p>Vos avez fini la <a href="/cours_informatique/cours/web/projets/numerologie/niveau-1/cours-1-front/front_html_css.html">partie précédente</a>.</p>
+
+<blockquote>
+  <p>Il n’est pas nécessaire pour suivre ce projet d’avoir de grandes connaissances en html/css, puisque tout vous sera donné à copier/coller. En revanche, une fois ce projet fait, il sera bon que vous suiviez l’<a href="/cours_informatique/cours/web/#introduction">introduction du cours de web</a></p>
+</blockquote>
+
+<h2 id="structure-du-projet">structure du projet</h2>
+
+<h3 id="dossiers">dossiers</h3>
+
+<ul>
+  <li>dossier : <em>“numerologie-niveau-1”</em> :
+    <ul>
+      <li>fichier : <em>“mes_tests.js”</em></li>
+      <li>fichier : <em>“numerologie.js”</em></li>
+      <li>fichier : <em>“index.html”</em></li>
+      <li>fichier : <em>“main.css”</em></li>
+      <li>dossier : <em>“user stories”</em>
+        <ul>
+          <li>fichier : <em>“connaitre-son-numero.md”</em></li>
+          <li>fichier : <em>“todo.md”</em></li>
+        </ul>
+      </li>
+      <li>dossier : <em>“tests”</em>
+        <ul>
+          <li>fichier : <em>“tests_numerologie.js”</em></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="todos">todos</h3>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />associer un chiffre à un nom
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>numéro unicode/utf8 d’un caractère</del></li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>sommer des numéro des caractères d’une chaine de caractères</del></li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>sommer les chiffre d’un nombre</del></li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>sommer itérativement jusqu’à convergence (car $10x + y &gt; x+y$ si $x &gt; 0$)</del></li>
+    </ul>
+  </li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>créer un champ texte dans un fichier html</del></li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>ajouter du style dans le html.</del></li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>inclure une bibliothèque css</del></li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />récupérer en html le contenu d’un champ texte lorsque l’on appuie sur la touche entrée</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />modifier l’arbre DOM avec du texte.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />récupérer un info de l’url et la traiter</li>
+</ul>
+
+<p>Jouer avec la touche entrée, est peut-être un peu compliqué. On va donc ajouter un todo (qu’on va faire de suite) qui consistera à récupérer le texte de l’<em>input</em> lorsque l’on appuie sur le bouton.</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />associer un chiffre à un nom
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>numéro unicode/utf8 d’un caractère</del></li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>sommer des numéro des caractères d’une chaine de caractères</del></li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>sommer les chiffre d’un nombre</del></li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>sommer itérativement jusqu’à convergence (car $10x + y &gt; x+y$ si $x &gt; 0$)</del></li>
+    </ul>
+  </li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>créer un champ texte dans un fichier html</del></li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>ajouter du style dans le html.</del></li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>inclure une bibliothèque css</del></li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />récupérer en html le contenu d’un champ texte lorsque l’on appuie sur la touche entrée</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />récupérer l’input en appuyant sur le button.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />modifier l’arbre DOM avec du texte.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />récupérer un info de l’url et la traiter</li>
+</ul>
+
+<h2 id="buttons">buttons</h2>
+
+<p>Le javascript en web est fait pour réagir à des évènement se produisant, comme de cliquer sur un bouton.</p>
+
+<p>On a plusieurs choses à faire :</p>
+<ol>
+  <li>trouver le bouton</li>
+  <li>greffer du code qui s’exécutera lorsque l’on cliquera sur le bouton</li>
+  <li>trouver le texte à récupérer</li>
+</ol>
+
+<p>POur récupérer des objets de l’arbre DOM, le plus simple est de les identifier de façon unique en utilisant un <code class="language-plaintext highlighter-rouge">id</code>.</p>
+
+<p>Regardons la page <em>“numerologie-niveau-1/index.html”</em> actuelle :</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!doctype html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"fr"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;title&gt;</span>Numérologie<span class="nt">&lt;/title&gt;</span>
+        
+        <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"https://fonts.googleapis.com/css2?family=Lobster&amp;display=swap"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"https://unpkg.com/purecss@2.0.6/build/pure-min.css"</span> <span class="na">integrity=</span><span class="s">"sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5"</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"main.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"main"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">"pure-form"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;label&gt;</span>Prénom :<span class="nt">&lt;/label&gt;</span>
+                <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span><span class="nt">/&gt;</span>
+
+                <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"pure-button pure-button-primary"</span><span class="nt">&gt;</span>Envoi<span class="nt">&lt;/button&gt;</span>
+            <span class="nt">&lt;/form&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pure-g"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pure-u-1-3"</span><span class="nt">&gt;&lt;/div&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pure-u-1-3"</span><span class="nt">&gt;&lt;p&gt;</span>7<span class="nt">&lt;/p&gt;&lt;/div&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pure-u-1-3"</span><span class="nt">&gt;&lt;/div&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<h3 id="identifiants">identifiants</h3>
+
+<p>Ajoutons des identifiants au bouton et à l’input en utilisant l’attribut <code class="language-plaintext highlighter-rouge">id</code> :</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!doctype html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"fr"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;title&gt;</span>Numérologie<span class="nt">&lt;/title&gt;</span>
+        
+        <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"https://fonts.googleapis.com/css2?family=Lobster&amp;display=swap"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"https://unpkg.com/purecss@2.0.6/build/pure-min.css"</span> <span class="na">integrity=</span><span class="s">"sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5"</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"main.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"main"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">"pure-form"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;label&gt;</span>Prénom :<span class="nt">&lt;/label&gt;</span>
+                <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">"input-form"</span> <span class="nt">/&gt;</span>
+
+                <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">id=</span><span class="s">"button-form"</span> <span class="na">class=</span><span class="s">"pure-button pure-button-primary"</span><span class="nt">&gt;</span>Envoi<span class="nt">&lt;/button&gt;</span>
+            <span class="nt">&lt;/form&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pure-g"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pure-u-1-3"</span><span class="nt">&gt;&lt;/div&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pure-u-1-3"</span><span class="nt">&gt;&lt;p&gt;</span>7<span class="nt">&lt;/p&gt;&lt;/div&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pure-u-1-3"</span><span class="nt">&gt;&lt;/div&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<h3 id="console">console</h3>
+<p>Affichez le fichier html dans un navigateur chrome et ouvrez les outils de développement et placez vous dans la console (<em>menu afficher &gt; options pour les développeurs &gt; outils de développement</em> puis choisissez le panel <em>console</em>). La console correspond à l’interpréteur javascript de la page, on peut y voir tout ce qu’on veut par exemple tapez y :</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#input-form</span><span class="dl">"</span><span class="p">).</span><span class="nx">value</span>
+</code></pre></div></div>
+<p>Et vous y découvrirez la valeur de votre input.</p>
+
+<blockquote class="note">
+  <p>Changez la valeur de l’input et vérifiez que la ligne précédente donne un autre résultat</p>
+</blockquote>
+
+<p>On a utilisé plusieurs choses :</p>
+<ul>
+  <li><a href="https://developer.mozilla.org/fr/docs/Web/API/Document/querySelector"><code class="language-plaintext highlighter-rouge">document.querySelector</code></a> qui permet de retrouver un élément de l’arbre DOM par son identifiant (il faut mettre un <code class="language-plaintext highlighter-rouge">#</code> devant l’identifiant)</li>
+  <li>l’attribut <code class="language-plaintext highlighter-rouge">value</code> d’un input qui donne sa valeur.</li>
+</ul>
+
+<p>Il faut maintenant réussir à faire ça lorsque l’on clique sur un bouton.</p>
+
+<h3 id="évènements">évènements</h3>
+
+<blockquote>
+  <p><a href="https://developer.mozilla.org/fr/docs/Learn/JavaScript/Building_blocks/Events">https://developer.mozilla.org/fr/docs/Learn/JavaScript/Building_blocks/Events</a></p>
+</blockquote>
+
+<p>Dès qu’il se passe quelque chose sur la page, un évènement est lancé. Ici, pour le bouton, c’est lorsque l’on clique dessus. On va donc se greffer à cet évènement :</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#button-form</span><span class="dl">"</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#input-form</span><span class="dl">"</span><span class="p">).</span><span class="nx">value</span><span class="p">)</span>
+    <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">()</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p>Il se lit comme ça :</p>
+<ol>
+  <li>on récupère (comme avant) le bouton.</li>
+  <li>on ajoute une fonction qui fa être exécuté lors de l’évènement “click”</li>
+</ol>
+
+<blockquote>
+  <p>La notation <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Functions#utiliser_une_expression_de_fonction_fl%C3%A9ch%C3%A9e_"><code class="language-plaintext highlighter-rouge">(param) =&gt; {code}</code> crée une fonction javascript</a>.</p>
+</blockquote>
+
+<p>Testons ça dans notre html :</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!doctype html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"fr"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;title&gt;</span>Numérologie<span class="nt">&lt;/title&gt;</span>
+        
+        <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"https://fonts.googleapis.com/css2?family=Lobster&amp;display=swap"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"https://unpkg.com/purecss@2.0.6/build/pure-min.css"</span> <span class="na">integrity=</span><span class="s">"sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5"</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"main.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"main"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">"pure-form"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;label&gt;</span>Prénom :<span class="nt">&lt;/label&gt;</span>
+                <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">"input-form"</span> <span class="nt">/&gt;</span>
+
+                <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">id=</span><span class="s">"button-form"</span> <span class="na">class=</span><span class="s">"pure-button pure-button-primary"</span><span class="nt">&gt;</span>Envoi<span class="nt">&lt;/button&gt;</span>
+            <span class="nt">&lt;/form&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pure-g"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pure-u-1-3"</span><span class="nt">&gt;&lt;/div&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pure-u-1-3"</span><span class="nt">&gt;&lt;p&gt;</span>7<span class="nt">&lt;/p&gt;&lt;/div&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pure-u-1-3"</span><span class="nt">&gt;&lt;/div&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+
+        <span class="nt">&lt;script&gt;</span>
+            <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#button-form</span><span class="dl">"</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="nx">chaine</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#input-form</span><span class="dl">"</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
+                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">chaine</span><span class="p">);</span>
+                <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+            <span class="p">})</span>
+        <span class="nt">&lt;/script&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>Dès que vous cliquerez sur le bouton, la valeur sera envoyée dans la console.</p>
+
+<blockquote class="node">
+  <p>Testez le !</p>
+</blockquote>
+
+<blockquote>
+  <p>On a ajouté une ligne, peu utilise actuellement mais qui ne fait pas d mal dans le doute,  qui empêche le comportement par défaut du clique sur un bouton (<code class="language-plaintext highlighter-rouge">event.preventDefault()</code>)</p>
+</blockquote>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />associer un chiffre à un nom
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>numéro unicode/utf8 d’un caractère</del></li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>sommer des numéro des caractères d’une chaine de caractères</del></li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>sommer les chiffre d’un nombre</del></li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>sommer itérativement jusqu’à convergence (car $10x + y &gt; x+y$ si $x &gt; 0$)</del></li>
+    </ul>
+  </li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>créer un champ texte dans un fichier html</del></li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>ajouter du style dans le html.</del></li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>inclure une bibliothèque css</del></li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />récupérer en html le contenu d’un champ texte lorsque l’on appuie sur la touche entrée</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>récupérer l’input en appuyant sur le button.</del></li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />modifier l’arbre DOM avec du texte.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />récupérer un info de l’url et la traiter</li>
+</ul>
+
+<h3 id="association-du-chiffre-au-nom">association du chiffre au nom</h3>
+
+<p>Que faire avec la valeur du champ <code class="language-plaintext highlighter-rouge">&lt;input&gt;</code> ? Ben lui associer le chiffre numérologique pardi. Sauf qu’on ne l’a pas mis dans notre todo liste…. Ajoutons le et occupons-en nous :</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />associer un chiffre à un nom
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>numéro unicode/utf8 d’un caractère</del></li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>sommer des numéro des caractères d’une chaine de caractères</del></li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>sommer les chiffre d’un nombre</del></li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>sommer itérativement jusqu’à convergence (car $10x + y &gt; x+y$ si $x &gt; 0$)</del></li>
+    </ul>
+  </li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>créer un champ texte dans un fichier html</del></li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>ajouter du style dans le html.</del></li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>inclure une bibliothèque css</del></li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />récupérer en html le contenu d’un champ texte lorsque l’on appuie sur la touche entrée</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>récupérer l’input en appuyant sur le button.</del></li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />utiliser le code numerologie.js dans le html</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />modifier l’arbre DOM avec du texte.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />récupérer un info de l’url et la traiter</li>
+</ul>
+
+<p>Là c’est simple :</p>
+
+<ol>
+  <li>on lit notre fichier javascript dans le html</li>
+  <li>on utilise ensuite la fonction <code class="language-plaintext highlighter-rouge">chiffreAssocie</code></li>
+</ol>
+
+<p>Faisons le :</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!doctype html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"fr"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;title&gt;</span>Numérologie<span class="nt">&lt;/title&gt;</span>
+        
+        <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"https://fonts.googleapis.com/css2?family=Lobster&amp;display=swap"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"https://unpkg.com/purecss@2.0.6/build/pure-min.css"</span> <span class="na">integrity=</span><span class="s">"sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5"</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"main.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"main"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">"pure-form"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;label&gt;</span>Prénom :<span class="nt">&lt;/label&gt;</span>
+                <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">"input-form"</span> <span class="nt">/&gt;</span>
+
+                <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">id=</span><span class="s">"button-form"</span> <span class="na">class=</span><span class="s">"pure-button pure-button-primary"</span><span class="nt">&gt;</span>Envoi<span class="nt">&lt;/button&gt;</span>
+            <span class="nt">&lt;/form&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pure-g"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pure-u-1-3"</span><span class="nt">&gt;&lt;/div&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pure-u-1-3"</span><span class="nt">&gt;&lt;p&gt;</span>7<span class="nt">&lt;/p&gt;&lt;/div&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pure-u-1-3"</span><span class="nt">&gt;&lt;/div&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+
+        <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"numerologie.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+        <span class="nt">&lt;script&gt;</span>
+            <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#button-form</span><span class="dl">"</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="nx">chaine</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#input-form</span><span class="dl">"</span><span class="p">).</span><span class="nx">value</span>
+                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">chaine</span><span class="p">)</span>
+                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">chiffreAssocie</span><span class="p">(</span><span class="nx">chaine</span><span class="p">))</span>
+                <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">()</span>
+            <span class="p">})</span>
+        <span class="nt">&lt;/script&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>on charge un sript avec la balise script en mettant le chemin relatif du fichier chargé dans l’attribut <code class="language-plaintext highlighter-rouge">src</code>. Il ne faut rien mettre d’autre dans la balise script</li>
+  <li>on a mis le code tout à la fin pour être sur que les éléments html soient visible.</li>
+</ul>
+
+<h3 id="modification-du-html">modification du html</h3>
+
+<p>Il nous reste à changer le chiffre. C’est aussi simple :</p>
+
+<ol>
+  <li>on met par défaut <code class="language-plaintext highlighter-rouge">?</code>comme valeur (pour l’instant c’est 7)</li>
+  <li>on ajoute un identifiant au paragraphe contenant le chiffre</li>
+  <li>on le modifie celui ci lorsque l’on clique sur le bouton.</li>
+</ol>
+
+<p>Modifions le html pour avoir un identifiant et une valeur par défaut au paragraphe :</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!doctype html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"fr"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;title&gt;</span>Numérologie<span class="nt">&lt;/title&gt;</span>
+        
+        <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"https://fonts.googleapis.com/css2?family=Lobster&amp;display=swap"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"https://unpkg.com/purecss@2.0.6/build/pure-min.css"</span> <span class="na">integrity=</span><span class="s">"sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5"</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"main.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"main"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">"pure-form"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;label&gt;</span>Prénom :<span class="nt">&lt;/label&gt;</span>
+                <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">"input-form"</span> <span class="nt">/&gt;</span>
+
+                <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">id=</span><span class="s">"button-form"</span> <span class="na">class=</span><span class="s">"pure-button pure-button-primary"</span><span class="nt">&gt;</span>Envoi<span class="nt">&lt;/button&gt;</span>
+            <span class="nt">&lt;/form&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pure-g"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pure-u-1-3"</span><span class="nt">&gt;&lt;/div&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pure-u-1-3"</span><span class="nt">&gt;&lt;p</span> <span class="na">id=</span><span class="s">"chiffre-valeur"</span><span class="nt">&gt;</span>?<span class="nt">&lt;/p&gt;&lt;/div&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pure-u-1-3"</span><span class="nt">&gt;&lt;/div&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+
+        <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"numerologie.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+        <span class="nt">&lt;script&gt;</span>
+            <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#button-form</span><span class="dl">"</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="nx">chaine</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#input-form</span><span class="dl">"</span><span class="p">).</span><span class="nx">value</span>
+                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">chaine</span><span class="p">)</span>
+                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">chiffreAssocie</span><span class="p">(</span><span class="nx">chaine</span><span class="p">))</span>
+                <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">()</span>
+            <span class="p">})</span>
+        <span class="nt">&lt;/script&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<blockquote class="note">
+  <p>Chargez le html actuel et ouvrez la console dans les outils de développement.</p>
+</blockquote>
+
+<p>Pour un paragraphe, son contenu est décrit dans l’attribut <code class="language-plaintext highlighter-rouge">textContent</code>. C’est donc lui qu’il faut modifier.</p>
+
+<blockquote class="note">
+  <p>Tapez : <code class="language-plaintext highlighter-rouge">document.querySelector("#chiffre-valeur").textContent</code> dans la console puis appuyez sur la touche entrée</p>
+</blockquote>
+
+<p>Vous devriez voir <code class="language-plaintext highlighter-rouge">'?'</code>.</p>
+
+<blockquote class="note">
+  <p>Tapez : <code class="language-plaintext highlighter-rouge">document.querySelector("#chiffre-valeur").textContent = 5</code> dans la console puis appuyez sur la touche entrée</p>
+</blockquote>
+
+<p>L’affichage du paragraphe a changé !</p>
+
+<blockquote>
+  <p>Toutes les balises html se comportent différemment (pour un input c’est l’attribut <code class="language-plaintext highlighter-rouge">value</code> pour un paragraphe c’est <code class="language-plaintext highlighter-rouge">textContent</code> qui contient la valeur…) : il faut toujours se référer à la documentation et tester dans la console avant de se lancer dans du code.</p>
+</blockquote>
+
+<p>Il ne nous reste plus qu’à modifier tout ça dans notre html :</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!doctype html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"fr"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;title&gt;</span>Numérologie<span class="nt">&lt;/title&gt;</span>
+        
+        <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"https://fonts.googleapis.com/css2?family=Lobster&amp;display=swap"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"https://unpkg.com/purecss@2.0.6/build/pure-min.css"</span> <span class="na">integrity=</span><span class="s">"sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5"</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"main.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"main"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">"pure-form"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;label&gt;</span>Prénom :<span class="nt">&lt;/label&gt;</span>
+                <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">"input-form"</span> <span class="nt">/&gt;</span>
+
+                <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">id=</span><span class="s">"button-form"</span> <span class="na">class=</span><span class="s">"pure-button pure-button-primary"</span><span class="nt">&gt;</span>Envoi<span class="nt">&lt;/button&gt;</span>
+            <span class="nt">&lt;/form&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pure-g"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pure-u-1-3"</span><span class="nt">&gt;&lt;/div&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pure-u-1-3"</span><span class="nt">&gt;&lt;p</span> <span class="na">id=</span><span class="s">"chiffre-valeur"</span><span class="nt">&gt;</span>?<span class="nt">&lt;/p&gt;&lt;/div&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pure-u-1-3"</span><span class="nt">&gt;&lt;/div&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+
+        <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"numerologie.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+        <span class="nt">&lt;script&gt;</span>
+            <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#button-form</span><span class="dl">"</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="nx">chaine</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#input-form</span><span class="dl">"</span><span class="p">).</span><span class="nx">value</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">chaine</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#chiffre-valeur</span><span class="dl">"</span><span class="p">).</span><span class="nx">textContent</span> <span class="o">=</span> <span class="nx">chiffreAssocie</span><span class="p">(</span><span class="nx">chaine</span><span class="p">)</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#chiffre-valeur</span><span class="dl">"</span><span class="p">).</span><span class="nx">textContent</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">?</span><span class="dl">'</span>
+                <span class="p">}</span>
+                <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">()</span>
+            <span class="p">})</span>
+        <span class="nt">&lt;/script&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />associer un chiffre à un nom
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>numéro unicode/utf8 d’un caractère</del></li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>sommer des numéro des caractères d’une chaine de caractères</del></li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>sommer les chiffre d’un nombre</del></li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>sommer itérativement jusqu’à convergence (car $10x + y &gt; x+y$ si $x &gt; 0$)</del></li>
+    </ul>
+  </li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>créer un champ texte dans un fichier html</del></li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>ajouter du style dans le html.</del></li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>inclure une bibliothèque css</del></li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />récupérer en html le contenu d’un champ texte lorsque l’on appuie sur la touche entrée</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>récupérer l’input en appuyant sur le button.</del></li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>utiliser le code numerologie.js dans le html</del></li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>modifier l’arbre DOM avec du texte.</del></li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />récupérer un info de l’url et la traiter</li>
+</ul>
+
+<h2 id="fin">Fin</h2>
+
+<p>On va s’arrêter là. Comme on le voit on a pas pu traiter le cas de la touche entrée (c’estpour aller plus loin), ni le traitement de l’url qui sera pour le prochain cours.</p>
+
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d&#39;informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d&#39;informatique</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

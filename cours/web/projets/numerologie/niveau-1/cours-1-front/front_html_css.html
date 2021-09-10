@@ -64,16 +64,21 @@
   <div class="post-content">
     <h2 id="prérequis">Prérequis</h2>
 
-<p>Vos Avez fini la <a href="/cours_informatique/cours/web/projets/numerologie/niveau-1/cours-1-front/front_code_js.html">partie précédente</a></p>
+<p>Vos avez fini la <a href="/cours_informatique/cours/web/projets/numerologie/niveau-1/cours-1-front/front_code_js.html">partie précédente</a>.</p>
+
+<blockquote>
+  <p>Il n’est pas nécessaire pour suivre ce projet d’avoir de grandes connaissances en html/css, puisque tout vous sera donné à copier/coller. En revanche, une fois ce projet fait, il sera bon que vous suiviez l’<a href="/cours_informatique/cours/web/#introduction">introduction du cours de web</a></p>
+</blockquote>
 
 <h2 id="structure-du-projet">structure du projet</h2>
 
 <h3 id="dossiers">dossiers</h3>
 
 <ul>
-  <li>dossier : <em>“numérologie-niveau-1”</em> :
+  <li>dossier : <em>“numerologie-niveau-1”</em> :
     <ul>
-      <li>fichier : <em>“mes_tests_.js”</em></li>
+      <li>fichier : <em>“mes_tests.js”</em></li>
+      <li>fichier : <em>“numerologie.js”</em></li>
       <li>dossier : <em>“user stories”</em>
         <ul>
           <li>fichier : <em>“connaitre-son-numero.md”</em></li>
@@ -106,14 +111,306 @@
   <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />récupérer un info de l’url et la traiter</li>
 </ul>
 
-<p>On va maintenant s’occuper de la partie html dans la <a href="">partie suivante</a></p>
+<h2 id="site-première-mouture">site, première mouture</h2>
 
-<h2 id="modules">modules</h2>
-<blockquote class="note">
-  <p>TBD : en chantier</p>
+<p>On va commencer par coder la structure du projet, c’est à dire faire l’html :</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />associer un chiffre à un nom
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>numéro unicode/utf8 d’un caractère</del></li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>sommer des numéro des caractères d’une chaine de caractères</del></li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>sommer les chiffre d’un nombre</del></li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>sommer itérativement jusqu’à convergence (car $10x + y &gt; x+y$ si $x &gt; 0$)</del></li>
+    </ul>
+  </li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />créer un champ texte dans un fichier html</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />récupérer en html le contenu d’un champ texte lorsque l’on appuie sur la touche entrée</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />modifier l’arbre DOM avec du texte.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />récupérer un info de l’url et la traiter</li>
+</ul>
+
+<h3 id="html">html</h3>
+
+<p>Créez un fichier <em>“</em>“numerologie-niveau-1/index.html* :</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!doctype html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"fr"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;title&gt;</span>Numérologie<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+        <span class="nt">&lt;form&gt;</span>
+            <span class="nt">&lt;label&gt;</span>Prénom :<span class="nt">&lt;/label&gt;</span>
+            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span><span class="nt">/&gt;</span>
+
+            <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span><span class="nt">&gt;</span>Envoi<span class="nt">&lt;/button&gt;</span>
+        <span class="nt">&lt;/form&gt;</span>
+        <span class="nt">&lt;p&gt;</span>7<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>Un fichier html a toujours :</p>
+<ul>
+  <li>des balises ouvrante et fermante (le même nom avec un <code class="language-plaintext highlighter-rouge">/</code> avant, comme html). C’est comme ça qu’il est structuré, en arbre avec comme racine la balise &lt;html&gt; contenant tout le reste. On appelle ça l’<a href="https://la-cascade.io/le-dom-cest-quoi-exactement/">arbre DOM</a>.</li>
+  <li>certaines balises sont <em>auto-fermante</em> (elles ne nécessitent pas de balise fermante), comme <code class="language-plaintext highlighter-rouge">&lt;input /&gt;</code> par exemple (la balise est fermée avec le <code class="language-plaintext highlighter-rouge">/</code> après l’ouverture).</li>
+  <li>un type : ici c’est du html (c’est le doctype qui nous le dit)</li>
+  <li>une balise &lt;html&gt;&lt;/html&gt; qui contient 2 enfants :
+    <ul>
+      <li>
+        <head></head>
+        <p>qui contient des informations générale de la page</p>
+      </li>
+      <li>
+        <body></body>
+        <p>qui est le corps de la page et contiendra par là toutes les informations à afficher.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>On peut voir à quoi il ressemble dans chrome en l’ouvrant : <em>menu fichier &gt; ouvrir le fichier</em>. Bon c’est un peu nul mais on voit bien les différentes <em>balises</em> html :</p>
+<ul>
+  <li>le titre (c’est sur l’onglet du fichier) : c’est la balise <code class="language-plaintext highlighter-rouge">&lt;title&gt;&lt;/title&gt;</code></li>
+  <li>le formulaire : c’est la balise <code class="language-plaintext highlighter-rouge">&lt;form&gt;&lt;/form&gt;</code>. Remarquez qu’il y 3 <em>enfants</em> à ce formulaire : <code class="language-plaintext highlighter-rouge">&lt;label&gt;&lt;/label&gt;</code> qui est un label, <code class="language-plaintext highlighter-rouge">&lt;input&gt;&lt;/input&gt;</code> qui est l’endroit où on peut écrire des choses et <code class="language-plaintext highlighter-rouge">&lt;button&gt;&lt;/buton&gt;</code> qui est le bouton pour envoyer les données.</li>
+  <li>un paragraphe <code class="language-plaintext highlighter-rouge">&lt;p&gt;&lt;/p&gt;</code>.</li>
+</ul>
+
+<blockquote>
+  <p>Comme c’est moche et qu’on est des esthètes, on va ajouter des choses au todo :</p>
 </blockquote>
 
-<p>(ici yarn init pour les framework front)</p>
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />associer un chiffre à un nom
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>numéro unicode/utf8 d’un caractère</del></li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>sommer des numéro des caractères d’une chaine de caractères</del></li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>sommer les chiffre d’un nombre</del></li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>sommer itérativement jusqu’à convergence (car $10x + y &gt; x+y$ si $x &gt; 0$)</del></li>
+    </ul>
+  </li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>créer un champ texte dans un fichier html</del></li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />ajouter du style dans le html.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />inclure une bibliothèque css</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />récupérer en html le contenu d’un champ texte lorsque l’on appuie sur la touche entrée</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />modifier l’arbre DOM avec du texte.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />récupérer un info de l’url et la traiter</li>
+</ul>
+
+<h2 id="css">css</h2>
+
+<p>Le <a href="https://developer.mozilla.org/fr/docs/Learn/CSS/First_steps">css</a> est un langage déclaratif permettant d’associer un style à une balise.</p>
+
+<p>D’après notre user story, le chiffre doit être en gros et au milieu.</p>
+
+<h3 id="css-dans-la-page">css dans la page</h3>
+
+<p>Modifions notre fichier html pour y inclure du style, grâce à la balise <code class="language-plaintext highlighter-rouge">&lt;style&gt;&lt;/style&gt;</code>, que l’on mets usuellement dans la balise <code class="language-plaintext highlighter-rouge">&lt;head&gt;&lt;/head&gt;</code> :</p>
+
+<p><em>“numerologie-niveau-1/index.html”</em> :</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!doctype html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"fr"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;title&gt;</span>Numérologie<span class="nt">&lt;/title&gt;</span>
+
+        <span class="nt">&lt;style&gt;</span>
+          <span class="nt">html</span><span class="o">,</span> <span class="nt">body</span> <span class="p">{</span>
+            <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+            <span class="nl">background-color</span><span class="p">:</span> <span class="no">azure</span><span class="p">;</span>
+          <span class="p">}</span>
+
+          <span class="nc">.main</span> <span class="p">{</span>
+              <span class="nl">margin-top</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+              <span class="nl">margin-left</span><span class="p">:</span> <span class="nb">auto</span><span class="p">;</span>
+              <span class="nl">margin-right</span><span class="p">:</span> <span class="nb">auto</span><span class="p">;</span>
+              <span class="nl">width</span><span class="p">:</span> <span class="m">600px</span><span class="p">;</span>
+              <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+          <span class="p">}</span>
+
+          <span class="nt">p</span> <span class="p">{</span>
+              <span class="nl">font-size</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+          <span class="p">}</span>
+        <span class="nt">&lt;/style&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"main"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;form&gt;</span>
+              <span class="nt">&lt;label&gt;</span>Prénom :<span class="nt">&lt;/label&gt;</span>
+              <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"prenom"</span><span class="nt">/&gt;</span>
+
+              <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span><span class="nt">&gt;</span>Envoi<span class="nt">&lt;/button&gt;</span>
+          <span class="nt">&lt;/form&gt;</span>
+          <span class="nt">&lt;p&gt;</span>7<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>On a ajouté une balise inconnue pour l’instant : la balise <code class="language-plaintext highlighter-rouge">&lt;div&gt;&lt;/div&gt;</code>. C’est une balise sans signification proprement dite et qui est utilisée pour structurer la page.</p>
+
+<p>Vous voyez que les propriétés css se lisent bien :</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>qui {
+  quoi: comment;
+}
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">qui</code> peut prendre deux formes :</p>
+
+<ul>
+  <li>le nom d’une balise : <code class="language-plaintext highlighter-rouge">p</code>ou <code class="language-plaintext highlighter-rouge">body</code> dans l’exemple</li>
+  <li>le nom d’une classe précédé d’un <code class="language-plaintext highlighter-rouge">.</code> : <code class="language-plaintext highlighter-rouge">main</code> dans l’exemple.</li>
+</ul>
+
+<blockquote>
+  <p>Il n’est pas nécessaire de mettre la balise <code class="language-plaintext highlighter-rouge">&lt;style&gt;&lt;/style&gt;</code> dans la balise <code class="language-plaintext highlighter-rouge">&lt;head&gt;&lt;/head&gt;</code>, on peut
+a priori la mettre partout, mais le style ne sera connu qu’une fois lu. Donc si vous mettez du style pour un paragraphe après celui-ci, il ne sera pas reconnu.</p>
+</blockquote>
+
+<blockquote class="note">
+  <p>Comprenez comment fonctionne le style.</p>
+</blockquote>
+
+<h3 id="css-chargé">css chargé</h3>
+
+<p>On a souvent coutume de placer le fichier css dans un fichier à côté pour pas qu’il <em>pollue</em> le fichier html. En effet, ces petites bêtes là deviennent vite très grosses.</p>
+
+<p>Donc créez un fichier <em>“numerologie-niveau-1/main.css”</em> :</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">html</span><span class="o">,</span> <span class="nt">body</span> <span class="p">{</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="no">azure</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.main</span> <span class="p">{</span>
+    <span class="nl">margin-top</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+    <span class="nl">margin-left</span><span class="p">:</span> <span class="nb">auto</span><span class="p">;</span>
+    <span class="nl">margin-right</span><span class="p">:</span> <span class="nb">auto</span><span class="p">;</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">600px</span><span class="p">;</span>
+    <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">p</span> <span class="p">{</span>
+    <span class="nl">font-size</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Et on modifie le fichier <em>“numerologie-niveau-1/index.html”</em> pour qu’il puisse lire le fichier de style :</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!doctype html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"fr"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;title&gt;</span>Numérologie<span class="nt">&lt;/title&gt;</span>
+
+        <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"./main.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"main"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;form&gt;</span>
+              <span class="nt">&lt;label&gt;</span>Prénom :<span class="nt">&lt;/label&gt;</span>
+              <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span><span class="nt">/&gt;</span>
+
+              <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span><span class="nt">&gt;</span>Envoi<span class="nt">&lt;/button&gt;</span>
+          <span class="nt">&lt;/form&gt;</span>
+          <span class="nt">&lt;p&gt;</span>7<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>Voyez la balise <code class="language-plaintext highlighter-rouge">&lt;link&gt;</code> qui va chercher le fichier css. L’emplacement du fichier est décrit de <a href="/cours_informatique/tutos/systeme/fichiers/2021/08/24/fichiers-navigation.html#block-.-..">façon relative</a>, par rapport à l’emplacement du fichier html sur le disque dur. Ici c’est simple c’est dans le même dossier.</p>
+</blockquote>
+
+<h3 id="bibliothèque-css">bibliothèque css</h3>
+
+<p>ON ne va pas loin si on fait uniquement son propre css. L’usage veut que l’on utilise des bibliothèques css. il en existe plein. Nous allons ici utiliser une bibliothèque minimale : <a href="https://purecss.io/">https://purecss.io/</a></p>
+
+<p>Sur son site, on voit commet l’utiliser : il suffit de la récupérer via une balise link. Notez qu’ici le lien n’est pas sur notre disque dur mais sur le réseau puisque c’est une <a href="/cours_informatique/cours/web/tuto_url.html">url</a> qui est utilisée.</p>
+
+<blockquote>
+  <p>normalement, une bibliothèque css va définir plein de classes que l’on pourra utiliser pour ses pages. Elles vont servir à mettre de jolies couleurs ou à organiser les pages (le <em>layout</em>).</p>
+</blockquote>
+
+<p>Remodifions le fichier <em>“numerologie-niveau-1/index.html”</em> :</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!doctype html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"fr"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;title&gt;</span>Numérologie<span class="nt">&lt;/title&gt;</span>
+        
+        <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"https://unpkg.com/purecss@2.0.6/build/pure-min.css"</span> <span class="na">integrity=</span><span class="s">"sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5"</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"main.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"main"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">"pure-form"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;label&gt;</span>Prénom :<span class="nt">&lt;/label&gt;</span>
+                <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span><span class="nt">/&gt;</span>
+
+                <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"pure-button pure-button-primary"</span><span class="nt">&gt;</span>Envoi<span class="nt">&lt;/button&gt;</span>
+            <span class="nt">&lt;/form&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pure-g"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pure-u-1-3"</span><span class="nt">&gt;&lt;/div&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pure-u-1-3"</span><span class="nt">&gt;&lt;p&gt;</span>7<span class="nt">&lt;/p&gt;&lt;/div&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"pure-u-1-3"</span><span class="nt">&gt;&lt;/div&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<blockquote class="note">
+  <p>Comprenez ce que nous avons fait. On a utilisé le layout en <a href="https://purecss.io/grids/">grids</a> 
+de <a href="https://purecss.io/">https://purecss.io/</a> et des modification de forme du button.</p>
+</blockquote>
+
+<blockquote>
+  <p>Notez que l’on met <strong>toujours</strong> ses propres css à la fin, car les propriétés sont appliquées dans l’ordre où elles sont lues, les nôtres seront donc toujours appliquées, car en dernier.</p>
+</blockquote>
+
+<h3 id="mais-que-fait-la-police-">mais que fait la police ?</h3>
+
+<p>Allez, pour la bonne bouche on va changer la police en utilisant les <a href="https://fonts.google.com/">https://fonts.google.com/</a>.</p>
+
+<p>Dans le <em>“numerologie-niveau-1/main.css”</em>, on a modifié le <code class="language-plaintext highlighter-rouge">p</code> pour qu’il utilise une autre fonte :</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">p</span> <span class="p">{</span>
+    <span class="nl">font-size</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+    <span class="nl">font-family</span><span class="p">:</span> <span class="s2">'Lobster'</span><span class="p">,</span> <span class="nb">cursive</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Et on a chargé la fonte dans le &lt;head&gt;&lt;/head&gt; du html en ajoutant le lien :</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"https://fonts.googleapis.com/css2?family=Lobster&amp;display=swap"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+
+<h2 id="et-la-suite-">et la suite ?</h2>
+
+<h3 id="todo">todo</h3>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />associer un chiffre à un nom
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>numéro unicode/utf8 d’un caractère</del></li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>sommer des numéro des caractères d’une chaine de caractères</del></li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>sommer les chiffre d’un nombre</del></li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>sommer itérativement jusqu’à convergence (car $10x + y &gt; x+y$ si $x &gt; 0$)</del></li>
+    </ul>
+  </li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>créer un champ texte dans un fichier html</del></li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>ajouter du style dans le html.</del></li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>inclure une bibliothèque css</del></li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />récupérer en html le contenu d’un champ texte lorsque l’on appuie sur la touche entrée</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />modifier l’arbre DOM avec du texte.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />récupérer un info de l’url et la traiter</li>
+</ul>
+
+<p>On a fini tout le html. I va nous rester à mixer html et js dans <a href="/cours_informatique/cours/web/projets/numerologie/niveau-1/cours-1-front/front_html_js.html">la dernière partie de ce projet</a></p>
 
   </div>
 
