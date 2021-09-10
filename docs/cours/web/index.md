@@ -38,11 +38,6 @@ Bon. Ce n'est vraisemblablement pas une URL qu'on a tapé puisque l'on obtient l
 
 Vous pouvez suivre cette petite [intruction aux URLs]({% link cours/web/tuto_url.md %}).
 
-### html/css/js
-
-Tout le web tourne autour du trio html (pour la structure des page), css (pour la mise en forme de la page) et le javascript (pour le dynamisme de la page). Avant de les étudier en détail, vous pouvez faire ce petit [tuto introductif]({% link cours/web/tuto_html_css_js.md %}) pour voir un peut de quoi il en retourne.
-
-
 ### outils de développement
 
 L'informatique en général et le web en particulier sont des sciences incarnées. C'est à dire que le code produit un résultat et ce n'est que lorsque ce que l'on pense faire (le code) est conforme à la réalité (ce qu'il produit réellement) que l'on est content. 
@@ -55,6 +50,10 @@ Il faudra donc sans cesse exécuter votre code (ici voir le résulta dans un nav
 POur vous aider a comprendre comment votre code est exécuté, les navigateurs mettent à votre disposition des outils de développements. **Utilisez les** ! ils vous feront gagner un temps précieux. 
 
 Vous pouvez [suivre ce tuto]({% link cours/web/tuto_outils_dev.md %}) pour voir comment ils fonctionnent.
+
+### html/css/js
+
+Tout le web tourne autour du trio html (pour la structure des page), css (pour la mise en forme de la page) et le javascript (pour le dynamisme de la page). Avant de les étudier en détail, vous pouvez faire ce petit [tuto introductif]({% link cours/web/tuto_html_css_js.md %}) pour voir un peut de quoi il en retourne.
 
 
 ## plan du cours

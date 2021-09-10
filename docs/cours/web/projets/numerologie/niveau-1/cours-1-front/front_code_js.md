@@ -1,6 +1,6 @@
 ---
 layout: page
-title:  "Projet numérologie : niveau 1 - front (code js)"
+title:  "Projet numérologie : niveau 1 - cours 1/code js"
 category: cours
 author: "François Brucker"
 ---
@@ -393,6 +393,18 @@ console.log(chiffreAssocie("coucou"))
 ```
 
 
+## la suite
+
+- [X] associer un chiffre à un nom
+    - [X] ~~numéro unicode/utf8 d'un caractère~~
+    - [X] ~~sommer des numéro des caractères d'une chaine de caractères~~
+    - [X] ~~sommer les chiffre d'un nombre~~
+    - [X] ~~sommer itérativement jusqu'à convergence (car $10x + y > x+y$ si $x > 0$)~~
+- [ ] créer un champ texte dans un fichier html
+- [ ] récupérer en html le contenu d'un champ texte lorsque l'on appuie sur la touche entrée
+- [ ] modifier l'arbre DOM avec du texte.
+- [ ] récupérer un info de l'url et la traiter
 
 
 
+On va maintenant s'occuper de la partie html dans la [partie suivante]({% link cours/web/projets/numerologie/niveau-1/cours-1-front/front_html_css.md %})

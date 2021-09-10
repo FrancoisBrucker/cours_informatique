@@ -40,7 +40,7 @@ En trois parties :
 
 ### plan
 
-> Un bout du [cours web global]({% link cours/web/index.md %})
+
 
 Chaque semaine est dédiée à un thème particulier : 
 
@@ -49,8 +49,12 @@ Chaque semaine est dédiée à un thème particulier :
 3. on pimp notre serveur en utilisant [express](https://expressjs.com/fr/) et d'autres modules [node](https://nodejs.org/en/)
 4. on ajoute une base de donnée qu'on attaque avec [sequilize](https://sequelize.org/).
 
-Le cours consistera à suivre [numérologie niveau 1]({% link cours/web/projets/numerologie/niveau-1/index.md %}) du [cours de web](({% link cours/web/index.md %}))
+Le cours consistera à :
+* comprendre [introduction du cours de web]({% link cours/web/index.md %}#introduction)
+* puis à suivre [le projet numérologie niveau 1]({% link cours/web/projets/numerologie/niveau-1/index.md %}).
 
+
+> Tout ceci est un bout du [cours de web](({% link cours/web/index.md %}))
 
 ## Note
 

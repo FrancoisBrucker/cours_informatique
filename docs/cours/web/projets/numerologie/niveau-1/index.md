@@ -31,18 +31,10 @@ Avant de se lancer à corps perdu dans le développement et le code, vérifions 
 
 En quatre parties et autant de cours
 
-1. un premier entièrement en front
+1. [un premier site entièrement en front]({% link cours/web/projets/numerologie/niveau-1/cours-1-front/index.md %})
 2. on ajoute une partie back pour les calculs
 3. on polie tout ça avec des routes différentes
 4. on ajoute la possibilités de stocker des données
-
-
-## projet front
-
-1. [oréparation du projet]({% link cours/web/projets/numerologie/niveau-1/preparation.md %})
-2. [code js back]({% link cours/web/projets/numerologie/niveau-1/front_code_js.md %})
-3. code html/css (ici yarn init pour les framework front)
-4. intégration html et js ()
 
 ### back 
 
