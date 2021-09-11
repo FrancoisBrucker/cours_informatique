@@ -93,7 +93,7 @@ Pour qu'un ordinateur fonctionne, il a besoin d'avoir des dossiers spéciaux con
 
 Il existe aussi des dossiers pour chaque utilisateurs de l'ordinateur où il peut ranger ses fichiers et où le système stock les préférences de l'utilisateur.
 
-### dossiers . et ..
+### dossiers . et .. {#block-.-..}
 
 Les dossiers `.` et `..` sont des dossiers spéciaux qui signifient :
 * le dossiers courant pour `.`

@@ -42,6 +42,7 @@ Il y a plein (trop) de résultat. Heureusement, ces extensions sont classées pa
 
 ## niveau 2
 
+utilisation  de yarn pour les modules front.
 `yarn init`
 
 node en asynchrone avec des promise.

@@ -56,7 +56,10 @@ Le fichier html précédent écrit dans la console javascript du navigateur. Vou
 
 ### node
 
-[Node](https://nodejs.org/en/) est un interpréteur javascript puissant basé sur la V8 et qui contient des bibliothèques dédiées à la création de serveur web.
+[Node](https://nodejs.org/en/) est un interpréteur javascript puissant basé sur la V8 et qui contient des bibliothèques dédiées très pratiques lorsque l'on code en javascript.
+
+
+<https://nodejs.dev/learn>
 
 
 #### installation de node {#bloc-id-installation-node}
@@ -229,9 +232,15 @@ Le bout de code ci-dessus montre plusieurs spécificités de javascript :
     * dictionnaires : comme en python sauf que les clés ne peuvent être que des chaînes de caractères. liste d’objet indicés par des chaines de caractères. Autre spécificité, il n'est pas nécessaire de mettre les `"` lorsque l'on défini les clés. 
         * `mon_dict = {pi: 3.14, potes: ["Pascal", "Manu"] }`
         * clés : `mon_dict["potes"] (rend ["Pascal", "Manu"])`
-        
-> Les dictionnaires vont avoir une importance énorme en javascript et en web en général. En javascript il n'y a pas de différence entre un dictionnaire et un objet. Pour s'en convaincre, regardez le type d'un dictionnaire avec l'opérateur [typeof](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Operators/typeof) : `typeof {a:1}`.
 
+
+> Les dictionnaires ont une importance énorme en javascript et en web en général : il n'y a pas de différence entre un dictionnaire et un objet. Pour s'en convaincre, regardez le type d'un dictionnaire avec l'opérateur [typeof](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Operators/typeof) : `typeof {a:1}`.
+
+
+### object
+
+<https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/Basics>
+ 
 
 ## gestion des dépendances
 
@@ -259,6 +268,9 @@ On peut plus ou moins passer d'une version à l'autre mais c'est compliqué
 <https://redfin.engineering/node-modules-at-war-why-commonjs-and-es-modules-cant-get-along-9617135eeca1>
 
 
+<https://adrianmejia.com/getting-started-with-node-js-modules-require-exports-imports-npm-and-beyond/>
+
+<https://javascript.info/import-export>
 
 #### ecmascript modules 
 

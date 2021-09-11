@@ -78,6 +78,8 @@ Le plus simple est d'installer une nouvelle version du système en utilisant int
 > Notez votre login et mot de passe icloud. Vous en aurez besoin à l'installation
 {: .attention}
 
+Une fois votre système installé, il faudra également installé [xcode](https://apps.apple.com/fr/app/xcode/id497799835?mt=12). Prenez votre mal en patience, ça va prendre du temps...
+
 #### finder
 
 Le finder est l'outil principal qui vous permettra de naviguer dans les fichiers. Pour qu'il soit un peut plus facile d'y naviguer :
