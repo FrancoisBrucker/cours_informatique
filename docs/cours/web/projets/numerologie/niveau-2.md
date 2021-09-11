@@ -44,6 +44,9 @@ Il y a plein (trop) de résultat. Heureusement, ces extensions sont classées pa
 
 `yarn init`
 
+node en asynchrone avec des promise.
+
+
 * type= module et serveur de base
 
 On va automatiser :
@@ -53,3 +56,5 @@ On va automatiser :
 
 
 mettre sur l'ovh
+
+

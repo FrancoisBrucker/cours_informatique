@@ -70,13 +70,12 @@ Quelques aides :
 
 
 >* Pour le markdown, il faudra  utiliser  `$$`et `$` (les notation Tex) plutôt que `\[` et  `\(` (notations latex).
->* Lorsque vous faites de l'exportation en html, les mathématiques sont représentées en utilisant [Mathjax](https://www.mathjax.org/)  (voir [une aide](ttps://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference) de mathjax, et [ici](https://docs.mathjax.org/en/latest/web/configuration.html) pour la configuration. Mais normalement, ça doit passer sans rien faire si vous utiliser Markdown all in one)
+>* Lorsque vous faites de l'exportation en html, les mathématiques sont représentées en utilisant [Mathjax](https://www.mathjax.org/) (voir [une aide](ttps://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference) de mathjax)
 >* L'ancêtre de [Latex](https://fr.wikipedia.org/wiki/LaTeX) : [Tex](https://fr.wikipedia.org/wiki/TeX), a été créé par le célèbre informaticien [Donald Knuth](https://fr.wikipedia.org/wiki/Donald_Knuth) par ce qu'il n'existait rien sur ordinateur à l'époque pour écrire [ses livres](https://fr.wikipedia.org/wiki/The_Art_of_Computer_Programming) en respectant une typographie correcte.
 
 
 >Il ne faut pas mettre d'espace après le premier `$` et avant le dernier `$` sinon, pandoc ne reconnaîtra pas que ce sont des équations que vous voulez écrire. Ansi `$ \frac{1}{2}$` affichera `$ \frac{1}{2}$`, alors que `$\frac{1}{2}$` affichera $\frac{1}{2}$.
 {: .attention}
-
 
 ## export
 

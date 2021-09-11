@@ -46,6 +46,10 @@ Ce programme python est utilisable essentiellement de 2.5 manières en [ligne de
 
 Nous allons juste nous concentrer sur la partie [python de vscode](https://code.visualstudio.com/docs/python/python-tutorial) en créant un projet de test et en utilisant tous les outils mis à notre disposition pour faire du bon code.
 
+> TBD : <https://www.nextinpact.com/article/44926/visual-studio-code-editeur-credible-pour-publication-et-markdown>
+{: .note}
+
+
 ## un projet test
 
 On va juste créer un projet vide pour comprendre comment tout ça fonctionne.
