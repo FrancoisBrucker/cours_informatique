@@ -56,22 +56,21 @@ Site à mettre mieux :
 
 Créez un site permettant de jouer à un jeu solo pnp ou à un jeu à plusieurs sur un seul écran.
 
-* roll and write :
+* <https://www.youtube.com/results?search_query=solo+pnp+games> donne plein de résultats (même si j'admet c'est *un peu* de niche). Voir <https://www.youtube.com/c/VeselkoKelava/videos> (connait pas mais a l'air de faire plein de review), elle fait plein de jeu solo <https://www.youtube.com/channel/UCxvtBSy1zJCvuY2lUfKSltw/videos> (mais elle parle vraiment trop lentement) ou encore <https://www.youtube.com/channel/UC1ubZ0hz4amLG9NcKZR5eJg/videos>.
+* Il existe plein de type de jeux différents en solo et en pnp, mais les *roll & write* seront peut-être les jeux les plus facile à créer :
+  * <https://www.youtube.com/watch?v=gq53GGRrS1Q>
   * Bathysphere
   * Utopia Engine
   * <https://pnpfrance.wordpress.com/2020/10/20/k-day-kaiju-war/>
-* dès
   * [full moon](https://witchwaygames.com/full-moon-the-beast-of-gevaudan/)
   * <https://boardgamegeek.com/boardgame/183571/deep-space-d-6/files>
   * <https://www.pnpparadise.com/set2/star-trek-the-dice-game>
-  * under a falling skies
+  * under a falling skies (il existe une version pnp)
 * jeu de plateau solo
   * <https://boardgamegeek.com/boardgame/148729/maquis/files> (bon jeu de placement)
-  * [burgle bros](https://www.youtube.com/watch?v=Z0YqUM_u41I) (j'ai. C'est même marrant à plusieurs)
-
-* jdr sans mj : à plusieurs devant un écran unique (ça doit passer)
+* jdr sans mj : à plusieurs devant un écran unique 
   * <https://www.cestpasdujdr.fr/for-the-queen/> (j'ai. C'est zarb mais c'est bien)
-  * zombie cinema (j'ai des bouts)
+  * [zombie cinema](https://www.arkenstonepublishing.net/zombiecinema/) (j'ai une version en fr)
 * listes
   * <https://boardgamegeek.com/boardgamefamily/19564/contests-solitaire-print-play>
   * <https://boardgamegeek.com/geeklist/284628/solo-pnp-games-less-50-ratings-are-great>
@@ -83,11 +82,11 @@ Créez un site permettant de jouer à un jeu solo pnp ou à un jeu à plusieurs 
   * guildhaven city (plein de cartes + plateau)
   * <https://pnpfrance.wordpress.com/2020/10/20/do-not-forsake-me-oh-my-darling/> doit être bien en virtuel
   * <http://tribuneludique.canalblog.com/archives/2019/04/20/37270520.html> ?
+
 > TBD : ranger en truc atteignable ou pas
 {: .note}
 
-
-### old
+## old
 
 > TBD : [vieux cours à remanier]({% link cours/dfs/index.md %})
 {: .note}
