@@ -62,55 +62,46 @@
   </header>
 
   <div class="post-content">
-    <blockquote class="note">
-  <p>TBD : en chantier</p>
+    <blockquote class="chemin">
+  <p><a href="/cours_informatique/cours/web/projets/numerologie/">numérologie</a>/<a href="/cours_informatique/cours/web/projets/numerologie/niveau-1/">niveau 1</a></p>
 </blockquote>
 
-<h2 id="but-du-site">but du site</h2>
+<p>Numérologie niveau 1. On ne verra que le strict nécessaire pour pour faire fonctionner le code :</p>
 
-<p>On aimerait pouvoir créer un site de numérologie qui associerait à chaque prénom un chiffre. Comme les publications scientifiques sur ce sujet (comme <a href="https://www.parents.fr/prenoms/nos-conseils-prenoms/la-numerologie-des-prenoms-diaporama-307570">là</a>, <a href="https://www.femmeactuelle.fr/horoscope2/numerologie/numerologie-prenom-19618">ici</a> ou <a href="https://www.evozen.fr/numerologie/expression">encore ceci</a>) sont discordantes, nous allons créer le nôtre.</p>
-
-<blockquote>
-  <p>But : associer un chiffre à toute chaine de caractère en [unicode](https://unicode-table.com/fr/</p>
-</blockquote>
+<ul>
+  <li>utilisation basique d’un éditeur de texte performant, ici <a href="https://code.visualstudio.com/">vscode</a>,</li>
+  <li>stricte minimum de html/css pour pouvoir mettre en oeuvre notre serveur web,</li>
+  <li>on tentera de s’amuser en javascript sans rentrer trop dans les détails de fonctionnement.</li>
+</ul>
 
 <h2 id="prérequis">prérequis</h2>
 
-<p>Avant de se lancer à corps perdu dans le développement et le code, vérifions que nous avons tous les outils nécessaires.</p>
+<p>Avant de se lancer à corps perdu dans le développement et le code, vérifions que nous avons (enfin, surtout vous avez) tous les outils nécessaires :</p>
 
-<h3 id="outils-développement">outils développement</h3>
-
-<ul>
-  <li>Il nous faut un éditeur de texte. J’utilise <a href="https://code.visualstudio.com/">vscode</a>, téléchargez le et installez le.</li>
-  <li>Il nous faut du javascript. On utilisera <a href="https://nodejs.org/en/">node</a> : téléchargez le et installez le en <a href="/cours_informatique/cours/web/js/bases.html#bloc-id-installation-node">suivant le tuto</a>.</li>
-  <li>nous utiliserons le terminal, donc jetez un oeil au <a href="/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html">tuto terminal</a> pour pouvoir le dégainer à l’envie.</li>
-</ul>
+<ol>
+  <li>et c’est le plus important <strong>la bonne attitude</strong> :
+    <ul>
+      <li>si vous ne connaissez rien : ne cédez pas à la facilité de copier/coller sans comprendre : c’est <em>bad karma</em> et ça vous rattrapera tôt ou tard. La magie — tout du moins en informatique — n’existe pas (et je suis le premier à le déplorer) : si ça fonctionne sans que vous savez au moins superficiellement pourquoi, c’est que ça n’a que l’air de fonctionner.</li>
+      <li>si vous connaissez déjà tout ça : faite-le tout de même cela vous permettra de suivre plus facilement les niveaux ultérieurs</li>
+    </ul>
+  </li>
+  <li><strong>un cerveau</strong> en état de marche : pour voir les correspondances, lire la doc, et poser des questions.</li>
+  <li>avoir <strong>un éditeur de texte</strong> fonctionnel. Nous utiliserons <a href="https://code.visualstudio.com/">vscode</a> dans ce cours, téléchargez le et installez le.</li>
+  <li>un <strong>navigateur internet</strong> munis d’outils de développement. Tous les exemple seront fait avec <a href="https://www.google.fr/chrome/">chrome</a>.</li>
+  <li>un interpréteur javascript. On utilisera <a href="https://nodejs.org/en/">node</a>. Suivez le <a href="/cours_informatique/cours/web/js/bases.html#bloc-id-installation-node">tutoriel pour l’installation</a>.</li>
+  <li>Sachez ouvrir <a href="/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html">une fenêtre terminal</a></li>
+</ol>
 
 <h2 id="plan">plan</h2>
 
-<p>En quatre parties et autant de cours</p>
+<p>En quatre parties et autant de cours :</p>
 
 <ol>
-  <li><a href="/cours_informatique/cours/web/projets/numerologie/niveau-1/cours-1-front/">un premier site entièrement en front</a></li>
-  <li>on ajoute une partie back pour les calculs</li>
+  <li><a href="/cours_informatique/cours/web/projets/numerologie/niveau-1/partie-1-front/">un premier site entièrement en front</a></li>
+  <li><a href="/cours_informatique/cours/web/projets/numerologie/niveau-1/partie-2-post-get/">on ajoute une partie back pour les calculs</a></li>
   <li>on polie tout ça avec des routes différentes</li>
   <li>on ajoute la possibilités de stocker des données</li>
 </ol>
-
-<h3 id="back">back</h3>
-
-<blockquote class="note">
-  <p>TBD : requete post et get
-ne pas s’emèler les pinceaux avec le node_module du back et du front</p>
-</blockquote>
-
-<h3 id="routes">routes</h3>
-
-<p>cookies ?</p>
-
-<h3 id="données">données</h3>
-
-<p>sequilize et compagnie avec sqlite.</p>
 
   </div>
 

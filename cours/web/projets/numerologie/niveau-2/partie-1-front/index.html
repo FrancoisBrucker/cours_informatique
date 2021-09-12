@@ -3,20 +3,20 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>Projet numérologie : niveau 2 | cours d’informatique</title>
+<title>Projet numérologie : niveau 2/partie 1 : front | cours d’informatique</title>
 <meta name="generator" content="Jekyll v4.2.0" />
-<meta property="og:title" content="Projet numérologie : niveau 2" />
+<meta property="og:title" content="Projet numérologie : niveau 2/partie 1 : front" />
 <meta name="author" content="François Brucker" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
 <meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
-<link rel="canonical" href="/cours_informatique/cours/web/projets/numerologie/niveau-2.html" />
-<meta property="og:url" content="/cours_informatique/cours/web/projets/numerologie/niveau-2.html" />
+<link rel="canonical" href="/cours_informatique/cours/web/projets/numerologie/niveau-2/partie-1-front/" />
+<meta property="og:url" content="/cours_informatique/cours/web/projets/numerologie/niveau-2/partie-1-front/" />
 <meta property="og:site_name" content="cours d’informatique" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Projet numérologie : niveau 2" />
+<meta property="twitter:title" content="Projet numérologie : niveau 2/partie 1 : front" />
 <script type="application/ld+json">
-{"headline":"Projet numérologie : niveau 2","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/web/projets/numerologie/niveau-2.html","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
+{"headline":"Projet numérologie : niveau 2/partie 1 : front","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/web/projets/numerologie/niveau-2/partie-1-front/","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
@@ -58,68 +58,26 @@
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Projet numérologie : niveau 2</h1></p>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></p>
+    <h1 class="post-title">Projet numérologie : niveau 2/partie 1 : front</h1></p>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></p>
   </header>
 
   <div class="post-content">
-    <blockquote>
-  <p>TBD : en chantier</p>
-  <ul>
-    <li>les user stories (def)</li>
-    <li>tests fonctionnels à partir des user stories : selenium</li>
-    <li>les tests unitaires</li>
-  </ul>
+    <blockquote class="chemin">
+  <p><a href="/cours_informatique/cours/web/projets/numerologie/">numérologie</a>/<a href="/cours_informatique/cours/web/projets/numerologie/niveau-2/">niveau 2</a>/<a href="/cours_informatique/cours/web/projets/numerologie/niveau-2/partie-1-front/">partie 1</a></p>
 </blockquote>
 
-<h2 class="note" id="départ">départ</h2>
+<p>Partie 1 : on crée une page web avec de html, du css et un peu de javascript. On se concentre sur ce qu’on code et pourquoi.</p>
 
-<p>on commence à savoir se servir de vscode. Maintenant on le pimp un peu.</p>
+<h2 id="plan">plan</h2>
 
-<h4 id="vscode-les-extensions">vscode les extensions</h4>
+<ol>
+  <li><a href="/cours_informatique/cours/web/projets/numerologie/niveau-2/partie-1-front/1-preparation.html">préparation du projet</a></li>
+  <li><a href="/cours_informatique/cours/web/projets/numerologie/niveau-2/partie-1-front/2-code_js.html">code js</a></li>
+  <li><a href="/cours_informatique/cours/web/projets/numerologie/niveau-2/partie-1-front/3-html_css.html">code html/css</a></li>
+  <li><a href="/cours_informatique/cours/web/projets/numerologie/niveau-2/partie-1-front/4-integration_html_js.html">intégration js et html</a></li>
+</ol>
 
-<blockquote class="node">
-  <p>TBD : en niveau 2</p>
-</blockquote>
-
-<p>Tant qu’on y est à se simplifier la vie, on va ajouter quelques extensions pour mieux écrire du javascript.</p>
-
-<blockquote>
-  <p>Ce n’est pas anecdotique d’essayer de rendre le code clair et agréable à lire. Vous allez en effet passer plus de temps à lire votre code qu’à en écrire et l’utiliser. Il faut donc qu’il soit joli. 
-Il n’est pas non plus nécessaire d’y passer trop de temps, cor comme le dit l’adage : <strong>ce qui se fait souvent doit pouvoir se faire rapidement</strong>. On va donc chercher des extensions qui vont faire tout ce travail pour nous.</p>
-</blockquote>
-
-<p>vscode nous aide déjà beaucoup en javascript, voir <a href="https://code.visualstudio.com/docs/languages/javascript">https://code.visualstudio.com/docs/languages/javascript</a></p>
-
-<blockquote class="note">
-  <p>Dans le menu extensions (<em>icône engrenage &gt; extensions</em>) tapez “javascript” dans la barre de recherche.</p>
-</blockquote>
-
-<p>Il y a plein (trop) de résultat. Heureusement, ces extensions sont classées par nombre de téléchargement et par étoiles. On va pour l’instant en choisir 2 :</p>
-<ul>
-  <li><a href="https://marketplace.visualstudio.com/items?itemName=mgmcdermott.vscode-language-babel">Babel javascript</a> dont le l’objet est la <em>coloration syntaxique</em>.</li>
-  <li>prettier</li>
-</ul>
-
-<h2 id="niveau-2">niveau 2</h2>
-
-<p>utilisation  de yarn pour les modules front.
-<code class="language-plaintext highlighter-rouge">yarn init</code></p>
-
-<p>node en asynchrone avec des promise.</p>
-
-<ul>
-  <li>type= module et serveur de base</li>
-</ul>
-
-<p>On va automatiser :</p>
-
-<ul>
-  <li>les user stories</li>
-  <li>les tests</li>
-</ul>
-
-<p>mettre sur l’ovh</p>
-
+<p><a href="/cours_informatique/cours/web/projets/numerologie/niveau-2/partie-1-front/5-structures.html">Fichiers du projet final</a>.</p>
 
   </div>
 

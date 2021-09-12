@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Projet numérologie : niveau 2/partie 1/code js | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Projet numérologie : niveau 2/partie 1/code js" />
+<meta name="author" content="François Brucker" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
+<link rel="canonical" href="/cours_informatique/cours/web/projets/numerologie/niveau-2/partie-1-front/2-code_js.html" />
+<meta property="og:url" content="/cours_informatique/cours/web/projets/numerologie/niveau-2/partie-1-front/2-code_js.html" />
+<meta property="og:site_name" content="cours d’informatique" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Projet numérologie : niveau 2/partie 1/code js" />
+<script type="application/ld+json">
+{"headline":"Projet numérologie : niveau 2/partie 1/code js","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/web/projets/numerologie/niveau-2/partie-1-front/2-code_js.html","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css">
+
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+</head>
+
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Projet numérologie : niveau 2/partie 1/code js</h1></p>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></p>
+  </header>
+
+  <div class="post-content">
+    <blockquote class="chemin">
+  <p><a href="/cours_informatique/cours/web/projets/numerologie/">numérologie</a>/<a href="/cours_informatique/cours/web/projets/numerologie/niveau-2/">niveau 2</a>/<a href="/cours_informatique/cours/web/projets/numerologie/niveau-2/partie-1-front/">partie 1</a>/<a href="/cours_informatique/cours/web/projets/numerologie/niveau-2/partie-1-front/2-code_js.html">code js</a></p>
+</blockquote>
+
+<p>Code de la <em>logique métier</em> du projet. L’idée est de montrer comment on peut progresser en codant nous même, un item en amenant un autre à coder.</p>
+
+<h2 id="todos-initiaux">todos initiaux</h2>
+
+<p>Il faut tout faire :</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />associer un chiffre à un nom</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />créer un champ texte dans un fichier html</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />récupérer en html le contenu d’un champ texte lorsque l’on appuie sur la touche entrée</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />modifier l’arbre DOM avec du texte</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />récupérer un info de l’url et la traiter</li>
+</ul>
+
+<h2 id="choix-de-la-première-tâche">choix de la première tâche</h2>
+
+<blockquote class="note">
+  <p>Quelle est la tâche la plus simple à réaliser dans nos todos ?</p>
+</blockquote>
+
+<p>Le cœur du projet est d’associer un numéro à un nom, donc autant essayer de faire ça en javascript.</p>
+
+<blockquote class="note">
+  <p>On modifie le fichier <em>“numerologie/todo/todos.md”</em> pour refléter le fait qu’on travaille sur cet item :</p>
+</blockquote>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />associer un chiffre à un nom</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />créer un champ texte dans un fichier html</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />récupérer en html le contenu d’un champ texte lorsque l’on appuie sur la touche entrée</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />modifier l’arbre DOM avec du texte</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />récupérer un info de l’url et la traiter</li>
+</ul>
+
+<p>Bon c’est pas encore très détaillé. Comment faire ça ?</p>
+
+<ol>
+  <li>déjà un nom c’est une chaine de caractère codée en utf-8</li>
+  <li>on peut prendre le numéro unicode/utf8 de chaque caractère et les sommer</li>
+  <li>il faut un chiffre donc comment passer d’un nombre à un chiffre ?</li>
+  <li>on peut sommer les chiffre du nombre pour obtenir un autre nombre strictement plus petit ($10.x + y &lt; x + y$) et recommencer la procédure si ce n’est pas un chiffre.</li>
+</ol>
+
+<p>Ajoutons nos réflexions à la todo list (fichier <em>“numerologie/todo/todos.md”</em>) :</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">*</span> [X] associer un chiffre à un nom
+<span class="p">  *</span> [ ] numéro unicode/utf8 d'un caractère
+<span class="p">  *</span> [ ] sommer des numéro des caractères d'une chaine de caractères
+<span class="p">  *</span> [ ] sommer les chiffre d'un nombre
+<span class="p">  *</span> [ ] sommer itérativement jusqu'à convergence (car $10x + y &gt; x+y$ si $x &gt; 0$)
+<span class="p">*</span> [ ] créer un champ texte dans un fichier html
+<span class="p">*</span> [ ] récupérer en html le contenu d'un champ texte lorsque l'on appuie sur la touche entrée
+<span class="p">*</span> [ ] modifier l'arbre DOM avec du texte
+<span class="p">*</span> [ ] récupérer un info de l'url et la traiter
+</code></pre></div></div>
+
+<blockquote>
+  <p>Au passage, vous avez vu comment on a mis des maths dans du markdown ? Lorsque vous transformerez le markdown en html, <a href="https://www.mathjax.org/">Mathjax</a> rendra ces équations toutes jolies.</p>
+</blockquote>
+
+<p>Quel est l’item le plus simple à résoudre ? A mon avis c’est lui :</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />associer un chiffre à un nom
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />numéro unicode/utf8 d’un caractère</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />sommer des numéro des caractères d’une chaine de caractères</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />sommer les chiffre d’un nombre</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />sommer itérativement jusqu’à convergence (car $10x + y &gt; x+y$ si $x &gt; 0$)</li>
+    </ul>
+  </li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />créer un champ texte dans un fichier html</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />récupérer en html le contenu d’un champ texte lorsque l’on appuie sur la touche entrée</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />modifier l’arbre DOM avec du texte</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />récupérer un info de l’url et la traiter</li>
+</ul>
+
+<p>On va aller plus vite dans ce cours ensuite. Mais l(idée est toujours la suivante : dans votre listes de todos vous devez avoir un item qui vous semble le plus <em>facile</em> à résoudre. Si ce n’est pas le cas, c’est que vous items sont trop gros et qu’il faut les décomposer en unité plus fine.</p>
+
+<blockquote>
+  <p>Que signifie <em>le plus facile à résoudre</em> ? C’est un item dont l’implémentation ne nécessite qu’une seule chose à faire, et que cette chose à faire est simple.</p>
+</blockquote>
+
+<h2 id="tache-1--unicode-dun-caractère">Tache 1 : unicode d’un caractère</h2>
+
+<p>On utilise l’<a href="/cours_informatique/cours/web/projets/numerologie/niveau-1/partie-1-front/2-code_js.html#tache-1">implémentation du niveau 1</a> pour associer un nombre à un caractère unicode.</p>
+
+<h2 id="tache-2--caractères-et-nombre">Tache 2 : caractères et nombre</h2>
+
+<p>Ce qui nous permet de passer à l’item suivant :</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />associer un chiffre à un nom
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>numéro unicode/utf8 d’un caractère</del></li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />sommer des numéro des caractères d’une chaine de caractères</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />sommer les chiffre d’un nombre</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />sommer itérativement jusqu’à convergence (car $10x + y &gt; x+y$ si $x &gt; 0$)</li>
+    </ul>
+  </li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />créer un champ texte dans un fichier html</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />récupérer en html le contenu d’un champ texte lorsque l’on appuie sur la touche entrée</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />modifier l’arbre DOM avec du texte</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />récupérer un info de l’url et la traiter</li>
+</ul>
+
+<p>Qu’on <a href="/cours_informatique/cours/web/projets/numerologie/niveau-1/partie-1-front/2-code_js.html#tache-2">implémente comme au niveau 1</a>. Nos todos deviennent :</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />associer un chiffre à un nom
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>numéro unicode/utf8 d’un caractère</del></li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>sommer des numéro des caractères d’une chaine de caractères</del></li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />sommer les chiffre d’un nombre</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />sommer itérativement jusqu’à convergence (car $10x + y &gt; x+y$ si $x &gt; 0$)</li>
+    </ul>
+  </li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />créer un champ texte dans un fichier html</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />récupérer en html le contenu d’un champ texte lorsque l’on appuie sur la touche entrée</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />modifier l’arbre DOM avec du texte</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />récupérer un info de l’url et la traiter</li>
+</ul>
+
+<p>On a bien progressé. La tâche qui semble la plus simple maintenant est de finaliser la partie consacrée à l’association d’un chiffre à un nom.</p>
+
+<h2 id="tache-3--chiffres-et-nombre">Tache 3 : chiffres et nombre</h2>
+
+<p>Je choisis de faire :</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />associer un chiffre à un nom
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>numéro unicode/utf8 d’un caractère</del></li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>sommer des numéro des caractères d’une chaine de caractères</del></li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />sommer les chiffre d’un nombre</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />sommer itérativement jusqu’à convergence (car $10x + y &gt; x+y$ si $x &gt; 0$)</li>
+    </ul>
+  </li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />créer un champ texte dans un fichier html</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />récupérer en html le contenu d’un champ texte lorsque l’on appuie sur la touche entrée</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />modifier l’arbre DOM avec du texte</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />récupérer un info de l’url et la traiter</li>
+</ul>
+
+<p>Encore une fois on utilise l’<a href="/cours_informatique/cours/web/projets/numerologie/niveau-1/partie-1-front/2-code_js.html#tache-3">implémentation de niveau 1</a>. Nous allons cependant modifier la façon dont on teste nos méthodes.</p>
+
+<h2 id="test-du-code">test du code</h2>
+
+<p>La gestion des tests du niveau 1 n’est pas satisfaisante car elle mélange code et tests. Nous n’allons pas encore utiliser des bibliothèques dédiées aux tests (c’est le boulot des niveaux suivants), mais nous allons faire en sorte de pouvoir effectuer des tests :</p>
+
+<ul>
+  <li>sans modifier le code,</li>
+  <li>sans avoir à supprimer/commenter les tests ensuite.</li>
+</ul>
+
+<p>Ceci nous permettra déjà de pouvoir ajouter ds tests sans y réfléchir de façon fluide et sans modifier le code. Ce qui sera utile lorsque le code sera déjà en production (ce qui est le but de tout code) ou si nous sommes plusieurs à coder sur le même projet (ce qui est la norme).</p>
+
+<h3 id="méthode">méthode</h3>
+
+<p>On va procéder comme si l’on importait du javascript dans une page web : on va lire le fichier de code sous la forme d’une longue chaine de caractère et l’évaluer dans l’interpréteur. On pourra ensuite utiliser les fonctions comme si on venait de les taper.</p>
+
+<blockquote>
+  <p>On ne peut pas utiliser d’import classique de fichiers ici, car il faut que le fichier de code soit dans un format spécial, ce qui n’est pas le cas ici.</p>
+</blockquote>
+
+<h4 id="lecture-dun-fichier-texte">lecture d’un fichier texte</h4>
+
+<p>La lecture de fichiers se fait de façon aisé avec node en utilisant la bibliothèque <a href="https://nodejs.org/api/fs.html#fs_file_system"><code class="language-plaintext highlighter-rouge">fs</code></a>. On va utiliser : <a href="https://nodejs.org/api/fs.html#fs_fs_readfilesync_path_options"><code class="language-plaintext highlighter-rouge">fs.readFileSync()</code></a>.</p>
+
+<blockquote>
+  <p>La plupart des méthodes et fonctions de node sont asynchrones, c’est à dire que l’on attend pas que la méthode soit fini pour continuer l’exécution de notre code. Nous n’allons pas faire ça ici car ça complique (même si c’est mieux) le fonctionnement.</p>
+</blockquote>
+
+<p>Testons ça dans un node :</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="nx">contenu_du_fichier</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="dl">"</span><span class="s2">./numerologie.js</span><span class="dl">"</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="nx">Buffer</span> <span class="mi">6</span><span class="nx">e</span> <span class="mi">6</span><span class="nx">f</span> <span class="mi">6</span><span class="nx">d</span> <span class="mi">20</span> <span class="mi">3</span><span class="nx">d</span> <span class="mi">20</span> <span class="mi">22</span> <span class="mi">6</span><span class="nx">d</span> <span class="mi">6</span><span class="nx">f</span> <span class="mi">6</span><span class="nx">e</span> <span class="mi">64</span> <span class="mi">65</span> <span class="mi">22</span> <span class="mi">0</span><span class="nx">a</span> <span class="mi">0</span><span class="nx">a</span> <span class="mi">63</span> <span class="mi">6</span><span class="nx">f</span> <span class="mi">6</span><span class="nx">e</span> <span class="mi">73</span> <span class="mi">6</span><span class="nx">f</span> <span class="mi">6</span><span class="nx">c</span> <span class="mi">65</span> <span class="mi">2</span><span class="nx">e</span> <span class="mi">6</span><span class="nx">c</span> <span class="mi">6</span><span class="nx">f</span> <span class="mi">67</span> <span class="mi">28</span> <span class="mi">22</span> <span class="mi">62</span> <span class="mi">6</span><span class="nx">f</span> <span class="mi">6</span><span class="nx">e</span> <span class="mi">6</span><span class="nx">a</span> <span class="mi">6</span><span class="nx">f</span> <span class="mi">75</span> <span class="mi">72</span> <span class="mi">20</span> <span class="mi">22</span> <span class="mi">20</span> <span class="mi">2</span><span class="nx">b</span> <span class="mi">20</span> <span class="mi">6</span><span class="nx">e</span> <span class="mi">6</span><span class="nx">f</span> <span class="mi">6</span><span class="nx">d</span> <span class="mi">20</span> <span class="mi">2</span><span class="nx">b</span> <span class="mi">20</span> <span class="mi">22</span> <span class="mi">20</span> <span class="mi">21</span> <span class="mi">22</span> <span class="p">...</span> <span class="mi">1</span> <span class="nx">more</span> <span class="nx">byte</span><span class="o">&gt;</span>
+<span class="o">&gt;</span>
+</code></pre></div></div>
+
+<p>Bon ben c’est pas ce qu’on voulait. Un fichier est évalué comme un <a href="https://fr.wikipedia.org/wiki/Fichier_binaire">fichier binaire</a> par défaut… On recommence en précisant qu’on veut du texte :</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="nx">contenu_du_fichier</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="dl">"</span><span class="s2">./numerologie.js</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span><span class="na">encoding</span><span class="p">:</span><span class="dl">'</span><span class="s1">utf8</span><span class="dl">'</span><span class="p">})</span>
+<span class="p">[...</span> <span class="nx">snip</span> <span class="p">...]</span>
+<span class="o">&gt;</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>à la place de <code class="language-plaintext highlighter-rouge">[... snip ...]</code> vous devriez voir le contenu de votre fichier.</p>
+</blockquote>
+
+<p>C’est une pratique courante en javascript de déclarer tous les paramètres en 1 fois, ici l’encodage du fichier, avec un <a href="https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/Basics">objet</a> (qui ressemble furieusement à un dictionnaire si vous venez de python).</p>
+
+<blockquote>
+  <p>Il n’y a pas de différence fondamentale entre fichier binaire et texte, ce n’est que l’interprétation qui change. Dans un cas, les bits sont des nombres, de l’autre on associe ces nombres au caractères utf-8.</p>
+</blockquote>
+
+<h4 id="évaluation-dun-fichier">évaluation d’un fichier</h4>
+
+<blockquote class="note">
+  <p>commentez nos précédents tests pour qu’ils ne soient pas évalués.</p>
+</blockquote>
+
+<p>Puis on peut utiliser <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/eval">eval</a> :</p>
+
+<p>Dans un nouveau node :</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="nx">contenu_du_fichier</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="dl">"</span><span class="s2">./numerologie.js</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span><span class="na">encoding</span><span class="p">:</span><span class="dl">'</span><span class="s1">utf8</span><span class="dl">'</span><span class="p">})</span>
+<span class="p">[...</span> <span class="nx">snip</span> <span class="p">...]</span>
+<span class="o">&gt;</span> <span class="nb">eval</span><span class="p">(</span><span class="nx">contenu_du_fichier</span><span class="p">)</span>
+<span class="kc">undefined</span>
+<span class="o">&gt;</span> <span class="nx">somme</span><span class="p">(</span><span class="dl">"</span><span class="s2">123</span><span class="dl">"</span><span class="p">)</span>
+<span class="mi">6</span>
+<span class="o">&gt;</span> 
+</code></pre></div></div>
+
+<h3 id="un-fichier-de-test">un fichier de test</h3>
+
+<p>On va déporter les tests du fichier de code à un fichier de test :</p>
+
+<ul>
+  <li>créez un nouveau dossier <em>“numerologie/tests/”</em></li>
+  <li>créez un fichier <em>“numerologie/tests/tests_numerologie.js”</em> où l’on pourra recopier nos tests.</li>
+</ul>
+
+<p>Le fichier <em>“numerologie/tests/tests_numerologie.js”</em> :</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">fs</span><span class="dl">'</span><span class="p">)</span>
+
+<span class="nb">eval</span><span class="p">(</span><span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="dl">"</span><span class="s2">../numerologie.js</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span><span class="na">encoding</span><span class="p">:</span><span class="dl">'</span><span class="s1">utf8</span><span class="dl">'</span><span class="p">}))</span>
+
+<span class="c1">// test de somme(nombre)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">somme</span><span class="p">(</span><span class="mi">132</span><span class="p">))</span>
+
+<span class="c1">// avec un chiffre : charAt != charCodeAt</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">somme</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">4</span><span class="dl">"</span><span class="p">.</span><span class="nx">charCodeAt</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">4</span><span class="dl">"</span><span class="p">.</span><span class="nx">charAt</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+
+<span class="c1">// conversion chaine de caracteres et nombre</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">typeof</span> <span class="dl">"</span><span class="s2">4</span><span class="dl">"</span><span class="p">.</span><span class="nx">charAt</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">parseInt</span><span class="p">(</span><span class="dl">"</span><span class="s2">4</span><span class="dl">"</span><span class="p">.</span><span class="nx">charAt</span><span class="p">(</span><span class="mi">0</span><span class="p">)))</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">typeof</span> <span class="nb">parseInt</span><span class="p">(</span><span class="dl">"</span><span class="s2">4</span><span class="dl">"</span><span class="p">.</span><span class="nx">charAt</span><span class="p">(</span><span class="mi">0</span><span class="p">)))</span>
+<span class="c1">// fin de test de somme(nombre)</span>
+</code></pre></div></div>
+
+<p>On peut maintenant supprimer vos tests de <em>“numerologie/numerologie.js</em>. On pourra exécuter nos tests facilement dans terminal en se plaçant dans le dossier <em>“numerologie/tests”</em> puis en exécutant la commande : <code class="language-plaintext highlighter-rouge">node tess_numerologie.js</code>.</p>
+
+<p>Plusieurs remarques :</p>
+
+<ul>
+  <li>on a été obligé d’importer la bibliothèque <code class="language-plaintext highlighter-rouge">fs</code>. Dans un interpréteur node elle est importée par défaut, pas lorsque l’on exécute le fichier. Retenez d’un import node que l’on utilise <a href="https://nodejs.org/en/knowledge/getting-started/what-is-require/"><code class="language-plaintext highlighter-rouge">require</code></a> et que l’<strong>on importe quelque chose</strong> : le résultat de l’import doit être placé dans une variable</li>
+  <li>on importe depuis un fichier dans le dossier <em>“tests”</em>. Le fichier <em>“numerologie/numerologie.js”</em> étant dans le dossier parent, on utilise la <a href="/cours_informatique/tutos/systeme/fichiers/2021/08/24/fichiers-navigation.html#block-.-..">notation <em>”../</em>”</a>.</li>
+  <li>on a combiné la lecture et l’eval en une seule ligne.</li>
+</ul>
+
+<h2 id="tache-4--somme-itérative">Tache 4 : somme itérative</h2>
+
+<p>On peut terminer cette partie en faisant l’item :</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />associer un chiffre à un nom
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>numéro unicode/utf8 d’un caractère</del></li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>sommer des numéro des caractères d’une chaine de caractères</del></li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>sommer les chiffre d’un nombre</del></li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />sommer itérativement jusqu’à convergence (car $10x + y &gt; x+y$ si $x &gt; 0$)</li>
+    </ul>
+  </li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />créer un champ texte dans un fichier html</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />récupérer en html le contenu d’un champ texte lorsque l’on appuie sur la touche entrée</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />modifier l’arbre DOM avec du texte</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />récupérer un info de l’url et la traiter</li>
+</ul>
+
+<p>On procède <a href="/cours_informatique/cours/web/projets/numerologie/niveau-1/partie-1-front/2-code_js.html#tache-4">comme au niveau 1</a>, en ajoutant les tests à notre tout nouveau fichier <em>“numerologie/tests/tests_numerologie.js”</em>.</p>
+
+<h2 id="todos-finaux">todos finaux</h2>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />associer un chiffre à un nom
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>numéro unicode/utf8 d’un caractère</del></li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>sommer des numéro des caractères d’une chaine de caractères</del></li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>sommer les chiffre d’un nombre</del></li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><del>sommer itérativement jusqu’à convergence (car $10x + y &gt; x+y$ si $x &gt; 0$)</del></li>
+    </ul>
+  </li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />créer un champ texte dans un fichier html</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />récupérer en html le contenu d’un champ texte lorsque l’on appuie sur la touche entrée</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />modifier l’arbre DOM avec du texte</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />récupérer un info de l’url et la traiter</li>
+</ul>
+
+<p>La partie javascript semble terminée pour l’instant. On peut s’attaquer à ce qui semble le plus simple, la page web.</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d&#39;informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d&#39;informatique</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
