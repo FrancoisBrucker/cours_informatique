@@ -47,7 +47,7 @@ Chaque semaine est dédiée à un thème particulier :
 3. on améliore notre serveur en utilisant [express](https://expressjs.com/fr/) et d'autres modules [node](https://nodejs.org/en/)
 4. on ajoute une base de donnée qu'on utilise grâce à [sequilize](https://sequelize.org/).
 
-> Le cours consistera à suivre [numérologie niveau 1]({% link cours/web/projets/numerologie/niveau-1/index.md %})
+> Le cours consistera à suivre les premiers niveaux du projet [numérologie]({% link cours/web/projets/numerologie/index.md %})
 {: .note}
 
 ## Note
@@ -60,13 +60,26 @@ Chaque semaine est dédiée à un thème particulier :
 
 > Semaine 1 à 4 du [planning MIE](https://docs.google.com/spreadsheets/d/1XwjeAgwijaYZJEHFg-t_RHMXgi2Qa3d1)
 
-## Semaine 1
+### cours/autonomie
+
+L'autonomie consistera à refaire le cours (le niveau 1) et à faire le cours (niveau 2).
+
+### TD
+
+Le TD consistera **toujours** à reprendre le cours de niveau 2 de la semaine et à l'adapter pour le projet de son groupe.
+
+> * règles :
+>   * sur le site du créateur : <https://www.knizia.de/wp-content/uploads/reiner/freebies/Website-Decathlon.pdf>
+>   * en français : <http://www.jeuxprintandplay.fr/Fiches%20jeux/Fiche%20jeu%20Decathlon.html>
+> * supports pour y jouer en vrai : <http://juegosrollandwrite.com/remake-reiner-knizias-decathlon/>
+
+### Semaine 1
 
 1. Lundi 8-10 : cours
-2. Lundi 10-12 : autonomie : comprendre/refaire le cours et suivre l'[introduction du cours de web]({% link cours/web/index.md %}#introduction)
+2. Lundi 10-12 : autonomie
 3. Mercredi 8-10 : TD
 
-## Semaine 2
+### Semaine 2
 
 > prérequis : vous avez fini le TD de la semaine 1 [on vérifiera]
 
@@ -74,7 +87,7 @@ Chaque semaine est dédiée à un thème particulier :
 2. Lundi 10-12 : TD
 3. Mercredi 8-10 : autonomie : on finalise le TD
 
-## Semaine 3
+### Semaine 3
 
 > prérequis : vous avez fini le TD de la semaine 2 [on vérifiera]
 
@@ -82,7 +95,7 @@ Chaque semaine est dédiée à un thème particulier :
 2. Lundi 10-12 : cours
 3. Mercredi 8-10 : TD
 
-## semaine 4
+### semaine 4
 
 > prérequis : vous avez fini votre projet [vous le présenterez]
 
@@ -92,4 +105,4 @@ Chaque semaine est dédiée à un thème particulier :
 
 ## Pour aller plus loin
 
-Vous pouvez toujours regarder le [cours complet](({% link cours/web/index.md %})).
+Vous pouvez toujours regarder le [cours complet]({% link cours/web/index.md %}).

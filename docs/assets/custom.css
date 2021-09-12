@@ -39,3 +39,12 @@ blockquote.danger::before {
   font-weight: bold;
 }
 
+blockquote.chemin {
+  color: #469BFA;
+  border-left: 4px solid #469BFA;
+}
+
+blockquote.chemin::before {
+  content: "chemin :";
+  font-weight: bold;
+}

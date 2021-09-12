@@ -37,6 +37,9 @@ Le format markdown est basique. Il possède plein de variantes qui permettent d'
 
 > <https://code.visualstudio.com/docs/languages/markdown>
 
+> TBD : https://www.nextinpact.com/article/44926/visual-studio-code-editeur-credible-pour-publication-et-markdown
+{: .note}
+
 ### extensions
 
 vscode possède de nombreux plugins markdown. qui facilitent l'écriture en markdown. On peut par exemple citer :

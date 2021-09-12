@@ -7,16 +7,18 @@ author: "François Brucker"
 
 
 > TBD : en chantier
->* les user stories (def)
->* tests fonctionnels à partir des user stories : selenium
->* les tests unitaires
+>
+> * les user stories (def)
+> * tests fonctionnels à partir des user stories : selenium
+> * les tests unitaires
+> * ne pas s'emèler les pinceaux avec le node_module du back et du front
+> * cookies ?
 
 {: .note}
 
 ## départ
 
 on commence à savoir se servir de vscode. Maintenant on le pimp un peu.
-
 
 #### vscode les extensions
 
