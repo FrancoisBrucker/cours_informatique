@@ -4,14 +4,10 @@ title:  "Option : web front"
 category: cours
 ---
 
-## Introduction
-
 
 Cours de développement web consacré au [web front](https://fr.wikipedia.org/wiki/D%C3%A9veloppement_web_frontal).
 
 Pour majeure partie en *classe inversée*[^1], les élèves réaliseront en groupe plusieurs projets et présentations/cours/tutos de technologies web selon leurs connaissances et leur appétence. 
-
-
 
 [^1]: Une classe inversée, c'est le contraire d'une classe normale, c'est à dire là c'est les élèves qui travaillent et c'est le prof fait semblant d'être intéressé.
 

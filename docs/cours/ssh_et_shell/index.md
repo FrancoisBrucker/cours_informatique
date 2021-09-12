@@ -1,16 +1,12 @@
 ---
 layout: page
-title:  "SSH et Shell"
+title:  "ssh et shell"
 tags: informatique graphes
 author: "François Brucker"
 ---
 
 
 Clés ssh. Connexion à des serveurs distants.
-
-
-> TBD : mise au propre
-{: .note}
 
 ## ssh
 
@@ -26,10 +22,9 @@ A priori déjà installé
 
 On l'installe avec [brew](https://brew.sh/) : 
 
-```shell 
+```shell
 brew install openssh
 ```
-
 
 {% enddetails %}
 
@@ -37,7 +32,8 @@ brew install openssh
 
 Il y a plusieurs choses à installer. Windows vient avec la partie client d'openssh déjà installée. Il nous reste à installer la partie serveur et faire en sorte que celui ci et l'agent se mettent en route à chaque démarrage.
 
-On commence par installer *OpenSSH serveur*, en suivant le [tuto de microsoft](https://docs.microsoft.com/fr-fr/windows-server/administration/openssh/openssh_install_firstuse) : 
+On commence par installer *OpenSSH serveur*, en suivant le [tuto de microsoft](https://docs.microsoft.com/fr-fr/windows-server/administration/openssh/openssh_install_firstuse) :
+
    1. Ouvrez *Paramètres*, sélectionnez "*Applications > Applications et fonctionnalités*", puis *Fonctionnalités facultatives*.
    2. recherchez *OpenSSH client* et vérifiez qu'il est déjà installé
    3. recherchez *OpenSSH serveur* et installez le.
@@ -73,26 +69,28 @@ Start-Service ssh-agent
 
 {% enddetails %}
 
-### old
+### utilisations
 
-  [SSH]({% link cours/ssh_et_shell/ssh.md %})
+1. [utilisation de ssh]({% link cours/ssh_et_shell/ssh.md %}) où vous apprendrez à créer vos clés et à les utiliser pour vous connecter sur l'ovh
+2. [Copie sécurisée scp]({% link cours/ssh_et_shell/ssh_scp.md %}) où vous apprendrez à utiliser scp pour transférer votre site depuis le dév jusqu'à la prod.
 
-  [Le chiffrement RSA ]({% link cours/ssh_et_shell/ssh_rsa.md %}) (/!\ des maths)
+> [Le chiffrement RSA]({% link cours/ssh_et_shell/ssh_rsa.md %}) est le fondement mathématiques du chiffrement utilisé par ssh.
 
-  [Copie sécurisée scp]({% link cours/ssh_et_shell/ssh_scp.md %})
-
+> TBD : redirections de port
+{: .note}
 
 ## shell
 
-### unix 
+POur s'en sortir devant un terminal, qu'il soit en local ou à distance.
+
+### unix
 
   [shell]({% link cours/ssh_et_shell/le_shell.md %})
 
 ### powershell
 
-> TBD : à trier
+> TBD : à faire et trier les refs
+> * <https://docs.microsoft.com/fr-fr/powershell/scripting/overview?view=powershell-7.1>
+> * <https://docs.microsoft.com/fr-fr/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-7.1>
+> * <https://docs.microsoft.com/fr-fr/powershell/module/microsoft.powershell.core/about/about_environment_variables?view=powershell-7.1>
 {: .note}
-
-* <https://docs.microsoft.com/fr-fr/powershell/scripting/overview?view=powershell-7.1>
-* <https://docs.microsoft.com/fr-fr/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-7.1>
-* <https://docs.microsoft.com/fr-fr/powershell/module/microsoft.powershell.core/about/about_environment_variables?view=powershell-7.1>

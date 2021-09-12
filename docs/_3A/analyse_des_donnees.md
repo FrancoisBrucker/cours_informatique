@@ -1,6 +1,6 @@
 ---
 layout: page
-title:  "Analyse des données"
+title:  "Temps 1 digital·e : Analyse des données"
 category: cours
 authors:
   - François Brucker
@@ -10,4 +10,4 @@ authors:
 ## Introduction
 
 > TBD
-{: .danger}
+{: .note}

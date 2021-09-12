@@ -18,7 +18,6 @@ author: Valentin Defrance
 - `rm [file]` : Supprime le fichier spécifié.
 - `man [commande]` : Affiche l'aide de cette commande.
 
-
 ## Manipulation de fichier et de dossier
 
 - `cp` : copie de fichier
@@ -45,7 +44,7 @@ author: Valentin Defrance
 - `less` : Affiche le contenu d'une fichier à l'écran et permet de le parcourir
 - `more` : Affiche le contenu d'une fichier à l'écran et permet de le parcourir
 
-## VIM
+## vim
 
 - `i` : insertion du texte juste avant la position courante du curseur ;
 - `I` : insertion du texte juste au début de la ligne courante ;
@@ -75,7 +74,7 @@ author: Valentin Defrance
 - `deluser --remove-home utilisateur` : Supprime un utilisateur et son répertoire (home).
 - `delgroup groupe` : Supprime un groupe.
 - `usermod -l new_utilisateur` : Changer le nom de l'utilisateur.
-- `usermod -d new_home -m utilisateur` : Changer le répertoire (home) d'un utilisateur.       
+- `usermod -d new_home -m utilisateur` : Changer le répertoire (home) d'un utilisateur.
 - `groupmod -n new_nom grupo` : Changer le nom d'un groupe.
 
 ## Autres
