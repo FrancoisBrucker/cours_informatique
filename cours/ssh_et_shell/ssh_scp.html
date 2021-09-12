@@ -3,9 +3,9 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>Copie sécurisée | cours d’informatique</title>
+<title>Copie sécurisée via le protocole SSH | cours d’informatique</title>
 <meta name="generator" content="Jekyll v4.2.0" />
-<meta property="og:title" content="Copie sécurisée" />
+<meta property="og:title" content="Copie sécurisée via le protocole SSH" />
 <meta name="author" content="Herbelleau Romain" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
@@ -14,9 +14,9 @@
 <meta property="og:url" content="/cours_informatique/cours/ssh_et_shell/ssh_scp.html" />
 <meta property="og:site_name" content="cours d’informatique" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Copie sécurisée" />
+<meta property="twitter:title" content="Copie sécurisée via le protocole SSH" />
 <script type="application/ld+json">
-{"headline":"Copie sécurisée","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/ssh_et_shell/ssh_scp.html","author":{"@type":"Person","name":"Herbelleau Romain"},"@context":"https://schema.org"}</script>
+{"headline":"Copie sécurisée via le protocole SSH","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/ssh_et_shell/ssh_scp.html","author":{"@type":"Person","name":"Herbelleau Romain"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
@@ -58,7 +58,7 @@
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Copie sécurisée</h1>Auteurs :
+    <h1 class="post-title">Copie sécurisée via le protocole SSH</h1>Auteurs :
       <ul>
       
         <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Herbelleau Romain</span></span></li>
@@ -71,101 +71,93 @@
   </header>
 
   <div class="post-content">
-    <h1 id="copie-sécurisée-via-le-protocole-ssh">Copie sécurisée via le protocole SSH</h1>
+    <p>Pour créer sa clé et s’identifier sur <code class="language-plaintext highlighter-rouge">ovh1.ec-m.fr</code> voir <a href="/cours_informatique/cours/ssh_et_shell/ssh.html">le début du cours</a>.</p>
 
-<p>Pour créer sa clé et s’identifier sur ovh1 voir <a href="/cours_informatique/cours/ssh_et_shell/ssh.html">le début du cours</a>.</p>
+<p>Une fois connecté, vous pouvez trouver le dossier <code class="language-plaintext highlighter-rouge">www</code>. C’est ici que vous allez mettre le contenu de votre site. Pour l’instant il contient juste le fichier <code class="language-plaintext highlighter-rouge">index.html</code>. Vous pouvez lire et modifier ce fichier directement via la console, mais ce n’est pas très pratique…</p>
 
-<p>Une fois connecté, vous pouvez trouver le dossier <code class="language-plaintext highlighter-rouge">www</code>. 
-C’est ici que vous allez mettre le contenu de votre site. 
-Pour l’instant il contient juste le fichier <code class="language-plaintext highlighter-rouge">index.html</code>. 
-Vous pouvez lire et modifier ce fichier directement via la console, 
-mais ce n’est pas très pratique…</p>
+<p>On va donc plutôt créer nos fichiers sur notre ordinateur, puis les copier et les envoyer au serveur ovh1.</p>
 
-<p>On va donc plutôt créer nos fichiers sur notre ordinateur, 
-puis les copier et les envoyer au serveur ovh1.</p>
+<p>Pour copier un fichier, il existe la commande <code class="language-plaintext highlighter-rouge">cp</code>. On l’utilise comme ça :</p>
 
-<p>Pour copier un fichier, il existe la commande <code class="language-plaintext highlighter-rouge">cp</code>. 
-On l’utilise comme ça :</p>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span><span class="nb">cp</span> <span class="o">[</span>option] fichier_source fichier_destination
-</code></pre></div></div>
-<p>Si aucun fichier de ce nom n’existe à la destination, il sera créé. 
-S’il existe déjà, il sera remplacé.</p>
-
-<p>On peut également copier des dossiers. 
-Vous en trouverez quelques utilisations de base 
-dans <a href="http://www.commandeslinux.fr/commande-cp/">ce tuto</a>. 
-On peut notamment retenir :</p>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span><span class="nb">cp</span> <span class="nt">-r</span> <span class="nb">source </span>destination  <span class="c"># Copie récursive (pour copier des dossiers)</span>
-</code></pre></div></div>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span><span class="nb">cp</span> <span class="nt">-p</span> <span class="nb">source </span>destination  <span class="c"># Copie en conservant les droits du fichier</span>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cp</span> <span class="o">[</span>option] fichier_source fichier_destination
 </code></pre></div></div>
 
-<p>Le problème de <code class="language-plaintext highlighter-rouge">cp</code>, c’est qu’on ne peut l’utiliser que localement 
-pour faire une copie sur notre machine.</p>
+<p>Si aucun fichier de ce nom n’existe à la destination, il sera créé. S’il existe déjà, il sera remplacé.</p>
 
-<p>Pour copier un fichier vers un serveur (et inversement), on utilise 
-donc la commande <code class="language-plaintext highlighter-rouge">scp</code>, signifiant <em>Secure Copy Protocol</em>. 
-Cette copie utilise le protocole SSH pour assurer l’authenticité 
-et la confidentialité du transfert.</p>
+<p>On peut également copier des dossiers. Vous en trouverez quelques utilisations de base dans <a href="http://www.commandeslinux.fr/commande-cp/">ce tuto</a>. On peut notamment retenir :</p>
 
-<p>Elle s’utilise de la même manière que <code class="language-plaintext highlighter-rouge">cp</code> :</p>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span>scp <span class="o">[</span>option] fichier_source fichier_destination
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cp</span> <span class="nt">-r</span> <span class="nb">source </span>destination  <span class="c"># Copie récursive (pour copier des dossiers)</span>
 </code></pre></div></div>
 
-<p>Pour l’essayer, créez un index.html sur votre machine et copiez-le vers ovh1 
-dans le dossier www/.</p>
-
-<p>Depuis votre machine (sans être déjà connecté à ovh1), ça donne :</p>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span>scp chemin/index.html mon_herbe@ovh1.ec-m.fr:www/index.html
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cp</span> <span class="nt">-p</span> <span class="nb">source </span>destination  <span class="c"># Copie en conservant les droits du fichier</span>
 </code></pre></div></div>
 
-<p>Si vous allez vérifier sur ovh1, 
-votre fichier a bien remplacé l’ancien index.html . 
-Incroyable.</p>
+<p>Le problème de <code class="language-plaintext highlighter-rouge">cp</code>, c’est qu’on ne peut l’utiliser que localement pour faire une copie sur notre machine.</p>
+
+<p>Pour copier un fichier vers un serveur (et inversement), on utilise donc la commande <code class="language-plaintext highlighter-rouge">scp</code>, signifiant <em>Secure Copy Protocol</em>. Cette copie utilise le protocole SSH pour assurer l’authenticité et la confidentialité du transfert. Elle s’utilise de la même manière que <code class="language-plaintext highlighter-rouge">cp</code> :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>scp <span class="o">[</span>option] fichier_source fichier_destination
+</code></pre></div></div>
+
+<p>Pour l’essayer, créez un index.html sur votre machine et copiez-le vers <code class="language-plaintext highlighter-rouge">ovh1.ec-m.fr</code> dans le dossier www/.</p>
+
+<p>Depuis votre machine (sans être déjà connecté à <code class="language-plaintext highlighter-rouge">ovh1.ec-m.fr</code>), ça donne :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>scp chemin/index.html mon_herbe@ovh1.ec-m.fr:www/index.html
+</code></pre></div></div>
+
+<p>Si vous allez vérifier sur <code class="language-plaintext highlighter-rouge">ovh1.ec-m.fr</code>, votre fichier a bien remplacé l’ancien index.html.</p>
+
+<blockquote>
+  <p>Incroyable.</p>
+</blockquote>
 
 <h2 id="copie-et-compression-de-dossiers">Copie et Compression de dossiers</h2>
 
-<p>Comme pour <code class="language-plaintext highlighter-rouge">cp</code>, vous pouvez utiliser <code class="language-plaintext highlighter-rouge">scp</code> pour copier des dossiers. 
-Le problème, c’est que les copier tels quels prend du temps. On veut donc 
-les compresser avant de les transférer. 
-Dans le monde UNIX, on utilise les archives GNU tar avec la commande <code class="language-plaintext highlighter-rouge">tar</code>. 
-Cette commande permet de concaténer plusieurs fichiers en un seul et même 
-fichier. En l’utilisant sur un dossier, cela conserve sa structure et ses 
-droits. La syntaxe est la suivante :</p>
+<p>Comme pour <code class="language-plaintext highlighter-rouge">cp</code>, vous pouvez utiliser <code class="language-plaintext highlighter-rouge">scp</code> pour copier des dossiers. Le problème, c’est que les copier tels quels prend du temps. On veut donc les compresser avant de les transférer. Dans le monde UNIX, on utilise les archives GNU tar avec la commande <code class="language-plaintext highlighter-rouge">tar</code>. Cette commande permet de concaténer plusieurs fichiers en un seul et même fichier. En l’utilisant sur un dossier, cela conserve sa structure et ses droits. La syntaxe est la suivante :</p>
 
 <p>Pour créer l’archive d’un dossier :</p>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span><span class="nb">tar</span> <span class="nt">-cvf</span> archive_dossier.tar dossier/
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">tar</span> <span class="nt">-cvf</span> archive_dossier.tar dossier/
 </code></pre></div></div>
-<p><code class="language-plaintext highlighter-rouge">c</code> signifie qu’on crée une archive. 
-<code class="language-plaintext highlighter-rouge">v</code> désigne le mode “verbeux” (il affiche ce qu’il fait). 
-<code class="language-plaintext highlighter-rouge">f</code> signifie qu’on utilise le fichier en paramètre.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">c</code> signifie qu’on crée une archive.</li>
+  <li><code class="language-plaintext highlighter-rouge">v</code> désigne le mode “verbeux” (il affiche ce qu’il fait).</li>
+  <li><code class="language-plaintext highlighter-rouge">f</code> signifie qu’on utilise le fichier en paramètre.</li>
+</ul>
 
 <p>Ensuite, pour extraire ce dossier :</p>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span><span class="nb">tar</span> <span class="nt">-xvf</span> archive_dossier.tar
-</code></pre></div></div>
-<p><code class="language-plaintext highlighter-rouge">x</code> signifie qu’on extrait l’archive.</p>
 
-<p>Attention cependant : ici le fichier .tar <strong>n’est pas encore compressé</strong>. 
-Pour le compresser, on va ici choisir Lzma, la méhode utilisée 
-par 7zip.</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">tar</span> <span class="nt">-xvf</span> archive_dossier.tar
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">x</code> signifie qu’on extrait l’archive.</li>
+</ul>
+
+<blockquote class="attention">
+  <p>ici le fichier .tar <strong>n’est pas encore compressé</strong>. Pour le compresser, on va ici choisir Lzma, la méhode utilisée par 7zip.</p>
+</blockquote>
 
 <p>Vous pouvez compresser votre archive manuellement avec la commande <code class="language-plaintext highlighter-rouge">xz</code> :</p>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span>xz archive_dossier.tar
-</code></pre></div></div>
-<p>Un fichier <em>archive_dossier.tar.xz</em> est alors créé. 
-Pour le décompresser, on utilise :</p>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span>xz <span class="nt">-d</span> archive_dossier.tar.xz
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>xz archive_dossier.tar
 </code></pre></div></div>
 
-<p>Une autre méthode plus simple est de compresser lors de l’archivage <code class="language-plaintext highlighter-rouge">tar</code>, 
-en rajoutant <code class="language-plaintext highlighter-rouge">J</code> en option :</p>
+<p>Un fichier <em>“archive_dossier.tar.xz”</em> est alors créé. Pour le décompresser, on utilise :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>xz <span class="nt">-d</span> archive_dossier.tar.xz
+</code></pre></div></div>
+
+<p>Une autre méthode plus simple est de compresser lors de l’archivage <code class="language-plaintext highlighter-rouge">tar</code>, en rajoutant <code class="language-plaintext highlighter-rouge">J</code> en option :</p>
+
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span><span class="nb">tar</span> <span class="nt">-Jcvf</span> archive_dossier.tar.xz dossier/
 </code></pre></div></div>
+
 <p>Et idem lors de l’extraction.</p>
 
-<p>Pour tester par vous-même : Créez un petit projet contenant par exemple 
-un fichier html, un fichier css et un fichier js, puis copiez-le vers ovh1 
-en utilisant l’archivage et la compression !</p>
+<p>Pour tester par vous-même : Créez un petit projet contenant par exemple un fichier html, un fichier css et un fichier js, puis copiez-le vers <code class="language-plaintext highlighter-rouge">ovh1.ec-m.fr</code> en utilisant l’archivage et la compression !</p>
 
   </div>
 

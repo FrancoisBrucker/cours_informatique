@@ -71,33 +71,30 @@
   </header>
 
   <div class="post-content">
-    <h1 id="zéro-tracash-zéro-blablash-ssh">Zéro tracash, Zéro blablash, SSH</h1>
+    <h2 id="zéro-tracash-zéro-blablash-ssh">Zéro tracash, Zéro blablash, SSH</h2>
 
-<p>L’étape numéro 1 est d’avoir la bonne console. Moi, j’utilise Ubuntu (WSL 2).</p>
-
-<p>L’étape numéro 2 est d’avoir un agent ssh, c’est le maître des clefs. 
-Vous trouverez toutes les informations necessaires pour installer WSL2 et l’agent sous windows ici : <a href="https://francoisbrucker.github.io/cours_informatique/cours/dfs/installation_W10.html">installation_W10</a></p>
-
-<p>Si vous utilisez linux ou mac tout est déjà là (normalement)</p>
-
-<p>Comparer les OS expliquer ce qu’est l’agent</p>
+<p>Vérifiez que vous avez bien installé les outils ssh et que vous avez un agent ssh en marche. Au pire, vous suivez <a href="/cours_informatique/cours/ssh_et_shell/#installation">l’intallation ssl</a></p>
 
 <h3 id="vérifiez-que-ça-fonctionne">Vérifiez que ça fonctionne</h3>
-<p>Ouvrez une fenêtre powershell et, en remplaçant login par votre login unix de l’école tapez la commande : <code class="language-plaintext highlighter-rouge">ssh-add -l</code>
+
+<p>Ouvrez une fenêtre terminal et, en remplaçant login par votre login unix de l’école tapez la commande : <code class="language-plaintext highlighter-rouge">ssh-add -l</code>
 Vous devriez avoir une phrase vous disant que l’agent n’a pas d’identité. Si vous n’avez pas d’agent installé (ou si vous l’avez stoppé) cela devrait vous dire qu’on arrive pas à se connecter à l’agent.</p>
 
-<h2 id="ssh-cest-quoi-">SSH, c’est quoi ?</h2>
+<h2 id="ssh-cest-quoi-">ssh, c’est quoi ?</h2>
 
-<p><strong>Secure Shell (SSH)</strong> est à la fois un programme informatique et un protocole de communication sécurisé. Le protocole de connexion impose un échange de clés de chiffrement en début de connexion. Par la suite, tous les segments TCP sont authentifiés et chiffrés. Il devient donc impossible d’utiliser un sniffer pour voir ce que fait l’utilisateur.
-Avec SSH, l’authentification peut se faire sans l’utilisation de mot de passe ou de phrase secrète en utilisant la cryptographie asymétrique. Le protocole utilise deux clés complémentaires, la clé publique et la clé privée.
+<p><strong>Secure Shell (SSH)</strong> est à la fois un programme informatique et un protocole de communication sécurisé. Le protocole de connexion impose un échange de clés de chiffrement en début de connexion. Par la suite, tous les segments TCP sont authentifiés et chiffrés. Il devient donc impossible d’utiliser un sniffer pour voir ce que fait l’utilisateur.</p>
+
+<p>Avec ssh, l’authentification peut se faire sans l’utilisation de mot de passe ou de phrase secrète en utilisant la cryptographie asymétrique. Le protocole utilise deux clés complémentaires, la clé publique et la clé privée.
 La clé publique est distribuée sur les systèmes auxquels on souhaite se connecter. La clé privée, qu’on prendra le soin de protéger par un mot de passe (elle est donc stockée cryptée), reste uniquement sur le poste à partir duquel on se connecte. L’utilisation de l’agent ssh permet de stocker le mot de passe de la clé privée pendant la durée de la session utilisateur.</p>
 
 <p>Pour plein d’info et d’explication sur le chiffrement des clés voir <a href="/cours_informatique/cours/ssh_et_shell/ssh_rsa.html">ici</a></p>
+
 <h2 id="générer-une-clé">Générer une clé</h2>
 
 <h3 id="et-ne-pas-se-la-faire-voler-par-des-hackers-malveillants">Et ne pas se la faire voler par des hackers malveillants</h3>
 
 <p><strong>TL;DR</strong></p>
+
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>accéder au serveur de Centrale :  <span class="c"># pour retrouver ses données où que l'on soit </span>
   <span class="nv">$ </span>ssh <span class="nt">-A</span> identifiant@sas1.ec-m.fr
 
@@ -111,17 +108,18 @@ ajouter la clé à son porte clé :
 </code></pre></div></div>
 
 <h3 id="pour-créer-sa-paire-de-clés">Pour créer sa paire de clés</h3>
+
 <h4 id="où-ranger-sa-clé-">Où ranger sa clé ?</h4>
 
 <p>Il est préférable de se placer dans un dossier adapté au stockage de données sensibles, en général on stockera les clés dans .ssh.</p>
 
 <p>Avec <code class="language-plaintext highlighter-rouge">$ ls -la</code> on peut voir tous les fichiers et leurs permissions. La ligne de .ssh devrait commencer par 
-<code class="language-plaintext highlighter-rouge">drwx______</code>, <code class="language-plaintext highlighter-rouge">d</code> indique qu’il s’agit d’un dossier, les trois caractères suivants <code class="language-plaintext highlighter-rouge">rwx</code> que le <em>propriétaire</em> peut lire, 
-écrire et exécuter son contenu et les tirets suivants que les autres utilisateurs n’ont aucun droit dessus (plus d’info sur les permissions <a href="https://www.linux.com/training-tutorials/understanding-linux-file-permissions/">ici</a>).</p>
+<code class="language-plaintext highlighter-rouge">drwx______</code>, <code class="language-plaintext highlighter-rouge">d</code> indique qu’il s’agit d’un dossier, les trois caractères suivants <code class="language-plaintext highlighter-rouge">rwx</code> que le <em>propriétaire</em> peut lire, écrire et exécuter son contenu et les tirets suivants que les autres utilisateurs n’ont aucun droit dessus (plus d’info sur les permissions <a href="https://www.linux.com/training-tutorials/understanding-linux-file-permissions/">ici</a>).</p>
 
 <p>Pour les clés on se place donc dans .ssh puis on génère une paire de clés :</p>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">$ </span><span class="nb">cd</span> .ssh
-  <span class="nv">$ </span>ssh-keygen
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cd</span> .ssh
+<span class="nv">$ </span>ssh-keygen
 </code></pre></div></div>
 
 <p>On lui donne un nom (ex: keyblade95) et une passphrase (à ne pas oublier) et tadaaa on a maintenant deux fichiers keyblade95 et keyblade95.pub.</p>
@@ -131,34 +129,34 @@ ajouter la clé à son porte clé :
 <p><em>keyblade95</em> est votre clé <strong>privée</strong> à ne montrer à personne sous aucun prétexte.</p>
 
 <p>Il faut ensuite ajouter sa clé à son agent qui joue ici le rôle de porte clé :</p>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">$ </span>ssh-add nom_de_la_clé
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>ssh-add nom_de_la_clé
 </code></pre></div></div>
+
 <p>Rentrer la passphrase et la clé sera ajoutée. C’est tout simple.</p>
 
 <p>On peut vérifier les clés ajoutées avec :</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">$ </span>ssh-add <span class="nt">-l</span>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>ssh-add <span class="nt">-l</span>
 </code></pre></div></div>
 
 <p>Et faire oublier toutes les clés connues de son agent avec :</p>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">$ </span>ssh-add <span class="nt">-D</span> 
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>ssh-add <span class="nt">-D</span> 
 </code></pre></div></div>
 
 <h2 id="a-chaque-nouvelle-session">A chaque nouvelle session</h2>
 
-<p>À chaque fois que vous fermez votre session utilisateur 
-(donc notamment lorsque vous éteignez votre ordinateur), 
-votre agent ssh perd les clés publiques qu’il possédait. 
-En démarrant une nouvelle session et en affichant la liste des identités 
-représentées par l’agent avec <code class="language-plaintext highlighter-rouge">ssh-add -l</code>, 
-vous obtenez donc le message suivant :</p>
+<p>À chaque fois que vous fermez votre session utilisateur (donc notamment lorsque vous éteignez votre ordinateur), 
+votre agent ssh perd les clés publiques qu’il possédait. En démarrant une nouvelle session et en affichant la liste des identités représentées par l’agent avec <code class="language-plaintext highlighter-rouge">ssh-add -l</code>, vous obtenez donc le message suivant :</p>
+
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>the agent has no identities
 </code></pre></div></div>
 
-<p>Il faut donc récupérer votre clé ssh là où vous l’avez laissée. 
-Rien de nouveau ici, c’est simplement une routine à prendre.</p>
+<p>Il faut donc récupérer votre clé ssh là où vous l’avez laissée. Rien de nouveau ici, c’est simplement une routine à prendre.</p>
 
 <h2 id="authorized-keys">Authorized keys</h2>
+
 <h3 id="reconnaître-les-machines-quon-connaît">Reconnaître les machines qu’on connaît</h3>
 
 <p>Lorsque on se connecte à un serveur distant il est en général nécessaire de s’identifier, parfois plusieurs fois pour une seule ligne de commande ce qui est rapidement fastidieux.</p>
@@ -167,24 +165,27 @@ Rien de nouveau ici, c’est simplement une routine à prendre.</p>
 Les clés enregistrées sont stockées dans un fichier nommé authorized_keys dans un dossier .ssh sur le serveur.</p>
 
 <p>La commande suivante permet d’ajouter notre clé publique aux clés connues par une machine :</p>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">$ </span><span class="nb">cat </span>id_rsa.pub <span class="o">&gt;&gt;</span> authorized_keys
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cat </span>id_rsa.pub <span class="o">&gt;&gt;</span> authorized_keys
 </code></pre></div></div>
+
 <p>Il est maintenant possible de se déconnecter et reconnecter au serveur ou faire des opérations plus complexes sans entrer systématiquement son mot de passe youpi !</p>
 
 <h2 id="assaisonner-son-cours-dinfo">Assaisonner son cours d’info</h2>
-<p><img src="images/seasonning.png" alt="image?" /></p>
 
-<p>Aller sur http://node.ail.ovh1.ec-m.fr/ dans un navigateur et se connecter avec son identifiant Centrale.</p>
+<p><img src="/cours_informatique/assets/cours/ssh_et_shell/seasonning.png" alt="image?" /></p>
+
+<p>Aller sur <a href="http://node.ail.ovh1.ec-m.fr/">http://node.ail.ovh1.ec-m.fr/</a> dans un navigateur et se connecter avec son identifiant Centrale.</p>
 
 <p>Copier sa clé publique en entier (en 3 mots, commence par “ssh-rsa”, se termine par “@sas1.ec-m.fr”) et valider pour 
 se voir attribuer notre propre herbe de Provence absolument authentique (malheureusement la farigoule n’est pas dans la liste).</p>
 
-<p>On pourra ensuite accéder à ovh1 depuis le terminal :</p>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">$ </span>mon_herbe@ovh1.ec-m.fr
+<p>On pourra ensuite accéder à <code class="language-plaintext highlighter-rouge">ovh1.ec-m.fr</code> depuis le terminal :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>mon_herbe@ovh1.ec-m.fr
 </code></pre></div></div>
 
 <p>Serveur et Identifiant que l’on utilisera pour <a href="/cours_informatique/cours/ssh_et_shell/ssh_scp.html">la suite du cours</a>.</p>
-
 
   </div>
 

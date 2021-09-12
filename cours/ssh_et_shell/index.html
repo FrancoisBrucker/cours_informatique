@@ -3,9 +3,9 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>SSH et Shell | cours d’informatique</title>
+<title>ssh et shell | cours d’informatique</title>
 <meta name="generator" content="Jekyll v4.2.0" />
-<meta property="og:title" content="SSH et Shell" />
+<meta property="og:title" content="ssh et shell" />
 <meta name="author" content="François Brucker" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
@@ -14,9 +14,9 @@
 <meta property="og:url" content="/cours_informatique/cours/ssh_et_shell/" />
 <meta property="og:site_name" content="cours d’informatique" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="SSH et Shell" />
+<meta property="twitter:title" content="ssh et shell" />
 <script type="application/ld+json">
-{"headline":"SSH et Shell","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/ssh_et_shell/","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
+{"headline":"ssh et shell","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/ssh_et_shell/","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
@@ -58,15 +58,11 @@
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">SSH et Shell</h1></p>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></p>
+    <h1 class="post-title">ssh et shell</h1></p>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></p>
   </header>
 
   <div class="post-content">
     <p>Clés ssh. Connexion à des serveurs distants.</p>
-
-<blockquote class="note">
-  <p>TBD : mise au propre</p>
-</blockquote>
 
 <h2 id="ssh">ssh</h2>
 
@@ -89,6 +85,7 @@
 <p>Il y a plusieurs choses à installer. Windows vient avec la partie client d’openssh déjà installée. Il nous reste à installer la partie serveur et faire en sorte que celui ci et l’agent se mettent en route à chaque démarrage.</p>
 
 <p>On commence par installer <em>OpenSSH serveur</em>, en suivant le <a href="https://docs.microsoft.com/fr-fr/windows-server/administration/openssh/openssh_install_firstuse">tuto de microsoft</a> :</p>
+
 <ol>
   <li>Ouvrez <em>Paramètres</em>, sélectionnez “<em>Applications &gt; Applications et fonctionnalités</em>”, puis <em>Fonctionnalités facultatives</em>.</li>
   <li>recherchez <em>OpenSSH client</em> et vérifiez qu’il est déjà installé</li>
@@ -126,15 +123,24 @@ Start-Service ssh-agent
 
 </div></details>
 
-<h3 id="old">old</h3>
+<h3 id="utilisations">utilisations</h3>
 
-<p><a href="/cours_informatique/cours/ssh_et_shell/ssh.html">SSH</a></p>
+<ol>
+  <li><a href="/cours_informatique/cours/ssh_et_shell/ssh.html">utilisation de ssh</a> où vous apprendrez à créer vos clés et à les utiliser pour vous connecter sur l’ovh</li>
+  <li><a href="/cours_informatique/cours/ssh_et_shell/ssh_scp.html">Copie sécurisée scp</a> où vous apprendrez à utiliser scp pour transférer votre site depuis le dév jusqu’à la prod.</li>
+</ol>
 
-<p><a href="/cours_informatique/cours/ssh_et_shell/ssh_rsa.html">Le chiffrement RSA </a> (/!\ des maths)</p>
+<blockquote>
+  <p><a href="/cours_informatique/cours/ssh_et_shell/ssh_rsa.html">Le chiffrement RSA</a> est le fondement mathématiques du chiffrement utilisé par ssh.</p>
+</blockquote>
 
-<p><a href="/cours_informatique/cours/ssh_et_shell/ssh_scp.html">Copie sécurisée scp</a></p>
+<blockquote class="note">
+  <p>TBD : redirections de port</p>
+</blockquote>
 
 <h2 id="shell">shell</h2>
+
+<p>POur s’en sortir devant un terminal, qu’il soit en local ou à distance.</p>
 
 <h3 id="unix">unix</h3>
 
@@ -143,14 +149,13 @@ Start-Service ssh-agent
 <h3 id="powershell">powershell</h3>
 
 <blockquote class="note">
-  <p>TBD : à trier</p>
+  <p>TBD : à faire et trier les refs</p>
+  <ul>
+    <li><a href="https://docs.microsoft.com/fr-fr/powershell/scripting/overview?view=powershell-7.1">https://docs.microsoft.com/fr-fr/powershell/scripting/overview?view=powershell-7.1</a></li>
+    <li><a href="https://docs.microsoft.com/fr-fr/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-7.1">https://docs.microsoft.com/fr-fr/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-7.1</a></li>
+    <li><a href="https://docs.microsoft.com/fr-fr/powershell/module/microsoft.powershell.core/about/about_environment_variables?view=powershell-7.1">https://docs.microsoft.com/fr-fr/powershell/module/microsoft.powershell.core/about/about_environment_variables?view=powershell-7.1</a></li>
+  </ul>
 </blockquote>
-
-<ul>
-  <li><a href="https://docs.microsoft.com/fr-fr/powershell/scripting/overview?view=powershell-7.1">https://docs.microsoft.com/fr-fr/powershell/scripting/overview?view=powershell-7.1</a></li>
-  <li><a href="https://docs.microsoft.com/fr-fr/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-7.1">https://docs.microsoft.com/fr-fr/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-7.1</a></li>
-  <li><a href="https://docs.microsoft.com/fr-fr/powershell/module/microsoft.powershell.core/about/about_environment_variables?view=powershell-7.1">https://docs.microsoft.com/fr-fr/powershell/module/microsoft.powershell.core/about/about_environment_variables?view=powershell-7.1</a></li>
-</ul>
 
   </div>
 

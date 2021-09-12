@@ -84,25 +84,19 @@
 <h2 id="les-bases">Les Bases</h2>
 
 <ul>
-  <li>
-    <p>La touche <code class="language-plaintext highlighter-rouge">tab</code> permet l’auto-complétion d’une commande en cours d’écrtiture.</p>
-  </li>
-  <li>
-    <p>Afin de coller une commande du presse-papier dans le Shell, il faut effectuer un clic droit dans celui-ci.</p>
-  </li>
-  <li>
-    <p>La commande <code class="language-plaintext highlighter-rouge">man [commande]</code> permet d’afficher l’aide d’une commande, pour celà il vous faudra probablement installer le paquet manuel au préalable (<code class="language-plaintext highlighter-rouge">sudo apt install man</code> (il faut remplacer <code class="language-plaintext highlighter-rouge">apt</code> par <code class="language-plaintext highlighter-rouge">brew</code> sur Mac)).</p>
-  </li>
+  <li>La touche <code class="language-plaintext highlighter-rouge">tab</code> permet l’auto-complétion d’une commande en cours d’écrtiture.</li>
+  <li>Afin de coller une commande du presse-papier dans le Shell, il faut effectuer un clic droit dans celui-ci.</li>
+  <li>La commande <code class="language-plaintext highlighter-rouge">man [commande]</code> permet d’afficher l’aide d’une commande, pour celà il vous faudra probablement installer le paquet manuel au préalable (<code class="language-plaintext highlighter-rouge">sudo apt install man</code> (il faut remplacer <code class="language-plaintext highlighter-rouge">apt</code> par <code class="language-plaintext highlighter-rouge">brew</code> sur Mac)).</li>
   <li>La commande <code class="language-plaintext highlighter-rouge">ls</code> permet d’obtenir la liste et les caractéristiques des fichiers contenus dans un répertoire. Si aucun argument n’est donné, la commande “ls” affiche la liste des noms de fichiers du répertoire courant. Cette commande possède plusieurs options (<code class="language-plaintext highlighter-rouge">ls -[Option1][Option2]</code>) permettant d’afficher un résultat différent :
     <ul>
       <li><code class="language-plaintext highlighter-rouge">ls -p</code> : Cette option permet de distinguer les répertoires des fichiers dans le retour de commande en ajoutant <code class="language-plaintext highlighter-rouge">/</code> après le nom de chaque répertoire .</li>
       <li><code class="language-plaintext highlighter-rouge">ls -a</code> : Ajoute à la liste des répertoires les répertoires cachés (ceux dont le nom commence par “<code class="language-plaintext highlighter-rouge">.</code>”)</li>
       <li><code class="language-plaintext highlighter-rouge">ls -l</code> : permet d’afficher une liste détaillée des caractéristiques de chaque fichier du répertoire. Il est d’usage d’ajouter l’option -h à -l afin d’obtenir les informations de poids d’occupation en plus lisible pour un humain plutôt qu’en octet et donc d’utiliser <code class="language-plaintext highlighter-rouge">ls -lh</code>. Avec cette option ls va adapter son affichage en utilisant l’unité la plus adaptée.</li>
-      <li><code class="language-plaintext highlighter-rouge">ls -R</code> :	pour récursif, permet d’afficher une liste des caractéristiques de chaque fichier dans tous les répertoires à partir d’où nous sommes.</li>
-      <li><code class="language-plaintext highlighter-rouge">ls -lR</code> :	permet d’afficher une liste des caractéristiques de chaque fichier de tous les répertoires à partir d’où nous sommes avec les caractéristiques des droits.</li>
-      <li><code class="language-plaintext highlighter-rouge">ls -t</code> :	permet de trier le contenu des répertoires en fonction de la date et non pas en ordre alphabétique. Les fichiers les plus récents sont présentés en premier.</li>
-      <li><code class="language-plaintext highlighter-rouge">ls -u</code> :	permet d’employer la date des derniers accès aux fichiers plutôt que la date de modification, autant pour l’affichage (option -l) que pour le tri (option -t).</li>
-      <li><code class="language-plaintext highlighter-rouge">ls -d</code> :	permet d’afficher une liste des répertoires sans leur contenu à partir d’où nous sommes.</li>
+      <li><code class="language-plaintext highlighter-rouge">ls -R</code> : pour récursif, permet d’afficher une liste des caractéristiques de chaque fichier dans tous les répertoires à partir d’où nous sommes.</li>
+      <li><code class="language-plaintext highlighter-rouge">ls -lR</code> : permet d’afficher une liste des caractéristiques de chaque fichier de tous les répertoires à partir d’où nous sommes avec les caractéristiques des droits.</li>
+      <li><code class="language-plaintext highlighter-rouge">ls -t</code> : permet de trier le contenu des répertoires en fonction de la date et non pas en ordre alphabétique. Les fichiers les plus récents sont présentés en premier.</li>
+      <li><code class="language-plaintext highlighter-rouge">ls -u</code> : permet d’employer la date des derniers accès aux fichiers plutôt que la date de modification, autant pour l’affichage (option -l) que pour le tri (option -t).</li>
+      <li><code class="language-plaintext highlighter-rouge">ls -d</code> : permet d’afficher une liste des répertoires sans leur contenu à partir d’où nous sommes.</li>
     </ul>
   </li>
   <li>La commande <code class="language-plaintext highlighter-rouge">echo</code> dans un terminal ou en console, affiche le texte rédigé en argument (voir <a href="https://debian-facile.org/doc:systeme:echo">documentation echo</a>)</li>
@@ -110,7 +104,7 @@
 
 <h2 id="compte-de-ladministrateur-root">Compte de l’administrateur (root)</h2>
 
-<p>Le compte de l’administrateur (root) ou superutilisateur ou encore utilisateur privilégié permet d’effectuer les opérations d’administration du système suivantes :</p>
+<p>Le compte de l’administrateur (root) ou super-utilisateur ou encore utilisateur privilégié permet d’effectuer les opérations d’administration du système suivantes :</p>
 
 <p>lire, écrire et effacer n’importe quel fichier du système quelles que soient ses permissions</p>
 
@@ -147,6 +141,7 @@
 
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">printenv </span>HOME
 </code></pre></div></div>
+
 <p>Output : <code class="language-plaintext highlighter-rouge">/home/username</code></p>
 
 <p>Voici une liste des variables d’environnement les plus courantes :</p>
@@ -188,6 +183,7 @@
 </ul>
 
 <p>Exemple : cette ligne de commande vous ramène deux répertoires parents en arrière puis au répertoire Downloads</p>
+
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> /../../Downloads
 </code></pre></div></div>
 
@@ -198,15 +194,14 @@
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>packageName
 </code></pre></div></div>
 
-<p>L’utilisation de sudo est nécessaire afin d’exécuter la commande avec les droits nécessaires pour télécharger le paquet. (Sur Mac, <code class="language-plaintext highlighter-rouge">apt</code> est remplacé par <code class="language-plaintext highlighter-rouge">brew</code>)
-Par exemple si nous voulons installer <em>vim</em> qui est une version plus puissante de l’éditeur de texte <em>vi</em>, il faudra entrer la commande :</p>
+<p>L’utilisation de sudo est nécessaire afin d’exécuter la commande avec les droits nécessaires pour télécharger le paquet. (Sur Mac, <code class="language-plaintext highlighter-rouge">apt</code> est remplacé par <code class="language-plaintext highlighter-rouge">brew</code>). Par exemple si nous voulons installer <em>vim</em> qui est une version plus puissante de l’éditeur de texte <em>vi</em>, il faudra entrer la commande :</p>
 
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>vim
 </code></pre></div></div>
 
-<h2 id="vim">VIM</h2>
+<h2 id="vim">vim</h2>
 
-<p>Comme dit précédemment, <a href="https://wiki.debian.org/fr/vim">vim</a> est un éditeur de texte en mode console. Vous pouvez aussi juste afficher le contenu d’un fichier avec la commande <code class="language-plaintext highlighter-rouge">cat /chemin/de/votre/fichier</code> (ou <code class="language-plaintext highlighter-rouge">cat nomDuFichier</code> en chemin relatif). De même avec la commande <code class="language-plaintext highlighter-rouge">vim</code>. Par exemple pour ouvrir le fichier readme.txt de mon répertoire de travail, je dois taper une des deux commandes :</p>
+<p>Comme dit précédemment, <a href="https://wiki.debian.org/fr/vim">vim</a> est un éditeur de texte en mode console. Vous pouvez aussi juste afficher le contenu d’un fichier avec la commande <code class="language-plaintext highlighter-rouge">cat /chemin/de/votre/fichier</code> (ou <code class="language-plaintext highlighter-rouge">cat nomDuFichier</code> en chemin relatif). De même avec la commande <code class="language-plaintext highlighter-rouge">vim</code>. Par exemple pour ouvrir le fichier <em>“readme.txt”</em> de mon répertoire de travail, je dois taper une des deux commandes :</p>
 
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vim readme.txt
 vim /home/username/readme.txt
@@ -246,7 +241,6 @@ vim /home/username/readme.txt
 <h2 id="cheat-sheet">Cheat-Sheet</h2>
 
 <p>Voici une <a href="/cours_informatique/cours/ssh_et_shell/shell_cheat_sheet.html">Cheat-Sheet</a> récapitulant la plupart des commandes dont vous aurez besoin.</p>
-
 
   </div>
 

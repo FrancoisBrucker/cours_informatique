@@ -3,9 +3,9 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>Chiffrement RSA | cours d’informatique</title>
+<title>chiffrement RSA | cours d’informatique</title>
 <meta name="generator" content="Jekyll v4.2.0" />
-<meta property="og:title" content="Chiffrement RSA" />
+<meta property="og:title" content="chiffrement RSA" />
 <meta name="author" content="Herbelleau Romain" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
@@ -14,9 +14,9 @@
 <meta property="og:url" content="/cours_informatique/cours/ssh_et_shell/ssh_rsa.html" />
 <meta property="og:site_name" content="cours d’informatique" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Chiffrement RSA" />
+<meta property="twitter:title" content="chiffrement RSA" />
 <script type="application/ld+json">
-{"headline":"Chiffrement RSA","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/ssh_et_shell/ssh_rsa.html","author":{"@type":"Person","name":"Herbelleau Romain"},"@context":"https://schema.org"}</script>
+{"headline":"chiffrement RSA","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/ssh_et_shell/ssh_rsa.html","author":{"@type":"Person","name":"Herbelleau Romain"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
@@ -58,7 +58,7 @@
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Chiffrement RSA</h1>Auteurs :
+    <h1 class="post-title">chiffrement RSA</h1>Auteurs :
       <ul>
       
         <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Herbelleau Romain</span></span></li>
@@ -71,9 +71,7 @@
   </header>
 
   <div class="post-content">
-    <h1 id="le-chiffrement-rsa">Le chiffrement RSA</h1>
-
-<p>Cet algorithme a été présenté en 1977 par Ronald Rivest, Adi Shamir et Leonard Adleman.</p>
+    <p>Cet algorithme a été présenté en 1977 par Ronald Rivest, Adi Shamir et Leonard Adleman.</p>
 
 <p>Le chiffrement RSA s’appuie sur le fait que factoriser un produit de deux nombres premiers distincts est difficile.</p>
 
@@ -82,94 +80,55 @@
 <p>Quelques outils mathématiques et algorithmiques nécessaires :</p>
 
 <ul>
-  <li>
-    <p>Le <strong>petit théorème de Fermat</strong> dit :
-Si $p$ est un nombre premier et $a$ un entier alors <em>\(a^p = a \mod p\)</em>.
-<strong>Corollaire</strong> : si $p$ ne divise pas $a$ alors <em>\(a^{p-1} = 1 \mod p\)</em>.</p>
-  </li>
-  <li>
-    <p>La <strong>version améliorée du petit théorème de Fermat</strong> nous donne :
-Soient $p$ et $q$ deux nombres premiers distincts et soit \(n = pq\). Pour tout $a$ entier tel que \(pgcd(a,n) = 1\) (cad $n$ ne divise pas $a$) alors : <em>\(a^{(p-1)(q-1)} = 1 \mod n\)</em>.</p>
-  </li>
-  <li>
-    <p>L’<strong>algorithme d’Euclide</strong> permet de retourner facilement le reste d’une division euclidienne.</p>
-  </li>
-</ul>
-
-<p>L’<strong>algorithme d’Euclide étendu</strong> permet d’obtenir les coefficients de Bézout.</p>
-
-<ul>
+  <li>Le <strong>petit théorème de Fermat</strong> dit :Si $p$ est un nombre premier et $a$ un entier alors <em>\(a^p = a \mod p\)</em>.<strong>Corollaire</strong> : si $p$ ne divise pas $a$ alors <em>\(a^{p-1} = 1 \mod p\)</em>.</li>
+  <li>La <strong>version améliorée du petit théorème de Fermat</strong> nous donne : Soient $p$ et $q$ deux nombres premiers distincts et soit \(n = pq\). Pour tout $a$ entier tel que \(pgcd(a,n) = 1\) (cad $n$ ne divise pas $a$) alors : <em>\(a^{(p-1)(q-1)} = 1 \mod n\)</em>.</li>
+  <li>L’<strong>algorithme d’Euclide</strong> permet de retourner facilement le reste d’une division euclidienne.</li>
+  <li>L’<strong>algorithme d’Euclide étendu</strong> permet d’obtenir les coefficients de Bézout.</li>
   <li>Soit $a$ un entier, on dit que $x$ entier est un <strong>inverse de $a$ modulo $n$</strong> si <em>\(ax = 1 \mod n\)</em>. $a$ admet un inverse modulo $n$ si et seulement si \(pgcd(a,n)=1\). De plus si \(au + nv = 1\) (coefficient de bézout) alors $u$ est un inverse de $a$ modulo $n$.</li>
 </ul>
 
-<p><strong>Générer une paire de clés :</strong></p>
+<h2 id="générer-une-paire-de-clés">Générer une paire de clés</h2>
 
 <ul>
-  <li>
-    <p>Choix de deux nombres premiers distincts $p$ et $q$.</p>
-  </li>
-  <li>
-    <p>Calcul de \(n = pq\).</p>
-  </li>
-  <li>
-    <p>Calcul de <strong>l’indicatrice d’Euler</strong> \(\Phi(n) = (p-1)(q-1)\). <em>Pour calculer cette fonction il faut connaître $p$ et $q$, d’où son caractère privé</em>.</p>
-  </li>
-  <li>
-    <p>Choix d’un exposant $e$ tq \(pgcd(e,\Phi(n))=1\).</p>
-  </li>
-  <li>
-    <p>Calcul de l’inverse $d$ de \(e \mod \Phi(n)\) par l’<strong>algorithme d’Euclide étendu</strong>, on a \(de = 1 \mod \Phi(n)\)</p>
-  </li>
-  <li>
-    <p>La clé publique est constituée de <strong>$n$ et $e$</strong> et la clé privée de <strong>$d$</strong> .</p>
-  </li>
+  <li>Choix de deux nombres premiers distincts $p$ et $q$.</li>
+  <li>Calcul de \(n = pq\).</li>
+  <li>Calcul de <strong>l’indicatrice d’Euler</strong> \(\Phi(n) = (p-1)(q-1)\). <em>Pour calculer cette fonction il faut connaître $p$ et $q$, d’où son caractère privé</em>.</li>
+  <li>Choix d’un exposant $e$ tq \(pgcd(e,\Phi(n))=1\).</li>
+  <li>Calcul de l’inverse $d$ de \(e \mod \Phi(n)\) par l’<strong>algorithme d’Euclide étendu</strong>, on a \(de = 1 \mod \Phi(n)\)</li>
+  <li>La clé publique est constituée de <strong>$n$ et $e$</strong> et la clé privée de <strong>$d$</strong> .</li>
 </ul>
 
-<p><strong>Chiffrement du message :</strong></p>
+<h2 id="chiffrement-du-message">Chiffrement du message</h2>
 
 <ul>
-  <li>
-    <p>II faut décomposer le message secret en paquets de taille <strong>$m &lt;n$</strong>.</p>
-  </li>
-  <li>
-    <p>Calcul du message chiffré <strong>\(x =  m^e \mod n\)</strong>. <em>$n$ et $e$ sont connus car on dispose de la clé publique</em>.</p>
-  </li>
+  <li>Il faut décomposer le message secret en paquets de taille <strong>$m &lt;n$</strong>.</li>
+  <li>Calcul du message chiffré <strong>\(x =  m^e \mod n\)</strong>. <em>$n$ et $e$ sont connus car on dispose de la clé publique</em>.</li>
 </ul>
 
-<p><strong>Déchiffrement du message :</strong></p>
+<h2 id="déchiffrement-du-message">Déchiffrement du message</h2>
 
 <ul>
-  <li>
-    <p>le message $x$ est décrypté à l’aide de sa clé privée $d$ : $m = x^d \mod n$</p>
-  </li>
-  <li>
-    <p>En effet le <strong>petit théorème de Fermat amélioré</strong> permet d’écrire : Soit $d$ l’inverse de $e$ modulo $\Phi(n)$ avec \(n = pq\). Si <strong>\(x = m^e \mod n\)</strong> alors <strong>\(m=x^d \mod n\)</strong>.</p>
-  </li>
+  <li>le message $x$ est décrypté à l’aide de sa clé privée $d$ : $m = x^d \mod n$</li>
+  <li>En effet le <strong>petit théorème de Fermat amélioré</strong> permet d’écrire : Soit $d$ l’inverse de $e$ modulo $\Phi(n)$ avec \(n = pq\). Si <strong>\(x = m^e \mod n\)</strong> alors <strong>\(m=x^d \mod n\)</strong>.</li>
 </ul>
 
-<p><strong>Preuve :</strong></p>
+<h2 id="preuve">Preuve</h2>
 
 <ul>
-  <li>
-    <p>$d$ est l’inverse de \(e \mod \Phi(n)\) <em>donc</em> \(d*e = 1 \mod \Phi(n)\) <em>donc</em> il existe $k$ entier tq \(d*e = 1+ k \Phi(n)\).</p>
-  </li>
-  <li>
-    <p>Le petit th de Fermat amélioré donne : si \(pgcd(m,n)=1\) alors \(m^{\Phi(n)}=m^{(p-1)(q-1)}= 1 \mod n\).</p>
-  </li>
-  <li>
-    <p>Si \(pgcd(m,n) = 1\) alors modulo $n$ :
- <strong>$x$</strong> \(= (m^e)^d = m^{1+k Phi(n)} = m * m^{k \Phi(n)} = m *(m^{\Phi(n)})^k =\)(Fermat) \(m * 1^k\) \(= m \mod n\).</p>
-  </li>
-  <li>
-    <p>Si \(pgcd(m,n) \ne 1\), alors \(pgcd(m,n)=p\) et \(pgcd(m,q)=1\) ou inversement.
+  <li>$d$ est l’inverse de \(e \mod \Phi(n)\) <em>donc</em> \(d*e = 1 \mod \Phi(n)\) <em>donc</em> il existe $k$ entier tq \(d*e = 1+ k \Phi(n)\).</li>
+  <li>Le petit th de Fermat amélioré donne : si \(pgcd(m,n)=1\) alors \(m^{\Phi(n)}=m^{(p-1)(q-1)}= 1 \mod n\).</li>
+  <li>Si \(pgcd(m,n) = 1\) alors modulo $n$ :
+ <strong>$x$</strong> \(= (m^e)^d = m^{1+k Phi(n)} = m * m^{k \Phi(n)} = m *(m^{\Phi(n)})^k =\)(Fermat) \(m * 1^k\) \(= m \mod n\).</li>
+  <li>Si \(pgcd(m,n) \ne 1\), alors \(pgcd(m,n)=p\) et \(pgcd(m,q)=1\) ou inversement.
 Si $p$ divise $m$, alors modulo $p$ : \(m = 0\), \(x = m^{ed} = 0 \mod p\), donc \(m^{ed} = m \mod p\).
-Et modulo <em>q</em> : \(x = m^{ed} = m * (m^{\Phi(n)})^k = m * (m^{q-1})^{k (p-1)} =\)(Fermat) \(m \mod q\).</p>
-  </li>
+Et modulo <em>q</em> : \(x = m^{ed} = m * (m^{\Phi(n)})^k = m * (m^{q-1})^{k (p-1)} =\)(Fermat) \(m \mod q\).</li>
 </ul>
 
 <p>$pgcd(p,q)=1$ permet de conclure \(x=m^{ed}=m \mod n\).</p>
 
-<p><strong>Conclusion : on a donc des algorithmes permettant de générer une paire de clés, et on peut chiffrer un message avec une clé, déchiffrable uniquement avec l’autre clé.</strong></p>
+<h2 id="conclusion">Conclusion</h2>
+
+<p>On a donc des algorithmes permettant de générer une paire de clés, et on peut chiffrer un message avec une clé, déchiffrable uniquement avec l’autre clé.</p>
 
 <p>Pour plus d’informations voir cette vidéo sur le <a href="https://www.youtube.com/watch?v=Xlal_d4zyfo">chiffrement RSA</a>.</p>
 
