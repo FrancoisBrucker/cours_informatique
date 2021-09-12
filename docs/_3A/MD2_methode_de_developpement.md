@@ -56,6 +56,10 @@ Site à mettre mieux :
 
 Créez un site permettant de jouer à un jeu solo pnp ou à un jeu à plusieurs sur un seul écran.
 
+> Un demi-jeu n'est pas un jeu. On ne commencera à noter que lorsque le jeu fonctionnera (l'early access/démo technique/faites moi confiance ça va marcher un jour/[insert your excuse here] ne marchera pas). 
+> Donc choisissez un jeu que vous pourrez implémenter en entier.
+{: .attention}
+
 * <https://www.youtube.com/results?search_query=solo+pnp+games> donne plein de résultats (même si j'admet c'est *un peu* de niche). Voir <https://www.youtube.com/c/VeselkoKelava/videos> (connait pas mais a l'air de faire plein de review), elle fait plein de jeu solo <https://www.youtube.com/channel/UCxvtBSy1zJCvuY2lUfKSltw/videos> (mais elle parle vraiment trop lentement) ou encore <https://www.youtube.com/channel/UC1ubZ0hz4amLG9NcKZR5eJg/videos>.
 * Il existe plein de type de jeux différents en solo et en pnp, mais les *roll & write* seront peut-être les jeux les plus facile à créer :
   * <https://www.youtube.com/watch?v=gq53GGRrS1Q>
