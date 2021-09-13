@@ -24,8 +24,7 @@ Le langage d'application n'a que peut d'intérêt en soit. On choisit celui qui 
 
 ### un interpréteur python qui fonctionne
 
-VOus pouvez soit utiliser l'interpréteur de votre système soit l'installer à la main.Une solution courante et pratique est d'installer [Anaconda](https://www.anaconda.com/) (voir [le début de ce tuto]({% post_url tutos/python/2021-08-20-installation-de-python %})
-
+Vous pouvez soit utiliser l'interpréteur de votre système soit l'installer à la main.Une solution courante et pratique est d'installer [Anaconda](https://www.anaconda.com/) (voir [le début de ce tuto]({% post_url tutos/python/2021-08-20-installation-de-python %})
 
 ### interpréteur python
 
@@ -41,14 +40,12 @@ Ce programme python est utilisable essentiellement de 2.5 manières en [ligne de
 
 *Note Bene* : Un terminal est disponible dans la version pro de pycharm : <https://www.jetbrains.com/help/pycharm/working-with-system-console.html>
 
-
 ### visual code studio (vscode)
 
 Nous allons juste nous concentrer sur la partie [python de vscode](https://code.visualstudio.com/docs/python/python-tutorial) en créant un projet de test et en utilisant tous les outils mis à notre disposition pour faire du bon code.
 
 > TBD : <https://www.nextinpact.com/article/44926/visual-studio-code-editeur-credible-pour-publication-et-markdown>
 {: .note}
-
 
 ## un projet test
 
@@ -89,7 +86,6 @@ On peut ensuite exécuter notre code de plusieurs façons :
     1. `python3` est reconnu (ou `python` sous windows)
     2. vous êtes bien dans le dossier contenant votre fichier `main.py`.
 
-
 ### linter
 
 [linter](https://code.visualstudio.com/docs/python/linting)
@@ -100,11 +96,11 @@ On va utiliser [pycodestyle](https://pycodestyle.pycqa.org/en/latest/intro.html)
 
 On commence par l'installer avec la commande : `pip3 install pycodestyle` (ou `pip install pycodestyle` sous windows).
 
-Placez vous ous dans l'onglet correspondant à votre code et mettez en route le linter. POur cela :
+Placez vous  dans l'onglet correspondant à votre code et mettez en route le linter. POur cela :
 1. on le choisit en tapant la commande (crtl/cmd+shift+P) : *Python: Select Linter* et on choisit `pycodestyle`
 2. on le met en route si ce n'est pas déjà le cas avec la commande : *python: Enable Linter*.
 
-Une fois le fichier sauvé, on voit s'il y a des soucis ou pas. Créons en un pour voir si le linter fonctionne : 
+Une fois le fichier sauvé, on voit s'il y a des soucis ou pas. Créons en un pour voir si le linter fonctionne :
 
 
 ```python

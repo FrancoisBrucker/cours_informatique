@@ -1,6 +1,6 @@
 ---
 layout: page
-title:  Bases de python
+title:  éléments du langage python
 categories: langage python
 authors: 
     - Augustin Agbo-Kpati
