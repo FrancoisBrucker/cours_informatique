@@ -27,7 +27,7 @@ Vous devez avoir déjà utilisé un langage de programmation, idéalement python
 
 ### cours 1
 
-On vous donne les clés d'un serveur ovh où vous serez une [plante aromatique](https://fr.wikipedia.org/wiki/Plante_aromatique). Ce serveur vous permettra de vous entrainer à mettre en production vos créations. On vous initiera également à la gestion du code source avec git et github.
+On vous donne les clés d'un serveur [ovh](https://www.ovh.com/fr/) où vous serez une [plante aromatique](https://fr.wikipedia.org/wiki/Plante_aromatique). Ce serveur vous permettra de vous entrainer à mettre en production vos créations. On vous initiera également à la gestion du code source avec git et github.
 
 1. [ssh et shell]({% link cours/ssh_et_shell/index.md %})
 2. [git et github]({% link cours/git_et_github/index.md %})
@@ -43,18 +43,16 @@ Pour valider cette UEes vous aurez deux choses à faire.
 
 ### contribuer au site
 
-Site à mettre mieux :
+On vous demande de contribuer à deux choses :
 
-* quelque chose à faire mieux
-* faire quelque chose de nouveau
+* améliorer une partie existante (que vous connaissiez déjà ou que vous venez d'apprendre)
+* écrire une nouvelle page (ajout sur une techno existante ou une nouvelle techno)
 
-> Le but est que vous appreniez quelque chose puis le restituiez sur le site. C'est ce qu'on appelle une *classe inversée*[^1] dans notre jargon de spécialiste
-
-[^1]: Une classe inversée, c'est le contraire d'une classe normale, c'est à dire là c'est les élèves qui travaillent et c'est le prof fait semblant d'être intéressé.
+> Le but est que vous appreniez quelque chose puis le restituiez sur le site. 
 
 ### projet
 
-Créez un site permettant de jouer à un jeu solo pnp ou à un jeu à plusieurs sur un seul écran.
+Créez un site permettant de jouer à un jeu solo pnp ou à un jeu à plusieurs sur un seul écran. Il faut que le jeu soit libre de droit ou que vous puissiez l'utiliser sans le payer/pirater (certains jeux possèdent une version payante et une version gratuite, comme minirogue par exemple ou under a falling skies)
 
 > Un demi-jeu n'est pas un jeu. On ne commencera à noter que lorsque le jeu fonctionnera (l'early access/démo technique/faites moi confiance ça va marcher un jour/[insert your excuse here] ne marchera pas). 
 > Donc choisissez un jeu que vous pourrez implémenter en entier.
@@ -81,14 +79,12 @@ Créez un site permettant de jouer à un jeu solo pnp ou à un jeu à plusieurs 
   * <https://www.reddit.com/r/soloboardgaming/comments/l42lk8/need_some_lists_for_reccomended_pnp_games_to/>
 * en vrac
   * A4 quest
-  * your name here vs the argonauts (ça doit être bien en virtuel ça)
+  * [your name here vs the argonauts](https://pnpfrance.wordpress.com/2018/08/21/your-name-here-and-the-argonauts/
   * mini-rogue
   * guildhaven city (plein de cartes + plateau)
   * <https://pnpfrance.wordpress.com/2020/10/20/do-not-forsake-me-oh-my-darling/> doit être bien en virtuel
   * <http://tribuneludique.canalblog.com/archives/2019/04/20/37270520.html> ?
 
-> TBD : ranger en truc atteignable ou pas
-{: .note}
 
 ## old
 
