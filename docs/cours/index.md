@@ -17,6 +17,7 @@ Liste des différents cours. La plupart de ceux-ci sont enseignés par bouts dan
 
 * [web]({% link cours/web/index.md %})
 * [graphes]({% link cours/graphes/index.md %})
+* []
 * [développement objet en python]({% link cours/developpement_objet/index.md %})
 * [introduction au code et à l'algorithmie]({% link cours/algorithmie_code/index.md %})
 * [git et github]({% link cours/git_et_github/index.md %})

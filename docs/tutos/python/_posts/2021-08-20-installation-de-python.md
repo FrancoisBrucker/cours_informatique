@@ -19,7 +19,6 @@ Comment installer et utiliser python sur son ordinateur. On y verra différentes
 3. [tests de fonctionnement avec un terminal](#interpreteur-id)
 4. [installation de nouveaux packages](#packages)
 
-
 ## python ?
 
 > <https://fr.wikipedia.org/wiki/Python_(langage)>
@@ -30,51 +29,48 @@ Pour pouvoir écrire du code python et l'exécuter sur votre ordinateur, il vous
 
 * **un [éditeur de texte](https://fr.wikipedia.org/wiki/%C3%89diteur_de_texte)**. Il vous permettra d'écrire du code dans le langage python et de le sauver dans des [fichiers texte](https://fr.wikipedia.org/wiki/Fichier_texte). Par défaut, l'extension de fichier python est *".py"*. Par exemple, un fichier nommé *"hello.py"* à toute les chance d'être un programme python.
 * **un [interpréteur python](https://docs.python.org/fr/3/tutorial/interpreter.html)**. C'est un programme qui *exécute* du code python. L'interpréteur python étant un programme, il est différent selon son système d'exploitiation (mac, linux ou windows par exemple). Lorsque l'on *installe* python, c'est en fait l'interpréteur qu'on installe sur sa machine.
-* **des bibliothèques**. Une bibliothèque, module ou encore package python est un ensemble de fichiers de code permettant de réaliser une ou plusieurs taches précises (comme [numpy](https://numpy.org/) pour le calcul scientifique ou [flask](https://flask.palletsprojects.com/) pour créer des serveur web). L'utilisation de bibliothèques permet de créer rapidement des programmes python robuste et efficaces (avant de coder quelque chose, vérifiez s'il n'existe pas déjà un module le faisant... Vous gagnerez du temps). Pour installer facilement des modules, on utilise un programme nommé [*"pip"*](https://pypi.org/project/pip/) (package installer for python) qui va récupérer depuis le site [PyPi](https://pypi.org/) (python package index) la bibliothèque demandée et va l'installer sur votre ordinateur. 
-
+* **des [bibliothèques](https://geekflare.com/fr/popular-python-libraries-modules/)**. Une bibliothèque, module ou encore package python est un ensemble de fichiers de code permettant de réaliser une ou plusieurs taches précises (comme [numpy](https://numpy.org/) pour le calcul scientifique ou [flask](https://flask.palletsprojects.com/) pour créer des serveur web). L'utilisation de bibliothèques permet de créer rapidement des programmes python robuste et efficaces (avant de coder quelque chose, vérifiez s'il n'existe pas déjà un module le faisant... Vous gagnerez du temps). Pour installer facilement des modules, on utilise un programme nommé [*"pip"*](https://pypi.org/project/pip/) (package installer for python) qui va récupérer depuis le site [PyPi](https://pypi.org/) (python package index) la bibliothèque demandée et va l'installer sur votre ordinateur.
 
 ### quel python utiliser ?
 
-**Utilisez la version 3 de python**. Il n'est pas nécessaire d'avoir la toute dernière itération de cette version (3.9.6 à l'heure où je tape ces caractères), toute version 3 de python pas trop ancienne doit convenir. 
+**Utilisez la version 3 de python**. Il n'est pas nécessaire d'avoir la toute dernière itération de cette version (3.9.6 à l'heure où je tape ces caractères), toute version 3 de python pas trop ancienne doit convenir.
 
 >Si vous installez python pour la première fois sur votre ordinateur, choisissez d'installer la dernière version stable de python 3.
 
 Une version de python est composée de 3 nombres [MAJOR.MINOR.PATCH](https://semver.org/) :
 
-1. **MAJOR** : pour nous sera 3. 
-2. **MINOR** : chaque année une nouvelle itération arrive, avec son lot de nouveautés en therme de structures de données ou de bibliothèques. 
+1. **MAJOR** : pour nous sera 3.
+2. **MINOR** : chaque année une nouvelle itération arrive, avec son lot de nouveautés en terme de structures de données ou de bibliothèques.
 3. **PATCH** : correctifs.
-
 
 Chaque année sort une nouvelle version de python (voir <https://devguide.python.org/#status-of-python-branches>), les anciennes versions sont maintenues 5 ans avant d'être considérées comme obsolète. Chaque version vient avec son [changelog](https://fr.wikipedia.org/wiki/Changelog), qui donne ses nouveautés et changements par rapport à la version précédente ([ici](https://docs.python.org/release/3.9.6/whatsnew/changelog.html#changelog) le changelog de la version 3.9.6)
 
-> La version majeur actuelle de python est 3, il n'y pas prévu d'en changer avant un certain temps. 
+> La version majeur actuelle de python est 3, il n'y pas prévu d'en changer avant un certain temps.
 
 ### et python 2 ?
 
 Depuis le 1er janvier 2020, la version majeure 2 de python est **obsolète**, il est donc fortement recommandé de ne plus l'utiliser. Vos programme seront en effet difficilement maintenance et de plus en plus difficilement utilisable.
 
-> Il n'y a **aucune** bonne raison d'utiliser la version 2 de python pour écrire des programmes actuellement.
-La version de python . Il n'est pas nécessaire
-python2 vs python3
+Il n'y a **aucune** bonne raison d'utiliser la version 2 de python pour écrire des programmes actuellement.
 
 > Il existe sur le net encore beaucoup d'exemples utilisant la version2 de python, ou certains profs un peu feignant qui ne passent pas leurs exemple/cours en python3. Plutôt que d'utiliser python2, il est recommandé de convertir ces programmes dans la version 3 et de demander la mise à jour des cours...
 {: .attention}
 
-### j'ai quoi comme python ?
+### j'ai quoi comme python ? {#quel-python-jai}
 
-Nous y reviendrons, mais si vous savez exécuter du code python mais vous ne savez pas trop quel interpréteur vous utilisez (par exemple vous utilisez [jupiter](https://jupyter.org/) via un intranet ou [spider](https://www.spyder-ide.org/)), il existe quelques trucs simple pour savoir quelle version de python on utilise.
+Nous y reviendrons, mais si vous pouvez exécuter du code python mais vous ne savez pas trop quel interpréteur vous utilisez (par exemple vous utilisez [jupyter](https://jupyter.org/) via un intranet ou [spider](https://www.spyder-ide.org/)), il existe quelques lignes de code simples pour savoir quelle version de python on utilise.
 
 #### python 2 ou python 3
 
 La différence la plus visible entre une version 2 et une version 3 de python est que pour une version 3 de python, le code suivant :
 
-``` python
+```python
 print "j'utilise un langage obsolète"
-``` 
+```
 
- produit l'erreur : 
- ```
+ produit l'erreur :
+
+```shell
 SyntaxError: Missing parentheses in call to 'print'. Did you mean print("j'utilise un langage obsolète")?
  ```
 
@@ -89,9 +85,9 @@ import sys
 print(sys.version)
 ```
 
-qui rend chez moi : 
+qui rend chez moi :
 
-```
+```shell
 3.9.6 (default, Jun 29 2021, 05:25:02) 
 [Clang 12.0.5 (clang-1205.0.22.9)]
 ```
@@ -105,13 +101,13 @@ Nous allons ici nous concentrer sur l'installation de l'interpréteur python. Il
 * solution universelle simple : utilisez la [distribution anaconda](#anaconda-id)
 * solution informaticienne : à privilégier si vous voulez contrôler toute votre installation (c'est bien). On utilise un [gestionnaire de package](#gestionnaire-package-id).
 
-> Parfois, il n'y a rien à faire (c'est souvent le cas sous mac ou linux qui arrivent avec des versions de python 2 et 3 déjà installées).
+> Parfois, il n'y a rien à faire (c'est souvent le cas sous mac ou linux qui arrivent avec des versions de python 2 et 3 déjà installées). Utilisez les [tests de reconnaissances](#quel-python-jai) pour identier la version de python que vous avez.
 
 Une fois que vous aurez installé python (ou pour savoir si vous l'avez déjà installé), vérifiez le en tentant d'[exécuter l'interpréteur python dans un terminal](#interpreteur-id).
 
 ### installation d'anaconda {#anaconda-id}
 
-[Anaconda](https://www.anaconda.com/) est une entreprise gérant des distributions python orientés data-science. L'intérêt d'une telle distribution est qu'elle regroupe et installe de nombreux utilitaires. Le côté négatif est que l'on ne maîtrise pas les paquets installés et l'installation de paquets supplémentaires est parfois problématique. 
+[Anaconda](https://www.anaconda.com/) est une entreprise gérant des distributions python orientés data-science. L'intérêt d'une telle distribution est qu'elle regroupe et installe de nombreux utilitaires. Le côté négatif est que l'on ne maîtrise pas les paquets installés et l'installation de paquets supplémentaires est parfois problématique.
 
 Cependant, pour une utilisation basique de python ou une utilisation via jupyter, c'est une solution tout à fait satisfaisante car facile à mettre en œuvre sans être informaticien.
 
@@ -119,18 +115,17 @@ Cependant, pour une utilisation basique de python ou une utilisation via jupyter
 
 Nous allons télécharger la distribution open-source d'anaconda [ici](https://www.anaconda.com/products/individual). Choisissez la version 64bit graphique correspondant à votre système d'installation, puis cliquez sur l'installeur.
 
-
 Lors de l'installation :
+
 * vous pourrez choisir de faire une installation uniquement pour vous ou pour tous les utilisateurs. Choisissez **pour tous les utilisateurs**.
-* sous windows, vous pourrez choisir d'ajouter le python d'anaconda au *path* de windows, c'est à dire que lorsque ovus taperez python dans un terminal, ce sera celui d'anaconda qui se lancera. **choisissez cette option**, même si elle n'est pas recommandée.
+* sous windows, vous pourrez choisir d'ajouter le python d'anaconda au *path* de windows, c'est à dire que lorsque vous taperez python dans un terminal, ce sera celui d'anaconda qui se lancera. **choisissez cette option**, même si elle n'est pas recommandée.
 
 > Si vous avez une ancienne version d'anaconda et que vous souhaitez installer une mise à jour, il vous faudra commencer par supprimer le dossier contenant l'ancienne version
 {: .attention}
 
-> Anaconda change le chemin par défaut python pour que ce soit celui d'anaconda qui soit utilisé.
-> 
->  Sous mac et linux cela se passe en modifiant le fichier de configuration du shell (entre `conda initialize`). 
+Anaconda change le chemin par défaut python pour que ce soit celui d'anaconda qui soit utilisé. Soit c'est automatique (sous ac ou sous linux) soit c'est par choix lors de l'installation.
 
+> Sous mac et linux cela se passe en modifiant le fichier de configuration du shell (entre `conda initialize`).
 
 #### test de la distribution
 
@@ -144,7 +139,7 @@ Lancez l'application *Notebook* puis :
   
   Vous devriez voir le texte `Hello World` en sortie de votre cellule.
   
-#### anaconda avec un terminal 
+#### anaconda avec un terminal
 
 Dans l'*anaconda navigator*, cliquez sur *Environnements* dans le menu de gauche (c'est le deuxième choix, après *Home* et avant *Learning*).
 
@@ -156,20 +151,20 @@ Vos pouvez [connaitre l'interpréteur](https://docs.anaconda.com/anaconda/user-g
 
 ### installation via un gestionnaire de package {#gestionnaire-package-id}
 
-Une bonne pratique d'installation de logiciel sur son ordinateur est d'utiliser un gestionnaire de package. Il vous permet de savoir exactement ce qui est utilisé, quelle version, et surtout gère tout seul les mise à jours. 
+Une bonne pratique d'installation de logiciel sur son ordinateur est d'utiliser un gestionnaire de package. Il vous permet de savoir exactement ce qui est utilisé, quelle version, et surtout gère tout seul les mise à jours.
 
 C'est un peut plus compliqué qu'utiliser anaconda mais si vous voulez faire de l'informatique sérieuse ou sérieusement de l'informatique, il est conseillé d'utiliser cette solution.
 
-
 {% details sous mac %}
 
-On utilise [brew](https://brew.sh/index_fr). Toutes les commandes se font via le [terminal]({% post_url /tutos/systeme/2021-08-24-terminal %}).
+On utilise [brew](https://brew.sh/index_fr), qu'il vous faudra tout d'abord installer. Toutes les commandes se font ensuite via le [terminal]({% post_url /tutos/systeme/2021-08-24-terminal %}).
 
 Une fois brew installé, vous pouvez installer python en tapant la commande : 
 
 ```shell
 brew install python
-``` 
+```
+
 {% enddetails %}
 
 {% details sous windows %}
@@ -178,20 +173,16 @@ Pour l'instant téléchargez le tout depuis le store. Suivez ce [tutoriel](https
 
 {% enddetails %}
 
-
 {% details sous linux %}
 
 > TBD : avec apt-get ?
-{: .danger}
+{: .note}
 
 {% enddetails %}
-
 
 ## utiliser l'interpréteur python {#interpreteur-id}
 
 Commencer par ouvrir une fenêtre Terminal. Si vous ne savez ps ce que c'est regardez ce [tutoriel]({% post_url /tutos/systeme/2021-08-24-terminal %})
-
-
 
 ### exécution de l'interpréteur python
 
@@ -199,39 +190,61 @@ L'interpréteur python s'appelle soit *"python"*, soit *"python3"*. Regardez cel
 
 > Sous windows, c'est souvent *"python"* qu'il s'appelle, sous mac et linux c'est *"python3"*. Pour le reste du tuto, je considérerai que c'est *"python"*.
 
-Dans un terminal, tapez la commande : 
+Dans un terminal, tapez la commande :
+
 ```shell
 python
 ```
 
-Si ça a marché, l'interpréteur aura donné sa version (**assurez vous que c'est bien python 3**) et vous donnera une invite de commande qui commence par `>>>`.Vous pouvez taper une ligne de python. Lorsque vous taperez sur entrée, votre ligne sera interprétée en python et donnera le résultat. 
+Si ça a marché, l'interpréteur aura donné sa version (**assurez vous que c'est bien python 3**) et vous donnera une invite de commande qui commence par `>>>`.Vous pouvez taper une ligne de python. Lorsque vous taperez sur entrée, votre ligne sera interprétée en python et donnera le résultat.
 
-Par exemple tapez : `print(coucou !)`et l'interpréteur vous rendra `coucou !`. On ne pourrait utiliser python que comme ça, mais ce n'est pas très pratique. 
+Par exemple tapez : `print(coucou !)`et l'interpréteur vous rendra `coucou !`. On ne pourrait utiliser python que comme ça, mais ce n'est pas très pratique.
 
 Pour quitter l'interpréteur tapez `quit()` puis appuyez sur la touche entrée.
 
 ### version de l'interpréteur python
 
-Beaucoup de programme supportent d'être lancé avec des paramètres, que l'on ajoute à la suite du nom. Par exemple pour connaître la version de l'interpréteur, on tape dans un terminal : 
+Beaucoup de programme supportent d'être lancé avec des paramètres, que l'on ajoute à la suite du nom. Par exemple pour connaître la version de l'interpréteur, on tape dans un terminal :
 
 ```shell
 python --version
 ```
-Chez moi ça rend : 
-```
+
+Chez moi ça rend :
+
+```shell
 Python 3.9.6
 ```
 
 > Pour connaitre tous les paramètres possible, on peut soit se référer à la [documentation](https://docs.python.org/3/using/cmdline.html), soit taper : `python --help`
 
-### emplacement de votre interpréteur 
+### emplacement de votre interpréteur
 
-Dans un terminal tapez la commande : 
-* `which python` sur un mac ou un linux,
-* `get-command python` sur un windows avec powershell,
+Dans un terminal tapez la commande :
+
+{% details sous linux et mac %}
+
+```shell
+which python
+```
+
+Ou si votre python s'appelle `python3` :
+
+```shell
+which python3
+```
+
+{% enddetails %}
+
+{% details sous windows %}
+
+```shell
+get-command python
+```
+
+{% enddetails %}
 
 La commande devrait vous rendre l'emplacement sur votre disque dur de votre interpréteur. Vérifiez le avec un explorateur de fichier.
-
 
 ## packages
 
@@ -241,47 +254,50 @@ Python vient avec une [liste de packages](https://docs.python.org/3/library/) bi
 
 Pour installer de nouveaux packages python, on utilise la commande `pip`.
 
-> si votre interpréteur python est *"python3"*, vous devez utiliser la commande *"pip3"*
+> si votre interpréteur python est `python3`, vous devez utiliser la commande `pip3`
 
-Testez le en ouvrant un terminal et en tapant : 
+Testez le en ouvrant un terminal et en tapant :
+
 ```shell
 pip --version
-``` 
+```
 
-La commande devrait vous rendre le numéro de version de pip ainsi que le chemin du programme python qui lui est associé. 
+La commande devrait vous rendre le numéro de version de pip ainsi que le chemin du programme python qui lui est associé.
 
-Les packages déjà installé par pip seront visible avec la commande : 
+Les packages déjà installé par pip seront visible avec la commande :
+
 ```shell
 pip list
-``` 
+```
 
 Si vous avez une distribution anaconda, vous devriez avoir plein de choses, sinon, beaucoup moins.
-
-
 
 > Il est crucial de vérifier que pip est bien lié à l'interpréteur python que vous voulez. Sinon, vous installerez des packages pour un mauvais interpréteur.
 {: .attention}
 
 On peut maintenant utiliser pip pour installer un nouveau package. Nous allons installer [black](https://pypi.org/project/black/) qui rendra joli tous nos programmes python. Dans un terminal tapez :
+
 ```shell
 pip install black
-``` 
+```
 
 Une fois l'installation terminée, black devrait apparaitre dans la liste des packages installés (vous pouvez le voir avec `pip list`).
 
 ### où sont les packages ?
 
- Les répertoires où python va cherchez les packages est dans la liste `sys.path`. 
+ Les répertoires où python va cherchez les packages est dans la liste `sys.path`.
 
 vous pouvez le voir en exécutant le code :
+
 ```python
 import sys
 for dossier in sys.path:
    print(dossier)
 ```
-Chez moi, sur un mac où python est installé avec [brew](https://brew.sh/) ce programme rend : 
 
-```
+Chez moi, sur un mac où python est installé avec [brew](https://brew.sh/) ce programme rend :
+
+```shell
 /usr/local/Cellar/python@3.9/3.9.6/Frameworks/Python.framework/Versions/3.9/lib/python39.zip
 /usr/local/Cellar/python@3.9/3.9.6/Frameworks/Python.framework/Versions/3.9/lib/python3.9
 /usr/local/Cellar/python@3.9/3.9.6/Frameworks/Python.framework/Versions/3.9/lib/python3.9/lib-dynload
@@ -289,11 +305,10 @@ Chez moi, sur un mac où python est installé avec [brew](https://brew.sh/) ce p
 ```
 
 Il y a plusieurs dossiers :
+
 * *"/usr/local/Cellar/python@3.9/3.9.6/Frameworks/Python.framework/Versions/3.9/lib/python3.9"* contient les packages de bibliothèque standard (il contient par exemple un fichier *"random.py"* qui contient le code du package `random`)
 * *"/usr/local/Cellar/python@3.9/3.9.6/Frameworks/Python.framework/Versions/3.9/lib/python3.9/lib-dynload"* contient les packages python qui ne sont pas écrit en python mais en C
 * *"/usr/local/lib/python3.9/site-packages"* qui contient les packages qui seront installés par pip.
-
-
 
 > La gestion des packages peut être compliquée. Normalement, si vous vous y prenez comme indiqué ici et en utilsant votre ordinateur personnel, tout devrait bien se passer. Si cela commence à ne plus aller, vous pouvez essayer d'installer les packages à un autre en endroit en suivant [ce tuto](https://opensource.com/article/19/4/managing-python-packages), ou, comme on le fera plus tard en utilisant un environnement virtuel. Mais, dans le doute, consultez un prof qui s'y connait.
 {: .attention}
@@ -303,14 +318,13 @@ Il y a plusieurs dossiers :
 Il en existe une multitude. Prenez en un qui permettent non seulement d'écrire aisément du code python mais aussi d'exécuter facilement tout ce qui va avec écrire du code :
 
 * coloration syntaxique
-* nommage et renommage de variables sur tout un projet
+* nommage et re-nommage de variables sur tout un projet
 * lancer des tests
 * ...
 
 J'en conseille 2 :
+
 * [visual studio code](https://code.visualstudio.com/)
 * [pycharm](https://www.jetbrains.com/fr-fr/pycharm/)
 
 Il existe également d'autres façon d'utiliser python, en mode interactif par exemple en utilisant [jupyter](https://jupyter.org/) avec anaconda, ou encore [colab](https://colab.research.google.com).
-
-
