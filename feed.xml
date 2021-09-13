@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/cours_informatique/feed.xml" rel="self" type="application/atom+xml" /><link href="/cours_informatique/" rel="alternate" type="text/html" /><updated>2021-09-13T11:37:13+00:00</updated><id>/cours_informatique/feed.xml</id><title type="html">cours d’informatique</title><subtitle>Support de cours/td d'informatique à l'école centrale marseille.</subtitle><entry><title type="html">Générateur de site statique jekyll</title><link href="/cours_informatique/tutos/langage/jekyll/2021/09/03/jekyll-et-site.html" rel="alternate" type="text/html" title="Générateur de site statique jekyll" /><published>2021-09-03T00:00:00+00:00</published><updated>2021-09-03T00:00:00+00:00</updated><id>/cours_informatique/tutos/langage/jekyll/2021/09/03/jekyll-et-site</id><content type="html" xml:base="/cours_informatique/tutos/langage/jekyll/2021/09/03/jekyll-et-site.html">&lt;p&gt;Une introduction générateur de site statique &lt;a href=&quot;https://jekyllrb.com/&quot;&gt;jekyll&lt;/a&gt;. On y y verra aussi comment est organisé et fonctionne ce &lt;a href=&quot;https://github.com/FrancoisBrucker/cours_informatique&quot;&gt;site de cours&lt;/a&gt;, généré en jekyll.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/cours_informatique/feed.xml" rel="self" type="application/atom+xml" /><link href="/cours_informatique/" rel="alternate" type="text/html" /><updated>2021-09-13T13:17:14+00:00</updated><id>/cours_informatique/feed.xml</id><title type="html">cours d’informatique</title><subtitle>Support de cours/td d'informatique à l'école centrale marseille.</subtitle><entry><title type="html">Générateur de site statique jekyll</title><link href="/cours_informatique/tutos/langage/jekyll/2021/09/03/jekyll-et-site.html" rel="alternate" type="text/html" title="Générateur de site statique jekyll" /><published>2021-09-03T00:00:00+00:00</published><updated>2021-09-03T00:00:00+00:00</updated><id>/cours_informatique/tutos/langage/jekyll/2021/09/03/jekyll-et-site</id><content type="html" xml:base="/cours_informatique/tutos/langage/jekyll/2021/09/03/jekyll-et-site.html">&lt;p&gt;Une introduction générateur de site statique &lt;a href=&quot;https://jekyllrb.com/&quot;&gt;jekyll&lt;/a&gt;. On y y verra aussi comment est organisé et fonctionne ce &lt;a href=&quot;https://github.com/FrancoisBrucker/cours_informatique&quot;&gt;site de cours&lt;/a&gt;, généré en jekyll.&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -1025,7 +1025,7 @@ Il n’est pas recommandé d’utiliser l’invite de commande, à moins que vou
 &lt;ul&gt;
   &lt;li&gt;&lt;strong&gt;un &lt;a href=&quot;https://fr.wikipedia.org/wiki/%C3%89diteur_de_texte&quot;&gt;éditeur de texte&lt;/a&gt;&lt;/strong&gt;. Il vous permettra d’écrire du code dans le langage python et de le sauver dans des &lt;a href=&quot;https://fr.wikipedia.org/wiki/Fichier_texte&quot;&gt;fichiers texte&lt;/a&gt;. Par défaut, l’extension de fichier python est &lt;em&gt;“.py”&lt;/em&gt;. Par exemple, un fichier nommé &lt;em&gt;“hello.py”&lt;/em&gt; à toute les chance d’être un programme python.&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;un &lt;a href=&quot;https://docs.python.org/fr/3/tutorial/interpreter.html&quot;&gt;interpréteur python&lt;/a&gt;&lt;/strong&gt;. C’est un programme qui &lt;em&gt;exécute&lt;/em&gt; du code python. L’interpréteur python étant un programme, il est différent selon son système d’exploitiation (mac, linux ou windows par exemple). Lorsque l’on &lt;em&gt;installe&lt;/em&gt; python, c’est en fait l’interpréteur qu’on installe sur sa machine.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;des bibliothèques&lt;/strong&gt;. Une bibliothèque, module ou encore package python est un ensemble de fichiers de code permettant de réaliser une ou plusieurs taches précises (comme &lt;a href=&quot;https://numpy.org/&quot;&gt;numpy&lt;/a&gt; pour le calcul scientifique ou &lt;a href=&quot;https://flask.palletsprojects.com/&quot;&gt;flask&lt;/a&gt; pour créer des serveur web). L’utilisation de bibliothèques permet de créer rapidement des programmes python robuste et efficaces (avant de coder quelque chose, vérifiez s’il n’existe pas déjà un module le faisant… Vous gagnerez du temps). Pour installer facilement des modules, on utilise un programme nommé &lt;a href=&quot;https://pypi.org/project/pip/&quot;&gt;&lt;em&gt;“pip”&lt;/em&gt;&lt;/a&gt; (package installer for python) qui va récupérer depuis le site &lt;a href=&quot;https://pypi.org/&quot;&gt;PyPi&lt;/a&gt; (python package index) la bibliothèque demandée et va l’installer sur votre ordinateur.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;des &lt;a href=&quot;https://geekflare.com/fr/popular-python-libraries-modules/&quot;&gt;bibliothèques&lt;/a&gt;&lt;/strong&gt;. Une bibliothèque, module ou encore package python est un ensemble de fichiers de code permettant de réaliser une ou plusieurs taches précises (comme &lt;a href=&quot;https://numpy.org/&quot;&gt;numpy&lt;/a&gt; pour le calcul scientifique ou &lt;a href=&quot;https://flask.palletsprojects.com/&quot;&gt;flask&lt;/a&gt; pour créer des serveur web). L’utilisation de bibliothèques permet de créer rapidement des programmes python robuste et efficaces (avant de coder quelque chose, vérifiez s’il n’existe pas déjà un module le faisant… Vous gagnerez du temps). Pour installer facilement des modules, on utilise un programme nommé &lt;a href=&quot;https://pypi.org/project/pip/&quot;&gt;&lt;em&gt;“pip”&lt;/em&gt;&lt;/a&gt; (package installer for python) qui va récupérer depuis le site &lt;a href=&quot;https://pypi.org/&quot;&gt;PyPi&lt;/a&gt; (python package index) la bibliothèque demandée et va l’installer sur votre ordinateur.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;quel-python-utiliser-&quot;&gt;quel python utiliser ?&lt;/h3&gt;
@@ -1040,7 +1040,7 @@ Il n’est pas recommandé d’utiliser l’invite de commande, à moins que vou
 
 &lt;ol&gt;
   &lt;li&gt;&lt;strong&gt;MAJOR&lt;/strong&gt; : pour nous sera 3.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;MINOR&lt;/strong&gt; : chaque année une nouvelle itération arrive, avec son lot de nouveautés en therme de structures de données ou de bibliothèques.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;MINOR&lt;/strong&gt; : chaque année une nouvelle itération arrive, avec son lot de nouveautés en terme de structures de données ou de bibliothèques.&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;PATCH&lt;/strong&gt; : correctifs.&lt;/li&gt;
 &lt;/ol&gt;
 
@@ -1054,19 +1054,15 @@ Il n’est pas recommandé d’utiliser l’invite de commande, à moins que vou
 
 &lt;p&gt;Depuis le 1er janvier 2020, la version majeure 2 de python est &lt;strong&gt;obsolète&lt;/strong&gt;, il est donc fortement recommandé de ne plus l’utiliser. Vos programme seront en effet difficilement maintenance et de plus en plus difficilement utilisable.&lt;/p&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;Il n’y a &lt;strong&gt;aucune&lt;/strong&gt; bonne raison d’utiliser la version 2 de python pour écrire des programmes actuellement.
-La version de python . Il n’est pas nécessaire
-python2 vs python3&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Il n’y a &lt;strong&gt;aucune&lt;/strong&gt; bonne raison d’utiliser la version 2 de python pour écrire des programmes actuellement.&lt;/p&gt;
 
 &lt;blockquote class=&quot;attention&quot;&gt;
   &lt;p&gt;Il existe sur le net encore beaucoup d’exemples utilisant la version2 de python, ou certains profs un peu feignant qui ne passent pas leurs exemple/cours en python3. Plutôt que d’utiliser python2, il est recommandé de convertir ces programmes dans la version 3 et de demander la mise à jour des cours…&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&quot;jai-quoi-comme-python-&quot;&gt;j’ai quoi comme python ?&lt;/h3&gt;
+&lt;h3 id=&quot;quel-python-jai&quot;&gt;j’ai quoi comme python ?&lt;/h3&gt;
 
-&lt;p&gt;Nous y reviendrons, mais si vous savez exécuter du code python mais vous ne savez pas trop quel interpréteur vous utilisez (par exemple vous utilisez &lt;a href=&quot;https://jupyter.org/&quot;&gt;jupiter&lt;/a&gt; via un intranet ou &lt;a href=&quot;https://www.spyder-ide.org/&quot;&gt;spider&lt;/a&gt;), il existe quelques trucs simple pour savoir quelle version de python on utilise.&lt;/p&gt;
+&lt;p&gt;Nous y reviendrons, mais si vous pouvez exécuter du code python mais vous ne savez pas trop quel interpréteur vous utilisez (par exemple vous utilisez &lt;a href=&quot;https://jupyter.org/&quot;&gt;jupyter&lt;/a&gt; via un intranet ou &lt;a href=&quot;https://www.spyder-ide.org/&quot;&gt;spider&lt;/a&gt;), il existe quelques lignes de code simples pour savoir quelle version de python on utilise.&lt;/p&gt;
 
 &lt;h4 id=&quot;python-2-ou-python-3&quot;&gt;python 2 ou python 3&lt;/h4&gt;
 
@@ -1076,7 +1072,8 @@ python2 vs python3&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;produit l’erreur :&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SyntaxError: Missing parentheses in call to 'print'. Did you mean print(&quot;j'utilise un langage obsolète&quot;)?
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SyntaxError: Missing parentheses &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;call to &lt;span class=&quot;s1&quot;&gt;'print'&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; Did you mean print&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;j'utilise un langage obsolète&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;?
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Alors que le code s’exécute sans soucis avec la version 2 de python (il écrit &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;j'utilise un langage obsolète&lt;/code&gt;).&lt;/p&gt;
@@ -1091,8 +1088,8 @@ python2 vs python3&lt;/p&gt;
 
 &lt;p&gt;qui rend chez moi :&lt;/p&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;3.9.6 (default, Jun 29 2021, 05:25:02) 
-[Clang 12.0.5 (clang-1205.0.22.9)]
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;3.9.6 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;default, Jun 29 2021, 05:25:02&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Clang 12.0.5 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;clang-1205.0.22.9&lt;span class=&quot;o&quot;&gt;)]&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;C’est à dire que j’utilise la version 3.9.6 de python et que mon interpréteur a été compilé par &lt;a href=&quot;https://clang.llvm.org/&quot;&gt;Clang&lt;/a&gt; (c’est sur un mac).&lt;/p&gt;
@@ -1107,7 +1104,7 @@ python2 vs python3&lt;/p&gt;
 &lt;/ul&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;Parfois, il n’y a rien à faire (c’est souvent le cas sous mac ou linux qui arrivent avec des versions de python 2 et 3 déjà installées).&lt;/p&gt;
+  &lt;p&gt;Parfois, il n’y a rien à faire (c’est souvent le cas sous mac ou linux qui arrivent avec des versions de python 2 et 3 déjà installées). Utilisez les &lt;a href=&quot;#quel-python-jai&quot;&gt;tests de reconnaissances&lt;/a&gt; pour identier la version de python que vous avez.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;Une fois que vous aurez installé python (ou pour savoir si vous l’avez déjà installé), vérifiez le en tentant d’&lt;a href=&quot;#interpreteur-id&quot;&gt;exécuter l’interpréteur python dans un terminal&lt;/a&gt;.&lt;/p&gt;
@@ -1123,18 +1120,19 @@ python2 vs python3&lt;/p&gt;
 &lt;p&gt;Nous allons télécharger la distribution open-source d’anaconda &lt;a href=&quot;https://www.anaconda.com/products/individual&quot;&gt;ici&lt;/a&gt;. Choisissez la version 64bit graphique correspondant à votre système d’installation, puis cliquez sur l’installeur.&lt;/p&gt;
 
 &lt;p&gt;Lors de l’installation :&lt;/p&gt;
+
 &lt;ul&gt;
   &lt;li&gt;vous pourrez choisir de faire une installation uniquement pour vous ou pour tous les utilisateurs. Choisissez &lt;strong&gt;pour tous les utilisateurs&lt;/strong&gt;.&lt;/li&gt;
-  &lt;li&gt;sous windows, vous pourrez choisir d’ajouter le python d’anaconda au &lt;em&gt;path&lt;/em&gt; de windows, c’est à dire que lorsque ovus taperez python dans un terminal, ce sera celui d’anaconda qui se lancera. &lt;strong&gt;choisissez cette option&lt;/strong&gt;, même si elle n’est pas recommandée.&lt;/li&gt;
+  &lt;li&gt;sous windows, vous pourrez choisir d’ajouter le python d’anaconda au &lt;em&gt;path&lt;/em&gt; de windows, c’est à dire que lorsque vous taperez python dans un terminal, ce sera celui d’anaconda qui se lancera. &lt;strong&gt;choisissez cette option&lt;/strong&gt;, même si elle n’est pas recommandée.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;blockquote class=&quot;attention&quot;&gt;
   &lt;p&gt;Si vous avez une ancienne version d’anaconda et que vous souhaitez installer une mise à jour, il vous faudra commencer par supprimer le dossier contenant l’ancienne version&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;Anaconda change le chemin par défaut python pour que ce soit celui d’anaconda qui soit utilisé.&lt;/p&gt;
+&lt;p&gt;Anaconda change le chemin par défaut python pour que ce soit celui d’anaconda qui soit utilisé. Soit c’est automatique (sous ac ou sous linux) soit c’est par choix lors de l’installation.&lt;/p&gt;
 
+&lt;blockquote&gt;
   &lt;p&gt;Sous mac et linux cela se passe en modifiant le fichier de configuration du shell (entre &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;conda initialize&lt;/code&gt;).&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -1169,12 +1167,13 @@ python2 vs python3&lt;/p&gt;
 &lt;p&gt;C’est un peut plus compliqué qu’utiliser anaconda mais si vous voulez faire de l’informatique sérieuse ou sérieusement de l’informatique, il est conseillé d’utiliser cette solution.&lt;/p&gt;
 
 &lt;details&gt;&lt;summary&gt;sous mac&lt;/summary&gt;&lt;div&gt;
-&lt;p&gt;On utilise &lt;a href=&quot;https://brew.sh/index_fr&quot;&gt;brew&lt;/a&gt;. Toutes les commandes se font via le &lt;a href=&quot;/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html&quot;&gt;terminal&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;On utilise &lt;a href=&quot;https://brew.sh/index_fr&quot;&gt;brew&lt;/a&gt;, qu’il vous faudra tout d’abord installer. Toutes les commandes se font ensuite via le &lt;a href=&quot;/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html&quot;&gt;terminal&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Une fois brew installé, vous pouvez installer python en tapant la commande :&lt;/p&gt;
 
 &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;python
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
 &lt;/div&gt;&lt;/details&gt;
 
 &lt;details&gt;&lt;summary&gt;sous windows&lt;/summary&gt;&lt;div&gt;
@@ -1183,7 +1182,7 @@ python2 vs python3&lt;/p&gt;
 &lt;/div&gt;&lt;/details&gt;
 
 &lt;details&gt;&lt;summary&gt;sous linux&lt;/summary&gt;&lt;div&gt;
-&lt;blockquote class=&quot;danger&quot;&gt;
+&lt;blockquote class=&quot;note&quot;&gt;
   &lt;p&gt;TBD : avec apt-get ?&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -1202,6 +1201,7 @@ python2 vs python3&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;Dans un terminal, tapez la commande :&lt;/p&gt;
+
 &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
@@ -1217,8 +1217,10 @@ python2 vs python3&lt;/p&gt;
 
 &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python &lt;span class=&quot;nt&quot;&gt;--version&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
 &lt;p&gt;Chez moi ça rend :&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Python 3.9.6
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Python 3.9.6
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;blockquote&gt;
@@ -1228,10 +1230,23 @@ python2 vs python3&lt;/p&gt;
 &lt;h3 id=&quot;emplacement-de-votre-interpréteur&quot;&gt;emplacement de votre interpréteur&lt;/h3&gt;
 
 &lt;p&gt;Dans un terminal tapez la commande :&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;which python&lt;/code&gt; sur un mac ou un linux,&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;get-command python&lt;/code&gt; sur un windows avec powershell,&lt;/li&gt;
-&lt;/ul&gt;
+
+&lt;details&gt;&lt;summary&gt;sous linux et mac&lt;/summary&gt;&lt;div&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;which python
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Ou si votre python s’appelle &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python3&lt;/code&gt; :&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;which python3
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;/div&gt;&lt;/details&gt;
+
+&lt;details&gt;&lt;summary&gt;sous windows&lt;/summary&gt;&lt;div&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;get-command python
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;/div&gt;&lt;/details&gt;
 
 &lt;p&gt;La commande devrait vous rendre l’emplacement sur votre disque dur de votre interpréteur. Vérifiez le avec un explorateur de fichier.&lt;/p&gt;
 
@@ -1244,16 +1259,18 @@ python2 vs python3&lt;/p&gt;
 &lt;p&gt;Pour installer de nouveaux packages python, on utilise la commande &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pip&lt;/code&gt;.&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;si votre interpréteur python est &lt;em&gt;“python3”&lt;/em&gt;, vous devez utiliser la commande &lt;em&gt;“pip3”&lt;/em&gt;&lt;/p&gt;
+  &lt;p&gt;si votre interpréteur python est &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python3&lt;/code&gt;, vous devez utiliser la commande &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pip3&lt;/code&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;Testez le en ouvrant un terminal et en tapant :&lt;/p&gt;
+
 &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip &lt;span class=&quot;nt&quot;&gt;--version&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;La commande devrait vous rendre le numéro de version de pip ainsi que le chemin du programme python qui lui est associé.&lt;/p&gt;
 
 &lt;p&gt;Les packages déjà installé par pip seront visible avec la commande :&lt;/p&gt;
+
 &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip list
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
@@ -1264,6 +1281,7 @@ python2 vs python3&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;On peut maintenant utiliser pip pour installer un nouveau package. Nous allons installer &lt;a href=&quot;https://pypi.org/project/black/&quot;&gt;black&lt;/a&gt; qui rendra joli tous nos programmes python. Dans un terminal tapez :&lt;/p&gt;
+
 &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;black
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
@@ -1274,19 +1292,22 @@ python2 vs python3&lt;/p&gt;
 &lt;p&gt;Les répertoires où python va cherchez les packages est dans la liste &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sys.path&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;vous pouvez le voir en exécutant le code :&lt;/p&gt;
+
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sys&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dossier&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dossier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
 &lt;p&gt;Chez moi, sur un mac où python est installé avec &lt;a href=&quot;https://brew.sh/&quot;&gt;brew&lt;/a&gt; ce programme rend :&lt;/p&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/usr/local/Cellar/python@3.9/3.9.6/Frameworks/Python.framework/Versions/3.9/lib/python39.zip
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/usr/local/Cellar/python@3.9/3.9.6/Frameworks/Python.framework/Versions/3.9/lib/python39.zip
 /usr/local/Cellar/python@3.9/3.9.6/Frameworks/Python.framework/Versions/3.9/lib/python3.9
 /usr/local/Cellar/python@3.9/3.9.6/Frameworks/Python.framework/Versions/3.9/lib/python3.9/lib-dynload
 /usr/local/lib/python3.9/site-packages
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Il y a plusieurs dossiers :&lt;/p&gt;
+
 &lt;ul&gt;
   &lt;li&gt;&lt;em&gt;“/usr/local/Cellar/python@3.9/3.9.6/Frameworks/Python.framework/Versions/3.9/lib/python3.9”&lt;/em&gt; contient les packages de bibliothèque standard (il contient par exemple un fichier &lt;em&gt;“random.py”&lt;/em&gt; qui contient le code du package &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;random&lt;/code&gt;)&lt;/li&gt;
   &lt;li&gt;&lt;em&gt;“/usr/local/Cellar/python@3.9/3.9.6/Frameworks/Python.framework/Versions/3.9/lib/python3.9/lib-dynload”&lt;/em&gt; contient les packages python qui ne sont pas écrit en python mais en C&lt;/li&gt;
@@ -1303,12 +1324,13 @@ python2 vs python3&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;coloration syntaxique&lt;/li&gt;
-  &lt;li&gt;nommage et renommage de variables sur tout un projet&lt;/li&gt;
+  &lt;li&gt;nommage et re-nommage de variables sur tout un projet&lt;/li&gt;
   &lt;li&gt;lancer des tests&lt;/li&gt;
   &lt;li&gt;…&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;J’en conseille 2 :&lt;/p&gt;
+
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;visual studio code&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.jetbrains.com/fr-fr/pycharm/&quot;&gt;pycharm&lt;/a&gt;&lt;/li&gt;
@@ -1340,9 +1362,7 @@ python2 vs python3&lt;/p&gt;
   &lt;p&gt;&lt;a href=&quot;https://docs.python.org/3/library/stdtypes.html#built-in-types&quot;&gt;Documentation correspondante&lt;/a&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;Les commentaires en Python se font à l’aide de &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#&lt;/code&gt;.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Les commentaires en Python se font à l’aide de &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#&lt;/code&gt;.&lt;/p&gt;
 
 &lt;h3 id=&quot;les-5-classes-de-base&quot;&gt;Les 5 classes de base&lt;/h3&gt;
 
@@ -1355,8 +1375,10 @@ python2 vs python3&lt;/p&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Afin de connaître la classe d’un objet, on peut utiliser la fonction &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;type&lt;/code&gt; :&lt;/p&gt;
+
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;42&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
 &lt;p&gt;Rendra : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;class 'int'&amp;gt;&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;On peut créer des objets de classes différentes avec des fonctions telles que:&lt;/p&gt;
@@ -1375,8 +1397,8 @@ python2 vs python3&lt;/p&gt;
 
 &lt;p&gt;Une variable est un nom auquel est associé un objet. Pour associer un nom à un objet on utilise l’opérateur d’affectation &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;=&lt;/code&gt; tel que:&lt;/p&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nom = objet
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;pre&gt;&lt;code class=&quot;language-txt&quot;&gt;nom = objet
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;A gauche de l’opérateur &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;=&lt;/code&gt; se trouve un &lt;strong&gt;nom&lt;/strong&gt; (en gros, quelque chose ne pouvant commencer par un nombre) et à droite un &lt;strong&gt;objet&lt;/strong&gt;. Dans toute la suite du programme, dès que l’interpréteur python rencontrera le nom, il le remplacera par l’objet.&lt;/p&gt;
 
@@ -1508,6 +1530,7 @@ Il n’est pas nécessaire de renseigner tous les champs.&lt;/p&gt;
 &lt;p&gt;Cela nous renvoie alors des erreurs.&lt;/p&gt;
 
 &lt;p&gt;Pour ajouter un élément, il faut créer un autre tuple :&lt;/p&gt;
+
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;t2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
@@ -1632,12 +1655,13 @@ Prenons un exemple connu: &lt;code class=&quot;language-plaintext highlighter-ro
     &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Ce qui va s’afficher sera:&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;0
-5
-10
-15
-20
+&lt;p&gt;Ce qui va s’afficher sera :&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;
+&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;
+&lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt;
+&lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;On peut également boucler sur une liste, qui est un &lt;strong&gt;objet itérable&lt;/strong&gt; :&lt;/p&gt;
@@ -1652,6 +1676,7 @@ Prenons un exemple connu: &lt;code class=&quot;language-plaintext highlighter-ro
 &lt;h3 id=&quot;les-fonctions&quot;&gt;Les fonctions&lt;/h3&gt;
 
 &lt;h4 id=&quot;motivations&quot;&gt;Motivations&lt;/h4&gt;
+
 &lt;blockquote&gt;
   &lt;p&gt;&lt;a href=&quot;https://docs.python.org/3/reference/compound_stmts.html#function-definitions&quot;&gt;https://docs.python.org/3/reference/compound_stmts.html#function-definitions&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -1824,7 +1849,7 @@ est votre ami) s’il n’existe pas un module tout fait, vous gagnerez du temps
 &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;math&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pi_sur_deux&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#on utilise la fonction cosinus du module math
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h4 id=&quot;importation-dune-méthode-particulière&quot;&gt;Importation d’une méthode particulière.&lt;/h4&gt;
+&lt;h4 id=&quot;importation-dune-méthode-particulière&quot;&gt;Importation d’une méthode particulière&lt;/h4&gt;
 
 &lt;p&gt;Ceci peut être dangereux si des fonctions différentes possèdent le même nom.&lt;/p&gt;
 

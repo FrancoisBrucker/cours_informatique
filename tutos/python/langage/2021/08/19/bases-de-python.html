@@ -99,9 +99,7 @@
   <p><a href="https://docs.python.org/3/library/stdtypes.html#built-in-types">Documentation correspondante</a>.</p>
 </blockquote>
 
-<blockquote>
-  <p>Les commentaires en Python se font à l’aide de <code class="language-plaintext highlighter-rouge">#</code>.</p>
-</blockquote>
+<p>Les commentaires en Python se font à l’aide de <code class="language-plaintext highlighter-rouge">#</code>.</p>
 
 <h3 id="les-5-classes-de-base">Les 5 classes de base</h3>
 
@@ -114,8 +112,10 @@
 </ul>
 
 <p>Afin de connaître la classe d’un objet, on peut utiliser la fonction <code class="language-plaintext highlighter-rouge">type</code> :</p>
+
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">type</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span> 
 </code></pre></div></div>
+
 <p>Rendra : <code class="language-plaintext highlighter-rouge">&lt;class 'int'&gt;</code></p>
 
 <p>On peut créer des objets de classes différentes avec des fonctions telles que:</p>
@@ -134,8 +134,8 @@
 
 <p>Une variable est un nom auquel est associé un objet. Pour associer un nom à un objet on utilise l’opérateur d’affectation <code class="language-plaintext highlighter-rouge">=</code> tel que:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nom = objet
-</code></pre></div></div>
+<pre><code class="language-txt">nom = objet
+</code></pre>
 
 <p>A gauche de l’opérateur <code class="language-plaintext highlighter-rouge">=</code> se trouve un <strong>nom</strong> (en gros, quelque chose ne pouvant commencer par un nombre) et à droite un <strong>objet</strong>. Dans toute la suite du programme, dès que l’interpréteur python rencontrera le nom, il le remplacera par l’objet.</p>
 
@@ -267,6 +267,7 @@ Il n’est pas nécessaire de renseigner tous les champs.</p>
 <p>Cela nous renvoie alors des erreurs.</p>
 
 <p>Pour ajouter un élément, il faut créer un autre tuple :</p>
+
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">t2</span> <span class="o">=</span> <span class="n">t</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">)</span>
 </code></pre></div></div>
 
@@ -391,12 +392,13 @@ Prenons un exemple connu: <code class="language-plaintext highlighter-rouge">ran
     <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>Ce qui va s’afficher sera:</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0
-5
-10
-15
-20
+<p>Ce qui va s’afficher sera :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">0</span>
+<span class="mi">5</span>
+<span class="mi">10</span>
+<span class="mi">15</span>
+<span class="mi">20</span>
 </code></pre></div></div>
 
 <p>On peut également boucler sur une liste, qui est un <strong>objet itérable</strong> :</p>
@@ -411,6 +413,7 @@ Prenons un exemple connu: <code class="language-plaintext highlighter-rouge">ran
 <h3 id="les-fonctions">Les fonctions</h3>
 
 <h4 id="motivations">Motivations</h4>
+
 <blockquote>
   <p><a href="https://docs.python.org/3/reference/compound_stmts.html#function-definitions">https://docs.python.org/3/reference/compound_stmts.html#function-definitions</a></p>
 </blockquote>
@@ -583,7 +586,7 @@ est votre ami) s’il n’existe pas un module tout fait, vous gagnerez du temps
 </span><span class="n">x</span> <span class="o">=</span> <span class="n">math</span><span class="p">.</span><span class="n">cos</span><span class="p">(</span><span class="n">pi_sur_deux</span><span class="p">)</span> <span class="c1">#on utilise la fonction cosinus du module math
 </span></code></pre></div></div>
 
-<h4 id="importation-dune-méthode-particulière">Importation d’une méthode particulière.</h4>
+<h4 id="importation-dune-méthode-particulière">Importation d’une méthode particulière</h4>
 
 <p>Ceci peut être dangereux si des fonctions différentes possèdent le même nom.</p>
 
