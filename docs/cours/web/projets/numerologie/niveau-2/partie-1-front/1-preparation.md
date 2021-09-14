@@ -22,7 +22,7 @@ Les outils de gestion de projet que l'on va voir ici sont destinés à être uti
 
 Lorsque l'on code un site, une page web ou n'importe quoi d'autre il faut que l'on sache comment ça va être utilisé.
 
-Notre site doit répondre à un certains nombre de besoins identifiés et qui doivent être facilement assouvis. Pour cela on rédige des [**user stories**](https://fr.wikipedia.org/wiki/R%C3%A9cit_utilisateur) (au moins une par besoin) qui vont décrire comment un utilisateur ayant un besoin précis va l'assouvir avec notre code. Souvent ces besoins utilisateurs sont liées à un ou plusieurs **tests fonctionnels** qui vont décrire précisément comment un 
+Notre site doit répondre à un certains nombre de besoins identifiés et qui doivent être facilement assouvis. Pour cela on rédige des [**user stories**](https://fr.wikipedia.org/wiki/R%C3%A9cit_utilisateur) (au moins une par besoin) qui vont décrire comment un utilisateur ayant un besoin précis va l'assouvir avec notre code. Souvent ces besoins utilisateurs sont liées à un ou plusieurs **tests fonctionnels** qui vont décrire précisément comment un
 utilisateur va faire pour réaliser sa user story.
 
 > Nous verrons dans les niveaux supérieurs comment automatiser ces tests. Pour l'instant on va juste les conserver pour s'en rappeler.
@@ -31,7 +31,7 @@ utilisateur va faire pour réaliser sa user story.
 
 Lorsque vous n'êtes pas en TD où on vous dit exactement quoi faire, réaliser un projet peut être assez déroutant. Il y a trop de choses à faire et à se rappeler.
 
-Nous allons utiliser ici une gestion ds tâches à faire sous la forme de todos. On va lister tout ce qu'il faut faire pour réaliser le projet et à chaque fois réaliser la tâche la plus facile à faire. Cette liste est dynamique, on va ajouter et supprimer plein de tâches lors du projet. 
+Nous allons utiliser ici une gestion ds tâches à faire sous la forme de todos. On va lister tout ce qu'il faut faire pour réaliser le projet et à chaque fois réaliser la tâche la plus facile à faire. Cette liste est dynamique, on va ajouter et supprimer plein de tâches lors du projet.
 
 > L'essentiel est de conserver la tâche courante et tout ce que l'on pense devoir encore faire avant la réalisation du projet.
 
@@ -42,35 +42,23 @@ Coder, c'est rajouter des bugs dans un programme. Normalement tout développeur 
 * lorsqu'il modifiera son code, il devra tout recommencer (trouver des tests, les réaliser, puis à nouveau tout effacer)... Et plus il refera cette opération moins il testera
 * lorsque le code qu'on écrit devient gros, c'est les interactions entre les parties qui va poser problème, pas juste le code qu'on vient d'écrire. En toute logique il faut donc tester toute l'application à chaque ligne de code écrite.
 
-> Nous allons ici juste prendre en compte le problème, c'est aux niveaux ultérieurs lorsque vous maitriserez des outils de gestion de projet que l'on automatisera tout ça. 
+> Nous allons ici juste prendre en compte le problème, c'est aux niveaux ultérieurs lorsque vous maitriserez des outils de gestion de projet que l'on automatisera tout ça.
 
 ## écrire du texte avec markdown
 
 Ecrire les user stories et gérer nos todos ne peut se faire qu'en écrivant du texte structuré (avec des chapitres, des titres, des listes, etc).  On ne peut cependant pas se permettre d'ouvrir un gdoc ou un word à chaque fois :
 
 * ça prend trop de temps
-* les users stories et les todos font partie du projet, il doivent pouvoir être géré avec un gestionnaire de sources.
+* les users stories et les todos font partie du projet, il doivent pouvoir être géré avec un gestionnaire de sources
 
-Heureusement, il existe plusieurs *langages* qui permettent d'écrire du texte structuré dans un éditeur de texte et qui sont jolis même en texte. Nous allons utiliser le [markdown]({% post_url tutos/2021-08-30-format-markdown %}).
+Heureusement, il existe plusieurs *langages* qui permettent d'écrire du texte structuré dans un éditeur de texte et qui sont jolis même en texte. Nous allons utiliser le [markdown]({% post_url tutos/2021-08-30-format-markdown %}). Pour générer du markdown de façon efficace, n'oubliez pas d'installez les extensions [vsc pour markdown]({% post_url tutos/editeur/vsc/2021-09-14-vsc-markdown %}).
 
-> Pour écrire du markdown simplement, installez l'extension [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)
-{: .note}
-
-Pour s'habituer à écrire du markdown correct, on va également installer un [linter](https://mindsers.blog/fr/post/linting-good-practices/) qui va souligner en jaune nos faute de gout.
-
-> Installez l'extension : [markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint).
-{: .node}
-
-Enfin, comme on tente d'écrire en français :
-> Installer l'extension [Spell Right](https://marketplace.visualstudio.com/items?itemName=ban.spellright) qui ajoute un correcteur orthographique à vscode.
-{: .node}
-
-### user stories
+### fichiers de user stories
 
 > Ajoutez un dossier *"user-stories"* à votre projet.
 {: .note}
 
-Vous pouvez ajouter ce dossier avec l'explorateur de fichier de ordinateur ou directement avec vscode : 
+Vous pouvez ajouter ce dossier avec l'explorateur de fichier de ordinateur ou directement avec vscode :
 
 1. *menu Affichage > Explorateur* pour amener le gestionnaire de fichier de vscode.
 2. cliquez sur le nom de dossier du *workspace* ("numérologie-niveau-X")

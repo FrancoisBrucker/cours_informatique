@@ -48,7 +48,7 @@ On vous demande de contribuer à deux choses :
 * améliorer une partie existante (que vous connaissiez déjà ou que vous venez d'apprendre)
 * écrire une nouvelle page (ajout sur une techno existante ou une nouvelle techno)
 
-> Le but est que vous appreniez quelque chose puis le restituiez sur le site. 
+> Le but est que vous appreniez quelque chose puis le restituiez sur le site.
 
 ### projet
 
@@ -70,7 +70,7 @@ Créez un site permettant de jouer à un jeu solo pnp ou à un jeu à plusieurs 
   * under a falling skies (il existe une version pnp)
 * jeu de plateau solo
   * <https://boardgamegeek.com/boardgame/148729/maquis/files> (bon jeu de placement)
-* jdr sans mj : à plusieurs devant un écran unique 
+* jdr sans mj : à plusieurs devant un écran unique
   * <https://www.cestpasdujdr.fr/for-the-queen/> (j'ai. C'est zarb mais c'est bien)
   * [zombie cinema](https://www.arkenstonepublishing.net/zombiecinema/) (j'ai une version en fr)
 * listes
@@ -79,12 +79,11 @@ Créez un site permettant de jouer à un jeu solo pnp ou à un jeu à plusieurs 
   * <https://www.reddit.com/r/soloboardgaming/comments/l42lk8/need_some_lists_for_reccomended_pnp_games_to/>
 * en vrac
   * A4 quest
-  * [your name here vs the argonauts](https://pnpfrance.wordpress.com/2018/08/21/your-name-here-and-the-argonauts/
+  * [your name here vs the argonauts](https://pnpfrance.wordpress.com/2018/08/21/your-name-here-and-the-argonauts/)
   * mini-rogue
   * guildhaven city (plein de cartes + plateau)
   * <https://pnpfrance.wordpress.com/2020/10/20/do-not-forsake-me-oh-my-darling/> doit être bien en virtuel
   * <http://tribuneludique.canalblog.com/archives/2019/04/20/37270520.html> ?
-
 
 ## old
 

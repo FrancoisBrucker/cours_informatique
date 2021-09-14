@@ -15,7 +15,7 @@ Une introduction au format markdown. C'est le langage que nous utiliserons major
 
 Il est facilement lisible dans un éditeur de texte, et il existe de nombreuses façon de l'exporter que ce soit en html (pour l'ouvrir avec un navigateur comme chrome ou firefox) ou en pdf.
 
-> Tout ce site a par exemple été écrit en markdown puis transformé en html grâce à [jekyll](https://jekyllrb.com/). Le code source du site est [visible](https://github.com/FrancoisBrucker/cours_informatique), en particulier le code source de [ce fichier](https://github.com/FrancoisBrucker/cours_informatique/blob/master/docs/tutos/_posts/2021-08-30-format-markdown.md) (cliquez sur le bouton `raw` à droite, juste avant que le fichier ne soit représenté).
+> Tout ce site a par exemple été écrit en markdown (plus précisément une extension de celui-ci nommé [kramdown](https://kramdown.gettalong.org/documentation.html)) puis transformé en html grâce à [jekyll](https://jekyllrb.com/). Le code source du site est [visible](https://github.com/FrancoisBrucker/cours_informatique), en particulier le code source de [ce fichier](https://github.com/FrancoisBrucker/cours_informatique/blob/master/docs/tutos/_posts/2021-08-30-format-markdown.md) (cliquez sur le bouton `raw` à droite, juste avant que le fichier ne soit représenté).
 
 ## syntaxe
 
@@ -28,54 +28,51 @@ Le format markdown est basique. Il possède plein de variantes qui permettent d'
 * celle de [github](https://guides.github.com/features/mastering-markdown/).
 * le [kramdown](https://kramdown.gettalong.org/documentation.html).
 
-
-> Nous utilisons pour ce site le [kramdown](https://kramdown.gettalong.org/documentation.html) qui est une extension du markdown et est interprété pour le générateur desite statique [jekyll](https://jekyllrb.com/).
-{: .attention}
-
-
 ## markdown avec vscode
 
-> <https://code.visualstudio.com/docs/languages/markdown>
-
-> TBD : https://www.nextinpact.com/article/44926/visual-studio-code-editeur-credible-pour-publication-et-markdown
-{: .note}
-
-### extensions
-
-vscode possède de nombreux plugins markdown. qui facilitent l'écriture en markdown. On peut par exemple citer :
-
-* [Markdown All in One](https://github.com/yzhang-gh/vscode-markdown). Dans les préférences du module, on décoche *Markdown > Extenstion > Math:Enabled*. Les maths seront en effet utilisées avec le module suivant
-* [markdownlint](https://learnbyexample.github.io/customizing-pandoc/) un linter pour écrire du joli markdown.
-* [Markdown+Math](https://github.com/goessner/mdmath) pour gérer les formules mathématiques comme :
-  * $$\frac{1}{2}$$
-  * $$\sum_{i=1}^n i^2$$
-* [Markdown Preview Enhanced](https://shd101wyy.github.io/markdown-preview-enhanced/#/). Permet d'avoir des feuilles de styles jolies lorsque l'on converti du markdown.
-
-### export et preview
-
-Pour exporter le markdwon dans quelque chose de plus joli :
-
-* pour compiler : *ctrl/cmd + shift + p : markdown All in One: Print current document to HTML*
-* pour faire une preview : *ctrl/cmd + shift + p : markdown: Open preview* Mais cela n'utilise pas l'extension Markdown Preview Enhanced, c'est donc plus limité comme rendu.
+Suivez [ce tutoriel]({% post_url tutos/editeur/vsc/2021-09-14-vsc-markdown %}) pour installer les packages indispensables pour faire du markdown avec [vscode]({% post_url tutos/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main %}).
 
 ## Formules mathématiques
 
-Lorsque l'on écrit des textes scientifique, vient inévitablement la question de l'écriture des équations. Le langage [Latex](https://fr.wikipedia.org/wiki/LaTeX) permet d'écrire toutes les équations imaginable (et même plus) avec un petit langage que l'on peut utiliser directement dans un éditeur de texte (ceux qui ont déjà utilisé l'éditeur d'équation de Word savent que c'est l'enfer de devoir tout cliquer). Une fois ce langage appris, il est étonnement clair, même non compilé en *jolies formules*. Avec un peut d'habitude, on voit bien que : `$$\cos x=\sum_{k=0}^{\infty}\frac{(-1)^k}{(2k)!}x^{2k}$$` est égal à :
+Lorsque l'on écrit des textes scientifique, vient inévitablement la question de l'écriture des équations.
+
+### latex
+
+Le langage [Latex](https://fr.wikipedia.org/wiki/LaTeX) permet d'écrire toutes les équations imaginable (et même plus) avec un petit langage que l'on peut utiliser directement dans un éditeur de texte (ceux qui ont déjà utilisé l'éditeur d'équation de Word savent que c'est l'enfer de devoir tout cliquer).
+
+>L'ancêtre de [Latex](https://fr.wikipedia.org/wiki/LaTeX) : [Tex](https://fr.wikipedia.org/wiki/TeX), a été créé par le célèbre informaticien [Donald Knuth](https://fr.wikipedia.org/wiki/Donald_Knuth) par ce qu'il n'existait rien sur ordinateur à l'époque pour écrire [ses livres](https://fr.wikipedia.org/wiki/The_Art_of_Computer_Programming) en respectant une typographie correcte.
+
+Une fois ce langage appris, il est étonnement clair, même non compilé en *jolies formules*. Avec un peut d'habitude, on voit bien que : `$$\cos x=\sum_{k=0}^{\infty}\frac{(-1)^k}{(2k)!}x^{2k}$$` est égal à :
 
 $$\cos x=\sum_{k=0}^{\infty}\frac{(-1)^k}{(2k)!}x^{2k}$$
-
-En markdown, on ne peut pas écrire tout en Latex (autant utiliser latex dans ce cas...) seulement ses équations, c'est à dire des mathématiques écrites entre `$` (pour une équation dans le flux du texte) ou `$$` (pour une équation avec un saut de ligne avant et après celle-ci).
 
 Quelques aides :
 
 * Un [résumé](http://tug.ctan.org/info/undergradmath/undergradmath.pdf) des possibibités
 * un [tuto](https://www.science-emergence.com/Articles/Formules-math%C3%A9matiques-sous-LaTeX/) Latex contenant aussi des instructions pour les équations.
 
+### en markdown
 
->* Pour le markdown, il faudra  utiliser  `$$`et `$` (les notation Tex) plutôt que `\[` et  `\(` (notations latex).
->* Lorsque vous faites de l'exportation en html, les mathématiques sont représentées en utilisant [Mathjax](https://www.mathjax.org/) (voir [une aide](ttps://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference) de mathjax)
->* L'ancêtre de [Latex](https://fr.wikipedia.org/wiki/LaTeX) : [Tex](https://fr.wikipedia.org/wiki/TeX), a été créé par le célèbre informaticien [Donald Knuth](https://fr.wikipedia.org/wiki/Donald_Knuth) par ce qu'il n'existait rien sur ordinateur à l'époque pour écrire [ses livres](https://fr.wikipedia.org/wiki/The_Art_of_Computer_Programming) en respectant une typographie correcte.
+On peut écrire en markdown les équation latex.
 
+* pour une équation dans le texte, on dit *inline* on entoure notre équation  par des `$`
+* pour équation au milieu de la page, on dit *display*, on entoure notre équation par des `$$` et on saute une ligne avant et après les `$$`. comme dans l'exemple ci-après.
+
+Equation en mode inline :
+
+```text
+je pense que $3 + 2$ vaut 5.
+```
+
+Equation en mode *display* :
+
+```tex
+
+$$3+2$$
+
+```
+
+Lorsque vous faites de l'exportation en html, les mathématiques sont représentées en utilisant [Mathjax](https://www.mathjax.org/). Ce [post](https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference) résume les possibilités basique de mathjax pour écrire des équations.
 
 >Il ne faut pas mettre d'espace après le premier `$` et avant le dernier `$` sinon, pandoc ne reconnaîtra pas que ce sont des équations que vous voulez écrire. Ansi `$ \frac{1}{2}$` affichera `$ \frac{1}{2}$`, alors que `$\frac{1}{2}$` affichera $\frac{1}{2}$.
 {: .attention}
@@ -90,11 +87,13 @@ Si le markdown est pratique pour être écrit et lu rapidement, pour de long doc
 
 ### export simple
 
-Avec les extension que l'on a installé, il est déjà possible d'exporter le markdown en html, puis — via un navigateur — de l'exporter en pdf. Voir partie [export et preview](#export-et-preview).
+Avec les extension que l'on a installé, il est déjà possible d'exporter le markdown en html, puis — via un navigateur — de l'exporter en pdf. Voir partie [preview du tutoriel]({% post_url tutos/editeur/vsc/2021-09-14-vsc-markdown %}#export-et-preview) pour l'éditeur vscode.
 
-Cela suffit pour la majorité des cas. Si l'on veut exporter dans des formats plus exotique ou encore finement contrôler le résultat de l'export, il faut utiliser des logiciel plus complexe, comme [pandoc](https://pandoc.org/) dont le boulot est de convertir à peut prêt n'importe quel format en un (quelconque) autre  format.
+Cela suffit pour la majorité des cas.
 
 ### utilitaire pandoc
+
+Si l'on veut exporter dans des formats plus exotiques ou encore finement contrôler le résultat de l'export, on peut utiliser le logiciel  [pandoc](https://pandoc.org/).
 
 [pandoc](https://pandoc.org/) est un monstre. Il permet (parfois avec un peu d'huile de coude il est vrai) de convertir à peut prêt tout document en un autre format (voir les [démos](https://pandoc.org/demos.html) pour différentes conversions).
 
@@ -102,9 +101,17 @@ Cela suffit pour la majorité des cas. Si l'on veut exporter dans des formats pl
 
 D'après la [doc](https://pandoc.org/installing.html), selon le système d'exploitation :
 
-* Linux : `sudo apt install pandoc` dans un terminal
-* Mac : installez [brew](https://brew.sh/) puis `brew install pandoc`
-* Windows : installez [Chocolatly](https://chocolatey.org/) puis `choco install pandoc`
+{% details sous linux %}
+`sudo apt install pandoc` dans un [terminal]({% post_url /tutos/systeme/2021-08-24-terminal %})
+{% enddetails %}
+
+{% details sous mac %}
+installez [brew](https://brew.sh/) puis `brew install pandoc` dans un [terminal]({% post_url /tutos/systeme/2021-08-24-terminal %})
+{% enddetails %}
+
+{% details sous windows %}
+installez [Chocolatly](https://chocolatey.org/) puis `choco install pandoc` dans un [terminal]({% post_url /tutos/systeme/2021-08-24-terminal %})
+{% enddetails %}
 
 Selon le format d'export, il vous faudra d'autres logiciels. Je vous conseille d'ores et déjà d'[installer latex](https://www.latex-project.org/get/) pour pouvoir facilement exporter en pdf sans passer par html et un navigateur.
 

@@ -16,7 +16,7 @@ Si vous ne l'avez pas déjà fait, téléchargez [vscode](https://code.visualstu
 
 vscode permet, comme dans tout éditeur de texte, d'éditer et de créer des fichiers texte mais aussi de gérer des *workspace* qui sont des dossiers contenant des projets.
 
-Ces projets peuvent être de natures diverses, comme des projts web, du python, des rapports, etc. 
+Ces projets peuvent être de natures diverses, comme des projets web, du python, des rapports, etc.
 
 Pour ce tutoriel, vous allez :
 
@@ -102,7 +102,7 @@ Ce qu'il y a de bien avec vscode c'est que toute commande est aussi appelable pa
 > le nom des commandes est en anglais. Tapez donc des mots anglais dans la palette de commandes. Les différentes commandes seront listées sur deux lignes  la première — en Français — décrivant la commande, et la seconde — en anglais — donnant le nom de la commande.
 {: .attention}
 
-Les commandes de la palette de commande sont accessible si la ligne commence par un ">". S'il y a un "?" c'est l'aide et s'il n'y a retrouve des fichiers ouverts. 
+Les commandes de la palette de commande sont accessible si la ligne commence par un ">". S'il y a un "?" c'est l'aide et s'il n'y a retrouve des fichiers ouverts.
 
 Par exemple : taper *>spellright* dans la palette de commande. Toutes les commandes relatives au dictionnaire (extesion *spellright*) sont disponibles. En particulier le choix de la langue.
 
@@ -110,7 +110,7 @@ Par exemple : taper *>spellright* dans la palette de commande. Toutes les comman
 
 La [documentation de vscode sur les préférences](https://code.visualstudio.com/docs/getstarted/settings) est très bien faite. On retiendra que l'on peut avoir des préférences différentes par "utilisateur" (*user*) ou par "espace de travail" (*workspace*).
 
-> Le fichiers stockant des préférences utilisateurs [dépend du système d'exploitation](https://code.visualstudio.com/docs/getstarted/settings#_settings-file-locations), si vous modifiez des préférences pour l'espace de travail, undossier *".vscode"* sera créé à la racine de votre projet, et il contiendra un fichier *"settings.json"* contenant les différentes préférences.
+> Le fichiers stockant des préférences utilisateurs [dépend du système d'exploitation](https://code.visualstudio.com/docs/getstarted/settings#_settings-file-locations), si vous modifiez des préférences pour l'espace de travail, un dossier *".vscode"* sera créé à la racine de votre projet, et il contiendra un fichier *"settings.json"* contenant les différentes préférences.
 
 Personnellement, s'il y a bien une chose qui m'ennuie c'est de constamment sauver mes fichiers. Si je fais une modification de mes fichiers, c'est parce que j'en ai besoin je ne vois pas l'intérêt de devoir sauver pour confirmer. Heureusement, vscode permet (comme tout éditeur qui se respecte) de faire ça en modifiant ses préférences :
 
@@ -131,14 +131,10 @@ On peut ensuite régler ce paramètre sur *afterDelay* puis changer le délai da
 
 Le paramètre d'*Auto Save* dans le panel *Espace de travail* devrait toujours être sur *off*. Si vous le modifiez, un dossier de préférence *".vscode"* va être créé dans votre projet.
 
-
 ## pour aller plus loin
 
 > TBD : autres tutos
 {: .note}
 
-* markdown
 * python : linter, black et compagnie.
 * git et merge (?)
-
-

@@ -33,5 +33,3 @@ on reste donc 99% du temps sur *TERMINAL* (qui est en sur-brillance).
 > On peut supprimer (en cliquant sur la poubelle) et créer (*menu Terminal > Nouveau terminal*) autant de terminal que l'on le veut. On peut aussi juste fermer la fenêtre du terminal en cliquant sur la croix.
 
 Notez bien que  *"menu Affichage > Terminal"* ouvre le terminal courant, il n'en recrée pas un. C'est donc la commande à utiliser par défaut pour garder l'historique de ses commandes en utilisant la flèche du haut, qui remets la dernière commande utilisée. Lorsque vous voulez recréer un terminal, c'est dans *menu Terminal > Nouveau Terminal*.
-
-
