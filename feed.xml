@@ -1,4 +1,160 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/cours_informatique/feed.xml" rel="self" type="application/atom+xml" /><link href="/cours_informatique/" rel="alternate" type="text/html" /><updated>2021-09-13T13:29:53+00:00</updated><id>/cours_informatique/feed.xml</id><title type="html">cours d’informatique</title><subtitle>Support de cours/td d'informatique à l'école centrale marseille.</subtitle><entry><title type="html">Générateur de site statique jekyll</title><link href="/cours_informatique/tutos/langage/jekyll/2021/09/03/jekyll-et-site.html" rel="alternate" type="text/html" title="Générateur de site statique jekyll" /><published>2021-09-03T00:00:00+00:00</published><updated>2021-09-03T00:00:00+00:00</updated><id>/cours_informatique/tutos/langage/jekyll/2021/09/03/jekyll-et-site</id><content type="html" xml:base="/cours_informatique/tutos/langage/jekyll/2021/09/03/jekyll-et-site.html">&lt;p&gt;Une introduction générateur de site statique &lt;a href=&quot;https://jekyllrb.com/&quot;&gt;jekyll&lt;/a&gt;. On y y verra aussi comment est organisé et fonctionne ce &lt;a href=&quot;https://github.com/FrancoisBrucker/cours_informatique&quot;&gt;site de cours&lt;/a&gt;, généré en jekyll.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/cours_informatique/feed.xml" rel="self" type="application/atom+xml" /><link href="/cours_informatique/" rel="alternate" type="text/html" /><updated>2021-09-14T07:26:16+00:00</updated><id>/cours_informatique/feed.xml</id><title type="html">cours d’informatique</title><subtitle>Support de cours/td d'informatique à l'école centrale marseille.</subtitle><entry><title type="html">Installation d’Anaconda python</title><link href="/cours_informatique/tutos/python/installation/anaconda/2021/09/14/installation-anaconda.html" rel="alternate" type="text/html" title="Installation d’Anaconda python" /><published>2021-09-14T00:00:00+00:00</published><updated>2021-09-14T00:00:00+00:00</updated><id>/cours_informatique/tutos/python/installation/anaconda/2021/09/14/installation-anaconda</id><content type="html" xml:base="/cours_informatique/tutos/python/installation/anaconda/2021/09/14/installation-anaconda.html">&lt;p&gt;Comment installer la &lt;a href=&quot;https://www.anaconda.com/&quot;&gt;distribution anaconda&lt;/a&gt; de python.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;introduction&quot;&gt;introduction&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.anaconda.com/&quot;&gt;Anaconda&lt;/a&gt; est une entreprise gérant des distributions python orientés data-science. L’intérêt d’une telle distribution est qu’elle regroupe et installe de nombreux utilitaires. Le côté négatif est que l’on ne maîtrise pas les paquets installés et l’installation de paquets supplémentaires est parfois problématique.&lt;/p&gt;
+
+&lt;p&gt;Cependant, pour une utilisation basique de python ou une utilisation via jupyter, c’est une solution tout à fait satisfaisante car facile à mettre en œuvre sans être informaticien.&lt;/p&gt;
+
+&lt;h2 id=&quot;installation&quot;&gt;installation&lt;/h2&gt;
+
+&lt;p&gt;Il existe plusieurs distributions de python anaconda. Nous allons utiliser l’&lt;a href=&quot;https://www.anaconda.com/products/individual&quot;&gt;édition individuelle&lt;/a&gt; qui est open source.&lt;/p&gt;
+
+&lt;blockquote class=&quot;attention&quot;&gt;
+  &lt;p&gt;Si vous avez déjà une ancienne version d’anaconda et que vous souhaitez installer une mise à jour, il vous faudra commencer par supprimer &lt;a href=&quot;#ou-est-anaconda&quot;&gt;le dossier contenant l’ancienne version&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;installateur&quot;&gt;installateur&lt;/h3&gt;
+
+&lt;p&gt;Téléchargez la version 64bit graphique correspondant à votre système d’installation, puis cliquez sur l’installeur.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Lorsque vous téléchargez l’installeur, Anaconda vous demandera de vous inscrire. Ce n’est pas nécessaire, pour obtenir l’installeur (il doit déjà être entrain de se télécharger).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;installation-de-python&quot;&gt;installation de python&lt;/h3&gt;
+
+&lt;blockquote class=&quot;attention&quot;&gt;
+  &lt;p&gt;Il faudra faire des choix qui ne sont pas par défaut lors de l’installation.
+Ne cliquez pas sur &lt;em&gt;suivant&lt;/em&gt; comme des sauvages…Lisez les choix qui vous sont proposés.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Lors de l’installation :&lt;/p&gt;
+
+&lt;details&gt;&lt;summary&gt;sous linux&lt;/summary&gt;&lt;div&gt;
+&lt;blockquote class=&quot;note&quot;&gt;
+  &lt;p&gt;TBD.
+Je n’ai pas de linux sous la main. A tester.
+Je pense que c’est comme mac, mais pas sur.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;/div&gt;&lt;/details&gt;
+
+&lt;details&gt;&lt;summary&gt;sous mac&lt;/summary&gt;&lt;div&gt;
+&lt;p&gt;Après avoir accepté la licence d’utilisation, l’installateur vous demandera pour quoi vous voulez installer anaconda :&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/cours_informatique/assets/tutos/install-anaconda/ou-installer.png&quot; alt=&quot;où installer anaconda&quot; style=&quot;margin: auto;display: block;width: 500px&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;choisissez &lt;em&gt;installer sur un disque spécifique…&lt;/em&gt; (ce n’est &lt;strong&gt;pas&lt;/strong&gt; le choix par défaut) :&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/cours_informatique/assets/tutos/install-anaconda/disque-specifique.png&quot; alt=&quot;où installer anaconda : disque spécifique&quot; style=&quot;margin: auto;display: block;width: 500px&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Puis choisissez votre disque dur (il doit s’(appeler &lt;em&gt;“Macintosh HD”&lt;/em&gt;)). On peut maintenant cliquer sur le bouton &lt;em&gt;continuer&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Ceci n’est possible que si vous êtes administrateur de votre mac.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;Ne cliquez pas tout de suite sur installer&lt;/strong&gt; lorsque vous avez cette fenêtre :&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/cours_informatique/assets/tutos/install-anaconda/personnaliser.png&quot; alt=&quot;personnaliser&quot; style=&quot;margin: auto;display: block;width: 500px&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Vous pouvez cliquer sur le bouton personnaliser si vous voulez que le python d’anaconda ne soit pas le python par défaut :&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/cours_informatique/assets/tutos/install-anaconda/modification-path.png&quot; alt=&quot;modifiaction PATH&quot; style=&quot;margin: auto;display: block;width: 500px&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Si anaconda est votre principale installation de python (cela devrait être le cas si vous lisez cette doc), assurez vous que ces cases soient cochées.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Le path est modifié dans le fichier de configuration du shell.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;On peut maintenant cliquer sur le bouton &lt;em&gt;installer&lt;/em&gt; pour finaliser l’installation&lt;/p&gt;
+
+&lt;/div&gt;&lt;/details&gt;
+
+&lt;details&gt;&lt;summary&gt;sous windows&lt;/summary&gt;&lt;div&gt;
+&lt;p&gt;Lors de votre installation, choisissez une installation pour tous les utilisateurs :&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/cours_informatique/assets/tutos/install-anaconda/windows-anaconda-alluser.png&quot; alt=&quot;all users&quot; style=&quot;margin: auto;display: block;width: 500px&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Juste avant l’installation, vous pourrez choisir des options. Cochez les deux, &lt;strong&gt;même si c’est déconseillé&lt;/strong&gt; :&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/cours_informatique/assets/tutos/install-anaconda/anaconda-options.png&quot; alt=&quot;options&quot; style=&quot;margin: auto;display: block;width: 500px&quot; /&gt;&lt;/p&gt;
+
+&lt;/div&gt;&lt;/details&gt;
+
+&lt;p&gt;A la fin de l’installation vous devriez avoir un python qui fonctionne.&lt;/p&gt;
+
+&lt;h3 id=&quot;ou-est-anaconda&quot;&gt;où est anaconda ?&lt;/h3&gt;
+
+&lt;p&gt;Si vous avez suivi à la lettre le processus d’installation, anaconda devrait être installé :&lt;/p&gt;
+
+&lt;details&gt;&lt;summary&gt;sous linux&lt;/summary&gt;&lt;div&gt;
+&lt;blockquote class=&quot;note&quot;&gt;
+  &lt;p&gt;TBD&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;/div&gt;&lt;/details&gt;
+
+&lt;details&gt;&lt;summary&gt;sous mac&lt;/summary&gt;&lt;div&gt;
+&lt;p&gt;Dans le dossier : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/opt/anaconda3&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;On ne le voit pas par défaut dans le finder, il faut aller directement au dossier en allant dans le &lt;em&gt;menu Aller &amp;gt; Aller au dossier…&lt;/em&gt;, puis en tapant &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/opt&lt;/code&gt;.&lt;/p&gt;
+
+&lt;/div&gt;&lt;/details&gt;
+
+&lt;details&gt;&lt;summary&gt;sous windows&lt;/summary&gt;&lt;div&gt;
+&lt;p&gt;Dans le dossier : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;C:\programData\Anaconda3&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Il faudra surement &lt;a href=&quot;/cours_informatique/tutos/systeme/fichiers/2021/08/24/fichiers-navigation.html#dossiers-et-fichiers-cachés&quot;&gt;révéler les fichiers cachés&lt;/a&gt; pour voir le dossier dans un explorateur de fichier.
+)&lt;/p&gt;
+
+&lt;/div&gt;&lt;/details&gt;
+
+&lt;h2 id=&quot;test-de-la-distribution&quot;&gt;test de la distribution&lt;/h2&gt;
+
+&lt;p&gt;Anaconda a installé des choses, en particulier l’application &lt;em&gt;Anaconda-Navigator&lt;/em&gt; qui vous permet de lancer toutes les applications liées à Anaconda.&lt;/p&gt;
+
+&lt;blockquote class=&quot;attention&quot;&gt;
+  &lt;p&gt;Le langage python est appelé : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python&lt;/code&gt; sous windows et &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python3&lt;/code&gt; sous mac et linux&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;python-avec-jupyter&quot;&gt;python avec jupyter&lt;/h3&gt;
+
+&lt;p&gt;Lancez l’application &lt;em&gt;Notebook&lt;/em&gt; puis :&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;créez un nouveau notebook &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python3&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;dans la cellule tapez &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;print(&quot;Hello world!&quot;)&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;cliquez sur l’icône &lt;em&gt;Exécuter&lt;/em&gt; sur la bannière de titre ou appuyer sur &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;shift + entrée&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Vous devriez voir le texte &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Hello World&lt;/code&gt; en sortie de votre cellule.&lt;/p&gt;
+
+&lt;blockquote class=&quot;note&quot;&gt;
+  &lt;p&gt;TBD : sous windows ? Est-ce aussi python3 ?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;python-avec-un-terminal-anaconda&quot;&gt;python avec un terminal anaconda&lt;/h3&gt;
+
+&lt;p&gt;Dans l’&lt;em&gt;anaconda navigator&lt;/em&gt;, cliquez sur &lt;em&gt;Environnements&lt;/em&gt; dans le menu de gauche (c’est le deuxième choix, après &lt;em&gt;Home&lt;/em&gt; et avant &lt;em&gt;Learning&lt;/em&gt;).&lt;/p&gt;
+
+&lt;p&gt;Vous devez avoir un unique environnement : &lt;em&gt;base (root)&lt;/em&gt;. Un environnement est un interpréteur python et tous ses packages installés. On aura parfois envie de créer ses propres environnements pour installer soit une version spécifique de python, soit n’installer que certains packages.&lt;/p&gt;
+
+&lt;p&gt;Pour l’instant utilisons l’environnement de base. En cliquant sur le triangle vert à droite de l’environnement &lt;em&gt;base (root)&lt;/em&gt;, vous pouvez cliquer sur &lt;em&gt;open terminal&lt;/em&gt;, ce qui ouvrira un terminal. Une fois le terminal ouvert, remarquez qu’à gauche de l’invite de commande vous avez &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(base)&lt;/code&gt; d’écrit. Ceci montre quel environnement python vous avez.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Vos pouvez &lt;a href=&quot;https://docs.anaconda.com/anaconda/user-guide/tasks/integration/python-path/&quot;&gt;connaitre l’interpréteur&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Vous pouvez ensuite taper &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python&lt;/code&gt; sous windows et &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python3&lt;/code&gt; sous mac et linux pour entrer dans un &lt;a href=&quot;/cours_informatique/tutos/python/installation/terminal/2021/08/20/installation-de-python.html#interpreteur-id&quot;&gt;interpréteur python&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;python-avec-un-terminal-normal&quot;&gt;python avec un terminal normal&lt;/h3&gt;
+
+&lt;p&gt;Ouvrez un &lt;a href=&quot;/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html&quot;&gt;terminal&lt;/a&gt; et tapez &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python&lt;/code&gt; sous windows et &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python3&lt;/code&gt; sous mac et linux pour entrer dans un &lt;a href=&quot;/cours_informatique/tutos/python/installation/terminal/2021/08/20/installation-de-python.html#interpreteur-id&quot;&gt;interpréteur python&lt;/a&gt;.&lt;/p&gt;</content><author><name>François Brucker</name></author><category term="tutos" /><category term="python" /><category term="installation" /><category term="anaconda" /><summary type="html">Comment installer la distribution anaconda de python.</summary></entry><entry><title type="html">Générateur de site statique jekyll</title><link href="/cours_informatique/tutos/langage/jekyll/2021/09/03/jekyll-et-site.html" rel="alternate" type="text/html" title="Générateur de site statique jekyll" /><published>2021-09-03T00:00:00+00:00</published><updated>2021-09-03T00:00:00+00:00</updated><id>/cours_informatique/tutos/langage/jekyll/2021/09/03/jekyll-et-site</id><content type="html" xml:base="/cours_informatique/tutos/langage/jekyll/2021/09/03/jekyll-et-site.html">&lt;p&gt;Une introduction générateur de site statique &lt;a href=&quot;https://jekyllrb.com/&quot;&gt;jekyll&lt;/a&gt;. On y y verra aussi comment est organisé et fonctionne ce &lt;a href=&quot;https://github.com/FrancoisBrucker/cours_informatique&quot;&gt;site de cours&lt;/a&gt;, généré en jekyll.&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -623,6 +779,7 @@ Si une commande possède un raccourci clavier, il est montré à droite de son n
 &lt;h2 id=&quot;système-de-fichier&quot;&gt;système de fichier&lt;/h2&gt;
 
 &lt;p&gt;Votre ordinateur est composé de fichiers et de dossiers (aussi appelé répertoire) :&lt;/p&gt;
+
 &lt;ul&gt;
   &lt;li&gt;un &lt;strong&gt;dossier&lt;/strong&gt; est un conteneur qui peut contenir soit d’autres dossier, soit des fichiers&lt;/li&gt;
   &lt;li&gt;un &lt;strong&gt;fichier&lt;/strong&gt; est ce que vous pouvez utiliser. C’est une image, du texte, ou encore un programme.&lt;/li&gt;
@@ -635,6 +792,13 @@ Si une commande possède un raccourci clavier, il est montré à droite de son n
 &lt;h3 id=&quot;exploration-de-larborescence&quot;&gt;exploration de l’arborescence&lt;/h3&gt;
 
 &lt;p&gt;Ouvre une fenêtre de l’explorateur de fichier et placez vous à la racine de votre système de fichier.&lt;/p&gt;
+
+&lt;details&gt;&lt;summary&gt;sous linux&lt;/summary&gt;&lt;div&gt;
+&lt;blockquote class=&quot;note&quot;&gt;
+  &lt;p&gt;TBD&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;/div&gt;&lt;/details&gt;
 
 &lt;details&gt;&lt;summary&gt;sous mac&lt;/summary&gt;&lt;div&gt;
 &lt;p&gt;Ouvrez une nouvelle fenêtre du &lt;em&gt;Finder&lt;/em&gt; et choisissez &lt;a href=&quot;https://support.apple.com/fr-fr/HT201732&quot;&gt;le mode d’affichage des fichiers&lt;/a&gt;) en colonne. Ensuite, choisissez dans le menu : &lt;em&gt;aller &amp;gt; ordinateur&lt;/em&gt; et cliquez sur &lt;em&gt;“Macintosh HD”&lt;/em&gt;, qui est la racine de votre système de fichier.&lt;/p&gt;
@@ -649,13 +813,6 @@ Si une commande possède un raccourci clavier, il est montré à droite de son n
 
 &lt;/div&gt;&lt;/details&gt;
 
-&lt;details&gt;&lt;summary&gt;sous unix&lt;/summary&gt;&lt;div&gt;
-&lt;blockquote class=&quot;danger&quot;&gt;
-  &lt;p&gt;TBD&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;/div&gt;&lt;/details&gt;
-
 &lt;p&gt;Vous pourrez ensuite naviguer de dossiers en dossiers, jusqu’à arriver à un fichier d’où vous ne pourrez plus avancer.&lt;/p&gt;
 
 &lt;p&gt;Dans l’exemple ci-après, j’ai navigué sur mon mac jusqu’à ma photo d’&lt;a href=&quot;https://fr.wikipedia.org/wiki/Ada_Lovelace&quot;&gt;Ada Lovelace&lt;/a&gt; :&lt;/p&gt;
@@ -665,7 +822,7 @@ Si une commande possède un raccourci clavier, il est montré à droite de son n
 &lt;p&gt;On voit bien le chemin parcouru de la racine (appelé &lt;em&gt;“Macintosh HD”&lt;/em&gt; sur un mac et le fichier).&lt;/p&gt;
 
 &lt;blockquote class=&quot;attention&quot;&gt;
-  &lt;p&gt;Le nom des dossiers sur le disque dur et celui qui apparait dans l’explorateur de fichier peuvent être différent selon la langue du système d’exploitiation. 
+  &lt;p&gt;Le nom des dossiers sur le disque dur et celui qui apparait dans l’explorateur de fichier peuvent être différent selon la langue du système d’exploitation.
 Ainsi, le nom &lt;em&gt;Bureau&lt;/em&gt; dans l’explorateur correspondra au dossier &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Desktop&lt;/code&gt; sur le disque dur…&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -708,12 +865,14 @@ disques durs, clés, etc.&lt;/p&gt;
 &lt;h3 id=&quot;block-.-..&quot;&gt;dossiers . et ..&lt;/h3&gt;
 
 &lt;p&gt;Les dossiers &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.&lt;/code&gt; et &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;..&lt;/code&gt; sont des dossiers spéciaux qui signifient :&lt;/p&gt;
+
 &lt;ul&gt;
   &lt;li&gt;le dossiers courant pour &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.&lt;/code&gt;&lt;/li&gt;
   &lt;li&gt;le dossiers précédent du dossiers &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.&lt;/code&gt; pour &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;..&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;De là les 4 chemins suivants sont identiques :&lt;/p&gt;
+
 &lt;ul&gt;
   &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/Users/fbrucker/Desktop/ada_lovelace.png&lt;/code&gt;&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/Users/fbrucker/./Desktop/./ada_lovelace.png&lt;/code&gt;&lt;/li&gt;
@@ -745,9 +904,7 @@ disques durs, clés, etc.&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;Dans un éditeur de texte, l’extension d’un fichier permet de charger une coloration syntaxique par défaut : &lt;em&gt;“.py”&lt;/em&gt; pour les fichiers python par exemple, &lt;em&gt;“.md”&lt;/em&gt; pour les fichier markdown.&lt;/p&gt;
-&lt;/blockquote&gt;
 
-&lt;blockquote&gt;
   &lt;p&gt;Ne soyez pas créatifs dans les extensions de fichiers, utilisez celle par défaut selon le type de fichier que vous utilisez.&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -767,8 +924,10 @@ disques durs, clés, etc.&lt;/p&gt;
 
 &lt;p&gt;On peut cependant les afficher dans un explorateur de fichier en effectuant quelques manipulation :&lt;/p&gt;
 
-&lt;details&gt;&lt;summary&gt;sous windows&lt;/summary&gt;&lt;div&gt;
-&lt;p&gt;&lt;a href=&quot;https://support.microsoft.com/fr-fr/windows/voir-les-fichiers-et-les-dossiers-cach%C3%A9s-dans-windows-97fbc472-c603-9d90-91d0-1166d1d9f4b5&quot;&gt;afficher les dossiers cachés sous windows&lt;/a&gt;&lt;/p&gt;
+&lt;details&gt;&lt;summary&gt;sous linux&lt;/summary&gt;&lt;div&gt;
+&lt;blockquote class=&quot;note&quot;&gt;
+  &lt;p&gt;TBD&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;/div&gt;&lt;/details&gt;
 
@@ -779,12 +938,12 @@ disques durs, clés, etc.&lt;/p&gt;
   &lt;p&gt;Pour que la manipulation de touche décrite dans la page fonctionne, il faut également d’appuyer sur la touche &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;fn&lt;/code&gt; en plus.&lt;/p&gt;
 &lt;/blockquote&gt;
 
+&lt;p&gt;Si vous voulez aller dans un dossier particulier, vous pouvez utiliser : &lt;em&gt;menu Aller &amp;gt; Aller au dossier…&lt;/em&gt;&lt;/p&gt;
+
 &lt;/div&gt;&lt;/details&gt;
 
-&lt;details&gt;&lt;summary&gt;sous linux&lt;/summary&gt;&lt;div&gt;
-&lt;blockquote class=&quot;dancer&quot;&gt;
-  &lt;p&gt;TBD&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;details&gt;&lt;summary&gt;sous windows&lt;/summary&gt;&lt;div&gt;
+&lt;p&gt;&lt;a href=&quot;https://support.microsoft.com/fr-fr/windows/voir-les-fichiers-et-les-dossiers-cach%C3%A9s-dans-windows-97fbc472-c603-9d90-91d0-1166d1d9f4b5&quot;&gt;afficher les dossiers cachés sous windows&lt;/a&gt;&lt;/p&gt;
 
 &lt;/div&gt;&lt;/details&gt;
 
@@ -793,29 +952,33 @@ disques durs, clés, etc.&lt;/p&gt;
 &lt;p&gt;Le &lt;a href=&quot;/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html&quot;&gt;terminal&lt;/a&gt; est l’outil permettant d’exécuter des programmes. Il permet de contrôler directement ce qui est exécuté, et est l’endroit où l’on lancera nos scripts python par exemple.&lt;/p&gt;
 
 &lt;p&gt;Une ligne du terminal sera toujours :&lt;/p&gt;
+
 &lt;ul&gt;
   &lt;li&gt;soit un fichier exécutable&lt;/li&gt;
   &lt;li&gt;soit une commande (comme &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;get-command&lt;/code&gt; pour un powershell par exemple)&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Etudions par exemple la commande :&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-pyhton&quot;&gt;python mon_script.py
-&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python mon_script.py
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Comme &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python&lt;/code&gt; n’est pas une commande c’est &lt;strong&gt;forcément&lt;/strong&gt; un fichier exécutable.  Le système d’exploitation cherche alors un fichier s’appelant &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python&lt;/code&gt; (ou &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python.exe&lt;/code&gt; si on est sous windows) dans un ensemble de dossiers qu’on appelle le &lt;strong&gt;path&lt;/strong&gt;.&lt;/p&gt;
 
 &lt;p&gt;Connaître le path :&lt;/p&gt;
 
-&lt;details&gt;&lt;summary&gt;sous windows&lt;/summary&gt;&lt;div&gt;
-&lt;p&gt;&lt;a href=&quot;https://java.com/fr/download/help/path_fr.html&quot;&gt;affichier et modifier le path&lt;/a&gt;&lt;/p&gt;
+&lt;details&gt;&lt;summary&gt;sous linux/mac&lt;/summary&gt;&lt;div&gt;
+&lt;p&gt;Dans un terminal, tapez :&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Cela affichera les différents dossier dans le path.&lt;/p&gt;
 
 &lt;/div&gt;&lt;/details&gt;
 
-&lt;details&gt;&lt;summary&gt;sous mac/linux&lt;/summary&gt;&lt;div&gt;
-&lt;p&gt;Dans un terminal, tapez :&lt;/p&gt;
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Cela affichera les différents dossier dans le path.&lt;/p&gt;
+&lt;details&gt;&lt;summary&gt;sous windows&lt;/summary&gt;&lt;div&gt;
+&lt;p&gt;&lt;a href=&quot;https://java.com/fr/download/help/path_fr.html&quot;&gt;affichier et modifier le path&lt;/a&gt;&lt;/p&gt;
 
 &lt;/div&gt;&lt;/details&gt;
 
@@ -845,6 +1008,7 @@ disques durs, clés, etc.&lt;/p&gt;
 &lt;p&gt;Par exemple, sur mon mac, je crée un nouveau terminal. Par défaut, son dossier courant est la maison. La commande &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pwd&lt;/code&gt; me rend en effet : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/Users/fbrucker&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;Si je veux aller dans le dossier contenant ma photo d’Ada, je peux taper :&lt;/p&gt;
+
 &lt;ul&gt;
   &lt;li&gt;un chemin absolu : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cd /Users/fbrucker/Desktop&lt;/code&gt;&lt;/li&gt;
   &lt;li&gt;un chemin relatif : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cd Desktop&lt;/code&gt;, ou encore &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cd ./Desktop&lt;/code&gt; qui est équivalent.&lt;/li&gt;
@@ -852,11 +1016,13 @@ disques durs, clés, etc.&lt;/p&gt;
 
 &lt;blockquote class=&quot;attention&quot;&gt;
   &lt;p&gt;Notez que je ne peux pas aller dans un fichier.
- Si j’avais tapé &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/Users/fbrucker/Desktop/ada_lovelace.png&lt;/code&gt; j’aurais eu une erreur. Sur mon mac, ça dit : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cd: not a directory: /Users/fbrucker/Desktop/ada_lovelace.png&lt;/code&gt;&lt;/p&gt;
+Si j’avais tapé &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/Users/fbrucker/Desktop/ada_lovelace.png&lt;/code&gt; j’aurais eu une erreur. Sur mon mac, ça dit : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cd: not a directory: /Users/fbrucker/Desktop/ada_lovelace.png&lt;/code&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;sous unix, le caractère &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;~&lt;/code&gt; est équivalent au chemin absolu vers la maison. En tapant &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cd ~&lt;/code&gt; je me retrouve alors directement à la maison. De là, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cd ~/Desktop&lt;/code&gt; m’envoie dans le dossier &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/Users/fbrucker/Desktop&lt;/code&gt; quelque soit l’endroit où je me trouve.&lt;/p&gt;
+&lt;p&gt;Sous unix, le caractère &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;~&lt;/code&gt; est équivalent au chemin absolu vers la maison. En tapant &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cd ~&lt;/code&gt; je me retrouve alors directement à la maison. De là, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cd ~/Desktop&lt;/code&gt; m’envoie dans le dossier &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/Users/fbrucker/Desktop&lt;/code&gt; quelque soit l’endroit où je me trouve.&lt;/p&gt;
+
+&lt;blockquote class=&quot;note&quot;&gt;
+  &lt;p&gt;TBD : est-ce aussi vrai avec powershell ?&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h4 id=&quot;lister-avec-ls&quot;&gt;lister avec ls&lt;/h4&gt;
@@ -864,16 +1030,25 @@ disques durs, clés, etc.&lt;/p&gt;
 &lt;p&gt;La commande &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ls&lt;/code&gt; quand à elle donne les dossier et les fichier du dossier courant (on peut l’utiliser sans paramètre, ou avec un chemin absolu ou relatif).&lt;/p&gt;
 
 &lt;p&gt;Par exemple, sur mon mac, si je tape :&lt;/p&gt;
+
 &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; /
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
 &lt;p&gt;J’obtiens tous les dossier de la racine :&lt;/p&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Applications Users        cores        home         sbin         var
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Applications Users        cores        home         sbin         var
 Library      Volumes      dev          opt          tmp
 System       bin          etc          private      usr
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;ouvrir-un-terminal-dans-un-dossier-spécifique&quot;&gt;ouvrir un terminal dans un dossier spécifique&lt;/h3&gt;
+
+&lt;details&gt;&lt;summary&gt;sous linux&lt;/summary&gt;&lt;div&gt;
+&lt;blockquote class=&quot;note&quot;&gt;
+  &lt;p&gt;TBD&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;/div&gt;&lt;/details&gt;
 
 &lt;details&gt;&lt;summary&gt;sous mac&lt;/summary&gt;&lt;div&gt;
 &lt;p&gt;Dans le finder cliquez droit sur le dossier, puis &lt;em&gt;services &amp;gt; Nouveau terminal au dossier&lt;/em&gt;&lt;/p&gt;
@@ -887,6 +1062,13 @@ System       bin          etc          private      usr
 
 &lt;h3 id=&quot;copier-le-chemin-absolu&quot;&gt;copier le chemin absolu&lt;/h3&gt;
 
+&lt;details&gt;&lt;summary&gt;sous linux&lt;/summary&gt;&lt;div&gt;
+&lt;blockquote class=&quot;note&quot;&gt;
+  &lt;p&gt;TBD&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;/div&gt;&lt;/details&gt;
+
 &lt;details&gt;&lt;summary&gt;sous mac&lt;/summary&gt;&lt;div&gt;
 &lt;p&gt;Dans le finder cliquez droit sur le dossier, puis copier. Coller ensuite dans le finder.&lt;/p&gt;
 
@@ -899,14 +1081,18 @@ System       bin          etc          private      usr
 
 &lt;h2 id=&quot;pour-aller-plus-loin&quot;&gt;pour aller plus loin&lt;/h2&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;liens&lt;/li&gt;
-  &lt;li&gt;permissions&lt;/li&gt;
-  &lt;li&gt;unix et tout est fichier&lt;/li&gt;
-  &lt;li&gt;fichiers spéciaux (/dev/audio)&lt;/li&gt;
-  &lt;li&gt;une application mac est un dossier.&lt;/li&gt;
-  &lt;li&gt;comment écrire sur le disque dur, le &lt;a href=&quot;https://en.wikipedia.org/wiki/Comparison_of_file_systems&quot;&gt;file system&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>François Brucker</name></author><category term="fichiers" /><category term="système" /><category term="fichiers" /><category term="terminal" /><summary type="html">Qu’est-ce qu’un fichier ? Un dossier ? Comment naviguer dans un système de fichier avec le terminal ou l’explorateur de fichier.</summary></entry><entry><title type="html">Utiliser un terminal</title><link href="/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html" rel="alternate" type="text/html" title="Utiliser un terminal" /><published>2021-08-24T00:00:00+00:00</published><updated>2021-08-24T00:00:00+00:00</updated><id>/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal</id><content type="html" xml:base="/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html">&lt;p&gt;Qu’est-ce que le terminal ? Comment le trouver et taper des commandes.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;TBD :&lt;/p&gt;
+
+  &lt;ul&gt;
+    &lt;li&gt;liens&lt;/li&gt;
+    &lt;li&gt;permissions&lt;/li&gt;
+    &lt;li&gt;unix et tout est fichier&lt;/li&gt;
+    &lt;li&gt;fichiers spéciaux (comme &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/dev/audio&lt;/code&gt; par exemple)&lt;/li&gt;
+    &lt;li&gt;une application mac est un dossier.&lt;/li&gt;
+    &lt;li&gt;comment écrire sur le disque dur, le &lt;a href=&quot;https://en.wikipedia.org/wiki/Comparison_of_file_systems&quot;&gt;file system&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;</content><author><name>François Brucker</name></author><category term="fichiers" /><category term="système" /><category term="fichiers" /><category term="terminal" /><summary type="html">Qu’est-ce qu’un fichier ? Un dossier ? Comment naviguer dans un système de fichier avec le terminal ou l’explorateur de fichier.</summary></entry><entry><title type="html">Utiliser un terminal</title><link href="/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html" rel="alternate" type="text/html" title="Utiliser un terminal" /><published>2021-08-24T00:00:00+00:00</published><updated>2021-08-24T00:00:00+00:00</updated><id>/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal</id><content type="html" xml:base="/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html">&lt;p&gt;Qu’est-ce que le terminal ? Comment le trouver et taper des commandes.&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -1099,7 +1285,7 @@ Il n’est pas recommandé d’utiliser l’invite de commande, à moins que vou
 &lt;p&gt;Nous allons ici nous concentrer sur l’installation de l’interpréteur python. Il existe plusieurs façon de faire. Nous en présenterons 2 :&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;solution universelle simple : utilisez la &lt;a href=&quot;#anaconda-id&quot;&gt;distribution anaconda&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;solution universelle simple : utilisez la &lt;a href=&quot;/cours_informatique/tutos/python/installation/anaconda/2021/09/14/installation-anaconda.html&quot;&gt;distribution anaconda&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;solution informaticienne : à privilégier si vous voulez contrôler toute votre installation (c’est bien). On utilise un &lt;a href=&quot;#gestionnaire-package-id&quot;&gt;gestionnaire de package&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -1108,57 +1294,6 @@ Il n’est pas recommandé d’utiliser l’invite de commande, à moins que vou
 &lt;/blockquote&gt;
 
 &lt;p&gt;Une fois que vous aurez installé python (ou pour savoir si vous l’avez déjà installé), vérifiez le en tentant d’&lt;a href=&quot;#interpreteur-id&quot;&gt;exécuter l’interpréteur python dans un terminal&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h3 id=&quot;anaconda-id&quot;&gt;installation d’anaconda&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.anaconda.com/&quot;&gt;Anaconda&lt;/a&gt; est une entreprise gérant des distributions python orientés data-science. L’intérêt d’une telle distribution est qu’elle regroupe et installe de nombreux utilitaires. Le côté négatif est que l’on ne maîtrise pas les paquets installés et l’installation de paquets supplémentaires est parfois problématique.&lt;/p&gt;
-
-&lt;p&gt;Cependant, pour une utilisation basique de python ou une utilisation via jupyter, c’est une solution tout à fait satisfaisante car facile à mettre en œuvre sans être informaticien.&lt;/p&gt;
-
-&lt;h4 id=&quot;téléchargement-de-linstalleur&quot;&gt;Téléchargement de l’installeur&lt;/h4&gt;
-
-&lt;p&gt;Nous allons télécharger la distribution open-source d’anaconda &lt;a href=&quot;https://www.anaconda.com/products/individual&quot;&gt;ici&lt;/a&gt;. Choisissez la version 64bit graphique correspondant à votre système d’installation, puis cliquez sur l’installeur.&lt;/p&gt;
-
-&lt;p&gt;Lors de l’installation :&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;vous pourrez choisir de faire une installation uniquement pour vous ou pour tous les utilisateurs. Choisissez &lt;strong&gt;pour tous les utilisateurs&lt;/strong&gt;.&lt;/li&gt;
-  &lt;li&gt;sous windows, vous pourrez choisir d’ajouter le python d’anaconda au &lt;em&gt;path&lt;/em&gt; de windows, c’est à dire que lorsque vous taperez python dans un terminal, ce sera celui d’anaconda qui se lancera. &lt;strong&gt;choisissez cette option&lt;/strong&gt;, même si elle n’est pas recommandée.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote class=&quot;attention&quot;&gt;
-  &lt;p&gt;Si vous avez une ancienne version d’anaconda et que vous souhaitez installer une mise à jour, il vous faudra commencer par supprimer le dossier contenant l’ancienne version&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Anaconda change le chemin par défaut python pour que ce soit celui d’anaconda qui soit utilisé. Soit c’est automatique (sous ac ou sous linux) soit c’est par choix lors de l’installation.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Sous mac et linux cela se passe en modifiant le fichier de configuration du shell (entre &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;conda initialize&lt;/code&gt;).&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h4 id=&quot;test-de-la-distribution&quot;&gt;test de la distribution&lt;/h4&gt;
-
-&lt;p&gt;Anaconda a installé des choses, en particulier l’application &lt;em&gt;Anaconda-Navigator&lt;/em&gt; qui vous permet de lancer toutes les applications liées à Anaconda.&lt;/p&gt;
-
-&lt;p&gt;Lancez l’application &lt;em&gt;Notebook&lt;/em&gt; puis :&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;créez un nouveau notebook &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python3&lt;/code&gt;.&lt;/li&gt;
-  &lt;li&gt;dans la cellule tapez &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;print(&quot;Hello world!&quot;)&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;cliquez sur l’icône &lt;em&gt;Exécuter&lt;/em&gt; sur la bannière de titre ou appuyer sur &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;shift + entrée&lt;/code&gt;.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Vous devriez voir le texte &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Hello World&lt;/code&gt; en sortie de votre cellule.&lt;/p&gt;
-
-&lt;h4 id=&quot;anaconda-avec-un-terminal&quot;&gt;anaconda avec un terminal&lt;/h4&gt;
-
-&lt;p&gt;Dans l’&lt;em&gt;anaconda navigator&lt;/em&gt;, cliquez sur &lt;em&gt;Environnements&lt;/em&gt; dans le menu de gauche (c’est le deuxième choix, après &lt;em&gt;Home&lt;/em&gt; et avant &lt;em&gt;Learning&lt;/em&gt;).&lt;/p&gt;
-
-&lt;p&gt;Vous devez avoir un unique environnement : &lt;em&gt;base (root)&lt;/em&gt;. Un environnement est un interpréteur python et tous ses packages installés. On aura parfois envie de créer ses propres environnements pour installer soit une version spécifique de python, soit n’installer que certains packages.&lt;/p&gt;
-
-&lt;p&gt;Pour l’instant utilisons l’environnement de base. En cliquant sur le triangle vert à droite de l’environnement &lt;em&gt;base (root)&lt;/em&gt;, vous pouvez cliquer sur &lt;em&gt;open terminal&lt;/em&gt;, ce qui ouvrira un terminal. Une fois le terminal ouvert, remarquez qu’à gauche de l’invite de commande vous avez &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(base)&lt;/code&gt; d’écrit. Ceci montre quel environnement python vous avez.&lt;/p&gt;
-
-&lt;p&gt;Vos pouvez &lt;a href=&quot;https://docs.anaconda.com/anaconda/user-guide/tasks/integration/python-path/&quot;&gt;connaitre l’interpréteur&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h3 id=&quot;gestionnaire-package-id&quot;&gt;installation via un gestionnaire de package&lt;/h3&gt;
 
@@ -1336,7 +1471,7 @@ Il n’est pas recommandé d’utiliser l’invite de commande, à moins que vou
   &lt;li&gt;&lt;a href=&quot;https://www.jetbrains.com/fr-fr/pycharm/&quot;&gt;pycharm&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Il existe également d’autres façon d’utiliser python, en mode interactif par exemple en utilisant &lt;a href=&quot;https://jupyter.org/&quot;&gt;jupyter&lt;/a&gt; avec anaconda, ou encore &lt;a href=&quot;https://colab.research.google.com&quot;&gt;colab&lt;/a&gt;.&lt;/p&gt;</content><author><name>François Brucker</name></author><category term="tutos" /><category term="python" /><category term="installation" /><category term="terminal" /><summary type="html">Comment installer et utiliser python sur son ordinateur. On y verra différentes solutions.</summary></entry><entry><title type="html">éléments du langage python</title><link href="/cours_informatique/tutos/python/langage/2021/08/19/bases-de-python.html" rel="alternate" type="text/html" title="éléments du langage python" /><published>2021-08-19T00:00:00+00:00</published><updated>2021-08-19T00:00:00+00:00</updated><id>/cours_informatique/tutos/python/langage/2021/08/19/bases-de-python</id><content type="html" xml:base="/cours_informatique/tutos/python/langage/2021/08/19/bases-de-python.html">&lt;p&gt;Notions de base du langage python. Ce n’est cependant pas un cours, on y reprend juste les différentes notions à connaître ainsi que les principales structures de données à utiliser.&lt;/p&gt;
+&lt;p&gt;Il existe également d’autres façon d’utiliser python, en mode interactif par exemple en utilisant &lt;a href=&quot;https://jupyter.org/&quot;&gt;jupyter&lt;/a&gt; avec anaconda, ou encore &lt;a href=&quot;https://colab.research.google.com&quot;&gt;colab&lt;/a&gt;.&lt;/p&gt;</content><author><name>François Brucker</name></author><category term="tutos" /><category term="python" /><category term="installation" /><category term="terminal" /><summary type="html">Comment installer et utiliser python sur son ordinateur. On y verra différentes solutions.</summary></entry><entry><title type="html">éléments du langage python</title><link href="/cours_informatique/tutos/python/langage/2021/08/19/elements-de-python.html" rel="alternate" type="text/html" title="éléments du langage python" /><published>2021-08-19T00:00:00+00:00</published><updated>2021-08-19T00:00:00+00:00</updated><id>/cours_informatique/tutos/python/langage/2021/08/19/elements-de-python</id><content type="html" xml:base="/cours_informatique/tutos/python/langage/2021/08/19/elements-de-python.html">&lt;p&gt;Notions de base du langage python. Ce n’est cependant pas un cours, on y reprend juste les différentes notions à connaître ainsi que les principales structures de données à utiliser.&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -1978,109 +2113,4 @@ Si vous avez bien compris l’exemple de la récursion et de la modification d�
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'fichier.txt'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'w'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'For the night is dark and full of terrors'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Augustin Agbo-Kpati</name></author><category term="tutos" /><category term="python" /><category term="langage" /><summary type="html">Notions de base du langage python. Ce n’est cependant pas un cours, on y reprend juste les différentes notions à connaître ainsi que les principales structures de données à utiliser.</summary></entry><entry><title type="html">Tests unitaires en Python avec pytest et pycharm</title><link href="/cours_informatique/tutos/python/tests%20unitaires/2021/08/01/tests-unitaires.html" rel="alternate" type="text/html" title="Tests unitaires en Python avec pytest et pycharm" /><published>2021-08-01T00:00:00+00:00</published><updated>2021-08-01T00:00:00+00:00</updated><id>/cours_informatique/tutos/python/tests%20unitaires/2021/08/01/tests-unitaires</id><content type="html" xml:base="/cours_informatique/tutos/python/tests%20unitaires/2021/08/01/tests-unitaires.html">&lt;p&gt;Mise en œuvre de tests unitaires en python avec l’éditeur pycharm.
-&lt;!--more--&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
-
-&lt;p&gt;Nous devons être certains que toutes les méthodes, fonctions ou modules que nous créons sont corrects. On écrira donc des tests pour être moralement sûrs que nos programmes fonctionnent (la plupart du temps une preuve de code est illusoire).&lt;/p&gt;
-
-&lt;p&gt;Pour éviter de retaper tous ces tests à chaque modification du code (ce qui arrive souvent lorsqu’un algorithme ou une application est utilisée longtemps) ou à chaque découverte de bug, ils sont conservés dans un fichier à part. Ceci nous permettra d’exécuter ces tests à loisir (c’est à dire très souvent) et d’être sûrs que &lt;strong&gt;tous&lt;/strong&gt; les tests seront exécutés. Ces  &lt;a href=&quot;[https://fr.wikipedia.org/wiki/Test_unitaire&quot;&gt;tests sont dit unitaires&lt;/a&gt; et sont essentiels dans toutes les pratiques courantes de code.&lt;/p&gt;
-
-&lt;p&gt;De nombreux frameworks de tests existent pour python, le plus connu étant certainement &lt;a href=&quot;https://docs.python.org/3/library/unittest.html&quot;&gt;unittest&lt;/a&gt;, ou encore &lt;a href=&quot;http://nose.readthedocs.io/en/latest/&quot;&gt;nose&lt;/a&gt;. Nous allons utiliser &lt;a href=&quot;http://pytest.org&quot;&gt;pytest&lt;/a&gt;.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Une très bonne introduction au développement par les tests est l’inusable Test Driven Development: By Example de Kent Beck. Tous les exemples sont en revanche en Java.&lt;/p&gt;
-
-  &lt;p&gt;Sinon en python mais orienté développement web, il y a le bon (mais il faut s’accrocher si on débute) “Test-Driven Development with Python” de Harry J.w Percival.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;un-exemple&quot;&gt;Un exemple&lt;/h2&gt;
-
-&lt;p&gt;Créez un nouveau projet avec pycharm que l’on pourra appeler &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;essai_tests&lt;/code&gt;, puis ajoutez-y un fichier que vous nommerez &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;aide_mathematiques.py&lt;/code&gt;. Ce fichier contiendra le code suivant :&lt;/p&gt;
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;double&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;entier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;entier&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Pour tester ce code, j’imagine que si les deux conditions suivantes sont remplies :&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;double(0)&lt;/code&gt; vaut &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0&lt;/code&gt;,&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;double (21)&lt;/code&gt; vaut &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;42&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Ma méthode sera exacte.&lt;/p&gt;
-
-&lt;p&gt;On utilise le mot clé &lt;a href=&quot;http://www.tutorialspoint.com/python/assertions_in_python.htm&quot;&gt;assert&lt;/a&gt; pour créer notre fonction de test.&lt;/p&gt;
-
-&lt;blockquote class=&quot;attention&quot;&gt;
-  &lt;p&gt;Les fonctions de tests doivent toutes commencer par ‘‘test_’’.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Ajouter la méthode ci-après à votre fichier :&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language- python&quot;&gt;
-def test_double():
-  assert double(0) == 0
-  assert double(21) == 42
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;et exécutez là :&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;n&quot;&gt;test_double&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Si tout s’est passé comme prévu, il ne s’est rien passé. Normal, l’ &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;assert&lt;/code&gt; était vérifié. Changez un des &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;assert&lt;/code&gt; de la fonction &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;test_double&lt;/code&gt; pour que le résultat soit faux (par exemple &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;assert double(0) == 7&lt;/code&gt;). Le programme doit maintenant s’arrêter sur une exception. Chez moi, j’obtiens ça :&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Traceback (most recent call last):
-  File &quot;/Users/francois/Documents/pycharm/essai_tests/aide_mathematiques.py&quot;, line 10, in &amp;lt;module&amp;gt;
-    test_double()
-  File &quot;/Users/francois/Documents/pycharm/essai_tests/aide_mathematiques.py&quot;, line 6, in test_double
-    assert double(0) == 7
-AssertionError
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Ainsi, si tout se passe bien, nos tests sont passés, si le programme s’arrête sur une exception de type &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;AssertionError&lt;/code&gt;, nos tests ne correspondent pas à la réalité. Nous sommes en face d’un bug (qu’il faut corriger).&lt;/p&gt;
-
-&lt;h2 id=&quot;séparer-code-et-tests&quot;&gt;Séparer code et tests&lt;/h2&gt;
-
-&lt;p&gt;Placez la fonction de test (et son exécution) dans un fichier que vous nommerez &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;test_aide_mathematiques.py&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Faites en sorte qu’il s’exécute sans problème (attention aux &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;import&lt;/code&gt;. Vous pouvez &lt;a href=&quot;https://docs.python.org/fr/3.7/tutorial/modules.html&quot;&gt;lire la doc officielle&lt;/a&gt;,  un &lt;a href=&quot;https://www.learnpython.org/en/Modules_and_Packages&quot;&gt;petit tuto bien fait&lt;/a&gt; ou encore &lt;a href=&quot;http://sametmax.com/les-imports-en-python/&quot;&gt;le tuto de sam&amp;amp;max&lt;/a&gt; qui est un peu vieux (en particulier la partie absolue_import n’est plus du &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;__future__&lt;/code&gt; mais est implémenté dans python3) mais toujours éclairant).&lt;/p&gt;
-
-&lt;blockquote class=&quot;attention&quot;&gt;
-  &lt;p&gt;On séparera toujours les tests du code. Tout fichier de test commence par ‘‘test_’’.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;utilisation-de-lenvironnement-de-test-avec-pycharm&quot;&gt;Utilisation de l’environnement de test avec pycharm&lt;/h2&gt;
-
-&lt;p&gt;Nous allons demander à l’environnement &lt;a href=&quot;http://pytest.org/latest/&quot;&gt;py.test&lt;/a&gt; d’exécuter nos tests. Il nous donnera plus d’informations sur les tests réussis ou échoués (une application normale contient des centaines de tests).&lt;/p&gt;
-
-&lt;p&gt;Commencez par supprimer l’exécution de &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;test_double&lt;/code&gt; dans le fichier &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;test_aide_mathematiques.py&lt;/code&gt;.&lt;/p&gt;
-
-&lt;blockquote class=&quot;attention&quot;&gt;
-  &lt;p&gt;Un fichier de tests ne doit contenir que des fonctions.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Puis nous allons demander à &lt;a href=&quot;https://www.jetbrains.com/pycharm/&quot;&gt;Pycharm&lt;/a&gt; d’exécuter &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;test_aide_mathematiques.py&lt;/code&gt; à l’aide de notre environnement de test.&lt;/p&gt;
-
-&lt;p&gt;Pour cela, créez un environnement d’exécution (expliqué dans ce &lt;a href=&quot;/cours_informatique/tutos/editeur/pycharm/2021/08/30/configuration-pycharm.html&quot;&gt;tuto&lt;/a&gt;) et créez une configuration  &lt;em&gt;pyhton test &amp;gt; pytest&lt;/em&gt;. Ici, les paramètres dont nous aurons besoin sont :&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;le champ &lt;em&gt;name&lt;/em&gt;, qui donne un nom à notre contexte. Par exemple *“mes tests”**&lt;/li&gt;
-  &lt;li&gt;le champ &lt;em&gt;target&lt;/em&gt;, qui spécifie quel script utiliser. Cliquez tout à droite de ce champ sur un petit bouton avec &lt;em&gt;…&lt;/em&gt; puis choisissez le fichier &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;test_aide_mathematiques.py&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Une fois ceci configuré, cliquez sur &lt;em&gt;OK&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;Un nouvel environnement de tests est créé dans le menu &lt;em&gt;run&lt;/em&gt;. Exécutez le. Vous devriez voir une nouvelle fenêtre en bas de l’écran pycharm apparaître et vos tests s’exécuter. Si tout s’est bien passé, une barre verte doit apparaître.&lt;/p&gt;
-
-&lt;p&gt;Pour finir cette partie :&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Séparez votre fonction de tests en 2 fonctions (chaque fonction de test ne doit contenir qu’une chose à tester, donc a priori qu’un seul &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;assert&lt;/code&gt;).&lt;/li&gt;
-  &lt;li&gt;Exécutez votre nouvel environnement.&lt;/li&gt;
-  &lt;li&gt;Ajoutez une fonction de test qui plante. Exécutez votre environnement de test. Voyez la barre rouge. Supprimez ce test non valide.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><category term="tests unitaires" /><category term="pytest" /><category term="unittest" /><summary type="html">Mise en œuvre de tests unitaires en python avec l’éditeur pycharm.</summary></entry></feed>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Augustin Agbo-Kpati</name></author><category term="tutos" /><category term="python" /><category term="langage" /><summary type="html">Notions de base du langage python. Ce n’est cependant pas un cours, on y reprend juste les différentes notions à connaître ainsi que les principales structures de données à utiliser.</summary></entry></feed>

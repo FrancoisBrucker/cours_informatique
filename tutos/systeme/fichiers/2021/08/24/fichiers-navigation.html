@@ -76,6 +76,7 @@
 <h2 id="système-de-fichier">système de fichier</h2>
 
 <p>Votre ordinateur est composé de fichiers et de dossiers (aussi appelé répertoire) :</p>
+
 <ul>
   <li>un <strong>dossier</strong> est un conteneur qui peut contenir soit d’autres dossier, soit des fichiers</li>
   <li>un <strong>fichier</strong> est ce que vous pouvez utiliser. C’est une image, du texte, ou encore un programme.</li>
@@ -88,6 +89,13 @@
 <h3 id="exploration-de-larborescence">exploration de l’arborescence</h3>
 
 <p>Ouvre une fenêtre de l’explorateur de fichier et placez vous à la racine de votre système de fichier.</p>
+
+<details><summary>sous linux</summary><div>
+<blockquote class="note">
+  <p>TBD</p>
+</blockquote>
+
+</div></details>
 
 <details><summary>sous mac</summary><div>
 <p>Ouvrez une nouvelle fenêtre du <em>Finder</em> et choisissez <a href="https://support.apple.com/fr-fr/HT201732">le mode d’affichage des fichiers</a>) en colonne. Ensuite, choisissez dans le menu : <em>aller &gt; ordinateur</em> et cliquez sur <em>“Macintosh HD”</em>, qui est la racine de votre système de fichier.</p>
@@ -102,13 +110,6 @@
 
 </div></details>
 
-<details><summary>sous unix</summary><div>
-<blockquote class="danger">
-  <p>TBD</p>
-</blockquote>
-
-</div></details>
-
 <p>Vous pourrez ensuite naviguer de dossiers en dossiers, jusqu’à arriver à un fichier d’où vous ne pourrez plus avancer.</p>
 
 <p>Dans l’exemple ci-après, j’ai navigué sur mon mac jusqu’à ma photo d’<a href="https://fr.wikipedia.org/wiki/Ada_Lovelace">Ada Lovelace</a> :</p>
@@ -118,7 +119,7 @@
 <p>On voit bien le chemin parcouru de la racine (appelé <em>“Macintosh HD”</em> sur un mac et le fichier).</p>
 
 <blockquote class="attention">
-  <p>Le nom des dossiers sur le disque dur et celui qui apparait dans l’explorateur de fichier peuvent être différent selon la langue du système d’exploitiation. 
+  <p>Le nom des dossiers sur le disque dur et celui qui apparait dans l’explorateur de fichier peuvent être différent selon la langue du système d’exploitation.
 Ainsi, le nom <em>Bureau</em> dans l’explorateur correspondra au dossier <code class="language-plaintext highlighter-rouge">Desktop</code> sur le disque dur…</p>
 </blockquote>
 
@@ -161,12 +162,14 @@ disques durs, clés, etc.</p>
 <h3 id="block-.-..">dossiers . et ..</h3>
 
 <p>Les dossiers <code class="language-plaintext highlighter-rouge">.</code> et <code class="language-plaintext highlighter-rouge">..</code> sont des dossiers spéciaux qui signifient :</p>
+
 <ul>
   <li>le dossiers courant pour <code class="language-plaintext highlighter-rouge">.</code></li>
   <li>le dossiers précédent du dossiers <code class="language-plaintext highlighter-rouge">.</code> pour <code class="language-plaintext highlighter-rouge">..</code>.</li>
 </ul>
 
 <p>De là les 4 chemins suivants sont identiques :</p>
+
 <ul>
   <li><code class="language-plaintext highlighter-rouge">/Users/fbrucker/Desktop/ada_lovelace.png</code></li>
   <li><code class="language-plaintext highlighter-rouge">/Users/fbrucker/./Desktop/./ada_lovelace.png</code></li>
@@ -198,9 +201,7 @@ disques durs, clés, etc.</p>
 
 <blockquote>
   <p>Dans un éditeur de texte, l’extension d’un fichier permet de charger une coloration syntaxique par défaut : <em>“.py”</em> pour les fichiers python par exemple, <em>“.md”</em> pour les fichier markdown.</p>
-</blockquote>
 
-<blockquote>
   <p>Ne soyez pas créatifs dans les extensions de fichiers, utilisez celle par défaut selon le type de fichier que vous utilisez.</p>
 </blockquote>
 
@@ -220,8 +221,10 @@ disques durs, clés, etc.</p>
 
 <p>On peut cependant les afficher dans un explorateur de fichier en effectuant quelques manipulation :</p>
 
-<details><summary>sous windows</summary><div>
-<p><a href="https://support.microsoft.com/fr-fr/windows/voir-les-fichiers-et-les-dossiers-cach%C3%A9s-dans-windows-97fbc472-c603-9d90-91d0-1166d1d9f4b5">afficher les dossiers cachés sous windows</a></p>
+<details><summary>sous linux</summary><div>
+<blockquote class="note">
+  <p>TBD</p>
+</blockquote>
 
 </div></details>
 
@@ -232,12 +235,12 @@ disques durs, clés, etc.</p>
   <p>Pour que la manipulation de touche décrite dans la page fonctionne, il faut également d’appuyer sur la touche <code class="language-plaintext highlighter-rouge">fn</code> en plus.</p>
 </blockquote>
 
+<p>Si vous voulez aller dans un dossier particulier, vous pouvez utiliser : <em>menu Aller &gt; Aller au dossier…</em></p>
+
 </div></details>
 
-<details><summary>sous linux</summary><div>
-<blockquote class="dancer">
-  <p>TBD</p>
-</blockquote>
+<details><summary>sous windows</summary><div>
+<p><a href="https://support.microsoft.com/fr-fr/windows/voir-les-fichiers-et-les-dossiers-cach%C3%A9s-dans-windows-97fbc472-c603-9d90-91d0-1166d1d9f4b5">afficher les dossiers cachés sous windows</a></p>
 
 </div></details>
 
@@ -246,29 +249,33 @@ disques durs, clés, etc.</p>
 <p>Le <a href="/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html">terminal</a> est l’outil permettant d’exécuter des programmes. Il permet de contrôler directement ce qui est exécuté, et est l’endroit où l’on lancera nos scripts python par exemple.</p>
 
 <p>Une ligne du terminal sera toujours :</p>
+
 <ul>
   <li>soit un fichier exécutable</li>
   <li>soit une commande (comme <code class="language-plaintext highlighter-rouge">get-command</code> pour un powershell par exemple)</li>
 </ul>
 
 <p>Etudions par exemple la commande :</p>
-<pre><code class="language-pyhton">python mon_script.py
-</code></pre>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python mon_script.py
+</code></pre></div></div>
 
 <p>Comme <code class="language-plaintext highlighter-rouge">python</code> n’est pas une commande c’est <strong>forcément</strong> un fichier exécutable.  Le système d’exploitation cherche alors un fichier s’appelant <code class="language-plaintext highlighter-rouge">python</code> (ou <code class="language-plaintext highlighter-rouge">python.exe</code> si on est sous windows) dans un ensemble de dossiers qu’on appelle le <strong>path</strong>.</p>
 
 <p>Connaître le path :</p>
 
-<details><summary>sous windows</summary><div>
-<p><a href="https://java.com/fr/download/help/path_fr.html">affichier et modifier le path</a></p>
+<details><summary>sous linux/mac</summary><div>
+<p>Dans un terminal, tapez :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="nv">$PATH</span>
+</code></pre></div></div>
+
+<p>Cela affichera les différents dossier dans le path.</p>
 
 </div></details>
 
-<details><summary>sous mac/linux</summary><div>
-<p>Dans un terminal, tapez :</p>
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="nv">$PATH</span>
-</code></pre></div></div>
-<p>Cela affichera les différents dossier dans le path.</p>
+<details><summary>sous windows</summary><div>
+<p><a href="https://java.com/fr/download/help/path_fr.html">affichier et modifier le path</a></p>
 
 </div></details>
 
@@ -298,6 +305,7 @@ disques durs, clés, etc.</p>
 <p>Par exemple, sur mon mac, je crée un nouveau terminal. Par défaut, son dossier courant est la maison. La commande <code class="language-plaintext highlighter-rouge">pwd</code> me rend en effet : <code class="language-plaintext highlighter-rouge">/Users/fbrucker</code>.</p>
 
 <p>Si je veux aller dans le dossier contenant ma photo d’Ada, je peux taper :</p>
+
 <ul>
   <li>un chemin absolu : <code class="language-plaintext highlighter-rouge">cd /Users/fbrucker/Desktop</code></li>
   <li>un chemin relatif : <code class="language-plaintext highlighter-rouge">cd Desktop</code>, ou encore <code class="language-plaintext highlighter-rouge">cd ./Desktop</code> qui est équivalent.</li>
@@ -305,11 +313,13 @@ disques durs, clés, etc.</p>
 
 <blockquote class="attention">
   <p>Notez que je ne peux pas aller dans un fichier.
- Si j’avais tapé <code class="language-plaintext highlighter-rouge">/Users/fbrucker/Desktop/ada_lovelace.png</code> j’aurais eu une erreur. Sur mon mac, ça dit : <code class="language-plaintext highlighter-rouge">cd: not a directory: /Users/fbrucker/Desktop/ada_lovelace.png</code></p>
+Si j’avais tapé <code class="language-plaintext highlighter-rouge">/Users/fbrucker/Desktop/ada_lovelace.png</code> j’aurais eu une erreur. Sur mon mac, ça dit : <code class="language-plaintext highlighter-rouge">cd: not a directory: /Users/fbrucker/Desktop/ada_lovelace.png</code></p>
 </blockquote>
 
-<blockquote>
-  <p>sous unix, le caractère <code class="language-plaintext highlighter-rouge">~</code> est équivalent au chemin absolu vers la maison. En tapant <code class="language-plaintext highlighter-rouge">cd ~</code> je me retrouve alors directement à la maison. De là, <code class="language-plaintext highlighter-rouge">cd ~/Desktop</code> m’envoie dans le dossier <code class="language-plaintext highlighter-rouge">/Users/fbrucker/Desktop</code> quelque soit l’endroit où je me trouve.</p>
+<p>Sous unix, le caractère <code class="language-plaintext highlighter-rouge">~</code> est équivalent au chemin absolu vers la maison. En tapant <code class="language-plaintext highlighter-rouge">cd ~</code> je me retrouve alors directement à la maison. De là, <code class="language-plaintext highlighter-rouge">cd ~/Desktop</code> m’envoie dans le dossier <code class="language-plaintext highlighter-rouge">/Users/fbrucker/Desktop</code> quelque soit l’endroit où je me trouve.</p>
+
+<blockquote class="note">
+  <p>TBD : est-ce aussi vrai avec powershell ?</p>
 </blockquote>
 
 <h4 id="lister-avec-ls">lister avec ls</h4>
@@ -317,16 +327,25 @@ disques durs, clés, etc.</p>
 <p>La commande <code class="language-plaintext highlighter-rouge">ls</code> quand à elle donne les dossier et les fichier du dossier courant (on peut l’utiliser sans paramètre, ou avec un chemin absolu ou relatif).</p>
 
 <p>Par exemple, sur mon mac, si je tape :</p>
+
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">ls</span> /
 </code></pre></div></div>
+
 <p>J’obtiens tous les dossier de la racine :</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Applications Users        cores        home         sbin         var
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Applications Users        cores        home         sbin         var
 Library      Volumes      dev          opt          tmp
 System       bin          etc          private      usr
 </code></pre></div></div>
 
 <h3 id="ouvrir-un-terminal-dans-un-dossier-spécifique">ouvrir un terminal dans un dossier spécifique</h3>
+
+<details><summary>sous linux</summary><div>
+<blockquote class="note">
+  <p>TBD</p>
+</blockquote>
+
+</div></details>
 
 <details><summary>sous mac</summary><div>
 <p>Dans le finder cliquez droit sur le dossier, puis <em>services &gt; Nouveau terminal au dossier</em></p>
@@ -340,6 +359,13 @@ System       bin          etc          private      usr
 
 <h3 id="copier-le-chemin-absolu">copier le chemin absolu</h3>
 
+<details><summary>sous linux</summary><div>
+<blockquote class="note">
+  <p>TBD</p>
+</blockquote>
+
+</div></details>
+
 <details><summary>sous mac</summary><div>
 <p>Dans le finder cliquez droit sur le dossier, puis copier. Coller ensuite dans le finder.</p>
 
@@ -352,14 +378,18 @@ System       bin          etc          private      usr
 
 <h2 id="pour-aller-plus-loin">pour aller plus loin</h2>
 
-<ul>
-  <li>liens</li>
-  <li>permissions</li>
-  <li>unix et tout est fichier</li>
-  <li>fichiers spéciaux (/dev/audio)</li>
-  <li>une application mac est un dossier.</li>
-  <li>comment écrire sur le disque dur, le <a href="https://en.wikipedia.org/wiki/Comparison_of_file_systems">file system</a></li>
-</ul>
+<blockquote>
+  <p>TBD :</p>
+
+  <ul>
+    <li>liens</li>
+    <li>permissions</li>
+    <li>unix et tout est fichier</li>
+    <li>fichiers spéciaux (comme <code class="language-plaintext highlighter-rouge">/dev/audio</code> par exemple)</li>
+    <li>une application mac est un dossier.</li>
+    <li>comment écrire sur le disque dur, le <a href="https://en.wikipedia.org/wiki/Comparison_of_file_systems">file system</a></li>
+  </ul>
+</blockquote>
 
   </div>
 

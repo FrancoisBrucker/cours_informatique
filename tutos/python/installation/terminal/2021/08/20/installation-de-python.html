@@ -174,7 +174,7 @@
 <p>Nous allons ici nous concentrer sur l’installation de l’interpréteur python. Il existe plusieurs façon de faire. Nous en présenterons 2 :</p>
 
 <ul>
-  <li>solution universelle simple : utilisez la <a href="#anaconda-id">distribution anaconda</a></li>
+  <li>solution universelle simple : utilisez la <a href="/cours_informatique/tutos/python/installation/anaconda/2021/09/14/installation-anaconda.html">distribution anaconda</a></li>
   <li>solution informaticienne : à privilégier si vous voulez contrôler toute votre installation (c’est bien). On utilise un <a href="#gestionnaire-package-id">gestionnaire de package</a>.</li>
 </ul>
 
@@ -183,57 +183,6 @@
 </blockquote>
 
 <p>Une fois que vous aurez installé python (ou pour savoir si vous l’avez déjà installé), vérifiez le en tentant d’<a href="#interpreteur-id">exécuter l’interpréteur python dans un terminal</a>.</p>
-
-<h3 id="anaconda-id">installation d’anaconda</h3>
-
-<p><a href="https://www.anaconda.com/">Anaconda</a> est une entreprise gérant des distributions python orientés data-science. L’intérêt d’une telle distribution est qu’elle regroupe et installe de nombreux utilitaires. Le côté négatif est que l’on ne maîtrise pas les paquets installés et l’installation de paquets supplémentaires est parfois problématique.</p>
-
-<p>Cependant, pour une utilisation basique de python ou une utilisation via jupyter, c’est une solution tout à fait satisfaisante car facile à mettre en œuvre sans être informaticien.</p>
-
-<h4 id="téléchargement-de-linstalleur">Téléchargement de l’installeur</h4>
-
-<p>Nous allons télécharger la distribution open-source d’anaconda <a href="https://www.anaconda.com/products/individual">ici</a>. Choisissez la version 64bit graphique correspondant à votre système d’installation, puis cliquez sur l’installeur.</p>
-
-<p>Lors de l’installation :</p>
-
-<ul>
-  <li>vous pourrez choisir de faire une installation uniquement pour vous ou pour tous les utilisateurs. Choisissez <strong>pour tous les utilisateurs</strong>.</li>
-  <li>sous windows, vous pourrez choisir d’ajouter le python d’anaconda au <em>path</em> de windows, c’est à dire que lorsque vous taperez python dans un terminal, ce sera celui d’anaconda qui se lancera. <strong>choisissez cette option</strong>, même si elle n’est pas recommandée.</li>
-</ul>
-
-<blockquote class="attention">
-  <p>Si vous avez une ancienne version d’anaconda et que vous souhaitez installer une mise à jour, il vous faudra commencer par supprimer le dossier contenant l’ancienne version</p>
-</blockquote>
-
-<p>Anaconda change le chemin par défaut python pour que ce soit celui d’anaconda qui soit utilisé. Soit c’est automatique (sous ac ou sous linux) soit c’est par choix lors de l’installation.</p>
-
-<blockquote>
-  <p>Sous mac et linux cela se passe en modifiant le fichier de configuration du shell (entre <code class="language-plaintext highlighter-rouge">conda initialize</code>).</p>
-</blockquote>
-
-<h4 id="test-de-la-distribution">test de la distribution</h4>
-
-<p>Anaconda a installé des choses, en particulier l’application <em>Anaconda-Navigator</em> qui vous permet de lancer toutes les applications liées à Anaconda.</p>
-
-<p>Lancez l’application <em>Notebook</em> puis :</p>
-
-<ol>
-  <li>créez un nouveau notebook <code class="language-plaintext highlighter-rouge">python3</code>.</li>
-  <li>dans la cellule tapez <code class="language-plaintext highlighter-rouge">print("Hello world!")</code></li>
-  <li>cliquez sur l’icône <em>Exécuter</em> sur la bannière de titre ou appuyer sur <code class="language-plaintext highlighter-rouge">shift + entrée</code>.</li>
-</ol>
-
-<p>Vous devriez voir le texte <code class="language-plaintext highlighter-rouge">Hello World</code> en sortie de votre cellule.</p>
-
-<h4 id="anaconda-avec-un-terminal">anaconda avec un terminal</h4>
-
-<p>Dans l’<em>anaconda navigator</em>, cliquez sur <em>Environnements</em> dans le menu de gauche (c’est le deuxième choix, après <em>Home</em> et avant <em>Learning</em>).</p>
-
-<p>Vous devez avoir un unique environnement : <em>base (root)</em>. Un environnement est un interpréteur python et tous ses packages installés. On aura parfois envie de créer ses propres environnements pour installer soit une version spécifique de python, soit n’installer que certains packages.</p>
-
-<p>Pour l’instant utilisons l’environnement de base. En cliquant sur le triangle vert à droite de l’environnement <em>base (root)</em>, vous pouvez cliquer sur <em>open terminal</em>, ce qui ouvrira un terminal. Une fois le terminal ouvert, remarquez qu’à gauche de l’invite de commande vous avez <code class="language-plaintext highlighter-rouge">(base)</code> d’écrit. Ceci montre quel environnement python vous avez.</p>
-
-<p>Vos pouvez <a href="https://docs.anaconda.com/anaconda/user-guide/tasks/integration/python-path/">connaitre l’interpréteur</a>.</p>
 
 <h3 id="gestionnaire-package-id">installation via un gestionnaire de package</h3>
 
