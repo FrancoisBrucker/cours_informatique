@@ -1,10 +1,48 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/cours_informatique/feed.xml" rel="self" type="application/atom+xml" /><link href="/cours_informatique/" rel="alternate" type="text/html" /><updated>2021-09-14T18:12:32+00:00</updated><id>/cours_informatique/feed.xml</id><title type="html">cours d’informatique</title><subtitle>Support de cours/td d'informatique à l'école centrale marseille.</subtitle><entry><title type="html">vsc et markdown</title><link href="/cours_informatique/tutos/editeur/vsc/installation/configuration/markdown/2021/09/14/vsc-mardown.html" rel="alternate" type="text/html" title="vsc et markdown" /><published>2021-09-14T00:00:00+00:00</published><updated>2021-09-14T00:00:00+00:00</updated><id>/cours_informatique/tutos/editeur/vsc/installation/configuration/markdown/2021/09/14/vsc-mardown</id><content type="html" xml:base="/cours_informatique/tutos/editeur/vsc/installation/configuration/markdown/2021/09/14/vsc-mardown.html">&lt;p&gt;Comment écrire du markdown avec &lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;visual studio code&lt;/a&gt; (vsc).&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/cours_informatique/feed.xml" rel="self" type="application/atom+xml" /><link href="/cours_informatique/" rel="alternate" type="text/html" /><updated>2021-09-14T19:57:23+00:00</updated><id>/cours_informatique/feed.xml</id><title type="html">cours d’informatique</title><subtitle>Support de cours/td d'informatique à l'école centrale marseille.</subtitle><entry><title type="html">vsc et markdown</title><link href="/cours_informatique/tutos/editeur/vsc/installation/configuration/markdown/2021/09/14/vsc-markdown.html" rel="alternate" type="text/html" title="vsc et markdown" /><published>2021-09-14T00:00:00+00:00</published><updated>2021-09-14T00:00:00+00:00</updated><id>/cours_informatique/tutos/editeur/vsc/installation/configuration/markdown/2021/09/14/vsc-markdown</id><content type="html" xml:base="/cours_informatique/tutos/editeur/vsc/installation/configuration/markdown/2021/09/14/vsc-markdown.html">&lt;p&gt;Comment écrire du markdown avec &lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;visual studio code&lt;/a&gt; (vsc ou encore vscode).&lt;/p&gt;
 
 &lt;!--more--&gt;
 
 &lt;blockquote class=&quot;note&quot;&gt;
   &lt;p&gt;TBD : ajouter le latex.&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name></name></author><category term="tutos" /><category term="editeur" /><category term="vsc" /><category term="installation" /><category term="configuration" /><category term="markdown" /><summary type="html">Comment écrire du markdown avec visual studio code (vsc).</summary></entry><entry><title type="html">vsc et terminal</title><link href="/cours_informatique/tutos/editeur/vsc/installation/configuration/terminal/2021/09/14/vsc-terminal.html" rel="alternate" type="text/html" title="vsc et terminal" /><published>2021-09-14T00:00:00+00:00</published><updated>2021-09-14T00:00:00+00:00</updated><id>/cours_informatique/tutos/editeur/vsc/installation/configuration/terminal/2021/09/14/vsc-terminal</id><content type="html" xml:base="/cours_informatique/tutos/editeur/vsc/installation/configuration/terminal/2021/09/14/vsc-terminal.html">&lt;p&gt;Les différentes manières d’invoquer un terminal avec  &lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;visual studio code&lt;/a&gt; (vsc)
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;extensions-génériques&quot;&gt;extensions génériques&lt;/h2&gt;
+
+&lt;p&gt;La documentation comporte une &lt;a href=&quot;https://code.visualstudio.com/docs/languages/markdown&quot;&gt;partie consacrée au markdown&lt;/a&gt;. Nous allons utiliser deux extensions :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one&quot;&gt;Markdown All in One&lt;/a&gt; qui permet de fluidifier l’écriture de markdown et permet un export de celui-ci en html.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint&quot;&gt;markdownlint&lt;/a&gt; qui souligne en orange les fautes de style (un espace après un &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.&lt;/code&gt; par exemple) et les erreurs de markdown (sauf dans la hiérarchie des paragraphes par exemple).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Le seconde extension est un &lt;a href=&quot;https://mindsers.blog/fr/post/linting-good-practices/&quot;&gt;linter&lt;/a&gt;, qui incite à utiliser les bonnes pratiques d’écriture. Il en existe pour quasi tous les langages.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;export-et-preview&quot;&gt;export et preview&lt;/h3&gt;
+
+&lt;p&gt;Pour exporter le markdown dans quelque chose de plus joli. On peut utiliser la &lt;a href=&quot;/cours_informatique/tutos/editeur/vsc/installation/configuration/2021/09/03/vsc-installation-et-prise-en-main.html#palette-de-commande&quot;&gt;palette de commande&lt;/a&gt; pour exétuter les commandes :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;em&gt;markdown All in One: Print current document to HTML&lt;/em&gt; : qui va rednre un fichier html&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;markdown: Open preview&lt;/em&gt; pour faire une preview.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;extensions-specifiques&quot;&gt;extensions specifiques&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://shd101wyy.github.io/markdown-preview-enhanced/#/&quot;&gt;Markdown Preview Enhanced&lt;/a&gt; Permet d’avoir des feuilles de styles jolies lorsque l’on converti du markdown.&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="tutos" /><category term="editeur" /><category term="vsc" /><category term="installation" /><category term="configuration" /><category term="markdown" /><summary type="html">Comment écrire du markdown avec visual studio code (vsc ou encore vscode).</summary></entry><entry><title type="html">vsc et python</title><link href="/cours_informatique/tutos/editeur/vsc/installation/configuration/python/2021/09/14/vsc-python.html" rel="alternate" type="text/html" title="vsc et python" /><published>2021-09-14T00:00:00+00:00</published><updated>2021-09-14T00:00:00+00:00</updated><id>/cours_informatique/tutos/editeur/vsc/installation/configuration/python/2021/09/14/vsc-python</id><content type="html" xml:base="/cours_informatique/tutos/editeur/vsc/installation/configuration/python/2021/09/14/vsc-python.html">&lt;p&gt;configuration de  &lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;visual studio code&lt;/a&gt; pour le développement en python.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;La documentation officielle a une partie consacrée à python : &lt;a href=&quot;https://code.visualstudio.com/docs/languages/python&quot;&gt;https://code.visualstudio.com/docs/languages/python&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote class=&quot;note&quot;&gt;
+  &lt;p&gt;TBD : copier de mpci à ici&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name></name></author><category term="tutos" /><category term="editeur" /><category term="vsc" /><category term="installation" /><category term="configuration" /><category term="python" /><summary type="html">configuration de visual studio code pour le développement en python.</summary></entry><entry><title type="html">vsc et terminal</title><link href="/cours_informatique/tutos/editeur/vsc/installation/configuration/terminal/2021/09/14/vsc-terminal.html" rel="alternate" type="text/html" title="vsc et terminal" /><published>2021-09-14T00:00:00+00:00</published><updated>2021-09-14T00:00:00+00:00</updated><id>/cours_informatique/tutos/editeur/vsc/installation/configuration/terminal/2021/09/14/vsc-terminal</id><content type="html" xml:base="/cours_informatique/tutos/editeur/vsc/installation/configuration/terminal/2021/09/14/vsc-terminal.html">&lt;p&gt;Les différentes manières d’invoquer un terminal avec  &lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;visual studio code&lt;/a&gt; (vsc)
 &lt;!--more--&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;terminal&quot;&gt;terminal&lt;/h2&gt;
@@ -218,7 +256,7 @@ Je pense que c’est comme mac, mais pas sur.&lt;/p&gt;
 
 &lt;p&gt;vscode permet, comme dans tout éditeur de texte, d’éditer et de créer des fichiers texte mais aussi de gérer des &lt;em&gt;workspace&lt;/em&gt; qui sont des dossiers contenant des projets.&lt;/p&gt;
 
-&lt;p&gt;Ces projets peuvent être de natures diverses, comme des projts web, du python, des rapports, etc.&lt;/p&gt;
+&lt;p&gt;Ces projets peuvent être de natures diverses, comme des projets web, du python, des rapports, etc.&lt;/p&gt;
 
 &lt;p&gt;Pour ce tutoriel, vous allez :&lt;/p&gt;
 
@@ -332,7 +370,7 @@ Bnjour Monde !
 &lt;p&gt;La &lt;a href=&quot;https://code.visualstudio.com/docs/getstarted/settings&quot;&gt;documentation de vscode sur les préférences&lt;/a&gt; est très bien faite. On retiendra que l’on peut avoir des préférences différentes par “utilisateur” (&lt;em&gt;user&lt;/em&gt;) ou par “espace de travail” (&lt;em&gt;workspace&lt;/em&gt;).&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;Le fichiers stockant des préférences utilisateurs &lt;a href=&quot;https://code.visualstudio.com/docs/getstarted/settings#_settings-file-locations&quot;&gt;dépend du système d’exploitation&lt;/a&gt;, si vous modifiez des préférences pour l’espace de travail, undossier &lt;em&gt;“.vscode”&lt;/em&gt; sera créé à la racine de votre projet, et il contiendra un fichier &lt;em&gt;“settings.json”&lt;/em&gt; contenant les différentes préférences.&lt;/p&gt;
+  &lt;p&gt;Le fichiers stockant des préférences utilisateurs &lt;a href=&quot;https://code.visualstudio.com/docs/getstarted/settings#_settings-file-locations&quot;&gt;dépend du système d’exploitation&lt;/a&gt;, si vous modifiez des préférences pour l’espace de travail, un dossier &lt;em&gt;“.vscode”&lt;/em&gt; sera créé à la racine de votre projet, et il contiendra un fichier &lt;em&gt;“settings.json”&lt;/em&gt; contenant les différentes préférences.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;Personnellement, s’il y a bien une chose qui m’ennuie c’est de constamment sauver mes fichiers. Si je fais une modification de mes fichiers, c’est parce que j’en ai besoin je ne vois pas l’intérêt de devoir sauver pour confirmer. Heureusement, vscode permet (comme tout éditeur qui se respecte) de faire ça en modifiant ses préférences :&lt;/p&gt;
@@ -367,7 +405,6 @@ Bnjour Monde !
 &lt;/blockquote&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;markdown&lt;/li&gt;
   &lt;li&gt;python : linter, black et compagnie.&lt;/li&gt;
   &lt;li&gt;git et merge (?)&lt;/li&gt;
 &lt;/ul&gt;</content><author><name></name></author><category term="tutos" /><category term="editeur" /><category term="vsc" /><category term="installation" /><category term="configuration" /><summary type="html">Installation et premières configurations de visual studio code (vsc).</summary></entry><entry><title type="html">Nouvelle installation de son système</title><link href="/cours_informatique/tutos/systeme/installation/2021/09/01/installation-ordinateur.html" rel="alternate" type="text/html" title="Nouvelle installation de son système" /><published>2021-09-01T00:00:00+00:00</published><updated>2021-09-01T00:00:00+00:00</updated><id>/cours_informatique/tutos/systeme/installation/2021/09/01/installation-ordinateur</id><content type="html" xml:base="/cours_informatique/tutos/systeme/installation/2021/09/01/installation-ordinateur.html">&lt;p&gt;Comment bien préparer son ordinateur pour faire du développement. On ne montrera ici que le départ, c’est à dire l’installation fraiche d’un système sur lequel on pourra ensuite installer — proprement — les divers outils et logiciels utiles pour le développement.&lt;/p&gt;
@@ -623,7 +660,7 @@ Bnjour Monde !
 &lt;p&gt;Il est facilement lisible dans un éditeur de texte, et il existe de nombreuses façon de l’exporter que ce soit en html (pour l’ouvrir avec un navigateur comme chrome ou firefox) ou en pdf.&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;Tout ce site a par exemple été écrit en markdown puis transformé en html grâce à &lt;a href=&quot;https://jekyllrb.com/&quot;&gt;jekyll&lt;/a&gt;. Le code source du site est &lt;a href=&quot;https://github.com/FrancoisBrucker/cours_informatique&quot;&gt;visible&lt;/a&gt;, en particulier le code source de &lt;a href=&quot;https://github.com/FrancoisBrucker/cours_informatique/blob/master/docs/tutos/_posts/2021-08-30-format-markdown.md&quot;&gt;ce fichier&lt;/a&gt; (cliquez sur le bouton &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;raw&lt;/code&gt; à droite, juste avant que le fichier ne soit représenté).&lt;/p&gt;
+  &lt;p&gt;Tout ce site a par exemple été écrit en markdown (plus précisément une extension de celui-ci nommé &lt;a href=&quot;https://kramdown.gettalong.org/documentation.html&quot;&gt;kramdown&lt;/a&gt;) puis transformé en html grâce à &lt;a href=&quot;https://jekyllrb.com/&quot;&gt;jekyll&lt;/a&gt;. Le code source du site est &lt;a href=&quot;https://github.com/FrancoisBrucker/cours_informatique&quot;&gt;visible&lt;/a&gt;, en particulier le code source de &lt;a href=&quot;https://github.com/FrancoisBrucker/cours_informatique/blob/master/docs/tutos/_posts/2021-08-30-format-markdown.md&quot;&gt;ce fichier&lt;/a&gt; (cliquez sur le bouton &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;raw&lt;/code&gt; à droite, juste avant que le fichier ne soit représenté).&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h2 id=&quot;syntaxe&quot;&gt;syntaxe&lt;/h2&gt;
@@ -641,56 +678,25 @@ Bnjour Monde !
   &lt;li&gt;le &lt;a href=&quot;https://kramdown.gettalong.org/documentation.html&quot;&gt;kramdown&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;blockquote class=&quot;attention&quot;&gt;
-  &lt;p&gt;Nous utilisons pour ce site le &lt;a href=&quot;https://kramdown.gettalong.org/documentation.html&quot;&gt;kramdown&lt;/a&gt; qui est une extension du markdown et est interprété pour le générateur desite statique &lt;a href=&quot;https://jekyllrb.com/&quot;&gt;jekyll&lt;/a&gt;.&lt;/p&gt;
-&lt;/blockquote&gt;
-
 &lt;h2 id=&quot;markdown-avec-vscode&quot;&gt;markdown avec vscode&lt;/h2&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;a href=&quot;https://code.visualstudio.com/docs/languages/markdown&quot;&gt;https://code.visualstudio.com/docs/languages/markdown&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;blockquote class=&quot;note&quot;&gt;
-  &lt;p&gt;TBD : https://www.nextinpact.com/article/44926/visual-studio-code-editeur-credible-pour-publication-et-markdown&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;extensions&quot;&gt;extensions&lt;/h3&gt;
-
-&lt;p&gt;vscode possède de nombreux plugins markdown. qui facilitent l’écriture en markdown. On peut par exemple citer :&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/yzhang-gh/vscode-markdown&quot;&gt;Markdown All in One&lt;/a&gt;. Dans les préférences du module, on décoche &lt;em&gt;Markdown &amp;gt; Extenstion &amp;gt; Math:Enabled&lt;/em&gt;. Les maths seront en effet utilisées avec le module suivant&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://learnbyexample.github.io/customizing-pandoc/&quot;&gt;markdownlint&lt;/a&gt; un linter pour écrire du joli markdown.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/goessner/mdmath&quot;&gt;Markdown+Math&lt;/a&gt; pour gérer les formules mathématiques comme :
-    &lt;ul&gt;
-      &lt;li&gt;
-\[\frac{1}{2}\]
-      &lt;/li&gt;
-      &lt;li&gt;
-\[\sum_{i=1}^n i^2\]
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://shd101wyy.github.io/markdown-preview-enhanced/#/&quot;&gt;Markdown Preview Enhanced&lt;/a&gt;. Permet d’avoir des feuilles de styles jolies lorsque l’on converti du markdown.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;export-et-preview&quot;&gt;export et preview&lt;/h3&gt;
-
-&lt;p&gt;Pour exporter le markdwon dans quelque chose de plus joli :&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;pour compiler : &lt;em&gt;ctrl/cmd + shift + p : markdown All in One: Print current document to HTML&lt;/em&gt;&lt;/li&gt;
-  &lt;li&gt;pour faire une preview : &lt;em&gt;ctrl/cmd + shift + p : markdown: Open preview&lt;/em&gt; Mais cela n’utilise pas l’extension Markdown Preview Enhanced, c’est donc plus limité comme rendu.&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;Suivez &lt;a href=&quot;/cours_informatique/tutos/editeur/vsc/installation/configuration/markdown/2021/09/14/vsc-markdown.html&quot;&gt;ce tutoriel&lt;/a&gt; pour installer les packages indispensables pour faire du markdown avec &lt;a href=&quot;/cours_informatique/tutos/editeur/vsc/installation/configuration/2021/09/03/vsc-installation-et-prise-en-main.html&quot;&gt;vscode&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;formules-mathématiques&quot;&gt;Formules mathématiques&lt;/h2&gt;
 
-&lt;p&gt;Lorsque l’on écrit des textes scientifique, vient inévitablement la question de l’écriture des équations. Le langage &lt;a href=&quot;https://fr.wikipedia.org/wiki/LaTeX&quot;&gt;Latex&lt;/a&gt; permet d’écrire toutes les équations imaginable (et même plus) avec un petit langage que l’on peut utiliser directement dans un éditeur de texte (ceux qui ont déjà utilisé l’éditeur d’équation de Word savent que c’est l’enfer de devoir tout cliquer). Une fois ce langage appris, il est étonnement clair, même non compilé en &lt;em&gt;jolies formules&lt;/em&gt;. Avec un peut d’habitude, on voit bien que : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$$\cos x=\sum_{k=0}^{\infty}\frac{(-1)^k}{(2k)!}x^{2k}$$&lt;/code&gt; est égal à :&lt;/p&gt;
+&lt;p&gt;Lorsque l’on écrit des textes scientifique, vient inévitablement la question de l’écriture des équations.&lt;/p&gt;
+
+&lt;h3 id=&quot;latex&quot;&gt;latex&lt;/h3&gt;
+
+&lt;p&gt;Le langage &lt;a href=&quot;https://fr.wikipedia.org/wiki/LaTeX&quot;&gt;Latex&lt;/a&gt; permet d’écrire toutes les équations imaginable (et même plus) avec un petit langage que l’on peut utiliser directement dans un éditeur de texte (ceux qui ont déjà utilisé l’éditeur d’équation de Word savent que c’est l’enfer de devoir tout cliquer).&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;L’ancêtre de &lt;a href=&quot;https://fr.wikipedia.org/wiki/LaTeX&quot;&gt;Latex&lt;/a&gt; : &lt;a href=&quot;https://fr.wikipedia.org/wiki/TeX&quot;&gt;Tex&lt;/a&gt;, a été créé par le célèbre informaticien &lt;a href=&quot;https://fr.wikipedia.org/wiki/Donald_Knuth&quot;&gt;Donald Knuth&lt;/a&gt; par ce qu’il n’existait rien sur ordinateur à l’époque pour écrire &lt;a href=&quot;https://fr.wikipedia.org/wiki/The_Art_of_Computer_Programming&quot;&gt;ses livres&lt;/a&gt; en respectant une typographie correcte.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Une fois ce langage appris, il est étonnement clair, même non compilé en &lt;em&gt;jolies formules&lt;/em&gt;. Avec un peut d’habitude, on voit bien que : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$$\cos x=\sum_{k=0}^{\infty}\frac{(-1)^k}{(2k)!}x^{2k}$$&lt;/code&gt; est égal à :&lt;/p&gt;
 
 \[\cos x=\sum_{k=0}^{\infty}\frac{(-1)^k}{(2k)!}x^{2k}\]
-
-&lt;p&gt;En markdown, on ne peut pas écrire tout en Latex (autant utiliser latex dans ce cas…) seulement ses équations, c’est à dire des mathématiques écrites entre &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$&lt;/code&gt; (pour une équation dans le flux du texte) ou &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$$&lt;/code&gt; (pour une équation avec un saut de ligne avant et après celle-ci).&lt;/p&gt;
 
 &lt;p&gt;Quelques aides :&lt;/p&gt;
 
@@ -699,13 +705,28 @@ Bnjour Monde !
   &lt;li&gt;un &lt;a href=&quot;https://www.science-emergence.com/Articles/Formules-math%C3%A9matiques-sous-LaTeX/&quot;&gt;tuto&lt;/a&gt; Latex contenant aussi des instructions pour les équations.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;blockquote&gt;
-  &lt;ul&gt;
-    &lt;li&gt;Pour le markdown, il faudra  utiliser  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$$&lt;/code&gt;et &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$&lt;/code&gt; (les notation Tex) plutôt que &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;\[&lt;/code&gt; et  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;\(&lt;/code&gt; (notations latex).&lt;/li&gt;
-    &lt;li&gt;Lorsque vous faites de l’exportation en html, les mathématiques sont représentées en utilisant &lt;a href=&quot;https://www.mathjax.org/&quot;&gt;Mathjax&lt;/a&gt; (voir &lt;a href=&quot;ttps://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference&quot;&gt;une aide&lt;/a&gt; de mathjax)&lt;/li&gt;
-    &lt;li&gt;L’ancêtre de &lt;a href=&quot;https://fr.wikipedia.org/wiki/LaTeX&quot;&gt;Latex&lt;/a&gt; : &lt;a href=&quot;https://fr.wikipedia.org/wiki/TeX&quot;&gt;Tex&lt;/a&gt;, a été créé par le célèbre informaticien &lt;a href=&quot;https://fr.wikipedia.org/wiki/Donald_Knuth&quot;&gt;Donald Knuth&lt;/a&gt; par ce qu’il n’existait rien sur ordinateur à l’époque pour écrire &lt;a href=&quot;https://fr.wikipedia.org/wiki/The_Art_of_Computer_Programming&quot;&gt;ses livres&lt;/a&gt; en respectant une typographie correcte.&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/blockquote&gt;
+&lt;h3 id=&quot;en-markdown&quot;&gt;en markdown&lt;/h3&gt;
+
+&lt;p&gt;On peut écrire en markdown les équation latex.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;pour une équation dans le texte, on dit &lt;em&gt;inline&lt;/em&gt; on entoure notre équation  par des &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;pour équation au milieu de la page, on dit &lt;em&gt;display&lt;/em&gt;, on entoure notre équation par des &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$$&lt;/code&gt; et on saute une ligne avant et après les &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$$&lt;/code&gt;. comme dans l’exemple ci-après.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Equation en mode inline :&lt;/p&gt;
+
+&lt;div class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;je pense que $3 + 2$ vaut 5.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Equation en mode &lt;em&gt;display&lt;/em&gt; :&lt;/p&gt;
+
+&lt;div class=&quot;language-tex highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;p&quot;&gt;$$&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;$$&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Lorsque vous faites de l’exportation en html, les mathématiques sont représentées en utilisant &lt;a href=&quot;https://www.mathjax.org/&quot;&gt;Mathjax&lt;/a&gt;. Ce &lt;a href=&quot;https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference&quot;&gt;post&lt;/a&gt; résume les possibilités basique de mathjax pour écrire des équations.&lt;/p&gt;
 
 &lt;blockquote class=&quot;attention&quot;&gt;
   &lt;p&gt;Il ne faut pas mettre d’espace après le premier &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$&lt;/code&gt; et avant le dernier &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$&lt;/code&gt; sinon, pandoc ne reconnaîtra pas que ce sont des équations que vous voulez écrire. Ansi &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ \frac{1}{2}$&lt;/code&gt; affichera &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ \frac{1}{2}$&lt;/code&gt;, alors que &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$\frac{1}{2}$&lt;/code&gt; affichera $\frac{1}{2}$.&lt;/p&gt;
@@ -723,11 +744,13 @@ Bnjour Monde !
 
 &lt;h3 id=&quot;export-simple&quot;&gt;export simple&lt;/h3&gt;
 
-&lt;p&gt;Avec les extension que l’on a installé, il est déjà possible d’exporter le markdown en html, puis — via un navigateur — de l’exporter en pdf. Voir partie &lt;a href=&quot;#export-et-preview&quot;&gt;export et preview&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Avec les extension que l’on a installé, il est déjà possible d’exporter le markdown en html, puis — via un navigateur — de l’exporter en pdf. Voir partie &lt;a href=&quot;/cours_informatique/tutos/editeur/vsc/installation/configuration/markdown/2021/09/14/vsc-markdown.html#export-et-preview&quot;&gt;preview du tutoriel&lt;/a&gt; pour l’éditeur vscode.&lt;/p&gt;
 
-&lt;p&gt;Cela suffit pour la majorité des cas. Si l’on veut exporter dans des formats plus exotique ou encore finement contrôler le résultat de l’export, il faut utiliser des logiciel plus complexe, comme &lt;a href=&quot;https://pandoc.org/&quot;&gt;pandoc&lt;/a&gt; dont le boulot est de convertir à peut prêt n’importe quel format en un (quelconque) autre  format.&lt;/p&gt;
+&lt;p&gt;Cela suffit pour la majorité des cas.&lt;/p&gt;
 
 &lt;h3 id=&quot;utilitaire-pandoc&quot;&gt;utilitaire pandoc&lt;/h3&gt;
+
+&lt;p&gt;Si l’on veut exporter dans des formats plus exotiques ou encore finement contrôler le résultat de l’export, on peut utiliser le logiciel  &lt;a href=&quot;https://pandoc.org/&quot;&gt;pandoc&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://pandoc.org/&quot;&gt;pandoc&lt;/a&gt; est un monstre. Il permet (parfois avec un peu d’huile de coude il est vrai) de convertir à peut prêt tout document en un autre format (voir les &lt;a href=&quot;https://pandoc.org/demos.html&quot;&gt;démos&lt;/a&gt; pour différentes conversions).&lt;/p&gt;
 
@@ -735,11 +758,17 @@ Bnjour Monde !
 
 &lt;p&gt;D’après la &lt;a href=&quot;https://pandoc.org/installing.html&quot;&gt;doc&lt;/a&gt;, selon le système d’exploitation :&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;Linux : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo apt install pandoc&lt;/code&gt; dans un terminal&lt;/li&gt;
-  &lt;li&gt;Mac : installez &lt;a href=&quot;https://brew.sh/&quot;&gt;brew&lt;/a&gt; puis &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;brew install pandoc&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;Windows : installez &lt;a href=&quot;https://chocolatey.org/&quot;&gt;Chocolatly&lt;/a&gt; puis &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;choco install pandoc&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;details&gt;&lt;summary&gt;sous linux&lt;/summary&gt;&lt;div&gt;
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo apt install pandoc&lt;/code&gt; dans un &lt;a href=&quot;/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html&quot;&gt;terminal&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;/details&gt;
+
+&lt;details&gt;&lt;summary&gt;sous mac&lt;/summary&gt;&lt;div&gt;
+&lt;p&gt;installez &lt;a href=&quot;https://brew.sh/&quot;&gt;brew&lt;/a&gt; puis &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;brew install pandoc&lt;/code&gt; dans un &lt;a href=&quot;/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html&quot;&gt;terminal&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;/details&gt;
+
+&lt;details&gt;&lt;summary&gt;sous windows&lt;/summary&gt;&lt;div&gt;
+&lt;p&gt;installez &lt;a href=&quot;https://chocolatey.org/&quot;&gt;Chocolatly&lt;/a&gt; puis &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;choco install pandoc&lt;/code&gt; dans un &lt;a href=&quot;/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html&quot;&gt;terminal&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;/details&gt;
 
 &lt;p&gt;Selon le format d’export, il vous faudra d’autres logiciels. Je vous conseille d’ores et déjà d’&lt;a href=&quot;https://www.latex-project.org/get/&quot;&gt;installer latex&lt;/a&gt; pour pouvoir facilement exporter en pdf sans passer par html et un navigateur.&lt;/p&gt;
 
@@ -1268,92 +1297,4 @@ System       bin          etc          private      usr
     &lt;li&gt;une application mac est un dossier.&lt;/li&gt;
     &lt;li&gt;comment écrire sur le disque dur, le &lt;a href=&quot;https://en.wikipedia.org/wiki/Comparison_of_file_systems&quot;&gt;file system&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
-&lt;/blockquote&gt;</content><author><name>François Brucker</name></author><category term="fichiers" /><category term="système" /><category term="fichiers" /><category term="terminal" /><summary type="html">Qu’est-ce qu’un fichier ? Un dossier ? Comment naviguer dans un système de fichier avec le terminal ou l’explorateur de fichier.</summary></entry><entry><title type="html">Utiliser un terminal</title><link href="/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html" rel="alternate" type="text/html" title="Utiliser un terminal" /><published>2021-08-24T00:00:00+00:00</published><updated>2021-08-24T00:00:00+00:00</updated><id>/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal</id><content type="html" xml:base="/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html">&lt;p&gt;Qu’est-ce que le terminal ? Comment le trouver et taper des commandes.&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-&lt;h2 id=&quot;introduction&quot;&gt;introduction&lt;/h2&gt;
-
-&lt;p&gt;Le terminal est l’outil utilisé pour taper des commandes qui seront ensuite exécutées par votre ordinateur. On appelle ça le &lt;a href=&quot;https://fr.wikipedia.org/wiki/Interface_en_ligne_de_commande&quot;&gt;CLI&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Même si cela est intimidant, le CLI est le moyen le plus efficace d’interagir avec votre ordinateur car, contrairement aux applications :&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;on peut ajouter des paramètres aux instructions&lt;/li&gt;
-  &lt;li&gt;on gère facilement les entrées et les sorties des commandes&lt;/li&gt;
-  &lt;li&gt;c’est automatisable par des scripts.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Enfin, c’est souvent la seule façon d’interagir avec un ordinateur distant.&lt;/p&gt;
-
-&lt;p&gt;Vous pouvez a priori utiliser votre ordinateur uniquement avec un terminal. L’interface graphique n’est qu’un ajout sympathique mais non indispensable à l’utilisation d’un ordinateur. Alors bien sur vous n’utiliserez pas le terminal tout le temps mais savoir s’en servir pourra vous faire gagner un temps fou lorsque vous faites de l’informatique (en plus de ce petit sentiment grisant de &lt;a href=&quot;https://www.youtube.com/watch?v=MvEXkd3O2ow&quot;&gt;voir directement la matrice&lt;/a&gt;).&lt;/p&gt;
-
-&lt;h2 id=&quot;lapplication-terminal&quot;&gt;l’application terminal&lt;/h2&gt;
-
-&lt;p&gt;Selon votre système d’application, le terminal va se trouver à des endroits différents :&lt;/p&gt;
-
-&lt;details&gt;&lt;summary&gt;sous linux&lt;/summary&gt;&lt;div&gt;
-&lt;p&gt;Si vous êtes sous linux vous devriez savoir ouvrir un terminal. C’est souvent une application avec une télévision comme icône.&lt;/p&gt;
-
-&lt;blockquote class=&quot;note&quot;&gt;
-  &lt;p&gt;TBD : à faire mieux.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;/div&gt;&lt;/details&gt;
-
-&lt;details&gt;&lt;summary&gt;sous mac&lt;/summary&gt;&lt;div&gt;
-&lt;p&gt;Le &lt;a href=&quot;https://www.howtogeek.com/682770/how-to-open-the-terminal-on-a-mac/&quot;&gt;terminal&lt;/a&gt; se trouve dans le dossier &lt;em&gt;“/Application/utilitaires”&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Avec le &lt;strong&gt;Finder&lt;/strong&gt; :&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;menu aller,&lt;/li&gt;
-  &lt;li&gt;allez dans le dossier “&lt;em&gt;utilitaires&lt;/em&gt;”,&lt;/li&gt;
-  &lt;li&gt;double-cliquez sur l’icône “Terminal”.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Le terminal est super utile, ça vaut le coup d’ajouter un raccourci dans la barre du &lt;strong&gt;Finder&lt;/strong&gt;.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Une fois dans l’application &lt;strong&gt;Terminal&lt;/strong&gt; vous pouvez ouvrir une nouvelle fenêtre dans le menu “Shell &amp;gt; Nouvelle Fenêtre &amp;gt; Nouvelle fenêtre avec le profil - …” (les “…” correspondent à votre profil de fenêtre)&lt;/p&gt;
-&lt;/div&gt;&lt;/details&gt;
-
-&lt;details&gt;&lt;summary&gt;sous windows&lt;/summary&gt;&lt;div&gt;
-&lt;p&gt;Le terminal s’appelle &lt;em&gt;powershell&lt;/em&gt; sous w10.&lt;/p&gt;
-
-&lt;p&gt;Pour ouvrir une fenêtre powershell, cliquez droit sur le drapeau windows tout à gauche de la barre des tâches puis choisissez d’ouvrir une fenêtre powershell (ce n’est pas la peine qu’elle soit en mode administrateur)&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Le terminal est super utile, ça vaut le coup d’épingler le powershell dans la barre des raccourcis.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;blockquote class=&quot;attention&quot;&gt;
-  &lt;p&gt;Il existe une autre sorte de terminal sous windows, &lt;em&gt;l’invite de commande&lt;/em&gt;. POur la lancer tapez &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cmd&lt;/code&gt; dans la barre de recherche (juste à droite du drapeau windows tout à gauche de la barre des tâches) puis appuyez sur la touche entrée. 
-Il n’est pas recommandé d’utiliser l’invite de commande, à moins que vous soyez un fana de &lt;a href=&quot;https://www.reddit.com/r/Giscardpunk/&quot;&gt;r/giscardpunk&lt;/a&gt; bien sur.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;/div&gt;&lt;/details&gt;
-
-&lt;h2 id=&quot;utiliser-le-terminal&quot;&gt;utiliser le terminal&lt;/h2&gt;
-
-&lt;p&gt;Maintenant que vous avez trouvé le terminal, ouvrez une fenêtre terminal. Vous êtes devant ce qu’on appelle un &lt;em&gt;prompt&lt;/em&gt;. On attend que vous tapiez des commandes. Ces commandes peuvent être de 2 types :&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;soit des noms de fichiers qui sont &lt;em&gt;exécutables&lt;/em&gt; (ce sont des programmes)&lt;/li&gt;
-  &lt;li&gt;soit des instruction compréhensible par le terminal comme &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;get-command&lt;/code&gt; avec powershell ou &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ls&lt;/code&gt; avec un termnial unix/mac.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;N’ayez pas peur. C’est simple à utiliser. On tape une commande, on appuie sur entrée et la commande s’exécute.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;On utilisera globalement le terminal pour lancer des applications. Pour cela, vous pouvez regarder ce &lt;a href=&quot;/cours_informatique/tutos/systeme/fichiers/2021/08/24/fichiers-navigation.html&quot;&gt;tutoriel&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;autres-tutos&quot;&gt;autres tutos&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;windows : &lt;a href=&quot;https://docs.microsoft.com/fr-fr/powershell/scripting/overview?view=powershell-7.1&quot;&gt;https://docs.microsoft.com/fr-fr/powershell/scripting/overview?view=powershell-7.1&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;mac : &lt;a href=&quot;https://support.apple.com/fr-fr/guide/terminal/welcome/mac&quot;&gt;https://support.apple.com/fr-fr/guide/terminal/welcome/mac&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote class=&quot;note&quot;&gt;
-  &lt;p&gt;TBD : ajouter si on en trouve&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>François Brucker</name></author><category term="tutos" /><category term="systeme" /><category term="CLI" /><category term="terminal" /><category term="système" /><category term="terminal" /><category term="CLI" /><summary type="html">Qu’est-ce que le terminal ? Comment le trouver et taper des commandes.</summary></entry></feed>
+&lt;/blockquote&gt;</content><author><name>François Brucker</name></author><category term="fichiers" /><category term="système" /><category term="fichiers" /><category term="terminal" /><summary type="html">Qu’est-ce qu’un fichier ? Un dossier ? Comment naviguer dans un système de fichier avec le terminal ou l’explorateur de fichier.</summary></entry></feed>

@@ -25,7 +25,7 @@
   <script>
     MathJax = {
       tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']]
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
       },
       svg: {
         fontCache: 'global'
@@ -74,7 +74,7 @@
 <p>Il est facilement lisible dans un éditeur de texte, et il existe de nombreuses façon de l’exporter que ce soit en html (pour l’ouvrir avec un navigateur comme chrome ou firefox) ou en pdf.</p>
 
 <blockquote>
-  <p>Tout ce site a par exemple été écrit en markdown puis transformé en html grâce à <a href="https://jekyllrb.com/">jekyll</a>. Le code source du site est <a href="https://github.com/FrancoisBrucker/cours_informatique">visible</a>, en particulier le code source de <a href="https://github.com/FrancoisBrucker/cours_informatique/blob/master/docs/tutos/_posts/2021-08-30-format-markdown.md">ce fichier</a> (cliquez sur le bouton <code class="language-plaintext highlighter-rouge">raw</code> à droite, juste avant que le fichier ne soit représenté).</p>
+  <p>Tout ce site a par exemple été écrit en markdown (plus précisément une extension de celui-ci nommé <a href="https://kramdown.gettalong.org/documentation.html">kramdown</a>) puis transformé en html grâce à <a href="https://jekyllrb.com/">jekyll</a>. Le code source du site est <a href="https://github.com/FrancoisBrucker/cours_informatique">visible</a>, en particulier le code source de <a href="https://github.com/FrancoisBrucker/cours_informatique/blob/master/docs/tutos/_posts/2021-08-30-format-markdown.md">ce fichier</a> (cliquez sur le bouton <code class="language-plaintext highlighter-rouge">raw</code> à droite, juste avant que le fichier ne soit représenté).</p>
 </blockquote>
 
 <h2 id="syntaxe">syntaxe</h2>
@@ -92,56 +92,25 @@
   <li>le <a href="https://kramdown.gettalong.org/documentation.html">kramdown</a>.</li>
 </ul>
 
-<blockquote class="attention">
-  <p>Nous utilisons pour ce site le <a href="https://kramdown.gettalong.org/documentation.html">kramdown</a> qui est une extension du markdown et est interprété pour le générateur desite statique <a href="https://jekyllrb.com/">jekyll</a>.</p>
-</blockquote>
-
 <h2 id="markdown-avec-vscode">markdown avec vscode</h2>
 
-<blockquote>
-  <p><a href="https://code.visualstudio.com/docs/languages/markdown">https://code.visualstudio.com/docs/languages/markdown</a></p>
-</blockquote>
-
-<blockquote class="note">
-  <p>TBD : https://www.nextinpact.com/article/44926/visual-studio-code-editeur-credible-pour-publication-et-markdown</p>
-</blockquote>
-
-<h3 id="extensions">extensions</h3>
-
-<p>vscode possède de nombreux plugins markdown. qui facilitent l’écriture en markdown. On peut par exemple citer :</p>
-
-<ul>
-  <li><a href="https://github.com/yzhang-gh/vscode-markdown">Markdown All in One</a>. Dans les préférences du module, on décoche <em>Markdown &gt; Extenstion &gt; Math:Enabled</em>. Les maths seront en effet utilisées avec le module suivant</li>
-  <li><a href="https://learnbyexample.github.io/customizing-pandoc/">markdownlint</a> un linter pour écrire du joli markdown.</li>
-  <li><a href="https://github.com/goessner/mdmath">Markdown+Math</a> pour gérer les formules mathématiques comme :
-    <ul>
-      <li>
-\[\frac{1}{2}\]
-      </li>
-      <li>
-\[\sum_{i=1}^n i^2\]
-      </li>
-    </ul>
-  </li>
-  <li><a href="https://shd101wyy.github.io/markdown-preview-enhanced/#/">Markdown Preview Enhanced</a>. Permet d’avoir des feuilles de styles jolies lorsque l’on converti du markdown.</li>
-</ul>
-
-<h3 id="export-et-preview">export et preview</h3>
-
-<p>Pour exporter le markdwon dans quelque chose de plus joli :</p>
-
-<ul>
-  <li>pour compiler : <em>ctrl/cmd + shift + p : markdown All in One: Print current document to HTML</em></li>
-  <li>pour faire une preview : <em>ctrl/cmd + shift + p : markdown: Open preview</em> Mais cela n’utilise pas l’extension Markdown Preview Enhanced, c’est donc plus limité comme rendu.</li>
-</ul>
+<p>Suivez <a href="/cours_informatique/tutos/editeur/vsc/installation/configuration/markdown/2021/09/14/vsc-markdown.html">ce tutoriel</a> pour installer les packages indispensables pour faire du markdown avec <a href="/cours_informatique/tutos/editeur/vsc/installation/configuration/2021/09/03/vsc-installation-et-prise-en-main.html">vscode</a>.</p>
 
 <h2 id="formules-mathématiques">Formules mathématiques</h2>
 
-<p>Lorsque l’on écrit des textes scientifique, vient inévitablement la question de l’écriture des équations. Le langage <a href="https://fr.wikipedia.org/wiki/LaTeX">Latex</a> permet d’écrire toutes les équations imaginable (et même plus) avec un petit langage que l’on peut utiliser directement dans un éditeur de texte (ceux qui ont déjà utilisé l’éditeur d’équation de Word savent que c’est l’enfer de devoir tout cliquer). Une fois ce langage appris, il est étonnement clair, même non compilé en <em>jolies formules</em>. Avec un peut d’habitude, on voit bien que : <code class="language-plaintext highlighter-rouge">$$\cos x=\sum_{k=0}^{\infty}\frac{(-1)^k}{(2k)!}x^{2k}$$</code> est égal à :</p>
+<p>Lorsque l’on écrit des textes scientifique, vient inévitablement la question de l’écriture des équations.</p>
+
+<h3 id="latex">latex</h3>
+
+<p>Le langage <a href="https://fr.wikipedia.org/wiki/LaTeX">Latex</a> permet d’écrire toutes les équations imaginable (et même plus) avec un petit langage que l’on peut utiliser directement dans un éditeur de texte (ceux qui ont déjà utilisé l’éditeur d’équation de Word savent que c’est l’enfer de devoir tout cliquer).</p>
+
+<blockquote>
+  <p>L’ancêtre de <a href="https://fr.wikipedia.org/wiki/LaTeX">Latex</a> : <a href="https://fr.wikipedia.org/wiki/TeX">Tex</a>, a été créé par le célèbre informaticien <a href="https://fr.wikipedia.org/wiki/Donald_Knuth">Donald Knuth</a> par ce qu’il n’existait rien sur ordinateur à l’époque pour écrire <a href="https://fr.wikipedia.org/wiki/The_Art_of_Computer_Programming">ses livres</a> en respectant une typographie correcte.</p>
+</blockquote>
+
+<p>Une fois ce langage appris, il est étonnement clair, même non compilé en <em>jolies formules</em>. Avec un peut d’habitude, on voit bien que : <code class="language-plaintext highlighter-rouge">$$\cos x=\sum_{k=0}^{\infty}\frac{(-1)^k}{(2k)!}x^{2k}$$</code> est égal à :</p>
 
 \[\cos x=\sum_{k=0}^{\infty}\frac{(-1)^k}{(2k)!}x^{2k}\]
-
-<p>En markdown, on ne peut pas écrire tout en Latex (autant utiliser latex dans ce cas…) seulement ses équations, c’est à dire des mathématiques écrites entre <code class="language-plaintext highlighter-rouge">$</code> (pour une équation dans le flux du texte) ou <code class="language-plaintext highlighter-rouge">$$</code> (pour une équation avec un saut de ligne avant et après celle-ci).</p>
 
 <p>Quelques aides :</p>
 
@@ -150,13 +119,28 @@
   <li>un <a href="https://www.science-emergence.com/Articles/Formules-math%C3%A9matiques-sous-LaTeX/">tuto</a> Latex contenant aussi des instructions pour les équations.</li>
 </ul>
 
-<blockquote>
-  <ul>
-    <li>Pour le markdown, il faudra  utiliser  <code class="language-plaintext highlighter-rouge">$$</code>et <code class="language-plaintext highlighter-rouge">$</code> (les notation Tex) plutôt que <code class="language-plaintext highlighter-rouge">\[</code> et  <code class="language-plaintext highlighter-rouge">\(</code> (notations latex).</li>
-    <li>Lorsque vous faites de l’exportation en html, les mathématiques sont représentées en utilisant <a href="https://www.mathjax.org/">Mathjax</a> (voir <a href="ttps://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference">une aide</a> de mathjax)</li>
-    <li>L’ancêtre de <a href="https://fr.wikipedia.org/wiki/LaTeX">Latex</a> : <a href="https://fr.wikipedia.org/wiki/TeX">Tex</a>, a été créé par le célèbre informaticien <a href="https://fr.wikipedia.org/wiki/Donald_Knuth">Donald Knuth</a> par ce qu’il n’existait rien sur ordinateur à l’époque pour écrire <a href="https://fr.wikipedia.org/wiki/The_Art_of_Computer_Programming">ses livres</a> en respectant une typographie correcte.</li>
-  </ul>
-</blockquote>
+<h3 id="en-markdown">en markdown</h3>
+
+<p>On peut écrire en markdown les équation latex.</p>
+
+<ul>
+  <li>pour une équation dans le texte, on dit <em>inline</em> on entoure notre équation  par des <code class="language-plaintext highlighter-rouge">$</code></li>
+  <li>pour équation au milieu de la page, on dit <em>display</em>, on entoure notre équation par des <code class="language-plaintext highlighter-rouge">$$</code> et on saute une ligne avant et après les <code class="language-plaintext highlighter-rouge">$$</code>. comme dans l’exemple ci-après.</li>
+</ul>
+
+<p>Equation en mode inline :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>je pense que $3 + 2$ vaut 5.
+</code></pre></div></div>
+
+<p>Equation en mode <em>display</em> :</p>
+
+<div class="language-tex highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="p">$$</span><span class="m">3</span><span class="o">+</span><span class="m">2</span><span class="p">$$</span>
+
+</code></pre></div></div>
+
+<p>Lorsque vous faites de l’exportation en html, les mathématiques sont représentées en utilisant <a href="https://www.mathjax.org/">Mathjax</a>. Ce <a href="https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference">post</a> résume les possibilités basique de mathjax pour écrire des équations.</p>
 
 <blockquote class="attention">
   <p>Il ne faut pas mettre d’espace après le premier <code class="language-plaintext highlighter-rouge">$</code> et avant le dernier <code class="language-plaintext highlighter-rouge">$</code> sinon, pandoc ne reconnaîtra pas que ce sont des équations que vous voulez écrire. Ansi <code class="language-plaintext highlighter-rouge">$ \frac{1}{2}$</code> affichera <code class="language-plaintext highlighter-rouge">$ \frac{1}{2}$</code>, alors que <code class="language-plaintext highlighter-rouge">$\frac{1}{2}$</code> affichera $\frac{1}{2}$.</p>
@@ -174,11 +158,13 @@
 
 <h3 id="export-simple">export simple</h3>
 
-<p>Avec les extension que l’on a installé, il est déjà possible d’exporter le markdown en html, puis — via un navigateur — de l’exporter en pdf. Voir partie <a href="#export-et-preview">export et preview</a>.</p>
+<p>Avec les extension que l’on a installé, il est déjà possible d’exporter le markdown en html, puis — via un navigateur — de l’exporter en pdf. Voir partie <a href="/cours_informatique/tutos/editeur/vsc/installation/configuration/markdown/2021/09/14/vsc-markdown.html#export-et-preview">preview du tutoriel</a> pour l’éditeur vscode.</p>
 
-<p>Cela suffit pour la majorité des cas. Si l’on veut exporter dans des formats plus exotique ou encore finement contrôler le résultat de l’export, il faut utiliser des logiciel plus complexe, comme <a href="https://pandoc.org/">pandoc</a> dont le boulot est de convertir à peut prêt n’importe quel format en un (quelconque) autre  format.</p>
+<p>Cela suffit pour la majorité des cas.</p>
 
 <h3 id="utilitaire-pandoc">utilitaire pandoc</h3>
+
+<p>Si l’on veut exporter dans des formats plus exotiques ou encore finement contrôler le résultat de l’export, on peut utiliser le logiciel  <a href="https://pandoc.org/">pandoc</a>.</p>
 
 <p><a href="https://pandoc.org/">pandoc</a> est un monstre. Il permet (parfois avec un peu d’huile de coude il est vrai) de convertir à peut prêt tout document en un autre format (voir les <a href="https://pandoc.org/demos.html">démos</a> pour différentes conversions).</p>
 
@@ -186,11 +172,17 @@
 
 <p>D’après la <a href="https://pandoc.org/installing.html">doc</a>, selon le système d’exploitation :</p>
 
-<ul>
-  <li>Linux : <code class="language-plaintext highlighter-rouge">sudo apt install pandoc</code> dans un terminal</li>
-  <li>Mac : installez <a href="https://brew.sh/">brew</a> puis <code class="language-plaintext highlighter-rouge">brew install pandoc</code></li>
-  <li>Windows : installez <a href="https://chocolatey.org/">Chocolatly</a> puis <code class="language-plaintext highlighter-rouge">choco install pandoc</code></li>
-</ul>
+<details><summary>sous linux</summary><div>
+<p><code class="language-plaintext highlighter-rouge">sudo apt install pandoc</code> dans un <a href="/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html">terminal</a></p>
+</div></details>
+
+<details><summary>sous mac</summary><div>
+<p>installez <a href="https://brew.sh/">brew</a> puis <code class="language-plaintext highlighter-rouge">brew install pandoc</code> dans un <a href="/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html">terminal</a></p>
+</div></details>
+
+<details><summary>sous windows</summary><div>
+<p>installez <a href="https://chocolatey.org/">Chocolatly</a> puis <code class="language-plaintext highlighter-rouge">choco install pandoc</code> dans un <a href="/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html">terminal</a></p>
+</div></details>
 
 <p>Selon le format d’export, il vous faudra d’autres logiciels. Je vous conseille d’ores et déjà d’<a href="https://www.latex-project.org/get/">installer latex</a> pour pouvoir facilement exporter en pdf sans passer par html et un navigateur.</p>
 

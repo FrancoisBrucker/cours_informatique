@@ -25,7 +25,7 @@
   <script>
     MathJax = {
       tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']]
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
       },
       svg: {
         fontCache: 'global'
@@ -72,7 +72,7 @@
 
 <p>vscode permet, comme dans tout éditeur de texte, d’éditer et de créer des fichiers texte mais aussi de gérer des <em>workspace</em> qui sont des dossiers contenant des projets.</p>
 
-<p>Ces projets peuvent être de natures diverses, comme des projts web, du python, des rapports, etc.</p>
+<p>Ces projets peuvent être de natures diverses, comme des projets web, du python, des rapports, etc.</p>
 
 <p>Pour ce tutoriel, vous allez :</p>
 
@@ -186,7 +186,7 @@ Bnjour Monde !
 <p>La <a href="https://code.visualstudio.com/docs/getstarted/settings">documentation de vscode sur les préférences</a> est très bien faite. On retiendra que l’on peut avoir des préférences différentes par “utilisateur” (<em>user</em>) ou par “espace de travail” (<em>workspace</em>).</p>
 
 <blockquote>
-  <p>Le fichiers stockant des préférences utilisateurs <a href="https://code.visualstudio.com/docs/getstarted/settings#_settings-file-locations">dépend du système d’exploitation</a>, si vous modifiez des préférences pour l’espace de travail, undossier <em>“.vscode”</em> sera créé à la racine de votre projet, et il contiendra un fichier <em>“settings.json”</em> contenant les différentes préférences.</p>
+  <p>Le fichiers stockant des préférences utilisateurs <a href="https://code.visualstudio.com/docs/getstarted/settings#_settings-file-locations">dépend du système d’exploitation</a>, si vous modifiez des préférences pour l’espace de travail, un dossier <em>“.vscode”</em> sera créé à la racine de votre projet, et il contiendra un fichier <em>“settings.json”</em> contenant les différentes préférences.</p>
 </blockquote>
 
 <p>Personnellement, s’il y a bien une chose qui m’ennuie c’est de constamment sauver mes fichiers. Si je fais une modification de mes fichiers, c’est parce que j’en ai besoin je ne vois pas l’intérêt de devoir sauver pour confirmer. Heureusement, vscode permet (comme tout éditeur qui se respecte) de faire ça en modifiant ses préférences :</p>
@@ -221,11 +221,9 @@ Bnjour Monde !
 </blockquote>
 
 <ul>
-  <li>markdown</li>
   <li>python : linter, black et compagnie.</li>
   <li>git et merge (?)</li>
 </ul>
-
 
   </div>
 

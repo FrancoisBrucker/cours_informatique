@@ -24,7 +24,7 @@
   <script>
     MathJax = {
       tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']]
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
       },
       svg: {
         fontCache: 'global'
@@ -80,7 +80,7 @@
 
 <p>Lorsque l’on code un site, une page web ou n’importe quoi d’autre il faut que l’on sache comment ça va être utilisé.</p>
 
-<p>Notre site doit répondre à un certains nombre de besoins identifiés et qui doivent être facilement assouvis. Pour cela on rédige des <a href="https://fr.wikipedia.org/wiki/R%C3%A9cit_utilisateur"><strong>user stories</strong></a> (au moins une par besoin) qui vont décrire comment un utilisateur ayant un besoin précis va l’assouvir avec notre code. Souvent ces besoins utilisateurs sont liées à un ou plusieurs <strong>tests fonctionnels</strong> qui vont décrire précisément comment un 
+<p>Notre site doit répondre à un certains nombre de besoins identifiés et qui doivent être facilement assouvis. Pour cela on rédige des <a href="https://fr.wikipedia.org/wiki/R%C3%A9cit_utilisateur"><strong>user stories</strong></a> (au moins une par besoin) qui vont décrire comment un utilisateur ayant un besoin précis va l’assouvir avec notre code. Souvent ces besoins utilisateurs sont liées à un ou plusieurs <strong>tests fonctionnels</strong> qui vont décrire précisément comment un
 utilisateur va faire pour réaliser sa user story.</p>
 
 <blockquote>
@@ -116,27 +116,12 @@ utilisateur va faire pour réaliser sa user story.</p>
 
 <ul>
   <li>ça prend trop de temps</li>
-  <li>les users stories et les todos font partie du projet, il doivent pouvoir être géré avec un gestionnaire de sources.</li>
+  <li>les users stories et les todos font partie du projet, il doivent pouvoir être géré avec un gestionnaire de sources</li>
 </ul>
 
-<p>Heureusement, il existe plusieurs <em>langages</em> qui permettent d’écrire du texte structuré dans un éditeur de texte et qui sont jolis même en texte. Nous allons utiliser le <a href="/cours_informatique/tutos/langage/markdown/2021/08/30/format-markdown.html">markdown</a>.</p>
+<p>Heureusement, il existe plusieurs <em>langages</em> qui permettent d’écrire du texte structuré dans un éditeur de texte et qui sont jolis même en texte. Nous allons utiliser le <a href="/cours_informatique/tutos/langage/markdown/2021/08/30/format-markdown.html">markdown</a>. Pour générer du markdown de façon efficace, n’oubliez pas d’installez les extensions <a href="/cours_informatique/tutos/editeur/vsc/installation/configuration/markdown/2021/09/14/vsc-markdown.html">vsc pour markdown</a>.</p>
 
-<blockquote class="note">
-  <p>Pour écrire du markdown simplement, installez l’extension <a href="https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one">Markdown All in One</a></p>
-</blockquote>
-
-<p>Pour s’habituer à écrire du markdown correct, on va également installer un <a href="https://mindsers.blog/fr/post/linting-good-practices/">linter</a> qui va souligner en jaune nos faute de gout.</p>
-
-<blockquote class="node">
-  <p>Installez l’extension : <a href="https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint">markdownlint</a>.</p>
-</blockquote>
-
-<p>Enfin, comme on tente d’écrire en français :</p>
-<blockquote class="node">
-  <p>Installer l’extension <a href="https://marketplace.visualstudio.com/items?itemName=ban.spellright">Spell Right</a> qui ajoute un correcteur orthographique à vscode.</p>
-</blockquote>
-
-<h3 id="user-stories-1">user stories</h3>
+<h3 id="fichiers-de-user-stories">fichiers de user stories</h3>
 
 <blockquote class="note">
   <p>Ajoutez un dossier <em>“user-stories”</em> à votre projet.</p>
