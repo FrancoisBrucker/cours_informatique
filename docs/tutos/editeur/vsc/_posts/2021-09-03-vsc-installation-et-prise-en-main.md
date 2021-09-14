@@ -7,7 +7,7 @@ categories:
 ---
 
 
-Installation et premières configurations de [visual studio code](https://code.visualstudio.com/) (vsc)
+Installation et premières configurations de [visual studio code](https://code.visualstudio.com/) (vsc).
 <!--more-->
 
 ## Introduction

@@ -4,6 +4,7 @@ title:  "vsc et terminal"
 categories: 
     - installation 
     - configuration
+    - terminal
 ---
 
 Les différentes manières d'invoquer un terminal avec  [visual studio code](https://code.visualstudio.com/) (vsc)
