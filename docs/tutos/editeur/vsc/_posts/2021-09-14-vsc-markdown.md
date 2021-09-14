@@ -7,7 +7,7 @@ categories:
     - markdown
 ---
 
-Comment écrire du markdown avec [visual studio code](https://code.visualstudio.com/) (vsc).
+Comment écrire du markdown avec [visual studio code](https://code.visualstudio.com/) (vsc ou encore vscode).
 
 <!--more-->
 

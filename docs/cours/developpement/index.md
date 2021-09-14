@@ -24,7 +24,7 @@ Vous devez dans l'idéal être administrateur de votre ordinateur et avoir fait 
 
 ## Plan
 
-1. [installation python et vsc]({% link cours/developpement_objet/programmation_evenementielle.md %})
+1. [installation python et vsc]({% link cours/developpement/installations.md %})
 2. bases de python
 3. tests
 4. objets
