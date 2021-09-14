@@ -8,11 +8,11 @@ author: "François Brucker"
 
 ## Introduction
 
-Définition du 'Petit Robert'  d'un *algorithme* : 
+Définition du 'Petit Robert'  d'un *algorithme* :
 
 > ensemble des règles opératoires propres à un *calcul* 
 
-Quest-ce que ça veut dire ?
+Qu'est-ce que ça veut dire ?
 
 * **algorithme** : ensemble des règles opératoires propres à un *calcul* 
 * **calcul** : enchaînement des actions nécessaires à l'accomplissement d'une *tâche*
@@ -20,18 +20,17 @@ Quest-ce que ça veut dire ?
 
 On a utilisé un algorithme pour comprendre ce qu'est un algorithme : 
 
-* *Nom* : définition_petit_robert	
-	* *paramètres* : un *mot_à_définir*
-	* *sortie* : aucune
-	* *description* : comprendre la définition d'un mot dans le 'Petit Robert'
+* *Nom* : définition_petit_robert
+  * *paramètres* : un *mot_à_définir*
+  * *sortie* : aucune
+  * *description* : comprendre la définition d'un mot dans le 'Petit Robert'
 * *corps de l'algorithme* :
-	1. étant donné la définition nommée *définition* de *mot_à_définir* dans le 'Petit Robert'
-	2. afficher *définition* à l'écran.
-	3. pour chaque *mot* non compris dans *définition_mot* :
-		1. *définition_petit_robert(mot)*
+  1. étant donné la définition nommée *définition* de *mot_à_définir* dans le 'Petit Robert'
+  2. afficher *définition* à l'écran.
+  3. pour chaque *mot* non compris dans *définition_mot* :
+     1. *définition_petit_robert(mot)*
 
-
-Nota Bene : 
+Nota Bene :
 
 * afficher à l'écran n'est **PAS** un retour de fonction/méthode/algorithme.
 * différence entre nom d'algorithme et exécution de fonction/méthode/algorithme avec des parenthèses
@@ -192,6 +191,7 @@ Ce sont de plus des cas d'utilisation de vos programmes qui montrent qu'il fonct
 ## structure d'un programme
 
 Un programme est composé de trois entités :
+
 * le **programme principal** (aussi appelé **main**) qui est ce qui sera exécuté
 * le **code** qui regroupe l'ensemble des fonctions utilisée par le programme principal
 * les **tests** qui *certifient* que le code fonctionne.

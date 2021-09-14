@@ -43,11 +43,11 @@ On trouve les Outils de développement dans : *"outils" (ou les trois barres hor
 
 La documentation complète est disponible là : <https://developers.google.com/web/tools/chrome-devtools/>
 
-
 ## utilisation
 
 On va regarder et utiliser les différents onglets des outils de développements.
 
+> Pour accéder aux outils de développement, suivez la doc : <https://developer.chrome.com/docs/devtools/open/>.
 
 ### le menu *Elements*
 
