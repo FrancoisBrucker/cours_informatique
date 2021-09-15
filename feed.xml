@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/cours_informatique/feed.xml" rel="self" type="application/atom+xml" /><link href="/cours_informatique/" rel="alternate" type="text/html" /><updated>2021-09-15T14:40:22+00:00</updated><id>/cours_informatique/feed.xml</id><title type="html">cours d’informatique</title><subtitle>Support de cours/td d'informatique à l'école centrale marseille.</subtitle><entry><title type="html">vsc et markdown</title><link href="/cours_informatique/tutos/editeur/vsc/installation/configuration/markdown/2021/09/14/vsc-markdown.html" rel="alternate" type="text/html" title="vsc et markdown" /><published>2021-09-14T00:00:00+00:00</published><updated>2021-09-14T00:00:00+00:00</updated><id>/cours_informatique/tutos/editeur/vsc/installation/configuration/markdown/2021/09/14/vsc-markdown</id><content type="html" xml:base="/cours_informatique/tutos/editeur/vsc/installation/configuration/markdown/2021/09/14/vsc-markdown.html">&lt;p&gt;Comment écrire du markdown avec &lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;visual studio code&lt;/a&gt; (vsc ou encore vscode).&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/cours_informatique/feed.xml" rel="self" type="application/atom+xml" /><link href="/cours_informatique/" rel="alternate" type="text/html" /><updated>2021-09-15T15:11:19+00:00</updated><id>/cours_informatique/feed.xml</id><title type="html">cours d’informatique</title><subtitle>Support de cours/td d'informatique à l'école centrale marseille.</subtitle><entry><title type="html">vsc et markdown</title><link href="/cours_informatique/tutos/editeur/vsc/installation/configuration/markdown/2021/09/14/vsc-markdown.html" rel="alternate" type="text/html" title="vsc et markdown" /><published>2021-09-14T00:00:00+00:00</published><updated>2021-09-14T00:00:00+00:00</updated><id>/cours_informatique/tutos/editeur/vsc/installation/configuration/markdown/2021/09/14/vsc-markdown</id><content type="html" xml:base="/cours_informatique/tutos/editeur/vsc/installation/configuration/markdown/2021/09/14/vsc-markdown.html">&lt;p&gt;Comment écrire du markdown avec &lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;visual studio code&lt;/a&gt; (vsc ou encore vscode).&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -40,14 +40,29 @@
   &lt;p&gt;La documentation officielle a une partie consacrée à python : &lt;a href=&quot;https://code.visualstudio.com/docs/languages/python&quot;&gt;https://code.visualstudio.com/docs/languages/python&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;blockquote class=&quot;note&quot;&gt;
-  &lt;p&gt;TBD : copier de mpci à ici&lt;/p&gt;
+&lt;h2 id=&quot;extension&quot;&gt;extension&lt;/h2&gt;
+
+&lt;p&gt;La principale extension à installer lorsque l’on fait du python est &lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=ms-python.python&quot;&gt;python&lt;/a&gt; développée par microsoft. Il est également recommandé d’installer &lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance&quot;&gt;pylance&lt;/a&gt; (utilitaire puissant d’aide au code).&lt;/p&gt;
+
+&lt;h2 id=&quot;exécuter-du-python&quot;&gt;exécuter du python&lt;/h2&gt;
+
+&lt;h3 id=&quot;interpréteur&quot;&gt;interpréteur&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;si vous n’avez pas d’interpréteur python par défaut vscode vous demandera de le donner (et vous donnera des choix possibles) lors du premier chargement d’un fichier python.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;vscode et python&lt;/p&gt;
+&lt;h3 id=&quot;triangle&quot;&gt;triangle&lt;/h3&gt;
 
-&lt;p&gt;install python de microsoft + python path + triangle + en mligne de commandes.
-hello world.&lt;/p&gt;</content><author><name></name></author><category term="tutos" /><category term="editeur" /><category term="vsc" /><category term="installation" /><category term="configuration" /><category term="python" /><summary type="html">configuration de visual studio code pour le développement en python.</summary></entry><entry><title type="html">vsc et terminal</title><link href="/cours_informatique/tutos/editeur/vsc/installation/configuration/terminal/2021/09/14/vsc-terminal.html" rel="alternate" type="text/html" title="vsc et terminal" /><published>2021-09-14T00:00:00+00:00</published><updated>2021-09-14T00:00:00+00:00</updated><id>/cours_informatique/tutos/editeur/vsc/installation/configuration/terminal/2021/09/14/vsc-terminal</id><content type="html" xml:base="/cours_informatique/tutos/editeur/vsc/installation/configuration/terminal/2021/09/14/vsc-terminal.html">&lt;p&gt;Les différentes manières d’invoquer un terminal avec  &lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;visual studio code&lt;/a&gt; (vsc)
+&lt;h3 id=&quot;terminal&quot;&gt;terminal&lt;/h3&gt;
+
+&lt;h3 id=&quot;tests&quot;&gt;tests&lt;/h3&gt;
+
+&lt;h2 id=&quot;autres-paramètres&quot;&gt;autres paramètres&lt;/h2&gt;
+
+&lt;h3 id=&quot;linter&quot;&gt;linter&lt;/h3&gt;
+
+&lt;h3 id=&quot;black&quot;&gt;black&lt;/h3&gt;</content><author><name></name></author><category term="tutos" /><category term="editeur" /><category term="vsc" /><category term="installation" /><category term="configuration" /><category term="python" /><summary type="html">configuration de visual studio code pour le développement en python.</summary></entry><entry><title type="html">vsc et terminal</title><link href="/cours_informatique/tutos/editeur/vsc/installation/configuration/terminal/2021/09/14/vsc-terminal.html" rel="alternate" type="text/html" title="vsc et terminal" /><published>2021-09-14T00:00:00+00:00</published><updated>2021-09-14T00:00:00+00:00</updated><id>/cours_informatique/tutos/editeur/vsc/installation/configuration/terminal/2021/09/14/vsc-terminal</id><content type="html" xml:base="/cours_informatique/tutos/editeur/vsc/installation/configuration/terminal/2021/09/14/vsc-terminal.html">&lt;p&gt;Les différentes manières d’invoquer un terminal avec  &lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;visual studio code&lt;/a&gt; (vsc)
 &lt;!--more--&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;terminal&quot;&gt;terminal&lt;/h2&gt;
