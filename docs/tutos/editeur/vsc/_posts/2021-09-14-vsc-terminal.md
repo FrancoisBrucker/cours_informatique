@@ -26,7 +26,7 @@ On peut aussi ouvrir un terminal Directement dans node : *"menu Affichage > Term
 
 ![terminal dans vscode]({{ "/assets/cours/web/numerologie/vsc-terminal.png" | relative_url }}){:style="margin: auto;display: block"}
 
-Les différents panels du dessus du terminal (PROBLEMeES, OUTPUT, CONSOLE DE DEBOGAGE et TERMINAL) dans vscode sont des sorties d'autres processus. 
+Les différents panels du dessus du terminal (PROBLEMeES, OUTPUT, CONSOLE DE DEBOGAGE et TERMINAL) dans vscode sont des sorties d'autres processus.
 
 on reste donc 99% du temps sur *TERMINAL* (qui est en sur-brillance).
 

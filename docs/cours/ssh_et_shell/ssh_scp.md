@@ -19,7 +19,7 @@ On va donc plutôt créer nos fichiers sur notre ordinateur, puis les copier et 
 Pour copier un fichier, il existe la commande `cp`. On l'utilise comme ça :
 
 ~~~sh
-$ cp [option] fichier_source fichier_destination
+cp [option] fichier_source fichier_destination
 ~~~
 
 Si aucun fichier de ce nom n'existe à la destination, il sera créé. S'il existe déjà, il sera remplacé.
@@ -27,11 +27,11 @@ Si aucun fichier de ce nom n'existe à la destination, il sera créé. S'il exis
 On peut également copier des dossiers. Vous en trouverez quelques utilisations de base dans [ce tuto](http://www.commandeslinux.fr/commande-cp/). On peut notamment retenir :
 
 ~~~sh
-$ cp -r source destination  # Copie récursive (pour copier des dossiers)
+cp -r source destination  # Copie récursive (pour copier des dossiers)
 ~~~
 
 ~~~sh
-$ cp -p source destination  # Copie en conservant les droits du fichier
+cp -p source destination  # Copie en conservant les droits du fichier
 ~~~
 
 Le problème de `cp`, c'est qu'on ne peut l'utiliser que localement pour faire une copie sur notre machine.
@@ -39,7 +39,7 @@ Le problème de `cp`, c'est qu'on ne peut l'utiliser que localement pour faire u
 Pour copier un fichier vers un serveur (et inversement), on utilise donc la commande `scp`, signifiant *Secure Copy Protocol*. Cette copie utilise le protocole SSH pour assurer l'authenticité et la confidentialité du transfert. Elle s'utilise de la même manière que `cp` :
 
 ~~~sh
-$ scp [option] fichier_source fichier_destination
+scp [option] fichier_source fichier_destination
 ~~~
 
 Pour l'essayer, créez un index.html sur votre machine et copiez-le vers `ovh1.ec-m.fr` dans le dossier www/.
@@ -47,7 +47,7 @@ Pour l'essayer, créez un index.html sur votre machine et copiez-le vers `ovh1.e
 Depuis votre machine (sans être déjà connecté à `ovh1.ec-m.fr`), ça donne :
 
 ~~~sh
-$ scp chemin/index.html mon_herbe@ovh1.ec-m.fr:www/index.html
+scp chemin/index.html mon_herbe@ovh1.ec-m.fr:www/index.html
 ~~~
 
 Si vous allez vérifier sur `ovh1.ec-m.fr`, votre fichier a bien remplacé l'ancien index.html.
@@ -61,7 +61,7 @@ Comme pour `cp`, vous pouvez utiliser `scp` pour copier des dossiers. Le problè
 Pour créer l'archive d'un dossier :
 
 ~~~sh
-$ tar -cvf archive_dossier.tar dossier/
+tar -cvf archive_dossier.tar dossier/
 ~~~
 
 * `c` signifie qu'on crée une archive.
@@ -71,7 +71,7 @@ $ tar -cvf archive_dossier.tar dossier/
 Ensuite, pour extraire ce dossier :
 
 ~~~sh
-$ tar -xvf archive_dossier.tar
+tar -xvf archive_dossier.tar
 ~~~
 
 * `x` signifie qu'on extrait l'archive.
@@ -82,19 +82,19 @@ $ tar -xvf archive_dossier.tar
 Vous pouvez compresser votre archive manuellement avec la commande `xz` :
 
 ~~~sh
-$ xz archive_dossier.tar
+xz archive_dossier.tar
 ~~~
 
 Un fichier *"archive_dossier.tar.xz"* est alors créé. Pour le décompresser, on utilise :
 
 ~~~sh
-$ xz -d archive_dossier.tar.xz
+xz -d archive_dossier.tar.xz
 ~~~
 
 Une autre méthode plus simple est de compresser lors de l'archivage `tar`, en rajoutant `J` en option :
 
 ~~~sh
- $ tar -Jcvf archive_dossier.tar.xz dossier/
+ tar -Jcvf archive_dossier.tar.xz dossier/
 ~~~
 
 Et idem lors de l'extraction.
