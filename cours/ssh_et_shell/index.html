@@ -82,33 +82,7 @@
 </div></details>
 
 <details><summary>sous Windows</summary><div>
-<p>Il y a plusieurs choses à installer. Windows vient avec la partie client d’openssh déjà installée. Il nous reste à installer la partie serveur et faire en sorte que celui ci et l’agent se mettent en route à chaque démarrage.</p>
-
-<p>On commence par installer <em>OpenSSH serveur</em>, en suivant le <a href="https://docs.microsoft.com/fr-fr/windows-server/administration/openssh/openssh_install_firstuse">tuto de microsoft</a> :</p>
-
-<ol>
-  <li>Ouvrez <em>Paramètres</em>, sélectionnez “<em>Applications &gt; Applications et fonctionnalités</em>”, puis <em>Fonctionnalités facultatives</em>.</li>
-  <li>recherchez <em>OpenSSH client</em> et vérifiez qu’il est déjà installé</li>
-  <li>recherchez <em>OpenSSH serveur</em> et installez le.</li>
-</ol>
-
-<p>Puis on ouvre un powershell en mode administrateur (clique droit sur le menu <em>démarrer</em> (le drapeau windows en bas à droite de la barre des tâches) puis on choisit <em>powershell (en mode administrateur)</em>). Ensuite on copie colle les commandes qui vont lancer le service et faire en sorte qu’il s’exécutera à chaque lancement (partie <em>Démarrer et configurer OpenSSH Server</em> du <a href="https://docs.microsoft.com/fr-fr/windows-server/administration/openssh/openssh_install_firstuse">tuto</a>) :</p>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Start the sshd service</span>
-Start-Service sshd
-
-<span class="c"># OPTIONAL but recommended:</span>
-Set-Service <span class="nt">-Name</span> sshd <span class="nt">-StartupType</span> <span class="s1">'Automatic'</span>
-
-<span class="c"># Confirm the firewall rule is configured. It should be created automatically by setup.</span>
-Get-NetFirewallRule <span class="nt">-Name</span> <span class="k">*</span>ssh<span class="k">*</span>
-
-<span class="c"># There should be a firewall rule named "OpenSSH-Server-In-TCP", which should be enabled</span>
-<span class="c"># If the firewall does not exist, create one</span>
-New-NetFirewallRule <span class="nt">-Name</span> sshd <span class="nt">-DisplayName</span> <span class="s1">'OpenSSH Server (sshd)'</span> <span class="nt">-Enabled</span> True <span class="nt">-Direction</span> Inbound <span class="nt">-Protocol</span> TCP <span class="nt">-Action</span> Allow <span class="nt">-LocalPort</span> 22
-</code></pre></div></div>
-
-<p>Enfin, il faut lancer l’agent ssh et s’assurer qu’il sera démarré automatiquement à chaque démarrage  (on suit le tuto de <a href="https://docs.microsoft.com/fr-fr/windows-server/administration/openssh/openssh_keymanagement">gestion des clés OpenSSH</a>):</p>
+<p>Les dernières versions de windows viennent avec tout ssh d’installé. Il faut juste faire en sorte que l’Agent ssh soit lancé au démarrage (on suit le tuto de <a href="https://docs.microsoft.com/fr-fr/windows-server/administration/openssh/openssh_keymanagement">gestion des clés OpenSSH</a>). Ouvrez un fenêtre <strong>powershell en mode administrateur</strong> (clique droit sur le drapeau, puis choissser <em>pouwershel (admin)</em>), puis tapez les commandes :</p>
 
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Set the sshd service to be started automatically</span>
 Get-Service <span class="nt">-Name</span> ssh-agent | Set-Service <span class="nt">-StartupType</span> Automatic
@@ -134,13 +108,15 @@ Start-Service ssh-agent
   <p><a href="/cours_informatique/cours/ssh_et_shell/ssh_rsa.html">Le chiffrement RSA</a> est le fondement mathématiques du chiffrement utilisé par ssh.</p>
 </blockquote>
 
+<h3 id="redirection-de-port">redirection de port</h3>
+
 <blockquote class="note">
-  <p>TBD : redirections de port</p>
+  <p>TBD : redirection de port</p>
 </blockquote>
 
 <h2 id="shell">shell</h2>
 
-<p>POur s’en sortir devant un terminal, qu’il soit en local ou à distance.</p>
+<p>Pour s’en sortir devant un terminal, qu’il soit en local ou à distance.</p>
 
 <h3 id="unix">unix</h3>
 

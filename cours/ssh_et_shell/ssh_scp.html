@@ -79,31 +79,31 @@
 
 <p>Pour copier un fichier, il existe la commande <code class="language-plaintext highlighter-rouge">cp</code>. On l’utilise comme ça :</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cp</span> <span class="o">[</span>option] fichier_source fichier_destination
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cp</span> <span class="o">[</span>option] fichier_source fichier_destination
 </code></pre></div></div>
 
 <p>Si aucun fichier de ce nom n’existe à la destination, il sera créé. S’il existe déjà, il sera remplacé.</p>
 
 <p>On peut également copier des dossiers. Vous en trouverez quelques utilisations de base dans <a href="http://www.commandeslinux.fr/commande-cp/">ce tuto</a>. On peut notamment retenir :</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cp</span> <span class="nt">-r</span> <span class="nb">source </span>destination  <span class="c"># Copie récursive (pour copier des dossiers)</span>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cp</span> <span class="nt">-r</span> <span class="nb">source </span>destination  <span class="c"># Copie récursive (pour copier des dossiers)</span>
 </code></pre></div></div>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cp</span> <span class="nt">-p</span> <span class="nb">source </span>destination  <span class="c"># Copie en conservant les droits du fichier</span>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cp</span> <span class="nt">-p</span> <span class="nb">source </span>destination  <span class="c"># Copie en conservant les droits du fichier</span>
 </code></pre></div></div>
 
 <p>Le problème de <code class="language-plaintext highlighter-rouge">cp</code>, c’est qu’on ne peut l’utiliser que localement pour faire une copie sur notre machine.</p>
 
 <p>Pour copier un fichier vers un serveur (et inversement), on utilise donc la commande <code class="language-plaintext highlighter-rouge">scp</code>, signifiant <em>Secure Copy Protocol</em>. Cette copie utilise le protocole SSH pour assurer l’authenticité et la confidentialité du transfert. Elle s’utilise de la même manière que <code class="language-plaintext highlighter-rouge">cp</code> :</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>scp <span class="o">[</span>option] fichier_source fichier_destination
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scp <span class="o">[</span>option] fichier_source fichier_destination
 </code></pre></div></div>
 
 <p>Pour l’essayer, créez un index.html sur votre machine et copiez-le vers <code class="language-plaintext highlighter-rouge">ovh1.ec-m.fr</code> dans le dossier www/.</p>
 
 <p>Depuis votre machine (sans être déjà connecté à <code class="language-plaintext highlighter-rouge">ovh1.ec-m.fr</code>), ça donne :</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>scp chemin/index.html mon_herbe@ovh1.ec-m.fr:www/index.html
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scp chemin/index.html mon_herbe@ovh1.ec-m.fr:www/index.html
 </code></pre></div></div>
 
 <p>Si vous allez vérifier sur <code class="language-plaintext highlighter-rouge">ovh1.ec-m.fr</code>, votre fichier a bien remplacé l’ancien index.html.</p>
@@ -118,7 +118,7 @@
 
 <p>Pour créer l’archive d’un dossier :</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">tar</span> <span class="nt">-cvf</span> archive_dossier.tar dossier/
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">tar</span> <span class="nt">-cvf</span> archive_dossier.tar dossier/
 </code></pre></div></div>
 
 <ul>
@@ -129,7 +129,7 @@
 
 <p>Ensuite, pour extraire ce dossier :</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">tar</span> <span class="nt">-xvf</span> archive_dossier.tar
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">tar</span> <span class="nt">-xvf</span> archive_dossier.tar
 </code></pre></div></div>
 
 <ul>
@@ -142,17 +142,17 @@
 
 <p>Vous pouvez compresser votre archive manuellement avec la commande <code class="language-plaintext highlighter-rouge">xz</code> :</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>xz archive_dossier.tar
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>xz archive_dossier.tar
 </code></pre></div></div>
 
 <p>Un fichier <em>“archive_dossier.tar.xz”</em> est alors créé. Pour le décompresser, on utilise :</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>xz <span class="nt">-d</span> archive_dossier.tar.xz
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>xz <span class="nt">-d</span> archive_dossier.tar.xz
 </code></pre></div></div>
 
 <p>Une autre méthode plus simple est de compresser lors de l’archivage <code class="language-plaintext highlighter-rouge">tar</code>, en rajoutant <code class="language-plaintext highlighter-rouge">J</code> en option :</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span><span class="nb">tar</span> <span class="nt">-Jcvf</span> archive_dossier.tar.xz dossier/
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nb">tar</span> <span class="nt">-Jcvf</span> archive_dossier.tar.xz dossier/
 </code></pre></div></div>
 
 <p>Et idem lors de l’extraction.</p>
