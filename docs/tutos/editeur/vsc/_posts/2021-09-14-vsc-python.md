@@ -13,10 +13,24 @@ configuration de  [visual studio code](https://code.visualstudio.com/) pour le d
 
 > La documentation officielle a une partie consacrée à python : <https://code.visualstudio.com/docs/languages/python>
 
-> TBD : copier de mpci à ici
-{:.note}
+## extension
 
-vscode et python
+La principale extension à installer lorsque l'on fait du python est [python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) développée par microsoft. Il est également recommandé d'installer [pylance](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance) (utilitaire puissant d'aide au code).
 
-install python de microsoft + python path + triangle + en mligne de commandes.
-hello world.
+## exécuter du python
+
+### interpréteur
+
+> si vous n'avez pas d'interpréteur python par défaut vscode vous demandera de le donner (et vous donnera des choix possibles) lors du premier chargement d'un fichier python.
+
+### triangle
+
+### terminal
+
+### tests
+
+## autres paramètres
+
+### linter
+
+### black
