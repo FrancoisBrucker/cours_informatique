@@ -15,3 +15,9 @@ configuration de  [visual studio code](https://code.visualstudio.com/) pour le d
 
 > TBD : copier de mpci à ici
 {:.note}
+
+vscode et python
+
+install python de microsoft + python path + triangle + en mligne de commandes.
+hello world.
+
