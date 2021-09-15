@@ -20,4 +20,3 @@ vscode et python
 
 install python de microsoft + python path + triangle + en mligne de commandes.
 hello world.
-
