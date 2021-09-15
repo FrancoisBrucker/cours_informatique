@@ -1,7 +1,6 @@
 ---
 layout: page
 title:  "Base du développement logiciel (en python)"
-tags: informatique graphes
 author: "François Brucker"
 ---
 

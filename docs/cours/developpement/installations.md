@@ -1,15 +1,14 @@
 ---
 layout: page
 title:  "installations de python et vsc"
-tags: informatique graphes
 author: "François Brucker"
 ---
 
 Nous allons installer et configurer les principaux outils dont nous aurons besoin pour ce cours :
 
-1. un éditeur de texte (on a choisi [vscode](https://code.visualstudio.com/)) qui nous permettra d'écrire du code et de gérer nos projets
-2. installation de l'interpréteur python (vous avons choisi la distribution [anaconda](https://www.anaconda.com/)) qui nous permettr d'exécuter nos programmes
-3. on liera également l'éditeur de texte à l'interpréteur python pour que le développement soit facilité (ce qui se fait souvent doit être fait rapidement).
+1. un éditeur de texte (on a choisi [vscode](https://code.visualstudio.com/)) qui nous permettra d'écrire du code et de gérer nos projets : [partie vsc](#vsc)
+2. installation de l'interpréteur python (vous avons choisi la distribution [anaconda](https://www.anaconda.com/)) qui nous permettre d'exécuter nos programmes : [partie installation python](#installation-python)
+3. on liera également l'éditeur de texte à l'interpréteur python pour que le développement soit facilité (ce qui se fait souvent doit être fait rapidement) : [partie python avec vsc](#python-avec-vscode)
 
 ## vsc
 
@@ -23,4 +22,5 @@ On [installera la version anaconda de python]({% post_url /tutos/python/2021-09-
 
 ## python avec vscode
 
-Commencez par suivre le [tutoriel vscode et python]({% post_url tutos/editeur/vsc/2021-09-14-vsc-python %}).
+Commencez par suivre le [tutoriel vscode et python]({% post_url tutos/editeur/vsc/2021-09-14-vsc-python %}) sans faire la partie *autres extensions et paramètres*.
+

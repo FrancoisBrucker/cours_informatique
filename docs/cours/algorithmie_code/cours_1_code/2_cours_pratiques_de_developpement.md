@@ -28,13 +28,13 @@ Vous pouvez soit utiliser l'interpréteur de votre système soit l'installer à 
 
 ### interpréteur python
 
-Le langage python n'est qu'une façon parmi d'autres de décrire et d'écrire des algorithmes. 
+Le langage python n'est qu'une façon parmi d'autres de décrire et d'écrire des algorithmes.
 
 L'interpréteur python est le logiciel qui permet de transcrire le langage python en langage machine exécutable. On accède à l'interpréteur python en exécutant le programme `python3` (ou juste `python` si vous êtes sous windows) depuis une fenêtre terminal.
 
 Ce programme python est utilisable essentiellement de 2.5 manières en [ligne de commande](https://fr.wikipedia.org/wiki/Interface_en_ligne_de_commande) (voir <https://informatique.centrale-marseille.fr/tutos/post/initiation-linux.html> pour une aide sur le terminal unix, ou <https://www.varonis.com/blog/windows-powershell-tutorials/> pour le powershell windows) : 
 
-* on exécute l'application `python3` dans un terminal. On est ensuite devant une ligne finissant par `>>>`. En tapant une ligne du langage python, elle est exécutée immédiatement, puis est à nouveau affiché les `>>>`. Comme chaque ligne est directement exécutée, il est très difficile d'écrire plus d'une ligne de code. 
+* on exécute l'application `python3` dans un terminal. On est ensuite devant une ligne finissant par `>>>`. En tapant une ligne du langage python, elle est exécutée immédiatement, puis est à nouveau affiché les `>>>`. Comme chaque ligne est directement exécutée, il est très difficile d'écrire plus d'une ligne de code.
 * on exécute la commande `python3 mon_programme.py` où `mon_programme.py`est un fichier python dans le même dossier que votre terminal (le début de la ligne vous dit où est le terminal)
 * `python3 -m une_bibliothèque_python` Utilisé pour exécuter des utilitaires python comme `pip3` pour installer un package ou les bibliothèques de tests
 
@@ -77,7 +77,7 @@ Et on sauve. Ou bien on met en route l'autosave (*file > autosave*)
 
 On peut ensuite exécuter notre code de plusieurs façons :
 
-* on clique sur le triangle vert en haut à droite de la fenêtre : une sous-fenêtre apparaît avec marqué `TERMINAL` et notre fichier est passé à l'interpréteur python. Chez moi j'ai marqué ça : 
+* on clique sur le triangle vert en haut à droite de la fenêtre : une sous-fenêtre apparaît avec marqué `TERMINAL` et notre fichier est passé à l'interpréteur python. Chez moi j'ai marqué ça :
   ```text
   fbrucker@emma  » /usr/local/bin/python3 "/Users/fbrucker/projets/hello/main.py"
   Bonjour les gens !
@@ -88,20 +88,9 @@ On peut ensuite exécuter notre code de plusieurs façons :
 
 ### linter
 
-[linter](https://code.visualstudio.com/docs/python/linting)
-
-Le linter est une aide pour écrire du code qui est à la fois fonctionnel et lisible. Cela permet de supprimer la majorité des problèmes avant l'exécution.
-
-On va utiliser [pycodestyle](https://pycodestyle.pycqa.org/en/latest/intro.html) qui permet de respecter la [PEP8](https://www.python.org/dev/peps/pep-0008/).
-
-On commence par l'installer avec la commande : `pip3 install pycodestyle` (ou `pip install pycodestyle` sous windows).
-
-Placez vous  dans l'onglet correspondant à votre code et mettez en route le linter. POur cela :
-1. on le choisit en tapant la commande (crtl/cmd+shift+P) : *Python: Select Linter* et on choisit `pycodestyle`
-2. on le met en route si ce n'est pas déjà le cas avec la commande : *python: Enable Linter*.
+[linting vsc et python]({% post_url tutos/editeur/vsc/2021-09-14-vsc-python %}#linter)
 
 Une fois le fichier sauvé, on voit s'il y a des soucis ou pas. Créons en un pour voir si le linter fonctionne :
-
 
 ```python
 print ("bonjour les gens !")
@@ -185,7 +174,7 @@ Vous ne devriez pas avoir de rouge, le linter doit être content :
 * une ligne vide à la fin
 * deux lignes vides entre deux définitions de fonctions
 
-Mettons en place nos tests. 
+Mettons en place nos tests.
 
 1. dans les préférences (*file/code > preferences > settings*) tapez `python.testing.pytestEnabled`  dans la barre de recherche et cochez la case. Ceci dit à vscode que notre framework de test est pytest (il y en a d'autres possible comme [unittest](https://docs.python.org/fr/3.9/library/unittest.html) ou encore [nosetests](https://nose.readthedocs.io/en/latest/), mais on ne va pas les utiliser. Assurez vous cependant qu'un seul framework de test soit utilisé à la fois. Ca devrait être le cas si vous n'avez pas cliqué un peu partout).
 2. on configure les tests de notre projet en tapant la commande (ctrl/cmd+shift+p) : *python : Configure tests* on choisit *pytest* puis *. (root)* qui donne le dossier de départ où aller chercher nos tests

@@ -46,7 +46,7 @@ La barre d'activité de la fenêtre vscode (les icônes sur la gauche de la fen�
 
 Vous devriez aussi avoir un onglet ouvert qui s'appelle *welcome*. Vous pouvez la fermer en cliquant sur la croix à droite de son nom.
 
-### installation d'extensions
+### installation d'extensions {#extensions}
 
 Pour l'instant vscode nous parle anglais. Remédions tout de suite à cela en installant le pack français.
 
