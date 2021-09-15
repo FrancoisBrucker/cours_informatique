@@ -22,5 +22,4 @@ On [installera la version anaconda de python]({% post_url /tutos/python/2021-09-
 
 ## python avec vscode
 
-Commencez par suivre le [tutoriel vscode et python]({% post_url tutos/editeur/vsc/2021-09-14-vsc-python %}) sans faire la partie *autres extensions et paramètres*.
-
+Commencez par suivre le [tutoriel vscode et python]({% post_url tutos/editeur/vsc/2021-09-14-vsc-python %}).
