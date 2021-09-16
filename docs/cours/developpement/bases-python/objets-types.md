@@ -98,6 +98,7 @@ Dans un interpréteur :
 {: .a-faire}
 
 > En utilisant le fait que la fonction `len(chaine de caractère)` donne le nombre de caractères de la chaine (par exemple `len("abc")` rend `3`), et que l'exposant eb python s'écrit `**` (par exemple `2**8` rend `256`) donnez le nombre de chiffre du 27ème [nombre de Mersenne premier](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier).
+{: .a-faire}
 {% details solution %}
 
 Dans un interpréteur :
@@ -130,7 +131,7 @@ True
 {: .a-faire}
 {% details solution %}
 
-Une chaine de caractère est fausse si elle est vide et vraie sinon. 
+Une chaine de caractère est fausse si elle est vide et vraie sinon.
 
 Dans un interpréteur :
 
@@ -166,6 +167,7 @@ On applique `méthode` à `objet` en utilisant les `paramètres` de la méthode.
 Chaque classe vient avec des méthodes. Si les nombre et booléens ont peux de méthode, les [chaines de caractères en ont tout un tas](https://docs.python.org/3/library/stdtypes.html#string-methods).
 
 > Combien y a-t-il de 0 dans le 27ème [nombre de Mersenne premier](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier).
+{: .a-faire}
 {% details solution %}
 
 Dans un interpréteur :
@@ -178,21 +180,35 @@ Dans un interpréteur :
 {% enddetails %}
 {: .a-faire}
 
-On peut chainer les méthodes, la sortie d'une méthode devenant l'entrée de la prochaine. Par exemple :
+On peut chainer les méthodes, la sortie d'une méthode devenant l'entrée de la prochaine. Par exemple, avec 2 méthodes :
 
 ```python
-str(2 ** 44497 - 1).replace("2","x").replace("7","2").replace("x","7")
+objet.methode_1().methode_2()
 ```
 
+Signifie que méthode2() est appliquée à l'objet résultat de `objet.methode1()`
+
+Et avec n méthodes :
+
+```python
+objet.methode1().methode2(). ... .methode_n()
+```
+
+Signifie que `methode_n()` est appliquée au résultat de `objet.methode_1(). ... .methode_n-1()`
+
+> Que fait :
+>
+> ```python
+> str(2 ** 44497 - 1).replace("2","x").replace("7","2").replace("x","7")
+> ```
+>
+{: .a-faire}
+{% details solution %}
 Il est aisé de comprendre ce que ça fait en procédant de droite à gauche :
 
 1. `replace("x","7")` est appliqué à ce qui est à sa gauche donc `str(2 ** 44497 - 1).replace("2","x").replace("7","2")`
 2. `replace("7","2")` est appliqué à ce qui est à sa gauche donc `str(2 ** 44497 - 1).replace("2","x")`
 3. `replace("2","x")` est appliqué à ce qui est à sa gauche donc `str(2 ** 44497 - 1)`
-
-> En déduire ce que fait `str(2 ** 44497 - 1).replace("2","x").replace("7","2").replace("x","7")`
-{: .a-faire}
-{% details solution %}
 
 En remontant les opérations précédentes :
 
@@ -206,15 +222,67 @@ On a donc au final échangé les 2 et les 7 du 27ème nombre premier de Mersenne
 {% enddetails %}
 {: .a-faire}
 
-### attrbuts d'une classe
+### attributs d'une classe
+
+C'est plus rare, mais certaines classes possèdent  des également des *attributs* en plus des méthodes. Ce sont des valeurs associées à l'objet.
+
+Par exemple les objets de la classe complex qui possède les attibuts `real` et `imag` pour rendre la partie réelle et imaginaire d'un complexe.
+
+```pyhton
+>>> (1+2j).real
+1.0
+>>> (1+2j).imag
+2.0
+```
 
 ## opérations
 
 ### nombres
 
+<https://docs.python.org/3/library/stdtypes.html#boolean-operations-and-or-not>
+
+Les opération peuvent s'effectuer sur les trois types numériques que sont les entier (classe `int`), les réels (classe `float`) et les complexes (classe `complex`)
+
 ### chaines de caractères (concatenation et *)
 
-### comparaisons 
+```python
+>>> "x" + "y"
+'xy'
+>>> 3 * "x"
+'xxx'
+```
 
-## changer de type
+> Recopiez 10 fois : `"j'aime bien faire du python"`
+{: .a-faire}
+{% details solution %}
+Si l'on sait que le caractère `\n` correspond à aller à la ligne, on peut écrire :
 
+```python
+>>> print(10 * "j'aime bien faire du python\n")
+j'aime bien faire du python
+j'aime bien faire du python
+j'aime bien faire du python
+j'aime bien faire du python
+j'aime bien faire du python
+j'aime bien faire du python
+j'aime bien faire du python
+j'aime bien faire du python
+j'aime bien faire du python
+j'aime bien faire du python
+
+```
+
+{% enddetails %}
+{: .a-faire}
+
+### booleen
+
+#### comparaisons
+
+<https://docs.python.org/3/library/stdtypes.html#comparisons>
+
+Les comparaisons rendent un booléen. Par exemple : `2 <= 3` rend le booléen `True`.
+
+#### opérations logiques
+
+<https://docs.python.org/3/library/stdtypes.html#boolean-operations-and-or-not>

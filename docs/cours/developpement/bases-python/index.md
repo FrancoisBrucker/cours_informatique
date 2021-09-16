@@ -16,7 +16,6 @@ Un court cours sur les bases de python. On montrera les types de bases et divers
 
 [La partie objets types et types d'objets]({% link cours/developpement/bases-python/objets-types.md %}) vous dira tout sur les objets courant que vous manipulerez en python.
 
-
 ### variables
 
 variable et espace de noms
@@ -26,6 +25,8 @@ variable et espace de noms
 fonction
 
 variable comme une autre.
+
+visibilité des varaibles de fonctions
 
 fonction lambda
 
@@ -48,18 +49,16 @@ but d'un programme : exécution ligne après ligne dans l'interpréteur. On ne p
 
 ## conteneurs
 
-listes 
+listes
 
 chaine de caracteres ?
 tuple/liste
 
 ## dictionnaires
 
+## boucles
 
-## boucles 
-
-
-## les références 
+## les références
 
 * doc python
 * tutoriel
