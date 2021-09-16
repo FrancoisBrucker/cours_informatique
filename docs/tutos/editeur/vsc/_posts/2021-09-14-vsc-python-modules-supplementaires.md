@@ -1,6 +1,6 @@
 ---
 layout: page
-title:  "vsc et python"
+title:  "vsc et python : outils supplémentaires"
 categories: 
     - installation 
     - configuration

@@ -21,10 +21,22 @@ Vous devez dans l'idéal être administrateur de votre ordinateur et avoir fait 
 * connaitre les bases d'un système d'exploitation, [les fichiers et les dossiers]({% post_url tutos/systeme/2021-08-24-fichiers-navigation %})
 * avoir accès à un [terminal]({% post_url tutos/systeme/2021-08-24-terminal %})
 
+### base d'algorithmie
+
+On considérera que vous avez des bases minimales en algorithmie. En particulier que vous savez ce qu'est une variable, une fonction ou un type de donnée et que vous ne vous enfuyez pas en courant quand on vous parle de faire une boucle *pour chaque* (*for*) ou *tant que* (*while*).
+
 ## Plan
 
 1. [installation python et vsc]({% link cours/developpement/installations.md %})
-2. bases de python
+2. [bases de python]({% link cours/developpement/bases-python/index.md %})
+   1. espaces de noms
+   2. modules
+   3. fonctions et méthodes
+   4. types et variables
+   5. listes
+   6. dictionnaires
+   7. autres : ensembles
+   8. fichiers ?
 3. tests
 4. objets
 5. TDD
