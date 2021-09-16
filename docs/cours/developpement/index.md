@@ -29,14 +29,11 @@ On considérera que vous avez des bases minimales en algorithmie. En particulier
 
 1. [installation python et vsc]({% link cours/developpement/installations.md %})
 2. [bases de python]({% link cours/developpement/bases-python/index.md %})
-   1. espaces de noms
-   2. modules
-   3. fonctions et méthodes
-   4. types et variables
-   5. listes
-   6. dictionnaires
-   7. autres : ensembles
-   8. fichiers ?
-3. tests
-4. objets
+3. objets
+4. tests
 5. TDD
+
+## les références
+
+* doc python
+* tutoriel

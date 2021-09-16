@@ -16,9 +16,18 @@ Un court cours sur les bases de python. On montrera les types de bases et divers
 
 [La partie objets types et types d'objets]({% link cours/developpement/bases-python/objets-types.md %}) vous dira tout sur les objets courant que vous manipulerez en python.
 
-### variables
+## variables
 
 variable et espace de noms
+
+## groupe de code
+
+### boucles
+
+fibonacci
+
+syracuse
+
 
 ### fonction
 
@@ -34,6 +43,8 @@ fonction vs méthode (Rattaché à un objet)
 
 ### un module
 
+utilisation de random.
+
 Comme un sous espace
 interpéteur exécution dans le terminal
 ligne à ligne
@@ -45,20 +56,25 @@ attention au chemin pwd puis exécution
 
 but d'un programme : exécution ligne après ligne dans l'interpréteur. On ne passe à la ligne suivante que lorsque la ligne d'avant est exécutée
 
-## espace des noms
-
 ## conteneurs
 
-listes
+### listes
 
-chaine de caracteres ?
-tuple/liste
+?? 
 
-## dictionnaires
+### dictionnaires
 
-## boucles
+prix à retrouver ?
 
-## les références
+### ensembles
 
-* doc python
-* tutoriel
+push pop.
+
+propriétés algorihtmique de savoir si c'est dedans
+
+lance 10 dés. Combien de valeurs différentes ?
+
+### mutable vs non mutable
+
+ensemble d'ensemble. 
+liste comme clé de dictionnaire
