@@ -48,3 +48,17 @@ blockquote.chemin::before {
   content: "chemin :";
   font-weight: bold;
 }
+
+blockquote.a-faire {
+  color: #FAA600;
+  border-left: 4px solid #FAA600;
+}
+
+blockquote.a-faire::before {
+  content: "à faire :";
+  font-weight: bold;
+}
+
+details.a-faire {
+  color: #FAA600;
+}
