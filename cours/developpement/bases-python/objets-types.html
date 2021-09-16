@@ -169,7 +169,7 @@
 
 </div></details>
 
-<blockquote>
+<blockquote class="a-faire">
   <p>En utilisant le fait que la fonction <code class="language-plaintext highlighter-rouge">len(chaine de caractère)</code> donne le nombre de caractères de la chaine (par exemple <code class="language-plaintext highlighter-rouge">len("abc")</code> rend <code class="language-plaintext highlighter-rouge">3</code>), et que l’exposant eb python s’écrit <code class="language-plaintext highlighter-rouge">**</code> (par exemple <code class="language-plaintext highlighter-rouge">2**8</code> rend <code class="language-plaintext highlighter-rouge">256</code>) donnez le nombre de chiffre du 27ème <a href="https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier">nombre de Mersenne premier</a>.</p>
 </blockquote>
 <details class="a-faire"><summary>solution</summary><div>
@@ -235,7 +235,7 @@
 
 <p>Chaque classe vient avec des méthodes. Si les nombre et booléens ont peux de méthode, les <a href="https://docs.python.org/3/library/stdtypes.html#string-methods">chaines de caractères en ont tout un tas</a>.</p>
 
-<blockquote>
+<blockquote class="a-faire">
   <p>Combien y a-t-il de 0 dans le 27ème <a href="https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier">nombre de Mersenne premier</a>.</p>
 </blockquote>
 <details class="a-faire"><summary>solution</summary><div>
@@ -247,11 +247,28 @@
 
 </div></details>
 
-<p>On peut chainer les méthodes, la sortie d’une méthode devenant l’entrée de la prochaine. Par exemple :</p>
+<p>On peut chainer les méthodes, la sortie d’une méthode devenant l’entrée de la prochaine. Par exemple, avec 2 méthodes :</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">str</span><span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="mi">44497</span> <span class="o">-</span> <span class="mi">1</span><span class="p">).</span><span class="n">replace</span><span class="p">(</span><span class="s">"2"</span><span class="p">,</span><span class="s">"x"</span><span class="p">).</span><span class="n">replace</span><span class="p">(</span><span class="s">"7"</span><span class="p">,</span><span class="s">"2"</span><span class="p">).</span><span class="n">replace</span><span class="p">(</span><span class="s">"x"</span><span class="p">,</span><span class="s">"7"</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">objet</span><span class="p">.</span><span class="n">methode_1</span><span class="p">().</span><span class="n">methode_2</span><span class="p">()</span>
 </code></pre></div></div>
 
+<p>Signifie que méthode2() est appliquée à l’objet résultat de <code class="language-plaintext highlighter-rouge">objet.methode1()</code></p>
+
+<p>Et avec n méthodes :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">objet</span><span class="p">.</span><span class="n">methode1</span><span class="p">().</span><span class="n">methode2</span><span class="p">().</span> <span class="p">...</span> <span class="p">.</span><span class="n">methode_n</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>Signifie que <code class="language-plaintext highlighter-rouge">methode_n()</code> est appliquée au résultat de <code class="language-plaintext highlighter-rouge">objet.methode_1(). ... .methode_n-1()</code></p>
+
+<blockquote class="a-faire">
+  <p>Que fait :</p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">str</span><span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="mi">44497</span> <span class="o">-</span> <span class="mi">1</span><span class="p">).</span><span class="n">replace</span><span class="p">(</span><span class="s">"2"</span><span class="p">,</span><span class="s">"x"</span><span class="p">).</span><span class="n">replace</span><span class="p">(</span><span class="s">"7"</span><span class="p">,</span><span class="s">"2"</span><span class="p">).</span><span class="n">replace</span><span class="p">(</span><span class="s">"x"</span><span class="p">,</span><span class="s">"7"</span><span class="p">)</span>
+</code></pre></div>  </div>
+
+</blockquote>
+<details class="a-faire"><summary>solution</summary><div>
 <p>Il est aisé de comprendre ce que ça fait en procédant de droite à gauche :</p>
 
 <ol>
@@ -260,10 +277,6 @@
   <li><code class="language-plaintext highlighter-rouge">replace("2","x")</code> est appliqué à ce qui est à sa gauche donc <code class="language-plaintext highlighter-rouge">str(2 ** 44497 - 1)</code></li>
 </ol>
 
-<blockquote class="a-faire">
-  <p>En déduire ce que fait <code class="language-plaintext highlighter-rouge">str(2 ** 44497 - 1).replace("2","x").replace("7","2").replace("x","7")</code></p>
-</blockquote>
-<details class="a-faire"><summary>solution</summary><div>
 <p>En remontant les opérations précédentes :</p>
 
 <ol>
@@ -277,18 +290,67 @@
 
 </div></details>
 
-<h3 id="attrbuts-dune-classe">attrbuts d’une classe</h3>
+<h3 id="attributs-dune-classe">attributs d’une classe</h3>
+
+<p>C’est plus rare, mais certaines classes possèdent  des également des <em>attributs</em> en plus des méthodes. Ce sont des valeurs associées à l’objet.</p>
+
+<p>Par exemple les objets de la classe complex qui possède les attibuts <code class="language-plaintext highlighter-rouge">real</code> et <code class="language-plaintext highlighter-rouge">imag</code> pour rendre la partie réelle et imaginaire d’un complexe.</p>
+
+<pre><code class="language-pyhton">&gt;&gt;&gt; (1+2j).real
+1.0
+&gt;&gt;&gt; (1+2j).imag
+2.0
+</code></pre>
 
 <h2 id="opérations">opérations</h2>
 
 <h3 id="nombres">nombres</h3>
 
+<p><a href="https://docs.python.org/3/library/stdtypes.html#boolean-operations-and-or-not">https://docs.python.org/3/library/stdtypes.html#boolean-operations-and-or-not</a></p>
+
+<p>Les opération peuvent s’effectuer sur les trois types numériques que sont les entier (classe <code class="language-plaintext highlighter-rouge">int</code>), les réels (classe <code class="language-plaintext highlighter-rouge">float</code>) et les complexes (classe <code class="language-plaintext highlighter-rouge">complex</code>)</p>
+
 <h3 id="chaines-de-caractères-concatenation-et-">chaines de caractères (concatenation et *)</h3>
 
-<h3 id="comparaisons">comparaisons</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="s">"x"</span> <span class="o">+</span> <span class="s">"y"</span>
+<span class="s">'xy'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">3</span> <span class="o">*</span> <span class="s">"x"</span>
+<span class="s">'xxx'</span>
+</code></pre></div></div>
 
-<h2 id="changer-de-type">changer de type</h2>
+<blockquote class="a-faire">
+  <p>Recopiez 10 fois : <code class="language-plaintext highlighter-rouge">"j'aime bien faire du python"</code></p>
+</blockquote>
+<details class="a-faire"><summary>solution</summary><div>
+<p>Si l’on sait que le caractère <code class="language-plaintext highlighter-rouge">\n</code> correspond à aller à la ligne, on peut écrire :</p>
 
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="mi">10</span> <span class="o">*</span> <span class="s">"j'aime bien faire du python</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+<span class="n">j</span><span class="s">'aime bien faire du python
+j'</span><span class="n">aime</span> <span class="n">bien</span> <span class="n">faire</span> <span class="n">du</span> <span class="n">python</span>
+<span class="n">j</span><span class="s">'aime bien faire du python
+j'</span><span class="n">aime</span> <span class="n">bien</span> <span class="n">faire</span> <span class="n">du</span> <span class="n">python</span>
+<span class="n">j</span><span class="s">'aime bien faire du python
+j'</span><span class="n">aime</span> <span class="n">bien</span> <span class="n">faire</span> <span class="n">du</span> <span class="n">python</span>
+<span class="n">j</span><span class="s">'aime bien faire du python
+j'</span><span class="n">aime</span> <span class="n">bien</span> <span class="n">faire</span> <span class="n">du</span> <span class="n">python</span>
+<span class="n">j</span><span class="s">'aime bien faire du python
+j'</span><span class="n">aime</span> <span class="n">bien</span> <span class="n">faire</span> <span class="n">du</span> <span class="n">python</span>
+
+</code></pre></div></div>
+
+</div></details>
+
+<h3 id="booleen">booleen</h3>
+
+<h4 id="comparaisons">comparaisons</h4>
+
+<p><a href="https://docs.python.org/3/library/stdtypes.html#comparisons">https://docs.python.org/3/library/stdtypes.html#comparisons</a></p>
+
+<p>Les comparaisons rendent un booléen. Par exemple : <code class="language-plaintext highlighter-rouge">2 &lt;= 3</code> rend le booléen <code class="language-plaintext highlighter-rouge">True</code>.</p>
+
+<h4 id="opérations-logiques">opérations logiques</h4>
+
+<p><a href="https://docs.python.org/3/library/stdtypes.html#boolean-operations-and-or-not">https://docs.python.org/3/library/stdtypes.html#boolean-operations-and-or-not</a></p>
 
   </div>
 
