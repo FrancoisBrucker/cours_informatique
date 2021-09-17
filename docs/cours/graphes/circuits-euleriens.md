@@ -6,18 +6,23 @@ tags: informatique code graphes
 author : "François Brucker"
 ---
 
+[graphes]({% link cours/graphes/index.md %}) / [euleriens]({% link cours/graphes/circuits-euleriens.md %})
+
 ## Introduction
 
 Le but de ce cours est d'apprendre à coder un (multi-)graphe dirigé et de s'en servir pour trouver un circuit eulérien d'un de ces graphes (s'il existe).
 
-Le code complet de ce tuto est disponible sur [le github du projet](https://github.com/FrancoisBrucker/cours_informatique/tree/master/docs/cours/tronc_commun/circuits-euleriens-code). Essayez totu de même de résoudre les questions par vous-même, vous apprendrez plus que juste lire le corrigé.
+Le code complet de ce tutoriel est disponible sur [le github du projet](https://github.com/FrancoisBrucker/cours_informatique/tree/master/docs/cours/tronc_commun/circuits-euleriens-code). Essayez tout de même de résoudre les questions par vous-même, vous apprendrez plus que juste lire le corrigé.
 
 ## Outils
 
-Vous aurez besoin d'un environnement de développement fonctionnel (suivez [ce tuto]({% post_url tutos/editeur/pycharm/2021-08-30-configuration-pycharm %}), si ce n'est pas déjà fait).
-Lorsque l'on vous demandera de *faire passer un test*, il faudra ajouter le test à votre fichier de test, comme indiqué dans le [tuto sur les tests]({% post_url tutos/python/2021-08-01-tests-unitaires %}).
+Vous aurez besoin de connaitre un peu de python et que vous sachiez faire des tests.
 
-Les tests vont s'ajouter petit à petit et à la fin de la séance votre fichier *test_multi_graph.py* contiendra plus d'une vingtaine de tests !
+> TBD : donner les prérequis plus précis. En particulier les tests
+> pour l'instant suivez le [cours de développement]({% link cours/developpement/index.md %})
+{: . note}
+
+Les tests vont s'ajouter petit à petit et à la fin de la séance votre fichier *"test_multi_graph.py"* contiendra plus d'une vingtaine de tests !
 
 ## Plan
 
@@ -51,7 +56,7 @@ La structure python que nous utiliserons pour créer un graphe sera la liste d'a
 
 Par exemple, on pourra coder le graphe suivant :
 
-![un multi-graphe]({{ "./multi-graphe.png" }})
+![un graphe orienté]({{ "/assets/cours/graphes/graphe_oriente_boucle.png" | relative_url }}){:style="margin: auto;display: block;"}
 
 Par la liste de sommets :
 
@@ -59,17 +64,17 @@ Par la liste de sommets :
 vertices = ['a', 'b', 'c', 'd', 'e']
 ```
 
-Et les arcs codées sous forme de [liste d'adjacence](https://fr.wikipedia.org/wiki/Liste_d%27adjacence) :
+Et les arcs codées sous forme de [liste d'adjacence]({% link cours/graphes/encodage.md %}#liste-adjacence) :
 
 ```python
 edges = [[1, 4],
-         [1, 1, 2],
+         [1, 2],
          [3],
          [0],
          [3, 0]]
 ```
 
-Exemple : le sommet d'indice 4 (c'est à dire le sommet de nom `vertices[4]`; donc `'e'`) à 2 voisins qui correspondent à `edges[4]`, c'est à dire les sommets d'indice 3 (`'d'`) et d'indice 0 (`'a`').
+**Exemple :** le sommet d'indice 4 (c'est à dire le sommet de nom `vertices[4]`; donc `'e'`) à 2 voisins qui correspondent à `edges[4]`, c'est à dire les sommets d'indice 3 (`'d'`) et d'indice 0 (`'a`').
 
 #### codage de la structure
 
@@ -101,7 +106,7 @@ Les tests doivent être exécutés dans le fichier *test_multi_graph.py*, n'oubl
 from multi_graph import create_multi_graph
 ```
 
-> **Nota Bene :** On déconseille fortement d'importer `*` (*ie.* toutes les fonctions), importez les une à une. Ca ne prend pas de temps avec *pycharm* et ça permet de savoir précisément ce qui est testé.
+> On déconseille fortement d'importer `*` (*ie.* toutes les fonctions), importez les une à une. Ca ne prend pas de temps avec *pycharm* et ça permet de savoir précisément ce qui est testé.
 
 Les différents tests vont montrer comment organiser votre structure.
 
@@ -134,14 +139,14 @@ def test_multi_graph_several_edges():
 
 On a utilisé une structure sous la forme de listes pour stocker notre multi-graphe dirigé. En reprenant l'exemple du graphe :
 
-![un multi-graphe]({{ "./multi-graphe.png" }})
+![un graphe orienté]({{ "/assets/cours/graphes/graphe_oriente_boucle.png" | relative_url }}){:style="margin: auto;display: block;"}
 
 codé en python :
 
 ```python
 vertices = ['a', 'b', 'c', 'd', 'e']
 edges = [[1, 4],
-         [1, 1, 2],
+         [1, 2],
          [3],
          [0],
          [3, 0]]
@@ -153,10 +158,11 @@ On pourra facilement accéder à :
 * savoir si $xy$ est une arête (avec $x$ et $y$ des indices) : `y in edges[x]` rendra `True`si $xy$ est une arête et `False` sinon.
 * aux voisins de `x` : `list(g[x])` (avec `x` un indice). On copie la liste plutôt que d'utiliser celle de `edges` pour éviter les soucis.
 
->**Attention :** de part la structure proposée :
+> de part la structure proposée :
 >
 >* la complexité de `y in g[x]` est en $\mathcal{O}$(`len(g[x])`),
 >* lorsque vous manipulez `g[x]` faites attention à ne pas la modifier sinon vous modifiez la structure du multi-graphe.
+{: .attention}
 
 ## multi-graphes eulérien
 
@@ -207,7 +213,7 @@ Avant de créer la vrai fonction, on va commencer par régler les cas particulie
 
 Vous implémenterez cet algorithme dans la fonction `circuit_from_eulerian(edges)`. Elle doit satisfaire les tests suivants :
 
-``` pyhton
+```python
 def test_circuit_empty():
     assert circuit_from_eulerian([]) == []
 

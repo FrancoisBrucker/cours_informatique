@@ -20,7 +20,32 @@ Le cours va être séparé en petites entités qui se suivent pour former un tou
 
 ## Plan du cours
 
-1. [bases]({% link cours/graphes/bases.md %})
-2. [encodage de graphes]({% link cours/graphes/encodage.md %})
-3. [parcours eulériens]({% link cours/graphes/parcours_euleriens.md %})
-4. [mots de Brujin]({% link cours/graphes/mots_brujin.md %})
+### première partie
+
+Où l'on découvre les graphes et l'on résout notre premier problème concret grâce à eux.
+
+1. [bases]({% link cours/graphes/bases.md %}) : principales définitions
+2. [encodage de graphes]({% link cours/graphes/encodage.md %}) : comment coder un graphe
+3. [parcours eulériens]({% link cours/graphes/parcours-euleriens.md %}) : première application. Et on en profite pour montrer quelques algorithmes et propriétés
+4. [mots de Brujin]({% link cours/graphes/mots-brujin.md %}) : on se rend compte qu'on peut modéliser un problème concret sous la forme d'un problème de graphe.
+
+[Et si l'on codait tout ça ?]({% link cours/graphes/circuits-euleriens.md %})
+
+### deuxième partie
+
+Un cas particulier d'intérêt : l'arbre.
+
+> Sous la forme d'exercices.
+
+1. Un cas particulier : les arbres
+   1. définition
+   2. en informatique enraciné
+   3. arbre binaire. Combien de feuilles ?
+   4. parcours
+   5. arbre dans un graphe. Existence ? Min si valué
+   6. exemple du débit
+2. arbres binaires de recherche
+3. combien d'arbre ? Encodage prufer et application à un arbre aléatoire (! différent de la structure).
+
+
+

@@ -58,7 +58,7 @@ Structure de stockage la plus simple. N'est optimisé pour aucune opération sp�
   * $\mathcal{O}(1)$ si l'on ajoute en fin de liste,
   * $\mathcal{O}(m)$ si l'on utilise un tableau de taille fixe qu'il faut recréer
 
-## liste d'adjacence
+## liste d'adjacence {#liste-adjacence}
 
 $G = (V, E)$ où :
 
@@ -123,5 +123,61 @@ L'intérêt de cette encodage est que le fait de savoir si un arête est présen
 
 ## quand utiliser quoi ?
 
+Selon ce qu'on a besoin de faire, on utilisera plutôt une structure de donnée qu'une autre, voir changera de structure si le passage d'une structure de données à l'autre est simple.
 
+### utilisation de la structure en liste
 
+Positif :
+
+* structure optimale en taille.
+* l'ajout de sommets et d'arêtes est optimale
+
+Négatif :
+
+* tout le reste
+
+> Quand utiliser cette structure ?
+{: .a-faire}
+{% details solution %}
+Structure à utiliser pour le stockage mais inefficace pour tout le reste
+{% enddetails  %}
+{: .a-faire}
+
+### utilisation de la structure en liste d'adjacence
+
+Positif :
+
+* parcourir tous les voisins d'un sommet
+* ajout d'un sommet
+
+Négatif :
+
+* savoir si $xy$ est une arête
+* suppression d'arête
+
+> Quand utiliser cette structure ?
+{: .a-faire}
+{% details solution %}
+Lorsque l'on analyse localement le graphe et qu'on a besoin d'avoir souvent les voisins d'un sommet.
+{% enddetails  %}
+{: .a-faire}
+
+### utilisation de la structure en matrice d'adjacence
+
+Positif :
+
+* savoir si $xy$ est une arête
+* ajout ou suppression d'arêtes
+
+Négatif :
+
+* parcourir tous les voisins d'un sommet
+* ajout d'un sommet
+* taille
+
+> Quand utiliser cette structure ?
+{: .a-faire}
+{% details solution %}
+Lorsque l'on analyse globalement un graphe dont le nombre de sommet ne change pas et qu'on a besoin de savoir souvent si une arête existe dans le graphe ou non.
+{% enddetails  %}
+{: .a-faire}

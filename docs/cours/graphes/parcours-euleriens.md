@@ -5,39 +5,34 @@ category: cours
 tags: informatique graphes
 author: "François Brucker"
 ---
+[graphes]({% link cours/graphes/index.md %}) / [euleriens]({% link cours/graphes/parcours-euleriens.md %})
 
 ## But
 
 Voir grâce à l'exemple des circuits eulériens ce qu'est un chemin, un cycle, et nos premiers algorithmes de graphes.
 
-## Le problème concret ou "comment dodger une ballade"
-
+## Le problème concret ou "comment ne pas aller en ballade"
 
 C'est un retour aux sources s'il l'on peut dire puisqu'il s'agit du problème des [7 ponts de Königsberg](https://fr.wikipedia.org/wiki/Probl%C3%A8me_des_sept_ponts_de_K%C3%B6nigsberg), qui permit à [Euler](https://fr.wikipedia.org/wiki/Leonhard_Euler) d'inventer la théorie des graphes pour éviter d'aller se ballader.
 
 La ville de Kaliningrad (anciennement appelée Königsberg) possédait 7 ponts aux 18ème siècle qui enjambent la Pregel. Ca ressemblait un peu à ça :
 
-![les 7 ponts de konigsberg](https://upload.wikimedia.org/wikipedia/commons/5/5d/Konigsberg_bridges.png)
+![ponts de konigsberg](https://upload.wikimedia.org/wikipedia/commons/5/5d/Konigsberg_bridges.png){:style="margin: auto;display: block;"}
 
 L'histoire veut qu'une tradition bourgeoise (et noble) de l'époque soit de faire les ballades digestives autour de ces ponts en essayant de tous les traverser une fois et de  revenir à son point de départ.
 
-Personne n'y arrivant, le jeu devint fort populaire. Sauf qu'Euler, s'il y a bien une chose qu'il n'aimait pas, c'était les ballades. 
+Personne n'y arrivant, le jeu devint fort populaire. Sauf qu'Euler, s'il y a bien une chose qu'il n'aimait pas, c'était les ballades.
 
-Du coup, un après-midi, plutôt que d'aller se ballader il griffonna le schéma suivant sur un coin de nappe : 
-
-
-
-Démontra à l'assistance médusée qu'il était impossible de faire ce qu'ils voulaient faire et que donc il préférait reprendre un peu de tarte que d'essayer un truc impossible.
+Du coup, un après-midi, plutôt que d'aller se ballader il griffonna le schéma suivant sur un coin de nappe et démontra à l'assistance médusée qu'il était impossible de faire ce qu'ils voulaient faire et que donc il préférait reprendre un peu de tarte que d'essayer un truc impossible.
 
 Euler avait d'un coup prix 1kg et inventé la théorie des graphes.
 
 ### formalisation du problème
 
 Le dessin qu'Euler griffonna est celui-ci :
-![graphe_7_ponts]({{ "ressources/graphe_7_ponts.png" }})
+![graphe_7_ponts]({{ "/assets/cours/graphes/graphe_7_ponts.png" | relative_url}}){:style="margin: auto;display: block;"}
 
 C'est un multi-graphe non orienté et est une modélisation du problème,  les sommets $A$, $B$, $C$ et $D$ représentant les quatre berges de la ville et les arêtes les 7 ponts.
-
 
 Le problème revient maintenant de trouver un *cycle* qui passe par toutes les arêtes du multi-graphe.
 
@@ -45,42 +40,42 @@ Le problème revient maintenant de trouver un *cycle* qui passe par toutes les a
 
 ### chemin
 
-Soit $G = (V, E)$ un (multi-)graphe (non) orienté. Un *chemin* est une suite :
+Soit $G = (V, E)$ un (multi-)graphe (non) orienté. Un **chemin** est une suite :
 
 $$ C = u_0u_1\dots u_i \dots u_k$$
 
 de sommets du graphe telle que :
 
-  - $u_iu_{i+1}$ soit une arête (resp. arcs) du graphe quelque soit $0 leq i < k$
-  - les arêtes (resp. arcs) sont deux à deux distinctes.
+* $u_iu_{i+1}$ soit une arête (*resp.* arcs) du graphe quelque soit $0 \leq i < k$
+* les arêtes (*resp.* arcs) sont deux à deux distinctes.
   
-Le chemin $C$ à une *longueur* de $k$ (c'est le nombre d'arêtes). UN chemin de longueur $0$ est le chemin vide, sans arête (resp. arc).
+Le chemin $C$ à une *longueur* de $k$ (c'est le nombre d'arêtes). Un chemin de longueur $0$ est le chemin vide, sans arête (*resp.* arc).
 
 ### cycle
 
-Un cycle est un chemin qui commence et fini par le même sommet.
+Un **cycle** est un chemin qui commence et fini par le même sommet.
 
 ### circuits
 
-Un circuit est un cycle dans un graphe orienté. 
+Un **circuit** est un cycle dans un graphe orienté.
 
-Si l'on ne fait pas attention à l'orientation des arcs dans un graphe, et qu'on a une suite d'arcs orienté dans un sens et dans l'autre  on appelle ça *une chaîne*. 
+Si l'on ne fait pas attention à l'orientation des arcs dans un graphe, et qu'on a une suite d'arcs orienté dans un sens et dans l'autre  on appelle ça *une chaîne*.
 
 ### connexité
 
-Un graphe est dit *connexe* si pour toute paire de sommets $x$ et $y$ il existe un chemin allant de $x$ à $y$ dans $G$.
+Un graphe est dit **connexe** si pour toute paire de sommets $x$ et $y$ il existe un chemin allant de $x$ à $y$ dans $G$.
 
-Si le graphe est orienté, il est dit *fortement connexe* s'il existe pour toute paire $x$ et $y$ de sommet un chemin allant de $x$ à $y$ et un chemin allant de $y$ à $x$.
+Si le graphe est orienté, il est dit **fortement connexe** s'il existe pour toute paire $x$ et $y$ de sommet un chemin allant de $x$ à $y$ et un chemin allant de $y$ à $x$.
 
-La connexité est une notion très importante en théorie des graphes. Elle permet de relier deux sommets entre eux par des relations. 
+>La connexité est une notion très importante en théorie des graphes. Elle permet de relier deux sommets entre eux par des relations. D'un point de vue pratique on aime bien les graphes connexes, pensez à *google maps* où l'on aime bien pouvoir faire des aller-retours.
 
 ### propriétés
 
-On va montrer deux propriétés, l'une sur les chemin l'autre sur les cycles.
+On va montrer deux propriétés, à la fois très utiles et élégantes à démonter. L'une sur les chemins l'autre sur les cycles.
 
 #### chemins élémentaires
 
-Un chemin $ C = u_0u_1\dots u_i \dots u_k$ est dit *élémentaire* si les $u_i$ sont tous distincts deux à deux.
+Un chemin $ C = u_0u_1\dots u_i \dots u_k$ est dit **élémentaire** si les $u_i$ sont tous distincts deux à deux.
 
 On peut extraire de tout chemin un chemin élémentaire.
 
@@ -104,11 +99,11 @@ On peut continuer comme ça en étendant itérativement le chemin et, comme le g
 
 ## retour au problème
 
-Dans un graphe, un cycle qui prend toutes les arêtes du graphe est dit *eulérien*.
+Dans un graphe, un cycle qui prend toutes les arêtes du graphe est dit **eulérien**.
 
 ### c'est impossible dans l'exemple
 
-Avec notre graphe c'est **impossible** car il faut pouvoir repartir d'un sommet après en être arrivé. Si un tel cycle existait à chaque $u_i$, $u_{i-1}u_i$ et $u_iu_{i+1}$ sont des arêtes du graphes. Comme le chemin passe une seule fois par chaque arête du graphe on en conclut que $\delta(u_i)$ est paire.
+Avec notre graphe c'est **impossible** car il faut pouvoir repartir d'un sommet après en être arrivé. Si un tel cycle existait pour tout $u_i$ : $u_{i-1}u_i$ et $u_iu_{i+1}$ seraient des arêtes du graphes. Comme le chemin passe une seule fois par chaque arête du graphe on en conclut que $\delta(u_i)$ serait paire.
 
 Comme $\delta(C) = 3$ et est impair, il est impossible de trouver un cycle eulérien dans notre graphe.
 
@@ -122,11 +117,19 @@ S'il existe un cycle eulérien pour un graphe $G$, alors tout sommet est de degr
 
 Le graphe suivant a tous ses degrés pair. Pouvez-vous trouver un cycle eulérien ?
 
-![est-ce possible]({{ "ressources/possible_eulerien.png" }})
+![est-ce possible]({{ "/assets/cours/graphes/possible_eulerien.png" | relative_url}}){:style="margin: auto;display: block;"}
 
-oui c'est possible [une réponse possible]({{  "ressources/possible_eulerien_!.png" }}) avec l'ordre dans lequel examiner les sommets du chemin. Mais il y en a plein d'autres possibles !
+{% details solution %}
+oui c'est possible avec l'ordre dans lequel examiner les sommets du chemin.
 
-## La réciproque.
+![une réponse possible]({{ "/assets/cours/graphes/possible_eulerien_!.png" | relative_url}}){:style="margin: auto;display: block;"}
+
+Mais il y en a plein d'autres possibles !
+
+{% enddetails %}
+{: .a-faire}
+
+## La réciproque
 
 Ce qui est très beau c'est que la réciproque complète est vraie. On a le théorème suivant :
 
@@ -136,7 +139,7 @@ Un graphe connexe  admet un cycle eulérien si et seulement si le degré de tout
 
 ### démonstration
 
-#### d'un côté 
+#### d'un côté
 
 On l'a déjà prouvé, mais refaisons le pour la complétion.
 
@@ -153,23 +156,35 @@ Si un cycle eulerien $u_0 \dots u_k$ existe, à chaque $u_i$ : $u_{i-1}u_i$ et $
   
   Pour cela, comme le graphe est connexe il va exister deux cycles $C_1$ et $C_2$ qui partagent un sommet $x$. On peut alors faire commencer les cycles $C_1$ et $C_2$ par $x$ et on peut coller les deux cycles ensemble en formant le cycle : $C_1 + C_2[1:]$. On est passé de $m$ cycles à $m-1$ cycles et on peut recommencer la procédure jusqu'à n'obtenir qu'un unique cycle qui est notre cycle eulérien.
   
-
 ### exemple
   
-On a le graphe : ![exemple euler]({{"ressources/euler_exemple_1.png"}})
-  
-  1. Le [premier cycle trouvé]({{"ressources/euler_exemple_2.png"}}) est $1231$
-  2. Le [second cycle trouvé]({{"ressources/euler_exemple_3.png"}}) est $35243$
-  3. Le [troisième cycle trouvé]({{"ressources/euler_exemple_4.png"}}) est $4564$
-  
-  On raboute les second et troisième cycle ensembles : $43524$ et $4564$ en $43524564$. On peut ensuite rajouter le premier cycle en l'écrivant $2312$ et en l'insérant à la place du $2$ pour donner le ccle eulérien final : $43523124564$.
+On a le graphe :
+
+![exemple euler]({{ "/assets/cours/graphes/euler_exemple_1.png" | relative_url}}){:style="margin: auto;display: block;"}
+
+{% details premier cycle trouvé : est $1231$ %}
+
+![exemple euler]({{ "/assets/cours/graphes/euler_exemple_2.png" | relative_url}}){:style="margin: auto;display: block;"}
+
+{% enddetails %}
+{% details second cycle trouvé : est $35243$ %}
+
+![exemple euler]({{ "/assets/cours/graphes/euler_exemple_3.png" | relative_url}}){:style="margin: auto;display: block;"}
+
+{% enddetails %}
+{% details troisième cycle trouvé : est $4564$ %}
+
+![exemple euler]({{ "/assets/cours/graphes/euler_exemple_4.png" | relative_url}}){:style="margin: auto;display: block;"}
+
+{% enddetails %}
+
+On raboute ensuite les second et troisième cycle ensembles : $43524$ et $4564$ en $43524564$. On peut ensuite rajouter le premier cycle en l'écrivant $2312$ et en l'insérant à la place du $2$ pour donner le ccle eulérien final : $43523124564$.
   
 ## généralisation
 
-IL existe de nombreuses généralisations aux cycles eulérien. Citons en deux : les chemins eulériens et les cycles eulériens des graphes orientés.
+Il existe de nombreuses généralisations aux cycles eulérien. Citons en deux : les chemins eulériens et les cycles eulériens des graphes orientés.
 
 ### chemin eulérien
-
 
 Un *chemin eulérien entre $x$ et $y$* est un chemin entre $x$ et $y$ qui prend toutes les arêtes.
 
@@ -179,4 +194,9 @@ On prouve que les graphes dont tous les sommets sont de degré pair sauf $x$ et 
 
 Les graphes orientés qui possèdent un *cycle eulériens* sont exactement les graphes où $\delta^+(x) = \delta^-(x)$ pour tout sommet $x$.
 
+## qu'avons nous appris aujourd'hui ?
 
+* les notions de chemin, cycle et circuits
+* la définition d'un graphe eulérien
+* comment trouver un cycle eulérien
+* quelques jolies démonstrations
