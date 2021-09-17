@@ -6,9 +6,6 @@ category: cours
 
 ## Introduction
 
-> TBD : en chantier.
-{: .danger}
-
 
 Le tronc commun d'informatique de l'ecm comporte beaucoup de parties. Ici, nous présentons uniquement la partie graphe.
 
@@ -23,30 +20,24 @@ Chaque partie est organisée en 3 types d'enseignements :
 
 ## Séances
 
-> TBD : stay tuna pour le support de cours.
-{: .danger}
-
-
 ### C, M :  graphes
 
-> En amphi avec un tableau si on a de la chance.
-> 
 Le support du cours d'[Introduction aux graphes]({% link cours/graphes/index.md %})
 
-### ST : parcours d'arbre
+### ST : graphes
 
-> en TD
+> TBD
+> exercice sur les graphes
+{: .note}
 
 ### ST et SM : arbres de recherche
 
-> en autonomie avec du code python.
+Séance en autonomie sur les parcours d'arbres.
 
+### ST : chemin de poids min
 
 ### C, M :  flots
 
-> En amphi avec un tableau si on a de la chance.
+Cours sur les flots
 
-### ST : flots 
-
-
-### ST : chemin de poids min
+### ST : flots

@@ -12,21 +12,33 @@ Essentiellement du vocabulaire de théorie des graphe. Histoire de fixer un peu 
 
 ## définition générale
 
-Dans toute sa généralité, on peut définir un *multi-graphe* comme étant un couple $G = (V, E)$ où :
+Dans toute sa généralité, on peut définir un *multi-graphe* comme étant un triplet $G = (V, E, \phi)$ où :
 
-* $V$ est un ensemble de d'éléments appelés *sommets* (*vertices*)
-* $E$ est une liste de couples d'éléments de $V$ appelés *arc* ou *arêtes* (*edges*)
-  
+* $V$ est un ensemble de *sommets* (*vertices*)
+* $E$ est un ensemble d'*arcs* (*edges*)
+* $\phi: E \rightarrow V \times V$ une fonction d'incidence qui associe à chaque arête un couple (possiblement égaux) de sommets.
+
+Si, comme on supposera dans la suite de ce cours, **$V$ et $E$ sont des ensembles finis**, on peut re-écrire cette définition d'une façon plus informatique en définissant  un multi-graphe comme :
+
+Un multi-graphe est un couple $G = (V, E)$ où :
+
+* $V$ est un ensemble fini de *sommets* (*vertices*)
+* $E$ est une liste finie de d'éléments de $V \times V$ appelés *arcs* (*edges*)
+
+C'est cette dernière définition que nous adopterons.
+
+> [Dénombrable](https://fr.wikipedia.org/wiki/Ensemble_d%C3%A9nombrable) plutôt que fini pour $E$ aurait suffit.
+
 ### exemples
 
-Le multi-graphe $G = (V E)$ avec :
+Le multi-graphe $G = (V, E)$ avec :
 
 * $V = {1, 2, 3, 4, 5}$,
 * $E = ((1, 2), (2, 3), (2, 2), (1, 2), (4, 5), (5, 4))$.
 
 Peut se représenter graphiquement (sur le plan) :
 
-![un multi graphe]({{ " ressources/un_multi_graphe.png" }})
+![un multi graphe]({{ " ressources/un_multi_graphe.png" }}){:style="margin: auto;display: block"}
 
 Remarquez qu'avec notre définition on :
 
