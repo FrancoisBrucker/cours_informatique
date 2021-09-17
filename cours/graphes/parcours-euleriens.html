@@ -10,13 +10,13 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
 <meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
-<link rel="canonical" href="/cours_informatique/cours/graphes/parcours_euleriens.html" />
-<meta property="og:url" content="/cours_informatique/cours/graphes/parcours_euleriens.html" />
+<link rel="canonical" href="/cours_informatique/cours/graphes/parcours-euleriens.html" />
+<meta property="og:url" content="/cours_informatique/cours/graphes/parcours-euleriens.html" />
 <meta property="og:site_name" content="cours d’informatique" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Théorie des graphes : parcours eulériens" />
 <script type="application/ld+json">
-{"headline":"Théorie des graphes : parcours eulériens","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/graphes/parcours_euleriens.html","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
+{"headline":"Théorie des graphes : parcours eulériens","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/graphes/parcours-euleriens.html","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
@@ -62,32 +62,32 @@
   </header>
 
   <div class="post-content">
-    <h2 id="but">But</h2>
+    <p><a href="/cours_informatique/cours/graphes/">graphes</a> / <a href="/cours_informatique/cours/graphes/parcours-euleriens.html">euleriens</a></p>
+
+<h2 id="but">But</h2>
 
 <p>Voir grâce à l’exemple des circuits eulériens ce qu’est un chemin, un cycle, et nos premiers algorithmes de graphes.</p>
 
-<h2 id="le-problème-concret-ou-comment-dodger-une-ballade">Le problème concret ou “comment dodger une ballade”</h2>
+<h2 id="le-problème-concret-ou-comment-ne-pas-aller-en-ballade">Le problème concret ou “comment ne pas aller en ballade”</h2>
 
 <p>C’est un retour aux sources s’il l’on peut dire puisqu’il s’agit du problème des <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_des_sept_ponts_de_K%C3%B6nigsberg">7 ponts de Königsberg</a>, qui permit à <a href="https://fr.wikipedia.org/wiki/Leonhard_Euler">Euler</a> d’inventer la théorie des graphes pour éviter d’aller se ballader.</p>
 
 <p>La ville de Kaliningrad (anciennement appelée Königsberg) possédait 7 ponts aux 18ème siècle qui enjambent la Pregel. Ca ressemblait un peu à ça :</p>
 
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Konigsberg_bridges.png" alt="les 7 ponts de konigsberg" /></p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Konigsberg_bridges.png" alt="ponts de konigsberg" style="margin: auto;display: block;" /></p>
 
 <p>L’histoire veut qu’une tradition bourgeoise (et noble) de l’époque soit de faire les ballades digestives autour de ces ponts en essayant de tous les traverser une fois et de  revenir à son point de départ.</p>
 
 <p>Personne n’y arrivant, le jeu devint fort populaire. Sauf qu’Euler, s’il y a bien une chose qu’il n’aimait pas, c’était les ballades.</p>
 
-<p>Du coup, un après-midi, plutôt que d’aller se ballader il griffonna le schéma suivant sur un coin de nappe :</p>
-
-<p>Démontra à l’assistance médusée qu’il était impossible de faire ce qu’ils voulaient faire et que donc il préférait reprendre un peu de tarte que d’essayer un truc impossible.</p>
+<p>Du coup, un après-midi, plutôt que d’aller se ballader il griffonna le schéma suivant sur un coin de nappe et démontra à l’assistance médusée qu’il était impossible de faire ce qu’ils voulaient faire et que donc il préférait reprendre un peu de tarte que d’essayer un truc impossible.</p>
 
 <p>Euler avait d’un coup prix 1kg et inventé la théorie des graphes.</p>
 
 <h3 id="formalisation-du-problème">formalisation du problème</h3>
 
 <p>Le dessin qu’Euler griffonna est celui-ci :
-<img src="ressources/graphe_7_ponts.png" alt="graphe_7_ponts" /></p>
+<img src="/cours_informatique/assets/cours/graphes/graphe_7_ponts.png" alt="graphe_7_ponts" style="margin: auto;display: block;" /></p>
 
 <p>C’est un multi-graphe non orienté et est une modélisation du problème,  les sommets $A$, $B$, $C$ et $D$ représentant les quatre berges de la ville et les arêtes les 7 ponts.</p>
 
@@ -97,44 +97,46 @@
 
 <h3 id="chemin">chemin</h3>
 
-<p>Soit $G = (V, E)$ un (multi-)graphe (non) orienté. Un <em>chemin</em> est une suite :</p>
+<p>Soit $G = (V, E)$ un (multi-)graphe (non) orienté. Un <strong>chemin</strong> est une suite :</p>
 
 \[C = u_0u_1\dots u_i \dots u_k\]
 
 <p>de sommets du graphe telle que :</p>
 
 <ul>
-  <li>$u_iu_{i+1}$ soit une arête (resp. arcs) du graphe quelque soit $0 leq i &lt; k$</li>
-  <li>les arêtes (resp. arcs) sont deux à deux distinctes.</li>
+  <li>$u_iu_{i+1}$ soit une arête (<em>resp.</em> arcs) du graphe quelque soit $0 \leq i &lt; k$</li>
+  <li>les arêtes (<em>resp.</em> arcs) sont deux à deux distinctes.</li>
 </ul>
 
-<p>Le chemin $C$ à une <em>longueur</em> de $k$ (c’est le nombre d’arêtes). UN chemin de longueur $0$ est le chemin vide, sans arête (resp. arc).</p>
+<p>Le chemin $C$ à une <em>longueur</em> de $k$ (c’est le nombre d’arêtes). Un chemin de longueur $0$ est le chemin vide, sans arête (<em>resp.</em> arc).</p>
 
 <h3 id="cycle">cycle</h3>
 
-<p>Un cycle est un chemin qui commence et fini par le même sommet.</p>
+<p>Un <strong>cycle</strong> est un chemin qui commence et fini par le même sommet.</p>
 
 <h3 id="circuits">circuits</h3>
 
-<p>Un circuit est un cycle dans un graphe orienté.</p>
+<p>Un <strong>circuit</strong> est un cycle dans un graphe orienté.</p>
 
 <p>Si l’on ne fait pas attention à l’orientation des arcs dans un graphe, et qu’on a une suite d’arcs orienté dans un sens et dans l’autre  on appelle ça <em>une chaîne</em>.</p>
 
 <h3 id="connexité">connexité</h3>
 
-<p>Un graphe est dit <em>connexe</em> si pour toute paire de sommets $x$ et $y$ il existe un chemin allant de $x$ à $y$ dans $G$.</p>
+<p>Un graphe est dit <strong>connexe</strong> si pour toute paire de sommets $x$ et $y$ il existe un chemin allant de $x$ à $y$ dans $G$.</p>
 
-<p>Si le graphe est orienté, il est dit <em>fortement connexe</em> s’il existe pour toute paire $x$ et $y$ de sommet un chemin allant de $x$ à $y$ et un chemin allant de $y$ à $x$.</p>
+<p>Si le graphe est orienté, il est dit <strong>fortement connexe</strong> s’il existe pour toute paire $x$ et $y$ de sommet un chemin allant de $x$ à $y$ et un chemin allant de $y$ à $x$.</p>
 
-<p>La connexité est une notion très importante en théorie des graphes. Elle permet de relier deux sommets entre eux par des relations.</p>
+<blockquote>
+  <p>La connexité est une notion très importante en théorie des graphes. Elle permet de relier deux sommets entre eux par des relations. D’un point de vue pratique on aime bien les graphes connexes, pensez à <em>google maps</em> où l’on aime bien pouvoir faire des aller-retours.</p>
+</blockquote>
 
 <h3 id="propriétés">propriétés</h3>
 
-<p>On va montrer deux propriétés, l’une sur les chemin l’autre sur les cycles.</p>
+<p>On va montrer deux propriétés, à la fois très utiles et élégantes à démonter. L’une sur les chemins l’autre sur les cycles.</p>
 
 <h4 id="chemins-élémentaires">chemins élémentaires</h4>
 
-<p>Un chemin $ C = u_0u_1\dots u_i \dots u_k$ est dit <em>élémentaire</em> si les $u_i$ sont tous distincts deux à deux.</p>
+<p>Un chemin $ C = u_0u_1\dots u_i \dots u_k$ est dit <strong>élémentaire</strong> si les $u_i$ sont tous distincts deux à deux.</p>
 
 <p>On peut extraire de tout chemin un chemin élémentaire.</p>
 
@@ -158,11 +160,11 @@
 
 <h2 id="retour-au-problème">retour au problème</h2>
 
-<p>Dans un graphe, un cycle qui prend toutes les arêtes du graphe est dit <em>eulérien</em>.</p>
+<p>Dans un graphe, un cycle qui prend toutes les arêtes du graphe est dit <strong>eulérien</strong>.</p>
 
 <h3 id="cest-impossible-dans-lexemple">c’est impossible dans l’exemple</h3>
 
-<p>Avec notre graphe c’est <strong>impossible</strong> car il faut pouvoir repartir d’un sommet après en être arrivé. Si un tel cycle existait à chaque $u_i$, $u_{i-1}u_i$ et $u_iu_{i+1}$ sont des arêtes du graphes. Comme le chemin passe une seule fois par chaque arête du graphe on en conclut que $\delta(u_i)$ est paire.</p>
+<p>Avec notre graphe c’est <strong>impossible</strong> car il faut pouvoir repartir d’un sommet après en être arrivé. Si un tel cycle existait pour tout $u_i$ : $u_{i-1}u_i$ et $u_iu_{i+1}$ seraient des arêtes du graphes. Comme le chemin passe une seule fois par chaque arête du graphe on en conclut que $\delta(u_i)$ serait paire.</p>
 
 <p>Comme $\delta(C) = 3$ et est impair, il est impossible de trouver un cycle eulérien dans notre graphe.</p>
 
@@ -176,11 +178,18 @@
 
 <p>Le graphe suivant a tous ses degrés pair. Pouvez-vous trouver un cycle eulérien ?</p>
 
-<p><img src="ressources/possible_eulerien.png" alt="est-ce possible" /></p>
+<p><img src="/cours_informatique/assets/cours/graphes/possible_eulerien.png" alt="est-ce possible" style="margin: auto;display: block;" /></p>
 
-<p>oui c’est possible <a href="ressources/possible_eulerien_!.png">une réponse possible</a> avec l’ordre dans lequel examiner les sommets du chemin. Mais il y en a plein d’autres possibles !</p>
+<details class="a-faire"><summary>solution</summary><div>
+<p>oui c’est possible avec l’ordre dans lequel examiner les sommets du chemin.</p>
 
-<h2 id="la-réciproque">La réciproque.</h2>
+<p><img src="/cours_informatique/assets/cours/graphes/possible_eulerien_!.png" alt="une réponse possible" style="margin: auto;display: block;" /></p>
+
+<p>Mais il y en a plein d’autres possibles !</p>
+
+</div></details>
+
+<h2 id="la-réciproque">La réciproque</h2>
 
 <p>Ce qui est très beau c’est que la réciproque complète est vraie. On a le théorème suivant :</p>
 
@@ -211,19 +220,28 @@
 
 <h3 id="exemple">exemple</h3>
 
-<p>On a le graphe : <img src="ressources/euler_exemple_1.png" alt="exemple euler" /></p>
+<p>On a le graphe :</p>
 
-<ol>
-  <li>Le <a href="ressources/euler_exemple_2.png">premier cycle trouvé</a> est $1231$</li>
-  <li>Le <a href="ressources/euler_exemple_3.png">second cycle trouvé</a> est $35243$</li>
-  <li>Le <a href="ressources/euler_exemple_4.png">troisième cycle trouvé</a> est $4564$</li>
-</ol>
+<p><img src="/cours_informatique/assets/cours/graphes/euler_exemple_1.png" alt="exemple euler" style="margin: auto;display: block;" /></p>
 
-<p>On raboute les second et troisième cycle ensembles : $43524$ et $4564$ en $43524564$. On peut ensuite rajouter le premier cycle en l’écrivant $2312$ et en l’insérant à la place du $2$ pour donner le ccle eulérien final : $43523124564$.</p>
+<details><summary>premier cycle trouvé : est $1231$</summary><div>
+<p><img src="/cours_informatique/assets/cours/graphes/euler_exemple_2.png" alt="exemple euler" style="margin: auto;display: block;" /></p>
+
+</div></details>
+<details><summary>second cycle trouvé : est $35243$</summary><div>
+<p><img src="/cours_informatique/assets/cours/graphes/euler_exemple_3.png" alt="exemple euler" style="margin: auto;display: block;" /></p>
+
+</div></details>
+<details><summary>troisième cycle trouvé : est $4564$</summary><div>
+<p><img src="/cours_informatique/assets/cours/graphes/euler_exemple_4.png" alt="exemple euler" style="margin: auto;display: block;" /></p>
+
+</div></details>
+
+<p>On raboute ensuite les second et troisième cycle ensembles : $43524$ et $4564$ en $43524564$. On peut ensuite rajouter le premier cycle en l’écrivant $2312$ et en l’insérant à la place du $2$ pour donner le ccle eulérien final : $43523124564$.</p>
 
 <h2 id="généralisation">généralisation</h2>
 
-<p>IL existe de nombreuses généralisations aux cycles eulérien. Citons en deux : les chemins eulériens et les cycles eulériens des graphes orientés.</p>
+<p>Il existe de nombreuses généralisations aux cycles eulérien. Citons en deux : les chemins eulériens et les cycles eulériens des graphes orientés.</p>
 
 <h3 id="chemin-eulérien">chemin eulérien</h3>
 
@@ -235,6 +253,14 @@
 
 <p>Les graphes orientés qui possèdent un <em>cycle eulériens</em> sont exactement les graphes où $\delta^+(x) = \delta^-(x)$ pour tout sommet $x$.</p>
 
+<h2 id="quavons-nous-appris-aujourdhui-">qu’avons nous appris aujourd’hui ?</h2>
+
+<ul>
+  <li>les notions de chemin, cycle et circuits</li>
+  <li>la définition d’un graphe eulérien</li>
+  <li>comment trouver un cycle eulérien</li>
+  <li>quelques jolies démonstrations</li>
+</ul>
 
   </div>
 

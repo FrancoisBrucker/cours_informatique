@@ -135,7 +135,7 @@ Chaque représentation de graphes va avoir son utilité, selon l’algorithme ut
   </li>
 </ul>
 
-<h2 id="liste-dadjacence">liste d’adjacence</h2>
+<h2 id="liste-adjacence">liste d’adjacence</h2>
 
 <p>$G = (V, E)$ où :</p>
 
@@ -228,6 +228,76 @@ Chaque représentation de graphes va avoir son utilité, selon l’algorithme ut
 
 <h2 id="quand-utiliser-quoi-">quand utiliser quoi ?</h2>
 
+<p>Selon ce qu’on a besoin de faire, on utilisera plutôt une structure de donnée qu’une autre, voir changera de structure si le passage d’une structure de données à l’autre est simple.</p>
+
+<h3 id="utilisation-de-la-structure-en-liste">utilisation de la structure en liste</h3>
+
+<p>Positif :</p>
+
+<ul>
+  <li>structure optimale en taille.</li>
+  <li>l’ajout de sommets et d’arêtes est optimale</li>
+</ul>
+
+<p>Négatif :</p>
+
+<ul>
+  <li>tout le reste</li>
+</ul>
+
+<blockquote class="a-faire">
+  <p>Quand utiliser cette structure ?</p>
+</blockquote>
+<details class="a-faire"><summary>solution</summary><div>
+<p>Structure à utiliser pour le stockage mais inefficace pour tout le reste</p>
+</div></details>
+
+<h3 id="utilisation-de-la-structure-en-liste-dadjacence">utilisation de la structure en liste d’adjacence</h3>
+
+<p>Positif :</p>
+
+<ul>
+  <li>parcourir tous les voisins d’un sommet</li>
+  <li>ajout d’un sommet</li>
+</ul>
+
+<p>Négatif :</p>
+
+<ul>
+  <li>savoir si $xy$ est une arête</li>
+  <li>suppression d’arête</li>
+</ul>
+
+<blockquote class="a-faire">
+  <p>Quand utiliser cette structure ?</p>
+</blockquote>
+<details class="a-faire"><summary>solution</summary><div>
+<p>Lorsque l’on analyse localement le graphe et qu’on a besoin d’avoir souvent les voisins d’un sommet.</p>
+</div></details>
+
+<h3 id="utilisation-de-la-structure-en-matrice-dadjacence">utilisation de la structure en matrice d’adjacence</h3>
+
+<p>Positif :</p>
+
+<ul>
+  <li>savoir si $xy$ est une arête</li>
+  <li>ajout ou suppression d’arêtes</li>
+</ul>
+
+<p>Négatif :</p>
+
+<ul>
+  <li>parcourir tous les voisins d’un sommet</li>
+  <li>ajout d’un sommet</li>
+  <li>taille</li>
+</ul>
+
+<blockquote class="a-faire">
+  <p>Quand utiliser cette structure ?</p>
+</blockquote>
+<details class="a-faire"><summary>solution</summary><div>
+<p>Lorsque l’on analyse globalement un graphe dont le nombre de sommet ne change pas et qu’on a besoin de savoir souvent si une arête existe dans le graphe ou non.</p>
+</div></details>
 
   </div>
 

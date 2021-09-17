@@ -62,18 +62,24 @@
   </header>
 
   <div class="post-content">
-    <h2 id="introduction">Introduction</h2>
+    <p><a href="/cours_informatique/cours/graphes/">graphes</a> / <a href="/cours_informatique/cours/graphes/circuits-euleriens.html">euleriens</a></p>
+
+<h2 id="introduction">Introduction</h2>
 
 <p>Le but de ce cours est d’apprendre à coder un (multi-)graphe dirigé et de s’en servir pour trouver un circuit eulérien d’un de ces graphes (s’il existe).</p>
 
-<p>Le code complet de ce tuto est disponible sur <a href="https://github.com/FrancoisBrucker/cours_informatique/tree/master/docs/cours/tronc_commun/circuits-euleriens-code">le github du projet</a>. Essayez totu de même de résoudre les questions par vous-même, vous apprendrez plus que juste lire le corrigé.</p>
+<p>Le code complet de ce tutoriel est disponible sur <a href="https://github.com/FrancoisBrucker/cours_informatique/tree/master/docs/cours/tronc_commun/circuits-euleriens-code">le github du projet</a>. Essayez tout de même de résoudre les questions par vous-même, vous apprendrez plus que juste lire le corrigé.</p>
 
 <h2 id="outils">Outils</h2>
 
-<p>Vous aurez besoin d’un environnement de développement fonctionnel (suivez <a href="/cours_informatique/tutos/editeur/pycharm/2021/08/30/configuration-pycharm.html">ce tuto</a>, si ce n’est pas déjà fait).
-Lorsque l’on vous demandera de <em>faire passer un test</em>, il faudra ajouter le test à votre fichier de test, comme indiqué dans le <a href="/cours_informatique/tutos/python/tests%20unitaires/2021/08/01/tests-unitaires.html">tuto sur les tests</a>.</p>
+<p>Vous aurez besoin de connaitre un peu de python et que vous sachiez faire des tests.</p>
 
-<p>Les tests vont s’ajouter petit à petit et à la fin de la séance votre fichier <em>test_multi_graph.py</em> contiendra plus d’une vingtaine de tests !</p>
+<blockquote>
+  <p>TBD : donner les prérequis plus précis. En particulier les tests
+pour l’instant suivez le <a href="/cours_informatique/cours/developpement/">cours de développement</a></p>
+</blockquote>
+
+<p>Les tests vont s’ajouter petit à petit et à la fin de la séance votre fichier <em>“test_multi_graph.py”</em> contiendra plus d’une vingtaine de tests !</p>
 
 <h2 id="plan">Plan</h2>
 
@@ -115,23 +121,23 @@ Lorsque l’on vous demandera de <em>faire passer un test</em>, il faudra ajoute
 
 <p>Par exemple, on pourra coder le graphe suivant :</p>
 
-<p><img src="./multi-graphe.png" alt="un multi-graphe" /></p>
+<p><img src="/cours_informatique/assets/cours/graphes/graphe_oriente_boucle.png" alt="un graphe orienté" style="margin: auto;display: block;" /></p>
 
 <p>Par la liste de sommets :</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">vertices</span> <span class="o">=</span> <span class="p">[</span><span class="s">'a'</span><span class="p">,</span> <span class="s">'b'</span><span class="p">,</span> <span class="s">'c'</span><span class="p">,</span> <span class="s">'d'</span><span class="p">,</span> <span class="s">'e'</span><span class="p">]</span>
 </code></pre></div></div>
 
-<p>Et les arcs codées sous forme de <a href="https://fr.wikipedia.org/wiki/Liste_d%27adjacence">liste d’adjacence</a> :</p>
+<p>Et les arcs codées sous forme de <a href="/cours_informatique/cours/graphes/encodage.html#liste-adjacence">liste d’adjacence</a> :</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">edges</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
-         <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
          <span class="p">[</span><span class="mi">3</span><span class="p">],</span>
          <span class="p">[</span><span class="mi">0</span><span class="p">],</span>
          <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
 </code></pre></div></div>
 
-<p>Exemple : le sommet d’indice 4 (c’est à dire le sommet de nom <code class="language-plaintext highlighter-rouge">vertices[4]</code>; donc <code class="language-plaintext highlighter-rouge">'e'</code>) à 2 voisins qui correspondent à <code class="language-plaintext highlighter-rouge">edges[4]</code>, c’est à dire les sommets d’indice 3 (<code class="language-plaintext highlighter-rouge">'d'</code>) et d’indice 0 (<code class="language-plaintext highlighter-rouge">'a</code>’).</p>
+<p><strong>Exemple :</strong> le sommet d’indice 4 (c’est à dire le sommet de nom <code class="language-plaintext highlighter-rouge">vertices[4]</code>; donc <code class="language-plaintext highlighter-rouge">'e'</code>) à 2 voisins qui correspondent à <code class="language-plaintext highlighter-rouge">edges[4]</code>, c’est à dire les sommets d’indice 3 (<code class="language-plaintext highlighter-rouge">'d'</code>) et d’indice 0 (<code class="language-plaintext highlighter-rouge">'a</code>’).</p>
 
 <h4 id="codage-de-la-structure">codage de la structure</h4>
 
@@ -167,7 +173,7 @@ Lorsque l’on vous demandera de <em>faire passer un test</em>, il faudra ajoute
 </code></pre></div></div>
 
 <blockquote>
-  <p><strong>Nota Bene :</strong> On déconseille fortement d’importer <code class="language-plaintext highlighter-rouge">*</code> (<em>ie.</em> toutes les fonctions), importez les une à une. Ca ne prend pas de temps avec <em>pycharm</em> et ça permet de savoir précisément ce qui est testé.</p>
+  <p>On déconseille fortement d’importer <code class="language-plaintext highlighter-rouge">*</code> (<em>ie.</em> toutes les fonctions), importez les une à une. Ca ne prend pas de temps avec <em>pycharm</em> et ça permet de savoir précisément ce qui est testé.</p>
 </blockquote>
 
 <p>Les différents tests vont montrer comment organiser votre structure.</p>
@@ -198,13 +204,13 @@ Lorsque l’on vous demandera de <em>faire passer un test</em>, il faudra ajoute
 
 <p>On a utilisé une structure sous la forme de listes pour stocker notre multi-graphe dirigé. En reprenant l’exemple du graphe :</p>
 
-<p><img src="./multi-graphe.png" alt="un multi-graphe" /></p>
+<p><img src="/cours_informatique/assets/cours/graphes/graphe_oriente_boucle.png" alt="un graphe orienté" style="margin: auto;display: block;" /></p>
 
 <p>codé en python :</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">vertices</span> <span class="o">=</span> <span class="p">[</span><span class="s">'a'</span><span class="p">,</span> <span class="s">'b'</span><span class="p">,</span> <span class="s">'c'</span><span class="p">,</span> <span class="s">'d'</span><span class="p">,</span> <span class="s">'e'</span><span class="p">]</span>
 <span class="n">edges</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
-         <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
          <span class="p">[</span><span class="mi">3</span><span class="p">],</span>
          <span class="p">[</span><span class="mi">0</span><span class="p">],</span>
          <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
@@ -218,8 +224,8 @@ Lorsque l’on vous demandera de <em>faire passer un test</em>, il faudra ajoute
   <li>aux voisins de <code class="language-plaintext highlighter-rouge">x</code> : <code class="language-plaintext highlighter-rouge">list(g[x])</code> (avec <code class="language-plaintext highlighter-rouge">x</code> un indice). On copie la liste plutôt que d’utiliser celle de <code class="language-plaintext highlighter-rouge">edges</code> pour éviter les soucis.</li>
 </ul>
 
-<blockquote>
-  <p><strong>Attention :</strong> de part la structure proposée :</p>
+<blockquote class="attention">
+  <p>de part la structure proposée :</p>
 
   <ul>
     <li>la complexité de <code class="language-plaintext highlighter-rouge">y in g[x]</code> est en $\mathcal{O}$(<code class="language-plaintext highlighter-rouge">len(g[x])</code>),</li>
@@ -279,17 +285,17 @@ Lorsque l’on vous demandera de <em>faire passer un test</em>, il faudra ajoute
 
 <p>Vous implémenterez cet algorithme dans la fonction <code class="language-plaintext highlighter-rouge">circuit_from_eulerian(edges)</code>. Elle doit satisfaire les tests suivants :</p>
 
-<pre><code class="language-pyhton">def test_circuit_empty():
-    assert circuit_from_eulerian([]) == []
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">test_circuit_empty</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">circuit_from_eulerian</span><span class="p">([])</span> <span class="o">==</span> <span class="p">[]</span>
 
 
-def test_circuit_no_edge():
-    assert circuit_from_eulerian([[], []]) == []
+<span class="k">def</span> <span class="nf">test_circuit_no_edge</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">circuit_from_eulerian</span><span class="p">([[],</span> <span class="p">[]])</span> <span class="o">==</span> <span class="p">[]</span>
 
 
-def test_circuit_loop():
-    assert circuit_from_eulerian(create_multi_graph(1, [[0, 0]])) == [0]
-</code></pre>
+<span class="k">def</span> <span class="nf">test_circuit_loop</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">circuit_from_eulerian</span><span class="p">(</span><span class="n">create_multi_graph</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]))</span> <span class="o">==</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</code></pre></div></div>
 
 <h3 id="points-critiques--circuits">points critiques : circuits</h3>
 

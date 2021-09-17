@@ -10,13 +10,13 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
 <meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
-<link rel="canonical" href="/cours_informatique/cours/graphes/mots_brujin.html" />
-<meta property="og:url" content="/cours_informatique/cours/graphes/mots_brujin.html" />
+<link rel="canonical" href="/cours_informatique/cours/graphes/mots-brujin.html" />
+<meta property="og:url" content="/cours_informatique/cours/graphes/mots-brujin.html" />
 <meta property="og:site_name" content="cours d’informatique" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Théorie des graphes : mots de Brujin" />
 <script type="application/ld+json">
-{"headline":"Théorie des graphes : mots de Brujin","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/graphes/mots_brujin.html","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
+{"headline":"Théorie des graphes : mots de Brujin","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/graphes/mots-brujin.html","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
@@ -62,7 +62,9 @@
   </header>
 
   <div class="post-content">
-    <h2 id="but">But</h2>
+    <p><a href="/cours_informatique/cours/graphes/">graphes</a> / <a href="/cours_informatique/cours/graphes/mots-brujin.html">Brujin</a></p>
+
+<h2 id="but">But</h2>
 
 <p>Des graphes eulérien là où ne s’y attend pas. Une application qui montre encore une fois comme preuve d’existence et algorithme de création de structure sont intimement liés.</p>
 
@@ -75,7 +77,7 @@
 <p>Il faut trouver un <em>mot</em> de longueur $p$ d’un <em>alphabet</em> $\mathcal{A}$ à $n$ caractères (un mot est une suite de $p$ caractère de $\mathcal{A}$).</p>
 
 <p><strong>Exemple :</strong>
-Les mots de longueur $p=3$ de l’alphabet $\{0, 1\}$ à $n=2$ caratères. Il y a $n^p$ = 2^3 = 8$ mots de longueur 3 différents qui sont :</p>
+Les mots de longueur $p=3$ de l’alphabet $\{0, 1\}$ à $n=2$ caratères. Il y a $n^p = 2^3 = 8$ mots de longueur 3 différents qui sont :</p>
 
 <ul>
   <li>$000$</li>
@@ -95,9 +97,9 @@ Les mots de longueur $p=3$ de l’alphabet $\{0, 1\}$ à $n=2$ caratères. Il y 
 <p><strong>Exemple :</strong>
 Dans l’exemple cela donne par exemple le mot : $000001010011100101110111$ de longueur $p \cdot n^p = 3 \cdot 2^3 = 24$.</p>
 
-<p>La longueur la plus petite possible d’une chaine de caractère qui contientdrait tous les mots serait que les mots se chevauchent : les $p-1$ premiers caratères du ième mot seraient égaux aux $p-1- derniers caractères du (i+1)ème mot.</p>
+<p>La longueur la plus petite possible d’une chaine de caractère qui contiendrait tous les mots serait que les mots se chevauchent : les $p-1$ derniers caractères du ième mot seraient égaux aux $p-1$ derniers caractères du (i+1)ème mot.</p>
 
-<p>Dans ce cas là, chaque mot de conterait que pour 1 nouveau caractère dans la chaine, à par le premier mot qu’il faudrait écrire entièrement. On aurait donc une taille théorique minimale de $p + 1 \cdot (n^p - 1) = p - 1 + n^p$ caractères (le 1er mot compte pour $p$ caractères les autres comptent uniquement pour 1 caractère).</p>
+<p>Dans ce cas là, chaque mot de conterait que pour 1 nouveau caractère dans la chaine, à part le premier mot qu’il faudrait écrire entièrement. On aurait donc une taille théorique minimale de $1 \cdot p  + (n^p - 1) \cdot 1 = p - 1 + n^p$ caractères (le 1er mot compte pour $p$ caractères les autres comptent uniquement pour 1 caractère).</p>
 
 <p><strong>Exemple :</strong> La longueur minimale est de $3-1 + 2^3 = 10$, qui est bien plus petit que 24.</p>
 
@@ -105,34 +107,36 @@ Dans l’exemple cela donne par exemple le mot : $000001010011100101110111$ de l
 
 <h2 id="brujin-et-euler-to-the-rescue">Brujin et Euler to the rescue</h2>
 
-<p>Considérons le graphe <strong>orienté</strong> suivant, appelé <em>graphe de Brujin</em>, $G=(V, E)$ où</p>
+<p>Considérons le graphe <strong>orienté</strong> suivant, appelé <em>graphe de Brujin</em> $B(n, p+1) = (V, E)$ où :</p>
 
 <ul>
-  <li>$V$ est l’ensemble des mots delongueur $p-1$</li>
-  <li>$xy \in E$ si les $p-2$ derniers caractères de $x$ sont les $p-2$ premiers caractères de $y$.</li>
+  <li>$V$ est l’ensemble des mots de longueur $p$ d’un alphabet à $n$ éléments</li>
+  <li>$xy \in E$ si les $p-1$ derniers caractères de $x$ sont les $p-1$ premiers caractères de $y$</li>
 </ul>
 
 <h3 id="propriétés">propriétés</h3>
 
-<p>Si $xy$ est un arc du graphe, alors on a que $x = aX$ et $y= Xb$ où $X$ est un mot de longueur $p-2$ et $a$et $b$ des caractères : l’arc correspond au mot de longueur $p$ = $aXb$ et <strong>ce mot n’apparaît qu’une fois</strong> (car à ce mot ne correspond qu’un unique $x$ et $y$).</p>
+<p>Si $xy$ est un arc du graphe, alors on a que $x = aX$ et $y= Xb$ où $X$ est un mot de longueur $p-1$ et $a$et $b$ des caractères : l’arc correspond au mot de longueur $p + 1$ = $aXb$ et <strong>ce mot n’apparaît qu’une fois</strong> (car à ce mot ne correspond qu’un unique $x$ et $y$).</p>
 
-<p>Réciproquement chaque mot de longueur $p$ pouvant s’écrire sous la forme $aXb$ avec $X$ un mot de longueur $p-2$ et $a$ et $b$ des caractères, tout mot de longueur $p$ est associé à un arc.</p>
+<p>Réciproquement chaque mot de longueur $p + 1$ pouvant s’écrire sous la forme $aXb$ avec $X$ un mot de longueur $p-1$ et $a$ et $b$ des caractères, tout mot de longueur $p + 1$ est associé à un arc.</p>
 
-<p>Enfin, pour un sommet $x$ donné, il possède $n$ arc entrant (correspondant à tous les mots de longueur $p-1$ dont les $p-2$ derniers caractères correspondent aux $p-2$ premiers caractères de $x$) et $n$ arc sortant (correspondant à tous les mots de longueur $p-1$ dont les $p-2$ premiers caractères correspondent aux $p-2$ derniers caractères de $x$) : le graphe $G$ est eulérien.</p>
+<p>Enfin, pour un sommet $x$ donné, il possède $n$ arc entrant (correspondant à tous les mots de longueur $p$ dont les $p-1$ derniers caractères correspondent aux $p-1$ premiers caractères de $x$) et $n$ arc sortant (correspondant à tous les mots de longueur $p$ dont les $p-1$ premiers caractères correspondent aux $p-1$ derniers caractères de $x$) :</p>
+
+<p><strong>le graphe $B(n, p+1)$ est eulérien</strong> pour tout $p$ et tout $n$.</p>
 
 <h3 id="cycle-eulérien">cycle eulérien</h3>
 
-<p>Un cycle eulérien du graphe $G$ correspond à une suite comprenant tous les mots de longueur $p$. En analysant 3 sommets successifs de ce cycle $u_{i-1}u_iu_{i+1}$ on remarque que le mot correspondant à l’arc $u_{i-1}u_i$ et celui correspondant à l’arc $u_iu_{i+1}$ sont tels
-que les $p-1$ derniers caractères de l’un son les $p-1$ premiers caractères de l’autre.</p>
+<p>Un cycle eulérien du graphe $B(n, p)$ correspond à une suite comprenant tous les mots de longueur $p$. En analysant 3 sommets successifs de ce cycle $u_{i-1}u_iu_{i+1}$ on remarque que le mot correspondant à l’arc $u_{i-1}u_i$ et celui correspondant à l’arc $u_iu_{i+1}$ sont tels
+que les $p-1$ derniers caractères de l’un sont les $p-1$ premiers caractères de l’autre.</p>
 
 <h3 id="mot-de-brujin">mot de brujin</h3>
 
-<p>Le cycle eulérien $u_0\dots u_k$ nous permet de construire les $n^p différents mots : c’est les mots correspondants aux arcs $u_iu_{i+1}$.</p>
+<p>Un cycle eulérien $u_0\dots u_k$ (donc $u_k = u_0$) de $B(n, p)$ nous permet de construire les $n^p$ différents mots : c’est les mots correspondants aux arcs $u_iu_{i+1}$.</p>
 
 <p>De là on construit le mot qui commence par le mot associé à $u_0u_1$ puis on ajoute itérativement le dernier caractère du sommet $u_i$ pour $i &gt; 1$.</p>
 
 <blockquote>
-  <p><strong>remarque :</strong> la construction ci-dessus est équivalente à commencer par le mot associé à $u_0$ et à ajouter itérativement les derniers caractères de tous les $u_i$, $i &gt; 0$.</p>
+  <p>La construction ci-dessus est équivalente à commencer par le mot associé à $u_0$ et à ajouter itérativement les derniers caractères de tous les $u_i$, $i &gt; 0$.</p>
 </blockquote>
 
 <p>Ce mot, appelé <em>mot de brujin</em> a bien les propriétés suivantes :</p>
@@ -142,12 +146,15 @@ que les $p-1$ derniers caractères de l’un son les $p-1$ premiers caractères 
   <li>il a une taille de $p +(n^p -1)$ caractères</li>
 </ul>
 
+<p><strong>Il existe bien un mot de taille minimale ($p +(n^p-1)$ caractères) contenant tous les mots de longueur $p$ d’un alphabet à $n$ lettres, et ce quelque soit $n$ et $p$.</strong></p>
+
 <h3 id="exemple">exemple</h3>
 
-<p>Le graphe de brujin associé aux mots de longueur 3 de l’alphabet $\{0, 1\}$ est : 
- <img src="ressources/mot_3_01.png" alt="graphe de brujin" /></p>
+<p>Le graphe de brujin associé aux mots de longueur 3 de l’alphabet $\{0, 1\}$ est :</p>
 
-<p>Un cycle eulérien associé est alors 10-01-11-11-10-00-00-01-10 ce qui donne le mot de Brujin associé : 1011100010.</p>
+<p><img src="/cours_informatique/assets/cours/graphes/mot_3_01.png" alt="graphe de brujin" style="margin: auto;display: block;" /></p>
+
+<p>Un cycle eulérien associé est alors <strong>10</strong>-0<strong>1</strong>-1<strong>1</strong>-1<strong>1</strong>-1<strong>0</strong>-0<strong>0</strong>-0<strong>0</strong>-0<strong>1</strong>-1<strong>0</strong> ce qui donne le mot de Brujin associé : 1011100010.</p>
 
   </div>
 
