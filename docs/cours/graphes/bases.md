@@ -6,6 +6,8 @@ tags: informatique graphes
 author: "François Brucker"
 ---
 
+[graphes]({% link cours/graphes/index.md %}) / [bases]({% link cours/graphes/bases.md %})
+
 ## But
 
 Essentiellement du vocabulaire de théorie des graphe. Histoire de fixer un peu les idées.
@@ -38,7 +40,7 @@ Le multi-graphe $G = (V, E)$ avec :
 
 Peut se représenter graphiquement (sur le plan) :
 
-![un multi graphe]({{ " ressources/un_multi_graphe.png" }}){:style="margin: auto;display: block"}
+![exemple multi-graphe]({{ "/assets/cours/graphes/multi_graphe_exemple.png" | relative_url }}){:style="margin: auto;display: block;"}
 
 Remarquez qu'avec notre définition on :
 
@@ -64,14 +66,13 @@ Enfin, ils procurent une satisfaction purement esthétique de part la grande bea
 
 ## restrictions
 
-Notre définition est tellement générale qu'elle est très peu utilisée telle quelle. On utilisera souvent des cas particuliers selon le problème que l'on veut résoudre :
+Notre définition est tellement générale, même en supposant un nombre fini d'arcs, qu'elle est très peu utilisée telle quelle. On utilisera souvent des cas particuliers selon le problème que l'on veut résoudre :
 
-* se restreindre à un nombre fini de sommets et d'arcs. **Ce sera toujours le cas ici**.
-* ne pas permettre à un arc d'apparaître plusieurs fois, c'est que qu'on appelle un *graphe*. On a alors que pour un graphe $G = (V, E)$, $E$ est un ensemble de couple tel que $E \subseteq V \times V$ : c'est une *relation*. 
+* ne pas permettre à un arc d'apparaître plusieurs fois, c'est que qu'on appelle un **graphe**. On a alors que pour un graphe $G = (V, E)$, $E$ est un ensemble de couple tel que $E \subseteq V \times V$ : c'est une **relation**.
 * on interdit les boucles (les arcs qui commencent et finissent au même nœud). Les boucles induisent en effet souvent des cas particuliers besogneux dans les démonstrations sans apporter de grandes propriétés.
-* si $(x, y) \in E$ alors $(y, x) \in E$. On appelle ces graphes *non orienté*. Les éléments de $E$ sont maintenant des ensembles à deux éléments et on les appelle *arêtes* plutôt qu'*arc* (qu'on réserve aux graphes orientés).
+* si $(x, y) \in E$ alors $(y, x) \in E$. On appelle ces graphes des **graphes non orienté**. Les éléments de $E$ sont maintenant des ensembles à deux éléments et on les appelle **arêtes** plutôt qu'*arcs* (qu'on réserve aux graphes orientés).
   
-On appelle *graphe simple* un graphe sans boucle et non orienté. Classiquement, et on suivra cette règle ici, le mot *graphe* est équivalent à graphe simple et sinon on précisera :
+On appelle **graphe simple** un graphe sans boucle et non orienté. Classiquement, et on suivra cette règle ici, le mot *graphe* est équivalent à graphe simple et sinon on précisera :
 
 * *graphe orienté* si le graphe est sans boucle et que les éléments de $E$ sont des couples,
 * *graphe avec boucles* si le graphe peut posséder des boucles,
@@ -80,6 +81,8 @@ On appelle *graphe simple* un graphe sans boucle et non orienté. Classiquement,
 Par abus de langage on écrira $xy$ pour designer une arête (*resp.* arc) plutôt que $\{x, y\}$ (*resp.* $(x, y)$).
 
  >**Nota Bene :** ne soyez pas étonné que selon l'application ou le problème étudié on appelle graphe, le cas particulier de mutli-graphe qui nous intéresse. Donc parfois, selon le contexte, un graphe sera orienté et dans d'autres cas il ne le sera pas s'il n'y a pas de confusion possible. En cas de doute, revenez au vocabulaire précis.
+
+Selon le problème choisi, on commencera par trouver quelle classe de graphe utiliser (c'st souvent le *graphe simple*), c'est important car les algorithmes de graphes ne fonctionnent pas toujours sur toutes les classes de graphes.
 
 ## vocabulaire
 
@@ -92,23 +95,28 @@ Pour un graphe (orienté ou non) $G = (V, E)$ on appelle :
 
 > **Remarque** : Un graphe est dit *complet* s'il possède toutes les arêtes : pour tous $x, y \in V$ $xy$ est une arête. On le note $K_n$ et $m = n(n-1)/2$. Un graphe orienté est dit complet  si pour tous $x, y \in V$ soit $xy$ soit $yx$ est une arête (il n'est a priori pas nécessaire que $xy$ ety$ $yx$ soient des arêtes).
 
-### graphe non orienté
-
-Une *arête* est un élément de $E$ pour les graphes non orienté. On la représente graphiquement comme ça : ![arête]({{ "ressources/arete.png" }})
-
-Le *voisinage* d'un sommet $x$ est l'ensemble des sommets $y$ tels que $xy \in E$ : $N(x) = \\{ y \mid  xy \in E\\}$.
-
-Le *degré* d'un sommet est le cardinal du voisinage : $\delta(x) = \vert N(x) \vert$.
-
 ### graphe orienté
 
-Une *arc* est un élément de $E$ pour les graphes orientés. On le représente graphiquement comme ça : ![arc]({{ "ressources/arc.png" }})
+Un *arc* $xy$ est un élément de $E$ pour les graphes orientés. On le représente graphiquement comme ça :
+
+![arc]({{ "/assets/cours/graphes/arc.png" | relative_url }}){:style="margin: auto;display: block;"}
 
 * $x$ est l'origine de l'arc,
 * $y$ est la destination de l'arc
   
 L'ensemble des arcs sortants de $x$ est appelé *voisinage sortant de $x$* (*neighbors*) et vaut : $N^+(x) = \\{ y \vert xy \in E\\}$. Le *degré* sortant de $x$ vaut  $\delta^+(x) = \vert N^+(x) \vert$.
+
 De la même manière l'ensemble des arcs entrant en $y$ est appelé  *voisinage entrant en $y$* et vaut : $N^-(y) = \\{ x \mid xy \in E\\}$. Le degré entrant de $y$ vaut $\delta^-(y) = \vert N^-(y) \vert$.
+
+### graphe non orienté
+
+Une *arête* $xy$ est un élément de $E$ pour les graphes non orienté. On la représente graphiquement comme ça :
+
+![arête]({{ "/assets/cours/graphes/arete.png" | relative_url }}){:style="margin: auto;display: block;"}
+
+Le *voisinage* d'un sommet $x$ est l'ensemble des sommets $y$ tels que $xy \in E$ : $N(x) = \\{ y \mid  xy \in E\\}$.
+
+Le *degré* d'un sommet est le cardinal du voisinage : $\delta(x) = \vert N(x) \vert$.
 
 ## exemple
 
@@ -116,29 +124,52 @@ De la même manière l'ensemble des arcs entrant en $y$ est appelé  *voisinage 
 
 Considérons le multi-graphe suivant :
 
-![multi-graphe]({{ "ressources/graphe_oriente_boucle.png" }})
+![un graphe orienté]({{ "/assets/cours/graphes/graphe_oriente_boucle.png" | relative_url }}){:style="margin: auto;display: block;"}
 
-C'est un *graphe orienté avec boucle*.
+C'est un **graphe orienté avec boucle**.
 
 On a :
 
 * $N^+(a) = \{ b, e\}$,
 * $\delta^+(b) = \delta^-(b) = 2$.
   
-Que vaut $\sum_x \delta^+(x)$ ? et $\sum_x \delta^-(x)$ ?  
+> Que valent $\sum_x \delta^+(x)$ ? et $\sum_x \delta^-(x)$ ?  
+{: .a-faire}
+{% details solution %}
+
+$$\sum_x \delta^+(x) = \delta^+(a) + \delta^+(b) + \delta^+(c) + \delta^+(d) + \delta^+(e) = 2 + 2 + 1 + 1 + 2 = 8$$
+
+$$\sum_x \delta^-(x) = \delta^-(a) + \delta^-(b) + \delta^-(c) + \delta^-(d) + \delta^-(e) = 2 + 2 + 1 + 2 + 1 = 8$$
+
+On remarque que la boucle en $b$ est comptée pour $\delta^-(b)$ et pour $\delta^+(b)$.
+On peut également remarquer que $\sum_x \delta^+(x) = \sum_x \delta^-(x) = \vert E \vert$.
+
+{% enddetails %}
+{: .a-faire}
 
 ### non orienté
 
-La version non orienté du graphe précédent est :
+Une version non orienté du graphe précédent pourrait être :
 
-![graphe]({{ "ressources/graphe_simple.png" }})
+![un graphe orienté]({{ "/assets/cours/graphes/graphe_simple.png" | relative_url }}){:style="margin: auto;display: block;"}
+
+C'est un **graphe simple**.
 
 On a :
 
 * $\delta(a) = 3$,
-* $N(a) = \\{b, d, e\\}$.
+* $N(a) = \\{b, d, e \\}$.
 
-Que vaut $\sum_x \delta(x)$ ?
+> Que vaut $\sum_x \delta(x)$ ?
+{: .a-faire}
+{% details solution %}
+
+$$\sum_x \delta(x) = \delta(a) + \delta(b) + \delta(c) + \delta(d) + \delta(e) = 3 + 2 + 2 + 3 + 2 = 12$$
+
+On peut remarquer que $\sum_x \delta(x) = 2\vert E \vert$.
+
+{% enddetails %}
+{: .a-faire}
 
 ## Premières propriétés
 

@@ -5,6 +5,8 @@ category: cours
 author: "François Brucker"
 ---
 
+[graphes]({% link cours/graphes/index.md %})
+
 ## Introduction
 
 Ce cours, introductif, à pour but d'exposer quelques définitions, concepts et méthodes de résolution de problèmes propre aux graphes.
@@ -19,6 +21,6 @@ Le cours va être séparé en petites entités qui se suivent pour former un tou
 ## Plan du cours
 
 1. [bases]({% link cours/graphes/bases.md %})
-2. [encodage de graphes]({% link cours/graphes/encodage_graphes.md %})
+2. [encodage de graphes]({% link cours/graphes/encodage.md %})
 3. [parcours eulériens]({% link cours/graphes/parcours_euleriens.md %})
 4. [mots de Brujin]({% link cours/graphes/mots_brujin.md %})
