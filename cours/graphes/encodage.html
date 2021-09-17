@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Théorie des graphes : encodage des graphes | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Théorie des graphes : encodage des graphes" />
+<meta name="author" content="François Brucker" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
+<link rel="canonical" href="/cours_informatique/cours/graphes/encodage.html" />
+<meta property="og:url" content="/cours_informatique/cours/graphes/encodage.html" />
+<meta property="og:site_name" content="cours d’informatique" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Théorie des graphes : encodage des graphes" />
+<script type="application/ld+json">
+{"headline":"Théorie des graphes : encodage des graphes","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/graphes/encodage.html","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css">
+
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+</head>
+
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Théorie des graphes : encodage des graphes</h1></p>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></p>
+  </header>
+
+  <div class="post-content">
+    <p><a href="/cours_informatique/cours/graphes/">graphes</a> / <a href="/cours_informatique/cours/graphes/encodage.html">encodage</a></p>
+
+<h2 id="but">But</h2>
+
+<p>Montrer comment l’on peut passer d’une structure <em>tableau blanc</em> (<em>ie.</em> <em>tableau noir</em> pour les plus nostalgiques d’entres nous) à une structure informatique.
+Chaque représentation de graphes va avoir son utilité, selon l’algorithme utilisé. On se restreint ici aux graphes simples, orientés ou non.</p>
+
+<p>En informatique, on a coutume de regarder la complexité de chaque opération que l’on va faire sur la structure. De là, selon l’algorithme utilisé et les opérations qu’il va faire sur cette structure, on pourra utiliser telle ou telle implémentation.</p>
+
+<p>Pour un graphe, les opérations que l’on va considérer sont :</p>
+
+<ul>
+  <li>manipulation de la structure :
+    <ul>
+      <li>savoir si $xy$ est une arête</li>
+      <li>savoir si $x$ est un sommet</li>
+      <li>parcourir tous les voisins d’un sommet</li>
+      <li>parcourir tous les sommets</li>
+      <li>parcourir toutes les arêtes</li>
+    </ul>
+  </li>
+  <li>construction de la structure :
+    <ul>
+      <li>création de la structure</li>
+      <li>destruction de la structure</li>
+      <li>ajout d’un sommet</li>
+      <li>ajout d’une arête</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="liste">liste</h2>
+
+<p>Structure simple. Utilisable pour des graphes orienté ou non.</p>
+
+<p>$G = (V, E)$ où :</p>
+
+<ul>
+  <li>$V$ : est une liste de $n$ sommets</li>
+  <li>$E$ : est une liste de $m$ couples de sommets.</li>
+</ul>
+
+<p>La complexité de stockage : $\mathcal{O}(m+n)$</p>
+
+<p>Structure de stockage la plus simple. N’est optimisé pour aucune opération spécifique :</p>
+
+<ul>
+  <li>manipulation de la structure :
+    <ul>
+      <li>savoir si $xy$ est une arête : $\mathcal{O}(m)$ il faut parcourir toute la liste $E$</li>
+      <li>savoir si $x$ est un sommet : $\mathcal{O}(n)$ il faut parcourir toute la liste $V$</li>
+      <li>parcourir tous les voisins d’un sommet : $\mathcal{O}(m)$ il faut parcourir toute la liste $E$</li>
+      <li>parcourir tous les sommets : $\mathcal{O}(n)$</li>
+      <li>parcourir toutes les arêtes : $\mathcal{O}(m)$</li>
+    </ul>
+  </li>
+  <li>construction de la structure :
+    <ul>
+      <li>création de la structure : $\mathcal{O}(\vert V \vert + \vert E \vert)$</li>
+      <li>destruction de la structure : $\mathcal{O}(1)$</li>
+      <li>ajout d’un sommet :
+        <ul>
+          <li>$\mathcal{O}(1)$ si l’on ajoute en fin de liste,</li>
+          <li>$\mathcal{O}(n)$ si l’on utilise un tableau de taille fixe qu’il faut recréer</li>
+        </ul>
+      </li>
+      <li>ajout d’une arête :</li>
+      <li>$\mathcal{O}(1)$ si l’on ajoute en fin de liste,</li>
+      <li>$\mathcal{O}(m)$ si l’on utilise un tableau de taille fixe qu’il faut recréer</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="liste-dadjacence">liste d’adjacence</h2>
+
+<p>$G = (V, E)$ où :</p>
+
+<ul>
+  <li>$V$ : est une liste de $n$ sommets</li>
+  <li>$E$ : est une liste de $n$ listes.</li>
+</ul>
+
+<p>Nécessite un re-codage des sommets en entiers allant de 0 à $n-1$. Ceci peut être fait en associant à chaque sommet son indice dans la liste $V$ ou en considérant que les sommets sont des entiers allant de $0$ à $n-1$.</p>
+
+<p>Pour utiliser cette structure, on va toujours considérer que <strong>les sommets sont des entiers</strong> allant de $0$ à $n-1$. La liste $V$ n’est là que pour pouvoir associer plus tard un sommet à autre chose qu’un entier (dépendant de l’application).</p>
+
+<p>Avec cette convention et cet encodage : $E[i]$ est la liste de tous les voisins de $i$.</p>
+
+<p>L’intérêt de cette encodage est que certaines opérations sont optimisées :</p>
+
+<ul>
+  <li>manipulation de la structure :
+    <ul>
+      <li>savoir si $xy$ est une arête : $\mathcal{O}(\delta(x) + \delta(y))$ il faut parcourir les listes $E[x]$ et $E[y]$</li>
+      <li>savoir si $x$ est un sommet : $\mathcal{O}(1)$</li>
+      <li>parcourir tous les voisins d’un sommet : $\mathcal{O}(\delta(x))$ On parcourt $E[x]$</li>
+      <li>parcourir tous les sommets : $\mathcal{O}(n)$</li>
+      <li>parcourir toutes les arêtes : $\mathcal{O}(m)$ : on parcourt tous les $E[i]$ pour $0\leq i &lt; n$</li>
+    </ul>
+  </li>
+  <li>construction de la structure :
+    <ul>
+      <li>création de la structure : $\mathcal{O}(\vert V \vert + \vert E \vert)$</li>
+      <li>destruction de la structure : $\mathcal{O}(1)$</li>
+      <li>ajout d’un sommet :
+        <ul>
+          <li>$\mathcal{O}(1)$ (un entier de plus)</li>
+        </ul>
+      </li>
+      <li>ajout d’une arête :</li>
+      <li>$\mathcal{O}(1)$ si l’on ajoute en fin de liste,</li>
+      <li>$\mathcal{O}(m)$ si l’on utilise un tableau de taille fixe qu’il faut recréer</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>En code, on utilise souvent une variante de cette structure qui utilise des <a href="https://fr.wikipedia.org/wiki/Tableau_associatif">tableaux associatifs</a>. Voir par exemple <a href="https://www.python.org/doc/essays/graphs/">l’implémentation en python</a>. On troque alors les complexités maximale par des complexités en moyennes, mais on a plus besoin de l’encodage des éléments sous la forme d’entiers.</p>
+</blockquote>
+
+<h2 id="matrice-dadjacence">matrice d’adjacence</h2>
+
+<p>$G = (V, E)$ où :</p>
+
+<ul>
+  <li>$V$ : est une liste de $n$ sommets</li>
+  <li>$E$ : est une matrice $n \times n$.</li>
+</ul>
+
+<p>Nécessite un re-codage des sommets en entiers allant de 0 à $n-1$. Ceci peut être fait en associant à chaque sommet son indice dans la liste $V$ ou en considérant que les sommets sont des entiers allant de $0$ à $n-1$.</p>
+
+<p>Pour utiliser cette structure, on va toujours considérer que <strong>les sommets sont des entiers</strong> allant de $0$ à $n-1$. La liste $V$ n’est là que pour pouvoir associer plus tard un sommet à autre chose qu’un entier (dépendant de l’application).</p>
+
+<p>Avec cette convention et cet encodage : $E[i][j]$ vaut $1$ si $xy$ est une arête, et $0$ sinon.</p>
+
+<p>Cet encodage permet de traiter les graphes orientés (on traite de façon distincte $E[i][j]$ et $E[j][i]$), et même les graphes valués (la valeurs de $E[i][j]$ est la valuation de l’arête $xy$). Notez que pour un graphe non orienté la matrice $E$ est symétrique et vaut $0$ sur la diagonale.</p>
+
+<p>L’intérêt de cette encodage est que le fait de savoir si un arête est présente dans le graphe est optimisé :</p>
+
+<ul>
+  <li>manipulation de la structure :
+    <ul>
+      <li>savoir si $xy$ est une arête : $\mathcal{O}(1)$ : on regarde la valeur de $E[i][j]$.</li>
+      <li>savoir si $x$ est un sommet : $\mathcal{O}(1)$</li>
+      <li>parcourir tous les voisins d’un sommet : $\mathcal{O}(n)$ On parcourt toute la ligne $E[x]$</li>
+      <li>parcourir tous les sommets : $\mathcal{O}(n)$</li>
+      <li>parcourir toutes les arêtes : $\mathcal{O}(n^2)$ : on parcourt toute la matrice $E[i][j]$ pour $0\leq i, j &lt; n$</li>
+    </ul>
+  </li>
+  <li>construction de la structure :
+    <ul>
+      <li>création de la structure : $\mathcal{O}(n^2)$ création de la matrice et initialisation des valeurs à 0.</li>
+      <li>destruction de la structure : $\mathcal{O}(1)$</li>
+      <li>ajout d’un sommet :
+        <ul>
+          <li>$\mathcal{O}(1)$ (un entier de plus)</li>
+        </ul>
+      </li>
+      <li>ajout d’une arête :</li>
+      <li>ajout d’une ligne et d’une colonne. Selon comment la matrice est crée, Cela peut coûter $\mathcal{O}(n)$ (la matrice est consituée de $n$ lignes ou $n$ colonnes) ou $\mathcal{O}(n^2)$ s’il faut recréer la matrice.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="quand-utiliser-quoi-">quand utiliser quoi ?</h2>
+
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d&#39;informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d&#39;informatique</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
