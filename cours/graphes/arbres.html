@@ -74,6 +74,8 @@
   <p>Tous les graphes de cette partie seront considérés comme étant <em>simple</em></p>
 </blockquote>
 
+<p><a href="/cours_informatique/cours/graphes/arbres-corrige.html">éléments de corrigé</a></p>
+
 <h2 id="définitions">définitions</h2>
 
 <p>Un <strong>arbre</strong> est un <em>graphe simple</em> $T = (V, E)$ qui est :</p>
@@ -127,8 +129,8 @@
 
 <blockquote class="a-faire">
   <ul>
-    <li>Tout graphe connexe contient au minimum $\vert V \vert - 1$ arêtes.</li>
     <li>Tout graphe sans cycle contient au maximum $\vert V \vert - 1$ arêtes.</li>
+    <li>Tout graphe connexe contient au minimum $\vert V \vert - 1$ arêtes.</li>
   </ul>
 </blockquote>
 
@@ -153,6 +155,17 @@
   <ul>
     <li>il est sans cycle</li>
     <li>$\vert E \vert = \vert V \vert - 1$</li>
+  </ul>
+</blockquote>
+
+<p>Pour enfoncer le clou et montrer que les arbres sont une structure de connexité minimale vous pouvez aussi :</p>
+
+<blockquote class="a-faire">
+  <p>prouver que :</p>
+
+  <ul>
+    <li>Si on ajoute une arête à un arbre (n’importe laquelle) on ajoute un cycle</li>
+    <li>Si on supprime une arête à un arbre (n’importe laquelle) on le déconnecte</li>
   </ul>
 </blockquote>
 
@@ -199,22 +212,22 @@
   <p>Donnez un exemple de chacun des termes pour le graphe ci-avant.</p>
 </blockquote>
 
-<p>Cet ordonnancement est très utilisé en biologie par exemple car il permet de rendre compte de l’évolution des espèces. En analyse des données on utilise ce paradigme pour classer les données (qui sont les feuilles) selon ce qu’elles ont en commun (les leurs ancêtres).</p>
+<p>Cet ordonnancement est <a href="https://fr.wikipedia.org/wiki/Arbre_phylog%C3%A9n%C3%A9tique">très utilisé en biologie</a> par exemple car il permet de rendre compte de l’évolution des espèces. En analyse des données on utilise ce paradigme pour classer les données (qui sont les feuilles) selon ce qu’elles ont en commun (les leurs ancêtres).</p>
 
 <h2 id="arbre-binaire-planté">arbre binaire planté</h2>
 
 <p>En informatique, c’est souvent les arbres binaires planté que l’on utilise :</p>
 
-<p>Un arbre planté est binaire si tout noeud intérieur a <strong>au plus 2 successeurs</strong>. On aura parfois aussi besoin qu’il soit <strong>complet</strong>, c’est à dire que les hauteurs des feuilles sont toutes égales à la hauteur de l’arbre.</p>
+<p>Un arbre planté est binaire si tout noeud intérieur a <strong>au plus 2 successeurs</strong>. On aura parfois aussi besoin qu’il soit <strong>complet</strong>, c’est à dire que les noeuds intérieurs qui n’ont pas 2 successeurs sont en bas de l’arbre (à la hauter de l’arbre -1).</p>
 
 <h3 id="propriété-fondamentale-des-arbres-binaires">propriété fondamentale des arbres binaires</h3>
 
 <blockquote class="a-faire">
-  <p>Montrer que pour un <strong>arbre binaire complet</strong>, si on note $f$ le nombre de feuilles de l’arbre, on a :</p>
+  <p>Montrer que pour un arbre binaire, si noeud intérieur a exactement 2 successeurs, alors en notant $f$ le nombre de feuilles de l’arbre, on a :</p>
 
   <ul>
     <li>la hauteur de l’arbre est égale à $\log_2(f)$</li>
-    <li>$f$ est égal au nombre de nœuds intérieurs moins 1.</li>
+    <li>$f$ est égal au nombre de nœuds intérieurs plus 1.</li>
   </ul>
 </blockquote>
 
@@ -227,27 +240,68 @@ Un informaticien est prêt à beaucoup, beaucoup de choses pour avoir une struct
 
 <h3 id="exemple-du-tas">exemple du tas</h3>
 
-<blockquote class="note">
-  <p>TBD</p>
+<p>Nous allons montrer ici une utilité de l’arbre binaire complet pour résoudre le problème d’une file de priorité.</p>
+
+<h4 id="le-problème">le problème</h4>
+
+<p>Une salle d’attente des urgences d’un hôpital contient des patients dont la gravité d’état est donnée par un entier. Des patients peuvent arriver et partir de la salle d’attente et leur état peut s’améliorer (la gravité d’état baisse) ou se détériorer (leur gravité d’état augmente). A chaque fois qu’un médecin est libre, on prend en charge le patient avec l’état de gravité le plus important.</p>
+
+<h4 id="une-solution-possible-naïve">une solution possible (naïve)</h4>
+
+<p>On regarde chaque patient et on prend le patient ayant la gravité d’état le plus important.</p>
+
+<blockquote class="a-faire">
+  <p>Quel est le coût algorithmique d’utiliser une telle solution ?</p>
 </blockquote>
 
-<p>Nous allons montrer ici une utilité del’arbre binaire complet pour traiter d’une file de priorité.</p>
+<p>Si l’on suppose que l’état de gravité d’un patient est connu, on peut faire bien mieux.</p>
 
-<ul>
-  <li>problème avec des tickets</li>
-  <li>solution avec une liste triée : et modifiation de priorité en O(n)</li>
-</ul>
+<h4 id="un-tas">un tas</h4>
 
-<p>Utilisation du tas.</p>
+<p>Un tas est un arbre binaire planté complet dont les sommets sont des entiers. On considère en plus qu’un tas est <strong>plein</strong>, c’est à dire que les feuilles de hauteur maximum forment un intervalle à gauche de l’arbre.</p>
 
-<p>Comme file de priorité.</p>
+<p><img src="/cours_informatique/assets/cours/graphes/arbre_plante_tas_abc.png" alt="arbre_plante_tas_?" style="margin: auto;display: block;" /></p>
 
-<ul>
-  <li>définition</li>
-  <li>changement de priorité de la racine</li>
-  <li>ajout d’un élément puis remontée</li>
-  <li>suppression de l’élément le plus grand (astuce de mettre le dernier en haut puis descente)</li>
-</ul>
+<blockquote class="a-faire">
+  <p>Des trois arbres ci-dessus lequel (il n’y en a qu’un) est binaire, complet et plein ?</p>
+</blockquote>
+
+<p>De plus, pour un tas, chaque nœud est de valeur plus grande que chacun de ses descendants direct.</p>
+
+<blockquote class="a-faire">
+  <ul>
+    <li>Créez un tas avec les nombres : 42, 12, 1, 3, 6, 5.</li>
+    <li>Y a-t-il plusieurs possibilités ?</li>
+    <li>que peut-on dire du nœud ayant le plus grand nombre ?</li>
+  </ul>
+</blockquote>
+
+<h4 id="manipulation-dun-tas">manipulation d’un tas</h4>
+
+<blockquote class="a-faire">
+  <p>Donner les algorithmes pour effectuer les opérations suivantes :</p>
+
+  <ol>
+    <li>ajout d’un élément</li>
+    <li>modification d’une valeur</li>
+    <li>suppression de la racine</li>
+  </ol>
+</blockquote>
+
+<p>On peut s’en sortir avec des algorithme dont le nombre d’opération est proportionnelle à la hauteur du tas.</p>
+
+<blockquote class="a-faire">
+  <p>En conclure que l’utilisation du tas est bien meilleure que la solution naïve.</p>
+</blockquote>
+
+<h4 id="pour-la-bonne-bouche">pour la bonne bouche</h4>
+
+<blockquote class="a-faire">
+  <ul>
+    <li>En déduire une façon de trier un tableau de nombre.</li>
+    <li>trouver un de représenter un tas par une liste (on pourra parcourir le tas de haut en bas et de droite à gauche).</li>
+  </ul>
+</blockquote>
 
 <h2 id="parcours">parcours</h2>
 
@@ -304,7 +358,7 @@ Si la racine a des descendants:
 
 <p>On peut associer à tout graphe $G = (V, E)$ une <strong>valuation</strong> $f: E \rightarrow \mathbb{R}$.</p>
 
-<h4 id="un-exemple">un exemple</h4>
+<h4 id="une-mise-en-situation">une mise en situation</h4>
 
 <p>On suppose que vous êtes chef d’un état. Vous voulez que votre territoire soit connexe (que les gens puissent aller partout sur votre territoire), mais vous ne voulez pas payer trop cher (vous voulez être ré-élu et ça fait mauvais genre d’augmenter les impôts).</p>
 
@@ -316,15 +370,30 @@ Si la racine a des descendants:
   <p>Pourquoi ?</p>
 </blockquote>
 
-<h4 id="btp">BTP</h4>
+<h4 id="un-exemple">un exemple</h4>
 
 <p>On considère le graphe ci-dessous :</p>
 
-<p>GRAPHE
-graphes des villes belges.</p>
+<p><img src="/cours_informatique/assets/cours/graphes/prim_graphe_exemple.png" alt="graphe exemple" style="margin: auto;display: block;" /></p>
 
-<blockquote class="note">
-  <p>TBD</p>
+<p>Avec un peu d’imagination considérez que c’est le graphe de construction d’une petite île du pacifique dont vous êtes le nouveau chef d’état.</p>
+
+<blockquote class="a-faire">
+  <ul>
+    <li>Quel est l’arête qui sera forcément dans tous les arbres couvrant de poids minimum ?</li>
+    <li>Quel est l’arête qui ne sera forcément jamais dans un arbre couvrant de poids minimum ?</li>
+    <li>y a-t-il plusieurs arbres couvrant de poids minimum pour ce graphe ?</li>
+  </ul>
+</blockquote>
+
+<h4 id="propriété">propriété</h4>
+
+<blockquote class="a-faire">
+  <ul>
+    <li>montrez que s’il existe deux arbres couvrant de poids minimum ne différent que d’une arête, alors elles on même valuation</li>
+    <li>montrez que si toutes les valuations sont différentes, il n’existe qu’un seul arbre couvrant de poids minimal.</li>
+    <li>montrez que la réciproque n’est pas vraie</li>
+  </ul>
 </blockquote>
 
 <h4 id="un-algorithme">un algorithme</h4>
@@ -370,7 +439,7 @@ Retour :
 <p>Maintenant qu’on est sur que ça marche :</p>
 
 <blockquote class="a-faire">
-  <p>Réalisez l’algorithme en entier sur le graphe des villes.</p>
+  <p>Réalisez l’algorithme en entier sur le graphe précédent.</p>
 </blockquote>
 
   </div>
