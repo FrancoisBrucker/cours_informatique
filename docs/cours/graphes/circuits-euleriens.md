@@ -6,7 +6,8 @@ tags: informatique code graphes
 author : "François Brucker"
 ---
 
-[graphes]({% link cours/graphes/index.md %}) / [euleriens]({% link cours/graphes/circuits-euleriens.md %})
+> [graphes]({% link cours/graphes/index.md %}) / [euleriens]({% link cours/graphes/circuits-euleriens.md %})
+{: .chemin}
 
 ## Introduction
 

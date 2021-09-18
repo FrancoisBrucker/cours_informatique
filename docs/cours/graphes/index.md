@@ -5,7 +5,8 @@ category: cours
 author: "François Brucker"
 ---
 
-[graphes]({% link cours/graphes/index.md %})
+> [graphes]({% link cours/graphes/index.md %})
+{: .chemin}
 
 ## Introduction
 
@@ -37,15 +38,6 @@ Un cas particulier d'intérêt : l'arbre.
 
 > Sous la forme d'exercices.
 
-1. Un cas particulier : les arbres
-   1. définition
-   2. en informatique enraciné
-   3. arbre binaire. Combien de feuilles ?
-   4. parcours
-   5. arbre dans un graphe. Existence ? Min si valué
-   6. exemple du débit
+1. [l'arbre]({% link cours/graphes/arbres.md %})
 2. arbres binaires de recherche
-3. combien d'arbre ? Encodage prufer et application à un arbre aléatoire (! différent de la structure).
-
-
-
+3. combien d'arbre ? Encodage prüfer et application à un arbre aléatoire (!= différent de la structure).

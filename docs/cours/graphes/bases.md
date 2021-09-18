@@ -6,7 +6,8 @@ tags: informatique graphes
 author: "François Brucker"
 ---
 
-[graphes]({% link cours/graphes/index.md %}) / [bases]({% link cours/graphes/bases.md %})
+> [graphes]({% link cours/graphes/index.md %}) / [bases]({% link cours/graphes/bases.md %})
+{: .chemin}
 
 ## But
 

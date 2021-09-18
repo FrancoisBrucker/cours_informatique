@@ -6,7 +6,8 @@ tags: informatique graphes
 author: "François Brucker"
 ---
 
-[graphes]({% link cours/graphes/index.md %}) / [Brujin]({% link cours/graphes/mots-brujin.md %})
+> [graphes]({% link cours/graphes/index.md %}) / [Brujin]({% link cours/graphes/mots-brujin.md %})
+{: .chemin}
 
 ## But
 
@@ -36,7 +37,6 @@ Les mots de longueur $p=3$ de l'alphabet $\\{0, 1\\}$ à $n=2$ caratères. Il y 
 
 Si l'on veut trouver une chaîne de caractère qui contient tous les mots de longueur $p$ d'un alphabet à $n$ caractère on peut coller bout à bout tous les mots.
 
-
 **Exemple :**
 Dans l'exemple cela donne par exemple le mot : $000001010011100101110111$ de longueur $p \cdot n^p = 3 \cdot 2^3 = 24$.
 
@@ -61,7 +61,7 @@ Si $xy$ est un arc du graphe, alors on a que $x = aX$ et $y= Xb$ où $X$ est un 
 
 Réciproquement chaque mot de longueur $p + 1$ pouvant s'écrire sous la forme $aXb$ avec $X$ un mot de longueur $p-1$ et $a$ et $b$ des caractères, tout mot de longueur $p + 1$ est associé à un arc.
 
-Enfin, pour un sommet $x$ donné, il possède $n$ arc entrant (correspondant à tous les mots de longueur $p$ dont les $p-1$ derniers caractères correspondent aux $p-1$ premiers caractères de $x$) et $n$ arc sortant (correspondant à tous les mots de longueur $p$ dont les $p-1$ premiers caractères correspondent aux $p-1$ derniers caractères de $x$) : 
+Enfin, pour un sommet $x$ donné, il possède $n$ arc entrant (correspondant à tous les mots de longueur $p$ dont les $p-1$ derniers caractères correspondent aux $p-1$ premiers caractères de $x$) et $n$ arc sortant (correspondant à tous les mots de longueur $p$ dont les $p-1$ premiers caractères correspondent aux $p-1$ derniers caractères de $x$) :
 
 **le graphe $B(n, p+1)$ est eulérien** pour tout $p$ et tout $n$.
 
