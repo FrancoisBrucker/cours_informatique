@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Théorie des graphes : arbres | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Théorie des graphes : arbres" />
+<meta name="author" content="François Brucker" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
+<link rel="canonical" href="/cours_informatique/cours/graphes/arbres.html" />
+<meta property="og:url" content="/cours_informatique/cours/graphes/arbres.html" />
+<meta property="og:site_name" content="cours d’informatique" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Théorie des graphes : arbres" />
+<script type="application/ld+json">
+{"headline":"Théorie des graphes : arbres","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/graphes/arbres.html","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css">
+
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+</head>
+
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Théorie des graphes : arbres</h1></p>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></p>
+  </header>
+
+  <div class="post-content">
+    <blockquote class="chemin">
+  <p><a href="/cours_informatique/cours/graphes/">graphes</a> / <a href="/cours_informatique/cours/graphes/arbres.html">arbres</a></p>
+</blockquote>
+
+<h2 id="but">But</h2>
+
+<p>Explorer les propriétés et l’intérêt de l’arbre.</p>
+
+<blockquote class="attention">
+  <p>Tous les graphes de cette partie seront considérés comme étant <em>simple</em></p>
+</blockquote>
+
+<h2 id="définitions">définitions</h2>
+
+<p>Un <strong>arbre</strong> est un <em>graphe simple</em> $T = (V, E)$ qui est :</p>
+
+<ul>
+  <li>connexe</li>
+  <li>sans cycle</li>
+</ul>
+
+<h3 id="graphe-simple">graphe simple</h3>
+
+<blockquote class="a-faire">
+  <p>Redonnez la définition d’un graphe simple. Combien d’arêtes au maximum peut contenir un graphe simple ?</p>
+</blockquote>
+
+<h3 id="arbre-ou-pas-arbre-">arbre ou pas arbre ?</h3>
+
+<blockquote class="a-faire">
+  <p>Déduire de la définition lequel des 2 graphes ci-dessous est un arbre.</p>
+</blockquote>
+
+<table>
+  <tbody>
+    <tr>
+      <td><img src="/cours_informatique/assets/cours/graphes/pas_arbre.png" alt="graphe A" /></td>
+      <td><img src="/cours_informatique/assets/cours/graphes/arbre.png" alt="graphe B" /></td>
+    </tr>
+    <tr>
+      <td>A</td>
+      <td>B</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="algorithme-de-reconnaissance">algorithme de reconnaissance</h3>
+
+<h4 id="graphe-connexe">graphe connexe</h4>
+
+<blockquote class="a-faire">
+  <ol>
+    <li>Donnez un algorithme permettant de savoir si un graphe $G = (V, E)$ donné est connexe.</li>
+    <li>Quelle structure de graphe utiliseriez vous pour que cet algorithme ait la plus petite complexité possible ?</li>
+  </ol>
+</blockquote>
+
+<p><strong>Indice</strong> : On pourra partir d’un sommet $x$ et trouver itérativement tous les sommets que l’on peut atteindre avec lui.</p>
+
+<h4 id="graphe-sans-cycle-">graphe sans cycle ?</h4>
+
+<p>Là comme ça, ça n’a pas l’air simple de répondre à cette question. On va plutôt ruser et prouver deux propriétés des graphes connexes à la place.</p>
+
+<blockquote class="a-faire">
+  <ul>
+    <li>Tout graphe connexe contient au minimum $\vert V \vert - 1$ arêtes.</li>
+    <li>Tout graphe sans cycle contient au maximum $\vert V \vert - 1$ arêtes.</li>
+  </ul>
+</blockquote>
+
+<h4 id="conditions">conditions</h4>
+
+<p>En déduire que :</p>
+
+<blockquote class="a-faire">
+  <p>Un graphe $G=(V, E)$ est un arbre si et seulement si :</p>
+
+  <ul>
+    <li>il est connexe</li>
+    <li>$\vert E \vert = \vert V \vert - 1$</li>
+  </ul>
+</blockquote>
+
+<p>Sur votre lancée prouvez aussi que :</p>
+
+<blockquote class="a-faire">
+  <p>un graphe $G=(V, E)$ est un arbre si et seulement si :</p>
+
+  <ul>
+    <li>il est sans cycle</li>
+    <li>$\vert E \vert = \vert V \vert - 1$</li>
+  </ul>
+</blockquote>
+
+<h4 id="conclusion">conclusion</h4>
+
+<p>Les conditions précédentes nous permettent de ne pas avoir à chercher si un graphe à un cycle, ce qui rend l’algorithme de reconnaissance plus aisé :</p>
+
+<blockquote class="a-faire">
+  <p>Donnez l’algorithme final pour savoir si un graphe est un arbre.</p>
+</blockquote>
+
+<h2 id="arbre-enracinées">arbre enracinées</h2>
+
+<p>En informatique on utilise souvent la structure d’arbre en l’<strong>enracinant</strong>, c’est à dire qu’on choisi un sommet qui sera la racine et tous les autres sommets vont être dépendant de lui. Ceci est possible de part une importante propriété des arbres : <strong>l’unicité des chemins</strong></p>
+
+<h3 id="chemin-et-arbres">chemin et arbres</h3>
+
+<p>Soit $T = (V, E)$ un arbre.</p>
+
+<blockquote class="a-faire">
+  <p>Montrez que quelques soient deux sommets $x$ et $y$, il n’existe qu’un seul chemin entre $x$ et $y$.</p>
+</blockquote>
+
+<h3 id="ordo-sommets">ordonnancement des sommets</h3>
+
+<p>L’unicité des chemins permet d’ordonner les sommets par rapport à leur chemin par rapport à la racine. On a coutume de les faire <em>“tomber”</em> depuis la racine. On peut en effet les ranger par rapport à <strong>leur chemin</strong> par rapport à celle ci :</p>
+
+<p><img src="/cours_informatique/assets/cours/graphes/arbre_plante.png" alt="arbre_plante" style="margin: auto;display: block;" /></p>
+
+<p>Vocabulaire :</p>
+
+<ul>
+  <li>$y$ est un <strong>ancêtre</strong> de $x$ : si $y$ est sur le chemin entre la racine et $x$</li>
+  <li>$x$ est un <strong>descendant</strong> de $y$ : si $y$ est sur le chemin entre la racine et $x$</li>
+  <li>$x$ est une <strong>feuille</strong> s’il n’a pas de descendant</li>
+  <li>$x$ est un <strong>nœud intérieur</strong> s’il n’est pas une feuille</li>
+  <li>$x$ est un <strong>successeur</strong> de $y$ : si $y$ est le sommet juste avant $x$ dans le chemin de la racine à $x$</li>
+  <li>$y$ est un <strong>prédécesseur</strong> de $x$ : si $y$ est le sommet juste avant $x$ dans le chemin de la racine à $x$</li>
+  <li>la <strong>hauteur</strong> de $x$ est la longueur du chemin entre la racine et $x$.</li>
+  <li>la <strong>hauteur</strong> de l’arbre est la longueur du plus long chemin entre la racine et un autre sommet.</li>
+</ul>
+
+<blockquote class="a-faire">
+  <p>Donnez un exemple de chacun des termes pour le graphe ci-avant.</p>
+</blockquote>
+
+<p>Cet ordonnancement est très utilisé en biologie par exemple car il permet de rendre compte de l’évolution des espèces. En analyse des données on utilise ce paradigme pour classer les données (qui sont les feuilles) selon ce qu’elles ont en commun (les leurs ancêtres).</p>
+
+<h2 id="arbre-binaire-planté">arbre binaire planté</h2>
+
+<p>En informatique, c’est souvent les arbres binaires planté que l’on utilise :</p>
+
+<p>Un arbre planté est binaire si tout noeud intérieur a <strong>au plus 2 successeurs</strong>. On aura parfois aussi besoin qu’il soit <strong>complet</strong>, c’est à dire que les hauteurs des feuilles sont toutes égales à la hauteur de l’arbre.</p>
+
+<h3 id="propriété-fondamentale-des-arbres-binaires">propriété fondamentale des arbres binaires</h3>
+
+<blockquote class="a-faire">
+  <p>Montrer que pour un <strong>arbre binaire complet</strong>, si on note $f$ le nombre de feuilles de l’arbre, on a :</p>
+
+  <ul>
+    <li>la hauteur de l’arbre est égale à $\log_2(f)$</li>
+    <li>$f$ est égal au nombre de nœuds intérieurs moins 1.</li>
+  </ul>
+</blockquote>
+
+<p>Ces propriétés ci-dessus montrent que si l’on veut organiser $n$ données, on a besoin que d’un arbre de hauteur $\log_2(n)$. Comme le chemin depuis la racine nous permet de retrouver les données, si on associe une question à chaque nœud intérieur, on peut retrouver $n$ éléments en ne posant que $\log_2(n)$ questions. C’est le principe des <strong>arbres de décisions</strong>, si utiles en apprentissage automatique.</p>
+
+<blockquote>
+  <p>La différence en $log_2(n)$ et $n$ est très importante ! On par exemple besoin d’uniquement 100 questions pour trier 1267650600228229401496703205376 éléments.
+Un informaticien est prêt à beaucoup, beaucoup de choses pour avoir une structure en $\log_2(n)$.</p>
+</blockquote>
+
+<h3 id="exemple-du-tas">exemple du tas</h3>
+
+<blockquote class="note">
+  <p>TBD</p>
+</blockquote>
+
+<p>Nous allons montrer ici une utilité del’arbre binaire complet pour traiter d’une file de priorité.</p>
+
+<ul>
+  <li>problème avec des tickets</li>
+  <li>solution avec une liste triée : et modifiation de priorité en O(n)</li>
+</ul>
+
+<p>Utilisation du tas.</p>
+
+<p>Comme file de priorité.</p>
+
+<ul>
+  <li>définition</li>
+  <li>changement de priorité de la racine</li>
+  <li>ajout d’un élément puis remontée</li>
+  <li>suppression de l’élément le plus grand (astuce de mettre le dernier en haut puis descente)</li>
+</ul>
+
+<h2 id="parcours">parcours</h2>
+
+<p>Pour modifier la structure du tas on a du évoluer dans la structure d’arbre planté. Un autre intérêt (encore un !) des abres planté est que tout sommet peut-être considéré comme la racine de sous-arbre. On a donc uniquement besoin de créer l’algorithme qui fonctionnera pour la racine et le re-exécuter ensuite sur les descendants.</p>
+
+<p>On utilise ce principe pour parcourir tous les sommets d’un arbre planté efficacement, c’est à dire en ne regardant chaque sommet qu’un nombre constant de fois.</p>
+
+<h3 id="trois-parcours-classiques">trois parcours classiques</h3>
+
+<blockquote class="a-faire">
+  <p>Pour chaque parcours ci-après, donnez le résultat pour l’arbre de la partie <a href="#ordo-sommets">ordonnancement des sommets</a> en supposant que <code class="language-plaintext highlighter-rouge">Examen de la Racine</code>signifie : affiche le numéro de la racine à l’écran.</p>
+
+  <p>Une fois ceci fait, trouvez un ordre qui lira les sommets dans l’ordre alphabétique.</p>
+</blockquote>
+
+<h4 id="pré-ordre">pré-ordre</h4>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pré-ordre(racine)
+Si la racine a des descendants:
+    Examen de la Racine 
+    pré-ordre(Fils Gauche) 
+    pré-ordre(Fils Droit)
+</code></pre></div></div>
+
+<h4 id="post-ordre">post-ordre</h4>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>post-ordre(racine)
+Si la racine a des descendants:
+    post-ordre(Fils Gauche) 
+    post-ordre(Fils Droit)
+    Examen de la Racine 
+</code></pre></div></div>
+
+<h4 id="en-ordre">en-ordre</h4>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>en-ordre(racine)
+Si la racine a des descendants:
+    en-ordre(Fils Gauche) 
+    Examen de la Racine 
+    en-ordre(Fils Droit)
+</code></pre></div></div>
+
+<h2 id="arbre-dans-des-graphes-connexe">arbre dans des graphes connexe</h2>
+
+<blockquote class="a-faire">
+  <p>Montrer que pour tout graphe connexe $G = (V, E)$, il existe au moins un arbre $T=(V, E’)$ tel que $E’ \subseteq E$.</p>
+</blockquote>
+
+<p>On appelle ces arbres les <strong>arbres couvrants</strong> d’un graphe.</p>
+
+<p>Les arbres couvrant d’un graphe sont beaucoup utilisés en optimisation. Nous allons montrer un exemple ci-après.</p>
+
+<h3 id="graphe-valué">graphe valué</h3>
+
+<p>On peut associer à tout graphe $G = (V, E)$ une <strong>valuation</strong> $f: E \rightarrow \mathbb{R}$.</p>
+
+<h4 id="un-exemple">un exemple</h4>
+
+<p>On suppose que vous êtes chef d’un état. Vous voulez que votre territoire soit connexe (que les gens puissent aller partout sur votre territoire), mais vous ne voulez pas payer trop cher (vous voulez être ré-élu et ça fait mauvais genre d’augmenter les impôts).</p>
+
+<p>Vous demandez donc à vos conseillez de créer un graphe dont les sommets correspondant à vos villes et dont les arêtes sont valuées par le coût de construction d’une route entre ces 2 villes. Ce graphe n’a pas forcément toutes les arêtes si le coût de construction est prohibitif par exemple.</p>
+
+<p>La solution la plus efficace consiste à trouver de ce graphe un graphe couvrant dont la somme des valuation est minimale parmi tous les graphes couvrant.</p>
+
+<blockquote class="a-faire">
+  <p>Pourquoi ?</p>
+</blockquote>
+
+<h4 id="btp">BTP</h4>
+
+<p>On considère le graphe ci-dessous :</p>
+
+<p>GRAPHE
+graphes des villes belges.</p>
+
+<blockquote class="note">
+  <p>TBD</p>
+</blockquote>
+
+<h4 id="un-algorithme">un algorithme</h4>
+
+<p>Ce problème à l’air dur, mais il possède un algorithme (assez) simple pour le résoudre. L’algorithme suivant est l’algorithme de Prim (1957) :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Entrée :
+    * un graphe G = (V, E)
+    * une valuation f qui associe un réel à toute arête de G
+Initialisation :
+    * cout_entree(x) = +∞ pour tout sommet x
+    * predecesseur(x) = x
+    * V' = {}, E' = {}
+Algorithme :
+    * on choisit un sommet r quelconque
+    * cout_entree(r) = 0
+    * ajoute r à V'    
+    * tant que V' n'est pas V:
+        * pour tous les voisins x de r qui ne sont pas dans V':
+            * si cout_entree(x) &gt;= cout_entree(r) + f(rx):
+                cout_entree(x) = cout_entree(r) + f(rx)
+                predecesseur(x) = r
+        * soit x le sommet de V qui n'est pas dans V' minimisant cout_entree(x)
+        * r = x
+        * cout_entree(r) = 0
+        * ajoute r à V' et {r, predecesseur(r)} à E'
+Retour :
+    T = (V', E')
+</code></pre></div></div>
+
+<p>Commencer par :</p>
+
+<blockquote class="a-faire">
+  <p>Prouver que si G est connexe, alors T est connexe et est un arbre</p>
+</blockquote>
+
+<p>Une fois ceci fait :</p>
+
+<blockquote class="a-faire">
+  <p>Prouver que $T$ est <strong>un arbre couvrant de poids minimal</strong> pour $G$</p>
+</blockquote>
+
+<p>Maintenant qu’on est sur que ça marche :</p>
+
+<blockquote class="a-faire">
+  <p>Réalisez l’algorithme en entier sur le graphe des villes.</p>
+</blockquote>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d&#39;informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d&#39;informatique</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
