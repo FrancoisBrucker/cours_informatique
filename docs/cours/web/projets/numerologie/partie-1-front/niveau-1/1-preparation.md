@@ -5,7 +5,7 @@ category: cours
 author: "François Brucker"
 ---
 
-> [numérologie]({% link cours/web/projets/numerologie/index.md %})/[niveau 1]({% link cours/web/projets/numerologie/niveau-1/index.md %})/[partie 1]({% link cours/web/projets/numerologie/niveau-1/partie-1-front/index.md %})/[préparation]({% link cours/web/projets/numerologie/niveau-1/partie-1-front/1-preparation.md %})
+> [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 1]({% link cours/web/projets/numerologie/partie-1-front/index.md %}) / [niveau 1]({% link cours/web/projets/numerologie/partie-1-front/niveau-1/index.md %}) / [préparation]({% link cours/web/projets/numerologie/partie-1-front/niveau-1/1-preparation.md %})
 {: .chemin}
 
 Avant de se lancer à corps perdu dans le développement et le code, vérifions que nous avons tous les outils nécessaires.

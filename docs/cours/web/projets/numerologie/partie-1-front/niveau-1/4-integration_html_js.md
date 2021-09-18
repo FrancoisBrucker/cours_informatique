@@ -5,10 +5,10 @@ category: cours
 author: "François Brucker"
 ---
 
-> [numérologie]({% link cours/web/projets/numerologie/index.md %})/[niveau 1]({% link cours/web/projets/numerologie/niveau-1/index.md %})/[partie 1]({% link cours/web/projets/numerologie/niveau-1/partie-1-front/index.md %})/[html et css]({% link cours/web/projets/numerologie/niveau-1/partie-1-front/4-integration_html_js.md %})
+> [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 1]({% link cours/web/projets/numerologie/partie-1-front/index.md %}) / [niveau 1]({% link cours/web/projets/numerologie/partie-1-front/niveau-1/index.md %}) / [html et css]({% link cours/web/projets/numerologie/partie-1-front/niveau-1/4-integration_html_js.md %})
 {: .chemin}
 
-On va lier le code javascript de la la [partie 2]({% link cours/web/projets/numerologie/niveau-1/partie-1-front/2-code_js.md %}) et le html/css de la [partie 3]({% link cours/web/projets/numerologie/niveau-1/partie-1-front/3-html_css.md %}).
+On va lier le code javascript de la la [partie 2]({% link cours/web/projets/numerologie/partie-1-front/niveau-1/2-code_js.md %}) et le html/css de la [partie 3]({% link cours/web/projets/numerologie/partie-1-front/niveau-1/3-html_css.md %}).
 
 ## Tache 1 : cliquer sur le bouton {#tache-1}
 
@@ -153,7 +153,7 @@ Dès que vous cliquerez sur le bouton, la valeur sera envoyée dans la console.
 
 ## Tâche 2 : chargement et utilisation de fichier javascript {#tache-2}
 
-On ne veut pas juste afficher le prénom dans la console, on veut lui associé le chiffre calculé en [partie 2]({% link cours/web/projets/numerologie/niveau-1/partie-1-front/2-code_js.md %}). Il faut donc charger nos fonctions javascript dans le html.
+On ne veut pas juste afficher le prénom dans la console, on veut lui associé le chiffre calculé en [partie 2]({% link cours/web/projets/numerologie/partie-1-front/niveau-1/2-code_js.md %}). Il faut donc charger nos fonctions javascript dans le html.
 
 Cela se fait simplement avec l'attribut `src` de la balise `<script></script>` qui contient un chemin relatif vers un fichier javascript :
 

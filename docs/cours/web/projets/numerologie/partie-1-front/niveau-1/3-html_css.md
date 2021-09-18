@@ -5,7 +5,7 @@ category: cours
 author: "François Brucker"
 ---
 
-> [numérologie]({% link cours/web/projets/numerologie/index.md %})/[niveau 1]({% link cours/web/projets/numerologie/niveau-1/index.md %})/[partie 1]({% link cours/web/projets/numerologie/niveau-1/partie-1-front/index.md %})/[html et css]({% link cours/web/projets/numerologie/niveau-1/partie-1-front/3-html_css.md %})
+> [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 1]({% link cours/web/projets/numerologie/partie-1-front/index.md %}) / [niveau 1]({% link cours/web/projets/numerologie/partie-1-front/niveau-1/index.md %}) / [html et css]({% link cours/web/projets/numerologie/partie-1-front/niveau-1/3-html_css.md %})
 {: .chemin}
 
 Codage de la page web.

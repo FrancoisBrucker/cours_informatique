@@ -7,7 +7,7 @@ author: "François Brucker"
 
 ## But
 
-Ce cours, tente de donner des notions de développement web. 
+Ce cours, tente de donner des notions de développement web.
 
 > TBD : en chantier
 {: .note}
@@ -30,31 +30,30 @@ Plus tard :
 
 Lorsque l'on ouvre une fenêtre du navigateur chrome, dans le haut de la fenêtre il y a un champ où l'on peut marquer du texte. Il y est, avant que l'on écrive,  marqué : *"Effectuez une recherche sur google ou saisissez une URL"*.
 
-On pet ainsi taper du texte qui sera, si ce n'est pas une url, interprétée comme une recherche google. Tapons : `URL` puis appuyons sur la touche entrée. 
+On pet ainsi taper du texte qui sera, si ce n'est pas une url, interprétée comme une recherche google. Tapons : `URL` puis appuyons sur la touche entrée.
 
 Bon. Ce n'est vraisemblablement pas une URL qu'on a tapé puisque l'on obtient le résultat d'une recherche google. Allons sur le 1er lien proposé, qui est chez moi celui-là : <https://fr.wikipedia.org/wiki/Uniform_Resource_Locator>, et qui est une URL nous dirigeant vers la définition d'une URL.
 
-### url 
+### url
 
 Vous pouvez suivre cette petite [intruction aux URLs]({% link cours/web/tuto_url.md %}).
 
 ### outils de développement
 
-L'informatique en général et le web en particulier sont des sciences incarnées. C'est à dire que le code produit un résultat et ce n'est que lorsque ce que l'on pense faire (le code) est conforme à la réalité (ce qu'il produit réellement) que l'on est content. 
+L'informatique en général et le web en particulier sont des sciences incarnées. C'est à dire que le code produit un résultat et ce n'est que lorsque ce que l'on pense faire (le code) est conforme à la réalité (ce qu'il produit réellement) que l'on est content.
 
 Il faudra donc sans cesse exécuter votre code (ici voir le résulta dans un navigateur) pour être sur que tout se passe comme prévu.
 
 > Si vous n'avez pas exécuté votre code depuis 10min, vous pouvez être sur qu'il ne fonctionne plus.
 {: .attention}
 
-POur vous aider a comprendre comment votre code est exécuté, les navigateurs mettent à votre disposition des outils de développements. **Utilisez les** ! ils vous feront gagner un temps précieux. 
+POur vous aider a comprendre comment votre code est exécuté, les navigateurs mettent à votre disposition des outils de développements. **Utilisez les** ! ils vous feront gagner un temps précieux.
 
 Vous pouvez [suivre ce tuto]({% link cours/web/tuto_outils_dev.md %}) pour voir comment ils fonctionnent.
 
 ### html/css/js
 
 Tout le web tourne autour du trio html (pour la structure des page), css (pour la mise en forme de la page) et le javascript (pour le dynamisme de la page). Avant de les étudier en détail, vous pouvez faire ce petit [tuto introductif]({% link cours/web/tuto_html_css_js.md %}) pour voir un peut de quoi il en retourne.
-
 
 ## plan du cours
 

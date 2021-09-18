@@ -5,7 +5,7 @@ category: cours
 author: "François Brucker"
 ---
 
-> [numérologie]({% link cours/web/projets/numerologie/index.md %})/[niveau 2]({% link cours/web/projets/numerologie/niveau-2/index.md %})/[partie 1]({% link cours/web/projets/numerologie/niveau-2/partie-1-front/index.md %})/[code js]({% link cours/web/projets/numerologie/niveau-2/partie-1-front/2-code_js.md %})
+> [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 1]({% link cours/web/projets/numerologie/partie-1-front/index.md %}) / [niveau 2]({% link cours/web/projets/numerologie/partie-1-front/niveau-2/index.md %}) / [code js]({% link cours/web/projets/numerologie/partie-1-front/niveau-2/2-code_js.md %})
 {: .chemin}
 
 Code de la *logique métier* du projet. L'idée est de montrer comment on peut progresser en codant nous même, un item en amenant un autre à coder.
@@ -77,7 +77,7 @@ On va aller plus vite dans ce cours ensuite. Mais l(idée est toujours la suivan
 
 ## Tache 1 : unicode d'un caractère
 
-On utilise l'[implémentation du niveau 1]({% link cours/web/projets/numerologie/niveau-1/partie-1-front/2-code_js.md %}#tache-1) pour associer un nombre à un caractère unicode.
+On utilise l'[implémentation du niveau 1]({% link cours/web/projets/numerologie/partie-1-front/niveau-1/2-code_js.md %}#tache-1) pour associer un nombre à un caractère unicode.
 
 ## Tache 2 : caractères et nombre
 
@@ -93,7 +93,7 @@ Ce qui nous permet de passer à l'item suivant :
 * [ ] modifier l'arbre DOM avec du texte
 * [ ] récupérer un info de l'url et la traiter
 
-Qu'on [implémente comme au niveau 1]({% link cours/web/projets/numerologie/niveau-1/partie-1-front/2-code_js.md %}#tache-2). Nos todos deviennent :
+Qu'on [implémente comme au niveau 1]({% link cours/web/projets/numerologie/partie-1-front/niveau-1/2-code_js.md %}#tache-2). Nos todos deviennent :
 
 * [X] associer un chiffre à un nom
   * [X] ~~numéro unicode/utf8 d'un caractère~~
@@ -121,7 +121,7 @@ Je choisis de faire :
 * [ ] modifier l'arbre DOM avec du texte
 * [ ] récupérer un info de l'url et la traiter
 
-Encore une fois on utilise l'[implémentation de niveau 1]({% link cours/web/projets/numerologie/niveau-1/partie-1-front/2-code_js.md %}#tache-3). Nous allons cependant modifier la façon dont on teste nos méthodes.
+Encore une fois on utilise l'[implémentation de niveau 1]({% link cours/web/projets/numerologie/partie-1-front/niveau-1/2-code_js.md %}#tache-3). Nous allons cependant modifier la façon dont on teste nos méthodes.
 
 ## test du code
 
@@ -236,7 +236,7 @@ On peut terminer cette partie en faisant l'item :
 * [ ] modifier l'arbre DOM avec du texte
 * [ ] récupérer un info de l'url et la traiter
 
-On procède [comme au niveau 1]({% link cours/web/projets/numerologie/niveau-1/partie-1-front/2-code_js.md %}#tache-4), en ajoutant les tests à notre tout nouveau fichier *"numerologie/tests/tests_numerologie.js"*.
+On procède [comme au niveau 1]({% link cours/web/projets/numerologie/partie-1-front/niveau-1/2-code_js.md %}#tache-4), en ajoutant les tests à notre tout nouveau fichier *"numerologie/tests/tests_numerologie.js"*.
 
 ## todos finaux
 

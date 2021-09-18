@@ -5,7 +5,7 @@ category: cours
 author: "François Brucker"
 ---
 
-> [numérologie]({% link cours/web/projets/numerologie/index.md %})/[niveau 2]({% link cours/web/projets/numerologie/niveau-2/index.md %})/[partie 1]({% link cours/web/projets/numerologie/niveau-2/partie-1-front/index.md %})/[html et css]({% link cours/web/projets/numerologie/niveau-2/partie-1-front/3-html_css.md %})
+> [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 1]({% link cours/web/projets/numerologie/partie-1-front/index.md %}) / [niveau 2]({% link cours/web/projets/numerologie/partie-1-front/niveau-2/index.md %}) / [html et css]({% link cours/web/projets/numerologie/partie-1-front/niveau-2/3-html_css.md %})
 {: .chemin}
 
 ## todos
@@ -43,7 +43,7 @@ Pour créer le fichier html, il faut s'appuyer sur les users stories pour être 
 * un champ texte pour rentrer son prénom
 * un chiffre associé au prénom
 
-Avec ces directives on peut procéder comme [au niveau 1]({% link cours/web/projets/numerologie/niveau-1/partie-1-front/3-html_css.md %}#tache-1)
+Avec ces directives on peut procéder comme [au niveau 1]({% link cours/web/projets/numerologie/partie-1-front/niveau-1/3-html_css.md %}#tache-1)
 
 ## ajout de todos
 
@@ -77,7 +77,7 @@ Comme c'est moche et qu'on est des esthètes, on va ajouter des choses au todo p
 * [ ] modifier l'arbre DOM avec du texte
 * [ ] récupérer un info de l'url et la traiter
 
-On va procéder comme [au niveau 1]({% link cours/web/projets/numerologie/niveau-1/partie-1-front/3-html_css.md %}#tache-2)
+On va procéder comme [au niveau 1]({% link cours/web/projets/numerologie/partie-1-front/niveau-1/3-html_css.md %}#tache-2)
 
 ## Tache 3 : bibliothèque css
 
@@ -93,7 +93,7 @@ On va procéder comme [au niveau 1]({% link cours/web/projets/numerologie/niveau
 * [ ] modifier l'arbre DOM avec du texte
 * [ ] récupérer un info de l'url et la traiter
 
-On va procéder comme [au niveau 1]({% link cours/web/projets/numerologie/niveau-1/partie-1-front/3-html_css.md %}#tache-3).
+On va procéder comme [au niveau 1]({% link cours/web/projets/numerologie/partie-1-front/niveau-1/3-html_css.md %}#tache-3).
 
 ## Tache 3.5 : mais que fait la police ?
 

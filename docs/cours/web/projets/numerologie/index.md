@@ -18,11 +18,16 @@ On aimerait pouvoir créer un site de numérologie qui associerait à chaque pr�
 
 > But : associer un chiffre à toute chaine de caractère en [Unicode](https://unicode-table.com/fr/)
 
+## Plan
+
+Ce projet va être séparé en trois parties :
+
+1. [un premier site entièrement en front]({% link cours/web/projets/numerologie/partie-1-front/index.md %})
+2. [on ajoute une partie back pour les calculs]({% link cours/web/projets/numerologie/partie-2-post-get/index.md %})
+3. on ajoute la possibilités de stocker des données
+
+Chaque partie est organisée en niveaux. Chaque niveau refait la partie en ajoutant à chaque fois des outils de développements/code de plus en plus perfectionnés. Il est recommandé de faire tous les niveaux d'une partie.
+
 ## niveaux
 
-Nous allons refaire plusieurs fois ce projet, en ajoutant à chaque fois des outils de développements/code de plus en plus perfectionnés.
-
-1. [niveau 1]({% link cours/web/projets/numerologie/niveau-1/index.md %}) : utilisation d'un éditeur de texte et bases du développement html/css/js
-2. [niveau 2]({% link cours/web/projets/numerologie/niveau-2/index.md %}) : ajoute d'outils de gestion de projets
-3. [niveau 3]({% link cours/web/projets/numerologie/niveau-3.md %}) : ajout de la gestion des sources et de la mise en production.
-4. niveau 4 : on tests tout.
+Chaque partie est organisée en niveaux. Chaque niveau ajoutant des outils de développements/code de plus en plus perfectionnés. Ces outils seront différents selon la partie.

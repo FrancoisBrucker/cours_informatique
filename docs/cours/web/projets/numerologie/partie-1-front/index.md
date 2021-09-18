@@ -1,18 +1,14 @@
 ---
 layout: page
-title:  "Projet numérologie : niveau 1"
+title:  "Projet numérologie / partie 1 : front"
 category: cours
 author: "François Brucker"
 ---
 
-> [numérologie]({% link cours/web/projets/numerologie/index.md %})/[niveau 1]({% link cours/web/projets/numerologie/niveau-1/index.md %})
+> [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 1]({% link cours/web/projets/numerologie/partie-1-front/index.md %})
 {: .chemin}
 
-Numérologie niveau 1. On ne verra que le strict nécessaire pour pour faire fonctionner le code :
-
-* utilisation basique d'un éditeur de texte performant, ici [vscode](https://code.visualstudio.com/),
-* stricte minimum de html/css pour pouvoir mettre en oeuvre notre serveur web,
-* on tentera de s'amuser en javascript sans rentrer trop dans les détails de fonctionnement.
+Numérologie partie 1. On prépare notre site en créant tout ce qui est nécessaire et en le faisant fonctionner en *front*.
 
 ## prérequis
 
@@ -27,11 +23,8 @@ Avant de se lancer à corps perdu dans le développement et le code, vérifions 
 5. un interpréteur javascript. On utilisera [node](https://nodejs.org/en/). Suivez le [tutoriel pour l'installation]({% link cours/web/js/bases.md %}#bloc-id-installation-node).
 6. Sachez ouvrir [une fenêtre terminal]({% post_url tutos/systeme/2021-08-24-terminal %})
 
-## plan
+## Niveaux
 
-En quatre parties et autant de cours :
-
-1. [un premier site entièrement en front]({% link cours/web/projets/numerologie/niveau-1/partie-1-front/index.md %})
-2. [on ajoute une partie back pour les calculs]({% link cours/web/projets/numerologie/niveau-1/partie-2-post-get/index.md %})
-3. on polie tout ça avec des routes différentes
-4. on ajoute la possibilités de stocker des données
+1. [niveau 1]({% link cours/web/projets/numerologie/partie-1-front/niveau-1/index.md %}) : utilisation d'un éditeur de texte et bases du développement html/css/js
+2. [niveau 2]({% link cours/web/projets/numerologie/partie-1-front/niveau-2/index.md %}) : ajoute d'outils de gestion de projets
+3. [niveau 3]({% link cours/web/projets/numerologie/partie-1-front/niveau-3/index.md %}) : ajout de la gestion des sources et de la mise en production.
