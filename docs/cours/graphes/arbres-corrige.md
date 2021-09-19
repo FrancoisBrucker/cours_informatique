@@ -1,6 +1,6 @@
 ---
 layout: page
-title:  "Théorie des graphes : arbres"
+title:  "Théorie des graphes : arbres, élément de corrigé"
 category: cours
 tags: informatique graphes
 author: "François Brucker"
@@ -9,7 +9,7 @@ author: "François Brucker"
 > [graphes]({% link cours/graphes/index.md %}) / [arbres corrigé]({% link cours/graphes/arbres-corrige.md %})
 {: .chemin}
 
-Ce ne sera pas un corrigé exhaustif. On donnera les principale piste pour résoudre les exercices.
+Eléments de corrigé des [exercices sur les arbres]({% link cours/graphes/arbres.md %}) où l'on donnera les principales pistes pour résoudre les exercices.
 
 ## définitions et premières propriétés
 
