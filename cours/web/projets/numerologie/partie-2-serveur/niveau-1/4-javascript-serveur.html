@@ -70,7 +70,48 @@
 
 <h2 id="route-avec-paramètre">route avec paramètre</h2>
 
-<p>Il existe plusieurs façon de passer des paramètres au serveur depuis le navigateur. Nous allons regarder ici la plus ancienne de ces méthodes, qui consiste à passer les paramètres directement dans l’url sous la forme de <a href="https://en.wikipedia.org/wiki/Query_string">query string</a></p>
+<p>Il existe plusieurs façon de passer des paramètres au serveur depuis le navigateur. Nous allons en voir 2.</p>
+
+<h3 id="paramètres-dans-reqparams">paramètres dans <code class="language-plaintext highlighter-rouge">req.params</code></h3>
+
+<p>La première façon de faire est de mettre la dernière partie de l’url en paramètre.
+Ajoutez la route suivante dans le fichier <em>“numerologie/index.js”</em> :</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ...</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/chaine/:prenom</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">)</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">()</span>
+<span class="p">})</span>
+
+<span class="c1">// ...</span>
+</code></pre></div></div>
+
+<p>Tout ce qui suit <code class="language-plaintext highlighter-rouge">/chaine</code> dans l’url sera considéré comme notre variable <code class="language-plaintext highlighter-rouge">prenom</code>. Ainsi la requête <a href="http://127.0.0.1:3000/chaine/François">http://127.0.0.1:3000/chaine/François</a></p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w"> </span><span class="err">prenom:</span><span class="w"> </span><span class="err">'François'</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<blockquote>
+  <p>le paramètre ne peut cependant pas contenir de <code class="language-plaintext highlighter-rouge">/</code> car c’est un séparateur de parties d’url.</p>
+</blockquote>
+
+<h3 id="url-et-utf8">url et utf8</h3>
+
+<p>Lorsque vous tapez des urls en utf8, celles ci sont encodés en transformant les caractères non ascii par des nombres précédés d’un <code class="language-plaintext highlighter-rouge">%</code> : c’est <a href="https://fr.wikipedia.org/wiki/Encodage-pourcent">l’encodage %</a>.</p>
+
+<p>On le voit dans le log console de la requête <a href="http://127.0.0.1:3000/chaine/François">http://127.0.0.1:3000/chaine/François</a> qui est  <code class="language-plaintext highlighter-rouge">Time: 19/09/2021 20:29:08 ; url : /chaine/Fran%C3%A7ois</code> : le <code class="language-plaintext highlighter-rouge">ç</code> a été transformé en <code class="language-plaintext highlighter-rouge">%C3%A7</code>.</p>
+
+<p>Cela ne se voit cependant pas dans le code node car les paramètres sont reconvertis en chaine unicode pour le traitement.</p>
+
+<blockquote class="attention">
+  <p>Ce n’est cependant pas le cas pour la requête de base, ainsi une route qui aura comme base : <code class="language-plaintext highlighter-rouge">'/chaîne/:prenom'</code> donnera tout le temps un 404. C’est la route <code class="language-plaintext highlighter-rouge">cha%C3%AEne/:prenom</code> qui sera reconnue.
+Pour ne pas à avoir à se rappeler des encodage, on pourra utiliser les fonction <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/encodeURI">encodeURI()</a> et <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/decodeURI">decodeURI</a></p>
+</blockquote>
+
+<h3 id="paramètres-dans-reqquery">paramètres dans <code class="language-plaintext highlighter-rouge">req.query</code></h3>
+
+<p>Nous allons regarder ici la plus ancienne de ces méthodes, qui consiste à passer les paramètres directement dans l’url sous la forme de <a href="https://en.wikipedia.org/wiki/Query_string">query string</a>. C’est la façon classique de passer des paramètres à une url et c’est donc celle-ci que nous garderons ici.</p>
 
 <p>Dans notre cas, on aimerait que notre serveur reconnaisse les requêtes du type : <a href="http://localhost:3000/prénom?valeur=françois">http://localhost:3000/prénom?valeur=françois</a>.</p>
 
@@ -78,7 +119,7 @@
   <p>si vous voulez plusieurs paramètres, il faut les séparer par des <code class="language-plaintext highlighter-rouge">&amp;</code> comme indiqué dans <a href="https://en.wikipedia.org/wiki/Query_string">la documentation</a></p>
 </blockquote>
 
-<p>Ca tombe bien express permet de le faire simplement. Ajoutez la route suivante dans le fichier <em>“numerologie/index.js”</em> :</p>
+<p>Express permet de le faire tout aussi simplement que précédemment. Ajoutez la route suivante dans le fichier <em>“numerologie/index.js”</em> :</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ...</span>
 
@@ -90,7 +131,9 @@
 <span class="c1">// ...</span>
 </code></pre></div></div>
 
-<p>Une url ne peut contenir de caractère non ascii. Ces caractères sont transformés par <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/encodeURI">encodeURI()</a> par le client avant d’être envoyé au serveur. De là, notre requête ne doit pas attraper les urls qui commencent par <code class="language-plaintext highlighter-rouge">'prénom'</code>, mais celles commençant par <code class="language-plaintext highlighter-rouge">/pr%C3%A9nom</code> qui est son encodage. <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/decodeURI">decodeURI</a> est l’opération inverse.</p>
+<blockquote>
+  <p>On a utilisé <code class="language-plaintext highlighter-rouge">encodeURI</code> pour un chemin on ascii.</p>
+</blockquote>
 
 <p>On récupère la <code class="language-plaintext highlighter-rouge">query</code> sous la forme d’un dictionnaire directement avec <code class="language-plaintext highlighter-rouge">req.query</code>. Notez que la conversion en utf8 s’est faite toute seule pour la query.</p>
 
@@ -275,7 +318,6 @@
 <blockquote>
   <p>Les import qui sont des fichiers à nous sont décrit par leur chemin relatif, et commencent donc par <code class="language-plaintext highlighter-rouge">./</code>.</p>
 </blockquote>
-
 
   </div>
 
