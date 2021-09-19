@@ -5,7 +5,7 @@ category: cours
 author: "François Brucker"
 ---
 
-> [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 2]({% link cours/web/projets/numerologie/partie-2-post-get/index.md %}) / [niveau 1]({% link cours/web/projets/numerologie/partie-2-post-get/niveau-1/index.md %}) / [serveur web minimal]({% link cours/web/projets/numerologie/partie-2-post-get/niveau-1/1-serveur-web-minimal.md %})
+> [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 2]({% link cours/web/projets/numerologie/partie-2-serveur/index.md %}) / [niveau 1]({% link cours/web/projets/numerologie/partie-2-serveur/niveau-1/index.md %}) / [serveur web minimal]({% link cours/web/projets/numerologie/partie-2-serveur/niveau-1/1-serveur-web-minimal.md %})
 {: .chemin}
 
 On utilise node comme un serveur web qui dit bonjour.

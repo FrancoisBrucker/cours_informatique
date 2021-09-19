@@ -23,7 +23,7 @@ On aimerait pouvoir créer un site de numérologie qui associerait à chaque pr�
 Ce projet va être séparé en trois parties :
 
 1. [un premier site entièrement en front]({% link cours/web/projets/numerologie/partie-1-front/index.md %})
-2. [on ajoute une partie back pour les calculs]({% link cours/web/projets/numerologie/partie-2-post-get/index.md %})
+2. [on ajoute une partie back pour les calculs]({% link cours/web/projets/numerologie/partie-2-serveur/index.md %})
 3. on ajoute la possibilités de stocker des données + gestion des fichiers d'import (config, modules)
 
 Chaque partie est organisée en niveaux. Chaque niveau refait la partie en ajoutant à chaque fois des outils de développements/code de plus en plus perfectionnés. Il est recommandé de faire tous les niveaux d'une partie.
