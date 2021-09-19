@@ -134,7 +134,6 @@ On n'a besoin que de regarder chaque patient lorsqu'il faut en prendre en charge
 
 Voir [wikipedia](https://fr.wikipedia.org/wiki/Tas_(informatique)) pour (presque) toutes les informations nécessaire sur cette belle structure.
 
-
 > Des trois arbres ci-dessus lequel (il n'y en a qu'un) est binaire, complet et plein ?
 {: .a-faire}
 
@@ -146,19 +145,7 @@ Voir [wikipedia](https://fr.wikipedia.org/wiki/Tas_(informatique)) pour (presque
 > * Y a-t-il plusieurs possibilités ?
 > * que peut-on dire du nœud ayant le plus grand nombre ?
 
-```text
-    42
- 12    3
-6  5  1
-```
-
-Ou encore :
-
-```text
-    42
- 12    6
-6  1  5
-```
+![tas possibles]({{ "/assets/cours/graphes/tas_2-possibilites.png" | relative_url }}){:style="margin: auto;display: block;"}
 
 Le plus grand noeud est **toujours** la racine du tas.
 
@@ -194,23 +181,32 @@ Pour la représentation en tableau, voir Voir [wikipedia](https://fr.wikipedia.o
 
 ## parcours
 
-> TBD
-{: .note}
-
 ### trois parcours classiques
 
-> Pour chaque parcours ci-après, donnez le résultat pour l'arbre de la partie [ordonnancement des sommets](#ordo-sommets) en supposant que `Examen de la Racine`signifie : affiche le numéro de la racine à l'écran.
+> Pour chaque parcours ci-après, donnez le résultat pour l'arbre de la partie [ordonnancement des sommets](#ordo-sommets) en supposant que `Examen de la Racine` signifie : affiche le numéro de la racine à l'écran.
 >
-> Une fois ceci fait, trouvez un ordre qui lira les sommets dans l'ordre alphabétique.
+> Une fois ceci fait, trouvez un ordre qui lira les sommets dans l'ordre alphabétique à partir de b.
 {: .a-faire}
+
+* pré-ordre : a-b-h-l-m-n-i-j-k-c-d-e-g-f
+* post-ordre : l-n-m-h-j-k-i-b-g-e-f-d-c-a
+* en-ordre : l-h-n-m-b-j-i-k-a-c-g-e-d-f
+
+```text
+alphabetique(racine)
+    examen fils gauche
+    examen fils droit
+    alphabetique(fils droit)
+    alphabetique(fils gauche)
+    
+```
 
 ## arbre dans des graphes connexe
 
-> TBD
-{: .note}
-
 > Montrer que pour tout graphe connexe $G = (V, E)$, il existe au moins un arbre $T=(V, E')$ tel que $E' \subseteq E$.
 {: .a-faire}
+
+Si un graphe est connexe et n'est pas un arbre, alors il existe un cycle. En supprimant une arête de ce cycle le graphe reste connexe et a strictement moins d'arêtes. On peut alors itérativement supprimer des arêtes à un arbre connexe qui contient un cycle jusqu'à obtenir un graphe connexe à $\vert V \vert -1$ arêtes qui ne contient pas de cycles : ce sera un arbre.
 
 ### graphe valué
 
@@ -219,6 +215,8 @@ Pour la représentation en tableau, voir Voir [wikipedia](https://fr.wikipedia.o
 > Pourquoi ?
 {: .a-faire}
 
+Un arbre est la structure minimale en nombre d'arête qui garantie la connexité. Parmi tous les arbres couvrants du graphe, on peut prendre un de ceux qui ont une somme des valuations de ses arêtes minimale (il y en a un nombre fini, le min existe donc mais il peut y en avoir plusieurs). Si la valuation d'une arête représente le coût, un arbre couvrant de poids minimal représente une solution de coût minimal pour rendre connexe le territoire.
+
 #### un exemple
 
 > * Quel est l'arête qui sera forcément dans tous les arbres couvrant de poids minimum ?
@@ -226,16 +224,31 @@ Pour la représentation en tableau, voir Voir [wikipedia](https://fr.wikipedia.o
 > * y a-t-il plusieurs arbres couvrant de poids minimum pour ce graphe ?
 {: .a-faire}
 
+Toutes les preuves de cette partie et de la partie suivante vont fonctionner la même manière :
+
+1. on va ajouter une arête à un arbre
+2. ce nouveau graphe n'est plus un arbre mais il est connexe : il existe un cycle
+3. en supprimant n'importe quelle arête de ce cycle, le graphe redevient un arbre.
+4. si on supprime judicieusement l'arête du cycle, on arrivera à une contradiction. car le nouvel arbre sera mieux que l'arbre inital.
+
+* Il n'y a qu'une seule arête avec une valuation minimale. S'il existait un arbre couvrant qui ne la possédait pas, on pourrait l'ajouter à cet arbre. Ce ne serait alors plus un arbre, il existerait donc un cycle. En supprimant une arête de ce cycle (on peut choisir une arête de valuation non minimale) on aurait à nouveau un arbre (connexe et nombre minimum d'arête), mas que serait de valuation totale strictement plus petite que notre premier arbre. Ce qui est impossible puisqu'il était déjà de valuation minimale.
+* Il n'y a qu'une seule arête avec une valuation maximale. De plus il existe des cycles la contenant dans le graphe initial. Si on suppose qu'un arbre couvrant possède cette arête de valuation maximale et qu'on la supprime de l'arbre, on va se retrouver avec 2 parties connexes. Comme il existe un cycle contenant l'arête de valuation maximale dans le graphe initiale, il va exister une arête du graphe initial qui relie les 2 parties connexes nouvellement créées. L'ajouter à notre graphe va à nouveau le rendre connexe : ce sera à nouveau un arbre. Comme il serait de valuation strictement plus petite que notre arbre initiale, ce n'es pas possible.
+* Oui, il existe plusieurs arbres couvrant car le cycle k-g-j-l est de valuation constante et valant 2. Un raisonnement identique aux 2 précédent montre que l'on peut échanger une arête de valuation 2 par une autre dans un arbre de valuation minimale.
+
 #### propriété
 
-> * montrez que s'il existe deux arbres couvrant de poids minimum ne différent que d'une arête, alors elles on même valuation
+> * montrez que s'il existe deux arbres couvrant de poids minimum ne différent que d'une arête, alors elles ont même valuation
 > * montrez que si toutes les valuations sont différentes, il n'existe qu'un seul arbre couvrant de poids minimal.
 > * montrez que la réciproque n'est pas vraie
 {: .a-faire}
 
+* Les 2 arbres on même valuation de la somme des valuations de leurs arêtes :les 2 arêtes différentes ont donc forcément même valuation.
+* On range les valuation des 2 arbres par ordre croissant. Les deux arbres état différents, on s'arête à la 1ère position dans cet ordre qui contient 2 arêtes différentes. L'une des arête va avoir une valuation inférieure à l'autre. On peut alors procéder comme précédemment et ajouter l'arête de valuation la plus petite dans l'autre arbre. Il faudra alors à nouveau supprimer une arête qui forme un cycle, mais on pourra enlever une arête de valuation plus grande, ce qui est impossible car l'arbre initial était de valuation minimale.
+* Si le graphe de départ est un arbre, il n'y a qu'un seul arbre couvant et les valuations peuvent être égales.
+
 #### un algorithme
 
-Voir [wikipedia](https://fr.wikipedia.org/wiki/Algorithme_de_Prim).
+Voir [wikipedia](https://fr.wikipedia.org/wiki/Algorithme_de_Prim). Tout y est très bien expliqué.
 
 > Prouver que si G est connexe, alors T est connexe et est un arbre
 {: .a-faire}

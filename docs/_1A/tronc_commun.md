@@ -26,9 +26,7 @@ Le support du cours d'[Introduction aux graphes]({% link cours/graphes/index.md 
 
 ### ST : graphes
 
-> TBD
-> exercice sur les graphes
-{: .note}
+Le [sujet aux TD]({% link cours/graphes/arbres.md %}) qui vous fera découvrir par l'exemple le monde merveilleux des arbres.
 
 ### ST et SM : arbres de recherche
 

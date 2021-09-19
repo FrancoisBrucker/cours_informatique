@@ -202,9 +202,9 @@ On utilise ce principe pour parcourir tous les sommets d'un arbre planté effica
 
 ### trois parcours classiques
 
-> Pour chaque parcours ci-après, donnez le résultat pour l'arbre de la partie [ordonnancement des sommets](#ordo-sommets) en supposant que `Examen de la Racine`signifie : affiche le numéro de la racine à l'écran.
+> Pour chaque parcours ci-après, donnez le résultat pour l'arbre de la partie [ordonnancement des sommets](#ordo-sommets) en supposant que `Examen de la Racine` signifie : affiche le numéro de la racine à l'écran.
 >
-> Une fois ceci fait, trouvez un ordre qui lira les sommets dans l'ordre alphabétique.
+> Une fois ceci fait, trouvez un ordre qui lira les sommets dans l'ordre alphabétique à partir de b.
 {: .a-faire}
 
 #### pré-ordre
@@ -212,9 +212,9 @@ On utilise ce principe pour parcourir tous les sommets d'un arbre planté effica
 ```text
 pré-ordre(racine)
 Si la racine a des descendants:
-    Examen de la Racine 
-    pré-ordre(Fils Gauche) 
-    pré-ordre(Fils Droit)
+    Examen de la racine 
+    pré-ordre(fils gauche) 
+    pré-ordre(fils droit)
 ```
 
 #### post-ordre
@@ -222,9 +222,9 @@ Si la racine a des descendants:
 ```text
 post-ordre(racine)
 Si la racine a des descendants:
-    post-ordre(Fils Gauche) 
-    post-ordre(Fils Droit)
-    Examen de la Racine 
+    post-ordre(fils gauche) 
+    post-ordre(fils droit)
+    Examen de la racine 
 ```
 
 #### en-ordre
@@ -232,10 +232,12 @@ Si la racine a des descendants:
 ```text
 en-ordre(racine)
 Si la racine a des descendants:
-    en-ordre(Fils Gauche) 
-    Examen de la Racine 
-    en-ordre(Fils Droit)
+    en-ordre(fils gauche) 
+    Examen de la racine 
+    en-ordre(fils droit)
 ```
+
+> Les [parcours d'arbres](https://fr.wikipedia.org/wiki/Arbre_syntaxique) sont utilisés en linguistique pour analyser syntaxiquement une phrase. Un exercice classique est de créer un [arbre à partir d'une expression arithmétique](https://diu-uf-bordeaux.github.io/bloc4/td/arbres/expression/) pour la résoudre de façon optimale en nombre d'opérations.
 
 ## arbre dans des graphes connexe
 
@@ -276,7 +278,7 @@ Avec un peu d'imagination considérez que c'est le graphe de construction d'une 
 
 #### propriété
 
-> * montrez que s'il existe deux arbres couvrant de poids minimum ne différent que d'une arête, alors elles on même valuation
+> * montrez que s'il existe deux arbres couvrant de poids minimum ne différent que d'une arête, alors elles ont même valuation
 > * montrez que si toutes les valuations sont différentes, il n'existe qu'un seul arbre couvrant de poids minimal.
 > * montrez que la réciproque n'est pas vraie
 {: .a-faire}
