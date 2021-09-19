@@ -138,7 +138,7 @@ On va procéder comme si l'on importait du javascript dans une page web : on va 
 
 > On ne peut pas utiliser d'import classique de fichiers ici, car il faut que le fichier de code soit dans un format spécial, ce qui n'est pas le cas ici.
 
-#### lecture d'un fichier texte
+#### lecture d'un fichier texte {#node-fichier}
 
 La lecture de fichiers se fait de façon aisé avec node en utilisant la bibliothèque [`fs`](https://nodejs.org/api/fs.html#fs_file_system). On va utiliser : [`fs.readFileSync()`](https://nodejs.org/api/fs.html#fs_fs_readfilesync_path_options).
 

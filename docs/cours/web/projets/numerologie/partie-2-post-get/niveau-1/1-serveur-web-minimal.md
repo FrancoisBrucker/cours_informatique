@@ -73,7 +73,7 @@ Que fait le code :
 
 On ne va pas faire un long cours sur le [protocole http](https://fr.wikipedia.org/wiki/Hypertext_Transfer_Protocol), on va juste décrire succinctement les requêtes (ce que le serveur reçoit du navigateur) et les réponses (ce que le serveur envoie au navigateur).
 
-> Utiliser node nous permet de nous concentrer sur ce qui est important : répondre correctement aux demande du navigateur, sans avoir besoin d'écrire des requêtes http convfrme (ce qui n'est pas très marrant).
+> Utiliser node nous permet de nous concentrer sur ce qui est important : répondre correctement aux demande du navigateur, sans avoir besoin d'écrire des requêtes http conforme (ce qui n'est pas très marrant).
 
 #### requête http
 
@@ -107,7 +107,9 @@ const server = http.createServer((req, res) => {
 // ... 
 ```
 
-Si l'on recharge le serveur dans le vaviguateur, on obtient quelque chose du genre :
+> Lorsque l'on modifie le serveur, il faut arrêter l'ancien (avec les touches `ctrl+c`) et le relancer. Même si l'o modifie le code de *"numerologie/index.js"* il n'est pas pris automatiquement en compte par le serveur.
+
+Si l'on recharge le serveur dans le naviguateur, on obtient quelque chose du genre :
 
 ```text
 -------

@@ -15,4 +15,5 @@ On suppose que vous avez un projet retraçant la [partie 1 / niveau 1]({% link c
 ## Niveaux
 
 1. [niveau 1]({% link cours/web/projets/numerologie/partie-2-post-get/niveau-1/index.md %}) : utilisation d'un éditeur de texte et bases du développement html/css/js
-2. niveau 2 : mise en prod. 
+2. niveau 2 : mise en prod.
+
