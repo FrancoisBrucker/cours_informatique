@@ -74,7 +74,7 @@
 
 <h2 id="but">But</h2>
 
-<p>Le but d’un serveur web est de répondre quelque chose à partir d’une requête constituée d’une url et d’une méthode (GET ou POST). Certaines url vont nécessiter du travail comme faire une requête en base de données, calculer dez choses, etc, et d’autres consisteront seulement à rendre un fichier html, css ou encore javascript qui sera exécuté par le navigateur.</p>
+<p>Le but d’un serveur web est de répondre quelque chose à partir d’une requête constituée d’une url et d’une méthode (GET ou POST). Certaines url vont nécessiter du travail comme faire une requête en base de données, calculer des choses, etc, et d’autres consisteront seulement à rendre un fichier html, css ou encore javascript qui sera exécuté par le navigateur.</p>
 
 <p>Ces fichiers qui seront pris sur le disque dur du serveur et envoyé au navigateur sont appelées <strong>fichiers statiques</strong>.</p>
 
@@ -82,6 +82,208 @@
   <p>Plus on a de fichiers statiques, mieux c’est puisque ces fichiers ne changent pas on peut utiliser des méthodes de <a href="https://fr.wikipedia.org/wiki/Cache_web">cache</a> (côté client et serveur) ou de <a href="https://fr.wikipedia.org/wiki/R%C3%A9partition_de_charge">load-balancing</a> pour accélérer le résultat (le réseau coute toujours du temps).</p>
 
   <p>De là, si vous avez le choix entre un serveur web ou juste des fichiers statiques, choisissez <strong>toujours</strong> la seconde possibilité.</p>
+</blockquote>
+
+<p>Nous allons ici utiliser la gestion de fichiers statiques pour monter la gestion des url d’un serveur web.</p>
+
+<h2 id="gestion-des-fichiers-avec-node">gestion des fichiers avec node</h2>
+
+<p>On a déja vu un peu ça dans <a href="/cours_informatique/cours/web/projets/numerologie/partie-1-front/niveau-2/2-code_js.html#node-fichier">le niveau 2 de la partie 1</a>. On chargeait entièrement le fichier avant de le traiter.</p>
+
+<p>Commençons par utiliser ça pour charger le fichier <em>“numerologie/index.html”</em></p>
+
+<h3 id="on-rend-tout-le-temps-la-même-chose">on rend tout le temps la même chose</h3>
+
+<p>Modifions le fichier <em>“numerologie/index.js”</em> pour répondre le contenu d’un fichier :</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">http</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">fs</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">hostname</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">127.0.0.1</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">port</span> <span class="o">=</span> <span class="mi">3000</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">server</span> <span class="o">=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">text/html</span><span class="dl">'</span><span class="p">);</span>
+
+    <span class="nx">fichier</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="dl">"</span><span class="s2">./index.html</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span><span class="na">encoding</span><span class="p">:</span><span class="dl">'</span><span class="s1">utf8</span><span class="dl">'</span><span class="p">})</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nx">fichier</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">server</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">port</span><span class="p">,</span> <span class="nx">hostname</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Server running at http://</span><span class="p">${</span><span class="nx">hostname</span><span class="p">}</span><span class="s2">:</span><span class="p">${</span><span class="nx">port</span><span class="p">}</span><span class="s2">/`</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>On teste le serveur et on voit que ça ne marche qu’à peut prêt.</p>
+
+<p>En effet, on rend toujours la même chose : le fichier <em>“index.html”</em> même si le client demande autre chose. Regardons ce que demande le client en ajoutant une ligne au début de notre serveur :</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ...</span>
+
+<span class="kd">const</span> <span class="nx">server</span> <span class="o">=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="p">)</span>
+
+    <span class="c1">// ...</span>
+
+<span class="c1">// ...</span>
+</code></pre></div></div>
+
+<p>Re-testons le serveur et regardons le résultat dans la console :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Server running at http://127.0.0.1:3000/
+/
+/main.css
+/numerologie.js
+/favicon.ico
+</code></pre></div></div>
+
+<p>La lecture du fichier <em>“numerologie/index/html”</em> par le client lance de nouvelles requêtes au serveur pour obtenir <em>“main.css”</em>, <em>“numerologie.js”</em> et … <em>“flavicon.ico”</em>.</p>
+
+<h3 id="on-rend-une-chose-ou-404">on rend une chose ou 404</h3>
+
+<p>Modifions le code de notre serveur  pour qu’il ne rendre <em>“index.html”</em> que and il faut :</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ...</span>
+
+<span class="kd">const</span> <span class="nx">server</span> <span class="o">=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">url</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">/</span><span class="dl">"</span> <span class="o">||</span> <span class="nx">req</span><span class="p">.</span><span class="nx">url</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">/index.html</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">text/html</span><span class="dl">'</span><span class="p">);</span>
+    
+        <span class="nx">fichier</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="dl">"</span><span class="s2">./index.html</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span><span class="na">encoding</span><span class="p">:</span><span class="dl">'</span><span class="s1">utf8</span><span class="dl">'</span><span class="p">})</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nx">fichier</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">=</span> <span class="mi">404</span><span class="p">;</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">text/plain</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="c1">// ...</span>
+</code></pre></div></div>
+
+<p>On voit que notre serveur va répondre aux url valant <code class="language-plaintext highlighter-rouge">/</code> (c’est l’url par défaut même s’il n’y a rien) et <code class="language-plaintext highlighter-rouge">/index.html</code>. Il retournera un 404 pour tout le reste.</p>
+
+<blockquote>
+  <p><a href="https://www.guru99.com/difference-equality-strict-operator-javascript.html"><code class="language-plaintext highlighter-rouge">==</code>vs <code class="language-plaintext highlighter-rouge">===</code> en javascript</a> : l’un fait de la conversion de type (<code class="language-plaintext highlighter-rouge">10 == "10"</code>sera vrai) l’autre non (<code class="language-plaintext highlighter-rouge">10 === "10"</code>sera faux).</p>
+</blockquote>
+
+<p>Vous pouvez voir dans la console des <a href="/cours_informatique/cours/web/tuto_outils_dev.html">outils de éveloppement</a> les erreurs produites par les 404.</p>
+
+<h3 id="on-vérifie-que-le-fichier-existe-avant">on vérifie que le fichier existe avant</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ...</span>
+
+<span class="kd">const</span> <span class="nx">server</span> <span class="o">=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">url</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">/</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">text/html</span><span class="dl">'</span><span class="p">);</span>
+    
+        <span class="nx">fichier</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="dl">"</span><span class="s2">./index.html</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span><span class="na">encoding</span><span class="p">:</span><span class="dl">'</span><span class="s1">utf8</span><span class="dl">'</span><span class="p">})</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nx">fichier</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">fs</span><span class="p">.</span><span class="nx">existsSync</span><span class="p">(</span><span class="dl">"</span><span class="s2">.</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">text/html</span><span class="dl">'</span><span class="p">);</span>
+    
+        <span class="nx">fichier</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="dl">"</span><span class="s2">.</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="p">,</span> <span class="p">{</span><span class="na">encoding</span><span class="p">:</span><span class="dl">'</span><span class="s1">utf8</span><span class="dl">'</span><span class="p">})</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nx">fichier</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">=</span> <span class="mi">404</span><span class="p">;</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">text/plain</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="c1">// ...</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>Notez que le <code class="language-plaintext highlighter-rouge">res.end()</code> est indispensable dans la gestion du 404, sinon le navigateur attendra la réponse du serveur jusqu’à la fin des temps (ou un timeout).</p>
+</blockquote>
+
+<h2 id="on-jardine">on jardine</h2>
+
+<p>On va juste un peut améliorer notre code pour le rendre :</p>
+
+<ol>
+  <li>plus joli</li>
+  <li>plus portable</li>
+</ol>
+
+<h3 id="headers">headers</h3>
+
+<p>On peut utiliser <code class="language-plaintext highlighter-rouge">res.writeHead(200,  {'Content-Type': 'text/html'})</code> pour écrire en une fois le status et le type de la réponse.</p>
+
+<h3 id="localisation-des-fichiers">localisation des fichiers</h3>
+
+<p>La localisation d’un fichier sur le disque dur est une opération :</p>
+
+<ul>
+  <li>non triviale</li>
+  <li>dépendante de l’architecture du disque dur sur lequel le programme tourne</li>
+</ul>
+
+<p>C’est très problématique pour les serveur web puisque l’on veut que le code fonctionne sur la machine du (des) développeur(s) et sur la (les) machine(s) de production. Chacune ayant un autre disque dur et une autre architecture.</p>
+
+<p>La seule chose donc on peut être sur c’est que le projet est identique sur toutes ces machines. On utilise alors une notation relative pour trouver le fichier.</p>
+
+<p>Nous avons utiliser la notation <code class="language-plaintext highlighter-rouge">"./index.html"</code> pour indiquer que le fichier <em>“index.html”</em> se trouve dans le dossier courant. Mais qu’est-ce que le dossier courant ?</p>
+
+<p>Le <strong>dossier courant</strong> est le dossier dans lequel se trouve le terminal qui a exécuté la commande node. De là, notre serveur :</p>
+
+<ul>
+  <li><strong>fonctionnera</strong> si on le lance depuis le dossier où se trouve les fichier avec la commande : <code class="language-plaintext highlighter-rouge">node index.js</code></li>
+  <li><strong>ne fonctionnera pas</strong> si on le lance depuis le dossier parent avec la commande : <code class="language-plaintext highlighter-rouge">node numerologie/index.js</code>. Le serveur trouvera bien <em>“numerologie/index.js”</em> mais n’arrivera pas à trouver <em>”./index.html”</em> dans le code.</li>
+</ul>
+
+<p>Il ne faut donc pas prendre comme référence le dossier courant mais le dossier où est <em>“index.js”</em>.</p>
+
+<p>Node nous permet de faire ça avec la constante <code class="language-plaintext highlighter-rouge">__dirname</code> qui contient le dossier où se trouve le fichier exécuté par node (il y a aussi <code class="language-plaintext highlighter-rouge">__filename</code> pour connaitre son nom)</p>
+
+<blockquote>
+  <p>Si l’on exécute juste <code class="language-plaintext highlighter-rouge">node</code> pour se retrouver dans l’interpréteur, si <code class="language-plaintext highlighter-rouge">__dirname</code> ni <code class="language-plaintext highlighter-rouge">__filename</code> ne sont défini, ce qui est logique.</p>
+</blockquote>
+
+<p>Enfin, on ne concatène <strong>jamais</strong> des fichiers à la main. On utilise <strong>toujours</strong> une bibliothèque pour cela (sinon c’est <em>bad karma</em> : ça va forcément vous sauter à la tête un jour) qui traite tous les cas particulier pour vous. En node, c’est la <a href="https://nodejs.org/api/path.html">bibliothèque path</a> qui s’occupe de ça.</p>
+
+<p>Fichier <em>“numerologie/index.js”</em> :</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ...</span>
+
+<span class="kd">const</span> <span class="nx">server</span> <span class="o">=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">url</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">/</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">fichier</span> <span class="o">=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="dl">"</span><span class="s2">./index.html</span><span class="dl">"</span><span class="p">)</span>        
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">fichier</span> <span class="o">=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span>  <span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">fichier : </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">fichier</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">fs</span><span class="p">.</span><span class="nx">existsSync</span><span class="p">(</span><span class="nx">fichier</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span>  <span class="p">{</span><span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">text/html</span><span class="dl">'</span><span class="p">})</span>
+    
+        <span class="nx">fichier</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="nx">fichier</span><span class="p">,</span> <span class="p">{</span><span class="na">encoding</span><span class="p">:</span><span class="dl">'</span><span class="s1">utf8</span><span class="dl">'</span><span class="p">})</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nx">fichier</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">404</span><span class="p">,</span>  <span class="p">{</span><span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">text/plain</span><span class="dl">'</span><span class="p">})</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="c1">// ...</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>On a aussi utilise le principe du <a href="https://fr.wikipedia.org/wiki/Ne_vous_r%C3%A9p%C3%A9tez_pas">DRY</a> en factorisant les lignes identiques.</p>
 </blockquote>
 
   </div>
