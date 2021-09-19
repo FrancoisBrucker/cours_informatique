@@ -1,6 +1,6 @@
 ---
 layout: page
-title:  "Projet numérologie : partie 1 : front / niveau 1"
+title:  "Projet numérologie : partie 2 : serveur / niveau 1"
 category: cours
 author: "François Brucker"
 ---
@@ -14,3 +14,5 @@ Numérologie partie 2 - niveau 1. On ne verra la base de node et express comme s
 2. [serveur web statique]({% link cours/web/projets/numerologie/partie-2-serveur/niveau-1/2-serveur-web-statique.md %}) : node comme serveur qui sert des fichiers statiques.
 3. [serveur web avec express]({% link cours/web/projets/numerologie/partie-2-serveur/niveau-1/3-serveur-web-express.md %}) : on utilise le module express pour mieux gérer les routes et les urls.
 4. [intégration]({% link cours/web/projets/numerologie/partie-2-serveur/niveau-1/4-javascript-serveur.md %}) : on crée notre première route avec du javascript serveur et on l'appel depuis le front.
+
+[Fichiers du projet final]({% link cours/web/projets/numerologie/partie-2-serveur/niveau-1/5-structures.md %}).
