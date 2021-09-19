@@ -312,37 +312,41 @@ Un informaticien est prêt à beaucoup, beaucoup de choses pour avoir une struct
 <h3 id="trois-parcours-classiques">trois parcours classiques</h3>
 
 <blockquote class="a-faire">
-  <p>Pour chaque parcours ci-après, donnez le résultat pour l’arbre de la partie <a href="#ordo-sommets">ordonnancement des sommets</a> en supposant que <code class="language-plaintext highlighter-rouge">Examen de la Racine</code>signifie : affiche le numéro de la racine à l’écran.</p>
+  <p>Pour chaque parcours ci-après, donnez le résultat pour l’arbre de la partie <a href="#ordo-sommets">ordonnancement des sommets</a> en supposant que <code class="language-plaintext highlighter-rouge">Examen de la Racine</code> signifie : affiche le numéro de la racine à l’écran.</p>
 
-  <p>Une fois ceci fait, trouvez un ordre qui lira les sommets dans l’ordre alphabétique.</p>
+  <p>Une fois ceci fait, trouvez un ordre qui lira les sommets dans l’ordre alphabétique à partir de b.</p>
 </blockquote>
 
 <h4 id="pré-ordre">pré-ordre</h4>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pré-ordre(racine)
 Si la racine a des descendants:
-    Examen de la Racine 
-    pré-ordre(Fils Gauche) 
-    pré-ordre(Fils Droit)
+    Examen de la racine 
+    pré-ordre(fils gauche) 
+    pré-ordre(fils droit)
 </code></pre></div></div>
 
 <h4 id="post-ordre">post-ordre</h4>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>post-ordre(racine)
 Si la racine a des descendants:
-    post-ordre(Fils Gauche) 
-    post-ordre(Fils Droit)
-    Examen de la Racine 
+    post-ordre(fils gauche) 
+    post-ordre(fils droit)
+    Examen de la racine 
 </code></pre></div></div>
 
 <h4 id="en-ordre">en-ordre</h4>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>en-ordre(racine)
 Si la racine a des descendants:
-    en-ordre(Fils Gauche) 
-    Examen de la Racine 
-    en-ordre(Fils Droit)
+    en-ordre(fils gauche) 
+    Examen de la racine 
+    en-ordre(fils droit)
 </code></pre></div></div>
+
+<blockquote>
+  <p>Les <a href="https://fr.wikipedia.org/wiki/Arbre_syntaxique">parcours d’arbres</a> sont utilisés en linguistique pour analyser syntaxiquement une phrase. Un exercice classique est de créer un <a href="https://diu-uf-bordeaux.github.io/bloc4/td/arbres/expression/">arbre à partir d’une expression arithmétique</a> pour la résoudre de façon optimale en nombre d’opérations.</p>
+</blockquote>
 
 <h2 id="arbre-dans-des-graphes-connexe">arbre dans des graphes connexe</h2>
 
@@ -390,7 +394,7 @@ Si la racine a des descendants:
 
 <blockquote class="a-faire">
   <ul>
-    <li>montrez que s’il existe deux arbres couvrant de poids minimum ne différent que d’une arête, alors elles on même valuation</li>
+    <li>montrez que s’il existe deux arbres couvrant de poids minimum ne différent que d’une arête, alors elles ont même valuation</li>
     <li>montrez que si toutes les valuations sont différentes, il n’existe qu’un seul arbre couvrant de poids minimal.</li>
     <li>montrez que la réciproque n’est pas vraie</li>
   </ul>
