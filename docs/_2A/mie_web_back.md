@@ -43,9 +43,9 @@ En trois parties :
 Chaque semaine est dédiée à un thème particulier :
 
 1. javascript dans un navigateur et avec node
-2. qu'est-ce qu'un serveur web et on en crée un avec [node](https://nodejs.org/en/)
-3. on améliore notre serveur en utilisant [express](https://expressjs.com/fr/) et d'autres modules [node](https://nodejs.org/en/)
-4. on ajoute une base de donnée qu'on utilise grâce à [sequilize](https://sequelize.org/).
+2. qu'est-ce qu'un serveur web et on en crée un avec [node](https://nodejs.org/en/) qu'on améliore en utilisant [express](https://expressjs.com/fr/)
+3. on ajoute une base de donnée qu'on utilise grâce à [sequilize](https://sequelize.org/).
+4. présentation de vos projets.
 
 > Le cours consistera à suivre les premiers niveaux du projet [numérologie]({% link cours/web/projets/numerologie/index.md %})
 {: .note}
