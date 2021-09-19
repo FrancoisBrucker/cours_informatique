@@ -1,6 +1,6 @@
 ---
 layout: page
-title:  "Projet numérologie : niveau 1/partie 1/structures"
+title:  "Projet numérologie : partie 1 / niveau 1 / structures"
 category: cours
 author: "François Brucker"
 ---

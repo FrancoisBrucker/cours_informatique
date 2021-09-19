@@ -1,6 +1,6 @@
 ---
 layout: page
-title:  "Projet numérologie : niveau 2/partie 1/intégration html et js"
+title:  "Projet numérologie : partie 1 / niveau 2 / intégration html et js"
 category: cours
 author: "François Brucker"
 ---

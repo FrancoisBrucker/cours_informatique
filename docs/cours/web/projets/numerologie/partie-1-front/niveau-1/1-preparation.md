@@ -1,6 +1,6 @@
 ---
 layout: page
-title:  "Projet numérologie : niveau 1/partie 1/préparation"
+title:  "Projet numérologie : partie 1 / niveau 1 / préparation"
 category: cours
 author: "François Brucker"
 ---
