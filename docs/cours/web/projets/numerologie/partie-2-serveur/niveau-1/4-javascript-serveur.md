@@ -12,13 +12,53 @@ On crée notre première route écrite en javascript et on récupère le résult
 
 ## route avec paramètre
 
-Il existe plusieurs façon de passer des paramètres au serveur depuis le navigateur. Nous allons regarder ici la plus ancienne de ces méthodes, qui consiste à passer les paramètres directement dans l'url sous la forme de [query string](https://en.wikipedia.org/wiki/Query_string)
+Il existe plusieurs façon de passer des paramètres au serveur depuis le navigateur. Nous allons en voir 2.
+
+### paramètres dans `req.params`
+
+La première façon de faire est de mettre la dernière partie de l'url en paramètre.
+Ajoutez la route suivante dans le fichier *"numerologie/index.js"* :
+
+```javascript
+// ...
+
+app.get('/chaine/:prenom', (req, res) => {
+    console.log(req.params)
+    res.end()
+})
+
+// ...
+```
+
+Tout ce qui suit `/chaine` dans l'url sera considéré comme notre variable `prenom`. Ainsi la requête <http://127.0.0.1:3000/chaine/François>
+
+```json
+{ prenom: 'François' }
+```
+
+> le paramètre ne peut cependant pas contenir de `/` car c'est un séparateur de parties d'url.
+
+### url et utf8
+
+Lorsque vous tapez des urls en utf8, celles ci sont encodés en transformant les caractères non ascii par des nombres précédés d'un `%` : c'est [l'encodage %](https://fr.wikipedia.org/wiki/Encodage-pourcent).
+
+On le voit dans le log console de la requête <http://127.0.0.1:3000/chaine/François> qui est  `Time: 19/09/2021 20:29:08 ; url : /chaine/Fran%C3%A7ois` : le `ç` a été transformé en `%C3%A7`. 
+
+Cela ne se voit cependant pas dans le code node car les paramètres sont reconvertis en chaine unicode pour le traitement.
+
+> Ce n'est cependant pas le cas pour la requête de base, ainsi une route qui aura comme base : `'/chaîne/:prenom'` donnera tout le temps un 404. C'est la route `cha%C3%AEne/:prenom` qui sera reconnue.
+> Pour ne pas à avoir à se rappeler des encodage, on pourra utiliser les fonction [encodeURI()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/encodeURI) et [decodeURI](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/decodeURI)
+{: .attention}
+
+### paramètres dans `req.query`
+
+Nous allons regarder ici la plus ancienne de ces méthodes, qui consiste à passer les paramètres directement dans l'url sous la forme de [query string](https://en.wikipedia.org/wiki/Query_string). C'est la façon classique de passer des paramètres à une url et c'est donc celle-ci que nous garderons ici.
 
 Dans notre cas, on aimerait que notre serveur reconnaisse les requêtes du type : <http://localhost:3000/prénom?valeur=françois>.
 
 > si vous voulez plusieurs paramètres, il faut les séparer par des `&` comme indiqué dans [la documentation](https://en.wikipedia.org/wiki/Query_string)
 
-Ca tombe bien express permet de le faire simplement. Ajoutez la route suivante dans le fichier *"numerologie/index.js"* :
+Express permet de le faire tout aussi simplement que précédemment. Ajoutez la route suivante dans le fichier *"numerologie/index.js"* :
 
 ```javascript
 // ...
@@ -31,7 +71,7 @@ app.get(encodeURI('/prénom'), (req, res) => {
 // ...
 ```
 
-Une url ne peut contenir de caractère non ascii. Ces caractères sont transformés par [encodeURI()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/encodeURI) par le client avant d'être envoyé au serveur. De là, notre requête ne doit pas attraper les urls qui commencent par `'prénom'`, mais celles commençant par `/pr%C3%A9nom` qui est son encodage. [decodeURI](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/decodeURI) est l'opération inverse.
+> On a utilisé `encodeURI` pour un chemin on ascii.
 
 On récupère la `query` sous la forme d'un dictionnaire directement avec `req.query`. Notez que la conversion en utf8 s'est faite toute seule pour la query.
 
@@ -94,7 +134,7 @@ Une promesse permet d'attendre que quelque chose d'asynchrone se fasse (ici le r
    1. une fois que le serveur a répondu, on transforme le résultat en json
    2. avec le json (le second `.then`) on peut facilement accéder aux données pour changer le chiffre.
 
-Ce qui donne le fichier html suivant : 
+Ce qui donne le fichier html suivant :
 
 ```html
 <!doctype html>
@@ -216,4 +256,3 @@ app.get(encodeURI('/prénom'), (req, res) => {
 ```
 
 > Les import qui sont des fichiers à nous sont décrit par leur chemin relatif, et commencent donc par `./`.
-

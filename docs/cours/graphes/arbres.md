@@ -13,7 +13,7 @@ author: "François Brucker"
 
 Explorer les propriétés et l'intérêt de l'arbre.
 
-> Tous les graphes de cette partie seront considérés comme étant *simple*
+> Tous les graphes de cette partie seront considérés comme étant *simples*
 {: .attention}
 
 [éléments de corrigé]({% link cours/graphes/arbres-corrige.md %})
