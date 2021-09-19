@@ -19,7 +19,6 @@ Le but d'un serveur web est de répondre quelque chose à partir d'une requête 
 
 Ces fichiers qui seront pris sur le disque dur du serveur et envoyé au navigateur sont appelées **fichiers statiques**.
 
-> PLus on a de fichiers statiques, mieux c'est puisque ces fichiers ne changent pas on peut utiliser des méthodes de [cache](https://fr.wikipedia.org/wiki/Cache_web) (côté client et serveur) ou de [load-balancing](https://fr.wikipedia.org/wiki/R%C3%A9partition_de_charge) pour accélérer le résultat (le réseau coute toujours du temps).
+> Plus on a de fichiers statiques, mieux c'est puisque ces fichiers ne changent pas on peut utiliser des méthodes de [cache](https://fr.wikipedia.org/wiki/Cache_web) (côté client et serveur) ou de [load-balancing](https://fr.wikipedia.org/wiki/R%C3%A9partition_de_charge) pour accélérer le résultat (le réseau coute toujours du temps).
 >
 > De là, si vous avez le choix entre un serveur web ou juste des fichiers statiques, choisissez **toujours** la seconde possibilité.
-
