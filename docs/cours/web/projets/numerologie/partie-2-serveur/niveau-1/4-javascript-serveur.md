@@ -42,7 +42,7 @@ Tout ce qui suit `/chaine` dans l'url sera considéré comme notre variable `pre
 
 Lorsque vous tapez des urls en utf8, celles ci sont encodés en transformant les caractères non ascii par des nombres précédés d'un `%` : c'est [l'encodage %](https://fr.wikipedia.org/wiki/Encodage-pourcent).
 
-On le voit dans le log console de la requête <http://127.0.0.1:3000/chaine/François> qui est  `Time: 19/09/2021 20:29:08 ; url : /chaine/Fran%C3%A7ois` : le `ç` a été transformé en `%C3%A7`. 
+On le voit dans le log console de la requête <http://127.0.0.1:3000/chaine/François> qui est  `Time: 19/09/2021 20:29:08 ; url : /chaine/Fran%C3%A7ois` : le `ç` a été transformé en `%C3%A7`.
 
 Cela ne se voit cependant pas dans le code node car les paramètres sont reconvertis en chaine unicode pour le traitement.
 
@@ -114,19 +114,21 @@ Pour récupérer ce json dans le fichier html, il faut que l'on envoie une requ�
 Ceci peut se faire simplement avec un petit bout de javascript côté client, en utilisant la fonction [fetch](https://developer.mozilla.org/fr/docs/Web/API/Fetch_API/Using_Fetch), très pratique, qui permet de récupérer des choses sur internet avec des [promesses](https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Using_promises) :
 
 ```javascript
-function on_click() {
-  prenom = document.querySelector("#form-input").value;
-  if (prenom) {
-      fetch('/prénom/?valeur=' + prenom)
-          .then(response => response.json())
-          .then(data => {
-              document.querySelector("#chiffre").textContent = data.chiffre
-              console.log(data)
-          })
-  } else {
-      document.querySelector("#chiffre").textContent = "?"
-  }
-}
+document.querySelector("#form-button").addEventListener("click", (event) => {
+    prenom = document.querySelector("#form-input").value;
+    if (prenom) {
+        fetch('/prénom/?valeur=' + prenom)
+            .then(response => response.json())
+            .then(data => {
+                document.querySelector("#chiffre").textContent = data.chiffre
+                console.log(data)
+            })
+    } else {
+        document.querySelector("#chiffre").textContent = "?"
+    }
+
+    event.preventDefault();
+})
 ```
 
 Une promesse permet d'attendre que quelque chose d'asynchrone se fasse (ici le retour de notre appel serveur), puis (avec `.then`) de faire des choses. Ici :
@@ -164,24 +166,21 @@ Ce qui donne le fichier html suivant :
 
         </div>
         <script>
-            function on_click() {
-                prenom = document.querySelector("#form-input").value;
-                if (prenom) {
-                    fetch('/prénom/?valeur=' + prenom)
-                        .then(response => response.json())
-                        .then(data => {
-                            document.querySelector("#chiffre").textContent = data.chiffre
-                            console.log(data)
-                        })
-                } else {
-                    document.querySelector("#chiffre").textContent = "?"
-                }
-
+        document.querySelector("#form-button").addEventListener("click", (event) => {
+            prenom = document.querySelector("#form-input").value;
+            if (prenom) {
+                fetch('/prénom/?valeur=' + prenom)
+                    .then(response => response.json())
+                    .then(data => {
+                        document.querySelector("#chiffre").textContent = data.chiffre
+                        console.log(data)
+                    })
+            } else {
+                document.querySelector("#chiffre").textContent = "?"
             }
-            document.querySelector("#form-button").addEventListener("click", (event) => {
-                on_click()
-                event.preventDefault();
-            })
+
+            event.preventDefault();
+        })
         </script>
     </body>
 </html>

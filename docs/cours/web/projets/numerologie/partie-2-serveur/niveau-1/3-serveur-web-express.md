@@ -174,7 +174,7 @@ Dans notre cas l'enchaînement de route est ainsi :
 
 ### fonction next()
 
-On peut remettre des requêtes utilisées en fonction avec la méthode `next()`.
+On peut remettre des requêtes utilisées en fonction avec la méthode `next()`
 
 Ajoutez par exemple ce code en début de fichier en faisant en sorte que ce soit le 1er appel à `app` :
 
@@ -189,6 +189,10 @@ app.use(function (req, res, next) {
 
 // ...
 ```
+
+> Notez Le format de la fonction change, remarquez qu'il y a un troisième paramètre, `next`.
+> Lorsque vous voulez utiliser `next` il faut que vous l'ajoutiez en paramètre de la fonction.
+{: .attention}
 
 Toutes les requêtes satisfont cet appel, c'est un loggeur rudimentaire.
 
