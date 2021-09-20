@@ -156,6 +156,39 @@ On va juste un peut améliorer notre code pour le rendre :
 1. plus joli
 2. plus portable
 
+Fichier *"numerologie/index.js"* :
+
+```javascript
+const path = require('path')
+
+// ...
+
+const server = http.createServer((req, res) => {
+    console.log(req.url)
+
+    if (req.url === "/") {
+        fichier = path.join(__dirname, "./index.html")        
+    } else {
+        fichier = path.join(__dirname,  req.url)
+    }
+    console.log("fichier : " + fichier)
+    if (fs.existsSync(fichier)) {
+        res.writeHead(200,  {'Content-Type': 'text/html'})
+    
+        fichier = fs.readFileSync(fichier, {encoding:'utf8'})
+        res.end(fichier);
+    }
+    else {
+    res.writeHead(404,  {'Content-Type': 'text/plain'})
+    res.end();
+    }
+});
+
+// ...
+```
+
+Ajoutez la ligne `const path = require('path')` en début de fichier puis remplacez le serveur.
+
 ### headers
 
 On peut utiliser `res.writeHead(200,  {'Content-Type': 'text/html'})` pour écrire en une fois le status et le type de la réponse.
@@ -186,33 +219,16 @@ Node nous permet de faire ça avec la constante `__dirname` qui contient le doss
 
 Enfin, on ne concatène **jamais** des fichiers à la main. On utilise **toujours** une bibliothèque pour cela (sinon c'est *bad karma* : ça va forcément vous sauter à la tête un jour) qui traite tous les cas particulier pour vous. En node, c'est la [bibliothèque path](https://nodejs.org/api/path.html) qui s'occupe de ça.
 
-Fichier *"numerologie/index.js"* :
+### principe de développement
 
-```javascript
-// ...
+On a aussi utilisé le principe du [DRY](https://fr.wikipedia.org/wiki/Ne_vous_r%C3%A9p%C3%A9tez_pas) en factorisant les lignes identiques.
 
-const server = http.createServer((req, res) => {
-    console.log(req.url)
+Il y en a au moins un autre à connaître, c'est le [KISS](https://en.wikipedia.org/wiki/KISS_principle).
 
-    if (req.url === "/") {
-        fichier = path.join(__dirname, "./index.html")        
-    } else {
-        fichier = path.join(__dirname,  req.url)
-    }
-    console.log("fichier : " + fichier)
-    if (fs.existsSync(fichier)) {
-        res.writeHead(200,  {'Content-Type': 'text/html'})
-    
-        fichier = fs.readFileSync(fichier, {encoding:'utf8'})
-        res.end(fichier);
-    }
-    else {
-    res.writeHead(404,  {'Content-Type': 'text/plain'})
-    res.end();
-    }
-});
+Ce sont des programming (ou code) mantra.
 
-// ...
-```
+Voir par exemple :
 
-> On a aussi utilisé le principe du [DRY](https://fr.wikipedia.org/wiki/Ne_vous_r%C3%A9p%C3%A9tez_pas) en factorisant les lignes identiques.
+* <http://stereobooster.github.io/programming-mantras>
+* <https://medium.com/@codesprintpro/how-to-become-a-better-programmer-e9359e89dee2>
+* ...
