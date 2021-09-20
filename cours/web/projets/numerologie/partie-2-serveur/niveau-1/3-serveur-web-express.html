@@ -255,7 +255,7 @@
 
 <h3 id="fonction-next">fonction next()</h3>
 
-<p>On peut remettre des requêtes utilisées en fonction avec la méthode <code class="language-plaintext highlighter-rouge">next()</code>.</p>
+<p>On peut remettre des requêtes utilisées en fonction avec la méthode <code class="language-plaintext highlighter-rouge">next()</code></p>
 
 <p>Ajoutez par exemple ce code en début de fichier en faisant en sorte que ce soit le 1er appel à <code class="language-plaintext highlighter-rouge">app</code> :</p>
 
@@ -269,6 +269,11 @@
 
 <span class="c1">// ...</span>
 </code></pre></div></div>
+
+<blockquote class="attention">
+  <p>Notez Le format de la fonction change, remarquez qu’il y a un troisième paramètre, <code class="language-plaintext highlighter-rouge">next</code>.
+Lorsque vous voulez utiliser <code class="language-plaintext highlighter-rouge">next</code> il faut que vous l’ajoutiez en paramètre de la fonction.</p>
+</blockquote>
 
 <p>Toutes les requêtes satisfont cet appel, c’est un loggeur rudimentaire.</p>
 
