@@ -25,6 +25,8 @@ Le but d'un serveur web est d'attendre qu'un client le contacte et lui demande d
 Créez un fichier *"numerologie/index.js"* qui sera le point d'entrée de notre serveur :
 
 ```javascript
+const http = require('http');
+
 const hostname = '127.0.0.1';
 const port = 3000;
 
