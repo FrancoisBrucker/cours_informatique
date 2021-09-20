@@ -72,6 +72,7 @@
     <h2 id="but">But</h2>
 
 <p>Les indispensables à connaître. Ce tuto comporte deux sections :</p>
+
 <ol>
   <li>La section <a href="#comment-faire-">Comment faire …</a> qui donne la marche à suivre pour les opérations courantes,</li>
   <li>La section <a href="#cheatsheet">Cheatsheet</a>, un tableau récapitulant les commandes les plus utiles et leurs variations (notamment les options qu’il est important de connaître).</li>
@@ -123,6 +124,15 @@ git init
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone &lt;url&gt;
 </code></pre></div></div>
 
+<h3 id="travailler-à-plusieurs-sur-un-projet">Travailler à plusieurs sur un projet</h3>
+
+<ol>
+  <li>on sépare le travail à faire en tâche, et on s’arrange pour les taches à effectuer en même temps soient sur des parties différentes du code. Ceci pour éviter de se marcher sur les pieds et multiplier les conflits de fusion.</li>
+  <li>pour coder sa propre tâche, on crée une branche de développement qui lui nous est propre et sur laquelle vous pourrez travailler en local, voir la sauver sur le serveur. Comme vous êtes seul à travailler dessus, vous n’aurez pas de problème de fusion.</li>
+  <li>Une fois votre travail fini, vous fusionnerez votre branche local avec la branche principale du serveur distant, qui est souvent la branche master.</li>
+  <li>vous pouvez ensuite supprimer la branche qui vous a servi à coder la tâche et recommencer.</li>
+</ol>
+
 <h3 id="récupérer-en-local-les-modifications-effectuées-sur-le-répertoire-distant">Récupérer en local les modifications effectuées sur le répertoire distant</h3>
 
 <p><strong>Description :</strong> Sur un projet informatique, il arrive souvent que plusieurs développeurs travaillent de concert (c’est d’ailleurs toute l’utilité d’un logiciel tel que git). Afin de rester syncrhonisé avec le travail des collègues, on est régulièrement amené à télécharger depuis le serveur commun les apports qu’ils y ont déposé.</p>
@@ -131,10 +141,14 @@ git init
 
 <p>Depuis la racine du projet (là où se trouve le dossier .git) :</p>
 
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git pull
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git pull <span class="nt">--rebase</span><span class="o">=</span>merges
 </code></pre></div></div>
 
 <p>En général, l’url peut être trouvée sous le menu “Code” ou “Clone” sur la page principale d’un projet.</p>
+
+<blockquote>
+  <p>vous pouvez utiliser juste <code class="language-plaintext highlighter-rouge">git pull</code> si votre stratégie de fusion est placée par défaut à <code class="language-plaintext highlighter-rouge">rebase=merges</code>. dans le doute, utilisez la commande ci-dessus.</p>
+</blockquote>
 
 <h3 id="créer-une-nouvelle-branche">Créer une nouvelle branche</h3>
 
@@ -174,6 +188,7 @@ git push <span class="nt">-u</span> origin &lt;branche&gt;
 <h3 id="pousser-ses-modifications-sur-le-serveur">Pousser ses modifications sur le serveur</h3>
 
 <p><strong>Description :</strong> on veut “enregistrer” les modifications apportées au code et les partager avec ses collaborateurs en les poussant sur le serveur. On peut décomposer la marche à suivre en deux grandes étapes :</p>
+
 <ol>
   <li>On ajoute localement ses modifications à l’historique git, suivant la fréquence qui nous convient le mieux</li>
   <li>On pousse tout ça sur le serveur.</li>
@@ -292,7 +307,7 @@ git branch <span class="nt">-d</span> branche
     <tr>
       <td><code class="language-plaintext highlighter-rouge">git merge &lt;branche&gt;</code></td>
       <td>applique les modifications portées par “<branche>" à la branche mère dont elle est issue</branche></td>
-      <td><code class="language-plaintext highlighter-rouge">--no-ff</code> (<em>no fast forward</em>) permer de créer un commit de fusion dans tous les cas, même cas quand la fusion pourrait être résolue trivialement (<em>fast-forward</em>). Utile pour conserver l’historique des branches lors d’un <em>merge</em> suivant un <em>rebase</em></td>
+      <td><code class="language-plaintext highlighter-rouge">--no-ff</code> (<em>no fast forward</em>) permet de créer un commit de fusion dans tous les cas, même cas quand la fusion pourrait être résolue trivialement (<em>fast-forward</em>). Utile pour conserver l’historique des branches lors d’un <em>merge</em> suivant un <em>rebase</em></td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">git pull</code></td>
@@ -306,13 +321,13 @@ git branch <span class="nt">-d</span> branche
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">git rebase &lt;ici&gt; &lt;branche&gt;</code></td>
-      <td>découpe la branche <code class="language-plaintext highlighter-rouge">branche</code> à sa base et la recolle <code class="language-plaintext highlighter-rouge">ici</code>. <code class="language-plaintext highlighter-rouge">ici</code> peut-être le nom d’une branche, auquel cas la branche <code class="language-plaintext highlighter-rouge">branche</code> est recollée à la fin de la branche <code class="language-plaintext highlighter-rouge">ici</code>, ou un numéro de commtit. Voir le tuto complet sur rebase.</td>
+      <td>découpe la branche <code class="language-plaintext highlighter-rouge">branche</code> à sa base et la recolle <code class="language-plaintext highlighter-rouge">ici</code>. <code class="language-plaintext highlighter-rouge">ici</code> peut-être le nom d’une branche, auquel cas la branche <code class="language-plaintext highlighter-rouge">branche</code> est recollée à la fin de la branche <code class="language-plaintext highlighter-rouge">ici</code>, ou un numéro de commit. Voir le tuto complet sur rebase.</td>
       <td>X</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">git stash</code></td>
       <td>permet de mettre temporairement de côté les modifications en attente de <em>commit</em> afin de revenir au dernier <em>commit</em>. Les modifications ainsi mises de côté peuvent ensuite être réappliqués (éventuellement après que d’autres commits ont été effectués) ou supprimées.</td>
-      <td><code class="language-plaintext highlighter-rouge">git stash list</code> pour lister les éléments mis de côté <br /> <code class="language-plaintext highlighter-rouge">git stash apply</code> pour faire revenir les modifcations dans l’espace de travail <br /> <code class="language-plaintext highlighter-rouge">git stash clear</code> pour abandonner complètemet les modifications mises de côté</td>
+      <td><code class="language-plaintext highlighter-rouge">git stash list</code> pour lister les éléments mis de côté <br /> <code class="language-plaintext highlighter-rouge">git stash apply</code> pour faire revenir les modifications dans l’espace de travail <br /> <code class="language-plaintext highlighter-rouge">git stash clear</code> pour abandonner complètement les modifications mises de côté</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">git status</code></td>
@@ -321,9 +336,6 @@ git branch <span class="nt">-d</span> branche
     </tr>
   </tbody>
 </table>
-
-<h2 id="sources-et-ressources">Sources et ressources</h2>
-
 
   </div>
 
