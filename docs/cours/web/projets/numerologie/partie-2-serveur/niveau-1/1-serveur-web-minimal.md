@@ -94,12 +94,13 @@ On peut par exemple modifier notre serveur dans le fichier *"numerologie/index.j
 const server = http.createServer((req, res) => {
 
     console.log("-------")
-    console.log(req.headers);
+    console.log(req.url);
+    console.log("========")
+    console.log(req.method);
     console.log("========")
     console.log(req.httpVersion);
     console.log("========")
-    console.log(req.method);
-
+    console.log(req.headers);
 
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/plain');

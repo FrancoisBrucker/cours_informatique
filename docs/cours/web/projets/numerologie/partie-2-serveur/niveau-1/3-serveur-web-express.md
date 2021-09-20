@@ -122,14 +122,15 @@ Le projet ressemble maintenant à ça, en excluant le dossier *"node_modules"* :
 Modifions le fichier *"numerologie/index.js"* pour que notre site fonctionne sous express :
 
 ```javascript
-var express = require('express')
-var app = express()
+const path = require('path')
+
+const express = require('express')
+const app = express()
 
 const hostname = '127.0.0.1';
 const port = 3000;
 
-
-app.use("/static", express.static(__dirname + '/static'))
+app.use("/static", express.static(path.join(__dirname, '/static')))
 
 app.get('/', (req, res) => {
     res.redirect(301, '/static/index.html')
