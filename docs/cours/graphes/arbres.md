@@ -190,7 +190,7 @@ On peut s'en sortir avec des algorithmes dont le nombre d'opérations est propor
 
 #### pour la bonne bouche
 
-> * En déduire une façon de trier un tableau de nombre.
+> * En déduire une façon de trier un tableau de nombres.
 > * trouver un moyen de représenter un tas par une liste (on pourra parcourir le tas de haut en bas et de droite à gauche).
 {: .a-faire}
 
