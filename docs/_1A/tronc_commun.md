@@ -24,7 +24,7 @@ Chaque partie est organisée en 3 types d'enseignements :
 
 Le support du cours d'[Introduction aux graphes]({% link cours/graphes/index.md %})
 
-### ST : graphes
+### ST : arbres
 
 Le [sujet aux TD]({% link cours/graphes/arbres.md %}) qui vous fera découvrir par l'exemple le monde merveilleux des arbres.
 

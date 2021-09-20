@@ -11,11 +11,11 @@ authors:
 ## But
 
 Les indispensables à connaître. Ce tuto comporte deux sections :
+
 1. La section [Comment faire ...](#comment-faire-) qui donne la marche à suivre pour les opérations courantes,
 2. La section [Cheatsheet](#cheatsheet), un tableau récapitulant les commandes les plus utiles et leurs variations (notamment les options qu'il est important de connaître).
 
 L'idée est donc de pouvoir utiliser ce tuto de deux façons : soit avec une idée de ce qu'on veut faire, obtenir les différentes commandes à utiliser ; soit pour se rafraichir la mémoire sur une commande bien précise.
-
 
 ## Comment faire ...
 
@@ -59,6 +59,13 @@ git remote add origin https://github.com/USER/monprojet.git
 git clone <url>
 ~~~
 
+### Travailler à plusieurs sur un projet
+
+1. on sépare le travail à faire en tâche, et on s'arrange pour les taches à effectuer en même temps soient sur des parties différentes du code. Ceci pour éviter de se marcher sur les pieds et multiplier les conflits de fusion.
+2. pour coder sa propre tâche, on crée une branche de développement qui lui nous est propre et sur laquelle vous pourrez travailler en local, voir la sauver sur le serveur. Comme vous êtes seul à travailler dessus, vous n'aurez pas de problème de fusion.
+3. Une fois votre travail fini, vous fusionnerez votre branche local avec la branche principale du serveur distant, qui est souvent la branche master.
+4. vous pouvez ensuite supprimer la branche qui vous a servi à coder la tâche et recommencer.
+
 ### Récupérer en local les modifications effectuées sur le répertoire distant
 
 **Description :** Sur un projet informatique, il arrive souvent que plusieurs développeurs travaillent de concert (c'est d'ailleurs toute l'utilité d'un logiciel tel que git). Afin de rester syncrhonisé avec le travail des collègues, on est régulièrement amené à télécharger depuis le serveur commun les apports qu'ils y ont déposé.
@@ -68,10 +75,12 @@ git clone <url>
 Depuis la racine du projet (là où se trouve le dossier .git) :
 
 ~~~ shell
-git pull
+git pull --rebase=merges
 ~~~
 
 En général, l'url peut être trouvée sous le menu "Code" ou "Clone" sur la page principale d'un projet.
+
+> vous pouvez utiliser juste `git pull` si votre stratégie de fusion est placée par défaut à `rebase=merges`. dans le doute, utilisez la commande ci-dessus.
 
 ### Créer une nouvelle branche
 
@@ -115,6 +124,7 @@ git push -u origin <branche>
 ### Pousser ses modifications sur le serveur
 
 **Description :** on veut "enregistrer" les modifications apportées au code et les partager avec ses collaborateurs en les poussant sur le serveur. On peut décomposer la marche à suivre en deux grandes étapes :
+
 1. On ajoute localement ses modifications à l'historique git, suivant la fréquence qui nous convient le mieux
 2. On pousse tout ça sur le serveur.
 
@@ -181,7 +191,7 @@ git branch -d branche
 Par ordre alphabétique ;)
 
 Commande | Effet | Option(s) |
---- | --- | --- | --- 
+--- | --- | --- | --- |
 `git add <fichier>` | ajoute des fichiers au stage en vue de les commit | `git add .` pour ajouter tous les fichiers modifiés
 `git branch` | affiche les branches existantes (en local, par défaut). La branche actuelle est mise en évidence par un astérisque | `-d <branche>` supprime la branche *branche* |
 `git checkout <branche>` | change de branche pour aller sur "branche" | `-b <nouvelle branche>` pour créer une nouvelle branche et s'y placer |
@@ -190,13 +200,9 @@ Commande | Effet | Option(s) |
 `git diff` | indique les différences entre le dernier commit et ce qui n'est pas encore mis dans le *stage* |  |
 `git init` | initialise git pour le dossier où la commande est lancée |  |
 `git log` | affiche l'historique git complet du projet | `--oneline` affiche les commits sous forme condensée pour plus de lisibilité <br> `--graph` représentation visuelle de l'arbre (avec les branches éventuelles) |
-`git merge <branche>` | applique les modifications portées par "<branche>" à la branche mère dont elle est issue | `--no-ff` (*no fast forward*) permer de créer un commit de fusion dans tous les cas, même cas quand la fusion pourrait être résolue trivialement (*fast-forward*). Utile pour conserver l'historique des branches lors d'un *merge* suivant un *rebase* |
+`git merge <branche>` | applique les modifications portées par "<branche>" à la branche mère dont elle est issue | `--no-ff` (*no fast forward*) permet de créer un commit de fusion dans tous les cas, même cas quand la fusion pourrait être résolue trivialement (*fast-forward*). Utile pour conserver l'historique des branches lors d'un *merge* suivant un *rebase* |
 `git pull` | télécharge en local les modifications présentes sur le serveur (*a priori* ajoutées par d'autres développeurs) | `--rebase=preverse` permet de conserver les commits de fusion, utile pour garder une trace de l'existence de certaines branches |
 `git push` | pousse sur le serveur les modifications locales |  |
-`git rebase <ici> <branche>` | découpe la branche `branche` à sa base et la recolle `ici`. `ici` peut-être le nom d'une branche, auquel cas la branche `branche` est recollée à la fin de la branche `ici`, ou un numéro de commtit. Voir le tuto complet sur rebase. | X |
-`git stash` | permet de mettre temporairement de côté les modifications en attente de *commit* afin de revenir au dernier *commit*. Les modifications ainsi mises de côté peuvent ensuite être réappliqués (éventuellement après que d'autres commits ont été effectués) ou supprimées. | `git stash list` pour lister les éléments mis de côté <br> `git stash apply` pour faire revenir les modifcations dans l'espace de travail <br> `git stash clear` pour abandonner complètemet les modifications mises de côté |
+`git rebase <ici> <branche>` | découpe la branche `branche` à sa base et la recolle `ici`. `ici` peut-être le nom d'une branche, auquel cas la branche `branche` est recollée à la fin de la branche `ici`, ou un numéro de commit. Voir le tuto complet sur rebase. | X |
+`git stash` | permet de mettre temporairement de côté les modifications en attente de *commit* afin de revenir au dernier *commit*. Les modifications ainsi mises de côté peuvent ensuite être réappliqués (éventuellement après que d'autres commits ont été effectués) ou supprimées. | `git stash list` pour lister les éléments mis de côté <br> `git stash apply` pour faire revenir les modifications dans l'espace de travail <br> `git stash clear` pour abandonner complètement les modifications mises de côté |
 `git status` | affiche les fichiers prêts à être *commit* et ceux qui ne sont pas encore dans le *stage* |  |
-
-
-## Sources et ressources
-

@@ -200,3 +200,4 @@ Le rebase interactif (`git rebase -i`) est très utile dans le cadre de l'utilis
 ## Sources
 
 - Ce superbe [tuto](https://www.miximum.fr/blog/git-rebase/) réalisé par Thibault Jouannic, et sur lequel se base une bonne partie du présent tuto.
+- <https://stackoverflow.com/questions/21364636/git-pull-rebase-preserve-merges> qui montre l'utilité de `git --rebase=merges` qui préserve les merges locaux s'il y en a.
