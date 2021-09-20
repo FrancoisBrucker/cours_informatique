@@ -218,6 +218,38 @@
   <li>plus portable</li>
 </ol>
 
+<p>Fichier <em>“numerologie/index.js”</em> :</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">path</span><span class="dl">'</span><span class="p">)</span>
+
+<span class="c1">// ...</span>
+
+<span class="kd">const</span> <span class="nx">server</span> <span class="o">=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">url</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">/</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">fichier</span> <span class="o">=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="dl">"</span><span class="s2">./index.html</span><span class="dl">"</span><span class="p">)</span>        
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">fichier</span> <span class="o">=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span>  <span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">fichier : </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">fichier</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">fs</span><span class="p">.</span><span class="nx">existsSync</span><span class="p">(</span><span class="nx">fichier</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span>  <span class="p">{</span><span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">text/html</span><span class="dl">'</span><span class="p">})</span>
+    
+        <span class="nx">fichier</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="nx">fichier</span><span class="p">,</span> <span class="p">{</span><span class="na">encoding</span><span class="p">:</span><span class="dl">'</span><span class="s1">utf8</span><span class="dl">'</span><span class="p">})</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nx">fichier</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">404</span><span class="p">,</span>  <span class="p">{</span><span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">text/plain</span><span class="dl">'</span><span class="p">})</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="c1">// ...</span>
+</code></pre></div></div>
+
+<p>Ajoutez la ligne <code class="language-plaintext highlighter-rouge">const path = require('path')</code> en début de fichier puis remplacez le serveur.</p>
+
 <h3 id="headers">headers</h3>
 
 <p>On peut utiliser <code class="language-plaintext highlighter-rouge">res.writeHead(200,  {'Content-Type': 'text/html'})</code> pour écrire en une fois le status et le type de la réponse.</p>
@@ -254,37 +286,21 @@
 
 <p>Enfin, on ne concatène <strong>jamais</strong> des fichiers à la main. On utilise <strong>toujours</strong> une bibliothèque pour cela (sinon c’est <em>bad karma</em> : ça va forcément vous sauter à la tête un jour) qui traite tous les cas particulier pour vous. En node, c’est la <a href="https://nodejs.org/api/path.html">bibliothèque path</a> qui s’occupe de ça.</p>
 
-<p>Fichier <em>“numerologie/index.js”</em> :</p>
+<h3 id="principe-de-développement">principe de développement</h3>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ...</span>
+<p>On a aussi utilisé le principe du <a href="https://fr.wikipedia.org/wiki/Ne_vous_r%C3%A9p%C3%A9tez_pas">DRY</a> en factorisant les lignes identiques.</p>
 
-<span class="kd">const</span> <span class="nx">server</span> <span class="o">=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="p">)</span>
+<p>Il y en a au moins un autre à connaître, c’est le <a href="https://en.wikipedia.org/wiki/KISS_principle">KISS</a>.</p>
 
-    <span class="k">if</span> <span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">url</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">/</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">fichier</span> <span class="o">=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="dl">"</span><span class="s2">./index.html</span><span class="dl">"</span><span class="p">)</span>        
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">fichier</span> <span class="o">=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span>  <span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="p">)</span>
-    <span class="p">}</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">fichier : </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">fichier</span><span class="p">)</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">fs</span><span class="p">.</span><span class="nx">existsSync</span><span class="p">(</span><span class="nx">fichier</span><span class="p">))</span> <span class="p">{</span>
-        <span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span>  <span class="p">{</span><span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">text/html</span><span class="dl">'</span><span class="p">})</span>
-    
-        <span class="nx">fichier</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="nx">fichier</span><span class="p">,</span> <span class="p">{</span><span class="na">encoding</span><span class="p">:</span><span class="dl">'</span><span class="s1">utf8</span><span class="dl">'</span><span class="p">})</span>
-        <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nx">fichier</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="k">else</span> <span class="p">{</span>
-    <span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">404</span><span class="p">,</span>  <span class="p">{</span><span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">text/plain</span><span class="dl">'</span><span class="p">})</span>
-    <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
-    <span class="p">}</span>
-<span class="p">});</span>
+<p>Ce sont des programming (ou code) mantra.</p>
 
-<span class="c1">// ...</span>
-</code></pre></div></div>
+<p>Voir par exemple :</p>
 
-<blockquote>
-  <p>On a aussi utilisé le principe du <a href="https://fr.wikipedia.org/wiki/Ne_vous_r%C3%A9p%C3%A9tez_pas">DRY</a> en factorisant les lignes identiques.</p>
-</blockquote>
+<ul>
+  <li><a href="http://stereobooster.github.io/programming-mantras">http://stereobooster.github.io/programming-mantras</a></li>
+  <li><a href="https://medium.com/@codesprintpro/how-to-become-a-better-programmer-e9359e89dee2">https://medium.com/@codesprintpro/how-to-become-a-better-programmer-e9359e89dee2</a></li>
+  <li>…</li>
+</ul>
 
   </div>
 
