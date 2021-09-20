@@ -43,7 +43,7 @@ Un **arbre** est un *graphe simple* $T = (V, E)$ qui est :
 #### graphe connexe
 
 >1. Donnez un algorithme permettant de savoir si un graphe $G = (V, E)$ donné est connexe.
->2. Quelle structure de graphe utiliseriez vous pour que cet algorithme ait la plus petite complexité possible ?
+>2. Quelle structure de graphe utiliseriez-vous pour que cet algorithme ait la plus petite complexité possible ?
 {: .a-faire}
 
 **Indice** : On pourra partir d'un sommet $x$ et trouver itérativement tous les sommets que l'on peut atteindre avec lui.
@@ -84,20 +84,20 @@ Pour enfoncer le clou et montrer que les arbres sont une structure de connexité
 
 #### conclusion
 
-Les conditions précédentes nous permettent de ne pas avoir à chercher si un graphe à un cycle, ce qui rend l'algorithme de reconnaissance plus aisé :
+Les conditions précédentes nous permettent de ne pas avoir à chercher si un graphe a un cycle, ce qui rend l'algorithme de reconnaissance plus aisé :
 
 > Donnez l'algorithme final pour savoir si un graphe est un arbre.
 {: .a-faire}
 
-## arbre enracinées
+## arbre enraciné
 
-En informatique on utilise souvent la structure d'arbre en l'**enracinant**, c'est à dire qu'on choisi un sommet qui sera la racine et tous les autres sommets vont être dépendant de lui. Ceci est possible de part une importante propriété des arbres : **l'unicité des chemins**
+En informatique on utilise souvent la structure d'arbre en l'**enracinant**, c'est-à-dire qu'on choisi un sommet qui sera la racine et tous les autres sommets vont être dépendants de lui. Ceci est possible de part une importante propriété des arbres : **l'unicité des chemins**
 
-### chemin et arbres
+### chemins et arbres
 
 Soit $T = (V, E)$ un arbre.
 
->Montrez que quelques soient deux sommets $x$ et $y$, il n'existe qu'un seul chemin entre $x$ et $y$.
+>Montrez que quels que soient deux sommets $x$ et $y$, il n'existe qu'un seul chemin entre $x$ et $y$.
 {: .a-faire}
 
 ### ordonnancement des sommets {#ordo-sommets}
@@ -126,19 +126,19 @@ Cet ordonnancement est [très utilisé en biologie](https://fr.wikipedia.org/wik
 
 En informatique, c'est souvent les arbres binaires planté que l'on utilise :
 
-Un arbre planté est binaire si tout noeud intérieur a **au plus 2 successeurs**. On aura parfois aussi besoin qu'il soit **complet**, c'est à dire que les noeuds intérieurs qui n'ont pas 2 successeurs sont en bas de l'arbre (à la hauter de l'arbre -1).
+Un arbre planté est binaire si tout noeud intérieur a **au plus 2 successeurs**. On aura parfois aussi besoin qu'il soit **complet**, c'est-à-dire que les noeuds intérieurs qui n'ont pas 2 successeurs sont en bas de l'arbre (à la hauter de l'arbre -1).
 
 ### propriété fondamentale des arbres binaires
 
->Montrer que pour un arbre binaire, si noeud intérieur a exactement 2 successeurs, alors en notant $f$ le nombre de feuilles de l'arbre, on a :
+>Montrer que pour un arbre binaire, si tout noeud intérieur a exactement 2 successeurs, alors en notant $f$ le nombre de feuilles de l'arbre, on a :
 >
 >* la hauteur de l'arbre est égale à $\log_2(f)$
 >* $f$ est égal au nombre de nœuds intérieurs plus 1.
 {: .a-faire}
 
-Ces propriétés ci-dessus montrent que si l'on veut organiser $n$ données, on a besoin que d'un arbre de hauteur $\log_2(n)$. Comme le chemin depuis la racine nous permet de retrouver les données, si on associe une question à chaque nœud intérieur, on peut retrouver $n$ éléments en ne posant que $\log_2(n)$ questions. C'est le principe des **arbres de décisions**, si utiles en apprentissage automatique.
+Les propriétés ci-dessus montrent que si l'on veut organiser $n$ données, on n'a besoin que d'un arbre de hauteur $\log_2(n)$. Comme le chemin depuis la racine nous permet de retrouver les données, si on associe une question à chaque nœud intérieur, on peut retrouver $n$ éléments en ne posant que $\log_2(n)$ questions. C'est le principe des **arbres de décisions**, si utiles en apprentissage automatique.
 
-> La différence en $log_2(n)$ et $n$ est très importante ! On par exemple besoin d'uniquement 100 questions pour trier 1267650600228229401496703205376 éléments.
+> La différence en $\log_2(n)$ et $n$ est très importante ! On par exemple besoin d'uniquement 100 questions pour trier 1267650600228229401496703205376 éléments.
 > Un informaticien est prêt à beaucoup, beaucoup de choses pour avoir une structure en $\log_2(n)$.
 
 ### exemple du tas
@@ -160,7 +160,7 @@ Si l'on suppose que l'état de gravité d'un patient est connu, on peut faire bi
 
 #### un tas
 
-Un tas est un arbre binaire planté complet dont les sommets sont des entiers. On considère en plus qu'un tas est **plein**, c'est à dire que les feuilles de hauteur maximum forment un intervalle à gauche de l'arbre.
+Un tas est un arbre binaire planté complet dont les sommets sont des entiers. On considère en plus qu'un tas est **plein**, c'est-à-dire que les feuilles de hauteur maximum forment un intervalle à gauche de l'arbre.
 
 ![arbre_plante_tas_?]({{ "/assets/cours/graphes/arbre_plante_tas_abc.png" | relative_url }}){:style="margin: auto;display: block;"}
 
@@ -183,7 +183,7 @@ De plus, pour un tas, chaque nœud est de valeur plus grande que chacun de ses d
 >3. suppression de la racine
 {: .a-faire}
 
-On peut s'en sortir avec des algorithme dont le nombre d'opération est proportionnelle à la hauteur du tas.
+On peut s'en sortir avec des algorithmes dont le nombre d'opérations est proportionnel à la hauteur du tas.
 
 > En conclure que l'utilisation du tas est bien meilleure que la solution naïve.
 {: .a-faire}
@@ -191,12 +191,12 @@ On peut s'en sortir avec des algorithme dont le nombre d'opération est proporti
 #### pour la bonne bouche
 
 > * En déduire une façon de trier un tableau de nombre.
-> * trouver un de représenter un tas par une liste (on pourra parcourir le tas de haut en bas et de droite à gauche).
+> * trouver un moyen de représenter un tas par une liste (on pourra parcourir le tas de haut en bas et de droite à gauche).
 {: .a-faire}
 
 ## parcours
 
-Pour modifier la structure du tas on a du évoluer dans la structure d'arbre planté. Un autre intérêt (encore un !) des abres planté est que tout sommet peut-être considéré comme la racine de sous-arbre. On a donc uniquement besoin de créer l'algorithme qui fonctionnera pour la racine et le re-exécuter ensuite sur les descendants.
+Pour modifier la structure du tas on a dû évoluer dans la structure d'arbre planté. Un autre intérêt (encore un !) des arbres plantés est que tout sommet peut être considéré comme la racine de sous-arbre. On a donc uniquement besoin de créer l'algorithme qui fonctionnera pour la racine et le re-exécuter ensuite sur les descendants.
 
 On utilise ce principe pour parcourir tous les sommets d'un arbre planté efficacement, c'est à dire en ne regardant chaque sommet qu'un nombre constant de fois.
 
@@ -239,7 +239,7 @@ Si la racine a des descendants:
 
 > Les [parcours d'arbres](https://fr.wikipedia.org/wiki/Arbre_syntaxique) sont utilisés en linguistique pour analyser syntaxiquement une phrase. Un exercice classique est de créer un [arbre à partir d'une expression arithmétique](https://diu-uf-bordeaux.github.io/bloc4/td/arbres/expression/) pour la résoudre de façon optimale en nombre d'opérations.
 
-## arbre dans des graphes connexe
+## arbre dans des graphes connexes
 
 > Montrer que pour tout graphe connexe $G = (V, E)$, il existe au moins un arbre $T=(V, E')$ tel que $E' \subseteq E$.
 {: .a-faire}
@@ -258,7 +258,7 @@ On suppose que vous êtes chef d'un état. Vous voulez que votre territoire soit
 
 Vous demandez donc à vos conseillez de créer un graphe dont les sommets correspondant à vos villes et dont les arêtes sont valuées par le coût de construction d'une route entre ces 2 villes. Ce graphe n'a pas forcément toutes les arêtes si le coût de construction est prohibitif par exemple.
 
-La solution la plus efficace consiste à trouver de ce graphe un graphe couvrant dont la somme des valuation est minimale parmi tous les graphes couvrant.
+La solution la plus efficace consiste à trouver de ce graphe un arbre couvrant dont la somme des valuations est minimale parmi tous les arbres couvrant.
 
 > Pourquoi ?
 {: .a-faire}
@@ -271,21 +271,21 @@ On considère le graphe ci-dessous :
 
 Avec un peu d'imagination considérez que c'est le graphe de construction d'une petite île du pacifique dont vous êtes le nouveau chef d'état.
 
-> * Quel est l'arête qui sera forcément dans tous les arbres couvrant de poids minimum ?
+> * Quel est l'arête qui sera forcément dans tous les arbres couvrants de poids minimum ?
 > * Quel est l'arête qui ne sera forcément jamais dans un arbre couvrant de poids minimum ?
-> * y a-t-il plusieurs arbres couvrant de poids minimum pour ce graphe ?
+> * y a-t-il plusieurs arbres couvrants de poids minimum pour ce graphe ?
 {: .a-faire}
 
 #### propriété
 
-> * montrez que s'il existe deux arbres couvrant de poids minimum ne différent que d'une arête, alors elles ont même valuation
+> * montrez que s'il existe deux arbres couvrants de poids minimum qui ne différent que d'une arête, alors elles ont même valuation
 > * montrez que si toutes les valuations sont différentes, il n'existe qu'un seul arbre couvrant de poids minimal.
 > * montrez que la réciproque n'est pas vraie
 {: .a-faire}
 
 #### un algorithme
 
-Ce problème à l'air dur, mais il possède un algorithme (assez) simple pour le résoudre. L'algorithme suivant est l'algorithme de Prim (1957) :
+Ce problème a l'air dur, mais il possède un algorithme (assez) simple pour le résoudre. L'algorithme suivant est l'algorithme de Prim (1957) :
 
 ```text
 Entrée :
