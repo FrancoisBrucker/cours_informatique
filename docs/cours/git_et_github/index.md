@@ -125,6 +125,9 @@ Ceci nous permettra par défaut :
 
 Vous pourrez ensuite faire des `git pull` tout seul et ils seront rebasé par défaut et préserveront les merges existant. Le meilleur des deux monde en somme.
 
+> ceci ne peut se faire qu'à partir de git 2.22. Mettez à jour votre git si nécessaire. On est (à l'heure où je tape ces caractères) à la version 2.32.0 de git.
+{: .attention}
+
 ## usages
 
 ### qu'est que github
@@ -133,11 +136,16 @@ Vous pourrez ensuite faire des `git pull` tout seul et ils seront rebasé par d�
 
 ### qu'est ce que git
 
-[décorticage de git]({% link cours/git_et_github/git_et_github.md %})
+[usage de git]({% link cours/git_et_github/usage_git.md %}) où l'on rentre quand même pas mal dans les détails pour comprendre comment fonctionne ce (merveilleux) outils.
 
 ## commandes indispensables
 
 [les commandes indispensables]({% link cours/git_et_github/git_commands.md %})
+
+## git et github avec l'application
+
+> TBD : un court tuto sur commet faire en reprenant les commandes indispensables
+{: .note}
 
 ## mettre en production avec git
 

@@ -27,4 +27,4 @@ Avant de se lancer à corps perdu dans le développement et le code, vérifions 
 
 1. [niveau 1]({% link cours/web/projets/numerologie/partie-1-front/niveau-1/index.md %}) : utilisation d'un éditeur de texte et bases du développement html/css/js
 2. [niveau 2]({% link cours/web/projets/numerologie/partie-1-front/niveau-2/index.md %}) : ajoute d'outils de gestion de projets
-3. [niveau 3]({% link cours/web/projets/numerologie/partie-1-front/niveau-3/index.md %}) : ajout de la gestion des sources et de la mise en production.
+3. [niveau 3]({% link cours/web/projets/numerologie/partie-1-front/niveau-3/index.md %}) : ajout de la gestion des sources et de la mise en production sur un site distant.

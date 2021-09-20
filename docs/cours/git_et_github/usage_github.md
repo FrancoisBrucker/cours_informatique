@@ -109,7 +109,7 @@ Ajoutons un projet web à github :
 
 On utilise la commande `git pull --rebase=merges origin master` pour récupérer la branche `master` sur le serveur `origin`.
 
-> Si on a définit une branche par défaut on peut juste taper : `git pull --rebase=merges`
+> Si on a définit une branche par défaut on peut juste taper : `git pull --rebase=merges`, et si on a défini une méthode de fusion (comme dit dans la configuration), `git pull` suffit.
 
 Pour que cette commande fonctionne il faut que l'`origin` soit plus loin en commit que vous et que n'ayez pas fait de modification par rapport son histoire (vous devez juste être en retard, pas autre part)
 
