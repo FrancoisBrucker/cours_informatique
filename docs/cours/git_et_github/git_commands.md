@@ -19,6 +19,27 @@ L'idée est donc de pouvoir utiliser ce tuto de deux façons : soit avec une id�
 
 ## Comment faire ...
 
+### Récupérer (cloner) en local un projet existant {#clone-projet}
+
+**Description :** on souhaite travailler sur un projet donc le code est disponible sur Github (ou équivalent). Pour ce faire, on va cloner le répertoire en local sur sa machine.
+
+C'est aussi la façon la plus simple d'initialiser un projet github. Une fois le [projet crée sur github](https://docs.github.com/en/get-started/quickstart/create-a-repo)
+
+**Commandes :**
+
+~~~ shell
+git clone <url>
+~~~
+
+<url> sera ce qui est copié depuis la page du projet :
+
+![usage github]({{ "/assets/cours/git/github-clone-projet.png" | relative_url }}){:style="margin: auto;display: block}
+
+Et aura deux formes :
+
+* `git@github.com:<USER>/<monprojet>.git`. Si vous utilisez cette méthode,vous vous authentifierez avec vos clés ssh.
+* par http : `git remote add origin https://github.com/<USER>/<monprojet>.git`. Si vous utilisez cette méthode vous vous authentifierez avec un [token](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token).
+
 ### Initialiser un nouveau projet
 
 **Description :** on va créer en local notre nouveau projet, créer un répertoire sur GitHub et lier les deux.
@@ -30,7 +51,11 @@ L'idée est donc de pouvoir utiliser ce tuto de deux façons : soit avec une id�
 
 **Commandes :**
 
-1. Pour cette première étape, on peut soit opérer depuis un [navigateur](https://github.com), soit en ligne de commande avec [GitHub CLI](https://cli.github.com/).
+1. Pour cette première étape, opérez depuis un [navigateur](https://github.com/new) ([tuto sur github](https://docs.github.com/en/get-started/quickstart/create-a-repo)) :
+    * donnez un nom à votre répertoire
+    * choisissez un répertoire public
+    * vous pouvez ensuite créer le répertoire en cliquant sur le bouton *create repository*
+Une fois le dossier crée, github vous aide pour lier ce répertoire à un projet de votre ordinateur.
 
 2. 
 ~~~ shell
@@ -44,20 +69,11 @@ cd <monprojet>
 git init
 ~~~
 
-4. 
-~~~ shell
-git remote add origin https://github.com/USER/monprojet.git
-~~~
+4. si vous voulez vous connecter, il y a deux possibilités :
+   * par SSH : `git remote add origin git@github.com:<USER>/<monprojet>.git`. Si vous utilisez cette méthode,vous vous authentifierez avec vos clés ssh.
+   * par http : `git remote add origin https://github.com/<USER>/<monprojet>.git`. Si vous utilisez cette méthode vous vous authentifierez avec un [token](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token).
 
-### Récupérer (cloner) en local un projet existant
-
-**Description :** on souhaite travailler sur un projet donc le code est disponible sur Github (ou équivalent). Pour ce faire, on va cloner le répertoire en local sur sa machine.
-
-**Commandes :**
-
-~~~ shell
-git clone <url>
-~~~
+5. votre premier push devra aussi définir la branche de l'origin : `git push --set-upstream.origin master`. Vous pourrez ensuite utiliser simplement `git push`
 
 ### Travailler à plusieurs sur un projet
 
@@ -132,7 +148,7 @@ La fréquence d'ajout des modifications au git est variable suivant les dévelop
 
 Concernant la fréquence d'envoi sur le serveur (*push*), la seule règle vraiment importante est de bien avoir en tête que, tant que du code n'est pas poussé, il n'existe que sur votre ordinateur. Et si celui-ci est endommagé ou perdu ... Un *push* régulier est donc gage d'esprit léger !
 
-**Commandes :** 
+**Commandes :**
 
 1. L'ajout des modifications au git se fait en plusieurs étapes : on ajoute d'abord les modifications qui nous intéressent au *stage*, puis on les *commit*. On peut voir le *stage* comme une sorte de bassine où l'on dépose tous les fichiers que l'on veut sauver.
 
