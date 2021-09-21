@@ -4,9 +4,6 @@ title:  "Bases de python : premier programme"
 author: "François Brucker"
 ---
 
-[développement]({% link cours/developpement/index.md %}) / [bases de python]({% link cours/developpement/bases-python/index.md %}) / [premier programme]({% link cours/developpement/bases-python/premier-programme.md %})
-
-
 ## projet vsc
 
 Créez un dossier nommé *"cours-python"* sur votre ordinateur, et ouvrez le avec vscode (*menu Fichier > ouvrir...*). Une fois que vous avez dit que vous faisiez confiance au développeur de ce projet, fermez l'onglet *Welcome*. Vous pouvez même fermer l'explorer en cliquant sur l'icone en sur-brillance dans la barre d'activité de [l'interface vsc](https://code.visualstudio.com/docs/getstarted/userinterface).
@@ -90,4 +87,3 @@ Remarquez que lorsque vous exécutez votre programme via la seconde solution, ce
 ![hello world]({{ "/assets/cours/developpement/python-interpreteur-execution-python.png" | relative_url }}){:style="margin: auto;display: block}
 
 > L'interpréteur python utilisé pour la seconde méthode est celui du paramètre `python.defaultInterpreterPath` qui devrait être le même que lorsque vous tapez juste `python` dans un terminal.
-

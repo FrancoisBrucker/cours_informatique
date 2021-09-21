@@ -4,8 +4,8 @@ title:  "Bases de python : Objets types et types d'objets"
 author: "François Brucker"
 ---
 
->[développement]({% link cours/developpement/index.md %}) / [bases de python]({% link cours/developpement/bases-python/index.md %}) / [Objets types et types d'objets]({% link cours/developpement/bases-python/objets-types.md %})
-{: .chemin}
+
+Python connait 5 classes d'objets de base qui permettent de faire la grande majorité des programmes.
 
 ## Les 5 classes de base
 
@@ -157,7 +157,7 @@ Agir sur des objets en python prend deux formes (en apparence) différentes :
 Les méthodes sont moyens d'agir sur un objet. On les utilise de cette façon :
 
 ```pyhton
-objet.methode(paramètres)
+objet.methode(paramètre 1, paramètre 2, ..., paramètre n)
 ```
 
 On applique `méthode` à `objet` en utilisant les `paramètres` de la méthode.
@@ -234,55 +234,3 @@ Par exemple les objets de la classe complex qui possède les attibuts `real` et 
 >>> (1+2j).imag
 2.0
 ```
-
-## opérations
-
-### nombres
-
-<https://docs.python.org/3/library/stdtypes.html#boolean-operations-and-or-not>
-
-Les opération peuvent s'effectuer sur les trois types numériques que sont les entier (classe `int`), les réels (classe `float`) et les complexes (classe `complex`)
-
-### chaines de caractères (concatenation et *)
-
-```python
->>> "x" + "y"
-'xy'
->>> 3 * "x"
-'xxx'
-```
-
-> Recopiez 10 fois : `"j'aime bien faire du python"`
-{: .a-faire}
-{% details solution %}
-Si l'on sait que le caractère `\n` correspond à aller à la ligne, on peut écrire :
-
-```python
->>> print(10 * "j'aime bien faire du python\n")
-j'aime bien faire du python
-j'aime bien faire du python
-j'aime bien faire du python
-j'aime bien faire du python
-j'aime bien faire du python
-j'aime bien faire du python
-j'aime bien faire du python
-j'aime bien faire du python
-j'aime bien faire du python
-j'aime bien faire du python
-
-```
-
-{% enddetails %}
-{: .a-faire}
-
-### booleen
-
-#### comparaisons
-
-<https://docs.python.org/3/library/stdtypes.html#comparisons>
-
-Les comparaisons rendent un booléen. Par exemple : `2 <= 3` rend le booléen `True`.
-
-#### opérations logiques
-
-<https://docs.python.org/3/library/stdtypes.html#boolean-operations-and-or-not>

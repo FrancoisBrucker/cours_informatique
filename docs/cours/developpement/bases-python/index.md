@@ -18,63 +18,48 @@ Un court cours sur les bases de python. On montrera les types de bases et divers
 
 ## variables
 
-variable et espace de noms
+[variable et espace de noms]({% link cours/developpement/bases-python/variables.md %}) vous montrera le principe de l'affectation des variables en python.
 
-## groupe de code
+## conteneur
 
-### boucles
+Les objets peuvent être stockés dans des structures nommées conteneur, comme la [structure de liste]({% link cours/developpement/bases-python/listes.md %}) par exemple : un conteneur est ainsi un objet qui en contient d'autres.
 
-fibonacci
+## opérations sur les objets
 
-syracuse
+On peut facilement faire des [opérations sur les objets]({% link cours/developpement/bases-python/operations.md %}).
 
+## bloc de code
 
-### fonction
+Si python ne pouvait qu'exécuter ligne à ligne un code on ne pourrait pas faire grand chose. Le principe des programmes est de pouvoir grouper les instructions en bloc.
 
-fonction
+En python, un bloc est toujours défini de la même manière  :
 
-variable comme une autre.
+* Ce qui va identifier le bloc pour son exécution (une condition, son nombre d'exécution, son nom) et se finit par un `:`
+* Les instructions le constituant.
 
-visibilité des varaibles de fonctions
+Pour séparer les blocs les un des autres, et savoir ce qui le définit, le langage Python utilise l'indentation (4 espaces par défaut): un bloc est donc une suite d'instructions ayant la même indentation.
 
-fonction lambda
+```text
+type de bloc:
+    instruction 1
+    instruction 2
+    ...
+    instruction n
+```
 
-fonction vs méthode (Rattaché à un objet)
+Ces différents blocs sont pratiques car ils vont nous permettre de :
 
-### un module
+* les [exécuter un certain nombre de fois]({% link cours/developpement/bases-python/boucles.md %})
+* les [exécuter si une condition est vraie]({% link cours/developpement/bases-python/conditions.md %})
+
+Si un bloc de code est exécuté plusieurs fois à l'identique, on aimerait aussi pouvoir nommer ce groupe pour voir le réutiliser juste en appelant son nom, on appelle ces groupe des [fonctions]({% link cours/developpement/bases-python/fonctions.md %})
+
+## modules
+
+les [modules python]({% link cours/developpement/bases-python/modules.md %}) permettent de se faciliter la vie dans l'écriture des programmes grâces aux méthodes qu'ils définissent.
 
 utilisation de random.
 
 Comme un sous espace
 interpéteur exécution dans le terminal
 ligne à ligne
-
-version ? commandes/ dans python (+ import dans pour aller plus loin).
-
-exécution d'un fichier : chaque ligne est donnée dans un terminal
-attention au chemin pwd puis exécution
-
-but d'un programme : exécution ligne après ligne dans l'interpréteur. On ne passe à la ligne suivante que lorsque la ligne d'avant est exécutée
-
-## conteneurs
-
-### listes
-
-?? 
-
-### dictionnaires
-
-prix à retrouver ?
-
-### ensembles
-
-push pop.
-
-propriétés algorihtmique de savoir si c'est dedans
-
-lance 10 dés. Combien de valeurs différentes ?
-
-### mutable vs non mutable
-
-ensemble d'ensemble. 
-liste comme clé de dictionnaire
