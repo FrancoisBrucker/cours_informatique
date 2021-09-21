@@ -16,11 +16,11 @@ Suivez les parties [installation]({% link cours/git_et_github/index.md %}#instal
 
 Vous être prêt à utiliser git.
 
-> vous pourrez lire [le cours git]({% link cours/git_et_github/index.md %}), en partuclier les usages de git, cela vous donnera une plus grande connaissance de ce que l'on va faire.
+> vous pourrez lire [le cours git]({% link cours/git_et_github/index.md %}), en particulier les usages de git, cela vous donnera une plus grande connaissance de ce que l'on va faire.
 
 ## initialisation du projet
 
-On va utiliser l'outil [desktop](https://desktop.github.com/) de github. 
+On va utiliser l'outil [desktop](https://desktop.github.com/) de github.
 
 Une fois l'application lancée, connectez vous, puis créez un nouveau projet (*File > Ne repository*) : choisissez son nom (*numerologie*), puis cliquez sur *publish repository*.
 

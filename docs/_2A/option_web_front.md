@@ -41,13 +41,13 @@ Tout le monde doit arriver niveau 3.
 
 #### niveau 2
 
-1. plugin css/js (bootstrap, tailwindss, bulma ?)
+1. plugin css/js (bootstrap, pure-css, bulma ?)
    * cdn
-   * node_module (avec yarn)
+   * node_module (avec `npm`)
 2. div, span
    * class et id
    * ajout de style avec l'attribut style
-3. js comme langage de script 
+3. js comme langage de script
    * comprendre un script
    * utilisation dans un node
 
@@ -56,14 +56,14 @@ Tout le monde doit arriver niveau 3.
 1. bibliothèque complète : 3djs
 2. production de html depuis un autre langage comme markdown (avec )
 3. créer un site jekyll simple
-4. pouvoir modifier le site <https://francoisbrucker.github.io/cours_informatique/> en ajoutant ses propres cours/tutos. 
+4. pouvoir modifier le site <https://francoisbrucker.github.io/cours_informatique/> en ajoutant ses propres cours/tutos.
 
-#### niveau 4 
+#### niveau 4
 
 1. jekyll niveau 2 : comprendre entièrement le site
 2. scss
-3. produire du html avec un template 
-   * mustache 
+3. produire du html avec un template
+   * mustache
    * liquid avec jekyll
 
 #### niveau 5
@@ -75,12 +75,11 @@ Tout le monde doit arriver niveau 3.
 
 1. UI avec vuejs.
 
-
 ## Notation
 
-La notation est en 3 parties : 
+La notation est en 3 parties :
 
-* On notera le travail fait pendant les séances (la présence bien que nécessaire ne sera suffisante pour avoir une bonne note). 
+* On notera le travail fait pendant les séances (la présence bien que nécessaire ne sera suffisante pour avoir une bonne note).
 * on notera les projets finis
 * on notera les présentations/tutos/cours de technologies spécifiques
 

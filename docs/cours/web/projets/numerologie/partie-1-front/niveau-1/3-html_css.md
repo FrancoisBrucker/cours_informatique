@@ -68,7 +68,7 @@ Le [css](https://developer.mozilla.org/fr/docs/Learn/CSS/First_steps) est un lan
 
 > Notez que la page, même moche a déjà du style. Le paragraphe par exemple n'est pas collé au formulaire et le texte a une police de caractère. Toutes ces styles par défaut sont donné parle navigateur.
 
-### style dans la page html
+### style dans la page html {#tache-2.1}
 
 Modifions notre fichier html pour y inclure du style, grâce à la balise `<style></style>`, que l'on met usuellement dans la balise `<head></head>` :
 
@@ -136,7 +136,7 @@ qui {
 
 Les possibilités de style sont [très nombreuses](https://developer.mozilla.org/fr/docs/Web/CSS/Reference). 
 
-### feuille de style séparée du html
+### feuille de style séparée du html {#tache-2.2}
 
 On a souvent coutume de placer le fichier css dans un fichier à côté pour pas qu'il *pollue* le fichier html. En effet, ces petites bêtes là deviennent vite très grosses.
 

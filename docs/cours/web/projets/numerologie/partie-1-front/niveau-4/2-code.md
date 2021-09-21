@@ -12,6 +12,6 @@ Nous allons après chaque tâche faire un commit et, à la fin de chaque étape 
 
 >TBD :
 >
-> * faire un rebase / history
-> * de joli tag sur les parties.
+> * faire comme avec l'appli mais en terminal
+> * ajout de joli tag sur les parties.
 {: .note}
