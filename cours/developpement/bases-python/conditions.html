@@ -3,20 +3,20 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>Base du développement logiciel (en python) | cours d’informatique</title>
+<title>Bases de python : conditions | cours d’informatique</title>
 <meta name="generator" content="Jekyll v4.2.0" />
-<meta property="og:title" content="Base du développement logiciel (en python)" />
+<meta property="og:title" content="Bases de python : conditions" />
 <meta name="author" content="François Brucker" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
 <meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
-<link rel="canonical" href="/cours_informatique/cours/developpement/" />
-<meta property="og:url" content="/cours_informatique/cours/developpement/" />
+<link rel="canonical" href="/cours_informatique/cours/developpement/bases-python/conditions.html" />
+<meta property="og:url" content="/cours_informatique/cours/developpement/bases-python/conditions.html" />
 <meta property="og:site_name" content="cours d’informatique" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Base du développement logiciel (en python)" />
+<meta property="twitter:title" content="Bases de python : conditions" />
 <script type="application/ld+json">
-{"headline":"Base du développement logiciel (en python)","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/developpement/","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
+{"headline":"Bases de python : conditions","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/developpement/bases-python/conditions.html","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
@@ -58,50 +58,50 @@
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Base du développement logiciel (en python)</h1></p>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></p>
+    <h1 class="post-title">Bases de python : conditions</h1></p>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></p>
   </header>
 
   <div class="post-content">
-    <p>On donnera ici les bases nécessaire au développement logiciel. On prendra comme langage d’application le python et on ne présupposera aucune autre connaissances que ceux en prérequis.</p>
+    <blockquote>
+  <p><a href="https://docs.python.org/3/reference/compound_stmts.html#the-if-statement">https://docs.python.org/3/reference/compound_stmts.html#the-if-statement</a></p>
+</blockquote>
 
-<h2 id="prérequis">Prérequis</h2>
+<p>Permet d’exécuter un bloc si une condition loigique est vraie :</p>
 
-<p>Les connaissances et les outils que vous devez avoir pour commencer le cours.</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if &lt;condition logique&gt;:
+    instruction 1
+    instruction 2
+    ...
+    instruction n
+elif &lt;condition logique&gt;:
+    instruction 1
+    instruction 2
+    ...
+    instruction n
+else:
+    instruction 1
+    instruction 2
+    ...
+    instruction n
+</code></pre></div></div>
 
-<h3 id="un-ordinateur-pour-le-développement">un ordinateur pour le développement</h3>
+<p>Notez qu’il peut y avoir autant de bloc <code class="language-plaintext highlighter-rouge">elif</code> que l’on veut (même 0) et qu’il n’est pas nécessaire d’avoir de <code class="language-plaintext highlighter-rouge">else</code>.</p>
 
-<p>Pour développer, il faudra coder et exécuter du code. Il vous faut donc un ordinateur (portable ou tour) en état de marche. Il devra être sous un des trois systèmes d’exploitation suivant windows, macos ou linux.</p>
+<blockquote class="a-faire">
+  <p>Utilisez ce que vous avez appris pour vrifier la <a href="https://fr.wikipedia.org/wiki/Conjecture_de_Syracuse">conjecture de syrcuse</a> pour les 100 premiers entiers
+Exemple :</p>
+</blockquote>
+<details class="a-faire"><summary>solution</summary><div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+    <span class="k">while</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span>  <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">/=</span> <span class="mi">2</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+</code></pre></div></div>
 
-<p>Vous devez dans l’idéal être administrateur de votre ordinateur et avoir fait <a href="/cours_informatique/tutos/systeme/installation/2021/09/01/installation-ordinateur.html">une installation fraîche de tout votre système</a> pour éviter toutes interférences lors de nos installations.</p>
-
-<h3 id="connaissances-système-minimale">connaissances système minimale</h3>
-
-<ul>
-  <li>connaitre les bases d’un système d’exploitation, <a href="/cours_informatique/tutos/systeme/fichiers/2021/08/24/fichiers-navigation.html">les fichiers et les dossiers</a></li>
-  <li>avoir accès à un <a href="/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html">terminal</a></li>
-</ul>
-
-<h3 id="base-dalgorithmie">base d’algorithmie</h3>
-
-<p>On considérera que vous avez des bases minimales en algorithmie. En particulier que vous savez ce qu’est une variable, une fonction ou un type de donnée et que vous ne vous enfuyez pas en courant quand on vous parle de faire une boucle <em>pour chaque</em> (<em>for</em>) ou <em>tant que</em> (<em>while</em>).</p>
-
-<h2 id="plan">Plan</h2>
-
-<ol>
-  <li><a href="/cours_informatique/cours/developpement/installations.html">installation python et vsc</a></li>
-  <li><a href="/cours_informatique/cours/developpement/bases-python/">bases de python</a></li>
-  <li>objets</li>
-  <li>structures avancées dict</li>
-  <li>tests</li>
-  <li>TDD</li>
-</ol>
-
-<h2 id="les-références">les références</h2>
-
-<ul>
-  <li>doc python</li>
-  <li>tutoriel</li>
-</ul>
+</div></details>
 
   </div>
 

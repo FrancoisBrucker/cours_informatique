@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Bases de python : modules | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Bases de python : modules" />
+<meta name="author" content="François Brucker" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
+<link rel="canonical" href="/cours_informatique/cours/developpement/bases-python/modules.html" />
+<meta property="og:url" content="/cours_informatique/cours/developpement/bases-python/modules.html" />
+<meta property="og:site_name" content="cours d’informatique" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Bases de python : modules" />
+<script type="application/ld+json">
+{"headline":"Bases de python : modules","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/developpement/bases-python/modules.html","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css">
+
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+</head>
+
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Bases de python : modules</h1></p>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></p>
+  </header>
+
+  <div class="post-content">
+    <p>Un <em>module</em> (aussi appelé <em>bibliothèque</em> ou <em>library</em>) est un ensemble de fonctions utiles, utilisables dans de nombreux programmes. Plutôt que de refaire à chaque fois ces fonctions ou (c’est pire) de les copier/coller dans chaque programme, on les importe directement pour les utiliser.</p>
+
+<blockquote>
+  <p>Il existe de nombreux modules, réalisant une foultitude d’opérations. Avant de se mettre à coder quelque chose, commencez toujours par vérifier (google
+est votre ami) s’il n’existe pas un module tout fait, vous gagnerez du temps. Python en fournit déjà de <a href="https://docs.python.org/3/library/index.html">nombreux</a></p>
+</blockquote>
+
+<p>Pour utiliser un module, il faut commencer par l’importer avec la commande <code class="language-plaintext highlighter-rouge">import</code>. Par exemple avec le module <code class="language-plaintext highlighter-rouge">math</code>.</p>
+
+<h4 id="importation-directe-du-module">Importation directe du module</h4>
+
+<p>On met le nom complet avant chaque appel :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">math</span>
+<span class="n">pi_sur_deux</span> <span class="o">=</span> <span class="n">math</span><span class="p">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span> <span class="c1">#PI est défini dans le module math
+</span><span class="n">x</span> <span class="o">=</span> <span class="n">math</span><span class="p">.</span><span class="n">cos</span><span class="p">(</span><span class="n">pi_sur_deux</span><span class="p">)</span> <span class="c1">#on utilise la fonction cosinus du module math
+</span></code></pre></div></div>
+
+<h4 id="importation-dune-méthode-particulière">Importation d’une méthode particulière</h4>
+
+<p>Ceci peut être dangereux si des fonctions différentes possèdent le même nom.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">cos</span><span class="p">,</span> <span class="n">pi</span> <span class="c1">#importation directe de cos et de pi
+</span><span class="n">x</span> <span class="o">=</span> <span class="n">cos</span><span class="p">(</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="importation-de-toutes-les-fonctions-du-modules">Importation de toutes les fonctions du modules</h4>
+
+<p>Déconseillée dans la plupart des cas car on ne sait pas vraiment ce qui a été importé.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">log</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="modules-utiles">Modules utiles</h4>
+
+<p>De nombreux modules existent pour python et permettent de réaliser aisément de très nombreuses tâches. Pour python, si avez les droits administrateurs on pourra utiliser l’utilitaire <a href="https://pypi.org/project/pip/">pip</a> qui est l’installeur de package python3 (attention, si vous tapez juste pip, vous installerez des module pour la version 2 de python…).</p>
+
+<p>Si vous n’avez pas de droits administrateur, ou pour une utilisation plus “pro” des modules, on préfèrera créer des environnements virtuels avec <em>virtualenv</em>, mais ceci  dépasse (de peu) le cadre de notre introduction à python.</p>
+
+<blockquote class="attention">
+  <p>Si vous utilisez un interpréteur qui s’appelle <code class="language-plaintext highlighter-rouge">python3</code> et pas <code class="language-plaintext highlighter-rouge">python</code>, il est fort possible que le programme <code class="language-plaintext highlighter-rouge">python</code>(sans le 3) soit un interpréteur de la version 2 de python. Il vous faut alors utiliser la commande <code class="language-plaintext highlighter-rouge">pip3</code>et non <code class="language-plaintext highlighter-rouge">pip</code> (qui sera elle associée à l’interpréteur <code class="language-plaintext highlighter-rouge">python</code>)</p>
+</blockquote>
+
+<h5 id="le-module-random">Le module random</h5>
+
+<blockquote>
+  <p><a href="https://docs.python.org/3/library/random.html">https://docs.python.org/3/library/random.html</a></p>
+</blockquote>
+
+<p>Regardez <a href="https://python.sdv.univ-paris-diderot.fr/08_modules/#85-module-random-generation-de-nombres-aleatoires">ces exemples</a> pour le module random.</p>
+
+<p>Installé par défaut, il permet notamment de mélanger les éléments d’une liste, générer un nombre aléatoire, choisir un élément aléatoire dans une liste… Vous pouvez même simuler une loi Gaussienne (si, si).</p>
+
+<h5 id="openpyxl">openpyxl</h5>
+
+<blockquote>
+  <p><a href="http://openpyxl.readthedocs.org">http://openpyxl.readthedocs.org</a></p>
+</blockquote>
+
+<p>Permet de manipuler des <a href="https://automatetheboringstuff.com/chapter12/">fichiers excel avec python</a>.</p>
+
+<p>Il s’installe avec pip : <code class="language-plaintext highlighter-rouge">pip install openpyxl</code> (ou <code class="language-plaintext highlighter-rouge">sudo pip3 install openpyxl</code> suivi de votre mot de passe si vous êtes sous unix/mac).</p>
+
+<h5 id="matplotlib">matplotlib</h5>
+
+<blockquote>
+  <p><a href="http://matplotlib.org">http://matplotlib.org</a></p>
+</blockquote>
+
+<p>Installé par défaut si vous utilisez l’interpréteur d’<a href="https://www.anaconda.com/">anaconda</a>, ce module permet d’afficher des graphiques en python.</p>
+
+<h5 id="jupyter">Jupyter</h5>
+
+<blockquote>
+  <p><a href="http://jupyter.org">http://jupyter.org</a></p>
+</blockquote>
+
+<p>Permet d’utiliser python de façon interactive (il s’installe aisément avec pip par exemple)</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d&#39;informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d&#39;informatique</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

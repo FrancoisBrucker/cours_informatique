@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Bases de python : Objets types et types d’objets | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Bases de python : Objets types et types d’objets" />
+<meta name="author" content="François Brucker" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
+<link rel="canonical" href="/cours_informatique/cours/developpement/bases-python/operations.html" />
+<meta property="og:url" content="/cours_informatique/cours/developpement/bases-python/operations.html" />
+<meta property="og:site_name" content="cours d’informatique" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Bases de python : Objets types et types d’objets" />
+<script type="application/ld+json">
+{"headline":"Bases de python : Objets types et types d’objets","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/developpement/bases-python/operations.html","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css">
+
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+</head>
+
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Bases de python : Objets types et types d&#39;objets</h1></p>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></p>
+  </header>
+
+  <div class="post-content">
+    <p>Les opérations sur les objets vont des opérations arithmétiques (addition) aux tests (est plus grand que) en passant par les opérations logiques (a et b)</p>
+
+<h2 id="nombres">nombres</h2>
+
+<p><a href="https://docs.python.org/3/library/operator.html#mapping-operators-to-functions">https://docs.python.org/3/library/operator.html#mapping-operators-to-functions</a></p>
+
+<p>Les opération peuvent s’effectuer sur les trois types numériques que sont les entier (classe <code class="language-plaintext highlighter-rouge">int</code>), les réels (classe <code class="language-plaintext highlighter-rouge">float</code>) et les complexes (classe <code class="language-plaintext highlighter-rouge">complex</code>)</p>
+
+<p>Outre les classiques opérations <code class="language-plaintext highlighter-rouge">+</code> (addition), <code class="language-plaintext highlighter-rouge">-</code> (soustraction), <code class="language-plaintext highlighter-rouge">/</code> (difision) et <code class="language-plaintext highlighter-rouge">*</code> (multiplication), python possède aussi <code class="language-plaintext highlighter-rouge">//</code> division entière,  <code class="language-plaintext highlighter-rouge">%</code> reste de la division entière et <code class="language-plaintext highlighter-rouge">**</code> exposant.</p>
+
+<blockquote class="a-faire">
+  <p>que vaut le quotient et le reste de la division entière de 4538 par 23 ?</p>
+</blockquote>
+<details class="a-faire"><summary>solution</summary><div>
+<p>Dans un terminal :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; 4538 // 23
+197
+&gt;&gt;&gt; 4538 % 23
+7
+&gt;&gt;&gt; (4538 // 23) * 23 + 7
+4538
+</code></pre></div></div>
+
+</div></details>
+
+<p>Python permet aussi de faire l’opération et de procéder immédiatement à sa réaffectation avec les opérateurs :</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">x += 1</code> est équivalent à <code class="language-plaintext highlighter-rouge">x = x + 1</code></li>
+  <li><code class="language-plaintext highlighter-rouge">x -= 1</code> est équivalent à <code class="language-plaintext highlighter-rouge">x = x - 1</code></li>
+  <li><code class="language-plaintext highlighter-rouge">x /= 3</code> est équivalent à <code class="language-plaintext highlighter-rouge">x = x / 3</code></li>
+  <li><code class="language-plaintext highlighter-rouge">x *= 2</code> est équivalent à <code class="language-plaintext highlighter-rouge">x = x * 2</code></li>
+</ul>
+
+<h2 id="chaines-de-caractères-concatenation-et-">chaines de caractères (concatenation et *)</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="s">"x"</span> <span class="o">+</span> <span class="s">"y"</span>
+<span class="s">'xy'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">3</span> <span class="o">*</span> <span class="s">"x"</span>
+<span class="s">'xxx'</span>
+</code></pre></div></div>
+
+<blockquote class="a-faire">
+  <p>Recopiez 10 fois : <code class="language-plaintext highlighter-rouge">"j'aime bien faire du python"</code></p>
+</blockquote>
+<details class="a-faire"><summary>solution</summary><div>
+<p>Si l’on sait que le caractère <code class="language-plaintext highlighter-rouge">\n</code> correspond à aller à la ligne, on peut écrire :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="mi">10</span> <span class="o">*</span> <span class="s">"j'aime bien faire du python</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+<span class="n">j</span><span class="s">'aime bien faire du python
+j'</span><span class="n">aime</span> <span class="n">bien</span> <span class="n">faire</span> <span class="n">du</span> <span class="n">python</span>
+<span class="n">j</span><span class="s">'aime bien faire du python
+j'</span><span class="n">aime</span> <span class="n">bien</span> <span class="n">faire</span> <span class="n">du</span> <span class="n">python</span>
+<span class="n">j</span><span class="s">'aime bien faire du python
+j'</span><span class="n">aime</span> <span class="n">bien</span> <span class="n">faire</span> <span class="n">du</span> <span class="n">python</span>
+<span class="n">j</span><span class="s">'aime bien faire du python
+j'</span><span class="n">aime</span> <span class="n">bien</span> <span class="n">faire</span> <span class="n">du</span> <span class="n">python</span>
+<span class="n">j</span><span class="s">'aime bien faire du python
+j'</span><span class="n">aime</span> <span class="n">bien</span> <span class="n">faire</span> <span class="n">du</span> <span class="n">python</span>
+
+</code></pre></div></div>
+
+</div></details>
+
+<h2 id="listes">listes</h2>
+
+<p>Comme pour les chaines de caractères, l’opération <code class="language-plaintext highlighter-rouge">+</code> désigne la concaténation. L’opération <code class="language-plaintext highlighter-rouge">*</code> par en entier, tout comme les chaine recopie la liste (ses éléments) plusieurs fois.</p>
+
+<h2 id="booleen">booleen</h2>
+
+<h3 id="comparaisons">comparaisons</h3>
+
+<p><a href="https://docs.python.org/3/library/stdtypes.html#comparisons">https://docs.python.org/3/library/stdtypes.html#comparisons</a></p>
+
+<p>Les comparaisons rendent un booléen. Par exemple : <code class="language-plaintext highlighter-rouge">2 &lt;= 3</code> rend le booléen <code class="language-plaintext highlighter-rouge">True</code>.</p>
+
+<h3 id="opérations-logiques">opérations logiques</h3>
+
+<p><a href="https://docs.python.org/3/library/stdtypes.html#boolean-operations-and-or-not">https://docs.python.org/3/library/stdtypes.html#boolean-operations-and-or-not</a></p>
+
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d&#39;informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d&#39;informatique</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

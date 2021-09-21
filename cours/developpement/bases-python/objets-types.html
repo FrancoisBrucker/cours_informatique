@@ -62,9 +62,7 @@
   </header>
 
   <div class="post-content">
-    <blockquote class="chemin">
-  <p><a href="/cours_informatique/cours/developpement/">développement</a> / <a href="/cours_informatique/cours/developpement/bases-python/">bases de python</a> / <a href="/cours_informatique/cours/developpement/bases-python/objets-types.html">Objets types et types d’objets</a></p>
-</blockquote>
+    <p>Python connait 5 classes d’objets de base qui permettent de faire la grande majorité des programmes.</p>
 
 <h2 id="les-5-classes-de-base">Les 5 classes de base</h2>
 
@@ -224,7 +222,7 @@
 
 <p>Les méthodes sont moyens d’agir sur un objet. On les utilise de cette façon :</p>
 
-<pre><code class="language-pyhton">objet.methode(paramètres)
+<pre><code class="language-pyhton">objet.methode(paramètre 1, paramètre 2, ..., paramètre n)
 </code></pre>
 
 <p>On applique <code class="language-plaintext highlighter-rouge">méthode</code> à <code class="language-plaintext highlighter-rouge">objet</code> en utilisant les <code class="language-plaintext highlighter-rouge">paramètres</code> de la méthode.</p>
@@ -301,56 +299,6 @@
 &gt;&gt;&gt; (1+2j).imag
 2.0
 </code></pre>
-
-<h2 id="opérations">opérations</h2>
-
-<h3 id="nombres">nombres</h3>
-
-<p><a href="https://docs.python.org/3/library/stdtypes.html#boolean-operations-and-or-not">https://docs.python.org/3/library/stdtypes.html#boolean-operations-and-or-not</a></p>
-
-<p>Les opération peuvent s’effectuer sur les trois types numériques que sont les entier (classe <code class="language-plaintext highlighter-rouge">int</code>), les réels (classe <code class="language-plaintext highlighter-rouge">float</code>) et les complexes (classe <code class="language-plaintext highlighter-rouge">complex</code>)</p>
-
-<h3 id="chaines-de-caractères-concatenation-et-">chaines de caractères (concatenation et *)</h3>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="s">"x"</span> <span class="o">+</span> <span class="s">"y"</span>
-<span class="s">'xy'</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="mi">3</span> <span class="o">*</span> <span class="s">"x"</span>
-<span class="s">'xxx'</span>
-</code></pre></div></div>
-
-<blockquote class="a-faire">
-  <p>Recopiez 10 fois : <code class="language-plaintext highlighter-rouge">"j'aime bien faire du python"</code></p>
-</blockquote>
-<details class="a-faire"><summary>solution</summary><div>
-<p>Si l’on sait que le caractère <code class="language-plaintext highlighter-rouge">\n</code> correspond à aller à la ligne, on peut écrire :</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="mi">10</span> <span class="o">*</span> <span class="s">"j'aime bien faire du python</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
-<span class="n">j</span><span class="s">'aime bien faire du python
-j'</span><span class="n">aime</span> <span class="n">bien</span> <span class="n">faire</span> <span class="n">du</span> <span class="n">python</span>
-<span class="n">j</span><span class="s">'aime bien faire du python
-j'</span><span class="n">aime</span> <span class="n">bien</span> <span class="n">faire</span> <span class="n">du</span> <span class="n">python</span>
-<span class="n">j</span><span class="s">'aime bien faire du python
-j'</span><span class="n">aime</span> <span class="n">bien</span> <span class="n">faire</span> <span class="n">du</span> <span class="n">python</span>
-<span class="n">j</span><span class="s">'aime bien faire du python
-j'</span><span class="n">aime</span> <span class="n">bien</span> <span class="n">faire</span> <span class="n">du</span> <span class="n">python</span>
-<span class="n">j</span><span class="s">'aime bien faire du python
-j'</span><span class="n">aime</span> <span class="n">bien</span> <span class="n">faire</span> <span class="n">du</span> <span class="n">python</span>
-
-</code></pre></div></div>
-
-</div></details>
-
-<h3 id="booleen">booleen</h3>
-
-<h4 id="comparaisons">comparaisons</h4>
-
-<p><a href="https://docs.python.org/3/library/stdtypes.html#comparisons">https://docs.python.org/3/library/stdtypes.html#comparisons</a></p>
-
-<p>Les comparaisons rendent un booléen. Par exemple : <code class="language-plaintext highlighter-rouge">2 &lt;= 3</code> rend le booléen <code class="language-plaintext highlighter-rouge">True</code>.</p>
-
-<h4 id="opérations-logiques">opérations logiques</h4>
-
-<p><a href="https://docs.python.org/3/library/stdtypes.html#boolean-operations-and-or-not">https://docs.python.org/3/library/stdtypes.html#boolean-operations-and-or-not</a></p>
 
   </div>
 
