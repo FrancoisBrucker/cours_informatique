@@ -209,7 +209,7 @@ Comme valeur pour la classe, nous pouvons utiliser n'importe quel nom par exempl
 on peut ensuite réutiliser ce nom pour changer l'affichage des balises de cette classe. Il suffit de le définir dans notre fichier CSS.
 
 ~~~~css
-.test {}
+.test {
   font-size: 16px;
 }
 ~~~~
