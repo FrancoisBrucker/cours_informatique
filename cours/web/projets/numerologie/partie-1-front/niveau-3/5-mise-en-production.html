@@ -3,20 +3,20 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>Projet numérologie / partie 1 / niveau 3 : git, github et mise en production | cours d’informatique</title>
+<title>Projet numérologie : partie 1 / niveau 1 / mise en production | cours d’informatique</title>
 <meta name="generator" content="Jekyll v4.2.0" />
-<meta property="og:title" content="Projet numérologie / partie 1 / niveau 3 : git, github et mise en production" />
+<meta property="og:title" content="Projet numérologie : partie 1 / niveau 1 / mise en production" />
 <meta name="author" content="François Brucker" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
 <meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
-<link rel="canonical" href="/cours_informatique/cours/web/projets/numerologie/partie-1-front/niveau-3/" />
-<meta property="og:url" content="/cours_informatique/cours/web/projets/numerologie/partie-1-front/niveau-3/" />
+<link rel="canonical" href="/cours_informatique/cours/web/projets/numerologie/partie-1-front/niveau-3/5-mise-en-production.html" />
+<meta property="og:url" content="/cours_informatique/cours/web/projets/numerologie/partie-1-front/niveau-3/5-mise-en-production.html" />
 <meta property="og:site_name" content="cours d’informatique" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Projet numérologie / partie 1 / niveau 3 : git, github et mise en production" />
+<meta property="twitter:title" content="Projet numérologie : partie 1 / niveau 1 / mise en production" />
 <script type="application/ld+json">
-{"headline":"Projet numérologie / partie 1 / niveau 3 : git, github et mise en production","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/web/projets/numerologie/partie-1-front/niveau-3/","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
+{"headline":"Projet numérologie : partie 1 / niveau 1 / mise en production","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/web/projets/numerologie/partie-1-front/niveau-3/5-mise-en-production.html","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
@@ -58,27 +58,52 @@
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Projet numérologie / partie 1 / niveau 3 : git, github et mise en production</h1></p>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></p>
+    <h1 class="post-title">Projet numérologie : partie 1 / niveau 1 / mise en production</h1></p>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></p>
   </header>
 
   <div class="post-content">
     <blockquote class="chemin">
-  <p><a href="/cours_informatique/cours/web/projets/numerologie/">numérologie</a> / <a href="/cours_informatique/cours/web/projets/numerologie/partie-1-front/">partie 1</a> / <a href="/cours_informatique/cours/web/projets/numerologie/partie-1-front/niveau-3/">niveau 3</a></p>
+  <p><a href="/cours_informatique/cours/web/projets/numerologie/">numérologie</a> / <a href="/cours_informatique/cours/web/projets/numerologie/partie-1-front/">partie 1</a> / <a href="/cours_informatique/cours/web/projets/numerologie/partie-1-front/niveau-3/">niveau 1</a> / <a href="/cours_informatique/cours/web/projets/numerologie/partie-1-front/niveau-3/5-mise-en-production.html">html et css</a></p>
 </blockquote>
 
-<p>Numérologie niveau 3. On ajoute l’utilisation (basique) d’un gestionnaire de sources (git), et mon met en production le site sur un serveur distant</p>
+<p>Mise en production.</p>
 
-<h2 id="prérequis">prérequis</h2>
+<h2 id="logiciel-de-transfert-de-fichiers">logiciel de transfert de fichiers</h2>
 
-<h2 id="plan">plan</h2>
+<p>Nous alons utiliser <a href="https://cyberduck.io/">cyberduck</a>.</p>
+
+<h2 id="connexion">connexion</h2>
+
+<p>Si vous n’avez pas de fenêtre cybeduck commencez par en créer une : <em>menu Fichier &gt; nouveau Navigateur</em>. VOus pourrez ensuite vous conecter à un serveur distant.</p>
 
 <ol>
-  <li><a href="/cours_informatique/cours/web/projets/numerologie/partie-1-front/niveau-3/1-preparation.html">préparation du projet</a></li>
-  <li><a href="/cours_informatique/cours/web/projets/numerologie/partie-1-front/niveau-3/2-code-js.html">code-js</a></li>
-  <li><a href="/cours_informatique/cours/web/projets/numerologie/partie-1-front/niveau-3/3-html_css.html">html</a></li>
-  <li><a href="/cours_informatique/cours/web/projets/numerologie/partie-1-front/niveau-3/4-integration_html_js.html">intégration du js</a></li>
-  <li><a href="/cours_informatique/cours/web/projets/numerologie/partie-1-front/niveau-3/5-mise-en-production.html">mise en production</a></li>
+  <li>on crée une nouvelle connexion : <em>menu Fichier &gt; ouvrir une connexion</em></li>
+  <li>On choisi le protocole “SFTP (SSH file transfer protocol)”</li>
+  <li>puis il ne vous reste plus qu’à remplir les autres champs.</li>
+  <li>connection.</li>
 </ol>
+
+<h3 id="site-de-lécole">site de l’école</h3>
+
+<p>Si vous vous êtes élève de l’ecm et que vous voulez mettre à jour votre site web :</p>
+<ul>
+  <li>serveur : sas1.ec-m.fr</li>
+  <li>login/mot de passe : le login mot de passe des salles machines</li>
+</ul>
+
+<h3 id="par-clé-ssh">par clé ssh</h3>
+
+<p>Si vous vous voulez mettre à jour l’ovh1 :</p>
+<ul>
+  <li>serveur : ovh1.ec-m.fr</li>
+  <li>login : le nom de votre herbe</li>
+  <li>laissez mot de passe sans rien, mais assurez vous d’avoir votre clé ssh de chargée.</li>
+</ul>
+
+<h2 id="transfert-des-fichier">transfert des fichier</h2>
+
+<p>Une fois que vous vous êtes déplacé au bon endroit sur le serveur, il ne vous reste plus qu’à glisser déposer vos fichiers/dossier depuis un explorateur de fichier.</p>
+
 
   </div>
 
