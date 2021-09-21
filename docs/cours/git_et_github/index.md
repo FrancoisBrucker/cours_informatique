@@ -144,8 +144,7 @@ Vous pourrez ensuite faire des `git pull` tout seul et ils seront rebasé par d�
 
 ## git et github avec l'application
 
-> TBD : un court tuto sur commet faire en reprenant les commandes indispensables
-{: .note}
+Voir la [partie 1, niveau 3 du projet numérologie]({% link cours/web/projets/numerologie/partie-1-front/niveau-3/index.md %})
 
 ## mettre en production avec git
 

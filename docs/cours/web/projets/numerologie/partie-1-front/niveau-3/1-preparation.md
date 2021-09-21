@@ -24,7 +24,6 @@ On va utiliser l'outil [desktop](https://desktop.github.com/) de github.
 
 Une fois l'application lancée, connectez vous, puis créez un nouveau projet (*File > Ne repository*) : choisissez son nom (*numerologie*), puis cliquez sur *publish repository*.
 
-
 ## ajout du fichier
 
 Suivez la partie [préparation du niveau 1]({% link cours/web/projets/numerologie/partie-1-front/niveau-1/1-preparation.md %}) jusqu'à la fin.

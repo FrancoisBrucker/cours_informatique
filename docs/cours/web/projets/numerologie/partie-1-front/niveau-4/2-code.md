@@ -10,5 +10,8 @@ author: "François Brucker"
 
 Nous allons après chaque tâche faire un commit et, à la fin de chaque étape envoyer les modifications sur le serveur.
 
-
-TBD : faire un rebase / history
+>TBD :
+>
+> * faire un rebase / history
+> * de joli tag sur les parties.
+{: .note}
