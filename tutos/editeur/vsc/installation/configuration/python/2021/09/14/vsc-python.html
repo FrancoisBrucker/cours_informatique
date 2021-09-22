@@ -129,6 +129,64 @@
 
 <p>Vous pouvez utiliser <a href="/cours_informatique/tutos/editeur/vsc/installation/configuration/terminal/2021/09/14/vsc-terminal.html#terminal-integre">le terminal intégré</a> pour exécuter vous programmes python comme vous le feriez avec un terminal externe.</p>
 
+<h2 id="premier-programme">premier programme</h2>
+
+<h3 id="projet-vsc">projet vsc</h3>
+
+<p>Créez un dossier nommé <em>“cours-python”</em> sur votre ordinateur, et ouvrez le avec vscode (<em>menu Fichier &gt; ouvrir…</em>). Une fois que vous avez dit que vous faisiez confiance au développeur de ce projet, fermez l’onglet <em>Welcome</em>. Vous pouvez même fermer l’explorer en cliquant sur l’icone en sur-brillance dans la barre d’activité de <a href="https://code.visualstudio.com/docs/getstarted/userinterface">l’interface vsc</a>.</p>
+
+<p>Nous allons commencer par utiliser le <a href="/cours_informatique/tutos/editeur/vsc/installation/configuration/terminal/2021/09/14/vsc-terminal.html#terminal-integre">le terminal intégré</a> de vscode pour exécuter nos premiers programmes python avant d’écrire nos programmes de plusieurs lignes.</p>
+
+<h3 id="interpréteur-python">interpréteur python</h3>
+
+<p>Ouvrez un terminal dans vscode (le <a href="/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html">terminal</a> permet d’exéctuer des commandes de votre système) : <em>menu Affichage &gt; Terminal</em>.</p>
+
+<p>Vous pouvez ensuite taper <code class="language-plaintext highlighter-rouge">python</code> sous windows ou <code class="language-plaintext highlighter-rouge">python3</code> sous linux et mac pour rentrer dans l’interpréteur python :</p>
+
+<p><img src="/cours_informatique/assets/tutos/vsc-python/python-interpreteur.png" alt="interpreteur" /></p>
+
+<h4 id="une-première-ligne-de-python">une première ligne de python</h4>
+
+<p>Dans l’interpréteur (à côté des <code class="language-plaintext highlighter-rouge">&gt;&gt;&gt;</code>, qu’on appelle <a href="https://fr.wikipedia.org/wiki/Interface_en_ligne_de_commande">invite de commande ou prompt</a>), tapez :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">"Bonjour monde !"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Puis appuyez sur la touche entrée. Vous devriez avoir quelque chose du genre à la sortie :</p>
+
+<p><img src="/cours_informatique/assets/tutos/vsc-python/python-hello-world-interpreteur.png" alt="hello world" /></p>
+
+<p>Ca a l’air d’avoir marché. La ligne de code a affiché à l’écran <code class="language-plaintext highlighter-rouge">Bonjour Monde</code>, puis l’invite de commande est revenue (une fois l’instruction exécutée, on attend la suivante).</p>
+
+<h4 id="quitter-linterpréteur">quitter l’interpréteur</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="sb">`quit()`</span>
+</code></pre></div></div>
+
+<h3 id="création-dun-fichier">création d’un fichier</h3>
+
+<p>Créez un fichier <em>“programme.py”</em> (<em>menu Fichier &gt; New File</em> puis sauvez le immédiatement <em>menu Fichier &gt; Save</em>).</p>
+
+<blockquote>
+  <p>Si vous n’avez pas encore configuré python, vscode va vous demander de configurer son <a href="/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html">environnement python</a>.</p>
+</blockquote>
+
+<p>Tapez dans le fichier ouvert  dans vscode :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">"Bonjour monde !"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Vous pouvez alors l’exécuter :</p>
+
+<ul>
+  <li>dans le terminal en tapant : <code class="language-plaintext highlighter-rouge">python programme.py</code> ou <code class="language-plaintext highlighter-rouge">python3 programme.py</code> selon le nom de votre interpréteur</li>
+  <li>en cliquant sur <a href="https://code.visualstudio.com/docs/python/python-tutorial#_run-hello-world">le triangle en haut à droite de la fenêtre vsc</a></li>
+</ul>
+
+<p>Remarquez que lorsque vous exécutez votre programme via la seconde solution, cela crée un nouveau terminal qui s’appelle <em>Python</em>.</p>
+
+<p><img src="/cours_informatique/assets/tutos/vsc-python/python-interpreteur-execution-python.png" alt="hello world" /></p>
+
   </div>
 
 </article>

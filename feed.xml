@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/cours_informatique/feed.xml" rel="self" type="application/atom+xml" /><link href="/cours_informatique/" rel="alternate" type="text/html" /><updated>2021-09-22T07:14:46+00:00</updated><id>/cours_informatique/feed.xml</id><title type="html">cours d’informatique</title><subtitle>Support de cours/td d'informatique à l'école centrale marseille.</subtitle><entry><title type="html">vsc et markdown</title><link href="/cours_informatique/tutos/editeur/vsc/installation/configuration/markdown/2021/09/14/vsc-markdown.html" rel="alternate" type="text/html" title="vsc et markdown" /><published>2021-09-14T00:00:00+00:00</published><updated>2021-09-14T00:00:00+00:00</updated><id>/cours_informatique/tutos/editeur/vsc/installation/configuration/markdown/2021/09/14/vsc-markdown</id><content type="html" xml:base="/cours_informatique/tutos/editeur/vsc/installation/configuration/markdown/2021/09/14/vsc-markdown.html">&lt;p&gt;Comment écrire du markdown avec &lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;visual studio code&lt;/a&gt; (vsc ou encore vscode).&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/cours_informatique/feed.xml" rel="self" type="application/atom+xml" /><link href="/cours_informatique/" rel="alternate" type="text/html" /><updated>2021-09-22T10:47:11+00:00</updated><id>/cours_informatique/feed.xml</id><title type="html">cours d’informatique</title><subtitle>Support de cours/td d'informatique à l'école centrale marseille.</subtitle><entry><title type="html">vsc et markdown</title><link href="/cours_informatique/tutos/editeur/vsc/installation/configuration/markdown/2021/09/14/vsc-markdown.html" rel="alternate" type="text/html" title="vsc et markdown" /><published>2021-09-14T00:00:00+00:00</published><updated>2021-09-14T00:00:00+00:00</updated><id>/cours_informatique/tutos/editeur/vsc/installation/configuration/markdown/2021/09/14/vsc-markdown</id><content type="html" xml:base="/cours_informatique/tutos/editeur/vsc/installation/configuration/markdown/2021/09/14/vsc-markdown.html">&lt;p&gt;Comment écrire du markdown avec &lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;visual studio code&lt;/a&gt; (vsc ou encore vscode).&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -93,13 +93,13 @@
 &lt;p&gt;Dans un &lt;a href=&quot;/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html&quot;&gt;terminal&lt;/a&gt;, qui peut être &lt;a href=&quot;/cours_informatique/tutos/editeur/vsc/installation/configuration/terminal/2021/09/14/vsc-terminal.html#terminal-integre&quot;&gt;celui de vscode&lt;/a&gt; tapez la commande :&lt;/p&gt;
 
 &lt;details&gt;&lt;summary&gt;sous linux et mac&lt;/summary&gt;&lt;div&gt;
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python3 &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; black mon-fichier.py
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip3 &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;black
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;&lt;/details&gt;
 
 &lt;details&gt;&lt;summary&gt;sous windows&lt;/summary&gt;&lt;div&gt;
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; black mon-fichier.py
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;black
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;&lt;/details&gt;
@@ -124,13 +124,13 @@
 &lt;h3 id=&quot;black-dans-le-terminal&quot;&gt;black dans le terminal&lt;/h3&gt;
 
 &lt;details&gt;&lt;summary&gt;sous linux et mac&lt;/summary&gt;&lt;div&gt;
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip3 &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;black
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python3 &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; black mon-fichier.py
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;&lt;/details&gt;
 
 &lt;details&gt;&lt;summary&gt;sous windows&lt;/summary&gt;&lt;div&gt;
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;black
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; black mon-fichier.py
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;&lt;/details&gt;
@@ -218,7 +218,65 @@
 
 &lt;h3 id=&quot;terminal&quot;&gt;terminal&lt;/h3&gt;
 
-&lt;p&gt;Vous pouvez utiliser &lt;a href=&quot;/cours_informatique/tutos/editeur/vsc/installation/configuration/terminal/2021/09/14/vsc-terminal.html#terminal-integre&quot;&gt;le terminal intégré&lt;/a&gt; pour exécuter vous programmes python comme vous le feriez avec un terminal externe.&lt;/p&gt;</content><author><name></name></author><category term="tutos" /><category term="editeur" /><category term="vsc" /><category term="installation" /><category term="configuration" /><category term="python" /><summary type="html">configuration de visual studio code pour le développement en python.</summary></entry><entry><title type="html">vsc et terminal</title><link href="/cours_informatique/tutos/editeur/vsc/installation/configuration/terminal/2021/09/14/vsc-terminal.html" rel="alternate" type="text/html" title="vsc et terminal" /><published>2021-09-14T00:00:00+00:00</published><updated>2021-09-14T00:00:00+00:00</updated><id>/cours_informatique/tutos/editeur/vsc/installation/configuration/terminal/2021/09/14/vsc-terminal</id><content type="html" xml:base="/cours_informatique/tutos/editeur/vsc/installation/configuration/terminal/2021/09/14/vsc-terminal.html">&lt;p&gt;Les différentes manières d’invoquer un terminal avec  &lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;visual studio code&lt;/a&gt; (vsc)
+&lt;p&gt;Vous pouvez utiliser &lt;a href=&quot;/cours_informatique/tutos/editeur/vsc/installation/configuration/terminal/2021/09/14/vsc-terminal.html#terminal-integre&quot;&gt;le terminal intégré&lt;/a&gt; pour exécuter vous programmes python comme vous le feriez avec un terminal externe.&lt;/p&gt;
+
+&lt;h2 id=&quot;premier-programme&quot;&gt;premier programme&lt;/h2&gt;
+
+&lt;h3 id=&quot;projet-vsc&quot;&gt;projet vsc&lt;/h3&gt;
+
+&lt;p&gt;Créez un dossier nommé &lt;em&gt;“cours-python”&lt;/em&gt; sur votre ordinateur, et ouvrez le avec vscode (&lt;em&gt;menu Fichier &amp;gt; ouvrir…&lt;/em&gt;). Une fois que vous avez dit que vous faisiez confiance au développeur de ce projet, fermez l’onglet &lt;em&gt;Welcome&lt;/em&gt;. Vous pouvez même fermer l’explorer en cliquant sur l’icone en sur-brillance dans la barre d’activité de &lt;a href=&quot;https://code.visualstudio.com/docs/getstarted/userinterface&quot;&gt;l’interface vsc&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Nous allons commencer par utiliser le &lt;a href=&quot;/cours_informatique/tutos/editeur/vsc/installation/configuration/terminal/2021/09/14/vsc-terminal.html#terminal-integre&quot;&gt;le terminal intégré&lt;/a&gt; de vscode pour exécuter nos premiers programmes python avant d’écrire nos programmes de plusieurs lignes.&lt;/p&gt;
+
+&lt;h3 id=&quot;interpréteur-python&quot;&gt;interpréteur python&lt;/h3&gt;
+
+&lt;p&gt;Ouvrez un terminal dans vscode (le &lt;a href=&quot;/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html&quot;&gt;terminal&lt;/a&gt; permet d’exéctuer des commandes de votre système) : &lt;em&gt;menu Affichage &amp;gt; Terminal&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Vous pouvez ensuite taper &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python&lt;/code&gt; sous windows ou &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python3&lt;/code&gt; sous linux et mac pour rentrer dans l’interpréteur python :&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/cours_informatique/assets/tutos/vsc-python/python-interpreteur.png&quot; alt=&quot;interpreteur&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;une-première-ligne-de-python&quot;&gt;une première ligne de python&lt;/h4&gt;
+
+&lt;p&gt;Dans l’interpréteur (à côté des &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/code&gt;, qu’on appelle &lt;a href=&quot;https://fr.wikipedia.org/wiki/Interface_en_ligne_de_commande&quot;&gt;invite de commande ou prompt&lt;/a&gt;), tapez :&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Bonjour monde !&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Puis appuyez sur la touche entrée. Vous devriez avoir quelque chose du genre à la sortie :&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/cours_informatique/assets/tutos/vsc-python/python-hello-world-interpreteur.png&quot; alt=&quot;hello world&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Ca a l’air d’avoir marché. La ligne de code a affiché à l’écran &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Bonjour Monde&lt;/code&gt;, puis l’invite de commande est revenue (une fois l’instruction exécutée, on attend la suivante).&lt;/p&gt;
+
+&lt;h4 id=&quot;quitter-linterpréteur&quot;&gt;quitter l’interpréteur&lt;/h4&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;sb&quot;&gt;`quit()`&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;création-dun-fichier&quot;&gt;création d’un fichier&lt;/h3&gt;
+
+&lt;p&gt;Créez un fichier &lt;em&gt;“programme.py”&lt;/em&gt; (&lt;em&gt;menu Fichier &amp;gt; New File&lt;/em&gt; puis sauvez le immédiatement &lt;em&gt;menu Fichier &amp;gt; Save&lt;/em&gt;).&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Si vous n’avez pas encore configuré python, vscode va vous demander de configurer son &lt;a href=&quot;/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html&quot;&gt;environnement python&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Tapez dans le fichier ouvert  dans vscode :&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Bonjour monde !&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Vous pouvez alors l’exécuter :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;dans le terminal en tapant : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python programme.py&lt;/code&gt; ou &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python3 programme.py&lt;/code&gt; selon le nom de votre interpréteur&lt;/li&gt;
+  &lt;li&gt;en cliquant sur &lt;a href=&quot;https://code.visualstudio.com/docs/python/python-tutorial#_run-hello-world&quot;&gt;le triangle en haut à droite de la fenêtre vsc&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Remarquez que lorsque vous exécutez votre programme via la seconde solution, cela crée un nouveau terminal qui s’appelle &lt;em&gt;Python&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/cours_informatique/assets/tutos/vsc-python/python-interpreteur-execution-python.png&quot; alt=&quot;hello world&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><category term="tutos" /><category term="editeur" /><category term="vsc" /><category term="installation" /><category term="configuration" /><category term="python" /><summary type="html">configuration de visual studio code pour le développement en python.</summary></entry><entry><title type="html">vsc et terminal</title><link href="/cours_informatique/tutos/editeur/vsc/installation/configuration/terminal/2021/09/14/vsc-terminal.html" rel="alternate" type="text/html" title="vsc et terminal" /><published>2021-09-14T00:00:00+00:00</published><updated>2021-09-14T00:00:00+00:00</updated><id>/cours_informatique/tutos/editeur/vsc/installation/configuration/terminal/2021/09/14/vsc-terminal</id><content type="html" xml:base="/cours_informatique/tutos/editeur/vsc/installation/configuration/terminal/2021/09/14/vsc-terminal.html">&lt;p&gt;Les différentes manières d’invoquer un terminal avec  &lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;visual studio code&lt;/a&gt; (vsc)
 &lt;!--more--&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;terminal&quot;&gt;terminal&lt;/h2&gt;
@@ -587,18 +645,7 @@ Bnjour Monde !
   &lt;p&gt;On aurait pu aussi taper “auto save” dans la barre de recherche pour obtenir directement les champs possibles. Ce qui est très pratique lorsque l’on se doute du nom du paramètre que l’on veut changer.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;Le paramètre d’&lt;em&gt;Auto Save&lt;/em&gt; dans le panel &lt;em&gt;Espace de travail&lt;/em&gt; devrait toujours être sur &lt;em&gt;off&lt;/em&gt;. Si vous le modifiez, un dossier de préférence &lt;em&gt;“.vscode”&lt;/em&gt; va être créé dans votre projet.&lt;/p&gt;
-
-&lt;h2 id=&quot;pour-aller-plus-loin&quot;&gt;pour aller plus loin&lt;/h2&gt;
-
-&lt;blockquote class=&quot;note&quot;&gt;
-  &lt;p&gt;TBD : autres tutos&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;python : linter, black et compagnie.&lt;/li&gt;
-  &lt;li&gt;git et merge (?)&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><category term="tutos" /><category term="editeur" /><category term="vsc" /><category term="installation" /><category term="configuration" /><summary type="html">Installation et premières configurations de visual studio code (vsc).</summary></entry><entry><title type="html">Nouvelle installation de son système</title><link href="/cours_informatique/tutos/systeme/installation/2021/09/01/installation-ordinateur.html" rel="alternate" type="text/html" title="Nouvelle installation de son système" /><published>2021-09-01T00:00:00+00:00</published><updated>2021-09-01T00:00:00+00:00</updated><id>/cours_informatique/tutos/systeme/installation/2021/09/01/installation-ordinateur</id><content type="html" xml:base="/cours_informatique/tutos/systeme/installation/2021/09/01/installation-ordinateur.html">&lt;p&gt;Comment bien préparer son ordinateur pour faire du développement. On ne montrera ici que le départ, c’est à dire l’installation fraiche d’un système sur lequel on pourra ensuite installer — proprement — les divers outils et logiciels utiles pour le développement.&lt;/p&gt;
+&lt;p&gt;Le paramètre d’&lt;em&gt;Auto Save&lt;/em&gt; dans le panel &lt;em&gt;Espace de travail&lt;/em&gt; devrait toujours être sur &lt;em&gt;off&lt;/em&gt;. Si vous le modifiez, un dossier de préférence &lt;em&gt;“.vscode”&lt;/em&gt; va être créé dans votre projet.&lt;/p&gt;</content><author><name></name></author><category term="tutos" /><category term="editeur" /><category term="vsc" /><category term="installation" /><category term="configuration" /><summary type="html">Installation et premières configurations de visual studio code (vsc).</summary></entry><entry><title type="html">Nouvelle installation de son système</title><link href="/cours_informatique/tutos/systeme/installation/2021/09/01/installation-ordinateur.html" rel="alternate" type="text/html" title="Nouvelle installation de son système" /><published>2021-09-01T00:00:00+00:00</published><updated>2021-09-01T00:00:00+00:00</updated><id>/cours_informatique/tutos/systeme/installation/2021/09/01/installation-ordinateur</id><content type="html" xml:base="/cours_informatique/tutos/systeme/installation/2021/09/01/installation-ordinateur.html">&lt;p&gt;Comment bien préparer son ordinateur pour faire du développement. On ne montrera ici que le départ, c’est à dire l’installation fraiche d’un système sur lequel on pourra ensuite installer — proprement — les divers outils et logiciels utiles pour le développement.&lt;/p&gt;
 
 &lt;!--more--&gt;
 
