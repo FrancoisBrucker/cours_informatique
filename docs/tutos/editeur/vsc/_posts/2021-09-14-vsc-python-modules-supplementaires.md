@@ -116,19 +116,91 @@ python -m black mon-fichier.py
 
 {% enddetails %}
 
-## coverage
-
-> TBD
-> <https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters>
-> <https://github.com/ryanluker/vscode-coverage-gutters/tree/9e48acc88bb96e7d416c5e6529f507fc92b08f3a/example/python>
-{: .note}
-
 ## tests
 
-> TBD
->
-> <https://code.visualstudio.com/docs/python/testing>
->
-> * paramètres : `python.testing.pytestEnabled`
-> * `pip3 install pytest` ou pip sous w10.
-{: .note}
+> [tests avec vscode](https://code.visualstudio.com/docs/python/testing). Nous allons utiliser [pytest](https://docs.pytest.org/) comme bibliothèque de test.
+
+### installation {#installation-pytest}
+
+{% details sous linux et mac %}
+
+```shell
+pip3 install pytest
+```
+
+{% enddetails %}
+
+{% details sous windows %}
+
+```shell
+pip install pytest
+```
+
+{% enddetails %}
+
+### configuration {#configuration-pytest}
+
+1. dans les préférences (*menu file/code > Préferences > settings*) tapez `python.testing.pytestEnabled`  dans la barre de recherche et cochez la case. Ceci dit à vscode que notre framework de test est pytest (il y en a d'autres possible comme [unittest](https://docs.python.org/fr/3.9/library/unittest.html) ou encore [nosetests](https://nose.readthedocs.io/en/latest/), mais on ne va pas les utiliser. Assurez vous cependant qu'un seul framework de test soit utilisé à la fois. Ca devrait être le cas si vous n'avez pas cliqué un peu partout).
+2. on configure les tests de notre projet en tapant la commande (dans la [palette de commande]({% post_url tutos/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main %}#palette-de-commande)) : *python : Configure tests* on choisit *pytest* puis *. (root)* qui donne le dossier de départ où aller chercher nos tests
+
+### utilisation {#utilisation-pytest}
+
+#### avec l'interface
+
+On ouvre la fenêtre de tests avec *Menu Affichage testing* (le petit erlenmeyer de la [barre d'activité](https://code.visualstudio.com/docs/getstarted/userinterface)).
+
+En suite le menu *TESTING* en haut de cette nouvelle fenêtre vous permet :
+
+* redécouvrir les tests
+* executez les tests.
+* ...
+
+![tests]({{ "/assets/tutos/vsc-python/python-pytest-env.png" | relative_url }}){:style="margin: auto;display: block}
+
+#### avec le terminal
+
+En tapant `pytest` alors que vous êtes dans le dossier du projet.
+
+>si la commande `pytest` n'est pas reconnue, mais que `python` l'est vous pouvez exécuter `pytest`, via python en tapant la commande `python3 -m pytest`
+
+
+## couverture de code {##code-coverage}
+
+Permet de voir le code couvert par les tests.
+
+### installation {#installation-coverage}
+
+On va utiliser le *code coverage* de pytest :
+
+{% details sous linux et mac %}
+
+```shell
+pip3 install pytest-cov
+```
+
+{% enddetails %}
+
+{% details sous windows %}
+
+```shell
+pip install pytest-cov
+```
+
+{% enddetails %}
+
+Puis l'extension de vscode qui permet de rendre compte du coverage dans l'interface. Tapez [Coverage Gutters](https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters) dans le *menu affichage > extensions*.
+
+### utilisation {#code-coverge}
+
+#### sans l'extension
+
+Dans un terminal tapez `pytest --cov=.`. Cela exécute les tests à partir du dossier courant (`.`) avec le coverage qui sera retourné au format texte.
+
+>si la commande `pytest` n'est pas reconnue, mais que `python` l'est vous pouvez exécuter pytest, via python en tapant la commande `python3 -m pytest --cov=.`
+
+#### utilisation de l'extension
+
+La commande `pytest --cov=.` crée un fichier de coverage qui s'appelle `.coverage`. Il n'est cependant pas lisible dans ce format par défaut par l'extension. Il faut générer un format de sorti en [xml](https://fr.wikipedia.org/wiki/Extensible_Markup_Language) avec la commande : `pytest --cov=.  --cov-report xml:cov.xml`
+
+> Si le petit *watch* n'est pas visible, vous pouvez le faire à la main dans avec la [palette de commande]({% post_url tutos/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main %}#palette-de-commande))
+ *Coverage Gutters: Display Coverage*.

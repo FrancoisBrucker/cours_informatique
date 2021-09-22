@@ -19,7 +19,7 @@ La principale extension à installer lorsque l'on fait du python est [python](ht
 
 Pour installer ces package, rendez vous dans la [gestion des extensions de vscode]({% post_url tutos/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main %}#extensions), puis tapez *python* dans la barre de recherche. Assurez vous d'installer les package créez par microsoft.
 
-## exécuter du python
+## exécuter du python {#execution-python}
 
 ### interpréteur
 

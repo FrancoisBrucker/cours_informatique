@@ -21,17 +21,7 @@ Le cours est découpé en quatre parties, chacune d'elles formées d'une séance
 
 Plusieurs outils de communication sont à votre disposition : 
 
-  - Un [discord](https://discord.gg/Tb4UDPS) est mis à disposition pour les cours d'informatique, en particulier ceux de MIE.
-  - Les différentes séances sont disponibles sur le [drive](https://docs.google.com/spreadsheets/d/1Oc4rvDWhG7L0u9xAGtTpK8GPA_eI7rgDYNoTgMzIWss/edit#gid=628527506)
-  - Les classes virtuelles on lieu sur le [chan MIE-informatique](https://webconf.centrale-marseille.fr/mie-informatique) du webconf de l'école.
-
-
-## Notation
-
-Sous la forme de 3 examen de 15min avant les séances de code en demi groupe des séances 2 et 3 et avant la classe virtuelle de la troisième séance.
-
-La partie code de la séance 4 sera également noté en groupe.
-
+  
 ## Ordonnancement
 
   - Semaine 1 :
