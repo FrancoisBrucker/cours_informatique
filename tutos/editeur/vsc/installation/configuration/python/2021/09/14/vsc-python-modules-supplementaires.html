@@ -166,25 +166,96 @@
 
 </div></details>
 
-<h2 id="coverage">coverage</h2>
-
-<blockquote class="note">
-  <p>TBD
-<a href="https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters">https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters</a>
-<a href="https://github.com/ryanluker/vscode-coverage-gutters/tree/9e48acc88bb96e7d416c5e6529f507fc92b08f3a/example/python">https://github.com/ryanluker/vscode-coverage-gutters/tree/9e48acc88bb96e7d416c5e6529f507fc92b08f3a/example/python</a></p>
-</blockquote>
-
 <h2 id="tests">tests</h2>
 
-<blockquote class="note">
-  <p>TBD</p>
+<blockquote>
+  <p><a href="https://code.visualstudio.com/docs/python/testing">tests avec vscode</a>. Nous allons utiliser <a href="https://docs.pytest.org/">pytest</a> comme bibliothèque de test.</p>
+</blockquote>
 
-  <p><a href="https://code.visualstudio.com/docs/python/testing">https://code.visualstudio.com/docs/python/testing</a></p>
+<h3 id="installation-pytest">installation</h3>
 
-  <ul>
-    <li>paramètres : <code class="language-plaintext highlighter-rouge">python.testing.pytestEnabled</code></li>
-    <li><code class="language-plaintext highlighter-rouge">pip3 install pytest</code> ou pip sous w10.</li>
-  </ul>
+<details><summary>sous linux et mac</summary><div>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip3 <span class="nb">install </span>pytest
+</code></pre></div></div>
+
+</div></details>
+
+<details><summary>sous windows</summary><div>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>pytest
+</code></pre></div></div>
+
+</div></details>
+
+<h3 id="configuration-pytest">configuration</h3>
+
+<ol>
+  <li>dans les préférences (<em>menu file/code &gt; Préferences &gt; settings</em>) tapez <code class="language-plaintext highlighter-rouge">python.testing.pytestEnabled</code>  dans la barre de recherche et cochez la case. Ceci dit à vscode que notre framework de test est pytest (il y en a d’autres possible comme <a href="https://docs.python.org/fr/3.9/library/unittest.html">unittest</a> ou encore <a href="https://nose.readthedocs.io/en/latest/">nosetests</a>, mais on ne va pas les utiliser. Assurez vous cependant qu’un seul framework de test soit utilisé à la fois. Ca devrait être le cas si vous n’avez pas cliqué un peu partout).</li>
+  <li>on configure les tests de notre projet en tapant la commande (dans la <a href="/cours_informatique/tutos/editeur/vsc/installation/configuration/2021/09/03/vsc-installation-et-prise-en-main.html#palette-de-commande">palette de commande</a>) : <em>python : Configure tests</em> on choisit <em>pytest</em> puis <em>. (root)</em> qui donne le dossier de départ où aller chercher nos tests</li>
+</ol>
+
+<h3 id="utilisation-pytest">utilisation</h3>
+
+<h4 id="avec-linterface">avec l’interface</h4>
+
+<p>On ouvre la fenêtre de tests avec <em>Menu Affichage testing</em> (le petit erlenmeyer de la <a href="https://code.visualstudio.com/docs/getstarted/userinterface">barre d’activité</a>).</p>
+
+<p>En suite le menu <em>TESTING</em> en haut de cette nouvelle fenêtre vous permet :</p>
+
+<ul>
+  <li>redécouvrir les tests</li>
+  <li>executez les tests.</li>
+  <li>…</li>
+</ul>
+
+<p><img src="/cours_informatique/assets/tutos/vsc-python/python-pytest-env.png" alt="tests" /></p>
+
+<h4 id="avec-le-terminal">avec le terminal</h4>
+
+<p>En tapant <code class="language-plaintext highlighter-rouge">pytest</code> alors que vous êtes dans le dossier du projet.</p>
+
+<blockquote>
+  <p>si la commande <code class="language-plaintext highlighter-rouge">pytest</code> n’est pas reconnue, mais que <code class="language-plaintext highlighter-rouge">python</code> l’est vous pouvez exécuter <code class="language-plaintext highlighter-rouge">pytest</code>, via python en tapant la commande <code class="language-plaintext highlighter-rouge">python3 -m pytest</code></p>
+</blockquote>
+
+<h2 id="couverture-de-code-code-coverage">couverture de code {##code-coverage}</h2>
+
+<p>Permet de voir le code couvert par les tests.</p>
+
+<h3 id="installation-coverage">installation</h3>
+
+<p>On va utiliser le <em>code coverage</em> de pytest :</p>
+
+<details><summary>sous linux et mac</summary><div>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip3 <span class="nb">install </span>pytest-cov
+</code></pre></div></div>
+
+</div></details>
+
+<details><summary>sous windows</summary><div>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>pytest-cov
+</code></pre></div></div>
+
+</div></details>
+
+<p>Puis l’extension de vscode qui permet de rendre compte du coverage dans l’interface. Tapez <a href="https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters">Coverage Gutters</a> dans le <em>menu affichage &gt; extensions</em>.</p>
+
+<h3 id="code-coverge">utilisation</h3>
+
+<h4 id="sans-lextension">sans l’extension</h4>
+
+<p>Dans un terminal tapez <code class="language-plaintext highlighter-rouge">pytest --cov=.</code>. Cela exécute les tests à partir du dossier courant (<code class="language-plaintext highlighter-rouge">.</code>) avec le coverage qui sera retourné au format texte.</p>
+
+<blockquote>
+  <p>si la commande <code class="language-plaintext highlighter-rouge">pytest</code> n’est pas reconnue, mais que <code class="language-plaintext highlighter-rouge">python</code> l’est vous pouvez exécuter pytest, via python en tapant la commande <code class="language-plaintext highlighter-rouge">python3 -m pytest --cov=.</code></p>
+</blockquote>
+
+<h4 id="utilisation-de-lextension">utilisation de l’extension</h4>
+
+<p>La commande <code class="language-plaintext highlighter-rouge">pytest --cov=.</code> crée un fichier de coverage qui s’appelle <code class="language-plaintext highlighter-rouge">.coverage</code>. Il n’est cependant pas lisible dans ce format par défaut par l’extension. Il faut générer un format de sorti en <a href="https://fr.wikipedia.org/wiki/Extensible_Markup_Language">xml</a> avec la commande : <code class="language-plaintext highlighter-rouge">pytest --cov=.  --cov-report xml:cov.xml</code></p>
+
+<blockquote>
+  <p>Si le petit <em>watch</em> n’est pas visible, vous pouvez le faire à la main dans avec la <a href="/cours_informatique/tutos/editeur/vsc/installation/configuration/2021/09/03/vsc-installation-et-prise-en-main.html#palette-de-commande">palette de commande</a>)
+ <em>Coverage Gutters: Display Coverage</em>.</p>
 </blockquote>
 
   </div>

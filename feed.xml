@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/cours_informatique/feed.xml" rel="self" type="application/atom+xml" /><link href="/cours_informatique/" rel="alternate" type="text/html" /><updated>2021-09-22T10:47:11+00:00</updated><id>/cours_informatique/feed.xml</id><title type="html">cours d’informatique</title><subtitle>Support de cours/td d'informatique à l'école centrale marseille.</subtitle><entry><title type="html">vsc et markdown</title><link href="/cours_informatique/tutos/editeur/vsc/installation/configuration/markdown/2021/09/14/vsc-markdown.html" rel="alternate" type="text/html" title="vsc et markdown" /><published>2021-09-14T00:00:00+00:00</published><updated>2021-09-14T00:00:00+00:00</updated><id>/cours_informatique/tutos/editeur/vsc/installation/configuration/markdown/2021/09/14/vsc-markdown</id><content type="html" xml:base="/cours_informatique/tutos/editeur/vsc/installation/configuration/markdown/2021/09/14/vsc-markdown.html">&lt;p&gt;Comment écrire du markdown avec &lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;visual studio code&lt;/a&gt; (vsc ou encore vscode).&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/cours_informatique/feed.xml" rel="self" type="application/atom+xml" /><link href="/cours_informatique/" rel="alternate" type="text/html" /><updated>2021-09-22T15:46:11+00:00</updated><id>/cours_informatique/feed.xml</id><title type="html">cours d’informatique</title><subtitle>Support de cours/td d'informatique à l'école centrale marseille.</subtitle><entry><title type="html">vsc et markdown</title><link href="/cours_informatique/tutos/editeur/vsc/installation/configuration/markdown/2021/09/14/vsc-markdown.html" rel="alternate" type="text/html" title="vsc et markdown" /><published>2021-09-14T00:00:00+00:00</published><updated>2021-09-14T00:00:00+00:00</updated><id>/cours_informatique/tutos/editeur/vsc/installation/configuration/markdown/2021/09/14/vsc-markdown</id><content type="html" xml:base="/cours_informatique/tutos/editeur/vsc/installation/configuration/markdown/2021/09/14/vsc-markdown.html">&lt;p&gt;Comment écrire du markdown avec &lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;visual studio code&lt;/a&gt; (vsc ou encore vscode).&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -135,25 +135,96 @@
 
 &lt;/div&gt;&lt;/details&gt;
 
-&lt;h2 id=&quot;coverage&quot;&gt;coverage&lt;/h2&gt;
-
-&lt;blockquote class=&quot;note&quot;&gt;
-  &lt;p&gt;TBD
-&lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters&quot;&gt;https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters&lt;/a&gt;
-&lt;a href=&quot;https://github.com/ryanluker/vscode-coverage-gutters/tree/9e48acc88bb96e7d416c5e6529f507fc92b08f3a/example/python&quot;&gt;https://github.com/ryanluker/vscode-coverage-gutters/tree/9e48acc88bb96e7d416c5e6529f507fc92b08f3a/example/python&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
 &lt;h2 id=&quot;tests&quot;&gt;tests&lt;/h2&gt;
 
-&lt;blockquote class=&quot;note&quot;&gt;
-  &lt;p&gt;TBD&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;https://code.visualstudio.com/docs/python/testing&quot;&gt;tests avec vscode&lt;/a&gt;. Nous allons utiliser &lt;a href=&quot;https://docs.pytest.org/&quot;&gt;pytest&lt;/a&gt; comme bibliothèque de test.&lt;/p&gt;
+&lt;/blockquote&gt;
 
-  &lt;p&gt;&lt;a href=&quot;https://code.visualstudio.com/docs/python/testing&quot;&gt;https://code.visualstudio.com/docs/python/testing&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;installation-pytest&quot;&gt;installation&lt;/h3&gt;
 
-  &lt;ul&gt;
-    &lt;li&gt;paramètres : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python.testing.pytestEnabled&lt;/code&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pip3 install pytest&lt;/code&gt; ou pip sous w10.&lt;/li&gt;
-  &lt;/ul&gt;
+&lt;details&gt;&lt;summary&gt;sous linux et mac&lt;/summary&gt;&lt;div&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip3 &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;pytest
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;/div&gt;&lt;/details&gt;
+
+&lt;details&gt;&lt;summary&gt;sous windows&lt;/summary&gt;&lt;div&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;pytest
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;/div&gt;&lt;/details&gt;
+
+&lt;h3 id=&quot;configuration-pytest&quot;&gt;configuration&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;dans les préférences (&lt;em&gt;menu file/code &amp;gt; Préferences &amp;gt; settings&lt;/em&gt;) tapez &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python.testing.pytestEnabled&lt;/code&gt;  dans la barre de recherche et cochez la case. Ceci dit à vscode que notre framework de test est pytest (il y en a d’autres possible comme &lt;a href=&quot;https://docs.python.org/fr/3.9/library/unittest.html&quot;&gt;unittest&lt;/a&gt; ou encore &lt;a href=&quot;https://nose.readthedocs.io/en/latest/&quot;&gt;nosetests&lt;/a&gt;, mais on ne va pas les utiliser. Assurez vous cependant qu’un seul framework de test soit utilisé à la fois. Ca devrait être le cas si vous n’avez pas cliqué un peu partout).&lt;/li&gt;
+  &lt;li&gt;on configure les tests de notre projet en tapant la commande (dans la &lt;a href=&quot;/cours_informatique/tutos/editeur/vsc/installation/configuration/2021/09/03/vsc-installation-et-prise-en-main.html#palette-de-commande&quot;&gt;palette de commande&lt;/a&gt;) : &lt;em&gt;python : Configure tests&lt;/em&gt; on choisit &lt;em&gt;pytest&lt;/em&gt; puis &lt;em&gt;. (root)&lt;/em&gt; qui donne le dossier de départ où aller chercher nos tests&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;utilisation-pytest&quot;&gt;utilisation&lt;/h3&gt;
+
+&lt;h4 id=&quot;avec-linterface&quot;&gt;avec l’interface&lt;/h4&gt;
+
+&lt;p&gt;On ouvre la fenêtre de tests avec &lt;em&gt;Menu Affichage testing&lt;/em&gt; (le petit erlenmeyer de la &lt;a href=&quot;https://code.visualstudio.com/docs/getstarted/userinterface&quot;&gt;barre d’activité&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;En suite le menu &lt;em&gt;TESTING&lt;/em&gt; en haut de cette nouvelle fenêtre vous permet :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;redécouvrir les tests&lt;/li&gt;
+  &lt;li&gt;executez les tests.&lt;/li&gt;
+  &lt;li&gt;…&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/cours_informatique/assets/tutos/vsc-python/python-pytest-env.png&quot; alt=&quot;tests&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;avec-le-terminal&quot;&gt;avec le terminal&lt;/h4&gt;
+
+&lt;p&gt;En tapant &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pytest&lt;/code&gt; alors que vous êtes dans le dossier du projet.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;si la commande &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pytest&lt;/code&gt; n’est pas reconnue, mais que &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python&lt;/code&gt; l’est vous pouvez exécuter &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pytest&lt;/code&gt;, via python en tapant la commande &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python3 -m pytest&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;couverture-de-code-code-coverage&quot;&gt;couverture de code {##code-coverage}&lt;/h2&gt;
+
+&lt;p&gt;Permet de voir le code couvert par les tests.&lt;/p&gt;
+
+&lt;h3 id=&quot;installation-coverage&quot;&gt;installation&lt;/h3&gt;
+
+&lt;p&gt;On va utiliser le &lt;em&gt;code coverage&lt;/em&gt; de pytest :&lt;/p&gt;
+
+&lt;details&gt;&lt;summary&gt;sous linux et mac&lt;/summary&gt;&lt;div&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip3 &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;pytest-cov
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;/div&gt;&lt;/details&gt;
+
+&lt;details&gt;&lt;summary&gt;sous windows&lt;/summary&gt;&lt;div&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;pytest-cov
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;/div&gt;&lt;/details&gt;
+
+&lt;p&gt;Puis l’extension de vscode qui permet de rendre compte du coverage dans l’interface. Tapez &lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters&quot;&gt;Coverage Gutters&lt;/a&gt; dans le &lt;em&gt;menu affichage &amp;gt; extensions&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;code-coverge&quot;&gt;utilisation&lt;/h3&gt;
+
+&lt;h4 id=&quot;sans-lextension&quot;&gt;sans l’extension&lt;/h4&gt;
+
+&lt;p&gt;Dans un terminal tapez &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pytest --cov=.&lt;/code&gt;. Cela exécute les tests à partir du dossier courant (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.&lt;/code&gt;) avec le coverage qui sera retourné au format texte.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;si la commande &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pytest&lt;/code&gt; n’est pas reconnue, mais que &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python&lt;/code&gt; l’est vous pouvez exécuter pytest, via python en tapant la commande &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python3 -m pytest --cov=.&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;utilisation-de-lextension&quot;&gt;utilisation de l’extension&lt;/h4&gt;
+
+&lt;p&gt;La commande &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pytest --cov=.&lt;/code&gt; crée un fichier de coverage qui s’appelle &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.coverage&lt;/code&gt;. Il n’est cependant pas lisible dans ce format par défaut par l’extension. Il faut générer un format de sorti en &lt;a href=&quot;https://fr.wikipedia.org/wiki/Extensible_Markup_Language&quot;&gt;xml&lt;/a&gt; avec la commande : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pytest --cov=.  --cov-report xml:cov.xml&lt;/code&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Si le petit &lt;em&gt;watch&lt;/em&gt; n’est pas visible, vous pouvez le faire à la main dans avec la &lt;a href=&quot;/cours_informatique/tutos/editeur/vsc/installation/configuration/2021/09/03/vsc-installation-et-prise-en-main.html#palette-de-commande&quot;&gt;palette de commande&lt;/a&gt;)
+ &lt;em&gt;Coverage Gutters: Display Coverage&lt;/em&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;</content><author><name></name></author><category term="tutos" /><category term="editeur" /><category term="vsc" /><category term="installation" /><category term="configuration" /><category term="python" /><summary type="html">Configuration d’outils supplémentaires pour visual studio code et le développement en python.</summary></entry><entry><title type="html">vsc et python</title><link href="/cours_informatique/tutos/editeur/vsc/installation/configuration/python/2021/09/14/vsc-python.html" rel="alternate" type="text/html" title="vsc et python" /><published>2021-09-14T00:00:00+00:00</published><updated>2021-09-14T00:00:00+00:00</updated><id>/cours_informatique/tutos/editeur/vsc/installation/configuration/python/2021/09/14/vsc-python</id><content type="html" xml:base="/cours_informatique/tutos/editeur/vsc/installation/configuration/python/2021/09/14/vsc-python.html">&lt;p&gt;configuration de  &lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;visual studio code&lt;/a&gt; pour le développement en python.&lt;/p&gt;
 
 &lt;!--more--&gt;
@@ -168,7 +239,7 @@
 
 &lt;p&gt;Pour installer ces package, rendez vous dans la &lt;a href=&quot;/cours_informatique/tutos/editeur/vsc/installation/configuration/2021/09/03/vsc-installation-et-prise-en-main.html#extensions&quot;&gt;gestion des extensions de vscode&lt;/a&gt;, puis tapez &lt;em&gt;python&lt;/em&gt; dans la barre de recherche. Assurez vous d’installer les package créez par microsoft.&lt;/p&gt;
 
-&lt;h2 id=&quot;exécuter-du-python&quot;&gt;exécuter du python&lt;/h2&gt;
+&lt;h2 id=&quot;execution-python&quot;&gt;exécuter du python&lt;/h2&gt;
 
 &lt;h3 id=&quot;interpréteur&quot;&gt;interpréteur&lt;/h3&gt;
 

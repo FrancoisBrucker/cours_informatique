@@ -66,14 +66,6 @@
 
 <p>Le but de ce cours est de dérouler la création et la mise en œuvre d’un projet, petit à petit.</p>
 
-<blockquote>
-  <p>TBD : test/lint/black.</p>
-</blockquote>
-
-<h2 id="outils-de-développement">outils de développement</h2>
-
-<p>On en ajoutera d’autre en cours de route, mais</p>
-
 <h2 id="mise-en-place">mise en place</h2>
 
 <h3 id="ouverture-du-dossier">ouverture du dossier</h3>
@@ -82,12 +74,12 @@
 
 <h3 id="créations-des-fichiers">créations des fichiers</h3>
 
-<p>On crée tout de suite nos 3 fichiers :</p>
+<p>On crée tout de suite nos 3 fichiers (que l’on garde vide pour l’instant) :</p>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">"test_pourcentage.py"</code> : notre fichier de test</li>
-  <li><code class="language-plaintext highlighter-rouge">"pourcentage.py"</code> : le code</li>
-  <li><code class="language-plaintext highlighter-rouge">"main.py"</code> : le programme principal</li>
+  <li><em>“test_pourcentage.py”</em> : notre fichier de test</li>
+  <li><em>“pourcentage.py”</em> : le code</li>
+  <li><em>“main.py”</em> : le programme principal</li>
 </ul>
 
 <h2 id="le-projet">le projet</h2>
@@ -96,7 +88,8 @@
 
 <p>On veut compter le nombre de <code class="language-plaintext highlighter-rouge">0</code> d’un nombre écrit en binaire.</p>
 
-<p><code class="language-plaintext highlighter-rouge">"pourcentage.py"</code> :</p>
+<p>Fichier <em>“pourcentage.py”</em> :</p>
+
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">pourcent</span><span class="p">(</span><span class="n">chaîne_de_caractères</span><span class="p">):</span>
     <span class="n">nombre_de_0</span> <span class="o">=</span> <span class="n">chaîne_de_caractères</span><span class="p">.</span><span class="n">count</span><span class="p">(</span><span class="s">'0'</span><span class="p">)</span>
 
@@ -105,16 +98,17 @@
 </code></pre></div></div>
 
 <p>Remarquez que l’on ne vérifie pas dans la fonction :</p>
+
 <ul>
   <li>que notre entrée est une chaîne de caractères</li>
   <li>que la chaîne est uniquement composée de 0 et de 1</li>
 </ul>
 
-<p>Notre nom de paramètre est explicite, donc s’il y a une erreur c’est de la faute du développeur. Le programme va planter si on met un entier dans <code class="language-plaintext highlighter-rouge">chaîne_de_caractères</code>, puisque les entiers  ne connaissent pas la méthode <code class="language-plaintext highlighter-rouge">count</code> : si les entrées sont spécifiées dans la documentation ou par des nom explicite, ce n’est pas la peine de vérifier dans le code que c’est ok.</p>
+<p>Notre nom de paramètre est explicite, donc s’il y a une erreur c’est de la faute du développeur. Le programme va planter si on met un entier dans <code class="language-plaintext highlighter-rouge">chaîne_de_caractères</code>, puisque les entiers ne connaissent pas la méthode <a href="https://docs.python.org/3/library/stdtypes.html?highlight=count#str.count"><code class="language-plaintext highlighter-rouge">count</code></a> : si les entrées sont spécifiées dans la documentation ou par des nom explicite, ce n’est pas la peine de vérifier dans le code que c’est ok.</p>
 
 <blockquote>
   <ul>
-    <li><strong>Coding mantra</strong> : il vaut mieux qu’un programme plante plutôt qu’il cache l’erreur (en mettant par exemple 0 si le nom <code class="language-plaintext highlighter-rouge">chaîne_de_caractères</code> n’a pas de méthode count).</li>
+    <li><strong>Coding mantra</strong> : il vaut mieux qu’un programme plante plutôt qu’il cache l’erreur (en mettant par exemple 0 si le nom <code class="language-plaintext highlighter-rouge">chaîne_de_caractères</code> n’a pas de méthode <code class="language-plaintext highlighter-rouge">count</code>).</li>
     <li><strong>pourquoi ?</strong> L’erreur ne va pas partir, elle va juste faire planter le programme autre-part, loin de la réelle erreur. Ce sera donc bien plus dur à trouver.</li>
   </ul>
 </blockquote>
@@ -122,12 +116,14 @@
 <h3 id="les-tests">les tests</h3>
 
 <p>Ajoutons des tests. Par exemple, on pourrait tester que :</p>
+
 <ul>
   <li><code class="language-plaintext highlighter-rouge">"1"</code> rende <code class="language-plaintext highlighter-rouge">0</code></li>
   <li><code class="language-plaintext highlighter-rouge">"0"</code> rende <code class="language-plaintext highlighter-rouge">1</code>.</li>
 </ul>
 
-<p><code class="language-plaintext highlighter-rouge">"test_pourcentage.py"</code> :</p>
+<p>Fichier <em>“test_pourcentage.py”</em> :</p>
+
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pourcentage</span> <span class="kn">import</span> <span class="n">pourcent</span>
 
 
@@ -140,21 +136,18 @@
 
 </code></pre></div></div>
 
-<p>Pour fni, on pourrait ajouter un test un peut plus compliqué :</p>
+<p>Pour finir, on pourrait ajouter un test un peut plus compliqué : que <code class="language-plaintext highlighter-rouge">"01"</code> rende <code class="language-plaintext highlighter-rouge">.5</code>.</p>
 
-<ul>
-  <li>que <code class="language-plaintext highlighter-rouge">"01"</code> rende <code class="language-plaintext highlighter-rouge">.5</code>.</li>
-</ul>
-
-<blockquote>
-  <p><strong>Attention</strong> : On va tester des réels, pas des entiers. Rappelez vous que les réels ne le sont pas. Seuls les entiers existent. Voir <a href="https://docs.python.org/fr/3/tutorial/floatingpoint.html">la doc</a>)</p>
+<blockquote class="attention">
+  <p>On va tester des réels, pas des entiers. Rappelez vous que les réels ne le sont pas. Seuls les entiers existent. Voir <a href="https://docs.python.org/fr/3/tutorial/floatingpoint.html">la doc</a>)</p>
 </blockquote>
 
-<p>On ne peut pas écrire directement <code class="language-plaintext highlighter-rouge">assert pourcent('01') ==.5</code> (même si là, ça risque de marcher) car si ça se trouve on aura <code class="language-plaintext highlighter-rouge">.499999999</code> à la place de <code class="language-plaintext highlighter-rouge">.5</code>. Lorsque l’on compare des réels c’est toujours à epsilon prêt.</p>
+<p>On ne peut pas écrire directement <code class="language-plaintext highlighter-rouge">assert pourcent('01') == .5</code> (même si là, ça risque de marcher) car si ça se trouve on aura <code class="language-plaintext highlighter-rouge">.499999999</code> à la place de <code class="language-plaintext highlighter-rouge">.5</code>. Lorsque l’on compare des réels c’est toujours à epsilon prêt.</p>
 
 <p>Donc on va utiliser une fonction spéciale de <code class="language-plaintext highlighter-rouge">pytest</code>, qui vérifie si 2 réels sont <em>à peu prêt égaux</em> (par défaut à dix moins six prêt) : <a href="https://docs.pytest.org/en/latest/reference.html#pytest-approx">approx</a> pour ça.</p>
 
-<p><code class="language-plaintext highlighter-rouge">"test_pourcentage.py"</code> :</p>
+<p>Fichier  <em>“test_pourcentage.py”</em> :</p>
+
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pytest</span> <span class="kn">import</span> <span class="n">approx</span>
 
 <span class="kn">from</span> <span class="nn">pourcentage</span> <span class="kn">import</span> <span class="n">pourcent</span>
@@ -176,18 +169,16 @@
 <blockquote>
   <ul>
     <li><strong>Coding mantra</strong> : que tester ?</li>
-    <li><strong>réponse</strong> : ce qui est nécessaire pour que <strong>vous</strong> (ie. le développeur) soyez convaincu que votre fonction marche. Ni plus, ni moins.</li>
-  </ul>
-</blockquote>
-
-<blockquote>
-  <ul>
+    <li>
+      <p><strong>réponse</strong> : ce qui est nécessaire pour que <strong>vous</strong> (<em>ie.</em> le développeur) soyez convaincu que votre fonction marche. Ni plus, ni moins.</p>
+    </li>
     <li><strong>Coding mantra</strong> : pourquoi tester ?</li>
     <li><strong>réponse</strong> : pour être sûr que le programme fonctionne. Pour permettre d’ajouter rapidement des fonctionnalités sans avoir à <strong>tout</strong> re-tester (les tests sont déjà écrit). Parce que <strong>tout le monde</strong> fait des erreurs. Oui oui, même toi qui te croit fort.</li>
   </ul>
 </blockquote>
 
 <p>C’est <strong>TOUJOURS</strong> au développeur de la fonction de faire ses tests. Parce qu’il faut que les testent accompagnent le code, pour que l’on soit sur du fonctionnement et puisse coder la suite tranquillement. Si l’on fait les tests à la fin de la journée :</p>
+
 <ul>
   <li>c’est embêtant</li>
   <li>si ça se trouve on devra refaire plein de choses car un bug en aura entraîné un autre et tout un tas de fonctions seront à corriger. En faisant les tests dès que la méthode est écrite, on gagne du temps</li>
@@ -196,7 +187,7 @@
 
 <blockquote>
   <ul>
-    <li><strong>Coding mantra</strong> : Pour ma part, je suis le <a href="https://fr.wikipedia.org/wiki/Test_driven_development">TDD</a>. J’écris mes tests <strong>avant</strong> de coder. Celà peut sembler contre intuitif mais c’est super bien car cela permet d’utiliser son code avant de l’écrire. Souvent, en cherchant comment écrire un test, on trouve la bonne façon d’utiliser la fonction que l’on va écrire. Coder la fonction puis l’utiliser dans les tests est alors une perte de temps puisque parfois il faut complètement la réécrire car elle n’est pas pratique à utiliser.</li>
+    <li><strong>Coding mantra</strong> : Pour ma part, je fais du <a href="https://fr.wikipedia.org/wiki/Test_driven_development">TDD</a>. J’écris mes tests <strong>avant</strong> de coder. Celà peut sembler contre intuitif mais c’est super bien car cela permet d’utiliser son code avant de l’écrire. Souvent, en cherchant comment écrire un test, on trouve la bonne façon d’utiliser la fonction que l’on va écrire. Coder la fonction puis l’utiliser dans les tests est alors une perte de temps puisque parfois il faut complètement la réécrire car elle n’est pas pratique à utiliser.</li>
   </ul>
 </blockquote>
 
@@ -204,34 +195,45 @@
 
 <h3 id="programme-principal">programme principal</h3>
 
-<p><code class="language-plaintext highlighter-rouge">"main.py"</code> :</p>
+<p>Fichier “main.py”* :</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pourcentage</span> <span class="kn">import</span> <span class="n">pourcent</span>
 
 <span class="n">chaîne</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'Donnez un nombre écrit en binaire :'</span><span class="p">)</span>
 
 <span class="k">print</span><span class="p">(</span><span class="s">"Votre nombre contient "</span><span class="p">,</span> <span class="n">pourcent</span><span class="p">(</span><span class="n">chaîne</span><span class="p">),</span> <span class="s">"pourcent de 0."</span><span class="p">)</span>
-
 </code></pre></div></div>
+
 <p>On ne vérifie pas que :</p>
+
 <ul>
-  <li>c’est bien un nombre binaire</li>
-  <li>il a une longueur non vide</li>
+  <li>c’est bien un nombre binaire : que donne le code si on ne mets pas un nombre binaire ?</li>
+  <li>il a une longueur non vide : que fait le programme si on appuie sur la touche entrée sans rien écrire ?</li>
 </ul>
 
 <h4 id="correction-dun-bug">correction d’un bug</h4>
 
 <p>Si l’on ne rend rien, le programme plante ! On va corriger notre code et rajouter un test pour être sur que ça n’arrive plus :</p>
 
-<p>dans <code class="language-plaintext highlighter-rouge">"test_pourcentage.py"</code> :</p>
+<p>dans <em>“test_pourcentage.py”</em>, ajoutez le test :</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">test_pourcent_vide</span><span class="p">():</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ...
+</span>
+<span class="k">def</span> <span class="nf">test_pourcent_vide</span><span class="p">():</span>
     <span class="k">assert</span> <span class="n">pourcent</span><span class="p">(</span><span class="s">''</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
-</code></pre></div></div>
 
-<p>dans <code class="language-plaintext highlighter-rouge">"pourcentage.py"</code> :</p>
+<span class="c1"># ...
+</span></code></pre></div></div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">pourcent</span><span class="p">(</span><span class="n">chaîne_de_caractères</span><span class="p">):</span>
+<blockquote>
+  <p>On a coutume de mettre des <code class="language-plaintext highlighter-rouge"># ...</code> pour dire que le reste du code du fichier n’est pas changé. Ce n’est pas la peine de les copier/coller.</p>
+</blockquote>
+
+<p>Puis on corrige la fonction <code class="language-plaintext highlighter-rouge">pourcent</code> de <em>“pourcentage.py”</em> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ...
+</span>
+<span class="k">def</span> <span class="nf">pourcent</span><span class="p">(</span><span class="n">chaîne_de_caractères</span><span class="p">):</span>
     <span class="n">nombre_de_0</span> <span class="o">=</span> <span class="n">chaîne_de_caractères</span><span class="p">.</span><span class="n">count</span><span class="p">(</span><span class="s">'0'</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">chaîne_de_caractères</span><span class="p">):</span>
@@ -239,13 +241,15 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">0</span>
 
-</code></pre></div></div>
+<span class="c1"># ...
+</span></code></pre></div></div>
 
 <h4 id="prise-en-compte-de-lutilisateur">prise en compte de l’utilisateur</h4>
 
 <p>Quand je vous avait dit de ne pas faire de vérification, c’est vrai pour tout ce qui a trait au code utilisé par l’ordinateur. Dès qu’un humain utilise du code, il faut <strong>TOUT</strong> vérifier et faire en sorte qu’il ait la meilleur expérience possible.</p>
 
 <p>Donc ici on pourrait :</p>
+
 <ul>
   <li>faire rentrer à l’utilisateur un nombre en base 10,</li>
   <li>lui montrer son nombre en base 2 puis donner son pourcentage</li>
@@ -258,7 +262,8 @@
   <p><strong>Amélioration possible</strong> : ne s’arrêter que si l’utilisateur tape une chaîne de caractère vide.</p>
 </blockquote>
 
-<p><code class="language-plaintext highlighter-rouge">"main.py"</code> :</p>
+<p>Fichier <em>“main.py”</em> :</p>
+
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pourcentage</span> <span class="kn">import</span> <span class="n">pourcent</span>
 
 <span class="n">correct</span> <span class="o">=</span> <span class="bp">False</span>
@@ -280,23 +285,23 @@
       <span class="s">"pourent de 0 en base 2 ("</span> <span class="o">+</span> <span class="n">nombre_binaire</span> <span class="o">+</span> <span class="s">")."</span><span class="p">)</span>
 </code></pre></div></div>
 
-<h3 id="code-coverage">code coverage</h3>
+<h3 id="couverture-de-code">couverture de code</h3>
 
-<p>POur savoir si nos tests couvrent bien l’ensemble du projet, c’est à dire si les tests passent bien par chaque ligne de code, on utilise des outils de <a href="https://fr.wikipedia.org/wiki/Couverture_de_code">couverture de code</a>.</p>
+<p>Pour savoir si nos tests couvrent bien l’ensemble du projet, c’est à dire si les tests passent bien par chaque ligne de code, on utilise des outils de <a href="https://fr.wikipedia.org/wiki/Couverture_de_code">couverture de code</a>.</p>
 
 <blockquote>
   <p><strong>Attention</strong> : Avoir 100% de couverture de code ne signifie pas que votre projet est bien testé…Juste que les tests ont utilisé toutes les lignes de codes :</p>
+
   <ul>
     <li>ça ne prouve pas que les fonctionnalités de votre code sont correctes</li>
     <li>certaines fonctions n’ont pas besoin d’être testées (comme les constantes ou les affichages à l’écran par exemple)</li>
   </ul>
 </blockquote>
 
-<p>On va utiliser celui de pytest. Commençons par l’installer : <code class="language-plaintext highlighter-rouge">pip3 install pytest-cov</code></p>
+<p>Suivez le <a href="/cours_informatique/tutos/editeur/vsc/installation/configuration/python/2021/09/14/vsc-python-modules-supplementaires.html#code-coverage">tutoriel d’installation</a> pour mettre en place les outils de coverage.</p>
 
-<p>Dans <a href="https://code.visualstudio.com/docs/editor/integrated-terminal">un terminal</a>, vous pouvez taper : <code class="language-plaintext highlighter-rouge">pytest --cov=.</code> pour voir le résultat.</p>
+<p>En tapant <code class="language-plaintext highlighter-rouge">pytest --cov=.</code> dans <a href="https://code.visualstudio.com/docs/editor/integrated-terminal">un terminal</a>, j’obtient le résultat suivant ;</p>
 
-<p>Chez moi ça donne :</p>
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fbrucker@emma projets/pourcentage_binaire » pytest --cov=.
 === test session starts ===
 platform darwin -- Python 3.9.1, pytest-6.2.1, py-1.10.0, pluggy-0.13.1
@@ -320,28 +325,23 @@ TOTAL                    28     13    54%
 === 4 passed in 0.19s ===
 </code></pre></div></div>
 
-<blockquote>
-  <p><strong>*Nota Bene</strong>: si la commande <code class="language-plaintext highlighter-rouge">pytest</code> n’est pas reconnue, mais que <code class="language-plaintext highlighter-rouge">python3</code> l’est vous pouvez exécuter pytest, via python en tapant la commande <code class="language-plaintext highlighter-rouge">python3 -m pytest --cov=.</code></p>
-</blockquote>
-
-<p>On a regardé la couverture de code des fichiers du dossier <code class="language-plaintext highlighter-rouge">.</code> (c’est à dire le dossier courant) qui ont été lu lors de l’éxécution de pytest (qui regarde tous les fichiers qui commencent par <code class="language-plaintext highlighter-rouge">"test_"</code> et exécutent toutes les fonctions qui commencent par <code class="language-plaintext highlighter-rouge">"test_"</code> dans ceux-ci).</p>
+<p>On a regardé la couverture de code des fichiers du dossier <code class="language-plaintext highlighter-rouge">.</code> (c’est à dire le dossier courant) qui ont été lu lors de l’éxecution de pytest (qui regarde tous les fichiers qui commencent par <code class="language-plaintext highlighter-rouge">"test_"</code> et exécutent toutes les fonctions qui commencent par <code class="language-plaintext highlighter-rouge">"test_"</code> dans ceux-ci).</p>
 
 <p>On se rend compte que <code class="language-plaintext highlighter-rouge">"main.py"</code> n’a pas été lu (0% de ses lignes ont été parcourues), et que 100% des lignes de <code class="language-plaintext highlighter-rouge">"pourcentages"</code> ont été lues.</p>
 
 <p>Rajoutons une fonction dans <code class="language-plaintext highlighter-rouge">"pourcentage.py"</code> qui ne sera pas lue dans les tests et voyons la différence</p>
 
-<p><code class="language-plaintext highlighter-rouge">"pourcentage.py"</code>:</p>
+<p>Fichier <em>“pourcentage.py”</em> :</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="c1"># ...
-</span><span class="k">def</span> <span class="nf">non_lue</span><span class="p">():</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ...
+</span>
+<span class="k">def</span> <span class="nf">non_lue</span><span class="p">():</span>
     <span class="k">pass</span>
 
 <span class="c1">#...
-</span>
-</code></pre></div></div>
+</span></code></pre></div></div>
 
-<p>J’obtient maintenant ça :</p>
+<p>J’obtiens maintenant ça :</p>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fbrucker@emma projets/pourcentage_binaire » pytest --cov=.
 === test session starts ===
@@ -367,19 +367,13 @@ TOTAL                    30     14    53%
 
 <p>1 ligne de <code class="language-plaintext highlighter-rouge">"pourcentage.py"</code>  n’est pas lue. C’est le corps de la fonction <code class="language-plaintext highlighter-rouge">non_lue</code>, c’est à dire <code class="language-plaintext highlighter-rouge">pass</code>.</p>
 
-<p>Un rapport détaillé du couverage est par défaut écrit and le fichier <code class="language-plaintext highlighter-rouge">.coverage</code> (vérifiez, il y en a bien un dans votre dossier). POur que ce soit visible dans vscode, on va installer l’extension 
-<a href="https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters">Coverage Gutters</a>.</p>
-
-<p>Pour que cette extension comprenne le fichier, il faut qu’il soit en xml ( : <code class="language-plaintext highlighter-rouge">pytest --cov=.  --cov-report xml:cov.xml</code></p>
-
-<p>Une fois installée, il faut reexécuter nos coverage et spécifier que le fichier de sortie soit en <a href="https://fr.wikipedia.org/wiki/Extensible_Markup_Language">xml</a> (xml, c’est un vieux truc qu’on ne devrait plus toucher, même avec un bâton mais bon, passons)) : <code class="language-plaintext highlighter-rouge">pytest --cov=.  --cov-report xml:cov.xml</code></p>
-
-<p>Regardez le fichier <code class="language-plaintext highlighter-rouge">"pourcentage.py"</code>.  Vous devriez voir dans la ligne de status (la dernière ligne de la fenêtre) un petit <em>Watch</em> (à côté de <em>run tests</em>) : cliquez dessus</p>
-
 <blockquote>
-  <p><strong>Nota Bene</strong> : si le petit <em>watch</em> n’est pas visible, vous pouvez le faire à la main avec la commande <em>Coverage Gutters: Display Coverage</em>.</p>
+  <p>Un rapport détaillé de la couverture est par défaut écrit and le fichier <code class="language-plaintext highlighter-rouge">.coverage</code> (vérifiez, il y en a bien un dans votre dossier).</p>
 </blockquote>
 
+<p>Finissons cette partie en utilisant le coverage avec l’extension vscode : <code class="language-plaintext highlighter-rouge">pytest --cov=. --cov-report xml:cov.xml</code></p>
+
+<p>Regardez le fichier <code class="language-plaintext highlighter-rouge">"pourcentage.py"</code> : il doit avoir de lignes vertes et rouge.</p>
 
   </div>
 
