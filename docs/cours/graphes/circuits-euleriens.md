@@ -13,15 +13,11 @@ author : "François Brucker"
 
 Le but de ce cours est d'apprendre à coder un (multi-)graphe dirigé et de s'en servir pour trouver un circuit eulérien d'un de ces graphes (s'il existe).
 
-Le code complet de ce tutoriel est disponible sur [le github du projet](https://github.com/FrancoisBrucker/cours_informatique/tree/master/docs/cours/tronc_commun/circuits-euleriens-code). Essayez tout de même de résoudre les questions par vous-même, vous apprendrez plus que juste lire le corrigé.
+Le code complet de ce tutoriel est disponible sur [le github du projet](https://github.com/FrancoisBrucker/cours_informatique/tree/master/docs/cours/graphes/circuits-euleriens-code). Essayez tout de même de résoudre les questions par vous-même, vous apprendrez plus que juste lire le corrigé.
 
 ## Outils
 
-Vous aurez besoin de connaitre un peu de python et que vous sachiez faire des tests.
-
-> TBD : donner les prérequis plus précis. En particulier les tests
-> pour l'instant suivez le [cours de développement]({% link cours/developpement/index.md %})
-{: . note}
+Vous aurez besoin de connaitre un peu de python et que vous sachiez faire des tests. Suivez les 4 premières parties du [cours de développement]({% link cours/graphes/index.md %})
 
 Les tests vont s'ajouter petit à petit et à la fin de la séance votre fichier *"test_multi_graph.py"* contiendra plus d'une vingtaine de tests !
 

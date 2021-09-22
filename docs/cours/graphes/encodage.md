@@ -30,6 +30,10 @@ Pour un graphe, les opérations que l'on va considérer sont :
   * ajout d'un sommet
   * ajout d'une arête
 
+Nous allons utiliser ce graphe orienté avec boucle comme exemple pour les 3 structures que nous verrons.
+
+![un graphe orienté]({{ "/assets/cours/graphes/graphe_oriente_boucle.png" | relative_url }}){:style="margin: auto;display: block;"}
+
 ## liste
 
 Structure simple. Utilisable pour des graphes orienté ou non.
@@ -40,6 +44,13 @@ $G = (V, E)$ où :
 * $E$ : est une liste de $m$ couples de sommets.
 
 La complexité de stockage : $\mathcal{O}(m+n)$
+
+### exemple {#exemple-liste}
+
+* `V = ['a', 'b', 'c', 'd', 'e']`
+* `E = [('a', 'b'), ('b', 'b'), ('b', 'c'), ('c', 'd'), ('d', 'a'), ('e', 'd'), ('a', 'e'), ('e', 'a')]`
+
+### propriété {#prop-liste}
 
 Structure de stockage la plus simple. N'est optimisé pour aucune opération spécifique :
 
@@ -71,6 +82,13 @@ Nécessite un re-codage des sommets en entiers allant de 0 à $n-1$. Ceci peut �
 Pour utiliser cette structure, on va toujours considérer que **les sommets sont des entiers** allant de $0$ à $n-1$. La liste $V$ n'est là que pour pouvoir associer plus tard un sommet à autre chose qu'un entier (dépendant de l'application).
 
 Avec cette convention et cet encodage : $E[i]$ est la liste de tous les voisins de $i$.
+
+### exemple {#exemple-liste-adj}
+
+* `V = ['a', 'b', 'c', 'd', 'e']`
+* `E = [[1, 4], [1, 2], [3], [0], [3, 0]]`
+
+### propriété {#prop-liste-adj}
 
 L'intérêt de cette encodage est que certaines opérations sont optimisées :
 
@@ -105,6 +123,13 @@ Pour utiliser cette structure, on va toujours considérer que **les sommets sont
 Avec cette convention et cet encodage : $E[i][j]$ vaut $1$ si $xy$ est une arête, et $0$ sinon.
 
 Cet encodage permet de traiter les graphes orientés (on traite de façon distincte $E[i][j]$ et $E[j][i]$), et même les graphes valués (la valeurs de $E[i][j]$ est la valuation de l'arête $xy$). Notez que pour un graphe non orienté la matrice $E$ est symétrique et vaut $0$ sur la diagonale.
+
+### exemple {#exemple-mat-adj}
+
+* `V = ['a', 'b', 'c', 'd', 'e']`
+* `E = [[0, 1, 0, 0, 1], [0, 1, 1, 0, 0], [0, 0, 0, 1, 0], [1, 0, 0, 0, 0], [1, 1, 0, 1, 1]]`
+
+### propriété {#prop-mat-adj}
 
 L'intérêt de cette encodage est que le fait de savoir si un arête est présente dans le graphe est optimisé :
 

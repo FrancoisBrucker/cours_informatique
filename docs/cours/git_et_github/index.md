@@ -46,7 +46,9 @@ brew install git
 
 > <https://gitforwindows.org/>
 
-Gardez les paramètres par défaut lors de l'installation à part pour le choix de l'éditeur par défaut. Remplacez *vim* par *notepad++* par exemple (si vous n'avez pas [notepad++](https://notepad-plus-plus.org/), installez le.)
+Gardez les paramètres par défaut lors de l'installation à part pour le choix de l'éditeur par défaut. Remplacez *vim* par *notepad++* par exemple (si vous n'avez pas [notepad++](https://notepad-plus-plus.org/), installez le.) et surtout pour le choix des bibliothèques ssh à utiliser : choisissez **use external openssh** : 
+
+![openssh]({{ "/assets/cours/git/git-install-windows.png" | relative_url }}){:style="margin: auto;display: block;"}
 
 {% enddetails %}
 
