@@ -122,7 +122,7 @@ Vocabulaire :
 
 Cet ordonnancement est [très utilisé en biologie](https://fr.wikipedia.org/wiki/Arbre_phylog%C3%A9n%C3%A9tique) par exemple car il permet de rendre compte de l'évolution des espèces. En analyse des données on utilise ce paradigme pour classer les données (qui sont les feuilles) selon ce qu'elles ont en commun (les leurs ancêtres).
 
-## arbre binaire planté
+## arbre binaire planté {#arbre-binaire}
 
 En informatique, c'est souvent les arbres binaires planté que l'on utilise :
 

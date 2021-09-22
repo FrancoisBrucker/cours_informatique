@@ -16,9 +16,6 @@ Il a pour principal objectif d'allumer la petite flamme de l'intérêt pour cett
 
 Le cours va être séparé en petites entités qui se suivent pour former un tout qu'on espère cohérent.
 
-> TBD : ajouter les algos gloutons graphes de misc en exos
-{: .note}
-
 ## Plan du cours
 
 ### première partie
@@ -39,5 +36,6 @@ Un cas particulier d'intérêt : l'arbre.
 > Sous la forme d'exercices.
 
 1. [l'arbre]({% link cours/graphes/arbres.md %})
-2. arbres binaires de recherche
+2. [arbres binaires de recherche]({% link cours/graphes/arbre-de-recherche.md %})
 3. combien d'arbre ? Encodage prüfer et application à un arbre aléatoire (!= différent de la structure).
+
