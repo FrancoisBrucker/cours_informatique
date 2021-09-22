@@ -95,6 +95,10 @@ Chaque représentation de graphes va avoir son utilité, selon l’algorithme ut
   </li>
 </ul>
 
+<p>Nous allons utiliser ce graphe orienté avec boucle comme exemple pour les 3 structures que nous verrons.</p>
+
+<p><img src="/cours_informatique/assets/cours/graphes/graphe_oriente_boucle.png" alt="un graphe orienté" style="margin: auto;display: block;" /></p>
+
 <h2 id="liste">liste</h2>
 
 <p>Structure simple. Utilisable pour des graphes orienté ou non.</p>
@@ -107,6 +111,15 @@ Chaque représentation de graphes va avoir son utilité, selon l’algorithme ut
 </ul>
 
 <p>La complexité de stockage : $\mathcal{O}(m+n)$</p>
+
+<h3 id="exemple-liste">exemple</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">V = ['a', 'b', 'c', 'd', 'e']</code></li>
+  <li><code class="language-plaintext highlighter-rouge">E = [('a', 'b'), ('b', 'b'), ('b', 'c'), ('c', 'd'), ('d', 'a'), ('e', 'd'), ('a', 'e'), ('e', 'a')]</code></li>
+</ul>
+
+<h3 id="prop-liste">propriété</h3>
 
 <p>Structure de stockage la plus simple. N’est optimisé pour aucune opération spécifique :</p>
 
@@ -151,6 +164,15 @@ Chaque représentation de graphes va avoir son utilité, selon l’algorithme ut
 <p>Pour utiliser cette structure, on va toujours considérer que <strong>les sommets sont des entiers</strong> allant de $0$ à $n-1$. La liste $V$ n’est là que pour pouvoir associer plus tard un sommet à autre chose qu’un entier (dépendant de l’application).</p>
 
 <p>Avec cette convention et cet encodage : $E[i]$ est la liste de tous les voisins de $i$.</p>
+
+<h3 id="exemple-liste-adj">exemple</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">V = ['a', 'b', 'c', 'd', 'e']</code></li>
+  <li><code class="language-plaintext highlighter-rouge">E = [[1, 4], [1, 2], [3], [0], [3, 0]]</code></li>
+</ul>
+
+<h3 id="prop-liste-adj">propriété</h3>
 
 <p>L’intérêt de cette encodage est que certaines opérations sont optimisées :</p>
 
@@ -200,6 +222,15 @@ Chaque représentation de graphes va avoir son utilité, selon l’algorithme ut
 <p>Avec cette convention et cet encodage : $E[i][j]$ vaut $1$ si $xy$ est une arête, et $0$ sinon.</p>
 
 <p>Cet encodage permet de traiter les graphes orientés (on traite de façon distincte $E[i][j]$ et $E[j][i]$), et même les graphes valués (la valeurs de $E[i][j]$ est la valuation de l’arête $xy$). Notez que pour un graphe non orienté la matrice $E$ est symétrique et vaut $0$ sur la diagonale.</p>
+
+<h3 id="exemple-mat-adj">exemple</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">V = ['a', 'b', 'c', 'd', 'e']</code></li>
+  <li><code class="language-plaintext highlighter-rouge">E = [[0, 1, 0, 0, 1], [0, 1, 1, 0, 0], [0, 0, 0, 1, 0], [1, 0, 0, 0, 0], [1, 1, 0, 1, 1]]</code></li>
+</ul>
+
+<h3 id="prop-mat-adj">propriété</h3>
 
 <p>L’intérêt de cette encodage est que le fait de savoir si un arête est présente dans le graphe est optimisé :</p>
 
