@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Arbre de recherche | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Arbre de recherche" />
+<meta name="author" content="François Brucker" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
+<link rel="canonical" href="/cours_informatique/cours/graphes/arbre-de-recherche.html" />
+<meta property="og:url" content="/cours_informatique/cours/graphes/arbre-de-recherche.html" />
+<meta property="og:site_name" content="cours d’informatique" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Arbre de recherche" />
+<script type="application/ld+json">
+{"headline":"Arbre de recherche","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/graphes/arbre-de-recherche.html","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css">
+
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+</head>
+
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Arbre de recherche</h1>Auteurs :
+      <ul>
+      
+        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></li>
+      
+        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Pascal Préa</span></span></li>
+      
+      </ul></p></p>
+  </header>
+
+  <div class="post-content">
+    <blockquote class="chemin">
+  <p><a href="/cours_informatique/cours/graphes/">graphes</a> / <a href="/cours_informatique/cours/graphes/arbre-de-recherche.html">arbre de recherche</a></p>
+</blockquote>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>Le but de ce travail est d’étudier les arbres de recherche, qui sont une structure de stockage efficaces pour maintenir un ensemble d’éléments triés.</p>
+
+<h2 id="arbre-binaire">Arbre binaire</h2>
+
+<p>Comme vu <a href="/cours_informatique/cours/graphes/arbres.html#arbre-binaire">précédemment</a>, un arbre binaire planté est une structure de graphe qui possède :</p>
+
+<ul>
+  <li>un noeud particulier appelé racine qui n’est enfant de personne</li>
+  <li>chaque nœud à un ou deux enfants, nommé <em>enfant gauche</em> ou <em>enfant droit</em></li>
+  <li>chaque nœud de la structure a des enfants différents</li>
+  <li>chaque nœud différent de la racine est enfant d’un autre nœeud</li>
+</ul>
+
+<p>Les nœuds sans enfants sont appelées <em>feuilles</em>.</p>
+
+<p>Un des intérêt d’un arbre binaire est qu’il suffit de connaitre la racine et pour chaque noeud ses enfant pour retrouver toute la structure : <strong>Se donner une racine ou tout l’arbre binaire est équivalent</strong>.</p>
+
+<h3 id="calcul-de-la-hauteur-dun-arbre-binaire-planté">calcul de la hauteur d’un arbre binaire planté</h3>
+
+<p>On rappelle que la hauteur d’un arbre est la longueur maximale du chemin d’un nœud à la racine. Par extension,la hauteur d’un nœud sera la longueur maximale d’un chemin allant d’un de ses descendants à lui même.</p>
+
+<blockquote class="a-faire">
+  <p>Si l’on connait la hauteur de chacun de ses enfants, quelle est la hauteur d’un nœud ?</p>
+</blockquote>
+<details class="a-faire"><summary>solution</summary><div>
+<p>En notant $g$ et $d$ les enfants gauche et droit d’un nœud $n$, on a que :
+$h(n) = \max(h(g), h(d))$</p>
+
+</div></details>
+
+<blockquote class="a-faire">
+  <p>En déduire un algorithme qui calcule récursivement la hauteur d’un arbre. Et donnez en sa complexité.</p>
+</blockquote>
+<details class="a-faire"><summary>solution</summary><div>
+<p>On suppose que l’on a les fonction <code class="language-plaintext highlighter-rouge">enfant_gauche(noeud)</code>et <code class="language-plaintext highlighter-rouge">enfant_droit(noeud)</code> qui rende respectivement l’enfant gauche et l’enfant droit d’un noeud s’il existe et <code class="language-plaintext highlighter-rouge">None</code> sinon.</p>
+
+<p>On a alors :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">def</span> <span class="nf">hauteur</span><span class="p">(</span><span class="n">noeud</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">noeud</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">hauteur</span><span class="p">(</span><span class="n">enfant_gauche</span><span class="p">(</span><span class="n">noeud</span><span class="p">)),</span> <span class="n">hauteur</span><span class="p">(</span><span class="n">enfant_droit</span><span class="p">(</span><span class="n">noeud</span><span class="p">)))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">hauteur</span><span class="p">(</span><span class="n">racine</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>De part la définition des arbres binaires, on ne va parcourir qu’une seule fois chaque noeud de l’arbre, la complexité est donc en $\mathcal{O}(n)$, avec $n$ le nombre de nœuds de l’arbre.</p>
+
+</div></details>
+
+<h3 id="calcul-du-nombre-de-sommets-dun-arbre-binaire-planté">calcul du nombre de sommets d’un arbre binaire planté</h3>
+
+<p>On dira que l’arbre composé d’un nœud $x$ et de tous ses descendants est le <strong>sous-arbre de $x$</strong>.</p>
+
+<p>Même question que précédemment pour le calcul du nombre de nœuds d’un arbre.</p>
+
+<blockquote class="a-faire">
+  <p>Si l’on connait le nombre de nœud de chacun des sous arbres de ses enfants, quelle est le nombre de nœuds du sous-arbre d’un nœud ?</p>
+</blockquote>
+<details class="a-faire"><summary>solution</summary><div>
+<p>En notant $g$ et $d$ les enfants gauche et droit d’un nœud $n$, on a que :
+$N(n) = N(g) + N(d) + 1$</p>
+
+</div></details>
+
+<blockquote class="a-faire">
+  <p>En déduire un algorithme qui calcule récursivement le nombre de nœuds d’un arbre. Et donnez en sa complexité.</p>
+</blockquote>
+<details class="a-faire"><summary>solution</summary><div>
+<p>On suppose que l’on a les fonction <code class="language-plaintext highlighter-rouge">enfant_gauche(noeud)</code>et <code class="language-plaintext highlighter-rouge">enfant_droit(noeud)</code> qui rende respectivement l’enfant gauche et l’enfant droit d’un noeud s’il existe et <code class="language-plaintext highlighter-rouge">None</code> sinon.</p>
+
+<p>On a alors :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">def</span> <span class="nf">nombre</span><span class="p">(</span><span class="n">noeud</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">noeud</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="n">nombre</span><span class="p">(</span><span class="n">enfant_gauche</span><span class="p">(</span><span class="n">noeud</span><span class="p">))</span> <span class="o">+</span> <span class="n">nombre</span><span class="p">(</span><span class="n">enfant_droit</span><span class="p">(</span><span class="n">noeud</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">nombre</span><span class="p">(</span><span class="n">racine</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>De part la définition des arbres binaires, on ne va parcourir qu’une seule fois chaque noeud de l’arbre, la complexité est donc en $\mathcal{O}(n)$, avec $n$ le nombre de nœuds de l’arbre.</p>
+
+</div></details>
+
+<h3 id="structure-de-donnée">structure de donnée</h3>
+
+<p>Si l’on code un nœud d’un arbre binaire par une liste à trois éléments où :</p>
+
+<ul>
+  <li>le premier élément est sa valeur,</li>
+  <li>le second élément est son enfant gauche ou <code class="language-plaintext highlighter-rouge">None</code>s’il n’en a pas</li>
+  <li>le troisième élément est son enfant droit ou <code class="language-plaintext highlighter-rouge">None</code> s’il n’en a pas</li>
+</ul>
+
+<blockquote class="a-faire">
+  <p>donnez le code des fonctions :</p>
+
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">enfant_gauche(x)</code> et <code class="language-plaintext highlighter-rouge">change_enfant_gauche(x, nouveau)</code> : qui rende et change l’enfant gauche d’un nœud <code class="language-plaintext highlighter-rouge">x</code></li>
+    <li><code class="language-plaintext highlighter-rouge">enfant_droit(x)</code> et <code class="language-plaintext highlighter-rouge">change_enfant_droit(x,nouveau)</code> : qui rende et change l’enfant droit d’un nœud <code class="language-plaintext highlighter-rouge">x</code></li>
+    <li><code class="language-plaintext highlighter-rouge">valeur(x)</code> et <code class="language-plaintext highlighter-rouge">change_valeur(x, nouveau)</code>  : qui rende et change la valeur d’un nœud <code class="language-plaintext highlighter-rouge">x</code></li>
+  </ul>
+</blockquote>
+<details class="a-faire"><summary>solution</summary><div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">def</span> <span class="nf">enfant_gauche</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">change_enfant_gauche</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">nouveau</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">nouveau</span>
+
+
+<span class="k">def</span> <span class="nf">enfant_droit</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">change_enfant_droit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">nouveau</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">nouveau</span>
+
+
+<span class="k">def</span> <span class="nf">valeur</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">change_valeur</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">nouveau</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">nouveau</span>
+
+</code></pre></div></div>
+
+</div></details>
+
+<h3 id="exemple">exemple</h3>
+
+<blockquote class="note">
+  <p>TBD : un arbre tableau -&gt; abre python (sans algo)</p>
+</blockquote>
+
+<h2 id="arbre-binaire-de-recherche--définitions">arbre binaire de recherche : définitions</h2>
+
+<h3 id="def">def</h3>
+
+<h3 id="structure">structure</h3>
+
+<h3 id="exemple-tableau">exemple tableau</h3>
+
+<p>plusieurs possibilités avec les même nombres ?</p>
+
+<h2 id="algorithmes-de-manipulation">algorithmes de manipulation</h2>
+
+<h3 id="création">création</h3>
+
+<h3 id="trouve">trouve</h3>
+
+<h3 id="insertion">insertion</h3>
+
+<h3 id="suppression">suppression</h3>
+
+<h2 id="trie-des-valeurs">trie des valeurs</h2>
+
+<h3 id="ordre-complet">ordre complet</h3>
+
+<h3 id="prédécesseur-dune-valeur-pas-forcément-dans-larbre">prédécesseur d’une valeur (pas forcément dans l’arbre)</h3>
+
+<h3 id="successeur-dune-valeur-pas-forcément-dans-larbre">successeur d’une valeur (pas forcément dans l’arbre)</h3>
+
+<h2 id="propriétés-de-hauteur-max-min">propriétés de hauteur max, min</h2>
+
+<blockquote class="note">
+  <p>shuffle pour hauteur min.
+exemple structure toujours équilibrée (donner noms)</p>
+</blockquote>
+
+<h2 id="exemple-du-dictionnaire">exemple du dictionnaire</h2>
+
+<blockquote class="note">
+  <p>les mots d’un dico (ou livre) puis on les prend random et on voit la hauteur</p>
+</blockquote>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d&#39;informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d&#39;informatique</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
