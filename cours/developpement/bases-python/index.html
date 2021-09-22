@@ -6,7 +6,7 @@
 <title>Bases de python | cours d’informatique</title>
 <meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="Bases de python" />
-<meta name="author" content="François Brucker" />
+<meta name="author" content="Augustin Agbo-Kpati" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
 <meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
@@ -16,7 +16,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Bases de python" />
 <script type="application/ld+json">
-{"headline":"Bases de python","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/developpement/bases-python/","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
+{"headline":"Bases de python","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/developpement/bases-python/","author":{"@type":"Person","name":"Augustin Agbo-Kpati"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
@@ -58,11 +58,22 @@
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Bases de python</h1></p>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></p>
+    <h1 class="post-title">Bases de python</h1>Auteurs :
+      <ul>
+      
+        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Augustin Agbo-Kpati</span></span></li>
+      
+        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></li>
+      
+        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Pascal Préa</span></span></li>
+      
+      </ul></p></p>
   </header>
 
   <div class="post-content">
-    <p><a href="/cours_informatique/cours/developpement/">développement</a> / <a href="/cours_informatique/cours/developpement/bases-python/">bases de python</a></p>
+    <blockquote class="chemin">
+  <p><a href="/cours_informatique/cours/developpement/">développement</a> / <a href="/cours_informatique/cours/developpement/bases-python/">bases de python</a></p>
+</blockquote>
 
 <p>Un court cours sur les bases de python. On montrera les types de bases et diverses possibilités du langages. Le niveau est basique et va préparer le cours de développement objet. On présuppose juste que vous ne soyez pas débutant complet en informatique.</p>
 
@@ -86,7 +97,7 @@
 
 <p>On peut facilement faire des <a href="/cours_informatique/cours/developpement/bases-python/operations.html">opérations sur les objets</a>.</p>
 
-<h2 id="bloc-de-code">bloc de code</h2>
+<h2 id="blocs-de-code">blocs de code</h2>
 
 <p>Si python ne pouvait qu’exécuter ligne à ligne un code on ne pourrait pas faire grand chose. Le principe des programmes est de pouvoir grouper les instructions en bloc.</p>
 
@@ -106,24 +117,26 @@
     instruction n
 </code></pre></div></div>
 
-<p>Ces différents blocs sont pratiques car ils vont nous permettre de :</p>
+<p>Ces différents blocs sont pratiques car ils vont nous permettre :</p>
 
 <ul>
-  <li>les <a href="/cours_informatique/cours/developpement/bases-python/boucles.html">exécuter un certain nombre de fois</a></li>
-  <li>les <a href="/cours_informatique/cours/developpement/bases-python/conditions.html">exécuter si une condition est vraie</a></li>
+  <li>d’<strong>exécuter un certain nombre de fois un bloc donné</strong> grâce aux <a href="/cours_informatique/cours/developpement/bases-python/boucles.html">boucles</a>.</li>
+  <li>d’<strong>exécuter si une condition est vraie</strong> grâce aux <a href="/cours_informatique/cours/developpement/bases-python/conditions.html">conditions</a></li>
 </ul>
 
-<p>Si un bloc de code est exécuté plusieurs fois à l’identique, on aimerait aussi pouvoir nommer ce groupe pour voir le réutiliser juste en appelant son nom, on appelle ces groupe des <a href="/cours_informatique/cours/developpement/bases-python/fonctions.html">fonctions</a></p>
+<p>Si un bloc de code est exécuté plusieurs fois à l’identique, on aimerait aussi pouvoir nommer ce groupe pour <strong>pouvoir le réutiliser juste en appelant son nom</strong>, ce sont les <a href="/cours_informatique/cours/developpement/bases-python/fonctions.html">fonctions</a></p>
 
 <h2 id="modules">modules</h2>
 
 <p>les <a href="/cours_informatique/cours/developpement/bases-python/modules.html">modules python</a> permettent de se faciliter la vie dans l’écriture des programmes grâces aux méthodes qu’ils définissent.</p>
 
-<p>utilisation de random.</p>
+<h2 id="notation-">notation <code class="language-plaintext highlighter-rouge">.</code></h2>
 
-<p>Comme un sous espace
-interpéteur exécution dans le terminal
-ligne à ligne</p>
+<p>On l’a vue pour les méthodes et les modules. De façon générale la notation <code class="language-plaintext highlighter-rouge">A.B</code> : se lit ainsi on cherche le nom <code class="language-plaintext highlighter-rouge">B</code> dans l’espace de nom <code class="language-plaintext highlighter-rouge">A</code>.</p>
+
+<blockquote>
+  <p>une méthode n’est rien d’autre qu’un nom appelable dans l’espace de nom de l’objet à gauche du point</p>
+</blockquote>
 
   </div>
 

@@ -6,7 +6,7 @@
 <title>Bases de python : fonctions | cours d’informatique</title>
 <meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="Bases de python : fonctions" />
-<meta name="author" content="François Brucker" />
+<meta name="author" content="Augustin Agbo-Kpati" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
 <meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
@@ -16,7 +16,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Bases de python : fonctions" />
 <script type="application/ld+json">
-{"headline":"Bases de python : fonctions","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/developpement/bases-python/fonctions.html","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
+{"headline":"Bases de python : fonctions","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/developpement/bases-python/fonctions.html","author":{"@type":"Person","name":"Augustin Agbo-Kpati"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
@@ -58,17 +58,219 @@
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Bases de python : fonctions</h1></p>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></p>
+    <h1 class="post-title">Bases de python : fonctions</h1>Auteurs :
+      <ul>
+      
+        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Augustin Agbo-Kpati</span></span></li>
+      
+        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></li>
+      
+        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Pascal Préa</span></span></li>
+      
+      </ul></p></p>
   </header>
 
   <div class="post-content">
-    <p>fonction</p>
+    <p>Une fonction est un bloc de code exécutable. On peut lui associer un nom et exécuter ce code juste en l’appelant : ceci permet de ne pas copier/coller des lignes code identiques à différents endroit du programme.</p>
 
-<p>variable comme une autre.</p>
+<p>Il n’est en effet jamais bon de copier/coller un bout de programme qui se répète plusieurs fois (corriger un problème dans ce bout de code reviendrait à le corriger autant de fois qu’il a été dupliqué…). Il est de plus souvent utile de séparer les éléments logiques d’un programme en unités autonomes, ceci rend le programme plus facile à relire.</p>
 
-<p>visibilité des varaibles de fonctions</p>
+<h2 id="définition-dune-fonction">définition d’une fonction</h2>
 
-<p>fonction vs méthode (Rattaché à un objet)</p>
+<p>Une fonction est un <strong>bloc</strong> auquel on donne un nom (le nom de la fonction) qui peut être exécuté lorsqu’on l’invoque par son nom.</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def &lt;nom&gt;(paramètre 1, paramètre 2, ..., paramètre n):
+    instruction 1
+    instruction 2
+    ...
+    instruction n
+    return &lt;objet&gt;
+</code></pre></div></div>
+
+<blockquote>
+  <p>notez que les paramètres et la dernière avec <code class="language-plaintext highlighter-rouge">return</code> sont optionnelles.</p>
+</blockquote>
+
+<p>La partie de programme suivant définit une fonction:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">bonjour</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Salutations"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>La première ligne est la définition du bloc fonction. Il contient :</p>
+
+<ul>
+  <li>un mot clé spécial précisant que l’on s’apprête à définir une fonction: <code class="language-plaintext highlighter-rouge">def</code></li>
+  <li>le nom de la fonction. Ici <code class="language-plaintext highlighter-rouge">bonjour</code></li>
+  <li>des parenthèses qui pourront contenir des paramètres (on verra ça plus tard)</li>
+  <li>le <code class="language-plaintext highlighter-rouge">:</code> qui indique que la ligne d’après va commencer le bloc proprement dit</li>
+</ul>
+
+<p>Ensuite vient le bloc fonction en lui-même qui ne contient ici qu’une seule ligne.</p>
+
+<p>Si on exécute le bloc précédent, il ne se passe rien. En effet on n’a fait que définir la fonction. Pour l’utiliser, ajoutez <code class="language-plaintext highlighter-rouge">bonjour()</code> à la suite du bloc.</p>
+
+<p>Une <strong>fonction</strong> s’utilise toujours en faisant suivre son nom d’une parenthèse contenant ses paramètres séparés par une virgule (notre fonction n’a pour l’instant pas de paramètres). Donner juste son nom ne suffit pas à l’invoquer.</p>
+
+<h2 id="nom-dune-fonction">nom d’une fonction</h2>
+
+<p>Un nom de fonction est variable comme une autre. Elle est affectée dans l’espace de nom du bloc dans lequel elle est défini.</p>
+
+<p>Dans le code suivant, exécuté dans un interpréteur on regarde le type d’un nom associé à une fonction :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; def bonjour():
+...     print("Salutations")
+... 
+&gt;&gt;&gt; type(bonjour)
+&lt;class 'function'&gt;
+</code></pre></div></div>
+
+<p>On peut aussi associer la fonction à une autre variable comme on le ferait avec n’importe quel autre objet. Dans l’exemple suivant on associe la fonction à une autre variable, <code class="language-plaintext highlighter-rouge">x</code> :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; def bonjour():
+...     print("Salutations")
+... 
+&gt;&gt;&gt; x = bonjour
+&gt;&gt;&gt; x()
+Salutations
+</code></pre></div></div>
+
+<p>En python, lorsque l’on exécute une fonction on dit qu’on <strong>l’appelle</strong>. <em>*Appeler une variable</em> est alors le fait de mettre des <code class="language-plaintext highlighter-rouge">()</code> après son nom.</p>
+
+<p>Si cela produit une erreur ce n’était pas une fonction. Regardez l’exemple ci-après, exécutable dans un interpréteur. On tente d’appeler un entier et python nous indique que ce n’est pas possible :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; n = 3
+&gt;&gt;&gt; n()
+Traceback (most recent call last):
+  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+TypeError: 'int' object is not callable
+</code></pre></div></div>
+
+<p>Enfin, en python être une fonction n’est rien d’autre que d’être un <em>objet appelable</em>. Savoir si un objet est appelable ou pas se fait par la fonction <code class="language-plaintext highlighter-rouge">callable</code> :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; def bonjour():
+...     print("Salutations")
+... 
+&gt;&gt;&gt; callable(bonjour)
+True
+&gt;&gt;&gt; callable(1)
+False
+&gt;&gt;&gt; callable("ee")
+False
+</code></pre></div></div>
+
+<blockquote>
+  <p>Pour l’instant, on ne connait que les fonctions comme objet apellable. Mais il y en a d’autres, souvent des objets que l’on crée soit même.</p>
+</blockquote>
+
+<h2 id="paramètres-dune-fonction">Paramètres d’une fonction</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">plus_moins</span><span class="p">(</span><span class="n">nombre</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">nombre</span> <span class="o">&gt;</span> <span class="mi">42</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Supérieur à 42"</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Inférieur à 42"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Cette fonction nécessite donc un paramètre pour être invoquée. Testez alors <code class="language-plaintext highlighter-rouge">plus_moins(17)</code>.
+La variable nombre sera associée à l’objet entier de valeur 17 dans la fonction. La variable nombre n’existe que dans la fonction.</p>
+
+<p>Python, à chaque exécution d’une fonction crée un espace de nom pour elle. Cet espace de nom sera détruit lorsque la fonction aura fini d’être exécutée. Une fois cet espace de nom crée, il associe le nom du paramètre à l’objet passé en paramètre.</p>
+
+<blockquote class="attention">
+  <p>Les <em>paramètres</em> d’une fonction sont des <strong>noms</strong> de variables qui ne seront connus qu’à l’intérieur de la fonction. À l’exécution de la fonction, le nom de chaque paramètre est associé à l’objet correspondant.</p>
+</blockquote>
+
+<p>Regardons le bout de code suivant, qui utilise la fonction <code class="language-plaintext highlighter-rouge">plus_moins</code> définie précédemment :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="n">plus_moins</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Lorsque python exécute la deuxième du code précédent il va :</p>
+
+<ol>
+  <li>créer un espace de nom pour la fonction</li>
+  <li>regarder les objets passés en paramètre. Ici c’est l’objet associé au nom <code class="language-plaintext highlighter-rouge">x</code>. Python cherche l’objet, c’est un entier valant 12.</li>
+  <li>python associe chaque objet à son nom <strong>dans</strong>l’espace de nom de la fonction : ici l’entier qui vaut 12 sera appelé <code class="language-plaintext highlighter-rouge">nombre</code> dans la fonction (le nom du paramètre dans la définition de la fonction).</li>
+  <li>python exécute la fonction.</li>
+  <li>à la fin de la fonction, l’espace de nom de la fonction est détruit (on ne detruit que les noms, pas les objets associés).</li>
+</ol>
+
+<h2 id="retour-dune-fonction">Retour d’une fonction</h2>
+
+<p>Toute fonction peut rendre une valeur. On utilise le mot-clef <code class="language-plaintext highlighter-rouge">return</code> suivi de la valeur à rendre pour cela. Le fonction suivante rend le double de la valeur de l’objet passé en paramètre:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">double</span><span class="p">(</span><span class="n">valeur</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">valeur</span> <span class="o">*</span> <span class="mi">2</span>
+    <span class="k">return</span> <span class="n">x</span>
+</code></pre></div></div>
+
+<p>Il ne sert à rien de mettre des instructions après une instruction <code class="language-plaintext highlighter-rouge">return</code> car dès qu’une fonction exécute cette instruction, elle s’arrête en rendant l’objet en paramètre. Le retour d’une fonction est pratique pour calculer des choses et peut ainsi être affecté à une variable.</p>
+
+<blockquote class="a-faire">
+  <p>Dans un fichier, définissez la fonction précédente puis ajouter les 2 lignes ci-après. Quel est le résultat ?</p>
+</blockquote>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="n">double</span><span class="p">(</span><span class="mi">21</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Le code précédent exécute la fonction de nom <code class="language-plaintext highlighter-rouge">double</code> avec comme paramètre un entier de valeur 21. La fonction commence par associer à une variable nommée <code class="language-plaintext highlighter-rouge">valeur</code> l’objet passé en paramètre (ici un entier de valeur <code class="language-plaintext highlighter-rouge">21</code>), puis crée une variable de nom <code class="language-plaintext highlighter-rouge">x</code> à laquelle est associée un entier de valeur <code class="language-plaintext highlighter-rouge">42</code> et enfin se termine en retournant comme valeur l’objet de nom <code class="language-plaintext highlighter-rouge">x</code>. Les variables <code class="language-plaintext highlighter-rouge">valeur</code> et <code class="language-plaintext highlighter-rouge">x</code> définies à l’intérieur de la fonction sont ensuite effacées (pas les objets, seulement les noms).</p>
+
+<p>Cette valeur retournée est utilisée par la commande <code class="language-plaintext highlighter-rouge">print</code> pour être affichée à l’écran.</p>
+
+<blockquote class="attention">
+  <p>Les noms de paramètres d’une fonction et les variables déclarée à l’intérieur de la fonction n’existent qu’à l’intérieur de celle-ci. En dehors de ce blocs, ces variables n’existent plus.</p>
+</blockquote>
+
+<h2 id="fonctions-vs-méthodes">Fonctions v.s. méthodes</h2>
+
+<p>Python vient avec de nombreuses fonctions que l’on peut utiliser. Vous en connaissez déjà comme <code class="language-plaintext highlighter-rouge">range</code>, <code class="language-plaintext highlighter-rouge">len</code>, ou encore <code class="language-plaintext highlighter-rouge">type</code>.</p>
+
+<p>Ne confondez pas fonctions et méthodes. Une fonction s’exécute toute seule alors qu’une méthode a besoin d’un objet sur lequel elle s’applique (celui avant le <code class="language-plaintext highlighter-rouge">.</code>). Vous pouvez voir ça comme un 1er paramètre indispensable à l’exécution d’une méthode. Considérez le programme suivant:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ma_liste</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">ma_liste</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>La première ligne crée une liste. La seconde instruction est une <em>méthode</em> (<code class="language-plaintext highlighter-rouge">append</code>) qui s’applique à l’objet de nom <code class="language-plaintext highlighter-rouge">ma_liste</code> et qui a un paramètre (ici un entier valant <code class="language-plaintext highlighter-rouge">10</code>).</p>
+
+<blockquote>
+  <p>On peut voir les méthodes comme des fonctions définies dans l’espace de nom de l’objet.</p>
+</blockquote>
+
+<p>Attention cependant lorsque vous utilisez des méthodes. Certaines méthodes ne rendent rien et modifient l’objet sur lequel elle est appliquée, c’est le cas des méthodes <code class="language-plaintext highlighter-rouge">append</code>, <code class="language-plaintext highlighter-rouge">insert</code> ou encore <code class="language-plaintext highlighter-rouge">reverse</code>, alors que d’autres rendent des objets, c’est le cas de <code class="language-plaintext highlighter-rouge">index</code> par exemple.</p>
+
+<blockquote class="a-faire">
+  <p>Testez le code suivant pour voir la différence ;</p>
+</blockquote>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ma_liste</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">ma_liste</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s">"coucou"</span><span class="p">)</span>
+<span class="n">un_indice</span> <span class="o">=</span> <span class="n">ma_liste</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="s">"coucou"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">un_indice</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ma_liste</span><span class="p">[</span><span class="n">un_indice</span><span class="p">])</span>
+</code></pre></div></div>
+
+<h2 id="fonction-en-paramètre">fonction en paramètre</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">produit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span>
+
+<span class="k">def</span> <span class="nf">calcul</span><span class="p">(</span><span class="n">fct</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">z</span> <span class="o">+</span> <span class="n">fct</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">17</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">calcul</span><span class="p">(</span><span class="n">produit</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+</code></pre></div></div>
+
+<blockquote class="a-faire">
+  <p>exécutez le code précédent et expliquer son fonctionnement</p>
+</blockquote>
+<details><summary>solution</summary><div>
+<p>On passe une fonction en paramètre de la fonction <code class="language-plaintext highlighter-rouge">calcul</code>. Le retour de <code class="language-plaintext highlighter-rouge">calcul(produit, 8)</code> est alors égal à $8 + (2 * 17) = 42$ puisque <code class="language-plaintext highlighter-rouge">fct</code> est alors la fonction <code class="language-plaintext highlighter-rouge">produit</code>.</p>
+
+</div></details>
 
   </div>
 

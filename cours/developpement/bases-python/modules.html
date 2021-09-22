@@ -6,7 +6,7 @@
 <title>Bases de python : modules | cours d’informatique</title>
 <meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="Bases de python : modules" />
-<meta name="author" content="François Brucker" />
+<meta name="author" content="Augustin Agbo-Kpati" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
 <meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
@@ -16,7 +16,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Bases de python : modules" />
 <script type="application/ld+json">
-{"headline":"Bases de python : modules","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/developpement/bases-python/modules.html","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
+{"headline":"Bases de python : modules","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/developpement/bases-python/modules.html","author":{"@type":"Person","name":"Augustin Agbo-Kpati"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
@@ -58,7 +58,16 @@
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Bases de python : modules</h1></p>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></p>
+    <h1 class="post-title">Bases de python : modules</h1>Auteurs :
+      <ul>
+      
+        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Augustin Agbo-Kpati</span></span></li>
+      
+        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></li>
+      
+        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Pascal Préa</span></span></li>
+      
+      </ul></p></p>
   </header>
 
   <div class="post-content">
@@ -71,16 +80,26 @@ est votre ami) s’il n’existe pas un module tout fait, vous gagnerez du temps
 
 <p>Pour utiliser un module, il faut commencer par l’importer avec la commande <code class="language-plaintext highlighter-rouge">import</code>. Par exemple avec le module <code class="language-plaintext highlighter-rouge">math</code>.</p>
 
-<h4 id="importation-directe-du-module">Importation directe du module</h4>
+<h2 id="utiliser-un-module">utiliser un module</h2>
+
+<p>Il existe plusieurs façon de faire, mais toute fonctionne sur le même principe : python va lire le module et associer les nom qu’il trouve à un espace de nom. Le mot clé utilisé est <strong>import &lt;nom de module&gt;</strong> ou une de ses variations.</p>
+
+<h3 id="importation-directe-du-module">Importation directe du module</h3>
 
 <p>On met le nom complet avant chaque appel :</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">math</span>
-<span class="n">pi_sur_deux</span> <span class="o">=</span> <span class="n">math</span><span class="p">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span> <span class="c1">#PI est défini dans le module math
-</span><span class="n">x</span> <span class="o">=</span> <span class="n">math</span><span class="p">.</span><span class="n">cos</span><span class="p">(</span><span class="n">pi_sur_deux</span><span class="p">)</span> <span class="c1">#on utilise la fonction cosinus du module math
-</span></code></pre></div></div>
+<span class="n">pi_sur_deux</span> <span class="o">=</span> <span class="n">math</span><span class="p">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span> 
+<span class="n">x</span> <span class="o">=</span> <span class="n">math</span><span class="p">.</span><span class="n">cos</span><span class="p">(</span><span class="n">pi_sur_deux</span><span class="p">)</span> 
+</code></pre></div></div>
 
-<h4 id="importation-dune-méthode-particulière">Importation d’une méthode particulière</h4>
+<p>Lors de la ligne <code class="language-plaintext highlighter-rouge">import math</code> python crée un espace de nom qu’il appelle <code class="language-plaintext highlighter-rouge">math</code>. Il lit ensuite math avec cet espace de nom. Donc tout ce qui est défini dans math, le sera dasn l’espace de nom nommé <code class="language-plaintext highlighter-rouge">math</code>. On accède ensuite aux noms de math par la notation <code class="language-plaintext highlighter-rouge">.</code>.</p>
+
+<blockquote>
+  <p>la notation <code class="language-plaintext highlighter-rouge">A.B</code> : se lit ainsi on cherche le nom <code class="language-plaintext highlighter-rouge">B</code> dans l’espace de nom <code class="language-plaintext highlighter-rouge">A</code></p>
+</blockquote>
+
+<h3 id="importation-dune-méthode-particulière">Importation d’une méthode particulière</h3>
 
 <p>Ceci peut être dangereux si des fonctions différentes possèdent le même nom.</p>
 
@@ -88,7 +107,13 @@ est votre ami) s’il n’existe pas un module tout fait, vous gagnerez du temps
 </span><span class="n">x</span> <span class="o">=</span> <span class="n">cos</span><span class="p">(</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
 </code></pre></div></div>
 
-<h4 id="importation-de-toutes-les-fonctions-du-modules">Importation de toutes les fonctions du modules</h4>
+<p>Lors de la ligne <code class="language-plaintext highlighter-rouge">from math import cos, pi</code> python crée un espace de nom pour l’import. Il lit ensuite math avec cet espace de nom. Une fois la lecture finie, il cherche les noms <code class="language-plaintext highlighter-rouge">cos</code> et <code class="language-plaintext highlighter-rouge">pi</code> et les associe à l’espace de nom <strong>global</strong>.</p>
+
+<blockquote>
+  <p>Dans cette façon de faire, on associe des noms du module math à l’espace de nom global. Il n’y a aucune manière d’accéder aux autres noms défini dans math avec cette façon de faire.</p>
+</blockquote>
+
+<h3 id="importation-de-toutes-les-fonctions-du-modules">Importation de toutes les fonctions du modules</h3>
 
 <p>Déconseillée dans la plupart des cas car on ne sait pas vraiment ce qui a été importé.</p>
 
@@ -96,51 +121,17 @@ est votre ami) s’il n’existe pas un module tout fait, vous gagnerez du temps
 <span class="n">y</span> <span class="o">=</span> <span class="n">log</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
 </code></pre></div></div>
 
-<h4 id="modules-utiles">Modules utiles</h4>
+<p>Lors de la ligne <code class="language-plaintext highlighter-rouge">from math import *</code> python lit le module math <strong>dans</strong> l’espace de nom <strong>global</strong>.</p>
 
-<p>De nombreux modules existent pour python et permettent de réaliser aisément de très nombreuses tâches. Pour python, si avez les droits administrateurs on pourra utiliser l’utilitaire <a href="https://pypi.org/project/pip/">pip</a> qui est l’installeur de package python3 (attention, si vous tapez juste pip, vous installerez des module pour la version 2 de python…).</p>
+<h2 id="installer-des-modules">installer des modules</h2>
 
-<p>Si vous n’avez pas de droits administrateur, ou pour une utilisation plus “pro” des modules, on préfèrera créer des environnements virtuels avec <em>virtualenv</em>, mais ceci  dépasse (de peu) le cadre de notre introduction à python.</p>
+<p>Suivez le <a href="/cours_informatique/tutos/python/installation/terminal/2021/08/20/installation-de-python.html#pckages">tutorial des packages</a> dans le guide d’installation de python.</p>
 
-<blockquote class="attention">
-  <p>Si vous utilisez un interpréteur qui s’appelle <code class="language-plaintext highlighter-rouge">python3</code> et pas <code class="language-plaintext highlighter-rouge">python</code>, il est fort possible que le programme <code class="language-plaintext highlighter-rouge">python</code>(sans le 3) soit un interpréteur de la version 2 de python. Il vous faut alors utiliser la commande <code class="language-plaintext highlighter-rouge">pip3</code>et non <code class="language-plaintext highlighter-rouge">pip</code> (qui sera elle associée à l’interpréteur <code class="language-plaintext highlighter-rouge">python</code>)</p>
-</blockquote>
+<h2 id="exécuter-un-module-dans-le-terminal">exécuter un module dans le terminal</h2>
 
-<h5 id="le-module-random">Le module random</h5>
+<p><code class="language-plaintext highlighter-rouge">python3 -m &lt;nom du module&gt;</code></p>
 
-<blockquote>
-  <p><a href="https://docs.python.org/3/library/random.html">https://docs.python.org/3/library/random.html</a></p>
-</blockquote>
-
-<p>Regardez <a href="https://python.sdv.univ-paris-diderot.fr/08_modules/#85-module-random-generation-de-nombres-aleatoires">ces exemples</a> pour le module random.</p>
-
-<p>Installé par défaut, il permet notamment de mélanger les éléments d’une liste, générer un nombre aléatoire, choisir un élément aléatoire dans une liste… Vous pouvez même simuler une loi Gaussienne (si, si).</p>
-
-<h5 id="openpyxl">openpyxl</h5>
-
-<blockquote>
-  <p><a href="http://openpyxl.readthedocs.org">http://openpyxl.readthedocs.org</a></p>
-</blockquote>
-
-<p>Permet de manipuler des <a href="https://automatetheboringstuff.com/chapter12/">fichiers excel avec python</a>.</p>
-
-<p>Il s’installe avec pip : <code class="language-plaintext highlighter-rouge">pip install openpyxl</code> (ou <code class="language-plaintext highlighter-rouge">sudo pip3 install openpyxl</code> suivi de votre mot de passe si vous êtes sous unix/mac).</p>
-
-<h5 id="matplotlib">matplotlib</h5>
-
-<blockquote>
-  <p><a href="http://matplotlib.org">http://matplotlib.org</a></p>
-</blockquote>
-
-<p>Installé par défaut si vous utilisez l’interpréteur d’<a href="https://www.anaconda.com/">anaconda</a>, ce module permet d’afficher des graphiques en python.</p>
-
-<h5 id="jupyter">Jupyter</h5>
-
-<blockquote>
-  <p><a href="http://jupyter.org">http://jupyter.org</a></p>
-</blockquote>
-
-<p>Permet d’utiliser python de façon interactive (il s’installe aisément avec pip par exemple)</p>
+<p>On en aura besoin pour exécuter <code class="language-plaintext highlighter-rouge">black</code> par exemple ou encore <code class="language-plaintext highlighter-rouge">pytest</code>.</p>
 
   </div>
 
