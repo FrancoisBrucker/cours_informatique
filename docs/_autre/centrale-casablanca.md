@@ -17,11 +17,6 @@ Est organisée en 3 types d'enseignements :
 * séance machine (**SM**) : exercices fait avec votre machine, accompagné d'un prof ou d'un corrigé
   > pour travailler/acquérir des connaissances pratiques
 
-
-> TBD : en chantier
-> on va utiliser le cours de [MCO]({% link cours/developpement_objet/index.md %})
-{: .danger}
-
 ## Séances
 
 1. prérequis

@@ -6,11 +6,17 @@ tags: informatique cours
 author: "François Brucker"
 ---
 
-## Introduction
 
 On va créer ici un projet complet visant à compter le pourcentage de `0` dans un nombre écrit en binaire.
 
 Le but de ce cours est de dérouler la création et la mise en œuvre d'un projet, petit à petit.
+
+
+> TBD : test/lint/black.
+
+## outils de développement
+
+On en ajoutera d'autre en cours de route, mais 
 
 ## mise en place
 

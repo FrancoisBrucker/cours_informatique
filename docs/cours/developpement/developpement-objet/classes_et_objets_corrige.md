@@ -9,7 +9,7 @@ author: "François Brucker"
 
 ## But
 
-Eléments de corrigé de la séance  [Classes et objets]({% link cours/developpement_objet/classes_et_objets.md %}).
+Eléments de corrigé de la séance  [Classes et objets]({% link cours/developpement/developpement-objet/classes_et_objets.md %}).
 
 ## Elements de cours
 

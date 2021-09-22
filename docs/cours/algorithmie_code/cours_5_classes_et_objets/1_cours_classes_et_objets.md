@@ -8,7 +8,7 @@ author: "François Brucker"
 
 ## Introduction
 
-[Classes et objets]({% link cours/developpement_objet/classes_et_objets.md %})
+[Classes et objets]({% link cours/developpement/developpement-objet/classes_et_objets.md %})
 En deux partie :
 
 * [le cours](#éléments-de-cours)

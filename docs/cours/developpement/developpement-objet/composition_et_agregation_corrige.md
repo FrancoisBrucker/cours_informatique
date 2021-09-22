@@ -9,7 +9,7 @@ author: "François Brucker"
 
 ## But
 
-Eléments de corrigé de la séance  [composition et agrégation]({% link cours/developpement_objet/composition_et_agregation.md %}).
+Eléments de corrigé de la séance  [composition et agrégation]({% link cours/developpement/developpement-objet/composition_et_agregation.md %}).
 
 
 ## Elements de cours

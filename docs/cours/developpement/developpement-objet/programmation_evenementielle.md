@@ -11,7 +11,7 @@ authors:
 ## But
 
 
-> **Elements de corrigé :** Ils sont disponibles [là]({% link cours/developpement_objet/programmation_evenementielle_corrige.md %}). Cependant, ils ne dispensent pas d'aller en cours, c'est une aide à la compréhension.
+> **Elements de corrigé :** Ils sont disponibles [là]({% link cours/developpement/developpement-objet/programmation_evenementielle_corrige.md %}). Cependant, ils ne dispensent pas d'aller en cours, c'est une aide à la compréhension.
 
 ## Séance tableau
 
@@ -278,7 +278,7 @@ Vous pouvez une fois ceci réalisé ajouter deux chaînes de caractères permett
 
 #### Comparaisons de cartes
 
-En utilisant les méthodes de comparaison vues à [la toute fin de la première séance de code]({% link cours/developpement_objet/classes_et_objets.md %}), codez les méthodes permettant de faire passer les tests suivants : 
+En utilisant les méthodes de comparaison vues à [la toute fin de la première séance de code]({% link cours/developpement/developpement-objet/classes_et_objets.md %}), codez les méthodes permettant de faire passer les tests suivants : 
 
 ~~~ python
 def test_card_equality():

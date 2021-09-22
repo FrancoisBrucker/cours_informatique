@@ -130,11 +130,3 @@ On peut ensuite régler ce paramètre sur *afterDelay* puis changer le délai da
 > On aurait pu aussi taper "auto save" dans la barre de recherche pour obtenir directement les champs possibles. Ce qui est très pratique lorsque l'on se doute du nom du paramètre que l'on veut changer.
 
 Le paramètre d'*Auto Save* dans le panel *Espace de travail* devrait toujours être sur *off*. Si vous le modifiez, un dossier de préférence *".vscode"* va être créé dans votre projet.
-
-## pour aller plus loin
-
-> TBD : autres tutos
-{: .note}
-
-* python : linter, black et compagnie.
-* git et merge (?)

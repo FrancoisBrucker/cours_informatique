@@ -8,7 +8,7 @@ author: "François Brucker"
 
 ## But
 
-Eléments de corrigé de la séance  [design patterns]({% link cours/developpement_objet/design_patterns.md %}).
+Eléments de corrigé de la séance  [design patterns]({% link cours/developpement/developpement-objet/design_patterns.md %}).
 
 
 

@@ -38,8 +38,8 @@ category: cours
 1. [le cours/ST]({% link cours/algorithmie_code/cours_5_classes_et_objets/1_cours_classes_et_objets.md %})
 2. [séance tableau]({% link cours/algorithmie_code/cours_5_classes_et_objets/2_exercices_classes_et_objets.md %})
 3. [le code]({% link cours/algorithmie_code/cours_5_classes_et_objets/3_code_classes_et_objets.md %})
-4. bonus : [test driven development]({% link cours/developpement_objet/tdd_et_test_pattern.md %}) pour vous entraîner à programmer par les tests en utilisant des classes.
-5. si vous êtes chaud : [design patterns]({% link cours/developpement_objet/design_patterns.md %}). Pour aller un peu plus loin dans le développement objet avec des design patterns.
+4. bonus : [test driven development]({% link cours/developpement/developpement-objet/tdd_et_test_pattern.md %}) pour vous entraîner à programmer par les tests en utilisant des classes.
+5. si vous êtes chaud : [design patterns]({% link cours/developpement/developpement-objet/design_patterns.md %}). Pour aller un peu plus loin dans le développement objet avec des design patterns.
 
 ### algorithmes gloutons
 

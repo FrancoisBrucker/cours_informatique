@@ -32,10 +32,12 @@ On considérera que vous avez des bases minimales en algorithmie. En particulier
 
 1. [installation python et vsc]({% link cours/developpement/installations.md %})
 2. [bases de python]({% link cours/developpement/bases-python/index.md %})
-3. objets : retour sur les espaces de noms.
-4. structures avancées dict
-5. tests
-6. TDD
+3. [outils de développement]({% link cours/developpement/outils-de-developpement.md %})
+4. [premier projet]({% link cours/developpement/premier-projet.md %})
+5. [développement objet]({% link cours/developpement/developpement-objet/index.md %})
+6. structures avancées dict
+7. tests
+8. TDD
 
 ## les références
 

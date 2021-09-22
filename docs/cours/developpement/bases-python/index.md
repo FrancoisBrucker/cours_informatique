@@ -12,9 +12,18 @@ authors:
 
 Un court cours sur les bases de python. On montrera les types de bases et diverses possibilités du langages. Le niveau est basique et va préparer le cours de développement objet. On présuppose juste que vous ne soyez pas débutant complet en informatique.
 
-## Premier programme
+## interpréteur
 
-[Le tutoriel premier programme]({% link cours/developpement/bases-python/premier-programme.md %}) vous fera utiliser pour la première fois le langage python avec l'éditeur vscode.
+L'installation des plugins vscode pour python vous a fait écrire votre 1er programme python. Tout programme python est exécuté par l'interpréteur, c'est le cœur de python. Tout programme python est exécuté de la même manière :
+
+1. on entre une ligne de code dans l'interpréteur
+2. l'interpréteur exécute cette ligne dans son *espace de noms global* (*global namespace*)
+3. une fois la ligne exécutée, l'interpréteur redonne la main à l'utilisateur
+4. retour à la l'étape 1.
+
+Un *espace de noms* est un endroit où seront stockées les différentes variables par exemple. C'est tout ce dont il faut se souvenir pour les futures lignes de code. A chaque fois que l'on exécute l'interpréteur, un nouvel *espace de noms global* est crée et une fois que l'on stoppe l'interpréteur, cet *espace* est détruit.
+
+> Le fait qu'un espace de nom existe est crucial pour pouvoir utiliser des variables et le fait qu'il soit créé au début du programme (au lancement de l'interpréteur) détruit une fois le programme terminée (une fois que l'interpréteur s'arrête) permet d'assurer qu'un programme donnera toujours le même résultat (si l'espace de noms etait toujours le même il resterait des variables d'un ancien programme dans un nouveau...).
 
 ## objets de python
 

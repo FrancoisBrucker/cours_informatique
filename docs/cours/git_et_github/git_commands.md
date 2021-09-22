@@ -31,7 +31,7 @@ C'est aussi la façon la plus simple d'initialiser un projet github. Une fois le
 git clone <url>
 ~~~
 
-<url> sera ce qui est copié depuis la page du projet :
+`<url>` sera ce qui est copié depuis la page du projet :
 
 ![usage github]({{ "/assets/cours/git/github-clone-projet.png" | relative_url }}){:style="margin: auto;display: block}
 

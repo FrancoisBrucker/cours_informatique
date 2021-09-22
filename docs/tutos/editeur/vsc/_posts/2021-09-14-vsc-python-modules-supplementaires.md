@@ -70,7 +70,7 @@ Dans un [terminal]({% post_url tutos/systeme/2021-08-24-terminal %}), qui peut √
 {% details sous linux et mac %}
 
 ```shell
-python3 -m black mon-fichier.py
+pip3 install black
 ```
 
 {% enddetails %}
@@ -78,7 +78,7 @@ python3 -m black mon-fichier.py
 {% details sous windows %}
 
 ```shell
-python -m black mon-fichier.py
+pip install black
 ```
 
 {% enddetails %}
@@ -103,7 +103,7 @@ Vous pouvez aussi ex√©cuter la commande *format document* dans [palette de comma
 {% details sous linux et mac %}
 
 ```shell
-pip3 install black
+python3 -m black mon-fichier.py
 ```
 
 {% enddetails %}
@@ -111,7 +111,7 @@ pip3 install black
 {% details sous windows %}
 
 ```shell
-pip install black
+python -m black mon-fichier.py
 ```
 
 {% enddetails %}

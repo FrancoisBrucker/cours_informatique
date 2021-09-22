@@ -10,7 +10,7 @@ authors:
 
 ## But
 
-Éléments de corrigé de la séance  [héritage]({% link cours/developpement_objet/heritage.md %}).
+Éléments de corrigé de la séance  [héritage]({% link cours/developpement/developpement-objet/heritage.md %}).
 
 ## Séance tableau
 
