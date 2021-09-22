@@ -1,7 +1,10 @@
 ---
 layout: page
 title:  "Bases de python : listes"
-author: "François Brucker"
+authors: 
+    - Augustin Agbo-Kpati
+    - François Brucker
+    - Pascal Préa
 ---
 
 

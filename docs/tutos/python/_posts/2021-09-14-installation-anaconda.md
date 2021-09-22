@@ -10,6 +10,8 @@ Comment installer la [distribution anaconda](https://www.anaconda.com/) de pytho
 
 <!--more-->
 
+Si vous cherchez un tutoriel pour général sur ce qu'est python et comment l'installer/utiliser : [installation python]({% post_url /tutos/python/2021-08-20-installation-de-python %}).
+
 ## introduction
 
 [Anaconda](https://www.anaconda.com/) est une entreprise gérant des distributions python orientés data-science. L'intérêt d'une telle distribution est qu'elle regroupe et installe de nombreux utilitaires. Le côté négatif est que l'on ne maîtrise pas les paquets installés et l'installation de paquets supplémentaires est parfois problématique.
@@ -153,3 +155,12 @@ Vous pouvez ensuite taper `python` sous windows et `python3` sous mac et linux p
 ### python avec un terminal normal
 
 Ouvrez un [terminal]({% post_url /tutos/systeme/2021-08-24-terminal %}) et tapez `python` sous windows et `python3` sous mac et linux pour entrer dans un [interpréteur python]({% post_url /tutos/python/2021-08-20-installation-de-python %}#interpreteur-id).
+
+## installation de nouveaux modules
+
+Anaconda vient avec de nombreux modules déjà installé. Si on veut en installer d'autres, il y a deux solutions :
+
+* utiliser le gestionnaire de modules de python
+* utiliser [conda](https://conda.io/projects/conda/en/latest/user-guide/index.html) qui est le gesionnaire de modules dsécifique à anaconda.
+
+> Si vous avez le choix, utilisez le gestionnaire de modules de python.

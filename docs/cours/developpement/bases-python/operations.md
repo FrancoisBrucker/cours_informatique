@@ -1,7 +1,10 @@
 ---
 layout: page
 title:  "Bases de python : Objets types et types d'objets"
-author: "François Brucker"
+authors: 
+    - Augustin Agbo-Kpati
+    - François Brucker
+    - Pascal Préa
 ---
 
 Les opérations sur les objets vont des opérations arithmétiques (addition) aux tests (est plus grand que) en passant par les opérations logiques (a et b)

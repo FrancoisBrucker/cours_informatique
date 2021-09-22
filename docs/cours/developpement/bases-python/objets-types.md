@@ -1,7 +1,10 @@
 ---
 layout: page
 title:  "Bases de python : Objets types et types d'objets"
-author: "François Brucker"
+authors: 
+    - Augustin Agbo-Kpati
+    - François Brucker
+    - Pascal Préa
 ---
 
 

@@ -1,7 +1,10 @@
 ---
 layout: page
 title:  "Bases de python : modules"
-author: "François Brucker"
+authors: 
+    - Augustin Agbo-Kpati
+    - François Brucker
+    - Pascal Préa
 ---
 
 Un *module* (aussi appelé *bibliothèque* ou *library*) est un ensemble de fonctions utiles, utilisables dans de nombreux programmes. Plutôt que de refaire à chaque fois ces fonctions ou (c'est pire) de les copier/coller dans chaque programme, on les importe directement pour les utiliser.
@@ -11,17 +14,25 @@ Un *module* (aussi appelé *bibliothèque* ou *library*) est un ensemble de fonc
 
 Pour utiliser un module, il faut commencer par l'importer avec la commande `import`. Par exemple avec le module `math`.
 
-#### Importation directe du module
+## utiliser un module
+
+Il existe plusieurs façon de faire, mais toute fonctionne sur le même principe : python va lire le module et associer les nom qu'il trouve à un espace de nom. Le mot clé utilisé est **import \<nom de module\>** ou une de ses variations.
+
+### Importation directe du module
 
 On met le nom complet avant chaque appel :
 
 ```python
 import math
-pi_sur_deux = math.pi / 2 #PI est défini dans le module math
-x = math.cos(pi_sur_deux) #on utilise la fonction cosinus du module math
+pi_sur_deux = math.pi / 2 
+x = math.cos(pi_sur_deux) 
 ```
 
-#### Importation d'une méthode particulière
+Lors de la ligne `import math` python crée un espace de nom qu'il appelle `math`. Il lit ensuite math avec cet espace de nom. Donc tout ce qui est défini dans math, le sera dasn l'espace de nom nommé `math`. On accède ensuite aux noms de math par la notation `.`.
+
+> la notation `A.B` : se lit ainsi on cherche le nom `B` dans l'espace de nom `A`
+
+### Importation d'une méthode particulière
 
 Ceci peut être dangereux si des fonctions différentes possèdent le même nom.
 
@@ -30,7 +41,11 @@ from math import cos, pi #importation directe de cos et de pi
 x = cos(pi / 2)
 ```
 
-#### Importation de toutes les fonctions du modules
+Lors de la ligne `from math import cos, pi` python crée un espace de nom pour l'import. Il lit ensuite math avec cet espace de nom. Une fois la lecture finie, il cherche les noms `cos` et `pi` et les associe à l'espace de nom **global**.
+
+> Dans cette façon de faire, on associe des noms du module math à l'espace de nom global. Il n'y a aucune manière d'accéder aux autres noms défini dans math avec cette façon de faire.
+
+### Importation de toutes les fonctions du modules
 
 Déconseillée dans la plupart des cas car on ne sait pas vraiment ce qui a été importé.
 
@@ -39,39 +54,14 @@ from math import *
 y = log(e)
 ```
 
-#### Modules utiles
+Lors de la ligne `from math import *` python lit le module math **dans** l'espace de nom **global**.
 
-De nombreux modules existent pour python et permettent de réaliser aisément de très nombreuses tâches. Pour python, si avez les droits administrateurs on pourra utiliser l'utilitaire [pip](https://pypi.org/project/pip/) qui est l'installeur de package python3 (attention, si vous tapez juste pip, vous installerez des module pour la version 2 de python...).
+## installer des modules
 
-Si vous n'avez pas de droits administrateur, ou pour une utilisation plus "pro" des modules, on préfèrera créer des environnements virtuels avec *virtualenv*, mais ceci  dépasse (de peu) le cadre de notre introduction à python.
+Suivez le [tutorial des packages]({% post_url /tutos/python/2021-08-20-installation-de-python %}#pckages) dans le guide d'installation de python.
 
->Si vous utilisez un interpréteur qui s'appelle `python3` et pas `python`, il est fort possible que le programme `python`(sans le 3) soit un interpréteur de la version 2 de python. Il vous faut alors utiliser la commande `pip3`et non `pip` (qui sera elle associée à l'interpréteur `python`)
-{: .attention}
+## exécuter un module dans le terminal
 
-##### Le module random
+`python3 -m <nom du module>`
 
-> <https://docs.python.org/3/library/random.html>
-
-Regardez [ces exemples](https://python.sdv.univ-paris-diderot.fr/08_modules/#85-module-random-generation-de-nombres-aleatoires) pour le module random.
-
-Installé par défaut, il permet notamment de mélanger les éléments d'une liste, générer un nombre aléatoire, choisir un élément aléatoire dans une liste... Vous pouvez même simuler une loi Gaussienne (si, si).
-
-##### openpyxl
-
-> <http://openpyxl.readthedocs.org>
-
-Permet de manipuler des [fichiers excel avec python](https://automatetheboringstuff.com/chapter12/).
-
-Il s'installe avec pip : `pip install openpyxl` (ou `sudo pip3 install openpyxl` suivi de votre mot de passe si vous êtes sous unix/mac).
-
-##### matplotlib
-
-> <http://matplotlib.org>
-
-Installé par défaut si vous utilisez l'interpréteur d'[anaconda](https://www.anaconda.com/), ce module permet d'afficher des graphiques en python.
-
-##### Jupyter
-
-> <http://jupyter.org>
-
-Permet d'utiliser python de façon interactive (il s'installe aisément avec pip par exemple) 
+On en aura besoin pour exécuter `black` par exemple ou encore `pytest`.

@@ -14,8 +14,6 @@ Comment installer et utiliser python sur son ordinateur. On y verra différentes
 
 1. [qu'est que python](#python-)
 2. [installation](#installation)
-   * [anaconda](#anaconda-id)
-   * [gestionnaire de paquet](#gestionnaire-package-id)
 3. [tests de fonctionnement avec un terminal](#interpreteur-id)
 4. [installation de nouveaux packages](#packages)
 
@@ -115,7 +113,7 @@ C'est un peut plus compliqué qu'utiliser anaconda mais si vous voulez faire de 
 
 On utilise [brew](https://brew.sh/index_fr), qu'il vous faudra tout d'abord installer. Toutes les commandes se font ensuite via le [terminal]({% post_url /tutos/systeme/2021-08-24-terminal %}).
 
-Une fois brew installé, vous pouvez installer python en tapant la commande : 
+Une fois brew installé, vous pouvez installer python en tapant la commande :
 
 ```shell
 brew install python
@@ -202,7 +200,7 @@ get-command python
 
 La commande devrait vous rendre l'emplacement sur votre disque dur de votre interpréteur. Vérifiez le avec un explorateur de fichier.
 
-## packages
+## packages {#packages}
 
 Python vient avec une [liste de packages](https://docs.python.org/3/library/) bien fournie. On peut les utiliser via le mot clé `import` en python. Il en existe une foultitude d'autres qui permettent d'aider à coder rapidement. La liste des différents packages est disponible sur <https://pypi.org/>
 
@@ -211,6 +209,7 @@ Python vient avec une [liste de packages](https://docs.python.org/3/library/) bi
 Pour installer de nouveaux packages python, on utilise la commande `pip`.
 
 > si votre interpréteur python est `python3`, vous devez utiliser la commande `pip3`
+{: .attention}
 
 Testez le en ouvrant un terminal et en tapant :
 

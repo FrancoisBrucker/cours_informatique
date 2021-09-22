@@ -1,10 +1,14 @@
 ---
 layout: page
 title:  "Bases de python"
-author: "François Brucker"
+authors: 
+    - Augustin Agbo-Kpati
+    - François Brucker
+    - Pascal Préa
 ---
 
-[développement]({% link cours/developpement/index.md %}) / [bases de python]({% link cours/developpement/bases-python/index.md %})
+> [développement]({% link cours/developpement/index.md %}) / [bases de python]({% link cours/developpement/bases-python/index.md %})
+{: .chemin}
 
 Un court cours sur les bases de python. On montrera les types de bases et diverses possibilités du langages. Le niveau est basique et va préparer le cours de développement objet. On présuppose juste que vous ne soyez pas débutant complet en informatique.
 
@@ -28,7 +32,7 @@ Les objets peuvent être stockés dans des structures nommées conteneur, comme 
 
 On peut facilement faire des [opérations sur les objets]({% link cours/developpement/bases-python/operations.md %}).
 
-## bloc de code
+## blocs de code
 
 Si python ne pouvait qu'exécuter ligne à ligne un code on ne pourrait pas faire grand chose. Le principe des programmes est de pouvoir grouper les instructions en bloc.
 
@@ -47,19 +51,19 @@ type de bloc:
     instruction n
 ```
 
-Ces différents blocs sont pratiques car ils vont nous permettre de :
+Ces différents blocs sont pratiques car ils vont nous permettre :
 
-* les [exécuter un certain nombre de fois]({% link cours/developpement/bases-python/boucles.md %})
-* les [exécuter si une condition est vraie]({% link cours/developpement/bases-python/conditions.md %})
+* d'**exécuter un certain nombre de fois un bloc donné** grâce aux [boucles]({% link cours/developpement/bases-python/boucles.md %}).
+* d'**exécuter si une condition est vraie** grâce aux [conditions]({% link cours/developpement/bases-python/conditions.md %})
 
-Si un bloc de code est exécuté plusieurs fois à l'identique, on aimerait aussi pouvoir nommer ce groupe pour voir le réutiliser juste en appelant son nom, on appelle ces groupe des [fonctions]({% link cours/developpement/bases-python/fonctions.md %})
+Si un bloc de code est exécuté plusieurs fois à l'identique, on aimerait aussi pouvoir nommer ce groupe pour **pouvoir le réutiliser juste en appelant son nom**, ce sont les [fonctions]({% link cours/developpement/bases-python/fonctions.md %})
 
 ## modules
 
 les [modules python]({% link cours/developpement/bases-python/modules.md %}) permettent de se faciliter la vie dans l'écriture des programmes grâces aux méthodes qu'ils définissent.
 
-utilisation de random.
+## notation `.`
 
-Comme un sous espace
-interpéteur exécution dans le terminal
-ligne à ligne
+On l'a vue pour les méthodes et les modules. De façon générale la notation `A.B` : se lit ainsi on cherche le nom `B` dans l'espace de nom `A`.
+
+> une méthode n'est rien d'autre qu'un nom appelable dans l'espace de nom de l'objet à gauche du point

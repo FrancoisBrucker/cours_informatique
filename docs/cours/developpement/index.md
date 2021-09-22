@@ -4,6 +4,9 @@ title:  "Base du développement logiciel (en python)"
 author: "François Brucker"
 ---
 
+> [développement]({% link cours/developpement/index.md %})
+{: .chemin}
+
 On donnera ici les bases nécessaire au développement logiciel. On prendra comme langage d'application le python et on ne présupposera aucune autre connaissances que ceux en prérequis.
 
 ## Prérequis
@@ -29,13 +32,12 @@ On considérera que vous avez des bases minimales en algorithmie. En particulier
 
 1. [installation python et vsc]({% link cours/developpement/installations.md %})
 2. [bases de python]({% link cours/developpement/bases-python/index.md %})
-3. objets
+3. objets : retour sur les espaces de noms.
 4. structures avancées dict
 5. tests
 6. TDD
 
-
 ## les références
 
-* doc python
-* tutoriel
+* [installation complète de python]({% post_url /tutos/python/2021-08-20-installation-de-python %})
+* [tutoriel python](https://docs.python.org/fr/3/tutorial/)
