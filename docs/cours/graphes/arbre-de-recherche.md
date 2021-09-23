@@ -6,6 +6,7 @@ tags: informatique code graphes
 authors : 
     - François Brucker
     - Pascal Préa
+    - Sébastien Ratel
 ---
 
 > [graphes]({% link cours/graphes/index.md %}) / [arbre de recherche]({% link cours/graphes/arbre-de-recherche.md %})
@@ -152,7 +153,7 @@ def change_valeur(x, nouveau):
 
 ### encodage
 
-Prenons les deux tas de la figure ci-après : 
+Prenons les deux tas de la figure ci-après :
 
 ![tas possibles]({{ "/assets/cours/graphes/tas_2-possibilites.png" | relative_url }}){:style="margin: auto;display: block;"}
 
@@ -247,39 +248,351 @@ Un **arbre binaire de recherche** est un arbre binaire planté dont les sommets 
 
 ### exemple
 
-### exemple tableau
+![abr possibles]({{ "/assets/cours/graphes/abr-ou-pas.png" | relative_url }}){:style="margin: auto;display: block;"}
 
-plusieurs possibilités avec les même nombres ?
+>Des deux figures précédentes, laquelle est un arbre binaire de recherche ?
+{: .a-faire}
+{% details solution %}
+
+Celui de gauche n'est pas un arbre binaire de recherche, car 15 est à gauche de 10 et il est plus grand. C'est tous les descendants d'au nœud qui doivent être plus petit s'il sont à gauche ou plus grand s'il sont à droite.
+
+{% enddetails %}
+{: .a-faire}
+
+> Il existe d'autres possibilités d'arbre binaire de recherche avec ces nombres. Donnez-en une.
+{: .a-faire}
+{% details solution %}
+
+Il y a au moins celui-là :
+
+![abr lignes]({{ "/assets/cours/graphes/abr-ligne.png" | relative_url }}){:style="margin: auto;display: block;"}
+
+{% enddetails %}
+{: .a-faire}
+
+> Donnez la structure python des deux arbres binaires de recherche
+{: .a-faire}
+{% details solution %}
+
+```python
+[12, [8, [6, None, None], [10, None, None]], [15, None, [20, None, None]]]
+
+[6, None, [8, None, [10, None, [12, None, [15, None, [20, None, None]]]]]]
+```
+
+{% enddetails %}
+{: .a-faire}
 
 ## algorithmes de manipulation
 
 ### création
 
+>En utilisant la structure des arbres binaires, donnez un fonction python qui crée un arbre binaire de recherche à partir d'une valeur.
+{: .a-faire}
+{% details solution %}
+
+```python
+def creation(valeur):
+    return [valeur, None, None] 
+```
+
+{% enddetails %}
+{: .a-faire}
+
 ### trouve
+
+>Donnez un fonction python qui, à partir d'une valeur et d'un arbre binaire de recherche répond `True` si la valeur est dans l'arbre et `False` sinon. Cet algorithme pourra s'inspirer de la [recherche dichotomique](https://fr.wikipedia.org/wiki/Recherche_dichotomique).
+{: .a-faire}
+{% details solution %}
+
+```python
+def recherche(val, racine):
+    if racine is None:
+        return False
+    elif valeur(racine) == val:
+        return True
+    elif valeur(racine) > val:
+        return recherche(val, enfant_gauche(racine))
+    else:
+        return recherche(val, enfant_droit(racine))
+```
+
+{% enddetails %}
+{: .a-faire}
+
+> Quelle est la complexité de cette fonction ?
+{: .a-faire}
+{% details solution %}
+
+Elle est proportionnelle à la hauteur de l'arbre.
+
+{% enddetails %}
+{: .a-faire}
+
+> Ajouter à votre code la fonction de recherche et les deux arbres que vous avez trouvé. Essayez de trouver 10 et 42 sur vos deux arbres.
+{: .a-faire}
+{% details solution %}
+
+```python
+# ...
+
+abr_1 = [12, [8, [6, None, None], [10, None, None]], [15, None, [20, None, None]]]
+abr_2 = [6, None, [8, None, [10, None, [12, None, [15, None, [20, None, None]]]]]]
+
+print(recherche(10, abr_1))
+print(recherche(42, abr_1))
+
+print(recherche(10, abr_2))
+print(recherche(42, abr_2))
+
+```
+
+{% enddetails %}
+{: .a-faire}
 
 ### insertion
 
+> Déduire de la question précédente que pour un arbre binaire donné et une valeur, il n'y a qu'une seule position possible pour insérer une valeur donnée.
+{: .a-faire}
+{% details solution %}
+
+Dans la recherche, il n'y a à chaque fois qu'une seule possibilité. Si on ne trouve pas la valeur, l'endroit où on est arrivé dans l'arbre est la position où on doit l'insérer
+
+{% enddetails %}
+{: .a-faire}
+
+> En modifiant l'algorithme de recherche, donner l'algorithme de l'insertion d'une valeur dans l'arbre.
+{: .a-faire}
+{% details solution %}
+
+```python
+def insertion(val, racine):
+    if racine is None or valeur(racine) == val:
+        return
+    elif valeur(racine) > val:
+        if enfant_gauche(racine) is None:
+            change_enfant_gauche(racine, abr(val))
+        else:
+            insertion(val, enfant_gauche(racine))
+    else:
+        if enfant_droit(racine) is None:
+            change_enfant_droit(racine, abr(val))
+        else:
+            insertion(val, enfant_droit(racine))
+```
+
+{% enddetails %}
+{: .a-faire}
+
+> Quelle est la complexité de cette fonction ?
+{: .a-faire}
+{% details solution %}
+
+Elle est proportionnelle à la hauteur de l'arbre.
+
+{% enddetails %}
+{: .a-faire}
+
+>Insérez 42 dans les 2 arbres de recherche précédents. Et donner le résultat.
+{: .a-faire}
+{% details solution %}
+
+```python
+insertion(42, abr_1)
+print(abr_1)
+insertion(42, abr_2)
+print(abr_2)
+```
+
+Ce qui donne :
+
+```python
+[12, [8, [6, None, None], [10, None, None]], [15, None, [20, None, [42, None, None]]]]
+[6, None, [8, None, [10, None, [12, None, [15, None, [20, None, [42, None, None]]]]]]]
+```
+
+{% enddetails %}
+{: .a-faire}
+
 ### suppression
 
-## trie des valeurs
+Supprimer un noeud d'un arbre de recherche peut être simple si :
 
-en-ordre
+* ce nœud n'a pas d'enfant : on le remplace dans son parent par `None`
+* ce nœud n'a qu'un seul enfant : on le remplace par son enfant dans son parent.
 
-### ordre complet
+Si le noeud, disons $x$ à 2 enfants, on peut chercher le noeud contenant la plus grande des valeurs plus petite que celle du noeud parmi ses descendants, disons $y$. Ce noeud n'aura qu'un seul enfant.
 
-### prédécesseur d'une valeur (pas forcément dans l'arbre)
+> pourquoi ?
+{: .a-faire}
+{% details solution %}
 
-### successeur d'une valeur (pas forcément dans l'arbre)
+Le noeud recherché sera un descendant de $x$ à gauche. Il ne peut avoir de fils droit sinon ce fils aurait une valeur plus grande que sont père ($y$) et donc serait plus proche en valeur de $x$. ce qui est impossible par construction.
 
-## propriétés de hauteur max, min
+{% enddetails %}
+{: .a-faire}
 
-> shuffle pour hauteur min.
-> exemple structure toujours équilibrée (donner noms)
-{: .note}
+> Comment trouver $y$ ?
+{: .a-faire}
+{% details solution %}
 
-### hauteur min à partir d'une liste triée
+C'est le premier enfant à droite des descendants de $x$.
 
-## exemple du dictionnaire
+{% enddetails %}
+{: .a-faire}
 
-> les mots d'un dico (ou livre) puis on les prend random et on voit la hauteur
-{:.note}
+On peut alors échanger les valeur de $x$ et de $y$ puis supprimer $y$ pour conserver la structure d'arbre binaire de recherche.
+
+> pourquoi ?
+{: .a-faire}
+{% details solution %}
+
+$y$ n'a qu'un enfant, il est donc facile de le supprimer et de conserver la structure d'arbre de recherche.
+
+En échangeant les valeurs, on a pris une valeur inférieure à celle de $x$ mais plus grande que toute les autres valeurs plus petite que $x$ dans l'arbre, elle ne viole donc aucune règle dans l'arbre.
+
+{% enddetails %}
+{: .a-faire}
+
+> Quelle est la complexité de cette fonction ?
+{: .a-faire}
+{% details solution %}
+
+Elle est proportionnelle à la hauteur de l'arbre.
+
+{% enddetails %}
+{: .a-faire}
+
+## ordre des valeurs
+
+### trie des valeurs
+
+>Que donne comme résultat le parcours [en-ordre]({% link cours/graphes/arbres.md %}#en-ordre) d'un arbre de recherche ?
+{: .a-faire}
+{% details solution %}
+
+Ca rend les valeurs de l'arbre dans l'ordre du plus petit au plus grand.
+
+{% enddetails %}
+{: .a-faire}
+
+## hauteur d'un arbre binaire de recherche
+
+On voit que toutes les opérations sur un arbre binaire de recherche sont proportionnelles à sa hauteur.
+
+> Quelle est la hauteur maximale d'un arbre binaire de recherche ?
+{: .a-faire}
+{% details solution %}
+
+c'est le nombre d'élément si tous les noeud n'ont qu'un seul enfant.
+
+{% enddetails %}
+{: .a-faire}
+
+> A partir d'une liste de valeurs, donner un algorithme qui rend un arbre binaire de recherche de hauteur maximale contenant ces valeurs.
+{: .a-faire}
+{% details solution %}
+On commence par trier la liste puis on insère les éléments un à un dans cet ordre.
+
+{% enddetails %}
+{: .a-faire}
+
+> Quelle est la hauteur minimale d'un arbre binaire de recherche ?
+{: .a-faire}
+{% details solution %}
+
+la hauteur minimale est atteinte si tous les nœuds on 2 enfants. La hauteur est alors $log_2(n)$ où $n$ est le nombre de sommet.
+{% enddetails %}
+{: .a-faire}
+
+> A partir d'une liste de valeurs, donner un algorithme qui rend un arbre binaire de recherche de hauteur minimale contenant ces valeurs. On s'inspirera de la recherche dichotomique pour à chaque fois insérer le milieu.
+{: .a-faire}
+{% details solution %}
+On commence par trier la liste puis on insère les éléments en prenant récursivement le milieu.
+
+```python
+
+liste.sort()
+
+abr = creation(liste[len(liste) // 2])
+
+def abr_insere_min(debut, fin):
+    if fin > debut + 1:
+        x = liste[(debut + fin) // 2]
+        insertion(x, abr)
+        abr_insere_min(debut, x)
+        abr_insere_min(x, fin)
+
+abr_insere_min(0, len(liste) // 2)
+abr_insere_min(len(liste) // 2, len(liste))
+
+print(abr)
+```
+
+{% enddetails %}
+{: .a-faire}
+
+## hauteur expérimentale
+
+Conserver une hauteur minimale dans un arbre binaire de recherche est donc crucial pour maintenir de bonnes performances. 
+
+> Il existe des version des arbres re cherche qui s'équilibrent tout seul comme les [AVL](https://fr.wikipedia.org/wiki/Arbre_AVL) ou les arbres [rouge/noir](https://fr.wikipedia.org/wiki/Arbre_bicolore) mais leur structure est plus lourde algorithmiquement.
+
+La clé est d'insérer les valeurs dans un ordre aléatoire. Nous allons de montrer expérimentalement.
+
+Essayez avec la liste des 1000 premiers entiers.
+
+> Insérer des nombre pris dans une liste triée et vérifier que la hauteur est égale à la longueur de la liste
+{: .a-faire}
+{% details solution %}
+
+```python
+liste = list(range(1000))
+
+abr = creation(liste[0])
+for x in liste[1:]:
+    instertion(x, abr)
+```
+
+{% enddetails %}
+{: .a-faire}
+
+> Insérer des nombre pris dans la même liste que précédemment de façon à minimiser la hauteur et vérifier que celle-ci est égale au log en base 2 la longueur de la liste
+{: .a-faire}
+{% details solution %}
+
+reprendre le code de la question sur la hauteur minimale.
+
+{% enddetails %}
+{: .a-faire}
+
+> Insérer de façon aléatoire des nombre pris dans la même liste que précédemment et vérifier que la hauteur est de l'ordre du au log en base 2 la longueur de la liste
+{: .a-faire}
+{% details solution %}
+
+```python
+import random
+
+liste = list(range(1000))
+random.shuffle(liste)
+
+abr = creation(liste[0])
+for x in liste[1:]:
+    instertion(x, abr)
+```
+
+{% enddetails %}
+{: .a-faire}
+
+Lors de mes expérimentation, je trouve :
+
+* une hauteur max de 1000
+* une hauteur min de 10
+* une hauteur aléatoire de l'ordre de 20
+
+> essayez avec des listes plus grandes.
+{: .a-faire}
+
+## conclusion
+
+Les [arbre de recherche](https://fr.wikipedia.org/wiki/Arbre_binaire_de_recherche) sont une structure qui fonctionne comme une liste triée pour la recherche d'un élément, mais qui est bien plus efficace pour l'insertion.

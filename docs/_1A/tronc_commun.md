@@ -30,7 +30,7 @@ Le [sujet aux TD]({% link cours/graphes/arbres.md %}) qui vous fera découvrir p
 
 ### ST et SM : arbres de recherche
 
-Séance en autonomie sur les parcours d'arbres.
+La séance d'autonomie sur [les arbres de recherche]({% link cours/graphes/arbre-de-recherche.md %})
 
 ### ST : chemin de poids min
 
