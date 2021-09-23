@@ -43,13 +43,15 @@ On utilise le [parcours en largeur des graphes](https://fr.wikipedia.org/wiki/Al
 >* Tout graphe connexe contient au minimum $\vert V \vert - 1$ arêtes.
 {: .a-faire}
 
-Pour la 1ère preuve, Si $\vert E \vert \geq \vert V \vert$, comme $\sum_x \delta(x) = 2 \vert E \vert$, on a $\sum_x \delta(x) \geq 2 \vert V \vert$. 
+Pour la 1ère preuve, on suppose alors qu'il existe un graphe $G= (V, E)$, tel que $\vert E \vert \geq \vert V \vert$ et qu'il n'y ait pas de cycles.
 
-On suppose maintenant que $\vert E \vert \geq \vert V \vert$ et qu'il n'y a pas de cycle. De là, il existe un somme de degré plus petit ou égal à un (sinon, tous les degrés sont plus grand ou égal à 2 et [le cours nous dit qu'il existe un cycle]({% link cours/graphes/parcours-euleriens.md %}#prop-cycles-graph)) et donc pour que $\sum_x \delta(x) \geq 2 \vert V \vert$ il existe un autre sommet de degré strictement plus grand que 2 et donc au moins 4 sommets.
+Commençons par remarquer que si $\vert E \vert \geq \vert V \vert$, alors forcément $\vert V \vert \geq 3$ et s'il n'a pas de cycle alors $\vert V \vert > 3$. De là, on choisit $\vert V \vert$ le plus petit possible.
 
-De là, si on supprime un sommet de degré 1 ou moins et son arête du graphe, on a toujours $\vert E \vert \geq \vert V \vert$ pour le graphe résultant et donc : soit ce graphe ne contient que des sommets de degrès plus grand ou égal à 2, soit il a au moins 4 sommets et on peut trouver un autre sommet de degré 1 ou moins et on peut recommencer. Par finitude du graphe, on doit forcément s'arrêter un jour : il n'existe plus que des sommets de degrés 2 donc un cycle.
+S'il existait dans ce graphe un sommet de degré plus petit ou égal à 1, on pourrait le supprimer du graphe et on aurait un graphe $G' = (V', E')$ avec strictement moins de sommets que $G$, tel que $\vert E' \vert \geq \vert V' \vert$ et qui ne contiendrait pas de cycle (on ne peut pas ajouter de cycle en supprimant une arête ou un sommet à un graphe). Ce qui est impossible par choix de $G$.
 
-Pour la première preuve, on le montre par récurrence. La propriété est clairement vraie pour un graphe à 1 ou 2 sommets. On la suppose alors vraie jusqu'à $n$ sommets et on considère un graphe connexe à $n+1$ sommets.
+Donc tout sommet de $G$ a un degré d'au moins 2 et il existe un cycle ([c'est dans le cours]({% link cours/graphes/parcours-euleriens.md %}#prop-cycles-graph)) : notre hypothèse était fausse.
+
+Pour la seconde preuve, on la montre par récurrence. La propriété est clairement vraie pour un graphe à 1 ou 2 sommets. On la suppose alors vraie jusqu'à $n$ sommets et on considère un graphe connexe à $n+1$ sommets.
 
 Pour ce graphe on choisi un sommet, $x$, que l'on supprime du graphe. Ce dernier n'est alors plus connexe et possède $p$ composantes connexes qui respectent l'hypothèse de récurrence : $\vert E_i \vert \geq \vert V_i \vert -1$ pour chacune d'elles. En sommant le tout on a alors :
 
