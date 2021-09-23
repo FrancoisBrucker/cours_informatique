@@ -101,7 +101,7 @@
 </blockquote>
 <details class="a-faire"><summary>solution</summary><div>
 <p>En notant $g$ et $d$ les enfants gauche et droit d’un nœud $n$, on a que :
-$h(n) = \max(h(g), h(d))$</p>
+$h(n) = \max(h(g), h(d)) + 1$</p>
 
 </div></details>
 
@@ -109,7 +109,7 @@ $h(n) = \max(h(g), h(d))$</p>
   <p>En déduire un algorithme qui calcule récursivement la hauteur d’un arbre. Et donnez en sa complexité.</p>
 </blockquote>
 <details class="a-faire"><summary>solution</summary><div>
-<p>On suppose que l’on a les fonction <code class="language-plaintext highlighter-rouge">enfant_gauche(noeud)</code>et <code class="language-plaintext highlighter-rouge">enfant_droit(noeud)</code> qui rende respectivement l’enfant gauche et l’enfant droit d’un noeud s’il existe et <code class="language-plaintext highlighter-rouge">None</code> sinon.</p>
+<p>On suppose que l’on a les fonctions <code class="language-plaintext highlighter-rouge">enfant_gauche(noeud)</code>et <code class="language-plaintext highlighter-rouge">enfant_droit(noeud)</code> qui rende respectivement l’enfant gauche et l’enfant droit d’un noeud s’il existe et <code class="language-plaintext highlighter-rouge">None</code> sinon.</p>
 
 <p>On a alors :</p>
 
@@ -117,7 +117,7 @@ $h(n) = \max(h(g), h(d))$</p>
 <span class="k">def</span> <span class="nf">hauteur</span><span class="p">(</span><span class="n">noeud</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">noeud</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">0</span>
-    <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">hauteur</span><span class="p">(</span><span class="n">enfant_gauche</span><span class="p">(</span><span class="n">noeud</span><span class="p">)),</span> <span class="n">hauteur</span><span class="p">(</span><span class="n">enfant_droit</span><span class="p">(</span><span class="n">noeud</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">hauteur</span><span class="p">(</span><span class="n">enfant_gauche</span><span class="p">(</span><span class="n">noeud</span><span class="p">)),</span> <span class="n">hauteur</span><span class="p">(</span><span class="n">enfant_droit</span><span class="p">(</span><span class="n">noeud</span><span class="p">)))</span> <span class="o">+</span> <span class="mi">1</span>
 
 <span class="k">print</span><span class="p">(</span><span class="n">hauteur</span><span class="p">(</span><span class="n">racine</span><span class="p">))</span>
 </code></pre></div></div>
@@ -210,17 +210,98 @@ $N(n) = N(g) + N(d) + 1$</p>
 
 </div></details>
 
-<h3 id="exemple">exemple</h3>
+<h3 id="encodage">encodage</h3>
 
-<blockquote class="note">
-  <p>TBD : un arbre tableau -&gt; arbre python (sans algo)</p>
+<p>Prenons les deux tas de la figure ci-après :</p>
+
+<p><img src="/cours_informatique/assets/cours/graphes/tas_2-possibilites.png" alt="tas possibles" style="margin: auto;display: block;" /></p>
+
+<p>En utilisant l’encodage précédent, le tas de gauche va s’écrire :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="mi">42</span><span class="p">,</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">]],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">],</span> <span class="bp">None</span><span class="p">]]</span>
+</code></pre></div></div>
+
+<blockquote class="a-faire">
+  <p>pourquoi ?</p>
 </blockquote>
+<details class="a-faire"><summary>solution</summary><div>
+<p>On peut ainsi lire l’arbre comme ceci : <code class="language-plaintext highlighter-rouge">[42, enfant_gauche, enfant_droit]</code>. avec <code class="language-plaintext highlighter-rouge">enfant_gauche = [12, enfant_gauche_2, enfant_droit_2]</code>. Comme <code class="language-plaintext highlighter-rouge">enfant_gauche_2</code> est une feuille ce sera : <code class="language-plaintext highlighter-rouge">enfant_gauche_2 = [6, None, None]</code>.
+Les nœud étant aussi des listes, elles s’imbriquent donc les unes dans les autres, jusqu’à avoir des feuilles <code class="language-plaintext highlighter-rouge">None</code>, c’et à dire pas de feuilles.</p>
+
+</div></details>
+
+<blockquote class="a-faire">
+  <p>Quel est l’encodage du tas de droite ?</p>
+</blockquote>
+<details class="a-faire"><summary>solution</summary><div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="mi">42</span><span class="p">,</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">]],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">],</span> <span class="bp">None</span><span class="p">]]</span>
+</code></pre></div></div>
+
+</div></details>
+
+<h3 id="code">code</h3>
+
+<blockquote class="a-faire">
+  <p>Exécutez en python les algorithmes de hauteur et de nombre sur les 2 tas de la question précédente.</p>
+</blockquote>
+<details class="a-faire"><summary>solution</summary><div>
+<p>fichier <em>“arbre_binaires.py”</em> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">def</span> <span class="nf">enfant_gauche</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">change_enfant_gauche</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">nouveau</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">nouveau</span>
+
+
+<span class="k">def</span> <span class="nf">enfant_droit</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">change_enfant_droit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">nouveau</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">nouveau</span>
+
+
+<span class="k">def</span> <span class="nf">valeur</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">change_valeur</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">nouveau</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">nouveau</span>
+
+
+<span class="k">def</span> <span class="nf">hauteur</span><span class="p">(</span><span class="n">noeud</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">noeud</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">hauteur</span><span class="p">(</span><span class="n">enfant_gauche</span><span class="p">(</span><span class="n">noeud</span><span class="p">)),</span> <span class="n">hauteur</span><span class="p">(</span><span class="n">enfant_droit</span><span class="p">(</span><span class="n">noeud</span><span class="p">)))</span> <span class="o">+</span> <span class="mi">1</span>
+
+
+<span class="k">def</span> <span class="nf">nombre</span><span class="p">(</span><span class="n">noeud</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">noeud</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="n">nombre</span><span class="p">(</span><span class="n">enfant_gauche</span><span class="p">(</span><span class="n">noeud</span><span class="p">))</span> <span class="o">+</span> <span class="n">nombre</span><span class="p">(</span><span class="n">enfant_droit</span><span class="p">(</span><span class="n">noeud</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="n">racine_1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">42</span><span class="p">,</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">]],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">],</span> <span class="bp">None</span><span class="p">]]</span>
+<span class="n">racine_2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">42</span><span class="p">,</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">]],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">],</span> <span class="bp">None</span><span class="p">]]</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"hauteur : "</span><span class="p">,</span> <span class="n">hauteur</span><span class="p">(</span><span class="n">racine_1</span><span class="p">),</span> <span class="s">" - nombre : "</span><span class="p">,</span> <span class="n">nombre</span><span class="p">(</span><span class="n">racine_1</span><span class="p">))</span>
+
+</code></pre></div></div>
+
+</div></details>
 
 <h2 id="arbre-binaire-de-recherche--définitions">arbre binaire de recherche : définitions</h2>
 
-<h3 id="def">def</h3>
+<p>Un <strong>arbre binaire de recherche</strong> est un arbre binaire planté dont les sommets sont valués par un ensemble ordonné (e.g. des nombres) &amp; tel que, pour chaque sommet $s$ :</p>
 
-<h3 id="structure">structure</h3>
+<ul>
+  <li>l’enfant gauche et ses descendants aient une valuation strictement plus petite que celle de $s$,</li>
+  <li>l’enfant droit et ses descendants aient une valuation plus grande ou égale à celle de $s$.</li>
+</ul>
+
+<h3 id="exemple">exemple</h3>
 
 <h3 id="exemple-tableau">exemple tableau</h3>
 
@@ -237,6 +318,8 @@ $N(n) = N(g) + N(d) + 1$</p>
 <h3 id="suppression">suppression</h3>
 
 <h2 id="trie-des-valeurs">trie des valeurs</h2>
+
+<p>en-ordre</p>
 
 <h3 id="ordre-complet">ordre complet</h3>
 

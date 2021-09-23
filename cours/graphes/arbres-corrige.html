@@ -108,9 +108,13 @@
   </ul>
 </blockquote>
 
-<p>Pour la 1ère preuve, on utilise la contre-apposée puis le résultat du cours sur l’<a href="/cours_informatique/cours/graphes/parcours-euleriens.html#prop-cycles-graph">existence de cycles dans un graphe</a>.</p>
+<p>Pour la 1ère preuve, Si $\vert E \vert \geq \vert V \vert$, comme $\sum_x \delta(x) = 2 \vert E \vert$, on a $\sum_x \delta(x) \geq 2 \vert V \vert$.</p>
 
-<p>Pour la seconde preuve, on le montre par récurrence. La propriété est clairement vraie pour un graphe à 1 ou 2 sommets. On la suppose alors vraie jusqu’à $n$ sommets et on considère un graphe connexe à $n+1$ sommets.</p>
+<p>On suppose maintenant que $\vert E \vert \geq \vert V \vert$ et qu’il n’y a pas de cycle. De là, il existe un somme de degré plus petit ou égal à un (sinon, tous les degrés sont plus grand ou égal à 2 et <a href="/cours_informatique/cours/graphes/parcours-euleriens.html#prop-cycles-graph">le cours nous dit qu’il existe un cycle</a>) et donc pour que $\sum_x \delta(x) \geq 2 \vert V \vert$ il existe un autre sommet de degré strictement plus grand que 2 et donc au moins 4 sommets.</p>
+
+<p>De là, si on supprime un sommet de degré 1 ou moins et son arête du graphe, on a toujours $\vert E \vert \geq \vert V \vert$ pour le graphe résultant et donc : soit ce graphe ne contient que des sommets de degrès plus grand ou égal à 2, soit il a au moins 4 sommets et on peut trouver un autre sommet de degré 1 ou moins et on peut recommencer. Par finitude du graphe, on doit forcément s’arrêter un jour : il n’existe plus que des sommets de degrés 2 donc un cycle.</p>
+
+<p>Pour la première preuve, on le montre par récurrence. La propriété est clairement vraie pour un graphe à 1 ou 2 sommets. On la suppose alors vraie jusqu’à $n$ sommets et on considère un graphe connexe à $n+1$ sommets.</p>
 
 <p>Pour ce graphe on choisi un sommet, $x$, que l’on supprime du graphe. Ce dernier n’est alors plus connexe et possède $p$ composantes connexes qui respectent l’hypothèse de récurrence : $\vert E_i \vert \geq \vert V_i \vert -1$ pour chacune d’elles. En sommant le tout on a alors :</p>
 
@@ -180,8 +184,8 @@
   <li>$g$ est un <strong>descendant</strong> de $d$</li>
   <li>$k$ est une <strong>feuille</strong></li>
   <li>$c$ est un <strong>nœud intérieur</strong></li>
-  <li>$b$ est un <strong>successeur</strong> de $a$</li>
-  <li>$h$ est un <strong>prédécesseur</strong> de $m$</li>
+  <li>$b$ est un <strong>enfant</strong> de $a$</li>
+  <li>$h$ est un <strong>parent</strong> de $m$</li>
   <li>la <strong>hauteur</strong> de $i$ est 2</li>
   <li>la <strong>hauteur</strong> de l’arbre est 4</li>
 </ul>
@@ -191,7 +195,7 @@
 <h3 id="propriété-fondamentale-des-arbres-binaires">propriété fondamentale des arbres binaires</h3>
 
 <blockquote class="a-faire">
-  <p>Montrer que pour un arbre binaire, si tout noeud intérieur a exactement 2 successeurs, alors en notant $f$ le nombre de feuilles de l’arbre, on a :</p>
+  <p>Montrer que pour un arbre binaire, si tout noeud intérieur a exactement 2 enfants, alors en notant $f$ le nombre de feuilles de l’arbre, on a :</p>
 
   <ul>
     <li>la hauteur de l’arbre est égale à $\log_2(f)$</li>
@@ -199,7 +203,7 @@
   </ul>
 </blockquote>
 
-<p>Si chaque noeud intérieur a 2 successeurs $ \sum \delta(x) = 2 + f + (n-f - 1) \cdot 3$. Comme $\vert E \vert = \vert V \vert -1 = n -1$, on assemble ces deux équations pour obtenir $n + 1 = 2f$.</p>
+<p>Si chaque noeud intérieur a 2 enfants $ \sum \delta(x) = 2 + f + (n-f - 1) \cdot 3$. Comme $\vert E \vert = \vert V \vert -1 = n -1$, on assemble ces deux équations pour obtenir $n + 1 = 2f$.</p>
 
 <h3 id="exemple-du-tas">exemple du tas</h3>
 
@@ -255,8 +259,8 @@
   <li>on l’ajoute à la fin et on le remonte (récursivement) si nécessaire</li>
   <li>on change la valeur puis on échange récursivement
     <ul>
-      <li>avec son prédécesseur si la valeur est plus grande ou</li>
-      <li>avec son successeurs de valeur maximum si la valeur est plus petite</li>
+      <li>avec son parent si la valeur est plus grande ou</li>
+      <li>avec son enfant de valeur maximum si la valeur est plus petite</li>
     </ul>
   </li>
   <li>on prend la dernière feuille, on la supprime et on modifie (avec l’opération 2) la racine avec la valeur de la feuille enlevée.</li>
@@ -300,10 +304,10 @@
 </ul>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>alphabetique(racine)
-    examen fils gauche
-    examen fils droit
-    alphabetique(fils droit)
-    alphabetique(fils gauche)
+    examen enfant gauche
+    examen enfant droit
+    alphabetique(enfant droit)
+    alphabetique(enfant gauche)
     
 </code></pre></div></div>
 
@@ -341,7 +345,7 @@
   <li>on va ajouter une arête à un arbre</li>
   <li>ce nouveau graphe n’est plus un arbre mais il est connexe : il existe un cycle</li>
   <li>en supprimant n’importe quelle arête de ce cycle, le graphe redevient un arbre.</li>
-  <li>si on supprime judicieusement l’arête du cycle, on arrivera à une contradiction. car le nouvel arbre sera mieux que l’arbre inital.</li>
+  <li>si on supprime judicieusement l’arête du cycle, on arrivera à une contradiction. car le nouvel arbre sera mieux que l’arbre initial.</li>
 </ol>
 
 <ul>

@@ -202,8 +202,8 @@
   <li>$x$ est un <strong>descendant</strong> de $y$ : si $y$ est sur le chemin entre la racine et $x$</li>
   <li>$x$ est une <strong>feuille</strong> s’il n’a pas de descendant</li>
   <li>$x$ est un <strong>nœud intérieur</strong> s’il n’est pas une feuille</li>
-  <li>$x$ est un <strong>successeur</strong> de $y$ : si $y$ est le sommet juste avant $x$ dans le chemin de la racine à $x$</li>
-  <li>$y$ est un <strong>prédécesseur</strong> de $x$ : si $y$ est le sommet juste avant $x$ dans le chemin de la racine à $x$</li>
+  <li>$x$ est un <strong>enfant</strong> de $y$ : si $y$ est le sommet juste avant $x$ dans le chemin de la racine à $x$</li>
+  <li>$y$ est un <strong>parent</strong> de $x$ : si $y$ est le sommet juste avant $x$ dans le chemin de la racine à $x$</li>
   <li>la <strong>hauteur</strong> de $x$ est la longueur du chemin entre la racine et $x$.</li>
   <li>la <strong>hauteur</strong> de l’arbre est la longueur du plus long chemin entre la racine et un autre sommet.</li>
 </ul>
@@ -218,12 +218,12 @@
 
 <p>En informatique, c’est souvent les arbres binaires planté que l’on utilise :</p>
 
-<p>Un arbre planté est binaire si tout noeud intérieur a <strong>au plus 2 successeurs</strong>. On aura parfois aussi besoin qu’il soit <strong>complet</strong>, c’est-à-dire que les noeuds intérieurs qui n’ont pas 2 successeurs sont en bas de l’arbre (à la hauter de l’arbre -1).</p>
+<p>Un arbre planté est binaire si tout noeud intérieur a <strong>au plus 2 enfants</strong>. On aura parfois aussi besoin qu’il soit <strong>complet</strong>, c’est-à-dire que les noeuds intérieurs qui n’ont pas 2 enfants sont en bas de l’arbre (à la hauteur de l’arbre -1).</p>
 
 <h3 id="propriété-fondamentale-des-arbres-binaires">propriété fondamentale des arbres binaires</h3>
 
 <blockquote class="a-faire">
-  <p>Montrer que pour un arbre binaire, si tout noeud intérieur a exactement 2 successeurs, alors en notant $f$ le nombre de feuilles de l’arbre, on a :</p>
+  <p>Montrer que pour un arbre binaire, si tout noeud intérieur a exactement 2 enfants, alors en notant $f$ le nombre de feuilles de l’arbre, on a :</p>
 
   <ul>
     <li>la hauteur de l’arbre est égale à $\log_2(f)$</li>
@@ -322,16 +322,16 @@ Un informaticien est prêt à beaucoup, beaucoup de choses pour avoir une struct
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pré-ordre(racine)
 Si la racine a des descendants:
     Examen de la racine 
-    pré-ordre(fils gauche) 
-    pré-ordre(fils droit)
+    pré-ordre(enfant gauche) 
+    pré-ordre(enfant droit)
 </code></pre></div></div>
 
 <h4 id="post-ordre">post-ordre</h4>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>post-ordre(racine)
 Si la racine a des descendants:
-    post-ordre(fils gauche) 
-    post-ordre(fils droit)
+    post-ordre(enfant gauche) 
+    post-ordre(enfant droit)
     Examen de la racine 
 </code></pre></div></div>
 
@@ -339,9 +339,9 @@ Si la racine a des descendants:
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>en-ordre(racine)
 Si la racine a des descendants:
-    en-ordre(fils gauche) 
+    en-ordre(enfant gauche) 
     Examen de la racine 
-    en-ordre(fils droit)
+    en-ordre(enfant droit)
 </code></pre></div></div>
 
 <blockquote>
