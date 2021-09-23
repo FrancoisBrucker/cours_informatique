@@ -159,7 +159,9 @@ Le plus grand noeud est **toujours** la racine du tas.
 {: .a-faire}
 
 1. on l'ajoute à la fin et on le remonte (récursivement) si nécessaire
-2. on change la valeur puis on échange avec un de ses successeurs ou son prédécesseur récursivement
+2. on change la valeur puis on échange récursivement
+   * avec son prédécesseur si la valeur est plus grande ou
+   * avec son successeurs de valeur maximum si la valeur est plus petite
 3. on prend la dernière feuille, on la supprime et on modifie (avec l'opération 2) la racine avec la valeur de la feuille enlevée.
 
 > En conclure que l'utilisation du tas est bien meilleure que la solution naïve.
