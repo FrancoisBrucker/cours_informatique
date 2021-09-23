@@ -65,7 +65,10 @@ Si l'on ne fait pas attention à l'orientation des arcs dans un graphe, et qu'on
 
 Un graphe est dit **connexe** si pour toute paire de sommets $x$ et $y$ il existe un chemin allant de $x$ à $y$ dans $G$.
 
-Si le graphe est orienté, il est dit **fortement connexe** s'il existe pour toute paire $x$ et $y$ de sommet un chemin allant de $x$ à $y$ et un chemin allant de $y$ à $x$.
+Si le graphe est orienté :
+
+* il est **connexe** si pour toute paire de sommets $x$ et $y$ il existe un chemin allant de $x$ à $y$ ou un chement allant de $y$ à $x$ dans $G$.
+* il est dit **fortement connexe** s'il existe pour toute paire $x$ et $y$ de sommet un chemin allant de $x$ à $y$ et un chemin allant de $y$ à $x$.
 
 >La connexité est une notion très importante en théorie des graphes. Elle permet de relier deux sommets entre eux par des relations. D'un point de vue pratique on aime bien les graphes connexes, pensez à *google maps* où l'on aime bien pouvoir faire des aller-retours.
 

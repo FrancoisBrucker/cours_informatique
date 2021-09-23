@@ -152,7 +152,7 @@ def change_valeur(x, nouveau):
 
 ### exemple
 
-> TBD : un arbre tableau -> abre python (sans algo)
+> TBD : un arbre tableau -> arbre python (sans algo)
 {:.note}
 
 ## arbre binaire de recherche : définitions
@@ -188,6 +188,8 @@ plusieurs possibilités avec les même nombres ?
 > shuffle pour hauteur min.
 > exemple structure toujours équilibrée (donner noms)
 {: .note}
+
+### hauteur min à partir d'une liste triée
 
 ## exemple du dictionnaire
 
