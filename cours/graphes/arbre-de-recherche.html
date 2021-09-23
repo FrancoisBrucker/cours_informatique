@@ -65,6 +65,8 @@
       
         <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Pascal Préa</span></span></li>
       
+        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Sébastien Ratel</span></span></li>
+      
       </ul></p></p>
   </header>
 
@@ -303,44 +305,330 @@ Les nœud étant aussi des listes, elles s’imbriquent donc les unes dans les a
 
 <h3 id="exemple">exemple</h3>
 
-<h3 id="exemple-tableau">exemple tableau</h3>
+<p><img src="/cours_informatique/assets/cours/graphes/abr-ou-pas.png" alt="abr possibles" style="margin: auto;display: block;" /></p>
 
-<p>plusieurs possibilités avec les même nombres ?</p>
+<blockquote class="a-faire">
+  <p>Des deux figures précédentes, laquelle est un arbre binaire de recherche ?</p>
+</blockquote>
+<details class="a-faire"><summary>solution</summary><div>
+<p>Celui de gauche n’est pas un arbre binaire de recherche, car 15 est à gauche de 10 et il est plus grand. C’est tous les descendants d’au nœud qui doivent être plus petit s’il sont à gauche ou plus grand s’il sont à droite.</p>
+
+</div></details>
+
+<blockquote class="a-faire">
+  <p>Il existe d’autres possibilités d’arbre binaire de recherche avec ces nombres. Donnez-en une.</p>
+</blockquote>
+<details class="a-faire"><summary>solution</summary><div>
+<p>Il y a au moins celui-là :</p>
+
+<p><img src="/cours_informatique/assets/cours/graphes/abr-ligne.png" alt="abr lignes" style="margin: auto;display: block;" /></p>
+
+</div></details>
+
+<blockquote class="a-faire">
+  <p>Donnez la structure python des deux arbres binaires de recherche</p>
+</blockquote>
+<details class="a-faire"><summary>solution</summary><div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">],</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">]],</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">]]]</span>
+
+<span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">]]]]]]</span>
+</code></pre></div></div>
+
+</div></details>
 
 <h2 id="algorithmes-de-manipulation">algorithmes de manipulation</h2>
 
 <h3 id="création">création</h3>
 
+<blockquote class="a-faire">
+  <p>En utilisant la structure des arbres binaires, donnez un fonction python qui crée un arbre binaire de recherche à partir d’une valeur.</p>
+</blockquote>
+<details class="a-faire"><summary>solution</summary><div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">creation</span><span class="p">(</span><span class="n">valeur</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">valeur</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">]</span> 
+</code></pre></div></div>
+
+</div></details>
+
 <h3 id="trouve">trouve</h3>
+
+<blockquote class="a-faire">
+  <p>Donnez un fonction python qui, à partir d’une valeur et d’un arbre binaire de recherche répond <code class="language-plaintext highlighter-rouge">True</code> si la valeur est dans l’arbre et <code class="language-plaintext highlighter-rouge">False</code> sinon. Cet algorithme pourra s’inspirer de la <a href="https://fr.wikipedia.org/wiki/Recherche_dichotomique">recherche dichotomique</a>.</p>
+</blockquote>
+<details class="a-faire"><summary>solution</summary><div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">recherche</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">racine</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">racine</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">False</span>
+    <span class="k">elif</span> <span class="n">valeur</span><span class="p">(</span><span class="n">racine</span><span class="p">)</span> <span class="o">==</span> <span class="n">val</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">True</span>
+    <span class="k">elif</span> <span class="n">valeur</span><span class="p">(</span><span class="n">racine</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">val</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">recherche</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">enfant_gauche</span><span class="p">(</span><span class="n">racine</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">recherche</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">enfant_droit</span><span class="p">(</span><span class="n">racine</span><span class="p">))</span>
+</code></pre></div></div>
+
+</div></details>
+
+<blockquote class="a-faire">
+  <p>Quelle est la complexité de cette fonction ?</p>
+</blockquote>
+<details class="a-faire"><summary>solution</summary><div>
+<p>Elle est proportionnelle à la hauteur de l’arbre.</p>
+
+</div></details>
+
+<blockquote class="a-faire">
+  <p>Ajouter à votre code la fonction de recherche et les deux arbres que vous avez trouvé. Essayez de trouver 10 et 42 sur vos deux arbres.</p>
+</blockquote>
+<details class="a-faire"><summary>solution</summary><div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ...
+</span>
+<span class="n">abr_1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">],</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">]],</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">]]]</span>
+<span class="n">abr_2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">]]]]]]</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">recherche</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">abr_1</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">recherche</span><span class="p">(</span><span class="mi">42</span><span class="p">,</span> <span class="n">abr_1</span><span class="p">))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">recherche</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">abr_2</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">recherche</span><span class="p">(</span><span class="mi">42</span><span class="p">,</span> <span class="n">abr_2</span><span class="p">))</span>
+
+</code></pre></div></div>
+
+</div></details>
 
 <h3 id="insertion">insertion</h3>
 
+<blockquote class="a-faire">
+  <p>Déduire de la question précédente que pour un arbre binaire donné et une valeur, il n’y a qu’une seule position possible pour insérer une valeur donnée.</p>
+</blockquote>
+<details class="a-faire"><summary>solution</summary><div>
+<p>Dans la recherche, il n’y a à chaque fois qu’une seule possibilité. Si on ne trouve pas la valeur, l’endroit où on est arrivé dans l’arbre est la position où on doit l’insérer</p>
+
+</div></details>
+
+<blockquote class="a-faire">
+  <p>En modifiant l’algorithme de recherche, donner l’algorithme de l’insertion d’une valeur dans l’arbre.</p>
+</blockquote>
+<details class="a-faire"><summary>solution</summary><div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">insertion</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">racine</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">racine</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">valeur</span><span class="p">(</span><span class="n">racine</span><span class="p">)</span> <span class="o">==</span> <span class="n">val</span><span class="p">:</span>
+        <span class="k">return</span>
+    <span class="k">elif</span> <span class="n">valeur</span><span class="p">(</span><span class="n">racine</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">val</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">enfant_gauche</span><span class="p">(</span><span class="n">racine</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">change_enfant_gauche</span><span class="p">(</span><span class="n">racine</span><span class="p">,</span> <span class="n">abr</span><span class="p">(</span><span class="n">val</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">insertion</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">enfant_gauche</span><span class="p">(</span><span class="n">racine</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">enfant_droit</span><span class="p">(</span><span class="n">racine</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">change_enfant_droit</span><span class="p">(</span><span class="n">racine</span><span class="p">,</span> <span class="n">abr</span><span class="p">(</span><span class="n">val</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">insertion</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">enfant_droit</span><span class="p">(</span><span class="n">racine</span><span class="p">))</span>
+</code></pre></div></div>
+
+</div></details>
+
+<blockquote class="a-faire">
+  <p>Quelle est la complexité de cette fonction ?</p>
+</blockquote>
+<details class="a-faire"><summary>solution</summary><div>
+<p>Elle est proportionnelle à la hauteur de l’arbre.</p>
+
+</div></details>
+
+<blockquote class="a-faire">
+  <p>Insérez 42 dans les 2 arbres de recherche précédents. Et donner le résultat.</p>
+</blockquote>
+<details class="a-faire"><summary>solution</summary><div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">insertion</span><span class="p">(</span><span class="mi">42</span><span class="p">,</span> <span class="n">abr_1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">abr_1</span><span class="p">)</span>
+<span class="n">insertion</span><span class="p">(</span><span class="mi">42</span><span class="p">,</span> <span class="n">abr_2</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">abr_2</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Ce qui donne :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">],</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">]],</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="p">[</span><span class="mi">42</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">]]]]</span>
+<span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="p">[</span><span class="mi">42</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">]]]]]]]</span>
+</code></pre></div></div>
+
+</div></details>
+
 <h3 id="suppression">suppression</h3>
 
-<h2 id="trie-des-valeurs">trie des valeurs</h2>
+<p>Supprimer un noeud d’un arbre de recherche peut être simple si :</p>
 
-<p>en-ordre</p>
+<ul>
+  <li>ce nœud n’a pas d’enfant : on le remplace dans son parent par <code class="language-plaintext highlighter-rouge">None</code></li>
+  <li>ce nœud n’a qu’un seul enfant : on le remplace par son enfant dans son parent.</li>
+</ul>
 
-<h3 id="ordre-complet">ordre complet</h3>
+<p>Si le noeud, disons $x$ à 2 enfants, on peut chercher le noeud contenant la plus grande des valeurs plus petite que celle du noeud parmi ses descendants, disons $y$. Ce noeud n’aura qu’un seul enfant.</p>
 
-<h3 id="prédécesseur-dune-valeur-pas-forcément-dans-larbre">prédécesseur d’une valeur (pas forcément dans l’arbre)</h3>
+<blockquote class="a-faire">
+  <p>pourquoi ?</p>
+</blockquote>
+<details class="a-faire"><summary>solution</summary><div>
+<p>Le noeud recherché sera un descendant de $x$ à gauche. Il ne peut avoir de fils droit sinon ce fils aurait une valeur plus grande que sont père ($y$) et donc serait plus proche en valeur de $x$. ce qui est impossible par construction.</p>
 
-<h3 id="successeur-dune-valeur-pas-forcément-dans-larbre">successeur d’une valeur (pas forcément dans l’arbre)</h3>
+</div></details>
 
-<h2 id="propriétés-de-hauteur-max-min">propriétés de hauteur max, min</h2>
+<blockquote class="a-faire">
+  <p>Comment trouver $y$ ?</p>
+</blockquote>
+<details class="a-faire"><summary>solution</summary><div>
+<p>C’est le premier enfant à droite des descendants de $x$.</p>
 
-<blockquote class="note">
-  <p>shuffle pour hauteur min.
-exemple structure toujours équilibrée (donner noms)</p>
+</div></details>
+
+<p>On peut alors échanger les valeur de $x$ et de $y$ puis supprimer $y$ pour conserver la structure d’arbre binaire de recherche.</p>
+
+<blockquote class="a-faire">
+  <p>pourquoi ?</p>
+</blockquote>
+<details class="a-faire"><summary>solution</summary><div>
+<p>$y$ n’a qu’un enfant, il est donc facile de le supprimer et de conserver la structure d’arbre de recherche.</p>
+
+<p>En échangeant les valeurs, on a pris une valeur inférieure à celle de $x$ mais plus grande que toute les autres valeurs plus petite que $x$ dans l’arbre, elle ne viole donc aucune règle dans l’arbre.</p>
+
+</div></details>
+
+<blockquote class="a-faire">
+  <p>Quelle est la complexité de cette fonction ?</p>
+</blockquote>
+<details class="a-faire"><summary>solution</summary><div>
+<p>Elle est proportionnelle à la hauteur de l’arbre.</p>
+
+</div></details>
+
+<h2 id="ordre-des-valeurs">ordre des valeurs</h2>
+
+<h3 id="trie-des-valeurs">trie des valeurs</h3>
+
+<blockquote class="a-faire">
+  <p>Que donne comme résultat le parcours <a href="/cours_informatique/cours/graphes/arbres.html#en-ordre">en-ordre</a> d’un arbre de recherche ?</p>
+</blockquote>
+<details class="a-faire"><summary>solution</summary><div>
+<p>Ca rend les valeurs de l’arbre dans l’ordre du plus petit au plus grand.</p>
+
+</div></details>
+
+<h2 id="hauteur-dun-arbre-binaire-de-recherche">hauteur d’un arbre binaire de recherche</h2>
+
+<p>On voit que toutes les opérations sur un arbre binaire de recherche sont proportionnelles à sa hauteur.</p>
+
+<blockquote class="a-faire">
+  <p>Quelle est la hauteur maximale d’un arbre binaire de recherche ?</p>
+</blockquote>
+<details class="a-faire"><summary>solution</summary><div>
+<p>c’est le nombre d’élément si tous les noeud n’ont qu’un seul enfant.</p>
+
+</div></details>
+
+<blockquote class="a-faire">
+  <p>A partir d’une liste de valeurs, donner un algorithme qui rend un arbre binaire de recherche de hauteur maximale contenant ces valeurs.</p>
+</blockquote>
+<details class="a-faire"><summary>solution</summary><div>
+<p>On commence par trier la liste puis on insère les éléments un à un dans cet ordre.</p>
+
+</div></details>
+
+<blockquote class="a-faire">
+  <p>Quelle est la hauteur minimale d’un arbre binaire de recherche ?</p>
+</blockquote>
+<details class="a-faire"><summary>solution</summary><div>
+<p>la hauteur minimale est atteinte si tous les nœuds on 2 enfants. La hauteur est alors $log_2(n)$ où $n$ est le nombre de sommet.</p>
+</div></details>
+
+<blockquote class="a-faire">
+  <p>A partir d’une liste de valeurs, donner un algorithme qui rend un arbre binaire de recherche de hauteur minimale contenant ces valeurs. On s’inspirera de la recherche dichotomique pour à chaque fois insérer le milieu.</p>
+</blockquote>
+<details class="a-faire"><summary>solution</summary><div>
+<p>On commence par trier la liste puis on insère les éléments en prenant récursivement le milieu.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">liste</span><span class="p">.</span><span class="n">sort</span><span class="p">()</span>
+
+<span class="n">abr</span> <span class="o">=</span> <span class="n">creation</span><span class="p">(</span><span class="n">liste</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span><span class="p">])</span>
+
+<span class="k">def</span> <span class="nf">abr_insere_min</span><span class="p">(</span><span class="n">debut</span><span class="p">,</span> <span class="n">fin</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">fin</span> <span class="o">&gt;</span> <span class="n">debut</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">liste</span><span class="p">[(</span><span class="n">debut</span> <span class="o">+</span> <span class="n">fin</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span><span class="p">]</span>
+        <span class="n">insertion</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">abr</span><span class="p">)</span>
+        <span class="n">abr_insere_min</span><span class="p">(</span><span class="n">debut</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+        <span class="n">abr_insere_min</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">fin</span><span class="p">)</span>
+
+<span class="n">abr_insere_min</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">abr_insere_min</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">liste</span><span class="p">))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">abr</span><span class="p">)</span>
+</code></pre></div></div>
+
+</div></details>
+
+<h2 id="hauteur-expérimentale">hauteur expérimentale</h2>
+
+<p>Conserver une hauteur minimale dans un arbre binaire de recherche est donc crucial pour maintenir de bonnes performances.</p>
+
+<blockquote>
+  <p>Il existe des version des arbres re cherche qui s’équilibrent tout seul comme les <a href="https://fr.wikipedia.org/wiki/Arbre_AVL">AVL</a> ou les arbres <a href="https://fr.wikipedia.org/wiki/Arbre_bicolore">rouge/noir</a> mais leur structure est plus lourde algorithmiquement.</p>
 </blockquote>
 
-<h3 id="hauteur-min-à-partir-dune-liste-triée">hauteur min à partir d’une liste triée</h3>
+<p>La clé est d’insérer les valeurs dans un ordre aléatoire. Nous allons de montrer expérimentalement.</p>
 
-<h2 id="exemple-du-dictionnaire">exemple du dictionnaire</h2>
+<p>Essayez avec la liste des 1000 premiers entiers.</p>
 
-<blockquote class="note">
-  <p>les mots d’un dico (ou livre) puis on les prend random et on voit la hauteur</p>
+<blockquote class="a-faire">
+  <p>Insérer des nombre pris dans une liste triée et vérifier que la hauteur est égale à la longueur de la liste</p>
 </blockquote>
+<details class="a-faire"><summary>solution</summary><div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">liste</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">))</span>
+
+<span class="n">abr</span> <span class="o">=</span> <span class="n">creation</span><span class="p">(</span><span class="n">liste</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">liste</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+    <span class="n">instertion</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">abr</span><span class="p">)</span>
+</code></pre></div></div>
+
+</div></details>
+
+<blockquote class="a-faire">
+  <p>Insérer des nombre pris dans la même liste que précédemment de façon à minimiser la hauteur et vérifier que celle-ci est égale au log en base 2 la longueur de la liste</p>
+</blockquote>
+<details class="a-faire"><summary>solution</summary><div>
+<p>reprendre le code de la question sur la hauteur minimale.</p>
+
+</div></details>
+
+<blockquote class="a-faire">
+  <p>Insérer de façon aléatoire des nombre pris dans la même liste que précédemment et vérifier que la hauteur est de l’ordre du au log en base 2 la longueur de la liste</p>
+</blockquote>
+<details class="a-faire"><summary>solution</summary><div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="n">liste</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">))</span>
+<span class="n">random</span><span class="p">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span>
+
+<span class="n">abr</span> <span class="o">=</span> <span class="n">creation</span><span class="p">(</span><span class="n">liste</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">liste</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+    <span class="n">instertion</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">abr</span><span class="p">)</span>
+</code></pre></div></div>
+
+</div></details>
+
+<p>Lors de mes expérimentation, je trouve :</p>
+
+<ul>
+  <li>une hauteur max de 1000</li>
+  <li>une hauteur min de 10</li>
+  <li>une hauteur aléatoire de l’ordre de 20</li>
+</ul>
+
+<blockquote class="a-faire">
+  <p>essayez avec des listes plus grandes.</p>
+</blockquote>
+
+<h2 id="conclusion">conclusion</h2>
+
+<p>Les <a href="https://fr.wikipedia.org/wiki/Arbre_binaire_de_recherche">arbre de recherche</a> sont une structure qui fonctionne comme une liste triée pour la recherche d’un élément, mais qui est bien plus efficace pour l’insertion.</p>
 
   </div>
 
