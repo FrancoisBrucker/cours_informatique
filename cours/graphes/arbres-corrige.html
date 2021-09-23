@@ -253,7 +253,12 @@
 
 <ol>
   <li>on l’ajoute à la fin et on le remonte (récursivement) si nécessaire</li>
-  <li>on change la valeur puis on échange avec un de ses successeurs ou son prédécesseur récursivement</li>
+  <li>on change la valeur puis on échange récursivement
+    <ul>
+      <li>avec son prédécesseur si la valeur est plus grande ou</li>
+      <li>avec son successeurs de valeur maximum si la valeur est plus petite</li>
+    </ul>
+  </li>
   <li>on prend la dernière feuille, on la supprime et on modifie (avec l’opération 2) la racine avec la valeur de la feuille enlevée.</li>
 </ol>
 
