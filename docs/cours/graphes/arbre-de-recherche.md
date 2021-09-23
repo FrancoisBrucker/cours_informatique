@@ -595,4 +595,6 @@ Lors de mes expérimentation, je trouve :
 
 ## conclusion
 
-Les [arbre de recherche](https://fr.wikipedia.org/wiki/Arbre_binaire_de_recherche) sont une structure qui fonctionne comme une liste triée pour la recherche d'un élément, mais qui est bien plus efficace pour l'insertion.
+Les [arbres de recherche](https://fr.wikipedia.org/wiki/Arbre_binaire_de_recherche) sont une structure qui fonctionne comme une liste triée pour la recherche d'un élément, mais qui est bien plus efficace pour l'insertion,à condition que les éléments à insérer arrivent dans un ordre aléatoire.
+
+Cette struture, ou ses vraiations sont très utilisés en informatique, comme par exemple la variante des [arbres AABB](https://www.azurefromthetrenches.com/introductory-guide-to-aabb-tree-collision-detection/), très utilisés en informatique graphique pour gérer efficacement les collisions en 2D ou 3D.
