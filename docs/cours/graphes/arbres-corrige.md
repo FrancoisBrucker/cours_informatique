@@ -43,9 +43,13 @@ On utilise le [parcours en largeur des graphes](https://fr.wikipedia.org/wiki/Al
 >* Tout graphe connexe contient au minimum $\vert V \vert - 1$ arêtes.
 {: .a-faire}
 
-Pour la 1ère preuve, on utilise la contre-apposée puis le résultat du cours sur l'[existence de cycles dans un graphe]({% link cours/graphes/parcours-euleriens.md %}#prop-cycles-graph).
+Pour la 1ère preuve, Si $\vert E \vert \geq \vert V \vert$, comme $\sum_x \delta(x) = 2 \vert E \vert$, on a $\sum_x \delta(x) \geq 2 \vert V \vert$. 
 
-Pour la seconde preuve, on le montre par récurrence. La propriété est clairement vraie pour un graphe à 1 ou 2 sommets. On la suppose alors vraie jusqu'à $n$ sommets et on considère un graphe connexe à $n+1$ sommets.
+On suppose maintenant que $\vert E \vert \geq \vert V \vert$ et qu'il n'y a pas de cycle. De là, il existe un somme de degré plus petit ou égal à un (sinon, tous les degrés sont plus grand ou égal à 2 et [le cours nous dit qu'il existe un cycle]({% link cours/graphes/parcours-euleriens.md %}#prop-cycles-graph)) et donc pour que $\sum_x \delta(x) \geq 2 \vert V \vert$ il existe un autre sommet de degré strictement plus grand que 2 et donc au moins 4 sommets.
+
+De là, si on supprime un sommet de degré 1 ou moins et son arête du graphe, on a toujours $\vert E \vert \geq \vert V \vert$ pour le graphe résultant et donc : soit ce graphe ne contient que des sommets de degrès plus grand ou égal à 2, soit il a au moins 4 sommets et on peut trouver un autre sommet de degré 1 ou moins et on peut recommencer. Par finitude du graphe, on doit forcément s'arrêter un jour : il n'existe plus que des sommets de degrés 2 donc un cycle.
+
+Pour la première preuve, on le montre par récurrence. La propriété est clairement vraie pour un graphe à 1 ou 2 sommets. On la suppose alors vraie jusqu'à $n$ sommets et on considère un graphe connexe à $n+1$ sommets.
 
 Pour ce graphe on choisi un sommet, $x$, que l'on supprime du graphe. Ce dernier n'est alors plus connexe et possède $p$ composantes connexes qui respectent l'hypothèse de récurrence : $\vert E_i \vert \geq \vert V_i \vert -1$ pour chacune d'elles. En sommant le tout on a alors :
 
@@ -102,8 +106,8 @@ S'il existait 2 chemins distincts pour aller de $x$ à $y$ on se placerait au pr
 * $g$ est un **descendant** de $d$
 * $k$ est une **feuille**
 * $c$ est un **nœud intérieur**
-* $b$ est un **successeur** de $a$
-* $h$ est un **prédécesseur** de $m$
+* $b$ est un **enfant** de $a$
+* $h$ est un **parent** de $m$
 * la **hauteur** de $i$ est 2
 * la **hauteur** de l'arbre est 4
 
@@ -111,13 +115,13 @@ S'il existait 2 chemins distincts pour aller de $x$ à $y$ on se placerait au pr
 
 ### propriété fondamentale des arbres binaires
 
->Montrer que pour un arbre binaire, si tout noeud intérieur a exactement 2 successeurs, alors en notant $f$ le nombre de feuilles de l'arbre, on a :
+>Montrer que pour un arbre binaire, si tout noeud intérieur a exactement 2 enfants, alors en notant $f$ le nombre de feuilles de l'arbre, on a :
 >
 >* la hauteur de l'arbre est égale à $\log_2(f)$
 >* $f$ est égal au nombre de nœuds intérieurs plus 1.
 {: .a-faire}
 
-Si chaque noeud intérieur a 2 successeurs $ \sum \delta(x) = 2 + f + (n-f - 1) \cdot 3$. Comme $\vert E \vert = \vert V \vert -1 = n -1$, on assemble ces deux équations pour obtenir $n + 1 = 2f$.
+Si chaque noeud intérieur a 2 enfants $ \sum \delta(x) = 2 + f + (n-f - 1) \cdot 3$. Comme $\vert E \vert = \vert V \vert -1 = n -1$, on assemble ces deux équations pour obtenir $n + 1 = 2f$.
 
 ### exemple du tas
 
@@ -160,8 +164,8 @@ Le plus grand noeud est **toujours** la racine du tas.
 
 1. on l'ajoute à la fin et on le remonte (récursivement) si nécessaire
 2. on change la valeur puis on échange récursivement
-   * avec son prédécesseur si la valeur est plus grande ou
-   * avec son successeurs de valeur maximum si la valeur est plus petite
+   * avec son parent si la valeur est plus grande ou
+   * avec son enfant de valeur maximum si la valeur est plus petite
 3. on prend la dernière feuille, on la supprime et on modifie (avec l'opération 2) la racine avec la valeur de la feuille enlevée.
 
 > En conclure que l'utilisation du tas est bien meilleure que la solution naïve.
@@ -196,10 +200,10 @@ Pour la représentation en tableau, voir Voir [wikipedia](https://fr.wikipedia.o
 
 ```text
 alphabetique(racine)
-    examen fils gauche
-    examen fils droit
-    alphabetique(fils droit)
-    alphabetique(fils gauche)
+    examen enfant gauche
+    examen enfant droit
+    alphabetique(enfant droit)
+    alphabetique(enfant gauche)
     
 ```
 
@@ -231,7 +235,7 @@ Toutes les preuves de cette partie et de la partie suivante vont fonctionner la 
 1. on va ajouter une arête à un arbre
 2. ce nouveau graphe n'est plus un arbre mais il est connexe : il existe un cycle
 3. en supprimant n'importe quelle arête de ce cycle, le graphe redevient un arbre.
-4. si on supprime judicieusement l'arête du cycle, on arrivera à une contradiction. car le nouvel arbre sera mieux que l'arbre inital.
+4. si on supprime judicieusement l'arête du cycle, on arrivera à une contradiction. car le nouvel arbre sera mieux que l'arbre initial.
 
 * Il n'y a qu'une seule arête avec une valuation minimale. S'il existait un arbre couvrant qui ne la possédait pas, on pourrait l'ajouter à cet arbre. Ce ne serait alors plus un arbre, il existerait donc un cycle. En supprimant une arête de ce cycle (on peut choisir une arête de valuation non minimale) on aurait à nouveau un arbre (connexe et nombre minimum d'arête), mais qui serait de valuation totale strictement plus petite que notre premier arbre. Ce qui est impossible puisqu'il était déjà de valuation minimale.
 * Il n'y a qu'une seule arête avec une valuation maximale. De plus, il existe des cycles la contenant dans le graphe initial. Si on suppose qu'un arbre couvrant possède cette arête de valuation maximale et qu'on la supprime de l'arbre, on va se retrouver avec 2 parties connexes. Comme il existe un cycle contenant l'arête de valuation maximale dans le graphe initial, il va exister une arête du graphe initial qui relie les 2 parties connexes nouvellement créées. L'ajouter à notre graphe va à nouveau le rendre connexe : ce sera à nouveau un arbre. Comme il serait de valuation strictement plus petite que notre arbre initial, ce n'est pas possible.

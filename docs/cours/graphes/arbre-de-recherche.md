@@ -37,7 +37,7 @@ On rappelle que la hauteur d'un arbre est la longueur maximale du chemin d'un n�
 {% details solution %}
 
 En notant $g$ et $d$ les enfants gauche et droit d'un nœud $n$, on a que :
-$h(n) = \max(h(g), h(d))$
+$h(n) = \max(h(g), h(d)) + 1$
 
 {% enddetails %}
 {: .a-faire}
@@ -46,7 +46,7 @@ $h(n) = \max(h(g), h(d))$
 {: .a-faire}
 {% details solution %}
 
-On suppose que l'on a les fonction `enfant_gauche(noeud)`et `enfant_droit(noeud)` qui rende respectivement l'enfant gauche et l'enfant droit d'un noeud s'il existe et `None` sinon.
+On suppose que l'on a les fonctions `enfant_gauche(noeud)`et `enfant_droit(noeud)` qui rende respectivement l'enfant gauche et l'enfant droit d'un noeud s'il existe et `None` sinon.
 
 On a alors :
 
@@ -55,7 +55,7 @@ On a alors :
 def hauteur(noeud):
     if noeud is None:
         return 0
-    return max(hauteur(enfant_gauche(noeud)), hauteur(enfant_droit(noeud)))
+    return max(hauteur(enfant_gauche(noeud)), hauteur(enfant_droit(noeud))) + 1
 
 print(hauteur(racine))
 ```
@@ -150,16 +150,102 @@ def change_valeur(x, nouveau):
 {% enddetails %}
 {:.a-faire}
 
-### exemple
+### encodage
 
-> TBD : un arbre tableau -> arbre python (sans algo)
-{:.note}
+Prenons les deux tas de la figure ci-après : 
+
+![tas possibles]({{ "/assets/cours/graphes/tas_2-possibilites.png" | relative_url }}){:style="margin: auto;display: block;"}
+
+En utilisant l'encodage précédent, le tas de gauche va s'écrire :
+
+```python
+[42, [12, [6, None, None], [5, None, None]], [3, [1, None, None], None]]
+```
+
+> pourquoi ?
+{: .a-faire}
+{% details solution %}
+
+On peut ainsi lire l'arbre comme ceci : `[42, enfant_gauche, enfant_droit]`. avec `enfant_gauche = [12, enfant_gauche_2, enfant_droit_2]`. Comme `enfant_gauche_2` est une feuille ce sera : `enfant_gauche_2 = [6, None, None]`.
+Les nœud étant aussi des listes, elles s'imbriquent donc les unes dans les autres, jusqu'à avoir des feuilles `None`, c'et à dire pas de feuilles.
+
+{% enddetails %}
+{: .a-faire}
+
+> Quel est l'encodage du tas de droite ?
+{: .a-faire}
+{% details solution %}
+
+```python
+[42, [12, [3, None, None], [1, None, None]], [6, [5, None, None], None]]
+```
+
+{% enddetails %}
+{: .a-faire}
+
+### code
+
+> Exécutez en python les algorithmes de hauteur et de nombre sur les 2 tas de la question précédente.
+{: .a-faire}
+{% details solution %}
+
+fichier *"arbre_binaires.py"* :
+
+```python
+
+def enfant_gauche(x):
+    return x[1]
+
+
+def change_enfant_gauche(x, nouveau):
+    x[1] = nouveau
+
+
+def enfant_droit(x):
+    return x[2]
+
+
+def change_enfant_droit(x, nouveau):
+    x[2] = nouveau
+
+
+def valeur(x):
+    return x[0]
+
+
+def change_valeur(x, nouveau):
+    x[0] = nouveau
+
+
+def hauteur(noeud):
+    if noeud is None:
+        return 0
+    return max(hauteur(enfant_gauche(noeud)), hauteur(enfant_droit(noeud))) + 1
+
+
+def nombre(noeud):
+    if noeud is None:
+        return 0
+    return nombre(enfant_gauche(noeud)) + nombre(enfant_droit(noeud)) + 1
+
+racine_1 = [42, [12, [6, None, None], [5, None, None]], [3, [1, None, None], None]]
+racine_2 = [42, [12, [3, None, None], [1, None, None]], [6, [5, None, None], None]]
+
+print("hauteur : ", hauteur(racine_1), " - nombre : ", nombre(racine_1))
+
+```
+
+{% enddetails %}
+{: .a-faire}
 
 ## arbre binaire de recherche : définitions
 
-### def
+Un **arbre binaire de recherche** est un arbre binaire planté dont les sommets sont valués par un ensemble ordonné (e.g. des nombres) & tel que, pour chaque sommet $s$ :
 
-### structure
+* l'enfant gauche et ses descendants aient une valuation strictement plus petite que celle de $s$,
+* l'enfant droit et ses descendants aient une valuation plus grande ou égale à celle de $s$.
+
+### exemple
 
 ### exemple tableau
 
@@ -176,6 +262,8 @@ plusieurs possibilités avec les même nombres ?
 ### suppression
 
 ## trie des valeurs
+
+en-ordre
 
 ### ordre complet
 

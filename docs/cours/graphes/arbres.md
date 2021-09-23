@@ -112,8 +112,8 @@ Vocabulaire :
 * $x$ est un **descendant** de $y$ : si $y$ est sur le chemin entre la racine et $x$
 * $x$ est une **feuille** s'il n'a pas de descendant
 * $x$ est un **nœud intérieur** s'il n'est pas une feuille
-* $x$ est un **successeur** de $y$ : si $y$ est le sommet juste avant $x$ dans le chemin de la racine à $x$
-* $y$ est un **prédécesseur** de $x$ : si $y$ est le sommet juste avant $x$ dans le chemin de la racine à $x$
+* $x$ est un **enfant** de $y$ : si $y$ est le sommet juste avant $x$ dans le chemin de la racine à $x$
+* $y$ est un **parent** de $x$ : si $y$ est le sommet juste avant $x$ dans le chemin de la racine à $x$
 * la **hauteur** de $x$ est la longueur du chemin entre la racine et $x$.
 * la **hauteur** de l'arbre est la longueur du plus long chemin entre la racine et un autre sommet.
 
@@ -126,11 +126,11 @@ Cet ordonnancement est [très utilisé en biologie](https://fr.wikipedia.org/wik
 
 En informatique, c'est souvent les arbres binaires planté que l'on utilise :
 
-Un arbre planté est binaire si tout noeud intérieur a **au plus 2 successeurs**. On aura parfois aussi besoin qu'il soit **complet**, c'est-à-dire que les noeuds intérieurs qui n'ont pas 2 successeurs sont en bas de l'arbre (à la hauter de l'arbre -1).
+Un arbre planté est binaire si tout noeud intérieur a **au plus 2 enfants**. On aura parfois aussi besoin qu'il soit **complet**, c'est-à-dire que les noeuds intérieurs qui n'ont pas 2 enfants sont en bas de l'arbre (à la hauteur de l'arbre -1).
 
 ### propriété fondamentale des arbres binaires
 
->Montrer que pour un arbre binaire, si tout noeud intérieur a exactement 2 successeurs, alors en notant $f$ le nombre de feuilles de l'arbre, on a :
+>Montrer que pour un arbre binaire, si tout noeud intérieur a exactement 2 enfants, alors en notant $f$ le nombre de feuilles de l'arbre, on a :
 >
 >* la hauteur de l'arbre est égale à $\log_2(f)$
 >* $f$ est égal au nombre de nœuds intérieurs plus 1.
@@ -213,8 +213,8 @@ On utilise ce principe pour parcourir tous les sommets d'un arbre planté effica
 pré-ordre(racine)
 Si la racine a des descendants:
     Examen de la racine 
-    pré-ordre(fils gauche) 
-    pré-ordre(fils droit)
+    pré-ordre(enfant gauche) 
+    pré-ordre(enfant droit)
 ```
 
 #### post-ordre
@@ -222,8 +222,8 @@ Si la racine a des descendants:
 ```text
 post-ordre(racine)
 Si la racine a des descendants:
-    post-ordre(fils gauche) 
-    post-ordre(fils droit)
+    post-ordre(enfant gauche) 
+    post-ordre(enfant droit)
     Examen de la racine 
 ```
 
@@ -232,9 +232,9 @@ Si la racine a des descendants:
 ```text
 en-ordre(racine)
 Si la racine a des descendants:
-    en-ordre(fils gauche) 
+    en-ordre(enfant gauche) 
     Examen de la racine 
-    en-ordre(fils droit)
+    en-ordre(enfant droit)
 ```
 
 > Les [parcours d'arbres](https://fr.wikipedia.org/wiki/Arbre_syntaxique) sont utilisés en linguistique pour analyser syntaxiquement une phrase. Un exercice classique est de créer un [arbre à partir d'une expression arithmétique](https://diu-uf-bordeaux.github.io/bloc4/td/arbres/expression/) pour la résoudre de façon optimale en nombre d'opérations.
