@@ -52,12 +52,12 @@ Codons des classes qui héritent es unes des autres
 
 ### séance 7 (**SM**)
 
-**TP noté** : les interfaces graphiques en python.
+les interfaces graphiques en python.
 
 ### séance 8 (**SM**)
 
-Pour aller plus loin, programmer par les tests et la notion de design pattern.
+La **séance machine est notée**.
 
 ## note
 
-Le TP 7 sera noté. Il faudra le rendre au début de la séance 8.
+**Le TP 8 sera noté.** Il faudra le rendre en fin de séance.
