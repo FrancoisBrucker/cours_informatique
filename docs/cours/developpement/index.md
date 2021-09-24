@@ -30,14 +30,33 @@ On considérera que vous avez des bases minimales en algorithmie. En particulier
 
 ## Plan
 
+### Première partie : outils de développement {#partie-1}
+
+Langage, éditeur et petites habitude de bon code.
+
+#### bases {#partie-1.1}
+
+Bases du langage python et prise en main d'un éditeur de texte.
+
 1. [installation python et vsc]({% link cours/developpement/installations.md %})
 2. [bases de python]({% link cours/developpement/bases-python/index.md %})
-3. [outils de développement]({% link cours/developpement/outils-de-developpement.md %})
-4. [premier projet]({% link cours/developpement/premier-projet.md %})
-5. développement objet
-6. structures avancées dict
-7. tests
-8. TDD
+
+#### méthode de développement {#partie-1.2}
+
+Plugins utiles au développement.
+
+1. [outils de développement]({% link cours/developpement/outils-de-developpement.md %})
+2. [premier projet]({% link cours/developpement/premier-projet.md %})
+
+### Deuxième partie : développement objet
+
+1. développement objet
+
+### autres
+
+* structures avancées dict
+* tests
+* TDD
 
 ## les références
 

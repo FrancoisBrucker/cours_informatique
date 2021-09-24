@@ -23,10 +23,10 @@ Huit séances sont programmées.
 
 ### prérequis (**AU**)
 
-Première séance, en autonomie. Suivez les différents tutoriaux des parties 1 à 4 du [cours de développement]({% link cours/developpement/index.md %}). 
+Première séance, en autonomie. Suivez les différents tutoriaux de la partie [première partie]({% link cours/developpement/index.md %}#partie-1) du cours de développement.
 
-* **indispensable** : vous devez avoir suivi les parties 1 et 2 qui vont donneront les outils nécessaire pour les TPs et comprendre le cours. 
-* **pour aller plus loin** les parties 3 et 4 sont là pour vous faire progresser dans la connaissance du développement informatique, si vous connassiez déjà le langage python.
+* **indispensable** : vous devez avoir suivi la partie [bases]({% link cours/developpement/index.md %}#partie-1.1)
+* **pour aller plus loin** : vous devez avoir suivi la partie [méthode de développement]({% link cours/developpement/index.md %}#partie-1.2) est là pour vous faire progresser dans la connaissance du développement informatique, si vous connaissiez déjà le langage python.
 
 A la fin de cette partie vous aurez un éditeur de texte et un interpréteur python fonctionnels pour suivre les différents TPs.
 
