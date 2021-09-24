@@ -17,7 +17,7 @@ Le code complet de ce tutoriel est disponible sur [le github du projet](https://
 
 ## Outils
 
-Vous aurez besoin de connaitre un peu de python et que vous sachiez faire des tests. Suivez les 4 premières parties du [cours de développement]({% link cours/graphes/index.md %})
+Vous aurez besoin de connaitre un peu de python et que vous sachiez faire des tests. Suivez les 4 premières parties du [cours de développement]({% link cours/developpement/index.md %})
 
 Les tests vont s'ajouter petit à petit et à la fin de la séance votre fichier *"test_multi_graph.py"* contiendra plus d'une vingtaine de tests !
 

@@ -16,6 +16,10 @@ authors :
 
 Le but de ce travail est d'étudier les arbres de recherche, qui sont une structure de stockage efficaces pour maintenir un ensemble d'éléments triés.
 
+## Outils
+
+Vous aurez besoin de connaitre un peu de python. Suivez les 2 premières parties du [cours de développement]({% link cours/developpement/index.md %}) si ce n'est pas déjà fait.
+
 ## Arbre binaire
 
 Comme vu [précédemment]({% link cours/graphes/arbres.md %}#arbre-binaire), un arbre binaire planté est une structure de graphe qui possède :
