@@ -53,11 +53,11 @@ Donc tout sommet de $G$ a un degré d'au moins 2 et il existe un cycle ([c'est d
 
 Pour la seconde preuve, on la montre par récurrence. La propriété est clairement vraie pour un graphe à 1 ou 2 sommets. On la suppose alors vraie jusqu'à $n$ sommets et on considère un graphe connexe à $n+1$ sommets.
 
-Pour ce graphe on choisi un sommet, $x$, que l'on supprime du graphe. Ce dernier n'est alors plus connexe et possède $p$ composantes connexes qui respectent l'hypothèse de récurrence : $\vert E_i \vert \geq \vert V_i \vert -1$ pour chacune d'elles. En sommant le tout on a alors :
+Pour ce graphe on choisi un sommet, $x$, que l'on supprime du graphe. Ce dernier n'est alors plus connexe et possède $p \leq \delta(x)$ composantes connexes qui respectent l'hypothèse de récurrence : $\vert E_i \vert \geq \vert V_i \vert -1$ pour chacune d'elles. En sommant le tout on a alors :
 
 $$\sum \vert E_i \vert \geq \sum (\vert V_i \vert -1) $$
 
-On conclut en remarquant que $\sum \vert E_i \vert = \vert E\vert -p$ et $\sum \vert V_i \vert = V - 1$.
+On conclut en remarquant que $\sum \vert E_i \vert = \vert E \vert - \delta(x) \leq \vert E \vert - p$ et $\sum \vert V_i \vert = V - 1$.
 
 #### conditions
 
