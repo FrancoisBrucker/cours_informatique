@@ -6,44 +6,37 @@ tags: mie
 author: "François Brucker"
 ---
 
-## But
 
-Séance consacrée aux [design patterns](https://fr.wikipedia.org/wiki/Patron_de_conception). Ces façons de faire, sorte d'algorithmie objet permettent de résoudre nombre de problèmes courants en développement. Cela permet d'éviter de faire des [erreurs classiques](http://sahandsaba.com/nine-anti-patterns-every-programmer-should-be-aware-of-with-examples.html), aussi appelées [anti-pattern](https://fr.wikipedia.org/wiki/Antipattern).
+Les [design patterns](https://fr.wikipedia.org/wiki/Patron_de_conception), ou façons de faire, sont pour ainsi dire de l'algorithmie objet : ils permettent de résoudre nombre de problèmes courants en développement et d'éviter les [erreurs classiques](http://sahandsaba.com/nine-anti-patterns-every-programmer-should-be-aware-of-with-examples.html), aussi appelées [anti-pattern](https://fr.wikipedia.org/wiki/Antipattern).
 
-Comme ce cours est dispensé en utilisant le langage python, on utilisera beaucoup le typage dynamique de celui-ci pour ces exemples (appelé [duck typing](http://sametmax.com/quest-ce-que-le-duck-typing-et-a-quoi-ca-sert/), mais les design pattern fonctionnent quelques soient le langage utilisé (ils ont d'ailleurs [initialement été écrits](https://fr.wikipedia.org/wiki/Design_Patterns) pour le C++).
+Comme ce cours est dispensé en utilisant le langage python, on utilisera beaucoup le typage dynamique de celui-ci pour ces exemples, mais les design pattern fonctionnent quelques soient le langage utilisé (ils ont d'ailleurs [initialement été écrits](https://fr.wikipedia.org/wiki/Design_Patterns) pour le C++).
 
-> **Elements de corrigé :** Ils sont disponibles [là]({% link cours/developpement/developpement-objet/design_patterns_corrige.md %}). Cependant, ils ne dispensent pas d'aller en cours, c'est une aide à la compréhension.
-
+[Eléments de corrigé]({% link cours/developpement/design-patterns-corrige.md %})
 
 ## Les bases
 
+On se rappelle comment bien commencer un projet, avec trois fichiers :
 
-On se rappelle comment bien commencer un projet, avec trois fichiers : 
+* le code
+* les tests
+* le programme
 
-  - le code
-  - les tests
-  - le programme
-    
+On commence avec les 3 fichiers ci-après. Exécutez le main et les tests. Les 3 tests doivent passer.
 
+Fichier *"main.py"*
 
-On commence avec les 3 fichiers ci-après. Exécutez le main et les tests. Les 3 tests doivent passer. 
-
-
-#### main.py
-
-~~~ python
+```python
 from choice import Choice
 
 d6 = Choice(list(range(1, 7)))
 
 for etape in range(100):
     print(d6.roll().get_position())
-~~~
+```
 
-#### choice.py
+Fichier *"choices.py"*
 
-
-~~~ python
+```python
 import random
 
 
@@ -58,13 +51,24 @@ class Choice:
     def roll(self):
         self.position = self.choices[random.randint(0, len(self.choices) - 1)]
         return self
-~~~
+```
 
-Regardez le code de la méthode `roll` pourquoi rendre `self` ?
+> Regardez le code de la méthode `roll` pourquoi rendre `self` ?
+{: .a-faire}
+{% details solution %}
+Pour vouvoir chainer nos opérations. En rendant self, on peut écrire des choses du genre :
 
-#### tests.py
+```python
+choice = Choices([1, 2, 3, 4])
 
-~~~ python
+print(choice.roll().get_position())
+```
+
+{% enddetails %}
+
+Fichier *"tests.py"*
+
+```python
 from choice import Choice
 
 
@@ -82,32 +86,29 @@ def test_roll():
     d1 = Choice([1])
     d1.roll()
     assert d1.get_position() == 1
-~~~
-
+```
 
 ## Première amélioration
 
-
 Choice prend l'objet `choices` et le garde. Cela pose plusieurs problèmes. En particulier :
 
-  - si on modifie l'objet passé en paramètre, cela change le comportement de choice.
-  - on expose l'attribut `choices` par un attribut public.
-    
+* si on modifie l'objet passé en paramètre, cela change le comportement de choice.
+* on expose l'attribut `choices` par un attribut public.
+
 Pour résoudre ces soucis on va copier l'objet `choices` et rendre l'attribut non modifiable. Pour cela, on va écrire des tests pour mettre en  lumière le problème puis corriger le code. Il faudra certainement changer d'autres tests dans le processus de réécriture du code.
 
-On commence par écrire un petit test : 
+On commence par écrire un petit test :
 
-~~~ python
+```python
 def test_copy_choices():
     initial_list = ["a"]
     d1 = Choice(initial_list)
     initial_list[0] = "CHANGE"
     d1.roll()
     assert d1.get_position() == "a"
-~~~
+```
 
-
-Regardez-le planter. Que s'est-il passé ? Puis proposez une solution. 
+Regardez-le planter. Que s'est-il passé ? Puis proposez une solution.
 
 
 Enfin, on peut tester la deuxième objection avec le test ci-après. Le but de ce test est de vérifier que l'attribut  `choices` est non mutable. Il cherche à produire une erreur : modifier un élément [non mutable](https://medium.com/@meghamohan/mutable-and-immutable-side-of-python-c2145cf72747).

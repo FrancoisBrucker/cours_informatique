@@ -25,6 +25,8 @@ Un *espace de noms* est un endroit où seront stockées les différentes variabl
 
 > Le fait qu'un espace de nom existe est crucial pour pouvoir utiliser des variables et le fait qu'il soit créé au début du programme (au lancement de l'interpréteur) détruit une fois le programme terminée (une fois que l'interpréteur s'arrête) permet d'assurer qu'un programme donnera toujours le même résultat (si l'espace de noms etait toujours le même il resterait des variables d'un ancien programme dans un nouveau...).
 
+Les namespaces ne font que stocker des noms, ils peuvent donc être créés et détruits sans détruire des objets. Seul un objet qui n'est référencé dans aucun namespace est effacé car on ne peut plus y accéder.
+
 ## objets de python
 
 [La partie objets types et types d'objets]({% link cours/developpement/bases-python/objets-types.md %}) vous dira tout sur les objets courant que vous manipulerez en python.

@@ -8,7 +8,6 @@ author: "François Brucker"
 
 ## Test Driven Development by example
 
-
 Vous allez suivre ici le livre séminal : [TDD by example](https://www.amazon.fr/Test-Driven-Development-Kent-Beck/dp/0321146530/ref=sr_1_1?ie=UTF8&qid=1538720480&sr=8-1&keywords=test+driven+development+by+example) de Kent Beck (Suivez son [twitter](https://twitter.com/kentbeck), ses posts sont souvent rigolos et toujours utiles). Initialement écrit pour le java, nous allons appliquer ses enseignements au python.
 
 On y verra aussi quelques règles de refactoring que l'on peut voir dans [Refactoring: Improving the Design of Existing Code ](https://www.amazon.fr/Refactoring-Improving-Design-Existing-Code/dp/0201485672/ref=sr_1_2?ie=UTF8&qid=1539066441&sr=8-2) de [Martin fowler](https://martinfowler.com) (allez voir son site, y'a moult choses chouettes sur le code, l'agile, la vie et le reste)

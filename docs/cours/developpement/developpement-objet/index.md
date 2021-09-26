@@ -49,7 +49,3 @@ Plusieurs outils de communication sont à votre disposition :
   - [Héritage]({% link cours/developpement/developpement-objet/heritage.md %})
   - [UI et programmation événementielle]({% link cours/developpement/developpement-objet/programmation_evenementielle.md %})
   
-## Bonus 
-
- - [test driven development]({% link cours/developpement/developpement-objet/tdd_et_test_pattern.md %}) pour vous entraîner à programmer par les tests.
- - [design patterns]({% link cours/developpement/developpement-objet/design_patterns.md %}). Pour aller un peu plus loin dans le développement objet avec des design patterns.

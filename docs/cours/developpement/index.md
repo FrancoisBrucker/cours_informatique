@@ -43,22 +43,33 @@ Bases du langage python et prise en main d'un éditeur de texte.
 
 #### méthode de développement {#partie-1.2}
 
-Plugins utiles au développement.
+Cette partie comporte deux projets pédagogique qui vous entraîneront à coder avec vscode.
 
 1. [outils de développement]({% link cours/developpement/outils-de-developpement.md %})
-2. [premier projet]({% link cours/developpement/premier-projet.md %})
+2. [routine de développement]({% link cours/developpement/routine-developpement.md %})
 
-### Deuxième partie : développement objet
+### Deuxième partie : programmation objet
 
-1. développement objet
+Créer et utiliser les objets et les classes en python. On montrera également les principes fondamentaux de la programmation objet que sont la composition et l'agrégation d'objet et on s'intéressera un peu à l'héritage.
+
+1. [classes-et-objets]({% link cours/developpement/programmation-objet/classes-et-objets.md %})
+2. [composition et agrégation]({% link cours/developpement/programmation-objet/composition-agregation.md %})
+3. [on s'entraine]({% link cours/developpement/programmation-objet/objets-composition-agregation-exercices.md %})
+4. héritage
+5. on s'entraine
+6. programmation événemntielle
+
+### Troisième partie : développement objet
+
+1. [Test Driven Development et test pattern](tdd_et_test_pattern)
+2. [design pattern]({% link cours/developpement/design-patterns.md %})
 
 ### autres
 
 * structures avancées dict
-* tests
-* TDD
 
 ## les références
 
 * [installation complète de python]({% post_url /tutos/python/2021-08-20-installation-de-python %})
 * [tutoriel python](https://docs.python.org/fr/3/tutorial/)
+* [figures uml](./programmation-objet/plantuml.txt)

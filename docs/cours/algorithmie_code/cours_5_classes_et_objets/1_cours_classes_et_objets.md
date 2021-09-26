@@ -72,8 +72,7 @@ En regardant du code python, vous allez voir beaucoup de noms qui commencent par
 
 #### namespaces
 
-La gestion des noms en python se fait via des [espaces de noms](http://sebastianraschka.com/Articles/2014_python_scope_and_namespaces.html). L'ordre dans lequel ces noms sons cherché pour être associé à un objet est logique et se règle en sachant quel namespace est utilisé. Les namespaces possibles sont rappelés plus bas dans la
-  correction de l'exercice dédié.
+La gestion des noms en python se fait via des [espaces de noms](http://sebastianraschka.com/Articles/2014_python_scope_and_namespaces.html). L'ordre dans lequel ces noms sons cherché pour être associé à un objet est logique et se règle en sachant quel namespace est utilisé. Les namespaces possibles sont rappelés plus bas dans la correction de l'exercice dédié.
 
 #### Gestion des attributs
 

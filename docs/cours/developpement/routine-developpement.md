@@ -1,6 +1,6 @@
 ---
 layout: page
-title:  "Développement pratiques"
+title:  "Routine de developpement"
 category: cours
 tags: informatique cours 
 author: "François Brucker"

@@ -11,7 +11,6 @@ author: "François Brucker"
 Le but de cette séance est d'installer un environnement de développement python et de se familiariser avec les tests unitaires.
 
 
-
 ### Environnement de développement
 
 En suivant ce [tutorial sur anaconda et pycharm]({% post_url tutos/editeur/pycharm/2021-08-30-configuration-pycharm %}), créez un environnement de développement python cohérent avac anaconda et pycharm.

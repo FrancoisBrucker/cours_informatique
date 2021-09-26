@@ -32,15 +32,21 @@ A la fin de cette partie vous aurez un éditeur de texte et un interpréteur pyt
 
 ### séance 2 (**CM**)
 
-Cours sur les objets et les classes et comment on les code en python
+Cours sur les objets et les classes et comment on les code en python.
+
+1. [classes et objets]({% link cours/developpement/programmation-objet/classes-et-objets.md %})
 
 ### séance 3 (**CM**)
 
-Comment composer et aggréger les objets pour créer des objets plus fonctionnels.
+Comment composer et agréger les objets pour créer des objets plus fonctionnels :
+
+1. [composition et agrégation]({% link cours/developpement/programmation-objet/composition-agregation.md %})
 
 ### séance 4 (**SM**)
 
-On code des classes en python, et on les compose pour en faire des classes plus fortes.
+Exercice de modélisation objet en python :
+
+1. [exercices]({% link cours/developpement/programmation-objet/objets-composition-agregation-exercices.md %})
 
 ### séance 5 (**CM**)
 
