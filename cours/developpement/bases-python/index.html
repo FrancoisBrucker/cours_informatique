@@ -94,6 +94,8 @@
   <p>Le fait qu’un espace de nom existe est crucial pour pouvoir utiliser des variables et le fait qu’il soit créé au début du programme (au lancement de l’interpréteur) détruit une fois le programme terminée (une fois que l’interpréteur s’arrête) permet d’assurer qu’un programme donnera toujours le même résultat (si l’espace de noms etait toujours le même il resterait des variables d’un ancien programme dans un nouveau…).</p>
 </blockquote>
 
+<p>Les namespaces ne font que stocker des noms, ils peuvent donc être créés et détruits sans détruire des objets. Seul un objet qui n’est référencé dans aucun namespace est effacé car on ne peut plus y accéder.</p>
+
 <h2 id="objets-de-python">objets de python</h2>
 
 <p><a href="/cours_informatique/cours/developpement/bases-python/objets-types.html">La partie objets types et types d’objets</a> vous dira tout sur les objets courant que vous manipulerez en python.</p>

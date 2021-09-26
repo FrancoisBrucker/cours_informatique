@@ -1,0 +1,77 @@
+## ressources 
+
+Le code pour https://www.planttext.com/ qui permet de créer de jolis diagrammes UML. Ce n'est pas franchement utile pour les étudiants à moins que vous vouliez voir comment on arrive à faire de telles merveilles graphiques en uml avec un petit service web. 
+
+
+```text
+@startuml
+
+
+  class Dice {
+  -_position
+  + __init__(position=1)
+  +get_position()
+  +set_position(position)
+  +roll()
+}
+
+class GreenCarpet {
+ - _dices
+    
+ + __init__()
+ + roll()
+ + sum()
+}
+
+Dice --* GreenCarpet
+
+@enduml
+~~~
+
+
+~~~
+@startuml
+class Card { 
+__attributes__
+ - value
+ - color
+__methods__
+ +__init__(value, color)
+ + __eq__(self, other)
+ + get_value()
+ + get_color()
+}
+@enduml
+~~~
+
+~~~
+class Card { 
+__class_attributes__
+ - SPADES
+ - HEARTS
+ - CLUBS
+ - DIAMONDS
+__attributes__
+ - value
+ - color
+__methods__
+ +__init__(value, color)
+ + __eq__(self, other)
+ + get_value()
+ + get_color()
+
+}
+
+class Deck {
+    __attributes__
+    - cards
+    __methods__
+    +__init__()
+    +add(card)
+    +show()
+    +remove()
+    
+}
+
+Card --o Deck
+```

@@ -10,13 +10,13 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
 <meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
-<link rel="canonical" href="/cours_informatique/cours/developpement/developpement-objet/design_patterns.html" />
-<meta property="og:url" content="/cours_informatique/cours/developpement/developpement-objet/design_patterns.html" />
+<link rel="canonical" href="/cours_informatique/cours/developpement/design-patterns.html" />
+<meta property="og:url" content="/cours_informatique/cours/developpement/design-patterns.html" />
 <meta property="og:site_name" content="cours d’informatique" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Design Patterns" />
 <script type="application/ld+json">
-{"headline":"Design Patterns","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/developpement/developpement-objet/design_patterns.html","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
+{"headline":"Design Patterns","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/developpement/design-patterns.html","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
@@ -62,15 +62,11 @@
   </header>
 
   <div class="post-content">
-    <h2 id="but">But</h2>
+    <p>Les <a href="https://fr.wikipedia.org/wiki/Patron_de_conception">design patterns</a>, ou façons de faire, sont pour ainsi dire de l’algorithmie objet : ils permettent de résoudre nombre de problèmes courants en développement et d’éviter les <a href="http://sahandsaba.com/nine-anti-patterns-every-programmer-should-be-aware-of-with-examples.html">erreurs classiques</a>, aussi appelées <a href="https://fr.wikipedia.org/wiki/Antipattern">anti-pattern</a>.</p>
 
-<p>Séance consacrée aux <a href="https://fr.wikipedia.org/wiki/Patron_de_conception">design patterns</a>. Ces façons de faire, sorte d’algorithmie objet permettent de résoudre nombre de problèmes courants en développement. Cela permet d’éviter de faire des <a href="http://sahandsaba.com/nine-anti-patterns-every-programmer-should-be-aware-of-with-examples.html">erreurs classiques</a>, aussi appelées <a href="https://fr.wikipedia.org/wiki/Antipattern">anti-pattern</a>.</p>
+<p>Comme ce cours est dispensé en utilisant le langage python, on utilisera beaucoup le typage dynamique de celui-ci pour ces exemples, mais les design pattern fonctionnent quelques soient le langage utilisé (ils ont d’ailleurs <a href="https://fr.wikipedia.org/wiki/Design_Patterns">initialement été écrits</a> pour le C++).</p>
 
-<p>Comme ce cours est dispensé en utilisant le langage python, on utilisera beaucoup le typage dynamique de celui-ci pour ces exemples (appelé <a href="http://sametmax.com/quest-ce-que-le-duck-typing-et-a-quoi-ca-sert/">duck typing</a>, mais les design pattern fonctionnent quelques soient le langage utilisé (ils ont d’ailleurs <a href="https://fr.wikipedia.org/wiki/Design_Patterns">initialement été écrits</a> pour le C++).</p>
-
-<blockquote>
-  <p><strong>Elements de corrigé :</strong> Ils sont disponibles <a href="/cours_informatique/cours/developpement/developpement-objet/design_patterns_corrige.html">là</a>. Cependant, ils ne dispensent pas d’aller en cours, c’est une aide à la compréhension.</p>
-</blockquote>
+<p><a href="/cours_informatique/cours/developpement/design-patterns-corrige.html">Eléments de corrigé</a></p>
 
 <h2 id="les-bases">Les bases</h2>
 
@@ -84,7 +80,7 @@
 
 <p>On commence avec les 3 fichiers ci-après. Exécutez le main et les tests. Les 3 tests doivent passer.</p>
 
-<h4 id="mainpy">main.py</h4>
+<p>Fichier <em>“main.py”</em></p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">choice</span> <span class="kn">import</span> <span class="n">Choice</span>
 
@@ -94,7 +90,7 @@
     <span class="k">print</span><span class="p">(</span><span class="n">d6</span><span class="p">.</span><span class="n">roll</span><span class="p">().</span><span class="n">get_position</span><span class="p">())</span>
 </code></pre></div></div>
 
-<h4 id="choicepy">choice.py</h4>
+<p>Fichier <em>“choices.py”</em></p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">random</span>
 
@@ -112,9 +108,20 @@
         <span class="k">return</span> <span class="bp">self</span>
 </code></pre></div></div>
 
-<p>Regardez le code de la méthode <code class="language-plaintext highlighter-rouge">roll</code> pourquoi rendre <code class="language-plaintext highlighter-rouge">self</code> ?</p>
+<blockquote class="a-faire">
+  <p>Regardez le code de la méthode <code class="language-plaintext highlighter-rouge">roll</code> pourquoi rendre <code class="language-plaintext highlighter-rouge">self</code> ?</p>
+</blockquote>
+<details><summary>solution</summary><div>
+<p>Pour vouvoir chainer nos opérations. En rendant self, on peut écrire des choses du genre :</p>
 
-<h4 id="testspy">tests.py</h4>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">choice</span> <span class="o">=</span> <span class="n">Choices</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">choice</span><span class="p">.</span><span class="n">roll</span><span class="p">().</span><span class="n">get_position</span><span class="p">())</span>
+</code></pre></div></div>
+
+</div></details>
+
+<p>Fichier <em>“tests.py”</em></p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">choice</span> <span class="kn">import</span> <span class="n">Choice</span>
 
