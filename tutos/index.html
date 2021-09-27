@@ -81,6 +81,14 @@
 
         var id = 0;
         
+        var cats = ["tutos","systeme","installation","WSL"]
+
+        id += 1;
+        var postDiv = document.getElementById(id);
+        postDiv.style.display = (selectedCategory == 'All' || cats.includes(selectedCategory)) 
+            ? 'unset' 
+            : 'none';
+        
         var cats = ["tutos","python","installation","anaconda"]
 
         id += 1;
@@ -214,6 +222,9 @@
             <button id="CLI" onclick="filterUsingCategory(this.id)">CLI</button>
         
             
+            <button id="WSL" onclick="filterUsingCategory(this.id)">WSL</button>
+        
+            
             <button id="anaconda" onclick="filterUsingCategory(this.id)">anaconda</button>
         
             
@@ -269,6 +280,47 @@
         <li id="1">
             
             <h3>
+                <a class="post-link" href="/cours_informatique/tutos/systeme/installation/wsl/2021/09/27/wsl-windows.html">
+                  wsl ou linux dans windows
+                </a>
+              </h3>
+              <div style="padding-left:20px;">
+                <div>
+                    catégories : 
+                    
+                    • <span class="post-meta">tutos</span>
+                    
+                    • <span class="post-meta">systeme</span>
+                    
+                    • <span class="post-meta">installation</span>
+                    
+                    • <span class="post-meta">WSL</span>
+                    
+                    • 
+                </div>
+                <div>
+                    tags : 
+                    
+                    • <span class="post-meta">système</span>
+                    
+                    • <span class="post-meta">terminal</span>
+                    
+                    •
+                </div>
+                <p>
+                    <p>Comment installer et bien préparer wsl pur le développement.</p>
+
+                </p>
+                
+              </div>
+              
+                
+              
+        </li>
+        
+        <li id="2">
+            
+            <h3>
                 <a class="post-link" href="/cours_informatique/tutos/python/installation/anaconda/2021/09/14/installation-anaconda.html">
                   Installation d&#39;Anaconda python
                 </a>
@@ -303,7 +355,7 @@
               
         </li>
         
-        <li id="2">
+        <li id="3">
             
             <h3>
                 <a class="post-link" href="/cours_informatique/tutos/editeur/vsc/installation/configuration/terminal/2021/09/14/vsc-terminal.html">
@@ -345,7 +397,7 @@
               
         </li>
         
-        <li id="3">
+        <li id="4">
             
             <h3>
                 <a class="post-link" href="/cours_informatique/tutos/editeur/vsc/installation/configuration/python/2021/09/14/vsc-python.html">
@@ -386,7 +438,7 @@
               
         </li>
         
-        <li id="4">
+        <li id="5">
             
             <h3>
                 <a class="post-link" href="/cours_informatique/tutos/editeur/vsc/installation/configuration/python/2021/09/14/vsc-python-modules-supplementaires.html">
@@ -427,7 +479,7 @@
               
         </li>
         
-        <li id="5">
+        <li id="6">
             
             <h3>
                 <a class="post-link" href="/cours_informatique/tutos/editeur/vsc/installation/configuration/markdown/2021/09/14/vsc-markdown.html">
@@ -468,7 +520,7 @@
               
         </li>
         
-        <li id="6">
+        <li id="7">
             
             <h3>
                 <a class="post-link" href="/cours_informatique/tutos/editeur/vsc/installation/configuration/2021/09/03/vsc-installation-et-prise-en-main.html">
@@ -508,7 +560,7 @@
               
         </li>
         
-        <li id="7">
+        <li id="8">
             
             <h3>
                 <a class="post-link" href="/cours_informatique/tutos/langage/jekyll/2021/09/03/jekyll-et-site.html">
@@ -543,7 +595,7 @@
               
         </li>
         
-        <li id="8">
+        <li id="9">
             
             <h3>
                 <a class="post-link" href="/cours_informatique/tutos/systeme/installation/2021/09/01/installation-ordinateur.html">
@@ -582,7 +634,7 @@
               
         </li>
         
-        <li id="9">
+        <li id="10">
             
             <h3>
                 <a class="post-link" href="/cours_informatique/tutos/editeur/pycharm/2021/08/30/configuration-pycharm.html">
@@ -621,7 +673,7 @@
               
         </li>
         
-        <li id="10">
+        <li id="11">
             
             <h3>
                 <a class="post-link" href="/cours_informatique/tutos/langage/markdown/2021/08/30/format-markdown.html">
@@ -660,7 +712,7 @@
               
         </li>
         
-        <li id="11">
+        <li id="12">
             
             <h3>
                 <a class="post-link" href="/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html">
@@ -703,7 +755,7 @@
               
         </li>
         
-        <li id="12">
+        <li id="13">
             
             <h3>
                 <a class="post-link" href="/cours_informatique/tutos/systeme/fichiers/2021/08/24/fichiers-navigation.html">
@@ -744,7 +796,7 @@
               
         </li>
         
-        <li id="13">
+        <li id="14">
             
             <h3>
                 <a class="post-link" href="/cours_informatique/tutos/python/installation/terminal/2021/08/20/installation-de-python.html">
@@ -781,7 +833,7 @@
               
         </li>
         
-        <li id="14">
+        <li id="15">
             
             <h3>
                 <a class="post-link" href="/cours_informatique/tutos/python/langage/2021/08/19/elements-de-python.html">
@@ -816,7 +868,7 @@
               
         </li>
         
-        <li id="15">
+        <li id="16">
             
             <h3>
                 <a class="post-link" href="/cours_informatique/tutos/python/tests%20unitaires/2021/08/01/tests-unitaires.html">

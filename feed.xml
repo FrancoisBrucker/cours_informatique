@@ -1,4 +1,178 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/cours_informatique/feed.xml" rel="self" type="application/atom+xml" /><link href="/cours_informatique/" rel="alternate" type="text/html" /><updated>2021-09-27T07:07:11+00:00</updated><id>/cours_informatique/feed.xml</id><title type="html">cours d’informatique</title><subtitle>Support de cours/td d'informatique à l'école centrale marseille.</subtitle><entry><title type="html">vsc et markdown</title><link href="/cours_informatique/tutos/editeur/vsc/installation/configuration/markdown/2021/09/14/vsc-markdown.html" rel="alternate" type="text/html" title="vsc et markdown" /><published>2021-09-14T00:00:00+00:00</published><updated>2021-09-14T00:00:00+00:00</updated><id>/cours_informatique/tutos/editeur/vsc/installation/configuration/markdown/2021/09/14/vsc-markdown</id><content type="html" xml:base="/cours_informatique/tutos/editeur/vsc/installation/configuration/markdown/2021/09/14/vsc-markdown.html">&lt;p&gt;Comment écrire du markdown avec &lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;visual studio code&lt;/a&gt; (vsc ou encore vscode).&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/cours_informatique/feed.xml" rel="self" type="application/atom+xml" /><link href="/cours_informatique/" rel="alternate" type="text/html" /><updated>2021-09-27T08:08:19+00:00</updated><id>/cours_informatique/feed.xml</id><title type="html">cours d’informatique</title><subtitle>Support de cours/td d'informatique à l'école centrale marseille.</subtitle><entry><title type="html">wsl ou linux dans windows</title><link href="/cours_informatique/tutos/systeme/installation/wsl/2021/09/27/wsl-windows.html" rel="alternate" type="text/html" title="wsl ou linux dans windows" /><published>2021-09-27T00:00:00+00:00</published><updated>2021-09-27T00:00:00+00:00</updated><id>/cours_informatique/tutos/systeme/installation/wsl/2021/09/27/wsl-windows</id><content type="html" xml:base="/cours_informatique/tutos/systeme/installation/wsl/2021/09/27/wsl-windows.html">&lt;p&gt;Comment installer et bien préparer wsl pur le développement.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://docs.microsoft.com/en-us/windows/wsl/&quot;&gt;WSL&lt;/a&gt; signifie &lt;em&gt;Windows Subsystem for Linux&lt;/em&gt; et consiste à installer une distribution linux qui cohabite dans votre windows;&lt;/p&gt;
+
+&lt;p&gt;Ce n’est ni un dual boot ni une machine virtuelle. L’intérêt principal est que les port de la machine sont partagées entre windows et WSL, ce qui en fait une machine de développement web idéale.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;WSL 2 est de plus indispensable si vous voulez utiliser &lt;a href=&quot;https://www.docker.com/&quot;&gt;docker&lt;/a&gt; sous windows.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Nous verrons ici comment installer le système et les divers outils que l’on peut utiliser.
+A priori seule l’installation et la mise à jour sont indispensable. Le reste c’est pour un usage plus intensif de la WSL en tant qu’outil de développement.&lt;/p&gt;
+
+&lt;h2 id=&quot;installation&quot;&gt;installation&lt;/h2&gt;
+
+&lt;p&gt;Trop rien à dire. Suivez la doc : &lt;a href=&quot;https://docs.microsoft.com/en-us/windows/wsl/install&quot;&gt;https://docs.microsoft.com/en-us/windows/wsl/install&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Il suffit de taper la commande suivant dans un power en mode admin :&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wsl &lt;span class=&quot;nt&quot;&gt;--install&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Ca va préparer l’installation, puis après un reboot, finaliser l’installation.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Si vous ne précisez pas la distribution, vous aurez une ubuntu.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Une fois l’installation terminée, vous pourrez ouvrir un terminal unix dans votre windows.&lt;/p&gt;
+
+&lt;blockquote class=&quot;attention&quot;&gt;
+  &lt;p&gt;Vous n’avez pas de fenêtre graphique par défaut sous WSL, vous n’avez accès qu’aux commandes unix en terminal. C’est comme si vous étiez sur un serveur distant à la maison.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;mise-à-jour&quot;&gt;mise à jour&lt;/h2&gt;
+
+&lt;p&gt;Dons le terminal de votre ubuntu (ou debian), vous pouvez mettre à jour les différents packages installées :&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt update
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt upgrade
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;On peut maintenant installer nos packages :&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;ssh
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;vim
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Vous pourrez ensuite utiliser &lt;a href=&quot;http://www.octetmalin.net/linux/tutoriels/apt-get.php&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;apt-get&lt;/code&gt;&lt;/a&gt; pour installer d’autres packages.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Le gestionnaire de package de ubuntu et debian est identique, c’est &lt;a href=&quot;https://doc.ubuntu-fr.org/apt&quot;&gt;apt&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;les-fichiers&quot;&gt;les fichiers&lt;/h2&gt;
+
+&lt;p&gt;WSL et windows sont deux systèmes d’exploitation différents qui cohabitent sur une même machine. On a donc pas accès immédiatement aux fichiers de l’un dans l’autre système, mais ce n’est pas très compliquer de le faire.&lt;/p&gt;
+
+&lt;h3 id=&quot;les-fichiers-windows-sous-wsl&quot;&gt;les fichiers windows sous wsl&lt;/h3&gt;
+
+&lt;p&gt;Les fichiers windows sont accessible depuis wsl via le répertoire &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/mnt/&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;les-fichiers-wsl-sous-windows&quot;&gt;les fichiers wsl sous windows&lt;/h3&gt;
+
+&lt;p&gt;Les fichiers wsl sont accessible depuis l’&lt;a href=&quot;https://devblogs.microsoft.com/commandline/whats-new-for-wsl-in-windows-10-version-1903/&quot;&gt;explorateur windows&lt;/a&gt;. Dans un terminal wsl, il suffit de taper les commandes suivantes :&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ~
+explorer.exe &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Une fenêtre de l’explorateur doit s’ouvrir dans le dossier home de votre compte wsl.&lt;/p&gt;
+
+&lt;h2 id=&quot;ssh-agent&quot;&gt;ssh-agent&lt;/h2&gt;
+
+&lt;p&gt;Cette partie est plus problématique. On ne peut a-priori utiliser l’agent ssh de windows dans wsl. Il faut en créer un pour wsl.&lt;/p&gt;
+
+&lt;p&gt;On va suivre les instructions de &lt;a href=&quot;https://www.scivision.dev/ssh-agent-windows-linux/&quot;&gt;ce site&lt;/a&gt; et ajouter à la fin de notre &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;~/.bashrc&lt;/code&gt; les lignes suivantes qui permettrons d’avoir un ssh-agent d’opérationnel en wsl :&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-z&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;pgrep ssh-agent&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then
+   &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-rf&lt;/span&gt; /tmp/ssh-&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;
+   &lt;span class=&quot;nb&quot;&gt;eval&lt;/span&gt; &lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;ssh-agent &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; /dev/null
+&lt;span class=&quot;k&quot;&gt;else
+   &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;SSH_AGENT_PID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;pgrep ssh-agent&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;
+   &lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;SSH_AUTH_SOCK&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;find /tmp/ssh-&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-name&lt;/span&gt; agent.&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Ceci permettra de lancer un agent à chaque fois qu’une fenêtre wsl sera ouverte.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Cette configuration a cependant toujours 2 agents différent, celui de windows et celui de wsl. Selon qu’on cherche à se connecter depuis windows ou depuis wsl, on utilisera l’un ou l’autre des agents.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;les-fenêtres&quot;&gt;les fenêtres&lt;/h2&gt;
+
+&lt;p&gt;Utiliser une fenêtre unix dans un windows n’est pas une procédure simple. En effet, le protocole utilisé pour ouvir des fenêtre dans le monde unix (nommé &lt;a href=&quot;https://fr.wikipedia.org/wiki/X_Window_System&quot;&gt;X11&lt;/a&gt;) est différent de celui utilisé par windows.&lt;/p&gt;
+
+&lt;p&gt;Il faut installer un serveur x11 dans windows pour pouvoir ouvrir des fenêtres unix dans windows.&lt;/p&gt;
+
+&lt;p&gt;Pour faire nos tests de fenêtre on utilisera la commande &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;xeyes&lt;/code&gt;. Il faut commencer par l’installer&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;x11-apps
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Il faut procéder en 2 temps :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;avoir un serveur X sous windows&lt;/li&gt;
+  &lt;li&gt;dire à ubuntu d’utiliser le serveur X de windows comme gestionnaire de fenêtres&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;lancer-un-serveur-x-sous-windows&quot;&gt;lancer un serveur X sous windows&lt;/h3&gt;
+
+&lt;p&gt;On va installer &lt;a href=&quot;https://sourceforge.net/projects/vcxsrv/&quot;&gt;vcxsrv&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Vous lancez un serveur X en exécutant &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;XLaunch&lt;/code&gt;. Les paramètres du serveur X sont :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Multiple windows et display windows -1 (paramètres par défaut),&lt;/li&gt;
+  &lt;li&gt;Start no client (paramètres par défaut),&lt;/li&gt;
+  &lt;li&gt;cochez toutes les cases. Celles déjà cochées (clipoard, Primary Selection ; Native opengl) celle qui n’est pas cochée par défaut (Disable access control)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Une fois le serveur X lancé, windows comprend le protocole X11.&lt;/p&gt;
+
+&lt;h3 id=&quot;associer-le-serveurs-aux-fenêtres-depuis-wsl&quot;&gt;associer le serveurs aux fenêtres depuis wsl&lt;/h3&gt;
+
+&lt;p&gt;Maintenant que votre serveur X est lancé il faut l’associer aux fenêtre depuis wsl. Il faut dire à WSL quel serveur X utiliser pour ses fenêtre.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://stackoverflow.com/questions/61110603/how-to-set-up-working-x11-forwarding-on-wsl2/61110604#61110604&quot;&gt;Ceci se fait&lt;/a&gt; en positionnant deux variables :&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;DISPLAY&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;awk&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/nameserver / {print $2; exit}'&lt;/span&gt; /etc/resolv.conf 2&amp;gt;/dev/null&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;:0
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;LIBGL_ALWAYS_INDIRECT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Vous pouvez ensuite taper &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;xeyes&lt;/code&gt;` dans un terminal wsl et vous obtiendrez une paire d’yeux qui vous regarde.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Vous pouvez ajouter les deux lignes ci-dessus à votre fichier &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;~/.bashrc&lt;/code&gt; pour qu’il soit exécuté à chaque session si vous le souhaitez.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;brew&quot;&gt;brew&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://brew.sh/index_fr&quot;&gt;brew&lt;/a&gt; est un célèbre installeur de packages sous macos. Nous allons également l’installer pour wsl, histoire de n’avoir qu’une commande pour l’installation de package quelque soit le système utilisé.&lt;/p&gt;
+
+&lt;p&gt;Pour &lt;a href=&quot;https://docs.brew.sh/Homebrew-on-Linux&quot;&gt;installer brew&lt;/a&gt;, il faut commencer par installer des packages avec apt :&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;build-essential curl file git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Une fois tout ça d’installé, on peut installer brew :&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/bin/bash &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;curl &lt;span class=&quot;nt&quot;&gt;-fsSL&lt;/span&gt; https://raw.githubusercontent.com/Homebrew/install/master/install.sh&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Lisez ce que vous dit brew et faites les dernières manipulations :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;faire en sorte de retrouver la commande brew l’ajoutant dans le &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PATH&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;installer &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gcc&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;On teste si on arrive à installer des choses :&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;hello
+hello
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;wsl-et-vscode&quot;&gt;wsl et vscode&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://code.visualstudio.com/docs/remote/wsl&quot;&gt;https://code.visualstudio.com/docs/remote/wsl&lt;/a&gt;&lt;/p&gt;</content><author><name>François Brucker</name></author><category term="tutos" /><category term="systeme" /><category term="installation" /><category term="WSL" /><category term="système" /><category term="terminal" /><summary type="html">Comment installer et bien préparer wsl pur le développement.</summary></entry><entry><title type="html">vsc et markdown</title><link href="/cours_informatique/tutos/editeur/vsc/installation/configuration/markdown/2021/09/14/vsc-markdown.html" rel="alternate" type="text/html" title="vsc et markdown" /><published>2021-09-14T00:00:00+00:00</published><updated>2021-09-14T00:00:00+00:00</updated><id>/cours_informatique/tutos/editeur/vsc/installation/configuration/markdown/2021/09/14/vsc-markdown</id><content type="html" xml:base="/cours_informatique/tutos/editeur/vsc/installation/configuration/markdown/2021/09/14/vsc-markdown.html">&lt;p&gt;Comment écrire du markdown avec &lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;visual studio code&lt;/a&gt; (vsc ou encore vscode).&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -1112,178 +1286,4 @@ Bnjour Monde !
 &lt;ul&gt;
   &lt;li&gt;pimp my markdown dans vsc : &lt;a href=&quot;https://medium.com/@pierrepaci/enhance-your-markdown-experience-using-vscode-3caf489888b8&quot;&gt;https://medium.com/@pierrepaci/enhance-your-markdown-experience-using-vscode-3caf489888b8&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;pimp my pandoc : &lt;a href=&quot;https://learnbyexample.github.io/customizing-pandoc/&quot;&gt;https://learnbyexample.github.io/customizing-pandoc/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><category term="tutos" /><category term="langage" /><category term="markdown" /><category term="informatique" /><category term="cours" /><summary type="html">Une introduction au format markdown. C’est le langage que nous utiliserons majoritairement pour écrire les cours.</summary></entry><entry><title type="html">Configuration Pycharm</title><link href="/cours_informatique/tutos/editeur/pycharm/2021/08/30/configuration-pycharm.html" rel="alternate" type="text/html" title="Configuration Pycharm" /><published>2021-08-30T00:00:00+00:00</published><updated>2021-08-30T00:00:00+00:00</updated><id>/cours_informatique/tutos/editeur/pycharm/2021/08/30/configuration-pycharm</id><content type="html" xml:base="/cours_informatique/tutos/editeur/pycharm/2021/08/30/configuration-pycharm.html">&lt;p&gt;Le but de ce tutoriel est d’installer une distribution python avec &lt;a href=&quot;https://www.anaconda.com/&quot;&gt;anaconda&lt;/a&gt; et l’IDE &lt;a href=&quot;https://www.jetbrains.com/fr-fr/pycharm/&quot;&gt;pycharm&lt;/a&gt;. On suppose que vous avez déjà installé une distribution python avec anaconda.&lt;/p&gt;
-
-&lt;h2 id=&quot;pycharm&quot;&gt;pycharm&lt;/h2&gt;
-
-&lt;p&gt;Commencez par &lt;a href=&quot;https://www.jetbrains.com/fr-fr/pycharm/download&quot;&gt;télécharger&lt;/a&gt; la version professionnels de &lt;em&gt;pycharm&lt;/em&gt;. En temps qu’étudiant vous avez droit à une licence gratuite pendant 1an (renouvelable temps que vous êtes étudiant). Puis installez le logiciel.&lt;/p&gt;
-
-&lt;h3 id=&quot;lier-anaconda-et-pycharm&quot;&gt;lier anaconda et pycharm&lt;/h3&gt;
-
-&lt;p&gt;Lorsque vous lancez &lt;em&gt;pycharm&lt;/em&gt; une fenêtre de choix apparaît.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Créez un nouveau projet&lt;/li&gt;
-  &lt;li&gt;une fenêtre apparaît, vous demandant quel type de projet vous voulez faire. Choisissez &lt;em&gt;pure Python&lt;/em&gt; et à droite :
-    &lt;ul&gt;
-      &lt;li&gt;choisissez un dossier où vous mettrez votre projet&lt;/li&gt;
-      &lt;li&gt;décochez la case &lt;em&gt;“Create a main.py welcome script”&lt;/em&gt;&lt;/li&gt;
-      &lt;li&gt;cliquez sur le triangle pour étendre la partie consacrée à l’interpréteur.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Dans la partie dédiée à l’interpréteur, vous voyez plusieurs choix. Nous allons utiliser un interpréteur existant (choisissez cette option) en cherchant le python d’anaconda. Pour cela :
-    &lt;ul&gt;
-      &lt;li&gt;cliquez sur les &lt;em&gt;“…”&lt;/em&gt; à droite de la ligne de choix de l’interpréteur,&lt;/li&gt;
-      &lt;li&gt;dans la nouvelle fenêtre, choisissez &lt;em&gt;Conda Environnement&lt;/em&gt;. Il faut maintenant savoir où vous avez installé anaconda. En trouvant où se trouve votre interpréteur (voir &lt;a href=&quot;#anaconda-avec-un-terminal&quot;&gt;partie précédente&lt;/a&gt;) vous trouverez où se trouve anaconda&lt;/li&gt;
-      &lt;li&gt;On a trois choses à faire : trouver l’interpréteur python, l’éxécutable anaconda et faire en sorte que pycharm se rappelle de tout ça.&lt;/li&gt;
-      &lt;li&gt;interpréteur python. Il suffit de suivre &lt;a href=&quot;#anaconda-avec-un-terminal&quot;&gt;cette partie&lt;/a&gt;. Pour mon mac &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;which python3&lt;/code&gt; me rend : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/opt/anaconda3/bin/python3&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;l’exécutable conda : c’est le début du chemin de l’interpréteur, jusqu’à &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;anaconda3&lt;/code&gt;. (pour mon mac, à partir de la ligne précédente, j’en débuit qu’anaconda est dans le dossier : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/opt/anaconda3/&lt;/code&gt;)&lt;/li&gt;
-      &lt;li&gt;cochez la case &lt;em&gt;Make avaliable to all projects&lt;/em&gt; pour que vous puissiez retrouver cet environnement à chaque nouveau projet.&lt;/li&gt;
-      &lt;li&gt;cliquez sur le bouton &lt;em&gt;OK&lt;/em&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;cliquez sur le bouton &lt;em&gt;Create&lt;/em&gt; pour créer le projet avec notre nouvel environnement conda.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Une nouvelle fenêtre apparaît avec votre projet.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Il se peut que pycharm ne réponde pas bien au début. C’est normal, il est entrain d’analyser votre tout nouvel interpréteur python. Vous voyez une barre de progression en bas à droite qui vous indique ce qu’il fait. Laissez le finir d’indexer tout ça, cela peut durer un certain temps (surtout qu’anaconda a déjà plein de bibliothèque d’installées), mais il ne le fait que lorsque vous changez d’interpréteur.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Notre premier projet avec pycharm :&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;créons un fichier &lt;em&gt;“file &amp;gt; new… &amp;gt; python file”&lt;/em&gt; et appelons le &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;main.py&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;à gauche de la fenêtre vous voyez les différents fichiers et à droite des fichiers. Pour l’instant nous n’en avons qu’un seul et il est vide.&lt;/li&gt;
-  &lt;li&gt;écrivez &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;print(&quot;Hello World&quot;)&lt;/code&gt; dans le fichier. Vous n’avez pas à vous préoccuper de sauver, &lt;em&gt;pycharm&lt;/em&gt; le fait automatiquement.&lt;/li&gt;
-  &lt;li&gt;exécuter votre code en allant dans le menu &lt;em&gt;Run &amp;gt; Run…&lt;/em&gt;, une petite fenêtre s’affiche et choisissez &lt;em&gt;main.py&lt;/em&gt;, c’est le fichier qui sera exécuté.&lt;/li&gt;
-  &lt;li&gt;Regardez la fenêtre du bas de &lt;em&gt;pycharm&lt;/em&gt; où vous voyez le résultat de votre programme.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Vous voyez maintenant en haut à droite de la fenêtre un endroit où est écrit &lt;em&gt;main&lt;/em&gt; et à droite un petit triangle vert. Si vous glissez votre souris sur ce triangle vert vous voyez son raccourci clavier (sur mac c’est &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ctrl + R&lt;/code&gt;). Vous pouvez être n’importe où dans Pycharm, en particulier sur d’autres fichiers, si vous cliquez sur le triangle vert ou si vous utilisez le raccourci clavier (qui correspond au menu &lt;em&gt;Run &amp;gt; Run&lt;/em&gt;, sans les “…”), le fichier main sera exécuté.&lt;/p&gt;
-
-&lt;p&gt;Cela correspond à une configuration d’exécution. Ici &lt;em&gt;main&lt;/em&gt; est le nom de la configuration d’exécution courante. On peut bien sur en créer d’autres, c’est ce qu’on fera lorsque l’on exécutera des tests, par exemple.&lt;/p&gt;
-
-&lt;h3 id=&quot;propriétés-de-pycharm&quot;&gt;Propriétés de pycharm&lt;/h3&gt;
-
-&lt;h4 id=&quot;aide-en-ligne&quot;&gt;aide en ligne&lt;/h4&gt;
-
-&lt;p&gt;PyCharm est un éditeur professionnel, c’est normal que la prise en main soit plus complexe qu’avec un éditeur moins performant (comme notepad++ voir Sublime Text) ou scolaire (comme Spyder). En revanche, bien l’utiliser permet d’une part des gains de productivité importants et d’autre part de coder plus agréablement.&lt;/p&gt;
-
-&lt;p&gt;Le système d’aide de PyCharm est très complet et vous permet de vous familiariser mieux avec la bête. Il est disponible sur le site de l’éditeur : &lt;a href=&quot;https://www.jetbrains.com/help/pycharm/meet-pycharm.html&quot;&gt;aide Pycharm&lt;/a&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;configurations-dexécution&quot;&gt;configurations d’exécution&lt;/h4&gt;
-
-&lt;p&gt;Les configurations d’exécutions permettent d’exécuter des programmes ou des tests python. On les trouve soit grâce au menu &lt;em&gt;Run &amp;gt; edit configurations…&lt;/em&gt;, ou en haut à droite de la fenêtre en cliquant sur le nom de la configuration courante (le nom à gauche du petit triangle vert).&lt;/p&gt;
-
-&lt;p&gt;Pour créer un nouvel environnement d’exécution :&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Ouvrez la fenêtre des contextes d’exécution dans le menu &lt;em&gt;Run &amp;gt; Edit configurations…&lt;/em&gt;.&lt;/li&gt;
-  &lt;li&gt;La fenêtre qui s’est ouverte contient tous les contextes d’exécution de votre projet. Cliquez sur le &lt;em&gt;+&lt;/em&gt; en haut à gauche de la fenêtre pour en créer un nouveau.&lt;/li&gt;
-  &lt;li&gt;Choisissez &lt;em&gt;python&lt;/em&gt; si vous voulez exécuter du code ou &lt;em&gt;python tests&lt;/em&gt; pour un framework de test. Paramétrez votre environnement en choisissant le script à exécuter (on pourra également nommer son environnement).&lt;/li&gt;
-  &lt;li&gt;Cliquez sur &lt;em&gt;OK&lt;/em&gt; pour créer l’environnement.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote class=&quot;attention&quot;&gt;
-  &lt;p&gt;Dans la fenêtre de gestion des contextes, ne modifiez pas les contextes par défaut. Ce sont des templates.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Pour plus d’informations, reportez vous à &lt;a href=&quot;https://www.jetbrains.com/help/pycharm/2016.3/working-with-run-debug-configurations.html?search=run&quot;&gt;la documentation de pycharm&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h4 id=&quot;linterpréteur-python-dun-projet-pycharm&quot;&gt;L’interpréteur python d’un projet pycharm&lt;/h4&gt;
-
-&lt;p&gt;Les préférences de pycharm sont accessibles via le menu &lt;em&gt;File &amp;gt; Settings…&lt;/em&gt;. La fenêtre de préférences ressemble à ça :&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/cours_informatique/assets/tutos/pycharm/settings/settings.jpg&quot; alt=&quot;un projet vide&quot; style=&quot;margin: auto;display: block;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;On peut quasiment tout changer, de l’apparence à l’interpréteur en passant par les raccourcis clavier.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;En haut à gauche se trouve un champ texte. Il permet de réduire les préférences à celles contenant le texte tapé (voir image ci-après).&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;L’interpréteur du projet se trouve dans la partie &lt;em&gt;Project&lt;/em&gt; de la fenêtre des préférences.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/cours_informatique/assets/tutos/pycharm/settings/interpreter.jpg&quot; alt=&quot;l'interpréteur&quot; style=&quot;margin: auto;display: block;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Pour créer un nouvel interpréteur à partir de la fenêtre de l’interpréteur, il suffit de cliquer sur l’engrenage dans la partie réservée à l’interpréteur :&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/cours_informatique/assets/tutos/pycharm/settings/engrenage.png&quot; alt=&quot;engrenage&quot; style=&quot;margin: auto;display: block;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Si l’on veut ajouter un programme python déjà présent sur la machine, on choisit &lt;em&gt;Add…&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;Une nouvelle fenêtre s’affiche, qui doit ressembler à ça :&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/cours_informatique/assets/tutos/pycharm/settings/nouvel_interpreteur_venv.png&quot; alt=&quot;ajout d'un interpréteur&quot; style=&quot;margin: auto;display: block;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Attention, par défaut &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;virtualenv environment&lt;/code&gt; (en haut à gauche de la fenêtre) est utilisé. Dans l’absolu &lt;a href=&quot;http://sametmax.com/les-environnement-virtuels-python-virtualenv-et-virtualenvwrapper/&quot;&gt;c’est très bien&lt;/a&gt;, mais pour nous, ça va plus nous embêter qu’autre chose (en particulier il faudrait réinstaller numpy à chaque tp…). On choisi donc &lt;em&gt;Conda Environment&lt;/em&gt; ou &lt;em&gt;system interpréteur&lt;/em&gt;  et un python 3 d’installé :&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/cours_informatique/assets/tutos/pycharm/settings/interpreteur_python.png&quot; alt=&quot;interpréteur python&quot; style=&quot;margin: auto;display: block;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Dans l’image ci-dessus, mon interpréteur python3 (python3.6) était dans le dossier &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/usr/local/bin&lt;/code&gt; (ce qui est souvent le cas dans le monde unix ou mac)&lt;/p&gt;
-
-&lt;h4 id=&quot;installer-des-modules&quot;&gt;Installer des modules&lt;/h4&gt;
-
-&lt;p&gt;On commence par aller trouver son interpréteur via le menu &lt;em&gt;File &amp;gt; Settings…&lt;/em&gt; (je l’ai trouvé en tapant &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;interp&lt;/code&gt; dans l’onglet de recherche) :&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/cours_informatique/assets/tutos/pycharm/settings/interpreteur_par_recherche.png&quot; alt=&quot;interpréteur par recherche&quot; style=&quot;margin: auto;display: block;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Les packages installé sont listé dans la fenêtre, avec le numéro de version installé et la dernère version disponible. Pour installer le package &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;numpy&lt;/code&gt; on commence par cliquer sur le bouton &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;+&lt;/code&gt; en bas à gauche de la fenêtre. Un zillion de package sont disponible. On cherche numpy :&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/cours_informatique/assets/tutos/pycharm/settings/package_numpy.png&quot; alt=&quot;package numpy&quot; style=&quot;margin: auto;display: block;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;On peut ensuite cliquer sur &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;install package&lt;/code&gt; en bas à gauche pour installer le package.&lt;/p&gt;
-
-&lt;h4 id=&quot;les-raccourcis-claviers&quot;&gt;Les raccourcis claviers&lt;/h4&gt;
-
-&lt;p&gt;De nombreuses actions disponibles via un menu dans pycharm possèdent un raccourci clavier.&lt;/p&gt;
-
-&lt;p&gt;Par exemple, sous unix :&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Commenter une ligne ou un bloc : &lt;em&gt;ctrl + /&lt;/em&gt; (Utiliser la touche &lt;em&gt;/&lt;/em&gt; du pavé numérique)&lt;/li&gt;
-  &lt;li&gt;Rechercher : &lt;em&gt;ctrl + F&lt;/em&gt;&lt;/li&gt;
-  &lt;li&gt;Exécuter la configuration d’exécution courante : &lt;em&gt;shift + F10&lt;/em&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;L’utilisation des raccourcis clavier est décrite dans  l’aide en ligne de pycharm sur les &lt;a href=&quot;https://www.jetbrains.com/help/pycharm/keymap.html&quot;&gt;keymap&lt;/a&gt;.
-Si une commande possède un raccourci clavier, il est montré à droite de son nom :&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/cours_informatique/assets/tutos/pycharm/keymap/raccourci_clavier.png&quot; alt=&quot;commande rename&quot; style=&quot;margin: auto;display: block;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;L’image ci-dessus montre la commande &lt;em&gt;Rename&lt;/em&gt; et son raccourci clavier &lt;em&gt;shift + F6&lt;/em&gt; (cette commande est très très utile et vous l’utiliserez souvent car elle permet de renommer n’importe quoi. Le nom est modifié dans tout le fichier et dans d’autres fichiers du même projet).&lt;/p&gt;
-
-&lt;p&gt;Selon la plateforme, les raccourcis par défaut changent :&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://resources.jetbrains.com/storage/products/pycharm/docs/PyCharm_ReferenceCard.pdf&quot;&gt;Raccourcis par défaut unix&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://resources.jetbrains.com/storage/products/pycharm/docs/PyCharm_ReferenceCard_mac.pdf&quot;&gt;Raccourcis par défaut mac&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Tous les raccourcis sont disponibles dans les préférences (menu &lt;em&gt;File &amp;gt; Settings…&lt;/em&gt;) dans la partie keymap :&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/cours_informatique/assets/tutos/pycharm/keymap/keymap_settings.jpg&quot; alt=&quot;raccourcis claviers&quot; style=&quot;margin: auto;display: block;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Le raccourci clavier pour commenter automatiquement une ligne ou une partie de texte sélectionné par défaut de Pycharm n’est pas fonctionnel avec un clavier Français.&lt;/p&gt;
-
-&lt;p&gt;Le raccourci concerne les commentaires : &lt;em&gt;comment&lt;/em&gt; en anglais. Pour trouver rapidement les raccourcis on tape donc &lt;em&gt;comment&lt;/em&gt; dans la barre de recherche de la partie &lt;em&gt;keymap&lt;/em&gt; de la fenêtre des paramètres :&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/cours_informatique/assets/tutos/pycharm/keymap/keymap_comment.jpg&quot; alt=&quot;raccourcis comments&quot; style=&quot;margin: auto;display: block;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Il y a 2 types de commentaires : commentaire d’une ligne et d’un bloc de texte. Certains langages utilisent ces deux types de commentaires (le C++ ou le Java par exemple), mais pas python puisqu’il suffit de mettre un &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#&lt;/code&gt; devant la ligne à commenter. Nous n’aurons à modifier que le raccourci : &lt;em&gt;Comment with Line Comment&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;Dans de nombreux éditeurs, ce raccourci est sur &lt;em&gt;ctrl + /&lt;/em&gt; (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;//&lt;/code&gt; est le commentaire de ligne de nombreux langages comme le javascript, Java, C++, …). C’est ce que pense faire Pycharm, et ceci marche avec un clavier Américain. Le clavier Français a la touche &lt;em&gt;/&lt;/em&gt; comme modificateur de la touche &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:&lt;/code&gt;, ce qui confuse python.&lt;/p&gt;
-
-&lt;p&gt;Ajoutons donc le raccourci clavier qui consiste à taper simultanément sur &lt;em&gt;ctrl&lt;/em&gt;, &lt;em&gt;shift&lt;/em&gt; et &lt;em&gt;:&lt;/em&gt;, c’est à dire la combinaison : &lt;em&gt;ctrl + shift + :&lt;/em&gt; (sur mac, vous pouvez remplacer &lt;em&gt;ctrl&lt;/em&gt; par &lt;em&gt;cmd&lt;/em&gt; qui correspond mieux à l’usage courant sur cette plateforme).&lt;/p&gt;
-
-&lt;p&gt;Après avoir double cliqué sur la ligne &lt;em&gt;Comment with Line Comment&lt;/em&gt; et choisi d’ajouter un raccourci clavier, effectuez la combinaison de touche puis cliquez sur &lt;em&gt;Ok&lt;/em&gt; (appuyer sur &lt;em&gt;Entrée&lt;/em&gt; change le raccourci…) :&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/cours_informatique/assets/tutos/pycharm/keymap/keymap_shortcut.jpg&quot; alt=&quot;changement de raccourcis comments&quot; style=&quot;margin: auto;display: block;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Le raccourci est alors ajouté :&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/cours_informatique/assets/tutos/pycharm/keymap/keymap_result.jpg&quot; alt=&quot;raccourcis comments ajouté&quot; style=&quot;margin: auto;display: block;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Testez le !&lt;/p&gt;</content><author><name></name></author><category term="pycharm" /><category term="python" /><category term="anaconda" /><summary type="html">Le but de ce tutoriel est d’installer une distribution python avec anaconda et l’IDE pycharm. On suppose que vous avez déjà installé une distribution python avec anaconda.</summary></entry></feed>
+&lt;/ul&gt;</content><author><name></name></author><category term="tutos" /><category term="langage" /><category term="markdown" /><category term="informatique" /><category term="cours" /><summary type="html">Une introduction au format markdown. C’est le langage que nous utiliserons majoritairement pour écrire les cours.</summary></entry></feed>
