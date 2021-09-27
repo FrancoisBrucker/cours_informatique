@@ -17,8 +17,9 @@ Web front
 
 {: .note}
 
-## refs possible à mettre là ou il faut dansle cours.
+## refs possible à mettre là ou il faut dans le cours.
 
+* <https://www.w3schools.com/bootstrap5/index.php>
 * <https://sequelize.org/master/>
 * <https://www.sqlitetutorial.net/sqlite-nodejs/>
 * <https://shopify.github.io/liquid/basics/types/>
@@ -35,6 +36,7 @@ Web front
 
 * ici js dans du html et pas dans du node (les imports sont différents par exemple, pas de typescript)
 * transpilage : <https://babeljs.io/>
+* webpack
 
 
 

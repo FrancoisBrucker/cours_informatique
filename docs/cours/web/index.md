@@ -62,7 +62,7 @@ Tout le web tourne autour du trio html (pour la structure des page), css (pour l
 
 ### projets
 
-* [numérologie]({% link cours/web/projets/numerologie/index.md %})
+[Projets]({% link cours/web/projets/index.md %})
 
 ## langage javascript
 

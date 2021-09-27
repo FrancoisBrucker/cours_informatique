@@ -10,7 +10,8 @@ Cours d'apprentissages des différents outils de développement et les bases du 
 
 ## Préparation d'un windows
 
-  [Installation w10]({% link cours/dfs/installation_W10.md %})
+> ok. deleted
+{: .note}
 
 ## git et github
 

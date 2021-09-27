@@ -21,9 +21,8 @@ Ils existe plusieurs variantes de shell. À l'origine , l'interpréteur de comma
 * tcsh : Tenex C Shell. Amélioration du C Shell.
 * zsh : Z Shell. Shell assez récent reprenant les meilleures idées de bash, ksh et tcsh.
 
-Nous nous intéresseront plus particulièrement aux shells bash et plus particulièrement à [Debian](https://www.debian.org/index.fr.html). Pour installer Debian, veuillez suivre ces [instructions]({% link cours/dfs/installation_W10.md %}).
 
-Debian est une distribution logicielle libre pour les systèmes informatiques. Debian est un projet collaboratif dont le paquet complet repose sur le noyau système Linux et qui possède plus de 43000 paquets libres prêts à l'emploi.
+Nous nous intéresseront plus particulièrement aux shells bash et aux distribution [Debian](https://www.debian.org/index.fr.html) et [ubuntu](https://ubuntu.com/) pour l'installation de packages.
 
 ## Les Bases
 
