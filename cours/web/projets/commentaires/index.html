@@ -3,20 +3,20 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>Web Front | cours d’informatique</title>
+<title>Projet commentaires | cours d’informatique</title>
 <meta name="generator" content="Jekyll v4.2.0" />
-<meta property="og:title" content="Web Front" />
+<meta property="og:title" content="Projet commentaires" />
 <meta name="author" content="François Brucker" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
 <meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
-<link rel="canonical" href="/cours_informatique/cours/web/front/" />
-<meta property="og:url" content="/cours_informatique/cours/web/front/" />
+<link rel="canonical" href="/cours_informatique/cours/web/projets/commentaires/" />
+<meta property="og:url" content="/cours_informatique/cours/web/projets/commentaires/" />
 <meta property="og:site_name" content="cours d’informatique" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Web Front" />
+<meta property="twitter:title" content="Projet commentaires" />
 <script type="application/ld+json">
-{"headline":"Web Front","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/web/front/","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
+{"headline":"Projet commentaires","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/web/projets/commentaires/","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
@@ -58,49 +58,62 @@
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Web Front</h1></p>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></p>
+    <h1 class="post-title">Projet commentaires</h1></p>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></p>
   </header>
 
   <div class="post-content">
-    <h2 id="introduction">Introduction</h2>
+    <blockquote class="chemin">
+  <p><a href="/cours_informatique/cours/web/projets/commentaires/">commentaires</a></p>
+</blockquote>
 
-<p>Web front</p>
+<p>Ce projet vise à munir nos serveur web de persistance de données. Côté front avec la gestion des cookies et côté back avec la mise œuvre d’une base de données.</p>
 
-<blockquote>
-  <p>TBD : en chantier</p>
+<p>Le principe est de refaire plusieurs fois ce projet, en ajoutant petit à petit des notions de plus en plus perfectionnées de développement web.</p>
+
+<h2 id="but-du-site">but du site</h2>
+
+<p>On va créer un site qui gère les commentaires. On va pouvoir :</p>
+
+<ul>
+  <li>ajouter son commentaire</li>
+  <li>consulter tous les commentaires</li>
+</ul>
+
+<h2 id="plan">Plan</h2>
+
+<p>Ce projet va être séparé en trois parties :</p>
+
+<ol>
+  <li><a href="/cours_informatique/cours/web/projets/commentaires/partie-1-site/">le site sans les données</a></li>
+  <li>on <a href="/cours_informatique/cours/web/projets/commentaires/partie-2-requetes-post/">envoie les données</a> vers le serveur</li>
+  <li>on ajoute une persistance front <a href="/cours_informatique/cours/web/projets/commentaires/partie-3-cookies/">avec des cookies</a></li>
+  <li>on ajoute une persistance back données avec une base de donnée</li>
+</ol>
+
+<p>Chaque partie est organisée en niveaux. Chaque niveau refait la partie en ajoutant à chaque fois des outils de développements/code de plus en plus perfectionnés. Il est recommandé de faire tous les niveaux d’une partie.</p>
+
+<h2 id="niveaux">niveaux</h2>
+
+<p>Chaque partie est organisée en niveaux. Chaque niveau ajoutant des outils de développements/code de plus en plus perfectionnés. Ces outils seront différents selon la partie.</p>
+
+<h2 id="ressources">ressources</h2>
+
+<ul>
+  <li><a href="https://blog.logrocket.com/the-perfect-architecture-flow-for-your-next-node-js-project/">https://blog.logrocket.com/the-perfect-architecture-flow-for-your-next-node-js-project/</a></li>
+</ul>
+
+<blockquote class="note">
+  <p>TBD</p>
   <ul>
-    <li>html/css/js front</li>
-    <li>vue.js</li>
+    <li>ajout run dans package.json</li>
+    <li>variables d’environnement</li>
+    <li>config differentes en teste et en prod.</li>
+    <li>config differente pour la base. sqlite vs bd</li>
+    <li>require pas relu ?</li>
+    <li>séparer les routes du serveur</li>
+    <li>utiliser le dossier script pour la mise en prod.</li>
+    <li>compiler son bootstrap ?</li>
   </ul>
-</blockquote>
-
-<h2 class="note" id="refs-possible-à-mettre-là-ou-il-faut-dans-le-cours">refs possible à mettre là ou il faut dans le cours.</h2>
-
-<ul>
-  <li><a href="https://www.w3schools.com/bootstrap5/index.php">https://www.w3schools.com/bootstrap5/index.php</a></li>
-  <li><a href="https://sequelize.org/master/">https://sequelize.org/master/</a></li>
-  <li><a href="https://www.sqlitetutorial.net/sqlite-nodejs/">https://www.sqlitetutorial.net/sqlite-nodejs/</a></li>
-  <li><a href="https://shopify.github.io/liquid/basics/types/">https://shopify.github.io/liquid/basics/types/</a></li>
-  <li><a href="https://getshogun.com/learn/shopify-liquid-tutorial">https://getshogun.com/learn/shopify-liquid-tutorial</a></li>
-  <li><a href="https://github.com/janl/mustache.js/">https://github.com/janl/mustache.js/</a></li>
-  <li><a href="https://observablehq.com/@d3/learn-d3-by-example?collection=@d3/learn-d3">https://observablehq.com/@d3/learn-d3-by-example?collection=@d3/learn-d3</a></li>
-  <li><a href="https://observablehq.com/@d3/learn-d3-by-example?collection=@d3/learn-d3">https://observablehq.com/@d3/learn-d3-by-example?collection=@d3/learn-d3</a></li>
-</ul>
-
-<h2 id="js">js</h2>
-
-<blockquote class="note">
-  <p>TBD : à renvoyer sur le tuto.</p>
-</blockquote>
-
-<ul>
-  <li>ici js dans du html et pas dans du node (les imports sont différents par exemple, pas de typescript)</li>
-  <li>transpilage : <a href="https://babeljs.io/">https://babeljs.io/</a></li>
-  <li>webpack</li>
-</ul>
-
-<blockquote class="note">
-  <p>TBD : packaging</p>
 </blockquote>
 
   </div>
