@@ -3,9 +3,9 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>Composition et agrégation | cours d’informatique</title>
+<title>Héritage | cours d’informatique</title>
 <meta name="generator" content="Jekyll v4.2.0" />
-<meta property="og:title" content="Composition et agrégation" />
+<meta property="og:title" content="Héritage" />
 <meta name="author" content="François Brucker" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
@@ -14,9 +14,9 @@
 <meta property="og:url" content="/cours_informatique/cours/developpement/programmation-objet/heritage.html" />
 <meta property="og:site_name" content="cours d’informatique" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Composition et agrégation" />
+<meta property="twitter:title" content="Héritage" />
 <script type="application/ld+json">
-{"headline":"Composition et agrégation","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/developpement/programmation-objet/heritage.html","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
+{"headline":"Héritage","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/developpement/programmation-objet/heritage.html","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
@@ -58,7 +58,7 @@
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Composition et agrégation</h1>Auteurs :
+    <h1 class="post-title">Héritage</h1>Auteurs :
       <ul>
       
         <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></li>
@@ -69,7 +69,123 @@
   </header>
 
   <div class="post-content">
-    <p>parler des variables de classes.</p>
+    <p>Présentation du mécanisme d’héritage.</p>
+
+<h2 id="principe-de-lhéritage">principe de l’héritage</h2>
+
+<p>principe.</p>
+
+<p>factorisation de code : mieux de factoriser les les fonctionnalités. Surout que ça concerve l’implémentation.</p>
+
+<p>comportement par défaut (<strong>str</strong>, est un exemple)</p>
+
+<p>dans les bibliothèques : ils donnent une classe t nous on la particuliarise (GUI)</p>
+
+<h3 id="exercice-1">Exercice 1</h3>
+
+<p>L’idée est juste de présenter avec quelque chose de simple et facile à se représenter la notion d’héritage. On donnera l’UML des classes dans tous les cas et le code seulement s’il est lié à l’héritage.</p>
+
+<p>Classe <code class="language-plaintext highlighter-rouge">Point</code> :</p>
+
+<p><img src="img/point.png" alt="point" /></p>
+
+<p>Rien de particulier, pour la classe <code class="language-plaintext highlighter-rouge">Polygon</code> qui est une agrégation avec points :</p>
+
+<p><img src="img/polygon.png" alt="polygon" /></p>
+
+<p>C’est bien une agrégation puisque utilise des objets <code class="language-plaintext highlighter-rouge">Point</code> comme attribut mais ces points existent indépendamment du polygone et on les ajoute dans l’attribut <code class="language-plaintext highlighter-rouge">vertices</code> lors de la création de l’objet.</p>
+
+<p>Classe <code class="language-plaintext highlighter-rouge">Triangle</code>:</p>
+
+<p><img src="img/triangle.png" alt="triangle" /></p>
+
+<p>L’héritage arrive ici. On fait une version restreinte du polygone très simple. La classe <code class="language-plaintext highlighter-rouge">Triangle</code> hérite de <code class="language-plaintext highlighter-rouge">Polygon</code>, on appelle donc le constructeur de ce dernier lors de la création d’un <code class="language-plaintext highlighter-rouge">Triangle</code>.</p>
+
+<p>Ceci est explicite en python :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Triangle</span><span class="p">(</span><span class="n">Polygon</span><span class="p">):</span>
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">point1</span><span class="p">,</span> <span class="n">point2</span><span class="p">,</span> <span class="n">point3</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">().</span><span class="n">__init__</span><span class="p">([</span><span class="n">point1</span><span class="p">,</span> <span class="n">point2</span><span class="p">,</span> <span class="n">point3</span><span class="p">])</span>
+</code></pre></div></div>
+
+<p>Le mot clé <code class="language-plaintext highlighter-rouge">super()</code> désigne la classe parente, ici <code class="language-plaintext highlighter-rouge">Polygon</code>.Ce mot clé permet d’utiliser toutes les méthodes de la classe parente, ici <code class="language-plaintext highlighter-rouge">__init__</code>. Remarquez que l’on utilise la méthode <code class="language-plaintext highlighter-rouge">__init__</code> sans utiliser le premier paramètre (<code class="language-plaintext highlighter-rouge">self</code>) qui est implicitement l’objet courant.</p>
+
+<p>L’UML complet donne donc :</p>
+
+<p><img src="img/polygone_uml_entier.png" alt="polygone_uml_entier" /></p>
+
+<h3 id="exercice-2">Exercice 2</h3>
+
+<p>La classe <code class="language-plaintext highlighter-rouge">Personnage</code> ne pose normalement pas de problèmes :</p>
+
+<p><img src="img/personnage.png" alt="personnage" /></p>
+
+<p>On précise le code de <code class="language-plaintext highlighter-rouge">taper</code> et <code class="language-plaintext highlighter-rouge">se_faire_taper</code> qui permet à chacun de se faire taper comme il l’entend :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">taper</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">personnage</span><span class="p">):</span>
+    <span class="n">personnage</span><span class="p">.</span><span class="n">se_faire_taper</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">se_faire_taper</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">personnage</span><span class="p">):</span>
+    <span class="bp">self</span><span class="p">.</span><span class="n">set_vie</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">get_vie</span><span class="p">()</span> <span class="o">-</span> <span class="n">personnage</span><span class="p">.</span><span class="n">get_attaque</span><span class="p">())</span>
+</code></pre></div></div>
+
+<p>On ajoute la guerrière :</p>
+
+<p><img src="img/guerriere.png" alt="guerriere" /></p>
+
+<p>On donne ci-après une partie du code de la guerrière  (on a en particulier pas écrit la méthode <code class="language-plaintext highlighter-rouge">bloque</code> qui fait le tirage pour savoir si on bloque ou pas). Faites attention et comprenez bien :</p>
+
+<ul>
+  <li>l’appel à <code class="language-plaintext highlighter-rouge">super().__init__()</code> au début du constructeur de la classe fille,</li>
+  <li>qu’on ajoute un attribut à la guerrière par rapport au personnage normal,</li>
+  <li>la méthode <code class="language-plaintext highlighter-rouge">se_faire_taper(personnage)</code> utilise la méthode <code class="language-plaintext highlighter-rouge">se_faire_taper</code> de la classe <code class="language-plaintext highlighter-rouge">Personnage</code> seulement si la guerrière ne bloque pas le coup. Le <code class="language-plaintext highlighter-rouge">super().methode_de_la_mere()</code> permet d’accéder à la méthode de la classe mère même de même nom qu’une méthode (différente) de la classe fille.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Guerriere</span><span class="p">(</span><span class="n">Personnage</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vie</span><span class="p">,</span> <span class="n">attaque</span><span class="p">,</span> <span class="n">blocage</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">().</span><span class="n">__init__</span><span class="p">(</span><span class="n">vie</span><span class="p">,</span> <span class="n">attaque</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">blocage</span> <span class="o">=</span> <span class="n">blocage</span>
+
+    <span class="k">def</span> <span class="nf">se_faire_taper</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">personnage</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="p">.</span><span class="n">bloque</span><span class="p">(</span><span class="n">personnage</span><span class="p">):</span>
+            <span class="nb">super</span><span class="p">().</span><span class="n">se_faire_taper</span><span class="p">(</span><span class="n">personnage</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Prenez le temps de faire des exemples d’utilisation et de vérifier que tous les cas marchent. En particulier qu’est-ce qui est appelé quand on fait <code class="language-plaintext highlighter-rouge">guerriere.se_faire_taper(bonhomme)</code> avec un objet <code class="language-plaintext highlighter-rouge">guerriere</code> de la classe <code class="language-plaintext highlighter-rouge">Guerriere</code> ?</p>
+
+<p>Le magicien permet de montrer l’ajout d’une méthode qui n’était pas du tout dans la classe mère :</p>
+
+<p><img src="img/magicien.png" alt="magicien" /></p>
+
+<p>Le code n’est pas difficile, on se passera donc de l’écrire complètement. Il faut :</p>
+
+<ul>
+  <li>ajouter une méthode <code class="language-plaintext highlighter-rouge">lancer_sort</code></li>
+  <li>ajouter un paramètre et son attribut associé <code class="language-plaintext highlighter-rouge">attaque_magique</code> au constructeur</li>
+  <li>ajouter une méthode <code class="language-plaintext highlighter-rouge">se_faire_toucher_par_un_sort(magicien)</code> avec un paramètre de type Magicien dans la classe Personnage.</li>
+</ul>
+
+<blockquote>
+  <p><strong>Nota Bene :</strong> Ces exemples sur l’héritage sont un peu forcés. C’est parce que l’héritage n’est que très peu utilisé en code pure. Il est même considéré comme préjudiciable dans la plupart des cas (voir )<a href="https://codeburst.io/inheritance-is-evil-stop-using-it-6c4f1caf5117">là</a> ou encore <a href="http://neethack.com/2017/04/Why-inheritance-is-bad/">là</a>).</p>
+  <blockquote>
+    <p>Un cas d’utilisation reconnu est cependant lorsque l’on veut utiliser des classes définies dans un module quelconque et la mettre un peu à notre sauce. Comme dans des bibliothèques graphiques par exemple.</p>
+  </blockquote>
+</blockquote>
+
+<h2 id="points-de-vigilance">points de vigilance</h2>
+
+<p>Toujours très aimé mais l’intérêt est plus réduit qu’on ne peu le penser. Avant de faire de l’héritage regardez si une composition et un agrégation ne feraient pas mieux le travail.</p>
+
+<p>attention : aux variable de la classe qui ne doivent pas être redéfini dans l’héritage (mais on ne sais pas lesquelles c’est…)
+En python <code class="language-plaintext highlighter-rouge">__variable</code>  n’est pas passée aux descendants.</p>
+
+<p>Si l’on redéfini toutes les classes de la classe mere sans les utililser : pas un bon signe.</p>
+
+<p>héritage multiple autorisé en python, mais c’est très compliqué. règle de u diamant : c’est fait pour simplifier le code pas le rendre necore plus compliqué.</p>
+
+<h2 id="variables-de-classe">variables de classe</h2>
+
+<p>parler des variables de classes.</p>
 
 
   </div>
