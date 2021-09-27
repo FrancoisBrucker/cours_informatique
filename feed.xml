@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/cours_informatique/feed.xml" rel="self" type="application/atom+xml" /><link href="/cours_informatique/" rel="alternate" type="text/html" /><updated>2021-09-27T08:08:19+00:00</updated><id>/cours_informatique/feed.xml</id><title type="html">cours d’informatique</title><subtitle>Support de cours/td d'informatique à l'école centrale marseille.</subtitle><entry><title type="html">wsl ou linux dans windows</title><link href="/cours_informatique/tutos/systeme/installation/wsl/2021/09/27/wsl-windows.html" rel="alternate" type="text/html" title="wsl ou linux dans windows" /><published>2021-09-27T00:00:00+00:00</published><updated>2021-09-27T00:00:00+00:00</updated><id>/cours_informatique/tutos/systeme/installation/wsl/2021/09/27/wsl-windows</id><content type="html" xml:base="/cours_informatique/tutos/systeme/installation/wsl/2021/09/27/wsl-windows.html">&lt;p&gt;Comment installer et bien préparer wsl pur le développement.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/cours_informatique/feed.xml" rel="self" type="application/atom+xml" /><link href="/cours_informatique/" rel="alternate" type="text/html" /><updated>2021-09-27T08:17:17+00:00</updated><id>/cours_informatique/feed.xml</id><title type="html">cours d’informatique</title><subtitle>Support de cours/td d'informatique à l'école centrale marseille.</subtitle><entry><title type="html">wsl ou linux dans windows</title><link href="/cours_informatique/tutos/systeme/installation/wsl/2021/09/27/wsl-windows.html" rel="alternate" type="text/html" title="wsl ou linux dans windows" /><published>2021-09-27T00:00:00+00:00</published><updated>2021-09-27T00:00:00+00:00</updated><id>/cours_informatique/tutos/systeme/installation/wsl/2021/09/27/wsl-windows</id><content type="html" xml:base="/cours_informatique/tutos/systeme/installation/wsl/2021/09/27/wsl-windows.html">&lt;p&gt;Comment installer et bien préparer wsl pur le développement.&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -19,7 +19,7 @@ A priori seule l’installation et la mise à jour sont indispensable. Le reste 
 
 &lt;p&gt;Trop rien à dire. Suivez la doc : &lt;a href=&quot;https://docs.microsoft.com/en-us/windows/wsl/install&quot;&gt;https://docs.microsoft.com/en-us/windows/wsl/install&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;Il suffit de taper la commande suivant dans un power en mode admin :&lt;/p&gt;
+&lt;p&gt;Il suffit de taper la commande suivant dans un powershell en mode admin :&lt;/p&gt;
 
 &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wsl &lt;span class=&quot;nt&quot;&gt;--install&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
