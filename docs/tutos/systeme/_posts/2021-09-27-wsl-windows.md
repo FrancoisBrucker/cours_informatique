@@ -28,7 +28,7 @@ A priori seule l'installation et la mise à jour sont indispensable. Le reste c'
 
 Trop rien à dire. Suivez la doc : <https://docs.microsoft.com/en-us/windows/wsl/install>.
 
-Il suffit de taper la commande suivant dans un power en mode admin :
+Il suffit de taper la commande suivant dans un powershell en mode admin :
 
 ```shell
 wsl --install
