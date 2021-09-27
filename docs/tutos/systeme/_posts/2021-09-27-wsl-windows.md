@@ -59,7 +59,7 @@ sudo apt install ssh
 sudo apt install vim
 ```
 
-Vous pourrez ensuite utiliser [`apt-get`](http://www.octetmalin.net/linux/tutoriels/apt-get.php) pour installer d'autres packages.
+Vous pourrez ensuite utiliser `apt-get` pour [installer d'autres packages](http://www.octetmalin.net/linux/tutoriels/apt-get.php).
 
 > Le gestionnaire de package de ubuntu et debian est identique, c'est [apt](https://doc.ubuntu-fr.org/apt).
 
