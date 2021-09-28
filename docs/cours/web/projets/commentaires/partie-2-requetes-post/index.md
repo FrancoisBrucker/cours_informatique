@@ -15,7 +15,8 @@ On va envoyer les réponses au questionnaire vers le serveur. Pour cela on va ut
 ## plan
 
 1. [préparer les données]({% link cours/web/projets/commentaires/partie-2-requetes-post/1-json.md %}) pour l'envoi
-2. [envoyer et recevoir]({% link cours/web/projets/commentaires/partie-2-requetes-post/2-post.md %}) des données
+2. [envoyer]({% link cours/web/projets/commentaires/partie-2-requetes-post/2-post-envoi.md %}) des données
+3. [recevoir]({% link cours/web/projets/commentaires/partie-2-requetes-post/3-post-recevoir.md %}) des données
 
 
 
@@ -24,3 +25,4 @@ On va envoyer les réponses au questionnaire vers le serveur. Pour cela on va ut
 > * routes post
 > * api et routes
 > *redirect after post
+> gestion des erreurs avec fetch <https://dev.to/anchobies/when-that-s-not-so-fetch-error-handling-with-fetch-4cce>

@@ -153,6 +153,8 @@ console.log(`Server running at http://${hostname}:${port}/`);
 
 Tout se passe *via* l'objet `app`, qui est le résultat de l'import de express. Chaque requête au serveur passera d'un appel de `app` à l'autre (dans l'ordre du fichier).
 
+> Express appelle ces bouts de codes qui interceptent une requête un [middleware](https://expressjs.com/fr/guide/using-middleware.html)
+
 Pour chaque appel de app (dans notre cas on en a 2 `app.use` et `app.get`) :
 
 1. on vérifie si la requête satisfait l'appel de `app` :

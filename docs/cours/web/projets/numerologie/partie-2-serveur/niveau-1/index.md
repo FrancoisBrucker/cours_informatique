@@ -16,3 +16,6 @@ Numérologie partie 2 - niveau 1. On ne verra la base de node et express comme s
 4. [intégration]({% link cours/web/projets/numerologie/partie-2-serveur/niveau-1/4-javascript-serveur.md %}) : on crée notre première route avec du javascript serveur et on l'appel depuis le front.
 
 [Fichiers du projet final]({% link cours/web/projets/numerologie/partie-2-serveur/niveau-1/5-structures.md %}).
+
+> TBD
+> Parler de [cors](https://developer.mozilla.org/fr/docs/Web/HTTP/CORS)
