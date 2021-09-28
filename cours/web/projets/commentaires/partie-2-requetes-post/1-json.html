@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Projet commentaires : partie 2 / préparer les données | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Projet commentaires : partie 2 / préparer les données" />
+<meta name="author" content="François Brucker" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
+<link rel="canonical" href="/cours_informatique/cours/web/projets/commentaires/partie-2-requetes-post/1-json.html" />
+<meta property="og:url" content="/cours_informatique/cours/web/projets/commentaires/partie-2-requetes-post/1-json.html" />
+<meta property="og:site_name" content="cours d’informatique" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Projet commentaires : partie 2 / préparer les données" />
+<script type="application/ld+json">
+{"headline":"Projet commentaires : partie 2 / préparer les données","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/web/projets/commentaires/partie-2-requetes-post/1-json.html","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css">
+
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+</head>
+
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Projet commentaires : partie 2 / préparer les données</h1></p>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></p>
+  </header>
+
+  <div class="post-content">
+    <blockquote class="chemin">
+  <p><a href="/cours_informatique/cours/web/projets/commentaires/">commentaires</a> / <a href="/cours_informatique/cours/web/projets/commentaires/partie-2-requetes-post/">partie 2</a> / <a href="/cours_informatique/cours/web/projets/commentaires/partie-2-requetes-post/1-json.html">préparer les données</a></p>
+</blockquote>
+
+<p>On va préparer les données à être envoyées au serveur.</p>
+
+<h2 id="récupération-des-données-du-formulaire">récupération des données du formulaire</h2>
+
+<p>On va commencer par afficher dans la console (du client) les données du formulaires lorsque l’on appuie sur le bouton sur la page <em>“donner.html”</em>.</p>
+
+<h3 id="le-bouton">le bouton</h3>
+
+<p>On commence par lier l’appui sur le  bouton. Pour cela on identifie le bouton par un identifiant puis, dans un script javascript en front, on lie une fonction qui sera exécutée lors d’un clic.</p>
+
+<p>On commence par ajouter un identifiant au bouton :</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- ... --&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> <span class="na">id=</span><span class="s">"bouton_envoi"</span><span class="nt">&gt;</span>Envoyer<span class="nt">&lt;/button&gt;</span>
+<span class="c">&lt;!-- ... --&gt;</span>
+</code></pre></div></div>
+
+<p>Puis juste avant la fermeture de la balise <code class="language-plaintext highlighter-rouge">&lt;body&gt;&lt;/body&gt;</code> on place notre script :</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script&gt;</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#form-button</span><span class="dl">"</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#form-input</span><span class="dl">"</span><span class="p">).</span><span class="nx">value</span><span class="p">)</span>
+        <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">()</span>
+    <span class="p">})</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<p>On peut maintenant cliquer sur le bouton et obtenir <code class="language-plaintext highlighter-rouge">"clic"</code> dans la console.</p>
+
+<h3 id="les-données">les données</h3>
+
+<p>Pour récupérer les données, il faut :</p>
+
+<ol>
+  <li>ajouter des identifiants aux élément html qui vont contenir les données</li>
+  <li>récupérer les valeurs lors du clic</li>
+  <li>structurer ces valeurs dans un objet et le convertir en json pour envoi.</li>
+</ol>
+
+<h4 id="identifiants">identifiants</h4>
+
+<p>Le formulaire :</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">"col-6"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"mb-3"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"pseudo"</span> <span class="na">class=</span><span class="s">"form-label"</span><span class="nt">&gt;</span>Pseudo<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id=</span><span class="s">"pseudo"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"mb-3"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"titre"</span> <span class="na">class=</span><span class="s">"form-label"</span><span class="nt">&gt;</span>Titre<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"form-control"</span>  <span class="na">id=</span><span class="s">"titre"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"mb-3"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"message"</span> <span class="na">class=</span><span class="s">"form-label"</span><span class="nt">&gt;</span>Message<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;textarea</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">rows=</span><span class="s">"7"</span> <span class="na">id=</span><span class="s">"message"</span><span class="nt">&gt;&lt;/textarea&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> <span class="na">id=</span><span class="s">"bouton_envoi"</span><span class="nt">&gt;</span>Envoyer<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+</code></pre></div></div>
+
+<h4 id="récupération-des-données-et-envoi">récupération des données et envoi</h4>
+
+<p>on a modifié le script :</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nt">&lt;script&gt;</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#bouton_envoi</span><span class="dl">"</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="dl">"</span><span class="s2">pseudo</span><span class="dl">"</span><span class="p">:</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#pseudo</span><span class="dl">"</span><span class="p">).</span><span class="nx">value</span><span class="p">,</span>
+                <span class="dl">"</span><span class="s2">titre</span><span class="dl">"</span><span class="p">:</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#titre</span><span class="dl">"</span><span class="p">).</span><span class="nx">value</span><span class="p">,</span>
+                <span class="dl">"</span><span class="s2">message</span><span class="dl">"</span> <span class="p">:</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#message</span><span class="dl">"</span><span class="p">).</span><span class="nx">value</span>
+            <span class="p">}</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+            <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">()</span>
+        <span class="p">})</span>
+    <span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>On a utilisé la documentation de <a href="https://stackoverflow.com/questions/4810841/pretty-print-json-using-javascript">JSON.stringify</a> pour rendre le rendu en texte json de notre objet joli.</p>
+</blockquote>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d&#39;informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d&#39;informatique</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
