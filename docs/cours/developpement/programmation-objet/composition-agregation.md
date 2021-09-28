@@ -121,7 +121,7 @@ Dans notre exemple, une méthode retourne un objet qui est un attribut. Une fois
 
 Regardez le code suivant :
 
-```python :
+```python
 
 panier = Panier()
 
