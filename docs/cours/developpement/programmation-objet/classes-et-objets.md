@@ -63,7 +63,7 @@ Ces principes sont mis en ouvre de façon différentes selon les langages mais o
 
 Les chaines de caractères sont des objets de la classe ([str](https://docs.python.org/fr/3/library/string.html)) :
 
-```python
+```text
 >>> type("une chaine")
 <class 'str'>
 ```
@@ -83,7 +83,7 @@ La notation pointée permet de dire que c'est la méthode à droite du `.` que l
 
 Le code suivant produit donc une erreur car la fonction `upper`n'existe pas ! C'est la méthode définie dans la classe `str` qui s'appelle `upper` qui existe...
 
-```python
+```text
 >>> upper("coucou")
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
@@ -100,7 +100,7 @@ On appelle les spécificités de chaque objet, c'est à dire les valeurs de sa s
 
 Les entiers sont aussi des objets d'une classe : `int`.
 
-```python
+```text
 >>> type(1)
 <class 'int'>
 ```
