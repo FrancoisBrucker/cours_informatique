@@ -1,6 +1,6 @@
 ---
 layout: page
-title:  "Projet commentaires : partie 2 / envoyer les donées"
+title:  "Projet commentaires : partie 2 / envoyer les données"
 category: cours
 author: "François Brucker"
 ---

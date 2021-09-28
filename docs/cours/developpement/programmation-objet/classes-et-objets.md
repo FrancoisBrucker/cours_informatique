@@ -246,7 +246,7 @@ Pour créer un diagramme uml, je commence toujours par le nom de la classe, puis
 
 Ce qui donne le diagramme uml du compteur :
 
-![compteur]({{ "/assets/cours/developpement/programmation-objet/Compteur_init.png" | relative_url }}){:style="margin: auto;display: block}
+![compteur]({{ "/assets/cours/developpement/programmation-objet/counter_init.png" | relative_url }}){:style="margin: auto;display: block}
 
 >On a utilisé ici un `_` en début de nom de la variable `value` pour signifier qu'elle est *privée*, c'est à dire que personne d'autre n'a le droit de l'utiliser à part l'objet. Cette convention n'est pas indispensable à utiliser car il est parfois un peut flou de savoir si telle ou telle attribut et *privé* ou *publique*...
 

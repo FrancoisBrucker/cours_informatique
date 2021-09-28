@@ -1,6 +1,6 @@
 ---
 layout: page
-title:  "Projet commentaires : partie 1"
+title:  "Projet commentaires : partie 2"
 category: cours
 author: "François Brucker"
 ---
