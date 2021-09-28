@@ -132,9 +132,9 @@
 
 <p>Les chaines de caractères sont des objets de la classe (<a href="https://docs.python.org/fr/3/library/string.html">str</a>) :</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">(</span><span class="s">"une chaine"</span><span class="p">)</span>
-<span class="o">&lt;</span><span class="k">class</span> <span class="err">'</span><span class="nc">str</span><span class="s">'&gt;
-</span></code></pre></div></div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; type("une chaine")
+&lt;class 'str'&gt;
+</code></pre></div></div>
 
 <p>Les méthodes définies dans la classe <code class="language-plaintext highlighter-rouge">str</code>, comme <code class="language-plaintext highlighter-rouge">upper()</code> par exemple sont utilisables par tous les objets de la classe <code class="language-plaintext highlighter-rouge">str</code> (dans l’exemple ci-après par l’objet <code class="language-plaintext highlighter-rouge">"coucou"</code> et l’objet <code class="language-plaintext highlighter-rouge">"toi"</code>) :</p>
 
@@ -152,10 +152,10 @@
 
 <p>Le code suivant produit donc une erreur car la fonction <code class="language-plaintext highlighter-rouge">upper</code>n’existe pas ! C’est la méthode définie dans la classe <code class="language-plaintext highlighter-rouge">str</code> qui s’appelle <code class="language-plaintext highlighter-rouge">upper</code> qui existe…</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">upper</span><span class="p">(</span><span class="s">"coucou"</span><span class="p">)</span>
-<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
-  <span class="n">File</span> <span class="s">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="nb">NameError</span><span class="p">:</span> <span class="n">name</span> <span class="s">'upper'</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">defined</span>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; upper("coucou")
+Traceback (most recent call last):
+  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+NameError: name 'upper' is not defined
 </code></pre></div></div>
 
 <p>Ce qui fait que le résultat est différent lorsque l’on applique la méthode <code class="language-plaintext highlighter-rouge">upper</code> à <code class="language-plaintext highlighter-rouge">"bonjour"</code> et <code class="language-plaintext highlighter-rouge">"toi"</code> est que ces deux objets, bien que de la même classe, sont différents : dan l’un il y a les caractère “bonjour”, dans l’autres les caractères “toi”.</p>
@@ -170,9 +170,9 @@
 
 <p>Les entiers sont aussi des objets d’une classe : <code class="language-plaintext highlighter-rouge">int</code>.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="o">&lt;</span><span class="k">class</span> <span class="err">'</span><span class="nc">int</span><span class="s">'&gt;
-</span></code></pre></div></div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; type(1)
+&lt;class 'int'&gt;
+</code></pre></div></div>
 
 <p>Contrairement à la classe <code class="language-plaintext highlighter-rouge">str</code>, la classe <code class="language-plaintext highlighter-rouge">int</code> ne définit pas de méthode mais des opérations. Par exemple <code class="language-plaintext highlighter-rouge">__add__</code> définit l’addition d’un entier par un autre objet. C’est pratique que tout soit défini dans la classe , cela nous permettra à nous aussi de faire nos propres additions.</p>
 
