@@ -47,4 +47,5 @@ Chaque partie est organisée en niveaux. Chaque niveau ajoutant des outils de d�
 > * séparer les routes du serveur
 > * utiliser le dossier script pour la mise en prod.
 > * compiler son bootstrap ?
+> * gestion des routes.
 {: .note}

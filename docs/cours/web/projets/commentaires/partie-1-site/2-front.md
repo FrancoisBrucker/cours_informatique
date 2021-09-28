@@ -172,7 +172,7 @@ Commençons par le fichier *"index.html"* :
             </div>
             <div class="mb-3">
               <label for="titre" class="form-label">Titre</label>
-              <input type="password" class="form-control">
+              <input class="form-control">
             </div>            
             <div class="mb-3">
                 <label for="message" class="form-label">Message</label>

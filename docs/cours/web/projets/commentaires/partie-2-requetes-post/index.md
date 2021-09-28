@@ -8,9 +8,14 @@ author: "François Brucker"
 > [commentaires]({% link cours/web/projets/commentaires/index.md %}) / [partie 2]({% link cours/web/projets/commentaires/partie-2-requetes-post/index.md %})
 {: .chemin}
 
-On va envoyer les réponses au questionnaire vers le serveur. POur cela on va utiliser les requêtes de type POST
+On va envoyer les réponses au questionnaire vers le serveur. Pour cela on va utiliser les requêtes de type POST.
+
+> Il est recommandé d'avoir fait [la section 4 de la partie 1]({% link cours/web/projets/numerologie/partie-1-front/niveau-1/4-integration_html_js.md %}) du projet numérologie pour bien aborder cette partie.
 
 ## plan
+
+1. [préparer les données]({% link cours/web/projets/commentaires/partie-2-requetes-post/1-json.md %}) pour l'envoi
+2. [envoyer et recevoir]({% link cours/web/projets/commentaires/partie-2-requetes-post/2-post.md %}) des données
 
 
 
