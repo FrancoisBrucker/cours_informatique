@@ -223,6 +223,10 @@
 
 <p>Tout se passe <em>via</em> l’objet <code class="language-plaintext highlighter-rouge">app</code>, qui est le résultat de l’import de express. Chaque requête au serveur passera d’un appel de <code class="language-plaintext highlighter-rouge">app</code> à l’autre (dans l’ordre du fichier).</p>
 
+<blockquote>
+  <p>Express appelle ces bouts de codes qui interceptent une requête un <a href="https://expressjs.com/fr/guide/using-middleware.html">middleware</a></p>
+</blockquote>
+
 <p>Pour chaque appel de app (dans notre cas on en a 2 <code class="language-plaintext highlighter-rouge">app.use</code> et <code class="language-plaintext highlighter-rouge">app.get</code>) :</p>
 
 <ol>

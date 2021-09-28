@@ -10,13 +10,13 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
 <meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
-<link rel="canonical" href="/cours_informatique/cours/web/projets/commentaires/partie-2-requetes-post/2-post.html" />
-<meta property="og:url" content="/cours_informatique/cours/web/projets/commentaires/partie-2-requetes-post/2-post.html" />
+<link rel="canonical" href="/cours_informatique/cours/web/projets/commentaires/partie-2-requetes-post/3-post-recevoir.html" />
+<meta property="og:url" content="/cours_informatique/cours/web/projets/commentaires/partie-2-requetes-post/3-post-recevoir.html" />
 <meta property="og:site_name" content="cours d’informatique" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Projet commentaires : partie 2 / envoyer les donées" />
 <script type="application/ld+json">
-{"headline":"Projet commentaires : partie 2 / envoyer les donées","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/web/projets/commentaires/partie-2-requetes-post/2-post.html","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
+{"headline":"Projet commentaires : partie 2 / envoyer les donées","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/web/projets/commentaires/partie-2-requetes-post/3-post-recevoir.html","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
@@ -63,24 +63,18 @@
 
   <div class="post-content">
     <blockquote class="chemin">
-  <p><a href="/cours_informatique/cours/web/projets/commentaires/">commentaires</a> / <a href="/cours_informatique/cours/web/projets/commentaires/partie-2-requetes-post/">partie 2</a> / <a href="/cours_informatique/cours/web/projets/commentaires/partie-2-requetes-post/2-post.html">envoyer les données</a></p>
+  <p><a href="/cours_informatique/cours/web/projets/commentaires/">commentaires</a> / <a href="/cours_informatique/cours/web/projets/commentaires/partie-2-requetes-post/">partie 2</a> / <a href="/cours_informatique/cours/web/projets/commentaires/partie-2-requetes-post/3-post-recevoir.html">recevoir les données</a></p>
 </blockquote>
 
-<p>on Envoie les données au serveur, qui les analyses.</p>
-
-<h2 id="requêtes-post">requêtes post</h2>
-
-<p>Pour l’instant on a toujours utilisé des requêtes GET pour parler au serveur. Ces requêtes ne nécessitent que l’url. Les requêtes POST quant à elles permettent d’envoyer des données au serveur. C’est le cas pour notre formulaire.</p>
-
-<blockquote>
-  <p>les différences entre requêteGET et POST sont surtout des conventions. Vous pouvez très bien envoyer des données avec une requête GET mais ça rend le code moins lisible</p>
-</blockquote>
-
-<p>De point de vue de express, la gestion est un peut différente des requêtes GET puisqu’il faut récupérer le contenu</p>
+<p>On récupère les données POST envoyées au serveur par le front</p>
 
 <h2 id="gestion-avec-express">gestion avec express</h2>
 
-<p>Comme il faut récupérer le corps de la réquête POST, on va faire passer toutes les requêtes par un bout de code (que express appelle <em>middleware</em>) qui va ajouter un attribut <code class="language-plaintext highlighter-rouge">body</code> contenant le corps de la requête.</p>
+<blockquote class="attention">
+  <p>Vous verrez des tutoriaux qui vous font installer <code class="language-plaintext highlighter-rouge">body-parser</code>, ils sont obsolètes. Depuis express 4 on peut utiliser express pour cela.</p>
+</blockquote>
+
+<p>Comme il faut récupérer le corps de la réquête POST, on va faire passer toutes les requêtes par <em>middleware</em> qui va ajouter un attribut <code class="language-plaintext highlighter-rouge">body</code> contenant le corps de la requête.</p>
 
 <p>C’est identique à ce qu’on a fait précédemment dans le projet numérologie :</p>
 
@@ -90,9 +84,9 @@
 <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
 </code></pre></div></div>
 
-<p>La ligne précédente ajoute  un attribut <code class="language-plaintext highlighter-rouge">body</code> qui contient le corps de la requête au format json. Pile ce que l’on veut.</p>
+<p>La ligne précédente ajoute  un attribut <code class="language-plaintext highlighter-rouge">body</code> qui contient le corps de la requête au format json. Pile ce que l’on veut. On ajoute donc ce middleware juste après les requêtes statiques (qui n’en ont pas besoin).</p>
 
-<p>Le code suivant ajoute une route nommé <code class="language-plaintext highlighter-rouge">/donne</code> qui récupère une requête de type POST et affiche son résultat dans la console (du serveur) :</p>
+<p>On obtient au final le code suivant qui ajoute une route POST nommée <code class="language-plaintext highlighter-rouge">/donne</code> qui  affiche son résultat dans la console (du serveur) :</p>
 
 <p>Fichier <em>“commentaires/server.js”</em> :</p>
 
@@ -106,7 +100,6 @@
 <span class="kd">const</span> <span class="nx">hostname</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">127.0.0.1</span><span class="dl">'</span><span class="p">;</span>
 <span class="kd">const</span> <span class="nx">port</span> <span class="o">=</span> <span class="mi">3000</span><span class="p">;</span>
 
-<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
 
 <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="dl">"</span><span class="s2">/static</span><span class="dl">"</span><span class="p">,</span> <span class="nx">express</span><span class="p">.</span><span class="kd">static</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="dl">'</span><span class="s1">/static</span><span class="dl">'</span><span class="p">)))</span>
 
@@ -114,9 +107,11 @@
     <span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span class="mi">301</span><span class="p">,</span> <span class="dl">'</span><span class="s1">/static/index.html</span><span class="dl">'</span><span class="p">)</span>
 <span class="p">})</span>
 
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
 
 <span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">/donne</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">)</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span class="mi">302</span><span class="p">,</span> <span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">)</span>
 <span class="p">})</span>
 
 <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
@@ -133,22 +128,47 @@
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Server running at http://</span><span class="p">${</span><span class="nx">hostname</span><span class="p">}</span><span class="s2">:</span><span class="p">${</span><span class="nx">port</span><span class="p">}</span><span class="s2">/`</span><span class="p">);</span>
 </code></pre></div></div>
 
-<h2 id="envoi-de-la-requête-post">envoi de la requête post</h2>
-
-<p>Il ne nos reste plus qu’à envoyer nos données depuis le fichier html.</p>
-
-<p>On peut le faire facilement avec <code class="language-plaintext highlighter-rouge">fetch</code>, que l’on a déjà utilisé pour numérologie. Il faut juste préciser :</p>
-
-<ul>
-  <li>que l’on envoie une requête post</li>
-  <li>envoyer les données dans le corps de la requête</li>
-</ul>
-
 <blockquote>
-  <p>TBD :
-on envoie que si le titre est non vide : ajouter bootstrap verification
-après envoie on supprime le titre et le message pour eviter les soucis de double post</p>
+  <p>la ligne <code class="language-plaintext highlighter-rouge">res.redirect(302, '/')</code> n’est pas nécessaire mais on a l’habitude de le faire en web, car ça peut éviter les problèmes de double post. C’est le pattern : <a href="https://en.wikipedia.org/wiki/Post/Redirect/Get">post/redirect/get</a></p>
 </blockquote>
+
+<h2 id="gestion-du-formulaire-après-envoi">gestion du formulaire après envoi</h2>
+
+<p>Dans le front, pour éviter l’envoie multiple des même données (si l’utilisateur appuie frénétiquement sur le bouton), on va rendre le formulaire non envoyable après un envoi en rechargeant la page. Ceci est conforme au pattern <a href="https://en.wikipedia.org/wiki/Post/Redirect/Get">post/redirect/get</a>, mais côté client.</p>
+
+<p>Notre script de <em>“commentaires/static/donner.html”</em> devient alors :</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nt">&lt;script&gt;</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#bouton_envoi</span><span class="dl">"</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#form_avis</span><span class="dl">"</span><span class="p">).</span><span class="nx">checkValidity</span><span class="p">())</span> <span class="p">{</span>
+                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">formulaire non envoyé</span><span class="dl">"</span><span class="p">)</span>
+                <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">()</span>
+                <span class="nx">event</span><span class="p">.</span><span class="nx">stopPropagation</span><span class="p">()</span>
+
+                <span class="k">return</span>
+            <span class="p">}</span>
+            <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="dl">"</span><span class="s2">pseudo</span><span class="dl">"</span><span class="p">:</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#pseudo</span><span class="dl">"</span><span class="p">).</span><span class="nx">value</span><span class="p">,</span>
+                <span class="dl">"</span><span class="s2">titre</span><span class="dl">"</span><span class="p">:</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#titre</span><span class="dl">"</span><span class="p">).</span><span class="nx">value</span><span class="p">,</span>
+                <span class="dl">"</span><span class="s2">message</span><span class="dl">"</span><span class="p">:</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#message</span><span class="dl">"</span><span class="p">).</span><span class="nx">value</span>
+            <span class="p">}</span>
+            <span class="nx">fetch</span><span class="p">(</span><span class="dl">"</span><span class="s2">/donne</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
+                <span class="dl">'</span><span class="s1">method</span><span class="dl">'</span><span class="p">:</span> <span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span>
+                <span class="dl">'</span><span class="s1">headers</span><span class="dl">'</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span>
+                <span class="p">},</span>
+                <span class="dl">'</span><span class="s1">body</span><span class="dl">'</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+            <span class="p">})</span>
+
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+            <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">()</span>
+
+            <span class="nx">location</span><span class="p">.</span><span class="nx">reload</span><span class="p">()</span>
+        <span class="p">})</span>
+    <span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<p>C’est la ligne <code class="language-plaintext highlighter-rouge">location.reload()</code> qui recharge la page, et par là efface toutes les données.</p>
 
   </div>
 
