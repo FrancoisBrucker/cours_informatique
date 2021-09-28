@@ -278,7 +278,7 @@ NameError: name 'upper' is not defined
 
 <p>Cette modélisation doit être capable de répondre au code suivant, dans le fichier <em>“main.py”</em> :</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">Compteur</span> <span class="kn">import</span> <span class="n">Compteur</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">compteur</span> <span class="kn">import</span> <span class="n">Compteur</span>
     
 <span class="n">c1</span> <span class="o">=</span> <span class="n">Compteur</span><span class="p">()</span>
 <span class="n">c2</span> <span class="o">=</span> <span class="n">Compteur</span><span class="p">()</span>
@@ -428,7 +428,7 @@ moins lisible (tout le monde utilise le nom <code class="language-plaintext high
 
 <ol>
   <li>lorsque python commence l’exécution du fichier, il crée le namespace global. C’est le namespace le plus haut.</li>
-  <li><code class="language-plaintext highlighter-rouge">from Compteur import Compteur</code> : cherche un fichier <em>“compteur.py”</em> dans le répertoire courant. Python l’exécute (il lit chaque ligne) avec son propre namespace. Une fois ceci fait, il prend le nom <code class="language-plaintext highlighter-rouge">Compteur</code> dans ce namespace et l’ajoute au namespace global. On peut donc utiliser le nom <code class="language-plaintext highlighter-rouge">Compteur</code> qui est défini dans le namespace de <em>“compteur.py”</em></li>
+  <li><code class="language-plaintext highlighter-rouge">from compteur import Compteur</code> : cherche un fichier <em>“compteur.py”</em> dans le répertoire courant. Python l’exécute (il lit chaque ligne) avec son propre namespace. Une fois ceci fait, il prend le nom <code class="language-plaintext highlighter-rouge">Compteur</code> dans ce namespace et l’ajoute au namespace global. On peut donc utiliser le nom <code class="language-plaintext highlighter-rouge">Compteur</code> qui est défini dans le namespace de <em>“compteur.py”</em></li>
   <li><code class="language-plaintext highlighter-rouge">c1 = Compteur()</code> :
     <ul>
       <li>en informatique <code class="language-plaintext highlighter-rouge">=</code> n’est pas symétrique. A gauche un nom à droite un objet. Ici ceci signifie que l’on ajoute le nom <code class="language-plaintext highlighter-rouge">c1</code> au namespace global et que sa valeur sera le résultat de <code class="language-plaintext highlighter-rouge">Compteur()</code></li>
@@ -488,7 +488,7 @@ classe ci-avant. Montrez tous les <em>namespaces</em> utilisés.</p>
 
 <p>Fichier <em>“main.py”</em> :</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">Compteur</span> <span class="kn">import</span> <span class="n">Compteur</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">compteur</span> <span class="kn">import</span> <span class="n">Compteur</span>
     
 <span class="n">c1</span> <span class="o">=</span> <span class="n">Compteur</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">c2</span> <span class="o">=</span> <span class="n">Compteur</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
@@ -543,7 +543,7 @@ classe ci-avant. Montrez tous les <em>namespaces</em> utilisés.</p>
 
 <p>Le code final de <em>“main.py”</em> pourra alors être :</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">Compteur</span> <span class="kn">import</span> <span class="n">Compteur</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">compteur</span> <span class="kn">import</span> <span class="n">Compteur</span>
     
 <span class="n">c1</span> <span class="o">=</span> <span class="n">Compteur</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">c2</span> <span class="o">=</span> <span class="n">Compteur</span><span class="p">()</span>
@@ -675,7 +675,7 @@ directement les opérateurs <code class="language-plaintext highlighter-rouge">&
 <p>Fichier <em>“main.py”</em> :</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="kn">from</span> <span class="nn">Compteur</span> <span class="kn">import</span> <span class="n">Compteur</span>
+<span class="kn">from</span> <span class="nn">compteur</span> <span class="kn">import</span> <span class="n">Compteur</span>
     
 <span class="n">c1</span> <span class="o">=</span> <span class="n">Compteur</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">c2</span> <span class="o">=</span> <span class="n">Compteur</span><span class="p">()</span>
