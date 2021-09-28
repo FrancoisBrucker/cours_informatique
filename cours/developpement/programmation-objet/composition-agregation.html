@@ -187,42 +187,43 @@ composition, d’agrégation et d’attributs de classe. On verra aussi l’util
 
 <p>Regardez le code suivant :</p>
 
-<p>```python :</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">panier</span> <span class="o">=</span> <span class="n">Panier</span><span class="p">()</span>
 
-<p>panier = Panier()</p>
+<span class="k">print</span><span class="p">(</span><span class="n">panier</span><span class="p">.</span><span class="n">montre_panier</span><span class="p">())</span>
 
-<p>print(panier.montre_panier())</p>
+<span class="n">panier</span><span class="p">.</span><span class="n">ajoute</span><span class="p">(</span><span class="s">"pomme"</span><span class="p">)</span>
 
-<p>panier.ajoute(“pomme”)</p>
+<span class="n">copie</span> <span class="o">=</span> <span class="n">panier</span><span class="p">.</span><span class="n">montre_panier</span><span class="p">()</span>
 
-<p>copie = panier.montre_panier()</p>
-
-<p>copie.append(“champignon”)
-print(panier.montre_panier())</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-On a ajouté un champignon à notre panier sans que l'objet panier ne le sache !
-
-Ce n'est pas forcément un problème, sauf si on vérifiait que ce qu'on ajoute dans le panier doit être un fruit.
-
-Pour que tout se passe comme prévu, il faut donc s'assurer que pour les attributs , soit :
-
-1. on s'en fiche qu'ils changent
-2. on refait un nouvel objet à nous pour s'assurer qu'il ne changera pas
-3. les objets que l'on retourne et qui sont des attributs sont non modifiables (des entiers, réels, chaînes de caractères, tuples, etc)
-
-La 1ère solution est ce qu'on a pur l'instant.
-
-La seconde solution reviendrait à donner un nouveau panier à chaque fois en modifiant la méthode `donne_panier()` :
-
-```python
-class Panier:
-    # ...
-
-    def montre_panier(self):
-      return list(self.stock)
-    
-    #...
+<span class="n">copie</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">"champignon"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">panier</span><span class="p">.</span><span class="n">montre_panier</span><span class="p">())</span>
 </code></pre></div></div>
+
+<p>On a ajouté un champignon à notre panier sans que l’objet panier ne le sache !</p>
+
+<p>Ce n’est pas forcément un problème, sauf si on vérifiait que ce qu’on ajoute dans le panier doit être un fruit.</p>
+
+<p>Pour que tout se passe comme prévu, il faut donc s’assurer que pour les attributs , soit :</p>
+
+<ol>
+  <li>on s’en fiche qu’ils changent</li>
+  <li>on refait un nouvel objet à nous pour s’assurer qu’il ne changera pas</li>
+  <li>les objets que l’on retourne et qui sont des attributs sont non modifiables (des entiers, réels, chaînes de caractères, tuples, etc)</li>
+</ol>
+
+<p>La 1ère solution est ce qu’on a pur l’instant.</p>
+
+<p>La seconde solution reviendrait à donner un nouveau panier à chaque fois en modifiant la méthode <code class="language-plaintext highlighter-rouge">donne_panier()</code> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Panier</span><span class="p">:</span>
+    <span class="c1"># ...
+</span>
+    <span class="k">def</span> <span class="nf">montre_panier</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">stock</span><span class="p">)</span>
+    
+    <span class="c1">#...
+</span></code></pre></div></div>
 
 <p>Enfin, la dernière solution reviendrait à ne pas pouvoir modifier l’attribut et à le recréer à chaque modification, par exemple dans la méthode <code class="language-plaintext highlighter-rouge">ajoute_fruit()</code>. On utilise un <a href="https://python.doctor/page-apprendre-tuples-tuple-python">tuple</a> :</p>
 
