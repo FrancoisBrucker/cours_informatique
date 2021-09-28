@@ -193,7 +193,7 @@ On va tenter de proposer une modélisation UML de cet objet simple, puis de le c
  Cette modélisation doit être capable de répondre au code suivant, dans le fichier *"main.py"* :
 
 ``` python
-from Compteur import Compteur
+from compteur import Compteur
     
 c1 = Compteur()
 c2 = Compteur()
@@ -322,7 +322,7 @@ Plusieurs namespaces peuvent cohabiter en même temps, pour connaître celui qui
 Pour le code de *"main.py"*, ligne à ligne :
 
 0. lorsque python commence l'exécution du fichier, il crée le namespace global. C'est le namespace le plus haut.
-1. `from Compteur import Compteur` : cherche un fichier *"compteur.py"* dans le répertoire courant. Python l'exécute (il lit chaque ligne) avec son propre namespace. Une fois ceci fait, il prend le nom `Compteur` dans ce namespace et l'ajoute au namespace global. On peut donc utiliser le nom `Compteur` qui est défini dans le namespace de *"compteur.py"*
+1. `from compteur import Compteur` : cherche un fichier *"compteur.py"* dans le répertoire courant. Python l'exécute (il lit chaque ligne) avec son propre namespace. Une fois ceci fait, il prend le nom `Compteur` dans ce namespace et l'ajoute au namespace global. On peut donc utiliser le nom `Compteur` qui est défini dans le namespace de *"compteur.py"*
 2. `c1 = Compteur()` :
    * en informatique `=` n'est pas symétrique. A gauche un nom à droite un objet. Ici ceci signifie que l'on ajoute le nom `c1` au namespace global et que sa valeur sera le résultat de `Compteur()`
    * `Compteur()` : est le résultat de l'exécution du nom `Compteur`. Les parenthèses (et les paramètres éventuels) après un nom l'exécute. On aurait pu tout à fait écrire `c1 = Compteur` on aurait alors eu un nom `c1` qui sera égal à la classe `Compteur`.
@@ -372,7 +372,7 @@ Il faut alors changer le code pour construire les objets avec ce nouveau paramè
 Fichier *"main.py"* :
 
 ```python
-from Compteur import Compteur
+from compteur import Compteur
     
 c1 = Compteur(3)
 c2 = Compteur(1)
@@ -428,7 +428,7 @@ On peut utiliser deux fois le même nom `pas` car ils sont dans des namespaces d
 Le code final de *"main.py"* pourra alors être :
 
 ```python
-from Compteur import Compteur
+from compteur import Compteur
     
 c1 = Compteur(3)
 c2 = Compteur()
@@ -566,7 +566,7 @@ Fichier *"main.py"* :
 
 ```python
 
-from Compteur import Compteur
+from compteur import Compteur
     
 c1 = Compteur(3)
 c2 = Compteur()
