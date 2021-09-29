@@ -92,7 +92,13 @@ composition, d’agrégation et d’attributs de classe. On verra aussi l’util
   <li>Les télécommandes ont besoin de piles pour fonctionner, mais on peut les remplacer : c’est une <strong>agrégation</strong>.</li>
 </ul>
 
-<h3 id="exemple-du-panier-de-fruit">exemple du panier de fruit</h3>
+<h2 id="schémas-uml">schémas uml</h2>
+
+<p>Lorsque l’on utilise la composition ou l’agrégation de nos classes dans des schéma uml, on liera la classe composé (<em>resp.</em> agrégée) à la classe l’utilisant par une flèche. Cette flèche sera différente pour une composition ou une agrégation :</p>
+
+<p><img src="/cours_informatique/assets/cours/developpement/programmation-objet/uml_composition_agregation.png" alt="uml composition et agrégation" /></p>
+
+<h2 id="exemple-du-panier-de-fruit">exemple du panier de fruit</h2>
 
 <p>Prenons un autre exemple, le panier de fruits. Je voudrais modéliser un panier de fruits. Il doit avoir les propriétés suivantes :</p>
 
@@ -103,7 +109,7 @@ composition, d’agrégation et d’attributs de classe. On verra aussi l’util
   <li>je dois pouvoir reprendre un fruit du panier</li>
 </ul>
 
-<h4 id="modélisation-uml">modélisation uml</h4>
+<h3 id="modélisation-uml">modélisation uml</h3>
 
 <p>Comme à notre habitude commençons par créer une boîte uml presque vide :</p>
 
@@ -133,7 +139,7 @@ composition, d’agrégation et d’attributs de classe. On verra aussi l’util
 -----------------------
 </code></pre>
 
-<h4 id="code-python">code python</h4>
+<h3 id="code-python">code python</h3>
 
 <p>Ceci s’implémente aisément en python :</p>
 
@@ -170,14 +176,14 @@ composition, d’agrégation et d’attributs de classe. On verra aussi l’util
 <span class="k">print</span><span class="p">(</span><span class="n">panier</span><span class="p">.</span><span class="n">montre_panier</span><span class="p">())</span>
 </code></pre></div></div>
 
-<h4 id="composition-et-agrégation">composition et agrégation</h4>
+<h3 id="composition-et-agrégation">composition et agrégation</h3>
 
 <ul>
   <li>Le stock est une <strong>composition</strong> : il est crée avec le panier</li>
   <li>les fruits sont une <strong>agrégation</strong> : ils sont ajouté par une méthode dans l’objet.</li>
 </ul>
 
-<h4 id="attention">attention</h4>
+<h3 id="attention">attention</h3>
 
 <blockquote class="attention">
   <p>Si une classe est composée d’autres objets, ces parties peuvent être modifiées en dehors de la classe, même pour une composition.</p>
@@ -254,12 +260,6 @@ composition, d’agrégation et d’attributs de classe. On verra aussi l’util
 <blockquote>
   <p>Une bonne façon de programmer est de n’utiliser par défaut que des objets non modifiables et que si le besoin s’en fait sentir de les rendre modifiables.</p>
 </blockquote>
-
-<h3 id="schémas-uml">schémas uml</h3>
-
-<p>Lorsque l’on utilise la composition ou l’agrégation de nos classes dans des schéma uml, on liera la classe composé (<em>resp.</em> agrégée) à la classe l’utilisant par une flèche. Cette flèche sera différente pour une composition ou une agrégation :</p>
-
-<p><img src="/cours_informatique/assets/cours/developpement/programmation-objet/uml_composition_agregation.png" alt="uml composition et agrégation" /></p>
 
 <h2 id="tests">tests</h2>
 

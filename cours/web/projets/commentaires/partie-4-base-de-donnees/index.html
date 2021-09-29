@@ -3,9 +3,9 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>Projet commentaires : partie 3 | cours d’informatique</title>
+<title>Projet commentaires : partie 4 | cours d’informatique</title>
 <meta name="generator" content="Jekyll v4.2.0" />
-<meta property="og:title" content="Projet commentaires : partie 3" />
+<meta property="og:title" content="Projet commentaires : partie 4" />
 <meta name="author" content="François Brucker" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
@@ -14,9 +14,9 @@
 <meta property="og:url" content="/cours_informatique/cours/web/projets/commentaires/partie-4-base-de-donnees/" />
 <meta property="og:site_name" content="cours d’informatique" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Projet commentaires : partie 3" />
+<meta property="twitter:title" content="Projet commentaires : partie 4" />
 <script type="application/ld+json">
-{"headline":"Projet commentaires : partie 3","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/web/projets/commentaires/partie-4-base-de-donnees/","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
+{"headline":"Projet commentaires : partie 4","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/web/projets/commentaires/partie-4-base-de-donnees/","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
@@ -58,17 +58,56 @@
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Projet commentaires : partie 3</h1></p>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></p>
+    <h1 class="post-title">Projet commentaires : partie 4</h1></p>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></p>
   </header>
 
   <div class="post-content">
     <blockquote class="chemin">
-  <p><a href="/cours_informatique/cours/web/projets/commentaires/">commentaires</a> / <a href="/cours_informatique/cours/web/projets/commentaires/partie-4-base-de-donnees/">partie 3</a></p>
+  <p><a href="/cours_informatique/cours/web/projets/commentaires/">commentaires</a> / <a href="/cours_informatique/cours/web/projets/commentaires/partie-4-base-de-donnees/">partie 4</a></p>
 </blockquote>
 
+<h2 id="sqlite">sqlite</h2>
+
+<p>Comme nous allons utiliser une base de données, on vous demande d’installer <a href="https://www.sqlite.org/index.html">sqlite</a> sur votre système. C’est une base de données sql qui fonctionne sans serveur et sauve les données sur le disque. Ne l’utilisez en production que pour de <em>petites</em> applications ou pour vos tests.</p>
+
+<h3 id="installation-sqlite">installation sqlite</h3>
+
+<details><summary>sous linux</summary><div>
+<p><code class="language-plaintext highlighter-rouge">apt-get install sqlite3 libsqlite3-dev</code></p>
+</div></details>
+
+<details><summary>sous mac</summary><div>
+<p><code class="language-plaintext highlighter-rouge">brew install sqlite</code></p>
+
+<p>N’oubliez pas d’installer <a href="https://brew.sh/index_fr">brew</a>, c’est super bien.</p>
+</div></details>
+
+<details><summary>sous windows</summary><div>
+<p>Sur la page de <a href="https://www.sqlite.org/download.html">download de sqlite</a> choisissez la section <em>Precompiled Binaries for Windows</em> et récupérez sqlite au format 64-bit et les tools.</p>
+
+</div></details>
+
+<h3 id="on-vérifie-que-ça-fonctionne">on vérifie que ça fonctionne</h3>
+
+<p>Dans terminal, tapez la commande <code class="language-plaintext highlighter-rouge">sqlite3</code>. Vous devriez rentrer dans un interpréteur SQL.
+Tapez ensuite <code class="language-plaintext highlighter-rouge">.exit</code> pour en sortir.</p>
+
+<h2 id="plan">plan</h2>
+
+<ol>
+  <li><a href="/cours_informatique/cours/web/projets/commentaires/partie-4-base-de-donnees/1-modele.html">modèle de données</a> pour l’envoi</li>
+  <li>intégration au serveur</li>
+  <li>routes</li>
+</ol>
+
+<h2 id="niveaux">niveaux</h2>
+
 <blockquote class="note">
-  <p>TBD
-ajout serveur de base et pas que un truc sans serveur</p>
+  <p>TBD</p>
+  <ul>
+    <li>ajout serveur postgress (3A) de base et pas que un truc sans serveur</li>
+    <li>models et config</li>
+  </ul>
 
 </blockquote>
 
