@@ -218,7 +218,11 @@ composition, d’agrégation et d’attributs de classe. On verra aussi l’util
   <li>les objets que l’on retourne et qui sont des attributs sont non modifiables (des entiers, réels, chaînes de caractères, tuples, etc)</li>
 </ol>
 
-<p>La 1ère solution est ce qu’on a pur l’instant.</p>
+<h4 id="1ère-solution">1ère solution</h4>
+
+<p>La 1ère solution est ce qu’on a pour l’instant.</p>
+
+<h4 id="2nde-solution">2nde solution</h4>
 
 <p>La seconde solution reviendrait à donner un nouveau panier à chaque fois en modifiant la méthode <code class="language-plaintext highlighter-rouge">donne_panier()</code> :</p>
 
@@ -260,6 +264,21 @@ composition, d’agrégation et d’attributs de classe. On verra aussi l’util
 <blockquote>
   <p>Une bonne façon de programmer est de n’utiliser par défaut que des objets non modifiables et que si le besoin s’en fait sentir de les rendre modifiables.</p>
 </blockquote>
+
+<h4 id="3ère-solution">3ère solution</h4>
+
+<p>Enfin la troisième solution revient à rendre un tuple dans la méthode <code class="language-plaintext highlighter-rouge">montre_panier</code> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Panier</span><span class="p">:</span>
+    <span class="c1"># ...
+</span>
+    <span class="k">def</span> <span class="nf">montre_panier</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">stock</span><span class="p">)</span>
+    
+    <span class="c1">#...
+</span></code></pre></div></div>
+
+<p>C’est la solution la plus simple puisque le reste du code reste identique et l’on a juste fait en sorte de sécuriser notre attribut.</p>
 
 <h2 id="tests">tests</h2>
 
@@ -307,6 +326,78 @@ composition, d’agrégation et d’attributs de classe. On verra aussi l’util
     <li>On crée pour chaque test un nouveau objet, pour être sur que les tests n’interfèrent pas les uns avec les autres</li>
     <li>Chaque test doit permettre d’utiliser la méthode testée comme elle doit être utilisée dans le code</li>
   </ul>
+</blockquote>
+
+<h3 id="projet-final">projet final</h3>
+
+<p>Vous devez avoir 3 fichiers :</p>
+
+<p><em>“panier.py”</em></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Panier</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">stock</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">ajoute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fruit</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">stock</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">fruit</span><span class="p">)</span>
+        
+
+    <span class="k">def</span> <span class="nf">montre_panier</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">stock</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">supprime</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fruit</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">stock</span><span class="p">.</span><span class="n">remove</span><span class="p">(</span><span class="n">fruit</span><span class="p">)</span>
+         
+</code></pre></div></div>
+
+<p>le programme principal <em>“main.py”</em></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">panier</span> <span class="kn">import</span> <span class="n">Panier</span>
+
+<span class="n">panier</span> <span class="o">=</span> <span class="n">Panier</span><span class="p">()</span>
+
+
+<span class="n">panier</span><span class="p">.</span><span class="n">ajoute</span><span class="p">(</span><span class="s">"orange"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">panier</span><span class="p">.</span><span class="n">montre_panier</span><span class="p">())</span>
+
+<span class="n">panier</span><span class="p">.</span><span class="n">supprime</span><span class="p">(</span><span class="s">"orange"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">panier</span><span class="p">.</span><span class="n">montre_panier</span><span class="p">())</span>
+</code></pre></div></div>
+
+<p>Et les tests:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">panier</span> <span class="kn">import</span> <span class="n">Panier</span>
+
+
+<span class="k">def</span> <span class="nf">test_init</span><span class="p">():</span>
+    <span class="n">panier</span> <span class="o">=</span> <span class="n">Panier</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">panier</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span>
+
+
+<span class="k">def</span> <span class="nf">test_montre_panier_vide</span><span class="p">():</span>
+    <span class="n">panier</span> <span class="o">=</span> <span class="n">Panier</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">panier</span><span class="p">.</span><span class="n">montre_panier</span><span class="p">()</span> <span class="o">==</span> <span class="nb">tuple</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">test_ajoute</span><span class="p">():</span>
+    <span class="n">panier</span> <span class="o">=</span> <span class="n">Panier</span><span class="p">()</span>
+    <span class="n">panier</span><span class="p">.</span><span class="n">ajoute</span><span class="p">(</span><span class="s">"pomme"</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">panier</span><span class="p">.</span><span class="n">montre_panier</span><span class="p">()</span> <span class="o">==</span> <span class="p">(</span><span class="s">"pomme"</span><span class="p">,)</span>
+
+
+<span class="k">def</span> <span class="nf">test_supprime_dans_panier</span><span class="p">():</span>
+    <span class="n">panier</span> <span class="o">=</span> <span class="n">Panier</span><span class="p">()</span>
+    <span class="n">panier</span><span class="p">.</span><span class="n">ajoute</span><span class="p">(</span><span class="s">"pomme"</span><span class="p">)</span>
+    <span class="n">panier</span><span class="p">.</span><span class="n">supprime</span><span class="p">(</span><span class="s">"pomme"</span><span class="p">)</span>
+
+    <span class="k">assert</span> <span class="n">panier</span><span class="p">.</span><span class="n">montre_panier</span><span class="p">()</span> <span class="o">==</span> <span class="nb">tuple</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>Pour exécutez les tests tapez dans un terminal : <code class="language-plaintext highlighter-rouge">pytest test_panier.py</code>.</p>
+
+<blockquote>
+  <p>Si la commande précédente ne fonctionne pas essayez <code class="language-plaintext highlighter-rouge">python -m pytest test_panier.py</code>, et se cela ne marche pas non plus c’est que vous n’avez pas installé pytest (on l’installe avec la commande <code class="language-plaintext highlighter-rouge">pip install pytest</code>)</p>
 </blockquote>
 
   </div>
