@@ -47,6 +47,7 @@ Comment composer et agréger les objets pour créer des objets plus fonctionnels
 Exercice de modélisation objet en python :
 
 1. [exercices]({% link cours/developpement/programmation-objet/objets-composition-agregation-exercices.md %})
+2. [corrigé]({% link cours/developpement/programmation-objet/objets-composition-agregation-exercices-corrige.md %})
 
 ### séance 5 (**CM**)
 

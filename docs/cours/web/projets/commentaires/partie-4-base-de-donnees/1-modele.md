@@ -62,7 +62,7 @@ const Message = sequelize.define('User', {
     type: DataTypes.STRING,
     allowNull: false
   },
-  message {
+  message: {
     type: DataTypes.STRING,
     allowNull: false
   },
@@ -76,19 +76,70 @@ On demande qu'un message soit 3 chaînes de caractères non vide. Notez qu'on a 
 
 ## création de la base
 
-Nous n'avons pour l'instant que créer le modèle, il n'existe pas encore dans la base. Comme notre modèle est en mémoire, on va faire en sorte de recréer le modèle, même s'il existe déjà. Ceci se fait avec la ligne :
+Nous n'avons pour l'instant que créer le modèle, il n'existe pas encore dans la base. Comme notre modèle est en mémoire, on va faire en sorte de recréer la base en changeant tou sles modèles que nous avons défini (ici un seul). Ceci se fait avec la ligne :
 
 ```js
-await Message.sync({ force: true });
+await sequelize.sync({ force: true });
 ```
 
 Le mot clé `await` précise que l'on attend que la commande soit finie avant de passer à la ligne suivante. La commande est asynchrone par défaut, mais on ne veut pas commencer à faire des choses avec la base de donnée avant qu'elle ait été complètement créée.
+
+On ne peut cependant pas utiliser `await` comme ça, il doit être dans une fonction de type `async` (asynchrone), ce que n'est pas notre programme par défaut. On utilise du coup le truc suivant :
+
+```js
+(async () => {
+    await sequelize.sync({ force: true });
+    // Code here
+  })();
+```
+
+On exécute notre code dans une fonction asynchrone sans paramètre qui est exécutée juste après avoir été définie.
+
+> Le javascript est formidable, non ?
 
 ## fichier de test
 
 Avant d'incorporer la base de donnée dans le code du serveur, on va déjà l'utiliser dans un fichier séparé, histoire de voir si tout se passe comme prévu.
 
-Créez un fichier *"db.test.js"* 
+Créez un fichier *"db.test.js"* dans *"commentaires"* et on pourra y mettre le code suivant pour voir comment tout ça peut fonctionne :
+
+```js
+const { Sequelize, DataTypes } = require('sequelize');
+const sequelize = new Sequelize('sqlite::memory:');
+
+const Message = sequelize.define('User', {
+    pseudo: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    titre: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    message: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+  }, {
+    // Other model options go here
+  });
+  
+  (async () => {
+    await sequelize.sync({ force: true });
+    // Code here
+  })();
+```
+
+En exécutant ce code on voit (en SQL, dialecte parlé par sqlite qui est notre base de donnée) ce que fait sequelize. Le résultat de la commande `node db.test.js` donne :
+
+```text
+Executing (default): DROP TABLE IF EXISTS `Users`;
+Executing (default): DROP TABLE IF EXISTS `Users`;
+Executing (default): CREATE TABLE IF NOT EXISTS `Users` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `pseudo` VARCHAR(255) NOT NULL, `titre` VARCHAR(255) NOT NULL, `message` VARCHAR(255) NOT NULL, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL);
+Executing (default): PRAGMA INDEX_LIST(`Users`)
+```
+
+On supprime toute la base puis on recrée notre modèle `Message`.
 
 ## crud
 
@@ -100,6 +151,8 @@ Pour l'accès à nos données, on utilise le formalisme [CRUD](https://fr.wikipe
 * **D**elete : supprimer un message
 
 > Nous utiliserons l'id qui est ajouté par défaut à chaque message pour spécifier directement  un message.
+
+Avant de créer les routes, concentrons nous sur les façons de faire ça en sequelize.
 
 ### create
 
@@ -119,17 +172,65 @@ const message = await Message.create({
 })
 ```
 
+Le message est poussé en base. Son `id` est visible : `console.log(message.id)`. Si c'est le premier élément que vous créez, son `id` sera de 1, et si vous en créez d'autres, l'`id` va augmenter. C'est la clé primaire de notre modèle.
+
+Testons ça en modifiant notre fonction `async` de `test.db.js` :
+
+```js
+(async () => {
+    await sequelize.sync({ force: true });
+    // Code here
+    pseudo = "François"
+    titre = "un coup de gueule"
+    corps = "il faut permettre aux étudiants de de faire plus d'informatique !"
+
+    message = await Message.create({
+        pseudo: pseudo,
+        titre: titre,
+        message: corps
+    })
+    console.log(message.id)
+    
+    console.log(await Message.findAll({}));
+})();
+```
+
+On crée un message, on note son id puis on cherche tous les messages de la base et on les affiche (notez le `await` dans la dernière ligne pour être sur que o'n a tout chargé avant de l'afficher).
+
 ### read
 
+On va lire une instance en connaissant sa clé primaire.
+
+```js
+console.log(await Message.findByPk(1));
+```
+
+Si l'on donne une clé primaire inexistante, on récupère l'objet `null`.
+
 ### update
+
+On met à jour un objet en connaissant sa clé primaire et les attributs à changer.
+
+```js
+message = await Message.findByPk(1);
+message.titre = "un pavé dans la marre"
+
+message.save()
+```
 
 ### delete
 
 
-## routes spéciales
+## requêtes spéciales
 
 Nous allons aussi avoir besoin de 2 routes spéciales, pour la page **lire.html** :
 
 * une route qui rend une liste de tous les messages
 * une route qui rend une liste de tous les messages pour un pseudo donné.
 
+## base de donnée en dur
+
+Pour ne pas avoir une base de donnée en mémoire (ce qui est bien pour des tests par exemple, mais en prod on aimerait ne pas tout perdre à chaque fois qu'un relance le serveur)
+
+> TBD
+{: .note}
