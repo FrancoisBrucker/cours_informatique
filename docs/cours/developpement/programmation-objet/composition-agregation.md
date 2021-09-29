@@ -259,7 +259,7 @@ def test_supprime_dans_panier():
 
 ### projet final
 
-Vous devez avoir 3 fichiers : 
+Vous devez avoir 3 fichiers :
 
 *"panier.py"*
 

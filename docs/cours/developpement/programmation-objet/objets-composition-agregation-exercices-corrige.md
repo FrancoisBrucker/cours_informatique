@@ -87,6 +87,8 @@ def test_roll():
 ### 5 dés
 
 ```python
+from dice import Dice
+
   tapis = []
   for i in range(5):
       tapis.append(Dice())

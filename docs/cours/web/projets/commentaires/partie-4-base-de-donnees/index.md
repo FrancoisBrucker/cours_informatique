@@ -46,5 +46,5 @@ Tapez ensuite `.exit` pour en sortir.
 > TBD
 > * ajout serveur postgress (3A) de base et pas que un truc sans serveur
 > * models et config
-> 
+> * passer de sqlite memory à un vrai sqlite
 {: .note}

@@ -39,10 +39,11 @@ Chaque partie est organisée en niveaux. Chaque niveau ajoutant des outils de d�
 * <https://blog.logrocket.com/the-perfect-architecture-flow-for-your-next-node-js-project/>
 
 > TBD
-> * ajout run dans package.json
+>
+> * separer le serveur un plusieurs fichiers
 > * variables d'environnement
-> * config differentes en teste et en prod.
-> * config differente pour la base. sqlite vs bd
+> * config différentes en teste et en prod.
+> * config différente pour la base. sqlite vs bd
 > * require pas relu ?
 > * séparer les routes du serveur
 > * utiliser le dossier script pour la mise en prod.
