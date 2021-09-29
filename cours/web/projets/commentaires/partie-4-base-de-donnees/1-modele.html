@@ -251,7 +251,8 @@ const message = await Message.create({
     <span class="p">})</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span>
     
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">await</span> <span class="nx">Message</span><span class="p">.</span><span class="nx">findAll</span><span class="p">({}));</span>
+    <span class="nx">messages</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">Message</span><span class="p">.</span><span class="nx">findAll</span><span class="p">({});</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">messages</span><span class="p">);</span>
 <span class="p">})();</span>
 </code></pre></div></div>
 
@@ -259,14 +260,22 @@ const message = await Message.create({
 
 <h3 id="read">read</h3>
 
+<blockquote>
+  <p><a href="https://sequelize.org/master/manual/model-querying-finders.html#-code-findbypk--code-">https://sequelize.org/master/manual/model-querying-finders.html#-code-findbypk--code-</a></p>
+</blockquote>
+
 <p>On va lire une instance en connaissant sa clé primaire.</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">await</span> <span class="nx">Message</span><span class="p">.</span><span class="nx">findByPk</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">message</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">Message</span><span class="p">.</span><span class="nx">findByPk</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>Si l’on donne une clé primaire inexistante, on récupère l’objet <code class="language-plaintext highlighter-rouge">null</code>.</p>
 
 <h3 id="update">update</h3>
+
+<blockquote>
+  <p><a href="https://sequelize.org/master/manual/model-instances.html#updating-an-instance">https://sequelize.org/master/manual/model-instances.html#updating-an-instance</a></p>
+</blockquote>
 
 <p>On met à jour un objet en connaissant sa clé primaire et les attributs à changer.</p>
 
@@ -278,7 +287,17 @@ const message = await Message.create({
 
 <h3 id="delete">delete</h3>
 
-<h2 id="requêtes-spéciales">requêtes spéciales</h2>
+<blockquote>
+  <p><a href="https://sequelize.org/master/manual/model-instances.html#deleting-an-instance">https://sequelize.org/master/manual/model-instances.html#deleting-an-instance</a></p>
+</blockquote>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">message</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">Message</span><span class="p">.</span><span class="nx">findByPk</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="nx">message</span><span class="p">.</span><span class="nx">titre</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">un pavé dans la marre</span><span class="dl">"</span>
+
+<span class="k">await</span> <span class="nx">message</span><span class="p">.</span><span class="nx">destroy</span><span class="p">();</span>
+</code></pre></div></div>
+
+<h2 id="requêtes">requêtes</h2>
 
 <p>Nous allons aussi avoir besoin de 2 routes spéciales, pour la page <strong>lire.html</strong> :</p>
 
@@ -287,13 +306,117 @@ const message = await Message.create({
   <li>une route qui rend une liste de tous les messages pour un pseudo donné.</li>
 </ul>
 
+<h3 id="tous-les-messages">tous les messages</h3>
+
+<p>On a déjà utilisé cette requête, c’est <code class="language-plaintext highlighter-rouge">Message.findAll({}))</code>.</p>
+
+<h3 id="les-messages-dun-pseudo">les messages d’un pseudo</h3>
+
+<p>Il suffit de donner des contraintes à la requête <code class="language-plaintext highlighter-rouge">findAll</code> grâce un <code class="language-plaintext highlighter-rouge">where</code> sqlien :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">messages</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">Message</span><span class="p">.</span><span class="nx">findAll</span><span class="p">({</span>
+        <span class="na">where</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">pseudo</span><span class="p">:</span> <span class="dl">"</span><span class="s2">François</span><span class="dl">"</span>
+        <span class="p">}</span>
+    <span class="p">})</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">messages</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="requêtes-possible-dans-sequelize">requêtes possible dans sequelize</h3>
+
+<p>Les requêtes possible dans sequelize sont très puissantes. Regardez du côté de la <a href="https://sequelize.org/master/manual/model-querying-basics.html">documentation sur les requêtes basiques</a>, c’est facile à utiliser et puissant.</p>
+
+<p>Si vous êtes en mal de SQL, vous pouvez bien sur aussi utliser les <a href="https://sequelize.org/master/manual/raw-queries.html">reqêtes SQL</a> standards.</p>
+
 <h2 id="base-de-donnée-en-dur">base de donnée en dur</h2>
 
-<p>Pour ne pas avoir une base de donnée en mémoire (ce qui est bien pour des tests par exemple, mais en prod on aimerait ne pas tout perdre à chaque fois qu’un relance le serveur)</p>
-
-<blockquote class="note">
-  <p>TBD</p>
+<blockquote>
+  <p><a href="https://sequelize.org/master/manual/getting-started.html#connecting-to-a-database">https://sequelize.org/master/manual/getting-started.html#connecting-to-a-database</a></p>
 </blockquote>
+
+<p>Pour ne pas avoir une base de donnée en mémoire (ce qui est bien pour des tests par exemple, mais en prod on aimerait ne pas tout perdre à chaque fois qu’un relance le serveur).</p>
+
+<p>Si l’on veut utiliser une base de données sqlite en dur on peut alors :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">path</span><span class="dl">'</span><span class="p">)</span>
+
+<span class="kd">const</span> <span class="nx">sequelize</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Sequelize</span><span class="p">({</span>
+  <span class="na">dialect</span><span class="p">:</span> <span class="dl">'</span><span class="s1">sqlite</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">storage</span><span class="p">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="dl">'</span><span class="s1">db.sqlite</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>Si vous remplacez la ligne <code class="language-plaintext highlighter-rouge">await sequelize.sync({ force: true });</code> par <code class="language-plaintext highlighter-rouge">await sequelize.sync();</code>, la base est juste synchronisée (on ajoute les modèles inexistant) et non remise à plat. Ceci vous permet d’avoir une base qui va grandir au fil du temps.</p>
+
+<h2 id="fichier">fichier</h2>
+
+<p>Le fichier <em>3commentaires/db.test.js”</em> ressemble à la fin de ces tests à ça :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">Sequelize</span><span class="p">,</span> <span class="nx">DataTypes</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">sequelize</span><span class="dl">'</span><span class="p">);</span>
+<span class="c1">// const sequelize = new Sequelize('sqlite::memory:');</span>
+
+<span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">path</span><span class="dl">'</span><span class="p">)</span>
+
+<span class="kd">const</span> <span class="nx">sequelize</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Sequelize</span><span class="p">({</span>
+  <span class="na">dialect</span><span class="p">:</span> <span class="dl">'</span><span class="s1">sqlite</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">storage</span><span class="p">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="dl">'</span><span class="s1">db.sqlite</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">});</span>
+
+<span class="kd">const</span> <span class="nx">Message</span> <span class="o">=</span> <span class="nx">sequelize</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="dl">'</span><span class="s1">User</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">pseudo</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">DataTypes</span><span class="p">.</span><span class="nx">STRING</span><span class="p">,</span>
+        <span class="na">allowNull</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">titre</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">DataTypes</span><span class="p">.</span><span class="nx">STRING</span><span class="p">,</span>
+        <span class="na">allowNull</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">message</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">DataTypes</span><span class="p">.</span><span class="nx">STRING</span><span class="p">,</span>
+        <span class="na">allowNull</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+<span class="p">},</span> <span class="p">{</span>
+    <span class="c1">// Other model options go here</span>
+<span class="p">});</span>
+
+<span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// await sequelize.sync({ force: true });</span>
+    <span class="k">await</span> <span class="nx">sequelize</span><span class="p">.</span><span class="nx">sync</span><span class="p">();</span>
+    
+    <span class="c1">// Code here</span>
+    <span class="nx">pseudo</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">François</span><span class="dl">"</span>
+    <span class="nx">titre</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">un coup de gueule</span><span class="dl">"</span>
+    <span class="nx">corps</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">il faut permettre aux étudiants de de faire plus d'informatique !</span><span class="dl">"</span>
+
+    <span class="nx">message</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">Message</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+        <span class="na">pseudo</span><span class="p">:</span> <span class="nx">pseudo</span><span class="p">,</span>
+        <span class="na">titre</span><span class="p">:</span> <span class="nx">titre</span><span class="p">,</span>
+        <span class="na">message</span><span class="p">:</span> <span class="nx">corps</span>
+    <span class="p">})</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span>
+
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">await</span> <span class="nx">Message</span><span class="p">.</span><span class="nx">findAll</span><span class="p">({}));</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">await</span> <span class="nx">Message</span><span class="p">.</span><span class="nx">findByPk</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
+
+    <span class="nx">message</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">Message</span><span class="p">.</span><span class="nx">findByPk</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="nx">message</span><span class="p">.</span><span class="nx">titre</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">un pavé dans la marre</span><span class="dl">"</span>
+
+    <span class="nx">message</span><span class="p">.</span><span class="nx">save</span><span class="p">()</span>
+
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">await</span> <span class="nx">Message</span><span class="p">.</span><span class="nx">findByPk</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
+
+    <span class="nx">messages</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">Message</span><span class="p">.</span><span class="nx">findAll</span><span class="p">({</span>
+        <span class="na">where</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">pseudo</span><span class="p">:</span> <span class="dl">"</span><span class="s2">François</span><span class="dl">"</span>
+        <span class="p">}</span>
+    <span class="p">})</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">messages</span><span class="p">)</span>
+
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">------</span><span class="dl">"</span><span class="p">)</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">messages</span><span class="p">)</span>
+
+<span class="p">})();</span>
+</code></pre></div></div>
 
   </div>
 
