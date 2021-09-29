@@ -66,6 +66,136 @@
   <p><a href="/cours_informatique/cours/web/projets/commentaires/">commentaires</a> / <a href="/cours_informatique/cours/web/projets/commentaires/partie-4-base-de-donnees/">partie 4</a> / <a href="/cours_informatique/cours/web/projets/commentaires/partie-4-base-de-donnees/1-modele.html">modèle</a></p>
 </blockquote>
 
+<h2 id="sequelize">sequelize</h2>
+
+<p>La vie est trop courte pour taper du SQL à la main. ON va utiliser <a href="https://sequelize.org/">sequilize</a> qui va nous permettre de gérer tout le côté configuration de base et SQL pour nous.</p>
+
+<p>En effet, selon la base, le dialecte SQL sera différent. Si l’on écrit nos requêtes à la main, il faudra toutes les changer lorsque l’on change de base, ce qui n’est pas humainement possible.</p>
+
+<p>On va donc écrire nos requête dans le formalisme de sequilize qui va le traduire pour chaque base utilisée.</p>
+
+<p>Commençons par installer la dépendance sequilize dans le projet, côté back. Tapez la commande suivante dans le dossier <em>“commentaires”</em> :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install</span> <span class="nt">--save</span> sequelize
+</code></pre></div></div>
+
+<p>Notre base de donnée étant sqlite3, on installe également le driver :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install</span> <span class="nt">--save</span> sqlite3
+</code></pre></div></div>
+
+<blockquote>
+  <p>Le driver sqlite3 est différent du logiciel sqlite3 que vous avez déjà installé (enfin, je crois).</p>
+</blockquote>
+
+<p>Nous allons ici utiliser une base de donnée en mémoire. Elle sera remise à zéro à chaque fois que l’on relancera le serveur.</p>
+
+<p>On initialise sequelize avec les deux lignes suivantes :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">Sequelize</span><span class="p">,</span> <span class="nx">DataTypes</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">sequelize</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">sequelize</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Sequelize</span><span class="p">(</span><span class="dl">'</span><span class="s1">sqlite::memory:</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>La première récupère le module, la seconde crée le lien entre la base de donnée et nous.</p>
+
+<blockquote>
+  <p>Si on avait eu une base de donnée physique ou un serveur de base de donnée, on aurait eu besoin de mettre nos login/mots de passe</p>
+</blockquote>
+
+<h2 id="modèle">modèle</h2>
+
+<p>Nous avons envi de sauvegarder les commentaires. C’est à dire 3 chaînes de caractères. Les types possible de champ sont disponible <a href="https://sequelize.org/v5/manual/data-types.html">dans la documentation</a>. On va prendre les chaine les plus simple : <code class="language-plaintext highlighter-rouge">Sequelize.STRING</code> (tous nos champs devront avoir moins de 255 caractères).</p>
+
+<p>Notre modèle de message est alors :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">Sequelize</span><span class="p">,</span> <span class="nx">DataTypes</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">sequelize</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">sequelize</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Sequelize</span><span class="p">(</span><span class="dl">'</span><span class="s1">sqlite::memory:</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">Message</span> <span class="o">=</span> <span class="nx">sequelize</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="dl">'</span><span class="s1">User</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">pseudo</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="nx">DataTypes</span><span class="p">.</span><span class="nx">STRING</span><span class="p">,</span>
+    <span class="na">allowNull</span><span class="p">:</span> <span class="kc">false</span>
+  <span class="p">},</span>
+  <span class="na">titre</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="nx">DataTypes</span><span class="p">.</span><span class="nx">STRING</span><span class="p">,</span>
+    <span class="na">allowNull</span><span class="p">:</span> <span class="kc">false</span>
+  <span class="p">},</span>
+  <span class="nx">message</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="nx">DataTypes</span><span class="p">.</span><span class="nx">STRING</span><span class="p">,</span>
+    <span class="na">allowNull</span><span class="p">:</span> <span class="kc">false</span>
+  <span class="p">},</span>
+<span class="p">},</span> <span class="p">{</span>
+  <span class="c1">// Other model options go here</span>
+<span class="p">});</span>
+
+</code></pre></div></div>
+
+<p>On demande qu’un message soit 3 chaînes de caractères non vide. Notez qu’on a pas donné de clé primaire : dans ce cas sequelize en crée une qui s’appelle <code class="language-plaintext highlighter-rouge">id</code> pour nous.</p>
+
+<h2 id="création-de-la-base">création de la base</h2>
+
+<p>Nous n’avons pour l’instant que créer le modèle, il n’existe pas encore dans la base. Comme notre modèle est en mémoire, on va faire en sorte de recréer le modèle, même s’il existe déjà. Ceci se fait avec la ligne :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">await</span> <span class="nx">Message</span><span class="p">.</span><span class="nx">sync</span><span class="p">({</span> <span class="na">force</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
+</code></pre></div></div>
+
+<p>Le mot clé <code class="language-plaintext highlighter-rouge">await</code> précise que l’on attend que la commande soit finie avant de passer à la ligne suivante. La commande est asynchrone par défaut, mais on ne veut pas commencer à faire des choses avec la base de donnée avant qu’elle ait été complètement créée.</p>
+
+<h2 id="fichier-de-test">fichier de test</h2>
+
+<p>Avant d’incorporer la base de donnée dans le code du serveur, on va déjà l’utiliser dans un fichier séparé, histoire de voir si tout se passe comme prévu.</p>
+
+<p>Créez un fichier <em>“db.test.js”</em></p>
+
+<h2 id="crud">crud</h2>
+
+<p>Pour l’accès à nos données, on utilise le formalisme <a href="https://fr.wikipedia.org/wiki/CRUD">CRUD</a>, c’est à dire que l’on veut avoir des url qui nous permettent de :</p>
+
+<ul>
+  <li><strong>C</strong>reate : créer un message</li>
+  <li><strong>R</strong>ead : lire un message</li>
+  <li><strong>U</strong>pdate : mettre à jour un message</li>
+  <li><strong>D</strong>elete : supprimer un message</li>
+</ul>
+
+<blockquote>
+  <p>Nous utiliserons l’id qui est ajouté par défaut à chaque message pour spécifier directement  un message.</p>
+</blockquote>
+
+<h3 id="create">create</h3>
+
+<blockquote>
+  <p><a href="https://sequelize.org/master/manual/model-instances.html#creating-an-instance">https://sequelize.org/master/manual/model-instances.html#creating-an-instance</a></p>
+</blockquote>
+
+<p>On veut créer une donnée avec sequelize en ayant le pseudo, le titre et le corps du message. On peut faire comme ça :</p>
+
+<pre><code class="language-sequelize">pseudo = "François"
+titre = "un coup de gueule"
+corps = "il faut permettre aux étudiants de de faire plus d'informatique !"
+
+const message = await Message.create({
+    pseudo: pseudo,
+    titre: titre,
+    message: corps
+})
+</code></pre>
+
+<h3 id="read">read</h3>
+
+<h3 id="update">update</h3>
+
+<h3 id="delete">delete</h3>
+
+<h2 id="routes-spéciales">routes spéciales</h2>
+
+<p>Nous allons aussi avoir besoin de 2 routes spéciales, pour la page <strong>lire.html</strong> :</p>
+
+<ul>
+  <li>une route qui rend une liste de tous les messages</li>
+  <li>une route qui rend une liste de tous les messages pour un pseudo donné.</li>
+</ul>
+
 
   </div>
 
