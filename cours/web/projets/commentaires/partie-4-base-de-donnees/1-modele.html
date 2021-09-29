@@ -120,7 +120,7 @@
     <span class="na">type</span><span class="p">:</span> <span class="nx">DataTypes</span><span class="p">.</span><span class="nx">STRING</span><span class="p">,</span>
     <span class="na">allowNull</span><span class="p">:</span> <span class="kc">false</span>
   <span class="p">},</span>
-  <span class="nx">message</span> <span class="p">{</span>
+  <span class="na">message</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">type</span><span class="p">:</span> <span class="nx">DataTypes</span><span class="p">.</span><span class="nx">STRING</span><span class="p">,</span>
     <span class="na">allowNull</span><span class="p">:</span> <span class="kc">false</span>
   <span class="p">},</span>
@@ -134,18 +134,68 @@
 
 <h2 id="création-de-la-base">création de la base</h2>
 
-<p>Nous n’avons pour l’instant que créer le modèle, il n’existe pas encore dans la base. Comme notre modèle est en mémoire, on va faire en sorte de recréer le modèle, même s’il existe déjà. Ceci se fait avec la ligne :</p>
+<p>Nous n’avons pour l’instant que créer le modèle, il n’existe pas encore dans la base. Comme notre modèle est en mémoire, on va faire en sorte de recréer la base en changeant tou sles modèles que nous avons défini (ici un seul). Ceci se fait avec la ligne :</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">await</span> <span class="nx">Message</span><span class="p">.</span><span class="nx">sync</span><span class="p">({</span> <span class="na">force</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">await</span> <span class="nx">sequelize</span><span class="p">.</span><span class="nx">sync</span><span class="p">({</span> <span class="na">force</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
 </code></pre></div></div>
 
 <p>Le mot clé <code class="language-plaintext highlighter-rouge">await</code> précise que l’on attend que la commande soit finie avant de passer à la ligne suivante. La commande est asynchrone par défaut, mais on ne veut pas commencer à faire des choses avec la base de donnée avant qu’elle ait été complètement créée.</p>
+
+<p>On ne peut cependant pas utiliser <code class="language-plaintext highlighter-rouge">await</code> comme ça, il doit être dans une fonction de type <code class="language-plaintext highlighter-rouge">async</code> (asynchrone), ce que n’est pas notre programme par défaut. On utilise du coup le truc suivant :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">await</span> <span class="nx">sequelize</span><span class="p">.</span><span class="nx">sync</span><span class="p">({</span> <span class="na">force</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
+    <span class="c1">// Code here</span>
+  <span class="p">})();</span>
+</code></pre></div></div>
+
+<p>On exécute notre code dans une fonction asynchrone sans paramètre qui est exécutée juste après avoir été définie.</p>
+
+<blockquote>
+  <p>Le javascript est formidable, non ?</p>
+</blockquote>
 
 <h2 id="fichier-de-test">fichier de test</h2>
 
 <p>Avant d’incorporer la base de donnée dans le code du serveur, on va déjà l’utiliser dans un fichier séparé, histoire de voir si tout se passe comme prévu.</p>
 
-<p>Créez un fichier <em>“db.test.js”</em></p>
+<p>Créez un fichier <em>“db.test.js”</em> dans <em>“commentaires”</em> et on pourra y mettre le code suivant pour voir comment tout ça peut fonctionne :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">Sequelize</span><span class="p">,</span> <span class="nx">DataTypes</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">sequelize</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">sequelize</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Sequelize</span><span class="p">(</span><span class="dl">'</span><span class="s1">sqlite::memory:</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">Message</span> <span class="o">=</span> <span class="nx">sequelize</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="dl">'</span><span class="s1">User</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">pseudo</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">type</span><span class="p">:</span> <span class="nx">DataTypes</span><span class="p">.</span><span class="nx">STRING</span><span class="p">,</span>
+      <span class="na">allowNull</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">titre</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">type</span><span class="p">:</span> <span class="nx">DataTypes</span><span class="p">.</span><span class="nx">STRING</span><span class="p">,</span>
+      <span class="na">allowNull</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">message</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">type</span><span class="p">:</span> <span class="nx">DataTypes</span><span class="p">.</span><span class="nx">STRING</span><span class="p">,</span>
+      <span class="na">allowNull</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+  <span class="p">},</span> <span class="p">{</span>
+    <span class="c1">// Other model options go here</span>
+  <span class="p">});</span>
+  
+  <span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">await</span> <span class="nx">sequelize</span><span class="p">.</span><span class="nx">sync</span><span class="p">({</span> <span class="na">force</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
+    <span class="c1">// Code here</span>
+  <span class="p">})();</span>
+</code></pre></div></div>
+
+<p>En exécutant ce code on voit (en SQL, dialecte parlé par sqlite qui est notre base de donnée) ce que fait sequelize. Le résultat de la commande <code class="language-plaintext highlighter-rouge">node db.test.js</code> donne :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Executing (default): DROP TABLE IF EXISTS `Users`;
+Executing (default): DROP TABLE IF EXISTS `Users`;
+Executing (default): CREATE TABLE IF NOT EXISTS `Users` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `pseudo` VARCHAR(255) NOT NULL, `titre` VARCHAR(255) NOT NULL, `message` VARCHAR(255) NOT NULL, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL);
+Executing (default): PRAGMA INDEX_LIST(`Users`)
+</code></pre></div></div>
+
+<p>On supprime toute la base puis on recrée notre modèle <code class="language-plaintext highlighter-rouge">Message</code>.</p>
 
 <h2 id="crud">crud</h2>
 
@@ -161,6 +211,8 @@
 <blockquote>
   <p>Nous utiliserons l’id qui est ajouté par défaut à chaque message pour spécifier directement  un message.</p>
 </blockquote>
+
+<p>Avant de créer les routes, concentrons nous sur les façons de faire ça en sequelize.</p>
 
 <h3 id="create">create</h3>
 
@@ -181,13 +233,52 @@ const message = await Message.create({
 })
 </code></pre>
 
+<p>Le message est poussé en base. Son <code class="language-plaintext highlighter-rouge">id</code> est visible : <code class="language-plaintext highlighter-rouge">console.log(message.id)</code>. Si c’est le premier élément que vous créez, son <code class="language-plaintext highlighter-rouge">id</code> sera de 1, et si vous en créez d’autres, l’<code class="language-plaintext highlighter-rouge">id</code> va augmenter. C’est la clé primaire de notre modèle.</p>
+
+<p>Testons ça en modifiant notre fonction <code class="language-plaintext highlighter-rouge">async</code> de <code class="language-plaintext highlighter-rouge">test.db.js</code> :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">await</span> <span class="nx">sequelize</span><span class="p">.</span><span class="nx">sync</span><span class="p">({</span> <span class="na">force</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
+    <span class="c1">// Code here</span>
+    <span class="nx">pseudo</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">François</span><span class="dl">"</span>
+    <span class="nx">titre</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">un coup de gueule</span><span class="dl">"</span>
+    <span class="nx">corps</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">il faut permettre aux étudiants de de faire plus d'informatique !</span><span class="dl">"</span>
+
+    <span class="nx">message</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">Message</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+        <span class="na">pseudo</span><span class="p">:</span> <span class="nx">pseudo</span><span class="p">,</span>
+        <span class="na">titre</span><span class="p">:</span> <span class="nx">titre</span><span class="p">,</span>
+        <span class="na">message</span><span class="p">:</span> <span class="nx">corps</span>
+    <span class="p">})</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span>
+    
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">await</span> <span class="nx">Message</span><span class="p">.</span><span class="nx">findAll</span><span class="p">({}));</span>
+<span class="p">})();</span>
+</code></pre></div></div>
+
+<p>On crée un message, on note son id puis on cherche tous les messages de la base et on les affiche (notez le <code class="language-plaintext highlighter-rouge">await</code> dans la dernière ligne pour être sur que o’n a tout chargé avant de l’afficher).</p>
+
 <h3 id="read">read</h3>
+
+<p>On va lire une instance en connaissant sa clé primaire.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">await</span> <span class="nx">Message</span><span class="p">.</span><span class="nx">findByPk</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
+</code></pre></div></div>
+
+<p>Si l’on donne une clé primaire inexistante, on récupère l’objet <code class="language-plaintext highlighter-rouge">null</code>.</p>
 
 <h3 id="update">update</h3>
 
+<p>On met à jour un objet en connaissant sa clé primaire et les attributs à changer.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">message</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">Message</span><span class="p">.</span><span class="nx">findByPk</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="nx">message</span><span class="p">.</span><span class="nx">titre</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">un pavé dans la marre</span><span class="dl">"</span>
+
+<span class="nx">message</span><span class="p">.</span><span class="nx">save</span><span class="p">()</span>
+</code></pre></div></div>
+
 <h3 id="delete">delete</h3>
 
-<h2 id="routes-spéciales">routes spéciales</h2>
+<h2 id="requêtes-spéciales">requêtes spéciales</h2>
 
 <p>Nous allons aussi avoir besoin de 2 routes spéciales, pour la page <strong>lire.html</strong> :</p>
 
@@ -196,6 +287,13 @@ const message = await Message.create({
   <li>une route qui rend une liste de tous les messages pour un pseudo donné.</li>
 </ul>
 
+<h2 id="base-de-donnée-en-dur">base de donnée en dur</h2>
+
+<p>Pour ne pas avoir une base de donnée en mémoire (ce qui est bien pour des tests par exemple, mais en prod on aimerait ne pas tout perdre à chaque fois qu’un relance le serveur)</p>
+
+<blockquote class="note">
+  <p>TBD</p>
+</blockquote>
 
   </div>
 
