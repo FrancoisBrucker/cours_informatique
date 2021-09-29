@@ -27,7 +27,13 @@ Les exemple de composition et d'agrégation de *la vraie vie* sont souvent un pe
 * Un livre est composé de pages : pour créer le livre on a créé les pages : c'est une **composition**
 * Les télécommandes ont besoin de piles pour fonctionner, mais on peut les remplacer : c'est une **agrégation**.
 
-### exemple du panier de fruit
+## schémas uml
+
+Lorsque l'on utilise la composition ou l'agrégation de nos classes dans des schéma uml, on liera la classe composé (*resp.* agrégée) à la classe l'utilisant par une flèche. Cette flèche sera différente pour une composition ou une agrégation :
+
+![uml composition et agrégation]({{ "/assets/cours/developpement/programmation-objet/uml_composition_agregation.png" | relative_url }}){:style="margin: auto;display: block}
+
+## exemple du panier de fruit
 
 Prenons un autre exemple, le panier de fruits. Je voudrais modéliser un panier de fruits. Il doit avoir les propriétés suivantes :
 
@@ -36,7 +42,7 @@ Prenons un autre exemple, le panier de fruits. Je voudrais modéliser un panier 
 * je dois pouvoir montrer les fruits que j'a dans le panier
 * je dois pouvoir reprendre un fruit du panier
 
-#### modélisation uml
+### modélisation uml
 
 Comme à notre habitude commençons par créer une boîte uml presque vide :
 
@@ -68,7 +74,7 @@ Pour que l'on puisse faire ces différentes méthodes, il faut que `Panier` puis
 -----------------------
 ```
 
-#### code python
+### code python
 
 Ceci s'implémente aisément en python :
 
@@ -107,12 +113,12 @@ panier.supprime("pomme")
 print(panier.montre_panier())
 ```
 
-#### composition et agrégation
+### composition et agrégation
 
 * Le stock est une **composition** : il est crée avec le panier
 * les fruits sont une **agrégation** : ils sont ajouté par une méthode dans l'objet.
 
-#### attention
+### attention
 
 > Si une classe est composée d'autres objets, ces parties peuvent être modifiées en dehors de la classe, même pour une composition.
 {: .attention}
@@ -187,12 +193,6 @@ Ces objets possèdent des valeurs et des méthodes pour y accéder mais que l'on
 Vous avez utilisé des value objects bien souvent en python comme : les  entiers, les réels ou encore les chaines de caractères. Enfin de nombreux objets modifiables en python ont leur contrepartie non modifiable comme les `tuple` qui sont des listes non modifiables ou encore les `frozenset` sont des ensembles non modifiables.
 
 > Une bonne façon de programmer est de n'utiliser par défaut que des objets non modifiables et que si le besoin s'en fait sentir de les rendre modifiables.
-
-### schémas uml
-
-Lorsque l'on utilise la composition ou l'agrégation de nos classes dans des schéma uml, on liera la classe composé (*resp.* agrégée) à la classe l'utilisant par une flèche. Cette flèche sera différente pour une composition ou une agrégation :
-
-![uml composition et agrégation]({{ "/assets/cours/developpement/programmation-objet/uml_composition_agregation.png" | relative_url }}){:style="margin: auto;display: block}
 
 ## tests
 

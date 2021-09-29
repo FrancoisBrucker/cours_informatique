@@ -1,14 +1,50 @@
 ---
 layout: page
-title:  "Projet commentaires : partie 3"
+title:  "Projet commentaires : partie 4"
 category: cours
 author: "François Brucker"
 ---
 
-> [commentaires]({% link cours/web/projets/commentaires/index.md %}) / [partie 3]({% link cours/web/projets/commentaires/partie-4-base-de-donnees/index.md %})
+> [commentaires]({% link cours/web/projets/commentaires/index.md %}) / [partie 4]({% link cours/web/projets/commentaires/partie-4-base-de-donnees/index.md %})
 {: .chemin}
 
+## sqlite
+
+Comme nous allons utiliser une base de données, on vous demande d'installer [sqlite](https://www.sqlite.org/index.html) sur votre système. C'est une base de données sql qui fonctionne sans serveur et sauve les données sur le disque. Ne l'utilisez en production que pour de *petites* applications ou pour vos tests. 
+
+### installation sqlite
+
+{% details sous linux %}
+`apt-get install sqlite3 libsqlite3-dev`
+{% enddetails %}
+
+{% details sous mac %}
+`brew install sqlite`
+
+N'oubliez pas d'installer [brew](https://brew.sh/index_fr), c'est super bien.
+{% enddetails %}
+
+{% details sous windows %}
+Sur la page de [download de sqlite](https://www.sqlite.org/download.html) choisissez la section *Precompiled Binaries for Windows* et récupérez sqlite au format 64-bit et les tools.
+
+{% enddetails %}
+
+### on vérifie que ça fonctionne
+
+Dans terminal, tapez la commande `sqlite3`. Vous devriez rentrer dans un interpréteur SQL.
+Tapez ensuite `.exit` pour en sortir.
+
+## plan
+
+1. [modèle de données]({% link cours/web/projets/commentaires/partie-4-base-de-donnees/1-modele.md %}) pour l'envoi
+2. intégration au serveur
+3. routes
+
+## niveaux
+
+
 > TBD
-> ajout serveur de base et pas que un truc sans serveur
+> * ajout serveur postgress (3A) de base et pas que un truc sans serveur
+> * models et config
 > 
 {: .note}
