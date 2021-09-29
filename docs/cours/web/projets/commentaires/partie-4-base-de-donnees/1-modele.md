@@ -191,7 +191,8 @@ Testons ça en modifiant notre fonction `async` de `test.db.js` :
     })
     console.log(message.id)
     
-    console.log(await Message.findAll({}));
+    messages = await Message.findAll({});
+    console.log(messages);
 })();
 ```
 
@@ -199,15 +200,19 @@ On crée un message, on note son id puis on cherche tous les messages de la base
 
 ### read
 
+> <https://sequelize.org/master/manual/model-querying-finders.html#-code-findbypk--code->
+
 On va lire une instance en connaissant sa clé primaire.
 
 ```js
-console.log(await Message.findByPk(1));
+message = await Message.findByPk(1)
 ```
 
 Si l'on donne une clé primaire inexistante, on récupère l'objet `null`.
 
 ### update
+
+> <https://sequelize.org/master/manual/model-instances.html#updating-an-instance>
 
 On met à jour un objet en connaissant sa clé primaire et les attributs à changer.
 
@@ -220,17 +225,131 @@ message.save()
 
 ### delete
 
+> <https://sequelize.org/master/manual/model-instances.html#deleting-an-instance>
 
-## requêtes spéciales
+```js
+message = await Message.findByPk(1);
+message.titre = "un pavé dans la marre"
+
+await message.destroy();
+```
+
+## requêtes
 
 Nous allons aussi avoir besoin de 2 routes spéciales, pour la page **lire.html** :
 
 * une route qui rend une liste de tous les messages
 * une route qui rend une liste de tous les messages pour un pseudo donné.
 
+### tous les messages
+
+On a déjà utilisé cette requête, c'est `Message.findAll({}))`.
+
+### les messages d'un pseudo
+
+Il suffit de donner des contraintes à la requête `findAll` grâce un `where` sqlien :
+
+```js
+messages = await Message.findAll({
+        where: {
+            pseudo: "François"
+        }
+    })
+console.log(messages)
+```
+
+### requêtes possible dans sequelize
+
+Les requêtes possible dans sequelize sont très puissantes. Regardez du côté de la [documentation sur les requêtes basiques](https://sequelize.org/master/manual/model-querying-basics.html), c'est facile à utiliser et puissant.
+
+Si vous êtes en mal de SQL, vous pouvez bien sur aussi utliser les [reqêtes SQL](https://sequelize.org/master/manual/raw-queries.html) standards.
+
 ## base de donnée en dur
 
-Pour ne pas avoir une base de donnée en mémoire (ce qui est bien pour des tests par exemple, mais en prod on aimerait ne pas tout perdre à chaque fois qu'un relance le serveur)
+> <https://sequelize.org/master/manual/getting-started.html#connecting-to-a-database>
 
-> TBD
-{: .note}
+Pour ne pas avoir une base de donnée en mémoire (ce qui est bien pour des tests par exemple, mais en prod on aimerait ne pas tout perdre à chaque fois qu'un relance le serveur).
+
+Si l'on veut utiliser une base de données sqlite en dur on peut alors :
+
+```js
+path = require('path')
+
+const sequelize = new Sequelize({
+  dialect: 'sqlite',
+  storage: path.join(__dirname, 'db.sqlite')
+});
+```
+
+Si vous remplacez la ligne `await sequelize.sync({ force: true });` par `await sequelize.sync();`, la base est juste synchronisée (on ajoute les modèles inexistant) et non remise à plat. Ceci vous permet d'avoir une base qui va grandir au fil du temps.
+
+## fichier
+
+Le fichier *3commentaires/db.test.js"* ressemble à la fin de ces tests à ça :
+
+```js
+const { Sequelize, DataTypes } = require('sequelize');
+// const sequelize = new Sequelize('sqlite::memory:');
+
+path = require('path')
+
+const sequelize = new Sequelize({
+  dialect: 'sqlite',
+  storage: path.join(__dirname, 'db.sqlite')
+});
+
+const Message = sequelize.define('User', {
+    pseudo: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    titre: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    message: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+}, {
+    // Other model options go here
+});
+
+(async () => {
+    // await sequelize.sync({ force: true });
+    await sequelize.sync();
+    
+    // Code here
+    pseudo = "François"
+    titre = "un coup de gueule"
+    corps = "il faut permettre aux étudiants de de faire plus d'informatique !"
+
+    message = await Message.create({
+        pseudo: pseudo,
+        titre: titre,
+        message: corps
+    })
+    console.log(message.id)
+
+    console.log(await Message.findAll({}));
+    console.log(await Message.findByPk(1));
+
+    message = await Message.findByPk(1);
+    message.titre = "un pavé dans la marre"
+
+    message.save()
+
+    console.log(await Message.findByPk(1));
+
+    messages = await Message.findAll({
+        where: {
+            pseudo: "François"
+        }
+    })
+    console.log(messages)
+
+    console.log("------")
+    console.log(messages)
+
+})();
+```
