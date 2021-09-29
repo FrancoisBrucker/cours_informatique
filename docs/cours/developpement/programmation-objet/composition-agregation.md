@@ -151,7 +151,11 @@ Pour que tout se passe comme prévu, il faut donc s'assurer que pour les attribu
 2. on refait un nouvel objet à nous pour s'assurer qu'il ne changera pas
 3. les objets que l'on retourne et qui sont des attributs sont non modifiables (des entiers, réels, chaînes de caractères, tuples, etc)
 
-La 1ère solution est ce qu'on a pur l'instant.
+#### 1ère solution
+
+La 1ère solution est ce qu'on a pour l'instant.
+
+#### 2nde solution
 
 La seconde solution reviendrait à donner un nouveau panier à chaque fois en modifiant la méthode `donne_panier()` :
 
@@ -193,6 +197,22 @@ Ces objets possèdent des valeurs et des méthodes pour y accéder mais que l'on
 Vous avez utilisé des value objects bien souvent en python comme : les  entiers, les réels ou encore les chaines de caractères. Enfin de nombreux objets modifiables en python ont leur contrepartie non modifiable comme les `tuple` qui sont des listes non modifiables ou encore les `frozenset` sont des ensembles non modifiables.
 
 > Une bonne façon de programmer est de n'utiliser par défaut que des objets non modifiables et que si le besoin s'en fait sentir de les rendre modifiables.
+
+#### 3ère solution
+
+Enfin la troisième solution revient à rendre un tuple dans la méthode `montre_panier` :
+
+```python
+class Panier:
+    # ...
+
+    def montre_panier(self):
+      return tuple(self.stock)
+    
+    #...
+```
+
+C'est la solution la plus simple puisque le reste du code reste identique et l'on a juste fait en sorte de sécuriser notre attribut.
 
 ## tests
 
@@ -236,3 +256,76 @@ def test_supprime_dans_panier():
 > * pour l'initialisation, on vérifie juste que notre objet existe. Comme il n'a pas de paramètre, on ne peut pas tester grand chose d'autre
 > * On crée pour chaque test un nouveau objet, pour être sur que les tests n'interfèrent pas les uns avec les autres
 > * Chaque test doit permettre d'utiliser la méthode testée comme elle doit être utilisée dans le code
+
+### projet final
+
+Vous devez avoir 3 fichiers : 
+
+*"panier.py"*
+
+```python
+class Panier:
+    def __init__(self):
+        self.stock = []
+
+    def ajoute(self, fruit):
+        self.stock.append(fruit)
+        
+
+    def montre_panier(self):
+        return tuple(self.stock)
+
+
+    def supprime(self, fruit):
+        self.stock.remove(fruit)
+         
+```
+
+le programme principal *"main.py"*
+
+```python
+from panier import Panier
+
+panier = Panier()
+
+
+panier.ajoute("orange")
+print(panier.montre_panier())
+
+panier.supprime("orange")
+print(panier.montre_panier())
+```
+
+Et les tests:
+
+```python
+from panier import Panier
+
+
+def test_init():
+    panier = Panier()
+    assert panier is not None
+
+
+def test_montre_panier_vide():
+    panier = Panier()
+    assert panier.montre_panier() == tuple()
+
+
+def test_ajoute():
+    panier = Panier()
+    panier.ajoute("pomme")
+    assert panier.montre_panier() == ("pomme",)
+
+
+def test_supprime_dans_panier():
+    panier = Panier()
+    panier.ajoute("pomme")
+    panier.supprime("pomme")
+
+    assert panier.montre_panier() == tuple()
+```
+
+Pour exécutez les tests tapez dans un terminal : `pytest test_panier.py`.
+
+> Si la commande précédente ne fonctionne pas essayez `python -m pytest test_panier.py`, et se cela ne marche pas non plus c'est que vous n'avez pas installé pytest (on l'installe avec la commande `pip install pytest`)
