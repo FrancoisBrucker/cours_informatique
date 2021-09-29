@@ -74,6 +74,11 @@ Pour que l'on puisse faire ces différentes méthodes, il faut que `Panier` puis
 -----------------------
 ```
 
+### composition et agrégation
+
+* Le stock est une **composition** : il est crée avec le panier
+* les fruits sont une **agrégation** : ils sont ajouté par une méthode dans l'objet.
+
 ### code python
 
 Ceci s'implémente aisément en python :
@@ -112,11 +117,6 @@ print(panier.montre_panier())
 panier.supprime("pomme")
 print(panier.montre_panier())
 ```
-
-### composition et agrégation
-
-* Le stock est une **composition** : il est crée avec le panier
-* les fruits sont une **agrégation** : ils sont ajouté par une méthode dans l'objet.
 
 ### attention
 
