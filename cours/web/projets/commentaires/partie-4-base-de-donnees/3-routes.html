@@ -10,13 +10,13 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
 <meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
-<link rel="canonical" href="/cours_informatique/cours/web/projets/commentaires/partie-4-base-de-donnees/2-routes.html" />
-<meta property="og:url" content="/cours_informatique/cours/web/projets/commentaires/partie-4-base-de-donnees/2-routes.html" />
+<link rel="canonical" href="/cours_informatique/cours/web/projets/commentaires/partie-4-base-de-donnees/3-routes.html" />
+<meta property="og:url" content="/cours_informatique/cours/web/projets/commentaires/partie-4-base-de-donnees/3-routes.html" />
 <meta property="og:site_name" content="cours d’informatique" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Projet commentaires : partie 4 / routes" />
 <script type="application/ld+json">
-{"headline":"Projet commentaires : partie 4 / routes","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/web/projets/commentaires/partie-4-base-de-donnees/2-routes.html","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
+{"headline":"Projet commentaires : partie 4 / routes","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/web/projets/commentaires/partie-4-base-de-donnees/3-routes.html","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
@@ -63,10 +63,27 @@
 
   <div class="post-content">
     <blockquote class="chemin">
-  <p><a href="/cours_informatique/cours/web/projets/commentaires/">commentaires</a> / <a href="/cours_informatique/cours/web/projets/commentaires/partie-4-base-de-donnees/">partie 4</a> / <a href="/cours_informatique/cours/web/projets/commentaires/partie-4-base-de-donnees/2-routes.html">modèle</a></p>
+  <p><a href="/cours_informatique/cours/web/projets/commentaires/">commentaires</a> / <a href="/cours_informatique/cours/web/projets/commentaires/partie-4-base-de-donnees/">partie 4</a> / <a href="/cours_informatique/cours/web/projets/commentaires/partie-4-base-de-donnees/3-routes.html">routes</a></p>
 </blockquote>
 
-<p>On incorpore les requêtes sequelize dans une routes dans notre serveur</p>
+<p>On crée les routes permettant d’accéder aux données dans notre serveur.</p>
+
+<h2 id="routes">routes</h2>
+
+<p>On va implémenter toute les routes CRUD. Pour séparer la gestion des données des autres route, on va faire commencer toutes les routes par <code class="language-plaintext highlighter-rouge">/api/</code>.</p>
+
+<p>Pour tester les routes, vous allez installer le plugin <a href="https://github.com/frigus02/RESTer">RESTer</a> sur votre chrome.</p>
+
+<h3 id="create">create</h3>
+
+<p>Une requête POST qui récupère un json permettant de créer une donnée qu’on met en base :</p>
+
+<p>```js
+api.post(/api/create/, (req, res) =&gt; {</p>
+
+<p>})</p>
+
+<h2 id="gestion-des-routes-avec-express">gestion des routes avec express</h2>
 
 <blockquote class="note">
   <p>TBD

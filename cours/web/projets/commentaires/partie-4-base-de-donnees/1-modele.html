@@ -134,7 +134,7 @@
 
 <h2 id="création-de-la-base">création de la base</h2>
 
-<p>Nous n’avons pour l’instant que créer le modèle, il n’existe pas encore dans la base. Comme notre modèle est en mémoire, on va faire en sorte de recréer la base en changeant tou sles modèles que nous avons défini (ici un seul). Ceci se fait avec la ligne :</p>
+<p>Nous n’avons pour l’instant que créer le modèle, il n’existe pas encore dans la base. Comme notre modèle est en mémoire, on va faire en sorte de recréer la base en changeant tous les modèles que nous avons défini (ici un seul). Ceci se fait avec la ligne :</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">await</span> <span class="nx">sequelize</span><span class="p">.</span><span class="nx">sync</span><span class="p">({</span> <span class="na">force</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
 </code></pre></div></div>
@@ -164,7 +164,7 @@
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">Sequelize</span><span class="p">,</span> <span class="nx">DataTypes</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">sequelize</span><span class="dl">'</span><span class="p">);</span>
 <span class="kd">const</span> <span class="nx">sequelize</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Sequelize</span><span class="p">(</span><span class="dl">'</span><span class="s1">sqlite::memory:</span><span class="dl">'</span><span class="p">);</span>
 
-<span class="kd">const</span> <span class="nx">Message</span> <span class="o">=</span> <span class="nx">sequelize</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="dl">'</span><span class="s1">User</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+<span class="kd">const</span> <span class="nx">Message</span> <span class="o">=</span> <span class="nx">sequelize</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="dl">'</span><span class="s1">Message</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
     <span class="na">pseudo</span><span class="p">:</span> <span class="p">{</span>
       <span class="na">type</span><span class="p">:</span> <span class="nx">DataTypes</span><span class="p">.</span><span class="nx">STRING</span><span class="p">,</span>
       <span class="na">allowNull</span><span class="p">:</span> <span class="kc">false</span>
@@ -222,16 +222,16 @@ Executing (default): PRAGMA INDEX_LIST(`Users`)
 
 <p>On veut créer une donnée avec sequelize en ayant le pseudo, le titre et le corps du message. On peut faire comme ça :</p>
 
-<pre><code class="language-sequelize">pseudo = "François"
-titre = "un coup de gueule"
-corps = "il faut permettre aux étudiants de de faire plus d'informatique !"
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">pseudo</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">François</span><span class="dl">"</span>
+<span class="nx">titre</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">un coup de gueule</span><span class="dl">"</span>
+<span class="nx">corps</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">il faut permettre aux étudiants de de faire plus d'informatique !</span><span class="dl">"</span>
 
-const message = await Message.create({
-    pseudo: pseudo,
-    titre: titre,
-    message: corps
-})
-</code></pre>
+<span class="kd">const</span> <span class="nx">message</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">Message</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+    <span class="na">pseudo</span><span class="p">:</span> <span class="nx">pseudo</span><span class="p">,</span>
+    <span class="na">titre</span><span class="p">:</span> <span class="nx">titre</span><span class="p">,</span>
+    <span class="na">message</span><span class="p">:</span> <span class="nx">corps</span>
+<span class="p">})</span>
+</code></pre></div></div>
 
 <p>Le message est poussé en base. Son <code class="language-plaintext highlighter-rouge">id</code> est visible : <code class="language-plaintext highlighter-rouge">console.log(message.id)</code>. Si c’est le premier élément que vous créez, son <code class="language-plaintext highlighter-rouge">id</code> sera de 1, et si vous en créez d’autres, l’<code class="language-plaintext highlighter-rouge">id</code> va augmenter. C’est la clé primaire de notre modèle.</p>
 
@@ -353,16 +353,16 @@ const message = await Message.create({
 <p>Le fichier <em>3commentaires/db.test.js”</em> ressemble à la fin de ces tests à ça :</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">Sequelize</span><span class="p">,</span> <span class="nx">DataTypes</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">sequelize</span><span class="dl">'</span><span class="p">);</span>
-<span class="c1">// const sequelize = new Sequelize('sqlite::memory:');</span>
+<span class="kd">const</span> <span class="nx">sequelize</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Sequelize</span><span class="p">(</span><span class="dl">'</span><span class="s1">sqlite::memory:</span><span class="dl">'</span><span class="p">);</span>
 
-<span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">path</span><span class="dl">'</span><span class="p">)</span>
+<span class="c1">// path = require('path')</span>
 
-<span class="kd">const</span> <span class="nx">sequelize</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Sequelize</span><span class="p">({</span>
-  <span class="na">dialect</span><span class="p">:</span> <span class="dl">'</span><span class="s1">sqlite</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">storage</span><span class="p">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="dl">'</span><span class="s1">db.sqlite</span><span class="dl">'</span><span class="p">)</span>
-<span class="p">});</span>
+<span class="c1">// const sequelize = new Sequelize({</span>
+<span class="c1">//   dialect: 'sqlite',</span>
+<span class="c1">//   storage: path.join(__dirname, 'db.sqlite')</span>
+<span class="c1">// });</span>
 
-<span class="kd">const</span> <span class="nx">Message</span> <span class="o">=</span> <span class="nx">sequelize</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="dl">'</span><span class="s1">User</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+<span class="kd">const</span> <span class="nx">Message</span> <span class="o">=</span> <span class="nx">sequelize</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="dl">'</span><span class="s1">Message</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
     <span class="na">pseudo</span><span class="p">:</span> <span class="p">{</span>
         <span class="na">type</span><span class="p">:</span> <span class="nx">DataTypes</span><span class="p">.</span><span class="nx">STRING</span><span class="p">,</span>
         <span class="na">allowNull</span><span class="p">:</span> <span class="kc">false</span>
