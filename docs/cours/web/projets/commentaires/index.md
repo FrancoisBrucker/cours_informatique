@@ -27,6 +27,7 @@ Ce projet va être séparé en trois parties :
 2. on [envoie les données]({% link cours/web/projets/commentaires/partie-2-requetes-post/index.md %}) vers le serveur
 3. on ajoute une persistance front [avec des cookies]({% link cours/web/projets/commentaires/partie-3-cookies/index.md %})
 4. on ajoute une persistance back données avec une [base de donnée]({% link cours/web/projets/commentaires/partie-4-base-de-donnees/index.md %})
+5. script de build
 
 Chaque partie est organisée en niveaux. Chaque niveau refait la partie en ajoutant à chaque fois des outils de développements/code de plus en plus perfectionnés. Il est recommandé de faire tous les niveaux d'une partie.
 

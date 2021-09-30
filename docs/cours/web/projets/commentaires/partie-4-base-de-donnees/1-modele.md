@@ -76,7 +76,7 @@ On demande qu'un message soit 3 chaînes de caractères non vide. Notez qu'on a 
 
 ## création de la base
 
-Nous n'avons pour l'instant que créer le modèle, il n'existe pas encore dans la base. Comme notre modèle est en mémoire, on va faire en sorte de recréer la base en changeant tou sles modèles que nous avons défini (ici un seul). Ceci se fait avec la ligne :
+Nous n'avons pour l'instant que créer le modèle, il n'existe pas encore dans la base. Comme notre modèle est en mémoire, on va faire en sorte de recréer la base en changeant tous les modèles que nous avons défini (ici un seul). Ceci se fait avec la ligne :
 
 ```js
 await sequelize.sync({ force: true });
@@ -107,7 +107,7 @@ Créez un fichier *"db.test.js"* dans *"commentaires"* et on pourra y mettre le 
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = new Sequelize('sqlite::memory:');
 
-const Message = sequelize.define('User', {
+const Message = sequelize.define('Message', {
     pseudo: {
       type: DataTypes.STRING,
       allowNull: false
@@ -160,7 +160,7 @@ Avant de créer les routes, concentrons nous sur les façons de faire ça en seq
 
 On veut créer une donnée avec sequelize en ayant le pseudo, le titre et le corps du message. On peut faire comme ça :
 
-```sequelize
+```js
 pseudo = "François"
 titre = "un coup de gueule"
 corps = "il faut permettre aux étudiants de de faire plus d'informatique !"
@@ -289,16 +289,16 @@ Le fichier *3commentaires/db.test.js"* ressemble à la fin de ces tests à ça :
 
 ```js
 const { Sequelize, DataTypes } = require('sequelize');
-// const sequelize = new Sequelize('sqlite::memory:');
+const sequelize = new Sequelize('sqlite::memory:');
 
-path = require('path')
+// path = require('path')
 
-const sequelize = new Sequelize({
-  dialect: 'sqlite',
-  storage: path.join(__dirname, 'db.sqlite')
-});
+// const sequelize = new Sequelize({
+//   dialect: 'sqlite',
+//   storage: path.join(__dirname, 'db.sqlite')
+// });
 
-const Message = sequelize.define('User', {
+const Message = sequelize.define('Message', {
     pseudo: {
         type: DataTypes.STRING,
         allowNull: false

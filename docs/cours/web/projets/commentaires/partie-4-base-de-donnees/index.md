@@ -37,13 +37,13 @@ Tapez ensuite `.exit` pour en sortir.
 ## plan
 
 1. [modèle de données]({% link cours/web/projets/commentaires/partie-4-base-de-donnees/1-modele.md %}) pour l'envoi
-2. intégration au serveur
-3. routes
+2. [intégration au serveur]({% link cours/web/projets/commentaires/partie-4-base-de-donnees/2-db-config.md %})
+3. [routes]({% link cours/web/projets/commentaires/partie-4-base-de-donnees/3-routes.md %})
 
 ## niveaux
 
-
 > TBD
+> 
 > * ajout serveur postgress (3A) de base et pas que un truc sans serveur
 > * models et config
 > * passer de sqlite memory à un vrai sqlite
