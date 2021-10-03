@@ -97,7 +97,7 @@
 <p>Nous n’allons avoir besoin que du dossier <em>“dist”</em> qui contient la version <em>compilée</em> de bootstrap.</p>
 
 <blockquote>
-  <p>le javascript est assemblé en fichier utilisable par le front, et le css est le résultat de la compilation du <a href="https://sass-lang.com/">scss</a>).</p>
+  <p>le javascript est assemblé en fichier utilisable par le front, et le css est le résultat de la compilation de fichiers <a href="https://sass-lang.com/">scss</a>).</p>
 </blockquote>
 
 <p>Si l’on regarde le dossier <em>“commentaires/static/bootstrap/dist/css”</em> on trouve tout un tas de fichier qui se ressemblent. Par exemple pour <code class="language-plaintext highlighter-rouge">bootstrap.css</code> :</p>
@@ -107,9 +107,9 @@
   <li><code class="language-plaintext highlighter-rouge">bootstrap.min.css</code></li>
 </ul>
 
-<p>Ces deux fichiers sont presque identiques. Le premier est visible par des humains et le second est le même fichier mais sans les retour à la ligne et les indentations ce qui le rend plus petit : 200ko environ vs 160ko. C’est celui-ci que nous inclurons dans nos pages.</p>
+<p>Ces deux fichiers sont presque identiques. Le premier et le second sont identique aux retours à la ligne et les indentations prêts. Le second est alors plus petit (200ko environ vs 160ko) mais il est beaucoup moins lisible. C’est donc le plus petit que que inclurons dans nos pages (il sera plus vite envoyé au client), l’autre étant là pour référence.</p>
 
-<p>Il se passe la même chose pour <code class="language-plaintext highlighter-rouge">bootstrp.js</code> et <code class="language-plaintext highlighter-rouge">bootstrap.min.js</code> dans le dossier <em>“commentaires/static/bootstrap/dist/js”</em> mais la différence est plus importante : 150ko vs 60ko.</p>
+<p>Il se passe la même chose pour <code class="language-plaintext highlighter-rouge">bootstrap.js</code> et <code class="language-plaintext highlighter-rouge">bootstrap.min.js</code> dans le dossier <em>“commentaires/static/bootstrap/dist/js”</em> mais la différence est plus importante : 150ko vs 60ko.</p>
 
 <h2 id="fichiers">fichiers</h2>
 
@@ -121,9 +121,9 @@
   <li><em>“lire.html”</em> qui va permettre à l’utilisateur de lire les avis déjà donné et de les noter.</li>
 </ul>
 
-<p>On fait une mise en forme avec bootstrap simple, élégante et de bon goût. Une barre de navigation nous permet de revenir à <em>“index.html”</em> et le footer</p>
+<p>On fait une mise en forme avec bootstrap simple, élégante et de bon goût. Une barre de navigation nous permet de revenir à <em>“index.html”</em>.</p>
 
-<h3 id="indexhtml"><em>“index.html”</em></h3>
+<h3 id="indexhtml">index.html</h3>
 
 <p>Commençons par le fichier <em>“index.html”</em> :</p>
 
@@ -193,7 +193,7 @@
 <span class="nt">&lt;/html&gt;</span>
 </code></pre></div></div>
 
-<h3 id="donnerhtml"><em>“donner.html”</em></h3>
+<h3 id="donnerhtml">donner.html</h3>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!doctype html&gt;</span>
 <span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"fr"</span><span class="nt">&gt;</span>
@@ -252,7 +252,7 @@
 <span class="nt">&lt;/html&gt;</span>
 </code></pre></div></div>
 
-<h3 id="lirehtml"><em>“lire.html”</em></h3>
+<h3 id="lirehtml">lire.html</h3>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!doctype html&gt;</span>
 <span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"fr"</span><span class="nt">&gt;</span>

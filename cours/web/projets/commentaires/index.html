@@ -68,7 +68,9 @@
 
 <p>Ce projet vise à munir nos serveur web de persistance de données. Côté front avec la gestion des cookies et côté back avec la mise œuvre d’une base de données.</p>
 
-<p>Le principe est de refaire plusieurs fois ce projet, en ajoutant petit à petit des notions de plus en plus perfectionnées de développement web.</p>
+<h2 id="pré-requis">pré-requis</h2>
+
+<p>Il est recommandé d’avoir fait le niveau 1 <a href="/cours_informatique/cours/web/projets/numerologie/">du projet numérologie</a> pour bien aborder ce projet.</p>
 
 <h2 id="but-du-site">but du site</h2>
 
@@ -77,6 +79,7 @@
 <ul>
   <li>ajouter son commentaire</li>
   <li>consulter tous les commentaires</li>
+  <li>consulter les commentaire d’un pseudo donné</li>
 </ul>
 
 <h2 id="plan">Plan</h2>
@@ -87,8 +90,8 @@
   <li><a href="/cours_informatique/cours/web/projets/commentaires/partie-1-site/">le site sans les données</a></li>
   <li>on <a href="/cours_informatique/cours/web/projets/commentaires/partie-2-requetes-post/">envoie les données</a> vers le serveur</li>
   <li>on ajoute une persistance front <a href="/cours_informatique/cours/web/projets/commentaires/partie-3-cookies/">avec des cookies</a></li>
-  <li>on ajoute une persistance back données avec une <a href="/cours_informatique/cours/web/projets/commentaires/partie-4-base-de-donnees/">base de donnée</a></li>
-  <li>script de build</li>
+  <li>on ajoute une persistance backend avec une <a href="/cours_informatique/cours/web/projets/commentaires/partie-4-base-de-donnees/">base de donnée</a></li>
+  <li><a href="/cours_informatique/cours/web/projets/commentaires/partie-5-structures/">structure</a> du site final</li>
 </ol>
 
 <p>Chaque partie est organisée en niveaux. Chaque niveau refait la partie en ajoutant à chaque fois des outils de développements/code de plus en plus perfectionnés. Il est recommandé de faire tous les niveaux d’une partie.</p>
@@ -97,27 +100,27 @@
 
 <p>Chaque partie est organisée en niveaux. Chaque niveau ajoutant des outils de développements/code de plus en plus perfectionnés. Ces outils seront différents selon la partie.</p>
 
-<h2 id="ressources">ressources</h2>
-
-<ul>
-  <li><a href="https://blog.logrocket.com/the-perfect-architecture-flow-for-your-next-node-js-project/">https://blog.logrocket.com/the-perfect-architecture-flow-for-your-next-node-js-project/</a></li>
-</ul>
-
 <blockquote class="note">
-  <p>TBD</p>
+  <p>TBD :</p>
 
   <ul>
-    <li>separer le serveur un plusieurs fichiers</li>
-    <li>variables d’environnement</li>
-    <li>config différentes en teste et en prod.</li>
-    <li>config différente pour la base. sqlite vs bd</li>
-    <li>require pas relu ?</li>
+    <li>environnements différents</li>
+    <li>scripts d’install et de run</li>
+    <li>utiliser une base de donnée serveur postgressql (3A)</li>
+    <li>test de routes avec <a href="https://github.com/frigus02/RESTer">RESTer</a> (dans la partie tests, 3A)</li>
+    <li>séparer le serveur un plusieurs fichiers</li>
     <li>séparer les routes du serveur</li>
     <li>utiliser le dossier script pour la mise en prod.</li>
     <li>compiler son bootstrap ?</li>
     <li>gestion des routes.</li>
   </ul>
 </blockquote>
+
+<h2 id="ressources">ressources</h2>
+
+<ul>
+  <li><a href="https://blog.logrocket.com/the-perfect-architecture-flow-for-your-next-node-js-project/">https://blog.logrocket.com/the-perfect-architecture-flow-for-your-next-node-js-project/</a></li>
+</ul>
 
   </div>
 

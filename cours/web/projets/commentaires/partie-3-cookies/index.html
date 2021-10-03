@@ -3,9 +3,9 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>Projet commentaires : partie 3 | cours d’informatique</title>
+<title>Projet commentaires : partie 3 : cookies | cours d’informatique</title>
 <meta name="generator" content="Jekyll v4.2.0" />
-<meta property="og:title" content="Projet commentaires : partie 3" />
+<meta property="og:title" content="Projet commentaires : partie 3 : cookies" />
 <meta name="author" content="François Brucker" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
@@ -14,9 +14,9 @@
 <meta property="og:url" content="/cours_informatique/cours/web/projets/commentaires/partie-3-cookies/" />
 <meta property="og:site_name" content="cours d’informatique" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Projet commentaires : partie 3" />
+<meta property="twitter:title" content="Projet commentaires : partie 3 : cookies" />
 <script type="application/ld+json">
-{"headline":"Projet commentaires : partie 3","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/web/projets/commentaires/partie-3-cookies/","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
+{"headline":"Projet commentaires : partie 3 : cookies","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/web/projets/commentaires/partie-3-cookies/","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
@@ -58,7 +58,7 @@
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Projet commentaires : partie 3</h1></p>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></p>
+    <h1 class="post-title">Projet commentaires : partie 3 : cookies</h1></p>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></p>
   </header>
 
   <div class="post-content">
@@ -66,19 +66,19 @@
   <p><a href="/cours_informatique/cours/web/projets/commentaires/">commentaires</a> / <a href="/cours_informatique/cours/web/projets/commentaires/partie-3-cookies/">partie 3</a></p>
 </blockquote>
 
-<p>On ajoute un cookie pour stocker des données côté front, pour l’instant notre pseudo.</p>
+<p>On ajoute un cookie pour stocker des données côté front, ici le pseudo du dernier message envoyé.</p>
 
 <h2 id="cookies">cookies</h2>
 
-<p>Un <a href="https://fr.wikipedia.org/wiki/Cookie_(informatique)">cookie</a> est un objet chez le client. Il a un nom, une durée de vie et contient des informations.</p>
+<p>Un <a href="https://fr.wikipedia.org/wiki/Cookie_(informatique)">cookie</a> est un chaine de caractère stoquées sur le navigateur. Il a un nom, une durée de vie et contient des informations.</p>
 
-<p>Un cookie est associé à un serveur : le serveur donne un cookie au navigateur qui le lui renvoie à chaque requête.</p>
+<p>Un cookie est associé à un serveur : le serveur donne un cookie au navigateur qui le lui renvoie à chaque requête à ce même serveur. Il peut donc n’y avoir qu’un cookie par serveur.</p>
 
-<p>C’est un moyen simple de créer de la persistance de données entre un navigateur et un serveur.</p>
+<p>C’est un moyen simple de créer de la persistance de données entre un navigateur et un serveur donné.</p>
 
 <h2 id="voir-les-cookies">voir les cookies</h2>
 
-<p>Vous pouvez utilisez les <a href="/cours_informatique/cours/web/tuto_outils_dev.html">outils de developpement</a>, onglet application pour voir les différentes manières de stocker de l’information côté front, dont les cookies.</p>
+<p>Vous pouvez utilisez les <a href="/cours_informatique/cours/web/tuto_outils_dev.html">outils de developpement</a>, onglet application, pour voir les différentes manières de stocker de l’information côté front, dont les cookies.</p>
 
 <p>Vous pouvez aussi y accéder directement en javascript par l’objet <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie">document.cookie</a> qui contient le cookie du serveur qui sert la page courante.</p>
 
@@ -86,7 +86,7 @@
 
 <p>Pour avoir accès aux cookies, il faut utiliser <a href="http://expressjs.com/en/resources/middleware/cookie-parser.html">cookie-parser</a>.</p>
 
-<p>On commence par l’installer : :command:<code class="language-plaintext highlighter-rouge">npm install --save cookie-parser</code> puis on l’utilise dans <em>“commentaires/server.js”</em> avec un <em>“middleware”</em> qui ajoute l’attribut <code class="language-plaintext highlighter-rouge">cooke</code> à toutes les requêtes qui passent par lui :</p>
+<p>On commence par l’installer côté back en tapant la commande <code class="language-plaintext highlighter-rouge">npm install --save cookie-parser</code> puis on l’utilise dans <em>“commentaires/server.js”</em> avec un <em>middleware</em> qui ajoute l’attribut <code class="language-plaintext highlighter-rouge">cookie</code> à toutes les requêtes qui passent par lui :</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ...</span>
 <span class="kd">const</span> <span class="nx">cookieParser</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">cookie-parser</span><span class="dl">'</span><span class="p">)</span>
@@ -119,7 +119,7 @@
 
 <p>Si vous avez déjà un cookie, vous devriez le voir dans la console (du serveur).</p>
 
-<p>Pour l’instant, le cookie ne disparait pas. Il va donc conserver indéfiniment le cookie (jusqu’à la fermeture de la fenêtre ou du navigateur souvent). Vous pouvez créer des cookie avec une durée de vie en utilisant l’option <code class="language-plaintext highlighter-rouge">maxAge</code> : <code class="language-plaintext highlighter-rouge">res.cookie("pseudo", req.body.pseudo, {"maxAge": 3000})</code>.</p>
+<p>Pour l’instant, le cookie ne disparait pas. Le navigateur va donc conserver indéfiniment le cookie (souvent indéfiniment signifie jusqu’à la fermeture de la fenêtre ou du navigateur). Vous pouvez également créer des cookies avec une durée de vie en utilisant l’option <code class="language-plaintext highlighter-rouge">maxAge</code>. Par exemple : <code class="language-plaintext highlighter-rouge">res.cookie("pseudo", req.body.pseudo, {"maxAge": 3000})</code>.</p>
 
 <blockquote>
   <p>Il existe de nombreuses options possible. Voir la doc : <a href="https://www.npmjs.com/package/cookie#options-1">https://www.npmjs.com/package/cookie#options-1</a></p>
@@ -136,13 +136,13 @@
 <span class="p">})</span>
 </code></pre></div></div>
 
-<p>Le cookie disparaitra s’il n’y a pas de requête au serveur pendant 3s.</p>
+<p>Le cookie ne disparaitra alors que s’il n’y a pas de requête au serveur pendant 3s et pas juste au bout de 3s.</p>
 
 <h2 id="utiliser-des-cookies">utiliser des cookies</h2>
 
 <p>Une fois que le cookie est mis, il est utilisable côté front. En revanche, ce n’est pas un objet javascript mais une chaine de caractère…</p>
 
-<p>Il faut donc analyser la chaine pour retrouver ses petits. IL existe plusieurs façon de faire, nous avons choisi de suivre <a href="https://howchoo.com/javascript/how-to-manage-cookies-in-javascript">ce tutorial</a> en reprenant leur méthdoe <code class="language-plaintext highlighter-rouge">getCookie</code>.</p>
+<p>Il faut donc analyser la chaine pour retrouver ses petits. Il existe plusieurs façon de faire, nous avons choisi de suivre <a href="https://howchoo.com/javascript/how-to-manage-cookies-in-javascript">ce tutorial</a> en reprenant leur méthode <code class="language-plaintext highlighter-rouge">getCookie</code>.</p>
 
 <p>On va ajouter un bout de code javascript front dans la page <em>“donne.html”</em> qui remplacera la valeur du pseudo s’il est dans le cookie :</p>
 
@@ -158,7 +158,86 @@
         <span class="p">}</span>
         <span class="k">return</span> <span class="dl">""</span><span class="p">;</span>
     <span class="p">}</span>
-    <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#pseudo</span><span class="dl">"</span><span class="p">).</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">getCookie</span><span class="p">(</span><span class="dl">"</span><span class="s2">pseudo</span><span class="dl">"</span><span class="p">)</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#pseudo</span><span class="dl">"</span><span class="p">).</span><span class="nx">value</span> <span class="o">=</span> <span class="nb">decodeURI</span><span class="p">(</span><span class="nx">getCookie</span><span class="p">(</span><span class="dl">"</span><span class="s2">pseudo</span><span class="dl">"</span><span class="p">))</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>Notez le <code class="language-plaintext highlighter-rouge">decodeURI</code> car les cookies ne sont pas directement stockés en unicode.</p>
+</blockquote>
+
+<h2 id="on-jardine">on jardine</h2>
+
+<p>On ne devrait pas avoir une route qui fait plusieurs choses. En l’état actuel, notre notre route et crée un cookie et envoie des données au serveur. On va séparer les deux actions en deux routes distinctes.</p>
+
+<p>Le <code class="language-plaintext highlighter-rouge">fetch</code> de <em>“commentaires/static/donne.html”</em> va faire les deux routes à la suite de façon asynchrone puisqu’elles ne sont pas liées :</p>
+
+<ul>
+  <li>envoyer les données au serveur</li>
+  <li>positionner le cookie.</li>
+</ul>
+
+<h3 id="routes">routes</h3>
+
+<p>commençons par créer nos routes dans <em>“server.js”</em>.</p>
+
+<h4 id="le-cookie">le cookie</h4>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">/cookie/</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">)</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">property</span> <span class="k">in</span> <span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// console.log(`${property}: ${req.query[property]}`);</span>
+
+        <span class="nx">res</span><span class="p">.</span><span class="nx">cookie</span><span class="p">(</span><span class="nx">property</span><span class="p">,</span> <span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">[</span><span class="nx">property</span><span class="p">])</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="dl">"</span><span class="s2">cookie updated</span><span class="dl">"</span><span class="p">)</span>   
+      <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p>On itère sur les valeurs de la <code class="language-plaintext highlighter-rouge">query</code> qu’on ajoute au cookie (vous vous rappelez, on a déjà utilisé une query pendant le projet numérologie).</p>
+
+<h4 id="requête-post">requête post</h4>
+
+<p>La requête <code class="language-plaintext highlighter-rouge">/donne</code>  redevient alors ce qu’elle était initialement :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">/donne</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">)</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span class="mi">302</span><span class="p">,</span> <span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h3 id="html">html</h3>
+
+<p>Le script qui <code class="language-plaintext highlighter-rouge">fetch</code> de <em>“commentaires/static/donne.html”</em> devient alors :</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script&gt;</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#bouton_envoi</span><span class="dl">"</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#form_avis</span><span class="dl">"</span><span class="p">).</span><span class="nx">checkValidity</span><span class="p">())</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">formulaire non envoyé</span><span class="dl">"</span><span class="p">)</span>
+            <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">()</span>
+            <span class="nx">event</span><span class="p">.</span><span class="nx">stopPropagation</span><span class="p">()</span>
+
+            <span class="k">return</span>
+        <span class="p">}</span>
+        <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="dl">"</span><span class="s2">pseudo</span><span class="dl">"</span><span class="p">:</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#pseudo</span><span class="dl">"</span><span class="p">).</span><span class="nx">value</span><span class="p">,</span>
+            <span class="dl">"</span><span class="s2">titre</span><span class="dl">"</span><span class="p">:</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#titre</span><span class="dl">"</span><span class="p">).</span><span class="nx">value</span><span class="p">,</span>
+            <span class="dl">"</span><span class="s2">message</span><span class="dl">"</span><span class="p">:</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#message</span><span class="dl">"</span><span class="p">).</span><span class="nx">value</span>
+        <span class="p">}</span>
+        <span class="nx">fetch</span><span class="p">(</span><span class="dl">"</span><span class="s2">/cookie/?pseudo=</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">data</span><span class="p">.</span><span class="nx">pseudo</span><span class="p">)</span>
+
+        <span class="nx">fetch</span><span class="p">(</span><span class="dl">"</span><span class="s2">/donne</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
+            <span class="dl">'</span><span class="s1">method</span><span class="dl">'</span><span class="p">:</span> <span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span>
+            <span class="dl">'</span><span class="s1">headers</span><span class="dl">'</span><span class="p">:</span> <span class="p">{</span>
+                <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span>
+            <span class="p">},</span>
+            <span class="dl">'</span><span class="s1">body</span><span class="dl">'</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+        <span class="p">})</span>
+
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+        <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">()</span>
+        <span class="nx">location</span><span class="p">.</span><span class="nx">reload</span><span class="p">()</span>
+    <span class="p">})</span>
 <span class="nt">&lt;/script&gt;</span>
 </code></pre></div></div>
 
@@ -168,16 +247,6 @@
   <li><a href="https://developer.mozilla.org/fr/docs/Web/HTTP/Cookies">https://developer.mozilla.org/fr/docs/Web/HTTP/Cookies</a></li>
   <li><a href="https://www.javascripttutorial.net/web-apis/javascript-cookies/">https://www.javascripttutorial.net/web-apis/javascript-cookies/</a></li>
 </ul>
-
-<h2 id="cookie-signés">cookie signés</h2>
-
-<p>Pour passer des informations secrètes (une session par exemple).</p>
-
-<blockquote>
-  <p>TBD
-<a href="https://stackoverflow.com/questions/52285591/signing-cookies-in-express">https://stackoverflow.com/questions/52285591/signing-cookies-in-express</a></p>
-</blockquote>
-
 
   </div>
 

@@ -70,7 +70,7 @@
 
 <h2 id="requêtes-post">requêtes post</h2>
 
-<p>Pour l’instant on a toujours utilisé des requêtes GET pour parler au serveur. Ces requêtes ne nécessitent que l’url. Les requêtes POST quant à elles permettent d’envoyer des données au serveur. C’est le cas pour notre formulaire.</p>
+<p>Pour l’instant on a toujours utilisé des requêtes GET pour parler au serveur. Ces requêtes ne nécessitent que l’url et demandent des informations au serveur. Les requêtes POST quant à elles permettent d’envoyer des données au serveur dans le corps du message. C’est données seront transmises sous la forme de chaînes de caractères et seront presque toujours encodée au format json. C’est le cas pour notre formulaire.</p>
 
 <blockquote>
   <p>les différences entre les requêtes GET et POST sont surtout des conventions. Vous pouvez très bien envoyer des données avec une requête GET mais ça rend le code moins lisible.</p>
@@ -78,9 +78,9 @@
 
 <h2 id="fetch-en-post">fetch en POST</h2>
 
-<p>On a déjà utilisé <a href="https://developer.mozilla.org/fr/docs/Web/API/Fetch_API/Using_Fetch">fetch</a> pour envoyer des requêtes GT au serveur depuis le navigateur. Nous allons faire pareil ici, mais avec une requête POST.</p>
+<p>On a déjà utilisé <a href="https://developer.mozilla.org/fr/docs/Web/API/Fetch_API/Using_Fetch">fetch</a> pour envoyer des requêtes GET au serveur depuis le navigateur. Nous allons faire pareil ici, mais avec une requête POST.</p>
 
-<p>On modifie le script de <em>“commentaires/static/donner.html”</em> pour qu’il envoie les données au serveur en utilisant fetch :</p>
+<p>On modifie le script de <em>“commentaires/static/donner.html”</em> pour qu’il envoie les données au serveur en utilisant <code class="language-plaintext highlighter-rouge">fetch</code> :</p>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script&gt;</span>
     <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#bouton_envoi</span><span class="dl">"</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
@@ -103,19 +103,19 @@
 <span class="nt">&lt;/script&gt;</span>
 </code></pre></div></div>
 
-<p>On a paramètre la requête <code class="language-plaintext highlighter-rouge">fetch</code> grâce au deuxième paramètre, qui est un objet :</p>
+<p>On a configurer la requête <code class="language-plaintext highlighter-rouge">fetch</code> grâce au deuxième paramètre, qui est un objet :</p>
 
 <ul>
-  <li>on spécifie que la requête va être de type post</li>
+  <li>on spécifie que la requête va être de type POST</li>
   <li>on dit qu’on va envoyer du json</li>
-  <li>on envoye du json dans le corps de la requête</li>
+  <li>on envoie du json dans le corps de la requête</li>
 </ul>
 
 <p>Lorsque l’on test la requête on voit (dans la console du navigateur) que le serveur reçoit la requête mais rend un 404. Ceci est normal puisque nous ne gérons pas encore la route côté serveur.</p>
 
 <h2 id="on-fignole">on fignole</h2>
 
-<p>On va ajouter un minimum de contrôle sur le formulaire, histroie de ne pas envoyerde données vide au serveur. On utilise por cela les <a href="https://getbootstrap.com/docs/5.1/forms/validation/">validation de formulaire de bootstrap</a> et un peu de javascript. Ce qui donne le code final suivant de <em>“commentaires/static/donner.html”</em> :</p>
+<p>On va ajouter un minimum de contrôle sur le formulaire, histoire de ne pas envoyer de données vides au serveur. On utilise pour cela les <a href="https://getbootstrap.com/docs/5.1/forms/validation/">validation de formulaire de bootstrap</a> et un peu de javascript. Ce qui donne le code final suivant de <em>“commentaires/static/donner.html”</em> :</p>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!doctype html&gt;</span>
 <span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"fr"</span><span class="nt">&gt;</span>

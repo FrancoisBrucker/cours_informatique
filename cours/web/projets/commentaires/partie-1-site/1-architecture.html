@@ -68,11 +68,11 @@
 
 <h2 id="plan-du-site">plan du site</h2>
 
-<p>Commençons par créer un dossier qui contiendra notre serveur, et nommons le <em>“commentaires”</em>.</p>
+<p>Commençons par créer un dossier qui contiendra notre serveur et nommons le <em>“commentaires”</em>.</p>
 
-<p>Nous allons avoir une partie front et une partie back. Nous laisserons la partie back à la racine de notre projet et placeront nos fichiers front dans un dossier nommé <em>“static”</em>.</p>
+<p>Nous allons avoir une partie front et une partie back. Nous laisserons la partie back à la racine de notre projet et placerons nos fichiers front dans un dossier nommé <em>“static”</em>.</p>
 
-<p>Nous ajouterons petit à petit des dossiers pour garder le tout cohérent. Vous pouvez voir <a href="https://blog.logrocket.com/the-perfect-architecture-flow-for-your-next-node-js-project/">ici</a> ce que va donner un projet complet (nous n’aurons ici pas besoin de tous les dossiers).</p>
+<p>Nous ajouterons petit à petit des dossiers pour garder le tout cohérent. Vous pouvez voir <a href="https://blog.logrocket.com/the-perfect-architecture-flow-for-your-next-node-js-project/">ici</a> ce que peut donner un projet complet (nous n’aurons ici pas besoin de tous les dossiers).</p>
 
 <h3 id="partie-front">partie front</h3>
 
@@ -112,7 +112,7 @@
 </span></code></pre></div></div>
 
 <blockquote>
-  <p>Nous aurons 2 projet <code class="language-plaintext highlighter-rouge">npm</code>: l’un pour gérer les dépendances front (celui que nous venons de créer) et l’un pour gérer les dépendances back.</p>
+  <p>Nous aurons 2 projets <code class="language-plaintext highlighter-rouge">npm</code> : l’un pour gérer les dépendances front (celui que nous venons de créer) et l’un pour gérer les dépendances back. Attention à ne pas se mélanger les pinceaux.</p>
 </blockquote>
 
 <h3 id="partie-back">partie back</h3>
@@ -132,7 +132,7 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
-<p>On ajoute le module express : <code class="language-plaintext highlighter-rouge">npm add --save express</code> et on crée notre serveur dans le fichier <em>“server.js”</em>. Il est juste là pour gérer les fichiers statiques :</p>
+<p>On ajoute le module express : <code class="language-plaintext highlighter-rouge">npm add --save express</code> et on crée notre serveur dans le fichier <em>“server.js”</em>. Il est pour l’instant juste là pour gérer les fichiers statiques :</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">path</span><span class="dl">'</span><span class="p">)</span>
 
@@ -177,7 +177,7 @@
   </span><span class="p">}</span><span class="err">,</span><span class="w">
 </span></code></pre></div></div>
 
-<blockquote>
+<blockquote class="attention">
   <p>En json, il faut être très pointilleux sur l’écriture des objets : chaque attribut est séparé par une <code class="language-plaintext highlighter-rouge">,</code>, <strong>sauf</strong> le dernier. Si vous vous trompez le programme ne se lancera pas.</p>
 </blockquote>
 

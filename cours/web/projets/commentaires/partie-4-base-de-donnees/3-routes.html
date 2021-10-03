@@ -68,27 +68,355 @@
 
 <p>On crée les routes permettant d’accéder aux données dans notre serveur.</p>
 
+<h2 id="import-de-la-base">import de la base</h2>
+
+<p>On ajoute en début de fichier <em>“commentaires/server.js”</em> l’import de notre base : <code class="language-plaintext highlighter-rouge">const db = require("./db")</code>. A partir de là, on pourra accéder à la base par le modèle (<code class="language-plaintext highlighter-rouge">db.models.Message</code>) ou via sequelize (<code class="language-plaintext highlighter-rouge">db.sequelize</code>).</p>
+
 <h2 id="routes">routes</h2>
 
-<p>On va implémenter toute les routes CRUD. Pour séparer la gestion des données des autres route, on va faire commencer toutes les routes par <code class="language-plaintext highlighter-rouge">/api/</code>.</p>
+<p>On va implémenter une partie des routes CRUD, nous n’aurons en effet besoin que des méthodes <strong>C</strong>reate et <strong>R</strong>ead.</p>
 
-<p>Pour tester les routes, vous allez installer le plugin <a href="https://github.com/frigus02/RESTer">RESTer</a> sur votre chrome.</p>
+<p>Pour séparer la gestion des données des autres route, on va faire commencer toutes les routes par <code class="language-plaintext highlighter-rouge">/api/</code>.</p>
 
 <h3 id="create">create</h3>
 
 <p>Une requête POST qui récupère un json permettant de créer une donnée qu’on met en base :</p>
 
-<p>```js
-api.post(/api/create/, (req, res) =&gt; {</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">"</span><span class="s2">/api/create/</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
 
-<p>})</p>
+    <span class="nx">db</span><span class="p">.</span><span class="nx">models</span><span class="p">.</span><span class="nx">Message</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+        <span class="na">pseudo</span><span class="p">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">pseudo</span><span class="p">,</span>
+        <span class="na">titre</span><span class="p">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">titre</span><span class="p">,</span>
+        <span class="na">message</span><span class="p">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">message</span>
+    <span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">message</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span>
+    <span class="p">}).</span><span class="k">catch</span><span class="p">((</span><span class="nx">err</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+    <span class="p">})</span>
+<span class="p">})</span>
+</code></pre></div></div>
 
-<h2 id="gestion-des-routes-avec-express">gestion des routes avec express</h2>
+<p>On a pas utiliser de <code class="language-plaintext highlighter-rouge">await</code> ici. Qu’une requête soit asynchrone côté serveur, c’est très bien.</p>
 
-<blockquote class="note">
-  <p>TBD
-on utilise then et plus await. Usage normal des promise</p>
-</blockquote>
+<p>Cette route va remplacer la route POST <code class="language-plaintext highlighter-rouge">/donne</code> que nous avions précédemment créée et qui ne sert plus.  Du coup, le fetch de <em>“commentaires/static/donne.html”</em> devient :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">"</span><span class="s2">/api/create</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
+    <span class="dl">'</span><span class="s1">method</span><span class="dl">'</span><span class="p">:</span> <span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">'</span><span class="s1">headers</span><span class="dl">'</span><span class="p">:</span> <span class="p">{</span>
+        <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span>
+    <span class="p">},</span>
+    <span class="dl">'</span><span class="s1">body</span><span class="dl">'</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h3 id="read">read</h3>
+
+<p>On va utiliser une route avec des options. Si l’on utilise :</p>
+
+<ul>
+  <li>la route <code class="language-plaintext highlighter-rouge">/api/read/</code> : on rendra une liste de tous les message</li>
+  <li>la route <code class="language-plaintext highlighter-rouge">/api/read/?pseudo="mon pseudo"</code> : on rendra une liste de tous les messages d’un pseudo donné.</li>
+</ul>
+
+<h4 id="lire-tous-les-messages">lire tous les messages</h4>
+
+<p>Ceci va nous permettre de gérer la page <em>“commentaires/static/lire.html”</em>.</p>
+
+<p>Commençons par rendre tous les commentaires avec notre méthode read :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">api/read</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">db</span><span class="p">.</span><span class="nx">models</span><span class="p">.</span><span class="nx">Message</span><span class="p">.</span><span class="nx">findall</span><span class="p">({</span>
+    <span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">message</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span>
+    <span class="p">}).</span><span class="k">catch</span><span class="p">((</span><span class="nx">err</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="dl">"</span><span class="s2">error</span><span class="dl">"</span><span class="p">)</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+    <span class="p">})</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p>Que l’on va utiliser dans <em>“commentaires/static/lire.html”</em> pour lister tous les messages :</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!doctype html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"fr"</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Lire un avis<span class="nt">&lt;/title&gt;</span>
+
+    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"./node_modules/bootstrap/dist/css/bootstrap.min.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"./node_modules/bootstrap//dist/js/bootstrap.bundle.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+
+    <span class="nt">&lt;style&gt;</span>
+        <span class="nc">.main</span> <span class="p">{</span>
+            <span class="nl">margin-top</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+            <span class="nl">margin-bottom</span><span class="p">:</span> <span class="m">50px</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nt">nav</span> <span class="nc">.marge</span> <span class="p">{</span>
+            <span class="nl">margin-right</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+            <span class="nl">margin-left</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="nt">&lt;/style&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+
+<span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;header&gt;</span>
+        <span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"navbar navbar-expand-md navbar-dark fixed-top bg-dark"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"marge navbar-brand"</span> <span class="na">href=</span><span class="s">"./index.html"</span><span class="nt">&gt;</span>Maison<span class="nt">&lt;/a&gt;</span>
+            <span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">"navbar form-inline ms-auto row"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"form-control col"</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">placeholder=</span><span class="s">"Search"</span> <span class="na">aria-label=</span><span class="s">"Search"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"marge col-3 btn btn-outline-success"</span> <span class="na">type=</span><span class="s">"submit"</span><span class="nt">&gt;</span>Search<span class="nt">&lt;/button&gt;</span>
+            <span class="nt">&lt;/form&gt;</span>
+        <span class="nt">&lt;/nav&gt;</span>
+    <span class="nt">&lt;/header&gt;</span>
+
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"main container-fluid"</span> <span class="na">id=</span><span class="s">"main"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div&gt;</span>
+            <span class="nt">&lt;p&gt;</span>Chargement des commentaires...<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="c">&lt;!-- &lt;div class="card"&gt;
+            &lt;div class="card-body"&gt;
+                &lt;h5 class="card-title"&gt;titre du commentaire&lt;/h5&gt;
+                &lt;h6 class="card-subtitle mb-2 text-muted"&gt;pseudo&lt;/h6&gt;
+                &lt;p class="card-text"&gt;Contenu du commentaire.&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt; --&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+
+    <span class="nt">&lt;footer</span> <span class="na">class=</span><span class="s">"footer fixed-bottom text-center bg-dark"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"text-white"</span><span class="nt">&gt;</span>Le site qui permet de donner son avis.<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/footer&gt;</span>
+    <span class="nt">&lt;script&gt;</span>
+        <span class="nx">main</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#main</span><span class="dl">"</span><span class="p">)</span>
+        <span class="nx">fetch</span><span class="p">(</span><span class="dl">"</span><span class="s2">/api/read</span><span class="dl">"</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+            <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="c1">// console.log(data)</span>
+                <span class="k">for</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">message</span> <span class="k">of</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="c1">// console.log(message)</span>
+
+                    <span class="nx">card</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">div</span><span class="dl">"</span><span class="p">)</span>
+                    <span class="nx">card</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">"</span><span class="s2">card</span><span class="dl">"</span><span class="p">)</span>
+                    <span class="nx">cardBody</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">div</span><span class="dl">"</span><span class="p">)</span>
+                    <span class="nx">cardBody</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">"</span><span class="s2">card-body</span><span class="dl">"</span><span class="p">)</span>
+                    <span class="nx">card</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">cardBody</span><span class="p">)</span>
+
+                    <span class="nx">element</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">h5</span><span class="dl">"</span><span class="p">)</span>
+                    <span class="nx">element</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">"</span><span class="s2">card-title</span><span class="dl">"</span><span class="p">)</span>
+                    <span class="nx">element</span><span class="p">.</span><span class="nx">innerText</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="nx">titre</span>
+                    <span class="nx">cardBody</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">element</span><span class="p">)</span>
+
+                    <span class="nx">element</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">h6</span><span class="dl">"</span><span class="p">)</span>
+                    <span class="nx">element</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">"</span><span class="s2">card-subtitle</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">mb-2</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">text-muted</span><span class="dl">"</span><span class="p">)</span>
+                    <span class="nx">element</span><span class="p">.</span><span class="nx">innerText</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="nx">pseudo</span>
+                    <span class="nx">cardBody</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">element</span><span class="p">)</span>
+
+                    <span class="nx">element</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">p</span><span class="dl">"</span><span class="p">)</span>
+                    <span class="nx">element</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">"</span><span class="s2">card-text</span><span class="dl">"</span><span class="p">)</span>
+                    <span class="nx">element</span><span class="p">.</span><span class="nx">innerText</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="nx">message</span>
+                    <span class="nx">cardBody</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">element</span><span class="p">)</span>
+
+
+                    <span class="nx">main</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">card</span><span class="p">)</span>
+                <span class="p">}</span>
+            <span class="p">})</span>
+
+    <span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<h4 id="lire-certains-messages">lire certains messages</h4>
+
+<p>Les query vont nous permettre de particulariser les lectures. Commençons par modifier la requête dans <em>“commentaires/server.js”</em> :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">/api/read/</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="dl">"</span><span class="s2">pseudo</span><span class="dl">"</span> <span class="k">in</span> <span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">db</span><span class="p">.</span><span class="nx">models</span><span class="p">.</span><span class="nx">Message</span><span class="p">.</span><span class="nx">findAll</span><span class="p">({</span>
+            <span class="dl">"</span><span class="s2">where</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="dl">"</span><span class="s2">pseudo</span><span class="dl">"</span><span class="p">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">pseudo</span>
+            <span class="p">}</span>
+        <span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">message</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span>
+        <span class="p">}).</span><span class="k">catch</span><span class="p">((</span><span class="nx">err</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="dl">"</span><span class="s2">error</span><span class="dl">"</span><span class="p">)</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+        <span class="p">})</span>
+    
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">db</span><span class="p">.</span><span class="nx">models</span><span class="p">.</span><span class="nx">Message</span><span class="p">.</span><span class="nx">findAll</span><span class="p">({</span>
+        <span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">message</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span>
+        <span class="p">}).</span><span class="k">catch</span><span class="p">((</span><span class="nx">err</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="dl">"</span><span class="s2">error</span><span class="dl">"</span><span class="p">)</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+        <span class="p">})</span>    
+    <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p>On fait maintenant la différence entre une requête sans paramètre (qui lit renvoie tous les messages) et une requête avec un paramètre (pour l’instant uniquement le pseudo) qui renvoie les message d’un pseudo donné.</p>
+
+<p>Modifions <em>“commentaires/static/lire.html”</em> pour finir cette partie en :</p>
+
+<ul>
+  <li>ajoutant un petit script qui gère les cookie et pré-remplis le champ recherche</li>
+  <li>lie le bouton à la requête</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!doctype html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"fr"</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Lire un avis<span class="nt">&lt;/title&gt;</span>
+
+    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"./node_modules/bootstrap/dist/css/bootstrap.min.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"./node_modules/bootstrap//dist/js/bootstrap.bundle.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+
+    <span class="nt">&lt;style&gt;</span>
+        <span class="nc">.main</span> <span class="p">{</span>
+            <span class="nl">margin-top</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+            <span class="nl">margin-bottom</span><span class="p">:</span> <span class="m">50px</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nt">nav</span> <span class="nc">.marge</span> <span class="p">{</span>
+            <span class="nl">margin-right</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+            <span class="nl">margin-left</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="nt">&lt;/style&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+
+<span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;header&gt;</span>
+        <span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"navbar navbar-expand-md navbar-dark fixed-top bg-dark"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"marge navbar-brand"</span> <span class="na">href=</span><span class="s">"./index.html"</span><span class="nt">&gt;</span>Maison<span class="nt">&lt;/a&gt;</span>
+            <span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">"navbar form-inline ms-auto row"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"pseudo"</span> <span class="na">class=</span><span class="s">"form-control col"</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">placeholder=</span><span class="s">"Search"</span> <span class="na">aria-label=</span><span class="s">"Search"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">"bouton_envoi"</span> <span class="na">class=</span><span class="s">"marge col-3 btn btn-outline-success"</span> <span class="na">type=</span><span class="s">"submit"</span><span class="nt">&gt;</span>Search<span class="nt">&lt;/button&gt;</span>
+            <span class="nt">&lt;/form&gt;</span>
+        <span class="nt">&lt;/nav&gt;</span>
+    <span class="nt">&lt;/header&gt;</span>
+
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"main container-fluid"</span> <span class="na">id=</span><span class="s">"main"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div&gt;</span>
+            <span class="nt">&lt;p&gt;</span>Chargement des commentaires...<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="c">&lt;!-- &lt;div class="card"&gt;
+            &lt;div class="card-body"&gt;
+                &lt;h5 class="card-title"&gt;titre du commentaire&lt;/h5&gt;
+                &lt;h6 class="card-subtitle mb-2 text-muted"&gt;pseudo&lt;/h6&gt;
+                &lt;p class="card-text"&gt;Contenu du commentaire.&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt; --&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+
+    <span class="nt">&lt;footer</span> <span class="na">class=</span><span class="s">"footer fixed-bottom text-center bg-dark"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"text-white"</span><span class="nt">&gt;</span>Le site qui permet de donner son avis.<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/footer&gt;</span>
+    <span class="nt">&lt;script&gt;</span>
+        <span class="nx">main</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#main</span><span class="dl">"</span><span class="p">)</span>
+        <span class="nx">fetch</span><span class="p">(</span><span class="dl">"</span><span class="s2">/api/read</span><span class="dl">"</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+            <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="c1">// console.log(data)</span>
+                <span class="k">for</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">message</span> <span class="k">of</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="c1">// console.log(message)</span>
+
+                    <span class="nx">card</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">div</span><span class="dl">"</span><span class="p">)</span>
+                    <span class="nx">card</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">"</span><span class="s2">card</span><span class="dl">"</span><span class="p">)</span>
+                    <span class="nx">cardBody</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">div</span><span class="dl">"</span><span class="p">)</span>
+                    <span class="nx">cardBody</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">"</span><span class="s2">card-body</span><span class="dl">"</span><span class="p">)</span>
+                    <span class="nx">card</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">cardBody</span><span class="p">)</span>
+
+                    <span class="nx">element</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">h5</span><span class="dl">"</span><span class="p">)</span>
+                    <span class="nx">element</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">"</span><span class="s2">card-title</span><span class="dl">"</span><span class="p">)</span>
+                    <span class="nx">element</span><span class="p">.</span><span class="nx">innerText</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="nx">titre</span>
+                    <span class="nx">cardBody</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">element</span><span class="p">)</span>
+
+                    <span class="nx">element</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">h6</span><span class="dl">"</span><span class="p">)</span>
+                    <span class="nx">element</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">"</span><span class="s2">card-subtitle</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">mb-2</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">text-muted</span><span class="dl">"</span><span class="p">)</span>
+                    <span class="nx">element</span><span class="p">.</span><span class="nx">innerText</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="nx">pseudo</span>
+                    <span class="nx">cardBody</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">element</span><span class="p">)</span>
+
+                    <span class="nx">element</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">p</span><span class="dl">"</span><span class="p">)</span>
+                    <span class="nx">element</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">"</span><span class="s2">card-text</span><span class="dl">"</span><span class="p">)</span>
+                    <span class="nx">element</span><span class="p">.</span><span class="nx">innerText</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="nx">message</span>
+                    <span class="nx">cardBody</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">element</span><span class="p">)</span>
+
+
+                    <span class="nx">main</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">card</span><span class="p">)</span>
+                <span class="p">}</span>
+            <span class="p">})</span>
+    <span class="nt">&lt;/script&gt;</span>
+        <span class="nt">&lt;script&gt;</span>
+            <span class="kd">function</span> <span class="nx">getCookie</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+                <span class="kd">var</span> <span class="nx">cookie</span><span class="p">,</span> <span class="nx">c</span><span class="p">;</span>
+                <span class="nx">cookies</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">'</span><span class="s1">;</span><span class="dl">'</span><span class="p">);</span>
+                <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">cookies</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">c</span> <span class="o">=</span> <span class="nx">cookies</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">split</span><span class="p">(</span><span class="dl">'</span><span class="s1">=</span><span class="dl">'</span><span class="p">);</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="nx">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="k">return</span> <span class="nx">c</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+                <span class="k">return</span> <span class="dl">""</span><span class="p">;</span>
+            <span class="p">}</span>
+            
+            <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#pseudo</span><span class="dl">"</span><span class="p">).</span><span class="nx">value</span> <span class="o">=</span> <span class="nb">decodeURI</span><span class="p">(</span><span class="nx">getCookie</span><span class="p">(</span><span class="dl">"</span><span class="s2">pseudo</span><span class="dl">"</span><span class="p">))</span>
+        <span class="nt">&lt;/script&gt;</span>
+    <span class="nt">&lt;script&gt;</span>
+        <span class="nx">main</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#main</span><span class="dl">"</span><span class="p">)</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#bouton_envoi</span><span class="dl">"</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">pseudo</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#pseudo</span><span class="dl">"</span><span class="p">).</span><span class="nx">value</span>
+            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">pseudo</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">url</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">/api/read/</span><span class="dl">"</span>
+                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">prout</span><span class="dl">"</span><span class="p">)</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nx">url</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">/api/read/?pseudo=</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">pseudo</span>
+            <span class="p">}</span>
+            
+            <span class="nx">fetch</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+            <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="c1">// console.log(data)</span>
+                <span class="nx">main</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span> <span class="dl">""</span><span class="p">;</span>
+                <span class="k">for</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">message</span> <span class="k">of</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="c1">// console.log(message)</span>
+                    
+                    <span class="nx">card</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">div</span><span class="dl">"</span><span class="p">)</span>
+                    <span class="nx">card</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">"</span><span class="s2">card</span><span class="dl">"</span><span class="p">)</span>
+                    <span class="nx">cardBody</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">div</span><span class="dl">"</span><span class="p">)</span>
+                    <span class="nx">cardBody</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">"</span><span class="s2">card-body</span><span class="dl">"</span><span class="p">)</span>
+                    <span class="nx">card</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">cardBody</span><span class="p">)</span>
+
+                    <span class="nx">element</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">h5</span><span class="dl">"</span><span class="p">)</span>
+                    <span class="nx">element</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">"</span><span class="s2">card-title</span><span class="dl">"</span><span class="p">)</span>
+                    <span class="nx">element</span><span class="p">.</span><span class="nx">innerText</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="nx">titre</span>
+                    <span class="nx">cardBody</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">element</span><span class="p">)</span>
+
+                    <span class="nx">element</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">h6</span><span class="dl">"</span><span class="p">)</span>
+                    <span class="nx">element</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">"</span><span class="s2">card-subtitle</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">mb-2</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">text-muted</span><span class="dl">"</span><span class="p">)</span>
+                    <span class="nx">element</span><span class="p">.</span><span class="nx">innerText</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="nx">pseudo</span>
+                    <span class="nx">cardBody</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">element</span><span class="p">)</span>
+
+                    <span class="nx">element</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">p</span><span class="dl">"</span><span class="p">)</span>
+                    <span class="nx">element</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">"</span><span class="s2">card-text</span><span class="dl">"</span><span class="p">)</span>
+                    <span class="nx">element</span><span class="p">.</span><span class="nx">innerText</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="nx">message</span>
+                    <span class="nx">cardBody</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">element</span><span class="p">)</span>
+
+
+                    <span class="nx">main</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">card</span><span class="p">)</span>
+                <span class="p">}</span>
+            <span class="p">})</span>
+            <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">()</span>
+        <span class="p">})</span>
+    <span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
 
   </div>
 

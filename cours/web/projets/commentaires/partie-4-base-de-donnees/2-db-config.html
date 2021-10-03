@@ -82,16 +82,142 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p>Comme les require ne sont lu qu’une seule fois, on est assuré de n’avoir qu’une seule base de donnée, même si le module est importé plusieurs fois.</p>
+<p>Dans un projet node, si l’on importe plusieurs fois le même module, on ne lira le fichier que la prmière fois. La seconde fois, node ne renverra uniquement que le <code class="language-plaintext highlighter-rouge">module.exports</code>. On peut donc exécuter du code, ici faire le lien avec notre base de donnée sans soucis, il ne sera exécuté qu’une fois.</p>
+
+<p>On peut maintenant ajouter l’import dans <em>“commentaires/server.js”</em> :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ...</span>
+
+<span class="nx">db</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">./db</span><span class="dl">'</span><span class="p">)</span>
+
+<span class="c1">// ...</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>Notez que comme c’est un import à nous, le chemin est relatif (<code class="language-plaintext highlighter-rouge">./</code>).</p>
+</blockquote>
 
 <h2 id="modèles">modèles</h2>
 
-<p>La base de donnée c’est bien, mais il manque tous les modèles que nous avons crées.</p>
+<p>La base de données c’est bien, mais il manque tous les modèles que nous avons crées.</p>
 
-<p>Pour cela, l’usage est de créer un dossier <em>“models”</em> où l’on stoque nos modèles. Donc créez un dossier <em>“commentaires/models”</em> et placez-y le fichier du model <em>“message.js”</em> :</p>
+<p>Pour cela, l’usage est de créer un dossier <em>“models”</em> où l’on stocke nos modèles. Donc créons un dossier <em>“commentaires/models”</em> et placez-y le fichier du model <em>“message.js”</em> :</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">modele</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
-    
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">DataTypes</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">sequelize</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">(</span><span class="nx">sequelize</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">sequelize</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="dl">'</span><span class="s1">Message</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+        <span class="na">pseudo</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">type</span><span class="p">:</span> <span class="nx">DataTypes</span><span class="p">.</span><span class="nx">STRING</span><span class="p">,</span>
+            <span class="na">allowNull</span><span class="p">:</span> <span class="kc">false</span>
+        <span class="p">},</span>
+        <span class="na">titre</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">type</span><span class="p">:</span> <span class="nx">DataTypes</span><span class="p">.</span><span class="nx">STRING</span><span class="p">,</span>
+            <span class="na">allowNull</span><span class="p">:</span> <span class="kc">false</span>
+        <span class="p">},</span>
+        <span class="na">message</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">type</span><span class="p">:</span> <span class="nx">DataTypes</span><span class="p">.</span><span class="nx">STRING</span><span class="p">,</span>
+            <span class="na">allowNull</span><span class="p">:</span> <span class="kc">false</span>
+        <span class="p">},</span>
+    <span class="p">},</span> <span class="p">{</span>
+        <span class="c1">// Other model options go here</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>La création du modèle nécessitant la base de données, il faut que l’on connaisse la base lorsque l’on crée le domèle. L’astuce ici est de rendre une fonction. Ce qui nous permettra d’importer notre modèle dans <em>“db.js”</em> en utilisant la base de données crée. De là, le fichier <em>“db.js”</em> :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">Sequelize</span><span class="p">,</span> <span class="nx">DataTypes</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">sequelize</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">sequelize</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Sequelize</span><span class="p">(</span><span class="dl">'</span><span class="s1">sqlite::memory:</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">message</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">./models/message</span><span class="dl">'</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">Message</span> <span class="o">=</span> <span class="nx">message</span><span class="p">(</span><span class="nx">sequelize</span><span class="p">)</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">sequelize</span><span class="p">:</span> <span class="nx">sequelize</span><span class="p">,</span> 
+    <span class="na">models</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">Message</span><span class="p">:</span> <span class="nx">Message</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>C’est technique s’appelle <a href="https://www.freecodecamp.org/news/a-quick-intro-to-dependency-injection-what-it-is-and-when-to-use-it-7578c84fa88f/">injection de dépendances</a> : on donne ses dépendances à l’objet lors de l’exécution et c’est très très puissant pour découpler les dépendances entre objets.</p>
+
+<blockquote>
+  <p>On aurait pu écrire les 2 lignes de l’injection de dépendances en une seule : <code class="language-plaintext highlighter-rouge">const Message = require('./models/message')(sequelize)</code></p>
+</blockquote>
+
+<p>Enfin, on joute une synchronisation de la base après avoir chargé nos modèles. Cette synchronisation n’est obligatoire que si la base ne connait pas le modèle chargé. Pour plus de sureté, on le l’exécuter tout le temps :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">Sequelize</span><span class="p">,</span> <span class="nx">DataTypes</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">sequelize</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">sequelize</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Sequelize</span><span class="p">(</span><span class="dl">'</span><span class="s1">sqlite::memory:</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">message</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">./models/message</span><span class="dl">'</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">Message</span> <span class="o">=</span> <span class="nx">message</span><span class="p">(</span><span class="nx">sequelize</span><span class="p">);</span>
+
+<span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// await sequelize.sync({ force: true });</span>
+    <span class="k">await</span> <span class="nx">sequelize</span><span class="p">.</span><span class="nx">sync</span><span class="p">();</span>
+<span class="p">})()</span>
+
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">sequelize</span><span class="p">:</span> <span class="nx">sequelize</span><span class="p">,</span> 
+    <span class="na">models</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">Message</span><span class="p">:</span> <span class="nx">Message</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>Il faut mettre le <code class="language-plaintext highlighter-rouge">;</code> avant de commencer une instruction par une parenthèse, sinon javascript ne sait pas si c’est la suite de l’inscruction précédente ou une nouvelle instruction.</p>
+</blockquote>
+
+<p>On a utilisé le truc de la fonction <code class="language-plaintext highlighter-rouge">async</code> pour attendre la fin d’une fonction asynchrone. C’est important ici car on <strong>doit</strong> fini la synchronisation de la base avant de finir l’importation.</p>
+
+<p>Vous pouvez tester en remplaçant la fonction <code class="language-plaintext highlighter-rouge">async</code> par  le code suivant :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// await sequelize.sync({ force: true });</span>
+    <span class="k">await</span> <span class="nx">sequelize</span><span class="p">.</span><span class="nx">sync</span><span class="p">();</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">je suis là</span><span class="dl">"</span><span class="p">)</span>
+<span class="p">})()</span>
+</code></pre></div></div>
+
+<blockquote class="attention">
+  <p>Si vous enlevez le mot <code class="language-plaintext highlighter-rouge">await</code>, le texte <code class="language-plaintext highlighter-rouge">"je suis là"</code> sera affiché avant le résultat de la fonction de synchronisation. Si à la place du <code class="language-plaintext highlighter-rouge">console.log</code> on avait tenté d’utiliser la base de données, on aurait eu une erreur.</p>
+</blockquote>
+
+<h2 id="modèle-de-base-de-données">modèle de base de données</h2>
+
+<p>On a donc un module qui sera importé à chaque fois qu’on a besoin d’accéder notre base de données : le fichier <em>“commentaires/db.js”</em>. Ce fichier va inclure tous les modèles de notre base puis faire une synchronisation avec la base. Ceci ne sera fait qu’au premier import, lors des prochains import seule <code class="language-plaintext highlighter-rouge">module.exports</code> sera rendu, le reste du code ne sera même pas exécuté.</p>
+
+<p>Au final, pour la suite de nos développements, on va utiliser une base de donnée sqlite, histoire de ne pas avoir à remettre des données à chaque fois que l’on relance le serveur (ce qui va arriver souvent en phase de développement…). On a alors le fichier <em>“commentaires/db.js”</em> suivant :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">Sequelize</span><span class="p">,</span> <span class="nx">DataTypes</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">sequelize</span><span class="dl">'</span><span class="p">);</span>
+<span class="c1">//const sequelize = new Sequelize('sqlite::memory:');</span>
+
+<span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">path</span><span class="dl">'</span><span class="p">)</span>
+
+<span class="kd">const</span> <span class="nx">sequelize</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Sequelize</span><span class="p">({</span>
+  <span class="na">dialect</span><span class="p">:</span> <span class="dl">'</span><span class="s1">sqlite</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">storage</span><span class="p">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="dl">'</span><span class="s1">db.sqlite</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">});</span>
+
+<span class="kd">const</span> <span class="nx">message</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">./models/message</span><span class="dl">'</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">Message</span> <span class="o">=</span> <span class="nx">message</span><span class="p">(</span><span class="nx">sequelize</span><span class="p">);</span>
+
+<span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// await sequelize.sync({ force: true });</span>
+    <span class="k">await</span> <span class="nx">sequelize</span><span class="p">.</span><span class="nx">sync</span><span class="p">();</span>
+<span class="p">})()</span>
+
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">sequelize</span><span class="p">:</span> <span class="nx">sequelize</span><span class="p">,</span> 
+    <span class="na">models</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">Message</span><span class="p">:</span> <span class="nx">Message</span>
+    <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></div>
 

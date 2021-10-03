@@ -68,13 +68,11 @@
 
 <h2 id="sequelize">sequelize</h2>
 
-<p>La vie est trop courte pour taper du SQL à la main. ON va utiliser <a href="https://sequelize.org/">sequilize</a> qui va nous permettre de gérer tout le côté configuration de base et SQL pour nous.</p>
+<p>La vie est trop courte pour taper du SQL à la main. On va utiliser <a href="https://sequelize.org/">sequelize</a> qui va nous permettre de gérer tout le côté configuration et utilisation de SQL pour nous.</p>
 
-<p>En effet, selon la base, le dialecte SQL sera différent. Si l’on écrit nos requêtes à la main, il faudra toutes les changer lorsque l’on change de base, ce qui n’est pas humainement possible.</p>
+<p>En effet, selon la base, le dialecte SQL sera différent. Si l’on écrit nos requêtes à la main, il faudra toutes les changer lorsque l’on change de base, ce qui n’est pas humainement possible. On va donc écrire nos requête dans le formalisme de sequelize qui va le traduire pour chaque base utilisée.</p>
 
-<p>On va donc écrire nos requête dans le formalisme de sequilize qui va le traduire pour chaque base utilisée.</p>
-
-<p>Commençons par installer la dépendance sequilize dans le projet, côté back. Tapez la commande suivante dans le dossier <em>“commentaires”</em> :</p>
+<p>Commençons par installer la dépendance sequelize dans le projet, côté back. Tapez la commande suivante dans le dossier <em>“commentaires”</em> :</p>
 
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install</span> <span class="nt">--save</span> sequelize
 </code></pre></div></div>
@@ -134,7 +132,7 @@
 
 <h2 id="création-de-la-base">création de la base</h2>
 
-<p>Nous n’avons pour l’instant que créer le modèle, il n’existe pas encore dans la base. Comme notre modèle est en mémoire, on va faire en sorte de recréer la base en changeant tous les modèles que nous avons défini (ici un seul). Ceci se fait avec la ligne :</p>
+<p>Nous n’avons pour l’instant que créé le modèle, il n’existe pas encore dans la base. Comme notre modèle est en mémoire, on va faire en sorte de recréer la base en changeant tous les modèles que nous avons défini (ici un seul). Ceci se fait avec la ligne :</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">await</span> <span class="nx">sequelize</span><span class="p">.</span><span class="nx">sync</span><span class="p">({</span> <span class="na">force</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
 </code></pre></div></div>
@@ -208,9 +206,7 @@ Executing (default): PRAGMA INDEX_LIST(`Users`)
   <li><strong>D</strong>elete : supprimer un message</li>
 </ul>
 
-<blockquote>
-  <p>Nous utiliserons l’id qui est ajouté par défaut à chaque message pour spécifier directement  un message.</p>
-</blockquote>
+<p>Nous utiliserons l’id qui est ajouté par défaut à chaque message pour spécifier directement  un message.</p>
 
 <p>Avant de créer les routes, concentrons nous sur les façons de faire ça en sequelize.</p>
 
@@ -292,7 +288,6 @@ Executing (default): PRAGMA INDEX_LIST(`Users`)
 </blockquote>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">message</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">Message</span><span class="p">.</span><span class="nx">findByPk</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-<span class="nx">message</span><span class="p">.</span><span class="nx">titre</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">un pavé dans la marre</span><span class="dl">"</span>
 
 <span class="k">await</span> <span class="nx">message</span><span class="p">.</span><span class="nx">destroy</span><span class="p">();</span>
 </code></pre></div></div>
@@ -324,9 +319,9 @@ Executing (default): PRAGMA INDEX_LIST(`Users`)
 
 <h3 id="requêtes-possible-dans-sequelize">requêtes possible dans sequelize</h3>
 
-<p>Les requêtes possible dans sequelize sont très puissantes. Regardez du côté de la <a href="https://sequelize.org/master/manual/model-querying-basics.html">documentation sur les requêtes basiques</a>, c’est facile à utiliser et puissant.</p>
+<p>Les requêtes possibles dans sequelize sont très puissantes. Regardez du côté de la <a href="https://sequelize.org/master/manual/model-querying-basics.html">documentation sur les requêtes basiques</a>, c’est en plus (presque) facile à utiliser.</p>
 
-<p>Si vous êtes en mal de SQL, vous pouvez bien sur aussi utliser les <a href="https://sequelize.org/master/manual/raw-queries.html">reqêtes SQL</a> standards.</p>
+<p>Si vous êtes en mal de SQL, vous pouvez bien sur aussi utiliser les <a href="https://sequelize.org/master/manual/raw-queries.html">requêtes SQL</a> standards.</p>
 
 <h2 id="base-de-donnée-en-dur">base de donnée en dur</h2>
 
@@ -336,17 +331,22 @@ Executing (default): PRAGMA INDEX_LIST(`Users`)
 
 <p>Pour ne pas avoir une base de donnée en mémoire (ce qui est bien pour des tests par exemple, mais en prod on aimerait ne pas tout perdre à chaque fois qu’un relance le serveur).</p>
 
-<p>Si l’on veut utiliser une base de données sqlite en dur on peut alors :</p>
+<p>Si l’on veut utiliser une base de données sqlite en dur on peut alors créer le lien sequelize avec la base comme ça :</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">path</span><span class="dl">'</span><span class="p">)</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">Sequelize</span><span class="p">,</span> <span class="nx">DataTypes</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">sequelize</span><span class="dl">'</span><span class="p">);</span>
 
+<span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">path</span><span class="dl">'</span><span class="p">)</span>
 <span class="kd">const</span> <span class="nx">sequelize</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Sequelize</span><span class="p">({</span>
   <span class="na">dialect</span><span class="p">:</span> <span class="dl">'</span><span class="s1">sqlite</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">storage</span><span class="p">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="dl">'</span><span class="s1">db.sqlite</span><span class="dl">'</span><span class="p">)</span>
 <span class="p">});</span>
 </code></pre></div></div>
 
-<p>Si vous remplacez la ligne <code class="language-plaintext highlighter-rouge">await sequelize.sync({ force: true });</code> par <code class="language-plaintext highlighter-rouge">await sequelize.sync();</code>, la base est juste synchronisée (on ajoute les modèles inexistant) et non remise à plat. Ceci vous permet d’avoir une base qui va grandir au fil du temps.</p>
+<p>On vient de créer (si le fichier <em>“db.sqlite”</em> n’existait pas) ou d’utiliser la base de donnée sqlite dans un fichier dans le dossier <em>“commentaires”</em>.</p>
+
+<blockquote class="attention">
+  <p>Si vous utilisez une base de donnée persistante,  remplacez la ligne <code class="language-plaintext highlighter-rouge">await sequelize.sync({ force: true });</code> par <code class="language-plaintext highlighter-rouge">await sequelize.sync();</code>. Comme cela, la base est juste synchronisée (on ajoute les modèles qui ne sont pas encore dans la base) et non remise à plat. Ceci vous permet d’avoir une base qui va grandir au fil du temps.</p>
+</blockquote>
 
 <h2 id="fichier">fichier</h2>
 
