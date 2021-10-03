@@ -8,11 +8,11 @@ author: "François Brucker"
 > [commentaires]({% link cours/web/projets/commentaires/index.md %}) / [partie 2]({% link cours/web/projets/commentaires/partie-2-requetes-post/index.md %}) / [recevoir les données]({% link cours/web/projets/commentaires/partie-2-requetes-post/3-post-recevoir.md %})
 {: .chemin}
 
-On récupère les données POST envoyées au serveur par le front
+On récupère les données POST envoyées au serveur par le front.
 
 ## gestion avec express
 
-> Vous verrez des tutoriaux qui vous font installer `body-parser`, ils sont obsolètes. Depuis express 4 on peut utiliser express pour cela.
+> Vous verrez des tutoriaux qui vous font installer `body-parser`, ils sont obsolètes. Depuis express 4.16, on peut utiliser express pour cela.
 {: .attention}
 
 Comme il faut récupérer le corps de la réquête POST, on va faire passer toutes les requêtes par *middleware* qui va ajouter un attribut `body` contenant le corps de la requête.
@@ -54,7 +54,6 @@ app.use(express.json())
 
 app.post('/donne', (req, res) => {
     console.log(req.body)
-    res.redirect(302, '/')
 })
 
 app.use(function (req, res) {
@@ -71,8 +70,6 @@ app.listen(port, hostname);
 console.log(`Server running at http://${hostname}:${port}/`);
 ```
 
-> la ligne `res.redirect(302, '/')` n'est pas nécessaire mais on a l'habitude de le faire en web, car ça peut éviter les problèmes de double post. C'est le pattern : [post/redirect/get](https://en.wikipedia.org/wiki/Post/Redirect/Get)
-
 ## gestion du formulaire après envoi
 
 Dans le front, pour éviter l'envoie multiple des même données (si l'utilisateur appuie frénétiquement sur le bouton), on va rendre le formulaire non envoyable après un envoi en rechargeant la page. Ceci est conforme au pattern [post/redirect/get](https://en.wikipedia.org/wiki/Post/Redirect/Get), mais côté client.
@@ -85,7 +82,6 @@ Notre script de *"commentaires/static/donner.html"* devient alors :
             if (!document.querySelector("#form_avis").checkValidity()) {
                 console.log("formulaire non envoyé")
                 event.preventDefault()
-                event.stopPropagation()
 
                 return
             }
@@ -110,4 +106,6 @@ Notre script de *"commentaires/static/donner.html"* devient alors :
     </script>
 ```
 
-C'est la ligne `location.reload()` qui recharge la page, et par là efface toutes les données.
+C'est la ligne `location.reload()` qui recharge la page, et par là *efface* toutes les données.
+
+On peut maintenant envoyer des données depuis le front et les recevoir sur le serveur. Une fois la base de donnée configurée, le serveur pourra se *rappeler* de choses faites par le client.

@@ -39,16 +39,16 @@ Si l'on regarde le contenu du package *"commentaires/static/bootstrap"* on trouv
 
 Nous n'allons avoir besoin que du dossier *"dist"* qui contient la version *compilée* de bootstrap.
 
-> le javascript est assemblé en fichier utilisable par le front, et le css est le résultat de la compilation du [scss](https://sass-lang.com/)).
+> le javascript est assemblé en fichier utilisable par le front, et le css est le résultat de la compilation de fichiers [scss](https://sass-lang.com/)).
 
 Si l'on regarde le dossier *"commentaires/static/bootstrap/dist/css"* on trouve tout un tas de fichier qui se ressemblent. Par exemple pour `bootstrap.css` :
 
 * `bootstrap.css`
 * `bootstrap.min.css`
 
-Ces deux fichiers sont presque identiques. Le premier est visible par des humains et le second est le même fichier mais sans les retour à la ligne et les indentations ce qui le rend plus petit : 200ko environ vs 160ko. C'est celui-ci que nous inclurons dans nos pages.
+Ces deux fichiers sont presque identiques. Le premier et le second sont identique aux retours à la ligne et les indentations prêts. Le second est alors plus petit (200ko environ vs 160ko) mais il est beaucoup moins lisible. C'est donc le plus petit que que inclurons dans nos pages (il sera plus vite envoyé au client), l'autre étant là pour référence.
 
-Il se passe la même chose pour `bootstrp.js` et `bootstrap.min.js` dans le dossier *"commentaires/static/bootstrap/dist/js"* mais la différence est plus importante : 150ko vs 60ko.
+Il se passe la même chose pour `bootstrap.js` et `bootstrap.min.js` dans le dossier *"commentaires/static/bootstrap/dist/js"* mais la différence est plus importante : 150ko vs 60ko.
 
 ## fichiers
 
@@ -58,9 +58,9 @@ on va faire trois pages :
 * *"donner.html"* qui va permettre à l'utilisateur de donner son avis
 * *"lire.html"* qui va permettre à l'utilisateur de lire les avis déjà donné et de les noter.
 
-On fait une mise en forme avec bootstrap simple, élégante et de bon goût. Une barre de navigation nous permet de revenir à *"index.html"* et le footer 
+On fait une mise en forme avec bootstrap simple, élégante et de bon goût. Une barre de navigation nous permet de revenir à *"index.html"*.
 
-### *"index.html"*
+### index.html
 
 Commençons par le fichier *"index.html"* :
 
@@ -131,7 +131,7 @@ Commençons par le fichier *"index.html"* :
 </html>
 ```
 
-### *"donner.html"*
+### donner.html
 
 ```html
 <!doctype html>
@@ -191,7 +191,7 @@ Commençons par le fichier *"index.html"* :
 </html>
 ```
 
-### *"lire.html"*
+### lire.html
 
 ```html
 <!doctype html>

@@ -10,13 +10,11 @@ author: "François Brucker"
 
 ## sequelize
 
-La vie est trop courte pour taper du SQL à la main. ON va utiliser [sequilize](https://sequelize.org/) qui va nous permettre de gérer tout le côté configuration de base et SQL pour nous.
+La vie est trop courte pour taper du SQL à la main. On va utiliser [sequelize](https://sequelize.org/) qui va nous permettre de gérer tout le côté configuration et utilisation de SQL pour nous.
 
-En effet, selon la base, le dialecte SQL sera différent. Si l'on écrit nos requêtes à la main, il faudra toutes les changer lorsque l'on change de base, ce qui n'est pas humainement possible.
+En effet, selon la base, le dialecte SQL sera différent. Si l'on écrit nos requêtes à la main, il faudra toutes les changer lorsque l'on change de base, ce qui n'est pas humainement possible. On va donc écrire nos requête dans le formalisme de sequelize qui va le traduire pour chaque base utilisée.
 
-On va donc écrire nos requête dans le formalisme de sequilize qui va le traduire pour chaque base utilisée.
-
-Commençons par installer la dépendance sequilize dans le projet, côté back. Tapez la commande suivante dans le dossier *"commentaires"* :
+Commençons par installer la dépendance sequelize dans le projet, côté back. Tapez la commande suivante dans le dossier *"commentaires"* :
 
 ```shell
 npm install --save sequelize
@@ -76,7 +74,7 @@ On demande qu'un message soit 3 chaînes de caractères non vide. Notez qu'on a 
 
 ## création de la base
 
-Nous n'avons pour l'instant que créer le modèle, il n'existe pas encore dans la base. Comme notre modèle est en mémoire, on va faire en sorte de recréer la base en changeant tous les modèles que nous avons défini (ici un seul). Ceci se fait avec la ligne :
+Nous n'avons pour l'instant que créé le modèle, il n'existe pas encore dans la base. Comme notre modèle est en mémoire, on va faire en sorte de recréer la base en changeant tous les modèles que nous avons défini (ici un seul). Ceci se fait avec la ligne :
 
 ```js
 await sequelize.sync({ force: true });
@@ -150,7 +148,7 @@ Pour l'accès à nos données, on utilise le formalisme [CRUD](https://fr.wikipe
 * **U**pdate : mettre à jour un message
 * **D**elete : supprimer un message
 
-> Nous utiliserons l'id qui est ajouté par défaut à chaque message pour spécifier directement  un message.
+Nous utiliserons l'id qui est ajouté par défaut à chaque message pour spécifier directement  un message.
 
 Avant de créer les routes, concentrons nous sur les façons de faire ça en sequelize.
 
@@ -229,7 +227,6 @@ message.save()
 
 ```js
 message = await Message.findByPk(1);
-message.titre = "un pavé dans la marre"
 
 await message.destroy();
 ```
@@ -260,9 +257,9 @@ console.log(messages)
 
 ### requêtes possible dans sequelize
 
-Les requêtes possible dans sequelize sont très puissantes. Regardez du côté de la [documentation sur les requêtes basiques](https://sequelize.org/master/manual/model-querying-basics.html), c'est facile à utiliser et puissant.
+Les requêtes possibles dans sequelize sont très puissantes. Regardez du côté de la [documentation sur les requêtes basiques](https://sequelize.org/master/manual/model-querying-basics.html), c'est en plus (presque) facile à utiliser.
 
-Si vous êtes en mal de SQL, vous pouvez bien sur aussi utliser les [reqêtes SQL](https://sequelize.org/master/manual/raw-queries.html) standards.
+Si vous êtes en mal de SQL, vous pouvez bien sur aussi utiliser les [requêtes SQL](https://sequelize.org/master/manual/raw-queries.html) standards.
 
 ## base de donnée en dur
 
@@ -270,18 +267,22 @@ Si vous êtes en mal de SQL, vous pouvez bien sur aussi utliser les [reqêtes SQ
 
 Pour ne pas avoir une base de donnée en mémoire (ce qui est bien pour des tests par exemple, mais en prod on aimerait ne pas tout perdre à chaque fois qu'un relance le serveur).
 
-Si l'on veut utiliser une base de données sqlite en dur on peut alors :
+Si l'on veut utiliser une base de données sqlite en dur on peut alors créer le lien sequelize avec la base comme ça :
 
 ```js
-path = require('path')
+const { Sequelize, DataTypes } = require('sequelize');
 
+path = require('path')
 const sequelize = new Sequelize({
   dialect: 'sqlite',
   storage: path.join(__dirname, 'db.sqlite')
 });
 ```
 
-Si vous remplacez la ligne `await sequelize.sync({ force: true });` par `await sequelize.sync();`, la base est juste synchronisée (on ajoute les modèles inexistant) et non remise à plat. Ceci vous permet d'avoir une base qui va grandir au fil du temps.
+On vient de créer (si le fichier *"db.sqlite"* n'existait pas) ou d'utiliser la base de donnée sqlite dans un fichier dans le dossier *"commentaires"*.
+
+> Si vous utilisez une base de donnée persistante,  remplacez la ligne `await sequelize.sync({ force: true });` par `await sequelize.sync();`. Comme cela, la base est juste synchronisée (on ajoute les modèles qui ne sont pas encore dans la base) et non remise à plat. Ceci vous permet d'avoir une base qui va grandir au fil du temps.
+{: .attention}
 
 ## fichier
 

@@ -12,17 +12,19 @@ On va préparer les données à être envoyées au serveur.
 
 ## récupération des données du formulaire
 
-On va commencer par afficher dans la console (du client) les données du formulaires lorsque l'on appuie sur le bouton sur la page *"donner.html"*.
+On va commencer par afficher dans la console (du client) les données du formulaires lorsque l'on appuie sur le bouton sur la page *"commentaires/static/donner.html"*.
 
 ### le bouton
 
-On commence par lier l'appui sur le  bouton. Pour cela on identifie le bouton par un identifiant puis, dans un script javascript en front, on lie une fonction qui sera exécutée lors d'un clic.
+On commence par lier l'appui sur le  bouton à du code. Pour cela on identifie le bouton en lui donnant un `id` puis, dans un script javascript en front, on lie une fonction qui sera exécutée lors d'un clic.
 
 On commence par ajouter un identifiant au bouton :
 
 ```html
 <!-- ... -->
+
   <button type="submit" class="btn btn-primary" id="bouton_envoi">Envoyer</button>
+
 <!-- ... -->
 ```
 
@@ -43,8 +45,8 @@ On peut maintenant cliquer sur le bouton et obtenir `"clic"` dans la console.
 
 Pour récupérer les données, il faut :
 
-1. ajouter des identifiants aux élément html qui vont contenir les données
-2. récupérer les valeurs lors du clic
+1. ajouter des identifiants aux éléments html qui vont contenir les données
+2. récupérer les valeurs du formulaire lors du clic
 3. structurer ces valeurs dans un objet et le convertir en json pour envoi.
 
 #### identifiants
@@ -88,3 +90,5 @@ on a modifié le script :
 ```
 
 > On a utilisé la documentation de [JSON.stringify](https://stackoverflow.com/questions/4810841/pretty-print-json-using-javascript) pour rendre le rendu en texte json de notre objet joli.
+
+Tout est maintenant prêt pour envoyer nos données au serveur.

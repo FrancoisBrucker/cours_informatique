@@ -1,6 +1,6 @@
 ---
 layout: page
-title:  "Projet commentaires : partie 2"
+title:  "Projet commentaires : partie 2 : requêtes POST"
 category: cours
 author: "François Brucker"
 ---
@@ -10,19 +10,8 @@ author: "François Brucker"
 
 On va envoyer les réponses au questionnaire vers le serveur. Pour cela on va utiliser les requêtes de type POST.
 
-> Il est recommandé d'avoir fait [la section 4 de la partie 1]({% link cours/web/projets/numerologie/partie-1-front/niveau-1/4-integration_html_js.md %}) du projet numérologie pour bien aborder cette partie.
-
 ## plan
 
 1. [préparer les données]({% link cours/web/projets/commentaires/partie-2-requetes-post/1-json.md %}) pour l'envoi
 2. [envoyer]({% link cours/web/projets/commentaires/partie-2-requetes-post/2-post-envoi.md %}) des données
 3. [recevoir]({% link cours/web/projets/commentaires/partie-2-requetes-post/3-post-recevoir.md %}) des données
-
-
-
-> TBD 
-> * cors : pas bon sans serveur.
-> * routes post
-> * api et routes
-> *redirect after post
-> gestion des erreurs avec fetch <https://dev.to/anchobies/when-that-s-not-so-fetch-error-handling-with-fetch-4cce>

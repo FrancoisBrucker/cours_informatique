@@ -10,11 +10,11 @@ author: "François Brucker"
 
 ## plan du site
 
-Commençons par créer un dossier qui contiendra notre serveur, et nommons le *"commentaires"*.
+Commençons par créer un dossier qui contiendra notre serveur et nommons le *"commentaires"*.
 
-Nous allons avoir une partie front et une partie back. Nous laisserons la partie back à la racine de notre projet et placeront nos fichiers front dans un dossier nommé *"static"*.
+Nous allons avoir une partie front et une partie back. Nous laisserons la partie back à la racine de notre projet et placerons nos fichiers front dans un dossier nommé *"static"*.
 
-Nous ajouterons petit à petit des dossiers pour garder le tout cohérent. Vous pouvez voir [ici](https://blog.logrocket.com/the-perfect-architecture-flow-for-your-next-node-js-project/) ce que va donner un projet complet (nous n'aurons ici pas besoin de tous les dossiers).
+Nous ajouterons petit à petit des dossiers pour garder le tout cohérent. Vous pouvez voir [ici](https://blog.logrocket.com/the-perfect-architecture-flow-for-your-next-node-js-project/) ce que peut donner un projet complet (nous n'aurons ici pas besoin de tous les dossiers).
 
 ### partie front
 
@@ -55,7 +55,7 @@ Nous allons gérer toutes nos dépendances front en utilisant `npm`. On commence
 }
 ```
 
-> Nous aurons 2 projet `npm`: l'un pour gérer les dépendances front (celui que nous venons de créer) et l'un pour gérer les dépendances back.
+> Nous aurons 2 projets `npm` : l'un pour gérer les dépendances front (celui que nous venons de créer) et l'un pour gérer les dépendances back. Attention à ne pas se mélanger les pinceaux.
 
 ### partie back
 
@@ -75,7 +75,7 @@ Initialisons notre projet avec la commance `npm init` dans le dossier *"commenta
 }
 ```
 
-On ajoute le module express : `npm add --save express` et on crée notre serveur dans le fichier *"server.js"*. Il est juste là pour gérer les fichiers statiques :
+On ajoute le module express : `npm add --save express` et on crée notre serveur dans le fichier *"server.js"*. Il est pour l'instant juste là pour gérer les fichiers statiques :
 
 ```js
 const path = require('path')
@@ -123,6 +123,7 @@ La partie `"scripts"` de *"package.json"* devient alors :
 ```
 
 > En json, il faut être très pointilleux sur l'écriture des objets : chaque attribut est séparé par une `,`, **sauf** le dernier. Si vous vous trompez le programme ne se lancera pas.
+{: .attention}
 
 A partir de maintenant, on exécutera notre serveur avec la commande : `npm start` qui doit rendre, pour l'instant, quelque chose comme ça :
 

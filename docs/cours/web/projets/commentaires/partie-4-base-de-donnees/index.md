@@ -12,6 +12,9 @@ author: "François Brucker"
 
 Comme nous allons utiliser une base de données, on vous demande d'installer [sqlite](https://www.sqlite.org/index.html) sur votre système. C'est une base de données sql qui fonctionne sans serveur et sauve les données sur le disque. Ne l'utilisez en production que pour de *petites* applications ou pour vos tests. 
 
+> Il se peu que si vous utilisez sqlite sous mac, le système vous empêche de l'exécuter. Dans ce cas là, allez dans *préférences > sécurité et confidentialité > général* et choisissez autoriser quand même à côté de la requête sqlite (vous devrez certainement déverrouiller le cadenas pour le faire).
+{: .attention}
+
 ### installation sqlite
 
 {% details sous linux %}
@@ -39,12 +42,3 @@ Tapez ensuite `.exit` pour en sortir.
 1. [modèle de données]({% link cours/web/projets/commentaires/partie-4-base-de-donnees/1-modele.md %}) pour l'envoi
 2. [intégration au serveur]({% link cours/web/projets/commentaires/partie-4-base-de-donnees/2-db-config.md %})
 3. [routes]({% link cours/web/projets/commentaires/partie-4-base-de-donnees/3-routes.md %})
-
-## niveaux
-
-> TBD
-> 
-> * ajout serveur postgress (3A) de base et pas que un truc sans serveur
-> * models et config
-> * passer de sqlite memory à un vrai sqlite
-{: .note}

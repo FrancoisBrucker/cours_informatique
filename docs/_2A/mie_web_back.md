@@ -47,8 +47,7 @@ Chaque semaine est dédiée à un thème particulier :
 3. on ajoute une base de donnée qu'on utilise grâce à [sequilize](https://sequelize.org/).
 4. présentation de vos projets.
 
-> Le cours consistera à suivre les premiers niveaux du projet [numérologie]({% link cours/web/projets/numerologie/index.md %})
-{: .note}
+
 
 ## Note
 
@@ -75,21 +74,24 @@ Le TD consistera **toujours** à reprendre le cours de niveau 2 de la semaine et
 
 ### Semaine 1
 
-1. Lundi 8-10 : cours
-2. Lundi 10-12 : autonomie
-3. Mercredi 8-10 : TD
+Projet [numérologie]({% link cours/web/projets/numerologie/index.md %}), [partie 1]({% link cours/web/projets/numerologie/partie-1-front/index.md %})
+
+1. Lundi 8-10 : cours (niveau 1)
+2. Lundi 10-12 : autonomie (faites le niveau 2)
+3. Mercredi 8-10 : TD (votre site)
 
 ### Semaine 2
 
-> prérequis : vous avez fini le TD de la semaine 1 [on vérifiera]
+Projet [numérologie]({% link cours/web/projets/numerologie/index.md %}), [partie 2]({% link cours/web/projets/numerologie/partie-2-serveur/index.md %})
 
 1. Lundi 8-10 : cours
-2. Lundi 10-12 : TD
+2. Lundi 10-12 : TD (refaite le cours avec votre projet)
 3. Mercredi 8-10 : autonomie : on finalise le TD
 
 ### Semaine 3
 
-> prérequis : vous avez fini le TD de la semaine 2 [on vérifiera]
+Projet [commentaires]({% link cours/web/projets/commentaires/index.md %})
+
 
 1. Lundi 8-10 : autonomie : on finalise le TD
 2. Lundi 10-12 : cours
@@ -99,8 +101,8 @@ Le TD consistera **toujours** à reprendre le cours de niveau 2 de la semaine et
 
 > prérequis : vous avez fini votre projet [vous le présenterez]
 
-1. Lundi 8-10 : autonomie : on fait le cours/tutoriel et on l'implémente dans son projet
-2. Lundi 10-12 : autonomie : on fait le cours/tutoriel et on l'implémente dans son projet
+1. Lundi 8-10 : autonomie (finalise votre projet)
+2. Lundi 10-12 : autonomie (finalise votre projet)
 3. Mercredi 8-10 : présentation projets
 
 ## Pour aller plus loin

@@ -12,15 +12,15 @@ Envoyer des données au serveur depuis le navigateur.
 
 ## requêtes post
 
-Pour l'instant on a toujours utilisé des requêtes GET pour parler au serveur. Ces requêtes ne nécessitent que l'url. Les requêtes POST quant à elles permettent d'envoyer des données au serveur. C'est le cas pour notre formulaire.
+Pour l'instant on a toujours utilisé des requêtes GET pour parler au serveur. Ces requêtes ne nécessitent que l'url et demandent des informations au serveur. Les requêtes POST quant à elles permettent d'envoyer des données au serveur dans le corps du message. C'est données seront transmises sous la forme de chaînes de caractères et seront presque toujours encodée au format json. C'est le cas pour notre formulaire.
 
 > les différences entre les requêtes GET et POST sont surtout des conventions. Vous pouvez très bien envoyer des données avec une requête GET mais ça rend le code moins lisible.
 
 ## fetch en POST
 
-On a déjà utilisé [fetch](https://developer.mozilla.org/fr/docs/Web/API/Fetch_API/Using_Fetch) pour envoyer des requêtes GT au serveur depuis le navigateur. Nous allons faire pareil ici, mais avec une requête POST.
+On a déjà utilisé [fetch](https://developer.mozilla.org/fr/docs/Web/API/Fetch_API/Using_Fetch) pour envoyer des requêtes GET au serveur depuis le navigateur. Nous allons faire pareil ici, mais avec une requête POST.
 
-On modifie le script de *"commentaires/static/donner.html"* pour qu'il envoie les données au serveur en utilisant fetch :
+On modifie le script de *"commentaires/static/donner.html"* pour qu'il envoie les données au serveur en utilisant `fetch` :
 
 ```html
 <script>
@@ -44,17 +44,17 @@ On modifie le script de *"commentaires/static/donner.html"* pour qu'il envoie le
 </script>
 ```
 
-On a paramètre la requête `fetch` grâce au deuxième paramètre, qui est un objet :
+On a configurer la requête `fetch` grâce au deuxième paramètre, qui est un objet :
 
-* on spécifie que la requête va être de type post
+* on spécifie que la requête va être de type POST
 * on dit qu'on va envoyer du json
-* on envoye du json dans le corps de la requête
+* on envoie du json dans le corps de la requête
 
 Lorsque l'on test la requête on voit (dans la console du navigateur) que le serveur reçoit la requête mais rend un 404. Ceci est normal puisque nous ne gérons pas encore la route côté serveur.
 
 ## on fignole
 
-On va ajouter un minimum de contrôle sur le formulaire, histroie de ne pas envoyerde données vide au serveur. On utilise por cela les [validation de formulaire de bootstrap](https://getbootstrap.com/docs/5.1/forms/validation/) et un peu de javascript. Ce qui donne le code final suivant de *"commentaires/static/donner.html"* :
+On va ajouter un minimum de contrôle sur le formulaire, histoire de ne pas envoyer de données vides au serveur. On utilise pour cela les [validation de formulaire de bootstrap](https://getbootstrap.com/docs/5.1/forms/validation/) et un peu de javascript. Ce qui donne le code final suivant de *"commentaires/static/donner.html"* :
 
 ```html
 <!doctype html>
