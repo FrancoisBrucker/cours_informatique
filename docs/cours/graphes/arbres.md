@@ -283,7 +283,7 @@ Avec un peu d'imagination considérez que c'est le graphe de construction d'une 
 > * montrez que la réciproque n'est pas vraie
 {: .a-faire}
 
-#### un algorithme
+#### un algorithme {#algo-prim}
 
 Ce problème a l'air dur, mais il possède un algorithme (assez) simple pour le résoudre. L'algorithme suivant est l'algorithme de Prim (1957) :
 
@@ -293,7 +293,7 @@ Entrée :
     * une valuation f qui associe un réel à toute arête de G
 Initialisation :
     * cout_entree(x) = +∞ pour tout sommet x
-    * predecesseur(x) = x
+    * predecesseur(x) = x pour tout sommet x
     * V' = {}, E' = {}
 Algorithme :
     * on choisit un sommet r quelconque
@@ -301,8 +301,8 @@ Algorithme :
     * ajoute r à V'    
     * tant que V' n'est pas V:
         * pour tous les voisins x de r qui ne sont pas dans V':
-            * si cout_entree(x) >= cout_entree(r) + f(rx):
-                cout_entree(x) = cout_entree(r) + f(rx)
+            * si cout_entree(x) >= f(rx):
+                cout_entree(x) = f(rx)
                 predecesseur(x) = r
         * soit x le sommet de V qui n'est pas dans V' minimisant cout_entree(x)
         * r = x

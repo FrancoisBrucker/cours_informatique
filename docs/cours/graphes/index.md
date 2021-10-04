@@ -37,5 +37,14 @@ Un cas particulier d'intérêt : l'arbre.
 
 1. [l'arbre]({% link cours/graphes/arbres.md %})
 2. [arbres binaires de recherche]({% link cours/graphes/arbre-de-recherche.md %})
-3. combien d'arbre ? Encodage prüfer et application à un arbre aléatoire (!= différent de la structure).
+3. [chemins et arborescences]({% link cours/graphes/chemins.md %})
 
+> TBD
+> combien d'arbre ? Encodage prüfer et application à un arbre aléatoire (!= différent de la structure).
+{: .note}
+
+### troisième partie
+
+> TBD
+> flots
+{: .note}
