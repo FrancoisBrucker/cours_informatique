@@ -34,6 +34,8 @@ La séance d'autonomie sur [les arbres de recherche]({% link cours/graphes/arbre
 
 ### ST : chemin de poids min
 
+Le [sujet de TD]({% link cours/graphes/chemins.md %}) qui nous fera cheminer dans les graphes.
+
 ### C, M :  flots
 
 Cours sur les flots
