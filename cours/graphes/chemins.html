@@ -85,7 +85,7 @@
 
 <h2 id="dijkstra">Dijkstra</h2>
 
-<p>L’<a href="https://fr.wikipedia.org/wiki/Algorithme_de_Dijkstra">algorithme de Dijkstra</a> permet à partir d’un graphe orienté valué de trouver un chemin de longieur minimum entre deux sommets $d$ (départ) et $a$ (arrivée).</p>
+<p>L’<a href="https://fr.wikipedia.org/wiki/Algorithme_de_Dijkstra">algorithme de Dijkstra</a> permet à partir d’un graphe orienté valué de trouver un chemin de longueur minimum entre deux sommets $d$ (départ) et $a$ (arrivée).</p>
 
 <p>Il ressemble beaucoup à l’<a href="/cours_informatique/cours/graphes/arbres.html#algo-prim">algorithme de Prim</a> que l’on a vu précédemment.</p>
 
@@ -196,7 +196,7 @@ Montrez que les problèmes qu’ils résolvent sont différents et en déduire q
   <p>Montrer que si l’on pouvait résoudre le problème d’un chemin le plus long dans un graphe, on pourrait résoudre le problème du chemin hamiltonien.</p>
 </blockquote>
 
-<p>Ce problème est <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_NP-complet">NP-complet</a>, c’est à dire qu’il fait parti des problème algorithmique les plus dur à résoudre (et que le résoudre facilement permettrait de résoudre facilement tous les problème algorithmique qu’on peut se poser).</p>
+<p>Ce problème est <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_NP-complet">NP-complet</a>, c’est à dire qu’il fait parti des problèmes algorithmiques les plus durs à résoudre (et que le résoudre facilement permettrait de résoudre facilement tous les problèmes algorithmiques qu’on peut se poser).</p>
 
 <blockquote>
   <p>Notez comment une petite différence — remplacer sommet (hamiltonien) par arête (eulérien) — rend un problème soit très simple soit très compliqué à résoudre.</p>
@@ -204,10 +204,10 @@ Montrez que les problèmes qu’ils résolvent sont différents et en déduire q
 
 <h3 id="graphes-particuliers">graphes particuliers</h3>
 
-<p>Il existe tout de même 2 classes de graphes particulières qui admettent des solutions facile pour le problème du chemin élémentaire le plus long :</p>
+<p>Il existe tout de même 2 classes de graphes particulières qui admettent des solutions faciles pour le problème du chemin élémentaire le plus long :</p>
 
 <ul>
-  <li>les <a href="https://fr.wikipedia.org/wiki/Graphe_orient%C3%A9_acyclique">graphes orienté sans circuits</a></li>
+  <li>les <a href="https://fr.wikipedia.org/wiki/Graphe_orient%C3%A9_acyclique">graphes orientés sans circuits</a></li>
   <li>les <a href="https://fr.wikipedia.org/wiki/Tournoi_(th%C3%A9orie_des_graphes)">tournois</a></li>
 </ul>
 
@@ -228,7 +228,7 @@ Montrez que les problèmes qu’ils résolvent sont différents et en déduire q
   </ol>
 </blockquote>
 
-<p>On utilisera souvent ce tri pour résoudre des problème d’ordonnancement (on le verra tout à l’heure dans un cas d’importance certaine).</p>
+<p>On utilisera souvent ce tri pour résoudre des problèmes d’ordonnancement (on le verra tout à l’heure dans un cas d’importance certaine).</p>
 
 <blockquote class="a-faire">
   <p>Utiliser le tri pour trouver un chemin élémentaire de longueur maximum dans un DAG.</p>
@@ -262,7 +262,7 @@ Montrez que les problèmes qu’ils résolvent sont différents et en déduire q
   <p>Pourquoi ne doit-il pas y avoir de cycles dans un graphe de dépendance ?</p>
 </blockquote>
 
-<p>Vous résolvez des problèmes d’ordonnancements tous les jours comme par exemple comment s’habiller le matin (voir graphe ci-après)</p>
+<p>Vous résolvez des problèmes d’ordonnancement tous les jours comme par exemple comment s’habiller le matin (voir graphe ci-après)</p>
 
 <p><img src="/cours_informatique/assets/cours/graphes/chemin_habillage.png" alt="habillage" style="margin: auto;display: block;" /></p>
 
@@ -302,6 +302,12 @@ Montrez que les problèmes qu’ils résolvent sont différents et en déduire q
   <p>Proposez une implémentation de l’algorithme $A^*$ pour le parcours dans une salle d’un petit robot (un étudiant lambda un jeudi matin par exemple).</p>
 </blockquote>
 
+<p>On peut aussi montrer que si l’algorithme $A^*$ a une heuristique qui ne surestime pas la distance finale, il va bien trouver un chemin de poids minimum.</p>
+
+<blockquote class="a-faire">
+  <p>Donner un exemple qui montre que si l’algorithme $A^*$ a une heuristique qui surestime le coût du chemin réel il se peut qu’il ne rende pas le bon chemin.</p>
+</blockquote>
+
 <h3 id="grand-graphes">grand graphes</h3>
 
 <p>C’est la technique utilisée par google maps. Pour le graphe de google maps, il est impossible de faire un algorithme de Dijkstra à chaque requête, cela prendrait bien trop de temps !</p>
@@ -322,8 +328,8 @@ Montrez que les problèmes qu’ils résolvent sont différents et en déduire q
 
 <ol>
   <li>google choisi un hub commun H1 à A et B et crée 2 routes, une allant de A à H1 et l’autre allant de H1 à B</li>
-  <li>on récurse pour les chemins créées en cherchant un hub commun H2 à A et H1 et un hub commun H2’ à H1 et B et ainsi de suite jusqu’à arriver à des chemins <em>“courts”</em>.</li>
-  <li>jusqu’à arriver à des chemin courts où l’on peut faire un dijkstra entre les deux sommets rapidement.</li>
+  <li>on récurse pour les chemins créés en cherchant un hub commun H2 à A et H1 et un hub commun H2’ à H1 et B et ainsi de suite jusqu’à arriver à des chemins <em>“courts”</em>.</li>
+  <li>jusqu’à arriver à des chemins courts où l’on peut faire un dijkstra entre les deux sommets rapidement.</li>
 </ol>
 
 <p>Le temps de calcul en est très réduit puisque les hubs sont calculés en amont de la requête.</p>

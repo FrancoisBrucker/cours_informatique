@@ -259,6 +259,8 @@ Retour :
 
 <h3 id="graphe-inconnu-ou-changeant">graphe inconnu ou changeant</h3>
 
+<h4 id="exemple-sur-la-grille">exemple sur la grille</h4>
+
 <ul>
   <li>On peut prendre comme graphe la grille 2D carré de pas 1m par exemple</li>
   <li>s’il y a des murs on ne mets pas d’arêtes</li>
@@ -266,6 +268,10 @@ Retour :
 </ul>
 
 <p>On peut même se déplacer à chaque itération et se rapprocher normalement du but petit à petit.</p>
+
+<h4 id="attention-à-lheuristique-utilisée">attention à l’heuristique utilisée</h4>
+
+<p>Pour montrer qu’il peut se tromper, on donne une estimation de coût 0 à un chemin qui n’est pas de longueur minimale et $+\infty$ à sous les autres.</p>
 
 <h3 id="grand-graphes">grand graphes</h3>
 

@@ -69,19 +69,65 @@
   </header>
 
   <div class="post-content">
-    <p>Présentation du mécanisme d’héritage.</p>
+    <p>Présentation du mécanisme d’héritage qui permettant de factoriser du code entre classes.</p>
 
 <h2 id="principe-de-lhéritage">principe de l’héritage</h2>
 
-<p>principe.</p>
+<p>Dans un programme, les classes sont organisées hiérarchiquement, la classe <em>racine</em> étant appelé <em>object</em>.</p>
 
-<p>factorisation de code : mieux de factoriser les les fonctionnalités. Surout que ça concerve l’implémentation.</p>
+<p><img src="/cours_informatique/assets/cours/developpement/programmation-objet/classes_heritage.png" alt="classes héritage" /></p>
 
-<p>comportement par défaut (<strong>str</strong>, est un exemple)</p>
+<p>Dans la figure précédente :</p>
 
-<p>dans les bibliothèques : ils donnent une classe t nous on la particuliarise (GUI)</p>
+<ul>
+  <li>la classe <strong>object</strong> est la <em>racine</em></li>
+  <li>la classe <strong>1</strong> est la <em>classe mère</em> de la classe <strong>2</strong></li>
+  <li>la classe <strong>2</strong> est une <em>classe fille</em> de la classe <strong>1</strong></li>
+</ul>
 
-<h3 id="exercice-1">Exercice 1</h3>
+<p>La désignation UML de l’héritage est une</p>
+
+<p>L’héritage permet d’utiliser les attributs et méthodes créées dans les classes mères de façon simple :</p>
+
+<ol>
+  <li>soit en cherchant dans la hiérarchie des classes l’attribut ou l’objet appelé depuis une classe fille</li>
+  <li>soit en appelant directement un attribut ou un objet de la classe mère.</li>
+</ol>
+
+<h3 id="chercher-dans-la-hiérarchie">chercher dans la hiérarchie</h3>
+
+<p>Supposons que j’ai un objet de la classe
+objet de classe 3 qui appelle méthode 1</p>
+
+<h3 id="appeler-directement">appeler directement</h3>
+
+<p>méthode 1 de classe 1 qui appelle méthode 1 de object</p>
+
+<h3 id="connaitre-la-hiérarchie">connaitre la hiérarchie</h3>
+
+<p><strong>mro</strong></p>
+
+<p>mais pas les attribut. DOnc attentoin à ne pas écraser des attributs des classes mères.</p>
+
+<p>(en python __var n’est pas passé à la classe fille. Mas son utilisation est rare.)</p>
+<h3 id="quand-utiliser-lhéritage">quand utiliser l’héritage</h3>
+
+<p>vs composition et agrégation</p>
+
+<p>particuliariser une casse générale : dans les bibliothèques : ils donnent une classe t nous on la particularise (GUI)</p>
+
+<ul>
+  <li>code en commun</li>
+  <li>dans une bibliothèque</li>
+</ul>
+
+<h3 id="héritage-multiple">héritage multiple</h3>
+
+<p>Règle du diamant en python mais, sans une très bonne raison, <strong>il ne faut pas l’utiliser</strong> dans nos propre programme, car ça le rend trop confus.</p>
+
+<p>Certains langages, comme le java ou par exemple, interdisent carrément l’héritage multiple.</p>
+
+<h2 id="exercice-1">Exercice 1</h2>
 
 <p>L’idée est juste de présenter avec quelque chose de simple et facile à se représenter la notion d’héritage. On donnera l’UML des classes dans tous les cas et le code seulement s’il est lié à l’héritage.</p>
 
@@ -113,6 +159,11 @@
 <p>L’UML complet donne donc :</p>
 
 <p><img src="img/polygone_uml_entier.png" alt="polygone_uml_entier" /></p>
+
+<blockquote>
+  <p>TBD
+ajouter appelle à <strong>str</strong> comme recherche pure d’une classe dans la hiérarchie</p>
+</blockquote>
 
 <h3 id="exercice-2">Exercice 2</h3>
 
