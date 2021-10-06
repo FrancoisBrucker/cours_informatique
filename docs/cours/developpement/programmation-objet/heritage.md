@@ -22,42 +22,65 @@ Dans la figure précédente :
 * la classe **1** est la *classe mère* de la classe **2**
 * la classe **2** est une *classe fille* de la classe **1**
 
-La désignation UML de l'héritage est une 
+La figure montre également la désignation UML de l'héritage : une flèche avec un triangle vide.
+
+### utilisation de l'héritage
 
 L'héritage permet d'utiliser les attributs et méthodes créées dans les classes mères de façon simple :
 
 1. soit en cherchant dans la hiérarchie des classes l'attribut ou l'objet appelé depuis une classe fille
 2. soit en appelant directement un attribut ou un objet de la classe mère.
 
-### chercher dans la hiérarchie
+#### chercher dans la hiérarchie
 
-Supposons que j'ai un objet de la classe
-objet de classe 3 qui appelle méthode 1
+Supposons que j'ai un objet de la "classe 2" `o` qui veut appeler la méthode 1 : `o.methode1()`
 
-### appeler directement
+1. on va chercher `methode1` dans l'espace de nom de `o` : il n'y est pas.
+2. on va alors chercher dans sa classe, `classe2` : elle ne définit pas `méthode1`
+3. on cherche alors dans la classe mère de classe 2, `classe1` : `méthode1` est définie, on utilise son code.
+
+> si l'on arrive jusqu'à la classe `object` et qu'elle ne contient pas le nom recherché une erreur est lancée.
+
+#### appeler directement
+
+Supposons que dans la définition de `méthode1` de la classe `2'` on particulariser la méthode `méthode1` de la `classe1`. On appelle alors la méthode `méthode1` de la classe 1 dans la définition de la `méthode1` de la classe `2'`.
+
+>si l'on ne retrouve pas la méthode dans la classe mère, on remonte la hiérarchie. De là tenter d'utiliser la méthode `méthode1`  de la classe `1'` en définissant la  méthode `méthode1`  de la classe `2''` va en fait exécuter la méthode  méthode `méthode1`  de la classe `object`
 
 méthode 1 de classe 1 qui appelle méthode 1 de object
 
-
 ### connaitre la hiérarchie
 
+En python, si l'on veut connaitre l'ordre dans lequel les classes vont être examinée lors de la remontée de la hiérarchie, on peut utiliser la méthode `mro()` des classes. Cette méthode regarde l'attribut `__mro__`.
 
-__mro__
+Par exemple, dans un interpréteur :
 
-mais pas les attribut. DOnc attentoin à ne pas écraser des attributs des classes mères.
+```python
+>>> str.mro()
+[<class 'str'>, <class 'object'>]
+>>> str.__mro__
+(<class 'str'>, <class 'object'>)
+>>> 
+```
 
-(en python __var n'est pas passé à la classe fille. Mas son utilisation est rare.)
+L'ordre dans lequel est examinée les classe pour les chaines de caractères est donc : d'abord la classe `str` puis la classe `object`
+
+> La classe object est toujours le dernier élément de la liste
+
 ### quand utiliser l'héritage
 
-vs composition et agrégation
+La composition et l'agrégation permettent de factoriser des fonctionnalités alors que l'héritage factorise du code. On va donc toujours favoriser la composition à l'héritage si c'est possible.
 
-particuliariser une casse générale : dans les bibliothèques : ils donnent une classe t nous on la particularise (GUI)
+Il y a cependant des cas où l'héritage est très utile :
 
+* lorsque l'on veut spécifier une classe (un cas particulier)
+* lors de l'utilisation de bibliothèques
 
-- code en commun
-- dans une bibliothèque
+La règle est que lorsque l'héritage doit re-écrire toutes les méthodes de sa classe mère pour qu'il n'y ait pas de conflit, alors il faut changer d'approche. Une classe et sa classe mère doivent partager beaucoup de méthodes (ou que les méthodes soient des cas particuliers)
 
 ### héritage multiple
+
+Python autorise l'[héritage multiple](https://docs.python.org/fr/3/tutorial/classes.html#multiple-inheritance)
 
 Règle du diamant en python mais, sans une très bonne raison, **il ne faut pas l'utiliser** dans nos propre programme, car ça le rend trop confus.
 
@@ -100,6 +123,8 @@ L'UML complet donne donc :
 
 > TBD
 > ajouter appelle à __str__ comme recherche pure d'une classe dans la hiérarchie
+> ajouter cercle inscrit. en paramètre
+
 
 ### Exercice 2
 
