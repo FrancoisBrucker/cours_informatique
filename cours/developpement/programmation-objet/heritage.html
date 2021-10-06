@@ -85,7 +85,9 @@
   <li>la classe <strong>2</strong> est une <em>classe fille</em> de la classe <strong>1</strong></li>
 </ul>
 
-<p>La désignation UML de l’héritage est une</p>
+<p>La figure montre également la désignation UML de l’héritage : une flèche avec un triangle vide.</p>
+
+<h3 id="utilisation-de-lhéritage">utilisation de l’héritage</h3>
 
 <p>L’héritage permet d’utiliser les attributs et méthodes créées dans les classes mères de façon simple :</p>
 
@@ -94,34 +96,65 @@
   <li>soit en appelant directement un attribut ou un objet de la classe mère.</li>
 </ol>
 
-<h3 id="chercher-dans-la-hiérarchie">chercher dans la hiérarchie</h3>
+<h4 id="chercher-dans-la-hiérarchie">chercher dans la hiérarchie</h4>
 
-<p>Supposons que j’ai un objet de la classe
-objet de classe 3 qui appelle méthode 1</p>
+<p>Supposons que j’ai un objet de la “classe 2” <code class="language-plaintext highlighter-rouge">o</code> qui veut appeler la méthode 1 : <code class="language-plaintext highlighter-rouge">o.methode1()</code></p>
 
-<h3 id="appeler-directement">appeler directement</h3>
+<ol>
+  <li>on va chercher <code class="language-plaintext highlighter-rouge">methode1</code> dans l’espace de nom de <code class="language-plaintext highlighter-rouge">o</code> : il n’y est pas.</li>
+  <li>on va alors chercher dans sa classe, <code class="language-plaintext highlighter-rouge">classe2</code> : elle ne définit pas <code class="language-plaintext highlighter-rouge">méthode1</code></li>
+  <li>on cherche alors dans la classe mère de classe 2, <code class="language-plaintext highlighter-rouge">classe1</code> : <code class="language-plaintext highlighter-rouge">méthode1</code> est définie, on utilise son code.</li>
+</ol>
+
+<blockquote>
+  <p>si l’on arrive jusqu’à la classe <code class="language-plaintext highlighter-rouge">object</code> et qu’elle ne contient pas le nom recherché une erreur est lancée.</p>
+</blockquote>
+
+<h4 id="appeler-directement">appeler directement</h4>
+
+<p>Supposons que dans la définition de <code class="language-plaintext highlighter-rouge">méthode1</code> de la classe <code class="language-plaintext highlighter-rouge">2'</code> on particulariser la méthode <code class="language-plaintext highlighter-rouge">méthode1</code> de la <code class="language-plaintext highlighter-rouge">classe1</code>. On appelle alors la méthode <code class="language-plaintext highlighter-rouge">méthode1</code> de la classe 1 dans la définition de la <code class="language-plaintext highlighter-rouge">méthode1</code> de la classe <code class="language-plaintext highlighter-rouge">2'</code>.</p>
+
+<blockquote>
+  <p>si l’on ne retrouve pas la méthode dans la classe mère, on remonte la hiérarchie. De là tenter d’utiliser la méthode <code class="language-plaintext highlighter-rouge">méthode1</code>  de la classe <code class="language-plaintext highlighter-rouge">1'</code> en définissant la  méthode <code class="language-plaintext highlighter-rouge">méthode1</code>  de la classe <code class="language-plaintext highlighter-rouge">2''</code> va en fait exécuter la méthode  méthode <code class="language-plaintext highlighter-rouge">méthode1</code>  de la classe <code class="language-plaintext highlighter-rouge">object</code></p>
+</blockquote>
 
 <p>méthode 1 de classe 1 qui appelle méthode 1 de object</p>
 
 <h3 id="connaitre-la-hiérarchie">connaitre la hiérarchie</h3>
 
-<p><strong>mro</strong></p>
+<p>En python, si l’on veut connaitre l’ordre dans lequel les classes vont être examinée lors de la remontée de la hiérarchie, on peut utiliser la méthode <code class="language-plaintext highlighter-rouge">mro()</code> des classes. Cette méthode regarde l’attribut <code class="language-plaintext highlighter-rouge">__mro__</code>.</p>
 
-<p>mais pas les attribut. DOnc attentoin à ne pas écraser des attributs des classes mères.</p>
+<p>Par exemple, dans un interpréteur :</p>
 
-<p>(en python __var n’est pas passé à la classe fille. Mas son utilisation est rare.)</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">str</span><span class="p">.</span><span class="n">mro</span><span class="p">()</span>
+<span class="p">[</span><span class="o">&lt;</span><span class="k">class</span> <span class="err">'</span><span class="nc">str</span><span class="s">'&gt;, &lt;class '</span><span class="nb">object</span><span class="s">'&gt;]
+&gt;&gt;&gt; str.__mro__
+(&lt;class '</span><span class="nb">str</span><span class="s">'&gt;, &lt;class '</span><span class="nb">object</span><span class="s">'&gt;)
+&gt;&gt;&gt; 
+</span></code></pre></div></div>
+
+<p>L’ordre dans lequel est examinée les classe pour les chaines de caractères est donc : d’abord la classe <code class="language-plaintext highlighter-rouge">str</code> puis la classe <code class="language-plaintext highlighter-rouge">object</code></p>
+
+<blockquote>
+  <p>La classe object est toujours le dernier élément de la liste</p>
+</blockquote>
+
 <h3 id="quand-utiliser-lhéritage">quand utiliser l’héritage</h3>
 
-<p>vs composition et agrégation</p>
+<p>La composition et l’agrégation permettent de factoriser des fonctionnalités alors que l’héritage factorise du code. On va donc toujours favoriser la composition à l’héritage si c’est possible.</p>
 
-<p>particuliariser une casse générale : dans les bibliothèques : ils donnent une classe t nous on la particularise (GUI)</p>
+<p>Il y a cependant des cas où l’héritage est très utile :</p>
 
 <ul>
-  <li>code en commun</li>
-  <li>dans une bibliothèque</li>
+  <li>lorsque l’on veut spécifier une classe (un cas particulier)</li>
+  <li>lors de l’utilisation de bibliothèques</li>
 </ul>
 
+<p>La règle est que lorsque l’héritage doit re-écrire toutes les méthodes de sa classe mère pour qu’il n’y ait pas de conflit, alors il faut changer d’approche. Une classe et sa classe mère doivent partager beaucoup de méthodes (ou que les méthodes soient des cas particuliers)</p>
+
 <h3 id="héritage-multiple">héritage multiple</h3>
+
+<p>Python autorise l’<a href="https://docs.python.org/fr/3/tutorial/classes.html#multiple-inheritance">héritage multiple</a></p>
 
 <p>Règle du diamant en python mais, sans une très bonne raison, <strong>il ne faut pas l’utiliser</strong> dans nos propre programme, car ça le rend trop confus.</p>
 
@@ -162,7 +195,8 @@ objet de classe 3 qui appelle méthode 1</p>
 
 <blockquote>
   <p>TBD
-ajouter appelle à <strong>str</strong> comme recherche pure d’une classe dans la hiérarchie</p>
+ajouter appelle à <strong>str</strong> comme recherche pure d’une classe dans la hiérarchie
+ajouter cercle inscrit. en paramètre</p>
 </blockquote>
 
 <h3 id="exercice-2">Exercice 2</h3>
