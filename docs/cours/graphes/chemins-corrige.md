@@ -20,13 +20,13 @@ Chemins entre deux sommets.
 La seule différence entre l'algorithme de Prim et et l'algorithme de Dijkstra est l'évaluation du coût d'entrée :
 
 * dans l'algorithme de Prim il est égal à la valuation de l'arête rx
-* dans l'algorithme de Diskstra il vaut à l'addition de cout_d'entrée(r) plus la valuation de l'arête rx.
+* dans l'algorithme de Diskstra il vaut l'addition de cout_entree(r) plus la valuation de l'arête rx.
 
-Cette différence s'explique parce que l'arbre de poids minium est la somme des valuations des arêtes qui le constitue alors que pour un chemin, avant d'aller en x, il faut déjà aller en r (dont le cout est cout_entree(x) ) puis de r à x (dont le cout est f(rx)).
+Cette différence s'explique parce que le poids d'un arbre est la somme des valuations des arêtes qui le constitue alors que pour un chemin, avant d'aller en x, il faut déjà aller en r (dont le coût est cout_entree(x) ) puis de r à x (dont le coût est f(rx)).
 
 ### test
 
-Les différentes étapes de l'algorithme sont représenté dans les graphes ci-dessous.
+Les différentes étapes de l'algorithme sont représentées dans les graphes ci-dessous.
 
 * La figure se lit de gauche à droite et de haut en bas.
 * $V'$ est en vert
@@ -37,13 +37,13 @@ Les différentes étapes de l'algorithme sont représenté dans les graphes ci-d
 
 ### preuve
 
-On montre par récurrence que le chemin de x à r en suivant inverse des prédécesseurs de r jusqu'à arriver à d est de longueur minimale et de coût cout_entrée(r).
+On montre par récurrence que le chemin de x à r en remontant les prédécesseurs de r jusqu'à arriver à d est de longueur minimale et de coût cout_entree(r).
 
 Au départ `r = d`, la propriété est donc vraie. On la suppose vrai jusqu'à l'étape $i$. A l'étape $i+1$, on a choisi `r` qui minimise le coût d'entrée parmi tous les éléments de `V` qui ne sont pas encore dans `V'`. Comme tous les chemins alternatifs entre `d` et `r` commencent en `d`, il existe une arête de ce chemin dont le départ  (disons $u$) est dans `V'` et l'arrivée (disons $v$) n'y est pas. Prenons la première arête $uv$ pour laquelle ça arrive.
 
-Par hypothèse de récurrence, `cout_entree(u)` est le cout minimum d'un chemin entre `d` et $u$ et `cout_entree(v)` est donc plus grand que `cout_dentree(u) + f(uv)` (on a examiné ce cas lorsque l'on a fait rentrer $u$ dans `V'`) et de `cout_entree(r)` (car c'est le min).
+Par hypothèse de récurrence, `cout_entree(u)` est le cout minimum d'un chemin entre `d` et $u$ et `cout_entree(v)` est donc plus grand que `cout_entree(u) + f(uv)` (on a examiné ce cas lorsque l'on a fait rentrer $u$ dans `V'`) et de `cout_entree(r)` (car c'est le min).
 
-De là, le coût du chemin alternatif est plus grand également que `cout_entree(r)` **car toues les valuations sont positives** : notre hypothèse est vérifiée.
+De là, le coût du chemin alternatif est plus grand également que `cout_entree(r)` **car toutes les valuations sont positives** : notre hypothèse est vérifiée.
 
 ### complexité
 
@@ -55,13 +55,13 @@ La complexité totale est alors en $\mathcal{O}(\vert E\vert + (\vert V \vert)^2
 
 On voit qu'elle dépend entièrement de la prise du minimum de `cout_entree`. En optimisant cette opération, on peut drastiquement diminuer la complexité de l'algorithme
 
-Si l'on utilise un tas pour prendre le min, on doit au pire mettre à jour le tas pour chaque arête. Comme il va y a voir au maximum `V` éléments dans ce tas, la complexité de mise à jour est de $\mathcal{O}(\log_2(\vert V \vert))$, donc le coût total des les mise à jour sera de $\mathcal{O}(\vert E \vert \log_2(\vert V \vert))$.
+Si l'on utilise un tas pour prendre le min, on doit au pire mettre à jour le tas pour chaque arête. Comme il va y a voir au maximum `V` éléments dans ce tas, la complexité de mise à jour est de $\mathcal{O}(\log_2(\vert V \vert))$, donc le coût total des mises à jour sera de $\mathcal{O}(\vert E \vert \log_2(\vert V \vert))$.
 
-Enfin, comme on prend $\vert V \vert$ fois le minimum du tas, la complexité de trouver tous les `r` est de $\mathcal{O}(\vert V \vert \log_2(\vert V \vert))$. La complexité de Dijkstra avec un tas est donc de : $\mathcal{O}((\vert A \vert + \vert V \vert)\log_2(\vert V \vert))$.
+Enfin, comme on prend $\vert V \vert$ fois le minimum du tas, la complexité de trouver tous les `r` est de $\mathcal{O}(\vert V \vert \log_2(\vert V \vert))$. La complexité de Dijkstra avec un tas est donc de : $\mathcal{O}((\vert E \vert + \vert V \vert)\log_2(\vert V \vert))$.
 
-Ceci est mieux de prendre le minium si le graphe ne contient pas énormément d'arêtes : $(\vert A \vert + \vert S \vert) \log_2(\vert V \vert) \leq \vert E\vert + (\vert V \vert)^2$, ce qui donne asymptotiquement $\vert E \vert \leq \frac{\vert V \vert^2}{\log_2(\vert V \vert)}$.
+Ceci est mieux de prendre le minimum si le graphe ne contient pas énormément d'arêtes : $(\vert E \vert + \vert V \vert) \log_2(\vert V \vert) \leq \vert E\vert + (\vert V \vert)^2$, ce qui donne asymptotiquement $\vert E \vert \leq \frac{\vert V \vert^2}{\log_2(\vert V \vert)}$.
 
-La [page wikipédia](https://fr.wikipedia.org/wiki/Algorithme_de_Dijkstra#Complexit%C3%A9_de_l'algorithme) précise qu'en utilisant un tas amélioré,dit tas de fibonnaci, on arrive même à faire descendre la complexité à $\mathcal{O}(\vert A \vert + \vert V \vert\log_2(\vert V \vert))$, ce qui est toujours mieux que la prise de minimum naïve.
+La [page wikipédia](https://fr.wikipedia.org/wiki/Algorithme_de_Dijkstra#Complexit%C3%A9_de_l'algorithme) précise qu'en utilisant un tas amélioré, dit tas de fibonnaci, on arrive même à faire descendre la complexité à $\mathcal{O}(\vert E \vert + \vert V \vert\log_2(\vert V \vert))$, ce qui est toujours mieux que la prise de minimum naïve.
 
 ## arborescence
 
@@ -100,7 +100,7 @@ Le plus long chemin élémentaire possible dans un graphe passe par tous les som
 
 1 :
 
-Soit $c_0\dots c_k$ un cycle ($c_k = c_0$), quelque soit l'ordre total entre les sommet du graphe, il existe $i$ tel que $c_{i+1} < c_i$ ce qui est impossible si un tel ordre était topologique.
+Soit $c_0\dots c_k$ un cycle ($c_k = c_0$), quelque soit l'ordre total entre les sommets du graphe, il existe $i$ tel que $c_{i+1} < c_i$ ce qui est impossible si un tel ordre était topologique.
 
 2 :
 
@@ -128,7 +128,7 @@ algorithme sur tri topologique :
 ```text
 Entrée :
     * un graphe orienté G = (V, E)
-    * un tri v0 < ... < Vn des éléments de V
+    * un tri V0 < ... < Vn des éléments de V
 Initialisation :
     * longueur(x) = 0 pour tout sommet x
     * predecesseur(x) = x pour tout sommet x
@@ -153,13 +153,13 @@ La complexité est de $\mathcal{O}(\vert E \vert + \vert V \vert)$, ce qui est o
 
 Pour prouver l'algorithme, on montre par récurrence sur $\vert V \vert$ que `longueur(x)` est la longueur d'un plus long chemin finissant en `x`.
 
-Si $\vert V \vert = 1$, c'est Ok. On suppose la propriété vraie à $\vert V \vert = n$. Pour $\vert V \vert = n +1$ on remarque que `longueur(Vi)` est la même pour le graphe $G$ et pour le graphe $G$ auquel on a enlevé $v_{n+1}$ pour tout $i \neq n+1$. Comme tous les prédécesseur de $v_{n+1}$ seront vu pour l'algorithme et que `longueur(Vi)` ne change pas après l'étape $i$ on en conclut que la récurrence est vraie à $\vert V \vert = n +1$.
+Si $\vert V \vert = 1$, c'est Ok. On suppose la propriété vraie à $\vert V \vert = n$. Pour $\vert V \vert = n +1$ on remarque que `longueur(Vi)` est la même pour le graphe $G$ et pour le graphe $G$ auquel on a enlevé $v_{n+1}$ pour tout $i \neq n+1$. Comme tous les prédécesseurs de $v_{n+1}$ seront vus pour l'algorithme et que `longueur(Vi)` ne change pas après l'étape $i$ on en conclut que la récurrence est vraie à $\vert V \vert = n +1$.
 
 #### tournoi
 
 ##### cycles
 
-Si le tournoi n'est pas transitif il existe $x$, $y$ et $z$  tel que $xy$ et $yz$ mais pas $xz$ : $xyzx$ est un cycle.
+Si le tournoi n'est pas transitif il existe $x$, $y$ et $z$  tels que $xy$ et $yz$ mais pas $xz$ : $xyzx$ est un cycle.
 
 Réciproquement, s'il existe un cycle, prenons en un de longueur minimum : $c_0c_1c_2 \dots c_k$. Comme le cycle est de longueur minimum, $c_0c_2$ n'est pas une arête : le tournoi n'est pas transitif.
 
@@ -174,7 +174,7 @@ Il existe alors :
 * un chemin hamiltonien $c_0\dots c_k$ dans la restriction de $T$ à $N^+(x)$
 * un chemin hamiltonien $c'_0\dots c'_l$ dans la restriction de $T$ à $N^-(x)$
 
-On en conclut que le chemin $c'0 \dots c'_l x c_0 \dots c_k$ est hamiltonien dans $T$, ce qui termine la preuve par récurrence.
+On en conclut que le chemin $c'_0 \dots c'_l x c_0 \dots c_k$ est hamiltonien dans $T$, ce qui termine la preuve par récurrence.
 
 ### ordonnancement
 
@@ -206,11 +206,11 @@ Pour montrer qu'il peut se tromper, on donne une estimation de coût 0 à un che
 
 ### grand graphes
 
-* Marseille à Dijon et Paris dans ses hub. Le er pour aller de Marseille à Strabourg et le second pour aller de Marseille à Brest
-* Strasbourg à également Dijon et Paris dans ses hubs le 1er pour aller à marseille (c'est symétrique) et le second pour aller à Brest.
+* Marseille a Dijon et Paris dans ses hub. Le premier pour aller de Marseille à Strabourg et le second pour aller de Marseille à Brest
+* Strasbourg à également Dijon et Paris dans ses hubs le premier pour aller à Marseille (c'est symétrique) et le second pour aller à Brest.
 
 ![chemin hubs]({{ "/assets/cours/graphes/chemin_hubs.png" | relative_url }}){:style="margin: auto;display: block;"}
 
 Google maps peut alors vous proposer deux grands chemins pour aller de Marseille à Strasbourg, soit en passant par Dijon soit par Paris (bon il ne le fait pas car un chemin est bien plus long que l'autre, mais c'est l'idée).
 
-Les hubs, en plus d'être efficace en temps de calculs sont aussi une chouette solution pour proposer des itinéraires différents pour aller entre 2 villes.
+Les hubs, en plus d'être efficaces en temps de calculs sont aussi une chouette solution pour proposer des itinéraires différents pour aller entre 2 villes.

@@ -22,11 +22,11 @@ Un chemin d'un graphe $G=(V,E)$ (orienté ou non) est une suite de sommets $s_0 
 * $s_is_{i+1}$ est une arête
 * $s_is_{i+1} \neq s_js_{j+1}$ si $i\neq j$
 
-Si le graphe possède possède de plus une valuation qui associe un réel à toute arête, la **longueur d'un chemin** est la somme des valuations de ses arêtes.
+Si le graphe possède de plus une valuation qui associe un réel à toute arête, la **longueur d'un chemin** est la somme des valuations de ses arêtes.
 
 ## Dijkstra
 
-L'[algorithme de Dijkstra](https://fr.wikipedia.org/wiki/Algorithme_de_Dijkstra) permet à partir d'un graphe orienté valué de trouver un chemin de longueur minimum entre deux sommets $d$ (départ) et $a$ (arrivée).
+L'[algorithme de Dijkstra](https://fr.wikipedia.org/wiki/Algorithme_de_Dijkstra) permet, à partir d'un graphe orienté valué, de trouver un chemin de longueur minimum entre deux sommets $d$ (départ) et $a$ (arrivée).
 
 Il ressemble beaucoup à l'[algorithme de Prim]({% link cours/graphes/arbres.md %}#algo-prim) que l'on a vu précédemment.
 
@@ -86,7 +86,7 @@ Retour :
 
 On peut continuer l'algorithme de Diskstra après que $a$ ait été rentré dans $V'$, jusqu'à ce que l'on ait plus que des éléments de coût infini à faire rentrer dans $V'$ ou que $V'$ soit égal à $V$.
 
-> Montrez que pour tous les sommets $x$ qui ne peuvent entrer dans $V'$, il n'existe pas de chemin entre $d$ et $x$ dans $G$
+> Montrez que pour tous les sommets $x$ qui ne peuvent pas entrer dans $V'$, il n'existe pas de chemin entre $d$ et $x$ dans $G$
 {: .a-faire}
 
 ### preuve {#preuve-dijkstra-arborescence}
@@ -106,7 +106,7 @@ On peut continuer l'algorithme de Diskstra après que $a$ ait été rentré dans
 
 ## chemin le plus long
 
-L'algorithme de Dijkstra permet de répondre à la question : *quelle est la longueur des chemins les plus courts partant d'un sommet*. Mais quand est-il du pendant : *quelle est la longueur des chemins les plus longs partant d'un sommet* ?
+L'algorithme de Dijkstra permet de répondre à la question : *quelle est la longueur des chemins les plus courts partant d'un sommet*. Mais qu'en est-il du pendant : *quelle est la longueur des chemins les plus longs partant d'un sommet* ?
 
 On suppose que le problème est maintenant : quel est la longueur maximale d'un chemin passant une unique fois par chaque sommet ?
 
@@ -139,7 +139,7 @@ Il existe tout de même 2 classes de graphes particulières qui admettent des so
 
 #### graphe sans circuit
 
-Un graphe complet qui ne contient pas de circuit est souvent appelé *DAG* (direct acyclic graph).
+Un graphe orienté qui ne contient pas de circuit est souvent appelé *DAG* (direct acyclic graph).
 
 On appelle **tri topologique** d'un graphe orienté $G = (V, E)$ un ordre total $<$ sur les sommets du graphe tel que $xy \in E$ implique $x < y$ dans l'ordre.
 
@@ -148,7 +148,7 @@ On appelle **tri topologique** d'un graphe orienté $G = (V, E)$ un ordre total 
 > 1. un graphe ne peut admettre de tri topologique que s'il n'a pas de cycle
 > 2. pour un DAG, il existe toujours un sommet qui n'a pas de voisins entrant (*resp.* sortant)
 > 3. en déduire qu'un DAG admet un tri topologique
-> 4. conclure sur le fait qu'un graphe est un DAG si et seulement il admet un tri topologique
+> 4. conclure sur le fait qu'un graphe est un DAG si et seulement s'il admet un tri topologique
 {: .a-faire}
 
 On utilisera souvent ce tri pour résoudre des problèmes d'ordonnancement (on le verra tout à l'heure dans un cas d'importance certaine).
@@ -164,7 +164,7 @@ Un tournoi est très utilisé en théorie du choix social et en théorie des vot
 
 Dans ce champ applicatif, les cycles sont problématiques (A est préféré à B qui est préféré à C qui est préféré à A).
 
-> Montrer qu'un tournoi n'admet pas de cycle que si et seulement si il est transitif
+> Montrer qu'un tournoi n'admet pas de cycle si et seulement si il est transitif
 {: .a-faire}
 
 Mais pour ce qui nous intéresse, il est rigolo de voir qu'un tournoi admet toujours un chemin qui passe par tous les sommets une unique fois.
@@ -172,7 +172,7 @@ Mais pour ce qui nous intéresse, il est rigolo de voir qu'un tournoi admet touj
 > Montrez le
 {: .a-faire}
 
-Donc quelque soit les préférences, on peut toujours ordonner les préférences selon un ordre total (même s'il y en a plusieurs) localement cohérent (pour chaque élément il est préféré à celui d'avant et on lui préfèrera celui d'après dans l'ordre).
+Donc quelles que soient les préférences, on peut toujours ordonner les préférences selon un ordre total (même s'il y en a plusieurs) localement cohérent (pour chaque élément il est préféré à celui d'avant et on lui préfèrera celui d'après dans l'ordre).
 
 ### ordonnancement
 
@@ -196,7 +196,7 @@ On va montrer trois variantes de la recherche d'un chemin de longueur minimale e
 
 ### poids négatifs
 
-> Montrez que si le graphe peut avoir des valuation positives et négatives, l'algorithme de Dijkstra ne garanti pas de trouver un chemin de longueur minimum
+> Montrez que si le graphe peut avoir des valuations positives et négatives, l'algorithme de Dijkstra ne garantit pas de trouver un chemin de longueur minimum
 {: .a-faire}
 
 D'ailleurs, un tel chemin existe-t-il ?
@@ -208,7 +208,7 @@ D'ailleurs, un tel chemin existe-t-il ?
 
 Un algorithme beaucoup utilisé lorsque le graphe peut changer ou s'il est très grand, voir inconnu (un terrain de jeu) est l'algorithme $A^*$.
 
-Son principe est identique à celui de Dijkstra, mais plutôt que de prendre à chaque fois l'élément de coût minimum, on choisit un élément dont le `cout_entrée` + une distance heuristique sur sa distance à l'arrivée est minimum.
+Son principe est identique à celui de Dijkstra, mais plutôt que de prendre à chaque fois l'élément de coût minimum, on choisit un élément dont le `cout_entree` + une distance heuristique sur sa distance à l'arrivée est minimum.
 
 Si l'heuristique est valide, l'algorithme va considérer moins de sommets que Dijkstra.
 
@@ -228,7 +228,7 @@ C'est la technique utilisée par google maps. Pour le graphe de google maps, il 
 
 On ne peut pas non plus mettre les chemins en dur, car il faudrait une base de donnée gigantesque. Comment résoudre ce problème épineux ?
 
-En utilisant des hubs ! On remarque en effet que lorsque l'on fait un plus court chemin entre 2 sommets quelconque sur un graphe de google maps les débuts de chemins sont souvent identiques (on prend les grandes routes) et divergent fortement à la fin (petites routes jusqu'à la destination).
+En utilisant des hubs ! On remarque en effet que lorsque l'on fait un plus court chemin entre 2 sommets quelconques sur un graphe de google maps les débuts de chemins sont souvent identiques (on prend les grandes routes) et divergent fortement à la fin (petites routes jusqu'à la destination).
 
 On procède alors à un pré-traitement en calculant pour chaque sommet $x$ tous les chemins les plus courts (on crée l'arborescence de ce sommet). Et pour chaque chemin ainsi crée, on choisit la ville avec le plus d'habitants qui se trouve sur le second tiers du chemin. Toutes ces villes constituent les *hubs* de ce sommet $x$.
 
