@@ -8,21 +8,62 @@ authors:
   - Célia Châtel
 ---
 
-Présentation du mécanisme d'héritage. 
+Présentation du mécanisme d'héritage qui permettant de factoriser du code entre classes.
 
 ## principe de l'héritage
 
-principe. 
+Dans un programme, les classes sont organisées hiérarchiquement, la classe *racine* étant appelé *object*.
 
-factorisation de code : mieux de factoriser les les fonctionnalités. Surout que ça concerve l'implémentation. 
+![classes héritage]({{ "/assets/cours/developpement/programmation-objet/classes_heritage.png" | relative_url }}){:style="margin: auto;display: block}
 
-comportement par défaut (__str__, est un exemple)
+Dans la figure précédente :
 
-dans les bibliothèques : ils donnent une classe t nous on la particuliarise (GUI)
+* la classe **object** est la *racine*
+* la classe **1** est la *classe mère* de la classe **2**
+* la classe **2** est une *classe fille* de la classe **1**
+
+La désignation UML de l'héritage est une 
+
+L'héritage permet d'utiliser les attributs et méthodes créées dans les classes mères de façon simple :
+
+1. soit en cherchant dans la hiérarchie des classes l'attribut ou l'objet appelé depuis une classe fille
+2. soit en appelant directement un attribut ou un objet de la classe mère.
+
+### chercher dans la hiérarchie
+
+Supposons que j'ai un objet de la classe
+objet de classe 3 qui appelle méthode 1
+
+### appeler directement
+
+méthode 1 de classe 1 qui appelle méthode 1 de object
 
 
+### connaitre la hiérarchie
 
-### Exercice 1
+
+__mro__
+
+mais pas les attribut. DOnc attentoin à ne pas écraser des attributs des classes mères.
+
+(en python __var n'est pas passé à la classe fille. Mas son utilisation est rare.)
+### quand utiliser l'héritage
+
+vs composition et agrégation
+
+particuliariser une casse générale : dans les bibliothèques : ils donnent une classe t nous on la particularise (GUI)
+
+
+- code en commun
+- dans une bibliothèque
+
+### héritage multiple
+
+Règle du diamant en python mais, sans une très bonne raison, **il ne faut pas l'utiliser** dans nos propre programme, car ça le rend trop confus.
+
+Certains langages, comme le java ou par exemple, interdisent carrément l'héritage multiple.
+
+## Exercice 1
 
 L'idée est juste de présenter avec quelque chose de simple et facile à se représenter la notion d'héritage. On donnera l'UML des classes dans tous les cas et le code seulement s'il est lié à l'héritage.
 
@@ -56,6 +97,9 @@ Le mot clé `super()` désigne la classe parente, ici `Polygon`.Ce mot clé perm
 L'UML complet donne donc :
 
 ![polygone_uml_entier]({{ "img/polygone_uml_entier.png" }})
+
+> TBD
+> ajouter appelle à __str__ comme recherche pure d'une classe dans la hiérarchie
 
 ### Exercice 2
 

@@ -26,7 +26,7 @@ Si le graphe possède possède de plus une valuation qui associe un réel à tou
 
 ## Dijkstra
 
-L'[algorithme de Dijkstra](https://fr.wikipedia.org/wiki/Algorithme_de_Dijkstra) permet à partir d'un graphe orienté valué de trouver un chemin de longieur minimum entre deux sommets $d$ (départ) et $a$ (arrivée).
+L'[algorithme de Dijkstra](https://fr.wikipedia.org/wiki/Algorithme_de_Dijkstra) permet à partir d'un graphe orienté valué de trouver un chemin de longueur minimum entre deux sommets $d$ (départ) et $a$ (arrivée).
 
 Il ressemble beaucoup à l'[algorithme de Prim]({% link cours/graphes/arbres.md %}#algo-prim) que l'on a vu précédemment.
 
@@ -126,15 +126,15 @@ Il est illusoire de tenter de trouver un algorithme pour résoudre le problème 
 > Montrer que si l'on pouvait résoudre le problème d'un chemin le plus long dans un graphe, on pourrait résoudre le problème du chemin hamiltonien.
 {: .a-faire}
 
-Ce problème est [NP-complet](https://fr.wikipedia.org/wiki/Probl%C3%A8me_NP-complet), c'est à dire qu'il fait parti des problème algorithmique les plus dur à résoudre (et que le résoudre facilement permettrait de résoudre facilement tous les problème algorithmique qu'on peut se poser).
+Ce problème est [NP-complet](https://fr.wikipedia.org/wiki/Probl%C3%A8me_NP-complet), c'est à dire qu'il fait parti des problèmes algorithmiques les plus durs à résoudre (et que le résoudre facilement permettrait de résoudre facilement tous les problèmes algorithmiques qu'on peut se poser).
 
 > Notez comment une petite différence — remplacer sommet (hamiltonien) par arête (eulérien) — rend un problème soit très simple soit très compliqué à résoudre.
 
 ### graphes particuliers
 
-Il existe tout de même 2 classes de graphes particulières qui admettent des solutions facile pour le problème du chemin élémentaire le plus long :
+Il existe tout de même 2 classes de graphes particulières qui admettent des solutions faciles pour le problème du chemin élémentaire le plus long :
 
-* les [graphes orienté sans circuits](https://fr.wikipedia.org/wiki/Graphe_orient%C3%A9_acyclique)
+* les [graphes orientés sans circuits](https://fr.wikipedia.org/wiki/Graphe_orient%C3%A9_acyclique)
 * les [tournois](https://fr.wikipedia.org/wiki/Tournoi_(th%C3%A9orie_des_graphes))
 
 #### graphe sans circuit
@@ -151,7 +151,7 @@ On appelle **tri topologique** d'un graphe orienté $G = (V, E)$ un ordre total 
 > 4. conclure sur le fait qu'un graphe est un DAG si et seulement il admet un tri topologique
 {: .a-faire}
 
-On utilisera souvent ce tri pour résoudre des problème d'ordonnancement (on le verra tout à l'heure dans un cas d'importance certaine).
+On utilisera souvent ce tri pour résoudre des problèmes d'ordonnancement (on le verra tout à l'heure dans un cas d'importance certaine).
 
 > Utiliser le tri pour trouver un chemin élémentaire de longueur maximum dans un DAG.
 {: .a-faire}
@@ -181,7 +181,7 @@ Un [problème d'ordonnancement](https://fr.wikipedia.org/wiki/Th%C3%A9orie_de_l%
 > Pourquoi ne doit-il pas y avoir de cycles dans un graphe de dépendance ?
 {: .a-faire}
 
-Vous résolvez des problèmes d'ordonnancements tous les jours comme par exemple comment s'habiller le matin (voir graphe ci-après)
+Vous résolvez des problèmes d'ordonnancement tous les jours comme par exemple comment s'habiller le matin (voir graphe ci-après)
 
 ![habillage]({{ "/assets/cours/graphes/chemin_habillage.png" | relative_url }}){:style="margin: auto;display: block;"}
 
@@ -217,6 +217,11 @@ On l'utilise aussi souvent pour avancer directement à cet élément dans les al
 > Proposez une implémentation de l'algorithme $A^*$ pour le parcours dans une salle d'un petit robot (un étudiant lambda un jeudi matin par exemple).
 {: .a-faire}
 
+On peut aussi montrer que si l'algorithme $A^*$ a une heuristique qui ne surestime pas la distance finale, il va bien trouver un chemin de poids minimum.
+
+> Donner un exemple qui montre que si l'algorithme $A^*$ a une heuristique qui surestime le coût du chemin réel il se peut qu'il ne rende pas le bon chemin.
+{: .a-faire}
+
 ### grand graphes
 
 C'est la technique utilisée par google maps. Pour le graphe de google maps, il est impossible de faire un algorithme de Dijkstra à chaque requête, cela prendrait bien trop de temps !
@@ -234,8 +239,8 @@ Sur une carte de géographie, on remarque qu'il y a très peu de hubs !
 Une fois ce pré-traitement effectué, lorsqu'un utilisateur veut aller de A à B :
 
 1. google choisi un hub commun H1 à A et B et crée 2 routes, une allant de A à H1 et l'autre allant de H1 à B
-2. on récurse pour les chemins créées en cherchant un hub commun H2 à A et H1 et un hub commun H2' à H1 et B et ainsi de suite jusqu'à arriver à des chemins *"courts"*.
-3. jusqu'à arriver à des chemin courts où l'on peut faire un dijkstra entre les deux sommets rapidement.
+2. on récurse pour les chemins créés en cherchant un hub commun H2 à A et H1 et un hub commun H2' à H1 et B et ainsi de suite jusqu'à arriver à des chemins *"courts"*.
+3. jusqu'à arriver à des chemins courts où l'on peut faire un dijkstra entre les deux sommets rapidement.
 
 Le temps de calcul en est très réduit puisque les hubs sont calculés en amont de la requête.
 

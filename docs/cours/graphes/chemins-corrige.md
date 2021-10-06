@@ -192,11 +192,17 @@ Il suffit de pouvoir aller de $d$ au circuit absorbant puis du circuit à $a$ po
 
 ### graphe inconnu ou changeant
 
+#### exemple sur la grille
+
 * On peut prendre comme graphe la grille 2D carré de pas 1m par exemple
 * s'il y a des murs on ne mets pas d'arêtes
 * l'euristique sera la distance L1 entre la position et l'arrivée.
 
 On peut même se déplacer à chaque itération et se rapprocher normalement du but petit à petit.
+
+#### attention à l'heuristique utilisée
+
+Pour montrer qu'il peut se tromper, on donne une estimation de coût 0 à un chemin qui n'est pas de longueur minimale et $+\infty$ à sous les autres.
 
 ### grand graphes
 
