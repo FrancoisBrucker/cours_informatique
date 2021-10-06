@@ -81,11 +81,11 @@
   <li>$s_is_{i+1} \neq s_js_{j+1}$ si $i\neq j$</li>
 </ul>
 
-<p>Si le graphe possède possède de plus une valuation qui associe un réel à toute arête, la <strong>longueur d’un chemin</strong> est la somme des valuations de ses arêtes.</p>
+<p>Si le graphe possède de plus une valuation qui associe un réel à toute arête, la <strong>longueur d’un chemin</strong> est la somme des valuations de ses arêtes.</p>
 
 <h2 id="dijkstra">Dijkstra</h2>
 
-<p>L’<a href="https://fr.wikipedia.org/wiki/Algorithme_de_Dijkstra">algorithme de Dijkstra</a> permet à partir d’un graphe orienté valué de trouver un chemin de longueur minimum entre deux sommets $d$ (départ) et $a$ (arrivée).</p>
+<p>L’<a href="https://fr.wikipedia.org/wiki/Algorithme_de_Dijkstra">algorithme de Dijkstra</a> permet, à partir d’un graphe orienté valué, de trouver un chemin de longueur minimum entre deux sommets $d$ (départ) et $a$ (arrivée).</p>
 
 <p>Il ressemble beaucoup à l’<a href="/cours_informatique/cours/graphes/arbres.html#algo-prim">algorithme de Prim</a> que l’on a vu précédemment.</p>
 
@@ -150,7 +150,7 @@ Retour :
 <p>On peut continuer l’algorithme de Diskstra après que $a$ ait été rentré dans $V’$, jusqu’à ce que l’on ait plus que des éléments de coût infini à faire rentrer dans $V’$ ou que $V’$ soit égal à $V$.</p>
 
 <blockquote class="a-faire">
-  <p>Montrez que pour tous les sommets $x$ qui ne peuvent entrer dans $V’$, il n’existe pas de chemin entre $d$ et $x$ dans $G$</p>
+  <p>Montrez que pour tous les sommets $x$ qui ne peuvent pas entrer dans $V’$, il n’existe pas de chemin entre $d$ et $x$ dans $G$</p>
 </blockquote>
 
 <h3 id="preuve-dijkstra-arborescence">preuve</h3>
@@ -174,7 +174,7 @@ Montrez que les problèmes qu’ils résolvent sont différents et en déduire q
 
 <h2 id="chemin-le-plus-long">chemin le plus long</h2>
 
-<p>L’algorithme de Dijkstra permet de répondre à la question : <em>quelle est la longueur des chemins les plus courts partant d’un sommet</em>. Mais quand est-il du pendant : <em>quelle est la longueur des chemins les plus longs partant d’un sommet</em> ?</p>
+<p>L’algorithme de Dijkstra permet de répondre à la question : <em>quelle est la longueur des chemins les plus courts partant d’un sommet</em>. Mais qu’en est-il du pendant : <em>quelle est la longueur des chemins les plus longs partant d’un sommet</em> ?</p>
 
 <p>On suppose que le problème est maintenant : quel est la longueur maximale d’un chemin passant une unique fois par chaque sommet ?</p>
 
@@ -213,7 +213,7 @@ Montrez que les problèmes qu’ils résolvent sont différents et en déduire q
 
 <h4 id="graphe-sans-circuit">graphe sans circuit</h4>
 
-<p>Un graphe complet qui ne contient pas de circuit est souvent appelé <em>DAG</em> (direct acyclic graph).</p>
+<p>Un graphe orienté qui ne contient pas de circuit est souvent appelé <em>DAG</em> (direct acyclic graph).</p>
 
 <p>On appelle <strong>tri topologique</strong> d’un graphe orienté $G = (V, E)$ un ordre total $&lt;$ sur les sommets du graphe tel que $xy \in E$ implique $x &lt; y$ dans l’ordre.</p>
 
@@ -224,7 +224,7 @@ Montrez que les problèmes qu’ils résolvent sont différents et en déduire q
     <li>un graphe ne peut admettre de tri topologique que s’il n’a pas de cycle</li>
     <li>pour un DAG, il existe toujours un sommet qui n’a pas de voisins entrant (<em>resp.</em> sortant)</li>
     <li>en déduire qu’un DAG admet un tri topologique</li>
-    <li>conclure sur le fait qu’un graphe est un DAG si et seulement il admet un tri topologique</li>
+    <li>conclure sur le fait qu’un graphe est un DAG si et seulement s’il admet un tri topologique</li>
   </ol>
 </blockquote>
 
@@ -243,7 +243,7 @@ Montrez que les problèmes qu’ils résolvent sont différents et en déduire q
 <p>Dans ce champ applicatif, les cycles sont problématiques (A est préféré à B qui est préféré à C qui est préféré à A).</p>
 
 <blockquote class="a-faire">
-  <p>Montrer qu’un tournoi n’admet pas de cycle que si et seulement si il est transitif</p>
+  <p>Montrer qu’un tournoi n’admet pas de cycle si et seulement si il est transitif</p>
 </blockquote>
 
 <p>Mais pour ce qui nous intéresse, il est rigolo de voir qu’un tournoi admet toujours un chemin qui passe par tous les sommets une unique fois.</p>
@@ -252,7 +252,7 @@ Montrez que les problèmes qu’ils résolvent sont différents et en déduire q
   <p>Montrez le</p>
 </blockquote>
 
-<p>Donc quelque soit les préférences, on peut toujours ordonner les préférences selon un ordre total (même s’il y en a plusieurs) localement cohérent (pour chaque élément il est préféré à celui d’avant et on lui préfèrera celui d’après dans l’ordre).</p>
+<p>Donc quelles que soient les préférences, on peut toujours ordonner les préférences selon un ordre total (même s’il y en a plusieurs) localement cohérent (pour chaque élément il est préféré à celui d’avant et on lui préfèrera celui d’après dans l’ordre).</p>
 
 <h3 id="ordonnancement">ordonnancement</h3>
 
@@ -279,7 +279,7 @@ Montrez que les problèmes qu’ils résolvent sont différents et en déduire q
 <h3 id="poids-négatifs">poids négatifs</h3>
 
 <blockquote class="a-faire">
-  <p>Montrez que si le graphe peut avoir des valuation positives et négatives, l’algorithme de Dijkstra ne garanti pas de trouver un chemin de longueur minimum</p>
+  <p>Montrez que si le graphe peut avoir des valuations positives et négatives, l’algorithme de Dijkstra ne garantit pas de trouver un chemin de longueur minimum</p>
 </blockquote>
 
 <p>D’ailleurs, un tel chemin existe-t-il ?</p>
@@ -292,7 +292,7 @@ Montrez que les problèmes qu’ils résolvent sont différents et en déduire q
 
 <p>Un algorithme beaucoup utilisé lorsque le graphe peut changer ou s’il est très grand, voir inconnu (un terrain de jeu) est l’algorithme $A^*$.</p>
 
-<p>Son principe est identique à celui de Dijkstra, mais plutôt que de prendre à chaque fois l’élément de coût minimum, on choisit un élément dont le <code class="language-plaintext highlighter-rouge">cout_entrée</code> + une distance heuristique sur sa distance à l’arrivée est minimum.</p>
+<p>Son principe est identique à celui de Dijkstra, mais plutôt que de prendre à chaque fois l’élément de coût minimum, on choisit un élément dont le <code class="language-plaintext highlighter-rouge">cout_entree</code> + une distance heuristique sur sa distance à l’arrivée est minimum.</p>
 
 <p>Si l’heuristique est valide, l’algorithme va considérer moins de sommets que Dijkstra.</p>
 
@@ -314,7 +314,7 @@ Montrez que les problèmes qu’ils résolvent sont différents et en déduire q
 
 <p>On ne peut pas non plus mettre les chemins en dur, car il faudrait une base de donnée gigantesque. Comment résoudre ce problème épineux ?</p>
 
-<p>En utilisant des hubs ! On remarque en effet que lorsque l’on fait un plus court chemin entre 2 sommets quelconque sur un graphe de google maps les débuts de chemins sont souvent identiques (on prend les grandes routes) et divergent fortement à la fin (petites routes jusqu’à la destination).</p>
+<p>En utilisant des hubs ! On remarque en effet que lorsque l’on fait un plus court chemin entre 2 sommets quelconques sur un graphe de google maps les débuts de chemins sont souvent identiques (on prend les grandes routes) et divergent fortement à la fin (petites routes jusqu’à la destination).</p>
 
 <p>On procède alors à un pré-traitement en calculant pour chaque sommet $x$ tous les chemins les plus courts (on crée l’arborescence de ce sommet). Et pour chaque chemin ainsi crée, on choisit la ville avec le plus d’habitants qui se trouve sur le second tiers du chemin. Toutes ces villes constituent les <em>hubs</em> de ce sommet $x$.</p>
 

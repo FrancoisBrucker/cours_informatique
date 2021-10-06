@@ -78,14 +78,14 @@
 
 <ul>
   <li>dans l’algorithme de Prim il est égal à la valuation de l’arête rx</li>
-  <li>dans l’algorithme de Diskstra il vaut à l’addition de cout_d’entrée(r) plus la valuation de l’arête rx.</li>
+  <li>dans l’algorithme de Diskstra il vaut l’addition de cout_entree(r) plus la valuation de l’arête rx.</li>
 </ul>
 
-<p>Cette différence s’explique parce que l’arbre de poids minium est la somme des valuations des arêtes qui le constitue alors que pour un chemin, avant d’aller en x, il faut déjà aller en r (dont le cout est cout_entree(x) ) puis de r à x (dont le cout est f(rx)).</p>
+<p>Cette différence s’explique parce que le poids d’un arbre est la somme des valuations des arêtes qui le constitue alors que pour un chemin, avant d’aller en x, il faut déjà aller en r (dont le coût est cout_entree(x) ) puis de r à x (dont le coût est f(rx)).</p>
 
 <h3 id="test">test</h3>
 
-<p>Les différentes étapes de l’algorithme sont représenté dans les graphes ci-dessous.</p>
+<p>Les différentes étapes de l’algorithme sont représentées dans les graphes ci-dessous.</p>
 
 <ul>
   <li>La figure se lit de gauche à droite et de haut en bas.</li>
@@ -98,13 +98,13 @@
 
 <h3 id="preuve">preuve</h3>
 
-<p>On montre par récurrence que le chemin de x à r en suivant inverse des prédécesseurs de r jusqu’à arriver à d est de longueur minimale et de coût cout_entrée(r).</p>
+<p>On montre par récurrence que le chemin de x à r en remontant les prédécesseurs de r jusqu’à arriver à d est de longueur minimale et de coût cout_entree(r).</p>
 
 <p>Au départ <code class="language-plaintext highlighter-rouge">r = d</code>, la propriété est donc vraie. On la suppose vrai jusqu’à l’étape $i$. A l’étape $i+1$, on a choisi <code class="language-plaintext highlighter-rouge">r</code> qui minimise le coût d’entrée parmi tous les éléments de <code class="language-plaintext highlighter-rouge">V</code> qui ne sont pas encore dans <code class="language-plaintext highlighter-rouge">V'</code>. Comme tous les chemins alternatifs entre <code class="language-plaintext highlighter-rouge">d</code> et <code class="language-plaintext highlighter-rouge">r</code> commencent en <code class="language-plaintext highlighter-rouge">d</code>, il existe une arête de ce chemin dont le départ  (disons $u$) est dans <code class="language-plaintext highlighter-rouge">V'</code> et l’arrivée (disons $v$) n’y est pas. Prenons la première arête $uv$ pour laquelle ça arrive.</p>
 
-<p>Par hypothèse de récurrence, <code class="language-plaintext highlighter-rouge">cout_entree(u)</code> est le cout minimum d’un chemin entre <code class="language-plaintext highlighter-rouge">d</code> et $u$ et <code class="language-plaintext highlighter-rouge">cout_entree(v)</code> est donc plus grand que <code class="language-plaintext highlighter-rouge">cout_dentree(u) + f(uv)</code> (on a examiné ce cas lorsque l’on a fait rentrer $u$ dans <code class="language-plaintext highlighter-rouge">V'</code>) et de <code class="language-plaintext highlighter-rouge">cout_entree(r)</code> (car c’est le min).</p>
+<p>Par hypothèse de récurrence, <code class="language-plaintext highlighter-rouge">cout_entree(u)</code> est le cout minimum d’un chemin entre <code class="language-plaintext highlighter-rouge">d</code> et $u$ et <code class="language-plaintext highlighter-rouge">cout_entree(v)</code> est donc plus grand que <code class="language-plaintext highlighter-rouge">cout_entree(u) + f(uv)</code> (on a examiné ce cas lorsque l’on a fait rentrer $u$ dans <code class="language-plaintext highlighter-rouge">V'</code>) et de <code class="language-plaintext highlighter-rouge">cout_entree(r)</code> (car c’est le min).</p>
 
-<p>De là, le coût du chemin alternatif est plus grand également que <code class="language-plaintext highlighter-rouge">cout_entree(r)</code> <strong>car toues les valuations sont positives</strong> : notre hypothèse est vérifiée.</p>
+<p>De là, le coût du chemin alternatif est plus grand également que <code class="language-plaintext highlighter-rouge">cout_entree(r)</code> <strong>car toutes les valuations sont positives</strong> : notre hypothèse est vérifiée.</p>
 
 <h3 id="complexité">complexité</h3>
 
@@ -116,13 +116,13 @@
 
 <p>On voit qu’elle dépend entièrement de la prise du minimum de <code class="language-plaintext highlighter-rouge">cout_entree</code>. En optimisant cette opération, on peut drastiquement diminuer la complexité de l’algorithme</p>
 
-<p>Si l’on utilise un tas pour prendre le min, on doit au pire mettre à jour le tas pour chaque arête. Comme il va y a voir au maximum <code class="language-plaintext highlighter-rouge">V</code> éléments dans ce tas, la complexité de mise à jour est de $\mathcal{O}(\log_2(\vert V \vert))$, donc le coût total des les mise à jour sera de $\mathcal{O}(\vert E \vert \log_2(\vert V \vert))$.</p>
+<p>Si l’on utilise un tas pour prendre le min, on doit au pire mettre à jour le tas pour chaque arête. Comme il va y a voir au maximum <code class="language-plaintext highlighter-rouge">V</code> éléments dans ce tas, la complexité de mise à jour est de $\mathcal{O}(\log_2(\vert V \vert))$, donc le coût total des mises à jour sera de $\mathcal{O}(\vert E \vert \log_2(\vert V \vert))$.</p>
 
-<p>Enfin, comme on prend $\vert V \vert$ fois le minimum du tas, la complexité de trouver tous les <code class="language-plaintext highlighter-rouge">r</code> est de $\mathcal{O}(\vert V \vert \log_2(\vert V \vert))$. La complexité de Dijkstra avec un tas est donc de : $\mathcal{O}((\vert A \vert + \vert V \vert)\log_2(\vert V \vert))$.</p>
+<p>Enfin, comme on prend $\vert V \vert$ fois le minimum du tas, la complexité de trouver tous les <code class="language-plaintext highlighter-rouge">r</code> est de $\mathcal{O}(\vert V \vert \log_2(\vert V \vert))$. La complexité de Dijkstra avec un tas est donc de : $\mathcal{O}((\vert E \vert + \vert V \vert)\log_2(\vert V \vert))$.</p>
 
-<p>Ceci est mieux de prendre le minium si le graphe ne contient pas énormément d’arêtes : $(\vert A \vert + \vert S \vert) \log_2(\vert V \vert) \leq \vert E\vert + (\vert V \vert)^2$, ce qui donne asymptotiquement $\vert E \vert \leq \frac{\vert V \vert^2}{\log_2(\vert V \vert)}$.</p>
+<p>Ceci est mieux de prendre le minimum si le graphe ne contient pas énormément d’arêtes : $(\vert E \vert + \vert V \vert) \log_2(\vert V \vert) \leq \vert E\vert + (\vert V \vert)^2$, ce qui donne asymptotiquement $\vert E \vert \leq \frac{\vert V \vert^2}{\log_2(\vert V \vert)}$.</p>
 
-<p>La <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Dijkstra#Complexit%C3%A9_de_l'algorithme">page wikipédia</a> précise qu’en utilisant un tas amélioré,dit tas de fibonnaci, on arrive même à faire descendre la complexité à $\mathcal{O}(\vert A \vert + \vert V \vert\log_2(\vert V \vert))$, ce qui est toujours mieux que la prise de minimum naïve.</p>
+<p>La <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Dijkstra#Complexit%C3%A9_de_l'algorithme">page wikipédia</a> précise qu’en utilisant un tas amélioré, dit tas de fibonnaci, on arrive même à faire descendre la complexité à $\mathcal{O}(\vert E \vert + \vert V \vert\log_2(\vert V \vert))$, ce qui est toujours mieux que la prise de minimum naïve.</p>
 
 <h2 id="arborescence">arborescence</h2>
 
@@ -162,7 +162,7 @@
 
 <p>1 :</p>
 
-<p>Soit $c_0\dots c_k$ un cycle ($c_k = c_0$), quelque soit l’ordre total entre les sommet du graphe, il existe $i$ tel que $c_{i+1} &lt; c_i$ ce qui est impossible si un tel ordre était topologique.</p>
+<p>Soit $c_0\dots c_k$ un cycle ($c_k = c_0$), quelque soit l’ordre total entre les sommets du graphe, il existe $i$ tel que $c_{i+1} &lt; c_i$ ce qui est impossible si un tel ordre était topologique.</p>
 
 <p>2 :</p>
 
@@ -193,7 +193,7 @@
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Entrée :
     * un graphe orienté G = (V, E)
-    * un tri v0 &lt; ... &lt; Vn des éléments de V
+    * un tri V0 &lt; ... &lt; Vn des éléments de V
 Initialisation :
     * longueur(x) = 0 pour tout sommet x
     * predecesseur(x) = x pour tout sommet x
@@ -218,13 +218,13 @@ Retour :
 
 <p>Pour prouver l’algorithme, on montre par récurrence sur $\vert V \vert$ que <code class="language-plaintext highlighter-rouge">longueur(x)</code> est la longueur d’un plus long chemin finissant en <code class="language-plaintext highlighter-rouge">x</code>.</p>
 
-<p>Si $\vert V \vert = 1$, c’est Ok. On suppose la propriété vraie à $\vert V \vert = n$. Pour $\vert V \vert = n +1$ on remarque que <code class="language-plaintext highlighter-rouge">longueur(Vi)</code> est la même pour le graphe $G$ et pour le graphe $G$ auquel on a enlevé $v_{n+1}$ pour tout $i \neq n+1$. Comme tous les prédécesseur de $v_{n+1}$ seront vu pour l’algorithme et que <code class="language-plaintext highlighter-rouge">longueur(Vi)</code> ne change pas après l’étape $i$ on en conclut que la récurrence est vraie à $\vert V \vert = n +1$.</p>
+<p>Si $\vert V \vert = 1$, c’est Ok. On suppose la propriété vraie à $\vert V \vert = n$. Pour $\vert V \vert = n +1$ on remarque que <code class="language-plaintext highlighter-rouge">longueur(Vi)</code> est la même pour le graphe $G$ et pour le graphe $G$ auquel on a enlevé $v_{n+1}$ pour tout $i \neq n+1$. Comme tous les prédécesseurs de $v_{n+1}$ seront vus pour l’algorithme et que <code class="language-plaintext highlighter-rouge">longueur(Vi)</code> ne change pas après l’étape $i$ on en conclut que la récurrence est vraie à $\vert V \vert = n +1$.</p>
 
 <h4 id="tournoi">tournoi</h4>
 
 <h5 id="cycles">cycles</h5>
 
-<p>Si le tournoi n’est pas transitif il existe $x$, $y$ et $z$  tel que $xy$ et $yz$ mais pas $xz$ : $xyzx$ est un cycle.</p>
+<p>Si le tournoi n’est pas transitif il existe $x$, $y$ et $z$  tels que $xy$ et $yz$ mais pas $xz$ : $xyzx$ est un cycle.</p>
 
 <p>Réciproquement, s’il existe un cycle, prenons en un de longueur minimum : $c_0c_1c_2 \dots c_k$. Comme le cycle est de longueur minimum, $c_0c_2$ n’est pas une arête : le tournoi n’est pas transitif.</p>
 
@@ -241,7 +241,7 @@ Retour :
   <li>un chemin hamiltonien $c’_0\dots c’_l$ dans la restriction de $T$ à $N^-(x)$</li>
 </ul>
 
-<p>On en conclut que le chemin $c’0 \dots c’_l x c_0 \dots c_k$ est hamiltonien dans $T$, ce qui termine la preuve par récurrence.</p>
+<p>On en conclut que le chemin $c’_0 \dots c’_l x c_0 \dots c_k$ est hamiltonien dans $T$, ce qui termine la preuve par récurrence.</p>
 
 <h3 id="ordonnancement">ordonnancement</h3>
 
@@ -276,15 +276,15 @@ Retour :
 <h3 id="grand-graphes">grand graphes</h3>
 
 <ul>
-  <li>Marseille à Dijon et Paris dans ses hub. Le er pour aller de Marseille à Strabourg et le second pour aller de Marseille à Brest</li>
-  <li>Strasbourg à également Dijon et Paris dans ses hubs le 1er pour aller à marseille (c’est symétrique) et le second pour aller à Brest.</li>
+  <li>Marseille a Dijon et Paris dans ses hub. Le premier pour aller de Marseille à Strabourg et le second pour aller de Marseille à Brest</li>
+  <li>Strasbourg à également Dijon et Paris dans ses hubs le premier pour aller à Marseille (c’est symétrique) et le second pour aller à Brest.</li>
 </ul>
 
 <p><img src="/cours_informatique/assets/cours/graphes/chemin_hubs.png" alt="chemin hubs" style="margin: auto;display: block;" /></p>
 
 <p>Google maps peut alors vous proposer deux grands chemins pour aller de Marseille à Strasbourg, soit en passant par Dijon soit par Paris (bon il ne le fait pas car un chemin est bien plus long que l’autre, mais c’est l’idée).</p>
 
-<p>Les hubs, en plus d’être efficace en temps de calculs sont aussi une chouette solution pour proposer des itinéraires différents pour aller entre 2 villes.</p>
+<p>Les hubs, en plus d’être efficaces en temps de calculs sont aussi une chouette solution pour proposer des itinéraires différents pour aller entre 2 villes.</p>
 
   </div>
 
