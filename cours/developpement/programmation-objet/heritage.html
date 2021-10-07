@@ -366,7 +366,7 @@
         <span class="bp">self</span><span class="p">.</span><span class="n">attaque</span> <span class="o">=</span> <span class="n">attaque</span>
 
     <span class="k">def</span> <span class="nf">se_faire_taper</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">personnage</span><span class="p">):</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">vie</span> <span class="o">-=</span> <span class="n">personnage</span><span class="p">.</span><span class="n">get_attaque</span><span class="p">()</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">vie</span> <span class="o">-=</span> <span class="n">personnage</span><span class="p">.</span><span class="n">attaque</span>
 
     <span class="k">def</span> <span class="nf">taper</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">personnage</span><span class="p">):</span>
         <span class="n">personnage</span><span class="p">.</span><span class="n">se_faire_taper</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
@@ -389,7 +389,7 @@
 <h4 id="code-python-de-la-guerrière">code python de la guerrière</h4>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ... 
-</span><span class="kn">import</span> <span class="nn">randint</span>
+</span><span class="kn">import</span> <span class="nn">random</span>
 <span class="c1">#...
 </span>
 <span class="k">class</span> <span class="nc">Guerriere</span><span class="p">(</span><span class="n">Personnage</span><span class="p">):</span>
@@ -445,7 +445,7 @@
         <span class="bp">self</span><span class="p">.</span><span class="n">attaque</span> <span class="o">=</span> <span class="n">attaque</span>
 
     <span class="k">def</span> <span class="nf">se_faire_taper</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">personnage</span><span class="p">):</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">vie</span> <span class="o">-=</span> <span class="n">personnage</span><span class="p">.</span><span class="n">get_attaque</span><span class="p">()</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">vie</span> <span class="o">-=</span> <span class="n">personnage</span><span class="p">.</span><span class="n">attaque</span>
 
     <span class="k">def</span> <span class="nf">taper</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">personnage</span><span class="p">):</span>
         <span class="n">personnage</span><span class="p">.</span><span class="n">se_faire_taper</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
@@ -454,9 +454,9 @@
     <span class="k">def</span> <span class="nf">vie</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">_vie</span>
 
-    <span class="o">@</span><span class="nb">property</span><span class="p">.</span><span class="n">setter</span>
+    <span class="o">@</span><span class="n">vie</span><span class="p">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">vie</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valeur</span><span class="p">):</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">_vie</span> <span class="o">-=</span> <span class="n">valeur</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_vie</span> <span class="o">=</span> <span class="n">valeur</span>
         <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">_vie</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="bp">self</span><span class="p">.</span><span class="n">_vie</span> <span class="o">=</span> <span class="mi">0</span>
             <span class="k">print</span><span class="p">(</span><span class="s">"je suis mort"</span><span class="p">)</span>
@@ -483,31 +483,65 @@
   <li>une méthode <code class="language-plaintext highlighter-rouge">autre_truc()</code> qui affiche “Autre truc dans la classe mère”</li>
 </ul>
 
-<p>Écrivez une classe <code class="language-plaintext highlighter-rouge">B</code> qui hérite de A et qui a :</p>
+<details><summary>solution</summary><div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">A</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">a</span>
+
+    <span class="k">def</span> <span class="nf">truc_que_fait_a</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Truc défini dans la classe mère"</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">truc_que_fait_a</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Autre truc dans la classe mère"</span><span class="p">)</span>  
+</code></pre></div></div>
+
+</div></details>
+
+<p>Écrivez une classe <code class="language-plaintext highlighter-rouge">B</code> qui hérite de <code class="language-plaintext highlighter-rouge">A</code> et qui a :</p>
 
 <ul>
   <li>un attribut <code class="language-plaintext highlighter-rouge">b</code></li>
-  <li>le constructeur à 2 paramètres, un qui est initialisé dans la classe A, l’autre initialisé dans B</li>
+  <li>le constructeur à 2 paramètres (a et b), un qui est initialisé dans la classe A (a), l’autre initialisé dans B (b)</li>
   <li>une méthode <code class="language-plaintext highlighter-rouge">autre_truc()</code> qui affiche “C’est mon autre truc à moi”</li>
   <li>une méthode <code class="language-plaintext highlighter-rouge">que_de_b()</code> qui affiche “Méthode seulement de la classe fille”</li>
 </ul>
 
+<details><summary>solution</summary><div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">B</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">().</span><span class="n">__init__</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">b</span> <span class="o">=</span> <span class="n">b</span>
+
+    <span class="k">def</span> <span class="nf">autre_truc</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"C'est mon autre truc à moi"</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">que_de_b</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Méthode seulement de la classe fille"</span><span class="p">)</span>
+</code></pre></div></div>
+
 <p>Faites bien attention à utiliser proprement le mot-clé <code class="language-plaintext highlighter-rouge">super</code> dans le constructeur de la classe fille.</p>
 
-<p>Créez un objet <code class="language-plaintext highlighter-rouge">objet_a</code> de la classe <code class="language-plaintext highlighter-rouge">A</code> et un objet <code class="language-plaintext highlighter-rouge">objet_b</code> de la classe <code class="language-plaintext highlighter-rouge">B</code>. Essayez les lignes suivantes (une à la
-fois) et prenez le temps de comprendre ce qu’elles font et pourquoi.</p>
+</div></details>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">objet_a</span><span class="p">.</span><span class="n">a</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">objet_a</span><span class="p">.</span><span class="n">b</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">objet_b</span><span class="p">.</span><span class="n">a</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">objet_b</span><span class="p">.</span><span class="n">b</span><span class="p">)</span>
-<span class="n">objet_a</span><span class="p">.</span><span class="n">truc_que_fait_a</span><span class="p">()</span>
-<span class="n">objet_a</span><span class="p">.</span><span class="n">autre_truc</span><span class="p">()</span>
-<span class="n">objet_a</span><span class="p">.</span><span class="n">que_de_b</span><span class="p">()</span>
-<span class="n">objet_b</span><span class="p">.</span><span class="n">truc_que_fait_a</span><span class="p">()</span>
-<span class="n">objet_b</span><span class="p">.</span><span class="n">autre_truc</span><span class="p">()</span>
-<span class="n">objet_b</span><span class="p">.</span><span class="n">que_de_b</span><span class="p">()</span>
+<h3 id="attribut-de-classe">attribut de classe</h3>
+
+<p>Ajoutez dans <code class="language-plaintext highlighter-rouge">A</code> un attribut de classe <code class="language-plaintext highlighter-rouge">CTE</code> constante valant <code class="language-plaintext highlighter-rouge">un attribut de classe</code></p>
+
+<details><summary>solution</summary><div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">A</span><span class="p">:</span>
+    <span class="n">CTE</span> <span class="o">=</span> <span class="s">"un attribut de classe"</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">a</span>
+    
+    <span class="k">def</span> <span class="nf">truc_que_fait_a</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Truc défini dans la classe mère"</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">truc_que_fait_a</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Autre truc dans la classe mère"</span><span class="p">)</span>  
 </code></pre></div></div>
+
+</div></details>
 
 <h3 id="combinaison-de-méthodes">combinaison de méthodes</h3>
 
@@ -518,11 +552,40 @@ fois) et prenez le temps de comprendre ce qu’elles font et pourquoi.</p>
   <li>dans la  classe <code class="language-plaintext highlighter-rouge">B</code> : une méthode <code class="language-plaintext highlighter-rouge">j_herite(x)</code> qui commence par appeler la méthode de la classe mère puis affiche la valeur de x en majuscules</li>
 </ul>
 
-<p>Vérifiez que tout se passe comme prévu.</p>
+<details><summary>solution</summary><div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">A</span><span class="p">:</span>
+    <span class="n">CTE</span> <span class="o">=</span> <span class="s">"un attribut de classe"</span>
 
-<h3 id="attributs-de-classes">attributs de classes</h3>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">a</span>
 
-<p>tbd</p>
+    <span class="k">def</span> <span class="nf">truc_que_fait_a</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Truc défini dans la classe mère"</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">truc_que_fait_a</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Autre truc dans la classe mère"</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">j_herite</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">B</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">().</span><span class="n">__init__</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">b</span> <span class="o">=</span> <span class="n">b</span>
+
+    <span class="k">def</span> <span class="nf">autre_truc</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"C'est mon autre truc à moi"</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">que_de_b</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Méthode seulement de la classe fille"</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">j_herite</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">().</span><span class="n">j_herite</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="n">upper</span><span class="p">())</span>
+</code></pre></div></div>
+
+</div></details>
 
   </div>
 
