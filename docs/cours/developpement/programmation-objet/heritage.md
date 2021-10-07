@@ -33,9 +33,9 @@ L'héritage permet d'utiliser les attributs et méthodes créées dans les class
 
 #### chercher dans la hiérarchie
 
-Supposons que j'ai un objet de la "classe 2" `o` qui veut appeler la méthode 1 : `o.methode1()`
+Supposons que j'ai un objet de la "classe 2" `obj` qui veut appeler la méthode 1 : `obj.methode1()`
 
-1. on va chercher `methode1` dans l'espace de nom de `o` : il n'y est pas.
+1. on va chercher `methode1` dans l'espace de nom de `obj` : il n'y est pas.
 2. on va alors chercher dans sa classe, `classe2` : elle ne définit pas `méthode1`
 3. on cherche alors dans la classe mère de classe 2, `classe1` : `méthode1` est définie, on utilise son code.
 
@@ -46,8 +46,6 @@ Supposons que j'ai un objet de la "classe 2" `o` qui veut appeler la méthode 1 
 Supposons que dans la définition de `méthode1` de la classe `2'` on particulariser la méthode `méthode1` de la `classe1`. On appelle alors la méthode `méthode1` de la classe 1 dans la définition de la `méthode1` de la classe `2'`.
 
 >si l'on ne retrouve pas la méthode dans la classe mère, on remonte la hiérarchie. De là tenter d'utiliser la méthode `méthode1`  de la classe `1'` en définissant la  méthode `méthode1`  de la classe `2''` va en fait exécuter la méthode  méthode `méthode1`  de la classe `object`
-
-méthode 1 de classe 1 qui appelle méthode 1 de object
 
 ### connaitre la hiérarchie
 
@@ -65,7 +63,7 @@ Par exemple, dans un interpréteur :
 
 L'ordre dans lequel est examinée les classe pour les chaines de caractères est donc : d'abord la classe `str` puis la classe `object`
 
-> La classe object est toujours le dernier élément de la liste
+> La classe `object` est toujours le dernier élément de la liste
 
 ### quand utiliser l'héritage
 
@@ -80,13 +78,13 @@ La règle est que lorsque l'héritage doit re-écrire toutes les méthodes de sa
 
 ### héritage multiple
 
-Python autorise l'[héritage multiple](https://docs.python.org/fr/3/tutorial/classes.html#multiple-inheritance)
+Python autorise l'[héritage multiple](https://docs.python.org/fr/3/tutorial/classes.html#multiple-inheritance), mais sans très bonne raison il est plus que recommandé de ne pas l'utiliser. Il existe **toujours** une solution utilisant l'héritage simple qui sera plus facile à comprendre et surtout à maintenir dans le temps.
 
-Règle du diamant en python mais, sans une très bonne raison, **il ne faut pas l'utiliser** dans nos propre programme, car ça le rend trop confus.
+D'ailleurs, certains langages, comme le java ou par exemple, interdisent carrément l'héritage multiple.
 
-Certains langages, comme le java ou par exemple, interdisent carrément l'héritage multiple.
+> Si cela vous intéresse, python utilise la règle [de linéarisation C3](https://en.wikipedia.org/wiki/C3_linearization) pour réaliser l'ordre de priorité des classes (le mro), ceci permet de résoudre le [problème du diamant](https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_diamant) en héritage multiple.
 
-## Exercice 1
+## Exemple 1 : héritage simple
 
 L'idée est juste de présenter avec quelque chose de simple et facile à se représenter la notion d'héritage. On donnera l'UML des classes dans tous les cas et le code seulement s'il est lié à l'héritage.
 
@@ -124,6 +122,9 @@ L'UML complet donne donc :
 > TBD
 > ajouter appelle à __str__ comme recherche pure d'une classe dans la hiérarchie
 > ajouter cercle inscrit. en paramètre
+> super : https://he-arc.github.io/livre-python/super/index.html 
+
+
 
 
 ### Exercice 2
@@ -181,20 +182,48 @@ Le code n'est pas difficile, on se passera donc de l'écrire complètement. Il f
 > **Nota Bene :** Ces exemples sur l'héritage sont un peu forcés. C'est parce que l'héritage n'est que très peu utilisé en code pure. Il est même considéré comme préjudiciable dans la plupart des cas (voir )[là](https://codeburst.io/inheritance-is-evil-stop-using-it-6c4f1caf5117) ou encore [là](http://neethack.com/2017/04/Why-inheritance-is-bad/)). 
 > >Un cas d'utilisation reconnu est cependant lorsque l'on veut utiliser des classes définies dans un module quelconque et la mettre un peu à notre sauce. Comme dans des bibliothèques graphiques par exemple.
 
-## points de vigilance
+### Les bases de l'héritage
 
-Toujours très aimé mais l'intérêt est plus réduit qu'on ne peu le penser. Avant de faire de l'héritage regardez si une composition et un agrégation ne feraient pas mieux le travail.
+#### héritage de méthodes
+
+Écrivez une classe `A` qui a :
+
+ - un attribut `a`
+ - une méthode `truc_que_fait_a()` qui affiche "Truc défini dans la classe mère"
+ - une méthode `autre_truc()` qui affiche "Autre truc dans la classe mère"
+
+Écrivez une classe `B` qui hérite de A et qui a :
+
+ - un attribut `b`
+ - le constructeur à 2 paramètres, un qui est initialisé dans la classe A, l'autre initialisé dans B
+ - une méthode `autre_truc()` qui affiche "C'est mon autre truc à moi"
+ - une méthode `que_de_b()` qui affiche "Méthode seulement de la classe fille"
+
+Faites bien attention à utiliser proprement le mot-clé `super` dans le constructeur de la classe fille.
+
+Créez un objet `objet_a` de la classe `A` et un objet `objet_b` de la classe `B`. Essayez les lignes suivantes (une à la
+fois) et prenez le temps de comprendre ce qu'elles font et pourquoi.
+
+~~~ python
+print(objet_a.a)
+print(objet_a.b)
+print(objet_b.a)
+print(objet_b.b)
+objet_a.truc_que_fait_a()
+objet_a.autre_truc()
+objet_a.que_de_b()
+objet_b.truc_que_fait_a()
+objet_b.autre_truc()
+objet_b.que_de_b()
+~~~
 
 
-attention : aux variable de la classe qui ne doivent pas être redéfini dans l'héritage (mais on ne sais pas lesquelles c'est...)
-En python `__variable`  n'est pas passée aux descendants.
+#### combinaison de méthodes
 
-Si l'on redéfini toutes les classes de la classe mere sans les utililser : pas un bon signe.
+Ajoutez :
 
-héritage multiple autorisé en python, mais c'est très compliqué. règle de u diamant : c'est fait pour simplifier le code pas le rendre necore plus compliqué.
+  - dans la  classe `A` : une méthode `j_herite(x)` qui prend un paramètre `x` qui est une chaine de caractère et affiche la valeur de x
+  - dans la  classe `B` : une méthode `j_herite(x)` qui commence par appeler la méthode de la classe mère puis affiche la valeur de x en majuscules
 
-
-## variables de classe
-
-parler des variables de classes. 
+Vérifiez que tout se passe comme prévu.
 
