@@ -292,63 +292,102 @@ La guerrière dispose d'un score de bloquage qui représente son pourcentage de 
 
 c'est un personnage, on peut donc utiliser l'héritage.
 
+![Guerrière]({{ "/assets/cours/developpement/programmation-objet/heritage_guerriere.png" | relative_url }}){:style="margin: auto;display: block}
 
+On ne met que les méthodes qui changent, donc le constructeur et se faire taper.
 
 #### code python de la guerrière
 
-On ajoute la guerrière :
+```python
+# ... 
+import randint
+#...
 
-![guerriere]({{ "img/guerriere.png"}})
-
-On donne ci-après une partie du code de la guerrière  (on a en particulier pas écrit la méthode `bloque` qui fait le tirage pour savoir si on bloque ou pas). Faites attention et comprenez bien : 
-
-  -  l'appel à `super().__init__()` au début du constructeur de la classe fille,
-  - qu'on ajoute un attribut à la guerrière par rapport au personnage normal,
-  - la méthode `se_faire_taper(personnage)` utilise la méthode `se_faire_taper` de la classe `Personnage` seulement si la guerrière ne bloque pas le coup. Le `super().methode_de_la_mere()` permet d'accéder à la méthode de la classe mère même de même nom qu'une méthode (différente) de la classe fille.
-
-
-~~~ python
 class Guerriere(Personnage):
     def __init__(self, vie, attaque, blocage):
         super().__init__(vie, attaque)
         self.blocage = blocage
 
     def se_faire_taper(self, personnage):
-        if not self.bloque(personnage):
+        if self.blocage >= random.randint(0, 100):
             super().se_faire_taper(personnage)
-~~~
+```
 
-Prenez le temps de faire des exemples d'utilisation et de vérifier que tous les cas marchent. En particulier qu'est-ce qui est appelé quand on fait `guerriere.se_faire_taper(bonhomme)` avec un objet `guerriere` de la classe `Guerriere` ?
+Comprenez bien le code :
 
+* On commence par appeler le constructeur de la classe mère (`super().__init__()`) puis on applique le cas particulier de notre classe (`self.blocage = blocage`).
+* on ajoute un attribut à la guerrière par rapport au personnage normal,
+* la méthode `se_faire_taper(personnage)` utilise la méthode `se_faire_taper` de la classe `Personnage` seulement si la guerrière ne bloque pas le coup. Le `super().methode_de_la_mere()` permet d'accéder à la méthode de la classe mère même de même nom qu'une méthode (différente) de la classe fille.
+
+> On utilise **toujours** le constructeur de la classe mère pour garantir que les méthodes définie dans la classe mère fonctionnent avec les objets de la classe fille. Sinon ici, `se_faire_taper` ne fonctionnerait pas puisque vie et attaque ne seraient pas défini
+{: .attention}
 
 ### le magicien
 
-Le magicien peut faire tout ce que peut faire un personnage normal mais il dispose en plus d'un score d'attaque magique qui détermine les dégâts qu'il fait en lançant un sort. Modéliser la classe \texttt{Magicien}.
+Le magicien peut faire tout ce que peut faire un personnage normal mais il dispose en plus d'un score d'attaque magique qui détermine les dégâts qu'il fait en lançant un sort.
 
-Le magicien permet de montrer l'ajout d'une méthode qui n'était pas du tout dans la classe mère :
+#### modèle UML du magicien
 
-![magicien]({{ "img/magicien.png"}})
+On ajoute une nouvelle méthode qui n'existe pas dans la classe mère :
 
-Le code n'est pas difficile, on se passera donc de l'écrire complètement. Il faut :
+![Magicien]({{ "/assets/cours/developpement/programmation-objet/heritage_magicien.png" | relative_url }}){:style="margin: auto;display: block}
 
-  - ajouter une méthode `lancer_sort`
-  - ajouter un paramètre et son attribut associé `attaque_magique` au constructeur
-  - ajouter une méthode `se_faire_toucher_par_un_sort(magicien)` avec un paramètre de type Magicien dans la classe Personnage.
+#### code python du magicien
 
-> **Nota Bene :** Ces exemples sur l'héritage sont un peu forcés. C'est parce que l'héritage n'est que très peu utilisé en code pure. Il est même considéré comme préjudiciable dans la plupart des cas (voir )[là](https://codeburst.io/inheritance-is-evil-stop-using-it-6c4f1caf5117) ou encore [là](http://neethack.com/2017/04/Why-inheritance-is-bad/)). 
-> >Un cas d'utilisation reconnu est cependant lorsque l'on veut utiliser des classes définies dans un module quelconque et la mettre un peu à notre sauce. Comme dans des bibliothèques graphiques par exemple.
+```python
+class Magicien(Personnage):
+    def __init__(self, vie, attaque, attaque_magique):
+        super().__init__(vie, attaque)
+        self.attaque_magique = attaque_magique
 
+    def lancer_sort(self, personnage):
+        personnage.vie -= self.attaque_magique
+```
 
+On voit là que le personnage peut mourir si sa vie descend en dessous de 0. Comme on ne modifie qu'un attribut, on ne peut associer aucune méthode à cette mort. Il faut donc rendre l'attribut vie privé et n'y accéder qu'avec une méthode.
+
+Une autre solution élégante en python est d'utiliser des [@property](https://www.it-swarm-fr.com/fr/python/utiliser-property-contre-les-getters-et-les-setters/972255514/) qui font comme si on modifiait un attribut alors qu'on exécute une fonction :
+
+```python
+class Personnage:
+    def __init__(self, vie, attaque):
+        self._vie = vie
+        self.attaque = attaque
+
+    def se_faire_taper(self, personnage):
+        self.vie -= personnage.get_attaque()
+
+    def taper(self, personnage):
+        personnage.se_faire_taper(self)
+
+    @property
+    def vie(self):
+        return self._vie
+
+    @property.setter
+    def vie(self, valeur):
+        self._vie -= valeur
+        if self._vie <= 0:
+            self._vie = 0
+            print("je suis mort")
+```
+
+Si l'on utilise la classe précédente, écrire :
+
+* `gandalf.vie = 1` est équivalent à écrire `gandalf.vie(1)` (on utilise la méthode)
+* `print(gendalf.vie)` sera équivalent à utiliser la méthode en-dessous du `@property.setter`
 
 ## odds and ends
 
+Quelques petit tests qui ne servent à rien en pratique mais qui permettent de
+
 ### héritage de méthodes
 
-Écrivez une classe `A` qui a :
+Comment faire une classe `A` qui a :
 
- - un attribut `a`
- - une méthode `truc_que_fait_a()` qui affiche "Truc défini dans la classe mère"
- - une méthode `autre_truc()` qui affiche "Autre truc dans la classe mère"
+* un attribut `a`
+* une méthode `truc_que_fait_a()` qui affiche "Truc défini dans la classe mère"
+* une méthode `autre_truc()` qui affiche "Autre truc dans la classe mère"
 
 Écrivez une classe `B` qui hérite de A et qui a :
 

@@ -10,13 +10,14 @@ authors:
 
 Présentation du mécanisme d'héritage qui permettant de factoriser du code entre classes.
 
-## implémentez les exemple du cours 
+## implémentez les exemple du cours
 
 ### tests
 
 ### donjons et dragons utilisation
 une utilisation  à mettre en oeuvre
 
+vérifier bien que les @property fonctionne.
 
 ### Le dé
 
