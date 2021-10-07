@@ -10,13 +10,13 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
 <meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
-<link rel="canonical" href="/cours_informatique/cours/developpement/developpement-objet/heritage.html" />
-<meta property="og:url" content="/cours_informatique/cours/developpement/developpement-objet/heritage.html" />
+<link rel="canonical" href="/cours_informatique/cours/developpement/programmation-objet/heritage-exercices.html" />
+<meta property="og:url" content="/cours_informatique/cours/developpement/programmation-objet/heritage-exercices.html" />
 <meta property="og:site_name" content="cours d’informatique" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Héritage" />
 <script type="application/ld+json">
-{"headline":"Héritage","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/developpement/developpement-objet/heritage.html","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
+{"headline":"Héritage","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/developpement/programmation-objet/heritage-exercices.html","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
@@ -58,72 +58,25 @@
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Héritage</h1></p>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></p>
+    <h1 class="post-title">Héritage</h1>Auteurs :
+      <ul>
+      
+        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></li>
+      
+        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Célia Châtel</span></span></li>
+      
+      </ul></p></p>
   </header>
 
   <div class="post-content">
-    <h2 id="but">But</h2>
+    <p>Présentation du mécanisme d’héritage qui permettant de factoriser du code entre classes.</p>
 
-<p>Qu’est ce que l’héritage et quand l’utiliser</p>
+<h2 id="implémentez-les-exemple-du-cours">implémentez les exemple du cours</h2>
 
-<blockquote>
-  <p><strong>Elements de corrigé :</strong> Ils sont disponibles <a href="/cours_informatique/cours/developpement/developpement-objet/heritage_corrige.html">là</a>. Cependant, ils ne dispensent pas d’aller en cours, c’est une aide à la compréhension.</p>
-</blockquote>
+<h3 id="tests">tests</h3>
 
-<h2 id="séance-tableau">Séance tableau</h2>
-
-<p>Le <a href="ressources/TD_3_impression.pdf">sujet au format pdf</a>.</p>
-
-<h2 id="séance-code">Séance code</h2>
-
-<h3 id="les-bases-de-lhéritage">Les bases de l’héritage</h3>
-
-<h4 id="héritage-de-méthodes">héritage de méthodes</h4>
-
-<p>Écrivez une classe <code class="language-plaintext highlighter-rouge">A</code> qui a :</p>
-
-<ul>
-  <li>un attribut <code class="language-plaintext highlighter-rouge">a</code></li>
-  <li>une méthode <code class="language-plaintext highlighter-rouge">truc_que_fait_a()</code> qui affiche “Truc défini dans la classe mère”</li>
-  <li>une méthode <code class="language-plaintext highlighter-rouge">autre_truc()</code> qui affiche “Autre truc dans la classe mère”</li>
-</ul>
-
-<p>Écrivez une classe <code class="language-plaintext highlighter-rouge">B</code> qui hérite de A et qui a :</p>
-
-<ul>
-  <li>un attribut <code class="language-plaintext highlighter-rouge">b</code></li>
-  <li>le constructeur à 2 paramètres, un qui est initialisé dans la classe A, l’autre initialisé dans B</li>
-  <li>une méthode <code class="language-plaintext highlighter-rouge">autre_truc()</code> qui affiche “C’est mon autre truc à moi”</li>
-  <li>une méthode <code class="language-plaintext highlighter-rouge">que_de_b()</code> qui affiche “Méthode seulement de la classe fille”</li>
-</ul>
-
-<p>Faites bien attention à utiliser proprement le mot-clé <code class="language-plaintext highlighter-rouge">super</code> dans le constructeur de la classe fille.</p>
-
-<p>Créez un objet <code class="language-plaintext highlighter-rouge">objet_a</code> de la classe <code class="language-plaintext highlighter-rouge">A</code> et un objet <code class="language-plaintext highlighter-rouge">objet_b</code> de la classe <code class="language-plaintext highlighter-rouge">B</code>. Essayez les lignes suivantes (une à la
-fois) et prenez le temps de comprendre ce qu’elles font et pourquoi.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">objet_a</span><span class="p">.</span><span class="n">a</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">objet_a</span><span class="p">.</span><span class="n">b</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">objet_b</span><span class="p">.</span><span class="n">a</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">objet_b</span><span class="p">.</span><span class="n">b</span><span class="p">)</span>
-<span class="n">objet_a</span><span class="p">.</span><span class="n">truc_que_fait_a</span><span class="p">()</span>
-<span class="n">objet_a</span><span class="p">.</span><span class="n">autre_truc</span><span class="p">()</span>
-<span class="n">objet_a</span><span class="p">.</span><span class="n">que_de_b</span><span class="p">()</span>
-<span class="n">objet_b</span><span class="p">.</span><span class="n">truc_que_fait_a</span><span class="p">()</span>
-<span class="n">objet_b</span><span class="p">.</span><span class="n">autre_truc</span><span class="p">()</span>
-<span class="n">objet_b</span><span class="p">.</span><span class="n">que_de_b</span><span class="p">()</span>
-</code></pre></div></div>
-
-<h4 id="combinaison-de-méthodes">combinaison de méthodes</h4>
-
-<p>Ajoutez :</p>
-
-<ul>
-  <li>dans la  classe <code class="language-plaintext highlighter-rouge">A</code> : une méthode <code class="language-plaintext highlighter-rouge">j_herite(x)</code> qui prend un paramètre <code class="language-plaintext highlighter-rouge">x</code> qui est une chaine de caractère et affiche la valeur de x</li>
-  <li>dans la  classe <code class="language-plaintext highlighter-rouge">B</code> : une méthode <code class="language-plaintext highlighter-rouge">j_herite(x)</code> qui commence par appeler la méthode de la classe mère puis affiche la valeur de x en majuscules</li>
-</ul>
-
-<p>Vérifiez que tout se passe comme prévu.</p>
+<h3 id="donjons-et-dragons-utilisation">donjons et dragons utilisation</h3>
+<p>une utilisation  à mettre en oeuvre</p>
 
 <h3 id="le-dé">Le dé</h3>
 
@@ -204,9 +157,6 @@ fois) et prenez le temps de comprendre ce qu’elles font et pourquoi.</p>
 
 <p>Prenez le temps de tester votre code (vous pourrez entre autres faire beaucoup de lancers d’un dé et vérifier qu’il suit la loi de probabilité que vous lui avez donnée) et de bien comprendre quelle méthode est appelée et pourquoi quand vous utilisez un <code class="language-plaintext highlighter-rouge">StatDice</code>.</p>
 
-<h4 id="pour-aller-plus-loin">Pour aller plus loin</h4>
-
-<p>On pourra utiliser les <a href="https://docs.python.org/3.8/tutorial/datastructures.html#dictionaries">dictionnaires</a> qui permettent d’associer une clé à une valeur pour faciliter certaines opérations.</p>
 
   </div>
 

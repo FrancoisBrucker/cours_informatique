@@ -98,10 +98,10 @@
 
 <h4 id="chercher-dans-la-hiérarchie">chercher dans la hiérarchie</h4>
 
-<p>Supposons que j’ai un objet de la “classe 2” <code class="language-plaintext highlighter-rouge">o</code> qui veut appeler la méthode 1 : <code class="language-plaintext highlighter-rouge">o.methode1()</code></p>
+<p>Supposons que j’ai un objet de la “classe 2” <code class="language-plaintext highlighter-rouge">obj</code> qui veut appeler la méthode 1 : <code class="language-plaintext highlighter-rouge">obj.methode1()</code></p>
 
 <ol>
-  <li>on va chercher <code class="language-plaintext highlighter-rouge">methode1</code> dans l’espace de nom de <code class="language-plaintext highlighter-rouge">o</code> : il n’y est pas.</li>
+  <li>on va chercher <code class="language-plaintext highlighter-rouge">methode1</code> dans l’espace de nom de <code class="language-plaintext highlighter-rouge">obj</code> : il n’y est pas.</li>
   <li>on va alors chercher dans sa classe, <code class="language-plaintext highlighter-rouge">classe2</code> : elle ne définit pas <code class="language-plaintext highlighter-rouge">méthode1</code></li>
   <li>on cherche alors dans la classe mère de classe 2, <code class="language-plaintext highlighter-rouge">classe1</code> : <code class="language-plaintext highlighter-rouge">méthode1</code> est définie, on utilise son code.</li>
 </ol>
@@ -117,8 +117,6 @@
 <blockquote>
   <p>si l’on ne retrouve pas la méthode dans la classe mère, on remonte la hiérarchie. De là tenter d’utiliser la méthode <code class="language-plaintext highlighter-rouge">méthode1</code>  de la classe <code class="language-plaintext highlighter-rouge">1'</code> en définissant la  méthode <code class="language-plaintext highlighter-rouge">méthode1</code>  de la classe <code class="language-plaintext highlighter-rouge">2''</code> va en fait exécuter la méthode  méthode <code class="language-plaintext highlighter-rouge">méthode1</code>  de la classe <code class="language-plaintext highlighter-rouge">object</code></p>
 </blockquote>
-
-<p>méthode 1 de classe 1 qui appelle méthode 1 de object</p>
 
 <h3 id="connaitre-la-hiérarchie">connaitre la hiérarchie</h3>
 
@@ -136,7 +134,7 @@
 <p>L’ordre dans lequel est examinée les classe pour les chaines de caractères est donc : d’abord la classe <code class="language-plaintext highlighter-rouge">str</code> puis la classe <code class="language-plaintext highlighter-rouge">object</code></p>
 
 <blockquote>
-  <p>La classe object est toujours le dernier élément de la liste</p>
+  <p>La classe <code class="language-plaintext highlighter-rouge">object</code> est toujours le dernier élément de la liste</p>
 </blockquote>
 
 <h3 id="quand-utiliser-lhéritage">quand utiliser l’héritage</h3>
@@ -154,13 +152,15 @@
 
 <h3 id="héritage-multiple">héritage multiple</h3>
 
-<p>Python autorise l’<a href="https://docs.python.org/fr/3/tutorial/classes.html#multiple-inheritance">héritage multiple</a></p>
+<p>Python autorise l’<a href="https://docs.python.org/fr/3/tutorial/classes.html#multiple-inheritance">héritage multiple</a>, mais sans très bonne raison il est plus que recommandé de ne pas l’utiliser. Il existe <strong>toujours</strong> une solution utilisant l’héritage simple qui sera plus facile à comprendre et surtout à maintenir dans le temps.</p>
 
-<p>Règle du diamant en python mais, sans une très bonne raison, <strong>il ne faut pas l’utiliser</strong> dans nos propre programme, car ça le rend trop confus.</p>
+<p>D’ailleurs, certains langages, comme le java ou par exemple, interdisent carrément l’héritage multiple.</p>
 
-<p>Certains langages, comme le java ou par exemple, interdisent carrément l’héritage multiple.</p>
+<blockquote>
+  <p>Si cela vous intéresse, python utilise la règle <a href="https://en.wikipedia.org/wiki/C3_linearization">de linéarisation C3</a> pour réaliser l’ordre de priorité des classes (le mro), ceci permet de résoudre le <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_diamant">problème du diamant</a> en héritage multiple.</p>
+</blockquote>
 
-<h2 id="exercice-1">Exercice 1</h2>
+<h2 id="exemple-1--héritage-simple">Exemple 1 : héritage simple</h2>
 
 <p>L’idée est juste de présenter avec quelque chose de simple et facile à se représenter la notion d’héritage. On donnera l’UML des classes dans tous les cas et le code seulement s’il est lié à l’héritage.</p>
 
@@ -196,7 +196,8 @@
 <blockquote>
   <p>TBD
 ajouter appelle à <strong>str</strong> comme recherche pure d’une classe dans la hiérarchie
-ajouter cercle inscrit. en paramètre</p>
+ajouter cercle inscrit. en paramètre
+super : https://he-arc.github.io/livre-python/super/index.html</p>
 </blockquote>
 
 <h3 id="exercice-2">Exercice 2</h3>
@@ -257,20 +258,54 @@ ajouter cercle inscrit. en paramètre</p>
   </blockquote>
 </blockquote>
 
-<h2 id="points-de-vigilance">points de vigilance</h2>
+<h3 id="les-bases-de-lhéritage">Les bases de l’héritage</h3>
 
-<p>Toujours très aimé mais l’intérêt est plus réduit qu’on ne peu le penser. Avant de faire de l’héritage regardez si une composition et un agrégation ne feraient pas mieux le travail.</p>
+<h4 id="héritage-de-méthodes">héritage de méthodes</h4>
 
-<p>attention : aux variable de la classe qui ne doivent pas être redéfini dans l’héritage (mais on ne sais pas lesquelles c’est…)
-En python <code class="language-plaintext highlighter-rouge">__variable</code>  n’est pas passée aux descendants.</p>
+<p>Écrivez une classe <code class="language-plaintext highlighter-rouge">A</code> qui a :</p>
 
-<p>Si l’on redéfini toutes les classes de la classe mere sans les utililser : pas un bon signe.</p>
+<ul>
+  <li>un attribut <code class="language-plaintext highlighter-rouge">a</code></li>
+  <li>une méthode <code class="language-plaintext highlighter-rouge">truc_que_fait_a()</code> qui affiche “Truc défini dans la classe mère”</li>
+  <li>une méthode <code class="language-plaintext highlighter-rouge">autre_truc()</code> qui affiche “Autre truc dans la classe mère”</li>
+</ul>
 
-<p>héritage multiple autorisé en python, mais c’est très compliqué. règle de u diamant : c’est fait pour simplifier le code pas le rendre necore plus compliqué.</p>
+<p>Écrivez une classe <code class="language-plaintext highlighter-rouge">B</code> qui hérite de A et qui a :</p>
 
-<h2 id="variables-de-classe">variables de classe</h2>
+<ul>
+  <li>un attribut <code class="language-plaintext highlighter-rouge">b</code></li>
+  <li>le constructeur à 2 paramètres, un qui est initialisé dans la classe A, l’autre initialisé dans B</li>
+  <li>une méthode <code class="language-plaintext highlighter-rouge">autre_truc()</code> qui affiche “C’est mon autre truc à moi”</li>
+  <li>une méthode <code class="language-plaintext highlighter-rouge">que_de_b()</code> qui affiche “Méthode seulement de la classe fille”</li>
+</ul>
 
-<p>parler des variables de classes.</p>
+<p>Faites bien attention à utiliser proprement le mot-clé <code class="language-plaintext highlighter-rouge">super</code> dans le constructeur de la classe fille.</p>
+
+<p>Créez un objet <code class="language-plaintext highlighter-rouge">objet_a</code> de la classe <code class="language-plaintext highlighter-rouge">A</code> et un objet <code class="language-plaintext highlighter-rouge">objet_b</code> de la classe <code class="language-plaintext highlighter-rouge">B</code>. Essayez les lignes suivantes (une à la
+fois) et prenez le temps de comprendre ce qu’elles font et pourquoi.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">objet_a</span><span class="p">.</span><span class="n">a</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">objet_a</span><span class="p">.</span><span class="n">b</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">objet_b</span><span class="p">.</span><span class="n">a</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">objet_b</span><span class="p">.</span><span class="n">b</span><span class="p">)</span>
+<span class="n">objet_a</span><span class="p">.</span><span class="n">truc_que_fait_a</span><span class="p">()</span>
+<span class="n">objet_a</span><span class="p">.</span><span class="n">autre_truc</span><span class="p">()</span>
+<span class="n">objet_a</span><span class="p">.</span><span class="n">que_de_b</span><span class="p">()</span>
+<span class="n">objet_b</span><span class="p">.</span><span class="n">truc_que_fait_a</span><span class="p">()</span>
+<span class="n">objet_b</span><span class="p">.</span><span class="n">autre_truc</span><span class="p">()</span>
+<span class="n">objet_b</span><span class="p">.</span><span class="n">que_de_b</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h4 id="combinaison-de-méthodes">combinaison de méthodes</h4>
+
+<p>Ajoutez :</p>
+
+<ul>
+  <li>dans la  classe <code class="language-plaintext highlighter-rouge">A</code> : une méthode <code class="language-plaintext highlighter-rouge">j_herite(x)</code> qui prend un paramètre <code class="language-plaintext highlighter-rouge">x</code> qui est une chaine de caractère et affiche la valeur de x</li>
+  <li>dans la  classe <code class="language-plaintext highlighter-rouge">B</code> : une méthode <code class="language-plaintext highlighter-rouge">j_herite(x)</code> qui commence par appeler la méthode de la classe mère puis affiche la valeur de x en majuscules</li>
+</ul>
+
+<p>Vérifiez que tout se passe comme prévu.</p>
 
 
   </div>
