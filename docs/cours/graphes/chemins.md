@@ -204,6 +204,13 @@ D'ailleurs, un tel chemin existe-t-il ?
 > Montrez que s'il existe un circuit de valuation strictement négative (on appelle ces circuit **circuits absorbant**), la notion même de chemin de valuation minimum cesse d'exister
 {: .a-faire}
 
+Pour régler ce problème, on utilise l'algorithme de [Floyd-Warshall](https://fr.wikipedia.org/wiki/Algorithme_de_Floyd-Warshall) qui trouve, en $\mathcal{O}(\vert V \vert ^3)$ :
+
+* les circuits absorbant s'il y en a
+* tous les chemins de longueur minimum allant de $x$ à $y$ pour tous les sommets $x$ et $y$.
+
+> Si les poids sont positifs, il vaut mieux utiliser Dijkstra pour trouver 1 chemin entre $x$ et $y$ ou tous les chemins de $x$ à tous les autres sommets, mais si l'on cherche  tous les chemins, il vaut mieux utiliser Floyd-Warshall.
+
 ### graphe inconnu ou changeant
 
 Un algorithme beaucoup utilisé lorsque le graphe peut changer ou s'il est très grand, voir inconnu (un terrain de jeu) est l'algorithme $A^*$.

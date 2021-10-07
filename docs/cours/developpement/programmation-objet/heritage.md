@@ -71,8 +71,8 @@ La composition et l'agrégation permettent de factoriser des fonctionnalités al
 
 Il y a cependant des cas où l'héritage est très utile :
 
-* lorsque l'on veut spécifier une classe (un cas particulier)
-* lors de l'utilisation de bibliothèques
+* lorsque l'on veut spécifier une classe : la nouvelle classe est un cas particulier de la classe mère**
+* lors de l'utilisation de bibliothèques : on particularise à nos besoin une classe générique donnée par un module que l'on a pas écrit.
 
 La règle est que lorsque l'héritage doit re-écrire toutes les méthodes de sa classe mère pour qu'il n'y ait pas de conflit, alors il faut changer d'approche. Une classe et sa classe mère doivent partager beaucoup de méthodes (ou que les méthodes soient des cas particuliers)
 
@@ -86,64 +86,209 @@ D'ailleurs, certains langages, comme le java ou par exemple, interdisent carrém
 
 ## Exemple 1 : héritage simple
 
-L'idée est juste de présenter avec quelque chose de simple et facile à se représenter la notion d'héritage. On donnera l'UML des classes dans tous les cas et le code seulement s'il est lié à l'héritage.
+On présente ici un premier exemple d'utilisation de l'héritage, en combinaison d'une composition.
 
-Classe `Point` :
+On veut manipuler des polygones. On veut pouvoir :
 
-![point]({{ "img/point.png"}})
+* créer un polygone à partir d'une liste de sommets donnée
+* calculer l'aire du polygone
+* calculer le périmètre du polygone
 
-Rien de particulier, pour la classe `Polygon` qui est une agrégation avec points :
+### classes Point et Polygone
 
-![polygon]({{ "img/polygon.png"}})
+Pour cela, on va créer une classe `Point` et une classe `Polygone` :
 
-C'est bien une agrégation puisque utilise des objets `Point` comme attribut mais ces points existent indépendamment du polygone et on les ajoute dans l'attribut `vertices` lors de la création de l'objet.
+* classe `Point` :
+  * on se restreint à la 2D
+  * coordonnées cartésiennes
+  * distance à un autre point pour pouvoir plus facilement calculer le périmètre ensuite
+* classe `Polygone` :
+  * création avec une liste de Point
+  * calcul du périmètre
+  * calcul de l'aire
 
-Classe `Triangle`:
+On va supposer que le [polygone est simple](https://fr.wikipedia.org/wiki/Polygone_simple) pour simplifier le calcul de l'aire...
 
-![triangle]({{"img/triangle.png"}})
+#### uml
 
-L'héritage arrive ici. On fait une version restreinte du polygone très simple. La classe `Triangle` hérite de `Polygon`, on appelle donc le constructeur de ce dernier lors de la création d'un `Triangle`.
+Point et polygone entretiennent un lien d'agrégation (les points sont passé au polygone à sa construction). Le modèle UML suivant :
+
+![point polygone]({{ "/assets/cours/developpement/programmation-objet/heritage_point_poly.png" | relative_url }}){:style="margin: auto;display: block}
+
+#### code python
+
+On peut alors avoir le code python suivant pour créer les classes :
+
+```python
+from math import sqrt
+
+
+class Point:
+    def __init__(self, x, y):
+        self._x = x
+        self._y = y
+
+    def get_x(self):
+        return self._x
+
+    def get_y(self):
+        return self._y
+
+    def set_x(self, x):
+        self._x = x
+
+    def set_y(self):
+        self._y = y
+
+    def distance(self, other):
+        x1 = self.get_x()
+        x2 = other.get_x()
+
+        y1 = self.get_y()
+        y2 = other.get_y()
+
+        return sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2)
+
+
+class Polygone:
+    def __init__(self, points):
+        self._points = tuple(points)
+
+    def périmètre(self):
+        d = 0
+        pivot = self._points[0]
+        for point in self._points[1:]:
+            d += pivot.distance(point)
+            pivot = point
+        d += pivot.distance(self._points[0])
+
+        return d
+
+    def aire(self):
+        a = 0
+        pivot = self._points[0]
+        for point in self._points[1:]:
+            a += pivot.get_x() * point.get_y() - pivot.get_y() * point.get_x()
+            pivot = point
+
+        point = self._points[0]
+        a += pivot.get_x() * point.get_y() - pivot.get_y() * point.get_x()
+
+        return 0.5 * abs(a)
+
+```
+
+> On a rendu les attributs des classes privé. La convention en python pour rendre un attribut privé est de lui coller un `_` avant son nom.
+
+Remarques :
+
+1. Remarquez que l'on utiliser toujours les méthodes (si elles existent) pour accéder aux attributs, cela permettra si besoin de changer les attributs de la classes (passer en coordonnées polaires par exemple) sans changer le code des méthodes.
+2. Pour la classe polygone, on recrée une liste de points pour être sur que le nombre de points reste constant (la liste est passée en paramètre et peut donc être modifiées à 'extérieur de la classe)
+3. Notez que l'on ne recrée pas les points, ils peuvent donc changer car ils sont passés en paramètre de la construction du polygone
+
+On peut tester le code avec, par exemple :
+
+```python
+points = [Point(0, 0), Point(0, 2), Point(1, 2), Point(1, 0)]
+polygone = Polygone(points)
+print(polygone.périmètre())
+print(polygone.aire())
+```
+
+### un polygone particulier
+
+Comment modéliser une classe triangle ?
+
+Comme un triangle **est un** polygone simple, on peut utiliser l'héritage pour cela.
+
+#### modélisation UML
+
+Elle est très simple :
+
+![triangle]({{ "/assets/cours/developpement/programmation-objet/heritage_triangle.png" | relative_url }}){:style="margin: auto;display: block}
+
+#### code python
+
+La classe `Triangle` hérite de `Polygon`, on appelle donc le constructeur de ce dernier lors de la création d'un `Triangle`.
 
 Ceci est explicite en python :
 
+```python
+class Triangle(Polygone):
+    def __init__(self, point1, point2, point3):
+        super().__init__([point1, point2, point3])
+```
 
-~~~ python
-class Triangle(Polygon):
-  def __init__(self, point1, point2, point3):
-    super().__init__([point1, point2, point3])
-~~~
+Le mot clé `super()` désigne la classe parente, ici `Polygone`. Ce mot clé permet d'utiliser toutes les méthodes de la classe parente, ici `__init__`. Remarquez que l'on utilise la méthode `__init__` sans utiliser le premier paramètre (`self`) qui est implicitement l'objet courant.
 
-Le mot clé `super()` désigne la classe parente, ici `Polygon`.Ce mot clé permet d'utiliser toutes les méthodes de la classe parente, ici `__init__`. Remarquez que l'on utilise la méthode `__init__` sans utiliser le premier paramètre (`self`) qui est implicitement l'objet courant. 
+Si on regarde l'ordre dans lequel est examiné les espaces de nom, on a (c'est la commande `Triangle.mro()`) :
 
-L'UML complet donne donc :
+```python
+[<class '__main__.Triangle'>, <class '__main__.Polygone'>, <class 'object'>]
+```
 
-![polygone_uml_entier]({{ "img/polygone_uml_entier.png" }})
+> Un petit tuto sur [la fonction super](https://he-arc.github.io/livre-python/super/index.html )
 
-> TBD
-> ajouter appelle à __str__ comme recherche pure d'une classe dans la hiérarchie
-> ajouter cercle inscrit. en paramètre
-> super : https://he-arc.github.io/livre-python/super/index.html 
+On peut maintenant utiliser toutes les méthodes définies dans Polygone puisque le constructeur de `Triangle` appelle directement le constructeur de `Polygone` : à la fin du constructeur, il existera une liste de points dans le triangle.
 
+```python
+    triangle = Triangle(Point(0, 0), Point(1, 1), Point(2, 0))
+    print(triangle.périmètre())
+    print(triangle.aire())
+```
 
+Pour trouver le périmètre, python fonctionne ainsi :
 
+1. existe-t-il un nom `périmètre` dans l'objet `triangle` : NON
+2. existe-t-il un nom `périmètre` dans la classe de l'objet `triangle`, `Triangle` : NON
+3. existe-t-il un nom `périmètre` dans la classe mère de `Triangle`, `Polygone` : OUI
 
-### Exercice 2
+Une fois la méthode trouvée, on l'exécute en plaçant l'objet (ici notre `triangle` en 1er paramètre, c'est à dire `self` de la méthode `périmètre` définie dans `Polygone`).
 
-La classe `Personnage` ne pose normalement pas de problèmes :
+## Exemple 2 : donjons et dragons
 
-![personnage]({{ "img/personnage.png" }})
+On va simuler des personnage d'*heroic fantasy*. Pour cela, on commence par créer une classe `Personnage` qui sera particularisée petit à petit.
 
-On précise le code de `taper` et `se_faire_taper` qui permet à chacun de se faire taper comme il l'entend :
+### classe Personnage
 
+Le personnage générique doit :
 
-~~~ python
-def taper(self, personnage):
-    personnage.se_faire_taper(self)
+* avoir un score d'attaque
+* avoir des points de vie
+* pouvoir modifier son score d'ataque et ses points de vie
+* taper un autre personnage (lui faire perdre un nombre de point de vie égale à son score d'attaque)
+* se faire taper par un autre personnage
 
-def se_faire_taper(self, personnage):
-    self.set_vie(self.get_vie() - personnage.get_attaque())
-~~~
+#### UML du personnage
 
+![personnage]({{ "/assets/cours/developpement/programmation-objet/heritage_personnage.png" | relative_url }}){:style="margin: auto;display: block}
+
+#### code python du personnage
+
+On a décidé ici de ne pas mettre de méthode get et set, mais de laisser libre accès aux attributs. C'est un choix possible.
+
+```python
+class Personnage:
+    def __init__(self, vie, attaque):
+        self.vie = vie
+        self.attaque = attaque
+
+    def se_faire_taper(self, personnage):
+        self.vie -= personnage.get_attaque()
+
+    def taper(self, personnage):
+        personnage.se_faire_taper(self)
+```
+
+Voyez comment on a utilisé la méthode `se_faire_taper` pour définir la méthode `taper`.
+
+### la classe guerrière
+
+#### modèle UML de la guerrière
+
+c'est un personnage, on peut donc utiliser l'héritage.
+
+#### code python de la guerrière
 
 On ajoute la guerrière :
 
