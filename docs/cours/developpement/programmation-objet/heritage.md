@@ -2,7 +2,6 @@
 layout: page
 title:  "Héritage"
 category: cours
-tags: mie
 authors: 
   - François Brucker
   - Célia Châtel
@@ -276,7 +275,7 @@ class Personnage:
         self.attaque = attaque
 
     def se_faire_taper(self, personnage):
-        self.vie -= personnage.get_attaque()
+        self.vie -= personnage.attaque
 
     def taper(self, personnage):
         personnage.se_faire_taper(self)
@@ -300,7 +299,7 @@ On ne met que les méthodes qui changent, donc le constructeur et se faire taper
 
 ```python
 # ... 
-import randint
+import random
 #...
 
 class Guerriere(Personnage):
@@ -355,7 +354,7 @@ class Personnage:
         self.attaque = attaque
 
     def se_faire_taper(self, personnage):
-        self.vie -= personnage.get_attaque()
+        self.vie -= personnage.attaque
 
     def taper(self, personnage):
         personnage.se_faire_taper(self)
@@ -364,9 +363,9 @@ class Personnage:
     def vie(self):
         return self._vie
 
-    @property.setter
+    @vie.setter
     def vie(self, valeur):
-        self._vie -= valeur
+        self._vie = valeur
         if self._vie <= 0:
             self._vie = 0
             print("je suis mort")
@@ -389,41 +388,110 @@ Comment faire une classe `A` qui a :
 * une méthode `truc_que_fait_a()` qui affiche "Truc défini dans la classe mère"
 * une méthode `autre_truc()` qui affiche "Autre truc dans la classe mère"
 
-Écrivez une classe `B` qui hérite de A et qui a :
+{% details solution %}
 
- - un attribut `b`
- - le constructeur à 2 paramètres, un qui est initialisé dans la classe A, l'autre initialisé dans B
- - une méthode `autre_truc()` qui affiche "C'est mon autre truc à moi"
- - une méthode `que_de_b()` qui affiche "Méthode seulement de la classe fille"
+```python
+class A:
+    def __init__(self, a):
+        self.a = a
+
+    def truc_que_fait_a(self):
+        print("Truc défini dans la classe mère")
+
+    def truc_que_fait_a(self):
+        print("Autre truc dans la classe mère")  
+```
+
+{% enddetails %}
+
+Écrivez une classe `B` qui hérite de `A` et qui a :
+
+* un attribut `b`
+* le constructeur à 2 paramètres (a et b), un qui est initialisé dans la classe A (a), l'autre initialisé dans B (b)
+* une méthode `autre_truc()` qui affiche "C'est mon autre truc à moi"
+* une méthode `que_de_b()` qui affiche "Méthode seulement de la classe fille"
+
+{% details solution %}
+
+```python
+class B(A):
+    def __init__(self, a, b):
+        super().__init__(a)
+        self.b = b
+
+    def autre_truc(self):
+        print("C'est mon autre truc à moi")
+
+    def que_de_b(self):
+        print("Méthode seulement de la classe fille")
+```
 
 Faites bien attention à utiliser proprement le mot-clé `super` dans le constructeur de la classe fille.
 
-Créez un objet `objet_a` de la classe `A` et un objet `objet_b` de la classe `B`. Essayez les lignes suivantes (une à la
-fois) et prenez le temps de comprendre ce qu'elles font et pourquoi.
+{% enddetails %}
 
-~~~ python
-print(objet_a.a)
-print(objet_a.b)
-print(objet_b.a)
-print(objet_b.b)
-objet_a.truc_que_fait_a()
-objet_a.autre_truc()
-objet_a.que_de_b()
-objet_b.truc_que_fait_a()
-objet_b.autre_truc()
-objet_b.que_de_b()
-~~~
+### attribut de classe
 
+Ajoutez dans `A` un attribut de classe `CTE` constante valant `un attribut de classe`
+
+{% details solution %}
+
+```python
+class A:
+    CTE = "un attribut de classe"
+
+    def __init__(self, a):
+        self.a = a
+    
+    def truc_que_fait_a(self):
+        print("Truc défini dans la classe mère")
+    
+    def truc_que_fait_a(self):
+        print("Autre truc dans la classe mère")  
+```
+
+{% enddetails %}
 
 ### combinaison de méthodes
 
 Ajoutez :
 
-  - dans la  classe `A` : une méthode `j_herite(x)` qui prend un paramètre `x` qui est une chaine de caractère et affiche la valeur de x
-  - dans la  classe `B` : une méthode `j_herite(x)` qui commence par appeler la méthode de la classe mère puis affiche la valeur de x en majuscules
+* dans la  classe `A` : une méthode `j_herite(x)` qui prend un paramètre `x` qui est une chaine de caractère et affiche la valeur de x
+* dans la  classe `B` : une méthode `j_herite(x)` qui commence par appeler la méthode de la classe mère puis affiche la valeur de x en majuscules
 
-Vérifiez que tout se passe comme prévu.
+{% details solution %}
 
-### attributs de classes
+```python
+class A:
+    CTE = "un attribut de classe"
 
-tbd
+    def __init__(self, a):
+        self.a = a
+
+    def truc_que_fait_a(self):
+        print("Truc défini dans la classe mère")
+
+    def truc_que_fait_a(self):
+        print("Autre truc dans la classe mère")
+
+    def j_herite(self, x):
+        print(x)
+
+
+class B(A):
+    def __init__(self, a, b):
+        super().__init__(a)
+        self.b = b
+
+    def autre_truc(self):
+        print("C'est mon autre truc à moi")
+
+    def que_de_b(self):
+        print("Méthode seulement de la classe fille")
+
+    def j_herite(self, x):
+        super().j_herite(x)
+        print(x.upper())
+```
+
+{% enddetails %}
