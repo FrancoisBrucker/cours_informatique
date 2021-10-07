@@ -207,7 +207,9 @@ Elle est très simple :
 
 ![triangle]({{ "/assets/cours/developpement/programmation-objet/heritage_triangle.png" | relative_url }}){:style="margin: auto;display: block}
 
-#### code python
+Notez que pour l'héritage, on ne remet pas les attributs/méthodes définis dans les classes mères.
+
+#### code python du Triangle
 
 La classe `Triangle` hérite de `Polygon`, on appelle donc le constructeur de ce dernier lors de la création d'un `Triangle`.
 
@@ -265,7 +267,7 @@ Le personnage générique doit :
 
 #### code python du personnage
 
-On a décidé ici de ne pas mettre de méthode get et set, mais de laisser libre accès aux attributs. C'est un choix possible.
+On a décidé ici de ne pas mettre de méthode get et set, mais de laisser libre accès aux attributs. C'est un choix possible. L'UML dérive donc un peut du code python ce qui est normal, chaque langage ayant ses spécificités.
 
 ```python
 class Personnage:
@@ -284,9 +286,13 @@ Voyez comment on a utilisé la méthode `se_faire_taper` pour définir la métho
 
 ### la classe guerrière
 
+La guerrière dispose d'un score de bloquage qui représente son pourcentage de chances de ne pas perdre de vie quand un autre personnage l'attaque.
+
 #### modèle UML de la guerrière
 
 c'est un personnage, on peut donc utiliser l'héritage.
+
+
 
 #### code python de la guerrière
 
@@ -314,6 +320,11 @@ class Guerriere(Personnage):
 
 Prenez le temps de faire des exemples d'utilisation et de vérifier que tous les cas marchent. En particulier qu'est-ce qui est appelé quand on fait `guerriere.se_faire_taper(bonhomme)` avec un objet `guerriere` de la classe `Guerriere` ?
 
+
+### le magicien
+
+Le magicien peut faire tout ce que peut faire un personnage normal mais il dispose en plus d'un score d'attaque magique qui détermine les dégâts qu'il fait en lançant un sort. Modéliser la classe \texttt{Magicien}.
+
 Le magicien permet de montrer l'ajout d'une méthode qui n'était pas du tout dans la classe mère :
 
 ![magicien]({{ "img/magicien.png"}})
@@ -327,9 +338,11 @@ Le code n'est pas difficile, on se passera donc de l'écrire complètement. Il f
 > **Nota Bene :** Ces exemples sur l'héritage sont un peu forcés. C'est parce que l'héritage n'est que très peu utilisé en code pure. Il est même considéré comme préjudiciable dans la plupart des cas (voir )[là](https://codeburst.io/inheritance-is-evil-stop-using-it-6c4f1caf5117) ou encore [là](http://neethack.com/2017/04/Why-inheritance-is-bad/)). 
 > >Un cas d'utilisation reconnu est cependant lorsque l'on veut utiliser des classes définies dans un module quelconque et la mettre un peu à notre sauce. Comme dans des bibliothèques graphiques par exemple.
 
-### Les bases de l'héritage
 
-#### héritage de méthodes
+
+## odds and ends
+
+### héritage de méthodes
 
 Écrivez une classe `A` qui a :
 
@@ -363,7 +376,7 @@ objet_b.que_de_b()
 ~~~
 
 
-#### combinaison de méthodes
+### combinaison de méthodes
 
 Ajoutez :
 
@@ -372,3 +385,6 @@ Ajoutez :
 
 Vérifiez que tout se passe comme prévu.
 
+### attributs de classes
+
+tbd
