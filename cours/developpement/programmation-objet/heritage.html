@@ -382,60 +382,100 @@
 
 <p>c’est un personnage, on peut donc utiliser l’héritage.</p>
 
+<p><img src="/cours_informatique/assets/cours/developpement/programmation-objet/heritage_guerriere.png" alt="Guerrière" /></p>
+
+<p>On ne met que les méthodes qui changent, donc le constructeur et se faire taper.</p>
+
 <h4 id="code-python-de-la-guerrière">code python de la guerrière</h4>
 
-<p>On ajoute la guerrière :</p>
-
-<p><img src="img/guerriere.png" alt="guerriere" /></p>
-
-<p>On donne ci-après une partie du code de la guerrière  (on a en particulier pas écrit la méthode <code class="language-plaintext highlighter-rouge">bloque</code> qui fait le tirage pour savoir si on bloque ou pas). Faites attention et comprenez bien :</p>
-
-<ul>
-  <li>l’appel à <code class="language-plaintext highlighter-rouge">super().__init__()</code> au début du constructeur de la classe fille,</li>
-  <li>qu’on ajoute un attribut à la guerrière par rapport au personnage normal,</li>
-  <li>la méthode <code class="language-plaintext highlighter-rouge">se_faire_taper(personnage)</code> utilise la méthode <code class="language-plaintext highlighter-rouge">se_faire_taper</code> de la classe <code class="language-plaintext highlighter-rouge">Personnage</code> seulement si la guerrière ne bloque pas le coup. Le <code class="language-plaintext highlighter-rouge">super().methode_de_la_mere()</code> permet d’accéder à la méthode de la classe mère même de même nom qu’une méthode (différente) de la classe fille.</li>
-</ul>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Guerriere</span><span class="p">(</span><span class="n">Personnage</span><span class="p">):</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ... 
+</span><span class="kn">import</span> <span class="nn">randint</span>
+<span class="c1">#...
+</span>
+<span class="k">class</span> <span class="nc">Guerriere</span><span class="p">(</span><span class="n">Personnage</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vie</span><span class="p">,</span> <span class="n">attaque</span><span class="p">,</span> <span class="n">blocage</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">().</span><span class="n">__init__</span><span class="p">(</span><span class="n">vie</span><span class="p">,</span> <span class="n">attaque</span><span class="p">)</span>
         <span class="bp">self</span><span class="p">.</span><span class="n">blocage</span> <span class="o">=</span> <span class="n">blocage</span>
 
     <span class="k">def</span> <span class="nf">se_faire_taper</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">personnage</span><span class="p">):</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="p">.</span><span class="n">bloque</span><span class="p">(</span><span class="n">personnage</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">blocage</span> <span class="o">&gt;=</span> <span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">):</span>
             <span class="nb">super</span><span class="p">().</span><span class="n">se_faire_taper</span><span class="p">(</span><span class="n">personnage</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>Prenez le temps de faire des exemples d’utilisation et de vérifier que tous les cas marchent. En particulier qu’est-ce qui est appelé quand on fait <code class="language-plaintext highlighter-rouge">guerriere.se_faire_taper(bonhomme)</code> avec un objet <code class="language-plaintext highlighter-rouge">guerriere</code> de la classe <code class="language-plaintext highlighter-rouge">Guerriere</code> ?</p>
+<p>Comprenez bien le code :</p>
+
+<ul>
+  <li>On commence par appeler le constructeur de la classe mère (<code class="language-plaintext highlighter-rouge">super().__init__()</code>) puis on applique le cas particulier de notre classe (<code class="language-plaintext highlighter-rouge">self.blocage = blocage</code>).</li>
+  <li>on ajoute un attribut à la guerrière par rapport au personnage normal,</li>
+  <li>la méthode <code class="language-plaintext highlighter-rouge">se_faire_taper(personnage)</code> utilise la méthode <code class="language-plaintext highlighter-rouge">se_faire_taper</code> de la classe <code class="language-plaintext highlighter-rouge">Personnage</code> seulement si la guerrière ne bloque pas le coup. Le <code class="language-plaintext highlighter-rouge">super().methode_de_la_mere()</code> permet d’accéder à la méthode de la classe mère même de même nom qu’une méthode (différente) de la classe fille.</li>
+</ul>
+
+<blockquote class="attention">
+  <p>On utilise <strong>toujours</strong> le constructeur de la classe mère pour garantir que les méthodes définie dans la classe mère fonctionnent avec les objets de la classe fille. Sinon ici, <code class="language-plaintext highlighter-rouge">se_faire_taper</code> ne fonctionnerait pas puisque vie et attaque ne seraient pas défini</p>
+</blockquote>
 
 <h3 id="le-magicien">le magicien</h3>
 
-<p>Le magicien peut faire tout ce que peut faire un personnage normal mais il dispose en plus d’un score d’attaque magique qui détermine les dégâts qu’il fait en lançant un sort. Modéliser la classe \texttt{Magicien}.</p>
+<p>Le magicien peut faire tout ce que peut faire un personnage normal mais il dispose en plus d’un score d’attaque magique qui détermine les dégâts qu’il fait en lançant un sort.</p>
 
-<p>Le magicien permet de montrer l’ajout d’une méthode qui n’était pas du tout dans la classe mère :</p>
+<h4 id="modèle-uml-du-magicien">modèle UML du magicien</h4>
 
-<p><img src="img/magicien.png" alt="magicien" /></p>
+<p>On ajoute une nouvelle méthode qui n’existe pas dans la classe mère :</p>
 
-<p>Le code n’est pas difficile, on se passera donc de l’écrire complètement. Il faut :</p>
+<p><img src="/cours_informatique/assets/cours/developpement/programmation-objet/heritage_magicien.png" alt="Magicien" /></p>
+
+<h4 id="code-python-du-magicien">code python du magicien</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Magicien</span><span class="p">(</span><span class="n">Personnage</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vie</span><span class="p">,</span> <span class="n">attaque</span><span class="p">,</span> <span class="n">attaque_magique</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">().</span><span class="n">__init__</span><span class="p">(</span><span class="n">vie</span><span class="p">,</span> <span class="n">attaque</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">attaque_magique</span> <span class="o">=</span> <span class="n">attaque_magique</span>
+
+    <span class="k">def</span> <span class="nf">lancer_sort</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">personnage</span><span class="p">):</span>
+        <span class="n">personnage</span><span class="p">.</span><span class="n">vie</span> <span class="o">-=</span> <span class="bp">self</span><span class="p">.</span><span class="n">attaque_magique</span>
+</code></pre></div></div>
+
+<p>On voit là que le personnage peut mourir si sa vie descend en dessous de 0. Comme on ne modifie qu’un attribut, on ne peut associer aucune méthode à cette mort. Il faut donc rendre l’attribut vie privé et n’y accéder qu’avec une méthode.</p>
+
+<p>Une autre solution élégante en python est d’utiliser des <a href="https://www.it-swarm-fr.com/fr/python/utiliser-property-contre-les-getters-et-les-setters/972255514/">@property</a> qui font comme si on modifiait un attribut alors qu’on exécute une fonction :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Personnage</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vie</span><span class="p">,</span> <span class="n">attaque</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_vie</span> <span class="o">=</span> <span class="n">vie</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">attaque</span> <span class="o">=</span> <span class="n">attaque</span>
+
+    <span class="k">def</span> <span class="nf">se_faire_taper</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">personnage</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">vie</span> <span class="o">-=</span> <span class="n">personnage</span><span class="p">.</span><span class="n">get_attaque</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">taper</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">personnage</span><span class="p">):</span>
+        <span class="n">personnage</span><span class="p">.</span><span class="n">se_faire_taper</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="o">@</span><span class="nb">property</span>
+    <span class="k">def</span> <span class="nf">vie</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">_vie</span>
+
+    <span class="o">@</span><span class="nb">property</span><span class="p">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">vie</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valeur</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_vie</span> <span class="o">-=</span> <span class="n">valeur</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">_vie</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">_vie</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">"je suis mort"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Si l’on utilise la classe précédente, écrire :</p>
 
 <ul>
-  <li>ajouter une méthode <code class="language-plaintext highlighter-rouge">lancer_sort</code></li>
-  <li>ajouter un paramètre et son attribut associé <code class="language-plaintext highlighter-rouge">attaque_magique</code> au constructeur</li>
-  <li>ajouter une méthode <code class="language-plaintext highlighter-rouge">se_faire_toucher_par_un_sort(magicien)</code> avec un paramètre de type Magicien dans la classe Personnage.</li>
+  <li><code class="language-plaintext highlighter-rouge">gandalf.vie = 1</code> est équivalent à écrire <code class="language-plaintext highlighter-rouge">gandalf.vie(1)</code> (on utilise la méthode)</li>
+  <li><code class="language-plaintext highlighter-rouge">print(gendalf.vie)</code> sera équivalent à utiliser la méthode en-dessous du <code class="language-plaintext highlighter-rouge">@property.setter</code></li>
 </ul>
-
-<blockquote>
-  <p><strong>Nota Bene :</strong> Ces exemples sur l’héritage sont un peu forcés. C’est parce que l’héritage n’est que très peu utilisé en code pure. Il est même considéré comme préjudiciable dans la plupart des cas (voir )<a href="https://codeburst.io/inheritance-is-evil-stop-using-it-6c4f1caf5117">là</a> ou encore <a href="http://neethack.com/2017/04/Why-inheritance-is-bad/">là</a>).</p>
-  <blockquote>
-    <p>Un cas d’utilisation reconnu est cependant lorsque l’on veut utiliser des classes définies dans un module quelconque et la mettre un peu à notre sauce. Comme dans des bibliothèques graphiques par exemple.</p>
-  </blockquote>
-</blockquote>
 
 <h2 id="odds-and-ends">odds and ends</h2>
 
+<p>Quelques petit tests qui ne servent à rien en pratique mais qui permettent de</p>
+
 <h3 id="héritage-de-méthodes">héritage de méthodes</h3>
 
-<p>Écrivez une classe <code class="language-plaintext highlighter-rouge">A</code> qui a :</p>
+<p>Comment faire une classe <code class="language-plaintext highlighter-rouge">A</code> qui a :</p>
 
 <ul>
   <li>un attribut <code class="language-plaintext highlighter-rouge">a</code></li>
