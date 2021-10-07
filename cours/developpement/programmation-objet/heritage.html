@@ -144,8 +144,8 @@
 <p>Il y a cependant des cas où l’héritage est très utile :</p>
 
 <ul>
-  <li>lorsque l’on veut spécifier une classe (un cas particulier)</li>
-  <li>lors de l’utilisation de bibliothèques</li>
+  <li>lorsque l’on veut spécifier une classe : la nouvelle classe est un cas particulier de la classe mère**</li>
+  <li>lors de l’utilisation de bibliothèques : on particularise à nos besoin une classe générique donnée par un module que l’on a pas écrit.</li>
 </ul>
 
 <p>La règle est que lorsque l’héritage doit re-écrire toutes les méthodes de sa classe mère pour qu’il n’y ait pas de conflit, alors il faut changer d’approche. Une classe et sa classe mère doivent partager beaucoup de méthodes (ou que les méthodes soient des cas particuliers)</p>
@@ -162,58 +162,227 @@
 
 <h2 id="exemple-1--héritage-simple">Exemple 1 : héritage simple</h2>
 
-<p>L’idée est juste de présenter avec quelque chose de simple et facile à se représenter la notion d’héritage. On donnera l’UML des classes dans tous les cas et le code seulement s’il est lié à l’héritage.</p>
+<p>On présente ici un premier exemple d’utilisation de l’héritage, en combinaison d’une composition.</p>
 
-<p>Classe <code class="language-plaintext highlighter-rouge">Point</code> :</p>
+<p>On veut manipuler des polygones. On veut pouvoir :</p>
 
-<p><img src="img/point.png" alt="point" /></p>
+<ul>
+  <li>créer un polygone à partir d’une liste de sommets donnée</li>
+  <li>calculer l’aire du polygone</li>
+  <li>calculer le périmètre du polygone</li>
+</ul>
 
-<p>Rien de particulier, pour la classe <code class="language-plaintext highlighter-rouge">Polygon</code> qui est une agrégation avec points :</p>
+<h3 id="classes-point-et-polygone">classes Point et Polygone</h3>
 
-<p><img src="img/polygon.png" alt="polygon" /></p>
+<p>Pour cela, on va créer une classe <code class="language-plaintext highlighter-rouge">Point</code> et une classe <code class="language-plaintext highlighter-rouge">Polygone</code> :</p>
 
-<p>C’est bien une agrégation puisque utilise des objets <code class="language-plaintext highlighter-rouge">Point</code> comme attribut mais ces points existent indépendamment du polygone et on les ajoute dans l’attribut <code class="language-plaintext highlighter-rouge">vertices</code> lors de la création de l’objet.</p>
+<ul>
+  <li>classe <code class="language-plaintext highlighter-rouge">Point</code> :
+    <ul>
+      <li>on se restreint à la 2D</li>
+      <li>coordonnées cartésiennes</li>
+      <li>distance à un autre point pour pouvoir plus facilement calculer le périmètre ensuite</li>
+    </ul>
+  </li>
+  <li>classe <code class="language-plaintext highlighter-rouge">Polygone</code> :
+    <ul>
+      <li>création avec une liste de Point</li>
+      <li>calcul du périmètre</li>
+      <li>calcul de l’aire</li>
+    </ul>
+  </li>
+</ul>
 
-<p>Classe <code class="language-plaintext highlighter-rouge">Triangle</code>:</p>
+<p>On va supposer que le <a href="https://fr.wikipedia.org/wiki/Polygone_simple">polygone est simple</a> pour simplifier le calcul de l’aire…</p>
 
-<p><img src="img/triangle.png" alt="triangle" /></p>
+<h4 id="uml">uml</h4>
 
-<p>L’héritage arrive ici. On fait une version restreinte du polygone très simple. La classe <code class="language-plaintext highlighter-rouge">Triangle</code> hérite de <code class="language-plaintext highlighter-rouge">Polygon</code>, on appelle donc le constructeur de ce dernier lors de la création d’un <code class="language-plaintext highlighter-rouge">Triangle</code>.</p>
+<p>Point et polygone entretiennent un lien d’agrégation (les points sont passé au polygone à sa construction). Le modèle UML suivant :</p>
+
+<p><img src="/cours_informatique/assets/cours/developpement/programmation-objet/heritage_point_poly.png" alt="point polygone" /></p>
+
+<h4 id="code-python">code python</h4>
+
+<p>On peut alors avoir le code python suivant pour créer les classes :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
+
+
+<span class="k">class</span> <span class="nc">Point</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_y</span> <span class="o">=</span> <span class="n">y</span>
+
+    <span class="k">def</span> <span class="nf">get_x</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">_x</span>
+
+    <span class="k">def</span> <span class="nf">get_y</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">_y</span>
+
+    <span class="k">def</span> <span class="nf">set_x</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_x</span> <span class="o">=</span> <span class="n">x</span>
+
+    <span class="k">def</span> <span class="nf">set_y</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_y</span> <span class="o">=</span> <span class="n">y</span>
+
+    <span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="n">x1</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">get_x</span><span class="p">()</span>
+        <span class="n">x2</span> <span class="o">=</span> <span class="n">other</span><span class="p">.</span><span class="n">get_x</span><span class="p">()</span>
+
+        <span class="n">y1</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">get_y</span><span class="p">()</span>
+        <span class="n">y2</span> <span class="o">=</span> <span class="n">other</span><span class="p">.</span><span class="n">get_y</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">sqrt</span><span class="p">((</span><span class="n">x2</span> <span class="o">-</span> <span class="n">x1</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">y2</span> <span class="o">-</span> <span class="n">y1</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">Polygone</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">points</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_points</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">périmètre</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">pivot</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">_points</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">point</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">.</span><span class="n">_points</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+            <span class="n">d</span> <span class="o">+=</span> <span class="n">pivot</span><span class="p">.</span><span class="n">distance</span><span class="p">(</span><span class="n">point</span><span class="p">)</span>
+            <span class="n">pivot</span> <span class="o">=</span> <span class="n">point</span>
+        <span class="n">d</span> <span class="o">+=</span> <span class="n">pivot</span><span class="p">.</span><span class="n">distance</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">_points</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+        <span class="k">return</span> <span class="n">d</span>
+
+    <span class="k">def</span> <span class="nf">aire</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">pivot</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">_points</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">point</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">.</span><span class="n">_points</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+            <span class="n">a</span> <span class="o">+=</span> <span class="n">pivot</span><span class="p">.</span><span class="n">get_x</span><span class="p">()</span> <span class="o">*</span> <span class="n">point</span><span class="p">.</span><span class="n">get_y</span><span class="p">()</span> <span class="o">-</span> <span class="n">pivot</span><span class="p">.</span><span class="n">get_y</span><span class="p">()</span> <span class="o">*</span> <span class="n">point</span><span class="p">.</span><span class="n">get_x</span><span class="p">()</span>
+            <span class="n">pivot</span> <span class="o">=</span> <span class="n">point</span>
+
+        <span class="n">point</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">_points</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">a</span> <span class="o">+=</span> <span class="n">pivot</span><span class="p">.</span><span class="n">get_x</span><span class="p">()</span> <span class="o">*</span> <span class="n">point</span><span class="p">.</span><span class="n">get_y</span><span class="p">()</span> <span class="o">-</span> <span class="n">pivot</span><span class="p">.</span><span class="n">get_y</span><span class="p">()</span> <span class="o">*</span> <span class="n">point</span><span class="p">.</span><span class="n">get_x</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="nb">abs</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<blockquote>
+  <p>On a rendu les attributs des classes privé. La convention en python pour rendre un attribut privé est de lui coller un <code class="language-plaintext highlighter-rouge">_</code> avant son nom.</p>
+</blockquote>
+
+<p>Remarques :</p>
+
+<ol>
+  <li>Remarquez que l’on utiliser toujours les méthodes (si elles existent) pour accéder aux attributs, cela permettra si besoin de changer les attributs de la classes (passer en coordonnées polaires par exemple) sans changer le code des méthodes.</li>
+  <li>Pour la classe polygone, on recrée une liste de points pour être sur que le nombre de points reste constant (la liste est passée en paramètre et peut donc être modifiées à ‘extérieur de la classe)</li>
+  <li>Notez que l’on ne recrée pas les points, ils peuvent donc changer car ils sont passés en paramètre de la construction du polygone</li>
+</ol>
+
+<p>On peut tester le code avec, par exemple :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">points</span> <span class="o">=</span> <span class="p">[</span><span class="n">Point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)]</span>
+<span class="n">polygone</span> <span class="o">=</span> <span class="n">Polygone</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">polygone</span><span class="p">.</span><span class="n">périmètre</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">polygone</span><span class="p">.</span><span class="n">aire</span><span class="p">())</span>
+</code></pre></div></div>
+
+<h3 id="un-polygone-particulier">un polygone particulier</h3>
+
+<p>Comment modéliser une classe triangle ?</p>
+
+<p>Comme un triangle <strong>est un</strong> polygone simple, on peut utiliser l’héritage pour cela.</p>
+
+<h4 id="modélisation-uml">modélisation UML</h4>
+
+<p>Elle est très simple :</p>
+
+<p><img src="/cours_informatique/assets/cours/developpement/programmation-objet/heritage_triangle.png" alt="triangle" /></p>
+
+<p>Notez que pour l’héritage, on ne remet pas les attributs/méthodes définis dans les classes mères.</p>
+
+<h4 id="code-python-du-triangle">code python du Triangle</h4>
+
+<p>La classe <code class="language-plaintext highlighter-rouge">Triangle</code> hérite de <code class="language-plaintext highlighter-rouge">Polygon</code>, on appelle donc le constructeur de ce dernier lors de la création d’un <code class="language-plaintext highlighter-rouge">Triangle</code>.</p>
 
 <p>Ceci est explicite en python :</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Triangle</span><span class="p">(</span><span class="n">Polygon</span><span class="p">):</span>
-  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">point1</span><span class="p">,</span> <span class="n">point2</span><span class="p">,</span> <span class="n">point3</span><span class="p">):</span>
-    <span class="nb">super</span><span class="p">().</span><span class="n">__init__</span><span class="p">([</span><span class="n">point1</span><span class="p">,</span> <span class="n">point2</span><span class="p">,</span> <span class="n">point3</span><span class="p">])</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Triangle</span><span class="p">(</span><span class="n">Polygone</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">point1</span><span class="p">,</span> <span class="n">point2</span><span class="p">,</span> <span class="n">point3</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">().</span><span class="n">__init__</span><span class="p">([</span><span class="n">point1</span><span class="p">,</span> <span class="n">point2</span><span class="p">,</span> <span class="n">point3</span><span class="p">])</span>
 </code></pre></div></div>
 
-<p>Le mot clé <code class="language-plaintext highlighter-rouge">super()</code> désigne la classe parente, ici <code class="language-plaintext highlighter-rouge">Polygon</code>.Ce mot clé permet d’utiliser toutes les méthodes de la classe parente, ici <code class="language-plaintext highlighter-rouge">__init__</code>. Remarquez que l’on utilise la méthode <code class="language-plaintext highlighter-rouge">__init__</code> sans utiliser le premier paramètre (<code class="language-plaintext highlighter-rouge">self</code>) qui est implicitement l’objet courant.</p>
+<p>Le mot clé <code class="language-plaintext highlighter-rouge">super()</code> désigne la classe parente, ici <code class="language-plaintext highlighter-rouge">Polygone</code>. Ce mot clé permet d’utiliser toutes les méthodes de la classe parente, ici <code class="language-plaintext highlighter-rouge">__init__</code>. Remarquez que l’on utilise la méthode <code class="language-plaintext highlighter-rouge">__init__</code> sans utiliser le premier paramètre (<code class="language-plaintext highlighter-rouge">self</code>) qui est implicitement l’objet courant.</p>
 
-<p>L’UML complet donne donc :</p>
+<p>Si on regarde l’ordre dans lequel est examiné les espaces de nom, on a (c’est la commande <code class="language-plaintext highlighter-rouge">Triangle.mro()</code>) :</p>
 
-<p><img src="img/polygone_uml_entier.png" alt="polygone_uml_entier" /></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="o">&lt;</span><span class="k">class</span> <span class="err">'</span><span class="nc">__main__</span><span class="p">.</span><span class="n">Triangle</span><span class="s">'&gt;, &lt;class '</span><span class="n">__main__</span><span class="p">.</span><span class="n">Polygone</span><span class="s">'&gt;, &lt;class '</span><span class="nb">object</span><span class="s">'&gt;]
+</span></code></pre></div></div>
 
 <blockquote>
-  <p>TBD
-ajouter appelle à <strong>str</strong> comme recherche pure d’une classe dans la hiérarchie
-ajouter cercle inscrit. en paramètre
-super : https://he-arc.github.io/livre-python/super/index.html</p>
+  <p>Un petit tuto sur <a href="https://he-arc.github.io/livre-python/super/index.html">la fonction super</a></p>
 </blockquote>
 
-<h3 id="exercice-2">Exercice 2</h3>
+<p>On peut maintenant utiliser toutes les méthodes définies dans Polygone puisque le constructeur de <code class="language-plaintext highlighter-rouge">Triangle</code> appelle directement le constructeur de <code class="language-plaintext highlighter-rouge">Polygone</code> : à la fin du constructeur, il existera une liste de points dans le triangle.</p>
 
-<p>La classe <code class="language-plaintext highlighter-rouge">Personnage</code> ne pose normalement pas de problèmes :</p>
-
-<p><img src="img/personnage.png" alt="personnage" /></p>
-
-<p>On précise le code de <code class="language-plaintext highlighter-rouge">taper</code> et <code class="language-plaintext highlighter-rouge">se_faire_taper</code> qui permet à chacun de se faire taper comme il l’entend :</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">taper</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">personnage</span><span class="p">):</span>
-    <span class="n">personnage</span><span class="p">.</span><span class="n">se_faire_taper</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">se_faire_taper</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">personnage</span><span class="p">):</span>
-    <span class="bp">self</span><span class="p">.</span><span class="n">set_vie</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">get_vie</span><span class="p">()</span> <span class="o">-</span> <span class="n">personnage</span><span class="p">.</span><span class="n">get_attaque</span><span class="p">())</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">triangle</span> <span class="o">=</span> <span class="n">Triangle</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">triangle</span><span class="p">.</span><span class="n">périmètre</span><span class="p">())</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">triangle</span><span class="p">.</span><span class="n">aire</span><span class="p">())</span>
 </code></pre></div></div>
+
+<p>Pour trouver le périmètre, python fonctionne ainsi :</p>
+
+<ol>
+  <li>existe-t-il un nom <code class="language-plaintext highlighter-rouge">périmètre</code> dans l’objet <code class="language-plaintext highlighter-rouge">triangle</code> : NON</li>
+  <li>existe-t-il un nom <code class="language-plaintext highlighter-rouge">périmètre</code> dans la classe de l’objet <code class="language-plaintext highlighter-rouge">triangle</code>, <code class="language-plaintext highlighter-rouge">Triangle</code> : NON</li>
+  <li>existe-t-il un nom <code class="language-plaintext highlighter-rouge">périmètre</code> dans la classe mère de <code class="language-plaintext highlighter-rouge">Triangle</code>, <code class="language-plaintext highlighter-rouge">Polygone</code> : OUI</li>
+</ol>
+
+<p>Une fois la méthode trouvée, on l’exécute en plaçant l’objet (ici notre <code class="language-plaintext highlighter-rouge">triangle</code> en 1er paramètre, c’est à dire <code class="language-plaintext highlighter-rouge">self</code> de la méthode <code class="language-plaintext highlighter-rouge">périmètre</code> définie dans <code class="language-plaintext highlighter-rouge">Polygone</code>).</p>
+
+<h2 id="exemple-2--donjons-et-dragons">Exemple 2 : donjons et dragons</h2>
+
+<p>On va simuler des personnage d’<em>heroic fantasy</em>. Pour cela, on commence par créer une classe <code class="language-plaintext highlighter-rouge">Personnage</code> qui sera particularisée petit à petit.</p>
+
+<h3 id="classe-personnage">classe Personnage</h3>
+
+<p>Le personnage générique doit :</p>
+
+<ul>
+  <li>avoir un score d’attaque</li>
+  <li>avoir des points de vie</li>
+  <li>pouvoir modifier son score d’ataque et ses points de vie</li>
+  <li>taper un autre personnage (lui faire perdre un nombre de point de vie égale à son score d’attaque)</li>
+  <li>se faire taper par un autre personnage</li>
+</ul>
+
+<h4 id="uml-du-personnage">UML du personnage</h4>
+
+<p><img src="/cours_informatique/assets/cours/developpement/programmation-objet/heritage_personnage.png" alt="personnage" /></p>
+
+<h4 id="code-python-du-personnage">code python du personnage</h4>
+
+<p>On a décidé ici de ne pas mettre de méthode get et set, mais de laisser libre accès aux attributs. C’est un choix possible. L’UML dérive donc un peut du code python ce qui est normal, chaque langage ayant ses spécificités.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Personnage</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vie</span><span class="p">,</span> <span class="n">attaque</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">vie</span> <span class="o">=</span> <span class="n">vie</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">attaque</span> <span class="o">=</span> <span class="n">attaque</span>
+
+    <span class="k">def</span> <span class="nf">se_faire_taper</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">personnage</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">vie</span> <span class="o">-=</span> <span class="n">personnage</span><span class="p">.</span><span class="n">get_attaque</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">taper</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">personnage</span><span class="p">):</span>
+        <span class="n">personnage</span><span class="p">.</span><span class="n">se_faire_taper</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Voyez comment on a utilisé la méthode <code class="language-plaintext highlighter-rouge">se_faire_taper</code> pour définir la méthode <code class="language-plaintext highlighter-rouge">taper</code>.</p>
+
+<h3 id="la-classe-guerrière">la classe guerrière</h3>
+
+<p>La guerrière dispose d’un score de bloquage qui représente son pourcentage de chances de ne pas perdre de vie quand un autre personnage l’attaque.</p>
+
+<h4 id="modèle-uml-de-la-guerrière">modèle UML de la guerrière</h4>
+
+<p>c’est un personnage, on peut donc utiliser l’héritage.</p>
+
+<h4 id="code-python-de-la-guerrière">code python de la guerrière</h4>
 
 <p>On ajoute la guerrière :</p>
 
@@ -239,6 +408,10 @@ super : https://he-arc.github.io/livre-python/super/index.html</p>
 
 <p>Prenez le temps de faire des exemples d’utilisation et de vérifier que tous les cas marchent. En particulier qu’est-ce qui est appelé quand on fait <code class="language-plaintext highlighter-rouge">guerriere.se_faire_taper(bonhomme)</code> avec un objet <code class="language-plaintext highlighter-rouge">guerriere</code> de la classe <code class="language-plaintext highlighter-rouge">Guerriere</code> ?</p>
 
+<h3 id="le-magicien">le magicien</h3>
+
+<p>Le magicien peut faire tout ce que peut faire un personnage normal mais il dispose en plus d’un score d’attaque magique qui détermine les dégâts qu’il fait en lançant un sort. Modéliser la classe \texttt{Magicien}.</p>
+
 <p>Le magicien permet de montrer l’ajout d’une méthode qui n’était pas du tout dans la classe mère :</p>
 
 <p><img src="img/magicien.png" alt="magicien" /></p>
@@ -258,9 +431,9 @@ super : https://he-arc.github.io/livre-python/super/index.html</p>
   </blockquote>
 </blockquote>
 
-<h3 id="les-bases-de-lhéritage">Les bases de l’héritage</h3>
+<h2 id="odds-and-ends">odds and ends</h2>
 
-<h4 id="héritage-de-méthodes">héritage de méthodes</h4>
+<h3 id="héritage-de-méthodes">héritage de méthodes</h3>
 
 <p>Écrivez une classe <code class="language-plaintext highlighter-rouge">A</code> qui a :</p>
 
@@ -296,7 +469,7 @@ fois) et prenez le temps de comprendre ce qu’elles font et pourquoi.</p>
 <span class="n">objet_b</span><span class="p">.</span><span class="n">que_de_b</span><span class="p">()</span>
 </code></pre></div></div>
 
-<h4 id="combinaison-de-méthodes">combinaison de méthodes</h4>
+<h3 id="combinaison-de-méthodes">combinaison de méthodes</h3>
 
 <p>Ajoutez :</p>
 
@@ -307,6 +480,9 @@ fois) et prenez le temps de comprendre ce qu’elles font et pourquoi.</p>
 
 <p>Vérifiez que tout se passe comme prévu.</p>
 
+<h3 id="attributs-de-classes">attributs de classes</h3>
+
+<p>tbd</p>
 
   </div>
 
