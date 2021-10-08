@@ -160,19 +160,24 @@ module.exports = (sequelize) => {
 
 ```json
 {
-  "name": "static",
+  "name": "commentaires",
   "version": "1.0.0",
-  "description": "partie statique du site",
-  "main": "index.html",
+  "description": "donnez votre avis",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bootstrap": "^5.1.1"
+    "cookie-parser": "^1.4.5",
+    "express": "^4.17.1",
+    "sequelize": "^6.6.5",
+    "sqlite3": "^5.0.2"
   }
 }
+
 ```
 
 ### server.js
