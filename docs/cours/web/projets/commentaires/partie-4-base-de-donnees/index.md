@@ -28,7 +28,10 @@ N'oubliez pas d'installer [brew](https://brew.sh/index_fr), c'est super bien.
 {% enddetails %}
 
 {% details sous windows %}
-Sur la page de [download de sqlite](https://www.sqlite.org/download.html) choisissez la section *Precompiled Binaries for Windows* et récupérez sqlite au format 64-bit et les tools.
+Sur la page de [download de sqlite](https://www.sqlite.org/download.html) choisissez la section *Precompiled Binaries for Windows* et récupérez les tools.
+
+Il faudra ensuite modifier le path pour qu'il intègre le chemin de votre fichier sqlite3.exe
+<https://java.com/fr/download/help/path_fr.html>
 
 {% enddetails %}
 
