@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Programmation évènementielle | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Programmation évènementielle" />
+<meta name="author" content="François Brucker" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
+<link rel="canonical" href="/cours_informatique/cours/developpement/programmation-objet/programmation-evenementielle.html" />
+<meta property="og:url" content="/cours_informatique/cours/developpement/programmation-objet/programmation-evenementielle.html" />
+<meta property="og:site_name" content="cours d’informatique" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Programmation évènementielle" />
+<script type="application/ld+json">
+{"headline":"Programmation évènementielle","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/developpement/programmation-objet/programmation-evenementielle.html","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css">
+
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+</head>
+
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Programmation évènementielle</h1>Auteurs :
+      <ul>
+      
+        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></li>
+      
+        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Célia Châtel</span></span></li>
+      
+      </ul></p></p>
+  </header>
+
+  <div class="post-content">
+    <p>On utilise la programmation évènementielle pour créer des interfaces graphiques.</p>
+
+<h2 id="bibliothèque-utilisée">bibliothèque utilisée</h2>
+
+<p>On utilise <a href="http://appjar.info">appjar</a> une bibliothèque graphique permettant d’apprendre les interfaces graphiques. On la déconseille fortement pour des applications pro, mais pour apprendre, elle est très bien.</p>
+
+<blockquote>
+  <p>Pour toute son utilisation, regardez la documentation, elle est très bien faite !</p>
+</blockquote>
+
+<h3 id="installation">installation</h3>
+
+<p>Il y a 2 moyens d’<a href="http://appjar.info/Install/">installer appjar</a> :</p>
+
+<ul>
+  <li>soit en <a href="https://github.com/RWBA/appJar/blob/appJar/releases/appJar.zip?raw=true">téléchargeant le module</a> puis en décompressant le dossier dans votre projet (vous aurez un dossier nommé <em>“appJar”</em> dans votre projet)</li>
+  <li>soit en l’installant avec pip : <code class="language-plaintext highlighter-rouge">pip install appjar</code> (ou pip3 si votre interpréteur python s’appelle <code class="language-plaintext highlighter-rouge">python3</code>)</li>
+</ul>
+
+<blockquote class="attention">
+  <p>Si vous avez installé python avec anaconda, comme recommandé, tout devrait bien se passer. Sinon, il se peut qu’il vous faille installer un python avec tk.</p>
+</blockquote>
+
+<h3 id="un-exemple">un exemple</h3>
+
+<p>Créez un nouveau projet et copier le code suivant dans un fichier nommé <em>“ui.py”</em></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">appJar</span> <span class="kn">import</span> <span class="n">gui</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="p">{</span><span class="s">"valeur"</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+
+
+<span class="k">def</span> <span class="nf">press_plus1</span><span class="p">():</span>
+    <span class="n">model</span><span class="p">[</span><span class="s">"valeur"</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">app</span><span class="p">.</span><span class="n">setLabel</span><span class="p">(</span><span class="s">"valeur"</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">model</span><span class="p">[</span><span class="s">"valeur"</span><span class="p">]))</span>
+
+
+<span class="k">def</span> <span class="nf">press_moins1</span><span class="p">():</span>
+    <span class="n">model</span><span class="p">[</span><span class="s">"valeur"</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">1</span>
+    <span class="n">app</span><span class="p">.</span><span class="n">setLabel</span><span class="p">(</span><span class="s">"valeur"</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">model</span><span class="p">[</span><span class="s">"valeur"</span><span class="p">]))</span>
+
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">gui</span><span class="p">()</span>
+<span class="n">app</span><span class="p">.</span><span class="n">setSize</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="n">app</span><span class="p">.</span><span class="n">addButton</span><span class="p">(</span><span class="s">"-1"</span><span class="p">,</span> <span class="n">press_moins1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">app</span><span class="p">.</span><span class="n">addLabel</span><span class="p">(</span><span class="s">"valeur"</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">model</span><span class="p">[</span><span class="s">"valeur"</span><span class="p">]),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">app</span><span class="p">.</span><span class="n">addButton</span><span class="p">(</span><span class="s">"+1"</span><span class="p">,</span> <span class="n">press_plus1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">app</span><span class="p">.</span><span class="n">go</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"c'est fini."</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Lorsque vous exécutez ce code vous devriez voir une fenêtre s’ouvrir qui ressemble à ça :</p>
+
+<p><img src="/cours_informatique/assets/cours/developpement/programmation-objet/ui_ui.png" alt="Une ui" /></p>
+
+<p>Lorsque vous cliquez sur le bouton <em>“-1”</em> le nombre du milieu décroit, lorsque vous cliquez sur le bouton <em>“+1”</em> le nombre du milieu croit.</p>
+
+<p>Examinons le code ensemble :</p>
+
+<h4 id="import">import</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">appJar</span> <span class="kn">import</span> <span class="n">gui</span>
+</code></pre></div></div>
+
+<p>On importe la bibliothèque <code class="language-plaintext highlighter-rouge">appJar</code>, et en particulier la fenêtre : <code class="language-plaintext highlighter-rouge">gui</code>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"valeur"</span><span class="p">:</span> <span class="mi">0</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>On utilise un <a href="https://python.doctor/page-apprendre-dictionnaire-python">dictionnaire</a> pour garder nos données. C’est très pratique et s’utilise comme une liste où l’on accède aux données non plus avec leur position mais avec une “clé”. Pour nous, ces clés seront toujours des chaines de caractères.</p>
+
+<p>Dans le code, on crée une clé nommé <code class="language-plaintext highlighter-rouge">"valeur"</code>. On accède à la donnée en tapant : <code class="language-plaintext highlighter-rouge">model["valeur"]</code>.</p>
+
+<h5 id="déclaration-des-fonctions-évènements">déclaration des fonctions évènements</h5>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">press_plus1</span><span class="p">():</span>
+    <span class="n">model</span><span class="p">[</span><span class="s">"valeur"</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">app</span><span class="p">.</span><span class="n">setLabel</span><span class="p">(</span><span class="s">"valeur"</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">model</span><span class="p">[</span><span class="s">"valeur"</span><span class="p">]))</span>
+
+
+<span class="k">def</span> <span class="nf">press_moins1</span><span class="p">():</span>
+    <span class="n">model</span><span class="p">[</span><span class="s">"valeur"</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">1</span>
+    <span class="n">app</span><span class="p">.</span><span class="n">setLabel</span><span class="p">(</span><span class="s">"valeur"</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">model</span><span class="p">[</span><span class="s">"valeur"</span><span class="p">]))</span>
+</code></pre></div></div>
+
+<p>Le 2 fonctions seront exécutées lorsque l’on cliquera sur les boutons : elles seront les réaction aux évènements de clique sur les boutons.</p>
+
+<h5 id="la-fenêtre">la fenêtre</h5>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">app</span> <span class="o">=</span> <span class="n">gui</span><span class="p">()</span>
+<span class="n">app</span><span class="p">.</span><span class="n">setSize</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>On crée la fenêtre avec la fonction <code class="language-plaintext highlighter-rouge">gui</code> de <code class="language-plaintext highlighter-rouge">appJar</code> et on lui donne la taille de 300 pixels de large et 100 pixels de haut.</p>
+
+<h5 id="les-widgets-de-la-fenêtre">les widgets de la fenêtre</h5>
+
+<p>Un <em>widget</em>  est un élément de la fenêtre. On en ajoute 3 ici :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">app</span><span class="p">.</span><span class="n">addButton</span><span class="p">(</span><span class="s">"-1"</span><span class="p">,</span> <span class="n">press_moins1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">app</span><span class="p">.</span><span class="n">addLabel</span><span class="p">(</span><span class="s">"valeur"</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">model</span><span class="p">[</span><span class="s">"valeur"</span><span class="p">]),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">app</span><span class="p">.</span><span class="n">addButton</span><span class="p">(</span><span class="s">"+1"</span><span class="p">,</span> <span class="n">press_plus1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>On ajoute à la fenêtre ;:</p>
+
+<ul>
+  <li>un bouton nommé <em>-1</em> (c’est aussi son identifiant) à la position 1ère ligne, 1ère colonne (c’est les <code class="language-plaintext highlighter-rouge">0, 0</code> de la fin) et lorsque l’on cliquera dessus, on exécutera la fonction <code class="language-plaintext highlighter-rouge">press_moins1</code>.</li>
+  <li>un label nommé “valeur” (c’est aussi son identifiant) une chaine de caractère) à la position 1ère ligne, 2ème colonne (c’est les <code class="language-plaintext highlighter-rouge">0, 1</code> de la fin) et avec comme label <code class="language-plaintext highlighter-rouge">model["valeur"]</code> transformé en chaine de caractère.</li>
+  <li>un bouton nommé <em>+1</em> (c’est aussi son identifiant) à la position 1ère ligne, 3ère colonne (c’est les <code class="language-plaintext highlighter-rouge">0, 2</code> de la fin) et lorsque l’on cliquera dessus, on exécutera la fonction <code class="language-plaintext highlighter-rouge">press_plus1</code>.</li>
+</ul>
+
+<blockquote>
+  <p>notez que l’on exécute pas les fonction ici, on ne fait que passer leurs noms (donc <strong>sans</strong> les parenthèses)</p>
+</blockquote>
+
+<h5 id="on-ouvre-la-fenêtre">on ouvre la fenêtre</h5>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">app</span><span class="p">.</span><span class="n">go</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>On ouvre la fenêtre.</p>
+
+<h5 id="fin-du-programme">fin du programme</h5>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">"c'est fini."</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Cette ligne ne sera affichée que lorsque l’on fermera la fenêtre. Il est donc inutile d’écrire du code après la ligne <code class="language-plaintext highlighter-rouge">app.go()</code>, puisqu’il ne sera pas exécuté avant la fermeture de la fenêtre.</p>
+
+<h3 id="premières-modifications">premières modifications</h3>
+
+<h4 id="couleur-du-label">couleur du label</h4>
+
+<p>Faites en sorte que la couleur du label soit :</p>
+
+<ul>
+  <li>bleu si le nombre est strictement positif</li>
+  <li>noire si le nombre vaut 0</li>
+  <li>rouge si le nombre est strictement négatif</li>
+</ul>
+
+<p>Pour cela, il faut <strong>modifier</strong> le label. Avec <code class="language-plaintext highlighter-rouge">appJar</code> on crée une seule fois le label (avec une méthode qui commence par <code class="language-plaintext highlighter-rouge">add</code>), puis on le modifie avec une méthode qui commence par <code class="language-plaintext highlighter-rouge">set</code> et dans le 1er paramètre est l’identifiant du label (ici c’est “valeur”).</p>
+
+<p>Ici la méthode est <code class="language-plaintext highlighter-rouge">setLabelFg</code> et s’utilise comme <code class="language-plaintext highlighter-rouge">setLabelBg</code> décrit dans la <a href="http://appjar.info/outputWidgets/#label">documentation</a></p>
+
+<h4 id="reset">reset</h4>
+
+<p>Ajoutez un bouton qui remet le nombre à zéro. Vous mettrez ce bouton sue la 2ème ligne, en 2ème colonne.</p>
+
+<h2 id="lancer-de-dés">lancer de dés</h2>
+
+<p>Vous allez lancer des dés avec appJar</p>
+
+<h3 id="un-dé">un dé</h3>
+
+<p>Reprenez le code du dé de la <a href="/cours_informatique/cours/developpement/programmation-objet/heritage-exercices.html#code-dice">séance d’exercices sur l’héritage</a></p>
+
+<h3 id="linterface">l’interface</h3>
+
+<p>Utilisez le code du dé pour réaliser l’interface suivante :</p>
+
+<p><img src="/cours_informatique/assets/cours/developpement/programmation-objet/ui-de.png" alt="Lancé de dé" /></p>
+
+<blockquote>
+  <p>L’interface précédente est une <em>idée</em> ce que ce ça doit faire, votre fenêtre peut-être différente. En revanche, les fonctionnalités demandées doivent être là.</p>
+</blockquote>
+
+<h3 id="changer-le-dé">changer le dé</h3>
+
+<p>Utilisez la documentation sur les <a href="http://appjar.info/specialCharacters/">caractères spéciaux</a> pour remplacer les valeurs des dés par une image de dé.</p>
+
+<p>Ce sont les caractères unicode allant de “\u2680” à “\u2685”</p>
+
+<p>Vous pourrez aussi changer la taile de la font. par exemple : <code class="language-plaintext highlighter-rouge">app.getLabelWidget("test").config(font="Time 40")</code> change la taille de la font à 40 du label d’identifiant <code class="language-plaintext highlighter-rouge">test</code>.</p>
+
+<h3 id="lancer-3-dés">Lancer 3 dés</h3>
+
+<p>Reprenez le code précédents et faites en sorte de pouvoir lancer 3 dés simultanément.</p>
+
+<p>La fenêtre pourra ressembler à ça :</p>
+
+<p><img src="/cours_informatique/assets/cours/developpement/programmation-objet/ui-de-2.png" alt="Lancé de dé" /></p>
+
+<h3 id="somme">somme</h3>
+
+<p>Ajoutez un label qui donne la somme des 3 dés. Cela pourra ressembler à ça :</p>
+
+<p><img src="/cours_informatique/assets/cours/developpement/programmation-objet/ui-de-3.png" alt="Lancé de 3 dés" /></p>
+
+<p>Vous pourrez utiliser des <a href="http://appjar.info/pythonWidgetGrouping/#frame">frame</a> pour grouper vos éléments.</p>
+
+<h3 id="lancer-des-dés-choisis">Lancer des dés choisis</h3>
+
+<p>Ajoutez des *checkbox pour ne lancer que les dés cochés.</p>
+
+<p>La fenêtre pourra ressembler à ça :</p>
+
+<p><img src="/cours_informatique/assets/cours/developpement/programmation-objet/ui-de-4.png" alt="Lancé de dé choisis" /></p>
+
+<p>Vous pourrez utilisez des <a href="http://appjar.info/inputWidgets/#checkbox">checkbox</a> pour cela.</p>
+
+<blockquote>
+  <p>Si vous voulez que les checkboxes n’aient pas de texte, juste la coche, il faudra leur donner des noms différents et le même label vide à chacune. Vous devrez alors utiliser des <code class="language-plaintext highlighter-rouge">NamedCheckBox</code></p>
+</blockquote>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d&#39;informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d&#39;informatique</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
