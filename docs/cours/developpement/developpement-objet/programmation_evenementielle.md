@@ -55,7 +55,6 @@ Vous allez utiliser ce que nous avons fait en TD lors de la séance 2 pour crée
 
 Les images des cartes sont placées dans le fichier zip [resources.zip]({{ "ressources/resources.zip"}}) dézippez le pour pouvoir les utiliser.
 
-
 #### La classe carte
 
 Le code ci-après vous donne la classe carte et ses tests que vous allez utiliser par la suite. Copiez ce code dans deux fichiers `card.py` et `test_card.py`. Vérifiez que tous les tests passent.
@@ -77,7 +76,6 @@ class Card:
         return "resources/Playing_card_" + self._color + "_" + str(self._value) + ".gif"
 ~~~
   
-
 ##### test_card.py
 
 ~~~ python

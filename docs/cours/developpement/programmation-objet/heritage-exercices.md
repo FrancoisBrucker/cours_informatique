@@ -49,7 +49,7 @@ Créez un personnage, un magicien et une guerrière. Faite en sorte que la guerr
 
 Nous allons ici réutiliser la classe `Dice` entamée la dernière fois. Pour être sûr de repartir sur de bonnes bases, utilisez l'implémentation minimale suivante (dans un fichier `dice.py`).
 
-### code de Dice
+### code de Dice {#code-dice}
 
 ```python
 import random

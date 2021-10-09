@@ -51,15 +51,17 @@ Exercice de modélisation objet en python :
 
 ### séance 5 (**CM**)
 
-La notion d'héritage dans les objets. Comment l'utiliser en python et dans nos programmes.
+1. [héritage en programmation objet]({% link cours/developpement/programmation-objet/heritage.md %})
 
 ### séance 6 (**SM**)
 
+1. [exercices sur l'héritage]({% link cours/developpement/programmation-objet/heritage-exercices.md %})
 Codons des classes qui héritent es unes des autres
+2. corrigé
 
 ### séance 7 (**SM**)
 
-les interfaces graphiques en python.
+[programmation événementielle et interface graphqique]({% link cours/developpement/programmation-objet/programmation-evenementielle.md %})
 
 ### séance 8 (**SM**)
 

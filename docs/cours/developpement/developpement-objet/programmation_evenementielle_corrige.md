@@ -17,7 +17,7 @@ On utiise [appjar](http://appjar.info) une bibliothèque graphique permettant d'
 
 On utilisera le [pattern MVC](http://sametmax.com/quest-de-que-mvc-et-a-quoi-ca-sert/ ) pour la création de nos interfaces, c'est un pattern très pratique pour gérer des systèmes avec des [événements](https://fr.wikipedia.org/wiki/Programmation_événementielle)
 
-POur vous initier doucements aux interfaces, en particulier web, je ne saurais trop vous conseiller de lire [Don't make me think](https://www.amazon.fr/KRUG-DONT-MAKE-THINK-_p2/dp/0321344758/ref=sr_1_2?adgrpid=56877079420), qui est à la bibliothèque. Il est certes un peu vieux maintenant mais il est otujours éclairant sur ce que cherche un utilisateur.
+Pour vous initier doucements aux interfaces, en particulier web, je ne saurais trop vous conseiller de lire [Don't make me think](https://www.amazon.fr/KRUG-DONT-MAKE-THINK-_p2/dp/0321344758/ref=sr_1_2?adgrpid=56877079420), qui est à la bibliothèque. Il est certes un peu vieux maintenant mais il est otujours éclairant sur ce que cherche un utilisateur.
 
 ## Séance tableau
 

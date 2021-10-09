@@ -57,7 +57,7 @@ Créer et utiliser les objets et les classes en python. On montrera également l
 3. [on s'entraine]({% link cours/developpement/programmation-objet/objets-composition-agregation-exercices.md %}) ([le corrigé]({% link cours/developpement/programmation-objet/objets-composition-agregation-exercices-corrige.md %}))
 4. [héritage]({% link cours/developpement/programmation-objet/heritage.md %})
 5. [on s'entraine]({% link cours/developpement/programmation-objet/heritage-exercices.md %})
-6. programmation événementielle
+6. [programmation événementielle]({% link cours/developpement/programmation-objet/programmation-evenementielle.md %})
 
 ### Troisième partie : développement objet
 
