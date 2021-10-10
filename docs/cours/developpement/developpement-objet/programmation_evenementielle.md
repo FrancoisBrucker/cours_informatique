@@ -276,7 +276,7 @@ Vous pouvez une fois ceci réalisé ajouter deux chaînes de caractères permett
 
 #### Comparaisons de cartes
 
-En utilisant les méthodes de comparaison vues à [la toute fin de la première séance de code]({% link cours/developpement/developpement-objet/classes_et_objets.md %}), codez les méthodes permettant de faire passer les tests suivants : 
+En utilisant les méthodes de comparaison vues à la toute fin de la première séance de code, codez les méthodes permettant de faire passer les tests suivants :
 
 ~~~ python
 def test_card_equality():

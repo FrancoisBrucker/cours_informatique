@@ -38,6 +38,8 @@ Le [sujet de TD]({% link cours/graphes/chemins.md %}) qui nous fera cheminer dan
 
 ### C, M :  flots
 
-Cours sur les flots
+Cours sur les [flots]({% link cours/graphes/flots.md %}) pour se prendre pour un plombier.
 
 ### ST : flots
+
+Les [applications des flots]({% link cours/graphes/flots-applications.md %}) là où on ne les attends pas.

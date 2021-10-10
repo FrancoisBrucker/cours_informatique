@@ -31,7 +31,7 @@ Où l'on découvre les graphes et l'on résout notre premier problème concret g
 
 ### deuxième partie
 
-Un cas particulier d'intérêt : l'arbre.
+Un cas particulier d'intérêt : l'arbre et les chemins.
 
 > Sous la forme d'exercices.
 
@@ -44,6 +44,11 @@ Un cas particulier d'intérêt : l'arbre.
 {: .note}
 
 ### troisième partie
+
+Problèmes de flots. Définition, algorithmes et applications
+
+1. [problèmes de flots]({% link cours/graphes/flots.md %})
+2. [applications]({% link cours/graphes/flots-applications.md %})
 
 > TBD
 > flots
