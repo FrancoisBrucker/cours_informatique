@@ -61,7 +61,8 @@ Codons des classes qui héritent es unes des autres
 
 ### séance 7 (**SM**)
 
-[programmation événementielle et interface graphqique]({% link cours/developpement/programmation-objet/programmation-evenementielle.md %})
+1. [programmation événementielle et interface graphqique]({% link cours/developpement/programmation-objet/programmation-evenementielle.md %})
+2. corrigé
 
 ### séance 8 (**SM**)
 
