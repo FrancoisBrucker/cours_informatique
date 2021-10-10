@@ -1,13 +1,11 @@
 ---
 layout: page
-title:  "Programmation évènementielle"
+title:  "Programmation évènementielle : éléments de corrigé"
 category: cours
 authors: 
   - François Brucker
   - Célia Châtel
 ---
-
-On utilise la programmation évènementielle pour créer des interfaces graphiques.
 
 ## bibliothèque utilisée
 

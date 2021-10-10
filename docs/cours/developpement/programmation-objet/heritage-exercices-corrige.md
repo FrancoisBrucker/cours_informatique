@@ -1,21 +1,13 @@
 ---
 layout: page
-title:  "Héritage"
+title:  "Héritage : élément de corrigé"
 category: cours
 authors: 
   - François Brucker
   - Célia Châtel
 ---
 
-Présentation du mécanisme d'héritage qui permettant de factoriser du code entre classes.
-
 ## le cours
-
-Refaite le code du cours pour comprendre mieux l'héritage en python.
-
-### géométrie
-
-Codez les classes `Point`, `Polygone` et `Triangle`. Testez les méthodes dans un programme principal nommé *"main_geometrie.py"*.
 
 ### odds and ends
 
