@@ -3,20 +3,20 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>Installation d’un environnement d’installation | cours d’informatique</title>
+<title>Théorie des graphes : flots | cours d’informatique</title>
 <meta name="generator" content="Jekyll v4.2.0" />
-<meta property="og:title" content="Installation d’un environnement d’installation" />
+<meta property="og:title" content="Théorie des graphes : flots" />
 <meta name="author" content="François Brucker" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
 <meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
-<link rel="canonical" href="/cours_informatique/cours/developpement/developpement-objet/installation_environnement_developpement.html" />
-<meta property="og:url" content="/cours_informatique/cours/developpement/developpement-objet/installation_environnement_developpement.html" />
+<link rel="canonical" href="/cours_informatique/cours/graphes/flots-applications.html" />
+<meta property="og:url" content="/cours_informatique/cours/graphes/flots-applications.html" />
 <meta property="og:site_name" content="cours d’informatique" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Installation d’un environnement d’installation" />
+<meta property="twitter:title" content="Théorie des graphes : flots" />
 <script type="application/ld+json">
-{"headline":"Installation d’un environnement d’installation","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/developpement/developpement-objet/installation_environnement_developpement.html","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
+{"headline":"Théorie des graphes : flots","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/graphes/flots-applications.html","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
@@ -58,41 +58,58 @@
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Installation d&#39;un environnement d&#39;installation</h1></p>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></p>
+    <h1 class="post-title">Théorie des graphes : flots</h1></p>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></p>
   </header>
 
   <div class="post-content">
-    <h2 id="but">But</h2>
+    <blockquote class="chemin">
+  <p><a href="/cours_informatique/cours/graphes/">graphes</a> / <a href="/cours_informatique/cours/graphes/flots-applications.html">flots : applications</a></p>
+</blockquote>
 
-<p>Le but de cette séance est d’installer un environnement de développement python et de se familiariser avec les tests unitaires.</p>
+<p>Quelques exercices pour montrer que le problème du flot maximum permet de modéliser (et résoudre !) de nombreux problèmes concrets, très éloignées de la tuyauterie.</p>
 
-<h3 id="environnement-de-développement">Environnement de développement</h3>
+<h2 id="application-simple">application simple</h2>
 
-<p>En suivant ce <a href="/cours_informatique/tutos/editeur/pycharm/2021/08/30/configuration-pycharm.html">tutorial sur anaconda et pycharm</a>, créez un environnement de développement python cohérent avac anaconda et pycharm.</p>
+<p>On commence par voir si on se rappelle le cours. On considère le réseau suivant (en gras les capacités, en italique les flux) :</p>
 
-<h3 id="les-tests-unitaires">Les tests unitaires</h3>
+<h3 id="graphe-décart">graphe d’écart</h3>
 
-<p>Les tests, en particulier unitaires sont indispensable à un bon développement.</p>
+<p>Tracer le graphe d’écart associé à ce réseau</p>
 
-<p>Suivez ce <a href="/cours_informatique/tutos/python/tests%20unitaires/2021/08/01/tests-unitaires.html">tutorial sur les tests unitaires</a> pour mettre en place un environnement de test qui vous sera utile tout au long de votre vie en commençant par les exercices ci-dessous.</p>
+<h3 id="résolution">résolution</h3>
 
-<h4 id="tests-et-dés">Tests et dés</h4>
+<p>cherchez à améliorer le flot, puis vérifier qu’il est maximum (ou augmentez le encore) avec l’algorithme de Ford et Fulkerson.</p>
 
-<p>On suppose que vous avez une liste de 5 entiers allant de 1 à 6. Créer les tests et les fonctions permettant de savoir si la liste contient :</p>
+<h2 id="problème-du-transport-de-marchandise">problème du transport de marchandise</h2>
+
+<p>Un problème de transport est une variation sur les flots.</p>
+
+<p>On considère que l’on a un graphe orienté $G = (V, E)$ et que l’on a dans ce graphe deux sous ensembles :</p>
 
 <ul>
-  <li>une paire</li>
-  <li>une double paire</li>
-  <li>un brelan</li>
-  <li>un carré</li>
-  <li>un full</li>
+  <li>un ensemble $S \subsetneq V$ de sources qui ont une marchandise en excès</li>
+  <li>un ensemble $P \subsetneq V$ de puits qui demandent la marchandises</li>
 </ul>
 
-<p>Est-ce que ces fonctions marcheraient aussi si on avait une liste de 5 réels ? De 5 chaînes de caractères ? Pourquoi ?</p>
+<p>Les sommets qui ne sont ni dans $S$ ni dans $P$ sont dit sommets intermédiaires.</p>
 
-<blockquote>
-  <p>Lien vers <a href="https://github.com/FrancoisBrucker/cours_informatique/tree/master/docs/cours/mie/developpement-objet/installation_environnement_code">le code d’un possible corrigé</a></p>
-</blockquote>
+<p>On a de plus une valuation $v(u)$ pour chaque arc de $G$ qui dertermine le cout de transport d’une unité sur cet arc.</p>
+
+<p>Le problème est alors de tranporter les ressources des sommets de $S$ au sommet de $P$ à coût minimum.</p>
+
+<h3 id="algorithme">algorithme</h3>
+
+<p>On peut modéliser ce problème comme un problème de flox maximum à cout minimum.</p>
+
+<h3 id="exemple">exemple</h3>
+
+<h2 id="problème-du-transport-amoureux">problème du transport amoureux</h2>
+
+<h2 id="stockage-dans-les-noeuds">stockage dans les noeuds</h2>
+
+<h2 id="k-connectivité-dans-un-graphe">k-connectivité dans un graphe</h2>
+
+<h2 id="bataille-de-la-marne">bataille de la marne</h2>
 
   </div>
 
