@@ -117,7 +117,7 @@ On a clairement que :
 
 * $\mbox{val}(f) \leq c(S, \overline{S})$ pour toute coupe du réseau.
 * si $\mbox{val}(f) = c(S^*, \overline{S^*})$ alors :
-  * $S^*$ est la coupe réalisant le minimum de c(S, \overline{S})$ pour toute coupe $S$
+  * $S^*$ est la coupe réalisant le minimum de $c(S, \overline{S})$ pour toute coupe $S$
   * $\mbox{val}(f)$ est maximum
   * pour tout arc $u$ partant de $S^*$ pour finir en $\overline{S^*}$, $f(u) = c(u)$
   * pour tout arc $u$ partant de $\overline{S^*}$ pour finir en $S^*$, $f(u) = 0$
@@ -202,7 +202,7 @@ Si l'on suppose que nos capacités sont entières on pourra augmenter au minimum
 
 * au maximum $C(S, \overline{S})$ itérations où $S$ est une coupe
 * au maximum $\max \mbox{val}(f)$ itérations où $\max \mbox{val}(f)$ est la valeur de flot maximum
-* au maximum $\vert V \vert c_\max$ itérations où $c_\max$ est la capacité maximale (pour montrer ça on considère la coupe $(\\{s\\}, V \backslash \\{s \\}))$
+* au maximum $\vert V \vert \cdot c_\max$ itérations où $c_\max$ est la capacité maximale (pour montrer ça on considère la coupe $(\\{s\\}, V \backslash \\{s \\})$ : $s$ a au plus $\vert V\vert$ voisins et chacun de capacité maximale au plus $c_\max$)
 
 ### Ford et Fulkerson
 
