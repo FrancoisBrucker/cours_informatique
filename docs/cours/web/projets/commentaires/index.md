@@ -40,6 +40,7 @@ Chaque partie est organisée en niveaux. Chaque niveau ajoutant des outils de d�
 
 > TBD :
 >
+> * fetch qui marche pas sous firefox ?
 > * environnements différents
 > * scripts d'install et de run
 > * utiliser une base de donnée serveur postgressql (3A)
