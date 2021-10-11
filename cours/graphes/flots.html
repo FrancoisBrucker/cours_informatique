@@ -202,7 +202,7 @@
   <li>$\mbox{val}(f) \leq c(S, \overline{S})$ pour toute coupe du réseau.</li>
   <li>si $\mbox{val}(f) = c(S^<em>, \overline{S^</em>})$ alors :
     <ul>
-      <li>$S^*$ est la coupe réalisant le minimum de c(S, \overline{S})$ pour toute coupe $S$</li>
+      <li>$S^*$ est la coupe réalisant le minimum de $c(S, \overline{S})$ pour toute coupe $S$</li>
       <li>$\mbox{val}(f)$ est maximum</li>
       <li>pour tout arc $u$ partant de $S^<em>$ pour finir en $\overline{S^</em>}$, $f(u) = c(u)$</li>
       <li>pour tout arc $u$ partant de $\overline{S^<em>}$ pour finir en $S^</em>$, $f(u) = 0$</li>
@@ -306,7 +306,7 @@
 <ul>
   <li>au maximum $C(S, \overline{S})$ itérations où $S$ est une coupe</li>
   <li>au maximum $\max \mbox{val}(f)$ itérations où $\max \mbox{val}(f)$ est la valeur de flot maximum</li>
-  <li>au maximum $\vert V \vert c_\max$ itérations où $c_\max$ est la capacité maximale (pour montrer ça on considère la coupe $(\{s\}, V \backslash \{s \}))$</li>
+  <li>au maximum $\vert V \vert \cdot c_\max$ itérations où $c_\max$ est la capacité maximale (pour montrer ça on considère la coupe $(\{s\}, V \backslash \{s \})$ : $s$ a au plus $\vert V\vert$ voisins et chacun de capacité maximale au plus $c_\max$)</li>
 </ul>
 
 <h3 id="ford-et-fulkerson">Ford et Fulkerson</h3>

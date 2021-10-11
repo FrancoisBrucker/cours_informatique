@@ -85,7 +85,7 @@
 <h3 id="résolution">résolution</h3>
 
 <blockquote class="a-faire">
-  <p>Cherchez à améliorer le flot avec une chaine augmentante, puis  augmentez le jusqu’à son maximum avec l’algorithme de Ford et Fulkerson en exhibant une coupe minimum.</p>
+  <p>Cherchez à améliorer le flot avec une chaine augmentante en utilisant le graphe d’écart, puis  augmentez le jusqu’à son maximum avec l’algorithme de Ford et Fulkerson en exhibant une coupe minimum.</p>
 </blockquote>
 
 <h2 id="problème-du-transport-de-marchandise">problème du transport de marchandise</h2>
@@ -121,11 +121,203 @@
 
 <h2 id="problème-du-transport-amoureux">problème du transport amoureux</h2>
 
+<p>Des héros littéraires ont décidé de se marier. On considère pour simplifier qu’ils sont tous hétérosexuels et qu’ils ont préétablis une matrice d’affinité : un cœur dans la case signifie que la ligne et la colonne sont intéressées l’une par l’autre.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"> </th>
+      <th style="text-align: center">Cléopâtre</th>
+      <th style="text-align: center">Iphigénie</th>
+      <th style="text-align: center">Juliette</th>
+      <th style="text-align: center">Fanny</th>
+      <th style="text-align: center">Chimène</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">Achille</td>
+      <td style="text-align: center">♥</td>
+      <td style="text-align: center">♥</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">César</td>
+      <td style="text-align: center">♥</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">♥</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Rodrigue</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">♥</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">♥</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Roméo</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">♥</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">♥</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Marius</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">♥</td>
+      <td style="text-align: center">♥</td>
+      <td style="text-align: center"> </td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote class="a-faire">
+  <p>Montrez que ce problème peut s’écrire comme un problème de couplage maximum dans un graphe</p>
+</blockquote>
+
+<p>Pour un graphe simple $G = (V, E)$ un couplage $M$ est un un ensemble d’arêtes deux à deux disjointes (pour tout sommet $x$, il existe au plus 1 arête de $M$ tel que $x$ soit une de ses extrémités).</p>
+
+<blockquote class="a-faire">
+  <p>Montrer que comme ce graphe est bi-parti, on peut modéliser le problème de couplage comme un problème de flot maximum.</p>
+</blockquote>
+
+<p>Un graphe simple $G = (V, E)$ est biparti s’il existe $V_1$ et $V_2$ tels que $V = V_1 \cup V_2$, $V_1 \cap V_2 = \emptyset$ et tel que toute arête de $E$ a une extrémité dans $V_1$ et l’autre dans $V_2$.</p>
+
+<blockquote class="a-faire">
+  <p>Une fois le problème modélisé. Résolvez le.
+Il existe deux solutions où tout le monde est marié à la fin. Lesquelles ?</p>
+</blockquote>
+
 <h2 id="stockage-dans-les-noeuds">stockage dans les noeuds</h2>
+
+<p>Quatre industries $x_1$, $x_2$, $x_3$ et $x_4$ rejetant des eaux
+polluées doivent faire traiter ces eaux à la même station d’épuration
+$x_5$.</p>
+
+<p>Elles peuvent utiliser le réseau de canalisations du graphe ci-dessous :</p>
+
+<p><img src="/cours_informatique/assets/cours/graphes/flot-app-stock-1.png" alt="flot épuration" style="margin: auto;display: block;" /></p>
+
+<p>Les capacités des canalisations sont données par les nombres (exprimés
+en dizaines de m$^3$ par seconde) associés aux arcs du graphe. D’autre
+part, les eaux rejetées des centres $x_1$, $x_2$ et $x_4$ sont
+réceptionnées initialement dans des bassins de capacités finies
+respectivement égales à 4, 3 et 4 dizaines de m$^3$ par seconde. Le
+bassin de réception des eaux rejetées du centre $x_3$ est très grand
+et peut pratiquement être considéré de capacité infinie.</p>
+
+<blockquote class="a-faire">
+  <p>Déterminer un plan d’épuration des eaux polluées de volume (par unité
+de temps) maximal.</p>
+</blockquote>
+
+<p>Des problèmes techniques vont rendre inutilisable une partie $\lambda$
+de la capacité (initialement égale à 4) du bassin de réception des
+eaux rejetées par le centre $x_1$.</p>
+
+<blockquote class="a-faire">
+  <p>Quelles seront les conséquences sur
+le plan d’épuration optimal ?</p>
+</blockquote>
 
 <h2 id="k-connectivité-dans-un-graphe">k-connectivité dans un graphe</h2>
 
+<p>Nous allons démontrer ici un des <a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Menger">théorème de Menger</a> sur les connectivité d’un graphe.</p>
+
+<p>On veut répondre à la question suivante : Soient deux sommets $s$ et$p$  d’un graphe orienté $G(V, E)$ et 2. Combien de chemins deux à deux disjoints relient $s$ et $p$ ?</p>
+
+<p>On note :</p>
+
+<ul>
+  <li>$P(s, p)$ le nombre de chemins deux à deux disjoints entre $s$ et $p$ dans $G$</li>
+  <li>$N(s, p)$ le nombre d’arc qu’il faut supprimer dans $G$ pour qu’il n’existe plus de chemins entre $s$ et $p$</li>
+</ul>
+
+<blockquote class="a-faire">
+  <p>Montrez que $P(s, p) \leq N(s, p)$</p>
+</blockquote>
+
+<p>On considère le réseau formé de $G$, de la source $s$ et du puis $p$ et dont toutes les capacités valent $1$.</p>
+
+<blockquote class="a-faire">
+  <p>Montrez que $\mbox{val}(f) \leq P(s, p)$.</p>
+</blockquote>
+
+<p>En utilisant une coupe min du flot max :</p>
+
+<blockquote class="a-faire">
+  <p>Montrez que $N(s, p) \leq \mbox{val}(f)$</p>
+</blockquote>
+
+<p>En déduire que :</p>
+
+<blockquote class="a-faire">
+  <p>$P(s, p) = N(s, p) = \mbox{val}(f)$</p>
+</blockquote>
+
+<p>On peut maintenant chercher à trouver la forte arc-connectivité de $G$, c’est à dire le nombre minimum d’arcs à supprimer de $G$ pour le rendre non fortement connexe (il existe alors deux sommet $a$ et $b$ tel qu’il n’existe pas de chemin entre $a$ et $b$).</p>
+
+<blockquote class="a-faire">
+  <p>Proposez un algorithme (naïf) basé sur le résultat précédent pour connaître $k$ pour un graphe donné</p>
+</blockquote>
+
+<p>On peut aller plus rapidement en prouvant le <em>lemme de zorn</em> : En supposant une numérotation de $0$ à $n-1$ de $V$ ($V = \{x_0, \dots, x_{n-1}\}$), la forte arc-connectivité de $G$ est le minimum de $N(x_i, x_{i+1})$ lorsque $i$ varie de $0$ à $n-1$ et avec $x_n = x_0$.</p>
+
+<blockquote class="a-faire">
+  <p>Démontrer par l’absurde le lemme de Zorn.</p>
+</blockquote>
+
+<p>Lorsque le graphe $G = (V, E)$ est non orienté, on considère le graphe orienté $G^\star = (V, E’)$ avec $xy$ et $yx$ comme arcs de $G’$ si $xy$ est une arête de $G$.
+On assigne de plus une capacité de 1 à tous les arcs de $G^\star$ et on note $f$ un de ses flot maximum.</p>
+
+<p>En notant :</p>
+
+<ul>
+  <li>$P(s, p)$ le nombre de chemins deux à deux disjoints entre $s$ et $p$ dans $G$</li>
+  <li>$N(s, p)$ le nombre d’arêtes qu’il faut supprimer dans $G$ pour qu’il n’existe plus de chemins entre $s$ et $p$</li>
+  <li>$P^\star(s, p)$ le nombre de chemins deux à deux disjoints entre $s$ et $p$ dans $G^\star$</li>
+  <li>$N^\star(s, p)$ le nombre d’arc qu’il faut supprimer dans $G^\star$ pour qu’il n’existe plus de chemins entre $s$ et $p$</li>
+</ul>
+
+<blockquote class="a-faire">
+  <p>Montrez que : $N(s, P) = N^\star(s, P) = P(s, p) = P^\star(s, p) = \mbox{val}(f)$</p>
+</blockquote>
+
+<p>On considère le graphe ci-après :</p>
+
+<p><img src="/cours_informatique/assets/cours/graphes/flot-menger-2.png" alt="flot menger" style="margin: auto;display: block;" /></p>
+
+<blockquote class="a-faire">
+  <p>Quel est son arc connectivité ?</p>
+</blockquote>
+
 <h2 id="bataille-de-la-marne">bataille de la marne</h2>
+
+<p>Un dernier exemple de modélisation en utilisant les flots. Attention c’est du lourd puisque l’on va optimiser l’arrivée des <a href="https://fr.wikipedia.org/wiki/Taxis_de_la_Marne">taxis à la bataille de la marne de 1914</a>.</p>
+
+<p>On a un ensemble $S$ de villes, et des routes reliant certaines villes entre elles (il peut exister plusieurs routes entre deux villes).</p>
+
+<ul>
+  <li>chaque ville $i$ est caractérisée par un nombre $p_i$ de places de parking,</li>
+  <li>chaque route $j$ est caractérisée par une longueur $l_j$ (le temps pour aller d’une extrémité à l’autre)</li>
+  <li>chaque route $j$ a une capacité $c_j$ (nombre de véhicules qui peuvent l’emprunter par unité de temps)</li>
+</ul>
+
+<p>Au temps $t = 0$, on a un certain nombre de véhicules stationnés dans différentes villes et il faut qu’au temps $t = K$, le plus possible de véhicules soient arrivés à une ville donnée (la Marne).</p>
+
+<p>Il est possible que des véhicules arrivent avant cette date butoir, mais après la date K, c’est
+trop tard.</p>
+
+<blockquote class="a-faire">
+  <p>Modéliser ce problème par un flot maximum dans un graphe que l’on déterminera.</p>
+</blockquote>
 
   </div>
 

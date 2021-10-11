@@ -78,7 +78,7 @@
 
 <p><img src="/cours_informatique/assets/cours/graphes/flot-app-2.png" alt="flot application" style="margin: auto;display: block;" /></p>
 
-<h3 id="résolution">résolution</h3>
+<h3 id="résolution-du-problème-de-flot">résolution du problème de flot</h3>
 
 <p>Une chaine augmentante et l’augmentation de flot associée dans la foulée :</p>
 
@@ -90,18 +90,7 @@
 
 <h2 id="problème-du-transport-de-marchandise">problème du transport de marchandise</h2>
 
-<p>On considère que l’on a un graphe orienté $G = (V, E)$ et que l’on a dans ce graphe deux sous ensembles :</p>
-
-<ul>
-  <li>un ensemble $S \subsetneq V$ de sources qui ont une marchandise en excès</li>
-  <li>un ensemble $P \subsetneq V$ de puits qui demandent la marchandises</li>
-</ul>
-
-<p>Les sommets qui ne sont ni dans $S$ ni dans $P$ sont dit sommets intermédiaires.</p>
-
-<p>On a de plus une valuation $v(u)$ pour chaque arc de $G$ qui détermine le coût de transport d’une unité sur cet arc.</p>
-
-<p>Le problème est alors de transporter les ressources des sommets de $S$ au sommet de $P$ à coût minimum.</p>
+<h3 id="modélisation">modélisation</h3>
 
 <p>On ajoute au graphe :</p>
 
@@ -120,15 +109,181 @@
 
 <p>Les capacités sont en gras (les arcs sans capacités sont considérés comme étant de capacité infini) et les coûts sont sur les arcs (les arcs sans coûts sont considérés comme étant de coût nul).</p>
 
-<p>Le graphe d’écart pondéré est alors :</p>
+<h3 id="résolution-du-problème-de-transport">résolution du problème de transport</h3>
+
+<p>On peut redessiner le réseau sous cette forme :</p>
+
+<p><img src="/cours_informatique/assets/cours/graphes/flot-app-transport-1.png" alt="flot transport graphe d'écart" style="margin: auto;display: block;" /></p>
+
+<p>Le flot étant nul au départ, le graphe d’écart pondéré est égal à :</p>
+
+<p><img src="/cours_informatique/assets/cours/graphes/flot-app-transport-2.png" alt="flot transport graphe d'écart" style="margin: auto;display: block;" /></p>
+
+<p>Un chemin de poids min entre $s$ et $p$ pourra alors être : $scap$ de poids 0 et qui permet d’augmenter le flot de 2 :</p>
+
+<p><img src="/cours_informatique/assets/cours/graphes/flot-app-transport-3.png" alt="flot transport augmentation 1" style="margin: auto;display: block;" /></p>
+
+<p>On a de là le graphe d’écart :</p>
+
+<p><img src="/cours_informatique/assets/cours/graphes/flot-app-transport-4.png" alt="flot transport augmentation 1" style="margin: auto;display: block;" /></p>
+
+<p>Un chemin de poids min entre $s$ et $p$ pourra alors être : $sebp$ de poids 2 et qui permet d’augmenter le flot de 1 :</p>
+
+<p><img src="/cours_informatique/assets/cours/graphes/flot-app-transport-5.png" alt="flot transport flot max" style="margin: auto;display: block;" /></p>
+
+<p>Le flot est maximum, l’algorithme de Ford et Fulkerson nos donnant une coupe min valant 3 :</p>
+
+<p><img src="/cours_informatique/assets/cours/graphes/flot-app-transport-6.png" alt="flot transport coupe min" style="margin: auto;display: block;" /></p>
 
 <h2 id="problème-du-transport-amoureux">problème du transport amoureux</h2>
 
+<p>On peut écrire le graphe suivant, an liant les affinités par une arête. Le graphe est bi-parti car les mariages sont ici hétérosexuels :</p>
+
+<p><img src="/cours_informatique/assets/cours/graphes/flot-app-mariage-1.png" alt="graphe bi-parti" style="margin: auto;display: block;" /></p>
+
+<p>Comme on ne peut marier une personne qu’une seule fois, c’est bien un problème de couplage (l’arête choisie est le mariage).</p>
+
+<p>Pour le transformer en problème de flot on peut créer le réseau suivant, avec des capacités de 1 partout :</p>
+
+<p><img src="/cours_informatique/assets/cours/graphes/flot-app-mariage-2.png" alt="graphe bi-parti" style="margin: auto;display: block;" /></p>
+
+<p>Cela fonctionne car pour chaque chaine augmentante, on va la saturer par un entier (donc 1) : on est assuré que le flot maximum sera entier, on ne va pas marier à moitié une personne.</p>
+
+<p>En résolvant le problème on trouve :</p>
+
+<ul>
+  <li>Iphigénie - Achille</li>
+  <li>Cléopâtre - César</li>
+  <li>Juliette - Rodrigue</li>
+  <li>Fanny - Marius</li>
+  <li>Chimène - Roméo</li>
+</ul>
+
+<p>Il y a aussi la solution classique où vous échangez les maris de Juliette et Chimène.</p>
+
+<blockquote>
+  <p>Notez que si l’on ne se restreint pas aux mariages hétérosexuels, le graphe n’est plus biparti. Le problème du couplage dans un graphe ne peut plus se résoudre comme un problème de flot, il faut utiliser <a href="https://fr.wikipedia.org/wiki/Algorithme_d%27Edmonds_pour_les_couplages">l’algorithme d’Edmonds</a> pour le résoudre.</p>
+
+  <p>Enfin, si l’on veut rajouter des amants (chaque personne doit avoir un conjoint et un amant), le problème devient NP-difficile.</p>
+</blockquote>
+
 <h2 id="stockage-dans-les-noeuds">stockage dans les noeuds</h2>
+
+<p>Pour modéliser ce problème comme un problème de flot, on va une source d’eaux usée de capacité égale au bassin de rétention :</p>
+
+<p><img src="/cours_informatique/assets/cours/graphes/flot-app-stock-2.png" alt="flot" style="margin: auto;display: block;" /></p>
+
+<p>On ne peut pas résoudre le problème de flot classique, car on pourrait avoir une solution de ce type :</p>
+
+<p><img src="/cours_informatique/assets/cours/graphes/flot-app-stock-3.png" alt="flot" style="margin: auto;display: block;" /></p>
 
 <h2 id="k-connectivité-dans-un-graphe">k-connectivité dans un graphe</h2>
 
+<h3 id="p--n">P &lt;= N</h3>
+
+<p>Comme les chemins sont disjoints, il faut au moins supprimer $P(s, p)$ arcs pour les déconnecter.</p>
+
+<h3 id="valf--p">val(f) &lt;= P</h3>
+
+<p>Soit $f$ un flot maximum pour le réseau.</p>
+
+<p>Comme les capacités valent toutes 1, chaque flux est soit 0 soit 1. De là tous les arcs sortant de $s$ de flux 1 vont créer des chemins disjoints vers $p$.</p>
+
+<h3 id="n--valf">N &lt;= val(f)</h3>
+
+<p>Sur une coupe minimum $(S, \overline{S})$, toutes les arêtes allant de $S$ vers $\overline{S}$ sont à 1 et sont au nombre de $\mbox{val}(f)$. Or si on supprime toutes ces arcs, on déconnecte $s$ de $p$ : $N(s, p) \leq \mbox{val}(f)$.</p>
+
+<h3 id="n--valf--p">N = val(f) = P</h3>
+
+<p>On a les 3 inégalités :</p>
+
+<ul>
+  <li>$P(s, p) \leq N(s, p)$</li>
+  <li>$\mbox{val}(f) \leq P(s, p)$</li>
+  <li>$N(s, p) \leq \mbox{val}(f)$</li>
+</ul>
+
+<p>Donc : $P(s, p) = N(s, p) = \mbox{val}(f)$</p>
+
+<h3 id="lemme-de-zorn">lemme de zorn</h3>
+
+<p>On suppose par l’absurde que le minimum de $N(x_i, x_{i+1})$ soit strictement plus grand que la forte arc connectivité de $G$ que l’on note $k$. En supprimant $k$ arcs je déconnecte $x_i$ de $x_j$. On a deux cas :</p>
+
+<ul>
+  <li>si $i &lt; j$ alors comme on peut toujours aller de $x_k$ à $x_{k+1}$ pour tous $i \leq k &lt; j$, il existe un chemin entre $x_i$ et $x_j$ ce qui est impossible.</li>
+  <li>si $j &lt; i$ alors comme on peut toujours aller de $x_k$ à $x_{k+1}$ pour tous $j \leq k &lt; n - 1$ il existe un chemin entre $x_i$ et $x_0$, puis un raisonnement identique nous indique qu’on peut aller de $x_0$ à $x_j$. Il existe donc un chemin entre $x_i$ et $x_j$ ce qui est impossible.</li>
+</ul>
+
+<p>Trouver la forte arc connectivité d’un graphe orienté se fait donc en procédant à $\vert V \vert$ calcul de flot maximum.</p>
+
+<h3 id="graphe-non-orienté">graphe non orienté</h3>
+
+<h4 id="n--p">N &gt;= P</h4>
+
+<p>On a clairement que $N(s, p) \geq P(s, p)$.</p>
+
+<h4 id="p--p">P &gt;= P*</h4>
+
+<p>De plus, $P(a, b) \geq P^\star(s, p)$. Si les $P^\star(s, p)$ chemins ne partagent pas d’arcs issus du dédoublement des arêtes en arcs, on peut créer $P^\star(s, p)$ chemins disjoints entre $s$ et $p$ dans $G$.</p>
+
+<p>Si 2 chemins partagent une arête $xy$ l’un l’$xy$ et l’autre l’arc $yx$, on peut procéder comme dans la figure ci-dessous pour créer 2 chemins partageant strictement moins d’arêtes.</p>
+
+<p><img src="/cours_informatique/assets/cours/graphes/flot-menger-1.png" alt="flot menger" style="margin: auto;display: block;" /></p>
+
+<p>On peut alors itérativement construire $P^\star(s, p)$ chemins ne partagent pas d’arcs issus du dédoublement des arêtes en arcs.</p>
+
+<h4 id="n--n">N* &gt;= N</h4>
+
+<p>En supprimant $N^\star(s, p)$ arc de $G^\star$ on déconnecte $s$ de $p$. Si on supprime les arêtes de $G$ qui ont donné naissance à ces arcs, on déconnecte $s$ de $p$ dans $G$. En effet, s’il restait un chemin entre $s$ et $p$ dans $G$, il en resterait également un dans $G^\star$.</p>
+
+<p>On a donc $N^\star(s, p) \geq N(s, p)$.</p>
+
+<h4 id="conclusion">conclusion</h4>
+
+<p>On a les inégalités suivantes : $N^\star(s, p) \geq N(s, p) \geq P(s, p) \geq P^\star(s, p)$</p>
+
+<p>Or $P^\star(s, p) = N^\star(s, p) = \mbox{val}(f)$ ce qui conclut la preuve d’égalité.</p>
+
+<h4 id="connectivité-du-graphe">connectivité du graphe</h4>
+
+<p>Sa connectivité est de 3.</p>
+
 <h2 id="bataille-de-la-marne">bataille de la marne</h2>
+
+<p>Sans corrigé, c’est quasi impossible de trouver une solution. On a pas donné d’indices pour vous montrer que modéliser un problème réel peut être compliqué.</p>
+
+<p>Le problème est :</p>
+
+<ul>
+  <li>qu’une route a à la fois une capacité et une longueur, caractéristiques très différentes</li>
+  <li>qu’il faut gérer le temps</li>
+</ul>
+
+<p>On considère le temps comme étant une valeur discrète prenant 0, 1, 2, …, K comme valeur.</p>
+
+<p>Chaque ville est alors représentée par $K+1$ sommet, chacune représentant la ville à un temps donné. La ville A sera ainsi représentée par les sommets $A_0$, …,  $A_K$, le sommet $A_i$ représentant la ville au temps $i$.</p>
+
+<p>De là, une route de longueur 5 (et de capacité x) de A vers B va être représentée par :</p>
+
+<ul>
+  <li>un arc de $A_0$ vers $B_5$ de capacité x</li>
+  <li>un arc de $A_1$ vers $B_6$ de capacité x</li>
+  <li>…</li>
+  <li>un arc de $A_{K-5}$ vers $B_K$ de capacité x</li>
+</ul>
+
+<p>Une voiture qui reste dans la ville $A$ au temps $i$ emprunte un arc de $A_i$ vers $A_{i+1}$ dont la capacité est le nombre de places de parking de la ville A.</p>
+
+<p>Le sommets spéciaux sont :</p>
+
+<ul>
+  <li>le puits est la Marne au temps K.</li>
+  <li>la source est un sommet fictif que l’on relie aux sommets $A_0$ correspondant aux villes où il y a des taxis (au temps 0); la capacité de ces arcs est le nombre de taxis disponibles.</li>
+</ul>
+
+<blockquote>
+  <p>remarque : le graphe devient rapidement impossible à dessiner à la main, mais pour un ordi, aucun problème</p>
+</blockquote>
 
   </div>
 
