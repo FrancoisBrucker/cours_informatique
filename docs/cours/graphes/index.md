@@ -49,7 +49,3 @@ Problèmes de flots. Définition, algorithmes et applications
 
 1. [problèmes de flots]({% link cours/graphes/flots.md %})
 2. [applications]({% link cours/graphes/flots-applications.md %})
-
-> TBD
-> flots
-{: .note}
