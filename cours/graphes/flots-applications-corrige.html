@@ -3,20 +3,20 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>Théorie des graphes : flots - applications | cours d’informatique</title>
+<title>Théorie des graphes : flots - appication (corrigé) | cours d’informatique</title>
 <meta name="generator" content="Jekyll v4.2.0" />
-<meta property="og:title" content="Théorie des graphes : flots - applications" />
+<meta property="og:title" content="Théorie des graphes : flots - appication (corrigé)" />
 <meta name="author" content="François Brucker" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
 <meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
-<link rel="canonical" href="/cours_informatique/cours/graphes/flots-applications.html" />
-<meta property="og:url" content="/cours_informatique/cours/graphes/flots-applications.html" />
+<link rel="canonical" href="/cours_informatique/cours/graphes/flots-applications-corrige.html" />
+<meta property="og:url" content="/cours_informatique/cours/graphes/flots-applications-corrige.html" />
 <meta property="og:site_name" content="cours d’informatique" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Théorie des graphes : flots - applications" />
+<meta property="twitter:title" content="Théorie des graphes : flots - appication (corrigé)" />
 <script type="application/ld+json">
-{"headline":"Théorie des graphes : flots - applications","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/graphes/flots-applications.html","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
+{"headline":"Théorie des graphes : flots - appication (corrigé)","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/graphes/flots-applications-corrige.html","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
@@ -58,7 +58,7 @@
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Théorie des graphes : flots - applications</h1></p>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></p>
+    <h1 class="post-title">Théorie des graphes : flots - appication (corrigé)</h1></p>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></p>
   </header>
 
   <div class="post-content">
@@ -66,31 +66,29 @@
   <p><a href="/cours_informatique/cours/graphes/">graphes</a> / <a href="/cours_informatique/cours/graphes/flots-applications.html">flots : applications</a></p>
 </blockquote>
 
-<p>Quelques exercices pour montrer que le problème du flot maximum permet de modéliser (et résoudre !) de nombreux problèmes concrets, très éloignées de la tuyauterie.</p>
+<p>Element de corrigé des applications des flots.</p>
 
-<p><a href="/cours_informatique/cours/graphes/flots-applications-corrige.html">éléments de corrigé</a></p>
+<p><a href="/cours_informatique/cours/graphes/flots-applications.html">les exercices</a></p>
 
 <h2 id="application-simple">application simple</h2>
 
-<p>On commence par voir si on se rappelle le cours. On considère le réseau suivant (en gras les capacités, en italique les flux) :</p>
-
-<p><img src="/cours_informatique/assets/cours/graphes/flot-app-1.png" alt="flot application" style="margin: auto;display: block;" /></p>
-
 <h3 id="graphe-décart">graphe d’écart</h3>
 
-<blockquote class="a-faire">
-  <p>Tracer le graphe d’écart associé à ce réseau.</p>
-</blockquote>
+<p>Le graphe d’écart associé à ce réseau :</p>
+
+<p><img src="/cours_informatique/assets/cours/graphes/flot-app-2.png" alt="flot application" style="margin: auto;display: block;" /></p>
 
 <h3 id="résolution">résolution</h3>
 
-<blockquote class="a-faire">
-  <p>Cherchez à améliorer le flot avec une chaine augmentante, puis  augmentez le jusqu’à son maximum avec l’algorithme de Ford et Fulkerson en exhibant une coupe minimum.</p>
-</blockquote>
+<p>Une chaine augmentante et l’augmentation de flot associée dans la foulée :</p>
+
+<p><img src="/cours_informatique/assets/cours/graphes/flot-app-3.png" alt="flot application" style="margin: auto;display: block;" /></p>
+
+<p>La coupe min :</p>
+
+<p><img src="/cours_informatique/assets/cours/graphes/flot-app-4.png" alt="flot application" style="margin: auto;display: block;" /></p>
 
 <h2 id="problème-du-transport-de-marchandise">problème du transport de marchandise</h2>
-
-<p>Un problème de transport est une variation sur les flots.</p>
 
 <p>On considère que l’on a un graphe orienté $G = (V, E)$ et que l’on a dans ce graphe deux sous ensembles :</p>
 
@@ -105,19 +103,24 @@
 
 <p>Le problème est alors de transporter les ressources des sommets de $S$ au sommet de $P$ à coût minimum.</p>
 
-<blockquote class="a-faire">
-  <p>Montrer que l’on peut modéliser ce problème comme un problème de flot maximum à coût minimum.</p>
-</blockquote>
+<p>On ajoute au graphe :</p>
 
-<p>Le graphe suivant est un problème de transport :</p>
+<ul>
+  <li>un sommet $s$ et des arcs $sx$ pour $x \in S$ de coût 0 et de capacité l’excédent en $x$</li>
+  <li>un sommet $p$ et des arcs $xp$ pour $x \in P$ de coût 0 et de capacité la demande en $x$</li>
+</ul>
 
-<p><img src="/cours_informatique/assets/cours/graphes/flot-app-5.png" alt="flot application" style="margin: auto;display: block;" /></p>
+<p>On considère que les capacités des autres arcs du graphe sont égales à $+\infty$.</p>
 
-<p>Le coût de transport est sur les arcs et les demandes (nombres négatifs)/excès (nombres positifs) de marchandises sont en gras à côté des noeuds.</p>
+<p>Le problème du transport de marchandise revient à trouver le flot maximum à coût minimum.</p>
 
-<blockquote class="a-faire">
-  <p>Résoudre le problème de transport du graphe précédent.</p>
-</blockquote>
+<p>Le graphe exemple transformé en problème de flot est :</p>
+
+<p><img src="/cours_informatique/assets/cours/graphes/flot-app-6.png" alt="flot transport" style="margin: auto;display: block;" /></p>
+
+<p>Les capacités sont en gras (les arcs sans capacités sont considérés comme étant de capacité infini) et les coûts sont sur les arcs (les arcs sans coûts sont considérés comme étant de coût nul).</p>
+
+<p>Le graphe d’écart pondéré est alors :</p>
 
 <h2 id="problème-du-transport-amoureux">problème du transport amoureux</h2>
 
