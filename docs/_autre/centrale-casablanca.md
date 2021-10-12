@@ -57,7 +57,7 @@ Exercice de modélisation objet en python :
 
 1. [exercices sur l'héritage]({% link cours/developpement/programmation-objet/heritage-exercices.md %})
 Codons des classes qui héritent les unes des autres
-2. corrigé
+2. [corrigé]({% link cours/developpement/programmation-objet/heritage-exercices-corrige.md %})
 
 ### séance 7 (**SM**)
 

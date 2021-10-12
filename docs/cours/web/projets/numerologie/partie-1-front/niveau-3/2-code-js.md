@@ -10,7 +10,7 @@ author: "François Brucker"
 
 Nous allons après chaque tâche faire un commit et, à la fin de chaque étape envoyer les modifications sur le serveur.
 
-> Un commit doit être de taille raisonnable et, si possible, ne concerner qu'une seule tâche. 
+> Un commit doit être de taille raisonnable et, si possible, ne concerner qu'une seule tâche.
 
 Le message de commit (obligatoire) est très important lorsque l'on fera l'historique du projet. De pus, il faut savoir qui a fait quoi et pouvoir le contacter au besoin : votre nom et mail *doivent* être correct
 
@@ -30,7 +30,7 @@ Si vous n'avez pas modifié votre projet, vous devriez avoir une fenêtre qui re
   * onglet *changes* : [rien n'a changé](https://www.youtube.com/watch?v=V9Po8lSIKww)
   * onglet *History* : voir l'historique de votre projet. Si on clique dessus on voit :
     * les différents commit et leur message
-    * qui a cmmit
+    * qui a commit
     * ce qui a été commit (le format est un [format spécial](https://www.oreilly.com/library/view/git-pocket-guide/9781449327507/ch11.html). Il a l'air compliqué come ça mais en fait c'est très simple : les `+` ont été ajouté, les `-` ont été supprimés.
 
 ![github history]({{ "/assets/cours/web/numerologie/partie-1-niveau-3-desktop-history.png" | relative_url }}){:style="margin: auto;display: block}
@@ -69,7 +69,6 @@ On peut maintenant commit en appuyant sur le bouton "commit to main". On est 2 c
 ## ajout d'un fichier depuis le site de github
 
 Allons sur le site du projet github. Dans l'application github : *menu Repository > view on Github* et il ouvre une page web sur votre projet.
-
 
 La page de mon projet ressemble à ça :
 
@@ -120,7 +119,7 @@ Avant de repousser le tout sur le serveur.
 
 Mes commits sont `B'` et `C'` puisque je dois les écrire depuis un code qui fait `D` alors que `B` et `C` ont été écrit depuis un code qui était À`.
 
-C'est exactement ce qu'il va se passer si vous avez fait les configurations nécessaires). On va cliquer 2 fois sur le bouton origin. Son intitulé va changer :
+C'est exactement ce qu'il va se passer si vous avez fait les configurations nécessaires. On va cliquer 2 fois sur le bouton origin. Son intitulé va changer :
 
 1. *pull origin* : va récupérer l'état du serveur et changer nos commit en `B'` et `C'`
 2. *push origin* : on va pousser sur le serveur nos 2 commits.

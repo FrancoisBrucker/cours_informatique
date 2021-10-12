@@ -1,20 +1,22 @@
 ---
 layout: page
-title:  "Projet numérologie : partie 1 / niveau 3 / intégration html et js"
+title:  "Projet numérologie : partie 1 / niveau 1 / intégration html et js"
 category: cours
 author: "François Brucker"
 ---
 
-> [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 1]({% link cours/web/projets/numerologie/partie-1-front/index.md %}) / [niveau 3]({% link cours/web/projets/numerologie/partie-1-front/niveau-3/index.md %}) / [html et css]({% link cours/web/projets/numerologie/partie-1-front/niveau-3/4-integration_html_js.md %})
+> [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 1]({% link cours/web/projets/numerologie/partie-1-front/index.md %}) / [niveau 4]({% link cours/web/projets/numerologie/partie-1-front/niveau-4/index.md %}) / [html et css]({% link cours/web/projets/numerologie/partie-1-front/niveau-4/4-integration_html_js.md %})
 {: .chemin}
 
 ## business as usual
 
-* [tâche 1 du niveau 1]({% link cours/web/projets/numerologie/partie-1-front/niveau-1/4-integration_html_js.md %}#tache-1). Puis on commit avec le message "action clique bouton"
-* [tâche 2 du niveau 1]({% link cours/web/projets/numerologie/partie-1-front/niveau-1/4-integration_html_js.md %}#tache-2). Puis on commit avec le message "integration numerologie.js"
-* [tâche 3 du niveau 1]({% link cours/web/projets/numerologie/partie-1-front/niveau-1/4-integration_html_js.md %}#tache-2). Puis on commit avec le message "utilisation numerologie.js"
+* [tâche 1 du niveau 1]({% link cours/web/projets/numerologie/partie-1-front/niveau-1/4-integration_html_js.md %}#tache-1). Puis on commit : `git commit -am"action clique bouton"`
+* [tâche 2 du niveau 1]({% link cours/web/projets/numerologie/partie-1-front/niveau-1/4-integration_html_js.md %}#tache-2). Puis on commit : `git commit -am"integration numerologie.js"`.
+* [tâche 3 du niveau 1]({% link cours/web/projets/numerologie/partie-1-front/niveau-1/4-integration_html_js.md %}#tache-2). Puis on commit : `git commit -am"utilisation numerologie.js"`
 
-Regardez à chaque fois ce qui est commité.
+On fini pas pousser le tout sur le serveur : `git push`
+
+On a (presque) terminé cette partie de projet.
 
 ## un rebase qui se passe mal
 

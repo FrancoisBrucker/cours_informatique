@@ -22,9 +22,19 @@ Vous être prêt à utiliser git.
 
 Avant de commencer notre projet on va créer un nouveau *repository* sur github qui s'appellera "numerologie".
 
-1. Suivez ce [tuto](https://docs.github.com/en/get-started/quickstart/create-a-repo) pour créer le projet numérologie.
-2. sur la page du repository sur github, créez un nouveau fichier (*add file > create a new file*) que vous appellerez *"README.md"*. Ecrivez-y un petit descriptif du projet (ou juste son nom), puis appuyez sur le bouton *commit new file* pour ajouter ce fichier à votre projet.
-3. clonez le dossier sur votre ordinateur. Suivez [ce tuto]({% link cours/git_et_github/git_commands.md %}#clone-projet) pour cloner votre projet.
+Suivez ce [tuto](https://docs.github.com/en/get-started/quickstart/create-a-repo) pour créer le projet numérologie. Vous devriez obtenir une page du genre :
+
+![projet github fraichement créé]({{ "/assets/cours/web/numerologie/partie-1-niveau-4-projet-github.png" | relative_url }}){:style="margin: auto;display: block}
+
+Editez ensuite le fichier readme.md pour y a jouter la ligne :
+
+```text
+Voyez la vie en base 10.
+```
+
+En vas de la page, vous voyez la page pour commiter ses changements, cliquez sur le bouton vert *Commet changes*.
+
+Il nous reste maintenant à cloner le projet sur notre ordinateur. Suivez [ce tuto]({% link cours/git_et_github/git_commands.md %}#clone-projet) pour pour le faire.
 
 > Lorsque vous allez cloner votre projet, il va créer un dossier *"numerologie"* dans lequel sera votre projet.
 {:.attention}
@@ -38,10 +48,10 @@ Suivez la partie [préparation du niveau 1]({% link cours/web/projets/numerologi
 Lorsque l'on fait des commit avec git, on va toujours avoir le même workflow :
 
 1. `git status` : pour vérifier ce qui est nouveau
-2. `git add --all` : pour ajouter les nouveau fichiers (ou on ajoute juste les nouveau fichiers voulus)
+2. `git add --all` : pour ajouter les nouveau fichiers (ou on ajoute juste les nouveaux fichiers voulus)
 3. `git commit -am"message de commit"` : pour enregistrer les modifications et inclure un message qui résume ce qu'on a fait
 
-Le message du commit doit être informatif. Cela permettra de voir ce qui a été fait lorque l'on regardera l'historique des commits.
+Le message du commit doit être informatif. Cela permettra de voir ce qui a été fait lorsque l'on regardera l'historique des commits.
 
 > Il ne faut pas qu'un commit regroupe trop de changements sinon ça ne sert à rien : il faut qu'un commit regroupe une unité thématique, une chose sur laquelle on travaillait et qui est finie, ou quelque chose sur laquelle on a bien avancé.
 
@@ -107,3 +117,5 @@ On a fini notre commit. Tous les changements ont été conservé localement.
 ### synchronisation avec le serveur
 
 `git push` va envoyer les modification au serveur. Selon le mode d'authentifications, vous aurez besoin soit de votre clé ssh, soit d'un token pour vous connecter à github.
+
+Vous pouvez regarder la page du projet numerologie sur le site de github, vous devriez voir le fichier ajouté.

@@ -8,7 +8,7 @@ author: "François Brucker"
 > [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 1]({% link cours/web/projets/numerologie/partie-1-front/index.md %}) / [niveau 3]({% link cours/web/projets/numerologie/partie-1-front/niveau-3/index.md %}) / [préparation]({% link cours/web/projets/numerologie/partie-1-front/niveau-3/1-preparation.md %})
 {: .chemin}
 
-initialisation du projet git.
+Initialisation du projet git.
 
 ## prérequis
 
@@ -22,7 +22,7 @@ Vous être prêt à utiliser git.
 
 On va utiliser l'outil [desktop](https://desktop.github.com/) de github.
 
-Une fois l'application lancée, connectez vous, puis créez un nouveau projet (*File > Ne repository*) : choisissez son nom (*numerologie*), puis cliquez sur *publish repository*.
+Une fois l'application lancée, connectez vous, puis créez un nouveau projet (*File > New repository*) : choisissez son nom (*numerologie*), puis cliquez sur *publish repository*.
 
 ## ajout du fichier
 

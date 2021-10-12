@@ -5,10 +5,10 @@ category: cours
 author: "François Brucker"
 ---
 
-> [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 1]({% link cours/web/projets/numerologie/partie-1-front/index.md %}) / [niveau 1]({% link cours/web/projets/numerologie/partie-1-front/niveau-3/index.md %}) / [html et css]({% link cours/web/projets/numerologie/partie-1-front/niveau-3/3-html_css.md %})
+> [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 1]({% link cours/web/projets/numerologie/partie-1-front/index.md %}) / [niveau 3]({% link cours/web/projets/numerologie/partie-1-front/niveau-3/index.md %}) / [html et css]({% link cours/web/projets/numerologie/partie-1-front/niveau-3/3-html_css.md %})
 {: .chemin}
 
-## où sont les préférences de git
+## où sont les préférences de git ?
 
 Les configurations de git sont rangées dans un dossier *".git"* à la racine de votre projet.
 
@@ -25,9 +25,9 @@ Vous devriez voir apparaitre un dossier *.git* dans vscode. Si vous regardez le 
 
 ### création d'un fichier .gitignore
 
-Notez qu'on a un commit d'avance car vscode a crée un dossier .vscode où il range les préférences du workspace. Nous ne voulons pas mettre ce fichier sur github, car chaque utilisateur va avoir ses propres préférences : ajouter ce fichier fa imposer nos préférences aux autres. Ce n'est pas bien.
+Notez qu'on a un commit d'avance car vscode a crée un dossier .vscode où il range les préférences du workspace. Nous ne voulons pas mettre ce fichier sur github, car chaque utilisateur va avoir ses propres préférences : ajouter ce fichier va imposer nos préférences aux autres. Ce n'est pas bien.
 
-Plutôt que de tout le temps penser à ne pas commiter ce fichier, on va demander à git de ne jamais le regarder. POur cela on crée un fichier nommé [*".gitignore"*](https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files).
+Plutôt que de tout le temps penser à ne pas commiter ce fichier, on va demander à git de ne jamais le regarder. Pour cela on crée un fichier nommé [*".gitignore"*](https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files).
 
 Créez un fichier *".gitignore"* à la racine de votre projet (vscode va crier un peu mais faites le tout de même). Dans ce fichier vous mettrez la ligne :
 
@@ -40,7 +40,7 @@ A partir de maintenant, tout le dossier *".vscode"* sera ignoré de git. On le v
 > Commitez ce changement et pushez sur l'origin'.
 {: .note}
 
-## tâches 1
+## les tâches
 
 * [tâche 1 du niveau 1 de la partie front]({% link cours/web/projets/numerologie/partie-1-front/niveau-1/3-html_css.md %}#tache-1), puis on commit le nouveau fichier.
 * Faite la 1ère partie de la [tâche 2 du niveau 1 de la partie front]({% link cours/web/projets/numerologie/partie-1-front/niveau-1/3-html_css.md %}#tache-2.1), puis on commit le nouveau fichier en changeant le message par défaut par : "ajout css".

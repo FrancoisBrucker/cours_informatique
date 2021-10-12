@@ -21,7 +21,7 @@ Si vous n'avez pas de fenêtre cybeduck commencez par en créer une : *menu Fich
 1. on crée une nouvelle connexion : *menu Fichier > ouvrir une connexion*
 2. On choisi le protocole "SFTP (SSH file transfer protocol)"
 3. puis il ne vous reste plus qu'à remplir les autres champs.
-4. connection.
+4. connexion.
 
 ### site de l'ecm
 
