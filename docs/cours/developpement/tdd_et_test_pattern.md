@@ -6,6 +6,10 @@ tags: MIE python tdd
 author: "François Brucker"
 ---
 
+> TBD
+> refaire propre. Utiliser les todo list de u proje numérologie du cours de web
+{: .note}
+
 ## Test Driven Development by example
 
 Vous allez suivre ici le livre séminal : [TDD by example](https://www.amazon.fr/Test-Driven-Development-Kent-Beck/dp/0321146530/ref=sr_1_1?ie=UTF8&qid=1538720480&sr=8-1&keywords=test+driven+development+by+example) de Kent Beck (Suivez son [twitter](https://twitter.com/kentbeck), ses posts sont souvent rigolos et toujours utiles). Initialement écrit pour le java, nous allons appliquer ses enseignements au python.
@@ -14,7 +18,7 @@ On y verra aussi quelques règles de refactoring que l'on peut voir dans [Refact
 
 Si vous connaissez tout ça par cœur, mais pas avant car ce n'est pas un livre pour débutant, allez lire [clean code](https://www.amazon.fr/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882) de Robert Martin (dit uncle bob). Ce livre contient, entre autres, le meilleur indicateur d'un bon code au monde, le WTFs/minute :
 
-![WTFs/minute]({{ "img/wtfm.jpg"}})
+![WTFs/minute]({{ "/assets/cours/developpement/wtfm.jpg" | relative_url }}){:style="margin: auto;display: block}
 
 ## Quoi
 

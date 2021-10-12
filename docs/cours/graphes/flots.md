@@ -36,13 +36,13 @@ Où est le goulot d'étranglement du réseau ?
 
 > Notez que le goulot d'étranglement est le flot maximum.
 
-C'est pour résoudre ces problèmes d'importance capitale sans avoir besoin de se mouiller que nous allons [utiliser la théorie des graphes](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_flot_maximum). On verra aussi quelques cas d'applications où les flot apparaissent alors qu'on ne les attendez pas.
+C'est pour résoudre ces problèmes d'importance capitale sans avoir besoin de se mouiller que nous allons [utiliser la théorie des graphes](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_flot_maximum). On verra aussi quelques cas d'applications où les flots apparaissent alors qu'on ne les attendait pas.
 
 ## définitions
 
 Un **réseau** est un graphe (simple) orienté $G=(V, E)$ avec :
 
-* une **capacité** $c : E \rightarrow \mathbb{R}^{+*}$ (réels strictement positifs)
+* une **capacité** $c : E \rightarrow \mathbb{R}^{+\star}$ (réels strictement positifs)
 * deux sommets spéciaux nommées **source** (noté $s$) et **puits** (noté $p$).
 
 exemple de réseau :
@@ -51,7 +51,7 @@ exemple de réseau :
 
 > Notez que si on veut une capacité nulle, il suffit de supprimer l'arc
 
-Un **flot** dans un réseau donné est une application $f E \rightarrow \mathbb{R}^{+}$ telle que :
+Un **flot** dans un réseau donné est une application $f : E \rightarrow \mathbb{R}^{+}$ telle que :
 
 * $0 \leq f(u) \leq c(u)$ pour tout arc $u \in E$
 * pour tout sommet $x$ différent de $s$ et $p$, il y a **conservation du flot**, c'est à dire que le flot entrant est égal au flot sortant : $\sum_{y \in N^-(x)} f(yx) = \sum_{y \in N^+(x)} f(xy)$.
@@ -70,8 +70,8 @@ Une **coupe** est déterminée à partir d'un ensemble $S \subseteq V$ contenant
 
 Exemples de coupes pour notre réseau :
 
-* $(\{s\}, \bar{\{s\}})$ qui contient les arcs : $sa$ et $sb$
-* $(V \backslash \\{p\\}, \overline{V \backslash \\{p\\}})$ qui contient les arcs $dp$ et $ep$
+* $(\\{s\\}, V \backslash \\{s\\})$ qui contient les arcs : $sa$ et $sb$
+* $(V \backslash \\{p\\}, \\{p\\})$ qui contient les arcs $dp$ et $ep$
 * $(\\{s, d\\}, \overline{\\{s, d\\}})$ qui contient les arcs : $sa$, $sb$, $dp$ et $de$
 
 La **capacité d'une coupe** $c(S, \overline{S})$ est la somme des capacités des arcs de la coupe :
@@ -91,13 +91,13 @@ Exemples :
 
 ## valeur d'un flot
 
-On va prouver que pour toute coupe $(\overline{S}, S)$, quantité suivant est contante :
+On va prouver que pour toute coupe $(\overline{S}, S)$, la quantité suivante est constante :
 
 $$f(S, \overline{S}) - f(\overline{S}, S) = \mbox{val}(f)$$ 
 
 Pour tout sommet $x$ de $S$ différent de $s$, on a conservation du flot donc :
 
-$$\sum_{x \in S} (\sum_{xy \in E} f(xy) - \sum_{yx \in E} f(yx)) = \sum_{sy \in E} f(sy) - \sum_{ys \in E} f(ys) = f(\\{s\\}, \overline{\\{s\\}}) - f(\overline{\\{s\\}}, \\{s\\})$$
+$$\sum_{x \in S} (\sum_{xy \in E} f(xy) - \sum_{yx \in E} f(yx)) = \sum_{sy \in E} f(sy) - \sum_{ys \in E} f(ys) = f(\{s\}, \overline{\{s\}}) - f(\overline{\{s\}}, \{s\})$$
 
 De plus, les arcs internes à $S$ sont comptés deux fois une fois pour l'origine de façon positive et une fois pour l'extrémité de façon négative. Les seuls arcs qui ne sont comptés qu'une fois sont ceux qui rentre ou qui sortent de $S$. de là :
 
@@ -116,11 +116,11 @@ Pour notre exemple, on a donc une valeur de flot de $\mbox{val}(f) = 1$
 On a clairement que :
 
 * $\mbox{val}(f) \leq c(S, \overline{S})$ pour toute coupe du réseau.
-* si $\mbox{val}(f) = c(S^*, \overline{S^*})$ alors :
-  * $S^*$ est la coupe réalisant le minimum de $c(S, \overline{S})$ pour toute coupe $S$
+* si $\mbox{val}(f) = c(S^\star, \overline{S^\star})$ alors :
+  * $S^\star$ est la coupe réalisant le minimum de $c(S, \overline{S})$ pour toute coupe $S$
   * $\mbox{val}(f)$ est maximum
-  * pour tout arc $u$ partant de $S^*$ pour finir en $\overline{S^*}$, $f(u) = c(u)$
-  * pour tout arc $u$ partant de $\overline{S^*}$ pour finir en $S^*$, $f(u) = 0$
+  * pour tout arc $u$ partant de $S^\star$ pour finir en $\overline{S^\star}$, $f(u) = c(u)$
+  * pour tout arc $u$ partant de $\overline{S^\star}$ pour finir en $S^\star$, $f(u) = 0$
 
 La réciproque est également vraie et nous allons le prouver. On va prouver :
 
@@ -169,7 +169,7 @@ Dans l'exemple on a : $\alpha^+ = \alpha^- = 1$ : notre flot n'est pas maximum
 >On en conclut que s'il existe une chaine augmentante de $s$ à $p$ alors $\mbox{val}(f)$ n'est pas maximum.
 {: .note}
 
-Réciproquement, supposons qu'il n'existe pas de chaines augmentante de $s$ à $p$. Soit alors $x$ l'ensemble $S'$ des sommets tel qu'il existe une chaine augmentante de $s$ à $x$. L'ensemble $S = S' \cup \\{ s\\}$ est alors une coupe de notre réseau et :
+Réciproquement, supposons qu'il n'existe pas de chaines augmentante de $s$ à $p$. Soit alors  $S'$ l'ensemble des sommets $x$ tels qu'il existe une chaine augmentante de $s$ à $x$. L'ensemble $S = S' \cup \\{ s\\}$ est alors une coupe de notre réseau et :
 
 * pour tout arc $xy$ commençant dans $S$ et finissant dans $\overline{S}$ on a $f(xy) = c(xy)$ sinon il existerait une chaine augmentante de $s$ à $x$ et de $x$ à $y$, donc une chaine augmentante entre $s$ et $y$
 * pour tout arc $xy$ commençant dans $\overline{S}$ et finissant dans $S$ on a $f(xy) > 0$ sinon il existerait une chaine augmentante de $s$ à $y$ et de $y$ à $x$, donc une chaine augmentante entre $s$ et $y$
@@ -322,7 +322,7 @@ La coupe minimum est en orange.
 
 ### Autres algorithmes
 
-La complexité de l'algorithme de Ford et Fulkerson n'est pas polunomiale (elle dépent des valuations), mais il existe des algorithmes polynomiaux, variations de l'algorithme de Ford et Fulkerson pour résoudre notre problème de flot. Vous pouvez voir la page [wikipedia](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_flot_maximum) pour quelques exemples, dont l'algorithmede [Dinic](https://fr.wikipedia.org/wiki/Algorithme_de_Dinic) ou d'[Edmonds Karp](https://fr.wikipedia.org/wiki/Algorithme_d%27Edmonds-Karp).
+La complexité de l'algorithme de Ford et Fulkerson n'est pas polynomiale (elle dépend des valuations), mais il existe des algorithmes polynomiaux, variations de l'algorithme de Ford et Fulkerson pour résoudre notre problème de flot. Vous pouvez voir la page [wikipedia](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_flot_maximum) pour quelques exemples, dont l'algorithme de [Dinic](https://fr.wikipedia.org/wiki/Algorithme_de_Dinic) ou d'[Edmonds Karp](https://fr.wikipedia.org/wiki/Algorithme_d%27Edmonds-Karp).
 
 ## flot maximum à cout minimum
 

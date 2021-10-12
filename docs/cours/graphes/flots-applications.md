@@ -9,7 +9,7 @@ author: "François Brucker"
 > [graphes]({% link cours/graphes/index.md %}) / [flots : applications]({% link cours/graphes/flots-applications.md %})
 {: .chemin}
 
-Quelques exercices pour montrer que le problème du flot maximum permet de modéliser (et résoudre !) de nombreux problèmes concrets, très éloignées de la tuyauterie.
+Quelques exercices pour montrer que le problème du flot maximum permet de modéliser (et résoudre) de nombreux problèmes concrets, très éloignés de la tuyauterie.
 
 [éléments de corrigé]({% link cours/graphes/flots-applications-corrige.md %})
 
@@ -36,13 +36,13 @@ Un problème de transport est une variation sur les flots.
 On considère que l'on a un graphe orienté $G = (V, E)$ et que l'on a dans ce graphe deux sous ensembles :
 
 * un ensemble $S \subsetneq V$ de sources qui ont une marchandise en excès
-* un ensemble $P \subsetneq V$ de puits qui demandent la marchandises
+* un ensemble $P \subsetneq V$ de puits qui demandent cette marchandise
 
 Les sommets qui ne sont ni dans $S$ ni dans $P$ sont dit sommets intermédiaires.
 
 On a de plus une valuation $v(u)$ pour chaque arc de $G$ qui détermine le coût de transport d'une unité sur cet arc.
 
-Le problème est alors de transporter les ressources des sommets de $S$ au sommet de $P$ à coût minimum.
+Le problème est alors de transporter les ressources des sommets de $S$ aux sommets de $P$ à coût minimum.
 
 > Montrer que l'on peut modéliser ce problème comme un problème de flot maximum à coût minimum.
 {: .a-faire}
@@ -79,15 +79,15 @@ Pour un graphe simple $G = (V, E)$ un couplage $M$ est un un ensemble d'arêtes 
 
 Un graphe simple $G = (V, E)$ est biparti s'il existe $V_1$ et $V_2$ tels que $V = V_1 \cup V_2$, $V_1 \cap V_2 = \emptyset$ et tel que toute arête de $E$ a une extrémité dans $V_1$ et l'autre dans $V_2$.
 
->Une fois le problème modélisé. Résolvez le.
+>Une fois le problème modélisé, résolvez le.
 > Il existe deux solutions où tout le monde est marié à la fin. Lesquelles ?
 {: .a-faire}
 
 ## stockage dans les noeuds
 
-Quatre industries $x_1$, $x_2$, $x_3$ et $x_4$ rejetant des eaux
+Quatre industries locales $x_1$, $x_2$, $x_3$ et $x_4$ rejetant des eaux
 polluées doivent faire traiter ces eaux à la même station d'épuration
-$x_5$.
+$x_5$ (la calanque de Morgiou).
 
 Elles peuvent utiliser le réseau de canalisations du graphe ci-dessous :
 
@@ -117,7 +117,7 @@ le plan d'épuration optimal ?
 
 Nous allons démontrer ici un des [théorème de Menger](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Menger) sur les connectivité d'un graphe.
 
-On veut répondre à la question suivante : Soient deux sommets $s$ et$p$  d'un graphe orienté $G(V, E)$ et 2. Combien de chemins deux à deux disjoints relient $s$ et $p$ ?
+On veut répondre à la question suivante : Soient deux sommets $s$ et $p$  d'un graphe orienté $G = (V, E)$, combien de chemins deux à deux disjoints relient $s$ et $p$ ?
 
 On note :
 
@@ -127,7 +127,7 @@ On note :
 > Montrez que $P(s, p) \leq N(s, p)$
 {: .a-faire}
 
-On considère le réseau formé de $G$, de la source $s$ et du puis $p$ et dont toutes les capacités valent $1$.
+On considère le réseau formé de $G$, de la source $s$ et du puits $p$ et dont toutes les capacités valent $1$.
 
 > Montrez que $\mbox{val}(f) \leq P(s, p)$.
 {: .a-faire}
@@ -147,7 +147,7 @@ On peut maintenant chercher à trouver la forte arc-connectivité de $G$, c'est 
 > Proposez un algorithme (naïf) basé sur le résultat précédent pour connaître $k$ pour un graphe donné
 {: .a-faire}
 
-On peut aller plus rapidement en prouvant le *lemme de zorn* : En supposant une numérotation de $0$ à $n-1$ de $V$ ($V = \\{x_0, \dots, x_{n-1}\\}$), la forte arc-connectivité de $G$ est le minimum de $N(x_i, x_{i+1})$ lorsque $i$ varie de $0$ à $n-1$ et avec $x_n = x_0$.
+On peut aller plus rapidement en prouvant le *lemme de Zorn* : En supposant une numérotation de $0$ à $n-1$ de $V$ ($V = \\{x_0, \dots, x_{n-1}\\}$), la forte arc-connectivité de $G$ est le minimum de $N(x_i, x_{i+1})$ lorsque $i$ varie de $0$ à $n-1$ et avec $x_n = x_0$.
 
 > Démontrer par l'absurde le lemme de Zorn.
 {: .a-faire}
@@ -160,7 +160,7 @@ En notant :
 * $P(s, p)$ le nombre de chemins deux à deux disjoints entre $s$ et $p$ dans $G$
 * $N(s, p)$ le nombre d'arêtes qu'il faut supprimer dans $G$ pour qu'il n'existe plus de chemins entre $s$ et $p$
 * $P^\star(s, p)$ le nombre de chemins deux à deux disjoints entre $s$ et $p$ dans $G^\star$
-* $N^\star(s, p)$ le nombre d'arc qu'il faut supprimer dans $G^\star$ pour qu'il n'existe plus de chemins entre $s$ et $p$
+* $N^\star(s, p)$ le nombre d'arcs qu'il faut supprimer dans $G^\star$ pour qu'il n'existe plus de chemins entre $s$ et $p$
 
 > Montrez que : $N(s, P) = N^\star(s, P) = P(s, p) = P^\star(s, p) = \mbox{val}(f)$
 {: .a-faire}

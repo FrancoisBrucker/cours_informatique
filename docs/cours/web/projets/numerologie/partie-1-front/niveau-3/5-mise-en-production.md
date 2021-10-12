@@ -23,20 +23,16 @@ Si vous n'avez pas de fenêtre cybeduck commencez par en créer une : *menu Fich
 3. puis il ne vous reste plus qu'à remplir les autres champs.
 4. connection.
 
-### site de l'école
+### site de l'ecm
 
 Si vous vous êtes élève de l'ecm et que vous voulez mettre à jour votre site web :
 
 * serveur : sas1.ec-m.fr
 * login/mot de passe : le login mot de passe des salles machines
 
-### par clé ssh
-
-Si vous vous voulez mettre à jour l'ovh1 :
-
-* serveur : ovh1.ec-m.fr
-* login : le nom de votre herbe
-* laissez mot de passe sans rien, mais assurez vous d'avoir votre clé ssh de chargée.
+> TBD
+> le perso/visible de l'école
+{: .note}
 
 ## transfert des fichier
 
