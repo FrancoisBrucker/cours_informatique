@@ -26,7 +26,7 @@ Histoire de ne pas vous quitter sur l'impression (fausse) que le développement 
 
 ### modification côté github
 
-Sur github (*menu Repository > View on github*), modifiez le code de *"numerologie.js"* pour mettre les tests juste en dessous de chaque déclaration de fonction :
+Sur github, dans la page de prijet, modifiez le code de *"numerologie.js"* pour mettre les tests juste en dessous de chaque déclaration de fonction :
 
 ```javascript
 function nombre(chaine) {
@@ -88,6 +88,8 @@ console.log(nombre("coucou"))
 console.log(chiffreAssocie("coucou"))
 // fin de test de chiffreAssocie(chaine)
 ```
+
+Puis commitez vos changements (en cliquant sur le bouton vert).
 
 ### modification sur l'ordinateur
 
@@ -160,19 +162,39 @@ console.log('----------------')
 // fin de test de chiffreAssocie(chaine)
 ```
 
-Et on commit avec le message "ajoute séparateur de tests"
+Et on commit : `git commit -am"ajoute séparateur de tests"`
 
 ### fusion
 
-L'application desktop nous dit qu'on est à 4/1 : nous à +4 et le serveur à +1 depuis la dernière synchronisation.
+On fait un `git fetch` pur retrouver l'état du serveur, puis un `git status`qui nous donne :
 
-Tentons le pull... Et c'est le drame :
+```text
+Sur la branche main
+Votre branche et 'origin/main' ont divergé,
+et ont 1 et 1 commits différents chacune respectivement.
+  (utilisez "git pull" pour fusionner la branche distante dans la vôtre)
 
-![problème de rebase]({{ "/assets/cours/web/numerologie/partie-1-niveau-3-projet-rebase-soucis.png" | relative_url }}){:style="margin: auto;display: block}
+rien à valider, la copie de travail est propre
+```
+
+Tentons le pull (`git pull`) pour synchroniser nos branches comme tout à l'heure... Et c'est le drame :
+
+```text
+Fusion automatique de numerologie.js
+CONFLIT (contenu) : Conflit de fusion dans numerologie.js
+error: impossible d'appliquer 9b0e873... ajoute séparateur de tests
+Resolve all conflicts manually, mark them as resolved with
+"git add/rm <conflicted_files>", then run "git rebase --continue".
+You can instead skip this commit: run "git rebase --skip".
+To abort and get back to the state before "git rebase", run "git rebase --abort".
+Impossible d'appliquer 9b0e873... ajoute séparateur de tests
+```
 
 Git vous laisse dans un état entre-deux : vous n'avez pas récupéré les données du serveur et git ne vous laissera rien faire avant que ce soit fait : donc avant que vous ayez réglé les soucis de fusion.
 
-Il y a 1 conflit, git n'a pas réussi à fusionner le fichier tout seul. Si vous ouvrez *"numerologie.js"* dans vscode, vous verrez le soucis :
+Un git status nous indique que c'est *"numérologie.js"* le problème (dans un cas réel vous pouvez avoir plusieurs fichiers impacté, il faudra alors les corriger un à un).
+
+*"numérologie.js"* ressemble à ca dans le vscode :
 
 ```javascript
 function nombre(chaine) {
@@ -183,6 +205,27 @@ function nombre(chaine) {
     return somme
 }
 
+<<<<<<< HEAD
+=======
+function somme(nombre) {
+    var somme = 0
+    chaine = String(nombre)
+    for (var i=0; i < chaine.length ; i++) {
+        somme += parseInt(chaine.charAt(i))
+    }
+    return somme
+}
+
+function chiffreAssocie(chaine) {
+    valeur = nombre(chaine)
+
+    while (valeur > 9) {
+        valeur = somme(valeur)
+    }
+    return valeur
+}
+
+>>>>>>> 9b0e873 (ajoute séparateur de tests)
 // test de nombre(chaine)
 
 // est-ce 2x plus ?
@@ -196,6 +239,7 @@ for (c of "cou") {
 console.log('----------------')
 // fin de test de nombre(chaine)
 
+<<<<<<< HEAD
 function somme(nombre) {
     var somme = 0
     chaine = String(nombre)
@@ -204,6 +248,8 @@ function somme(nombre) {
     }
     return somme
 }
+=======
+>>>>>>> 9b0e873 (ajoute séparateur de tests)
 
 // test de somme(nombre)
 console.log(somme(132))
@@ -241,36 +287,107 @@ console.log(chiffreAssocie("coucou"))
 
 console.log('----------------')
 // fin de test de chiffreAssocie(chaine)
->>>>>>> 889641d (ajoute séparateur de tests)
+>>>>>>> 9b0e873 (ajoute séparateur de tests)
 
-```
-
-L'unique conflit est à la fin entre `<<<<<<<<` et `>>>>>>>>` :
-
-```javascript
-<<<<<<< HEAD
-// fin de test de chiffreAssocie(chaine)
-=======
-
-console.log('----------------')
-// fin de test de chiffreAssocie(chaine)
->>>>>>> 889641d (ajoute séparateur de tests)
 ```
 
  Chaque conflit est composé de la même manière :
 
-* entre `<<<<<<<` et `========` une possiblité,
-* entre `========` et `>>>>>>>`, l'autre possiblité.
+* entre `<<<<<<<` et `========` une possibilité,
+* entre `========` et `>>>>>>>`, l'autre possibilité.
 
-Il faut que l'on choisisse une des possibilité en supprimant l'autre. Ici on veut choisir la seconde possibilité, on supprime donc la première et les `<<<<` et `>>>>` :
+Il faut que l'on choisisse une des possibilité en supprimant l'autre.
 
-```javascript 
+Notre fichier a trois conflits :
+
+```javascript
+<<<<<<< HEAD
+=======
+function somme(nombre) {
+    var somme = 0
+    chaine = String(nombre)
+    for (var i=0; i < chaine.length ; i++) {
+        somme += parseInt(chaine.charAt(i))
+    }
+    return somme
+}
+
+function chiffreAssocie(chaine) {
+    valeur = nombre(chaine)
+
+    while (valeur > 9) {
+        valeur = somme(valeur)
+    }
+    return valeur
+}
+
+>>>>>>> 9b0e873 (ajoute séparateur de tests)
+```
+
+où on a ajouté du code dans le commit du serveur (Incoming change) par rapport à ce qu'on a en local (Current Change).
+
+et
+
+```javascript
+<<<<<<< HEAD
+function somme(nombre) {
+    var somme = 0
+    chaine = String(nombre)
+    for (var i=0; i < chaine.length ; i++) {
+        somme += parseInt(chaine.charAt(i))
+    }
+    return somme
+}
+=======
+>>>>>>> 9b0e873 (ajoute séparateur de tests)
+```
+
+Où l'on retouve la fonction somme en local alors qu'elle n'est plus à cet endroit côté serveur
+
+et
+
+```javascript
+<<<<<<< HEAD
+// fin de test de chiffreAssocie(chaine)
+=======
+
+console.log('----------------')
+// fin de test de chiffreAssocie(chaine)
+>>>>>>> 9b0e873 (ajoute séparateur de tests)
+```
+
+où on a une ligne de plus dans le commit du serveur (*Incoming change*) par rapport à ce 
+qu'on a en local (*Current Change*).
+
+Nous allons ici toujours choisir la même version, ici celle du serveur, (dans des cas réels, on peut avoir à réfléchir pour remettre d'aplomb un fichier modifié par de nombreuses personnes). On supprime donc la première possibilité et les `<<<<` et `>>>>` :
+
+On obtient au final le code :
+
+```javascript
 function nombre(chaine) {
     var somme = 0
     for (var i=0; i < chaine.length; i++) {
         somme += chaine.charCodeAt(i)
     }
     return somme
+}
+
+function somme(nombre) {
+    var somme = 0
+    chaine = String(nombre)
+    for (var i=0; i < chaine.length ; i++) {
+        somme += parseInt(chaine.charAt(i))
+    }
+    return somme
+}
+
+function chiffreAssocie(chaine) {
+    valeur = nombre(chaine)
+
+    while (valeur > 9) {
+        valeur = somme(valeur)
+    }
+    return valeur
 }
 
 // test de nombre(chaine)
@@ -286,14 +403,6 @@ for (c of "cou") {
 console.log('----------------')
 // fin de test de nombre(chaine)
 
-function somme(nombre) {
-    var somme = 0
-    chaine = String(nombre)
-    for (var i=0; i < chaine.length ; i++) {
-        somme += parseInt(chaine.charAt(i))
-    }
-    return somme
-}
 
 // test de somme(nombre)
 console.log(somme(132))
@@ -325,20 +434,14 @@ function chiffreAssocie(chaine) {
 //test valeur somme des chiffres
 console.log(nombre("coucou"))
 console.log(chiffreAssocie("coucou"))
+
 console.log('----------------')
 // fin de test de chiffreAssocie(chaine)
 ```
 
-vscode nous aide est on peut choisir une possibilité, il supprimera la seconde tout seul.
+Où il n'y a plus de conflits : on peut commit : `git commit -am"rebase"`.
 
-On peut maintenant sauver le fichier. et l'application desktop est contente puisque l'on a supprimer les conflit (on en avait qu'un seul) :
+Un `git status` nous informe qu'on peut continuer le rebase avec la commande : `git rebase --continue`. Un dernier `git status` nous indique que c'est ok. On peut maintenant push sur le serveur : `git push` pour synchroniser le serveur avec notre nouvelle version.
 
-![fin du problème de rebase]({{ "/assets/cours/web/numerologie/partie-1-niveau-3-projet-rebase-soucis-fini.png" | relative_url }}){:style="margin: auto;display: block}
+ > Félicitations, vous venez de survire à votre premier rebase qui se passe mal.
 
-On peut finir le rebase. Nous sommes maintenant uniquement en avance de 4 commits sur le serveur, dont l'état actuel est cohérent avec ce que l'on sait (auparavent il avait divergé d'un commit). On *push origin*.
-
-> malgré toutes nos modifications, nous n'avions qu'un seul conflit. L'algorithme de rebase de git est donc assez performant.
-
-## pour aller plus loin
-
-On utilise souvent git en ligne de commande. Vous pouvez poursuivre en lisant plus avant le [cours sur git]({% link cours/git_et_github/index.md %}) qui vous donnera les bases de ce merveilleux outils.

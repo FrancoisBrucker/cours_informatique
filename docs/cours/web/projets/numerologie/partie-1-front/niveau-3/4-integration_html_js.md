@@ -87,6 +87,8 @@ console.log(chiffreAssocie("coucou"))
 // fin de test de chiffreAssocie(chaine)
 ```
 
+Puis commitez vos changements (en cliquant sur le bouton vert).
+
 ### modification sur l'ordinateur
 
 Dans le projet local, pour le même fichier *"numérologie"*, on garde les tests en fin de fonction, et on ajoute des séparateur entre chaque test :
@@ -257,8 +259,8 @@ console.log('----------------')
 
  Chaque conflit est composé de la même manière :
 
-* entre `<<<<<<<` et `========` une possiblité,
-* entre `========` et `>>>>>>>`, l'autre possiblité.
+* entre `<<<<<<<` et `========` une possibilité,
+* entre `========` et `>>>>>>>`, l'autre possibilité.
 
 Il faut que l'on choisisse une des possibilité en supprimant l'autre. Ici on veut choisir la seconde possibilité, on supprime donc la première et les `<<<<` et `>>>>` :
 
