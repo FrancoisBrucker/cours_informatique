@@ -72,13 +72,13 @@ Un chemin de poids min entre $s$ et $p$ pourra alors être : $sebp$ de poids 2 e
 
 ![flot transport flot max]({{ "/assets/cours/graphes/flot-app-transport-5.png" | relative_url }}){:style="margin: auto;display: block;"}
 
-Le flot est maximum, l'algorithme de Ford et Fulkerson nos donnant une coupe min valant 3 :
+Le flot est maximum, l'algorithme de Ford et Fulkerson nous donnant une coupe min valant 3 :
 
 ![flot transport coupe min]({{ "/assets/cours/graphes/flot-app-transport-6.png" | relative_url }}){:style="margin: auto;display: block;"}
 
 ## problème du transport amoureux
 
-On peut écrire le graphe suivant, an liant les affinités par une arête. Le graphe est bi-parti car les mariages sont ici hétérosexuels :
+On peut écrire le graphe suivant, en liant les affinités par une arête. Le graphe est bi-parti car les mariages sont ici hétérosexuels :
 
 ![graphe bi-parti]({{ "/assets/cours/graphes/flot-app-mariage-1.png" | relative_url }}){:style="margin: auto;display: block;"}
 
@@ -163,11 +163,11 @@ Si 2 chemins partagent une arête $xy$ l'un l'$xy$ et l'autre l'arc $yx$, on peu
 
 ![flot menger]({{ "/assets/cours/graphes/flot-menger-1.png" | relative_url }}){:style="margin: auto;display: block;"}
 
-On peut alors itérativement construire $P^\star(s, p)$ chemins ne partagent pas d'arcs issus du dédoublement des arêtes en arcs.
+On peut alors itérativement construire $P^\star(s, p)$ chemins ne partageant pas d'arcs issus du dédoublement des arêtes en arcs.
 
 #### N* >= N
 
-En supprimant $N^\star(s, p)$ arc de $G^\star$ on déconnecte $s$ de $p$. Si on supprime les arêtes de $G$ qui ont donné naissance à ces arcs, on déconnecte $s$ de $p$ dans $G$. En effet, s'il restait un chemin entre $s$ et $p$ dans $G$, il en resterait également un dans $G^\star$.
+En supprimant $N^\star(s, p)$ arcs de $G^\star$ on déconnecte $s$ de $p$. Si on supprime les arêtes de $G$ qui ont donné naissance à ces arcs, on déconnecte $s$ de $p$ dans $G$. En effet, s'il restait un chemin entre $s$ et $p$ dans $G$, il en resterait également un dans $G^\star$.
 
 On a donc $N^\star(s, p) \geq N(s, p)$.
 

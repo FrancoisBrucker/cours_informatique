@@ -72,7 +72,7 @@ Des héros littéraires ont décidé de se marier. On considère pour simplifier
 >Montrez que ce problème peut s'écrire comme un problème de couplage maximum dans un graphe
 {: .a-faire}
 
-Pour un graphe simple $G = (V, E)$ un couplage $M$ est un un ensemble d'arêtes deux à deux disjointes (pour tout sommet $x$, il existe au plus 1 arête de $M$ tel que $x$ soit une de ses extrémités).
+Pour un graphe simple $G = (V, E)$ un couplage $M$ est un un ensemble d'arêtes deux à deux disjointes (pour tout sommet $x$, il existe au plus 1 arête de $M$ telle que $x$ soit une de ses extrémités).
 
 > Montrer que comme ce graphe est bi-parti, on peut modéliser le problème de couplage comme un problème de flot maximum.
 {: .a-faire}
