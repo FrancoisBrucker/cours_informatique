@@ -70,7 +70,7 @@ La composition et l'agrégation permettent de factoriser des fonctionnalités al
 
 Il y a cependant des cas où l'héritage est très utile :
 
-* lorsque l'on veut spécifier une classe : la nouvelle classe est un cas particulier de la classe mère**
+* lorsque l'on veut spécifier une classe : la nouvelle classe est un cas particulier de la classe mère
 * lors de l'utilisation de bibliothèques : on particularise à nos besoin une classe générique donnée par un module que l'on a pas écrit.
 
 La règle est que lorsque l'héritage doit re-écrire toutes les méthodes de sa classe mère pour qu'il n'y ait pas de conflit, alors il faut changer d'approche. Une classe et sa classe mère doivent partager beaucoup de méthodes (ou que les méthodes soient des cas particuliers)

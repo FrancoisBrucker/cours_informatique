@@ -19,7 +19,7 @@ Codez les classes `Point`, `Polygone` et `Triangle`. Testez les méthodes dans u
 
 ### odds and ends
 
-refaite les exercice de la partie [odds and ends]({% link cours/developpement/programmation-objet/heritage.md %}#odds-and-ends) du cours sans regarder la solution.
+refaite les exercices de la partie [odds and ends]({% link cours/developpement/programmation-objet/heritage.md %}#odds-and-ends) du cours sans regarder la solution.
 
 Puis créez un objet `objet_a` de la classe `A` et un objet `objet_b` de la classe `B`. Essayez les lignes suivantes (une à la
 fois) et prenez le temps de comprendre ce qu'elles font et pourquoi.
@@ -43,7 +43,7 @@ print(objet_b.CTE)
 
 ### donjons et dragons
 
-Créez un personnage, un magicien et une guerrière. Faite en sorte que la guerrière et le personnage se tape dessus à tour de rôle jusqu'à ce que une personne meure. Le dernier personnage est ensuite tué par le magicien en lui jetant des sorts itérativement jusqu'à ce qu'il meurt.
+Créez un personnage, un magicien et une guerrière. Faite en sorte que la guerrière et le personnage se tapent dessus à tour de rôle jusqu'à ce que une personne meure. Le dernier personnage est ensuite tué par le magicien en lui jetant des sorts jusqu'à ce qu'il meurt.
 
 ## Le dé
 
