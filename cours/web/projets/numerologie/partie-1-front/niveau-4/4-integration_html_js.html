@@ -88,7 +88,7 @@
 
 <h3 id="modification-côté-github">modification côté github</h3>
 
-<p>Sur github (<em>menu Repository &gt; View on github</em>), modifiez le code de <em>“numerologie.js”</em> pour mettre les tests juste en dessous de chaque déclaration de fonction :</p>
+<p>Sur github, dans la page de prijet, modifiez le code de <em>“numerologie.js”</em> pour mettre les tests juste en dessous de chaque déclaration de fonction :</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">nombre</span><span class="p">(</span><span class="nx">chaine</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">somme</span> <span class="o">=</span> <span class="mi">0</span>
@@ -149,6 +149,8 @@
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">chiffreAssocie</span><span class="p">(</span><span class="dl">"</span><span class="s2">coucou</span><span class="dl">"</span><span class="p">))</span>
 <span class="c1">// fin de test de chiffreAssocie(chaine)</span>
 </code></pre></div></div>
+
+<p>Puis commitez vos changements (en cliquant sur le bouton vert).</p>
 
 <h3 id="modification-sur-lordinateur">modification sur l’ordinateur</h3>
 
@@ -220,19 +222,37 @@
 <span class="c1">// fin de test de chiffreAssocie(chaine)</span>
 </code></pre></div></div>
 
-<p>Et on commit avec le message “ajoute séparateur de tests”</p>
+<p>Et on commit : <code class="language-plaintext highlighter-rouge">git commit -am"ajoute séparateur de tests"</code></p>
 
 <h3 id="fusion">fusion</h3>
 
-<p>L’application desktop nous dit qu’on est à 4/1 : nous à +4 et le serveur à +1 depuis la dernière synchronisation.</p>
+<p>On fait un <code class="language-plaintext highlighter-rouge">git fetch</code> pur retrouver l’état du serveur, puis un <code class="language-plaintext highlighter-rouge">git status</code>qui nous donne :</p>
 
-<p>Tentons le pull… Et c’est le drame :</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Sur la branche main
+Votre branche et 'origin/main' ont divergé,
+et ont 1 et 1 commits différents chacune respectivement.
+  (utilisez "git pull" pour fusionner la branche distante dans la vôtre)
 
-<p><img src="/cours_informatique/assets/cours/web/numerologie/partie-1-niveau-3-projet-rebase-soucis.png" alt="problème de rebase" /></p>
+rien à valider, la copie de travail est propre
+</code></pre></div></div>
+
+<p>Tentons le pull (<code class="language-plaintext highlighter-rouge">git pull</code>) pour synchroniser nos branches comme tout à l’heure… Et c’est le drame :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Fusion automatique de numerologie.js
+CONFLIT (contenu) : Conflit de fusion dans numerologie.js
+error: impossible d'appliquer 9b0e873... ajoute séparateur de tests
+Resolve all conflicts manually, mark them as resolved with
+"git add/rm &lt;conflicted_files&gt;", then run "git rebase --continue".
+You can instead skip this commit: run "git rebase --skip".
+To abort and get back to the state before "git rebase", run "git rebase --abort".
+Impossible d'appliquer 9b0e873... ajoute séparateur de tests
+</code></pre></div></div>
 
 <p>Git vous laisse dans un état entre-deux : vous n’avez pas récupéré les données du serveur et git ne vous laissera rien faire avant que ce soit fait : donc avant que vous ayez réglé les soucis de fusion.</p>
 
-<p>Il y a 1 conflit, git n’a pas réussi à fusionner le fichier tout seul. Si vous ouvrez <em>“numerologie.js”</em> dans vscode, vous verrez le soucis :</p>
+<p>Un git status nous indique que c’est <em>“numérologie.js”</em> le problème (dans un cas réel vous pouvez avoir plusieurs fichiers impacté, il faudra alors les corriger un à un).</p>
+
+<p><em>“numérologie.js”</em> ressemble à ca dans le vscode :</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">nombre</span><span class="p">(</span><span class="nx">chaine</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">somme</span> <span class="o">=</span> <span class="mi">0</span>
@@ -242,6 +262,27 @@
     <span class="k">return</span> <span class="nx">somme</span>
 <span class="p">}</span>
 
+<span class="o">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span> <span class="nx">HEAD</span>
+<span class="o">=======</span>
+<span class="kd">function</span> <span class="nx">somme</span><span class="p">(</span><span class="nx">nombre</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">somme</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="nx">chaine</span> <span class="o">=</span> <span class="nb">String</span><span class="p">(</span><span class="nx">nombre</span><span class="p">)</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">chaine</span><span class="p">.</span><span class="nx">length</span> <span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">somme</span> <span class="o">+=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">chaine</span><span class="p">.</span><span class="nx">charAt</span><span class="p">(</span><span class="nx">i</span><span class="p">))</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">somme</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">chiffreAssocie</span><span class="p">(</span><span class="nx">chaine</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">valeur</span> <span class="o">=</span> <span class="nx">nombre</span><span class="p">(</span><span class="nx">chaine</span><span class="p">)</span>
+
+    <span class="k">while</span> <span class="p">(</span><span class="nx">valeur</span> <span class="o">&gt;</span> <span class="mi">9</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">valeur</span> <span class="o">=</span> <span class="nx">somme</span><span class="p">(</span><span class="nx">valeur</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">valeur</span>
+<span class="p">}</span>
+
+<span class="o">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span> <span class="mi">9</span><span class="nx">b0e873</span> <span class="p">(</span><span class="nx">ajoute</span> <span class="nx">séparateur</span> <span class="nx">de</span> <span class="nx">tests</span><span class="p">)</span>
 <span class="c1">// test de nombre(chaine)</span>
 
 <span class="c1">// est-ce 2x plus ?</span>
@@ -255,6 +296,7 @@
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">----------------</span><span class="dl">'</span><span class="p">)</span>
 <span class="c1">// fin de test de nombre(chaine)</span>
 
+<span class="o">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span> <span class="nx">HEAD</span>
 <span class="kd">function</span> <span class="nx">somme</span><span class="p">(</span><span class="nx">nombre</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">somme</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="nx">chaine</span> <span class="o">=</span> <span class="nb">String</span><span class="p">(</span><span class="nx">nombre</span><span class="p">)</span>
@@ -263,6 +305,8 @@
     <span class="p">}</span>
     <span class="k">return</span> <span class="nx">somme</span>
 <span class="p">}</span>
+<span class="o">=======</span>
+<span class="o">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span> <span class="mi">9</span><span class="nx">b0e873</span> <span class="p">(</span><span class="nx">ajoute</span> <span class="nx">séparateur</span> <span class="nx">de</span> <span class="nx">tests</span><span class="p">)</span>
 
 <span class="c1">// test de somme(nombre)</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">somme</span><span class="p">(</span><span class="mi">132</span><span class="p">))</span>
@@ -300,11 +344,64 @@
 
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">----------------</span><span class="dl">'</span><span class="p">)</span>
 <span class="c1">// fin de test de chiffreAssocie(chaine)</span>
-<span class="o">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span> <span class="mi">889641</span><span class="nx">d</span> <span class="p">(</span><span class="nx">ajoute</span> <span class="nx">séparateur</span> <span class="nx">de</span> <span class="nx">tests</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span> <span class="mi">9</span><span class="nx">b0e873</span> <span class="p">(</span><span class="nx">ajoute</span> <span class="nx">séparateur</span> <span class="nx">de</span> <span class="nx">tests</span><span class="p">)</span>
 
 </code></pre></div></div>
 
-<p>L’unique conflit est à la fin entre <code class="language-plaintext highlighter-rouge">&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code> et <code class="language-plaintext highlighter-rouge">&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code> :</p>
+<p>Chaque conflit est composé de la même manière :</p>
+
+<ul>
+  <li>entre <code class="language-plaintext highlighter-rouge">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code> et <code class="language-plaintext highlighter-rouge">========</code> une possibilité,</li>
+  <li>entre <code class="language-plaintext highlighter-rouge">========</code> et <code class="language-plaintext highlighter-rouge">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>, l’autre possibilité.</li>
+</ul>
+
+<p>Il faut que l’on choisisse une des possibilité en supprimant l’autre.</p>
+
+<p>Notre fichier a trois conflits :</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span> <span class="nx">HEAD</span>
+<span class="o">=======</span>
+<span class="kd">function</span> <span class="nx">somme</span><span class="p">(</span><span class="nx">nombre</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">somme</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="nx">chaine</span> <span class="o">=</span> <span class="nb">String</span><span class="p">(</span><span class="nx">nombre</span><span class="p">)</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">chaine</span><span class="p">.</span><span class="nx">length</span> <span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">somme</span> <span class="o">+=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">chaine</span><span class="p">.</span><span class="nx">charAt</span><span class="p">(</span><span class="nx">i</span><span class="p">))</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">somme</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">chiffreAssocie</span><span class="p">(</span><span class="nx">chaine</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">valeur</span> <span class="o">=</span> <span class="nx">nombre</span><span class="p">(</span><span class="nx">chaine</span><span class="p">)</span>
+
+    <span class="k">while</span> <span class="p">(</span><span class="nx">valeur</span> <span class="o">&gt;</span> <span class="mi">9</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">valeur</span> <span class="o">=</span> <span class="nx">somme</span><span class="p">(</span><span class="nx">valeur</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">valeur</span>
+<span class="p">}</span>
+
+<span class="o">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span> <span class="mi">9</span><span class="nx">b0e873</span> <span class="p">(</span><span class="nx">ajoute</span> <span class="nx">séparateur</span> <span class="nx">de</span> <span class="nx">tests</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>où on a ajouté du code dans le commit du serveur (Incoming change) par rapport à ce qu’on a en local (Current Change).</p>
+
+<p>et</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span> <span class="nx">HEAD</span>
+<span class="kd">function</span> <span class="nx">somme</span><span class="p">(</span><span class="nx">nombre</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">somme</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="nx">chaine</span> <span class="o">=</span> <span class="nb">String</span><span class="p">(</span><span class="nx">nombre</span><span class="p">)</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">chaine</span><span class="p">.</span><span class="nx">length</span> <span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">somme</span> <span class="o">+=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">chaine</span><span class="p">.</span><span class="nx">charAt</span><span class="p">(</span><span class="nx">i</span><span class="p">))</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">somme</span>
+<span class="p">}</span>
+<span class="o">=======</span>
+<span class="o">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span> <span class="mi">9</span><span class="nx">b0e873</span> <span class="p">(</span><span class="nx">ajoute</span> <span class="nx">séparateur</span> <span class="nx">de</span> <span class="nx">tests</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Où l’on retouve la fonction somme en local alors qu’elle n’est plus à cet endroit côté serveur</p>
+
+<p>et</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span> <span class="nx">HEAD</span>
 <span class="c1">// fin de test de chiffreAssocie(chaine)</span>
@@ -312,17 +409,15 @@
 
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">----------------</span><span class="dl">'</span><span class="p">)</span>
 <span class="c1">// fin de test de chiffreAssocie(chaine)</span>
-<span class="o">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span> <span class="mi">889641</span><span class="nx">d</span> <span class="p">(</span><span class="nx">ajoute</span> <span class="nx">séparateur</span> <span class="nx">de</span> <span class="nx">tests</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span> <span class="mi">9</span><span class="nx">b0e873</span> <span class="p">(</span><span class="nx">ajoute</span> <span class="nx">séparateur</span> <span class="nx">de</span> <span class="nx">tests</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>Chaque conflit est composé de la même manière :</p>
+<p>où on a une ligne de plus dans le commit du serveur (<em>Incoming change</em>) par rapport à ce 
+qu’on a en local (<em>Current Change</em>).</p>
 
-<ul>
-  <li>entre <code class="language-plaintext highlighter-rouge">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code> et <code class="language-plaintext highlighter-rouge">========</code> une possiblité,</li>
-  <li>entre <code class="language-plaintext highlighter-rouge">========</code> et <code class="language-plaintext highlighter-rouge">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>, l’autre possiblité.</li>
-</ul>
+<p>Nous allons ici toujours choisir la même version, ici celle du serveur, (dans des cas réels, on peut avoir à réfléchir pour remettre d’aplomb un fichier modifié par de nombreuses personnes). On supprime donc la première possibilité et les <code class="language-plaintext highlighter-rouge">&lt;&lt;&lt;&lt;</code> et <code class="language-plaintext highlighter-rouge">&gt;&gt;&gt;&gt;</code> :</p>
 
-<p>Il faut que l’on choisisse une des possibilité en supprimant l’autre. Ici on veut choisir la seconde possibilité, on supprime donc la première et les <code class="language-plaintext highlighter-rouge">&lt;&lt;&lt;&lt;</code> et <code class="language-plaintext highlighter-rouge">&gt;&gt;&gt;&gt;</code> :</p>
+<p>On obtient au final le code :</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">nombre</span><span class="p">(</span><span class="nx">chaine</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">somme</span> <span class="o">=</span> <span class="mi">0</span>
@@ -330,6 +425,24 @@
         <span class="nx">somme</span> <span class="o">+=</span> <span class="nx">chaine</span><span class="p">.</span><span class="nx">charCodeAt</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="nx">somme</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">somme</span><span class="p">(</span><span class="nx">nombre</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">somme</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="nx">chaine</span> <span class="o">=</span> <span class="nb">String</span><span class="p">(</span><span class="nx">nombre</span><span class="p">)</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">chaine</span><span class="p">.</span><span class="nx">length</span> <span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">somme</span> <span class="o">+=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">chaine</span><span class="p">.</span><span class="nx">charAt</span><span class="p">(</span><span class="nx">i</span><span class="p">))</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">somme</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">chiffreAssocie</span><span class="p">(</span><span class="nx">chaine</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">valeur</span> <span class="o">=</span> <span class="nx">nombre</span><span class="p">(</span><span class="nx">chaine</span><span class="p">)</span>
+
+    <span class="k">while</span> <span class="p">(</span><span class="nx">valeur</span> <span class="o">&gt;</span> <span class="mi">9</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">valeur</span> <span class="o">=</span> <span class="nx">somme</span><span class="p">(</span><span class="nx">valeur</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">valeur</span>
 <span class="p">}</span>
 
 <span class="c1">// test de nombre(chaine)</span>
@@ -345,14 +458,6 @@
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">----------------</span><span class="dl">'</span><span class="p">)</span>
 <span class="c1">// fin de test de nombre(chaine)</span>
 
-<span class="kd">function</span> <span class="nx">somme</span><span class="p">(</span><span class="nx">nombre</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">somme</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="nx">chaine</span> <span class="o">=</span> <span class="nb">String</span><span class="p">(</span><span class="nx">nombre</span><span class="p">)</span>
-    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">chaine</span><span class="p">.</span><span class="nx">length</span> <span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">somme</span> <span class="o">+=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">chaine</span><span class="p">.</span><span class="nx">charAt</span><span class="p">(</span><span class="nx">i</span><span class="p">))</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="nx">somme</span>
-<span class="p">}</span>
 
 <span class="c1">// test de somme(nombre)</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">somme</span><span class="p">(</span><span class="mi">132</span><span class="p">))</span>
@@ -384,25 +489,19 @@
 <span class="c1">//test valeur somme des chiffres</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">nombre</span><span class="p">(</span><span class="dl">"</span><span class="s2">coucou</span><span class="dl">"</span><span class="p">))</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">chiffreAssocie</span><span class="p">(</span><span class="dl">"</span><span class="s2">coucou</span><span class="dl">"</span><span class="p">))</span>
+
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">----------------</span><span class="dl">'</span><span class="p">)</span>
 <span class="c1">// fin de test de chiffreAssocie(chaine)</span>
 </code></pre></div></div>
 
-<p>vscode nous aide est on peut choisir une possibilité, il supprimera la seconde tout seul.</p>
+<p>Où il n’y a plus de conflits : on peut commit : <code class="language-plaintext highlighter-rouge">git commit -am"rebase"</code>.</p>
 
-<p>On peut maintenant sauver le fichier. et l’application desktop est contente puisque l’on a supprimer les conflit (on en avait qu’un seul) :</p>
-
-<p><img src="/cours_informatique/assets/cours/web/numerologie/partie-1-niveau-3-projet-rebase-soucis-fini.png" alt="fin du problème de rebase" /></p>
-
-<p>On peut finir le rebase. Nous sommes maintenant uniquement en avance de 4 commits sur le serveur, dont l’état actuel est cohérent avec ce que l’on sait (auparavent il avait divergé d’un commit). On <em>push origin</em>.</p>
+<p>Un <code class="language-plaintext highlighter-rouge">git status</code> nous informe qu’on peut continuer le rebase avec la commande : <code class="language-plaintext highlighter-rouge">git rebase --continue</code>. Un dernier <code class="language-plaintext highlighter-rouge">git status</code> nous indique que c’est ok. On peut maintenant push sur le serveur : <code class="language-plaintext highlighter-rouge">git push</code> pour synchroniser le serveur avec notre nouvelle version.</p>
 
 <blockquote>
-  <p>malgré toutes nos modifications, nous n’avions qu’un seul conflit. L’algorithme de rebase de git est donc assez performant.</p>
+  <p>Félicitations, vous venez de survire à votre premier rebase qui se passe mal.</p>
 </blockquote>
 
-<h2 id="pour-aller-plus-loin">pour aller plus loin</h2>
-
-<p>On utilise souvent git en ligne de commande. Vous pouvez poursuivre en lisant plus avant le <a href="/cours_informatique/cours/git_et_github/">cours sur git</a> qui vous donnera les bases de ce merveilleux outils.</p>
 
   </div>
 
