@@ -101,14 +101,14 @@
   <p>Notez que le goulot d’étranglement est le flot maximum.</p>
 </blockquote>
 
-<p>C’est pour résoudre ces problèmes d’importance capitale sans avoir besoin de se mouiller que nous allons <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_flot_maximum">utiliser la théorie des graphes</a>. On verra aussi quelques cas d’applications où les flot apparaissent alors qu’on ne les attendez pas.</p>
+<p>C’est pour résoudre ces problèmes d’importance capitale sans avoir besoin de se mouiller que nous allons <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_flot_maximum">utiliser la théorie des graphes</a>. On verra aussi quelques cas d’applications où les flots apparaissent alors qu’on ne les attendait pas.</p>
 
 <h2 id="définitions">définitions</h2>
 
 <p>Un <strong>réseau</strong> est un graphe (simple) orienté $G=(V, E)$ avec :</p>
 
 <ul>
-  <li>une <strong>capacité</strong> $c : E \rightarrow \mathbb{R}^{+*}$ (réels strictement positifs)</li>
+  <li>une <strong>capacité</strong> $c : E \rightarrow \mathbb{R}^{+\star}$ (réels strictement positifs)</li>
   <li>deux sommets spéciaux nommées <strong>source</strong> (noté $s$) et <strong>puits</strong> (noté $p$).</li>
 </ul>
 
@@ -120,7 +120,7 @@
   <p>Notez que si on veut une capacité nulle, il suffit de supprimer l’arc</p>
 </blockquote>
 
-<p>Un <strong>flot</strong> dans un réseau donné est une application $f E \rightarrow \mathbb{R}^{+}$ telle que :</p>
+<p>Un <strong>flot</strong> dans un réseau donné est une application $f : E \rightarrow \mathbb{R}^{+}$ telle que :</p>
 
 <ul>
   <li>$0 \leq f(u) \leq c(u)$ pour tout arc $u \in E$</li>
@@ -146,8 +146,8 @@
 <p>Exemples de coupes pour notre réseau :</p>
 
 <ul>
-  <li>$({s}, \bar{{s}})$ qui contient les arcs : $sa$ et $sb$</li>
-  <li>$(V \backslash \{p\}, \overline{V \backslash \{p\}})$ qui contient les arcs $dp$ et $ep$</li>
+  <li>$(\{s\}, V \backslash \{s\})$ qui contient les arcs : $sa$ et $sb$</li>
+  <li>$(V \backslash \{p\}, \{p\})$ qui contient les arcs $dp$ et $ep$</li>
   <li>$(\{s, d\}, \overline{\{s, d\}})$ qui contient les arcs : $sa$, $sb$, $dp$ et $de$</li>
 </ul>
 
@@ -172,13 +172,13 @@
 
 <h2 id="valeur-dun-flot">valeur d’un flot</h2>
 
-<p>On va prouver que pour toute coupe $(\overline{S}, S)$, quantité suivant est contante :</p>
+<p>On va prouver que pour toute coupe $(\overline{S}, S)$, la quantité suivante est constante :</p>
 
 \[f(S, \overline{S}) - f(\overline{S}, S) = \mbox{val}(f)\]
 
 <p>Pour tout sommet $x$ de $S$ différent de $s$, on a conservation du flot donc :</p>
 
-\[\sum_{x \in S} (\sum_{xy \in E} f(xy) - \sum_{yx \in E} f(yx)) = \sum_{sy \in E} f(sy) - \sum_{ys \in E} f(ys) = f(\\{s\\}, \overline{\\{s\\}}) - f(\overline{\\{s\\}}, \\{s\\})\]
+\[\sum_{x \in S} (\sum_{xy \in E} f(xy) - \sum_{yx \in E} f(yx)) = \sum_{sy \in E} f(sy) - \sum_{ys \in E} f(ys) = f(\{s\}, \overline{\{s\}}) - f(\overline{\{s\}}, \{s\})\]
 
 <p>De plus, les arcs internes à $S$ sont comptés deux fois une fois pour l’origine de façon positive et une fois pour l’extrémité de façon négative. Les seuls arcs qui ne sont comptés qu’une fois sont ceux qui rentre ou qui sortent de $S$. de là :</p>
 
@@ -200,12 +200,12 @@
 
 <ul>
   <li>$\mbox{val}(f) \leq c(S, \overline{S})$ pour toute coupe du réseau.</li>
-  <li>si $\mbox{val}(f) = c(S^<em>, \overline{S^</em>})$ alors :
+  <li>si $\mbox{val}(f) = c(S^\star, \overline{S^\star})$ alors :
     <ul>
-      <li>$S^*$ est la coupe réalisant le minimum de $c(S, \overline{S})$ pour toute coupe $S$</li>
+      <li>$S^\star$ est la coupe réalisant le minimum de $c(S, \overline{S})$ pour toute coupe $S$</li>
       <li>$\mbox{val}(f)$ est maximum</li>
-      <li>pour tout arc $u$ partant de $S^<em>$ pour finir en $\overline{S^</em>}$, $f(u) = c(u)$</li>
-      <li>pour tout arc $u$ partant de $\overline{S^<em>}$ pour finir en $S^</em>$, $f(u) = 0$</li>
+      <li>pour tout arc $u$ partant de $S^\star$ pour finir en $\overline{S^\star}$, $f(u) = c(u)$</li>
+      <li>pour tout arc $u$ partant de $\overline{S^\star}$ pour finir en $S^\star$, $f(u) = 0$</li>
     </ul>
   </li>
 </ul>
@@ -264,7 +264,7 @@
   <p>On en conclut que s’il existe une chaine augmentante de $s$ à $p$ alors $\mbox{val}(f)$ n’est pas maximum.</p>
 </blockquote>
 
-<p>Réciproquement, supposons qu’il n’existe pas de chaines augmentante de $s$ à $p$. Soit alors $x$ l’ensemble $S’$ des sommets tel qu’il existe une chaine augmentante de $s$ à $x$. L’ensemble $S = S’ \cup \{ s\}$ est alors une coupe de notre réseau et :</p>
+<p>Réciproquement, supposons qu’il n’existe pas de chaines augmentante de $s$ à $p$. Soit alors  $S’$ l’ensemble des sommets $x$ tels qu’il existe une chaine augmentante de $s$ à $x$. L’ensemble $S = S’ \cup \{ s\}$ est alors une coupe de notre réseau et :</p>
 
 <ul>
   <li>pour tout arc $xy$ commençant dans $S$ et finissant dans $\overline{S}$ on a $f(xy) = c(xy)$ sinon il existerait une chaine augmentante de $s$ à $x$ et de $x$ à $y$, donc une chaine augmentante entre $s$ et $y$</li>
@@ -424,7 +424,7 @@ Retour :
 
 <h3 id="autres-algorithmes">Autres algorithmes</h3>
 
-<p>La complexité de l’algorithme de Ford et Fulkerson n’est pas polunomiale (elle dépent des valuations), mais il existe des algorithmes polynomiaux, variations de l’algorithme de Ford et Fulkerson pour résoudre notre problème de flot. Vous pouvez voir la page <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_flot_maximum">wikipedia</a> pour quelques exemples, dont l’algorithmede <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Dinic">Dinic</a> ou d’<a href="https://fr.wikipedia.org/wiki/Algorithme_d%27Edmonds-Karp">Edmonds Karp</a>.</p>
+<p>La complexité de l’algorithme de Ford et Fulkerson n’est pas polynomiale (elle dépend des valuations), mais il existe des algorithmes polynomiaux, variations de l’algorithme de Ford et Fulkerson pour résoudre notre problème de flot. Vous pouvez voir la page <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_flot_maximum">wikipedia</a> pour quelques exemples, dont l’algorithme de <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Dinic">Dinic</a> ou d’<a href="https://fr.wikipedia.org/wiki/Algorithme_d%27Edmonds-Karp">Edmonds Karp</a>.</p>
 
 <h2 id="flot-maximum-à-cout-minimum">flot maximum à cout minimum</h2>
 
