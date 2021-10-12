@@ -56,12 +56,12 @@ Exercice de modélisation objet en python :
 ### séance 6 (**SM**)
 
 1. [exercices sur l'héritage]({% link cours/developpement/programmation-objet/heritage-exercices.md %})
-Codons des classes qui héritent es unes des autres
+Codons des classes qui héritent les unes des autres
 2. corrigé
 
 ### séance 7 (**SM**)
 
-1. [programmation événementielle et interface graphqique]({% link cours/developpement/programmation-objet/programmation-evenementielle.md %})
+1. [programmation événementielle et interface graphique]({% link cours/developpement/programmation-objet/programmation-evenementielle.md %})
 2. corrigé
 
 ### séance 8 (**SM**)
@@ -70,4 +70,4 @@ La **séance machine est notée**.
 
 ## note
 
-**Le TP 8 sera noté.** Il faudra le rendre en fin de séance.
+**Le TP 8 sera noté.** Il faudra le rendre une quinzaine de jours plus tard (la date vous sera communiquée).
