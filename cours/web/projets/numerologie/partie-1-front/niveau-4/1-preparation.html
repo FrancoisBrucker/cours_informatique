@@ -82,11 +82,18 @@
 
 <p>Avant de commencer notre projet on va créer un nouveau <em>repository</em> sur github qui s’appellera “numerologie”.</p>
 
-<ol>
-  <li>Suivez ce <a href="https://docs.github.com/en/get-started/quickstart/create-a-repo">tuto</a> pour créer le projet numérologie.</li>
-  <li>sur la page du repository sur github, créez un nouveau fichier (<em>add file &gt; create a new file</em>) que vous appellerez <em>“README.md”</em>. Ecrivez-y un petit descriptif du projet (ou juste son nom), puis appuyez sur le bouton <em>commit new file</em> pour ajouter ce fichier à votre projet.</li>
-  <li>clonez le dossier sur votre ordinateur. Suivez <a href="/cours_informatique/cours/git_et_github/git_commands.html#clone-projet">ce tuto</a> pour cloner votre projet.</li>
-</ol>
+<p>Suivez ce <a href="https://docs.github.com/en/get-started/quickstart/create-a-repo">tuto</a> pour créer le projet numérologie. Vous devriez obtenir une page du genre :</p>
+
+<p><img src="/cours_informatique/assets/cours/web/numerologie/partie-1-niveau-4-projet-github.png" alt="projet github fraichement créé" /></p>
+
+<p>Editez ensuite le fichier readme.md pour y a jouter la ligne :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Voyez la vie en base 10.
+</code></pre></div></div>
+
+<p>En vas de la page, vous voyez la page pour commiter ses changements, cliquez sur le bouton vert <em>Commet changes</em>.</p>
+
+<p>Il nous reste maintenant à cloner le projet sur notre ordinateur. Suivez <a href="/cours_informatique/cours/git_et_github/git_commands.html#clone-projet">ce tuto</a> pour pour le faire.</p>
 
 <blockquote class="attention">
   <p>Lorsque vous allez cloner votre projet, il va créer un dossier <em>“numerologie”</em> dans lequel sera votre projet.</p>
@@ -102,11 +109,11 @@
 
 <ol>
   <li><code class="language-plaintext highlighter-rouge">git status</code> : pour vérifier ce qui est nouveau</li>
-  <li><code class="language-plaintext highlighter-rouge">git add --all</code> : pour ajouter les nouveau fichiers (ou on ajoute juste les nouveau fichiers voulus)</li>
+  <li><code class="language-plaintext highlighter-rouge">git add --all</code> : pour ajouter les nouveau fichiers (ou on ajoute juste les nouveaux fichiers voulus)</li>
   <li><code class="language-plaintext highlighter-rouge">git commit -am"message de commit"</code> : pour enregistrer les modifications et inclure un message qui résume ce qu’on a fait</li>
 </ol>
 
-<p>Le message du commit doit être informatif. Cela permettra de voir ce qui a été fait lorque l’on regardera l’historique des commits.</p>
+<p>Le message du commit doit être informatif. Cela permettra de voir ce qui a été fait lorsque l’on regardera l’historique des commits.</p>
 
 <blockquote>
   <p>Il ne faut pas qu’un commit regroupe trop de changements sinon ça ne sert à rien : il faut qu’un commit regroupe une unité thématique, une chose sur laquelle on travaillait et qui est finie, ou quelque chose sur laquelle on a bien avancé.</p>
@@ -173,6 +180,8 @@ nothing to commit, working tree clean
 <h3 id="synchronisation-avec-le-serveur">synchronisation avec le serveur</h3>
 
 <p><code class="language-plaintext highlighter-rouge">git push</code> va envoyer les modification au serveur. Selon le mode d’authentifications, vous aurez besoin soit de votre clé ssh, soit d’un token pour vous connecter à github.</p>
+
+<p>Vous pouvez regarder la page du projet numerologie sur le site de github, vous devriez voir le fichier ajouté.</p>
 
   </div>
 

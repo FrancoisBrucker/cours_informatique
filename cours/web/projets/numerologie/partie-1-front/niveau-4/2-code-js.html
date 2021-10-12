@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Projet numérologie : partie 1 / niveau 4 / code | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Projet numérologie : partie 1 / niveau 4 / code" />
+<meta name="author" content="François Brucker" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
+<link rel="canonical" href="/cours_informatique/cours/web/projets/numerologie/partie-1-front/niveau-4/2-code-js.html" />
+<meta property="og:url" content="/cours_informatique/cours/web/projets/numerologie/partie-1-front/niveau-4/2-code-js.html" />
+<meta property="og:site_name" content="cours d’informatique" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Projet numérologie : partie 1 / niveau 4 / code" />
+<script type="application/ld+json">
+{"headline":"Projet numérologie : partie 1 / niveau 4 / code","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/web/projets/numerologie/partie-1-front/niveau-4/2-code-js.html","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css">
+
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+</head>
+
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Projet numérologie : partie 1 / niveau 4 / code</h1></p>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></p>
+  </header>
+
+  <div class="post-content">
+    <blockquote class="chemin">
+  <p><a href="/cours_informatique/cours/web/projets/numerologie/">numérologie</a> / <a href="/cours_informatique/cours/web/projets/numerologie/partie-1-front/">partie 1</a> / <a href="/cours_informatique/cours/web/projets/numerologie/partie-1-front/niveau-4/">niveau 4</a> / <a href="/cours_informatique/cours/web/projets/numerologie/partie-1-front/niveau-4/2-code-js.html">code</a></p>
+</blockquote>
+
+<p>Nous allons après chaque tâche faire un commit et, à la fin de chaque étape envoyer les modifications sur le serveur.</p>
+
+<blockquote>
+  <p>Un commit doit être de taille raisonnable et, si possible, ne concerner qu’une seule tâche.</p>
+</blockquote>
+
+<p>Le message de commit (obligatoire) est très important lorsque l’on fera l’historique du projet. De pus, il faut savoir qui a fait quoi et pouvoir le contacter au besoin : votre nom et mail <em>doivent</em> être correct</p>
+
+<blockquote>
+  <p>le nom utilisé dans un commit reste toute la durée de vie du projet (et ça peut être très long). Donc gardez votre nom réel, il est peu probable que vous ayez à en changer.</p>
+</blockquote>
+
+<h2 id="log">log</h2>
+
+<p>L’historique sous git est donné par les logs. La <a href="https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History">documentation de git sur les log</a> donne de nombreuses options pour voir l’hisorique de son projet.</p>
+
+<p>Si par exemple je tape <code class="language-plaintext highlighter-rouge">git log</code> dans un terminal, j’obtient :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>commit 83830d1fbb28d9e8fb1e437bbd325ffebccdeceb (HEAD -&gt; main, tag: niveau1-2, origin/main, origin/HEAD)
+Author: François Brucker &lt;francois.brucker@gmail.com&gt;
+Date:   Tue Oct 12 15:47:13 2021 +0200
+
+    ajout des tests
+
+commit f96dd16e9271804bd4f8afd2f1b01a6a6ec3740f (tag: niveau1-1)
+Author: François Brucker &lt;francois.brucker@gmail.com&gt;
+Date:   Tue Oct 12 15:30:45 2021 +0200
+
+    Update README.md
+
+commit 75c256df635b91dc15abfee83e897aeed05371d1
+Author: François Brucker &lt;francois.brucker@gmail.com&gt;
+Date:   Tue Oct 12 15:18:20 2021 +0200
+
+    Initial commit
+</code></pre></div></div>
+
+<p>Du haut en bas on remonte l’histoire de notre (court) projet.</p>
+
+<blockquote>
+  <p>J’ai ajouté des <a href="https://git-scm.com/book/en/v2/Git-Basics-Tagging">tag</a>qui permettent de fixer des endroits dans le projet  aux 2 dernières commits : les débuts de chaque partie.</p>
+</blockquote>
+
+<h2 id="tâche-1">tâche 1</h2>
+
+<p>Il n’y a pas de fichier écrit, donc aucune raison de faire de commit.</p>
+
+<h2 id="tâche-2">tâche 2</h2>
+
+<p>On implémente la <a href="/cours_informatique/cours/web/projets/numerologie/partie-1-front/niveau-1/2-code_js.html#tache-2">tâche 2 du niveau 1</a></p>
+
+<p>Un <code class="language-plaintext highlighter-rouge">git status</code> à la fin de cette tache donne :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Sur la branche main
+Votre branche est à jour avec 'origin/main'.
+
+Fichiers non suivis:
+  (utilisez "git add &lt;fichier&gt;..." pour inclure dans ce qui sera validé)
+	numerologie.js
+
+aucune modification ajoutée à la validation mais des fichiers non suivis sont présents (utilisez "git add" pour les suivre)
+
+</code></pre></div></div>
+
+<p>On a un fichier non suivi (<em>numerologie.js</em>). On procède à notre petit workflow habituel :</p>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">git add --all</code>poura ajouter <em>“numerologie.js”</em> à notre projet</li>
+  <li>un <code class="language-plaintext highlighter-rouge">git status</code> nous indique maintenant qu’on a un fichier dans le stage, c’est à dire dans l’endroit où sont consignés les modifications à commiter.</li>
+  <li>On commit `git commit -am”add file numerologie.js”</li>
+</ol>
+
+<p>Après ce commit, un <code class="language-plaintext highlighter-rouge">git status</code>  nous indique que l’on est 1 commit plus loin que l’origin.</p>
+
+<blockquote class="attention">
+  <p>Ce n’est que sa connaissance de l’origine (la dernière fois qu’on a push), il n’est pas allé le vérifier. POur le faire, on utilise la commande <code class="language-plaintext highlighter-rouge">git fetch</code> qui récupère l’état de l’origin. Si on le fait là il n’y aura pas de modification puisque l’on a rien fait sur le serveur.</p>
+</blockquote>
+
+<p>Nous n’allons pas pousser tout de suite nos changement sur le serveur. On va attendre d’avoir fait des changements significatifs dans le code.</p>
+
+<blockquote>
+  <p>Ne poussez pas chaque commit sur le serveur. Attendez d’avoir fait des changements significatifs. Mais commitez tout de même au moins 1 fois par jour sur le serveur (règle au doigt mouillé), pour montrer vos progrès au reste de l’équipe.</p>
+</blockquote>
+
+<h2 id="tâches-3-et-4">tâches 3 et 4</h2>
+
+<p>On implémente les <a href="/cours_informatique/cours/web/projets/numerologie/partie-1-front/niveau-1/2-code_js.html#tache-3">tâche 3 du niveau 1</a> et <a href="/cours_informatique/cours/web/projets/numerologie/partie-1-front/niveau-1/2-code_js.html#tache-4">tâche 4 du niveau 1</a>.</p>
+
+<p>Le <code class="language-plaintext highlighter-rouge">git status</code> après ces étapes montre que nous avons 1 changements : la modification du fichier <em>“numérologie”</em>.</p>
+
+<p>Si l’on veut voir les changements on peut taper la commande <code class="language-plaintext highlighter-rouge">git diff</code>.</p>
+
+<p>Chez moi elle donne :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>diff --git a/numerologie.js b/numerologie.js
+index f7f51ed..c039bbc 100644
+--- a/numerologie.js
++++ b/numerologie.js
+@@ -1,11 +1,29 @@
+ function nombre(chaine) {
+     var somme = 0
+-    for (var i=0; i &lt; chaine.length; i++) {
++    for (var i = 0; i &lt; chaine.length; i++) {
+         somme += chaine.charCodeAt(i)
+     }
+     return somme
+ }
+ 
++function somme(nombre) {
++    var somme = 0
++    chaine = String(nombre)
++    for (var i = 0; i &lt; chaine.length; i++) {
++        somme += parseInt(chaine.charAt(i))
++    }
++    return somme
++}
++
++function chiffreAssocie(chaine) {
++    valeur = nombre(chaine)
++
++    while (valeur &gt; 9) {
++        valeur = somme(valeur)
++    }
++    return valeur
++}
++
+ // test de nombre(chaine)
+ 
+ // est-ce 2x plus ?
+@@ -13,7 +31,28 @@ console.log(nombre("cou"))
+ console.log(nombre("coucou"))
+ 
+ // chaque caractère :la somme est-elle correcte ?
+-for (c of "cou") { 
++for (c of "cou") {
+     console.log(c + " : " + nombre(c))
+ }
+ // fin de test de nombre(chaine)
++
++// test de somme(nombre)
++console.log(somme(132))
++
++// avec un chiffre : charAt != charCodeAt
++console.log(somme(4))
++console.log("4".charCodeAt(0))
++console.log("4".charAt(0))
++
++// conversion chaine de caracteres et nombre
++console.log(typeof "4".charAt(0))
++console.log(parseInt("4".charAt(0)))
++console.log(typeof parseInt("4".charAt(0)))
++// fin de test de somme(nombre)
++
++// test de chiffreAssocie(chaine)
++
++//test valeur somme des chiffres
++console.log(nombre("coucou"))
++console.log(chiffreAssocie("coucou"))
++// fin de test de chiffreAssocie(chaine)
+</code></pre></div></div>
+
+<p>Cette commande montre les différences entre les deux fichiers numérologie.js : celui actuel sur notre disque dur et celui du précédent commit.</p>
+
+<blockquote>
+  <p>la commande diff vient souvent avec la commande patch qui permet de transformer un fichier en un autre en utilisant le résultat de diff. Pour nous c’est git qui fera cette opération nous n’utiliserons donc pas patch directement. Pour plus d’infos sur diff et patch <a href="https://wiki.debian-fr.xyz/Utiliser_diff_et_patch">suiverz le tuto</a></p>
+</blockquote>
+
+<p>git ne va stocker que les différences entre les fichiers et pas tous les fichiers à chaque commit, cela permet de gagner de la place.</p>
+
+<p>On peut maintenant commit nos changements : <code class="language-plaintext highlighter-rouge">git commit -am"rend un chiffre à partir d'une chaine de caractères"</code></p>
+
+<p>Le résultat est :</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[main e8e3c30] rend un chiffre à partir d'une chaine de caractères
+ 1 file changed, 41 insertions(+), 2 deletions(-)
+</code></pre></div></div>
+
+<p>Les insertions et les délétions sont les insertions et délétions du diff précédent.</p>
+
+<p>Un <code class="language-plaintext highlighter-rouge">git status</code> nous informe qu’on est 2 commit plus loin que l’origine.</p>
+
+<h2 id="modification-dun-fichier-depuis-le-site-de-github">modification d’un fichier depuis le site de github</h2>
+
+<p>Pour illustrer le <code class="language-plaintext highlighter-rouge">git fetch</code> et l’état du serveur allons sur la page github de notre projet et modifions le fichier <em>“README.md”</em>.</p>
+
+<p>Pour cela on clique sur le fichier puis on l’édite :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code># numerologie
+
+Voyez la vie en base 10 en associant un chiffre à votre prénom.
+</code></pre></div></div>
+
+<p>Puis on commit nos changements en appuyant sur le bonton vert <em>commit changes</em></p>
+
+<p>De retour sur mon ordinateur, j’essaie de pousser mes 2 commits d’avance sur le serveur avec un <code class="language-plaintext highlighter-rouge">git push</code> et on ne me laisse pas faire :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>To github.com:FrancoisBrucker/numerologie.git
+ ! [rejected]        main -&gt; main (fetch first)
+error: impossible de pousser des références vers 'github.com:FrancoisBrucker/numerologie.git'
+astuce: Les mises à jour ont été rejetées car la branche distante contient du travail que
+astuce: vous n'avez pas en local. Ceci est généralement causé par un autre dépôt poussé
+astuce: vers la même référence. Vous pourriez intégrer d'abord les changements distants
+astuce: (par exemple 'git pull ...') avant de pousser à nouveau.
+astuce: Voir la 'Note à propos des avances rapides' dans 'git push --help' pour plus d'information.
+</code></pre></div></div>
+
+<p>Faisons un <code class="language-plaintext highlighter-rouge">git fetch</code> (on récupère l’état du serveur) puis un <code class="language-plaintext highlighter-rouge">git status</code> pour voir ce qu’il se passe :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Sur la branche main
+Votre branche et 'origin/main' ont divergé,
+et ont 2 et 1 commits différents chacune respectivement.
+  (utilisez "git pull" pour fusionner la branche distante dans la vôtre)
+
+rien à valider, la copie de travail est propre
+</code></pre></div></div>
+
+<h2 id="synchronisation-des-dossiers">synchronisation des dossiers</h2>
+
+<p>On a maintenant quelque chose qui se passe souvent lorsque l’on code à plusieurs :</p>
+
+<ul>
+  <li>j’ai avancé de mon côté (j’ai 2 commit qui n’ont pas encore été mis sur le serveur)</li>
+  <li>le serveur a avancé de son côté et à 1 commit de plus que le serveur que je connais.</li>
+</ul>
+
+<p>Ca donne quelque chose comme ça au niveaux des commit :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  D : le commit du serveur
+ /
+A - B - C : mes commits
+</code></pre></div></div>
+
+<p>Il faut remettre tout ça à l’endroit. L’usage veut que l’on continue <strong>toujours</strong> depuis ce qu’il y sur le serveur. Il faut donc que l’on arrive à quelque chose du style :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A - D - B' - C' : mes commits
+</code></pre></div></div>
+
+<p>Avant de repousser le tout sur le serveur.</p>
+
+<p>Mes commits sont <code class="language-plaintext highlighter-rouge">B'</code> et <code class="language-plaintext highlighter-rouge">C'</code> puisque je dois les écrire depuis un code qui fait <code class="language-plaintext highlighter-rouge">D</code> alors que <code class="language-plaintext highlighter-rouge">B</code> et <code class="language-plaintext highlighter-rouge">C</code> ont été écrit depuis un code qui était À`.</p>
+
+<p>C’est exactement ce qu’il va se passer si vous avez fait les <a href="/cours_informatique/cours/git_et_github/#configuration">configurations nécessaires</a> :</p>
+
+<ol>
+  <li>on récupère les commits du serveur avec un <code class="language-plaintext highlighter-rouge">git pull</code>. Vous devriez obteir ce message <code class="language-plaintext highlighter-rouge">Rebasage et mise à jour de refs/heads/main avec succès.</code> ce qui est encourageant.</li>
+  <li>tout est maintenant ok, on push sur le serveur : <code class="language-plaintext highlighter-rouge">git push</code>.</li>
+</ol>
+
+<p>Git nous informe que tout est ok :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Sur la branche main
+Votre branche est à jour avec 'origin/main'.
+
+rien à valider, la copie de travail est propre
+</code></pre></div></div>
+
+<p>Notre serveur et notre ordinateurs sont synchronisés !</p>
+
+<p>L’opération de rebrancher tout sur le serveur ne se passe pas toujours aussi bien. Il faudra alors <a href="https://docs.github.com/en/get-started/using-git/resolving-merge-conflicts-after-a-git-rebase">résoudre à la main les conflits</a>.</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d&#39;informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d&#39;informatique</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
