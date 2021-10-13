@@ -62,7 +62,7 @@ Codons des classes qui héritent les unes des autres
 ### séance 7 (**SM**)
 
 1. [programmation événementielle et interface graphique]({% link cours/developpement/programmation-objet/programmation-evenementielle.md %})
-2. corrigé
+2. [corrigé]({% link cours/developpement/programmation-objet/programmation-evenementielle-corrige.md %})
 
 ### séance 8 (**SM**)
 

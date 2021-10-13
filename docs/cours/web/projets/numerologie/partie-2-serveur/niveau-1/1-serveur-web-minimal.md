@@ -112,7 +112,7 @@ const server = http.createServer((req, res) => {
 
 > Lorsque l'on modifie le serveur, il faut arrêter l'ancien (avec les touches `ctrl+c`) et le relancer. Même si l'o modifie le code de *"numerologie/index.js"* il n'est pas pris automatiquement en compte par le serveur.
 
-Si l'on recharge le serveur dans le naviguateur, on obtient quelque chose du genre :
+Si l'on recharge le serveur dans le navigateur, on obtient quelque chose du genre :
 
 ```text
 -------

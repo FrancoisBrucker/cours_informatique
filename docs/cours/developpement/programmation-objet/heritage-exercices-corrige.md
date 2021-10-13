@@ -51,17 +51,15 @@ class Personnage:
         self.attaque = attaque
 
     def se_faire_taper(self, personnage):
-        self.vie -= personnage.attaque
+        self.set_vie(self.get_vie() - personnage.attaque)
 
     def taper(self, personnage):
         personnage.se_faire_taper(self)
 
-    @property
-    def vie(self):
+    def get_vie(self):
         return self._vie
 
-    @vie.setter
-    def vie(self, valeur):
+    def set_vie(self, valeur):
         self._vie = valeur
         if self._vie <= 0:
             self._vie = 0
@@ -84,28 +82,29 @@ class Magicien(Personnage):
         self.attaque_magique = attaque_magique
 
     def lancer_sort(self, personnage):
-        personnage.vie -= self.attaque_magique
+        personnage.set_vie(personnage.get_vie() - self.attaque_magique)
 
 xena = Guerriere(10, 2, 50)
 peon = Personnage(5, 1)
 gandalf = Magicien(4, 1, 3)
 
-while xena.vie > 0 and peon.vie > 0:
-    print("xena : ", xena.vie, " peon : ", peon.vie)
+while xena.get_vie() > 0 and peon.get_vie() > 0:
+    print("xena : ", xena.get_vie(), " peon : ", peon.get_vie())
     xena.taper(peon)
     peon.taper(xena)
 
 
-print("xena : ", xena.vie, " peon : ", peon.vie)
+print("xena : ", xena.get_vie(), " peon : ", peon.get_vie())
 
-if xena.vie > 0:
+if xena.get_vie() > 0:
     surviant = xena
 else:
     surviant = peon
 
-while surviant.vie > 0:
-    print("survivant : ", surviant.vie)
+while surviant.get_vie() > 0:
+    print("survivant : ", surviant.get_vie())
     gandalf.lancer_sort(surviant)
+
 ```
 
 ## Le dé
@@ -161,8 +160,8 @@ class StatDice(Dice):
         super().__init__(position)
         self._memory = [0] * (self.NUMBER_FACES + 1)
 
-    @property
-    def memory(self):
+    
+    def get_memory(self):
         return tuple(self._memory)
 
     def set_position(self, new_position):

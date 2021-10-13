@@ -345,8 +345,6 @@ class Magicien(Personnage):
 
 On voit là que le personnage peut mourir si sa vie descend en dessous de 0. Comme on ne modifie qu'un attribut, on ne peut associer aucune méthode à cette mort. Il faut donc rendre l'attribut vie privé et n'y accéder qu'avec une méthode.
 
-Une autre solution élégante en python est d'utiliser des [@property](https://www.it-swarm-fr.com/fr/python/utiliser-property-contre-les-getters-et-les-setters/972255514/) qui font comme si on modifiait un attribut alors qu'on exécute une fonction :
-
 ```python
 class Personnage:
     def __init__(self, vie, attaque):
@@ -354,29 +352,24 @@ class Personnage:
         self.attaque = attaque
 
     def se_faire_taper(self, personnage):
-        self.vie -= personnage.attaque
+        self.set_vie(self.get_vie() - personnage.attaque)
 
     def taper(self, personnage):
         personnage.se_faire_taper(self)
 
-    @property
-    def vie(self):
+
+    def get_vie(self):
         return self._vie
 
-    @vie.setter
-    def vie(self, valeur):
+
+    def set_vie(self, valeur):
         self._vie = valeur
         if self._vie <= 0:
             self._vie = 0
             print("je suis mort")
 ```
 
-Si l'on utilise la classe précédente, écrire :
-
-* `gandalf.vie = 1` est équivalent à écrire `gandalf.vie(1)` (on utilise la méthode)
-* `print(gendalf.vie)` sera équivalent à utiliser la méthode en-dessous du `@property.setter`
-
-## odds and ends
+## on vérifie qu'on a compris
 
 Quelques petit tests qui ne servent à rien en pratique mais qui permettent de
 

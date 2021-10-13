@@ -17,10 +17,10 @@ On utilise [appjar](http://appjar.info) une bibliothèque graphique permettant d
 
 ### installation
 
-Il y a 2 moyens d'[installer appjar](http://appjar.info/Install/) : 
+Il y a 2 moyens d'[installer appjar](http://appjar.info/Install/) :
 
-* soit en [téléchargeant le module](https://github.com/RWBA/appJar/blob/appJar/releases/appJar.zip?raw=true) puis en décompressant le dossier dans votre projet (vous aurez un dossier nommé *"appJar"* dans votre projet)
-* soit en l'installant avec pip : `pip install appjar` (ou pip3 si votre interpréteur python s'appelle `python3`)
+* soit en l'installant avec pip : `pip install appjar` (ou pip3 si votre interpréteur python s'appelle `python3`), c'est la méthode recommandée.
+* soit en [téléchargeant le module](https://github.com/RWBA/appJar/blob/appJar/releases/appJar.zip?raw=true) puis en décompressant le dossier dans votre projet (vous aurez un dossier nommé *"appJar"* dans votre projet). Si vous êtes sous windows et que vous n'avez pas de logiciel pour dézipper des dossiers, vous pouvez télécharger et installer le logiciel [7zip](https://www.7-zip.org/download.html) (prenez la version 64bit)
 
 > Si vous avez installé python avec anaconda, comme recommandé, tout devrait bien se passer. Sinon, il se peut qu'il vous faille installer un python avec tk.
 {: .attention}
