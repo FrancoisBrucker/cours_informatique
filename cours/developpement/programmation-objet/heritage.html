@@ -437,39 +437,30 @@
 
 <p>On voit là que le personnage peut mourir si sa vie descend en dessous de 0. Comme on ne modifie qu’un attribut, on ne peut associer aucune méthode à cette mort. Il faut donc rendre l’attribut vie privé et n’y accéder qu’avec une méthode.</p>
 
-<p>Une autre solution élégante en python est d’utiliser des <a href="https://www.it-swarm-fr.com/fr/python/utiliser-property-contre-les-getters-et-les-setters/972255514/">@property</a> qui font comme si on modifiait un attribut alors qu’on exécute une fonction :</p>
-
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Personnage</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vie</span><span class="p">,</span> <span class="n">attaque</span><span class="p">):</span>
         <span class="bp">self</span><span class="p">.</span><span class="n">_vie</span> <span class="o">=</span> <span class="n">vie</span>
         <span class="bp">self</span><span class="p">.</span><span class="n">attaque</span> <span class="o">=</span> <span class="n">attaque</span>
 
     <span class="k">def</span> <span class="nf">se_faire_taper</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">personnage</span><span class="p">):</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">vie</span> <span class="o">-=</span> <span class="n">personnage</span><span class="p">.</span><span class="n">attaque</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">set_vie</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">get_vie</span><span class="p">()</span> <span class="o">-</span> <span class="n">personnage</span><span class="p">.</span><span class="n">attaque</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">taper</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">personnage</span><span class="p">):</span>
         <span class="n">personnage</span><span class="p">.</span><span class="n">se_faire_taper</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
-    <span class="o">@</span><span class="nb">property</span>
-    <span class="k">def</span> <span class="nf">vie</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">get_vie</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">_vie</span>
 
-    <span class="o">@</span><span class="n">vie</span><span class="p">.</span><span class="n">setter</span>
-    <span class="k">def</span> <span class="nf">vie</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valeur</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">set_vie</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valeur</span><span class="p">):</span>
         <span class="bp">self</span><span class="p">.</span><span class="n">_vie</span> <span class="o">=</span> <span class="n">valeur</span>
         <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">_vie</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="bp">self</span><span class="p">.</span><span class="n">_vie</span> <span class="o">=</span> <span class="mi">0</span>
             <span class="k">print</span><span class="p">(</span><span class="s">"je suis mort"</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>Si l’on utilise la classe précédente, écrire :</p>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">gandalf.vie = 1</code> est équivalent à écrire <code class="language-plaintext highlighter-rouge">gandalf.vie(1)</code> (on utilise la méthode)</li>
-  <li><code class="language-plaintext highlighter-rouge">print(gendalf.vie)</code> sera équivalent à utiliser la méthode en-dessous du <code class="language-plaintext highlighter-rouge">@property.setter</code></li>
-</ul>
-
-<h2 id="odds-and-ends">odds and ends</h2>
+<h2 id="on-vérifie-quon-a-compris">on vérifie qu’on a compris</h2>
 
 <p>Quelques petit tests qui ne servent à rien en pratique mais qui permettent de</p>
 

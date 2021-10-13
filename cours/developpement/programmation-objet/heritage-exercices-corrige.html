@@ -113,17 +113,15 @@ fois) et prenez le temps de comprendre ce qu’elles font et pourquoi.</p>
         <span class="bp">self</span><span class="p">.</span><span class="n">attaque</span> <span class="o">=</span> <span class="n">attaque</span>
 
     <span class="k">def</span> <span class="nf">se_faire_taper</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">personnage</span><span class="p">):</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">vie</span> <span class="o">-=</span> <span class="n">personnage</span><span class="p">.</span><span class="n">attaque</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">set_vie</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">get_vie</span><span class="p">()</span> <span class="o">-</span> <span class="n">personnage</span><span class="p">.</span><span class="n">attaque</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">taper</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">personnage</span><span class="p">):</span>
         <span class="n">personnage</span><span class="p">.</span><span class="n">se_faire_taper</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
-    <span class="o">@</span><span class="nb">property</span>
-    <span class="k">def</span> <span class="nf">vie</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_vie</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">_vie</span>
 
-    <span class="o">@</span><span class="n">vie</span><span class="p">.</span><span class="n">setter</span>
-    <span class="k">def</span> <span class="nf">vie</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valeur</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">set_vie</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valeur</span><span class="p">):</span>
         <span class="bp">self</span><span class="p">.</span><span class="n">_vie</span> <span class="o">=</span> <span class="n">valeur</span>
         <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">_vie</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="bp">self</span><span class="p">.</span><span class="n">_vie</span> <span class="o">=</span> <span class="mi">0</span>
@@ -146,28 +144,29 @@ fois) et prenez le temps de comprendre ce qu’elles font et pourquoi.</p>
         <span class="bp">self</span><span class="p">.</span><span class="n">attaque_magique</span> <span class="o">=</span> <span class="n">attaque_magique</span>
 
     <span class="k">def</span> <span class="nf">lancer_sort</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">personnage</span><span class="p">):</span>
-        <span class="n">personnage</span><span class="p">.</span><span class="n">vie</span> <span class="o">-=</span> <span class="bp">self</span><span class="p">.</span><span class="n">attaque_magique</span>
+        <span class="n">personnage</span><span class="p">.</span><span class="n">set_vie</span><span class="p">(</span><span class="n">personnage</span><span class="p">.</span><span class="n">get_vie</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="p">.</span><span class="n">attaque_magique</span><span class="p">)</span>
 
 <span class="n">xena</span> <span class="o">=</span> <span class="n">Guerriere</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
 <span class="n">peon</span> <span class="o">=</span> <span class="n">Personnage</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">gandalf</span> <span class="o">=</span> <span class="n">Magicien</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 
-<span class="k">while</span> <span class="n">xena</span><span class="p">.</span><span class="n">vie</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">peon</span><span class="p">.</span><span class="n">vie</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">"xena : "</span><span class="p">,</span> <span class="n">xena</span><span class="p">.</span><span class="n">vie</span><span class="p">,</span> <span class="s">" peon : "</span><span class="p">,</span> <span class="n">peon</span><span class="p">.</span><span class="n">vie</span><span class="p">)</span>
+<span class="k">while</span> <span class="n">xena</span><span class="p">.</span><span class="n">get_vie</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">peon</span><span class="p">.</span><span class="n">get_vie</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"xena : "</span><span class="p">,</span> <span class="n">xena</span><span class="p">.</span><span class="n">get_vie</span><span class="p">(),</span> <span class="s">" peon : "</span><span class="p">,</span> <span class="n">peon</span><span class="p">.</span><span class="n">get_vie</span><span class="p">())</span>
     <span class="n">xena</span><span class="p">.</span><span class="n">taper</span><span class="p">(</span><span class="n">peon</span><span class="p">)</span>
     <span class="n">peon</span><span class="p">.</span><span class="n">taper</span><span class="p">(</span><span class="n">xena</span><span class="p">)</span>
 
 
-<span class="k">print</span><span class="p">(</span><span class="s">"xena : "</span><span class="p">,</span> <span class="n">xena</span><span class="p">.</span><span class="n">vie</span><span class="p">,</span> <span class="s">" peon : "</span><span class="p">,</span> <span class="n">peon</span><span class="p">.</span><span class="n">vie</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"xena : "</span><span class="p">,</span> <span class="n">xena</span><span class="p">.</span><span class="n">get_vie</span><span class="p">(),</span> <span class="s">" peon : "</span><span class="p">,</span> <span class="n">peon</span><span class="p">.</span><span class="n">get_vie</span><span class="p">())</span>
 
-<span class="k">if</span> <span class="n">xena</span><span class="p">.</span><span class="n">vie</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">xena</span><span class="p">.</span><span class="n">get_vie</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
     <span class="n">surviant</span> <span class="o">=</span> <span class="n">xena</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="n">surviant</span> <span class="o">=</span> <span class="n">peon</span>
 
-<span class="k">while</span> <span class="n">surviant</span><span class="p">.</span><span class="n">vie</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">"survivant : "</span><span class="p">,</span> <span class="n">surviant</span><span class="p">.</span><span class="n">vie</span><span class="p">)</span>
+<span class="k">while</span> <span class="n">surviant</span><span class="p">.</span><span class="n">get_vie</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"survivant : "</span><span class="p">,</span> <span class="n">surviant</span><span class="p">.</span><span class="n">get_vie</span><span class="p">())</span>
     <span class="n">gandalf</span><span class="p">.</span><span class="n">lancer_sort</span><span class="p">(</span><span class="n">surviant</span><span class="p">)</span>
+
 </code></pre></div></div>
 
 <h2 id="le-dé">Le dé</h2>
@@ -221,8 +220,8 @@ fois) et prenez le temps de comprendre ce qu’elles font et pourquoi.</p>
         <span class="nb">super</span><span class="p">().</span><span class="n">__init__</span><span class="p">(</span><span class="n">position</span><span class="p">)</span>
         <span class="bp">self</span><span class="p">.</span><span class="n">_memory</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">NUMBER_FACES</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
 
-    <span class="o">@</span><span class="nb">property</span>
-    <span class="k">def</span> <span class="nf">memory</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    
+    <span class="k">def</span> <span class="nf">get_memory</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">_memory</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">set_position</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_position</span><span class="p">):</span>
