@@ -83,7 +83,7 @@ Le dossier *"node_module"* n'est pas un module à sauver, on peut installer tout
 
 ## routes
 
-Le module [expres](https://expressjs.com/) va nous permettre de créer nos routes (les urls que le serveur connait) simplement.
+Le module [express](https://expressjs.com/) va nous permettre de créer nos routes (les urls que le serveur connait) simplement.
 
 Avant d'utiliser le module, penchons nous un peut sur que l'on veut :
 
@@ -94,7 +94,7 @@ Pour l'instant nous n'avons qu'un site front. Donc commençons par organiser le 
 
 ### séparation front et back
 
-L'usage veut que le site front soit séparer des actions du serveur. Cela permet de ne pas se mélanger les fichiers.
+L'usage veut que le site front soit séparé des actions du serveur. Cela permet de ne pas se mélanger les fichiers.
 
 1. créez un dossier *"numerologie/static"* et déplacez les fichiers :
    * *"index.html"*
