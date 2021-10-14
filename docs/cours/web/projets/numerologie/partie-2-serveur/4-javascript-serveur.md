@@ -5,7 +5,7 @@ category: cours
 author: "François Brucker"
 ---
 
-> [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 2]({% link cours/web/projets/numerologie/partie-2-serveur/index.md %}) / [niveau 1]({% link cours/web/projets/numerologie/partie-2-serveur/niveau-1/index.md %}) / [javascript serveur]({% link cours/web/projets/numerologie/partie-2-serveur/niveau-1/4-javascript-serveur.md %})
+> [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 2]({% link cours/web/projets/numerologie/partie-2-serveur/index.md %}) / [javascript serveur]({% link cours/web/projets/numerologie/partie-2-serveur/4-javascript-serveur.md %})
 {: .chemin}
 
 On crée notre première route écrite en javascript et on récupère le résultat dans le front.

@@ -5,8 +5,12 @@ category: cours
 author: "François Brucker"
 ---
 
-> [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 2]({% link cours/web/projets/numerologie/partie-2-serveur/index.md %}) / [niveau 1]({% link cours/web/projets/numerologie/partie-2-serveur/niveau-1/index.md %}) / [structures]({% link cours/web/projets/numerologie/partie-2-serveur/niveau-1/5-structures.md %})
+> [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 2]({% link cours/web/projets/numerologie/partie-2-serveur/index.md %}) / [structures]({% link cours/web/projets/numerologie/partie-2-serveur/5-structures.md %})
 {: .chemin}
+
+## dépôt git
+
+<https://github.com/FrancoisBrucker/numerologie/releases/tag/niveau-1-partie-2-fin>
 
 ## structure du projet
 

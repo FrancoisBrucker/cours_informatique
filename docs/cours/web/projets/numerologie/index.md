@@ -12,6 +12,10 @@ Ce projet vise à découvrir les bases du développement de serveur web. On ne p
 
 Le principe est de refaire plusieurs fois ce projet, en ajoutant petit à petit des notions de plus en plus perfectionnées de développement web.
 
+## dépôt github
+
+<https://github.com/FrancoisBrucker/numerologie>
+
 ## but du site
 
 On aimerait pouvoir créer un site de numérologie qui associerait à chaque prénom un chiffre. Comme les publications scientifiques sur ce sujet (comme [là](https://www.parents.fr/prenoms/nos-conseils-prenoms/la-numerologie-des-prenoms-diaporama-307570), [ici](https://www.femmeactuelle.fr/horoscope2/numerologie/numerologie-prenom-19618) ou [encore ceci](https://www.evozen.fr/numerologie/expression)) sont discordantes, nous allons créer le nôtre.
@@ -24,9 +28,12 @@ Ce projet va être séparé en trois parties :
 
 1. [un premier site entièrement en front]({% link cours/web/projets/numerologie/partie-1-front/index.md %})
 2. [on ajoute une partie back pour les calculs]({% link cours/web/projets/numerologie/partie-2-serveur/index.md %})
+3. [Introductions aux tests unitaires et fonctionnels]()
 
-Chaque partie est organisée en niveaux. Chaque niveau refait la partie en ajoutant à chaque fois des outils de développements/code de plus en plus perfectionnés. Il est recommandé de faire tous les niveaux d'une partie.
+## déploiement
 
-## niveaux
-
-Chaque partie est organisée en niveaux. Chaque niveau ajoutant des outils de développements/code de plus en plus perfectionnés. Ces outils seront différents selon la partie.
+> TBD
+>
+> * Local : différence entre fichier et via node.  [cors](https://developer.mozilla.org/fr/docs/Web/HTTP/CORS)
+> * sur le serveur de l'école sans node (cyberduck/scp/git)
+> * sur l'ovh : scp/git

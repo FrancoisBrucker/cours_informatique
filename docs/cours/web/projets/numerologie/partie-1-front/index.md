@@ -25,6 +25,8 @@ Avant de se lancer à corps perdu dans le développement et le code, vérifions 
 
 ## Niveaux
 
+Cette partie est organisée en niveaux. Chaque niveau refait la partie en ajoutant à chaque fois des outils de développements/code de plus en plus perfectionnés. Il est recommandé de faire tous les niveaux.
+
 1. [niveau 1]({% link cours/web/projets/numerologie/partie-1-front/niveau-1/index.md %}) : utilisation d'un éditeur de texte et bases du développement html/css/js
 2. [niveau 2]({% link cours/web/projets/numerologie/partie-1-front/niveau-2/index.md %}) : ajoute d'outils de gestion de projets
 3. [niveau 3]({% link cours/web/projets/numerologie/partie-1-front/niveau-3/index.md %}) : ajout de la gestion des sources avec l'application desktop de github et mise en production avec un logiciel de transfert de fichier

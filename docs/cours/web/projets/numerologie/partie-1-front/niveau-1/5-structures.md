@@ -8,6 +8,11 @@ author: "François Brucker"
 > [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 1]({% link cours/web/projets/numerologie/partie-1-front/index.md %}) / [niveau 1]({% link cours/web/projets/numerologie/partie-1-front/niveau-1/index.md %}) / [structures]({% link cours/web/projets/numerologie/partie-1-front/niveau-1/5-structures.md %})
 {: .chemin}
 
+## dépôt git
+
+<https://github.com/FrancoisBrucker/numerologie/releases/tag/niveau-1-partie-1-fin>
+
+
 ## structure du projet
 
 * dossier : *"numerologie"* :

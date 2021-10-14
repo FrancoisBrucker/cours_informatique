@@ -444,4 +444,3 @@ Où il n'y a plus de conflits : on peut commit : `git commit -am"rebase"`.
 Un `git status` nous informe qu'on peut continuer le rebase avec la commande : `git rebase --continue`. Un dernier `git status` nous indique que c'est ok. On peut maintenant push sur le serveur : `git push` pour synchroniser le serveur avec notre nouvelle version.
 
  > Félicitations, vous venez de survire à votre premier rebase qui se passe mal.
-

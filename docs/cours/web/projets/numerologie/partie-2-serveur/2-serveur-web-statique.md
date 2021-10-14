@@ -5,7 +5,7 @@ category: cours
 author: "François Brucker"
 ---
 
-> [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 2]({% link cours/web/projets/numerologie/partie-2-serveur/index.md %}) / [niveau 1]({% link cours/web/projets/numerologie/partie-2-serveur/niveau-1/index.md %}) / [serveur web statique]({% link cours/web/projets/numerologie/partie-2-serveur/niveau-1/2-serveur-web-statique.md %})
+> [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 2]({% link cours/web/projets/numerologie/partie-2-serveur/index.md %}) / [serveur web statique]({% link cours/web/projets/numerologie/partie-2-serveur/2-serveur-web-statique.md %})
 {: .chemin}
 
 On utilise node comme un serveur web de fichiers statiques.
