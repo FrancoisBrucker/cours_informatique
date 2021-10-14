@@ -110,7 +110,7 @@ Pour modéliser ce problème comme un problème de flot, on va une source d'eaux
 
 ![flot]({{ "/assets/cours/graphes/flot-app-stock-2.png" | relative_url }}){:style="margin: auto;display: block;"}
 
-On  peut alors résoudre le problème avec un flot classique :
+On  peut alors résoudre le problème avec un flot classiqu:
 
 ![flot]({{ "/assets/cours/graphes/flot-app-stock-3.png" | relative_url }}){:style="margin: auto;display: block;"}
 
@@ -180,6 +180,9 @@ Or $P^\star(s, p) = N^\star(s, p) = \mbox{val}(f)$ ce qui conclut la preuve d'é
 #### connectivité du graphe
 
 Sa connectivité est de 3.
+
+> Ce n'est pas toujours le min des degré qui est la connectivité. Regardez le graphe 2-connexe de [la page wikipedia](https://en.wikipedia.org/wiki/K-edge-connected_graph) par exemple
+{: .attention}
 
 ## bataille de la marne
 
