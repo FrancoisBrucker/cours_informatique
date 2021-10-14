@@ -110,7 +110,7 @@ Pour modéliser ce problème comme un problème de flot, on va une source d'eaux
 
 ![flot]({{ "/assets/cours/graphes/flot-app-stock-2.png" | relative_url }}){:style="margin: auto;display: block;"}
 
-On ne peut pas résoudre le problème de flot classique, car on pourrait avoir une solution de ce type :
+On  peut alors résoudre le problème avec un flot classique :
 
 ![flot]({{ "/assets/cours/graphes/flot-app-stock-3.png" | relative_url }}){:style="margin: auto;display: block;"}
 
