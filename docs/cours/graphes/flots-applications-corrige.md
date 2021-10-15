@@ -114,6 +114,10 @@ On  peut alors résoudre le problème avec un flot classiqu:
 
 ![flot]({{ "/assets/cours/graphes/flot-app-stock-3.png" | relative_url }}){:style="margin: auto;display: block;"}
 
+> TBD :
+> il existe une autre modélisation possible  : la faire
+{: .note}
+
 ## k-connectivité dans un graphe
 
 ### P <= N
