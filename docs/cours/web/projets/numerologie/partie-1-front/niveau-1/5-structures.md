@@ -10,8 +10,7 @@ author: "François Brucker"
 
 ## dépôt git
 
-<https://github.com/FrancoisBrucker/numerologie/releases/tag/niveau-1-partie-1-fin>
-
+<https://github.com/FrancoisBrucker/numerologie/releases/tag/partie-1-niveau-1-fin>
 
 ## structure du projet
 
