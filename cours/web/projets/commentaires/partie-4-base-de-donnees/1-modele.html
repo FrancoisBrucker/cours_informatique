@@ -132,6 +132,11 @@
 
 <h2 id="création-de-la-base">création de la base</h2>
 
+<blockquote class="note">
+  <p>TBD :
+ne pas mettre force…</p>
+</blockquote>
+
 <p>Nous n’avons pour l’instant que créé le modèle, il n’existe pas encore dans la base. Comme notre modèle est en mémoire, on va faire en sorte de recréer la base en changeant tous les modèles que nous avons défini (ici un seul). Ceci se fait avec la ligne :</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">await</span> <span class="nx">sequelize</span><span class="p">.</span><span class="nx">sync</span><span class="p">({</span> <span class="na">force</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
