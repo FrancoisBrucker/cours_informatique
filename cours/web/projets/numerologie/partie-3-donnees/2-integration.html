@@ -66,20 +66,316 @@
   <p><a href="/cours_informatique/cours/web/projets/numerologie/">numérologie</a> / <a href="/cours_informatique/cours/web/projets/numerologie/partie-3-donnees/">partie 3</a> / <a href="/cours_informatique/cours/web/projets/numerologie/partie-3-donnees/2-integration.html">intégration</a></p>
 </blockquote>
 
-<p>Création de la base de donnée</p>
+<p>Création de la base de donnée associée au projet</p>
 
 <h2 id="base-en-lecture-seule">base en lecture seule</h2>
 
-<p>on rend le chiffre et la signification.</p>
+<p>On va commencer par créer une base de donnée en lecture pour associer à chaque chiffre sa signification (scientifique).</p>
+
+<h3 id="modèle">modèle</h3>
+
+<p>Le modèle va être identique à notre modèle jouet de la partie précédente. Modifions <em>“numerologie/db.js”</em> pour qu’il corresponde à notre nouveau modèle :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">Sequelize</span><span class="p">,</span> <span class="nx">DataTypes</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">sequelize</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">path</span><span class="dl">'</span><span class="p">)</span>
+
+<span class="kd">const</span> <span class="nx">sequelize</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Sequelize</span><span class="p">({</span>
+  <span class="na">dialect</span><span class="p">:</span> <span class="dl">'</span><span class="s1">sqlite</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">storage</span><span class="p">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="dl">'</span><span class="s1">db.sqlite</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">});</span>
+
+<span class="kd">const</span> <span class="nx">Signification</span> <span class="o">=</span> <span class="nx">sequelize</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="dl">'</span><span class="s1">Signification</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">message</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">DataTypes</span><span class="p">.</span><span class="nx">STRING</span><span class="p">,</span>
+        <span class="na">allowNull</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">nombre</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">DataTypes</span><span class="p">.</span><span class="nx">INTEGER</span><span class="p">,</span>
+        <span class="na">allowNull</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+<span class="p">},</span> <span class="p">{</span>
+    <span class="c1">// Other model options go here</span>
+<span class="p">});</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">sequelize</span><span class="p">:</span> <span class="nx">sequelize</span><span class="p">,</span>
+    <span class="na">model</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">Signification</span><span class="p">:</span> <span class="nx">Signification</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="initialisation">initialisation</h3>
+
+<p>On initialise la base dans le fichier <em>“numerologie/db-init.js”</em> :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">db</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">./db</span><span class="dl">"</span><span class="p">)</span>
+
+<span class="k">async</span> <span class="kd">function</span> <span class="nx">initDB</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">sequelize</span><span class="p">.</span><span class="nx">sync</span><span class="p">({</span><span class="na">force</span><span class="p">:</span> <span class="kc">true</span><span class="p">})</span>
+    
+    <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">MonModele</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+        <span class="na">message</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Une main de fer dans un gant de velours... Votre caractère bien trempé vous cause parfois du tort, mais pas question de vous adoucir : vous êtes comme vous êtes, que ça plaise ou non ! Au moins, vous avez le mérite de jouer cartes sur table. Vos amis savent qu'ils peuvent compter sur votre loyauté.</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">nombre</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="p">})</span>
+
+    <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">MonModele</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+        <span class="na">message</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Au premier abord, on vous juge froide, distante. Mais c'est mal vous connaître car sous votre carapace glaciale, vous êtes ultrasensible ! Le sarcasme et l'ironie vous protègent des déceptions... Combien de fois avez-vous accordé votre confiance à des gens qui ne la méritaient pas ?</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">nombre</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="p">})</span>
+
+    <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">MonModele</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+        <span class="na">message</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Vous avez l'âme d'une artiste ! Dessin, chant, danse... Vous vous épanouissez dans les activités créatives, et vous avez une imagination débordante.</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">nombre</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="p">})</span>
+
+    <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">MonModele</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+        <span class="na">message</span><span class="p">:</span> <span class="dl">"</span><span class="s2">La spontanéité, ce n'est pas votre truc. Dans votre vie, tout doit être rangé, organisé, planifié, sinon c'est la panique ! Au travail, les responsabilités vous font peur : vous préférez vous mettre au service d'un supérieur plutôt que de prendre les commandes. Votre prudence naturelle vous pousse à ne pas vous aventurer en terrain inconnu...</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">nombre</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="p">})</span>
+
+    <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">MonModele</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+        <span class="na">message</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Le changement, l'imprévu, la nouveauté, vous adorez ! Ultra curieuse, vous êtes bien décidée à tout essayer, et les expériences extrêmes ne vous font pas peur.</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">nombre</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="p">})</span>
+
+    <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">MonModele</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+        <span class="na">message</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Vous attendez le prince charmant !</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">nombre</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+    <span class="p">})</span>
+
+    <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">MonModele</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+        <span class="na">message</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Sous votre petit air mystérieux, vous cachez des capacités d'observation et d'analyse incroyables. D'ailleurs, lorsque vous leur donnez des conseils, vos proches les suivent à la lettre !</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">nombre</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
+    <span class="p">})</span>
+
+    <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">MonModele</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+        <span class="na">message</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Des projets, vous en avez toujours en pagaille ! Visionnaire, vous avez l'âme d'un chef : vous commandez, et les autres vous obéissent sans discuter. Et à l'arrivée, on reconnaît vos mérites.</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">nombre</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+    <span class="p">})</span>
+
+    <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">MonModele</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+        <span class="na">message</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Vous rêvez d'un monde paisible et harmonieux... L'idéaliste de la famille, c'est vous ! Vous êtes vulnérable face au mensonge et à la trahison. Pourtant, lorsque les choses se corsent, vous êtes capable de vous démener pour résoudre les problèmes au plus vite. Pas question de rester passive face aux situations difficiles !</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">nombre</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span>
+    <span class="p">})</span>
+
+<span class="p">}</span>
+
+<span class="nx">initDB</span><span class="p">()</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">base initalisée</span><span class="dl">"</span><span class="p">)</span>
+    <span class="p">})</span>
+</code></pre></div></div>
+
+<h2 id="on-jardine">on jardine</h2>
+
+<h3 id="suppression-des-vieux-fichiers">suppression des vieux fichiers</h3>
+
+<p>Nous n’avons plus besoin des vieux fichiers de tests : <em>“numerologie/ma_db_init.js”</em>, <em>“numerologie/ma_db_test.js”</em> et <em>“numerologie/ma_db_utilisation.js”</em></p>
+
+<h3 id="script-init">script init</h3>
+
+<p>On a coutume de mettre les différents scripts utiles dans la partie <code class="language-plaintext highlighter-rouge">script</code> du fichier <em>“package.json”</em>. Ajoutons donc un script d’initialisation :</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">...</span><span class="w">
+
+  </span><span class="nl">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"init"</span><span class="p">:</span><span class="w"> </span><span class="s2">"node db-init.js"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"echo </span><span class="se">\"</span><span class="s2">Error: no test specified</span><span class="se">\"</span><span class="s2"> &amp;&amp; exit 1"</span><span class="w">
+  </span><span class="p">}</span><span class="err">,</span><span class="w">
+
+</span><span class="err">...</span><span class="w">
+</span></code></pre></div></div>
+
+<p>On pourra exécuter ce script (juste une commande pour l’instant) en tapant la commande :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run init
+</code></pre></div></div>
+
+<p>Ajoutons également les commandesà faire dans le fichier <em>“numerologie/readme.md”</em> :</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gh"># numerologie</span>
+
+Voyez la vie en base 10 en associant un chiffre à votre prénom.
+
+<span class="gu">## initialisation</span>
+
+<span class="sb">`npm run init`</span>
+</code></pre></div></div>
+
+<h2 id="utilisation-de-la-base">utilisation de la base</h2>
+
+<p>Nous allons donner le message associé au numéro en plus du reste.</p>
+
+<h3 id="côté-serveur">côté serveur</h3>
+
+<p>Avec le numéro calculé, on cherche dans la base [e premier élément ayant ce numéro (méthode <a href="https://sequelize.org/master/manual/model-querying-finders.html#-code-findone--code-">findOne</a>) et on le renvoie dans le json de résultat :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ...</span>
+
+<span class="kd">const</span> <span class="nx">db</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">./db</span><span class="dl">"</span><span class="p">)</span>
+
+<span class="c1">// ...</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nb">encodeURI</span><span class="p">(</span><span class="dl">'</span><span class="s1">/prénom</span><span class="dl">'</span><span class="p">),</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">)</span>
+    <span class="nx">prenom</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">[</span><span class="dl">"</span><span class="s2">valeur</span><span class="dl">"</span><span class="p">]</span>
+    <span class="nx">chiffre</span> <span class="o">=</span> <span class="nx">numerologie</span><span class="p">.</span><span class="nx">chiffre</span><span class="p">(</span><span class="nx">prenom</span><span class="p">)</span> 
+    <span class="nx">db</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">Signification</span><span class="p">.</span><span class="nx">findOne</span><span class="p">({</span>
+        <span class="na">where</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">nombre</span><span class="p">:</span> <span class="nx">chiffre</span>
+        <span class="p">}</span>
+    <span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span>
+            <span class="na">prénom</span><span class="p">:</span> <span class="nx">prenom</span><span class="p">,</span>
+            <span class="na">chiffre</span><span class="p">:</span> <span class="nx">chiffre</span><span class="p">,</span> 
+            <span class="na">message</span><span class="p">:</span> <span class="nx">data</span><span class="p">.</span><span class="nx">message</span>
+        <span class="p">})</span>
+    <span class="p">})</span>
+<span class="p">})</span>
+
+<span class="c1">// ...</span>
+</code></pre></div></div>
+
+<p>Notez que l’accès en base est asynchrone, il faut donc attendre le résultat (avec le <code class="language-plaintext highlighter-rouge">then</code> des promise) avant de finir la requête.</p>
+
+<h3 id="côté-client">côté client</h3>
+
+<p>On va créer un div et afficher le message reçu. Fichier <em>“numerologie/static/index.html”</em> :</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- ... --&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"message"</span><span class="nt">&gt;&lt;/div&gt;</span>
+
+<span class="nt">&lt;script&gt;</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#form-button</span><span class="dl">"</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">prenom</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#form-input</span><span class="dl">"</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">prenom</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/prénom/?valeur=</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">prenom</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+            <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#chiffre</span><span class="dl">"</span><span class="p">).</span><span class="nx">textContent</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">chiffre</span>
+                <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#message</span><span class="dl">"</span><span class="p">).</span><span class="nx">textContent</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">message</span>
+                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+            <span class="p">})</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#chiffre</span><span class="dl">"</span><span class="p">).</span><span class="nx">textContent</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">?</span><span class="dl">"</span>
+    <span class="p">}</span>
+
+    <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+<span class="p">})</span>
+<span class="nt">&lt;/script&gt;</span>
+
+<span class="c">&lt;!-- ... --&gt;</span>
+
+</code></pre></div></div>
 
 <h2 id="base-des-correspondances-recherchées">base des correspondances recherchées</h2>
+
+<p>Ajoutons un autre modèle qui stocke les prénoms recherchés. On ne va cependant stocker qu’une seule fois le prénom.</p>
+
+<h3 id="modèle-prénom">modèle prénom</h3>
+
+<p>On modifie <em>“numerologie/db.js”</em> pour inclure le nouveau modèle :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">Sequelize</span><span class="p">,</span> <span class="nx">DataTypes</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">sequelize</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">path</span><span class="dl">'</span><span class="p">)</span>
+
+<span class="kd">const</span> <span class="nx">sequelize</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Sequelize</span><span class="p">({</span>
+  <span class="na">dialect</span><span class="p">:</span> <span class="dl">'</span><span class="s1">sqlite</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">storage</span><span class="p">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="dl">'</span><span class="s1">db.sqlite</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">});</span>
+
+<span class="kd">const</span> <span class="nx">Signification</span> <span class="o">=</span> <span class="nx">sequelize</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="dl">'</span><span class="s1">Signification</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">message</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">DataTypes</span><span class="p">.</span><span class="nx">STRING</span><span class="p">,</span>
+        <span class="na">allowNull</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">nombre</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">DataTypes</span><span class="p">.</span><span class="nx">INTEGER</span><span class="p">,</span>
+        <span class="na">allowNull</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+<span class="p">},</span> <span class="p">{</span>
+    <span class="c1">// Other model options go here</span>
+<span class="p">});</span>
+
+<span class="kd">const</span> <span class="nx">Prenoms</span> <span class="o">=</span> <span class="nx">sequelize</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="dl">'</span><span class="s1">Prenoms</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">prenom</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">DataTypes</span><span class="p">.</span><span class="nx">STRING</span><span class="p">,</span>
+        <span class="na">allowNull</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+<span class="p">},</span> <span class="p">{</span>
+    <span class="c1">// Other model options go here</span>
+<span class="p">});</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">sequelize</span><span class="p">:</span> <span class="nx">sequelize</span><span class="p">,</span>
+    <span class="na">model</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">Signification</span><span class="p">:</span> <span class="nx">Signification</span><span class="p">,</span>
+        <span class="na">Prenoms</span><span class="p">:</span> <span class="nx">Prenoms</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Puis on recrée notre base de données avec la commande :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run init
+</code></pre></div></div>
+
+<h3 id="ajout-dans-la-route">ajout dans la route</h3>
+
+<p>Il nous reste plus qu’à ajouter, si nécessaire, le prénom dans la base. On modifie la route dans <em>“numerologie/index.js”</em> :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ...</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nb">encodeURI</span><span class="p">(</span><span class="dl">'</span><span class="s1">/prénom</span><span class="dl">'</span><span class="p">),</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">)</span>
+    <span class="nx">prenom</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">[</span><span class="dl">"</span><span class="s2">valeur</span><span class="dl">"</span><span class="p">]</span>
+    <span class="nx">chiffre</span> <span class="o">=</span> <span class="nx">numerologie</span><span class="p">.</span><span class="nx">chiffre</span><span class="p">(</span><span class="nx">prenom</span><span class="p">)</span> 
+    <span class="nx">db</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">Prenoms</span><span class="p">.</span><span class="nx">findOne</span><span class="p">({</span>
+        <span class="na">where</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">prenom</span><span class="p">:</span> <span class="nx">prenom</span>
+        <span class="p">}</span>
+    <span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">data</span> <span class="o">===</span> <span class="kc">null</span> <span class="p">)</span> <span class="p">{</span>
+            <span class="nx">db</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">Prenoms</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+                <span class="na">prenom</span><span class="p">:</span> <span class="nx">prenom</span>
+            <span class="p">})</span>
+        <span class="p">}</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+    <span class="p">})</span>
+    <span class="nx">db</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">Signification</span><span class="p">.</span><span class="nx">findOne</span><span class="p">({</span>
+        <span class="na">where</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">nombre</span><span class="p">:</span> <span class="nx">chiffre</span>
+        <span class="p">}</span>
+    <span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span>
+            <span class="na">prénom</span><span class="p">:</span> <span class="nx">prenom</span><span class="p">,</span>
+            <span class="na">chiffre</span><span class="p">:</span> <span class="nx">chiffre</span><span class="p">,</span> 
+            <span class="na">message</span><span class="p">:</span> <span class="nx">data</span><span class="p">.</span><span class="nx">message</span>
+        <span class="p">})</span>
+    <span class="p">})</span>
+<span class="p">})</span>
+
+<span class="c1">//...</span>
+</code></pre></div></div>
+
+<p>On commence par tenter de chercher le prénom dans la base. S’il n’y est pas (le retour est <code class="language-plaintext highlighter-rouge">null</code>), on sauve le prénom.
+Les deux recherches sont asynchrones et indépendantes.</p>
+
+<blockquote>
+  <p><code class="language-plaintext highlighter-rouge">==</code> et <code class="language-plaintext highlighter-rouge">===</code> <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Equality_comparisons_and_sameness">sont différents</a> en javascript.</p>
+</blockquote>
+
+<h2 id="séparation-des-modèles-et-des-routes">séparation des modèles et des routes</h2>
+
+<h3 id="modèles">modèles</h3>
 
 <blockquote class="note">
   <p>tbd : ajoute un dossier models</p>
 </blockquote>
 
-<p>un a besoin que R. Ajoute à la base que si prénom différent.</p>
-
+<h3 id="api">api</h3>
 
   </div>
 
