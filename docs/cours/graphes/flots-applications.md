@@ -13,6 +13,12 @@ Quelques exercices pour montrer que le problème du flot maximum permet de modé
 
 [éléments de corrigé]({% link cours/graphes/flots-applications-corrige.md %})
 
+> TBD
+>
+> * couleurs différentes plutôt que rester en noir et blanc (avec gras et pointillé)
+> * ajouter la 2ème modélisation possible dans le pb des stations d'épurations
+> * parler des poids négatifs dans le graphe d'écart dans le flot max a cout min
+
 ## application simple
 
 On commence par voir si on se rappelle le cours. On considère le réseau suivant (en gras les capacités, en italique les flux) :
@@ -170,6 +176,14 @@ On considère le graphe ci-après :
 ![flot menger]({{ "/assets/cours/graphes/flot-menger-2.png" | relative_url }}){:style="margin: auto;display: block;"}
 
 > Quel est son arc connectivité ?
+{: .a-faire}
+
+Et lui ?
+
+![flot menger]({{ "/assets/cours/graphes/flot-menger-3.png" | relative_url }}){:style="margin: auto;display: block;"}
+
+> Quel est son arc connectivité ?
+> En déduire que le degré minimum n'est que majorant de l'arc connectivité d'un graphe
 {: .a-faire}
 
 ## bataille de la marne

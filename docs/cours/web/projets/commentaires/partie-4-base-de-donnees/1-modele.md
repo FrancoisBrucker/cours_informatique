@@ -74,6 +74,10 @@ On demande qu'un message soit 3 chaînes de caractères non vide. Notez qu'on a 
 
 ## création de la base
 
+> TBD :
+> ne pas mettre force...
+{: .note}
+
 Nous n'avons pour l'instant que créé le modèle, il n'existe pas encore dans la base. Comme notre modèle est en mémoire, on va faire en sorte de recréer la base en changeant tous les modèles que nous avons défini (ici un seul). Ceci se fait avec la ligne :
 
 ```js

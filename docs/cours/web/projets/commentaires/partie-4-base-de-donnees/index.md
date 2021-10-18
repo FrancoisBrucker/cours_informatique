@@ -8,6 +8,12 @@ author: "François Brucker"
 > [commentaires]({% link cours/web/projets/commentaires/index.md %}) / [partie 4]({% link cours/web/projets/commentaires/partie-4-base-de-donnees/index.md %})
 {: .chemin}
 
+
+> TBD
+> A refaire.
+> ne garder que la partie sqlite et faire attention à windows avec le changement de path
+{: .note}
+
 ## sqlite
 
 Comme nous allons utiliser une base de données, on vous demande d'installer [sqlite](https://www.sqlite.org/index.html) sur votre système. C'est une base de données sql qui fonctionne sans serveur et sauve les données sur le disque. Ne l'utilisez en production que pour de *petites* applications ou pour vos tests. 

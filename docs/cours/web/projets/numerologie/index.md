@@ -28,7 +28,8 @@ Ce projet va être séparé en trois parties :
 
 1. [un premier site entièrement en front]({% link cours/web/projets/numerologie/partie-1-front/index.md %})
 2. [on ajoute une partie back pour les calculs]({% link cours/web/projets/numerologie/partie-2-serveur/index.md %})
-3. [Introductions aux tests unitaires et fonctionnels]()
+3. [gestion des données]({% link cours/web/projets/numerologie/partie-3-donnees/index.md %})
+4. [Introductions aux tests unitaires et aux tests fonctionnels]({% link cours/web/projets/numerologie/partie-4-tests/index.md %})
 
 ## déploiement
 

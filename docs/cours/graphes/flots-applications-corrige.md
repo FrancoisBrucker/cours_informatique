@@ -115,7 +115,8 @@ On  peut alors résoudre le problème avec un flot classiqu:
 ![flot]({{ "/assets/cours/graphes/flot-app-stock-3.png" | relative_url }}){:style="margin: auto;display: block;"}
 
 > TBD :
-> il existe une autre modélisation possible  : la faire
+> il existe une autre modélisation en dédoublant les noeuds possible  : la faire
+> expliquer que ça ne dit pas la même chose selon la modélisation choisie : on fait des hypothèses différentes.
 {: .note}
 
 ## k-connectivité dans un graphe
@@ -183,10 +184,9 @@ Or $P^\star(s, p) = N^\star(s, p) = \mbox{val}(f)$ ce qui conclut la preuve d'é
 
 #### connectivité du graphe
 
-Sa connectivité est de 3.
+La connectivité du premier (qui s'appelle le [graphe de petersen](https://fr.wikipedia.org/wiki/Graphe_de_Petersen)) graphe est 3 et 2 pour le second (il suffit de supprimer les arêtes rouges)
 
-> Ce n'est pas toujours le min des degré qui est la connectivité. Regardez le graphe 2-connexe de [la page wikipedia](https://en.wikipedia.org/wiki/K-edge-connected_graph) par exemple
-{: .attention}
+![flot menger]({{ "/assets/cours/graphes/flot-menger-4.png" | relative_url }}){:style="margin: auto;display: block;"}
 
 ## bataille de la marne
 

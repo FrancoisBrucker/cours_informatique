@@ -133,7 +133,7 @@ Vous pouvez tester en remplaçant la fonction `async` par  le code suivant :
 
 On a donc un module qui sera importé à chaque fois qu'on a besoin d'accéder notre base de données : le fichier *"commentaires/db.js"*. Ce fichier va inclure tous les modèles de notre base puis faire une synchronisation avec la base. Ceci ne sera fait qu'au premier import, lors des prochains import seule `module.exports` sera rendu, le reste du code ne sera même pas exécuté.
 
-Au final, pour la suite de nos développements, on va utiliser une base de donnée sqlite, histoire de ne pas avoir à remettre des données à chaque fois que l'on relance le serveur (ce qui va arriver souvent en phase de développement...). On a alors le fichier *"commentaires/db.js"* suivant : 
+Au final, pour la suite de nos développements, on va utiliser une base de donnée sqlite, histoire de ne pas avoir à remettre des données à chaque fois que l'on relance le serveur (ce qui va arriver souvent en phase de développement...). On a alors le fichier *"commentaires/db.js"* suivant :
 
 ```js
 const { Sequelize, DataTypes } = require('sequelize');
