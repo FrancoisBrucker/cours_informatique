@@ -317,6 +317,10 @@ Les deux recherches sont asynchrones et indépendantes.
 
 > `==` et `===` [sont différents](https://developer.mozilla.org/fr/docs/Web/JavaScript/Equality_comparisons_and_sameness) en javascript.
 
+### page des prénoms
+
+rend json prenom+numero et affichage sur une autre pas html.
+
 ## séparation des modèles et des routes
 
 ### modèles
