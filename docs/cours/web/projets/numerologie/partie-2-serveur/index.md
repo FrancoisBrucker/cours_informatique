@@ -21,3 +21,7 @@ On suppose que vous avez un projet retraçant la [partie 1 / niveau 1]({% link c
 3. [serveur web avec express]({% link cours/web/projets/numerologie/partie-2-serveur/3-serveur-web-express.md %}) : on utilise le module express pour mieux gérer les routes et les urls.
 4. [intégration]({% link cours/web/projets/numerologie/partie-2-serveur/4-javascript-serveur.md %}) : on crée notre première route avec du javascript serveur et on l'appel depuis le front.
 5. [Fichiers du projet final]({% link cours/web/projets/numerologie/partie-2-serveur/5-structures.md %}).
+
+## dépôt git final
+
+<https://github.com/FrancoisBrucker/numerologie/releases/tag/partie-2-fin>

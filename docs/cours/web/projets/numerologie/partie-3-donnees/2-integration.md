@@ -273,7 +273,7 @@ Puis on recrée notre base de données avec la commande :
 npm run init
 ```
 
-### ajout dans la route
+### création des éléments de la base
 
 Il nous reste plus qu'à ajouter, si nécessaire, le prénom dans la base. On modifie la route dans *"numerologie/index.js"* :
 
@@ -317,15 +317,88 @@ Les deux recherches sont asynchrones et indépendantes.
 
 > `==` et `===` [sont différents](https://developer.mozilla.org/fr/docs/Web/JavaScript/Equality_comparisons_and_sameness) en javascript.
 
-### page des prénoms
+### lire les prénoms
 
-rend json prenom+numero et affichage sur une autre pas html.
+Pour voir les différents prénoms de la base, il faut que l'on implémente la méthode **R**ead pour notre modèle `Prenoms` (**C**reate est intégré à la route GET `/Prénom`, **U**pdate et **D**elete sont pour l'instant inutiles).
 
-## séparation des modèles et des routes
+L'usage veut que l'accès aux données soient rangé dans une route qui commence par `/api`. Dans notre cas, on utiliser la route :
+GET `/api/prenoms/read/` pour lire tous nos prénoms. Ajoutons cette route à *"numerologie/index.js"* :
 
-### modèles
+```js
+// ...
 
-> tbd : ajoute un dossier models
-{: .note}
+app.get('/api/prenoms/read', (req, res) => {
+    db.model.Prenoms.findAll()
+        .then((data) => {
+            var liste = []
+            for (element of data) {
+                liste.push({
+                    prenom: element.prenom,
+                    chiffre: numerologie.chiffre(element.prenom)
+                })
+            }
+            res.json(liste)
+        })
+})
 
-### api
+//...
+```
+
+Testez cette route après avec l'url <http://127.0.0.1:3000/api/prenoms/read> avoir ajouté (avec la page de départ) quelques prénoms à la base.
+
+### représenter les prénoms
+
+On peut maintenant finir cette partie en ajoutant une page html *"numerologie/static/prenoms.html"* qui liste tous les prénoms de la base :
+
+```html
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>Les prénoms recherchés</title>
+        
+        <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css" integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5" crossorigin="anonymous">
+        
+        <link href="main.css" rel="stylesheet">
+
+    </head>
+    <body>
+        <div id="main">
+            <p>Chargement des prénoms...</p>
+        </div>
+        
+        <script>
+        main = document.querySelector("#main")
+        fetch("/api/prenoms/read")
+            .then(response => response.json())
+            .then(data => {
+                main.innerHTML = ""
+                if (data.length == 0) {
+                    element = document.createElement("p")
+                    element.innerText = "pas de prénoms sauvés dans la base."                    
+                    main.appendChild(element)
+
+                    return;
+                }
+                list = document.createElement("ul")
+                main.appendChild(list)
+                for (prenom of data) {                    
+                    element = document.createElement("li")
+                    element.innerText = prenom.prenom
+                    list.appendChild(element)
+                }
+            })
+        </script>
+    </body>
+</html>
+```
+
+Cette page affiche un texte par défaut (`<p>Chargement des prénoms...</p>`) qui est remplacé après lecture des prénoms de la base. On distingue 2 cas : la base est vide (et on le signale) ou la base contient des prénoms et on les affiche.
+
+Notez comment on a fait pour :
+
+* supprimer tous les enfant d'un élément de l'arbre DOM : `main.innerHTML = ""`
+* créer des éléments : `element = document.createElement("p")`
+* ajouter des enfants à un élément : `main.appendChild(element)`
+
+Testez cette page (<http://127.0.0.1:3000/static/prenoms.html>) sur une base vide (juste après un `npm run init`) et sur une base avec des prénoms de stockés.

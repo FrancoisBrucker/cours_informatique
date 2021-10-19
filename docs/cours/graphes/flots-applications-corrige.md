@@ -78,6 +78,12 @@ Le flot est maximum, l'algorithme de Ford et Fulkerson nous donnant une coupe mi
 
 ## problème du transport amoureux
 
+> TBD
+>
+> * expliciter le théorème des valeurs entières (il existe un flot max à valeur entière et le démontrer)
+> * comme 2 flot max entiers, il existe un flot max à valeur réelle
+
+
 On peut écrire le graphe suivant, en liant les affinités par une arête. Le graphe est bi-parti car les mariages sont ici hétérosexuels :
 
 ![graphe bi-parti]({{ "/assets/cours/graphes/flot-app-mariage-1.png" | relative_url }}){:style="margin: auto;display: block;"}
@@ -103,6 +109,8 @@ Il y a aussi la solution classique où vous échangez les maris de Juliette et C
 > Notez que si l'on ne se restreint pas aux mariages hétérosexuels, le graphe n'est plus biparti. Le problème du couplage dans un graphe ne peut plus se résoudre comme un problème de flot, il faut utiliser [l'algorithme d'Edmonds](https://fr.wikipedia.org/wiki/Algorithme_d%27Edmonds_pour_les_couplages) pour le résoudre.
 >
 > Enfin, si l'on veut rajouter des amants (chaque personne doit avoir un conjoint et un amant), le problème devient NP-difficile.
+
+
 
 ## stockage dans les noeuds
 

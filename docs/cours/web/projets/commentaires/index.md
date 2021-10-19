@@ -40,7 +40,7 @@ Chaque partie est organisée en niveaux. Chaque niveau ajoutant des outils de d�
 
 > TBD :
 >
-> * pas mettre de await dans le code de la gestion des données. Juste des then.
+> * separation côté back des routes (dans /routes) et des modèles (dans /models)
 > * fetch qui marche pas sous firefox ?
 > * environnements différents
 > * scripts d'install et de run

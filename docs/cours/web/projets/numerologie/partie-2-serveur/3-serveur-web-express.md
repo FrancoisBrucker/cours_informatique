@@ -174,6 +174,8 @@ Dans notre cas l'enchaînement de route est ainsi :
 
 > Le dernier appel de `app` doit être pour gérer les requêtes qui n'ont pas pu être consommées avant. C'est souvent que l'on ne sait pas quoi en faire donc on l'indique au client part un 404.
 
+Pour plus d'informations sur le routage express, n'hésitez pas à [consulter la documentation](https://expressjs.com/fr/guide/routing.html)
+
 ### fonction next()
 
 On peut remettre des requêtes utilisées en fonction avec la méthode `next()`

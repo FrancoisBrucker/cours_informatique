@@ -1,11 +1,11 @@
 ---
 layout: page
-title:  "Projet numérologie : partie 4 tests"
+title:  "Projet numérologie : partie 5 tests"
 category: cours
 author: "François Brucker"
 ---
 
-> [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 4]({% link cours/web/projets/numerologie/partie-4-tests/index.md %})
+> [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 5]({% link cours/web/projets/numerologie/partie-5-tests/index.md %})
 {: .chemin}
 
 Numérologie partie 4. On mets en place tous les tests nécessaire au bon fonctionnement et à la maintenance du projet
