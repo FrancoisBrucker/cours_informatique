@@ -79,5 +79,6 @@ On test que les intentions d'un utilisateurs peuvent être satisfaites. C'est un
 Il est fortement déconseillé de commencer les tests lorsqu'un projet est déjà en production. Nous allons le faire ici car il n'y a encore que peu de code. Il faut **toujours** commencer les tests en même temps que le projet.
 
 1. [tests unitaires]({% link cours/web/projets/numerologie/partie-5-tests/1-tests-unitaires.md %})
-2. [tests fonctionnels]({% link cours/web/projets/numerologie/partie-5-tests/2-tests-fonctionnels.md %})
-3. [user stories]({% link cours/web/projets/numerologie/partie-5-tests/3-user-stories.md %})
+2. [tests de routes]({% link cours/web/projets/numerologie/partie-5-tests/2-tests-routes.md %})
+3. [tests fonctionnels]({% link cours/web/projets/numerologie/partie-5-tests/3-tests-fonctionnels.md %})
+4. [user stories]({% link cours/web/projets/numerologie/partie-5-tests/4-user-stories.md %})
