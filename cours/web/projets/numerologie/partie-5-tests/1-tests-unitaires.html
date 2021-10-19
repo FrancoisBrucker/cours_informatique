@@ -68,8 +68,9 @@
 
 <blockquote>
   <p>TBD
-jest
-mock ?</p>
+mock ?
+asynchrone
+before/after</p>
 </blockquote>
 
 <h2 id="bibliothèque-de-test">bibliothèque de test</h2>
@@ -116,6 +117,95 @@ mock ?</p>
 <p>Voir <a href="https://docs.npmjs.com/cli/v7/commands/npm-install">la documentation</a> pour de plus amples informations.</p>
 
 <h2 id="usage">usage</h2>
+
+<p><code class="language-plaintext highlighter-rouge">jest</code> va exécuter des tests écrit dans des fichiers. Par défaut ces fichiers sont :</p>
+
+<ul>
+  <li>les fichiers finissant par <em>“.test.js”</em> (ou <em>“.spec.js”</em>) du projet ou dans ses sous dossiers</li>
+  <li>tous les fichiers du dossier <em>“<strong>tests</strong>”</em> s’il existe.</li>
+</ul>
+
+<h3 id="commande">commande</h3>
+
+<p>On peut exécuter jest de deux façon, soit via <code class="language-plaintext highlighter-rouge">npm</code> et une configuration dans <em>“package.json”</em> ou en ligne de commande.</p>
+
+<h4 id="npm">npm</h4>
+
+<p>On commence par associer <code class="language-plaintext highlighter-rouge">jest</code> aux tests en renseignant le champ <code class="language-plaintext highlighter-rouge">"test"</code> de l’attribut <code class="language-plaintext highlighter-rouge">"script"</code> du fichier <em>“package.json”</em> :</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">...</span><span class="w">
+
+  </span><span class="nl">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"init"</span><span class="p">:</span><span class="w"> </span><span class="s2">"node db-init.js"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jest"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"node index.js"</span><span class="w">
+  </span><span class="p">}</span><span class="err">,</span><span class="w">
+
+</span><span class="err">...</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Puis on exécute <code class="language-plaintext highlighter-rouge">jest</code> en tapant la commande :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">test</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p><code class="language-plaintext highlighter-rouge">npm test</code> est un raccourci pour <code class="language-plaintext highlighter-rouge">npm run test</code></p>
+</blockquote>
+
+<h4 id="cli">CLI</h4>
+
+<p>Le programme <code class="language-plaintext highlighter-rouge">jest</code> est rangé dans le dossier <em>“node_modules/.bin”</em>, on peut donc l’appeler directement par la commande :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./node_modules/.bin/jest
+</code></pre></div></div>
+
+<h3 id="tests">tests</h3>
+
+<p>les tests seront tous de la forme (repris des <a href="https://jestjs.io/fr/docs/getting-started">premiers pas</a>) :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">test</span><span class="p">(</span><span class="dl">'</span><span class="s1">deux plus deux font quatre</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">expect</span><span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>Chaque test aura :</p>
+
+<ul>
+  <li>un nom. Ici : <code class="language-plaintext highlighter-rouge">'deux plus deux font quatre'</code></li>
+  <li>le test en lui même qui est une fonction et dont le but est de comparer une valeur théorique à une valeur réelle. Ici on cherche à vérifier que <code class="language-plaintext highlighter-rouge">2 + 2</code> vaut <code class="language-plaintext highlighter-rouge">4</code>.</li>
+</ul>
+
+<p>L’essence même d’un test est l’utilisation de <a href="https://jestjs.io/fr/docs/using-matchers">comparateurs</a></p>
+
+<h3 id="blocs-de-tests">blocs de tests</h3>
+
+<p>Par défaut, on va grouper les tests similaire dans un même fichier. Si l’on a besoin de sous-groupes à l’intérieur d’un fichier, par exemple en faisant un groupe pour les tests d’une fonction, on peut utiliser un bloc <a href="https://jestjs.io/fr/docs/api#describename-fn">describe</a>.</p>
+
+<h2 id="tests-métiers">tests métiers</h2>
+
+<p>On va tester ici les méthodes <em>métiers</em> c’esrt à dire tout ce qui n’est pas des routes. Notre projet à un unique fichier métier : <em>“numerologie/back/numerologie.js”</em></p>
+
+<p>On doit tester toutes les méthodes de ce fichier : <code class="language-plaintext highlighter-rouge">nombre</code>, <code class="language-plaintext highlighter-rouge">somme</code> et <code class="language-plaintext highlighter-rouge">chiffreAssocie</code>.</p>
+
+<p>Il n’y a jamais de bonne réponses à la question : quoi tester ? La seule réponse satisfaisante est: juste assez pour que l’on soit intimement persuadé que la fonction marche si les testent passent.</p>
+
+<p>De toute façon, si l’on se rend compte (ou plutôt quand on se rendra compte) qu’il y a un bug, on écrira un test qui mettra en évidence le bug, puis on le corrigera. De cette façon ce bug ne pourra plus jamais réapparaitre, les tests étant conservés.</p>
+
+<blockquote>
+  <p>Lorsqu’un programme et muni de tests, il ne peut jamais régresser : Kent Beck dit que c’est une progression par <a href="https://fr.wikipedia.org/wiki/Cliquet_(m%C3%A9canique)">cliquet</a></p>
+</blockquote>
+
+<p>Chaque test doit tester une seule chose, et on peut s’appuyer sur une fonction que si les tests des fonctions qui la composent sont testées. On doit donc tester <code class="language-plaintext highlighter-rouge">nombre</code> et <code class="language-plaintext highlighter-rouge">somme</code> avant de tester <code class="language-plaintext highlighter-rouge">chiffreAssocie</code>.</p>
+
+<h3 id="module-rewire">module rewire</h3>
+
+<p>Il reste un dernier problème à résoudre avant de commencer les tests proprement dit : <code class="language-plaintext highlighter-rouge">nombre</code> et <code class="language-plaintext highlighter-rouge">somme</code> ne sont pas exportées, il est donc a priori impossible de simplement les importer pour les tester. POur faire cela, on va utiliser le module <a href="">rewire</a> comme expliqué dans <a href="https://javascript.plainenglish.io/how-to-test-a-non-export-function-in-javascript-a1d0bc339ac">ce tuto</a> :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install</span> <span class="nt">--save-dev</span> rewire
+</code></pre></div></div>
+
+<h3 id="numerologietestjs">numerologie.test.js</h3>
 
 
   </div>
