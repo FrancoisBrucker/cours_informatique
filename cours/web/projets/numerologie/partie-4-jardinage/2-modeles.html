@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Projet numérologie : partie 4 / modèles | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Projet numérologie : partie 4 / modèles" />
+<meta name="author" content="François Brucker" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
+<link rel="canonical" href="/cours_informatique/cours/web/projets/numerologie/partie-4-jardinage/2-modeles.html" />
+<meta property="og:url" content="/cours_informatique/cours/web/projets/numerologie/partie-4-jardinage/2-modeles.html" />
+<meta property="og:site_name" content="cours d’informatique" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Projet numérologie : partie 4 / modèles" />
+<script type="application/ld+json">
+{"headline":"Projet numérologie : partie 4 / modèles","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/web/projets/numerologie/partie-4-jardinage/2-modeles.html","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css">
+
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+</head>
+
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Projet numérologie : partie 4 / modèles</h1></p>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></p>
+  </header>
+
+  <div class="post-content">
+    <blockquote class="chemin">
+  <p><a href="/cours_informatique/cours/web/projets/numerologie/">numérologie</a> / <a href="/cours_informatique/cours/web/projets/numerologie/partie-4-jardinage/">partie 4</a> / <a href="/cours_informatique/cours/web/projets/numerologie/partie-4-jardinage/2-modeles.html">modèles</a></p>
+</blockquote>
+
+<p>Le principe qui nous a fait séparer nos routes nous fait également séparer les modèles.</p>
+
+<h2 id="injection-de-dépendance">injection de dépendance</h2>
+
+<p>La différence par rapport aux routes est que l’on a besoin de la base de donnée (<code class="language-plaintext highlighter-rouge">sequelize</code>) pour définir le modèle. La solution élégant à ce problème est d’utiliser <a href="https://fr.wikipedia.org/wiki/Injection_de_d%C3%A9pendances">l’njection de dépendance</a> : on va donner notre base à l’import du modèle.</p>
+
+<p>Ceci peut se faire simplement en javascript en important une fonction et non plus des objets.</p>
+
+<p>Avant de montrer le code des modèles, créons un dossier <em>“numerologie/models”</em> qui va contenir nos modèles.</p>
+
+<h3 id="modèle-signification">modèle Signification</h3>
+
+<p>Le modèle <code class="language-plaintext highlighter-rouge">Signification</code> est alors crée dans le fichier <em>“numerologie/models/signification.js”</em> :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">DataTypes</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">sequelize</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">(</span><span class="nx">sequelize</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+
+    <span class="k">return</span> <span class="nx">sequelize</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="dl">'</span><span class="s1">Signification</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+        <span class="na">message</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">type</span><span class="p">:</span> <span class="nx">DataTypes</span><span class="p">.</span><span class="nx">STRING</span><span class="p">,</span>
+            <span class="na">allowNull</span><span class="p">:</span> <span class="kc">false</span>
+        <span class="p">},</span>
+        <span class="na">nombre</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">type</span><span class="p">:</span> <span class="nx">DataTypes</span><span class="p">.</span><span class="nx">INTEGER</span><span class="p">,</span>
+            <span class="na">allowNull</span><span class="p">:</span> <span class="kc">false</span>
+        <span class="p">},</span>
+    <span class="p">},</span> <span class="p">{</span>
+        <span class="c1">// Other model options go here</span>
+    <span class="p">});</span>
+
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<p>Dans la définition du modèle, on ajuste besoin de l’objet <code class="language-plaintext highlighter-rouge">DataTypes</code> du module sequelize et non de la base de donnée.</p>
+
+<p>Cette fonction exportée devra être utilisée dans le fichier <code class="language-plaintext highlighter-rouge">db.js</code> qui liera la base de donnée aux modèles.</p>
+
+<h3 id="modèle-prénoms">modèle Prénoms</h3>
+
+<p>Le modèle <code class="language-plaintext highlighter-rouge">Prenoms</code> est alors crée dans le fichier <em>“numerologie/models/prenoms.js”</em> :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">DataTypes</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">sequelize</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">(</span><span class="nx">sequelize</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+
+    <span class="k">return</span> <span class="nx">sequelize</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="dl">'</span><span class="s1">Prenoms</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+        <span class="na">prenom</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">type</span><span class="p">:</span> <span class="nx">DataTypes</span><span class="p">.</span><span class="nx">STRING</span><span class="p">,</span>
+            <span class="na">allowNull</span><span class="p">:</span> <span class="kc">false</span>
+        <span class="p">},</span>
+    <span class="p">},</span> <span class="p">{</span>
+        <span class="c1">// Other model options go here</span>
+    <span class="p">});</span>
+    
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="base-de-donnée">base de donnée</h2>
+
+<p>Les modèles crées vont être importé puis exécutés dans notre fichier <em>“numerologie/db.js”</em> remanié :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">Sequelize</span><span class="p">,</span> <span class="nx">DataTypes</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">sequelize</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">path</span><span class="dl">'</span><span class="p">)</span>
+
+<span class="kd">const</span> <span class="nx">sequelize</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Sequelize</span><span class="p">({</span>
+  <span class="na">dialect</span><span class="p">:</span> <span class="dl">'</span><span class="s1">sqlite</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">storage</span><span class="p">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="dl">'</span><span class="s1">db.sqlite</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">});</span>
+
+<span class="nx">signification</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">./models/signification</span><span class="dl">"</span><span class="p">)</span>
+<span class="nx">prenoms</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">./models/prenoms</span><span class="dl">"</span><span class="p">)</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">sequelize</span><span class="p">:</span> <span class="nx">sequelize</span><span class="p">,</span>
+    <span class="na">model</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">Signification</span><span class="p">:</span> <span class="nx">signification</span><span class="p">(</span><span class="nx">sequelize</span><span class="p">),</span>
+        <span class="na">Prenoms</span><span class="p">:</span> <span class="nx">prenoms</span><span class="p">(</span><span class="nx">sequelize</span><span class="p">),</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Voyez comment le modèle est tout d’abord chargé (<code class="language-plaintext highlighter-rouge">signification = require("./models/signification")</code>) puis exécuté à l’export (<code class="language-plaintext highlighter-rouge">Signification: signification(sequelize)</code>) en utilisant la base de donnée en injection de dépendance.</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d&#39;informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d&#39;informatique</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

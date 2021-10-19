@@ -322,7 +322,7 @@ Voyez la vie en base 10 en associant un chiffre à votre prénom.
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run init
 </code></pre></div></div>
 
-<h3 id="ajout-dans-la-route">ajout dans la route</h3>
+<h3 id="création-des-éléments-de-la-base">création des éléments de la base</h3>
 
 <p>Il nous reste plus qu’à ajouter, si nécessaire, le prénom dans la base. On modifie la route dans <em>“numerologie/index.js”</em> :</p>
 
@@ -367,19 +367,91 @@ Les deux recherches sont asynchrones et indépendantes.</p>
   <p><code class="language-plaintext highlighter-rouge">==</code> et <code class="language-plaintext highlighter-rouge">===</code> <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Equality_comparisons_and_sameness">sont différents</a> en javascript.</p>
 </blockquote>
 
-<h3 id="page-des-prénoms">page des prénoms</h3>
+<h3 id="lire-les-prénoms">lire les prénoms</h3>
 
-<p>rend json prenom+numero et affichage sur une autre pas html.</p>
+<p>Pour voir les différents prénoms de la base, il faut que l’on implémente la méthode <strong>R</strong>ead pour notre modèle <code class="language-plaintext highlighter-rouge">Prenoms</code> (<strong>C</strong>reate est intégré à la route GET <code class="language-plaintext highlighter-rouge">/Prénom</code>, <strong>U</strong>pdate et <strong>D</strong>elete sont pour l’instant inutiles).</p>
 
-<h2 id="séparation-des-modèles-et-des-routes">séparation des modèles et des routes</h2>
+<p>L’usage veut que l’accès aux données soient rangé dans une route qui commence par <code class="language-plaintext highlighter-rouge">/api</code>. Dans notre cas, on utiliser la route :
+GET <code class="language-plaintext highlighter-rouge">/api/prenoms/read/</code> pour lire tous nos prénoms. Ajoutons cette route à <em>“numerologie/index.js”</em> :</p>
 
-<h3 id="modèles">modèles</h3>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ...</span>
 
-<blockquote class="note">
-  <p>tbd : ajoute un dossier models</p>
-</blockquote>
+<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/prenoms/read</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">db</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">Prenoms</span><span class="p">.</span><span class="nx">findAll</span><span class="p">()</span>
+        <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">liste</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="p">(</span><span class="nx">element</span> <span class="k">of</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">liste</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+                    <span class="na">prenom</span><span class="p">:</span> <span class="nx">element</span><span class="p">.</span><span class="nx">prenom</span><span class="p">,</span>
+                    <span class="na">chiffre</span><span class="p">:</span> <span class="nx">numerologie</span><span class="p">.</span><span class="nx">chiffre</span><span class="p">(</span><span class="nx">element</span><span class="p">.</span><span class="nx">prenom</span><span class="p">)</span>
+                <span class="p">})</span>
+            <span class="p">}</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="nx">liste</span><span class="p">)</span>
+        <span class="p">})</span>
+<span class="p">})</span>
 
-<h3 id="api">api</h3>
+<span class="c1">//...</span>
+</code></pre></div></div>
+
+<p>Testez cette route après avec l’url <a href="http://127.0.0.1:3000/api/prenoms/read">http://127.0.0.1:3000/api/prenoms/read</a> avoir ajouté (avec la page de départ) quelques prénoms à la base.</p>
+
+<h3 id="représenter-les-prénoms">représenter les prénoms</h3>
+
+<p>On peut maintenant finir cette partie en ajoutant une page html <em>“numerologie/static/prenoms.html”</em> qui liste tous les prénoms de la base :</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!doctype html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"fr"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;title&gt;</span>Les prénoms recherchés<span class="nt">&lt;/title&gt;</span>
+        
+        <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"https://unpkg.com/purecss@2.0.6/build/pure-min.css"</span> <span class="na">integrity=</span><span class="s">"sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5"</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;</span>
+        
+        <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"main.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"main"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;p&gt;</span>Chargement des prénoms...<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        
+        <span class="nt">&lt;script&gt;</span>
+        <span class="nx">main</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#main</span><span class="dl">"</span><span class="p">)</span>
+        <span class="nx">fetch</span><span class="p">(</span><span class="dl">"</span><span class="s2">/api/prenoms/read</span><span class="dl">"</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+            <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="nx">main</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="dl">""</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">length</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">element</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">p</span><span class="dl">"</span><span class="p">)</span>
+                    <span class="nx">element</span><span class="p">.</span><span class="nx">innerText</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">pas de prénoms sauvés dans la base.</span><span class="dl">"</span>                    
+                    <span class="nx">main</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">element</span><span class="p">)</span>
+
+                    <span class="k">return</span><span class="p">;</span>
+                <span class="p">}</span>
+                <span class="nx">list</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">ul</span><span class="dl">"</span><span class="p">)</span>
+                <span class="nx">main</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">list</span><span class="p">)</span>
+                <span class="k">for</span> <span class="p">(</span><span class="nx">prenom</span> <span class="k">of</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>                    
+                    <span class="nx">element</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">li</span><span class="dl">"</span><span class="p">)</span>
+                    <span class="nx">element</span><span class="p">.</span><span class="nx">innerText</span> <span class="o">=</span> <span class="nx">prenom</span><span class="p">.</span><span class="nx">prenom</span>
+                    <span class="nx">list</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">element</span><span class="p">)</span>
+                <span class="p">}</span>
+            <span class="p">})</span>
+        <span class="nt">&lt;/script&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>Cette page affiche un texte par défaut (<code class="language-plaintext highlighter-rouge">&lt;p&gt;Chargement des prénoms...&lt;/p&gt;</code>) qui est remplacé après lecture des prénoms de la base. On distingue 2 cas : la base est vide (et on le signale) ou la base contient des prénoms et on les affiche.</p>
+
+<p>Notez comment on a fait pour :</p>
+
+<ul>
+  <li>supprimer tous les enfant d’un élément de l’arbre DOM : <code class="language-plaintext highlighter-rouge">main.innerHTML = ""</code></li>
+  <li>créer des éléments : <code class="language-plaintext highlighter-rouge">element = document.createElement("p")</code></li>
+  <li>ajouter des enfants à un élément : <code class="language-plaintext highlighter-rouge">main.appendChild(element)</code></li>
+</ul>
+
+<p>Testez cette page (<a href="http://127.0.0.1:3000/static/prenoms.html">http://127.0.0.1:3000/static/prenoms.html</a>) sur une base vide (juste après un <code class="language-plaintext highlighter-rouge">npm run init</code>) et sur une base avec des prénoms de stockés.</p>
 
   </div>
 

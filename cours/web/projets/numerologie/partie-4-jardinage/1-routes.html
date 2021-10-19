@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Projet numérologie : partie 4 / routes | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Projet numérologie : partie 4 / routes" />
+<meta name="author" content="François Brucker" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
+<link rel="canonical" href="/cours_informatique/cours/web/projets/numerologie/partie-4-jardinage/1-routes.html" />
+<meta property="og:url" content="/cours_informatique/cours/web/projets/numerologie/partie-4-jardinage/1-routes.html" />
+<meta property="og:site_name" content="cours d’informatique" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Projet numérologie : partie 4 / routes" />
+<script type="application/ld+json">
+{"headline":"Projet numérologie : partie 4 / routes","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/web/projets/numerologie/partie-4-jardinage/1-routes.html","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css">
+
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+</head>
+
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Projet numérologie : partie 4 / routes</h1></p>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></p>
+  </header>
+
+  <div class="post-content">
+    <blockquote class="chemin">
+  <p><a href="/cours_informatique/cours/web/projets/numerologie/">numérologie</a> / <a href="/cours_informatique/cours/web/projets/numerologie/partie-4-jardinage/">partie 4</a> / <a href="/cours_informatique/cours/web/projets/numerologie/partie-4-jardinage/1-routes.html">routes</a></p>
+</blockquote>
+
+<p>Si l’on continue comme ça, notre fichier <em>“numerologie/index.js”</em> va devenir énorme et contenir toutes les routes de notre projet. On a coutume de séparer les routes du server.</p>
+
+<h2 id="routeur">routeur</h2>
+
+<p>Pour cela, commençons par créer un fichier <em>“numerologie/routes/index.js”</em> où on va déporter toutes nos routes non statiques :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">express</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">numerologie</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">../back/numerologie</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">db</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">../db</span><span class="dl">"</span><span class="p">)</span>
+
+<span class="kd">let</span> <span class="nx">router</span> <span class="o">=</span> <span class="nx">express</span><span class="p">.</span><span class="nx">Router</span><span class="p">();</span>
+
+<span class="nx">router</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nb">encodeURI</span><span class="p">(</span><span class="dl">'</span><span class="s1">/prénom</span><span class="dl">'</span><span class="p">),</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">)</span>
+    <span class="nx">prenom</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">[</span><span class="dl">"</span><span class="s2">valeur</span><span class="dl">"</span><span class="p">]</span>
+    <span class="nx">chiffre</span> <span class="o">=</span> <span class="nx">numerologie</span><span class="p">.</span><span class="nx">chiffre</span><span class="p">(</span><span class="nx">prenom</span><span class="p">)</span>
+    <span class="nx">db</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">Prenoms</span><span class="p">.</span><span class="nx">findOne</span><span class="p">({</span>
+        <span class="na">where</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">prenom</span><span class="p">:</span> <span class="nx">prenom</span>
+        <span class="p">}</span>
+    <span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">data</span> <span class="o">===</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">db</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">Prenoms</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+                <span class="na">prenom</span><span class="p">:</span> <span class="nx">prenom</span>
+            <span class="p">})</span>
+        <span class="p">}</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+    <span class="p">})</span>
+    <span class="nx">db</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">Signification</span><span class="p">.</span><span class="nx">findOne</span><span class="p">({</span>
+        <span class="na">where</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">nombre</span><span class="p">:</span> <span class="nx">chiffre</span>
+        <span class="p">}</span>
+    <span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span>
+            <span class="na">prénom</span><span class="p">:</span> <span class="nx">prenom</span><span class="p">,</span>
+            <span class="na">chiffre</span><span class="p">:</span> <span class="nx">chiffre</span><span class="p">,</span>
+            <span class="na">message</span><span class="p">:</span> <span class="nx">data</span><span class="p">.</span><span class="nx">message</span>
+        <span class="p">})</span>
+    <span class="p">})</span>
+<span class="p">})</span>
+
+<span class="nx">router</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/prenoms/read</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">db</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">Prenoms</span><span class="p">.</span><span class="nx">findAll</span><span class="p">()</span>
+        <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">liste</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="p">(</span><span class="nx">element</span> <span class="k">of</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">liste</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+                    <span class="na">prenom</span><span class="p">:</span> <span class="nx">element</span><span class="p">.</span><span class="nx">prenom</span><span class="p">,</span>
+                    <span class="na">chiffre</span><span class="p">:</span> <span class="nx">numerologie</span><span class="p">.</span><span class="nx">chiffre</span><span class="p">(</span><span class="nx">element</span><span class="p">.</span><span class="nx">prenom</span><span class="p">)</span>
+                <span class="p">})</span>
+            <span class="p">}</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="nx">liste</span><span class="p">)</span>
+        <span class="p">})</span>
+<span class="p">})</span>
+
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">router</span>
+</code></pre></div></div>
+
+<p>Ce fichier contient toutes les routes non statique et non <code class="language-plaintext highlighter-rouge">/</code> de notre serveur. Elles sont ranges dans un <a href="http://expressjs.com/fr/guide/routing.html#express-router">router</a></p>
+
+<blockquote class="attention">
+  <p>Les imports de nos fichiers sont dans le dossier parent, il faut donc mettre <code class="language-plaintext highlighter-rouge">../</code> devant pour les retrouver</p>
+</blockquote>
+
+<p>On utilise ce fichier dans <em>“numerologie/index.js”</em> :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">path</span><span class="dl">'</span><span class="p">)</span>
+
+<span class="kd">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">express</span><span class="dl">'</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">()</span>
+
+<span class="kd">const</span> <span class="nx">routes</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">./routes</span><span class="dl">"</span><span class="p">)</span>
+
+<span class="kd">const</span> <span class="nx">hostname</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">127.0.0.1</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">port</span> <span class="o">=</span> <span class="mi">3000</span><span class="p">;</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">date</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">())</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Time:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">date</span><span class="p">.</span><span class="nx">toLocaleDateString</span><span class="p">(),</span> <span class="nx">date</span><span class="p">.</span><span class="nx">toLocaleTimeString</span><span class="p">(),</span> <span class="dl">"</span><span class="s2">; url :</span><span class="dl">"</span><span class="p">,</span> <span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="p">);</span>
+    <span class="nx">next</span><span class="p">();</span> <span class="c1">// sans cette ligne on ne pourra pas poursuivre.</span>
+<span class="p">})</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="dl">"</span><span class="s2">/static</span><span class="dl">"</span><span class="p">,</span> <span class="nx">express</span><span class="p">.</span><span class="kd">static</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="dl">'</span><span class="s1">/static</span><span class="dl">'</span><span class="p">)))</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span class="mi">301</span><span class="p">,</span> <span class="dl">'</span><span class="s1">/static/index.html</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">})</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">,</span> <span class="nx">routes</span><span class="p">)</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">et c'est le 404 : </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="p">);</span>
+
+    <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">=</span> <span class="mi">404</span><span class="p">;</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">text/html</span><span class="dl">'</span><span class="p">);</span>
+
+    <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="dl">"</span><span class="s2">&lt;html&gt;&lt;head&gt;&lt;title&gt;la quatre cent quatre&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;Et c'est la 404.&lt;/h1&gt;&lt;img  src=</span><span class="se">\"</span><span class="s2">https://www.leblogauto.com/wp-content/uploads/2020/04/Peugeot-404-1.jpg</span><span class="se">\"</span><span class="s2"> /&gt;&lt;/body&gt;&lt;/html&gt;</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="p">})</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">port</span><span class="p">,</span> <span class="nx">hostname</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Server running at http://</span><span class="p">${</span><span class="nx">hostname</span><span class="p">}</span><span class="s2">:</span><span class="p">${</span><span class="nx">port</span><span class="p">}</span><span class="s2">/`</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>On importe le router avec la ligne <code class="language-plaintext highlighter-rouge">const routes = require("./routes")</code>. Lorsqe l’on importe un dossier en node, c’est comme si l’on importait le fichier <em>“index.js”</em> de ce dossier. La ligne précédente est donc équivalente à const routes = require(“./routes/index.js”)`</p>
+
+<p>Notre serveur est bien plus petit !</p>
+
+<h2 id="api">api</h2>
+
+<p>Finissons cette partie en ajoutant une indirection à nos routes. On va créer un nouveau dossier <em>“numerologie/routes/api/”</em> qui va contenir toutes les routes de l’api CRUD (pour l’instant embryonnaire puisqu’il n’y a qu’une route).</p>
+
+<p>Comme avant, on crée aussi un fichier <em>“numerologie/routes/api/index.js”</em> qui va contenir nos routes :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">express</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">numerologie</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">../../back/numerologie</span><span class="dl">'</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">db</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">../../db</span><span class="dl">"</span><span class="p">)</span>
+
+<span class="kd">let</span> <span class="nx">router</span> <span class="o">=</span> <span class="nx">express</span><span class="p">.</span><span class="nx">Router</span><span class="p">();</span>
+
+<span class="nx">router</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/prenoms/read</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">db</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">Prenoms</span><span class="p">.</span><span class="nx">findAll</span><span class="p">()</span>
+        <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">liste</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="p">(</span><span class="nx">element</span> <span class="k">of</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">liste</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+                    <span class="na">prenom</span><span class="p">:</span> <span class="nx">element</span><span class="p">.</span><span class="nx">prenom</span><span class="p">,</span>
+                    <span class="na">chiffre</span><span class="p">:</span> <span class="nx">numerologie</span><span class="p">.</span><span class="nx">chiffre</span><span class="p">(</span><span class="nx">element</span><span class="p">.</span><span class="nx">prenom</span><span class="p">)</span>
+                <span class="p">})</span>
+            <span class="p">}</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="nx">liste</span><span class="p">)</span>
+        <span class="p">})</span>
+<span class="p">})</span>
+
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">router</span>
+</code></pre></div></div>
+
+<p>On a pas mis comme début de route <code class="language-plaintext highlighter-rouge">api</code> car on va gérer ça dans le fichier <em>“numerologie/routes/index.js”</em> :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">express</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">numerologie</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">../back/numerologie</span><span class="dl">'</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">db</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">../db</span><span class="dl">"</span><span class="p">)</span>
+
+<span class="kd">const</span> <span class="nx">apiRoutes</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">./api</span><span class="dl">'</span><span class="p">)</span>
+
+<span class="kd">let</span> <span class="nx">router</span> <span class="o">=</span> <span class="nx">express</span><span class="p">.</span><span class="nx">Router</span><span class="p">();</span>
+
+<span class="nx">router</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nb">encodeURI</span><span class="p">(</span><span class="dl">'</span><span class="s1">/prénom</span><span class="dl">'</span><span class="p">),</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">)</span>
+    <span class="nx">prenom</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">[</span><span class="dl">"</span><span class="s2">valeur</span><span class="dl">"</span><span class="p">]</span>
+    <span class="nx">chiffre</span> <span class="o">=</span> <span class="nx">numerologie</span><span class="p">.</span><span class="nx">chiffre</span><span class="p">(</span><span class="nx">prenom</span><span class="p">)</span>
+    <span class="nx">db</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">Prenoms</span><span class="p">.</span><span class="nx">findOne</span><span class="p">({</span>
+        <span class="na">where</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">prenom</span><span class="p">:</span> <span class="nx">prenom</span>
+        <span class="p">}</span>
+    <span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">data</span> <span class="o">===</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">db</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">Prenoms</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+                <span class="na">prenom</span><span class="p">:</span> <span class="nx">prenom</span>
+            <span class="p">})</span>
+        <span class="p">}</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+    <span class="p">})</span>
+    <span class="nx">db</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">Signification</span><span class="p">.</span><span class="nx">findOne</span><span class="p">({</span>
+        <span class="na">where</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">nombre</span><span class="p">:</span> <span class="nx">chiffre</span>
+        <span class="p">}</span>
+    <span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span>
+            <span class="na">prénom</span><span class="p">:</span> <span class="nx">prenom</span><span class="p">,</span>
+            <span class="na">chiffre</span><span class="p">:</span> <span class="nx">chiffre</span><span class="p">,</span>
+            <span class="na">message</span><span class="p">:</span> <span class="nx">data</span><span class="p">.</span><span class="nx">message</span>
+        <span class="p">})</span>
+    <span class="p">})</span>
+<span class="p">})</span>
+
+<span class="nx">router</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api</span><span class="dl">'</span><span class="p">,</span> <span class="nx">apiRoutes</span><span class="p">)</span>
+
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">router</span>
+</code></pre></div></div>
+
+<p>Toutes les routes de <code class="language-plaintext highlighter-rouge">apiRoutes</code> commencerons par <code class="language-plaintext highlighter-rouge">/api</code>. Un tel procédé rend très simple la concaténation de routes (ce n’est pas la peine d’éditer plein de fichier lors d’un changement d’architecture des routes) et permet de bien séparer les groupes de routes en dossier séparés.</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d&#39;informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d&#39;informatique</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
