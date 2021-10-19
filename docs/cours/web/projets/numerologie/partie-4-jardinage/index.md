@@ -23,3 +23,7 @@ Notre projet fonctionne, rendons le propre.
 1. [séparation des routes]({% link cours/web/projets/numerologie/partie-4-jardinage/1-routes.md %})
 2. [séparation des modèles]({% link cours/web/projets/numerologie/partie-4-jardinage/2-modeles.md %})
 3. [scripts]({% link cours/web/projets/numerologie/partie-4-jardinage/3-scripts.md %})
+
+## dépôt git final
+
+<https://github.com/FrancoisBrucker/numerologie/releases/tag/partie-4-3-fin>

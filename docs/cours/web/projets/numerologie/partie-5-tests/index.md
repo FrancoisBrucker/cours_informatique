@@ -1,6 +1,6 @@
 ---
 layout: page
-title:  "Projet numérologie : partie 5 tests"
+title:  "Projet numérologie : partie 5 : tests"
 category: cours
 author: "François Brucker"
 ---
@@ -8,7 +8,7 @@ author: "François Brucker"
 > [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 5]({% link cours/web/projets/numerologie/partie-5-tests/index.md %})
 {: .chemin}
 
-Numérologie partie 4. On mets en place tous les tests nécessaire au bon fonctionnement et à la maintenance du projet
+Numérologie partie 5. On mets en place tous les tests nécessaire au bon fonctionnement et à la maintenance du projet
 
 ## les tests
 
@@ -76,8 +76,8 @@ On test que les intentions d'un utilisateurs peuvent être satisfaites. C'est un
 
 ## Plan
 
-On va ici ajouter ds tests unitaires, fonctionnels et user stories au projet numérologie.
+Il est fortement déconseillé de commencer les tests lorsqu'un projet est déjà en production. Nous allons le faire ici car il n'y a encore que peu de code. Il faut **toujours** commencer les tests en même temps que le projet.
 
-> Test :
-> * même nom pas ajout en base
-> * user stories : voir prenom dejà la, on ajoute le meme et on voit que vca n'a pas changé.
+1. [tests unitaires]({% link cours/web/projets/numerologie/partie-5-tests/1-tests-unitaires.md %})
+2. [tests fonctionnels]({% link cours/web/projets/numerologie/partie-5-tests/2-tests-fonctionnels.md %})
+3. [user stories]({% link cours/web/projets/numerologie/partie-5-tests/3-user-stories.md %})
