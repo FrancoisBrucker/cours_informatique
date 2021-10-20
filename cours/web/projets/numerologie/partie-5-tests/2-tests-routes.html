@@ -234,14 +234,148 @@
 
 <h3 id="mock">mock</h3>
 
-<h3 id="environnementbase-de-test">environnement/base de test</h3>
+<p>La première solution est de ne pas toucher la base de donnée et de remplacer un appel de la base de donnée par notre propre code.</p>
+
+<p>Pour cela on utilise le fait qu’en javascript, une fois un module importé une fois, il n’est plus lu ensuite, on ne fait que rendre l’objet <code class="language-plaintext highlighter-rouge">module.exports</code>. De là, on <a href="https://fr.wikipedia.org/wiki/Mock_(programmation_orient%C3%A9e_objet)">mock</a> le module ou une partie de celui ci en l’important une première fois avant tout le monde. Lorsque les autres fichiers importeront le module, c’est notre mock qu’ils vont importer.</p>
+
+<p>On a utilisé cette technique pour tester la route <code class="language-plaintext highlighter-rouge">/api/prenoms/read'</code>en mockant la partie <code class="language-plaintext highlighter-rouge">model</code> du module db. Fichier <em>“numerologie/__test__/donnees.test.js”</em> :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">supertest</span><span class="dl">'</span><span class="p">);</span>
+
+
+
+<span class="nx">jest</span><span class="p">.</span><span class="nx">mock</span><span class="p">(</span><span class="dl">"</span><span class="s2">../db</span><span class="dl">"</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">originalModule</span> <span class="o">=</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">requireActual</span><span class="p">(</span><span class="dl">'</span><span class="s1">../db</span><span class="dl">'</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="na">__esModule</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="p">...</span><span class="nx">originalModule</span><span class="p">,</span>
+        <span class="na">model</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">Prenoms</span><span class="p">:</span> <span class="p">{</span>
+                <span class="na">findAll</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                    <span class="k">return</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                        <span class="nx">resolve</span><span class="p">([{</span> <span class="na">prenom</span><span class="p">:</span> <span class="dl">"</span><span class="s2">toto</span><span class="dl">"</span> <span class="p">}])</span>
+                    <span class="p">})</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+    <span class="p">};</span>
+<span class="p">});</span>
+
+<span class="kd">const</span> <span class="nx">numerologie</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">../back/numerologie</span><span class="dl">"</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">../app</span><span class="dl">'</span><span class="p">)</span>
+
+<span class="nx">test</span><span class="p">(</span><span class="dl">'</span><span class="s1">GET /api/prenoms/read</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+
+    <span class="nx">request</span><span class="p">(</span><span class="nx">app</span><span class="p">)</span>
+        <span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">/api/prenoms/read</span><span class="dl">"</span><span class="p">)</span>
+        <span class="c1">// .expect("Content-Type", "application/json; charset=utf-8")</span>
+        <span class="p">.</span><span class="nx">expect</span><span class="p">((</span><span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">expect</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">body</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">([{</span>
+                <span class="na">prenom</span><span class="p">:</span> <span class="dl">"</span><span class="s2">toto</span><span class="dl">"</span><span class="p">,</span>
+                <span class="na">chiffre</span><span class="p">:</span> <span class="nx">numerologie</span><span class="p">.</span><span class="nx">chiffre</span><span class="p">(</span><span class="dl">"</span><span class="s2">toto</span><span class="dl">"</span><span class="p">)</span>
+            <span class="p">}])</span>
+        <span class="p">})</span>
+        <span class="p">.</span><span class="nx">end</span><span class="p">((</span><span class="nx">err</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="nx">done</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+            <span class="p">}</span>
+            <span class="k">return</span> <span class="nx">done</span><span class="p">()</span>
+        <span class="p">})</span>
+
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p>On a dans le code ci-dessus remplacé la partie model du retour du <code class="language-plaintext highlighter-rouge">require("db")</code> par une <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Promise">promesse</a> qui rend toujours <code class="language-plaintext highlighter-rouge">[{ prenom: "toto" }]</code>. IL n’y a alors plus d’appel à la base de donnée dans la route et le code se poursuit jusqu’à renvoyer la liste qui est notre test.</p>
 
 <blockquote>
-  <p>TBD
-before et after pour la base
-env de test pour la base</p>
+  <p>La technique de mock est très puissante ! Elle permet de tester presque tout ce qu’on veut sans soucis. Lisez <a href="https://jestjs.io/docs/mock-functions">la documentation de jest</a> pour plus de renseignements sur ce qu’on peut faire avec.</p>
 </blockquote>
 
+<h3 id="environnementbase-de-test">environnement/base de test</h3>
+
+<p>Lorsque l’on a de nombreux appel différent à la base de donnée, il est illusoire de tout mocker. On utilise alors une base de donnée spécifique aux tests. Ceci permet de plus de ne pas toucher à la base de donnée de production, ce qui est indispensable pour garantir la répétabilité des tests (et ne pas casser la production accessoirement).</p>
+
+<h4 id="base-de-test">base de test</h4>
+
+<p>On va commencer par différentier la base selon l’environnement d’exécution. Fichier <em>“numerologie/db.js”</em> :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//...</span>
+
+<span class="kd">let</span> <span class="nx">env</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span> <span class="o">||</span> <span class="dl">'</span><span class="s1">dev</span><span class="dl">'</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nx">env</span> <span class="o">==</span> <span class="dl">'</span><span class="s1">test</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">sequelize</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Sequelize</span><span class="p">(</span><span class="dl">'</span><span class="s1">sqlite::memory:</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="nx">sequelize</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Sequelize</span><span class="p">({</span>
+    <span class="na">dialect</span><span class="p">:</span> <span class="dl">'</span><span class="s1">sqlite</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">storage</span><span class="p">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="dl">'</span><span class="s1">db.sqlite</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="c1">// ...</span>
+</code></pre></div></div>
+
+<p>Si l’on est dans un environnement de test on crée un base en mémoire et sinon on utilise la base normale.</p>
+
+<p>On place l’environnement :</p>
+
+<ul>
+  <li>soit en assignant une valeur à la variable <code class="language-plaintext highlighter-rouge">process.env.NODE_ENV</code> (<a href="https://nodejs.org/api/process.html#process">process</a> est bibliothèque globale à node et on peut mettre ce qu’on veut comme attribut à <code class="language-plaintext highlighter-rouge">env</code>)</li>
+  <li>soit en exécutant le serveur en mettant le nom de la variable avant : <code class="language-plaintext highlighter-rouge">TRUC=3 npm start</code>. Dans le serveur, la variable <code class="language-plaintext highlighter-rouge">process.env.TRUC</code> vaudra 3.</li>
+  <li>soit en créant une variable d’environnement dans le shell puis en exécutant le serveur (dépend du shell. En <code class="language-plaintext highlighter-rouge">zsh</code> : <code class="language-plaintext highlighter-rouge">export NODE_ENV="test"</code>)</li>
+</ul>
+
+<p>Nous allons utiliser la première solution.</p>
+
+<blockquote>
+  <p>On peut choisir ce qu’on veut comme variable d’environnement. <code class="language-plaintext highlighter-rouge">NODE_ENV</code>, est la variable usuellement utilisée, <a href="https://www.twilio.com/blog/working-with-environment-variables-in-node-js-html">parmi d’autres</a></p>
+</blockquote>
+
+<h4 id="tests-avec-une-nouvelle-base">tests avec une nouvelle base</h4>
+
+<p>Le fichier de test ci-après commence par placer l’environnement d’exécution à <code class="language-plaintext highlighter-rouge">"test"</code> puis on met en place plusieurs <a href="https://jestjs.io/docs/setup-teardown">fonctions spéciales de jest</a> qui permettent d’exécuter des fonctions à des moments précis. Ici nous avons besoin d’exécuter une fonction avant chaque tests (la synchronisation et la mise à zérode la base).</p>
+
+<p>Il est important de remettre à zéro la base de données à chaque test pour garantir l’indépendance des tests et leurs répétabilités.</p>
+
+<p>Fichier <em>“numerologie/__tests__/prenoms.js”</em> :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">supertest</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">test</span><span class="dl">'</span>
+
+<span class="kd">const</span> <span class="nx">db</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">../db</span><span class="dl">"</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">../app</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">stream</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">npmlog</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="nx">beforeEach</span><span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">sequelize</span><span class="p">.</span><span class="nx">sync</span><span class="p">({</span><span class="na">force</span><span class="p">:</span> <span class="kc">true</span><span class="p">})</span>
+    <span class="k">for</span> <span class="p">(</span><span class="nx">i</span><span class="o">=</span><span class="mi">1</span> <span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span><span class="mi">10</span> <span class="p">;</span> <span class="nx">i</span> <span class="o">+=</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">Signification</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+            <span class="na">message</span><span class="p">:</span> <span class="nx">i</span><span class="p">,</span>
+            <span class="na">nombre</span><span class="p">:</span> <span class="nx">i</span><span class="p">,</span>
+        <span class="p">})</span>
+    <span class="p">}</span>
+<span class="p">})</span>
+
+<span class="nx">test</span><span class="p">(</span><span class="dl">'</span><span class="s1">GET /prénom?valeur=toto pas de prénom</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">request</span><span class="p">(</span><span class="nx">app</span><span class="p">)</span>
+        <span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nb">encodeURI</span><span class="p">(</span><span class="dl">"</span><span class="s2">/prénom</span><span class="dl">"</span><span class="p">)</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">?valeur=toto</span><span class="dl">"</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">expect</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">expect</span><span class="p">((</span><span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">expect</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">body</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">({</span><span class="dl">"</span><span class="s2">prénom</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">toto</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">chiffre</span><span class="dl">"</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="dl">"</span><span class="s2">message</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">4</span><span class="dl">"</span><span class="p">})</span>
+        <span class="p">})</span>
+        <span class="p">.</span><span class="nx">end</span><span class="p">((</span><span class="nx">err</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="nx">done</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+            <span class="p">}</span>
+            <span class="k">return</span> <span class="nx">done</span><span class="p">()</span>
+        <span class="p">})</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>On a qu’un seul test donc le <code class="language-plaintext highlighter-rouge">beforeEach</code> est théorique, mais c’est l’idée.</p>
+</blockquote>
 
   </div>
 
