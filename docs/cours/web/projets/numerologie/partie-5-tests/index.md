@@ -82,3 +82,5 @@ Il est fortement déconseillé de commencer les tests lorsqu'un projet est déj�
 2. [tests de routes]({% link cours/web/projets/numerologie/partie-5-tests/2-tests-routes.md %})
 3. [tests fonctionnels]({% link cours/web/projets/numerologie/partie-5-tests/3-tests-fonctionnels.md %})
 4. [user stories]({% link cours/web/projets/numerologie/partie-5-tests/4-user-stories.md %})
+
+> Les techniques de tests vues ici sont parfaitement utilisables et utilisées dans n'importe quel autre langage, si on a la bonne bibliothèque de test

@@ -177,10 +177,140 @@ Il nous reste deux routes à tester à faire qui concernent les bases de donnée
 
 ### mock
 
+La première solution est de ne pas toucher la base de donnée et de remplacer un appel de la base de donnée par notre propre code.
+
+Pour cela on utilise le fait qu'en javascript, une fois un module importé une fois, il n'est plus lu ensuite, on ne fait que rendre l'objet `module.exports`. De là, on [mock](https://fr.wikipedia.org/wiki/Mock_(programmation_orient%C3%A9e_objet)) le module ou une partie de celui ci en l'important une première fois avant tout le monde. Lorsque les autres fichiers importeront le module, c'est notre mock qu'ils vont importer.
+
+On a utilisé cette technique pour tester la route `/api/prenoms/read'`en mockant la partie `model` du module db. Fichier *"numerologie/\_\_test\_\_/donnees.test.js"* :
+
+```js
+const request = require('supertest');
+
+
+
+jest.mock("../db", () => {
+    const originalModule = jest.requireActual('../db');
+    return {
+        __esModule: true,
+        ...originalModule,
+        model: {
+            Prenoms: {
+                findAll: () => {
+                    return new Promise((resolve, reject) => {
+                        resolve([{ prenom: "toto" }])
+                    })
+                }
+            }
+        },
+    };
+});
+
+const numerologie = require("../back/numerologie")
+const app = require('../app')
+
+test('GET /api/prenoms/read', (done) => {
+
+    request(app)
+        .get("/api/prenoms/read")
+        // .expect("Content-Type", "application/json; charset=utf-8")
+        .expect((res) => {
+            expect(res.body).toEqual([{
+                prenom: "toto",
+                chiffre: numerologie.chiffre("toto")
+            }])
+        })
+        .end((err, res) => {
+            if (err) {
+                return done(err)
+            }
+            return done()
+        })
+
+})
+```
+
+On a dans le code ci-dessus remplacé la partie model du retour du `require("db")` par une [promesse](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Promise) qui rend toujours `[{ prenom: "toto" }]`. IL n'y a alors plus d'appel à la base de donnée dans la route et le code se poursuit jusqu'à renvoyer la liste qui est notre test.
+
+> La technique de mock est très puissante ! Elle permet de tester presque tout ce qu'on veut sans soucis. Lisez [la documentation de jest](https://jestjs.io/docs/mock-functions) pour plus de renseignements sur ce qu'on peut faire avec.
 
 ### environnement/base de test
 
-> TBD
-> before et after pour la base
-> env de test pour la base
+Lorsque l'on a de nombreux appel différent à la base de donnée, il est illusoire de tout mocker. On utilise alors une base de donnée spécifique aux tests. Ceci permet de plus de ne pas toucher à la base de donnée de production, ce qui est indispensable pour garantir la répétabilité des tests (et ne pas casser la production accessoirement).
 
+#### base de test
+
+On va commencer par différentier la base selon l'environnement d'exécution. Fichier *"numerologie/db.js"* :
+
+```js
+//...
+
+let env = process.env.NODE_ENV || 'dev'
+
+if (env == 'test') {
+  sequelize = new Sequelize('sqlite::memory:');
+} else {
+  sequelize = new Sequelize({
+    dialect: 'sqlite',
+    storage: path.join(__dirname, 'db.sqlite')
+  });
+}
+
+// ...
+```
+
+Si l'on est dans un environnement de test on crée un base en mémoire et sinon on utilise la base normale.
+
+On place l'environnement :
+
+* soit en assignant une valeur à la variable `process.env.NODE_ENV` ([process](https://nodejs.org/api/process.html#process) est bibliothèque globale à node et on peut mettre ce qu'on veut comme attribut à `env`)
+* soit en exécutant le serveur en mettant le nom de la variable avant : `TRUC=3 npm start`. Dans le serveur, la variable `process.env.TRUC` vaudra 3.
+* soit en créant une variable d'environnement dans le shell puis en exécutant le serveur (dépend du shell. En `zsh` : `export NODE_ENV="test"`)
+
+Nous allons utiliser la première solution.
+
+> On peut choisir ce qu'on veut comme variable d'environnement. `NODE_ENV`, est la variable usuellement utilisée, [parmi d'autres](https://www.twilio.com/blog/working-with-environment-variables-in-node-js-html)
+
+#### tests avec une nouvelle base
+
+Le fichier de test ci-après commence par placer l'environnement d'exécution à `"test"` puis on met en place plusieurs [fonctions spéciales de jest](https://jestjs.io/docs/setup-teardown) qui permettent d'exécuter des fonctions à des moments précis. Ici nous avons besoin d'exécuter une fonction avant chaque tests (la synchronisation et la mise à zérode la base).
+
+Il est important de remettre à zéro la base de données à chaque test pour garantir l'indépendance des tests et leurs répétabilités.
+
+Fichier *"numerologie/\_\_tests\_\_/prenoms.js"* : 
+
+```js
+const request = require('supertest');
+
+process.env.NODE_ENV = 'test'
+
+const db = require("../db")
+const app = require('../app');
+const { stream } = require('npmlog');
+
+beforeEach(async () => {
+    await db.sequelize.sync({force: true})
+    for (i=1 ; i <10 ; i +=1) {
+        await db.model.Signification.create({
+            message: i,
+            nombre: i,
+        })
+    }
+})
+
+test('GET /prénom?valeur=toto pas de prénom', (done) => {
+    request(app)
+        .get(encodeURI("/prénom") + "?valeur=toto")
+        .expect(200)
+        .expect((res) => {
+            expect(res.body).toEqual({"prénom":"toto","chiffre":4,"message":"4"})
+        })
+        .end((err, res) => {
+            if (err) {
+                return done(err)
+            }
+            return done()
+        })
+})
+```
+
+> On a qu'un seul test donc le `beforeEach` est théorique, mais c'est l'idée.
