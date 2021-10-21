@@ -66,9 +66,9 @@ Si on attend trop longtemps :
 * on a pu introduire d'autres bug à d'autres endroits du code qui fond que le test de la méthode rate
 * il est extrêmement difficile d'ajouter des tests à un programme déjà écrit il y a trop de dépendance et on à vraiment l'impression que cela ne finira jamais.
 
-### tests fonctionnels
+### tests fonctionnels et tests front
 
-Il sont là pour tester les fonctions du programme/application/site web. Genre qu'un bouton est bien rouge ou que si l'on clique là-dessus on par là-bas.
+Il sont là pour tester les fonctions du programme/application/site web. Genre qu'un bouton est bien rouge ou que si l'on clique là-dessus on part là-bas.
 
 ### user stories
 
@@ -80,7 +80,10 @@ Il est fortement déconseillé de commencer les tests lorsqu'un projet est déj�
 
 1. [tests unitaires]({% link cours/web/projets/numerologie/partie-5-tests/1-tests-unitaires.md %})
 2. [tests de routes]({% link cours/web/projets/numerologie/partie-5-tests/2-tests-routes.md %})
-3. [tests fonctionnels]({% link cours/web/projets/numerologie/partie-5-tests/3-tests-fonctionnels.md %})
-4. [user stories]({% link cours/web/projets/numerologie/partie-5-tests/4-user-stories.md %})
+3. [user stories]({% link cours/web/projets/numerologie/partie-5-tests/3-user-stories.md %})
 
 > Les techniques de tests vues ici sont parfaitement utilisables et utilisées dans n'importe quel autre langage, si on a la bonne bibliothèque de test
+
+## dépôt git final
+
+<https://github.com/FrancoisBrucker/numerologie/releases/tag/partie-5-3-fin>
