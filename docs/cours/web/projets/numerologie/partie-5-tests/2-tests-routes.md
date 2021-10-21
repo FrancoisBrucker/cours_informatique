@@ -276,7 +276,7 @@ Le fichier de test ci-après commence par placer l'environnement d'exécution à
 
 Il est important de remettre à zéro la base de données à chaque test pour garantir l'indépendance des tests et leurs répétabilités.
 
-Fichier *"numerologie/\_\_tests\_\_/prenoms.js"* : 
+Fichier *"numerologie/\_\_tests\_\_/prenoms.js"* :
 
 ```js
 const request = require('supertest');
@@ -285,7 +285,6 @@ process.env.NODE_ENV = 'test'
 
 const db = require("../db")
 const app = require('../app');
-const { stream } = require('npmlog');
 
 beforeEach(async () => {
     await db.sequelize.sync({force: true})
