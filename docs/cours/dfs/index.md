@@ -64,9 +64,7 @@ Cours d'apprentissages des différents outils de développement et les bases du 
   [Frontend / Backend]({% link cours/dfs/front_back.md %})
   
   [Tests Unitaires]({% link cours/dfs/Test_Unitaire.md %})
-  
-  [Tests Selenium]({% link cours/dfs/selenium.md %})
-  
+    
   [Routes]({% link cours/dfs/routes.md %})
   
 ## Cookies
