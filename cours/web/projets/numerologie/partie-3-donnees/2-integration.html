@@ -114,47 +114,47 @@
 <span class="k">async</span> <span class="kd">function</span> <span class="nx">initDB</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">sequelize</span><span class="p">.</span><span class="nx">sync</span><span class="p">({</span><span class="na">force</span><span class="p">:</span> <span class="kc">true</span><span class="p">})</span>
     
-    <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">MonModele</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+    <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">Signification</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
         <span class="na">message</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Une main de fer dans un gant de velours... Votre caractère bien trempé vous cause parfois du tort, mais pas question de vous adoucir : vous êtes comme vous êtes, que ça plaise ou non ! Au moins, vous avez le mérite de jouer cartes sur table. Vos amis savent qu'ils peuvent compter sur votre loyauté.</span><span class="dl">"</span><span class="p">,</span>
         <span class="na">nombre</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
     <span class="p">})</span>
 
-    <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">MonModele</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+    <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">Signification</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
         <span class="na">message</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Au premier abord, on vous juge froide, distante. Mais c'est mal vous connaître car sous votre carapace glaciale, vous êtes ultrasensible ! Le sarcasme et l'ironie vous protègent des déceptions... Combien de fois avez-vous accordé votre confiance à des gens qui ne la méritaient pas ?</span><span class="dl">"</span><span class="p">,</span>
         <span class="na">nombre</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
     <span class="p">})</span>
 
-    <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">MonModele</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+    <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">Signification</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
         <span class="na">message</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Vous avez l'âme d'une artiste ! Dessin, chant, danse... Vous vous épanouissez dans les activités créatives, et vous avez une imagination débordante.</span><span class="dl">"</span><span class="p">,</span>
         <span class="na">nombre</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
     <span class="p">})</span>
 
-    <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">MonModele</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+    <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">Signification</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
         <span class="na">message</span><span class="p">:</span> <span class="dl">"</span><span class="s2">La spontanéité, ce n'est pas votre truc. Dans votre vie, tout doit être rangé, organisé, planifié, sinon c'est la panique ! Au travail, les responsabilités vous font peur : vous préférez vous mettre au service d'un supérieur plutôt que de prendre les commandes. Votre prudence naturelle vous pousse à ne pas vous aventurer en terrain inconnu...</span><span class="dl">"</span><span class="p">,</span>
         <span class="na">nombre</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
     <span class="p">})</span>
 
-    <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">MonModele</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+    <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">Signification</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
         <span class="na">message</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Le changement, l'imprévu, la nouveauté, vous adorez ! Ultra curieuse, vous êtes bien décidée à tout essayer, et les expériences extrêmes ne vous font pas peur.</span><span class="dl">"</span><span class="p">,</span>
         <span class="na">nombre</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
     <span class="p">})</span>
 
-    <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">MonModele</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+    <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">Signification</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
         <span class="na">message</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Vous attendez le prince charmant !</span><span class="dl">"</span><span class="p">,</span>
         <span class="na">nombre</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
     <span class="p">})</span>
 
-    <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">MonModele</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+    <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">Signification</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
         <span class="na">message</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Sous votre petit air mystérieux, vous cachez des capacités d'observation et d'analyse incroyables. D'ailleurs, lorsque vous leur donnez des conseils, vos proches les suivent à la lettre !</span><span class="dl">"</span><span class="p">,</span>
         <span class="na">nombre</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
     <span class="p">})</span>
 
-    <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">MonModele</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+    <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">Signification</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
         <span class="na">message</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Des projets, vous en avez toujours en pagaille ! Visionnaire, vous avez l'âme d'un chef : vous commandez, et les autres vous obéissent sans discuter. Et à l'arrivée, on reconnaît vos mérites.</span><span class="dl">"</span><span class="p">,</span>
         <span class="na">nombre</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
     <span class="p">})</span>
 
-    <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">MonModele</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+    <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">Signification</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
         <span class="na">message</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Vous rêvez d'un monde paisible et harmonieux... L'idéaliste de la famille, c'est vous ! Vous êtes vulnérable face au mensonge et à la trahison. Pourtant, lorsque les choses se corsent, vous êtes capable de vous démener pour résoudre les problèmes au plus vite. Pas question de rester passive face aux situations difficiles !</span><span class="dl">"</span><span class="p">,</span>
         <span class="na">nombre</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span>
     <span class="p">})</span>
