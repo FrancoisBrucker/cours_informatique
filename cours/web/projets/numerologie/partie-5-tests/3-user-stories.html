@@ -394,16 +394,30 @@ Dans ce cas, on doit utiliser <code class="language-plaintext highlighter-rouge"
 
 <p>Une fois cet environnement réalisé, on initialise la base :</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">NODE_ENV</span><span class="o">=</span><span class="dl">'</span><span class="s1">test-user-stories</span><span class="dl">'</span> <span class="nx">node</span> <span class="nx">db</span><span class="o">-</span><span class="nx">init</span><span class="p">.</span><span class="nx">js</span>
+<p>sous mac ou unix :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">NODE_ENV</span><span class="o">=</span><span class="s1">'test-user-stories'</span> node db-init.js
+</code></pre></div></div>
+
+<p>sous powershell  :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$env</span>:NODE_ENV<span class="o">=</span><span class="s1">'test-user-stories'</span> <span class="p">;</span> node db-init.js
 </code></pre></div></div>
 
 <p>Puis on peut ensuite exécuter notre serveur :</p>
 
+<p>sous mac/unix :</p>
+
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">NODE_ENV</span><span class="o">=</span><span class="s1">'test-user-stories'</span> npm start
 </code></pre></div></div>
 
+<p>sous powershell  :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$env</span>:NODE_ENV<span class="o">=</span><span class="s1">'test-user-stories'</span> <span class="p">;</span> npm start
+</code></pre></div></div>
+
 <blockquote>
-  <p>on peut aussi lier les deux instruction par un <code class="language-plaintext highlighter-rouge">;</code> : <code class="language-plaintext highlighter-rouge">NODE_ENV='test-user-stories' node db-init.js ; NODE_ENV='test-user-stories' npm start</code>.</p>
+  <p>on peut aussi lier les deux instruction par un <code class="language-plaintext highlighter-rouge">;</code> : sous mac/unix : <code class="language-plaintext highlighter-rouge">NODE_ENV='test-user-stories' node db-init.js ; NODE_ENV='test-user-stories' npm start</code> et sous windows : <code class="language-plaintext highlighter-rouge">$env:NODE_ENV='test-user-stories' ; node db-init.js ; npm start</code></p>
 </blockquote>
 
 <p>Enfin, dans un nouveau terminal, on lance notre nouveau test qu’on a placé dans le fichier <em>“numerologie/user-stories/ajout-prenom.user-story.js”</em> :</p>
