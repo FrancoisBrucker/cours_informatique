@@ -156,7 +156,7 @@ Nous allons donner le message associé au numéro en plus du reste.
 
 ### côté serveur
 
-Avec le numéro calculé, on cherche dans la base [e premier élément ayant ce numéro (méthode [findOne](https://sequelize.org/master/manual/model-querying-finders.html#-code-findone--code-)) et on le renvoie dans le json de résultat :
+Avec le numéro calculé, on cherche dans la base [e premier élément ayant ce numéro (méthode [findOne](https://sequelize.org/master/manual/model-querying-finders.html#-code-findone--code-)) et on le renvoie dans le json de résultat. On modifie le fichier *"numerologie/index.js"* pour celà :
 
 ```js
 // ...
