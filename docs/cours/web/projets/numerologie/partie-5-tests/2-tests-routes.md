@@ -276,7 +276,7 @@ Le fichier de test ci-après commence par placer l'environnement d'exécution à
 
 Il est important de remettre à zéro la base de données à chaque test pour garantir l'indépendance des tests et leurs répétabilités.
 
-Fichier *"numerologie/\_\_tests\_\_/prenoms.js"* :
+Fichier *"numerologie/\_\_tests\_\_/prenoms.test.js"* :
 
 ```js
 const request = require('supertest');
