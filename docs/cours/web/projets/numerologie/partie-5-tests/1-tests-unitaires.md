@@ -152,7 +152,7 @@ npm install --save-dev rewire
 
 Plaçons nos tests dans un dossier *"numerologie/__tests__"*, comme le veut jest par défaut
 
-> Un autre coding mantra pour la route : [convention over configuration](https://en.wikipedia.org/wiki/Convention_over_configuration). On essaie dans la mesure du possible de se conformer aux conventions, cela facilite le travail en groupe. 
+> Un autre coding mantra pour la route : [convention over configuration](https://en.wikipedia.org/wiki/Convention_over_configuration). On essaie dans la mesure du possible de se conformer aux conventions, cela facilite le travail en groupe.
 
 ```js
 const rewire = require('rewire')
