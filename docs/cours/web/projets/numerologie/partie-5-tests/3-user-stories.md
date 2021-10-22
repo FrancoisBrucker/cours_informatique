@@ -329,17 +329,33 @@ else {
 
 Une fois cet environnement réalisé, on initialise la base :
 
-```js
+sous mac ou unix :
+
+```shell
 NODE_ENV='test-user-stories' node db-init.js
 ```
 
+sous powershell  :
+
+```shell
+$env:NODE_ENV='test-user-stories' ; node db-init.js
+```
+
 Puis on peut ensuite exécuter notre serveur :
+
+sous mac/unix :
 
 ```shell
 NODE_ENV='test-user-stories' npm start
 ```
 
-> on peut aussi lier les deux instruction par un `;` : `NODE_ENV='test-user-stories' node db-init.js ; NODE_ENV='test-user-stories' npm start`.
+sous powershell  :
+
+```shell
+$env:NODE_ENV='test-user-stories' ; npm start
+```
+
+> on peut aussi lier les deux instruction par un `;` : sous mac/unix : `NODE_ENV='test-user-stories' node db-init.js ; NODE_ENV='test-user-stories' npm start` et sous windows : `$env:NODE_ENV='test-user-stories' ; node db-init.js ; npm start`
 
 Enfin, dans un nouveau terminal, on lance notre nouveau test qu'on a placé dans le fichier *"numerologie/user-stories/ajout-prenom.user-story.js"* :
 
