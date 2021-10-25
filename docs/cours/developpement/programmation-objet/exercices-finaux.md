@@ -116,7 +116,10 @@ Un deck est une pile de cartes. Le deck est initialement vide et on peut ajouter
 > * connaître le nombre de cartes dans chaque deck
 {: .a-faire}
 
-Vous nommerez ce programme *"main_deck"*
+Vous nommerez ce programme *"main_deck"*.
+
+> Pour afficher la carte du dessus du deck, vous créerez une méthode `image` à deck qui rendra l'image de la carte sur le dessus du deck. Vous expliciterez dans le rapport comment fonctionne cette méthode.
+{: .a-faire}
 
 ## jeu de la bataille
 
