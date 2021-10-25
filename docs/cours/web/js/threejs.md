@@ -108,10 +108,11 @@ On peut aussi définir une position ainsi que la direction dans laquelle la cam�
 ![une camera]({{ "/assets/cours/web/threejs/camera.jpg" | relative_url }}){:style="margin: auto;display: block;"}
 
 - Enfin le moteur de rendu ou renderer. Il s'agit du travail final qui va venir faire un rendu 3D de la scène vu au travers de la caméra. L'objet final sera une image 2D de la scène 3D que l'on peut intégrer dans un canvas pour etre utiliser directement en html. Comme dit précedement, classiquement on utilise le moteur de rendu WebGLRenderer mais il est possible d'en utiliser d'autres (notamment au cas ou des utilisateurs sont sur des vieux navigateurs qui ne supportent pas WebGL ce qui est rare).
-De la même manière que pour la caméra, il est possible de définir l'**aspect** du rendu, par exemple relatif à la taille de l'écran sur lequel on va ensuite afficher l'image.
+De la même manière que pour la caméra, il est possible de définir l'**aspect** du rendu, par exemple relatif à la taille de l'écran sur lequel on va ensuite afficher l'image. La dernière ligne ajoute le renderer dans le body du fichier HTML pour qu'il puisse afficher quelque chose.
 ```javascript
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
+document.body.appendChild(renderer.domElement);
 ```
 
 ### Créer un plan: Geometry et Material
@@ -128,10 +129,10 @@ les longueur et largeur du plan
 const plane_geometry = new THREE.PlaneGeometry( 20, 20 );
 ```
 
-Ensuite on crée notre matériau avec `MeshBasicMaterial`. On spécifie sa couleur 
+Ensuite on crée notre matériau avec `MeshStandardMaterial`. On spécifie sa couleur 
 en hexadécimal (par exemple ici c'est du rouge). 
 ```javascript
-const plane_material = new THREE.MeshBasicMaterial( color:0xff0000 );
+const plane_material = new THREE.MeshStandardMaterial( color:0xff0000 );
 ```
 
 Puis on crée notre objet avec `Mesh` qui prend en paramètres la géométrie et le 
@@ -149,7 +150,7 @@ On peut créer n'importe quel type d'objet de cette manière.
 Une géométrie peut être créée point par point avec `ShapeGeometry()`, ou 
 générée avec des fonctions prévues pour, comme `PlaneGeometry()`, 
 `BoxGeometry()`... [A voir ici](https://threejs.org/docs/index.html?q=geometry#api/en/geometries/BoxGeometry) 
-la liste de tous les possibles.
+la liste de toutes les formes possibles.
 
 Il existe aussi de nombreux matériaux avec des propriétés différentes. Par 
 exemple `BasicMeshMaterial()` ne gère pas les effets de lumière et d'ombres, 
@@ -161,13 +162,105 @@ tous les matériaux disponibles.
 ## Go rendre ça plus joli
 
 ### Lumière ambiante
+On peut améliorer notre rendu notament en ajoutant des lumières. Pour ajouter une lumière, c'est très simple, il suffit d'ajouter
+<br>
 
+```javascript
+const light = new THREE.DirectionalLight(0xffffff, 1);
+```
+
+Le premier argument est le code couleur en hexadécimal de la lumière et le deuxième est son intensité.
+<br>
+Il suffit alors ensuite de choisir sa position et de l'ajouter à la scène :
+
+```javascript
+light.position.set(0,2,2);
+scene.add(light);
+```
+On a alors un plan qui est éclairé par le dessus.
 ### Ombres
+Un autre aspect pour augmenter la beauté de notre projet sont les ombres ! On peut en effet rajouter des ombres dans Three.js. Pour se faire, rien de plus simple :
 
+On ajoute en premier un cube pour pouvoir voir les ombres :
+
+```javascript
+const cube_geometry = new THREE.BoxGeometry(1,1)
+const cube_material = new THREE.MeshStandardMaterial(0xffffff);
+const cube = new THREE.Mesh( cube_geometry, cube_material);
+cube.position.set(0,0,1);
+
+```
+Il faut maintenant lui autoriser à diffuser des ombres :
+```javascript
+cube.castShadow= true;
+scene.add(cube);
+```
+
+De même pour la lumière, il faut aussi lui autoriser (on ajuste sa position pour avoir un bon rendu au passage):
+
+```javascript
+light.position.set(-2,-2,5);
+light.castShadow = true;
+```
+
+Jusque la vous ne devez rien voir. Il faut aussi activer la résolution pour les ombres : 
+
+```javascript
+renderer.shadowMap.enabled= true
+```
+On a la lumière qui envoie des ombres, le cube qui envoie des ombres, mais qui doit les recevoir ? C'est le plan, ! Donc faisons en sorte qu'il le recoive :
+
+```javascript
+plane.receiveShadow= true
+```
+
+On remarque cependant que l'ombre est pixelisée : c'est parce que d'origine la `shadowMap` est de taille `512x512`, on peut l'augmenter par la commande :
+```javascript
+light.shadowMapWidth = 1024;
+light.shadowMapHeight = 1024;
+```
 ### Textures
+On a vu que pour tous les objets, nous avons besoin d'un `MeshMaterial` et d'une `Geometry`. Au début du projet, nous 
+avons utilisé `MeshStandardMaterial`. C'est ici que nous devons mettre notre texture. 
 
+Elle sera divisée en plusieurs sous couches qui permettront un rendu plus que quali !
+
+Pour ce projet, on choisit cette [texture](https://drive.google.com/drive/folders/1r2R96PnfH85xlv11MWRV8zSIT73Id3C9) qui plus est gratuite. On les mets dans un dossier `img` dans le projet. 
+
+On doit alors charger toutes les images dans notre projet :
+
+```javascript
+const textureloader = new THREE.TextureLoader()
+const textureBasecolor = textureloader.load('img/Concrete_Blocks_011_basecolor.jpg')
+const textureAmbientOcclussion = textureloader.load('img/Concrete_Blocks_011_ambientOcclusion.jpg')
+const textureheight = textureloader.load('img/Concrete_Blocks_011_height.jpg')
+const texturenormal = textureloader.load('img/Concrete_Blocks_011_normal.jpg')
+const textureroughness = textureloader.load('img/Concrete_Blocks_011_roughness.jpg')
+```
+Maintenant on peut ajouter les couches à notre cube :
+```javascript
+const cube_material = new THREE.MeshStandardMaterial(    
+    {
+    map : textureBasecolor,
+    normalMap: texturenormal,
+    bumpMap: textureheight,
+    roughnessMap: textureroughness,
+    roughness:0.05
+}
+);
+```
+Le problème est que la texture a besoin d'être rendu en boucle, donc on ne la voit pas si l'on ne rend pas en boucle, il faut alors rajouter la fonction suivante à la fin
+
+```javascript
+function rend(){
+    renderer.render(scene,camera);
+    requestAnimationFrame(rend)
+}
+rend()
+```
 ## Déplacement de la caméra
 
+Il est desfois plus agréable de pouvoir déplacer la caméra comme on le souhaite pour pouvoir bien visualiser ce que l'on 
 ### Déplacement avec ZQSD
 
 ### Rotation avec la Souris
