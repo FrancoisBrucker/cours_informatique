@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/cours_informatique/feed.xml" rel="self" type="application/atom+xml" /><link href="/cours_informatique/" rel="alternate" type="text/html" /><updated>2021-10-25T07:05:42+00:00</updated><id>/cours_informatique/feed.xml</id><title type="html">cours d’informatique</title><subtitle>Support de cours/td d'informatique à l'école centrale marseille.</subtitle><entry><title type="html">wsl ou linux dans windows</title><link href="/cours_informatique/tutos/systeme/installation/wsl/2021/09/27/wsl-windows.html" rel="alternate" type="text/html" title="wsl ou linux dans windows" /><published>2021-09-27T00:00:00+00:00</published><updated>2021-09-27T00:00:00+00:00</updated><id>/cours_informatique/tutos/systeme/installation/wsl/2021/09/27/wsl-windows</id><content type="html" xml:base="/cours_informatique/tutos/systeme/installation/wsl/2021/09/27/wsl-windows.html">&lt;p&gt;Comment installer et bien préparer wsl pur le développement.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/cours_informatique/feed.xml" rel="self" type="application/atom+xml" /><link href="/cours_informatique/" rel="alternate" type="text/html" /><updated>2021-10-25T07:41:53+00:00</updated><id>/cours_informatique/feed.xml</id><title type="html">cours d’informatique</title><subtitle>Support de cours/td d'informatique à l'école centrale marseille.</subtitle><entry><title type="html">wsl ou linux dans windows</title><link href="/cours_informatique/tutos/systeme/installation/wsl/2021/09/27/wsl-windows.html" rel="alternate" type="text/html" title="wsl ou linux dans windows" /><published>2021-09-27T00:00:00+00:00</published><updated>2021-09-27T00:00:00+00:00</updated><id>/cours_informatique/tutos/systeme/installation/wsl/2021/09/27/wsl-windows</id><content type="html" xml:base="/cours_informatique/tutos/systeme/installation/wsl/2021/09/27/wsl-windows.html">&lt;p&gt;Comment installer et bien préparer wsl pur le développement.&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -225,13 +225,13 @@ hello
 &lt;p&gt;Dans un &lt;a href=&quot;/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html&quot;&gt;terminal&lt;/a&gt;, qui peut être &lt;a href=&quot;/cours_informatique/tutos/editeur/vsc/installation/configuration/terminal/2021/09/14/vsc-terminal.html#terminal-integre&quot;&gt;celui de vscode&lt;/a&gt; tapez la commande :&lt;/p&gt;
 
 &lt;details&gt;&lt;summary&gt;sous linux et mac&lt;/summary&gt;&lt;div&gt;
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip3 &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;pycodestyle
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python3 &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; pip3 &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;pycodestyle
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;&lt;/details&gt;
 
 &lt;details&gt;&lt;summary&gt;sous windows&lt;/summary&gt;&lt;div&gt;
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;pycodestyle
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;pycodestyle
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;&lt;/details&gt;
@@ -267,13 +267,13 @@ hello
 &lt;p&gt;Dans un &lt;a href=&quot;/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html&quot;&gt;terminal&lt;/a&gt;, qui peut être &lt;a href=&quot;/cours_informatique/tutos/editeur/vsc/installation/configuration/terminal/2021/09/14/vsc-terminal.html#terminal-integre&quot;&gt;celui de vscode&lt;/a&gt; tapez la commande :&lt;/p&gt;
 
 &lt;details&gt;&lt;summary&gt;sous linux et mac&lt;/summary&gt;&lt;div&gt;
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip3 &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;black
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python3 &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; pip3 &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;black
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;&lt;/details&gt;
 
 &lt;details&gt;&lt;summary&gt;sous windows&lt;/summary&gt;&lt;div&gt;
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;black
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;black
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;&lt;/details&gt;
@@ -318,13 +318,13 @@ hello
 &lt;h3 id=&quot;installation-pytest&quot;&gt;installation&lt;/h3&gt;
 
 &lt;details&gt;&lt;summary&gt;sous linux et mac&lt;/summary&gt;&lt;div&gt;
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip3 &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;pytest
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python3 &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; pip3 &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;pytest
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;&lt;/details&gt;
 
 &lt;details&gt;&lt;summary&gt;sous windows&lt;/summary&gt;&lt;div&gt;
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;pytest
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;pytest
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;&lt;/details&gt;
@@ -369,13 +369,13 @@ hello
 &lt;p&gt;On va utiliser le &lt;em&gt;code coverage&lt;/em&gt; de pytest :&lt;/p&gt;
 
 &lt;details&gt;&lt;summary&gt;sous linux et mac&lt;/summary&gt;&lt;div&gt;
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip3 &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;pytest-cov
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python3 &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; pip3 &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;pytest-cov
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;&lt;/details&gt;
 
 &lt;details&gt;&lt;summary&gt;sous windows&lt;/summary&gt;&lt;div&gt;
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;pytest-cov
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;pytest-cov
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;&lt;/details&gt;
@@ -540,9 +540,9 @@ hello
 
 &lt;p&gt;On peut aussi ouvrir un terminal Directement dans node : &lt;em&gt;“menu Affichage &amp;gt; Terminal”&lt;/em&gt;. Ce qui donne quelque chose du type :&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/cours_informatique/assets/cours/web/numerologie/vsc-terminal.png&quot; alt=&quot;terminal dans vscode&quot; style=&quot;margin: auto;display: block&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/cours_informatique/assets/tutos/vsc-projets/vsc-terminal.png&quot; alt=&quot;terminal dans vscode&quot; style=&quot;margin: auto;display: block&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Les différents panels du dessus du terminal (PROBLEMeES, OUTPUT, CONSOLE DE DEBOGAGE et TERMINAL) dans vscode sont des sorties d’autres processus.&lt;/p&gt;
+&lt;p&gt;Les différents panels du dessus du terminal (PROBLEMES, OUTPUT, CONSOLE DE DEBOGAGE et TERMINAL) dans vscode sont des sorties d’autres processus.&lt;/p&gt;
 
 &lt;p&gt;on reste donc 99% du temps sur &lt;em&gt;TERMINAL&lt;/em&gt; (qui est en sur-brillance).&lt;/p&gt;
 
