@@ -88,6 +88,32 @@ C'est tout bon, on peut passer au vif du sujet !
 
 ### Scene, Camera et Renderer
 
+Donc on a vu que three.js utilise des outils afin de faciliter le travail de l'utilisateur. Les outils les plus importants sont les scènes, les caméras et les renderer (moteurs de rendu). Ces trois éléments sont essentiels à tout projet three.js, sans eux impossible d'afficher quoi que ce soit. Concrètement on va utiliser la caméra pour faire un rendu de la scène.
+
+- La scène correspond donc à notre environnement de travail, ce qui va etre rendu visible par le renderer. Elle permet de localiser avec des coordonnées 3D les différents objets que l'on va ensuite créer.
+```javascript
+const scene = new THREE.Scene();
+```
+
+- Les caméras sont aussi un point essentiel de three.js car elles définissent comment la scène va etre vu par l'utilisateur final. Il existe plusieurs types de caméras avec des possibilités et des effets différents. Une des caméra les plus utilisé est la PerspectiveCamera qui mimique la vision humaine. 
+```javascript
+const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+camera.position.set(0, 0, 5);
+camera.lookAt( 0, 0, 0 );
+```
+Ici on définit une caméra avec différentes propriétés : le **FOV** (Field of view), l'**aspect** qu'on définit ici comme le rapport entre la largeur et la hauteur de l'écran, et enfin on définit les valeurs pour **near** et **far**. Ces deux valeurs déterminent à quelle distance se trouve les plans limites de la caméra. Tout ce qui se trouve avant le plan near et après le plan far ne seront pas vu par la caméra et ils ne seront donc pas rendu par le renderer.
+
+On peut aussi définir une position ainsi que la direction dans laquelle la caméra regarde de manière relative à la scène que l'on a créée avant. 
+
+![une camera]({{ "/assets/cours/web/threejs/camera.jpg" | relative_url }}){:style="margin: auto;display: block;"}
+
+- Enfin le moteur de rendu ou renderer. Il s'agit du travail final qui va venir faire un rendu 3D de la scène vu au travers de la caméra. L'objet final sera une image 2D de la scène 3D que l'on peut intégrer dans un canvas pour etre utiliser directement en html. Comme dit précedement, classiquement on utilise le moteur de rendu WebGLRenderer mais il est possible d'en utiliser d'autres (notamment au cas ou des utilisateurs sont sur des vieux navigateurs qui ne supportent pas WebGL ce qui est rare).
+De la même manière que pour la caméra, il est possible de définir l'**aspect** du rendu, par exemple relatif à la taille de l'écran sur lequel on va ensuite afficher l'image.
+```javascript
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize( window.innerWidth, window.innerHeight );
+```
+
 ### Créer un plan: Geometry et Material
 
 Pour l'instant notre scène est complètement vide. On va donc rajouter des objets !
