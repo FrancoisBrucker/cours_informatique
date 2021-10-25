@@ -14,7 +14,7 @@ Dans tout projet, il y a 3 phases qu'il faut respecter, et dans cet ordre :
 2. make it right
 3. make it fast
 
-On doit cette phrase au célèbre Kent Beck, inventeur du TDD. Ce coding mantra (comme [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself), [KISS](https://en.wikipedia.org/wiki/KISS_principle) ou encore [YAGNI(https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it)]) marche à tout niveau de votre projet, vous pouvez tout aussi bien l'appliquer à une fonction/algorithme que vous venez de développer à votre projet en entier.
+On doit cette phrase au célèbre Kent Beck, inventeur du TDD. Ce coding mantra (comme [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself), [KISS](https://en.wikipedia.org/wiki/KISS_principle) ou encore [YAGNI](https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it)) marche à tout niveau de votre projet, vous pouvez tout aussi bien l'appliquer à une fonction/algorithme que vous venez de développer à votre projet en entier.
 
 Notre projet fonctionne, rendons le propre.
 
