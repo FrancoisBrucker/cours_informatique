@@ -90,6 +90,48 @@ C'est tout bon, on peut passer au vif du sujet !
 
 ### Créer un plan: Geometry et Material
 
+Pour l'instant notre scène est complètement vide. On va donc rajouter des objets !
+Commençons par ajouter un plan.
+
+Un objet est défini par deux attributs: Sa géométrie et son matériau.
+
+La géométrie du plan est créée avec *PlaneGeometry* qui prend en paramètres 
+les longueur et largeur du plan 
+(l'unité de mesure est abstraite, elle est propre à three.js).
+```javascript
+const plane_geometry = new THREE.PlaneGeometry( 20, 20 );
+```
+
+Ensuite on crée notre matériau avec `MeshBasicMaterial`. On spécifie sa couleur 
+en hexadécimal (par exemple ici c'est du rouge). 
+```javascript
+const plane_material = new THREE.MeshBasicMaterial( color:0xff0000 );
+```
+
+Puis on crée notre objet avec `Mesh` qui prend en paramètres la géométrie et le 
+matériau.
+```javascript
+const plane = new THREE.Mesh( plane_geometry, plane_material );
+```
+
+Et enfin, on l'ajoute à la scène:
+```javascript
+scene.add( plane );
+```
+
+On peut créer n'importe quel type d'objet de cette manière. 
+Une géométrie peut être créée point par point avec `ShapeGeometry()`, ou 
+générée avec des fonctions prévues pour, comme `PlaneGeometry()`, 
+`BoxGeometry()`... [A voir ici](https://threejs.org/docs/index.html?q=geometry#api/en/geometries/BoxGeometry) 
+la liste de tous les possibles.
+
+Il existe aussi de nombreux matériaux avec des propriétés différentes. Par 
+exemple `BasicMeshMaterial()` ne gère pas les effets de lumière et d'ombres, 
+donc par la suite on va utiliser `PhongMeshMaterial()` qui les supporte. 
+[A voir ici](https://threejs.org/docs/index.html?q=material#api/en/materials/MeshBasicMaterial) 
+tous les matériaux disponibles.
+
+
 ## Go rendre ça plus joli
 
 ### Lumière ambiante
