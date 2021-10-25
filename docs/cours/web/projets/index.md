@@ -12,6 +12,10 @@ Des projets pour apprendre des technos web. Les projets sont fait pour être vue
 1. [numérologie]({% link cours/web/projets/numerologie/index.md %}). Pour débutant.
 2. [commentaires]({% link cours/web/projets/commentaires/index.md %}). Gestion des données dans un site express (on considère que vous connaissez le niveau 1 de du projet numérologie)
 
+
+## Projets M2D
+
+- [PIXEL]( {% link cours/web/projets/Projet_M2D_PIXEL.md %})
 > TBD
 > faire des git avec les différents projets
 > partie sqlite3 à faire mieux sous windows. Chgt de path
