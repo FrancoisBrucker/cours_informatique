@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Exercices finaux | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Exercices finaux" />
+<meta name="author" content="Célia Châtel" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
+<link rel="canonical" href="/cours_informatique/cours/developpement/programmation-objet/exercices-finaux.html" />
+<meta property="og:url" content="/cours_informatique/cours/developpement/programmation-objet/exercices-finaux.html" />
+<meta property="og:site_name" content="cours d’informatique" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Exercices finaux" />
+<script type="application/ld+json">
+{"headline":"Exercices finaux","description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/developpement/programmation-objet/exercices-finaux.html","author":{"@type":"Person","name":"Célia Châtel"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css">
+
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+</head>
+
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Exercices finaux</h1>Auteurs :
+      <ul>
+      
+        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Célia Châtel</span></span></li>
+      
+        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></li>
+      
+      </ul></p></p>
+  </header>
+
+  <div class="post-content">
+    <p>Veillez à ce que votre code fonctionne. On vous demande à la fois le code python et un rapport permettant de comprendre comment votre code fonctionne.</p>
+
+<p>Créez un dossier <em>“cartes-ui”</em> qui sera votre projet vscode.</p>
+
+<blockquote>
+  <p>Vous n’avez pas besoin d’utiliser <code class="language-plaintext highlighter-rouge">pytest</code> ici. Lorsque l’on vous demande de créer un fichier de test, créez un programme python qui permet d’exécuter les différentes méthodes.</p>
+</blockquote>
+
+<h2 id="but">But</h2>
+
+<p>Vous allez utiliser ce que nous avons fait pendant ce cours pour créer une UI permettant de jouer aux cartes.</p>
+
+<p>Les images des cartes sont placées dans le fichier zip <a href="./resources.zip">resources.zip</a>.</p>
+
+<blockquote class="a-faire">
+  <p>dézippez le dans le dossier de votre projet pour pouvoir les utiliser.</p>
+</blockquote>
+
+<p>Si vous n’avez pas de programmes permettant de dézipper, vous pouvez utiliser <a href="https://www.7-zip.org/download.html">7-zip</a> (téléchargez la version64 bit pour windows)</p>
+
+<h2 id="la-classe-carte">La classe carte</h2>
+
+<p>Le code ci-après vous donne la classe carte et ses tests que vous allez utiliser par la suite.</p>
+
+<h3 id="cartepy">carte.py</h3>
+
+<p>Copiez le fichier <em>“card.py”</em> suivant dans votre projet :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Carte</span><span class="p">:</span>
+    <span class="n">PIQUE</span> <span class="o">=</span> <span class="s">"spade"</span>
+    <span class="n">COEUR</span> <span class="o">=</span> <span class="s">"heart"</span>
+    <span class="n">CARREAU</span> <span class="o">=</span> <span class="s">"diamond"</span>
+    <span class="n">TREFLE</span> <span class="o">=</span> <span class="s">"club"</span>
+    
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valeur</span><span class="p">,</span> <span class="n">couleur</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_valeur</span> <span class="o">=</span> <span class="n">valeur</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_couleur</span> <span class="o">=</span> <span class="n">couleur</span>
+
+    <span class="k">def</span> <span class="nf">image</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">"resources/Playing_card_"</span> <span class="o">+</span> <span class="bp">self</span><span class="p">.</span><span class="n">_couleur</span> <span class="o">+</span> <span class="s">"_"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">_valeur</span><span class="p">)</span> <span class="o">+</span> <span class="s">".gif"</span>
+</code></pre></div></div>
+
+<blockquote class="a-faire">
+  <ol>
+    <li>explicitez dans le rapport :
+      <ul>
+        <li>à quoi servent les 4 valeurs <code class="language-plaintext highlighter-rouge">PIQUE</code>, <code class="language-plaintext highlighter-rouge">COEUR</code>, <code class="language-plaintext highlighter-rouge">CARREAU</code> et <code class="language-plaintext highlighter-rouge">TREFLE</code>. Affichez le contenu de l’une d’elle.</li>
+        <li>que signifie le <code class="language-plaintext highlighter-rouge">_</code>avant les attributs.</li>
+      </ul>
+    </li>
+    <li>Créez un programme nommé <em>“test_card.py”</em> qui doit mettre en évidence comment on peut :
+      <ul>
+        <li>créer une carte : créez un as de pique en utilisant le point précédent</li>
+        <li>vérifier que l’image associée est bien un as de pique (vérifiez le en regardant le nom de l’image associée)</li>
+      </ul>
+    </li>
+  </ol>
+</blockquote>
+
+<h3 id="mainpy">main.py</h3>
+
+<p>Créez un fichier <em>“main_carte.py”</em> et copiez-y le code suivant :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">appJar</span> <span class="kn">import</span> <span class="n">gui</span>
+
+<span class="kn">from</span> <span class="nn">carte</span> <span class="kn">import</span> <span class="n">Carte</span>
+
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">gui</span><span class="p">()</span>
+
+
+<span class="n">app</span><span class="p">.</span><span class="n">addLabelOptionBox</span><span class="p">(</span><span class="s">"couleur"</span><span class="p">,</span> <span class="p">[</span><span class="s">"</span><span class="se">\u2660</span><span class="s">"</span><span class="p">,</span> <span class="s">"</span><span class="se">\u2665</span><span class="s">"</span><span class="p">,</span> <span class="s">"</span><span class="se">\u2666</span><span class="s">"</span><span class="p">,</span> <span class="s">"</span><span class="se">\u2663</span><span class="s">"</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">app</span><span class="p">.</span><span class="n">addLabelOptionBox</span><span class="p">(</span><span class="s">"valeur"</span><span class="p">,</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">14</span><span class="p">)],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">on_click</span><span class="p">(</span><span class="n">button</span><span class="p">):</span>
+    <span class="n">couleur</span> <span class="o">=</span> <span class="n">app</span><span class="p">.</span><span class="n">getOptionBox</span><span class="p">(</span><span class="s">"couleur"</span><span class="p">)</span>
+    <span class="n">valeur</span> <span class="o">=</span> <span class="n">app</span><span class="p">.</span><span class="n">getOptionBox</span><span class="p">(</span><span class="s">"valeur"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">couleur</span> <span class="o">==</span> <span class="s">"</span><span class="se">\u2660</span><span class="s">"</span><span class="p">:</span>
+        <span class="n">app</span><span class="p">.</span><span class="n">setImage</span><span class="p">(</span><span class="s">"Carte_image"</span><span class="p">,</span> <span class="n">Carte</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">valeur</span><span class="p">),</span> <span class="n">Carte</span><span class="p">.</span><span class="n">PIQUE</span><span class="p">).</span><span class="n">image</span><span class="p">())</span>
+    <span class="k">elif</span> <span class="n">couleur</span> <span class="o">==</span> <span class="s">"</span><span class="se">\u2665</span><span class="s">"</span><span class="p">:</span>
+        <span class="n">app</span><span class="p">.</span><span class="n">setImage</span><span class="p">(</span><span class="s">"Carte_image"</span><span class="p">,</span> <span class="n">Carte</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">valeur</span><span class="p">),</span> <span class="n">Carte</span><span class="p">.</span><span class="n">COEUR</span><span class="p">).</span><span class="n">image</span><span class="p">())</span>
+    <span class="k">elif</span> <span class="n">couleur</span> <span class="o">==</span> <span class="s">"</span><span class="se">\u2666</span><span class="s">"</span><span class="p">:</span>
+        <span class="n">app</span><span class="p">.</span><span class="n">setImage</span><span class="p">(</span><span class="s">"Carte_image"</span><span class="p">,</span> <span class="n">Carte</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">valeur</span><span class="p">),</span> <span class="n">Carte</span><span class="p">.</span><span class="n">CARREAU</span><span class="p">).</span><span class="n">image</span><span class="p">())</span>
+    <span class="k">elif</span> <span class="n">couleur</span> <span class="o">==</span> <span class="s">"</span><span class="se">\u2663</span><span class="s">"</span><span class="p">:</span>
+        <span class="n">app</span><span class="p">.</span><span class="n">setImage</span><span class="p">(</span><span class="s">"Carte_image"</span><span class="p">,</span> <span class="n">Carte</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">valeur</span><span class="p">),</span> <span class="n">Carte</span><span class="p">.</span><span class="n">TREFLE</span><span class="p">).</span><span class="n">image</span><span class="p">())</span>
+    
+
+<span class="n">app</span><span class="p">.</span><span class="n">addButton</span><span class="p">(</span><span class="s">"affiche carte"</span><span class="p">,</span> <span class="n">on_click</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">app</span><span class="p">.</span><span class="n">addImage</span><span class="p">(</span><span class="s">"Carte_image"</span><span class="p">,</span> <span class="s">"resources/empty.gif"</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">app</span><span class="p">.</span><span class="n">go</span><span class="p">()</span>
+</code></pre></div></div>
+
+<blockquote class="a-faire">
+  <p>Dans le rapport, explicitez comment fonctionne le programme.</p>
+</blockquote>
+
+<h2 id="création-dun-deck">Création d’un deck</h2>
+
+<p>Un deck est une pile de cartes. Le deck est initialement vide et on peut ajouter une carte en bas de la pile (méthode <code class="language-plaintext highlighter-rouge">ajoute</code>) ou supprimer celle du dessus de la pile (méthode <code class="language-plaintext highlighter-rouge">supprime</code>). On a de plus une méthode permettant de connaitre le nombre de cartes dans le deck (méthode <code class="language-plaintext highlighter-rouge">nombre</code>) et une méthode permettant de voir la carte du dessus du deck (méthode <code class="language-plaintext highlighter-rouge">voir</code>).</p>
+
+<blockquote class="a-faire">
+  <ol>
+    <li>Dans le rapport donner le modèle UML du deck et préciser le lien qui l’unie à la classe <code class="language-plaintext highlighter-rouge">Carte</code>.</li>
+    <li>créez un fichier <em>“deck.py”</em> dans votre projet et implémentez la classe <code class="language-plaintext highlighter-rouge">Deck</code>.</li>
+    <li>créez un fichier <em>“test_deck”</em> dans votre projet qui permet d’utiliser les méthodes de la classe <code class="language-plaintext highlighter-rouge">Deck</code>.</li>
+  </ol>
+</blockquote>
+
+<h2 id="ui">UI</h2>
+
+<blockquote class="a-faire">
+  <p>On vous demande de modifier l’UI précédente pour avoir :</p>
+
+  <ul>
+    <li>deux decks côte à côte initialement vides</li>
+    <li>un bouton qui ajoute une carte (que l’on choisit grâce à deux menus   déroulants) au premier deck</li>
+    <li>un bouton permettant de passer une carte du premier au second deck.</li>
+    <li>connaître le nombre de cartes dans chaque deck</li>
+  </ul>
+</blockquote>
+
+<p>Vous nommerez ce programme <em>“main_deck”</em></p>
+
+<h2 id="jeu-de-la-bataille">jeu de la bataille</h2>
+
+<h3 id="comparaisons-de-cartes">Comparaisons de cartes</h3>
+
+<blockquote class="a-faire">
+  <p>Implémentez les comparateurs égal (méthode spéciale <code class="language-plaintext highlighter-rouge">__eq__</code>), plus grand (<code class="language-plaintext highlighter-rouge">__gt__</code>) et plus petit (<code class="language-plaintext highlighter-rouge">__lt__</code>) pour vos cartes.
+Modifiez l’UI (appelez ce fichier <em>“main_comparaison”</em>) pour qu’elle affiche entre les deux carte <code class="language-plaintext highlighter-rouge">=</code>, <code class="language-plaintext highlighter-rouge">&lt;</code>, <code class="language-plaintext highlighter-rouge">&gt;</code> ou <code class="language-plaintext highlighter-rouge">&lt;&gt;</code> (si les deux cartes sont incomparables)</p>
+</blockquote>
+
+<h3 id="programme-final">programme final</h3>
+
+<blockquote class="a-faire">
+  <p>Créez un programme nommé <em>“main.py”</em> qui permet de jouer à la <a href="https://fr.wikipedia.org/wiki/Bataille_(jeu)#R%C3%A8gle_actuelle">bataille</a>. Il faudra qu’il y ait un bouton coup suivant qui jouera le coup suivant de la partie.</p>
+</blockquote>
+
+<p>Vous ne ferez qu’afficher le résultat s’il y a bataille, pas les cartes cachées lors de la résolution de la bataille.</p>
+
+<blockquote class="a-faire">
+  <p>Dans le rapport final, vous expliciterez comment vous avez codé le programme et comment il fonctionne</p>
+</blockquote>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d&#39;informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d&#39;informatique</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
