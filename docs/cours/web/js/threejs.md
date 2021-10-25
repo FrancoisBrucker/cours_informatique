@@ -19,7 +19,13 @@ authors:
 
 ### Prérequis
 
+On va utiliser vite.js, que l'on intallera avec node packet manager.
+Il faut donc avoir installé [node.js](https://nodejs.org/en/download/) au préalable.
+Pour plus de confort, on vous conseille également d'utiliser un IDE pour coder, par exemple [VSCode](https://code.visualstudio.com/download).
+
 ### three.js et vite
+
+
 
 ## Les bases
 
