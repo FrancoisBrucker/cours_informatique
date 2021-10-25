@@ -28,7 +28,7 @@ Dans un [terminal]({% post_url tutos/systeme/2021-08-24-terminal %}), qui peut Ã
 {% details sous linux et mac %}
 
 ```shell
-pip3 install pycodestyle
+python3 -m pip3 install pycodestyle
 ```
 
 {% enddetails %}
@@ -36,7 +36,7 @@ pip3 install pycodestyle
 {% details sous windows %}
 
 ```shell
-pip install pycodestyle
+python -m pip install pycodestyle
 ```
 
 {% enddetails %}
@@ -70,7 +70,7 @@ Dans un [terminal]({% post_url tutos/systeme/2021-08-24-terminal %}), qui peut Ã
 {% details sous linux et mac %}
 
 ```shell
-pip3 install black
+python3 -m pip3 install black
 ```
 
 {% enddetails %}
@@ -78,7 +78,7 @@ pip3 install black
 {% details sous windows %}
 
 ```shell
-pip install black
+python -m pip install black
 ```
 
 {% enddetails %}
@@ -125,7 +125,7 @@ python -m black mon-fichier.py
 {% details sous linux et mac %}
 
 ```shell
-pip3 install pytest
+python3 -m pip3 install pytest
 ```
 
 {% enddetails %}
@@ -133,7 +133,7 @@ pip3 install pytest
 {% details sous windows %}
 
 ```shell
-pip install pytest
+python -m pip install pytest
 ```
 
 {% enddetails %}
@@ -175,7 +175,7 @@ On va utiliser le *code coverage* de pytest :
 {% details sous linux et mac %}
 
 ```shell
-pip3 install pytest-cov
+python3 -m pip3 install pytest-cov
 ```
 
 {% enddetails %}
@@ -183,7 +183,7 @@ pip3 install pytest-cov
 {% details sous windows %}
 
 ```shell
-pip install pytest-cov
+python -m pip install pytest-cov
 ```
 
 {% enddetails %}

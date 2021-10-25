@@ -24,9 +24,9 @@ Si vous tapez *">terminal"* dans la [palette de commande]({% post_url tutos/edit
 
 On peut aussi ouvrir un terminal Directement dans node : *"menu Affichage > Terminal"*. Ce qui donne quelque chose du type :
 
-![terminal dans vscode]({{ "/assets/cours/web/numerologie/vsc-terminal.png" | relative_url }}){:style="margin: auto;display: block"}
+![terminal dans vscode]({{ "/assets/tutos/vsc-projets/vsc-terminal.png" | relative_url }}){:style="margin: auto;display: block"}
 
-Les différents panels du dessus du terminal (PROBLEMeES, OUTPUT, CONSOLE DE DEBOGAGE et TERMINAL) dans vscode sont des sorties d'autres processus.
+Les différents panels du dessus du terminal (PROBLEMES, OUTPUT, CONSOLE DE DEBOGAGE et TERMINAL) dans vscode sont des sorties d'autres processus.
 
 on reste donc 99% du temps sur *TERMINAL* (qui est en sur-brillance).
 

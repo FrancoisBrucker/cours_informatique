@@ -71,7 +71,6 @@ t2 = t + (1, )
 
 Le [`frozenset`](https://docs.python.org/3/library/stdtypes.html#frozenset) est un `set` (ensemble), mais cette fois non mutable.
 
-
 ### Boucle for
 
 #### Les itérateurs
@@ -155,6 +154,8 @@ De nombreux modules existent pour python et permettent de réaliser aisément de
 
 Si vous n'avez pas de droits administrateur, ou pour une utilisation plus "pro" des modules, on préfèrera créer des environnements virtuels avec *virtualenv*, mais ceci  dépasse (de peu) le cadre de notre introduction à python.
 
+On utilise l'utilitaire `pip` via python avec la commande : `python -m pip [des commandes pip]` (ou `python3 -m pip3 [des commandes pip]` si vous êtes sous mac ou linux)
+
 >Si vous utilisez un interpréteur qui s'appelle `python3` et pas `python`, il est fort possible que le programme `python`(sans le 3) soit un interpréteur de la version 2 de python. Il vous faut alors utiliser la commande `pip3`et non `pip` (qui sera elle associée à l'interpréteur `python`)
 {: .attention}
 
@@ -172,14 +173,13 @@ Installé par défaut, il permet notamment de mélanger les éléments d'une lis
 
 Permet de manipuler des [fichiers excel avec python](https://automatetheboringstuff.com/chapter12/).
 
-Il s'installe avec pip : `pip install openpyxl` (ou `sudo pip3 install openpyxl` suivi de votre mot de passe si vous êtes sous unix/mac).
+Il s'installe avec pip : `python -m pip install openpyxl` (ou `sudo python3 -m pip3 install openpyxl` suivi de votre mot de passe si vous êtes sous unix/mac).
 
 ### matplotlib
 
 > <http://matplotlib.org>
 
 Installé par défaut si vous utilisez l'interpréteur d'[anaconda](https://www.anaconda.com/), ce module permet d'afficher des graphiques en python.
-
 
 ## Les fichiers : lecture, écriture
 
