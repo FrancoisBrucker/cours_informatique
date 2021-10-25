@@ -214,7 +214,7 @@ Pour installer de nouveaux packages python, on utilise la commande `pip`.
 Testez le en ouvrant un terminal et en tapant :
 
 ```shell
-pip --version
+python -m pip --version
 ```
 
 La commande devrait vous rendre le numéro de version de pip ainsi que le chemin du programme python qui lui est associé.
@@ -222,7 +222,7 @@ La commande devrait vous rendre le numéro de version de pip ainsi que le chemin
 Les packages déjà installé par pip seront visible avec la commande :
 
 ```shell
-pip list
+python -m pip list
 ```
 
 Si vous avez une distribution anaconda, vous devriez avoir plein de choses, sinon, beaucoup moins.
@@ -233,10 +233,10 @@ Si vous avez une distribution anaconda, vous devriez avoir plein de choses, sino
 On peut maintenant utiliser pip pour installer un nouveau package. Nous allons installer [black](https://pypi.org/project/black/) qui rendra joli tous nos programmes python. Dans un terminal tapez :
 
 ```shell
-pip install black
+python -m pip install black
 ```
 
-Une fois l'installation terminée, black devrait apparaitre dans la liste des packages installés (vous pouvez le voir avec `pip list`).
+Une fois l'installation terminée, black devrait apparaitre dans la liste des packages installés (vous pouvez le voir avec `python -m pip list`).
 
 ### où sont les packages ?
 
