@@ -34,7 +34,16 @@ Nous avons fait le choix de développer un [City-Builder](https://fr.wikipedia.o
 
 - [Flask](https://flask.palletsprojects.com/en/2.0.x/)
 - [Python](https://www.python.org/)
-- [SQLite3](https://docs.python.org/3/library/sqlite3.html)
+- [Psycopg2](https://www.psycopg.org/docs/)
+
+### Base de données
+
+- [PostgreSQL](https://www.postgresql.org/)
+
+### Hébergement
+
+- Front-end : [Vercel](https://vercel.com/)
+- Back-end + Base de données : [Heroku](https://www.heroku.com/)
 
 ## Conception
 Avant de lancer les développements pour ce projet, nous sommes passés par une phase de conception qui nous a permis de définir les règles du jeu, des maquettes pour chaque écran ainsi que les différents composants que nous allions utiliser.
@@ -107,6 +116,10 @@ Les règles du jeu définies clairement, nous pouvions passer à la phase de maq
 
 
 ![MockUp EndGame](../../../assets/projets/PIXEL/MockUps/MockUp-EndGame.png)
+
+## Gestion de la base de données
+
+Nous avons choisi d'utiliser une base de données 
 
 ## Comment y jouer ?
 
