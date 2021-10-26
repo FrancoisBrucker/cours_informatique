@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>git et github : les bonnes pratiques en équipe | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="git et github : les bonnes pratiques en équipe" />
+<meta name="author" content="Corentin Lange" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
+<link rel="canonical" href="/cours_informatique/cours/git_et_github/github_bonnes_pratiques.html" />
+<meta property="og:url" content="/cours_informatique/cours/git_et_github/github_bonnes_pratiques.html" />
+<meta property="og:site_name" content="cours d’informatique" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="git et github : les bonnes pratiques en équipe" />
+<script type="application/ld+json">
+{"description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","headline":"git et github : les bonnes pratiques en équipe","url":"/cours_informatique/cours/git_et_github/github_bonnes_pratiques.html","author":{"@type":"Person","name":"Corentin Lange"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css">
+
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+</head>
+
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">git et github : les bonnes pratiques en équipe</h1>Auteurs :
+      <ul>
+      
+        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Corentin Lange</span></span></li>
+      
+      </ul></p></p>
+  </header>
+
+  <div class="post-content">
+    <p>Ce cours suit directement celui de git et github. Une fois apte à tirer un repo, le modifier, faire des commits, il est bien de savoir comment bien le faire !</p>
+
+<p>GitHub est très répandu pour le développement en équipe. Il peut-être une vraie aide à la productivité si il est bien utilisé, ou au contraire, rajouter une perte de temps et des nombreuses prises de têtes sans bonnes pratiques.</p>
+
+<p>Ci-dessous quelques petits clés pour bien utiliser github ! Tout ces conseils sont fortements inspirés de projets open-source, ces derniers maintenant une relecture et des règles de participations très claires afin de permettre au maximum de personnes de participées. Un repo qui selon moi est très bien réalisé et celui du projet open-source Atom(un ide multi-languages personalisables) : <a href="https://github.com/atom/atom">github.com/atom</a></p>
+
+<p>## – Workflow –</p>
+
+<p>Le “workflow”, ou flux de travail en fançais (à bas les anglicismes) sont les petites règles à adopter pour avancer dans son travail dans de bonnes conditions en minimisant les potentiels pertes de temps créées par une mauvaise gestion.</p>
+
+<p>Pour travailler en équipe, à l’aide de GitHub, il est bon de garder un schéma de travail harmonieux afin de faciliter la relecture des autres qui passeront derrière nous.</p>
+
+<p>Je vous présente des méthodes de travaille que l’on peut retrouver afin de gagner du temps, avoir une meilleur lisibilité ainsi que une meilleure intégration continue.</p>
+
+<h3 id="le-no-flow">Le No-flow</h3>
+
+<p>C’est souvent ce qu’on utilise la première fois en se servant de git et gihub : chacun pousse sur la main lorsqu’il ou elle a rajouté une fonctionnalité, corrigé un bug, modifier une partie déjà existante.</p>
+
+<p>Travailler de cette mmanière est très peu pratique pour :</p>
+
+<ul>
+  <li>la relecture du code</li>
+  <li>une intégration continue</li>
+  <li>un nombre de personnes participant élevées</li>
+  <li>éviter des conflits de merge (que l’on veut au plus souvent éviter)</li>
+</ul>
+
+<p>Ce tutoriel est ici en grande partie pour vous montrer d’autres modes de travail afin de parfaire l’expérience et l’efficacité du travail à plusieurs sur un projet.</p>
+
+<h3 id="le-git-flow">Le Git Flow</h3>
+
+<h2 id="-les-branches-">– Les Branches –</h2>
+
+<p>Il existe une sémantique des branches, libre à chacun de se le réapproprier mais faire comme tout le monde ça aide souvent à la compréhension !</p>
+
+<h3 id="main">main</h3>
+
+<p>Cette branche contient le code de production(celui actuellement utilisé sur votre produit/système fonctionnel).
+Tout le code de développement(branch develop) est fusionné dans master au fur et à mesure que les features,etc… ont été dûment testées et validées.</p>
+
+<h3 id="develop">develop</h3>
+
+<p>Cette branche contient le code de pré-production. Lorsque les fonctionnalités sont terminées, elles sont fusionnées dans la branche de développement pour de futurs tests avant validation pour “partir en prod”.</p>
+
+<h3 id="feature">feature/*</h3>
+
+<p>Les branches feature sont utilisées pour développer de nouvelles fonctionnalités pour les prochaines versions. Elles peuvent être dérivées de develop et doivent être fusionnées avec develop(jamais main directement !).</p>
+
+<p>On ajoute après le / le nom de la feature ajoutée, par exemple : feature/filter_dog pour l’ajout d’un filtre chien sur votre application.</p>
+
+<h3 id="hotfix">hotfix/*</h3>
+
+<p>Les branches hotfix sont nécessaires pour agir immédiatement sur un statut non désiré de master. Peut se ramifier à partir de master et doit fusionner dans master et develop.</p>
+
+<h3 id="release">release/*</h3>
+
+<p>Les branches de version prennent en charge la préparation d’une nouvelle version de production. Elles permettent de corriger de nombreux bogues mineurs et de préparer les méta-données pour une version. Peut se ramifier à partir de develop et doit fusionner avec master et develop.</p>
+
+<h2 id="-les-commits-">– Les commits –</h2>
+
+<p>Le nom de ses commits est aussi important, une liste de commits mals nommés peut devenir vite illisible et occasioner des pertes
+de fluidité pour la relecture.</p>
+
+<p>«type»(«scope»): «subject»
+«BLANK LINE»</p>
+
+<p>«body»
+«BLANK LINE»
+«footer»</p>
+
+<p><strong>feature</strong>: Ajout d’une nouvelle fonctionnalité
+<strong>bugfix</strong>: Correction d’un bug
+<strong>hotfix</strong>: Correction d’un bug critique
+<strong>chore</strong>: Nettoyage du code
+<strong>experiment</strong>: Expérimentation de fonctionnalités.</p>
+
+<h3 id="sémantique-des-commits">Sémantique des commits</h3>
+
+<p>Pour les commits, afin de se retrouver dans cette soupe après avoir avancé longtemps dans le projet, on préfère aussi expliquer de manière très simple ce qu’un commit change.</p>
+
+<p>Précédé d’un type, le tableau ci-dessous référencant les plus courants utilisés :</p>
+
+<h2 id="-pull-request-pr-">– Pull request (PR) –</h2>
+
+<p>Il est fortement conseillé de passer par une Pull Request à chaque fois que l’on souhaite ajouter une modification sur un projet. Il permet d’avoir une première relecture par un ou plusieurs relecteurs pouvant commenter votre code là où il ferait défaut.</p>
+
+<p>Elles sont aussi un bon moyen d’apporter des infos sur une contribution, de définir à quelles issues elles répondent en les identifiants directement dans le commentaire.</p>
+
+<h2 id="gestion-du-repo---documentation">Gestion du repo - Documentation</h2>
+
+<p>Il est important de bien documenté son repository sur GitHub afin d’aidé à la compréhension de ce dernier : que ce soit pour un projet fermé si de nouveaux développeurs arrivent dans l’équipe, ou bien dans une dynamique open-source pour toute personne souhaitant participer au projet.</p>
+
+<p>Les fichiers Markdown(.md) sont donc vos meilleurs amis pour aider à la compréhension du projet.</p>
+
+<h3 id="readme">Readme</h3>
+
+<p>On vous le suggère souvent à la création du repo, je ne vais pas m’étaler dessus ici et vous redirige vers ce site documentant bien comment faire un bon Readme -&gt; <a href="makeareadme.com">makeareadme.com</a></p>
+
+<h3 id="contributing">Contributing</h3>
+
+<p>Il est d’usage aussi de réaliser un Contributing afin d’expliquer à toutes personnes participant au code/projet comment :</p>
+
+<ul>
+  <li>bien faire leur commits dans ce projet</li>
+  <li>ce qui est authorisé ou non</li>
+  <li>un “template” pour les issues</li>
+  <li>un “template” pour les pull requests</li>
+</ul>
+
+<p>Pour plus d’infos dessus je vous redirige vers le lien <a href="makeareadme.com">makeareadme.com</a></p>
+
+<p>Je vous dirige aussi vers le CONTRIBUTING.md de Atom cité plus haut, ainsi que celui de GodotEngine(Moteur de jeux open-source) ces derniers sont très explicites et aident vraiment à obtenir des commits, pull requests de qualités étant une grande aide à toute personne souhaitant participer.</p>
+
+<p><a href="https://github.com/atom/atom/blob/master/CONTRIBUTING.md">Atom_contributing</a>
+<a href="https://github.com/godotengine/godot/blob/master/CONTRIBUTING.md">Godot_contributing</a></p>
+
+<h2 id="versioning---sémantique-des-versions">Versioning - sémantique des versions</h2>
+
+<p>Pour les versions de votre projet il existe une sémantique précise.
+On peut résumer cette sémantique à l’aide de ce graphe ci-dessous.</p>
+
+<h2 id="sources">SOURCES</h2>
+
+<p>https://docs.github.com/en/get-started/quickstart/github-flow
+https://github.com/atom/atom
+https://makeareadme.com
+https://github.com/godotengine/godot/</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d&#39;informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d&#39;informatique</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
