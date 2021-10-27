@@ -236,8 +236,20 @@ plane.receiveShadow= true
 
 On remarque cependant que l'ombre est pixelisée : c'est parce que d'origine la `shadowMap` est de taille `512x512`, on peut l'augmenter par la commande :
 ```javascript
-light.shadowMapWidth = 1024;
-light.shadowMapHeight = 1024;
+light.shadowMapWidth = 512*8;
+light.shadowMapHeight = 1024*8;
+```
+On va aussi rajouter un léger effet de flou sur les bords de l'ombre:
+```javascript
+light.shadow.radius = 4;
+```
+
+Enfin, on aimerait ajouter une lumière ambiante partout dans notre scène, pour y voir un peu plus clair. 
+On rajoute donc :
+
+```javascript
+const ambientLight = new THREE.AmbientLight( 0xcccccc, 0.3 );
+scene.add( ambientLight );
 ```
 
 ### Textures
