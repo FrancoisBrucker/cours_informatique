@@ -1,134 +1,20 @@
 ---
 layout: page
-title:  "Introduction : Algorithme ? Code ?"
+title:  "Algorithme : code"
 category: cours
-tags: informatique cours
-author: "François Brucker"
 ---
 
-## Introduction
-
-Définition du 'Petit Robert'  d'un *algorithme* :
-
-> ensemble des règles opératoires propres à un *calcul*
-
-Qu'est-ce que ça veut dire ?
-
-* **algorithme** : ensemble des règles opératoires propres à un *calcul* 
-* **calcul** : enchaînement des actions nécessaires à l'accomplissement d'une *tâche*
-* **tâche** : ...
-
-On a utilisé un algorithme pour comprendre ce qu'est un algorithme : 
-
-* *Nom* : définition_petit_robert
-  * *paramètres* : un *mot_à_définir*
-  * *sortie* : aucune
-  * *description* : comprendre la définition d'un mot dans le 'Petit Robert'
-* *corps de l'algorithme* :
-  1. étant donné la définition nommée *définition* de *mot_à_définir* dans le 'Petit Robert'
-  2. afficher *définition* à l'écran.
-  3. pour chaque *mot* non compris dans *définition_mot* :
-     1. *définition_petit_robert(mot)*
-
-Nota Bene :
-
-* afficher à l'écran n'est **PAS** un retour de fonction/méthode/algorithme.
-* différence entre nom d'algorithme et exécution de fonction/méthode/algorithme avec des parenthèses
-*  **des** paramètres en entrée mais **une** sortie (qui peut être une structure composée comme une liste ou un dictionnaire)
-
-
-Donald Knuth (1938-) liste, comme prérequis d'un algorithme, [cinq propriétés](https://fr.wikipedia.org/wiki/Algorithme) :
-
-* finitude : *« Un algorithme doit toujours se terminer après un nombre fini d’étapes. »*
-* définition précise : *« Chaque étape d'un algorithme doit être définie précisément, les actions à transposer doivent être spécifiées rigoureusement et sans ambiguïté pour chaque cas. »*
-* entrées : *« […] des quantités qui lui sont données avant qu'un algorithme ne commence. Ces entrées sont prises dans un ensemble d'objets spécifié. »*
-* sortie : *« […] des quantités ayant une relation spécifiée avec les entrées. »*
-* rendement : *« […] toutes les opérations que l'algorithme doit accomplir doivent être suffisamment basiques pour pouvoir être en principe réalisées dans une durée finie par un homme utilisant un papier et un crayon. »*
-
-
-On voit en creux que des notions de **vérification** (preuve que l'algorithme fait bien ce qu'on pense qu'il fait) et de **complexité** (nombre d'opérations nécessaire à son fonctionnement) apparaissent.
-
-> **algorithme != code** (recopiez le 100 fois)
+> [Théorie et pratiques algorithmique]({% link cours/theorie-pratiques-algorithmique/index.md %}) / [algorithme]({% link cours/theorie-pratiques-algorithmique/1-algorithme/index.md %}) / [code]({% link cours/theorie-pratiques-algorithmique/1-algorithme/code.md %})
+{: .chemin}
 
 Pour que l'algorithme soit implémentable pour de vrai, il est nécessaire que sa description soit facilement transposable d'une langue à un langage de programmation.
 
 Le code va dépendre du langage, pour nous le python. Cela permet de voir si notre algorithme marche "en vrai". On utilisera les même principes, mais de façon différente. Ce sont deux face d'une même pièce. On ne peut pas faire l'un sans l'autre.
 
 
-## algorithme
-
-Pour nos algorithmes on voudra : 
-
-* qu'ils soient lisibles,
-* qu'ils soient justes,
-* en connaître les performances.
+attention : les réels n'existent pas en vrai !
 
 
-
-### lisible
-
-#### pseudo-code
-
-Le but d'un algorithme papier est d'être compris. On utilisera pour l'écrire une série de règles compréhensibles par tout le monde : le pseudo-code. Ce n'est ni une langue ni un langage.
-
-* tests et choix :
-	* plus petit que, plus grand que, égal à, etc
-	* si ... alors ... sinon
-	* si ... alors si ... alors ... sinon
-* affectations :
-	* une seule opération modifiant les variables
-* répétition :
-	* faire ... tant que ..., 
-	* tant que ... faire ..., 
-	* pour tout ... faire ..., 
-	* etc
-
-Le plus souvent, on utilisera un mix de python et de français.
-
-#### Attentions aux excès : trop détaillé
-
-il est plus clair d’écrire ça
-```
-tant que x > 0:
-    x = x - 1
-```	
-
-que :
-
-```
-A: 
-
-if x <= 0 
-goto B
-endif
-
-x=x-1
-goto A
-
-B:
-```
-
-#### Attentions aux excès : trop approximatif
-
-éviter le syndrome : "tire la chevillette et la bobinette cherra"
-
-Les opérateurs *complexes** sont des fonctions (d’autres algorithmes) qui doivent être décrits s’il ne sont pas immédiatement compréhensibles.
-
-#### Structures et objets utilisées 
-
-Lorsque l'on utilise des méthodes d'objets (comme une `ma_liste.index("?")`, `x in ma_chaine_de_caractères`) ou des structures compliquées (télécharger un fichier d'internet) on doit en connaître le coût : la complexité, les cas d'usage (être connecté), etc
-
-### preuve
-
-On **démontrera** le fonctionnement de l'algorithme en utilisant des preuves mathématiques.
-
-### performances
-
-On calculera la complexité de l'algorithme :
-* nombre d'opérations
-* place en mémoire
-
-Ces complexités dépendent des paramètres de l'algorithme et, parfois de circonstances extérieures comme l'état du réseau par exemple.
 
 ## code
 

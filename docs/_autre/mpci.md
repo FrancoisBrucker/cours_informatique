@@ -6,9 +6,6 @@ category: cours
 
 ## Introduction
 
-> TBD : cours 2020/2021. Pas à jour.
-{: .danger}
-
 Cours de programmation 2 en S2 MPCI.
 
 Est organisée en 3 types d'enseignements :
@@ -22,25 +19,23 @@ Est organisée en 3 types d'enseignements :
 
 Les divers contrôles intermédiaires seront à rendre directement sur [ametice](https://ametice.univ-amu.fr/course/view.php?id=70937).
 
-## Séances
-
-Chaque séance, à partir de la deuxième, commence par un test de 15min qui porte sur le cours précédent. Ce test sera à rendre sur [ametice](https://ametice.univ-amu.fr/course/view.php?id=70937).
-
-* vendredi 4h : **C,M** suivi d'un **SM** : pratiques de développement et développements pratique
-* mercredi 2h : **C,M** : complexité et preuve
-* vendredi 4h : **ST** suivi d'un **SM** : exponentiation rapide
-
-* mercredi 2h : **C,M** : tris
-* vendredi 4h : **ST** suivi d'un **SM** : tris
-
-* mercredi 2h : **DS** devoir surveillé
-* vendredi 4h : **C,M** suivi d'un **SM** : classes et objets
-
-* mercredi 2h : **C,M** algorithmes gloutons
-* vendredi 4h : **ST** algorithmes gloutons
-
-* mercredi 2h : **DS** examen final
-
 ## Plan des cours
 
-[le cours]({% link cours/algorithmie_code/index.md %})
+[le cours]({% link cours/theorie-pratiques-algorithmique/index.md %})
+
+Chaque partie est une semaine (2h mercredi et 4h vendredi). Il y aura 2 DS, les mercredi de la séance 4 et 7. De plus, chaque vendredi, il y aura un contrôle de 15min sur la séance du mercredi s'il n'y avait pas de DS.
+
+## ressources
+
+### tests
+
+1. code : [sujet]({% link cours/algorithmie_code/tests/2020_2021/1_test_sujet.md %}) et [corrigé]({% link cours/algorithmie_code/tests/2020_2021/1_test_corrige.md %})
+2. complexité : [sujet]({% link cours/algorithmie_code/tests/2020_2021/2_test_sujet.md %}) et [corrigé]({% link cours/algorithmie_code/tests/2020_2021/2_test_corrige.md %})
+3. preuve : [sujet]({% link cours/algorithmie_code/tests/2020_2021/3_test_sujet.md %}) et [corrigé]({% link cours/algorithmie_code/tests/2020_2021/3_test_corrige.md %})
+4. [DS (sujet et corrigé)]({% link cours/algorithmie_code/tests/2020_2021/4_ds_corrige.md %})
+5. modélisation : [sujet]({% link cours/algorithmie_code/tests/2020_2021/5_test_sujet.md %}) et [corrigé]({% link cours/algorithmie_code/tests/2020_2021/5_test_corrige.md %})
+6. gloutons : [sujet]({% link cours/algorithmie_code/tests/2020_2021/6_test_sujet.md %}) et [corrigé]({% link cours/algorithmie_code/tests/2020_2021/6_test_corrige.md %})
+
+### old
+
+[cours 2020/2021]({% link cours/algorithmie_code/index.md %})
