@@ -288,6 +288,7 @@ On va donc essayer de mettre en place une méthode de déplacement de la caméra
 
 ### Déplacement avec ZQSD
 
+Il existe plusieurs controleurs de caméra
 ### Rotation avec la Souris
 
 Une des méthodes les plus simples de déplacement de caméra consiste à autoriser une rotation de la caméraà l'aide de la souris. Ce type de controle s'appelle OrbitControl dans three.js. C'est un controle très simple à mettre en place et à utiliser. Juste en maintenant le clic gauche de la souris et en bougeant la souris, on change l'axe de visualisation de la caméra. Combiné à un déplacement grâce au touches ZQSD, on peut obtenir un controle sur la caméra similaire à un jeu fps.
