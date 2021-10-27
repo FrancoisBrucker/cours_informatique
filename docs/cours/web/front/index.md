@@ -36,9 +36,10 @@ Web front
 
 * ici js dans du html et pas dans du node (les imports sont différents par exemple, pas de typescript)
 * transpilage : <https://babeljs.io/>
-* webpack
+* [Packaging avec Webpack](https://francoisbrucker.github.io/cours_informatique/cours/web/front/webpack.md)
 
 
 
-> TBD : packaging
-{: .note}
+## SASS / PostCSS
+* [SASS](https://francoisbrucker.github.io/cours_informatique/cours/web/front/sass.md)
+* [PostCSS](https://francoisbrucker.github.io/cours_informatique/cours/web/front/postcss.md)
