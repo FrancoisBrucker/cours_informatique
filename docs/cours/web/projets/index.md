@@ -19,7 +19,9 @@ Des projets pour apprendre des technos web. Les projets sont fait pour être vue
 - [Utopia Engine]( {% link cours/web/projets/utopia-engine.md %})
 - [Yahtzee]({% link cours/web/projets/Yahtzee.md %})
 - [Mettre en prod un site sur un serveur]( {% link cours/web/projets/mettre_en_prod.md %})
-  
+- [Centrale Life]( {% link cours/web/projets/Projet_MD2_CentraleLife.md %})
+
+
 > TBD
 > faire des git avec les différents projets
 > partie sqlite3 à faire mieux sous windows. Chgt de path
