@@ -86,6 +86,27 @@ C'est tout bon, on peut passer au vif du sujet !
 
 ### Structure du projet
 
+Maintenant que toutes les librairies nécessaires ont été implémentées, on va pouvoir s'intéresser à la structure du code pour un projet three.js.
+Dans un premier temps, comme on a vu juste au desssus et comme dans tout projet js, on importe les différents éléments dont on aura besoin pour développer notre projet.
+Ensuite on initialise les variables importantes du projet ( en particulier la scène, la caméra et le renderer que l'on va voir juste après). Ces variables sont utilisées dans l'entiereté du projet et il est donc utile de les définir dès le début.
+```javascript
+let scene, renderer, camera;
+```
+On utilise ensuite une fonction d'initialisation pour donner des propriétés à ces variables et établir toutes les actions que l'on veut faire faire à notre environnement 3D. Les fonctions que l'on va utiliser ici seront définit plus bas dans le code (par exemple animate)
+```javascript
+init();
+
+function init() {
+    camera = ...;
+    scene = ...;
+    renderer = ...;
+    light = ...;
+    mesh = ...;
+    animate();
+}
+``` 
+On remarque que l'appel à la fonction init() a lieu avant la déclaration de celle-ci. Ce n'est pas une particularité de three.js mais directement de js. Le fait d'utiliser la déclaration *function* permet de définir la fonction avant qu'elle ne soit utilisée ailleurs, même si cet ailleurs est avant dans le code. 
+
 ### Scene, Camera et Renderer
 
 Donc on a vu que three.js utilise des outils afin de faciliter le travail de l'utilisateur. Les outils les plus importants sont les scènes, les caméras et les renderer (moteurs de rendu). Ces trois éléments sont essentiels à tout projet three.js, sans eux impossible d'afficher quoi que ce soit. Concrètement on va utiliser la caméra pour faire un rendu de la scène.
