@@ -16,7 +16,8 @@ Des projets pour apprendre des technos web. Les projets sont fait pour être vue
 ## Projets M2D
 
 - [PIXEL]( {% link cours/web/projets/Projet_M2D_PIXEL.md %})
-
+- [Mettre en prod un site sur un serveur]( {% link cours/web/projets/mettre_en_prod.md %})
+  
 > TBD
 > faire des git avec les différents projets
 > partie sqlite3 à faire mieux sous windows. Chgt de path
