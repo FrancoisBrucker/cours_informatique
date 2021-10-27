@@ -219,7 +219,7 @@ Les différents codes sources sont:
 	})	
 	~~~
 
-Il suffit d'ouvrir `index.html` pour avoir le rendu. La compilation `scss -> css` a été vue dans le cours sur SASS.
+Il suffit d'ouvrir `index.html` pour avoir le rendu. La compilation `scss -> css` a été vue dans le cours sur [SASS](https://francoisbrucker.github.io/cours_informatique/cours/web/front/sass).
 
 Bien que le projet soit simple, on aimerait améliorer la structure du projet au cas où on souhaite ajouter de nouvelles fonctionnalités. Jusqu'à présent, tout le fonctionnement de la calculatrice est géré dans un seul fichier `index.js`. C'est un peu maladroit: plus notre projet prend de l'ampleur, plus notre fichier javascript devient long et difficile à maintenir. Il est plus judicieux de le diviser selon des fonctionnalités qui remplissent un objectif différent. On préfère donc le scinder selon:
 + la déclaration de variables
@@ -534,7 +534,7 @@ Revenons à notre projet de calculatrice. Avec Webpack, on souhaite n'avoir qu'u
 Le [guide officiel](https://webpack.js.org/guides/) de Webpack permet d'aller bien plus loin: lier d'autres types de fichiers, maîtriser la sortie, ...
 
 ### Postcss
-voir cours postcss
+Voir le cours sur [PostCSS](https://francoisbrucker.github.io/cours_informatique/cours/web/front/postcss)
 
 ### Comment Réact utilise Webpack
 Savoir comment React utilise Webpack pour contruire la page est un avantage pour comprendre Webpack lui-même.

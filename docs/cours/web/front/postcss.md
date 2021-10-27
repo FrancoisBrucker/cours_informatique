@@ -12,7 +12,7 @@ authors:
 	<img src="./images/postcss.png">
 </p>
 ### SASS, la partie émergée de l'iceberg
-On a vu dans le cours sur SASS à quel point l'écriture du CSS peut être drastiquement améliorée:
+On a vu dans le cours sur [SASS](https://francoisbrucker.github.io/cours_informatique/cours/web/front/sass) à quel point l'écriture du CSS peut être drastiquement améliorée:
 + Les variables permettent une cohérence à travers l'ensemble des fichiers `scss`, ce qui est pariculièrement utile pour le respect d'une charte graphique par exemple
 + Le nesting permet de rendre le code plus flexible et bien plus agréable à lire
 + L'utilisation de modules permet une structure plus explicite et facile à maintenir
@@ -34,7 +34,7 @@ Et si jamais on ne trouve pas son bonheur, PostCSS permet d'écrire ses propres 
 
 Au-delà d'une utilisation individuelle, certains plugins permettent d'écrire un code plus homogène au sein d'une équipe. Par exemple, l'utilisation de linters et prefixers encouragent l'utilisation de mêmes conventions par les différents développeurs même s'ils ont des pratiques différentes. PostCSS s'intègre très facilement dans n'importe quel projet d'envergure.
 ## Application
-On reprend le projet très basique de calculatrice du cours sur Webpack, après empaquetage. Pour rappel, la structure du projet est : 
+On reprend le projet très basique de calculatrice du cours sur [Webpack](https://francoisbrucker.github.io/cours_informatique/cours/web/front/webpack), après empaquetage. Pour rappel, la structure du projet est : 
 
 ~~~
 .
