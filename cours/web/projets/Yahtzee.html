@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Yahtzee VueJS | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Yahtzee VueJS" />
+<meta name="author" content="Mickaël Rolland" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
+<link rel="canonical" href="/cours_informatique/cours/web/projets/Yahtzee.html" />
+<meta property="og:url" content="/cours_informatique/cours/web/projets/Yahtzee.html" />
+<meta property="og:site_name" content="cours d’informatique" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Yahtzee VueJS" />
+<script type="application/ld+json">
+{"description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","headline":"Yahtzee VueJS","url":"/cours_informatique/cours/web/projets/Yahtzee.html","author":{"@type":"Person","name":"Mickaël Rolland"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css">
+
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+</head>
+
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Yahtzee VueJS</h1>Auteurs :
+      <ul>
+      
+        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Mickaël Rolland</span></span></li>
+      
+        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Nathanaël Soulat</span></span></li>
+      
+      </ul></p></p>
+  </header>
+
+  <div class="post-content">
+    <p>Ce projet s’inscrit dans le cours de Méthode de Développement de l’option 3A Digital.e. Le code source est sur <a href="https://github.com/nsoulat/Yahtzee">GitHub</a> et est déployé sur ces plantes aromatiques de l’OVH: <a href="http://node.fenouil.ovh1.ec-m.fr/">fenouil</a> et <a href="http://node.girofle.ovh1.ec-m.fr/">girofle</a>.</p>
+
+<h2 id="le-yahtzee">Le Yahtzee</h2>
+
+<h3 id="présentation-du-jeu">Présentation du jeu</h3>
+
+<p>Le Yahtzee est un jeu de société traditionnel de hasard raisonné. 
+Le but est d’enchaîner les combinaisons à l’aide de cinq dés pour remporter un maximum de points.</p>
+
+<h3 id="règles">Règles</h3>
+
+<p>Vous avez le droit à 3 lancers de dés à chaque tour. Après chaque lancer, vous pouvez garder certains dés et donc ne relancer que ceux que vous souhaitez. Vous n’êtes pas obligés de faire les 3 lancers.</p>
+
+<p>Quand vous êtes satisfaits de vos lancers, ou si vous avez déjà effectué les 3 possibles, il faut choisir une des 13 combinaisons disponibles sur la grille, dans n’importe quel ordre. 
+Cependant, à chaque fin de tour, vous êtes obligés d’en remplir une.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Combinaisons</th>
+      <th>Valeurs</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Partie de 1</td>
+      <td>total des faces de dés 1</td>
+    </tr>
+    <tr>
+      <td>Partie de 2</td>
+      <td>total des faces de dés 2</td>
+    </tr>
+    <tr>
+      <td>Partie de 3</td>
+      <td>total des faces de dés 3</td>
+    </tr>
+    <tr>
+      <td>Partie de 4</td>
+      <td>total des faces de dés 4</td>
+    </tr>
+    <tr>
+      <td>Partie de 5</td>
+      <td>total des faces de dés 5</td>
+    </tr>
+    <tr>
+      <td>Partie de 6</td>
+      <td>total des faces de dés 6</td>
+    </tr>
+    <tr>
+      <td>Brelan (trois dés identiques)</td>
+      <td>Somme des cinq dés</td>
+    </tr>
+    <tr>
+      <td>Carré (quatre dés identiques)</td>
+      <td>Somme des cinq dés</td>
+    </tr>
+    <tr>
+      <td>Full (trois dés identiques et deux dés identiques)</td>
+      <td>25 points</td>
+    </tr>
+    <tr>
+      <td>Petite suite (suite de 4 chiffres)</td>
+      <td>30 points</td>
+    </tr>
+    <tr>
+      <td>Grande suite (suite de 5 chiffres)</td>
+      <td>40 points</td>
+    </tr>
+    <tr>
+      <td>Yahtzee (cinq dés identiques)</td>
+      <td>50 points</td>
+    </tr>
+    <tr>
+      <td>Chance</td>
+      <td>Somme des cinq dés</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Si la somme des parties est strictement supérieur à 62 points, vous obtenez un bonus de 35 points.</p>
+
+<p>Le gagnant est celui qui a le plus de points.</p>
+
+<h3 id="la-particularité-de-notre-yahtzee">La particularité de notre Yahtzee</h3>
+
+<p>Il y a la table des meilleurs scores.</p>
+
+<h2 id="détails-techniques">Détails techniques</h2>
+
+<h3 id="avec-quoi-il-a-été-fait-">Avec quoi il a été fait ?</h3>
+
+<p><img src="https://user-images.githubusercontent.com/75546258/139152006-0c3b1778-7c31-41c3-ac3d-1047c3541ee3.png" alt="image" /></p>
+
+<p>Serveur backend avec Express (de NodeJS).
+Frontend en VueJS (avec des fichiers JS en plus).
+Sequelize en ORM et PostgreSQL pour la base de données.</p>
+
+<blockquote>
+  <p>Si la construction du backend <code class="language-plaintext highlighter-rouge">Express + Sequelize + PostgreSQL</code> vous intéresse, vous pouvez aller voir le <a href="/cours_informatique/cours/web/js/tuto_express_postregresql.html">tutoriel réalisé par nos soins</a>.</p>
+</blockquote>
+
+<h3 id="architecture">Architecture</h3>
+
+<p>Nous avons fait le choix de séparer le frontend et le backend car le backend dispose d’une API REST et VueJS fonctionne très bien en tant que <em>single-page app</em>.</p>
+
+<p>Voici l’architecture (simplifiée) de notre projet</p>
+
+<pre><code class="language-txt">/Yahtzee/
+├── .github/              /* bots personnalisés GitHub
+├── backend/
+|  ├── config/            /* fichiers de configuration
+|  ├── controllers/       /* controllers api
+|  ├── models/            /* modèles en DB
+|  ├── routes/            /* référencement des routes api
+|  ├── .gitignore
+|  ├── package.json
+|  ├── package-lock.json  /* dépendances du backend
+|  └── server.js          /* fichier source du backend
+├── frontend/
+|  ├── public/
+|  ├── src/
+|  |  ├── assets/         /* images et json
+|  |  ├── classes/        /* class et objet JS
+|  |  ├── components/     /* component Vue
+|  |  ├── router/         /* référencement des routes du frontend
+|  |  ├── services/       /* service pour appeler l'API du back
+|  |  ├── views/          /* views Vue
+|  |  ├── App.vue         /* view parente
+|  |  └── main.js         /* fichier source du frontend
+|  ├── .gitignore
+|  ├── babel.config.js
+|  ├── package.json
+|  ├── package-lock.json  /* dépendances du frontend
+|  └── vue.config.js
+├── scripts/              /* scripts pour les npm run
+├── .gitignore
+├── package.json
+└── README.md
+</code></pre>
+
+<h3 id="dépendances-principales-frontback">Dépendances principales front/back</h3>
+
+<p>Backend :</p>
+
+<ul>
+  <li>express : framework très répandu pour la construction d’applications web.</li>
+  <li>pg : dépendance permettant d’utiliser la base de données PostgreSQL.</li>
+  <li>sequelize : ORM prenant en charge le dialecte PostgreSQL.</li>
+</ul>
+
+<p>Frontend :</p>
+
+<ul>
+  <li>vue : framework JavaScript pour la construction d’applications web monopages.</li>
+  <li>vue-router : permet de gérer le routage sur notre application web monopage.</li>
+  <li>moment : permet de gérer la conversion des formats de dates et d’heures.</li>
+</ul>
+
+<h3 id="installer-le-projet-et-lancer-le-projet">Installer le projet et lancer le projet</h3>
+
+<p>Tout en un:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone git@github.com:nsoulat/Yahtzee.git
+<span class="nb">cd </span>Yahtzee
+npm run update
+npm run build
+npm run start
+</code></pre></div></div>
+
+<p>Explications :
+Une fois que vous avez cloner le repo et êtes à la root du Yahtzee (dans le dossier Yahtzee) :</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">npm run update</code> permet d’installer les dépendances du backend et du frontend conformément au <code class="language-plaintext highlighter-rouge">package-lock.json</code> (la commande est équivalente à un <code class="language-plaintext highlighter-rouge">npm ci</code> dans les dossiers backend et frontend).</li>
+  <li><code class="language-plaintext highlighter-rouge">npm run build</code> permet de build le frontend et de placer ce build dans le dossier <code class="language-plaintext highlighter-rouge">frontend/dist</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">npm run start</code> permet de lancer le serveur backend. Il utilise le dossier <code class="language-plaintext highlighter-rouge">frontend/dist</code> comme dossier static.</li>
+</ul>
+
+<blockquote>
+  <p>En cas de problèmes: se référer au <a href="https://github.com/nsoulat/Yahtzee#readme">README du projet</a></p>
+</blockquote>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d&#39;informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d&#39;informatique</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

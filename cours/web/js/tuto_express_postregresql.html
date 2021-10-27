@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Utiliser une base de données PostgreSQL avec Sequelize et NodeJS | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Utiliser une base de données PostgreSQL avec Sequelize et NodeJS" />
+<meta name="author" content="Mickaël Rolland" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
+<link rel="canonical" href="/cours_informatique/cours/web/js/tuto_express_postregresql.html" />
+<meta property="og:url" content="/cours_informatique/cours/web/js/tuto_express_postregresql.html" />
+<meta property="og:site_name" content="cours d’informatique" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Utiliser une base de données PostgreSQL avec Sequelize et NodeJS" />
+<script type="application/ld+json">
+{"description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","headline":"Utiliser une base de données PostgreSQL avec Sequelize et NodeJS","url":"/cours_informatique/cours/web/js/tuto_express_postregresql.html","author":{"@type":"Person","name":"Mickaël Rolland"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css">
+
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+</head>
+
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Utiliser une base de données PostgreSQL avec Sequelize et NodeJS</h1>Auteurs :
+      <ul>
+      
+        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Mickaël Rolland</span></span></li>
+      
+        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Nathanaël Soulat</span></span></li>
+      
+      </ul></p></p>
+  </header>
+
+  <div class="post-content">
+    <h2 id="présentation-de-sequelize">Présentation de Sequelize</h2>
+
+<p>Sequelize est un <a href="https://stackoverflow.com/questions/1279613/what-is-an-orm-how-does-it-work-and-how-should-i-use-one">ORM</a> conçu pour les applications NodeJS utilisant PostgreSQL, MySQL, MariaDB, SQLite ou Microsoft SQL Server.</p>
+
+<p>L’avantage d’utiliser un ORM est d’éviter d’avoir à écrire des requêtes SQL natives, ce qui se présenterait sous la forme de</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">myDB</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="dl">"</span><span class="s2">SELECT id, stats, nom FROM players</span><span class="dl">"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>et qui aurait l’inconvénient d’être du code non-scalable. En effet, si jamais le modèle correspondant à players venait à changer (“nom” devient “name” par exemple), il faudrait manuellement changer toutes les requêtes où on utilisait “nom”.</p>
+
+<p>Utiliser un ORM permet de remédier à ça. C’est l’ORM lui-même qui va se charger de transcrire les requêtes SQL.</p>
+
+<h2 id="ajouter-sa-propre-db-postgresql">Ajouter sa propre DB PostgreSQL</h2>
+
+<p>Nous allons dans un premier temps installer PostgreSQL sur notre machine (le tuto a été réalisé avec un PC sous Windows, libre à vous d’ajouter des variantes pour Linux et MacOS).
+Puis nous ferons une simple API liée à une ressource nommée <code class="language-plaintext highlighter-rouge">Player</code>.
+Ensuite, nous verrons comment mettre en fonctionnement ce code sur l’OVH en utilisant la base de données PostgreSQL de ce dernier (l’OVH dispose déjà d’une base de données PostgreSQL donc il n’y a pas besoin de la créer).</p>
+
+<p>Pour ceux utilisant Windows, vous pouvez installer <a href="https://www.enterprisedb.com/downloads/postgres-postgresql-downloads">l’assistant d’installation de PostgreSQL</a>. Celui-ci vous permettra d’installer directement <strong>PostgreSQL Server</strong>, <strong>pgAdmin 4</strong> (interface graphique de monitoring), et <strong>Command Line Tools</strong>.</p>
+
+<p>Sinon vous pouvez suivre le <a href="https://www.postgresql.org/docs/current/tutorial-install.html">tutoriel officiel</a> pour installer PostgreSQL et si tous les requirements semblent bon, vous pouvez installer PostgreSQL en commençant par <a href="https://www.postgresql.org/download/">télécharger le fichier source</a> (en suivant les indications de PostgreSQL).</p>
+
+<p>Lors de ces installations, retenez bien votre mot de passe et l’utilisateur pour se connecter à votre base de données PostgreSQL !</p>
+
+<p>Après avoir installé PostgreSQL Server et pgAdmin 4, créons une Database dans notre PostgreSQL.
+Pour cela, ouvrez pgAdmin 4, entrez votre mot de passe choisi précédemment.</p>
+
+<p>Vous devriez avoir PostgreSQL 14 dans Servers (cf ci-dessous).
+<img src="https://user-images.githubusercontent.com/75546258/138589692-1fdf857c-32e2-4dc1-9c41-743af733a5a0.png" alt="image" /></p>
+
+<p>Dans <code class="language-plaintext highlighter-rouge">PostgreSQL 14</code>, il y a normalement <code class="language-plaintext highlighter-rouge">Database</code> qui contient une base de données nommée <code class="language-plaintext highlighter-rouge">postgres</code>. Nous allons en créer une autre, pour s’entrainer. Faites un click droit sur <code class="language-plaintext highlighter-rouge">Database</code> puis <code class="language-plaintext highlighter-rouge">Create</code> puis <code class="language-plaintext highlighter-rouge">Database...</code>.</p>
+
+<p>Il reste simplement à nommer notre base de données. Laissons <code class="language-plaintext highlighter-rouge">postgres</code> comme <code class="language-plaintext highlighter-rouge">Owner</code> (c’est le user par défaut et celui que vous utilisez actuellement <em>normalement</em>).</p>
+
+<p><img src="https://user-images.githubusercontent.com/75546258/138589821-e96aba23-ef40-47b2-9e4d-3b97e476666b.png" alt="image" /></p>
+
+<p>Cliquez sur <code class="language-plaintext highlighter-rouge">Save</code> et voilà votre base de données est créée !</p>
+
+<p>Dans votre Database puis <code class="language-plaintext highlighter-rouge">Schemas</code>, vous pouvez trouver les <code class="language-plaintext highlighter-rouge">Tables</code>. Il n’y en a pour le moment aucune. Nous laisserons l’ORM les créer pour nous par la suite!
+<img src="https://user-images.githubusercontent.com/75546258/138589922-a38c4ced-71b2-481e-80fb-5c783a0029aa.png" alt="image" /></p>
+
+<h2 id="setup">Setup</h2>
+
+<p>Avant de commencer cette partie du tutoriel, assurez-vous d’avoir bien installé <code class="language-plaintext highlighter-rouge">express</code>.</p>
+
+<p>Installation des modules utiles dans ton invite de commande préférée :</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install </span>sequelize pg pg-hstore <span class="nt">--save</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p><code class="language-plaintext highlighter-rouge">pg</code> pour PostgreSQL et <code class="language-plaintext highlighter-rouge">pg-hstore</code> pour convertir les données dans le format hstore de PostgreSQL.</p>
+</blockquote>
+
+<h2 id="adapter-son-server-backend">Adapter son server Backend</h2>
+
+<p>Ici, nous séparons le front-end et le back-end, donc pas de HTML/CSS dans ce tutoriel, notre back-end ne renverra que du JSON. C’est au front-end d’appeler les routes du back-end pour récupérer le JSON et d’afficher comme souhaité toutes les informations obtenues.</p>
+
+<blockquote>
+  <p>A la fin, votre dossier d’application devra ressembler à ça:</p>
+</blockquote>
+
+<pre><code class="language-txt">C:\Users\Moi\Tuto\src
+├── config
+|  ├── .gitignore
+|  ├── config.json
+|  ├── config.model.json
+|  └── db.config.js
+├── controllers
+|  └── player.controller.js
+├── models
+|  ├── index.js
+|  └── player.model.js
+├── node_modules
+├── package-lock.json
+├── package.json
+├── README.md
+├── routes
+|  └── player.routes.js
+└── server.js
+</code></pre>
+
+<h2 id="configurer-postgresql-et-sequelize">Configurer PostgreSQL et Sequelize</h2>
+
+<p>Créons un dossier <code class="language-plaintext highlighter-rouge">config</code> dans lequel on va mettre des fichiers de configuration. Dans ce dossier, créons un fichier <code class="language-plaintext highlighter-rouge">config.json</code>. Celui-ci est propre à l’utilisateur, c’est-à-dire qu’il ne faut pas le <em>push</em> sur GitHub, puisqu’il contient des configurations spécifiques à l’ordinateur utilisé.
+Mais pour garder une cohérence entre tous les <code class="language-plaintext highlighter-rouge">config.json</code> des différents utilisateurs (par exemple ma machine perso, l’ovh, etc…) on va aussi mettre un fichier <code class="language-plaintext highlighter-rouge">config.model.json</code> qui contiendra des “fausses” valeurs (ou par défaut). Ce fichier sera alors à <em>push</em>, ainsi, chaque utilisateur devra copier ce <code class="language-plaintext highlighter-rouge">config.model.json</code> lors du setup de l’application sur sa machine, en remplaçant les fausses valeurs par celles correspondant à son propre ordinateur. Il devra enregistrer ce fichier en tant que <code class="language-plaintext highlighter-rouge">config.json</code>.</p>
+
+<p>Ainsi dans notre <code class="language-plaintext highlighter-rouge">config.model.json</code> on va mettre :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+  <span class="dl">"</span><span class="s2">DATABASE</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">DB</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">myDB</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">USER</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">user</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">PASSWORD</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">password</span><span class="dl">"</span>
+  <span class="p">},</span>
+  <span class="dl">"</span><span class="s2">SERVER</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">HOST</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">localhost</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">PORT</span><span class="dl">"</span><span class="p">:</span> <span class="mi">8080</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Et dans votre <code class="language-plaintext highlighter-rouge">config.json</code> vous mettez la même chose mais avec les bonnes valeurs (<em>ie</em> le nom de la database que vous avez créée précédement, votre <em>user</em> et <em>password</em> qui vont avec, ainsi que le hostname que vous souhaitez (vous pouvez laisser <code class="language-plaintext highlighter-rouge">localhost</code> ou mettre <code class="language-plaintext highlighter-rouge">127.0.0.1</code>) et le port souhaité).</p>
+
+<p>Voici à quoi ressemble mon <code class="language-plaintext highlighter-rouge">config.json</code>:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+  <span class="dl">"</span><span class="s2">DATABASE</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">DB</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">tutoPlayer</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">USER</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">postgres</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">PASSWORD</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">LEAK</span><span class="dl">"</span>
+  <span class="p">},</span>
+  <span class="dl">"</span><span class="s2">SERVER</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">HOST</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">localhost</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">PORT</span><span class="dl">"</span><span class="p">:</span> <span class="mi">8080</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Ajoutez un <code class="language-plaintext highlighter-rouge">.gitignore</code> dans le dossier <code class="language-plaintext highlighter-rouge">Config</code> et mettez-y <code class="language-plaintext highlighter-rouge">config.json</code> pour ne pas <em>commit</em> votre fichier de config perso. C’est important de ne pas <strong>leak</strong> vos identifiants de connexion !</p>
+
+<p>Toujours dans votre dossier config, vous allez ajouter un fichier
+<code class="language-plaintext highlighter-rouge">db.config.js</code> qui contient les lignes ci-dessous :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">DBCONFIG</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">./config.json</span><span class="dl">"</span><span class="p">).</span><span class="nx">DATABASE</span><span class="p">;</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">user</span><span class="p">:</span> <span class="nx">DBCONFIG</span><span class="p">.</span><span class="nx">USER</span><span class="p">,</span>
+    <span class="na">password</span><span class="p">:</span> <span class="nx">DBCONFIG</span><span class="p">.</span><span class="nx">PASSWORD</span><span class="p">,</span>
+    <span class="na">DB</span><span class="p">:</span> <span class="nx">DBCONFIG</span><span class="p">.</span><span class="nx">DB</span><span class="p">,</span>
+    <span class="na">dialect</span><span class="p">:</span> <span class="dl">"</span><span class="s2">postgres</span><span class="dl">"</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">user</code>, <code class="language-plaintext highlighter-rouge">password</code>, <code class="language-plaintext highlighter-rouge">DB</code> et <code class="language-plaintext highlighter-rouge">dialect</code> sont requis pour créer la connexion avec la base de données PostgreSQL.</p>
+
+<p>Créons un dossier <code class="language-plaintext highlighter-rouge">models</code> qui contiendra les modèles correspondant aux tables contenues dans notre base de données.</p>
+
+<p>Commençons par ajouter le fichier <code class="language-plaintext highlighter-rouge">index.js</code> dans ce dossier <code class="language-plaintext highlighter-rouge">models</code> :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">dbConfig</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">../config/db.config.js</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">Sequelize</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">sequelize</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">sequelize</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Sequelize</span><span class="p">(</span>
+    <span class="nx">dbConfig</span><span class="p">.</span><span class="nx">DB</span><span class="p">,</span>
+    <span class="nx">dbConfig</span><span class="p">.</span><span class="nx">USER</span><span class="p">,</span>
+    <span class="nx">dbConfig</span><span class="p">.</span><span class="nx">PASSWORD</span><span class="p">,</span>
+    <span class="p">{</span>
+      <span class="na">dialect</span><span class="p">:</span> <span class="nx">dbConfig</span><span class="p">.</span><span class="nx">dialect</span><span class="p">,</span>
+      <span class="na">operatorsAliases</span><span class="p">:</span> <span class="mi">0</span> <span class="c1">// 0 for false</span>
+    <span class="p">});</span>
+
+<span class="kd">const</span> <span class="nx">db</span> <span class="o">=</span> <span class="p">{};</span>
+
+<span class="nx">db</span><span class="p">.</span><span class="nx">Sequelize</span> <span class="o">=</span> <span class="nx">Sequelize</span><span class="p">;</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">sequelize</span> <span class="o">=</span> <span class="nx">sequelize</span><span class="p">;</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">db</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Ce fichier utilise les configurations déclarées dans notre fichier <code class="language-plaintext highlighter-rouge">db.config.js</code>. Pour en savoir plus sur la configuration de Sequelize voir <a href="https://sequelize.org/master/class/lib/sequelize.js~Sequelize.html#instance-constructor-constructor">ici</a>.</p>
+
+<p>Il ne reste plus qu’à utiliser ce module en ajoutant les lignes suivantes dans le <code class="language-plaintext highlighter-rouge">server.js</code> (ce fichier est parfois appelé <code class="language-plaintext highlighter-rouge">index.js</code>) qui se trouve à la root de notre application :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">db</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">./models</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">sequelize</span><span class="p">.</span><span class="nx">sync</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>Cette dernière ligne permet de lancer la synchronisation avec la DB lors du lancement du serveur.</p>
+
+<p>Profitez-en pour récupérer les valeurs de votre configuration perso pour le hostname et le port. Voici à quoi ressemble mon <code class="language-plaintext highlighter-rouge">server.js</code> à ce moment du tuto :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">express</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">()</span>
+
+<span class="kd">const</span> <span class="nx">serverConfig</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">./config/config.json</span><span class="dl">"</span><span class="p">).</span><span class="nx">SERVER</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">HOSTNAME</span> <span class="o">=</span> <span class="nx">serverConfig</span><span class="p">.</span><span class="nx">HOST</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">PORT</span> <span class="o">=</span> <span class="nx">serverConfig</span><span class="p">.</span><span class="nx">PORT</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">db</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">./models</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">sequelize</span><span class="p">.</span><span class="nx">sync</span><span class="p">();</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">date</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">())</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Time:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">date</span><span class="p">.</span><span class="nx">toLocaleDateString</span><span class="p">(),</span> <span class="nx">date</span><span class="p">.</span><span class="nx">toLocaleTimeString</span><span class="p">(),</span> <span class="dl">"</span><span class="s2">; url :</span><span class="dl">"</span><span class="p">,</span> <span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="p">);</span>
+    <span class="nx">next</span><span class="p">();</span> <span class="c1">// sans cette ligne on ne pourra pas poursuivre.</span>
+<span class="p">})</span>
+
+<span class="c1">// simple route</span>
+<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">/</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span>
+        <span class="na">status</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+        <span class="na">message</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Welcome to the backend.</span><span class="dl">"</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">et c'est le 404 : </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="p">);</span>
+
+    <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">=</span> <span class="mi">404</span><span class="p">;</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">);</span>
+
+    <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span>
+        <span class="na">status</span><span class="p">:</span> <span class="mi">404</span><span class="p">,</span>
+        <span class="na">message</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Request not found</span><span class="dl">"</span>
+    <span class="p">})</span>
+<span class="p">})</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">PORT</span><span class="p">,</span> <span class="nx">HOSTNAME</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Server is running at http://</span><span class="p">${</span><span class="nx">HOSTNAME</span><span class="p">}</span><span class="s2">:</span><span class="p">${</span><span class="nx">PORT</span><span class="p">}</span><span class="s2">.`</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>Vous pourrez remarquer que j’ai un peu pris de l’avance et que mon serveur renvoie des JSON plutôt que du HTML.</p>
+
+<h2 id="ajouter-un-modèle">Ajouter un modèle</h2>
+
+<p>Pour le moment, notre database est vide.
+Ajoutons dans le dossier <code class="language-plaintext highlighter-rouge">models</code> un fichier <code class="language-plaintext highlighter-rouge">player.model.js</code> contenant ceci :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">(</span><span class="nx">sequelize</span><span class="p">,</span> <span class="nx">Sequelize</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">Player</span> <span class="o">=</span> <span class="nx">sequelize</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="dl">"</span><span class="s2">player</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">name</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">type</span><span class="p">:</span> <span class="nx">Sequelize</span><span class="p">.</span><span class="nx">STRING</span>
+    <span class="p">},</span>
+    <span class="na">birthDate</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">type</span><span class="p">:</span> <span class="nx">Sequelize</span><span class="p">.</span><span class="nx">DATEONLY</span>
+    <span class="p">},</span>
+    <span class="na">isPremium</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">type</span><span class="p">:</span> <span class="nx">Sequelize</span><span class="p">.</span><span class="nx">BOOLEAN</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+
+  <span class="k">return</span> <span class="nx">Player</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>En plus des colonnes <code class="language-plaintext highlighter-rouge">name</code>, <code class="language-plaintext highlighter-rouge">birthDate</code> et <code class="language-plaintext highlighter-rouge">isPremium</code>, les colonnes <code class="language-plaintext highlighter-rouge">id</code>, <code class="language-plaintext highlighter-rouge">createdAt</code> et <code class="language-plaintext highlighter-rouge">updatedAt</code> sont générées automatiquement dans notre base de données.</p>
+
+<p>Afin que Sequelize prenne en compte ce modèle, on ajoute cette ligne dans <code class="language-plaintext highlighter-rouge">models/index.js</code> juste après la déclaration de <code class="language-plaintext highlighter-rouge">db.Sequelize</code> et <code class="language-plaintext highlighter-rouge">db.sequelize</code> :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">db</span><span class="p">.</span><span class="nx">players</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">./player.model.js</span><span class="dl">"</span><span class="p">)(</span><span class="nx">sequelize</span><span class="p">,</span> <span class="nx">Sequelize</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Cela permet à Sequelize d’ajouter la table des Players dans la base de données (dès qu’on lance le serveur, Sequelize va vérifier si la table des Players existe, si ce n’est pas le cas, elle va la créer). Voilà comment notre ORM nous permet simplement de créer des tables SQL !</p>
+
+<h2 id="les-fonctions-crud">Les fonctions CRUD</h2>
+
+<p>L’avantage avec Sequelize c’est qu’il n’y a pas besoin d’écrire les requêtes SQL, c’est lui qui s’en charge.</p>
+
+<p>Notre objet <code class="language-plaintext highlighter-rouge">Player</code> possède par défaut déjà les méthodes suivantes :</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Player.create(object)</code> où <code class="language-plaintext highlighter-rouge">object</code> est un JSON/dictionnaire avec les colonnes en clés.</li>
+  <li><code class="language-plaintext highlighter-rouge">Player.findByPk(id)</code> pour récuper un Player par son Id</li>
+  <li><code class="language-plaintext highlighter-rouge">Player.findAll()</code> pour récuperer tous les Players</li>
+  <li><code class="language-plaintext highlighter-rouge">Player.update(data, where: {id: id})</code> pour mettre à jour un Player ayant un certain Id</li>
+  <li><code class="language-plaintext highlighter-rouge">Player.destroy(where: {id: id})</code> pour supprimer un Player ayant un certain Id</li>
+  <li><code class="language-plaintext highlighter-rouge">Player.destroy(where: {})</code> pour supprimer tous les Players</li>
+  <li><code class="language-plaintext highlighter-rouge">Player.findAll({ where: { isPremium: ...} })</code> pour récupérer les Players suivant certains critères.</li>
+</ul>
+
+<p>Ces méthodes seront utilisées dans le Controller.</p>
+
+<h2 id="faire-des-post">Faire des POST</h2>
+
+<p>Avant de créer le Controller, on va adapter notre <code class="language-plaintext highlighter-rouge">server.js</code>.</p>
+
+<p>Comme expliqué <a href="https://stackoverflow.com/questions/23259168/what-are-express-json-and-express-urlencoded">ici</a>, <code class="language-plaintext highlighter-rouge">express</code> a des <em>Middlewares</em> (des méthodes appelées lors de la réception d’une requête, et avant la réponse à la requête, qui permettent notamment des vérifications de connexion, de sécurité, etc…) afin que notre serveur back-end soit configuré pour recevoir du JSON. Il faut ajouter cette ligne dans le <code class="language-plaintext highlighter-rouge">server.js</code> (juste après <code class="language-plaintext highlighter-rouge">const app = express()</code> par exemple) :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// parse requests of content-type - application/json</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">json</span><span class="p">());</span>
+
+<span class="c1">// parse requests of content-type - application/x-www-form-urlencoded</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">urlencoded</span><span class="p">({</span> <span class="na">extended</span><span class="p">:</span> <span class="kc">true</span> <span class="p">}));</span>
+</code></pre></div></div>
+
+<p>La deuxième commande nous permet de configurer la réception de content-type pour le type <em>x-www-form-urlencoded</em> ce qui correspond aux requêtes avec des list de paire <em>name/value</em> dans l’url.</p>
+
+<blockquote>
+  <p>Par exemple si on souhaite récupérer les livres en anglais de genre science : <code class="language-plaintext highlighter-rouge">GET https://exemple.com/api/livres/langue=anglais&amp;genre=science</code>. Ici les paires <em>name/value</em> sont <em>langue/anglais</em> et <em>genre/science</em>.</p>
+</blockquote>
+
+<h2 id="le-controller">Le Controller</h2>
+
+<p>Créons un dossier <code class="language-plaintext highlighter-rouge">controllers</code> qui contiendra le fichier <code class="language-plaintext highlighter-rouge">player.controller.js</code> défini ci-après :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">db</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">../models</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">Player</span> <span class="o">=</span> <span class="nx">db</span><span class="p">.</span><span class="nx">players</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">Op</span> <span class="o">=</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Sequelize</span><span class="p">.</span><span class="nx">Op</span><span class="p">;</span>
+
+<span class="c1">// Creation</span>
+<span class="nx">exports</span><span class="p">.</span><span class="nx">create</span> <span class="o">=</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// Validate request</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">title</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">400</span><span class="p">).</span><span class="nx">send</span><span class="p">({</span>
+      <span class="na">message</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Content can not be empty!</span><span class="dl">"</span>
+    <span class="p">});</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Créer un Player (les colonnes id, createdAt et updatedAt sont gérées automatiquement)</span>
+  <span class="kd">const</span> <span class="nx">player</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">name</span><span class="p">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span>
+    <span class="na">birthDate</span><span class="p">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">birthDate</span><span class="p">,</span>
+    <span class="na">isPremium</span><span class="p">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">isPremium</span> <span class="p">?</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">isPremium</span> <span class="p">:</span> <span class="kc">false</span>
+  <span class="p">};</span>
+
+  <span class="c1">// Save Player in the database</span>
+  <span class="nx">Player</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">player</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+    <span class="p">})</span>
+    <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">500</span><span class="p">).</span><span class="nx">send</span><span class="p">({</span>
+        <span class="na">message</span><span class="p">:</span>
+          <span class="nx">err</span><span class="p">.</span><span class="nx">message</span> <span class="o">||</span> <span class="dl">"</span><span class="s2">Some error occurred while creating the Player.</span><span class="dl">"</span>
+      <span class="p">});</span>
+    <span class="p">});</span>
+<span class="p">};</span>
+
+<span class="c1">// Recherche de tous les Players (ou ceux qui un 'name' particulier)</span>
+<span class="nx">exports</span><span class="p">.</span><span class="nx">findAll</span> <span class="o">=</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">name</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">condition</span> <span class="o">=</span> <span class="nx">name</span> <span class="p">?</span> <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="p">{</span> <span class="p">[</span><span class="nx">Op</span><span class="p">.</span><span class="nx">iLike</span><span class="p">]:</span> <span class="s2">`%</span><span class="p">${</span><span class="nx">name</span><span class="p">}</span><span class="s2">%`</span> <span class="p">}</span> <span class="p">}</span> <span class="p">:</span> <span class="kc">null</span><span class="p">;</span>
+
+  <span class="nx">Player</span><span class="p">.</span><span class="nx">findAll</span><span class="p">({</span> <span class="na">where</span><span class="p">:</span> <span class="nx">condition</span> <span class="p">})</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+    <span class="p">})</span>
+    <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">500</span><span class="p">).</span><span class="nx">send</span><span class="p">({</span>
+        <span class="na">message</span><span class="p">:</span>
+          <span class="nx">err</span><span class="p">.</span><span class="nx">message</span> <span class="o">||</span> <span class="dl">"</span><span class="s2">Some error occurred while retrieving players.</span><span class="dl">"</span>
+      <span class="p">});</span>
+    <span class="p">});</span>
+<span class="p">};</span>
+
+<span class="c1">// Recherche du Player par Id</span>
+<span class="nx">exports</span><span class="p">.</span><span class="nx">findOne</span> <span class="o">=</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">id</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
+
+  <span class="nx">Player</span><span class="p">.</span><span class="nx">findByPk</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">404</span><span class="p">).</span><span class="nx">send</span><span class="p">({</span>
+          <span class="na">message</span><span class="p">:</span> <span class="s2">`Cannot find Player with id=</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">.`</span>
+        <span class="p">});</span>
+      <span class="p">}</span>
+    <span class="p">})</span>
+    <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">500</span><span class="p">).</span><span class="nx">send</span><span class="p">({</span>
+        <span class="na">message</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Error retrieving Player with id=</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">id</span>
+      <span class="p">});</span>
+    <span class="p">});</span>
+<span class="p">};</span>
+
+<span class="c1">// Mise à jour d'un Player</span>
+<span class="nx">exports</span><span class="p">.</span><span class="nx">update</span> <span class="o">=</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">id</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
+
+  <span class="nx">Player</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">where</span><span class="p">:</span> <span class="p">{</span> <span class="na">id</span><span class="p">:</span> <span class="nx">id</span> <span class="p">}</span>
+  <span class="p">})</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">num</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">num</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">({</span>
+          <span class="na">message</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Player was updated successfully.</span><span class="dl">"</span>
+        <span class="p">});</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">({</span>
+          <span class="na">message</span><span class="p">:</span> <span class="s2">`Cannot update Player with id=</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">. Maybe Player was not found or req.body is empty!`</span>
+        <span class="p">});</span>
+      <span class="p">}</span>
+    <span class="p">})</span>
+    <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">500</span><span class="p">).</span><span class="nx">send</span><span class="p">({</span>
+        <span class="na">message</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Error updating Player with id=</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">id</span>
+      <span class="p">});</span>
+    <span class="p">});</span>
+<span class="p">};</span>
+
+<span class="c1">// Supprimer un Player</span>
+<span class="nx">exports</span><span class="p">.</span><span class="k">delete</span> <span class="o">=</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">id</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
+
+  <span class="nx">Player</span><span class="p">.</span><span class="nx">destroy</span><span class="p">({</span>
+    <span class="na">where</span><span class="p">:</span> <span class="p">{</span> <span class="na">id</span><span class="p">:</span> <span class="nx">id</span> <span class="p">}</span>
+  <span class="p">})</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">num</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">num</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">({</span>
+          <span class="na">message</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Player was deleted successfully!</span><span class="dl">"</span>
+        <span class="p">});</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">({</span>
+          <span class="na">message</span><span class="p">:</span> <span class="s2">`Cannot delete Player with id=</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">. Maybe Player was not found!`</span>
+        <span class="p">});</span>
+      <span class="p">}</span>
+    <span class="p">})</span>
+    <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">500</span><span class="p">).</span><span class="nx">send</span><span class="p">({</span>
+        <span class="na">message</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Could not delete Player with id=</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">id</span>
+      <span class="p">});</span>
+    <span class="p">});</span>
+<span class="p">};</span>
+
+<span class="c1">// Suppression de tous les Players</span>
+<span class="nx">exports</span><span class="p">.</span><span class="nx">deleteAll</span> <span class="o">=</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">Player</span><span class="p">.</span><span class="nx">destroy</span><span class="p">({</span>
+    <span class="na">where</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="na">truncate</span><span class="p">:</span> <span class="kc">false</span>
+  <span class="p">})</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">nums</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">({</span> <span class="na">message</span><span class="p">:</span> <span class="s2">`</span><span class="p">${</span><span class="nx">nums</span><span class="p">}</span><span class="s2"> Players were deleted successfully!`</span> <span class="p">});</span>
+    <span class="p">})</span>
+    <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">500</span><span class="p">).</span><span class="nx">send</span><span class="p">({</span>
+        <span class="na">message</span><span class="p">:</span>
+          <span class="nx">err</span><span class="p">.</span><span class="nx">message</span> <span class="o">||</span> <span class="dl">"</span><span class="s2">Some error occurred while removing all players.</span><span class="dl">"</span>
+      <span class="p">});</span>
+    <span class="p">});</span>
+<span class="p">};</span>
+
+<span class="c1">// Rechercher selon certaines conditions</span>
+<span class="nx">exports</span><span class="p">.</span><span class="nx">findAllPremium</span> <span class="o">=</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">Player</span><span class="p">.</span><span class="nx">findAll</span><span class="p">({</span> <span class="na">where</span><span class="p">:</span> <span class="p">{</span> <span class="na">isPremium</span><span class="p">:</span> <span class="kc">true</span> <span class="p">}</span> <span class="p">})</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+    <span class="p">})</span>
+    <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">500</span><span class="p">).</span><span class="nx">send</span><span class="p">({</span>
+        <span class="na">message</span><span class="p">:</span>
+          <span class="nx">err</span><span class="p">.</span><span class="nx">message</span> <span class="o">||</span> <span class="dl">"</span><span class="s2">Some error occurred while retrieving players.</span><span class="dl">"</span>
+      <span class="p">});</span>
+    <span class="p">});</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>Ici le Controller ne permet pas de récupérer les requêtes de content-type <code class="language-plaintext highlighter-rouge">application/x-www-form-urlencoded</code> mais vous pouvez vous amuser à le faire !</p>
+
+<h2 id="les-routes">Les routes</h2>
+
+<p>Maintenant que le Controller est défini, il suffit de définir les différentes routes (endpoints) pour accéder aux fonctions du Controller.</p>
+
+<p>Créons un dossier <code class="language-plaintext highlighter-rouge">routes</code> contenant le fichier <code class="language-plaintext highlighter-rouge">player.routes.js</code> défini ci-après :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">app</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">players</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">../controllers/players.controller.js</span><span class="dl">"</span><span class="p">);</span>
+
+  <span class="kd">var</span> <span class="nx">router</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">express</span><span class="dl">"</span><span class="p">).</span><span class="nx">Router</span><span class="p">();</span>
+
+  <span class="c1">// Créer un nouveau Player</span>
+  <span class="nx">router</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">"</span><span class="s2">/</span><span class="dl">"</span><span class="p">,</span> <span class="nx">players</span><span class="p">.</span><span class="nx">create</span><span class="p">);</span>
+
+  <span class="c1">// Récupère tous les Players</span>
+  <span class="nx">router</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">/</span><span class="dl">"</span><span class="p">,</span> <span class="nx">players</span><span class="p">.</span><span class="nx">findAll</span><span class="p">);</span>
+
+  <span class="c1">// Récupère tous les Players premium</span>
+  <span class="nx">router</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">/premium</span><span class="dl">"</span><span class="p">,</span> <span class="nx">players</span><span class="p">.</span><span class="nx">findAllPremium</span><span class="p">);</span>
+
+  <span class="c1">// Récupère un certain Player</span>
+  <span class="nx">router</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">/:id</span><span class="dl">"</span><span class="p">,</span> <span class="nx">players</span><span class="p">.</span><span class="nx">findOne</span><span class="p">);</span>
+
+  <span class="c1">// Met à jour un certain Player</span>
+  <span class="nx">router</span><span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="dl">"</span><span class="s2">/:id</span><span class="dl">"</span><span class="p">,</span> <span class="nx">players</span><span class="p">.</span><span class="nx">update</span><span class="p">);</span>
+
+  <span class="c1">// Supprime un player d'un certain Id</span>
+  <span class="nx">router</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="dl">"</span><span class="s2">/:id</span><span class="dl">"</span><span class="p">,</span> <span class="nx">players</span><span class="p">.</span><span class="k">delete</span><span class="p">);</span>
+
+  <span class="c1">// Supprime tous les Players</span>
+  <span class="nx">router</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="dl">"</span><span class="s2">/</span><span class="dl">"</span><span class="p">,</span> <span class="nx">players</span><span class="p">.</span><span class="nx">deleteAll</span><span class="p">);</span>
+
+  <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/players</span><span class="dl">'</span><span class="p">,</span> <span class="nx">router</span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>On vient de définir les routes suivantes :</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">/api/players</code>: GET, POST, DELETE</li>
+  <li><code class="language-plaintext highlighter-rouge">/api/players/:id</code> : GET, PUT, DELETE</li>
+  <li><code class="language-plaintext highlighter-rouge">/api/players/premium</code> : GET</li>
+</ul>
+
+<p>Il reste à ajouter ces routes dans le <code class="language-plaintext highlighter-rouge">server.js</code>. Pour ce faire, ajoutons cette ligne juste avant le <code class="language-plaintext highlighter-rouge">app.listen()</code> :</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">./routes/player.routes</span><span class="dl">"</span><span class="p">)(</span><span class="nx">app</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="la-fin-et-le-début">La fin (et le début)</h2>
+
+<p>Votre projet devrait ressembler à ça:</p>
+
+<pre><code class="language-txt">C:\Users\Moi\Tuto\src
+├── config
+|  ├── config.json
+|  ├── config.model.json
+|  └── db.config.js
+├── controllers
+|  └── player.controller.js
+├── models
+|  ├── index.js
+|  └── player.model.js
+├── node_modules
+├── package-lock.json
+├── package.json
+├── README.md
+├── routes
+|  └── player.routes.js
+└── server.js
+</code></pre>
+
+<p>C’est le moment du test !
+Lancer le serveur avec <code class="language-plaintext highlighter-rouge">node server.js</code>.</p>
+
+<p>En utilisant Postman (ou Insomnia, ou l’inspecteur de votre navigateur si vous être très à l’aise avec), vous pouvez alors tester les GET/POST/DELETE définis précédemment et vérifier (au moyen des GET ou en allant regarder directement dans la base de données PostgreSQL) si ça a bien fonctionné !</p>
+
+<h2 id="sur-lovh">Sur l’OVH</h2>
+
+<p>Connectez-vous à votre plante aromatique via ssh.</p>
+
+<p>Mettez votre code sur l’OVH  dans votre dossier <code class="language-plaintext highlighter-rouge">node</code> (en utilisant <code class="language-plaintext highlighter-rouge">scp</code> ou par un <code class="language-plaintext highlighter-rouge">git clone</code> si vous avez votre code sur GitHub).</p>
+
+<p>Et faites un <code class="language-plaintext highlighter-rouge">npm ci</code> dans votre dossier où se trouve le <code class="language-plaintext highlighter-rouge">package-lock.json</code>.</p>
+
+<p>Allez dans le dossier parent du dossier <code class="language-plaintext highlighter-rouge">node</code>, vous devriez y trouver un fichier nommé <code class="language-plaintext highlighter-rouge">database_readme.txt</code>. Ouvrez-le (<code class="language-plaintext highlighter-rouge">cat database_readme.txt</code>), retenez le nom du <code class="language-plaintext highlighter-rouge">user</code> (ça devrait être votre plante aromatique) et copiez le mot de passe. Ces identifiants de connexion vous permettent de vous connecter à la base de données (du PostgreSQL de l’OVH), ayant comme nom votre plante aromatique (au lieu de <code class="language-plaintext highlighter-rouge">tutoPlayer</code>, ce sera par exemple <code class="language-plaintext highlighter-rouge">romarin</code>).</p>
+
+<p>Il vous reste juste à modifier votre fichier config.json (ou config.model.json qu’il vous faut renommer en config.json) en y mettant ces valeurs pour <code class="language-plaintext highlighter-rouge">USER</code>, <code class="language-plaintext highlighter-rouge">DB</code> (votre plante aromatique aussi) et <code class="language-plaintext highlighter-rouge">PASSWORD</code>. Vous pouvez faire par exemple (en ayant préalablement copié le password et en vous plaçant dans le dossier config) :</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cp </span>config.model.json config.json
+nano config.json
+</code></pre></div></div>
+
+<blockquote>
+  <p><code class="language-plaintext highlighter-rouge">cp fichier_source fichier_dest</code> permet de créer une copie d’un fichier source (la copie aura pour nom fichier_dest).</p>
+</blockquote>
+
+<p>Et si maintenant par curiosité vous souhaitez naviguer au sein de cette mystérieuse base de données PostgreSQL de l’OVH voici comment faire:</p>
+
+<p>Où que vous soyez, tapez cette ligne de commande:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>psql
+</code></pre></div></div>
+
+<p>Cela vous permet d’accéder au shell de PostgreSQL. Si vous avez un <code class="language-plaintext highlighter-rouge">maPlante=&gt;</code> à la place de l’habituel <code class="language-plaintext highlighter-rouge">maPlante@ovh1:~/node</code> c’est que vous êtes bien entrés dans le shell psql. Toutes les commandes suivantes seront réalisées au sein du shell psql (écrivez les commandes à la suite de  <code class="language-plaintext highlighter-rouge">votrePlante=&gt;</code>).
+On peut afficher toutes les databases existantes sur l’ovh avec:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="se">\l</span>
+</code></pre></div></div>
+
+<p>Cela vous ouvre un gros tableau dans vim. Il devrait y avoir la votre (celle qui était désignée par votre plante dans <code class="language-plaintext highlighter-rouge">database_readme.txt</code>). Pour sortir de ce tableau (qui est ouvert dans Vim) tapez <code class="language-plaintext highlighter-rouge">q</code> ou <code class="language-plaintext highlighter-rouge">:q</code>.
+Connectons nous à notre database en question (remplacez <code class="language-plaintext highlighter-rouge">maPlante</code> par votre USER) :</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="se">\c</span> maPlante
+</code></pre></div></div>
+
+<p>Cela vous affiche un message comme quoi vous êtes bien connectés à la base en question.
+Maintenant que vous êtes connectés à votre base de données, vous pouvez afficher toutes vos tables :</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="se">\d</span>t
+</code></pre></div></div>
+
+<p>Et même réaliser des requêtes SQL comme (si vous avez une table nommée <code class="language-plaintext highlighter-rouge">players</code>) :</p>
+
+<pre><code class="language-SQL">SELECT * FROM players;
+</code></pre>
+
+<blockquote>
+  <p>Attention, ne pas oublier le point-virgule !</p>
+</blockquote>
+
+<p>Et finalement pour quitter psql:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="se">\q</span>
+</code></pre></div></div>
+
+<h3 id="liens-utiles">Liens utiles</h3>
+
+<ul>
+  <li><a href="https://www.bezkoder.com/node-express-sequelize-postgresql/#Setup_Express_web_server">Tutoriel original</a></li>
+  <li><a href="https://www.postgresql.org/docs/9.2/app-psql.html">Utiliser psql sur Linux pour parcourir la base de données PostgreSQL</a></li>
+</ul>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d&#39;informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d&#39;informatique</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
