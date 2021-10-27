@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Projet MD2 - Utopia Engine | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Projet MD2 - Utopia Engine" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
+<link rel="canonical" href="/cours_informatique/cours/web/projets/utopia-engine.html" />
+<meta property="og:url" content="/cours_informatique/cours/web/projets/utopia-engine.html" />
+<meta property="og:site_name" content="cours d’informatique" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Projet MD2 - Utopia Engine" />
+<script type="application/ld+json">
+{"description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","headline":"Projet MD2 - Utopia Engine","url":"/cours_informatique/cours/web/projets/utopia-engine.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css">
+
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+</head>
+
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Projet MD2 - Utopia Engine</h1></p>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Jiang</span></span></p>
+  </header>
+
+  <div class="post-content">
+    <p>Ce projet s’inscrit dans le cours de <em>Méthode de Développement</em> de l’option 3A <strong>Digital.e</strong>. Le code source est sur <a href="https://github.com/MCF-ECM/utopia-engine-node">GitHub</a> et est déployé sur <a href="http://node.melisse.ovh1.ec-m.fr/">ovh1</a>.</p>
+
+<h2 id="présentation-du-projet">Présentation du projet</h2>
+<h3 id="histoire">Histoire</h3>
+<p><img src="https://cf.geekdo-images.com/HTsjNQHQQMf029lmvlOFqA__itemrep/img/BX4Bcn68QCWJHaEIrCG5mTioiCE=/fit-in/246x300/filters:strip_icc()/pic1827127.jpg" alt="Utopia Engine" /></p>
+
+<p>Vous jouez le rôle d’un vieil artificier nommé Isodoros qui tente de reconstruire l’<em>Utopia Engine</em>, un appareil légendaire datant d’un passé lointain et peut-être le seul espoir d’éviter la fin du monde qui approche rapidement. Vous devez récupérer les six pièces de la machine dans six régions dangereuses et assembler l’<em>Utopia Engine</em> avant la fin du monde. Le jeu utilise une mécanique de dés simple pour simuler la recherche dans les régions sauvages, l’activation et l’assemblage d’artefacts puissants, et le combat avec les armes des artefacts.</p>
+
+<p><em>Résumé traduit depuis <a href="https://boardgamegeek.com/boardgame/75223/utopia-engine">BoardGameGeek</a>.</em></p>
+
+<h3 id="dépendences">Dépendences</h3>
+<p>Dépendences <a href="https://nodejs.org/fr">Node.js</a> :</p>
+<ul>
+  <li><a href="https://expressjs.com/fr/">Express</a> (version 4.17.1) : <em>Express</em> est un <em>framework</em> permettant de construire simplement un server <em>Node.js</em>.</li>
+</ul>
+
+<p>Dépendences <a href="https://fr.reactjs.org/">React</a> :</p>
+<ul>
+  <li><a href="https://fr.reactjs.org/">React</a> (version 17.0.2) : <em>React</em> est une bibliothèque <em>JavaScript</em> pour créer des interfaces utilisateurs. Grâce à un riche écosystème de bibliothèques dédiées, React peut être utilisée comme un puissant <em>framework frontend</em>, comme <a href="https://fr.vuejs.org/">Vue.js</a>.</li>
+  <li><a href="https://www.npmjs.com/package/react-router-dom">React Router Dom</a> (version 5.3.0) : <em>React Router Dom</em> est une bibliothèque <em>JavaScript</em> pour la gestion des routes sur les projets <em>React</em>.</li>
+  <li><a href="https://redux.js.org/">Redux</a> (version 4.1.1) : <em>Redux</em> est une bibliothèque <em>JavaScript</em> pour générer les états (variables globales) d’applications <em>front</em>.</li>
+</ul>
+
+<h3 id="installer-le-projet">Installer le projet</h3>
+<p>Pour installer le projet, il faut :</p>
+<ul>
+  <li>cloner le projet
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git clone <span class="nt">--recurse-submodules</span> https://github.com/MCF-ECM/utopia-engine-node
+</code></pre></div>    </div>
+    <blockquote>
+      <p>L’option <em>–recurse-submodules</em> permet de cloner avec les sous-modules.</p>
+    </blockquote>
+  </li>
+  <li>installer les dépendences (pour le server <em>Node.js</em> à la racine et la partie <em>React</em> dans le dossier react) :
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npm <span class="nb">install</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="lancer-le-projet">Lancer le projet</h3>
+<p>Pour lancer le projet en local, il faut :</p>
+<ul>
+  <li>build le projet <em>React</em> avec la commande (dans le dossier react) :
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npm build
+</code></pre></div>    </div>
+    <blockquote>
+      <p>Build un projet <em>React</em> permet d’obtenir un dossier avec le projet sous forme d’un site statique.</p>
+    </blockquote>
+  </li>
+  <li>lancer le server <em>Node.js</em> avec la commande (à la racine):
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npm start
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="mécanique-de-jeu">Mécanique de jeu</h2>
+<h3 id="recherche-des-artéfacts">Recherche des Artéfacts</h3>
+<p>Pour partir à la recherche des artéfacts composant l’<em>Utopia Engine</em>, il suffit de cliquer sur les pins présent sur la carte (à gauche sur la page d’acceuil).</p>
+
+<p>Une recherche se déroule de la façon suivant :</p>
+<ul>
+  <li>lancer deux dés;</li>
+  <li>affecter les valeurs des dés dans le tableau;</li>
+  <li>soustraire à la ligne du haut celle du bas.</li>
+</ul>
+
+<p>Le but est d’obtenir le plus petit nombre positif. Le résultat de la recherche dépend de ce nombre et est présenté dans le tabeau ci-dessous.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Valeur de la différence</th>
+      <th style="text-align: center">Résultat de la recherche</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">un artéfact activé</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">1 à 10</td>
+      <td style="text-align: center">un artéfact inactivé</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">10 à 99</td>
+      <td style="text-align: center">un composant</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">100 à 555 ou -555 à -1</td>
+      <td style="text-align: center">une rencontre avec un monstre</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="combats">Combats</h3>
+<p>Les combats se font contre des monstres. Les monstres ont un niveau dépendant du résulat de la recherche. La correspondance se retrouve dans le tableau ci-dessous.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Valeur de la différence</th>
+      <th style="text-align: center">Niveau du monstre</th>
+      <th style="text-align: center">Dégat du monstre</th>
+      <th style="text-align: center">Fuite du monstre</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">100 à 199 ou -1 à -100</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">5 ou 6</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">200 à 299 ou -101 à -200</td>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">6</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">300 à 399 ou -201 à -300</td>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">1 ou 2</td>
+      <td style="text-align: center">6</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">400 à 499 ou -301 à -400</td>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">1 à 3</td>
+      <td style="text-align: center">6</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">500 à 555 ou -401 à -555</td>
+      <td style="text-align: center">5</td>
+      <td style="text-align: center">1 à 4</td>
+      <td style="text-align: center">6</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Un tour se déroule avec le lancer de deux dés. Si un des dés se trouve dans la plage de <em>Dégat du monstre</em>, alors un point de vie est perdu. Si un des dés se trouve dans la plage de <em>Fuite du monstre</em>, alors le monstre fuit. En cas de dégat et de fuite, le monstre réaliser le dégat avant sa fuite.</p>
+
+<p>Si les points de vie tombent à zéro, alors le joueur s’évanouit et le monstre part. Le joueur se repose alors pour regagner ses points de vie.
+Si les points de vie deviennent négatives, alors le joueur meurt et la partie est perdu.</p>
+
+<h3 id="activations-des-artéfacts">Activations des Artéfacts</h3>
+<p>Le but du jeu à ce stade étant d’activé les six artéfacts formant l’<em>Utopia Engine</em>, il faut activer les artéfacts inactifs. Pour se faire, depuis l’acceuil, il suffit de cliquer sur les artéfacts inactifs pour se rendre sur la page d’activation des artéfacts.</p>
+
+<p>L’activation d’un artéfact nécessite quatres points de charge. Pour obtenir des points de charge, il faut lancer les deux dés et les affecter de telle sorte que la différence d’une cellule supérieure avec celle juste en dessous.</p>
+<ul>
+  <li>Si cette différence est 5 alors deux points de charge est obtenu.</li>
+  <li>Si cette différence est 4 alors un point de charge est obtenu.</li>
+  <li>Si cette différence est null, alors les cellules correspondantes se vident.</li>
+  <li>Si cette différence est négative un point de vie est perdu.</li>
+</ul>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d&#39;informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d&#39;informatique</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
