@@ -181,6 +181,44 @@ tous les matériaux disponibles.
 
 ## Go rendre ça plus joli
 
+### Adapter l'app à la fenêtre du navigateur
+
+Notre renderer apparait bien, mais n'occupe pas toute la fenêtre. En plus, il ne 
+s'adapte pas à la taille de la fenêtre lorsqu'on la modifie.
+
+Rajoutons cette fonction dans le main.js (en dehors de la fonction init()) pour 
+permettre au renderer d'adapter sa taille en temps réel :
+
+```javascript
+function onWindowResize() {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+
+    renderer.setSize( window.innerWidth, window.innerHeight );
+}
+```
+
+On voit ici qu'on modifie à la fois le champ de la caméra et la taille du renderer. 
+On doit ensuite ajouter un listener à la fin de notre fonction init(), 
+qui vérifie si la taille de la fenêtre est 
+modifiée, et appelle la fonction onWindowResize() quand c'est le cas :
+
+```javascript
+window.addEventListener( 'resize', onWindowResize );  
+```
+
+C'est mieux, mais on a toujours des marges blanches autour de notre renderer. 
+Allons dans notre fichier `style.css`. On peut pour l'instant enlever ce qui y 
+était et modifier la marge du body :
+
+```css
+body {
+    margin: 0;
+}
+```
+
+Parfait, maintenant améliorons le rendu de nos objets.
+
 ### Lumière
 On peut améliorer notre rendu notament en ajoutant des lumières. Pour ajouter une lumière, c'est très simple, il suffit d'ajouter
 <br>
