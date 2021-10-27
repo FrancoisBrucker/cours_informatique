@@ -399,3 +399,7 @@ for ( let i = 0; i < 20; i ++ ) {
 
     }
 ```
+## CONCLUSION
+
+Et voila enfin à la fin de ce tuto ! Maintenant nous avons un environnement capable de faire tourner notre code js en utilisant la librairie three.js pour générer un monde en 3D et y déplacer une caméra à l'intérieur à l'aide du clavier et de la souris ! Voici le lien vers notre répo github pour trouver notre code :
+https://github.com/LeoLaurent/three-js-project
