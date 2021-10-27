@@ -1,4 +1,289 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/cours_informatique/feed.xml" rel="self" type="application/atom+xml" /><link href="/cours_informatique/" rel="alternate" type="text/html" /><updated>2021-10-27T09:46:17+00:00</updated><id>/cours_informatique/feed.xml</id><title type="html">cours d’informatique</title><subtitle>Support de cours/td d'informatique à l'école centrale marseille.</subtitle><entry><title type="html">wsl ou linux dans windows</title><link href="/cours_informatique/tutos/systeme/installation/wsl/2021/09/27/wsl-windows.html" rel="alternate" type="text/html" title="wsl ou linux dans windows" /><published>2021-09-27T00:00:00+00:00</published><updated>2021-09-27T00:00:00+00:00</updated><id>/cours_informatique/tutos/systeme/installation/wsl/2021/09/27/wsl-windows</id><content type="html" xml:base="/cours_informatique/tutos/systeme/installation/wsl/2021/09/27/wsl-windows.html">&lt;p&gt;Comment installer et bien préparer wsl pur le développement.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/cours_informatique/feed.xml" rel="self" type="application/atom+xml" /><link href="/cours_informatique/" rel="alternate" type="text/html" /><updated>2021-10-27T11:21:08+00:00</updated><id>/cours_informatique/feed.xml</id><title type="html">cours d’informatique</title><subtitle>Support de cours/td d'informatique à l'école centrale marseille.</subtitle><entry><title type="html">Tuto Websocket</title><link href="/cours_informatique/tutos/websocket/2021/10/18/tuto-websocket.html" rel="alternate" type="text/html" title="Tuto Websocket" /><published>2021-10-18T00:00:00+00:00</published><updated>2021-10-18T00:00:00+00:00</updated><id>/cours_informatique/tutos/websocket/2021/10/18/tuto-websocket</id><content type="html" xml:base="/cours_informatique/tutos/websocket/2021/10/18/tuto-websocket.html">&lt;p&gt;Ce tutoriel explique comment utiliser le websocket pour créer un chat.&lt;/p&gt;
+
+&lt;h3 id=&quot;prérequis&quot;&gt;Prérequis&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;javascript&lt;/li&gt;
+  &lt;li&gt;html&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;fonctionnement-du-websocket&quot;&gt;Fonctionnement du Websocket&lt;/h2&gt;
+
+&lt;p&gt;Le protocole Websocket a été construit par dessus le protocole TCP. 
+C’est donc un protocole réseau de la couche application (cf &lt;a href=&quot;https://fr.wikipedia.org/wiki/Modèle_OSI&quot;&gt;modèle OSI&lt;/a&gt;). 
+Il permet d’ouvrir un canal de communication bidirectionnel sur un socket TCP. 
+Un socket est une “prise” permettant à une application d’envoyer et de recevoir des données (et concrètement c’est une interface de programmation). 
+Il permet donc de notifier au client un changement du côté serveur ou l’envoi de données du serveur vers le client sans avoir besoin de requête.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/cours_informatique/assets/tutos/websocket/socket.png&quot; alt=&quot;image socket&quot; style=&quot;margin: auto;display: block;width: 400px;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Pour cela, un handshake doit être réalisé. C’est une “négociation” des paramètres de connexion. 
+Le client envoie une requête au serveur. Dans cette requête, tout ne se rapporte pas au websocket, mais elle peut demander des extensions de protocoles ou des sous-protocoles. 
+On voit ci-dessous un exemple de requête du client. Le serveur renverra alors une réponse avec notamment la valeur hachée de la clé. 
+On notera que le serveur peut également envoyer d’autres entêtes comme des demandes d’authentification, de création de cookies, etc…
+Ce handshake est automatiquement réalisé avec les bibliothèques récentes.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/cours_informatique/assets/tutos/websocket/handshake.png&quot; alt=&quot;image handshake&quot; style=&quot;margin: auto;display: block;width: 500px;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Ce protocole est très utile pour beaucoup d’applications où les utilisateurs doivent se connecter en même temps comme une application de coopération en temps réel ou un jeu vidéo. 
+Son architecture a, au début, été critiquée car il aurait mieux fallu résoudre les problèmes de la couche réseau au lieu de construire un protocole par dessus celui existant.&lt;/p&gt;
+
+&lt;h2 id=&quot;installations&quot;&gt;Installations&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;Toutes les commandes se font dans l’invite de commande (cmd) si vous êtes sous Windows.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;On créé le dossier du projet : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mkdir ChatWebsocket&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;On se place dans le dossier : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cd ChatWebsocket&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;On installe, nodemon qui permettra au serveur node de se relancer automatiquement pour prendre en compte les modifications :
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;npm install --save-dev nodemon -g&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;On installe la bibliothèque express pour réaliser le serveur : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;npm install express&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;On installe ws pour réaliser le seveur websocket : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;npm install ws&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;partie-front&quot;&gt;Partie front&lt;/h2&gt;
+
+&lt;p&gt;On va réaliser le front end. On crée un fichier index.html dans le répertoire du projet. On crée un titre :&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;RealTime Chat&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;On ajoute un emplacement où lister les messages, un pour écrire des messages et un bouton pour envoyer un message :&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;pre&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;messages&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;height: 400px; overflow: scroll&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/pre&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;messageBox&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;placeholder=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Type your message here&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;display: : block; width: 100%; margin-bottom: 10px; padding: 10px;&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;button&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;send&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;title=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Send Message&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;width: 100%; height:30px;&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Send Message&lt;span class=&quot;nt&quot;&gt;&amp;lt;/button&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Ensuite, dans une balise &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;script&amp;gt; &amp;lt;/script&amp;gt;&lt;/code&gt;, on va écrire du javascript. 
+On va créer une fonction qui va se lire dès la lecture du fichier. 
+Pour cela, on utilise la syntaxe &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(function() { //instruction })()&lt;/code&gt;. 
+Les &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;()&lt;/code&gt; permettent de dire que l’on souhaite exécuter ce qu’il y a écrit avant celles-ci. 
+Dans cette fonction, on initialise tout d’abord les variables. 
+On récupère les éléments du front end en créant une variable qui contiendra l’objet websocket :&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sendBtn&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;#send&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;messages&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;#messages&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;messageBox&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;#messageBox&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+        &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ws&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+     &lt;span class=&quot;p&quot;&gt;})()&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Mettons dans cette fonction une fonction qui affiche les messages sur la page :&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    function showMessage(message){
+        messages.textContent += '\n\n' + message
+        messages.scrollTop = messages.scrollHeight;
+        messageBox.value = '';
+    }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Ajoutez à cela, toujours dans la fonction, la fonction &lt;strong&gt;init&lt;/strong&gt;. 
+Celle-ci doit initialiser notre objet websocket et détruire l’ancien s’il existe :&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    function init(){
+        if(ws){
+            ws.onerror = ws.onopen = ws.onclose = null;
+            ws.close();
+        }
+
+        ws = new WebSocket('ws://localhost:8999');
+        ws.onopen = () =&amp;gt; {
+            console.log('Connection opened');
+        }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Ici on utilise le port 8999 pour le websocket. Les fonctions &lt;strong&gt;onopen&lt;/strong&gt;, &lt;strong&gt;onerror&lt;/strong&gt;, etc… sont des fonctions qui sont exécutées lorsqu’un évènement est déclenché (plus d’informations &lt;a href=&quot;https://fr.wikipedia.org/wiki/Programmation_événementielle&quot;&gt;ici&lt;/a&gt;). 
+Ainsi, &lt;strong&gt;onopen&lt;/strong&gt; s’exécute lorsque le client se connecte au serveur websocket, la fonction &lt;strong&gt;onclose&lt;/strong&gt;, lorsque la connexion se coupe et la fonction &lt;strong&gt;onmessage&lt;/strong&gt;, lorsque le client reçoit un message. 
+Ajoutons ces deux dernières fonctions dans la fonction &lt;strong&gt;init&lt;/strong&gt; :&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    ws.onmessage = ({ data }) =&amp;gt; {
+        var textToDisplay = fromDataToText(data); 
+        showMessage(textToDisplay);
+    }
+    ws.onclose = function(){
+        ws = null;
+    }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;La fonction &lt;strong&gt;onmessage&lt;/strong&gt; reçoit en argument le message reçu. 
+Rappelons nous que le message est encapsulé, il faut donc le traiter avant de l’afficher. 
+On ajoute donc cette fonction dans la fonction &lt;strong&gt;init&lt;/strong&gt; :&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    function fromDataToText(data){
+        var array = JSON.parse(data);
+        array = array.data;
+        var text = &quot;&quot;;
+        array.forEach(element =&amp;gt; text += String.fromCharCode(element));
+        return text;
+    }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;JSON.parse renvoie un objet et le texte recherché est contenu dans son attribut data. 
+Ce data est un tableau de int qui sont les lettres du message en ASCII, d’où la boucle et l’utilisation de la fonction fromCharCode.&lt;/p&gt;
+
+&lt;p&gt;Il nous manque juste une fonction qui envoie le message au serveur lorsqu’on clique sur le bouton &lt;em&gt;Send Message&lt;/em&gt; :&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    sendBtn.onclick = function(){
+        if(!ws){
+            showMessage(&quot;No Websocket connection&quot;);
+            return
+        }
+
+        ws.send(messageBox.value);
+    }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Enfin, il ne faut pas oublier d’exécuter la fonction &lt;strong&gt;init&lt;/strong&gt; qui n’a été que rédigée jusque là :&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    init();
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Si vous vous êtes un peu perdu, voici le script final de index.html :&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;RealTime chat&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;pre&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;messages&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;height: 400px; overflow: scroll&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/pre&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;messageBox&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;placeholder=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Type your message here&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;display: : block; width: 100%; margin-bottom: 10px; padding: 10px;&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;button&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;send&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;title=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Send Message&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;width: 100%; height:30px;&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Send Message&lt;span class=&quot;nt&quot;&gt;&amp;lt;/button&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sendBtn&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;#send&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;messages&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;#messages&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;messageBox&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;#messageBox&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+        &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ws&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+        &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;showMessage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;messages&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;textContent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n\n&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;messages&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;scrollTop&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;messages&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;scrollHeight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;messageBox&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ws&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;ws&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;onerror&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ws&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;onopen&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ws&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;onclose&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;ws&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+            &lt;span class=&quot;nx&quot;&gt;ws&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;WebSocket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;ws://localhost:8999&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+            &lt;span class=&quot;nx&quot;&gt;ws&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;onopen&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;Connection opened&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+            &lt;span class=&quot;nx&quot;&gt;ws&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;onmessage&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;({&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;textToDisplay&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fromDataToText&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; 
+                &lt;span class=&quot;nx&quot;&gt;showMessage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;textToDisplay&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+            &lt;span class=&quot;nx&quot;&gt;ws&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;onclose&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;ws&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+            &lt;span class=&quot;nx&quot;&gt;sendBtn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;onclick&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ws&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+                    &lt;span class=&quot;nx&quot;&gt;showMessage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;No Websocket connection&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;
+                &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+                &lt;span class=&quot;nx&quot;&gt;ws&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;send&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;messageBox&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+            &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fromDataToText&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+                &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;array&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;array&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;forEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;fromCharCode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;nx&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;})()&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;partie-back&quot;&gt;Partie back&lt;/h2&gt;
+
+&lt;p&gt;Dans le fichier ChatWebsocket, créer un fichier server.js et inscrire dedans :&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;use strict&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;http&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;http&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;express&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;express&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;WebSocket&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;ws&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;express&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;port&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8999&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;//initialize a simple http server&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;server&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;http&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;createServer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;//initialize the WebSocket server instance&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;wss&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;WebSocket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Server&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;server&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+
+&lt;span class=&quot;nx&quot;&gt;wss&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;connection&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ws&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//connection is up, let's add a simple simple event&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;ws&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;//log the received message and send it back to the client&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;received: %s&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;//send back the message to the other clients&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;wss&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;clients&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;forEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;each&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;readyState&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;WebSocket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;OPEN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;send&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;stringify&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;server&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;listen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Server is listening on &lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Expliquons ce qu’il se passe (quelques commentaires aident à la compréhension). 
+Le &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;'use strict'&lt;/code&gt; passe le script en mode &lt;em&gt;strict&lt;/em&gt; ce qui, entre autres, fait passer quelques warnings en erreurs et permet une exécution plus rapide.
+Ensuite on réalise les importations. On a besoin de :&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;http : une bibliothèque standard pour le web&lt;/li&gt;
+  &lt;li&gt;express : une bibliothèque très utilisée pour créer des serveurs&lt;/li&gt;
+  &lt;li&gt;ws : une bibliothèque permettant de créer des serveurs websocket&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;On crée ensuite l’application express et on définit le port qu’elle utilisera. 
+On initialise le serveur et on initialise une instance d’un serveur websocket.
+On donne ensuite à la fonction wss.on un argument qui déterminera l’évènement choisi et une fonction qui sera exécutée lorsque l’évènement sera appelé. 
+Ici, cet évènement ‘message’ correspondra à l’envoi d’un message avec &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ws.send(messageBox.value)&lt;/code&gt; dans la fonction &lt;em&gt;sendBtn.onclick&lt;/em&gt; du fichier html.&lt;/p&gt;
+
+&lt;p&gt;Les instructions console.log permettent d’afficher des chaînes de caractères dans la console du navigateur (clic droit -&amp;gt; inspecter -&amp;gt; onglet console), et sont surtout utiles lors du développement (debug). 
+On itère ensuite parmi les clients, on vérifie que la connexion est ouverte et on envoie le message que l’on encapsule dans un json (pour éviter que ce soit un objet blob généré). 
+Enfin, on indique au serveur d’écouter les requêtes sur le port défini plus tôt avec la fonction listen.&lt;/p&gt;
+
+&lt;p&gt;On va maintenant lancer le serveur. Dans une console cmd, dans le répertoire du fichier server.js, lancer le serveur avec :
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nodemon server.js&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;La commande &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;node server.js&lt;/code&gt; fonctionne également mais si vous comptez changer le code, je vous conseille nodemon. 
+Il ne faut pas fermer la console tant qu’on travaille, cela éteindrait le serveur.&lt;/p&gt;
+
+&lt;h4 id=&quot;sources&quot;&gt;Sources&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.xul.fr/html5/websocket.php&quot;&gt;https://www.xul.fr/html5/websocket.php&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=RL_E56NPSN0&quot;&gt;https://www.youtube.com/watch?v=RL_E56NPSN0&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/websockets/ws&quot;&gt;https://github.com/websockets/ws&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://fr.wikipedia.org/wiki/WebSocket&quot;&gt;https://fr.wikipedia.org/wiki/WebSocket&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/fr/docs/Web/API/WebSockets_API/Writing_WebSocket_servers&quot;&gt;https://developer.mozilla.org/fr/docs/Web/API/WebSockets_API/Writing_WebSocket_servers&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Axel Chouraki</name></author><category term="websocket" /><summary type="html">Ce tutoriel explique comment utiliser le websocket pour créer un chat.</summary></entry><entry><title type="html">wsl ou linux dans windows</title><link href="/cours_informatique/tutos/systeme/installation/wsl/2021/09/27/wsl-windows.html" rel="alternate" type="text/html" title="wsl ou linux dans windows" /><published>2021-09-27T00:00:00+00:00</published><updated>2021-09-27T00:00:00+00:00</updated><id>/cours_informatique/tutos/systeme/installation/wsl/2021/09/27/wsl-windows</id><content type="html" xml:base="/cours_informatique/tutos/systeme/installation/wsl/2021/09/27/wsl-windows.html">&lt;p&gt;Comment installer et bien préparer wsl pur le développement.&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -1132,158 +1417,4 @@ Bnjour Monde !
   &lt;li&gt;vlc, office 360&lt;/li&gt;
   &lt;li&gt;discord&lt;/li&gt;
   &lt;li&gt;…&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>François Brucker</name></author><category term="installation" /><category term="système" /><category term="terminal" /><summary type="html">Comment bien préparer son ordinateur pour faire du développement. On ne montrera ici que le départ, c’est à dire l’installation fraiche d’un système sur lequel on pourra ensuite installer — proprement — les divers outils et logiciels utiles pour le développement.</summary></entry><entry><title type="html">Format markdown</title><link href="/cours_informatique/tutos/langage/markdown/2021/08/30/format-markdown.html" rel="alternate" type="text/html" title="Format markdown" /><published>2021-08-30T00:00:00+00:00</published><updated>2021-08-30T00:00:00+00:00</updated><id>/cours_informatique/tutos/langage/markdown/2021/08/30/format-markdown</id><content type="html" xml:base="/cours_informatique/tutos/langage/markdown/2021/08/30/format-markdown.html">&lt;p&gt;Une introduction au format markdown. C’est le langage que nous utiliserons majoritairement pour écrire les cours.&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-&lt;h2 id=&quot;quest-ce-&quot;&gt;Qu’est-ce ?&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://fr.wikipedia.org/wiki/Markdown&quot;&gt;Markdown&lt;/a&gt; est un format de fichier texte, donc modifiable par tout éditeur de texte. L’extension de fichier est &lt;em&gt;“.md”&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;Il est facilement lisible dans un éditeur de texte, et il existe de nombreuses façon de l’exporter que ce soit en html (pour l’ouvrir avec un navigateur comme chrome ou firefox) ou en pdf.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Tout ce site a par exemple été écrit en markdown (plus précisément une extension de celui-ci nommé &lt;a href=&quot;https://kramdown.gettalong.org/documentation.html&quot;&gt;kramdown&lt;/a&gt;) puis transformé en html grâce à &lt;a href=&quot;https://jekyllrb.com/&quot;&gt;jekyll&lt;/a&gt;. Le code source du site est &lt;a href=&quot;https://github.com/FrancoisBrucker/cours_informatique&quot;&gt;visible&lt;/a&gt;, en particulier le code source de &lt;a href=&quot;https://github.com/FrancoisBrucker/cours_informatique/blob/master/docs/tutos/_posts/2021-08-30-format-markdown.md&quot;&gt;ce fichier&lt;/a&gt; (cliquez sur le bouton &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;raw&lt;/code&gt; à droite, juste avant que le fichier ne soit représenté).&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;syntaxe&quot;&gt;syntaxe&lt;/h2&gt;
-
-&lt;p&gt;Markdown permet facilement d’écrire des titres, des liste, mettre des choses en exergue, etc.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Pour une introduction et une liste des possibilités offertes, n’hésitez pas à consulter le site : &lt;a href=&quot;https://www.markdownguide.org/&quot;&gt;https://www.markdownguide.org/&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Le format markdown est basique. Il possède plein de variantes qui permettent d’étendre ses fonctionnalités. Les principales variantes utilisées sont :&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;celle de &lt;a href=&quot;https://guides.github.com/features/mastering-markdown/&quot;&gt;github&lt;/a&gt;.&lt;/li&gt;
-  &lt;li&gt;le &lt;a href=&quot;https://kramdown.gettalong.org/documentation.html&quot;&gt;kramdown&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;markdown-avec-vscode&quot;&gt;markdown avec vscode&lt;/h2&gt;
-
-&lt;p&gt;Suivez &lt;a href=&quot;/cours_informatique/tutos/editeur/vsc/installation/configuration/markdown/2021/09/14/vsc-markdown.html&quot;&gt;ce tutoriel&lt;/a&gt; pour installer les packages indispensables pour faire du markdown avec &lt;a href=&quot;/cours_informatique/tutos/editeur/vsc/installation/configuration/2021/09/03/vsc-installation-et-prise-en-main.html&quot;&gt;vscode&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;formules-mathématiques&quot;&gt;Formules mathématiques&lt;/h2&gt;
-
-&lt;p&gt;Lorsque l’on écrit des textes scientifique, vient inévitablement la question de l’écriture des équations.&lt;/p&gt;
-
-&lt;h3 id=&quot;latex&quot;&gt;latex&lt;/h3&gt;
-
-&lt;p&gt;Le langage &lt;a href=&quot;https://fr.wikipedia.org/wiki/LaTeX&quot;&gt;Latex&lt;/a&gt; permet d’écrire toutes les équations imaginable (et même plus) avec un petit langage que l’on peut utiliser directement dans un éditeur de texte (ceux qui ont déjà utilisé l’éditeur d’équation de Word savent que c’est l’enfer de devoir tout cliquer).&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;L’ancêtre de &lt;a href=&quot;https://fr.wikipedia.org/wiki/LaTeX&quot;&gt;Latex&lt;/a&gt; : &lt;a href=&quot;https://fr.wikipedia.org/wiki/TeX&quot;&gt;Tex&lt;/a&gt;, a été créé par le célèbre informaticien &lt;a href=&quot;https://fr.wikipedia.org/wiki/Donald_Knuth&quot;&gt;Donald Knuth&lt;/a&gt; par ce qu’il n’existait rien sur ordinateur à l’époque pour écrire &lt;a href=&quot;https://fr.wikipedia.org/wiki/The_Art_of_Computer_Programming&quot;&gt;ses livres&lt;/a&gt; en respectant une typographie correcte.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Une fois ce langage appris, il est étonnement clair, même non compilé en &lt;em&gt;jolies formules&lt;/em&gt;. Avec un peut d’habitude, on voit bien que : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$$\cos x=\sum_{k=0}^{\infty}\frac{(-1)^k}{(2k)!}x^{2k}$$&lt;/code&gt; est égal à :&lt;/p&gt;
-
-\[\cos x=\sum_{k=0}^{\infty}\frac{(-1)^k}{(2k)!}x^{2k}\]
-
-&lt;p&gt;Quelques aides :&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Un &lt;a href=&quot;http://tug.ctan.org/info/undergradmath/undergradmath.pdf&quot;&gt;résumé&lt;/a&gt; des possibibités&lt;/li&gt;
-  &lt;li&gt;un &lt;a href=&quot;https://www.science-emergence.com/Articles/Formules-math%C3%A9matiques-sous-LaTeX/&quot;&gt;tuto&lt;/a&gt; Latex contenant aussi des instructions pour les équations.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;en-markdown&quot;&gt;en markdown&lt;/h3&gt;
-
-&lt;p&gt;On peut écrire en markdown les équation latex.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;pour une équation dans le texte, on dit &lt;em&gt;inline&lt;/em&gt; on entoure notre équation  par des &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;pour équation au milieu de la page, on dit &lt;em&gt;display&lt;/em&gt;, on entoure notre équation par des &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$$&lt;/code&gt; et on saute une ligne avant et après les &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$$&lt;/code&gt;. comme dans l’exemple ci-après.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Equation en mode inline :&lt;/p&gt;
-
-&lt;div class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;je pense que $3 + 2$ vaut 5.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Equation en mode &lt;em&gt;display&lt;/em&gt; :&lt;/p&gt;
-
-&lt;div class=&quot;language-tex highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;p&quot;&gt;$$&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;$$&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Lorsque vous faites de l’exportation en html, les mathématiques sont représentées en utilisant &lt;a href=&quot;https://www.mathjax.org/&quot;&gt;Mathjax&lt;/a&gt;. Ce &lt;a href=&quot;https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference&quot;&gt;post&lt;/a&gt; résume les possibilités basique de mathjax pour écrire des équations.&lt;/p&gt;
-
-&lt;blockquote class=&quot;attention&quot;&gt;
-  &lt;p&gt;Il ne faut pas mettre d’espace après le premier &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$&lt;/code&gt; et avant le dernier &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$&lt;/code&gt; sinon, pandoc ne reconnaîtra pas que ce sont des équations que vous voulez écrire. Ansi &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ \frac{1}{2}$&lt;/code&gt; affichera &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ \frac{1}{2}$&lt;/code&gt;, alors que &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$\frac{1}{2}$&lt;/code&gt; affichera $\frac{1}{2}$.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;export&quot;&gt;export&lt;/h2&gt;
-
-&lt;p&gt;Si le markdown est pratique pour être écrit et lu rapidement, pour de long documents ou le partage de ceux-ci, il est important de les exporter dans un format plus :&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;imprimable comme le pdf ou l’html&lt;/li&gt;
-  &lt;li&gt;modifiable comme un docx ou un fichier latex&lt;/li&gt;
-  &lt;li&gt;un autre format que l’on aime.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;export-simple&quot;&gt;export simple&lt;/h3&gt;
-
-&lt;p&gt;Avec les extension que l’on a installé, il est déjà possible d’exporter le markdown en html, puis — via un navigateur — de l’exporter en pdf. Voir partie &lt;a href=&quot;/cours_informatique/tutos/editeur/vsc/installation/configuration/markdown/2021/09/14/vsc-markdown.html#export-et-preview&quot;&gt;preview du tutoriel&lt;/a&gt; pour l’éditeur vscode.&lt;/p&gt;
-
-&lt;p&gt;Cela suffit pour la majorité des cas.&lt;/p&gt;
-
-&lt;h3 id=&quot;utilitaire-pandoc&quot;&gt;utilitaire pandoc&lt;/h3&gt;
-
-&lt;p&gt;Si l’on veut exporter dans des formats plus exotiques ou encore finement contrôler le résultat de l’export, on peut utiliser le logiciel  &lt;a href=&quot;https://pandoc.org/&quot;&gt;pandoc&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://pandoc.org/&quot;&gt;pandoc&lt;/a&gt; est un monstre. Il permet (parfois avec un peu d’huile de coude il est vrai) de convertir à peut prêt tout document en un autre format (voir les &lt;a href=&quot;https://pandoc.org/demos.html&quot;&gt;démos&lt;/a&gt; pour différentes conversions).&lt;/p&gt;
-
-&lt;h4 id=&quot;installation-de-pandoc&quot;&gt;Installation de pandoc&lt;/h4&gt;
-
-&lt;p&gt;D’après la &lt;a href=&quot;https://pandoc.org/installing.html&quot;&gt;doc&lt;/a&gt;, selon le système d’exploitation :&lt;/p&gt;
-
-&lt;details&gt;&lt;summary&gt;sous linux&lt;/summary&gt;&lt;div&gt;
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo apt install pandoc&lt;/code&gt; dans un &lt;a href=&quot;/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html&quot;&gt;terminal&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;&lt;/details&gt;
-
-&lt;details&gt;&lt;summary&gt;sous mac&lt;/summary&gt;&lt;div&gt;
-&lt;p&gt;installez &lt;a href=&quot;https://brew.sh/&quot;&gt;brew&lt;/a&gt; puis &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;brew install pandoc&lt;/code&gt; dans un &lt;a href=&quot;/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html&quot;&gt;terminal&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;&lt;/details&gt;
-
-&lt;details&gt;&lt;summary&gt;sous windows&lt;/summary&gt;&lt;div&gt;
-&lt;p&gt;installez &lt;a href=&quot;https://chocolatey.org/&quot;&gt;Chocolatly&lt;/a&gt; puis &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;choco install pandoc&lt;/code&gt; dans un &lt;a href=&quot;/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html&quot;&gt;terminal&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;&lt;/details&gt;
-
-&lt;p&gt;Selon le format d’export, il vous faudra d’autres logiciels. Je vous conseille d’ores et déjà d’&lt;a href=&quot;https://www.latex-project.org/get/&quot;&gt;installer latex&lt;/a&gt; pour pouvoir facilement exporter en pdf sans passer par html et un navigateur.&lt;/p&gt;
-
-&lt;h4 id=&quot;exemple-dutilisation--en-html&quot;&gt;exemple d’utilisation : en html&lt;/h4&gt;
-
-&lt;p&gt;Pour l’export en html, j’utilise la commande suivante qui m’écrit de jolies équations avec &lt;a href=&quot;https://www.mathjax.org/&quot;&gt;https://www.mathjax.org/&lt;/a&gt; : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pandoc --mathjax --standalone --metadata pagetitle=&quot;titre page&quot; --metadata charset=&quot;UTF-8&quot;  page.md -o page.html&lt;/code&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;premier élément : le nom de la commande, ici &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pandoc&lt;/code&gt;.&lt;/li&gt;
-  &lt;li&gt;cette commande prend en entrée le fichier &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;page.md&lt;/code&gt; qui est le dernier élément de la ligne&lt;/li&gt;
-  &lt;li&gt;les autres éléments de la lignes sont des &lt;a href=&quot;https://fr.wikipedia.org/wiki/Commandes_Unix#Le_passage_d'arguments_aux_commandes&quot;&gt;arguments&lt;/a&gt;. Dans le monde des commandes, il y a deux types de paramètres “un &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-&lt;/code&gt; suivit d’une lettre” et “deux &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--&lt;/code&gt; suivi d’un mot” Ces paramètre peuvent être suivi d’arguments, c’est à dire des mots ne commençant pas par un &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-&lt;/code&gt; (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-o page.html&lt;/code&gt;), ou pas (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--mathjax&lt;/code&gt;) Notre commande a 4 paramètres :
-    &lt;ul&gt;
-      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-o page.html&lt;/code&gt;. &lt;em&gt;Un paramètre avec un argument&lt;/em&gt;. Le fichier se sorti s’appellera &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;page.html&lt;/code&gt;. Il determine le type de sortie (ici de l’html) et sera dans le même dossier que le fichier &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;page.md&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--mathjax&lt;/code&gt;. &lt;em&gt;Un paramètre sans argument&lt;/em&gt;. On utilise la bibliothèque mathjax pour &lt;em&gt;compiler&lt;/em&gt; les équations latex&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--standalone&lt;/code&gt;. &lt;em&gt;Un paramètre sans argument&lt;/em&gt;. On crée un fichier html complet (par défaut, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pandoc&lt;/code&gt; ne crée qu’un bout de html qui peut être combiner avec d’autres bout)&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--metadata pagetitle=&quot;titre page&quot;&lt;/code&gt;. &lt;em&gt;Un paramètre avec un argument&lt;/em&gt;. En combinaison avec le paramètre &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;standalone&lt;/code&gt;. Permet de donner un titre à la page html, ici “titre page”.&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--metadata charset=&quot;UTF-8&quot;&lt;/code&gt;. &lt;em&gt;Un paramètre avec un argument&lt;/em&gt;. Permet de spécifier l’encodage des caractères (voir cours sur les fichiers). Devrait permettre de voir les accents.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Si vous avez à compiler plein de fois votre page, n’oubliez pas qu’utiliser la &lt;em&gt;flèche du haut&lt;/em&gt; dans un terminal rappelle la dernière commande utilisée. Donc même une commande avec plein de paramètres est facile à réutiliser. Il suffit d’appuyer sur la flèche du haut.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Lorsque je fais mes tests en html, après chaque re-compilation je recharge la page avec &lt;em&gt;“F5”&lt;/em&gt; ou &lt;em&gt;“ctrl+R”&lt;/em&gt; dans le navigateur. Le process est &lt;strong&gt;très rapide&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;misc&quot;&gt;misc&lt;/h2&gt;
-
-&lt;p&gt;Quelques liens potentiellement intéressant :&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;pimp my markdown dans vsc : &lt;a href=&quot;https://medium.com/@pierrepaci/enhance-your-markdown-experience-using-vscode-3caf489888b8&quot;&gt;https://medium.com/@pierrepaci/enhance-your-markdown-experience-using-vscode-3caf489888b8&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;pimp my pandoc : &lt;a href=&quot;https://learnbyexample.github.io/customizing-pandoc/&quot;&gt;https://learnbyexample.github.io/customizing-pandoc/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><category term="tutos" /><category term="langage" /><category term="markdown" /><category term="informatique" /><category term="cours" /><summary type="html">Une introduction au format markdown. C’est le langage que nous utiliserons majoritairement pour écrire les cours.</summary></entry></feed>
+&lt;/ul&gt;</content><author><name>François Brucker</name></author><category term="installation" /><category term="système" /><category term="terminal" /><summary type="html">Comment bien préparer son ordinateur pour faire du développement. On ne montrera ici que le départ, c’est à dire l’installation fraiche d’un système sur lequel on pourra ensuite installer — proprement — les divers outils et logiciels utiles pour le développement.</summary></entry></feed>
