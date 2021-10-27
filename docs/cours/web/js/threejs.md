@@ -100,9 +100,8 @@ function init() {
     camera = ...;
     scene = ...;
     renderer = ...;
-    light = ...;
-    mesh = ...;
-    animate();
+    const light = ...;
+    const mesh = ...;
 }
 ``` 
 On remarque que l'appel à la fonction init() a lieu avant la déclaration de celle-ci. Ce n'est pas une particularité de three.js mais directement de js. Le fait d'utiliser la déclaration *function* permet de définir la fonction avant qu'elle ne soit utilisée ailleurs, même si cet ailleurs est avant dans le code. 
