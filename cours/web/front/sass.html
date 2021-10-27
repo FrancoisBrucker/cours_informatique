@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Sass | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Sass" />
+<meta name="author" content="Adèle Bourgeix - 2020/2021" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
+<link rel="canonical" href="/cours_informatique/cours/web/front/sass.html" />
+<meta property="og:url" content="/cours_informatique/cours/web/front/sass.html" />
+<meta property="og:site_name" content="cours d’informatique" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Sass" />
+<script type="application/ld+json">
+{"description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","headline":"Sass","url":"/cours_informatique/cours/web/front/sass.html","author":{"@type":"Person","name":"Adèle Bourgeix - 2020/2021"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css">
+
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+</head>
+
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Sass</h1>Auteurs :
+      <ul>
+      
+        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Adèle Bourgeix - 2020/2021</span></span></li>
+      
+        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Maxime Vivier - 2020/2021</span></span></li>
+      
+        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">William Templeton - 2021/2022</span></span></li>
+      
+        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Victoire Flesselles - 2021/2022</span></span></li>
+      
+      </ul></p></p>
+  </header>
+
+  <div class="post-content">
+    <h1 id="sass-quest-ce-que-cest-">Sass, qu’est-ce que c’est ?</h1>
+
+<p>Au fil du temps, les développeurs se sont rendus compte de la difficulté d’écrire des feuilles de style (.css) efficientes et optimisées: ces fichiers deviennent de plus en plus longs, complexes et difficiles de maintenir. Il est donc devenu évident qu’une solution était nécessaire.</p>
+
+<p>Sass (Syntactically awesome stylsheets) est un préprocesseur CSS, une couche entre les feuilles de style que l’on écrit et les fichiers .css qui sont envoyés  au navigateur. Sass comble les lacunes de CSS en développant un langage permettant d’écrire du code DRY qui sera plus rapide, plus efficace et plus facile à maintenir.</p>
+
+<blockquote>
+  <p><strong>Nota Bene</strong> : c’est quoi le code DRY ?</p>
+
+  <p>DRY pour Don’t Repeat Yourself c’est une “bonne pratique” de développement qui consiste à éviter la duplication des lignes de code pour permettre une optimisation de celui-ci.</p>
+</blockquote>
+
+<p>Sass permet de convertir le code SCSS en code CSS. Il possède de nombreuses fonctionnalités qui n’existent pas dans CSS. Nous allons en étudier quelques-unes dans ce cours.</p>
+
+<h1 id="installer-sass">Installer Sass</h1>
+
+<p><a href="https://sass-lang.com/install">Installer Sass</a></p>
+
+<h1 id="fonctionnalités">Fonctionnalités</h1>
+
+<h2 id="variables">Variables</h2>
+
+<ul>
+  <li>Sass permet la création de variables globales. Les variables commencent avec le symbole dollar <strong>$</strong> et leur affection avec les deux-points <strong>:</strong>.</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$font-stack:    Helvetica, sans-serif;
+$primary-color: #333;
+
+body {
+  font: 100% $font-stack;
+  color: $primary-color;
+}
+</code></pre></div></div>
+
+<p>Ici, la création des variables $font-stack et $primary-color permettent la réutilisation de la même police et de la même couleur à plusieurs endroits de la feuille de style. Si besoin est, il n’est pas nécessaire de devoir changer la couleur ou la police à chaque occurrence. Cela est très pratique, notamment pour maintenir la cohérence d’une charte graphique.</p>
+
+<h2 id="encapsulation">Encapsulation</h2>
+
+<ul>
+  <li>Sass permet aussi l’encapsulation, impossible en .css. Dans un fichier .html, le code est écrit de façon encapsulé. Or, dans un fichier .css, la structure du code n’est pas la même. Il serait donc plus logique de réutiliser cette structure encapsulée du .html dans le fichier de style associé. On garde ainsi la même structure de construction ce qui permet de gagner en lisibilité, c’est un vrai gain de temps pour la maintenance du site.</li>
+</ul>
+
+<p>fichier <strong>index.html</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+&lt;html&gt;
+  &lt;body&gt;
+    &lt;main&gt;
+      &lt;h1 class="title"&gt;Calculatrice&lt;/h1&gt;
+			&lt;div class="calculator"&gt;Nous créérons ici le cadre de la calculatrice.&lt;/div&gt;
+    &lt;/main&gt;
+   &lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre></div></div>
+
+<p>fichier <strong>styles.scss</strong> de sass:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>body {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Montserrat", sans-serif;
+    background-color: #b8c6db;
+    background-image: linear-gradient(315deg, #b8c6db 0%, #f5f7fa 74%);
+}
+    main {
+    width: min-content;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+      .title {
+        margin: 50px 0 10px;
+        font-size: 3.5em;
+        text-transform: uppercase;
+        font-weight: lighter;
+      }
+      .calculator{
+        width: $main-width;
+        padding: 20px;
+        background: #efefef;
+        border-radius: .5rem;
+        box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.2);
+        display: grid;
+        grid-template-areas:
+                        "result result"
+                        "number-inputs operators"
+                        "bottom-rank bottom-rank";
+        grid-template-columns: 3fr 1fr;
+      }
+    }
+}          
+</code></pre></div></div>
+
+<p>fichier <strong>styles.css</strong> généré après compilation:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>body {
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Montserrat", sans-serif;
+  background-color: #b8c6db;
+  background-image: linear-gradient(315deg, #b8c6db 0%, #f5f7fa 74%);
+}
+
+main {
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+main .title {
+  margin: 50px 0 10px;
+  font-size: 3.5em;
+  text-transform: uppercase;
+  font-weight: lighter;
+}
+main .calculator {
+  width: 450px;
+  padding: 20px;
+  background: #efefef;
+  border-radius: 0.5rem;
+  box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.2);
+  display: grid;
+  grid-template-areas: "result result" "number-inputs operators" "bottom-rank bottom-rank";
+  grid-template-columns: 3fr 1fr;
+}
+</code></pre></div></div>
+<h2 id="modules">Modules</h2>
+
+<p>Sass permet aussi de découper les feuilles de style en plusieurs fichiers et permet de charger différents fichiers Sass comme des modules. On peut donc accéder à la fois aux variables, mixins et fonctions d’autres feuilles de style.</p>
+
+<p>Fichier <strong>base.scss</strong> de Sass qui pose des règles de base pour l’ensemble du corps de texte:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$font-stack:    Helvetica, sans-serif;
+$primary-color: #333;
+
+body {
+  font: 100% $font-stack;
+  color: $primary-color;
+}
+</code></pre></div></div>
+
+<p>fichier <strong>styles.scss</strong> de sass qui réutilise le style imposé par le fichier base.scss:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@use 'base';
+
+.inverse {
+  background-color: base.$primary-color;
+  color: white;
+}
+</code></pre></div></div>
+
+<p>génèrent le fichier <strong>styles.css</strong> suivant:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>body {
+  font: 100% Helvetica, sans-serif;
+  color: #333;
+}
+
+.inverse {
+  background-color: #333;
+  color: white;
+}
+</code></pre></div></div>
+
+<p>L’appel à un fichier Sass se fait sous la forme <em>@use ‘nom du fichier</em>. Il n’y a pas besoin d’inclure l’extension de fichier, Sass a compris tout seul qu’il devait ici utiliser le module <em>base</em> qui se trouve dans le fichier <em>styles.scss</em>.</p>
+
+<h2 id="mélanges">Mélanges</h2>
+
+<p>Le <em>mixin</em> permet de créer des groupes de déclarations CSS réutilisables dans tout le site.</p>
+
+<p>L’exemple ci-dessous permet de définir le thème qui pourra être utilisé dès qu’il y a besoin.</p>
+
+<p>Fichier en <strong>theme.scss</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@mixin theme($theme: DarkGray) {
+  background: $theme;
+  box-shadow: 0 0 1px rgba($theme, .25);
+  color: #fff;
+}
+
+.info {
+  @include theme;
+}
+.alert {
+  @include theme($theme: DarkRed);
+}
+.success {
+  @include theme($theme: DarkGreen);
+}
+</code></pre></div></div>
+
+<p>génère le fichier <strong>theme.css</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.info {
+  background: DarkGray;
+  box-shadow: 0 0 1px rgba(169, 169, 169, 0.25);
+  color: #fff;
+}
+
+.alert {
+  background: DarkRed;
+  box-shadow: 0 0 1px rgba(139, 0, 0, 0.25);
+  color: #fff;
+}
+
+.success {
+  background: DarkGreen;
+  box-shadow: 0 0 1px rgba(0, 100, 0, 0.25);
+  color: #fff;
+}
+</code></pre></div></div>
+
+<p>On créé le mixin avec le symbole <strong>@</strong>, on peut éventuellement ajouter des variables dans les parenthèses <strong>($nomvariable: valeurpardéfaut)</strong>. On appelle ensuite le mixin <strong>@include nommixin</strong> et éventuellement on modifie les variables.</p>
+
+<h2 id="héritage">Héritage</h2>
+
+<blockquote>
+  <p><strong>Nota Bene</strong>: En programmation orientée objet, l’héritage est le principe selon lequel les classes filles héritent des propriété des classes mères.</p>
+</blockquote>
+
+<p>Sass permet aussi de réutiliser le concept d’héritage : des propriétés peuvent se partager d’un sélecteur à l’autre.</p>
+
+<p>L’exemple ci-dessous permet d’afficher des messages de succès, d’erreur, ou d’avertissement dont la seule propriété qui change est la couleur.</p>
+
+<p>Par exemple le fichier <strong>styles.scss</strong> suivant :</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%message-shared {
+  border: 1px solid #ccc;
+  padding: 10px;
+  color: #333;
+}
+
+%equal-heights {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.message {
+  @extend %message-shared;
+}
+
+.success {
+  @extend %message-shared;
+  border-color: green;
+}
+
+.error {
+  @extend %message-shared;
+  border-color: red;
+}
+
+.warning {
+  @extend %message-shared;
+  border-color: yellow;
+}
+
+</code></pre></div></div>
+
+<p>génère le fichier <strong>styles.css</strong> suivant après compilation:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.message, .success, .error, .warning {
+  border: 1px solid #ccc;
+  padding: 10px;
+  color: #333;
+}
+
+.success {
+  border-color: green;
+}
+
+.error {
+  border-color: red;
+}
+
+.warning {
+  border-color: yellow;
+}
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>Nota Bene:</strong> On peut remarquer que la classe equal-heights ne sera générée car elle n’est jamais “étendue”.</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>Nota Bene</strong>: Les classes success, error et warning héritent donc toutes les trois des propriétés de la classe message, qui a son tour hérite de la classe message-shared.</p>
+</blockquote>
+
+<h2 id="opérateurs">Opérateurs</h2>
+
+<p>Sass permet l’introduction d’opérateurs mathématiques comme <strong>+ - * /</strong>.</p>
+
+<p>Par exemple, ce fichier <strong>styles.scss</strong>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.container {
+  width: 100%;
+}
+
+article[role="main"] {
+  float: left;
+  width: 600px / 960px * 100%;
+}
+
+aside[role="complementary"] {
+  float: right;
+  width: 300px / 960px * 100%;
+}
+</code></pre></div></div>
+
+<p>permet de générer le fichier <strong>styles.css</strong> suivant :</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.container {
+  width: 100%;
+}
+
+article[role="main"] {
+  float: left;
+  width: 62.5%;
+}
+
+aside[role="complementary"] {
+  float: right;
+  width: 31.25%;
+}
+</code></pre></div></div>
+
+<p>Ici, l’intérêt des opérateurs est de convertir des pixels en pourcentages.</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d&#39;informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d&#39;informatique</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

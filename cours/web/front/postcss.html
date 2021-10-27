@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>PostCSS | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="PostCSS" />
+<meta name="author" content="Victoire Flesselles" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
+<link rel="canonical" href="/cours_informatique/cours/web/front/postcss.html" />
+<meta property="og:url" content="/cours_informatique/cours/web/front/postcss.html" />
+<meta property="og:site_name" content="cours d’informatique" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="PostCSS" />
+<script type="application/ld+json">
+{"description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","headline":"PostCSS","url":"/cours_informatique/cours/web/front/postcss.html","author":{"@type":"Person","name":"Victoire Flesselles"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css">
+
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+</head>
+
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">PostCSS</h1>Auteurs :
+      <ul>
+      
+        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Victoire Flesselles</span></span></li>
+      
+        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">William Templeton</span></span></li>
+      
+      </ul></p></p>
+  </header>
+
+  <div class="post-content">
+    <h2 id="quest-ce-que-postcss">Qu’est-ce que PostCSS?</h2>
+<p align="center">
+	<img src="./images/postcss.png" />
+</p>
+<h3 id="sass-la-partie-émergée-de-liceberg">SASS, la partie émergée de l’iceberg</h3>
+<p>On a vu dans le cours sur SASS à quel point l’écriture du CSS peut être drastiquement améliorée:</p>
+<ul>
+  <li>Les variables permettent une cohérence à travers l’ensemble des fichiers <code class="language-plaintext highlighter-rouge">scss</code>, ce qui est pariculièrement utile pour le respect d’une charte graphique par exemple</li>
+  <li>Le nesting permet de rendre le code plus flexible et bien plus agréable à lire</li>
+  <li>L’utilisation de modules permet une structure plus explicite et facile à maintenir</li>
+  <li>Les mixins permettent de respecter le principe DRY</li>
+  <li>Les opérateurs simplifient beaucoup le calcul de tailles pour une interface très fluide</li>
+</ul>
+
+<p>SASS est un outil très utile, mais peu configurable. Si on remarque une difficulté dans l’écritude du code <code class="language-plaintext highlighter-rouge">css</code> ou <code class="language-plaintext highlighter-rouge">scss</code>, on est obligés de rester dans les clous du format pour résoudre le problème.</p>
+
+<p>À l’inverse, le javascript est hautement configurable et il existe des milliers de librairies téléchargeables en quelques instants permettant de réaliser des tâches complexes en toute simplicité. Comment rendre le CSS tout aussi modulaire et configurable ?</p>
+
+<p>C’est là qu’intervient <a href="https://postcss.org/">PostCSS</a>.</p>
+<h3 id="concept">Concept</h3>
+<p>PostCSS s’appuie sur Javascript pour moderniser le CSS. En tant que tel, PostCSS ne fait pas grand chose; pour configurer le CSS, il faut faire appel à des plugins qui apportent des fonctionnalités supplémentaires. On peut voir une similitude avec <code class="language-plaintext highlighter-rouge">npm</code>: ce sont les librairies installées par <code class="language-plaintext highlighter-rouge">npm</code> qui apportent toute la configurabilité au projet. PostCSS met à disposition une API qui offre la possibilité aux plugins d’analyser et modifier n’importe quel fichier CSS.</p>
+
+<h3 id="pourquoi-lutiliser-">Pourquoi l’utiliser ?</h3>
+<p>PostCSS compte plus de <a href="https://www.postcss.parts/">200 plugins</a>. L’objectif principal est de permettre au développeur de gagner en efficacité et rapidité. Certains plugins permettent de détecter automatique des erreurs ou des maladresses (les linters), d’autres automatisent l’écriture de morceaux de code. Il existe même des plugins qui mimiquent exactement le comportement de SASS: PostCSS n’est pas une alternative à SASS mais bel et bien un outil bien plus puissant. Pour autant, il n’y a pas nécessairement de dépaysement: rien ne nous oblige à utiliser plus que les fonctionnalités de SASS par exemple, mais on se laisse toujours la porte ouverte à plus de fonctionnalités par la suite.</p>
+
+<p>Et si jamais on ne trouve pas son bonheur, PostCSS permet d’écrire ses propres plugins! La <a href="https://github.com/postcss/postcss/blob/master/docs/writing-a-plugin.md">documentation officielle</a> explique le processus et même comment partager son module avec le reste de la communauté.</p>
+
+<p>Au-delà d’une utilisation individuelle, certains plugins permettent d’écrire un code plus homogène au sein d’une équipe. Par exemple, l’utilisation de linters et prefixers encouragent l’utilisation de mêmes conventions par les différents développeurs même s’ils ont des pratiques différentes. PostCSS s’intègre très facilement dans n’importe quel projet d’envergure.</p>
+<h2 id="application">Application</h2>
+<p>On reprend le projet très basique de calculatrice du cours sur Webpack, après empaquetage. Pour rappel, la structure du projet est :</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.
+├── dist
+│   ├── index.html
+│   ├── main.js
+│   └── style.css
+├── node_modules
+├── package.json
+├── package-lock.json
+├── src
+│   ├── index.js
+│   ├── methods.js
+│   ├── style.scss
+│   └── variables.js
+└── webpack.config.js
+</code></pre></div></div>
+<p>et les différents fichiers sont :</p>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">index.html</code> :</p>
+
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nt">&lt;html&gt;</span>
+      <span class="nt">&lt;head&gt;</span>
+          <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">/&gt;</span>
+          <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"X-UA-Compatible"</span> <span class="na">content=</span><span class="s">"IE=edge"</span><span class="nt">/&gt;</span>
+          <span class="nt">&lt;title&gt;</span>Calculatrice<span class="nt">&lt;/title&gt;</span>
+          <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"https://fonts.googleapis.com/css?family=Montserrat&amp;display=swap"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">/&gt;</span>
+          <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">type=</span><span class="s">"text/css"</span> <span class="na">href=</span><span class="s">"./style.css"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/head&gt;</span>
+      <span class="nt">&lt;body&gt;</span>
+      <span class="nt">&lt;main&gt;</span>
+              <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>Calculatrice<span class="nt">&lt;/h1&gt;</span>
+              <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"calculator"</span><span class="nt">&gt;</span>
+                  <span class="nt">&lt;section</span> <span class="na">class=</span><span class="s">"affichage"</span><span class="nt">&gt;</span>
+                      <span class="nt">&lt;textarea</span> <span class="na">id=</span><span class="s">"result"</span> <span class="na">class=</span><span class="s">"result"</span><span class="nt">&gt;&lt;/textarea&gt;</span>
+                  <span class="nt">&lt;/section&gt;</span>
+                  <span class="nt">&lt;section</span> <span class="na">class=</span><span class="s">"number-inputs"</span><span class="nt">&gt;</span>
+                      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"case case1"</span> <span class="na">value=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+                      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"case case2"</span>  <span class="na">value=</span><span class="s">"2"</span><span class="nt">/&gt;</span>
+                      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"case case3"</span>  <span class="na">value=</span><span class="s">"3"</span><span class="nt">/&gt;</span>
+                      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"case case4"</span> <span class="na">value=</span><span class="s">"4"</span> <span class="nt">/&gt;</span>
+                      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"case case5"</span> <span class="na">value=</span><span class="s">"5"</span><span class="nt">/&gt;</span>
+                      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"case case6"</span> <span class="na">value=</span><span class="s">"6"</span><span class="nt">/&gt;</span>
+                      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"case case7"</span> <span class="na">value=</span><span class="s">"7"</span><span class="nt">/&gt;</span>
+                      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"case case8"</span>  <span class="na">value=</span><span class="s">"8"</span><span class="nt">/&gt;</span>
+                      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"case case9"</span>  <span class="na">value=</span><span class="s">"9"</span><span class="nt">/&gt;</span>
+                      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"case case0"</span> <span class="na">value=</span><span class="s">"0"</span> <span class="nt">/&gt;</span>
+                      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"case casepoint"</span>  <span class="na">value=</span><span class="s">"."</span><span class="nt">/&gt;</span>
+                  <span class="nt">&lt;/section&gt;</span>
+                  <span class="nt">&lt;section</span> <span class="na">class=</span><span class="s">"operators"</span><span class="nt">&gt;</span>
+                      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"case case+"</span>  <span class="na">value=</span><span class="s">"+"</span><span class="nt">/&gt;</span>
+                      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"case case-"</span> <span class="na">value=</span><span class="s">"-"</span> <span class="nt">/&gt;</span>
+                      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"case case*"</span>  <span class="na">value=</span><span class="s">"*"</span> <span class="na">o</span><span class="nt">/&gt;</span>
+                      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"case casediv"</span>  <span class="na">value=</span><span class="s">"/"</span><span class="nt">/&gt;</span>
+                  <span class="nt">&lt;/section&gt;</span>
+                  <span class="nt">&lt;section</span> <span class="na">class=</span><span class="s">"bottom-rank"</span><span class="nt">&gt;</span>
+                      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">id=</span><span class="s">"caseegal"</span> <span class="na">class=</span><span class="s">"case caseegal"</span>  <span class="na">value=</span><span class="s">"="</span><span class="nt">/&gt;</span>
+                      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">id=</span><span class="s">"casedel"</span> <span class="na">class=</span><span class="s">"case casedel"</span>  <span class="na">value=</span><span class="s">"C"</span><span class="nt">/&gt;</span>	
+                  <span class="nt">&lt;/section&gt;</span>
+              <span class="nt">&lt;/div&gt;</span>
+          <span class="nt">&lt;/main&gt;</span>
+      <span class="nt">&lt;/body&gt;</span> 
+      <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"./main.js"</span><span class="nt">&gt;&lt;/script&gt;</span>    
+  <span class="nt">&lt;/html&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">index.js</code> :</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">import</span> <span class="p">{</span><span class="nx">numInputs</span><span class="p">,</span> <span class="nx">opInputs</span><span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./variables</span><span class="dl">"</span>
+  <span class="k">import</span> <span class="p">{</span><span class="nx">insert</span><span class="p">,</span> <span class="nx">calcul</span><span class="p">,</span> <span class="nx">del</span><span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./methods</span><span class="dl">"</span><span class="p">;</span>
+
+  <span class="nx">numInputs</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">input</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">input</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span><span class="o">=&gt;</span><span class="p">{</span>
+      <span class="nx">insert</span><span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">value</span><span class="p">)</span>
+      <span class="p">})</span>
+  <span class="p">});</span>
+
+  <span class="nx">opInputs</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">input</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">input</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span><span class="o">=&gt;</span><span class="p">{</span>
+      <span class="nx">insert</span><span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">value</span><span class="p">)</span>
+      <span class="p">})</span>
+  <span class="p">});</span>
+
+  <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">caseegal</span><span class="dl">"</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span><span class="o">=&gt;</span><span class="p">{</span>
+      <span class="nx">calcul</span><span class="p">();</span>
+  <span class="p">})</span>
+
+  <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">casedel</span><span class="dl">"</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span><span class="o">=&gt;</span><span class="p">{</span>
+      <span class="nx">del</span><span class="p">();</span>
+  <span class="p">})</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">methods.js</code> :</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">function</span> <span class="nx">insert</span><span class="p">(</span><span class="nx">num</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">result</span><span class="dl">"</span><span class="p">).</span><span class="nx">value</span> <span class="o">+=</span> <span class="nx">num</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kd">function</span> <span class="nx">calcul</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">result</span><span class="dl">"</span><span class="p">).</span><span class="nx">value</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">result</span><span class="dl">"</span><span class="p">).</span><span class="nx">value</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="kd">function</span> <span class="nx">del</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">result</span><span class="dl">"</span><span class="p">).</span><span class="nx">value</span> <span class="o">=</span> <span class="dl">""</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">export</span> <span class="p">{</span><span class="nx">insert</span><span class="p">,</span> <span class="nx">calcul</span><span class="p">,</span> <span class="nx">del</span><span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">variables.js</code> :</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">var</span> <span class="nx">numInputs</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">"</span><span class="s2">.number-inputs input</span><span class="dl">"</span><span class="p">);</span>
+
+  <span class="kd">var</span> <span class="nx">opInputs</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">"</span><span class="s2">.operators input</span><span class="dl">"</span><span class="p">);</span>
+
+  <span class="k">export</span> <span class="p">{</span><span class="nx">numInputs</span><span class="p">,</span> <span class="nx">opInputs</span><span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">style.scss</code> :</p>
+
+    <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">$main-width</span><span class="p">:</span> <span class="m">450px</span><span class="p">;</span>
+
+  <span class="nt">body</span> <span class="p">{</span>
+      <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+      <span class="nl">padding</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+      <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+      <span class="nl">min-height</span><span class="p">:</span> <span class="m">100vh</span><span class="p">;</span>
+      <span class="nl">font-family</span><span class="p">:</span> <span class="s2">"Montserrat"</span><span class="o">,</span> <span class="nb">sans-serif</span><span class="p">;</span>
+      <span class="nl">background-color</span><span class="p">:</span> <span class="mh">#b8c6db</span><span class="p">;</span>
+      <span class="nl">background-image</span><span class="p">:</span> <span class="nf">linear-gradient</span><span class="p">(</span><span class="m">315deg</span><span class="o">,</span> <span class="mh">#b8c6db</span> <span class="m">0%</span><span class="o">,</span> <span class="mh">#f5f7fa</span> <span class="m">74%</span><span class="p">);</span>
+  <span class="p">}</span>
+      <span class="nt">main</span> <span class="p">{</span>
+      <span class="nl">width</span><span class="p">:</span> <span class="n">min-content</span><span class="p">;</span>
+      <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span> <span class="nb">auto</span><span class="p">;</span>
+      <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+      <span class="nl">flex-direction</span><span class="p">:</span> <span class="n">column</span><span class="p">;</span>
+      <span class="nl">align-items</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+      <span class="nc">.title</span> <span class="p">{</span>
+      <span class="nl">margin</span><span class="p">:</span> <span class="m">50px</span> <span class="m">0</span> <span class="m">10px</span><span class="p">;</span>
+      <span class="nl">font-size</span><span class="p">:</span> <span class="m">3</span><span class="mi">.5em</span><span class="p">;</span>
+      <span class="nl">text-transform</span><span class="p">:</span> <span class="nb">uppercase</span><span class="p">;</span>
+      <span class="nl">font-weight</span><span class="p">:</span> <span class="nb">lighter</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="nc">.calculator</span><span class="p">{</span>
+      <span class="nl">width</span><span class="p">:</span> <span class="nv">$main-width</span><span class="p">;</span>
+      <span class="nl">padding</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+      <span class="nl">background</span><span class="p">:</span> <span class="mh">#efefef</span><span class="p">;</span>
+      <span class="nl">border-radius</span><span class="p">:</span> <span class="mi">.5rem</span><span class="p">;</span>
+      <span class="nl">box-shadow</span><span class="p">:</span> <span class="m">10px</span> <span class="m">10px</span> <span class="m">40px</span> <span class="nf">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="mi">.2</span><span class="p">);</span>
+      <span class="nl">display</span><span class="p">:</span> <span class="n">grid</span><span class="p">;</span>
+      <span class="na">grid-template-areas</span><span class="p">:</span>
+                      <span class="s2">"result result"</span>
+                      <span class="s2">"number-inputs operators"</span>
+                      <span class="s2">"bottom-rank bottom-rank"</span><span class="p">;</span>
+      <span class="na">grid-template-columns</span><span class="p">:</span> <span class="m">3fr</span> <span class="m">1fr</span><span class="p">;</span>
+      <span class="nc">.case</span> <span class="p">{</span>
+          <span class="nl">width</span><span class="p">:</span> <span class="nf">calc</span><span class="p">(</span><span class="nv">$main-width</span> <span class="o">/</span> <span class="m">4</span> <span class="o">-</span> <span class="m">20px</span><span class="p">);</span>
+          <span class="nl">height</span><span class="p">:</span> <span class="nf">calc</span><span class="p">(</span><span class="nv">$main-width</span> <span class="o">/</span> <span class="m">4</span> <span class="o">-</span> <span class="m">20px</span><span class="p">);</span>
+          <span class="nl">text-transform</span><span class="p">:</span> <span class="nb">uppercase</span><span class="p">;</span>
+          <span class="nl">margin</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+          <span class="nl">background</span><span class="p">:</span> <span class="mh">#efefef</span><span class="p">;</span>
+          <span class="nl">border</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+          <span class="nl">border-radius</span><span class="p">:</span> <span class="mi">.5rem</span><span class="p">;</span>
+          <span class="nl">color</span><span class="p">:</span> <span class="mh">#444</span><span class="p">;</span>
+          <span class="nl">font-size</span><span class="p">:</span> <span class="m">1rem</span><span class="p">;</span>
+          <span class="nl">font-weight</span><span class="p">:</span> <span class="m">700</span><span class="p">;</span>
+          <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+          <span class="nl">outline</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+          <span class="nl">cursor</span><span class="p">:</span> <span class="nb">pointer</span><span class="p">;</span>
+          <span class="nl">transition</span><span class="p">:</span> <span class="mi">.2s</span> <span class="n">ease-in-out</span><span class="p">;</span>
+          <span class="nl">box-shadow</span><span class="p">:</span> <span class="m">-6px</span> <span class="m">-6px</span> <span class="m">14px</span> <span class="nf">rgba</span><span class="p">(</span><span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="mi">.7</span><span class="p">)</span><span class="o">,</span>
+                      <span class="m">-6px</span> <span class="m">-6px</span> <span class="m">10px</span> <span class="nf">rgba</span><span class="p">(</span><span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="mi">.5</span><span class="p">)</span><span class="o">,</span>
+                      <span class="m">6px</span> <span class="m">6px</span> <span class="m">8px</span> <span class="nf">rgba</span><span class="p">(</span><span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="mi">.075</span><span class="p">)</span><span class="o">,</span>
+                      <span class="m">6px</span> <span class="m">6px</span> <span class="m">10px</span> <span class="nf">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="mi">.15</span><span class="p">);</span>
+          <span class="k">&amp;</span><span class="nd">:hover</span><span class="p">{</span>
+              <span class="nl">box-shadow</span><span class="p">:</span> <span class="m">-2px</span> <span class="m">-2px</span> <span class="m">6px</span> <span class="nf">rgba</span><span class="p">(</span><span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="mi">.6</span><span class="p">)</span><span class="o">,</span>
+              <span class="m">-2px</span> <span class="m">-2px</span> <span class="m">4px</span> <span class="nf">rgba</span><span class="p">(</span><span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="mi">.4</span><span class="p">)</span><span class="o">,</span>
+              <span class="m">2px</span> <span class="m">2px</span> <span class="m">2px</span> <span class="nf">rgba</span><span class="p">(</span><span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="mi">.05</span><span class="p">)</span><span class="o">,</span>
+              <span class="m">2px</span> <span class="m">2px</span> <span class="m">4px</span> <span class="nf">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="mi">.1</span><span class="p">);</span>
+          <span class="p">}</span>
+          <span class="k">&amp;</span><span class="nd">:active</span><span class="p">{</span>
+              <span class="nl">box-shadow</span><span class="p">:</span> <span class="nb">inset</span> <span class="m">-2px</span> <span class="m">-2px</span> <span class="m">6px</span> <span class="nf">rgba</span><span class="p">(</span><span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="mi">.7</span><span class="p">)</span><span class="o">,</span>
+              <span class="nb">inset</span> <span class="m">-2px</span> <span class="m">-2px</span> <span class="m">4px</span> <span class="nf">rgba</span><span class="p">(</span><span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="mi">.5</span><span class="p">)</span><span class="o">,</span>
+              <span class="nb">inset</span> <span class="m">2px</span> <span class="m">2px</span> <span class="m">2px</span> <span class="nf">rgba</span><span class="p">(</span><span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="mi">.075</span><span class="p">)</span><span class="o">,</span>
+              <span class="nb">inset</span> <span class="m">2px</span> <span class="m">2px</span> <span class="m">4px</span> <span class="nf">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="mi">.15</span><span class="p">);</span>
+          <span class="p">}</span>
+      <span class="p">}</span>
+      <span class="nc">.caseegal</span><span class="o">,</span> <span class="nc">.casedel</span><span class="o">,</span> <span class="nc">.case0</span> <span class="p">{</span>
+      <span class="nl">width</span><span class="p">:</span> <span class="nf">calc</span><span class="p">(</span><span class="nv">$main-width</span> <span class="o">/</span> <span class="m">2</span> <span class="o">-</span> <span class="m">20px</span><span class="p">);</span>
+      <span class="p">}</span>
+      <span class="nc">.affichage</span><span class="p">{</span>
+          <span class="na">grid-area</span><span class="p">:</span> <span class="n">result</span><span class="p">;</span>
+          <span class="nc">.result</span> <span class="p">{</span>
+              <span class="nl">resize</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+              <span class="nl">height</span><span class="p">:</span> <span class="m">50px</span><span class="p">;</span>
+              <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+              <span class="nl">padding</span><span class="p">:</span> <span class="m">20px</span> <span class="m">8px</span> <span class="m">0</span> <span class="m">8px</span><span class="p">;</span>
+              <span class="nl">text-align</span><span class="p">:</span> <span class="nb">right</span><span class="p">;</span>
+              <span class="nl">color</span><span class="p">:</span> <span class="mh">#444</span><span class="p">;</span>
+              <span class="nl">font-size</span><span class="p">:</span> <span class="m">1rem</span><span class="p">;</span>
+              <span class="nl">font-weight</span><span class="p">:</span> <span class="m">700</span><span class="p">;</span>
+              <span class="nl">border</span><span class="p">:</span> <span class="nb">solid</span> <span class="m">1px</span> <span class="mh">#efefef</span><span class="p">;</span>
+              <span class="nl">border-radius</span><span class="p">:</span> <span class="mi">.5rem</span><span class="p">;</span>
+              <span class="nl">box-shadow</span><span class="p">:</span> <span class="nb">inset</span> <span class="m">-2px</span> <span class="m">-2px</span> <span class="m">6px</span> <span class="nf">rgba</span><span class="p">(</span><span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="mi">.7</span><span class="p">)</span><span class="o">,</span>
+              <span class="nb">inset</span> <span class="m">-2px</span> <span class="m">-2px</span> <span class="m">4px</span> <span class="nf">rgba</span><span class="p">(</span><span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="mi">.5</span><span class="p">)</span><span class="o">,</span>
+              <span class="nb">inset</span> <span class="m">2px</span> <span class="m">2px</span> <span class="m">2px</span> <span class="nf">rgba</span><span class="p">(</span><span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="mi">.075</span><span class="p">)</span><span class="o">,</span>
+              <span class="nb">inset</span> <span class="m">2px</span> <span class="m">2px</span> <span class="m">4px</span> <span class="nf">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="mi">.15</span><span class="p">);</span>
+              <span class="k">&amp;</span><span class="nd">:focus</span><span class="p">{</span>
+                  <span class="nl">outline</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+              <span class="p">}</span>
+          <span class="p">}</span>
+      <span class="p">}</span>
+      <span class="nc">.number-inputs</span> <span class="p">{</span>
+      <span class="na">grid-area</span><span class="p">:</span> <span class="n">number-inputs</span><span class="p">;</span>
+      <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+      <span class="nl">flex-wrap</span><span class="p">:</span> <span class="n">wrap</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="nc">.operators</span><span class="p">{</span>
+          <span class="na">grid-area</span><span class="p">:</span> <span class="n">operators</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="nc">.bottom-rank</span><span class="p">{</span>
+          <span class="na">grid-area</span><span class="p">:</span> <span class="n">bottom-rank</span><span class="p">;</span>
+          <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="p">}</span>
+  <span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">package.json</code> :</p>
+
+    <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calculatrice-postcss"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"private"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"echo </span><span class="se">\"</span><span class="s2">Error: no test specified</span><span class="se">\"</span><span class="s2"> &amp;&amp; exit 1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"build"</span><span class="p">:</span><span class="w"> </span><span class="s2">"webpack"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"license"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ISC"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"devDependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"webpack"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^5.58.2"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"webpack-cli"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^4.9.0"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">webpack.config.js</code> :</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">path</span><span class="dl">'</span><span class="p">);</span>
+
+  <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">entry</span><span class="p">:</span> <span class="dl">'</span><span class="s1">./src/index.js</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">output</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">filename</span><span class="p">:</span> <span class="dl">'</span><span class="s1">main.js</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">path</span><span class="p">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="dl">'</span><span class="s1">dist</span><span class="dl">'</span><span class="p">),</span>
+    <span class="p">},</span>
+  <span class="p">};</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="installation">Installation</h3>
+<p>Il existe plusieurs façons d’installer PostCSS. Ici, nous allons nous appuyer sur Webpack.</p>
+<ol>
+  <li>Commençons par installer PostCSS ainsi que son loader: <code class="language-plaintext highlighter-rouge">npm install --save-dev postcss-loader postcss postcss-cli</code></li>
+  <li>
+    <p>On modifie <code class="language-plaintext highlighter-rouge">webpack.config.js</code> pour utiliser le module <code class="language-plaintext highlighter-rouge">postcss-loader</code>:</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kd">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">path</span><span class="dl">'</span><span class="p">);</span>
+
+ <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+   <span class="na">entry</span><span class="p">:</span> <span class="dl">'</span><span class="s1">./src/index.js</span><span class="dl">'</span><span class="p">,</span>
+   <span class="na">output</span><span class="p">:</span> <span class="p">{</span>
+     <span class="na">filename</span><span class="p">:</span> <span class="dl">'</span><span class="s1">main.js</span><span class="dl">'</span><span class="p">,</span>
+     <span class="na">path</span><span class="p">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="dl">'</span><span class="s1">dist</span><span class="dl">'</span><span class="p">),</span>
+   <span class="p">},</span>
+   <span class="na">module</span><span class="p">:</span> <span class="p">{</span>
+     <span class="na">rules</span><span class="p">:</span> <span class="p">[</span>
+       <span class="p">{</span>
+     <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">css$/</span><span class="p">,</span>
+     <span class="na">exclude</span><span class="p">:</span> <span class="sr">/node_modules/</span><span class="p">,</span>
+     <span class="na">use</span><span class="p">:</span> <span class="p">[</span>
+       <span class="p">{</span>
+         <span class="na">loader</span><span class="p">:</span> <span class="dl">'</span><span class="s1">style-loader</span><span class="dl">'</span><span class="p">,</span>
+       <span class="p">},</span>
+       <span class="p">{</span>
+         <span class="na">loader</span><span class="p">:</span> <span class="dl">'</span><span class="s1">css-loader</span><span class="dl">'</span><span class="p">,</span>
+         <span class="na">options</span><span class="p">:</span> <span class="p">{</span>
+           <span class="na">importLoaders</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+         <span class="p">}</span>
+       <span class="p">},</span>
+       <span class="p">{</span>
+         <span class="na">loader</span><span class="p">:</span> <span class="dl">'</span><span class="s1">postcss-loader</span><span class="dl">'</span>
+       <span class="p">}</span>
+     <span class="p">]</span>
+       <span class="p">}</span>
+     <span class="p">]</span>
+   <span class="p">}</span>
+ <span class="p">};</span>	
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>On créé le fichier de configuration avec PostCSS: <code class="language-plaintext highlighter-rouge">postcss.config.js</code></p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+     <span class="na">plugins</span><span class="p">:</span> <span class="p">[</span>
+		
+     <span class="p">]</span>
+   <span class="p">}</span>
+</code></pre></div>    </div>
+
+    <p>C’est ici qu’on précisera les plugins qu’on utilise dans le projet.</p>
+  </li>
+  <li>
+    <p>On finit l’installation avec <code class="language-plaintext highlighter-rouge">npm run build</code></p>
+  </li>
+  <li>
+    <p>Grâce au paquet <code class="language-plaintext highlighter-rouge">postcss-cli</code> qu’on a installé avec <code class="language-plaintext highlighter-rouge">npm</code>, on peut invoquer des commandes <code class="language-plaintext highlighter-rouge">postcss</code> depuis la ligne de commande. Ainsi, on peut écrire des scripts dans <code class="language-plaintext highlighter-rouge">package.json</code> pour se simplifier la vie. Profitons-en pour vérifier que tout se passe bien jusqu’à présent: ajoutons le script suivant à <code class="language-plaintext highlighter-rouge">package.json</code>:</p>
+
+    <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="p">{</span><span class="w">
+   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calculatrice-postcss"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"private"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+     </span><span class="nl">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"echo </span><span class="se">\"</span><span class="s2">Error: no test specified</span><span class="se">\"</span><span class="s2"> &amp;&amp; exit 1"</span><span class="p">,</span><span class="w">
+     </span><span class="nl">"build"</span><span class="p">:</span><span class="w"> </span><span class="s2">"webpack"</span><span class="p">,</span><span class="w">
+     </span><span class="nl">"css"</span><span class="p">:</span><span class="w"> </span><span class="s2">"npx postcss src/style.scss -o dist/style.css --no-map --verbose"</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="nl">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+   </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"license"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ISC"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"devDependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+     </span><span class="nl">"postcss"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^8.3.9"</span><span class="p">,</span><span class="w">
+     </span><span class="nl">"postcss-loader"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^6.2.0"</span><span class="p">,</span><span class="w">
+     </span><span class="nl">"webpack"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^5.58.2"</span><span class="p">,</span><span class="w">
+     </span><span class="nl">"webpack-cli"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^4.9.0"</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="nl">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+     </span><span class="nl">"postcss-cli"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^9.0.1"</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+ </span><span class="p">}</span><span class="w">
+</span></code></pre></div>    </div>
+
+    <p>On peut désormais lancer la commande <code class="language-plaintext highlighter-rouge">npm run css</code>: PostCSS prend notre fichier <code class="language-plaintext highlighter-rouge">style.scss</code> dans le répertoire <code class="language-plaintext highlighter-rouge">src/</code> et le transforme en <code class="language-plaintext highlighter-rouge">style.css</code> dans le répertoire <code class="language-plaintext highlighter-rouge">dist/</code>. PostCSS ne renvoit pas d’erreur, mais il précise aussi qu’il ne fait rien (c’est normal, on n’a pas installé de plugins). Il faut donc installer des plugins SASS pour que le fichier <code class="language-plaintext highlighter-rouge">style.css</code> soit exploitable.</p>
+  </li>
+</ol>
+
+<h3 id="exemple-1-retour-au-sass">Exemple 1: Retour au SASS</h3>
+<p>Ici, on va détailler comment effectuer une transition de SASS vers PostCSS. Mais on pourrait très bien adapter ce qui suit pour des fichiers <code class="language-plaintext highlighter-rouge">css</code> classiques (attention à bien préciser qu’on écrit en PostCSS dans l’IDE, même si l’extension est en <code class="language-plaintext highlighter-rouge">.css</code>).</p>
+
+<p>On installe le plugin qui nous intéresse. Ici, on utilise <a href="https://github.com/csstools/precss">PreCSS</a>, qu’on installe avec la commande <code class="language-plaintext highlighter-rouge">npm install --save-dev precss </code>. PreCSS nous met à disposition les mêmes fonctionnalités que SASS.</p>
+
+<p>On modifie <code class="language-plaintext highlighter-rouge">postcss.config.js</code> comme suit:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">plugins</span><span class="p">:</span> <span class="p">[</span>
+	<span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">precss</span><span class="dl">'</span><span class="p">)</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+
+<p>Puis il suffit de lancer <code class="language-plaintext highlighter-rouge">npm run css</code> et PostCSS compile notre fichier SASS en fichier CSS. Tout simplement!</p>
+
+<h3 id="exemple-2-utilisation-dun-linter">Exemple 2: Utilisation d’un linter</h3>
+
+<h4 id="quest-ce-quun-linter-">Qu’est-ce qu’un linter ?</h4>
+<p>Un linter est un outil indispensable pour écrire du code propre. Il analyse en temps réel les erreurs ou maladresses dans notre code, ce qui permet d’avoir un code écrit dans les règles de l’art et nous évite de s’arracher les cheveux lors de la compilation.</p>
+
+<h4 id="installation-1">Installation</h4>
+<p>Ne nous en privons pas plus longtemps et installons le plugin <a href="https://github.com/stylelint/stylelint">stylelint</a> pour garantir un beau code CSS.</p>
+
+<ol>
+  <li>
+    <p>Lancer la commande <code class="language-plaintext highlighter-rouge">npm install --save-dev stylelint stylelint-config-sass-guidelines stylelint-webpack-plugin</code>, qui installe <code class="language-plaintext highlighter-rouge">stylelint</code> ainsi qu’une configuration de base pour les fichiers SASS. Si on utilisait des fichiers CSS classiques, on utiliserait alors la configuration <code class="language-plaintext highlighter-rouge">stylelint-config-standard</code>.</p>
+
+    <p>On remarque aussi qu’on installe <code class="language-plaintext highlighter-rouge">stylelint-webpack-plugin</code>. En effet, on va plutôt utiliser <code class="language-plaintext highlighter-rouge">stylelint</code> <em>via</em> Webpack plutôt que par PostCSS, mais les deux sont possibles. Il existe en fait plein de façons de lancer <code class="language-plaintext highlighter-rouge">stylelint</code>; ici, on présente une solution simple qui lint au moment du build.</p>
+  </li>
+  <li>
+    <p>Créer le fichier de configuration <code class="language-plaintext highlighter-rouge">.stylelintrc</code> et importer les règles standard téléchargées plus haut; on peut aussi remplacer des règles par les notre:</p>
+
+    <div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="p">{</span>
+   <span class="s">"extends"</span><span class="o">:</span> <span class="s">"stylelint-config-sass-guidelines"</span><span class="p">,</span>
+     <span class="s">"rules"</span><span class="o">:</span> <span class="p">{</span>
+     <span class="s">"indentation"</span><span class="o">:</span> <span class="s">"tab"</span><span class="p">,</span>
+     <span class="s">"number-leading-zero"</span><span class="o">:</span> <span class="n">null</span>
+   <span class="p">}</span>
+ <span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>On modifie <code class="language-plaintext highlighter-rouge">webpack.config.js</code> de la sorte:</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kd">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">path</span><span class="dl">'</span><span class="p">);</span>
+ <span class="kd">const</span> <span class="nx">StylelintPlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">stylelint-webpack-plugin</span><span class="dl">'</span><span class="p">);</span>
+
+ <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+   <span class="na">entry</span><span class="p">:</span> <span class="dl">'</span><span class="s1">./src/index.js</span><span class="dl">'</span><span class="p">,</span>
+   <span class="na">output</span><span class="p">:</span> <span class="p">{</span>
+     <span class="na">filename</span><span class="p">:</span> <span class="dl">'</span><span class="s1">main.js</span><span class="dl">'</span><span class="p">,</span>
+     <span class="na">path</span><span class="p">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="dl">'</span><span class="s1">dist</span><span class="dl">'</span><span class="p">),</span>
+   <span class="p">},</span>
+   <span class="na">module</span><span class="p">:</span> <span class="p">{</span>
+     <span class="na">rules</span><span class="p">:</span> <span class="p">[</span>
+       <span class="p">{</span>
+     <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">css$/</span><span class="p">,</span>
+     <span class="na">exclude</span><span class="p">:</span> <span class="sr">/node_modules/</span><span class="p">,</span>
+     <span class="na">use</span><span class="p">:</span> <span class="p">[</span>
+       <span class="p">{</span>
+         <span class="na">loader</span><span class="p">:</span> <span class="dl">'</span><span class="s1">style-loader</span><span class="dl">'</span><span class="p">,</span>
+       <span class="p">},</span>
+       <span class="p">{</span>
+         <span class="na">loader</span><span class="p">:</span> <span class="dl">'</span><span class="s1">css-loader</span><span class="dl">'</span><span class="p">,</span>
+         <span class="na">options</span><span class="p">:</span> <span class="p">{</span>
+           <span class="na">importLoaders</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+         <span class="p">}</span>
+       <span class="p">},</span>
+       <span class="p">{</span>
+         <span class="na">loader</span><span class="p">:</span> <span class="dl">'</span><span class="s1">postcss-loader</span><span class="dl">'</span>
+       <span class="p">}</span>
+     <span class="p">]</span>
+       <span class="p">}</span>
+     <span class="p">]</span>
+   <span class="p">},</span>
+   <span class="na">plugins</span><span class="p">:</span> <span class="p">[</span><span class="k">new</span> <span class="nx">StylelintPlugin</span><span class="p">()],</span>
+ <span class="p">};</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>La commande <code class="language-plaintext highlighter-rouge">npm run build</code> lint tous nos fichiers SASS avant l’empaquetage, et retourne les erreurs ou les non-respects de convention (ici, on voit qu’elles sont nombreuses!)</p>
+  </li>
+</ol>
+
+<p>On décrit ici une configuration de base, mais on peut aller beaucoup plus loin. On peut rajouter des plugins qui lint selon des règles encore plus strictes et conventionnelles. On peut aussi automatiser le processsus avec des scripts <code class="language-plaintext highlighter-rouge">npm</code>, voire en combiner: linter avant de compiler, n’autoriser les commits que si le code passe tous les feux du linter, automatiser le linter, …</p>
+
+<p>Précisons aussi que des extensions dans la plupart des IDE existent et se basent sur <code class="language-plaintext highlighter-rouge">stylelint</code>, ce qui peut peut-être en faciliter l’usage. Cependant, ce n’est pas la meilleure pratique: il vaut mieux préciser et configurer les plugins dans des fichiers, puisque cela est bien plus rapide et reproduisible sur différentes machines.</p>
+<h3 id="exemple-3-utilisation-dautoprefixer">Exemple 3: Utilisation d’Autoprefixer</h3>
+
+<h4 id="quest-ce-quautoprefixer-">Qu’est-ce qu’Autoprefixer ?</h4>
+<p>Il s’agit du plugin PostCSS le plus utilisé. Comme tous les langages de programmation, le CSS bénéficie de mise à jour régulières et de nouvelles fonctionnalités sont implémentées. Cependant, tous les navigateurs ne les adoptent pas à la même vitesse. Si on écrit un code trop moderne, les navigateurs les plus anciens ne le comprendront pas et il y aura des erreurs. L’expérience utilisateur risque fortement d’être dégradée.</p>
+
+<p>Pour ne pas inhiber ce développement progressif du langage, les navigateurs mettent à disposition des préfixes vendeurs. Ce sont des règles supplémentaires de CSS qui s’appliquent seulement aux navigateurs concernés et qui permettent d’implémenter des règles CSS encore expérimentales. Afin de s’assurer que notre code sera compris par chaque navigateur, il faut pour certaines propriétés inclure tous les préfixes vendeurs “au cas où”.</p>
+
+<p>Le problème est que chaque navigateur a ses propres préfixes vendeurs, et qu’il est difficile de retenir les propriétés qui nécessitent des préfixes vendeurs. Parfois même, on oublie simplement et on peut longuement chercher d’où vient la source du problème sur certains navigateurs (qui interprètent de toute façon le CSS de façons différentes).</p>
+
+<p><a href="https://github.com/postcss/autoprefixer">Autoprefixer</a> vient à la rescousse des développeurs frontends. Plus besoin de se soucier des préfixes vendeurs: on écrit simplement notre code, et le plugin les ajoute automatiquement lors du traitement du fichier CSS par PostCSS. Il garantit que tous les préfixes adéquats sont utilisés lorsque c’est nécessaire.</p>
+
+<h4 id="installation-2">Installation</h4>
+<p>On va tout simplement utiliser Webpack à nouveau pour bénéficier de ce plugin PostCSS.</p>
+
+<ol>
+  <li>On lance la commande <code class="language-plaintext highlighter-rouge">npm install --save-dev autoprefixer</code></li>
+  <li>
+    <p>On modifie <code class="language-plaintext highlighter-rouge">postcss.config.js</code> de la sorte:</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+     <span class="na">plugins</span><span class="p">:</span> <span class="p">[</span>
+     <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">precss</span><span class="dl">'</span><span class="p">),</span>
+     <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">autoprefixer</span><span class="dl">'</span><span class="p">)</span>
+     <span class="p">]</span>
+   <span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>On profite maintenant d’autoprefixer avec <code class="language-plaintext highlighter-rouge">npm run css</code></li>
+</ol>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d&#39;informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d&#39;informatique</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
