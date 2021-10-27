@@ -173,8 +173,8 @@ générée avec des fonctions prévues pour, comme `PlaneGeometry()`,
 la liste de toutes les formes possibles.
 
 Il existe aussi de nombreux matériaux avec des propriétés différentes. Par 
-exemple `BasicMeshMaterial()` ne gère pas les effets de lumière et d'ombres, 
-donc par la suite on va utiliser `PhongMeshMaterial()` qui les supporte. 
+exemple `MeshBasicMaterial()` ne gère pas les effets de lumière et d'ombres, 
+alors que d'autres matériaux comme `MeshStandardMaterial()` ou `MeshPhongMaterial()` qui les supporte. 
 [A voir ici](https://threejs.org/docs/index.html?q=material#api/en/materials/MeshBasicMaterial) 
 tous les matériaux disponibles.
 
@@ -191,7 +191,7 @@ const light = new THREE.DirectionalLight(0xffffff, 1);
 
 Le premier argument est le code couleur en hexadécimal de la lumière et le deuxième est son intensité.
 <br>
-Il suffit alors ensuite de choisir sa position et de l'ajouter à la scène :
+Il suffit ensuite de choisir sa position et de l'ajouter à la scène :
 
 ```javascript
 light.position.set(0,2,2);
@@ -239,6 +239,7 @@ On remarque cependant que l'ombre est pixelisée : c'est parce que d'origine la 
 light.shadowMapWidth = 1024;
 light.shadowMapHeight = 1024;
 ```
+
 ### Textures
 On a vu que pour tous les objets, nous avons besoin d'un `MeshMaterial` et d'une `Geometry`. Au début du projet, nous 
 avons utilisé `MeshStandardMaterial`. C'est ici que nous devons mettre notre texture. 
