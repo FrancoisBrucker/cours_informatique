@@ -92,7 +92,7 @@ Ensuite on initialise les variables importantes du projet ( en particulier la sc
 ```javascript
 let scene, renderer, camera;
 ```
-On utilise ensuite une fonction d'initialisation pour donner des propriétés à ces variables et établir toutes les actions que l'on veut faire faire à notre environnement 3D. Les fonctions que l'on va utiliser ici seront définit plus bas dans le code (par exemple animate)
+On utilise ensuite une fonction d'initialisation pour donner des propriétés à ces variables et établir toutes les actions que l'on veut faire faire à notre environnement 3D.
 ```javascript
 init();
 
