@@ -183,6 +183,44 @@ tous les matériaux disponibles.
 
 ## Go rendre ça plus joli
 
+### Adapter l'app à la fenêtre du navigateur
+
+Notre renderer apparait bien, mais n'occupe pas toute la fenêtre. En plus, il ne 
+s'adapte pas à la taille de la fenêtre lorsqu'on la modifie.
+
+Rajoutons cette fonction dans le main.js (en dehors de la fonction init()) pour 
+permettre au renderer d'adapter sa taille en temps réel :
+
+```javascript
+function onWindowResize() {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+
+    renderer.setSize( window.innerWidth, window.innerHeight );
+}
+```
+
+On voit ici qu'on modifie à la fois le champ de la caméra et la taille du renderer. 
+On doit ensuite ajouter un listener à la fin de notre fonction init(), 
+qui vérifie si la taille de la fenêtre est 
+modifiée, et appelle la fonction onWindowResize() quand c'est le cas :
+
+```javascript
+window.addEventListener( 'resize', onWindowResize );  
+```
+
+C'est mieux, mais on a toujours des marges blanches autour de notre renderer. 
+Allons dans notre fichier `style.css`. On peut pour l'instant enlever ce qui y 
+était et modifier la marge du body :
+
+```css
+body {
+    margin: 0;
+}
+```
+
+Parfait, maintenant améliorons le rendu de nos objets.
+
 ### Lumière
 On peut améliorer notre rendu notament en ajoutant des lumières. Pour ajouter une lumière, c'est très simple, il suffit d'ajouter
 <br>
@@ -200,6 +238,7 @@ light.position.set(0,2,2);
 scene.add(light);
 ```
 On a alors un plan qui est éclairé par le dessus.
+
 ### Ombres
 Un autre aspect pour augmenter la beauté de notre projet sont les ombres ! On peut en effet rajouter des ombres dans Three.js. Pour se faire, rien de plus simple :
 
@@ -253,6 +292,21 @@ On rajoute donc :
 const ambientLight = new THREE.AmbientLight( 0xcccccc, 0.3 );
 scene.add( ambientLight );
 ```
+
+### Fond et Brouillard
+
+Pour l'instant le fond est complètement noir, c'est un peu triste. Rajoutons un 
+fond bleu ciel et un effet de brouillard avec la distance.
+
+Pour cela, rien de plus simple, ces deux lignes suffisent (à rajouter quand on crée 
+notre scène):
+```javascript
+scene.background = new THREE.Color(0x87CEFA);
+scene.fog = new THREE.Fog(0x87CEFA, 1, 200);
+```
+En choisissant la même couleur pour les deux, on a l'impression de ne plus distinguer 
+le sol au loin (il se fond avec le fond). Les deux autres paramètres de `Three.Fog` 
+sont near et far, c'est le même principe que lorsqu'on a créé la caméra.
 
 ### Textures
 On a vu que pour tous les objets, nous avons besoin d'un `MeshMaterial` et d'une `Geometry`. Au début du projet, nous 
@@ -322,7 +376,6 @@ A l'exception qu'ici notre texture est trop petite pour recouvrir tout notre sol
 ```
 
 S et T sont les dimensions 2D de recouvrement de texture, on leur dit de wrap en S et en T suivant un schéma de repeat qui est set à 15 répétitions suivant chaque coordonnées.
-
 
 ## Déplacement de la caméra
 
