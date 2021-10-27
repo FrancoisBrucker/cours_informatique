@@ -236,6 +236,7 @@ light.position.set(0,2,2);
 scene.add(light);
 ```
 On a alors un plan qui est éclairé par le dessus.
+
 ### Ombres
 Un autre aspect pour augmenter la beauté de notre projet sont les ombres ! On peut en effet rajouter des ombres dans Three.js. Pour se faire, rien de plus simple :
 
@@ -290,6 +291,21 @@ const ambientLight = new THREE.AmbientLight( 0xcccccc, 0.3 );
 scene.add( ambientLight );
 ```
 
+### Fond et Brouillard
+
+Pour l'instant le fond est complètement noir, c'est un peu triste. Rajoutons un 
+fond bleu ciel et un effet de brouillard avec la distance.
+
+Pour cela, rien de plus simple, ces deux lignes suffisent (à rajouter quand on crée 
+notre scène):
+```javascript
+scene.background = new THREE.Color(0x87CEFA);
+scene.fog = new THREE.Fog(0x87CEFA, 1, 200);
+```
+En choisissant la même couleur pour les deux, on a l'impression de ne plus distinguer 
+le sol au loin (il se fond avec le fond). Les deux autres paramètres de `Three.Fog` 
+sont near et far, c'est le même principe que lorsqu'on a créé la caméra.
+
 ### Textures
 On a vu que pour tous les objets, nous avons besoin d'un `MeshMaterial` et d'une `Geometry`. Au début du projet, nous 
 avons utilisé `MeshStandardMaterial`. C'est ici que nous devons mettre notre texture. 
@@ -329,6 +345,7 @@ function rend(){
 }
 rend()
 ```
+
 ## Déplacement de la caméra
 
 Il est desfois plus agréable de pouvoir déplacer la caméra comme on le souhaite pour pouvoir bien visualiser ce que l'on est en train de modéliser. En conception 3D, il est important de pouvoir observer son travail sous plusieurs angles afin de s'assurer que tout correspond bien à ce que l'on souhaite. En effet on peut faire le cube le plus joli qu'on souhaite, si la caméra est toujours pointée dans la même direction , on ne verra jamais l'arrière de ce cube et il ne correspond peut etre pas du tout à ce que l'on veut.
