@@ -8,7 +8,7 @@ authors:
 - "Nathanaël Soulat"
 ---
 
-Ce projet s’inscrit dans le cours de Méthode de Développement de l’option 3A Digital.e. Le code source est sur [GitHub](https://github.com/nsoulat/Yahtzee) et est déployé sur ces plantes aromatiques de l'OVH: [fenouil](http://node.fenouil.ovh1.ec-m.fr/) et [girofle](http://node.girofle.ovh1.ec-m.fr/).
+Ce projet s’inscrit dans le cours de Méthode de Développement de l’option 3A Digital.e. Le code source est sur [GitHub](https://github.com/nsoulat/Yahtzee) et est déployé sur ces plantes aromatiques de l'OVH : [fenouil](http://node.fenouil.ovh1.ec-m.fr/) et [girofle](http://node.girofle.ovh1.ec-m.fr/).
 
 ## Le Yahtzee
 
@@ -40,7 +40,7 @@ Cependant, à chaque fin de tour, vous êtes obligés d’en remplir une.
 | Yahtzee (cinq dés identiques) | 50 points |
 | Chance | Somme des cinq dés |
 
-Si la somme des parties est strictement supérieur à 62 points, vous obtenez un bonus de 35 points.
+Si la somme des parties est strictement supérieure à 62 points, vous obtenez un bonus de 35 points.
 
 Le gagnant est celui qui a le plus de points.
 
@@ -64,7 +64,7 @@ Sequelize en ORM et PostgreSQL pour la base de données.
 
 Nous avons fait le choix de séparer le frontend et le backend car le backend dispose d'une API REST et VueJS fonctionne très bien en tant que *single-page app*.
 
-Voici l'architecture (simplifiée) de notre projet
+Voici l'architecture (simplifiée) de notre projet :
 
 ~~~ txt
 /Yahtzee/
@@ -116,7 +116,7 @@ Frontend :
 
 ### Installer le projet et lancer le projet
 
-Tout en un:
+Tout en un :
 
 ~~~ shell
 git clone git@github.com:nsoulat/Yahtzee.git
@@ -127,10 +127,10 @@ npm run start
 ~~~
 
 Explications :
-Une fois que vous avez cloner le repo et êtes à la root du Yahtzee (dans le dossier Yahtzee) :
+Une fois que vous avez cloné le repo et êtes à la root du Yahtzee (dans le dossier Yahtzee) :
 
 - `npm run update` permet d'installer les dépendances du backend et du frontend conformément au `package-lock.json` (la commande est équivalente à un `npm ci` dans les dossiers backend et frontend).
 - `npm run build` permet de build le frontend et de placer ce build dans le dossier `frontend/dist`.
 - `npm run start` permet de lancer le serveur backend. Il utilise le dossier `frontend/dist` comme dossier static.
 
-> En cas de problèmes: se référer au [README du projet](https://github.com/nsoulat/Yahtzee#readme)
+> En cas de problèmes : se référer au [README du projet](https://github.com/nsoulat/Yahtzee#readme)
