@@ -117,10 +117,6 @@ Les règles du jeu définies clairement, nous pouvions passer à la phase de maq
 
 ![MockUp EndGame](../../../assets/projets/PIXEL/MockUps/MockUp-EndGame.png)
 
-## Gestion de la base de données
-
-Nous avons choisi d'utiliser une base de données 
-
 ## Comment y jouer ?
 
 ### Version navigateur 
