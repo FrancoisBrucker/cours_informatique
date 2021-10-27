@@ -173,8 +173,8 @@ générée avec des fonctions prévues pour, comme `PlaneGeometry()`,
 la liste de toutes les formes possibles.
 
 Il existe aussi de nombreux matériaux avec des propriétés différentes. Par 
-exemple `BasicMeshMaterial()` ne gère pas les effets de lumière et d'ombres, 
-donc par la suite on va utiliser `PhongMeshMaterial()` qui les supporte. 
+exemple `MeshBasicMaterial()` ne gère pas les effets de lumière et d'ombres, 
+alors que d'autres matériaux comme `MeshStandardMaterial()` ou `MeshPhongMaterial()` qui les supporte. 
 [A voir ici](https://threejs.org/docs/index.html?q=material#api/en/materials/MeshBasicMaterial) 
 tous les matériaux disponibles.
 
@@ -191,7 +191,7 @@ const light = new THREE.DirectionalLight(0xffffff, 1);
 
 Le premier argument est le code couleur en hexadécimal de la lumière et le deuxième est son intensité.
 <br>
-Il suffit alors ensuite de choisir sa position et de l'ajouter à la scène :
+Il suffit ensuite de choisir sa position et de l'ajouter à la scène :
 
 ```javascript
 light.position.set(0,2,2);
@@ -236,9 +236,22 @@ plane.receiveShadow= true
 
 On remarque cependant que l'ombre est pixelisée : c'est parce que d'origine la `shadowMap` est de taille `512x512`, on peut l'augmenter par la commande :
 ```javascript
-light.shadowMapWidth = 1024;
-light.shadowMapHeight = 1024;
+light.shadowMapWidth = 512*8;
+light.shadowMapHeight = 1024*8;
 ```
+On va aussi rajouter un léger effet de flou sur les bords de l'ombre:
+```javascript
+light.shadow.radius = 4;
+```
+
+Enfin, on aimerait ajouter une lumière ambiante partout dans notre scène, pour y voir un peu plus clair. 
+On rajoute donc :
+
+```javascript
+const ambientLight = new THREE.AmbientLight( 0xcccccc, 0.3 );
+scene.add( ambientLight );
+```
+
 ### Textures
 On a vu que pour tous les objets, nous avons besoin d'un `MeshMaterial` et d'une `Geometry`. Au début du projet, nous 
 avons utilisé `MeshStandardMaterial`. C'est ici que nous devons mettre notre texture. 
@@ -302,3 +315,33 @@ controls.update();
 ```
 
 ## Génération du monde
+
+### Plus de cubes
+
+Maintenant qu'on peut sauter partout, rajoutons de quoi faire du ***parkour*** !
+
+Par exemple plein de cubes. Pour ça, on va d'abord créer une liste d'objets en 
+dehors de notre fonction init():
+
+```javascript
+const objects = [];
+```
+
+Ensuite on va créer dans notre fonction init() plein de cubes, qu'on va placer 
+aléatoirement dans une zone donnée :
+
+```javascript
+for ( let i = 0; i < 20; i ++ ) {
+
+        const cube = new THREE.Mesh( cube_geometry, cube_material );
+        cube.position.x = Math.floor( Math.random() * 10 - 5 ) * 5;
+        cube.position.y = Math.floor( Math.random() * 4 ) * 5 + 2.5;
+        cube.position.z = Math.floor( Math.random() * 10 - 5 ) * 5;
+        cube.castShadow = true;
+        cube.receiveShadow = true;
+
+        scene.add( cube );
+        objects.push( cube );
+
+    }
+```
