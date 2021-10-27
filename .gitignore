@@ -2,7 +2,6 @@
 .idea
 *.log
 .vscode
-.vs
 tmp/
 
 # emacs stuff
