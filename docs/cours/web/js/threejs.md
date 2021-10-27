@@ -130,7 +130,7 @@ On peut aussi définir une position ainsi que la direction dans laquelle la cam�
 - Enfin le moteur de rendu ou renderer. Il s'agit du travail final qui va venir faire un rendu 3D de la scène vu au travers de la caméra. L'objet final sera une image 2D de la scène 3D que l'on peut intégrer dans un canvas pour etre utiliser directement en html. Comme dit précedement, classiquement on utilise le moteur de rendu WebGLRenderer mais il est possible d'en utiliser d'autres (notamment au cas ou des utilisateurs sont sur des vieux navigateurs qui ne supportent pas WebGL ce qui est rare).
 De la même manière que pour la caméra, il est possible de définir l'**aspect** du rendu, par exemple relatif à la taille de l'écran sur lequel on va ensuite afficher l'image. La dernière ligne ajoute le renderer dans le body du fichier HTML pour qu'il puisse afficher quelque chose.
 ```javascript
-renderer = new THREE.WebGLRenderer();
+renderer = new THREE.WebGLRenderer({antialias: true});
 renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild(renderer.domElement);
 ```
@@ -146,7 +146,7 @@ La géométrie du plan est créée avec *PlaneGeometry* qui prend en paramètres
 les longueur et largeur du plan 
 (l'unité de mesure est abstraite, elle est propre à three.js).
 ```javascript
-const plane_geometry = new THREE.PlaneGeometry( 20, 20 );
+const plane_geometry = new THREE.PlaneGeometry( 400, 400 );
 ```
 
 Ensuite on crée notre matériau avec `MeshStandardMaterial`. On spécifie sa couleur 
@@ -159,6 +159,8 @@ Puis on crée notre objet avec `Mesh` qui prend en paramètres la géométrie et
 matériau.
 ```javascript
 const plane = new THREE.Mesh( plane_geometry, plane_material );
+plane.rotateX( - Math.PI / 2 ); //Cette dernière ligne nous 
+// servira dans la partie Déplacement
 ```
 
 Et enfin, on l'ajoute à la scène:
@@ -339,12 +341,41 @@ const cube_material = new THREE.MeshStandardMaterial(
 Le problème est que la texture a besoin d'être rendu en boucle, donc on ne la voit pas si l'on ne rend pas en boucle, il faut alors rajouter la fonction suivante à la fin
 
 ```javascript
-function rend(){
+function animate(){
     renderer.render(scene,camera);
-    requestAnimationFrame(rend)
+    requestAnimationFrame(animate)
 }
-rend()
+animate()
 ```
+
+###Pour un beau parquet
+
+Maintenant qu'on a fait la texture du cube, on peut aller plus loin en faisant la texture du sol. On va alors utiliser cette [texture](https://drive.google.com/drive/folders/1_muKfn_cQXV6VTWbxuJpywb0tMq51SD8).
+On refait le même travail :
+
+```javascript
+    const textureloaderWood = new THREE.TextureLoader()
+    const textureBasecolorWood = textureloaderWood.load('img/Wood_Floor_009_basecolor.jpg')
+    const textureAmbientOcclussionWood = textureloaderWood.load('img/Wood_Floor_009_ambientOcclusion.jpg')
+    const textureheightWood = textureloaderWood.load('img/Wood_Floor_009_height.png')
+    const texturenormalWood = textureloaderWood.load('img/Wood_Floor_009_normal.jpg')
+    const textureroughnessWood = textureloaderWood.load('img/Wood_Floor_009_roughness.jpg')
+```
+A l'exception qu'ici notre texture est trop petite pour recouvrir tout notre sol. On doit alors repéter la texture : 
+```javascript
+    textureBasecolorWood.wrapS = textureBasecolorWood.wrapT =THREE.RepeatWrapping
+    textureBasecolorWood.repeat.set(15,15)
+    textureAmbientOcclussionWood.wrapS = textureAmbientOcclussionWood.wrapT=THREE.RepeatWrapping
+    textureAmbientOcclussionWood.repeat.set(15,15)
+    textureheightWood.wrapS = textureheightWood.wrapT=THREE.RepeatWrapping
+    textureheightWood.repeat.set(15,15)
+    texturenormalWood.wrapS = texturenormalWood.wrapT=THREE.RepeatWrapping
+    texturenormalWood.repeat.set(15,15)
+    textureroughnessWood.wrapS = textureroughnessWood.wrapT=THREE.RepeatWrapping
+    textureroughnessWood.repeat.set(15,15 )
+```
+
+S et T sont les dimensions 2D de recouvrement de texture, on leur dit de wrap en S et en T suivant un schéma de repeat qui est set à 15 répétitions suivant chaque coordonnées.
 
 ## Déplacement de la caméra
 
@@ -356,7 +387,190 @@ On va donc essayer de mettre en place une méthode de déplacement de la caméra
 
 ### Déplacement avec ZQSD
 
+Il existe plusieurs controleurs de caméra déjà intégrés
+dans Three.js et ici on va utiliser le premier : le `PointerLockControls`. Tout 
+d'abord il faut l'importer :
+
+```javascript
+import { PointerLockControls } from 'three/examples/jsm/controls/PointerLockControls';
+```
+
+Une fois importé, on peut déjà déclarer une variable `controls` au même endroit de que l'on a déclaré `camera, renderer, scene`
+
+Ensuite, dans notre fonction `init`, on peut directement ajouter les lignes : 
+```javascript
+    controls = new PointerLockControls( camera ,  document.body );
+
+    document.body.addEventListener( 'click', function () {
+        
+        controls.lock();
+        
+    }, false );
+    
+    scene.add( controls.getObject() );
+```
+
+On crée d'abord un objet `PointerLockControls` et on va demander au `body` de notre document d'attendre que l'utilisateur clique
+sur la fenêtre pour lock sa souris et il pourra contrôler la vue.
+
+Maintenant il s'agit de lier les touches du clavier au code.
+
+On va d'abord créer en début de script plusieurs constantes que nous pourrons utiliser par la suite :
+
+```javascript
+let moveForward = false;
+let moveBackward = false;
+let moveLeft = false;
+let moveRight = false;
+let canJump = false;
+```
+Ces variables vont nous aider à choisir la direction de notre personne.
+
+On va ensuite créer deux constantes qui modifieront ces constantes : 
+
+```javascript
+const onKeyDown = function ( event ) {
+
+        switch ( event.code ) {
+
+            case 'ArrowUp':
+            case 'KeyW':
+                moveForward = true;
+                break;
+
+            case 'ArrowLeft':
+            case 'KeyA':
+                moveLeft = true;
+                break;
+
+            case 'ArrowDown':
+            case 'KeyS':
+                moveBackward = true;
+                break;
+
+            case 'ArrowRight':
+            case 'KeyD':
+                moveRight = true;
+                break;
+
+            case 'Space':
+                if ( canJump === true ) velocity.y +=250;
+                canJump = false;
+                break;
+
+        }
+    };
+
+    const onKeyUp = function ( event ) {
+        switch ( event.code ) {
+
+            case 'ArrowUp':
+            case 'KeyW':
+                moveForward = false;
+                break;
+
+            case 'ArrowLeft':
+            case 'KeyA':
+                moveLeft = false;
+                break;
+
+            case 'ArrowDown':
+            case 'KeyS':
+                moveBackward = false;
+                break;
+
+            case 'ArrowRight':
+            case 'KeyD':
+                moveRight = false;
+                break;
+
+        }
+    };
+```
+
+Par la suite on va faire en sorte que notre jeu écoute ce que l'on tape :
+
+```javascript
+document.addEventListener( 'keydown', onKeyDown );
+document.addEventListener( 'keyup', onKeyUp );
+```
+
+Maintenant nous avons notre code qui écoute notre clavier et des variables dont les valeurs varient en fonction de nos touches
+pressées. Il faut maintenant pouvoir bouger. Pour cela on va créer en variable globale deux vecteurs `direction` et `velocity` :
+
+```javascript
+const velocity = new THREE.Vector3();
+const direction = new THREE.Vector3();
+```
+
+Et on va ajouter une variable temps :
+
+```javascript
+let prevTime = performance.now();
+```
+
+Une fois fait, on peut aller dnas notre fonction `animate` pour faire bouger notre petit personnage.
+
+On va commencer par créer une nouvelle constante temps :
+```javascript
+const time = performance.now();
+```
+
+Puis, après vérification que les controls sont locked :
+
+```javascript
+if ( controls.isLocked === true ) {
+    
+    
+            const delta = ( time - prevTime ) / 1000;
+    
+            velocity.x -= velocity.x * 10.0 * delta;
+            velocity.z -= velocity.z * 10.0 * delta;
+    
+            velocity.y -= 6* 100.0 * delta; // 100.0 = masse
+    
+            direction.z = Number( moveForward ) - Number( moveBackward );
+            direction.x = Number( moveRight ) - Number( moveLeft );
+            direction.normalize(); 
+    
+            if ( moveForward || moveBackward ) velocity.z -= direction.z * 400.0 * delta;
+            if ( moveLeft || moveRight ) velocity.x -= direction.x * 400.0 * delta;
+            
+    
+            controls.moveRight( - velocity.x * delta );
+            controls.moveForward( - velocity.z * delta );
+    
+            controls.getObject().position.y += ( velocity.y * delta ); 
+    
+            if ( controls.getObject().position.y < 10 ) {
+    
+                velocity.y = 0;
+                controls.getObject().position.y = 10;
+    
+                canJump = true;
+    
+            }
+    
+        }
+```
+
+Expliquons ces lignes :
+
+* On va créer un intervalle de temps entre la dernière fois que a rendu le monde et maitenant
+* Ensuite on setup l'inertie : plus le chiffre est grand, plus la vitesse reviendra a 0 vite
+* Ici on simule la gravité : on a pris  6 comme valeur pour un meilleur gameplay
+* Ici on gère le vecteur pour savoir où on se dirige en transformant les booléen en nombre
+* On augmente la vitesse suivant la direction avec comme valeur 400 ( modifiable pour plus de fun )
+* On applique la vitesse à notre controller (en y aussi si on saute)
+* On reset la vitesse en y si on est au sol
+
+A la fin de ce `if`, il ne faut pas oublier de :
+```javascript
+        prevTime = time;
+        renderer.render( scene, camera );
+```
 ### Rotation avec la Souris
+
 
 Une des méthodes les plus simples de déplacement de caméra consiste à autoriser une rotation de la caméraà l'aide de la souris. Ce type de controle s'appelle OrbitControl dans three.js. C'est un controle très simple à mettre en place et à utiliser. Juste en maintenant le clic gauche de la souris et en bougeant la souris, on change l'axe de visualisation de la caméra. Combiné à un déplacement grâce au touches ZQSD, on peut obtenir un controle sur la caméra similaire à un jeu fps.
 
@@ -367,6 +581,8 @@ const controls = new OrbitControls( camera, renderer.domElement );
 controls.target.set( 0, 1, 0 );
 controls.update();
 ```
+
+
 
 ## Génération du monde
 
@@ -399,7 +615,4 @@ for ( let i = 0; i < 20; i ++ ) {
 
     }
 ```
-## CONCLUSION
 
-Et voila enfin à la fin de ce tuto ! Maintenant nous avons un environnement capable de faire tourner notre code js en utilisant la librairie three.js pour générer un monde en 3D et y déplacer une caméra à l'intérieur à l'aide du clavier et de la souris ! Voici le lien vers notre répo github pour trouver notre code :
-https://github.com/LeoLaurent/three-js-project
