@@ -314,3 +314,33 @@ controls.update();
 ```
 
 ## Génération du monde
+
+### Plus de cubes
+
+Maintenant qu'on peut sauter partout, rajoutons de quoi faire du ***parkour*** !
+
+Par exemple plein de cubes. Pour ça, on va d'abord créer une liste d'objets en 
+dehors de notre fonction init():
+
+```javascript
+const objects = [];
+```
+
+Ensuite on va créer dans notre fonction init() plein de cubes, qu'on va placer 
+aléatoirement dans une zone donnée :
+
+```javascript
+for ( let i = 0; i < 20; i ++ ) {
+
+        const cube = new THREE.Mesh( cube_geometry, cube_material );
+        cube.position.x = Math.floor( Math.random() * 10 - 5 ) * 5;
+        cube.position.y = Math.floor( Math.random() * 4 ) * 5 + 2.5;
+        cube.position.z = Math.floor( Math.random() * 10 - 5 ) * 5;
+        cube.castShadow = true;
+        cube.receiveShadow = true;
+
+        scene.add( cube );
+        objects.push( cube );
+
+    }
+```
