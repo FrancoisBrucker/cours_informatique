@@ -563,3 +563,43 @@ for ( let i = 0; i < 20; i ++ ) {
     }
 ```
 
+On doit aussi rajouter des controles pour pouvoir s'amuser avec ces cubes et y sauter dessus. On va d'abord créer une variable globale 
+```javascript
+let raycaster;
+```
+
+A la fin de la fonction `init`, on va ajouter la ligne :
+```javascript
+raycaster = new THREE.Raycaster( new THREE.Vector3(), new THREE.Vector3( 0, - 1, 0 ), 0, 10 );
+```
+pour initialiser la valeur du raycaster, qui sera en fait nos pieds.
+
+On va donc ensuite aller dans la fonction `animate`, dans le `if`:
+```javascript
+raycaster.ray.origin.copy( controls.getObject().position );
+raycaster.ray.origin.y -= 10;
+```
+On récupère la position de la camera et on y soustrait la taille qui est de 10 ici.
+
+Ensuite on crée ceci :
+
+```javascript
+            const intersections = raycaster.intersectObjects( objects, false );
+    
+            const onObject = intersections.length > 0;
+```
+
+On regarde si nos pieds sont en intersection avec un objet de la liste `objects`.
+
+Et si on est sur un object, c'est qu'on etait en saut don on ne pouvait plus sauter :
+
+```javascript
+            if ( onObject === true ) {
+    
+                velocity.y = Math.max( 0, velocity.y );
+                canJump = true;
+    
+            }
+```
+
+
