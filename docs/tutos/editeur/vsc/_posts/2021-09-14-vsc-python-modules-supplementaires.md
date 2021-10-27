@@ -163,8 +163,7 @@ En tapant `pytest` alors que vous êtes dans le dossier du projet.
 
 >si la commande `pytest` n'est pas reconnue, mais que `python` l'est vous pouvez exécuter `pytest`, via python en tapant la commande `python3 -m pytest`
 
-
-## couverture de code {##code-coverage}
+## couverture de code {#code-coverage}
 
 Permet de voir le code couvert par les tests.
 
