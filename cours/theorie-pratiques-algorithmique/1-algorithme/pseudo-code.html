@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>algorithme : pseudo-code | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="algorithme : pseudo-code" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
+<link rel="canonical" href="/cours_informatique/cours/theorie-pratiques-algorithmique/1-algorithme/pseudo-code.html" />
+<meta property="og:url" content="/cours_informatique/cours/theorie-pratiques-algorithmique/1-algorithme/pseudo-code.html" />
+<meta property="og:site_name" content="cours d’informatique" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="algorithme : pseudo-code" />
+<script type="application/ld+json">
+{"description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","headline":"algorithme : pseudo-code","url":"/cours_informatique/cours/theorie-pratiques-algorithmique/1-algorithme/pseudo-code.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css">
+
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+</head>
+
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">algorithme : pseudo-code</h1></p></p>
+  </header>
+
+  <div class="post-content">
+    <blockquote class="chemin">
+  <p><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/">Théorie et pratiques algorithmique</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/1-algorithme/">algorithme</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/1-algorithme/pseudo-code.html">pseudo-code</a></p>
+</blockquote>
+
+<p>Le pseudo-code est la version papier d’un algorithme. Il décrit les différentes étapes permettant de dérouler un algorithme de son initialisation à son retour. Son but est d’être compréhensible par un humain. Ce n’est cependant pas une langue car il n’y a pas de place pour l’ambiguïté ni les inventions : tout doit y être rigoureusement défini, et chaque étape élémentaire doit être réalisable par un humain. Ce n’est pas un plus un langage informatique dont le but est d’être compris par un ordinateur.</p>
+
+<h2 id="éléments-de-pseudo-code">éléments de pseudo-code</h2>
+
+<p>Un pseudo-code est une succession de lignes qui seront exécutées <strong>en séquence</strong> les unes à la suite des autres. Chaque ligne est composée d’une instruction qu’il faut réaliser en entier avant de passer à la ligne suivante.</p>
+
+<p>Il y a quelques instructions basiques qu’auront tous les pseudo-codes que vous pouvez utiliser, ce sont les <strong>instructions basiques</strong>. Elles sont de 3 ordres :</p>
+
+<ul>
+  <li><a href="#manipulations-dobjets-simples">manipulation d’objets simples</a></li>
+  <li><a href="#tests">exécution conditionnelle d’instructions</a></li>
+  <li><a href="#répétition">répétition d’instructions</a></li>
+</ul>
+
+<h3 id="manipulations-dobjets-simples">manipulations d’objets simples</h3>
+
+<p>On doit pouvoir manipuler et stocker des <em>objets</em>. On appelle ici objets simples les booléens, les entiers, les réels et les chaines de caractères.</p>
+
+<ul>
+  <li><strong>utiliser des objets</strong>
+    <ul>
+      <li>opérations sur les entiers et/ou réels :
+        <ul>
+          <li>arithmétique : addition (<code class="language-plaintext highlighter-rouge">+</code>), soustraction (<code class="language-plaintext highlighter-rouge">-</code>), multiplication (<code class="language-plaintext highlighter-rouge">*</code>), division (<code class="language-plaintext highlighter-rouge">/</code>)</li>
+          <li>opérations usuelles : prendre la valeur entière, valeur absolue, le modulo</li>
+          <li>logique : égalité (avec le signe <code class="language-plaintext highlighter-rouge">==</code> ou <code class="language-plaintext highlighter-rouge">=</code>), plus petit que (<code class="language-plaintext highlighter-rouge">&lt;</code>), plus grand que (<code class="language-plaintext highlighter-rouge">&gt;</code>), plus petit ou égal (<code class="language-plaintext highlighter-rouge">≤</code>), plus grand ou égal (<code class="language-plaintext highlighter-rouge">≥</code>)</li>
+        </ul>
+      </li>
+      <li>opérations sur les booléens : négation (non, <code class="language-plaintext highlighter-rouge">NOT</code>, $\neg$), et logique (et, <code class="language-plaintext highlighter-rouge">&amp;&amp;</code>, <code class="language-plaintext highlighter-rouge">AND</code>), ou logique (ou, <code class="language-plaintext highlighter-rouge">||</code>, <code class="language-plaintext highlighter-rouge">OR</code>)</li>
+    </ul>
+  </li>
+  <li><strong>utiliser des variables</strong>. Une variable est un nom qui est associé à un objet.
+    <ul>
+      <li>affecter des variables : <code class="language-plaintext highlighter-rouge">a = 3</code> défini le nom <code class="language-plaintext highlighter-rouge">a</code> (appelé <em>variable</em>) qui vaut <code class="language-plaintext highlighter-rouge">3</code>. (vous verrez parfois utilisé $a \leftarrow 3$ à la place de $a = 3$ pour qu’il n’y ait pas de confusion si l’on utilise <code class="language-plaintext highlighter-rouge">=</code> pour l’égalité)</li>
+      <li>lire une variable. Si j’ai affecté <code class="language-plaintext highlighter-rouge">3</code> à la variable <code class="language-plaintext highlighter-rouge">a</code>, je doit pouvoir l’utiliser, par exemple en écrivant <code class="language-plaintext highlighter-rouge">b = a * 3</code></li>
+    </ul>
+  </li>
+  <li><strong>utiliser un tableau</strong>. Un tableau est un conteneur. Il contient $n$ objets où $n$ est sa <strong>longueur</strong>. On peut voir ça comme une variable contenant $n$ objet plutôt qu’un seul. On peut accéder à, et/ou modifier un élément stocké dans le tableau en lui donnant son <strong>indice</strong>, allant de $0$ à $n-1$ : <code class="language-plaintext highlighter-rouge">t[i]</code> correpond à l’objet d’indice $i$ d’un tableau stocké dans la variable <code class="language-plaintext highlighter-rouge">t</code>. On considère souvent une chaine de caractère comme un tableau de caractères.</li>
+</ul>
+
+<p>Les objets sont stockées en mémoire, que l’on identifiera à un gigantesque tableau. On considérera que l’on peut stocker sur une case mémoire :</p>
+
+<ul>
+  <li>un entier</li>
+  <li>un réel</li>
+  <li>un caractère</li>
+</ul>
+
+<p>Les chaines de caractères et les tableaux sont stockées sur des cases mémoires continues, ce qui permet de connaitre l’emplacement de l’élément d’indice $i$ en une opération basique si l’on connait l’emplacement du 1er élément (emplacement du premier élément + i).</p>
+
+<h3 id="blocs">blocs</h3>
+
+<p>Lier les instruction en blocs. On va utiliser ici le formalisme de python pour définir un bloc :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>type de bloc:
+    instruction 1
+    instruction 2
+    ...
+    instruction n
+</code></pre></div></div>
+
+<p>On décale les instruction du bloc de sa définition. C’est un truc clair qui permet de voir du premier coup d’œil les instructions d’un bloc.</p>
+
+<h3 id="tests">tests</h3>
+
+<p>On veut pouvoir exécuter un bloc de code si une condition logique est vérifiée :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>si (condition logique) est vraie:
+    instruction 1
+    ...
+    instruction n
+</code></pre></div></div>
+
+<p>Cette instruction basique peut avoir plein de variantes comme :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>si (condition logique) est vraie:
+    instruction 1
+    ...
+    instruction n
+sinon:
+    instruction 1
+    ...
+    instruction n'
+</code></pre></div></div>
+
+<p>ou encore :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>si (condition logique) est vraie:
+    instruction 1
+    ...
+    instruction n
+sinon si (autre condition logique) est vraie:
+    instruction 1
+    ...
+    instruction n'
+</code></pre></div></div>
+
+<p>Ou tout mix de tout ça, du moment que c’est clair !</p>
+
+<blockquote>
+  <p>On peut dériver toutes les variantes de la forme initiale.</p>
+</blockquote>
+
+<h3 id="répétition">répétition</h3>
+
+<p>On doit pouvoir répéter un bloc tant qu’une condition logique est vérifiée :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tant que (condition logique) est vraie:
+    instruction 1
+    ...
+    instruction n
+</code></pre></div></div>
+
+<p>Il existe une variation de ce bloc très utile :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pour chaque élément x d'un tableau:
+    instruction 1
+    ...
+    instruction n
+</code></pre></div></div>
+
+<p>On exécutera alors le bloc autant de fois qu’il y a d’élément dans le tableau et à chaque itération du bloc, la variable <code class="language-plaintext highlighter-rouge">x</code> vaudra un autre élément du tableau. On prendra les éléments du tableau par indice croissant.</p>
+
+<blockquote>
+  <p>On peut dériver la variante <code class="language-plaintext highlighter-rouge">pour chaque</code> de la forme initiale <code class="language-plaintext highlighter-rouge">tant que</code>.</p>
+</blockquote>
+
+<h3 id="complexité">complexité</h3>
+
+<p>La complexité d’un pseudo-code est le nombre d’instructions basiques utilisées pour l’exécuter. La complexité d’un bloc d’instruction est égal à la somme des complexités des instructions qui le compose.</p>
+
+<p>Par exemple le pseudo-code suivant :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x = 30
+if ((x &gt; 12) AND (y &lt; 36)):
+    z = x * "coucou"
+</code></pre></div></div>
+
+<ol>
+  <li>on affecte un objet à x : 1 instruction</li>
+  <li>un test avec 2 comparaisons et un <code class="language-plaintext highlighter-rouge">AND</code> : 3 instructions</li>
+  <li>on affecte le résultat d’une opération élémentaire : 2 instructions</li>
+</ol>
+
+<p>Un nombre total d’instruction de 6.</p>
+
+<h3 id="nom-des-termes-utilisés-">nom des termes utilisés ?</h3>
+
+<p>Leurs noms importent peu, seuls leurs fonctions sont importantes. Vous pouvez donc utiliser les mots qu’il vous plait, du moment qu’ils sont compréhensible pour vous et — surtout — pour votre lecteur. Le plus souvent, on utilisera un mix de python et de français, ou d’anglais.</p>
+
+<p>Les trois pseudo-code suivant sont ainsi équivalent :</p>
+
+<pre><code class="language-test">for i in range(10):
+    affiche à l'écran i
+</code></pre>
+
+<pre><code class="language-test">pour chaque entier i allant de 0 à 9:
+    print(i)
+</code></pre>
+
+<pre><code class="language-test">for (i=0 ; i &lt; 10 ; i++) {
+    print(i)
+}
+</code></pre>
+
+<h2 id="pseudo-code">pseudo-code</h2>
+
+<p>Le pseudo-code d’un algorithme va contenir, en plus de ses instructions, un nom, des entrées et souvent une sortie. Par exemple :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Nom : recherche
+Entrées : 
+    t : un tableau d'entiers
+    x : un entier
+Programme :
+    pour chaque élément e de t:
+        si e == x:
+            Retour vrai
+    Retour faux 
+</code></pre></div></div>
+
+<p>Ceci permet ensuite de définir des fonctions pour écrire des algorithmes de façon plus concise.</p>
+
+<h3 id="fonctions">fonctions</h3>
+
+<p>Une fonction est un algorithme. Une fois que sa complexité est connue, on peut l’utiliser comme une instruction dans un pseudo-code.</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nom(entrée 1, ..., entrée n)
+</code></pre></div></div>
+
+<p>Si l’algorithme a un retour, on peut directement l’utiliser, en l’affectant à une variable par exemple :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>variable = nom(entrée 1, ..., entrée n)
+</code></pre></div></div>
+
+<p>Si on veut utiliser le pseudo code <em>recherche</em> défini plus haut, cela pourrait être une instruction du type : <code class="language-plaintext highlighter-rouge">trouve = recherche(tab, 3)</code>. On affecte la sortie de l’algorithme <code class="language-plaintext highlighter-rouge">recherche</code> avec comme paramètres <code class="language-plaintext highlighter-rouge">tab</code> (le tableau d’entier) et <code class="language-plaintext highlighter-rouge">3</code> (un entier) à la variable <code class="language-plaintext highlighter-rouge">trouve</code>.</p>
+
+<p>Il est important de voir que lorsque l’on exécute une fonction, les variable qu’elle crée le seront dans un espace à elle, pas dans celui du pseudo-code appelant. Ainsi dans le code suivant :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>e = 4
+t = [1, 2, 6]
+trouve = recherche(t, 6)
+affiche à l'écran e
+</code></pre></div></div>
+
+<p>On affichera bien 4 à l’écran et pas 6 (le nom de variable <code class="language-plaintext highlighter-rouge">e</code> défini dans recherche reste dans recherche).</p>
+
+<h3 id="instructions-avancées">instructions avancées</h3>
+
+<p>Si l’on devait à chaque pseudocode redéfinir tout les algorithmes qu’on utilise ce serait vraiment fastidieux. On utilise souvent des fonctions non basiques (comme l’affichage à l’écran qu’on a déjà vu) ou des structures plus élaborées (les listes par exemples qui sont des extensions des tableaux). Il faudra cependant toujours connaitre les complexités de ce qu’on utilise.</p>
+
+<p>Par exemple pour les listes, qui sont des tableau redimensionnables :</p>
+
+<ul>
+  <li>complexité d’ajout d’un élément à la fin de la liste : coût de 1 instruction</li>
+  <li>complexité de l’ajout d’un élément pas à la fin de la liste : coût de la taille de la liste instructions</li>
+  <li>complexité de la suppression d’un élément à la fin de la liste : coût de 1 instruction</li>
+  <li>complexité de la suppression d’un élément pas à la fin de la liste : coût de la taille de la liste instructions</li>
+  <li>usage comme un tableau : 1 instruction</li>
+</ul>
+
+<p>Si vous utilisez des méthodes d’objets comme vous avez l’habitude de le faire en python (comme une <code class="language-plaintext highlighter-rouge">ma_liste.index("?")</code>, <code class="language-plaintext highlighter-rouge">x in ma_chaine_de_caractères</code>) ou des structures compliquées (télécharger un fichier d’internet) vous avez le droit mais vous <strong>devez</strong> en connaître le coût : la complexité, les cas d’usage (être connecté), etc.</p>
+
+<h2 id="comment-écrire-du-pseudo-code">comment écrire du pseudo-code</h2>
+
+<p>Le pseudo-code est une représentation d’un algorithme donc le but est :</p>
+
+<ul>
+  <li>de démontrer que l’algorithme fait bien ce qu’on pense qu’il fait</li>
+  <li>de calculer ses performances :
+    <ul>
+      <li>nombre d’opérations utilisées</li>
+      <li>nombre de cases mémoire utilisées</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Pour réaliser cela le plus simplement possible, on voudra <strong>toujours</strong> :</p>
+
+<ul>
+  <li>qu’ils soient lisibles,</li>
+  <li>qu’ils soient justes,</li>
+  <li>en connaître les performances.</li>
+</ul>
+
+<h3 id="lisible">lisible</h3>
+
+<p>Le but d’un algorithme papier est d’être compris. On utilisera pour l’écrire une série de règles compréhensibles par tout le monde : le pseudo-code. Ce n’est ni une langue ni un langage.</p>
+
+<p>préférez des noms de variables explicites et n’hésitez pas à séparer votre pseudo-code en fonction pour qu’il soit plus clair</p>
+
+<blockquote>
+  <p>N’oubliez pas que les fonctions doivent être décrits si elles ne sont pas immédiatement compréhensibles.</p>
+</blockquote>
+
+<h3 id="preuve">preuve</h3>
+
+<p>On <strong>démontrera</strong> le fonctionnement de l’algorithme en utilisant des preuves mathématiques.</p>
+
+<h3 id="performances">performances</h3>
+
+<p>On calculera la complexité de l’algorithme :</p>
+
+<ul>
+  <li>nombre d’opérations</li>
+  <li>place en mémoire</li>
+</ul>
+
+<p>Ces complexités dépendent des paramètres de l’algorithme et, parfois de circonstances extérieures comme l’état du réseau par exemple.</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d&#39;informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d&#39;informatique</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

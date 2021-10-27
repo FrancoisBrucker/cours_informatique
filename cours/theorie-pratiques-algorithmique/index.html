@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Théorie et pratiques algorithmique | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Théorie et pratiques algorithmique" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
+<link rel="canonical" href="/cours_informatique/cours/theorie-pratiques-algorithmique/" />
+<meta property="og:url" content="/cours_informatique/cours/theorie-pratiques-algorithmique/" />
+<meta property="og:site_name" content="cours d’informatique" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Théorie et pratiques algorithmique" />
+<script type="application/ld+json">
+{"description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","headline":"Théorie et pratiques algorithmique","url":"/cours_informatique/cours/theorie-pratiques-algorithmique/","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css">
+
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+</head>
+
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Théorie et pratiques algorithmique</h1></p></p>
+  </header>
+
+  <div class="post-content">
+    <blockquote class="chemin">
+  <p><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/">Théorie et pratiques algorithmique</a></p>
+</blockquote>
+
+<p>Ce cours montrera l’informatique sous trois aspects complémentaires — théorie, code et algorithmes — que tout <a href="https://fr.wikipedia.org/wiki/Honn%C3%AAte_homme">honnête informaticien</a> devrait connaître. Il s’adresse à des personnes ayant des connaissances minimales en informatiques mais voulant (ou étant obligé de :-)) approfondir le sujet.</p>
+
+<blockquote class="note">
+  <p>TBD
+Mettre ça en 1ère partie du cours de développement.</p>
+</blockquote>
+
+<h2 id="prés-requis">prés-requis</h2>
+
+<p>Les connaissances et les outils que vous devez avoir pour commencer le cours. Ils sont minimaux.</p>
+
+<h3 id="un-ordinateur-pour-le-développement">un ordinateur pour le développement</h3>
+
+<p>Pour développer, il faudra coder et exécuter du code. Il vous faut donc un ordinateur (portable ou tour) en état de marche. Il devra être sous un des trois systèmes d’exploitation suivant windows, macos ou linux.</p>
+
+<p>Vous devez dans l’idéal être administrateur de votre ordinateur et avoir fait <a href="/cours_informatique/tutos/systeme/installation/2021/09/01/installation-ordinateur.html">une installation fraîche de tout votre système</a> pour éviter toutes interférences lors de nos installations.</p>
+
+<h3 id="connaissances-système-minimale">connaissances système minimale</h3>
+
+<ul>
+  <li>connaitre les bases d’un système d’exploitation, <a href="/cours_informatique/tutos/systeme/fichiers/2021/08/24/fichiers-navigation.html">les fichiers et les dossiers</a></li>
+  <li>avoir accès à un <a href="/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html">terminal</a></li>
+</ul>
+
+<h3 id="base-dalgorithmie">base d’algorithmie</h3>
+
+<ul>
+  <li>savoir coder et exécuter de petits programmes en python :
+    <ul>
+      <li>savoir affecter des variables entières, réelles ou sous la forme de chaine de caractères</li>
+      <li>manipulation basique de conteneur comme les listes</li>
+      <li>savoir ce qu’est une fonction, ses paramètres, son code et son retour</li>
+    </ul>
+  </li>
+  <li>avoir une notion intuitive de ce qu’est un algorithme
+    <ul>
+      <li>pouvoir compter le nombre d’opération d’un algorithme simple</li>
+      <li>connaitre le principe de récursivité</li>
+    </ul>
+  </li>
+  <li>notion de base en mathématiques (niveau lycée)
+    <ul>
+      <li>les entiers</li>
+      <li>fonctions et bijections entre ensembles</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="plan">plan</h2>
+
+<p>Chaque partie possède une partie théorique, une partie algorithmique et une partie pratique. Elles se suivent plus ou moins, il est donc préférable de les faire dans l’ordre.</p>
+
+<ol>
+  <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/1-algorithme/">un algorithme ?</a>. On y verra les notions de pseudo-code $\vert$ calcul $\vert$  code.</li>
+  <li>complexité max/min $\vert$  preuve d’algorithme $\vert$  complexité temporelle du code</li>
+  <li>complexité en moyenne $\vert$  complexité d’un problème $\vert$  tri rapide et tri fusion</li>
+  <li>XXX $\vert$  suite pseudo-aléatoire $\vert$  ordre et désordre</li>
+  <li>algorithmes gloutons $\vert$  P et NP $\vert$  XXX</li>
+  <li>programmation dynamique $\vert$  réduction $\vert$  le sac à dos dans tous ses états</li>
+  <li>complexité amortie $\vert$  XXX $\vert$  dictionnaires</li>
+  <li>objets et espaces de noms $\vert$  XXX $\vert$  introduction à la programmation objet en python</li>
+  <li>algorithmes de recherche sur les chaines de caractères $\vert$  automates $\vert$  fichiers textes</li>
+</ol>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d&#39;informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d&#39;informatique</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
