@@ -111,14 +111,14 @@ On remarque que l'appel à la fonction init() a lieu avant la déclaration de ce
 
 Donc on a vu que three.js utilise des outils afin de faciliter le travail de l'utilisateur. Les outils les plus importants sont les scènes, les caméras et les renderer (moteurs de rendu). Ces trois éléments sont essentiels à tout projet three.js, sans eux impossible d'afficher quoi que ce soit. Concrètement on va utiliser la caméra pour faire un rendu de la scène.
 
-- La scène correspond donc à notre environnement de travail, ce qui va etre rendu visible par le renderer. Elle permet de localiser avec des coordonnées 3D les différents objets que l'on va ensuite créer.
+- La scène correspond donc à notre environnement de travail, ce qui va etre rendu visible par le renderer. Elle permet de localiser avec des coordonnées 3D les différents objets que l'on va ensuite créer. L'object scene ayant déjà été créé avant le fonction init(), on peut se contenter ici de le modifier sans l'initialiser.
 ```javascript
-const scene = new THREE.Scene();
+scene = new THREE.Scene();
 ```
 
 - Les caméras sont aussi un point essentiel de three.js car elles définissent comment la scène va etre vu par l'utilisateur final. Il existe plusieurs types de caméras avec des possibilités et des effets différents. Une des caméra les plus utilisé est la PerspectiveCamera qui mimique la vision humaine. 
 ```javascript
-const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 camera.position.set(0, 0, 5);
 camera.lookAt( 0, 0, 0 );
 ```
@@ -131,7 +131,7 @@ On peut aussi définir une position ainsi que la direction dans laquelle la cam�
 - Enfin le moteur de rendu ou renderer. Il s'agit du travail final qui va venir faire un rendu 3D de la scène vu au travers de la caméra. L'objet final sera une image 2D de la scène 3D que l'on peut intégrer dans un canvas pour etre utiliser directement en html. Comme dit précedement, classiquement on utilise le moteur de rendu WebGLRenderer mais il est possible d'en utiliser d'autres (notamment au cas ou des utilisateurs sont sur des vieux navigateurs qui ne supportent pas WebGL ce qui est rare).
 De la même manière que pour la caméra, il est possible de définir l'**aspect** du rendu, par exemple relatif à la taille de l'écran sur lequel on va ensuite afficher l'image. La dernière ligne ajoute le renderer dans le body du fichier HTML pour qu'il puisse afficher quelque chose.
 ```javascript
-const renderer = new THREE.WebGLRenderer();
+renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild(renderer.domElement);
 ```
@@ -182,7 +182,7 @@ tous les matériaux disponibles.
 
 ## Go rendre ça plus joli
 
-### Lumière ambiante
+### Lumière
 On peut améliorer notre rendu notament en ajoutant des lumières. Pour ajouter une lumière, c'est très simple, il suffit d'ajouter
 <br>
 
