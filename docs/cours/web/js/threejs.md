@@ -281,7 +281,12 @@ rend()
 ```
 ## Déplacement de la caméra
 
-Il est desfois plus agréable de pouvoir déplacer la caméra comme on le souhaite pour pouvoir bien visualiser ce que l'on 
+Il est desfois plus agréable de pouvoir déplacer la caméra comme on le souhaite pour pouvoir bien visualiser ce que l'on est en train de modéliser. En conception 3D, il est important de pouvoir observer son travail sous plusieurs angles afin de s'assurer que tout correspond bien à ce que l'on souhaite. En effet on peut faire le cube le plus joli qu'on souhaite, si la caméra est toujours pointée dans la même direction , on ne verra jamais l'arrière de ce cube et il ne correspond peut etre pas du tout à ce que l'on veut.
+
+On a vu qu'il est possible de changer l'emplacement et vers où la caméra regarde dans le code ce n'est pas forcement le plus intéressant pour pouvoir déplacer la caméra "à la volée" autours d'un objet pour en vérifier les propriétés pendant les phases de développment.
+
+On va donc essayer de mettre en place une méthode de déplacement de la caméra qui soit controlée par l'utilisateur au niveau de l'affichage dans le navigateur web. Et traditionnellement, pour permettre à un utilisateur d'interagir avec un programme, qu'est ce qu'on utilise ? Un clavier et/ou une souris !
+
 ### Déplacement avec ZQSD
 
 ### Rotation avec la Souris
