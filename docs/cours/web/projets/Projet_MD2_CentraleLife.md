@@ -59,7 +59,21 @@ npm install express --save  # Installation d'Express
 [En savoir plus](https://expressjs.com/fr/starter/installing.html)
 
 
-### Websocket
+### La particularité de notre projet : les Websocket
+
+Pour faire simple, le protocole HTTP est unidirectionnel, c'est-à-dire que le transfert de données se fait uniquement dans un sens et pas dans les deux sens en même temps.
+Le protocole HTTP marche sur un modèle de requête - réponse.
+
+_Exemple_ \
+Le serveur envoie des données au client (ordinateur, téléphone ...), puis va attendre la réponse du client pour faire autre chose.
+
+Le websocket est bidirectionnel, c'est-à-dire que le transfert de données peut se faire dans les deux sens en même temps.
+Ainsi, le serveur peut envoyer des informations de lui-même sans que le client les demande et inversement.
+
+_Exemple_ \
+Lorsque vous recevez un message, c'est le serveur qui vous envoie de lui-même cette information même si vous ne l'avez pas demandé.
+
+[En savoir plus](https://www.ionos.fr/digitalguide/sites-internet/developpement-web/quest-ce-que-le-websocket/)
 
 Pour le websocket, nous avons utilisé [Socket.IO](https://socket.io/).
 Socket.IO est une librairie permettant une communication en temps réel, bidirectionnelle et basée sur des événements entre le navigateur et le serveur.
@@ -80,7 +94,10 @@ Pour l'installer :
 npm install socket.io
 ```
 
-**Lien intéressant sur les** [tests](https://socket.io/docs/v4/testing/#example-with-jest)
+> **Intéressant :** \
+> Le [HTTP/2](https://fr.wikipedia.org/wiki/Hypertext_Transfer_Protocol/2) permet de remplir quelques fonctionnalités du Websocket, notamment la possibilité au serveur
+> d'envoyer au client des données nécessaires mais qu'il n'a pourtant pas demandé.
+
 
 ### Test
 
@@ -94,10 +111,12 @@ Pour cela, nous utilisons [Jest](https://jestjs.io/). Pour l'installer :
 npm install --save-dev jest
 ```
 
-> **Pourquoi _--save-dev_ et pas juste _--save_ ?** \\
+> **Pourquoi _--save-dev_ et pas juste _--save_ ?** \
 > _--save-dev_ va installer cette dépendance en tant que devDependencies, c'est-à-dire uniquement dans un environnement de développement.
 > En environnement de production, on exécutera `npm install --production`. Cette dépendance ne sera donc pas installée.
 > En effet, on ne fait pas de test en environnement de production.
+
+Il est possible de faire des [tests avec jest](https://socket.io/docs/v4/testing/#example-with-jest) sur les websockets.
 
 Dans utils.js, nous avons des fonctions que nous n'exportons pas.
 Pour pouvoir tout de même les tester, nous utilisons [Rewire](https://github.com/jhnns/rewire).
@@ -128,6 +147,10 @@ Comme Selenium va utiliser notre site, il lui faut un navigateur web :
 - `geckodriver` pour Firefox
 - `chromedriver` pour Chrome
 
+
+> Pour les fichiers avec des users stories, il est important de les appeler _nomdufuchier.user-story.js_.
+{: .attention}
+
 Pour les installer :
 ```
 npm install --save-dev selenium-webdriver chromedriver geckodriver
@@ -144,6 +167,11 @@ Pour lancer ces tests :
 npm test -- --testRegex="user-story.js"
 ```
 
+> **Pourquoi pas _npm test_ comme pour les tests unitaires ?** \
+> Justement, on vous a dit que les fichiers devaient s'appeler _nomdufuchier.user-story.js_.
+> _npm test_ va lancer les tests unitaires avec jest (qui termine par .test.js).
+> _--testRegex="user-story.js"_ va donc filtrer les fichiers terminant par _user-story.js_.
+
 ## Le jeu
 
 ### Le plateau du jeu
@@ -159,7 +187,7 @@ Quand un joueur est en faillite (c'est-à-dire quand il n'a plus assez d'argent 
 
 ![Plateau](../../../assets/projets/CentraleLife/plateau.png)
 
-### Amélioration possible du jeu
+### Améliorations possibles du jeu
 
 Pour améliorer ce jeu, nous avons plusieurs idées :
 - une interface admin qui permet de gérer les différentes salles
@@ -168,7 +196,16 @@ Pour améliorer ce jeu, nous avons plusieurs idées :
 - la possibilité d'hypothéquer les propriétés pour récupérer de l'argent
 - un mode nuit avec des règles différentes (vol, cambriolage de maisons, agression ...)
 
-## Lancer le projet
+## Conclusion du projet
+
+Ce projet a été l'occasion pour nous de découvrir Vue et plus généralement de faire un projet avec les technos à la mode :
+Vue, Node, Express. Cela nous a permis d'apprendre des concepts et de coder différement.
+Les Websockets sont compliqués à mettre en place, il vaut mieux faire directement l'architecture du projet avec les websockets
+plutot que de les ajouter après.
+
+## Comment on y joue ?
+
+Vous pouvez aller sur nos sites [Sauge](http://node.sauge.ovh1.ec-m.fr/) et [Marjolaine](http://node.marjolaine.ovh1.ec-m.fr) ou vous pouvez installer le projet en local.
 
 ### Installer le projet
 
@@ -213,12 +250,12 @@ cd front
 npm run build
 ```
 
-> **Pourquoi _npm run serve_ en développement et _npm run build_ en production ?** \\
-> _npm run serve_ compile le projet Vue à chaque fois que le code est modifié. 
-> En production, le code n'est pas censé changer. Il ne faut donc le compiler qu'une fois : lorsqu'on fait _npm run build_. 
+> **Pourquoi _npm run serve_ en développement et _npm run build_ en production ?** \
+> _npm run serve_ compile le projet Vue à chaque fois que le code est modifié.
+> En production, le code n'est pas censé changer. Il ne faut donc le compiler qu'une fois : lorsqu'on fait _npm run build_.
 
 
-N'oubliez pas de décommenter la ligne app.bind... qui indique au site d'utiliser le dossier front/dist.
+N'oubliez pas de décommenter la ligne app.use... dans le serve.js qui indique au site d'utiliser le dossier front/dist.
 
 Ensuite :
 ```
