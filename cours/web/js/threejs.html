@@ -677,8 +677,44 @@ aléatoirement dans une zone donnée :</p>
     
             <span class="p">}</span>
 </code></pre></div></div>
+<h2 id="mise-en-prod">Mise en prod</h2>
 
-<h2 id="conclusion">Conclusion</h2>
+<p>On va mettre notre projet three.js sur OVH, on peut parce que ce projet est uniquement en Javascript pur. 
+Un des soucis qu’on va rencontrer c’est l’utilisation de <code class="language-plaintext highlighter-rouge">vite</code>, c’est bien même très bien pour la partie développement mais ca 
+pose soucis au moment du déploiement.</p>
+
+<blockquote>
+  <p>On ne souhaite pas avoir d’<code class="language-plaintext highlighter-rouge">app vite</code> dans notre projet final</p>
+</blockquote>
+
+<p>On va alors créer un nouveau dossier qu’on va appeler <code class="language-plaintext highlighter-rouge">threeprod</code> dans lequel on va venir copier le dossier <code class="language-plaintext highlighter-rouge">img</code>  et les
+fichiers <code class="language-plaintext highlighter-rouge">main.js</code>, <code class="language-plaintext highlighter-rouge">index.html</code>, <code class="language-plaintext highlighter-rouge">style.css</code>, et les deux json de packages.</p>
+
+<p>Une fois le dossier créer et rempli, on aura un souci d’<code class="language-plaintext highlighter-rouge">import</code> si on copie directement dans l’OVH, on va alors changer les lignes d’import :</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">Import</span> <span class="o">*</span> <span class="k">as</span> <span class="nx">THREE</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">/threeprod/node_modules/three/build/three.module.js</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span><span class="nx">PointerLockControls</span><span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">/threeprod/vendor_mods/three/examples/jsm/controls/PointerLockControls.js</span><span class="dl">'</span>
+</code></pre></div></div>
+
+<p>Pourquoi ceci ? Vite.js permettait d’importer directement avec la commande <code class="language-plaintext highlighter-rouge">from 'three'</code> mais lors du déploiement, l’OVH ne
+trouve pas le module, il faut lui spécifier où est <code class="language-plaintext highlighter-rouge">three.module.js</code>.</p>
+
+<p>De même, dans le fichier <code class="language-plaintext highlighter-rouge">PointerLockControls.js</code>, l’import est le même : <code class="language-plaintext highlighter-rouge">from three</code>, la solution à ceci sans tout casser
+est de créer un nouveau dossier <code class="language-plaintext highlighter-rouge">vendor_mods</code> dans lequel on créera les dossiers de la sorte suivante
+<code class="language-plaintext highlighter-rouge">vendor_mods/three/examples/jsm/controls</code> pour coller à la structure de <code class="language-plaintext highlighter-rouge">node_modules</code>. On va y glisser une copie du fichier qu’on
+trouvera dans <code class="language-plaintext highlighter-rouge">node_modules/three/examples/jsm/controls/PointerLockControls.js</code>. Une fois copier, on va aussi modifier l’import
+de <code class="language-plaintext highlighter-rouge">three</code> en mettant</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">Import</span> <span class="o">*</span> <span class="k">as</span> <span class="nx">THREE</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">/threeprod/node_modules/three/build/three.module.js</span><span class="dl">'</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Ensuite on peut <code class="language-plaintext highlighter-rouge">scp</code> dans <code class="language-plaintext highlighter-rouge">www</code> et faire un <code class="language-plaintext highlighter-rouge">npm install</code> pour que tout soit bon. Si jamais cela ne vous dit rien, vous pouvez suivre
+les tutos suivant :</p>
+<ul>
+  <li><a href="/cours_informatique/cours/ssh_et_shell/ssh_scp.html">SCP</a></li>
+  <li><a href="/cours_informatique/cours/ssh_et_shell/ssh.html">SSH</a>
+    <h2 id="conclusion">Conclusion</h2>
+  </li>
+</ul>
 
 <p>Pour décortiquer un peu plus ou juste si vous êtes perdu, voici le <a href="https://github.com/LeoLaurent/three-js-project">repo git du projet final</a></p>
 
