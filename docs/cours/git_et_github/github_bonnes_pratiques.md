@@ -12,7 +12,7 @@ Ce cours suit directement celui de git et github. Une fois apte à cloner un rep
 
 [GitHub](https://github.com/) est très répandu pour le développement en équipe. Il peut-être une vraie aide à la productivité si il est bien utilisé, ou au contraire, rajouter une perte de temps et des nombreuses prises de têtes sans bonnes pratiques.
 
-Ci-dessous quelques petits clés pour bien utiliser [GitHub](https://github.com/) & [GitLab](https://gitlab.com/) ! Tout ces conseils sont fortements inspirés de projets open-source, ces derniers maintenant une relecture et des règles de participations très claires afin de permettre au maximum de personnes de participées.
+Ci-dessous quelques petites clés pour bien utiliser [GitHub](https://github.com/) & [GitLab](https://gitlab.com/) ! Tout ces conseils sont fortements inspirés de projets open-source, ces derniers maintenant une relecture et des règles de participations très claires afin de permettre au maximum de personnes de participer.
 
 Deux repos qui, selon moi, sont très bien réalisé et celui du projet open-source [Atom](https://github.com/atom/atom) (un ide multi-languages personalisables)
 
@@ -20,23 +20,23 @@ Deux repos qui, selon moi, sont très bien réalisé et celui du projet open-sou
 
 ## WORKFLOW
 
-Le **"workflow"**, ou flux de travail en fançais (à bas les anglicismes) sont les petites règles à adopter pour avancer dans son travail dans de bonnes conditions en minimisant les potentiels pertes de temps créées par une mauvaise gestion.
+Le **"workflow"**, ou flux de travail en fançais (à bas les anglicismes) sont les petites règles à adopter pour avancer dans son travail dans de bonnes conditions en minimisant les potentielles pertes de temps créées par une mauvaise gestion.
 
 Pour travailler en équipe, à l'aide de GitHub, il est bon de garder un schéma de travail harmonieux afin de faciliter la relecture des autres qui passeront derrière nous.
 
-Je vous présente des méthodes de travaille que l'on peut retrouver afin de gagner du temps, avoir une meilleur lisibilité ainsi que une meilleure intégration continue.
+Je vous présente des méthodes de travail que l'on peut retrouver afin de gagner du temps, avoir une meilleure lisibilité ainsi que une meilleure intégration continue.
 
 ### Le No-flow
 
 ![git_flow_1]({{ "/assets/cours/git/git_flow_1.png" | relative_url }}){:style="margin: auto;display: block}
 
-C'est souvent ce qu'on utilise la première fois en se servant de git et gihub : chacun pousse sur la main lorsqu'il ou elle a rajouté une fonctionnalité, corrigé un bug, modifier une partie déjà existante.
+C'est souvent ce qu'on utilise la première fois en se servant de git et gihub : chacun pousse sur la branche main lorsqu'il ou elle a rajouté une fonctionnalité, corrigé un bug, modifié une partie déjà existante.
 
 Travailler de cette mmanière est très peu pratique pour :
 
 - la relecture du code
 - une intégration continue
-- un nombre de personnes participant élevées
+- un nombre de personnes participant élevé
 - éviter des conflits de merge (que l'on veut au plus souvent éviter)
 
 Ce tutoriel est ici en grande partie pour vous montrer d'autres modes de travail afin de parfaire l'expérience et l'efficacité du travail à plusieurs sur un projet.
@@ -47,11 +47,11 @@ Ce tutoriel est ici en grande partie pour vous montrer d'autres modes de travail
 
 #### BRANCHES
 
-Il existe une sémantique des branches, libre à chacun de se le réapproprier mais faire comme tout le monde ça aide souvent à la compréhension !
+Il existe une sémantique des branches, libre à chacun de se la réapproprier mais faire comme tout le monde ça aide souvent à la compréhension !
 
 #### main
 
-Cette branche contient le code de production(celui actuellement utilisé sur votre produit/système fonctionnel).
+Cette branche contient le code de production (celui actuellement utilisé sur votre produit/système fonctionnel).
 Tout le code de développement(branch develop) est fusionné dans master au fur et à mesure que les features,etc... ont été dûment testées et validées.
 
 #### develop
@@ -100,7 +100,7 @@ de fluidité pour la relecture.
 \<BLANK LINE>
 \<footer>
 
-Le body et le footer sont utiliser uniquement si vous avez besoin d'ajouter beaucoup de description à votre commit
+Le body et le footer sont utilisés uniquement si vous avez besoin d'ajouter beaucoup de description à votre commit
 
 Pour le type, il est d'usage de garder les plus connus à savoir :
 **feature**: Ajout d’une nouvelle fonctionnalité
@@ -130,7 +130,7 @@ Exemple de commits:
 
 <i>(Personnellement je préfère garder le scope)</i>
 
-Un tableau ici vous aide à trouver l'émoji associer au commit que vous souhaitez.
+Un tableau ici vous aide à trouver l'émoji associé au commit que vous souhaitez.
 [gist_gitmoji](https://gist.github.com/parmentf/035de27d6ed1dce0b36a)
 
 Vous pouvez vous même rédiger votre tableau dans votre **CONTRIBUTING** ! (On en parle plus bas)
@@ -148,8 +148,8 @@ Elles sont aussi un bon moyen d'apporter des infos sur une contribution, de déf
 Comme vous pouvez le voir sur cette capture, sur une pull_request vous avez la possibilité d'assigner :
 
 - Des **relecteurs** : devant donner leur aval pour accepter le merge
-- Des **labels**: afin de trier les différentes pull request(ex : hotfix, feature,...)
-- Définir si la pull request s'inscrit dans un projet ou/et à des milestones(un outil de gestion de projet présent sur github)
+- Des **labels**: afin de trier les différentes pull request (ex : hotfix, feature,...)
+- Définir si la pull request s'inscrit dans un projet ou/et à des milestones (un outil de gestion de projet présent sur github)
 - Lier des **issues** qui seront automatiquement fermées au moment du merge de la pull request dans la branch master du projet
 
 Cet outil permet ainsi d' "enpaqueter" des commits au sein d'un ajout d'une plus grande quantité de modifications dans le projet.
@@ -183,13 +183,13 @@ Je vous redirige vers le contributing plus bas afin d'aider les gens à leur ré
 
 ## Gestion du repo - Documentation
 
-Il est important de bien documenté son repository sur GitHub afin d'aidé à la compréhension de ce dernier : que ce soit pour un projet fermé si de nouveaux développeurs arrivent dans l'équipe, ou bien dans une dynamique open-source pour toute personne souhaitant participer au projet.
+Il est important de bien documenter son repository sur GitHub afin d'aider à la compréhension de ce dernier : que ce soit pour un projet fermé si de nouveaux développeurs arrivent dans l'équipe, ou bien dans une dynamique open-source pour toute personne souhaitant participer au projet.
 
 Les fichiers Markdown(.md) sont donc vos meilleurs amis pour aider à la compréhension du projet.
 
 ### Readme
 
-C'est le fichier visible directement sur votre repo quand on arrive dessus, il est à placer dans le fichier racine de votre projet. Il contient les informations qui sont généralement nécessaires pour comprendre le sujet du projet. Il est écrit en **markdown**(.md), comme tout ce site d'ailleurs, qui est un lanage de balisage léger.
+C'est le fichier visible directement sur votre repo quand on arrive dessus, il est à placer dans le fichier racine de votre projet. Il contient les informations qui sont généralement nécessaires pour comprendre le sujet du projet. Il est écrit en **markdown**(.md), comme tout ce site d'ailleurs, qui est un langage de balisage léger.
 
 On y retrouve en général :
 
@@ -235,7 +235,7 @@ On retrouve dans la version de son projet :
 - Le numéro de version **MAJEUR** : Quand les changements apportés ne sont pas rétrompatibles, vulgairement de gros changements
 - Le numéro de version **MINEUR** : Quand les ajouts sont rétrocompatibles
 - Le numéro de version de **CORRECTIF/PATCH** : Pas d'ajouts de fonctionnalités mais uniquement des corrections.
-- Un **LABEL** falcultatif: Pour apporter ds précisions sur le type de version
+- Un **LABEL** falcultatif: Pour apporter des précisions sur le type de version
   (ex: beta/alpha/stable)
 
 Plus d'informations ici -> https://semver.org/lang/fr/
