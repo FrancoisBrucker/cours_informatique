@@ -82,7 +82,19 @@ L'exécution d'un programme est alors comme suit :
 5. on écrit $q'$ dans la case du ruban pointé par le curseur, on place la machine dans l'état $q'$ et on déplace le curseur vers la gauche si $f$ vaut $\leftarrow$ et vers la droite sinon ($f$ vaut $\rightarrow$)
 6. retour en 3.
 
+> L'article fondateur d'Allan Turing est [là](http://www.espace-turing.fr/IMG/pdf/turing_oncomputablenumbers_1936.pdf)
+
 ### exemples de programmes
+
+#### répéteur
+
+Répète des suite de 0 et 1 :
+
+
+
+TBD : les lignes pour voir ce que ça fait
+
+C'est le premier exemple de <https://turingmachine.io/> (repeat 0 1)
 
 #### doublement des bâtons
 
@@ -125,11 +137,20 @@ table:
 
 Son fonctionnement est le suivant. On commence par remplacer le premier 1 par un blanc. Puis on se déplace de une case sur la gauche et on écrit 1, puis on se déplace encore une fois à gauche. Une fois là, on se déplace autant de fois que nécessaire sur la gauche jusqu'à arriver sur une case avec B (au début, on a pas besoin de bouger). Arrivé là on écrit 1, puis on se déplace autant de fois que nécessaire sur la droite jusqu'à arriver sur une case B. Arrivé là, on se déplace à droite et on replace la machine de Turing à son été initial pour recommencer si nécessaire.
 
+TBD : montrer sur des schémas.
+
+
 Félicitations ! Vous venez d'implémenter la fonction $f(n) = 2n$ dans une machine de Turing.
+
+#### premier programme (au monde)
+
+L'exemple suivent est le [premier programme](https://machinedeturing.com/exemple.php?page=9) donné par Allan Turing lorsqu'il décrivit sa machine.
+
+
 
 #### autres exemples
 
-Le site <https://turingmachine.io/> contient plusieurs exemple de programmes. Testez les et essayer de les comprendre.
+Le site <https://machinedeturing.com/> contient de nombreux exemples de programmes de machine de Turing
 
 ### modèles équivalents
 
