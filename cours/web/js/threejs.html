@@ -73,12 +73,17 @@
   <div class="post-content">
     <h2 id="introduction">Introduction</h2>
 
-<h3 id="threejs-cest-quoi">three.js c’est quoi?</h3>
+<h3 id="threejs-cest-quoi">Three.js c’est quoi?</h3>
 
-<p>Three.js est une librairie 3D qui permet de créer du contenu 3D sur un navigateur très facilement. L’interet de la librairie est que la plupart des navigateurs internet supportent three.js et qu’il est donc possible de diffuser son code sans avoir à recourir à des plugins pour le faire fonctionner.
-Three.js utilise presque systématiquement WebGL comme moteur de rendu (renderer en anglais) qui est un système de bas niveau qui ne permet de ne dessiner que des points, des lignes et des triangles. L’utilisatoion direct de WebGL pour générer du contenu 3D est long et demande une grande quantité de code car il va tout falloir créer “à la main”, et c’est là qu’intervient three.js: la librairie sert d’intermédiaire entre l’utilisateur et WebGL afin de traduire facilement le travail de l’utilisateur pour WebGL. Three.js utilise notamment des scènes, lumière, materiaux, caméras, textures, filet (mesh), etc, commme outils pour accélerer le travail.</p>
+<p>Three.js est une librairie qui permet de créer du contenu 3D sur un navigateur très facilement. L’intérêt de la librairie est que la plupart des navigateurs internet supportent three.js, et qu’il est donc possible de diffuser son code sans avoir à recourir à des plugins pour le faire fonctionner.
+Three.js utilise presque systématiquement WebGL comme moteur de rendu (renderer en anglais) qui est un système de bas niveau qui ne permet de ne dessiner que des points, des lignes et des triangles. L’utilisation directe de WebGL pour générer du contenu 3D est longue et demande une grande quantité de code car il va tout falloir créer “à la main”. C’est là qu’intervient three.js: la librairie sert d’intermédiaire entre l’utilisateur et WebGL afin de traduire facilement le travail de l’utilisateur pour WebGL. Three.js utilise notamment des scènes, lumière, matériaux, caméras, textures, filet (mesh), etc, commme outils pour accélérer le travail.</p>
 
-<h3 id="à-quoi-sert-ce-tuto">à quoi sert ce tuto?</h3>
+<h3 id="à-quoi-sert-ce-tuto">À quoi sert ce tuto?</h3>
+<p>Il est possible de faire plein de choses en Threejs comme des animations, jeux, navigations de page … En voilà un exemple :</p>
+
+<p><img src="/cours_informatique/assets/cours/web/threejs/planete.gif" alt="une planete" style="margin: auto;display: block;" /></p>
+
+<p>Vous pouvez trouver une liste beaucoup plus détaillée sur le <a href="https://threejs.org/examples/">site officiel</a>.</p>
 
 <p>Le but de ce tuto est d’apprendre les bases de three.js afin de mener à bien un projet simple. Le projet que nous avons choisi pour travailler sur la librairie est de créer un petit environnement 3D dans lequel on pourra déplacer une caméra à l’aide de la souris et du clavier.</p>
 
@@ -93,7 +98,7 @@ au préalable.</p>
 <p>Pour plus de confort, on vous conseille également d’utiliser un IDE pour 
 coder, par exemple <a href="https://code.visualstudio.com/download">VSCode</a>.</p>
 
-<h3 id="threejs-et-vitejs">three.js et vite.js</h3>
+<h3 id="threejs-et-vitejs">Three.js et vite.js</h3>
 
 <p>On crée un dossier <code class="language-plaintext highlighter-rouge">three-js-project/</code> qui sera la racine de notre projet.</p>
 
@@ -145,8 +150,8 @@ Pour le moment enlevons ces lignes et remplaçons ça par l’import de three.js
 <h3 id="structure-du-projet">Structure du projet</h3>
 
 <p>Maintenant que toutes les librairies nécessaires ont été implémentées, on va pouvoir s’intéresser à la structure du code pour un projet three.js.
-Dans un premier temps, comme on a vu juste au desssus et comme dans tout projet js, on importe les différents éléments dont on aura besoin pour développer notre projet.
-Ensuite on initialise les variables importantes du projet ( en particulier la scène, la caméra et le renderer que l’on va voir juste après). Ces variables sont utilisées dans l’entiereté du projet et il est donc utile de les définir dès le début.</p>
+Dans un premier temps, comme on a vu juste au dessus et comme dans tout projet en js, on importe les différents éléments dont on aura besoin pour développer notre projet.
+Ensuite on initialise les variables importantes du projet ( en particulier la scène, la caméra et le renderer que l’on va voir juste après). Ces variables sont les variables globales qu’on va modifier dans nos fonctions.</p>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">scene</span><span class="p">,</span> <span class="nx">renderer</span><span class="p">,</span> <span class="nx">camera</span><span class="p">;</span>
 </code></pre></div></div>
 <p>On utilise ensuite une fonction d’initialisation pour donner des propriétés à ces variables et établir toutes les actions que l’on veut faire faire à notre environnement 3D.</p>
@@ -167,25 +172,25 @@ Ensuite on initialise les variables importantes du projet ( en particulier la sc
 <p>Donc on a vu que three.js utilise des outils afin de faciliter le travail de l’utilisateur. Les outils les plus importants sont les scènes, les caméras et les renderer (moteurs de rendu). Ces trois éléments sont essentiels à tout projet three.js, sans eux impossible d’afficher quoi que ce soit. Concrètement on va utiliser la caméra pour faire un rendu de la scène.</p>
 
 <ul>
-  <li>La scène correspond donc à notre environnement de travail, ce qui va etre rendu visible par le renderer. Elle permet de localiser avec des coordonnées 3D les différents objets que l’on va ensuite créer. L’object scene ayant déjà été créé avant le fonction init(), on peut se contenter ici de le modifier sans l’initialiser.
+  <li>La scène correspond donc à notre environnement de travail, ce qui va être rendu visible par le renderer. Elle permet de localiser avec des coordonnées 3D les différents objets que l’on va ensuite créer. L’object scene ayant déjà été créé avant le fonction init(), on peut se contenter ici de le modifier sans l’initialiser.
     <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">scene</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nx">Scene</span><span class="p">();</span>
 </code></pre></div>    </div>
   </li>
-  <li>Les caméras sont aussi un point essentiel de three.js car elles définissent comment la scène va etre vu par l’utilisateur final. Il existe plusieurs types de caméras avec des possibilités et des effets différents. Une des caméra les plus utilisé est la PerspectiveCamera qui mimique la vision humaine.
-    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">camera</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nx">PerspectiveCamera</span><span class="p">(</span> <span class="mi">75</span><span class="p">,</span> <span class="nb">window</span><span class="p">.</span><span class="nx">innerWidth</span> <span class="o">/</span> <span class="nb">window</span><span class="p">.</span><span class="nx">innerHeight</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1000</span> <span class="p">);</span>
-<span class="nx">camera</span><span class="p">.</span><span class="nx">position</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
+  <li>Les caméras sont aussi un point essentiel de three.js car elles définissent comment la scène va etre vu par l’utilisateur final. Il existe plusieurs types de caméras avec des possibilités et des effets différents. Une des caméras les plus utilisées est la PerspectiveCamera qui mimique la vision humaine.
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">camera</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nx">PerspectiveCamera</span><span class="p">(</span> <span class="mi">110</span><span class="p">,</span> <span class="nb">window</span><span class="p">.</span><span class="nx">innerWidth</span> <span class="o">/</span> <span class="nb">window</span><span class="p">.</span><span class="nx">innerHeight</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1000</span> <span class="p">);</span>
+<span class="nx">camera</span><span class="p">.</span><span class="nx">position</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
 <span class="nx">camera</span><span class="p">.</span><span class="nx">lookAt</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> <span class="p">);</span>
 </code></pre></div>    </div>
-    <p>Ici on définit une caméra avec différentes propriétés : le <strong>FOV</strong> (Field of view), l’<strong>aspect</strong> qu’on définit ici comme le rapport entre la largeur et la hauteur de l’écran, et enfin on définit les valeurs pour <strong>near</strong> et <strong>far</strong>. Ces deux valeurs déterminent à quelle distance se trouve les plans limites de la caméra. Tout ce qui se trouve avant le plan near et après le plan far ne seront pas vu par la caméra et ils ne seront donc pas rendu par le renderer.</p>
+    <p>Ici on définit une caméra avec différentes propriétés : le <strong>FOV</strong> (Field of view), l’<strong>aspect</strong> qu’on définit ici comme le rapport entre la largeur et la hauteur de l’écran, et enfin les valeurs pour <strong>near</strong> et <strong>far</strong>. Ces deux valeurs déterminent à quelle distance se trouvent les plans limite de la caméra. Tout ce qui se trouve avant le plan near et après le plan far ne sera pas vu par la caméra et ne sera donc pas rendu par le renderer.</p>
   </li>
 </ul>
 
-<p>On peut aussi définir une position ainsi que la direction dans laquelle la caméra regarde de manière relative à la scène que l’on a créée avant.</p>
+<p>On peut aussi définir la position ainsi que la direction dans laquelle la caméra regarde de manière relative à la scène que l’on a créée avant.</p>
 
 <p><img src="/cours_informatique/assets/cours/web/threejs/camera.jpg" alt="une camera" style="margin: auto;display: block;" /></p>
 
 <ul>
-  <li>Enfin le moteur de rendu ou renderer. Il s’agit du travail final qui va venir faire un rendu 3D de la scène vu au travers de la caméra. L’objet final sera une image 2D de la scène 3D que l’on peut intégrer dans un canvas pour etre utiliser directement en html. Comme dit précedement, classiquement on utilise le moteur de rendu WebGLRenderer mais il est possible d’en utiliser d’autres (notamment au cas ou des utilisateurs sont sur des vieux navigateurs qui ne supportent pas WebGL ce qui est rare).
+  <li>Enfin le moteur de rendu ou renderer. Il s’agit du travail final qui va venir faire un rendu 3D de la scène vu au travers de la caméra. L’objet final sera une image 2D de la scène 3D que l’on peut intégrer dans un canvas pour être utilisé directement en html. Comme dit précédemment, classiquement on utilise le moteur de rendu WebGLRenderer mais il est possible d’en utiliser d’autres (notamment au cas où des utilisateurs sont sur des vieux navigateurs qui ne supportent pas WebGL ce qui est rare).
 De la même manière que pour la caméra, il est possible de définir l’<strong>aspect</strong> du rendu, par exemple relatif à la taille de l’écran sur lequel on va ensuite afficher l’image. La dernière ligne ajoute le renderer dans le body du fichier HTML pour qu’il puisse afficher quelque chose.
     <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">renderer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nx">WebGLRenderer</span><span class="p">({</span><span class="na">antialias</span><span class="p">:</span> <span class="kc">true</span><span class="p">});</span>
 <span class="nx">renderer</span><span class="p">.</span><span class="nx">setSize</span><span class="p">(</span> <span class="nb">window</span><span class="p">.</span><span class="nx">innerWidth</span><span class="p">,</span> <span class="nb">window</span><span class="p">.</span><span class="nx">innerHeight</span> <span class="p">);</span>
@@ -201,22 +206,21 @@ Commençons par ajouter un plan.</p>
 
 <p>Un objet est défini par deux attributs: Sa géométrie et son matériau.</p>
 
-<p>La géométrie du plan est créée avec <em>PlaneGeometry</em> qui prend en paramètres 
+<p>La géométrie du plan est créée avec <code class="language-plaintext highlighter-rouge">PlaneGeometry</code> qui prend en paramètres 
 les longueur et largeur du plan 
 (l’unité de mesure est abstraite, elle est propre à three.js).</p>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">plane_geometry</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nx">PlaneGeometry</span><span class="p">(</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">400</span> <span class="p">);</span>
 </code></pre></div></div>
 
 <p>Ensuite on crée notre matériau avec <code class="language-plaintext highlighter-rouge">MeshStandardMaterial</code>. On spécifie sa couleur 
-en hexadécimal (par exemple ici c’est du rouge).</p>
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">plane_material</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nx">MeshStandardMaterial</span><span class="p">(</span> <span class="nx">color</span><span class="p">:</span><span class="mh">0xff0000</span> <span class="p">);</span>
+en hexadécimal (par exemple ici c’est du blanc).</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">plane_material</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nx">MeshStandardMaterial</span><span class="p">(</span> <span class="nx">color</span><span class="p">:</span><span class="mh">0xffffff</span> <span class="p">);</span>
 </code></pre></div></div>
 
 <p>Puis on crée notre objet avec <code class="language-plaintext highlighter-rouge">Mesh</code> qui prend en paramètres la géométrie et le 
-matériau.</p>
+matériau. Tournons aussi notre plan pour faire un sol.</p>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">plane</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nx">Mesh</span><span class="p">(</span> <span class="nx">plane_geometry</span><span class="p">,</span> <span class="nx">plane_material</span> <span class="p">);</span>
-<span class="nx">plane</span><span class="p">.</span><span class="nx">rotateX</span><span class="p">(</span> <span class="o">-</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span> <span class="o">/</span> <span class="mi">2</span> <span class="p">);</span> <span class="c1">//Cette dernière ligne nous </span>
-<span class="c1">// servira dans la partie Déplacement</span>
+<span class="nx">plane</span><span class="p">.</span><span class="nx">rotateX</span><span class="p">(</span> <span class="o">-</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span> <span class="o">/</span> <span class="mi">2</span> <span class="p">);</span>
 </code></pre></div></div>
 
 <p>Et enfin, on l’ajoute à la scène:</p>
@@ -242,7 +246,7 @@ tous les matériaux disponibles.</p>
 <p>Notre renderer apparait bien, mais n’occupe pas toute la fenêtre. En plus, il ne 
 s’adapte pas à la taille de la fenêtre lorsqu’on la modifie.</p>
 
-<p>Rajoutons cette fonction dans le main.js (en dehors de la fonction init()) pour 
+<p>Rajoutons cette fonction dans le main.js (en dehors de la fonction<code class="language-plaintext highlighter-rouge">init()</code>) pour 
 permettre au renderer d’adapter sa taille en temps réel :</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">onWindowResize</span><span class="p">()</span> <span class="p">{</span>
@@ -254,9 +258,9 @@ permettre au renderer d’adapter sa taille en temps réel :</p>
 </code></pre></div></div>
 
 <p>On voit ici qu’on modifie à la fois le champ de la caméra et la taille du renderer. 
-On doit ensuite ajouter un listener à la fin de notre fonction init(), 
+On doit ensuite ajouter un listener à la fin de notre fonction <code class="language-plaintext highlighter-rouge">init()</code>, 
 qui vérifie si la taille de la fenêtre est 
-modifiée, et appelle la fonction onWindowResize() quand c’est le cas :</p>
+modifiée, et appelle la fonction <code class="language-plaintext highlighter-rouge">onWindowResize()</code>quand c’est le cas :</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span> <span class="dl">'</span><span class="s1">resize</span><span class="dl">'</span><span class="p">,</span> <span class="nx">onWindowResize</span> <span class="p">);</span>  
 </code></pre></div></div>
@@ -273,17 +277,16 @@ Allons dans notre fichier <code class="language-plaintext highlighter-rouge">sty
 <p>Parfait, maintenant améliorons le rendu de nos objets.</p>
 
 <h3 id="lumière">Lumière</h3>
-<p>On peut améliorer notre rendu notament en ajoutant des lumières. Pour ajouter une lumière, c’est très simple, il suffit d’ajouter
-<br /></p>
+<p>On peut améliorer notre rendu en ajoutant des lumières. Pour ajouter une lumière, c’est très simple, il suffit d’ajouter:</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">light</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nx">DirectionalLight</span><span class="p">(</span><span class="mh">0xffffff</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
 </code></pre></div></div>
 
-<p>Le premier argument est le code couleur en hexadécimal de la lumière et le deuxième est son intensité.
-<br />
-Il suffit ensuite de choisir sa position et de l’ajouter à la scène :</p>
+<p>Le premier argument est le code couleur en hexadécimal de la lumière et le deuxième est son intensité.</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">light</span><span class="p">.</span><span class="nx">position</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+<p>Il suffit ensuite de choisir sa position et de l’ajouter à la scène :</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">light</span><span class="p">.</span><span class="nx">position</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">200</span><span class="p">);</span>
 <span class="nx">scene</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">light</span><span class="p">);</span>
 </code></pre></div></div>
 <p>On a alors un plan qui est éclairé par le dessus.</p>
@@ -293,10 +296,10 @@ Il suffit ensuite de choisir sa position et de l’ajouter à la scène :</p>
 
 <p>On ajoute en premier un cube pour pouvoir voir les ombres :</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">cube_geometry</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nx">BoxGeometry</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">cube_geometry</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nx">BoxGeometry</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
 <span class="kd">const</span> <span class="nx">cube_material</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nx">MeshStandardMaterial</span><span class="p">(</span><span class="mh">0xffffff</span><span class="p">);</span>
 <span class="kd">const</span> <span class="nx">cube</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nx">Mesh</span><span class="p">(</span> <span class="nx">cube_geometry</span><span class="p">,</span> <span class="nx">cube_material</span><span class="p">);</span>
-<span class="nx">cube</span><span class="p">.</span><span class="nx">position</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="nx">cube</span><span class="p">.</span><span class="nx">position</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
 
 </code></pre></div></div>
 <p>Il faut maintenant lui autoriser à diffuser des ombres :</p>
@@ -304,10 +307,9 @@ Il suffit ensuite de choisir sa position et de l’ajouter à la scène :</p>
 <span class="nx">scene</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">cube</span><span class="p">);</span>
 </code></pre></div></div>
 
-<p>De même pour la lumière, il faut aussi lui autoriser (on ajuste sa position pour avoir un bon rendu au passage):</p>
+<p>De même pour la lumière, il faut aussi lui autoriser :</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">light</span><span class="p">.</span><span class="nx">position</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">);</span>
-<span class="nx">light</span><span class="p">.</span><span class="nx">castShadow</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">light</span><span class="p">.</span><span class="nx">castShadow</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
 </code></pre></div></div>
 
 <p>Jusque la vous ne devez rien voir. Il faut aussi activer la résolution pour les ombres :</p>
@@ -345,7 +347,7 @@ notre scène):</p>
 <span class="nx">scene</span><span class="p">.</span><span class="nx">fog</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nx">Fog</span><span class="p">(</span><span class="mh">0x87CEFA</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">200</span><span class="p">);</span>
 </code></pre></div></div>
 <p>En choisissant la même couleur pour les deux, on a l’impression de ne plus distinguer 
-le sol au loin (il se fond avec le fond). Les deux autres paramètres de <code class="language-plaintext highlighter-rouge">Three.Fog</code> 
+le sol au loin (il se fond avec le fond). Les deux autres paramètres de <code class="language-plaintext highlighter-rouge">Fog()</code> 
 sont near et far, c’est le même principe que lorsqu’on a créé la caméra.</p>
 
 <h3 id="textures">Textures</h3>
@@ -376,7 +378,7 @@ avons utilisé <code class="language-plaintext highlighter-rouge">MeshStandardMa
 <span class="p">}</span>
 <span class="p">);</span>
 </code></pre></div></div>
-<p>Le problème est que la texture a besoin d’être rendu en boucle, donc on ne la voit pas si l’on ne rend pas en boucle, il faut alors rajouter la fonction suivante à la fin</p>
+<p>Le problème est que la texture a besoin d’être rendue en boucle (on ne la voit pas sinon). Il faut donc rajouter la fonction suivante à la fin:</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">animate</span><span class="p">(){</span>
     <span class="nx">renderer</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="nx">scene</span><span class="p">,</span><span class="nx">camera</span><span class="p">);</span>
@@ -385,7 +387,9 @@ avons utilisé <code class="language-plaintext highlighter-rouge">MeshStandardMa
 <span class="nx">animate</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p>###Pour un beau parquet</p>
+<p>animate() est exécutée à chaque frame: Dès qu’on veut modifier quelque chose en temps réel, on utilise cette fonction.</p>
+
+<h3 id="pour-un-beau-parquet">Pour un beau parquet</h3>
 
 <p>Maintenant qu’on a fait la texture du cube, on peut aller plus loin en faisant la texture du sol. On va alors utiliser cette <a href="https://drive.google.com/drive/folders/1_muKfn_cQXV6VTWbxuJpywb0tMq51SD8">texture</a>.
 On refait le même travail :</p>
@@ -397,7 +401,7 @@ On refait le même travail :</p>
     <span class="kd">const</span> <span class="nx">texturenormalWood</span> <span class="o">=</span> <span class="nx">textureloaderWood</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="dl">'</span><span class="s1">img/Wood_Floor_009_normal.jpg</span><span class="dl">'</span><span class="p">)</span>
     <span class="kd">const</span> <span class="nx">textureroughnessWood</span> <span class="o">=</span> <span class="nx">textureloaderWood</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="dl">'</span><span class="s1">img/Wood_Floor_009_roughness.jpg</span><span class="dl">'</span><span class="p">)</span>
 </code></pre></div></div>
-<p>A l’exception qu’ici notre texture est trop petite pour recouvrir tout notre sol. On doit alors repéter la texture :</p>
+<p>A l’exception qu’ici notre texture est trop petite pour recouvrir tout notre sol. On doit alors répéter la texture :</p>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nx">textureBasecolorWood</span><span class="p">.</span><span class="nx">wrapS</span> <span class="o">=</span> <span class="nx">textureBasecolorWood</span><span class="p">.</span><span class="nx">wrapT</span> <span class="o">=</span><span class="nx">THREE</span><span class="p">.</span><span class="nx">RepeatWrapping</span>
     <span class="nx">textureBasecolorWood</span><span class="p">.</span><span class="nx">repeat</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">15</span><span class="p">)</span>
     <span class="nx">textureAmbientOcclussionWood</span><span class="p">.</span><span class="nx">wrapS</span> <span class="o">=</span> <span class="nx">textureAmbientOcclussionWood</span><span class="p">.</span><span class="nx">wrapT</span><span class="o">=</span><span class="nx">THREE</span><span class="p">.</span><span class="nx">RepeatWrapping</span>
@@ -410,20 +414,21 @@ On refait le même travail :</p>
     <span class="nx">textureroughnessWood</span><span class="p">.</span><span class="nx">repeat</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">15</span> <span class="p">)</span>
 </code></pre></div></div>
 
-<p>S et T sont les dimensions 2D de recouvrement de texture, on leur dit de wrap en S et en T suivant un schéma de repeat qui est set à 15 répétitions suivant chaque coordonnées.</p>
+<p>S et T sont les dimensions 2D de recouvrement de texture, on leur dit de wrap en S et en T suivant un schéma de repeat qui est set à 15 répétitions suivant chaque coordonnée.</p>
 
 <h2 id="déplacement-de-la-caméra">Déplacement de la caméra</h2>
 
-<p>Il est desfois plus agréable de pouvoir déplacer la caméra comme on le souhaite pour pouvoir bien visualiser ce que l’on est en train de modéliser. En conception 3D, il est important de pouvoir observer son travail sous plusieurs angles afin de s’assurer que tout correspond bien à ce que l’on souhaite. En effet on peut faire le cube le plus joli qu’on souhaite, si la caméra est toujours pointée dans la même direction , on ne verra jamais l’arrière de ce cube et il ne correspond peut etre pas du tout à ce que l’on veut.</p>
+<p>Il est des fois plus agréable de pouvoir déplacer la caméra comme on le souhaite pour pouvoir bien visualiser ce que l’on est en train de modéliser. En conception 3D, il est important de pouvoir observer son travail sous plusieurs angles afin de s’assurer que tout correspond bien à ce que l’on souhaite. En effet on peut faire le cube le plus joli qu’on souhaite, si la caméra est toujours pointée dans la même direction , on ne verra jamais l’arrière de ce cube et il ne correspond peut etre pas du tout à ce que l’on veut.</p>
 
-<p>On a vu qu’il est possible de changer l’emplacement et vers où la caméra regarde dans le code ce n’est pas forcement le plus intéressant pour pouvoir déplacer la caméra “à la volée” autours d’un objet pour en vérifier les propriétés pendant les phases de développment.</p>
+<p>On a vu qu’il est possible de changer la position et vers où la caméra regarde dans le code. Ce n’est pas forcement le plus intéressant pour pouvoir déplacer la caméra “à la volée” autour d’un objet pour en vérifier les propriétés pendant les phases de développment.</p>
 
-<p>On va donc essayer de mettre en place une méthode de déplacement de la caméra qui soit controlée par l’utilisateur au niveau de l’affichage dans le navigateur web. Et traditionnellement, pour permettre à un utilisateur d’interagir avec un programme, qu’est ce qu’on utilise ? Un clavier et/ou une souris !</p>
+<p>On va donc essayer de mettre en place une méthode de déplacement de la caméra qui soit contrôlée par l’utilisateur au niveau de l’affichage dans le navigateur web. Et traditionnellement, pour permettre à un utilisateur d’interagir avec un programme, qu’est ce qu’on utilise ? Un clavier et/ou une souris !</p>
 
-<h3 id="déplacement-avec-zqsd">Déplacement avec ZQSD</h3>
+<p>Pour cette partie, on va s’inspirer de <a href="https://threejs.org/examples/misc_controls_pointerlock.html">cet exemple</a> de la librairie Three.js.</p>
+<h3 id="déplacement-en-mode-fps">Déplacement en mode fps</h3>
 
 <p>Il existe plusieurs controleurs de caméra déjà intégrés
-dans Three.js et ici on va utiliser le premier : le <code class="language-plaintext highlighter-rouge">PointerLockControls</code>. Tout 
+dans Three.js et ici on va utiliser <code class="language-plaintext highlighter-rouge">PointerLockControls</code>. Tout 
 d’abord il faut l’importer :</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">PointerLockControls</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">three/examples/jsm/controls/PointerLockControls</span><span class="dl">'</span><span class="p">;</span>
@@ -458,7 +463,7 @@ sur la fenêtre pour lock sa souris et il pourra contrôler la vue.</p>
 </code></pre></div></div>
 <p>Ces variables vont nous aider à choisir la direction de notre personne.</p>
 
-<p>On va ensuite créer deux constantes qui modifieront ces constantes :</p>
+<p>On va ensuite créer deux constantes qui modifieront ces variables :</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">onKeyDown</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span> <span class="nx">event</span> <span class="p">)</span> <span class="p">{</span>
 
@@ -537,13 +542,13 @@ pressées. Il faut maintenant pouvoir bouger. Pour cela on va créer en variable
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">prevTime</span> <span class="o">=</span> <span class="nx">performance</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
 </code></pre></div></div>
 
-<p>Une fois fait, on peut aller dnas notre fonction <code class="language-plaintext highlighter-rouge">animate</code> pour faire bouger notre petit personnage.</p>
+<p>Une fois fait, on peut aller dans notre fonction <code class="language-plaintext highlighter-rouge">animate</code> pour faire bouger notre petit personnage.</p>
 
 <p>On va commencer par créer une nouvelle constante temps :</p>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">time</span> <span class="o">=</span> <span class="nx">performance</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
 </code></pre></div></div>
 
-<p>Puis, après vérification que les controls sont locked :</p>
+<p>Puis, après vérification que les contrôles sont locked :</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span> <span class="nx">controls</span><span class="p">.</span><span class="nx">isLocked</span> <span class="o">===</span> <span class="kc">true</span> <span class="p">)</span> <span class="p">{</span>
     
@@ -583,10 +588,10 @@ pressées. Il faut maintenant pouvoir bouger. Pour cela on va créer en variable
 <p>Expliquons ces lignes :</p>
 
 <ul>
-  <li>On va créer un intervalle de temps entre la dernière fois que a rendu le monde et maitenant</li>
-  <li>Ensuite on setup l’inertie : plus le chiffre est grand, plus la vitesse reviendra a 0 vite</li>
-  <li>Ici on simule la gravité : on a pris  6 comme valeur pour un meilleur gameplay</li>
-  <li>Ici on gère le vecteur pour savoir où on se dirige en transformant les booléen en nombre</li>
+  <li>On va créer un intervalle de temps entre la dernière fois qu’on a rendu le monde et maitenant</li>
+  <li>Ensuite on setup l’inertie : plus le chiffre est grand, plus la vitesse reviendra à 0 vite (.js mdr)</li>
+  <li>Ici on simule la gravité : on a pris 6 comme valeur pour un meilleur gameplay</li>
+  <li>Ici on gère le vecteur pour savoir où on se dirige en transformant les booléens en nombres</li>
   <li>On augmente la vitesse suivant la direction avec comme valeur 400 ( modifiable pour plus de fun )</li>
   <li>On applique la vitesse à notre controller (en y aussi si on saute)</li>
   <li>On reset la vitesse en y si on est au sol</li>
@@ -596,9 +601,9 @@ pressées. Il faut maintenant pouvoir bouger. Pour cela on va créer en variable
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        <span class="nx">prevTime</span> <span class="o">=</span> <span class="nx">time</span><span class="p">;</span>
         <span class="nx">renderer</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span> <span class="nx">scene</span><span class="p">,</span> <span class="nx">camera</span> <span class="p">);</span>
 </code></pre></div></div>
-<h3 id="rotation-avec-la-souris">Rotation avec la Souris</h3>
+<h3 id="bonus-rotation-autour-dun-point-fixe">Bonus: Rotation autour d’un point fixe</h3>
 
-<p>Une des méthodes les plus simples de déplacement de caméra consiste à autoriser une rotation de la caméraà l’aide de la souris. Ce type de controle s’appelle OrbitControl dans three.js. C’est un controle très simple à mettre en place et à utiliser. Juste en maintenant le clic gauche de la souris et en bougeant la souris, on change l’axe de visualisation de la caméra. Combiné à un déplacement grâce au touches ZQSD, on peut obtenir un controle sur la caméra similaire à un jeu fps.</p>
+<p>Une autre méthode souvent utilisée consiste à autoriser une rotation de la caméra à l’aide de la souris. Ce type de contrôle s’appelle OrbitControl dans three.js. C’est un contrôle très simple à mettre en place et à utiliser. Juste en maintenant le clic gauche de la souris et en bougeant la souris, on change l’axe de visualisation de la caméra.</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">OrbitControls</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">three/examples/jsm/controls/OrbitControls</span><span class="dl">'</span><span class="p">;</span>
 
@@ -622,12 +627,12 @@ dehors de notre fonction init():</p>
 <p>Ensuite on va créer dans notre fonction init() plein de cubes, qu’on va placer 
 aléatoirement dans une zone donnée :</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="p">(</span> <span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">;</span> <span class="nx">i</span> <span class="o">++</span> <span class="p">)</span> <span class="p">{</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="p">(</span> <span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">;</span> <span class="nx">i</span> <span class="o">++</span> <span class="p">)</span> <span class="p">{</span>
 
         <span class="kd">const</span> <span class="nx">cube</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nx">Mesh</span><span class="p">(</span> <span class="nx">cube_geometry</span><span class="p">,</span> <span class="nx">cube_material</span> <span class="p">);</span>
-        <span class="nx">cube</span><span class="p">.</span><span class="nx">position</span><span class="p">.</span><span class="nx">x</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">-</span> <span class="mi">5</span> <span class="p">)</span> <span class="o">*</span> <span class="mi">5</span><span class="p">;</span>
-        <span class="nx">cube</span><span class="p">.</span><span class="nx">position</span><span class="p">.</span><span class="nx">y</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="mi">4</span> <span class="p">)</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">+</span> <span class="mf">2.5</span><span class="p">;</span>
-        <span class="nx">cube</span><span class="p">.</span><span class="nx">position</span><span class="p">.</span><span class="nx">z</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">-</span> <span class="mi">5</span> <span class="p">)</span> <span class="o">*</span> <span class="mi">5</span><span class="p">;</span>
+        <span class="nx">cube</span><span class="p">.</span><span class="nx">position</span><span class="p">.</span><span class="nx">x</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="mi">20</span> <span class="o">-</span> <span class="mi">5</span> <span class="p">)</span> <span class="o">*</span> <span class="mi">10</span><span class="p">;</span>
+        <span class="nx">cube</span><span class="p">.</span><span class="nx">position</span><span class="p">.</span><span class="nx">y</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="mi">20</span> <span class="p">)</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">+</span> <span class="mi">5</span><span class="p">;</span>
+        <span class="nx">cube</span><span class="p">.</span><span class="nx">position</span><span class="p">.</span><span class="nx">z</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="mi">20</span> <span class="o">-</span> <span class="mi">5</span> <span class="p">)</span> <span class="o">*</span> <span class="mi">10</span><span class="p">;</span>
         <span class="nx">cube</span><span class="p">.</span><span class="nx">castShadow</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
         <span class="nx">cube</span><span class="p">.</span><span class="nx">receiveShadow</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
 
@@ -637,6 +642,67 @@ aléatoirement dans une zone donnée :</p>
     <span class="p">}</span>
 </code></pre></div></div>
 
+<h3 id="détection-de-sol">Détection de sol</h3>
+
+<p>On doit aussi rajouter des contrôles pour pouvoir s’amuser avec ces cubes et sauter dessus. On va d’abord créer une variable globale</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">raycaster</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>A la fin de la fonction <code class="language-plaintext highlighter-rouge">init</code>, on va ajouter la ligne :</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">raycaster</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nx">Raycaster</span><span class="p">(</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nx">Vector3</span><span class="p">(),</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nx">Vector3</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span> <span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span> <span class="p">);</span>
+</code></pre></div></div>
+<p>pour initialiser la valeur du raycaster, qui sera en fait nos pieds.</p>
+
+<p>On va donc ensuite aller dans la fonction <code class="language-plaintext highlighter-rouge">animate</code>, dans le <code class="language-plaintext highlighter-rouge">if</code>:</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">raycaster</span><span class="p">.</span><span class="nx">ray</span><span class="p">.</span><span class="nx">origin</span><span class="p">.</span><span class="nx">copy</span><span class="p">(</span> <span class="nx">controls</span><span class="p">.</span><span class="nx">getObject</span><span class="p">().</span><span class="nx">position</span> <span class="p">);</span>
+<span class="nx">raycaster</span><span class="p">.</span><span class="nx">ray</span><span class="p">.</span><span class="nx">origin</span><span class="p">.</span><span class="nx">y</span> <span class="o">-=</span> <span class="mi">10</span><span class="p">;</span>
+</code></pre></div></div>
+<p>On récupère la position de la camera et on y soustrait la taille qui est de 10 ici.</p>
+
+<p>Ensuite on crée ceci :</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>            <span class="kd">const</span> <span class="nx">intersections</span> <span class="o">=</span> <span class="nx">raycaster</span><span class="p">.</span><span class="nx">intersectObjects</span><span class="p">(</span> <span class="nx">objects</span><span class="p">,</span> <span class="kc">false</span> <span class="p">);</span>
+    
+            <span class="kd">const</span> <span class="nx">onObject</span> <span class="o">=</span> <span class="nx">intersections</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>On regarde si nos pieds sont en intersection avec un objet de la liste <code class="language-plaintext highlighter-rouge">objects</code>.</p>
+
+<p>Et si on est sur un objet, c’est qu’on était en saut donc on ne pouvait plus sauter :</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>            <span class="k">if</span> <span class="p">(</span> <span class="nx">onObject</span> <span class="o">===</span> <span class="kc">true</span> <span class="p">)</span> <span class="p">{</span>
+    
+                <span class="nx">velocity</span><span class="p">.</span><span class="nx">y</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">velocity</span><span class="p">.</span><span class="nx">y</span> <span class="p">);</span>
+                <span class="nx">canJump</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+    
+            <span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Pour décortiquer un peu plus ou juste si vous êtes perdu, voici le <a href="https://github.com/LeoLaurent/three-js-project">repo git du projet final</a></p>
+
+<h1 id="références">Références</h1>
+
+<p><a href="https://threejs.org/docs/index.html">La documentation Three js</a></p>
+
+<p><a href="https://threejs.org/examples/#webgl_animation_cloth">Plein d’exemples de projets en Three js</a></p>
+
+<p><a href="https://www.youtube.com/watch?v=YK1Sw_hnm58">Tutoriel des bases de Three js</a></p>
+
+<p>Shadow et light :</p>
+
+<ul>
+  <li><a href="https://stackoverflow.com/questions/48355479/three-js-directionallight-and-shadow-cut-off">Gérer la caméra responsable des ombres</a></li>
+  <li><a href="https://stackoverflow.com/questions/41212156/create-very-soft-shadows-in-three-js">Faire des ombres plus sympas</a></li>
+</ul>
+
+<p>Textures :</p>
+
+<ul>
+  <li><a href="https://3dtextures.me/">Site de textures 3D open source</a></li>
+  <li><a href="https://www.youtube.com/watch?v=thVl4UOQSEM">Tuto texture</a></li>
+</ul>
 
   </div>
 
