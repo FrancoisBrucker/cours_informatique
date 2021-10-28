@@ -139,4 +139,4 @@ Si l'origin et votre dossier local n'est pas synchronisé, il faut faire un reba
 ## pour aller plus loin
 
 Pour participer à un repo github/gitlab il y a quelques uses et coutûmes à respecter afin de permettre au mieux la relecture, l'ajout de fonctionnalités et la compréhension de chacun.
-On en parle ici -> [github_bonnes_pratiques]({% link cours/git_et_github/github_bonnes_pratiques.md %})
+On en parle ici -> [github_bonnes_pratiques]({% link cours/git_et_github/github_gitlab_bonnes_pratiques.md %})
