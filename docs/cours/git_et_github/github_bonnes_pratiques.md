@@ -18,15 +18,13 @@ Deux repos qui, selon moi, sont très bien réalisé et celui du projet open-sou
 
 ---
 
-## Workflow
+## WORKFLOW
 
 Le **"workflow"**, ou flux de travail en fançais (à bas les anglicismes) sont les petites règles à adopter pour avancer dans son travail dans de bonnes conditions en minimisant les potentiels pertes de temps créées par une mauvaise gestion.
 
 Pour travailler en équipe, à l'aide de GitHub, il est bon de garder un schéma de travail harmonieux afin de faciliter la relecture des autres qui passeront derrière nous.
 
 Je vous présente des méthodes de travaille que l'on peut retrouver afin de gagner du temps, avoir une meilleur lisibilité ainsi que une meilleure intégration continue.
-
----
 
 ### Le No-flow
 
@@ -42,8 +40,6 @@ Travailler de cette mmanière est très peu pratique pour :
 - éviter des conflits de merge (que l'on veut au plus souvent éviter)
 
 Ce tutoriel est ici en grande partie pour vous montrer d'autres modes de travail afin de parfaire l'expérience et l'efficacité du travail à plusieurs sur un projet.
-
----
 
 ### Le Git Flow
 
@@ -104,7 +100,11 @@ de fluidité pour la relecture.
 \<BLANK LINE>
 \<footer>
 
+Le body et le footer sont utiliser uniquement si vous avez besoin d'ajouter beaucoup de description à votre commit
+
+Pour le type, il est d'usage de garder les plus connus à savoir :
 **feature**: Ajout d’une nouvelle fonctionnalité
+**test**: Ajout de tests
 **bugfix**: Correction d’un bug
 **hotfix**: Correction d’un bug critique
 **chore**: Nettoyage du code
@@ -115,20 +115,29 @@ de fluidité pour la relecture.
 Pour aller encore plus loin on peut voir apparaître désormais des émojis dans les commits pour améliorer la relecture.
 Ce site liste les émojis utilisables : https://gitmoji.dev/
 
-Il est conseillé de les mettre avant votre \<scope>
-exemple:
+Il est conseillé de le mettre soit avant votre scope soit directement le remplacer avec.
 
-- :bug:\<bug>
-- :hammer: \<refactor>
-- :rotating_light: \<tests>
+Exemple de commits:
 
-Un tableau ici vous aide à trouver l'émoji associer au commit que vous souhaitez : [gist_gitmoji](https://gist.github.com/parmentf/035de27d6ed1dce0b36a)
+- Sans scope:
+
+  - :bug: correction of bad codes
+  - :zap: accelerated program launch on windows
+
+- Avec scope:
+  - :hammer: refact: refactored sql db
+  - :rotating_light: fix: compiler problems
+
+<i>(Personnellement je préfère garder le scope)</i>
+
+Un tableau ici vous aide à trouver l'émoji associer au commit que vous souhaitez.
+[gist_gitmoji](https://gist.github.com/parmentf/035de27d6ed1dce0b36a)
 
 Vous pouvez vous même rédiger votre tableau dans votre **CONTRIBUTING** ! (On en parle plus bas)
 
 ---
 
-## Pull request (PR)
+## PULL REQUEST (PR)
 
 Il est fortement conseillé de passer par une Pull Request à chaque fois que l'on souhaite ajouter une modification sur un projet. Il permet d'avoir une première relecture par un ou plusieurs relecteurs pouvant commenter votre code là où il ferait défaut.
 
@@ -144,6 +153,31 @@ Comme vous pouvez le voir sur cette capture, sur une pull_request vous avez la p
 - Lier des **issues** qui seront automatiquement fermées au moment du merge de la pull request dans la branch master du projet
 
 Cet outil permet ainsi d' "enpaqueter" des commits au sein d'un ajout d'une plus grande quantité de modifications dans le projet.
+
+---
+
+## ISSUES
+
+De la même manière que les Pull Requests, il est possible de créer des issues (ou problèmes) afin de mettre l'accent sur :
+
+- l'ajout d'une fonctionnalité
+- une disfonctionnalité
+
+Une bonne issue doit être bien rédiger afin d'aider la personne qui va s'en occuper :
+
+- Si ajout d'une fonctionnalité :
+  - Bien décrire la fonctionalité voulue
+  - Son fonctionnement
+  - Des visuels.
+- Si disfonctionnalité :
+  - Visuels,
+  - Comment l'erreur s'est produite ?
+  - Sur quelle machine ?
+  - Avec quelle version ?
+  - Si reproductible, expliquer comment la reproduire
+  - Indiquer des pistes si vous en avez
+
+Je vous redirige vers le contributing plus bas afin d'aider les gens à leur rédaction d'issues.
 
 ---
 
@@ -214,6 +248,7 @@ https://makeareadme.com
 https://github.com/godotengine/godot/
 https://semver.org/lang/fr/
 https://zepel.io/blog/5-git-workflows-to-improve-development/
+https://gitmoji.dev/
 
 ## IMAGES
 
