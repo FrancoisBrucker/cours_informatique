@@ -16,6 +16,9 @@ authors:
 Three.js est une librairie 3D qui permet de créer du contenu 3D sur un navigateur très facilement. L'interet de la librairie est que la plupart des navigateurs internet supportent three.js et qu'il est donc possible de diffuser son code sans avoir à recourir à des plugins pour le faire fonctionner.
 Three.js utilise presque systématiquement WebGL comme moteur de rendu (renderer en anglais) qui est un système de bas niveau qui ne permet de ne dessiner que des points, des lignes et des triangles. L'utilisatoion direct de WebGL pour générer du contenu 3D est long et demande une grande quantité de code car il va tout falloir créer "à la main", et c'est là qu'intervient three.js: la librairie sert d'intermédiaire entre l'utilisateur et WebGL afin de traduire facilement le travail de l'utilisateur pour WebGL. Three.js utilise notamment des scènes, lumière, materiaux, caméras, textures, filet (mesh), etc, commme outils pour accélerer le travail.
 
+Il est possible de faire plein de choses en Threejs comme des animations, jeux, navigations de page ... En voilà un exemple :
+
+![une planete]({{ "/assets/cours/web/threejs/planete.gif" | relative_url }}){:style="margin: auto;display: block;"}
 ### A quoi sert ce tuto?
 
 Le but de ce tuto est d'apprendre les bases de three.js afin de mener à bien un projet simple. Le projet que nous avons choisi pour travailler sur la librairie est de créer un petit environnement 3D dans lequel on pourra déplacer une caméra à l'aide de la souris et du clavier.
@@ -188,7 +191,7 @@ tous les matériaux disponibles.
 Notre renderer apparait bien, mais n'occupe pas toute la fenêtre. En plus, il ne 
 s'adapte pas à la taille de la fenêtre lorsqu'on la modifie.
 
-Rajoutons cette fonction dans le main.js (en dehors de la fonction init()) pour 
+Rajoutons cette fonction dans le main.js (en dehors de la fonction`init()`) pour 
 permettre au renderer d'adapter sa taille en temps réel :
 
 ```javascript
@@ -201,9 +204,9 @@ function onWindowResize() {
 ```
 
 On voit ici qu'on modifie à la fois le champ de la caméra et la taille du renderer. 
-On doit ensuite ajouter un listener à la fin de notre fonction init(), 
+On doit ensuite ajouter un listener à la fin de notre fonction `init()`, 
 qui vérifie si la taille de la fenêtre est 
-modifiée, et appelle la fonction onWindowResize() quand c'est le cas :
+modifiée, et appelle la fonction `onWindowResize()`quand c'est le cas :
 
 ```javascript
 window.addEventListener( 'resize', onWindowResize );  
@@ -234,7 +237,7 @@ Le premier argument est le code couleur en hexadécimal de la lumière et le deu
 Il suffit ensuite de choisir sa position et de l'ajouter à la scène :
 
 ```javascript
-light.position.set(0,2,2);
+light.position.set(20, 400,200);
 scene.add(light);
 ```
 On a alors un plan qui est éclairé par le dessus.
@@ -257,10 +260,9 @@ cube.castShadow= true;
 scene.add(cube);
 ```
 
-De même pour la lumière, il faut aussi lui autoriser (on ajuste sa position pour avoir un bon rendu au passage):
+De même pour la lumière, il faut aussi lui autoriser :
 
 ```javascript
-light.position.set(-2,-2,5);
 light.castShadow = true;
 ```
 
