@@ -17,6 +17,11 @@ Three.js est une librairie qui permet de créer du contenu 3D sur un navigateur 
 Three.js utilise presque systématiquement WebGL comme moteur de rendu (renderer en anglais) qui est un système de bas niveau qui ne permet de ne dessiner que des points, des lignes et des triangles. L'utilisation directe de WebGL pour générer du contenu 3D est longue et demande une grande quantité de code car il va tout falloir créer "à la main". C'est là qu'intervient three.js: la librairie sert d'intermédiaire entre l'utilisateur et WebGL afin de traduire facilement le travail de l'utilisateur pour WebGL. Three.js utilise notamment des scènes, lumière, matériaux, caméras, textures, filet (mesh), etc, commme outils pour accélérer le travail.
 
 ### À quoi sert ce tuto?
+Il est possible de faire plein de choses en Threejs comme des animations, jeux, navigations de page ... En voilà un exemple :
+
+![une planete]({{ "/assets/cours/web/threejs/planete.gif" | relative_url }}){:style="margin: auto;display: block;"}
+
+Vous pouvez trouver une liste beaucoup plus détaillée sur le [site officiel](https://threejs.org/examples/).
 
 Le but de ce tuto est d'apprendre les bases de three.js afin de mener à bien un projet simple. Le projet que nous avons choisi pour travailler sur la librairie est de créer un petit environnement 3D dans lequel on pourra déplacer une caméra à l'aide de la souris et du clavier.
 
@@ -187,7 +192,7 @@ tous les matériaux disponibles.
 Notre renderer apparait bien, mais n'occupe pas toute la fenêtre. En plus, il ne 
 s'adapte pas à la taille de la fenêtre lorsqu'on la modifie.
 
-Rajoutons cette fonction dans le main.js (en dehors de la fonction init()) pour 
+Rajoutons cette fonction dans le main.js (en dehors de la fonction`init()`) pour 
 permettre au renderer d'adapter sa taille en temps réel :
 
 ```javascript
@@ -200,9 +205,9 @@ function onWindowResize() {
 ```
 
 On voit ici qu'on modifie à la fois le champ de la caméra et la taille du renderer. 
-On doit ensuite ajouter un listener à la fin de notre fonction init(), 
+On doit ensuite ajouter un listener à la fin de notre fonction `init()`, 
 qui vérifie si la taille de la fenêtre est 
-modifiée, et appelle la fonction onWindowResize() quand c'est le cas :
+modifiée, et appelle la fonction `onWindowResize()`quand c'est le cas :
 
 ```javascript
 window.addEventListener( 'resize', onWindowResize );  
@@ -233,7 +238,7 @@ Le premier argument est le code couleur en hexadécimal de la lumière et le deu
 Il suffit ensuite de choisir sa position et de l'ajouter à la scène :
 
 ```javascript
-light.position.set(0,2,2);
+light.position.set(20, 400, 200);
 scene.add(light);
 ```
 On a alors un plan qui est éclairé par le dessus.
@@ -244,10 +249,10 @@ Un autre aspect pour augmenter la beauté de notre projet sont les ombres ! On p
 On ajoute en premier un cube pour pouvoir voir les ombres :
 
 ```javascript
-const cube_geometry = new THREE.BoxGeometry(1,1)
+const cube_geometry = new THREE.BoxGeometry(10,10)
 const cube_material = new THREE.MeshStandardMaterial(0xffffff);
 const cube = new THREE.Mesh( cube_geometry, cube_material);
-cube.position.set(0,0,1);
+cube.position.set(0,10,0);
 
 ```
 Il faut maintenant lui autoriser à diffuser des ombres :
@@ -256,10 +261,9 @@ cube.castShadow= true;
 scene.add(cube);
 ```
 
-De même pour la lumière, il faut aussi lui autoriser (on ajuste sa position pour avoir un bon rendu au passage):
+De même pour la lumière, il faut aussi lui autoriser :
 
 ```javascript
-light.position.set(-2,-2,5);
 light.castShadow = true;
 ```
 
@@ -602,12 +606,12 @@ Ensuite on va créer dans notre fonction init() plein de cubes, qu'on va placer
 aléatoirement dans une zone donnée :
 
 ```javascript
-for ( let i = 0; i < 20; i ++ ) {
+for ( let i = 0; i < 100; i ++ ) {
 
         const cube = new THREE.Mesh( cube_geometry, cube_material );
-        cube.position.x = Math.floor( Math.random() * 10 - 5 ) * 5;
-        cube.position.y = Math.floor( Math.random() * 4 ) * 5 + 2.5;
-        cube.position.z = Math.floor( Math.random() * 10 - 5 ) * 5;
+        cube.position.x = Math.floor( Math.random() * 20 - 5 ) * 10;
+        cube.position.y = Math.floor( Math.random() * 20 ) * 5 + 5;
+        cube.position.z = Math.floor( Math.random() * 20 - 5 ) * 10;
         cube.castShadow = true;
         cube.receiveShadow = true;
 
