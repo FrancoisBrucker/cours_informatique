@@ -385,8 +385,9 @@ On a vu qu'il est possible de changer l'emplacement et vers où la caméra regar
 
 On va donc essayer de mettre en place une méthode de déplacement de la caméra qui soit controlée par l'utilisateur au niveau de l'affichage dans le navigateur web. Et traditionnellement, pour permettre à un utilisateur d'interagir avec un programme, qu'est ce qu'on utilise ? Un clavier et/ou une souris !
 
+Pour cette partie, on va s'inspirer de cet exemple de la librairie Three.js : https://threejs.org/examples/misc_controls_pointerlock.html
 ### Déplacement avec ZQSD
-
+    
 Il existe plusieurs controleurs de caméra déjà intégrés
 dans Three.js et ici on va utiliser le premier : le `PointerLockControls`. Tout 
 d'abord il faut l'importer :
@@ -659,3 +660,19 @@ Et si on est sur un object, c'est qu'on etait en saut don on ne pouvait plus sau
 
 Pour décortiquer un peu plus ou juste si vous êtes perdu, voici le répo git du projet final : https://github.com/LeoLaurent/three-js-project
 
+# Références
+
+Documentation Three js : https://threejs.org/docs/index.html
+
+Tutoriel des bases de three js :  https://www.youtube.com/watch?v=YK1Sw_hnm58
+
+
+
+Shadow et light : 
+
+* https://stackoverflow.com/questions/48355479/three-js-directionallight-and-shadow-cut-off
+* https://stackoverflow.com/questions/41212156/create-very-soft-shadows-in-three-js
+
+Site texture 3D : https://3dtextures.me/
+
+Tuto texture : https://www.youtube.com/watch?v=thVl4UOQSEM
