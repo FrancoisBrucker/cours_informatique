@@ -655,4 +655,7 @@ Et si on est sur un object, c'est qu'on etait en saut don on ne pouvait plus sau
             }
 ```
 
+## Conclusion
+
+Pour décortiquer un peu plus ou juste si vous êtes perdu, voici le répo git du projet final : https://github.com/LeoLaurent/three-js-project
 
