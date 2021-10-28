@@ -250,7 +250,7 @@ Un autre aspect pour augmenter la beauté de notre projet sont les ombres ! On p
 On ajoute en premier un cube pour pouvoir voir les ombres :
 
 ```javascript
-const cube_geometry = new THREE.BoxGeometry(1,1)
+const cube_geometry = new THREE.BoxGeometry(10,10)
 const cube_material = new THREE.MeshStandardMaterial(0xffffff);
 const cube = new THREE.Mesh( cube_geometry, cube_material);
 cube.position.set(0,0,1);
