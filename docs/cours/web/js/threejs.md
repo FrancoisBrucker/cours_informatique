@@ -661,7 +661,40 @@ Et si on est sur un objet, c'est qu'on était en saut donc on ne pouvait plus sa
     
             }
 ```
+## Mise en prod
 
+On va mettre notre projet three.js sur OVH, on peut parce que ce projet est uniquement en Javascript pur. 
+Un des soucis qu'on va rencontrer c'est l'utilisation de `vite`, c'est bien même très bien pour la partie développement mais ca 
+pose soucis au moment du déploiement.
+
+> On ne souhaite pas avoir d'`app vite` dans notre projet final
+
+On va alors créer un nouveau dossier qu'on va appeler `threeprod` dans lequel on va venir copier le dossier `img`  et les
+fichiers `main.js`, `index.html`, `style.css`, et les deux json de packages.
+
+Une fois le dossier créer et rempli, on aura un souci d'`import` si on copie directement dans l'OVH, on va alors changer les lignes d'import :
+
+```javascript
+Import * as THREE from '/threeprod/node_modules/three/build/three.module.js';
+import {PointerLockControls} from '/threeprod/vendor_mods/three/examples/jsm/controls/PointerLockControls.js'
+```
+
+Pourquoi ceci ? Vite.js permettait d'importer directement avec la commande `from 'three'` mais lors du déploiement, l'OVH ne
+trouve pas le module, il faut lui spécifier où est `three.module.js`.
+
+De même, dans le fichier `PointerLockControls.js`, l'import est le même : `from three`, la solution à ceci sans tout casser
+est de créer un nouveau dossier `vendor_mods` dans lequel on créera les dossiers de la sorte suivante
+`vendor_mods/three/examples/jsm/controls` pour coller à la structure de `node_modules`. On va y glisser une copie du fichier qu'on
+trouvera dans `node_modules/three/examples/jsm/controls/PointerLockControls.js`. Une fois copier, on va aussi modifier l'import
+de `three` en mettant 
+```javascript
+Import * as THREE from '/threeprod/node_modules/three/build/three.module.js';
+```
+
+Ensuite on peut `scp` dans `www` et faire un `npm install` pour que tout soit bon. Si jamais cela ne vous dit rien, vous pouvez suivre
+les tutos suivant :
+* [SCP]({% link cours/ssh_et_shell/ssh_scp.md %})
+* [SSH]({% link cours/ssh_et_shell/ssh.md %})
 ## Conclusion
 
 Pour décortiquer un peu plus ou juste si vous êtes perdu, voici le [repo git du projet final](https://github.com/LeoLaurent/three-js-project)
