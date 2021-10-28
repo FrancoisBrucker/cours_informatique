@@ -103,12 +103,13 @@ de fluidité pour la relecture.
 Le body et le footer sont utilisés uniquement si vous avez besoin d'ajouter beaucoup de description à votre commit
 
 Pour le type, il est d'usage de garder les plus connus à savoir :
-**feature**: Ajout d’une nouvelle fonctionnalité
-**test**: Ajout de tests
-**bugfix**: Correction d’un bug
-**hotfix**: Correction d’un bug critique
-**chore**: Nettoyage du code
-**experiment**: Expérimentation de fonctionnalités.
+
+- **feature**: Ajout d’une nouvelle fonctionnalité
+- **test**: Ajout de tests
+- **bugfix**: Correction d’un bug
+- **hotfix**: Correction d’un bug critique
+- **chore**: Nettoyage du code
+- **experiment**: Expérimentation de fonctionnalités.
 
 ### gitmoji
 
