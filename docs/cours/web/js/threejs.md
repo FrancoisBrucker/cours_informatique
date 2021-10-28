@@ -19,6 +19,8 @@ Three.js utilise presque systématiquement WebGL comme moteur de rendu (renderer
 Il est possible de faire plein de choses en Threejs comme des animations, jeux, navigations de page ... En voilà un exemple :
 
 ![une planete]({{ "/assets/cours/web/threejs/planete.gif" | relative_url }}){:style="margin: auto;display: block;"}
+
+Vous pouvez trouver une liste beaucoup plus détaillée sur le [site officiel](https://threejs.org/examples/).
 ### A quoi sert ce tuto?
 
 Le but de ce tuto est d'apprendre les bases de three.js afin de mener à bien un projet simple. Le projet que nous avons choisi pour travailler sur la librairie est de créer un petit environnement 3D dans lequel on pourra déplacer une caméra à l'aide de la souris et du clavier.
@@ -607,9 +609,9 @@ aléatoirement dans une zone donnée :
 for ( let i = 0; i < 20; i ++ ) {
 
         const cube = new THREE.Mesh( cube_geometry, cube_material );
-        cube.position.x = Math.floor( Math.random() * 10 - 5 ) * 5;
-        cube.position.y = Math.floor( Math.random() * 4 ) * 5 + 2.5;
-        cube.position.z = Math.floor( Math.random() * 10 - 5 ) * 5;
+        cube.position.x = Math.floor( Math.random() * 20 - 5 ) * 10;
+        cube.position.y = Math.floor( Math.random() * 20 ) * 5 + 5;
+        cube.position.z = Math.floor( Math.random() * 20 - 5 ) * 10;
         cube.castShadow = true;
         cube.receiveShadow = true;
 
