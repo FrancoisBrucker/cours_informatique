@@ -78,15 +78,13 @@
 
 <hr />
 
-<p>## Workflow</p>
+<h2 id="workflow">WORKFLOW</h2>
 
 <p>Le <strong>“workflow”</strong>, ou flux de travail en fançais (à bas les anglicismes) sont les petites règles à adopter pour avancer dans son travail dans de bonnes conditions en minimisant les potentiels pertes de temps créées par une mauvaise gestion.</p>
 
 <p>Pour travailler en équipe, à l’aide de GitHub, il est bon de garder un schéma de travail harmonieux afin de faciliter la relecture des autres qui passeront derrière nous.</p>
 
 <p>Je vous présente des méthodes de travaille que l’on peut retrouver afin de gagner du temps, avoir une meilleur lisibilité ainsi que une meilleure intégration continue.</p>
-
-<hr />
 
 <h3 id="le-no-flow">Le No-flow</h3>
 
@@ -104,8 +102,6 @@
 </ul>
 
 <p>Ce tutoriel est ici en grande partie pour vous montrer d’autres modes de travail afin de parfaire l’expérience et l’efficacité du travail à plusieurs sur un projet.</p>
-
-<hr />
 
 <h3 id="le-git-flow">Le Git Flow</h3>
 
@@ -167,7 +163,11 @@ de fluidité pour la relecture.</p>
 &lt;BLANK LINE&gt;
 &lt;footer&gt;</p>
 
-<p><strong>feature</strong>: Ajout d’une nouvelle fonctionnalité
+<p>Le body et le footer sont utiliser uniquement si vous avez besoin d’ajouter beaucoup de description à votre commit</p>
+
+<p>Pour le type, il est d’usage de garder les plus connus à savoir :
+<strong>feature</strong>: Ajout d’une nouvelle fonctionnalité
+<strong>test</strong>: Ajout de tests
 <strong>bugfix</strong>: Correction d’un bug
 <strong>hotfix</strong>: Correction d’un bug critique
 <strong>chore</strong>: Nettoyage du code
@@ -178,22 +178,38 @@ de fluidité pour la relecture.</p>
 <p>Pour aller encore plus loin on peut voir apparaître désormais des émojis dans les commits pour améliorer la relecture.
 Ce site liste les émojis utilisables : https://gitmoji.dev/</p>
 
-<p>Il est conseillé de les mettre avant votre &lt;scope&gt;
-exemple:</p>
+<p>Il est conseillé de le mettre soit avant votre scope soit directement le remplacer avec.</p>
+
+<p>Exemple de commits:</p>
 
 <ul>
-  <li>:bug:&lt;bug&gt;</li>
-  <li>:hammer: &lt;refactor&gt;</li>
-  <li>:rotating_light: &lt;tests&gt;</li>
+  <li>
+    <p>Sans scope:</p>
+
+    <ul>
+      <li>:bug: correction of bad codes</li>
+      <li>:zap: accelerated program launch on windows</li>
+    </ul>
+  </li>
+  <li>
+    <p>Avec scope:</p>
+    <ul>
+      <li>:hammer: refact: refactored sql db</li>
+      <li>:rotating_light: fix: compiler problems</li>
+    </ul>
+  </li>
 </ul>
 
-<p>Un tableau ici vous aide à trouver l’émoji associer au commit que vous souhaitez : <a href="https://gist.github.com/parmentf/035de27d6ed1dce0b36a">gist_gitmoji</a></p>
+<p><i>(Personnellement je préfère garder le scope)</i></p>
+
+<p>Un tableau ici vous aide à trouver l’émoji associer au commit que vous souhaitez.
+<a href="https://gist.github.com/parmentf/035de27d6ed1dce0b36a">gist_gitmoji</a></p>
 
 <p>Vous pouvez vous même rédiger votre tableau dans votre <strong>CONTRIBUTING</strong> ! (On en parle plus bas)</p>
 
 <hr />
 
-<h2 id="pull-request-pr">Pull request (PR)</h2>
+<h2 id="pull-request-pr">PULL REQUEST (PR)</h2>
 
 <p>Il est fortement conseillé de passer par une Pull Request à chaque fois que l’on souhaite ajouter une modification sur un projet. Il permet d’avoir une première relecture par un ou plusieurs relecteurs pouvant commenter votre code là où il ferait défaut.</p>
 
@@ -211,6 +227,41 @@ exemple:</p>
 </ul>
 
 <p>Cet outil permet ainsi d’ “enpaqueter” des commits au sein d’un ajout d’une plus grande quantité de modifications dans le projet.</p>
+
+<hr />
+
+<h2 id="issues">ISSUES</h2>
+
+<p>De la même manière que les Pull Requests, il est possible de créer des issues (ou problèmes) afin de mettre l’accent sur :</p>
+
+<ul>
+  <li>l’ajout d’une fonctionnalité</li>
+  <li>une disfonctionnalité</li>
+</ul>
+
+<p>Une bonne issue doit être bien rédiger afin d’aider la personne qui va s’en occuper :</p>
+
+<ul>
+  <li>Si ajout d’une fonctionnalité :
+    <ul>
+      <li>Bien décrire la fonctionalité voulue</li>
+      <li>Son fonctionnement</li>
+      <li>Des visuels.</li>
+    </ul>
+  </li>
+  <li>Si disfonctionnalité :
+    <ul>
+      <li>Visuels,</li>
+      <li>Comment l’erreur s’est produite ?</li>
+      <li>Sur quelle machine ?</li>
+      <li>Avec quelle version ?</li>
+      <li>Si reproductible, expliquer comment la reproduire</li>
+      <li>Indiquer des pistes si vous en avez</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Je vous redirige vers le contributing plus bas afin d’aider les gens à leur rédaction d’issues.</p>
 
 <hr />
 
@@ -288,7 +339,8 @@ https://github.com/atom/atom
 https://makeareadme.com
 https://github.com/godotengine/godot/
 https://semver.org/lang/fr/
-https://zepel.io/blog/5-git-workflows-to-improve-development/</p>
+https://zepel.io/blog/5-git-workflows-to-improve-development/
+https://gitmoji.dev/</p>
 
 <h2 id="images">IMAGES</h2>
 
