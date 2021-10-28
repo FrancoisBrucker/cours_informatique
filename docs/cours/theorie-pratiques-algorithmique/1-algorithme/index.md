@@ -13,7 +13,7 @@ category: cours
 
 Pseudo-code, calcul et code sont les trois faces d'une même pièce nommée algorithme. Nous allons voir les implications de ces trois termes, mais commençons par définir un algorithme.
 
-## algorithme ?
+## algorithme ? {#algorithme}
 
 Définition du 'Petit Robert'  d'un **algorithme** :
 

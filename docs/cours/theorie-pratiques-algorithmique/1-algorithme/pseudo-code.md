@@ -9,7 +9,7 @@ category: cours
 
 Le pseudo-code est la version papier d'un algorithme. Il décrit les différentes étapes permettant de dérouler un algorithme de son initialisation à son retour. Son but est d'être compréhensible par un humain. Ce n'est cependant pas une langue car il n'y a pas de place pour l'ambiguïté ni les inventions : tout doit y être rigoureusement défini, et chaque étape élémentaire doit être réalisable par un humain. Ce n'est pas un plus un langage informatique dont le but est d'être compris par un ordinateur.
 
-## éléments de pseudo-code
+## éléments de pseudo-code {#regles}
 
 Un pseudo-code est une succession de lignes qui seront exécutées **en séquence** les unes à la suite des autres. Chaque ligne est composée d'une instruction qu'il faut réaliser en entier avant de passer à la ligne suivante.
 
@@ -205,6 +205,8 @@ affiche à l'écran e
 ```
 
 On affichera bien 4 à l'écran et pas 6 (le nom de variable `e` défini dans recherche reste dans recherche).
+
+> Le fonctions nous donnent accès à la récursivité : Il suffit que notre pseudo-code s'appelle lui-même comme une fonction.
 
 ### instructions avancées
 
