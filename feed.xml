@@ -1,4 +1,669 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/cours_informatique/feed.xml" rel="self" type="application/atom+xml" /><link href="/cours_informatique/" rel="alternate" type="text/html" /><updated>2021-10-28T13:06:36+00:00</updated><id>/cours_informatique/feed.xml</id><title type="html">cours d’informatique</title><subtitle>Support de cours/td d'informatique à l'école centrale marseille.</subtitle><entry><title type="html">Tuto Websocket</title><link href="/cours_informatique/tutos/websocket/2021/10/18/tuto-websocket.html" rel="alternate" type="text/html" title="Tuto Websocket" /><published>2021-10-18T00:00:00+00:00</published><updated>2021-10-18T00:00:00+00:00</updated><id>/cours_informatique/tutos/websocket/2021/10/18/tuto-websocket</id><content type="html" xml:base="/cours_informatique/tutos/websocket/2021/10/18/tuto-websocket.html">&lt;p&gt;Ce tutoriel explique comment utiliser le websocket pour créer un chat.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/cours_informatique/feed.xml" rel="self" type="application/atom+xml" /><link href="/cours_informatique/" rel="alternate" type="text/html" /><updated>2021-10-28T13:27:33+00:00</updated><id>/cours_informatique/feed.xml</id><title type="html">cours d’informatique</title><subtitle>Support de cours/td d'informatique à l'école centrale marseille.</subtitle><entry><title type="html">Smartgrid</title><link href="/cours_informatique/tutos/projets/2021/10/28/smartgrid.html" rel="alternate" type="text/html" title="Smartgrid" /><published>2021-10-28T00:00:00+00:00</published><updated>2021-10-28T00:00:00+00:00</updated><id>/cours_informatique/tutos/projets/2021/10/28/smartgrid</id><content type="html" xml:base="/cours_informatique/tutos/projets/2021/10/28/smartgrid.html">&lt;h2 id=&quot;smartgrid&quot;&gt;Smartgrid&lt;/h2&gt;
+
+&lt;h3 id=&quot;présentation-du-jeu&quot;&gt;Présentation du jeu&lt;/h3&gt;
+
+&lt;p&gt;Ce projet s’inscrit dans le cadre de
+l’UE Serveur Web, et consiste au développement d’un jeu en utilisant les technologies du Web&lt;/p&gt;
+
+&lt;h3 id=&quot;règles&quot;&gt;Règles&lt;/h3&gt;
+&lt;p&gt;Le jeu consiste à placer des pions à tout de rôle sur la grille.
+Le premier joueur qui aligne quatre pions réalise une smartgrid et gagne la partie&lt;/p&gt;
+&lt;h3 id=&quot;espace-détats&quot;&gt;Espace d’états&lt;/h3&gt;
+
+&lt;p&gt;La grille de jeu est de dimension 6*7, donc 42 positions que les deux joueurs d’une partie se partagent. Chaque joueur possédant en tout 21 pions placera son pion sur au maximum 7 positions permises, jusqu’à l’obtention du premier état solution.
+Les positions permises pour le placement d’un pion sont limitées au nombre de colonnes de la grille ; le joueur ne pouvant placer pour chacune des colonnes que sur la première case vide, et ne pouvant placer dans une colonne si celle-ci est pleine.
+Chaque case de la grille sera représentée par trois états possibles: {‘vide’, ’occupée par joueur 1’, ’occupée par joueur 2’}.&lt;/p&gt;
+
+&lt;h2 id=&quot;détails-techniques&quot;&gt;Détails techniques&lt;/h2&gt;
+
+&lt;h3 id=&quot;avec-quoi-il-a-été-fait-&quot;&gt;Avec quoi il a été fait ?&lt;/h3&gt;
+
+&lt;p&gt;Le jeu a été réalisé avec la librairie React sur le front, et Node côté serveur.&lt;/p&gt;
+
+&lt;h3 id=&quot;architecture&quot;&gt;Architecture&lt;/h3&gt;
+
+&lt;h3 id=&quot;dépendances-principales-frontback&quot;&gt;Dépendances principales front/back&lt;/h3&gt;
+
+&lt;p&gt;Backend :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;express : framework très répandu pour la construction d’applications web.&lt;/li&gt;
+  &lt;li&gt;sequelize : ORM prenant en charge le dialecte PostgreSQL.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Frontend :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;React : librairie JavaScript pour la construction d’applications web monopages.&lt;/li&gt;
+  &lt;li&gt;React-router-dom: permet de gérer le routage sur une application react monopage&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;installer-le-projet-et-lancer-le-projet&quot;&gt;Installer le projet et lancer le projet&lt;/h3&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone https://github.com/ipkminu/Smartgrid.git
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;Smartgrid
+npm &lt;span class=&quot;nb&quot;&gt;install
+&lt;/span&gt;npm run build
+node index.js
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h2 id=&quot;react&quot;&gt;React&lt;/h2&gt;
+
+&lt;h3 id=&quot;routage&quot;&gt;routage&lt;/h3&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import React from &lt;span class=&quot;s2&quot;&gt;&quot;react&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+import Home from &lt;span class=&quot;s1&quot;&gt;'../views/Home'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+import Nbrejoueurs from &lt;span class=&quot;s1&quot;&gt;'../views/Nbrejoueurs'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+import Niveaujeu from &lt;span class=&quot;s2&quot;&gt;&quot;../views/Niveaujeu&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+import Grille from &lt;span class=&quot;s2&quot;&gt;&quot;../views/Grille&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+import Aide from &lt;span class=&quot;s1&quot;&gt;'../views/Aide'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+import Cgus from &lt;span class=&quot;s1&quot;&gt;'../views/Cgus'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+import Espace from &lt;span class=&quot;s1&quot;&gt;'../views/Espace'&lt;/span&gt;
+import &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; from &lt;span class=&quot;s2&quot;&gt;&quot;react-router-dom&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;default &lt;span class=&quot;k&quot;&gt;function &lt;/span&gt;Routes&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+        &amp;lt;Router&amp;gt;
+            &amp;lt;div&amp;gt;
+                &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;titre&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+                    &amp;lt;div&amp;gt;
+                        &amp;lt;Link &lt;span class=&quot;nv&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+                            SMARTGRID
+                        &amp;lt;/Link&amp;gt;
+                    &amp;lt;/div&amp;gt;
+                &amp;lt;/div&amp;gt;
+                &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;/&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; A &amp;lt;Switch&amp;gt; looks through its children &amp;lt;Route&amp;gt;s and
+            renders the first one that matches the current URL. &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;/&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+                &amp;lt;Switch&amp;gt;
+
+                    &amp;lt;Route &lt;span class=&quot;nv&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/jouer&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+                        &amp;lt;Nbrejoueurs /&amp;gt;
+                    &amp;lt;/Route&amp;gt;
+                    &amp;lt;Route &lt;span class=&quot;nv&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/nbr1&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+                        &amp;lt;Niveaujeu /&amp;gt;
+                    &amp;lt;/Route&amp;gt;
+                    &amp;lt;Route &lt;span class=&quot;nv&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/grille&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+                        &amp;lt;Grille /&amp;gt;
+                    &amp;lt;/Route&amp;gt;
+
+                    &amp;lt;Route &lt;span class=&quot;nv&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/aide&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+                        &amp;lt;Aide /&amp;gt;
+                    &amp;lt;/Route&amp;gt;
+                    &amp;lt;Route &lt;span class=&quot;nv&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/cgus&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+                        &amp;lt;Cgus /&amp;gt;
+                    &amp;lt;/Route&amp;gt;
+
+                    &amp;lt;Route &lt;span class=&quot;nv&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/espace&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+                        &amp;lt;Espace /&amp;gt;
+                    &amp;lt;/Route&amp;gt;
+
+                    &amp;lt;Route &lt;span class=&quot;nv&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+                        &amp;lt;Home /&amp;gt;
+                    &amp;lt;/Route&amp;gt;
+                &amp;lt;/Switch&amp;gt;
+            &amp;lt;/div&amp;gt;
+        &amp;lt;/Router&amp;gt;
+    &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+
+
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;ia&quot;&gt;IA&lt;/h3&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;default class IA &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    constructor&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;grille, couleur_machine&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        this.grille &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; grille&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        this.couleur &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; couleur_machine&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    cp_grille&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;grille&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        var tab &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; new Array&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;6&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;i &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; i &amp;lt; 6&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; i++&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            tab[i] &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; new Array&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;7&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;j &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; j &amp;lt; 7&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; j++&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                tab[i][j] &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; grille[i][j]&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return &lt;/span&gt;tab&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    create_fils&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;pere, joueur, colonne&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        var copie &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; this.cp_grille&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;pere&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;i &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; i &amp;lt; 6&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; i++&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;copie[i][colonne] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; 0&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                copie[i][colonne] &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; joueur&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;return &lt;/span&gt;copie&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return &lt;/span&gt;null&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    smart4&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;grille, joueur&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;grille &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; null&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return &lt;/span&gt;0&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        //Verticales
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;j &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; j &amp;lt; 7&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; j++&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;i &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; i &amp;lt; 3&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; i++&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;grille[i][j] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; joueur &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; grille[i + 1][j] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; joueur &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; grille[i + 2][j] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; joueur &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; grille[i + 3][j] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; joueur&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                    //console.log&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;grille&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+                    //console.log&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Verticales&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;return &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        //Horizontales
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;i &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; i &amp;lt; 6&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; i++&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;j &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; j &amp;lt; 4&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; j++&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;grille[i][j] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; joueur &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; grille[i][j + 1] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; joueur &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; grille[i][j + 2] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; joueur &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; grille[i][j + 3] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; joueur&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                    //console.log&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Horiontales&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;return &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        //Oblique /
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;i &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; i &amp;lt; 3&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; i++&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;j &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; j &amp;lt; 4&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; j++&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;grille[i][j] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; joueur &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; grille[i + 1][j + 1] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; joueur &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; grille[i + 2][j + 2] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; joueur &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; grille[i + 3][j + 3] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; joueur&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;return &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        //Oblique &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;i &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; i &amp;lt; 3&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; i++&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;j &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 3&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; j &amp;lt; 7&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; j++&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;grille[i][j] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; joueur &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; grille[i + 1][j - 1] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; joueur &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; grille[i + 2][j - 2] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; joueur &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; grille[i + 3][j - 3] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; joueur&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;return &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    smart3&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;grille, joueur&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+        //Verticales
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;j &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; j &amp;lt; 7&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; j++&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;i &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; i &amp;lt; 4&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; i++&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;grille[i][j] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; joueur &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; grille[i + 1][j] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; joueur &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; grille[i + 2][j] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; joueur&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                    //console.log&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;grille&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+                    //console.log&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Verticales&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;return &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        //Horizontales
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;i &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; i &amp;lt; 6&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; i++&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;j &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; j &amp;lt; 5&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; j++&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;grille[i][j] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; joueur &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; grille[i][j + 1] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; joueur &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; grille[i][j + 2] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; joueur&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                    //console.log&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Horiontales&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;return &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        //Oblique /
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;i &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; i &amp;lt; 4&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; i++&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;j &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; j &amp;lt; 5&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; j++&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;grille[i][j] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; joueur &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; grille[i + 1][j + 1] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; joueur &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; grille[i + 2][j + 2] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; joueur&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;return &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        //Oblique &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;i &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; i &amp;lt; 4&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; i++&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;j &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 2&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; j &amp;lt; 7&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; j++&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;grille[i][j] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; joueur &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; grille[i + 1][j - 1] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; joueur &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; grille[i + 2][j - 2] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; joueur&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;return &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    smart2&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;grille, joueur&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        //Verticales
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;j &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; j &amp;lt; 7&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; j++&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;i &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; i &amp;lt; 5&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; i++&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;grille[i][j] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; joueur &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; grille[i + 1][j] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; joueur&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                    //console.log&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;grille&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+                    //console.log&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Verticales&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;return &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        //Horizontales
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;i &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; i &amp;lt; 6&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; i++&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;j &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; j &amp;lt; 6&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; j++&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;grille[i][j] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; joueur &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; grille[i][j + 1] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; joueur&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                    //console.log&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Horiontales&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;return &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        //Oblique /
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;i &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; i &amp;lt; 5&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; i++&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;j &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; j &amp;lt; 6&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; j++&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;grille[i][j] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; joueur &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; grille[i + 1][j + 1] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; joueur&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;return &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        //Oblique &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;i &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; i &amp;lt; 5&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; i++&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;j &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 1&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; j &amp;lt; 7&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; j++&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;grille[i][j] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; joueur &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; grille[i + 1][j - 1] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; joueur&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;return &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    heuristique&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;grille, joueur, colonne&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; //Notation des colonnes 
+        var fils &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; this.create_fils&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;grille, joueur, colonne&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;fils &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; null&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return &lt;/span&gt;0&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        var note &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;this.smart4&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;fils, joueur&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; note +&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 100000&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;this.smart4&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;this.create_fils&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;grille, 3 - joueur, colonne&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;, 3 - joueur&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; note +&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 10000&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;this.smart3&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;this.create_fils&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;grille, 3 - joueur, colonne&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;, 3 - joueur&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; note +&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 1000&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;this.smart3&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;fils, joueur&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; note +&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 1000&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;this.smart2&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;fils, joueur&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; note +&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 100&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;this.smart2&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;this.create_fils&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;grille, 3 - joueur, colonne&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;, 3 - joueur&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; note +&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 10&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return &lt;/span&gt;note&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    choix&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;grille, joueur&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        var note &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0, col &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;j &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; j &amp;lt; 7&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; j++&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            var h &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; this.heuristique&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;grille, joueur, j&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;h &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; note&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                note &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; h&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                col &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; j&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return &lt;/span&gt;col&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;grille&quot;&gt;Grille&lt;/h2&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import Grilleinner from &lt;span class=&quot;s2&quot;&gt;&quot;../components/Grilleinner&quot;&lt;/span&gt;
+import ReactDOM from &lt;span class=&quot;s1&quot;&gt;'react-dom'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+import React from &lt;span class=&quot;s2&quot;&gt;&quot;react&quot;&lt;/span&gt;
+import &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; Link &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; from &lt;span class=&quot;s2&quot;&gt;&quot;react-router-dom&quot;&lt;/span&gt;
+
+class Grille extends React.Component &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    constructor&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;props&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        super&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;props&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        var courant &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; Math.floor&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Math.random&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; 2 + 1&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        this.state &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;({&lt;/span&gt;
+            grille: &lt;span class=&quot;o&quot;&gt;([&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;0, 0, 0, 0, 0, 0, 0,],
+                &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;0, 0, 0, 0, 0, 0, 0,],
+                &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;0, 0, 0, 0, 0, 0, 0,],
+                &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;0, 0, 0, 0, 0, 0, 0,],
+                &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;0, 0, 0, 0, 0, 0, 0,],
+                &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;0, 0, 0, 0, 0, 0, 0,],
+            &lt;span class=&quot;o&quot;&gt;])&lt;/span&gt;,
+            grille_hist: &lt;span class=&quot;o&quot;&gt;([&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;0, 0, 0, 0, 0, 0, 0,],
+                &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;0, 0, 0, 0, 0, 0, 0,],
+                &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;0, 0, 0, 0, 0, 0, 0,],
+                &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;0, 0, 0, 0, 0, 0, 0,],
+                &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;0, 0, 0, 0, 0, 0, 0,],
+                &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;0, 0, 0, 0, 0, 0, 0,],
+            &lt;span class=&quot;o&quot;&gt;])&lt;/span&gt;,
+            joueur: &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                pseudo: &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;,
+                couleur: 1
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;,
+            jeu: &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                identifiant: null,
+                niveau: 1,
+                Vainqueur: null,
+                courant: Math.floor&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Math.random&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; 2 + 1&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;,
+                messageFin: &lt;span class=&quot;s2&quot;&gt;&quot;fin&quot;&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+
+        &lt;span class=&quot;o&quot;&gt;})&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    Color&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;i&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;i &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; 0&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;white&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;else if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;i &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; 1&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;red&quot;&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;else if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;i &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; 2&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;yellow&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    render&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+            &amp;lt;div&amp;gt;
+
+                &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;sous-titre&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+                    &amp;lt;div&amp;gt;
+                        Jeu &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;/&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;Pion &lt;span class=&quot;nb&quot;&gt;du &lt;/span&gt;joueur et bouton de pause à ajouter &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;/&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+                    &amp;lt;/div&amp;gt;
+                &amp;lt;/div&amp;gt;
+                &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;controles row&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+                    &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;sous-titre col&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+                        &amp;lt;div data-toggle&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;modal&quot;&lt;/span&gt; data-target&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;#pauseModal&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+                            &amp;lt;svg &lt;span class=&quot;nv&quot;&gt;xmlns&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://www.w3.org/2000/svg&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;55&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;55&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;fill&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;white&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;bi bi-pause-fill&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;viewBox&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;0 0 16 16&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+                                &amp;lt;path &lt;span class=&quot;nv&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z&quot;&lt;/span&gt; /&amp;gt;
+                            &amp;lt;/svg&amp;gt;
+                            &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;/&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; Modal à ajouter pour la pause &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;/&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+                        &amp;lt;/div&amp;gt;
+                    &amp;lt;/div&amp;gt;
+                    &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;sous-titre col&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+                        &amp;lt;div&amp;gt;Vous êtes:&amp;lt;/div&amp;gt;
+                    &amp;lt;/div&amp;gt;
+                    &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;sous-titre col&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+                        &amp;lt;div&amp;gt;
+                            &amp;lt;svg &lt;span class=&quot;nv&quot;&gt;viewBox&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;0 0 100 100&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;xmlns&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://www.w3.org/2000/svg&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+                                &amp;lt;circle &lt;span class=&quot;nv&quot;&gt;fill&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;yellow&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;cx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;30&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;cy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;30&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;30&quot;&lt;/span&gt; /&amp;gt;
+                            &amp;lt;/svg&amp;gt;
+                        &amp;lt;/div&amp;gt;
+                    &amp;lt;/div&amp;gt;
+                &amp;lt;/div&amp;gt;
+
+                &amp;lt;Grilleinner &lt;span class=&quot;nv&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={&lt;/span&gt;this.state&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; /&amp;gt;
+
+            &amp;lt;/div &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;default Grille&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import React from &lt;span class=&quot;s2&quot;&gt;&quot;react&quot;&lt;/span&gt;
+import IA from &lt;span class=&quot;s2&quot;&gt;&quot;./IA&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;default class Grilleinner extends React.Component &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    constructor&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;props&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        super&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;props&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+        this.state &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            data: props.data,
+            messageFin: &lt;span class=&quot;s2&quot;&gt;&quot;Fin du jeu&quot;&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    messageFin &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;
+    color&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;i, j&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        var num &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; this.props.data.grille[i][j]
+        //console.log&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;num&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+        //var num &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 2&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;num &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; 0&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;white&quot;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;else if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;num &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; 1&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;yellow&quot;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;else if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;num &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; 2&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;red&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    update_color&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;joueur&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;j &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; j &amp;lt; 7&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; j++&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;i &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; i &amp;lt; 6&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; i++&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+                var el &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; document.getElementById&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;col&quot;&lt;/span&gt; + j&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;.querySelector&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;.l&quot;&lt;/span&gt; + i&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                var num &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; this.props.data.grille[i][j]
+                var couleur &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;num &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; 0&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; couleur &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;white&quot;&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;else if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;num &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; 1&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; couleur &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;yellow&quot;&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;else if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;num &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; 2&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; couleur &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;red&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                el.style.backgroundColor &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; couleur&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+        this.fin_jeu&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;joueur&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    placement_machine&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        //console.log&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Placement de la machine&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;this.props.data.jeu.courant &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; 3 - this.props.data.joueur.couleur&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            var libres &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;j &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; j &amp;lt; 7&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; j++&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;this.props.data.grille[5][j] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; 0&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                    libres.push&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;j&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+            //console.log&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;libres:&quot;&lt;/span&gt; + libres&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+            //var choix &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; libres[Math.floor&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Math.random&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; libres.length&lt;span class=&quot;o&quot;&gt;)]&lt;/span&gt; //Choix de la machine
+
+            var choix &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;new IA&lt;span class=&quot;o&quot;&gt;())&lt;/span&gt;.choix&lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;new IA&lt;span class=&quot;o&quot;&gt;())&lt;/span&gt;.cp_grille&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;this.props.data.grille&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;, 2&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+            console.log&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;choix machine:&quot;&lt;/span&gt; + choix&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;i &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; i &amp;lt; 6&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; i++&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;this.props.data.grille[i][choix] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; 0&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                    this.props.data.grille[i][choix] &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 3 - this.props.data.joueur.couleur
+                    this.update_color&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;3 - this.props.data.joueur.couleur&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                    this.props.data.jeu.courant &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 3 - this.props.data.jeu.courant&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                    //console.log&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;this.props.data.grille&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    handleClick&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;j&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        //console.log&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Click handled&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+        //console.log&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;courant: &quot;&lt;/span&gt; + this.props.data.jeu.courant&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;this.props.data.jeu.courant &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; this.props.data.joueur.couleur&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;i &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; i &amp;lt; 6&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; i++&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;this.props.data.grille[i][j] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; 0&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                    this.props.data.grille[i][j] &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; this.props.data.joueur.couleur
+                    this.update_color&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;this.props.data.joueur.couleur&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                    this.props.data.jeu.courant &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 3 - this.props.data.jeu.courant&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+                    //console.log&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;this.props.data.grille&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+                    this.placement_machine&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; this.placement_machine&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+
+
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    fin_jeu&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;joueur&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;this.smart&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;joueur&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+            //this.state.messageFin &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Jeu terminé. Le vainqueur est le joueur n°&quot;&lt;/span&gt; + joueur&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            this.setState&lt;span class=&quot;o&quot;&gt;({&lt;/span&gt;
+                messageFin: &lt;span class=&quot;s2&quot;&gt;&quot;Jeu terminé. Le vainqueur est le joueur n°&quot;&lt;/span&gt; + joueur
+            &lt;span class=&quot;o&quot;&gt;})&lt;/span&gt;
+            console.log&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;this.state.messageFin&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+            this.props.data.jeu.courant &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            this.props.data.jeu.messageFin &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Jeu terminé. Vainqueur; joueur n°&quot;&lt;/span&gt; + joueur
+            document.getElementById&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;finjeu&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;.click&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;i &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; i &amp;lt; 6&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; i++&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;j &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; j &amp;lt; 7&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; j++&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;this.props.data.grille[i][j] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; 0&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        this.props.data.jeu.courant &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        console.log&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Jeu terminé, grille pleine&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        this.props.data.jeu.messageFin &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Jeu terminé, grille pleine&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        document.getElementById&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;finjeu&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;.click&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    smart&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;joueur&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        const grille &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; this.props.data.grille&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        //Verticales
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;j &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; j &amp;lt; 7&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; j++&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;i &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; i &amp;lt; 3&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; i++&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;grille[i][j] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; joueur &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; grille[i + 1][j] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; joueur &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; grille[i + 2][j] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; joueur &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; grille[i + 3][j] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; joueur&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                    //console.log&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;grille&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+                    //console.log&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Verticales&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;return &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        //Horizontales
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;i &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; i &amp;lt; 6&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; i++&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;j &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; j &amp;lt; 4&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; j++&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;grille[i][j] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; joueur &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; grille[i][j + 1] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; joueur &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; grille[i][j + 2] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; joueur &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; grille[i][j + 3] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; joueur&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                    //console.log&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Horiontales&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;return &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        //Oblique /
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;i &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; i &amp;lt; 3&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; i++&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;j &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; j &amp;lt; 4&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; j++&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;grille[i][j] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; joueur &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; grille[i + 1][j + 1] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; joueur &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; grille[i + 2][j + 2] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; joueur &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; grille[i + 3][j + 3] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; joueur&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;return &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        //Oblique &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;i &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; i &amp;lt; 3&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; i++&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;j &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 3&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; j &amp;lt; 7&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; j++&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;grille[i][j] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; joueur &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; grille[i + 1][j - 1] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; joueur &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; grille[i + 2][j - 2] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; joueur &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; grille[i + 3][j - 3] &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; joueur&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;return &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;return &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+
+    render&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+            &amp;lt;div&amp;gt;
+                &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;grille&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+                    &amp;lt;div &lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;col0&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;onClick&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; this.handleClick&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;0&lt;span class=&quot;o&quot;&gt;)}&amp;gt;&lt;/span&gt;
+                        &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;l5 p &quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&amp;gt;&lt;/span&gt;&amp;lt;/div&amp;gt;
+                        &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;l4 p &quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&amp;gt;&lt;/span&gt;&amp;lt;/div&amp;gt;
+                        &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;l3 p &quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&amp;gt;&lt;/span&gt;&amp;lt;/div&amp;gt;
+                        &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;l2 p &quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&amp;gt;&lt;/span&gt;&amp;lt;/div&amp;gt;
+                        &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;l1 p &quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&amp;gt;&lt;/span&gt;&amp;lt;/div&amp;gt;
+                        &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;l0 p &quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&amp;gt;&lt;/span&gt;&amp;lt;/div&amp;gt;
+                    &amp;lt;/div&amp;gt;
+                    &amp;lt;div &lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;col1&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;onClick&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; this.handleClick&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1&lt;span class=&quot;o&quot;&gt;)}&amp;gt;&lt;/span&gt;
+                        &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;l5 p &quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&amp;gt;&lt;/span&gt;&amp;lt;/div&amp;gt;
+                        &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;l4 p &quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&amp;gt;&lt;/span&gt;&amp;lt;/div&amp;gt;
+                        &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;l3 p &quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&amp;gt;&lt;/span&gt;&amp;lt;/div&amp;gt;
+                        &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;l2 p &quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&amp;gt;&lt;/span&gt;&amp;lt;/div&amp;gt;
+                        &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;l1 p &quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&amp;gt;&lt;/span&gt;&amp;lt;/div&amp;gt;
+                        &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;l0 p &quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&amp;gt;&lt;/span&gt;&amp;lt;/div&amp;gt;
+                    &amp;lt;/div&amp;gt;
+                    &amp;lt;div &lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;col2&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;onClick&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; this.handleClick&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;2&lt;span class=&quot;o&quot;&gt;)}&amp;gt;&lt;/span&gt;
+                        &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;l5 p&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&amp;gt;&lt;/span&gt;&amp;lt;/div&amp;gt;
+                        &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;l4 p&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&amp;gt;&lt;/span&gt;&amp;lt;/div&amp;gt;
+                        &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;l3 p&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&amp;gt;&lt;/span&gt;&amp;lt;/div&amp;gt;
+                        &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;l2 p&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&amp;gt;&lt;/span&gt;&amp;lt;/div&amp;gt;
+                        &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;l1 p&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&amp;gt;&lt;/span&gt;&amp;lt;/div&amp;gt;
+                        &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;l0 p&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&amp;gt;&lt;/span&gt;&amp;lt;/div&amp;gt;
+                    &amp;lt;/div&amp;gt;
+                    &amp;lt;div &lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;col3&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;onClick&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; this.handleClick&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;3&lt;span class=&quot;o&quot;&gt;)}&amp;gt;&lt;/span&gt;
+                        &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;l5 p&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&amp;gt;&lt;/span&gt;&amp;lt;/div&amp;gt;
+                        &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;l4 p&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&amp;gt;&lt;/span&gt;&amp;lt;/div&amp;gt;
+                        &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;l3 p&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&amp;gt;&lt;/span&gt;&amp;lt;/div&amp;gt;
+                        &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;l2 p&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&amp;gt;&lt;/span&gt;&amp;lt;/div&amp;gt;
+                        &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;l1 p&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&amp;gt;&lt;/span&gt;&amp;lt;/div&amp;gt;
+                        &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;l0 p&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&amp;gt;&lt;/span&gt;&amp;lt;/div&amp;gt;
+                    &amp;lt;/div&amp;gt;
+                    &amp;lt;div &lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;col4&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;onClick&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; this.handleClick&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;4&lt;span class=&quot;o&quot;&gt;)}&amp;gt;&lt;/span&gt;
+                        &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;l5 p&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&amp;gt;&lt;/span&gt;&amp;lt;/div&amp;gt;
+                        &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;l4 p&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&amp;gt;&lt;/span&gt;&amp;lt;/div&amp;gt;
+                        &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;l3 p&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&amp;gt;&lt;/span&gt;&amp;lt;/div&amp;gt;
+                        &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;l2 p&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&amp;gt;&lt;/span&gt;&amp;lt;/div&amp;gt;
+                        &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;l1 p&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&amp;gt;&lt;/span&gt;&amp;lt;/div&amp;gt;
+                        &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;l0 p&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&amp;gt;&lt;/span&gt;&amp;lt;/div&amp;gt;
+                    &amp;lt;/div&amp;gt;
+                    &amp;lt;div &lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;col5&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;onClick&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; this.handleClick&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;5&lt;span class=&quot;o&quot;&gt;)}&amp;gt;&lt;/span&gt;
+                        &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;l5 p&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&amp;gt;&lt;/span&gt;&amp;lt;/div&amp;gt;
+                        &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;l4 p&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&amp;gt;&lt;/span&gt;&amp;lt;/div&amp;gt;
+                        &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;l3 p&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&amp;gt;&lt;/span&gt;&amp;lt;/div&amp;gt;
+                        &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;l2 p&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&amp;gt;&lt;/span&gt;&amp;lt;/div&amp;gt;
+                        &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;l1 p&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&amp;gt;&lt;/span&gt;&amp;lt;/div&amp;gt;
+                        &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;l0 p&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&amp;gt;&lt;/span&gt;&amp;lt;/div&amp;gt;
+                    &amp;lt;/div&amp;gt;
+                    &amp;lt;div &lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;col6&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;onClick&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; this.handleClick&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;6&lt;span class=&quot;o&quot;&gt;)}&amp;gt;&lt;/span&gt;
+                        &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;l5 p&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&amp;gt;&lt;/span&gt;&amp;lt;/div&amp;gt;
+                        &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;l4 p&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&amp;gt;&lt;/span&gt;&amp;lt;/div&amp;gt;
+                        &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;l3 p&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&amp;gt;&lt;/span&gt;&amp;lt;/div&amp;gt;
+                        &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;l2 p&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&amp;gt;&lt;/span&gt;&amp;lt;/div&amp;gt;
+                        &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;l1 p&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&amp;gt;&lt;/span&gt;&amp;lt;/div&amp;gt;
+                        &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;l0 p&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&amp;gt;&lt;/span&gt;&amp;lt;/div&amp;gt;
+                    &amp;lt;/div&amp;gt;
+                &amp;lt;/div&amp;gt;
+
+
+                &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;/&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; Pause Modal &lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;/&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+                &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;modal fade&quot;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;pauseModal&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;tabIndex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;-1&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;role&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;dialog&quot;&lt;/span&gt; aria-labelledby&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;exampleModalCenterTitle&quot;&lt;/span&gt; aria-hidden&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;true&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+                    &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;modal-dialog modal-dialog-centered&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;role&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+                        &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;modal-content&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+                            &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;modal-header&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+                                &amp;lt;h5 &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;modal-title&quot;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;pauseModalLongTitle&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; Pause&amp;lt;/h5&amp;gt;
+                                &amp;lt;button &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;button&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;close&quot;&lt;/span&gt; data-dismiss&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;modal&quot;&lt;/span&gt; aria-label&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Close&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+                                    &amp;lt;span aria-hidden&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;true&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&amp;amp;times&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&amp;lt;/span&amp;gt;
+                                &amp;lt;/button&amp;gt;
+                            &amp;lt;/div&amp;gt;
+                            &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;modal-body&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+                                Arrêt de jeu
+                                Vous pouvez continuer à tout moment.
+                            &amp;lt;/div&amp;gt;
+                            &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;modal-footer&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+
+                                &amp;lt;button &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;button&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;btn btn-secondary&quot;&lt;/span&gt; data-dismiss&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;modal&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;Quitter&amp;lt;/button&amp;gt;
+
+                                &amp;lt;button &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;button&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;btn btn-primary&quot;&lt;/span&gt; data-dismiss&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;modal&quot;&lt;/span&gt; aria-label&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Close&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;Continuer&amp;lt;/button&amp;gt;
+                            &amp;lt;/div&amp;gt;
+                        &amp;lt;/div&amp;gt;
+                    &amp;lt;/div&amp;gt;
+                &amp;lt;/div&amp;gt;
+
+                &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;/&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;Fin jeu Modal  &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;/&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+                &amp;lt;div &lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;finjeu&quot;&lt;/span&gt; data-toggle&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;modal&quot;&lt;/span&gt; data-target&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;#finjeuModal&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+
+                &amp;lt;/div&amp;gt;
+                &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;modal fade&quot;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;finjeuModal&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;tabIndex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;-1&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;role&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;dialog&quot;&lt;/span&gt; aria-labelledby&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;exampleModalLabel&quot;&lt;/span&gt; aria-hidden&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;true&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+                    &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;modal-dialog&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;role&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+                        &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;modal-content&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+                            &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;modal-header&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+                                &amp;lt;h5 &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;modal-title&quot;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;exampleModalLabel&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;The end!!!&amp;lt;/h5&amp;gt;
+                                &amp;lt;button &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;button&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;close&quot;&lt;/span&gt; data-dismiss&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;modal&quot;&lt;/span&gt; aria-label&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Close&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+                                    &amp;lt;span aria-hidden&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;true&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&amp;amp;times&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&amp;lt;/span&amp;gt;
+                                &amp;lt;/button&amp;gt;
+                            &amp;lt;/div&amp;gt;
+                            &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;modal-body&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+                                &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;this.state.messageFin&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+                            &amp;lt;/div&amp;gt;
+                            &amp;lt;div &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;modal-footer&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+                                &amp;lt;button &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;button&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;btn btn-secondary&quot;&lt;/span&gt; data-dismiss&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;modal&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;Quitter&amp;lt;/button&amp;gt;
+                                &amp;lt;button &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;button&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;btn btn-primary&quot;&lt;/span&gt; data-dismiss&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;modal&quot;&lt;/span&gt; aria-label&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Close&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;Nouvelle Partie&amp;lt;/button&amp;gt;
+                            &amp;lt;/div&amp;gt;
+                        &amp;lt;/div&amp;gt;
+                    &amp;lt;/div&amp;gt;
+                &amp;lt;/div&amp;gt;
+
+            &amp;lt;/div&amp;gt;
+
+
+        &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Patrick Ouedraogo</name></author><category term="projets" /><category term="React" /><category term="node" /><summary type="html">Smartgrid</summary></entry><entry><title type="html">Tuto Websocket</title><link href="/cours_informatique/tutos/websocket/2021/10/18/tuto-websocket.html" rel="alternate" type="text/html" title="Tuto Websocket" /><published>2021-10-18T00:00:00+00:00</published><updated>2021-10-18T00:00:00+00:00</updated><id>/cours_informatique/tutos/websocket/2021/10/18/tuto-websocket</id><content type="html" xml:base="/cours_informatique/tutos/websocket/2021/10/18/tuto-websocket.html">&lt;p&gt;Ce tutoriel explique comment utiliser le websocket pour créer un chat.&lt;/p&gt;
 
 &lt;h3 id=&quot;prérequis&quot;&gt;Prérequis&lt;/h3&gt;
 
@@ -1175,246 +1840,4 @@ Bnjour Monde !
   &lt;p&gt;On aurait pu aussi taper “auto save” dans la barre de recherche pour obtenir directement les champs possibles. Ce qui est très pratique lorsque l’on se doute du nom du paramètre que l’on veut changer.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;Le paramètre d’&lt;em&gt;Auto Save&lt;/em&gt; dans le panel &lt;em&gt;Espace de travail&lt;/em&gt; devrait toujours être sur &lt;em&gt;off&lt;/em&gt;. Si vous le modifiez, un dossier de préférence &lt;em&gt;“.vscode”&lt;/em&gt; va être créé dans votre projet.&lt;/p&gt;</content><author><name></name></author><category term="tutos" /><category term="editeur" /><category term="vsc" /><category term="installation" /><category term="configuration" /><summary type="html">Installation et premières configurations de visual studio code (vsc).</summary></entry><entry><title type="html">Nouvelle installation de son système</title><link href="/cours_informatique/tutos/systeme/installation/2021/09/01/installation-ordinateur.html" rel="alternate" type="text/html" title="Nouvelle installation de son système" /><published>2021-09-01T00:00:00+00:00</published><updated>2021-09-01T00:00:00+00:00</updated><id>/cours_informatique/tutos/systeme/installation/2021/09/01/installation-ordinateur</id><content type="html" xml:base="/cours_informatique/tutos/systeme/installation/2021/09/01/installation-ordinateur.html">&lt;p&gt;Comment bien préparer son ordinateur pour faire du développement. On ne montrera ici que le départ, c’est à dire l’installation fraiche d’un système sur lequel on pourra ensuite installer — proprement — les divers outils et logiciels utiles pour le développement.&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
-
-&lt;p&gt;Pouvoir développer des logiciels et exécuter ses propres programmes nécessite quelques connaissances et compétences.&lt;/p&gt;
-
-&lt;p&gt;Rien d’insurmontable, mais si on ne le fait pas on a vite un système instable où rien de marche comme il faudrait.&lt;/p&gt;
-
-&lt;p&gt;Il faut résister à la tentation de faire n’importe quoi en espérant que ça passe car, au bout du compte, on perd plus de temps à réparer qu’on en gagne à installer sans préparation.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Il est recommandé de partir d’un système propre est vierge. En effet, si quelque chose ne fonctionne pas c’est souvent parce qu’on a précédemment installé quelque chose d’incompatible en suivant sans comprendre un tuto de l’internet.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;A la fin de ce tuto vous devez avoir :&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;un système d’installation sain&lt;/li&gt;
-  &lt;li&gt;un gestionnaire de package&lt;/li&gt;
-  &lt;li&gt;un éditeur de texte&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;un-nouveau-compte&quot;&gt;Un nouveau compte&lt;/h2&gt;
-
-&lt;p&gt;Si vous ne vous pouvez pas réinstaller un nouveau système, pour que tout se passe au mieux assurez vous que votre compte :&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;soit un compte administrateur (pouvant exécuter sudo si vous êtes sous linux)&lt;/li&gt;
-  &lt;li&gt;votre login ne doit contenir aucun espace, ni accent.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote class=&quot;attention&quot;&gt;
-  &lt;p&gt;le login est différent de votre nom.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;compte admin :  sans accent ni espace&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;administrateur sous windows/mac&lt;/li&gt;
-  &lt;li&gt;pouvant exécuter sudo sous linux&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Il peut être utile d’avoir un compte uniquement pour travailler/développer et un autre pour jouer. Ceci évitera déjà les conflits de configuration.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;un-nouveau-système&quot;&gt;Un nouveau système&lt;/h2&gt;
-
-&lt;p&gt;Il est souvent possible de réinstaller un nouveau système en conservant vos données. C’est souvent très pratique mais pour une première fois, je vous conseille de faire une installation sur un disque vierge, c’est à dire en ne &lt;strong&gt;conservant rien&lt;/strong&gt; de ce qu’il y avait sur votre disque dur.&lt;/p&gt;
-
-&lt;p&gt;Installer un nouveau système nécessite de reformater votre disque dur. Avant cela il vous faut faire trois choses :&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;sauvegardez vos données sur une clé pour que vous puissiez facilement les remettre sur votre nouveau système&lt;/li&gt;
-  &lt;li&gt;vérifier les différentes applications actuellement installées et listez celles que vous voulez à nouveau installer.&lt;/li&gt;
-  &lt;li&gt;lister les différents compte et mots de passe dont vous aurez besoin (wifi, steam, google, …)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Avec le cloud (&lt;a href=&quot;https://support.apple.com/fr-fr/guide/icloud/welcome/icloud&quot;&gt;icloud&lt;/a&gt; sur mac ou &lt;a href=&quot;https://www.microsoft.com/fr-fr/microsoft-365/onedrive/online-cloud-storage&quot;&gt;onedrive&lt;/a&gt; sous windows) les données personnelles sont souvent déjà sauvegardées. Mais il faut se souvenir du login/mot de passe pour réactiver le tout sur le nouveau système.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;blockquote class=&quot;attention&quot;&gt;
-  &lt;p&gt;Notez votre wifi et son mot de passe, ou mieux connectez le réseau directement avec un fil si possible pour votre installation.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;linux&quot;&gt;Linux&lt;/h3&gt;
-
-&lt;details&gt;&lt;summary&gt;détails&lt;/summary&gt;&lt;div&gt;
-&lt;blockquote class=&quot;note&quot;&gt;
-  &lt;p&gt;TBD&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;/div&gt;&lt;/details&gt;
-
-&lt;h3 id=&quot;mac&quot;&gt;Mac&lt;/h3&gt;
-&lt;details&gt;&lt;summary&gt;détails&lt;/summary&gt;&lt;div&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;a href=&quot;https://support.apple.com/fr-fr/guide/mac-help/mchlp1599/mac&quot;&gt;https://support.apple.com/fr-fr/guide/mac-help/mchlp1599/mac&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Le plus simple est d’installer une nouvelle version du système en utilisant internet. Redémarrez votre ordinateur en maintenant enfoncé les touches :  &lt;em&gt;“Maj + Option + Commande + R enfoncées”&lt;/em&gt;&lt;/p&gt;
-
-&lt;blockquote class=&quot;attention&quot;&gt;
-  &lt;p&gt;Notez votre login et mot de passe icloud. Vous en aurez besoin à l’installation&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Une fois votre système installé, il faudra également installé &lt;a href=&quot;https://apps.apple.com/fr/app/xcode/id497799835?mt=12&quot;&gt;xcode&lt;/a&gt;. Prenez votre mal en patience, ça va prendre du temps…&lt;/p&gt;
-
-&lt;h4 id=&quot;finder&quot;&gt;finder&lt;/h4&gt;
-
-&lt;p&gt;Le finder est l’outil principal qui vous permettra de naviguer dans les fichiers. Pour qu’il soit un peut plus facile d’y naviguer :&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;em&gt;menu présentation &amp;gt; personnaliser la barre d’outils…&lt;/em&gt; ajoutez le “chemin” (trois barres horizontales) aux outils du finder en le glissant/déposant.&lt;/li&gt;
-  &lt;li&gt;ajoutez le dossier “&lt;em&gt;Départ&lt;/em&gt;”, aussi appelé “&lt;em&gt;maison&lt;/em&gt;” (le dossier principal de l’utilisateur) et le dossier “&lt;em&gt;applications&lt;/em&gt;” aux éléments à la gauche du finder. Pour cela, choisissez le dossier dans le menu &lt;em&gt;Aller&lt;/em&gt; puis  avec l’outils chemin que l’on vient d’ajouter sélectionnez le dossier parent(Par exemple pour la maison, le dossier parent est “Utilisateurs” et pour application, le dossier parent est “Macintosh HD”). Vous pouvez ensuite glisser/déposer le dossier à gauche du finder.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;terminal&quot;&gt;terminal&lt;/h4&gt;
-
-&lt;p&gt;Le terminal va être un outil fondamental en développement. Ajoutez le aux icônes du finder. Il est dans le dossier Utilitaires de application.&lt;/p&gt;
-
-&lt;h4 id=&quot;drivers&quot;&gt;drivers&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;imprimante&lt;/li&gt;
-  &lt;li&gt;autres trucs bas niveau (icloud drive, tablette, …)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;/div&gt;&lt;/details&gt;
-
-&lt;h3 id=&quot;windows&quot;&gt;Windows&lt;/h3&gt;
-
-&lt;details&gt;&lt;summary&gt;détails&lt;/summary&gt;&lt;div&gt;
-&lt;blockquote class=&quot;attention&quot;&gt;
-  &lt;p&gt;Notez le numéro de série de votre windows 10. Vous en aurez besoin à l’installation&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;On va suivre la procédure de &lt;a href=&quot;https://support.microsoft.com/fr-fr/windows/r%C3%A9installer-windows-d8369486-3e33-7d9c-dccc-859e2b022fc7#ID0EBD=Windows_10&quot;&gt;mirosoft&lt;/a&gt; en suivant les instructions de &lt;em&gt;Installer une nouvelle installation Windows 10 à l’aide d’un support d’installation&lt;/em&gt;.&lt;/p&gt;
-
-&lt;h4 id=&quot;confidentialité&quot;&gt;confidentialité&lt;/h4&gt;
-
-&lt;p&gt;Une fois l’installation terminée, allez dans &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Démarrer &amp;gt; Paramètres &amp;gt; Confidentialité&lt;/code&gt; et vérifier pour chaque onglet à gauche que les paramètres d’envoi de vos données vous satisfont.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Pour les paramètres de sécurité, vous pouvez toujours aller voir la &lt;a href=&quot;https://www.cnil.fr/fr/reglez-les-parametres-vie-privee-de-windows-10-apres-installation&quot;&gt;cnil&lt;/a&gt; ou &lt;a href=&quot;http://www.win10.fr/reglages-confidentialite-windows10&quot;&gt;ce site&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h4 id=&quot;compte&quot;&gt;compte&lt;/h4&gt;
-
-&lt;p&gt;J’utilise un compte local et pas mon compte Microsoft pour me connecter. Assurez vous que le nom de votre compte ne contient aucun espace ou accent (on le voit avec l’explorateur de fichier &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;c:\Utilisateurs&lt;/code&gt;) et que c’est un compte administrateur.&lt;/p&gt;
-
-&lt;h4 id=&quot;windows-update&quot;&gt;Windows update&lt;/h4&gt;
-
-&lt;p&gt;Vérifier que votre système est à jour en cliquant sur &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Démarrer &amp;gt; Paramètres &amp;gt; mise à jour et sécurité &amp;gt; Windows update&lt;/code&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;version-du-système&quot;&gt;Version du système&lt;/h4&gt;
-
-&lt;p&gt;Pour connaître votre version : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Menu Démarrer &amp;gt; Paramètres &amp;gt; Système &amp;gt; information système&lt;/code&gt; Dans la partie Spécification de Windows.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Pour installer la wsl 2, il faut nécessairement avoir une version de w10 supérieure ou égale à la 2004.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h4 id=&quot;explorer&quot;&gt;explorer&lt;/h4&gt;
-
-&lt;p&gt;Affichez les fichier caché dans l’explorateur de fichiers. Cela va être utile à de nombreuses reprises. Pour cela, ouvrez un explorateur de fichier puis choisissez affichage et cochez la case &lt;em&gt;Éléments masqués&lt;/em&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;drivers&quot;&gt;drivers&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;carte graphique&lt;/li&gt;
-  &lt;li&gt;clavier/souris si nécessaire&lt;/li&gt;
-  &lt;li&gt;imprimante&lt;/li&gt;
-  &lt;li&gt;autres trucs bas niveau (icloud drive, tablette, …)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;/div&gt;&lt;/details&gt;
-
-&lt;h2 id=&quot;applications-indispensables&quot;&gt;Applications indispensables&lt;/h2&gt;
-
-&lt;h3 id=&quot;un-navigateur&quot;&gt;Un navigateur&lt;/h3&gt;
-
-&lt;p&gt;Prenez celui de votre choix, personnellement j’utilise &lt;a href=&quot;https://www.google.com/intl/fr_fr/chrome/&quot;&gt;chrome&lt;/a&gt; que je mets en navigateur par défaut.&lt;/p&gt;
-
-&lt;h3 id=&quot;un-éditeur-de-texte&quot;&gt;Un éditeur de texte&lt;/h3&gt;
-
-&lt;p&gt;On en installera d’autres par la suite, mais il est toujours appréciable d’avoir un éditeur de texte sous la main pour modifier rapidement un fichier de conf.&lt;/p&gt;
-
-&lt;p&gt;Selon le système d’exploitation, mon éditeur à tout faire est différent :&lt;/p&gt;
-
-&lt;details&gt;&lt;summary&gt;Linux&lt;/summary&gt;&lt;div&gt;
-&lt;p&gt;Comme j’utilise linux essentiellement en ligne de commande, mon éditeur de choix est &lt;a href=&quot;https://www.vim.org/&quot;&gt;vim&lt;/a&gt;. Bon, il peut faire un peu peur mais si vous voulez faire de l’informatique votre métier et que vous devrez vous connecter sur des ordinateurs uni distant (un serveur web par exemple) connaitre vim est un gain de temps considérable.&lt;/p&gt;
-
-&lt;p&gt;Sinon, pourquoi pas &lt;a href=&quot;https://atom.io/&quot;&gt;Atom&lt;/a&gt; ?&lt;/p&gt;
-
-&lt;/div&gt;&lt;/details&gt;
-&lt;details&gt;&lt;summary&gt;Mac&lt;/summary&gt;&lt;div&gt;
-&lt;p&gt;J’utilise &lt;a href=&quot;https://macromates.com/&quot;&gt;Textmate&lt;/a&gt;.&lt;/p&gt;
-
-&lt;/div&gt;&lt;/details&gt;
-&lt;details&gt;&lt;summary&gt;Windows&lt;/summary&gt;&lt;div&gt;
-&lt;p&gt;J’utilise &lt;a href=&quot;https://notepad-plus-plus.org/downloads/&quot;&gt;notepad++&lt;/a&gt;.&lt;/p&gt;
-
-&lt;/div&gt;&lt;/details&gt;
-
-&lt;h3 id=&quot;un-gestionnaire-de-package&quot;&gt;Un gestionnaire de package&lt;/h3&gt;
-
-&lt;p&gt;N’installez &lt;strong&gt;RIEN&lt;/strong&gt; sans avoir un installeur de package qui vous permettra de savoir ce que vous avez installé et de mettre à jour le tout.&lt;/p&gt;
-
-&lt;details&gt;&lt;summary&gt;Linux&lt;/summary&gt;&lt;div&gt;
-&lt;p&gt;Déjà installé par défaut. Cela dépend de votre distribution linux, mais c’est souvent 
-&lt;a href=&quot;https://doc.ubuntu-fr.org/apt-get&quot;&gt;Apt-get&lt;/a&gt;. Donc rien à faire.&lt;/p&gt;
-
-&lt;/div&gt;&lt;/details&gt;
-
-&lt;details&gt;&lt;summary&gt;Mac&lt;/summary&gt;&lt;div&gt;
-&lt;p&gt;Pasz vraiment de choix, on installe &lt;a href=&quot;https://brew.sh/&quot;&gt;brew&lt;/a&gt; et plus vite que ça !&lt;/p&gt;
-
-&lt;/div&gt;&lt;/details&gt;
-
-&lt;details&gt;&lt;summary&gt;Windows&lt;/summary&gt;&lt;div&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;Je n’utilise pas de gesionnaire de package sous windows.  Je laisse windows gérer le tout dans le menu application des paramètres.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Si vous voulez en installer un, il en existe plusieurs mais je ne sais pas trop le quel est le mieux. Trois alternatives a priori :&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://docs.microsoft.com/fr-fr/windows/package-manager/winget/&quot;&gt;winget&lt;/a&gt;.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://chocolatey.org/&quot;&gt;chocolately&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://scoop.sh/&quot;&gt;scoop.sh&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://nodachisoft.com/common/en/article/en000009/&quot;&gt;https://nodachisoft.com/common/en/article/en000009/&lt;/a&gt;&lt;/p&gt;
-
-&lt;/div&gt;&lt;/details&gt;
-
-&lt;h3 id=&quot;outils-de-compression&quot;&gt;outils de compression&lt;/h3&gt;
-
-&lt;details&gt;&lt;summary&gt;Linux&lt;/summary&gt;&lt;div&gt;
-&lt;p&gt;Surement déjà installé.&lt;/p&gt;
-
-&lt;/div&gt;&lt;/details&gt;
-
-&lt;details&gt;&lt;summary&gt;Windows&lt;/summary&gt;&lt;div&gt;
-&lt;p&gt;Surement déjà installé.&lt;/p&gt;
-
-&lt;/div&gt;&lt;/details&gt;
-
-&lt;details&gt;&lt;summary&gt;Windows&lt;/summary&gt;&lt;div&gt;
-&lt;p&gt;Il y en a plusieurs. &lt;a href=&quot;https://www.7-zip.org/&quot;&gt;7zip&lt;/a&gt; est simple d’utilisation et très complet.&lt;/p&gt;
-
-&lt;/div&gt;&lt;/details&gt;
-
-&lt;h3 id=&quot;utilitaires-de-tous-les-jours&quot;&gt;utilitaires de tous les jours&lt;/h3&gt;
-
-&lt;p&gt;Non indispensable mais que vous utilisez tous les jours&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;steam, gog, epic, battle.net, origin, uplay, etc&lt;/li&gt;
-  &lt;li&gt;vlc, office 360&lt;/li&gt;
-  &lt;li&gt;discord&lt;/li&gt;
-  &lt;li&gt;…&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>François Brucker</name></author><category term="installation" /><category term="système" /><category term="terminal" /><summary type="html">Comment bien préparer son ordinateur pour faire du développement. On ne montrera ici que le départ, c’est à dire l’installation fraiche d’un système sur lequel on pourra ensuite installer — proprement — les divers outils et logiciels utiles pour le développement.</summary></entry></feed>
+&lt;p&gt;Le paramètre d’&lt;em&gt;Auto Save&lt;/em&gt; dans le panel &lt;em&gt;Espace de travail&lt;/em&gt; devrait toujours être sur &lt;em&gt;off&lt;/em&gt;. Si vous le modifiez, un dossier de préférence &lt;em&gt;“.vscode”&lt;/em&gt; va être créé dans votre projet.&lt;/p&gt;</content><author><name></name></author><category term="tutos" /><category term="editeur" /><category term="vsc" /><category term="installation" /><category term="configuration" /><summary type="html">Installation et premières configurations de visual studio code (vsc).</summary></entry></feed>
