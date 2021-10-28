@@ -31,7 +31,7 @@ au préalable.
 Pour plus de confort, on vous conseille également d'utiliser un IDE pour 
 coder, par exemple [VSCode](https://code.visualstudio.com/download).
 
-### three.js et vite.js
+### Three.js et vite.js
 
 On crée un dossier `three-js-project/` qui sera la racine de notre projet.
 
@@ -348,7 +348,7 @@ function animate(){
 animate()
 ```
 
-###Pour un beau parquet
+### Pour un beau parquet
 
 Maintenant qu'on a fait la texture du cube, on peut aller plus loin en faisant la texture du sol. On va alors utiliser cette [texture](https://drive.google.com/drive/folders/1_muKfn_cQXV6VTWbxuJpywb0tMq51SD8).
 On refait le même travail :
