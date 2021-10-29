@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Algorithme : machine de Turing | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Algorithme : machine de Turing" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
+<link rel="canonical" href="/cours_informatique/cours/theorie-pratiques-algorithmique/1-algorithme/machine-turing.html" />
+<meta property="og:url" content="/cours_informatique/cours/theorie-pratiques-algorithmique/1-algorithme/machine-turing.html" />
+<meta property="og:site_name" content="cours d’informatique" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Algorithme : machine de Turing" />
+<script type="application/ld+json">
+{"description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","headline":"Algorithme : machine de Turing","url":"/cours_informatique/cours/theorie-pratiques-algorithmique/1-algorithme/machine-turing.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css">
+
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+</head>
+
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Algorithme : machine de Turing</h1></p></p>
+  </header>
+
+  <div class="post-content">
+    <blockquote class="chemin">
+  <p><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/">Théorie et pratiques algorithmique</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/1-algorithme/">algorithme</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/1-algorithme/machine-turing.html">machine de turing</a></p>
+</blockquote>
+
+<blockquote class="attention">
+  <p>TBD :
+blanc = #
+rpond à la question que’est-ce qu’un ordnateur</p>
+</blockquote>
+
+<p>Pour répondre à notre question initiale, <em>que peut-on calculer ?</em>, on peut alors étudier ce que peut calculer la machine de Turing.</p>
+
+<h2 id="machine-de-turing">machine de Turing</h2>
+
+<p>Il existe plusieurs définition équivalente d’une machine de turing. Nous allons utiliser <a href="https://fr.wikipedia.org/wiki/Machine_de_Turing#D%C3%A9finition_formelle">celle de wikipedia</a> :</p>
+
+<p>Une <strong>machine de Turing</strong> est un quintuplet $(Q, \Gamma, q_0, \delta, F)$ où :</p>
+
+<ul>
+  <li>$Q$ est un ensemble fini d’<strong>état</strong></li>
+  <li>$\Gamma$ est l’<strong>alphabet de travail</strong>. Il contient un symbole spécial $B$, dit <strong>blanc</strong>, avec $B \in \Gamma$</li>
+  <li>$q_0 \in Q$ est l’<strong>état initial</strong> de la machine</li>
+  <li>$\delta : Q \times \Gamma \rightarrow Q \times \Gamma \times \{ \leftarrow, \rightarrow \}$ est la <strong>fonction de transition</strong></li>
+  <li>$F \subset Q$ est l’ensemble des <strong>états finaux</strong>.</li>
+</ul>
+
+<blockquote>
+  <p>On appelle cette machine, machine de Turing déterministe car $\delta$ est une fonction.</p>
+</blockquote>
+
+<p>Pour fonctionner la machine nécessite un <strong>ruban</strong> constitué de cases contiguës pouvant chacune contenir un élément de $\Gamma$ et un <strong>curseur</strong> qui est positionné sur une case du ruban. Initialement toutes les cases du ruban contiennent le symbole <code class="language-plaintext highlighter-rouge">B</code>.</p>
+
+<p>L’exécution d’un programme est alors comme suit :</p>
+
+<ol>
+  <li>on place la tête de lecture sur une case du ruban</li>
+  <li>on initialise si besoin le ruban avec une chaine de caractères (finie) contenant des caractères de $\Gamma$ et on place le curseur sur la première case de la chaine.</li>
+  <li>si l’état de la machine est un élément de $F$, on stoppe le programme.</li>
+  <li>on lit le caractère $a$ sous le curseur, et l’état $q$ de la machine et on note $(a’, q’, f) = \delta(a, q)$</li>
+  <li>on écrit $q’$ dans la case du ruban pointé par le curseur, on place la machine dans l’état $q’$ et on déplace le curseur vers la gauche si $f$ vaut $\leftarrow$ et vers la droite sinon ($f$ vaut $\rightarrow$)</li>
+  <li>retour en 3.</li>
+</ol>
+
+<blockquote>
+  <p>L’article fondateur d’Allan Turing est <a href="http://www.espace-turing.fr/IMG/pdf/turing_oncomputablenumbers_1936.pdf">là</a></p>
+</blockquote>
+
+<h3 id="exemples-de-programmes">exemples de programmes</h3>
+
+<h4 id="répéteur">répéteur</h4>
+
+<p>Répète des suite de 0 et 1 :</p>
+
+<p>TBD : les lignes pour voir ce que ça fait</p>
+
+<p>C’est le premier exemple de <a href="https://turingmachine.io/">https://turingmachine.io/</a> (repeat 0 1)</p>
+
+<h4 id="doublement-des-bâtons">doublement des bâtons</h4>
+
+<p>Exemple classique des machines de Turing, le doublement des bâtons s’écrit comme ça :</p>
+
+<ul>
+  <li>$Q = \{ s, e, l, g, d\}$</li>
+  <li>$\Gamma = \{ 1, B\}$</li>
+  <li>$q_0 = s$</li>
+  <li>$F = \{ e \}$</li>
+  <li>$\delta(s, 1) = (B, l, \leftarrow)$</li>
+  <li>$\delta(l, B) = (1, g, \leftarrow)$</li>
+  <li>$\delta(g, 1) = (1, g, \leftarrow)$</li>
+  <li>$\delta(g, B) = (1, d, \rightarrow)$</li>
+  <li>$\delta(d, 1) = (1, d, \rightarrow)$</li>
+  <li>$\delta(d, B) = (B, s, \rightarrow)$</li>
+  <li>$\delta(s, B) = (B, e, \rightarrow)$</li>
+</ul>
+
+<p>On initialise cette machine avec une chaine de 1.</p>
+
+<p>Si vous ne voulez pas tester votre machine à la main, vous pouvez utiliser <a href="https://turingmachine.io/">https://turingmachine.io/</a>. Le code précédent a été traduit dans leur formalisme ci-dessous :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>input: '1111'
+blank: 'B'
+start state: start
+table:
+  start:
+    1: {write: 'B', L: lien}
+    'B': {R: done}
+  lien:
+    'B': {write: 1, L: gauche}
+  gauche:
+    1: {write: 1, L: gauche}
+    'B': {write: 1, R: droite}
+  droite:
+    1: {write: 1, R: droite}
+    'B': {write: 'B', R: start}
+  done:
+</code></pre></div></div>
+
+<p>Son fonctionnement est le suivant. On commence par remplacer le premier 1 par un blanc. Puis on se déplace de une case sur la gauche et on écrit 1, puis on se déplace encore une fois à gauche. Une fois là, on se déplace autant de fois que nécessaire sur la gauche jusqu’à arriver sur une case avec B (au début, on a pas besoin de bouger). Arrivé là on écrit 1, puis on se déplace autant de fois que nécessaire sur la droite jusqu’à arriver sur une case B. Arrivé là, on se déplace à droite et on replace la machine de Turing à son été initial pour recommencer si nécessaire.</p>
+
+<p>TBD : montrer sur des schémas.</p>
+
+<p>Félicitations ! Vous venez d’implémenter la fonction $f(n) = 2n$ dans une machine de Turing.</p>
+
+<h4 id="premier-programme-au-monde">premier programme (au monde)</h4>
+
+<p>L’exemple suivent est le <a href="https://machinedeturing.com/exemple.php?page=9">premier programme</a> donné par Allan Turing lorsqu’il décrivit sa machine.</p>
+
+<h4 id="autres-exemples">autres exemples</h4>
+
+<p>Le site <a href="https://machinedeturing.com/">https://machinedeturing.com/</a> contient de nombreux exemples de programmes de machine de Turing</p>
+
+<h3 id="modèles-équivalents">modèles équivalents</h3>
+
+<p>Il existent de nombreuses variations des machines de Turing qui sont toutes équivalentes. Par exemple on peut dissocier le fait de se déplacer et d’écrire des caractères (comme <a href="http://zanotti.univ-tln.fr/turing/">ici</a>), on peut même utiliser plusieurs rubans et/ou plusieurs curseurs, ça revient au même on ne calculera pas plus de choses. Ce sera juste plus simple à programmer.</p>
+
+<p>Enfin, <a href="https://fr.wikipedia.org/wiki/Machine_de_Turing_non_d%C3%A9terministe">la machine de Turing non déterministe</a>, même si elle a l’air très puissante, ne change rien à ce qu’on peut calculer. On peut juste le faire plus vite.</p>
+
+<h3 id="équivalence-pseudo-code-et-machine-de-turing">équivalence pseudo-code et machine de Turing</h3>
+
+<p>Ce qui est magnifique, c’est que le modèle très simple de la machine de Turing permet de calculer tout ce qu’on peut faire avec nos pseudo-code. On ne démontrera pas ce fait, on va juste montrer comment on peut montrer que nos pseudo-code et la machine travaillent sur les mêmes objets.</p>
+
+<p>entier, chaine de caractères c’est des entiers. Donc u pseudo code est une fonction de f(n1, …, nk) dans n.</p>
+
+<h3 id="fonctions-calculables">fonctions calculables</h3>
+
+<h3 id="nombres-calculables">nombres calculables</h3>
+
+<ul>
+  <li>que peut-on calculer ?</li>
+  <li>de pseudo code à calcul de f(N) -&gt; N</li>
+</ul>
+
+<h2 id="turing-complet">turing complet</h2>
+<p>si on peut faire une machine de turing dans notre programme on est turing complet.</p>
+
+<p>machine de turing universelle</p>
+
+<blockquote>
+  <p>TBD</p>
+  <ul>
+    <li>turing : pb de l’arrêt de la machine ?</li>
+  </ul>
+
+</blockquote>
+
+<p>pour l’instant tous les pseudo-code qu’on a écrit s’arrêtent tout le temps. Mais celui là ? syracuse. On ne sais pas.</p>
+
+<h2 id="arrêt-de-la-machine">arrêt de la machine</h2>
+
+<p>des actions sussessivent qui ment au résultat : ce n’est pas immédiat ! Et on ne sais pas si ça s’arrête.</p>
+
+<p>passer d’un pseudo code à la machine. entier/réels/chaine de caractères. Permet de voir théoriquement ce qu’on peut faire.</p>
+
+<h2 id="logique-démonstrations-mathématiques-et-calculabilité">logique, démonstrations mathématiques et calculabilité</h2>
+
+<p><a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Rice">https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Rice</a>
+<a href="https://en.wikipedia.org/wiki/List_of_undecidable_problems">https://en.wikipedia.org/wiki/List_of_undecidable_problems</a></p>
+
+<p>démonstation = pseudo-code</p>
+
+<h2 id="refs">refs</h2>
+
+<p><a href="https://plato.stanford.edu/entries/church-turing/">https://plato.stanford.edu/entries/church-turing/</a>
+<a href="http://pageperso.lif.univ-mrs.fr/~kevin.perrot/documents/2016/calculabilite/Cours_16.pdf">http://pageperso.lif.univ-mrs.fr/~kevin.perrot/documents/2016/calculabilite/Cours_16.pdf</a>
+<a href="https://www.cs.odu.edu/~zeil/cs390/latest/Public/turing-complete/index.html">https://www.cs.odu.edu/~zeil/cs390/latest/Public/turing-complete/index.html</a></p>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d&#39;informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d&#39;informatique</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

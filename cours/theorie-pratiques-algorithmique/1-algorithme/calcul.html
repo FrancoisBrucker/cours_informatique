@@ -67,7 +67,11 @@
 
 <p>Dans <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/1-algorithme/pseudo-code.html">la partie précédente</a>, on a donné une façon d’écrire des pseudo-codes. Mais est-ce la seule façon de faire ? Et, au final, que peut-on réellement faire avec un algorithme ?</p>
 
-<h2 id="calcul-">calcul ?</h2>
+<h2 id="algorithmes-et-fonctions">algorithmes et fonctions</h2>
+
+<p>On va montrer qu’un algorithme peut être vu comme une fonction particulière.</p>
+
+<h3 id="regles-generales">règles d’un algorithme</h3>
 
 <p>Un algorithme, <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/1-algorithme/#algorithme">on l’a vu</a>, est un ensemble de règles propre à un <strong>calcul</strong>. La <a href="https://dictionnaire.lerobert.com/definition/calcul">définition de calcul</a> du Petit Robert est cependant très générale et ne pose pas vraiment la question du choix des règles, de comment réaliser effectivement ce calcul. On s’accorde (voir <a href="https://fr.wikipedia.org/wiki/Th%C3%A8se_de_Church#Formulation_de_la_th%C3%A8se">la page wikipedia sur la calculabilité</a>) à garder <strong>4 règles générales</strong> :</p>
 
@@ -80,200 +84,203 @@
 
 <p>Tout ça est un peu plus précis. On constate que c’est le terme <strong>fini</strong> qui revient constamment : pour qu’un humain comprenne, et surtout puisse agir, il faut pas qu’il y ait un nombre infini de choses à regarder (chaque chose à faire prend un temps de réflexion non nulle, une instruction contenant un nombre infini n’est humainement pas réalisable).</p>
 
-<p>Cette remarque, évidente, a une conséquence fondamentale : on ne peut pas manipuler de réels en tant que tels ! On ne peut considérer un réel dans un algorithme que comme une abstraction (un symbole particulier) ou une approximation (on ne considère qu’un nombre fini de décimale).</p>
+<blockquote class="note">
+  <p>Cette remarque, évidente, a une conséquence fondamentale : <strong>un algorithme ne peut pas manipuler de nombres réels</strong>. On ne peut considérer un réel que comme une abstraction (un symbole particulier) ou une approximation (on ne considère qu’un nombre fini de décimale).</p>
+</blockquote>
+
+<p>Prenons $\pi$ par exemple. On peut le considérer de deux manières : comme le symbole $\pi$ et de là faire de opérations sur lui (comme $2 \cdot \pi$, ou $\frac{3\pi}{3}$, …) de façon formelle, c’est à dire sans jamais connaitre sa valeur ou comme une valeur approchée de lui (3.1415 par exemple) et ainsi rendre des valeurs approchées des différentes opérations. On ne pourra cependant <strong>jamais</strong> avoir la valeur exacte de $\pi$ avec un algorithme (et ce même s’il avait une mémoire infinie).</p>
+
+<p>Ce n’est pas bien grave en général puisque les lois physiques sont presque tout le temps stables (de petits effets impliquent de petites causes) : considérer les réels en <a href="https://fr.wikipedia.org/wiki/Notation_scientifique">notation scientifique</a> en se fixant un précision ne gène pas les calculs physiques.</p>
 
 <blockquote>
-  <p>Prenons $\pi$ par exemple. On peut le considérer de deux manières : comme le symbole $\pi$ et de là faire de opérations sur lui (comme $2 \cdot \pi$, ou $\frac{3\pi}{3}$, …) de façon formelle, c’est à dire sans jamais connaitre sa valeur ou comme une valeur approchée de lui (3.1415 par exemple) et ainsi rendre des valeurs approchées des différentes opérations. On ne pourra cependant <strong>jamais</strong> avoir la valeur exacte de $\pi$ avec un algorithme (et ce même s’il avait une mémoire infinie).</p>
+  <p>Faites tout de même attention car parfois, c’est problématique. Pour le calcul d’effets chaotiques comme la météo où <a href="https://fr.wikipedia.org/wiki/Effet_papillon">de petits effets produisent de grandes causes</a>, certes, mais aussi lorsque l’on prend l’inverse de choses très petites qui du coup deviennent très grandes. Ce sont des problèmes dit de <a href="https://fr.wikipedia.org/wiki/Stabilit%C3%A9_num%C3%A9rique">stabilité numérique</a>.</p>
 </blockquote>
 
-<p>Lorsque dans un algorithme on utilise des réels ce seront toujours des approximations (on utilise la norme <a href="https://fr.wikipedia.org/wiki/IEEE_754">IEEE 754</a> la plupart du temps). Ce n’es pas bien grave dans la plupart du temps puisque les lois physiques sont presque tout le temps stables (de petits effets impliquent de petites causes) mais, parfois, c’est problématique pour le calcul d’effets chaotiques comme la météo où <a href="https://fr.wikipedia.org/wiki/Effet_papillon">de petits effets produisent de grandes causes</a>.</p>
+<p class="attention">Fini ne veut pas dire petit nombres. Un algorithme peut utiliser des nombres entiers aussi grand qu’il le veut, du moment qu’ils ne soient pas infini</p>
 
-<blockquote class="attention">
-  <p>fini ne veut pas dire petit. Un algorithme peut utiliser des nombres entiers aussi grand qu’il le veut, du moment qu’ils ne soient pas infini</p>
+<blockquote class="note">
+  <p>Les règles que l’on a défini <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/1-algorithme/pseudo-code.html#regles">précédemment</a> pour écrire un pseudo-code respectent alors les règles ci-dessus si on enlève les réels comme objets basique. On peut même se restreindre <a href="https://en.wikipedia.org/wiki/Structured_program_theorem">sans perte de généralité</a> (même si ce sera plus compliqué d’écrire le code) aux règles suivantes (il n’y a même pas besoin de récursivité) :</p>
+
+  <ul>
+    <li>de lire et d’affecter des entiers à des variables</li>
+    <li>d’avoir un test d’égalité entre deux variables</li>
+    <li>d’exécuter une instruction puis un autre, séquentiellement</li>
+    <li>exécuter une instruction si un test d’égalité est vraie</li>
+    <li>exécuter un bloc d’instructions tant qu’un test d’égalité est vraie</li>
+  </ul>
 </blockquote>
-
-<p>Si c’est embêtant pour les réels, ce ne l’est pas pour les chaines de caractères qu’on a également utilisé dans la partie précédente pour définir un pseudo-code, car on peut facilement associer un entier à toute lettre. C’est le but du <a href="https://fr.wikipedia.org/wiki/Unicode">codage unicode</a> par exemple.</p>
-
-<p>Les règles que l’on a défini <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/1-algorithme/pseudo-code.html#regles">précédemment</a> pour écrire un pseudo-code respectent alors les règles ci-dessus si on enlève les réels comme objets basique. On peut même se restreindre <a href="https://en.wikipedia.org/wiki/Structured_program_theorem">sans perte de généralité</a> (même si ce sera plus compliqué d’écrire le code) aux règles suivantes (il n’y a même pas besoin de récursivité) :</p>
-
-<ul>
-  <li>de lire et d’affecter des entiers à des variables</li>
-  <li>d’avoir un test d’égalité entre deux variables</li>
-  <li>d’exécuter une instruction puis un autre, séquentiellement</li>
-  <li>exécuter une instruction si un test d’égalité est vraie</li>
-  <li>exécuter un bloc d’instructions tant qu’un test d’égalité est vraie</li>
-</ul>
 
 <p>Tous les pseudo-code utilisant les 5 règles ci-dessus auront la même expressivité (on pourra faire exactement les même choses) que ceux utilisant <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/1-algorithme/pseudo-code.html#regles">les règles</a> utilisées couramment.</p>
 
 <p>On pense même (c’est ce qu’on appelle la <a href="https://fr.wikipedia.org/wiki/Th%C3%A8se_de_Church">thèse de Church-Turing</a>) que quelque soit les règles qu’on va se donner, du moment qu’elles respectent les 4 règles générales, alors on ne pourra pas calculer plus de choses.</p>
 
-<h2 id="systèmes-de-règles-équivalents">systèmes de règles équivalents</h2>
+<h3 id="fonctions">fonctions</h3>
 
-<p>Les règles qu’on s’est donné pour écrire du pseudo-code vont être pratique pour décrire un algorithme pour un humain. Le fait qu’une fois posées, les règles ne nécessitent pas d’intelligence pour être exécutées, les rendent même accessible à des étudiants ! Mais elles sont encore un peut trop vagues pour être utilisées comme outils de preuve ou comme programme informatique.</p>
+<p>Un algorithme, représenté par son pseudo code, a des entrées et une sorite. D’après ce qui précède, ces entrées et cette sortie peuvent être :</p>
 
-<p>Il existent heureusement de nombreuses façons d’interpréter les 4 règles générales d’un calcul. On peut déjà le voir dans la multitude de langages informatiques qui existent, allant de <a href="https://fr.wikipedia.org/wiki/Assembleur">l’assembleur</a> compréhensible par les processeurs de nos ordinateurs au <a href="https://fr.wikipedia.org/wiki/Python_(langage)">python</a> que tout le monde connait, en passant par le <a href="https://fr.wikipedia.org/wiki/Haskell">haskell</a> ou encore le <a href="https://fr.wikipedia.org/wiki/C_(langage)">C</a>. Et bien tous ces langages calculent exactement la même chose (mais de façon différente) ! On trouve même des langages désignées pour être les plus simples possibles (appelés <a href="https://fr.wikipedia.org/wiki/Langage_de_programmation_exotique">turing tarpit</a>) et permettant de calculer tout ce qu’on peut faire en python par exemple, comme le <a href="https://fr.wikipedia.org/wiki/Brainfuck">brainfuck</a> qui est le plus célèbres d’entres eux.</p>
+<ul>
+  <li>des entiers finis</li>
+  <li>des approximations finies de réels</li>
+  <li>des chaines de caractères</li>
+</ul>
 
-<blockquote>
-  <p>fun fact, on peut utiliser aussi certains jeu comme langage de programmation comme factorio ([l’algorithme de tri <a href="https://www.youtube.com/watch?v=ts5EKp9w4TU">quicksort</a>), ou encore minecraft (<a href="https://www.youtube.com/watch?v=SrExOQ1yqgw">algorithme</a> qui calcule $\sqrt{2}$).</p>
+<blockquote class="note">
+  <p>Un algorithme à $p$ entrées, dont $q$ entrées entières, $r$ entrées approximation des réels et $s$ chaines de caractères est une fonction de :</p>
+
+\[f: \mathbb{N}^{q} \times R^r \times C^t \rightarrow N \cup A \cup C\]
+
+  <p>où $\mathbb{N}$ est l’ensemble des entiers, $R$ l’ensemble des approximations de réels et $C$ l’ensemble des chaines de caractères.</p>
 </blockquote>
 
-<p>Cette diversité de réponses est aussi vrai d’un point de vue théorique avec les modèles de <a href="https://fr.wikipedia.org/wiki/Machine_de_Turing">la machine de Turing</a> ou encore le <a href="https://fr.wikipedia.org/wiki/Lambda-calcul">$\lambda$-calcul</a> qui, et c’est prouvé, calculent exactement les mêmes choses.</p>
+<p>On a pas trop dit grand chose pour l’instant. On a fait que reécrire ce qu’on savait déjà sos la forme de fonctions. On va montrer qu’on peut faire bien mieux.</p>
 
-<p>Tous ces exemples, plus bien d’autres essais, tendent à <a href="https://plato.stanford.edu/entries/church-turing/#ReasForAcceThes">accréditer la thèse de church-turing</a> selon laquelle tout ce qu’un humain, une machine, ou encore un système physique peut calculer est exactement égal à ce qu’une machine de Turing peut calculer.</p>
+<h2 id="modèle">modèle</h2>
+
+<p>On montre ici que l’on peut aller bien plus loin que la partie précédente et montrer qu’un algorithme est une fonction de $\mathbb{N}$ (les entiers) dans $\mathbb{N}$.</p>
+
+<h3 id="fonction-plusieurs-entier">fonctions à plusieurs paramètres entiers</h3>
+
+<p>Les paramètres d’un algorithme peuvent tous être représentés par des entiers :</p>
+
+<ul>
+  <li>des entiers finis : c’est clair.</li>
+  <li>des approximations finies de réels : on peut utiliser la norme <a href="https://fr.wikipedia.org/wiki/IEEE_754">IEEE 754</a>. Par exemple 3.1415 en codage IEEE 754 sur 32 bits correspond à l’entier binaire : <code class="language-plaintext highlighter-rouge">01000000010010010000111001010110</code> (j’ai utilisé <a href="https://www.h-schmidt.net/FloatConverter/IEEE754.html">un convertisseur</a>)</li>
+  <li>des chaines de caractères : que l’on peut représenter comme un entier en utilisant le le codage <a href="https://fr.wikipedia.org/wiki/UTF-8">utf-8</a>. Par exemple la chaine de caractère “Yop !” correspond au nombre binaire <code class="language-plaintext highlighter-rouge">111100101101111011100000010000000100001</code> en utilisant  (là aussi, j’ai utilisé <a href="http://hapax.qc.ca/conversion.fr.html">un convertisseur</a>).</li>
+</ul>
+
+<p>On peut donc reformuler notre assertion précédente en unifiant les paramètres (on les recodent tous sous la forme d’entiers) :</p>
+
+<blockquote class="note">
+  <p>Un algorithme à $p$ entrées est une fonction de $p$ paramètres entiers et qui rend un entier.</p>
+
+\[f: \mathbb{N}^p \rightarrow \mathbb{N}\]
+
+</blockquote>
+
+<p>C’est bien mieux mais on sépare encore les algorithmes par lur nombre de paramètre. Allons plus loin.</p>
+
+<h4 id="fonction-un-entier">fonctions à un paramètre entiers</h4>
+
+<p>Démontrons que tout élément de $\mathbb{N}^p$ peut être représenté par un entier. Pour ce faire on montrera que $\mathbb{N}^p$ est en bijection avec $\mathbb{N}$ quelque soit $p$.</p>
+
+<p>La figure ci-dessous montre comment faire pour $\mathbb{N}^2$. On ordonne les diagonales (la diagonale $D_i$ contient les éléments dont la somme des coordonnées est égale à $i$) les une par rapport aux autres et dans chaque diagonale on prend l’ordre lexicographque (ordre du dictionnaire en considérant chaque coordonnée comme une lettre).</p>
+
+<p><img src="/cours_informatique/assets/cours/algorithmie/theorie_n2dansN.png" alt="compteur" style="margin: auto;display: block; width: 200px" /></p>
+
+<p>Dans le cas général, notons $D_k$ (la diagonale numéro $k$) l’ensemble des éléments $(n_1, \dots, n_p)$ de $\mathbb{N}^p$ dont la somme $\sum_i n_i$ vaut $k$. Il y a un nombre fini d’éléments dans $D_k$ puisque chaque coordonnées est plus petite que $k$ (il y a au plus $k^p$ éléments dans $D_k$), ce qui nous permet d’ordonner tous les éléments de $\mathbb{N}^p$ : $e &lt; f$ si :</p>
+
+<ul>
+  <li>$e \in D_k$ et $f \in D_{k’}$ avec $k’ &lt; k$</li>
+  <li>ou si $e, f \in D_k$ et que $e$ est avant $f$ dans l’<a href="https://fr.wikipedia.org/wiki/Ordre_lexicographique#G%C3%A9n%C3%A9ralisation_aux_produits_cart%C3%A9siens_finis">ordre lexicographique</a> de $D_k$.</li>
+</ul>
+
+<p>Cet ordre nous permet de définir <a href="https://fr.wikipedia.org/wiki/Injection_(math%C3%A9matiques)">une injection</a> de $\mathbb{N}^p$ dans $\mathbb{N}$ par l’application :</p>
+
+\[h(e) = \vert \{ g \mid g &lt; e \}\vert\]
+
+<p>Cela fonctionne car :</p>
+
+<ul>
+  <li>si $f &lt; e$ alors $f$ est dans une diagonale plus petite ou égale à $e$, il y a donc un nombre fini d’éléments plus petit que $e$</li>
+  <li>si $f &lt; e$ alors $\{ g \mid g &lt; f \} \cup \{f \} \subseteq \{ g \mid g &lt; e \}$ et donc $h(f) &lt; h(e)$</li>
+  <li>si $e$ et $f$ sont deux éléments différents de $\mathbb{N}^p$ alors soit $e &lt; f$ soit $f &lt; e$</li>
+</ul>
+
+<p>On conclut en remarquant que la fonction $h’(n) = (n, 0, \dots , 0)$ est une injection de $\mathbb{N}$ dans $\mathbb{N}^p$. Il existe donc une injection de $\mathbb{N}$ dans $\mathbb{N}^p$ (la fonction $h’$) et une injection de $\mathbb{N}^p$ dans $\mathbb{N}$ (la fonction $h$) : il existe une bijection de $\mathbb{N}^p$ dans $\mathbb{N}$.</p>
+
+<p>Toute fonction de $\mathbb{N}^p$ dans $\mathbb{N}$ peut alors s’écrire comme une fonction de $\mathbb{N}$ dans $\mathbb{N}$ ce qui nous permet de dire que :</p>
+
+<blockquote class="note">
+  <p>Un algorithme à $p$ entrées est une fonction :</p>
+
+\[f: \mathbb{N} \rightarrow \mathbb{N}\]
+
+</blockquote>
+
+<h2 id="que-calcule-t-on-">que calcule-t-on ?</h2>
+
+<p>On a démontré qu’un algorithme était une fonction de $\mathbb{N}$ (les entiers) dans $\mathbb{N}$. Mais c’est une fonction particulière puisque ce qu’elle procède selon un plan détaillé (des instructions) qu’elle exécute petit à petit (séquentiellement).</p>
+
+<p>On ne donnera pas ici d’exemple concret de fonction non calculables on montre juste que contrairement à une idée répandue :</p>
+
+<blockquote class="note">
+  <p>Un algorithme ne peut pas <strong>tout</strong> calculer. En revanche, quelque soit le formalisme utiliser pour le calcul (le pseudo-code ou code) ils peuvent tous calculer <strong>la même chose</strong>.</p>
+</blockquote>
+
+<h3 id="on-ne-calcule-pas-tout">on ne calcule pas tout</h3>
+
+<p>On va montrer qu’il existe des fonctions qui ne sont pas des algorithmes car il existe strictement plus de fonctions que d’algorithmes.</p>
+
+<h4 id="nombre-dalgorithmes">nombre d’algorithmes</h4>
+
+<p>Comme un algorithme peut-être décrit par son pseudo-code, qui est une chaine de caractères (qu’on peut limiter aux mots Français si on a envie), in y a au plus autant d’algorithme que de chaines de caractères. Ca en fait un sacré paquet mais comme chaque chaine de caractère est un entier (on l’a vu <a href="#fonction-plusieurs-entier">juste avant</a>) :</p>
+
+<blockquote class="note">
+  <p>Il ne peut y avoir plus d’algorithme que de nombres entiers.</p>
+</blockquote>
+
+<h4 id="nombre-de-fonctions">nombre de fonctions</h4>
+
+<p>Soit $f: \mathbb{N} \rightarrow \mathbb{N}$. En associant pour chaque entier $n$ le couple $(n, f(n))$ on associer à chaque fonction de $\mathbb{N}$ dans $\mathbb{N}$ l’ensemble :</p>
+
+\[I(f) = \{ (n, f(n)) \vert n \in \mathbb{N} \}\]
+
+<p>Connaitre $f$ ou $I(f)$ est équivalent et comme $I(f) \subseteq \mathbb{N} \times \mathbb{N}$ on en conclut :</p>
+
+<blockquote class="note">
+  <p>Il y a autant de fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ que de parties de $\mathbb{N} \times \mathbb{N}$</p>
+</blockquote>
+
+<p>Or pour tout ensemble $E$ il y a strictement plus d’éléments dans l’ensemble des parties de $E$ (qu’on note $2^E$) que dans $E$ (c’est le <a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Cantor">théorème de Cantor</a>) : il y a strictement plus de fonction que d’éléments dans $\mathbb{N} \rightarrow \mathbb{N}$. Or comme $\mathbb{N} \rightarrow \mathbb{N}$ et $\mathbb{N}$ sont en bijection (mais, si, on l’a vu <a href="#fonction-un-entier">précédemment</a>) :</p>
+
+<blockquote class="note">
+  <p>Il y a strictement plus de fonction $f: \mathbb{N} \rightarrow \mathbb{N}$ que de nombres entiers.</p>
+</blockquote>
+
+<p>La preuve du Théorème de Cantor repose sur le fait que pour toute fonction $f: E \rightarrow 2^E$, l’ensemble $D = \{x \in E \vert x \notin f(x)\}$ n’a pas d’antécédent pour $f$. Car s’il en avait un $f(y) = D$, alors :</p>
+
+<ul>
+  <li>$y \notin D$ car s’il y était alors $y \notin f(y)$ ce qui est incohérent avec le fait que $f(y) = D$</li>
+  <li>$y \in D$ car s’il n’y était pas alors $y \in f(y)$ ce qui est incohérent avec le fait que $f(y) = D$</li>
+</ul>
+
+<p>Bref, $y$ n’existe pas. On en conclut qu’il existe des éléments de $2^E$ qui ne sont pas des images de $f$ : ce n’est pas une <a href="https://fr.wikipedia.org/wiki/Surjection">surjection</a>. Comme $f$ a été prise au hasard, ça signifie que pour toute fonction de $E$ dans $2^E$ il existera des éléments de $2^E$ qui ne seront pas atteint : il y a strictement plus d’élément dans $2^E$ que dans $E$.</p>
+
+<h3 id="mais-lorsquon-calcule-on-calcule-la-même-chose">mais lorsqu’on calcule on calcule la même chose</h3>
+
+<p>Les règles qu’on s’est donné pour écrire du pseudo-code vont être pratique pour décrire un algorithme pour un humain. Le fait qu’une fois posées, les règles ne nécessitent pas d’intelligence pour être exécutées, les rendent même accessible à des étudiants ! Mais elles ne définissent pas clairement les termes utilisés, il y a de multiples façons d’interpréter les <a href="#regles-generales">4 règles générales</a> d’un calcul et donc de multiples façon d’écrire du pseudo-code.</p>
+
+<p>On peut déjà penser aux multiples langages de programmation, allant de <a href="https://fr.wikipedia.org/wiki/Assembleur">l’assembleur</a> compréhensible par les processeurs de nos ordinateurs au <a href="https://fr.wikipedia.org/wiki/Python_(langage)">python</a> que tout le monde connait, en passant par le <a href="https://fr.wikipedia.org/wiki/Haskell">haskell</a> ou encore le <a href="https://fr.wikipedia.org/wiki/C_(langage)">C</a>. Et bien tous ces langages <strong>calculent exactement la même chose</strong> (mais de façon différente) ! On trouve même des langages désignées pour être les plus simples possibles (appelés <a href="https://fr.wikipedia.org/wiki/Langage_de_programmation_exotique">turing tarpit</a>) et permettant de calculer tout ce qu’on peut faire en python par exemple, comme le <a href="https://fr.wikipedia.org/wiki/Brainfuck">brainfuck</a> qui est le plus célèbres d’entres eux.</p>
+
+<blockquote>
+  <p>fun fact, on peut utiliser aussi certains jeu comme langage de programmation comme factorio (l’algorithme de tri <a href="https://www.youtube.com/watch?v=ts5EKp9w4TU">quicksort</a>), ou encore minecraft (<a href="https://www.youtube.com/watch?v=SrExOQ1yqgw">algorithme</a> qui calcule $\sqrt{2}$).</p>
+</blockquote>
+
+<p>Cette diversité de réponses est aussi vrai d’un point de vue théorique avec les modèles de <a href="https://fr.wikipedia.org/wiki/Machine_de_Turing">la machine de Turing</a> ou encore le <a href="https://fr.wikipedia.org/wiki/Lambda-calcul">$\lambda$-calcul</a> qui, et c’est également prouvé, calculent exactement les mêmes choses.</p>
+
+<p>Tous ces exemples, plus bien d’autres essais, tendent à <a href="https://plato.stanford.edu/entries/church-turing/#ReasForAcceThes">accréditer la thèse de Church-Turing</a> selon laquelle :</p>
+
+<blockquote class="note">
+  <p>On est convaincu que tout ce qu’un humain, une machine, ou encore un système physique peut calculer (c’est à dire en suivant les 4 règles générales) est exactement égal à ce qu’une machine de Turing peut calculer.</p>
+</blockquote>
 
 <p>Pour répondre à notre question initiale, <em>que peut-on calculer ?</em>, on peut alors étudier ce que peut calculer la machine de Turing.</p>
 
-<h2 id="machine-de-turing">machine de Turing</h2>
+<h2 id="conclusion">Conclusion</h2>
 
-<p>Il existe plusieurs définition équivalente d’une machine de turing. Nous allons utiliser <a href="https://fr.wikipedia.org/wiki/Machine_de_Turing#D%C3%A9finition_formelle">celle de wikipedia</a> :</p>
-
-<p>Une <strong>machine de Turing</strong> est un quintuplet $(Q, \Gamma, q_0, \delta, F)$ où :</p>
+<p>On a montré ici 2 choses fondamentales :</p>
 
 <ul>
-  <li>$Q$ est un ensemble fini d’<strong>état</strong></li>
-  <li>$\Gamma$ est l’<strong>alphabet de travail</strong>. Il contient un symbole spécial $B$, dit <strong>blanc</strong>, avec $B \in \Gamma$</li>
-  <li>$q_0 \in Q$ est l’<strong>état initial</strong> de la machine</li>
-  <li>$\delta : Q \times \Gamma \rightarrow Q \times \Gamma \times \{ \leftarrow, \rightarrow \}$ est la <strong>fonction de transition</strong></li>
-  <li>$F \subset Q$ est l’ensemble des <strong>états finaux</strong>.</li>
+  <li>un algorithme ne peut pas tout faire</li>
+  <li>quelque soit le langage utilisé on pourra résoudre les même problèmes</li>
 </ul>
 
-<blockquote>
-  <p>On appelle cette machine, machine de Turing déterministe car $\delta$ est une fonction.</p>
-</blockquote>
-
-<p>Pour fonctionner la machine nécessite un <strong>ruban</strong> constitué de cases contiguës pouvant chacune contenir un élément de $\Gamma$ et un <strong>curseur</strong> qui est positionné sur une case du ruban. Initialement toutes les cases du ruban contiennent le symbole <code class="language-plaintext highlighter-rouge">B</code>.</p>
-
-<p>L’exécution d’un programme est alors comme suit :</p>
-
-<ol>
-  <li>on place la tête de lecture sur une case du ruban</li>
-  <li>on initialise si besoin le ruban avec une chaine de caractères (finie) contenant des caractères de $\Gamma$ et on place le curseur sur la première case de la chaine.</li>
-  <li>si l’état de la machine est un élément de $F$, on stoppe le programme.</li>
-  <li>on lit le caractère $a$ sous le curseur, et l’état $q$ de la machine et on note $(a’, q’, f) = \delta(a, q)$</li>
-  <li>on écrit $q’$ dans la case du ruban pointé par le curseur, on place la machine dans l’état $q’$ et on déplace le curseur vers la gauche si $f$ vaut $\leftarrow$ et vers la droite sinon ($f$ vaut $\rightarrow$)</li>
-  <li>retour en 3.</li>
-</ol>
-
-<blockquote>
-  <p>L’article fondateur d’Allan Turing est <a href="http://www.espace-turing.fr/IMG/pdf/turing_oncomputablenumbers_1936.pdf">là</a></p>
-</blockquote>
-
-<h3 id="exemples-de-programmes">exemples de programmes</h3>
-
-<h4 id="répéteur">répéteur</h4>
-
-<p>Répète des suite de 0 et 1 :</p>
-
-<p>TBD : les lignes pour voir ce que ça fait</p>
-
-<p>C’est le premier exemple de <a href="https://turingmachine.io/">https://turingmachine.io/</a> (repeat 0 1)</p>
-
-<h4 id="doublement-des-bâtons">doublement des bâtons</h4>
-
-<p>Exemple classique des machines de Turing, le doublement des bâtons s’écrit comme ça :</p>
+<p>Ceci signifie que l’on doit toujours utiliser le formalisme (ou langage) qui est le plus simple pour résoudre le problème qu’on s’est fixé :</p>
 
 <ul>
-  <li>$Q = \{ s, e, l, g, d\}$</li>
-  <li>$\Gamma = \{ 1, B\}$</li>
-  <li>$q_0 = s$</li>
-  <li>$F = \{ e \}$</li>
-  <li>$\delta(s, 1) = (B, l, \leftarrow)$</li>
-  <li>$\delta(l, B) = (1, g, \leftarrow)$</li>
-  <li>$\delta(g, 1) = (1, g, \leftarrow)$</li>
-  <li>$\delta(g, B) = (1, d, \rightarrow)$</li>
-  <li>$\delta(d, 1) = (1, d, \rightarrow)$</li>
-  <li>$\delta(d, B) = (B, s, \rightarrow)$</li>
-  <li>$\delta(s, B) = (B, e, \rightarrow)$</li>
+  <li>d’algorithmie : on utilisera les mots du pseudo-code les plus adaptés, dans le respect des 4 règles fondamentales (chaque instruction doit être simple ou explicitée)</li>
+  <li>de code : on utilisera le langage qui est plus adapté à notre problème car ils ont tous leurs spécificités. Il est donc impératif d’apprendre plus d’un langage et surtout d’apprendre à en changer quand on change de problème à résoudre.</li>
 </ul>
-
-<p>On initialise cette machine avec une chaine de 1.</p>
-
-<p>Si vous ne voulez pas tester votre machine à la main, vous pouvez utiliser <a href="https://turingmachine.io/">https://turingmachine.io/</a>. Le code précédent a été traduit dans leur formalisme ci-dessous :</p>
-
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>input: '1111'
-blank: 'B'
-start state: start
-table:
-  start:
-    1: {write: 'B', L: lien}
-    'B': {R: done}
-  lien:
-    'B': {write: 1, L: gauche}
-  gauche:
-    1: {write: 1, L: gauche}
-    'B': {write: 1, R: droite}
-  droite:
-    1: {write: 1, R: droite}
-    'B': {write: 'B', R: start}
-  done:
-</code></pre></div></div>
-
-<p>Son fonctionnement est le suivant. On commence par remplacer le premier 1 par un blanc. Puis on se déplace de une case sur la gauche et on écrit 1, puis on se déplace encore une fois à gauche. Une fois là, on se déplace autant de fois que nécessaire sur la gauche jusqu’à arriver sur une case avec B (au début, on a pas besoin de bouger). Arrivé là on écrit 1, puis on se déplace autant de fois que nécessaire sur la droite jusqu’à arriver sur une case B. Arrivé là, on se déplace à droite et on replace la machine de Turing à son été initial pour recommencer si nécessaire.</p>
-
-<p>TBD : montrer sur des schémas.</p>
-
-<p>Félicitations ! Vous venez d’implémenter la fonction $f(n) = 2n$ dans une machine de Turing.</p>
-
-<h4 id="premier-programme-au-monde">premier programme (au monde)</h4>
-
-<p>L’exemple suivent est le <a href="https://machinedeturing.com/exemple.php?page=9">premier programme</a> donné par Allan Turing lorsqu’il décrivit sa machine.</p>
-
-<h4 id="autres-exemples">autres exemples</h4>
-
-<p>Le site <a href="https://machinedeturing.com/">https://machinedeturing.com/</a> contient de nombreux exemples de programmes de machine de Turing</p>
-
-<h3 id="modèles-équivalents">modèles équivalents</h3>
-
-<p>Il existent de nombreuses variations des machines de Turing qui sont toutes équivalentes. Par exemple on peut dissocier le fait de se déplacer et d’écrire des caractères (comme <a href="http://zanotti.univ-tln.fr/turing/">ici</a>), on peut même utiliser plusieurs rubans et/ou plusieurs curseurs, ça revient au même on ne calculera pas plus de choses. Ce sera juste plus simple à programmer.</p>
-
-<p>Enfin, <a href="https://fr.wikipedia.org/wiki/Machine_de_Turing_non_d%C3%A9terministe">la machine de Turing non déterministe</a>, même si elle a l’air très puissante, ne change rien à ce qu’on peut calculer. On peut juste le faire plus vite.</p>
-
-<h3 id="équivalence-pseudo-code-et-machine-de-turing">équivalence pseudo-code et machine de Turing</h3>
-
-<p>Ce qui est magnifique, c’est que le modèle très simple de la machine de Turing permet de calculer tout ce qu’on peut faire avec nos pseudo-code. On ne démontrera pas ce fait, on va juste montrer comment on peut montrer que nos pseudo-code et la machine travaillent sur les mêmes objets.</p>
-
-<p>entier, chaine de caractères c’est des entiers. Donc u pseudo code est une fonction de f(n1, …, nk) dans n.</p>
-
-<h3 id="fonctions-calculables">fonctions calculables</h3>
-
-<h3 id="nombres-calculables">nombres calculables</h3>
-
-<ul>
-  <li>que peut-on calculer ?</li>
-  <li>de pseudo code à calcul de f(N) -&gt; N</li>
-</ul>
-
-<h2 id="turing-complet">turing complet</h2>
-<p>si on peut faire une machine de turing dans notre programme on est turing complet.</p>
-
-<p>machine de turing universelle</p>
-
-<blockquote>
-  <p>TBD</p>
-  <ul>
-    <li>turing : pb de l’arrêt de la machine ?</li>
-  </ul>
-
-</blockquote>
-
-<p>pour l’instant tous les pseudo-code qu’on a écrit s’arrêtent tout le temps. Mais celui là ? syracuse. On ne sais pas.</p>
-
-<h2 id="arrêt-de-la-machine">arrêt de la machine</h2>
-
-<p>des actions sussessivent qui ment au résultat : ce n’est pas immédiat ! Et on ne sais pas si ça s’arrête.</p>
-
-<p>passer d’un pseudo code à la machine. entier/réels/chaine de caractères. Permet de voir théoriquement ce qu’on peut faire.</p>
-
-<h2 id="logique-démonstrations-mathématiques-et-calculabilité">logique, démonstrations mathématiques et calculabilité</h2>
-
-<p>démonstation = pseudo-code</p>
-
-<h2 id="refs">refs</h2>
-
-<p><a href="https://plato.stanford.edu/entries/church-turing/">https://plato.stanford.edu/entries/church-turing/</a>
-<a href="http://pageperso.lif.univ-mrs.fr/~kevin.perrot/documents/2016/calculabilite/Cours_16.pdf">http://pageperso.lif.univ-mrs.fr/~kevin.perrot/documents/2016/calculabilite/Cours_16.pdf</a>
-<a href="https://www.cs.odu.edu/~zeil/cs390/latest/Public/turing-complete/index.html">https://www.cs.odu.edu/~zeil/cs390/latest/Public/turing-complete/index.html</a></p>
 
   </div>
 
