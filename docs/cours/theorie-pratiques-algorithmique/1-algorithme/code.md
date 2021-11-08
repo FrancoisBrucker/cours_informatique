@@ -15,7 +15,6 @@ Le code va dépendre du langage, pour nous le python. Cela permet de voir si not
 attention : les réels n'existent pas en vrai !
 
 
-
 ## code
 
 Le code est le passage d'un algorithme *papier* à un programme informatique ou la modification d'un code existant. La seconde partie étant celle que vous ferez le plus souvent : On passe son temps à modifier du code plutôt que d'implémenter des algorithme (c'est ce que l'on appelle le refactoring). 

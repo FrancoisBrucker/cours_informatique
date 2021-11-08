@@ -54,3 +54,4 @@ Chaque partie possède une partie théorique, une partie algorithmique et une pa
 7. complexité amortie $\vert$  XXX $\vert$  dictionnaires
 8. objets et espaces de noms $\vert$  XXX $\vert$  introduction à la programmation objet en python
 9. algorithmes de recherche sur les chaines de caractères $\vert$  automates $\vert$  fichiers textes
+

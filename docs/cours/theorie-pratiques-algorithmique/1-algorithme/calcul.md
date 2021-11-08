@@ -170,7 +170,7 @@ Les règles qu'on s'est donné pour écrire du pseudo-code vont être pratique p
 
 On peut déjà penser aux multiples langages de programmation, allant de [l'assembleur](https://fr.wikipedia.org/wiki/Assembleur) compréhensible par les processeurs de nos ordinateurs au [python](https://fr.wikipedia.org/wiki/Python_(langage)) que tout le monde connait, en passant par le [haskell](https://fr.wikipedia.org/wiki/Haskell) ou encore le [C](https://fr.wikipedia.org/wiki/C_(langage)). Et bien tous ces langages **calculent exactement la même chose** (mais de façon différente) ! On trouve même des langages désignées pour être les plus simples possibles (appelés [turing tarpit](https://fr.wikipedia.org/wiki/Langage_de_programmation_exotique)) et permettant de calculer tout ce qu'on peut faire en python par exemple, comme le [brainfuck](https://fr.wikipedia.org/wiki/Brainfuck) qui est le plus célèbres d'entres eux.
 
-> fun fact, on peut utiliser aussi certains jeu comme langage de programmation comme factorio (l'algorithme de tri [quicksort](https://www.youtube.com/watch?v=ts5EKp9w4TU)), ou encore minecraft ([algorithme](https://www.youtube.com/watch?v=SrExOQ1yqgw) qui calcule $\sqrt{2}$).
+> *fun fact*, on peut utiliser aussi certains jeu comme langage de programmation comme [factorio](https://www.factorio.com/) (l'algorithme de tri [quicksort](https://www.youtube.com/watch?v=ts5EKp9w4TU)), ou encore [minecraft](https://www.minecraft.net/) ([algorithme](https://www.youtube.com/watch?v=SrExOQ1yqgw) qui calcule $\sqrt{2}$).
 
 Cette diversité de réponses est aussi vrai d'un point de vue théorique avec les modèles de [la machine de Turing](https://fr.wikipedia.org/wiki/Machine_de_Turing) ou encore le [$\lambda$-calcul](https://fr.wikipedia.org/wiki/Lambda-calcul) qui, et c'est également prouvé, calculent exactement les mêmes choses.
 
@@ -192,5 +192,6 @@ Ceci signifie que l'on doit toujours utiliser le formalisme (ou langage) qui est
 
 * d'algorithmie : on utilisera les mots du pseudo-code les plus adaptés, dans le respect des 4 règles fondamentales (chaque instruction doit être simple ou explicitée)
 * de code : on utilisera le langage qui est plus adapté à notre problème car ils ont tous leurs spécificités. Il est donc impératif d'apprendre plus d'un langage et surtout d'apprendre à en changer quand on change de problème à résoudre.
+* théorique : on utilisera [la machine de Turing]({% link cours/theorie-pratiques-algorithmique/1-algorithme/machine-turing.md %}), modèle théorique simple qui peremt d'appréhender tout ce qui est calculable.
 
-Enfin, faites attention aux réels ! Ils n'existent pas en informatique. Vous ne manipulez que des approximations : il faut faire attention à la stabilité numérique de vos algorithme et ne **jamais** tester l'égalité entre deux réels mais **toujours** les comparer à epsilon prêt.
+Enfin, faites attention aux réels ! Ils n'existent pas (en informatique). Vous ne manipulez que des approximations : il faut faire attention à la stabilité numérique de vos algorithme et ne **jamais** tester l'égalité entre deux réels mais **toujours** les comparer à epsilon prêt.
