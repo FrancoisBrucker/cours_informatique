@@ -20,6 +20,7 @@ Des projets pour apprendre des technos web. Les projets sont fait pour être vue
 - [Yahtzee]({% link cours/web/projets/Yahtzee.md %})
 - [Mettre en prod un site sur un serveur]( {% link cours/web/projets/mettre_en_prod.md %})
 - [Centrale Life]( {% link cours/web/projets/Projet_MD2_CentraleLife.md %})
+- [Décathlon]( {% link cours/web/projets/Decathlon.md %})
 
 
 > TBD
