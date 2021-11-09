@@ -65,7 +65,25 @@
   <p><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/">Théorie et pratiques algorithmique</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/1-algorithme/">algorithme</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/1-algorithme/machine-turing.html">machine de turing</a></p>
 </blockquote>
 
-<p>Pour répondre à notre question initiale, <em>que peut-on calculer ?</em>, on peut alors étudier ce que peut calculer la machine de Turing.</p>
+<p>Pour répondre à notre question initiale, <em>que peut-on calculer ?</em>, on peut alors étudier ce que peut calculer la machine de Turing. Le modèle de la machine de Turing est important car, malgré sa simplicité, il permet de capturer tout ce que peu faire un ordinateur. De plus, de nombreux modèle plus compliqué n’arrivent pas à calculer plus.</p>
+
+<p>On peut même montrer qu’une machine de Turing est elle même équivalent à un ordinateur !</p>
+
+<p><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/1-algorithme/calcul.html">On l’a vu</a>, les algorithmes décrits par leur <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/1-algorithme/pseudo-code.html#regles">pseudo-code</a> permettent de calculer certaines fonctions de $f: \mathbb{N} \rightarrow \mathbb{N}$.</p>
+
+<p>Ce que Turing a montré c’est que :</p>
+
+<blockquote class="note">
+  <p>le modèle très simple de la machine de Turing permet exactement de calculer tout ce qu’on peut faire avec un pseudo-code <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/1-algorithme/pseudo-code.html#regles">tel qu’on l’a défini</a>.</p>
+</blockquote>
+
+<p>L’idée de la preuve est de montrer que l’on peut avec une machine de Turing :</p>
+
+<ul>
+  <li>faire de boucles</li>
+  <li>évaluer des expressions logiques</li>
+  <li>stocker et lire des entiers</li>
+</ul>
 
 <h2 id="définition">définition</h2>
 
@@ -82,7 +100,7 @@
 </ul>
 
 <blockquote>
-  <p>On appelle cette machine, machine de Turing déterministe car $\delta$ est une fonction.</p>
+  <p>On appelle cette machine, machine de Turing <strong>déterministe</strong> car $\delta$ est une fonction.</p>
 </blockquote>
 
 <p>Pour fonctionner, la machine nécessite :</p>
@@ -258,17 +276,33 @@ table:
 
 <p>Le site <a href="https://turingmachine.io/">https://turingmachine.io/</a> contient bien d’autres programmes à essayer. Vous pouvez aussi aller du côté de <a href="https://machinedeturing.com/">https://machinedeturing.com/</a> pour aller voir le programme donné par Turing pour <a href="https://machinedeturing.com/exemple.php?page=9">générer tous les entiers</a>.</p>
 
+<p>Notez qu’il est facile de composer des machines de Turing ensemble en <em>concaténant</em> les paramètres (alphabets, fonction de compositions, états). On peut ainsi créer des gros programmes en assemblant des machines de Turing toutes simples. On peut ainsi plus ou moins facilement créer des machines de Turing qui :</p>
+
+<ul>
+  <li>déplacent un caractère sur le ruban vers la gauche ou la droite</li>
+  <li>mettent des bornes à gauche et à droite du rubans pour délimiter l’intervalle des cases modifiées par le programme à tout moment de son exécution</li>
+  <li>cherchent une case contenant un caractère en particulier</li>
+  <li>…</li>
+</ul>
+
 <h2 id="substantifique-moelle-de-la-machine-de-turing">substantifique moelle de la machine de Turing</h2>
 
-<blockquote>
-  <p>TBD :
-Qu’est ce qui est vraiment important dans la définition d’une machine de Turing ?
-nb de ruban, curseurs, alphabet et fonction de transition.</p>
-</blockquote>
+<p>Le modèle de la machine de Turing admet quatre paramètres :</p>
+
+<ul>
+  <li>un ruban</li>
+  <li>un curseur</li>
+  <li>l’alphabet</li>
+  <li>une fonction de transitions</li>
+</ul>
+
+<p>On peut se demander ce qui est vraiment utile là-dedans (peut-on simplifier le modèle sans perdre en expressivité ?) ou au contraire si complexifier le modèle permet de calculer plus de chose.</p>
 
 <h3 id="généralisation-du-modèle--inutile">généralisation du modèle : inutile</h3>
 
-<p>Il existent de nombreuses généralisations des machines de Turing, mais elles ne permettent pas de calculer plus de choses :</p>
+<p>Commençons par répondre à la seconde question : <em>est-ce que complexifier le modèle permet de calculer plus de chose ?</em>. La réponse est <strong>non</strong>.</p>
+
+<p>Il existent de nombreuses généralisations des machines de Turing, elles ne permettent pas de calculer plus de choses, mais sont utile car elle permettent de calculer plus facilement/rapidement :</p>
 
 <ul>
   <li>par exemple des machines utilisant <a href="https://perso.liris.cnrs.fr/sylvain.brandel/wiki/lib/exe/fetch.php?media=ens:m1if09:m1if09-cm03.pdf">plusieurs rubans et/ou plusieurs curseurs</a>. L’intérêt de ces machines est qu’elle sont plus facilement programmables.</li>
@@ -279,7 +313,28 @@ nb de ruban, curseurs, alphabet et fonction de transition.</p>
   <p>On est intimement persuadé (c’est <a href="https://plato.stanford.edu/entries/church-turing/#ReasForAcceThes">la thèse de Church-Turing</a>) que tout ce qu’un humain, une machine, ou encore un système physique peut calculer (c’est à dire en suivant les 4 règles générales) est exactement égal à ce qu’une machine de Turing peut calculer.</p>
 </blockquote>
 
-<h3 id="alphabet--inutile">alphabet : inutile</h3>
+<p>Enfin :</p>
+
+<blockquote class="note">
+  <p>On peut toujours transformer une machine à plusieurs rubans et/ou plusieurs curseurs en une machine de Turing simple.</p>
+</blockquote>
+
+<p>Nous n’allons pas donner la preuve complète de ceci, mais juste une idée de la preuve de comment simuler une machine à 2 rubans avec une machine avec un seul ruban.</p>
+
+<p>Lorsque l’on a une machine à 2 rubans, on a un curseur pour chaque ruban. A chaque instruction on lit le contenu de chaque ruban sous le curseur et selon l’état de la machine on écrit su les 2 rubans puis on déplace chaque curseur vers la gauche ou la droite. On peut alors simuler les 2 rubans en un seul ruban en ajoutant une lettre $\bigtriangledown$ à l’alphabet et en découpant le ruban en paquets de 4 cases :</p>
+
+<ul>
+  <li>la première case valant soit $\bigtriangledown$ si le curseur du premier ruban est sur cette case, soit $\sharp$ sinon,</li>
+  <li>la deuxième case valant le caractère de la case sur le premier ruban</li>
+  <li>la troisième case valant soit $\bigtriangledown$ si le curseur du second ruban est sur cette case, soit $\sharp$ sinon,</li>
+  <li>la deuxième case valant le caractère de la case sur le second ruban</li>
+</ul>
+
+<p>Enfin, on peut toujours s’arranger pour qu’au départ, le curseur du premier ruban et du second ruban soient sur le même paquet de 4 cases.</p>
+
+<p>De là, à chaque itération de la machine à 1 seul ruban, on commence par chercher les paquets de 4 cases contenant les curseurs de chaque ruban et on lit leurs valeurs (on peut faire ça en parcourant le ruban jusqu’à trouver $\bigtriangledown$ en premier ou en troisième position d’un paquet à 4 cases) puis on effectue la fonction de transition de la machine à 2 rubans et on écrit les nouvelles valeurs en recherchant les positions respectives des curseurs dans les paquets à 4 cases.</p>
+
+<h3 id="simplification-de-lalphabet">simplification de l’alphabet</h3>
 
 <p>Diminuer ou agrandir l’alphabet d’une machine de Turing ne permet pas de calculer plus de choses :</p>
 
@@ -287,7 +342,7 @@ nb de ruban, curseurs, alphabet et fonction de transition.</p>
   <p>On peut simuler toute machine de Turing par une machine de Turing sur un alphabet $\{\sharp, 1\}$.</p>
 </blockquote>
 
-<p>Idée de la preuve. Comme l’alphabet $\Gamma$ d’une machine de Turing est fini, on peut associer à chaque lettre non blanc un numéro allant de $1$ à $\vert \Gamma \vert$, puis coder celui-ci par le mot $\sharp\sharp\sharp \dots \sharp\sharp\sharp 111 \dots 111$ de longueur $\vert \Gamma \vert$ et ayant autant de $1$ que la valeur de son numéro. On termine par coder le caractère blanc par uen suite de $\Gamma$ caractères $\sharp$. Une fois cette traduction d’alphabet effectué, on modifie les transitions pour qu’elles se déplacent de $\vert \Gamma \vert$ cases à chaque fois en utilisant des états transitoires (voir par exemple la <a href="http://math.univ-lyon1.fr/~blossier/odi2009/chap14.pdf">partie 14.4.1. de ce document</a>).</p>
+<p>Idée de la preuve. Comme l’alphabet $\Gamma$ d’une machine de Turing est fini, on peut associer à chaque lettre non blanc un numéro allant de $1$ à $\vert \Gamma \vert$, puis coder celui-ci par le mot $\sharp\sharp\sharp \dots \sharp\sharp\sharp 111 \dots 111$ de longueur $\vert \Gamma \vert$ et ayant autant de $1$ que la valeur de son numéro. On termine par coder le caractère blanc par une suite de $\Gamma$ caractères $\sharp$. Une fois cette traduction d’alphabet effectué, on modifie les transitions pour qu’elles se déplacent de $\vert \Gamma \vert$ cases à chaque fois en utilisant des états transitoires (comme dans la partie précédente).</p>
 
 <p>On montre par là que :</p>
 
@@ -295,89 +350,71 @@ nb de ruban, curseurs, alphabet et fonction de transition.</p>
   <p>Une machine de Turing est un fonction  $f: \{0, 1\}^\star \rightarrow \{0, 1\}$ (de l’ensemble des mots formées de suite de $0$ et de $1$) dans $\{0, 1\}$).</p>
 </blockquote>
 
-<h3 id="fonction-de-transition--inutile">fonction de transition : inutile</h3>
+<h3 id="machine-de-turing-universelle">machine de Turing universelle</h3>
 
-<p>Ce qui différentie une machine de Turing d’une autre c’est l’alphabet et la fonction de transition. On a vu qu’on pouvait utiliser un alphabet commun ($\{ \sharp, 1\}$$), peut-on faire la même chose avec la fonction de transition ?</p>
+<p>Ce qui différentie une machine de Turing d’une autre c’est l’alphabet et la fonction de transition. On a vu qu’on pouvait utiliser un alphabet commun ($\{ \sharp, 1\}$), peut-on faire la même chose avec la fonction de transition ?</p>
 
 <p>La réponse es surprenante, mais c’est oui ! On peut créer une <a href="https://fr.wikipedia.org/wiki/Machine_de_Turing_universelle">Machine de Turing universelle</a> qui, calcule tout ce que peut calculer les machines de Turing.</p>
 
-<p>Une machine Turing est dédiée à faire un calcul précis, déterminé par la fonction de transition et l’entrée. Il nous faut en plus un opérateur qui exécute la machine de Turing pas à pas.</p>
-
-<p>En appliquant notre formalisme à un ordinateur, la machine de Turing est le programme. Turing montre qu’en fait ces deux choses ne sont qu’une seule et même entité :</p>
-
-<h2 id="équivalences">équivalences</h2>
-
-<p>Le modèle de la machine de Turing est important car, malgré sa simplicité, il permet de capturer tout ce que peu faire un ordinateur. De plus, de nombreux modèle plus compliqué n’arrivent pas à calculer plus.</p>
-
-<p>On peut même montrer qu’une machine de Turing est elle même équivalent à un ordinateur !</p>
-
-<h3 id="pseudo-code-et-machine-de-turing">pseudo-code et machine de Turing</h3>
-
-<p><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/1-algorithme/calcul.html">On l’a vu</a>, les algorithmes décrits par leur <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/1-algorithme/pseudo-code.html#regles">pseudo-code</a> permettent de calculer certaines fonctions de $f: \mathbb{N} \rightarrow \mathbb{N}$.</p>
-
-<p>Ce que Turing a montré c’est que :</p>
-
 <blockquote class="note">
-  <p>le modèle très simple de la machine de Turing permet exactement de calculer tout ce qu’on peut faire avec un pseudo-code <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/1-algorithme/pseudo-code.html#regles">tel qu’on l’a défini </a>.</p>
+  <p>Il existe une machine de Turing $U$ à 2 rubans sur l’alphabet $\{ \sharp, 1\}$ telle que pour une machine de Turing $M$ et une entrée $E$ donnée, $U(M, E)$ calculera ce que calcule $M$ pour l’entée $E$.</p>
 </blockquote>
 
-<p>On admettra ce fait, mais l’idée de la preuve est de montrer que l’on peut avec une machine de Turing :</p>
+<p>Nous ne démontrerons pas ce résultat que l’on doit à Turing lui-même, contentons nous de voir comment on peut encoder une Machine de Turing $M$ sur l’alphabet $\{ \sharp, 1\}$ en une chaine de $\sharp$ et de $1$.</p>
+
+<p>Il y a bien des façon de faire. Nous prendrons ici celle utilisée dans la partie 3.3.4 de <a href="http://pageperso.lif.univ-mrs.fr/~kevin.perrot/documents/2016/calculabilite/Cours_16.pdf">ce document</a>. L’idée est de pouvoir :</p>
 
 <ul>
-  <li>faire de boucles</li>
-  <li>évaluer des expressions logiques</li>
-  <li>stocker et lire des entiers</li>
+  <li>encoder chaque transition</li>
+  <li>avoir des séparateur nous permettant de délimiter chaque transition les unes des autres</li>
 </ul>
 
-<h3 id="ordinateur-et-machine-de-turing">ordinateur et machine de Turing</h3>
+<p>Soit $M$ une machine de Turing à $n$ états ($q_1$ à $q_{n}$ et l’état initial est $q_1$) et $m$ caractères (de $c_1$ à $c_m$) Une transition est alors $\delta(q_i, c_j) = (q_k, c_l, D)$  où $D$ est soit $\leftarrow$ soit $\rightarrow$.</p>
 
-<p>avec la MTU</p>
-
-<h2 id="problème-de-larrêt">problème de l’arrêt</h2>
-
-<h2 id="fonctions-calculables">fonctions calculables</h2>
-
-<h2 id="nombres-calculables">nombres calculables</h2>
+<p>En codant :</p>
 
 <ul>
-  <li>que peut-on calculer ?</li>
-  <li>de pseudo code à calcul de f(N) -&gt; N</li>
+  <li>$q_i$ par $i$ $\sharp$,</li>
+  <li>$c_j$ par $j$ $\sharp$,</li>
+  <li>$\leftarrow$ par $\sharp$,</li>
+  <li>$\leftarrow$ par $\sharp\sharp$</li>
+  <li>le séparateur par $1$</li>
 </ul>
 
-<h2 id="turing-complet">turing complet</h2>
+<p>La transition $\delta(q_i, c_j) = (q_k, c_l, \leftarrow)$ se code alors :</p>
 
-<p>si on peut faire une machine de turing dans notre programme on est turing complet.</p>
+\[\underbrace{\sharp \cdots \sharp}_{i}1\underbrace{\sharp \cdots \sharp}_{j}1\underbrace{\sharp \cdots \sharp}_{k}1\underbrace{\sharp \cdots \sharp}_{l}1\underbrace{\sharp}_\leftarrow\]
 
-<p>machine de turing universelle</p>
+<p>On sépare ensuite toutes les transitions par $11$ :</p>
+
+\[\mbox{transition}_111\cdots11\mbox{transition}_i11\cdots11\mbox{transition}_N\]
+
+<p>Il nous reste à renseigner le nombre d’états et de caractères en début de code et de donner un début et une fin à ce code ($111$) pour finaliser notre encodage $\langle M \rangle$ de la machine de Turing $M$ :</p>
+
+\[\langle M \rangle = 111\underbrace{\sharp \cdots \sharp}_{n}11\underbrace{\sharp \cdots \sharp}_{m}11\mbox{transition}_111\cdots11 \mbox{transition}_i11\cdots11\mbox{transition}_N111\]
 
 <blockquote>
-  <p>TBD</p>
-  <ul>
-    <li>turing : pb de l’arrêt de la machine ?</li>
-  </ul>
-
+  <p>Félicitations, vous venez de créer votre 1er ordinateur ! La machine de Turing universelle permet en effet d’exécuter n’importe quelle machine $M$ : c’est un ordinateur dont le langage machine est l’encodage $\langle M \rangle$.</p>
 </blockquote>
 
-<p>pour l’instant tous les pseudo-code qu’on a écrit s’arrêtent tout le temps. Mais celui là ? syracuse. On ne sais pas.</p>
+<p>C’est un résultat extrêmement puissant. On a besoin que d’une machine de Turing pour exécuter toutes les machines de Turing. Attention cependant, On a l’impression qu’on a besoin de rien, que toutes les machines de Turing sont en faite une seule. Ce n’est pas exactement le cas car l’encodage cache la machine. C’est un petit peu comme dans la blague ci-dessous. Un numéro n’est drôle que parce qu’il code une blague !</p>
 
-<h2 id="arrêt-de-la-machine">arrêt de la machine</h2>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Une famille qui connaît toutes les blagues de la planète 
+les a classées et numérotées. Ainsi, le seul numéro suffit 
+à les faire rire.
 
-<p>des actions sussessivent qui ment au résultat : ce n’est pas immédiat ! Et on ne sais pas si ça s’arrête.</p>
+Lors d' un repas le père s'exclame : "12" !
+Tout le monde pouffe de rire.
+La mère dit : "32" !
+Et ils éclatent de rire.
+Le petit sort alors : "104" !
+Et personne ne rit.
+Son frère lui dit alors : " Tu la racontes mal !"
+</code></pre></div></div>
 
-<p>passer d’un pseudo code à la machine. entier/réels/chaine de caractères. Permet de voir théoriquement ce qu’on peut faire.</p>
-
-<h2 id="logique-démonstrations-mathématiques-et-calculabilité">logique, démonstrations mathématiques et calculabilité</h2>
-
-<p><a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Rice">https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Rice</a>
-<a href="https://en.wikipedia.org/wiki/List_of_undecidable_problems">https://en.wikipedia.org/wiki/List_of_undecidable_problems</a></p>
-
-<p>démonstation = pseudo-code</p>
-
-<h2 id="refs">refs</h2>
-
-<p><a href="https://plato.stanford.edu/entries/church-turing/">https://plato.stanford.edu/entries/church-turing/</a>
-<a href="http://pageperso.lif.univ-mrs.fr/~kevin.perrot/documents/2016/calculabilite/Cours_16.pdf">http://pageperso.lif.univ-mrs.fr/~kevin.perrot/documents/2016/calculabilite/Cours_16.pdf</a>
-<a href="https://www.cs.odu.edu/~zeil/cs390/latest/Public/turing-complete/index.html">https://www.cs.odu.edu/~zeil/cs390/latest/Public/turing-complete/index.html</a></p>
+<blockquote>
+  <p>Grace à la machine de Turing universelle, démontrer qu’un langage est <a href="https://fr.wikipedia.org/wiki/Turing-complet">Turing complet</a> c’est à dire qu’il permet de calculer tout ce qu’une machine de Turing peut calculer revient à montrer qu’on peut simuler une machine de Turing. C’est comme ça par exemple qu’on a démontrer que la <a href="https://en.wikipedia.org/wiki/Rule_110">règle 110</a> est un ordinateur.</p>
+</blockquote>
 
   </div>
 
