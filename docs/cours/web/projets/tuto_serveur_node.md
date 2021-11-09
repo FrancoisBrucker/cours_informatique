@@ -1,8 +1,13 @@
-# Numérologie partie 2 - niveau 2. Mise en production sur un serveur distant (ovh1 en 3A)
+---
+layout: page
+title:  "Numérologie partie 2 - niveau 2. Mise en production sur un serveur distant (ovh1 en 3A)"
+category: Projets
+tags: tuto node ovh
+authors:
+- "Lucie Danard"
+- "Anaïs Merliot"
+---
 
-Auteures :
-<br/> Lucie Danard
-<br/> Anaïs Merliot
 
 ## Étape 1 : Récupérer les fichiers du projet numérologie
 Créez un dossier *numerologie* et reproduisez la structure suivante : 
