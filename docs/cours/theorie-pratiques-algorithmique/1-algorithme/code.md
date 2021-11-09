@@ -48,7 +48,7 @@ Une structuration adaptée et des bons noms permettent de se [passer de commenta
 
 >**Attention** : commentaire != documentation (recopiez le 10 000 fois)
 
-* Si votre code est déstiné à être utilisé uniquement par vous ou votre équipe, on n'a pas besoin de le documenter. Son organisation et son écriture doit se suffire à lui-même.
+* Si votre code est destiné à être utilisé uniquement par vous ou votre équipe, on n'a pas besoin de le documenter. Son organisation et son écriture doit se suffire à lui-même.
 * si votre code va être utilisé par des inconnus (lorsque vous créez une API par exemple), les fonctions publiques doivent être documentées. Un utilisateur doit pouvoir utiliser votre code sans effort.
 
 
@@ -89,5 +89,3 @@ Exemples :
 * pour corrigé un bug du programme principal, on modifie du code et on ajoute des tests qui montrent que le bug n'existe plus.
 
 >**Attention** : le code et ses tests doivent être fait par la **même personne** et au **même moment** (voir avant).
-
-

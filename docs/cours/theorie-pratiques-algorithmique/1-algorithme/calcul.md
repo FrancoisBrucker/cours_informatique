@@ -22,7 +22,7 @@ Un algorithme, [on l'a vu]({% link cours/theorie-pratiques-algorithmique/1-algor
 3. un humain doit pouvoir suivre chaque étape avec un papier et un crayon
 4. exécuter une règle ne doit pas nécessiter d'intelligence (à part celle pour comprendre la règle)
 
-Tout ça est un peu plus précis. On constate que c'est le terme **fini** qui revient constamment : pour qu'un humain comprenne, et surtout puisse agir, il faut pas qu'il y ait un nombre infini de choses à regarder (chaque chose à faire prend un temps de réflexion non nulle, une instruction contenant un nombre infini n'est humainement pas réalisable).
+Tout ça est un peu plus précis. On constate que c'est le terme **fini** qui revient constamment : pour qu'un humain comprenne, et surtout puisse agir, il faut pas qu'il y ait un nombre infini de choses à regarder (chaque chose à faire prend un temps de réflexion non nulle, une instruction contenant un nombre infini n'est humainement pas réalisable). En même, si l'on admet que l'on est immortel et que l'on peut réaliser un nombre infini d'opérations, elles sont réalisées les unes à la suite des autres et chaque opération ne peut manipuler qu'un nombre fini d'éléments : on ne ainsi atteindre que des choses [dénombrables](https://fr.wikipedia.org/wiki/Ensemble_d%C3%A9nombrable) c'est à dire représentables par des entiers.
 
 >Cette remarque, évidente, a une conséquence fondamentale : **un algorithme ne peut pas manipuler de nombres réels**. On ne peut considérer un réel que comme une abstraction (un symbole particulier) ou une approximation (on ne considère qu'un nombre fini de décimale).
 {: .note}
@@ -68,7 +68,11 @@ On a pas trop dit grand chose pour l'instant. On a fait que reécrire ce qu'on s
 
 ## modèle
 
-On montre ici que l'on peut aller bien plus loin que la partie précédente et montrer qu'un algorithme est une fonction de $\mathbb{N}$ (les entiers) dans $\mathbb{N}$.
+On montre ici que l'on peut aller bien plus loin que la partie précédente et montrer qu'un algorithme est une fonction de $\mathbb{N}$ (les entiers) dans $\mathbb{N}$ 
+
+Cela nous permettra ensuite de montrer qu'un algorithme ne peut pas **tout** calculer : il existe des fonctions de $\mathbb{N}$ dans $\mathbb{N}$ qu'aucun ordinateur ne pourra calculer.
+
+> Trouver des fonctions non calculables par un ordinateur n'est pas une tâche simple cependant. Il faut connaitre les machines de Turing pour en exhiber.
 
 ### fonctions à plusieurs paramètres entiers {#fonction-plusieurs-entier}
 
@@ -80,15 +84,15 @@ Les paramètres d'un algorithme peuvent tous être représentés par des entiers
 
 On peut donc reformuler notre assertion précédente en unifiant les paramètres (on les recodent tous sous la forme d'entiers) :
 
-> Un algorithme à $p$ entrées est une fonction de $p$ paramètres entiers et qui rend un entier.
+> Un algorithme est une fonction de $p$ paramètres entiers et qui rend un entier.
 >
 > $$f: \mathbb{N}^p \rightarrow \mathbb{N}$$
 >
 {: .note}
 
-C'est bien mieux mais on sépare encore les algorithmes par lur nombre de paramètre. Allons plus loin.
+C'est bien mieux mais on sépare encore les algorithmes par leur nombre de paramètres. Allons plus loin.
 
-#### fonctions à un paramètre entiers {#fonction-un-entier}
+### fonctions à un paramètre entiers {#fonction-un-entier}
 
 Démontrons que tout élément de $\mathbb{N}^p$ peut être représenté par un entier. Pour ce faire on montrera que $\mathbb{N}^p$ est en bijection avec $\mathbb{N}$ quelque soit $p$.
 
@@ -115,19 +119,42 @@ On conclut en remarquant que la fonction $h'(n) = (n, 0, \dots , 0)$ est une inj
 
 Toute fonction de $\mathbb{N}^p$ dans $\mathbb{N}$ peut alors s'écrire comme une fonction de $\mathbb{N}$ dans $\mathbb{N}$ ce qui nous permet de dire que :
 
-> Un algorithme à $p$ entrées est une fonction :
+> Un algorithme est une fonction de :
 >
 > $$f: \mathbb{N} \rightarrow \mathbb{N}$$
 >
 {: .note}
 
+### pour la bonne bouche {#fonction-un-binaire}
+
+Vous allez rire, on peut encore aller plus loin. Pour l'instant, on sait qu'un algorithme est une fonction $f: \mathbb{N} \rightarrow \mathbb{N}$. Elle associe donc un entier à un autre. Cette fonction est alors équivalente à la fonction $f'$ ci-dessous :
+
+$$
+f'(n, m) = \left\{
+    \begin{array}{ll}
+        1 & \mbox{si } f(n) = m\\
+        0 & \mbox{sinon.}
+    \end{array}
+\right.
+$$
+
+D'après ce qui précède, en utilisant une bijection entre $\mathbb{N} \times \mathbb{N}$ et $\mathbb{N}$, il existe alors une fonction $f'': \mathbb{N} \rightarrow \\{0, 1\\}$ équivalente à $f'$ et donc à $f$.
+
+En remarquant que tout entier peut s'écrire sous sa [notation binaire](https://fr.wikipedia.org/wiki/Syst%C3%A8me_binaire), il existe une bijection entre $\mathbb{N}$ et l'ensemble des mots que l'on peut former avec $0$ et $1$. En notant cet ensemble $\\{0, 1\\}^\star$, on en conclut que :
+
+> Un algorithme est une fonction de :
+>
+> $$f: \{0, 1\}^\star \rightarrow \{0, 1\}$$
+>
+{: .note}
+
 ## que calcule-t-on ?
 
-On a démontré qu'un algorithme était une fonction de $\mathbb{N}$ (les entiers) dans $\mathbb{N}$. Mais c'est une fonction particulière puisque ce qu'elle procède selon un plan détaillé (des instructions) qu'elle exécute petit à petit (séquentiellement).
+On a démontré qu'un algorithme était une fonction de $\mathbb{N}$ dans $\mathbb{N}$ (ou, ce qui est identique, de $\\{0, 1\\}^\star$ dans $\\{0, 1\\}$). Mais c'est une fonction particulière puisque ce qu'elle procède selon un plan détaillé (des instructions) qu'elle exécute petit à petit (séquentiellement).
 
 On ne donnera pas ici d'exemple concret de fonction non calculables on montre juste que contrairement à une idée répandue :
 
-> Un algorithme ne peut pas **tout** calculer. En revanche, quelque soit le formalisme utiliser pour le calcul (le pseudo-code ou code) ils peuvent tous calculer **la même chose**.
+> Un algorithme ne peut pas **tout** calculer. En revanche, quelque soit le formalisme utilisé pour le calcul (le pseudo-code ou code) ils peuvent tous calculer **la même chose**.
 {: .note}
 
 ### on ne calcule pas tout
@@ -136,14 +163,14 @@ On va montrer qu'il existe des fonctions qui ne sont pas des algorithmes car il 
 
 #### nombre d'algorithmes
 
-Comme un algorithme peut-être décrit par son pseudo-code, qui est une chaine de caractères (qu'on peut limiter aux mots Français si on a envie), in y a au plus autant d'algorithme que de chaines de caractères. Ca en fait un sacré paquet mais comme chaque chaine de caractère est un entier (on l'a vu [juste avant](#fonction-plusieurs-entier)) :
+Comme un algorithme peut-être décrit par son pseudo-code, qui est une chaine de caractères (qu'on peut limiter aux mots Français si on a envie), in y a au plus autant d'algorithmes que de chaines de caractères. Ca en fait un sacré paquet mais comme chaque chaine de caractère est un entier (on l'a vu [juste avant](#fonction-plusieurs-entier)) :
 
 > Il ne peut y avoir plus d'algorithme que de nombres entiers.
 {: .note}
 
 #### nombre de fonctions
 
-Soit $f: \mathbb{N} \rightarrow \mathbb{N}$. En associant pour chaque entier $n$ le couple $(n, f(n))$ on associer à chaque fonction de $\mathbb{N}$ dans $\mathbb{N}$ l'ensemble :
+Soit $f: \mathbb{N} \rightarrow \mathbb{N}$. En associant pour chaque entier $n$ le couple $(n, f(n))$ on associe à chaque fonction de $\mathbb{N}$ dans $\mathbb{N}$ l'ensemble :
 
 $$I(f) = \{ (n, f(n)) \vert n \in \mathbb{N} \}$$
 
@@ -152,34 +179,38 @@ Connaitre $f$ ou $I(f)$ est équivalent et comme $I(f) \subseteq \mathbb{N} \tim
 > Il y a autant de fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ que de parties de $\mathbb{N} \times \mathbb{N}$
 {: .note}
 
-Or pour tout ensemble $E$ il y a strictement plus d'éléments dans l'ensemble des parties de $E$ (qu'on note $2^E$) que dans $E$ (c'est le [théorème de Cantor](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Cantor)) : il y a strictement plus de fonction que d'éléments dans $\mathbb{N} \rightarrow \mathbb{N}$. Or comme $\mathbb{N} \rightarrow \mathbb{N}$ et $\mathbb{N}$ sont en bijection (mais, si, on l'a vu [précédemment](#fonction-un-entier)) :
+Or pour tout ensemble $E$ il y a strictement plus d'éléments dans l'ensemble de ses parties (qu'on note $2^E$) que dans $E$ (c'est le [théorème de Cantor](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Cantor)). On en conclut qu'il y a strictement plus de fonctions que d'éléments dans $\mathbb{N} \times \mathbb{N}$. Or comme $\mathbb{N} \times \mathbb{N}$ et $\mathbb{N}$ sont en bijection (mais si, on l'a vu [précédemment](#fonction-un-entier)) :
 
-> Il y a strictement plus de fonction $f: \mathbb{N} \rightarrow \mathbb{N}$ que de nombres entiers.
+> Il y a strictement plus de fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ que de nombres entiers.
 {: .note}
 
-La preuve du Théorème de Cantor repose sur le fait que pour toute fonction $f: E \rightarrow 2^E$, l'ensemble $D = \\{x \in E \vert x \notin f(x)\\}$ n'a pas d'antécédent pour $f$. Car s'il en avait un $f(y) = D$, alors :
+La preuve du Théorème de Cantor repose sur le fait que pour toute fonction $f: E \rightarrow 2^E$, l'ensemble $D = \\{x \in E \vert x \notin f(x)\\}$ n'a pas d'antécédent pour $f$. En effet, s'il en avait un, disons $y$, on aurait $f(y) = D$ et alors :
 
 * $y \notin D$ car s'il y était alors $y \notin f(y)$ ce qui est incohérent avec le fait que $f(y) = D$
 * $y \in D$ car s'il n'y était pas alors $y \in f(y)$ ce qui est incohérent avec le fait que $f(y) = D$
 
-Bref, $y$ n'existe pas. On en conclut qu'il existe des éléments de $2^E$ qui ne sont pas des images de $f$ : ce n'est pas une [surjection](https://fr.wikipedia.org/wiki/Surjection). Comme $f$ a été prise au hasard, ça signifie que pour toute fonction de $E$ dans $2^E$ il existera des éléments de $2^E$ qui ne seront pas atteint : il y a strictement plus d'élément dans $2^E$ que dans $E$.
+Bref, $y$ n'existe pas. On en conclut qu'il existe des éléments de $2^E$ qui ne sont pas des images de $f$ : ce n'est pas une [surjection](https://fr.wikipedia.org/wiki/Surjection). Comme $f$ a été prise au hasard, ça signifie que pour toute fonction de $E$ dans $2^E$ il existera des éléments de $2^E$ qui ne seront pas atteints : il y a strictement plus d'élément dans $2^E$ que dans $E$.
 
-### mais lorsqu'on calcule on calcule la même chose
+### mais lorsqu'on calcule, on calcule la même chose
 
-Les règles qu'on s'est donné pour écrire du pseudo-code vont être pratique pour décrire un algorithme pour un humain. Le fait qu'une fois posées, les règles ne nécessitent pas d'intelligence pour être exécutées, les rendent même accessible à des étudiants ! Mais elles ne définissent pas clairement les termes utilisés, il y a de multiples façons d'interpréter les [4 règles générales](#regles-generales) d'un calcul et donc de multiples façon d'écrire du pseudo-code.
+Les règles qu'on s'est donné pour écrire du pseudo-code vont être pratiques pour décrire un algorithme pour un humain. Le fait qu'une fois posées, les règles ne nécessitent pas d'intelligence pour être exécutées, les rendent même accessible à des étudiants !
+Cependant les termes qu'on peut utiliser ne sont pas définis clairement, il y a de multiples façons d'interpréter les [4 règles générales](#regles-generales) d'un calcul et donc de multiples façon d'écrire du pseudo-code.
 
-On peut déjà penser aux multiples langages de programmation, allant de [l'assembleur](https://fr.wikipedia.org/wiki/Assembleur) compréhensible par les processeurs de nos ordinateurs au [python](https://fr.wikipedia.org/wiki/Python_(langage)) que tout le monde connait, en passant par le [haskell](https://fr.wikipedia.org/wiki/Haskell) ou encore le [C](https://fr.wikipedia.org/wiki/C_(langage)). Et bien tous ces langages **calculent exactement la même chose** (mais de façon différente) ! On trouve même des langages désignées pour être les plus simples possibles (appelés [turing tarpit](https://fr.wikipedia.org/wiki/Langage_de_programmation_exotique)) et permettant de calculer tout ce qu'on peut faire en python par exemple, comme le [brainfuck](https://fr.wikipedia.org/wiki/Brainfuck) qui est le plus célèbres d'entres eux.
+On peut déjà penser aux multiples langages de programmation, allant de [l'assembleur](https://fr.wikipedia.org/wiki/Assembleur) compréhensible par les processeurs de nos ordinateurs au [python](https://fr.wikipedia.org/wiki/Python_(langage)) que tout le monde connait, en passant par le [haskell](https://fr.wikipedia.org/wiki/Haskell) ou encore le [C](https://fr.wikipedia.org/wiki/C_(langage)). On trouve même des langages désignées pour être les plus simples possibles (appelés [turing tarpit](https://fr.wikipedia.org/wiki/Langage_de_programmation_exotique)) et permettant de calculer tout ce qu'on peut faire en python par exemple, comme le [brainfuck](https://fr.wikipedia.org/wiki/Brainfuck) qui est le plus célèbres d'entres eux.
 
-> *fun fact*, on peut utiliser aussi certains jeu comme langage de programmation comme [factorio](https://www.factorio.com/) (l'algorithme de tri [quicksort](https://www.youtube.com/watch?v=ts5EKp9w4TU)), ou encore [minecraft](https://www.minecraft.net/) ([algorithme](https://www.youtube.com/watch?v=SrExOQ1yqgw) qui calcule $\sqrt{2}$).
+> *fun fact*, on peut utiliser aussi certains jeu comme langage de programmation comme [factorio](https://www.factorio.com/) (l'algorithme de tri [quicksort](https://www.youtube.com/watch?v=ts5EKp9w4TU)), ou encore [minecraft](https://www.minecraft.net/) ([une caculatrie](https://www.youtube.com/watch?v=uGug-4xkw6M)).
 
-Cette diversité de réponses est aussi vrai d'un point de vue théorique avec les modèles de [la machine de Turing](https://fr.wikipedia.org/wiki/Machine_de_Turing) ou encore le [$\lambda$-calcul](https://fr.wikipedia.org/wiki/Lambda-calcul) qui, et c'est également prouvé, calculent exactement les mêmes choses.
+Et bien on peut démontrer que tous ces langages **calculent exactement la même chose** (mais de façon différente) !
+
+> l'assembleur, le python ou encore le C sont des langages qui permettent de calculer exactement ce qu'on peut calculer avec une [machine de Turing](https://fr.wikipedia.org/wiki/Machine_de_Turing). De plus, on ne connait pas de langages qui permettent de calculer plus de choses.
+{: .note}
 
 Tous ces exemples, plus bien d'autres essais, tendent à [accréditer la thèse de Church-Turing](https://plato.stanford.edu/entries/church-turing/#ReasForAcceThes) selon laquelle :
 
 > On est convaincu que tout ce qu'un humain, une machine, ou encore un système physique peut calculer (c'est à dire en suivant les 4 règles générales) est exactement égal à ce qu'une machine de Turing peut calculer.
 {: .note}
 
-Pour répondre à notre question initiale, *que peut-on calculer ?*, on peut alors étudier ce que peut calculer la machine de Turing.
+Pour répondre à notre question initiale, *que peut-on calculer ?*, on peut maintenant répondre : ce qu'une machine de Turing peut calculer (et ce n'est pas tout, mais c'est quand même pas mal de choses).
 
 ## Conclusion
 
@@ -192,6 +223,6 @@ Ceci signifie que l'on doit toujours utiliser le formalisme (ou langage) qui est
 
 * d'algorithmie : on utilisera les mots du pseudo-code les plus adaptés, dans le respect des 4 règles fondamentales (chaque instruction doit être simple ou explicitée)
 * de code : on utilisera le langage qui est plus adapté à notre problème car ils ont tous leurs spécificités. Il est donc impératif d'apprendre plus d'un langage et surtout d'apprendre à en changer quand on change de problème à résoudre.
-* théorique : on utilisera [la machine de Turing]({% link cours/theorie-pratiques-algorithmique/1-algorithme/machine-turing.md %}), modèle théorique simple qui peremt d'appréhender tout ce qui est calculable.
+* théorique : on utilisera [la machine de Turing]({% link cours/theorie-pratiques-algorithmique/1-algorithme/machine-turing.md %}), modèle théorique simple qui permet d'appréhender tout ce qui est calculable.
 
 Enfin, faites attention aux réels ! Ils n'existent pas (en informatique). Vous ne manipulez que des approximations : il faut faire attention à la stabilité numérique de vos algorithme et ne **jamais** tester l'égalité entre deux réels mais **toujours** les comparer à epsilon prêt.

@@ -25,8 +25,8 @@ Vous devez dans l'idéal être administrateur de votre ordinateur et avoir fait 
 
 ### connaissances système minimale
 
-* connaitre les bases d'un système d'exploitation, [les fichiers et les dossiers]({% post_url tutos/systeme/2021-08-24-fichiers-navigation %})
-* avoir accès à un [terminal]({% post_url tutos/systeme/2021-08-24-terminal %})
+* pouvoir ouvrir un explorateur de fichier
+* installer un programme avec un installeur
 
 ### base d'algorithmie
 
@@ -55,3 +55,7 @@ Chaque partie possède une partie théorique, une partie algorithmique et une pa
 8. objets et espaces de noms $\vert$  XXX $\vert$  introduction à la programmation objet en python
 9. algorithmes de recherche sur les chaines de caractères $\vert$  automates $\vert$  fichiers textes
 
+## TBD
+
+* connaitre les bases d'un système d'exploitation, [les fichiers et les dossiers]({% post_url tutos/systeme/2021-08-24-fichiers-navigation %})
+* avoir accès à un [terminal]({% post_url tutos/systeme/2021-08-24-terminal %})

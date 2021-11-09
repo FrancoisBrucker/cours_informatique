@@ -8,3 +8,6 @@ category: cours
 {: .chemin}
 
 dire que les opération élémentaires collent même si réel = construction et entier = case mémoire. On se donne une taille et les opérations doivent rester en 0 de ça :
+
+> TBD 
+> ajoute que les algo qu'on voit se termineront tous puisqu'on doit calculer la complexité

@@ -137,7 +137,7 @@ if ((x > 12) AND (y < 36)):
 2. un test avec 2 comparaisons et un `AND` : 3 instructions
 3. on affecte le résultat d'une opération élémentaire : 2 instructions
 
-Un nombre total d'instruction de 6.
+Un nombre total d'instructions de 6.
 
 ### nom des termes utilisés ?
 
@@ -224,18 +224,18 @@ Si vous utilisez des méthodes d'objets comme vous avez l'habitude de le faire e
 
 ## comment écrire du pseudo-code
 
-Le pseudo-code est une représentation d'un algorithme donc le but est :
+Le pseudo-code est une représentation d'un algorithme. Son but est de :
 
-* de démontrer que l'algorithme fait bien ce qu'on pense qu'il fait
-* de calculer ses performances :
+* démontrer que l'algorithme fait bien ce qu'on pense qu'il fait
+* calculer ses performances :
   * nombre d'opérations utilisées
   * nombre de cases mémoire utilisées
 
 Pour réaliser cela le plus simplement possible, on voudra **toujours** :
 
-* qu'ils soient lisibles,
-* qu'ils soient justes,
-* en connaître les performances.
+* qu'il soit lisible,
+* qu'il soit juste,
+* en connaître ses performances.
 
 ### lisible
 
