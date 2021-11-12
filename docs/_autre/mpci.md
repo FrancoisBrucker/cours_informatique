@@ -21,6 +21,7 @@ Les divers contrôles intermédiaires seront à rendre directement sur [ametice]
 
 ## Plan des cours
 
+
 [le cours]({% link cours/theorie-pratiques-algorithmique/index.md %})
 
 Chaque partie est une semaine (2h mercredi et 4h vendredi). Il y aura 2 DS, les mercredi de la séance 4 et 7. De plus, chaque vendredi, il y aura un contrôle de 15min sur la séance du mercredi s'il n'y avait pas de DS.

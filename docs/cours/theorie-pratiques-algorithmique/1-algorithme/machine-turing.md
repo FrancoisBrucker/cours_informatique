@@ -73,6 +73,11 @@ Le premier exemple donné par Allan Turing est celui-ci :
 
 La fonction $\delta$ est ici partielle, avec la convention que si l'on arrive dans une configuration non décrite, on stoppe la machine (on peut donc étendre $\delta$ à tout $Q \times \Gamma$ si on le voulait).
 
+> TBD :
+> indicer les cases du ruban : -infini ... 0 (1ere case) ... +infini
+> numéroter les instructions
+> cela préparera le thm de cook.
+
 Allons-y. Essayons ce code. On considère la machine de Turing ci-après :
 
 ![turing 1]({{ "/assets/cours/algorithmie/turing-1.png" | relative_url }}){:style="margin: auto;display: block;"}
