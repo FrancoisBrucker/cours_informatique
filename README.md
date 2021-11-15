@@ -21,6 +21,8 @@ Ces pages sont ensuite *compilée* en html par jekyll en utilisant des templates
 
 Ces fichiers compilés forment un site qui peut ensuite être placé sur n'importe quel serveur admettant des site statique (par défaut, le site compilé est placé dans le dossier build).
 
+On utilise le plugin https://rdoc.info/gems/jekyll-spaceship pour améliorer la mise ne page avec markdown et jekyll.
+
 ### installation
 
 >On suit les [instrutions](https://jekyllrb.com/docs/).

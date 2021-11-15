@@ -45,6 +45,12 @@ Pour fonctionner, la machine nécessite :
 
 Initialement toutes les cases du ruban contiennent le symbole $\sharp$.
 
+Voici la représentation d'une machine à la fin de la $i$ème instruction. Son état est $q$ et son curseur est positionné sur la case d'indice $j$ :
+
+![machine]({{ "/assets/cours/algorithmie/machine-turing.png" | relative_url }}){:style="margin: auto;display: block;"}
+
+Par convention, on considérera que le ruban initial aura comme numéro d'instruction 0 et que l'indice de la case où est initialement le curseur sera d'indice 0.
+
 L'exécution d'un programme est alors comme suit :
 
 1. on place la tête de lecture sur une case du ruban
@@ -73,14 +79,11 @@ Le premier exemple donné par Allan Turing est celui-ci :
 
 La fonction $\delta$ est ici partielle, avec la convention que si l'on arrive dans une configuration non décrite, on stoppe la machine (on peut donc étendre $\delta$ à tout $Q \times \Gamma$ si on le voulait).
 
-> TBD :
-> indicer les cases du ruban : -infini ... 0 (1ere case) ... +infini
-> numéroter les instructions
-> cela préparera le thm de cook.
-
 Allons-y. Essayons ce code. On considère la machine de Turing ci-après :
 
 ![turing 1]({{ "/assets/cours/algorithmie/turing-1.png" | relative_url }}){:style="margin: auto;display: block;"}
+
+Par convention, on considérera que le ruban initial aura comme numéro d'instruction 0 et que l'indice de la case où est initialement le curseur sera d'indice 0.
 
 On est à l'état $a$ et on lit $\sharp$ dans la machine : la table de transition nous indique qu'il faut :
 
@@ -133,9 +136,30 @@ Exemple classique des machines de Turing, le doublement des bâtons s'écrit com
 
 On a représenté la machine sous la forme d'un tableau où les état sont des lignes et chaque colonne est un élément de l'alphabet. L'état initial est la première ligne et les états finaux sont ceux qui n'ont pas de ligne (ici $e$).
 
-On initialise cette machine avec une chaine de 1.
+On initialise cette machine avec une chaine de 1. Par exemple, en commençant par un ruban valant `11`, on obtient la résolution suivante (la position du curseur est en orange) :
 
-Si vous ne voulez pas tester votre machine à la main, Le code précédent a été traduit ci-dessous dans le formalisme de <https://turingmachine.io/> :
+| instruction| ruban ||||||| état |
+| ^^   |-3|-2|-1|0|1|2|3| ^^|
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+|----|--|--|--|-|-|-|-|----|
+|0   |  #  |  #  |  #  | **1** {: .cls style=";background: orange" }|  1  |  #  |  #  | s  |
+|1   |  #  |  #  | **#** {: .cls style=";background: orange" }|  #  |  1  |  #  |  #  | l  |
+|2   |  #  | **#** {: .cls style=";background: orange" }|  1  |  #  |  1  |  #  |  #  | g  |
+|3   |  #  |  1  | **1** {: .cls style=";background: orange" }|  #  |  1  |  #  |  #  | d  |
+|4   |  #  |  1  |1| **#** {: .cls style=";background: orange" }|  1  |  #  |  #  | d  |
+|5   |  #  |  1  |1|#| **1** {: .cls style=";background: orange" }|  #  |  #  | s  |
+|6   |  #  |  1  |1| **#** {: .cls style=";background: orange" }|#|  #  |  #  | l |
+|7   |  #  |  1  | **1** {: .cls style=";background: orange" }|1|#|  #  |  #  | g |
+|8   |  #  | **1** {: .cls style=";background: orange" }|1|1|#|  #  |  #  | g |
+|9   | **#** {: .cls style=";background: orange" }|1|1|1|#|  #  |  #  | g |
+|10   |1| **1** {: .cls style=";background: orange" }|1|1|#|  #  |  #  | d |
+|11   |1|1| **1** {: .cls style=";background: orange" }|1|#|  #  |  #  | d |
+|12   |1|1|1| **1** {: .cls style=";background: orange" }|#|  #  |  #  | d |
+|13   |1|1|1|1| **#** {: .cls style=";background: orange" }|  #  |  #  | d |
+|14   |1|1|1|1|#| **#** {: .cls style=";background: orange" }|   #  | s |
+|15   |1|1|1|1|#| #| **#** {: .cls style=";background: orange" } | e |
+
+La machine s'arrête ! Avant de voir exactement pourquoi cette machine s'arrête, essayer de comprendre son fonctionnement. Si vous ne voulez pas tester votre machine à la main, Le code précédent a été traduit ci-dessous dans le formalisme de <https://turingmachine.io/> avec une entrée de `1111` :
 
 ```text
 input: '1111'
@@ -170,6 +194,8 @@ Le programme de la machine de Turing a machine va donc ici s'arrêter puisqu'à 
 
 > Félicitations ! Vous venez d'implémenter la fonction $f(n) = 2n$ dans une machine de Turing.
 
+Remarquez que par construction de la machine de Turing, le nombre d'opérations nécessaires pour exécuter le programme correspond aussi au nombre maximum de cases différentes du ruban qui ont peu être parcourues.
+
 ### autres programmes
 
 Le site <https://turingmachine.io/> contient bien d'autres programmes à essayer. Vous pouvez aussi aller du côté de <https://machinedeturing.com/> pour aller voir le programme donné par Turing pour [générer tous les entiers](https://machinedeturing.com/exemple.php?page=9).
@@ -192,21 +218,35 @@ Le modèle de la machine de Turing admet quatre paramètres :
 
 On peut se demander ce qui est vraiment utile là-dedans (peut-on simplifier le modèle sans perdre en expressivité ?) ou au contraire si complexifier le modèle permet de calculer plus de chose.
 
-### généralisation du modèle : inutile
-
-Commençons par répondre à la seconde question : *est-ce que complexifier le modèle permet de calculer plus de chose ?*. La réponse est **non**.
-
-Il existent de nombreuses généralisations des machines de Turing, elles ne permettent pas de calculer plus de choses, mais sont utile car elle permettent de calculer plus facilement/rapidement :
-
-* par exemple des machines utilisant [plusieurs rubans et/ou plusieurs curseurs](https://perso.liris.cnrs.fr/sylvain.brandel/wiki/lib/exe/fetch.php?media=ens:m1if09:m1if09-cm03.pdf). L'intérêt de ces machines est qu'elle sont plus facilement programmables.
-* Il existe aussi, [la machine de Turing non déterministe](https://fr.wikipedia.org/wiki/Machine_de_Turing_non_d%C3%A9terministe), qui n'utilise pas une fonction de transition mais une relation. Même si elle a l'air très puissante, ne change rien à ce qu'on peut calculer, elles permettent juste de le faire plus vite.
-
 > On est intimement persuadé (c'est [la thèse de Church-Turing](https://plato.stanford.edu/entries/church-turing/#ReasForAcceThes)) que tout ce qu'un humain, une machine, ou encore un système physique peut calculer (c'est à dire en suivant les 4 règles générales) est exactement égal à ce qu'une machine de Turing peut calculer.
 {: .note}
 
-Enfin :
+### généralisation du modèle : inutile
 
-> On peut toujours transformer une machine à plusieurs rubans et/ou plusieurs curseurs en une machine de Turing simple.
+Commençons par répondre à la seconde question : *est-ce que complexifier le modèle permet de calculer plus de chose ?* La réponse est **non**.
+
+Il existent de nombreuses généralisations des machines de Turing, elles ne permettent pas de calculer plus de choses, mais sont utiles car elle permettent de calculer plus facilement/rapidement. Ces généralisations nous permettent d'écrire rapidement des programmes en sachant qu'on pourrait (si on en avait très envie) les écrire avec une machine de Turing normale.
+
+#### machines à plusieurs rubans
+
+Une machine de Turing à $k$ rubans peut être définie comme suit.
+
+Une **machine de Turing à $k$ rubans** est un quintuplet $(Q, \Gamma, q_0, \delta_k, F)$ où :
+
+* $Q$ est un ensemble fini d'**état**
+* $\Gamma$ est l'**alphabet de travail**. Il contient un symbole spécial $\sharp$, dit **blanc**, avec $\sharp \in \Gamma$
+* $q_0 \in Q$ est l'**état initial** de la machine
+* $\delta_k : Q \times \Gamma^k \rightarrow Q \times \Gamma^k \times \\{ \leftarrow, \rightarrow \\}^k$ est la **fonction de transition**
+* $F \subset Q$ est l'ensemble des **états finaux**.
+
+Pour fonctionner, la machine nécessite :
+
+* $k$ **rubans** constitués de cases contiguës pouvant chacune contenir un élément de $\Gamma$
+* $k$ **curseurs**, un pour chaque ruban
+
+Tout se passe comme pour la machine de Turing mais on lit la valeur des $k$ rubans, puis la fonction de transition écrit une valeur sur chaque ruban et déplace les curseurs de chaque ruban.
+
+> On peut toujours transformer une machine à plusieurs rubans  en une machine de Turing simple.
 {: .note}
 
 Nous n'allons pas donner la preuve complète de ceci, mais juste une idée de la preuve de comment simuler une machine à 2 rubans avec une machine avec un seul ruban.
@@ -222,9 +262,64 @@ Enfin, on peut toujours s'arranger pour qu'au départ, le curseur du premier rub
 
 De là, à chaque itération de la machine à 1 seul ruban, on commence par chercher les paquets de 4 cases contenant les curseurs de chaque ruban et on lit leurs valeurs (on peut faire ça en parcourant le ruban jusqu'à trouver $\bigtriangledown$ en premier ou en troisième position d'un paquet à 4 cases) puis on effectue la fonction de transition de la machine à 2 rubans et on écrit les nouvelles valeurs en recherchant les positions respectives des curseurs dans les paquets à 4 cases.
 
+#### machines à plusieurs curseurs
+
+Plutôt que de multiplier les rubans, on peut aussi multiplier les curseurs :
+
+Une **machine de Turing à $k$ curseurs** est un quintuplet $(Q, \Gamma, q_0, \delta_k, F)$ où :
+
+* $Q$ est un ensemble fini d'**état**
+* $\Gamma$ est l'**alphabet de travail**. Il contient un symbole spécial $\sharp$, dit **blanc**, avec $\sharp \in \Gamma$
+* $q_0 \in Q$ est l'**état initial** de la machine
+* $\delta_k : Q \times \Gamma^k \rightarrow Q \times \Gamma^k \times \\{ \leftarrow, \rightarrow \\}^k$ est la **fonction de transition**
+* $F \subset Q$ est l'ensemble des **états finaux**.
+
+Pour fonctionner, la machine nécessite :
+
+* un **ruban** constitués de cases contiguës pouvant chacune contenir un élément de $\Gamma$
+* $k$ **curseurs**, sur le ruban
+
+Elle fonctionne de la même manière que la machine à $k$ rubans sauf qu'on lit les valeurs sur le même rubans.
+
+#### machines de Turing non déterministe
+
+Il existe aussi, [la machine de Turing non déterministe](https://fr.wikipedia.org/wiki/Machine_de_Turing_non_d%C3%A9terministe), qui se définit comme suit :
+
+Une **machine de Turing non déterministe** est un quintuplet $(Q, \Gamma, q_0, \delta_k, F)$ où :
+
+* $Q$ est un ensemble fini d'**état**
+* $\Gamma$ est l'**alphabet de travail**. Il contient un symbole spécial $\sharp$, dit **blanc**, avec $\sharp \in \Gamma$
+* $q_0 \in Q$ est l'**état initial** de la machine
+* $\delta : Q \times \Gamma \rightarrow 2^{Q \times \Gamma \times \\{ \leftarrow, \rightarrow \\}}$ est la **fonction de transition**
+* $F \subset Q$ est l'ensemble des **états finaux**.
+
+Cette machine se distingue de la machine de Turing normale parce que la fonction de transition rend un sous ensemble fini de $Q \times \Gamma \times \\{ \leftarrow, \rightarrow \\}$ : il rend un ensemble de possibilités de transitions possibles.
+
+On peut alors représenter ses transitions par un arbre :
+
+![Turing non déterministe arbre]({{ "/assets/cours/algorithmie/turing-nd-arbre.png" | relative_url }}){:style="margin: auto;display: block;"}
+
+Ce qui nous intéresse ici ce n'est plus le calcul effectif mais **s'il existe pour une entrée donnée une suite de transitions emmenant à un état final**. C'est à dire s'il existe une suite de nombres $(t_1, \dots, t_k)$ telle que à chaque instruction $i$  on ait pu choisir le $t_i$ème choix pour que la $k$ instruction mêne à un état final.
+
+En utilisant la relation arborée, ceci veut dire qu'à partir de l'état initial $e$ et du caractère $a$ sous le curseur, on a :
+
+* $(e_{t_1}, a_{t_1}, f_{t_1}) \in \delta(e, a)$
+* $(e_{t_1\dots t_i}, a_{t_1\dots t_i}, f_{t_1\dots t_i}) \in \delta(e_{t_1t_2\dots t_{i-1}}, a_{t_1t_2\dots t_1i-1})$
+
+C'est un outils théorique très puissant car il permet de démontrer simplement beaucoup de théorème d'informatique théorique. Cependant :
+
+> Pour toute machine de Turing non déterministe, on peut créer une machine de turing *normale* qui s'arrêtera sur les même entrées.
+{. note}
+
+Juste une idée de la preuve. En utilisant la représentation arborée, en regardant chaque possibilité *couche par couche* (on appelle ça faire un [parcours en largeur](https://fr.wikipedia.org/wiki/Algorithme_de_parcours_en_largeur)), on construit une machine de turing *simple* qui s'arrête bien si et seulement si la machine de turing non déterministe s'arrête.
+
+#### autres variantes
+
+par exemple des machines utilisant [plusieurs rubans et/ou plusieurs curseurs](https://perso.liris.cnrs.fr/sylvain.brandel/wiki/lib/exe/fetch.php?media=ens:m1if09:m1if09-cm03.pdf). L'intérêt de ces machines est qu'elle sont plus facilement programmables.
+
 ### simplification de l'alphabet
 
-Diminuer ou agrandir l'alphabet d'une machine de Turing ne permet pas de calculer plus de choses :
+Diminuer ou agrandir l'alphabet d'une machine de Turing ne permet pas de calculer plus de choses non plus :
 
 > On peut simuler toute machine de Turing par une machine de Turing sur un alphabet $\\{\sharp, 1\\}$.
 {: .note}
@@ -264,21 +359,21 @@ En codant :
 
 La transition $\delta(q_i, c_j) = (q_k, c_l, \leftarrow)$ se code alors :
 
-$$
-\underbrace{\sharp \cdots \sharp}_{i}1\underbrace{\sharp \cdots \sharp}_{j}1\underbrace{\sharp \cdots \sharp}_{k}1\underbrace{\sharp \cdots \sharp}_{l}1\underbrace{\sharp}_\leftarrow
-$$
+$${
+\underbrace{\sharp \cdots \sharp}_{i}{1} \underbrace{\sharp \cdots \sharp}_{j}{1} \underbrace{\sharp \cdots \sharp}_{k}{1} \underbrace{\sharp \cdots \sharp}_{l}{1} \underbrace{\sharp}_{\leftarrow}
+}$$
 
 On sépare ensuite toutes les transitions par $11$ :
 
-$$
+$
 \mbox{transition}_111\cdots11\mbox{transition}_i11\cdots11\mbox{transition}_N
-$$
+$
 
 Il nous reste à renseigner le nombre d'états et de caractères en début de code et de donner un début et une fin à ce code ($111$) pour finaliser notre encodage $\langle M \rangle$ de la machine de Turing $M$ :
 
-$$
+$
 \langle M \rangle = 111\underbrace{\sharp \cdots \sharp}_{n}11\underbrace{\sharp \cdots \sharp}_{m}11\mbox{transition}_111\cdots11 \mbox{transition}_i11\cdots11\mbox{transition}_N111
-$$
+$
 
 > Félicitations, vous venez de créer votre 1er ordinateur ! La machine de Turing universelle permet en effet d'exécuter n'importe quelle machine $M$ : c'est un ordinateur dont le langage machine est l'encodage $\langle M \rangle$.
 
