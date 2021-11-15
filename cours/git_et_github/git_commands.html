@@ -1,49 +1,42 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>git : les commandes | cours d’informatique</title>
-<meta name="generator" content="Jekyll v4.2.0" />
-<meta property="og:title" content="git : les commandes" />
-<meta name="author" content="François Brucker" />
-<meta property="og:locale" content="en_US" />
-<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
-<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
-<link rel="canonical" href="/cours_informatique/cours/git_et_github/git_commands.html" />
-<meta property="og:url" content="/cours_informatique/cours/git_et_github/git_commands.html" />
-<meta property="og:site_name" content="cours d’informatique" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="git : les commandes" />
+<meta name="generator" content="Jekyll v4.2.0">
+<meta property="og:title" content="git : les commandes">
+<meta name="author" content="François Brucker">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille.">
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille.">
+<link rel="canonical" href="/cours_informatique/cours/git_et_github/git_commands.html">
+<meta property="og:url" content="/cours_informatique/cours/git_et_github/git_commands.html">
+<meta property="og:site_name" content="cours d’informatique">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="git : les commandes">
 <script type="application/ld+json">
 {"description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","headline":"git : les commandes","url":"/cours_informatique/cours/git_et_github/git_commands.html","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
-  <link rel="stylesheet" href="/cours_informatique/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
-  <script>
-    MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-      },
-      svg: {
-        fontCache: 'global'
-      }
-    };
-    </script>
-    <script type="text/javascript" id="MathJax-script" async
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
-    </script>
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css">
+<link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique">
 </head>
 
-<body><header class="site-header" role="banner">
+<body>
+<header class="site-header" role="banner">
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
-        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/cours_informatique/">cours d'informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
         <label for="nav-trigger">
           <span class="menu-icon">
-            <svg viewBox="0 0 18 15" width="18px" height="15px">
-              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
             </svg>
           </span>
         </label>
@@ -51,7 +44,8 @@
         <div class="trigger">
             <a class="page-link" href="/cours_informatique/about"> about </a>
         </div>
-      </nav></div>
+      </nav>
+</div>
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
@@ -65,7 +59,7 @@
       
         <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Fanis Michalakis</span></span></li>
       
-      </ul></p></p>
+      </ul>
   </header>
 
   <div class="post-content">
@@ -95,12 +89,13 @@
 
 <p><code class="language-plaintext highlighter-rouge">&lt;url&gt;</code> sera ce qui est copié depuis la page du projet :</p>
 
-<p><img src="/cours_informatique/assets/cours/git/github-clone-projet.png" alt="usage github" /></p>
+<p><img src="/cours_informatique/assets/cours/git/github-clone-projet.png" alt="usage github"></p>
 
 <p>Et aura deux formes :</p>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">git@github.com:&lt;USER&gt;/&lt;monprojet&gt;.git</code>. Si vous utilisez cette méthode,vous vous authentifierez avec vos clés ssh.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">git@github.com:&lt;USER&gt;/&lt;monprojet&gt;.git</code>. Si vous utilisez cette méthode,vous vous authentifierez avec vos clés ssh.</li>
   <li>par http : <code class="language-plaintext highlighter-rouge">git remote add origin https://github.com/&lt;USER&gt;/&lt;monprojet&gt;.git</code>. Si vous utilisez cette méthode vous vous authentifierez avec un <a href="https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token">token</a>.</li>
 </ul>
 
@@ -127,12 +122,14 @@ Une fois le dossier crée, github vous aide pour lier ce répertoire à un proje
     </ul>
   </li>
   <li>
-    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> &lt;là où on veut mettre le dossier&gt;
+    <div class="language-shell highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> &lt;là où on veut mettre le dossier&gt;
 <span class="nb">mkdir</span> &lt;monprojet&gt;
 </code></pre></div>    </div>
   </li>
   <li>
-    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> &lt;monprojet&gt;
+    <div class="language-shell highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> &lt;monprojet&gt;
 git init
 </code></pre></div>    </div>
   </li>
@@ -142,7 +139,8 @@ git init
       <li>par http : <code class="language-plaintext highlighter-rouge">git remote add origin https://github.com/&lt;USER&gt;/&lt;monprojet&gt;.git</code>. Si vous utilisez cette méthode vous vous authentifierez avec un <a href="https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token">token</a>.</li>
     </ul>
   </li>
-  <li>votre premier push devra aussi définir la branche de l’origin : <code class="language-plaintext highlighter-rouge">git push --set-upstream.origin master</code>. Vous pourrez ensuite utiliser simplement <code class="language-plaintext highlighter-rouge">git push</code></li>
+  <li>votre premier push devra aussi définir la branche de l’origin : <code class="language-plaintext highlighter-rouge">git push --set-upstream.origin master</code>. Vous pourrez ensuite utiliser simplement <code class="language-plaintext highlighter-rouge">git push</code>
+</li>
 </ol>
 
 <h3 id="travailler-à-plusieurs-sur-un-projet">Travailler à plusieurs sur un projet</h3>
@@ -288,17 +286,21 @@ git branch <span class="nt">-d</span> branche
     <tr>
       <td><code class="language-plaintext highlighter-rouge">git add &lt;fichier&gt;</code></td>
       <td>ajoute des fichiers au stage en vue de les commit</td>
-      <td><code class="language-plaintext highlighter-rouge">git add .</code> pour ajouter tous les fichiers modifiés</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">git add .</code> pour ajouter tous les fichiers modifiés</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">git branch</code></td>
       <td>affiche les branches existantes (en local, par défaut). La branche actuelle est mise en évidence par un astérisque</td>
-      <td><code class="language-plaintext highlighter-rouge">-d &lt;branche&gt;</code> supprime la branche <em>branche</em></td>
+      <td>
+<code class="language-plaintext highlighter-rouge">-d &lt;branche&gt;</code> supprime la branche <em>branche</em>
+</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">git checkout &lt;branche&gt;</code></td>
       <td>change de branche pour aller sur “branche”</td>
-      <td><code class="language-plaintext highlighter-rouge">-b &lt;nouvelle branche&gt;</code> pour créer une nouvelle branche et s’y placer</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">-b &lt;nouvelle branche&gt;</code> pour créer une nouvelle branche et s’y placer</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">git clone &lt;url&gt;</code></td>
@@ -308,11 +310,13 @@ git branch <span class="nt">-d</span> branche
     <tr>
       <td><code class="language-plaintext highlighter-rouge">git commit</code></td>
       <td>publie les changements dans l’arbre git local</td>
-      <td><code class="language-plaintext highlighter-rouge">-a</code> commit tous les changements présents dans le stage <br /> <code class="language-plaintext highlighter-rouge">-m "mon_message"</code> permet d’écrire le message de commit sans passer par l’éditeur</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">-a</code> commit tous les changements présents dans le stage <br> <code class="language-plaintext highlighter-rouge">-m "mon_message"</code> permet d’écrire le message de commit sans passer par l’éditeur</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">git diff</code></td>
-      <td>indique les différences entre le dernier commit et ce qui n’est pas encore mis dans le <em>stage</em></td>
+      <td>indique les différences entre le dernier commit et ce qui n’est pas encore mis dans le <em>stage</em>
+</td>
       <td> </td>
     </tr>
     <tr>
@@ -323,17 +327,22 @@ git branch <span class="nt">-d</span> branche
     <tr>
       <td><code class="language-plaintext highlighter-rouge">git log</code></td>
       <td>affiche l’historique git complet du projet</td>
-      <td><code class="language-plaintext highlighter-rouge">--oneline</code> affiche les commits sous forme condensée pour plus de lisibilité <br /> <code class="language-plaintext highlighter-rouge">--graph</code> représentation visuelle de l’arbre (avec les branches éventuelles)</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">--oneline</code> affiche les commits sous forme condensée pour plus de lisibilité <br> <code class="language-plaintext highlighter-rouge">--graph</code> représentation visuelle de l’arbre (avec les branches éventuelles)</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">git merge &lt;branche&gt;</code></td>
-      <td>applique les modifications portées par “<branche>" à la branche mère dont elle est issue</branche></td>
-      <td><code class="language-plaintext highlighter-rouge">--no-ff</code> (<em>no fast forward</em>) permet de créer un commit de fusion dans tous les cas, même cas quand la fusion pourrait être résolue trivialement (<em>fast-forward</em>). Utile pour conserver l’historique des branches lors d’un <em>merge</em> suivant un <em>rebase</em></td>
+      <td>applique les modifications portées par “<branche>\" à la branche mère dont elle est issue</branche>
+</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">--no-ff</code> (<em>no fast forward</em>) permet de créer un commit de fusion dans tous les cas, même cas quand la fusion pourrait être résolue trivialement (<em>fast-forward</em>). Utile pour conserver l’historique des branches lors d’un <em>merge</em> suivant un <em>rebase</em>
+</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">git pull</code></td>
       <td>télécharge en local les modifications présentes sur le serveur (<em>a priori</em> ajoutées par d’autres développeurs)</td>
-      <td><code class="language-plaintext highlighter-rouge">--rebase=preverse</code> permet de conserver les commits de fusion, utile pour garder une trace de l’existence de certaines branches</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">--rebase=preverse</code> permet de conserver les commits de fusion, utile pour garder une trace de l’existence de certaines branches</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">git push</code></td>
@@ -348,11 +357,13 @@ git branch <span class="nt">-d</span> branche
     <tr>
       <td><code class="language-plaintext highlighter-rouge">git stash</code></td>
       <td>permet de mettre temporairement de côté les modifications en attente de <em>commit</em> afin de revenir au dernier <em>commit</em>. Les modifications ainsi mises de côté peuvent ensuite être réappliqués (éventuellement après que d’autres commits ont été effectués) ou supprimées.</td>
-      <td><code class="language-plaintext highlighter-rouge">git stash list</code> pour lister les éléments mis de côté <br /> <code class="language-plaintext highlighter-rouge">git stash apply</code> pour faire revenir les modifications dans l’espace de travail <br /> <code class="language-plaintext highlighter-rouge">git stash clear</code> pour abandonner complètement les modifications mises de côté</td>
+      <td>
+<code class="language-plaintext highlighter-rouge">git stash list</code> pour lister les éléments mis de côté <br> <code class="language-plaintext highlighter-rouge">git stash apply</code> pour faire revenir les modifications dans l’espace de travail <br> <code class="language-plaintext highlighter-rouge">git stash clear</code> pour abandonner complètement les modifications mises de côté</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">git status</code></td>
-      <td>affiche les fichiers prêts à être <em>commit</em> et ceux qui ne sont pas encore dans le <em>stage</em></td>
+      <td>affiche les fichiers prêts à être <em>commit</em> et ceux qui ne sont pas encore dans le <em>stage</em>
+</td>
       <td> </td>
     </tr>
   </tbody>
@@ -368,19 +379,21 @@ git branch <span class="nt">-d</span> branche
 
   <div class="wrapper">
 
-    <h2 class="footer-heading">cours d&#39;informatique</h2>
+    <h2 class="footer-heading">cours d'informatique</h2>
 
     <div class="footer-col-wrapper">
       <div class="footer-col footer-col-1">
         <ul class="contact-list">
-          <li class="p-name">cours d&#39;informatique</li></ul>
+          <li class="p-name">cours d'informatique</li>
+</ul>
       </div>
 
-      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+      <div class="footer-col footer-col-2">
+<ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
 </div>
 
       <div class="footer-col footer-col-3">
-        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.</p>
+        <p>Support de cours/td d'informatique à l'école centrale marseille.</p>
       </div>
     </div>
 

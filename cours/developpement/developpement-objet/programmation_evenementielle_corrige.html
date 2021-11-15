@@ -1,49 +1,42 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>Programmation événementielle corrigé | cours d’informatique</title>
-<meta name="generator" content="Jekyll v4.2.0" />
-<meta property="og:title" content="Programmation événementielle corrigé" />
-<meta name="author" content="François Brucker" />
-<meta property="og:locale" content="en_US" />
-<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
-<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
-<link rel="canonical" href="/cours_informatique/cours/developpement/developpement-objet/programmation_evenementielle_corrige.html" />
-<meta property="og:url" content="/cours_informatique/cours/developpement/developpement-objet/programmation_evenementielle_corrige.html" />
-<meta property="og:site_name" content="cours d’informatique" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Programmation événementielle corrigé" />
+<meta name="generator" content="Jekyll v4.2.0">
+<meta property="og:title" content="Programmation événementielle corrigé">
+<meta name="author" content="François Brucker">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille.">
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille.">
+<link rel="canonical" href="/cours_informatique/cours/developpement/developpement-objet/programmation_evenementielle_corrige.html">
+<meta property="og:url" content="/cours_informatique/cours/developpement/developpement-objet/programmation_evenementielle_corrige.html">
+<meta property="og:site_name" content="cours d’informatique">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Programmation événementielle corrigé">
 <script type="application/ld+json">
 {"description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","headline":"Programmation événementielle corrigé","url":"/cours_informatique/cours/developpement/developpement-objet/programmation_evenementielle_corrige.html","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
-  <link rel="stylesheet" href="/cours_informatique/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
-  <script>
-    MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-      },
-      svg: {
-        fontCache: 'global'
-      }
-    };
-    </script>
-    <script type="text/javascript" id="MathJax-script" async
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
-    </script>
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css">
+<link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique">
 </head>
 
-<body><header class="site-header" role="banner">
+<body>
+<header class="site-header" role="banner">
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
-        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/cours_informatique/">cours d'informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
         <label for="nav-trigger">
           <span class="menu-icon">
-            <svg viewBox="0 0 18 15" width="18px" height="15px">
-              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
             </svg>
           </span>
         </label>
@@ -51,14 +44,15 @@
         <div class="trigger">
             <a class="page-link" href="/cours_informatique/about"> about </a>
         </div>
-      </nav></div>
+      </nav>
+</div>
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Programmation événementielle corrigé</h1></p>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></p>
+    <h1 class="post-title">Programmation événementielle corrigé</h1>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span>
   </header>
 
   <div class="post-content">
@@ -70,7 +64,7 @@
 
 <p>On utiise <a href="http://appjar.info">appjar</a> une bibliothèque graphique permettant d’apprendre les interfaces graphiques. On la déconseille fortement pour des applications pro, mais pour apprendre, elle est très bien.</p>
 
-<p>On utilisera le <a href="http://sametmax.com/quest-de-que-mvc-et-a-quoi-ca-sert/">pattern MVC</a> pour la création de nos interfaces, c’est un pattern très pratique pour gérer des systèmes avec des <a href="https://fr.wikipedia.org/wiki/Programmation_événementielle">événements</a></p>
+<p>On utilisera le <a href="http://sametmax.com/quest-de-que-mvc-et-a-quoi-ca-sert/">pattern MVC</a> pour la création de nos interfaces, c’est un pattern très pratique pour gérer des systèmes avec des <a href="https://fr.wikipedia.org/wiki/Programmation_%C3%A9v%C3%A9nementielle">événements</a></p>
 
 <p>Pour vous initier doucements aux interfaces, en particulier web, je ne saurais trop vous conseiller de lire <a href="https://www.amazon.fr/KRUG-DONT-MAKE-THINK-_p2/dp/0321344758/ref=sr_1_2?adgrpid=56877079420">Don’t make me think</a>, qui est à la bibliothèque. Il est certes un peu vieux maintenant mais il est otujours éclairant sur ce que cherche un utilisateur.</p>
 
@@ -82,7 +76,7 @@
 
 <h4 id="design">Design</h4>
 
-<p><img src="img/fenetre_1_bouton.png" alt="me2" /></p>
+<p><img src="img/fenetre_1_bouton.png" alt="me2"></p>
 
 <p>La fenêtre ci-dessus est un exemple possible. D’autres design sont bien sûr acceptables, mais on doit pouvoir tout justifier. Ici :</p>
 
@@ -100,13 +94,13 @@
 
 <h4 id="modèle-mvc">Modèle MVC</h4>
 
-<p>Le modèle <a href="https://fr.wikipedia.org/wiki/Modèle-vue-contrôleur">MVC</a> n’est qu’une possiblité pour créer des interfaces de façon <em>propre</em> (c’est à dire facilement modifiable). Le principe directeur de toute méthode est de pouvoir retrouver facilement ses petits et donc de séparer au maximum les rôles de chaque partie. POur le modèle MVC on a 3 parties : l’affichage (Vue), les données (Modèle) et les liens entre les 2 (Contrôleur).</p>
+<p>Le modèle <a href="https://fr.wikipedia.org/wiki/Mod%C3%A8le-vue-contr%C3%B4leur">MVC</a> n’est qu’une possiblité pour créer des interfaces de façon <em>propre</em> (c’est à dire facilement modifiable). Le principe directeur de toute méthode est de pouvoir retrouver facilement ses petits et donc de séparer au maximum les rôles de chaque partie. POur le modèle MVC on a 3 parties : l’affichage (Vue), les données (Modèle) et les liens entre les 2 (Contrôleur).</p>
 
 <p>Tout ce qui est affiché dans une interface, ou tapé par un utilisateur est du texte (même ce qui est entier) : il ne faut pas utiliser le champ texte comme zone de stockage.</p>
 
 <p>Parlez également du fait que l’on ne contrôle pas lorsque le bouton est appelé. Il faut créer une fonction/méthode qui sera appelée lorsque le bouton sera cliqué. On appelle cela de la programmation évènementielle : on ne fait que réagir aux actions de l’utilisateur ou du système.</p>
 
-<p><img src="img/MVC.png" alt="mvc" /></p>
+<p><img src="img/MVC.png" alt="mvc"></p>
 
 <p>Note sur les UML :</p>
 
@@ -132,8 +126,10 @@
 
 <ul>
   <li>Vue : l’objet de nom <code class="language-plaintext highlighter-rouge">app</code> et de classe <code class="language-plaintext highlighter-rouge">gui</code>.</li>
-  <li>Modèle : le dictionnaire de nom <code class="language-plaintext highlighter-rouge">model</code></li>
-  <li>Contrôleur : la fonction <code class="language-plaintext highlighter-rouge">press</code></li>
+  <li>Modèle : le dictionnaire de nom <code class="language-plaintext highlighter-rouge">model</code>
+</li>
+  <li>Contrôleur : la fonction <code class="language-plaintext highlighter-rouge">press</code>
+</li>
 </ul>
 
 <p>La bibliothèque <a href="http://appjar.info/">appjar</a> est documentée et utile pour s’initier aux UIs.</p>
@@ -144,7 +140,8 @@
   <li>la vue : on crée des objets graphiques de noms <code class="language-plaintext highlighter-rouge">"valeur"</code> (un label) et <code class="language-plaintext highlighter-rouge">"plus_un"</code> (un bouton). Les getter et setter sont accessibles via ces noms. On crée les objets (<code class="language-plaintext highlighter-rouge">addLabel</code> par exemple), puis on les manipule (<code class="language-plaintext highlighter-rouge">setLabel</code>). Les nombres à la fin de la création correspondent à ligne et colonne de la fenêtre.</li>
   <li>on peut utiliser dans la fonction <code class="language-plaintext highlighter-rouge">press</code> des choses qui ne sont pas encore définies puisque le code ne sera lu que lorsque l’on pressera le bouton. A cette étape là tout sera défini.</li>
   <li>l’action du contrôleur est passé à la vue en donnant la fonction utilisée pour le clic : lorsque l’on clique sur l’entité de la vue appelée “plus_un”, on exécute la fonction <code class="language-plaintext highlighter-rouge">press</code> avec comme paramètre ce sur quoi on a cliqué (ie . le bouton). On n’a pas besoin de ce paramètre ici.</li>
-  <li><code class="language-plaintext highlighter-rouge">app.go()</code> crée la fenêtre. Tout le code en-dessous n’est donc pas lu tant que la fenêtre est active. Il faut donc que tout le contrôleur soit défini avant cette ligne.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">app.go()</code> crée la fenêtre. Tout le code en-dessous n’est donc pas lu tant que la fenêtre est active. Il faut donc que tout le contrôleur soit défini avant cette ligne.</li>
 </ul>
 
 <p>Dans le contrôleur, on utilise une structure du type <code class="language-plaintext highlighter-rouge">value = value + 1</code>. On crée donc un nouveau nom <code class="language-plaintext highlighter-rouge">value</code> dans le namespace concerné qui est égal à la valeur de l’ancien nom <code class="language-plaintext highlighter-rouge">value</code> + 1.</p>
@@ -155,7 +152,7 @@
 
 <h4 id="fenêtre-2-boutons">Fenêtre 2 boutons</h4>
 
-<p><img src="img/fenetre_2_boutons.png" alt="me2" /></p>
+<p><img src="img/fenetre_2_boutons.png" alt="me2"></p>
 
 <p>Le bouton <code class="language-plaintext highlighter-rouge">-1</code> a été mis à gauche car on lit de gauche à droite (-1, texte, +1 se comprend <em>intuitivement</em>)</p>
 
@@ -548,37 +545,7 @@ La seconde essai sur un exemple différent de 0.</p>
 
 <p>Pour https://www.planttext.com/</p>
 
-<pre><code class="language-uml">@startuml
-@startuml
-
-title Modèle MVC
-
-
-class Vue {
-  - str texte
-  - bouton
-  
-  + str get_texte()
-  + set_texte(str)
-  + associe_action(fct)
-}
-
-
-class Modèle {
-    - int valeur
-    
-    +int get_valeur()
-    + set_valeur(int)
-}
-class Contrôleur {
-  + ajoute_1()
-}
-
-Vue &lt;|-up- Modèle: Mise à jour
-Contrôleur  &lt;|-up-|&gt; Vue
-Contrôleur  &lt;|-up-|&gt; Modèle
-
-@enduml
+<pre><code class="language-uml">&lt;img class="plantuml" src="http://www.plantuml.com/plantuml/svg/~h407374617274756d6c0a407374617274756d6c0a0a7469746c65204d6f64c3a86c65204d56430a0a0a636c61737320567565207b0a20202d207374722074657874650a20202d20626f75746f6e0a20200a20202b20737472206765745f746578746528290a20202b207365745f746578746528737472290a20202b206173736f6369655f616374696f6e28666374290a7d0a0a0a636c617373204d6f64c3a86c65207b0a202020202d20696e742076616c6575720a202020200a202020202b696e74206765745f76616c65757228290a202020202b207365745f76616c65757228696e74290a7d0a636c61737320436f6e7472c3b46c657572207b0a20202b20616a6f7574655f3128290a7d0a0a567565203c7c2d75702d204d6f64c3a86c653a204d69736520c3a0206a6f75720a436f6e7472c3b46c65757220203c7c2d75702d7c3e205675650a436f6e7472c3b46c65757220203c7c2d75702d7c3e204d6f64c3a86c650a0a40656e64756d6c"&gt;
 </code></pre>
 
   </div>
@@ -591,19 +558,21 @@ Contrôleur  &lt;|-up-|&gt; Modèle
 
   <div class="wrapper">
 
-    <h2 class="footer-heading">cours d&#39;informatique</h2>
+    <h2 class="footer-heading">cours d'informatique</h2>
 
     <div class="footer-col-wrapper">
       <div class="footer-col footer-col-1">
         <ul class="contact-list">
-          <li class="p-name">cours d&#39;informatique</li></ul>
+          <li class="p-name">cours d'informatique</li>
+</ul>
       </div>
 
-      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+      <div class="footer-col footer-col-2">
+<ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
 </div>
 
       <div class="footer-col footer-col-3">
-        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.</p>
+        <p>Support de cours/td d'informatique à l'école centrale marseille.</p>
       </div>
     </div>
 

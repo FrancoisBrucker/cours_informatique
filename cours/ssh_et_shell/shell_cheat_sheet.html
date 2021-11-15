@@ -1,49 +1,42 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>ShellCheatSheet | cours d’informatique</title>
-<meta name="generator" content="Jekyll v4.2.0" />
-<meta property="og:title" content="ShellCheatSheet" />
-<meta name="author" content="Valentin Defrance" />
-<meta property="og:locale" content="en_US" />
-<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
-<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
-<link rel="canonical" href="/cours_informatique/cours/ssh_et_shell/shell_cheat_sheet.html" />
-<meta property="og:url" content="/cours_informatique/cours/ssh_et_shell/shell_cheat_sheet.html" />
-<meta property="og:site_name" content="cours d’informatique" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="ShellCheatSheet" />
+<meta name="generator" content="Jekyll v4.2.0">
+<meta property="og:title" content="ShellCheatSheet">
+<meta name="author" content="Valentin Defrance">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille.">
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille.">
+<link rel="canonical" href="/cours_informatique/cours/ssh_et_shell/shell_cheat_sheet.html">
+<meta property="og:url" content="/cours_informatique/cours/ssh_et_shell/shell_cheat_sheet.html">
+<meta property="og:site_name" content="cours d’informatique">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="ShellCheatSheet">
 <script type="application/ld+json">
 {"description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","headline":"ShellCheatSheet","url":"/cours_informatique/cours/ssh_et_shell/shell_cheat_sheet.html","author":{"@type":"Person","name":"Valentin Defrance"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
-  <link rel="stylesheet" href="/cours_informatique/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
-  <script>
-    MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-      },
-      svg: {
-        fontCache: 'global'
-      }
-    };
-    </script>
-    <script type="text/javascript" id="MathJax-script" async
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
-    </script>
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css">
+<link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique">
 </head>
 
-<body><header class="site-header" role="banner">
+<body>
+<header class="site-header" role="banner">
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
-        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/cours_informatique/">cours d'informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
         <label for="nav-trigger">
           <span class="menu-icon">
-            <svg viewBox="0 0 18 15" width="18px" height="15px">
-              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
             </svg>
           </span>
         </label>
@@ -51,106 +44,173 @@
         <div class="trigger">
             <a class="page-link" href="/cours_informatique/about"> about </a>
         </div>
-      </nav></div>
+      </nav>
+</div>
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">ShellCheatSheet</h1></p>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Valentin Defrance</span></span></p>
+    <h1 class="post-title">ShellCheatSheet</h1>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Valentin Defrance</span></span>
   </header>
 
   <div class="post-content">
     <h2 id="commandes-de-base">Commandes de base</h2>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">cd</code> : Changer de répertoire. Taper cd .. permet d’aller au répertoire supérieur.</li>
-  <li><code class="language-plaintext highlighter-rouge">pwd</code> : Imprime sur l’écran de la ligne de commandes le répertoire de travail, c’est-à-dire le répertoire ou le dossier que vous êtes actuellement.</li>
-  <li><code class="language-plaintext highlighter-rouge">ls</code> : Imprime tous les fichiers dans le répertoire de travail.</li>
-  <li><code class="language-plaintext highlighter-rouge">su</code> Entrez le mot de passe root: La commande SU donne à l’utilisateur la racine des privilèges.</li>
-  <li><code class="language-plaintext highlighter-rouge">apt-get [package]</code> : Appelle le Gestionnaire de paquets qui permet de télécharger des logiciels en paquets.</li>
-  <li><code class="language-plaintext highlighter-rouge">nano [file]</code> : Nano est un éditeur de texte de base qui fonctionne dans la Shell. Il vous permet d’éditer des documents avec les privilèges root si vous avez exécuté SU.</li>
-  <li><code class="language-plaintext highlighter-rouge">rm [file]</code> : Supprime le fichier spécifié.</li>
-  <li><code class="language-plaintext highlighter-rouge">man [commande]</code> : Affiche l’aide de cette commande.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">cd</code> : Changer de répertoire. Taper cd .. permet d’aller au répertoire supérieur.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">pwd</code> : Imprime sur l’écran de la ligne de commandes le répertoire de travail, c’est-à-dire le répertoire ou le dossier que vous êtes actuellement.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">ls</code> : Imprime tous les fichiers dans le répertoire de travail.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">su</code> Entrez le mot de passe root: La commande SU donne à l’utilisateur la racine des privilèges.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">apt-get [package]</code> : Appelle le Gestionnaire de paquets qui permet de télécharger des logiciels en paquets.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">nano [file]</code> : Nano est un éditeur de texte de base qui fonctionne dans la Shell. Il vous permet d’éditer des documents avec les privilèges root si vous avez exécuté SU.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">rm [file]</code> : Supprime le fichier spécifié.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">man [commande]</code> : Affiche l’aide de cette commande.</li>
 </ul>
 
 <h2 id="manipulation-de-fichier-et-de-dossier">Manipulation de fichier et de dossier</h2>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">cp</code> : copie de fichier</li>
-  <li><code class="language-plaintext highlighter-rouge">dir</code> : Affiche le contenu d’un répertoire</li>
-  <li><code class="language-plaintext highlighter-rouge">file</code> : Détermine le type du fichier</li>
-  <li><code class="language-plaintext highlighter-rouge">gzip</code> et <code class="language-plaintext highlighter-rouge">gunzip</code> : Compresse ou décompresse des fichiers</li>
-  <li><code class="language-plaintext highlighter-rouge">ls</code> : Affiche le contenu de répertoire</li>
-  <li><code class="language-plaintext highlighter-rouge">mv</code> : Déplace ou renomme des fichiers ou des dossiers</li>
-  <li><code class="language-plaintext highlighter-rouge">mkdir</code> : création de dossier</li>
-  <li><code class="language-plaintext highlighter-rouge">popd</code> : Restaure la valeur précédente du répertoire courant</li>
-  <li><code class="language-plaintext highlighter-rouge">pushd</code> : Sauve et change le répertoire courant</li>
-  <li><code class="language-plaintext highlighter-rouge">pwd</code> : Affiche le répertoire de travail (Print Working Directory)</li>
-  <li><code class="language-plaintext highlighter-rouge">rcp</code> : Effectue une copie entre deux ordinateurs</li>
-  <li><code class="language-plaintext highlighter-rouge">rm</code> : Supprime des fichiers</li>
-  <li><code class="language-plaintext highlighter-rouge">rmdir</code> : Supprime des dossiers</li>
-  <li><code class="language-plaintext highlighter-rouge">rsh</code> : Shell à distance</li>
-  <li><code class="language-plaintext highlighter-rouge">rsync</code> : Copie de fichier à distance en utilisant son propre protocole. Il peut être utilisé au travers de ssh ou de rsh.</li>
-  <li><code class="language-plaintext highlighter-rouge">scp</code> : Copie des fichiers entre deux machines au travers d’une connexion ssh</li>
-  <li><code class="language-plaintext highlighter-rouge">sync</code> : Synchronise les données entre le disque dur et la mémoire</li>
-  <li><code class="language-plaintext highlighter-rouge">tar</code> : Créateur d’archive (à l’origine pour cassette)</li>
-  <li><code class="language-plaintext highlighter-rouge">ln</code> : Créer un lien.</li>
-  <li><code class="language-plaintext highlighter-rouge">split</code> : Diviser un fichier.</li>
-  <li><code class="language-plaintext highlighter-rouge">cat</code> : Affiche ou concatène le contenu d’un ou plusieurs fichier</li>
-  <li><code class="language-plaintext highlighter-rouge">less</code> : Affiche le contenu d’une fichier à l’écran et permet de le parcourir</li>
-  <li><code class="language-plaintext highlighter-rouge">more</code> : Affiche le contenu d’une fichier à l’écran et permet de le parcourir</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">cp</code> : copie de fichier</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">dir</code> : Affiche le contenu d’un répertoire</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">file</code> : Détermine le type du fichier</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">gzip</code> et <code class="language-plaintext highlighter-rouge">gunzip</code> : Compresse ou décompresse des fichiers</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">ls</code> : Affiche le contenu de répertoire</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">mv</code> : Déplace ou renomme des fichiers ou des dossiers</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">mkdir</code> : création de dossier</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">popd</code> : Restaure la valeur précédente du répertoire courant</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">pushd</code> : Sauve et change le répertoire courant</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">pwd</code> : Affiche le répertoire de travail (Print Working Directory)</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">rcp</code> : Effectue une copie entre deux ordinateurs</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">rm</code> : Supprime des fichiers</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">rmdir</code> : Supprime des dossiers</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">rsh</code> : Shell à distance</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">rsync</code> : Copie de fichier à distance en utilisant son propre protocole. Il peut être utilisé au travers de ssh ou de rsh.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">scp</code> : Copie des fichiers entre deux machines au travers d’une connexion ssh</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">sync</code> : Synchronise les données entre le disque dur et la mémoire</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">tar</code> : Créateur d’archive (à l’origine pour cassette)</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">ln</code> : Créer un lien.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">split</code> : Diviser un fichier.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">cat</code> : Affiche ou concatène le contenu d’un ou plusieurs fichier</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">less</code> : Affiche le contenu d’une fichier à l’écran et permet de le parcourir</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">more</code> : Affiche le contenu d’une fichier à l’écran et permet de le parcourir</li>
 </ul>
 
 <h2 id="vim">vim</h2>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">i</code> : insertion du texte juste avant la position courante du curseur ;</li>
-  <li><code class="language-plaintext highlighter-rouge">I</code> : insertion du texte juste au début de la ligne courante ;</li>
-  <li><code class="language-plaintext highlighter-rouge">a</code> : insertion du texte juste après la position courante du curseur ;</li>
-  <li><code class="language-plaintext highlighter-rouge">A</code> : insertion du texte à la fin de la ligne courante.</li>
-  <li><code class="language-plaintext highlighter-rouge">:w</code> pour enregistrer</li>
-  <li><code class="language-plaintext highlighter-rouge">:q</code> pour quitter</li>
-  <li><code class="language-plaintext highlighter-rouge">:wq</code> pour enregistrer et quitter</li>
-  <li><code class="language-plaintext highlighter-rouge">:x</code> pour enregistrer et quitter</li>
-  <li><code class="language-plaintext highlighter-rouge">:q!</code> ignorer les modifications</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">i</code> : insertion du texte juste avant la position courante du curseur ;</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">I</code> : insertion du texte juste au début de la ligne courante ;</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">a</code> : insertion du texte juste après la position courante du curseur ;</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">A</code> : insertion du texte à la fin de la ligne courante.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">:w</code> pour enregistrer</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">:q</code> pour quitter</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">:wq</code> pour enregistrer et quitter</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">:x</code> pour enregistrer et quitter</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">:q!</code> ignorer les modifications</li>
 </ul>
 
 <h2 id="commandes-de-gestion-des-utilisateurs">Commandes de gestion des utilisateurs</h2>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">su</code> : Entrez la session en tant que root ou un autre utilisateur.</li>
-  <li><code class="language-plaintext highlighter-rouge">su utilisateur</code> : En tant que root, entrer comme autre utilisateur.</li>
-  <li><code class="language-plaintext highlighter-rouge">passwd</code> : Modifier votre mot de passe.</li>
-  <li><code class="language-plaintext highlighter-rouge">who -a -H</code> : Affiche des informations de la part des utilisateurs connectés.</li>
-  <li><code class="language-plaintext highlighter-rouge">users</code> : Affiche des informations de la part des utilisateurs connectés au système.</li>
-  <li><code class="language-plaintext highlighter-rouge">id</code> : Affiche l’information de l’utilisateur actuel.</li>
-  <li><code class="language-plaintext highlighter-rouge">groups</code> : Affiche les groupes auxquels ils appartiennent à un utilisateur.</li>
-  <li><code class="language-plaintext highlighter-rouge">adduser utilisateur</code> : Créer un nouvel utilisateur.</li>
-  <li><code class="language-plaintext highlighter-rouge">adduser utilisateur groupe</code> : Ajouter un utilisateur existant à un groupe existant.</li>
-  <li><code class="language-plaintext highlighter-rouge">adduser --no-create-home utilisateur</code> : Créer un utilisateur sans répertoire (home).</li>
-  <li><code class="language-plaintext highlighter-rouge">addgroup groupe</code> : Créer un nouveau groupe.</li>
-  <li><code class="language-plaintext highlighter-rouge">deluser utilisateur</code> : Supprimer un utilisateur.</li>
-  <li><code class="language-plaintext highlighter-rouge">deluser utilisateur groupe</code> : Supprime un utilisateur d’un groupe.</li>
-  <li><code class="language-plaintext highlighter-rouge">deluser --remove-home utilisateur</code> : Supprime un utilisateur et son répertoire (home).</li>
-  <li><code class="language-plaintext highlighter-rouge">delgroup groupe</code> : Supprime un groupe.</li>
-  <li><code class="language-plaintext highlighter-rouge">usermod -l new_utilisateur</code> : Changer le nom de l’utilisateur.</li>
-  <li><code class="language-plaintext highlighter-rouge">usermod -d new_home -m utilisateur</code> : Changer le répertoire (home) d’un utilisateur.</li>
-  <li><code class="language-plaintext highlighter-rouge">groupmod -n new_nom grupo</code> : Changer le nom d’un groupe.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">su</code> : Entrez la session en tant que root ou un autre utilisateur.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">su utilisateur</code> : En tant que root, entrer comme autre utilisateur.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">passwd</code> : Modifier votre mot de passe.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">who -a -H</code> : Affiche des informations de la part des utilisateurs connectés.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">users</code> : Affiche des informations de la part des utilisateurs connectés au système.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">id</code> : Affiche l’information de l’utilisateur actuel.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">groups</code> : Affiche les groupes auxquels ils appartiennent à un utilisateur.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">adduser utilisateur</code> : Créer un nouvel utilisateur.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">adduser utilisateur groupe</code> : Ajouter un utilisateur existant à un groupe existant.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">adduser --no-create-home utilisateur</code> : Créer un utilisateur sans répertoire (home).</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">addgroup groupe</code> : Créer un nouveau groupe.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">deluser utilisateur</code> : Supprimer un utilisateur.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">deluser utilisateur groupe</code> : Supprime un utilisateur d’un groupe.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">deluser --remove-home utilisateur</code> : Supprime un utilisateur et son répertoire (home).</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">delgroup groupe</code> : Supprime un groupe.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">usermod -l new_utilisateur</code> : Changer le nom de l’utilisateur.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">usermod -d new_home -m utilisateur</code> : Changer le répertoire (home) d’un utilisateur.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">groupmod -n new_nom grupo</code> : Changer le nom d’un groupe.</li>
 </ul>
 
 <h2 id="autres">Autres</h2>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">clear</code> : Nettoyer l’écran.</li>
-  <li><code class="language-plaintext highlighter-rouge">reset</code> : Rétablir la Console.</li>
-  <li><code class="language-plaintext highlighter-rouge">pwd</code> : Affiche le répertoire courant.</li>
-  <li><code class="language-plaintext highlighter-rouge">hostname</code> : Affiche le nom du serveur.</li>
-  <li><code class="language-plaintext highlighter-rouge">Ctrl+C</code> : Fin d’un processus.</li>
-  <li><code class="language-plaintext highlighter-rouge">Ctrl+Z</code> : Suspend temporairement la mise en œuvre d’un programme.</li>
-  <li><code class="language-plaintext highlighter-rouge">Ctrl+S</code> : Arrêter le transfert de données à La console de gestion.</li>
-  <li><code class="language-plaintext highlighter-rouge">Ctrl+Q</code> : Resume, redémarrez le transfert de données.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">clear</code> : Nettoyer l’écran.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">reset</code> : Rétablir la Console.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">pwd</code> : Affiche le répertoire courant.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">hostname</code> : Affiche le nom du serveur.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">Ctrl+C</code> : Fin d’un processus.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">Ctrl+Z</code> : Suspend temporairement la mise en œuvre d’un programme.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">Ctrl+S</code> : Arrêter le transfert de données à La console de gestion.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">Ctrl+Q</code> : Resume, redémarrez le transfert de données.</li>
 </ul>
 
   </div>
@@ -163,19 +223,21 @@
 
   <div class="wrapper">
 
-    <h2 class="footer-heading">cours d&#39;informatique</h2>
+    <h2 class="footer-heading">cours d'informatique</h2>
 
     <div class="footer-col-wrapper">
       <div class="footer-col footer-col-1">
         <ul class="contact-list">
-          <li class="p-name">cours d&#39;informatique</li></ul>
+          <li class="p-name">cours d'informatique</li>
+</ul>
       </div>
 
-      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+      <div class="footer-col footer-col-2">
+<ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
 </div>
 
       <div class="footer-col footer-col-3">
-        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.</p>
+        <p>Support de cours/td d'informatique à l'école centrale marseille.</p>
       </div>
     </div>
 

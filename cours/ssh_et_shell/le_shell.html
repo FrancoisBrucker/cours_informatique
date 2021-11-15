@@ -1,49 +1,42 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>Shell | cours d’informatique</title>
-<meta name="generator" content="Jekyll v4.2.0" />
-<meta property="og:title" content="Shell" />
-<meta name="author" content="Valentin Defrance" />
-<meta property="og:locale" content="en_US" />
-<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
-<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
-<link rel="canonical" href="/cours_informatique/cours/ssh_et_shell/le_shell.html" />
-<meta property="og:url" content="/cours_informatique/cours/ssh_et_shell/le_shell.html" />
-<meta property="og:site_name" content="cours d’informatique" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Shell" />
+<meta name="generator" content="Jekyll v4.2.0">
+<meta property="og:title" content="Shell">
+<meta name="author" content="Valentin Defrance">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille.">
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille.">
+<link rel="canonical" href="/cours_informatique/cours/ssh_et_shell/le_shell.html">
+<meta property="og:url" content="/cours_informatique/cours/ssh_et_shell/le_shell.html">
+<meta property="og:site_name" content="cours d’informatique">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Shell">
 <script type="application/ld+json">
 {"description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","headline":"Shell","url":"/cours_informatique/cours/ssh_et_shell/le_shell.html","author":{"@type":"Person","name":"Valentin Defrance"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
-  <link rel="stylesheet" href="/cours_informatique/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
-  <script>
-    MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-      },
-      svg: {
-        fontCache: 'global'
-      }
-    };
-    </script>
-    <script type="text/javascript" id="MathJax-script" async
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
-    </script>
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css">
+<link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique">
 </head>
 
-<body><header class="site-header" role="banner">
+<body>
+<header class="site-header" role="banner">
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
-        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/cours_informatique/">cours d'informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
         <label for="nav-trigger">
           <span class="menu-icon">
-            <svg viewBox="0 0 18 15" width="18px" height="15px">
-              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
             </svg>
           </span>
         </label>
@@ -51,14 +44,15 @@
         <div class="trigger">
             <a class="page-link" href="/cours_informatique/about"> about </a>
         </div>
-      </nav></div>
+      </nav>
+</div>
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Shell</h1></p>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Valentin Defrance</span></span></p>
+    <h1 class="post-title">Shell</h1>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Valentin Defrance</span></span>
   </header>
 
   <div class="post-content">
@@ -87,14 +81,22 @@
   <li>La commande <code class="language-plaintext highlighter-rouge">man [commande]</code> permet d’afficher l’aide d’une commande, pour celà il vous faudra probablement installer le paquet manuel au préalable (<code class="language-plaintext highlighter-rouge">sudo apt install man</code> (il faut remplacer <code class="language-plaintext highlighter-rouge">apt</code> par <code class="language-plaintext highlighter-rouge">brew</code> sur Mac)).</li>
   <li>La commande <code class="language-plaintext highlighter-rouge">ls</code> permet d’obtenir la liste et les caractéristiques des fichiers contenus dans un répertoire. Si aucun argument n’est donné, la commande “ls” affiche la liste des noms de fichiers du répertoire courant. Cette commande possède plusieurs options (<code class="language-plaintext highlighter-rouge">ls -[Option1][Option2]</code>) permettant d’afficher un résultat différent :
     <ul>
-      <li><code class="language-plaintext highlighter-rouge">ls -p</code> : Cette option permet de distinguer les répertoires des fichiers dans le retour de commande en ajoutant <code class="language-plaintext highlighter-rouge">/</code> après le nom de chaque répertoire .</li>
-      <li><code class="language-plaintext highlighter-rouge">ls -a</code> : Ajoute à la liste des répertoires les répertoires cachés (ceux dont le nom commence par “<code class="language-plaintext highlighter-rouge">.</code>”)</li>
-      <li><code class="language-plaintext highlighter-rouge">ls -l</code> : permet d’afficher une liste détaillée des caractéristiques de chaque fichier du répertoire. Il est d’usage d’ajouter l’option -h à -l afin d’obtenir les informations de poids d’occupation en plus lisible pour un humain plutôt qu’en octet et donc d’utiliser <code class="language-plaintext highlighter-rouge">ls -lh</code>. Avec cette option ls va adapter son affichage en utilisant l’unité la plus adaptée.</li>
-      <li><code class="language-plaintext highlighter-rouge">ls -R</code> : pour récursif, permet d’afficher une liste des caractéristiques de chaque fichier dans tous les répertoires à partir d’où nous sommes.</li>
-      <li><code class="language-plaintext highlighter-rouge">ls -lR</code> : permet d’afficher une liste des caractéristiques de chaque fichier de tous les répertoires à partir d’où nous sommes avec les caractéristiques des droits.</li>
-      <li><code class="language-plaintext highlighter-rouge">ls -t</code> : permet de trier le contenu des répertoires en fonction de la date et non pas en ordre alphabétique. Les fichiers les plus récents sont présentés en premier.</li>
-      <li><code class="language-plaintext highlighter-rouge">ls -u</code> : permet d’employer la date des derniers accès aux fichiers plutôt que la date de modification, autant pour l’affichage (option -l) que pour le tri (option -t).</li>
-      <li><code class="language-plaintext highlighter-rouge">ls -d</code> : permet d’afficher une liste des répertoires sans leur contenu à partir d’où nous sommes.</li>
+      <li>
+<code class="language-plaintext highlighter-rouge">ls -p</code> : Cette option permet de distinguer les répertoires des fichiers dans le retour de commande en ajoutant <code class="language-plaintext highlighter-rouge">/</code> après le nom de chaque répertoire .</li>
+      <li>
+<code class="language-plaintext highlighter-rouge">ls -a</code> : Ajoute à la liste des répertoires les répertoires cachés (ceux dont le nom commence par “<code class="language-plaintext highlighter-rouge">.</code>”)</li>
+      <li>
+<code class="language-plaintext highlighter-rouge">ls -l</code> : permet d’afficher une liste détaillée des caractéristiques de chaque fichier du répertoire. Il est d’usage d’ajouter l’option -h à -l afin d’obtenir les informations de poids d’occupation en plus lisible pour un humain plutôt qu’en octet et donc d’utiliser <code class="language-plaintext highlighter-rouge">ls -lh</code>. Avec cette option ls va adapter son affichage en utilisant l’unité la plus adaptée.</li>
+      <li>
+<code class="language-plaintext highlighter-rouge">ls -R</code> : pour récursif, permet d’afficher une liste des caractéristiques de chaque fichier dans tous les répertoires à partir d’où nous sommes.</li>
+      <li>
+<code class="language-plaintext highlighter-rouge">ls -lR</code> : permet d’afficher une liste des caractéristiques de chaque fichier de tous les répertoires à partir d’où nous sommes avec les caractéristiques des droits.</li>
+      <li>
+<code class="language-plaintext highlighter-rouge">ls -t</code> : permet de trier le contenu des répertoires en fonction de la date et non pas en ordre alphabétique. Les fichiers les plus récents sont présentés en premier.</li>
+      <li>
+<code class="language-plaintext highlighter-rouge">ls -u</code> : permet d’employer la date des derniers accès aux fichiers plutôt que la date de modification, autant pour l’affichage (option -l) que pour le tri (option -t).</li>
+      <li>
+<code class="language-plaintext highlighter-rouge">ls -d</code> : permet d’afficher une liste des répertoires sans leur contenu à partir d’où nous sommes.</li>
     </ul>
   </li>
   <li>La commande <code class="language-plaintext highlighter-rouge">echo</code> dans un terminal ou en console, affiche le texte rédigé en argument (voir <a href="https://debian-facile.org/doc:systeme:echo">documentation echo</a>)</li>
@@ -127,8 +129,10 @@
 
 <ul>
   <li>Le nom des variable est sensible aux majuscules et aux miniscules, par convention les variables d’environnement ont un nom en majuscule.</li>
-  <li>Quand on assigne plusieurs valeurs à une variable, elles doivent être séparées par <code class="language-plaintext highlighter-rouge">:</code></li>
-  <li>Il n’y a pas d’espaces avant et après le symbole <code class="language-plaintext highlighter-rouge">=</code></li>
+  <li>Quand on assigne plusieurs valeurs à une variable, elles doivent être séparées par <code class="language-plaintext highlighter-rouge">:</code>
+</li>
+  <li>Il n’y a pas d’espaces avant et après le symbole <code class="language-plaintext highlighter-rouge">=</code>
+</li>
 </ul>
 
 <p>Les variables d’environnement sont des variables héritées du système et sont disponible sur tout le système.</p>
@@ -145,12 +149,18 @@
 <p>Voici une liste des variables d’environnement les plus courantes :</p>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">USER</code> L’actuel utilisateur connecté</li>
-  <li><code class="language-plaintext highlighter-rouge">HOME</code> Le répertoire principal de l’utilisateur actuel</li>
-  <li><code class="language-plaintext highlighter-rouge">SHELL</code> Le chemin vers le shell de l’utilisateur actuel</li>
-  <li><code class="language-plaintext highlighter-rouge">LOGNAME</code> Le nom de l’utilisateur actuel</li>
-  <li><code class="language-plaintext highlighter-rouge">PATH</code> Une liste des répertoires qui seront cherchés lors de l’exécution d’une commande : lors de l’exécution d’une commande, le système va chercher un exécutable dans ces répertoires (dans l’ordre d’affichage) et va exécuter le premier exécutable trouvé</li>
-  <li><code class="language-plaintext highlighter-rouge">LANG</code> Les paramètres locaux actuels</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">USER</code> L’actuel utilisateur connecté</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">HOME</code> Le répertoire principal de l’utilisateur actuel</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">SHELL</code> Le chemin vers le shell de l’utilisateur actuel</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">LOGNAME</code> Le nom de l’utilisateur actuel</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">PATH</code> Une liste des répertoires qui seront cherchés lors de l’exécution d’une commande : lors de l’exécution d’une commande, le système va chercher un exécutable dans ces répertoires (dans l’ordre d’affichage) et va exécuter le premier exécutable trouvé</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">LANG</code> Les paramètres locaux actuels</li>
 </ul>
 
 <h2 id="navigation-dans-les-répertoires">Navigation dans les répertoires</h2>
@@ -208,10 +218,14 @@ vim /home/username/readme.txt
 <p>Le contenu du fichier est ainsi affiché dans le terminal et il est possible de déplacer le curseur avec les flêches. Cependant il n’est pas possible d’éditer du texte car nous somme dans le mode normal de vim. Pour éditer le texte nous allons devoir passer en mode insertion.</p>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">i</code> : insertion du texte juste avant la position courante du curseur</li>
-  <li><code class="language-plaintext highlighter-rouge">I</code> : insertion du texte juste au début de la ligne courante</li>
-  <li><code class="language-plaintext highlighter-rouge">a</code> : insertion du texte juste après la position courante du curseur</li>
-  <li><code class="language-plaintext highlighter-rouge">A</code> : insertion du texte à la fin de la ligne courante</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">i</code> : insertion du texte juste avant la position courante du curseur</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">I</code> : insertion du texte juste au début de la ligne courante</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">a</code> : insertion du texte juste après la position courante du curseur</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">A</code> : insertion du texte à la fin de la ligne courante</li>
 </ul>
 
 <p>Pour le mode insertion. Il est possible de modifier le texte à peu près comme dans un éditeur de texte graphique. Il ne manque que l’utilisation de la souris.</p>
@@ -219,11 +233,16 @@ vim /home/username/readme.txt
 <p>Pour enregistrer les modifications, il suffit de quitter le mode insertion avec la touche Esc (Echap), puis on tape :</p>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">:w</code> pour enregistrer</li>
-  <li><code class="language-plaintext highlighter-rouge">:q</code> pour quitter</li>
-  <li><code class="language-plaintext highlighter-rouge">:wq</code> pour enregistrer et quitter</li>
-  <li><code class="language-plaintext highlighter-rouge">:x</code> pour enregistrer et quitter</li>
-  <li><code class="language-plaintext highlighter-rouge">:q!</code> ignorer les modifications</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">:w</code> pour enregistrer</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">:q</code> pour quitter</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">:wq</code> pour enregistrer et quitter</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">:x</code> pour enregistrer et quitter</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">:q!</code> ignorer les modifications</li>
 </ul>
 
 <h2 id="pipes-et-redirections">Pipes et redirections</h2>
@@ -250,19 +269,21 @@ vim /home/username/readme.txt
 
   <div class="wrapper">
 
-    <h2 class="footer-heading">cours d&#39;informatique</h2>
+    <h2 class="footer-heading">cours d'informatique</h2>
 
     <div class="footer-col-wrapper">
       <div class="footer-col footer-col-1">
         <ul class="contact-list">
-          <li class="p-name">cours d&#39;informatique</li></ul>
+          <li class="p-name">cours d'informatique</li>
+</ul>
       </div>
 
-      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+      <div class="footer-col footer-col-2">
+<ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
 </div>
 
       <div class="footer-col footer-col-3">
-        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.</p>
+        <p>Support de cours/td d'informatique à l'école centrale marseille.</p>
       </div>
     </div>
 

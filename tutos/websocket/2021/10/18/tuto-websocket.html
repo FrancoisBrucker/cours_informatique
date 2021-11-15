@@ -1,51 +1,44 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>Tuto Websocket | cours d’informatique</title>
-<meta name="generator" content="Jekyll v4.2.0" />
-<meta property="og:title" content="Tuto Websocket" />
-<meta name="author" content="Axel Chouraki" />
-<meta property="og:locale" content="en_US" />
-<meta name="description" content="Ce tutoriel explique comment utiliser le websocket pour créer un chat." />
-<meta property="og:description" content="Ce tutoriel explique comment utiliser le websocket pour créer un chat." />
-<link rel="canonical" href="/cours_informatique/tutos/websocket/2021/10/18/tuto-websocket.html" />
-<meta property="og:url" content="/cours_informatique/tutos/websocket/2021/10/18/tuto-websocket.html" />
-<meta property="og:site_name" content="cours d’informatique" />
-<meta property="og:type" content="article" />
-<meta property="article:published_time" content="2021-10-18T00:00:00+00:00" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Tuto Websocket" />
+<meta name="generator" content="Jekyll v4.2.0">
+<meta property="og:title" content="Tuto Websocket">
+<meta name="author" content="Axel Chouraki">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Ce tutoriel explique comment utiliser le websocket pour créer un chat.">
+<meta property="og:description" content="Ce tutoriel explique comment utiliser le websocket pour créer un chat.">
+<link rel="canonical" href="/cours_informatique/tutos/websocket/2021/10/18/tuto-websocket.html">
+<meta property="og:url" content="/cours_informatique/tutos/websocket/2021/10/18/tuto-websocket.html">
+<meta property="og:site_name" content="cours d’informatique">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-10-18T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Tuto Websocket">
 <script type="application/ld+json">
-{"description":"Ce tutoriel explique comment utiliser le websocket pour créer un chat.","@type":"BlogPosting","headline":"Tuto Websocket","dateModified":"2021-10-18T00:00:00+00:00","url":"/cours_informatique/tutos/websocket/2021/10/18/tuto-websocket.html","datePublished":"2021-10-18T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"/cours_informatique/tutos/websocket/2021/10/18/tuto-websocket.html"},"author":{"@type":"Person","name":"Axel Chouraki"},"@context":"https://schema.org"}</script>
+{"description":"Ce tutoriel explique comment utiliser le websocket pour créer un chat.","@type":"BlogPosting","headline":"Tuto Websocket","url":"/cours_informatique/tutos/websocket/2021/10/18/tuto-websocket.html","dateModified":"2021-10-18T00:00:00+00:00","datePublished":"2021-10-18T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"/cours_informatique/tutos/websocket/2021/10/18/tuto-websocket.html"},"author":{"@type":"Person","name":"Axel Chouraki"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
-  <link rel="stylesheet" href="/cours_informatique/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
-  <script>
-    MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-      },
-      svg: {
-        fontCache: 'global'
-      }
-    };
-    </script>
-    <script type="text/javascript" id="MathJax-script" async
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
-    </script>
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css">
+<link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique">
 </head>
 
-<body><header class="site-header" role="banner">
+<body>
+<header class="site-header" role="banner">
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
-        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/cours_informatique/">cours d'informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
         <label for="nav-trigger">
           <span class="menu-icon">
-            <svg viewBox="0 0 18 15" width="18px" height="15px">
-              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
             </svg>
           </span>
         </label>
@@ -53,7 +46,8 @@
         <div class="trigger">
             <a class="page-link" href="/cours_informatique/about"> about </a>
         </div>
-      </nav></div>
+      </nav>
+</div>
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
@@ -67,7 +61,7 @@
       
         <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Jean Martinez</span></span></li>
       
-      </ul></p></p>
+      </ul>
   </header>
 
   <div class="post-content">
@@ -83,12 +77,12 @@
 <h2 id="fonctionnement-du-websocket">Fonctionnement du Websocket</h2>
 
 <p>Le protocole Websocket a été construit par dessus le protocole TCP. 
-C’est donc un protocole réseau de la couche application (cf <a href="https://fr.wikipedia.org/wiki/Modèle_OSI">modèle OSI</a>). 
+C’est donc un protocole réseau de la couche application (cf <a href="https://fr.wikipedia.org/wiki/Mod%C3%A8le_OSI">modèle OSI</a>). 
 Il permet d’ouvrir un canal de communication bidirectionnel sur un socket TCP. 
 Un socket est une “prise” permettant à une application d’envoyer et de recevoir des données (et concrètement c’est une interface de programmation). 
 Il permet donc de notifier au client un changement du côté serveur ou l’envoi de données du serveur vers le client sans avoir besoin de requête.</p>
 
-<p><img src="/cours_informatique/assets/tutos/websocket/socket.png" alt="image socket" style="margin: auto;display: block;width: 400px;" /></p>
+<p><img src="/cours_informatique/assets/tutos/websocket/socket.png" alt="image socket" style="margin: auto;display: block;width: 400px;"></p>
 
 <p>Pour cela, un handshake doit être réalisé. C’est une “négociation” des paramètres de connexion. 
 Le client envoie une requête au serveur. Dans cette requête, tout ne se rapporte pas au websocket, mais elle peut demander des extensions de protocoles ou des sous-protocoles. 
@@ -96,7 +90,7 @@ On voit ci-dessous un exemple de requête du client. Le serveur renverra alors u
 On notera que le serveur peut également envoyer d’autres entêtes comme des demandes d’authentification, de création de cookies, etc…
 Ce handshake est automatiquement réalisé avec les bibliothèques récentes.</p>
 
-<p><img src="/cours_informatique/assets/tutos/websocket/handshake.png" alt="image handshake" style="margin: auto;display: block;width: 500px;" /></p>
+<p><img src="/cours_informatique/assets/tutos/websocket/handshake.png" alt="image handshake" style="margin: auto;display: block;width: 500px;"></p>
 
 <p>Ce protocole est très utile pour beaucoup d’applications où les utilisateurs doivent se connecter en même temps comme une application de coopération en temps réel ou un jeu vidéo. 
 Son architecture a, au début, été critiquée car il aurait mieux fallu résoudre les problèmes de la couche réseau au lieu de construire un protocole par dessus celui existant.</p>
@@ -172,7 +166,7 @@ Celle-ci doit initialiser notre objet websocket et détruire l’ancien s’il e
         }
 </code></pre></div></div>
 
-<p>Ici on utilise le port 8999 pour le websocket. Les fonctions <strong>onopen</strong>, <strong>onerror</strong>, etc… sont des fonctions qui sont exécutées lorsqu’un évènement est déclenché (plus d’informations <a href="https://fr.wikipedia.org/wiki/Programmation_événementielle">ici</a>). 
+<p>Ici on utilise le port 8999 pour le websocket. Les fonctions <strong>onopen</strong>, <strong>onerror</strong>, etc… sont des fonctions qui sont exécutées lorsqu’un évènement est déclenché (plus d’informations <a href="https://fr.wikipedia.org/wiki/Programmation_%C3%A9v%C3%A9nementielle">ici</a>). 
 Ainsi, <strong>onopen</strong> s’exécute lorsque le client se connecte au serveur websocket, la fonction <strong>onclose</strong>, lorsque la connexion se coupe et la fonction <strong>onmessage</strong>, lorsque le client reçoit un message. 
 Ajoutons ces deux dernières fonctions dans la fonction <strong>init</strong> :</p>
 
@@ -368,19 +362,21 @@ Il ne faut pas fermer la console tant qu’on travaille, cela éteindrait le ser
 
   <div class="wrapper">
 
-    <h2 class="footer-heading">cours d&#39;informatique</h2>
+    <h2 class="footer-heading">cours d'informatique</h2>
 
     <div class="footer-col-wrapper">
       <div class="footer-col footer-col-1">
         <ul class="contact-list">
-          <li class="p-name">cours d&#39;informatique</li></ul>
+          <li class="p-name">cours d'informatique</li>
+</ul>
       </div>
 
-      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+      <div class="footer-col footer-col-2">
+<ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
 </div>
 
       <div class="footer-col footer-col-3">
-        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.</p>
+        <p>Support de cours/td d'informatique à l'école centrale marseille.</p>
       </div>
     </div>
 

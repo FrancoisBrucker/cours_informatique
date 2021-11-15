@@ -1,49 +1,42 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>Héritage | cours d’informatique</title>
-<meta name="generator" content="Jekyll v4.2.0" />
-<meta property="og:title" content="Héritage" />
-<meta name="author" content="François Brucker" />
-<meta property="og:locale" content="en_US" />
-<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
-<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
-<link rel="canonical" href="/cours_informatique/cours/developpement/programmation-objet/heritage.html" />
-<meta property="og:url" content="/cours_informatique/cours/developpement/programmation-objet/heritage.html" />
-<meta property="og:site_name" content="cours d’informatique" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Héritage" />
+<meta name="generator" content="Jekyll v4.2.0">
+<meta property="og:title" content="Héritage">
+<meta name="author" content="François Brucker">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille.">
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille.">
+<link rel="canonical" href="/cours_informatique/cours/developpement/programmation-objet/heritage.html">
+<meta property="og:url" content="/cours_informatique/cours/developpement/programmation-objet/heritage.html">
+<meta property="og:site_name" content="cours d’informatique">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Héritage">
 <script type="application/ld+json">
 {"description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","headline":"Héritage","url":"/cours_informatique/cours/developpement/programmation-objet/heritage.html","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
-  <link rel="stylesheet" href="/cours_informatique/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
-  <script>
-    MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-      },
-      svg: {
-        fontCache: 'global'
-      }
-    };
-    </script>
-    <script type="text/javascript" id="MathJax-script" async
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
-    </script>
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css">
+<link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique">
 </head>
 
-<body><header class="site-header" role="banner">
+<body>
+<header class="site-header" role="banner">
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
-        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/cours_informatique/">cours d'informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
         <label for="nav-trigger">
           <span class="menu-icon">
-            <svg viewBox="0 0 18 15" width="18px" height="15px">
-              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
             </svg>
           </span>
         </label>
@@ -51,7 +44,8 @@
         <div class="trigger">
             <a class="page-link" href="/cours_informatique/about"> about </a>
         </div>
-      </nav></div>
+      </nav>
+</div>
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
@@ -65,7 +59,7 @@
       
         <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Célia Châtel</span></span></li>
       
-      </ul></p></p>
+      </ul>
   </header>
 
   <div class="post-content">
@@ -75,14 +69,17 @@
 
 <p>Dans un programme, les classes sont organisées hiérarchiquement, la classe <em>racine</em> étant appelé <em>object</em>.</p>
 
-<p><img src="/cours_informatique/assets/cours/developpement/programmation-objet/classes_heritage.png" alt="classes héritage" /></p>
+<p><img src="/cours_informatique/assets/cours/developpement/programmation-objet/classes_heritage.png" alt="classes héritage"></p>
 
 <p>Dans la figure précédente :</p>
 
 <ul>
-  <li>la classe <strong>object</strong> est la <em>racine</em></li>
-  <li>la classe <strong>1</strong> est la <em>classe mère</em> de la classe <strong>2</strong></li>
-  <li>la classe <strong>2</strong> est une <em>classe fille</em> de la classe <strong>1</strong></li>
+  <li>la classe <strong>object</strong> est la <em>racine</em>
+</li>
+  <li>la classe <strong>1</strong> est la <em>classe mère</em> de la classe <strong>2</strong>
+</li>
+  <li>la classe <strong>2</strong> est une <em>classe fille</em> de la classe <strong>1</strong>
+</li>
 </ul>
 
 <p>La figure montre également la désignation UML de l’héritage : une flèche avec un triangle vide.</p>
@@ -102,7 +99,8 @@
 
 <ol>
   <li>on va chercher <code class="language-plaintext highlighter-rouge">methode1</code> dans l’espace de nom de <code class="language-plaintext highlighter-rouge">obj</code> : il n’y est pas.</li>
-  <li>on va alors chercher dans sa classe, <code class="language-plaintext highlighter-rouge">classe2</code> : elle ne définit pas <code class="language-plaintext highlighter-rouge">méthode1</code></li>
+  <li>on va alors chercher dans sa classe, <code class="language-plaintext highlighter-rouge">classe2</code> : elle ne définit pas <code class="language-plaintext highlighter-rouge">méthode1</code>
+</li>
   <li>on cherche alors dans la classe mère de classe 2, <code class="language-plaintext highlighter-rouge">classe1</code> : <code class="language-plaintext highlighter-rouge">méthode1</code> est définie, on utilise son code.</li>
 </ol>
 
@@ -199,7 +197,7 @@
 
 <p>Point et polygone entretiennent un lien d’agrégation (les points sont passé au polygone à sa construction). Le modèle UML suivant :</p>
 
-<p><img src="/cours_informatique/assets/cours/developpement/programmation-objet/heritage_point_poly.png" alt="point polygone" /></p>
+<p><img src="/cours_informatique/assets/cours/developpement/programmation-objet/heritage_point_poly.png" alt="point polygone"></p>
 
 <h4 id="code-python">code python</h4>
 
@@ -293,7 +291,7 @@
 
 <p>Elle est très simple :</p>
 
-<p><img src="/cours_informatique/assets/cours/developpement/programmation-objet/heritage_triangle.png" alt="triangle" /></p>
+<p><img src="/cours_informatique/assets/cours/developpement/programmation-objet/heritage_triangle.png" alt="triangle"></p>
 
 <p>Notez que pour l’héritage, on ne remet pas les attributs/méthodes définis dans les classes mères.</p>
 
@@ -354,7 +352,7 @@
 
 <h4 id="uml-du-personnage">UML du personnage</h4>
 
-<p><img src="/cours_informatique/assets/cours/developpement/programmation-objet/heritage_personnage.png" alt="personnage" /></p>
+<p><img src="/cours_informatique/assets/cours/developpement/programmation-objet/heritage_personnage.png" alt="personnage"></p>
 
 <h4 id="code-python-du-personnage">code python du personnage</h4>
 
@@ -382,7 +380,7 @@
 
 <p>c’est un personnage, on peut donc utiliser l’héritage.</p>
 
-<p><img src="/cours_informatique/assets/cours/developpement/programmation-objet/heritage_guerriere.png" alt="Guerrière" /></p>
+<p><img src="/cours_informatique/assets/cours/developpement/programmation-objet/heritage_guerriere.png" alt="Guerrière"></p>
 
 <p>On ne met que les méthodes qui changent, donc le constructeur et se faire taper.</p>
 
@@ -422,7 +420,7 @@
 
 <p>On ajoute une nouvelle méthode qui n’existe pas dans la classe mère :</p>
 
-<p><img src="/cours_informatique/assets/cours/developpement/programmation-objet/heritage_magicien.png" alt="Magicien" /></p>
+<p><img src="/cours_informatique/assets/cours/developpement/programmation-objet/heritage_magicien.png" alt="Magicien"></p>
 
 <h4 id="code-python-du-magicien">code python du magicien</h4>
 
@@ -469,7 +467,8 @@
 <p>Comment faire une classe <code class="language-plaintext highlighter-rouge">A</code> qui a :</p>
 
 <ul>
-  <li>un attribut <code class="language-plaintext highlighter-rouge">a</code></li>
+  <li>un attribut <code class="language-plaintext highlighter-rouge">a</code>
+</li>
   <li>une méthode <code class="language-plaintext highlighter-rouge">truc_que_fait_a()</code> qui affiche “Truc défini dans la classe mère”</li>
   <li>une méthode <code class="language-plaintext highlighter-rouge">autre_truc()</code> qui affiche “Autre truc dans la classe mère”</li>
 </ul>
@@ -491,7 +490,8 @@
 <p>Écrivez une classe <code class="language-plaintext highlighter-rouge">B</code> qui hérite de <code class="language-plaintext highlighter-rouge">A</code> et qui a :</p>
 
 <ul>
-  <li>un attribut <code class="language-plaintext highlighter-rouge">b</code></li>
+  <li>un attribut <code class="language-plaintext highlighter-rouge">b</code>
+</li>
   <li>le constructeur à 2 paramètres (a et b), un qui est initialisé dans la classe A (a), l’autre initialisé dans B (b)</li>
   <li>une méthode <code class="language-plaintext highlighter-rouge">autre_truc()</code> qui affiche “C’est mon autre truc à moi”</li>
   <li>une méthode <code class="language-plaintext highlighter-rouge">que_de_b()</code> qui affiche “Méthode seulement de la classe fille”</li>
@@ -588,19 +588,21 @@
 
   <div class="wrapper">
 
-    <h2 class="footer-heading">cours d&#39;informatique</h2>
+    <h2 class="footer-heading">cours d'informatique</h2>
 
     <div class="footer-col-wrapper">
       <div class="footer-col footer-col-1">
         <ul class="contact-list">
-          <li class="p-name">cours d&#39;informatique</li></ul>
+          <li class="p-name">cours d'informatique</li>
+</ul>
       </div>
 
-      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+      <div class="footer-col footer-col-2">
+<ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
 </div>
 
       <div class="footer-col footer-col-3">
-        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.</p>
+        <p>Support de cours/td d'informatique à l'école centrale marseille.</p>
       </div>
     </div>
 

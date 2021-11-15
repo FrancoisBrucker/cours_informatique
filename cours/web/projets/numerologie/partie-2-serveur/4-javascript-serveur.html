@@ -1,49 +1,42 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>Projet numérologie : partie 2 / niveau 1 / javascript serveur | cours d’informatique</title>
-<meta name="generator" content="Jekyll v4.2.0" />
-<meta property="og:title" content="Projet numérologie : partie 2 / niveau 1 / javascript serveur" />
-<meta name="author" content="François Brucker" />
-<meta property="og:locale" content="en_US" />
-<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
-<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
-<link rel="canonical" href="/cours_informatique/cours/web/projets/numerologie/partie-2-serveur/4-javascript-serveur.html" />
-<meta property="og:url" content="/cours_informatique/cours/web/projets/numerologie/partie-2-serveur/4-javascript-serveur.html" />
-<meta property="og:site_name" content="cours d’informatique" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Projet numérologie : partie 2 / niveau 1 / javascript serveur" />
+<meta name="generator" content="Jekyll v4.2.0">
+<meta property="og:title" content="Projet numérologie : partie 2 / niveau 1 / javascript serveur">
+<meta name="author" content="François Brucker">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille.">
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille.">
+<link rel="canonical" href="/cours_informatique/cours/web/projets/numerologie/partie-2-serveur/4-javascript-serveur.html">
+<meta property="og:url" content="/cours_informatique/cours/web/projets/numerologie/partie-2-serveur/4-javascript-serveur.html">
+<meta property="og:site_name" content="cours d’informatique">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Projet numérologie : partie 2 / niveau 1 / javascript serveur">
 <script type="application/ld+json">
 {"description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","headline":"Projet numérologie : partie 2 / niveau 1 / javascript serveur","url":"/cours_informatique/cours/web/projets/numerologie/partie-2-serveur/4-javascript-serveur.html","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
-  <link rel="stylesheet" href="/cours_informatique/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
-  <script>
-    MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-      },
-      svg: {
-        fontCache: 'global'
-      }
-    };
-    </script>
-    <script type="text/javascript" id="MathJax-script" async
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
-    </script>
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css">
+<link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique">
 </head>
 
-<body><header class="site-header" role="banner">
+<body>
+<header class="site-header" role="banner">
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
-        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/cours_informatique/">cours d'informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
         <label for="nav-trigger">
           <span class="menu-icon">
-            <svg viewBox="0 0 18 15" width="18px" height="15px">
-              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
             </svg>
           </span>
         </label>
@@ -51,14 +44,15 @@
         <div class="trigger">
             <a class="page-link" href="/cours_informatique/about"> about </a>
         </div>
-      </nav></div>
+      </nav>
+</div>
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Projet numérologie : partie 2 / niveau 1 / javascript serveur</h1></p>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></p>
+    <h1 class="post-title">Projet numérologie : partie 2 / niveau 1 / javascript serveur</h1>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span>
   </header>
 
   <div class="post-content">
@@ -72,7 +66,8 @@
 
 <p>Il existe plusieurs façon de passer des paramètres au serveur depuis le navigateur. Nous allons en voir 2.</p>
 
-<h3 id="paramètres-dans-reqparams">paramètres dans <code class="language-plaintext highlighter-rouge">req.params</code></h3>
+<h3 id="paramètres-dans-reqparams">paramètres dans <code class="language-plaintext highlighter-rouge">req.params</code>
+</h3>
 
 <p>La première façon de faire est de mettre la dernière partie de l’url en paramètre.
 Ajoutez la route suivante dans le fichier <em>“numerologie/index.js”</em> :</p>
@@ -87,7 +82,7 @@ Ajoutez la route suivante dans le fichier <em>“numerologie/index.js”</em> :<
 <span class="c1">// ...</span>
 </code></pre></div></div>
 
-<p>Tout ce qui suit <code class="language-plaintext highlighter-rouge">/chaine</code> dans l’url sera considéré comme notre variable <code class="language-plaintext highlighter-rouge">prenom</code>. Ainsi la requête <a href="http://127.0.0.1:3000/chaine/François">http://127.0.0.1:3000/chaine/François</a></p>
+<p>Tout ce qui suit <code class="language-plaintext highlighter-rouge">/chaine</code> dans l’url sera considéré comme notre variable <code class="language-plaintext highlighter-rouge">prenom</code>. Ainsi la requête <a href="http://127.0.0.1:3000/chaine/Fran%C3%A7ois">http://127.0.0.1:3000/chaine/François</a></p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w"> </span><span class="err">prenom:</span><span class="w"> </span><span class="err">'François'</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
@@ -100,7 +95,7 @@ Ajoutez la route suivante dans le fichier <em>“numerologie/index.js”</em> :<
 
 <p>Lorsque vous tapez des urls en utf8, celles ci sont encodés en transformant les caractères non ascii par des nombres précédés d’un <code class="language-plaintext highlighter-rouge">%</code> : c’est <a href="https://fr.wikipedia.org/wiki/Encodage-pourcent">l’encodage %</a>.</p>
 
-<p>On le voit dans le log console de la requête <a href="http://127.0.0.1:3000/chaine/François">http://127.0.0.1:3000/chaine/François</a> qui est  <code class="language-plaintext highlighter-rouge">Time: 19/09/2021 20:29:08 ; url : /chaine/Fran%C3%A7ois</code> : le <code class="language-plaintext highlighter-rouge">ç</code> a été transformé en <code class="language-plaintext highlighter-rouge">%C3%A7</code>.</p>
+<p>On le voit dans le log console de la requête <a href="http://127.0.0.1:3000/chaine/Fran%C3%A7ois">http://127.0.0.1:3000/chaine/François</a> qui est  <code class="language-plaintext highlighter-rouge">Time: 19/09/2021 20:29:08 ; url : /chaine/Fran%C3%A7ois</code> : le <code class="language-plaintext highlighter-rouge">ç</code> a été transformé en <code class="language-plaintext highlighter-rouge">%C3%A7</code>.</p>
 
 <p>Cela ne se voit cependant pas dans le code node car les paramètres sont reconvertis en chaine unicode pour le traitement.</p>
 
@@ -109,11 +104,12 @@ Ajoutez la route suivante dans le fichier <em>“numerologie/index.js”</em> :<
 Pour ne pas à avoir à se rappeler des encodage, on pourra utiliser les fonction <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/encodeURI">encodeURI()</a> et <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/decodeURI">decodeURI</a></p>
 </blockquote>
 
-<h3 id="paramètres-dans-reqquery">paramètres dans <code class="language-plaintext highlighter-rouge">req.query</code></h3>
+<h3 id="paramètres-dans-reqquery">paramètres dans <code class="language-plaintext highlighter-rouge">req.query</code>
+</h3>
 
 <p>Nous allons regarder ici la plus ancienne de ces méthodes, qui consiste à passer les paramètres directement dans l’url sous la forme de <a href="https://en.wikipedia.org/wiki/Query_string">query string</a>. C’est la façon classique de passer des paramètres à une url et c’est donc celle-ci que nous garderons ici.</p>
 
-<p>Dans notre cas, on aimerait que notre serveur reconnaisse les requêtes du type : <a href="http://localhost:3000/prénom?valeur=françois">http://localhost:3000/prénom?valeur=françois</a>.</p>
+<p>Dans notre cas, on aimerait que notre serveur reconnaisse les requêtes du type : <a href="http://localhost:3000/pr%C3%A9nom?valeur=fran%C3%A7ois">http://localhost:3000/prénom?valeur=françois</a>.</p>
 
 <blockquote>
   <p>si vous voulez plusieurs paramètres, il faut les séparer par des <code class="language-plaintext highlighter-rouge">&amp;</code> comme indiqué dans <a href="https://en.wikipedia.org/wiki/Query_string">la documentation</a></p>
@@ -139,7 +135,7 @@ Pour ne pas à avoir à se rappeler des encodage, on pourra utiliser les fonctio
 
 <h2 id="retour-en-json">retour en json</h2>
 
-<p>Le retour de cette requête sera un objet <a href="https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/JSON">json</a>. Il pourra répondre à la requête <a href="http://localhost:3000/prénom?valeur=françois">http://localhost:3000/prénom?valeur=françois</a> :</p>
+<p>Le retour de cette requête sera un objet <a href="https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/JSON">json</a>. Il pourra répondre à la requête <a href="http://localhost:3000/pr%C3%A9nom?valeur=fran%C3%A7ois">http://localhost:3000/prénom?valeur=françois</a> :</p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
   </span><span class="err">prénom:</span><span class="w"> </span><span class="s2">"François"</span><span class="p">,</span><span class="w">
@@ -328,19 +324,21 @@ Pour ne pas à avoir à se rappeler des encodage, on pourra utiliser les fonctio
 
   <div class="wrapper">
 
-    <h2 class="footer-heading">cours d&#39;informatique</h2>
+    <h2 class="footer-heading">cours d'informatique</h2>
 
     <div class="footer-col-wrapper">
       <div class="footer-col footer-col-1">
         <ul class="contact-list">
-          <li class="p-name">cours d&#39;informatique</li></ul>
+          <li class="p-name">cours d'informatique</li>
+</ul>
       </div>
 
-      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+      <div class="footer-col footer-col-2">
+<ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
 </div>
 
       <div class="footer-col footer-col-3">
-        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.</p>
+        <p>Support de cours/td d'informatique à l'école centrale marseille.</p>
       </div>
     </div>
 

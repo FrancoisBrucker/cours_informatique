@@ -1,49 +1,42 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>Webpack | cours d’informatique</title>
-<meta name="generator" content="Jekyll v4.2.0" />
-<meta property="og:title" content="Webpack" />
-<meta name="author" content="Victoire Flesselles" />
-<meta property="og:locale" content="en_US" />
-<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
-<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
-<link rel="canonical" href="/cours_informatique/cours/web/front/webpack.html" />
-<meta property="og:url" content="/cours_informatique/cours/web/front/webpack.html" />
-<meta property="og:site_name" content="cours d’informatique" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Webpack" />
+<meta name="generator" content="Jekyll v4.2.0">
+<meta property="og:title" content="Webpack">
+<meta name="author" content="Victoire Flesselles">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille.">
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille.">
+<link rel="canonical" href="/cours_informatique/cours/web/front/webpack.html">
+<meta property="og:url" content="/cours_informatique/cours/web/front/webpack.html">
+<meta property="og:site_name" content="cours d’informatique">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Webpack">
 <script type="application/ld+json">
 {"description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","headline":"Webpack","url":"/cours_informatique/cours/web/front/webpack.html","author":{"@type":"Person","name":"Victoire Flesselles"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
-  <link rel="stylesheet" href="/cours_informatique/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
-  <script>
-    MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-      },
-      svg: {
-        fontCache: 'global'
-      }
-    };
-    </script>
-    <script type="text/javascript" id="MathJax-script" async
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
-    </script>
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css">
+<link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique">
 </head>
 
-<body><header class="site-header" role="banner">
+<body>
+<header class="site-header" role="banner">
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
-        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/cours_informatique/">cours d'informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
         <label for="nav-trigger">
           <span class="menu-icon">
-            <svg viewBox="0 0 18 15" width="18px" height="15px">
-              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
             </svg>
           </span>
         </label>
@@ -51,7 +44,8 @@
         <div class="trigger">
             <a class="page-link" href="/cours_informatique/about"> about </a>
         </div>
-      </nav></div>
+      </nav>
+</div>
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
@@ -65,7 +59,7 @@
       
         <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">William Templeton</span></span></li>
       
-      </ul></p></p>
+      </ul>
   </header>
 
   <div class="post-content">
@@ -89,12 +83,13 @@
   <li>
     <p><code class="language-plaintext highlighter-rouge">index.html</code> :</p>
 
-    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nt">&lt;html&gt;</span>
+    <div class="language-html highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  <span class="nt">&lt;html&gt;</span>
       <span class="nt">&lt;head&gt;</span>
           <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">/&gt;</span>
           <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"X-UA-Compatible"</span> <span class="na">content=</span><span class="s">"IE=edge"</span><span class="nt">/&gt;</span>
           <span class="nt">&lt;title&gt;</span>Calculatrice<span class="nt">&lt;/title&gt;</span>
-          <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"https://fonts.googleapis.com/css?family=Montserrat&amp;display=swap"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">/&gt;</span>
+          <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"https://fonts.googleapis.com/css?family=Montserrat&display=swap"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">/&gt;</span>
           <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">type=</span><span class="s">"text/css"</span> <span class="na">href=</span><span class="s">"css/style.css"</span><span class="nt">/&gt;</span>
       <span class="nt">&lt;/head&gt;</span>
       <span class="nt">&lt;body&gt;</span>
@@ -137,7 +132,8 @@
   <li>
     <p><code class="language-plaintext highlighter-rouge">style.scss</code> :</p>
 
-    <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">$main-width</span><span class="p">:</span> <span class="m">450px</span><span class="p">;</span>
+    <div class="language-scss highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  <span class="nv">$main-width</span><span class="p">:</span> <span class="m">450px</span><span class="p">;</span>
 
   <span class="nt">body</span> <span class="p">{</span>
       <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
@@ -248,7 +244,8 @@
   <li>
     <p><code class="language-plaintext highlighter-rouge">index.js</code> :</p>
 
-    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">var</span> <span class="nx">numInputs</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">"</span><span class="s2">.number-inputs input</span><span class="dl">"</span><span class="p">);</span>
+    <div class="language-js highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  <span class="kd">var</span> <span class="nx">numInputs</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">"</span><span class="s2">.number-inputs input</span><span class="dl">"</span><span class="p">);</span>
   <span class="kd">var</span> <span class="nx">opInputs</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">"</span><span class="s2">.operators input</span><span class="dl">"</span><span class="p">);</span>
 	
   <span class="kd">function</span> <span class="nx">insert</span><span class="p">(</span><span class="nx">num</span><span class="p">)</span> <span class="p">{</span>
@@ -310,7 +307,8 @@
   <li>
     <p>fichier <code class="language-plaintext highlighter-rouge">variables.js</code>:</p>
 
-    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">var</span> <span class="nx">numInputs</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">"</span><span class="s2">.number-inputs input</span><span class="dl">"</span><span class="p">);</span>
+    <div class="language-js highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  <span class="kd">var</span> <span class="nx">numInputs</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">"</span><span class="s2">.number-inputs input</span><span class="dl">"</span><span class="p">);</span>
 
   <span class="kd">var</span> <span class="nx">opInputs</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">"</span><span class="s2">.operators input</span><span class="dl">"</span><span class="p">);</span>
 </code></pre></div>    </div>
@@ -318,7 +316,8 @@
   <li>
     <p>fichier <code class="language-plaintext highlighter-rouge">methods.js</code>:</p>
 
-    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">function</span> <span class="nx">insert</span><span class="p">(</span><span class="nx">num</span><span class="p">)</span> <span class="p">{</span>
+    <div class="language-js highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  <span class="kd">function</span> <span class="nx">insert</span><span class="p">(</span><span class="nx">num</span><span class="p">)</span> <span class="p">{</span>
       <span class="k">return</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">result</span><span class="dl">"</span><span class="p">).</span><span class="nx">value</span> <span class="o">+=</span> <span class="nx">num</span><span class="p">;</span>
   <span class="p">}</span>
   <span class="kd">function</span> <span class="nx">calcul</span><span class="p">()</span> <span class="p">{</span>
@@ -332,7 +331,8 @@
   <li>
     <p>fichier <code class="language-plaintext highlighter-rouge">index.js</code>:</p>
 
-    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nx">numInputs</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">input</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <div class="language-js highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  <span class="nx">numInputs</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">input</span> <span class="o">=&gt;</span> <span class="p">{</span>
       <span class="nx">input</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span><span class="o">=&gt;</span><span class="p">{</span>
       <span class="nx">insert</span><span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">value</span><span class="p">)</span>
       <span class="p">})</span>
@@ -366,7 +366,8 @@
 <p>Mais elle est terriblement archaïque, et ce pour plusieurs raisons:</p>
 <ul>
   <li>Pour un très gros projet, il peut y avoir des centaines des fichiers et libraires javascript nécessaires au bon fonctionnement du site, et tout autant de pages <code class="language-plaintext highlighter-rouge">html</code>. Avec cette méthode, pour chaque page <code class="language-plaintext highlighter-rouge">html</code>, il faudrait faire un grand copié/collé (ce qui est mauvais signe) de toutes ces dépendances, sans se tromper dans l’ordre d’importation.</li>
-  <li>Chaque changement est laborieux: lorsqu’on ajoute une nouvelle librairie ou un nouveau fichier, ou même simplement renommer un fichier, il faut effectuer manuellement dans chacune des pages <code class="language-plaintext highlighter-rouge">html</code></li>
+  <li>Chaque changement est laborieux: lorsqu’on ajoute une nouvelle librairie ou un nouveau fichier, ou même simplement renommer un fichier, il faut effectuer manuellement dans chacune des pages <code class="language-plaintext highlighter-rouge">html</code>
+</li>
   <li>La logique de déclaration et d’importation est obscure et non optimisée. Avec une telle méthode, il n’est pas clair quel fichier a besoin de quelles méthodes et variables déclarées dans un certain fichier; souvent, dans le doute, toutes ces variables et fonctions sont déclarées alors que ce n’est pas toujours nécessaires.</li>
 </ul>
 
@@ -378,7 +379,7 @@
 
 <h2 id="webpack-en-bref">Webpack en bref</h2>
 <p align="center">
-	<img src="./images/webpack.png" />
+	<img src="./images/webpack.png">
 </p>
 <h3 id="comment-ça-marche-">Comment ça marche ?</h3>
 
@@ -419,9 +420,11 @@ On peut set up plusieurs outputs.</p>
 <p>(on suivra le <a href="https://webpack.js.org/guides/">guide officiel</a> de Webpack)</p>
 
 <ol>
-  <li>On commence par initialiser <code class="language-plaintext highlighter-rouge">npm</code> avec <code class="language-plaintext highlighter-rouge">npm init -y</code> (la balise <code class="language-plaintext highlighter-rouge">-y</code> permet de sauter les questions de npm, lorsqu’on veut rapidement initialiser), puis on install Webpack: <code class="language-plaintext highlighter-rouge">npm install webpack webpack-cli --save-dev</code></li>
+  <li>On commence par initialiser <code class="language-plaintext highlighter-rouge">npm</code> avec <code class="language-plaintext highlighter-rouge">npm init -y</code> (la balise <code class="language-plaintext highlighter-rouge">-y</code> permet de sauter les questions de npm, lorsqu’on veut rapidement initialiser), puis on install Webpack: <code class="language-plaintext highlighter-rouge">npm install webpack webpack-cli --save-dev</code>
+</li>
   <li>Nous n’avons pas besoin d’un point d’entrée pour npm, puisque tout sera chargé dans un seul fichier <code class="language-plaintext highlighter-rouge">js</code> dans <code class="language-plaintext highlighter-rouge">index.html</code>. La documentation Webpack recommande de modifier le champ <code class="language-plaintext highlighter-rouge">private</code> pour éviter de publier involontairement du code probablement propriétaire dans npm. Le fichier <code class="language-plaintext highlighter-rouge">package.json</code> ressemble alors à :
-    <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    <div class="language-json highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calculatrice-webpack"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
@@ -440,7 +443,8 @@ On peut set up plusieurs outputs.</p>
 </span></code></pre></div>    </div>
   </li>
   <li>Puisqu’on va empaqueter tous nos fichiers <code class="language-plaintext highlighter-rouge">js</code> en un seul, il faut faire la distinction entre les fichiers qui vont servir pendant le développement et ceux qui vont servir en production. C’est une question d’optimisation: cela évite de déployer des fichiers inutiles. On distingue alors les fichiers sources des fichiers de distribution. La structure du projet ressemble alors à :
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>.
 ├── dist
 │   ├── index.html
 │   └── style.css
@@ -461,7 +465,8 @@ On peut set up plusieurs outputs.</p>
       <li>
         <p><code class="language-plaintext highlighter-rouge">variables.js</code> :</p>
 
-        <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">var</span> <span class="nx">numInputs</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">"</span><span class="s2">.number-inputs input</span><span class="dl">"</span><span class="p">);</span>
+        <div class="language-js highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  <span class="kd">var</span> <span class="nx">numInputs</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">"</span><span class="s2">.number-inputs input</span><span class="dl">"</span><span class="p">);</span>
 
   <span class="kd">var</span> <span class="nx">opInputs</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">"</span><span class="s2">.operators input</span><span class="dl">"</span><span class="p">);</span>
 
@@ -471,7 +476,8 @@ On peut set up plusieurs outputs.</p>
       <li>
         <p><code class="language-plaintext highlighter-rouge">methods.js</code> :</p>
 
-        <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">function</span> <span class="nx">insert</span><span class="p">(</span><span class="nx">num</span><span class="p">)</span> <span class="p">{</span>
+        <div class="language-js highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  <span class="kd">function</span> <span class="nx">insert</span><span class="p">(</span><span class="nx">num</span><span class="p">)</span> <span class="p">{</span>
       <span class="k">return</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">result</span><span class="dl">"</span><span class="p">).</span><span class="nx">value</span> <span class="o">+=</span> <span class="nx">num</span><span class="p">;</span>
   <span class="p">}</span>
   <span class="kd">function</span> <span class="nx">calcul</span><span class="p">()</span> <span class="p">{</span>
@@ -487,7 +493,8 @@ On peut set up plusieurs outputs.</p>
       <li>
         <p><code class="language-plaintext highlighter-rouge">index.js</code> :</p>
 
-        <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">import</span> <span class="p">{</span><span class="nx">numInputs</span><span class="p">,</span> <span class="nx">opInputs</span><span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./variables</span><span class="dl">"</span>
+        <div class="language-js highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  <span class="k">import</span> <span class="p">{</span><span class="nx">numInputs</span><span class="p">,</span> <span class="nx">opInputs</span><span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./variables</span><span class="dl">"</span>
   <span class="k">import</span> <span class="p">{</span><span class="nx">insert</span><span class="p">,</span> <span class="nx">calcul</span><span class="p">,</span> <span class="nx">del</span><span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./methods</span><span class="dl">"</span><span class="p">;</span>
 
   <span class="nx">numInputs</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">input</span> <span class="o">=&gt;</span> <span class="p">{</span>
@@ -516,12 +523,13 @@ On peut set up plusieurs outputs.</p>
   <li>
     <p>Désormais, plus besoin d’importer les 3 scripts. Webpack va nous fournir un seul fichier de sortie, <code class="language-plaintext highlighter-rouge">main.js</code>, qui sera un fichier de distribution (donc localisé dans <code class="language-plaintext highlighter-rouge">dist/</code>). Le fichier <code class="language-plaintext highlighter-rouge">index.html</code> ressemble maintenant à :</p>
 
-    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nt">&lt;html&gt;</span>
+    <div class="language-html highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> <span class="nt">&lt;html&gt;</span>
      <span class="nt">&lt;head&gt;</span>
          <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">/&gt;</span>
          <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"X-UA-Compatible"</span> <span class="na">content=</span><span class="s">"IE=edge"</span><span class="nt">/&gt;</span>
          <span class="nt">&lt;title&gt;</span>Calculatrice<span class="nt">&lt;/title&gt;</span>
-         <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"https://fonts.googleapis.com/css?family=Montserrat&amp;display=swap"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">/&gt;</span>
+         <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"https://fonts.googleapis.com/css?family=Montserrat&display=swap"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">/&gt;</span>
          <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">type=</span><span class="s">"text/css"</span> <span class="na">href=</span><span class="s">"./style.css"</span><span class="nt">/&gt;</span>
      <span class="nt">&lt;/head&gt;</span>
      <span class="nt">&lt;body&gt;</span>
@@ -571,7 +579,8 @@ On peut set up plusieurs outputs.</p>
   <li>
     <p>On créé un fichier <code class="language-plaintext highlighter-rouge">webpack.config.js</code> dans le répertoire source avec la configuration de base suivante:</p>
 
-    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kd">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">path</span><span class="dl">'</span><span class="p">);</span>
+    <div class="language-js highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> <span class="kd">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">path</span><span class="dl">'</span><span class="p">);</span>
 
  <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
    <span class="na">entry</span><span class="p">:</span> <span class="dl">'</span><span class="s1">./src/index.js</span><span class="dl">'</span><span class="p">,</span>
@@ -587,7 +596,8 @@ On peut set up plusieurs outputs.</p>
   <li>
     <p>On peut aller encore un peu plus loin en créant un script <code class="language-plaintext highlighter-rouge">npm</code> pour lancer l’empaquetage en une commande. La convention pour n’importe quel projet veut que la commande soit <code class="language-plaintext highlighter-rouge">npm run build</code>. Cela permet à tous les développeurs de s’approprier plus rapidement d’un projet et de le lancer avec une seule commande, sans se soucier d’options éventuelles. Ici, il suffit de modifier le fichier <code class="language-plaintext highlighter-rouge">package.json</code> de la sorte:</p>
 
-    <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="p">{</span><span class="w">
+    <div class="language-json highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="p">{</span><span class="w">
    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calculatrice-webpack"</span><span class="p">,</span><span class="w">
    </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span><span class="w">
    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
@@ -624,7 +634,7 @@ Ce <a href="https://freecodecamp.org/news/an-intro-to-webpack-what-it-is-and-how
 <p>Bien que Webpack soit le bundler le plus utilisé, il n’est pas le seul sur le marché. <a href="https://parceljs.org/">Parcel</a> est une alternative récente.</p>
 
 <p align="center">
-	<img src="./images/parceljs.png" />
+	<img src="./images/parceljs.png">
 </p>
 <h3 id="intérêt">Intérêt</h3>
 <ul>
@@ -657,19 +667,21 @@ Ce <a href="https://freecodecamp.org/news/an-intro-to-webpack-what-it-is-and-how
 
   <div class="wrapper">
 
-    <h2 class="footer-heading">cours d&#39;informatique</h2>
+    <h2 class="footer-heading">cours d'informatique</h2>
 
     <div class="footer-col-wrapper">
       <div class="footer-col footer-col-1">
         <ul class="contact-list">
-          <li class="p-name">cours d&#39;informatique</li></ul>
+          <li class="p-name">cours d'informatique</li>
+</ul>
       </div>
 
-      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+      <div class="footer-col footer-col-2">
+<ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
 </div>
 
       <div class="footer-col footer-col-3">
-        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.</p>
+        <p>Support de cours/td d'informatique à l'école centrale marseille.</p>
       </div>
     </div>
 

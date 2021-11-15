@@ -1,51 +1,44 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>Installation d’Anaconda python | cours d’informatique</title>
-<meta name="generator" content="Jekyll v4.2.0" />
-<meta property="og:title" content="Installation d’Anaconda python" />
-<meta name="author" content="François Brucker" />
-<meta property="og:locale" content="en_US" />
-<meta name="description" content="Comment installer la distribution anaconda de python." />
-<meta property="og:description" content="Comment installer la distribution anaconda de python." />
-<link rel="canonical" href="/cours_informatique/tutos/python/installation/anaconda/2021/09/14/installation-anaconda.html" />
-<meta property="og:url" content="/cours_informatique/tutos/python/installation/anaconda/2021/09/14/installation-anaconda.html" />
-<meta property="og:site_name" content="cours d’informatique" />
-<meta property="og:type" content="article" />
-<meta property="article:published_time" content="2021-09-14T00:00:00+00:00" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Installation d’Anaconda python" />
+<meta name="generator" content="Jekyll v4.2.0">
+<meta property="og:title" content="Installation d’Anaconda python">
+<meta name="author" content="François Brucker">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Comment installer la distribution anaconda de python.">
+<meta property="og:description" content="Comment installer la distribution anaconda de python.">
+<link rel="canonical" href="/cours_informatique/tutos/python/installation/anaconda/2021/09/14/installation-anaconda.html">
+<meta property="og:url" content="/cours_informatique/tutos/python/installation/anaconda/2021/09/14/installation-anaconda.html">
+<meta property="og:site_name" content="cours d’informatique">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-09-14T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Installation d’Anaconda python">
 <script type="application/ld+json">
-{"description":"Comment installer la distribution anaconda de python.","@type":"BlogPosting","headline":"Installation d’Anaconda python","dateModified":"2021-09-14T00:00:00+00:00","url":"/cours_informatique/tutos/python/installation/anaconda/2021/09/14/installation-anaconda.html","datePublished":"2021-09-14T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"/cours_informatique/tutos/python/installation/anaconda/2021/09/14/installation-anaconda.html"},"author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
+{"description":"Comment installer la distribution anaconda de python.","@type":"BlogPosting","headline":"Installation d’Anaconda python","url":"/cours_informatique/tutos/python/installation/anaconda/2021/09/14/installation-anaconda.html","dateModified":"2021-09-14T00:00:00+00:00","datePublished":"2021-09-14T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"/cours_informatique/tutos/python/installation/anaconda/2021/09/14/installation-anaconda.html"},"author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
-  <link rel="stylesheet" href="/cours_informatique/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
-  <script>
-    MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-      },
-      svg: {
-        fontCache: 'global'
-      }
-    };
-    </script>
-    <script type="text/javascript" id="MathJax-script" async
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
-    </script>
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css">
+<link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique">
 </head>
 
-<body><header class="site-header" role="banner">
+<body>
+<header class="site-header" role="banner">
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
-        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/cours_informatique/">cours d'informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
         <label for="nav-trigger">
           <span class="menu-icon">
-            <svg viewBox="0 0 18 15" width="18px" height="15px">
-              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
             </svg>
           </span>
         </label>
@@ -53,19 +46,20 @@
         <div class="trigger">
             <a class="page-link" href="/cours_informatique/about"> about </a>
         </div>
-      </nav></div>
+      </nav>
+</div>
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Installation d&#39;Anaconda python</h1>Auteurs :
+    <h1 class="post-title">Installation d'Anaconda python</h1>Auteurs :
       <ul>
       
         <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></li>
       
-      </ul></p></p>
+      </ul>
   </header>
 
   <div class="post-content">
@@ -118,11 +112,11 @@ Je pense que c’est comme mac, mais pas sur.</p>
 <details><summary>sous mac</summary><div>
 <p>Après avoir accepté la licence d’utilisation, l’installateur vous demandera pour quoi vous voulez installer anaconda :</p>
 
-<p><img src="/cours_informatique/assets/tutos/install-anaconda/ou-installer.png" alt="où installer anaconda" style="margin: auto;display: block;width: 500px" /></p>
+<p><img src="/cours_informatique/assets/tutos/install-anaconda/ou-installer.png" alt="où installer anaconda" style="margin: auto;display: block;width: 500px"></p>
 
 <p>choisissez <em>installer sur un disque spécifique…</em> (ce n’est <strong>pas</strong> le choix par défaut) :</p>
 
-<p><img src="/cours_informatique/assets/tutos/install-anaconda/disque-specifique.png" alt="où installer anaconda : disque spécifique" style="margin: auto;display: block;width: 500px" /></p>
+<p><img src="/cours_informatique/assets/tutos/install-anaconda/disque-specifique.png" alt="où installer anaconda : disque spécifique" style="margin: auto;display: block;width: 500px"></p>
 
 <p>Puis choisissez votre disque dur (il doit s’(appeler <em>“Macintosh HD”</em>)). On peut maintenant cliquer sur le bouton <em>continuer</em></p>
 
@@ -132,11 +126,11 @@ Je pense que c’est comme mac, mais pas sur.</p>
 
 <p><strong>Ne cliquez pas tout de suite sur installer</strong> lorsque vous avez cette fenêtre :</p>
 
-<p><img src="/cours_informatique/assets/tutos/install-anaconda/personnaliser.png" alt="personnaliser" style="margin: auto;display: block;width: 500px" /></p>
+<p><img src="/cours_informatique/assets/tutos/install-anaconda/personnaliser.png" alt="personnaliser" style="margin: auto;display: block;width: 500px"></p>
 
 <p>Vous pouvez cliquer sur le bouton personnaliser si vous voulez que le python d’anaconda ne soit pas le python par défaut :</p>
 
-<p><img src="/cours_informatique/assets/tutos/install-anaconda/modification-path.png" alt="modifiaction PATH" style="margin: auto;display: block;width: 500px" /></p>
+<p><img src="/cours_informatique/assets/tutos/install-anaconda/modification-path.png" alt="modifiaction PATH" style="margin: auto;display: block;width: 500px"></p>
 
 <p>Si anaconda est votre principale installation de python (cela devrait être le cas si vous lisez cette doc), assurez vous que ces cases soient cochées.</p>
 
@@ -151,11 +145,11 @@ Je pense que c’est comme mac, mais pas sur.</p>
 <details><summary>sous windows</summary><div>
 <p>Lors de votre installation, choisissez une installation pour tous les utilisateurs :</p>
 
-<p><img src="/cours_informatique/assets/tutos/install-anaconda/windows-anaconda-alluser.png" alt="all users" style="margin: auto;display: block;width: 500px" /></p>
+<p><img src="/cours_informatique/assets/tutos/install-anaconda/windows-anaconda-alluser.png" alt="all users" style="margin: auto;display: block;width: 500px"></p>
 
 <p>Juste avant l’installation, vous pourrez choisir des options. Cochez les deux, <strong>même si c’est déconseillé</strong> :</p>
 
-<p><img src="/cours_informatique/assets/tutos/install-anaconda/anaconda-options.png" alt="options" style="margin: auto;display: block;width: 500px" /></p>
+<p><img src="/cours_informatique/assets/tutos/install-anaconda/anaconda-options.png" alt="options" style="margin: auto;display: block;width: 500px"></p>
 
 </div></details>
 
@@ -182,7 +176,7 @@ Je pense que c’est comme mac, mais pas sur.</p>
 <details><summary>sous windows</summary><div>
 <p>Dans le dossier : <code class="language-plaintext highlighter-rouge">C:\programData\Anaconda3</code>.</p>
 
-<p>Il faudra surement <a href="/cours_informatique/tutos/systeme/fichiers/2021/08/24/fichiers-navigation.html#dossiers-et-fichiers-cachés">révéler les fichiers cachés</a> pour voir le dossier dans un explorateur de fichier.
+<p>Il faudra surement <a href="/cours_informatique/tutos/systeme/fichiers/2021/08/24/fichiers-navigation.html#dossiers-et-fichiers-cach%C3%A9s">révéler les fichiers cachés</a> pour voir le dossier dans un explorateur de fichier.
 )</p>
 
 </div></details>
@@ -201,7 +195,8 @@ Je pense que c’est comme mac, mais pas sur.</p>
 
 <ol>
   <li>créez un nouveau notebook <code class="language-plaintext highlighter-rouge">python3</code>.</li>
-  <li>dans la cellule tapez <code class="language-plaintext highlighter-rouge">print("Hello world!")</code></li>
+  <li>dans la cellule tapez <code class="language-plaintext highlighter-rouge">print("Hello world!")</code>
+</li>
   <li>cliquez sur l’icône <em>Exécuter</em> sur la bannière de titre ou appuyer sur <code class="language-plaintext highlighter-rouge">shift + entrée</code>.</li>
 </ol>
 
@@ -252,19 +247,21 @@ Je pense que c’est comme mac, mais pas sur.</p>
 
   <div class="wrapper">
 
-    <h2 class="footer-heading">cours d&#39;informatique</h2>
+    <h2 class="footer-heading">cours d'informatique</h2>
 
     <div class="footer-col-wrapper">
       <div class="footer-col footer-col-1">
         <ul class="contact-list">
-          <li class="p-name">cours d&#39;informatique</li></ul>
+          <li class="p-name">cours d'informatique</li>
+</ul>
       </div>
 
-      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+      <div class="footer-col footer-col-2">
+<ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
 </div>
 
       <div class="footer-col footer-col-3">
-        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.</p>
+        <p>Support de cours/td d'informatique à l'école centrale marseille.</p>
       </div>
     </div>
 

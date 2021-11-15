@@ -1,49 +1,42 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>git et github | cours d’informatique</title>
-<meta name="generator" content="Jekyll v4.2.0" />
-<meta property="og:title" content="git et github" />
-<meta name="author" content="François Brucker" />
-<meta property="og:locale" content="en_US" />
-<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
-<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
-<link rel="canonical" href="/cours_informatique/cours/git_et_github/usage_git.html" />
-<meta property="og:url" content="/cours_informatique/cours/git_et_github/usage_git.html" />
-<meta property="og:site_name" content="cours d’informatique" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="git et github" />
+<meta name="generator" content="Jekyll v4.2.0">
+<meta property="og:title" content="git et github">
+<meta name="author" content="François Brucker">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille.">
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille.">
+<link rel="canonical" href="/cours_informatique/cours/git_et_github/usage_git.html">
+<meta property="og:url" content="/cours_informatique/cours/git_et_github/usage_git.html">
+<meta property="og:site_name" content="cours d’informatique">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="git et github">
 <script type="application/ld+json">
 {"description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","headline":"git et github","url":"/cours_informatique/cours/git_et_github/usage_git.html","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
-  <link rel="stylesheet" href="/cours_informatique/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
-  <script>
-    MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-      },
-      svg: {
-        fontCache: 'global'
-      }
-    };
-    </script>
-    <script type="text/javascript" id="MathJax-script" async
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
-    </script>
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css">
+<link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique">
 </head>
 
-<body><header class="site-header" role="banner">
+<body>
+<header class="site-header" role="banner">
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
-        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/cours_informatique/">cours d'informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
         <label for="nav-trigger">
           <span class="menu-icon">
-            <svg viewBox="0 0 18 15" width="18px" height="15px">
-              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
             </svg>
           </span>
         </label>
@@ -51,14 +44,15 @@
         <div class="trigger">
             <a class="page-link" href="/cours_informatique/about"> about </a>
         </div>
-      </nav></div>
+      </nav>
+</div>
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">git et github</h1></p>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></p>
+    <h1 class="post-title">git et github</h1>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span>
   </header>
 
   <div class="post-content">
@@ -77,7 +71,8 @@
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git init
 </code></pre></div></div>
 
-<h2 id="le-dossier-git">le dossier <em>.git</em></h2>
+<h2 id="le-dossier-git">le dossier <em>.git</em>
+</h2>
 
 <blockquote>
   <p><a href="https://git-scm.com/book/fr/v2/Les-tripes-de-Git-Plomberie-et-porcelaine"><strong>Dans la doc</strong></a></p>
@@ -118,13 +113,20 @@
 <p>Le fichier de configuration est également décrit <a href="https://www.daolf.com/posts/git-series-part-1/">dans ce post</a>. En deux mots :</p>
 
 <ul>
-  <li><em>HEAD</em> : la branche courant, pour l’instant <strong>Master</strong> (vérifiez le en lisant le fichier avec la commande <code class="language-plaintext highlighter-rouge">cat</code>)</li>
-  <li><em>config</em> : le fichier de configuration.</li>
-  <li><em>description</em> : descriptiopn du projet, pas vraiment utilisé</li>
-  <li><em>hooks/</em> : contient des scripts que l’on peu utiliser à chaque qu’une commande git particulieère est utilisée. C’est une utilisation avancée de git, qui permet par exemple de lancer tous les tests à chaque push, etc.</li>
-  <li><em>info/exclude/</em> un <em>.gitignore</em> pour tout le projet.</li>
-  <li><em>objects/</em> : contient votre projet actuel et passé en plein de petits bouts. Pour l’instant il n’y a rien.</li>
-  <li><em>refs/</em> : contient les commit. Pour l’instant il n’y a rien.</li>
+  <li>
+<em>HEAD</em> : la branche courant, pour l’instant <strong>Master</strong> (vérifiez le en lisant le fichier avec la commande <code class="language-plaintext highlighter-rouge">cat</code>)</li>
+  <li>
+<em>config</em> : le fichier de configuration.</li>
+  <li>
+<em>description</em> : descriptiopn du projet, pas vraiment utilisé</li>
+  <li>
+<em>hooks/</em> : contient des scripts que l’on peu utiliser à chaque qu’une commande git particulieère est utilisée. C’est une utilisation avancée de git, qui permet par exemple de lancer tous les tests à chaque push, etc.</li>
+  <li>
+<em>info/exclude/</em> un <em>.gitignore</em> pour tout le projet.</li>
+  <li>
+<em>objects/</em> : contient votre projet actuel et passé en plein de petits bouts. Pour l’instant il n’y a rien.</li>
+  <li>
+<em>refs/</em> : contient les commit. Pour l’instant il n’y a rien.</li>
 </ul>
 
 <h2 id="fonctionnement-de-git">fonctionnement de git</h2>
@@ -511,7 +513,8 @@ Modifications qui seront validées :
   <li>
     <p>On ajoute le fichier <em>main.js</em></p>
 
-    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">paragraph</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">couleur</span><span class="dl">"</span><span class="p">);</span>
+    <div class="language-javascript highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">paragraph</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">couleur</span><span class="dl">"</span><span class="p">);</span>
 
 <span class="nx">paragraph</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">mouseenter</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">event</span> <span class="p">)</span> <span class="p">{</span>   
   <span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">color</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">purple</span><span class="dl">"</span><span class="p">;</span>
@@ -525,7 +528,8 @@ Modifications qui seront validées :
   <li>
     <p>et on modifie le fichier <em>index.html</em> :</p>
 
-    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="cp">&lt;!doctype html&gt;</span>
+    <div class="language-html highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  <span class="cp">&lt;!doctype html&gt;</span>
   <span class="nt">&lt;html&gt;</span>
   <span class="nt">&lt;head&gt;</span>
       <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">/&gt;</span>
@@ -613,7 +617,8 @@ a3c3fdc add css and <span class="nb">link </span>to html
 <p>Nous allons donc procéder comme suit :</p>
 
 <ol>
-  <li>depuis la branche <code class="language-plaintext highlighter-rouge">js</code>, on va la faire commencer à la fin de <code class="language-plaintext highlighter-rouge">master</code></li>
+  <li>depuis la branche <code class="language-plaintext highlighter-rouge">js</code>, on va la faire commencer à la fin de <code class="language-plaintext highlighter-rouge">master</code>
+</li>
   <li>on va “<em>merger</em>” la branche <code class="language-plaintext highlighter-rouge">js</code> à la suite de la branche <code class="language-plaintext highlighter-rouge">master</code>.</li>
 </ol>
 
@@ -707,8 +712,10 @@ impossible d'appliquer f7907be... add js
 <p>Il ne nous reste plus qu’à fusionner <code class="language-plaintext highlighter-rouge">js</code> dans <code class="language-plaintext highlighter-rouge">master</code> (ce qui devrait se faire sans soucis puisqu’elles se suivent). Pour cela :</p>
 
 <ol>
-  <li>on se place sur la branche <code class="language-plaintext highlighter-rouge">master</code> : <code class="language-plaintext highlighter-rouge">git checkout master</code></li>
-  <li>on fusionne la branche <code class="language-plaintext highlighter-rouge">js</code> sur <code class="language-plaintext highlighter-rouge">master</code> : <code class="language-plaintext highlighter-rouge">git merge js</code></li>
+  <li>on se place sur la branche <code class="language-plaintext highlighter-rouge">master</code> : <code class="language-plaintext highlighter-rouge">git checkout master</code>
+</li>
+  <li>on fusionne la branche <code class="language-plaintext highlighter-rouge">js</code> sur <code class="language-plaintext highlighter-rouge">master</code> : <code class="language-plaintext highlighter-rouge">git merge js</code>
+</li>
 </ol>
 
 <p>Un <code class="language-plaintext highlighter-rouge">it log --oneline --all --graph</code> montre que les deux branches sont identique, on peut maintenant supprimer la branche <code class="language-plaintext highlighter-rouge">js</code> : <code class="language-plaintext highlighter-rouge">git branch -d js</code></p>
@@ -786,13 +793,16 @@ a3c3fdc add css and link to html
       <li>regarder un ancien endroit dans le projet : <code class="language-plaintext highlighter-rouge">git checkout 7d2fd72</code> par exemple crée une nouvelle branche temporaire (nommée <em>HEAD détachée</em>) pour voir à quoi ressemblait notre projet au commit <em>7d2fd72</em> (on a bien une règle h2 à notre css). Si l’on a rien modifié, un simple <code class="language-plaintext highlighter-rouge">git checkout master</code> reviendra à l’état courant du projet. Si l’on a modifié des fichiers, il faut commencer par revenir à l’état initial</li>
       <li>revenir à un commit plus lointain :
         <ul>
-          <li><code class="language-plaintext highlighter-rouge">git reset numéro_commit</code> reviendra au commit déterminé mais laissera vos modifications.</li>
-          <li><code class="language-plaintext highlighter-rouge">git reset numéro_commit --hard</code> reviendra au commit déterminé mais supprimera vos modifications. Attention vous allez perdre des modifications !</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">git reset numéro_commit</code> reviendra au commit déterminé mais laissera vos modifications.</li>
+          <li>
+<code class="language-plaintext highlighter-rouge">git reset numéro_commit --hard</code> reviendra au commit déterminé mais supprimera vos modifications. Attention vous allez perdre des modifications !</li>
         </ul>
       </li>
     </ul>
   </li>
-  <li>remettre un seul fichier à un état antérieur : <code class="language-plaintext highlighter-rouge">git checkout 7d2fd72 index.html</code> prend le fichier dans l’état où il était au commit précisé, l’importe à l’état actuel et le met dans le stage, prêt à être commité. Si on ne veut plus de ce fichier, on peut revenir à l’état initial en important le fichier du master : <code class="language-plaintext highlighter-rouge">git checkout master index.html</code></li>
+  <li>remettre un seul fichier à un état antérieur : <code class="language-plaintext highlighter-rouge">git checkout 7d2fd72 index.html</code> prend le fichier dans l’état où il était au commit précisé, l’importe à l’état actuel et le met dans le stage, prêt à être commité. Si on ne veut plus de ce fichier, on peut revenir à l’état initial en important le fichier du master : <code class="language-plaintext highlighter-rouge">git checkout master index.html</code>
+</li>
   <li>undo un commit : <code class="language-plaintext highlighter-rouge">git revert 7d2fd72</code> va créer un commit qui défait un ancien commit (ce commit pouvant être aussi loin que l’on veut). Cela ne change pas l’historique en supprimant le commit undoé, ça rajoute un commit qui le undo.</li>
 </ul>
 
@@ -806,19 +816,21 @@ a3c3fdc add css and link to html
 
   <div class="wrapper">
 
-    <h2 class="footer-heading">cours d&#39;informatique</h2>
+    <h2 class="footer-heading">cours d'informatique</h2>
 
     <div class="footer-col-wrapper">
       <div class="footer-col footer-col-1">
         <ul class="contact-list">
-          <li class="p-name">cours d&#39;informatique</li></ul>
+          <li class="p-name">cours d'informatique</li>
+</ul>
       </div>
 
-      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+      <div class="footer-col footer-col-2">
+<ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
 </div>
 
       <div class="footer-col footer-col-3">
-        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.</p>
+        <p>Support de cours/td d'informatique à l'école centrale marseille.</p>
       </div>
     </div>
 

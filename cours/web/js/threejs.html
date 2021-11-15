@@ -1,49 +1,42 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>Création d’environnements 3D avec three.js | cours d’informatique</title>
-<meta name="generator" content="Jekyll v4.2.0" />
-<meta property="og:title" content="Création d’environnements 3D avec three.js" />
-<meta name="author" content="Rose Simon" />
-<meta property="og:locale" content="en_US" />
-<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
-<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
-<link rel="canonical" href="/cours_informatique/cours/web/js/threejs.html" />
-<meta property="og:url" content="/cours_informatique/cours/web/js/threejs.html" />
-<meta property="og:site_name" content="cours d’informatique" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Création d’environnements 3D avec three.js" />
+<meta name="generator" content="Jekyll v4.2.0">
+<meta property="og:title" content="Création d’environnements 3D avec three.js">
+<meta name="author" content="Rose Simon">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille.">
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille.">
+<link rel="canonical" href="/cours_informatique/cours/web/js/threejs.html">
+<meta property="og:url" content="/cours_informatique/cours/web/js/threejs.html">
+<meta property="og:site_name" content="cours d’informatique">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Création d’environnements 3D avec three.js">
 <script type="application/ld+json">
 {"description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","headline":"Création d’environnements 3D avec three.js","url":"/cours_informatique/cours/web/js/threejs.html","author":{"@type":"Person","name":"Rose Simon"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
-  <link rel="stylesheet" href="/cours_informatique/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
-  <script>
-    MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-      },
-      svg: {
-        fontCache: 'global'
-      }
-    };
-    </script>
-    <script type="text/javascript" id="MathJax-script" async
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
-    </script>
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css">
+<link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique">
 </head>
 
-<body><header class="site-header" role="banner">
+<body>
+<header class="site-header" role="banner">
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
-        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/cours_informatique/">cours d'informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
         <label for="nav-trigger">
           <span class="menu-icon">
-            <svg viewBox="0 0 18 15" width="18px" height="15px">
-              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
             </svg>
           </span>
         </label>
@@ -51,14 +44,15 @@
         <div class="trigger">
             <a class="page-link" href="/cours_informatique/about"> about </a>
         </div>
-      </nav></div>
+      </nav>
+</div>
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Création d&#39;environnements 3D avec three.js</h1>Auteurs :
+    <h1 class="post-title">Création d'environnements 3D avec three.js</h1>Auteurs :
       <ul>
       
         <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Rose Simon</span></span></li>
@@ -67,7 +61,7 @@
       
         <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Pépin Anthony</span></span></li>
       
-      </ul></p></p>
+      </ul>
   </header>
 
   <div class="post-content">
@@ -81,7 +75,7 @@ Three.js utilise presque systématiquement WebGL comme moteur de rendu (renderer
 <h3 id="à-quoi-sert-ce-tuto">À quoi sert ce tuto?</h3>
 <p>Il est possible de faire plein de choses en Threejs comme des animations, jeux, navigations de page … En voilà un exemple :</p>
 
-<p><img src="/cours_informatique/assets/cours/web/threejs/planete.gif" alt="une planete" style="margin: auto;display: block;" /></p>
+<p><img src="/cours_informatique/assets/cours/web/threejs/planete.gif" alt="une planete" style="margin: auto;display: block;"></p>
 
 <p>Vous pouvez trouver une liste beaucoup plus détaillée sur le <a href="https://threejs.org/examples/">site officiel</a>.</p>
 
@@ -173,11 +167,13 @@ Ensuite on initialise les variables importantes du projet ( en particulier la sc
 
 <ul>
   <li>La scène correspond donc à notre environnement de travail, ce qui va être rendu visible par le renderer. Elle permet de localiser avec des coordonnées 3D les différents objets que l’on va ensuite créer. L’object scene ayant déjà été créé avant le fonction init(), on peut se contenter ici de le modifier sans l’initialiser.
-    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">scene</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nx">Scene</span><span class="p">();</span>
+    <div class="language-javascript highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nx">scene</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nx">Scene</span><span class="p">();</span>
 </code></pre></div>    </div>
   </li>
   <li>Les caméras sont aussi un point essentiel de three.js car elles définissent comment la scène va etre vu par l’utilisateur final. Il existe plusieurs types de caméras avec des possibilités et des effets différents. Une des caméras les plus utilisées est la PerspectiveCamera qui mimique la vision humaine.
-    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">camera</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nx">PerspectiveCamera</span><span class="p">(</span> <span class="mi">110</span><span class="p">,</span> <span class="nb">window</span><span class="p">.</span><span class="nx">innerWidth</span> <span class="o">/</span> <span class="nb">window</span><span class="p">.</span><span class="nx">innerHeight</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1000</span> <span class="p">);</span>
+    <div class="language-javascript highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nx">camera</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nx">PerspectiveCamera</span><span class="p">(</span> <span class="mi">110</span><span class="p">,</span> <span class="nb">window</span><span class="p">.</span><span class="nx">innerWidth</span> <span class="o">/</span> <span class="nb">window</span><span class="p">.</span><span class="nx">innerHeight</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1000</span> <span class="p">);</span>
 <span class="nx">camera</span><span class="p">.</span><span class="nx">position</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
 <span class="nx">camera</span><span class="p">.</span><span class="nx">lookAt</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> <span class="p">);</span>
 </code></pre></div>    </div>
@@ -187,12 +183,13 @@ Ensuite on initialise les variables importantes du projet ( en particulier la sc
 
 <p>On peut aussi définir la position ainsi que la direction dans laquelle la caméra regarde de manière relative à la scène que l’on a créée avant.</p>
 
-<p><img src="/cours_informatique/assets/cours/web/threejs/camera.jpg" alt="une camera" style="margin: auto;display: block;" /></p>
+<p><img src="/cours_informatique/assets/cours/web/threejs/camera.jpg" alt="une camera" style="margin: auto;display: block;"></p>
 
 <ul>
   <li>Enfin le moteur de rendu ou renderer. Il s’agit du travail final qui va venir faire un rendu 3D de la scène vu au travers de la caméra. L’objet final sera une image 2D de la scène 3D que l’on peut intégrer dans un canvas pour être utilisé directement en html. Comme dit précédemment, classiquement on utilise le moteur de rendu WebGLRenderer mais il est possible d’en utiliser d’autres (notamment au cas où des utilisateurs sont sur des vieux navigateurs qui ne supportent pas WebGL ce qui est rare).
 De la même manière que pour la caméra, il est possible de définir l’<strong>aspect</strong> du rendu, par exemple relatif à la taille de l’écran sur lequel on va ensuite afficher l’image. La dernière ligne ajoute le renderer dans le body du fichier HTML pour qu’il puisse afficher quelque chose.
-    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">renderer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nx">WebGLRenderer</span><span class="p">({</span><span class="na">antialias</span><span class="p">:</span> <span class="kc">true</span><span class="p">});</span>
+    <div class="language-javascript highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nx">renderer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nx">WebGLRenderer</span><span class="p">({</span><span class="na">antialias</span><span class="p">:</span> <span class="kc">true</span><span class="p">});</span>
 <span class="nx">renderer</span><span class="p">.</span><span class="nx">setSize</span><span class="p">(</span> <span class="nb">window</span><span class="p">.</span><span class="nx">innerWidth</span><span class="p">,</span> <span class="nb">window</span><span class="p">.</span><span class="nx">innerHeight</span> <span class="p">);</span>
 <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">renderer</span><span class="p">.</span><span class="nx">domElement</span><span class="p">);</span>
 </code></pre></div>    </div>
@@ -711,7 +708,8 @@ de <code class="language-plaintext highlighter-rouge">three</code> en mettant</p
 les tutos suivant :</p>
 <ul>
   <li><a href="/cours_informatique/cours/ssh_et_shell/ssh_scp.html">SCP</a></li>
-  <li><a href="/cours_informatique/cours/ssh_et_shell/ssh.html">SSH</a>
+  <li>
+<a href="/cours_informatique/cours/ssh_et_shell/ssh.html">SSH</a>
     <h2 id="conclusion">Conclusion</h2>
   </li>
 </ul>
@@ -750,19 +748,21 @@ les tutos suivant :</p>
 
   <div class="wrapper">
 
-    <h2 class="footer-heading">cours d&#39;informatique</h2>
+    <h2 class="footer-heading">cours d'informatique</h2>
 
     <div class="footer-col-wrapper">
       <div class="footer-col footer-col-1">
         <ul class="contact-list">
-          <li class="p-name">cours d&#39;informatique</li></ul>
+          <li class="p-name">cours d'informatique</li>
+</ul>
       </div>
 
-      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+      <div class="footer-col footer-col-2">
+<ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
 </div>
 
       <div class="footer-col footer-col-3">
-        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.</p>
+        <p>Support de cours/td d'informatique à l'école centrale marseille.</p>
       </div>
     </div>
 

@@ -1,49 +1,42 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>Projet numérologie : partie 2 / niveau 1 / serveur web minimal | cours d’informatique</title>
-<meta name="generator" content="Jekyll v4.2.0" />
-<meta property="og:title" content="Projet numérologie : partie 2 / niveau 1 / serveur web minimal" />
-<meta name="author" content="François Brucker" />
-<meta property="og:locale" content="en_US" />
-<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
-<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
-<link rel="canonical" href="/cours_informatique/cours/web/projets/numerologie/partie-2-serveur/1-serveur-web-minimal.html" />
-<meta property="og:url" content="/cours_informatique/cours/web/projets/numerologie/partie-2-serveur/1-serveur-web-minimal.html" />
-<meta property="og:site_name" content="cours d’informatique" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Projet numérologie : partie 2 / niveau 1 / serveur web minimal" />
+<meta name="generator" content="Jekyll v4.2.0">
+<meta property="og:title" content="Projet numérologie : partie 2 / niveau 1 / serveur web minimal">
+<meta name="author" content="François Brucker">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille.">
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille.">
+<link rel="canonical" href="/cours_informatique/cours/web/projets/numerologie/partie-2-serveur/1-serveur-web-minimal.html">
+<meta property="og:url" content="/cours_informatique/cours/web/projets/numerologie/partie-2-serveur/1-serveur-web-minimal.html">
+<meta property="og:site_name" content="cours d’informatique">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Projet numérologie : partie 2 / niveau 1 / serveur web minimal">
 <script type="application/ld+json">
 {"description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","headline":"Projet numérologie : partie 2 / niveau 1 / serveur web minimal","url":"/cours_informatique/cours/web/projets/numerologie/partie-2-serveur/1-serveur-web-minimal.html","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
-  <link rel="stylesheet" href="/cours_informatique/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
-  <script>
-    MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-      },
-      svg: {
-        fontCache: 'global'
-      }
-    };
-    </script>
-    <script type="text/javascript" id="MathJax-script" async
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
-    </script>
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css">
+<link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique">
 </head>
 
-<body><header class="site-header" role="banner">
+<body>
+<header class="site-header" role="banner">
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
-        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/cours_informatique/">cours d'informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
         <label for="nav-trigger">
           <span class="menu-icon">
-            <svg viewBox="0 0 18 15" width="18px" height="15px">
-              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
             </svg>
           </span>
         </label>
@@ -51,14 +44,15 @@
         <div class="trigger">
             <a class="page-link" href="/cours_informatique/about"> about </a>
         </div>
-      </nav></div>
+      </nav>
+</div>
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Projet numérologie : partie 2 / niveau 1 / serveur web minimal</h1></p>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></p>
+    <h1 class="post-title">Projet numérologie : partie 2 / niveau 1 / serveur web minimal</h1>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span>
   </header>
 
   <div class="post-content">
@@ -116,9 +110,13 @@
 <p>Regardons la syntaxe :</p>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">const</code> : déclaration de constantes.</li>
-  <li><code class="language-plaintext highlighter-rouge">require</code> : importation d’une bibliothèque (ici la bibliothèque <a href="https://nodejs.org/api/http.html">http</a> de node) et affectation de celle-ci à une constante : en javascript <strong>on importe toujours quelque chose</strong></li>
-  <li>les fonctions peuvent se créer à la volée avec : <code class="language-plaintext highlighter-rouge">nomFonction((paramètres) =&gt; {})</code></li>
+  <li>
+<code class="language-plaintext highlighter-rouge">const</code> : déclaration de constantes.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">require</code> : importation d’une bibliothèque (ici la bibliothèque <a href="https://nodejs.org/api/http.html">http</a> de node) et affectation de celle-ci à une constante : en javascript <strong>on importe toujours quelque chose</strong>
+</li>
+  <li>les fonctions peuvent se créer à la volée avec : <code class="language-plaintext highlighter-rouge">nomFonction((paramètres) =&gt; {})</code>
+</li>
 </ul>
 
 <p>Que fait le code :</p>
@@ -126,8 +124,12 @@
 <ol>
   <li>on crée un serveur avec la fonction <a href="https://nodejs.org/api/http.html#http_http_createserver_options_requestlistener">http.createServer</a>. Cette fonction prend <strong>1 paramètre</strong> en argument qui est une fonction. Cette fonction sera appelée à chaque appelle au serveur avec deux paramètres :
     <ol>
-      <li><code class="language-plaintext highlighter-rouge">req</code> (qui contiendra la <strong>requête <code class="language-plaintext highlighter-rouge">http</code></strong>) : de type <a href="https://nodejs.org/api/http.html#http_class_http_incomingmessage"><code class="language-plaintext highlighter-rouge">http.IncomingMessage</code></a></li>
-      <li><code class="language-plaintext highlighter-rouge">res</code> (qui contiendra notre <strong>réponse <code class="language-plaintext highlighter-rouge">http</code></strong>) : de type <a href="https://nodejs.org/api/http.html#http_class_http_serverresponse"><code class="language-plaintext highlighter-rouge">http.ServerResponse</code></a></li>
+      <li>
+<code class="language-plaintext highlighter-rouge">req</code> (qui contiendra la <strong>requête <code class="language-plaintext highlighter-rouge">http</code></strong>) : de type <a href="https://nodejs.org/api/http.html#http_class_http_incomingmessage"><code class="language-plaintext highlighter-rouge">http.IncomingMessage</code></a>
+</li>
+      <li>
+<code class="language-plaintext highlighter-rouge">res</code> (qui contiendra notre <strong>réponse <code class="language-plaintext highlighter-rouge">http</code></strong>) : de type <a href="https://nodejs.org/api/http.html#http_class_http_serverresponse"><code class="language-plaintext highlighter-rouge">http.ServerResponse</code></a>
+</li>
     </ol>
   </li>
   <li>une fois le serveur crée on le place derrière un port de la machine, ici 3000.</li>
@@ -245,7 +247,8 @@ GET
 <ul>
   <li>le navigateur parle en http 1.1 (ce qui est ok)</li>
   <li>les <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/Headers">headers</a> nous informent un peut plus sur lui</li>
-  <li>il demande avec la <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/Methods">méthode</a> <strong>GET</strong> l’url <code class="language-plaintext highlighter-rouge">/</code> au serveur puis l’url <code class="language-plaintext highlighter-rouge">/flavicon.ico</code></li>
+  <li>il demande avec la <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/Methods">méthode</a> <strong>GET</strong> l’url <code class="language-plaintext highlighter-rouge">/</code> au serveur puis l’url <code class="language-plaintext highlighter-rouge">/flavicon.ico</code>
+</li>
 </ul>
 
 <p><strong>Pour répondre à une requête http de façon satisfaisante, le serveur à toujours besoin de :</strong></p>
@@ -263,7 +266,8 @@ GET
 
 <ul>
   <li>le <a href="https://fr.wikipedia.org/wiki/Liste_des_codes_HTTP">status code</a> qui résume ce que le serveur a fait avec la requête</li>
-  <li>des <a href="https://developer.mozilla.org/en-US/docs/Glossary/Response_header">headers</a></li>
+  <li>des <a href="https://developer.mozilla.org/en-US/docs/Glossary/Response_header">headers</a>
+</li>
   <li>le corps du message (qui peut, mais c’est rare) être vide.</li>
 </ul>
 
@@ -272,7 +276,8 @@ GET
 <ul>
   <li>le status est <a href="https://http.cat/200">200</a> (ou <a href="https://httpstatusdogs.com/200">200</a> si vous êtes ce genre de personnes)</li>
   <li>le header informe le navigateur du <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/Headers/Content-Type">type de message</a> : ici du texte</li>
-  <li>le message complet : ici la chaine de caractère <code class="language-plaintext highlighter-rouge">'Hello World\n'</code></li>
+  <li>le message complet : ici la chaine de caractère <code class="language-plaintext highlighter-rouge">'Hello World\n'</code>
+</li>
 </ul>
 
 <h2 id="status">status</h2>
@@ -304,19 +309,21 @@ GET
 
   <div class="wrapper">
 
-    <h2 class="footer-heading">cours d&#39;informatique</h2>
+    <h2 class="footer-heading">cours d'informatique</h2>
 
     <div class="footer-col-wrapper">
       <div class="footer-col footer-col-1">
         <ul class="contact-list">
-          <li class="p-name">cours d&#39;informatique</li></ul>
+          <li class="p-name">cours d'informatique</li>
+</ul>
       </div>
 
-      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+      <div class="footer-col footer-col-2">
+<ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
 </div>
 
       <div class="footer-col footer-col-3">
-        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.</p>
+        <p>Support de cours/td d'informatique à l'école centrale marseille.</p>
       </div>
     </div>
 

@@ -1,48 +1,41 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>GitHub &amp; GitLab : les bonnes pratiques en équipe | cours d’informatique</title>
-<meta name="generator" content="Jekyll v4.2.0" />
-<meta property="og:title" content="GitHub &amp; GitLab : les bonnes pratiques en équipe" />
-<meta property="og:locale" content="en_US" />
-<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
-<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
-<link rel="canonical" href="/cours_informatique/cours/git_et_github/github_bonnes_pratiques.html" />
-<meta property="og:url" content="/cours_informatique/cours/git_et_github/github_bonnes_pratiques.html" />
-<meta property="og:site_name" content="cours d’informatique" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="GitHub &amp; GitLab : les bonnes pratiques en équipe" />
+<meta name="generator" content="Jekyll v4.2.0">
+<meta property="og:title" content="GitHub &amp; GitLab : les bonnes pratiques en équipe">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille.">
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille.">
+<link rel="canonical" href="/cours_informatique/cours/git_et_github/github_bonnes_pratiques.html">
+<meta property="og:url" content="/cours_informatique/cours/git_et_github/github_bonnes_pratiques.html">
+<meta property="og:site_name" content="cours d’informatique">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="GitHub &amp; GitLab : les bonnes pratiques en équipe">
 <script type="application/ld+json">
 {"description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","headline":"GitHub &amp; GitLab : les bonnes pratiques en équipe","url":"/cours_informatique/cours/git_et_github/github_bonnes_pratiques.html","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
-  <link rel="stylesheet" href="/cours_informatique/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
-  <script>
-    MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-      },
-      svg: {
-        fontCache: 'global'
-      }
-    };
-    </script>
-    <script type="text/javascript" id="MathJax-script" async
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
-    </script>
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css">
+<link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique">
 </head>
 
-<body><header class="site-header" role="banner">
+<body>
+<header class="site-header" role="banner">
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
-        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/cours_informatique/">cours d'informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
         <label for="nav-trigger">
           <span class="menu-icon">
-            <svg viewBox="0 0 18 15" width="18px" height="15px">
-              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
             </svg>
           </span>
         </label>
@@ -50,7 +43,8 @@
         <div class="trigger">
             <a class="page-link" href="/cours_informatique/about"> about </a>
         </div>
-      </nav></div>
+      </nav>
+</div>
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
@@ -62,7 +56,7 @@
       
         <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Corentin Lange</span></span></li>
       
-      </ul></p></p>
+      </ul>
   </header>
 
   <div class="post-content">
@@ -76,7 +70,7 @@
 
 <p>Deux repos qui, selon moi, sont très bien réalisé et celui du projet open-source <a href="https://github.com/atom/atom">Atom</a> (un ide multi-languages personalisables)</p>
 
-<hr />
+<hr>
 
 <h2 id="workflow">WORKFLOW</h2>
 
@@ -88,7 +82,7 @@
 
 <h3 id="le-no-flow">Le No-flow</h3>
 
-<p><img src="/cours_informatique/assets/cours/git/git_flow_1.png" alt="git_flow_1" /></p>
+<p><img src="/cours_informatique/assets/cours/git/git_flow_1.png" alt="git_flow_1"></p>
 
 <p>C’est souvent ce qu’on utilise la première fois en se servant de git et gihub : chacun pousse sur la branche main lorsqu’il ou elle a rajouté une fonctionnalité, corrigé un bug, modifié une partie déjà existante.</p>
 
@@ -105,7 +99,7 @@
 
 <h3 id="le-git-flow">Le Git Flow</h3>
 
-<p><img src="/cours_informatique/assets/cours/git/git_flow_4.png" alt="Git_flow_4" /></p>
+<p><img src="/cours_informatique/assets/cours/git/git_flow_4.png" alt="Git_flow_4"></p>
 
 <h4 id="branches">BRANCHES</h4>
 
@@ -149,7 +143,7 @@ Tout le code de développement(branch develop) est fusionné dans master au fur 
   <p>Il est clair qu’initialiser ce workflow pour un petit travail de rendu pour les cours est surdimensionné. Ce dernier est à utiliser dans des cas de projets sur long terme pour assurer une bonne intégration continue.</p>
 </blockquote>
 
-<hr />
+<hr>
 
 <h3 id="commits">COMMITS</h3>
 
@@ -168,12 +162,18 @@ de fluidité pour la relecture.</p>
 <p>Pour le type, il est d’usage de garder les plus connus à savoir :</p>
 
 <ul>
-  <li><strong>feature</strong>: Ajout d’une nouvelle fonctionnalité</li>
-  <li><strong>test</strong>: Ajout de tests</li>
-  <li><strong>bugfix</strong>: Correction d’un bug</li>
-  <li><strong>hotfix</strong>: Correction d’un bug critique</li>
-  <li><strong>chore</strong>: Nettoyage du code</li>
-  <li><strong>experiment</strong>: Expérimentation de fonctionnalités.</li>
+  <li>
+<strong>feature</strong>: Ajout d’une nouvelle fonctionnalité</li>
+  <li>
+<strong>test</strong>: Ajout de tests</li>
+  <li>
+<strong>bugfix</strong>: Correction d’un bug</li>
+  <li>
+<strong>hotfix</strong>: Correction d’un bug critique</li>
+  <li>
+<strong>chore</strong>: Nettoyage du code</li>
+  <li>
+<strong>experiment</strong>: Expérimentation de fonctionnalités.</li>
 </ul>
 
 <h3 id="gitmoji">gitmoji</h3>
@@ -190,15 +190,19 @@ Ce site liste les émojis utilisables : https://gitmoji.dev/</p>
     <p>Sans scope:</p>
 
     <ul>
-      <li>:bug: correction of bad codes</li>
-      <li>:zap: accelerated program launch on windows</li>
+      <li>
+<img class="emoji" title=":bug:" alt=":bug:" raw="🐛" src="https://github.githubassets.com/images/icons/emoji/unicode/1f41b.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">correction of bad codes</li>
+      <li>
+<img class="emoji" title=":zap:" alt=":zap:" raw="⚡️" src="https://github.githubassets.com/images/icons/emoji/unicode/26a1.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">accelerated program launch on windows</li>
     </ul>
   </li>
   <li>
     <p>Avec scope:</p>
     <ul>
-      <li>:hammer: refact: refactored sql db</li>
-      <li>:rotating_light: fix: compiler problems</li>
+      <li>
+<img class="emoji" title=":hammer:" alt=":hammer:" raw="🔨" src="https://github.githubassets.com/images/icons/emoji/unicode/1f528.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">refact: refactored sql db</li>
+      <li>
+<img class="emoji" title=":rotating_light:" alt=":rotating_light:" raw="🚨" src="https://github.githubassets.com/images/icons/emoji/unicode/1f6a8.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">fix: compiler problems</li>
     </ul>
   </li>
 </ul>
@@ -210,7 +214,7 @@ Ce site liste les émojis utilisables : https://gitmoji.dev/</p>
 
 <p>Vous pouvez vous même rédiger votre tableau dans votre <strong>CONTRIBUTING</strong> ! (On en parle plus bas)</p>
 
-<hr />
+<hr>
 
 <h2 id="pull-request-pr">PULL REQUEST (PR)</h2>
 
@@ -218,7 +222,7 @@ Ce site liste les émojis utilisables : https://gitmoji.dev/</p>
 
 <p>Elles sont aussi un bon moyen d’apporter des infos sur une contribution, de définir à quelles issues elles répondent en les identifiants directement dans le commentaire.</p>
 
-<p><img src="/cours_informatique/assets/cours/git/pull_request.png" alt="Versioning" /></p>
+<p><img src="/cours_informatique/assets/cours/git/pull_request.png" alt="Versioning"></p>
 
 <p>Comme vous pouvez le voir sur cette capture, sur une pull_request vous avez la possibilité d’assigner :</p>
 
@@ -231,7 +235,7 @@ Ce site liste les émojis utilisables : https://gitmoji.dev/</p>
 
 <p>Cet outil permet ainsi d’ “enpaqueter” des commits au sein d’un ajout d’une plus grande quantité de modifications dans le projet.</p>
 
-<hr />
+<hr>
 
 <h2 id="issues">ISSUES</h2>
 
@@ -266,7 +270,7 @@ Ce site liste les émojis utilisables : https://gitmoji.dev/</p>
 
 <p>Je vous redirige vers le contributing plus bas afin d’aider les gens à leur rédaction d’issues.</p>
 
-<hr />
+<hr>
 
 <h2 id="gestion-du-repo---documentation">Gestion du repo - Documentation</h2>
 
@@ -321,7 +325,7 @@ Ce site liste les émojis utilisables : https://gitmoji.dev/</p>
 <p>Pour les versions de votre projet il existe une sémantique précise.
 On peut résumer cette sémantique à l’aide de ce graphe ci-dessous.</p>
 
-<p><img src="/cours_informatique/assets/cours/git/versioning.png" alt="Versioning" /></p>
+<p><img src="/cours_informatique/assets/cours/git/versioning.png" alt="Versioning"></p>
 
 <p>On retrouve dans la version de son projet :</p>
 
@@ -359,19 +363,21 @@ https://gitmoji.dev/</p>
 
   <div class="wrapper">
 
-    <h2 class="footer-heading">cours d&#39;informatique</h2>
+    <h2 class="footer-heading">cours d'informatique</h2>
 
     <div class="footer-col-wrapper">
       <div class="footer-col footer-col-1">
         <ul class="contact-list">
-          <li class="p-name">cours d&#39;informatique</li></ul>
+          <li class="p-name">cours d'informatique</li>
+</ul>
       </div>
 
-      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+      <div class="footer-col footer-col-2">
+<ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
 </div>
 
       <div class="footer-col footer-col-3">
-        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.</p>
+        <p>Support de cours/td d'informatique à l'école centrale marseille.</p>
       </div>
     </div>
 

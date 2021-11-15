@@ -1,49 +1,42 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>bases du javascript | cours d’informatique</title>
-<meta name="generator" content="Jekyll v4.2.0" />
-<meta property="og:title" content="bases du javascript" />
-<meta name="author" content="François Brucker" />
-<meta property="og:locale" content="en_US" />
-<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
-<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
-<link rel="canonical" href="/cours_informatique/cours/web/js/bases.html" />
-<meta property="og:url" content="/cours_informatique/cours/web/js/bases.html" />
-<meta property="og:site_name" content="cours d’informatique" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="bases du javascript" />
+<meta name="generator" content="Jekyll v4.2.0">
+<meta property="og:title" content="bases du javascript">
+<meta name="author" content="François Brucker">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille.">
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille.">
+<link rel="canonical" href="/cours_informatique/cours/web/js/bases.html">
+<meta property="og:url" content="/cours_informatique/cours/web/js/bases.html">
+<meta property="og:site_name" content="cours d’informatique">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="bases du javascript">
 <script type="application/ld+json">
 {"description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","headline":"bases du javascript","url":"/cours_informatique/cours/web/js/bases.html","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
-  <link rel="stylesheet" href="/cours_informatique/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
-  <script>
-    MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-      },
-      svg: {
-        fontCache: 'global'
-      }
-    };
-    </script>
-    <script type="text/javascript" id="MathJax-script" async
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
-    </script>
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css">
+<link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique">
 </head>
 
-<body><header class="site-header" role="banner">
+<body>
+<header class="site-header" role="banner">
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
-        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/cours_informatique/">cours d'informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
         <label for="nav-trigger">
           <span class="menu-icon">
-            <svg viewBox="0 0 18 15" width="18px" height="15px">
-              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
             </svg>
           </span>
         </label>
@@ -51,14 +44,15 @@
         <div class="trigger">
             <a class="page-link" href="/cours_informatique/about"> about </a>
         </div>
-      </nav></div>
+      </nav>
+</div>
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">bases du javascript</h1></p>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></p>
+    <h1 class="post-title">bases du javascript</h1>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span>
   </header>
 
   <div class="post-content">
@@ -78,7 +72,8 @@
 
 <ul>
   <li>votre navigateur web</li>
-  <li>celui de <a href="https://nodejs.org/en/">node</a></li>
+  <li>celui de <a href="https://nodejs.org/en/">node</a>
+</li>
 </ul>
 
 <p>Nous allons présenter les deux.</p>
@@ -191,9 +186,11 @@
 <p>On a utilisé :</p>
 <ul>
   <li>l’import de la bibliothèque <a href="https://nodejs.org/api/readline.html#readline_readline">readline</a> de node,</li>
-  <li><a href="https://nodejs.org/api/process.html#process_process_stdin">process.stdin</a> et <a href="https://nodejs.org/api/process.html#process_process_stdout">process.stdout</a> pour les entrées/sorties standard</li>
+  <li>
+<a href="https://nodejs.org/api/process.html#process_process_stdin">process.stdin</a> et <a href="https://nodejs.org/api/process.html#process_process_stdout">process.stdout</a> pour les entrées/sorties standard</li>
   <li>une fonction anonyme du type <code class="language-plaintext highlighter-rouge">() =&gt; {}</code> comme paramètre d’une fonction.</li>
-  <li>les <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Template_literals">construction de chaines de caractère avec <code class="language-plaintext highlighter-rouge">${}</code></a></li>
+  <li>les <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Template_literals">construction de chaines de caractère avec <code class="language-plaintext highlighter-rouge">${}</code></a>
+</li>
 </ul>
 
 <h2 id="langage">Langage</h2>
@@ -273,13 +270,17 @@
 <ul>
   <li>plusieurs façon de créer des fonctions :
     <ul>
-      <li>normale (crée une fonction nommée <code class="language-plaintext highlighter-rouge">ma_fct</code>) : <code class="language-plaintext highlighter-rouge">function ma_fct(params) {code}</code></li>
-      <li>anonyme (rend un objet fonction) :<code class="language-plaintext highlighter-rouge"> function (params) {code}</code>, que l’on pourrait aussi écrire <code class="language-plaintext highlighter-rouge">(params) =&gt; {code}</code></li>
+      <li>normale (crée une fonction nommée <code class="language-plaintext highlighter-rouge">ma_fct</code>) : <code class="language-plaintext highlighter-rouge">function ma_fct(params) {code}</code>
+</li>
+      <li>anonyme (rend un objet fonction) :<code class="language-plaintext highlighter-rouge"> function (params) {code}</code>, que l’on pourrait aussi écrire <code class="language-plaintext highlighter-rouge">(params) =&gt; {code}</code>
+</li>
     </ul>
   </li>
-  <li>les commentaires javascript s’écrivent en commençant par <code class="language-plaintext highlighter-rouge">//</code></li>
+  <li>les commentaires javascript s’écrivent en commençant par <code class="language-plaintext highlighter-rouge">//</code>
+</li>
   <li>les variables sont globales par défaut (<code class="language-plaintext highlighter-rouge">i = 1</code>), <code class="language-plaintext highlighter-rouge">var</code> les rend locales (<code class="language-plaintext highlighter-rouge">var i = 1</code>)</li>
-  <li>la construction automatique de chaines. <code class="language-plaintext highlighter-rouge">\</code>cette fonction a été appelée ${compteur} fois.` ` est équivalent à la concaténation classique : <code class="language-plaintext highlighter-rouge">"cette fonction a été appelée " + compteur + " fois."</code></li>
+  <li>la construction automatique de chaines. <code class="language-plaintext highlighter-rouge">\</code>cette fonction a été appelée ${compteur} fois.` ` est équivalent à la concaténation classique : <code class="language-plaintext highlighter-rouge">"cette fonction a été appelée " + compteur + " fois."</code>
+</li>
 </ul>
 
 <blockquote>
@@ -303,14 +304,16 @@
     <ul>
       <li>tableaux : liste d’objets indicés par des entiers. S’utilise comme en python :
         <ul>
-          <li>création d’un tableau : <code class="language-plaintext highlighter-rouge">mon_tableau = [1, "trois", 2.71]</code></li>
+          <li>création d’un tableau : <code class="language-plaintext highlighter-rouge">mon_tableau = [1, "trois", 2.71]</code>
+</li>
           <li>indice : <code class="language-plaintext highlighter-rouge">mon_tableau[1]</code> rend “trois”</li>
         </ul>
       </li>
       <li>dictionnaires : comme en python sauf que les clés ne peuvent être que des chaînes de caractères. liste d’objet indicés par des chaines de caractères. Autre spécificité, il n’est pas nécessaire de mettre les <code class="language-plaintext highlighter-rouge">"</code> lorsque l’on défini les clés.
         <ul>
           <li><code class="language-plaintext highlighter-rouge">mon_dict = {pi: 3.14, potes: ["Pascal", "Manu"] }</code></li>
-          <li>clés : <code class="language-plaintext highlighter-rouge">mon_dict["potes"] (rend ["Pascal", "Manu"])</code></li>
+          <li>clés : <code class="language-plaintext highlighter-rouge">mon_dict["potes"] (rend ["Pascal", "Manu"])</code>
+</li>
         </ul>
       </li>
     </ul>
@@ -345,8 +348,10 @@
 
 <p>Il existe plusieurs façon d’importer des modules en javascript :</p>
 <ul>
-  <li>la façon ecmascript avec les mots clés <code class="language-plaintext highlighter-rouge">import</code> et <code class="language-plaintext highlighter-rouge">export</code></li>
-  <li>la façon commonjs avec les mots clés <code class="language-plaintext highlighter-rouge">require</code> et <code class="language-plaintext highlighter-rouge">module.export</code></li>
+  <li>la façon ecmascript avec les mots clés <code class="language-plaintext highlighter-rouge">import</code> et <code class="language-plaintext highlighter-rouge">export</code>
+</li>
+  <li>la façon commonjs avec les mots clés <code class="language-plaintext highlighter-rouge">require</code> et <code class="language-plaintext highlighter-rouge">module.export</code>
+</li>
   <li>la façon web en lisant bêtement le fichier à importer dans l’interpréteur</li>
 </ul>
 
@@ -401,19 +406,21 @@
 
   <div class="wrapper">
 
-    <h2 class="footer-heading">cours d&#39;informatique</h2>
+    <h2 class="footer-heading">cours d'informatique</h2>
 
     <div class="footer-col-wrapper">
       <div class="footer-col footer-col-1">
         <ul class="contact-list">
-          <li class="p-name">cours d&#39;informatique</li></ul>
+          <li class="p-name">cours d'informatique</li>
+</ul>
       </div>
 
-      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+      <div class="footer-col footer-col-2">
+<ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
 </div>
 
       <div class="footer-col footer-col-3">
-        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.</p>
+        <p>Support de cours/td d'informatique à l'école centrale marseille.</p>
       </div>
     </div>
 

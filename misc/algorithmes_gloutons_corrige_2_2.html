@@ -1,49 +1,43 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>Algorithmes gloutons : corrigé | cours d’informatique</title>
-<meta name="generator" content="Jekyll v4.2.0" />
-<meta property="og:title" content="Algorithmes gloutons : corrigé" />
-<meta name="author" content="François Brucker" />
-<meta property="og:locale" content="en_US" />
-<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
-<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
-<link rel="canonical" href="/cours_informatique/misc/algorithmes_gloutons_corrige_2_2.html" />
-<meta property="og:url" content="/cours_informatique/misc/algorithmes_gloutons_corrige_2_2.html" />
-<meta property="og:site_name" content="cours d’informatique" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Algorithmes gloutons : corrigé" />
+<meta name="generator" content="Jekyll v4.2.0">
+<meta property="og:title" content="Algorithmes gloutons : corrigé">
+<meta name="author" content="François Brucker">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille.">
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille.">
+<link rel="canonical" href="/cours_informatique/misc/algorithmes_gloutons_corrige_2_2.html">
+<meta property="og:url" content="/cours_informatique/misc/algorithmes_gloutons_corrige_2_2.html">
+<meta property="og:site_name" content="cours d’informatique">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Algorithmes gloutons : corrigé">
 <script type="application/ld+json">
 {"description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","headline":"Algorithmes gloutons : corrigé","url":"/cours_informatique/misc/algorithmes_gloutons_corrige_2_2.html","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
-  <link rel="stylesheet" href="/cours_informatique/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
-  <script>
-    MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-      },
-      svg: {
-        fontCache: 'global'
-      }
-    };
-    </script>
-    <script type="text/javascript" id="MathJax-script" async
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
-    </script>
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css">
+<link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique">
+<script>MathJax={"tex":{"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["\\[","\\]"]]},"svg":{"fontCache":"global"},"svg":{"fontCache":"global"}}</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
-<body><header class="site-header" role="banner">
+<body>
+<header class="site-header" role="banner">
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
-        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/cours_informatique/">cours d'informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
         <label for="nav-trigger">
           <span class="menu-icon">
-            <svg viewBox="0 0 18 15" width="18px" height="15px">
-              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
             </svg>
           </span>
         </label>
@@ -51,14 +45,15 @@
         <div class="trigger">
             <a class="page-link" href="/cours_informatique/about"> about </a>
         </div>
-      </nav></div>
+      </nav>
+</div>
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Algorithmes gloutons : corrigé</h1></p>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></p>
+    <h1 class="post-title">Algorithmes gloutons : corrigé</h1>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span>
   </header>
 
   <div class="post-content">
@@ -80,9 +75,9 @@
   <li>au bout de $n$ étapes on a visité les $n$ villes.</li>
 </ul>
 
-<p>L’algorithme n’est pas optimal en commençant par A : <img src="ressources/algorithmes_gloutons/voyageur_commerce_1_1.png" alt="glouton non optimal" /></p>
+<p>L’algorithme n’est pas optimal en commençant par A : <img src="ressources/algorithmes_gloutons/voyageur_commerce_1_1.png" alt="glouton non optimal"></p>
 
-<p>Il n’est jamais optimal pour : <img src="ressources/algorithmes_gloutons/voyageur_commerce_1_2.png" alt="glouton non optimal" /></p>
+<p>Il n’est jamais optimal pour : <img src="ressources/algorithmes_gloutons/voyageur_commerce_1_2.png" alt="glouton non optimal"></p>
 
 <h4 id="algorithme-2--ajout-dune-ville-dans-un-cycle">Algorithme 2 : ajout d’une ville dans un cycle</h4>
 
@@ -96,8 +91,10 @@
 
 <ol>
   <li>Un <a href="ressources/algorithmes_gloutons/voyageur_commerce_glouton_sans_F.png">cycle optimal sans la ville F</a>.</li>
-  <li>En ajoutant la ville F, <a href="ressources/algorithmes_gloutons/voyageur_commerce_glouton_avec_F.png">avec l’algorithme glouton</a></li>
-  <li>la <a href="ressources/algorithmes_gloutons/voyageur_commerce_opti.png">solution optimale</a></li>
+  <li>En ajoutant la ville F, <a href="ressources/algorithmes_gloutons/voyageur_commerce_glouton_avec_F.png">avec l’algorithme glouton</a>
+</li>
+  <li>la <a href="ressources/algorithmes_gloutons/voyageur_commerce_opti.png">solution optimale</a>
+</li>
 </ol>
 
 <h3 id="optimisation">optimisation</h3>
@@ -220,7 +217,7 @@
 
 <p>Chaque pays est un sommet et une arêtes est placé entre chaque pays voisins.</p>
 
-<p>Le graphe assoié à la carte est :  <img src="ressources/algorithmes_gloutons/carte_graphe.png" alt="carte_couleur" /></p>
+<p>Le graphe assoié à la carte est :  <img src="ressources/algorithmes_gloutons/carte_graphe.png" alt="carte_couleur"></p>
 
 <p>Et ses couleurs :</p>
 
@@ -265,13 +262,13 @@
   <li>$n = 0$.
     <ul>
       <li>$m = 0$ on a qu’une seule face extérieure</li>
-      <li>$m &gt;0$ : le graphe est une successions de “disques” : <img src="ressources/algorithmes_gloutons/graphe_n_0_m.png" alt="carte" />. Il y a donc $m$ faces intérieures plus la face extérieure : $F = m + 1 = m - 1 + 2$</li>
+      <li>$m &gt;0$ : le graphe est une successions de “disques” : <img src="ressources/algorithmes_gloutons/graphe_n_0_m.png" alt="carte">. Il y a donc $m$ faces intérieures plus la face extérieure : $F = m + 1 = m - 1 + 2$</li>
     </ul>
   </li>
   <li>$n &gt;1$. Il existe une arête $xy$. On peut la contracter en 1 seul sommet (voir exemple ci-après). Cela ne change pas sa planarité ni son nombre de face. Ce nouveau graphe à une nombre de face $F’ = F$, un nombre de sommets $n’ = n - 1$ et un nombre d’arêtes $m’ = m-1$. Comme l’hypothèse de récurrence fonctionne pour le graphe contracté, on a $F’ = m’-n’ +2$ donc $F = (m-1) -(n-1) + 2 = m-n+2$.</li>
 </ul>
 
-<p>Exemple de contractation : <img src="ressources/algorithmes_gloutons/contraction_graphe.png" alt="contraction" /></p>
+<p>Exemple de contractation : <img src="ressources/algorithmes_gloutons/contraction_graphe.png" alt="contraction"></p>
 
 <p>Comme chaque arête départage toujours 2 faces exactement Si on somme le nombre d’arête de chaque face, on  obtient $2m$. Comme chaque face a au moins 3 arêtes, on en déduit : $2m \geq 3F$, si on remplace $F$ part $m-n+2$ on obtient : $m\leq 3n - 6$. Un graphe planaire a très peu d’arêtes.</p>
 
@@ -356,7 +353,9 @@
 <p><em>Nota Bene</em> : On a utilisé quelques astuces de programmation python :</p>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">enumerate</code> : appliqué à une liste retourne un énumérateur qui rend un couple (indice, element) pour chaque élément de la liste. <a href="http://book.pythontips.com/en/latest/enumerate.html#enumerate">http://book.pythontips.com/en/latest/enumerate.html#enumerate</a></li>
+  <li>
+<code class="language-plaintext highlighter-rouge">enumerate</code> : appliqué à une liste retourne un énumérateur qui rend un couple (indice, element) pour chaque élément de la liste. <a href="http://book.pythontips.com/en/latest/enumerate.html#enumerate">http://book.pythontips.com/en/latest/enumerate.html#enumerate</a>
+</li>
   <li>Astuce du tri : lorsque l’on trie une liste de liste, python utilise l’<a href="https://fr.wikipedia.org/wiki/Ordre_lexicographique">ordre lexicographique</a>. Cela permet ici de trier sur les prix volumique tout en conservant l’indice du tableau d’origine (le deuxième élément de la liste n’intervient dans le tri que si les 2 premiers éléments sont identique, ce qui ne change pas le tri par prix volumique)</li>
   <li>attention, les méthodes de liste <code class="language-plaintext highlighter-rouge">sort</code> et <code class="language-plaintext highlighter-rouge">reverse</code> ne rendent rien. Elles modifient la liste. De là <code class="language-plaintext highlighter-rouge">l.sort().reverse()</code> <strong>ne fonctionne pas</strong> puisque cette commande signifie que l’on applique la méthdoe <code class="language-plaintext highlighter-rouge">reverse</code> à l’objet donné en retour de <code class="language-plaintext highlighter-rouge">l.sort()</code>. Or comme <code class="language-plaintext highlighter-rouge">l.sort()</code> ne rend rien elle retourne l’objet <code class="language-plaintext highlighter-rouge">None</code> (l’objet <em>rien du tout</em> en python) qui ne possède pas de méthode <code class="language-plaintext highlighter-rouge">reverse</code>. C’est ce que dit le message d’erreur quand on essaie de le faire : <code class="language-plaintext highlighter-rouge">AttributeError: 'NoneType' object has no attribute 'reverse'</code>  (le type de l’objet <code class="language-plaintext highlighter-rouge">None</code> (comme le tpe des entier est <code class="language-plaintext highlighter-rouge">int</code> ou le type des réels est <code class="language-plaintext highlighter-rouge">float</code>) est <code class="language-plaintext highlighter-rouge">NoneType</code> (il a un type à lui)).</li>
 </ul>
@@ -445,19 +444,21 @@ Si bien sur ça dépend des nombres à trier. Mais si P est la valeur max des no
 
   <div class="wrapper">
 
-    <h2 class="footer-heading">cours d&#39;informatique</h2>
+    <h2 class="footer-heading">cours d'informatique</h2>
 
     <div class="footer-col-wrapper">
       <div class="footer-col footer-col-1">
         <ul class="contact-list">
-          <li class="p-name">cours d&#39;informatique</li></ul>
+          <li class="p-name">cours d'informatique</li>
+</ul>
       </div>
 
-      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+      <div class="footer-col footer-col-2">
+<ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
 </div>
 
       <div class="footer-col footer-col-3">
-        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.</p>
+        <p>Support de cours/td d'informatique à l'école centrale marseille.</p>
       </div>
     </div>
 

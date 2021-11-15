@@ -1,51 +1,44 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>Installation de python | cours d’informatique</title>
-<meta name="generator" content="Jekyll v4.2.0" />
-<meta property="og:title" content="Installation de python" />
-<meta name="author" content="François Brucker" />
-<meta property="og:locale" content="en_US" />
-<meta name="description" content="Comment installer et utiliser python sur son ordinateur. On y verra différentes solutions." />
-<meta property="og:description" content="Comment installer et utiliser python sur son ordinateur. On y verra différentes solutions." />
-<link rel="canonical" href="/cours_informatique/tutos/python/installation/terminal/2021/08/20/installation-de-python.html" />
-<meta property="og:url" content="/cours_informatique/tutos/python/installation/terminal/2021/08/20/installation-de-python.html" />
-<meta property="og:site_name" content="cours d’informatique" />
-<meta property="og:type" content="article" />
-<meta property="article:published_time" content="2021-08-20T00:00:00+00:00" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Installation de python" />
+<meta name="generator" content="Jekyll v4.2.0">
+<meta property="og:title" content="Installation de python">
+<meta name="author" content="François Brucker">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Comment installer et utiliser python sur son ordinateur. On y verra différentes solutions.">
+<meta property="og:description" content="Comment installer et utiliser python sur son ordinateur. On y verra différentes solutions.">
+<link rel="canonical" href="/cours_informatique/tutos/python/installation/terminal/2021/08/20/installation-de-python.html">
+<meta property="og:url" content="/cours_informatique/tutos/python/installation/terminal/2021/08/20/installation-de-python.html">
+<meta property="og:site_name" content="cours d’informatique">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-08-20T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Installation de python">
 <script type="application/ld+json">
-{"description":"Comment installer et utiliser python sur son ordinateur. On y verra différentes solutions.","@type":"BlogPosting","headline":"Installation de python","dateModified":"2021-08-20T00:00:00+00:00","url":"/cours_informatique/tutos/python/installation/terminal/2021/08/20/installation-de-python.html","datePublished":"2021-08-20T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"/cours_informatique/tutos/python/installation/terminal/2021/08/20/installation-de-python.html"},"author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
+{"description":"Comment installer et utiliser python sur son ordinateur. On y verra différentes solutions.","@type":"BlogPosting","headline":"Installation de python","url":"/cours_informatique/tutos/python/installation/terminal/2021/08/20/installation-de-python.html","dateModified":"2021-08-20T00:00:00+00:00","datePublished":"2021-08-20T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"/cours_informatique/tutos/python/installation/terminal/2021/08/20/installation-de-python.html"},"author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
-  <link rel="stylesheet" href="/cours_informatique/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
-  <script>
-    MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-      },
-      svg: {
-        fontCache: 'global'
-      }
-    };
-    </script>
-    <script type="text/javascript" id="MathJax-script" async
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
-    </script>
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css">
+<link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique">
 </head>
 
-<body><header class="site-header" role="banner">
+<body>
+<header class="site-header" role="banner">
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
-        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/cours_informatique/">cours d'informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
         <label for="nav-trigger">
           <span class="menu-icon">
-            <svg viewBox="0 0 18 15" width="18px" height="15px">
-              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
             </svg>
           </span>
         </label>
@@ -53,7 +46,8 @@
         <div class="trigger">
             <a class="page-link" href="/cours_informatique/about"> about </a>
         </div>
-      </nav></div>
+      </nav>
+</div>
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
@@ -65,7 +59,7 @@
       
         <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></li>
       
-      </ul></p></p>
+      </ul>
   </header>
 
   <div class="post-content">
@@ -93,9 +87,12 @@
 <p>Pour pouvoir écrire du code python et l’exécuter sur votre ordinateur, il vous faudra quelques outils :</p>
 
 <ul>
-  <li><strong>un <a href="https://fr.wikipedia.org/wiki/%C3%89diteur_de_texte">éditeur de texte</a></strong>. Il vous permettra d’écrire du code dans le langage python et de le sauver dans des <a href="https://fr.wikipedia.org/wiki/Fichier_texte">fichiers texte</a>. Par défaut, l’extension de fichier python est <em>“.py”</em>. Par exemple, un fichier nommé <em>“hello.py”</em> à toute les chance d’être un programme python.</li>
-  <li><strong>un <a href="https://docs.python.org/fr/3/tutorial/interpreter.html">interpréteur python</a></strong>. C’est un programme qui <em>exécute</em> du code python. L’interpréteur python étant un programme, il est différent selon son système d’exploitiation (mac, linux ou windows par exemple). Lorsque l’on <em>installe</em> python, c’est en fait l’interpréteur qu’on installe sur sa machine.</li>
-  <li><strong>des <a href="https://geekflare.com/fr/popular-python-libraries-modules/">bibliothèques</a></strong>. Une bibliothèque, module ou encore package python est un ensemble de fichiers de code permettant de réaliser une ou plusieurs taches précises (comme <a href="https://numpy.org/">numpy</a> pour le calcul scientifique ou <a href="https://flask.palletsprojects.com/">flask</a> pour créer des serveur web). L’utilisation de bibliothèques permet de créer rapidement des programmes python robuste et efficaces (avant de coder quelque chose, vérifiez s’il n’existe pas déjà un module le faisant… Vous gagnerez du temps). Pour installer facilement des modules, on utilise un programme nommé <a href="https://pypi.org/project/pip/"><em>“pip”</em></a> (package installer for python) qui va récupérer depuis le site <a href="https://pypi.org/">PyPi</a> (python package index) la bibliothèque demandée et va l’installer sur votre ordinateur.</li>
+  <li>
+<strong>un <a href="https://fr.wikipedia.org/wiki/%C3%89diteur_de_texte">éditeur de texte</a></strong>. Il vous permettra d’écrire du code dans le langage python et de le sauver dans des <a href="https://fr.wikipedia.org/wiki/Fichier_texte">fichiers texte</a>. Par défaut, l’extension de fichier python est <em>“.py”</em>. Par exemple, un fichier nommé <em>“hello.py”</em> à toute les chance d’être un programme python.</li>
+  <li>
+<strong>un <a href="https://docs.python.org/fr/3/tutorial/interpreter.html">interpréteur python</a></strong>. C’est un programme qui <em>exécute</em> du code python. L’interpréteur python étant un programme, il est différent selon son système d’exploitiation (mac, linux ou windows par exemple). Lorsque l’on <em>installe</em> python, c’est en fait l’interpréteur qu’on installe sur sa machine.</li>
+  <li>
+<strong>des <a href="https://geekflare.com/fr/popular-python-libraries-modules/">bibliothèques</a></strong>. Une bibliothèque, module ou encore package python est un ensemble de fichiers de code permettant de réaliser une ou plusieurs taches précises (comme <a href="https://numpy.org/">numpy</a> pour le calcul scientifique ou <a href="https://flask.palletsprojects.com/">flask</a> pour créer des serveur web). L’utilisation de bibliothèques permet de créer rapidement des programmes python robuste et efficaces (avant de coder quelque chose, vérifiez s’il n’existe pas déjà un module le faisant… Vous gagnerez du temps). Pour installer facilement des modules, on utilise un programme nommé <a href="https://pypi.org/project/pip/"><em>“pip”</em></a> (package installer for python) qui va récupérer depuis le site <a href="https://pypi.org/">PyPi</a> (python package index) la bibliothèque demandée et va l’installer sur votre ordinateur.</li>
 </ul>
 
 <h3 id="quel-python-utiliser-">quel python utiliser ?</h3>
@@ -109,9 +106,12 @@
 <p>Une version de python est composée de 3 nombres <a href="https://semver.org/">MAJOR.MINOR.PATCH</a> :</p>
 
 <ol>
-  <li><strong>MAJOR</strong> : pour nous sera 3.</li>
-  <li><strong>MINOR</strong> : chaque année une nouvelle itération arrive, avec son lot de nouveautés en terme de structures de données ou de bibliothèques.</li>
-  <li><strong>PATCH</strong> : correctifs.</li>
+  <li>
+<strong>MAJOR</strong> : pour nous sera 3.</li>
+  <li>
+<strong>MINOR</strong> : chaque année une nouvelle itération arrive, avec son lot de nouveautés en terme de structures de données ou de bibliothèques.</li>
+  <li>
+<strong>PATCH</strong> : correctifs.</li>
 </ol>
 
 <p>Chaque année sort une nouvelle version de python (voir <a href="https://devguide.python.org/#status-of-python-branches">https://devguide.python.org/#status-of-python-branches</a>), les anciennes versions sont maintenues 5 ans avant d’être considérées comme obsolète. Chaque version vient avec son <a href="https://fr.wikipedia.org/wiki/Changelog">changelog</a>, qui donne ses nouveautés et changements par rapport à la version précédente (<a href="https://docs.python.org/release/3.9.6/whatsnew/changelog.html#changelog">ici</a> le changelog de la version 3.9.6)</p>
@@ -169,7 +169,8 @@
 <p>Nous allons ici nous concentrer sur l’installation de l’interpréteur python. Il existe plusieurs façon de faire. Nous en présenterons 2 :</p>
 
 <ul>
-  <li>solution universelle simple : utilisez la <a href="/cours_informatique/tutos/python/installation/anaconda/2021/09/14/installation-anaconda.html">distribution anaconda</a></li>
+  <li>solution universelle simple : utilisez la <a href="/cours_informatique/tutos/python/installation/anaconda/2021/09/14/installation-anaconda.html">distribution anaconda</a>
+</li>
   <li>solution informaticienne : à privilégier si vous voulez contrôler toute votre installation (c’est bien). On utilise un <a href="#gestionnaire-package-id">gestionnaire de package</a>.</li>
 </ul>
 
@@ -328,9 +329,12 @@
 <p>Il y a plusieurs dossiers :</p>
 
 <ul>
-  <li><em>“/usr/local/Cellar/python@3.9/3.9.6/Frameworks/Python.framework/Versions/3.9/lib/python3.9”</em> contient les packages de bibliothèque standard (il contient par exemple un fichier <em>“random.py”</em> qui contient le code du package <code class="language-plaintext highlighter-rouge">random</code>)</li>
-  <li><em>“/usr/local/Cellar/python@3.9/3.9.6/Frameworks/Python.framework/Versions/3.9/lib/python3.9/lib-dynload”</em> contient les packages python qui ne sont pas écrit en python mais en C</li>
-  <li><em>“/usr/local/lib/python3.9/site-packages”</em> qui contient les packages qui seront installés par pip.</li>
+  <li>
+<em>“/usr/local/Cellar/python@3.9/3.9.6/Frameworks/Python.framework/Versions/3.9/lib/python3.9”</em> contient les packages de bibliothèque standard (il contient par exemple un fichier <em>“random.py”</em> qui contient le code du package <code class="language-plaintext highlighter-rouge">random</code>)</li>
+  <li>
+<em>“/usr/local/Cellar/python@3.9/3.9.6/Frameworks/Python.framework/Versions/3.9/lib/python3.9/lib-dynload”</em> contient les packages python qui ne sont pas écrit en python mais en C</li>
+  <li>
+<em>“/usr/local/lib/python3.9/site-packages”</em> qui contient les packages qui seront installés par pip.</li>
 </ul>
 
 <blockquote class="attention">
@@ -367,19 +371,21 @@
 
   <div class="wrapper">
 
-    <h2 class="footer-heading">cours d&#39;informatique</h2>
+    <h2 class="footer-heading">cours d'informatique</h2>
 
     <div class="footer-col-wrapper">
       <div class="footer-col footer-col-1">
         <ul class="contact-list">
-          <li class="p-name">cours d&#39;informatique</li></ul>
+          <li class="p-name">cours d'informatique</li>
+</ul>
       </div>
 
-      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+      <div class="footer-col footer-col-2">
+<ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
 </div>
 
       <div class="footer-col footer-col-3">
-        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.</p>
+        <p>Support de cours/td d'informatique à l'école centrale marseille.</p>
       </div>
     </div>
 

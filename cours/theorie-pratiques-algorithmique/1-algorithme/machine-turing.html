@@ -1,48 +1,42 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>Algorithme : machine de Turing | cours d’informatique</title>
-<meta name="generator" content="Jekyll v4.2.0" />
-<meta property="og:title" content="Algorithme : machine de Turing" />
-<meta property="og:locale" content="en_US" />
-<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
-<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
-<link rel="canonical" href="/cours_informatique/cours/theorie-pratiques-algorithmique/1-algorithme/machine-turing.html" />
-<meta property="og:url" content="/cours_informatique/cours/theorie-pratiques-algorithmique/1-algorithme/machine-turing.html" />
-<meta property="og:site_name" content="cours d’informatique" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Algorithme : machine de Turing" />
+<meta name="generator" content="Jekyll v4.2.0">
+<meta property="og:title" content="Algorithme : machine de Turing">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille.">
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille.">
+<link rel="canonical" href="/cours_informatique/cours/theorie-pratiques-algorithmique/1-algorithme/machine-turing.html">
+<meta property="og:url" content="/cours_informatique/cours/theorie-pratiques-algorithmique/1-algorithme/machine-turing.html">
+<meta property="og:site_name" content="cours d’informatique">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Algorithme : machine de Turing">
 <script type="application/ld+json">
 {"description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","headline":"Algorithme : machine de Turing","url":"/cours_informatique/cours/theorie-pratiques-algorithmique/1-algorithme/machine-turing.html","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
-  <link rel="stylesheet" href="/cours_informatique/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
-  <script>
-    MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-      },
-      svg: {
-        fontCache: 'global'
-      }
-    };
-    </script>
-    <script type="text/javascript" id="MathJax-script" async
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
-    </script>
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css">
+<link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique">
+<script>MathJax={"tex":{"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["\\[","\\]"]]},"svg":{"fontCache":"global"},"svg":{"fontCache":"global"}}</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
-<body><header class="site-header" role="banner">
+<body>
+<header class="site-header" role="banner">
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
-        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/cours_informatique/">cours d'informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
         <label for="nav-trigger">
           <span class="menu-icon">
-            <svg viewBox="0 0 18 15" width="18px" height="15px">
-              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
             </svg>
           </span>
         </label>
@@ -50,14 +44,15 @@
         <div class="trigger">
             <a class="page-link" href="/cours_informatique/about"> about </a>
         </div>
-      </nav></div>
+      </nav>
+</div>
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Algorithme : machine de Turing</h1></p></p>
+    <h1 class="post-title">Algorithme : machine de Turing</h1>
   </header>
 
   <div class="post-content">
@@ -92,10 +87,12 @@
 <p>Une <strong>machine de Turing</strong> est un quintuplet $(Q, \Gamma, q_0, \delta, F)$ où :</p>
 
 <ul>
-  <li>$Q$ est un ensemble fini d’<strong>état</strong></li>
+  <li>$Q$ est un ensemble fini d’<strong>état</strong>
+</li>
   <li>$\Gamma$ est l’<strong>alphabet de travail</strong>. Il contient un symbole spécial $\sharp$, dit <strong>blanc</strong>, avec $\sharp \in \Gamma$</li>
   <li>$q_0 \in Q$ est l’<strong>état initial</strong> de la machine</li>
-  <li>$\delta : Q \times \Gamma \rightarrow Q \times \Gamma \times \{ \leftarrow, \rightarrow \}$ est la <strong>fonction de transition</strong></li>
+  <li>$\delta : Q \times \Gamma \rightarrow Q \times \Gamma \times \{ \leftarrow, \rightarrow \}$ est la <strong>fonction de transition</strong>
+</li>
   <li>$F \subset Q$ est l’ensemble des <strong>états finaux</strong>.</li>
 </ul>
 
@@ -111,6 +108,12 @@
 </ul>
 
 <p>Initialement toutes les cases du ruban contiennent le symbole $\sharp$.</p>
+
+<p>Voici la représentation d’une machine à la fin de la $i$ème instruction. Son état est $q$ et son curseur est positionné sur la case d’indice $j$ :</p>
+
+<p><img src="/cours_informatique/assets/cours/algorithmie/machine-turing.png" alt="machine" style="margin: auto;display: block;"></p>
+
+<p>Par convention, on considérera que le ruban initial aura comme numéro d’instruction 0 et que l’indice de la case où est initialement le curseur sera d’indice 0.</p>
 
 <p>L’exécution d’un programme est alors comme suit :</p>
 
@@ -146,16 +149,11 @@
 
 <p>La fonction $\delta$ est ici partielle, avec la convention que si l’on arrive dans une configuration non décrite, on stoppe la machine (on peut donc étendre $\delta$ à tout $Q \times \Gamma$ si on le voulait).</p>
 
-<blockquote>
-  <p>TBD :
-indicer les cases du ruban : -infini … 0 (1ere case) … +infini
-numéroter les instructions
-cela préparera le thm de cook.</p>
-</blockquote>
-
 <p>Allons-y. Essayons ce code. On considère la machine de Turing ci-après :</p>
 
-<p><img src="/cours_informatique/assets/cours/algorithmie/turing-1.png" alt="turing 1" style="margin: auto;display: block;" /></p>
+<p><img src="/cours_informatique/assets/cours/algorithmie/turing-1.png" alt="turing 1" style="margin: auto;display: block;"></p>
+
+<p>Par convention, on considérera que le ruban initial aura comme numéro d’instruction 0 et que l’indice de la case où est initialement le curseur sera d’indice 0.</p>
 
 <p>On est à l’état $a$ et on lit $\sharp$ dans la machine : la table de transition nous indique qu’il faut :</p>
 
@@ -165,7 +163,7 @@ cela préparera le thm de cook.</p>
   <li>aller à droite</li>
 </ul>
 
-<p><img src="/cours_informatique/assets/cours/algorithmie/turing-2.png" alt="turing 2" style="margin: auto;display: block;" /></p>
+<p><img src="/cours_informatique/assets/cours/algorithmie/turing-2.png" alt="turing 2" style="margin: auto;display: block;"></p>
 
 <p>On est à l’état $b$ et on lit $\sharp$ dans la machine : la table de transition nous indique qu’il faut :</p>
 
@@ -175,7 +173,7 @@ cela préparera le thm de cook.</p>
   <li>aller à droite</li>
 </ul>
 
-<p><img src="/cours_informatique/assets/cours/algorithmie/turing-3.png" alt="turing 3" style="margin: auto;display: block;" /></p>
+<p><img src="/cours_informatique/assets/cours/algorithmie/turing-3.png" alt="turing 3" style="margin: auto;display: block;"></p>
 
 <p>On est à l’état $c$ et on lit $\sharp$ dans la machine : la table de transition nous indique qu’il faut :</p>
 
@@ -185,7 +183,7 @@ cela préparera le thm de cook.</p>
   <li>aller à droite</li>
 </ul>
 
-<p><img src="/cours_informatique/assets/cours/algorithmie/turing-4.png" alt="turing 4" style="margin: auto;display: block;" /></p>
+<p><img src="/cours_informatique/assets/cours/algorithmie/turing-4.png" alt="turing 4" style="margin: auto;display: block;"></p>
 
 <p>On est à l’état $d$ et on lit $\sharp$ dans la machine : la table de transition nous indique qu’il faut :</p>
 
@@ -195,7 +193,7 @@ cela préparera le thm de cook.</p>
   <li>aller à droite</li>
 </ul>
 
-<p><img src="/cours_informatique/assets/cours/algorithmie/turing-5.png" alt="turing 5" style="margin: auto;display: block;" /></p>
+<p><img src="/cours_informatique/assets/cours/algorithmie/turing-5.png" alt="turing 5" style="margin: auto;display: block;"></p>
 
 <p>Et ainsi de suite. On voit que cette machine ne va jamais s’arrêter et qu’elle écrit continuellement 0 puis 1 sur le ruban.</p>
 
@@ -241,9 +239,234 @@ cela préparera le thm de cook.</p>
 
 <p>On a représenté la machine sous la forme d’un tableau où les état sont des lignes et chaque colonne est un élément de l’alphabet. L’état initial est la première ligne et les états finaux sont ceux qui n’ont pas de ligne (ici $e$).</p>
 
-<p>On initialise cette machine avec une chaine de 1.</p>
+<p>On initialise cette machine avec une chaine de 1. Par exemple, en commençant par un ruban valant <code class="language-plaintext highlighter-rouge">11</code>, on obtient la résolution suivante (la position du curseur est en orange) :</p>
 
-<p>Si vous ne voulez pas tester votre machine à la main, Le code précédent a été traduit ci-dessous dans le formalisme de <a href="https://turingmachine.io/">https://turingmachine.io/</a> :</p>
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center" rowspan="2">instruction
+<br>
+</th>
+      <th style="text-align: center" colspan="7">ruban</th>
+      <th style="text-align: center" rowspan="2">état
+<br>
+</th>
+      
+      
+      
+      
+      
+      
+    </tr>
+    <tr>
+      
+      <th style="text-align: center">-3</th>
+      <th style="text-align: center">-2</th>
+      <th style="text-align: center">-1</th>
+      <th style="text-align: center">0</th>
+      <th style="text-align: center">1</th>
+      <th style="text-align: center">2</th>
+      <th style="text-align: center">3</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center;background: orange" class="cls">
+<strong>1</strong> </td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center">s</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center;background: orange" class="cls">
+<strong>#</strong> </td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center">l</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center;background: orange" class="cls">
+<strong>#</strong> </td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center">g</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center;background: orange" class="cls">
+<strong>1</strong> </td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center">d</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center;background: orange" class="cls">
+<strong>#</strong> </td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center">d</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">5</td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center;background: orange" class="cls">
+<strong>1</strong> </td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center">s</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">6</td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center;background: orange" class="cls">
+<strong>#</strong> </td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center">l</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">7</td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center;background: orange" class="cls">
+<strong>1</strong> </td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center">g</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">8</td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center;background: orange" class="cls">
+<strong>1</strong> </td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center">g</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">9</td>
+      <td style="text-align: center;background: orange" class="cls">
+<strong>#</strong> </td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center">g</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">10</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center;background: orange" class="cls">
+<strong>1</strong> </td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center">d</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">11</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center;background: orange" class="cls">
+<strong>1</strong> </td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center">d</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">12</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center;background: orange" class="cls">
+<strong>1</strong> </td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center">d</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">13</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center;background: orange" class="cls">
+<strong>#</strong> </td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center">d</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">14</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center;background: orange" class="cls">
+<strong>#</strong> </td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center">s</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">15</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center">#</td>
+      <td style="text-align: center;background: orange" class="cls">
+<strong>#</strong> </td>
+      <td style="text-align: center">e</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>La machine s’arrête ! Avant de voir exactement pourquoi cette machine s’arrête, essayer de comprendre son fonctionnement. Si vous ne voulez pas tester votre machine à la main, Le code précédent a été traduit ci-dessous dans le formalisme de <a href="https://turingmachine.io/">https://turingmachine.io/</a> avec une entrée de <code class="language-plaintext highlighter-rouge">1111</code> :</p>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>input: '1111'
 blank: '#'
@@ -267,17 +490,19 @@ table:
 
 <p>A chaque itération, la machine supprime un 1 et en écrit 2 nouveaux : un à droite et un à gauche des nouveaux 1 inscrits. Les étapes de cette itération poeut être décrite comme suit :</p>
 
-<p><img src="/cours_informatique/assets/cours/algorithmie/turing-6.png" alt="turing 6" style="margin: auto;display: block;" /></p>
+<p><img src="/cours_informatique/assets/cours/algorithmie/turing-6.png" alt="turing 6" style="margin: auto;display: block;"></p>
 
 <p>On aura toujours une configuration où les nouveaux 1 seront à gauche des anciens 1 (ceux initialement sur le ruban) et séparé par <strong>un unique caractère blanc</strong> :</p>
 
-<p><img src="/cours_informatique/assets/cours/algorithmie/turing-7.png" alt="doublement de batons" style="margin: auto;display: block;" /></p>
+<p><img src="/cours_informatique/assets/cours/algorithmie/turing-7.png" alt="doublement de batons" style="margin: auto;display: block;"></p>
 
 <p>Le programme de la machine de Turing a machine va donc ici s’arrêter puisqu’à un moment tous les anciens $1$ auront-été effacés et on se retrouvera à l’état initial avec le curseur placé sur un $\sharp$ , ce qui enverra vers l’état final.</p>
 
 <blockquote>
   <p>Félicitations ! Vous venez d’implémenter la fonction $f(n) = 2n$ dans une machine de Turing.</p>
 </blockquote>
+
+<p>Remarquez que par construction de la machine de Turing, le nombre d’opérations nécessaires pour exécuter le programme correspond aussi au nombre maximum de cases différentes du ruban qui ont peu être parcourues.</p>
 
 <h3 id="autres-programmes">autres programmes</h3>
 
@@ -305,25 +530,43 @@ table:
 
 <p>On peut se demander ce qui est vraiment utile là-dedans (peut-on simplifier le modèle sans perdre en expressivité ?) ou au contraire si complexifier le modèle permet de calculer plus de chose.</p>
 
-<h3 id="généralisation-du-modèle--inutile">généralisation du modèle : inutile</h3>
-
-<p>Commençons par répondre à la seconde question : <em>est-ce que complexifier le modèle permet de calculer plus de chose ?</em>. La réponse est <strong>non</strong>.</p>
-
-<p>Il existent de nombreuses généralisations des machines de Turing, elles ne permettent pas de calculer plus de choses, mais sont utile car elle permettent de calculer plus facilement/rapidement :</p>
-
-<ul>
-  <li>par exemple des machines utilisant <a href="https://perso.liris.cnrs.fr/sylvain.brandel/wiki/lib/exe/fetch.php?media=ens:m1if09:m1if09-cm03.pdf">plusieurs rubans et/ou plusieurs curseurs</a>. L’intérêt de ces machines est qu’elle sont plus facilement programmables.</li>
-  <li>Il existe aussi, <a href="https://fr.wikipedia.org/wiki/Machine_de_Turing_non_d%C3%A9terministe">la machine de Turing non déterministe</a>, qui n’utilise pas une fonction de transition mais une relation. Même si elle a l’air très puissante, ne change rien à ce qu’on peut calculer, elles permettent juste de le faire plus vite.</li>
-</ul>
-
 <blockquote class="note">
   <p>On est intimement persuadé (c’est <a href="https://plato.stanford.edu/entries/church-turing/#ReasForAcceThes">la thèse de Church-Turing</a>) que tout ce qu’un humain, une machine, ou encore un système physique peut calculer (c’est à dire en suivant les 4 règles générales) est exactement égal à ce qu’une machine de Turing peut calculer.</p>
 </blockquote>
 
-<p>Enfin :</p>
+<h3 id="généralisation-du-modèle--inutile">généralisation du modèle : inutile</h3>
+
+<p>Commençons par répondre à la seconde question : <em>est-ce que complexifier le modèle permet de calculer plus de chose ?</em> La réponse est <strong>non</strong>.</p>
+
+<p>Il existent de nombreuses généralisations des machines de Turing, elles ne permettent pas de calculer plus de choses, mais sont utiles car elle permettent de calculer plus facilement/rapidement. Ces généralisations nous permettent d’écrire rapidement des programmes en sachant qu’on pourrait (si on en avait très envie) les écrire avec une machine de Turing normale.</p>
+
+<h4 id="machines-à-plusieurs-rubans">machines à plusieurs rubans</h4>
+
+<p>Une machine de Turing à $k$ rubans peut être définie comme suit.</p>
+
+<p>Une <strong>machine de Turing à $k$ rubans</strong> est un quintuplet $(Q, \Gamma, q_0, \delta_k, F)$ où :</p>
+
+<ul>
+  <li>$Q$ est un ensemble fini d’<strong>état</strong>
+</li>
+  <li>$\Gamma$ est l’<strong>alphabet de travail</strong>. Il contient un symbole spécial $\sharp$, dit <strong>blanc</strong>, avec $\sharp \in \Gamma$</li>
+  <li>$q_0 \in Q$ est l’<strong>état initial</strong> de la machine</li>
+  <li>$\delta_k : Q \times \Gamma^k \rightarrow Q \times \Gamma^k \times \{ \leftarrow, \rightarrow \}^k$ est la <strong>fonction de transition</strong>
+</li>
+  <li>$F \subset Q$ est l’ensemble des <strong>états finaux</strong>.</li>
+</ul>
+
+<p>Pour fonctionner, la machine nécessite :</p>
+
+<ul>
+  <li>$k$ <strong>rubans</strong> constitués de cases contiguës pouvant chacune contenir un élément de $\Gamma$</li>
+  <li>$k$ <strong>curseurs</strong>, un pour chaque ruban</li>
+</ul>
+
+<p>Tout se passe comme pour la machine de Turing mais on lit la valeur des $k$ rubans, puis la fonction de transition écrit une valeur sur chaque ruban et déplace les curseurs de chaque ruban.</p>
 
 <blockquote class="note">
-  <p>On peut toujours transformer une machine à plusieurs rubans et/ou plusieurs curseurs en une machine de Turing simple.</p>
+  <p>On peut toujours transformer une machine à plusieurs rubans  en une machine de Turing simple.</p>
 </blockquote>
 
 <p>Nous n’allons pas donner la preuve complète de ceci, mais juste une idée de la preuve de comment simuler une machine à 2 rubans avec une machine avec un seul ruban.</p>
@@ -341,9 +584,78 @@ table:
 
 <p>De là, à chaque itération de la machine à 1 seul ruban, on commence par chercher les paquets de 4 cases contenant les curseurs de chaque ruban et on lit leurs valeurs (on peut faire ça en parcourant le ruban jusqu’à trouver $\bigtriangledown$ en premier ou en troisième position d’un paquet à 4 cases) puis on effectue la fonction de transition de la machine à 2 rubans et on écrit les nouvelles valeurs en recherchant les positions respectives des curseurs dans les paquets à 4 cases.</p>
 
+<h4 id="machines-à-plusieurs-curseurs">machines à plusieurs curseurs</h4>
+
+<p>Plutôt que de multiplier les rubans, on peut aussi multiplier les curseurs :</p>
+
+<p>Une <strong>machine de Turing à $k$ curseurs</strong> est un quintuplet $(Q, \Gamma, q_0, \delta_k, F)$ où :</p>
+
+<ul>
+  <li>$Q$ est un ensemble fini d’<strong>état</strong>
+</li>
+  <li>$\Gamma$ est l’<strong>alphabet de travail</strong>. Il contient un symbole spécial $\sharp$, dit <strong>blanc</strong>, avec $\sharp \in \Gamma$</li>
+  <li>$q_0 \in Q$ est l’<strong>état initial</strong> de la machine</li>
+  <li>$\delta_k : Q \times \Gamma^k \rightarrow Q \times \Gamma^k \times \{ \leftarrow, \rightarrow \}^k$ est la <strong>fonction de transition</strong>
+</li>
+  <li>$F \subset Q$ est l’ensemble des <strong>états finaux</strong>.</li>
+</ul>
+
+<p>Pour fonctionner, la machine nécessite :</p>
+
+<ul>
+  <li>un <strong>ruban</strong> constitués de cases contiguës pouvant chacune contenir un élément de $\Gamma$</li>
+  <li>$k$ <strong>curseurs</strong>, sur le ruban</li>
+</ul>
+
+<p>Elle fonctionne de la même manière que la machine à $k$ rubans sauf qu’on lit les valeurs sur le même rubans.</p>
+
+<h4 id="machines-de-turing-non-déterministe">machines de Turing non déterministe</h4>
+
+<p>Il existe aussi, <a href="https://fr.wikipedia.org/wiki/Machine_de_Turing_non_d%C3%A9terministe">la machine de Turing non déterministe</a>, qui se définit comme suit :</p>
+
+<p>Une <strong>machine de Turing non déterministe</strong> est un quintuplet $(Q, \Gamma, q_0, \delta_k, F)$ où :</p>
+
+<ul>
+  <li>$Q$ est un ensemble fini d’<strong>état</strong>
+</li>
+  <li>$\Gamma$ est l’<strong>alphabet de travail</strong>. Il contient un symbole spécial $\sharp$, dit <strong>blanc</strong>, avec $\sharp \in \Gamma$</li>
+  <li>$q_0 \in Q$ est l’<strong>état initial</strong> de la machine</li>
+  <li>$\delta : Q \times \Gamma \rightarrow 2^{Q \times \Gamma \times \{ \leftarrow, \rightarrow \}}$ est la <strong>fonction de transition</strong>
+</li>
+  <li>$F \subset Q$ est l’ensemble des <strong>états finaux</strong>.</li>
+</ul>
+
+<p>Cette machine se distingue de la machine de Turing normale parce que la fonction de transition rend un sous ensemble fini de $Q \times \Gamma \times \{ \leftarrow, \rightarrow \}$ : il rend un ensemble de possibilités de transitions possibles.</p>
+
+<p>On peut alors représenter ses transitions par un arbre :</p>
+
+<p><img src="/cours_informatique/assets/cours/algorithmie/turing-nd-arbre.png" alt="Turing non déterministe arbre" style="margin: auto;display: block;"></p>
+
+<p>Ce qui nous intéresse ici ce n’est plus le calcul effectif mais <strong>s’il existe pour une entrée donnée une suite de transitions emmenant à un état final</strong>. C’est à dire s’il existe une suite de nombres $(t_1, \dots, t_k)$ telle que à chaque instruction $i$  on ait pu choisir le $t_i$ème choix pour que la $k$ instruction mêne à un état final.</p>
+
+<p>En utilisant la relation arborée, ceci veut dire qu’à partir de l’état initial $e$ et du caractère $a$ sous le curseur, on a :</p>
+
+<ul>
+  <li>$(e_{t_1}, a_{t_1}, f_{t_1}) \in \delta(e, a)$</li>
+  <li>$(e_{t_1\dots t_i}, a_{t_1\dots t_i}, f_{t_1\dots t_i}) \in \delta(e_{t_1t_2\dots t_{i-1}}, a_{t_1t_2\dots t_1i-1})$</li>
+</ul>
+
+<p>C’est un outils théorique très puissant car il permet de démontrer simplement beaucoup de théorème d’informatique théorique. Cependant :</p>
+
+<blockquote>
+  <p>Pour toute machine de Turing non déterministe, on peut créer une machine de turing <em>normale</em> qui s’arrêtera sur les même entrées.
+{. note}</p>
+</blockquote>
+
+<p>Juste une idée de la preuve. En utilisant la représentation arborée, en regardant chaque possibilité <em>couche par couche</em> (on appelle ça faire un <a href="https://fr.wikipedia.org/wiki/Algorithme_de_parcours_en_largeur">parcours en largeur</a>), on construit une machine de turing <em>simple</em> qui s’arrête bien si et seulement si la machine de turing non déterministe s’arrête.</p>
+
+<h4 id="autres-variantes">autres variantes</h4>
+
+<p>par exemple des machines utilisant <a href="https://perso.liris.cnrs.fr/sylvain.brandel/wiki/lib/exe/fetch.php?media=ens:m1if09:m1if09-cm03.pdf">plusieurs rubans et/ou plusieurs curseurs</a>. L’intérêt de ces machines est qu’elle sont plus facilement programmables.</p>
+
 <h3 id="simplification-de-lalphabet">simplification de l’alphabet</h3>
 
-<p>Diminuer ou agrandir l’alphabet d’une machine de Turing ne permet pas de calculer plus de choses :</p>
+<p>Diminuer ou agrandir l’alphabet d’une machine de Turing ne permet pas de calculer plus de choses non plus :</p>
 
 <blockquote class="note">
   <p>On peut simuler toute machine de Turing par une machine de Turing sur un alphabet $\{\sharp, 1\}$.</p>
@@ -390,15 +702,21 @@ table:
 
 <p>La transition $\delta(q_i, c_j) = (q_k, c_l, \leftarrow)$ se code alors :</p>
 
-\[\underbrace{\sharp \cdots \sharp}_{i}1\underbrace{\sharp \cdots \sharp}_{j}1\underbrace{\sharp \cdots \sharp}_{k}1\underbrace{\sharp \cdots \sharp}_{l}1\underbrace{\sharp}_\leftarrow\]
+\[{
+\underbrace{\sharp \cdots \sharp}_{i}{1} \underbrace{\sharp \cdots \sharp}_{j}{1} \underbrace{\sharp \cdots \sharp}_{k}{1} \underbrace{\sharp \cdots \sharp}_{l}{1} \underbrace{\sharp}_{\leftarrow}
+}\]
 
 <p>On sépare ensuite toutes les transitions par $11$ :</p>
 
-\[\mbox{transition}_111\cdots11\mbox{transition}_i11\cdots11\mbox{transition}_N\]
+<p>$
+\mbox{transition}_111\cdots11\mbox{transition}_i11\cdots11\mbox{transition}_N
+$</p>
 
 <p>Il nous reste à renseigner le nombre d’états et de caractères en début de code et de donner un début et une fin à ce code ($111$) pour finaliser notre encodage $\langle M \rangle$ de la machine de Turing $M$ :</p>
 
-\[\langle M \rangle = 111\underbrace{\sharp \cdots \sharp}_{n}11\underbrace{\sharp \cdots \sharp}_{m}11\mbox{transition}_111\cdots11 \mbox{transition}_i11\cdots11\mbox{transition}_N111\]
+<p>$
+\langle M \rangle = 111\underbrace{\sharp \cdots \sharp}<em>{n}11\underbrace{\sharp \cdots \sharp}</em>{m}11\mbox{transition}_111\cdots11 \mbox{transition}_i11\cdots11\mbox{transition}_N111
+$</p>
 
 <blockquote>
   <p>Félicitations, vous venez de créer votre 1er ordinateur ! La machine de Turing universelle permet en effet d’exécuter n’importe quelle machine $M$ : c’est un ordinateur dont le langage machine est l’encodage $\langle M \rangle$.</p>
@@ -433,19 +751,21 @@ Son frère lui dit alors : " Tu la racontes mal !"
 
   <div class="wrapper">
 
-    <h2 class="footer-heading">cours d&#39;informatique</h2>
+    <h2 class="footer-heading">cours d'informatique</h2>
 
     <div class="footer-col-wrapper">
       <div class="footer-col footer-col-1">
         <ul class="contact-list">
-          <li class="p-name">cours d&#39;informatique</li></ul>
+          <li class="p-name">cours d'informatique</li>
+</ul>
       </div>
 
-      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+      <div class="footer-col footer-col-2">
+<ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
 </div>
 
       <div class="footer-col footer-col-3">
-        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.</p>
+        <p>Support de cours/td d'informatique à l'école centrale marseille.</p>
       </div>
     </div>
 

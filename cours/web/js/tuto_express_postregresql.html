@@ -1,49 +1,42 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>Utiliser une base de données PostgreSQL avec Sequelize et NodeJS | cours d’informatique</title>
-<meta name="generator" content="Jekyll v4.2.0" />
-<meta property="og:title" content="Utiliser une base de données PostgreSQL avec Sequelize et NodeJS" />
-<meta name="author" content="Mickaël Rolland" />
-<meta property="og:locale" content="en_US" />
-<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
-<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
-<link rel="canonical" href="/cours_informatique/cours/web/js/tuto_express_postregresql.html" />
-<meta property="og:url" content="/cours_informatique/cours/web/js/tuto_express_postregresql.html" />
-<meta property="og:site_name" content="cours d’informatique" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Utiliser une base de données PostgreSQL avec Sequelize et NodeJS" />
+<meta name="generator" content="Jekyll v4.2.0">
+<meta property="og:title" content="Utiliser une base de données PostgreSQL avec Sequelize et NodeJS">
+<meta name="author" content="Mickaël Rolland">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille.">
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille.">
+<link rel="canonical" href="/cours_informatique/cours/web/js/tuto_express_postregresql.html">
+<meta property="og:url" content="/cours_informatique/cours/web/js/tuto_express_postregresql.html">
+<meta property="og:site_name" content="cours d’informatique">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Utiliser une base de données PostgreSQL avec Sequelize et NodeJS">
 <script type="application/ld+json">
 {"description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","headline":"Utiliser une base de données PostgreSQL avec Sequelize et NodeJS","url":"/cours_informatique/cours/web/js/tuto_express_postregresql.html","author":{"@type":"Person","name":"Mickaël Rolland"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
-  <link rel="stylesheet" href="/cours_informatique/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
-  <script>
-    MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-      },
-      svg: {
-        fontCache: 'global'
-      }
-    };
-    </script>
-    <script type="text/javascript" id="MathJax-script" async
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
-    </script>
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css">
+<link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique">
 </head>
 
-<body><header class="site-header" role="banner">
+<body>
+<header class="site-header" role="banner">
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
-        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/cours_informatique/">cours d'informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
         <label for="nav-trigger">
           <span class="menu-icon">
-            <svg viewBox="0 0 18 15" width="18px" height="15px">
-              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
             </svg>
           </span>
         </label>
@@ -51,7 +44,8 @@
         <div class="trigger">
             <a class="page-link" href="/cours_informatique/about"> about </a>
         </div>
-      </nav></div>
+      </nav>
+</div>
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
@@ -65,7 +59,7 @@
       
         <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Nathanaël Soulat</span></span></li>
       
-      </ul></p></p>
+      </ul>
   </header>
 
   <div class="post-content">
@@ -98,18 +92,18 @@ Ensuite, nous verrons comment mettre en fonctionnement ce code sur l’OVH en ut
 Pour cela, ouvrez pgAdmin 4, entrez votre mot de passe choisi précédemment.</p>
 
 <p>Vous devriez avoir PostgreSQL 14 dans Servers (cf ci-dessous).
-<img src="https://user-images.githubusercontent.com/75546258/138589692-1fdf857c-32e2-4dc1-9c41-743af733a5a0.png" alt="image" /></p>
+<img src="https://user-images.githubusercontent.com/75546258/138589692-1fdf857c-32e2-4dc1-9c41-743af733a5a0.png" alt="image"></p>
 
 <p>Dans <code class="language-plaintext highlighter-rouge">PostgreSQL 14</code>, il y a normalement <code class="language-plaintext highlighter-rouge">Database</code> qui contient une base de données nommée <code class="language-plaintext highlighter-rouge">postgres</code>. Nous allons en créer une autre, pour s’entrainer. Faites un click droit sur <code class="language-plaintext highlighter-rouge">Database</code> puis <code class="language-plaintext highlighter-rouge">Create</code> puis <code class="language-plaintext highlighter-rouge">Database...</code>.</p>
 
 <p>Il reste simplement à nommer notre base de données. Laissons <code class="language-plaintext highlighter-rouge">postgres</code> comme <code class="language-plaintext highlighter-rouge">Owner</code> (c’est le user par défaut et celui que vous utilisez actuellement <em>normalement</em>).</p>
 
-<p><img src="https://user-images.githubusercontent.com/75546258/138589821-e96aba23-ef40-47b2-9e4d-3b97e476666b.png" alt="image" /></p>
+<p><img src="https://user-images.githubusercontent.com/75546258/138589821-e96aba23-ef40-47b2-9e4d-3b97e476666b.png" alt="image"></p>
 
 <p>Cliquez sur <code class="language-plaintext highlighter-rouge">Save</code> et voilà votre base de données est créée !</p>
 
 <p>Dans votre Database puis <code class="language-plaintext highlighter-rouge">Schemas</code>, vous pouvez trouver les <code class="language-plaintext highlighter-rouge">Tables</code>. Il n’y en a pour le moment aucune. Nous laisserons l’ORM les créer pour nous par la suite!
-<img src="https://user-images.githubusercontent.com/75546258/138589922-a38c4ced-71b2-481e-80fb-5c783a0029aa.png" alt="image" /></p>
+<img src="https://user-images.githubusercontent.com/75546258/138589922-a38c4ced-71b2-481e-80fb-5c783a0029aa.png" alt="image"></p>
 
 <h2 id="setup">Setup</h2>
 
@@ -325,13 +319,20 @@ Ajoutons dans le dossier <code class="language-plaintext highlighter-rouge">mode
 <p>Notre objet <code class="language-plaintext highlighter-rouge">Player</code> possède par défaut déjà les méthodes suivantes :</p>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">Player.create(object)</code> où <code class="language-plaintext highlighter-rouge">object</code> est un JSON/dictionnaire avec les colonnes en clés.</li>
-  <li><code class="language-plaintext highlighter-rouge">Player.findByPk(id)</code> pour récuper un Player par son Id</li>
-  <li><code class="language-plaintext highlighter-rouge">Player.findAll()</code> pour récuperer tous les Players</li>
-  <li><code class="language-plaintext highlighter-rouge">Player.update(data, where: {id: id})</code> pour mettre à jour un Player ayant un certain Id</li>
-  <li><code class="language-plaintext highlighter-rouge">Player.destroy(where: {id: id})</code> pour supprimer un Player ayant un certain Id</li>
-  <li><code class="language-plaintext highlighter-rouge">Player.destroy(where: {})</code> pour supprimer tous les Players</li>
-  <li><code class="language-plaintext highlighter-rouge">Player.findAll({ where: { isPremium: ...} })</code> pour récupérer les Players suivant certains critères.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">Player.create(object)</code> où <code class="language-plaintext highlighter-rouge">object</code> est un JSON/dictionnaire avec les colonnes en clés.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">Player.findByPk(id)</code> pour récuper un Player par son Id</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">Player.findAll()</code> pour récuperer tous les Players</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">Player.update(data, where: {id: id})</code> pour mettre à jour un Player ayant un certain Id</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">Player.destroy(where: {id: id})</code> pour supprimer un Player ayant un certain Id</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">Player.destroy(where: {})</code> pour supprimer tous les Players</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">Player.findAll({ where: { isPremium: ...} })</code> pour récupérer les Players suivant certains critères.</li>
 </ul>
 
 <p>Ces méthodes seront utilisées dans le Controller.</p>
@@ -388,130 +389,130 @@ Ajoutons dans le dossier <code class="language-plaintext highlighter-rouge">mode
     <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="p">{</span>
       <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">500</span><span class="p">).</span><span class="nx">send</span><span class="p">({</span>
         <span class="na">message</span><span class="p">:</span>
-          <span class="nx">err</span><span class="p">.</span><span class="nx">message</span> <span class="o">||</span> <span class="dl">"</span><span class="s2">Some error occurred while creating the Player.</span><span class="dl">"</span>
-      <span class="p">});</span>
-    <span class="p">});</span>
-<span class="p">};</span>
+          <span class="nx">err</span><span class="p">.</span><span class="nx">message</span> <span class="err">\</span><span class="o">||</span> <span class="err">\</span><span class="dl">"</span><span class="s2">Some error occurred while creating the Player.</span><span class="se">\"</span><span class="s2">
+      });
+    });
+};
 
-<span class="c1">// Recherche de tous les Players (ou ceux qui un 'name' particulier)</span>
-<span class="nx">exports</span><span class="p">.</span><span class="nx">findAll</span> <span class="o">=</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">name</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
-  <span class="kd">var</span> <span class="nx">condition</span> <span class="o">=</span> <span class="nx">name</span> <span class="p">?</span> <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="p">{</span> <span class="p">[</span><span class="nx">Op</span><span class="p">.</span><span class="nx">iLike</span><span class="p">]:</span> <span class="s2">`%</span><span class="p">${</span><span class="nx">name</span><span class="p">}</span><span class="s2">%`</span> <span class="p">}</span> <span class="p">}</span> <span class="p">:</span> <span class="kc">null</span><span class="p">;</span>
+// Recherche de tous les Players (ou ceux qui un 'name' particulier)
+exports.findAll = (req, res) =&gt; {
+  const name = req.query.name;
+  var condition = name ? { name: { [Op.iLike]: `%${name}%` } } : null;
 
-  <span class="nx">Player</span><span class="p">.</span><span class="nx">findAll</span><span class="p">({</span> <span class="na">where</span><span class="p">:</span> <span class="nx">condition</span> <span class="p">})</span>
-    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="p">{</span>
-      <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
-    <span class="p">})</span>
-    <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="p">{</span>
-      <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">500</span><span class="p">).</span><span class="nx">send</span><span class="p">({</span>
-        <span class="na">message</span><span class="p">:</span>
-          <span class="nx">err</span><span class="p">.</span><span class="nx">message</span> <span class="o">||</span> <span class="dl">"</span><span class="s2">Some error occurred while retrieving players.</span><span class="dl">"</span>
-      <span class="p">});</span>
-    <span class="p">});</span>
-<span class="p">};</span>
+  Player.findAll({ where: condition })
+    .then(data =&gt; {
+      res.send(data);
+    })
+    .catch(err =&gt; {
+      res.status(500).send({
+        message:
+          err.message </span><span class="se">\</span><span class="s2">|| </span><span class="se">\"</span><span class="s2">Some error occurred while retrieving players.</span><span class="se">\"</span><span class="s2">
+      });
+    });
+};
 
-<span class="c1">// Recherche du Player par Id</span>
-<span class="nx">exports</span><span class="p">.</span><span class="nx">findOne</span> <span class="o">=</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">id</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
+// Recherche du Player par Id
+exports.findOne = (req, res) =&gt; {
+  const id = req.params.id;
 
-  <span class="nx">Player</span><span class="p">.</span><span class="nx">findByPk</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span>
-    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="p">{</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
-      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">404</span><span class="p">).</span><span class="nx">send</span><span class="p">({</span>
-          <span class="na">message</span><span class="p">:</span> <span class="s2">`Cannot find Player with id=</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">.`</span>
-        <span class="p">});</span>
-      <span class="p">}</span>
-    <span class="p">})</span>
-    <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="p">{</span>
-      <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">500</span><span class="p">).</span><span class="nx">send</span><span class="p">({</span>
-        <span class="na">message</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Error retrieving Player with id=</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">id</span>
-      <span class="p">});</span>
-    <span class="p">});</span>
-<span class="p">};</span>
+  Player.findByPk(id)
+    .then(data =&gt; {
+      if (data) {
+        res.send(data);
+      } else {
+        res.status(404).send({
+          message: `Cannot find Player with id=${id}.`
+        });
+      }
+    })
+    .catch(err =&gt; {
+      res.status(500).send({
+        message: </span><span class="dl">"</span><span class="nb">Error</span> <span class="nx">retrieving</span> <span class="nx">Player</span> <span class="kd">with</span> <span class="nx">id</span><span class="o">=</span><span class="dl">"</span><span class="s2"> + id
+      });
+    });
+};
 
-<span class="c1">// Mise à jour d'un Player</span>
-<span class="nx">exports</span><span class="p">.</span><span class="nx">update</span> <span class="o">=</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">id</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
+// Mise à jour d'un Player
+exports.update = (req, res) =&gt; {
+  const id = req.params.id;
 
-  <span class="nx">Player</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">,</span> <span class="p">{</span>
-    <span class="na">where</span><span class="p">:</span> <span class="p">{</span> <span class="na">id</span><span class="p">:</span> <span class="nx">id</span> <span class="p">}</span>
-  <span class="p">})</span>
-    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">num</span> <span class="o">=&gt;</span> <span class="p">{</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">num</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">({</span>
-          <span class="na">message</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Player was updated successfully.</span><span class="dl">"</span>
-        <span class="p">});</span>
-      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">({</span>
-          <span class="na">message</span><span class="p">:</span> <span class="s2">`Cannot update Player with id=</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">. Maybe Player was not found or req.body is empty!`</span>
-        <span class="p">});</span>
-      <span class="p">}</span>
-    <span class="p">})</span>
-    <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="p">{</span>
-      <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">500</span><span class="p">).</span><span class="nx">send</span><span class="p">({</span>
-        <span class="na">message</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Error updating Player with id=</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">id</span>
-      <span class="p">});</span>
-    <span class="p">});</span>
-<span class="p">};</span>
+  Player.update(req.body, {
+    where: { id: id }
+  })
+    .then(num =&gt; {
+      if (num == 1) {
+        res.send({
+          message: </span><span class="dl">"</span><span class="nx">Player</span> <span class="nx">was</span> <span class="nx">updated</span> <span class="nx">successfully</span><span class="p">.</span><span class="dl">"</span><span class="s2">
+        });
+      } else {
+        res.send({
+          message: `Cannot update Player with id=${id}. Maybe Player was not found or req.body is empty!`
+        });
+      }
+    })
+    .catch(err =&gt; {
+      res.status(500).send({
+        message: </span><span class="dl">"</span><span class="nb">Error</span> <span class="nx">updating</span> <span class="nx">Player</span> <span class="kd">with</span> <span class="nx">id</span><span class="o">=</span><span class="dl">"</span><span class="s2"> + id
+      });
+    });
+};
 
-<span class="c1">// Supprimer un Player</span>
-<span class="nx">exports</span><span class="p">.</span><span class="k">delete</span> <span class="o">=</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">id</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
+// Supprimer un Player
+exports.delete = (req, res) =&gt; {
+  const id = req.params.id;
 
-  <span class="nx">Player</span><span class="p">.</span><span class="nx">destroy</span><span class="p">({</span>
-    <span class="na">where</span><span class="p">:</span> <span class="p">{</span> <span class="na">id</span><span class="p">:</span> <span class="nx">id</span> <span class="p">}</span>
-  <span class="p">})</span>
-    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">num</span> <span class="o">=&gt;</span> <span class="p">{</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">num</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">({</span>
-          <span class="na">message</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Player was deleted successfully!</span><span class="dl">"</span>
-        <span class="p">});</span>
-      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">({</span>
-          <span class="na">message</span><span class="p">:</span> <span class="s2">`Cannot delete Player with id=</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">. Maybe Player was not found!`</span>
-        <span class="p">});</span>
-      <span class="p">}</span>
-    <span class="p">})</span>
-    <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="p">{</span>
-      <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">500</span><span class="p">).</span><span class="nx">send</span><span class="p">({</span>
-        <span class="na">message</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Could not delete Player with id=</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">id</span>
-      <span class="p">});</span>
-    <span class="p">});</span>
-<span class="p">};</span>
+  Player.destroy({
+    where: { id: id }
+  })
+    .then(num =&gt; {
+      if (num == 1) {
+        res.send({
+          message: </span><span class="dl">"</span><span class="nx">Player</span> <span class="nx">was</span> <span class="nx">deleted</span> <span class="nx">successfully</span><span class="o">!</span><span class="dl">"</span><span class="s2">
+        });
+      } else {
+        res.send({
+          message: `Cannot delete Player with id=${id}. Maybe Player was not found!`
+        });
+      }
+    })
+    .catch(err =&gt; {
+      res.status(500).send({
+        message: </span><span class="dl">"</span><span class="nx">Could</span> <span class="nx">not</span> <span class="k">delete</span> <span class="nx">Player</span> <span class="kd">with</span> <span class="nx">id</span><span class="o">=</span><span class="dl">"</span><span class="s2"> + id
+      });
+    });
+};
 
-<span class="c1">// Suppression de tous les Players</span>
-<span class="nx">exports</span><span class="p">.</span><span class="nx">deleteAll</span> <span class="o">=</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="nx">Player</span><span class="p">.</span><span class="nx">destroy</span><span class="p">({</span>
-    <span class="na">where</span><span class="p">:</span> <span class="p">{},</span>
-    <span class="na">truncate</span><span class="p">:</span> <span class="kc">false</span>
-  <span class="p">})</span>
-    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">nums</span> <span class="o">=&gt;</span> <span class="p">{</span>
-      <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">({</span> <span class="na">message</span><span class="p">:</span> <span class="s2">`</span><span class="p">${</span><span class="nx">nums</span><span class="p">}</span><span class="s2"> Players were deleted successfully!`</span> <span class="p">});</span>
-    <span class="p">})</span>
-    <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="p">{</span>
-      <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">500</span><span class="p">).</span><span class="nx">send</span><span class="p">({</span>
-        <span class="na">message</span><span class="p">:</span>
-          <span class="nx">err</span><span class="p">.</span><span class="nx">message</span> <span class="o">||</span> <span class="dl">"</span><span class="s2">Some error occurred while removing all players.</span><span class="dl">"</span>
-      <span class="p">});</span>
-    <span class="p">});</span>
-<span class="p">};</span>
+// Suppression de tous les Players
+exports.deleteAll = (req, res) =&gt; {
+  Player.destroy({
+    where: {},
+    truncate: false
+  })
+    .then(nums =&gt; {
+      res.send({ message: `${nums} Players were deleted successfully!` });
+    })
+    .catch(err =&gt; {
+      res.status(500).send({
+        message:
+          err.message </span><span class="se">\</span><span class="s2">|| </span><span class="se">\"</span><span class="s2">Some error occurred while removing all players.</span><span class="se">\"</span><span class="s2">
+      });
+    });
+};
 
-<span class="c1">// Rechercher selon certaines conditions</span>
-<span class="nx">exports</span><span class="p">.</span><span class="nx">findAllPremium</span> <span class="o">=</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="nx">Player</span><span class="p">.</span><span class="nx">findAll</span><span class="p">({</span> <span class="na">where</span><span class="p">:</span> <span class="p">{</span> <span class="na">isPremium</span><span class="p">:</span> <span class="kc">true</span> <span class="p">}</span> <span class="p">})</span>
-    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="p">{</span>
-      <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
-    <span class="p">})</span>
-    <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="p">{</span>
-      <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">500</span><span class="p">).</span><span class="nx">send</span><span class="p">({</span>
-        <span class="na">message</span><span class="p">:</span>
-          <span class="nx">err</span><span class="p">.</span><span class="nx">message</span> <span class="o">||</span> <span class="dl">"</span><span class="s2">Some error occurred while retrieving players.</span><span class="dl">"</span>
-      <span class="p">});</span>
-    <span class="p">});</span>
-<span class="p">};</span>
-</code></pre></div></div>
+// Rechercher selon certaines conditions
+exports.findAllPremium = (req, res) =&gt; {
+  Player.findAll({ where: { isPremium: true } })
+    .then(data =&gt; {
+      res.send(data);
+    })
+    .catch(err =&gt; {
+      res.status(500).send({
+        message:
+          err.message </span><span class="se">\</span><span class="s2">|| </span><span class="se">\"</span><span class="s2">Some error occurred while retrieving players.</span><span class="se">\"</span><span class="s2">
+      });
+    });
+};
+</span></code></pre></div></div>
 
 <p>Ici le Controller ne permet pas de récupérer les requêtes de content-type <code class="language-plaintext highlighter-rouge">application/x-www-form-urlencoded</code> mais vous pouvez vous amuser à le faire !</p>
 
@@ -554,9 +555,12 @@ Ajoutons dans le dossier <code class="language-plaintext highlighter-rouge">mode
 <p>On vient de définir les routes suivantes :</p>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">/api/players</code>: GET, POST, DELETE</li>
-  <li><code class="language-plaintext highlighter-rouge">/api/players/:id</code> : GET, PUT, DELETE</li>
-  <li><code class="language-plaintext highlighter-rouge">/api/players/premium</code> : GET</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">/api/players</code>: GET, POST, DELETE</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">/api/players/:id</code> : GET, PUT, DELETE</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">/api/players/premium</code> : GET</li>
 </ul>
 
 <p>Il reste à ajouter ces routes dans le <code class="language-plaintext highlighter-rouge">server.js</code>. Pour ce faire, ajoutons cette ligne juste avant le <code class="language-plaintext highlighter-rouge">app.listen()</code> :</p>
@@ -668,19 +672,21 @@ Maintenant que vous êtes connectés à votre base de données, vous pouvez affi
 
   <div class="wrapper">
 
-    <h2 class="footer-heading">cours d&#39;informatique</h2>
+    <h2 class="footer-heading">cours d'informatique</h2>
 
     <div class="footer-col-wrapper">
       <div class="footer-col footer-col-1">
         <ul class="contact-list">
-          <li class="p-name">cours d&#39;informatique</li></ul>
+          <li class="p-name">cours d'informatique</li>
+</ul>
       </div>
 
-      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+      <div class="footer-col footer-col-2">
+<ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
 </div>
 
       <div class="footer-col footer-col-3">
-        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.</p>
+        <p>Support de cours/td d'informatique à l'école centrale marseille.</p>
       </div>
     </div>
 

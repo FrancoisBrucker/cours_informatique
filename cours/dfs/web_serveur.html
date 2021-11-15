@@ -1,49 +1,42 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>serveur Web avec node | cours d’informatique</title>
-<meta name="generator" content="Jekyll v4.2.0" />
-<meta property="og:title" content="serveur Web avec node" />
-<meta name="author" content="François Brucker" />
-<meta property="og:locale" content="en_US" />
-<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
-<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
-<link rel="canonical" href="/cours_informatique/cours/dfs/web_serveur.html" />
-<meta property="og:url" content="/cours_informatique/cours/dfs/web_serveur.html" />
-<meta property="og:site_name" content="cours d’informatique" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="serveur Web avec node" />
+<meta name="generator" content="Jekyll v4.2.0">
+<meta property="og:title" content="serveur Web avec node">
+<meta name="author" content="François Brucker">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille.">
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille.">
+<link rel="canonical" href="/cours_informatique/cours/dfs/web_serveur.html">
+<meta property="og:url" content="/cours_informatique/cours/dfs/web_serveur.html">
+<meta property="og:site_name" content="cours d’informatique">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="serveur Web avec node">
 <script type="application/ld+json">
 {"description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","headline":"serveur Web avec node","url":"/cours_informatique/cours/dfs/web_serveur.html","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
-  <link rel="stylesheet" href="/cours_informatique/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
-  <script>
-    MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-      },
-      svg: {
-        fontCache: 'global'
-      }
-    };
-    </script>
-    <script type="text/javascript" id="MathJax-script" async
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
-    </script>
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css">
+<link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique">
 </head>
 
-<body><header class="site-header" role="banner">
+<body>
+<header class="site-header" role="banner">
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
-        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/cours_informatique/">cours d'informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
         <label for="nav-trigger">
           <span class="menu-icon">
-            <svg viewBox="0 0 18 15" width="18px" height="15px">
-              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
             </svg>
           </span>
         </label>
@@ -51,14 +44,15 @@
         <div class="trigger">
             <a class="page-link" href="/cours_informatique/about"> about </a>
         </div>
-      </nav></div>
+      </nav>
+</div>
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">serveur Web avec node</h1></p>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></p>
+    <h1 class="post-title">serveur Web avec node</h1>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span>
   </header>
 
   <div class="post-content">
@@ -529,7 +523,7 @@ undefined
         <span class="nt">&lt;title&gt;</span>Numérologie<span class="nt">&lt;/title&gt;</span>
 
         <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"./node_modules/purecss/build/pure-min.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"https://fonts.googleapis.com/css2?family=Lobster&amp;display=swap"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"https://fonts.googleapis.com/css2?family=Lobster&display=swap"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"main.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
 
     <span class="nt">&lt;/head&gt;</span>
@@ -565,7 +559,7 @@ undefined
         <span class="nt">&lt;title&gt;</span>Numérologie<span class="nt">&lt;/title&gt;</span>
 
         <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"./node_modules/purecss/build/pure-min.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"https://fonts.googleapis.com/css2?family=Lobster&amp;display=swap"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"https://fonts.googleapis.com/css2?family=Lobster&display=swap"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"main.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
 
     <span class="nt">&lt;/head&gt;</span>
@@ -622,7 +616,8 @@ undefined
 <p>On envoie le tout sur l’ovh !</p>
 
 <ol>
-  <li>une fois sur l’ovh (on fait attention d’être bien parti avec son agent) on clone notre répo dans le dossier <code class="language-plaintext highlighter-rouge">~/www</code></li>
+  <li>une fois sur l’ovh (on fait attention d’être bien parti avec son agent) on clone notre répo dans le dossier <code class="language-plaintext highlighter-rouge">~/www</code>
+</li>
   <li>on procède à un <code class="language-plaintext highlighter-rouge">yarn install --production</code> qui va mettre à jour tous nos packages, exepté ceux liés au développement. On a donc uniquement <code class="language-plaintext highlighter-rouge">purecss</code>. Comparez avec la taille en dev.</li>
 </ol>
 
@@ -652,7 +647,8 @@ appelées <em>user stories</em>.</p>
 <p>On va avoir besoin de plusieurs bibliothèques : <code class="language-plaintext highlighter-rouge">yarn add --dev selenium-webdriver chromedriver</code> :</p>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">selenium-webdriver</code> est selenium proprement dit,</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">selenium-webdriver</code> est selenium proprement dit,</li>
   <li>un driver de navigateur (<code class="language-plaintext highlighter-rouge">geckodriver</code> pour firefox ou <code class="language-plaintext highlighter-rouge">chromedriver</code> pour chrome)</li>
 </ul>
 
@@ -808,11 +804,15 @@ appelées <em>user stories</em>.</p>
 <p>Regardons le code de près :</p>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">const</code> : déclaration de constantes. Changer port par exemple produit une erreur.</li>
-  <li><code class="language-plaintext highlighter-rouge">require</code> : importation d’une bibliothèque  et affectation de celle-ci à une constante.</li>
-  <li>les fonctions peuvent se créer à la volée avec : <code class="language-plaintext highlighter-rouge">nomFonction((paramètres) =&gt; {})</code></li>
+  <li>
+<code class="language-plaintext highlighter-rouge">const</code> : déclaration de constantes. Changer port par exemple produit une erreur.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">require</code> : importation d’une bibliothèque  et affectation de celle-ci à une constante.</li>
+  <li>les fonctions peuvent se créer à la volée avec : <code class="language-plaintext highlighter-rouge">nomFonction((paramètres) =&gt; {})</code>
+</li>
   <li>création d’un objet serveur avec une fonction ayant 2 paramètres, la requête et la réponse (voir <a href="https://nodejs.org/dist/latest-v14.x/docs/api/http.html#http_http_createserver_options_requestlistener">doc</a>).</li>
-  <li><code class="language-plaintext highlighter-rouge">listen</code> : lien entre le serveur et le couple adresse + port.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">listen</code> : lien entre le serveur et le couple adresse + port.</li>
 </ul>
 
 <p>On peut afficher l’url de la requête : On récupère les variables <em>hostname</em> et <em>port</em> et on les affiche dans la console.</p>
@@ -820,10 +820,13 @@ appelées <em>user stories</em>.</p>
 <p>Détails, en utilisant la <a href="https://nodejs.org/en/docs/">documentation</a> de nodejs :</p>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">http</code> : C’est le module s’occupant des échanges et du codage des données.</li>
-  <li><code class="language-plaintext highlighter-rouge">http.createServer</code> : demande un <a href="https://www.w3schools.com/nodejs/func_http_requestlistener.asp"><code class="language-plaintext highlighter-rouge">requestListener</code></a> qui est ajouté à l’événement request.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">http</code> : C’est le module s’occupant des échanges et du codage des données.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">http.createServer</code> : demande un <a href="https://www.w3schools.com/nodejs/func_http_requestlistener.asp"><code class="language-plaintext highlighter-rouge">requestListener</code></a> qui est ajouté à l’événement request.</li>
   <li>event request : deux paramètres <code class="language-plaintext highlighter-rouge">http.IncomingMessage</code>  et <code class="language-plaintext highlighter-rouge">http.ServerResponse</code>. Il est émit à chaque fois qu’un <em>request</em> est demandé</li>
-  <li><code class="language-plaintext highlighter-rouge">http.IncomingMessage</code> a un attribut url : il sert à générer le <em>Readable Stream interface</em> et beaucoup d’autres choses (événements, méthodes, …).</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">http.IncomingMessage</code> a un attribut url : il sert à générer le <em>Readable Stream interface</em> et beaucoup d’autres choses (événements, méthodes, …).</li>
 </ul>
 
 <p>La <a href="https://nodejs.org/api/">documentation</a> de nodejs est très bien faite. Trouvez tous les éléments mentionnés ci-dessus.</p>
@@ -846,8 +849,10 @@ appelées <em>user stories</em>.</p>
 <p>La conf du <a href="https://www.nginx.com/">nginx</a> (<a href="https://www.grafikart.fr/tutoriels/nginx-692">un petit tuto</a>) est :</p>
 
 <ol>
-  <li>chargée lors du lancement du démon et est le fichier <em>/etc/nginx.conf</em></li>
-  <li>ce fichier charge tous les fichiers de <em>/etc/nginx/conf.d/*.conf</em></li>
+  <li>chargée lors du lancement du démon et est le fichier <em>/etc/nginx.conf</em>
+</li>
+  <li>ce fichier charge tous les fichiers de <em>/etc/nginx/conf.d/*.conf</em>
+</li>
   <li>regardons celui appelé <em>nodejs.conf</em> :
     - il regarde la liste des port par herbe
     - et envoie toutes les requêtes sur le démon qui écoute le port de votre herbe
@@ -860,7 +865,8 @@ appelées <em>user stories</em>.</p>
 
 <ul>
   <li>un fichier <em>index.js</em> qui va contenir notre serveur</li>
-  <li>un dossier static contenant une image <code class="language-plaintext highlighter-rouge">img.png</code></li>
+  <li>un dossier static contenant une image <code class="language-plaintext highlighter-rouge">img.png</code>
+</li>
 </ul>
 
 <p>Par défaut l’adresse <code class="language-plaintext highlighter-rouge">http://node.herbe.ovh1.ec-m.fr</code> ne rend rien, juste un <a href="https://http.cat/502">502</a>.</p>
@@ -869,7 +875,8 @@ appelées <em>user stories</em>.</p>
 
 <ul>
   <li>Maintenant l’adresse fonctionne et nous accueille avec un <code class="language-plaintext highlighter-rouge">Hello World</code> bien mérité.</li>
-  <li><code class="language-plaintext highlighter-rouge">http://node.herbe.ovh1.ec-m.fr/static/img.png</code> fonctionne aussi.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">http://node.herbe.ovh1.ec-m.fr/static/img.png</code> fonctionne aussi.</li>
 </ul>
 
 <p>Sauf qu’en se déconnectant, le terminal et tous ses process attachés disparaissent, dont notre serveur.</p>
@@ -893,14 +900,17 @@ appelées <em>user stories</em>.</p>
 <p>Relançons le : <code class="language-plaintext highlighter-rouge">/usr/bin/screen -d -m -S node node index.js</code>. On peut manager ses process screen sans avoir beoin de les tuer sauvagement avec <a href="https://korben.info/commande-kill-linux-tuer-processus.html">kill</a> :</p>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">screen -ls</code> : trouve les différents screen</li>
-  <li><code class="language-plaintext highlighter-rouge">screen -X -S [nom de la session à tuer, pour nous node] quit</code> : tue le screen</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">screen -ls</code> : trouve les différents screen</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">screen -X -S [nom de la session à tuer, pour nous node] quit</code> : tue le screen</li>
 </ul>
 
 <h4 id="conf-dun-app-node">conf d’un app node</h4>
 
 <ul>
-  <li>front dans <code class="language-plaintext highlighter-rouge">~/node/static/</code>. Les fichiers html, css de l’app mais aussi ses node_modules. Le mieux est de faire un lien de votre dossier front vers <em>static</em></li>
+  <li>front dans <code class="language-plaintext highlighter-rouge">~/node/static/</code>. Les fichiers html, css de l’app mais aussi ses node_modules. Le mieux est de faire un lien de votre dossier front vers <em>static</em>
+</li>
   <li>back dans le dossier <code class="language-plaintext highlighter-rouge">~ /node/</code> avec ses fichiers js, mais aussi ses templates si vous en avez et son dossier node_module</li>
 </ul>
 
@@ -940,14 +950,14 @@ appelées <em>user stories</em>.</p>
     <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span>
     <span class="nx">response</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">text/html</span><span class="dl">'</span><span class="p">);</span>
 
-    <span class="k">if</span> <span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">url</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">/</span><span class="dl">"</span> <span class="o">||</span> <span class="nx">request</span><span class="p">.</span><span class="nx">url</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">/home</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">response</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span>  <span class="p">{</span><span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">text/html</span><span class="dl">'</span><span class="p">})</span>
-        <span class="kd">var</span> <span class="nx">readStream</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">createReadStream</span><span class="p">(</span><span class="nx">__dirname</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">/index.html</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">utf8</span><span class="dl">"</span><span class="p">)</span>
-        <span class="nx">readStream</span><span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
-    <span class="p">}</span>
-    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">url</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">/contact</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">response</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="dl">"</span><span class="s2">&lt;html&gt;&lt;head&gt;&lt;title&gt;contact&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;contact&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;</span><span class="dl">"</span><span class="p">);</span>
-    <span class="p">}</span>
+    <span class="k">if</span> <span class="err">\</span><span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">url</span> <span class="o">===</span> <span class="err">\</span><span class="dl">"</span><span class="s2">/</span><span class="se">\"</span><span class="s2"> </span><span class="se">\</span><span class="s2">|| request.url === </span><span class="se">\"</span><span class="s2">/home</span><span class="se">\"</span><span class="s2">) {
+        response.writeHead(200,  {'Content-Type': 'text/html'})
+        var readStream = fs.createReadStream(__dirname + </span><span class="dl">"</span><span class="o">/</span><span class="nx">index</span><span class="p">.</span><span class="nx">html</span><span class="dl">"</span><span class="s2">, </span><span class="dl">"</span><span class="nx">utf8</span><span class="dl">"</span><span class="s2">)
+        readStream.pipe(response)
+    }
+    else if (request.url === </span><span class="dl">"</span><span class="o">/</span><span class="nx">contact</span><span class="dl">"</span><span class="s2">) {
+        response.end(</span><span class="dl">"</span><span class="o">&lt;</span><span class="nx">html</span><span class="o">&gt;&lt;</span><span class="nx">head</span><span class="o">&gt;&lt;</span><span class="nx">title</span><span class="o">&gt;</span><span class="nx">contact</span><span class="o">&lt;</span><span class="sr">/title&gt;&lt;/</span><span class="nx">head</span><span class="o">&gt;&lt;</span><span class="nx">body</span><span class="o">&gt;&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">contact</span><span class="o">&lt;</span><span class="sr">/h1&gt;&lt;/</span><span class="nx">body</span><span class="o">&gt;&lt;</span><span class="sr">/html&gt;"</span><span class="se">)</span><span class="err">;
+</span>    <span class="p">}</span>
     <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">url</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">/lecture</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span>
 		<span class="nx">response</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">text/plain</span><span class="dl">'</span><span class="p">);</span>
@@ -989,9 +999,12 @@ appelées <em>user stories</em>.</p>
 <p>On utilisera essentiellement quatre méthodes de <code class="language-plaintext highlighter-rouge">app</code> :</p>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">app.set()</code> : qui s’occupe des paramètres de express,</li>
-  <li><code class="language-plaintext highlighter-rouge">app.use()</code> : qui reçoit toutes les requêtes</li>
-  <li><code class="language-plaintext highlighter-rouge">app.get()</code>, <code class="language-plaintext highlighter-rouge">app.post()</code> : qui reçoivent respectivement les requêtes http get et post.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">app.set()</code> : qui s’occupe des paramètres de express,</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">app.use()</code> : qui reçoit toutes les requêtes</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">app.get()</code>, <code class="language-plaintext highlighter-rouge">app.post()</code> : qui reçoivent respectivement les requêtes http get et post.</li>
 </ul>
 
 <p>Avant d’expliquer comment tout ça se passe, regardons un exemple en recréant un fichier <em>index.js</em> utilisant express dans notre projet :</p>
@@ -1043,9 +1056,13 @@ appelées <em>user stories</em>.</p>
 <p>Lorsque vous exécutez votre code vous voyez des choses qui s’affichent dans la console :</p>
 
 <ul>
-  <li><em>“Time”</em> s’affiche à chaque appel</li>
-  <li><em>“ensuite”</em> ne s’affiche que si notre requête est différente de ‘/’</li>
-  <li><em>“et c’est le 404”</em> s’affiche si l’on demande une url différente de <code class="language-plaintext highlighter-rouge">/</code> ou <code class="language-plaintext highlighter-rouge">contact</code></li>
+  <li>
+<em>“Time”</em> s’affiche à chaque appel</li>
+  <li>
+<em>“ensuite”</em> ne s’affiche que si notre requête est différente de ‘/’</li>
+  <li>
+<em>“et c’est le 404”</em> s’affiche si l’on demande une url différente de <code class="language-plaintext highlighter-rouge">/</code> ou <code class="language-plaintext highlighter-rouge">contact</code>
+</li>
 </ul>
 
 <p>Ceci s’explique par les différentes manières dont peuvent s’appeler les méthodes de <code class="language-plaintext highlighter-rouge">app</code> :</p>
@@ -1054,7 +1071,8 @@ appelées <em>user stories</em>.</p>
   <li>
     <p>un unique paramètre qui est une <code class="language-plaintext highlighter-rouge">fonction(request, response)</code> :</p>
   </li>
-  <li>un unique paramètre qui est une <code class="language-plaintext highlighter-rouge">fonction(request, response, next)</code></li>
+  <li>un unique paramètre qui est une <code class="language-plaintext highlighter-rouge">fonction(request, response, next)</code>
+</li>
   <li>deux paramètres un premier qui est un <em>“filtre à requête</em> (<code class="language-plaintext highlighter-rouge">get</code> dans l’exemple) et le second la fonction à 2 ou 3 paramètres.</li>
 </ul>
 
@@ -1118,7 +1136,8 @@ appelées <em>user stories</em>.</p>
 <ul>
   <li>Il faut changer les chemin d’import des tests</li>
   <li>il faut faire deux package.json (un pour le back et un pour le front) et procéder aux imports. Le plus simple est de supprimer les fichiers node_modules et de les laisser se recréer avec un <code class="language-plaintext highlighter-rouge">yarn install</code> côté front et côté back</li>
-  <li>il faut un peut changer la configuration de jest pour qu’il ne voit pas le dossier static et son <em>package.json</em></li>
+  <li>il faut un peut changer la configuration de jest pour qu’il ne voit pas le dossier static et son <em>package.json</em>
+</li>
   <li>On <a href="https://expressjs.com/fr/api.html#res.redirect">redirige</a> la route <code class="language-plaintext highlighter-rouge">/</code> vers <code class="language-plaintext highlighter-rouge">static/index.html</code>.</li>
 </ul>
 
@@ -1366,7 +1385,8 @@ appelées <em>user stories</em>.</p>
 <p>On l’ajoute en commençant par l’installer : <code class="language-plaintext highlighter-rouge">yarn add morgan</code></p>
 
 <ul>
-  <li>on l’importe : <code class="language-plaintext highlighter-rouge">var morgan = require('morgan')</code></li>
+  <li>on l’importe : <code class="language-plaintext highlighter-rouge">var morgan = require('morgan')</code>
+</li>
   <li>puis on ajoute la ligne <code class="language-plaintext highlighter-rouge">app.use(morgan('dev'))</code> au début des routes pour l’utiliser.</li>
 </ul>
 
@@ -1418,7 +1438,8 @@ appelées <em>user stories</em>.</p>
 <p>Puis on l’importe dans <em>app.js</em> pour :</p>
 
 <ul>
-  <li>inclure les messages de morgan dans winston au level <code class="language-plaintext highlighter-rouge">http</code></li>
+  <li>inclure les messages de morgan dans winston au level <code class="language-plaintext highlighter-rouge">http</code>
+</li>
 </ul>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">express</span><span class="dl">'</span><span class="p">)</span>
@@ -1487,8 +1508,10 @@ appelées <em>user stories</em>.</p>
 <p>L’usage veut également que l’on conserve les différentes versions des api pour pouvoir changer nos appels sans perturber les sites utilisant ceux-ci. On va donc avoir les routes suivantes :</p>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">/api/current/</code> qui sera la route pour la version actuelle de l’api</li>
-  <li><code class="language-plaintext highlighter-rouge">/api/v1/</code> qui sera un lien vers la version courante.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">/api/current/</code> qui sera la route pour la version actuelle de l’api</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">/api/v1/</code> qui sera un lien vers la version courante.</li>
 </ul>
 
 <p>Ceci nous permettra de maintenir la version <code class="language-plaintext highlighter-rouge">v1</code> de l’api lorsque la version courante changera en <code class="language-plaintext highlighter-rouge">v1.2</code> ou <code class="language-plaintext highlighter-rouge">v2</code>.</p>
@@ -1596,9 +1619,12 @@ appelées <em>user stories</em>.</p>
 <p>Pour savoir comment appeler cette route depuis notre server, regardons comment elle est appelée :</p>
 
 <ol>
-  <li>on commence par l’appeler depuis <em>./app.js</em> : <code class="language-plaintext highlighter-rouge">app.use('/api', api)</code> où <code class="language-plaintext highlighter-rouge">api = require('./routes')</code></li>
-  <li>cela continue dans <em>./routes/index.js</em> avec <code class="language-plaintext highlighter-rouge">router.use('/current', require('./v1'))</code> et <code class="language-plaintext highlighter-rouge">router.use('/v1', require('./v1'))</code></li>
-  <li>on arrive enfin au <em>./routes/v1/index.js</em> qui crée la route : <code class="language-plaintext highlighter-rouge">router.get('/numerologie/:prenom', ...</code></li>
+  <li>on commence par l’appeler depuis <em>./app.js</em> : <code class="language-plaintext highlighter-rouge">app.use('/api', api)</code> où <code class="language-plaintext highlighter-rouge">api = require('./routes')</code>
+</li>
+  <li>cela continue dans <em>./routes/index.js</em> avec <code class="language-plaintext highlighter-rouge">router.use('/current', require('./v1'))</code> et <code class="language-plaintext highlighter-rouge">router.use('/v1', require('./v1'))</code>
+</li>
+  <li>on arrive enfin au <em>./routes/v1/index.js</em> qui crée la route : <code class="language-plaintext highlighter-rouge">router.get('/numerologie/:prenom', ...</code>
+</li>
 </ol>
 
 <p>En combinant tout ça on arrive à une route : <code class="language-plaintext highlighter-rouge">http://localhost:3000/api/current/numerologie/un truc</code> qui est la même que <code class="language-plaintext highlighter-rouge">http://localhost:3000/api/v1/numerologie/un truc</code>. Onpeut bien sur remplacer “un truc” par ce qu’on veut du moment que ce n’est pas vide.</p>
@@ -1720,7 +1746,7 @@ appelées <em>user stories</em>.</p>
         <span class="nt">&lt;title&gt;</span>Numérologie<span class="nt">&lt;/title&gt;</span>
 
         <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"./node_modules/purecss/build/pure-min.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"https://fonts.googleapis.com/css2?family=Lobster&amp;display=swap"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"https://fonts.googleapis.com/css2?family=Lobster&display=swap"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"main.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
 
     <span class="nt">&lt;/head&gt;</span>
@@ -1768,19 +1794,21 @@ appelées <em>user stories</em>.</p>
 
   <div class="wrapper">
 
-    <h2 class="footer-heading">cours d&#39;informatique</h2>
+    <h2 class="footer-heading">cours d'informatique</h2>
 
     <div class="footer-col-wrapper">
       <div class="footer-col footer-col-1">
         <ul class="contact-list">
-          <li class="p-name">cours d&#39;informatique</li></ul>
+          <li class="p-name">cours d'informatique</li>
+</ul>
       </div>
 
-      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+      <div class="footer-col footer-col-2">
+<ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
 </div>
 
       <div class="footer-col footer-col-3">
-        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.</p>
+        <p>Support de cours/td d'informatique à l'école centrale marseille.</p>
       </div>
     </div>
 

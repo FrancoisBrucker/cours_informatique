@@ -1,49 +1,43 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>TDD et test pattern | cours d’informatique</title>
-<meta name="generator" content="Jekyll v4.2.0" />
-<meta property="og:title" content="TDD et test pattern" />
-<meta name="author" content="François Brucker" />
-<meta property="og:locale" content="en_US" />
-<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille." />
-<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille." />
-<link rel="canonical" href="/cours_informatique/cours/developpement/tdd_et_test_pattern.html" />
-<meta property="og:url" content="/cours_informatique/cours/developpement/tdd_et_test_pattern.html" />
-<meta property="og:site_name" content="cours d’informatique" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="TDD et test pattern" />
+<meta name="generator" content="Jekyll v4.2.0">
+<meta property="og:title" content="TDD et test pattern">
+<meta name="author" content="François Brucker">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille.">
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille.">
+<link rel="canonical" href="/cours_informatique/cours/developpement/tdd_et_test_pattern.html">
+<meta property="og:url" content="/cours_informatique/cours/developpement/tdd_et_test_pattern.html">
+<meta property="og:site_name" content="cours d’informatique">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="TDD et test pattern">
 <script type="application/ld+json">
 {"description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","headline":"TDD et test pattern","url":"/cours_informatique/cours/developpement/tdd_et_test_pattern.html","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
-  <link rel="stylesheet" href="/cours_informatique/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique" /><!-- Mathjax Support -->
-  <script>
-    MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-      },
-      svg: {
-        fontCache: 'global'
-      }
-    };
-    </script>
-    <script type="text/javascript" id="MathJax-script" async
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
-    </script>
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css">
+<link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique">
+<script>MathJax={"tex":{"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["\\[","\\]"]]},"svg":{"fontCache":"global"},"svg":{"fontCache":"global"}}</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
-<body><header class="site-header" role="banner">
+<body>
+<header class="site-header" role="banner">
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/cours_informatique/">cours d&#39;informatique</a><nav class="site-nav">
-        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/cours_informatique/">cours d'informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
         <label for="nav-trigger">
           <span class="menu-icon">
-            <svg viewBox="0 0 18 15" width="18px" height="15px">
-              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
             </svg>
           </span>
         </label>
@@ -51,14 +45,15 @@
         <div class="trigger">
             <a class="page-link" href="/cours_informatique/about"> about </a>
         </div>
-      </nav></div>
+      </nav>
+</div>
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">TDD et test pattern</h1></p>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></p>
+    <h1 class="post-title">TDD et test pattern</h1>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span>
   </header>
 
   <div class="post-content">
@@ -69,13 +64,13 @@ refaire propre. Utiliser les todo list de u proje numérologie du cours de web</
 
 <h2 id="test-driven-development-by-example">Test Driven Development by example</h2>
 
-<p>Vous allez suivre ici le livre séminal : <a href="https://www.amazon.fr/Test-Driven-Development-Kent-Beck/dp/0321146530/ref=sr_1_1?ie=UTF8&amp;qid=1538720480&amp;sr=8-1&amp;keywords=test+driven+development+by+example">TDD by example</a> de Kent Beck (Suivez son <a href="https://twitter.com/kentbeck">twitter</a>, ses posts sont souvent rigolos et toujours utiles). Initialement écrit pour le java, nous allons appliquer ses enseignements au python.</p>
+<p>Vous allez suivre ici le livre séminal : <a href="https://www.amazon.fr/Test-Driven-Development-Kent-Beck/dp/0321146530/ref=sr_1_1?ie=UTF8&qid=1538720480&sr=8-1&keywords=test+driven+development+by+example">TDD by example</a> de Kent Beck (Suivez son <a href="https://twitter.com/kentbeck">twitter</a>, ses posts sont souvent rigolos et toujours utiles). Initialement écrit pour le java, nous allons appliquer ses enseignements au python.</p>
 
-<p>On y verra aussi quelques règles de refactoring que l’on peut voir dans <a href="https://www.amazon.fr/Refactoring-Improving-Design-Existing-Code/dp/0201485672/ref=sr_1_2?ie=UTF8&amp;qid=1539066441&amp;sr=8-2">Refactoring: Improving the Design of Existing Code </a> de <a href="https://martinfowler.com">Martin fowler</a> (allez voir son site, y’a moult choses chouettes sur le code, l’agile, la vie et le reste)</p>
+<p>On y verra aussi quelques règles de refactoring que l’on peut voir dans <a href="https://www.amazon.fr/Refactoring-Improving-Design-Existing-Code/dp/0201485672/ref=sr_1_2?ie=UTF8&qid=1539066441&sr=8-2">Refactoring: Improving the Design of Existing Code </a> de <a href="https://martinfowler.com">Martin fowler</a> (allez voir son site, y’a moult choses chouettes sur le code, l’agile, la vie et le reste)</p>
 
 <p>Si vous connaissez tout ça par cœur, mais pas avant car ce n’est pas un livre pour débutant, allez lire <a href="https://www.amazon.fr/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882">clean code</a> de Robert Martin (dit uncle bob). Ce livre contient, entre autres, le meilleur indicateur d’un bon code au monde, le WTFs/minute :</p>
 
-<p><img src="/cours_informatique/assets/cours/developpement/wtfm.jpg" alt="WTFs/minute" /></p>
+<p><img src="/cours_informatique/assets/cours/developpement/wtfm.jpg" alt="WTFs/minute"></p>
 
 <h2 id="quoi">Quoi</h2>
 
@@ -104,10 +99,11 @@ refaire propre. Utiliser les todo list de u proje numérologie du cours de web</
       <td>32 000 CHF</td>
     </tr>
     <tr>
-      <td> </td>
-      <td> </td>
+      <td colspan="3">
+</td>
       <td><strong>total</strong></td>
-      <td>$248 000</td>
+      
+      
     </tr>
   </tbody>
 </table>
@@ -123,7 +119,8 @@ refaire propre. Utiliser les todo list de u proje numérologie du cours de web</
 <p>Nous n’utiliserons pas ici notre code. Mais il faudra tout faire <em>from scratch</em>. On aura donc besoin :</p>
 
 <ul>
-  <li>d’une todo list où tous nos items à faire pour l’instant sont écrit : le <em>backlog</em></li>
+  <li>d’une todo list où tous nos items à faire pour l’instant sont écrit : le <em>backlog</em>
+</li>
   <li>de fichiers de tests</li>
   <li>du code</li>
 </ul>
@@ -233,7 +230,8 @@ Prenez également une feuille de papier pour vos todos.</p>
 <p>Il est <strong>TOUJOURS</strong> plus simple de lire un message d’erreur que d’essayer de faire en sorte qu’ils n’arrivent pas en regardant le code.</p>
 
 <ol>
-  <li>En lançant les tests on a : <code class="language-plaintext highlighter-rouge">E   ModuleNotFoundError: No module named 'money'</code> : on crée donc un fichier <code class="language-plaintext highlighter-rouge">money.py</code></li>
+  <li>En lançant les tests on a : <code class="language-plaintext highlighter-rouge">E   ModuleNotFoundError: No module named 'money'</code> : on crée donc un fichier <code class="language-plaintext highlighter-rouge">money.py</code>
+</li>
   <li>L’erreur est maintenant : <code class="language-plaintext highlighter-rouge">E   ImportError: cannot import name 'Dollar' from 'money'</code> : on crée une classe <code class="language-plaintext highlighter-rouge">Dollar</code> et une unique instruction <code class="language-plaintext highlighter-rouge">pass</code> (qui ne fait rien mais permet de ne pas faire d’erreur lorsque l’on crée un bloc sans instructions)</li>
   <li>et ainsi de suite jusqu’à ce qu’il n’y ait plus d’erreur</li>
 </ol>
@@ -257,10 +255,15 @@ Prenez également une feuille de papier pour vos todos.</p>
 <p>Halte là ! Ce n’est pas fini. Nos tests passent mais il reste un étape à faire : <em>supprimer les duplications</em>. Entre chaque étape on relance les tests pour être sûr que tout passe. Si on reste vert, on a pas cassé le code !</p>
 
 <ol>
-  <li>le <code class="language-plaintext highlighter-rouge">10</code> du test est dupliqué avec le <code class="language-plaintext highlighter-rouge">10</code> du <code class="language-plaintext highlighter-rouge">self.amount</code>. C’est en fait <code class="language-plaintext highlighter-rouge">5 * 2</code></li>
-  <li>le <code class="language-plaintext highlighter-rouge">5</code> du <code class="language-plaintext highlighter-rouge">self.amount</code> est en fait une duplication du paramètre <code class="language-plaintext highlighter-rouge">amount</code>, et le <code class="language-plaintext highlighter-rouge">* 2</code></li>
-  <li><code class="language-plaintext highlighter-rouge">le * 2</code> est en fait utile avec la méthode <code class="language-plaintext highlighter-rouge">times()</code> on le rajoute donc dedans et le supprime de <code class="language-plaintext highlighter-rouge">self.amount</code></li>
-  <li><code class="language-plaintext highlighter-rouge">2</code> de la méthode <code class="language-plaintext highlighter-rouge">times</code> est en en fait une duplication du paramètre <code class="language-plaintext highlighter-rouge">multiplier</code>.</li>
+  <li>le <code class="language-plaintext highlighter-rouge">10</code> du test est dupliqué avec le <code class="language-plaintext highlighter-rouge">10</code> du <code class="language-plaintext highlighter-rouge">self.amount</code>. C’est en fait <code class="language-plaintext highlighter-rouge">5 * 2</code>
+</li>
+  <li>le <code class="language-plaintext highlighter-rouge">5</code> du <code class="language-plaintext highlighter-rouge">self.amount</code> est en fait une duplication du paramètre <code class="language-plaintext highlighter-rouge">amount</code>, et le <code class="language-plaintext highlighter-rouge">* 2</code>
+</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">le * 2</code> est en fait utile avec la méthode <code class="language-plaintext highlighter-rouge">times()</code> on le rajoute donc dedans et le supprime de <code class="language-plaintext highlighter-rouge">self.amount</code>
+</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">2</code> de la méthode <code class="language-plaintext highlighter-rouge">times</code> est en en fait une duplication du paramètre <code class="language-plaintext highlighter-rouge">multiplier</code>.</li>
   <li>on peut même utiliser l’opérateur <code class="language-plaintext highlighter-rouge">*=</code> dans la méthode <code class="language-plaintext highlighter-rouge">times</code>.</li>
 </ol>
 
@@ -291,8 +294,10 @@ Prenez également une feuille de papier pour vos todos.</p>
 <p>On veut faire du <strong>clean code that works</strong>. Mais c’est très difficile même pour des très bons codeurs. Donc on va séparer le problème :</p>
 
 <ol>
-  <li>on commence par le <em>that works</em></li>
-  <li>on fini par le <em>clean code</em></li>
+  <li>on commence par le <em>that works</em>
+</li>
+  <li>on fini par le <em>clean code</em>
+</li>
 </ol>
 
 <p>Que faire maintenant ?</p>
@@ -370,7 +375,8 @@ Prenez également une feuille de papier pour vos todos.</p>
   <li>gestion des arrondis</li>
 </ul>
 
-<h3 id="3---">3 - <code class="language-plaintext highlighter-rouge">==</code></h3>
+<h3 id="3---">3 - <code class="language-plaintext highlighter-rouge">==</code>
+</h3>
 
 <p>Pour vérifier que deux objets sont égaux, on ne va pas passer son temps à vérifier que tous leurs attributs soient les même. On va le faire une fois pour toute (ce qui évite les duplications). On le rajoute donc dans le tbd :</p>
 
@@ -491,7 +497,8 @@ Prenez également une feuille de papier pour vos todos.</p>
 
 <p>Pourquoi on n’utiliserait pas <code class="language-plaintext highlighter-rouge">__mul__</code> ?</p>
 
-<h3 id="4---__mul__">4 - <code class="language-plaintext highlighter-rouge">__mul__</code></h3>
+<h3 id="4---__mul__">4 - <code class="language-plaintext highlighter-rouge">__mul__</code>
+</h3>
 
 <h4 id="tbd-7">tbd</h4>
 
@@ -710,12 +717,15 @@ Prenez également une feuille de papier pour vos todos.</p>
   <li>gestion des arrondis</li>
   <li><del><code class="language-plaintext highlighter-rouge">==</code></del></li>
   <li><code class="language-plaintext highlighter-rouge">== None</code></li>
-  <li><code class="language-plaintext highlighter-rouge">==</code> autre chose qu’un Dollar</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">==</code> autre chose qu’un Dollar</li>
   <li><del><code class="language-plaintext highlighter-rouge">__mul__</code></del></li>
   <li><del>5 CHF * 2 = 10CHF</del></li>
   <li>duplication Franc/dollar</li>
-  <li>même <code class="language-plaintext highlighter-rouge">==</code></li>
-  <li><code class="language-plaintext highlighter-rouge">*</code> presque identique.</li>
+  <li>même <code class="language-plaintext highlighter-rouge">==</code>
+</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">*</code> presque identique.</li>
 </ul>
 
 <h3 id="7---même---pour-tous">7 - même <code class="language-plaintext highlighter-rouge">==</code>  pour tous</h3>
@@ -730,12 +740,14 @@ Prenez également une feuille de papier pour vos todos.</p>
   <li>gestion des arrondis</li>
   <li><del><code class="language-plaintext highlighter-rouge">==</code></del></li>
   <li><code class="language-plaintext highlighter-rouge">== None</code></li>
-  <li><code class="language-plaintext highlighter-rouge">==</code> autre chose qu’un Dollar</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">==</code> autre chose qu’un Dollar</li>
   <li><del><code class="language-plaintext highlighter-rouge">__mul__</code></del></li>
   <li><del>5 CHF * 2 = 10CHF</del></li>
   <li>duplication Franc/dollar</li>
   <li><strong>même <code class="language-plaintext highlighter-rouge">==</code></strong></li>
-  <li><code class="language-plaintext highlighter-rouge">*</code> presque identique.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">*</code> presque identique.</li>
 </ul>
 
 <h4 id="-7">??</h4>
@@ -748,14 +760,17 @@ Prenez également une feuille de papier pour vos todos.</p>
 
 <ol>
   <li>ajout de la classe Money qui ne fait rien</li>
-  <li>ajout de money comme classe mère de <code class="language-plaintext highlighter-rouge">Franc</code> et <code class="language-plaintext highlighter-rouge">Dollar</code></li>
+  <li>ajout de money comme classe mère de <code class="language-plaintext highlighter-rouge">Franc</code> et <code class="language-plaintext highlighter-rouge">Dollar</code>
+</li>
 </ol>
 
 <p>Maintenant on va faire monter les méthodes identiques des classes filles à la classe mère.</p>
 
 <ol>
-  <li><code class="language-plaintext highlighter-rouge">__init__</code> est identique : on le remonte</li>
-  <li><code class="language-plaintext highlighter-rouge">__eq__</code> est identique : on ne peut cependant pas le remonter car on ne teste pas l’égalité des Francs entres eux.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">__init__</code> est identique : on le remonte</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">__eq__</code> est identique : on ne peut cependant pas le remonter car on ne teste pas l’égalité des Francs entres eux.</li>
   <li>on rajoute le test des Francs entres eux et on en profite pour rajouter un todo sur la comparaison entre Franc et Dollar. On ne le fait pas tout de suite car on a pas fini notre item. ON ne fait qu’une chose à la fois sinon plus rien ne fonctionne. On se rappelle qu’on ne <strong>code que sur du vert</strong>.</li>
   <li>on copie colle les tests du dollar</li>
 </ol>
@@ -820,7 +835,8 @@ Prenez également une feuille de papier pour vos todos.</p>
   <li><del>5 CHF * 2 = 10CHF</del></li>
   <li>duplication Franc/dollar</li>
   <li><del>même ==</del></li>
-  <li><code class="language-plaintext highlighter-rouge">*</code> presque identique.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">*</code> presque identique.</li>
   <li>compare Franc et Dollar</li>
 </ul>
 
@@ -841,7 +857,8 @@ Prenez également une feuille de papier pour vos todos.</p>
   <li><del>5 CHF * 2 = 10CHF</del></li>
   <li>duplication Franc/dollar</li>
   <li><del>même ==</del></li>
-  <li><code class="language-plaintext highlighter-rouge">*</code> presque identique.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">*</code> presque identique.</li>
   <li><strong>compare Franc et Dollar</strong></li>
 </ul>
 
@@ -913,7 +930,8 @@ Prenez également une feuille de papier pour vos todos.</p>
   <li><del>5 CHF * 2 = 10CHF</del></li>
   <li>duplication Franc/dollar</li>
   <li><del>même ==</del></li>
-  <li><code class="language-plaintext highlighter-rouge">*</code> presque identique.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">*</code> presque identique.</li>
   <li><del>compare Franc et Dollar</del></li>
   <li>utilisation de devise ?</li>
 </ul>
@@ -935,7 +953,8 @@ Prenez également une feuille de papier pour vos todos.</p>
   <li><del>5 CHF * 2 = 10CHF</del></li>
   <li><strong>duplication Franc/dollar</strong></li>
   <li><del>même ==</del></li>
-  <li><code class="language-plaintext highlighter-rouge">*</code> presque identique.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">*</code> presque identique.</li>
   <li><del>compare Franc et Dollar</del></li>
   <li>utilisation de devise ?</li>
 </ul>
@@ -1078,7 +1097,8 @@ Prenez également une feuille de papier pour vos todos.</p>
   <li><del>5 CHF * 2 = 10CHF</del></li>
   <li><strong>duplication Franc/dollar</strong></li>
   <li><del>même ==</del></li>
-  <li><code class="language-plaintext highlighter-rouge">*</code> presque identique.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">*</code> presque identique.</li>
   <li>compare Franc et Dollar</li>
   <li>utilisation de devise ?</li>
   <li>supprimer <code class="language-plaintext highlighter-rouge">test_franc_multiplication</code> ?</li>
@@ -1414,7 +1434,8 @@ Prenez également une feuille de papier pour vos todos.</p>
 
 <p>Ici, utiliser une tâche annexe (les devises) nous a permis d’avancer vers notre but : supprimer les sous classes.</p>
 
-<h3 id="11----unification-de-">11 -  unification de <code class="language-plaintext highlighter-rouge">*</code></h3>
+<h3 id="11----unification-de-">11 -  unification de <code class="language-plaintext highlighter-rouge">*</code>
+</h3>
 
 <p>Tout est prêt pour unifier les <code class="language-plaintext highlighter-rouge">__mul__</code> et ainsi faire disparaitre les dernières différences entre les 2 classes.</p>
 
@@ -1721,7 +1742,8 @@ Prenez également une feuille de papier pour vos todos.</p>
 <p>Commençons par écrire un test permettant de tester que $5 + $5 = $10 en supposant que :</p>
 
 <ul>
-  <li>on utilise la méthode <code class="language-plaintext highlighter-rouge">plus</code> de <code class="language-plaintext highlighter-rouge">Money</code> qui rend un objet <code class="language-plaintext highlighter-rouge">Money</code></li>
+  <li>on utilise la méthode <code class="language-plaintext highlighter-rouge">plus</code> de <code class="language-plaintext highlighter-rouge">Money</code> qui rend un objet <code class="language-plaintext highlighter-rouge">Money</code>
+</li>
   <li>les objets de la classe <code class="language-plaintext highlighter-rouge">Money</code> sont toujours non mutables</li>
 </ul>
 
@@ -1903,7 +1925,8 @@ Prenez également une feuille de papier pour vos todos.</p>
 <ul>
   <li>$5 + 2.5CHF = $10 si le taux de change est 1:.5</li>
   <li><strong>$5 + $5 = quelque chose qui correspond à $10</strong></li>
-  <li>$5 + $5 devrait rendre une <code class="language-plaintext highlighter-rouge">Money</code></li>
+  <li>$5 + $5 devrait rendre une <code class="language-plaintext highlighter-rouge">Money</code>
+</li>
   <li><code class="language-plaintext highlighter-rouge">Bank.reduce(Money)</code></li>
 </ul>
 
@@ -2155,19 +2178,21 @@ Par exemple le test suivant doit passer :</p>
 
   <div class="wrapper">
 
-    <h2 class="footer-heading">cours d&#39;informatique</h2>
+    <h2 class="footer-heading">cours d'informatique</h2>
 
     <div class="footer-col-wrapper">
       <div class="footer-col footer-col-1">
         <ul class="contact-list">
-          <li class="p-name">cours d&#39;informatique</li></ul>
+          <li class="p-name">cours d'informatique</li>
+</ul>
       </div>
 
-      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+      <div class="footer-col footer-col-2">
+<ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
 </div>
 
       <div class="footer-col footer-col-3">
-        <p>Support de cours/td d&#39;informatique à l&#39;école centrale marseille.</p>
+        <p>Support de cours/td d'informatique à l'école centrale marseille.</p>
       </div>
     </div>
 
