@@ -1,10 +1,13 @@
 ---
 layout: page
-title:  "Algorithme : code"
+title:  "Théorie et pratiques algorithmique : coder"
 category: cours
 ---
 
-> [Théorie et pratiques algorithmique]({% link cours/theorie-pratiques-algorithmique/index.md %}) / [algorithme]({% link cours/theorie-pratiques-algorithmique/1-algorithme/index.md %}) / [code]({% link cours/theorie-pratiques-algorithmique/1-algorithme/code.md %})
+> [Théorie et pratiques algorithmique]({% link cours/theorie-pratiques-algorithmique/index.md %}) / [coder]({% link cours/theorie-pratiques-algorithmique/coder/index.md %}) / [code]({% link cours/theorie-pratiques-algorithmique/coder/code.md %})
+> prérequis :
+>
+>* [algorithmie/pseudo-code]({% link cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.md %})
 {: .chemin}
 
 Pour que l'algorithme soit implémentable pour de vrai, il est nécessaire que sa description soit facilement transposable d'une langue à un langage de programmation.
@@ -17,9 +20,12 @@ attention : les réels n'existent pas en vrai !
 
 ## code
 
-Le code est le passage d'un algorithme *papier* à un programme informatique ou la modification d'un code existant. La seconde partie étant celle que vous ferez le plus souvent : On passe son temps à modifier du code plutôt que d'implémenter des algorithme (c'est ce que l'on appelle le refactoring). 
+Le code est le passage d'un algorithme *papier* à un programme informatique ou la modification d'un code existant. La seconde partie étant celle que vous ferez le plus souvent : On passe son temps à modifier du code plutôt que d'implémenter des algorithme (c'est ce que l'on appelle le refactoring).
 
-Il en découle que **Vous allez passer plus de temps à lire du code qu'à en écrire.** 
+Il en découle que :
+
+> **Vous allez passer plus de temps à lire du code qu'à en écrire.**
+{: .code}
 
 Comme il faut que : *ce qui se fait souvent doit se faire rapidement*, on utilisera une série de règles pour lire aisément son code et se faire comprendre aisément de ses partenaires.
 On ne doit pas passer 5min à chaque lecture pour comprendre ce que fait l'algorithme à son organisation ou se questionner s'il fonctionne, il faut pouvoir aller rapidement là où l'on veut modifier son code et comprendre aisément comment le modifier.
@@ -30,7 +36,7 @@ Ce principe est appelé le  [KISS](https://fr.wikipedia.org/wiki/Principe_KISS).
 * lisibilité: coding style
 * tests
 
-#### noms explicites et découpage fonctionnel 
+#### noms explicites et découpage fonctionnel
 
 * des noms de variables **explicites** 
 * on préfèrera des **petites fonctions/méthodes** avec noms explicites à de nombreuses lignes de code

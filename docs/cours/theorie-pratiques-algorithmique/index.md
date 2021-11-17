@@ -41,21 +41,271 @@ Vous devez dans l'idéal être administrateur de votre ordinateur et avoir fait 
   * les entiers
   * fonctions et bijections entre ensembles
 
-## plan
+## parties
 
-Chaque partie possède une partie théorique, une partie algorithmique et une partie pratique. Elles se suivent plus ou moins, il est donc préférable de les faire dans l'ordre.
+Ce cours est composée de trois grandes parties qui s'enchevêtrent.
 
-1. [un algorithme ?]({% link cours/theorie-pratiques-algorithmique/1-algorithme/index.md %}). On y verra les notions de pseudo-code $\vert$ calcul $\vert$  code.
-2. complexité max/min $\vert$  preuve d'algorithme $\vert$  complexité temporelle du code
-3. complexité en moyenne $\vert$  complexité d'un problème $\vert$  tri rapide et tri fusion
-4. XXX $\vert$  suite pseudo-aléatoire $\vert$  ordre et désordre
-5. algorithmes gloutons $\vert$  P et NP $\vert$  XXX
-6. programmation dynamique $\vert$  réduction $\vert$  le sac à dos dans tous ses états
-7. complexité amortie $\vert$  XXX $\vert$  dictionnaires
-8. objets et espaces de noms $\vert$  XXX $\vert$  introduction à la programmation objet en python
-9. algorithmes de recherche sur les chaines de caractères $\vert$  automates $\vert$  fichiers textes
+### algorithmie
+
+1. [un algorithme ?]({% link cours/theorie-pratiques-algorithmique/algorithmie/algorithmes.md %})
+2. [pseudo-code]({% link cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.md %})
+
+### théorie
+
+1. [calcul ?]({% link cours/theorie-pratiques-algorithmique/theorie/calcul.md %})
+2. [machines de Turing]({% link cours/theorie-pratiques-algorithmique/theorie/machine-turing.md %})
+3. [calculabilité]({% link cours/theorie-pratiques-algorithmique/theorie/calculabilite.md %})
+
+### coder
+
+1. [code]({% link cours/theorie-pratiques-algorithmique/coder/code.md %})
 
 ## TBD
 
 * connaitre les bases d'un système d'exploitation, [les fichiers et les dossiers]({% post_url tutos/systeme/2021-08-24-fichiers-navigation %})
 * avoir accès à un [terminal]({% post_url tutos/systeme/2021-08-24-terminal %})
+
+## structure
+
+<div id="graph">
+  <style>
+
+  .links line {
+    stroke: #999;
+    stroke-opacity: 0.6;
+    stroke-width: 1px;
+    marker-end: url(#end-arrow);
+  }
+
+  .nodes circle {
+    stroke: #fff;
+    stroke-width: 1.5px;
+  }
+
+  text {
+    font-family: sans-serif;
+  }
+
+  </style>
+  <svg id="dessin" style="width:100%;"></svg>
+</div>
+
+
+
+<script src="https://d3js.org/d3.v7.min.js"></script>
+
+<script>
+var svg = d3.select('#dessin');
+
+var width = svg.node().getBoundingClientRect().width,
+    height = width
+
+svg.style("height", height)
+</script>
+
+<script> 
+  // data
+var graph = {
+  nodes: [],
+  links: []
+}
+
+var groups = {
+  theorie: 1,
+  algorithmie: 2,
+  code: 3,
+  autre: 4,
+}
+
+graph.nodes.push({
+  id: 'Algorithmie',
+  link: "{% link cours/theorie-pratiques-algorithmique/algorithmie/index.md %}",
+  group: groups.algorithmie,
+  root: true,
+  fx: 0.1 * width,
+  fy: 0.1 * height,
+})
+
+graph.nodes.push({
+  id: 'Coder',
+  link: "{% link cours/theorie-pratiques-algorithmique/coder/index.md %}",
+  group: groups.code,
+  root: true,
+  fx: 0.5 * width,
+  fy: 0.1 * height,
+})
+
+graph.nodes.push({
+  id: 'Théorie',
+  link: "{% link cours/theorie-pratiques-algorithmique/theorie/index.md %}",
+  group: groups.theorie,
+  root: true,
+  fx: 0.9 * width,
+  fy: 0.1 * height,
+})
+
+graph.nodes.push({
+  id: 'algorithme ?',
+  link: "{% link cours/theorie-pratiques-algorithmique/algorithmie/algorithmes.md %}",
+  group: groups.algorithmie
+})
+graph.links.push({
+  source: 'Algorithmie',
+  target: 'algorithme ?'
+})
+
+graph.nodes.push({
+  id: 'pseudo-code',
+  link: "{% link cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.md %}",
+  group: groups.algorithmie
+})
+graph.links.push({
+  source: 'algorithme ?',
+  target: 'pseudo-code'
+})
+
+graph.nodes.push({
+  id: 'code',
+  link: "{% link cours/theorie-pratiques-algorithmique/coder/code.md %}",
+  group: groups.code
+})
+graph.links.push({
+  source: 'Coder',
+  target: 'code'
+})
+
+graph.links.push({
+  source: 'pseudo-code',
+  target: 'code'
+})
+
+graph.nodes.push({
+  id: 'calcul ?',
+  link: "{% link cours/theorie-pratiques-algorithmique/theorie/calcul.md %}",
+  group: groups.theorie
+})
+graph.links.push({
+  source: 'Théorie',
+  target: 'calcul ?'
+})
+
+graph.nodes.push({
+  id: 'machine de Turing',
+  link: "{% link cours/theorie-pratiques-algorithmique/theorie/machine-turing.md %}",
+  group: groups.theorie
+})
+graph.links.push({
+  source: 'calcul ?',
+  target: 'machine de Turing'
+})
+
+</script>
+<script>
+var color = d3.scaleOrdinal(d3.schemeCategory10);
+
+svg.append("rect")
+    .attr("width", "100%")
+    .attr("height", "100%")
+    .attr("fill", "#EEE6FA");
+
+// define arrow markers for graph links
+svg.append("svg:defs").append("svg:marker")
+  .attr("id", "end-arrow")
+  .attr("viewBox", "0 -5 20 10")
+  .attr("refX", 25)
+  .attr("markerWidth", 20)
+  .attr("markerHeight", 20)
+  .attr("orient", "auto")
+  .append("svg:path")
+  .attr("d", "M0,-5L20,0L0,5")
+  .attr("fill", "#000");
+
+var simulation = d3.forceSimulation()
+    .force("link", d3.forceLink().id(d => { return d.id; }))
+    .force("charge", d3.forceManyBody())
+    .force("center", d3.forceCenter(width / 2, height / 2));
+
+var link = svg.append("g")
+      .attr("class", "links")
+    .selectAll("line")
+    .data(graph.links)
+    .enter().append("line");
+
+  var node = svg.append("g")
+      .attr("class", "nodes")
+    .selectAll("g")
+    .data(graph.nodes)
+    .enter().append("g")
+    .attr("fx", d => {return d.fx})
+    .attr("fy", d => {return d.fy})
+
+  node.append("a")
+    .attr("xlink:href", d => { return d.link})
+    .append("circle")
+    .attr("r", 5)
+    .attr("fill", function(d) { return color(d.group); })
+
+  node.append("a")
+    .attr("xlink:href", d => { return d.link})
+    .append("text")
+      .text(function(d) {
+        return d.id;
+      })
+      .attr('x', 6)
+      .attr('y', 3)
+      .style('fill', d => { if (d.root) {return color(d.group)} else { return 'black'}})
+
+  // Create a drag handler and append it to the node object instead
+  var drag_handler = d3.drag()
+      .on("start", dragstarted)
+      .on("drag", dragged)
+      .on("end", dragended)
+
+  drag_handler(node);
+  
+  node.on("click", clicked);
+
+  simulation
+      .nodes(graph.nodes)
+      .on("tick", ticked);
+
+  simulation.force("link")
+      .links(graph.links);
+
+  function ticked() {
+    link
+        .attr("x1", function(d) { return d.source.x; })
+        .attr("y1", function(d) { return d.source.y; })
+        .attr("x2", function(d) { return d.target.x; })
+        .attr("y2", function(d) { return d.target.y; });
+
+    node
+        .attr("transform", function(d) {
+          return "translate(" + d.x + "," + d.y + ")";
+        })
+  }
+
+  function dragstarted(event, d) {
+    if (!event.active) simulation.alphaTarget(0.3).restart();
+    d.fx = d.x;
+    d.fy = d.y;
+  }
+
+  function dragged(event, d) {
+    d.fx = event.x;
+    d.fy = event.y;
+  }
+
+  function dragended(event, d) {
+    // if (!event.active) simulation.alphaTarget(0);
+    d.fx = Math.max(0, d.fx);
+    d.fx = Math.min(width, d.fx);
+
+    d.fy = Math.max(0, d.fy);
+    d.fy = Math.min(height, d.fy);
+  }
+  function clicked(event, d) {
+    console.log(d)
+  }
+
+</script>

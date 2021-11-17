@@ -1,10 +1,10 @@
 ---
 layout: page
-title:  "Algorithme"
+title:  "Théorie et pratiques algorithmique : algorithmie / algorithmes"
 category: cours
 ---
 
-> [Théorie et pratiques algorithmique]({% link cours/theorie-pratiques-algorithmique/index.md %}) / [algorithme]({% link cours/theorie-pratiques-algorithmique/1-algorithme/index.md %})
+> [Théorie et pratiques algorithmique]({% link cours/theorie-pratiques-algorithmique/index.md %}) / [algorithme]({% link cours/theorie-pratiques-algorithmique/algorithmie/index.md %}) / [algorithmes]({% link cours/theorie-pratiques-algorithmique/algorithmie/algorithmes.md %})
 {: .chemin}
 
 * algorithmie : pseudo-code
@@ -61,8 +61,4 @@ On voit en creux que des notions de **vérification** (caractériser la sortie) 
 
 ## plan
 
-La suite de cette partie va être consacrée à préciser les notions d'actions (qu'ai-je le droit d'utiliser ?), de calcul (que fait un algorithme) et de code (comment exécuter sur un ordinateur un algorithme).
-
-1. [pseudo-code]({% link cours/theorie-pratiques-algorithmique/1-algorithme/pseudo-code.md %})
-2. [calculs]({% link cours/theorie-pratiques-algorithmique/1-algorithme/calcul.md %})
-3. [code]({% link cours/theorie-pratiques-algorithmique/1-algorithme/code.md %})
+La suite de cette partie va être consacrée à préciser les notions [d'actions]({% link cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.md %}) (qu'ai-je le droit d'utiliser ?), de [calcul]({% link cours/theorie-pratiques-algorithmique/theorie/calcul.md %}) (que fait un algorithme) et de [code]({% link cours/theorie-pratiques-algorithmique/coder/code.md %}) (comment exécuter sur un ordinateur un algorithme).

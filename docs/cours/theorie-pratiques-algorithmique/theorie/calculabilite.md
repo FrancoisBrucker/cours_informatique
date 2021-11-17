@@ -4,7 +4,11 @@ title:  "Algorithme : machine de Turing calculs ?"
 category: cours
 ---
 
-> [Théorie et pratiques algorithmique]({% link cours/theorie-pratiques-algorithmique/index.md %}) / [algorithme]({% link cours/theorie-pratiques-algorithmique/1-algorithme/index.md %}) / [machine de turing]({% link cours/theorie-pratiques-algorithmique/1-algorithme/machine-turing.md %})
+> [Théorie et pratiques algorithmique]({% link cours/theorie-pratiques-algorithmique/index.md %}) / [théorie]({% link cours/theorie-pratiques-algorithmique/theorie/index.md %}) / [calculabilité]({% link cours/theorie-pratiques-algorithmique/theorie/calculabilite.md %})
+>
+>prérequis :
+>
+>* [théorie / machine de turing]({% link cours/theorie-pratiques-algorithmique/theorie/machine-turing.md %})
 {: .chemin}
 
 

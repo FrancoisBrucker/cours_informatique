@@ -1,10 +1,14 @@
 ---
 layout: page
-title:  "algorithme : pseudo-code"
+title:  "Théorie et pratiques algorithmique : algorithmie / pseudo-code"
 category: cours
 ---
 
-> [Théorie et pratiques algorithmique]({% link cours/theorie-pratiques-algorithmique/index.md %}) / [algorithme]({% link cours/theorie-pratiques-algorithmique/1-algorithme/index.md %}) / [pseudo-code]({% link cours/theorie-pratiques-algorithmique/1-algorithme/pseudo-code.md %})
+> [Théorie et pratiques algorithmique]({% link cours/theorie-pratiques-algorithmique/index.md %}) / [algorithmie]({% link cours/theorie-pratiques-algorithmique/algorithmie/index.md %}) / [pseudo-code]({% link cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.md %})
+>
+> prérequis
+>
+>* [algorithmie/algorithmes]({% link cours/theorie-pratiques-algorithmique/algorithmie/algorithmes.md %})
 {: .chemin}
 
 Le pseudo-code est la version papier d'un algorithme. Il décrit les différentes étapes permettant de dérouler un algorithme de son initialisation à son retour. Son but est d'être compréhensible par un humain. Ce n'est cependant pas une langue car il n'y a pas de place pour l'ambiguïté ni les inventions : tout doit y être rigoureusement défini, et chaque étape élémentaire doit être réalisable par un humain. Ce n'est pas un plus un langage informatique dont le but est d'être compris par un ordinateur.

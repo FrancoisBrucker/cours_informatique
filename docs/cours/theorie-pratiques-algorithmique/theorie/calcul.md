@@ -4,10 +4,14 @@ title:  "Algorithme : calcul"
 category: cours
 ---
 
-> [Théorie et pratiques algorithmique]({% link cours/theorie-pratiques-algorithmique/index.md %}) / [algorithme]({% link cours/theorie-pratiques-algorithmique/1-algorithme/index.md %}) / [calcul]({% link cours/theorie-pratiques-algorithmique/1-algorithme/calcul.md %})
+> [Théorie et pratiques algorithmique]({% link cours/theorie-pratiques-algorithmique/index.md %}) / [théorie]({% link cours/theorie-pratiques-algorithmique/theorie/index.md %}) / [calcul]({% link cours/theorie-pratiques-algorithmique/theorie/calcul.md %})
+>
+> prérequis :
+>
+>* [algorithmie/pseudo-code]({% link cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.md %})
 {: .chemin}
 
-Dans [la partie précédente]({% link cours/theorie-pratiques-algorithmique/1-algorithme/pseudo-code.md %}), on a donné une façon d'écrire des pseudo-codes. Mais est-ce la seule façon de faire ? Et, au final, que peut-on réellement faire avec un algorithme ?
+Dans [la partie précédente]({% link cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.md %}), on a donné une façon d'écrire des pseudo-codes. Mais est-ce la seule façon de faire ? Et, au final, que peut-on réellement faire avec un algorithme ?
 
 ## algorithmes et fonctions
 
@@ -15,7 +19,7 @@ On va montrer qu'un algorithme peut être vu comme une fonction particulière.
 
 ### règles d'un algorithme {#regles-generales}
 
-Un algorithme, [on l'a vu]({% link cours/theorie-pratiques-algorithmique/1-algorithme/index.md %}#algorithme), est un ensemble de règles propre à un **calcul**. La [définition de calcul](https://dictionnaire.lerobert.com/definition/calcul) du Petit Robert est cependant très générale et ne pose pas vraiment la question du choix des règles, de comment réaliser effectivement ce calcul. On s'accorde (voir [la page wikipedia sur la calculabilité](https://fr.wikipedia.org/wiki/Th%C3%A8se_de_Church#Formulation_de_la_th%C3%A8se)) à garder **4 règles générales** :
+Un algorithme, [on l'a vu]({% link cours/theorie-pratiques-algorithmique/algorithmie/algorithmes.md %}#algorithme), est un ensemble de règles propre à un **calcul**. La [définition de calcul](https://dictionnaire.lerobert.com/definition/calcul) du Petit Robert est cependant très générale et ne pose pas vraiment la question du choix des règles, de comment réaliser effectivement ce calcul. On s'accorde (voir [la page wikipedia sur la calculabilité](https://fr.wikipedia.org/wiki/Th%C3%A8se_de_Church#Formulation_de_la_th%C3%A8se)) à garder **4 règles générales** :
 
 1. un algorithme possède un ensemble fini de règles, décrites avec un nombre fini de symboles
 2. si l'algorithme produit un résultat cela doit être fait après un nombre fini d'étapes
@@ -36,7 +40,7 @@ Ce n'est pas bien grave en général puisque les lois physiques sont presque tou
 Fini ne veut pas dire petit nombres. Un algorithme peut utiliser des nombres entiers aussi grand qu'il le veut, du moment qu'ils ne soient pas infini
 {: .attention}
 
->Les règles que l'on a défini [précédemment]({% link cours/theorie-pratiques-algorithmique/1-algorithme/pseudo-code.md %}#regles) pour écrire un pseudo-code respectent alors les règles ci-dessus si on enlève les réels comme objets basique. On peut même se restreindre [sans perte de généralité](https://en.wikipedia.org/wiki/Structured_program_theorem) (même si ce sera plus compliqué d'écrire le code) aux règles suivantes (il n'y a même pas besoin de récursivité) :
+>Les règles que l'on a défini [précédemment]({% link cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.md %}#regles) pour écrire un pseudo-code respectent alors les règles ci-dessus si on enlève les réels comme objets basique. On peut même se restreindre [sans perte de généralité](https://en.wikipedia.org/wiki/Structured_program_theorem) (même si ce sera plus compliqué d'écrire le code) aux règles suivantes (il n'y a même pas besoin de récursivité) :
 >
 > * de lire et d'affecter des entiers à des variables
 > * d'avoir un test d'égalité entre deux variables
@@ -45,7 +49,7 @@ Fini ne veut pas dire petit nombres. Un algorithme peut utiliser des nombres ent
 > * exécuter un bloc d'instructions tant qu'un test d'égalité est vraie
 {: .note}
 
-Tous les pseudo-code utilisant les 5 règles ci-dessus auront la même expressivité (on pourra faire exactement les même choses) que ceux utilisant [les règles]({% link cours/theorie-pratiques-algorithmique/1-algorithme/pseudo-code.md %}#regles) utilisées couramment.
+Tous les pseudo-code utilisant les 5 règles ci-dessus auront la même expressivité (on pourra faire exactement les même choses) que ceux utilisant [les règles]({% link cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.md %}#regles) utilisées couramment.
 
 On pense même (c'est ce qu'on appelle la [thèse de Church-Turing](https://fr.wikipedia.org/wiki/Th%C3%A8se_de_Church)) que quelque soit les règles qu'on va se donner, du moment qu'elles respectent les 4 règles générales, alors on ne pourra pas calculer plus de choses.
 
@@ -223,6 +227,6 @@ Ceci signifie que l'on doit toujours utiliser le formalisme (ou langage) qui est
 
 * d'algorithmie : on utilisera les mots du pseudo-code les plus adaptés, dans le respect des 4 règles fondamentales (chaque instruction doit être simple ou explicitée)
 * de code : on utilisera le langage qui est plus adapté à notre problème car ils ont tous leurs spécificités. Il est donc impératif d'apprendre plus d'un langage et surtout d'apprendre à en changer quand on change de problème à résoudre.
-* théorique : on utilisera [la machine de Turing]({% link cours/theorie-pratiques-algorithmique/1-algorithme/machine-turing.md %}), modèle théorique simple qui permet d'appréhender tout ce qui est calculable.
+* théorique : on utilisera [la machine de Turing]({% link cours/theorie-pratiques-algorithmique/theorie/machine-turing.md %}), modèle théorique simple qui permet d'appréhender tout ce qui est calculable.
 
 Enfin, faites attention aux réels ! Ils n'existent pas (en informatique). Vous ne manipulez que des approximations : il faut faire attention à la stabilité numérique de vos algorithme et ne **jamais** tester l'égalité entre deux réels mais **toujours** les comparer à epsilon prêt.
