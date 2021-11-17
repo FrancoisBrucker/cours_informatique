@@ -62,3 +62,18 @@ blockquote.a-faire::before {
 details.a-faire {
   color: #FAA600;
 }
+
+a:not([class]), a:not([class]):visited {
+	text-decoration: none;
+	color: #629FDE;
+	border-bottom: 1px dotted #629FDE;  
+}
+a:not([class]):hover {
+	color: #6874DE;
+  font-weight: bold;
+	border-bottom: 1px solid #6874DE;
+}
+a:not([class]):active {
+	color: #6874DE;
+	border-bottom: 3px solid #6874DE;
+}
