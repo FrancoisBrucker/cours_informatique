@@ -109,6 +109,11 @@ app.get(encodeURI('/prénom'), (req, res) => {
 
 ## intégration au html
 
+> TBD :
+> expliquer mieux fetch, son retour et ce qu'est une promesse.
+>
+{: . note}
+
 Pour récupérer ce json dans le fichier html, il faut que l'on envoie une requête avec la query lorsque l'on clique sur le bouton et que l'on attende la réponse du serveur avant de changer la valeur dans le paragraphe.
 
 Ceci peut se faire simplement avec un petit bout de javascript côté client, en utilisant la fonction [fetch](https://developer.mozilla.org/fr/docs/Web/API/Fetch_API/Using_Fetch), très pratique, qui permet de récupérer des choses sur internet avec des [promesses](https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Using_promises) :
