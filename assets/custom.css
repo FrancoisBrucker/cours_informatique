@@ -16,7 +16,7 @@ blockquote:last-child {
 
 blockquote.note {
   color: #37373D;
-  border-left: 4px solid #37373D;
+  border-left: 20px solid #4f4f64;
 }
 
 blockquote.attention {

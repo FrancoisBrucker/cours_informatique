@@ -83,84 +83,112 @@
 
 <p>Comme il faut que : <em>ce qui se fait souvent doit se faire rapidement</em>, on utilisera une série de règles pour lire aisément son code et — surtout — se faire comprendre aisément de ses partenaires.</p>
 
-<blockquote>
-  <p>Ces règles sont appelées des <strong>coding mantra</strong>. Comme toutes les règles, il ne faut pas apprendre ce qu’elle dit, mais pourquoi elle le dit.</p>
-</blockquote>
+<p>Ces règles sont appelées des <strong>coding mantra</strong>. Comme toutes les règles, il ne faut pas apprendre ce qu’elle dit, mais pourquoi elle le dit. Par exemple : on ne doit pas passer du temps à chaque lecture pour comprendre ce que fait un bout de code, comment il est organisé ou encore se questionner pour savoir s’il fonctionne : il faut pouvoir aller rapidement là où l’on veut modifier son code et comprendre aisément comment le modifier.</p>
 
-<p>Lorsque l’on code, on ne doit pas passer cinq minutes à chaque lecture pour comprendre ce que fait un bout de code, comment il est organisé ou encore se questionner pour savoir s’il fonctionne : il faut pouvoir aller rapidement là où l’on veut modifier son code et comprendre aisément comment le modifier.</p>
-
-<blockquote class="note">
-  <p>Le mantra associé est le <a href="https://fr.wikipedia.org/wiki/Principe_KISS">KISS</a>. Il en découle trois pratiques :</p>
-
-  <ul>
-    <li>noms explicites et découpage fonctionnel</li>
-    <li>lisibilité: coding style</li>
-    <li>tests</li>
-  </ul>
-</blockquote>
+<p>Nous allons maintenant lister les bonnes pratiques fondamentales à posséder lorsque l’on code.</p>
 
 <blockquote>
-  <p>TBD :</p>
-
-  <p>Pour que l’algorithme soit implémentable pour de vrai, il est nécessaire que sa description soit facilement transposable d’une langue à un langage de programmation.</p>
-
-  <p>attention : les réels n’existent pas en vrai !</p>
+  <p>Les différentes méthodes et mantra que l’on va voir sont issues de l’<a href="https://fr.wikipedia.org/wiki/Extreme_programming">XP</a>, qui date des années 2000 mais dont on à l’impression qu’elle a été écrite hier (voir demain tellement elle est encore novatrice).</p>
 </blockquote>
 
-<h4 id="noms-explicites-et-découpage-fonctionnel">noms explicites et découpage fonctionnel</h4>
+<h2 id="noms-explicites-et-découpage-fonctionnel">noms explicites et découpage fonctionnel</h2>
 
 <ul>
   <li>des noms de variables <strong>explicites</strong>
 </li>
-  <li>on préfèrera des <strong>petites fonctions/méthodes</strong> avec noms explicites à de nombreuses lignes de code</li>
+  <li>on préfèrera de <strong>petites fonctions/méthodes</strong> avec noms explicites à de nombreuses lignes de code</li>
 </ul>
 
-<p>On ne mettra <strong>PAS</strong> de commentaires partout !</p>
+<p>Ceci permet de lire le code comme on lirait un texte, ce qui permet de rapidement comprendre ce qu’il fait, juste en le lisant. Les petites fonctions sont de plus facilement modifiables et testables.</p>
+
+<p>Le découpage fonctionnel de votre code permet d’éviter la duplication de code, qui est un mal absolu en code. Si l’on copie/colle du code et qu’il y a un bug ou qu’on veut modifier le fonctionnement de ce code, il faudra se rappeler de tous les endroits où le code a été copié, ce qui est impossible ! De plus, cela rend votre code peu lisible.</p>
+
+<blockquote class="code">
+  <p>Mantra <a href="https://fr.wikipedia.org/wiki/Ne_vous_r%C3%A9p%C3%A9tez_pas">DRY</a></p>
+</blockquote>
+
+<p>On saura que le code est ok lorsqu’il ne nécessitera <strong>pas</strong> de commentaires pour être compris. Ils sont en effet remplacé par des noms de variables explicites et les noms de fonctions qui doivent expliquer ce qu’elles font.</p>
+
+<blockquote class="note">
+  <p>Mantra <a href="https://www.developpez.com/actu/150066/Programmation-quand-faut-il-commenter-son-code-Google-s-invite-dans-le-debat-et-montre-que-les-commentaires-peuvent-tres-souvent-etre-evites/">NO COMMENTS !</a></p>
+</blockquote>
+
+<p>En plus d’être inutile :</p>
 
 <ul>
-  <li>souvent on modifie le code et pas le commentaire, au bout d’un moment le commentaire n’est donc plus en relation avec le code : au lieu d’aider à comprendre, il confuse : <strong>un commentaire est donc tôt ou tard un mensonge</strong>
+  <li>
+<strong>les commentaires sont souvent des mensonges</strong> : comme le commentaire n’est pas du code, lorsque l’on modifie le code on <em>oublie</em> de changer le commentaire. Au bout d’un moment le commentaire n’est donc plus en relation avec le code : au lieu d’aider à comprendre, il confuse : <strong>un commentaire est donc tôt ou tard un mensonge</strong>
 </li>
-  <li>s’il y a plein de commentaire, on ne les lira plus. Un commentaire se doit d’être rare. S’il est là c’est que l’on a pas pu faire autrement, vous n’en aure pas besoin den 99% des cas…</li>
+  <li>
+<strong>ils cachent la difficulté</strong>. S’il y a plein de commentaire, on ne les lira plus. Un commentaire se doit d’être rare. S’il est là c’est que l’on a pas vraiment pu faire autrement. Vous n’en aurez pas besoin dans 99% des cas…</li>
 </ul>
 
-<p>Une structuration adaptée et des bons noms permettent de se <a href="https://www.developpez.com/actu/150066/Programmation-quand-faut-il-commenter-son-code-Google-s-invite-dans-le-debat-et-montre-que-les-commentaires-peuvent-tres-souvent-etre-evites/">passer de commentaires</a></p>
-
-<blockquote>
-  <p><strong>Attention</strong> : commentaire != documentation (recopiez le 10 000 fois)</p>
-</blockquote>
+<p>Attention cependant, commentaires != documentation :</p>
 
 <ul>
   <li>Si votre code est destiné à être utilisé uniquement par vous ou votre équipe, on n’a pas besoin de le documenter. Son organisation et son écriture doit se suffire à lui-même.</li>
-  <li>si votre code va être utilisé par des inconnus (lorsque vous créez une API par exemple), les fonctions publiques doivent être documentées. Un utilisateur doit pouvoir utiliser votre code sans effort.</li>
+  <li>si votre code va être utilisé par des inconnus (lorsque vous créez une <a href="https://fr.wikipedia.org/wiki/Biblioth%C3%A8que_logicielle">bibliothèque</a> par exemple), les fonctions publiques doivent être documentées. Un utilisateur doit pouvoir utiliser votre code sans effort.</li>
 </ul>
 
-<h4 id="lisibilité">lisibilité</h4>
+<p>Lorsque l’on utilise une <a href="https://fr.wikipedia.org/wiki/Interface_de_programmation">API</a>, on a en effet jamais accès aux corps des méthodes, mais juste à leurs noms : : on a besoin de savoir comment elle fonctionne sans en connaitre le corps :</p>
 
-<p>Un code est fait pour être relu et amélioré. On doit donc privilégier la lecture à son écriture. Pour que votre équipe ou vous puissiez le relire plus tard sans faire d’effort de compréhension.</p>
+<blockquote class="note">
+  <p>Toutes les méthodes destinées à être utilisées par des clients/utilisateurs différents de l’équipe de développement doivent être documentées.</p>
+</blockquote>
+
+<h2 id="lisibilité">lisibilité</h2>
+
+<p>Un code est fait pour être relu et amélioré. On doit donc privilégier la lecture à son écriture. Pour que votre équipe ou vous même puissiez le relire plus tard sans faire d’effort de compréhension.</p>
 
 <blockquote>
   <p><strong>Ecrire du code n’est pas un concours d’érudition.</strong></p>
 </blockquote>
 
-<ul>
-  <li>écriture claire du code : si on a le choix entre écrire du code utilisant des subtilités mais difficile à comprendre ou du code plus basique mais lisible on choisira <strong>TOUJOURS</strong> le code lisible.</li>
-  <li>coding style : style commun à toute l’équipe de développement. Par défaut on utilise le standard du langage. En python, c’est la  <a href="https://www.python.org/dev/peps/pep-0008/">PEP8</a> : http://sametmax.com/le-pep8-en-resume/</li>
-</ul>
+<p>Ecriture claire du code : si on a le choix entre écrire du code utilisant des subtilités mais difficile à comprendre ou du code plus basique mais lisible on choisira <strong>TOUJOURS</strong> le code lisible.</p>
 
-<h4 id="tests">tests</h4>
+<blockquote class="note">
+  <p>Mantra : <a href="https://fr.wikipedia.org/wiki/Principe_KISS">KISS</a></p>
+</blockquote>
+
+<p>Si le fond doit être simple, la forme du code est importante aussi. Il se doit d’être agréable à lire et homogène. L’équipe de développement doit se mettre d’accord sur un <a href="https://fr.wikipedia.org/wiki/Style_de_programmation">coding style</a>. Par défaut on utilise le standard du langage. En python, c’est la  <a href="https://www.python.org/dev/peps/pep-0008/">PEP8</a></p>
+
+<blockquote class="code">
+  <p>Utilisez un style de programmation homogène pour faciliter la lecture de code. Si possible, automatisez ce processus avec un outil automatique de formatage de code.</p>
+</blockquote>
+
+<h2 id="efficacité">efficacité</h2>
+
+<p>On ne dois jamais coder de choses inutiles : tout bout de code doit être utilisé au moment où il est écrit. On ne codera jamais de fonctionnalités qui vont être utiles plus tard (car “plus tard” le code ne sera plus le même et l’intégration de la fonctionnalité ne sera pas immédiate et, vraisemblablement, les besoins auront changés et l’instant “plus tard” n’arrivera jamais) et tout code qui n’est plus utile est immédiatement supprimé (pour les mêmes raisons).</p>
+
+<blockquote>
+  <p>Mantra : <a href="https://fr.wikipedia.org/wiki/YAGNI">YAGNI</a></p>
+</blockquote>
+
+<h2 id="tests">tests</h2>
 
 <p>Pour s’assurer que notre code fait bien ce qu’il est sensé faire, on effectuera des <strong>tests</strong>. C’est le pendant code de la preuve d’un algorithme.</p>
 
-<p>Comme on passe son temps à modifier son code, il est nécessaire de conserver ses tests pour pouvoir les exéctuer très souvent et vérifier que son code continue de fonctionner.</p>
+<p>Comme on passe son temps à modifier son code, il est nécessaire de conserver ses tests pour pouvoir les exécuter très souvent et vérifier que son code continue de fonctionner.</p>
 
 <p>Lorsque l’on ajoute des fonctionnalités au code ou que l’on corrige un bug, on écrit un test qui vérifie la fonctionnalité ou qui montre que le bug n’existe pas/plus. Ainsi, puisque les tests sont conservées, ce bug ne pourra plus jamais réapparaître et cette fonctionnalité ne pourra plus disparaître.</p>
 
-<p><strong>La fonctionnalités est plus importante que le code</strong> : Le code va changer, les fonctionnalités doivent rester.
-Ce sont de plus des cas d’utilisation de vos programmes qui montrent qu’il fonctionne et comment il fonctionne.</p>
+<blockquote class="note">
+  <p>Mantra : <a href="https://artificials.ch/test-driven-development-mantra/">TDD</a></p>
+</blockquote>
+
+<p>Nous n’utiliserons pas ici au début le mantra TDD dans son intégralité puisque l’on se permettra d’écrire les tests après avoir codé la fonctionnalité et pas avant. Mais, l’expérience venant, faites l’expérience de coder vos tests avant la fonction, c’est très utile car cela permet d’utiliser sa fonction avant de la coder, ce qui souvent change la façon dont on voulait coder la fonction initialement.</p>
+
+<p>Les tests sont autant de cas d’utilisation de vos programmes qui montrent qu’il fonctionne et comment il fonctionne. Il permettent de montrer les différentes fonctionnalités de votre code :</p>
+
+<blockquote class="note">
+  <p><strong>La fonctionnalités est plus importante que le code</strong> : Le code va changer, les fonctionnalités doivent rester.</p>
+</blockquote>
+
+<p>Enfin, le code et ses tests doivent être fait par la <strong>même personne</strong> et au <strong>même moment</strong>. Il ne faut pas attendre d’avoir codé plusieurs fonctions avant de faire ses tests. Vous n’êtes en effet pas sur que votre 1ère fonction codée fonctionne avant d’avoir fait des tests. De là, il est possible qu’un bug dans cette première fonction affecte le code de votre 2nde fonction… Lorsque vous ferez vos tests vous serez alors obligé de re-coder toutes vos fonctions ce qui ne serait pas arrivé si vous aviez testé toutes vos fonction une par une et au moment de les coder.</p>
 
 <h2 id="structure-dun-programme">structure d’un programme</h2>
 
-<p>Un programme est composé de trois entités :</p>
+<p>Tout ce qu’on vient de voir structure un projet informatique en trois entités :</p>
 
 <ul>
   <li>le <strong>programme principal</strong> (aussi appelé <strong>main</strong>) qui est ce qui sera exécuté</li>
@@ -176,10 +204,6 @@ Ce sont de plus des cas d’utilisation de vos programmes qui montrent qu’il f
   <li>pour rajouter une fonctionnalité au programme principal, on ajoute du code qui doit lui-même être testé pour vérifier qu’il fonctionne.</li>
   <li>pour corrigé un bug du programme principal, on modifie du code et on ajoute des tests qui montrent que le bug n’existe plus.</li>
 </ul>
-
-<blockquote>
-  <p><strong>Attention</strong> : le code et ses tests doivent être fait par la <strong>même personne</strong> et au <strong>même moment</strong> (voir avant).</p>
-</blockquote>
 
   </div>
 
