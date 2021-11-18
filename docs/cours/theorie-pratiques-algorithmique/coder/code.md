@@ -51,7 +51,7 @@ On saura que le code est ok lorsqu'il ne nécessitera **pas** de commentaires po
 
 En plus d'être inutile :
 
-* **les commentaires sont souvent des mensonges** : comme le commentaire n'est pas du code, lorsque l'on modifie le code on *oublie* de changer le commentaire. Au bout d'un moment le commentaire n'est donc plus en relation avec le code : au lieu d'aider à comprendre, il confuse : **un commentaire est donc tôt ou tard un mensonge**
+* **les commentaires sont souvent des mensonges** : comme le commentaire n'est pas du code, lorsque l'on modifie le code on *oublie* de changer le commentaire. Au bout d'un moment le commentaire n'est donc plus en relation avec le code : au lieu d'aider à comprendre, il confuse : un commentaire est donc tôt ou tard un mensonge.
 * **ils cachent la difficulté**. S'il y a plein de commentaire, on ne les lira plus. Un commentaire se doit d'être rare. S'il est là c'est que l'on a pas vraiment pu faire autrement. Vous n'en aurez pas besoin dans 99% des cas...
 
 Attention cependant, commentaires != documentation :
