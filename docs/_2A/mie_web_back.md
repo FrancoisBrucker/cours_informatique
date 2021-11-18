@@ -47,8 +47,6 @@ Chaque semaine est dédiée à un thème particulier :
 3. on ajoute une base de donnée qu'on utilise grâce à [sequilize](https://sequelize.org/).
 4. présentation de vos projets.
 
-
-
 ## Note
 
 * on notera la présence ainsi que votre coordination cerveau/clavier lors des TDs.
@@ -73,6 +71,10 @@ Le TD consistera **toujours** à reprendre le cours de niveau 2 de la semaine et
 > * supports pour y jouer en vrai : <http://juegosrollandwrite.com/remake-reiner-knizias-decathlon/>
 
 ### Semaine 1
+
+> TBD :
+> à refaire en faisant comme fil rouge 1 jeu du décathlon que les élèves ne pourront pas choisir.
+{: .note}
 
 Projet [numérologie]({% link cours/web/projets/numerologie/index.md %}), [partie 1]({% link cours/web/projets/numerologie/partie-1-front/index.md %})
 
