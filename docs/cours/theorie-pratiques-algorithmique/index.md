@@ -7,11 +7,7 @@ category: cours
 > [Théorie et pratiques algorithmique]({% link cours/theorie-pratiques-algorithmique/index.md %})
 {: .chemin}
 
-Ce cours montrera l'informatique sous trois aspects complémentaires — théorie, code et algorithmes — que tout [honnête informaticien](https://fr.wikipedia.org/wiki/Honn%C3%AAte_homme) devrait connaître. Il s'adresse à des personnes ayant des connaissances minimales en informatiques mais voulant (ou étant obligé de :-)) approfondir le sujet.
-
-> TBD
-> Mettre ça en 1ère partie du cours de développement.
-{: .note}
+Ce cours montrera l'informatique sous trois aspects complémentaires — théorie, code et algorithmes — que tout [honnête informaticien](https://fr.wikipedia.org/wiki/Honn%C3%AAte_homme) devrait connaître. Il s'adresse à des personnes ayant des connaissances minimales en informatiques mais voulant (ou étant obligé d' :-)) approfondir le sujet.
 
 ## prés-requis
 
@@ -19,9 +15,9 @@ Les connaissances et les outils que vous devez avoir pour commencer le cours. Il
 
 ### un ordinateur pour le développement
 
-Pour développer, il faudra coder et exécuter du code. Il vous faut donc un ordinateur (portable ou tour) en état de marche. Il devra être sous un des trois systèmes d'exploitation suivant windows, macos ou linux.
+Pour développer, il faudra coder et exécuter du code. Il vous faut donc un ordinateur (portable ou tour) en état de marche. Il devra être sous un des trois systèmes d'exploitation suivant : windows 10, macos ou linux.
 
-Vous devez dans l'idéal être administrateur de votre ordinateur et avoir fait [une installation fraîche de tout votre système]({% post_url tutos/systeme/2021-09-01-installation-ordinateur %}) pour éviter toutes interférences lors de nos installations.
+Vous devez dans l'idéal être administrateur de votre ordinateur et avoir fait [une installation fraîche de tout votre système]({% post_url tutos/systeme/2021-09-01-installation-ordinateur %}) pour éviter toute interférence lors de nos installations.
 
 ### connaissances système minimale
 

@@ -40,8 +40,8 @@ blockquote.danger::before {
 }
 
 blockquote.chemin {
-  color: #469BFA;
-  border-left: 4px solid #469BFA;
+  color: #5549DE;
+  border-left: 4px solid #5549DE;
 }
 
 blockquote.chemin::before {
@@ -69,11 +69,11 @@ a:not([class]), a:not([class]):visited {
 	border-bottom: 1px dotted #629FDE;  
 }
 a:not([class]):hover {
-	color: #6874DE;
+	color: #5549DE;
   font-weight: bold;
-	border-bottom: 1px solid #6874DE;
+	border-bottom: 1px solid #5549DE;
 }
 a:not([class]):active {
-	color: #6874DE;
-	border-bottom: 3px solid #6874DE;
+	color: #5549DE;
+	border-bottom: 3px solid #5549DE;
 }
