@@ -56,40 +56,56 @@
 
   <div class="post-content">
     <blockquote class="chemin">
-  <p><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/">Théorie et pratiques algorithmique</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/">coder</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/code.html">code</a>
-prérequis :</p>
+  <p><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/">Théorie et pratiques algorithmique</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/">coder</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/code.html">code</a></p>
+
+  <p><strong>prérequis :</strong></p>
 
   <ul>
     <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.html">algorithmie/pseudo-code</a></li>
   </ul>
 </blockquote>
 
-<p>Pour que l’algorithme soit implémentable pour de vrai, il est nécessaire que sa description soit facilement transposable d’une langue à un langage de programmation.</p>
+<p><em>Coder</em> c’est passer d’un algorithme <em>papier</em> (pseudo-code ou idées) à un programme informatique, appelé <strong>code</strong>. Par extension, on inclura dans cette partie la modification d’un code existant. Le <strong>but</strong> d’un code est d’être exécuté par un ordinateur pour réaliser une tâche.</p>
 
-<p>Le code va dépendre du langage, pour nous le python. Cela permet de voir si notre algorithme marche “en vrai”. On utilisera les même principes, mais de façon différente. Ce sont deux face d’une même pièce. On ne peut pas faire l’un sans l’autre.</p>
+<p>Pour permettre son exécution, le code est écrit dans un <a href="https://fr.wikipedia.org/wiki/Langage_de_programmation">langage de programmation</a>. Celui-ci dépend <strong>dépend de la tâche à réaliser</strong> : <a href="https://www.jesuisundev.com/la-religion-chez-les-developpeureuses-informatiques/">le code est un outil</a> il faut utiliser celui qui est le plus adapté au résultat voulu.</p>
 
-<p>attention : les réels n’existent pas en vrai !</p>
+<blockquote>
+  <p>Nous utiliserons ici le <a href="https://www.python.org/">python</a> car notre but est ici de coder des algorithmes classiques et python est très proche d’un pseudo-code.</p>
+</blockquote>
 
-<h2 id="code">code</h2>
-
-<p>Le code est le passage d’un algorithme <em>papier</em> à un programme informatique ou la modification d’un code existant. La seconde partie étant celle que vous ferez le plus souvent : On passe son temps à modifier du code plutôt que d’implémenter des algorithme (c’est ce que l’on appelle le refactoring).</p>
+<p>Modifier du code est ce vous ferez le plus souvent : on passe son temps à modifier du code plutôt que d’implémenter des algorithmes (c’est ce que l’on appelle le <a href="https://fr.wikipedia.org/wiki/R%C3%A9usinage_de_code">refactoring</a>).</p>
 
 <p>Il en découle que :</p>
 
-<blockquote class="code">
+<blockquote class="note">
   <p><strong>Vous allez passer plus de temps à lire du code qu’à en écrire.</strong></p>
 </blockquote>
 
-<p>Comme il faut que : <em>ce qui se fait souvent doit se faire rapidement</em>, on utilisera une série de règles pour lire aisément son code et se faire comprendre aisément de ses partenaires.
-On ne doit pas passer 5min à chaque lecture pour comprendre ce que fait l’algorithme à son organisation ou se questionner s’il fonctionne, il faut pouvoir aller rapidement là où l’on veut modifier son code et comprendre aisément comment le modifier.</p>
+<p>Comme il faut que : <em>ce qui se fait souvent doit se faire rapidement</em>, on utilisera une série de règles pour lire aisément son code et — surtout — se faire comprendre aisément de ses partenaires.</p>
 
-<p>Ce principe est appelé le  <a href="https://fr.wikipedia.org/wiki/Principe_KISS">KISS</a>. Il en découle trois pratiques :</p>
+<blockquote>
+  <p>Ces règles sont appelées des <strong>coding mantra</strong>. Comme toutes les règles, il ne faut pas apprendre ce qu’elle dit, mais pourquoi elle le dit.</p>
+</blockquote>
 
-<ul>
-  <li>noms explicites et découpage fonctionnel</li>
-  <li>lisibilité: coding style</li>
-  <li>tests</li>
-</ul>
+<p>Lorsque l’on code, on ne doit pas passer cinq minutes à chaque lecture pour comprendre ce que fait un bout de code, comment il est organisé ou encore se questionner pour savoir s’il fonctionne : il faut pouvoir aller rapidement là où l’on veut modifier son code et comprendre aisément comment le modifier.</p>
+
+<blockquote class="note">
+  <p>Le mantra associé est le <a href="https://fr.wikipedia.org/wiki/Principe_KISS">KISS</a>. Il en découle trois pratiques :</p>
+
+  <ul>
+    <li>noms explicites et découpage fonctionnel</li>
+    <li>lisibilité: coding style</li>
+    <li>tests</li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <p>TBD :</p>
+
+  <p>Pour que l’algorithme soit implémentable pour de vrai, il est nécessaire que sa description soit facilement transposable d’une langue à un langage de programmation.</p>
+
+  <p>attention : les réels n’existent pas en vrai !</p>
+</blockquote>
 
 <h4 id="noms-explicites-et-découpage-fonctionnel">noms explicites et découpage fonctionnel</h4>
 
