@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /** Reset some basic elements */
 body, h1, h2, h3, h4, h5, h6, p, blockquote, pre, hr, dl, dd, ol, ul, figure { margin: 0; padding: 0; }
 
@@ -276,12 +277,12 @@ table td { border: 1px solid #e8e8e8; }
 
 details summary { list-style: none; margin-bottom: 0.8em; }
 
-details summary::before { font-family: FontAwesome; font-size: 1.2em; content: "\f152"; float: left; margin-right: 0.4em; }
+details summary::before { font-family: FontAwesome; font-size: 1.2em; content: "\f152  [caché]"; font-weight: bold; float: left; margin-right: 0.4em; margin-left: 2em; }
 
 details summary::-webkit-details-marker { display: none; }
 
-details.open summary::before, details[open] summary::before { content: "\f150"; }
+details.open summary::before, details[open] summary::before { content: "\f150  [visible]"; }
 
-details > div { padding-left: 1em; margin-left: 1em; border-left: 4px solid; }
+details > div { padding-left: 1em; margin-left: 3em; margin-right: 3em; border-left: 4px solid; }
 
 /*# sourceMappingURL=main.css.map */

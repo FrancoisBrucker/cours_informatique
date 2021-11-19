@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/cours_informatique/feed.xml" rel="self" type="application/atom+xml" /><link href="/cours_informatique/" rel="alternate" type="text/html" /><updated>2021-11-19T07:09:46+00:00</updated><id>/cours_informatique/feed.xml</id><title type="html">cours d’informatique</title><subtitle>Support de cours/td d'informatique à l'école centrale marseille.</subtitle><entry><title type="html">Smartgrid</title><link href="/cours_informatique/tutos/projets/2021/10/28/smartgrid.html" rel="alternate" type="text/html" title="Smartgrid" /><published>2021-10-28T00:00:00+00:00</published><updated>2021-10-28T00:00:00+00:00</updated><id>/cours_informatique/tutos/projets/2021/10/28/smartgrid</id><content type="html" xml:base="/cours_informatique/tutos/projets/2021/10/28/smartgrid.html">&lt;h2 id=&quot;smartgrid&quot;&gt;Smartgrid&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/cours_informatique/feed.xml" rel="self" type="application/atom+xml" /><link href="/cours_informatique/" rel="alternate" type="text/html" /><updated>2021-11-19T07:45:20+00:00</updated><id>/cours_informatique/feed.xml</id><title type="html">cours d’informatique</title><subtitle>Support de cours/td d'informatique à l'école centrale marseille.</subtitle><entry><title type="html">Smartgrid</title><link href="/cours_informatique/tutos/projets/2021/10/28/smartgrid.html" rel="alternate" type="text/html" title="Smartgrid" /><published>2021-10-28T00:00:00+00:00</published><updated>2021-10-28T00:00:00+00:00</updated><id>/cours_informatique/tutos/projets/2021/10/28/smartgrid</id><content type="html" xml:base="/cours_informatique/tutos/projets/2021/10/28/smartgrid.html">&lt;h2 id=&quot;smartgrid&quot;&gt;Smartgrid&lt;/h2&gt;
 
 &lt;h3 id=&quot;présentation-du-jeu&quot;&gt;Présentation du jeu&lt;/h3&gt;
 
@@ -1508,9 +1508,9 @@ hello
 
 &lt;h2 id=&quot;introduction&quot;&gt;introduction&lt;/h2&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://www.anaconda.com/&quot;&gt;Anaconda&lt;/a&gt; est une entreprise gérant des distributions python orientés data-science. L’intérêt d’une telle distribution est qu’elle regroupe et installe de nombreux utilitaires. Le côté négatif est que l’on ne maîtrise pas les paquets installés et l’installation de paquets supplémentaires est parfois problématique.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.anaconda.com/&quot;&gt;Anaconda&lt;/a&gt; est une entreprise gérant des distributions python orientées data science. L’intérêt d’une telle distribution est qu’elle regroupe et met à disposition de nombreuses bibliothèques. Le côté négatif est que l’on ne maîtrise pas les bibliothèques installées et l’installation de paquets supplémentaires est parfois problématique.&lt;/p&gt;
 
-&lt;p&gt;Cependant, pour une utilisation basique de python ou une utilisation via jupyter, c’est une solution tout à fait satisfaisante car facile à mettre en œuvre sans être informaticien.&lt;/p&gt;
+&lt;p&gt;Cependant, pour une utilisation basique de python ou une utilisation via &lt;a href=&quot;https://jupyter.org/&quot;&gt;jupyter notebook&lt;/a&gt;, c’est une solution tout à fait satisfaisante car facile à mettre en œuvre sans être informaticien.&lt;/p&gt;
 
 &lt;h2 id=&quot;installation&quot;&gt;installation&lt;/h2&gt;
 
@@ -1532,15 +1532,14 @@ hello
 
 &lt;blockquote class=&quot;attention&quot;&gt;
   &lt;p&gt;Il faudra faire des choix qui ne sont pas par défaut lors de l’installation.
-Ne cliquez pas sur &lt;em&gt;suivant&lt;/em&gt; comme des sauvages…Lisez les choix qui vous sont proposés.&lt;/p&gt;
+&lt;strong&gt;Ne cliquez pas sur &lt;em&gt;suivant&lt;/em&gt; comme des sauvages…&lt;/strong&gt; Lisez les choix qui vous sont proposés.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;Lors de l’installation :&lt;/p&gt;
 
 &lt;details&gt;&lt;summary&gt;sous linux&lt;/summary&gt;&lt;div&gt;
-&lt;blockquote class=&quot;note&quot;&gt;
-  &lt;p&gt;TBD.
-Je n’ai pas de linux sous la main. A tester.
+&lt;blockquote class=&quot;tbd&quot;&gt;
+  &lt;p&gt;Je n’ai pas de linux sous la main. A tester.
 Je pense que c’est comme mac, mais pas sur.&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -1597,8 +1596,8 @@ Je pense que c’est comme mac, mais pas sur.&lt;/p&gt;
 &lt;p&gt;Si vous avez suivi à la lettre le processus d’installation, anaconda devrait être installé :&lt;/p&gt;
 
 &lt;details&gt;&lt;summary&gt;sous linux&lt;/summary&gt;&lt;div&gt;
-&lt;blockquote class=&quot;note&quot;&gt;
-  &lt;p&gt;TBD&lt;/p&gt;
+&lt;blockquote class=&quot;tbd&quot;&gt;
+  &lt;p&gt;à faire avec un linux&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;/div&gt;&lt;/details&gt;
@@ -1631,15 +1630,15 @@ Je pense que c’est comme mac, mais pas sur.&lt;/p&gt;
 &lt;p&gt;Lancez l’application &lt;em&gt;Notebook&lt;/em&gt; puis :&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;créez un nouveau notebook &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python3&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;créez un nouveau notebook &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python&lt;/code&gt; sous windows et &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python3&lt;/code&gt; sous mac et linux.&lt;/li&gt;
   &lt;li&gt;dans la cellule tapez &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;print(&quot;Hello world!&quot;)&lt;/code&gt;&lt;/li&gt;
   &lt;li&gt;cliquez sur l’icône &lt;em&gt;Exécuter&lt;/em&gt; sur la bannière de titre ou appuyer sur &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;shift + entrée&lt;/code&gt;.&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;Vous devriez voir le texte &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Hello World&lt;/code&gt; en sortie de votre cellule.&lt;/p&gt;
 
-&lt;blockquote class=&quot;note&quot;&gt;
-  &lt;p&gt;TBD : sous windows ? Est-ce aussi python3 ?&lt;/p&gt;
+&lt;blockquote class=&quot;tbd&quot;&gt;
+  &lt;p&gt;sous windows, est-ce aussi python3 ?&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h3 id=&quot;python-avec-un-terminal-anaconda&quot;&gt;python avec un terminal anaconda&lt;/h3&gt;
@@ -1665,8 +1664,8 @@ Je pense que c’est comme mac, mais pas sur.&lt;/p&gt;
 &lt;p&gt;Anaconda vient avec de nombreux modules déjà installé. Si on veut en installer d’autres, il y a deux solutions :&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;utiliser le gestionnaire de modules de python&lt;/li&gt;
-  &lt;li&gt;utiliser &lt;a href=&quot;https://conda.io/projects/conda/en/latest/user-guide/index.html&quot;&gt;conda&lt;/a&gt; qui est le gesionnaire de modules dsécifique à anaconda.&lt;/li&gt;
+  &lt;li&gt;utiliser le gestionnaire de modules de python &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python -m pip install &amp;lt;nom du module à installer&amp;gt;&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;utiliser &lt;a href=&quot;https://conda.io/projects/conda/en/latest/user-guide/index.html&quot;&gt;conda&lt;/a&gt; qui est le gestionnaire de modules spécifique à anaconda.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;blockquote&gt;

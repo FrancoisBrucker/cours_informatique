@@ -63,6 +63,15 @@ details.a-faire {
   color: #FAA600;
 }
 
+blockquote.tbd {
+  color: #F57BD3;
+  border-left: 4px solid #F57BD3;
+}
+
+blockquote.tbd::before {
+  content: "TBD :";
+  font-weight: bold;
+}
 a:not([class]), a:not([class]):visited {
 	text-decoration: none;
 	color: #629FDE;
@@ -70,7 +79,6 @@ a:not([class]), a:not([class]):visited {
 }
 a:not([class]):hover {
 	color: #5549DE;
-  font-weight: bold;
 	border-bottom: 1px solid #5549DE;
 }
 a:not([class]):active {
