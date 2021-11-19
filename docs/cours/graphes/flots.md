@@ -178,6 +178,9 @@ On en déduit que pour cette coupe : $c(S, \overline{S}) = f(S, \overline{S}) - 
 
 On a donc qu'il existe une chaine augmentante de $s$ à $p$ si et seulement si $\mbox{val}(f)$ n'est pas maximum.
 
+> Les arcs d'une chaine augmentante ne sont **pas forcément** tous dans le même sens ! La chaine $sacep$ de l'exemple précécdent le prouve. Cette chaine est augmentante mais les arcs sont $s\rightarrow a \leftarrow c \rightarrow e \rightarrow p$.
+{: .attention}
+
 ### théorème des flots
 
 Finalement :
@@ -349,7 +352,7 @@ On procède comme avant, mais la chaine augmentante cherchée correspondra à un
 
 On peut utiliser l'[algorithme de Dijkstra](https://fr.wikipedia.org/wiki/Algorithme_de_Dijkstra) par exemple pour trouver ce chemin.
 
-### exemple
+### exemple avec le graphe d'écart
 
 Reprenons notre exemple fétiche (On ne mettra pas de valuation sur le graphe) :
 
