@@ -14,9 +14,9 @@ Si vous cherchez un tutoriel pour général sur ce qu'est python et comment l'in
 
 ## introduction
 
-[Anaconda](https://www.anaconda.com/) est une entreprise gérant des distributions python orientés data-science. L'intérêt d'une telle distribution est qu'elle regroupe et installe de nombreux utilitaires. Le côté négatif est que l'on ne maîtrise pas les paquets installés et l'installation de paquets supplémentaires est parfois problématique.
+[Anaconda](https://www.anaconda.com/) est une entreprise gérant des distributions python orientées data science. L'intérêt d'une telle distribution est qu'elle regroupe et met à disposition de nombreuses bibliothèques. Le côté négatif est que l'on ne maîtrise pas les bibliothèques installées et l'installation de paquets supplémentaires est parfois problématique.
 
-Cependant, pour une utilisation basique de python ou une utilisation via jupyter, c'est une solution tout à fait satisfaisante car facile à mettre en œuvre sans être informaticien.
+Cependant, pour une utilisation basique de python ou une utilisation via [jupyter notebook](https://jupyter.org/), c'est une solution tout à fait satisfaisante car facile à mettre en œuvre sans être informaticien.
 
 ## installation
 
@@ -34,17 +34,16 @@ Il existe plusieurs distributions de python anaconda. Nous allons utiliser l'[é
 ### installation de python
 
 > Il faudra faire des choix qui ne sont pas par défaut lors de l'installation.
-> Ne cliquez pas sur *suivant* comme des sauvages...Lisez les choix qui vous sont proposés.
+> **Ne cliquez pas sur *suivant* comme des sauvages...** Lisez les choix qui vous sont proposés.
 {: .attention}
 
 Lors de l'installation :
 
 {% details sous linux %}
 
-> TBD.
 > Je n'ai pas de linux sous la main. A tester.
 > Je pense que c'est comme mac, mais pas sur.
-{: .note}
+{: .tbd}
 
 {% enddetails %}
 
@@ -98,8 +97,8 @@ Si vous avez suivi à la lettre le processus d'installation, anaconda devrait ê
 
 {% details sous linux %}
 
-> TBD
-{: .note}
+> à faire avec un linux
+{: .tbd}
 
 {% enddetails %}
 
@@ -131,14 +130,14 @@ Anaconda a installé des choses, en particulier l'application *Anaconda-Navigato
 
 Lancez l'application *Notebook* puis :
 
-  1. créez un nouveau notebook `python3`.
+  1. créez un nouveau notebook `python` sous windows et `python3` sous mac et linux.
   2. dans la cellule tapez `print("Hello world!")`
   3. cliquez sur l'icône *Exécuter* sur la bannière de titre ou appuyer sur `shift + entrée`.
   
 Vous devriez voir le texte `Hello World` en sortie de votre cellule.
 
-> TBD : sous windows ? Est-ce aussi python3 ?
-{: .note}
+> sous windows, est-ce aussi python3 ?
+{: .tbd}
 
 ### python avec un terminal anaconda
 
@@ -160,7 +159,7 @@ Ouvrez un [terminal]({% post_url /tutos/systeme/2021-08-24-terminal %}) et tapez
 
 Anaconda vient avec de nombreux modules déjà installé. Si on veut en installer d'autres, il y a deux solutions :
 
-* utiliser le gestionnaire de modules de python
-* utiliser [conda](https://conda.io/projects/conda/en/latest/user-guide/index.html) qui est le gesionnaire de modules dsécifique à anaconda.
+* utiliser le gestionnaire de modules de python `python -m pip install <nom du module à installer>`
+* utiliser [conda](https://conda.io/projects/conda/en/latest/user-guide/index.html) qui est le gestionnaire de modules spécifique à anaconda.
 
 > Si vous avez le choix, utilisez le gestionnaire de modules de python.
