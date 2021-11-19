@@ -21,15 +21,22 @@ Les divers contrôles intermédiaires seront à rendre directement sur [ametice]
 
 ## Plan des cours
 
+L'ensemble du cours (et d'autres choses) est disponible [là]({% link cours/theorie-pratiques-algorithmique/index.md %})
+
+Chaque partie est une semaine (2h mercredi et 4h vendredi). Il y aura 2 DS, les mercredi de la séance 4 et 7. De plus, chaque vendredi, il y aura un contrôle de 15min sur la séance du mercredi s'il n'y avait pas de DS.
+
+### semaine 1
+
+#### mercredi
+
 1. [un algorithme ?]({% link cours/theorie-pratiques-algorithmique/algorithmie/algorithmes.md %})
 2. [pseudo-code]({% link cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.md %})
 3. [calcul]({% link cours/theorie-pratiques-algorithmique/theorie/calcul.md %})
 4. [code]({% link cours/theorie-pratiques-algorithmique/coder/code.md %})
 
+#### vendredi
 
-L'ensemble du cours (et d'autres choses) est disponible [là]({% link cours/theorie-pratiques-algorithmique/index.md %})
 
-Chaque partie est une semaine (2h mercredi et 4h vendredi). Il y aura 2 DS, les mercredi de la séance 4 et 7. De plus, chaque vendredi, il y aura un contrôle de 15min sur la séance du mercredi s'il n'y avait pas de DS.
 
 ## ressources
 
