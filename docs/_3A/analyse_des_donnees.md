@@ -1,13 +1,13 @@
 ---
 layout: page
-title:  "Temps 1 digital·e : Analyse des données"
+title:  "Temps 2 digital·e : Analyse des données"
 category: cours
 authors:
   - François Brucker
   - Emmanuel Daucé
 ---
 
-## Introduction
+Cours en duo. Nous ne montrerons ici que les trois cours de François Brucker
 
-> TBD
-{: .note}
+> mettre les cours
+{: .tbd}
