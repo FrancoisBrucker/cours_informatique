@@ -13,6 +13,53 @@ Configuration d'outils supplémentaires pour [visual studio code](https://code.v
 
 Ce tutoriel fait suite au [tutoriel python et vscode]({% post_url tutos/editeur/vsc/2021-09-14-vsc-python %}). Il se consacre à l'installation d'extension non fondamentales mais bien sympathique pour le développement python. avec vscode.
 
+## tests
+
+> [tests avec vscode](https://code.visualstudio.com/docs/python/testing). Nous allons utiliser [pytest](https://docs.pytest.org/) comme bibliothèque de test.
+
+### installation {#installation-pytest}
+
+{% details sous linux et mac %}
+
+```shell
+python3 -m pip install pytest
+```
+
+{% enddetails %}
+
+{% details sous windows %}
+
+```shell
+python -m pip install pytest
+```
+
+{% enddetails %}
+
+### configuration {#configuration-pytest}
+
+1. dans les préférences (*menu file/code > Préferences > settings*) tapez `python.testing.pytestEnabled`  dans la barre de recherche et cochez la case. Ceci dit à vscode que notre framework de test est pytest (il y en a d'autres possible comme [unittest](https://docs.python.org/fr/3.9/library/unittest.html) ou encore [nosetests](https://nose.readthedocs.io/en/latest/), mais on ne va pas les utiliser. Assurez vous cependant qu'un seul framework de test soit utilisé à la fois. Ca devrait être le cas si vous n'avez pas cliqué un peu partout).
+2. on configure les tests de notre projet en tapant la commande (dans la [palette de commande]({% post_url tutos/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main %}#palette-de-commande)) : *python : Configure tests* on choisit *pytest* puis *. (root)* qui donne le dossier de départ où aller chercher nos tests
+
+### utilisation {#utilisation-pytest}
+
+#### avec l'interface
+
+On ouvre la fenêtre de tests avec *Menu Affichage testing* (le petit erlenmeyer de la [barre d'activité](https://code.visualstudio.com/docs/getstarted/userinterface)).
+
+En suite le menu *TESTING* en haut de cette nouvelle fenêtre vous permet :
+
+* redécouvrir les tests
+* executez les tests.
+* ...
+
+![tests]({{ "/assets/tutos/vsc-python/python-pytest-env.png" | relative_url }}){:style="margin: auto;display: block}
+
+#### avec le terminal
+
+En tapant `pytest` alors que vous êtes dans le dossier du projet.
+
+>si la commande `pytest` n'est pas reconnue, mais que `python` l'est vous pouvez exécuter `pytest`, via python en tapant la commande `python3 -m pytest`
+
 ## linter
 
 Le [linting en python avec vscode](https://code.visualstudio.com/docs/python/linting) permet de souligner les fautes de style de python.
@@ -28,7 +75,7 @@ Dans un [terminal]({% post_url tutos/systeme/2021-08-24-terminal %}), qui peut �
 {% details sous linux et mac %}
 
 ```shell
-python3 -m pip3 install pycodestyle
+python3 -m pip install pycodestyle
 ```
 
 {% enddetails %}
@@ -70,7 +117,7 @@ Dans un [terminal]({% post_url tutos/systeme/2021-08-24-terminal %}), qui peut �
 {% details sous linux et mac %}
 
 ```shell
-python3 -m pip3 install black
+python3 -m pip install black
 ```
 
 {% enddetails %}
@@ -116,53 +163,6 @@ python -m black mon-fichier.py
 
 {% enddetails %}
 
-## tests
-
-> [tests avec vscode](https://code.visualstudio.com/docs/python/testing). Nous allons utiliser [pytest](https://docs.pytest.org/) comme bibliothèque de test.
-
-### installation {#installation-pytest}
-
-{% details sous linux et mac %}
-
-```shell
-python3 -m pip3 install pytest
-```
-
-{% enddetails %}
-
-{% details sous windows %}
-
-```shell
-python -m pip install pytest
-```
-
-{% enddetails %}
-
-### configuration {#configuration-pytest}
-
-1. dans les préférences (*menu file/code > Préferences > settings*) tapez `python.testing.pytestEnabled`  dans la barre de recherche et cochez la case. Ceci dit à vscode que notre framework de test est pytest (il y en a d'autres possible comme [unittest](https://docs.python.org/fr/3.9/library/unittest.html) ou encore [nosetests](https://nose.readthedocs.io/en/latest/), mais on ne va pas les utiliser. Assurez vous cependant qu'un seul framework de test soit utilisé à la fois. Ca devrait être le cas si vous n'avez pas cliqué un peu partout).
-2. on configure les tests de notre projet en tapant la commande (dans la [palette de commande]({% post_url tutos/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main %}#palette-de-commande)) : *python : Configure tests* on choisit *pytest* puis *. (root)* qui donne le dossier de départ où aller chercher nos tests
-
-### utilisation {#utilisation-pytest}
-
-#### avec l'interface
-
-On ouvre la fenêtre de tests avec *Menu Affichage testing* (le petit erlenmeyer de la [barre d'activité](https://code.visualstudio.com/docs/getstarted/userinterface)).
-
-En suite le menu *TESTING* en haut de cette nouvelle fenêtre vous permet :
-
-* redécouvrir les tests
-* executez les tests.
-* ...
-
-![tests]({{ "/assets/tutos/vsc-python/python-pytest-env.png" | relative_url }}){:style="margin: auto;display: block}
-
-#### avec le terminal
-
-En tapant `pytest` alors que vous êtes dans le dossier du projet.
-
->si la commande `pytest` n'est pas reconnue, mais que `python` l'est vous pouvez exécuter `pytest`, via python en tapant la commande `python3 -m pytest`
-
 ## couverture de code {#code-coverage}
 
 Permet de voir le code couvert par les tests.
@@ -174,7 +174,7 @@ On va utiliser le *code coverage* de pytest :
 {% details sous linux et mac %}
 
 ```shell
-python3 -m pip3 install pytest-cov
+python3 -m pip install pytest-cov
 ```
 
 {% enddetails %}
@@ -203,3 +203,5 @@ La commande `pytest --cov=.` crée un fichier de coverage qui s'appelle `.covera
 
 > Si le petit *watch* n'est pas visible, vous pouvez le faire à la main dans avec la [palette de commande]({% post_url tutos/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main %}#palette-de-commande))
  *Coverage Gutters: Display Coverage*.
+
+

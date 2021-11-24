@@ -195,6 +195,45 @@ graph.links.push({
   target: 'machine de Turing'
 })
 
+graph.nodes.push({
+  id: 'projet informatique',
+  link: "{% link cours/theorie-pratiques-algorithmique/coder/code-projet.md %}",
+  group: groups.code
+})
+graph.links.push({
+  source: 'code',
+  target: 'projet informatique'
+})
+
+graph.nodes.push({
+  id: 'vscode & python',
+  link: "{% post_url tutos/editeur/vsc/2021-09-14-vsc-python %}",
+  group: groups.autre
+})
+graph.links.push({
+  source: 'vscode & python',
+  target: 'projet informatique'
+})
+
+graph.nodes.push({
+  id: 'installation vscode',
+  link: "{% post_url tutos/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main %}",
+  group: groups.autre
+})
+graph.nodes.push({
+  id: 'installation python',
+  link: "{% post_url tutos/python/2021-08-20-installation-de-python %}",
+  group: groups.autre
+})
+graph.links.push({
+  source: 'installation vscode',
+  target: 'vscode & python'
+})
+graph.links.push({
+  source: 'installation python',
+  target: 'vscode & python'
+})
+
 </script>
 <script>
 var color = d3.scaleOrdinal(d3.schemeCategory10);
@@ -218,7 +257,7 @@ svg.append("svg:defs").append("svg:marker")
 
 var simulation = d3.forceSimulation()
     .force("link", d3.forceLink().id(d => { return d.id; }))
-    .force("charge", d3.forceManyBody())
+    .force("charge", d3.forceManyBody().strength(100))
     .force("center", d3.forceCenter(width / 2, height / 2));
 
 var link = svg.append("g")
@@ -275,8 +314,11 @@ var link = svg.append("g")
         .attr("x2", function(d) { return d.target.x; })
         .attr("y2", function(d) { return d.target.y; });
 
+    radius = 15;
     node
-        .attr("transform", function(d) {
+        .attr("transform", (d) => {
+          d.x = Math.max(radius, Math.min(width - radius, d.x))
+          d.y = Math.max(radius, Math.min(height - radius, d.y))
           return "translate(" + d.x + "," + d.y + ")";
         })
   }

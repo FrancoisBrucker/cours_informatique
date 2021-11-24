@@ -13,7 +13,7 @@ Comment coder, maintenir et aimer ses programmes.
 
 ## tbd
 
-ordre des concept de code :
+ordre des concepts de code :
 
 1. semaine 1 : pycodestyle
 2. semaine 1 : pytest

@@ -20,6 +20,7 @@ Comment installer et utiliser python sur son ordinateur. On y verra différentes
 ## python ?
 
 > <https://fr.wikipedia.org/wiki/Python_(langage)>
+{: .chemin}
 
 Stricto sensu, [Python](https://www.python.org/) est un langage de programmation initialement développé par [Guido van Rossum](https://fr.wikipedia.org/wiki/Guido_van_Rossum) pour le bien des développeurs et de l'humanité.
 
@@ -33,7 +34,8 @@ Pour pouvoir écrire du code python et l'exécuter sur votre ordinateur, il vous
 
 **Utilisez la version 3 de python**. Il n'est pas nécessaire d'avoir la toute dernière itération de cette version (3.9.6 à l'heure où je tape ces caractères), toute version 3 de python pas trop ancienne doit convenir.
 
->Si vous installez python pour la première fois sur votre ordinateur, choisissez d'installer la dernière version stable de python 3.
+> Si vous installez python pour la première fois sur votre ordinateur, choisissez d'installer la dernière version stable de python 3.
+{: .note}
 
 Une version de python est composée de 3 nombres [MAJOR.MINOR.PATCH](https://semver.org/) :
 
@@ -96,12 +98,16 @@ C'est à dire que j'utilise la version 3.9.6 de python et que mon interpréteur 
 
 Nous allons ici nous concentrer sur l'installation de l'interpréteur python. Il existe plusieurs façon de faire. Nous en présenterons 2 :
 
-* solution universelle simple : utilisez la [distribution anaconda]({% post_url /tutos/python/2021-09-14-installation-anaconda %})
+* solution universelle simple : avec [la distribution anaconda](#install-anaconda).
 * solution informaticienne : à privilégier si vous voulez contrôler toute votre installation (c'est bien). On utilise un [gestionnaire de package](#gestionnaire-package-id).
 
 > Parfois, il n'y a rien à faire (c'est souvent le cas sous mac ou linux qui arrivent avec des versions de python 2 et 3 déjà installées). Utilisez les [tests de reconnaissances](#quel-python-jai) pour identier la version de python que vous avez.
 
 Une fois que vous aurez installé python (ou pour savoir si vous l'avez déjà installé), vérifiez le en tentant d'[exécuter l'interpréteur python dans un terminal](#interpreteur-id).
+
+### installation via anaconda {#install-anaconda}
+
+Suivez ce [tutoriel]({% post_url /tutos/python/2021-09-14-installation-anaconda %}) pour installer anaconda sur votre machine.
 
 ### installation via un gestionnaire de package {#gestionnaire-package-id}
 

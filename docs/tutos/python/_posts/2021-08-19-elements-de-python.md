@@ -154,7 +154,7 @@ De nombreux modules existent pour python et permettent de réaliser aisément de
 
 Si vous n'avez pas de droits administrateur, ou pour une utilisation plus "pro" des modules, on préfèrera créer des environnements virtuels avec *virtualenv*, mais ceci  dépasse (de peu) le cadre de notre introduction à python.
 
-On utilise l'utilitaire `pip` via python avec la commande : `python -m pip [des commandes pip]` (ou `python3 -m pip3 [des commandes pip]` si vous êtes sous mac ou linux)
+On utilise l'utilitaire `pip` via python avec la commande : `python -m pip [des commandes pip]` (ou `python3 -m pip [des commandes pip]` si vous êtes sous mac ou linux)
 
 >Si vous utilisez un interpréteur qui s'appelle `python3` et pas `python`, il est fort possible que le programme `python`(sans le 3) soit un interpréteur de la version 2 de python. Il vous faut alors utiliser la commande `pip3`et non `pip` (qui sera elle associée à l'interpréteur `python`)
 {: .attention}
@@ -173,7 +173,7 @@ Installé par défaut, il permet notamment de mélanger les éléments d'une lis
 
 Permet de manipuler des [fichiers excel avec python](https://automatetheboringstuff.com/chapter12/).
 
-Il s'installe avec pip : `python -m pip install openpyxl` (ou `sudo python3 -m pip3 install openpyxl` suivi de votre mot de passe si vous êtes sous unix/mac).
+Il s'installe avec pip : `python -m pip install openpyxl` (ou `sudo python3 -m pip install openpyxl` suivi de votre mot de passe si vous êtes sous unix/mac).
 
 ### matplotlib
 

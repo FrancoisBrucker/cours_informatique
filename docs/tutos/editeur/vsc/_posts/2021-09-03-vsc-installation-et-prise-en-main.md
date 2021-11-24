@@ -42,18 +42,24 @@ La barre d'activité de la fenêtre vscode (les icônes sur la gauche de la fen�
 * à la gestion des comptes
 * aux préférences de vscode
 
->Les différentes parties de l'interface de la fenêtre  vscode est expliquée [dans la doc](https://code.visualstudio.com/docs/getstarted/userinterface).
+> Les différentes parties de l'interface de la fenêtre  vscode sont expliquées [dans la doc](https://code.visualstudio.com/docs/getstarted/userinterface).
 
-Vous devriez aussi avoir un onglet ouvert qui s'appelle *welcome*. Vous pouvez la fermer en cliquant sur la croix à droite de son nom.
+Vous devriez aussi avoir un onglet ouvert qui s'appelle *welcome*.
+
+> Vous pouvez la fermer en cliquant sur la croix à droite de son nom.
+{: .a-faire}
 
 ### installation d'extensions {#extensions}
 
 Pour l'instant vscode nous parle anglais. Remédions tout de suite à cela en installant le pack français.
 
-1. cliquez sur l'icône de gestion des extensions ou *menu View > Extensions*.
-2. dans la barre de recherche, tapez *French Language Pack for Visual Studio Code*
-3. cliquez sur l'application correspondante (ça devrait être la première)
-4. un onglet détaillant l'extension est apparu  : cliquez sur install pour l'installer. vscode va se redémarrer en français.
+>
+> 1. cliquez sur l'icône de gestion des extensions ou *menu View > Extensions*.
+> 2. dans la barre de recherche, tapez *French Language Pack for Visual Studio Code*
+> 3. cliquez sur l'application correspondante (ça devrait être la première)
+> 4. un onglet détaillant l'extension est apparu  : cliquez sur *install* pour l'installer. vscode va se redémarrer en français.
+>
+{: .a-faire}
 
 ![extensions vscode]({{ "/assets/tutos/vsc-projets/vsc-extensions.png" | relative_url }}){:style="margin: auto;display: block"}
 
@@ -62,7 +68,7 @@ Pour l'instant vscode nous parle anglais. Remédions tout de suite à cela en in
 ### barre de statut
 
 > Créez un nouveau fichier *menu Fichier > Nouveau Fichier* et sauvez le de suite : *menu Fichier > Enregistrer* avec le nom *"hello.txt"*.
-{: .note}
+{: .a-faire}
 
 Vscode à compris que c'était du texte, il l'écrit dans la barre de statut (la dernière ligne, en bleu, de la fenêtre vscode, voir [user interface](https://code.visualstudio.com/docs/getstarted/userinterface)).
 
@@ -76,35 +82,40 @@ La barre de statut est très utile, elle regroupe plein d'infos relative au fich
 
 ### dictionnaire
 
-Ecrivons du texte dans notre fichier (l'onglet nommé *"hello.txt"*) :
+> Ecrivons du texte dans notre fichier (l'onglet nommé *"hello.txt"*) :
+{: .a-faire}
 
 ```text
 
 Bnjour Monde !
 ```
 
-Puis sauvez le fichier (*menu Fichier > Enregistrer*).
-
-> Si vous fermez malencontreusement votre onglet (en cliquant sur la croix à droite du nom), vous pouvez toujours retrouver ce fichier en ouvrant l'explorateur (*menu Affichage > Explorateur*, ou en cliquant sur la 1ère icône de la barre d'activité) et en sélectionnant le fichier.
+> Puis sauvez le fichier (*menu Fichier > Enregistrer*).
+{: .a-faire}
 
 Félicitations, vous venez d'écrire votre premier texte en vscode avec un grosse faute de français !
 
-Bon, c'est pas trop de notre faute vu que c'tait pas souligné en rouge. Remédions à cela en ajoutant un dictionnaire à vscode : installez l'extension [Spell Right](https://marketplace.visualstudio.com/items?itemName=ban.spellright) qui ajoute un correcteur orthographique à vscode.
+> Si vous fermez malencontreusement votre onglet (en cliquant sur la croix à droite du nom), vous pouvez toujours retrouver ce fichier en ouvrant l'explorateur (*menu Affichage > Explorateur*, ou en cliquant sur la 1ère icône de la barre d'activité) et en sélectionnant le fichier.
 
-Ouf, "Bnjour" est bien souligné en rouge. Si vous allez dessus avec le curseur, une ampoule jaune va apparaitr : Elle va vous proposer "Bonjour".
+Bon, c'est pas trop de notre faute vu que c'était pas souligné en rouge. Remédions à cela en ajoutant un dictionnaire à vscode : installez l'extension [Spell Right](https://marketplace.visualstudio.com/items?itemName=ban.spellright) qui ajoute un correcteur orthographique à vscode.
 
-> Vous pourrez ajouter les mots nouveaux soit au dictionnaire de l'utilisateur (*user*), soit juste pour ce projet (*workspace*).
+Ouf, "Bnjour" est bien souligné en rouge. Si vous allez dessus avec le curseur, une ampoule jaune va apparaitre : Elle va vous proposer "Bonjour". Vous pourrez ajouter les mots nouveaux soit au dictionnaire de l'utilisateur (*user*), soit juste pour ce projet (*workspace*), mais là ce n'est pas le cas :
+
+> corrigez la faute.
+{: .a-faire}
 
 ### palette de commande {#palette-de-commande}
 
-Ce qu'il y a de bien avec vscode c'est que toute commande est aussi appelable par son nom grâce à la [palette de commande](https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette) : *menu Affichage >  Palette de commandes...*. Vous pouvez taper "save" par exemple pour voir toutes les commandes qui contiennent save, dont celle qui sauve des fichiers *File: Save*. C'est super utile pour trouver une commande dont ne peut que deviner le nom.
+Ce qu'il y a de bien avec vscode c'est que toute commande est aussi appelable par son nom grâce à la [palette de commande](https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette) : *menu Affichage >  Palette de commandes...*. 
+
+Vous pouvez taper *"save"* par exemple pour voir toutes les commandes qui contiennent save, dont celle qui sauve des fichiers *File: Save*. C'est super utile pour trouver une commande dont ne peut que deviner le nom.
 
 > le nom des commandes est en anglais. Tapez donc des mots anglais dans la palette de commandes. Les différentes commandes seront listées sur deux lignes  la première — en Français — décrivant la commande, et la seconde — en anglais — donnant le nom de la commande.
 {: .attention}
 
-Les commandes de la palette de commande sont accessible si la ligne commence par un ">". S'il y a un "?" c'est l'aide et s'il n'y a retrouve des fichiers ouverts.
+Les commandes de la palette de commande sont accessibles si la ligne commence par un ">". S'il y a un "?" c'est l'aide et s'il n'y a rien, cela retrouve des fichiers ouverts.
 
-Par exemple : taper *>spellright* dans la palette de commande. Toutes les commandes relatives au dictionnaire (extesion *spellright*) sont disponibles. En particulier le choix de la langue.
+Par exemple : taper *>spellright* dans la palette de commande. Toutes les commandes relatives au dictionnaire (extension *spellright*) sont disponibles. En particulier le choix de la langue.
 
 ### vscode, les préférences : sauvegarde automatique
 
@@ -115,7 +126,7 @@ La [documentation de vscode sur les préférences](https://code.visualstudio.com
 Personnellement, s'il y a bien une chose qui m'ennuie c'est de constamment sauver mes fichiers. Si je fais une modification de mes fichiers, c'est parce que j'en ai besoin je ne vois pas l'intérêt de devoir sauver pour confirmer. Heureusement, vscode permet (comme tout éditeur qui se respecte) de faire ça en modifiant ses préférences :
 
 > Allez dans les préférences de vscode : *icône engrenage (en bas à gauche de la fenêtre vscode) > Paramètres*.
-{: .note}
+{: .a-faire}
 
 Un onglet nommé *Paramètre* s'ouvre Il contient :
 
@@ -123,7 +134,7 @@ Un onglet nommé *Paramètre* s'ouvre Il contient :
 * deux panels : *Utilisateur* et *Espace de travail*. Par défaut, on est positionné sur *Utilisateur* (c'est en sur-brillance).
 
 >Dans le panel *Utilisateur* choisissez *Editeur de texte > Fichiers* puis cherchez *Auto Save*.
-{: .note}
+{: .a-faire}
 
 On peut ensuite régler ce paramètre sur *afterDelay* puis changer le délai dans le champ *Auto Save Delay*. J'ai mis 5000, ce qui fait qu'après 5 secondes de repos mon fichier est sauvé automatiquement.
 

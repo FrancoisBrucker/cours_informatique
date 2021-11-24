@@ -28,7 +28,6 @@ Un **espace de noms** est un endroit où python stocke les noms. Une variable es
 
 l'interpéteur python va ensuite de temps en temps créer d'autres' espaces de noms, chacun associé à un [bloc]({% link cours/developpement/bases-python/index.md %}#bloc) de code.
 
-
 ## affectation des objets à l'espace de noms
 
 Attardons nous un moment sur ces notions car elles seront cruciales plus tard pour appréhender les possibilités offertes par les objets.

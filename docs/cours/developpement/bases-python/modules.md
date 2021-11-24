@@ -11,6 +11,7 @@ Un *module* (aussi appelé *bibliothèque* ou *library*) est un ensemble de fonc
 
 >Il existe de nombreux modules, réalisant une foultitude d'opérations. Avant de se mettre à coder quelque chose, commencez toujours par vérifier (google
 > est votre ami) s'il n'existe pas un module tout fait, vous gagnerez du temps. Python en fournit déjà de [nombreux](https://docs.python.org/3/library/index.html)
+{: .note}
 
 Pour utiliser un module, il faut commencer par l'importer avec la commande `import`. Par exemple avec le module `math`.
 
@@ -31,6 +32,7 @@ x = math.cos(pi_sur_deux)
 Lors de la ligne `import math` python crée un espace de nom qu'il appelle `math`. Il lit ensuite math avec cet espace de nom. Donc tout ce qui est défini dans math, le sera dasn l'espace de nom nommé `math`. On accède ensuite aux noms de math par la notation `.`.
 
 > la notation `A.B` : se lit ainsi on cherche le nom `B` dans l'espace de nom `A`
+{: .note}
 
 ### Importation d'une méthode particulière
 
@@ -58,7 +60,7 @@ Lors de la ligne `from math import *` python lit le module math **dans** l'espac
 
 ## installer des modules
 
-Suivez le [tutorial des packages]({% post_url /tutos/python/2021-08-20-installation-de-python %}#pckages) dans le guide d'installation de python.
+Suivez le [tutorial des packages]({% post_url /tutos/python/2021-08-20-installation-de-python %}#packages) dans le guide d'installation de python.
 
 ## exécuter un module dans le terminal
 

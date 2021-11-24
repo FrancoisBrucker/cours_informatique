@@ -16,11 +16,12 @@ L'exemple suivant crée une liste de nom `x` qui contient l'entier 1 en 1ère po
 
 ```python
 x = [1, 4, "12"]
-print(x[0]) // va afficher 1
-print(x[2]) // va afficher "12"
+print(x[0]) # va afficher 1
+print(x[2]) # va afficher "12"
 ```
 
 > Les `[]` permettent d'accéder à un indice donné de la liste.
+{: .note}
 
 Les listes, comme les chaines de caractères ont beaucoup de méthodes qui permettent de faire beaucoup d'opérations. Regardez du côté du tutoriel python et de [son complément sur les listes](https://docs.python.org/fr/3/tutorial/datastructures.html#more-on-lists) pour avoir une idées des possibilités.
 
