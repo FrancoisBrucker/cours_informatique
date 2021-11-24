@@ -20,7 +20,7 @@
 <meta name="twitter:card" content="summary">
 <meta property="twitter:title" content="Installation et prise en main de vscode">
 <script type="application/ld+json">
-{"description":"Installation et premières configurations de visual studio code (vsc).","@type":"BlogPosting","headline":"Installation et prise en main de vscode","url":"/cours_informatique/tutos/editeur/vsc/installation/configuration/2021/09/03/vsc-installation-et-prise-en-main.html","dateModified":"2021-09-03T00:00:00+00:00","datePublished":"2021-09-03T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"/cours_informatique/tutos/editeur/vsc/installation/configuration/2021/09/03/vsc-installation-et-prise-en-main.html"},"@context":"https://schema.org"}</script>
+{"description":"Installation et premières configurations de visual studio code (vsc).","@type":"BlogPosting","headline":"Installation et prise en main de vscode","dateModified":"2021-09-03T00:00:00+00:00","datePublished":"2021-09-03T00:00:00+00:00","url":"/cours_informatique/tutos/editeur/vsc/installation/configuration/2021/09/03/vsc-installation-et-prise-en-main.html","mainEntityOfPage":{"@type":"WebPage","@id":"/cours_informatique/tutos/editeur/vsc/installation/configuration/2021/09/03/vsc-installation-et-prise-en-main.html"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
@@ -99,22 +99,30 @@
 </ul>
 
 <blockquote>
-  <p>Les différentes parties de l’interface de la fenêtre  vscode est expliquée <a href="https://code.visualstudio.com/docs/getstarted/userinterface">dans la doc</a>.</p>
+  <p>Les différentes parties de l’interface de la fenêtre  vscode sont expliquées <a href="https://code.visualstudio.com/docs/getstarted/userinterface">dans la doc</a>.</p>
 </blockquote>
 
-<p>Vous devriez aussi avoir un onglet ouvert qui s’appelle <em>welcome</em>. Vous pouvez la fermer en cliquant sur la croix à droite de son nom.</p>
+<p>Vous devriez aussi avoir un onglet ouvert qui s’appelle <em>welcome</em>.</p>
+
+<blockquote class="a-faire">
+  <p>Vous pouvez la fermer en cliquant sur la croix à droite de son nom.</p>
+</blockquote>
 
 <h3 id="extensions">installation d’extensions</h3>
 
 <p>Pour l’instant vscode nous parle anglais. Remédions tout de suite à cela en installant le pack français.</p>
 
-<ol>
-  <li>cliquez sur l’icône de gestion des extensions ou <em>menu View &gt; Extensions</em>.</li>
-  <li>dans la barre de recherche, tapez <em>French Language Pack for Visual Studio Code</em>
+<blockquote class="a-faire">
+
+  <ol>
+    <li>cliquez sur l’icône de gestion des extensions ou <em>menu View &gt; Extensions</em>.</li>
+    <li>dans la barre de recherche, tapez <em>French Language Pack for Visual Studio Code</em>
 </li>
-  <li>cliquez sur l’application correspondante (ça devrait être la première)</li>
-  <li>un onglet détaillant l’extension est apparu  : cliquez sur install pour l’installer. vscode va se redémarrer en français.</li>
-</ol>
+    <li>cliquez sur l’application correspondante (ça devrait être la première)</li>
+    <li>un onglet détaillant l’extension est apparu  : cliquez sur <em>install</em> pour l’installer. vscode va se redémarrer en français.</li>
+  </ol>
+
+</blockquote>
 
 <p><img src="/cours_informatique/assets/tutos/vsc-projets/vsc-extensions.png" alt="extensions vscode" style="margin: auto;display: block"></p>
 
@@ -124,7 +132,7 @@
 
 <h3 id="barre-de-statut">barre de statut</h3>
 
-<blockquote class="note">
+<blockquote class="a-faire">
   <p>Créez un nouveau fichier <em>menu Fichier &gt; Nouveau Fichier</em> et sauvez le de suite : <em>menu Fichier &gt; Enregistrer</em> avec le nom <em>“hello.txt”</em>.</p>
 </blockquote>
 
@@ -142,39 +150,45 @@
 
 <h3 id="dictionnaire">dictionnaire</h3>
 
-<p>Ecrivons du texte dans notre fichier (l’onglet nommé <em>“hello.txt”</em>) :</p>
+<blockquote class="a-faire">
+  <p>Ecrivons du texte dans notre fichier (l’onglet nommé <em>“hello.txt”</em>) :</p>
+</blockquote>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 Bnjour Monde !
 </code></pre></div></div>
 
-<p>Puis sauvez le fichier (<em>menu Fichier &gt; Enregistrer</em>).</p>
+<blockquote class="a-faire">
+  <p>Puis sauvez le fichier (<em>menu Fichier &gt; Enregistrer</em>).</p>
+</blockquote>
+
+<p>Félicitations, vous venez d’écrire votre premier texte en vscode avec un grosse faute de français !</p>
 
 <blockquote>
   <p>Si vous fermez malencontreusement votre onglet (en cliquant sur la croix à droite du nom), vous pouvez toujours retrouver ce fichier en ouvrant l’explorateur (<em>menu Affichage &gt; Explorateur</em>, ou en cliquant sur la 1ère icône de la barre d’activité) et en sélectionnant le fichier.</p>
 </blockquote>
 
-<p>Félicitations, vous venez d’écrire votre premier texte en vscode avec un grosse faute de français !</p>
+<p>Bon, c’est pas trop de notre faute vu que c’était pas souligné en rouge. Remédions à cela en ajoutant un dictionnaire à vscode : installez l’extension <a href="https://marketplace.visualstudio.com/items?itemName=ban.spellright">Spell Right</a> qui ajoute un correcteur orthographique à vscode.</p>
 
-<p>Bon, c’est pas trop de notre faute vu que c’tait pas souligné en rouge. Remédions à cela en ajoutant un dictionnaire à vscode : installez l’extension <a href="https://marketplace.visualstudio.com/items?itemName=ban.spellright">Spell Right</a> qui ajoute un correcteur orthographique à vscode.</p>
+<p>Ouf, “Bnjour” est bien souligné en rouge. Si vous allez dessus avec le curseur, une ampoule jaune va apparaitre : Elle va vous proposer “Bonjour”. Vous pourrez ajouter les mots nouveaux soit au dictionnaire de l’utilisateur (<em>user</em>), soit juste pour ce projet (<em>workspace</em>), mais là ce n’est pas le cas :</p>
 
-<p>Ouf, “Bnjour” est bien souligné en rouge. Si vous allez dessus avec le curseur, une ampoule jaune va apparaitr : Elle va vous proposer “Bonjour”.</p>
-
-<blockquote>
-  <p>Vous pourrez ajouter les mots nouveaux soit au dictionnaire de l’utilisateur (<em>user</em>), soit juste pour ce projet (<em>workspace</em>).</p>
+<blockquote class="a-faire">
+  <p>corrigez la faute.</p>
 </blockquote>
 
 <h3 id="palette-de-commande">palette de commande</h3>
 
-<p>Ce qu’il y a de bien avec vscode c’est que toute commande est aussi appelable par son nom grâce à la <a href="https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette">palette de commande</a> : <em>menu Affichage &gt;  Palette de commandes…</em>. Vous pouvez taper “save” par exemple pour voir toutes les commandes qui contiennent save, dont celle qui sauve des fichiers <em>File: Save</em>. C’est super utile pour trouver une commande dont ne peut que deviner le nom.</p>
+<p>Ce qu’il y a de bien avec vscode c’est que toute commande est aussi appelable par son nom grâce à la <a href="https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette">palette de commande</a> : <em>menu Affichage &gt;  Palette de commandes…</em>.</p>
+
+<p>Vous pouvez taper <em>“save”</em> par exemple pour voir toutes les commandes qui contiennent save, dont celle qui sauve des fichiers <em>File: Save</em>. C’est super utile pour trouver une commande dont ne peut que deviner le nom.</p>
 
 <blockquote class="attention">
   <p>le nom des commandes est en anglais. Tapez donc des mots anglais dans la palette de commandes. Les différentes commandes seront listées sur deux lignes  la première — en Français — décrivant la commande, et la seconde — en anglais — donnant le nom de la commande.</p>
 </blockquote>
 
-<p>Les commandes de la palette de commande sont accessible si la ligne commence par un “&gt;”. S’il y a un “?” c’est l’aide et s’il n’y a retrouve des fichiers ouverts.</p>
+<p>Les commandes de la palette de commande sont accessibles si la ligne commence par un “&gt;”. S’il y a un “?” c’est l’aide et s’il n’y a rien, cela retrouve des fichiers ouverts.</p>
 
-<p>Par exemple : taper <em>&gt;spellright</em> dans la palette de commande. Toutes les commandes relatives au dictionnaire (extesion <em>spellright</em>) sont disponibles. En particulier le choix de la langue.</p>
+<p>Par exemple : taper <em>&gt;spellright</em> dans la palette de commande. Toutes les commandes relatives au dictionnaire (extension <em>spellright</em>) sont disponibles. En particulier le choix de la langue.</p>
 
 <h3 id="vscode-les-préférences--sauvegarde-automatique">vscode, les préférences : sauvegarde automatique</h3>
 
@@ -186,7 +200,7 @@ Bnjour Monde !
 
 <p>Personnellement, s’il y a bien une chose qui m’ennuie c’est de constamment sauver mes fichiers. Si je fais une modification de mes fichiers, c’est parce que j’en ai besoin je ne vois pas l’intérêt de devoir sauver pour confirmer. Heureusement, vscode permet (comme tout éditeur qui se respecte) de faire ça en modifiant ses préférences :</p>
 
-<blockquote class="note">
+<blockquote class="a-faire">
   <p>Allez dans les préférences de vscode : <em>icône engrenage (en bas à gauche de la fenêtre vscode) &gt; Paramètres</em>.</p>
 </blockquote>
 
@@ -197,7 +211,7 @@ Bnjour Monde !
   <li>deux panels : <em>Utilisateur</em> et <em>Espace de travail</em>. Par défaut, on est positionné sur <em>Utilisateur</em> (c’est en sur-brillance).</li>
 </ul>
 
-<blockquote class="note">
+<blockquote class="a-faire">
   <p>Dans le panel <em>Utilisateur</em> choisissez <em>Editeur de texte &gt; Fichiers</em> puis cherchez <em>Auto Save</em>.</p>
 </blockquote>
 

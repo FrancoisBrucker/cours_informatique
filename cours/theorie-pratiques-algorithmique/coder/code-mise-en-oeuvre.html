@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Routine de developpement | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0">
+<meta property="og:title" content="Routine de developpement">
+<meta name="author" content="François Brucker">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille.">
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille.">
+<link rel="canonical" href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/code-mise-en-oeuvre.html">
+<meta property="og:url" content="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/code-mise-en-oeuvre.html">
+<meta property="og:site_name" content="cours d’informatique">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Routine de developpement">
+<script type="application/ld+json">
+{"description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","headline":"Routine de developpement","url":"/cours_informatique/cours/theorie-pratiques-algorithmique/coder/code-mise-en-oeuvre.html","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css">
+
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css">
+<link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique">
+</head>
+
+<body>
+<header class="site-header" role="banner">
+
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/cours_informatique/">cours d'informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav>
+</div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Routine de developpement</h1>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span>
+  </header>
+
+  <div class="post-content">
+    <p>On va créer ici un projet complet visant à compter le pourcentage de <code class="language-plaintext highlighter-rouge">0</code> dans un nombre écrit en binaire.</p>
+
+<p>Le but de ce cours est de dérouler la création et la mise en œuvre d’un projet, petit à petit.</p>
+
+<h2 id="mise-en-place">mise en place</h2>
+
+<h3 id="ouverture-du-dossier">ouverture du dossier</h3>
+
+<p>On crée un projet avec vscode, c’est à dire que l’on ouvre un nouveau dossier que l’on nomme <code class="language-plaintext highlighter-rouge">"pourcentage_binaire"</code>.</p>
+
+<h3 id="créations-des-fichiers">créations des fichiers</h3>
+
+<p>On crée tout de suite nos 3 fichiers (que l’on garde vide pour l’instant) :</p>
+
+<ul>
+  <li>
+<em>“test_pourcentage.py”</em> : notre fichier de test</li>
+  <li>
+<em>“pourcentage.py”</em> : le code</li>
+  <li>
+<em>“main.py”</em> : le programme principal</li>
+</ul>
+
+<h2 id="le-projet">le projet</h2>
+
+<h3 id="le-code">le code</h3>
+
+<p>On veut compter le nombre de <code class="language-plaintext highlighter-rouge">0</code> d’un nombre écrit en binaire.</p>
+
+<p>Fichier <em>“pourcentage.py”</em> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">pourcent</span><span class="p">(</span><span class="n">chaîne_de_caractères</span><span class="p">):</span>
+    <span class="n">nombre_de_0</span> <span class="o">=</span> <span class="n">chaîne_de_caractères</span><span class="p">.</span><span class="n">count</span><span class="p">(</span><span class="s">'0'</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">nombre_de_0</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">chaîne_de_caractères</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<p>Remarquez que l’on ne vérifie pas dans la fonction :</p>
+
+<ul>
+  <li>que notre entrée est une chaîne de caractères</li>
+  <li>que la chaîne est uniquement composée de 0 et de 1</li>
+</ul>
+
+<p>Notre nom de paramètre est explicite, donc s’il y a une erreur c’est de la faute du développeur. Le programme va planter si on met un entier dans <code class="language-plaintext highlighter-rouge">chaîne_de_caractères</code>, puisque les entiers ne connaissent pas la méthode <a href="https://docs.python.org/3/library/stdtypes.html?highlight=count#str.count"><code class="language-plaintext highlighter-rouge">count</code></a> : si les entrées sont spécifiées dans la documentation ou par des nom explicite, ce n’est pas la peine de vérifier dans le code que c’est ok.</p>
+
+<blockquote>
+  <ul>
+    <li>
+<strong>Coding mantra</strong> : il vaut mieux qu’un programme plante plutôt qu’il cache l’erreur (en mettant par exemple 0 si le nom <code class="language-plaintext highlighter-rouge">chaîne_de_caractères</code> n’a pas de méthode <code class="language-plaintext highlighter-rouge">count</code>).</li>
+    <li>
+<strong>pourquoi ?</strong> L’erreur ne va pas partir, elle va juste faire planter le programme autre-part, loin de la réelle erreur. Ce sera donc bien plus dur à trouver.</li>
+  </ul>
+</blockquote>
+
+<h3 id="les-tests">les tests</h3>
+
+<p>Ajoutons des tests. Par exemple, on pourrait tester que :</p>
+
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">"1"</code> rende <code class="language-plaintext highlighter-rouge">0</code>
+</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">"0"</code> rende <code class="language-plaintext highlighter-rouge">1</code>.</li>
+</ul>
+
+<p>Fichier <em>“test_pourcentage.py”</em> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pourcentage</span> <span class="kn">import</span> <span class="n">pourcent</span>
+
+
+<span class="k">def</span> <span class="nf">test_pourcent_0</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">pourcent</span><span class="p">(</span><span class="s">'11'</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+
+
+<span class="k">def</span> <span class="nf">test_pourcent_1</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">pourcent</span><span class="p">(</span><span class="s">'00'</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+
+</code></pre></div></div>
+
+<p>Pour finir, on pourrait ajouter un test un peut plus compliqué : que <code class="language-plaintext highlighter-rouge">"01"</code> rende <code class="language-plaintext highlighter-rouge">.5</code>.</p>
+
+<blockquote class="attention">
+  <p>On va tester des réels, pas des entiers. Rappelez vous que les réels ne le sont pas. Seuls les entiers existent. Voir <a href="https://docs.python.org/fr/3/tutorial/floatingpoint.html">la doc</a>)</p>
+</blockquote>
+
+<p>On ne peut pas écrire directement <code class="language-plaintext highlighter-rouge">assert pourcent('01') == .5</code> (même si là, ça risque de marcher) car si ça se trouve on aura <code class="language-plaintext highlighter-rouge">.499999999</code> à la place de <code class="language-plaintext highlighter-rouge">.5</code>. Lorsque l’on compare des réels c’est toujours à epsilon prêt.</p>
+
+<p>Donc on va utiliser une fonction spéciale de <code class="language-plaintext highlighter-rouge">pytest</code>, qui vérifie si 2 réels sont <em>à peu prêt égaux</em> (par défaut à dix moins six prêt) : <a href="https://docs.pytest.org/en/latest/reference.html#pytest-approx">approx</a> pour ça.</p>
+
+<p>Fichier  <em>“test_pourcentage.py”</em> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pytest</span> <span class="kn">import</span> <span class="n">approx</span>
+
+<span class="kn">from</span> <span class="nn">pourcentage</span> <span class="kn">import</span> <span class="n">pourcent</span>
+
+
+<span class="k">def</span> <span class="nf">test_pourcent_0</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">pourcent</span><span class="p">(</span><span class="s">'11'</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+
+
+<span class="k">def</span> <span class="nf">test_pourcent_1</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">pourcent</span><span class="p">(</span><span class="s">'00'</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+
+
+<span class="k">def</span> <span class="nf">test_pourcent_01</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">pourcent</span><span class="p">(</span><span class="s">'01'</span><span class="p">)</span> <span class="o">==</span> <span class="n">approx</span><span class="p">(.</span><span class="mi">5</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<blockquote>
+  <ul>
+    <li>
+<strong>Coding mantra</strong> : que tester ?</li>
+    <li>
+      <p><strong>réponse</strong> : ce qui est nécessaire pour que <strong>vous</strong> (<em>ie.</em> le développeur) soyez convaincu que votre fonction marche. Ni plus, ni moins.</p>
+    </li>
+    <li>
+<strong>Coding mantra</strong> : pourquoi tester ?</li>
+    <li>
+<strong>réponse</strong> : pour être sûr que le programme fonctionne. Pour permettre d’ajouter rapidement des fonctionnalités sans avoir à <strong>tout</strong> re-tester (les tests sont déjà écrit). Parce que <strong>tout le monde</strong> fait des erreurs. Oui oui, même toi qui te croit fort.</li>
+  </ul>
+</blockquote>
+
+<p>C’est <strong>TOUJOURS</strong> au développeur de la fonction de faire ses tests. Parce qu’il faut que les testent accompagnent le code, pour que l’on soit sur du fonctionnement et puisse coder la suite tranquillement. Si l’on fait les tests à la fin de la journée :</p>
+
+<ul>
+  <li>c’est embêtant</li>
+  <li>si ça se trouve on devra refaire plein de choses car un bug en aura entraîné un autre et tout un tas de fonctions seront à corriger. En faisant les tests dès que la méthode est écrite, on gagne du temps</li>
+  <li>si c’est quelqu’un d’autre qui les fait, comment être sur que ce soit les bons tests ? Qu’ils couvrent bien tout le fonctionnement du code ? Il faut que l’autre personne comprenne également le code. On perd donc du temps puisqu’il faut faire 2 fois le boulot de compréhension.</li>
+</ul>
+
+<blockquote>
+  <ul>
+    <li>
+<strong>Coding mantra</strong> : Pour ma part, je fais du <a href="https://fr.wikipedia.org/wiki/Test_driven_development">TDD</a>. J’écris mes tests <strong>avant</strong> de coder. Celà peut sembler contre intuitif mais c’est super bien car cela permet d’utiliser son code avant de l’écrire. Souvent, en cherchant comment écrire un test, on trouve la bonne façon d’utiliser la fonction que l’on va écrire. Coder la fonction puis l’utiliser dans les tests est alors une perte de temps puisque parfois il faut complètement la réécrire car elle n’est pas pratique à utiliser.</li>
+  </ul>
+</blockquote>
+
+<p>Ce n’est pas le cas ici, mais dans la vraie vie, on ne sais pas trop à quoi va ressemble notre fonction une fois écrite. Le TDD permet d’écrire la fonction petit à petit. Une fois que vous aurez vu la programmation objet tenter <a href="https://francoisbrucker.github.io/cours_informatique/cours/mie/developpement-objet/tdd_et_test_pattern.html">ce tuto</a>.</p>
+
+<h3 id="programme-principal">programme principal</h3>
+
+<p>Fichier “main.py”* :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pourcentage</span> <span class="kn">import</span> <span class="n">pourcent</span>
+
+<span class="n">chaîne</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'Donnez un nombre écrit en binaire :'</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"Votre nombre contient "</span><span class="p">,</span> <span class="n">pourcent</span><span class="p">(</span><span class="n">chaîne</span><span class="p">),</span> <span class="s">"pourcent de 0."</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>On ne vérifie pas que :</p>
+
+<ul>
+  <li>c’est bien un nombre binaire : que donne le code si on ne mets pas un nombre binaire ?</li>
+  <li>il a une longueur non vide : que fait le programme si on appuie sur la touche entrée sans rien écrire ?</li>
+</ul>
+
+<h4 id="correction-dun-bug">correction d’un bug</h4>
+
+<p>Si l’on ne rend rien, le programme plante ! On va corriger notre code et rajouter un test pour être sur que ça n’arrive plus :</p>
+
+<p>dans <em>“test_pourcentage.py”</em>, ajoutez le test :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ...
+</span>
+<span class="k">def</span> <span class="nf">test_pourcent_vide</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">pourcent</span><span class="p">(</span><span class="s">''</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+
+<span class="c1"># ...
+</span></code></pre></div></div>
+
+<blockquote>
+  <p>On a coutume de mettre des <code class="language-plaintext highlighter-rouge"># ...</code> pour dire que le reste du code du fichier n’est pas changé. Ce n’est pas la peine de les copier/coller.</p>
+</blockquote>
+
+<p>Puis on corrige la fonction <code class="language-plaintext highlighter-rouge">pourcent</code> de <em>“pourcentage.py”</em> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ...
+</span>
+<span class="k">def</span> <span class="nf">pourcent</span><span class="p">(</span><span class="n">chaîne_de_caractères</span><span class="p">):</span>
+    <span class="n">nombre_de_0</span> <span class="o">=</span> <span class="n">chaîne_de_caractères</span><span class="p">.</span><span class="n">count</span><span class="p">(</span><span class="s">'0'</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">chaîne_de_caractères</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">nombre_de_0</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">chaîne_de_caractères</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+
+<span class="c1"># ...
+</span></code></pre></div></div>
+
+<h4 id="prise-en-compte-de-lutilisateur">prise en compte de l’utilisateur</h4>
+
+<p>Quand je vous avait dit de ne pas faire de vérification, c’est vrai pour tout ce qui a trait au code utilisé par l’ordinateur. Dès qu’un humain utilise du code, il faut <strong>TOUT</strong> vérifier et faire en sorte qu’il ait la meilleur expérience possible.</p>
+
+<p>Donc ici on pourrait :</p>
+
+<ul>
+  <li>faire rentrer à l’utilisateur un nombre en base 10,</li>
+  <li>lui montrer son nombre en base 2 puis donner son pourcentage</li>
+  <li>il faut ne pas planter et redemander à l’utilisateur de taper un nombre si ce n’est pas un nombre en base 10</li>
+</ul>
+
+<p>On utilise la <a href="https://docs.python.org/3/tutorial/errors.html#handling-exceptions">gestion des erreurs de python</a> pour ça (Cela dépasse un peu le cadre de ce cours, on ira donc pas plus loin que vous montrer que ça existe)</p>
+
+<blockquote>
+  <p><strong>Amélioration possible</strong> : ne s’arrêter que si l’utilisateur tape une chaîne de caractère vide.</p>
+</blockquote>
+
+<p>Fichier <em>“main.py”</em> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pourcentage</span> <span class="kn">import</span> <span class="n">pourcent</span>
+
+<span class="n">correct</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="n">entier</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">while</span> <span class="ow">not</span> <span class="n">correct</span><span class="p">:</span>
+    <span class="n">correct</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="n">chaine</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'Donnez un nombre écrit en base 10 :'</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">entier</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">chaine</span><span class="p">)</span>
+    <span class="k">except</span> <span class="nb">ValueError</span><span class="p">:</span>
+        <span class="n">correct</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"ce n'est pas un nombre. Essayez encore une fois."</span><span class="p">)</span>
+
+<span class="n">nombre_binaire</span> <span class="o">=</span> <span class="nb">bin</span><span class="p">(</span><span class="n">entier</span><span class="p">)[</span><span class="mi">2</span><span class="p">:]</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"Votre nombre"</span><span class="p">,</span>
+      <span class="n">chaine</span><span class="p">,</span> <span class="s">"contient "</span><span class="p">,</span> <span class="n">pourcent</span><span class="p">(</span><span class="n">nombre_binaire</span><span class="p">),</span>
+      <span class="s">"pourent de 0 en base 2 ("</span> <span class="o">+</span> <span class="n">nombre_binaire</span> <span class="o">+</span> <span class="s">")."</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="couverture-de-code">couverture de code</h3>
+
+<p>Pour savoir si nos tests couvrent bien l’ensemble du projet, c’est à dire si les tests passent bien par chaque ligne de code, on utilise des outils de <a href="https://fr.wikipedia.org/wiki/Couverture_de_code">couverture de code</a>.</p>
+
+<blockquote>
+  <p><strong>Attention</strong> : Avoir 100% de couverture de code ne signifie pas que votre projet est bien testé…Juste que les tests ont utilisé toutes les lignes de codes :</p>
+
+  <ul>
+    <li>ça ne prouve pas que les fonctionnalités de votre code sont correctes</li>
+    <li>certaines fonctions n’ont pas besoin d’être testées (comme les constantes ou les affichages à l’écran par exemple)</li>
+  </ul>
+</blockquote>
+
+<p>Suivez le <a href="/cours_informatique/tutos/editeur/vsc/installation/configuration/python/2021/09/14/vsc-python-modules-supplementaires.html#code-coverage">tutoriel d’installation</a> pour mettre en place les outils de coverage.</p>
+
+<p>En tapant <code class="language-plaintext highlighter-rouge">pytest --cov=.</code> dans <a href="https://code.visualstudio.com/docs/editor/integrated-terminal">un terminal</a>, j’obtient le résultat suivant ;</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fbrucker@emma projets/pourcentage_binaire » pytest --cov=.
+=== test session starts ===
+platform darwin -- Python 3.9.1, pytest-6.2.1, py-1.10.0, pluggy-0.13.1
+rootdir: /Users/fbrucker/projets/pourcentage_binaire
+plugins: cov-2.11.1
+collected 4 items
+
+test_pourcentage.py .... [100%]
+
+
+---------- coverage: platform darwin, python 3.9.1-final-0 -----------
+Name                  Stmts   Miss  Cover
+-----------------------------------------
+main.py                  13     13     0%
+pourcentage.py            5      0   100%
+test_pourcentage.py      10      0   100%
+-----------------------------------------
+TOTAL                    28     13    54%
+
+
+=== 4 passed in 0.19s ===
+</code></pre></div></div>
+
+<p>On a regardé la couverture de code des fichiers du dossier <code class="language-plaintext highlighter-rouge">.</code> (c’est à dire le dossier courant) qui ont été lu lors de l’éxecution de pytest (qui regarde tous les fichiers qui commencent par <code class="language-plaintext highlighter-rouge">"test_"</code> et exécutent toutes les fonctions qui commencent par <code class="language-plaintext highlighter-rouge">"test_"</code> dans ceux-ci).</p>
+
+<p>On se rend compte que <code class="language-plaintext highlighter-rouge">"main.py"</code> n’a pas été lu (0% de ses lignes ont été parcourues), et que 100% des lignes de <code class="language-plaintext highlighter-rouge">"pourcentages"</code> ont été lues.</p>
+
+<p>Rajoutons une fonction dans <code class="language-plaintext highlighter-rouge">"pourcentage.py"</code> qui ne sera pas lue dans les tests et voyons la différence</p>
+
+<p>Fichier <em>“pourcentage.py”</em> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ...
+</span>
+<span class="k">def</span> <span class="nf">non_lue</span><span class="p">():</span>
+    <span class="k">pass</span>
+
+<span class="c1">#...
+</span></code></pre></div></div>
+
+<p>J’obtiens maintenant ça :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fbrucker@emma projets/pourcentage_binaire » pytest --cov=.
+=== test session starts ===
+platform darwin -- Python 3.9.1, pytest-6.2.1, py-1.10.0, pluggy-0.13.1
+rootdir: /Users/fbrucker/projets/pourcentage_binaire
+plugins: cov-2.11.1
+collected 4 items                                        
+
+test_pourcentage.py .... [100%]
+
+---------- coverage: platform darwin, python 3.9.1-final-0 -----------
+Name                  Stmts   Miss  Cover
+-----------------------------------------
+main.py                  13     13     0%
+pourcentage.py            7      1    86%
+test_pourcentage.py      10      0   100%
+-----------------------------------------
+TOTAL                    30     14    53%
+
+
+=== 4 passed in 0.19s ===
+</code></pre></div></div>
+
+<p>1 ligne de <code class="language-plaintext highlighter-rouge">"pourcentage.py"</code>  n’est pas lue. C’est le corps de la fonction <code class="language-plaintext highlighter-rouge">non_lue</code>, c’est à dire <code class="language-plaintext highlighter-rouge">pass</code>.</p>
+
+<blockquote>
+  <p>Un rapport détaillé de la couverture est par défaut écrit and le fichier <code class="language-plaintext highlighter-rouge">.coverage</code> (vérifiez, il y en a bien un dans votre dossier).</p>
+</blockquote>
+
+<p>Finissons cette partie en utilisant le coverage avec l’extension vscode : <code class="language-plaintext highlighter-rouge">pytest --cov=. --cov-report xml:cov.xml</code></p>
+
+<p>Regardez le fichier <code class="language-plaintext highlighter-rouge">"pourcentage.py"</code> : il doit avoir de lignes vertes et rouge.</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d'informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d'informatique</li>
+</ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+<ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d'informatique à l'école centrale marseille.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

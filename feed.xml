@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/cours_informatique/feed.xml" rel="self" type="application/atom+xml" /><link href="/cours_informatique/" rel="alternate" type="text/html" /><updated>2021-11-22T12:59:59+00:00</updated><id>/cours_informatique/feed.xml</id><title type="html">cours d’informatique</title><subtitle>Support de cours/td d'informatique à l'école centrale marseille.</subtitle><entry><title type="html">Smartgrid</title><link href="/cours_informatique/tutos/projets/2021/10/28/smartgrid.html" rel="alternate" type="text/html" title="Smartgrid" /><published>2021-10-28T00:00:00+00:00</published><updated>2021-10-28T00:00:00+00:00</updated><id>/cours_informatique/tutos/projets/2021/10/28/smartgrid</id><content type="html" xml:base="/cours_informatique/tutos/projets/2021/10/28/smartgrid.html">&lt;h2 id=&quot;smartgrid&quot;&gt;Smartgrid&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/cours_informatique/feed.xml" rel="self" type="application/atom+xml" /><link href="/cours_informatique/" rel="alternate" type="text/html" /><updated>2021-11-24T10:30:35+00:00</updated><id>/cours_informatique/feed.xml</id><title type="html">cours d’informatique</title><subtitle>Support de cours/td d'informatique à l'école centrale marseille.</subtitle><entry><title type="html">Smartgrid</title><link href="/cours_informatique/tutos/projets/2021/10/28/smartgrid.html" rel="alternate" type="text/html" title="Smartgrid" /><published>2021-10-28T00:00:00+00:00</published><updated>2021-10-28T00:00:00+00:00</updated><id>/cours_informatique/tutos/projets/2021/10/28/smartgrid</id><content type="html" xml:base="/cours_informatique/tutos/projets/2021/10/28/smartgrid.html">&lt;h2 id=&quot;smartgrid&quot;&gt;Smartgrid&lt;/h2&gt;
 
 &lt;h3 id=&quot;présentation-du-jeu&quot;&gt;Présentation du jeu&lt;/h3&gt;
 
@@ -1162,103 +1162,6 @@ hello
 
 &lt;p&gt;Ce tutoriel fait suite au &lt;a href=&quot;/cours_informatique/tutos/editeur/vsc/installation/configuration/python/2021/09/14/vsc-python.html&quot;&gt;tutoriel python et vscode&lt;/a&gt;. Il se consacre à l’installation d’extension non fondamentales mais bien sympathique pour le développement python. avec vscode.&lt;/p&gt;
 
-&lt;h2 id=&quot;linter&quot;&gt;linter&lt;/h2&gt;
-
-&lt;p&gt;Le &lt;a href=&quot;https://code.visualstudio.com/docs/python/linting&quot;&gt;linting en python avec vscode&lt;/a&gt; permet de souligner les fautes de style de python.&lt;/p&gt;
-
-&lt;p&gt;C’est une aide précieuse pour écrire du code qui est à la fois fonctionnel et lisible. Cela permet de supprimer la majorité des problèmes avant l’exécution.&lt;/p&gt;
-
-&lt;p&gt;Il faut installer des plugins pythons spécifiques pour le linting. Il en existe de nombreux. On vous propose ici d’utiliser &lt;a href=&quot;https://pycodestyle.pycqa.org/en/latest/intro.html&quot;&gt;pycodestyle&lt;/a&gt; qui permet de respecter la &lt;a href=&quot;https://www.python.org/dev/peps/pep-0008/&quot;&gt;PEP8&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h3 id=&quot;installation-pycodestyle&quot;&gt;installation&lt;/h3&gt;
-
-&lt;p&gt;Dans un &lt;a href=&quot;/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html&quot;&gt;terminal&lt;/a&gt;, qui peut être &lt;a href=&quot;/cours_informatique/tutos/editeur/vsc/installation/configuration/terminal/2021/09/14/vsc-terminal.html#terminal-integre&quot;&gt;celui de vscode&lt;/a&gt; tapez la commande :&lt;/p&gt;
-
-&lt;details&gt;&lt;summary&gt;sous linux et mac&lt;/summary&gt;&lt;div&gt;
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python3 &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; pip3 &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;pycodestyle
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;/div&gt;&lt;/details&gt;
-
-&lt;details&gt;&lt;summary&gt;sous windows&lt;/summary&gt;&lt;div&gt;
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;pycodestyle
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;/div&gt;&lt;/details&gt;
-
-&lt;p&gt;Une fois ce module python installé, on va pouvoir l’utiliser dans vscode&lt;/p&gt;
-
-&lt;h3 id=&quot;configuration-pycodestyle&quot;&gt;configuration&lt;/h3&gt;
-
-&lt;p&gt;Pour mettre en route le linting via pycodestyle, deux paramètres sont à positionner :&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python.linting.enabled&lt;/code&gt; doit être coché pour mettre en route le linting&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python.linting.pycodestyleEnabled&lt;/code&gt; doit être coché pour utiliser &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pycodestyle&lt;/code&gt; comme linter&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python.linting.pycodestylePath&lt;/code&gt; doit donner le chemin vers &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pycodestyle&lt;/code&gt;. Il est par défaut positionné sur &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pycodestyle&lt;/code&gt; ce qui devrait être correct.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Notez que vous pouvez aussi accéder à ces commande via la &lt;a href=&quot;/cours_informatique/tutos/editeur/vsc/installation/configuration/2021/09/03/vsc-installation-et-prise-en-main.html#palette-de-commande&quot;&gt;palette de commande&lt;/a&gt;,par exemple avec la commande &lt;em&gt;python: enable/disable linting&lt;/em&gt;.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;pycodestyle-dans-le-terminal&quot;&gt;pycodestyle dans le terminal&lt;/h3&gt;
-
-&lt;p&gt;Vous pouvez aussi toujours exécuter la commande &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pycodestyle mon-fichier.py&lt;/code&gt; dans un &lt;a href=&quot;/cours_informatique/tutos/editeur/vsc/installation/configuration/terminal/2021/09/14/vsc-terminal.html#terminal-integre&quot;&gt;terminal intégré&lt;/a&gt; pour obtenir le linting de votre fichier. C’est moins pratique que lorsque vscode le fait puisque la ligne en question n’est pas soulignée dans l’interface.&lt;/p&gt;
-
-&lt;h2 id=&quot;black&quot;&gt;black&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://black.readthedocs.io/en/stable/index.html&quot;&gt;BLack&lt;/a&gt; est un bijou. Ne pas l’utiliser tout le temps est bête.&lt;/p&gt;
-
-&lt;p&gt;Son but est de re-formater sans faute de style tout programme python.&lt;/p&gt;
-
-&lt;h3 id=&quot;installation-black&quot;&gt;installation&lt;/h3&gt;
-
-&lt;p&gt;Dans un &lt;a href=&quot;/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html&quot;&gt;terminal&lt;/a&gt;, qui peut être &lt;a href=&quot;/cours_informatique/tutos/editeur/vsc/installation/configuration/terminal/2021/09/14/vsc-terminal.html#terminal-integre&quot;&gt;celui de vscode&lt;/a&gt; tapez la commande :&lt;/p&gt;
-
-&lt;details&gt;&lt;summary&gt;sous linux et mac&lt;/summary&gt;&lt;div&gt;
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python3 &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; pip3 &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;black
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;/div&gt;&lt;/details&gt;
-
-&lt;details&gt;&lt;summary&gt;sous windows&lt;/summary&gt;&lt;div&gt;
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;black
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;/div&gt;&lt;/details&gt;
-
-&lt;p&gt;Une fois ce module python installé, on va pouvoir l’utiliser dans vscode&lt;/p&gt;
-
-&lt;h3 id=&quot;configuration-black&quot;&gt;configuration&lt;/h3&gt;
-
-&lt;p&gt;A priori tout est ok sans aucune autre configuration sous vscode. On peut lister deux paramètre auxquels faire attention :&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python.formatting.blackPath&lt;/code&gt;: qui vaut &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;black&lt;/code&gt; par défaut&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python.formatting.provider&lt;/code&gt; : qui donne l’outil de formatage de fichier par défaut utilisé, et qui vaut &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;black&lt;/code&gt; par défaut.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;utilisation&quot;&gt;utilisation&lt;/h3&gt;
-
-&lt;p&gt;Si vous avez le paramètre &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;editor.formatOnSave&lt;/code&gt; de coché à chaque sauvegarde de votre fichier, il sera reformaté. Notez que cela ne marche pas si votre fichier est sauvegardé automatiquement après un délai.&lt;/p&gt;
-
-&lt;p&gt;Vous pouvez aussi exécuter la commande &lt;em&gt;format document&lt;/em&gt; dans &lt;a href=&quot;/cours_informatique/tutos/editeur/vsc/installation/configuration/2021/09/03/vsc-installation-et-prise-en-main.html#palette-de-commande&quot;&gt;palette de commande&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h3 id=&quot;black-dans-le-terminal&quot;&gt;black dans le terminal&lt;/h3&gt;
-
-&lt;details&gt;&lt;summary&gt;sous linux et mac&lt;/summary&gt;&lt;div&gt;
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python3 &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; black mon-fichier.py
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;/div&gt;&lt;/details&gt;
-
-&lt;details&gt;&lt;summary&gt;sous windows&lt;/summary&gt;&lt;div&gt;
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; black mon-fichier.py
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;/div&gt;&lt;/details&gt;
-
 &lt;h2 id=&quot;tests&quot;&gt;tests&lt;/h2&gt;
 
 &lt;blockquote&gt;
@@ -1268,7 +1171,7 @@ hello
 &lt;h3 id=&quot;installation-pytest&quot;&gt;installation&lt;/h3&gt;
 
 &lt;details&gt;&lt;summary&gt;sous linux et mac&lt;/summary&gt;&lt;div&gt;
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python3 &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; pip3 &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;pytest
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python3 &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;pytest
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;&lt;/details&gt;
@@ -1310,6 +1213,103 @@ hello
   &lt;p&gt;si la commande &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pytest&lt;/code&gt; n’est pas reconnue, mais que &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python&lt;/code&gt; l’est vous pouvez exécuter &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pytest&lt;/code&gt;, via python en tapant la commande &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python3 -m pytest&lt;/code&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
+&lt;h2 id=&quot;linter&quot;&gt;linter&lt;/h2&gt;
+
+&lt;p&gt;Le &lt;a href=&quot;https://code.visualstudio.com/docs/python/linting&quot;&gt;linting en python avec vscode&lt;/a&gt; permet de souligner les fautes de style de python.&lt;/p&gt;
+
+&lt;p&gt;C’est une aide précieuse pour écrire du code qui est à la fois fonctionnel et lisible. Cela permet de supprimer la majorité des problèmes avant l’exécution.&lt;/p&gt;
+
+&lt;p&gt;Il faut installer des plugins pythons spécifiques pour le linting. Il en existe de nombreux. On vous propose ici d’utiliser &lt;a href=&quot;https://pycodestyle.pycqa.org/en/latest/intro.html&quot;&gt;pycodestyle&lt;/a&gt; qui permet de respecter la &lt;a href=&quot;https://www.python.org/dev/peps/pep-0008/&quot;&gt;PEP8&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;installation-pycodestyle&quot;&gt;installation&lt;/h3&gt;
+
+&lt;p&gt;Dans un &lt;a href=&quot;/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html&quot;&gt;terminal&lt;/a&gt;, qui peut être &lt;a href=&quot;/cours_informatique/tutos/editeur/vsc/installation/configuration/terminal/2021/09/14/vsc-terminal.html#terminal-integre&quot;&gt;celui de vscode&lt;/a&gt; tapez la commande :&lt;/p&gt;
+
+&lt;details&gt;&lt;summary&gt;sous linux et mac&lt;/summary&gt;&lt;div&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python3 &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;pycodestyle
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;/div&gt;&lt;/details&gt;
+
+&lt;details&gt;&lt;summary&gt;sous windows&lt;/summary&gt;&lt;div&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;pycodestyle
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;/div&gt;&lt;/details&gt;
+
+&lt;p&gt;Une fois ce module python installé, on va pouvoir l’utiliser dans vscode&lt;/p&gt;
+
+&lt;h3 id=&quot;configuration-pycodestyle&quot;&gt;configuration&lt;/h3&gt;
+
+&lt;p&gt;Pour mettre en route le linting via pycodestyle, deux paramètres sont à positionner :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python.linting.enabled&lt;/code&gt; doit être coché pour mettre en route le linting&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python.linting.pycodestyleEnabled&lt;/code&gt; doit être coché pour utiliser &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pycodestyle&lt;/code&gt; comme linter&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python.linting.pycodestylePath&lt;/code&gt; doit donner le chemin vers &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pycodestyle&lt;/code&gt;. Il est par défaut positionné sur &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pycodestyle&lt;/code&gt; ce qui devrait être correct.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Notez que vous pouvez aussi accéder à ces commande via la &lt;a href=&quot;/cours_informatique/tutos/editeur/vsc/installation/configuration/2021/09/03/vsc-installation-et-prise-en-main.html#palette-de-commande&quot;&gt;palette de commande&lt;/a&gt;,par exemple avec la commande &lt;em&gt;python: enable/disable linting&lt;/em&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;pycodestyle-dans-le-terminal&quot;&gt;pycodestyle dans le terminal&lt;/h3&gt;
+
+&lt;p&gt;Vous pouvez aussi toujours exécuter la commande &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pycodestyle mon-fichier.py&lt;/code&gt; dans un &lt;a href=&quot;/cours_informatique/tutos/editeur/vsc/installation/configuration/terminal/2021/09/14/vsc-terminal.html#terminal-integre&quot;&gt;terminal intégré&lt;/a&gt; pour obtenir le linting de votre fichier. C’est moins pratique que lorsque vscode le fait puisque la ligne en question n’est pas soulignée dans l’interface.&lt;/p&gt;
+
+&lt;h2 id=&quot;black&quot;&gt;black&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://black.readthedocs.io/en/stable/index.html&quot;&gt;BLack&lt;/a&gt; est un bijou. Ne pas l’utiliser tout le temps est bête.&lt;/p&gt;
+
+&lt;p&gt;Son but est de re-formater sans faute de style tout programme python.&lt;/p&gt;
+
+&lt;h3 id=&quot;installation-black&quot;&gt;installation&lt;/h3&gt;
+
+&lt;p&gt;Dans un &lt;a href=&quot;/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html&quot;&gt;terminal&lt;/a&gt;, qui peut être &lt;a href=&quot;/cours_informatique/tutos/editeur/vsc/installation/configuration/terminal/2021/09/14/vsc-terminal.html#terminal-integre&quot;&gt;celui de vscode&lt;/a&gt; tapez la commande :&lt;/p&gt;
+
+&lt;details&gt;&lt;summary&gt;sous linux et mac&lt;/summary&gt;&lt;div&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python3 &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;black
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;/div&gt;&lt;/details&gt;
+
+&lt;details&gt;&lt;summary&gt;sous windows&lt;/summary&gt;&lt;div&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;black
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;/div&gt;&lt;/details&gt;
+
+&lt;p&gt;Une fois ce module python installé, on va pouvoir l’utiliser dans vscode&lt;/p&gt;
+
+&lt;h3 id=&quot;configuration-black&quot;&gt;configuration&lt;/h3&gt;
+
+&lt;p&gt;A priori tout est ok sans aucune autre configuration sous vscode. On peut lister deux paramètre auxquels faire attention :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python.formatting.blackPath&lt;/code&gt;: qui vaut &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;black&lt;/code&gt; par défaut&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python.formatting.provider&lt;/code&gt; : qui donne l’outil de formatage de fichier par défaut utilisé, et qui vaut &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;black&lt;/code&gt; par défaut.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;utilisation&quot;&gt;utilisation&lt;/h3&gt;
+
+&lt;p&gt;Si vous avez le paramètre &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;editor.formatOnSave&lt;/code&gt; de coché à chaque sauvegarde de votre fichier, il sera reformaté. Notez que cela ne marche pas si votre fichier est sauvegardé automatiquement après un délai.&lt;/p&gt;
+
+&lt;p&gt;Vous pouvez aussi exécuter la commande &lt;em&gt;format document&lt;/em&gt; dans &lt;a href=&quot;/cours_informatique/tutos/editeur/vsc/installation/configuration/2021/09/03/vsc-installation-et-prise-en-main.html#palette-de-commande&quot;&gt;palette de commande&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;black-dans-le-terminal&quot;&gt;black dans le terminal&lt;/h3&gt;
+
+&lt;details&gt;&lt;summary&gt;sous linux et mac&lt;/summary&gt;&lt;div&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python3 &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; black mon-fichier.py
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;/div&gt;&lt;/details&gt;
+
+&lt;details&gt;&lt;summary&gt;sous windows&lt;/summary&gt;&lt;div&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; black mon-fichier.py
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;/div&gt;&lt;/details&gt;
+
 &lt;h2 id=&quot;code-coverage&quot;&gt;couverture de code&lt;/h2&gt;
 
 &lt;p&gt;Permet de voir le code couvert par les tests.&lt;/p&gt;
@@ -1319,7 +1319,7 @@ hello
 &lt;p&gt;On va utiliser le &lt;em&gt;code coverage&lt;/em&gt; de pytest :&lt;/p&gt;
 
 &lt;details&gt;&lt;summary&gt;sous linux et mac&lt;/summary&gt;&lt;div&gt;
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python3 &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; pip3 &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;pytest-cov
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python3 &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;pytest-cov
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;/div&gt;&lt;/details&gt;
@@ -1349,40 +1349,56 @@ hello
 &lt;blockquote&gt;
   &lt;p&gt;Si le petit &lt;em&gt;watch&lt;/em&gt; n’est pas visible, vous pouvez le faire à la main dans avec la &lt;a href=&quot;/cours_informatique/tutos/editeur/vsc/installation/configuration/2021/09/03/vsc-installation-et-prise-en-main.html#palette-de-commande&quot;&gt;palette de commande&lt;/a&gt;)
  &lt;em&gt;Coverage Gutters: Display Coverage&lt;/em&gt;.&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name></name></author><category term="tutos" /><category term="editeur" /><category term="vsc" /><category term="installation" /><category term="configuration" /><category term="python" /><summary type="html">Configuration d’outils supplémentaires pour visual studio code et le développement en python.</summary></entry><entry><title type="html">vsc et python</title><link href="/cours_informatique/tutos/editeur/vsc/installation/configuration/python/2021/09/14/vsc-python.html" rel="alternate" type="text/html" title="vsc et python" /><published>2021-09-14T00:00:00+00:00</published><updated>2021-09-14T00:00:00+00:00</updated><id>/cours_informatique/tutos/editeur/vsc/installation/configuration/python/2021/09/14/vsc-python</id><content type="html" xml:base="/cours_informatique/tutos/editeur/vsc/installation/configuration/python/2021/09/14/vsc-python.html">&lt;p&gt;configuration de  &lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;visual studio code&lt;/a&gt; pour le développement en python.&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name></name></author><category term="tutos" /><category term="editeur" /><category term="vsc" /><category term="installation" /><category term="configuration" /><category term="python" /><summary type="html">Configuration d’outils supplémentaires pour visual studio code et le développement en python.</summary></entry><entry><title type="html">vscode et python</title><link href="/cours_informatique/tutos/editeur/vsc/installation/configuration/python/2021/09/14/vsc-python.html" rel="alternate" type="text/html" title="vscode et python" /><published>2021-09-14T00:00:00+00:00</published><updated>2021-09-14T00:00:00+00:00</updated><id>/cours_informatique/tutos/editeur/vsc/installation/configuration/python/2021/09/14/vsc-python</id><content type="html" xml:base="/cours_informatique/tutos/editeur/vsc/installation/configuration/python/2021/09/14/vsc-python.html">&lt;blockquote class=&quot;chemin&quot;&gt;
+  &lt;p&gt;prérequis&lt;/p&gt;
+
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;/cours_informatique/tutos/editeur/vsc/installation/configuration/2021/09/03/vsc-installation-et-prise-en-main.html&quot;&gt;vscode&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;/cours_informatique/tutos/python/installation/terminal/2021/08/20/installation-de-python.html&quot;&gt;python installation&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+
+&lt;/blockquote&gt;
+
+&lt;p&gt;configuration de  &lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;visual studio code&lt;/a&gt; pour le développement en python.&lt;/p&gt;
 
 &lt;!--more--&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;La documentation officielle a une partie consacrée à python : &lt;a href=&quot;https://code.visualstudio.com/docs/languages/python&quot;&gt;https://code.visualstudio.com/docs/languages/python&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;h2 id=&quot;extension-python-pour-vscode&quot;&gt;extension python pour vscode&lt;/h2&gt;
 
-&lt;h2 id=&quot;extensions&quot;&gt;extensions&lt;/h2&gt;
+&lt;blockquote class=&quot;chemin&quot;&gt;
+  &lt;p&gt;La documentation officielle de vscode a &lt;a href=&quot;https://code.visualstudio.com/docs/languages/python&quot;&gt;une partie consacrée à python&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;p&gt;La principale extension à installer lorsque l’on fait du python est &lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=ms-python.python&quot;&gt;python&lt;/a&gt; développée par microsoft. Il est également recommandé d’installer &lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance&quot;&gt;pylance&lt;/a&gt; (utilitaire puissant d’aide au code).&lt;/p&gt;
 
-&lt;p&gt;Pour installer ces package, rendez vous dans la &lt;a href=&quot;/cours_informatique/tutos/editeur/vsc/installation/configuration/2021/09/03/vsc-installation-et-prise-en-main.html#extensions&quot;&gt;gestion des extensions de vscode&lt;/a&gt;, puis tapez &lt;em&gt;python&lt;/em&gt; dans la barre de recherche. Assurez vous d’installer les package créez par microsoft.&lt;/p&gt;
+&lt;p&gt;Pour installer ces package :&lt;/p&gt;
 
-&lt;h2 id=&quot;execution-python&quot;&gt;exécuter du python&lt;/h2&gt;
-
-&lt;h3 id=&quot;interpréteur&quot;&gt;interpréteur&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;si vous n’avez pas d’interpréteur python par défaut vscode vous demandera de le donner (il vous aide en cherchant lui même des possibilités) lors du premier chargement d’un fichier python.&lt;/p&gt;
+&lt;blockquote class=&quot;a-faire&quot;&gt;
+  &lt;p&gt;Rendez vous dans la &lt;a href=&quot;/cours_informatique/tutos/editeur/vsc/installation/configuration/2021/09/03/vsc-installation-et-prise-en-main.html#extensions&quot;&gt;gestion des extensions de vscode&lt;/a&gt;, puis tapez &lt;em&gt;python&lt;/em&gt; dans la barre de recherche. Assurez vous d’installer les package créez par microsoft.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;Les paramètre de l’interpréteur se trouves dans les paramètres (&lt;em&gt;menu affichage &amp;gt; extensions&lt;/em&gt;) puis, dans l’onglet paramètres, dans le menu &lt;em&gt;extensions &amp;gt; python&lt;/em&gt;. Vous pouvez aussi directement chercher le paramètre dans la barre de recherche.&lt;/p&gt;
+&lt;h2 id=&quot;interpréteur-python&quot;&gt;interpréteur python&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Si vous n’avez pas d’interpréteur python par défaut vscode vous demandera de le donner (il vous aide en cherchant lui même des possibilités) lors du premier chargement d’un fichier python.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Les paramètres de l’interpréteur se trouvent dans &lt;a href=&quot;https://code.visualstudio.com/docs/getstarted/settings&quot;&gt;les paramètres vscode&lt;/a&gt; (sous mac : &lt;em&gt;menu Code &amp;gt; préférences &amp;gt; paramètres&lt;/em&gt; ; sous windows/linux : &lt;em&gt;menu Fichier &amp;gt; préférences &amp;gt; paramètres&lt;/em&gt;) puis, une fois dans l’onglet paramètres allez dans &lt;em&gt;extensions &amp;gt; python&lt;/em&gt; dans le menu de gauche. Les préférences vscode consistent en des variables (&lt;em&gt;ID du paramètre&lt;/em&gt;) à positionner selon ses envies, chaque variable modifiant un comportement de vscode.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Il y a deux fois les mêmes préférences : &lt;strong&gt;utilisateur&lt;/strong&gt; et  &lt;strong&gt;espace de travail&lt;/strong&gt;. Le premier concerne les préférences générales de vscode et le second les préférences du projet courant. Par défaut, modifiez les préférences &lt;strong&gt;utilisateur&lt;/strong&gt;. POur plus d’information, lisez la &lt;a href=&quot;https://code.visualstudio.com/docs/getstarted/settings&quot;&gt;doc&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Il y a deux préférences qu’ils faut a priori modifier :&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python.defaultInterpreterPath&lt;/code&gt; : est le chemin vers l’interpéteur python.&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python.condaPath&lt;/code&gt; : est le chemin vers l’outils conda si vous utilisez la version anaconda de python.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Default Interpreter Path&lt;/strong&gt; dont l’ID est &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python.defaultInterpreterPath&lt;/code&gt;. C’est le chemin vers l’interpéteur python.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Conda Path&lt;/strong&gt; dont l’ID est &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python.condaPath&lt;/code&gt;. C’est le chemin vers le programme &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;conda&lt;/code&gt; si vous utilisez la version anaconda de python.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;En jouant avec les paramètres &lt;em&gt;Users&lt;/em&gt; et de &lt;em&gt;Workspace&lt;/em&gt; vous pouvez avoir un interpréteur différent par projet si vous voulez.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Vous pouvez directement chercher le paramètre en tapant son nom dans la barre de recherche.&lt;/p&gt;
 
-&lt;p&gt;Si vous avez suivi le &lt;a href=&quot;/cours_informatique/tutos/python/installation/anaconda/2021/09/14/installation-anaconda.html&quot;&gt;tutoriel anaconda&lt;/a&gt; pour installer votre système python ces paramètres sont :&lt;/p&gt;
+&lt;p&gt;Si vous avez suivi le &lt;a href=&quot;/cours_informatique/tutos/python/installation/anaconda/2021/09/14/installation-anaconda.html&quot;&gt;tutoriel anaconda&lt;/a&gt;, vérifiez ou faites en sorte que les paramètres soient : pour installer votre système python ces paramètres sont :&lt;/p&gt;
 
 &lt;details&gt;&lt;summary&gt;sous linux&lt;/summary&gt;&lt;div&gt;
 &lt;blockquote class=&quot;note&quot;&gt;
@@ -1407,7 +1423,15 @@ hello
 
 &lt;/div&gt;&lt;/details&gt;
 
-&lt;h3 id=&quot;triangle&quot;&gt;triangle&lt;/h3&gt;
+&lt;blockquote class=&quot;a-faire&quot;&gt;
+  &lt;p&gt;Faites en sorte que les paramètres python soient correct pour votre système.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;execution-python&quot;&gt;exécuter du python&lt;/h2&gt;
+
+&lt;p&gt;Il y a deux façons principales d’exécuter du code python avec vscode. Chacune avec avantages et inconvénients. Il est donc recommandé de toutes les connaitre.&lt;/p&gt;
+
+&lt;h3 id=&quot;triangle-vert&quot;&gt;triangle vert&lt;/h3&gt;
 
 &lt;p&gt;Vous pouvez exécuter l’onglet courant en python en &lt;a href=&quot;https://code.visualstudio.com/docs/python/python-tutorial#_run-hello-world&quot;&gt;cliquant sur le triangle en haut à droite de l’interface&lt;/a&gt;.&lt;/p&gt;
 
@@ -1417,28 +1441,44 @@ hello
 
 &lt;h2 id=&quot;premier-programme&quot;&gt;premier programme&lt;/h2&gt;
 
-&lt;h3 id=&quot;projet-vsc&quot;&gt;projet vsc&lt;/h3&gt;
+&lt;h3 id=&quot;projet-vscode&quot;&gt;projet vscode&lt;/h3&gt;
 
-&lt;p&gt;Créez un dossier nommé &lt;em&gt;“cours-python”&lt;/em&gt; sur votre ordinateur, et ouvrez le avec vscode (&lt;em&gt;menu Fichier &amp;gt; ouvrir…&lt;/em&gt;). Une fois que vous avez dit que vous faisiez confiance au développeur de ce projet, fermez l’onglet &lt;em&gt;Welcome&lt;/em&gt;. Vous pouvez même fermer l’explorer en cliquant sur l’icone en sur-brillance dans la barre d’activité de &lt;a href=&quot;https://code.visualstudio.com/docs/getstarted/userinterface&quot;&gt;l’interface vsc&lt;/a&gt;.&lt;/p&gt;
+&lt;blockquote class=&quot;a-faire&quot;&gt;
+  &lt;p&gt;Créez un dossier nommé &lt;em&gt;“cours-python”&lt;/em&gt; sur votre ordinateur, et ouvrez le avec vscode (&lt;em&gt;menu Fichier &amp;gt; ouvrir le dossier…&lt;/em&gt;).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Une fois que vous avez dit que vous faisiez confiance au développeur de ce projet, fermez l’onglet &lt;em&gt;Welcome&lt;/em&gt;. Vous pouvez même fermer l’explorer en cliquant sur l’icône en sur-brillance dans la barre d’activité de &lt;a href=&quot;https://code.visualstudio.com/docs/getstarted/userinterface&quot;&gt;l’interface vsc&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Nous allons commencer par utiliser le &lt;a href=&quot;/cours_informatique/tutos/editeur/vsc/installation/configuration/terminal/2021/09/14/vsc-terminal.html#terminal-integre&quot;&gt;le terminal intégré&lt;/a&gt; de vscode pour exécuter nos premiers programmes python avant d’écrire nos programmes de plusieurs lignes.&lt;/p&gt;
 
-&lt;h3 id=&quot;interpréteur-python&quot;&gt;interpréteur python&lt;/h3&gt;
+&lt;h3 id=&quot;interpréteur-python-dans-le-terminal-vscode&quot;&gt;interpréteur python dans le terminal vscode&lt;/h3&gt;
 
-&lt;p&gt;Ouvrez un terminal dans vscode (le &lt;a href=&quot;/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html&quot;&gt;terminal&lt;/a&gt; permet d’exéctuer des commandes de votre système) : &lt;em&gt;menu Affichage &amp;gt; Terminal&lt;/em&gt;.&lt;/p&gt;
+&lt;blockquote class=&quot;a-faire&quot;&gt;
+  &lt;p&gt;Ouvrez un terminal dans vscode : &lt;em&gt;menu Affichage &amp;gt; Terminal&lt;/em&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;p&gt;Vous pouvez ensuite taper &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python&lt;/code&gt; sous windows ou &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python3&lt;/code&gt; sous linux et mac pour rentrer dans l’interpréteur python :&lt;/p&gt;
+&lt;p&gt;Le &lt;a href=&quot;/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html&quot;&gt;terminal&lt;/a&gt; permet d’exécuter des commandes de votre système.&lt;/p&gt;
+
+&lt;blockquote class=&quot;a-faire&quot;&gt;
+  &lt;p&gt;taper &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python&lt;/code&gt; sous windows ou &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python3&lt;/code&gt; sous linux et mac pour rentrer dans l’interpréteur python.&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;p&gt;&lt;img src=&quot;/cours_informatique/assets/tutos/vsc-python/python-interpreteur.png&quot; alt=&quot;interpreteur&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;une-première-ligne-de-python&quot;&gt;une première ligne de python&lt;/h4&gt;
 
-&lt;p&gt;Dans l’interpréteur (à côté des &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/code&gt;, qu’on appelle &lt;a href=&quot;https://fr.wikipedia.org/wiki/Interface_en_ligne_de_commande&quot;&gt;invite de commande ou prompt&lt;/a&gt;), tapez :&lt;/p&gt;
+&lt;p&gt;Dans l’interpréteur (à côté des &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/code&gt;, qu’on appelle &lt;a href=&quot;https://fr.wikipedia.org/wiki/Interface_en_ligne_de_commande&quot;&gt;invite de commande ou prompt&lt;/a&gt;) :&lt;/p&gt;
 
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Bonjour monde !&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;blockquote class=&quot;a-faire&quot;&gt;
+  &lt;p&gt;tapez :&lt;/p&gt;
 
-&lt;p&gt;Puis appuyez sur la touche entrée. Vous devriez avoir quelque chose du genre à la sortie :&lt;/p&gt;
+  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Bonjour monde !&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+
+  &lt;p&gt;Puis appuyez sur la touche entrée.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Vous devriez avoir quelque chose du genre à la sortie :&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/cours_informatique/assets/tutos/vsc-python/python-hello-world-interpreteur.png&quot; alt=&quot;hello world&quot; /&gt;&lt;/p&gt;
 
@@ -1446,32 +1486,133 @@ hello
 
 &lt;h4 id=&quot;quitter-linterpréteur&quot;&gt;quitter l’interpréteur&lt;/h4&gt;
 
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;sb&quot;&gt;`quit()`&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Pour quitter l’interpréteur python :&lt;/p&gt;
+
+&lt;blockquote class=&quot;a-faire&quot;&gt;
+  &lt;p&gt;Tapez &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;quit()&lt;/code&gt; puis appuyez sur la touche entrée.&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;h3 id=&quot;création-dun-fichier&quot;&gt;création d’un fichier&lt;/h3&gt;
 
-&lt;p&gt;Créez un fichier &lt;em&gt;“programme.py”&lt;/em&gt; (&lt;em&gt;menu Fichier &amp;gt; New File&lt;/em&gt; puis sauvez le immédiatement &lt;em&gt;menu Fichier &amp;gt; Save&lt;/em&gt;).&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Si vous n’avez pas encore configuré python, vscode va vous demander de configurer son &lt;a href=&quot;/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html&quot;&gt;environnement python&lt;/a&gt;.&lt;/p&gt;
+&lt;blockquote class=&quot;a-faire&quot;&gt;
+  &lt;p&gt;Créez un fichier &lt;em&gt;“programme.py”&lt;/em&gt; (&lt;em&gt;menu Fichier &amp;gt; New File&lt;/em&gt; puis sauvez le immédiatement &lt;em&gt;menu Fichier &amp;gt; Save&lt;/em&gt;).&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;Tapez dans le fichier ouvert  dans vscode :&lt;/p&gt;
+&lt;p&gt;Si vous n’avez pas encore configuré python, vscode va vous demander le faire.&lt;/p&gt;
 
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Bonjour monde !&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;blockquote class=&quot;a-faire&quot;&gt;
+  &lt;p&gt;Ecrivez dans le fichier ouvert dans vscode :&lt;/p&gt;
+
+  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Bonjour monde !&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+
+&lt;/blockquote&gt;
 
 &lt;p&gt;Vous pouvez alors l’exécuter :&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;dans le terminal en tapant : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python programme.py&lt;/code&gt; ou &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python3 programme.py&lt;/code&gt; selon le nom de votre interpréteur&lt;/li&gt;
-  &lt;li&gt;en cliquant sur &lt;a href=&quot;https://code.visualstudio.com/docs/python/python-tutorial#_run-hello-world&quot;&gt;le triangle en haut à droite de la fenêtre vsc&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;blockquote class=&quot;a-faire&quot;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;dans le terminal en tapant : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python programme.py&lt;/code&gt; ou &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python3 programme.py&lt;/code&gt; selon le nom de votre interpréteur&lt;/li&gt;
+    &lt;li&gt;en cliquant sur &lt;a href=&quot;https://code.visualstudio.com/docs/python/python-tutorial#_run-hello-world&quot;&gt;le triangle en haut à droite de la fenêtre vsc&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
 
 &lt;p&gt;Remarquez que lorsque vous exécutez votre programme via la seconde solution, cela crée un nouveau terminal qui s’appelle &lt;em&gt;Python&lt;/em&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/cours_informatique/assets/tutos/vsc-python/python-interpreteur-execution-python.png&quot; alt=&quot;hello world&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><category term="tutos" /><category term="editeur" /><category term="vsc" /><category term="installation" /><category term="configuration" /><category term="python" /><summary type="html">configuration de visual studio code pour le développement en python.</summary></entry><entry><title type="html">vsc et terminal</title><link href="/cours_informatique/tutos/editeur/vsc/installation/configuration/terminal/2021/09/14/vsc-terminal.html" rel="alternate" type="text/html" title="vsc et terminal" /><published>2021-09-14T00:00:00+00:00</published><updated>2021-09-14T00:00:00+00:00</updated><id>/cours_informatique/tutos/editeur/vsc/installation/configuration/terminal/2021/09/14/vsc-terminal</id><content type="html" xml:base="/cours_informatique/tutos/editeur/vsc/installation/configuration/terminal/2021/09/14/vsc-terminal.html">&lt;p&gt;Les différentes manières d’invoquer un terminal avec  &lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;visual studio code&lt;/a&gt; (vsc)
+&lt;p&gt;&lt;img src=&quot;/cours_informatique/assets/tutos/vsc-python/python-interpreteur-execution-python.png&quot; alt=&quot;hello world&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;outils-indispensables&quot;&gt;outils indispensables&lt;/h2&gt;
+
+&lt;p&gt;Il existe de nombreux plugins de vscode que l’on peut utiliser pour coder en python. Nous en montrerons deux ici, indispensables pour bien coder.&lt;/p&gt;
+
+&lt;h3 id=&quot;tests&quot;&gt;tests&lt;/h3&gt;
+
+&lt;blockquote class=&quot;chemin&quot;&gt;
+  &lt;p&gt;&lt;a href=&quot;https://code.visualstudio.com/docs/python/testing&quot;&gt;tests avec vscode&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Nous usilisons &lt;a href=&quot;https://docs.pytest.org/&quot;&gt;pytest&lt;/a&gt; comme bibliothèque de test.&lt;/p&gt;
+
+&lt;h4 id=&quot;installation-pytest&quot;&gt;installation&lt;/h4&gt;
+
+&lt;details&gt;&lt;summary&gt;sous linux et mac&lt;/summary&gt;&lt;div&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python3 &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;pytest
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;/div&gt;&lt;/details&gt;
+
+&lt;details&gt;&lt;summary&gt;sous windows&lt;/summary&gt;&lt;div&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;pytest
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;/div&gt;&lt;/details&gt;
+
+&lt;h4 id=&quot;configuration-pytest&quot;&gt;configuration&lt;/h4&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;dans les préférences (&lt;em&gt;menu file/code &amp;gt; Préferences &amp;gt; settings&lt;/em&gt;) tapez &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python.testing.pytestEnabled&lt;/code&gt;  dans la barre de recherche et cochez la case. Ceci dit à vscode que notre framework de test est pytest (il y en a d’autres possible comme &lt;a href=&quot;https://docs.python.org/fr/3.9/library/unittest.html&quot;&gt;unittest&lt;/a&gt; ou encore &lt;a href=&quot;https://nose.readthedocs.io/en/latest/&quot;&gt;nosetests&lt;/a&gt;, mais on ne va pas les utiliser. Assurez vous cependant qu’un seul framework de test soit utilisé à la fois. Ca devrait être le cas si vous n’avez pas cliqué un peu partout).&lt;/li&gt;
+  &lt;li&gt;on configure les tests de notre projet en tapant la commande (dans la &lt;a href=&quot;/cours_informatique/tutos/editeur/vsc/installation/configuration/2021/09/03/vsc-installation-et-prise-en-main.html#palette-de-commande&quot;&gt;palette de commande&lt;/a&gt;) : &lt;em&gt;python : Configure tests&lt;/em&gt; on choisit &lt;em&gt;pytest&lt;/em&gt; puis &lt;em&gt;. (root)&lt;/em&gt; qui donne le dossier de départ où aller chercher nos tests&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;utilisation-pytest&quot;&gt;utilisation&lt;/h4&gt;
+
+&lt;p&gt;On peut utiliser les tests directement avec vscode en ouvrant la fenêtre de tests avec &lt;em&gt;Menu Affichage testing&lt;/em&gt; (le petit erlenmeyer de la &lt;a href=&quot;https://code.visualstudio.com/docs/getstarted/userinterface&quot;&gt;barre d’activité&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;En suite le menu &lt;em&gt;TESTING&lt;/em&gt; en haut de cette nouvelle fenêtre vous permet :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;redécouvrir les tests&lt;/li&gt;
+  &lt;li&gt;exécutez les tests.&lt;/li&gt;
+  &lt;li&gt;…&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/cours_informatique/assets/tutos/vsc-python/python-pytest-env.png&quot; alt=&quot;tests&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;On pet également directement utiliser pytest avec le terminal, en tapant &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python -m pytest&lt;/code&gt; (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python3 -m pytest&lt;/code&gt; si votre interpréteur est &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python3&lt;/code&gt;) alors que vous êtes dans le dossier du projet.&lt;/p&gt;
+
+&lt;h3 id=&quot;linter&quot;&gt;linter&lt;/h3&gt;
+
+&lt;p&gt;Le &lt;a href=&quot;https://code.visualstudio.com/docs/python/linting&quot;&gt;linting en python avec vscode&lt;/a&gt; permet de souligner les fautes de style de python.&lt;/p&gt;
+
+&lt;p&gt;C’est une aide précieuse pour écrire du code qui est à la fois fonctionnel et lisible. Cela permet de supprimer la majorité des problèmes avant l’exécution.&lt;/p&gt;
+
+&lt;p&gt;Il faut installer des plugins pythons spécifiques pour le linting. Il en existe de nombreux. On vous propose ici d’utiliser &lt;a href=&quot;https://pycodestyle.pycqa.org/en/latest/intro.html&quot;&gt;pycodestyle&lt;/a&gt; qui permet de respecter la &lt;a href=&quot;https://www.python.org/dev/peps/pep-0008/&quot;&gt;PEP8&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h4 id=&quot;installation-pycodestyle&quot;&gt;installation&lt;/h4&gt;
+
+&lt;p&gt;Dans un &lt;a href=&quot;/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html&quot;&gt;terminal&lt;/a&gt;, qui peut être &lt;a href=&quot;/cours_informatique/tutos/editeur/vsc/installation/configuration/terminal/2021/09/14/vsc-terminal.html#terminal-integre&quot;&gt;celui de vscode&lt;/a&gt; tapez la commande :&lt;/p&gt;
+
+&lt;details&gt;&lt;summary&gt;sous linux et mac&lt;/summary&gt;&lt;div&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python3 &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;pycodestyle
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;/div&gt;&lt;/details&gt;
+
+&lt;details&gt;&lt;summary&gt;sous windows&lt;/summary&gt;&lt;div&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;pycodestyle
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;/div&gt;&lt;/details&gt;
+
+&lt;p&gt;Une fois ce module python installé, on va pouvoir l’utiliser dans vscode&lt;/p&gt;
+
+&lt;h4 id=&quot;configuration-pycodestyle&quot;&gt;configuration&lt;/h4&gt;
+
+&lt;p&gt;Pour mettre en route le linting via pycodestyle, deux paramètres sont à positionner :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python.linting.enabled&lt;/code&gt; doit être coché pour mettre en route le linting&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python.linting.pycodestyleEnabled&lt;/code&gt; doit être coché pour utiliser &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pycodestyle&lt;/code&gt; comme linter&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python.linting.pycodestylePath&lt;/code&gt; doit donner le chemin vers &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pycodestyle&lt;/code&gt;. Il est par défaut positionné sur &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pycodestyle&lt;/code&gt; ce qui devrait être correct.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Notez que vous pouvez aussi accéder à ces commande via la &lt;a href=&quot;/cours_informatique/tutos/editeur/vsc/installation/configuration/2021/09/03/vsc-installation-et-prise-en-main.html#palette-de-commande&quot;&gt;palette de commande&lt;/a&gt;,par exemple avec la commande &lt;em&gt;python: enable/disable linting&lt;/em&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;pycodestyle-dans-le-terminal&quot;&gt;pycodestyle dans le terminal&lt;/h4&gt;
+
+&lt;p&gt;Vous pouvez aussi toujours exécuter la commande &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pycodestyle mon-fichier.py&lt;/code&gt;  dans un &lt;a href=&quot;/cours_informatique/tutos/editeur/vsc/installation/configuration/terminal/2021/09/14/vsc-terminal.html#terminal-integre&quot;&gt;terminal intégré&lt;/a&gt; pour obtenir le linting de votre fichier. C’est moins pratique que lorsque vscode le fait puisque la ligne en question n’est pas soulignée dans l’interface.&lt;/p&gt;</content><author><name></name></author><category term="tutos" /><category term="editeur" /><category term="vsc" /><category term="installation" /><category term="configuration" /><category term="python" /><summary type="html">prérequis vscode python installation</summary></entry><entry><title type="html">vsc et terminal</title><link href="/cours_informatique/tutos/editeur/vsc/installation/configuration/terminal/2021/09/14/vsc-terminal.html" rel="alternate" type="text/html" title="vsc et terminal" /><published>2021-09-14T00:00:00+00:00</published><updated>2021-09-14T00:00:00+00:00</updated><id>/cours_informatique/tutos/editeur/vsc/installation/configuration/terminal/2021/09/14/vsc-terminal</id><content type="html" xml:base="/cours_informatique/tutos/editeur/vsc/installation/configuration/terminal/2021/09/14/vsc-terminal.html">&lt;p&gt;Les différentes manières d’invoquer un terminal avec  &lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;visual studio code&lt;/a&gt; (vsc)
 &lt;!--more--&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;terminal&quot;&gt;terminal&lt;/h2&gt;
@@ -1732,21 +1873,29 @@ Je pense que c’est comme mac, mais pas sur.&lt;/p&gt;
 &lt;/ul&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;Les différentes parties de l’interface de la fenêtre  vscode est expliquée &lt;a href=&quot;https://code.visualstudio.com/docs/getstarted/userinterface&quot;&gt;dans la doc&lt;/a&gt;.&lt;/p&gt;
+  &lt;p&gt;Les différentes parties de l’interface de la fenêtre  vscode sont expliquées &lt;a href=&quot;https://code.visualstudio.com/docs/getstarted/userinterface&quot;&gt;dans la doc&lt;/a&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;Vous devriez aussi avoir un onglet ouvert qui s’appelle &lt;em&gt;welcome&lt;/em&gt;. Vous pouvez la fermer en cliquant sur la croix à droite de son nom.&lt;/p&gt;
+&lt;p&gt;Vous devriez aussi avoir un onglet ouvert qui s’appelle &lt;em&gt;welcome&lt;/em&gt;.&lt;/p&gt;
+
+&lt;blockquote class=&quot;a-faire&quot;&gt;
+  &lt;p&gt;Vous pouvez la fermer en cliquant sur la croix à droite de son nom.&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;h3 id=&quot;extensions&quot;&gt;installation d’extensions&lt;/h3&gt;
 
 &lt;p&gt;Pour l’instant vscode nous parle anglais. Remédions tout de suite à cela en installant le pack français.&lt;/p&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;cliquez sur l’icône de gestion des extensions ou &lt;em&gt;menu View &amp;gt; Extensions&lt;/em&gt;.&lt;/li&gt;
-  &lt;li&gt;dans la barre de recherche, tapez &lt;em&gt;French Language Pack for Visual Studio Code&lt;/em&gt;&lt;/li&gt;
-  &lt;li&gt;cliquez sur l’application correspondante (ça devrait être la première)&lt;/li&gt;
-  &lt;li&gt;un onglet détaillant l’extension est apparu  : cliquez sur install pour l’installer. vscode va se redémarrer en français.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;blockquote class=&quot;a-faire&quot;&gt;
+
+  &lt;ol&gt;
+    &lt;li&gt;cliquez sur l’icône de gestion des extensions ou &lt;em&gt;menu View &amp;gt; Extensions&lt;/em&gt;.&lt;/li&gt;
+    &lt;li&gt;dans la barre de recherche, tapez &lt;em&gt;French Language Pack for Visual Studio Code&lt;/em&gt;&lt;/li&gt;
+    &lt;li&gt;cliquez sur l’application correspondante (ça devrait être la première)&lt;/li&gt;
+    &lt;li&gt;un onglet détaillant l’extension est apparu  : cliquez sur &lt;em&gt;install&lt;/em&gt; pour l’installer. vscode va se redémarrer en français.&lt;/li&gt;
+  &lt;/ol&gt;
+
+&lt;/blockquote&gt;
 
 &lt;p&gt;&lt;img src=&quot;/cours_informatique/assets/tutos/vsc-projets/vsc-extensions.png&quot; alt=&quot;extensions vscode&quot; style=&quot;margin: auto;display: block&quot; /&gt;&lt;/p&gt;
 
@@ -1756,7 +1905,7 @@ Je pense que c’est comme mac, mais pas sur.&lt;/p&gt;
 
 &lt;h3 id=&quot;barre-de-statut&quot;&gt;barre de statut&lt;/h3&gt;
 
-&lt;blockquote class=&quot;note&quot;&gt;
+&lt;blockquote class=&quot;a-faire&quot;&gt;
   &lt;p&gt;Créez un nouveau fichier &lt;em&gt;menu Fichier &amp;gt; Nouveau Fichier&lt;/em&gt; et sauvez le de suite : &lt;em&gt;menu Fichier &amp;gt; Enregistrer&lt;/em&gt; avec le nom &lt;em&gt;“hello.txt”&lt;/em&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -1774,39 +1923,45 @@ Je pense que c’est comme mac, mais pas sur.&lt;/p&gt;
 
 &lt;h3 id=&quot;dictionnaire&quot;&gt;dictionnaire&lt;/h3&gt;
 
-&lt;p&gt;Ecrivons du texte dans notre fichier (l’onglet nommé &lt;em&gt;“hello.txt”&lt;/em&gt;) :&lt;/p&gt;
+&lt;blockquote class=&quot;a-faire&quot;&gt;
+  &lt;p&gt;Ecrivons du texte dans notre fichier (l’onglet nommé &lt;em&gt;“hello.txt”&lt;/em&gt;) :&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;div class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
 Bnjour Monde !
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Puis sauvez le fichier (&lt;em&gt;menu Fichier &amp;gt; Enregistrer&lt;/em&gt;).&lt;/p&gt;
+&lt;blockquote class=&quot;a-faire&quot;&gt;
+  &lt;p&gt;Puis sauvez le fichier (&lt;em&gt;menu Fichier &amp;gt; Enregistrer&lt;/em&gt;).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Félicitations, vous venez d’écrire votre premier texte en vscode avec un grosse faute de français !&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;Si vous fermez malencontreusement votre onglet (en cliquant sur la croix à droite du nom), vous pouvez toujours retrouver ce fichier en ouvrant l’explorateur (&lt;em&gt;menu Affichage &amp;gt; Explorateur&lt;/em&gt;, ou en cliquant sur la 1ère icône de la barre d’activité) et en sélectionnant le fichier.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;Félicitations, vous venez d’écrire votre premier texte en vscode avec un grosse faute de français !&lt;/p&gt;
+&lt;p&gt;Bon, c’est pas trop de notre faute vu que c’était pas souligné en rouge. Remédions à cela en ajoutant un dictionnaire à vscode : installez l’extension &lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=ban.spellright&quot;&gt;Spell Right&lt;/a&gt; qui ajoute un correcteur orthographique à vscode.&lt;/p&gt;
 
-&lt;p&gt;Bon, c’est pas trop de notre faute vu que c’tait pas souligné en rouge. Remédions à cela en ajoutant un dictionnaire à vscode : installez l’extension &lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=ban.spellright&quot;&gt;Spell Right&lt;/a&gt; qui ajoute un correcteur orthographique à vscode.&lt;/p&gt;
+&lt;p&gt;Ouf, “Bnjour” est bien souligné en rouge. Si vous allez dessus avec le curseur, une ampoule jaune va apparaitre : Elle va vous proposer “Bonjour”. Vous pourrez ajouter les mots nouveaux soit au dictionnaire de l’utilisateur (&lt;em&gt;user&lt;/em&gt;), soit juste pour ce projet (&lt;em&gt;workspace&lt;/em&gt;), mais là ce n’est pas le cas :&lt;/p&gt;
 
-&lt;p&gt;Ouf, “Bnjour” est bien souligné en rouge. Si vous allez dessus avec le curseur, une ampoule jaune va apparaitr : Elle va vous proposer “Bonjour”.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Vous pourrez ajouter les mots nouveaux soit au dictionnaire de l’utilisateur (&lt;em&gt;user&lt;/em&gt;), soit juste pour ce projet (&lt;em&gt;workspace&lt;/em&gt;).&lt;/p&gt;
+&lt;blockquote class=&quot;a-faire&quot;&gt;
+  &lt;p&gt;corrigez la faute.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h3 id=&quot;palette-de-commande&quot;&gt;palette de commande&lt;/h3&gt;
 
-&lt;p&gt;Ce qu’il y a de bien avec vscode c’est que toute commande est aussi appelable par son nom grâce à la &lt;a href=&quot;https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette&quot;&gt;palette de commande&lt;/a&gt; : &lt;em&gt;menu Affichage &amp;gt;  Palette de commandes…&lt;/em&gt;. Vous pouvez taper “save” par exemple pour voir toutes les commandes qui contiennent save, dont celle qui sauve des fichiers &lt;em&gt;File: Save&lt;/em&gt;. C’est super utile pour trouver une commande dont ne peut que deviner le nom.&lt;/p&gt;
+&lt;p&gt;Ce qu’il y a de bien avec vscode c’est que toute commande est aussi appelable par son nom grâce à la &lt;a href=&quot;https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette&quot;&gt;palette de commande&lt;/a&gt; : &lt;em&gt;menu Affichage &amp;gt;  Palette de commandes…&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Vous pouvez taper &lt;em&gt;“save”&lt;/em&gt; par exemple pour voir toutes les commandes qui contiennent save, dont celle qui sauve des fichiers &lt;em&gt;File: Save&lt;/em&gt;. C’est super utile pour trouver une commande dont ne peut que deviner le nom.&lt;/p&gt;
 
 &lt;blockquote class=&quot;attention&quot;&gt;
   &lt;p&gt;le nom des commandes est en anglais. Tapez donc des mots anglais dans la palette de commandes. Les différentes commandes seront listées sur deux lignes  la première — en Français — décrivant la commande, et la seconde — en anglais — donnant le nom de la commande.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;Les commandes de la palette de commande sont accessible si la ligne commence par un “&amp;gt;”. S’il y a un “?” c’est l’aide et s’il n’y a retrouve des fichiers ouverts.&lt;/p&gt;
+&lt;p&gt;Les commandes de la palette de commande sont accessibles si la ligne commence par un “&amp;gt;”. S’il y a un “?” c’est l’aide et s’il n’y a rien, cela retrouve des fichiers ouverts.&lt;/p&gt;
 
-&lt;p&gt;Par exemple : taper &lt;em&gt;&amp;gt;spellright&lt;/em&gt; dans la palette de commande. Toutes les commandes relatives au dictionnaire (extesion &lt;em&gt;spellright&lt;/em&gt;) sont disponibles. En particulier le choix de la langue.&lt;/p&gt;
+&lt;p&gt;Par exemple : taper &lt;em&gt;&amp;gt;spellright&lt;/em&gt; dans la palette de commande. Toutes les commandes relatives au dictionnaire (extension &lt;em&gt;spellright&lt;/em&gt;) sont disponibles. En particulier le choix de la langue.&lt;/p&gt;
 
 &lt;h3 id=&quot;vscode-les-préférences--sauvegarde-automatique&quot;&gt;vscode, les préférences : sauvegarde automatique&lt;/h3&gt;
 
@@ -1818,7 +1973,7 @@ Bnjour Monde !
 
 &lt;p&gt;Personnellement, s’il y a bien une chose qui m’ennuie c’est de constamment sauver mes fichiers. Si je fais une modification de mes fichiers, c’est parce que j’en ai besoin je ne vois pas l’intérêt de devoir sauver pour confirmer. Heureusement, vscode permet (comme tout éditeur qui se respecte) de faire ça en modifiant ses préférences :&lt;/p&gt;
 
-&lt;blockquote class=&quot;note&quot;&gt;
+&lt;blockquote class=&quot;a-faire&quot;&gt;
   &lt;p&gt;Allez dans les préférences de vscode : &lt;em&gt;icône engrenage (en bas à gauche de la fenêtre vscode) &amp;gt; Paramètres&lt;/em&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -1829,7 +1984,7 @@ Bnjour Monde !
   &lt;li&gt;deux panels : &lt;em&gt;Utilisateur&lt;/em&gt; et &lt;em&gt;Espace de travail&lt;/em&gt;. Par défaut, on est positionné sur &lt;em&gt;Utilisateur&lt;/em&gt; (c’est en sur-brillance).&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;blockquote class=&quot;note&quot;&gt;
+&lt;blockquote class=&quot;a-faire&quot;&gt;
   &lt;p&gt;Dans le panel &lt;em&gt;Utilisateur&lt;/em&gt; choisissez &lt;em&gt;Editeur de texte &amp;gt; Fichiers&lt;/em&gt; puis cherchez &lt;em&gt;Auto Save&lt;/em&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;
 
