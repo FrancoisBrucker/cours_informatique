@@ -160,7 +160,7 @@ On a importé le nom `bonjour` défini dans le fichier *"le_code.py"* grâce à 
 ```python
 import le_code
 
-le_code.bonjour()
+print(le_code.bonjour())
 
 ```
 
@@ -184,61 +184,198 @@ On y reviendra plus tard et à de nombreuses reprise :
 > les tests sont la pierre angulaire d'une bonne programmation : ils garantissent le fonctionnement de votre code et qu'[il ne peut régresser](https://blog.octo.com/via-negativa-tdd-et-la-conception-de-logiciel/).
 {: .note}
 
-### test des tests
+Les tests sont de petites fonctions dont le but est de *tester* une fonctionnalité du programme (souvent le résultat de l'exécution d'une fonction). Le test consiste en une [assertion](https://fr.wikipedia.org/wiki/Assertion) que l'on veut être vraie si que le code fonctionne. Si l'assertion est fausse c'est qu'il y a un bug.
 
-On va vérifier que tout fonctionne. On lance les tests en tapant la commande `python -m pytest` dans un terminal.
+### la commande assert
 
-> pytest exécute toutes les fonctions commençant par `test_` de tous les fichiers commençant par `test_` d'un projet.
+On utilise en python la commande [assert](https://docs.python.org/fr/3/reference/simple_stmts.html#the-assert-statement). Elle fonctionne ainsi :
+
+```text
+assert <expression logique>
+```
+
+Si l'expression logique est vraie, le programme continue sans rien dire et si l'expression logique est fausse, le programme s'arrête avec l'erreur : `AssertionError`. 
+
+Essayons ça avec la plus simple des expression logique : `True`
+
+> créez un fichier nommé *test_projet.py* qui contiendra le code :
+>
+>```python
+>print("avant l'assert")
+>
+>assert True
+>
+>print("après l'assert")
+>
+>```
+>
+> Exécutez-le.
+>
+{: .a-faire}
+
+Lorsque vous exécutez ce fichier, vous devez obtenir le résultat suivant :
+
+```text
+avant l'assert
+après l'assert
+```
+
+La condition logique étant vraie, la commande `assert` n'a rien fait.
+
+Changeons ça en mettant une condition logique fausse :
+
+> Modifiez *test_projet.py* pour qu'il contienne le code :
+>
+>```python
+>print("avant l'assert")
+>
+>assert False
+>
+>print("après l'assert")
+>
+>```
+>
+> Exécutez-le.
+>
+{: .a-faire}
+
+Vous devez obtenir le résultat suivant :
+
+```text
+avant l'assert
+Traceback (most recent call last):
+  File "/Users/fbrucker/Documents/temp/hello-dev/test_projet.py", line 3, in <module>
+    assert False
+AssertionError
+```
+
+La première ligne a bien été exécutée (on voit écrit `avant l'assert`), puis le programme a planté. La condition logique étant fausse, la commande `assert` a levé une exception nommée `AssertionError` qui a stoppé l'exécution du programme. La ligne `print("après l'assert")` n'a pas été exécutée.
+
+D'habitude, nos expressions logiques vérifie qu'un comportement observé (l'exécution d'une fonction) est conforme au comportement théorique (le résultat qu'on aimerait avoir). Pour ne pas se perdre on range ce test dans une fonction dont le nom décrit le test. Par exemple, testons la somme :
+
+> Modifiez *test_projet.py* pour qu'il contienne le code :
+>
+>```python
+>
+> def test_somme_neutre():
+>     tete_a_toto = 0
+>     assert 0 + 0 == tete_a_toto
+>
+>
+> def test_somme_1_plus_0():
+>     assert 0 + 1 == 1
+>
+>
+> def test_somme_1_plus_2():
+>     assert 1 + 2 == 3
+> 
+>```
+>
+> Exécutez-le.
+>
+{: .a-faire}
+
+Pour tester la somme, j'ai décider de faire 3 tests :
+
+* le cas le plus simple où il ne se passe rien (`0 + 0 = 0`)
+* un cas simple (`0 + 1 = 1`)
+* un cas général (`1 + 2 = 3`)
+
+Lorsque l'on exécute ce code, il ne se passe rien. Est-ce bon signe ?
+
+> Modifiez la fonction `test_somme_neutre` du fichier *test_projet.py* pour qu'elle soit égale à  :
+>
+>```python
+>
+> def test_somme_neutre():
+>     tete_a_toto = 0
+>     assert 0 + 0 == 42
+>
+>```
+>
+> Exécutez le fichier *test_projet.py*.
+>
+{: .a-faire}
+
+Le code s'exécute encore encombre. Bon, là, c'est pas normal car `0 + 0` ne peut être égal à `42`.
+
+La raison est que *test_projet.py* définit des fonction mais ne les **exécute jamais**. Les trois fonctions de test sont définies mais jamais utilisées.
+
+On a donc 2 choix :
+
+* exécuter les fonctions dans le fichier après les avoir défini
+* utiliser une bibliothèque que le fait pour nous
+
+Nous allons utiliser la seconde option avec pytset.
+
+### pytest
+
+> Tapez la commande `python -m pytest` dans un terminal.
+{: .a-faire}
+
+Vous devriez obtenir quelque chose du genre :
+
+![vsc-pytest]({{ "/assets/cours/algorithmie/code-projet-pytest.png" | relative_url }}){:style="margin: auto;display: block"}
+
+> Corrigez le test de *test_projet.py* qui rate et re-exécutez le code pour voir les 3 tests réussir.
+>
+{: .a-faire}
+
+Que fait pytest :
+
+> pytest exécute toutes les fonctions commençant par `test_` de tous les fichiers commençant par `test_` d’un projet.
 {: .note}
 
-Les tests sont de petites fonction dont le but est de *tester* une fonctionnalité du programme( souvent l'exécution d'une fonction). On utilisera l'instruction [assert](https://docs.python.org/fr/3/reference/simple_stmts.html#the-assert-statement) pour ces tests : si ce qui est à droite d'assert est juste, le programme continue sans encombre, si c'est faux, le programme plante.
+On peut aussi exécuter les tests directement avec vscode. Pour cela, cliquez sur [le petit erlenmyer](https://code.visualstudio.com/docs/python/testing#_configure-tests). Vous pourrez ensuite :
 
-On va donc créer dans notre projet situé dans le dossier *hello* un fichier nommé *test_projet.py* qui contiendra :
+1. découvrir les tests du projet
+2. exécuter tous les tests
+3. n'exécuter qu'un seul test
 
-```python
-def test_oui():
-    assert 1 == 1
+![vsc-pytest-erlermeyer]({{ "/assets/cours/algorithmie/code-projet-pytest-erlenmeyer.png" | relative_url }}){:style="margin: auto;display: block"}
 
+### test du projet
 
-def test_non():
-    assert 1 == 2
+Notre projet contient pour l'instant une fonction qui rend une constante. Tester une constante n'a pas de sens, modifions notre code pour que notre fonction ait plus de sens :
 
-```
+> Modifiez le fichier *"le_code.py"* pour qu'il contienne le code :
+>
+>```python
+> def bonjour(nom):
+>     return "bonjour " + nom + " !"
+>
+>```
+>
+{: .a-faire}
 
-**Remarque* : le premier test est vrai : `1 == 1` est `True` donc assert ne va rien faire. Le second va planter car `1== 2` va rendre `False` et assert va arrêter le programme.
+On peut maintenant remplacer les tests :
 
-Vous ne devriez pas avoir de rouge, le linter doit être content (au pire, faite un coup de black pour être sur) :
+> Modifiez le fichier *"test_projet.py"* pour qu'il contienne le code :
+>
+>```python
+> from le_code import bonjour
+>
+>
+> def test_bonjour():
+>     assert bonjour("monde") == "bonjour monde !"
+>
+>```
+>
+> Exécutez les tests pour vérifier que votre code fonctionne.
+{: .a-faire}
 
-* une ligne vide à la fin
-* deux lignes vides entre deux définitions de fonctions
+Maintenant que les tests passent, on peut modifier le programme principal.
 
-Vous devriez voir :
+> Modifiez le fichier *"main.py"* pour qu'il contienne le code :
+>
+>```python
+> from le_code import bonjour
+>
+> print(bonjour("monde"))
+>
+>```
+>
+> Exécutez le programme principal.
+{: .a-faire}
 
-* dans le tab des tests qu'un test est vert, l'autre rouge
-* le test qui est rouge est marqué dans la sortie complète :
-
-    ```text
-            def test_non():
-        >       assert 1 == 2
-        E       assert 1 == 2
-    ```
-
-Ceci est normal car le but d'assert est de vérifier que ce qui suit est juste. Si c'est le cas il ne se passe rien, si c'est faux le programme s'arrête.
-
-Écrire un test revient à vérifier qu'un comportement d'une fonction est correct (l'`assert` est juste) et si le test plante (il est rouge) c'est que l'`assert` s'est révélé faux.
-
->si vous exécutez un fichier de test avec python (essayer en cliquant sur le petit triangle vert lorsque vous êtes sur un fichier de test) il ne va rien se passer. C'est normal car ce fichier n'a pas de commande python, juste des définitions de fonctions.
-{: .attention}
-
-### test pour notre projet
-
-On va juste faire un test qui vérifie que notre fonction rend bien une chaîne de caractère qui commence par `bonjour`. L'usage veut que l'on ait (au moins) un fichier de test par fichier de code, et que l'on nomme ses tests, le nom du fichier testé précédé de *test_*.
-
-*test_le_code.py* :
-
-```python
-from le_code import bonjour
-
-def test_bonjour():
-    assert bonjour().startswith('Bonjour')
-```
+Félicitations, vous avez fait votre premier projet fonctionnel !
