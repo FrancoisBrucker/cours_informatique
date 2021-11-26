@@ -50,8 +50,8 @@ blockquote.chemin::before {
 }
 
 blockquote.a-faire {
-  color: #FAA600;
-  border-left: 4px solid #FAA600;
+  color: #E8A41E;
+  border-left: 4px solid #E8A41E;
 }
 
 blockquote.a-faire::before {
@@ -60,7 +60,7 @@ blockquote.a-faire::before {
 }
 
 details.a-faire {
-  color: #FAA600;
+  color: #E8A41E;
 }
 
 blockquote.tbd {
