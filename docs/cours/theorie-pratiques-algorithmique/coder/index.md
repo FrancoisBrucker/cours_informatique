@@ -10,6 +10,7 @@ category: cours
 Comment coder, maintenir et aimer ses programmes.
 
 * [code]({% link cours/theorie-pratiques-algorithmique/coder/code.md %})
+* [mise en oeuvre d'un projet]({% link cours/theorie-pratiques-algorithmique/coder/code-projet.md %})
 
 ## tbd
 

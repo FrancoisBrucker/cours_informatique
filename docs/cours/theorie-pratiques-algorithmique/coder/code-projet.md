@@ -6,7 +6,7 @@ tags: informatique cours
 author: "François Brucker"
 ---
 
-> [Théorie et pratiques algorithmique]({% link cours/theorie-pratiques-algorithmique/index.md %}) / [coder]({% link cours/theorie-pratiques-algorithmique/coder/index.md %}) / [principes de développement]({% link cours/theorie-pratiques-algorithmique/coder/code-projet.md %})
+> [Théorie et pratiques algorithmique]({% link cours/theorie-pratiques-algorithmique/index.md %}) / [coder]({% link cours/theorie-pratiques-algorithmique/coder/index.md %}) / [mise en oeuvre d'un projet]({% link cours/theorie-pratiques-algorithmique/coder/code-projet.md %})
 >
 > **prérequis :**
 >
@@ -14,107 +14,129 @@ author: "François Brucker"
 >
 {: .chemin}
 
+Un projet informatique a un début, lorsque l'on crée le dossier qui va le contenir, mais il n'a que rarement de fin : il y a toujours des fonctionnalités à ajouter et des bugs à corriger. Enfin, et c'est le plus important, un code est fait pour être utilisé.
 
-> mettre en pratique les principes de développement dans un projet info.
-> un projet pour le dev : toujours mieux que des fichiers épars
-{: .tbd}
+De ces deux constatations, on en déduit trois règles fondamentales d'un code utile. Il faut qu'il soit :
 
-En développement, on se concentre sur trois objectifs pour obtenir du bon code :
+* juste pour des utilisateurs puissent s'en servir
+* facilement modifiable pour que l'ajout et la correction de fonctionnalités soient aisés
+* lisible pour soi et pour les autres membres de l'équipe de développement
 
-* on veut que notre code soit juste
-* on veut pouvoir le modifier/ajouter des fonctionnalités rapidement
-* on veut pouvoir partager notre code avec soit-même dans d'autres projet, son équipe ou le monde)
+Le langage d'application n'a que peu d'intérêt en soit. On choisit celui qui est le plus adapté à notre but. Ici, on utilisera le python mais tout ce qu'on verra est transposable pour tout autre langage sérieux. L'éditeur de texte que l'on utilisera sera vscode. Il en existe d'autres très bien aussi et tout ce qu'on verra avec vscode (les raccourcis claviers, et aides au développement) sont transposables à d'autres editeurs en lisant la doc.
 
-Le langage d'application n'a que peut d'intérêt en soit. On choisit celui qui est le plus adapté à notre but. Ici, on utilise le python mais il existe les outils qu'on va voir pour tout langage sérieux.
+> Écrire du code nécessite ne nombreuses automatisations et aides pour que ce ne soit pas pénible, ne vous privez pas d'outils parce que vous n'avez pas envie d'apprendre de nouvelles choses et que *ça suffit bien pour ce que je veux faire*. Vous allez au final perdre plus de temps que l'apprentissage initial (ce qui est tarte).
+{: .note}
 
-Écrire du code nécessite ne nombreuses automatisations et aides pour que ce ne soit pas pénible, ne vous privez pas d'outils parce que vous n'avez pas envie d'apprendre de nouvelles choses et que *ça suffit bien pour ce que je veux faire*. Vous allez au final perdre plus de temps que l'apprentissage initial (ce qui est tarte).
+## un projet
 
-## prérequis
-
-On suppose que vous avez suivis le [cours de développement]({% link cours/developpement/index.md %}) jusque là. Sinon, faite le, ou tout du moins ayez un vsc opérationnel pour le développement python.
-
-On suppose aussi que :
-
-* vous connaissez le terminal de vsc et que vous savez y exécuter des programmes python.
-* vous savez comment installer de nouveaux packages python.
-
-## un projet test
-
-On va juste créer un projet vide pour comprendre comment tout ça fonctionne.
+On va créer un projet pour comprendre comment tout ça fonctionne.
 
 Nous allons préparer le projet dans lequel nous allons coder. Ceci se fait avec vscode en ouvrant un dossier. Ce dossier sera le départ de votre projet et s'appelle *workspace*.
 
-1. Commencez par créer le dossier *"hello-dev"*
-2. dans vscode, choisissez : "*Menu File > open*" puis naviguez jusqu'à votre dossier *"hello-dev"*. On vous demande si vous faites confiances aux auteurs, puisque c'est vous dites oui.
+>
+>1. Commencez par créer le dossier *"hello-dev"* dans un explorateur de fichier
+>2. dans vscode, choisissez : "*fichier > ouvrir le dossier...*" puis naviguez jusqu'à votre dossier *"hello-dev"*. On vous demande si vous faites confiances aux auteurs, puisque c'est vous dites oui.
+>
+{: .a-faire}
 
-> Lorsque l'on code et que l'on ne veut pas de problèmes en développement, les noms de fichiers doivent êtres sans espaces et sans accents.
+> Lorsque l'on code et que l'on ne veut pas de problèmes en développement, les noms de fichiers et de dossier doivent êtres **sans espaces et sans accents**.
+{: .note}
 
 ### fichier python
 
-On va créer notre premier fichier javascript : *menu Fichier > Nouveau Fichier* et sauvez le de suite : *menu Fichier > Enregistrer* avec le nom *"main.py"*.
+On va créer notre premier fichier python :
+
+> 1. allez dans *menu Fichier > Nouveau Fichier*
+> 2. et sauvez le de suite : *menu Fichier > Enregistrer* avec le nom *"main.py"*.
+>
+{: .a-faire}
 
 Vscode à compris que c'était du python, il l'écrit dans la barre de statut (la dernière ligne, en bleu, de la fenêtre vscode, voir [user interface](https://code.visualstudio.com/docs/getstarted/userinterface)).
 
-Vscode vous demande peut-être de :
-
-   1. choisir un interpréteur : prenez le python3 de votre distribution
-   2. choisir un lint : supprimer la fenêtre de warning, on fera ça plus tard.
-   3. choisir des tests : supprimer la fenêtre de warning, on fera ça plus tard.
+>Si vous n'avez pas suivi le tuto d'installation de vscode et son interaction avec python, il vous demandera peut-être de :
+>
+>   1. choisir un interpréteur : prenez le python3 de votre distribution
+>   2. choisir un lint : supprimer la fenêtre de warning, on fera ça plus tard.
+>   3. choisir des tests : supprimer la fenêtre de warning, on fera ça plus tard.
+>
+>Si c'est le cas,arrêtez tout et **faites** les prés-requis...
 
 ### exécution d'un fichier
 
-On écrit *main.py* :
+> Ecrivez dans le fichier *main.py* :
+>
+>```python
+>print("bonjour les gens !")
+>
+>```
+>
+{: .a-faire}
 
-```python
-print("bonjour les gens !")
+En vous rappelant ce que vous avez vu dans [le tutorial python et vscode]({% post_url tutos/editeur/vsc/2021-09-14-vsc-python %}#execution-python) :
 
-```
-
-Exécutez le deux manière que vous avez vu dans [le tutorial python et vscode]({% post_url tutos/editeur/vsc/2021-09-14-vsc-python %}#execution-python) :
-
-* avec le terminal
-* avec le triangle
+> Exécutez le code de deux manières différentes :
+>
+> * avec le terminal
+> * avec le petit triangle
+>
+{: .a-faire}
 
 ## du joli code
 
-Vous allez passer beaucoup de temps à lire du code, le votre et celui des autres. Il est important que ce soit facile :
+Vous allez passer beaucoup de temps à lire du code, le votre et celui des autres. Il est important que ce soit facile. Pour cela il faut que le style de code soit cohérent. Python donne des règle de style, c'est ce qu'on appelle la [PEP8](https://www.python.org/dev/peps/pep-0008/). 
 
-* de lire du code
-* de partager du code entre utilisateur.
+Vous avez du installer le linter pycodestyle dans les prés-requis. Vérifions qu'il remarque bien les fautes :
 
-Pour cela il faut que le style de code soit cohérent. Python donne des règle de style, c'est ce qu'on appelle la [PEP8](https://www.python.org/dev/peps/pep-0008/). Nous allons intaller des plugins qui vont :
+> Modifiez le fichier *"main.py"* pour écrire :
+>
+>```python
+>print ("bonjour les gens !")
+>
+>```
+>
+{: .a-faire}
 
-* vous montrer les fautes de styles
-* les corriger toutes seules
+Une fois le fichier sauvé vous devriez voir que l'espace entre print et la parenthèse est souligné en rouge :
 
-### linter
+![vsc-linter-souligne]({{ "/assets/cours/algorithmie/code-vsc-linter.png" | relative_url }}){:style="margin: auto;display: block"}
 
-Suivez la partie [linter]({% post_url tutos/editeur/vsc/2021-09-14-vsc-python-modules-supplementaires %}#linter) du tuto des installations supplémentaires.
+On peut cliquer sur la status-bar pour voir l'erreur :
 
-Puis testons le de suite. Modifiez le fichier *"main.py"* pour écrire :
+![vsc-linter-erreur]({{ "/assets/cours/algorithmie/code-vsc-linter-2.png" | relative_url }}){:style="margin: auto;display: block"}
 
-```python
-print ("bonjour les gens !")
+OU encore utiliser le terminal :
 
-```
+![vsc-linter-terminal]({{ "/assets/cours/algorithmie/code-vsc-linter-3.png" | relative_url }}){:style="margin: auto;display: block"}
 
-Une fois le fichier sauvé vous devriez voir que print est souligné en rouge. En passant sa souris dessus on voit pourquoi : `whitespace before '(' pycodestyle(E211)`
+On a mis un espace entre le nom de la fonction et ses paramètres, c'est mal.
 
->**Conclusion** : **NE JAMAIS METTRE D'ESPACE APRÈS UN NOM DE FONCTION** c'est mal car on ne sais pas si c'est une fonction ou un nom de variable.
+> **style** : **NE JAMAIS METTRE D'ESPACE APRÈS UN NOM DE FONCTION** : parce qu'on ne voit pas immédiatement si c'est une fonction ou un nom de variable.
+{: .note}
 
-Vous devriez peut-être aussi avoir la parenthèse de fin souligné en jaune. C'est parce que la dernière ligne de votre fichier n'est pas vide. Si ce n'est pas le cas, c'es que vous avez bien que 2 lignes dans votre fichier, la seconde étant vide.
+Vous devriez peut-être aussi avoir la parenthèse de fin souligné en jaune. C'est parce que la dernière ligne de votre fichier n'est pas vide. Si ce n'est pas le cas, c'est que vous avez bien que 2 lignes dans votre fichier, la seconde étant vide.
+
+> **style** : **la dernière ligne d'un fichier python est vide**
+{: .note}
+
+La documentation de pycodestyle vous indique [toutes les erreurs qu'il reconnait](https://pycodestyle.pycqa.org/en/latest/intro.html#error-codes). Elles sont conforme aux recommandations de la [PEP8](https://realpython.com/python-pep8/).
+
+> Prenez l'habitude d'écrire du code sans aucune erreur de style. Et, surtout, **apprenez pourquoi cette règle existe**. Suivre une règle sans comprendre pourquoi elle elle existe n'est pas efficace... Parce qu'on ne sait pas s'il faut la suivre ou pas.
+{: .note}
 
 ### séparer code et main
 
->**bonne pratique** : un projet c'est trois chose d'égale importance :
+> Un projet c'est trois chose d'égale importance :
 >
 > * le code : les fonctions utilisées
 > * le main : le programme principal, c'est ce qu'on exécute lorsque veut faire marcher le projet
-> * les tests : que l'on verra plus tard.
-> Aucune n'est plus importante que l'autre et il est important qu'elles oisent bine distincte l'une de l'autre.
+> * les tests : ce qui garantit que le code fonctionne
 >
+{: .note}
 
-On va ainsi  créer deux fichiers, l'un nommé *"le_code.py"* qui contiendra notre code et l'autre nommé *"main.py"* qui sera notre programme principal
+Pour séparer les différentes parties vous allez :
+
+> Créez deux fichiers dans notre projet, l'un nommé *"le_code.py"* qui contiendra notre code et l'autre nommé *"main.py"* qui sera notre programme principal
+{: .a-faire}
 
 Fichier *le_code.py* :
 
@@ -144,51 +166,30 @@ le_code.bonjour()
 
 La notation pointée se lit alors : exécute le nom `bonjour` définit dans *"le_code"*.
 
->ne jamais jamais jamais utiliser `from le_code import *` qui importe tous les noms définis dans *"le_code.py"*. On ne sais pas vraiment ce qui a été importé en lisant *"le_code.py"*: notre code n'est pas lisible ! Le gain d'écriture de `*` plutôt que `bonjour` sera perdu au centuple plus tard lorsque l'on devra chercher dans tous les fichiers du projet où l'on a bien pu définir `bonjour`...
-{: .attention}
+> Pour plus d'information sur les modules vous pouvez lire [ceci]({% link cours/developpement/bases-python/modules.md %}).
 
-En code comme dans la vie, il faut faire rapidement ce que l'on fait souvent. Comme on va passer plus de temps à lire/comprendre du code qu'à l'écrire, il faut optimiser la lecture et non l'écriture. D'où l'utilisation de nom explicites et on préférera toujours la lisibilité à la rapidité.
+Ne **jamais jamais jamais** utiliser `from le_code import *` qui importe tous les noms définis dans *"le_code.py"*. On ne sais pas vraiment ce qui a été importé en lisant *"le_code.py"*. : notre code n'est pas lisible ! Le gain d'écriture de `*` plutôt que `bonjour` sera perdu au centuple plus tard lorsque l'on devra chercher dans tous les fichiers du projet où l'on a bien pu définir `bonjour`...
 
-### black
-
-> linter : pycodestyle
-> 
-{: .tbd}
-
-Quand on utilise black, c'est facile d'écire du joli code : il le fait tout seul.
-
-Suivez la partie [black]({% post_url tutos/editeur/vsc/2021-09-14-vsc-python-modules-supplementaires %}#black) du tuto des installations supplémentaires.
-
-Testons black, en modifiant le fichier *"le_code.py"* :
-
-```python
-def        bonjour   (    )  :
-    return    "Bonjour les gens !"
-
-```
-
-Dieu que ce code est laid. En sauvant et en exécutant black (le tuto vous deux deux manières de faires), on retrouve, sans rien faire du joli code :
-
-```python
-def bonjour():
-    return "Bonjour les gens !"
-```
-
-> Black c'est tellemnt bien ! Utilisez le tout le temps pour rendre votre code joli !
+> Comme on va passer plus de temps à lire/comprendre du code qu'à l'écrire, il faut **optimiser la lecture et non l'écriture de code**.  On préférera toujours **la lisibilité à la rapidité**.
+{: .note}
 
 ## tests
 
-Les tests permettent de vérifier que notre code fonctionne. Ils sont parti du programme et on peut s'y référer quand on veut. Lorsque l'on modifie le code, on pourra toujours exécuter tous les tests pour vérifier que notre programme fonctionne toujours aussi bien qu'avant.
+Les tests permettent de vérifier que notre code fonctionne. Ils font partie du programme et on peut s'y référer quand on veut. Lorsque l'on modifie le code, on pourra toujours exécuter **tous les tests** pour vérifier que notre programme fonctionne aussi bien qu'avant.
 
-Mettez en place les outils pour exécuter les tests en suivant la partie [tests]({% post_url tutos/editeur/vsc/2021-09-14-vsc-python-modules-supplementaires %}#tests).
+> Vous avez du installer pytest et fait le lien avec vscode en suivant les prés-requis. Si ce n'est pas le cas, faites le.
+
+On y reviendra plus tard et à de nombreuses reprise :
+
+> les tests sont la pierre angulaire d'une bonne programmation : ils garantissent le fonctionnement de votre code et qu'[il ne peut régresser](https://blog.octo.com/via-negativa-tdd-et-la-conception-de-logiciel/).
+{: .note}
 
 ### test des tests
 
-On y reviendra plus tard et à de nombreuses reprise, les tests sont partie intégrante d'une bonne programmation.
+On va vérifier que tout fonctionne. On lance les tests en tapant la commande `python -m pytest` dans un terminal.
 
-On va juste ici vérifier que tout fonctionne. Il existe de nombreuse bibliothèques de tests possible pour python. Nous allons utiliser [pytest](https://docs.pytest.org/en/stable/) (vous l'installerez bienôt).
-
-Le boulot d'une bibliothèque de test est d'exécuter toutes les fonctions commençant par `test_` de tous les fichiers commençant par `test_` d'un projet.
+> pytest exécute toutes les fonctions commençant par `test_` de tous les fichiers commençant par `test_` d'un projet.
+{: .note}
 
 Les tests sont de petites fonction dont le but est de *tester* une fonctionnalité du programme( souvent l'exécution d'une fonction). On utilisera l'instruction [assert](https://docs.python.org/fr/3/reference/simple_stmts.html#the-assert-statement) pour ces tests : si ce qui est à droite d'assert est juste, le programme continue sans encombre, si c'est faux, le programme plante.
 

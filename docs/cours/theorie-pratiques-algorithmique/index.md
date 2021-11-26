@@ -86,8 +86,6 @@ Ce cours est composée de trois grandes parties qui s'enchevêtrent.
   <svg id="dessin" style="width:100%;"></svg>
 </div>
 
-
-
 <script src="https://d3js.org/d3.v7.min.js"></script>
 
 <script>
@@ -257,7 +255,7 @@ svg.append("svg:defs").append("svg:marker")
 
 var simulation = d3.forceSimulation()
     .force("link", d3.forceLink().id(d => { return d.id; }))
-    .force("charge", d3.forceManyBody().strength(100))
+    .force("charge", d3.forceManyBody().strength(-100))
     .force("center", d3.forceCenter(width / 2, height / 2));
 
 var link = svg.append("g")
