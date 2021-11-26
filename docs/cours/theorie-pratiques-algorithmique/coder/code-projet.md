@@ -123,6 +123,8 @@ La documentation de pycodestyle vous indique [toutes les erreurs qu'il reconnait
 > Prenez l'habitude d'écrire du code sans aucune erreur de style. Et, surtout, **apprenez pourquoi cette règle existe**. Suivre une règle sans comprendre pourquoi elle elle existe n'est pas efficace... Parce qu'on ne sait pas s'il faut la suivre ou pas.
 {: .note}
 
+Tout au long de ce projet et des prochains, il faut faire en sorte qu'il n'y jamais d'erreur de style. Soyez donc vigilant au début avant que cela devienne naturel.
+
 ### séparer code et main
 
 > Un projet c'est trois chose d'égale importance :
@@ -379,3 +381,7 @@ Maintenant que les tests passent, on peut modifier le programme principal.
 {: .a-faire}
 
 Félicitations, vous avez fait votre premier projet fonctionnel !
+
+## les fichiers
+
+les trois fichiers du projet final sont [disponibles](https://github.com/FrancoisBrucker/cours_informatique/tree/master/docs/cours/theorie-pratiques-algorithmique/coder/code-projet/hello-dev)

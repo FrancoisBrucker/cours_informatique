@@ -182,6 +182,10 @@ graph.links.push({
   source: 'Théorie',
   target: 'calcul ?'
 })
+graph.links.push({
+  source: 'pseudo-code',
+  target: 'calcul ?'
+})
 
 graph.nodes.push({
   id: 'machine de Turing',
@@ -231,6 +235,17 @@ graph.links.push({
   source: 'installation python',
   target: 'vscode & python'
 })
+
+graph.nodes.push({
+  id: 'projet 1 : pourcentages',
+  link: "{% link cours/theorie-pratiques-algorithmique/coder/projet-1-pourcentages.md %}",
+  group: groups.code
+})
+graph.links.push({
+  source: 'projet informatique',
+  target: 'projet 1 : pourcentages'
+})
+
 
 </script>
 <script>
