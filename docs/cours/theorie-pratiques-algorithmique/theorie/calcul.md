@@ -216,11 +216,19 @@ Tous ces exemples, plus bien d'autres essais, tendent à [accréditer la thèse 
 
 Pour répondre à notre question initiale, *que peut-on calculer ?*, on peut maintenant répondre : ce qu'une machine de Turing peut calculer (et ce n'est pas tout, mais c'est quand même pas mal de choses).
 
+## algorithmes et démonstration mathématiques
+
+> c'est la même chose :
+>
+> démonstration (Hilbert) <=> expression logique (Godel ?) <=> $\lambda$-calcul (correspondance Curry-Howard) <=> machine de Turing (Turing) <=> algorithme (Turing)
+{: .tbd}
+
 ## Conclusion
 
-On a montré ici 2 choses fondamentales :
+On a montré ici 3 choses fondamentales :
 
 * un algorithme ne peut pas tout faire
+* un algorithme est une démonstration
 * quelque soit le langage utilisé on pourra résoudre les même problèmes
 
 Ceci signifie que l'on doit toujours utiliser le formalisme (ou langage) qui est le plus simple pour résoudre le problème qu'on s'est fixé :

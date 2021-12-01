@@ -237,6 +237,11 @@ graph.links.push({
 })
 
 graph.nodes.push({
+  id: 'naviguer dans un système de fichiers',
+  link: "{% post_url tutos/systeme/2021-08-24-fichiers-navigation %}",
+  group: groups.autre
+})
+graph.nodes.push({
   id: 'projet 1 : pourcentages',
   link: "{% link cours/theorie-pratiques-algorithmique/coder/projet-1-pourcentages.md %}",
   group: groups.code
@@ -245,7 +250,10 @@ graph.links.push({
   source: 'projet informatique',
   target: 'projet 1 : pourcentages'
 })
-
+graph.links.push({
+  source: 'naviguer dans un système de fichiers',
+  target: 'projet 1 : pourcentages'
+})
 
 </script>
 <script>

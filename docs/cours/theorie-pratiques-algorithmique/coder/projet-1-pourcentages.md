@@ -1,23 +1,30 @@
 ---
 layout: page
-title:  "Routine de développement"
+title:  "projet / pourcentage binaire"
 category: cours
 tags: informatique cours 
 author: "François Brucker"
 ---
 
-> a refaire. Avec des choses non corrigées.
-{: .tbd}
+> [Théorie et pratiques algorithmique]({% link cours/theorie-pratiques-algorithmique/index.md %}) / [coder]({% link cours/theorie-pratiques-algorithmique/coder/index.md %}) / [projet 1 : pourcentages]({% link cours/theorie-pratiques-algorithmique/coder/projet-1-pourcentages.md %})
+>
+> **prérequis :**
+>
+>* [coder/mise en oeuvre d'un projet]({% link cours/theorie-pratiques-algorithmique/coder/code-projet.md %})
+>* [naviguer dans un système de fichiers]({% post_url tutos/systeme/2021-08-24-fichiers-navigation %})
+{: .chemin}
 
-On va créer ici un projet complet visant à compter le pourcentage de `0` dans un nombre écrit en binaire.
+Vous allez créer un projet visant à compter le pourcentage de `0` dans un nombre écrit en binaire.
 
 Le but de ce cours est de dérouler la création et la mise en œuvre d'un projet, petit à petit.
 
 ## mise en place
 
-### ouverture du dossier
+### dossier du projet
 
-On crée un projet avec vscode, c'est à dire que l'on ouvre un nouveau dossier que l'on nomme `"pourcentage_binaire"`.
+Avec un explorateur de fichier, créez un dossier que vous nommerez *"pourcentage_binaire"*.
+
+On crée un projet avec vscode, c'est à dire que l'on ouvre un nouveau dossier que l'on nomme .
 
 ### créations des fichiers
 
