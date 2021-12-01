@@ -69,36 +69,44 @@
 
 <h2 id="système-de-fichier">système de fichier</h2>
 
-<p>Votre ordinateur est composé de fichiers et de dossiers (aussi appelé répertoire) :</p>
+<p>Votre ordinateur est composé de <strong>fichiers</strong> et de <strong>dossiers</strong> (aussi appelé <strong>répertoire</strong>) :</p>
 
 <ul>
   <li>un <strong>dossier</strong> est un conteneur qui peut contenir soit d’autres dossier, soit des fichiers</li>
   <li>un <strong>fichier</strong> est ce que vous pouvez utiliser. C’est une image, du texte, ou encore un programme.</li>
 </ul>
 
-<p>Il existe un dossier spécial, appelé <em>racine</em> qui est le départ : on peut atteindre tous les fichiers/dossiers de votre ordinateur à partir de celui-ci.</p>
+<blockquote class="note">
+  <p>Il existe un dossier spécial, appelé <strong>racine</strong> qui est le départ : on peut atteindre tous les fichiers/dossiers de votre ordinateur à partir de celui-ci.</p>
+</blockquote>
 
-<p>Cette organisation est appelée <a href="https://fr.wikipedia.org/wiki/R%C3%A9pertoire_(informatique)">arborescence de fichiers</a>.</p>
+<p>Cette organisation est appelée <a href="https://fr.wikipedia.org/wiki/R%C3%A9pertoire_(informatique)">arborescence de fichiers</a> et ressemble à un <a href="https://fr.wikipedia.org/wiki/Arbre_enracin%C3%A9">arbre enraciné</a> où les fichiers sont des feuilles, comme dans la figure ci-dessous :</p>
+
+<p><img src="/cours_informatique/assets/tutos/fichiers-navigation/arborescence.png" alt="arbre des fichiers" style="margin: auto;display: block;"></p>
 
 <h3 id="exploration-de-larborescence">exploration de l’arborescence</h3>
 
-<p>Ouvre une fenêtre de l’explorateur de fichier et placez vous à la racine de votre système de fichier.</p>
+<p>Chaque système d’exploitation fourni un outil pour naviguer dans l’arborescence des fichier. Nous nommerons cet outil <strong>explorateur de fichiers</strong>.</p>
 
-<details><summary>sous linux</summary><div>
-<blockquote class="note">
-  <p>TBD</p>
+<blockquote class="a-faire">
+  <p>Ouvrez une fenêtre de l’explorateur de fichier et placez vous à la racine de votre système de fichier.</p>
+
 </blockquote>
 
+<details><summary>sous linux</summary><div>
+<p>Sous Ubuntu, il  existe <a href="https://doc.ubuntu-fr.org/gestionnaire_de_fichiers">plusieurs explorateurs de fichiers</a>. Si vous êtes sous l’ide gnome, vous devriez avoir <a href="https://linuxpedia.fr/doku.php/premier_pas_nautilus">nautilus</a> d’installé.</p>
+
+<p>Pour aller à la racine, menu : <em>Aller à &gt; emplacement…</em> puis choisissez <code class="language-plaintext highlighter-rouge">/</code>.</p>
 </div></details>
 
 <details><summary>sous mac</summary><div>
-<p>Ouvrez une nouvelle fenêtre du <em>Finder</em> et choisissez <a href="https://support.apple.com/fr-fr/HT201732">le mode d’affichage des fichiers</a>) en colonne. Ensuite, choisissez dans le menu : <em>aller &gt; ordinateur</em> et cliquez sur <em>“Macintosh HD”</em>, qui est la racine de votre système de fichier.</p>
+<p>L’explorateur de fichier sous mac s’appelle <a href="https://support.apple.com/fr-fr/HT201732">le finder</a>. Ouvrez une nouvelle fenêtre du <em>Finder</em> et choisissez le mode d’affichage des fichiers en colonne. Ensuite, choisissez dans le menu : <em>aller &gt; ordinateur</em> et cliquez sur <em>“Macintosh HD”</em>, qui est la racine de votre système de fichier.</p>
 </div></details>
 
 <details><summary>sous windows</summary><div>
 <p>on voit le chemin sur la barre du chemin (si c’est pas un dossier spécial)</p>
 
-<blockquote class="note">
+<blockquote class="tbd">
   <p>TBD</p>
 </blockquote>
 
@@ -114,7 +122,7 @@
 
 <blockquote class="attention">
   <p>Le nom des dossiers sur le disque dur et celui qui apparait dans l’explorateur de fichier peuvent être différent selon la langue du système d’exploitation.
-Ainsi, le nom <em>Bureau</em> dans l’explorateur correspondra au dossier <code class="language-plaintext highlighter-rouge">Desktop</code> sur le disque dur…</p>
+Ainsi, le nom <em>Bureau</em> dans l’explorateur correspondra au dossier <code class="language-plaintext highlighter-rouge">Desktop</code> sur le disque dur.</p>
 </blockquote>
 
 <h3 id="chemin">chemin</h3>
@@ -126,32 +134,29 @@ Ainsi, le nom <em>Bureau</em> dans l’explorateur correspondra au dossier <code
 
 <p>Tout fichier ou dossier de l’arborescence de fichier possède un chemin unique depuis la racine, c’est donc un moyen de l’identifier.</p>
 
-<blockquote>
+<blockquote class="note">
   <p>Le chemin du dossier racine est <code class="language-plaintext highlighter-rouge">/</code>.</p>
 </blockquote>
 
 <p>Un chemin qui commence par <code class="language-plaintext highlighter-rouge">/</code> est dit <strong>chemin absolu</strong>, puisqu’il part de la racine. On a aussi souvent coutume de parler de <strong>chemin relatif</strong> lorsqu’il part d’un dossier particulier. Dans l’exemple précédent, en partant du dossier <code class="language-plaintext highlighter-rouge">/Users/fbrucker</code>, le chemin relatif vers l’image d’Ada est : <code class="language-plaintext highlighter-rouge">Desktop/ada_lovelace.png</code>.</p>
 
-<blockquote>
-  <p>Un chemin absolu commence toujours par <code class="language-plaintext highlighter-rouge">/</code>. Un chemin qui ne commence pas par <code class="language-plaintext highlighter-rouge">/</code> est <strong>toujours</strong> un chemin relatif.</p>
+<blockquote class="note">
+  <p>Un chemin absolu commence <strong>toujours</strong> par <code class="language-plaintext highlighter-rouge">/</code>. Un chemin qui ne commence <strong>pas</strong> par <code class="language-plaintext highlighter-rouge">/</code> est <strong>toujours</strong> un chemin relatif.</p>
+</blockquote>
+
+<blockquote class="attention">
+  <p>Sous Windows, on utilise souvent <code class="language-plaintext highlighter-rouge">\</code> à la place de <code class="language-plaintext highlighter-rouge">/</code>.</p>
 </blockquote>
 
 <h3 id="plusieurs-racines">plusieurs racines</h3>
 
-<p>On considère parfois que chaque disque dur, chaque clé usb constitue sa propre racine. Il y a alors une <em>racine des racines</em>, qui contient le départ  vers les racines particulières des différents périphériques de stockages de l’ordinateur.
-disques durs, clés, etc.</p>
+<p>On considère parfois que chaque disque dur, chaque clé usb constitue sa propre racine. Il y a alors une <em>racine des racines</em>, qui contient le départ vers les racines particulières des différents périphériques de stockages de l’ordinateur comme les disques durs, clés usb, etc.</p>
 
-<blockquote>
-  <p>C’est en réalité une vue de l’esprit. Il n’existe qu’une seule racine et chaque disque dur est <a href="https://fr.wikipedia.org/wiki/Point_de_montage">monté</a>.</p>
+<p>C’est en réalité une vue de l’esprit. Il n’existe qu’une seule racine et chaque disque dur est <a href="https://fr.wikipedia.org/wiki/Point_de_montage">monté</a>.</p>
+
+<blockquote class="attention">
+  <p>Souvent sous windows ces racines sont explicites, c’est <code class="language-plaintext highlighter-rouge">c:</code> par exemple pour le disque dur principal.</p>
 </blockquote>
-
-<p>Souvent sous windows ces racines sont explicites, c’est <code class="language-plaintext highlighter-rouge">c:</code> par exemple pour le disque dur principal.</p>
-
-<h3 id="dossiers-spéciaux">dossiers spéciaux</h3>
-
-<p>Pour qu’un ordinateur fonctionne, il a besoin d’avoir des dossiers spéciaux contenant le système d’exploitation, ainsi que des fichiers spéciaux contenant des programmes (ces fichiers sont dit exécutables).</p>
-
-<p>Il existe aussi des dossiers pour chaque utilisateurs de l’ordinateur où il peut ranger ses fichiers et où le système stock les préférences de l’utilisateur.</p>
 
 <h3 id="block-.-..">dossiers . et ..</h3>
 
@@ -176,13 +181,23 @@ disques durs, clés, etc.</p>
   <p>On fait souvent commencer un chemin relatif par <code class="language-plaintext highlighter-rouge">.</code> pour bien montrer sa différence par rapport à un chemin absolu qui commence par <code class="language-plaintext highlighter-rouge">/</code>.</p>
 </blockquote>
 
-<h4 id="maison">maison</h4>
+<p>L’intérêt principal de ces dossiers est qu’ils permettent de naviguer dans l’arborescence à partir d’un dossier. Par exemple dans un projet, si l’on n’utilise que des chemins relatifs, on pourra facilement déplacer le dossier du projet (voir le donner à une autre personne) sans casser les liens.</p>
 
-<p>La <em>maison</em> est le dossier principal d’un utilisateur.</p>
-
-<blockquote>
-  <p>Pour les utilisateurs de windows : il est recommandé que ce dossier ne comporte ni espace ni accent.</p>
+<blockquote class="note">
+  <p>Dans un projet, utilisez <strong>toujours</strong> des chemins relatifs lorsque vous donnez des chemins, cela permet de déplacer le dossier sans casser les liens.</p>
 </blockquote>
+
+<h3 id="maison">maison</h3>
+
+<p>La <em>maison</em> est le dossier principal d’un utilisateur. C’est à partir de ce dossier qu’il pourra créer et ranger ses données.</p>
+
+<blockquote class="attention">
+  <p>Il est recommandé que ce dossier ne comporte ni espace ni accent.</p>
+</blockquote>
+
+<h3 id="dossiers-spéciaux">dossiers spéciaux</h3>
+
+<p>Pour qu’un ordinateur fonctionne, il a besoin d’avoir des dossiers spéciaux contenant le système d’exploitation, les données, etc. Ces dossiers sont souvent <a href="#fichier-cache">cachés</a> et nécessitent d’être administrateur pour y accéder.</p>
 
 <h2 id="fichiers">fichiers</h2>
 
@@ -210,7 +225,7 @@ disques durs, clés, etc.</p>
   <p>Un fichier python n’est <strong>pas</strong> un fichier exécutable. C’est un fichier texte qui est est lu, on dit <strong>interprété</strong> par l’interpréteur python qui lui est un fichier exécutable.</p>
 </blockquote>
 
-<h2 id="dossiers-et-fichiers-cachés">dossiers et fichiers cachés</h2>
+<h2 id="fichier-cache">dossiers et fichiers cachés</h2>
 
 <p>Ce sont souvent des fichiers (ou des dossiers) de préférences, donc pas utile de les voir tout le temps. Dans le monde unix commencent par un <code class="language-plaintext highlighter-rouge">.</code> dans le monde windows commencent par un <code class="language-plaintext highlighter-rouge">_</code> et ils sont invisible lorsque l’on regarde ces fichiers avec un explorateur de fichier.</p>
 
