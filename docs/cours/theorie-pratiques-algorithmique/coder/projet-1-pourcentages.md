@@ -20,31 +20,67 @@ Le but de ce cours est de dérouler la création et la mise en œuvre d'un proje
 
 ## mise en place
 
+### où est python
+
+> Dans un terminal :
+>
+> * affichez le path
+> * déterminez quel est chemin absolu du python utilisé par défaut dans le terminal
+>
+{: .a-faire}
+
+Une fois que le chemin du python du terminal est connu :
+
+> * déterminez l'exécutable python utilisé par défaut par vscode
+> * faites en sorte que le python de vscode et celui du terminal coïncident, en changeant celui de vscode si nécessaire.
+{: .a-faire}
+
 ### dossier du projet
 
-Avec un explorateur de fichier, créez un dossier que vous nommerez *"pourcentage_binaire"*.
+> 1. Créez ci ce n'est pas déjà fait avec l'explorateur de fichier un dossier où vous placerez tous les projets de ce cours.
+> 2. ouvrez un terminal dans ce dossier
+> 3. créer **avec le terminal** un dossier intitulé *"pourcentage_binaire"* dans le dossier courant du terminal
+{: .a-faire}
 
-On crée un projet avec vscode, c'est à dire que l'on ouvre un nouveau dossier que l'on nomme .
+### projet vscode
+
+> Créer un nouveau projet vscode en ouvrant le dossier *"pourcentage_binaire"*.
+{: .a-faire}
 
 ### créations des fichiers
 
-On crée tout de suite nos 3 fichiers (que l'on garde vide pour l'instant) :
+> Créez avec vscode 3 fichiers (que l'on garde vide pour l'instant) dans le projet :
+>
+> * *"main.py"* : le programme principal
+> * *"pourcentage.py"* : le code
+> * *"test_pourcentage.py"* : notre fichier de tests
+>
+{: .a-faire}
 
-* *"test_pourcentage.py"* : notre fichier de test
-* *"pourcentage.py"* : le code
-* *"main.py"* : le programme principal
+> On a coutume d'associer à chaque fichier de code son fichier de tests dont le nom est le même que le fichier de code précédé de `test_`
 
 ## le projet
 
+Le projet final consistera à demander à l'utilisateur un nombre décimal et de répondre le pourcentage de 0 dans ce nombre lorsque l'on l'écrit en binaire.
+
+Pour arriver à ce but, on va procéder petit à petit. On s'assurera du bon fonctionnement du code en ajoutant des tests (qu'on conservera !) à chaque étape.
+
 ### le code
 
-On veut compter le nombre de `0` d'un nombre écrit en binaire.
+On veut compter le nombre de `0` d'un nombre écrit en binaire. Un entier n'ayant pas de base définie (c'est le même entier quelque soit la base), si l'on veut compter le nombre de $0$ de sa représentation binaire, il faut transformer notre entier en une chaine de caractères constituées de `"0"` et de `"1"` et compter le nombre de caractères `"0"`.
 
-Fichier *"pourcentage.py"* :
+Mais avant de penser à la conversion d'un entier, essayons de voir comment compter le nombre de `"0"` d'une chaine de caractères.
+
+> Mettez le code suivant dans *"pourcentage.py"* :
+{: .a-faire}
 
 ```python
 def pourcent(chaîne_de_caractères):
-    nombre_de_0 = chaîne_de_caractères.count('0')
+    nombre_de_0 = 0
+
+    for c in chaîne_de_caractères:
+        if c == "0":
+            nombre_de_0 += 1
 
     return nombre_de_0 / len(chaîne_de_caractères)
 
@@ -53,21 +89,28 @@ def pourcent(chaîne_de_caractères):
 Remarquez que l'on ne vérifie pas dans la fonction :
 
 * que notre entrée est une chaîne de caractères
-* que la chaîne est uniquement composée de 0 et de 1
+* que la chaîne est uniquement composée de `"0"` et de `"1"`
 
-Notre nom de paramètre est explicite, donc s'il y a une erreur c'est de la faute du développeur. Le programme va planter si on met un entier dans `chaîne_de_caractères`, puisque les entiers ne connaissent pas la méthode [`count`](https://docs.python.org/3/library/stdtypes.html?highlight=count#str.count) : si les entrées sont spécifiées dans la documentation ou par des nom explicite, ce n'est pas la peine de vérifier dans le code que c'est ok.
+En effet, Notre nom de paramètre est explicite, donc s'il y a une erreur c'est de la faute du développeur. Le programme va planter si on met un entier dans `chaîne_de_caractères`, puisque les entiers ne peuvent être mis dans une boucle for.
 
->* **Coding mantra** : il vaut mieux qu'un programme plante plutôt qu'il cache l'erreur (en mettant par exemple 0 si le nom `chaîne_de_caractères` n'a pas de méthode `count`).
->* **pourquoi ?** L'erreur ne va pas partir, elle va juste faire planter le programme autre-part, loin de la réelle erreur. Ce sera donc bien plus dur à trouver.
+> Si les entrées de nos méthodes sont spécifiées dans le code ou la documentation ou par des noms explicites, ce n'est pas la peine de vérifier dans le code que c'est ok.
+{: .note}
+
+On aurait pu aussi rendre 0 si l'entrée n'était pas une chaine de caractère. Ceci aurait masqué le mauvais type d'entrée dans la focntion tout en donnant un résultat cohérent. **CE N'EST PAS UNE BONNE IDEE !**
+
+>* **Coding mantra** : il vaut mieux qu'un programme plante plutôt qu'il cache une erreur.
+>* **pourquoi ?** L'erreur ne va pas partir d'elle même, elle va juste faire planter le programme autre-part, loin de la réelle erreur. Elle sera donc bien plus dur à trouver et à corriger.
+{: .note}
 
 ### les tests
 
-Ajoutons des tests. Par exemple, on pourrait tester que :
+Notre fonction est codée. Ajoutons ses tests dans la foulée. Par exemple, on pourrait tester que :
 
-* `"1"` rende `0`
-* `"0"` rende `1`.
+* `"11"` rende bien `0`
+* `"00"` rende bien `1`.
 
-Fichier *"test_pourcentage.py"* :
+> Mettez le code suivant dans *"test_pourcentage.py"* :
+{: .a-faire}
 
 ```python
 from pourcentage import pourcent
@@ -82,16 +125,30 @@ def test_pourcent_1():
 
 ```
 
-Pour finir, on pourrait ajouter un test un peut plus compliqué : que `"01"` rende `.5`.
+> Testez ensuite que vos tests fonctionnent :
+>
+> * avec l'erlenmeyer de vscode
+> * dans un terminal dont le dossier courant est le dossier du projet en tapant `python -m pip`
+>
+{: .a-faire}
 
->On va tester des réels, pas des entiers. Rappelez vous que les réels ne le sont pas. Seuls les entiers existent. Voir [la doc](https://docs.python.org/fr/3/tutorial/floatingpoint.html))
-{: .attention}
+On a testé les cas limites de notre fonction. Ajoutons un cas général, où il y a à la fois des `"0"` et des `"1"`, par exemple que  `"101"` rende `1/3`.
 
-On ne peut pas écrire directement `assert pourcent('01') == .5` (même si là, ça risque de marcher) car si ça se trouve on aura `.499999999` à la place de `.5`. Lorsque l'on compare des réels c'est toujours à epsilon prêt.
+Ceci nous impose de tester l'égalité entre 2 réels. Ceci est impossible à faire en informatique car il faudrait regarder une infinité de chiffres après la virgule... Or les réels en informatique sont en fait des entiers déguisés, ce sont des approximations (voir [la doc](https://docs.python.org/fr/3/tutorial/floatingpoint.html))).
 
-Donc on va utiliser une fonction spéciale de `pytest`, qui vérifie si 2 réels sont *à peu prêt égaux* (par défaut à dix moins six prêt) : [approx](https://docs.pytest.org/en/latest/reference.html#pytest-approx) pour ça.
+> Les réels sont des limites, ils n'ont pas d'existence tangible. En bref : les réels ne le sont pas, que seuls les entiers le sont.
 
-Fichier  *"test_pourcentage.py"* :
+On ne peut donc pas écrire directement `assert pourcent('101') == 1/3` (même si là, ça risque de marcher) car si ça se trouve on aura `.3333333332` à la place de `1/3`. 
+
+> On ne teste **JAMAIS** l'égalité entre 2 réels. On les compare toujours à $\epsilon$ prêt.
+{: .note}
+
+POur cela, on va utiliser une fonction spéciale de `pytest`, qui vérifie si 2 réels sont *à peu prêt égaux* (par défaut à dix moins six prêt) : [approx](https://docs.pytest.org/en/latest/reference.html#pytest-approx).
+
+Comme nos deux autres tests comparaient déjà des réels, on va les modifier pour qu'ils utilisent approx avant d'ajouter le nouveau test
+
+> Mettez le code suivant dans *"test_pourcentage.py"*, et vérifiez que les tests passent toujours :
+{: .a-faire}
 
 ```python
 from pytest import approx
@@ -100,23 +157,47 @@ from pourcentage import pourcent
 
 
 def test_pourcent_0():
-    assert pourcent('11') == 0
+    assert pourcent('11') == approx(0)
 
 
 def test_pourcent_1():
-    assert pourcent('00') == 1
-
-
-def test_pourcent_01():
-    assert pourcent('01') == approx(.5)
+    assert pourcent('00') == approx(1)
 
 ```
+
+> L'ordre des `import` est, par coutume, le suivant :
+>
+> 1. les modules de python
+> 2. les bibliothèques externes
+> 3. les imports de notre projet
+>
+> On saute une ligne entre chaque groupe d'import pour bien voir les différences.
+{: .note}
+
+On peut maintenant ajouter le nouveau test :
+
+> Ajoutez à *"test_pourcentage.py"* le test suivant, puis testez que les 3 tests passent.
+{: .a-faire}
+
+```python
+# ...
+
+def test_pourcent_01():
+    assert pourcent('101') == approx(1/3)
+
+# ...
+```
+
+> On a coutume de mettre des `# ...` pour dire que le reste du code du fichier n’est pas changé. Ce n’est pas la peine de les copier/coller.
+
+On a 3 tests. Deux de ces tests correspondent aux cas limites, et le troisième à un cas général.
 
 >* **Coding mantra** : que tester ?
 >* **réponse** : ce qui est nécessaire pour que **vous** (*ie.* le développeur) soyez convaincu que votre fonction marche. Ni plus, ni moins.
 >
 >* **Coding mantra** : pourquoi tester ?
 >* **réponse** : pour être sûr que le programme fonctionne. Pour permettre d'ajouter rapidement des fonctionnalités sans avoir à **tout** re-tester (les tests sont déjà écrit). Parce que **tout le monde** fait des erreurs. Oui oui, même toi qui te croit fort.
+{: .note}
 
 C'est **TOUJOURS** au développeur de la fonction de faire ses tests. Parce qu'il faut que les testent accompagnent le code, pour que l'on soit sur du fonctionnement et puisse coder la suite tranquillement. Si l'on fait les tests à la fin de la journée :
 
@@ -124,13 +205,12 @@ C'est **TOUJOURS** au développeur de la fonction de faire ses tests. Parce qu'i
 * si ça se trouve on devra refaire plein de choses car un bug en aura entraîné un autre et tout un tas de fonctions seront à corriger. En faisant les tests dès que la méthode est écrite, on gagne du temps
 * si c'est quelqu'un d'autre qui les fait, comment être sur que ce soit les bons tests ? Qu'ils couvrent bien tout le fonctionnement du code ? Il faut que l'autre personne comprenne également le code. On perd donc du temps puisqu'il faut faire 2 fois le boulot de compréhension.
 
->* **Coding mantra** : Pour ma part, je fais du [TDD](https://fr.wikipedia.org/wiki/Test_driven_development). J'écris mes tests **avant** de coder. Celà peut sembler contre intuitif mais c'est super bien car cela permet d'utiliser son code avant de l'écrire. Souvent, en cherchant comment écrire un test, on trouve la bonne façon d'utiliser la fonction que l'on va écrire. Coder la fonction puis l'utiliser dans les tests est alors une perte de temps puisque parfois il faut complètement la réécrire car elle n'est pas pratique à utiliser.
-
-Ce n'est pas le cas ici, mais dans la vraie vie, on ne sais pas trop à quoi va ressemble notre fonction une fois écrite. Le TDD permet d'écrire la fonction petit à petit. Une fois que vous aurez vu la programmation objet tenter [ce tuto](https://francoisbrucker.github.io/cours_informatique/cours/mie/developpement-objet/tdd_et_test_pattern.html).
-
 ### programme principal
 
-Fichier "main.py"* :
+Faisons notre première tentative de programme principal. On va demander directement à l'utilisateur de rentrer un nombre écrit en binaire
+
+> Mettez le code suivant dans *"main.py"* :
+{: .a-faire}
 
 ```python
 from pourcentage import pourcent
@@ -145,54 +225,21 @@ On ne vérifie pas que :
 * c'est bien un nombre binaire : que donne le code si on ne mets pas un nombre binaire ?
 * il a une longueur non vide : que fait le programme si on appuie sur la touche entrée sans rien écrire ?
 
-#### correction d'un bug
-
-Si l'on ne rend rien, le programme plante ! On va corriger notre code et rajouter un test pour être sur que ça n'arrive plus :
-
-dans *"test_pourcentage.py"*, ajoutez le test :
-
-```python
-# ...
-
-def test_pourcent_vide():
-    assert pourcent('') == 0
-
-# ...
-```
-
-> On a coutume de mettre des `# ...` pour dire que le reste du code du fichier n’est pas changé. Ce n’est pas la peine de les copier/coller.
-
-Puis on corrige la fonction `pourcent` de *"pourcentage.py"* :
-
-```python
-# ...
-
-def pourcent(chaîne_de_caractères):
-    nombre_de_0 = chaîne_de_caractères.count('0')
-
-    if len(chaîne_de_caractères):
-        return nombre_de_0 / len(chaîne_de_caractères)
-    else:
-        return 0
-
-# ...
-```
-
-#### prise en compte de l'utilisateur
-
 Quand je vous avait dit de ne pas faire de vérification, c'est vrai pour tout ce qui a trait au code utilisé par l'ordinateur. Dès qu'un humain utilise du code, il faut **TOUT** vérifier et faire en sorte qu'il ait la meilleur expérience possible.
+
+> Tout ce que fait l'utilisateur doit être vérifié avant d'être injecté dans le programme. C'est la [loi de Murphy](https://fr.wikipedia.org/wiki/Loi_de_Murphy) : si on laisse la possibilité de se tromper, quelqu'un va forcément le faire à un moment.
+{: .a-faire}
 
 Donc ici on pourrait :
 
 * faire rentrer à l'utilisateur un nombre en base 10,
-* lui montrer son nombre en base 2 puis donner son pourcentage
 * il faut ne pas planter et redemander à l'utilisateur de taper un nombre si ce n'est pas un nombre en base 10
+* lui montrer son nombre en base 2 puis donner son pourcentage
 
 On utilise la [gestion des erreurs de python](https://docs.python.org/3/tutorial/errors.html#handling-exceptions) pour ça (Cela dépasse un peu le cadre de ce cours, on ira donc pas plus loin que vous montrer que ça existe)
 
->**Amélioration possible** : ne s'arrêter que si l'utilisateur tape une chaîne de caractère vide.
-
-Fichier *"main.py"* :
+> Mettez le code suivant dans *"main.py"* :
+{: .a-faire}
 
 ```python
 from pourcentage import pourcent
@@ -215,3 +262,15 @@ print("Votre nombre",
       chaine, "contient ", pourcent(nombre_binaire),
       "pourent de 0 en base 2 (" + nombre_binaire + ").")
 ```
+
+> Exécutez le code et comprenez comment il fonctionne. En particulier :
+>
+> * comment fonctionne la boucle `while` ?
+> * de quel type est le résultat de la fonction `input` ? Pourquoi ?
+> * notre nombre a été converti en plein de types différents. Lesquels ?
+> * comment est géré l'erreur possible ?
+> * ..
+>
+> Faites de petits bout de code qui isolent ces différents points et exécutez les pour comprendre comment cela fonctionne.
+{: .a-faire}
+

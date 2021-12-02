@@ -208,12 +208,21 @@ graph.links.push({
 })
 
 graph.nodes.push({
+  id: 'naviguer dans un système de fichiers',
+  link: "{% post_url tutos/systeme/2021-08-24-fichiers-navigation %}",
+  group: groups.autre
+})
+graph.nodes.push({
   id: 'vscode & python',
   link: "{% post_url tutos/editeur/vsc/2021-09-14-vsc-python %}",
   group: groups.autre
 })
 graph.links.push({
   source: 'vscode & python',
+  target: 'projet informatique'
+})
+graph.links.push({
+  source: 'naviguer dans un système de fichiers',
   target: 'projet informatique'
 })
 
@@ -237,10 +246,24 @@ graph.links.push({
 })
 
 graph.nodes.push({
-  id: 'naviguer dans un système de fichiers',
-  link: "{% post_url tutos/systeme/2021-08-24-fichiers-navigation %}",
+  id: 'terminal',
+  link: "{% post_url tutos/systeme/2021-08-24-terminal %}",
   group: groups.autre
 })
+graph.nodes.push({
+  id: 'utilisation du terminal',
+  link: "{% post_url tutos/systeme/2021-12-02-terminal-utilisation %}",
+  group: groups.autre
+})
+graph.links.push({
+  source: 'naviguer dans un système de fichiers',
+  target: 'terminal'
+})
+graph.links.push({
+  source: 'terminal',
+  target: 'utilisation du terminal'
+})
+
 graph.nodes.push({
   id: 'projet 1 : pourcentages',
   link: "{% link cours/theorie-pratiques-algorithmique/coder/projet-1-pourcentages.md %}",
@@ -251,7 +274,7 @@ graph.links.push({
   target: 'projet 1 : pourcentages'
 })
 graph.links.push({
-  source: 'naviguer dans un système de fichiers',
+  source: 'utilisation du terminal',
   target: 'projet 1 : pourcentages'
 })
 

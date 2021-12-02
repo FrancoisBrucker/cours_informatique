@@ -10,7 +10,7 @@ Comment installer la [distribution anaconda](https://www.anaconda.com/) de pytho
 
 <!--more-->
 
-Si vous cherchez un tutoriel pour général sur ce qu'est python et comment l'installer/utiliser : [installation python]({% post_url /tutos/python/2021-08-20-installation-de-python %}).
+> Si vous cherchez un tutoriel pour général sur ce qu'est python et comment l'installer/utiliser : [installation python]({% post_url /tutos/python/2021-08-20-installation-de-python %}).
 
 ## introduction
 

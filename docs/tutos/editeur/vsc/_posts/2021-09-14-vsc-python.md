@@ -96,7 +96,7 @@ Nous allons commencer par utiliser le [le terminal intégré]({% post_url tutos/
 
 ### interpréteur python dans le terminal vscode
 
-> Ouvrez un terminal dans vscode : *menu Affichage > Terminal*.
+> Ouvrez un [terminal dans vscode]({% post_url tutos/editeur/vsc/2021-09-14-vsc-terminal %}) : *menu Affichage > Terminal*.
 {: .a-faire}
 
 Le [terminal]({% post_url /tutos/systeme/2021-08-24-terminal %}) permet d'exécuter des commandes de votre système.

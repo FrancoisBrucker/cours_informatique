@@ -83,6 +83,8 @@ Un chemin qui commence par `/` est dit **chemin absolu**, puisqu'il part de la r
 > Un chemin absolu commence **toujours** par `/`. Un chemin qui ne commence **pas** par `/` est **toujours** un chemin relatif.
 {: .note}
 
+Faites attention :
+
 > Sous Windows, on utilise souvent `\` à la place de `/`.
 {: .attention}
 
@@ -116,9 +118,30 @@ L'intérêt principal de ces dossiers est qu'ils permettent de naviguer dans l'a
 > Dans un projet, utilisez **toujours** des chemins relatifs lorsque vous donnez des chemins, cela permet de déplacer le dossier sans casser les liens.
 {: .note}
 
+### copier le chemin absolu
+
+{% details sous linux %}
+
+> TBD
+{: .note}
+
+{% enddetails %}
+
+{% details sous mac %}
+
+Dans le finder cliquez droit sur le dossier, puis copier. Coller ensuite dans le terminal.
+
+{% enddetails %}
+
+{% details sous windows %}
+
+Dans explorateur de fichier cliquez sur le dossier, puis *copier le chemin d'accès* dans le menu *accueil*
+
+{% enddetails %}
+
 ### maison
 
-La *maison* est le dossier principal d'un utilisateur. C'est à partir de ce dossier qu'il pourra créer et ranger ses données. 
+La *maison* est le dossier principal d'un utilisateur. C'est à partir de ce dossier qu'il pourra créer et ranger ses données.
 
 > Il est recommandé que ce dossier ne comporte ni espace ni accent.
 {: .attention}
@@ -135,36 +158,34 @@ Un nom de fichier comporte souvent un texte, suivi d'un `.` puis de deux ou troi
 
 Cette extension ne sert à rien pour l'ordinateur, c'est seulement une aide pour l'utilisateur et certaines applications. Cela permet à priori de catégoriser un fichier.
 
-Ainsi, même si l'extension d'un fichier texte est *".txt"*, rien ne vous empêche de la changer en *".exe"* par exemple. Cela ne change en rien la nature du fichier. Cela cependant apporte de la confusion car certaines applications vont penser que c'est un fichier exécutable et cela va planter quand elles vont tenter de le faire.
+Ainsi, même si l'extension d'un fichier texte est *".txt"*, rien ne vous empêche de la changer en *".exe"* par exemple. Cela ne change en rien la nature du fichier. Cela cependant apporte de la confusion car certaines applications vont penser que c'est un fichier exécutable et cela va planter quand elles vont tenter de le faire. Enfin, dans un éditeur de texte, l'extension d'un fichier permet de charger une coloration syntaxique par défaut : *".py"* pour les fichiers python par exemple, *".md"* pour les fichier markdown.
 
-> Dans un éditeur de texte, l'extension d'un fichier permet de charger une coloration syntaxique par défaut : *".py"* pour les fichiers python par exemple, *".md"* pour les fichier markdown.
->
 > Ne soyez pas créatifs dans les extensions de fichiers, utilisez celle par défaut selon le type de fichier que vous utilisez.
+{: .note}
 
 ### fichiers exécutables
 
-Les fichiers exécutables sont le cœur d'un système d'exploitation : ce sont les programmes.
+Les fichiers exécutables sont **des programmes**, ils sont exécutés directement par le système d'exploitation. C'est ce qui fait qu'un exécutable windows ne peut pas être directement lancé sur un mac ou un linux, même s'ils ont le même processeur.
 
-Leur format dépend du système d'exploitation, il est donc impossible d'utiliser un exécutable windows pour l'utiliser sous mac par exemple.
-
-> Un fichier python n'est **pas** un fichier exécutable. C'est un fichier texte qui est est lu, on dit **interprété** par l'interpréteur python qui lui est un fichier exécutable.
+> Un fichier python n'est **pas** un fichier exécutable. C'est un fichier texte qui est est lu — on dit **interprété** — par l'*interpréteur python* qui lui est un fichier exécutable.
 
 ## dossiers et fichiers cachés {#fichier-cache}
 
-Ce sont souvent des fichiers (ou des dossiers) de préférences, donc pas utile de les voir tout le temps. Dans le monde unix commencent par un `.` dans le monde windows commencent par un `_` et ils sont invisible lorsque l'on regarde ces fichiers avec un explorateur de fichier.
+Ce sont souvent des fichiers (ou des dossiers) de préférences. Ils sont invisible lorsque l'on regarde ces fichiers avec un explorateur de fichier.
 
-On peut cependant les afficher dans un explorateur de fichier en effectuant quelques manipulation :
+Dans le monde linux/mac les fichiers cachés sont ceux qui commencent par un `.` et dans le monde windows, ils sont déterminés par une propriété. commencent  et
+
+On peut cependant les afficher dans un explorateur de fichier en effectuant quelques manipulations :
 
 {% details sous linux %}
 
-> TBD
-{: .note}
+[sous ubuntu](https://doc.ubuntu-fr.org/fichier_cache).
 
 {% enddetails %}
 
 {% details sous mac %}
 
-[sous mac](https://www.ionos.fr/digitalguide/serveur/configuration/mac-afficher-les-fichiers-et-dossiers-caches/).
+[dans le finder](https://www.ionos.fr/digitalguide/serveur/configuration/mac-afficher-les-fichiers-et-dossiers-caches/).
 
 > Pour que la manipulation de touche décrite dans la page fonctionne, il faut également d'appuyer sur la touche `fn` en plus.
 
@@ -178,148 +199,16 @@ Si vous voulez aller dans un dossier particulier, vous pouvez utiliser : *menu A
 
 {% enddetails %}
 
-## terminal
+## utiliser le terminal
 
-Le [terminal]({% post_url /tutos/systeme/2021-08-24-terminal %}) est l'outil permettant d'exécuter des programmes. Il permet de contrôler directement ce qui est exécuté, et est l'endroit où l'on lancera nos scripts python par exemple.
-
-Une ligne du terminal sera toujours :
-
-* soit un fichier exécutable
-* soit une commande (comme `get-command` pour un powershell par exemple)
-
-Etudions par exemple la commande :
-
-```shell
-python mon_script.py
-```
-
-Comme `python` n'est pas une commande c'est **forcément** un fichier exécutable.  Le système d'exploitation cherche alors un fichier s'appelant `python` (ou `python.exe` si on est sous windows) dans un ensemble de dossiers qu'on appelle le **path**.
-
-Connaître le path :
-
-{% details sous linux/mac %}
-
-Dans un terminal, tapez :
-
-```shell
-echo $PATH
-```
-
-Cela affichera les différents dossier dans le path.
-
-{% enddetails %}
-
-{% details sous windows %}
-
-[affichier et modifier le path](https://java.com/fr/download/help/path_fr.html)
-
-{% enddetails %}
-
-Si le fichier *"python"* (ou *"python.exe"* si on est sous windows) n'est pas trouvé, le terminal rend une erreur.
-
-S'il est trouvé, il est exécuté.
-
-> Souvent `.` (le répertoire courant) n'est pas dans le path. Il faut donc taper  `./truc` si on veut exécuter  le fichier s'appelant truc dans le dossier courant.
-
-La partie suivant le fichier exécutable correspondent aux paramètre du programme. Pour savoir quelles sont les possibilités on regarde la [documentation](https://docs.python.org/3/using/cmdline.html) : un nom de fichier en paramètre signifie que l'on souhaite interpréter le fichier décrit par son chemin relatif.
-
-Ici : cela signifie qu'il existe un fichier *"mon_script.py"* dans le répertoire courant du terminal.
-
-### dossier courant d'un terminal
-
-Lorsque l'on lance un terminal il est **toujours** dans un dossier du système. POur le connaitre, on peut taper la commande :
-
-```shell
-pwd
-```
-
-#### se déplacer avec cd
-
-Pour changer de dossier, on utiliser la commande `cd` suivi d'un chemin absolu ou relatif.
-
-Par exemple, sur mon mac, je crée un nouveau terminal. Par défaut, son dossier courant est la maison. La commande `pwd` me rend en effet : `/Users/fbrucker`.
-
-Si je veux aller dans le dossier contenant ma photo d'Ada, je peux taper :
-
-* un chemin absolu : `cd /Users/fbrucker/Desktop`
-* un chemin relatif : `cd Desktop`, ou encore `cd ./Desktop` qui est équivalent.
-
-> Notez que je ne peux pas aller dans un fichier.
-> Si j'avais tapé `/Users/fbrucker/Desktop/ada_lovelace.png` j'aurais eu une erreur. Sur mon mac, ça dit : `cd: not a directory: /Users/fbrucker/Desktop/ada_lovelace.png`
-{: .attention}
-
-Sous unix, le caractère `~` est équivalent au chemin absolu vers la maison. En tapant `cd ~` je me retrouve alors directement à la maison. De là, `cd ~/Desktop` m'envoie dans le dossier `/Users/fbrucker/Desktop` quelque soit l'endroit où je me trouve.
-
-> TBD : est-ce aussi vrai avec powershell ?
-{: .note}
-
-#### lister avec ls
-
-La commande `ls` quand à elle donne les dossier et les fichier du dossier courant (on peut l'utiliser sans paramètre, ou avec un chemin absolu ou relatif).
-
-Par exemple, sur mon mac, si je tape :
-
-```shell
-ls /
-```
-
-J'obtiens tous les dossier de la racine :
-
-```shell
-Applications Users        cores        home         sbin         var
-Library      Volumes      dev          opt          tmp
-System       bin          etc          private      usr
-```
-
-### ouvrir un terminal dans un dossier spécifique
-
-{% details sous linux %}
-
-> TBD
-{: .note}
-
-{% enddetails %}
-
-{% details sous mac %}
-
-Dans le finder cliquez droit sur le dossier, puis *services > Nouveau terminal au dossier*
-
-{% enddetails %}
-
-{% details sous windows %}
-
-Dans un explorateur de fichier cliquez sur le dossier, puis dans le menu fichier
-
-{% enddetails %}
-
-### copier le chemin absolu
-
-{% details sous linux %}
-
-> TBD
-{: .note}
-
-{% enddetails %}
-
-{% details sous mac %}
-
-Dans le finder cliquez droit sur le dossier, puis copier. Coller ensuite dans le finder.
-
-{% enddetails %}
-
-{% details sous windows %}
-
-Dans explorateur de fichier cliquez sur le dossier, puis *copier le chemin d'accès* dans le menu *accueil*
-
-{% enddetails %}
+Naviguer dans un système de fichier et exécuter ds commandes est le but de l'[application terminal]({% post_url /tutos/systeme/2021-12-02-terminal-utilisation %})
 
 ## pour aller plus loin
 
-> TBD :
->
 > * liens
 > * permissions
 > * unix et tout est fichier
 > * fichiers spéciaux (comme `/dev/audio` par exemple)
 > * une application mac est un dossier.
 > * comment écrire sur le disque dur, le [file system](https://en.wikipedia.org/wiki/Comparison_of_file_systems)
+{: .tbd}
