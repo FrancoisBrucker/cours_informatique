@@ -144,6 +144,8 @@ Ainsi, le nom <em>Bureau</em> dans l’explorateur correspondra au dossier <code
   <p>Un chemin absolu commence <strong>toujours</strong> par <code class="language-plaintext highlighter-rouge">/</code>. Un chemin qui ne commence <strong>pas</strong> par <code class="language-plaintext highlighter-rouge">/</code> est <strong>toujours</strong> un chemin relatif.</p>
 </blockquote>
 
+<p>Faites attention :</p>
+
 <blockquote class="attention">
   <p>Sous Windows, on utilise souvent <code class="language-plaintext highlighter-rouge">\</code> à la place de <code class="language-plaintext highlighter-rouge">/</code>.</p>
 </blockquote>
@@ -187,6 +189,25 @@ Ainsi, le nom <em>Bureau</em> dans l’explorateur correspondra au dossier <code
   <p>Dans un projet, utilisez <strong>toujours</strong> des chemins relatifs lorsque vous donnez des chemins, cela permet de déplacer le dossier sans casser les liens.</p>
 </blockquote>
 
+<h3 id="copier-le-chemin-absolu">copier le chemin absolu</h3>
+
+<details><summary>sous linux</summary><div>
+<blockquote class="note">
+  <p>TBD</p>
+</blockquote>
+
+</div></details>
+
+<details><summary>sous mac</summary><div>
+<p>Dans le finder cliquez droit sur le dossier, puis copier. Coller ensuite dans le terminal.</p>
+
+</div></details>
+
+<details><summary>sous windows</summary><div>
+<p>Dans explorateur de fichier cliquez sur le dossier, puis <em>copier le chemin d’accès</em> dans le menu <em>accueil</em></p>
+
+</div></details>
+
 <h3 id="maison">maison</h3>
 
 <p>La <em>maison</em> est le dossier principal d’un utilisateur. C’est à partir de ce dossier qu’il pourra créer et ranger ses données.</p>
@@ -207,39 +228,35 @@ Ainsi, le nom <em>Bureau</em> dans l’explorateur correspondra au dossier <code
 
 <p>Cette extension ne sert à rien pour l’ordinateur, c’est seulement une aide pour l’utilisateur et certaines applications. Cela permet à priori de catégoriser un fichier.</p>
 
-<p>Ainsi, même si l’extension d’un fichier texte est <em>“.txt”</em>, rien ne vous empêche de la changer en <em>“.exe”</em> par exemple. Cela ne change en rien la nature du fichier. Cela cependant apporte de la confusion car certaines applications vont penser que c’est un fichier exécutable et cela va planter quand elles vont tenter de le faire.</p>
+<p>Ainsi, même si l’extension d’un fichier texte est <em>“.txt”</em>, rien ne vous empêche de la changer en <em>“.exe”</em> par exemple. Cela ne change en rien la nature du fichier. Cela cependant apporte de la confusion car certaines applications vont penser que c’est un fichier exécutable et cela va planter quand elles vont tenter de le faire. Enfin, dans un éditeur de texte, l’extension d’un fichier permet de charger une coloration syntaxique par défaut : <em>“.py”</em> pour les fichiers python par exemple, <em>“.md”</em> pour les fichier markdown.</p>
 
-<blockquote>
-  <p>Dans un éditeur de texte, l’extension d’un fichier permet de charger une coloration syntaxique par défaut : <em>“.py”</em> pour les fichiers python par exemple, <em>“.md”</em> pour les fichier markdown.</p>
-
+<blockquote class="note">
   <p>Ne soyez pas créatifs dans les extensions de fichiers, utilisez celle par défaut selon le type de fichier que vous utilisez.</p>
 </blockquote>
 
 <h3 id="fichiers-exécutables">fichiers exécutables</h3>
 
-<p>Les fichiers exécutables sont le cœur d’un système d’exploitation : ce sont les programmes.</p>
-
-<p>Leur format dépend du système d’exploitation, il est donc impossible d’utiliser un exécutable windows pour l’utiliser sous mac par exemple.</p>
+<p>Les fichiers exécutables sont <strong>des programmes</strong>, ils sont exécutés directement par le système d’exploitation. C’est ce qui fait qu’un exécutable windows ne peut pas être directement lancé sur un mac ou un linux, même s’ils ont le même processeur.</p>
 
 <blockquote>
-  <p>Un fichier python n’est <strong>pas</strong> un fichier exécutable. C’est un fichier texte qui est est lu, on dit <strong>interprété</strong> par l’interpréteur python qui lui est un fichier exécutable.</p>
+  <p>Un fichier python n’est <strong>pas</strong> un fichier exécutable. C’est un fichier texte qui est est lu — on dit <strong>interprété</strong> — par l’<em>interpréteur python</em> qui lui est un fichier exécutable.</p>
 </blockquote>
 
 <h2 id="fichier-cache">dossiers et fichiers cachés</h2>
 
-<p>Ce sont souvent des fichiers (ou des dossiers) de préférences, donc pas utile de les voir tout le temps. Dans le monde unix commencent par un <code class="language-plaintext highlighter-rouge">.</code> dans le monde windows commencent par un <code class="language-plaintext highlighter-rouge">_</code> et ils sont invisible lorsque l’on regarde ces fichiers avec un explorateur de fichier.</p>
+<p>Ce sont souvent des fichiers (ou des dossiers) de préférences. Ils sont invisible lorsque l’on regarde ces fichiers avec un explorateur de fichier.</p>
 
-<p>On peut cependant les afficher dans un explorateur de fichier en effectuant quelques manipulation :</p>
+<p>Dans le monde linux/mac les fichiers cachés sont ceux qui commencent par un <code class="language-plaintext highlighter-rouge">.</code> et dans le monde windows, ils sont déterminés par une propriété. commencent  et</p>
+
+<p>On peut cependant les afficher dans un explorateur de fichier en effectuant quelques manipulations :</p>
 
 <details><summary>sous linux</summary><div>
-<blockquote class="note">
-  <p>TBD</p>
-</blockquote>
+<p><a href="https://doc.ubuntu-fr.org/fichier_cache">sous ubuntu</a>.</p>
 
 </div></details>
 
 <details><summary>sous mac</summary><div>
-<p><a href="https://www.ionos.fr/digitalguide/serveur/configuration/mac-afficher-les-fichiers-et-dossiers-caches/">sous mac</a>.</p>
+<p><a href="https://www.ionos.fr/digitalguide/serveur/configuration/mac-afficher-les-fichiers-et-dossiers-caches/">dans le finder</a>.</p>
 
 <blockquote>
   <p>Pour que la manipulation de touche décrite dans la page fonctionne, il faut également d’appuyer sur la touche <code class="language-plaintext highlighter-rouge">fn</code> en plus.</p>
@@ -254,144 +271,13 @@ Ainsi, le nom <em>Bureau</em> dans l’explorateur correspondra au dossier <code
 
 </div></details>
 
-<h2 id="terminal">terminal</h2>
+<h2 id="utiliser-le-terminal">utiliser le terminal</h2>
 
-<p>Le <a href="/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html">terminal</a> est l’outil permettant d’exécuter des programmes. Il permet de contrôler directement ce qui est exécuté, et est l’endroit où l’on lancera nos scripts python par exemple.</p>
-
-<p>Une ligne du terminal sera toujours :</p>
-
-<ul>
-  <li>soit un fichier exécutable</li>
-  <li>soit une commande (comme <code class="language-plaintext highlighter-rouge">get-command</code> pour un powershell par exemple)</li>
-</ul>
-
-<p>Etudions par exemple la commande :</p>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python mon_script.py
-</code></pre></div></div>
-
-<p>Comme <code class="language-plaintext highlighter-rouge">python</code> n’est pas une commande c’est <strong>forcément</strong> un fichier exécutable.  Le système d’exploitation cherche alors un fichier s’appelant <code class="language-plaintext highlighter-rouge">python</code> (ou <code class="language-plaintext highlighter-rouge">python.exe</code> si on est sous windows) dans un ensemble de dossiers qu’on appelle le <strong>path</strong>.</p>
-
-<p>Connaître le path :</p>
-
-<details><summary>sous linux/mac</summary><div>
-<p>Dans un terminal, tapez :</p>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="nv">$PATH</span>
-</code></pre></div></div>
-
-<p>Cela affichera les différents dossier dans le path.</p>
-
-</div></details>
-
-<details><summary>sous windows</summary><div>
-<p><a href="https://java.com/fr/download/help/path_fr.html">affichier et modifier le path</a></p>
-
-</div></details>
-
-<p>Si le fichier <em>“python”</em> (ou <em>“python.exe”</em> si on est sous windows) n’est pas trouvé, le terminal rend une erreur.</p>
-
-<p>S’il est trouvé, il est exécuté.</p>
-
-<blockquote>
-  <p>Souvent <code class="language-plaintext highlighter-rouge">.</code> (le répertoire courant) n’est pas dans le path. Il faut donc taper  <code class="language-plaintext highlighter-rouge">./truc</code> si on veut exécuter  le fichier s’appelant truc dans le dossier courant.</p>
-</blockquote>
-
-<p>La partie suivant le fichier exécutable correspondent aux paramètre du programme. Pour savoir quelles sont les possibilités on regarde la <a href="https://docs.python.org/3/using/cmdline.html">documentation</a> : un nom de fichier en paramètre signifie que l’on souhaite interpréter le fichier décrit par son chemin relatif.</p>
-
-<p>Ici : cela signifie qu’il existe un fichier <em>“mon_script.py”</em> dans le répertoire courant du terminal.</p>
-
-<h3 id="dossier-courant-dun-terminal">dossier courant d’un terminal</h3>
-
-<p>Lorsque l’on lance un terminal il est <strong>toujours</strong> dans un dossier du système. POur le connaitre, on peut taper la commande :</p>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">pwd</span>
-</code></pre></div></div>
-
-<h4 id="se-déplacer-avec-cd">se déplacer avec cd</h4>
-
-<p>Pour changer de dossier, on utiliser la commande <code class="language-plaintext highlighter-rouge">cd</code> suivi d’un chemin absolu ou relatif.</p>
-
-<p>Par exemple, sur mon mac, je crée un nouveau terminal. Par défaut, son dossier courant est la maison. La commande <code class="language-plaintext highlighter-rouge">pwd</code> me rend en effet : <code class="language-plaintext highlighter-rouge">/Users/fbrucker</code>.</p>
-
-<p>Si je veux aller dans le dossier contenant ma photo d’Ada, je peux taper :</p>
-
-<ul>
-  <li>un chemin absolu : <code class="language-plaintext highlighter-rouge">cd /Users/fbrucker/Desktop</code>
-</li>
-  <li>un chemin relatif : <code class="language-plaintext highlighter-rouge">cd Desktop</code>, ou encore <code class="language-plaintext highlighter-rouge">cd ./Desktop</code> qui est équivalent.</li>
-</ul>
-
-<blockquote class="attention">
-  <p>Notez que je ne peux pas aller dans un fichier.
-Si j’avais tapé <code class="language-plaintext highlighter-rouge">/Users/fbrucker/Desktop/ada_lovelace.png</code> j’aurais eu une erreur. Sur mon mac, ça dit : <code class="language-plaintext highlighter-rouge">cd: not a directory: /Users/fbrucker/Desktop/ada_lovelace.png</code></p>
-</blockquote>
-
-<p>Sous unix, le caractère <code class="language-plaintext highlighter-rouge">~</code> est équivalent au chemin absolu vers la maison. En tapant <code class="language-plaintext highlighter-rouge">cd ~</code> je me retrouve alors directement à la maison. De là, <code class="language-plaintext highlighter-rouge">cd ~/Desktop</code> m’envoie dans le dossier <code class="language-plaintext highlighter-rouge">/Users/fbrucker/Desktop</code> quelque soit l’endroit où je me trouve.</p>
-
-<blockquote class="note">
-  <p>TBD : est-ce aussi vrai avec powershell ?</p>
-</blockquote>
-
-<h4 id="lister-avec-ls">lister avec ls</h4>
-
-<p>La commande <code class="language-plaintext highlighter-rouge">ls</code> quand à elle donne les dossier et les fichier du dossier courant (on peut l’utiliser sans paramètre, ou avec un chemin absolu ou relatif).</p>
-
-<p>Par exemple, sur mon mac, si je tape :</p>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">ls</span> /
-</code></pre></div></div>
-
-<p>J’obtiens tous les dossier de la racine :</p>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Applications Users        cores        home         sbin         var
-Library      Volumes      dev          opt          tmp
-System       bin          etc          private      usr
-</code></pre></div></div>
-
-<h3 id="ouvrir-un-terminal-dans-un-dossier-spécifique">ouvrir un terminal dans un dossier spécifique</h3>
-
-<details><summary>sous linux</summary><div>
-<blockquote class="note">
-  <p>TBD</p>
-</blockquote>
-
-</div></details>
-
-<details><summary>sous mac</summary><div>
-<p>Dans le finder cliquez droit sur le dossier, puis <em>services &gt; Nouveau terminal au dossier</em></p>
-
-</div></details>
-
-<details><summary>sous windows</summary><div>
-<p>Dans un explorateur de fichier cliquez sur le dossier, puis dans le menu fichier</p>
-
-</div></details>
-
-<h3 id="copier-le-chemin-absolu">copier le chemin absolu</h3>
-
-<details><summary>sous linux</summary><div>
-<blockquote class="note">
-  <p>TBD</p>
-</blockquote>
-
-</div></details>
-
-<details><summary>sous mac</summary><div>
-<p>Dans le finder cliquez droit sur le dossier, puis copier. Coller ensuite dans le finder.</p>
-
-</div></details>
-
-<details><summary>sous windows</summary><div>
-<p>Dans explorateur de fichier cliquez sur le dossier, puis <em>copier le chemin d’accès</em> dans le menu <em>accueil</em></p>
-
-</div></details>
+<p>Naviguer dans un système de fichier et exécuter ds commandes est le but de l’<a href="/cours_informatique/tutos/systeme/cli/terminal/2021/12/02/terminal-utilisation.html">application terminal</a></p>
 
 <h2 id="pour-aller-plus-loin">pour aller plus loin</h2>
 
-<blockquote>
-  <p>TBD :</p>
-
+<blockquote class="tbd">
   <ul>
     <li>liens</li>
     <li>permissions</li>

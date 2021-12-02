@@ -10,8 +10,8 @@
 <meta name="generator" content="Jekyll v4.2.0">
 <meta property="og:title" content="vsc et terminal">
 <meta property="og:locale" content="en_US">
-<meta name="description" content="Les différentes manières d’invoquer un terminal avec visual studio code (vsc)">
-<meta property="og:description" content="Les différentes manières d’invoquer un terminal avec visual studio code (vsc)">
+<meta name="description" content="prérequis vscode terminal">
+<meta property="og:description" content="prérequis vscode terminal">
 <link rel="canonical" href="/cours_informatique/tutos/editeur/vsc/installation/configuration/terminal/2021/09/14/vsc-terminal.html">
 <meta property="og:url" content="/cours_informatique/tutos/editeur/vsc/installation/configuration/terminal/2021/09/14/vsc-terminal.html">
 <meta property="og:site_name" content="cours d’informatique">
@@ -20,7 +20,7 @@
 <meta name="twitter:card" content="summary">
 <meta property="twitter:title" content="vsc et terminal">
 <script type="application/ld+json">
-{"description":"Les différentes manières d’invoquer un terminal avec visual studio code (vsc)","@type":"BlogPosting","headline":"vsc et terminal","dateModified":"2021-09-14T00:00:00+00:00","datePublished":"2021-09-14T00:00:00+00:00","url":"/cours_informatique/tutos/editeur/vsc/installation/configuration/terminal/2021/09/14/vsc-terminal.html","mainEntityOfPage":{"@type":"WebPage","@id":"/cours_informatique/tutos/editeur/vsc/installation/configuration/terminal/2021/09/14/vsc-terminal.html"},"@context":"https://schema.org"}</script>
+{"description":"prérequis vscode terminal","@type":"BlogPosting","headline":"vsc et terminal","dateModified":"2021-09-14T00:00:00+00:00","datePublished":"2021-09-14T00:00:00+00:00","url":"/cours_informatique/tutos/editeur/vsc/installation/configuration/terminal/2021/09/14/vsc-terminal.html","mainEntityOfPage":{"@type":"WebPage","@id":"/cours_informatique/tutos/editeur/vsc/installation/configuration/terminal/2021/09/14/vsc-terminal.html"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
@@ -57,24 +57,29 @@
   </header>
 
   <div class="post-content">
-    <p>Les différentes manières d’invoquer un terminal avec  <a href="https://code.visualstudio.com/">visual studio code</a> (vsc)
-<!--more--></p>
+    <blockquote class="chemin">
+  <p>prérequis</p>
 
-<h2 id="terminal">terminal</h2>
+  <ul>
+    <li><a href="/cours_informatique/tutos/editeur/vsc/installation/configuration/2021/09/03/vsc-installation-et-prise-en-main.html">vscode</a></li>
+    <li><a href="/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html">terminal</a></li>
+  </ul>
 
-<blockquote>
-  <p><a href="https://code.visualstudio.com/docs/editor/integrated-terminal">https://code.visualstudio.com/docs/editor/integrated-terminal</a></p>
 </blockquote>
 
-<p>Le <a href="/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html">terminal</a> est le meilleur ami du développeur. Il faut pouvoir créer un temrinal très rapidment, et à l’endroit où l’on veut. Vscode permet de faire ça et de multiples façons.</p>
+<p>Les différentes manières d’invoquer un terminal avec  <a href="https://code.visualstudio.com/">visual studio code</a>. C’est un condensé de la documentation officielle qui bien plus complète : <a href="https://code.visualstudio.com/docs/editor/integrated-terminal">https://code.visualstudio.com/docs/editor/integrated-terminal</a></p>
+
+<!--more-->
 
 <h2 id="palette-de-commande">palette de commande</h2>
 
-<p>Si vous tapez <em>“&gt;terminal”</em> dans la <a href="/cours_informatique/tutos/editeur/vsc/installation/configuration/2021/09/03/vsc-installation-et-prise-en-main.html#palette-de-commande">palette de commande</a>, vous verrez toutes les commandes qui ont temrinal dans leur nom. Il y a des commandes spécifiques à un langage (javascript, python, etc) et certaines très générales comme : <em>Open New External Terminal</em> qui ouvre un terminal dans le dossier de votre projet.</p>
+<p>Si vous tapez <em>“&gt;terminal”</em> dans la <a href="/cours_informatique/tutos/editeur/vsc/installation/configuration/2021/09/03/vsc-installation-et-prise-en-main.html#palette-de-commande">palette de commande</a>, vous verrez toutes les commandes qui ont terminal dans leur nom. Il y a des commandes spécifiques à un langage (javascript, python, etc) et certaines très générales comme : <em>Open New External Terminal</em> qui ouvre un terminal dans le dossier de votre projet.</p>
 
 <h2 id="terminal-integre">intégration dans vscode</h2>
 
-<p>On peut aussi ouvrir un terminal Directement dans node : <em>“menu Affichage &gt; Terminal”</em>. Ce qui donne quelque chose du type :</p>
+<h3 id="ouvrir-un-terminal">ouvrir un terminal</h3>
+
+<p>On peut ouvrir un terminal dans le menu : <em>“Affichage &gt; Terminal”</em>. Ce qui donne quelque chose du type :</p>
 
 <p><img src="/cours_informatique/assets/tutos/vsc-projets/vsc-terminal.png" alt="terminal dans vscode" style="margin: auto;display: block"></p>
 
@@ -82,11 +87,15 @@
 
 <p>on reste donc 99% du temps sur <em>TERMINAL</em> (qui est en sur-brillance).</p>
 
-<blockquote>
-  <p>On peut supprimer (en cliquant sur la poubelle) et créer (<em>menu Terminal &gt; Nouveau terminal</em>) autant de terminal que l’on le veut. On peut aussi juste fermer la fenêtre du terminal en cliquant sur la croix.</p>
-</blockquote>
+<h3 id="supprimer-un-terminal">supprimer un terminal</h3>
 
-<p>Notez bien que  <em>“menu Affichage &gt; Terminal”</em> ouvre le terminal courant, il n’en recrée pas un. C’est donc la commande à utiliser par défaut pour garder l’historique de ses commandes en utilisant la flèche du haut, qui remets la dernière commande utilisée. Lorsque vous voulez recréer un terminal, c’est dans <em>menu Terminal &gt; Nouveau Terminal</em>.</p>
+<p>On peut supprimer (en cliquant sur la poubelle) et créer (<em>menu Terminal &gt; Nouveau terminal</em>) autant de terminal que l’on le veut. On peut aussi juste fermer la fenêtre du terminal en cliquant sur la croix.</p>
+
+<h3 id="créer-un-nouveau-terminal">créer un nouveau terminal</h3>
+
+<p>Notez bien que <em>“menu Affichage &gt; Terminal”</em> ouvre le terminal courant, il n’en recrée pas un. C’est donc la commande à utiliser par défaut pour garder l’historique de ses commandes en utilisant la flèche du haut, qui remets la dernière commande utilisée.</p>
+
+<p>Lorsque vous voulez créer un nouveau terminal, c’est dans <em>menu Terminal &gt; Nouveau Terminal</em>.</p>
 
   </div>
 

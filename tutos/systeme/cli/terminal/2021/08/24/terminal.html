@@ -6,9 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>Utiliser un terminal | cours d’informatique</title>
+<title>le terminal | cours d’informatique</title>
 <meta name="generator" content="Jekyll v4.2.0">
-<meta property="og:title" content="Utiliser un terminal">
+<meta property="og:title" content="le terminal">
 <meta name="author" content="François Brucker">
 <meta property="og:locale" content="en_US">
 <meta name="description" content="Qu’est-ce que le terminal ? Comment le trouver et taper des commandes.">
@@ -19,9 +19,9 @@
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2021-08-24T00:00:00+00:00">
 <meta name="twitter:card" content="summary">
-<meta property="twitter:title" content="Utiliser un terminal">
+<meta property="twitter:title" content="le terminal">
 <script type="application/ld+json">
-{"description":"Qu’est-ce que le terminal ? Comment le trouver et taper des commandes.","@type":"BlogPosting","headline":"Utiliser un terminal","dateModified":"2021-08-24T00:00:00+00:00","datePublished":"2021-08-24T00:00:00+00:00","url":"/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html","mainEntityOfPage":{"@type":"WebPage","@id":"/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html"},"author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
+{"description":"Qu’est-ce que le terminal ? Comment le trouver et taper des commandes.","@type":"BlogPosting","headline":"le terminal","dateModified":"2021-08-24T00:00:00+00:00","datePublished":"2021-08-24T00:00:00+00:00","url":"/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html","mainEntityOfPage":{"@type":"WebPage","@id":"/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html"},"author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
@@ -54,7 +54,7 @@
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Utiliser un terminal</h1>Auteurs :
+    <h1 class="post-title">le terminal</h1>Auteurs :
       <ul>
       
         <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></li>
@@ -72,6 +72,7 @@
 <p>Le terminal est l’outil utilisé pour taper des commandes qui seront ensuite exécutées par votre ordinateur. On appelle ça le <a href="https://fr.wikipedia.org/wiki/Interface_en_ligne_de_commande">CLI</a>.</p>
 
 <p>Même si cela est intimidant, le CLI est le moyen le plus efficace d’interagir avec votre ordinateur car, contrairement aux applications :</p>
+
 <ul>
   <li>on peut ajouter des paramètres aux instructions</li>
   <li>on gère facilement les entrées et les sorties des commandes</li>
@@ -87,26 +88,23 @@
 <p>Selon votre système d’application, le terminal va se trouver à des endroits différents :</p>
 
 <details><summary>sous linux</summary><div>
-<p>Si vous êtes sous linux vous devriez savoir ouvrir un terminal. C’est souvent une application avec une télévision comme icône.</p>
-
-<blockquote class="note">
-  <p>TBD : à faire mieux.</p>
-</blockquote>
+<p><a href="https://doc.ubuntu-fr.org/terminal">sous ubuntu</a></p>
 
 </div></details>
 
 <details><summary>sous mac</summary><div>
 <p>Le <a href="https://www.howtogeek.com/682770/how-to-open-the-terminal-on-a-mac/">terminal</a> se trouve dans le dossier <em>“/Application/utilitaires”</em></p>
 
-<p>Avec le <strong>Finder</strong> :</p>
+<p>Avec le <strong>finder</strong> :</p>
+
 <ol>
   <li>menu aller,</li>
   <li>allez dans le dossier “<em>utilitaires</em>”,</li>
   <li>double-cliquez sur l’icône “Terminal”.</li>
 </ol>
 
-<blockquote>
-  <p>Le terminal est super utile, ça vaut le coup d’ajouter un raccourci dans la barre du <strong>Finder</strong>.</p>
+<blockquote class="note">
+  <p>Le terminal est super utile, ça vaut le coup d’ajouter un raccourci dans la barre du <strong>finder</strong></p>
 </blockquote>
 
 <p>Une fois dans l’application <strong>Terminal</strong> vous pouvez ouvrir une nouvelle fenêtre dans le menu “Shell &gt; Nouvelle Fenêtre &gt; Nouvelle fenêtre avec le profil - …” (les “…” correspondent à votre profil de fenêtre)</p>
@@ -117,41 +115,49 @@
 
 <p>Pour ouvrir une fenêtre powershell, cliquez droit sur le drapeau windows tout à gauche de la barre des tâches puis choisissez d’ouvrir une fenêtre powershell (ce n’est pas la peine qu’elle soit en mode administrateur)</p>
 
-<blockquote>
+<blockquote class="note">
   <p>Le terminal est super utile, ça vaut le coup d’épingler le powershell dans la barre des raccourcis.</p>
 </blockquote>
 
+<p>Il existe une autre sorte de terminal sous windows, <em>l’invite de commande</em>. Pour la lancer tapez <code class="language-plaintext highlighter-rouge">cmd</code> dans la barre de recherche (juste à droite du drapeau windows tout à gauche de la barre des tâches) puis appuyez sur la touche entrée.</p>
+
 <blockquote class="attention">
-  <p>Il existe une autre sorte de terminal sous windows, <em>l’invite de commande</em>. POur la lancer tapez <code class="language-plaintext highlighter-rouge">cmd</code> dans la barre de recherche (juste à droite du drapeau windows tout à gauche de la barre des tâches) puis appuyez sur la touche entrée. 
-Il n’est pas recommandé d’utiliser l’invite de commande, à moins que vous soyez un fana de <a href="https://www.reddit.com/r/Giscardpunk/">r/giscardpunk</a> bien sur.</p>
+  <p>Les commandes utilisables sous l’invite de commandes et powershell sont différentes. DOnc si vous suivez un tutos vérifiez bien qu’il est compatible avec powersell.</p>
 </blockquote>
 
+<p>Il n’est pas recommandé d’utiliser l’invite de commande, qui n’a pas évolué depuis les années 80, à moins que vous soyez un fana de <a href="https://www.reddit.com/r/Giscardpunk/">r/giscardpunk</a> bien sur.</p>
+
 </div></details>
+
+<p>La plupart des éditeurs de textes permettent également d’ouvrir directement des terminaux. Si vous utilisez <a href="https://code.visualstudio.com/">vscode</a> par exemple, vous pouvez directement <a href="/cours_informatique/tutos/editeur/vsc/installation/configuration/terminal/2021/09/14/vsc-terminal.html">ouvrir un terminal</a>.</p>
 
 <h2 id="utiliser-le-terminal">utiliser le terminal</h2>
 
 <p>Maintenant que vous avez trouvé le terminal, ouvrez une fenêtre terminal. Vous êtes devant ce qu’on appelle un <em>prompt</em>. On attend que vous tapiez des commandes. Ces commandes peuvent être de 2 types :</p>
+
 <ul>
   <li>soit des noms de fichiers qui sont <em>exécutables</em> (ce sont des programmes)</li>
-  <li>soit des instruction compréhensible par le terminal comme <code class="language-plaintext highlighter-rouge">get-command</code> avec powershell ou <code class="language-plaintext highlighter-rouge">ls</code> avec un termnial unix/mac.</li>
+  <li>soit des instructions compréhensibles par le terminal comme <code class="language-plaintext highlighter-rouge">ls</code> par exemple.</li>
 </ul>
 
-<blockquote>
-  <p>N’ayez pas peur. C’est simple à utiliser. On tape une commande, on appuie sur entrée et la commande s’exécute.</p>
+<blockquote class="note">
+  <p>C’est simple à utiliser. On tape une commande, on appuie sur entrée et la commande s’exécute.</p>
 </blockquote>
 
-<p>On utilisera globalement le terminal pour lancer des applications. Pour cela, vous pouvez regarder ce <a href="/cours_informatique/tutos/systeme/fichiers/2021/08/24/fichiers-navigation.html">tutoriel</a>.</p>
+<p>Si vous voulez plus de renseignements sur la navigation et l’exécution de fichiers, vous pouvez suivre <a href="/cours_informatique/tutos/systeme/cli/terminal/2021/12/02/terminal-utilisation.html">ce tuto</a></p>
 
 <h2 id="autres-tutos">autres tutos</h2>
 
 <ul>
-  <li>windows : <a href="https://docs.microsoft.com/fr-fr/powershell/scripting/overview?view=powershell-7.1">https://docs.microsoft.com/fr-fr/powershell/scripting/overview?view=powershell-7.1</a>
+  <li>windows powershell : <a href="https://docs.microsoft.com/fr-fr/powershell/scripting/overview?view=powershell-7.1">https://docs.microsoft.com/fr-fr/powershell/scripting/overview?view=powershell-7.1</a>
 </li>
-  <li>mac : <a href="https://support.apple.com/fr-fr/guide/terminal/welcome/mac">https://support.apple.com/fr-fr/guide/terminal/welcome/mac</a>
+  <li>l’application terminal sous mac : <a href="https://support.apple.com/fr-fr/guide/terminal/welcome/mac">https://support.apple.com/fr-fr/guide/terminal/welcome/mac</a>
+</li>
+  <li>utiliser un terminal linux/(les commandes fonctionnent aussi avec le terminal mac) : <a href="https://ubuntu.com/tutorials/command-line-for-beginners#1-overview">https://ubuntu.com/tutorials/command-line-for-beginners#1-overview</a>
 </li>
 </ul>
 
-<blockquote class="note">
+<blockquote class="tbd">
   <p>TBD : ajouter si on en trouve</p>
 </blockquote>
 

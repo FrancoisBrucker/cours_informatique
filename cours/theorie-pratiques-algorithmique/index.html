@@ -283,12 +283,21 @@ graph.links.push({
 })
 
 graph.nodes.push({
+  id: 'naviguer dans un système de fichiers',
+  link: "/cours_informatique/tutos/systeme/fichiers/2021/08/24/fichiers-navigation.html",
+  group: groups.autre
+})
+graph.nodes.push({
   id: 'vscode & python',
   link: "/cours_informatique/tutos/editeur/vsc/installation/configuration/python/2021/09/14/vsc-python.html",
   group: groups.autre
 })
 graph.links.push({
   source: 'vscode & python',
+  target: 'projet informatique'
+})
+graph.links.push({
+  source: 'naviguer dans un système de fichiers',
   target: 'projet informatique'
 })
 
@@ -312,10 +321,24 @@ graph.links.push({
 })
 
 graph.nodes.push({
-  id: 'naviguer dans un système de fichiers',
-  link: "/cours_informatique/tutos/systeme/fichiers/2021/08/24/fichiers-navigation.html",
+  id: 'terminal',
+  link: "/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html",
   group: groups.autre
 })
+graph.nodes.push({
+  id: 'utilisation du terminal',
+  link: "/cours_informatique/tutos/systeme/cli/terminal/2021/12/02/terminal-utilisation.html",
+  group: groups.autre
+})
+graph.links.push({
+  source: 'naviguer dans un système de fichiers',
+  target: 'terminal'
+})
+graph.links.push({
+  source: 'terminal',
+  target: 'utilisation du terminal'
+})
+
 graph.nodes.push({
   id: 'projet 1 : pourcentages',
   link: "/cours_informatique/cours/theorie-pratiques-algorithmique/coder/projet-1-pourcentages.html",
@@ -326,7 +349,7 @@ graph.links.push({
   target: 'projet 1 : pourcentages'
 })
 graph.links.push({
-  source: 'naviguer dans un système de fichiers',
+  source: 'utilisation du terminal',
   target: 'projet 1 : pourcentages'
 })
 

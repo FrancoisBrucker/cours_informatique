@@ -25,6 +25,7 @@
 
   <link rel="stylesheet" href="/cours_informatique/assets/custom.css">
 <link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique">
+<script>MathJax={"tex":{"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["\\[","\\]"]]},"svg":{"fontCache":"global"},"svg":{"fontCache":"global"}}</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
 <body>
@@ -73,35 +74,85 @@
 
 <h2 id="mise-en-place">mise en place</h2>
 
+<h3 id="où-est-python">où est python</h3>
+
+<blockquote class="a-faire">
+  <p>Dans un terminal :</p>
+
+  <ul>
+    <li>affichez le path</li>
+    <li>déterminez quel est chemin absolu du python utilisé par défaut dans le terminal</li>
+  </ul>
+
+</blockquote>
+
+<p>Une fois que le chemin du python du terminal est connu :</p>
+
+<blockquote class="a-faire">
+  <ul>
+    <li>déterminez l’exécutable python utilisé par défaut par vscode</li>
+    <li>faites en sorte que le python de vscode et celui du terminal coïncident, en changeant celui de vscode si nécessaire.</li>
+  </ul>
+</blockquote>
+
 <h3 id="dossier-du-projet">dossier du projet</h3>
 
-<p>Avec un explorateur de fichier, créez un dossier que vous nommerez <em>“pourcentage_binaire”</em>.</p>
+<blockquote class="a-faire">
+  <ol>
+    <li>Créez ci ce n’est pas déjà fait avec l’explorateur de fichier un dossier où vous placerez tous les projets de ce cours.</li>
+    <li>ouvrez un terminal dans ce dossier</li>
+    <li>créer <strong>avec le terminal</strong> un dossier intitulé <em>“pourcentage_binaire”</em> dans le dossier courant du terminal</li>
+  </ol>
+</blockquote>
 
-<p>On crée un projet avec vscode, c’est à dire que l’on ouvre un nouveau dossier que l’on nomme .</p>
+<h3 id="projet-vscode">projet vscode</h3>
+
+<blockquote class="a-faire">
+  <p>Créer un nouveau projet vscode en ouvrant le dossier <em>“pourcentage_binaire”</em>.</p>
+</blockquote>
 
 <h3 id="créations-des-fichiers">créations des fichiers</h3>
 
-<p>On crée tout de suite nos 3 fichiers (que l’on garde vide pour l’instant) :</p>
+<blockquote class="a-faire">
+  <p>Créez avec vscode 3 fichiers (que l’on garde vide pour l’instant) dans le projet :</p>
 
-<ul>
-  <li>
-<em>“test_pourcentage.py”</em> : notre fichier de test</li>
-  <li>
-<em>“pourcentage.py”</em> : le code</li>
-  <li>
+  <ul>
+    <li>
 <em>“main.py”</em> : le programme principal</li>
-</ul>
+    <li>
+<em>“pourcentage.py”</em> : le code</li>
+    <li>
+<em>“test_pourcentage.py”</em> : notre fichier de tests</li>
+  </ul>
+
+</blockquote>
+
+<blockquote>
+  <p>On a coutume d’associer à chaque fichier de code son fichier de tests dont le nom est le même que le fichier de code précédé de <code class="language-plaintext highlighter-rouge">test_</code></p>
+</blockquote>
 
 <h2 id="le-projet">le projet</h2>
 
+<p>Le projet final consistera à demander à l’utilisateur un nombre décimal et de répondre le pourcentage de 0 dans ce nombre lorsque l’on l’écrit en binaire.</p>
+
+<p>Pour arriver à ce but, on va procéder petit à petit. On s’assurera du bon fonctionnement du code en ajoutant des tests (qu’on conservera !) à chaque étape.</p>
+
 <h3 id="le-code">le code</h3>
 
-<p>On veut compter le nombre de <code class="language-plaintext highlighter-rouge">0</code> d’un nombre écrit en binaire.</p>
+<p>On veut compter le nombre de <code class="language-plaintext highlighter-rouge">0</code> d’un nombre écrit en binaire. Un entier n’ayant pas de base définie (c’est le même entier quelque soit la base), si l’on veut compter le nombre de $0$ de sa représentation binaire, il faut transformer notre entier en une chaine de caractères constituées de <code class="language-plaintext highlighter-rouge">"0"</code> et de <code class="language-plaintext highlighter-rouge">"1"</code> et compter le nombre de caractères <code class="language-plaintext highlighter-rouge">"0"</code>.</p>
 
-<p>Fichier <em>“pourcentage.py”</em> :</p>
+<p>Mais avant de penser à la conversion d’un entier, essayons de voir comment compter le nombre de <code class="language-plaintext highlighter-rouge">"0"</code> d’une chaine de caractères.</p>
+
+<blockquote class="a-faire">
+  <p>Mettez le code suivant dans <em>“pourcentage.py”</em> :</p>
+</blockquote>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">pourcent</span><span class="p">(</span><span class="n">chaîne_de_caractères</span><span class="p">):</span>
-    <span class="n">nombre_de_0</span> <span class="o">=</span> <span class="n">chaîne_de_caractères</span><span class="p">.</span><span class="n">count</span><span class="p">(</span><span class="s">'0'</span><span class="p">)</span>
+    <span class="n">nombre_de_0</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">chaîne_de_caractères</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">c</span> <span class="o">==</span> <span class="s">"0"</span><span class="p">:</span>
+            <span class="n">nombre_de_0</span> <span class="o">+=</span> <span class="mi">1</span>
 
     <span class="k">return</span> <span class="n">nombre_de_0</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">chaîne_de_caractères</span><span class="p">)</span>
 
@@ -111,33 +162,42 @@
 
 <ul>
   <li>que notre entrée est une chaîne de caractères</li>
-  <li>que la chaîne est uniquement composée de 0 et de 1</li>
+  <li>que la chaîne est uniquement composée de <code class="language-plaintext highlighter-rouge">"0"</code> et de <code class="language-plaintext highlighter-rouge">"1"</code>
+</li>
 </ul>
 
-<p>Notre nom de paramètre est explicite, donc s’il y a une erreur c’est de la faute du développeur. Le programme va planter si on met un entier dans <code class="language-plaintext highlighter-rouge">chaîne_de_caractères</code>, puisque les entiers ne connaissent pas la méthode <a href="https://docs.python.org/3/library/stdtypes.html?highlight=count#str.count"><code class="language-plaintext highlighter-rouge">count</code></a> : si les entrées sont spécifiées dans la documentation ou par des nom explicite, ce n’est pas la peine de vérifier dans le code que c’est ok.</p>
+<p>En effet, Notre nom de paramètre est explicite, donc s’il y a une erreur c’est de la faute du développeur. Le programme va planter si on met un entier dans <code class="language-plaintext highlighter-rouge">chaîne_de_caractères</code>, puisque les entiers ne peuvent être mis dans une boucle for.</p>
 
-<blockquote>
+<blockquote class="note">
+  <p>Si les entrées de nos méthodes sont spécifiées dans le code ou la documentation ou par des noms explicites, ce n’est pas la peine de vérifier dans le code que c’est ok.</p>
+</blockquote>
+
+<p>On aurait pu aussi rendre 0 si l’entrée n’était pas une chaine de caractère. Ceci aurait masqué le mauvais type d’entrée dans la focntion tout en donnant un résultat cohérent. <strong>CE N’EST PAS UNE BONNE IDEE !</strong></p>
+
+<blockquote class="note">
   <ul>
     <li>
-<strong>Coding mantra</strong> : il vaut mieux qu’un programme plante plutôt qu’il cache l’erreur (en mettant par exemple 0 si le nom <code class="language-plaintext highlighter-rouge">chaîne_de_caractères</code> n’a pas de méthode <code class="language-plaintext highlighter-rouge">count</code>).</li>
+<strong>Coding mantra</strong> : il vaut mieux qu’un programme plante plutôt qu’il cache une erreur.</li>
     <li>
-<strong>pourquoi ?</strong> L’erreur ne va pas partir, elle va juste faire planter le programme autre-part, loin de la réelle erreur. Ce sera donc bien plus dur à trouver.</li>
+<strong>pourquoi ?</strong> L’erreur ne va pas partir d’elle même, elle va juste faire planter le programme autre-part, loin de la réelle erreur. Elle sera donc bien plus dur à trouver et à corriger.</li>
   </ul>
 </blockquote>
 
 <h3 id="les-tests">les tests</h3>
 
-<p>Ajoutons des tests. Par exemple, on pourrait tester que :</p>
+<p>Notre fonction est codée. Ajoutons ses tests dans la foulée. Par exemple, on pourrait tester que :</p>
 
 <ul>
   <li>
-<code class="language-plaintext highlighter-rouge">"1"</code> rende <code class="language-plaintext highlighter-rouge">0</code>
+<code class="language-plaintext highlighter-rouge">"11"</code> rende bien <code class="language-plaintext highlighter-rouge">0</code>
 </li>
   <li>
-<code class="language-plaintext highlighter-rouge">"0"</code> rende <code class="language-plaintext highlighter-rouge">1</code>.</li>
+<code class="language-plaintext highlighter-rouge">"00"</code> rende bien <code class="language-plaintext highlighter-rouge">1</code>.</li>
 </ul>
 
-<p>Fichier <em>“test_pourcentage.py”</em> :</p>
+<blockquote class="a-faire">
+  <p>Mettez le code suivant dans <em>“test_pourcentage.py”</em> :</p>
+</blockquote>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pourcentage</span> <span class="kn">import</span> <span class="n">pourcent</span>
 
@@ -151,17 +211,38 @@
 
 </code></pre></div></div>
 
-<p>Pour finir, on pourrait ajouter un test un peut plus compliqué : que <code class="language-plaintext highlighter-rouge">"01"</code> rende <code class="language-plaintext highlighter-rouge">.5</code>.</p>
+<blockquote class="a-faire">
+  <p>Testez ensuite que vos tests fonctionnent :</p>
 
-<blockquote class="attention">
-  <p>On va tester des réels, pas des entiers. Rappelez vous que les réels ne le sont pas. Seuls les entiers existent. Voir <a href="https://docs.python.org/fr/3/tutorial/floatingpoint.html">la doc</a>)</p>
+  <ul>
+    <li>avec l’erlenmeyer de vscode</li>
+    <li>dans un terminal dont le dossier courant est le dossier du projet en tapant <code class="language-plaintext highlighter-rouge">python -m pip</code>
+</li>
+  </ul>
+
 </blockquote>
 
-<p>On ne peut pas écrire directement <code class="language-plaintext highlighter-rouge">assert pourcent('01') == .5</code> (même si là, ça risque de marcher) car si ça se trouve on aura <code class="language-plaintext highlighter-rouge">.499999999</code> à la place de <code class="language-plaintext highlighter-rouge">.5</code>. Lorsque l’on compare des réels c’est toujours à epsilon prêt.</p>
+<p>On a testé les cas limites de notre fonction. Ajoutons un cas général, où il y a à la fois des <code class="language-plaintext highlighter-rouge">"0"</code> et des <code class="language-plaintext highlighter-rouge">"1"</code>, par exemple que  <code class="language-plaintext highlighter-rouge">"101"</code> rende <code class="language-plaintext highlighter-rouge">1/3</code>.</p>
 
-<p>Donc on va utiliser une fonction spéciale de <code class="language-plaintext highlighter-rouge">pytest</code>, qui vérifie si 2 réels sont <em>à peu prêt égaux</em> (par défaut à dix moins six prêt) : <a href="https://docs.pytest.org/en/latest/reference.html#pytest-approx">approx</a> pour ça.</p>
+<p>Ceci nous impose de tester l’égalité entre 2 réels. Ceci est impossible à faire en informatique car il faudrait regarder une infinité de chiffres après la virgule… Or les réels en informatique sont en fait des entiers déguisés, ce sont des approximations (voir <a href="https://docs.python.org/fr/3/tutorial/floatingpoint.html">la doc</a>)).</p>
 
-<p>Fichier  <em>“test_pourcentage.py”</em> :</p>
+<blockquote>
+  <p>Les réels sont des limites, ils n’ont pas d’existence tangible. En bref : les réels ne le sont pas, que seuls les entiers le sont.</p>
+</blockquote>
+
+<p>On ne peut donc pas écrire directement <code class="language-plaintext highlighter-rouge">assert pourcent('101') == 1/3</code> (même si là, ça risque de marcher) car si ça se trouve on aura <code class="language-plaintext highlighter-rouge">.3333333332</code> à la place de <code class="language-plaintext highlighter-rouge">1/3</code>.</p>
+
+<blockquote class="note">
+  <p>On ne teste <strong>JAMAIS</strong> l’égalité entre 2 réels. On les compare toujours à $\epsilon$ prêt.</p>
+</blockquote>
+
+<p>POur cela, on va utiliser une fonction spéciale de <code class="language-plaintext highlighter-rouge">pytest</code>, qui vérifie si 2 réels sont <em>à peu prêt égaux</em> (par défaut à dix moins six prêt) : <a href="https://docs.pytest.org/en/latest/reference.html#pytest-approx">approx</a>.</p>
+
+<p>Comme nos deux autres tests comparaient déjà des réels, on va les modifier pour qu’ils utilisent approx avant d’ajouter le nouveau test</p>
+
+<blockquote class="a-faire">
+  <p>Mettez le code suivant dans <em>“test_pourcentage.py”</em>, et vérifiez que les tests passent toujours :</p>
+</blockquote>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pytest</span> <span class="kn">import</span> <span class="n">approx</span>
 
@@ -169,19 +250,47 @@
 
 
 <span class="k">def</span> <span class="nf">test_pourcent_0</span><span class="p">():</span>
-    <span class="k">assert</span> <span class="n">pourcent</span><span class="p">(</span><span class="s">'11'</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+    <span class="k">assert</span> <span class="n">pourcent</span><span class="p">(</span><span class="s">'11'</span><span class="p">)</span> <span class="o">==</span> <span class="n">approx</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">test_pourcent_1</span><span class="p">():</span>
-    <span class="k">assert</span> <span class="n">pourcent</span><span class="p">(</span><span class="s">'00'</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
-
-
-<span class="k">def</span> <span class="nf">test_pourcent_01</span><span class="p">():</span>
-    <span class="k">assert</span> <span class="n">pourcent</span><span class="p">(</span><span class="s">'01'</span><span class="p">)</span> <span class="o">==</span> <span class="n">approx</span><span class="p">(.</span><span class="mi">5</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">pourcent</span><span class="p">(</span><span class="s">'00'</span><span class="p">)</span> <span class="o">==</span> <span class="n">approx</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
 </code></pre></div></div>
 
+<blockquote class="note">
+  <p>L’ordre des <code class="language-plaintext highlighter-rouge">import</code> est, par coutume, le suivant :</p>
+
+  <ol>
+    <li>les modules de python</li>
+    <li>les bibliothèques externes</li>
+    <li>les imports de notre projet</li>
+  </ol>
+
+  <p>On saute une ligne entre chaque groupe d’import pour bien voir les différences.</p>
+</blockquote>
+
+<p>On peut maintenant ajouter le nouveau test :</p>
+
+<blockquote class="a-faire">
+  <p>Ajoutez à <em>“test_pourcentage.py”</em> le test suivant, puis testez que les 3 tests passent.</p>
+</blockquote>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ...
+</span>
+<span class="k">def</span> <span class="nf">test_pourcent_01</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">pourcent</span><span class="p">(</span><span class="s">'101'</span><span class="p">)</span> <span class="o">==</span> <span class="n">approx</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># ...
+</span></code></pre></div></div>
+
 <blockquote>
+  <p>On a coutume de mettre des <code class="language-plaintext highlighter-rouge"># ...</code> pour dire que le reste du code du fichier n’est pas changé. Ce n’est pas la peine de les copier/coller.</p>
+</blockquote>
+
+<p>On a 3 tests. Deux de ces tests correspondent aux cas limites, et le troisième à un cas général.</p>
+
+<blockquote class="note">
   <ul>
     <li>
 <strong>Coding mantra</strong> : que tester ?</li>
@@ -203,18 +312,13 @@
   <li>si c’est quelqu’un d’autre qui les fait, comment être sur que ce soit les bons tests ? Qu’ils couvrent bien tout le fonctionnement du code ? Il faut que l’autre personne comprenne également le code. On perd donc du temps puisqu’il faut faire 2 fois le boulot de compréhension.</li>
 </ul>
 
-<blockquote>
-  <ul>
-    <li>
-<strong>Coding mantra</strong> : Pour ma part, je fais du <a href="https://fr.wikipedia.org/wiki/Test_driven_development">TDD</a>. J’écris mes tests <strong>avant</strong> de coder. Celà peut sembler contre intuitif mais c’est super bien car cela permet d’utiliser son code avant de l’écrire. Souvent, en cherchant comment écrire un test, on trouve la bonne façon d’utiliser la fonction que l’on va écrire. Coder la fonction puis l’utiliser dans les tests est alors une perte de temps puisque parfois il faut complètement la réécrire car elle n’est pas pratique à utiliser.</li>
-  </ul>
-</blockquote>
-
-<p>Ce n’est pas le cas ici, mais dans la vraie vie, on ne sais pas trop à quoi va ressemble notre fonction une fois écrite. Le TDD permet d’écrire la fonction petit à petit. Une fois que vous aurez vu la programmation objet tenter <a href="https://francoisbrucker.github.io/cours_informatique/cours/mie/developpement-objet/tdd_et_test_pattern.html">ce tuto</a>.</p>
-
 <h3 id="programme-principal">programme principal</h3>
 
-<p>Fichier “main.py”* :</p>
+<p>Faisons notre première tentative de programme principal. On va demander directement à l’utilisateur de rentrer un nombre écrit en binaire</p>
+
+<blockquote class="a-faire">
+  <p>Mettez le code suivant dans <em>“main.py”</em> :</p>
+</blockquote>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pourcentage</span> <span class="kn">import</span> <span class="n">pourcent</span>
 
@@ -230,58 +334,25 @@
   <li>il a une longueur non vide : que fait le programme si on appuie sur la touche entrée sans rien écrire ?</li>
 </ul>
 
-<h4 id="correction-dun-bug">correction d’un bug</h4>
-
-<p>Si l’on ne rend rien, le programme plante ! On va corriger notre code et rajouter un test pour être sur que ça n’arrive plus :</p>
-
-<p>dans <em>“test_pourcentage.py”</em>, ajoutez le test :</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ...
-</span>
-<span class="k">def</span> <span class="nf">test_pourcent_vide</span><span class="p">():</span>
-    <span class="k">assert</span> <span class="n">pourcent</span><span class="p">(</span><span class="s">''</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
-
-<span class="c1"># ...
-</span></code></pre></div></div>
-
-<blockquote>
-  <p>On a coutume de mettre des <code class="language-plaintext highlighter-rouge"># ...</code> pour dire que le reste du code du fichier n’est pas changé. Ce n’est pas la peine de les copier/coller.</p>
-</blockquote>
-
-<p>Puis on corrige la fonction <code class="language-plaintext highlighter-rouge">pourcent</code> de <em>“pourcentage.py”</em> :</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ...
-</span>
-<span class="k">def</span> <span class="nf">pourcent</span><span class="p">(</span><span class="n">chaîne_de_caractères</span><span class="p">):</span>
-    <span class="n">nombre_de_0</span> <span class="o">=</span> <span class="n">chaîne_de_caractères</span><span class="p">.</span><span class="n">count</span><span class="p">(</span><span class="s">'0'</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">chaîne_de_caractères</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">nombre_de_0</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">chaîne_de_caractères</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="mi">0</span>
-
-<span class="c1"># ...
-</span></code></pre></div></div>
-
-<h4 id="prise-en-compte-de-lutilisateur">prise en compte de l’utilisateur</h4>
-
 <p>Quand je vous avait dit de ne pas faire de vérification, c’est vrai pour tout ce qui a trait au code utilisé par l’ordinateur. Dès qu’un humain utilise du code, il faut <strong>TOUT</strong> vérifier et faire en sorte qu’il ait la meilleur expérience possible.</p>
+
+<blockquote class="a-faire">
+  <p>Tout ce que fait l’utilisateur doit être vérifié avant d’être injecté dans le programme. C’est la <a href="https://fr.wikipedia.org/wiki/Loi_de_Murphy">loi de Murphy</a> : si on laisse la possibilité de se tromper, quelqu’un va forcément le faire à un moment.</p>
+</blockquote>
 
 <p>Donc ici on pourrait :</p>
 
 <ul>
   <li>faire rentrer à l’utilisateur un nombre en base 10,</li>
-  <li>lui montrer son nombre en base 2 puis donner son pourcentage</li>
   <li>il faut ne pas planter et redemander à l’utilisateur de taper un nombre si ce n’est pas un nombre en base 10</li>
+  <li>lui montrer son nombre en base 2 puis donner son pourcentage</li>
 </ul>
 
 <p>On utilise la <a href="https://docs.python.org/3/tutorial/errors.html#handling-exceptions">gestion des erreurs de python</a> pour ça (Cela dépasse un peu le cadre de ce cours, on ira donc pas plus loin que vous montrer que ça existe)</p>
 
-<blockquote>
-  <p><strong>Amélioration possible</strong> : ne s’arrêter que si l’utilisateur tape une chaîne de caractère vide.</p>
+<blockquote class="a-faire">
+  <p>Mettez le code suivant dans <em>“main.py”</em> :</p>
 </blockquote>
-
-<p>Fichier <em>“main.py”</em> :</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pourcentage</span> <span class="kn">import</span> <span class="n">pourcent</span>
 
@@ -303,6 +374,21 @@
       <span class="n">chaine</span><span class="p">,</span> <span class="s">"contient "</span><span class="p">,</span> <span class="n">pourcent</span><span class="p">(</span><span class="n">nombre_binaire</span><span class="p">),</span>
       <span class="s">"pourent de 0 en base 2 ("</span> <span class="o">+</span> <span class="n">nombre_binaire</span> <span class="o">+</span> <span class="s">")."</span><span class="p">)</span>
 </code></pre></div></div>
+
+<blockquote class="a-faire">
+  <p>Exécutez le code et comprenez comment il fonctionne. En particulier :</p>
+
+  <ul>
+    <li>comment fonctionne la boucle <code class="language-plaintext highlighter-rouge">while</code> ?</li>
+    <li>de quel type est le résultat de la fonction <code class="language-plaintext highlighter-rouge">input</code> ? Pourquoi ?</li>
+    <li>notre nombre a été converti en plein de types différents. Lesquels ?</li>
+    <li>comment est géré l’erreur possible ?</li>
+    <li>..</li>
+  </ul>
+
+  <p>Faites de petits bout de code qui isolent ces différents points et exécutez les pour comprendre comment cela fonctionne.</p>
+</blockquote>
+
 
   </div>
 
