@@ -274,3 +274,7 @@ print("Votre nombre",
 > Faites de petits bout de code qui isolent ces différents points et exécutez les pour comprendre comment cela fonctionne.
 {: .a-faire}
 
+Il faut toujours faire l'effort de comprendre le code que vous copiez/collez. Ce n'est que comme ça que vous progresserez. Pour cela, isolez la partie de code que vous voulez comprendre en refaisant un programme qui n'utilise que ça.
+
+> **La magie n'existe pas**. Du moins en informatique. Dès qu'un bout de code vous semble magique, **il faut s'arrêter et essayer de le comprendre**. Quite à y passer du temps ! Ce temps n'est en revanche pas perdu car il vous fait progresser et vous comprendrez plus vite les prochains bout de codes. N'oubliez pas qu'internet existe et est plein de ressources et que certains profs savent aussi des choses et peuvent peut-être vous aider :-)
+{: .note}
