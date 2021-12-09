@@ -6,20 +6,20 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>Complexité | cours d’informatique</title>
+<title>Complexité max/min | cours d’informatique</title>
 <meta name="generator" content="Jekyll v4.2.0">
-<meta property="og:title" content="Complexité">
+<meta property="og:title" content="Complexité max/min">
 <meta name="author" content="François Brucker">
 <meta property="og:locale" content="en_US">
 <meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille.">
 <meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille.">
-<link rel="canonical" href="/cours_informatique/cours/algorithmie_code/cours_2_complexite_et_preuve/1_cours_complexite.html">
-<meta property="og:url" content="/cours_informatique/cours/algorithmie_code/cours_2_complexite_et_preuve/1_cours_complexite.html">
+<link rel="canonical" href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/complexite-max-min.html">
+<meta property="og:url" content="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/complexite-max-min.html">
 <meta property="og:site_name" content="cours d’informatique">
 <meta name="twitter:card" content="summary">
-<meta property="twitter:title" content="Complexité">
+<meta property="twitter:title" content="Complexité max/min">
 <script type="application/ld+json">
-{"description":"Support de cours/td d’informatique à l’école centrale marseille.","headline":"Complexité","@type":"WebPage","url":"/cours_informatique/cours/algorithmie_code/cours_2_complexite_et_preuve/1_cours_complexite.html","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
+{"description":"Support de cours/td d’informatique à l’école centrale marseille.","headline":"Complexité max/min","@type":"WebPage","url":"/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/complexite-max-min.html","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
@@ -53,65 +53,132 @@
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Complexité</h1>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span>
+    <h1 class="post-title">Complexité max/min</h1>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span>
   </header>
 
   <div class="post-content">
-    <h2 id="introduction">Introduction</h2>
+    <blockquote class="chemin">
+  <p><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/">Théorie et pratiques algorithmique</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/">algorithmie</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/complexite-max-min.html">complexité max/min</a></p>
 
-<p>On compte souvent (le nombre d’opération, la même prise, …) en utilisant les <em>grand O</em> : $\mathcal{O}$ .</p>
+  <p>prérequis :</p>
 
-<p><strong>Définition</strong> :
-Une fonction $g(N)$ est en $\mathcal{O}(f(N))$ s’il existe 2 constantes $c_0$ et $N_0$ tels que $g(N) &lt; c_0 f(N)$ pour tout $N &gt; N_0$.</p>
+  <ul>
+    <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.html">algorithmie/pseudo-code</a></li>
+  </ul>
+</blockquote>
+
+<p>Où l’on se donne des outils pour mesurer (théoriquement et en pratique) les performances d’un algorithmes</p>
+
+<h2 id="aesures-en-mathcalo">aesures en $\mathcal{O}$</h2>
+
+<p>Mesurer les performances d’un algorithme se fera presque exclusivement en utilisant les $\mathcal{O}$ (<em>grand O</em>)</p>
+
+<blockquote class="note">
+  <p>Une fonction $f(N)$ est en $\mathcal{O}(f’(N))$ s’il existe 2 constantes $c_0$ et $N_0$ tels que $f(N) &lt; c_0 f’(N)$ pour tout $N &gt; N_0$.</p>
+</blockquote>
 
 <p>Cela permet :</p>
 
 <ul>
   <li>d’avoir un majorant de notre comptage lorsque $N$ devient grand</li>
-  <li>de ne pas s’occuper des constantes puisque $\mathcal{O}(\mbox{constante}) = \mathcal{O}(1)$</li>
-  <li>de ne pas s’occuper de la proportionnalité $\mathcal{O}(\mbox{constante} * f(N)) = \mathcal{O}(f(N))$</li>
+  <li>de ne pas s’occuper des constantes puisque (on va le démontrer) $\mathcal{O}(\mbox{constante}) = \mathcal{O}(1)$</li>
+  <li>de ne pas s’occuper de la proportionnalité car (on va le démontrer) $\mathcal{O}(\mbox{constante} * f(N)) = \mathcal{O}(f(N))$</li>
 </ul>
 
-<p>Ce qui plutôt intéressant en informatique car :</p>
-
-<ul>
-  <li>on veut voir l’évolution de la complexité par rapport à la taille des entrée</li>
-  <li>la complexité d’un algorithme est nichée dans les boucles pas dans les opérations successives qui ne dépendent pas des données
-    <ul>
-      <li>comme les suites d’instructions constantes</li>
-      <li>ou une succession constante de boucles (seule la boucle est importante).</li>
-    </ul>
-  </li>
-</ul>
-
-<blockquote>
-  <p><strong>Remarque</strong> : le nombre d’opérations d’un algorithme en grand O est proportionnel à sa durée</p>
+<blockquote class="note">
+  <p>Connaitre le comportement en $\mathcal{O}$ d’une fonction nous donne l’idée générale de son comportement.</p>
 </blockquote>
 
-<h2 id="arithmétique-des-mathcalo-grand-o">arithmétique des $\mathcal{O}$ (grand O)</h2>
+<p>Ce qui plutôt intéressant en algorithmie où l’on ne sait pas toujours exactement le nombre d’opération élémentaires utilisées, mais on peut les majorer. On l’utilisera pour mesurer :</p>
+
+<ul>
+  <li>le nombre d’opérations élémentaires effectuée par l’algorithme avant de s’arrêter</li>
+  <li>le temps mis par l’algorithme pour s’exécuter</li>
+  <li>la taille de la mémoire utilisée pour par l’algorithme</li>
+</ul>
+
+<p>Par rapport à la taille $N$ de l’entrée de l’algorithme.</p>
+
+<h3 id="arithmétique-des-mathcalo-grand-o">arithmétique des $\mathcal{O}$ (grand O)</h3>
 
 <p>Par abus de langage, on dira que :</p>
 
 <ul>
+  <li>$\mathcal{O}(f(N))$ plutôt que soit $f’(N)$ une fonction en $\mathcal{O}(f(N))$</li>
   <li>$f(N) = \mathcal{O}(g(N))$ plutôt que : “la fonction $f(N)$ est en $\mathcal{O}(g(N))$”.</li>
-  <li>$\mathcal{O}(f(N)) = \mathcal{O}(g(N))$ plutôt que “une fonction en $\mathcal{O}(f(N))$ est également en $\mathcal{O}(g(N))$”.</li>
+  <li>$\mathcal{O}(f(N)) \Rightarrow \mathcal{O}(g(N))$ plutôt que “une fonction en $\mathcal{O}(f(N))$ est également en $\mathcal{O}(g(N))$”</li>
+  <li>$\mathcal{O}(f(N)) \Leftrightarrow \mathcal{O}(g(N))$ plutôt que “une fonction en $\mathcal{O}(f(N))$ est également en $\mathcal{O}(g(N))$ et réciproquement”</li>
 </ul>
 
-<p>On a alors les règles suivantes :</p>
+<blockquote class="note">
+  <p>On a les règles suivantes :</p>
 
-<ul>
-  <li>$N^p = \mathcal{O}(N^q)$ pour $q \geq p$</li>
-  <li>$\mathcal{O}(1) = \mathcal{O}(2)$</li>
-  <li>$\mathcal{O}(f(N)) + \mathcal{O}(g(N)) = \mathcal{O}(f(N) + g(N))$</li>
-  <li>$\mathcal{O}(A*f(N)) = A * \mathcal{O}(f(N)) = \mathcal{O}(f(N))$</li>
-  <li>$f(N) * \mathcal{O}(g(N)) = \mathcal{O}(f(N)*g(N))$</li>
-</ul>
+  <ul>
+    <li>$\mathcal{O}(A) \Leftrightarrow \mathcal{O}(1)$, avec $A$ une contante strictement positive</li>
+    <li>$\mathcal{O}(N^p) \Rightarrow \mathcal{O}(N^q)$ pour $q \geq p$</li>
+    <li>$\mathcal{O}(f(N)) + \mathcal{O}(g(N)) = \mathcal{O}(f(N) + g(N))$</li>
+    <li>$\mathcal{O}(A \cdot f(N)) = A \cdot \mathcal{O}(f(N)) = \mathcal{O}(f(N))$, avec $A$ une contante strictement positive</li>
+    <li>$\mathcal{O}(f(N)) \cdot \mathcal{O}(g(N)) = \mathcal{O}(f(N) \cdot g(N))$</li>
+  </ul>
 
-<h3 id="exemple--quelle-est-la-différence-entre-mathcalon2--n3-et-mathcalon3">exemple : quelle est la différence entre $\mathcal{O}(N^2 + N^3)$ et $\mathcal{O}(N^3)$</h3>
+</blockquote>
 
+<details><summary>Démonstration des trois premières propriétés, les autres se démontrant de la même manière.</summary><div>
+<h4 id="mathcaloa--mathcalo1">$\mathcal{O}(A) = \mathcal{O}(1)$</h4>
+
+<p>Pour montrer $\mathcal{O}(A) = \mathcal{O}(1)$, on montre que $\mathcal{O}(A)$ est en $\mathcal{O}(1)$ et que $\mathcal{O}(1)$ est en $\mathcal{O}(A)$</p>
+
+<p>Soit $f(N)$ une fonction en $\mathcal{O}(A)$. Ils existent donc $c_0$ et $N_0$ tels que pour tout $N &gt; N_0$, on ait $f(N) &lt; c_0 \cdot A$. En posant $c’_0 = c_0 \cdot A$, on a $f(N) &lt; c’_0 \cdot 1$ pour tout $N &gt; N_0$ donc $f(N)$ est en $\mathcal{O}(1)$.</p>
+
+<p>Réciproquement, soit $f(N)$ une fonction en $\mathcal{O}(1)$. Ils existent donc $c_0$ et $N_0$ tels que pour tout $N &gt; N_0$, on ait $f(N) &lt; c_0 \cdot 1$. En posant $c’_0 = c_0 / A$, on a $f(N) &lt; c’_0 \cdot A$ pour tout $N &gt; N_0$ donc $f(N)$ est en $\mathcal{O}(A)$.</p>
+
+<h4 id="une-fonction-en-mathcalonp-aussi-en-mathcalonq-pour-q-geq-p">une fonction en $\mathcal{O}(N^p)$ aussi en $\mathcal{O}(N^q)$ pour $q \geq p$</h4>
+
+<p>Soit $f$ une fonction en $\mathcal{O}(N^p)$. Il existe donc $c_0$ et $N_0$ tels que $f(N) &lt; c_0 \cdot N^p$ pour $N &gt; N_0$. 
+Comme $1 &lt; 2 \cdot N^\alpha$ pour $\alpha \geq 0$ et $N&gt; 1$, on a $N^p &lt; c_0 \cdot N^q$ pour $c_0 = 2$, $N &gt; 1 = N_0$  et $p \leq q$ : $N^p$ est en  $\mathcal{O}(N^q)$ pour tout $p \leq q$</p>
+
+<h4 id="mathcalofn--mathcalogn--mathcalofn--gn">$\mathcal{O}(f(N)) + \mathcal{O}(g(N)) = \mathcal{O}(f(N) + g(N))$</h4>
+
+<p>Pour montrer $\mathcal{O}(f(N)) + \mathcal{O}(g(N)) = \mathcal{O}(f(N) + g(N))$, on montre que $\mathcal{O}(f(N)) + \mathcal{O}(g(N))$ est en $\mathcal{O}(f(N) + g(N))$ et que $\mathcal{O}(f(N) + g(N))$ est en $\mathcal{O}(f(N)) + \mathcal{O}(g(N))$</p>
+
+<p>Soient $f’$ une fonction en $\mathcal{O}(f(N))$ et $g’$ une fonction en $\mathcal{O}(g(N))$, il existe donc $c_0$, $c’_0$, $N_0$ et $N’_0$ tels que $f’(N) &lt; c_0 f(N)$ pour $N &gt; N_0$ et $g’(N) &lt; c’_0 g(N)$ pour $N &gt; N’_0$. On a alors $f(N) + g(N) &lt; \max \{c_0, c’_0\} (f’(N) + g’(N))$ pour $N &gt; \max \{ N_0, N’_0\}$</p>
+
+<p>Réciproquement, il est clair qu’une fonction en $\mathcal{O}(f(N) + g(N))$ soit en $\mathcal{O}$ d’une fonction en $\mathcal{O}(f(N))$ plus une foncion en $\mathcal{O}(g(N))$</p>
+
+</div></details>
+
+<h3 id="exemple">exemple</h3>
+
+<blockquote class="a-faire">
+  <p>quelle est la différence entre $\mathcal{O}(N^2 + N^3)$ et $\mathcal{O}(N^3)$</p>
+</blockquote>
+
+<details><summary>solution</summary><div>
 <p>On a
 $\mathcal{O}(N^2 + N^3) = \mathcal{O}(N^2) + \mathcal{O}(N^3)$.
 Comme $N^2$ est en $\mathcal{O}(N^3)$, $\mathcal{O}(N^2) + \mathcal{O}(N^3) = \mathcal{O}(N^3) + \mathcal{O}(N^3) = 2\mathcal{O}(N^3) = \mathcal{O}(N^3)$</p>
+
+</div></details>
+
+<blockquote class="a-faire">
+  <p>donnez un $\mathcal{O}$ de $3N^2 + 42 + 6 N^4$</p>
+</blockquote>
+
+<details><summary>solution</summary><div>
+<p>$\mathcal{O}(N^4)$</p>
+
+</div></details>
+
+<h2 id="complexité-dun-algoithme">complexité d’un algoithme</h2>
+
+<blockquote class="tbd">
+  <p>Les 3 mesures de d’un algorithme sont liés :</p>
+
+  <ul>
+    <li>le temps mis pour être exécuté est proportionnel au nombres d’opérations élémentaires.</li>
+    <li>on essaie de trouver un $\mathcal{O}$ le plus proche possible car 1 est en $\mathcal{O}(2^2)$.</li>
+  </ul>
+</blockquote>
 
 <h2 id="nombre-dopérations-dun-algorithme">nombre d’opérations d’un algorithme</h2>
 

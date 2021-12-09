@@ -18,7 +18,7 @@
 <meta name="twitter:card" content="summary">
 <meta property="twitter:title" content="Algorithme : calcul">
 <script type="application/ld+json">
-{"description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","headline":"Algorithme : calcul","url":"/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/calcul.html","@context":"https://schema.org"}</script>
+{"description":"Support de cours/td d’informatique à l’école centrale marseille.","headline":"Algorithme : calcul","@type":"WebPage","url":"/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/calcul.html","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
@@ -302,11 +302,22 @@ Cependant les termes qu’on peut utiliser ne sont pas définis clairement, il y
 
 <h2 id="algorithmes-et-démonstration-mathématiques">algorithmes et démonstration mathématiques</h2>
 
-<blockquote class="tbd">
-  <p>c’est la même chose :</p>
+<p>On n’en parlera pas trop dans ce cours (à moins que vous me le demandiez très fort) mais, en gros, les mathématiques sont une partie de l’informatique.</p>
 
-  <p>démonstration (Hilbert) &lt;=&gt; expression logique (Godel ?) &lt;=&gt; $\lambda$-calcul (correspondance Curry-Howard) &lt;=&gt; machine de Turing (Turing) &lt;=&gt; algorithme (Turing)</p>
-</blockquote>
+<p>De façon plus précise on a la suite d’équivalences :</p>
+
+<ol>
+  <li>faire une démonstration consiste — à partir d’une série finie d’axiomes — à effectuer une suite finie de déductions pour parvenir à un résultat. (<a href="https://fr.wikipedia.org/wiki/Aristote#Enqu%C3%AAte,_d%C3%A9monstration_et_syllogisme">Aristote</a>, en -350 environ)</li>
+  <li>(1) est équivalent à démontrer à l’aide d’une suite finie de déduction qu’une proposition logique est vraie (<a href="https://fr.wikipedia.org/wiki/Syst%C3%A8me_%C3%A0_la_Hilbert">Hilbert</a>, début XXe siècle)</li>
+  <li>(en passant, <a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8mes_d%27incompl%C3%A9tude_de_G%C3%B6del">Gödel</a>, en 1931, démontre qu’il existe des propositions logiques qui sont vraies mais qu’il est impossible à démontrer)</li>
+  <li>
+<a href="https://fr.wikipedia.org/wiki/Correspondance_de_Curry-Howard">Curry puis Howard qui généralise</a>, en 1950 et 1980, montrent que (2) est équivalent à écrire terme de <a href="https://fr.wikipedia.org/wiki/Lambda-calcul">$\lambda$-calcul</a>
+</li>
+  <li>
+<a href="https://fr.wikipedia.org/wiki/Alan_Turing">Turing</a> démontre en 1937, que (4) est équivalent à écrire une machine de Turing.</li>
+  <li>(en passant, Turing démontre qu’il existe des machine de turing qui ne s’arrêtent jamais et que savoir si une machine de turing va s’arrêter est <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_l%27arr%C3%AAt">indécidable</a>, ce qui est équivalent à (3))</li>
+  <li>Turing, en 1936, démontre que (5) est équivalent à écrire un algorithme</li>
+</ol>
 
 <h2 id="conclusion">Conclusion</h2>
 
