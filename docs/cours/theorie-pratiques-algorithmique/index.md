@@ -45,6 +45,8 @@ Ce cours est composée de trois grandes parties qui s'enchevêtrent.
 
 1. [un algorithme ?]({% link cours/theorie-pratiques-algorithmique/algorithmie/algorithmes.md %})
 2. [pseudo-code]({% link cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.md %})
+3. [complexité max/min]({% link cours/theorie-pratiques-algorithmique/algorithmie/complexite-max-min.md %})
+4. [preuve d'algorithme]({% link cours/theorie-pratiques-algorithmique/algorithmie/preuve-algorithme.md %})
 
 ### théorie
 
@@ -55,11 +57,16 @@ Ce cours est composée de trois grandes parties qui s'enchevêtrent.
 ### coder
 
 1. [code]({% link cours/theorie-pratiques-algorithmique/coder/code.md %})
+2. [projet informatique]({% link cours/theorie-pratiques-algorithmique/coder/code-projet.md %})
+3. [projet 1 : pourcentages]({% link cours/theorie-pratiques-algorithmique/coder/projet-1-pourcentages.md %})
 
-## TBD
+### autre
 
-* connaitre les bases d'un système d'exploitation, [les fichiers et les dossiers]({% post_url tutos/systeme/2021-08-24-fichiers-navigation %})
-* avoir accès à un [terminal]({% post_url tutos/systeme/2021-08-24-terminal %})
+Outils, concepts et méthodes utiles pour comprendre le cours
+
+* [naviguer dans un système de fichiers]({% post_url tutos/systeme/2021-08-24-fichiers-navigation %})
+* [installation vscode]({% post_url tutos/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main %}), [installation python]({% post_url tutos/python/2021-08-20-installation-de-python %}) et [vscode & python]({% post_url tutos/editeur/vsc/2021-09-14-vsc-python %})
+* [terminal]({% post_url tutos/systeme/2021-08-24-terminal %}) et [utilisation du terminal]({% post_url tutos/systeme/2021-12-02-terminal-utilisation %})
 
 ## structure
 
@@ -276,6 +283,26 @@ graph.links.push({
 graph.links.push({
   source: 'utilisation du terminal',
   target: 'projet 1 : pourcentages'
+})
+
+graph.nodes.push({
+  id: 'complexité max/min',
+  link: "{% link cours/theorie-pratiques-algorithmique/algorithmie/complexite-max-min.md %}",
+  group: groups.code
+})
+graph.links.push({
+  source: 'pseudo-code',
+  target: 'complexité max/min'
+})
+
+graph.nodes.push({
+  id: "preuve d'algorigthme",
+  link: "{% link cours/theorie-pratiques-algorithmique/algorithmie/preuve-algorithme.md %}",
+  group: groups.code
+})
+graph.links.push({
+  source: 'pseudo-code',
+  target: "preuve d'algorigthme"
 })
 
 </script>

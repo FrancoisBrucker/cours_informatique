@@ -12,9 +12,10 @@ Que peut ou pas faire un algorithme.
 > *L'informatique n'est pas plus la science des ordinateurs que l'astronomie n'est celle des télescopes* [E. Dijkstra](https://fr.wikipedia.org/wiki/Edsger_Dijkstra)
 {: .note}
 
-
 * [calcul ?]({% link cours/theorie-pratiques-algorithmique/theorie/calcul.md %})
 
 * algorithmes et fonctions
 * machines de turing
 * calculabilité
+
+* logique = formule logique = sat

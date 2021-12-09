@@ -218,10 +218,17 @@ Pour répondre à notre question initiale, *que peut-on calculer ?*, on peut mai
 
 ## algorithmes et démonstration mathématiques
 
-> c'est la même chose :
->
-> démonstration (Hilbert) <=> expression logique (Godel ?) <=> $\lambda$-calcul (correspondance Curry-Howard) <=> machine de Turing (Turing) <=> algorithme (Turing)
-{: .tbd}
+On n'en parlera pas trop dans ce cours (à moins que vous me le demandiez très fort) mais, en gros, les mathématiques sont une partie de l'informatique. 
+
+De façon plus précise on a la suite d'équivalences :
+
+1. faire une démonstration consiste — à partir d'une série finie d'axiomes — à effectuer une suite finie de déductions pour parvenir à un résultat. ([Aristote](https://fr.wikipedia.org/wiki/Aristote#Enqu%C3%AAte,_d%C3%A9monstration_et_syllogisme), en -350 environ)
+2. (1) est équivalent à démontrer à l'aide d'une suite finie de déduction qu'une proposition logique est vraie ([Hilbert](https://fr.wikipedia.org/wiki/Syst%C3%A8me_%C3%A0_la_Hilbert), début XXe siècle)
+3. (en passant, [Gödel](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8mes_d%27incompl%C3%A9tude_de_G%C3%B6del), en 1931, démontre qu'il existe des propositions logiques qui sont vraies mais qu'il est impossible à démontrer)
+4. [Curry puis Howard qui généralise](https://fr.wikipedia.org/wiki/Correspondance_de_Curry-Howard), en 1950 et 1980, montrent que (2) est équivalent à écrire terme de [$\lambda$-calcul](https://fr.wikipedia.org/wiki/Lambda-calcul)
+5. [Turing](https://fr.wikipedia.org/wiki/Alan_Turing) démontre en 1937, que (4) est équivalent à écrire une machine de Turing.
+6. (en passant, Turing démontre qu'il existe des machine de turing qui ne s'arrêtent jamais et que savoir si une machine de turing va s'arrêter est [indécidable](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_l%27arr%C3%AAt), ce qui est équivalent à (3))
+7. Turing, en 1936, démontre que (5) est équivalent à écrire un algorithme
 
 ## Conclusion
 

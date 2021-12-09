@@ -27,16 +27,31 @@ Chaque partie est une semaine (2h mercredi et 4h vendredi). Il y aura 2 DS, les 
 
 ### semaine 1
 
-#### mercredi
+#### mercredi {#m-1}
 
 1. [un algorithme ?]({% link cours/theorie-pratiques-algorithmique/algorithmie/algorithmes.md %})
 2. [pseudo-code]({% link cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.md %})
 3. [calcul]({% link cours/theorie-pratiques-algorithmique/theorie/calcul.md %})
-4. [code]({% link cours/theorie-pratiques-algorithmique/coder/code.md %})
 
-#### vendredi
+#### vendredi {#v-1}
 
+1. [code]({% link cours/theorie-pratiques-algorithmique/coder/code.md %})
+2. [projet informatique]({% link cours/theorie-pratiques-algorithmique/coder/code-projet.md %})
+3. [projet 1 : pourcentages]({% link cours/theorie-pratiques-algorithmique/coder/projet-1-pourcentages.md %})
 
+> test de début de séance.
+{: .tbd}
+
+### semaine 2
+
+A partir de la semaine 2, les tests de début séance seront à écrire en [markdown]({% post_url /tutos/2021-08-30-format-markdown %}) et envoye converti en html (ou pdf) sur le site.
+
+#### mercredi {#m-2}
+
+1. [complexité max/min]({% link cours/theorie-pratiques-algorithmique/algorithmie/complexite-max-min.md %})
+2. [preuve d'algorithme]({% link cours/theorie-pratiques-algorithmique/algorithmie/preuve-algorithme.md %})
+
+#### vendredi {#v-2}
 
 ## ressources
 
