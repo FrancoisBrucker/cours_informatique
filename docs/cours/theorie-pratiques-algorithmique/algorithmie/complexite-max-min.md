@@ -208,6 +208,46 @@ Notez que la complexité en espace n'est pas forcément atteinte pour un jeu de 
 > Avec python si je dix t.max() pas en O(1)
 {: .tbd}
 
+### exemple
+
+max/min.
+
+```python
+def est_dans_tableau(valeur, tableau):
+    for x in tableau:
+        if x == valeur:
+            return True
+    return False
+```
+
+
+On cherche toujours le cas le pire. Dans des algorithmes dont le nombre d'opérations dépend de l'entrée on choisira des entrées maximisant le nombre d'opérations.
+
+
+Dans l'algorithme ci-dessous la complexité est maximale pour deux cas :
+
+* l'élément recherché n'est pas dans le tableau
+* l'élément recherché est le dernier élément du tableau
+
+Car c'est là que l'on parcourt toute la boucle.
+
+complexité : on parcourt tout le tableau et l'interieur de la boucle est en $\mathcal{O}(1)$. La complexité au pire est donc de $\mathcal{O}(len(\mbox{tableau}))$
+
+On verra dans le cours sur les tris, qu'il existe encore d'autres notions de complexités : la *complexité minimale* et la *complexité en moyenne*.
+
+
+## règles de calcul de complexité
+
+#### boucle simple
+
+nb boucle * intérieur
+
+> on peut tout additionner. C'est parfois nécessaire pour découpler les calculs
+{: .tbd}
+
+#### boucle croissante/décroissante
+
+max
 ### exemple 1 : quelle est la complexité de l'algorithme suivant
 
 
@@ -421,26 +461,6 @@ La encore, l'évolution est dramatique plus la complexité augmente. Pour des co
 
 ## trouver un élément dans un tableau/chaîne de caractère.
 
-On cherche toujours le cas le pire. Dans des algorithmes dont le nombre d'opérations dépend de l'entrée on choisira des entrées maximisant le nombre d'opérations.
-
-```python
-def est_dans_tableau(valeur, tableau):
-    for x in tableau:
-        if x == valeur:
-            return True
-	return False
-```
-
-Dans l'algorithme ci-dessous la complexité est maximale pour deux cas :
-
-* l'élément recherché n'est pas dans le tableau
-* l'élément recherché est le dernier élément du tableau
-
-Car c'est là que l'on parcourt toute la boucle.
-
-complexité : on parcourt tout le tableau et l'interieur de la boucle est en $\mathcal{O}(1)$. La complexité au pire est donc de $\mathcal{O}(len(\mbox{tableau}))$
-
-On verra dans le cours sur les tris, qu'il existe encore d'autres notions de complexités : la *complexité minimale* et la *complexité en moyenne*.
 
 ## structures
 
