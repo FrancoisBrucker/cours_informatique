@@ -285,6 +285,45 @@ if ((x &gt; 12) AND (y &lt; 36)):
   <p>Avec python si je dix t.max() pas en O(1)</p>
 </blockquote>
 
+<h3 id="exemple">exemple</h3>
+
+<p>max/min.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">est_dans_tableau</span><span class="p">(</span><span class="n">valeur</span><span class="p">,</span> <span class="n">tableau</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">tableau</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="n">valeur</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">True</span>
+    <span class="k">return</span> <span class="bp">False</span>
+</code></pre></div></div>
+
+<p>On cherche toujours le cas le pire. Dans des algorithmes dont le nombre d’opérations dépend de l’entrée on choisira des entrées maximisant le nombre d’opérations.</p>
+
+<p>Dans l’algorithme ci-dessous la complexité est maximale pour deux cas :</p>
+
+<ul>
+  <li>l’élément recherché n’est pas dans le tableau</li>
+  <li>l’élément recherché est le dernier élément du tableau</li>
+</ul>
+
+<p>Car c’est là que l’on parcourt toute la boucle.</p>
+
+<p>complexité : on parcourt tout le tableau et l’interieur de la boucle est en $\mathcal{O}(1)$. La complexité au pire est donc de $\mathcal{O}(len(\mbox{tableau}))$</p>
+
+<p>On verra dans le cours sur les tris, qu’il existe encore d’autres notions de complexités : la <em>complexité minimale</em> et la <em>complexité en moyenne</em>.</p>
+
+<h2 id="règles-de-calcul-de-complexité">règles de calcul de complexité</h2>
+
+<h4 id="boucle-simple">boucle simple</h4>
+
+<p>nb boucle * intérieur</p>
+
+<blockquote class="tbd">
+  <p>on peut tout additionner. C’est parfois nécessaire pour découpler les calculs</p>
+</blockquote>
+
+<h4 id="boucle-croissantedécroissante">boucle croissante/décroissante</h4>
+
+<p>max</p>
 <h3 id="exemple-1--quelle-est-la-complexité-de-lalgorithme-suivant">exemple 1 : quelle est la complexité de l’algorithme suivant</h3>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">total</span><span class="o">=</span><span class="mi">0</span>
@@ -613,28 +652,6 @@ Rendre total
 <p>La encore, l’évolution est dramatique plus la complexité augmente. Pour des complexité polynomiales le nombre de problème augmente d’un facteur multiplicatif lorsque la vitesse augment, mais ce n’est pas le cas pour des complexités exponentielles. Pour ces problèmes, augmenter la vitesse de la machine ne change pas fondamentalement le nombre de problèmes que l’on peut résoudre.</p>
 
 <h2 id="trouver-un-élément-dans-un-tableauchaîne-de-caractère">trouver un élément dans un tableau/chaîne de caractère.</h2>
-
-<p>On cherche toujours le cas le pire. Dans des algorithmes dont le nombre d’opérations dépend de l’entrée on choisira des entrées maximisant le nombre d’opérations.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">est_dans_tableau</span><span class="p">(</span><span class="n">valeur</span><span class="p">,</span> <span class="n">tableau</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">tableau</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="n">valeur</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">True</span>
-	<span class="k">return</span> <span class="bp">False</span>
-</code></pre></div></div>
-
-<p>Dans l’algorithme ci-dessous la complexité est maximale pour deux cas :</p>
-
-<ul>
-  <li>l’élément recherché n’est pas dans le tableau</li>
-  <li>l’élément recherché est le dernier élément du tableau</li>
-</ul>
-
-<p>Car c’est là que l’on parcourt toute la boucle.</p>
-
-<p>complexité : on parcourt tout le tableau et l’interieur de la boucle est en $\mathcal{O}(1)$. La complexité au pire est donc de $\mathcal{O}(len(\mbox{tableau}))$</p>
-
-<p>On verra dans le cours sur les tris, qu’il existe encore d’autres notions de complexités : la <em>complexité minimale</em> et la <em>complexité en moyenne</em>.</p>
 
 <h2 id="structures">structures</h2>
 
