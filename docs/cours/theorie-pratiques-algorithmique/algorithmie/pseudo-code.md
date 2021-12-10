@@ -17,11 +17,17 @@ Le pseudo-code est la version papier d'un algorithme. Il décrit les différente
 
 Un pseudo-code est une succession de lignes qui seront exécutées **en séquence** les unes à la suite des autres. Chaque ligne est composée d'une instruction qu'il faut réaliser en entier avant de passer à la ligne suivante.
 
-Il y a quelques instructions basiques qu'auront tous les pseudo-codes que vous pouvez utiliser, ce sont les **instructions basiques**. Elles sont de 3 ordres :
+Il y a quelques instructions basiques qu'auront tous les pseudo-codes que vous pouvez utiliser, ce sont les **instructions basiques**.
+
+### instruction basique {#instruction-basique}
+
+Il y a 3 types d'instruction basique :
 
 * [manipulation d'objets simples](#manipulations-dobjets-simples)
 * [exécution conditionnelle d'instructions](#tests)
 * [répétition d'instructions](#répétition)
+
+Ce sont les atomes d'un pseudo-code. On considère qu'on ne peut pas les scinder plusieurs autres instructions.
 
 ### manipulations d'objets simples
 
