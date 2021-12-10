@@ -69,27 +69,27 @@
 
 <p>Où l’on se donne des outils pour mesurer (théoriquement et en pratique) les performances d’un algorithmes</p>
 
-<h2 id="aesures-en-mathcalo">aesures en $\mathcal{O}$</h2>
+<h2 id="mesures-en-mathcalo">mesures en $\mathcal{O}$</h2>
 
-<p>Mesurer les performances d’un algorithme se fera presque exclusivement en utilisant les $\mathcal{O}$ (<em>grand O</em>)</p>
+<p>Mesurer les performances d’un algorithme se fera presque exclusivement en utilisant des $\mathcal{O}$ (<em>grand O</em>)</p>
 
 <blockquote class="note">
-  <p>Une fonction $f(N)$ est en $\mathcal{O}(f’(N))$ s’il existe 2 constantes $c_0$ et $N_0$ tels que $f(N) &lt; c_0 f’(N)$ pour tout $N &gt; N_0$.</p>
+  <p>Une fonction $f(N)$ est en $\mathcal{O}(f’(N))$ s’il existe 2 constantes $c_0$ et $N_0$ tels que $f(N) &lt; c_0 \cdot f’(N)$ pour tout $N &gt; N_0$.</p>
 </blockquote>
 
 <p>Cela permet :</p>
 
 <ul>
-  <li>d’avoir un majorant de notre comptage lorsque $N$ devient grand</li>
-  <li>de ne pas s’occuper des constantes puisque (on va le démontrer) $\mathcal{O}(\mbox{constante}) = \mathcal{O}(1)$</li>
-  <li>de ne pas s’occuper de la proportionnalité car (on va le démontrer) $\mathcal{O}(\mbox{constante} * f(N)) = \mathcal{O}(f(N))$</li>
+  <li>d’avoir un majorant de notre mesure lorsque $N$ devient grand</li>
+  <li>de ne pas s’occuper des constantes puisque (on va le démontrer) une fonction en $\mathcal{O}(\mbox{constante})$ est également en $\mathcal{O}(1)$</li>
+  <li>de ne pas s’occuper de la proportionnalité car (on va le démontrer) une fonction en $\mathcal{O}(\mbox{constante} \cdot f(N))$ est également en $\mathcal{O}(f(N))$</li>
 </ul>
 
 <blockquote class="note">
-  <p>Connaitre le comportement en $\mathcal{O}$ d’une fonction nous donne l’idée générale de son comportement.</p>
+  <p>Connaitre le comportement en $\mathcal{O}$ d’une mesure dépendant de $N$ nous donne un majorant de son comportement lorsque $N$ devient grand. Si le majorant n’est pas trop éloigné de la mesure originale, cela nous donne une <strong>idée générale</strong> de la valeur de la mesure lorsque $N$ devient grand.</p>
 </blockquote>
 
-<p>Ce qui plutôt intéressant en algorithmie où l’on ne sait pas toujours exactement le nombre d’opération élémentaires utilisées, mais on peut les majorer. On l’utilisera pour mesurer :</p>
+<p>Ceci est plutôt intéressant en algorithmie car l’on ne connait pas toujours exactement le nombre d’opérations élémentaires utilisées, mais on peut les majorer de façon assez précise. On utilisera ainsi les $\mathcal{O}$ pour mesurer :</p>
 
 <ul>
   <li>le nombre d’opérations élémentaires effectuée par l’algorithme avant de s’arrêter</li>
@@ -99,13 +99,13 @@
 
 <p>Par rapport à la taille $N$ de l’entrée de l’algorithme.</p>
 
-<h3 id="arithmétique-des-mathcalo-grand-o">arithmétique des $\mathcal{O}$ (grand O)</h3>
+<h3 id="arithmétique-des-mathcalo">arithmétique des $\mathcal{O}$</h3>
 
-<p>Par abus de langage, on dira que :</p>
+<p>Par abus de langage, on notera :</p>
 
 <ul>
   <li>$\mathcal{O}(f(N))$ plutôt que soit $f’(N)$ une fonction en $\mathcal{O}(f(N))$</li>
-  <li>$f(N) = \mathcal{O}(g(N))$ plutôt que : “la fonction $f(N)$ est en $\mathcal{O}(g(N))$”.</li>
+  <li>$f(N) = \mathcal{O}(g(N))$ plutôt que : “la fonction $f(N)$ est en $\mathcal{O}(g(N))$”</li>
   <li>$\mathcal{O}(f(N)) \Rightarrow \mathcal{O}(g(N))$ plutôt que “une fonction en $\mathcal{O}(f(N))$ est également en $\mathcal{O}(g(N))$”</li>
   <li>$\mathcal{O}(f(N)) \Leftrightarrow \mathcal{O}(g(N))$ plutôt que “une fonction en $\mathcal{O}(f(N))$ est également en $\mathcal{O}(g(N))$ et réciproquement”</li>
 </ul>
@@ -113,129 +113,177 @@
 <blockquote class="note">
   <p>On a les règles suivantes :</p>
 
-  <ul>
+  <ol>
     <li>$\mathcal{O}(A) \Leftrightarrow \mathcal{O}(1)$, avec $A$ une contante strictement positive</li>
     <li>$\mathcal{O}(N^p) \Rightarrow \mathcal{O}(N^q)$ pour $q \geq p$</li>
-    <li>$\mathcal{O}(f(N)) + \mathcal{O}(g(N)) = \mathcal{O}(f(N) + g(N))$</li>
-    <li>$\mathcal{O}(A \cdot f(N)) = A \cdot \mathcal{O}(f(N)) = \mathcal{O}(f(N))$, avec $A$ une contante strictement positive</li>
-    <li>$\mathcal{O}(f(N)) \cdot \mathcal{O}(g(N)) = \mathcal{O}(f(N) \cdot g(N))$</li>
-  </ul>
+    <li>$f(N) = \mathcal{O}(g(N))$ implique $\mathcal{O}(f(N) + g(N) + h(N)) \Rightarrow \mathcal{O}(g(N) + h(N))$</li>
+    <li>$f(N) = \mathcal{O}(g(N))$ implique $\mathcal{O}(f(N) \cdot g(N) \cdot h(N) + h’(N)) \Rightarrow \mathcal{O}((g(N))^2 \cdot h(N)+ h’(N))$</li>
+  </ol>
 
-</blockquote>
-
-<details><summary>Démonstration des trois premières propriétés, les autres se démontrant de la même manière.</summary><div>
-<h4 id="mathcaloa--mathcalo1">$\mathcal{O}(A) = \mathcal{O}(1)$</h4>
-
-<p>Pour montrer $\mathcal{O}(A) = \mathcal{O}(1)$, on montre que $\mathcal{O}(A)$ est en $\mathcal{O}(1)$ et que $\mathcal{O}(1)$ est en $\mathcal{O}(A)$</p>
-
-<p>Soit $f(N)$ une fonction en $\mathcal{O}(A)$. Ils existent donc $c_0$ et $N_0$ tels que pour tout $N &gt; N_0$, on ait $f(N) &lt; c_0 \cdot A$. En posant $c’_0 = c_0 \cdot A$, on a $f(N) &lt; c’_0 \cdot 1$ pour tout $N &gt; N_0$ donc $f(N)$ est en $\mathcal{O}(1)$.</p>
-
-<p>Réciproquement, soit $f(N)$ une fonction en $\mathcal{O}(1)$. Ils existent donc $c_0$ et $N_0$ tels que pour tout $N &gt; N_0$, on ait $f(N) &lt; c_0 \cdot 1$. En posant $c’_0 = c_0 / A$, on a $f(N) &lt; c’_0 \cdot A$ pour tout $N &gt; N_0$ donc $f(N)$ est en $\mathcal{O}(A)$.</p>
-
-<h4 id="une-fonction-en-mathcalonp-aussi-en-mathcalonq-pour-q-geq-p">une fonction en $\mathcal{O}(N^p)$ aussi en $\mathcal{O}(N^q)$ pour $q \geq p$</h4>
-
-<p>Soit $f$ une fonction en $\mathcal{O}(N^p)$. Il existe donc $c_0$ et $N_0$ tels que $f(N) &lt; c_0 \cdot N^p$ pour $N &gt; N_0$. 
-Comme $1 &lt; 2 \cdot N^\alpha$ pour $\alpha \geq 0$ et $N&gt; 1$, on a $N^p &lt; c_0 \cdot N^q$ pour $c_0 = 2$, $N &gt; 1 = N_0$  et $p \leq q$ : $N^p$ est en  $\mathcal{O}(N^q)$ pour tout $p \leq q$</p>
-
-<h4 id="mathcalofn--mathcalogn--mathcalofn--gn">$\mathcal{O}(f(N)) + \mathcal{O}(g(N)) = \mathcal{O}(f(N) + g(N))$</h4>
-
-<p>Pour montrer $\mathcal{O}(f(N)) + \mathcal{O}(g(N)) = \mathcal{O}(f(N) + g(N))$, on montre que $\mathcal{O}(f(N)) + \mathcal{O}(g(N))$ est en $\mathcal{O}(f(N) + g(N))$ et que $\mathcal{O}(f(N) + g(N))$ est en $\mathcal{O}(f(N)) + \mathcal{O}(g(N))$</p>
-
-<p>Soient $f’$ une fonction en $\mathcal{O}(f(N))$ et $g’$ une fonction en $\mathcal{O}(g(N))$, il existe donc $c_0$, $c’_0$, $N_0$ et $N’_0$ tels que $f’(N) &lt; c_0 f(N)$ pour $N &gt; N_0$ et $g’(N) &lt; c’_0 g(N)$ pour $N &gt; N’_0$. On a alors $f(N) + g(N) &lt; \max \{c_0, c’_0\} (f’(N) + g’(N))$ pour $N &gt; \max \{ N_0, N’_0\}$</p>
-
-<p>Réciproquement, il est clair qu’une fonction en $\mathcal{O}(f(N) + g(N))$ soit en $\mathcal{O}$ d’une fonction en $\mathcal{O}(f(N))$ plus une foncion en $\mathcal{O}(g(N))$</p>
-
-</div></details>
-
-<h3 id="exemple">exemple</h3>
-
-<blockquote class="a-faire">
-  <p>quelle est la différence entre $\mathcal{O}(N^2 + N^3)$ et $\mathcal{O}(N^3)$</p>
-</blockquote>
-
-<details><summary>solution</summary><div>
-<p>On a
-$\mathcal{O}(N^2 + N^3) = \mathcal{O}(N^2) + \mathcal{O}(N^3)$.
-Comme $N^2$ est en $\mathcal{O}(N^3)$, $\mathcal{O}(N^2) + \mathcal{O}(N^3) = \mathcal{O}(N^3) + \mathcal{O}(N^3) = 2\mathcal{O}(N^3) = \mathcal{O}(N^3)$</p>
-
-</div></details>
-
-<blockquote class="a-faire">
-  <p>donnez un $\mathcal{O}$ de $3N^2 + 42 + 6 N^4$</p>
-</blockquote>
-
-<details><summary>solution</summary><div>
-<p>$\mathcal{O}(N^4)$</p>
-
-</div></details>
-
-<h2 id="complexité-dun-algoithme">complexité d’un algoithme</h2>
-
-<blockquote class="tbd">
-  <p>Les 3 mesures de d’un algorithme sont liés :</p>
+  <p>Et en combinant les $\mathcal{O}$ pour $f$ et $g$ deux fonction positives :</p>
 
   <ul>
-    <li>le temps mis pour être exécuté est proportionnel au nombres d’opérations élémentaires.</li>
-    <li>on essaie de trouver un $\mathcal{O}$ le plus proche possible car 1 est en $\mathcal{O}(2^2)$.</li>
+    <li>$\mathcal{O}(f(N)) + \mathcal{O}(g(N)) \Rightarrow \mathcal{O}(f(N) + g(N))$</li>
+    <li>$\mathcal{O}(f(N)) \cdot \mathcal{O}(g(N)) \Rightarrow \mathcal{O}(f(N) \cdot g(N))$</li>
   </ul>
+
 </blockquote>
 
-<h2 id="nombre-dopérations-dun-algorithme">nombre d’opérations d’un algorithme</h2>
-
-<p>Pour un algorithme sa complexité désigne le <strong>nombre maximum d’opérations</strong> en notation $\mathcal{O}$ (grand O) par rapport aux <strong>entrées</strong>.</p>
-
-<p>Cette complexité est proportionnelle à la durée max, si l’on connaît le temps max mis pour faire 1 opération</p>
-
-<p>On peut aussi, compter le nombre de place mémoire maximum utilisée par l’algorithme par rapport aux entrées. On parle alors de <strong>complexité en mémoire</strong></p>
-
-<h3 id="quest-ce-quune-opération-">Qu’est-ce qu’une opération ?</h3>
-
-<p>C’est compliqué mais en gros c’est une <em>opération élémentaire</em> :</p>
-
-<ul>
-  <li>un test</li>
-  <li>une affectation</li>
-  <li>une opération arithmétique</li>
-</ul>
-
-<p>En vrai :</p>
-
-<ul>
-  <li>tout est fait <a href="https://ensiwiki.ensimag.fr/index.php?title=Constructions_de_base_en_assembleur_x86">avec des registres</a> et donc une somme deux deux entiers fait plus qu’une opération en assembleur</li>
-  <li>personne ne sait vraiment combien de temps va prendre une opération à cause des optimisations du processeur</li>
-</ul>
-
-<p>En revanche, ça prend un nombre maximum d’opérations qui est indépendant des données : c’est en $\mathcal{O}(1)$</p>
-
-<blockquote>
-  <p><strong>Attention</strong> : Toutes les autres opérations doivent être examinée, en particulier les méthodes d’objets qui peuvent prendre plus de temps.</p>
+<blockquote class="a-faire">
+  <p>Démontrez ces propriétés.</p>
 </blockquote>
 
-<p>Exemple :</p>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="k">def</span> <span class="nf">imprime_majuscule</span><span class="p">(</span><span class="n">ma_chaine</span><span class="p">):</span>
-    <span class="n">ma_chaine_majuscule</span> <span class="o">=</span> <span class="n">ma_chaine</span><span class="p">.</span><span class="n">upper</span><span class="p">()</span> <span class="c1"># O(n) opérations où n est la longueur de la chaine
-</span>    <span class="k">print</span><span class="p">(</span><span class="n">ma_chaine_majuscule</span><span class="p">)</span> <span class="c1"># O(n) opérations
-</span></code></pre></div></div>
+<details><summary>Démonstration de $\mathcal{O}(A) \Leftrightarrow \mathcal{O}(1)$, avec $A$ une contante strictement positive</summary><div>
+<p>Soit $f(N) = \mathcal{O}(A)$. Il existe donc $c_0$ et $N_0$ tels que pour tout $N &gt; N_0$, on ait $f(N) &lt; c_0 \cdot A$. En posant $c’_0 = c_0 \cdot A$, on a $f(N) &lt; c’_0 \cdot 1$ pour tout $N &gt; N_0$ donc $f(N) = \mathcal{O}(1)$.</p>
 
-<p>Attention cependant : dans l’exemple suivant, on manipule des constantes (la chaine est affectée et n’est pas un paramètre), tout est donc en $\mathcal{O}(1)$ :</p>
+<p>Réciproquement, soit $f(N) = \mathcal{O}(1)$. Il existe donc $c_0$ et $N_0$ tels que pour tout $N &gt; N_0$, on ait $f(N) &lt; c_0 \cdot 1$. En posant $c’_0 = c_0 / A$, on a $f(N) &lt; c’_0 \cdot A$ pour tout $N &gt; N_0$ donc $f(N) = \mathcal{O}(A)$.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ma_chaine</span> <span class="o">=</span> <span class="s">"c'est vraiment très intéressant !"</span>
-<span class="k">print</span><span class="p">(</span><span class="n">ma_chaine</span><span class="p">)</span>
+</div></details>
+
+<details><summary>Démonstration de $\mathcal{O}(N^p) \Rightarrow \mathcal{O}(N^q)$ pour $q \geq p$</summary><div>
+<p>Soit $f(N) = \mathcal{O}(N^p)$. Il existe donc $c_0$ et $N_0$ tels que $f(N) &lt; c_0 \cdot N^p$ pour $N &gt; N_0$.
+Comme $1 &lt; 2 \cdot N^\alpha$ pour $\alpha \geq 0$ et $N&gt; 1$, on a $N^p &lt; c_0 \cdot N^q$ pour $c_0 = 2$, $N &gt; 1 = N_0$  et $p \leq q$ : $N^p = \mathcal{O}(N^q)$ pour tout $p \leq q$</p>
+
+</div></details>
+
+<details><summary>Démonstration de $f(N) = \mathcal{O}(g(N))$ implique $\mathcal{O}(f(N) + g(N) + h(N)) \Rightarrow \mathcal{O}(g(N) + h(N))$</summary><div>
+<p>Soit $f(N) = \mathcal{O}(g(N))$. Il existe donc $c_0$ et $N_0$ tels que $f(N) &lt; c_0 \cdot N^p$ pour $N &gt; N_0$. Si $f’(N) = \mathcal{O}(f(N) + g(N) + h(N))$ il existe $c’_0$ et $N’_0$ tels que $f’(N) &lt; c’_0(f(N) + g(N) + h(N))$ pour $N &gt; N_0$.</p>
+
+<p>De là, $f’(N) &lt; c’_0 c_0 g(N) + c’_0 g(N) + c’_0 h(N)$ pour $N &gt; \max \{ N_0, N’_0 \}$ ce qui implique $f’(N) &lt; \max \{ c’_0, c_0 \}^2 (g(N) + h(N))$ pour $N &gt; \max \{ N_0, N’_0 \}$ : $f’(N) = \mathcal{O}(g(N) + h(N))$</p>
+
+</div></details>
+
+<details><summary>Démonstration de $f(N) = \mathcal{O}(g(N))$ implique $\mathcal{O}(f(N) \cdot g(N) \cdot h(N) + h’(N)) \Rightarrow \mathcal{O}((g(N))^2 \cdot h(N)+ h’(N))$</summary><div>
+<p>Soit $f(N) = \mathcal{O}(g(N))$. Il existe donc $c_0$ et $N_0$ tels que $f(N) &lt; c_0 \cdot N^p$ pour $N &gt; N_0$. Si $f’(N) = \mathcal{O}(f(N)\cdot g(N) \cdot h(N) + h’(N))$ il existe $c’_0$ et $N’_0$ tels que $f’(N) &lt; c’_0(f(N) \cdot g(N) \cdot h(N) + h’(N))$ pour $N &gt; N_0$.</p>
+
+<p>De là, $f’(N) &lt; c’_0 (c_0 g(N) \cdot g(N) \cdot h(N) + h’(N)$ pour $N &gt; \max \{ N_0, N’_0 \}$ ce qui implique $f’(N) &lt; \max \{ c’_0, c_0 \}^2 (g(N)^2 \cdot  h(N) + h’(N))$ pour $N &gt; \max \{ N_0, N’_0 \}$ : $f’(N) = \mathcal{O}((g(N))^2 \cdot h(N) + h’(N))$</p>
+
+</div></details>
+
+<details><summary>Démonstration de  $\mathcal{O}(f(N)) + \mathcal{O}(g(N)) \Rightarrow \mathcal{O}(f(N) + g(N))$</summary><div>
+<p>Soient $f’(N) = \mathcal{O}(f(N))$ et $g’ = \mathcal{O}(g(N))$, il existe donc $c_0$, $c’_0$, $N_0$ et $N’_0$ tels que $f’(N) &lt; c_0 f(N)$ pour $N &gt; N_0$ et $g’(N) &lt; c’_0 g(N)$ pour $N &gt; N’_0$.</p>
+
+<p>On a alors $f’(N) + g’(N) &lt; \max \{c_0, c’_0\} (f(N) + g(N))$ pour $N &gt; \max \{ N_0, N’_0\}$ : $f’(N) + g’(N) = \mathcal{O}(f(N) + g(N))$.</p>
+
+</div></details>
+
+<details><summary>$\mathcal{O}(f(N)) \cdot \mathcal{O}(g(N)) \Rightarrow \mathcal{O}(f(N) \cdot g(N))$</summary><div>
+<p>Soient $f’(N) = \mathcal{O}(f(N))$ et $g’ = \mathcal{O}(g(N))$, il existe donc $c_0$, $c’_0$, $N_0$ et $N’_0$ tels que $f’(N) &lt; c_0 f(N)$ pour $N &gt; N_0$ et $g’(N) &lt; c’_0 g(N)$ pour $N &gt; N’_0$.</p>
+
+<p>On a alors $f’(N) \cdot g’(N) &lt; \max \{c_0, c’_0, 1 \}^2 (f(N) \cdot g(N))$ pour $N &gt; \max \{ N_0, N’_0\}$ car $f$ et $g$ sont positives : $f’(N) \cdot g’(N) = \mathcal{O}(f(N) \cdot g(N))$.</p>
+
+</div></details>
+
+<h3 id="conséquences-algorithmique">conséquences algorithmique</h3>
+
+<p>La règle (1) montre qu’un nombre constant est toujours en $\mathcal{O}(1)$. Pour un algorithme, il est souvent compliqué de savoir exactement de combien d’[opérations basique] basique](/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.html#instruction-basique) est constitué une opération, ou le temps exact qu’elle va prendre (pour un ordinateur, cela dépend du type de processeur par exemple. L’addition avec un x68 est faites <a href="https://ensiwiki.ensimag.fr/index.php?title=Constructions_de_base_en_assembleur_x86">avec des registres</a> par exemple, et donc l’addition nécessite 2 opération du processeur). Mais on pourra toujours montrer qu’il y en a un nombre constant (ou borné par un nombre constant) :</p>
+
+<blockquote class="note">
+  <p>La complexité d’une opération basique nécessite $\mathcal{O}(1)$ opérations.</p>
+</blockquote>
+
+<p>De là :</p>
+
+<blockquote class="note">
+  <p>un nombre constant d’opérations basiques nécessite $\mathcal{O}(1)$ opérations.</p>
+</blockquote>
+
+<p>Les règles précédentes permettent plus généralement de montrer :</p>
+
+<blockquote class="note">
+  <p>$\mathcal{O}(A \cdot f(N)) \Leftrightarrow A \cdot \mathcal{O}(f(N)) \Leftrightarrow \mathcal{O}(f(N))$, avec $A$ une contante strictement positive et $f(N)$ une fonction strictement positive pour $N &gt; N_0$</p>
+</blockquote>
+
+<p>Ceci est pratique. En reprenant l’exemple de la partie <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.html#complexit%C3%A9">complexité des pseudo-code</a>, car cela permet de ne pas compter toutes les opérations basiques précisément :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x = 30
+if ((x &gt; 12) AND (y &lt; 36)):
+    z = x * "coucou"
 </code></pre></div></div>
 
-<h3 id="quest-ce-les-paramètres-dune-entrée-">Qu’est-ce les paramètres d’une entrée ?</h3>
+<ol>
+  <li>on affecte un objet à x : 1 instruction, donc $\mathcal{O}(1)$ opérations.</li>
+  <li>un test avec 2 comparaisons et un <code class="language-plaintext highlighter-rouge">AND</code> : 3 instructions, donc $\mathcal{O}(3) = \mathcal{O}(1)$ opérations.</li>
+  <li>on affecte le résultat d’une opération élémentaire : 2 instructions, donc $\mathcal{O}(2) = \mathcal{O}(1)$ opérations.</li>
+</ol>
 
-<p>Ca dépend. Le but est juste de lier les entrées au nombre d’entrée. Cela peut être :</p>
+<p>Un nombre total d’instructions de $3 \mathcal{O}(1) = \mathcal{O}(1)$ opérations.</p>
+
+<p>En revanche, faites attention, cela ne marque que pour les constantes !</p>
+
+<blockquote class="attention">
+  <p>Si le nombre d’opérations élémentaires est variable on a : $n \mathcal{O}(1) = \mathcal{O}(n)$ !</p>
+</blockquote>
+
+<p>Enfin, comme en algorithmie on manipulera souvent des polynômes, on peut montrer facielement avec les règles précédentes que :</p>
+
+<blockquote class="note">
+  <p>\sum_{i=0}^na_i x^i = \mathcal{O}(x^n)</p>
+</blockquote>
+
+<h2 id="complexité-dun-algorithme">complexité d’un algorithme</h2>
+
+<p>On l’a vu dans la partie <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.html#complexit%C3%A9">pseudo-code</a>, la complexité est le nombre d’opérations basiques effectuées par un algorithme. Le nombre d’opérations basiques effectué par un pseudo-code va être dépendant des entrées de celui-ci, même si les entrées ont la même taille (on verra des exemples de ça).</p>
+
+<p>On distinguera trois types de complexités :</p>
 
 <ul>
-  <li>un nombre passé en paramètre</li>
-  <li>la taille d’un conteneur comme un tableau</li>
-  <li>la place mémoire prise les entrées</li>
-  <li>…</li>
+  <li>nombre d’opérations basiques effectuées</li>
+  <li>temps d’exécution d’un programme</li>
+  <li>taille mémoire consommée pendant l’exécution</li>
 </ul>
 
-<p>Dans nos cas, cela sera toujours presque évident de savoir de quoi dépend la complexité.</p>
+<p>Les complexités vont toutes dépendre des entrées, plus précisément d’un paramètre rendant compte de leur <strong>taille</strong>, c’est à dire du nombre de cases mémoires nécessaires pour les stocker.</p>
+
+<h3 id="nombre-dopérations-basiques">nombre d’opérations basiques</h3>
+
+<blockquote class="note">
+  <p>La <strong>complexité</strong> (aussi parfois appelée <strong>complexité maximale</strong>) d’un algorithme est le <strong>nombre maximum d’opérations basiques</strong> effectué par celui-ci pour des entrées <em>*de taille totale donnée</em>. Elle sera donnée en $\mathcal{O}(f(N))$, où $N$ est une variable rendant compte de la taille des données.</p>
+</blockquote>
+
+<p>La <strong>taille</strong> d’une entrée étant proportionnelle au nombre de cases mémoires que celle-ci nécessite.</p>
+
+<p>Il arrive que certains algorithmes aient un comportement très différent selon les entrées. Parler seulement de la complexité (nombre maximum d’opérations) ne permet pas alors de le caractériser complètement. On pourra alors aussi parler de :</p>
+
+<blockquote class="note">
+  <p>La <strong>complexité minimale</strong> d’un algorithme est le <strong>nombre minium d’opérations basiques</strong> effectué par celui-ci pour des entrées <em>*de taille totale donnée</em>. Elle sera donnée en $\mathcal{O}(f(N))$, où $N$ est une variable rendant compte de la taille des données.</p>
+</blockquote>
+
+<p>Lorsque l’on calcule une complexité (maximale ou minimale) sous la forme d’un $\mathcal{O}(f(N))$, on tentera bien sur de trouver la fonction $f(N)$ la plus petite possible.</p>
+
+<h3 id="temps-dexécution">temps d’exécution</h3>
+
+<p>Un moyen efficace de mesurer la complexité d’un algorithme écrit sous la forme d’un code exécutable est de mesurer le temps mis pour son exécution pour un jeu d’entrée donné.</p>
+
+<blockquote class="note">
+  <p>la <strong>complexité en temps</strong> d’un algorithme est le temps mis pour l’exécuter en utilisant un jeu de donné de taille donnée pour lequel la complexité est atteinte.</p>
+</blockquote>
+
+<p>Le temps pris sera bien sur différent si l’on prend une machine plus puissante ou si l’on change le code de l’algorithme mais <strong>complexité en temps sera proportionnelle à la complexité</strong>. Pour le voir, il suffit de mesurer la durée d’exécution de chaque instruction basique et de la borner par le max.</p>
+
+<blockquote class="attention">
+  <p>Si vous ne prenez pas un jeu de donné pour lequel la com^plexité de l’algorithme est atteinte, vous ne mesurez <strong>pas</strong> la complexité temporelle de l’algorithme…</p>
+</blockquote>
+
+<h3 id="taille-mémoire">taille mémoire</h3>
+
+<blockquote class="note">
+  <p>la <strong>complexité en espace</strong> d’un algorithme est le nombre maximum de cases mémoires utilisées pour l’exécuter en utilisant un jeu de donné de taille donnée.</p>
+</blockquote>
+
+<p>Comme la complexité, on la mesurera avec des $\mathcal{O}$.</p>
+
+<p>Notez que la complexité en espace n’est pas forcément atteinte pour un jeu de donné donnant la complexité de l’algorithme, mais <strong>complexité en espace sera toujours plus faible que la complexité</strong> (puisque visiter une case mémoire nécessite une opération élémentaire).</p>
+
+<h3 id="complexité-de-fonctions-ou-méthodes">complexité de fonctions ou méthodes</h3>
+
+<blockquote class="attention">
+  <p>Toutes les autres opérations doivent être examinée, en particulier les méthodes d’objets qui peuvent prendre plus de temps.</p>
+</blockquote>
+
+<blockquote class="tbd">
+  <p>Avec python si je dix t.max() pas en O(1)</p>
+</blockquote>
 
 <h3 id="exemple-1--quelle-est-la-complexité-de-lalgorithme-suivant">exemple 1 : quelle est la complexité de l’algorithme suivant</h3>
 
@@ -314,7 +362,7 @@ Donc l’algorithme :</p>
   <li>on peut die qu’une suite d’instruction en $\mathcal{O}(1)$ est également en $\mathcal{O}(1)$</li>
 </ul>
 
-<h3 id="exemple-2--quelle-est-la-complexité-de-lalgorithme-suivant">exemple 2 : quelle est la complexité de l’algorithme suivant</h3>
+<h3 id="exemple-3--quelle-est-la-complexité-de-lalgorithme-suivant">exemple 3 : quelle est la complexité de l’algorithme suivant</h3>
 
 <p>Attention à la deuxième boucle. Est-ce important pour le résultat ?</p>
 
