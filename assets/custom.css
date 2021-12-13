@@ -2,6 +2,18 @@
  * import ajouté dans _layout/head.html
  */
 
+h2 {
+  border-bottom: 4px solid;
+}
+
+h3 {
+  border-bottom: 2px solid;
+}
+
+h4 {
+  border-bottom: 1px solid;
+}
+
 blockquote {
   color: green;
   border-left: 4px solid green;
