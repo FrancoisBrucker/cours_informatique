@@ -23,15 +23,15 @@ Il y a quelques instructions basiques qu'auront tous les pseudo-codes que vous p
 
 Il y a 3 types d'instruction basique :
 
-* [manipulation d'objets simples](#manipulations-dobjets-simples)
+* [manipulation d'objets basique](#manipulations-dobjets-basiques)
 * [exécution conditionnelle d'instructions](#tests)
 * [répétition d'instructions](#répétition)
 
 Ce sont les atomes d'un pseudo-code. On considère qu'on ne peut pas les scinder plusieurs autres instructions.
 
-### manipulations d'objets simples
+### manipulations d'objets basiques {#objets-basique}
 
-On doit pouvoir manipuler et stocker des *objets*. On appelle ici objets simples les booléens, les entiers, les réels et les chaines de caractères.
+On doit pouvoir manipuler et stocker des *objets*. On appelle ici **objets basiques** les booléens, les entiers, les réels et les chaines de caractères.
 
 * **utiliser des objets**
   * opérations sur les entiers et/ou réels :

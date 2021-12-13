@@ -114,7 +114,7 @@ On a alors $f'(N) \cdot g'(N) < \max \\{c_0, c'_0, 1 \\}^2 (f(N) \cdot g(N))$ po
 
 ### conséquences algorithmique
 
-La règle (1) montre qu'un nombre constant est toujours en $\mathcal{O}(1)$. Pour un algorithme, il est souvent compliqué de savoir exactement de combien d'[opérations basique] basique]({% link cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.md %}#instruction-basique) est constitué une opération, ou le temps exact qu'elle va prendre (pour un ordinateur, cela dépend du type de processeur par exemple. L'addition avec un x68 est faites [avec des registres](https://ensiwiki.ensimag.fr/index.php?title=Constructions_de_base_en_assembleur_x86) par exemple, et donc l'addition nécessite 2 opération du processeur). Mais on pourra toujours montrer qu'il y en a un nombre constant (ou borné par un nombre constant) :
+La règle (1) montre qu'un nombre constant est toujours en $\mathcal{O}(1)$. Pour un algorithme, il est souvent compliqué de savoir exactement de combien d'[opérations basique]({% link cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.md %}#instruction-basique) est constitué une opération, ou le temps exact qu'elle va prendre (pour un ordinateur, cela dépend du type de processeur par exemple. L'addition avec un x68 est faites [avec des registres](https://ensiwiki.ensimag.fr/index.php?title=Constructions_de_base_en_assembleur_x86) par exemple, et donc l'addition nécessite 2 opération du processeur). Mais on pourra toujours montrer qu'il y en a un nombre constant (ou borné par un nombre constant) :
 
 > La complexité d'une opération basique nécessite $\mathcal{O}(1)$ opérations.
 {: .note}
@@ -145,12 +145,12 @@ Un nombre total d'instructions de $3 \mathcal{O}(1) = \mathcal{O}(1)$ opération
 
 En revanche, faites attention, cela ne marque que pour les constantes !
 
-> Si le nombre d'opérations élémentaires est variable on a : $n \mathcal{O}(1) = \mathcal{O}(n)$ !
+> Si le nombre d'opérations élémentaires est variable on a : $n \cdot \mathcal{O}(1) = \mathcal{O}(n)$. On ne peut pas simplifier les variables.
 {: .attention}
 
 Enfin, comme en algorithmie on manipulera souvent des polynômes, on peut montrer facielement avec les règles précédentes que :
 
-> \sum_{i=0}^na_i x^i = \mathcal{O}(x^n)
+> $$\sum_{i=0}^na_i x^i = \mathcal{O}(x^n)$$
 {: .note}
 
 ## complexité d'un algorithme
@@ -165,16 +165,21 @@ On distinguera trois types de complexités :
 
 Les complexités vont toutes dépendre des entrées, plus précisément d'un paramètre rendant compte de leur **taille**, c'est à dire du nombre de cases mémoires nécessaires pour les stocker.
 
+> Lorsque l'on donne des complexité c'est toujours en fonction d'un ou plusieurs paramètres qu'il **faut** expliciter
+{: .attention}
+
 ### nombre d'opérations basiques
 
-> La **complexité** (aussi parfois appelée **complexité maximale**) d'un algorithme est le **nombre maximum d'opérations basiques** effectué par celui-ci pour des entrées **de taille totale donnée*. Elle sera donnée en $\mathcal{O}(f(N))$, où $N$ est une variable rendant compte de la taille des données.
+> La **complexité** (aussi parfois appelée **complexité maximale**) d'un algorithme est le **nombre maximum d'opérations basiques** effectué par celui-ci pour des entrées **de taille totale donnée**. Elle sera donnée en $\mathcal{O}(f(N))$, où $N$ est une variable rendant compte de la taille des données.
 {: .note}
 
-La **taille** d'une entrée étant proportionnelle au nombre de cases mémoires que celle-ci nécessite.
+La **taille** d'une entrée est proportionnelle au nombre de cases mémoires que celle-ci nécessite.
 
-Il arrive que certains algorithmes aient un comportement très différent selon les entrées. Parler seulement de la complexité (nombre maximum d'opérations) ne permet pas alors de le caractériser complètement. On pourra alors aussi parler de :
+> Lorsque vous entendrez parler de *complexité* d'un algorithme, ce sera par défaut **toujours** la complexité maximale.
 
-> La **complexité minimale** d'un algorithme est le **nombre minium d'opérations basiques** effectué par celui-ci pour des entrées **de taille totale donnée*. Elle sera donnée en $\mathcal{O}(f(N))$, où $N$ est une variable rendant compte de la taille des données.
+Il arrive que certains algorithmes aient un comportement très différent selon les entrées. Parler seulement de la complexité (nombre maximum d'opérations) ne permet pas alors de le caractériser complètement. On parlera alors aussi de :
+
+> La **complexité minimale** d'un algorithme est le **nombre minium d'opérations basiques** effectué par celui-ci pour des entrées **de taille totale donnée**. Elle sera donnée en $\mathcal{O}(f(N))$, où $N$ est une variable rendant compte de la taille des données.
 {: .note}
 
 Lorsque l'on calcule une complexité (maximale ou minimale) sous la forme d'un $\mathcal{O}(f(N))$, on tentera bien sur de trouver la fonction $f(N)$ la plus petite possible.
@@ -183,12 +188,12 @@ Lorsque l'on calcule une complexité (maximale ou minimale) sous la forme d'un $
 
 Un moyen efficace de mesurer la complexité d'un algorithme écrit sous la forme d'un code exécutable est de mesurer le temps mis pour son exécution pour un jeu d'entrée donné.
 
-> la **complexité en temps** d'un algorithme est le temps mis pour l'exécuter en utilisant un jeu de donné de taille donnée pour lequel la complexité est atteinte.
+> la **complexité en temps** d'un algorithme est le temps mis pour l'exécuter en utilisant un jeu de donné **pour lequel la complexité (max) est atteinte** et d'une taille totale donnée.
 {: .note}
 
-Le temps pris sera bien sur différent si l'on prend une machine plus puissante ou si l'on change le code de l'algorithme mais **complexité en temps sera proportionnelle à la complexité**. Pour le voir, il suffit de mesurer la durée d'exécution de chaque instruction basique et de la borner par le max.
+Le temps pris sera bien sur différent si l'on prend une machine plus puissante ou si l'on change le code de l'algorithme mais **l'évolution de la complexité en temps par rapport à la taille des données est toujours proportionnelle à la complexité**. Pour le voir, il suffit de mesurer la durée d'exécution de chaque instruction basique et de la borner par le max.
 
-> Si vous ne prenez pas un jeu de donné pour lequel la com^plexité de l'algorithme est atteinte, vous ne mesurez **pas** la complexité temporelle de l'algorithme...
+> Si vous ne prenez pas un jeu de donné pour lequel la complexité de l'algorithme est atteinte, vous ne mesurez **pas** la complexité temporelle de l'algorithme...
 {: .attention}
 
 ### taille mémoire
@@ -198,17 +203,144 @@ Le temps pris sera bien sur différent si l'on prend une machine plus puissante 
 
 Comme la complexité, on la mesurera avec des $\mathcal{O}$.
 
-Notez que la complexité en espace n'est pas forcément atteinte pour un jeu de donné donnant la complexité de l'algorithme, mais **complexité en espace sera toujours plus faible que la complexité** (puisque visiter une case mémoire nécessite une opération élémentaire).
+Notez que la complexité en espace n'est pas forcément atteinte pour un jeu de donné donnant la complexité de l'algorithme, mais **la complexité en espace sera toujours plus faible que la complexité** (visiter une case mémoire nécessitant une opération élémentaire).
 
-### complexité de fonctions ou méthodes
+### complexité de méthodes ou de structures
 
-> Toutes les autres opérations doivent être examinée, en particulier les méthodes d'objets qui peuvent prendre plus de temps.
+Lorsque l'on code un algorithme, on a coutume (et c'est très bien) d'utiliser des fonctions, des méthodes ou des stuctures que l'on a pas écrite. Il faut en revanche bien conaître leurs complexités pour ne pas commettre d'erreur de calcul.
+
+> Lorsque l'on calcul une complexité toutes les méthodes et fonctions doivent être examinées
+{: .note}
+
+#### complexité de structure
+
+En informatique, les **objets que l'on manipule ont des types**. On connait déjà des [objets basiques]({% link cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.md %}#objets-basique) que sont de types booléens, entiers, réels ou encore chaines de caractères pour les quels toutes les opérations que l'on peut effectuer avec eux sont en $\mathcal{O}(1)$. Ce n'est plus le cas lorsque l'on utilise des type plus complexes, composé de types basiques comme les conteneurs comme les tableaux, ou encore les listes de python. Pour pouvoir calculer la complxité d'un algorithme les utilisant, il faut connaitre les complexités de ses opérations. Souvent, les opérations suivantes suffisent :
+
+> Pour chaque type de donnée, il faut connaire la complexité de :
+>
+> * la création d'un objet de ce type
+> * la suppression d'un objet de ce type
+> * chaque méthode liée au type
+>
+{: .note}
+
+Prenons le type [tableau](https://fr.wikipedia.org/wiki/Tableau_(structure_de_donn%C3%A9es)) comme exemple. Un tableau est un conteneur pouvant contenir $n$ objets (on appelle $n$ la taille d'un tableau). On peut accéder et affecter un objet au tableau grâce à un indice alllant de $0$ à $n-1$ : si `t` est un tableau `t[i]` correspond à lobjet d'indice $i$ du tableau. Avec un tableau on peut :
+
+* créer un tableau de taille $n$ en $\mathcal{O}(1)$ opérations
+* supprimer un tableau est possible en $\mathcal{O}(1)$ opérations
+* récupérer et affecter l'objet d'indice $i$ du tableau (objet `t[i]`) se fait en $\mathcal{O}(1)$ opérations
+* pour augmenter la taille d'un tableau, il faut recréer un tableau vide avec la nouvelle taille puis recopier tous les éléments de l'ancien tableau au nouveau. Cela se fait donc en $\mathcal{O}(n)$ opérations où $n$ est la taille de l'ancien tableau.
+* pour réduire la taille d'un tableau, il faut recréer un tableau vide avec la nouvelle taille puis recopier les éléments que l'on veut garder de l'ancien tableau au nouveau. Cela se fait en $\mathcal{O}(n)$ opérations où $n$ est la taille du nouveau tableau.
+
+> De façon pratique, un tableau est un ensemble des $n$ cases mémoires continues. Ce qui fait qu'on peut donc facilemnt les réserver et les libérer en une fois et que à la case mémoire d'indice $i$ vaut `&t + i` où `&t` est le numéro de la case mémoire d'indice $0$ du tableau.
+
+Le langage python ne connait pas les tableaux. Il utiliser le type **liste** à la place. Une liste peut être vue comme l'évolution du type tableau. On donne ici juste les complexités de cette structure pour que vous puissiez les utilser dans vos programme, nous ne les démontrerons pas :
+
+* créer et supprimer une liste de taille $n$ en $\mathcal{O}(1)$ opérations
+* récupérer et affecter l'objet d'indice $i$ d'une liste (objet `t[i]`) se fait en $\mathcal{O}(1)$ opérations
+* pour augmenter la taille d'une liste d'un élément se fait en $\mathcal{O}(1)$ opérations
+* supprimer le dernier élément d'une liste se fait en $\mathcal{O}(1)$ opérations
+
+Une liste peut être vue comme un tableau dont on peut augmenter ou diminuer la taille par la fin en $\mathcal{O}(1)$ opérations.
+
+> Ne confondez pas liste et [liste chaînée](https://fr.wikipedia.org/wiki/Liste_cha%C3%AEn%C3%A9e) ce n'est pas du tout la même structure !
 {: .attention}
 
-> Avec python si je dix t.max() pas en O(1)
+#### fonction et méthodes données
+
+Il faut conaitre les différentes complexités des méthodes et fonctions utilisées. Ne vous laissez pas méprendre. Ce n'est pas parce qu'elle font 1 seule ligne que leur complexité est en $\mathcal{O}(1)$. Par exemple la complexité de la méthode `max` de python, qui prend en entrée une liste `l` :
+
+```python
+x = l.max()
+```
+
+Est de complexité $\mathcal{O}(n)$  où $n$ est la taille da liste et pas $\mathcal{O}(1)$. Il **faut** en effet parcourir tous les éléments d'une liste (a priori non triée) pour en trouver le maximum.
+
+## types de complexité en algorithmie
+
+En algorithmie, la plupart des complexités que l'on étudiera seront de cinq types (plus leurs combinaisons) :
+
+> On appelle :
+>
+> * **complexité constante** une complexité en $\mathcal{O}(1)$
+> * **complexité logarithmique** une complexité en $\mathcal{O}(\ln(n))$ où $n$ est le paramètre de taille de l'algorithme
+> * **complexité linéaire** une complexité en $\mathcal{O}(n)$ où $n$ est le paramètre de taille de l'algorithme
+> * **complexité polynomiale** une complexité en $\mathcal{O}(n^k)$ où $n$ est le paramètre de taille de l'algorithme et $k$ une constante
+> * **complexité exponentielle** une complexité en $\mathcal{O}(k^n)$ où $n$ est le paramètre de taille de l'algorithme et $k$ une constante
+>
+{: .note}
+
+Les type de complexité ci-dessus sont rangés par taille, de la moins longue à la plus longue. Remarquez qu'un algorithme de complexité linaire nécessite de lire toutes les données au plus un nombre constant de fois pour s'exécuter. Un algorithme de complexité logarithmique n'a même pas besoin de lire une fois toutes les données pour s'exécuter ! Ceci n'est souvent possible que si les données en entrées ont une structure très particulière. Par exemple pour le problème de la recherche du plus grand élément d'une liste :
+
+* trouver le plus grand élément dans une liste non triée nécessite $\mathcal{O}(n)$ où $n$ est la taille de la liste,
+* trouver le plus grand élément dans une liste triée nécessite $\mathcal{O}(1)$ où $n$ est la taille de la liste,
+
+Ou le problème de la recherche d'un élément particulier de la liste :
+
+* trouver un élément dans une liste non triée nécessite $\mathcal{O}(n)$ où $n$ est la taille de la liste,
+* trouver un élément dans une liste triée nécessite $\mathcal{O}(\ln (n))$ où $n$ est la taille de la liste en utilisant la [recherche dichotomique](https://fr.wikipedia.org/wiki/Recherche_dichotomique)
+
+> Notez bien que la complexité logarithmique est la même quelque soit la base utilisée. En effet $\log_k(n) = \frac{\ln (n)}{\ln (k)}$ et donc $\mathcal{O}(\log_k(n)) = \mathcal{O}(\ln(n))$ pour toute base constante $k$.
+
+Il est crucial de chercher la meilleure complexité pour un algorithme car ses performance seront drastiquement différentes selon le type de complexité qu'il possède, comme le montre les deux tableaux ci-dessous :
+
+> * il y a une énorme différence entre complexité linéaire et complexité polynomiale
+> * il y a une énorme différence entre complexité polynomiale et complexité exponentielle (qu'il ne faut donc jamais avoir si possible)
+{: .note}
+
+### temps pour résoudre un problème de taille $n$
+
+Exemple d'évolution du temps de calcul par rapport à la complexité. En supposant, que l'on ait un ordinateur qui résout des problèmes de complexité $n$ en 0.01 ms pour des données de taille 10, on peut remplir le tableau ci-après.
+
+En colonnes le nombre $n$ de données, en lignes les complexités des algorithmes.
+
+| complexité  |     10     |   20     |    30   |      40     |     50     |       60        |
+|-------------|------------|----------|---------|-------------|------------|-----------------|
+|   $\ln(n)$  |  0.002 ms  | 0.003 ms | 0.003 ms |  0.04 ms    | 0.004 ms  | 0.004 ms        |
+|    $n$      |    0.01 ms | 0.02 ms  | 0.03 ms |  0.04 ms    | 0.05 ms    | 0.06 ms         |
+|    $n^2$    |    0.1 ms  | 0.4 ms   | 0.9 ms  |  1.6 ms     | 2.5 ms     | 3.6 ms          |
+|    $n^3$    |    1 ms    | 8 ms     | 27 ms   |  64 ms      | 125 ms     | 216 ms          |
+|    $n^5$    |    1s      | 3.2 s    | 24.3 s  |  1.7 min    | 5.2 min    | 13 min          |
+|    $2^n$    |    1 ms    | 1s       | 17.9 min|  12.7 jours | 35.7 ans   | 36600 ans       |
+|    $3^n$    |    59 ms   | 58 min   | 6.5 ans |  385500 ans | 2x1010 ans | 13x1016 siècles |
+
+L'évolution est dramatique plus la complexité augmente. Pour une complexité polynomiale, la croissance est encore maitrisée même s'il vaut mieux avoir une petite complexité pour traiter plus de données. Pour une complexité exponentielle ($2^n$ et $3^n$) la durée est tout simplement rédhibitoire.
+
+> Pour générer le tableau, on voit qu'exécuter une opération dure .001ms = t. Le temps pris pour une entrée de taille de f(n) est alors : `t * f(n)`
+
+### nombre de problèmes résolu par heure
+
+En colonne la rapidité de la machine, en ligne le nombre de problème d'une complexité donné réalisé en 1 heure.
+
+| complexité | machine actuelle | 100x plus rapide | 1000x plus rapide |
+|------------|------------------|------------------|-------------------|
+|  $\ln(n)$  |         N0       |      e^100 x N0  |      e^1000 x N0  |
+|    $n$     |         N1       |      100 x N1    |      1000xN1      |
+|    $n^2$   |         N2       |     10 x N2      |      31.6xN2      |
+|    $n^3$   |         N3       |     4.64 x N3    |      10xN3        |
+|    $n^5$   |         N4       |     2.5 x N4     |      3.98xN4      |
+|    $2^n$   |         N5       |     N5 + 6.64    |      N5+9.97      |
+|    $3^n$   |         N6       |     N6 + 4.19    |      N6+6.29      |
+
+La encore, l'évolution est dramatique plus la complexité augmente. Pour des complexité polynomiales le nombre de problème augmente d'un facteur multiplicatif lorsque la vitesse augment, mais ce n'est pas le cas pour des complexités exponentielles. Pour ces problèmes, augmenter la vitesse de la machine ne change pas fondamentalement le nombre de problèmes que l'on peut résoudre.
+
+> Pour générer le tableau,  on remarque que  `Ni = f^-1(N1)` où f(n) est la complexité du calcul pour une entrée de taille $n$. Si on va k fois plus vite, on exécutera donc `f^-1(k x N1)` opérations en 1 heure.
+
+### le cas particulier de n!
+
+>ce n'est pas une solution
 {: .tbd}
 
-### exemple
+## règles de calcul de complexité
+
+### boucle simple
+
+nb boucle * intérieur
+
+> on peut tout additionner. C'est parfois nécessaire pour découpler les calculs
+{: .tbd}
+
+## exemple
 
 max/min.
 
@@ -236,16 +368,7 @@ complexité : on parcourt tout le tableau et l'interieur de la boucle est en $\m
 On verra dans le cours sur les tris, qu'il existe encore d'autres notions de complexités : la *complexité minimale* et la *complexité en moyenne*.
 
 
-## règles de calcul de complexité
-
-#### boucle simple
-
-nb boucle * intérieur
-
-> on peut tout additionner. C'est parfois nécessaire pour découpler les calculs
-{: .tbd}
-
-#### boucle croissante/décroissante
+### boucle croissante/décroissante
 
 max
 ### exemple 1 : quelle est la complexité de l'algorithme suivant
@@ -422,41 +545,6 @@ Un mauvais choix d’algorithme peut entraîner une différence très importante
 Il existe souvent plusieurs algorithme pour résoudre un problème. De temps en temps un algorithme est meilleurs que tous les autres, mais souvent cela dépend du type de données en entrée (on le verra). Il est donc important non seulement de connaître les complexités des algorithmes pour choisir le meilleurs mais également de connaitre son cas d'utilisation.
 
 
-## Temps pour résoudre un problème de taille $n$
-
-Exemple d'évolution du temps de calcul par rapport à la complexité. En supposant, que l'on ait un ordinateur qui résout des problèmes de complexité $n$ en 0.01 ms pour des données de taille 10, on peut remplir le tableau ci-après.
-
-En colonnes le nombre $n$ de données, en lignes les complexités des algorithmes. 
-
-
- complexité  |     10     |   20    |    30   |      40     |     50     |       60
--------------|------------|---------|---------|-------------|------------|----------------          
-    $n$      |    0.01 ms | 0.02 ms | 0.03 ms |  0.04 ms    | 0.05 ms    | 0.06 ms
-    $n^2$    |    0.1 ms  | 0.4 ms  | 0.9 ms  |  1.6 ms     | 2.5 ms     | 3.6 ms
-    $n^3$    |    1 ms    | 8 ms    | 27 ms   |  64 ms      | 125 ms     | 216 ms
-    $n^5$    |    1s      | 3.2 s   | 24.3 s  |  1.7 min    | 5.2 min    | 13 min
-    $2^n$    |    1 ms    | 1s      | 17.9 min|  12.7 jours | 35.7 ans   | 36600 ans
-    $3^n$    |    59 ms   | 58 min  | 6.5 ans |  385500 ans | 2x1010 ans | 13x1016 siècles
-
-
-
-L'évolution est dramatique plus la complexité augmente. Pour une complexité polynomiale, la croissance est encore maitrisée même s'il vaut mieux avoir une petite complexité pour traiter plus de données. Pour une complexité exponentielle ($2^n$ et $3^n$) la durée est tout simplement rédhibitoire.
-
-## Nombre de problèmes résolu par heure
-
-En colonne la rapidité de la machine, en ligne le nombre de problème d'une complexité donné réalisé en 1 heure.
-
- complexité | machine actuelle | 100x plus rapide | 1000x plus rapide
-------------|------------------|------------------|--------------------      
-    $n$     |         N1       |      100xN1      |      1000xN1
-    $n^2$   |         N2       |      10xN2       |      31.6xN2     
-    $n^3$   |         N3       |      4.64xN3     |      10xN3       
-    $n^5$   |         N4       |      2.5xN4      |      3.98xN4     
-    $2^n$   |         N5       |      N5+6.64     |      N5+9.97
-    $3^n$   |         N6       |      N6+4.19     |      N6+6.29
-
-
-La encore, l'évolution est dramatique plus la complexité augmente. Pour des complexité polynomiales le nombre de problème augmente d'un facteur multiplicatif lorsque la vitesse augment, mais ce n'est pas le cas pour des complexités exponentielles. Pour ces problèmes, augmenter la vitesse de la machine ne change pas fondamentalement le nombre de problèmes que l'on peut résoudre. 
 
 
 ## trouver un élément dans un tableau/chaîne de caractère.
