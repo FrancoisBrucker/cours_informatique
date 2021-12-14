@@ -51,7 +51,7 @@ Initialement toutes les cases du ruban contiennent le symbole $\sharp$.
 
 Voici la représentation d'une machine à la fin de la $i$ème instruction. Son état est $q$ et son curseur est positionné sur la case d'indice $j$ :
 
-![machine]({{ "/assets/cours/algorithmie/machine-Turing.png" | relative_url }}){:style="margin: auto;display: block;"}
+![machine]({{ "/assets/cours/algorithmie/machine-turing.png" | relative_url }}){:style="margin: auto;display: block;"}
 
 Par convention, on considérera que le ruban initial aura comme numéro d'instruction 0 et que l'indice de la case où est initialement le curseur sera d'indice 0.
 
@@ -85,7 +85,7 @@ La fonction $\delta$ est ici partielle, avec la convention que si l'on arrive da
 
 Allons-y. Essayons ce code. On considère la machine de Turing ci-après :
 
-![Turing 1]({{ "/assets/cours/algorithmie/Turing-1.png" | relative_url }}){:style="margin: auto;display: block;"}
+![Turing 1]({{ "/assets/cours/algorithmie/turing-1.png" | relative_url }}){:style="margin: auto;display: block;"}
 
 Par convention, on considérera que le ruban initial aura comme numéro d'instruction 0 et que l'indice de la case où est initialement le curseur sera d'indice 0.
 
@@ -95,7 +95,7 @@ On est à l'état $a$ et on lit $\sharp$ dans la machine : la table de transitio
 * passer dans l'état $b$
 * aller à droite
 
-![Turing 2]({{ "/assets/cours/algorithmie/Turing-2.png" | relative_url }}){:style="margin: auto;display: block;"}
+![Turing 2]({{ "/assets/cours/algorithmie/turing-2.png" | relative_url }}){:style="margin: auto;display: block;"}
 
 On est à l'état $b$ et on lit $\sharp$ dans la machine : la table de transition nous indique qu'il faut :
 
@@ -103,7 +103,7 @@ On est à l'état $b$ et on lit $\sharp$ dans la machine : la table de transitio
 * passer dans l'état $c$
 * aller à droite
 
-![Turing 3]({{ "/assets/cours/algorithmie/Turing-3.png" | relative_url }}){:style="margin: auto;display: block;"}
+![Turing 3]({{ "/assets/cours/algorithmie/turing-3.png" | relative_url }}){:style="margin: auto;display: block;"}
 
 On est à l'état $c$ et on lit $\sharp$ dans la machine : la table de transition nous indique qu'il faut :
 
@@ -111,7 +111,7 @@ On est à l'état $c$ et on lit $\sharp$ dans la machine : la table de transitio
 * passer dans l'état $d$
 * aller à droite
 
-![Turing 4]({{ "/assets/cours/algorithmie/Turing-4.png" | relative_url }}){:style="margin: auto;display: block;"}
+![Turing 4]({{ "/assets/cours/algorithmie/turing-4.png" | relative_url }}){:style="margin: auto;display: block;"}
 
 On est à l'état $d$ et on lit $\sharp$ dans la machine : la table de transition nous indique qu'il faut :
 
@@ -119,7 +119,7 @@ On est à l'état $d$ et on lit $\sharp$ dans la machine : la table de transitio
 * passer dans l'état $a$
 * aller à droite
 
-![Turing 5]({{ "/assets/cours/algorithmie/Turing-5.png" | relative_url }}){:style="margin: auto;display: block;"}
+![Turing 5]({{ "/assets/cours/algorithmie/turing-5.png" | relative_url }}){:style="margin: auto;display: block;"}
 
 Et ainsi de suite. On voit que cette machine ne va jamais s'arrêter et qu'elle écrit continuellement 0 puis 1 sur le ruban.
 
@@ -188,11 +188,11 @@ Son fonctionnement est le suivant. On commence par remplacer le premier 1 par un
 
 A chaque itération, la machine supprime un 1 et en écrit 2 nouveaux : un à droite et un à gauche des nouveaux 1 inscrits. Les étapes de cette itération poeut être décrite comme suit :
 
-![Turing 6]({{ "/assets/cours/algorithmie/Turing-6.png" | relative_url }}){:style="margin: auto;display: block;"}
+![Turing 6]({{ "/assets/cours/algorithmie/turing-6.png" | relative_url }}){:style="margin: auto;display: block;"}
 
 On aura toujours une configuration où les nouveaux 1 seront à gauche des anciens 1 (ceux initialement sur le ruban) et séparé par **un unique caractère blanc** :
 
-![doublement de batons]({{ "/assets/cours/algorithmie/Turing-7.png" | relative_url }}){:style="margin: auto;display: block;"}
+![doublement de batons]({{ "/assets/cours/algorithmie/turing-7.png" | relative_url }}){:style="margin: auto;display: block;"}
 
 Le programme de la machine de Turing a machine va donc ici s'arrêter puisqu'à un moment tous les anciens $1$ auront-été effacés et on se retrouvera à l'état initial avec le curseur placé sur un $\sharp$ , ce qui enverra vers l'état final.
 
