@@ -194,7 +194,7 @@ Comme $1 &lt; 2 \cdot N^\alpha$ pour $\alpha \geq 0$ et $N&gt; 1$, on a $N^p &lt
   <p>$\mathcal{O}(A \cdot f(N)) \Leftrightarrow A \cdot \mathcal{O}(f(N)) \Leftrightarrow \mathcal{O}(f(N))$, avec $A$ une contante strictement positive et $f(N)$ une fonction strictement positive pour $N &gt; N_0$</p>
 </blockquote>
 
-<p>Ceci est pratique. En reprenant l’exemple de la partie <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.html#complexit%C3%A9">complexité des pseudo-code</a>, car cela permet de ne pas compter toutes les opérations basiques précisément :</p>
+<p>Ceci est pratique, car cela permet de ne pas compter toutes les opérations basiques précisément. Ainsi, en reprenant l’exemple de la partie <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.html#complexit%C3%A9">complexité des pseudo-code</a> :</p>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x = 30
 if ((x &gt; 12) AND (y &lt; 36)):
@@ -215,7 +215,7 @@ if ((x &gt; 12) AND (y &lt; 36)):
   <p>Si le nombre d’opérations élémentaires est variable on a : $n \cdot \mathcal{O}(1) = \mathcal{O}(n)$. On ne peut pas simplifier les variables.</p>
 </blockquote>
 
-<p>Enfin, comme en algorithmie on manipulera souvent des polynômes, on peut montrer facielement avec les règles précédentes que :</p>
+<p>Enfin, comme en algorithmie on manipulera souvent des polynômes, on peut montrer facilement avec les règles précédentes que :</p>
 
 <blockquote class="note">
 \[\sum_{i=0}^na_i x^i = \mathcal{O}(x^n)\]
@@ -285,7 +285,7 @@ if ((x &gt; 12) AND (y &lt; 36)):
 
 <h3 id="complexité-de-méthodes-ou-de-structures">complexité de méthodes ou de structures</h3>
 
-<p>Lorsque l’on code un algorithme, on a coutume (et c’est très bien) d’utiliser des fonctions, des méthodes ou des stuctures que l’on a pas écrite. Il faut en revanche bien conaître leurs complexités pour ne pas commettre d’erreur de calcul.</p>
+<p>Lorsque l’on code un algorithme, on a coutume (et c’est très bien) d’utiliser des fonctions, des méthodes ou des structures que l’on a pas écrite. Il faut en revanche bien connaître leurs complexités pour ne pas commettre d’erreur de calcul.</p>
 
 <blockquote class="note">
   <p>Lorsque l’on calcul une complexité toutes les méthodes et fonctions doivent être examinées</p>
@@ -293,10 +293,10 @@ if ((x &gt; 12) AND (y &lt; 36)):
 
 <h4 id="complexité-de-structure">complexité de structure</h4>
 
-<p>En informatique, les <strong>objets que l’on manipule ont des types</strong>. On connait déjà des <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.html#objets-basique">objets basiques</a> que sont de types booléens, entiers, réels ou encore chaines de caractères pour les quels toutes les opérations que l’on peut effectuer avec eux sont en $\mathcal{O}(1)$. Ce n’est plus le cas lorsque l’on utilise des type plus complexes, composé de types basiques comme les conteneurs comme les tableaux, ou encore les listes de python. Pour pouvoir calculer la complxité d’un algorithme les utilisant, il faut connaitre les complexités de ses opérations. Souvent, les opérations suivantes suffisent :</p>
+<p>En informatique, les <strong>objets que l’on manipule ont des types</strong>. On connait déjà des <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.html#objets-basique">objets basiques</a> que sont de types booléens, entiers, réels ou encore chaines de caractères pour les quels toutes les opérations que l’on peut effectuer avec eux sont en $\mathcal{O}(1)$. Ce n’est plus le cas lorsque l’on utilise des type plus complexes, composé de types basiques comme les conteneurs comme les tableaux, ou encore les listes de python. Pour pouvoir calculer la complexité d’un algorithme les utilisant, il faut connaitre les complexités de ses opérations. Souvent, les opérations suivantes suffisent :</p>
 
 <blockquote class="note">
-  <p>Pour chaque type de donnée, il faut connaire la complexité de :</p>
+  <p>Pour chaque type de donnée, il faut connaitre la complexité de :</p>
 
   <ul>
     <li>la création d’un objet de ce type</li>
@@ -306,7 +306,7 @@ if ((x &gt; 12) AND (y &lt; 36)):
 
 </blockquote>
 
-<p>Prenons le type <a href="https://fr.wikipedia.org/wiki/Tableau_(structure_de_donn%C3%A9es)">tableau</a> comme exemple. Un tableau est un conteneur pouvant contenir $n$ objets (on appelle $n$ la taille d’un tableau). On peut accéder et affecter un objet au tableau grâce à un indice alllant de $0$ à $n-1$ : si <code class="language-plaintext highlighter-rouge">t</code> est un tableau <code class="language-plaintext highlighter-rouge">t[i]</code> correspond à lobjet d’indice $i$ du tableau. Avec un tableau on peut :</p>
+<p>Prenons le type <a href="https://fr.wikipedia.org/wiki/Tableau_(structure_de_donn%C3%A9es)">tableau</a> comme exemple. Un tableau est un conteneur pouvant contenir $n$ objets (on appelle $n$ la taille d’un tableau). On peut accéder et affecter un objet au tableau grâce à un indice allant de $0$ à $n-1$ : si <code class="language-plaintext highlighter-rouge">t</code> est un tableau <code class="language-plaintext highlighter-rouge">t[i]</code> correspond à l’objet d’indice $i$ du tableau. Avec un tableau on peut :</p>
 
 <ul>
   <li>créer un tableau de taille $n$ en $\mathcal{O}(1)$ opérations</li>
@@ -317,10 +317,10 @@ if ((x &gt; 12) AND (y &lt; 36)):
 </ul>
 
 <blockquote>
-  <p>De façon pratique, un tableau est un ensemble des $n$ cases mémoires continues. Ce qui fait qu’on peut donc facilemnt les réserver et les libérer en une fois et que à la case mémoire d’indice $i$ vaut <code class="language-plaintext highlighter-rouge">&amp;t + i</code> où <code class="language-plaintext highlighter-rouge">&amp;t</code> est le numéro de la case mémoire d’indice $0$ du tableau.</p>
+  <p>De façon pratique, un tableau est un ensemble des $n$ cases mémoires continues. Ce qui fait qu’on peut donc facilement les réserver et les libérer en une fois et que à la case mémoire d’indice $i$ vaut <code class="language-plaintext highlighter-rouge">&amp;t + i</code> où <code class="language-plaintext highlighter-rouge">&amp;t</code> est le numéro de la case mémoire d’indice $0$ du tableau.</p>
 </blockquote>
 
-<p>Le langage python ne connait pas les tableaux. Il utiliser le type <strong>liste</strong> à la place. Une liste peut être vue comme l’évolution du type tableau. On donne ici juste les complexités de cette structure pour que vous puissiez les utilser dans vos programme, nous ne les démontrerons pas :</p>
+<p>Le langage python ne connait pas les tableaux. Il utiliser le type <strong>liste</strong> à la place. Une liste peut être vue comme l’évolution du type tableau. On donne ici juste les complexités de cette structure pour que vous puissiez les utiliser dans vos programmes, nous ne les démontrerons pas :</p>
 
 <ul>
   <li>créer et supprimer une liste de taille $n$ en $\mathcal{O}(1)$ opérations</li>
@@ -337,12 +337,50 @@ if ((x &gt; 12) AND (y &lt; 36)):
 
 <h4 id="fonction-et-méthodes-données">fonction et méthodes données</h4>
 
-<p>Il faut conaitre les différentes complexités des méthodes et fonctions utilisées. Ne vous laissez pas méprendre. Ce n’est pas parce qu’elle font 1 seule ligne que leur complexité est en $\mathcal{O}(1)$. Par exemple la complexité de la méthode <code class="language-plaintext highlighter-rouge">max</code> de python, qui prend en entrée une liste <code class="language-plaintext highlighter-rouge">l</code> :</p>
+<p>Il faut connaître les différentes complexités des méthodes et fonctions utilisées. Ne vous laissez pas méprendre. Ce n’est pas parce qu’elle font 1 seule ligne que leur complexité est en $\mathcal{O}(1)$. Par exemple la complexité de la méthode <code class="language-plaintext highlighter-rouge">max</code> de python, qui prend en entrée une liste <code class="language-plaintext highlighter-rouge">l</code> :</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="n">l</span><span class="p">.</span><span class="nb">max</span><span class="p">()</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">l</span><span class="p">.</span><span class="nb">max</span><span class="p">())</span>
 </code></pre></div></div>
 
-<p>Est de complexité $\mathcal{O}(n)$  où $n$ est la taille da liste et pas $\mathcal{O}(1)$. Il <strong>faut</strong> en effet parcourir tous les éléments d’une liste (a priori non triée) pour en trouver le maximum.</p>
+<p>Est de complexité $\mathcal{O}(n)$  où $n$ est la taille da liste <code class="language-plaintext highlighter-rouge">l</code> et pas $\mathcal{O}(1)$. Il <strong>faut</strong> en effet parcourir tous les éléments d’une liste (a priori non triée) pour en trouver le maximum.</p>
+
+<h3 id="exemple">exemple</h3>
+
+<p>Prenons par exemple l’algorithme écrit en python suivant :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">est_dans_tableau</span><span class="p">(</span><span class="n">valeur</span><span class="p">,</span> <span class="n">tableau</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">tableau</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="n">valeur</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">True</span>
+    <span class="k">return</span> <span class="bp">False</span>
+</code></pre></div></div>
+
+<p>L’intérieur de la boucle est constitué du code :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="n">valeur</span><span class="p">:</span>
+    <span class="k">return</span> <span class="bp">True</span>
+</code></pre></div></div>
+
+<p>Qui est de complexité $\mathcal{O}(1)$. Ce code est exécuté autant de fois que l’on va rentrer dans la boucle for. La complexité de notre algorithme est alors égale à $k * \mathcal{O}(1)$ où $k$ est le nombre de fois où l’on rentre dans la boucle.</p>
+
+<p>On cherche le cas le pire. Elle est atteinte lorsque la boucle for parcours tout le tableau, c’est à dire pour deux cas :</p>
+
+<ul>
+  <li>l’élément recherché n’est pas dans le tableau</li>
+  <li>l’élément recherché est le dernier élément du tableau</li>
+</ul>
+
+<p>On en conclut que la complexité de notre algorithme est $n * \mathcal{O}(1)$ où $n$ est la taille du tableau qui est un paramètre d’entrée (c’est donc une variable qu’on ne peut faire disparaître) la complexité de notre algorithme est : $\mathcal{O}(n)$.</p>
+
+<p>La complexité minimale est quant-à-elle atteinte lorsque l’on ne parcours pas notre boucle, c’est à dire lorsque la valeur recherchée est la 1ère valeure du tableau. Dans ce cas là, la complexité est de $\mathcal{O}(1)$ opérations.</p>
+
+<p>Au final :</p>
+
+<ul>
+  <li>la complexité maximale de l’algorithme <code class="language-plaintext highlighter-rouge">est_dans_tableau</code> est $\mathcal{O}(n)$</li>
+  <li>la complexité minimale de l’algorithme <code class="language-plaintext highlighter-rouge">est_dans_tableau</code> est $\mathcal{O}(1)$</li>
+</ul>
 
 <h2 id="types-de-complexité-en-algorithmie">types de complexité en algorithmie</h2>
 
@@ -385,12 +423,12 @@ if ((x &gt; 12) AND (y &lt; 36)):
   <p>Notez bien que la complexité logarithmique est la même quelque soit la base utilisée. En effet $\log_k(n) = \frac{\ln (n)}{\ln (k)}$ et donc $\mathcal{O}(\log_k(n)) = \mathcal{O}(\ln(n))$ pour toute base constante $k$.</p>
 </blockquote>
 
-<p>Il est crucial de chercher la meilleure complexité pour un algorithme car ses performance seront drastiquement différentes selon le type de complexité qu’il possède, comme le montre les deux tableaux ci-dessous :</p>
+<p>Il est crucial de chercher la meilleure complexité pour un algorithme car ses performance seront drastiquement différentes selon le type de complexité qu’il possède, comme le montre les deux tableaux ci-dessous, repris du livre <a href="https://en.wikipedia.org/wiki/Computers_and_Intractability">Computer and intractabilityt</a>. Ce qu’il faut retenir :</p>
 
 <blockquote class="note">
   <ul>
-    <li>il y a une énorme différence entre complexité linéaire et complexité polynomiale</li>
-    <li>il y a une énorme différence entre complexité polynomiale et complexité exponentielle (qu’il ne faut donc jamais avoir si possible)</li>
+    <li>il y a une <strong>énorme différence</strong> entre complexité linéaire et complexité polynomiale</li>
+    <li>il y a une <strong>énorme différence</strong> entre complexité polynomiale et complexité exponentielle (qu’il ne faut donc jamais avoir si possible)</li>
   </ul>
 </blockquote>
 
@@ -415,12 +453,12 @@ if ((x &gt; 12) AND (y &lt; 36)):
   <tbody>
     <tr>
       <td>$\ln(n)$</td>
-      <td>0.002 ms</td>
-      <td>0.003 ms</td>
-      <td>0.003 ms</td>
-      <td>0.04 ms</td>
-      <td>0.004 ms</td>
-      <td>0.004 ms</td>
+      <td>2 $\mu s$</td>
+      <td>3 $\mu s$</td>
+      <td>3 $\mu s$</td>
+      <td>4 $\mu s$</td>
+      <td>4 $\mu s$</td>
+      <td>4 $\mu s$</td>
     </tr>
     <tr>
       <td>$n$</td>
@@ -473,21 +511,21 @@ if ((x &gt; 12) AND (y &lt; 36)):
       <td>58 min</td>
       <td>6.5 ans</td>
       <td>385500 ans</td>
-      <td>2x1010 ans</td>
-      <td>13x1016 siècles</td>
+      <td>$2.27\cdot 10^8$ siècles</td>
+      <td>$1.3\cdot 10^{13}$ siècles</td>
     </tr>
   </tbody>
 </table>
 
-<p>L’évolution est dramatique plus la complexité augmente. Pour une complexité polynomiale, la croissance est encore maitrisée même s’il vaut mieux avoir une petite complexité pour traiter plus de données. Pour une complexité exponentielle ($2^n$ et $3^n$) la durée est tout simplement rédhibitoire.</p>
+<p>L’évolution est dramatique plus la complexité augmente. Pour une complexité logarithmique, le temps <em>semble</em> constant et pour une complexité polynomiale, la croissance reste maitrisée même s’il vaut mieux avoir une petite complexité pour traiter plus de données. Pour une complexité exponentielle ($2^n$ et $3^n$) en revanche, la durée est tout simplement rédhibitoire.</p>
 
 <blockquote>
-  <p>Pour générer le tableau, on voit qu’exécuter une opération dure .001ms = t. Le temps pris pour une entrée de taille de f(n) est alors : <code class="language-plaintext highlighter-rouge">t * f(n)</code></p>
+  <p>Pour générer le tableau, on voit que le temps  $t$ pour exécuter 1 opération est de .001ms (on regarde la ligne de complexité linéaire : pour $n=10$ on prend 0.01 opérations, donc 1 opération nécessite $0.01/10ms$). Le temps pris pour exécuter $f(n)$ opérations avec une entrée de taille de $n$ est alors : $t \cdot f(n)$</p>
 </blockquote>
 
-<h3 id="nombre-de-problèmes-résolu-par-heure">nombre de problèmes résolu par heure</h3>
+<h3 id="nombre-de-problèmes-résolus-par-heure">nombre de problèmes résolus par heure</h3>
 
-<p>En colonne la rapidité de la machine, en ligne le nombre de problème d’une complexité donné réalisé en 1 heure.</p>
+<p>En colonne la rapidité de la machine, en ligne la taille maximale d’un problème que l’on peut résoudre en 1heure.</p>
 
 <table>
   <thead>
@@ -501,198 +539,167 @@ if ((x &gt; 12) AND (y &lt; 36)):
   <tbody>
     <tr>
       <td>$\ln(n)$</td>
-      <td>N0</td>
-      <td>e^100 x N0</td>
-      <td>e^1000 x N0</td>
+      <td>$N0$</td>
+      <td>$e^{100} \cdot N0$</td>
+      <td>$e^{1000} \cdot N0$</td>
     </tr>
     <tr>
       <td>$n$</td>
-      <td>N1</td>
-      <td>100 x N1</td>
-      <td>1000xN1</td>
+      <td>$N1$</td>
+      <td>$100 \cdot N1$</td>
+      <td>$1000 \cdot N1$</td>
     </tr>
     <tr>
       <td>$n^2$</td>
-      <td>N2</td>
-      <td>10 x N2</td>
-      <td>31.6xN2</td>
+      <td>$N2$</td>
+      <td>$10 \cdot N2$</td>
+      <td>$31.6 \cdot N2$</td>
     </tr>
     <tr>
       <td>$n^3$</td>
-      <td>N3</td>
-      <td>4.64 x N3</td>
-      <td>10xN3</td>
+      <td>$N3$</td>
+      <td>$4.64 \cdot N3$</td>
+      <td>$10 \cdot N3$</td>
     </tr>
     <tr>
       <td>$n^5$</td>
-      <td>N4</td>
-      <td>2.5 x N4</td>
-      <td>3.98xN4</td>
+      <td>$N4$</td>
+      <td>$2.5 \cdot N4$</td>
+      <td>$3.98 \cdot N4$</td>
     </tr>
     <tr>
       <td>$2^n$</td>
-      <td>N5</td>
-      <td>N5 + 6.64</td>
-      <td>N5+9.97</td>
+      <td>$N5$</td>
+      <td>$N5 + 6.64$</td>
+      <td>$N5 + 9.97$</td>
     </tr>
     <tr>
       <td>$3^n$</td>
-      <td>N6</td>
-      <td>N6 + 4.19</td>
-      <td>N6+6.29</td>
+      <td>$N6$</td>
+      <td>$N6 + 4.19$</td>
+      <td>$N6 + 6.29$</td>
     </tr>
   </tbody>
 </table>
 
-<p>La encore, l’évolution est dramatique plus la complexité augmente. Pour des complexité polynomiales le nombre de problème augmente d’un facteur multiplicatif lorsque la vitesse augment, mais ce n’est pas le cas pour des complexités exponentielles. Pour ces problèmes, augmenter la vitesse de la machine ne change pas fondamentalement le nombre de problèmes que l’on peut résoudre.</p>
+<p>La encore, l’évolution est dramatique plus la complexité augmente. Pour des complexités logarithmiques et polynomiales le nombre de problème augmente d’un facteur multiplicatif lorsque la vitesse augmente, mais ce n’est pas le cas pour des complexités exponentielles. Pour ces problèmes, augmenter la vitesse de la machine ne change pas fondamentalement le nombre de problèmes que l’on peut résoudre.</p>
 
 <blockquote>
-  <p>Pour générer le tableau,  on remarque que  <code class="language-plaintext highlighter-rouge">Ni = f^-1(N1)</code> où f(n) est la complexité du calcul pour une entrée de taille $n$. Si on va k fois plus vite, on exécutera donc <code class="language-plaintext highlighter-rouge">f^-1(k x N1)</code> opérations en 1 heure.</p>
+  <p>Pour générer le tableau, on suppose que l’on peut résoudre $K$ opérations en 1 heure. On cherche alors $n$ tel que $f(n)$ soit égal à $K$ et donc $n = f^{-1}(K)$. En remarquant que $K$ est égal à la taille maximale d’un problème de complexité linéaire résoluble en 1heure, on la taille maximale $n$ d’un problème de complexité $f(n)$ résoluble en 1 heure pour une machine allant $k$ fois pus vite qu’une machine actuelle vaut $f^{-1}(k \cdot N1)$.</p>
 </blockquote>
 
 <h3 id="le-cas-particulier-de-n">le cas particulier de n!</h3>
 
-<blockquote class="tbd">
-  <p>ce n’est pas une solution</p>
+<p>Souvent les étudiants veulent que leurs algorithmes soient en $\mathcal{O}(n!)$. Ce n’est <strong>presque jamais exact</strong> ! En effet, la <a href="https://fr.wikipedia.org/wiki/Formule_de_Stirling">formule de sirling</a> donne l’équivalent suivant pour $n!$ :</p>
+
+\[n! \sim \sqrt{2\pi n}(\frac{n}{e})^n\]
+
+<p>On a donc que $n!$ est de l’ordre de $\mathcal{O}(n^{n+1/2})$, qui est vachement plus grand que $\mathcal{O}(2^{n})$ qui est déjà gigantesque.</p>
+
+<blockquote class="note">
+  <p>Si vous pensez que votre algorithme tout bête est $\mathcal{O}(n!)$. Réfléchissez-y à deux fois. C’est presque sûrement une erreur…</p>
 </blockquote>
 
 <h2 id="règles-de-calcul-de-complexité">règles de calcul de complexité</h2>
 
-<h3 id="boucle-simple">boucle simple</h3>
+<p>On va donner ici quelques règles de calcul de complexité pour que vous puissiez estimer rapidement la complexité d’un algorithme simple.</p>
 
-<p>nb boucle * intérieur</p>
+<h3 id="une-boucle-simple">une boucle simple</h3>
 
-<blockquote class="tbd">
-  <p>on peut tout additionner. C’est parfois nécessaire pour découpler les calculs</p>
-</blockquote>
+<p>Lorsque l’on a une boucle où le nombre de fois où l’on va rentrer dedans est évident.</p>
 
-<h2 id="exemple">exemple</h2>
+<p>Par exemple :</p>
 
-<p>max/min.</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+tant que condition:
+    bloc d'instructions
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">est_dans_tableau</span><span class="p">(</span><span class="n">valeur</span><span class="p">,</span> <span class="n">tableau</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">tableau</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="n">valeur</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">True</span>
-    <span class="k">return</span> <span class="bp">False</span>
 </code></pre></div></div>
 
-<p>On cherche toujours le cas le pire. Dans des algorithmes dont le nombre d’opérations dépend de l’entrée on choisira des entrées maximisant le nombre d’opérations.</p>
+<blockquote class="note">
+  <p>La complexité est : $\mathcal{O}$(nombre de fois ou la condition est remplie) * ($\mathcal{O}$(complexité du bloc d’instruction) + $\mathcal{O}$(complexité de la vérification de la condition))</p>
+</blockquote>
 
-<p>Dans l’algorithme ci-dessous la complexité est maximale pour deux cas :</p>
+<p>Souvent, $\mathcal{O}$(complexité de la vérification de la condition) sera égal à $\mathcal{O}(1)$ et pourra ne pas en tenir compte dans le calcul. C’est le cas, entre autre pour une boucle tant que :</p>
 
-<ul>
-  <li>l’élément recherché n’est pas dans le tableau</li>
-  <li>l’élément recherché est le dernier élément du tableau</li>
-</ul>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+pour chaque element de structure:
+    bloc d'instructions
 
-<p>Car c’est là que l’on parcourt toute la boucle.</p>
+</code></pre></div></div>
 
-<p>complexité : on parcourt tout le tableau et l’interieur de la boucle est en $\mathcal{O}(1)$. La complexité au pire est donc de $\mathcal{O}(len(\mbox{tableau}))$</p>
+<blockquote class="note">
+  <p>La complexité est : $\mathcal{O}$(nombre d’éléments de la structure) * $\mathcal{O}$(complexité du bloc d’instruction)</p>
+</blockquote>
 
-<p>On verra dans le cours sur les tris, qu’il existe encore d’autres notions de complexités : la <em>complexité minimale</em> et la <em>complexité en moyenne</em>.</p>
+<p>Si le bloc d’instructions est une suite d’instructions de complexité $\mathcal{O}(1)$, on pourra ne pas en tenir compte dans le calcul et la complexité est alors égale à la taille de la structure.</p>
 
-<h3 id="boucle-croissantedécroissante">boucle croissante/décroissante</h3>
+<p>En conclusion :</p>
 
-<p>max</p>
-<h3 id="exemple-1--quelle-est-la-complexité-de-lalgorithme-suivant">exemple 1 : quelle est la complexité de l’algorithme suivant</h3>
+<blockquote class="note">
+  <p>Si le bloc d’instruction est une suite d’instructions de complexité $\mathcal{O}(1)$ et que la vérification de la fin de la boucle est $\mathcal{O}(1)$, la complexité de la boucle est égal au nombre de fois où l’on effectue la boucle</p>
+</blockquote>
+
+<h3 id="boucles-imbriquées-indépendantes">boucles imbriquées indépendantes</h3>
+
+<p>Plusieurs boucles imbriquées dont dont le nombre de fois où l’on va rentrer dedans est indépendant des autres boucles. Par exemple :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>boucle 1 éxecutée n1 fois:
+    boucle 2 éxecutée n2 fois:
+        ...
+            boucle i éxecutée ni fois:
+                bloc d'instructions
+</code></pre></div></div>
+
+<p>On peut utiliser la règle précédente de façon récursive, la partie $\mathcal{O}$(complexité du bloc d’instruction) contenant elle même une ou plusieurs boucles.</p>
+
+<blockquote class="note">
+  <p>Si la condition à remplir pour rentrer dans la boucle est en $\mathcal{O}(1)$, la complexité des boucles imbriquées est le produit du nombre de fois où l’on rentre dans chaque boucle pris indépendamment multiplié par la complexité du bloc d’instructions.</p>
+</blockquote>
+
+<p>Exemple :</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">total</span><span class="o">=</span><span class="mi">0</span>
-<span class="n">de</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span> <span class="n">à</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span> <span class="n">faire</span> <span class="p">:</span>
-    <span class="n">de</span> <span class="n">j</span><span class="o">=</span><span class="mi">1</span>  <span class="n">à</span> <span class="n">n</span> <span class="n">faire</span> <span class="p">:</span>
-		<span class="n">total</span><span class="o">=</span><span class="n">total</span><span class="o">+</span><span class="mi">1</span>
+<span class="n">de</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span> <span class="n">à</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span> <span class="n">faire</span><span class="p">:</span>
+    <span class="n">de</span> <span class="n">j</span><span class="o">=</span><span class="mi">1</span> <span class="n">à</span> <span class="n">n</span> <span class="n">faire</span> <span class="p">:</span>
+        <span class="n">total</span><span class="o">=</span><span class="n">total</span><span class="o">+</span><span class="mi">1</span>
 <span class="n">Rendre</span> <span class="n">total</span>
 </code></pre></div></div>
 
-<p>Cheminement de l’algorithme :</p>
+<p>La boucle en $i$ est exécuté $n-1$ fois ($i$ va de 1 à $n-1$), donc $\mathcal{O}(n)$ fois. La boucle en $j$ va également être exécutée $\mathcal{O}(n)$ fois indépendamment de la boucle en $i$. Enfin la complexité du bloc d’instruction est $\mathcal{O}(1)$, la complexité totale des deux boucles imbriquées vaut :</p>
 
-<ul>
-  <li>ligne 1 : une affectation, donc en temps constant, donc $\mathcal{O}(1)$</li>
-  <li>ligne 2 : une affectation (<code class="language-plaintext highlighter-rouge">i=1</code>) donc en $\mathcal{O}(1)$</li>
-  <li>ligne 3:  une affectation (<code class="language-plaintext highlighter-rouge">j=1</code>) donc en $\mathcal{O}(1)$</li>
-  <li>ligne 4 : une opération et une affectation, donc $\mathcal{O}(1) + \mathcal{O}(1)$</li>
-  <li>ligne 3:  une affectation (<code class="language-plaintext highlighter-rouge">j=2</code>) donc en $\mathcal{O}(1)$</li>
-  <li>ligne 4 : une opération et une affectation, donc $\mathcal{O}(1) + \mathcal{O}(1)$</li>
-  <li>…</li>
-  <li>ligne 3:  une affectation (<code class="language-plaintext highlighter-rouge">j=n</code>) donc en $\mathcal{O}(1)$</li>
-  <li>ligne 4 : une opération et une affectation, donc $\mathcal{O}(1) + \mathcal{O}(1)$</li>
-  <li>ligne 2 : une affectation (<code class="language-plaintext highlighter-rouge">i=2</code>) donc en $\mathcal{O}(1)$</li>
-  <li>ligne 3:  une affectation (<code class="language-plaintext highlighter-rouge">j=1</code>) donc en $\mathcal{O}(1)$</li>
-  <li>ligne 4 : une opération et une affectation, donc $\mathcal{O}(1) + \mathcal{O}(1)$</li>
-  <li>…</li>
-  <li>ligne 3:  une affectation (<code class="language-plaintext highlighter-rouge">j=n</code>) donc en $\mathcal{O}(1)$</li>
-  <li>ligne 4 : une opération et une affectation, donc $\mathcal{O}(1) + \mathcal{O}(1)$</li>
-  <li>…</li>
-  <li>ligne 2 : une affectation (<code class="language-plaintext highlighter-rouge">i=n-1</code>) donc en $\mathcal{O}(1)$</li>
-  <li>ligne 3:  une affectation (<code class="language-plaintext highlighter-rouge">j=1</code>) donc en $\mathcal{O}(1)$</li>
-  <li>ligne 4 : une opération et une affectation, donc $\mathcal{O}(1) + \mathcal{O}(1)$</li>
-  <li>…</li>
-  <li>ligne 3:  une affectation (<code class="language-plaintext highlighter-rouge">j=n</code>) donc en $\mathcal{O}(1)$</li>
-  <li>ligne 4 : une opération et une affectation, donc $\mathcal{O}(1) + \mathcal{O}(1)$</li>
-  <li>linge 4 : une affectation $\mathcal{O}(1)$</li>
-</ul>
+\[{
+\underbrace{\mathcal{O}(n)}_{\mbox{boucle en i  }} \cdot \underbrace{\mathcal{O}(n)}_{\mbox{boucle en j  }} \cdot \underbrace{\mathcal{O}(1)}_{\mbox{bloc d'instruction  }}
+} = \mathcal{O}(n^2)\]
 
-<p>On peut rassembler les boucles entres-elles :
-Donc l’algorithme :</p>
+<blockquote>
+  <p>Ne comptez pas trop précisément le nombre de fois où l’on rentre dans une boucle $n-3$ exécution de la boucle pouvant être avantageusement remplacé par $\mathcal{O}(n)$</p>
+</blockquote>
 
-<ul>
-  <li>ligne 1 : une affectation, donc en temps constant, donc $\mathcal{O}(1)$</li>
-  <li>ligne 2 : une affectation (de la variable i) donc en $\mathcal{O}(1)$ et un début de bloc qui sera effectué $n-1$ fois, donc de l’ordre de $\mathcal{O}(n)$ fois.</li>
-  <li>ligne 3:  une affectation (de la variable j) donc en $\mathcal{O}(1)$ et un début de bloc qui sera effectué $n-1$ fois, donc de l’ordre de $\mathcal{O}(n)$ fois.</li>
-  <li>ligne 4 : une affectation, donc en temps constant, donc $\mathcal{O}(1)$</li>
-  <li>ligne 5 : une affectation, donc en temps constant, donc $\mathcal{O}(1)$</li>
-</ul>
+<h3 id="boucles-dépendantes-mais-monotones">boucles dépendantes mais monotones</h3>
 
-<p>on a donc une complexité de :</p>
+<p>Il arrive souvent que les boucles imbriquées d’un algorithme soient dépendantes les unes des autres. Dans le cas général, on ne peut pas factoriser le calcul de la complexité. Il faut alors dérouler tout l’algorithme en additionnant les complexités de chaque ligne comme s’il n’y avait pas de boucles.</p>
 
-\[\mathcal{O}(1) + \mathcal{O}(n) * (\mathcal{O}(1) + \mathcal{O}(n) * (\mathcal{O}(1) + \mathcal{O}(1))) + \mathcal{O}(1)\]
+<p>Il existe cependant un cas pratique (et qui arrive assez souvent) où l’on peut factoriser :</p>
 
-<p>ceci vaut :</p>
+<blockquote class="note">
+  <p>Si une boucle s’exécute un nombre variable de fois, mais que cette variation est croissante (respectivement décroissante), on peut considérer pour le calcul de la complexité qu’elle s’exécute à chaque fois de l’ordre du maximum de fois.</p>
+</blockquote>
 
-\[\mathcal{O}(2) + \mathcal{O}(n) * (\mathcal{O}(1) + \mathcal{O}(n) * \mathcal{O}(2))\]
+<p>On va vérifier cela avec un exemple :</p>
 
-<p>Comme $\mathcal{O}(2) = \mathcal{O}(1)$ on a : 
-\(\mathcal{O}(1) + \mathcal{O}(n) * (\mathcal{O}(1) + \mathcal{O}(n) * \mathcal{O}(1))\)</p>
-
-<p>donc comme $\mathcal{O}(n) * \mathcal{O}(1) = \mathcal{O}(1 * n) = \mathcal{O}(n)$ :</p>
-
-\[\mathcal{O}(1) + \mathcal{O}(n) * (\mathcal{O}(1) + \mathcal{O}(n))\]
-
-<p>Donc : 
-\(\mathcal{O}(1) + \mathcal{O}(n) + \mathcal{O}(n^2)\)</p>
-
-<p>Comme \(\mathcal{O}(n^2 + n + 1) = \mathcal{O}(n^2)\)</p>
-
-<p>La complexité finale de l’algorithme est en : $\mathcal{O}(n^2)$</p>
-
-<p><strong>Règle de calcul simple :</strong></p>
-
-<ul>
-  <li>on multiplie le nombre de fois où on execute un bloc par la complexité du bloc.</li>
-  <li>on peut die qu’une suite d’instruction en $\mathcal{O}(1)$ est également en $\mathcal{O}(1)$</li>
-</ul>
-
-<h3 id="exemple-3--quelle-est-la-complexité-de-lalgorithme-suivant">exemple 3 : quelle est la complexité de l’algorithme suivant</h3>
-
-<p>Attention à la deuxième boucle. Est-ce important pour le résultat ?</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>total=0
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+total=0
 de i=1 à n-1 faire :
     de j=i+1 à n faire :
         total=total+1
 Rendre total
+
 </code></pre></div></div>
-<p>On va utiliser une autre règle que l’on va montrer par la pratique :</p>
 
-<blockquote>
-  <p>Si une boucle s’exécute un nombre variable de fois, mais que cette variation est croissante (respectivement décroissante), on peut considérer pour le calcul de la complexité qu’elle s’exécute à chaque fois  de l’ordre du maximum de fois.</p>
-</blockquote>
+<p>Le nombre de fois où la boucle en $j$ est exécuté est un nombre variable de fois qui dépend de la valeur de $i$. Comme $i$ va croitre, le nombre de fois où cette boucle va s’exécuter va décroitre. Si l’on applique la règle  on peut dire qu’elle va s’exécuter de l’ordre de $\mathcal{O}(n)$ fois comme dans l’exemple de la partie précédente. La complexité de l’algorithme est donc de $\mathcal{O}(n^2)$.</p>
 
-<p>Ici, la boucle de la ligne 3 s’exécute un nombre variable de fois qui dépend de la valeur de $i$. Comme $i$ va croitre, le nombre de fois où cette boucle va s’exécuter va décroitre. Donc on peut dire qu’elle va s’exécuter de l’ordre de $\mathcal{O}(n)$ fois, exactement comme pour l’exemple 1.</p>
-
-<p>On peut donc estimer la complexité de l’algorithme à $\mathcal{O}(n^2)$ fois.</p>
-
-<p>On peut faire un calcul exact de la complexité pour vérifier.</p>
+<p>Refaisons le calcul en décomposant toutes les instructions, comme on le ferait dans le cas général pour voir que notre règle est valide (et donnera aussi une idée de la preuve de cette règle) :</p>
 
 <ul>
   <li>ligne 1 : $\mathcal{O}(1)$</li>
@@ -700,18 +707,21 @@ Rendre total
     <ul>
       <li>une affectation $i=1$ : $\mathcal{O}(1)$</li>
       <li>boucle pour $j=1$:
-  	* une affectation de $j$ :  $\mathcal{O}(1)$
-  	* la ligne 4 :  $\mathcal{O}(1)$
-  	* le tout $n-1$ fois</li>
+        <ul>
+          <li>une affectation de $j$ :  $\mathcal{O}(1)$</li>
+          <li>la ligne 4 :  $\mathcal{O}(1)$</li>
+          <li>le tout $n-1$ fois</li>
+        </ul>
+      </li>
     </ul>
   </li>
   <li>itération pour $i=2$:
     <ul>
       <li>une affectation $i=2$ : $\mathcal{O}(1)$</li>
       <li>boucle pour $j=2$:
-  	* une affectation de $j$ :  $\mathcal{O}(1)$
-  	* la ligne 4 :  $\mathcal{O}(1)$
         <ul>
+          <li>une affectation de $j$ :  $\mathcal{O}(1)$</li>
+          <li>la ligne 4 :  $\mathcal{O}(1)$</li>
           <li>le tout $n-2$ fois</li>
         </ul>
       </li>
@@ -722,9 +732,9 @@ Rendre total
     <ul>
       <li>une affectation $i=n-1$ : $\mathcal{O}(1)$</li>
       <li>boucle pour $j=n-1$:
-  	* une affectation de $j$ :  $\mathcal{O}(1)$
-  	* la ligne 4 :  $\mathcal{O}(1)$
         <ul>
+          <li>une affectation de $j$ :  $\mathcal{O}(1)$</li>
+          <li>la ligne 4 :  $\mathcal{O}(1)$</li>
           <li>le tout $1$ fois</li>
         </ul>
       </li>
@@ -735,9 +745,14 @@ Rendre total
 
 <p>Notre complexité totale est donc :</p>
 
-\[\mathcal{O}(1) + (\mathcal{O}(1) + (n-1) * (\mathcal{O}(1) + \mathcal{O}(1))) + 
-(\mathcal{O}(1) + (n-2) * (\mathcal{O}(1) + \mathcal{O}(1))) + \dots
- + (\mathcal{O}(1) + (1) * (\mathcal{O}(1) + \mathcal{O}(1))) + \mathcal{O}(1)\]
+\[\begin{aligned}
+    \mathcal{O}(1) + \\
+    (\mathcal{O}(1) + (n-1) * (\mathcal{O}(1) + \mathcal{O}(1))) + \\
+    (\mathcal{O}(1) + (n-2) * (\mathcal{O}(1) + \mathcal{O}(1))) + \\
+    \dots\\
+ + (\mathcal{O}(1) + (1) * (\mathcal{O}(1) + \mathcal{O}(1))) \\
+ + \mathcal{O}(1)
+\end{aligned}\]
 
 <p>comme $\mathcal{O}(1) + \mathcal{O}(1) = \mathcal{O}(1)$, on a :</p>
 
@@ -761,7 +776,7 @@ Rendre total
 
 <p>On retrouve bien le résultat attendu.</p>
 
-<h3 id="exemple-3--plus-grand-élément-dun-tableau-de-longueur-n">exemple 3 : plus grand élément d’un tableau de longueur $n$.</h3>
+<h3 id="complexité-dalgorithmes-récursifs">complexité d’algorithmes récursifs</h3>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">maximum</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
     <span class="n">si</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span>
@@ -782,23 +797,6 @@ Rendre total
 <p>En bornant le temps constant par $K$, on a l’équation de récurrence suivante : $C(N) = K + C(N-1)$</p>
 
 <p>$C(N) = K + K + C(N-2) = \dots = n * K + C(0) = (n+1) * K = \mathcal{O}(n)$</p>
-
-<h1 id="comparaisons-des-complexités">comparaisons des complexités</h1>
-
-<p>Un mauvais choix d’algorithme peut entraîner une différence très importante (facteur 100, 1000, etc.) alors que l’optimisation du code ne fait gagner a priori qu’un facteur 10 au mieux.</p>
-
-<p>Il existe souvent plusieurs algorithme pour résoudre un problème. De temps en temps un algorithme est meilleurs que tous les autres, mais souvent cela dépend du type de données en entrée (on le verra). Il est donc important non seulement de connaître les complexités des algorithmes pour choisir le meilleurs mais également de connaitre son cas d’utilisation.</p>
-
-<h2 id="trouver-un-élément-dans-un-tableauchaîne-de-caractère">trouver un élément dans un tableau/chaîne de caractère.</h2>
-
-<h2 id="structures">structures</h2>
-
-<blockquote>
-  <p><strong>TBD</strong> Exemple du tableau en regardant comment fonctionne la mémoire. Et les complexité de maintien de la structure.</p>
-</blockquote>
-
-<p>objet = place dans la mémoire</p>
-
 
   </div>
 

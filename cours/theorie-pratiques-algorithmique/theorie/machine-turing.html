@@ -117,7 +117,7 @@
 
 <p>Voici la représentation d’une machine à la fin de la $i$ème instruction. Son état est $q$ et son curseur est positionné sur la case d’indice $j$ :</p>
 
-<p><img src="/cours_informatique/assets/cours/algorithmie/machine-Turing.png" alt="machine" style="margin: auto;display: block;"></p>
+<p><img src="/cours_informatique/assets/cours/algorithmie/machine-turing.png" alt="machine" style="margin: auto;display: block;"></p>
 
 <p>Par convention, on considérera que le ruban initial aura comme numéro d’instruction 0 et que l’indice de la case où est initialement le curseur sera d’indice 0.</p>
 
@@ -157,7 +157,7 @@
 
 <p>Allons-y. Essayons ce code. On considère la machine de Turing ci-après :</p>
 
-<p><img src="/cours_informatique/assets/cours/algorithmie/Turing-1.png" alt="Turing 1" style="margin: auto;display: block;"></p>
+<p><img src="/cours_informatique/assets/cours/algorithmie/turing-1.png" alt="Turing 1" style="margin: auto;display: block;"></p>
 
 <p>Par convention, on considérera que le ruban initial aura comme numéro d’instruction 0 et que l’indice de la case où est initialement le curseur sera d’indice 0.</p>
 
@@ -169,7 +169,7 @@
   <li>aller à droite</li>
 </ul>
 
-<p><img src="/cours_informatique/assets/cours/algorithmie/Turing-2.png" alt="Turing 2" style="margin: auto;display: block;"></p>
+<p><img src="/cours_informatique/assets/cours/algorithmie/turing-2.png" alt="Turing 2" style="margin: auto;display: block;"></p>
 
 <p>On est à l’état $b$ et on lit $\sharp$ dans la machine : la table de transition nous indique qu’il faut :</p>
 
@@ -179,7 +179,7 @@
   <li>aller à droite</li>
 </ul>
 
-<p><img src="/cours_informatique/assets/cours/algorithmie/Turing-3.png" alt="Turing 3" style="margin: auto;display: block;"></p>
+<p><img src="/cours_informatique/assets/cours/algorithmie/turing-3.png" alt="Turing 3" style="margin: auto;display: block;"></p>
 
 <p>On est à l’état $c$ et on lit $\sharp$ dans la machine : la table de transition nous indique qu’il faut :</p>
 
@@ -189,7 +189,7 @@
   <li>aller à droite</li>
 </ul>
 
-<p><img src="/cours_informatique/assets/cours/algorithmie/Turing-4.png" alt="Turing 4" style="margin: auto;display: block;"></p>
+<p><img src="/cours_informatique/assets/cours/algorithmie/turing-4.png" alt="Turing 4" style="margin: auto;display: block;"></p>
 
 <p>On est à l’état $d$ et on lit $\sharp$ dans la machine : la table de transition nous indique qu’il faut :</p>
 
@@ -199,7 +199,7 @@
   <li>aller à droite</li>
 </ul>
 
-<p><img src="/cours_informatique/assets/cours/algorithmie/Turing-5.png" alt="Turing 5" style="margin: auto;display: block;"></p>
+<p><img src="/cours_informatique/assets/cours/algorithmie/turing-5.png" alt="Turing 5" style="margin: auto;display: block;"></p>
 
 <p>Et ainsi de suite. On voit que cette machine ne va jamais s’arrêter et qu’elle écrit continuellement 0 puis 1 sur le ruban.</p>
 
@@ -496,11 +496,11 @@ table:
 
 <p>A chaque itération, la machine supprime un 1 et en écrit 2 nouveaux : un à droite et un à gauche des nouveaux 1 inscrits. Les étapes de cette itération poeut être décrite comme suit :</p>
 
-<p><img src="/cours_informatique/assets/cours/algorithmie/Turing-6.png" alt="Turing 6" style="margin: auto;display: block;"></p>
+<p><img src="/cours_informatique/assets/cours/algorithmie/turing-6.png" alt="Turing 6" style="margin: auto;display: block;"></p>
 
 <p>On aura toujours une configuration où les nouveaux 1 seront à gauche des anciens 1 (ceux initialement sur le ruban) et séparé par <strong>un unique caractère blanc</strong> :</p>
 
-<p><img src="/cours_informatique/assets/cours/algorithmie/Turing-7.png" alt="doublement de batons" style="margin: auto;display: block;"></p>
+<p><img src="/cours_informatique/assets/cours/algorithmie/turing-7.png" alt="doublement de batons" style="margin: auto;display: block;"></p>
 
 <p>Le programme de la machine de Turing a machine va donc ici s’arrêter puisqu’à un moment tous les anciens $1$ auront-été effacés et on se retrouvera à l’état initial avec le curseur placé sur un $\sharp$ , ce qui enverra vers l’état final.</p>
 
