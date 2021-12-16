@@ -57,47 +57,70 @@
   </header>
 
   <div class="post-content">
-    <h1 id="introduction">Introduction</h1>
+    <blockquote class="chemin">
+  <p><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/">Théorie et pratiques algorithmique</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/">algorithmie</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/preuve-algorithme.html">preuve d’algorithme</a></p>
 
-<p>Pour prouver qu’un algorithme fonctionne il faut :</p>
+  <p>prérequis :</p>
 
-<ul>
-  <li>prouver qu’il s’arrête</li>
-  <li>avoir une idée de sa complexité (est-ce que je vais le voir s’arrêter de mon vivant ?)</li>
-  <li>prouver qu’il fait bien ce que l’on attend de lui</li>
-</ul>
+  <ul>
+    <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.html">algorithmie/pseudo-code</a></li>
+  </ul>
+</blockquote>
 
-<p>Prouver qu’un algorithme s’arrête fait partie des problèmes théoriques difficiles en informatique. Rassurez-vous, pour vos algorithmes, ce sera facile de le savoir ou de le voir.</p>
+<p>Ua algorithme <strong>toujours</strong> un but, quelque chose pour quoi il est fait. Dans notre cas, un algorithme calculera la solution d’un problème.</p>
 
-<p>La preuve de l’algorithme est parfois plus délicate : le problème étant souvent (toujours ?) concentré dans les boucles ou les récursions. On cherche à trouver des propriétés qui sont conservées avant et après une itération :</p>
+<p>Pour chaque algorithme que vous créerez ou que l’on demandera d’étudier il faudra :</p>
 
-<ul>
-  <li>soit une équation de récurrence plus une condition d’arrêt de récurrence.</li>
-  <li>soit <a href="https://fr.wikipedia.org/wiki/Invariant_de_boucle">un invariant de boucle</a>. Ces invariants vont alors être conservés jusqu’à la fin de l’algorithme et nous permettre de prouver son résultat.</li>
-</ul>
+<ol>
+  <li>caractériser le problème que l’algorithme es sensé résoudre</li>
+  <li>démontrer que l’algorithme fonctionne, c’est à dire qu’il le résout le problème en temps fini.</li>
+</ol>
+
+<p>Prouver qu’un algorithme s’arrête fait partie des problèmes théoriques difficiles en informatique. En algorithmie, les algorithmes résolvent des problèmes et donc ils sont sensé s’arrêter et il sera (normalement) de le voir. En revanche, la preuve de l’algorithme est parfois plus délicate. Le problème étant souvent (toujours ?) concentré dans les boucles ou les récursions de l’algorithme, on cherchera à trouver des propriétés qui sont conservées avant et après une itération ou une récursion :</p>
+
+<blockquote class="code">
+  <p>Pour prouver un algorithme on cherchera à établir :</p>
+
+  <ul>
+    <li>une équation de récurrence plus une condition d’arrêt pour prouver un algorithme récursif.</li>
+    <li>
+<a href="https://fr.wikipedia.org/wiki/Invariant_de_boucle">un invariant de boucle</a> pour des algorithme itératifs. Ces invariants vont alors être conservés jusqu’à la fin de l’algorithme et nous permettre de prouver son résultat.</li>
+  </ul>
+
+</blockquote>
+
+<p>Notez que bien souvent prouver un algorithme et le créer est la même chose. Comprendre comment on peut résoudre un problème donné nous donnera l’algorithme et récproquement.</p>
+
+<p>A part la recommendation ci-dessus, il n’existe pas vraiment de règles à appliquer pour prouver un algorithme. Seule l’expérience et l’étude des algorithmes classique vous permettra de trouver facilement comment prouver un algorithme.</p>
+
+<blockquote>
+  <p>dans la suite, les algorithmes seront tous donnés en python</p>
+</blockquote>
 
 <h2 id="factorielle-récursive">factorielle récursive</h2>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">factorielle</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-	<span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
-		<span class="k">return</span> <span class="mi">1</span>
-	<span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">factorielle</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">factorielle</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div></div>
 
 <ul>
-  <li>finitude : $n$ doit être un réel. Comme $n$ décroît strictement à chaque appelle récursif et on stoppe si $n \leq 1$.</li>
-  <li>complexité dépend de $n$, le nombre pas sa taille.</li>
-  <li>preuve :
+  <li>finitude : Si $n$ est un réel, l’algorithme va s’arrêter : $n$ décroît strictement à chaque appelle récursif et on stoppe si $n \leq 1$.</li>
+  <li>complexité : dépend de $n$, le nombre pas sa taille.</li>
+  <li>preuve : Pra récurrence sur $n$, avec $n$ entier positif.
     <ul>
       <li>entrée : des entiers positifs</li>
-      <li>fonction de récurrence. En $n=0$ et $n=1$ ça marche. Si ça marche en n-1, ça marche en n car $n! = n * (n-1)!$</li>
+      <li>fonction de récurrence. Si $n=0$ ça marche. Si ça marche pour l’entrée n-1, ça marche pour $n$ car la fonction rend $n \cdot factorielle(n-1)$ qui vaut $n \cdot (n-1)!$ par hypothèse de récurence.</li>
     </ul>
   </li>
 </ul>
 
-<h2 id="max-dun-tableau">max d’un tableau</h2>
+<h2 id="maximum-dun-tableau">maximum d’un tableau</h2>
 
-<h3 id="itératif">itératif</h3>
+<p>On va voir 2 algorithmes pour caluler la valeure maximum d’un tableau de réels.</p>
+
+<h3 id="algorithme-itératif">algorithme itératif</h3>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">maximum</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
     <span class="n">m</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -109,61 +132,70 @@
 
 <ul>
   <li>finitude : clair car une unique boucle for.</li>
-  <li>complexité : une boucle en $\mathcal{O}(len(t))$ et des choses en $\mathcal{O}(1)$ : $\mathcal{O}(len(t))$</li>
-  <li>preuve : par invariant.</li>
+  <li>complexité : une boucle en $\mathcal{O}(len(t))$ et des choses en $\mathcal{O}(1)$. Sa complexité est en $\mathcal{O}(len(t))$</li>
+  <li>preuve : par invariant de boucle.</li>
 </ul>
 
-<p>Pour les preuves par invariant de boucle, le schéma de preuve est le suivant :</p>
+<blockquote class="note">
+  <p>Pour les preuves par invariant de boucle, le schéma de preuve est le suivant :</p>
 
-<ol>
-  <li>on écrit l’invariant et on vérifie qu’il est vrai avant ou après la première boucle.</li>
-  <li>on écrit l’invariant avec les variable après la boucle. On les notes avec le nom de la variable suivi d’un <code class="language-plaintext highlighter-rouge">'</code> (prim). Il faut prouver que cette égalité est vraie.</li>
-  <li>pour prouver l’invariant après la boucle, on écrit les variable après la boucle d’itération $i$ en fonction des variable juste avant la boucle d’itération $i$</li>
-  <li>on vérifie que l’on retombe bien sur l’invariant.</li>
-</ol>
+  <ol>
+    <li>on vérifie que l’invariant est vrai juste avant la première itération de la boucle</li>
+    <li>on suppose l’invariant vrai au début de l’itération $i$ de la boucle et on vérifie qu’il est toujours vérifié à la fin de l’itération $i$.</li>
+  </ol>
 
-<p>Ici notre invariant est : <em>“Après l’étape $i$ de la boucle, $m$ vaut le maximum des $i$ premiers élément du tableau.”</em></p>
+  <p>Pour simplifier l’écriture, on note avec un <code class="language-plaintext highlighter-rouge">'</code> (prim) les variables à la fin de la boucle d’itération $i$.</p>
+</blockquote>
 
-<p>Après la première itération de la boucle, comme $m$ vaut initialement le premier élément du tableau, on a que $m=t[0]$ qui est bien le maximum des 1 premier éléments du tableau.</p>
+<p>Ici notre invariant est : <em>“Au début l’itération $i + 1 &gt; 1$ de la boucle, $m$ vaut le maximum des $i$ premiers élément du tableau.”</em></p>
 
-<p>On suppose l’invariant vrai au début de la boucle $i$. A la fin de la boucle, $m’$ (la valeur de $m$ à l’issue de la boucle d’itération $i$) vaut soit $m$ (la valeur de $m$ au début de la boucle d’itération $i$) soit $x$ la $i$ ème valeur du tableau.</p>
+<p>Après la première itération de la boucle, comme $m$ vaut initialement le premier élément du tableau, on a que $m=t[0]$ qui est bien le maximum des 1 premier éléments du tableau. L’invariant est vérifié au début de l’itération $2$.</p>
 
-<p>Comme l’invariant est vrai au début de la boucle d’itération $i$, $m$ vaut le maximum du tableau sur les $i-1$ premiers éléments. Or $m’ = max(m, x)$, donc $m’$ vaut bien le maximum du tableau sur les $i$ premiers éléments.</p>
+<p>On suppose l’invariant vrai au début de l’itération $i + 1 &gt;1$. A la fin de l’itération, $m’$ (la valeur de $m$ à l’issue de la boucle d’itération $i + 1$) vaut soit $m$ (la valeur de $m$ au début de la boucle d’itération $i +1 $) soit $x’$ (la variable $x$ affectée lors de) qui vaut la $i + 1$ème valeur du tableau.</p>
 
-<h3 id="récursif">récursif</h3>
+<p>Comme l’invariant est vrai au début de la boucle d’itération $i + 1$, $m$ vaut le maximum du tableau sur les $i$ premiers éléments. Or $m’ = \max(m, x)$, donc $m’$ vaut bien le maximum du tableau sur les $i + 1$ premiers éléments.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">maximum_tableau</span><span class="p">(</span><span class="n">tab</span><span class="p">,</span> <span class="n">debut</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<h3 id="algorithme-récursif">algorithme récursif</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">maximum</span><span class="p">(</span><span class="n">tab</span><span class="p">,</span> <span class="n">debut</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">debut</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">tableau</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">tab</span><span class="p">[</span><span class="n">debut</span><span class="p">]</span>
-    <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">tab</span><span class="p">[</span><span class="n">debut</span><span class="p">],</span> <span class="n">maximum_tableau</span><span class="p">(</span><span class="n">tab</span><span class="p">,</span> <span class="n">debut</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">maximum_tableau</span><span class="p">(</span><span class="n">tab</span><span class="p">,</span> <span class="n">debut</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">tab</span><span class="p">[</span><span class="n">debut</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">x</span>
+        <span class="k">return</span> <span class="n">tab</span><span class="p">[</span><span class="n">debut</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">x</span>
 </code></pre></div></div>
 
+<blockquote>
+  <p>On a utilisé la possibilité d’avoir des <a href="https://docs.python.org/fr/3.9/tutorial/controlflow.html#default-argument-values">arguments par défaut</a> en python. Ceci nous permet d’exécuter la fonction maximum comme si elle n’avait qu’un seul paramètre.</p>
+</blockquote>
+
 <ul>
-  <li>finitude : début augment strictement et s’arrête lorsqu’il vaut <code class="language-plaintext highlighter-rouge">len(tableau) - 1</code>
+  <li>finitude : début augmente strictement et s’arrête lorsqu’il vaut <code class="language-plaintext highlighter-rouge">len(tableau) - 1</code>
 </li>
-  <li>complexité : de l’ordre $\mathcal{O}(len(t))$ récursion d’un algorithme en $\mathcal{O}(1)$ : $\mathcal{O}(len(t))$</li>
-  <li>preuve : récurrence sur la longueur d ‘un tableau. On vérifie que l’algorithme fonctionne pour une longueur de tableau de 1, puis on effectue preuve par récurrence.</li>
+  <li>complexité : de l’ordre $\mathcal{O}(len(t))$ puisque l’on effectue au maximum <code class="language-plaintext highlighter-rouge">len(tableau)</code> récursions d’un algorithme en $\mathcal{O}(1)$.</li>
+  <li>preuve : par récurrence sur la longueur d’un tableau. On vérifie que l’algorithme fonctionne pour une longueur de tableau valant 1, puis on effectue preuve par récurrence sur la longueur du tableau.</li>
 </ul>
 
 <h2 id="division-euclidienne">division euclidienne</h2>
 
+<p>Prouvons l’algorithme de la division euclidienne ci-après :</p>
+
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">euclide</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-	<span class="n">r</span> <span class="o">=</span> <span class="n">a</span>
-	<span class="n">q</span> <span class="o">=</span> <span class="mi">0</span>
-	<span class="k">while</span> <span class="n">r</span> <span class="o">&gt;=</span> <span class="n">b</span><span class="p">:</span>
-		<span class="n">r</span> <span class="o">-=</span> <span class="n">b</span>
-		<span class="n">q</span> <span class="o">+=</span> <span class="mi">1</span>
-	<span class="k">return</span> <span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">a</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">r</span> <span class="o">&gt;=</span> <span class="n">b</span><span class="p">:</span>
+        <span class="n">r</span> <span class="o">-=</span> <span class="n">b</span>
+        <span class="n">q</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
 </code></pre></div></div>
 
 <blockquote>
-  <p><strong>Remarque</strong> :</p>
-
-  <ul>
-    <li>on utilise les raccourci python pour -b et +1.</li>
-    <li>on rend bien un unique objet <a href="https://docs.python.org/fr/3/tutorial/datastructures.html#tuples-and-sequences">tuple</a> (une liste où on ne peut pas bouger les éléments).</li>
-  </ul>
+  <p>On utilise la possibilité que donne python d’écrire <code class="language-plaintext highlighter-rouge">x += y</code> (<em>resp.</em> <code class="language-plaintext highlighter-rouge">x -= y</code>) à la place de <code class="language-plaintext highlighter-rouge">x = x + y</code> (<em>resp.</em> <code class="language-plaintext highlighter-rouge">x = x + y</code>).</p>
 </blockquote>
+
+<p>Notez que le retour de la fonction est un <a href="https://docs.python.org/fr/3/tutorial/datastructures.html#tuples-and-sequences">tuple</a> à 2 éléments (c’est à dire un tableau à 2 éléments que l’on ne peut pas modifer)</p>
 
 <h3 id="finitude">finitude</h3>
 
@@ -174,21 +206,22 @@
 <code class="language-plaintext highlighter-rouge">r</code> est un entier</li>
   <li>
 <code class="language-plaintext highlighter-rouge">r</code> après une itération est <strong>strictement plus petit</strong> que le <code class="language-plaintext highlighter-rouge">r</code> avant itération</li>
-  <li>on s’arête si <code class="language-plaintext highlighter-rouge">r</code> est plus petit que <code class="language-plaintext highlighter-rouge">b</code>.</li>
+  <li>on s’arête si <code class="language-plaintext highlighter-rouge">r</code> est strictement plus petit que <code class="language-plaintext highlighter-rouge">b</code>.</li>
 </ul>
 
 <h3 id="complexité">complexité</h3>
 
-<p>De l’ordre du nombre de fois où l’on rentre dans la boucle. Comme $r$ ne fait que décroître strictement et vaut $a$ au départ : $\mathcal{O}(a)$. 
-Comme on décrémente de $b$ à chaque fois on a aussi :  $\mathcal{O}(a / b)$</p>
+<p>De l’ordre du nombre de fois où l’on rentre dans la boucle. Comme $r$ ne fait que décroître strictement et vaut $a$ au départ, on estime la complexité de l’algorithme en $\mathcal{O}(a)$.</p>
 
-<p>Retour : 1 objet liste.</p>
+<blockquote>
+  <p>Comme on décrémente de $b$ à chaque fois on a aurait pu aussi dire que la complexité est en $\mathcal{O}(\frac{a}{b})$</p>
+</blockquote>
 
 <h3 id="preuve">preuve</h3>
 
-<p>invariant : <code class="language-plaintext highlighter-rouge">a = r + q * b</code></p>
+<p>On veut montrer que l’on obtient bien une division euclidienne de $a$ par $b$. C’est à dire que $a = bq + r$ avec $r &lt; b$. Pour cela on va s’aider de l’invariant de boucle : <code class="language-plaintext highlighter-rouge">a = r + q * b</code></p>
 
-<p>En suivant les étapes de la preuve par invariant :</p>
+<p>Prouvons l’invariant :</p>
 
 <ol>
   <li>l’invariant est bien vrai avant la première boucle puisque $q=0$ et $r=a$ à ce moment là.</li>
@@ -199,40 +232,7 @@ Comme on décrémente de $b$ à chaque fois on a aussi :  $\mathcal{O}(a / b)$</
   <li>donc <code class="language-plaintext highlighter-rouge">r' + q' * b' = r-b + (q+1) * b = r + q * b = a = a'</code>. On a bien <code class="language-plaintext highlighter-rouge">a' = r' + q' * b'</code>, l’invariant est démontré.</li>
 </ol>
 
-<p>L’invariant étant juste tout le temps, il l’est en particulier à l’issue de la dernière boucle. A ce moment là on a <code class="language-plaintext highlighter-rouge">a = r + q * b</code> avec <code class="language-plaintext highlighter-rouge">r &lt; b</code> ce qui est bien la définition de la division euclidienne.</p>
-
-<h2 id="ackermann">Ackermann</h2>
-
-<p>Souvent, savoir si un algorithme va finir est trivial. Mais qu’en est-il de la <a href="https://fr.wikipedia.org/wiki/Fonction_d%27Ackermann">fonction d’Ackermann</a>, très importante en informatique théorique ?</p>
-
-<p>En gros, c’est une fonction qui ne peut être décrite que par un algorithme. Il n’existe pas de fonction qui la calcule. Elle se définit de la manière suivante, pour tous entiers m et n positifs :</p>
-
-<ul>
-  <li>A(m, n) = n + 1 si m = 0</li>
-  <li>A(m - 1, 1) si n = 0</li>
-  <li>A(m - 1, A(m, n - 1)) sinon.</li>
-</ul>
-
-<p>Cette fonction s’arrête bien un jour.</p>
-
-<p>Pour chaque appel récursif de la fonction d’ackerman, soit m, soit $n$ est strictement plus petit dans la fonction appelée que dans la fonction appelante. On arrivera donc toujours à $m = 0$ qui stoppera la récursion ou $n = 0$ qui fera baisser la valeur de $m$.</p>
-
-<p>Pour calculer Ack(2, 3) par exemple, on a les récurrences suivantes :</p>
-
-<ul>
-  <li>Ack(2, 3) = Ack(1, Ack(2, 2))</li>
-  <li>Ack(2, 2) = Ack(1, Ack(2, 1))</li>
-  <li>Ack(2, 1) = Ack(1, Ack(2, 0))</li>
-  <li>Ack(2, 0) = Ack(1, 1)</li>
-  <li>Ack(1, 1) = Ack(0, Ack(1, 0))</li>
-  <li>Ack(1, 0) = Ack(0, 1) = 2</li>
-  <li>puis on remonte d’un cran et les récursions recommencent…</li>
-</ul>
-
-<p>Au final on trouve Ack(2, 3) = 9. La fonction croît très très vite. Par exemple Ack(5, 0) = Ack (4, 1) = 65533 et Ack(4, 2) = $2^{65536} - 3$.</p>
-
-<p>Complexité : nombre d’opération au moins supérieure à son résultat puisque que l’on ne fait qu’ajouter 1 à n comme calcul et les valeurs de n sont modifiées de +1 ou -1.</p>
-
+<p>L’invariant étant juste tout le temps, il l’est en particulier à l’issue de la dernière boucle. A ce moment là on a <code class="language-plaintext highlighter-rouge">a = r + qb</code> avec <code class="language-plaintext highlighter-rouge">r &lt; b</code> ce qui est bien ce qu’il fallait démontrer.</p>
 
   </div>
 

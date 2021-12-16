@@ -113,6 +113,7 @@
   <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.html">pseudo-code</a></li>
   <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/complexite-max-min.html">complexité max/min</a></li>
   <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/preuve-algorithme.html">preuve d’algorithme</a></li>
+  <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/etude_exponentiation.html">étude de cas : l’exponentiation</a></li>
 </ol>
 
 <h3 id="théorie">théorie</h3>
@@ -135,7 +136,7 @@
 
 <p>Outils, concepts et méthodes utiles pour comprendre le cours</p>
 
-<ul>
+<ol>
   <li><a href="/cours_informatique/tutos/systeme/fichiers/2021/08/24/fichiers-navigation.html">naviguer dans un système de fichiers</a></li>
   <li>
 <a href="/cours_informatique/tutos/editeur/vsc/installation/configuration/2021/09/03/vsc-installation-et-prise-en-main.html">installation vscode</a>, <a href="/cours_informatique/tutos/python/installation/terminal/2021/08/20/installation-de-python.html">installation python</a> et <a href="/cours_informatique/tutos/editeur/vsc/installation/configuration/python/2021/09/14/vsc-python.html">vscode &amp; python</a>
@@ -143,7 +144,7 @@
   <li>
 <a href="/cours_informatique/tutos/systeme/cli/terminal/2021/08/24/terminal.html">terminal</a> et <a href="/cours_informatique/tutos/systeme/cli/terminal/2021/12/02/terminal-utilisation.html">utilisation du terminal</a>
 </li>
-</ul>
+</ol>
 
 <h2 id="structure">structure</h2>
 
@@ -365,7 +366,7 @@ graph.links.push({
 graph.nodes.push({
   id: 'complexité max/min',
   link: "/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/complexite-max-min.html",
-  group: groups.code
+  group: groups.algorithmie
 })
 graph.links.push({
   source: 'pseudo-code',
@@ -375,11 +376,26 @@ graph.links.push({
 graph.nodes.push({
   id: "preuve d'algorigthme",
   link: "/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/preuve-algorithme.html",
-  group: groups.code
+  group: groups.algorithmie
 })
 graph.links.push({
   source: 'pseudo-code',
   target: "preuve d'algorigthme"
+})
+
+graph.nodes.push({
+  id: "étude de cas : l'exponentiation",
+  link: "/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/etude_exponentiation.html",
+  group: groups.algorithmie
+})
+graph.links.push({
+  source: "preuve d'algorigthme",
+  target: "étude de cas : l'exponentiation"
+})
+
+graph.links.push({
+  source: 'complexité max/min',
+  target: "étude de cas : l'exponentiation"
 })
 
 </script>

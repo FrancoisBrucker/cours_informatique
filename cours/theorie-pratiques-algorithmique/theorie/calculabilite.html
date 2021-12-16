@@ -24,6 +24,7 @@
 
   <link rel="stylesheet" href="/cours_informatique/assets/custom.css">
 <link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique">
+<script>MathJax={"tex":{"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["\\[","\\]"]]},"svg":{"fontCache":"global"},"svg":{"fontCache":"global"}}</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
 <body>
@@ -106,6 +107,38 @@
 <a href="https://en.wikipedia.org/wiki/List_of_undecidable_problems">https://en.wikipedia.org/wiki/List_of_undecidable_problems</a></p>
 
 <p>démonstation = pseudo-code</p>
+
+<h2 id="ackermann">Ackermann</h2>
+
+<p>Souvent, savoir si un algorithme va finir est trivial. Mais qu’en est-il de la <a href="https://fr.wikipedia.org/wiki/Fonction_d%27Ackermann">fonction d’Ackermann</a>, très importante en informatique théorique ?</p>
+
+<p>En gros, c’est une fonction qui ne peut être décrite que par un algorithme. Il n’existe pas de fonction qui la calcule. Elle se définit de la manière suivante, pour tous entiers m et n positifs :</p>
+
+<ul>
+  <li>A(m, n) = n + 1 si m = 0</li>
+  <li>A(m - 1, 1) si n = 0</li>
+  <li>A(m - 1, A(m, n - 1)) sinon.</li>
+</ul>
+
+<p>Cette fonction s’arrête bien un jour.</p>
+
+<p>Pour chaque appel récursif de la fonction d’ackerman, soit m, soit $n$ est strictement plus petit dans la fonction appelée que dans la fonction appelante. On arrivera donc toujours à $m = 0$ qui stoppera la récursion ou $n = 0$ qui fera baisser la valeur de $m$.</p>
+
+<p>Pour calculer Ack(2, 3) par exemple, on a les récurrences suivantes :</p>
+
+<ul>
+  <li>Ack(2, 3) = Ack(1, Ack(2, 2))</li>
+  <li>Ack(2, 2) = Ack(1, Ack(2, 1))</li>
+  <li>Ack(2, 1) = Ack(1, Ack(2, 0))</li>
+  <li>Ack(2, 0) = Ack(1, 1)</li>
+  <li>Ack(1, 1) = Ack(0, Ack(1, 0))</li>
+  <li>Ack(1, 0) = Ack(0, 1) = 2</li>
+  <li>puis on remonte d’un cran et les récursions recommencent…</li>
+</ul>
+
+<p>Au final on trouve Ack(2, 3) = 9. La fonction croît très très vite. Par exemple Ack(5, 0) = Ack (4, 1) = 65533 et Ack(4, 2) = $2^{65536} - 3$.</p>
+
+<p>Complexité : nombre d’opération au moins supérieure à son résultat puisque que l’on ne fait qu’ajouter 1 à n comme calcul et les valeurs de n sont modifiées de +1 ou -1.</p>
 
 <h2 id="refs">refs</h2>
 
