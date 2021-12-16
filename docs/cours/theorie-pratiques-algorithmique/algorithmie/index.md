@@ -10,7 +10,7 @@ category: cours
 Création, preuve et complexité des algorithmes.
 
 * [algorithmes ?]({% link cours/theorie-pratiques-algorithmique/algorithmie/algorithmes.md %})
-
-* méthodes de création d'algorithmes
-* preuves d'algorithmes
-* calcul de complexités
+* [pseudo-code]({% link cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.md %})
+* [complexité max/min]({% link cours/theorie-pratiques-algorithmique/algorithmie/complexite-max-min.md %})
+* [preuve d'algorithme]({% link cours/theorie-pratiques-algorithmique/algorithmie/preuve-algorithme.md %})
+* [étude de cas : l'exponentiation]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude_exponentiation.md %})

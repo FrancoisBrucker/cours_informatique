@@ -47,6 +47,7 @@ Ce cours est composée de trois grandes parties qui s'enchevêtrent.
 2. [pseudo-code]({% link cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.md %})
 3. [complexité max/min]({% link cours/theorie-pratiques-algorithmique/algorithmie/complexite-max-min.md %})
 4. [preuve d'algorithme]({% link cours/theorie-pratiques-algorithmique/algorithmie/preuve-algorithme.md %})
+5. [étude de cas : l'exponentiation]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude_exponentiation.md %})
 
 ### théorie
 
@@ -64,9 +65,9 @@ Ce cours est composée de trois grandes parties qui s'enchevêtrent.
 
 Outils, concepts et méthodes utiles pour comprendre le cours
 
-* [naviguer dans un système de fichiers]({% post_url tutos/systeme/2021-08-24-fichiers-navigation %})
-* [installation vscode]({% post_url tutos/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main %}), [installation python]({% post_url tutos/python/2021-08-20-installation-de-python %}) et [vscode & python]({% post_url tutos/editeur/vsc/2021-09-14-vsc-python %})
-* [terminal]({% post_url tutos/systeme/2021-08-24-terminal %}) et [utilisation du terminal]({% post_url tutos/systeme/2021-12-02-terminal-utilisation %})
+1. [naviguer dans un système de fichiers]({% post_url tutos/systeme/2021-08-24-fichiers-navigation %})
+2. [installation vscode]({% post_url tutos/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main %}), [installation python]({% post_url tutos/python/2021-08-20-installation-de-python %}) et [vscode & python]({% post_url tutos/editeur/vsc/2021-09-14-vsc-python %})
+3. [terminal]({% post_url tutos/systeme/2021-08-24-terminal %}) et [utilisation du terminal]({% post_url tutos/systeme/2021-12-02-terminal-utilisation %})
 
 ## structure
 
@@ -288,7 +289,7 @@ graph.links.push({
 graph.nodes.push({
   id: 'complexité max/min',
   link: "{% link cours/theorie-pratiques-algorithmique/algorithmie/complexite-max-min.md %}",
-  group: groups.code
+  group: groups.algorithmie
 })
 graph.links.push({
   source: 'pseudo-code',
@@ -298,11 +299,26 @@ graph.links.push({
 graph.nodes.push({
   id: "preuve d'algorigthme",
   link: "{% link cours/theorie-pratiques-algorithmique/algorithmie/preuve-algorithme.md %}",
-  group: groups.code
+  group: groups.algorithmie
 })
 graph.links.push({
   source: 'pseudo-code',
   target: "preuve d'algorigthme"
+})
+
+graph.nodes.push({
+  id: "étude de cas : l'exponentiation",
+  link: "{% link cours/theorie-pratiques-algorithmique/algorithmie/etude_exponentiation.md %}",
+  group: groups.algorithmie
+})
+graph.links.push({
+  source: "preuve d'algorigthme",
+  target: "étude de cas : l'exponentiation"
+})
+
+graph.links.push({
+  source: 'complexité max/min',
+  target: "étude de cas : l'exponentiation"
 })
 
 </script>

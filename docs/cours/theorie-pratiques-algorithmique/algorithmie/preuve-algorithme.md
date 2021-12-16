@@ -6,41 +6,55 @@ tags: informatique cours
 author: "François Brucker"
 ---
 
-# Introduction
+> [Théorie et pratiques algorithmique]({% link cours/theorie-pratiques-algorithmique/index.md %}) / [algorithmie]({% link cours/theorie-pratiques-algorithmique/algorithmie/index.md %}) / [preuve d'algorithme]({% link cours/theorie-pratiques-algorithmique/algorithmie/preuve-algorithme.md %})
+>
+> prérequis :
+>
+>* [algorithmie/pseudo-code]({% link cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.md %})
+{: .chemin}
 
-Pour prouver qu'un algorithme fonctionne il faut :
+Ua algorithme **toujours** un but, quelque chose pour quoi il est fait. Dans notre cas, un algorithme calculera la solution d'un problème.
 
-* prouver qu'il s'arrête
-* avoir une idée de sa complexité (est-ce que je vais le voir s'arrêter de mon vivant ?)
-* prouver qu'il fait bien ce que l'on attend de lui
+Pour chaque algorithme que vous créerez ou que l'on demandera d'étudier il faudra :
 
-Prouver qu'un algorithme s'arrête fait partie des problèmes théoriques difficiles en informatique. Rassurez-vous, pour vos algorithmes, ce sera facile de le savoir ou de le voir. 
+1. caractériser le problème que l'algorithme es sensé résoudre
+2. démontrer que l'algorithme fonctionne, c'est à dire qu'il le résout le problème en temps fini.
 
-La preuve de l'algorithme est parfois plus délicate : le problème étant souvent (toujours ?) concentré dans les boucles ou les récursions. On cherche à trouver des propriétés qui sont conservées avant et après une itération : 
+Prouver qu'un algorithme s'arrête fait partie des problèmes théoriques difficiles en informatique. En algorithmie, les algorithmes résolvent des problèmes et donc ils sont sensé s'arrêter et il sera (normalement) de le voir. En revanche, la preuve de l'algorithme est parfois plus délicate. Le problème étant souvent (toujours ?) concentré dans les boucles ou les récursions de l'algorithme, on cherchera à trouver des propriétés qui sont conservées avant et après une itération ou une récursion :
 
-* soit une équation de récurrence plus une condition d'arrêt de récurrence.
-* soit [un invariant de boucle](https://fr.wikipedia.org/wiki/Invariant_de_boucle). Ces invariants vont alors être conservés jusqu'à la fin de l'algorithme et nous permettre de prouver son résultat.
+> Pour prouver un algorithme on cherchera à établir :
+>
+> * une équation de récurrence plus une condition d'arrêt pour prouver un algorithme récursif.
+> * [un invariant de boucle](https://fr.wikipedia.org/wiki/Invariant_de_boucle) pour des algorithme itératifs. Ces invariants vont alors être conservés jusqu'à la fin de l'algorithme et nous permettre de prouver son résultat.
+>
+{: .code}
 
+Notez que bien souvent prouver un algorithme et le créer est la même chose. Comprendre comment on peut résoudre un problème donné nous donnera l'algorithme et récproquement.
+
+A part la recommendation ci-dessus, il n'existe pas vraiment de règles à appliquer pour prouver un algorithme. Seule l'expérience et l'étude des algorithmes classique vous permettra de trouver facilement comment prouver un algorithme.
+
+> dans la suite, les algorithmes seront tous donnés en python
 
 ## factorielle récursive
 
 ```python
 def factorielle(n):
-	if n <= 1:
-		return 1
-	return n * factorielle(n-1)
+    if n <= 1:
+        return 1
+    return n * factorielle(n-1)
 ```
 
-* finitude : $n$ doit être un réel. Comme $n$ décroît strictement à chaque appelle récursif et on stoppe si $n \leq 1$.
-* complexité dépend de $n$, le nombre pas sa taille.
-* preuve : 
-    * entrée : des entiers positifs
-    * fonction de récurrence. En $n=0$ et $n=1$ ça marche. Si ça marche en n-1, ça marche en n car $n! = n * (n-1)!$
+* finitude : Si $n$ est un réel, l'algorithme va s'arrêter : $n$ décroît strictement à chaque appelle récursif et on stoppe si $n \leq 1$.
+* complexité : dépend de $n$, le nombre pas sa taille.
+* preuve : Pra récurrence sur $n$, avec $n$ entier positif.
+  * entrée : des entiers positifs
+  * fonction de récurrence. Si $n=0$ ça marche. Si ça marche pour l'entrée n-1, ça marche pour $n$ car la fonction rend $n \cdot factorielle(n-1)$ qui vaut $n \cdot (n-1)!$ par hypothèse de récurence.
 
+## maximum d'un tableau
 
-## max d'un tableau
+On va voir 2 algorithmes pour caluler la valeure maximum d'un tableau de réels.
 
-### itératif
+### algorithme itératif
 
 ```python
 def maximum(t):
@@ -52,116 +66,85 @@ def maximum(t):
 ```
 
 * finitude : clair car une unique boucle for.
-* complexité : une boucle en $\mathcal{O}(len(t))$ et des choses en $\mathcal{O}(1)$ : $\mathcal{O}(len(t))$
-* preuve : par invariant.
+* complexité : une boucle en $\mathcal{O}(len(t))$ et des choses en $\mathcal{O}(1)$. Sa complexité est en $\mathcal{O}(len(t))$
+* preuve : par invariant de boucle.
 
-Pour les preuves par invariant de boucle, le schéma de preuve est le suivant : 
+> Pour les preuves par invariant de boucle, le schéma de preuve est le suivant :
+>
+> 1. on vérifie que l'invariant est vrai juste avant la première itération de la boucle
+> 2. on suppose l'invariant vrai au début de l'itération $i$ de la boucle et on vérifie qu'il est toujours vérifié à la fin de l'itération $i$.
+>
+> Pour simplifier l'écriture, on note avec un `'` (prim) les variables à la fin de la boucle d'itération $i$.
+{: .note}
 
-1. on écrit l'invariant et on vérifie qu'il est vrai avant ou après la première boucle.
-2. on écrit l'invariant avec les variable après la boucle. On les notes avec le nom de la variable suivi d'un `'` (prim). Il faut prouver que cette égalité est vraie.
-3. pour prouver l'invariant après la boucle, on écrit les variable après la boucle d'itération $i$ en fonction des variable juste avant la boucle d'itération $i$ 
-4. on vérifie que l'on retombe bien sur l'invariant.
+Ici notre invariant est : *"Au début l'itération $i + 1 > 1$ de la boucle, $m$ vaut le maximum des $i$ premiers élément du tableau."*
 
-Ici notre invariant est : *"Après l'étape $i$ de la boucle, $m$ vaut le maximum des $i$ premiers élément du tableau."*
+Après la première itération de la boucle, comme $m$ vaut initialement le premier élément du tableau, on a que $m=t[0]$ qui est bien le maximum des 1 premier éléments du tableau. L'invariant est vérifié au début de l'itération $2$.
 
-Après la première itération de la boucle, comme $m$ vaut initialement le premier élément du tableau, on a que $m=t[0]$ qui est bien le maximum des 1 premier éléments du tableau. 
+On suppose l'invariant vrai au début de l'itération $i + 1 >1$. A la fin de l'itération, $m'$ (la valeur de $m$ à l'issue de la boucle d'itération $i + 1$) vaut soit $m$ (la valeur de $m$ au début de la boucle d'itération $i +1 $) soit $x'$ (la variable $x$ affectée lors de) qui vaut la $i + 1$ème valeur du tableau.
 
-On suppose l'invariant vrai au début de la boucle $i$. A la fin de la boucle, $m'$ (la valeur de $m$ à l'issue de la boucle d'itération $i$) vaut soit $m$ (la valeur de $m$ au début de la boucle d'itération $i$) soit $x$ la $i$ ème valeur du tableau.
+Comme l'invariant est vrai au début de la boucle d'itération $i + 1$, $m$ vaut le maximum du tableau sur les $i$ premiers éléments. Or $m' = \max(m, x)$, donc $m'$ vaut bien le maximum du tableau sur les $i + 1$ premiers éléments.
 
-Comme l'invariant est vrai au début de la boucle d'itération $i$, $m$ vaut le maximum du tableau sur les $i-1$ premiers éléments. Or $m' = max(m, x)$, donc $m'$ vaut bien le maximum du tableau sur les $i$ premiers éléments.
-
-### récursif
+### algorithme récursif
 
 ```python
-def maximum_tableau(tab, debut=0):
+def maximum(tab, debut=0):
     if debut == len(tableau) - 1:
         return tab[debut]
-    return max(tab[debut], maximum_tableau(tab, debut + 1))
+    x = maximum_tableau(tab, debut + 1)
+    if tab[debut] < x
+        return tab[debut]
+    else:
+        return x
 ```
 
-* finitude : début augment strictement et s'arrête lorsqu'il vaut `len(tableau) - 1`
-* complexité : de l'ordre $\mathcal{O}(len(t))$ récursion d'un algorithme en $\mathcal{O}(1)$ : $\mathcal{O}(len(t))$
-* preuve : récurrence sur la longueur d 'un tableau. On vérifie que l'algorithme fonctionne pour une longueur de tableau de 1, puis on effectue preuve par récurrence.
+> On a utilisé la possibilité d'avoir des [arguments par défaut](https://docs.python.org/fr/3.9/tutorial/controlflow.html#default-argument-values) en python. Ceci nous permet d'exécuter la fonction maximum comme si elle n'avait qu'un seul paramètre.
 
+* finitude : début augmente strictement et s'arrête lorsqu'il vaut `len(tableau) - 1`
+* complexité : de l'ordre $\mathcal{O}(len(t))$ puisque l'on effectue au maximum `len(tableau)` récursions d'un algorithme en $\mathcal{O}(1)$.
+* preuve : par récurrence sur la longueur d'un tableau. On vérifie que l'algorithme fonctionne pour une longueur de tableau valant 1, puis on effectue preuve par récurrence sur la longueur du tableau.
 
 ## division euclidienne
 
+Prouvons l'algorithme de la division euclidienne ci-après :
 
 ```python
 def euclide(a, b):
-	r = a
-	q = 0
-	while r >= b:
-		r -= b
-		q += 1
-	return (q, r)
+    r = a
+    q = 0
+    while r >= b:
+        r -= b
+        q += 1
+    return (q, r)
 ```
 
+> On utilise la possibilité que donne python d'écrire `x += y` (*resp.* `x -= y`) à la place de `x = x + y` (*resp.* `x = x + y`).
 
->**Remarque** : 
->
->* on utilise les raccourci python pour -b et +1. 
->* on rend bien un unique objet [tuple](https://docs.python.org/fr/3/tutorial/datastructures.html#tuples-and-sequences ) (une liste où on ne peut pas bouger les éléments).
+Notez que le retour de la fonction est un [tuple](https://docs.python.org/fr/3/tutorial/datastructures.html#tuples-and-sequences) à 2 éléments (c'est à dire un tableau à 2 éléments que l'on ne peut pas modifer)
 
 ### finitude
 
-le programme s'arrête ? : Oui si a et b sont des entiers positifs. Car 
+le programme s'arrête ? : Oui si a et b sont des entiers positifs. Car
 
-* `r` est un entier 
-* `r` après une itération est **strictement plus petit** que le `r` avant itération 
-* on s'arête si `r` est plus petit que `b`. 
+* `r` est un entier
+* `r` après une itération est **strictement plus petit** que le `r` avant itération
+* on s'arête si `r` est strictement plus petit que `b`.
 
 ### complexité
 
-De l'ordre du nombre de fois où l'on rentre dans la boucle. Comme $r$ ne fait que décroître strictement et vaut $a$ au départ : $\mathcal{O}(a)$. 
-Comme on décrémente de $b$ à chaque fois on a aussi :  $\mathcal{O}(a / b)$
+De l'ordre du nombre de fois où l'on rentre dans la boucle. Comme $r$ ne fait que décroître strictement et vaut $a$ au départ, on estime la complexité de l'algorithme en $\mathcal{O}(a)$.
 
-Retour : 1 objet liste. 
+> Comme on décrémente de $b$ à chaque fois on a aurait pu aussi dire que la complexité est en $\mathcal{O}(\frac{a}{b})$
 
 ### preuve
 
-invariant : `a = r + q * b`
+On veut montrer que l'on obtient bien une division euclidienne de $a$ par $b$. C'est à dire que $a = bq + r$ avec $r < b$. Pour cela on va s'aider de l'invariant de boucle : `a = r + q * b`
 
-En suivant les étapes de la preuve par invariant : 
+Prouvons l'invariant :
 
 1. l'invariant est bien vrai avant la première boucle puisque $q=0$ et $r=a$ à ce moment là.
 2. on doit prouver que `a' = r' + q' * b'`
 3. si l'on est passé dans la boucle on a `a'=a`, `r' = r - b`, `b' = b` et `q' = q + 1`
 4. donc `r' + q' * b' = r-b + (q+1) * b = r + q * b = a = a'`. On a bien `a' = r' + q' * b'`, l'invariant est démontré.
 
-L'invariant étant juste tout le temps, il l'est en particulier à l'issue de la dernière boucle. A ce moment là on a `a = r + q * b` avec `r < b` ce qui est bien la définition de la division euclidienne.
-
-
-## Ackermann
-
-Souvent, savoir si un algorithme va finir est trivial. Mais qu'en est-il de la [fonction d'Ackermann](https://fr.wikipedia.org/wiki/Fonction_d%27Ackermann), très importante en informatique théorique ?
-
-En gros, c'est une fonction qui ne peut être décrite que par un algorithme. Il n'existe pas de fonction qui la calcule. Elle se définit de la manière suivante, pour tous entiers m et n positifs :
-
-* A(m, n) = n + 1 si m = 0 
-* A(m - 1, 1) si n = 0
-* A(m - 1, A(m, n - 1)) sinon.
-
-Cette fonction s'arrête bien un jour.
-
-
-
-Pour chaque appel récursif de la fonction d'ackerman, soit m, soit $n$ est strictement plus petit dans la fonction appelée que dans la fonction appelante. On arrivera donc toujours à $m = 0$ qui stoppera la récursion ou $n = 0$ qui fera baisser la valeur de $m$.
- 
-
-Pour calculer Ack(2, 3) par exemple, on a les récurrences suivantes :
-
-* Ack(2, 3) = Ack(1, Ack(2, 2))
-* Ack(2, 2) = Ack(1, Ack(2, 1))
-* Ack(2, 1) = Ack(1, Ack(2, 0))
-* Ack(2, 0) = Ack(1, 1)
-* Ack(1, 1) = Ack(0, Ack(1, 0))
-* Ack(1, 0) = Ack(0, 1) = 2
-* puis on remonte d'un cran et les récursions recommencent...
-
-
-Au final on trouve Ack(2, 3) = 9. La fonction croît très très vite. Par exemple Ack(5, 0) = Ack (4, 1) = 65533 et Ack(4, 2) = $2^{65536} - 3$.
-
-Complexité : nombre d'opération au moins supérieure à son résultat puisque que l'on ne fait qu'ajouter 1 à n comme calcul et les valeurs de n sont modifiées de +1 ou -1.
-
-
+L'invariant étant juste tout le temps, il l'est en particulier à l'issue de la dernière boucle. A ce moment là on a `a = r + qb` avec `r < b` ce qui est bien ce qu'il fallait démontrer.

@@ -372,7 +372,7 @@ $$
 
 On a donc que $n!$ est de l'ordre de $\mathcal{O}(n^{n+1/2})$, qui est vachement plus grand que $\mathcal{O}(2^{n})$ qui est déjà gigantesque.
 
->Si vous pensez que votre algorithme tout bête est $\mathcal{O}(n!)$. Réfléchissez-y à deux fois. C'est presque sûrement une erreur...
+>Si vous pensez que votre algorithme tout bête est en $\mathcal{O}(n!)$. Réfléchissez-y à deux fois. C'est presque sûrement une erreur...
 {: .note}
 
 ## règles de calcul de complexité
@@ -441,17 +441,17 @@ de i=1 à n-1 faire:
 Rendre total
 ```
 
-La boucle en $i$ est exécuté $n-1$ fois ($i$ va de 1 à $n-1$), donc $\mathcal{O}(n)$ fois. La boucle en $j$ va également être exécutée $\mathcal{O}(n)$ fois indépendamment de la boucle en $i$. Enfin la complexité du bloc d'instruction est $\mathcal{O}(1)$, la complexité totale des deux boucles imbriquées vaut : 
+La boucle en $i$ est exécuté $n-1$ fois ($i$ va de 1 à $n-1$), donc $\mathcal{O}(n)$ fois. La boucle en $j$ va également être exécutée $\mathcal{O}(n)$ fois indépendamment de la boucle en $i$. Enfin la complexité du bloc d'instruction est $\mathcal{O}(1)$, la complexité totale des deux boucles imbriquées vaut :
 
 $${
-\underbrace{\mathcal{O}(n)}_{\mbox{boucle en i  }} \cdot \underbrace{\mathcal{O}(n)}_{\mbox{boucle en j  }} \cdot \underbrace{\mathcal{O}(1)}_{\mbox{bloc d'instruction  }}
+\underbrace{\mathcal{O}(n)}_{\mbox{boucle en i}} \cdot \underbrace{\mathcal{O}(n)}_{\mbox{boucle en j}} \cdot \underbrace{\mathcal{O}(1)}_{\mbox{bloc d'instructions}}
 } = \mathcal{O}(n^2)$$
 
 > Ne comptez pas trop précisément le nombre de fois où l'on rentre dans une boucle $n-3$ exécution de la boucle pouvant être avantageusement remplacé par $\mathcal{O}(n)$
 
 ### boucles dépendantes mais monotones
 
-Il arrive souvent que les boucles imbriquées d'un algorithme soient dépendantes les unes des autres. Dans le cas général, on ne peut pas factoriser le calcul de la complexité. Il faut alors dérouler tout l'algorithme en additionnant les complexités de chaque ligne comme s'il n'y avait pas de boucles.
+Il arrive souvent que les boucles imbriquées d'un algorithme soient dépendantes les unes des autres. Dans le cas général on ne peut pas factoriser le calcul de la complexité et il faut alors dérouler tout l'algorithme en additionnant les complexités de chaque ligne comme s'il n'y avait pas de boucles.
 
 Il existe cependant un cas pratique (et qui arrive assez souvent) où l'on peut factoriser :
 
@@ -460,7 +460,14 @@ Il existe cependant un cas pratique (et qui arrive assez souvent) où l'on peut 
 
 On va vérifier cela avec un exemple :
 
-```text
+<style>
+    table, td, tr, th, pre {
+        padding:0;
+        margin:0;
+        border:none
+    }
+</style>
+{% highlight text linenos %}
 
 total=0
 de i=1 à n-1 faire :
@@ -468,11 +475,11 @@ de i=1 à n-1 faire :
         total=total+1
 Rendre total
 
-```
+{% endhighlight %}
 
-Le nombre de fois où la boucle en $j$ est exécuté est un nombre variable de fois qui dépend de la valeur de $i$. Comme $i$ va croitre, le nombre de fois où cette boucle va s'exécuter va décroitre. Si l'on applique la règle  on peut dire qu'elle va s'exécuter de l'ordre de $\mathcal{O}(n)$ fois comme dans l'exemple de la partie précédente. La complexité de l'algorithme est donc de $\mathcal{O}(n^2)$.
+Le nombre de fois où la boucle en $j$ est exécutée est un nombre variable de fois qui dépend de la valeur de $i$. Comme $i$ va croitre, le nombre de fois où cette boucle va s'exécuter va décroitre. Si l'on applique la règle  on peut dire qu'elle va s'exécuter de l'ordre de $\mathcal{O}(n)$ fois comme dans l'exemple de la partie précédente. La complexité de l'algorithme est donc de $\mathcal{O}(n^2)$.
 
-Refaisons le calcul en décomposant toutes les instructions, comme on le ferait dans le cas général pour voir que notre règle est valide (et donnera aussi une idée de la preuve de cette règle) :
+Refaisons le calcul en décomposant toutes les instructions, comme on le ferait dans le cas général, pour voir que notre règle est valide (et donnera aussi une idée de la preuve de cette règle) :
 
 * ligne 1 : $\mathcal{O}(1)$
 * itération pour $i=1$:
@@ -501,53 +508,122 @@ Notre complexité totale est donc :
 $$
 \begin{aligned}
     \mathcal{O}(1) + \\
-    (\mathcal{O}(1) + (n-1) * (\mathcal{O}(1) + \mathcal{O}(1))) + \\
-    (\mathcal{O}(1) + (n-2) * (\mathcal{O}(1) + \mathcal{O}(1))) + \\
+    (\mathcal{O}(1) + (n-1) \cdot (\mathcal{O}(1) + \mathcal{O}(1))) + \\
+    (\mathcal{O}(1) + (n-2) \cdot (\mathcal{O}(1) + \mathcal{O}(1))) + \\
     \dots\\
- + (\mathcal{O}(1) + (1) * (\mathcal{O}(1) + \mathcal{O}(1))) \\
+ + (\mathcal{O}(1) + (1) \cdot (\mathcal{O}(1) + \mathcal{O}(1))) \\
  + \mathcal{O}(1)
 \end{aligned}
 $$
 
-comme $\mathcal{O}(1) + \mathcal{O}(1) = \mathcal{O}(1)$, on a : 
+comme $\mathcal{O}(1) + \mathcal{O}(1) = \mathcal{O}(1)$, on a :
 
-$$\mathcal{O}(1) + (\mathcal{O}(1) + (n-1) * (\mathcal{O}(1))) + 
-(\mathcal{O}(1) + (n-2) * (\mathcal{O}(1))) + \dots
- + (\mathcal{O}(1) + (1) * (\mathcal{O}(1))) + \mathcal{O}(1)$$
+$$
+\begin{aligned}
+    \mathcal{O}(1) + \\
+    (\mathcal{O}(1) + (n-1) \cdot \mathcal{O}(1)) + \\
+    (\mathcal{O}(1) + (n-2) \cdot \mathcal{O}(1)) + \\
+    \dots\\
+ + (\mathcal{O}(1) + 1 \cdot \mathcal{O}(1)) \\
+ + \mathcal{O}(1)
+\end{aligned}
+$$
 
-$$\mathcal{O}(1) + ((n) * (\mathcal{O}(1))) + 
-((n-1) * (\mathcal{O}(1))) + \dots
- + ((2) * (\mathcal{O}(1))) + \mathcal{O}(1)$$
+Ce qui donne :
 
-et donc notre complexité vaut : 
-$$\mathcal{O}(1) + \sum_{1\leq i \leq n} i * \mathcal{O}(1)$$
+$$
+\begin{aligned}
+    \mathcal{O}(1) + \\
+    n \cdot \mathcal{O}(1) + \\
+    (n-1) \cdot \mathcal{O}(1) + \\
+    \dots\\
+ + \mathcal{O}(1)
+\end{aligned}
+$$
 
-comme la somme des n premiers entiers vaut $(n+1)(n)/2$ notre complexité devient : 
-$$\mathcal{O}(1) + (n+1)(n)/2 * \mathcal{O}(1)$$
+et donc notre complexité vaut :
+$$\mathcal{O}(1) + \sum_{1\leq i \leq n} i \cdot \mathcal{O}(1)$$
 
-Ce qui est de l'ordre de : 
+Comme la somme des n premiers entiers vaut $\frac{(n+1)(n)}{2}$ notre complexité devient :
 
-$$\mathcal{O}((n+1)(n)/2) = \mathcal{O}((1/2) * (n^2 +n)) = \mathcal{O}((n^2 +n)) = \mathcal{O}(n^2)$$
+$$\mathcal{O}(1) + \frac{(n+1)(n)}{2} \mathcal{O}(1)$$
+
+Ce qui est de l'ordre de : $\mathcal{O}(\frac{(n+1)(n)}{2})$. Or :
+
+$$\mathcal{O}(\frac{(n+1)(n)}{2}) = \mathcal{O}(\frac{n^n + n}{2}) = \mathcal{O}(n^2 +n) = \mathcal{O}(n^2)$$
 
 On retrouve bien le résultat attendu.
 
 ### complexité d'algorithmes récursifs
 
-```python
-def maximum(t, n):
-    si n == 0
-        return t[0]
-    sinon:
-        return max(t[n], maximum(t, n-1))
-```
+Un algorithme récursif est un algorithme qui s'appelle lui-même jusqu'à ce qu'on arrive à une condition d'arrêt qui stope la récursion. On en calcul la complexité en posant une équation qu'il faut résoudre :
 
-On vérifie bien que : 
+> Pour calculer la complexité d'un algorithme récursif en fonction de la taille $n$ de l'entrée, on pose que $C(n)$ est la complexité et l'on utilise cette fonction pour estimer la complexité des appels récursifs. Une fois les complexités des éléments d'arrêts estimés, trouver $C(n)$ revient à résoudre une équation de récurrence.
+{: .note}
+
+Pour ilustrer ce calcul, prenons l'exemple suivant :
+
+<style>
+    table, td, tr, th, pre {
+        padding:0;
+        margin:0;
+        border:none
+    }
+</style>
+{% highlight text linenos %}
+
+fonction maximum(t, n):
+    si n == 1
+        rendre t[0]
+    sinon:
+        x = maximum(t, n-1)
+        si x > t[n-1]:
+            rendre x
+        sinon:
+            rendre t[n-1]
+
+{% endhighlight %}
+
+On exécute cette fonction avec comme paramètres initiaux un tableau nommé `t` de taille `n`. On vérifie qu'avec ces paramètres initaux :
 
 1. l'algorithme converge bien
-2. il rend bien le maximum d'un tableau
+2. il rend bien le maximum de `t`
 
-La complexité est définie par l'équation de récurrence $C(n) = \mathcal{O}(1) + C(n-1)$ et $C(0) =  \mathcal{O}(1)$
+La taille des données est de l'ordre de la taille du tableau, c'est à dire le paramètre $n$. On pose alors que la complexité de notre algorithme pour un tableau de taille $n$ est : $C(n)$. De là :
 
-En bornant le temps constant par $K$, on a l'équation de récurrence suivante : $C(N) = K + C(N-1)$
+* la complexité de la ligne 2 est en $\mathcal{O}(1)$ : c'est une comparaison
+* la complexité de la ligne 3 est en $\mathcal{O}(1)$ : on cheche un élément particulier d'un tableau
+* la complexité de la ligne 5 est en $C(n-1) + \mathcal{O}(1)$ : on exécute notre algorithme avec un tableau de taille $n-1$ — sa complexité est donc par définition de $C(n-1)$ — puis on affecte le résultat à une variable
+* la complexité de la ligne 6 est en $\mathcal{O}(1)$ : c'est une comparaison d'une varaible et d'un élément particulier d'un tableau
+* la complexité de la ligne 7 est en $\mathcal{O}(1)$
+* la complexité de la ligne 9 est en $\mathcal{O}(1)$ : on rend un élément particulier d'un tableau
 
-$C(N) = K + K + C(N-2) = \dots = n * K + C(0) = (n+1) * K = \mathcal{O}(n)$
+La complexité est définie par l'équation de récurrence $C(n) = \mathcal{O}(1) + C(n-1)$. Notre condition d'arrêt est obtenue pour `n` valant 1 et dans ce cas on a $C(1) = \mathcal{O}(1)$
+
+Trouver $C(n)$ revient à résoudre :
+
+$$
+\left\{
+    \begin{array}{lcl}
+        C(n) & = & \mathcal{O}(1) + C(n-1)\\
+        C(0) & = & \mathcal{O}(1)
+    \end{array}
+\right.
+$$
+
+On a alors :
+
+$$
+\begin{array}{lcl}
+    C(n) & = & \mathcal{O}(1) + C(n-1)\\
+    & = & \mathcal{O}(1) + \mathcal{O}(1) + C(n-2) = 2 \cdot \mathcal{O}(1) + C(n-2)\\
+    & = & 3 \cdot \mathcal{O}(1) + C(n-3) \\
+    & = & \dots \\
+    & = & i \cdot \mathcal{O}(1) + C(n-i) \\
+    & = & \dots \\
+    & = & (n-1) \cdot \mathcal{O}(1) + C(1) = (n-1) \cdot \mathcal{O}(1) + \mathcal{O}(1) \\
+    & = & n \cdot \mathcal{O}(1) = \mathcal{O}(n) \\
+\end{array}
+$$
+
+Au fnal, on trouve que la complexité $C(n)$ de notre algorithme est en $\mathcal{O}(n)$ où $n$ est la taille du tableau placé initialement en paramètre.

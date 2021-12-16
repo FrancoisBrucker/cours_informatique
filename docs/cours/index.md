@@ -1,7 +1,7 @@
 ---
 layout: page
 title:  "Les cours"
-tags: informatique graphes
+tags: informatique 
 author: "François Brucker"
 ---
 

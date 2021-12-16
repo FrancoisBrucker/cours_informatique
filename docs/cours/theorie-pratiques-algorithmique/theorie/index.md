@@ -13,6 +13,8 @@ Que peut ou pas faire un algorithme.
 {: .note}
 
 * [calcul ?]({% link cours/theorie-pratiques-algorithmique/theorie/calcul.md %})
+* [machine de Turing]({% link cours/theorie-pratiques-algorithmique/theorie/machine-turing.md %})
+
 
 * algorithmes et fonctions
 * machines de turing

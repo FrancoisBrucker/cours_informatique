@@ -35,16 +35,24 @@ Chaque partie est une semaine (2h mercredi et 4h vendredi). Il y aura 2 DS, les 
 
 #### vendredi {#v-1}
 
-1. [code]({% link cours/theorie-pratiques-algorithmique/coder/code.md %})
-2. [projet informatique]({% link cours/theorie-pratiques-algorithmique/coder/code-projet.md %})
-3. [projet 1 : pourcentages]({% link cours/theorie-pratiques-algorithmique/coder/projet-1-pourcentages.md %})
+1. [code]({% link cours/theorie-pratiques-algorithmique/coder/code.md %}) 
+2. mise en œuvre d'un projet informatique
+   * prérequis :
+     1. [naviguer dans un système de fichiers]({% post_url tutos/systeme/2021-08-24-fichiers-navigation %})
+     2. [vscode et python]({% post_url tutos/editeur/vsc/2021-09-14-vsc-python %}))
+   * [projet informatique]({% link cours/theorie-pratiques-algorithmique/coder/code-projet.md %})
+3. 1er projet
+   * prérequis :
+     1. [terminal]({% post_url tutos/systeme/2021-08-24-terminal %})
+     2. [utilisation du terminal]({% post_url tutos/systeme/2021-12-02-terminal-utilisation %})
+   * [projet pourcentages]({% link cours/theorie-pratiques-algorithmique/coder/projet-1-pourcentages.md %})
 
 > test de début de séance.
 {: .tbd}
 
 ### semaine 2
 
-A partir de la semaine 2, les tests de début séance seront à écrire en [markdown]({% post_url /tutos/2021-08-30-format-markdown %}) et envoye converti en html (ou pdf) sur le site.
+A partir de la semaine 2, les tests de début séance seront à écrire en [markdown]({% post_url /tutos/2021-08-30-format-markdown %}) et envoyé converti en html (ou pdf) sur amétice.
 
 #### mercredi {#m-2}
 
@@ -52,6 +60,9 @@ A partir de la semaine 2, les tests de début séance seront à écrire en [mark
 2. [preuve d'algorithme]({% link cours/theorie-pratiques-algorithmique/algorithmie/preuve-algorithme.md %})
 
 #### vendredi {#v-2}
+
+1. [étude de cas : l'exponentiation]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude_exponentiation.md %})
+2. [projet : l'exponentiation]()
 
 ## ressources
 
