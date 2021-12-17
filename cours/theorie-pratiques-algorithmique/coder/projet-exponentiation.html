@@ -6,20 +6,20 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>Code Exponentiation rapide | cours d’informatique</title>
+<title>projet / exponentiation rapide | cours d’informatique</title>
 <meta name="generator" content="Jekyll v4.2.0">
-<meta property="og:title" content="Code Exponentiation rapide">
+<meta property="og:title" content="projet / exponentiation rapide">
 <meta name="author" content="François Brucker">
 <meta property="og:locale" content="en_US">
 <meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille.">
 <meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille.">
-<link rel="canonical" href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/projet-2-exponentiation_rapide.html">
-<meta property="og:url" content="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/projet-2-exponentiation_rapide.html">
+<link rel="canonical" href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/projet-exponentiation.html">
+<meta property="og:url" content="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/projet-exponentiation.html">
 <meta property="og:site_name" content="cours d’informatique">
 <meta name="twitter:card" content="summary">
-<meta property="twitter:title" content="Code Exponentiation rapide">
+<meta property="twitter:title" content="projet / exponentiation rapide">
 <script type="application/ld+json">
-{"description":"Support de cours/td d’informatique à l’école centrale marseille.","headline":"Code Exponentiation rapide","@type":"WebPage","url":"/cours_informatique/cours/theorie-pratiques-algorithmique/coder/projet-2-exponentiation_rapide.html","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
+{"description":"Support de cours/td d’informatique à l’école centrale marseille.","headline":"projet / exponentiation rapide","@type":"WebPage","url":"/cours_informatique/cours/theorie-pratiques-algorithmique/coder/projet-exponentiation.html","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
@@ -53,17 +53,101 @@
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Code Exponentiation rapide</h1>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span>
+    <h1 class="post-title">projet / exponentiation rapide</h1>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span>
   </header>
 
   <div class="post-content">
-    <blockquote class="tbd">
+    <blockquote class="chemin">
+  <p><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/">Théorie et pratiques algorithmique</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/">coder</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/projet-exponentiation.html">projet : exponentiation rapide</a></p>
+
+  <p><strong>prérequis :</strong></p>
+
+  <ul>
+    <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/projet-pourcentages.html">projet : pourcentages</a></li>
+    <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/etude-exponentiation.html">étude : l’exponentiation</a></li>
+  </ul>
+</blockquote>
+
+<blockquote class="tbd">
   <p>on fait du bon python : pas de rouge dans le style.
 on suit les bonnes pratiques
 lien vers le corrigé</p>
 </blockquote>
 
-<h2 id="introduction">introduction</h2>
+<p>Ce projet suit l’<a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/etude-exponentiation.html">étude de l’exponentiation</a>. Vous allez vérifier expérimentalement que la complexité de l’<a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/etude-exponentiation.html#algo-naif">algorithme naïf</a> est en $\mathcal{O}(\mbox{exposant})$ et celle de l’<a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/etude-exponentiation.html#algo-rapide">exponentiation indienne</a> en $\mathcal{O}(\ln(\mbox{exposant}))$.</p>
+
+<h2 id="mise-en-place">mise en place</h2>
+
+<h3 id="structures">structures</h3>
+
+<blockquote class="a-faire">
+  <ol>
+    <li>créez un dossier nommé <em>“exponentiation”</em> où vous placerez vos fichiers</li>
+    <li>créez un projet vcode dans ce dossier</li>
+    <li>créez dans ce dossier les 3 fichiers de la trinité du code :
+      <ul>
+        <li><em>“main.py”</em></li>
+        <li><em>“exponentiation.py”</em></li>
+        <li><em>“tests_exponentiation.py”</em></li>
+      </ul>
+    </li>
+  </ol>
+
+</blockquote>
+
+<h3 id="vscode">vscode</h3>
+
+<ol>
+  <li>on vérifie que python est ok (print(bonjour monde) ok avec le triangle vert et le terminal)</li>
+  <li>on vérifie que le linter est actif (en faisant une faute de style)</li>
+</ol>
+
+<blockquote class="a-faire">
+  <p>On se force, avant que ça ne devienne un automatisme, d’écrire du code stylé. C’est à dire sans que le linter ne se fâche.</p>
+</blockquote>
+
+<h3 id="bibliothèques">bibliothèques</h3>
+
+<blockquote class="tbd">
+  <p>matplotlib
+pytest mais on devrait déjà l’avoir</p>
+</blockquote>
+
+<h2 id="le-code">le code</h2>
+
+<h3 id="algorithme-naif">algorithme naif</h3>
+
+<ol>
+  <li>l’algorithme</li>
+  <li>les tests de l’étude + un autre plus gros</li>
+</ol>
+
+<h3 id="algorithme-rapide">algorithme rapide</h3>
+
+<ol>
+  <li>l’algorithme</li>
+  <li>les tests de l’étude + un autre plus gros</li>
+</ol>
+
+<h2 id="complexité-temporelle">complexité temporelle</h2>
+
+<h3 id="comment-faire">comment faire</h3>
+
+<blockquote class="tbd">
+  <p>dans un fichier <em>“temp.py”</em> on fait nos essais</p>
+</blockquote>
+
+<h3 id="expérimentations">expérimentations</h3>
+
+<h2 id="graphique-de-la-complexité-temporelle">graphique de la complexité temporelle</h2>
+
+<h3 id="comment-faire-1">comment faire</h3>
+
+<blockquote class="tbd">
+  <p>avec matplotlib un dessin (mais pas lié à la complexité). on mets les axes, on contrôle Interactif. On le sauve en pdf</p>
+</blockquote>
+
+<h3 id="expérimentations-1">expérimentations</h3>
 
 <p>Vous allez implémenter les 2 algorithmes en vrai et en python.</p>
 
@@ -74,6 +158,14 @@ lien vers le corrigé</p>
   <li>on veut pouvoir le modifier/ajouter des fonctionnalités rapidement</li>
   <li>on veut pouvoir partager notre code avec soit-même dans d’autres projet, son équipe ou le monde)</li>
 </ul>
+
+<h2 id="pour-aller-plus-loin">pour aller plus loin</h2>
+
+<h3 id="dessins">dessins</h3>
+
+<p>on utilise seaborn qui est bien plus joli (on l’installe si nécessaire). ON choisi les couleurs parmi une palette de peu de couleurs</p>
+
+<h3 id="rapports-de-complexités-réelles-et-théoriques">rapports de complexités réelles et théoriques</h3>
 
 <h2 id="le-projet-exponentiation">le projet exponentiation</h2>
 
@@ -92,7 +184,7 @@ lien vers le corrigé</p>
   </li>
 </ul>
 
-<h3 id="le-code">le code</h3>
+<h3 id="le-code-1">le code</h3>
 
 <p>On crée 2 fichiers :</p>
 

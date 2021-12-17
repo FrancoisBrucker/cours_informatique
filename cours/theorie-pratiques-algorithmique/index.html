@@ -113,7 +113,7 @@
   <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.html">pseudo-code</a></li>
   <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/complexite-max-min.html">complexité max/min</a></li>
   <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/preuve-algorithme.html">preuve d’algorithme</a></li>
-  <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/etude_exponentiation.html">étude de cas : l’exponentiation</a></li>
+  <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/etude-exponentiation.html">étude de cas : l’exponentiation</a></li>
 </ol>
 
 <h3 id="théorie">théorie</h3>
@@ -129,7 +129,8 @@
 <ol>
   <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/code.html">code</a></li>
   <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/code-projet.html">projet informatique</a></li>
-  <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/projet-1-pourcentages.html">projet 1 : pourcentages</a></li>
+  <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/projet-pourcentages.html">projet : pourcentages</a></li>
+  <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/projet-exponentiation.html">projet : exponentiation</a></li>
 </ol>
 
 <h3 id="autre">autre</h3>
@@ -350,17 +351,17 @@ graph.links.push({
 })
 
 graph.nodes.push({
-  id: 'projet 1 : pourcentages',
-  link: "/cours_informatique/cours/theorie-pratiques-algorithmique/coder/projet-1-pourcentages.html",
+  id: 'projet : pourcentages',
+  link: "/cours_informatique/cours/theorie-pratiques-algorithmique/coder/projet-pourcentages.html",
   group: groups.code
 })
 graph.links.push({
   source: 'projet informatique',
-  target: 'projet 1 : pourcentages'
+  target: 'projet : pourcentages'
 })
 graph.links.push({
   source: 'utilisation du terminal',
-  target: 'projet 1 : pourcentages'
+  target: 'projet : pourcentages'
 })
 
 graph.nodes.push({
@@ -384,18 +385,24 @@ graph.links.push({
 })
 
 graph.nodes.push({
-  id: "étude de cas : l'exponentiation",
-  link: "/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/etude_exponentiation.html",
+  id: "étude : l'exponentiation",
+  link: "/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/etude-exponentiation.html",
   group: groups.algorithmie
 })
 graph.links.push({
   source: "preuve d'algorigthme",
-  target: "étude de cas : l'exponentiation"
+  target: "étude : l'exponentiation"
 })
 
 graph.links.push({
   source: 'complexité max/min',
-  target: "étude de cas : l'exponentiation"
+  target: "étude : l'exponentiation"
+})
+
+graph.nodes.push({
+  id: "projet : exponentiation",
+  link: "/cours_informatique/cours/theorie-pratiques-algorithmique/coder/projet-exponentiation.html",
+  group: groups.cod
 })
 
 </script>
