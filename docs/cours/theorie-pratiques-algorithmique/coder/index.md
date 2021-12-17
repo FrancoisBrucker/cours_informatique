@@ -11,7 +11,8 @@ Comment coder, maintenir et aimer ses programmes.
 
 * [code]({% link cours/theorie-pratiques-algorithmique/coder/code.md %})
 * [mise en oeuvre d'un projet]({% link cours/theorie-pratiques-algorithmique/coder/code-projet.md %})
-* [projet 1 : pourcentages]({% link cours/theorie-pratiques-algorithmique/coder/projet-1-pourcentages.md %})
+* [projet : pourcentages]({% link cours/theorie-pratiques-algorithmique/coder/projet-pourcentages.md %})
+* [projet : exponentiation]({% link cours/theorie-pratiques-algorithmique/coder/projet-exponentiation.md %})
 
 ## tbd
 

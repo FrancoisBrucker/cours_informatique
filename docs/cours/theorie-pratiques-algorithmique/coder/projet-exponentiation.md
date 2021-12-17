@@ -1,25 +1,99 @@
 ---
 layout: page
-title:  "Code Exponentiation rapide"
+title:  "projet / exponentiation rapide"
 category: cours
 tags: informatique cours 
 author: "François Brucker"
 ---
+
+> [Théorie et pratiques algorithmique]({% link cours/theorie-pratiques-algorithmique/index.md %}) / [coder]({% link cours/theorie-pratiques-algorithmique/coder/index.md %}) / [projet : exponentiation rapide]({% link cours/theorie-pratiques-algorithmique/coder/projet-exponentiation.md %})
+>
+> **prérequis :**
+>
+>* [projet : pourcentages]({% link cours/theorie-pratiques-algorithmique/coder/projet-pourcentages.md %})
+>* [étude : l'exponentiation]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude-exponentiation.md %})
+{: .chemin}
 
 > on fait du bon python : pas de rouge dans le style.
 > on suit les bonnes pratiques
 > lien vers le corrigé
 {: .tbd}
 
-## introduction
+Ce projet suit l'[étude de l'exponentiation]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude-exponentiation.md %}). Vous allez vérifier expérimentalement que la complexité de l'[algorithme naïf]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude-exponentiation.md %}#algo-naif) est en $\mathcal{O}(\mbox{exposant})$ et celle de l'[exponentiation indienne]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude-exponentiation.md %}#algo-rapide) en $\mathcal{O}(\ln(\mbox{exposant}))$.
 
-Vous allez implémenter les 2 algorithmes en vrai et en python. 
+## mise en place
+
+### structures
+
+> 1. créez un dossier nommé *"exponentiation"* où vous placerez vos fichiers
+> 2. créez un projet vcode dans ce dossier
+> 3. créez dans ce dossier les 3 fichiers de la trinité du code :
+>    * *"main.py"*
+>    * *"exponentiation.py"*
+>    * *"tests_exponentiation.py"*
+>
+{: .a-faire}
+
+### vscode
+
+1. on vérifie que python est ok (print(bonjour monde) ok avec le triangle vert et le terminal)
+2. on vérifie que le linter est actif (en faisant une faute de style)
+
+> On se force, avant que ça ne devienne un automatisme, d'écrire du code stylé. C'est à dire sans que le linter ne se fâche.
+{: .a-faire}
+
+### bibliothèques
+
+> matplotlib
+> pytest mais on devrait déjà l'avoir
+{: .tbd}
+
+## le code
+
+### algorithme naif
+
+1. l'algorithme
+2. les tests de l'étude + un autre plus gros
+
+### algorithme rapide
+
+1. l'algorithme
+2. les tests de l'étude + un autre plus gros
+
+## complexité temporelle
+
+### comment faire
+
+> dans un fichier *"temp.py"* on fait nos essais
+{: .tbd}
+
+### expérimentations
+
+## graphique de la complexité temporelle
+
+### comment faire
+
+>avec matplotlib un dessin (mais pas lié à la complexité). on mets les axes, on contrôle Interactif. On le sauve en pdf
+{: .tbd}
+
+### expérimentations
+
+
+Vous allez implémenter les 2 algorithmes en vrai et en python.
 
 Vous vous concentrerez  sur 3 points :
 
 * on veut que notre code soit juste
 * on veut pouvoir le modifier/ajouter des fonctionnalités rapidement
 * on veut pouvoir partager notre code avec soit-même dans d'autres projet, son équipe ou le monde)
+
+## pour aller plus loin
+
+### dessins
+
+on utilise seaborn qui est bien plus joli (on l'installe si nécessaire). ON choisi les couleurs parmi une palette de peu de couleurs
+
+### rapports de complexités réelles et théoriques
 
 ## le projet exponentiation
 

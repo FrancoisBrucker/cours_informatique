@@ -13,4 +13,4 @@ Création, preuve et complexité des algorithmes.
 * [pseudo-code]({% link cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.md %})
 * [complexité max/min]({% link cours/theorie-pratiques-algorithmique/algorithmie/complexite-max-min.md %})
 * [preuve d'algorithme]({% link cours/theorie-pratiques-algorithmique/algorithmie/preuve-algorithme.md %})
-* [étude de cas : l'exponentiation]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude_exponentiation.md %})
+* [étude : l'exponentiation]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude-exponentiation.md %})

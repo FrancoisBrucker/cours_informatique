@@ -6,7 +6,7 @@ tags: informatique cours
 author: "François Brucker"
 ---
 
-> [Théorie et pratiques algorithmique]({% link cours/theorie-pratiques-algorithmique/index.md %}) / [coder]({% link cours/theorie-pratiques-algorithmique/coder/index.md %}) / [projet 1 : pourcentages]({% link cours/theorie-pratiques-algorithmique/coder/projet-1-pourcentages.md %})
+> [Théorie et pratiques algorithmique]({% link cours/theorie-pratiques-algorithmique/index.md %}) / [coder]({% link cours/theorie-pratiques-algorithmique/coder/index.md %}) / [projet : pourcentages]({% link cours/theorie-pratiques-algorithmique/coder/projet-pourcentages.md %})
 >
 > **prérequis :**
 >
@@ -138,7 +138,7 @@ Ceci nous impose de tester l'égalité entre 2 réels. Ceci est impossible à fa
 
 > Les réels sont des limites, ils n'ont pas d'existence tangible. En bref : les réels ne le sont pas, que seuls les entiers le sont.
 
-On ne peut donc pas écrire directement `assert pourcent('101') == 1/3` (même si là, ça risque de marcher) car si ça se trouve on aura `.3333333332` à la place de `1/3`. 
+On ne peut donc pas écrire directement `assert pourcent('101') == 1/3` (même si là, ça risque de marcher) car si ça se trouve on aura `.3333333332` à la place de `1/3`.
 
 > On ne teste **JAMAIS** l'égalité entre 2 réels. On les compare toujours à $\epsilon$ prêt.
 {: .note}
@@ -228,7 +228,7 @@ On ne vérifie pas que :
 Quand je vous avait dit de ne pas faire de vérification, c'est vrai pour tout ce qui a trait au code utilisé par l'ordinateur. Dès qu'un humain utilise du code, il faut **TOUT** vérifier et faire en sorte qu'il ait la meilleur expérience possible.
 
 > Tout ce que fait l'utilisateur doit être vérifié avant d'être injecté dans le programme. C'est la [loi de Murphy](https://fr.wikipedia.org/wiki/Loi_de_Murphy) : si on laisse la possibilité de se tromper, quelqu'un va forcément le faire à un moment.
-{: .a-faire}
+{: .note}
 
 Donc ici on pourrait :
 

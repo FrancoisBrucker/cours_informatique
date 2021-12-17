@@ -1,12 +1,12 @@
 ---
 layout: page
-title:  "Algorithme Exponentiation rapide"
+title:  "étude / algorithmes d'exponentiation"
 category: cours
 tags: informatique cours 
 author: "François Brucker"
 ---
 
-> [Théorie et pratiques algorithmique]({% link cours/theorie-pratiques-algorithmique/index.md %}) / [algorithmie]({% link cours/theorie-pratiques-algorithmique/algorithmie/index.md %}) / [étude de cas : l'exponentiation]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude_exponentiation.md %})
+> [Théorie et pratiques algorithmique]({% link cours/theorie-pratiques-algorithmique/index.md %}) / [algorithmie]({% link cours/theorie-pratiques-algorithmique/algorithmie/index.md %}) / [étude : l'exponentiation]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude-exponentiation.md %})
 >
 > prérequis :
 >
@@ -26,7 +26,7 @@ On va étudiez deux algorithmes permettant de calculer $a^b$  à partir de deux 
 
 > dans la suite, les algorithmes seront tous donnés en python
 
-## algorithme naïf
+## algorithme naïf {#algo-naif}
 
 <style>
     table, td, tr, th, pre {
@@ -124,7 +124,7 @@ Notre invariant est vrai avant et après chaque itération, il est donc égaleme
 
 Donc : complexité en $\mathcal{O}(\mbox{exposant})$
 
-## exponentiation indienne
+## exponentiation indienne {#algo-rapide}
 
 Aussi appelé [exponentiation rapide](https://fr.wikipedia.org/wiki/Exponentiation_rapide), l'algorithme suivant permet de calculer `nombre ** exposant`.
 

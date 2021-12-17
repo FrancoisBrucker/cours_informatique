@@ -35,7 +35,7 @@ Chaque partie est une semaine (2h mercredi et 4h vendredi). Il y aura 2 DS, les 
 
 #### vendredi {#v-1}
 
-1. [code]({% link cours/theorie-pratiques-algorithmique/coder/code.md %}) 
+1. [code]({% link cours/theorie-pratiques-algorithmique/coder/code.md %})
 2. mise en œuvre d'un projet informatique
    * prérequis :
      1. [naviguer dans un système de fichiers]({% post_url tutos/systeme/2021-08-24-fichiers-navigation %})
@@ -45,7 +45,7 @@ Chaque partie est une semaine (2h mercredi et 4h vendredi). Il y aura 2 DS, les 
    * prérequis :
      1. [terminal]({% post_url tutos/systeme/2021-08-24-terminal %})
      2. [utilisation du terminal]({% post_url tutos/systeme/2021-12-02-terminal-utilisation %})
-   * [projet pourcentages]({% link cours/theorie-pratiques-algorithmique/coder/projet-1-pourcentages.md %})
+   * [projet pourcentages]({% link cours/theorie-pratiques-algorithmique/coder/projet-pourcentages.md %})
 
 > test de début de séance.
 {: .tbd}
@@ -61,8 +61,8 @@ A partir de la semaine 2, les tests de début séance seront à écrire en [mark
 
 #### vendredi {#v-2}
 
-1. [étude de cas : l'exponentiation]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude_exponentiation.md %})
-2. [projet : l'exponentiation]()
+1. [étude : l'exponentiation]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude-exponentiation.md %})
+2. [projet : l'exponentiation]({% link cours/theorie-pratiques-algorithmique/coder/projet-exponentiation.md %})
 
 ## ressources
 

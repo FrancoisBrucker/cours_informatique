@@ -47,7 +47,7 @@ Ce cours est composée de trois grandes parties qui s'enchevêtrent.
 2. [pseudo-code]({% link cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.md %})
 3. [complexité max/min]({% link cours/theorie-pratiques-algorithmique/algorithmie/complexite-max-min.md %})
 4. [preuve d'algorithme]({% link cours/theorie-pratiques-algorithmique/algorithmie/preuve-algorithme.md %})
-5. [étude de cas : l'exponentiation]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude_exponentiation.md %})
+5. [étude de cas : l'exponentiation]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude-exponentiation.md %})
 
 ### théorie
 
@@ -59,7 +59,8 @@ Ce cours est composée de trois grandes parties qui s'enchevêtrent.
 
 1. [code]({% link cours/theorie-pratiques-algorithmique/coder/code.md %})
 2. [projet informatique]({% link cours/theorie-pratiques-algorithmique/coder/code-projet.md %})
-3. [projet 1 : pourcentages]({% link cours/theorie-pratiques-algorithmique/coder/projet-1-pourcentages.md %})
+3. [projet : pourcentages]({% link cours/theorie-pratiques-algorithmique/coder/projet-pourcentages.md %})
+4. [projet : exponentiation]({% link cours/theorie-pratiques-algorithmique/coder/projet-exponentiation.md %})
 
 ### autre
 
@@ -273,17 +274,17 @@ graph.links.push({
 })
 
 graph.nodes.push({
-  id: 'projet 1 : pourcentages',
-  link: "{% link cours/theorie-pratiques-algorithmique/coder/projet-1-pourcentages.md %}",
+  id: 'projet : pourcentages',
+  link: "{% link cours/theorie-pratiques-algorithmique/coder/projet-pourcentages.md %}",
   group: groups.code
 })
 graph.links.push({
   source: 'projet informatique',
-  target: 'projet 1 : pourcentages'
+  target: 'projet : pourcentages'
 })
 graph.links.push({
   source: 'utilisation du terminal',
-  target: 'projet 1 : pourcentages'
+  target: 'projet : pourcentages'
 })
 
 graph.nodes.push({
@@ -307,18 +308,24 @@ graph.links.push({
 })
 
 graph.nodes.push({
-  id: "étude de cas : l'exponentiation",
-  link: "{% link cours/theorie-pratiques-algorithmique/algorithmie/etude_exponentiation.md %}",
+  id: "étude : l'exponentiation",
+  link: "{% link cours/theorie-pratiques-algorithmique/algorithmie/etude-exponentiation.md %}",
   group: groups.algorithmie
 })
 graph.links.push({
   source: "preuve d'algorigthme",
-  target: "étude de cas : l'exponentiation"
+  target: "étude : l'exponentiation"
 })
 
 graph.links.push({
   source: 'complexité max/min',
-  target: "étude de cas : l'exponentiation"
+  target: "étude : l'exponentiation"
+})
+
+graph.nodes.push({
+  id: "projet : exponentiation",
+  link: "{% link cours/theorie-pratiques-algorithmique/coder/projet-exponentiation.md %}",
+  group: groups.cod
 })
 
 </script>
