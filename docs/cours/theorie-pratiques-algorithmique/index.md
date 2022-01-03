@@ -58,7 +58,7 @@ Ce cours est composée de trois grandes parties qui s'enchevêtrent.
 ### coder
 
 1. [code]({% link cours/theorie-pratiques-algorithmique/coder/code.md %})
-2. [projet informatique]({% link cours/theorie-pratiques-algorithmique/coder/code-projet.md %})
+2. [projet informatique]({% link cours/theorie-pratiques-algorithmique/coder/projet-hello-dev.md %})
 3. [projet : pourcentages]({% link cours/theorie-pratiques-algorithmique/coder/projet-pourcentages.md %})
 4. [projet : exponentiation]({% link cours/theorie-pratiques-algorithmique/coder/projet-exponentiation.md %})
 
@@ -208,7 +208,7 @@ graph.links.push({
 
 graph.nodes.push({
   id: 'projet informatique',
-  link: "{% link cours/theorie-pratiques-algorithmique/coder/code-projet.md %}",
+  link: "{% link cours/theorie-pratiques-algorithmique/coder/projet-hello-dev.md %}",
   group: groups.code
 })
 graph.links.push({

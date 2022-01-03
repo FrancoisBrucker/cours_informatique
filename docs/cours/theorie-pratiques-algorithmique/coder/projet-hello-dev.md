@@ -6,7 +6,7 @@ tags: informatique cours
 author: "François Brucker"
 ---
 
-> [Théorie et pratiques algorithmique]({% link cours/theorie-pratiques-algorithmique/index.md %}) / [coder]({% link cours/theorie-pratiques-algorithmique/coder/index.md %}) / [mise en oeuvre d'un projet]({% link cours/theorie-pratiques-algorithmique/coder/code-projet.md %})
+> [Théorie et pratiques algorithmique]({% link cours/theorie-pratiques-algorithmique/index.md %}) / [coder]({% link cours/theorie-pratiques-algorithmique/coder/index.md %}) / [mise en oeuvre d'un projet]({% link cours/theorie-pratiques-algorithmique/coder/projet-hello-dev.md %})
 >
 > **prérequis :**
 >
@@ -59,7 +59,7 @@ Vscode à compris que c'était du python, il l'écrit dans la barre de statut (l
 >   2. choisir un lint : supprimer la fenêtre de warning, on fera ça plus tard.
 >   3. choisir des tests : supprimer la fenêtre de warning, on fera ça plus tard.
 >
->Si c'est le cas,arrêtez tout et **faites** les prés-requis...
+>Si c'est le cas, arrêtez tout et **faites** les prés-requis...
 
 ### exécution d'un fichier
 
@@ -110,7 +110,9 @@ OU encore utiliser le terminal :
 
 On a mis un espace entre le nom de la fonction et ses paramètres, c'est mal.
 
-> **style** : **NE JAMAIS METTRE D'ESPACE APRÈS UN NOM DE FONCTION** : parce qu'on ne voit pas immédiatement si c'est une fonction ou un nom de variable.
+> **style** : **NE JAMAIS METTRE D'ESPACE APRÈS UN NOM DE FONCTION**
+>
+> parce qu'on ne voit pas immédiatement si c'est une fonction ou un nom de variable.
 {: .note}
 
 Vous devriez peut-être aussi avoir la parenthèse de fin souligné en jaune. C'est parce que la dernière ligne de votre fichier n'est pas vide. Si ce n'est pas le cas, c'est que vous avez bien que 2 lignes dans votre fichier, la seconde étant vide.
@@ -288,11 +290,13 @@ Lorsque l'on exécute ce code, il ne se passe rien. Est-ce bon signe ?
 > Modifiez la fonction `test_somme_neutre` du fichier *test_projet.py* pour qu'elle soit égale à  :
 >
 >```python
->
+> # ...
+> 
 > def test_somme_neutre():
 >     tete_a_toto = 0
 >     assert 0 + 0 == 42
 >
+> # ...
 >```
 >
 > Exécutez le fichier *test_projet.py*.
@@ -384,4 +388,4 @@ Félicitations, vous avez fait votre premier projet fonctionnel !
 
 ## les fichiers
 
-les trois fichiers du projet final sont [disponibles](https://github.com/FrancoisBrucker/cours_informatique/tree/master/docs/cours/theorie-pratiques-algorithmique/coder/code-projet/hello-dev)
+les trois fichiers du projet final sont [disponibles](https://github.com/FrancoisBrucker/cours_informatique/tree/master/docs/cours/theorie-pratiques-algorithmique/coder/projets-code/hello-dev)

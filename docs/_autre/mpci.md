@@ -40,12 +40,12 @@ Chaque partie est une semaine (2h mercredi et 4h vendredi). Il y aura 2 DS, les 
    * prérequis :
      1. [naviguer dans un système de fichiers]({% post_url tutos/systeme/2021-08-24-fichiers-navigation %})
      2. [vscode et python]({% post_url tutos/editeur/vsc/2021-09-14-vsc-python %}))
-   * [projet informatique]({% link cours/theorie-pratiques-algorithmique/coder/code-projet.md %})
-3. 1er projet
+   * [projet 1 : hello-dev]({% link cours/theorie-pratiques-algorithmique/coder/projet-hello-dev.md %})
+3. on essaie de refaire
    * prérequis :
      1. [terminal]({% post_url tutos/systeme/2021-08-24-terminal %})
      2. [utilisation du terminal]({% post_url tutos/systeme/2021-12-02-terminal-utilisation %})
-   * [projet pourcentages]({% link cours/theorie-pratiques-algorithmique/coder/projet-pourcentages.md %})
+   * [projet 2 : pourcentages]({% link cours/theorie-pratiques-algorithmique/coder/projet-pourcentages.md %})
 
 > test de début de séance.
 {: .tbd}

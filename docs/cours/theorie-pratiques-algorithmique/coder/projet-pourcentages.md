@@ -10,7 +10,7 @@ author: "François Brucker"
 >
 > **prérequis :**
 >
->* [coder/mise en oeuvre d'un projet]({% link cours/theorie-pratiques-algorithmique/coder/code-projet.md %})
+>* [coder/mise en oeuvre d'un projet]({% link cours/theorie-pratiques-algorithmique/coder/projet-hello-dev.md %})
 >* [naviguer dans un système de fichiers]({% post_url tutos/systeme/2021-08-24-fichiers-navigation %})
 {: .chemin}
 
