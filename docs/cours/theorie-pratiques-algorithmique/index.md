@@ -298,13 +298,13 @@ graph.links.push({
 })
 
 graph.nodes.push({
-  id: "preuve d'algorigthme",
+  id: "preuve d'algorithme",
   link: "{% link cours/theorie-pratiques-algorithmique/algorithmie/preuve-algorithme.md %}",
   group: groups.algorithmie
 })
 graph.links.push({
   source: 'pseudo-code',
-  target: "preuve d'algorigthme"
+  target: "preuve d'algorithme"
 })
 
 graph.nodes.push({
@@ -313,7 +313,7 @@ graph.nodes.push({
   group: groups.algorithmie
 })
 graph.links.push({
-  source: "preuve d'algorigthme",
+  source: "preuve d'algorithme",
   target: "étude : l'exponentiation"
 })
 
@@ -325,10 +325,21 @@ graph.links.push({
 graph.nodes.push({
   id: "projet : exponentiation",
   link: "{% link cours/theorie-pratiques-algorithmique/coder/projet-exponentiation.md %}",
-  group: groups.cod
+  group: groups.code
+})
+
+graph.links.push({
+  source: "étude : l'exponentiation",
+  target: "projet : exponentiation"
+})
+
+graph.links.push({
+  source: 'projet : pourcentages',
+  target: "projet : exponentiation"
 })
 
 </script>
+
 <script>
 var color = d3.scaleOrdinal(d3.schemeCategory10);
 

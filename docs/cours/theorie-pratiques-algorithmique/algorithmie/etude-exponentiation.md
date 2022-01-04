@@ -117,7 +117,7 @@ On a démontré notre invariant de boucle.
 
 Notre invariant est vrai avant et après chaque itération, il est donc également vrai à la fin de l'algorithme, lorsque `compteur = 0`. Et là : `resultat * nombre ** compteur = resultat = nombre ** exposant`
 
-### complexité {# complexite-naif}
+### complexité {#complexite-naif}
 
 * un boucle en $\mathcal{O}(\mbox{exposant})$
 * des lignes en $\mathcal{O}(1)$

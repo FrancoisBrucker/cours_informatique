@@ -1,6 +1,6 @@
 ---
 layout: page
-title:  "mise en oeuvre d'un projet"
+title:  "projet / mise en oeuvre d'un projet"
 category: cours
 tags: informatique cours 
 author: "François Brucker"
@@ -83,7 +83,7 @@ En vous rappelant ce que vous avez vu dans [le tutorial python et vscode]({% pos
 
 ## du joli code
 
-Vous allez passer beaucoup de temps à lire du code, le votre et celui des autres. Il est important que ce soit facile. Pour cela il faut que le style de code soit cohérent. Python donne des règle de style, c'est ce qu'on appelle la [PEP8](https://www.python.org/dev/peps/pep-0008/). 
+Vous allez passer beaucoup de temps à lire du code, le votre et celui des autres. Il est important que ce soit facile. Pour cela il faut que le style de code soit cohérent. Python donne des règle de style, c'est ce qu'on appelle la [PEP8](https://www.python.org/dev/peps/pep-0008/).
 
 Vous avez du installer le linter pycodestyle dans les prés-requis. Vérifions qu'il remarque bien les fautes :
 
@@ -198,7 +198,7 @@ On utilise en python la commande [assert](https://docs.python.org/fr/3/reference
 assert <expression logique>
 ```
 
-Si l'expression logique est vraie, le programme continue sans rien dire et si l'expression logique est fausse, le programme s'arrête avec l'erreur : `AssertionError`. 
+Si l'expression logique est vraie, le programme continue sans rien dire et si l'expression logique est fausse, le programme s'arrête avec l'erreur : `AssertionError`.
 
 Essayons ça avec la plus simple des expression logique : `True`
 

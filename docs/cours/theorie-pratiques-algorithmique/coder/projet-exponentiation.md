@@ -14,11 +14,6 @@ author: "François Brucker"
 >* [étude : l'exponentiation]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude-exponentiation.md %})
 {: .chemin}
 
-> on fait du bon python : pas de rouge dans le style.
-> on suit les bonnes pratiques
-> lien vers le corrigé
-{: .tbd}
-
 Ce projet suit l'[étude de l'exponentiation]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude-exponentiation.md %}). Vous allez vérifier expérimentalement que la complexité de l'[algorithme naïf]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude-exponentiation.md %}#algo-naif) est en $\mathcal{O}(\mbox{exposant})$ et celle de l'[exponentiation indienne]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude-exponentiation.md %}#algo-rapide) en $\mathcal{O}(\ln(\mbox{exposant}))$.
 
 ## mise en place
@@ -30,267 +25,178 @@ Ce projet suit l'[étude de l'exponentiation]({% link cours/theorie-pratiques-al
 > 3. créez dans ce dossier les 3 fichiers de la trinité du code :
 >    * *"main.py"*
 >    * *"exponentiation.py"*
->    * *"tests_exponentiation.py"*
+>    * *"test_exponentiation.py"*
 >
 {: .a-faire}
 
 ### vscode
 
-1. on vérifie que python est ok (print(bonjour monde) ok avec le triangle vert et le terminal)
+1. on vérifie que python est ok : le python utilisé par vscode (exécution via le triangle en haut à droite de la fenêtre) et le terminal doivent être le même :
+     * le python utilisé par vscode est marqué dans la [barre de status](https://code.visualstudio.com/docs/getstarted/userinterface)
+     * par défaut, c'est le paramètre `python.defaultInterpreterPath`
+     * dans un terminal, la commande `which python` (ou `python3` si votre interpréteur est `python3`) vous indique quel interpréteur python est utilisé lorsque vous tapez `python`.
 2. on vérifie que le linter est actif (en faisant une faute de style)
 
-> On se force, avant que ça ne devienne un automatisme, d'écrire du code stylé. C'est à dire sans que le linter ne se fâche.
+> On se force, jusqu'à que cela devienne un automatisme, d'écrire du code stylé. C'est à dire sans que le linter ne se fâche.
 {: .a-faire}
 
 ### bibliothèques
 
-> matplotlib
-> pytest mais on devrait déjà l'avoir
-{: .tbd}
+Nous aurons besoin d'utiliser deux bibliothèques ([matplotlib](https://matplotlib.org/) pour l'affichage des courbes de complexité et [pytest](https://docs.pytest.org/en/6.2.x/) por nos tests). Gérer les bibliothèques python se fait avec l'utilitaire pip que l'on utilise pour interpréteur donné comme ça : `python -m pip`.
+
+> Dans un terminal :
+>
+> 1. vérifiez les bibliothèques déjà installées pour votre interpréteur : `python -m pip list` (remarquez bien qu'ici `list` est un paramètre de `pip` et non de `python`)
+> 2. si besoin installez [matplotlib](https://matplotlib.org/) (`python -m pip install matplotlib`) et [pytest](https://docs.pytest.org/en/6.2.x/) : `python -m pip install pytest`
+{: .a-faire}
 
 ## le code
 
 ### algorithme naif
 
-1. l'algorithme
-2. les tests de l'étude + un autre plus gros
+> * dans le fichier *"exponentiation.py"* : implémetez l'algorithme naïf dans une fonction nommée `puissance_naif`
+> * dans le fichier *"test_exponentiation.py"* : implémetez les tests de l'algorithme naïf :
+>   * vérifiez que les cas simples avec nombre et/ou exposant à 1 fonctionnent
+>   * vérifiez qu'un cas général est ok (comme $2^4$ par exemple)
+>   * vérifiez que les cas particuliers avec l'exposant et/ou nombre valant 0 fonctionnent
+>
+> Vérifier que vos tests se lancent bien avec l'erlenmeyer et dans le terminal.
+>
+{: .a-faire}
+
+Pour les tests, on utilisera les règles suivantes :
+
+> Organisation des tests :
+>
+> * un fichier de test par fichier de code. Chaque fichier de test sea nommé : *"test_[nom du fichier de code].py"* où *[nom du fichier de code]* sera le nom du fichier (ne mettez pas les *[]*)
+> * chaque test sera nommé en 3 parties : `test_[nom de la fonction_testée]_[ce que l'on teste]` où `[nom de la fonction_testée]` est le nom de la fonction testée (ne mettez pas les *[]*) et `[ce que l'on teste]` une description succincte (en 1 ou 2 mots max) de ce que l'on teste.
+> * un unique `assert` par fonction de test : on ne doit tester qu'**une seule chose** par test
+>
+{: .note}
 
 ### algorithme rapide
 
-1. l'algorithme
-2. les tests de l'étude + un autre plus gros
+> * dans le fichier *"exponentiation.py"* : implémetez l'algorithme rapide dans une fonction nommée `puissance_rapide`
+> * dans le fichier *"test_exponentiation.py"* : implémetez les tests de l'algorithme rapide en faisant les même test que pour l'algorithme naïf. :
+>
+> Vérifier que vos tests se lancent bien avec l'erlenmeyer et dans le terminal.
+>
+{: .a-faire}
+
+> Ne supprimez pas les tests de l'algorithme naïf en créant ceux pour l'algorithme rapide ! Vos deux fonctions DOIVENT être testées.
+{: .attention}
 
 ## complexité temporelle
 
+La seule façon de mesurer expérimentalement la complexité d'un algorithme est de mesurer la [complexité en temps]({% link cours/theorie-pratiques-algorithmique/algorithmie/complexite-max-min.md %}#temps-dexécution) de celui-ci pour une entrée réalisant la complexité maximale.
+
+Ce n'est cependant pas si simple de mesurer ce temps précisément parce que :
+
+* nous ne sommes pas seul sur la machine, tous les programmes actif s'exécutent souvent en même temps en se [partageant du temps de processeur](https://fr.wikipedia.org/wiki/Temps_partag%C3%A9) : il est donc difficile de mesurer précisément le temps uniquement pris pour notre algorithme par le processeur.
+* python fait des choses sans nous le dire, comme vérifier de temps en temps que les objets ont tous des noms et les supprimer s'ils n'en ont plus (on appelle ça un [ramasse miette](https://fr.wikipedia.org/wiki/Ramasse-miettes_(informatique))) : python lui-même exécute des instruction qui ne sont pas dans notre algorithme.
+
+Mais pour ce qui nous importe, on va dire que c'est pas grave parce que ces *temps parasites* :
+
+* sont négligeables lorsque la taille des entrées deviennent grandes
+* ils peuvent être vues comme des constantes ans le calcul de notre complexité : il ne participent donc pas à l'allure générale de la courbe de complexité.
+
+Le protocole de calcul sera alors le suivant :
+
+1. on note l'heure $t_1$ juste avant d'exécuter l'algorithme
+2. on exécute l'algorithme
+3. on note l'heure $t_2$ juste après exécution l'algorithme
+
+La complexité temporelle sera alors : $\Delta = t_2 - t_1$.
+
 ### comment faire
 
-> dans un fichier *"temp.py"* on fait nos essais
-{: .tbd}
+On va utiliser les fonctions simple du module [time](https://docs.python.org/fr/3/library/time.html). Faisons une petite fonction de test pour voir comment on peut utiliser la mesure du temps dans notre programme.
 
-### expérimentations
-
-## graphique de la complexité temporelle
-
-### comment faire
-
->avec matplotlib un dessin (mais pas lié à la complexité). on mets les axes, on contrôle Interactif. On le sauve en pdf
-{: .tbd}
-
-### expérimentations
-
-
-Vous allez implémenter les 2 algorithmes en vrai et en python.
-
-Vous vous concentrerez  sur 3 points :
-
-* on veut que notre code soit juste
-* on veut pouvoir le modifier/ajouter des fonctionnalités rapidement
-* on veut pouvoir partager notre code avec soit-même dans d'autres projet, son équipe ou le monde)
-
-## pour aller plus loin
-
-### dessins
-
-on utilise seaborn qui est bien plus joli (on l'installe si nécessaire). ON choisi les couleurs parmi une palette de peu de couleurs
-
-### rapports de complexités réelles et théoriques
-
-## le projet exponentiation
-
-suivez le guide.
-
-### crée la structure du projet
-
-* on crée le dossier de notre projet
-* On le glisse dans vscode pour que l'éditeur le comprenne.
-* on crée un fichier main.py et on vérifie en tapant `print("bonjour monde !")` :
-  * que l'on utilise le bon interpréteur python en exécutant le programme
-  * que le linter est opérationnel
-
-### le code
-
-On crée 2 fichiers :
-
-* _"exponentielle.py"_
-* _"test_exponentielle.py"_
-
-#### exponentielle simple
-
-1. Commencer par créer et tester le code de l'exponentielle simple.
-2. Essayer de justifier les tests que vous avez utilisés pour tester votre code :
-   * il doit y en avoir assez pour que vous soyez convaincu que votre code fonctionne
-   * il ne doit pas y en avoir trop (c'est à dire tester plusieurs fos des  choses qui vont faire la même chose dans le code)
-3. une fois que le code est opérationnel (dont les tests passent), créer un programme qui demande deux nombres séparés par une virgule à l'utilisateur et rend l'exponentielle de ces nombres.
-
-#### exponentielle rapide
-
-Faites de même avec l'exponentielle rapide.
-
-Votre programme principale va rendre et le résultat obtenu par l'algorithme simple t par l'algorithme rapide (les deux résultats doivent bien sur coïncider...)
-
-### complexité en temps
-
-L'algorithme rapide doit aller bien plus vite de l'algorithme lent. Vous allez essayer de le voir.
-
-#### se rendre compte du problème
-
-Modifier votre programme principal pour qu'il calcul itérativement toutes les puissances de 2 de $2^1$ à $2^n$ où $n$ est un nombre donné (affecté au début du programme ou donné par un utilisateur).
-
-Ces calculs doivent être fait pour les deux algorithmes : **vous pourrez faire deux fonctions différentes** dans le programme principal et les appeler l'une après l'autre.
-
-Normalement la boucle qui calcule les puissances de 2 pour l'algorithme simple doit aller plus lentement que celle qui calcule toute les puissances de 2 pour l'algorithme rapide.
-
-#### calcul du temps pris
-
-mesurer le temps c'est pas simple parce que :
-
-* notre programme python n'est pas seul sur la machine, tous les programmes actifs s'exécutent souvent en même temps en se [partageant du temps de processeur](https://fr.wikipedia.org/wiki/Temps_partag%C3%A9)
-* python fait des trucs sans nous le dire, comme vérifier de temps en temps que les objets ont tous des noms et les supprimer s'ils n'en ont plus (on appelle ça un [ramasse miette](https://fr.wikipedia.org/wiki/Ramasse-miettes_(informatique)))
-
-Mais pour ce qui nous importe, on va dire que c'est pas grave parce que ça ne prend pas tellement de temps que ça. On va utiliser les fonctions simple du module [time](https://docs.python.org/3/library/time.html). Faisons une petite fonction de validation dans un nouveau fichier (que vous pourrez appeler *"expérimentation.py"* par exemple) pour voir comment on peut utiliser la mesure du temps dans notre programme.
-
-Utilisation de la fonction [time](https://docs.python.org/fr/3/library/time.html#time.time) du module [time](https://docs.python.org/3/library/time.html) de python :
+> Créez un fichier *"temp_mesure.py"* (*temp* pour *temporaire*) et mettez y le code suivant :
+{: .a-faire}
 
 ```python
 import time
 
-depart = time.time()
+t1 = time.time()
+time.sleep(1)
+t2 = time.time()
 
-# le code dont on veut mesurer le temps d'exécution
+delta = t2 - t1
 
-fin = time.time()
-
-print(fin - depart)  # doit afficher environ 2
+print(delta)
 ```
 
-Testez le code ci-dessus en utilisant la fonction `sleep` (cherchez là dans la doc du [module time](https://docs.python.org/3/library/time.html)) du module time (que fait-elle ?)
+Le code précédent utilise deux fonction du module [time](https://docs.python.org/fr/3/library/time.html) :
 
-Adaptez ensuite le code pour que le programme principal donne le temps mis pour faire tous les calculs avec simple et tous les calculs avec rapide.
+* [time.time()](https://docs.python.org/fr/3/library/time.html#time.time) qui rend le nombre de seconde depuis l'[origine des temps informatique](https://fr.wikipedia.org/wiki/Heure_Unix), c'est à dire le 1er janvier 1970
+* [`time.sleep(1)`](https://docs.python.org/fr/3/library/time.html#time.sleep) qui ne fait rien pendant un nombre de secondes données en entrée.
 
-## On raffine
+> Exécutez plusieurs fois le code précédent pour voir que l'on passe bien environ 1seconde à ne rien faire.
+{: .a-faire}
 
-### temps et complexité
+### expérimentations
 
-Rendez deux listes : `temps_simple` et `temps_rapide` de longeur 2000 telle que `temps_simple[i]`  (*respectivement* `temps_rapide[i]`)contienne le temps mis par l'algorithme simple (*resp.* rapide) pour calculer $2^i$.
+> Créer un programme principal (dans le fichier *"main.py"*) qui demande à l'utilisateur un exposant $y$. Ce programme donne ensuite le temps mis pour exécuter $3^y$ avec l'algorithme naïf et avec l'algorithme rapide.
+{: .a-faire}
 
-Comparez les deux listes :
+## graphique de la complexité temporelle
 
-* vers quoi doit tendre `temps_simple[i] / temps_rapide[i]` ?
-* `log(temps_simple[i]) / temps_rapide[i]` ?
+On veut maintenant voir l'évolution de la complexité selon la taille de l'exposant. On va pour cela représenter graphiquement cette évolution en utilisant [matplotlib](https://matplotlib.org/).
 
-Vérifiez le expérimentalement.
+### comment faire {#graphique-comment}
 
-### dessin des complexité
+[matplotlib](https://matplotlib.org/) peut être une bibliothèque difficile à utiliser. Pour que tout se passe au mieux, on va toujours utiliser la même procédure :
 
-On va utiliser [matplotlib](https://matplotlib.org/) pour représenter graphiquement nos temps.
+1. on crée les données à représenter
+2. créer le graphique avec matplotlib : `fig, ax = plt.subplots(figsize=(20, 5))`
+3. ajouter des choses au dessin : plusieurs commandes ajoutant des choses au dessin, c'est à dire `ax`
+4. représenter la figure (commande `plt.show()`) ou la sauver dans un fichier
 
-#### installation de matplotlib
-
-Pour installer matplotlib plusieurs possibilités :
-
-* directement via pip3/pip :
-  * `pip install matplotlib` sous windows
-  * `pip3 install matplotlib` sous mac/linux (voir `sudo pip3 install matplotlib` sur unix ou si vous n'avez pas installé python3 avec [brew](https://brew.sh/))
-  * avec [anaconda](https://www.anaconda.com/), matplotlib est déjà installé.
-
-#### utilisation basique de matplotlib
-
-> **Remarque** : je vais utiliser les lignes de codes trouvées sur le net et je vais me conformer à l'usage en utilisant `import matplotlib.pyplot as plt` même si ça viole toutes les règles et bonnes pratiques en informatique.
-
-Pour utiliser la  bibliothèque  :
-
-```python
-import matplotlib.pyplot as plt
-```
-
-Ensuite, la façon dont on procède pour dessier est la suivante :
-
-1. on crée un dessin (composé) avec la commande [subplots](https://www.educative.io/edpresso/what-is-a-subplots-in-matplotlib)
-2. on ajoute des éléments à notre dessin (points, courbe, rectangle, disque, etc)
-3. on affiche le résultat (ou on le sauve)
-
-exemple :
+> Créez un fichier *"temp_matplotlib.py"*  et mettez y le code suivant :
+{: .a-faire}
 
 ```python
 import matplotlib.pyplot as plt
 
-# 1. créer le dessin (ici ax)
-fig, ax = plt.subplots(figsize=(20, 5)) 
-
-#  2 ajouter des choses au dessin
-
-# 2.1 on crée y  x ** 2
+# 1. création des données
 x = []
 y = []
 for i in range(1000):
-  x.append(i)
-  y.append(i ** 2)
+    x.append(i)
+    y.append(i ** 2)
 
-# 2.2 on l'ajoute à notre dessin (l'ax)
-ax.plot(x, y)
+# 2. créer le dessin (ici ax)
+fig, ax = plt.subplots(figsize=(20, 5))
 
-# 3. représenter le graphique
-plt.show()
-```
+# 2.1 limite des axes
+ax.set_xlim(0, 1000)
+ax.set_ylim(0, 1000000)
 
-On peut ensuite raffiner en :
-
-* choisissant des [limites aux axes](https://www.tutorialspoint.com/matplotlib/matplotlib_setting_limits.htm)
-* ajoutant des [légendes](https://matplotlib.org/3.1.1/gallery/subplots_axes_and_figures/figure_title.html)
-
-```python
-import matplotlib.pyplot as plt
-
-fig, ax = plt.subplots(figsize=(20, 5)) 
-
-# des axes 
-ax.set_xlim(-100, 100)
-ax.set_ylim(-1000, 1000)
-
-# les légendes 
+# 2.2 les légendes
 ax.set_title("la courbe y=x^2")
 ax.set_xlabel('x')
 ax.set_ylabel('x^2')
 
-
-x = []
-y = []
-for i in range(1000):
-  x.append(i)
-  y.append(i ** 2)
-
+# 3. ajouter des choses au dessin
 
 ax.plot(x, y)
 
+# 4. représenter le graphique
 plt.show()
+
 ```
 
-Enfin, on peut facilement superposer plusieurs courbes (les couleurs sont au format [rbg](https://fr.wikipedia.org/wiki/Rouge_vert_bleu)) :
+> Pour sauver votre graphique au format pdf, vous pouvez remplacez la partie 4 par la ligne : `plt.savefig("graphique.pdf", format="pdf", bbox_inches='tight')`.
 
-```python
-import matplotlib.pyplot as plt
-  
-from math import log
+### expérimentations {#graphique-test}
 
-fig, ax = plt.subplots(figsize=(20, 5))
+> Créez un fichier *"main_graphique.py"* et représentez sur le même graphique (il suffit de mettre deux instructions `ax.plot`) le temps mis par les deux algorithmes pour effectuer l'exponentiation de $ 3^y$  où $y$ varie de $0$ à $100000$ par pas de $1000$.
+{: .a-faire}
 
-x = range(10, 101)
+Attention au constantes de votre code :
 
-x_fois_2 = []
-x_carre = []
-x_log_x = []
-for i in x:
-    x_fois_2.append(i * 2)
-    x_carre.append(i ** 2)
-    x_log_x.append(i * log(i))
-
-plt.plot(x, x_fois_2, color="#ff0000")
-plt.plot(x, x_carre, color="#00ff00")
-plt.plot(x, x_log_x, color="#0000ff")
-
-plt.show()
-```
-
-#### à vous
-
-Utilisez les codes précédents  pour superposer les deux listes de temps et voir si l'on obtient bien les courbes théoriques de complexité.
+> Mantra : pas de [magic numbers](https://en.wikipedia.org/wiki/Magic_number_(programming)#Unnamed_numerical_constants) dans le code.
+>
+> On remplace les nombres pas des constantes que l'on identifie dans le code par un nom (en majuscule) signifiant.
+{: .note}
