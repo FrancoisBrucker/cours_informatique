@@ -68,12 +68,6 @@
   </ul>
 </blockquote>
 
-<blockquote class="tbd">
-  <p>on fait du bon python : pas de rouge dans le style.
-on suit les bonnes pratiques
-lien vers le corrigé</p>
-</blockquote>
-
 <p>Ce projet suit l’<a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/etude-exponentiation.html">étude de l’exponentiation</a>. Vous allez vérifier expérimentalement que la complexité de l’<a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/etude-exponentiation.html#algo-naif">algorithme naïf</a> est en $\mathcal{O}(\mbox{exposant})$ et celle de l’<a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/etude-exponentiation.html#algo-rapide">exponentiation indienne</a> en $\mathcal{O}(\ln(\mbox{exposant}))$.</p>
 
 <h2 id="mise-en-place">mise en place</h2>
@@ -88,7 +82,7 @@ lien vers le corrigé</p>
       <ul>
         <li><em>“main.py”</em></li>
         <li><em>“exponentiation.py”</em></li>
-        <li><em>“tests_exponentiation.py”</em></li>
+        <li><em>“test_exponentiation.py”</em></li>
       </ul>
     </li>
   </ol>
@@ -98,303 +92,221 @@ lien vers le corrigé</p>
 <h3 id="vscode">vscode</h3>
 
 <ol>
-  <li>on vérifie que python est ok (print(bonjour monde) ok avec le triangle vert et le terminal)</li>
+  <li>on vérifie que python est ok : le python utilisé par vscode (exécution via le triangle en haut à droite de la fenêtre) et le terminal doivent être le même :
+    <ul>
+      <li>le python utilisé par vscode est marqué dans la <a href="https://code.visualstudio.com/docs/getstarted/userinterface">barre de status</a>
+</li>
+      <li>par défaut, c’est le paramètre <code class="language-plaintext highlighter-rouge">python.defaultInterpreterPath</code>
+</li>
+      <li>dans un terminal, la commande <code class="language-plaintext highlighter-rouge">which python</code> (ou <code class="language-plaintext highlighter-rouge">python3</code> si votre interpréteur est <code class="language-plaintext highlighter-rouge">python3</code>) vous indique quel interpréteur python est utilisé lorsque vous tapez <code class="language-plaintext highlighter-rouge">python</code>.</li>
+    </ul>
+  </li>
   <li>on vérifie que le linter est actif (en faisant une faute de style)</li>
 </ol>
 
 <blockquote class="a-faire">
-  <p>On se force, avant que ça ne devienne un automatisme, d’écrire du code stylé. C’est à dire sans que le linter ne se fâche.</p>
+  <p>On se force, jusqu’à que cela devienne un automatisme, d’écrire du code stylé. C’est à dire sans que le linter ne se fâche.</p>
 </blockquote>
 
 <h3 id="bibliothèques">bibliothèques</h3>
 
-<blockquote class="tbd">
-  <p>matplotlib
-pytest mais on devrait déjà l’avoir</p>
+<p>Nous aurons besoin d’utiliser deux bibliothèques (<a href="https://matplotlib.org/">matplotlib</a> pour l’affichage des courbes de complexité et <a href="https://docs.pytest.org/en/6.2.x/">pytest</a> por nos tests). Gérer les bibliothèques python se fait avec l’utilitaire pip que l’on utilise pour interpréteur donné comme ça : <code class="language-plaintext highlighter-rouge">python -m pip</code>.</p>
+
+<blockquote class="a-faire">
+  <p>Dans un terminal :</p>
+
+  <ol>
+    <li>vérifiez les bibliothèques déjà installées pour votre interpréteur : <code class="language-plaintext highlighter-rouge">python -m pip list</code> (remarquez bien qu’ici <code class="language-plaintext highlighter-rouge">list</code> est un paramètre de <code class="language-plaintext highlighter-rouge">pip</code> et non de <code class="language-plaintext highlighter-rouge">python</code>)</li>
+    <li>si besoin installez <a href="https://matplotlib.org/">matplotlib</a> (<code class="language-plaintext highlighter-rouge">python -m pip install matplotlib</code>) et <a href="https://docs.pytest.org/en/6.2.x/">pytest</a> : <code class="language-plaintext highlighter-rouge">python -m pip install pytest</code>
+</li>
+  </ol>
 </blockquote>
 
 <h2 id="le-code">le code</h2>
 
 <h3 id="algorithme-naif">algorithme naif</h3>
 
-<ol>
-  <li>l’algorithme</li>
-  <li>les tests de l’étude + un autre plus gros</li>
-</ol>
+<blockquote class="a-faire">
+  <ul>
+    <li>dans le fichier <em>“exponentiation.py”</em> : implémetez l’algorithme naïf dans une fonction nommée <code class="language-plaintext highlighter-rouge">puissance_naif</code>
+</li>
+    <li>dans le fichier <em>“test_exponentiation.py”</em> : implémetez les tests de l’algorithme naïf :
+      <ul>
+        <li>vérifiez que les cas simples avec nombre et/ou exposant à 1 fonctionnent</li>
+        <li>vérifiez qu’un cas général est ok (comme $2^4$ par exemple)</li>
+        <li>vérifiez que les cas particuliers avec l’exposant et/ou nombre valant 0 fonctionnent</li>
+      </ul>
+    </li>
+  </ul>
+
+  <p>Vérifier que vos tests se lancent bien avec l’erlenmeyer et dans le terminal.</p>
+
+</blockquote>
+
+<p>Pour les tests, on utilisera les règles suivantes :</p>
+
+<blockquote class="note">
+  <p>Organisation des tests :</p>
+
+  <ul>
+    <li>un fichier de test par fichier de code. Chaque fichier de test sea nommé : <em>“test_[nom du fichier de code].py”</em> où <em>[nom du fichier de code]</em> sera le nom du fichier (ne mettez pas les <em>[]</em>)</li>
+    <li>chaque test sera nommé en 3 parties : <code class="language-plaintext highlighter-rouge">test_[nom de la fonction_testée]_[ce que l'on teste]</code> où <code class="language-plaintext highlighter-rouge">[nom de la fonction_testée]</code> est le nom de la fonction testée (ne mettez pas les <em>[]</em>) et <code class="language-plaintext highlighter-rouge">[ce que l'on teste]</code> une description succincte (en 1 ou 2 mots max) de ce que l’on teste.</li>
+    <li>un unique <code class="language-plaintext highlighter-rouge">assert</code> par fonction de test : on ne doit tester qu’<strong>une seule chose</strong> par test</li>
+  </ul>
+
+</blockquote>
 
 <h3 id="algorithme-rapide">algorithme rapide</h3>
 
-<ol>
-  <li>l’algorithme</li>
-  <li>les tests de l’étude + un autre plus gros</li>
-</ol>
+<blockquote class="a-faire">
+  <ul>
+    <li>dans le fichier <em>“exponentiation.py”</em> : implémetez l’algorithme rapide dans une fonction nommée <code class="language-plaintext highlighter-rouge">puissance_rapide</code>
+</li>
+    <li>dans le fichier <em>“test_exponentiation.py”</em> : implémetez les tests de l’algorithme rapide en faisant les même test que pour l’algorithme naïf. :</li>
+  </ul>
+
+  <p>Vérifier que vos tests se lancent bien avec l’erlenmeyer et dans le terminal.</p>
+
+</blockquote>
+
+<blockquote class="attention">
+  <p>Ne supprimez pas les tests de l’algorithme naïf en créant ceux pour l’algorithme rapide ! Vos deux fonctions DOIVENT être testées.</p>
+</blockquote>
 
 <h2 id="complexité-temporelle">complexité temporelle</h2>
 
+<p>La seule façon de mesurer expérimentalement la complexité d’un algorithme est de mesurer la <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/complexite-max-min.html#temps-dex%C3%A9cution">complexité en temps</a> de celui-ci pour une entrée réalisant la complexité maximale.</p>
+
+<p>Ce n’est cependant pas si simple de mesurer ce temps précisément parce que :</p>
+
+<ul>
+  <li>nous ne sommes pas seul sur la machine, tous les programmes actif s’exécutent souvent en même temps en se <a href="https://fr.wikipedia.org/wiki/Temps_partag%C3%A9">partageant du temps de processeur</a> : il est donc difficile de mesurer précisément le temps uniquement pris pour notre algorithme par le processeur.</li>
+  <li>python fait des choses sans nous le dire, comme vérifier de temps en temps que les objets ont tous des noms et les supprimer s’ils n’en ont plus (on appelle ça un <a href="https://fr.wikipedia.org/wiki/Ramasse-miettes_(informatique)">ramasse miette</a>) : python lui-même exécute des instruction qui ne sont pas dans notre algorithme.</li>
+</ul>
+
+<p>Mais pour ce qui nous importe, on va dire que c’est pas grave parce que ces <em>temps parasites</em> :</p>
+
+<ul>
+  <li>sont négligeables lorsque la taille des entrées deviennent grandes</li>
+  <li>ils peuvent être vues comme des constantes ans le calcul de notre complexité : il ne participent donc pas à l’allure générale de la courbe de complexité.</li>
+</ul>
+
+<p>Le protocole de calcul sera alors le suivant :</p>
+
+<ol>
+  <li>on note l’heure $t_1$ juste avant d’exécuter l’algorithme</li>
+  <li>on exécute l’algorithme</li>
+  <li>on note l’heure $t_2$ juste après exécution l’algorithme</li>
+</ol>
+
+<p>La complexité temporelle sera alors : $\Delta = t_2 - t_1$.</p>
+
 <h3 id="comment-faire">comment faire</h3>
 
-<blockquote class="tbd">
-  <p>dans un fichier <em>“temp.py”</em> on fait nos essais</p>
+<p>On va utiliser les fonctions simple du module <a href="https://docs.python.org/fr/3/library/time.html">time</a>. Faisons une petite fonction de test pour voir comment on peut utiliser la mesure du temps dans notre programme.</p>
+
+<blockquote class="a-faire">
+  <p>Créez un fichier <em>“temp_mesure.py”</em> (<em>temp</em> pour <em>temporaire</em>) et mettez y le code suivant :</p>
+</blockquote>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">time</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">t2</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
+
+<span class="n">delta</span> <span class="o">=</span> <span class="n">t2</span> <span class="o">-</span> <span class="n">t1</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">delta</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Le code précédent utilise deux fonction du module <a href="https://docs.python.org/fr/3/library/time.html">time</a> :</p>
+
+<ul>
+  <li>
+<a href="https://docs.python.org/fr/3/library/time.html#time.time">time.time()</a> qui rend le nombre de seconde depuis l’<a href="https://fr.wikipedia.org/wiki/Heure_Unix">origine des temps informatique</a>, c’est à dire le 1er janvier 1970</li>
+  <li>
+<a href="https://docs.python.org/fr/3/library/time.html#time.sleep"><code class="language-plaintext highlighter-rouge">time.sleep(1)</code></a> qui ne fait rien pendant un nombre de secondes données en entrée.</li>
+</ul>
+
+<blockquote class="a-faire">
+  <p>Exécutez plusieurs fois le code précédent pour voir que l’on passe bien environ 1seconde à ne rien faire.</p>
 </blockquote>
 
 <h3 id="expérimentations">expérimentations</h3>
 
+<blockquote class="a-faire">
+  <p>Créer un programme principal (dans le fichier <em>“main.py”</em>) qui demande à l’utilisateur un exposant $y$. Ce programme donne ensuite le temps mis pour exécuter $3^y$ avec l’algorithme naïf et avec l’algorithme rapide.</p>
+</blockquote>
+
 <h2 id="graphique-de-la-complexité-temporelle">graphique de la complexité temporelle</h2>
 
-<h3 id="comment-faire-1">comment faire</h3>
+<p>On veut maintenant voir l’évolution de la complexité selon la taille de l’exposant. On va pour cela représenter graphiquement cette évolution en utilisant <a href="https://matplotlib.org/">matplotlib</a>.</p>
 
-<blockquote class="tbd">
-  <p>avec matplotlib un dessin (mais pas lié à la complexité). on mets les axes, on contrôle Interactif. On le sauve en pdf</p>
-</blockquote>
+<h3 id="graphique-comment">comment faire</h3>
 
-<h3 id="expérimentations-1">expérimentations</h3>
-
-<p>Vous allez implémenter les 2 algorithmes en vrai et en python.</p>
-
-<p>Vous vous concentrerez  sur 3 points :</p>
-
-<ul>
-  <li>on veut que notre code soit juste</li>
-  <li>on veut pouvoir le modifier/ajouter des fonctionnalités rapidement</li>
-  <li>on veut pouvoir partager notre code avec soit-même dans d’autres projet, son équipe ou le monde)</li>
-</ul>
-
-<h2 id="pour-aller-plus-loin">pour aller plus loin</h2>
-
-<h3 id="dessins">dessins</h3>
-
-<p>on utilise seaborn qui est bien plus joli (on l’installe si nécessaire). ON choisi les couleurs parmi une palette de peu de couleurs</p>
-
-<h3 id="rapports-de-complexités-réelles-et-théoriques">rapports de complexités réelles et théoriques</h3>
-
-<h2 id="le-projet-exponentiation">le projet exponentiation</h2>
-
-<p>suivez le guide.</p>
-
-<h3 id="crée-la-structure-du-projet">crée la structure du projet</h3>
-
-<ul>
-  <li>on crée le dossier de notre projet</li>
-  <li>On le glisse dans vscode pour que l’éditeur le comprenne.</li>
-  <li>on crée un fichier main.py et on vérifie en tapant <code class="language-plaintext highlighter-rouge">print("bonjour monde !")</code> :
-    <ul>
-      <li>que l’on utilise le bon interpréteur python en exécutant le programme</li>
-      <li>que le linter est opérationnel</li>
-    </ul>
-  </li>
-</ul>
-
-<h3 id="le-code-1">le code</h3>
-
-<p>On crée 2 fichiers :</p>
-
-<ul>
-  <li><em>“exponentielle.py”</em></li>
-  <li><em>“test_exponentielle.py”</em></li>
-</ul>
-
-<h4 id="exponentielle-simple">exponentielle simple</h4>
+<p><a href="https://matplotlib.org/">matplotlib</a> peut être une bibliothèque difficile à utiliser. Pour que tout se passe au mieux, on va toujours utiliser la même procédure :</p>
 
 <ol>
-  <li>Commencer par créer et tester le code de l’exponentielle simple.</li>
-  <li>Essayer de justifier les tests que vous avez utilisés pour tester votre code :
-    <ul>
-      <li>il doit y en avoir assez pour que vous soyez convaincu que votre code fonctionne</li>
-      <li>il ne doit pas y en avoir trop (c’est à dire tester plusieurs fos des  choses qui vont faire la même chose dans le code)</li>
-    </ul>
-  </li>
-  <li>une fois que le code est opérationnel (dont les tests passent), créer un programme qui demande deux nombres séparés par une virgule à l’utilisateur et rend l’exponentielle de ces nombres.</li>
+  <li>on crée les données à représenter</li>
+  <li>créer le graphique avec matplotlib : <code class="language-plaintext highlighter-rouge">fig, ax = plt.subplots(figsize=(20, 5))</code>
+</li>
+  <li>ajouter des choses au dessin : plusieurs commandes ajoutant des choses au dessin, c’est à dire <code class="language-plaintext highlighter-rouge">ax</code>
+</li>
+  <li>représenter la figure (commande <code class="language-plaintext highlighter-rouge">plt.show()</code>) ou la sauver dans un fichier</li>
 </ol>
 
-<h4 id="exponentielle-rapide">exponentielle rapide</h4>
-
-<p>Faites de même avec l’exponentielle rapide.</p>
-
-<p>Votre programme principale va rendre et le résultat obtenu par l’algorithme simple t par l’algorithme rapide (les deux résultats doivent bien sur coïncider…)</p>
-
-<h3 id="complexité-en-temps">complexité en temps</h3>
-
-<p>L’algorithme rapide doit aller bien plus vite de l’algorithme lent. Vous allez essayer de le voir.</p>
-
-<h4 id="se-rendre-compte-du-problème">se rendre compte du problème</h4>
-
-<p>Modifier votre programme principal pour qu’il calcul itérativement toutes les puissances de 2 de $2^1$ à $2^n$ où $n$ est un nombre donné (affecté au début du programme ou donné par un utilisateur).</p>
-
-<p>Ces calculs doivent être fait pour les deux algorithmes : <strong>vous pourrez faire deux fonctions différentes</strong> dans le programme principal et les appeler l’une après l’autre.</p>
-
-<p>Normalement la boucle qui calcule les puissances de 2 pour l’algorithme simple doit aller plus lentement que celle qui calcule toute les puissances de 2 pour l’algorithme rapide.</p>
-
-<h4 id="calcul-du-temps-pris">calcul du temps pris</h4>
-
-<p>mesurer le temps c’est pas simple parce que :</p>
-
-<ul>
-  <li>notre programme python n’est pas seul sur la machine, tous les programmes actifs s’exécutent souvent en même temps en se <a href="https://fr.wikipedia.org/wiki/Temps_partag%C3%A9">partageant du temps de processeur</a>
-</li>
-  <li>python fait des trucs sans nous le dire, comme vérifier de temps en temps que les objets ont tous des noms et les supprimer s’ils n’en ont plus (on appelle ça un <a href="https://fr.wikipedia.org/wiki/Ramasse-miettes_(informatique)">ramasse miette</a>)</li>
-</ul>
-
-<p>Mais pour ce qui nous importe, on va dire que c’est pas grave parce que ça ne prend pas tellement de temps que ça. On va utiliser les fonctions simple du module <a href="https://docs.python.org/3/library/time.html">time</a>. Faisons une petite fonction de validation dans un nouveau fichier (que vous pourrez appeler <em>“expérimentation.py”</em> par exemple) pour voir comment on peut utiliser la mesure du temps dans notre programme.</p>
-
-<p>Utilisation de la fonction <a href="https://docs.python.org/fr/3/library/time.html#time.time">time</a> du module <a href="https://docs.python.org/3/library/time.html">time</a> de python :</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">time</span>
-
-<span class="n">depart</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
-
-<span class="c1"># le code dont on veut mesurer le temps d'exécution
-</span>
-<span class="n">fin</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
-
-<span class="k">print</span><span class="p">(</span><span class="n">fin</span> <span class="o">-</span> <span class="n">depart</span><span class="p">)</span>  <span class="c1"># doit afficher environ 2
-</span></code></pre></div></div>
-
-<p>Testez le code ci-dessus en utilisant la fonction <code class="language-plaintext highlighter-rouge">sleep</code> (cherchez là dans la doc du <a href="https://docs.python.org/3/library/time.html">module time</a>) du module time (que fait-elle ?)</p>
-
-<p>Adaptez ensuite le code pour que le programme principal donne le temps mis pour faire tous les calculs avec simple et tous les calculs avec rapide.</p>
-
-<h2 id="on-raffine">On raffine</h2>
-
-<h3 id="temps-et-complexité">temps et complexité</h3>
-
-<p>Rendez deux listes : <code class="language-plaintext highlighter-rouge">temps_simple</code> et <code class="language-plaintext highlighter-rouge">temps_rapide</code> de longeur 2000 telle que <code class="language-plaintext highlighter-rouge">temps_simple[i]</code>  (<em>respectivement</em> <code class="language-plaintext highlighter-rouge">temps_rapide[i]</code>)contienne le temps mis par l’algorithme simple (<em>resp.</em> rapide) pour calculer $2^i$.</p>
-
-<p>Comparez les deux listes :</p>
-
-<ul>
-  <li>vers quoi doit tendre <code class="language-plaintext highlighter-rouge">temps_simple[i] / temps_rapide[i]</code> ?</li>
-  <li>
-<code class="language-plaintext highlighter-rouge">log(temps_simple[i]) / temps_rapide[i]</code> ?</li>
-</ul>
-
-<p>Vérifiez le expérimentalement.</p>
-
-<h3 id="dessin-des-complexité">dessin des complexité</h3>
-
-<p>On va utiliser <a href="https://matplotlib.org/">matplotlib</a> pour représenter graphiquement nos temps.</p>
-
-<h4 id="installation-de-matplotlib">installation de matplotlib</h4>
-
-<p>Pour installer matplotlib plusieurs possibilités :</p>
-
-<ul>
-  <li>directement via pip3/pip :
-    <ul>
-      <li>
-<code class="language-plaintext highlighter-rouge">pip install matplotlib</code> sous windows</li>
-      <li>
-<code class="language-plaintext highlighter-rouge">pip3 install matplotlib</code> sous mac/linux (voir <code class="language-plaintext highlighter-rouge">sudo pip3 install matplotlib</code> sur unix ou si vous n’avez pas installé python3 avec <a href="https://brew.sh/">brew</a>)</li>
-      <li>avec <a href="https://www.anaconda.com/">anaconda</a>, matplotlib est déjà installé.</li>
-    </ul>
-  </li>
-</ul>
-
-<h4 id="utilisation-basique-de-matplotlib">utilisation basique de matplotlib</h4>
-
-<blockquote>
-  <p><strong>Remarque</strong> : je vais utiliser les lignes de codes trouvées sur le net et je vais me conformer à l’usage en utilisant <code class="language-plaintext highlighter-rouge">import matplotlib.pyplot as plt</code> même si ça viole toutes les règles et bonnes pratiques en informatique.</p>
+<blockquote class="a-faire">
+  <p>Créez un fichier <em>“temp_matplotlib.py”</em>  et mettez y le code suivant :</p>
 </blockquote>
-
-<p>Pour utiliser la  bibliothèque  :</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-</code></pre></div></div>
-
-<p>Ensuite, la façon dont on procède pour dessier est la suivante :</p>
-
-<ol>
-  <li>on crée un dessin (composé) avec la commande <a href="https://www.educative.io/edpresso/what-is-a-subplots-in-matplotlib">subplots</a>
-</li>
-  <li>on ajoute des éléments à notre dessin (points, courbe, rectangle, disque, etc)</li>
-  <li>on affiche le résultat (ou on le sauve)</li>
-</ol>
-
-<p>exemple :</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 
-<span class="c1"># 1. créer le dessin (ici ax)
-</span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span> 
-
-<span class="c1">#  2 ajouter des choses au dessin
-</span>
-<span class="c1"># 2.1 on crée y  x ** 2
+<span class="c1"># 1. création des données
 </span><span class="n">x</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
-  <span class="n">x</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-  <span class="n">y</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">x</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">y</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
 
-<span class="c1"># 2.2 on l'ajoute à notre dessin (l'ax)
-</span><span class="n">ax</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="c1"># 2. créer le dessin (ici ax)
+</span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 
-<span class="c1"># 3. représenter le graphique
-</span><span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
-</code></pre></div></div>
+<span class="c1"># 2.1 limite des axes
+</span><span class="n">ax</span><span class="p">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000000</span><span class="p">)</span>
 
-<p>On peut ensuite raffiner en :</p>
-
-<ul>
-  <li>choisissant des <a href="https://www.tutorialspoint.com/matplotlib/matplotlib_setting_limits.htm">limites aux axes</a>
-</li>
-  <li>ajoutant des <a href="https://matplotlib.org/3.1.1/gallery/subplots_axes_and_figures/figure_title.html">légendes</a>
-</li>
-</ul>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span> 
-
-<span class="c1"># des axes 
-</span><span class="n">ax</span><span class="p">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
-
-<span class="c1"># les légendes 
+<span class="c1"># 2.2 les légendes
 </span><span class="n">ax</span><span class="p">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">"la courbe y=x^2"</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">'x'</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">'x^2'</span><span class="p">)</span>
 
-
-<span class="n">x</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
-  <span class="n">x</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-  <span class="n">y</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
-
-
+<span class="c1"># 3. ajouter des choses au dessin
+</span>
 <span class="n">ax</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+<span class="c1"># 4. représenter le graphique
+</span><span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+
 </code></pre></div></div>
 
-<p>Enfin, on peut facilement superposer plusieurs courbes (les couleurs sont au format <a href="https://fr.wikipedia.org/wiki/Rouge_vert_bleu">rbg</a>) :</p>
+<blockquote>
+  <p>Pour sauver votre graphique au format pdf, vous pouvez remplacez la partie 4 par la ligne : <code class="language-plaintext highlighter-rouge">plt.savefig("graphique.pdf", format="pdf", bbox_inches='tight')</code>.</p>
+</blockquote>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-  
-<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">log</span>
+<h3 id="graphique-test">expérimentations</h3>
 
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<blockquote class="a-faire">
+  <p>Créez un fichier <em>“main_graphique.py”</em> et représentez sur le même graphique (il suffit de mettre deux instructions <code class="language-plaintext highlighter-rouge">ax.plot</code>) le temps mis par les deux algorithmes pour effectuer l’exponentiation de $ 3^y$  où $y$ varie de $0$ à $100000$ par pas de $1000$.</p>
+</blockquote>
 
-<span class="n">x</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
+<p>Attention au constantes de votre code :</p>
 
-<span class="n">x_fois_2</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">x_carre</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">x_log_x</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
-    <span class="n">x_fois_2</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
-    <span class="n">x_carre</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
-    <span class="n">x_log_x</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="n">log</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+<blockquote class="note">
+  <p>Mantra : pas de <a href="https://en.wikipedia.org/wiki/Magic_number_(programming)#Unnamed_numerical_constants">magic numbers</a> dans le code.</p>
 
-<span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x_fois_2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">"#ff0000"</span><span class="p">)</span>
-<span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x_carre</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">"#00ff00"</span><span class="p">)</span>
-<span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x_log_x</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">"#0000ff"</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
-</code></pre></div></div>
-
-<h4 id="à-vous">à vous</h4>
-
-<p>Utilisez les codes précédents  pour superposer les deux listes de temps et voir si l’on obtient bien les courbes théoriques de complexité.</p>
+  <p>On remplace les nombres pas des constantes que l’on identifie dans le code par un nom (en majuscule) signifiant.</p>
+</blockquote>
 
   </div>
 

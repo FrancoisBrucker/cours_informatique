@@ -160,14 +160,14 @@ Comme $1 &lt; 2 \cdot N^\alpha$ pour $\alpha \geq 0$ et $N&gt; 1$, on a $N^p &lt
 
 </div></details>
 
-<details><summary>Démonstration de  $\mathcal{O}(f(N)) + \mathcal{O}(g(N)) \Rightarrow \mathcal{O}(f(N) + g(N))$</summary><div>
+<details><summary>Démonstration de $\mathcal{O}(f(N)) + \mathcal{O}(g(N)) \Rightarrow \mathcal{O}(f(N) + g(N))$</summary><div>
 <p>Soient $f’(N) = \mathcal{O}(f(N))$ et $g’ = \mathcal{O}(g(N))$, il existe donc $c_0$, $c’_0$, $N_0$ et $N’_0$ tels que $f’(N) &lt; c_0 f(N)$ pour $N &gt; N_0$ et $g’(N) &lt; c’_0 g(N)$ pour $N &gt; N’_0$.</p>
 
 <p>On a alors $f’(N) + g’(N) &lt; \max \{c_0, c’_0\} (f(N) + g(N))$ pour $N &gt; \max \{ N_0, N’_0\}$ : $f’(N) + g’(N) = \mathcal{O}(f(N) + g(N))$.</p>
 
 </div></details>
 
-<details><summary>$\mathcal{O}(f(N)) \cdot \mathcal{O}(g(N)) \Rightarrow \mathcal{O}(f(N) \cdot g(N))$</summary><div>
+<details><summary>Démonstration de $\mathcal{O}(f(N)) \cdot \mathcal{O}(g(N)) \Rightarrow \mathcal{O}(f(N) \cdot g(N))$</summary><div>
 <p>Soient $f’(N) = \mathcal{O}(f(N))$ et $g’ = \mathcal{O}(g(N))$, il existe donc $c_0$, $c’_0$, $N_0$ et $N’_0$ tels que $f’(N) &lt; c_0 f(N)$ pour $N &gt; N_0$ et $g’(N) &lt; c’_0 g(N)$ pour $N &gt; N’_0$.</p>
 
 <p>On a alors $f’(N) \cdot g’(N) &lt; \max \{c_0, c’_0, 1 \}^2 (f(N) \cdot g(N))$ pour $N &gt; \max \{ N_0, N’_0\}$ car $f$ et $g$ sont positives : $f’(N) \cdot g’(N) = \mathcal{O}(f(N) \cdot g(N))$.</p>
@@ -588,7 +588,7 @@ if ((x &gt; 12) AND (y &lt; 36)):
   <p>Pour générer le tableau, on suppose que l’on peut résoudre $K$ opérations en 1 heure. On cherche alors $n$ tel que $f(n)$ soit égal à $K$ et donc $n = f^{-1}(K)$. En remarquant que $K$ est égal à la taille maximale d’un problème de complexité linéaire résoluble en 1heure, on la taille maximale $n$ d’un problème de complexité $f(n)$ résoluble en 1 heure pour une machine allant $k$ fois pus vite qu’une machine actuelle vaut $f^{-1}(k \cdot N1)$.</p>
 </blockquote>
 
-<h3 id="le-cas-particulier-de-n">le cas particulier de n!</h3>
+<h3 id="le-cas-particulier-de-n">le cas particulier de $n!$</h3>
 
 <p>Souvent les étudiants veulent que leurs algorithmes soient en $\mathcal{O}(n!)$. Ce n’est <strong>presque jamais exact</strong> ! En effet, la <a href="https://fr.wikipedia.org/wiki/Formule_de_Stirling">formule de sirling</a> donne l’équivalent suivant pour $n!$ :</p>
 
