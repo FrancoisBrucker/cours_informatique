@@ -29,9 +29,9 @@ Prouver qu'un algorithme s'arrête fait partie des problèmes théoriques diffic
 >
 {: .code}
 
-Notez que bien souvent prouver un algorithme et le créer est la même chose. Comprendre comment on peut résoudre un problème donné nous donnera l'algorithme et récproquement.
+Notez que bien souvent prouver un algorithme et le créer est la même chose. Comprendre comment on peut résoudre un problème donné nous donnera l'algorithme et réciproquement.
 
-A part la recommendation ci-dessus, il n'existe pas vraiment de règles à appliquer pour prouver un algorithme. Seule l'expérience et l'étude des algorithmes classique vous permettra de trouver facilement comment prouver un algorithme.
+A part la recommandation ci-dessus, il n'existe pas vraiment de règles à appliquer pour prouver un algorithme. Seule l'expérience et l'étude des algorithmes classique vous permettra de trouver facilement comment prouver un algorithme.
 
 > dans la suite, les algorithmes seront tous donnés en python
 
@@ -46,13 +46,13 @@ def factorielle(n):
 
 * finitude : Si $n$ est un réel, l'algorithme va s'arrêter : $n$ décroît strictement à chaque appelle récursif et on stoppe si $n \leq 1$.
 * complexité : dépend de $n$, le nombre pas sa taille.
-* preuve : Pra récurrence sur $n$, avec $n$ entier positif.
+* preuve : par récurrence sur $n$, avec $n$ entier positif.
   * entrée : des entiers positifs
-  * fonction de récurrence. Si $n=0$ ça marche. Si ça marche pour l'entrée n-1, ça marche pour $n$ car la fonction rend $n \cdot factorielle(n-1)$ qui vaut $n \cdot (n-1)!$ par hypothèse de récurence.
+  * fonction de récurrence. Si $n=0$ ça marche. Si ça marche pour l'entrée n-1, ça marche pour $n$ car la fonction rend $n \cdot factorielle(n-1)$ qui vaut $n \cdot (n-1)!$ par hypothèse de récurrence.
 
 ## maximum d'un tableau
 
-On va voir 2 algorithmes pour caluler la valeure maximum d'un tableau de réels.
+On va voir 2 algorithmes pour calculer la valeur maximum d'un tableau de réels.
 
 ### algorithme itératif
 

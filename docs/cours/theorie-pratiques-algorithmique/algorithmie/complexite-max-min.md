@@ -257,9 +257,9 @@ print(l.max())
 
 Est de complexité $\mathcal{O}(n)$  où $n$ est la taille da liste `l` et pas $\mathcal{O}(1)$. Il **faut** en effet parcourir tous les éléments d'une liste (a priori non triée) pour en trouver le maximum.
 
-### exemple
+## exemple de la recherche d'un élément dans un tableau {#exemple-recherche}
 
-Prenons par exemple l'algorithme écrit en python suivant :
+Prenons par exemple l'algorithme suivant, écrit en python :
 
 ```python
 def est_dans_tableau(valeur, tableau):
@@ -269,7 +269,9 @@ def est_dans_tableau(valeur, tableau):
     return False
 ```
 
-L'intérieur de la boucle est constitué du code :
+Cet algorithme recherche si le paramètre `valeur` est un élément de `tableau`.
+
+Calculons ses complexité maximale et minimale. L'intérieur de la boucle est constitué du code :
 
 ```python
 if x == valeur:

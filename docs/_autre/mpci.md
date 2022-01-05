@@ -64,6 +64,25 @@ A partir de la semaine 2, les tests de début séance seront à écrire en [mark
 1. [étude : l'exponentiation]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude-exponentiation.md %})
 2. [projet : l'exponentiation]({% link cours/theorie-pratiques-algorithmique/coder/projet-exponentiation.md %})
 
+### semaine 3
+
+#### mercredi {#m-3}
+
+1. [complexité en moyenne]({% link cours/theorie-pratiques-algorithmique/algorithmie/complexite-moyenne.md %})
+2. [complexité d'un problème]({% link cours/theorie-pratiques-algorithmique/algorithmie/complexite-probleme.md %})
+3. [étude : désordonner un tableau]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude-desordre.md %})
+
+#### vendredi {#v-3}
+
+1. [étude : trier un tableau]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude-tris.md %})
+2. [projet : tris]({% link cours/theorie-pratiques-algorithmique/coder/projet-tris.md %})
+
+### contrôle 1
+
+* complexité (min/max/moyenne/problème)
+* preuve d'algorithmes
+* tris
+
 ## ressources
 
 ### tests

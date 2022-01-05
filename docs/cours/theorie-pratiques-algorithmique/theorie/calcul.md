@@ -165,7 +165,7 @@ On ne donnera pas ici d'exemple concret de fonction non calculables on montre ju
 
 On va montrer qu'il existe des fonctions qui ne sont pas des algorithmes car il existe strictement plus de fonctions que d'algorithmes.
 
-#### nombre d'algorithmes
+#### nombre d'algorithmes {#nombre-algorithmes}
 
 Comme un algorithme peut-être décrit par son pseudo-code, qui est une chaine de caractères (qu'on peut limiter aux mots Français si on a envie), in y a au plus autant d'algorithmes que de chaines de caractères. Ca en fait un sacré paquet mais comme chaque chaine de caractère est un entier (on l'a vu [juste avant](#fonction-plusieurs-entier)) :
 

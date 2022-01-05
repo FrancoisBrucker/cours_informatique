@@ -13,6 +13,7 @@ Comment coder, maintenir et aimer ses programmes. Les projets constituent une pr
 2. [projet : hello dev]({% link cours/theorie-pratiques-algorithmique/coder/projet-hello-dev.md %})
 3. [projet : pourcentages]({% link cours/theorie-pratiques-algorithmique/coder/projet-pourcentages.md %})
 4. [projet : exponentiation]({% link cours/theorie-pratiques-algorithmique/coder/projet-exponentiation.md %})
+5. [projet : tris]({% link cours/theorie-pratiques-algorithmique/coder/projet-tris.md %})
 
 ## tbd
 

@@ -48,6 +48,10 @@ Ce cours est composée de trois grandes parties qui s'enchevêtrent.
 3. [complexité max/min]({% link cours/theorie-pratiques-algorithmique/algorithmie/complexite-max-min.md %})
 4. [preuve d'algorithme]({% link cours/theorie-pratiques-algorithmique/algorithmie/preuve-algorithme.md %})
 5. [étude de cas : l'exponentiation]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude-exponentiation.md %})
+6. [complexité en moyenne]({% link cours/theorie-pratiques-algorithmique/algorithmie/complexite-moyenne.md %})
+7. [complexité d'un problème]({% link cours/theorie-pratiques-algorithmique/algorithmie/complexite-probleme.md %})
+8. [étude : désordonner un tableau]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude-desordre.md %})
+9. [étude : trier un tableau]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude-tris.md %})
 
 ### théorie
 
@@ -61,6 +65,7 @@ Ce cours est composée de trois grandes parties qui s'enchevêtrent.
 2. [projet informatique]({% link cours/theorie-pratiques-algorithmique/coder/projet-hello-dev.md %})
 3. [projet : pourcentages]({% link cours/theorie-pratiques-algorithmique/coder/projet-pourcentages.md %})
 4. [projet : exponentiation]({% link cours/theorie-pratiques-algorithmique/coder/projet-exponentiation.md %})
+5. [projet : tris]({% link cours/theorie-pratiques-algorithmique/coder/projet-tris.md %})
 
 ### autre
 
@@ -338,6 +343,78 @@ graph.links.push({
   target: "projet : exponentiation"
 })
 
+graph.nodes.push({
+  id: "complexité en moyenne",
+  link: "{% link cours/theorie-pratiques-algorithmique/algorithmie/complexite-moyenne.md %}",
+  group: groups.algorithmie
+})
+
+graph.links.push({
+  source: 'complexité max/min',
+  target: "complexité en moyenne"
+})
+
+graph.nodes.push({
+  id: "complexité d'un problème",
+  link: "{% link cours/theorie-pratiques-algorithmique/algorithmie/complexite-probleme.md %}",
+  group: groups.algorithmie
+})
+
+graph.links.push({
+  source: "étude : l'exponentiation",
+  target: "complexité d'un problème"
+
+})
+
+graph.nodes.push({
+  id: "étude : désordonner un tableau",
+  link: "{% link cours/theorie-pratiques-algorithmique/algorithmie/etude-desordre.md %}",
+  group: groups.algorithmie
+})
+
+graph.links.push({
+  source: "étude : l'exponentiation",
+  target: "étude : désordonner un tableau"
+
+})
+
+graph.nodes.push({
+  id: "étude : trier un tableau",
+  link: "{% link cours/theorie-pratiques-algorithmique/algorithmie/etude-tris.md %}",
+  group: groups.algorithmie
+})
+
+graph.links.push({
+  source: "complexité d'un problème",
+  target: "étude : trier un tableau"
+})
+
+graph.links.push({
+  source: "étude : désordonner un tableau",
+  target: "étude : trier un tableau"
+})
+
+graph.links.push({
+  source: "complexité en moyenne",
+  target: "étude : trier un tableau"
+})
+
+graph.nodes.push({
+  id: "projet : les tris",
+  link: "{% link cours/theorie-pratiques-algorithmique/coder/projet-tris.md %}",
+  group: groups.code
+})
+
+graph.links.push({
+  source: "étude : trier un tableau",
+  target: "projet : les tris"
+})
+
+graph.links.push({
+  source: "projet : exponentiation",
+  target: "projet : les tris"
+})
+
 </script>
 
 <script>
@@ -366,13 +443,13 @@ var simulation = d3.forceSimulation()
     .force("center", d3.forceCenter(width / 2, height / 2));
 
 var link = svg.append("g")
-      .attr("class", "links")
+    .attr("class", "links")
     .selectAll("line")
     .data(graph.links)
     .enter().append("line");
 
   var node = svg.append("g")
-      .attr("class", "nodes")
+    .attr("class", "nodes")
     .selectAll("g")
     .data(graph.nodes)
     .enter().append("g")
