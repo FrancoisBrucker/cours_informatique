@@ -345,9 +345,9 @@ if ((x &gt; 12) AND (y &lt; 36)):
 
 <p>Est de complexité $\mathcal{O}(n)$  où $n$ est la taille da liste <code class="language-plaintext highlighter-rouge">l</code> et pas $\mathcal{O}(1)$. Il <strong>faut</strong> en effet parcourir tous les éléments d’une liste (a priori non triée) pour en trouver le maximum.</p>
 
-<h3 id="exemple">exemple</h3>
+<h2 id="exemple-recherche">exemple de la recherche d’un élément dans un tableau</h2>
 
-<p>Prenons par exemple l’algorithme écrit en python suivant :</p>
+<p>Prenons par exemple l’algorithme suivant, écrit en python :</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">est_dans_tableau</span><span class="p">(</span><span class="n">valeur</span><span class="p">,</span> <span class="n">tableau</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">tableau</span><span class="p">:</span>
@@ -356,7 +356,9 @@ if ((x &gt; 12) AND (y &lt; 36)):
     <span class="k">return</span> <span class="bp">False</span>
 </code></pre></div></div>
 
-<p>L’intérieur de la boucle est constitué du code :</p>
+<p>Cet algorithme recherche si le paramètre <code class="language-plaintext highlighter-rouge">valeur</code> est un élément de <code class="language-plaintext highlighter-rouge">tableau</code>.</p>
+
+<p>Calculons ses complexité maximale et minimale. L’intérieur de la boucle est constitué du code :</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="n">valeur</span><span class="p">:</span>
     <span class="k">return</span> <span class="bp">True</span>

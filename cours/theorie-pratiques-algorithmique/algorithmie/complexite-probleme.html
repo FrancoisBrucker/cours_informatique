@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Complexité d’un problème | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0">
+<meta property="og:title" content="Complexité d’un problème">
+<meta name="author" content="François Brucker">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille.">
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille.">
+<link rel="canonical" href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/complexite-probleme.html">
+<meta property="og:url" content="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/complexite-probleme.html">
+<meta property="og:site_name" content="cours d’informatique">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Complexité d’un problème">
+<script type="application/ld+json">
+{"description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/complexite-probleme.html","headline":"Complexité d’un problème","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css">
+
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css">
+<link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique">
+<script>MathJax={"tex":{"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["\\[","\\]"]]},"svg":{"fontCache":"global"},"svg":{"fontCache":"global"}}</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<header class="site-header" role="banner">
+
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/cours_informatique/">cours d'informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav>
+</div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Complexité d'un problème</h1>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span>
+  </header>
+
+  <div class="post-content">
+    <blockquote class="chemin">
+  <p><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/">Théorie et pratiques algorithmique</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/">algorithmie</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/complexite-probleme.html">complexité d’un problème</a></p>
+
+  <p>prérequis :</p>
+
+  <ul>
+    <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/etude-exponentiation.html">étude : l’exponentiation</a></li>
+  </ul>
+
+</blockquote>
+
+<p>On l’a vu lors de l’<a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/etude-exponentiation.html">étude de l’exponentiation</a>, un même problème peut avoir plusieurs algorithmes solutions, certains étant meilleurs que d’autres. On peut alors se poser la question de la complexité d’un problème algorithmique. C’est à dire :</p>
+
+<blockquote class="note">
+  <p>La complexité (maximale) d’un problème algorithmique est la complexité (maximale) du meilleur algorithme qui le résout.</p>
+</blockquote>
+
+<p>Ce n’est pas une question facile car :</p>
+
+<ul>
+  <li>il faut pouvoir définir clairement quel est le problème que l’on cherche à résoudre</li>
+  <li>il faut pouvoir raisonner sur les complexités sans avoir d’algorithme à sa disposition</li>
+</ul>
+
+<p>Cependant, si l’on possède déjà un algorithme pour résoudre le problème, sa complexité est une borne maximale de la complexité du problème qu’il résout. Enfin, il est souvent facile de se donner une borne minimale de la complexité du problème (même si l’on ne sait pas s’il existe un algorithme pour le résoudre), c’est la taille de la sortie de l’algorithme.</p>
+
+<p>Nous illustrerons ici cette problématique avec l’exemple de la recherche d’un élément dans un tableau qui permet d’illustrer plusieurs facettes de ce qu’est un problème algorithmique.</p>
+
+<h2 id="problème-algorithmique">problème algorithmique</h2>
+
+<p>On supposera toujours ici qu’il existe un algorithme pour résoudre notre problème (la question de connaitre les problèmes que peuvent résoudre un algorithme sera traité dans la <a href="(/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/)">partie théorie</a> de ce cours).</p>
+
+<h3 id="définition">définition</h3>
+
+<blockquote class="note">
+  <p>Un <strong>problème algorithmique</strong> est composé de 4 parties :</p>
+
+  <ul>
+    <li>nom : le nom du problème</li>
+    <li>des données : les paramètres dont aura besoin l’algorithme</li>
+    <li>la question : ce que l’on cherche à résoudre</li>
+    <li>la réponse : la sortie de l’algorithme</li>
+  </ul>
+
+</blockquote>
+
+<p>Par exemple :</p>
+
+<ul>
+  <li>nom : recherche</li>
+  <li>données : une valeur et un tableau d’entiers</li>
+  <li>question : valeur est-elle présente dans le tableau ?</li>
+  <li>réponse : OUI ou NON</li>
+</ul>
+
+<p>Ou, si l’on cherche l’indice de valeur dans le dans ce tableau :</p>
+
+<ul>
+  <li>nom : recherche indice</li>
+  <li>données : une valeur et un tableau d’entiers contenant valeur</li>
+  <li>réponse : l’indice du tableau contenant valeur</li>
+</ul>
+
+<p>On voit que la question peut-être omise si la réponse est spécifique.</p>
+
+<h3 id="complexités">complexités</h3>
+
+<p>On pourra définir pour un problème donné :</p>
+
+<blockquote class="note">
+  <ul>
+    <li>une <strong>borne minimale</strong> de complexité du problème : tout algorithme qui le résout sera de complexité supérieure ou égale (mais on ne sais pas si un tel algorithme existe)</li>
+    <li>une <strong>borne maximale</strong> de complexité du problème : le meilleur algorithme sera de complexité plus faible ou égale (mais on ne sais pas si un tel algorithme existe)</li>
+    <li>la <strong>complexité du problème</strong> : la complexité maximale du meilleur algorithme permettant de résoudre le problème (cette complexité existe toujours puisqu’il existe un algorithme permettant de résoudre le problème et qu’il existe un <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/calcul.html#nombre-algorithmes">nombre dénombrable d’algorithmes</a>)</li>
+  </ul>
+
+</blockquote>
+
+<h2 id="exemple--recherche-dun-élément-dans-un-tableau">exemple : recherche d’un élément dans un tableau</h2>
+
+<p>On va chercher à résoudre le problème d’existence dans le tableau :</p>
+
+<ul>
+  <li>nom : recherche</li>
+  <li>données : une valeur et un tableau d’entiers</li>
+  <li>question : valeur est-elle présente dans le tableau ?</li>
+  <li>réponse : OUI ou NON</li>
+</ul>
+
+<p>Ce qu’on peut déjà dire de notre problème :</p>
+
+<ul>
+  <li>une borne minimale : $\mathcal{O}(1)$ puisque la taille la sortie est un booléen</li>
+  <li>une borne maximale : $\mathcal{O}(n)$ où $n$ est la taille du tableau puisque l’on a un <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/complexite-max-min.html#exemple-recherche">algorithme qui résout le problème</a> :</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">est_dans_tableau</span><span class="p">(</span><span class="n">valeur</span><span class="p">,</span> <span class="n">tableau</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">tableau</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="n">valeur</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">True</span>
+    <span class="k">return</span> <span class="bp">False</span>
+</code></pre></div></div>
+
+<h3 id="complexité-du-problème-recherche">complexité du problème “recherche”</h3>
+
+<p>Notre borne minimale de $\mathcal{O}(1)$ semble irréaliste. Supposons de façon plus générale qu’il existe un algorithme qui résout le problème en prenant strictement moins que $n$ opérations où $n$ est la taille du tableau, pour $n &gt; N_0$.</p>
+
+<p>Ceci signifie que pour $n$ assez grand, l’algorithme résout le problème en strictement moins que $n$ opérations : il n’a pas besoin de regarder toutes les cases du tableau pour répondre.</p>
+
+<p>Soit alors un tableau $T$ de taille $n &gt; N_0$ qui ne contient pas valeur. Notre algorithme va répondre NON à la question “est-ce que valeur est dans $T$” ? en strictement moins de $n$ opérations : il existe donc une case du tableau, disons $T[i^*]$, que l’algorithme n’a jamais regardé lors de son exécution : il ne sait pas ce que contient cette case.</p>
+
+<p>De là, en exécutant l’algorithme avec valeur et le tableau $T’$ tel que :</p>
+
+<ul>
+  <li>$T’[i] = T[i]$ si $i \neq i^*$</li>
+  <li>$T’[i^*] = \mbox{valeur}$</li>
+</ul>
+
+<p>La réponse à la question “est-ce que valeur est dans $T’$ ?” ne pourra être que la même réponse que la question “est-ce que valeur est dans $T$ ?”, ce qui est faux. Notre algorithme ne peut exister : Un algorithme qui résout le problème de la recherche doit au moins être de complexité $\mathcal{O}(n)$</p>
+
+<p>Attention, ça ne veut pas dire qu’il n’existe pas des instances où l’algorithme va plus vite (si valeur est le 1er élément du tableau par exemple), mais que pour certains tableau, on est obligé de vérifier toutes les cases (si valeur n’est pas dans tableau).</p>
+
+<p>Au final on a :</p>
+
+<ul>
+  <li>une borne minimale de la complexité de la recherche de $\mathcal{O}(n)$</li>
+  <li>un algorithme qui résout le problème en $\mathcal{O}(n)$</li>
+</ul>
+
+<p>Donc :</p>
+
+<blockquote class="note">
+  <p>La complexité du problème de la recherche est en $\mathcal{O}(n)$ où $n$ est la taille du tableau.</p>
+</blockquote>
+
+<h3 id="cas-particulier-des-tableaux-ordonnés">cas particulier des tableaux ordonnés</h3>
+
+<p>Un cas particulier courant de recherche est le problème :</p>
+
+<ul>
+  <li>nom : recherche ordonnée</li>
+  <li>données : une valeur et un tableau d’entiers triés par ordre croissant</li>
+  <li>question : valeur est-elle présente dans le tableau ?</li>
+  <li>réponse : OUI ou NON</li>
+</ul>
+
+<p>Le problème “recherche ordonnée” est un sous problème de “recherche”, on a donc une borne maximale de $\mathcal{O}(n)$ (où $n$ est la taille du tableau) pour le résoudre puisqu’il il suffit d’utiliser l’algorithme <code class="language-plaintext highlighter-rouge">est_dans_tableau</code>. Cependant, on utilise souvent un autre algorithme : la recherche dichotomique.</p>
+
+<h4 id="algorithme-de-la-recherche-dichotomique">algorithme de la recherche dichotomique</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">recherche_dichotomique</span><span class="p">(</span><span class="n">valeur</span><span class="p">,</span> <span class="n">tableau_trie</span><span class="p">):</span>
+    <span class="n">debut</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">fin</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tableau_trie</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+
+    <span class="k">while</span> <span class="n">fin</span> <span class="o">-</span> <span class="n">debut</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">milieu</span> <span class="o">=</span> <span class="p">(</span><span class="n">fin</span> <span class="o">+</span> <span class="n">debut</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+        
+        <span class="k">if</span> <span class="n">tableau_trie</span><span class="p">[</span><span class="n">milieu</span><span class="p">]</span> <span class="o">==</span> <span class="n">valeur</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">True</span>
+        <span class="k">elif</span> <span class="n">tableau_trie</span><span class="p">[</span><span class="n">milieu</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">valeur</span><span class="p">:</span>
+            <span class="n">debut</span> <span class="o">=</span> <span class="n">milieu</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">fin</span> <span class="o">=</span> <span class="n">milieu</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="bp">False</span>
+</code></pre></div></div>
+
+<p>On a utilisé ici le fait que  <code class="language-plaintext highlighter-rouge">(fin + debut) // 2</code> va donner la valeur entière de <code class="language-plaintext highlighter-rouge">(fin + debut) / 2</code>.</p>
+
+<ol>
+  <li>l’algorithme se termine bien car <code class="language-plaintext highlighter-rouge">fin - debut</code> décroit strictement à chaque itération</li>
+  <li>on a l’invariant de boucle : si valeur est dans <code class="language-plaintext highlighter-rouge">tableau_trie</code>, alors sa position plus grande que <code class="language-plaintext highlighter-rouge">debut</code> et plus petite que <code class="language-plaintext highlighter-rouge">fin</code>
+</li>
+  <li>si l’on sort de la boucle l’invariant est toujours vérifié, mais comme <code class="language-plaintext highlighter-rouge">debut</code> &gt; <code class="language-plaintext highlighter-rouge">fin</code>, valeur ne peut être dans <code class="language-plaintext highlighter-rouge">tableau_trie</code>
+</li>
+</ol>
+
+<p>Les trois remarques ci-dessus prouvent que l’algorithme <code class="language-plaintext highlighter-rouge">recherche_dichotomique</code> résout bien le problème “recherche ordonnée”.</p>
+
+<p>Enfin, à chaque itération, <code class="language-plaintext highlighter-rouge">fin - debut</code> est divisé par 2 : il y a donc au plus $\log_2(n)$ itérations (avec $n$ la taille du tableau). Comme le reste des lignes est soit une affectation soit un positionnement dans un tableau, la complexité totale de l’algorithme est $\mathcal{O}(\ln(n))$ (avec $n$ la taille du tableau).</p>
+
+<blockquote class="note">
+  <p>l’algorithme <code class="language-plaintext highlighter-rouge">recherche_dichotomique</code> résout le problème “recherche ordonnée” en $\mathcal{O}(\ln(n))$ (avec $n$ la taille du tableau)</p>
+</blockquote>
+
+<h4 id="complexité-du-problème-recherche-ordonnée">complexité du problème “recherche ordonnée”</h4>
+
+<p>L’algorithme de la recherche dichotomique résout le problème de la “recherche ordonnée” de façon bien plus efficace que l’algorithme <code class="language-plaintext highlighter-rouge">est_dans_tableau</code> : il n’a pas besoin de connaitre toutes les cases du tableau pour répondre à la question car le tableau est trié. Une borne maximum de la complexité du problème “recherche ordonnée” est alors $\mathcal{O}(\ln(n))$ (avec $n$ la taille du tableau).</p>
+
+<p>Nous allons montrer que l’on ne peut pas faire mieux en montrant que $\mathcal{O}(\ln(n))$ est une borne minimum de notre problème.</p>
+
+<blockquote>
+  <p>Remarquez bien que la preuve que l’on a donné pour la complexité de “recherche” ne fonctionne pas dans le cas de “recherche ordonnée”. On ne peut pas fabriquer de tableau $T’$ ici puisque $T’$ doit rester ordonné.</p>
+</blockquote>
+
+<p>Commençons par remarquer que <code class="language-plaintext highlighter-rouge">valeur</code> peut se trouver à chaque position du tableau. Tout algorithme qui résout “recherche ordonnée” doit ainsi réussir à distinguer parmi $n + 1$ cas : <code class="language-plaintext highlighter-rouge">valeur</code> n’est pas dans tableau, <code class="language-plaintext highlighter-rouge">valeur</code> est à la position 0 du tableau, <code class="language-plaintext highlighter-rouge">valeur</code> est à la position 1 du tableau, …, <code class="language-plaintext highlighter-rouge">valeur</code> est à la position $n-1$ du tableau.</p>
+
+<p>En algorithmique, distinguer parmi plusieurs cas se fait par des tests :</p>
+
+<ul>
+  <li>s’il y a 0 test, un algorithme ne peut résoudre qu’un seul cas</li>
+  <li>s’il y a 1 test, un algorithme peut résoudre au plus 2 cas :
+    <ul>
+      <li>1 cas si le test est vrai</li>
+      <li>1 cas si le test est faux</li>
+    </ul>
+  </li>
+  <li>s’il y a 2 tests, un algorithme peut résoudre au plus $2 \cdot 2 = 4$ cas :
+    <ul>
+      <li>1 cas si les deux tests sont vrai</li>
+      <li>1 cas si le premier test est vrai et le second test faux</li>
+      <li>1 cas si le premier test est faux et le second test vrai</li>
+      <li>1 cas si les deux tests sont faux</li>
+    </ul>
+  </li>
+  <li>s’il y a 3 tests, un algorithme peut résoudre au plus $2 \cdot 2 \cdot 2 = 2^3 = 8$ cas :
+    <ul>
+      <li>1 cas si les trois tests sont vrai</li>
+      <li>1 cas si les deux premiers tests sont vrai et le troisième test faux</li>
+      <li>…</li>
+      <li>1 cas si les trois tests sont faux</li>
+    </ul>
+  </li>
+  <li>…</li>
+  <li>s’il y a $k$ tests, un algorithme peut résoudre au plus $2^k$ cas</li>
+</ul>
+
+<p>Comme il y a $n+1$ cas au moins à traiter, notre algorithme devra posséder au moins $\log_2(n)$  tests : sa complexité ne peut-être inférieure à $\mathcal{O}(\log_2(n)) = \mathcal{O}(\ln(n))$ opérations.</p>
+
+<p>En conclusion le problème de la “recherche ordonnée” pour un tableau à $n$ éléments :</p>
+
+<ul>
+  <li>une borne minimale de complexité égal à $\mathcal{O}(\ln(n))$</li>
+  <li>la complexité de l’algorithme <code class="language-plaintext highlighter-rouge">recherche_dichotomique</code> est en $\mathcal{O}(\ln(n))$</li>
+</ul>
+
+<blockquote class="note">
+  <p>La complexité du problème de la “recherche ordonnée” est en $\mathcal{O}(n)$ où $n$ est la taille du tableau.</p>
+</blockquote>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d'informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d'informatique</li>
+</ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+<ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d'informatique à l'école centrale marseille.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

@@ -6,19 +6,20 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>Théorie et pratiques algorithmique : algorithmie | cours d’informatique</title>
+<title>étude / algorithmes de tris | cours d’informatique</title>
 <meta name="generator" content="Jekyll v4.2.0">
-<meta property="og:title" content="Théorie et pratiques algorithmique : algorithmie">
+<meta property="og:title" content="étude / algorithmes de tris">
+<meta name="author" content="François Brucker">
 <meta property="og:locale" content="en_US">
 <meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille.">
 <meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille.">
-<link rel="canonical" href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/">
-<meta property="og:url" content="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/">
+<link rel="canonical" href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/etude-desordre.html">
+<meta property="og:url" content="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/etude-desordre.html">
 <meta property="og:site_name" content="cours d’informatique">
 <meta name="twitter:card" content="summary">
-<meta property="twitter:title" content="Théorie et pratiques algorithmique : algorithmie">
+<meta property="twitter:title" content="étude / algorithmes de tris">
 <script type="application/ld+json">
-{"description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/","headline":"Théorie et pratiques algorithmique : algorithmie","@context":"https://schema.org"}</script>
+{"description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/etude-desordre.html","headline":"étude / algorithmes de tris","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
@@ -51,27 +52,41 @@
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Théorie et pratiques algorithmique : algorithmie</h1>
+    <h1 class="post-title">étude / algorithmes de tris</h1>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span>
   </header>
 
   <div class="post-content">
     <blockquote class="chemin">
-  <p><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/">Théorie et pratiques algorithmique</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/">algorithmie</a></p>
+  <p><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/">Théorie et pratiques algorithmique</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/">algorithmie</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/etude-tris.html">étude : algorithmes de tris</a></p>
+
+  <p>prérequis :</p>
+
+  <ul>
+    <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/complexite-moyenne.html">complexité moyenne</a></li>
+    <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/complexite-probleme.html">complexité d’un problème</a></li>
+  </ul>
+
 </blockquote>
 
-<p>Création, preuve et complexité des algorithmes.</p>
+<p>désordre</p>
 
-<ul>
-  <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/algorithmes.html">algorithmes ?</a></li>
-  <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.html">pseudo-code</a></li>
-  <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/complexite-max-min.html">complexité max/min</a></li>
-  <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/preuve-algorithme.html">preuve d’algorithme</a></li>
-  <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/etude-exponentiation.html">étude : l’exponentiation</a></li>
-  <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/complexite-moyenne.html">complexité en moyenne</a></li>
-  <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/complexite-probleme.html">complexité d’un problème</a></li>
-  <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/etude-desordre.html">étude : désordonner un tableau</a></li>
-  <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/etude-tris.html">étude : trier un tableau</a></li>
-</ul>
+<blockquote class="tbd">
+  <p>dépend d’un nombre aléatoire. On fera ça plus tard, pour l’onstnat on suppose qu’on sait le faire.</p>
+</blockquote>
+
+<h2 id="mélanger-des-listes-">mélanger des listes ?</h2>
+
+<p>On s’est appuyé sur la fonction <a href="https://docs.python.org/3/library/random.html#random.shuffle">shuffle du module random</a> pour mélanger des listes.</p>
+
+<p>Mais sommes-nous bien sur que le mélange est bien équiprobable ? Sinon nos mesures de complexité en moyenne seraient tous faux…</p>
+
+<p>Rassurez vous c’est le cas. Elle utilise la méthode de mélange de <a href="https://fr.wikipedia.org/wiki/M%C3%A9lange_de_Fisher-Yates">Fisher-Yates</a>, qui est un algorithme linéaire permettant d’obtenir toutes les permutations possibles de façon équiprobable.</p>
+
+<p>Ce qui est marrant c’est que cet algorithme est <em>“l’inverse”</em> d’un tri par sélection.</p>
+
+<p>Implémentez cet algorithme et vérifiez que pour la liste des 4 premiers entiers vous obtenez bien (sur un grand nombre d’essais) à peut prêt le même nombre des 24 permutations possibles.</p>
+
+<p>Si vous voulez en savoir un peu plus sur cet algorithme et de comment générer un nombre aléatoire en python : <a href="https://www.stashofcode.fr/tri-aleatoire-des-elements-dun-tableau/">https://www.stashofcode.fr/tri-aleatoire-des-elements-dun-tableau/</a></p>
 
   </div>
 

@@ -89,9 +89,9 @@
 
 </blockquote>
 
-<p>Notez que bien souvent prouver un algorithme et le créer est la même chose. Comprendre comment on peut résoudre un problème donné nous donnera l’algorithme et récproquement.</p>
+<p>Notez que bien souvent prouver un algorithme et le créer est la même chose. Comprendre comment on peut résoudre un problème donné nous donnera l’algorithme et réciproquement.</p>
 
-<p>A part la recommendation ci-dessus, il n’existe pas vraiment de règles à appliquer pour prouver un algorithme. Seule l’expérience et l’étude des algorithmes classique vous permettra de trouver facilement comment prouver un algorithme.</p>
+<p>A part la recommandation ci-dessus, il n’existe pas vraiment de règles à appliquer pour prouver un algorithme. Seule l’expérience et l’étude des algorithmes classique vous permettra de trouver facilement comment prouver un algorithme.</p>
 
 <blockquote>
   <p>dans la suite, les algorithmes seront tous donnés en python</p>
@@ -108,17 +108,17 @@
 <ul>
   <li>finitude : Si $n$ est un réel, l’algorithme va s’arrêter : $n$ décroît strictement à chaque appelle récursif et on stoppe si $n \leq 1$.</li>
   <li>complexité : dépend de $n$, le nombre pas sa taille.</li>
-  <li>preuve : Pra récurrence sur $n$, avec $n$ entier positif.
+  <li>preuve : par récurrence sur $n$, avec $n$ entier positif.
     <ul>
       <li>entrée : des entiers positifs</li>
-      <li>fonction de récurrence. Si $n=0$ ça marche. Si ça marche pour l’entrée n-1, ça marche pour $n$ car la fonction rend $n \cdot factorielle(n-1)$ qui vaut $n \cdot (n-1)!$ par hypothèse de récurence.</li>
+      <li>fonction de récurrence. Si $n=0$ ça marche. Si ça marche pour l’entrée n-1, ça marche pour $n$ car la fonction rend $n \cdot factorielle(n-1)$ qui vaut $n \cdot (n-1)!$ par hypothèse de récurrence.</li>
     </ul>
   </li>
 </ul>
 
 <h2 id="maximum-dun-tableau">maximum d’un tableau</h2>
 
-<p>On va voir 2 algorithmes pour caluler la valeure maximum d’un tableau de réels.</p>
+<p>On va voir 2 algorithmes pour calculer la valeur maximum d’un tableau de réels.</p>
 
 <h3 id="algorithme-itératif">algorithme itératif</h3>
 

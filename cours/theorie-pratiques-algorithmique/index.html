@@ -114,6 +114,10 @@
   <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/complexite-max-min.html">complexité max/min</a></li>
   <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/preuve-algorithme.html">preuve d’algorithme</a></li>
   <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/etude-exponentiation.html">étude de cas : l’exponentiation</a></li>
+  <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/complexite-moyenne.html">complexité en moyenne</a></li>
+  <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/complexite-probleme.html">complexité d’un problème</a></li>
+  <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/etude-desordre.html">étude : désordonner un tableau</a></li>
+  <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/etude-tris.html">étude : trier un tableau</a></li>
 </ol>
 
 <h3 id="théorie">théorie</h3>
@@ -131,6 +135,7 @@
   <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/projet-hello-dev.html">projet informatique</a></li>
   <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/projet-pourcentages.html">projet : pourcentages</a></li>
   <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/projet-exponentiation.html">projet : exponentiation</a></li>
+  <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/projet-tris.html">projet : tris</a></li>
 </ol>
 
 <h3 id="autre">autre</h3>
@@ -415,6 +420,78 @@ graph.links.push({
   target: "projet : exponentiation"
 })
 
+graph.nodes.push({
+  id: "complexité en moyenne",
+  link: "/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/complexite-moyenne.html",
+  group: groups.algorithmie
+})
+
+graph.links.push({
+  source: 'complexité max/min',
+  target: "complexité en moyenne"
+})
+
+graph.nodes.push({
+  id: "complexité d'un problème",
+  link: "/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/complexite-probleme.html",
+  group: groups.algorithmie
+})
+
+graph.links.push({
+  source: "étude : l'exponentiation",
+  target: "complexité d'un problème"
+
+})
+
+graph.nodes.push({
+  id: "étude : désordonner un tableau",
+  link: "/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/etude-desordre.html",
+  group: groups.algorithmie
+})
+
+graph.links.push({
+  source: "étude : l'exponentiation",
+  target: "étude : désordonner un tableau"
+
+})
+
+graph.nodes.push({
+  id: "étude : trier un tableau",
+  link: "/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/etude-tris.html",
+  group: groups.algorithmie
+})
+
+graph.links.push({
+  source: "complexité d'un problème",
+  target: "étude : trier un tableau"
+})
+
+graph.links.push({
+  source: "étude : désordonner un tableau",
+  target: "étude : trier un tableau"
+})
+
+graph.links.push({
+  source: "complexité en moyenne",
+  target: "étude : trier un tableau"
+})
+
+graph.nodes.push({
+  id: "projet : les tris",
+  link: "/cours_informatique/cours/theorie-pratiques-algorithmique/coder/projet-tris.html",
+  group: groups.code
+})
+
+graph.links.push({
+  source: "étude : trier un tableau",
+  target: "projet : les tris"
+})
+
+graph.links.push({
+  source: "projet : exponentiation",
+  target: "projet : les tris"
+})
+
 </script>
 
 <script>
@@ -443,13 +520,13 @@ var simulation = d3.forceSimulation()
     .force("center", d3.forceCenter(width / 2, height / 2));
 
 var link = svg.append("g")
-      .attr("class", "links")
+    .attr("class", "links")
     .selectAll("line")
     .data(graph.links)
     .enter().append("line");
 
   var node = svg.append("g")
-      .attr("class", "nodes")
+    .attr("class", "nodes")
     .selectAll("g")
     .data(graph.nodes)
     .enter().append("g")
