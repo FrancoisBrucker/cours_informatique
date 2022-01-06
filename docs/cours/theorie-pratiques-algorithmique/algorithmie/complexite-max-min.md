@@ -364,7 +364,7 @@ La encore, l'évolution est dramatique plus la complexité augmente. Pour des co
 
 > Pour générer le tableau, on suppose que l'on peut résoudre $K$ opérations en 1 heure. On cherche alors $n$ tel que $f(n)$ soit égal à $K$ et donc $n = f^{-1}(K)$. En remarquant que $K$ est égal à la taille maximale d'un problème de complexité linéaire résoluble en 1heure, on la taille maximale $n$ d'un problème de complexité $f(n)$ résoluble en 1 heure pour une machine allant $k$ fois pus vite qu'une machine actuelle vaut $f^{-1}(k \cdot N1)$.
 
-### le cas particulier de $n!$
+### le cas particulier de $n!$ {#n_factoriel}
 
 Souvent les étudiants veulent que leurs algorithmes soient en $\mathcal{O}(n!)$. Ce n'est **presque jamais exact** ! En effet, la [formule de sirling](https://fr.wikipedia.org/wiki/Formule_de_Stirling) donne l'équivalent suivant pour $n!$ :
 
