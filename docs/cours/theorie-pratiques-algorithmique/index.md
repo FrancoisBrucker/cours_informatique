@@ -50,7 +50,7 @@ Ce cours est composée de trois grandes parties qui s'enchevêtrent.
 5. [étude de cas : l'exponentiation]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude-exponentiation.md %})
 6. [complexité en moyenne]({% link cours/theorie-pratiques-algorithmique/algorithmie/complexite-moyenne.md %})
 7. [complexité d'un problème]({% link cours/theorie-pratiques-algorithmique/algorithmie/complexite-probleme.md %})
-8. [étude : désordonner un tableau]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude-desordre.md %})
+8. [étude : mélanger un tableau]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude-melange.md %})
 9. [étude : trier un tableau]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude-tris.md %})
 
 ### théorie
@@ -367,14 +367,14 @@ graph.links.push({
 })
 
 graph.nodes.push({
-  id: "étude : désordonner un tableau",
-  link: "{% link cours/theorie-pratiques-algorithmique/algorithmie/etude-desordre.md %}",
+  id: "étude : mélanger un tableau",
+  link: "{% link cours/theorie-pratiques-algorithmique/algorithmie/etude-melange.md %}",
   group: groups.algorithmie
 })
 
 graph.links.push({
   source: "étude : l'exponentiation",
-  target: "étude : désordonner un tableau"
+  target: "étude : mélanger un tableau"
 
 })
 
@@ -390,7 +390,7 @@ graph.links.push({
 })
 
 graph.links.push({
-  source: "étude : désordonner un tableau",
+  source: "étude : mélanger un tableau",
   target: "étude : trier un tableau"
 })
 

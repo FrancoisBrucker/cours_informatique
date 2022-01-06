@@ -41,12 +41,12 @@ Ceci permet de lire le code comme on lirait un texte, ce qui permet de rapidemen
 
 Le découpage fonctionnel de votre code permet d'éviter la duplication de code, qui est un mal absolu en code. Si l'on copie/colle du code et qu'il y a un bug ou qu'on veut modifier le fonctionnement de ce code, il faudra se rappeler de tous les endroits où le code a été copié, ce qui est impossible ! De plus, cela rend votre code peu lisible.
 
-> Mantra [DRY](https://fr.wikipedia.org/wiki/Ne_vous_r%C3%A9p%C3%A9tez_pas)
-{: .code}
+> **Coding antra :** [DRY](https://fr.wikipedia.org/wiki/Ne_vous_r%C3%A9p%C3%A9tez_pas)
+{: .note}
 
 On saura que le code est ok lorsqu'il ne nécessitera **pas** de commentaires pour être compris. Ils sont en effet remplacé par des noms de variables explicites et les noms de fonctions qui doivent expliquer ce qu'elles font.
 
-> Mantra [NO COMMENTS !](https://www.developpez.com/actu/150066/Programmation-quand-faut-il-commenter-son-code-Google-s-invite-dans-le-debat-et-montre-que-les-commentaires-peuvent-tres-souvent-etre-evites/)
+> **Coding mantra :** [NO COMMENTS !](https://www.developpez.com/actu/150066/Programmation-quand-faut-il-commenter-son-code-Google-s-invite-dans-le-debat-et-montre-que-les-commentaires-peuvent-tres-souvent-etre-evites/)
 {: .note}
 
 En plus d'être inutile :
@@ -72,7 +72,7 @@ Un code est fait pour être relu et amélioré. On doit donc privilégier la lec
 
 Ecriture claire du code : si on a le choix entre écrire du code utilisant des subtilités mais difficile à comprendre ou du code plus basique mais lisible on choisira **TOUJOURS** le code lisible.
 
-> Mantra : [KISS](https://fr.wikipedia.org/wiki/Principe_KISS)
+> **Coding mantra :** [KISS](https://fr.wikipedia.org/wiki/Principe_KISS)
 {: .note}
 
 Si le fond doit être simple, la forme du code est importante aussi. Il se doit d'être agréable à lire et homogène. L'équipe de développement doit se mettre d'accord sur un [coding style](https://fr.wikipedia.org/wiki/Style_de_programmation). Par défaut on utilise le standard du langage. En python, c'est la  [PEP8](https://www.python.org/dev/peps/pep-0008/)
@@ -84,7 +84,7 @@ Si le fond doit être simple, la forme du code est importante aussi. Il se doit 
 
 On ne dois jamais coder de choses inutiles : tout bout de code doit être utilisé au moment où il est écrit. On ne codera jamais de fonctionnalités qui vont être utiles plus tard (car "plus tard" le code ne sera plus le même et l'intégration de la fonctionnalité ne sera pas immédiate et, vraisemblablement, les besoins auront changés et l'instant "plus tard" n'arrivera jamais) et tout code qui n'est plus utile est immédiatement supprimé (pour les mêmes raisons).
 
-> Mantra : [YAGNI](https://fr.wikipedia.org/wiki/YAGNI)
+> **Coding mantra :** [YAGNI](https://fr.wikipedia.org/wiki/YAGNI)
 
 ## tests
 
@@ -94,17 +94,17 @@ Comme on passe son temps à modifier son code, il est nécessaire de conserver s
 
 Lorsque l'on ajoute des fonctionnalités au code ou que l'on corrige un bug, on écrit un test qui vérifie la fonctionnalité ou qui montre que le bug n'existe pas/plus. Ainsi, puisque les tests sont conservées, ce bug ne pourra plus jamais réapparaître et cette fonctionnalité ne pourra plus disparaître.
 
-> Mantra : [TDD](https://artificials.ch/test-driven-development-mantra/)
+> Coding mantra :** [TDD](https://artificials.ch/test-driven-development-mantra/)
 {: .note}
 
 Nous n'utiliserons pas ici au début le mantra TDD dans son intégralité puisque l'on se permettra d'écrire les tests après avoir codé la fonctionnalité et pas avant. Mais, l'expérience venant, faites l'expérience de coder vos tests avant la fonction, c'est très utile car cela permet d'utiliser sa fonction avant de la coder, ce qui souvent change la façon dont on voulait coder la fonction initialement.
 
 Les tests sont autant de cas d'utilisation de vos programmes qui montrent qu'il fonctionne et comment il fonctionne. Il permettent de montrer les différentes fonctionnalités de votre code :
 
-> **La fonctionnalités est plus importante que le code** : Le code va changer, les fonctionnalités doivent rester.
+> **La fonctionnalité est plus importante que le code** : Le code va changer, les fonctionnalités doivent rester.
 {: .note}
 
-Enfin, le code et ses tests doivent être fait par la **même personne** et au **même moment**. Il ne faut pas attendre d'avoir codé plusieurs fonctions avant de faire ses tests. Vous n'êtes en effet pas sur que votre 1ère fonction codée fonctionne avant d'avoir fait des tests. De là, il est possible qu'un bug dans cette première fonction affecte le code de votre 2nde fonction... Lorsque vous ferez vos tests vous serez alors obligé de re-coder toutes vos fonctions ce qui ne serait pas arrivé si vous aviez testé toutes vos fonction une par une et au moment de les coder.
+Enfin, le code et ses tests doivent être fait par la **même personne** et au **même moment**. Il ne faut pas attendre d'avoir codé plusieurs fonctions avant de faire ses tests. Vous n'êtes en effet pas sur que votre 1ère fonction codée fonctionne avant d'avoir fait des tests. De là, il est possible qu'un bug dans cette première fonction affecte le code de votre seconde fonction... Lorsque vous ferez vos tests vous serez alors obligé de re-coder toutes vos fonctions ce qui ne serait pas arrivé si vous aviez testé toutes vos fonction une par une et au moment de les coder.
 
 ## structure d'un programme
 

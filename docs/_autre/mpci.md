@@ -70,7 +70,7 @@ A partir de la semaine 2, les tests de début séance seront à écrire en [mark
 
 1. [complexité en moyenne]({% link cours/theorie-pratiques-algorithmique/algorithmie/complexite-moyenne.md %})
 2. [complexité d'un problème]({% link cours/theorie-pratiques-algorithmique/algorithmie/complexite-probleme.md %})
-3. [étude : désordonner un tableau]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude-desordre.md %})
+3. [étude : mélanger un tableau]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude-melange.md %})
 
 #### vendredi {#v-3}
 
