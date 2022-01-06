@@ -103,14 +103,14 @@
 
 <p>Le découpage fonctionnel de votre code permet d’éviter la duplication de code, qui est un mal absolu en code. Si l’on copie/colle du code et qu’il y a un bug ou qu’on veut modifier le fonctionnement de ce code, il faudra se rappeler de tous les endroits où le code a été copié, ce qui est impossible ! De plus, cela rend votre code peu lisible.</p>
 
-<blockquote class="code">
-  <p>Mantra <a href="https://fr.wikipedia.org/wiki/Ne_vous_r%C3%A9p%C3%A9tez_pas">DRY</a></p>
+<blockquote class="note">
+  <p><strong>Coding antra :</strong> <a href="https://fr.wikipedia.org/wiki/Ne_vous_r%C3%A9p%C3%A9tez_pas">DRY</a></p>
 </blockquote>
 
 <p>On saura que le code est ok lorsqu’il ne nécessitera <strong>pas</strong> de commentaires pour être compris. Ils sont en effet remplacé par des noms de variables explicites et les noms de fonctions qui doivent expliquer ce qu’elles font.</p>
 
 <blockquote class="note">
-  <p>Mantra <a href="https://www.developpez.com/actu/150066/Programmation-quand-faut-il-commenter-son-code-Google-s-invite-dans-le-debat-et-montre-que-les-commentaires-peuvent-tres-souvent-etre-evites/">NO COMMENTS !</a></p>
+  <p><strong>Coding mantra :</strong> <a href="https://www.developpez.com/actu/150066/Programmation-quand-faut-il-commenter-son-code-Google-s-invite-dans-le-debat-et-montre-que-les-commentaires-peuvent-tres-souvent-etre-evites/">NO COMMENTS !</a></p>
 </blockquote>
 
 <p>En plus d’être inutile :</p>
@@ -146,7 +146,7 @@
 <p>Ecriture claire du code : si on a le choix entre écrire du code utilisant des subtilités mais difficile à comprendre ou du code plus basique mais lisible on choisira <strong>TOUJOURS</strong> le code lisible.</p>
 
 <blockquote class="note">
-  <p>Mantra : <a href="https://fr.wikipedia.org/wiki/Principe_KISS">KISS</a></p>
+  <p><strong>Coding mantra :</strong> <a href="https://fr.wikipedia.org/wiki/Principe_KISS">KISS</a></p>
 </blockquote>
 
 <p>Si le fond doit être simple, la forme du code est importante aussi. Il se doit d’être agréable à lire et homogène. L’équipe de développement doit se mettre d’accord sur un <a href="https://fr.wikipedia.org/wiki/Style_de_programmation">coding style</a>. Par défaut on utilise le standard du langage. En python, c’est la  <a href="https://www.python.org/dev/peps/pep-0008/">PEP8</a></p>
@@ -160,7 +160,7 @@
 <p>On ne dois jamais coder de choses inutiles : tout bout de code doit être utilisé au moment où il est écrit. On ne codera jamais de fonctionnalités qui vont être utiles plus tard (car “plus tard” le code ne sera plus le même et l’intégration de la fonctionnalité ne sera pas immédiate et, vraisemblablement, les besoins auront changés et l’instant “plus tard” n’arrivera jamais) et tout code qui n’est plus utile est immédiatement supprimé (pour les mêmes raisons).</p>
 
 <blockquote>
-  <p>Mantra : <a href="https://fr.wikipedia.org/wiki/YAGNI">YAGNI</a></p>
+  <p><strong>Coding mantra :</strong> <a href="https://fr.wikipedia.org/wiki/YAGNI">YAGNI</a></p>
 </blockquote>
 
 <h2 id="tests">tests</h2>
@@ -172,7 +172,7 @@
 <p>Lorsque l’on ajoute des fonctionnalités au code ou que l’on corrige un bug, on écrit un test qui vérifie la fonctionnalité ou qui montre que le bug n’existe pas/plus. Ainsi, puisque les tests sont conservées, ce bug ne pourra plus jamais réapparaître et cette fonctionnalité ne pourra plus disparaître.</p>
 
 <blockquote class="note">
-  <p>Mantra : <a href="https://artificials.ch/test-driven-development-mantra/">TDD</a></p>
+  <p>Coding mantra :** <a href="https://artificials.ch/test-driven-development-mantra/">TDD</a></p>
 </blockquote>
 
 <p>Nous n’utiliserons pas ici au début le mantra TDD dans son intégralité puisque l’on se permettra d’écrire les tests après avoir codé la fonctionnalité et pas avant. Mais, l’expérience venant, faites l’expérience de coder vos tests avant la fonction, c’est très utile car cela permet d’utiliser sa fonction avant de la coder, ce qui souvent change la façon dont on voulait coder la fonction initialement.</p>
@@ -180,10 +180,10 @@
 <p>Les tests sont autant de cas d’utilisation de vos programmes qui montrent qu’il fonctionne et comment il fonctionne. Il permettent de montrer les différentes fonctionnalités de votre code :</p>
 
 <blockquote class="note">
-  <p><strong>La fonctionnalités est plus importante que le code</strong> : Le code va changer, les fonctionnalités doivent rester.</p>
+  <p><strong>La fonctionnalité est plus importante que le code</strong> : Le code va changer, les fonctionnalités doivent rester.</p>
 </blockquote>
 
-<p>Enfin, le code et ses tests doivent être fait par la <strong>même personne</strong> et au <strong>même moment</strong>. Il ne faut pas attendre d’avoir codé plusieurs fonctions avant de faire ses tests. Vous n’êtes en effet pas sur que votre 1ère fonction codée fonctionne avant d’avoir fait des tests. De là, il est possible qu’un bug dans cette première fonction affecte le code de votre 2nde fonction… Lorsque vous ferez vos tests vous serez alors obligé de re-coder toutes vos fonctions ce qui ne serait pas arrivé si vous aviez testé toutes vos fonction une par une et au moment de les coder.</p>
+<p>Enfin, le code et ses tests doivent être fait par la <strong>même personne</strong> et au <strong>même moment</strong>. Il ne faut pas attendre d’avoir codé plusieurs fonctions avant de faire ses tests. Vous n’êtes en effet pas sur que votre 1ère fonction codée fonctionne avant d’avoir fait des tests. De là, il est possible qu’un bug dans cette première fonction affecte le code de votre seconde fonction… Lorsque vous ferez vos tests vous serez alors obligé de re-coder toutes vos fonctions ce qui ne serait pas arrivé si vous aviez testé toutes vos fonction une par une et au moment de les coder.</p>
 
 <h2 id="structure-dun-programme">structure d’un programme</h2>
 

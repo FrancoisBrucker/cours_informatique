@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>étude / mélanger un tableau | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0">
+<meta property="og:title" content="étude / mélanger un tableau">
+<meta name="author" content="François Brucker">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille.">
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille.">
+<link rel="canonical" href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/etude-melange.html">
+<meta property="og:url" content="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/etude-melange.html">
+<meta property="og:site_name" content="cours d’informatique">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="étude / mélanger un tableau">
+<script type="application/ld+json">
+{"description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/etude-melange.html","headline":"étude / mélanger un tableau","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css">
+
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css">
+<link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique">
+<script>MathJax={"tex":{"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["\\[","\\]"]]},"svg":{"fontCache":"global"},"svg":{"fontCache":"global"}}</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<header class="site-header" role="banner">
+
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/cours_informatique/">cours d'informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav>
+</div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">étude / mélanger un tableau</h1>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span>
+  </header>
+
+  <div class="post-content">
+    <blockquote class="chemin">
+  <p><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/">Théorie et pratiques algorithmique</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/">algorithmie</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/etude-melange.html">étude :  mélanger un tableau</a></p>
+
+  <p>prérequis :</p>
+
+  <ul>
+    <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/etude-exponentiation.html">étude : l’exponentiation</a></li>
+  </ul>
+
+</blockquote>
+
+<p>Nous allons étudier ici deux algorithmes permettant de mélanger un tableau. Commençons par identifier le problème. Nous allons utiliser le problème suivant, qui consiste à rendre une permutation des $n$ premiers entiers :</p>
+
+<ul>
+  <li>
+<strong>nom</strong> : permutation</li>
+  <li>
+<strong>entrée</strong> : un tableau d’entiers</li>
+  <li>
+<strong>sortie</strong> : une permutation aléatoire du tableau en entrée</li>
+</ul>
+
+<blockquote>
+  <p>une permutation d’un tableau $T$ de taille $n$ est un tableau $T’$ de taille $n$ où $T’[i] = T[\sigma(i)]$ avec $\sigma$ une bijection de $[0 .. n-1]$.</p>
+</blockquote>
+
+<p>L’algorithme que nous allons montrer ici nécessite que l’on puisse obtenir un entier aléatoire plus petit qu’un nombre donné $n$. On va donc considérer que l’on a une fonction <code class="language-plaintext highlighter-rouge">randint</code> de complexité $\mathcal{O}(1)$ qui résout le problème “randint” suivant :</p>
+
+<ul>
+  <li>
+<strong>nom</strong> : randint</li>
+  <li>
+<strong>entrées</strong> : deux entiers $a$ et $b$</li>
+  <li>
+<strong>sortie</strong> : un entier aléatoire $c$ tel que $a \leq c \leq b$.</li>
+</ul>
+
+<p>On ne va pas définir plus que ça la notion d’aléatoire en informatique. On va ici prendre la définition mathématique : rend un nombre entre $a$ et $b$ de façon équiprobable, et considérer que c’est ok.</p>
+
+<blockquote>
+  <p>Il n’existe pas d’aléatoire au sens mathématique en informatique. On ne peut atteindre que des nombre <a href="https://fr.wikipedia.org/wiki/Pseudo-al%C3%A9atoire">pseudo-aléatoires</a>, mais c’est une autre histoire.</p>
+</blockquote>
+
+<h2 id="remarques-préliminaires">remarques préliminaires</h2>
+
+<p>Attention, l’algorithme suivant :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>soit T un tableau à n cases
+de i = 0 à n-1:
+    T[i] = randint(0, n-1)
+rendre T
+</code></pre></div></div>
+
+<p>Ne résout pas le problème “permutation” puisqu’il peut y avoir des répétitions.</p>
+
+<h2 id="borne-min-du-problème">borne min du problème</h2>
+
+<p>Comme il faut rendre un tableau de longueur $n$, une borne minimum du problème “permutation” est de $\mathcal{O}(n)$. Mais rien ne dit qu’un tel algorithme existe.</p>
+
+<h2 id="existence-dun-algorithme">existence d’un algorithme</h2>
+
+<p>Avant de chercher plus loin commençons par montrer qu’il existe un algorithme pour résoudre le problème. Si l’on possède une liste de toutes les permutations possible, l’algorithme suivant fonctionne :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>soit P un tableau contenant une fois chaque permutation de T
+i = randint(0, n! - 1)
+rendre P[i]
+</code></pre></div></div>
+
+<p>Il nous reste à créer toutes les permutations possibles d’un tableau. C’est ce que fait l’algorithme suivant, récursif et en python.</p>
+
+<h3 id="toutes-les-permutations">toutes les permutations</h3>
+
+<style>
+    table, td, tr, th, pre {
+        padding:0;
+        margin:0;
+        border:none
+    }
+</style>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td>
+<td class="code"><pre><span class="k">def</span> <span class="nf">permutations</span><span class="p">(</span><span class="n">elements</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">elements</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[[]]</span>
+    
+    <span class="n">les_permutations</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">elements</span><span class="p">)):</span>
+        <span class="n">premier</span> <span class="o">=</span> <span class="n">elements</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">elements_sans_premier</span> <span class="o">=</span> <span class="n">elements</span><span class="p">[:</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">elements</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span>
+        <span class="n">permutations_sans_premier</span> <span class="o">=</span> <span class="n">permutations</span><span class="p">(</span><span class="n">elements_sans_premier</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">une_fin_de_permutation</span> <span class="ow">in</span> <span class="n">permutations_sans_premier</span><span class="p">:</span>
+            <span class="n">permutation</span> <span class="o">=</span> <span class="p">[</span><span class="n">premier</span><span class="p">]</span> <span class="o">+</span> <span class="n">une_fin_de_permutation</span>
+            <span class="n">les_permutations</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">permutation</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">les_permutations</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+
+<p>Pour placer dans la liste de listes <code class="language-plaintext highlighter-rouge">P</code> toutes les permutations de <code class="language-plaintext highlighter-rouge">[0, 1, 2, 3, 4, 5]</code>, on lance l’algorithme comme ça : <code class="language-plaintext highlighter-rouge">P = permutations([0, 1, 2, 3, 4, 5])</code>.</p>
+
+<p>Analysons cet algorithme pour vérifier qu’il fait bien ce qu’on pense qu’il fait (bien).</p>
+
+<h4 id="finitude">finitude</h4>
+
+<p>A chaque récursion, le tableau <code class="language-plaintext highlighter-rouge">elements</code> est strictement plus petit. En effet le tableau <code class="language-plaintext highlighter-rouge">elements_sans_premier</code> sur lequel porte la récursion est la restriction du tableau <code class="language-plaintext highlighter-rouge">elements</code> en supprimant l’élément d’indice <code class="language-plaintext highlighter-rouge">i</code> (<code class="language-plaintext highlighter-rouge">elements_sans_premier = elements[:i] + elements[i+1:]</code>).</p>
+
+<p>Il arrivera donc une récursion où <code class="language-plaintext highlighter-rouge">elements</code> sera vide : le test de la ligne 2 stoppera la récursion.</p>
+
+<h4 id="preuve">preuve</h4>
+
+<p>on prouve par récurrence sur la taille du tableau <code class="language-plaintext highlighter-rouge">elements</code> que <code class="language-plaintext highlighter-rouge">permutations_rec(elements)</code> donne un tableau contenant toutes les permutations de <code class="language-plaintext highlighter-rouge">elements</code>.</p>
+
+<ol>
+  <li>pour <code class="language-plaintext highlighter-rouge">len(elements) == 0</code> c’est clair.</li>
+  <li>on suppose la propriété vrai pour <code class="language-plaintext highlighter-rouge">len(elements) == p</code>. Pour <code class="language-plaintext highlighter-rouge">len(elements) == p + 1</code>, par hypothèse de récurrence, le retour de la récursion <code class="language-plaintext highlighter-rouge">permutations_rec(elements_sans_premier)</code> sera l’ensemble des permutations de <code class="language-plaintext highlighter-rouge">elements[:i] + elements[i+1:]</code> pour une position <code class="language-plaintext highlighter-rouge">i</code> de <code class="language-plaintext highlighter-rouge">elements</code>. Pour un <code class="language-plaintext highlighter-rouge">i</code>  donné on obtient alors  toutes les permutations de <code class="language-plaintext highlighter-rouge">elements</code> ayant <code class="language-plaintext highlighter-rouge">elements[i]</code> en première position (on ajoute <code class="language-plaintext highlighter-rouge">elements[i]</code> à toutes les permutations de <code class="language-plaintext highlighter-rouge">elements[:i] + elements[i+1:]</code>). Comme <code class="language-plaintext highlighter-rouge">i</code> prend tous les indice de <code class="language-plaintext highlighter-rouge">elements</code>, on on obtient aufinal toutes les permutations du tableau <code class="language-plaintext highlighter-rouge">elements</code>.</li>
+</ol>
+
+<h4 id="complexité">complexité</h4>
+
+<p>La complexité de l’algorithme va dépendre de la taille $n$ du tableau <code class="language-plaintext highlighter-rouge">elements</code>. : on note sa complexité $C(n)$. Comme il est récursif, on va chercher une équation de récurrence que satisfait $C(n)$ à résoudre.</p>
+
+<p>Complexité de chaque ligne :</p>
+
+<ol>
+  <li>$\mathcal{O}(1)$ définition de la fonction</li>
+  <li>$\mathcal{O}(1)$ un test</li>
+  <li>$\mathcal{O}(1)$ retour d’une constante
+4.</li>
+  <li>$\mathcal{O}(1)$ affectation d’une constante</li>
+  <li>une boucle de $n$ itérations</li>
+  <li>$\mathcal{O}(1)$ une affectation d’un élément d’un tableau</li>
+  <li>$\mathcal{O}(n)$ car on crée un <strong>nouveau</strong> tableau de taille $n-1$</li>
+  <li>$C(n-1)$, c’est notre récursion.</li>
+  <li>une boucle de $\mathcal{O}((n-1)!)$ itérations (toutes les permutations d’un tableau à n-1 éléments)</li>
+  <li>$\mathcal{O}(n)$ car on crée un <strong>nouveau</strong> tableau de taille $n$</li>
+  <li>$\mathcal{O}(1)$, on ajoute un élément à la fin d’une liste (les tableau en pthon sont des listes, l’ajout d’un élément à la fin d’une liste est en temps constant)</li>
+  <li>$\mathcal{O}(1)$ retour d’une fonction</li>
+</ol>
+
+<p>Ce qui donne :</p>
+
+\[\begin{array}{lcl}
+    C(n) = &amp; &amp; \mathcal{O}(1)\\
+    &amp; + &amp; \mathcal{O}(1)\\
+    &amp; + &amp; \mathcal{O}(1)\\
+    &amp; + &amp; \mathcal{O}(1)\\
+    &amp; + &amp; n \cdot (\\
+    &amp;  &amp; \mathcal{O}(1)\\
+    &amp; + &amp; \mathcal{O}(n)\\
+    &amp; + &amp; C(n-1)\\
+    &amp; + &amp; (n-1)! \cdot (\\
+    &amp; &amp; \mathcal{O}(n)\\
+    &amp; + &amp; \mathcal{O}(1)\\
+    &amp; &amp; ))\\
+    &amp; + &amp; \mathcal{O}(1)\\
+\end{array}\]
+
+<p>En simplifiant les $\mathcal{O}(1)$, on obtient l’équation de récurrence suivante :</p>
+
+\[\begin{array}{lcl}
+C(n) &amp; = &amp; \mathcal{O}(1) + n \cdot (\mathcal{O}(n) + C(n-1) + (n-1)! \cdot (\mathcal{O}(n)))\\
+     &amp; = &amp; \mathcal{O}(1) + \mathcal{O}(n^2) + n \cdot C(n-1) + n! \cdot \mathcal{O}(n)\\
+     &amp; = &amp; \mathcal{O}(n^2) + n \cdot C(n-1) + \mathcal{O}(n\cdot n!)\\
+     &amp; = &amp; n \cdot C(n-1) + \mathcal{O}(n\cdot n!)\\
+\end{array}\]
+
+<p>On peut maintenant étendre la récurrence</p>
+
+\[\begin{array}{lcl}
+C(n) &amp; = &amp; n \cdot C(n-1) + \mathcal{O}(n\cdot n!)\\
+     &amp; = &amp; n \cdot (n-1) \cdot C(n-2) + n \mathcal{O}(n-1)\cdot (n-1)!)) + \mathcal{O}(n\cdot n!)\\
+     &amp; = &amp; n \cdot (n-1) \cdot C(n-2) + \mathcal{O}(n-1)\cdot (n)!)) + \mathcal{O}(n\cdot n!)\\
+     &amp; = &amp; n \cdot (n-1) \cdot C(n-2) + \mathcal{O}((n + (n-1))n!)\\
+     &amp; = &amp; ...\\
+     &amp; = &amp; \Pi_{i=0}^p (n -i)\cdot C(n-i-1) + \mathcal{O}(\sum_{i=0}^p (n -i))n!)\\
+     &amp; = &amp; n! \cdot C(0) + \mathcal{O}(\sum_{i=0}^{n-1} (n - i))n!)\\
+\end{array}\]
+
+<p>Comme $C(0) = \mathcal{O}(1)$ et que $\sum_{i=0}^{n-1}(n-i) = \mathcal{O}(n^2)$ On en déduit que :</p>
+
+\[C(n) = \mathcal{O}(n^2n!) = \mathcal{O}((n+2)!)\]
+
+<h3 id="algorithme-final">algorithme final</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
+
+<span class="k">def</span> <span class="nf">melange</span><span class="p">(</span><span class="n">elements</span><span class="p">):</span>
+    <span class="n">P</span> <span class="o">=</span> <span class="n">permutations</span><span class="p">(</span><span class="n">elements</span><span class="p">)</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">P</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">P</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+</code></pre></div></div>
+
+<p>Comme on a considéré que la complexité de <code class="language-plaintext highlighter-rouge">randint</code> étant de $\mathcal{O}(1)$, la complexité de <code class="language-plaintext highlighter-rouge">melange</code> est de l’ordre de la complexité de <code class="language-plaintext highlighter-rouge">permutations</code> donc : $\mathcal{O}((n+2)!)$ avec $n$ la taille du tableau <code class="language-plaintext highlighter-rouge">element</code>. On a donc maintenant également une borne max au problème, même si elle est gigantesque !</p>
+
+<blockquote>
+  <p>L’algorithme <code class="language-plaintext highlighter-rouge">melange</code> n’est pas utilisable en pratique car <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/complexite-max-min.html#n_factoriel">n! est trop gros</a></p>
+</blockquote>
+
+<h2 id="algorithme-de-knuth--fisher-yates">Algorithme de Knuth / fisher-yates</h2>
+
+<p>L’algorithme que l’on va montrer maintenant, dit de <a href="https://fr.wikipedia.org/wiki/M%C3%A9lange_de_Fisher-Yates">Knuth ou encore de fisher-yates</a>, va également résoudre le problème “permutation”, mais de façon bien plus élégante.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
+
+<span class="k">def</span> <span class="nf">melange_knuth</span><span class="p">(</span><span class="n">elements</span><span class="p">):</span>
+    <span class="n">copie_elements</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">elements</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">copie_elements</span><span class="p">)):</span>
+        <span class="n">j</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+        <span class="n">copie_elements</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">copie_elements</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">copie_elements</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">copie_elements</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">copie_elements</span>
+    
+</code></pre></div></div>
+
+<blockquote class="tbd">
+  <p>montrer les proportions (<code class="language-plaintext highlighter-rouge">from collections import Counter</code>) avec seaborn
+résout la complexité du problème</p>
+</blockquote>
+
+<h2 id="algorithme-de-python">algorithme de python</h2>
+
+<ul>
+  <li>random randint</li>
+  <li>shuffle</li>
+</ul>
+
+<h2 id="attention-">attention !</h2>
+
+<h3 id="maths">maths</h3>
+
+<p>suite de transpositions</p>
+
+<h2 id="ref">ref</h2>
+
+<ul>
+  <li><a href="https://possiblywrong.wordpress.com/2014/12/01/card-shuffling-algorithms-good-and-bad/">https://possiblywrong.wordpress.com/2014/12/01/card-shuffling-algorithms-good-and-bad/</a></li>
+  <li><a href="https://blog.codinghorror.com/the-danger-of-naivete/">https://blog.codinghorror.com/the-danger-of-naivete/</a></li>
+  <li>
+<a href="https://draftsim.com/mtg-arena-shuffler/">https://draftsim.com/mtg-arena-shuffler/</a> ce que les maths disent de l’aléatoire vs ce que les humains disent de l’aléatoire</li>
+  <li><a href="https://www.stashofcode.fr/tri-aleatoire-des-elements-dun-tableau/">https://www.stashofcode.fr/tri-aleatoire-des-elements-dun-tableau/</a></li>
+</ul>
+
+<h2 id="mélanger-des-listes-">mélanger des listes ?</h2>
+
+<p>On s’est appuyé sur la fonction <a href="https://docs.python.org/3/library/random.html#random.shuffle">shuffle du module random</a> pour mélanger des listes.</p>
+
+<p>Mais sommes-nous bien sur que le mélange est bien équiprobable ? Sinon nos mesures de complexité en moyenne seraient tous faux…</p>
+
+<p>Rassurez vous c’est le cas. Elle utilise la méthode de mélange de <a href="https://fr.wikipedia.org/wiki/M%C3%A9lange_de_Fisher-Yates">Fisher-Yates</a>, qui est un algorithme linéaire permettant d’obtenir toutes les permutations possibles de façon équiprobable.</p>
+
+<p>Ce qui est marrant c’est que cet algorithme est <em>“l’inverse”</em> d’un tri par sélection.</p>
+
+<p>Implémentez cet algorithme et vérifiez que pour la liste des 4 premiers entiers vous obtenez bien (sur un grand nombre d’essais) à peut prêt le même nombre des 24 permutations possibles.</p>
+
+<p>Si vous voulez en savoir un peu plus sur cet algorithme et de comment générer un nombre aléatoire en python :</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d'informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d'informatique</li>
+</ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+<ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d'informatique à l'école centrale marseille.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
