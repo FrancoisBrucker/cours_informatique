@@ -212,9 +212,11 @@ Sa complexité est cependant prohibitive. Comme on a considéré que la complexi
 > L'intérêt de `mélange` est théorique. Il montre qu'il existe un algorithme pour résoudre le problème (et en donne par là également une borne max).
 {: .note}
 
-## algorithme de Knuth / fisher-yates
+## algorithme de fisher-yates ou de Knuth
 
-L'algorithme que l'on va montrer maintenant, dit de [Knuth ou encore de fisher-yates](https://fr.wikipedia.org/wiki/M%C3%A9lange_de_Fisher-Yates), va également résoudre le problème "permutation", mais de façon bien plus élégante.
+L'algorithme que l'on va montrer maintenant, dit de [fisher-yates ou encore de Knuth](https://fr.wikipedia.org/wiki/M%C3%A9lange_de_Fisher-Yates), va également résoudre le problème "permutation", mais de façon bien plus élégante.
+
+> Comme Fisher et Yates étaient des mathématiciens et Knuth un (grand) informaticien, les informaticiens préfèrent appeler cet algorithme *algorithme de Knuth* plutôt qu'*algorithme de Fisher-Yates*. Cependant comme Knuth a créé de très nombreux algorithmes, googler "algorithme de fisher-yates" donne directement le résultat attendu alors que googler "algorithme de knuth" donne plein de résultats différents (mais tous sont de superbes algorithmes !).
 
 <style>
     table, td, tr, th, pre {
@@ -264,7 +266,7 @@ C(n) & = & \mathcal{O}(n) + \mathcal{O}(n) \cdot (\mathcal{O}(1) + \mathcal{O}(1
 \end{array}
 $$
 
-### vérification expérimentale
+### vérification expérimentale {#verif-expe}
 
 Si, en exécutant l'algorithme on se rend bien compte qu'il *mélange* le tableau en entrée, ce n'est pas très clair à première vue que toutes les permutations sont équiprobables.
 
@@ -378,45 +380,81 @@ L'algorithme choisit donc bien 1 permutation parmi $n!$ permutations, toutes dif
 
 > Cette preuve permet aussi de montrer que l'algorithme ne peux pas boucler et retrouver deux fois la même permutation avec 2 exécutions différentes.
 
-## algorithme de python
+## méthodes de python
 
 Python utilise la méthode [shuffle](https://docs.python.org/fr/3/library/random.html#random.shuffle) du module random pour mélanger une liste.
 
 **Attention**, La méthode shuffle ne rend pas une nouvelle liste, elle mélange la liste en entrée. Si l'on veut créer une nouvelle liste il faut utiliser la méthode [sample](https://docs.python.org/fr/3/library/random.html#random.sample) avec les paramètres suivants : `sample(x, k=len(x))`
 
-> La méthode utilisée par shuffle est la méthode Knuth / fisher-yates.
+> La méthode utilisée par shuffle est l'algorithme de Knuth / Fisher-Yates.
 
 > Regardez les 4 différentes méthodes pour mélanger en python de cet article : <https://www.geeksforgeeks.org/python-ways-to-shuffle-a-list/>. La 4ème méthode n'est pas optimale en complexité. Pourquoi ?
 {: .a-faire}
 
-{% details  solution % }
+{% details  solution %}
 
-La ligne `element=arr.pop(j)` supprime l'élémnet $j$ de la liste `arr`. Sa complexité est $\mathcal{O}(n)$ avec $n$ la taille de la liste `arr` car ce n'est pas formément le dernier élément qui est supprimé. La compelxit" totale de leur mélangeage est alors $\mathcal{O}(n ^2)$ et pas $\mathcal{O}(n)$.
+La ligne `element=arr.pop(j)` supprime l'élément $j$ de la liste `arr`. Sa complexité est $\mathcal{O}(n)$ avec $n$ la taille de la liste `arr` car ce n'est pas formément le dernier élément qui est supprimé. La complexité totale de leur mélangeage est alors $\mathcal{O}(n^2)$ et pas $\mathcal{O}(n)$.
 
 {% enddetails %}
 
 ## attention
 
-à trop mélanger on ne mélange pas bien
+### à trop mélanger on ne mélange pas bien
 
-### maths
+Si vous implémentez un algorithme de mélange mais qu'il peut obtenir plusieurs fois la même permutation avec des opérations différentes, alors vous risquez fort de ne pas être équiprobable. Illustrons ceci par un exemple.
 
-suite de transpositions
+On sait que toute permutation d'un tableau peut être atteinte en échangeant itérativement une paire d'éléments (on appelle ça une [décomposition en produit de transpositions](https://fr.wikipedia.org/wiki/Permutation#D%C3%A9composition_en_produit_de_transpositions)). On peut même montrer qu'il suffit d'en faire au plus la taille du tableau moins 1.
 
-## attention à randint
+On en déduit l'algorithme de mélange suivant :
+
+```python
+def melange_transposition(elements):
+    copie_elements = list(elements)
+    for k in range(len(copie_elements) - 1):
+        i = randint(0, len(copie_elements) - 1)
+        j = randint(0, len(copie_elements) - 1)
+        
+        copie_elements[i], copie_elements[j] = copie_elements[j], copie_elements[i]
+    return copie_elements
+```
+
+> Refaites l'expérience de la [vérification expérimentale](#verif-expe) pour cet algorithme.
+{: .a-faire}
+
+J'obtiens quelque chose du type :
+
+![mélange de transpositions]({{ "/assets/cours/algorithmie/melange_transposition.png" | relative_url }}){:style="margin: auto;display: block"}
+
+On remarque que les premières permutations sont surreprésentées par rapport à ce qu'on devrait avoir. On remarque aussi qui'l y a des piques réguliers que l'on observe pas avec le mélange de Knuth. Ceci est du au fait que l'on peut produire une même permutation de plusieurs manière avec cet algorihtme : on produit plus facilement certaines permutations que d'autres, ce qui rend l'algorithme non equiprobable.
+
+> lisez et comprenez l'article : <https://datagenetics.com/blog/november42014/index.html>. Il explique pourquoi cette méthode n'est pas efficace.
+{: .a-faire}
+
+Nous allons ici juste montrer que les permutations ne sorties ne sont pas équiprobables.
+
+> montrer 1 sur représenté
+{: .tbd}
+
+### randint doit être puissant
 
 pour un deck de 52 cartes trop de permutations par rapport au nombre aléatoire
 
 il faut un randint vraiment puissant. (on verra ça plus tard.)
 
-## ref
+<https://www.i-programmer.info/programming/theory/2744-how-not-to-shuffle-the-kunth-fisher-yates-algorithm.html>
+
+### attention aux humains
+
+<https://draftsim.com/mtg-arena-shuffler/> ce que les maths disent de l'aléatoire vs ce que les humains disent de l'aléatoire
+
+## autres références
+
+Quelques autres articles sur le sujet :
 
 * <https://possiblywrong.wordpress.com/2014/12/01/card-shuffling-algorithms-good-and-bad/>
 * <https://blog.codinghorror.com/the-danger-of-naivete/>
-* <https://draftsim.com/mtg-arena-shuffler/> ce que les maths disent de l'aléatoire vs ce que les humains disent de l'aléatoire
 * <https://www.stashofcode.fr/tri-aleatoire-des-elements-dun-tableau/>
-* <https://datagenetics.com/blog/november42014/index.html>
-* <https://www.i-programmer.info/programming/theory/2744-how-not-to-shuffle-the-kunth-fisher-yates-algorithm.html>
+
 
 ## mélanger des listes ?
 
