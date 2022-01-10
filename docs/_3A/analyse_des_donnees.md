@@ -13,5 +13,6 @@ Vous aurez besoin d'une installation de jupyter notebook opérationnelle sur vot
 
 1. [téléchargez le cours 1]({% link /assets/cours/ana_data/ana-data-1.zip %})
 2. [téléchargez le cours 2]({% link /assets/cours/ana_data/ana-data-2.zip %})
+3. [téléchargez le cours 3]({% link /assets/cours/ana_data/ana-data-3.zip %})
 
 > Les cours sont téléchargés sous la forme d'un dossier compressé au format zip. Si vous n'avez pas de logiciel pour dézipper des fichiers et que vous êtes sous windows, vous pouvez installer [7zip](https://www.7-zip.org/download.html) (choisissez *64-bit Windows x64* comme système).
