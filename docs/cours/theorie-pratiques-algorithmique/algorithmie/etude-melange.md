@@ -360,16 +360,36 @@ Le nombre de permutations trouvé oscille bien autour de la valeur théorique.
 
 ### preuve de programme
 
-On va montrer que les probabilités de sortie de chaque permutation sont bien équiprobables de deux façons différentes.
-
 On suppose que le tableau d'entrée possède $n$ éléments.
+
+On va montrer que les probabilités de sortie de chaque permutation sont bien équiprobables de trois façons différentes. Toutes les démonstrations reposent sur le fait :
+
+* qu'une fois un élément choisi, il n'est plus jamais déplacé
+* tous les éléments seront choisis une fois dans l'algorithme (il y a $n$ itérations et on choisi un élément à chaque itération)
+
+#### preuve par probabilités
+
+On va calculer la probabilité que l'élément originellement en position $i$ se retrouve en position $n-j$ à la fin de l'algorithme. Si notre tirage est équiprobable, cette probabilité doit être égal à $\frac{1}{n}$ quelquesoient $i$ et $j$.
+
+Pour que cela arrive, il faut que :
+
+* l'élément n'ait pas été pris pendants la première itération : il y a $\frac{n-1}{n}$ chances que ça arrive (on ne choisit pas notre élément parmi $n$ possibles : $1-\frac{1}{n} = \frac{n-1}{n}$)
+* l'élément n'ait pas été pris pendants la deuxième itération : il y a $\frac{n-2}{n-1}$ chances que ça arrive (on ne choisit pas notre élément parmi $n - 1$ possibles : $1-\frac{1}{n-1} = \frac{n-2}{n-1}$)
+* ...
+* l'élément n'ait pas été pris pendants la $j-1$ ème itération : il y a $\frac{n-j+1}{n-j+2}$ chances que ça arrive (on ne choisit pas notre élément parmi $n-(j-1) +1$ possibles : $1-\frac{1}{n-j+2} = \frac{n-j+1}{n-j+2}$)
+* l'élément ait été pris pendants la $j$ ème itération : il y a $\frac{1}{n-j+1}$ chances que ça arrive
+
+De là, la probabilité que l'élément originellement en position $i$ se retrouve en position $n-j$ à la fin de l'algorithme est :
+
+$$\frac{n-1}{n} \cdot \frac{n-2}{n-1} \cdot ... \cdot \frac{n-j+1}{n-j+2} \cdot \frac{1}{n-j+1} == \frac{1}{n}$$
+
+C'est bien équiprobable !
 
 #### preuve par dénombrement
 
-1. On commence par remarquer que l'élément placé lors de la ième itération de l'algorithme (il sera placé à l'indice $n-i$ du tableau de sortie) ne sera plus jamais déplacé ensuite. On choisit donc à chaque étape un élément différent du tableau de départ et comme il y a $n$ itérations, on a bien choisit tous les éléments.
-2. à la $i$ème itération on choisit un élément parmi $n-i+1$, et comme $i$ croit de $1$ à $n-1$, on a $n!$ possibilités en tout.
+A la $i$ème itération on choisit un élément parmi $n-i+1$, et comme $i$ croit de $1$ à $n-1$, on a $n!$ parcours différents de l'algorithme.
 
-L'algorithme choisit donc bien 1 permutation parmi $n!$ permutations, toutes différentes : il y a bien équiprobabilité des choix.
+L'algorithme choisit donc bien 1 permutation parmi $n!$, toutes différentes : il y a bien équiprobabilité des choix.
 
 #### preuve par récurrence
 
@@ -430,12 +450,16 @@ On remarque que les premières permutations sont surreprésentées par rapport �
 > lisez et comprenez l'article : <https://datagenetics.com/blog/november42014/index.html>. Il explique pourquoi cette méthode n'est pas efficace.
 {: .a-faire}
 
-Nous allons ici juste montrer que les permutations ne sorties ne sont pas équiprobables.
+Nous allons ici juste montrer que les permutations ne sorties ne sont pas équiprobables. On calcule la probabilité que l'élément $i$ reste en position $i$ à la fin d la permutation. 
 
-> montrer 1 sur représenté
+> plusieurs chois jamais choisi ou choisi une fois puis replacé au bonendroit, etc. ; donc cette proba est > que jamais choisi.
 {: .tbd}
 
 ### randint doit être puissant
+
+> pseudo-aléatoire : def
+> on y reviendra plus tard dans le cours
+{: tbd}
 
 pour un deck de 52 cartes trop de permutations par rapport au nombre aléatoire
 
@@ -454,18 +478,3 @@ Quelques autres articles sur le sujet :
 * <https://possiblywrong.wordpress.com/2014/12/01/card-shuffling-algorithms-good-and-bad/>
 * <https://blog.codinghorror.com/the-danger-of-naivete/>
 * <https://www.stashofcode.fr/tri-aleatoire-des-elements-dun-tableau/>
-
-
-## mélanger des listes ?
-
-On s'est appuyé sur la fonction [shuffle du module random](https://docs.python.org/3/library/random.html#random.shuffle) pour mélanger des listes.
-
-Mais sommes-nous bien sur que le mélange est bien équiprobable ? Sinon nos mesures de complexité en moyenne seraient tous faux...
-
-Rassurez vous c'est le cas. Elle utilise la méthode de mélange de [Fisher-Yates](https://fr.wikipedia.org/wiki/M%C3%A9lange_de_Fisher-Yates), qui est un algorithme linéaire permettant d'obtenir toutes les permutations possibles de façon équiprobable.
-
-Ce qui est marrant c'est que cet algorithme est *"l'inverse"* d'un tri par sélection.
-
-Implémentez cet algorithme et vérifiez que pour la liste des 4 premiers entiers vous obtenez bien (sur un grand nombre d'essais) à peut prêt le même nombre des 24 permutations possibles.
-
-Si vous voulez en savoir un peu plus sur cet algorithme et de comment générer un nombre aléatoire en python :
