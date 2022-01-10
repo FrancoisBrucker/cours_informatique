@@ -466,18 +466,40 @@ C(n) &amp; = &amp; \mathcal{O}(n) + \mathcal{O}(n) \cdot (\mathcal{O}(1) + \math
 
 <h3 id="preuve-de-programme">preuve de programme</h3>
 
-<p>On va montrer que les probabilités de sortie de chaque permutation sont bien équiprobables de deux façons différentes.</p>
-
 <p>On suppose que le tableau d’entrée possède $n$ éléments.</p>
+
+<p>On va montrer que les probabilités de sortie de chaque permutation sont bien équiprobables de trois façons différentes. Toutes les démonstrations reposent sur le fait :</p>
+
+<ul>
+  <li>qu’une fois un élément choisi, il n’est plus jamais déplacé</li>
+  <li>tous les éléments seront choisis une fois dans l’algorithme (il y a $n$ itérations et on choisi un élément à chaque itération)</li>
+</ul>
+
+<h4 id="preuve-par-probabilités">preuve par probabilités</h4>
+
+<p>On va calculer la probabilité que l’élément originellement en position $i$ se retrouve en position $n-j$ à la fin de l’algorithme. Si notre tirage est équiprobable, cette probabilité doit être égal à $\frac{1}{n}$ quelquesoient $i$ et $j$.</p>
+
+<p>Pour que cela arrive, il faut que :</p>
+
+<ul>
+  <li>l’élément n’ait pas été pris pendants la première itération : il y a $\frac{n-1}{n}$ chances que ça arrive (on ne choisit pas notre élément parmi $n$ possibles : $1-\frac{1}{n} = \frac{n-1}{n}$)</li>
+  <li>l’élément n’ait pas été pris pendants la deuxième itération : il y a $\frac{n-2}{n-1}$ chances que ça arrive (on ne choisit pas notre élément parmi $n - 1$ possibles : $1-\frac{1}{n-1} = \frac{n-2}{n-1}$)</li>
+  <li>…</li>
+  <li>l’élément n’ait pas été pris pendants la $j-1$ ème itération : il y a $\frac{n-j+1}{n-j+2}$ chances que ça arrive (on ne choisit pas notre élément parmi $n-(j-1) +1$ possibles : $1-\frac{1}{n-j+2} = \frac{n-j+1}{n-j+2}$)</li>
+  <li>l’élément ait été pris pendants la $j$ ème itération : il y a $\frac{1}{n-j+1}$ chances que ça arrive</li>
+</ul>
+
+<p>De là, la probabilité que l’élément originellement en position $i$ se retrouve en position $n-j$ à la fin de l’algorithme est :</p>
+
+\[\frac{n-1}{n} \cdot \frac{n-2}{n-1} \cdot ... \cdot \frac{n-j+1}{n-j+2} \cdot \frac{1}{n-j+1} == \frac{1}{n}\]
+
+<p>C’est bien équiprobable !</p>
 
 <h4 id="preuve-par-dénombrement">preuve par dénombrement</h4>
 
-<ol>
-  <li>On commence par remarquer que l’élément placé lors de la ième itération de l’algorithme (il sera placé à l’indice $n-i$ du tableau de sortie) ne sera plus jamais déplacé ensuite. On choisit donc à chaque étape un élément différent du tableau de départ et comme il y a $n$ itérations, on a bien choisit tous les éléments.</li>
-  <li>à la $i$ème itération on choisit un élément parmi $n-i+1$, et comme $i$ croit de $1$ à $n-1$, on a $n!$ possibilités en tout.</li>
-</ol>
+<p>A la $i$ème itération on choisit un élément parmi $n-i+1$, et comme $i$ croit de $1$ à $n-1$, on a $n!$ parcours différents de l’algorithme.</p>
 
-<p>L’algorithme choisit donc bien 1 permutation parmi $n!$ permutations, toutes différentes : il y a bien équiprobabilité des choix.</p>
+<p>L’algorithme choisit donc bien 1 permutation parmi $n!$, toutes différentes : il y a bien équiprobabilité des choix.</p>
 
 <h4 id="preuve-par-récurrence">preuve par récurrence</h4>
 
@@ -545,13 +567,18 @@ C(n) &amp; = &amp; \mathcal{O}(n) + \mathcal{O}(n) \cdot (\mathcal{O}(1) + \math
   <p>lisez et comprenez l’article : <a href="https://datagenetics.com/blog/november42014/index.html">https://datagenetics.com/blog/november42014/index.html</a>. Il explique pourquoi cette méthode n’est pas efficace.</p>
 </blockquote>
 
-<p>Nous allons ici juste montrer que les permutations ne sorties ne sont pas équiprobables.</p>
+<p>Nous allons ici juste montrer que les permutations ne sorties ne sont pas équiprobables. On calcule la probabilité que l’élément $i$ reste en position $i$ à la fin d la permutation.</p>
 
 <blockquote class="tbd">
-  <p>montrer 1 sur représenté</p>
+  <p>plusieurs chois jamais choisi ou choisi une fois puis replacé au bonendroit, etc. ; donc cette proba est &gt; que jamais choisi.</p>
 </blockquote>
 
 <h3 id="randint-doit-être-puissant">randint doit être puissant</h3>
+
+<blockquote>
+  <p>pseudo-aléatoire : def
+on y reviendra plus tard dans le cours</p>
+</blockquote>
 
 <p>pour un deck de 52 cartes trop de permutations par rapport au nombre aléatoire</p>
 
@@ -572,20 +599,6 @@ C(n) &amp; = &amp; \mathcal{O}(n) + \mathcal{O}(n) \cdot (\mathcal{O}(1) + \math
   <li><a href="https://blog.codinghorror.com/the-danger-of-naivete/">https://blog.codinghorror.com/the-danger-of-naivete/</a></li>
   <li><a href="https://www.stashofcode.fr/tri-aleatoire-des-elements-dun-tableau/">https://www.stashofcode.fr/tri-aleatoire-des-elements-dun-tableau/</a></li>
 </ul>
-
-<h2 id="mélanger-des-listes-">mélanger des listes ?</h2>
-
-<p>On s’est appuyé sur la fonction <a href="https://docs.python.org/3/library/random.html#random.shuffle">shuffle du module random</a> pour mélanger des listes.</p>
-
-<p>Mais sommes-nous bien sur que le mélange est bien équiprobable ? Sinon nos mesures de complexité en moyenne seraient tous faux…</p>
-
-<p>Rassurez vous c’est le cas. Elle utilise la méthode de mélange de <a href="https://fr.wikipedia.org/wiki/M%C3%A9lange_de_Fisher-Yates">Fisher-Yates</a>, qui est un algorithme linéaire permettant d’obtenir toutes les permutations possibles de façon équiprobable.</p>
-
-<p>Ce qui est marrant c’est que cet algorithme est <em>“l’inverse”</em> d’un tri par sélection.</p>
-
-<p>Implémentez cet algorithme et vérifiez que pour la liste des 4 premiers entiers vous obtenez bien (sur un grand nombre d’essais) à peut prêt le même nombre des 24 permutations possibles.</p>
-
-<p>Si vous voulez en savoir un peu plus sur cet algorithme et de comment générer un nombre aléatoire en python :</p>
 
   </div>
 
