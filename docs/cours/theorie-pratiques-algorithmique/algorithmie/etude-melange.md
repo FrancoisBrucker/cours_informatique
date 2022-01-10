@@ -445,14 +445,14 @@ J'obtiens quelque chose du type :
 
 ![mélange de transpositions]({{ "/assets/cours/algorithmie/melange_transposition.png" | relative_url }}){:style="margin: auto;display: block"}
 
-On remarque que les premières permutations sont surreprésentées par rapport à ce qu'on devrait avoir. On remarque aussi qui'l y a des piques réguliers que l'on observe pas avec le mélange de Knuth. Ceci est du au fait que l'on peut produire une même permutation de plusieurs manière avec cet algorihtme : on produit plus facilement certaines permutations que d'autres, ce qui rend l'algorithme non equiprobable.
+On remarque que les premières permutations sont surreprésentées par rapport à ce qu'on devrait avoir. On remarque aussi qui'l y a des piques réguliers que l'on observe pas avec le mélange de Knuth. Ceci est du au fait que l'on peut produire une même permutation de plusieurs manière avec cet algorithme : on produit plus facilement certaines permutations que d'autres, ce qui rend l'algorithme non équiprobable.
 
 > lisez et comprenez l'article : <https://datagenetics.com/blog/november42014/index.html>. Il explique pourquoi cette méthode n'est pas efficace.
 {: .a-faire}
 
-Nous allons ici juste montrer que les permutations ne sorties ne sont pas équiprobables. On calcule la probabilité que l'élément $i$ reste en position $i$ à la fin d la permutation. 
+Nous allons ici juste montrer que les permutations ne sorties ne sont pas équiprobables. On calcule la probabilité que l'élément $i$ reste en position $i$ à la fin d la permutation.
 
-> plusieurs chois jamais choisi ou choisi une fois puis replacé au bonendroit, etc. ; donc cette proba est > que jamais choisi.
+> plusieurs chois jamais choisi ou choisi une fois puis replacé au bonne endroit, etc. ; donc cette proba est > que jamais choisi.
 {: .tbd}
 
 ### randint doit être puissant
