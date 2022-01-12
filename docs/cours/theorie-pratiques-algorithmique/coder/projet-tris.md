@@ -21,3 +21,8 @@ author: "François Brucker"
 {: .tbd}
 
 ajout draw pour les tris
+
+> demander d'implémenter des tris rigolos. <https://fr.wikipedia.org/wiki/Algorithme_de_tri>
+> genre tri à peigne. ou tri shell
+{: .tbd}
+
