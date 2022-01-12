@@ -68,21 +68,16 @@
   </ul>
 </blockquote>
 
-<p>On va étudiez deux algorithmes permettant de calculer $a^b$  à partir de deux entiers $a$ et $b$. On appliquera toujours la même méthode pour analyser un algorithme :</p>
+<p>On va étudiez deux algorithmes permettant de calculer $a^b$  à partir de deux entiers $a$ et $b$. Pour chaque algorithme on étudiera son fonctionnement selon <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/algorithmes.html#%C3%A9tude">3 axes</a> :</p>
 
-<blockquote class="note">
-  <p>Lorsque l’on étudie un algorithme, il faut faire trois choses :</p>
-
-  <ol>
-    <li>vérifier le fonctionnement de l’algorithme sur de petits exemple que l’on peut tester à la main</li>
-    <li>preuve de l’algorithme (on commence par vérifier que l’algorithme se termine puis preuve)</li>
-    <li>calcul de la complexité de l’algorithme</li>
-  </ol>
-
-</blockquote>
+<ul>
+  <li>fonctionnement</li>
+  <li>preuve</li>
+  <li>complexité</li>
+</ul>
 
 <blockquote>
-  <p>dans la suite, les algorithmes seront tous donnés en python</p>
+  <p>On utilisera le python comme langage de pseudo-code</p>
 </blockquote>
 
 <h2 id="algo-naif">algorithme naïf</h2>
@@ -150,7 +145,11 @@
 
 <p>Une fois qu’on est convaincu que ça fonctionne, on peut essayer de prouver la finitude, la complexité et la preuve.</p>
 
-<h3 id="finitude-naif">preuve de finitude</h3>
+<h3 id="preuve-naif">preuve</h3>
+
+<p>En deux temps. On commence par montrer qu’il se termine, puis on prouve qu’il calcule bien l’exponenciation.</p>
+
+<h4 id="finitude-naif">finitude</h4>
 
 <ul>
   <li>
@@ -168,25 +167,18 @@
 
 </blockquote>
 
-<h3 id="preuve-de-lalgorithme">preuve de l’algorithme</h3>
+<h4 id="preuve-de-lalgorithme">preuve de l’algorithme</h4>
 
 <p>Le fonctionnement de l’algorithme est <em>à peut prêt</em> clair si les entrées sont des entiers : il multiplie $a$ par lui-même $b$ fois grâce à une boucle. Une preuve par récurrence doit donc fonctionner, mais essayons de faire une <em>jolie</em> preuve en exhibant un invariant de boucle.</p>
 
-<p>En utilisant l’opération <code class="language-plaintext highlighter-rouge">**</code> qui signifie exposant en python, on a :</p>
+<blockquote class="note">
+  <p>Si <code class="language-plaintext highlighter-rouge">nombre</code> et <code class="language-plaintext highlighter-rouge">exposant</code> sont des entiers naturels, on a l’invariant de boucle :
+<code class="language-plaintext highlighter-rouge">resultat * nombre ** compteur = nombre ** exposant</code> (en utilisant l’opération <code class="language-plaintext highlighter-rouge">**</code> qui signifie exposant en python.)</p>
+</blockquote>
 
-<ul>
-  <li>invariant de boucle : <code class="language-plaintext highlighter-rouge">resultat * nombre ** compteur = nombre ** exposant</code>
-</li>
-  <li>condition sur les entrées : <code class="language-plaintext highlighter-rouge">nombre</code> et <code class="language-plaintext highlighter-rouge">exposant</code> sont des entiers naturels</li>
-</ul>
+<p>Prouvons cet invariant.</p>
 
-<h4 id="invariant-naif-init">conditions initiales</h4>
-
-<p>Juste avant la première itération de la boucle, <code class="language-plaintext highlighter-rouge">resulat = 1</code> et <code class="language-plaintext highlighter-rouge">compteur = exposant</code> notre invariant est donc vérifié.</p>
-
-<h4 id="invariant-naif-preuve">preuve de l’invariant</h4>
-
-<p>On suppose l’invariant vrai au début de la boucle $i$. Comme expliqué dans la partie sur les <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/preuve-algorithme.html">preuves d’algorithmes</a>, on met un <code class="language-plaintext highlighter-rouge">'</code> aux variable après l’itération :</p>
+<p>Juste avant la première itération de la boucle, <code class="language-plaintext highlighter-rouge">resulat = 1</code> et <code class="language-plaintext highlighter-rouge">compteur = exposant</code> notre invariant est donc vérifié. On suppose l’invariant vrai au début de la boucle $i$. Comme expliqué dans la partie sur les <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/preuve-algorithme.html">preuves d’algorithmes</a>, on met un <code class="language-plaintext highlighter-rouge">'</code> aux variable après l’itération :</p>
 
 <ul>
   <li><code class="language-plaintext highlighter-rouge">nombre' = nombre</code></li>
@@ -199,11 +191,32 @@
 
 <p>On a démontré notre invariant de boucle.</p>
 
-<h4 id="preuve-naif">preuve de l’algorithme</h4>
-
-<p>Notre invariant est vrai avant et après chaque itération, il est donc également vrai à la fin de l’algorithme, lorsque <code class="language-plaintext highlighter-rouge">compteur = 0</code>. Et là : <code class="language-plaintext highlighter-rouge">resultat * nombre ** compteur = resultat = nombre ** exposant</code></p>
+<blockquote class="note">
+  <p>Notre invariant est vrai avant et après chaque itération, il est donc également vrai à la fin de l’algorithme, lorsque <code class="language-plaintext highlighter-rouge">compteur = 0</code>. Et là : <code class="language-plaintext highlighter-rouge">resultat * nombre ** compteur = resultat = nombre ** exposant</code></p>
+</blockquote>
 
 <h3 id="complexite-naif">complexité</h3>
+
+<p>Ligne à ligne :</p>
+
+<ol>
+  <li>définition de la fonction : $\mathcal{O}(1)$</li>
+  <li>une affection : $\mathcal{O}(1)$</li>
+  <li>une affection : $\mathcal{O}(1)$</li>
+  <li>une boucle de $\mathcal{O}(\mbox{exposant})$ itération (<code class="language-plaintext highlighter-rouge">compteur</code> vaut initialement <code class="language-plaintext highlighter-rouge">exposant</code> et décrémente de $1$ à chaque itération)</li>
+  <li>une multiplication et une affection : $\mathcal{O}(1)$</li>
+  <li>une soustraction et une affection : $\mathcal{O}(1)$</li>
+  <li>retour de la fonction : $\mathcal{O}(1)$</li>
+</ol>
+
+<p>Ce qui donne une complexité de :</p>
+
+\[\begin{array}{lcl}
+C(n) &amp; = &amp; \mathcal{O}(1) + \\
+&amp;  &amp; \mathcal{O}(1) + \\
+&amp; &amp; \mathcal{O}(1) + \\
+&amp; &amp; \mathcal{O}\mbox{exposant}) \cdot ( \\
+\end{array}\]
 
 <ul>
   <li>un boucle en $\mathcal{O}(\mbox{exposant})$</li>

@@ -320,7 +320,7 @@ if ((x &gt; 12) AND (y &lt; 36)):
   <p>De façon pratique, un tableau est un ensemble des $n$ cases mémoires continues. Ce qui fait qu’on peut donc facilement les réserver et les libérer en une fois et que à la case mémoire d’indice $i$ vaut <code class="language-plaintext highlighter-rouge">&amp;t + i</code> où <code class="language-plaintext highlighter-rouge">&amp;t</code> est le numéro de la case mémoire d’indice $0$ du tableau.</p>
 </blockquote>
 
-<p>Le langage python ne connait pas les tableaux. Il utiliser le type <strong>liste</strong> à la place. Une liste peut être vue comme l’évolution du type tableau. On donne ici juste les complexités de cette structure pour que vous puissiez les utiliser dans vos programmes, nous ne les démontrerons pas :</p>
+<p>Le langage python ne connait pas les tableaux. Il utilise le type <strong>liste</strong> à la place. Une liste peut être vue comme l’évolution du type tableau. On donne ici juste les complexités de cette structure pour que vous puissiez les utiliser dans vos programmes, nous ne les démontrerons pas :</p>
 
 <ul>
   <li>créer et supprimer une liste de taille $n$ en $\mathcal{O}(1)$ opérations</li>
@@ -349,40 +349,73 @@ if ((x &gt; 12) AND (y &lt; 36)):
 
 <p>Prenons par exemple l’algorithme suivant, écrit en python :</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">est_dans_tableau</span><span class="p">(</span><span class="n">valeur</span><span class="p">,</span> <span class="n">tableau</span><span class="p">):</span>
+<style>
+    table, td, tr, th, pre {
+        padding:0;
+        margin:0;
+        border:none
+    }
+</style>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td>
+<td class="code"><pre><span class="k">def</span> <span class="nf">est_dans_tableau</span><span class="p">(</span><span class="n">valeur</span><span class="p">,</span> <span class="n">tableau</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">tableau</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="n">valeur</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">True</span>
     <span class="k">return</span> <span class="bp">False</span>
-</code></pre></div></div>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
 
 <p>Cet algorithme recherche si le paramètre <code class="language-plaintext highlighter-rouge">valeur</code> est un élément de <code class="language-plaintext highlighter-rouge">tableau</code>.</p>
 
-<p>Calculons ses complexité maximale et minimale. L’intérieur de la boucle est constitué du code :</p>
+<p>Calculons ses complexité maximale et minimale. Commençons par regarder les compleixtés de chaque ligne :</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="n">valeur</span><span class="p">:</span>
-    <span class="k">return</span> <span class="bp">True</span>
-</code></pre></div></div>
+<ol>
+  <li>définition de la fonction : $C_1 = \mathcal{O}(1)$</li>
+  <li>une boucle <code class="language-plaintext highlighter-rouge">for</code> de $k$ itérations</li>
+  <li>un test entre 2 variables : $C_3 = \mathcal{O}(1)$</li>
+  <li>un retour de fonction $C_4 = \mathcal{O}(1)$</li>
+  <li>un retour de fonction : $C_5 = \mathcal{O}(1)$</li>
+</ol>
 
-<p>Qui est de complexité $\mathcal{O}(1)$. Ce code est exécuté autant de fois que l’on va rentrer dans la boucle for. La complexité de notre algorithme est alors égale à $k * \mathcal{O}(1)$ où $k$ est le nombre de fois où l’on rentre dans la boucle.</p>
+<p>Comme il y a 2 retour de fonctions (lignes 4 et 5), la complexité sera soit :</p>
 
-<p>On cherche le cas le pire. Elle est atteinte lorsque la boucle for parcours tout le tableau, c’est à dire pour deux cas :</p>
+<ul>
+  <li>$C = C_1 + k \cdot (C_3) + C_5 = \mathcal{O}(1) + k \cdot (\mathcal{O}(1)) + \mathcal{O}(1)$ si on utilise la sortie de la ligne 5 (on est jamais passé par le ligne 4)</li>
+  <li>$C’ = C_1 + k \cdot (C_3 + C_4) = \mathcal{O}(1) + k \cdot (\mathcal{O}(1) + \mathcal{O}(1))$ si on utilise la sortie de la ligne 5 (on est jamais passé par le ligne 4)</li>
+</ul>
+
+<p>Les deux cas se simplifient en : \(\mathcal{O}(k)\)</p>
+
+<details><summary>preuve</summary><div>
+<p>Comme $\mathcal{O}(1) + \mathcal{O}(1) = \mathcal{O}(1)$ on a C = C’ = \mathcal{O}(1) + k \cdot (\mathcal{O}(1))$. De là, $C = C’ = \mathcal{O}(1) + \mathcal{O}(k) = \mathcal{O}(k)$</p>
+
+</div></details>
+
+<p>On cherche le cas le pire, c’est à dire lorsque $k$ est maximum, donc lorsque la boucle <code class="language-plaintext highlighter-rouge">for</code> parcours tout le tableau, c’est à dire pour deux cas :</p>
 
 <ul>
   <li>l’élément recherché n’est pas dans le tableau</li>
   <li>l’élément recherché est le dernier élément du tableau</li>
 </ul>
 
-<p>On en conclut que la complexité de notre algorithme est $n * \mathcal{O}(1)$ où $n$ est la taille du tableau qui est un paramètre d’entrée (c’est donc une variable qu’on ne peut faire disparaître) la complexité de notre algorithme est : $\mathcal{O}(n)$.</p>
+<p>On en conclut que :</p>
 
-<p>La complexité minimale est quant-à-elle atteinte lorsque l’on ne parcours pas notre boucle, c’est à dire lorsque la valeur recherchée est la 1ère valeure du tableau. Dans ce cas là, la complexité est de $\mathcal{O}(1)$ opérations.</p>
+<blockquote class="note">
+  <p>la complexité de l’algorithme <code class="language-plaintext highlighter-rouge">est_dans_tableau</code> est $\mathcal{O}(n)$ où $n$ est la taille du tableau qui est un paramètre d’entrée.</p>
+</blockquote>
 
-<p>Au final :</p>
+<p>La complexité minimale est quant-à-elle atteinte lorsque l’on ne parcours pas notre boucle, c’est à dire lorsque la valeur recherchée est la 1ère valeure du tableau :</p>
 
-<ul>
-  <li>la complexité maximale de l’algorithme <code class="language-plaintext highlighter-rouge">est_dans_tableau</code> est $\mathcal{O}(n)$</li>
-  <li>la complexité minimale de l’algorithme <code class="language-plaintext highlighter-rouge">est_dans_tableau</code> est $\mathcal{O}(1)$</li>
-</ul>
+<blockquote class="note">
+  <p>la complexité minimale de l’algorithme <code class="language-plaintext highlighter-rouge">est_dans_tableau</code> est $\mathcal{O}(1)$.</p>
+</blockquote>
 
 <h2 id="types-de-complexité-en-algorithmie">types de complexité en algorithmie</h2>
 
@@ -853,16 +886,35 @@ Rendre total
 </li>
 </ol>
 
-<p>La taille des données est de l’ordre de la taille du tableau, c’est à dire le paramètre $n$. On pose alors que la complexité de notre algorithme pour un tableau de taille $n$ est : $C(n)$. De là :</p>
+<p>La taille des données est de l’ordre de la taille du tableau, c’est à dire le paramètre $n$. On pose alors que la complexité de notre algorithme pour un tableau de taille $n$ est : $C(n)$. De là, ligne à ligne :</p>
 
-<ul>
-  <li>la complexité de la ligne 2 est en $\mathcal{O}(1)$ : c’est une comparaison</li>
-  <li>la complexité de la ligne 3 est en $\mathcal{O}(1)$ : on cheche un élément particulier d’un tableau</li>
-  <li>la complexité de la ligne 5 est en $C(n-1) + \mathcal{O}(1)$ : on exécute notre algorithme avec un tableau de taille $n-1$ — sa complexité est donc par définition de $C(n-1)$ — puis on affecte le résultat à une variable</li>
-  <li>la complexité de la ligne 6 est en $\mathcal{O}(1)$ : c’est une comparaison d’une varaible et d’un élément particulier d’un tableau</li>
-  <li>la complexité de la ligne 7 est en $\mathcal{O}(1)$</li>
-  <li>la complexité de la ligne 9 est en $\mathcal{O}(1)$ : on rend un élément particulier d’un tableau</li>
-</ul>
+<ol>
+  <li>définition d’une fonction $\mathcal{O}(1)$</li>
+  <li>une comparaison entre une constante et une variable : $\mathcal{O}(1)$</li>
+  <li>retour de fonction d’un élément d’un tableau : $\mathcal{O}(1)$</li>
+  <li>
+  </li>
+<li>une affactation, plus l’appel à la fonction avec un tableau de taille $n-1$ (sa complexité est donc de $C(n-1)$ par définition) : $\mathcal{O}(1) + C(n-1)$</li>
+  <li>un test d’un élément dans un tableau et d’une variable : $\mathcal{O}(1)$</li>
+  <li>retour de fonction : $\mathcal{O}(1)$</li>
+  <li>
+  </li>
+<li>retour de fonction d’un élément d’un tableau : $\mathcal{O}(1)$</li>
+</ol>
+
+<p>Ce qui donne en sommant le tout :</p>
+
+\[\begin{array}{lcl}
+C(n) &amp; = &amp; \mathcal{O}(1) + \\
+&amp;  &amp; \mathcal{O}(1) + \\
+&amp;  &amp; \mathcal{O}(1) + \\
+&amp;  &amp; \mathcal{O}(1) + C(n-1) + \\
+&amp; &amp; \mathcal{O}(1) + \\
+&amp; &amp; \mathcal{O}(1) + \\
+&amp; &amp; \mathcal{O}(1)\\
+&amp; = &amp; 8 \cdot \mathcal{O}(1) + C(n-1) \\
+&amp; = &amp; \mathcal{O}(1) + C(n-1) \\
+\end{array}\]
 
 <p>La complexité est définie par l’équation de récurrence $C(n) = \mathcal{O}(1) + C(n-1)$. Notre condition d’arrêt est obtenue pour <code class="language-plaintext highlighter-rouge">n</code> valant 1 et dans ce cas on a $C(1) = \mathcal{O}(1)$</p>
 
@@ -871,7 +923,7 @@ Rendre total
 \[\left\{
     \begin{array}{lcl}
         C(n) &amp; = &amp; \mathcal{O}(1) + C(n-1)\\
-        C(0) &amp; = &amp; \mathcal{O}(1)
+        C(1) &amp; = &amp; \mathcal{O}(1)
     \end{array}
 \right.\]
 

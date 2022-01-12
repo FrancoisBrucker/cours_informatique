@@ -152,18 +152,42 @@ On voit en creux que des notions de <strong>vérification</strong> (caractérise
 
 <h2 id="algorithmes-trois-voies">algorithmes !</h2>
 
-<p>La définition très générale d’un algorithme est déclinée selon trois voies :</p>
+<p>La définition très générale d’un algorithme se décline usuellement sous trois formes :</p>
 
 <ol>
-  <li>L’écriture (sans ordinateur) d’algorithmes en utilisant un nombre restreint d’actions que l’on définira précisément. On appelle cette forme d’algorithme <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.html">pseudo-code</a> car ils ne sont pas directement fait pour être exécutés par un ordinateur. Le but ici est de résoudre un problème donné avec un algorithme de complexité la plus faible possible. C’est <strong>l’algorithmie</strong>
-</li>
   <li>
-<a href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/calcul.html">Que calcule un algorithme ?</a>. Cette partie s’attache à comprendre ce qu’est un algorithme de façon théorique et des problèmes qu’ils peuvent <strong>théoriquement</strong> résoudre.</li>
+<a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.html">pseudo-code</a> : l’écriture (sans ordinateur) d’algorithmes en utilisant un nombre restreint d’actions que l’on définira précisément. Un pseudo-code n’est pas directement fait pour être exécuté par un ordinateur, même si l’on peut utiliser un langage de programmation pour décrire notre code. Le but ici est de résoudre un problème donné avec un algorithme de complexité la plus faible possible.</li>
   <li>
-<a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/code.html">Comment exécuter (coder) un algorithme</a> sur un ordinateur et maintenir son fonctionnement au court du temps.</li>
+<a href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/calcul.html">calcul</a>. Un algorihtme est vu comme une fonction qui calcule un nombre. Le but est ici de comprendre ce que peuvent faire les algorithmes, quels sont les problèmes qu’ils peuvent résoudre.</li>
+  <li>
+<a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/code.html">code</a> : l’écriture d’un programme pouvant s’exécuter sur un ordinateur. Le but sera ici de faire en sorte de vérifier que le code correspond bien au pseudo-code et — surtout — de maintenir son fonctionnement au court du temps.</li>
 </ol>
 
-<p>Les visions trois vision ci-dessus ont des points communs mais également des différences car leur but est différent. Un “honnête informaticien” doit avoir des bases dans ces trois disciplines car l’informatique en tant que science regroupe ces trois champs.</p>
+<p>Ces trois formes ont des buts diférents, mais on ne peut exceller dans l’une sans connaitre les autres. Tout algorithmicien doit avoir de bonnes connaissances théorique sur ce que peut calculer  un ordinatuer et — tôt ou tard — il devra programmer ses algorithmes ; tout développeur doit avoir des connaissances forte en algorithmie pour pouvoir écre du code performant.</p>
+
+<h2 id="étude">étude</h2>
+
+<p>Quelque-soit la forme que prendra vos algorithmes (pseudo-code, programme ou fonction), il faudra toujours vérifier qu’il fait bien ce qu’on attend de lui. Ainsi :</p>
+
+<blockquote class="note">
+  <p>Pour chaque algorithme il faudra :</p>
+
+  <ol>
+    <li>vérifier le fonctionnement de l’algorithme sur de petits exemple que l’on peut tester à la main</li>
+    <li>prouver l’algorithme :</li>
+  </ol>
+
+  <ul>
+    <li>preuve que l’algorithme</li>
+    <li>preuve qu’il résoud le problème demandé</li>
+  </ul>
+
+  <ol>
+    <li>évaluer ses performances en calculant sa complexité</li>
+  </ol>
+
+</blockquote>
+
 
   </div>
 

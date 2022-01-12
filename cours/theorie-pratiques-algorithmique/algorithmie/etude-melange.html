@@ -58,7 +58,7 @@
 
   <div class="post-content">
     <blockquote class="chemin">
-  <p><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/">Théorie et pratiques algorithmique</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/">algorithmie</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/etude-melange.html">étude :  mélanger un tableau</a></p>
+  <p><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/">Théorie et pratiques algorithmique</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/">algorithmie</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/etude-melange.html">étude : mélanger un tableau</a></p>
 
   <p>prérequis :</p>
 
@@ -127,7 +127,7 @@ rendre P[i]
 
 <p>Il nous reste à créer toutes les permutations possibles d’un tableau. C’est ce que fait l’algorithme suivant, récursif et en python.</p>
 
-<h2 id="toutes-les-permutations">toutes les permutations</h2>
+<h2 id="algo-toutes-permutations">toutes les permutations</h2>
 
 <style>
     table, td, tr, th, pre {
@@ -491,7 +491,7 @@ C(n) &amp; = &amp; \mathcal{O}(n) + \mathcal{O}(n) \cdot (\mathcal{O}(1) + \math
 
 <p>De là, la probabilité que l’élément originellement en position $i$ se retrouve en position $n-j$ à la fin de l’algorithme est :</p>
 
-\[\frac{n-1}{n} \cdot \frac{n-2}{n-1} \cdot ... \cdot \frac{n-j+1}{n-j+2} \cdot \frac{1}{n-j+1} == \frac{1}{n}\]
+\[\frac{n-1}{n} \cdot \frac{n-2}{n-1} \cdot \ ...\  \cdot \frac{n-j+1}{n-j+2} \cdot \frac{1}{n-j+1} = \frac{1}{n}\]
 
 <p>C’est bien équiprobable !</p>
 
@@ -543,7 +543,25 @@ C(n) &amp; = &amp; \mathcal{O}(n) + \mathcal{O}(n) \cdot (\mathcal{O}(1) + \math
 
 <p>On en déduit l’algorithme de mélange suivant :</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">melange_transposition</span><span class="p">(</span><span class="n">elements</span><span class="p">):</span>
+<style>
+    table, td, tr, th, pre {
+        padding:0;
+        margin:0;
+        border:none
+    }
+</style>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td>
+<td class="code"><pre><span class="k">def</span> <span class="nf">melange_transposition</span><span class="p">(</span><span class="n">elements</span><span class="p">):</span>
     <span class="n">copie_elements</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">elements</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">copie_elements</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
         <span class="n">i</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">copie_elements</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
@@ -551,7 +569,8 @@ C(n) &amp; = &amp; \mathcal{O}(n) + \mathcal{O}(n) \cdot (\mathcal{O}(1) + \math
         
         <span class="n">copie_elements</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">copie_elements</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">copie_elements</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">copie_elements</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">copie_elements</span>
-</code></pre></div></div>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
 
 <blockquote class="a-faire">
   <p>Refaites l’expérience de la <a href="#verif-expe">vérification expérimentale</a> pour cet algorithme.</p>
@@ -567,28 +586,62 @@ C(n) &amp; = &amp; \mathcal{O}(n) + \mathcal{O}(n) \cdot (\mathcal{O}(1) + \math
   <p>lisez et comprenez l’article : <a href="https://datagenetics.com/blog/november42014/index.html">https://datagenetics.com/blog/november42014/index.html</a>. Il explique pourquoi cette méthode n’est pas efficace.</p>
 </blockquote>
 
-<p>Nous allons ici juste montrer que les permutations ne sorties ne sont pas équiprobables. On calcule la probabilité que l’élément $i$ reste en position $i$ à la fin d la permutation.</p>
+<p>Nous allons ici juste montrer que les permutations ne sorties ne sont pas équiprobables. La probabilité que l’élément d’indice $l$ ne soit jamais choisi pendant l’algorithme est :</p>
 
-<blockquote class="tbd">
-  <p>plusieurs chois jamais choisi ou choisi une fois puis replacé au bonne endroit, etc. ; donc cette proba est &gt; que jamais choisi.</p>
+\[P_n = (\frac{n-1}{n} \cdot \frac{n-1}{n})^n\]
+
+<p>Puisque l’algorithme a choisi pour chacune des $n$ étapes de la boucle for un élément différent de $l$ pour les lignes 4 et 5.</p>
+
+<p>Or :</p>
+
+\[P_n = ((1 - \frac{1}{n})^n)^2 \xrightarrow[n\to\infty]{} (\frac{1}{e})^2 &gt; 0\]
+
+<blockquote>
+  <p>$(1 - \frac{1}{n})^n = e^{n \ln (1-\frac{1}{n})} \sim e^{n \cdot (-\frac{1}{n})}$ lorsque $n$ tend vers l’infini puisque $\ln(1+u) \sim u$ lorsque $u$ tend vers $0$.</p>
 </blockquote>
+
+<p>Ceci est incompatible avec l’équiprobabilité puisque :</p>
+
+<ul>
+  <li>$P_n$ est plus petit que la probabilité que l’élément d’indice $l$ soit en position $l$ à la fin de l’algorithme (c’est même strictement plus petit puisqu’il peut n’avoir jamais bougé ou être revenu à sa place)</li>
+  <li>s’il y a équiprobabilité, la probabilité que l’élément d’indice $l$ soit en position $l$ à la fin de l’algorithme doit être de $\frac{1}{n}$</li>
+  <li>il existe $N_0$ tel que pour tout $n \geq N_0$, on a  $\frac{1}{n} &lt; (\frac{1}{e})^2$</li>
+</ul>
+
+<blockquote class="note">
+  <p>Les remarques ci-dessus montrent que pour $n$ assez grand, la probabilité que l’élément $l$ soit en position $l$ à la fin de l’algorithme est strictement plus grande que l’équiprobabilité.</p>
+</blockquote>
+
+<p>C’est bien ce qu’on remarque sur la figure avec la surreprésentation de la première permutation qui est la permutation où rien n’a bougé.</p>
 
 <h3 id="randint-doit-être-puissant">randint doit être puissant</h3>
 
+<p>En informatique, il est impossible de tirer un nombre au hasard. On est obliger d’utiliser des suite périodique qui se comportent comme des nombre aléatoires. On appelle ces suites <a href="https://fr.wikipedia.org/wiki/G%C3%A9n%C3%A9rateur_de_nombres_pseudo-al%C3%A9atoires">pseudo-aléatoires</a>.</p>
+
+<p>La période de cette suite doit être très grande pour pouvoir générer toutes les permutations : la période doit être plus grande que $n!$. Sinon, certaines permutations seront sur-représentées.</p>
+
+<p>Par exemple, pour pouvoir mélanger un paquet de 52 cartes de façon équiprobable en utilisant une suite pseudo-aléatoire, il faut que sa période soit plus que grande que $52! = 80658175170943878571660636856403766975289505440883277824000000000000 \sim 2^{226}$</p>
+
 <blockquote>
-  <p>pseudo-aléatoire : def
-on y reviendra plus tard dans le cours</p>
+  <p>Une suite pseudo-aléatoire simple a souvent une période de $2^{64}$, ce uiq n’est vraiment pas assez grand pour pouvoir mélanger équiprobablement un jeu de carte.</p>
 </blockquote>
 
-<p>pour un deck de 52 cartes trop de permutations par rapport au nombre aléatoire</p>
-
-<p>il faut un randint vraiment puissant. (on verra ça plus tard.)</p>
-
-<p><a href="https://www.i-programmer.info/programming/theory/2744-how-not-to-shuffle-the-kunth-fisher-yates-algorithm.html">https://www.i-programmer.info/programming/theory/2744-how-not-to-shuffle-the-kunth-fisher-yates-algorithm.html</a></p>
+<blockquote class="a-faire">
+  <p>Regardez la partie <em>A Shortage Of Random Numbers!</em> du lien suivant <a href="https://www.i-programmer.info/programming/theory/2744-how-not-to-shuffle-the-kunth-fisher-yates-algorithm.html">https://www.i-programmer.info/programming/theory/2744-how-not-to-shuffle-the-kunth-fisher-yates-algorithm.html</a> qui explique celà.</p>
+</blockquote>
 
 <h3 id="attention-aux-humains">attention aux humains</h3>
 
-<p><a href="https://draftsim.com/mtg-arena-shuffler/">https://draftsim.com/mtg-arena-shuffler/</a> ce que les maths disent de l’aléatoire vs ce que les humains disent de l’aléatoire</p>
+<p>La perception de ce qu’est l’aléatoire n’est pas aisée. Lorsque l’on joue à un jeu de carte par exemple, le <a href="https://fr.wikipedia.org/wiki/Biais_de_confirmation">biasi de confirmation</a> tend à se réppeler les évènement très défavorables au détriment de ceux juste <em>normaux</em>. De plus, lorsque l’on demande à des humains de tirer des nombres aléatoires, souvent ils ne le sont pas :</p>
+
+<ul>
+  <li>Lorsque l’ondemande à des humains de choisir un nombre aléatoirement entre 1 et 10, ils répondent le plus souvent 7 : <a href="https://www.reddit.com/r/dataisbeautiful/comments/acow6y/asking_over_8500_students_to_pick_a_random_number/">https://www.reddit.com/r/dataisbeautiful/comments/acow6y/asking_over_8500_students_to_pick_a_random_number/</a>.</li>
+  <li>lorsque l’on demande à des humains d’écrire une suite aléatoire de 200 nombres valant 0 ou 1, il y aura une sous-représentation des longues séquences avec le même nombre : celà ne <em>fait pas aléatoire</em> d’voir plein de fois le même nombre à la suite (alors que statistiquement, il faut bien que ces séquences equistent).</li>
+</ul>
+
+<blockquote class="a-faire">
+  <p>lisez l’article de <a href="https://draftsim.com/mtg-arena-shuffler/">https://draftsim.com/mtg-arena-shuffler/</a> qui montre cela avec le mélangeur de <a href="https://magic.wizards.com/fr/mtgarena">MTGA</a>.</p>
+</blockquote>
 
 <h2 id="autres-références">autres références</h2>
 

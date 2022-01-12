@@ -160,24 +160,27 @@
     <span class="k">return</span> <span class="bp">False</span>
 </code></pre></div></div>
 
-<h3 id="complexité-du-problème-recherche">complexité du problème “recherche”</h3>
+<h3 id="complexite-recherche">complexité du problème “recherche”</h3>
 
 <p>Notre borne minimale de $\mathcal{O}(1)$ semble irréaliste. Supposons de façon plus générale qu’il existe un algorithme qui résout le problème en prenant strictement moins que $n$ opérations où $n$ est la taille du tableau, pour $n &gt; N_0$.</p>
 
 <p>Ceci signifie que pour $n$ assez grand, l’algorithme résout le problème en strictement moins que $n$ opérations : il n’a pas besoin de regarder toutes les cases du tableau pour répondre.</p>
 
-<p>Soit alors un tableau $T$ de taille $n &gt; N_0$ qui ne contient pas valeur. Notre algorithme va répondre NON à la question “est-ce que valeur est dans $T$” ? en strictement moins de $n$ opérations : il existe donc une case du tableau, disons $T[i^*]$, que l’algorithme n’a jamais regardé lors de son exécution : il ne sait pas ce que contient cette case.</p>
+<p>Soit alors un tableau $T$ de taille $n &gt; N_0$ qui ne contient pas <code class="language-plaintext highlighter-rouge">valeur</code>. Notre algorithme va répondre NON à la question “est-ce que valeur est dans $T$” ? en strictement moins de $n$ opérations. Il existe donc une case du tableau, disons $T[i^\star]$, que l’algorithme n’a jamais regardé lors de son exécution : il ne sait pas ce que contient cette case.</p>
 
-<p>De là, en exécutant l’algorithme avec valeur et le tableau $T’$ tel que :</p>
+<p>On crée alors un tableau $T’$ de $n$ cases tel que :</p>
 
 <ul>
-  <li>$T’[i] = T[i]$ si $i \neq i^*$</li>
-  <li>$T’[i^*] = \mbox{valeur}$</li>
+  <li>$T’[i] = T[i]$ si $i \neq i^\star$</li>
+  <li>$T’[i^\star] = \mbox{valeur}$</li>
 </ul>
 
-<p>La réponse à la question “est-ce que valeur est dans $T’$ ?” ne pourra être que la même réponse que la question “est-ce que valeur est dans $T$ ?”, ce qui est faux. Notre algorithme ne peut exister : Un algorithme qui résout le problème de la recherche doit au moins être de complexité $\mathcal{O}(n)$</p>
+<p>Comme $T$ et $T’$ sont identiques sauf pour la case d’indice $i^\star$,
+si l’algorithme ne regarde pas la case $T[i^\star]$ lors de son exécution pour $T$, il ne regardera pas non plus la case $T’[i^\star]$ lors de son exécution pour $T’$. Il ne pourra donc répondre que la même chose pour $T$ et $T’$, ce qui est impossible puisque la réponse est NON pour $T$ et OUI pour $T’$.</p>
 
-<p>Attention, ça ne veut pas dire qu’il n’existe pas des instances où l’algorithme va plus vite (si valeur est le 1er élément du tableau par exemple), mais que pour certains tableau, on est obligé de vérifier toutes les cases (si valeur n’est pas dans tableau).</p>
+<p>Notre hypothèse était fausse : un algorithme qui résout le problème de la recherche doit accéder au moins une fois à toutes les cases du tableau, il doit au moins être de complexité $\mathcal{O}(n)$</p>
+
+<p>Attention, ça ne veut pas dire qu’il n’existe pas des instances où l’algorithme va plus vite (si valeur est le 1er élément du tableau par exemple), mais que pour toute taille $n$ du tableau, il existe des tableaux pour lesquels on est obligé de vérifier toutes les cases (si valeur n’est pas dans tableau).</p>
 
 <p>Au final on a :</p>
 
@@ -191,6 +194,14 @@
 <blockquote class="note">
   <p>La complexité du problème de la recherche est en $\mathcal{O}(n)$ où $n$ est la taille du tableau.</p>
 </blockquote>
+
+<p>On peut en déduire une règle générale de la complexité d’un problème :</p>
+
+<blockquote class="note">
+  <p>Si les données n’ont pas de structure particulière, très souvent, la complexité d’un problème est au moins égal à la taille de ses données</p>
+</blockquote>
+
+<p>En effet, si ce n’est pas vrai, c’est que notre problème est mal posé.</p>
 
 <h3 id="cas-particulier-des-tableaux-ordonnés">cas particulier des tableaux ordonnés</h3>
 
@@ -207,7 +218,31 @@
 
 <h4 id="algorithme-de-la-recherche-dichotomique">algorithme de la recherche dichotomique</h4>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">recherche_dichotomique</span><span class="p">(</span><span class="n">valeur</span><span class="p">,</span> <span class="n">tableau_trie</span><span class="p">):</span>
+<style>
+    table, td, tr, th, pre {
+        padding:0;
+        margin:0;
+        border:none
+    }
+</style>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td>
+<td class="code"><pre><span class="k">def</span> <span class="nf">recherche_dichotomique</span><span class="p">(</span><span class="n">valeur</span><span class="p">,</span> <span class="n">tableau_trie</span><span class="p">):</span>
     <span class="n">debut</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">fin</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tableau_trie</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
 
@@ -221,49 +256,113 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">fin</span> <span class="o">=</span> <span class="n">milieu</span> <span class="o">-</span> <span class="mi">1</span>
     <span class="k">return</span> <span class="bp">False</span>
-</code></pre></div></div>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
 
-<p>On a utilisé ici le fait que  <code class="language-plaintext highlighter-rouge">(fin + debut) // 2</code> va donner la valeur entière de <code class="language-plaintext highlighter-rouge">(fin + debut) / 2</code>.</p>
+<blockquote>
+  <p>On a utilisé ici le fait que  <code class="language-plaintext highlighter-rouge">(fin + debut) // 2</code> va donner la valeur entière de <code class="language-plaintext highlighter-rouge">(fin + debut) / 2</code>.</p>
+</blockquote>
+
+<p><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/algorithmes.html#%C3%A9tude">Etude</a> de l’algorithme :</p>
+
+<ul>
+  <li>
+<strong>fonctionnement</strong>. On vérifie que pour :
+    <ul>
+      <li>un tableau <code class="language-plaintext highlighter-rouge">[1, 3, 7]</code> l’algorithme trouve bien <code class="language-plaintext highlighter-rouge">7</code> et ne trouve pas <code class="language-plaintext highlighter-rouge">8</code>
+</li>
+      <li>un tableau <code class="language-plaintext highlighter-rouge">[1, 3, 3, 7]</code> l’algorithme trouve bien <code class="language-plaintext highlighter-rouge">7</code> et ne trouve pas <code class="language-plaintext highlighter-rouge">9</code>
+</li>
+    </ul>
+  </li>
+  <li>
+<strong>preuve</strong> :
+    <ul>
+      <li>
+<strong>finitude</strong>. La quantité entière <code class="language-plaintext highlighter-rouge">fin - debut</code> décroit strictement à chaque itération, elle sera donc strictement négative après un nombre fini d’opération.</li>
+      <li>
+<strong>preuve</strong>.
+        <ol>
+          <li>on montre trivialement l’invariant de boucle suivant: si valeur est dans <code class="language-plaintext highlighter-rouge">tableau_trie</code>, alors sa position plus grande que <code class="language-plaintext highlighter-rouge">debut</code> et plus petite que <code class="language-plaintext highlighter-rouge">fin</code>
+</li>
+          <li>si l’on sort de la boucle l’invariant est toujours vérifié mais comme <code class="language-plaintext highlighter-rouge">debut</code> &gt; <code class="language-plaintext highlighter-rouge">fin</code>, valeur ne peut être dans <code class="language-plaintext highlighter-rouge">tableau_trie</code>
+</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>Les remarques ci-dessus prouvent que l’algorithme <code class="language-plaintext highlighter-rouge">recherche_dichotomique</code> résout bien le problème “recherche ordonnée”.</p>
+
+<p>Etudions sa complexité. Ligne à ligne :</p>
 
 <ol>
-  <li>l’algorithme se termine bien car <code class="language-plaintext highlighter-rouge">fin - debut</code> décroit strictement à chaque itération</li>
-  <li>on a l’invariant de boucle : si valeur est dans <code class="language-plaintext highlighter-rouge">tableau_trie</code>, alors sa position plus grande que <code class="language-plaintext highlighter-rouge">debut</code> et plus petite que <code class="language-plaintext highlighter-rouge">fin</code>
-</li>
-  <li>si l’on sort de la boucle l’invariant est toujours vérifié, mais comme <code class="language-plaintext highlighter-rouge">debut</code> &gt; <code class="language-plaintext highlighter-rouge">fin</code>, valeur ne peut être dans <code class="language-plaintext highlighter-rouge">tableau_trie</code>
-</li>
+  <li>initiation de la fonction $\mathcal{O}(1)$</li>
+  <li>affection : $\mathcal{O}(1)$</li>
+  <li>affection : $\mathcal{O}(1)$</li>
+  <li>
+  </li>
+<li>boucle de $k$ itérations</li>
+  <li>affection : $\mathcal{O}(1)$</li>
+  <li>
+  </li>
+<li>test d’une valeur dans un tableau : $\mathcal{O}(1)$</li>
+  <li>retour de fonction : $\mathcal{O}(1)$</li>
+  <li>test d’une valeur dans un tableau : $\mathcal{O}(1)$</li>
+  <li>addition plus une affectation : $\mathcal{O}(1)$</li>
+  <li>
+  </li>
+<li>soustraction plus une affectation : $\mathcal{O}(1)$</li>
+  <li>retour de fonction : $\mathcal{O}(1)$</li>
 </ol>
 
-<p>Les trois remarques ci-dessus prouvent que l’algorithme <code class="language-plaintext highlighter-rouge">recherche_dichotomique</code> résout bien le problème “recherche ordonnée”.</p>
+<p>Ce qui donne comme complexité :</p>
 
-<p>Enfin, à chaque itération, <code class="language-plaintext highlighter-rouge">fin - debut</code> est divisé par 2 : il y a donc au plus $\log_2(n)$ itérations (avec $n$ la taille du tableau). Comme le reste des lignes est soit une affectation soit un positionnement dans un tableau, la complexité totale de l’algorithme est $\mathcal{O}(\ln(n))$ (avec $n$ la taille du tableau).</p>
+\[\begin{array}{lcl}
+C(n) &amp; = &amp; 3 \cdot \mathcal{O}(1) + \\
+&amp; &amp; k \cdot (6 \cdot \mathcal{O}(1)) + \\
+&amp; &amp; \mathcal{O}(1) \\
+&amp; = &amp; \mathcal{O}(k)
+\end{array}\]
+
+<p>Comme à chaque itération, <code class="language-plaintext highlighter-rouge">fin - debut</code> est divisé par 2 : il y a donc au plus $\log_2(n)$ itérations (avec $n$ la taille du tableau) :</p>
 
 <blockquote class="note">
   <p>l’algorithme <code class="language-plaintext highlighter-rouge">recherche_dichotomique</code> résout le problème “recherche ordonnée” en $\mathcal{O}(\ln(n))$ (avec $n$ la taille du tableau)</p>
 </blockquote>
 
-<h4 id="complexité-du-problème-recherche-ordonnée">complexité du problème “recherche ordonnée”</h4>
+<h4 id="complexite-recherche-ordonnee">complexité du problème “recherche ordonnée”</h4>
 
 <p>L’algorithme de la recherche dichotomique résout le problème de la “recherche ordonnée” de façon bien plus efficace que l’algorithme <code class="language-plaintext highlighter-rouge">est_dans_tableau</code> : il n’a pas besoin de connaitre toutes les cases du tableau pour répondre à la question car le tableau est trié. Une borne maximum de la complexité du problème “recherche ordonnée” est alors $\mathcal{O}(\ln(n))$ (avec $n$ la taille du tableau).</p>
 
 <p>Nous allons montrer que l’on ne peut pas faire mieux en montrant que $\mathcal{O}(\ln(n))$ est une borne minimum de notre problème.</p>
 
 <blockquote>
-  <p>Remarquez bien que la preuve que l’on a donné pour la complexité de “recherche” ne fonctionne pas dans le cas de “recherche ordonnée”. On ne peut pas fabriquer de tableau $T’$ ici puisque $T’$ doit rester ordonné.</p>
+  <p>Remarquez bien que la preuve que l’on a donné pour la complexité de “recherche” ne fonctionne pas dans le cas de “recherche ordonnée”. On ne peut pas fabriquer comme précédemment de tableau $T’$ car les tableaux doivent être ordonnés.</p>
 </blockquote>
 
-<p>Commençons par remarquer que <code class="language-plaintext highlighter-rouge">valeur</code> peut se trouver à chaque position du tableau. Tout algorithme qui résout “recherche ordonnée” doit ainsi réussir à distinguer parmi $n + 1$ cas : <code class="language-plaintext highlighter-rouge">valeur</code> n’est pas dans tableau, <code class="language-plaintext highlighter-rouge">valeur</code> est à la position 0 du tableau, <code class="language-plaintext highlighter-rouge">valeur</code> est à la position 1 du tableau, …, <code class="language-plaintext highlighter-rouge">valeur</code> est à la position $n-1$ du tableau.</p>
-
-<p>En algorithmique, distinguer parmi plusieurs cas se fait par des tests :</p>
+<p>Commençons par remarquer que <code class="language-plaintext highlighter-rouge">valeur</code> peut se trouver à chaque position du tableau. Tout algorithme qui résout “recherche ordonnée” doit ainsi réussir à distinguer parmi $n + 1$ cas :</p>
 
 <ul>
-  <li>s’il y a 0 test, un algorithme ne peut résoudre qu’un seul cas</li>
-  <li>s’il y a 1 test, un algorithme peut résoudre au plus 2 cas :
+  <li>soit <code class="language-plaintext highlighter-rouge">valeur</code> n’est pas dans tableau</li>
+  <li>soit <code class="language-plaintext highlighter-rouge">valeur</code> est à l’indice 0 du tableau</li>
+  <li>soit <code class="language-plaintext highlighter-rouge">valeur</code> est à l’indice 1 du tableau</li>
+  <li>…</li>
+  <li>soit <code class="language-plaintext highlighter-rouge">valeur</code> est à l’indice $n-1$ du tableau</li>
+</ul>
+
+<p>En algorithmie, distinguer parmi plusieurs cas se fait par des tests (on utilise les opérations <code class="language-plaintext highlighter-rouge">si alors sinon</code>). De là :</p>
+
+<ul>
+  <li>s’il y a 0 test, un algorithme ne peut pas distinguer de cas.</li>
+  <li>s’il y a 1 test, un algorithme peut distinguerau plus  2 cas :
     <ul>
       <li>1 cas si le test est vrai</li>
       <li>1 cas si le test est faux</li>
     </ul>
   </li>
-  <li>s’il y a 2 tests, un algorithme peut résoudre au plus $2 \cdot 2 = 4$ cas :
+  <li>s’il y a 2 tests, un algorithme peut distinguer au plus $2 \cdot 2 = 4$ cas :
     <ul>
       <li>1 cas si les deux tests sont vrai</li>
       <li>1 cas si le premier test est vrai et le second test faux</li>
@@ -271,7 +370,7 @@
       <li>1 cas si les deux tests sont faux</li>
     </ul>
   </li>
-  <li>s’il y a 3 tests, un algorithme peut résoudre au plus $2 \cdot 2 \cdot 2 = 2^3 = 8$ cas :
+  <li>s’il y a 3 tests, un algorithme peut distinguer au plus $2 \cdot 2 \cdot 2 = 2^3 = 8$ cas :
     <ul>
       <li>1 cas si les trois tests sont vrai</li>
       <li>1 cas si les deux premiers tests sont vrai et le troisième test faux</li>
@@ -280,12 +379,18 @@
     </ul>
   </li>
   <li>…</li>
-  <li>s’il y a $k$ tests, un algorithme peut résoudre au plus $2^k$ cas</li>
+  <li>s’il y a $k$ tests, un algorithme peut distinguer au plus $2^k$ cas</li>
 </ul>
 
-<p>Comme il y a $n+1$ cas au moins à traiter, notre algorithme devra posséder au moins $\log_2(n)$  tests : sa complexité ne peut-être inférieure à $\mathcal{O}(\log_2(n)) = \mathcal{O}(\ln(n))$ opérations.</p>
+<p>On a alors la proprité suivante :</p>
 
-<p>En conclusion le problème de la “recherche ordonnée” pour un tableau à $n$ éléments :</p>
+<blockquote class="note">
+  <p>Si un algorithme doit distinguer $n$ cas, il devra posséder au moins $\log_2(n)$ tests. Sa complexité sera ainsi supérieure à $\mathcal{O}(\ln(n))$</p>
+</blockquote>
+
+<p>Comme il y a $n+1$ cas au moins à traiter, notre algorithme sera de complexité supérieure à à $\mathcal{O}(\ln(n + 1)) = \mathcal{O}(\ln(n))$ opérations.</p>
+
+<p>AU final, le problème de la “recherche ordonnée” pour un tableau à $n$ éléments :</p>
 
 <ul>
   <li>une borne minimale de complexité égal à $\mathcal{O}(\ln(n))$</li>
