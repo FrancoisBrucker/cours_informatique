@@ -212,7 +212,7 @@ Sa complexité est cependant prohibitive. Comme on a considéré que la complexi
 > L'intérêt de `mélange` est théorique. Il montre qu'il existe un algorithme pour résoudre le problème (et en donne par là également une borne max).
 {: .note}
 
-## algorithme de fisher-yates ou de Knuth
+## algorithme de fisher-yates ou de Knuth {#algorithme-fisher-yates}
 
 L'algorithme que l'on va montrer maintenant, dit de [fisher-yates ou encore de Knuth](https://fr.wikipedia.org/wiki/M%C3%A9lange_de_Fisher-Yates), va également résoudre le problème "permutation", mais de façon bien plus élégante.
 

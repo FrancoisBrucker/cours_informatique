@@ -471,7 +471,7 @@ $${
 
 > Ne comptez pas trop précisément le nombre de fois où l'on rentre dans une boucle $n-3$ exécution de la boucle pouvant être avantageusement remplacé par $\mathcal{O}(n)$
 
-### boucles dépendantes mais monotones
+### boucles dépendantes mais monotones {#regle-croissance}
 
 Il arrive souvent que les boucles imbriquées d'un algorithme soient dépendantes les unes des autres. Dans le cas général on ne peut pas factoriser le calcul de la complexité et il faut alors dérouler tout l'algorithme en additionnant les complexités de chaque ligne comme s'il n'y avait pas de boucles.
 
@@ -667,4 +667,4 @@ $$
 \end{array}
 $$
 
-Au fnal, on trouve que la complexité $C(n)$ de notre algorithme est en $\mathcal{O}(n)$ où $n$ est la taille du tableau placé initialement en paramètre.
+Au final, on trouve que la complexité $C(n)$ de notre algorithme est en $\mathcal{O}(n)$ où $n$ est la taille du tableau placé initialement en paramètre.

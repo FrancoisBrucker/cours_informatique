@@ -4,20 +4,9 @@ title:  "MPCI S2 : Programmation 2"
 category: cours
 ---
 
-## Introduction
+Cours de programmation en S2 MPCI. Il suit [le cours du S1](https://ametice.univ-amu.fr/course/view.php?id=77318) qu'il considère acquis.
 
-Cours de programmation 2 en S2 MPCI.
-
-Est organisée en 3 types d'enseignements :
-
-* séance de cours (**C,M**) : magistral.
-  > pour acquérir  des connaissances de base
-* séance tableau (**ST**) : exercices fait sans machine, accompagné d'un prof ou d'un corrigé
-  > pour travailler/acquérir des connaissances théoriques
-* séance machine (**SM**) : exercices fait avec votre machine, accompagné d'un prof ou d'un corrigé
-  > pour travailler/acquérir des connaissances pratiques
-
-Les divers contrôles intermédiaires seront à rendre directement sur [ametice](https://ametice.univ-amu.fr/course/view.php?id=70937).
+Les divers contrôles intermédiaires seront à rendre directement sur [ametice](https://ametice.univ-amu.fr/course/view.php?id=87451).
 
 ## Plan des cours
 
@@ -77,11 +66,68 @@ A partir de la semaine 2, les tests de début séance seront à écrire en [mark
 1. [étude : trier un tableau]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude-tris.md %})
 2. [projet : tris]({% link cours/theorie-pratiques-algorithmique/coder/projet-tris.md %})
 
-### contrôle 1
+### semaine 4
+
+contrôle 1 : sur table.
+
+Au programme :
 
 * complexité (min/max/moyenne/problème)
 * preuve d'algorithmes
-* tris
+* algorithmes de tris
+
+### semaine 5
+
+#### mercredi {#m-5}
+
+#### vendredi {#v-5}
+
+### semaine 6
+
+#### mercredi {#m-6}
+
+#### vendredi {#v-6}
+
+### semaine 7
+
+#### mercredi {#m-7}
+
+#### vendredi {#v-7}
+
+### semaine 8
+
+contrôle 2 : sur ordinateur.
+
+Au programme :
+
+* code
+
+### semaine 9
+
+#### mercredi {#m-9}
+
+#### vendredi {#v-9}
+
+### semaine 10
+
+#### mercredi {#m-10}
+
+#### vendredi {#v-10}
+
+### semaine 11
+
+#### mercredi {#m-11}
+
+#### vendredi {#v-11}
+
+### semaine 12
+
+Contrôle final : sur table.
+
+Au programme :
+
+* tout
+* voir un peu plus
 
 ## ressources
 

@@ -25,7 +25,7 @@ Les informaticiens adorent les [algorithmes de tris](https://fr.wikipedia.org/wi
 >
 {: .note}
 
-## problème de reconaissance
+## problème de reconnaissance
 
 Commençons par travailler sur un problème connexe au problème du tri, celui de la reconnaissance :
 
@@ -37,7 +37,7 @@ Commençons par travailler sur un problème connexe au problème du tri, celui d
 >
 {: .note}
 
-### algorithme
+### algorithme {#algo-est-trie}
 
 <style>
     table, td, tr, th, pre {
@@ -82,11 +82,11 @@ Au final :
 > L'algorithme `est_trie` est une solution au problème *"est trié ?"*
 {: .note}
 
-#### complexité de l'algoritme
+#### complexité de l'algorithme
 
 Ligne à ligne :
 
-1. définition de la finction $\mathcal{O}(1)$
+1. définition de la fonction $\mathcal{O}(1)$
 2. 
 3. une boucle for de $k$ itérations
 4. un tests de deux valeur dans un tableau : $\mathcal{O}(1)$
@@ -102,7 +102,7 @@ Que l'on sorte par le retour de la ligne 5 oi 6, le complexité est : $\mathcal{
 
 Comme toute case du tableau peut rendre le tableau non trié, on utilise l'argument de [complexité du problème de la *"recherche"*]({% link cours/theorie-pratiques-algorithmique/algorithmie/complexite-probleme.md %}#complexite-recherche), un algorithme résolvant ce problème doit considérer toutes les cases du tableaux et donc une borne min du problème *"est trié ?"* est $\mathcal{O}(n)$ où $n$ est la taille du talbeau en entrée. Comme la complexité de `est_trie`  est égalemnt de $\mathcal{O}(n)$.On en conclut :
 
-> La complexité du problème *"est trié ?"* est de $\mathcal{O}(n)$ où $n$ est la taille du talbeau en entrée
+> La complexité du problème *"est trié ?"* est de $\mathcal{O}(n)$ où $n$ est la taille du tableau en entrée
 {: .note}
 
 ## bornes du problème
@@ -121,7 +121,7 @@ Comme [n! est trop gros]({% link cours/theorie-pratiques-algorithmique/algorithm
 > Pour tout problème algorithmique, s'il existe :
 >
 > * un algorithme énumérant tous les cas possibles
-> * un algorithme permetant de vérifier si un cas donné est une solution
+> * un algorithme permettant de vérifier si un cas donné est une solution
 >
 > Alors la combinaison des deux algorithmes, de complexité le produit des deux algorithmes la constituant, est une solution au problème initial.
 {: .note}
@@ -141,7 +141,7 @@ Par exemple, pour un tableau à trois éléments :
 5. $[3, 1, 2]$
 6. $[3, 2, 1]$
 
-Quelque soit la forme de l'entrée (de 1 à 6), l'algorithme de tri doit rendre la forme 1 : un algorithme de tri doit pouvoir distinguer parmi toutes les permutations du tableau. Comme il y a $n!$  permutations différentes pour un tableau de taile $n$ dont éléments sont deux à deux différents, tout algorithme de tri doit pouvoir ditinguer parmi $n!$ choix, en utilisant la propriété de nobre de cas à distinguer choix vue [dans la complexité du problème de la *"recherche ordonnée"*]({% link cours/theorie-pratiques-algorithmique/algorithmie/complexite-probleme.md %}#complexite-recherche-ordonnee), on en déduit que :
+Quelque soit la forme de l'entrée (de 1 à 6), l'algorithme de tri doit rendre la forme 1 : un algorithme de tri doit pouvoir distinguer parmi toutes les permutations du tableau. Comme il y a $n!$  permutations différentes pour un tableau de taille $n$ dont éléments sont deux à deux différents, tout algorithme de tri doit pouvoir distinguer parmi $n!$ choix, en utilisant la propriété de nombre de cas à distinguer choix vue [dans la complexité du problème de la *"recherche ordonnée"*]({% link cours/theorie-pratiques-algorithmique/algorithmie/complexite-probleme.md %}#complexite-recherche-ordonnee), on en déduit que :
 
 Tout algorithme de tri d'un tableau à $n$ élément doit distinguer parmi $n!$ cas, il est donc au minimum de complexité $\mathcal{O}(\ln(n!))$. On rend cette borne min un peu plus jolie en utilisant le fait que ;
 
@@ -165,7 +165,7 @@ $$
 \frac{n}{2}\ln(\frac{n}{2}) \leq \ln(n!) \leq n\ln(n)
 $$
 
-Poursuivons en triturant $\ln(\frac{n}{2})$ : 
+Poursuivons en triturant $\ln(\frac{n}{2})$ :
 
 $$
 \begin{array}{lclr}
@@ -187,7 +187,7 @@ Ce qui se dérive directement, pour $n \geq 4$, en :
 
 $$\frac{1}{4} \leq \frac{\ln(n!)}{n\ln(n)} \leq 1$$
 
-Enfin, on peut montrer les équivalences de $\mathcal{O}$ : 
+Enfin, on peut montrer les équivalences de $\mathcal{O}$ :
 
 * si $g(n)$ est en $\mathcal{O}(\ln(n!))$ il existe $N_0$ et $C$ tel que : $g(n) < C \cdot \ln(n!)$ pour n > $N_0$. Pour $N_1 = \max(N_0, 4)$ on a donc $g(n) < C \cdot \ln(n!) < C \cdot n\ln(n)$ : $g(n)$ est en $\mathcal{O}(n\ln(n))$.
 * si $g(n)$ est en $\mathcal{O}(n\ln(n))$ il existe $N_0$ et $C$ tel que : $g(n) < C \cdot n\ln(n)$ pour n > $N_0$. Pour $N_1 = \max(N_0, 4)$ on a donc $g(n) < C \cdot \ln_2(n!) < C \cdot 4 \cdot \ln(n!)$ : $g(n)$ est en $\mathcal{O}(\ln(n!))$.
@@ -205,154 +205,383 @@ oui, de tels algorithmes exitent.
 
 ## tris *simples*
 
-Notre algorithme pour trier un tableau est un monstre. Il en existe de très simples et de complexité bien plus faible. Nous en montrons 2, classiques.
+Notre algorithme pour trier un tableau est un monstre de complexité. Il en existe de très simples et de complexité bien plus faible. Nous en montrons 2, classiques.
 
-### tri par insertion
+### tri par sélection {#tri-selection}
 
-### tri par selection
+Le principe du tri par sélection est l'inverse de l'algorithme de [Fisher-Yates]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude-melange.md %}#algorithme-fisher-yates), plutôt que de placer un élément au hasard à l'indice $i$ du tableau, on choisi de placer le $i$-ème plus petit élément à l'indice $i$.
 
+L'algorithme procède alors ainsi : à chaque itération de l'algorithme, on place à l'indice $i$ du tableau son $i$-ème plus petit élément.
 
-### tri par sélection
+> Ecrivez un algorithme qui met en œuvre ce principe
+{: .a-faire}
+{% details  une solution %}
+<style>
+    table, td, tr, th, pre {
+        padding:0;
+        margin:0;
+        border:none
+    }
+</style>
+{% highlight python linenos %}
 
-En entrée, un tableau `tab` remplit de nombre et de taille $n$ :
-
-```python
-def selection(tab):
-    for i in range(len(tab) - 1):
+def selection(tableau):
+    for i in range(len(tableau) - 1):
         min_index = i
-        for j in range(i + 1, len(tab)):
-            if tab[j] < tab[min_index]:
+        for j in range(i + 1, len(tableau)):
+            if tableau[j] < tableau[min_index]:
                 min_index = j
-        tab[i], tab[min_index] = tab[min_index], tab[i]
+        tableau[i], tableau[min_index] = tableau[min_index], tableau[i]
 
-```
+{% endhighlight %}
 
-> anti melangeur. A la placede random on cherche
+L'algorithme `selection` **modifie** le tableau passé en paramètre. On appelle ces algorithmes [in place](https://en.wikipedia.org/wiki/In-place_algorithm) car il ne rendent rien, mais modifient les données en entrées.
+
+{% enddetails %}
+
+#### fonctionnement {#fonctionnement-selection}
+
+On vérifie que l'algorithme fonctionne pour :
+
+* un petit tableau trié : `[1, 2, 3]`
+* un petit tableau non trié où le plus petit est en dernière place : `[3, 2, 1]`
+
+#### preuve {#preuve-selection}
+
+Le principe de fonctionnement est clair. Il reste à prouver que c'est bien ce que l'algorithme `selection` fait.
+
+1. la boucle `for` de la ligne 4 trouve l'indice du plus petit élément du tableau `tableau[i:]`.
+2. la ligne 7 échange le minium du tableau `tableau[i:]` avec `tableau[i]`
+3. comme la boucle `for` de la ligne 2 incrémente $i$, on a l'invariant de boucle : *"à la fin de chaque étape $i$ de l'algorithme les $i$ plus petites valeurs du tableaux sont triées aux $i$ premiers indices du tableau"*
+
+#### complexités {#complexites-selection}
+
+On suppose que la taille du tableau est $n$.
+
+Ligne à ligne :
+
+1. début de fonction : $\mathcal{O}(1)$
+2. une boucle de $n-1$ itérations
+3. une affectation $\mathcal{O}(1)$
+4. une boucle de $n-i-1$ itérations ($i$ est la variable définie ligne 2)
+5. un test et deux valeurs d'un tableau : $\mathcal{O}(1)$
+6. une affectation : $\mathcal{O}(1)$
+7. deux affectation et quatre valeurs d'un tableau : $\mathcal{O}(1)$
+
+Le nombre d'itérations de la boucle for de la ligne 4 n'est pas constant, mais il décroit puisque $i$ augmente à chaque itération dela boucle `for`de la ligne 2. On peut alors utiliser la [règle de croissance]({% link cours/theorie-pratiques-algorithmique/algorithmie/complexite-max-min.md %}#regle-croissance) pour utiliser le maximum, $n-1$, pour le calcul de la complexité.
+
+Ce qui donne une complexité de :
+
+$$
+\begin{array}{lcl}
+C & = & \mathcal{O}(1) + \\
+&& (n-1) \cdot (\\
+&& \mathcal{O}(1) + \\
+&& (n-1) \cdot ( \\
+&& \mathcal{O}(1) + \\
+&& \mathcal{O}(1)) + \\
+&& \mathcal{O}(1)) \\
+& = & \mathcal{O}(1) + (n-1) \cdot (\mathcal{O}(1) + (n-1) \cdot (\mathcal{O}(1))\\
+& = & \mathcal{O}(n^2) \\
+\end{array}
+$$
+
+Le nombre d'itération est constant quelque soit le tableau, on a donc :
+
+> La complexité de l'algorithme `selection` est ($n$ est la taille du tableau passé en entrée) :
+>
+>* la **complexité min** vaut $\mathcal{O}(n^2)$
+>* la **complexité (max)** vaut $\mathcal{O}(n^2)$
+>
+{: .note}
+
+Puisque la complexité min et max sont égales, on en déduit que la **complexité en moyenne** vaut également s$\mathcal{O}(n^2)$.
+
+### tri par insertion {#tri-insertion}
+
+Le tri par insertion est une extension de l'[algorithme `est_trie`](#algorithme-algo-est-trie). Plutôt que de rendre `False` il répare. L'algorithme `est_trie` répond `False` au plus petit `i` tel que `tableau[i] < tableau[i-1]`. On est alors dans le cas où :
+
+* `tableau[:i]` est trié
+* `tableau[i] < tableau[i-1]`
+
+Pour que l'on puisse continuer, il faut s'arranger pour que `tableau[:i+1]` soit trié. Pour cela, on peut utiliser le fait que `tableau[:i+1]` est trié si et seulement si :
+
+* `tableau[1] >= tableau[0]`
+* `tableau[2] >= tableau[1]`
+* ...
+* `tableau[i] >= tableau[i-1]`
+
+Dans notre cas, toutes les conditions sont vérifiées sauf la dernière. Si l'on échange `tableau[i]` et `tableau[i-1]` toutes les conditions seront vérifiées sauf peut-être l'avant-dernière. Si elle n'est pas vérifiée on peut échanger `tableau[i-1]` et `tableau[i-1]` et alors toutes les conditions seront vérifiées sauf peut-être l'avant-avant-dernière, que l'on peut à nouveau échanger, et ainsi de suite jusqu'à ce que toutes les conditions soient vérifiées.
+
+Cette analyse (ce n'est pas encore une preuve formelle) nous permet de dégager le principe suivant :
+
+On vérifie itérativement que `tableau[i] >= tableau[i-1]` et si ce n'est pas le cas on fait *remonter* `tableau[i]` par échanges successifs à la première place où il sera plus grand que le précédent.
+
+> Ecrivez un algorithme qui met en œuvre ce principe
+{: .a-faire}
+{% details  une solution %}
+<style>
+    table, td, tr, th, pre {
+        padding:0;
+        margin:0;
+        border:none
+    }
+</style>
+{% highlight python linenos %}
+
+def insertion(tableau):
+    for i in range(1, len(tableau)):
+        courant = tableau[i]
+        j = i
+        while (j > 0) and (courant < tableau[j - 1]):
+            tableau[j] = tableau[j - 1]
+            j -= 1
+        tableau[j] = courant
+
+{% endhighlight %}
+
+L'algorithme `insertion`, comme l'algorithme `selection`, **modifie** le tableau passé en paramètre.
+
+Pour garantir que `tableau[j - 1]` soit toujours valide (il faut que $j-1 \geq 0$), on place en tête de la condition `(courant < tableau[j - 1])` de la ligne 5 la [sentinelle](https://en.wikipedia.org/wiki/Sentinel_value) `(j > 0)`. Les deux conditions étant liées par un `and`, python (et tout autre langage de programmation) n'évaluera la seconde condition **que si la première est vérifiée** (un `and` ne peut être vrai que si les deux conditions sont vraies. Si la première condition est fausse, il est impossible que le `and` soit vrai il est donc inutile de vérifier la seconde condition). Cette technique est très utile, ça vaut le coup de la connaître.
+
+{% enddetails %}
+
+#### fonctionnement {#fonctionnement-insertion}
+
+Tout comme pour l'algorithme de tri par sélection, on vérifie que l'algorithme fonctionne pour :
+
+* un petit tableau trié : `[1, 2, 3]`
+* un petit tableau non trié où le plus petit est en dernière place : `[3, 2, 1]`
+
+#### preuve {#preuve-insertion}
+
+Le principe de programmation du tri par insertion est correct puisque `est_tre` est prouvé. Mais il faut vérifier qu'il est bien mis en œuvre dans l'algorithme. On utilise ici celui donné en solution.
+
+Tout d'abord, comme la condition de la boucle `while` de la ligne 5 contient `(j > 0)` et que `j` décroit strictement à chaque itération (ligne 7), notre algorithme va bien s'arrêter.
+
+A chaque itération $i$ de la boucle `for` (ligne 2), l'algorithme fonctionne ainsi :
+
+* ligne 3 : on a : `tableau[:i+1] = tableau[:i] + [courant]`
+* à la sortie de la boucle `while`, juste avant la ligne 8. En notant `tableau` le tableau avant la boucle `while` et `tableau'` le tableau en fin de `while`, on a :
+  * `tableau'[:i+1] = tableau[:j] + [tableau[j]] + tableau[j:i]`
+  * `tableau[:j]` trié et `courant >= tableau[j-1]`
+  * `tableau[j:i]` trié `courant < tableau[j]`
+* après la ligne 8, juste avant de faire une nouvelle itération de la boucle `for`. En notant `tableau` le tableau avant le début de l'itération et `tableau'` le tableau en fin d'itération', on a : `tableau'[:i+1] = tableau[:j] + [tableau[i]] + tableau[j:i]`
+
+Notre invariant de boucle est donc : *"à la fin de l'itération i, les i premiers éléments du tableau sont triés"*
+
+#### complexités {#complexites-insertion}
+
+Ligne à ligne :
+
+1. appel de fonction : $\mathcal{O}(1)$
+2. $n-1$ itérations, avec $n$ la taille du tableau
+3. affectation d'une variable et récupération d'un élément d'un tableau : $\mathcal{O}(1)$
+4. affectation d'une variable : $\mathcal{O}(1)$
+5. $k$ itérations et deux tests en $\mathcal{O}(1)$ pour chaque itération
+6. affectation d'une variable et récupération d'un élément d'un tableau : $\mathcal{O}(1)$
+7. une soustraction et une affectation : $\mathcal{O}(1)$
+8. affectation d'une variable et récupération d'un élément d'un tableau : $\mathcal{O}(1)$
+
+Comme $k$ n'est pas constant pour chaque itération de la boucle `for` il faut regarder les valeurs extrêmes que peut prendre $k$ :
+
+* si le tableau est déjà trié : on ne rentre jamais dans la boucle `while` : $k = 0$ pour chaque itération.
+* si le tableau est trié à l'envers : pour la $i$-ème itération de la boucle `for`, on aura $k=i$. C'est de plus le maximum théorique possible ($j=i$ initialement et j décroit de 1 à chaque itération de la boucle `while`).
+
+On a donc 2 cas extrêmes pour le calcul :
+
+1. $k = 0$ à chaque itération
+2. $k$ croit de $1$ à $n-1$ à chaque itération : la [règle de croissance]({% link cours/theorie-pratiques-algorithmique/algorithmie/complexite-max-min.md %}#regle-croissance) nous indique qu'on peut considérer que $k=n-1$ pour le calcul de la complexité
+
+Ce qui donne une complexité de :
+
+$$
+\begin{array}{lcl}
+C & = & \mathcal{O}(1) + \\
+&& (n-1) \cdot (\\
+&& \mathcal{O}(1) + \\
+&& \mathcal{O}(1) + \\
+&& k \cdot (\mathcal{O}(1) + \\
+&& \mathcal{O}(1) + \\
+&& \mathcal{O}(1)) + \\
+&& \mathcal{O}(1)) \\
+& = & \mathcal{O}(1) + (n-1) \cdot (\mathcal{O}(1) + k \cdot (\mathcal{O}(1))\\
+& = & \mathcal{O}(n \cdot (k + 1)) \\
+\end{array}
+$$
+
+> La complexité de l'algorithme `insertion` est ($n$ est la taille du tableau passé en entrée) :
+>
+>* la **complexité min** est atteinte pour $k=0$, c'est à dire lorsque le tableau est déjà trié, et vaut $\mathcal{O}(n)$
+>* la **complexité (max)** est atteinte pour $k=n-1$, c'est à dire lorsque le tableau est trié par ordre décroissant, et vaut $\mathcal{O}(n^2)$
+>
+{: .note}
+
+La complexité min et différente de la complexité maximale. On va donc calculer la complexité en moyenne pour connaitre la complexité pour des données *standard*.
+Pour savoir ce que veut dire *standard*, il faut déterminer le modèle de données : prenons le équiprobable.
+
+Cela signifie que pour chaque itération $i$ :
+
+* `tableau[i]` sera bien placé pour une proportion de $\frac{1}{i + 1}$ tableaux
+* `tableau[i]` devra être positionné en $i-1$ pour une proportion de $\frac{1}{i + 1}$ tableaux,
+* ...
+* `tableau[i]` devra être positionné en $i-j$ pour une proportion de $\frac{1}{i + 1}$ tableaux,
+* ...
+* `tableau[i]` devra être positionné en $0$ pour une proportion de $\frac{1}{i + 1}$ tableaux.
+
+La complexité en moyenne sera donc égale à :
+
+$$
+\begin{array}{lcl}
+C_m &=& \mbox{complexité hors boucle for} + \sum_{i=1}^{n-1}(\mbox{complexité hors boucle while} + i \cdot (\mox{complexité boucle while}))\\
+&=& \mathcal{O}(1) + \sum_{i=1}^{n-1} (\mathcal{O}(1) + i \cdot \mathcal{O}(1))\\
+&=& \mathcal{O}(1) \cdot \sum_{i=1}^{n-1} i \\
+&=& \mathcal{O}(1) \cdot \frac{n(n-1)}{2} \\
+&=& \mathcal{O}(n^2)\\
+\end{array}
+$$
+
+> On aurait pu faire moins de calcul en remarquant que si le modèle est équiprobable, pour `tableau[i]` il a de l'ordre de $\frac{i}{2}$  éléments de `tableau[:i]` plus grand que lui (et donc $\frac{i}{2}$  éléments plus petit puisque `tableau[:i]` est trié) : pour l'itération $i$ de la boucle `for`, la boucle `while` fera $\frac{i}{2}$ opérations.
+
+> La **complexité en moyenne** de l'algorithme `insertion` est $\mathcal{O}(n^2)$ où $n$ est la taille du tableau passé en entrée.
+>
+{: .note}
+
+Le cas le meilleur arrive très rarement par rapport au cas le pire (parmi les $n!$ ordres possible, il y en a très peut qui sont presque triés).
+
+Si l'on change le modèle de donnée et que l'on considère des tableaux *presque triées*, la complexité en moyenne va être de l'ordre de la complexité minimale, à savoir : $\mathcal{O}(n)$
+
+> On utilise le tri par insertion lorsque nos données seront presque toujours déjà triées ou très peu en désordre.
+{: .note}
+
+## tri fusion
+
+> rendre joli.
 {: .tbd}
 
-#### preuve que sélection trie
+Le [tri fusion](https://fr.wikipedia.org/wiki/Tri_fusion) est un tri de complexité $\mathcal{O}(n\ln_2(n))$ opérations où $n$ est la taille de la liste en entrée. Il fonctionne ainsi :
 
-Il y a 2 boucles imbriquées. La raison d'être de la boucle faisant varier j est de faire en sorte que `min_index` soit l'indice de de la plus petite valeur du tableau pour les indices plus grand que $i$.
-
-Ensuite on échange cette valeur avec celle initialement à l'indice $i$.
-
-Notre invariant de boucle peut donc être : _"à la fin de chaque étape $i$ de l'algorithme les $i$ plus petites valeurs du tableaux sont triées aux $i$ premiers indices du tableau"_
-
-#### complexités du tri par sélection
-
-deux boucles imbriquées :
-
-* la boucle extérieure est en $\mathcal{O}(n)$
-* la boucle intérieure est d'itérations variables mais décroissantes de $n$ à 1 itérations : on utilise la règle qui dit que globalement, sa complexité est donc en nombre d'itérations max : $\mathcal{O}(n)$.
-
-L'échange étant en $\mathcal{O}(1)$ la complexité totales est en $\mathcal{O}(n) * \mathcal{O}(n) = \mathcal{O}(^2)$.
-
-Le nombre d'itérations n'est pas dépendant du tableau.
-
-### tri par insertion
-
-en entrée, un tableau `tab` remplit de nombre et de taille $n$.
+Si l'on possède une fonction `colle(T1, T2)`, avec `T1` et `T2` des tableaux triés, qui rend le tri de la concaténation de `T1` et `T2`, alors la fonction :
 
 ```python
-def insertion(tab):
-    for i in range(1, len(tab)):
-        actu = tab[i]
-        j = i
-        while j > 0 and tab[j - 1] > actu:
-            tab[j] = tab[j - 1]
-            j -= 1
-        tab[j] = actu
+
+fusion(T) = colle(fusion(T1[len(T)/2:]), 
+                  fusion(T2[:len(T)/2])
+
 ```
 
-> Extension de la vérification. tri du jeu de carte. 
+est un algorithme de tri !
+
+### algorithme colle
+
+> Pour comprendre pourquoi c'est une bonne idée, écrivez un algorithme qui implémente la fonction `colle(T1, T2)`. Il faut que sa complexité soit égale à $\mathcal{O}(\max(n_1, n_2))$ avec $n_1$ et $n_2$ les tailles des tableaux `T1` et `T2` respectivement.
+>
+{: .a-faire}
+{% details   une solution %}
+
+<style>
+    table, td, tr, th, pre {
+        padding:0;
+        margin:0;
+        border:none
+    }
+</style>
+{% highlight python linenos %}
+
+def colle(tab1, tab2):
+    i1 = i2 = 0
+    tab_colle = []
+    while i1 < len(tab1) or i2 < len(tab2):
+        if i2 == len(tab2):
+            tab_colle.append(tab1[i1])
+            i1 += 1
+        elif i1 == len(tab1):
+            tab_colle.append(tab2[i2])
+            i2 += 1
+        elif tab1[i1] < tab2[i2]:
+            tab_colle.append(tab1[i1])
+            i1 += 1
+        else:
+            tab_colle.append(tab2[i2])
+            i2 += 1
+    return tab_colle
+
+{% endhighlight %}
+
+{% enddetails %}
+
+#### fonctionnement {#fonctionnement-colle}
+
+On vérifie pour deux petits tableaux **triés**, par exemple : `[1, 4, 7]` et `[0, 2, 3, 98]`.
+
+#### preuve {#preuve-colle}
+
+
+
+#### complexités {#complexites-colle}
+
+
+### algorithme fusion
+
+Une proposition de code est ci-après :
+
+```python
+def fusion(tab):
+    if len(tab) < 2:
+        return tab
+    else:
+        milieu = len(tab) // 2
+    return colle(fusion(tab[:milieu]), fusion(tab[milieu:]))
+
+```
+
+L'algorithme fonctionne ainsi :
+
+1. on coupe la liste à trier en 2
+2. on trie chacune des sous-listes à part
+3. on recolle les deux listes triées en une unique liste triée (c'est `fusion_colle`)
+
+Comme on peut utiliser n'importe quel algorithme pour trier les 2 sous-listes, autant s'utiliser soit-même ! L'algorithme fusion utilise donc l'algorithme fusion pour trier les sous-listes de l'algorithme fusion.
+
+La complexité de l'algorithme est alors :
+
+$$C(n) = 2 * C(n/2) + D(n)$$
+
+Où :
+* $C(n)$ est la complexité de l'algorithme fusion pour une liste à $n$ éléments (algorithme `fusion`)
+* $D(n)$ est la complexité de fusionner deux listes triées en une unique liste triées (algorithme `fusion_colle`). 
+
+Comme l'algorithme `fusion_colle` est en $\mathcal{O}(n)$, l'équation de récurrence de la complexité est :
+
+$$C(n) = 2 * C(n/2) + \mathcal{O}(n)$$
+
+Pour connaître la valeur de la complexité on utilise le [master theorem](https://fr.wikipedia.org/wiki/Master_theorem) qui est **LE** théorème des complexités pour les algorithmes récursifs. Sa preuve dépasse (de loin) le cadre de ce cours, mais son énoncé sous la  [notation de Landau](https://fr.wikipedia.org/wiki/Master_theorem#%C3%89nonc%C3%A9_avec_la_notation_de_Landau), nous permet de déterminer aisément la complexité de nombreux algorithmes récursifs, dont le notre : $\mathcal{O}(n\ln_2(n))$, puisque $1 = \ln_2(2)$.
+
+> **Remarque** : tout comme le tri par sélection, le tri fusion a la particularité d'avoir toujours le même nombre d'opérations quelque soit la liste en entrée.
+
+### principe
+
+La logique de l'algorithme `fusion` est appelée [diviser pour régner](https://fr.wikipedia.org/wiki/Diviser_pour_r%C3%A9gner_(informatique)) : on résout des sous-problèmes puis on crée une solution globale à partir des solutions partielles. Cette stratégie fonctionne lorsque la création d'une solution globale à partir de solutions partielle est aisée.
+
+> expliciter
 {: .tbd}
 
+Pour notre algorithme fusion :
 
-#### preuve qu'insertion trie
+* quels sont les solutions partielles ?
+* comment sont calculées les solutions partielles ?
+* comment est construite la solution globale à partir des solutions partielles ?
+* la construction de la solution globale est-elle facile ? Quelle est sa complexité ?
 
-A chaque itération $i$ l'algorithme remonte la valeur initialement en position $i$ à la première position pour laquelle il est plus grand que le précédent. Remarquez bien que nous n'avons jamais changé les différentes valeurs du tableau.
+### expérimentation
 
-Notre invariant de boucle peut donc être : _"à la fin de l'itération i, les i premiers éléments du tableau sont triés"_
+Vérifier expérimentalement que la complexité est bien $\mathcal{O}(n\ln_2(n))$. Ici c'est bien la complexité maximale que l'on observe puisque le nombre d'opérations est constant (en grand O) quel que soit la liste à trier.
 
-#### complexités du tri par insertions
-
-La complexité va changer selon la nature du tableau :
-
-* si le tableau est déjà trié : je ne rentre jamais dans la boucle du *tant que* : la complexité est en $\mathcal{O}(n)$
-* si le tableau est trié à l'envers : on effectue à chaque itération $i$, $i$ étapes dans la boucle du *tant que* : la complexité est en $\mathcal{O}(n^2)$
-
-Ceci est problématique. La complexité (le cas le pire) arrive-t-elle souvent ou pas pour des données "normales" ?
-
-Pour le savoir, on calcule la complexité en moyenne de notre algorithme. La complexité en moyenne dépend d'un modèle de donnée.
-
-Par exemple, pour un modèle de données où nos données sont toujours tries ou juste quelques inversions : la complexité en moyenne va être $\mathcal{O}(n)$.
-
-Souvent, pour la complexité en moyenne on considère des données aléatoires. C'est à dire que tout peut se passer de façon équiprobable : dans notre cas, au doigt mouillé, ça veut dire que notre boucle tant que va tout le temps remonter de la moitié de ce qui est possible (donc $i /2$ opérations) : pour un élément donné (aléatoire) il y a autant de nombre plus petit que lui que de nombre plus grand.
-
-En moyenne, la boucle *tant que* effectue donc un nombre d'itérations égal à $i /2$ : ça croit de 1 à $n/2$ : elle est donc de complexité $\mathcal{O}(n)$. Au final, la complexité moyenne de l'algorithme est donc en $\mathcal{O}(n^2)$
-
-Pour notre algorithme cela veut dire que le cas le meilleur arrive très rarement par rapport au cas le pire (parmi les $n!$ ordres possible, il y en a très peut qui sont presque triés).
-
-> Vous allez le prouver expérimentalement pendant la session de code.
-
-### différence de traitement des données ?
-
-Chaque tri a une façon bien à lui de trier les objets. C'est pour ça qu'un informaticien aime les tris : il a plein de façon différente de faire.
-
-On va le *voir*.
-
-On dessine le tableau à chaque modification de celui-ci. On voit la différence de traitement des algorithmes de tris.
-
-Exemple pour le tri par insertion/sélection. On a tout mis dans un unique fichier *"main.py"* :
-
-```python
-import random
-
-import matplotlib.pyplot as plt
-
-
-def draw_tab(tab):
-    plt.cla()  # on efface le dessin 
-    plt.plot(tab, 'ro')
-    plt.pause(0.1) # on pause le dessin
-    
-
-
-def selection(tab):
-    for i in range(len(tab) - 1):
-        min_index = i
-        for j in range(i + 1, len(tab)):
-            if tab[j] < tab[min_index]:
-                min_index = j
-        tab[i], tab[min_index] = tab[min_index], tab[i]
-        draw_tab(tab)
-
-
-def insertion(tab):
-    for i in range(1, len(tab)):
-        actu = tab[i]
-        j = i
-        while j > 0 and tab[j - 1] > actu:
-            tab[j] = tab[j - 1]
-            draw_tab(tab)
-            j -= 1
-        tab[j] = actu
-        draw_tab(tab)
-
-
-tab = list(range(30))
-random.shuffle(tab)
-
-print(tab)
-plt.plot(tab, 'ro')
-# selection(tab)
-insertion(tab)
-plt.show()
-
-print(tab)
-```
+Regardez le aussi trier, c'est très différent des autres tris.
 
 ## tri rapide {#tri-rapide}
+
+Le tri rapide est un cas d'algorithme de tri *rigolo*.
 
 Le tri rapide est une méthode de tri d'une liste à $n$ éléments dont :
 
@@ -444,95 +673,3 @@ Le tri rapide est donc rigolo :
 * il est très rapide pour les tableaux en désordre et très lent pour les tableaux déjà triés.
 
 En pratique, on commence donc par mélanger le tableau pour le trier ensuite, c'est plus rapide que le trier tout court.
-
-
-## tri fusion
-
-Le [tri fusion](https://fr.wikipedia.org/wiki/Tri_fusion) est un tri de complexité $\mathcal{O}(n\ln_2(n))$ opérations où $n$ est la taille de la liste en entrée.
-
-Une proposition de code est ci-après :
-
-```python
-def fusion(tab):
-    if len(tab) < 2:
-        return tab
-    else:
-        milieu = len(tab) // 2
-    return fusion_colle(fusion(tab[:milieu]), fusion(tab[milieu:]))
-
-
-def fusion_colle(tab1, tab2):
-    i1 = i2 = 0
-    tab_colle = []
-    while i1 < len(tab1) and i2 < len(tab2):
-        if tab1[i1] < tab2[i2]:
-            tab_colle.append(tab1[i1])
-            i1 += 1
-        else:
-            tab_colle.append(tab2[i2])
-            i2 += 1
-    if i1 == len(tab1):
-        tab_colle.extend(tab2[i2:])
-    else:
-        tab_colle.extend(tab1[i1:])
-    return tab_colle
-```
-
-L'algorithme fonctionne ainsi :
-
-1. on coupe la liste à trier en 2
-2. on trie chacune des sous-listes à part
-3. on recolle les deux listes triées en une unique liste triée (c'est `fusion_colle`)
-
-Comme on peut utiliser n'importe quel algorithme pour trier les 2 sous-listes, autant s'utiliser soit-même ! L'algorithme fusion utilise donc l'algorithme fusion pour trier les sous-listes de l'algorithme fusion.
-
-La complexité de l'algorithme est alors :
-
-$$C(n) = 2 * C(n/2) + D(n)$$
-
-Où :
-* $C(n)$ est la complexité de l'algorithme fusion pour une liste à $n$ éléments (algorithme `fusion`)
-* $D(n)$ est la complexité de fusionner deux listes triées en une unique liste triées (algorithme `fusion_colle`). 
-
-Comme l'algorithme `fusion_colle` est en $\mathcal{O}(n)$, l'équation de récurrence de la complexité est :
-
-$$C(n) = 2 * C(n/2) + \mathcal{O}(n)$$
-
-Pour connaître la valeur de la complexité on utilise le [master theorem](https://fr.wikipedia.org/wiki/Master_theorem) qui est **LE** théorème des complexités pour les algorithmes récursifs. Sa preuve dépasse (de loin) le cadre de ce cours, mais son énoncé sous la  [notation de Landau](https://fr.wikipedia.org/wiki/Master_theorem#%C3%89nonc%C3%A9_avec_la_notation_de_Landau), nous permet de déterminer aisément la complexité de nombreux algorithmes récursifs, dont le notre : $\mathcal{O}(n\ln_2(n))$, puisque $1 = \ln_2(2)$.
-
-> **Remarque** : tout comme le tri par sélection, le tri fusion a la particularité d'avoir toujours le même nombre d'opérations quelque soit la liste en entrée. 
-
-### fusion colle ?
-
-Comprenez comment la fonction `fusion_colle` fonctionne. Une fois que vous avez compris, faites des tests pour cette fonction que vous ajouterez à vos tests.
-
-### fusion ?
-
-La logique de l'algorithme `fusion` est appelée *diviser pour régner* : on résous des sous-problèmes puis on crée une solution globale à partir des solutions partielles. Cette stratégie fonctionne lorsque la création d'une solution globale à partir de solutions partielle est aisée. 
-
-Pour notre algorithme fusion :
-
-* quels sont les solutions partielles ?
-* comment sont calculées les solutions partielles ?
-* comment est construite la solution globale à partir des solutions partielles ?
-* la construction de la solution globale est-elle facile ? Quelle est sa complexité ?
-
-### expérimentation
-
-Vérifier expérimentalement que la complexité est bien $\mathcal{O}(n\ln_2(n))$. Ici c'est bien la complexité maximale que l'on observe puisque le nombre d'opérations est constant (en grand O) quel que soit la liste à trier.
-
-Regardez le aussi trier, c'est très différent des autres tris.
-
-## mélanger des listes ?
-
-On s'est appuyé sur la fonction [shuffle du module random](https://docs.python.org/3/library/random.html#random.shuffle) pour mélanger des listes.
-
-Mais sommes-nous bien sur que le mélange est bien équiprobable ? Sinon nos mesures de complexité en moyenne seraient tous faux...
-
-Rassurez vous c'est le cas. Elle utilise la méthode de mélange de [Fisher-Yates](https://fr.wikipedia.org/wiki/M%C3%A9lange_de_Fisher-Yates), qui est un algorithme linéaire permettant d'obtenir toutes les permutations possibles de façon équiprobable.
-
-Ce qui est marrant c'est que cet algorithme est *"l'inverse"* d'un tri par sélection. 
-
-Implémentez cet algorithme et vérifiez que pour la liste des 4 premiers entiers vous obtenez bien (sur un grand nombre d'essais) à peut prêt le même nombre des 24 permutations possibles.
-
-Si vous voulez en savoir un peu plus sur cet algorithme et de comment générer un nombre aléatoire en python : <https://www.stashofcode.fr/tri-aleatoire-des-elements-dun-tableau/>
