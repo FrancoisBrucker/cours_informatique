@@ -14,17 +14,13 @@ author: "François Brucker"
 >* [preuve d'algorithme]({% link cours/theorie-pratiques-algorithmique/algorithmie/preuve-algorithme.md %})
 {: .chemin}
 
-On va étudiez deux algorithmes permettant de calculer $a^b$  à partir de deux entiers $a$ et $b$. On appliquera toujours la même méthode pour analyser un algorithme :
+On va étudiez deux algorithmes permettant de calculer $a^b$  à partir de deux entiers $a$ et $b$. Pour chaque algorithme on étudiera son fonctionnement selon [3 axes]({% link cours/theorie-pratiques-algorithmique/algorithmie/algorithmes.md %}#étude) :
 
-> Lorsque l'on étudie un algorithme, il faut faire trois choses :
->
-> 1. vérifier le fonctionnement de l'algorithme sur de petits exemple que l'on peut tester à la main
-> 2. preuve de l'algorithme (on commence par vérifier que l'algorithme se termine puis preuve)
-> 3. calcul de la complexité de l'algorithme
->
-{: .note}
+* fonctionnement
+* preuve
+* complexité
 
-> dans la suite, les algorithmes seront tous donnés en python
+> On utilisera le python comme langage de pseudo-code
 
 ## algorithme naïf {#algo-naif}
 
@@ -75,7 +71,11 @@ Puis un cas un peu plus compliqué pour **tester si les boucles fonctionnent bie
 
 Une fois qu'on est convaincu que ça fonctionne, on peut essayer de prouver la finitude, la complexité et la preuve.
 
-### preuve de finitude {#finitude-naif}
+### preuve {#preuve-naif}
+
+En deux temps. On commence par montrer qu'il se termine, puis on prouve qu'il calcule bien l'exponenciation.
+
+#### finitude {#finitude-naif}
 
 * `compteur` diminue strictement à chaque boucle et la condition d'arrêt est lorsqu'il vaut 0
 * condition : il faut que `compteur` soit un nombre >= 0 pour que l'algorithme s'arrête. Donc `exposant` doit être un nombre positif.
@@ -87,22 +87,17 @@ Une fois qu'on est convaincu que ça fonctionne, on peut essayer de prouver la f
 >
 {: .note}
 
-### preuve de l'algorithme
+#### preuve de l'algorithme
 
 Le fonctionnement de l'algorithme est *à peut prêt* clair si les entrées sont des entiers : il multiplie $a$ par lui-même $b$ fois grâce à une boucle. Une preuve par récurrence doit donc fonctionner, mais essayons de faire une *jolie* preuve en exhibant un invariant de boucle.
 
-En utilisant l'opération `**` qui signifie exposant en python, on a :
+> Si `nombre` et `exposant` sont des entiers naturels, on a l'invariant de boucle :
+> `resultat * nombre ** compteur = nombre ** exposant` (en utilisant l'opération `**` qui signifie exposant en python.)
+{: .note}
 
-* invariant de boucle : `resultat * nombre ** compteur = nombre ** exposant`
-* condition sur les entrées : `nombre` et `exposant` sont des entiers naturels
+Prouvons cet invariant.
 
-#### conditions initiales {#invariant-naif-init}
-
-Juste avant la première itération de la boucle, `resulat = 1` et `compteur = exposant` notre invariant est donc vérifié.
-
-#### preuve de l'invariant {#invariant-naif-preuve}
-
-On suppose l'invariant vrai au début de la boucle $i$. Comme expliqué dans la partie sur les [preuves d'algorithmes]({% link cours/theorie-pratiques-algorithmique/algorithmie/preuve-algorithme.md %}), on met un `'` aux variable après l'itération :
+Juste avant la première itération de la boucle, `resulat = 1` et `compteur = exposant` notre invariant est donc vérifié. On suppose l'invariant vrai au début de la boucle $i$. Comme expliqué dans la partie sur les [preuves d'algorithmes]({% link cours/theorie-pratiques-algorithmique/algorithmie/preuve-algorithme.md %}), on met un `'` aux variable après l'itération :
 
 * `nombre' = nombre`
 * `exposant' = exposant`
@@ -113,11 +108,31 @@ On a alors :  `resultat' * nombre' ** compteur' = (resultat * nombre) * nombre *
 
 On a démontré notre invariant de boucle.
 
-#### preuve de l'algorithme {#preuve-naif}
-
-Notre invariant est vrai avant et après chaque itération, il est donc également vrai à la fin de l'algorithme, lorsque `compteur = 0`. Et là : `resultat * nombre ** compteur = resultat = nombre ** exposant`
+> Notre invariant est vrai avant et après chaque itération, il est donc également vrai à la fin de l'algorithme, lorsque `compteur = 0`. Et là : `resultat * nombre ** compteur = resultat = nombre ** exposant`
+{: .note}
 
 ### complexité {#complexite-naif}
+
+Ligne à ligne :
+
+1. définition de la fonction : $\mathcal{O}(1)$
+2. une affection : $\mathcal{O}(1)$
+3. une affection : $\mathcal{O}(1)$
+4. une boucle de $\mathcal{O}(\mbox{exposant})$ itération (`compteur` vaut initialement `exposant` et décrémente de $1$ à chaque itération)
+5. une multiplication et une affection : $\mathcal{O}(1)$
+6. une soustraction et une affection : $\mathcal{O}(1)$
+7. retour de la fonction : $\mathcal{O}(1)$
+
+Ce qui donne une complexité de :
+
+$$
+\begin{array}{lcl}
+C(n) & = & \mathcal{O}(1) + \\
+&  & \mathcal{O}(1) + \\
+& & \mathcal{O}(1) + \\
+& & \mathcal{O}\mbox{exposant}) \cdot ( \\
+\end{array}
+$$
 
 * un boucle en $\mathcal{O}(\mbox{exposant})$
 * des lignes en $\mathcal{O}(1)$

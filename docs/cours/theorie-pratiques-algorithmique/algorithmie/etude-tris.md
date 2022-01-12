@@ -12,22 +12,205 @@ author: "François Brucker"
 >
 >* [complexité moyenne]({% link cours/theorie-pratiques-algorithmique/algorithmie/complexite-moyenne.md %})
 >* [complexité d'un problème]({% link cours/theorie-pratiques-algorithmique/algorithmie/complexite-probleme.md %})
+>* [étude : mélanger un tableau]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude-melange.md %})
 >
 {: .chemin}
 
-Les informaticiens adorent les [algorithmes de tris]. Pas parce qu'ils aime l'ordre — loin de là — mais parce qu'il existe des zillions de façons de trier. Commençons par définir le problème :
+Les informaticiens adorent les [algorithmes de tris](https://fr.wikipedia.org/wiki/). Pas parce qu'ils aime l'ordre — loin de là — mais parce qu'il existe des millions de façons différentes de trier. Commençons par définir le problème :
 
 >
-> * nom : tri d'un tableau
-> * des données : un tableau d'entiers
-> * la réponse : un tableau contenant les valeurs du tableau en entrée triées selon l'ordre croissant
+> * nom : tri
+> * données : un tableau d'entiers
+> * réponse : un tableau contenant les valeurs du tableau en entrée triées selon l'ordre croissant
 >
 {: .note}
 
-Nous allons voir trois catégories de tris
+## problème de reconaissance
 
+Commençons par travailler sur un problème connexe au problème du tri, celui de la reconnaissance :
 
-## tris simple
+>
+> * nom : est trié ?
+> * données : un tableau $T$ d'entiers
+> * question : $T$ est-il trié de façon croissante ?
+> * réponse : OUI ou NON.
+>
+{: .note}
+
+### algorithme
+
+<style>
+    table, td, tr, th, pre {
+        padding:0;
+        margin:0;
+        border:none
+    }
+</style>
+{% highlight python linenos %}
+
+def est_trie(tableau):
+
+    for i in range(1, len(tableau)):
+        if tableau[i] < tableau[i-1]:
+            return False
+    return True
+
+{% endhighlight %}
+
+#### fonctionnement
+
+L'algorithme rend bien :
+
+* `True` pour `est_trie([42])`
+* `False` pour `est_trie([4, 2])`
+* `True` pour `est_trie([2, 4])`
+
+#### preuve
+
+La finitude de l'algorithme est clair puisqu'il n'y a qu'une boucle for avec autant d'itération que la taille du tableau passé en entrée.
+
+Le preuve en démontrant l'invariant de boucle : à la fin d'un itération, les $i + 1$ premiers éléments du tableau sont triés.
+
+1. à la fin de la première itération, si l'on est pas sorti de la boucle c'est que $tableau[i] \geq tableau[i-1]$ pour $i=1$ : les 2 premiers éléments du tableau sont bien triés.
+2. Si l'invariant est vrai à la fin de l'itération $i-1$, à la fin de l'itération $i$ on à $tableau[i] \geq tableau[i-1]$ et comme les $i + 1$ premiers éléments du tableau sont triés : les $i + 1$ premiers éléments du tableau sont triés.
+
+Au final :
+
+* L'invariant prouve que : si on arrive à la ligne 6 de l'algorithme c'est que les $n$ premiers éléments du tableau sont triés.
+* si on utilise le retour de la ligne 5 c'est qu'il existe $i$ avec `tableau[i] < tableau[i-1]`, donc tableau ne peut-être trié.
+
+> L'algorithme `est_trie` est une solution au problème *"est trié ?"*
+{: .note}
+
+#### complexité de l'algoritme
+
+Ligne à ligne :
+
+1. définition de la finction $\mathcal{O}(1)$
+2. 
+3. une boucle for de $k$ itérations
+4. un tests de deux valeur dans un tableau : $\mathcal{O}(1)$
+5. un retour de fonction $\mathcal{O}(1)$
+6. un retour de fonction $\mathcal{O}(1)$
+
+Que l'on sorte par le retour de la ligne 5 oi 6, le complexité est : $\mathcal{O}(k)$. Dans le cas le pire, on parcours tout le tableau, donc :
+
+> La complexité de l'algorithme `est_trie` est $\mathcal{O}(n)$ avec $n$ la taille du tableau en entrée.
+{: .note}
+
+### complexité du problème
+
+Comme toute case du tableau peut rendre le tableau non trié, on utilise l'argument de [complexité du problème de la *"recherche"*]({% link cours/theorie-pratiques-algorithmique/algorithmie/complexite-probleme.md %}#complexite-recherche), un algorithme résolvant ce problème doit considérer toutes les cases du tableaux et donc une borne min du problème *"est trié ?"* est $\mathcal{O}(n)$ où $n$ est la taille du talbeau en entrée. Comme la complexité de `est_trie`  est égalemnt de $\mathcal{O}(n)$.On en conclut :
+
+> La complexité du problème *"est trié ?"* est de $\mathcal{O}(n)$ où $n$ est la taille du talbeau en entrée
+{: .note}
+
+## bornes du problème
+
+### borne maximum
+
+La l'algorithme `permutations` de l'[étude sur les mélanges d'un tableau]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude-melange.md %}#algo-toutes-permutations) permet de calculer en $\mathcal{O}((n+2)!)$ toutes les permutations d'un tableau à $n$ éléments. Comme l'algorithme `est_trie` permet de savoir si un tableau est trié en $\mathcal{O}(n)$ opérations, on peut résoudre le problème *"trie"* en énumérant toutes les permutations du tableau passé en paramètre et en vérifiant pour chaque d'entre elle s'il est trié ou non.
+
+La complexité de cet algorithme est alors le produit de la complexité de `permutations` et de `est_trie` : $\mathcal{O}(n \cdot (n+2)!)$. On en conclut :
+
+> Une borne maximum du problème *"tri"* est $\mathcal{O}(n \cdot (n+2)!)$ où $n$ est la taille du tableau passé en entrée
+{: .note}
+
+Comme [n! est trop gros]({% link cours/theorie-pratiques-algorithmique/algorithmie/complexite-max-min.md %}#n_factoriel), ce n'est vraiment pas un algorithme à utiliser si on peut faire mieux... Mais il nous permet d'énoncer la propriété :
+
+> Pour tout problème algorithmique, s'il existe :
+>
+> * un algorithme énumérant tous les cas possibles
+> * un algorithme permetant de vérifier si un cas donné est une solution
+>
+> Alors la combinaison des deux algorithmes, de complexité le produit des deux algorithmes la constituant, est une solution au problème initial.
+{: .note}
+
+Souvent les algorithme produit par la remarque précédente ne sont pas optimaux car on explore bien trop de cas.
+
+### borne minimum
+
+Si les éléments du tableau à trié sont tous différents, les permutations de celui-ci sont toutes différentes et une seule est la solution au problème "tri".
+
+Par exemple, pour un tableau à trois éléments :
+
+1. $[1, 2, 3]$
+2. $[1, 3, 2]$
+3. $[2, 1, 3]$
+4. $[2, 3, 1]$
+5. $[3, 1, 2]$
+6. $[3, 2, 1]$
+
+Quelque soit la forme de l'entrée (de 1 à 6), l'algorithme de tri doit rendre la forme 1 : un algorithme de tri doit pouvoir distinguer parmi toutes les permutations du tableau. Comme il y a $n!$  permutations différentes pour un tableau de taile $n$ dont éléments sont deux à deux différents, tout algorithme de tri doit pouvoir ditinguer parmi $n!$ choix, en utilisant la propriété de nobre de cas à distinguer choix vue [dans la complexité du problème de la *"recherche ordonnée"*]({% link cours/theorie-pratiques-algorithmique/algorithmie/complexite-probleme.md %}#complexite-recherche-ordonnee), on en déduit que :
+
+Tout algorithme de tri d'un tableau à $n$ élément doit distinguer parmi $n!$ cas, il est donc au minimum de complexité $\mathcal{O}(\ln(n!))$. On rend cette borne min un peu plus jolie en utilisant le fait que ;
+
+>Toute fonction en $\mathcal{O}(\ln(n!))$ est également une fonction en $\mathcal{O}(n\ln(n))$ et réciproquement.
+{: .note}
+{% details démonstration %}
+
+On a :
+
+$$ (\frac{n}{2})^{\frac{n}{2}} \leq n \cdot (n-1) \cdot \ ...\ \cdot \frac{n}{2} \leq n! = n \cdot (n-1) \ ... \ \cdot 1 \leq n \cdot \ ...\  \cdot n = n ^n$$
+
+Donc, en passant au $\ln$ :
+
+$$
+\ln((\frac{n}{2})^{\frac{n}{2}}) \leq \ln(n!) \leq \ln(n^n)
+$$
+
+Et donc, pour $n \geq 4$, on a l'encadrement suivant :
+
+$$
+\frac{n}{2}\ln(\frac{n}{2}) \leq \ln(n!) \leq n\ln(n)
+$$
+
+Poursuivons en triturant $\ln(\frac{n}{2})$ : 
+
+$$
+\begin{array}{lclr}
+\ln(\frac{n}{2}) &= &\frac{1}{2}\ln(\frac{n}{2}) + \frac{1}{2}\ln(\frac{n}{2})&\\
+\ln(\frac{n}{2}) &\geq& \frac{1}{2}\ln(\frac{4}{2}) + \frac{1}{2}\ln(\frac{n}{2}) & (\mbox{pour } n \geq 4)\\
+\ln(\frac{n}{2}) &\geq& \frac{1}{2}(\ln(2) + \ln(\frac{n}{2})) & (\mbox{pour } n \geq 4)\\
+\ln(\frac{n}{2}) &\geq& \frac{1}{2}(\ln(2\cdot \frac{n}{2})) & (\mbox{pour } n \geq 4)\\
+\ln(\frac{n}{2}) &\geq& \frac{1}{2}(\ln(n)) & (\mbox{pour } n \geq 4)\\
+\end{array}
+$$
+
+On combine cette inégalité à notre encadrement précédent pour trouver :
+
+$$
+\frac{n}{2}(\frac{1}{2}(\ln(n))) \leq \ln(n!) \leq n\ln(n)
+$$
+
+Ce qui se dérive directement, pour $n \geq 4$, en :
+
+$$\frac{1}{4} \leq \frac{\ln(n!)}{n\ln(n)} \leq 1$$
+
+Enfin, on peut montrer les équivalences de $\mathcal{O}$ : 
+
+* si $g(n)$ est en $\mathcal{O}(\ln(n!))$ il existe $N_0$ et $C$ tel que : $g(n) < C \cdot \ln(n!)$ pour n > $N_0$. Pour $N_1 = \max(N_0, 4)$ on a donc $g(n) < C \cdot \ln(n!) < C \cdot n\ln(n)$ : $g(n)$ est en $\mathcal{O}(n\ln(n))$.
+* si $g(n)$ est en $\mathcal{O}(n\ln(n))$ il existe $N_0$ et $C$ tel que : $g(n) < C \cdot n\ln(n)$ pour n > $N_0$. Pour $N_1 = \max(N_0, 4)$ on a donc $g(n) < C \cdot \ln_2(n!) < C \cdot 4 \cdot \ln(n!)$ : $g(n)$ est en $\mathcal{O}(\ln(n!))$.
+
+{% enddetails %}
+
+> Tout algorithme de tri d'une liste à $n$ éléments a au moins une complexité de $\mathcal{O}(n\ln(n))$ opérations.
+{: .note}
+
+Une borne min du problème du *"tri"* est donc $\mathcal{O}(n\ln(n))$ où $n$ est la taille du tableau en entrée, mais on ne sait pas si un tel algorithme existe.
+
+{% details spoil %}
+oui, de tels algorithmes exitent.
+{% enddetails %}
+
+## tris *simples*
+
+Notre algorithme pour trier un tableau est un monstre. Il en existe de très simples et de complexité bien plus faible. Nous en montrons 2, classiques.
+
+### tri par insertion
+
+### tri par selection
+
 
 ### tri par sélection
 
@@ -43,6 +226,9 @@ def selection(tab):
         tab[i], tab[min_index] = tab[min_index], tab[i]
 
 ```
+
+> anti melangeur. A la placede random on cherche
+{: .tbd}
 
 #### preuve que sélection trie
 
@@ -78,6 +264,10 @@ def insertion(tab):
         tab[j] = actu
 ```
 
+> Extension de la vérification. tri du jeu de carte. 
+{: .tbd}
+
+
 #### preuve qu'insertion trie
 
 A chaque itération $i$ l'algorithme remonte la valeur initialement en position $i$ à la première position pour laquelle il est plus grand que le précédent. Remarquez bien que nous n'avons jamais changé les différentes valeurs du tableau.
@@ -103,7 +293,7 @@ En moyenne, la boucle *tant que* effectue donc un nombre d'itérations égal à 
 
 Pour notre algorithme cela veut dire que le cas le meilleur arrive très rarement par rapport au cas le pire (parmi les $n!$ ordres possible, il y en a très peut qui sont presque triés).
 
-> **Remarque** : Vous allez le prouver expérimentalement pendant la session de code.
+> Vous allez le prouver expérimentalement pendant la session de code.
 
 ### différence de traitement des données ?
 
@@ -255,94 +445,6 @@ Le tri rapide est donc rigolo :
 
 En pratique, on commence donc par mélanger le tableau pour le trier ensuite, c'est plus rapide que le trier tout court.
 
-## complexité du tri ?
-
-Mais au final, parmi tous les algorithmes de tris, c'est les quels qui vont le plus vite ? Et est-ce le minimum possible ?
-
-nombre de cas différents que peut traiter un algorithme : Dépend du nombre de tests que fait l'algorithme pour pouvoir les différentier :
-
-* 0 test -> 1 cas (l'algorithme répond toujours la même chose)
-* 1 test -> 2 cas
-* 2 tests -> $4 = 2^2$ cas
-* p tests -> $2^p$ cas
-
-Si on veut distinguer $k$ cas il faut ainsi au moins $\ln_2(k)$ tests. Donc un algorithme qui doit traiter $k$ cas différents aura au moins une complexité de $\mathcal{O}(\ln_2(k))$ opérations (les tests).
-
-Dans le cas du tri, une liste de $n$ éléments aura $n!$ permutations possibles.
-
-Par exemple pour les 3 premiers entiers on a $[1, 2, 3]$, $[1, 3, 2]$, $[2, 1, 3]$, $[2, 3, 1]$, $[3, 1, 2]$ et $[3, 2, 1]$ : c'est bien 3! possibilités.
-
->**Remarque** : Si on prend la liste des 1 premiers entiers. Le plus petit entier peut être à $n$ positions différentes. Une fois sa position déterminée, le deuxième plus petit élément n'a plus que $n-1$ positions possibles : Il y a donc $n * (n-1)$ possiblités pour placer les 2 plus petits éléments. Par récurrence on démontre alors que le nombre de possibilités pour ranger les $n$ premiers entiers est $n * (n-1) * \dots * 2 * 1 = n!$.
-
-Un algorithme de tri d'une liste à $n$ éléments quelqu'il soit aura besoin de pouvoir distinguer parmi toutes les permutations possibles de cette liste, donc parmi $n!$ possibilités.
-On en déduit que sa complexité sera au moins de $C = \mathcal{O}(\ln_2(n!))$ opérations.
-
-On peut montrer que cette complexité est équivalente à une complexité de
-$\mathcal{O}(n\ln_2(n))$ opérations (voir les parties suivantes pour le détail).
-
-Tout algorithme de tri dune liste à $n$ élément a donc au moins une complexité de $\mathcal{O}(n\ln_2(n))$.
-
-On n'en connaît pas encore, en effet le tri par insertion, sélection et tri rapide sont tous trois de complexité égale à $\mathcal{O}(n^2)$ (même si le tri rapide est de complexité moyenne $\mathcal{O}(n\ln_2(n))$, il existe des cas où sa complexité est de $\mathcal{O}(n^2)$). Mais il en existe, comme le [tri fusion par exemple](https://fr.wikipedia.org/wiki/Tri_fusion) par exemple.
-
-La borne de $\mathcal{O}(n \ln_2(n))$ est donc atteinte ! 
-
-En appelant *complexité d'un problème*, la complexité (maximale) du meilleur algorithme pour le résoudre, on a que :
-
-La complexité du tri est  de $\mathcal{O}(n\ln_2(n))$ opérations.
-
-> **Remarque** : le tri est le cas heureux d'un problème dont on connaît la complexité (c'est à dire que l'on a un algorithme de cmplexité (maximale) minimale). Ce n'est pas le cas pour tous les problèmes. Genre la [multiplication de matrices](https://fr.wikipedia.org/wiki/Produit_matriciel), ou une borne min est de $\mathcal{O}(n^2)$ (avec $n$ le nombre de lignes de la matrice), mais on ne sait pas s'il existe des algorithme pour le faire. Le mieux que l'on sait faire pour l'instant c'est en $\mathcal{O}(n^{2.376})$.
-
-### calcul rapide de l'équivalence
-
-Comment arrive-t-on à prouver que $\mathcal{O}(\ln_2(n!))$ et $\mathcal{O}(n\ln_2(n))$ sont équivalents ?
-
-En jouant avec les $\mathcal{O}$ :
-
-$$C = \mathcal{O}(\ln_2(n!)) = \mathcal{O}(\ln_2(n * (n-1) * \dots... * 1))$$
-
-en utilisant le fait que $\ln_2(ab) = \ln_2(a) + \ln_2(b)$ on a :
-
-$$ C = \mathcal{O}(\ln_2(n)  + \ln_2(n-1) + \dots + \ln_2(1))$$
-
-comme $\ln_2$ est une fonction croissante on a :
-
-$$ C < \mathcal{O}(\ln_2(n)  + \ln_2(n) + \dots + \ln_2(n)) = \mathcal{O}(n\ln_2(n))$$
-
-Ceci montre que toute fonction en $\mathcal{O}(n\ln_2(n))$ est en $\mathcal{O}(\ln_2(n!))$. L'implication réciproque est plus compliquée à montrer, comme on le verra dans la partie suivante.
-
-### calcul détaillé de l'équivalence des O
-
-Nombre de cas différents pour trier tri une liste de $n$ éléments ? Toutes les permutations possibles donc $n!$ façons de ranger $n$ éléments. 
-
-comme $n! = n * (n-1) * (n-2) * \dots * 2 * 1$, on arrive à obtenir l'encadrement suivant :
-
-* comme $n$ est plus grand que tous les éléments du produit on à $n! \leq n^n$
-* comme $n! \geq n * (n-1) * ... * (n/2 + 1) * (n/2)$ et que  $n/2$ est plus petit que les éléments du produit, on a $n! > (n/2)^{(n/2)}$
-
-donc :
-
-* $(n/2)^{(n/2)} \leq n! \leq n^n$
-* en passant au log : $\ln_2 ((n/2)^{(n/2)}) \leq \ln_2(n!) \leq \ln_2 (n^n)$
-* donc $n/2 * \ln_2 (n/2) \leq \ln_2(n!) \leq n \ln_2(n)$
-
-Comme $\ln_2 (n/2) = \ln_2 (n) + \ln_2(1/2) = \ln_2 (n) - \ln_2(2) = \ln_2 (n) - 1$, on a que :
-
-$$\frac{1}{2} n\ln_2(n) - \frac{n}{2} \leq \ln_2(n!) \leq n\ln_2(n)$$
-
-Ce qui donne :
-
-$$\frac{1}{2} - \frac{1}{\ln_2(n)} \leq \frac{\ln_2(n!)}{n\ln_2(n)} \leq 1$$
-
-Et puisque pour tout $n > 2^4$  on a que $\ln_2(n) > 4$, donc que $\frac{1}{2} - \frac{1}{\ln_2(n)} \leq \frac{1}{2} - \frac{1}{4} = \frac{1}{4}$.
-
-De là,  pour $n > 2^4$ :
-
-$$\frac{1}{4} \leq \frac{\ln_2(n!)}{n\ln_2(n)} \leq 1$$
-
-On peut maintenant montrer l'équivalence de $\mathcal{O}(\ln_2(n!))$ et de  $\mathcal{O}(n\ln_2(n))$ :
-
-* si $g(n)$ est en $\mathcal{O}(\ln_2(n!))$ il existe $n_0$ et $C$ tel que : $g(n) < C * \ln_2(n!)$ pour n > $n_0$. Pour $n_1 = \max(n_0, 2^4)$ on a donc $g(n) < C * \ln_2(n!) < C * n\ln_2(n)$ : $g(n)$ est en $\mathcal{O}(n\ln_2(n))$.
-* si $g(n)$ est en $\mathcal{O}(n\ln_2(n))$ il existe $n_0$ et $C$ tel que : $g(n) < C * n\ln_2(n)$ pour n > $n_0$. Pour $n_1 = \max(n_0, 2^4)$ on a donc $g(n) < C * \ln_2(n!) < C * 4 * \ln_2(n!)$ : $g(n)$ est en $\mathcal{O}(\ln_2(n!))$.
 
 ## tri fusion
 

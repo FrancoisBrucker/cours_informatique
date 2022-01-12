@@ -6,7 +6,7 @@ tags: informatique cours
 author: "François Brucker"
 ---
 
-> [Théorie et pratiques algorithmique]({% link cours/theorie-pratiques-algorithmique/index.md %}) / [algorithmie]({% link cours/theorie-pratiques-algorithmique/algorithmie/index.md %}) / [étude :  mélanger un tableau]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude-melange.md %})
+> [Théorie et pratiques algorithmique]({% link cours/theorie-pratiques-algorithmique/index.md %}) / [algorithmie]({% link cours/theorie-pratiques-algorithmique/algorithmie/index.md %}) / [étude : mélanger un tableau]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude-melange.md %})
 >
 > prérequis :
 >
@@ -61,7 +61,7 @@ rendre P[i]
 
 Il nous reste à créer toutes les permutations possibles d'un tableau. C'est ce que fait l'algorithme suivant, récursif et en python.
 
-## toutes les permutations
+## toutes les permutations {#algo-toutes-permutations}
 
 <style>
     table, td, tr, th, pre {
@@ -381,7 +381,7 @@ Pour que cela arrive, il faut que :
 
 De là, la probabilité que l'élément originellement en position $i$ se retrouve en position $n-j$ à la fin de l'algorithme est :
 
-$$\frac{n-1}{n} \cdot \frac{n-2}{n-1} \cdot ... \cdot \frac{n-j+1}{n-j+2} \cdot \frac{1}{n-j+1} == \frac{1}{n}$$
+$$\frac{n-1}{n} \cdot \frac{n-2}{n-1} \cdot \ ...\  \cdot \frac{n-j+1}{n-j+2} \cdot \frac{1}{n-j+1} = \frac{1}{n}$$
 
 C'est bien équiprobable !
 
@@ -427,7 +427,14 @@ On sait que toute permutation d'un tableau peut être atteinte en échangeant it
 
 On en déduit l'algorithme de mélange suivant :
 
-```python
+<style>
+    table, td, tr, th, pre {
+        padding:0;
+        margin:0;
+        border:none
+    }
+</style>
+{% highlight python linenos %}
 def melange_transposition(elements):
     copie_elements = list(elements)
     for k in range(len(copie_elements) - 1):
@@ -436,7 +443,7 @@ def melange_transposition(elements):
         
         copie_elements[i], copie_elements[j] = copie_elements[j], copie_elements[i]
     return copie_elements
-```
+{% endhighlight %}
 
 > Refaites l'expérience de la [vérification expérimentale](#verif-expe) pour cet algorithme.
 {: .a-faire}
@@ -450,26 +457,53 @@ On remarque que les premières permutations sont surreprésentées par rapport �
 > lisez et comprenez l'article : <https://datagenetics.com/blog/november42014/index.html>. Il explique pourquoi cette méthode n'est pas efficace.
 {: .a-faire}
 
-Nous allons ici juste montrer que les permutations ne sorties ne sont pas équiprobables. On calcule la probabilité que l'élément $i$ reste en position $i$ à la fin d la permutation.
+Nous allons ici juste montrer que les permutations ne sorties ne sont pas équiprobables. La probabilité que l'élément d'indice $l$ ne soit jamais choisi pendant l'algorithme est :
 
-> plusieurs chois jamais choisi ou choisi une fois puis replacé au bonne endroit, etc. ; donc cette proba est > que jamais choisi.
-{: .tbd}
+$$P_n = (\frac{n-1}{n} \cdot \frac{n-1}{n})^n$$
+
+Puisque l'algorithme a choisi pour chacune des $n$ étapes de la boucle for un élément différent de $l$ pour les lignes 4 et 5.
+
+Or :
+
+$$
+P_n = ((1 - \frac{1}{n})^n)^2 \xrightarrow[n\to\infty]{} (\frac{1}{e})^2 > 0
+$$
+
+> $(1 - \frac{1}{n})^n = e^{n \ln (1-\frac{1}{n})} \sim e^{n \cdot (-\frac{1}{n})}$ lorsque $n$ tend vers l'infini puisque $\ln(1+u) \sim u$ lorsque $u$ tend vers $0$.
+
+Ceci est incompatible avec l'équiprobabilité puisque :
+
+* $P_n$ est plus petit que la probabilité que l'élément d'indice $l$ soit en position $l$ à la fin de l'algorithme (c'est même strictement plus petit puisqu'il peut n'avoir jamais bougé ou être revenu à sa place)
+* s'il y a équiprobabilité, la probabilité que l'élément d'indice $l$ soit en position $l$ à la fin de l'algorithme doit être de $\frac{1}{n}$
+* il existe $N_0$ tel que pour tout $n \geq N_0$, on a  $\frac{1}{n} < (\frac{1}{e})^2$
+
+> Les remarques ci-dessus montrent que pour $n$ assez grand, la probabilité que l'élément $l$ soit en position $l$ à la fin de l'algorithme est strictement plus grande que l'équiprobabilité.
+{: .note}
+
+C'est bien ce qu'on remarque sur la figure avec la surreprésentation de la première permutation qui est la permutation où rien n'a bougé.
 
 ### randint doit être puissant
 
-> pseudo-aléatoire : def
-> on y reviendra plus tard dans le cours
-{: tbd}
+En informatique, il est impossible de tirer un nombre au hasard. On est obliger d'utiliser des suite périodique qui se comportent comme des nombre aléatoires. On appelle ces suites [pseudo-aléatoires](https://fr.wikipedia.org/wiki/G%C3%A9n%C3%A9rateur_de_nombres_pseudo-al%C3%A9atoires).
 
-pour un deck de 52 cartes trop de permutations par rapport au nombre aléatoire
+La période de cette suite doit être très grande pour pouvoir générer toutes les permutations : la période doit être plus grande que $n!$. Sinon, certaines permutations seront sur-représentées.
 
-il faut un randint vraiment puissant. (on verra ça plus tard.)
+Par exemple, pour pouvoir mélanger un paquet de 52 cartes de façon équiprobable en utilisant une suite pseudo-aléatoire, il faut que sa période soit plus que grande que $52! = 80658175170943878571660636856403766975289505440883277824000000000000 \sim 2^{226}$
 
-<https://www.i-programmer.info/programming/theory/2744-how-not-to-shuffle-the-kunth-fisher-yates-algorithm.html>
+> Une suite pseudo-aléatoire simple a souvent une période de $2^{64}$, ce uiq n'est vraiment pas assez grand pour pouvoir mélanger équiprobablement un jeu de carte.
+
+> Regardez la partie *A Shortage Of Random Numbers!* du lien suivant <https://www.i-programmer.info/programming/theory/2744-how-not-to-shuffle-the-kunth-fisher-yates-algorithm.html> qui explique celà.
+{: .a-faire}
 
 ### attention aux humains
 
-<https://draftsim.com/mtg-arena-shuffler/> ce que les maths disent de l'aléatoire vs ce que les humains disent de l'aléatoire
+La perception de ce qu'est l'aléatoire n'est pas aisée. Lorsque l'on joue à un jeu de carte par exemple, le [biasi de confirmation](https://fr.wikipedia.org/wiki/Biais_de_confirmation) tend à se réppeler les évènement très défavorables au détriment de ceux juste *normaux*. De plus, lorsque l'on demande à des humains de tirer des nombres aléatoires, souvent ils ne le sont pas :
+
+* Lorsque l'ondemande à des humains de choisir un nombre aléatoirement entre 1 et 10, ils répondent le plus souvent 7 : <https://www.reddit.com/r/dataisbeautiful/comments/acow6y/asking_over_8500_students_to_pick_a_random_number/>.
+* lorsque l'on demande à des humains d'écrire une suite aléatoire de 200 nombres valant 0 ou 1, il y aura une sous-représentation des longues séquences avec le même nombre : celà ne *fait pas aléatoire* d'voir plein de fois le même nombre à la suite (alors que statistiquement, il faut bien que ces séquences equistent).
+
+> lisez l'article de <https://draftsim.com/mtg-arena-shuffler/> qui montre cela avec le mélangeur de [MTGA](https://magic.wizards.com/fr/mtgarena).
+{: .a-faire}
 
 ## autres références
 

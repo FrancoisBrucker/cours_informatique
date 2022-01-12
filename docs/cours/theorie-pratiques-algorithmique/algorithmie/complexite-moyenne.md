@@ -76,7 +76,7 @@ Pour tout algorithme, on a les inégalités suivantes :
 >
 >$$\mbox{complexité minimale} \leq \mbox{complexité en moyenne} \leq \mbox{complexité (maximale)}$$
 >
->La complexité en moyenne nous indique, pour un modèle de donnée, si les cas extrêmes (complexité minimale et maximale) arrivent fréquemment ou pas. 
+>La complexité en moyenne nous indique, pour un modèle de donnée, si les cas extrêmes (complexité minimale et maximale) arrivent fréquemment ou pas.
 >
 > La complexité en moyenne nous donne le nombre d'opérations *normal* qu'on aura si on exécute l'algorithme.
 {: .note}

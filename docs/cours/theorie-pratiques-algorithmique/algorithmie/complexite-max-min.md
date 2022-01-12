@@ -234,7 +234,7 @@ Prenons le type [tableau](https://fr.wikipedia.org/wiki/Tableau_(structure_de_do
 
 > De façon pratique, un tableau est un ensemble des $n$ cases mémoires continues. Ce qui fait qu'on peut donc facilement les réserver et les libérer en une fois et que à la case mémoire d'indice $i$ vaut `&t + i` où `&t` est le numéro de la case mémoire d'indice $0$ du tableau.
 
-Le langage python ne connait pas les tableaux. Il utiliser le type **liste** à la place. Une liste peut être vue comme l'évolution du type tableau. On donne ici juste les complexités de cette structure pour que vous puissiez les utiliser dans vos programmes, nous ne les démontrerons pas :
+Le langage python ne connait pas les tableaux. Il utilise le type **liste** à la place. Une liste peut être vue comme l'évolution du type tableau. On donne ici juste les complexités de cette structure pour que vous puissiez les utiliser dans vos programmes, nous ne les démontrerons pas :
 
 * créer et supprimer une liste de taille $n$ en $\mathcal{O}(1)$ opérations
 * récupérer et affecter l'objet d'indice $i$ d'une liste (objet `t[i]`) se fait en $\mathcal{O}(1)$ opérations
@@ -261,38 +261,58 @@ Est de complexité $\mathcal{O}(n)$  où $n$ est la taille da liste `l` et pas $
 
 Prenons par exemple l'algorithme suivant, écrit en python :
 
-```python
+<style>
+    table, td, tr, th, pre {
+        padding:0;
+        margin:0;
+        border:none
+    }
+</style>
+{% highlight python linenos %}
 def est_dans_tableau(valeur, tableau):
     for x in tableau:
         if x == valeur:
             return True
     return False
-```
+{% endhighlight %}
 
 Cet algorithme recherche si le paramètre `valeur` est un élément de `tableau`.
 
-Calculons ses complexité maximale et minimale. L'intérieur de la boucle est constitué du code :
+Calculons ses complexité maximale et minimale. Commençons par regarder les compleixtés de chaque ligne :
 
-```python
-if x == valeur:
-    return True
-```
+1. définition de la fonction : $C_1 = \mathcal{O}(1)$
+2. une boucle `for` de $k$ itérations
+3. un test entre 2 variables : $C_3 = \mathcal{O}(1)$
+4. un retour de fonction $C_4 = \mathcal{O}(1)$
+5. un retour de fonction : $C_5 = \mathcal{O}(1)$
 
-Qui est de complexité $\mathcal{O}(1)$. Ce code est exécuté autant de fois que l'on va rentrer dans la boucle for. La complexité de notre algorithme est alors égale à $k * \mathcal{O}(1)$ où $k$ est le nombre de fois où l'on rentre dans la boucle.
+Comme il y a 2 retour de fonctions (lignes 4 et 5), la complexité sera soit :
 
-On cherche le cas le pire. Elle est atteinte lorsque la boucle for parcours tout le tableau, c'est à dire pour deux cas :
+* $C = C_1 + k \cdot (C_3) + C_5 = \mathcal{O}(1) + k \cdot (\mathcal{O}(1)) + \mathcal{O}(1)$ si on utilise la sortie de la ligne 5 (on est jamais passé par le ligne 4)
+* $C' = C_1 + k \cdot (C_3 + C_4) = \mathcal{O}(1) + k \cdot (\mathcal{O}(1) + \mathcal{O}(1))$ si on utilise la sortie de la ligne 5 (on est jamais passé par le ligne 4)
+
+Les deux cas se simplifient en : $$\mathcal{O}(k)$$
+
+{% details  preuve %}
+
+Comme $\mathcal{O}(1) + \mathcal{O}(1) = \mathcal{O}(1)$ on a C = C' = \mathcal{O}(1) + k \cdot (\mathcal{O}(1))$. De là, $C = C' = \mathcal{O}(1) + \mathcal{O}(k) = \mathcal{O}(k)$
+
+{% enddetails %}
+
+On cherche le cas le pire, c'est à dire lorsque $k$ est maximum, donc lorsque la boucle `for` parcours tout le tableau, c'est à dire pour deux cas :
 
 * l'élément recherché n'est pas dans le tableau
 * l'élément recherché est le dernier élément du tableau
 
-On en conclut que la complexité de notre algorithme est $n * \mathcal{O}(1)$ où $n$ est la taille du tableau qui est un paramètre d'entrée (c'est donc une variable qu'on ne peut faire disparaître) la complexité de notre algorithme est : $\mathcal{O}(n)$.
+On en conclut que :
 
-La complexité minimale est quant-à-elle atteinte lorsque l'on ne parcours pas notre boucle, c'est à dire lorsque la valeur recherchée est la 1ère valeure du tableau. Dans ce cas là, la complexité est de $\mathcal{O}(1)$ opérations.
+> la complexité de l'algorithme `est_dans_tableau` est $\mathcal{O}(n)$ où $n$ est la taille du tableau qui est un paramètre d'entrée.
+{: .note}
 
-Au final :
+La complexité minimale est quant-à-elle atteinte lorsque l'on ne parcours pas notre boucle, c'est à dire lorsque la valeur recherchée est la 1ère valeure du tableau :
 
-* la complexité maximale de l'algorithme `est_dans_tableau` est $\mathcal{O}(n)$
-* la complexité minimale de l'algorithme `est_dans_tableau` est $\mathcal{O}(1)$
+> la complexité minimale de l'algorithme `est_dans_tableau` est $\mathcal{O}(1)$.
+{: .note}
 
 ## types de complexité en algorithmie
 
@@ -591,14 +611,33 @@ On exécute cette fonction avec comme paramètres initiaux un tableau nommé `t`
 1. l'algorithme converge bien
 2. il rend bien le maximum de `t`
 
-La taille des données est de l'ordre de la taille du tableau, c'est à dire le paramètre $n$. On pose alors que la complexité de notre algorithme pour un tableau de taille $n$ est : $C(n)$. De là :
+La taille des données est de l'ordre de la taille du tableau, c'est à dire le paramètre $n$. On pose alors que la complexité de notre algorithme pour un tableau de taille $n$ est : $C(n)$. De là, ligne à ligne :
 
-* la complexité de la ligne 2 est en $\mathcal{O}(1)$ : c'est une comparaison
-* la complexité de la ligne 3 est en $\mathcal{O}(1)$ : on cheche un élément particulier d'un tableau
-* la complexité de la ligne 5 est en $C(n-1) + \mathcal{O}(1)$ : on exécute notre algorithme avec un tableau de taille $n-1$ — sa complexité est donc par définition de $C(n-1)$ — puis on affecte le résultat à une variable
-* la complexité de la ligne 6 est en $\mathcal{O}(1)$ : c'est une comparaison d'une varaible et d'un élément particulier d'un tableau
-* la complexité de la ligne 7 est en $\mathcal{O}(1)$
-* la complexité de la ligne 9 est en $\mathcal{O}(1)$ : on rend un élément particulier d'un tableau
+1. définition d'une fonction $\mathcal{O}(1)$
+2. une comparaison entre une constante et une variable : $\mathcal{O}(1)$
+3. retour de fonction d'un élément d'un tableau : $\mathcal{O}(1)$
+4. 
+5. une affactation, plus l'appel à la fonction avec un tableau de taille $n-1$ (sa complexité est donc de $C(n-1)$ par définition) : $\mathcal{O}(1) + C(n-1)$
+6. un test d'un élément dans un tableau et d'une variable : $\mathcal{O}(1)$
+7. retour de fonction : $\mathcal{O}(1)$
+8. 
+9. retour de fonction d'un élément d'un tableau : $\mathcal{O}(1)$
+
+Ce qui donne en sommant le tout :
+
+$$
+\begin{array}{lcl}
+C(n) & = & \mathcal{O}(1) + \\
+&  & \mathcal{O}(1) + \\
+&  & \mathcal{O}(1) + \\
+&  & \mathcal{O}(1) + C(n-1) + \\
+& & \mathcal{O}(1) + \\
+& & \mathcal{O}(1) + \\
+& & \mathcal{O}(1)\\
+& = & 8 \cdot \mathcal{O}(1) + C(n-1) \\
+& = & \mathcal{O}(1) + C(n-1) \\
+\end{array}
+$$
 
 La complexité est définie par l'équation de récurrence $C(n) = \mathcal{O}(1) + C(n-1)$. Notre condition d'arrêt est obtenue pour `n` valant 1 et dans ce cas on a $C(1) = \mathcal{O}(1)$
 
@@ -608,7 +647,7 @@ $$
 \left\{
     \begin{array}{lcl}
         C(n) & = & \mathcal{O}(1) + C(n-1)\\
-        C(0) & = & \mathcal{O}(1)
+        C(1) & = & \mathcal{O}(1)
     \end{array}
 \right.
 $$

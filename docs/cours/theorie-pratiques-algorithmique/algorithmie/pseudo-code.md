@@ -167,7 +167,7 @@ pour chaque entier i allant de 0 à 9:
 
 ```test
 for (i=0 ; i < 10 ; i++) {
-    print(i)
+    printf(i);
 }
 ```
 
