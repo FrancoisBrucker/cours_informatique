@@ -147,15 +147,15 @@
 <p>Le preuve en démontrant l’invariant de boucle : à la fin d’un itération, les $i + 1$ premiers éléments du tableau sont triés.</p>
 
 <ol>
-  <li>à la fin de la première itération, si l’on est pas sorti de la boucle c’est que $tableau[i] \geq tableau[i-1]$ pour $i=1$ : les 2 premiers éléments du tableau sont bien triés.</li>
-  <li>Si l’invariant est vrai à la fin de l’itération $i-1$, à la fin de l’itération $i$ on à $tableau[i] \geq tableau[i-1]$ et comme les $i + 1$ premiers éléments du tableau sont triés : les $i + 1$ premiers éléments du tableau sont triés.</li>
+  <li>à la fin de la première itération, si l’on est pas sorti de la boucle c’est que $\mbox{tableau}[i] \geq \mbox{tableau}[i-1]$ pour $i=1$ : les 2 premiers éléments du tableau sont bien triés.</li>
+  <li>Si l’invariant est vrai à la fin de l’itération $i-1$, à la fin de l’itération $i$ on à $\mbox{tableau}[i] \geq \mbox{tableau}[i-1]$ et comme les $i + 1$ premiers éléments du tableau sont triés : les $i + 1$ premiers éléments du tableau sont triés.</li>
 </ol>
 
 <p>Au final :</p>
 
 <ul>
   <li>L’invariant prouve que : si on arrive à la ligne 6 de l’algorithme c’est que les $n$ premiers éléments du tableau sont triés.</li>
-  <li>si on utilise le retour de la ligne 5 c’est qu’il existe $i$ avec <code class="language-plaintext highlighter-rouge">tableau[i] &lt; tableau[i-1]</code>, donc tableau ne peut-être trié.</li>
+  <li>si on utilise le retour de la ligne 5 c’est qu’il existe $i$ avec $\mbox{tableau}[i] &lt; \mbox{tableau}[i-1]$, donc $\mbox{tableau}$ ne peut-être trié.</li>
 </ul>
 
 <blockquote class="note">
@@ -171,7 +171,7 @@
   <li>
   </li>
 <li>une boucle for de $k$ itérations</li>
-  <li>un tests de deux valeur dans un tableau : $\mathcal{O}(1)$</li>
+  <li>un tests de deux valeurs dans un tableau : $\mathcal{O}(1)$</li>
   <li>un retour de fonction $\mathcal{O}(1)$</li>
   <li>un retour de fonction $\mathcal{O}(1)$</li>
 </ol>
@@ -582,20 +582,15 @@ Pour savoir ce que veut dire <em>standard</em>, il faut déterminer le modèle d
 <p>La complexité en moyenne sera donc égale à :</p>
 
 \[\begin{array}{lcl}
-C_m &amp;=&amp; \mbox{complexité hors boucle for} + \sum_{i=1}^{n-1}(\mbox{complexité hors boucle while} + i \cdot (\mox{complexité boucle while}))\\
+C_m &amp;=&amp; \mbox{complexité hors boucle for} + \sum_{i=1}^{n-1}(\mbox{complexité hors boucle while} + i \cdot (\mbox{complexité boucle while}))\\
 &amp;=&amp; \mathcal{O}(1) + \sum_{i=1}^{n-1} (\mathcal{O}(1) + i \cdot \mathcal{O}(1))\\
 &amp;=&amp; \mathcal{O}(1) \cdot \sum_{i=1}^{n-1} i \\
 &amp;=&amp; \mathcal{O}(1) \cdot \frac{n(n-1)}{2} \\
 &amp;=&amp; \mathcal{O}(n^2)\\
 \end{array}\]
 
-<blockquote>
-  <p>On aurait pu faire moins de calcul en remarquant que si le modèle est équiprobable, pour <code class="language-plaintext highlighter-rouge">tableau[i]</code> il a de l’ordre de $\frac{i}{2}$  éléments de <code class="language-plaintext highlighter-rouge">tableau[:i]</code> plus grand que lui (et donc $\frac{i}{2}$  éléments plus petit puisque <code class="language-plaintext highlighter-rouge">tableau[:i]</code> est trié) : pour l’itération $i$ de la boucle <code class="language-plaintext highlighter-rouge">for</code>, la boucle <code class="language-plaintext highlighter-rouge">while</code> fera $\frac{i}{2}$ opérations.</p>
-</blockquote>
-
 <blockquote class="note">
   <p>La <strong>complexité en moyenne</strong> de l’algorithme <code class="language-plaintext highlighter-rouge">insertion</code> est $\mathcal{O}(n^2)$ où $n$ est la taille du tableau passé en entrée.</p>
-
 </blockquote>
 
 <p>Le cas le meilleur arrive très rarement par rapport au cas le pire (parmi les $n!$ ordres possible, il y en a très peut qui sont presque triés).</p>
@@ -606,28 +601,42 @@ C_m &amp;=&amp; \mbox{complexité hors boucle for} + \sum_{i=1}^{n-1}(\mbox{comp
   <p>On utilise le tri par insertion lorsque nos données seront presque toujours déjà triées ou très peu en désordre.</p>
 </blockquote>
 
-<h2 id="tri-fusion">tri fusion</h2>
+<p>Ce calcul de complexité nous permet d’utiliser la règle suivante, qui va se révéler très utile :</p>
 
-<blockquote class="tbd">
-  <p>rendre joli.</p>
+<blockquote class="note">
+  <p>Soit $A$ un ensemble de $n$ nombres aléatoires, et $x$ un nombre également aléatoire.
+Pour tout $ y \in A$, il y a 50% de chances que $x \leq y$. Il y a donc en moyenne $\frac{n}{2}$ éléments de $A$ qui sont plus grand que $x$.</p>
 </blockquote>
 
-<p>Le <a href="https://fr.wikipedia.org/wiki/Tri_fusion">tri fusion</a> est un tri de complexité $\mathcal{O}(n\ln_2(n))$ opérations où $n$ est la taille de la liste en entrée. Il fonctionne ainsi :</p>
+<h2 id="tri-fusion">tri fusion</h2>
 
-<p>Si l’on possède une fonction <code class="language-plaintext highlighter-rouge">colle(T1, T2)</code>, avec <code class="language-plaintext highlighter-rouge">T1</code> et <code class="language-plaintext highlighter-rouge">T2</code> des tableaux triés, qui rend le tri de la concaténation de <code class="language-plaintext highlighter-rouge">T1</code> et <code class="language-plaintext highlighter-rouge">T2</code>, alors la fonction :</p>
+<p>Le <a href="https://fr.wikipedia.org/wiki/Tri_fusion">tri fusion</a> est un tri de complexité $\mathcal{O}(n\ln(n))$ opérations où $n$ est la taille de la liste en entrée. Il fonctionne ainsi :</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="n">fusion</span><span class="p">(</span><span class="n">T</span><span class="p">)</span> <span class="o">=</span> <span class="n">colle</span><span class="p">(</span><span class="n">fusion</span><span class="p">(</span><span class="n">T1</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">:]),</span> 
-                  <span class="n">fusion</span><span class="p">(</span><span class="n">T2</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">])</span>
+<p>Si l’on possède une fonction <code class="language-plaintext highlighter-rouge">colle(T1, T2)</code>, avec <code class="language-plaintext highlighter-rouge">T1</code> et <code class="language-plaintext highlighter-rouge">T2</code> des tableaux triés, qui rend le tri de la concaténation de <code class="language-plaintext highlighter-rouge">T1</code> et <code class="language-plaintext highlighter-rouge">T2</code>, alors la fonction récursive suivante (avec $\mid T \mid$ la longueur du talbeau $T$) est un algorithme de tri !</p>
 
-</code></pre></div></div>
+\[\mbox{fusion}(T) = \left\{
+    \begin{array}{lr}
+        \mbox{colle}(\mbox{fusion}(T[\mid T\mid //\ 2:]), \mbox{fusion}(T[:\mid T\mid //\ 2]) &amp; \mbox{si } \mid T \mid \geq 2\\
+        T &amp; \mbox{sinon.}
+    \end{array}
+\right.\]
 
-<p>est un algorithme de tri !</p>
+<p>L’algorithme fonctionne en effet ainsi :</p>
+
+<ol>
+  <li>on coupe la liste à trier en 2</li>
+  <li>on trie chacune des sous-listes à part (en s’utilisant soit-même pour trier)</li>
+  <li>on recolle les deux listes triées en une unique liste triée</li>
+</ol>
+
+<blockquote class="note">
+  <p>L’algorithme de tri <code class="language-plaintext highlighter-rouge">fusion</code> utilise la méthode de création d’algorithme nommée <a href="https://fr.wikipedia.org/wiki/Diviser_pour_r%C3%A9gner_(informatique)">diviser pour régner</a> qui est une méthode se révélant souvent efficace lorsqu’il est facile de reconstruire une solution globale à un problème à partir de solutions partielles.</p>
+</blockquote>
 
 <h3 id="algorithme-colle">algorithme colle</h3>
 
 <blockquote class="a-faire">
-  <p>Pour comprendre pourquoi c’est une bonne idée, écrivez un algorithme qui implémente la fonction <code class="language-plaintext highlighter-rouge">colle(T1, T2)</code>. Il faut que sa complexité soit égale à $\mathcal{O}(\max(n_1, n_2))$ avec $n_1$ et $n_2$ les tailles des tableaux <code class="language-plaintext highlighter-rouge">T1</code> et <code class="language-plaintext highlighter-rouge">T2</code> respectivement.</p>
+  <p>Pour comprendre pourquoi c’est une bonne idée, écrivez un algorithme qui implémente la fonction <code class="language-plaintext highlighter-rouge">colle(T1, T2)</code>. Il faut que sa complexité soit égale à $\mathcal{O}(n_1 + n_2)$ avec $n_1$ et $n_2$ les tailles des tableaux <code class="language-plaintext highlighter-rouge">T1</code> et <code class="language-plaintext highlighter-rouge">T2</code> respectivement.</p>
 
 </blockquote>
 <details><summary>une solution</summary><div>
@@ -686,101 +695,200 @@ C_m &amp;=&amp; \mbox{complexité hors boucle for} + \sum_{i=1}^{n-1}(\mbox{comp
 
 <h4 id="preuve-colle">preuve</h4>
 
+<p>L’algorithme se finit bien puisqu’à chaque itération de la boucle while soit <code class="language-plaintext highlighter-rouge">i1</code> soit <code class="language-plaintext highlighter-rouge">i2</code> augmente. Au bout de <code class="language-plaintext highlighter-rouge">len(T1) + len(T2)</code> itération on aura <code class="language-plaintext highlighter-rouge">i1</code> = <code class="language-plaintext highlighter-rouge">len(T1)</code> et <code class="language-plaintext highlighter-rouge">i2</code> = <code class="language-plaintext highlighter-rouge">len(T1)</code>, donc la condition <code class="language-plaintext highlighter-rouge">i1 &lt; len(tab1) or i2 &lt; len(tab2)</code> ne sera plus vérifiée.</p>
+
+<p>L’invariant de boucle que l’on peut facilement prouver est : <em>“<code class="language-plaintext highlighter-rouge">tab_colle</code> est trié et contient les <code class="language-plaintext highlighter-rouge">i1</code> premiers éléments <code class="language-plaintext highlighter-rouge">T1</code> et les <code class="language-plaintext highlighter-rouge">i2</code> premiers éléments <code class="language-plaintext highlighter-rouge">T2</code>“</em>.</p>
+
 <h4 id="complexites-colle">complexités</h4>
+
+<p>Allons un peu plus vite :</p>
+
+<ul>
+  <li>on a une boucle <code class="language-plaintext highlighter-rouge">while</code> de <code class="language-plaintext highlighter-rouge">len(T1) + len(T2)</code> itérations</li>
+  <li>chaque ligne de l’algorithme est en $\mathcal{O}(1)$</li>
+</ul>
+
+<blockquote class="note">
+  <p>La complexité max et min de <code class="language-plaintext highlighter-rouge">colle</code> est $\mathcal{O}(n_1 + n_2)$ avec $n_1$ et $n_2$ les tailles des tableaux <code class="language-plaintext highlighter-rouge">T1</code> et <code class="language-plaintext highlighter-rouge">T2</code> respectivement.</p>
+</blockquote>
 
 <h3 id="algorithme-fusion">algorithme fusion</h3>
 
-<p>Une proposition de code est ci-après :</p>
+<p>Une proposition d’algorithme de la fonction récurente est ci-après :</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">fusion</span><span class="p">(</span><span class="n">tab</span><span class="p">):</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tab</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">tab</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">def</span> <span class="nf">fusion</span><span class="p">(</span><span class="n">tableau</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tableau</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">tableau</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">milieu</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tab</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
-    <span class="k">return</span> <span class="n">colle</span><span class="p">(</span><span class="n">fusion</span><span class="p">(</span><span class="n">tab</span><span class="p">[:</span><span class="n">milieu</span><span class="p">]),</span> <span class="n">fusion</span><span class="p">(</span><span class="n">tab</span><span class="p">[</span><span class="n">milieu</span><span class="p">:]))</span>
+        <span class="n">milieu</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tableau</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+    <span class="k">return</span> <span class="n">colle</span><span class="p">(</span><span class="n">fusion</span><span class="p">(</span><span class="n">tableau</span><span class="p">[:</span><span class="n">milieu</span><span class="p">]),</span> <span class="n">fusion</span><span class="p">(</span><span class="n">tableau</span><span class="p">[</span><span class="n">milieu</span><span class="p">:]))</span>
 
 </code></pre></div></div>
 
-<p>L’algorithme fonctionne ainsi :</p>
+<h4 id="fonctionnement-fusion">fonctionnement</h4>
 
-<ol>
-  <li>on coupe la liste à trier en 2</li>
-  <li>on trie chacune des sous-listes à part</li>
-  <li>on recolle les deux listes triées en une unique liste triée (c’est <code class="language-plaintext highlighter-rouge">fusion_colle</code>)</li>
-</ol>
+<p>On vérifie pour deux petits tableaux, par exemple :</p>
 
-<p>Comme on peut utiliser n’importe quel algorithme pour trier les 2 sous-listes, autant s’utiliser soit-même ! L’algorithme fusion utilise donc l’algorithme fusion pour trier les sous-listes de l’algorithme fusion.</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">[4]</code></li>
+  <li><code class="language-plaintext highlighter-rouge">[1, 2, 0, 4, 3, 98, 7]</code></li>
+</ul>
 
-<p>La complexité de l’algorithme est alors :</p>
+<h4 id="preuve-fusion">preuve</h4>
 
-\[C(n) = 2 * C(n/2) + D(n)\]
+<p>Comme  <code class="language-plaintext highlighter-rouge">milieu &lt; len(tableau)</code> si <code class="language-plaintext highlighter-rouge">len(tableau) &gt; 1</code>, l’algorihtme va bien converger. De plus, comme l’algorithme <code class="language-plaintext highlighter-rouge">colle</code> est démontré, <code class="language-plaintext highlighter-rouge">fusion</code> est bien un algorithme de tri.</p>
+
+<h4 id="complexites-fusion">complexités</h4>
+
+<p>La complexité de l’algorithme <code class="language-plaintext highlighter-rouge">fusion</code> est (avec $n$ la taille du tableau passé en entrée) :</p>
+
+\[C(n) = 2 \cdot C(\frac{n}{2}) + D(n)\]
 
 <p>Où :</p>
+
 <ul>
   <li>$C(n)$ est la complexité de l’algorithme fusion pour une liste à $n$ éléments (algorithme <code class="language-plaintext highlighter-rouge">fusion</code>)</li>
-  <li>$D(n)$ est la complexité de fusionner deux listes triées en une unique liste triées (algorithme <code class="language-plaintext highlighter-rouge">fusion_colle</code>).</li>
+  <li>$D(n)$ est la complexité de fusionner deux listes triées en une unique liste triées (algorithme <code class="language-plaintext highlighter-rouge">colle</code>).</li>
 </ul>
 
-<p>Comme l’algorithme <code class="language-plaintext highlighter-rouge">fusion_colle</code> est en $\mathcal{O}(n)$, l’équation de récurrence de la complexité est :</p>
+<p>Comme l’algorithme <code class="language-plaintext highlighter-rouge">colle</code> est en $\mathcal{O}(n)$, l’équation de récurrence de la complexité est :</p>
 
-\[C(n) = 2 * C(n/2) + \mathcal{O}(n)\]
+\[C(n) = 2 \cdot C(\frac{n}{2}) + \mathcal{O}(n)\]
 
-<p>Pour connaître la valeur de la complexité on utilise le <a href="https://fr.wikipedia.org/wiki/Master_theorem">master theorem</a> qui est <strong>LE</strong> théorème des complexités pour les algorithmes récursifs. Sa preuve dépasse (de loin) le cadre de ce cours, mais son énoncé sous la  <a href="https://fr.wikipedia.org/wiki/Master_theorem#%C3%89nonc%C3%A9_avec_la_notation_de_Landau">notation de Landau</a>, nous permet de déterminer aisément la complexité de nombreux algorithmes récursifs, dont le notre : $\mathcal{O}(n\ln_2(n))$, puisque $1 = \ln_2(2)$.</p>
+<p>Pour connaître la valeur de la complexité on utilise le <a href="https://fr.wikipedia.org/wiki/Master_theorem">master theorem</a> qui est <strong>LE</strong> théorème des complexités pour les algorithmes récursifs. Sa preuve dépasse (de loin) le cadre de ce cours, mais <a href="https://fr.wikipedia.org/wiki/Master_theorem#%C3%89nonc%C3%A9_avec_la_notation_de_Landau">son énoncé sous la notation de Landau</a>, nous permet de déterminer aisément la complexité de nombreux algorithmes récursifs dont le notre :</p>
 
-<blockquote>
-  <p><strong>Remarque</strong> : tout comme le tri par sélection, le tri fusion a la particularité d’avoir toujours le même nombre d’opérations quelque soit la liste en entrée.</p>
+<blockquote class="note">
+  <p><strong>Master Theorem</strong></p>
+
+\[T(n) = a \cdot T(\frac{n}{b}) + \mathcal{O}(n^d)\]
+
+  <ul>
+    <li>si $d &lt; \log_b(a)$ alors $T(n)  = \mathcal{O}(n^{\log_b(a)})$</li>
+    <li>si $d = \log_b(a)$ alors $T(n)  = \mathcal{O}(n^d \cdot \ln(n))$</li>
+    <li>si $d &gt; \log_b(a)$ alors $T(n)  = \mathcal{O}(n^d)$</li>
+  </ul>
+
 </blockquote>
 
-<h3 id="principe">principe</h3>
+<p>Dans notre cas on a $a = 2$, $b = 2$  et $d = 1$ donc $d = \log_2(a)$ :</p>
 
-<p>La logique de l’algorithme <code class="language-plaintext highlighter-rouge">fusion</code> est appelée <a href="https://fr.wikipedia.org/wiki/Diviser_pour_r%C3%A9gner_(informatique)">diviser pour régner</a> : on résout des sous-problèmes puis on crée une solution globale à partir des solutions partielles. Cette stratégie fonctionne lorsque la création d’une solution globale à partir de solutions partielle est aisée.</p>
-
-<blockquote class="tbd">
-  <p>expliciter</p>
+<blockquote class="note">
+  <p>La complexité de l’algorithme <code class="language-plaintext highlighter-rouge">fusion</code> est $\mathcal{O}(n\ln(n))$ où $n$ est la taille de la liste en entrée</p>
 </blockquote>
 
-<p>Pour notre algorithme fusion :</p>
+<p>Tout comme le tri par sélection, le tri fusion a la particularité d’avoir toujours le même nombre d’opérations quelque soit la liste en entrée.</p>
 
-<ul>
-  <li>quels sont les solutions partielles ?</li>
-  <li>comment sont calculées les solutions partielles ?</li>
-  <li>comment est construite la solution globale à partir des solutions partielles ?</li>
-  <li>la construction de la solution globale est-elle facile ? Quelle est sa complexité ?</li>
-</ul>
+<details><summary>calcul de la complexité sans utiliser le master theorem</summary><div>
+\[\begin{array}{lcl}
+C(n) &amp;=&amp; 2 \cdot C(\frac{n}{2}) + \mathcal{O}(n)\\
+&amp;=&amp; 2 \cdot (2 \cdot (C(\frac{n}{4}) + \mathcal{O}(\frac{n}{2})) + \mathcal{O}(n)\\
+&amp;=&amp; 2^2 \cdot C(\frac{n}{2^2}) + 2 \cdot \mathcal{O}(\frac{n}{2})) + \mathcal{O}(n)\\
+&amp;=&amp; 2^2 \cdot C(\frac{n}{2^2}) + 2 \cdot \mathcal{O}(n)\\
+&amp;=&amp; ...\\
+&amp;=&amp; 2^k \cdot C(\frac{n}{2^k}) + k \cdot \mathcal{O}(n)\\
+&amp;=&amp; ...\\
+&amp;=&amp; 2^{\log_2(n)} \cdot C(1) + \log_2(n) \cdot \mathcal{O}(n)\\
+&amp;=&amp; n \cdot C(1) + \log_2(n) \cdot \mathcal{O}(n)\\
+&amp;=&amp; \mathcal{O}(n) + \log_2(n) \cdot \mathcal{O}(n)\\
+&amp;=&amp; \mathcal{O}(n\log_2(n))\\
+&amp;=&amp; \mathcal{O}(n\ln(n))
+\end{array}\]
 
-<h3 id="expérimentation">expérimentation</h3>
+</div></details>
 
-<p>Vérifier expérimentalement que la complexité est bien $\mathcal{O}(n\ln_2(n))$. Ici c’est bien la complexité maximale que l’on observe puisque le nombre d’opérations est constant (en grand O) quel que soit la liste à trier.</p>
+<h2 id="tri-de-python">tri de python</h2>
 
-<p>Regardez le aussi trier, c’est très différent des autres tris.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">T</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">T</span><span class="p">.</span><span class="n">sort</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<p>Le tri de python est <strong>in place</strong>. L’algorithme utilisé est <a href="https://en.wikipedia.org/wiki/Timsort">timsort</a>, mix entre le tri fusion et le tri par insertion. C’est un tri très efficace puisque :</p>
+
+<blockquote class="note">
+  <p>Pour un tableau de taille $n$ :</p>
+
+  <ul>
+    <li>La complexité de l’algorithme timsort est $\mathcal{O}(n\ln(n))$</li>
+    <li>La complexité min de l’algorithme timsort est $\mathcal{O}(n)$</li>
+    <li>La complexité en moyenne de l’algorithme timsort est $\mathcal{O}(n\ln(n))$</li>
+  </ul>
+
+</blockquote>
 
 <h2 id="tri-rapide">tri rapide</h2>
 
-<p>Le tri rapide est un cas d’algorithme de tri <em>rigolo</em>.</p>
+<p>Le tri rapide est un algorithme qui a été très utilisé par le passé. On le montre encore maintenant car c’est un exemple de <em>diviser pour régner</em> et, surout, le calcul complexités est très intéressant.</p>
 
-<p>Le tri rapide est une méthode de tri d’une liste à $n$ éléments dont :</p>
+<p>Son principe est le suivant, si on souhaite trier le tableau $T$ :</p>
 
-<ul>
-  <li>la complexité (maximale) est $\mathcal{O}(n^2)$,</li>
-  <li>la complexité en moyenne est $\mathcal{O}(n\ln_2 (n))$,</li>
-  <li>la complexité minimale est $\mathcal{O}(n\ln_2 (n))$,</li>
-</ul>
+<ol>
+  <li>on choisit un élément du tableau, souvent $T[0]$</li>
+  <li>on sépare $T[1:]$ en deux sous tableaux
+    <ul>
+      <li>$T_1$ qui contient tous les éléments plus petit ou égal à $T[0]$</li>
+      <li>$T_2$ qui contient tous les éléments plus grand strictement à $T[0]$</li>
+    </ul>
+  </li>
+  <li>on trie $T_1$ en $T’_1$ et $T_2$ en $T’_2$</li>
+  <li>on constitue le tableau initial trié : $T’_1 + [T[0]] + T’_2$</li>
+</ol>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">rapide</span><span class="p">(</span><span class="n">tab</span><span class="p">):</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tab</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">tab</span>
+<blockquote class="a-faire">
+  <p>Ecrivez cet algorithme en python</p>
+</blockquote>
+<details><summary>une solution</summary><div>
+<style>
+    table, td, tr, th, pre {
+        padding:0;
+        margin:0;
+        border:none
+    }
+</style>
 
-    <span class="n">pivot</span> <span class="o">=</span> <span class="n">tab</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td>
+<td class="code"><pre><span class="k">def</span> <span class="nf">rapide</span><span class="p">(</span><span class="n">tableau</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tableau</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">tableau</span>
 
-    <span class="n">tab_gauche</span> <span class="o">=</span> <span class="p">[</span><span class="n">tab</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">tab</span><span class="p">))</span> <span class="k">if</span> <span class="n">tab</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">pivot</span><span class="p">]</span>
-    <span class="n">tab_droite</span> <span class="o">=</span> <span class="p">[</span><span class="n">tab</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">tab</span><span class="p">))</span> <span class="k">if</span> <span class="n">tab</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">pivot</span><span class="p">]</span>
+    <span class="n">pivot</span> <span class="o">=</span> <span class="n">tableau</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="n">tab_gauche</span> <span class="o">=</span> <span class="p">[</span><span class="n">tableau</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">tableau</span><span class="p">))</span> <span class="k">if</span> <span class="n">tableau</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">pivot</span><span class="p">]</span>
+    <span class="n">tab_droite</span> <span class="o">=</span> <span class="p">[</span><span class="n">tableau</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">tableau</span><span class="p">))</span> <span class="k">if</span> <span class="n">tableau</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">pivot</span><span class="p">]</span>
 
     <span class="k">return</span> <span class="n">rapide</span><span class="p">(</span><span class="n">tab_gauche</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="n">pivot</span><span class="p">]</span> <span class="o">+</span> <span class="n">rapide</span><span class="p">(</span><span class="n">tab_droite</span><span class="p">)</span>
-</code></pre></div></div>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
 
-<p>On utilise les <a href="https://python.doctor/page-comprehension-list-listes-python-cours-debutants">list comprehension</a> de python. C’est un moyen clair et efficace de générer des listes.</p>
+<p>On a utilisé les <a href="https://python.doctor/page-comprehension-list-listes-python-cours-debutants">list comprehension</a> de python. C’est un moyen clair et efficace de générer des listes. Utilisez-les, ça rend le code plus clair et facile à écrire.</p>
 
-<h3 id="preuve-du-tri-rapide">preuve du tri rapide</h3>
+</div></details>
+
+<h3 id="fonctionnement-rapide">fonctionnement</h3>
+
+<p>Tout comme pour le tri fusion, on peut tester pour deux petits tableaux, par exemple :</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">[4]</code></li>
+  <li><code class="language-plaintext highlighter-rouge">[1, 2, 0, 4, 3, 98, 7]</code></li>
+</ul>
+
+<h3 id="preuve-rapide">preuve</h3>
 
 <ul>
   <li>
@@ -791,74 +899,84 @@ C_m &amp;=&amp; \mbox{complexité hors boucle for} + \sum_{i=1}^{n-1}(\mbox{comp
 </li>
 </ul>
 
-<p>Si rapide fonctionne pour des tableaux de longeurs strictement plus petit que $n$, il fonctionne également pour des tableaux de longueur $n$ : le tableau rendu est le tableau des valeurs plus petite que <code class="language-plaintext highlighter-rouge">pivot</code> triées (ce tableau est de longueur <code class="language-plaintext highlighter-rouge">&lt; n</code>, donc c’est trié par hypothèse de récurence) + <code class="language-plaintext highlighter-rouge">[pivot]</code> + le tableau des valeurs plus grande que <code class="language-plaintext highlighter-rouge">pivot</code> triées (ce tableau est de longueur <code class="language-plaintext highlighter-rouge">&lt; n</code>, donc c’est trié par hypothèse de récurence)</p>
+<p>Si rapide fonctionne pour des tableaux de longueurs strictement plus petit que $n$, il fonctionne également pour des tableaux de longueur $n$ : le tableau rendu est le tableau des valeurs plus petite que <code class="language-plaintext highlighter-rouge">pivot</code> triées (ce tableau est de longueur <code class="language-plaintext highlighter-rouge">&lt; n</code>, donc c’est trié par hypothèse de récurence) + <code class="language-plaintext highlighter-rouge">[pivot]</code> + le tableau des valeurs plus grande que <code class="language-plaintext highlighter-rouge">pivot</code> triées (ce tableau est de longueur <code class="language-plaintext highlighter-rouge">&lt; n</code>, donc c’est trié par hypothèse de récurence)</p>
 
-<p>On il fonctionne pour des tableau de longueur 0 ou 1, donc par récurrence, c’est ok.</p>
+<p>Or il fonctionne pour des tableau de longueur 0 ou 1, donc par récurrence, c’est ok.</p>
 
-<h3 id="complexités-du-tri-rapide">complexités du tri rapide</h3>
-
-<p>Nous n’allons pas faire ici de calcul rigoureux. Si ça vous intéresse, reportez vous là : <a href="http://perso.eleves.ens-rennes.fr/~mruffini/Files/Other/rapide.pdf">http://perso.eleves.ens-rennes.fr/~mruffini/Files/Other/rapide.pdf</a></p>
+<h3 id="complexites-rapide">complexités</h3>
 
 <p>En notant $n$ la taille de la liste on a comme équation de récurrence pour la complexité $C(n)$ :</p>
 
-\[C(n) = \mathcal{O}(n) + C(n_1) + C(n_2)\]
+\[{
+C(n) = \underbrace{\mathcal{O}(n)}_{\mbox{création des tableaux}}{} + \underbrace{C(n_1) + C(n_2)}_{\mbox{récursions}}{}
+}\]
 
 <p>Où $n_1$ est la taille du tableau de gauche et $n_2$ celle de droite ($n_1 + n_2 = n$)</p>
 
-<p>On voit que la complexité du tri rapide tient dans le nombre de récursions qui est fait.</p>
+<p>On va monter que :</p>
+
+<blockquote class="note">
+  <p>Pour trier un tableau de longueur $n$, les complexités de <code class="language-plaintext highlighter-rouge">rapide</code> sont :</p>
+
+  <ul>
+    <li>la complexité (maximale) est $\mathcal{O}(n^2)$,</li>
+    <li>la complexité en moyenne est $\mathcal{O}(n\ln (n))$,</li>
+    <li>la complexité minimale est $\mathcal{O}(n\ln (n))$,</li>
+  </ul>
+
+</blockquote>
+
+<blockquote>
+  <p>Nous n’allons pas faire ici de calculs rigoureux, on utilisera des arguments de bon-sens pour aller plus vite. Ces arguments sont justes, mais si un calcul sans approximation vous intéresse, reportez vous à <a href="http://perso.eleves.ens-rennes.fr/~mruffini/Files/Other/rapide.pdf">http://perso.eleves.ens-rennes.fr/~mruffini/Files/Other/rapide.pdf</a></p>
+</blockquote>
 
 <h4 id="complexité-maximale-du-tri-rapide">complexité (maximale) du tri rapide</h4>
 
-<p>Un tableau de n-1 case et l’autre tout petit. Ca arrive pour des tableaux déjà triés. La complexité est alors de :</p>
+<p>Ce cas va arriver si un des deux tableaux est toujours vide. Par exemple lorsque le tableau est déjà trié. Dans ce cas là, l’autre tableau est de taille $n-1$, ce qui donne une complexité de :</p>
 
 \[C(n) = \mathcal{O}(n) + C(n-1)\]
 
-<p>Donc $C(n) = \mathcal{O}(n) + \dots + \mathcal{O}(n)$ où l’on additionne $n$ fois $\mathcal{O}(n)$ : la complexité est de $C(n) = \mathcal{O}(n^2)$.</p>
+<p>Donc :</p>
 
-<p><strong>Attention</strong> : on additionne $n$ fois $\mathcal{O}(n)$. Comme $n$ n’est pas une constante, il <strong>FAUT</strong> le rentrer dans le $\mathcal{O}$.</p>
-
-<h4 id="complexité-en-moyenne-du-tri-rapide">complexité en moyenne du tri rapide</h4>
-
-<p>On coupe toujours le tableau en 2 parties égales. Si les nombres sont répartiés aléatoirement, il n’y a en effet aucune raison que notre pivot sot le plus petit ou le plus grand. Intuitivement, la plus grande probabilité est qu’il soit environ plus grand que la moitié des valeurs restantes et plus petit que l’autre moitié.</p>
-
-<p>Si l’on coupe toujours au milieu on a alors :</p>
-
-\[C(n) = \mathcal{O}(n) + 2 * C(\frac{n}{2})\]
-
-<p>Ce qui donne :</p>
-
-\[C(n) = \mathcal{O}(n) + 2 * (\mathcal{O}(\frac{n}{2}) + 2 * C(\frac{n}{4})) = 2 * \mathcal{O}(n) + 4 * C(\frac{n}{4})\]
+\[\begin{array}{lcl}
+C_m &amp;=&amp; \mathcal{O}(n) + C(n-1)\\
+&amp;=&amp; \mathcal{O}(n) + \mathcal{O}(n-1) + C(n-2)\\
+&amp;=&amp; ...
+&amp;=&amp; \sum_{i=2}^{n}\mathcal{O}(i) + C(1)\\
+&amp;=&amp; \sum_{i=2}^{n}\mathcal{O}(n) + C(1)\\
+&amp;=&amp; \mathcal{O}(n^2)\\
+\end{array}\]
 
 <blockquote>
-  <p><strong>Attention</strong> : Comme on est entrain de tout calculer, il ne faut pas simplifier les $2 * \mathcal{O}(n)$. Si vous avez du mal, remplacez tous les $\mathcal{O}(n)$ par une constante $K$ et poursuivez le calcul jusqu’au baut, c’est à dire jusqu’à éliminer les $C(n)$.</p>
+  <p>on a utilisé la <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/complexite-max-min.html#regle-croissance">règle de croissance</a> pour remplacer $\mathcal{O}(i)$ qui est croissant par sa valeur maximale de $\mathcal{O}(n)$</p>
 </blockquote>
-
-<p>Une rapide récurrence nous donne alors :</p>
-
-\[C(n) = i * \mathcal{O}(n) + 2^{i} * C(\frac{n}{2^{i}})\]
-
-<p>Au maximum $i = \ln_2(n)$ (après, $\frac{n}{2^{i}} &lt; 1$) et dans ce cas là :</p>
-
-\[C(n) = \ln_2(n) * \mathcal{O}(n) + 2^{\ln_2(n)} * C(\frac{n}{2^{\ln_2(n)}})\]
-
-\[C(n) = \ln_2(n) * \mathcal{O}(n) + n * C(1)\]
-
-<p>On en conclut que la complexité vaut : \(C(n) = \mathcal{O}(\ln_2(n) * n)\)</p>
 
 <h4 id="complexité-minimale-du-tri-rapide">complexité minimale du tri rapide</h4>
 
-<p>Si l’on découpe notre tableau de façon  non équilibrée, une branche de la récursion va faire plus d’opérations que $C(n/2)$. La complexité minimale est ainsi atteinte lorsque l’on coupe notre tableau exactement en 2.</p>
+<p>Si l’on découpe notre tableau de façon non équilibrée, une branche de la récursion va faire plus d’opérations que $C(n/2)$. La complexité minimale est ainsi atteinte lorsque l’on coupe notre tableau exactement en 2.</p>
 
-<h4 id="conclusion">conclusion</h4>
+<p>Dans ce cas là, on a l’équation de récurrence : $C(n) = \mathcal{O}(n) + 2 \cdot C(\frac{n}{2})$ qui est la même que celle du tri fusion. La complexité minimale du tri <code class="language-plaintext highlighter-rouge">rapide</code> est donc $\mathcal{O}(n\ln(n))$.</p>
 
-<p>Le tri rapide est donc rigolo :</p>
+<h4 id="complexité-en-moyenne-du-tri-rapide">complexité en moyenne du tri rapide</h4>
+
+<p>On utilise l’argument utiliser pour calculer la complexité en moyenne du <a href="#complexites-insertion">tri par insertion</a>. Si les données sont aléatoires la moitié de <code class="language-plaintext highlighter-rouge">tableau[1:]</code> est plus grande que <code class="language-plaintext highlighter-rouge">tableau[0]</code>. De là, en moyenne, on va toujours couper le talbeau en 2 parties (plus ou moins) égales.</p>
+
+<p>Si l’on coupe toujours au milieu on a alors la même équation que pour la complexité minimale : $C(n) = \mathcal{O}(n) + 2 \cdot C(\frac{n}{2})$, ce qui donne une complexité de $\mathcal{O}(n\ln(n))$.</p>
+
+<h3 id="conclusion">conclusion</h3>
+
+<p>Le tri rapide a :</p>
 
 <ul>
-  <li>il a une complexité moyenne qui vaut sa complexité minimale et qui est $\mathcal{O}(n * \ln(n))$, donc la meilleur possible</li>
-  <li>il est très rapide pour les tableaux en désordre et très lent pour les tableaux déjà triés.</li>
+  <li>une complexité moyenne qui vaut sa complexité minimale et qui est $\mathcal{O}(n \ln(n))$, donc la meilleur possible</li>
+  <li>il très rapide pour les tableaux en désordre et très lent pour les tableaux déjà triés.</li>
 </ul>
 
-<p>En pratique, on commence donc par mélanger le tableau pour le trier ensuite, c’est plus rapide que le trier tout court.</p>
+<p>C’est donc <em>rigolo</em> :</p>
+
+<blockquote class="note">
+  <p>Commencer par mélanger un tableau pour le trier avec <code class="language-plaintext highlighter-rouge">rapide</code> ensuite est plus rapide en moyenne que de le trier directement.</p>
+</blockquote>
 
   </div>
 

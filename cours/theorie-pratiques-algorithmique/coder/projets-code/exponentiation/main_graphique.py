@@ -31,7 +31,7 @@ fig, ax = plt.subplots(figsize=(20, 5))
 ax.set_xlim(0, MAX)
 ax.set_ylim(0, max(temps_rapide[-1], temps_naif[-1]))
 
-ax.set_title("complexité temporelles")
+ax.set_title("complexités temporelles")
 
 
 ax.plot(exposant, temps_naif)
