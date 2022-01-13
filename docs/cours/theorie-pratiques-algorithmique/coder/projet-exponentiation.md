@@ -1,12 +1,12 @@
 ---
 layout: page
-title:  "projet / exponentiation rapide"
+title:  "projet / exponentiation "
 category: cours
 tags: informatique cours 
 author: "François Brucker"
 ---
 
-> [Théorie et pratiques algorithmique]({% link cours/theorie-pratiques-algorithmique/index.md %}) / [coder]({% link cours/theorie-pratiques-algorithmique/coder/index.md %}) / [projet : exponentiation rapide]({% link cours/theorie-pratiques-algorithmique/coder/projet-exponentiation.md %})
+> [Théorie et pratiques algorithmique]({% link cours/theorie-pratiques-algorithmique/index.md %}) / [coder]({% link cours/theorie-pratiques-algorithmique/coder/index.md %}) / [projet : exponentiation]({% link cours/theorie-pratiques-algorithmique/coder/projet-exponentiation.md %})
 >
 > **prérequis :**
 >

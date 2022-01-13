@@ -71,13 +71,13 @@ La finitude de l'algorithme est clair puisqu'il n'y a qu'une boucle for avec aut
 
 Le preuve en démontrant l'invariant de boucle : à la fin d'un itération, les $i + 1$ premiers éléments du tableau sont triés.
 
-1. à la fin de la première itération, si l'on est pas sorti de la boucle c'est que $tableau[i] \geq tableau[i-1]$ pour $i=1$ : les 2 premiers éléments du tableau sont bien triés.
-2. Si l'invariant est vrai à la fin de l'itération $i-1$, à la fin de l'itération $i$ on à $tableau[i] \geq tableau[i-1]$ et comme les $i + 1$ premiers éléments du tableau sont triés : les $i + 1$ premiers éléments du tableau sont triés.
+1. à la fin de la première itération, si l'on est pas sorti de la boucle c'est que $\mbox{tableau}[i] \geq \mbox{tableau}[i-1]$ pour $i=1$ : les 2 premiers éléments du tableau sont bien triés.
+2. Si l'invariant est vrai à la fin de l'itération $i-1$, à la fin de l'itération $i$ on à $\mbox{tableau}[i] \geq \mbox{tableau}[i-1]$ et comme les $i + 1$ premiers éléments du tableau sont triés : les $i + 1$ premiers éléments du tableau sont triés.
 
 Au final :
 
 * L'invariant prouve que : si on arrive à la ligne 6 de l'algorithme c'est que les $n$ premiers éléments du tableau sont triés.
-* si on utilise le retour de la ligne 5 c'est qu'il existe $i$ avec `tableau[i] < tableau[i-1]`, donc tableau ne peut-être trié.
+* si on utilise le retour de la ligne 5 c'est qu'il existe $i$ avec $\mbox{tableau}[i] < \mbox{tableau}[i-1]$, donc $\mbox{tableau}$ ne peut-être trié.
 
 > L'algorithme `est_trie` est une solution au problème *"est trié ?"*
 {: .note}
@@ -89,7 +89,7 @@ Ligne à ligne :
 1. définition de la fonction $\mathcal{O}(1)$
 2. 
 3. une boucle for de $k$ itérations
-4. un tests de deux valeur dans un tableau : $\mathcal{O}(1)$
+4. un tests de deux valeurs dans un tableau : $\mathcal{O}(1)$
 5. un retour de fonction $\mathcal{O}(1)$
 6. un retour de fonction $\mathcal{O}(1)$
 
@@ -433,7 +433,7 @@ La complexité en moyenne sera donc égale à :
 
 $$
 \begin{array}{lcl}
-C_m &=& \mbox{complexité hors boucle for} + \sum_{i=1}^{n-1}(\mbox{complexité hors boucle while} + i \cdot (\mox{complexité boucle while}))\\
+C_m &=& \mbox{complexité hors boucle for} + \sum_{i=1}^{n-1}(\mbox{complexité hors boucle while} + i \cdot (\mbox{complexité boucle while}))\\
 &=& \mathcal{O}(1) + \sum_{i=1}^{n-1} (\mathcal{O}(1) + i \cdot \mathcal{O}(1))\\
 &=& \mathcal{O}(1) \cdot \sum_{i=1}^{n-1} i \\
 &=& \mathcal{O}(1) \cdot \frac{n(n-1)}{2} \\
@@ -441,10 +441,7 @@ C_m &=& \mbox{complexité hors boucle for} + \sum_{i=1}^{n-1}(\mbox{complexité 
 \end{array}
 $$
 
-> On aurait pu faire moins de calcul en remarquant que si le modèle est équiprobable, pour `tableau[i]` il a de l'ordre de $\frac{i}{2}$  éléments de `tableau[:i]` plus grand que lui (et donc $\frac{i}{2}$  éléments plus petit puisque `tableau[:i]` est trié) : pour l'itération $i$ de la boucle `for`, la boucle `while` fera $\frac{i}{2}$ opérations.
-
 > La **complexité en moyenne** de l'algorithme `insertion` est $\mathcal{O}(n^2)$ où $n$ est la taille du tableau passé en entrée.
->
 {: .note}
 
 Le cas le meilleur arrive très rarement par rapport au cas le pire (parmi les $n!$ ordres possible, il y en a très peut qui sont presque triés).
@@ -454,27 +451,39 @@ Si l'on change le modèle de donnée et que l'on considère des tableaux *presqu
 > On utilise le tri par insertion lorsque nos données seront presque toujours déjà triées ou très peu en désordre.
 {: .note}
 
+Ce calcul de complexité nous permet d'utiliser la règle suivante, qui va se révéler très utile :
+
+> Soit $A$ un ensemble de $n$ nombres aléatoires, et $x$ un nombre également aléatoire.
+> Pour tout $ y \in A$, il y a 50% de chances que $x \leq y$. Il y a donc en moyenne $\frac{n}{2}$ éléments de $A$ qui sont plus grand que $x$.
+{: .note}
+
 ## tri fusion
 
-> rendre joli.
-{: .tbd}
+Le [tri fusion](https://fr.wikipedia.org/wiki/Tri_fusion) est un tri de complexité $\mathcal{O}(n\ln(n))$ opérations où $n$ est la taille de la liste en entrée. Il fonctionne ainsi :
 
-Le [tri fusion](https://fr.wikipedia.org/wiki/Tri_fusion) est un tri de complexité $\mathcal{O}(n\ln_2(n))$ opérations où $n$ est la taille de la liste en entrée. Il fonctionne ainsi :
+Si l'on possède une fonction `colle(T1, T2)`, avec `T1` et `T2` des tableaux triés, qui rend le tri de la concaténation de `T1` et `T2`, alors la fonction récursive suivante (avec $\mid T \mid$ la longueur du talbeau $T$) est un algorithme de tri !
 
-Si l'on possède une fonction `colle(T1, T2)`, avec `T1` et `T2` des tableaux triés, qui rend le tri de la concaténation de `T1` et `T2`, alors la fonction :
+$$
+\mbox{fusion}(T) = \left\{
+    \begin{array}{lr}
+        \mbox{colle}(\mbox{fusion}(T[\mid T\mid //\ 2:]), \mbox{fusion}(T[:\mid T\mid //\ 2]) & \mbox{si } \mid T \mid \geq 2\\
+        T & \mbox{sinon.}
+    \end{array}
+\right.
+$$
 
-```python
+L'algorithme fonctionne en effet ainsi :
 
-fusion(T) = colle(fusion(T1[len(T)/2:]), 
-                  fusion(T2[:len(T)/2])
+1. on coupe la liste à trier en 2
+2. on trie chacune des sous-listes à part (en s'utilisant soit-même pour trier)
+3. on recolle les deux listes triées en une unique liste triée
 
-```
-
-est un algorithme de tri !
+> L'algorithme de tri `fusion` utilise la méthode de création d'algorithme nommée [diviser pour régner](https://fr.wikipedia.org/wiki/Diviser_pour_r%C3%A9gner_(informatique)) qui est une méthode se révélant souvent efficace lorsqu'il est facile de reconstruire une solution globale à un problème à partir de solutions partielles.
+{: .note}
 
 ### algorithme colle
 
-> Pour comprendre pourquoi c'est une bonne idée, écrivez un algorithme qui implémente la fonction `colle(T1, T2)`. Il faut que sa complexité soit égale à $\mathcal{O}(\max(n_1, n_2))$ avec $n_1$ et $n_2$ les tailles des tableaux `T1` et `T2` respectivement.
+> Pour comprendre pourquoi c'est une bonne idée, écrivez un algorithme qui implémente la fonction `colle(T1, T2)`. Il faut que sa complexité soit égale à $\mathcal{O}(n_1 + n_2)$ avec $n_1$ et $n_2$ les tailles des tableaux `T1` et `T2` respectivement.
 >
 {: .a-faire}
 {% details   une solution %}
@@ -516,160 +525,244 @@ On vérifie pour deux petits tableaux **triés**, par exemple : `[1, 4, 7]` et `
 
 #### preuve {#preuve-colle}
 
+L'algorithme se finit bien puisqu'à chaque itération de la boucle while soit `i1` soit `i2` augmente. Au bout de `len(T1) + len(T2)` itération on aura `i1` = `len(T1)` et `i2` = `len(T1)`, donc la condition `i1 < len(tab1) or i2 < len(tab2)` ne sera plus vérifiée.
 
+L'invariant de boucle que l'on peut facilement prouver est : *"`tab_colle` est trié et contient les `i1` premiers éléments `T1` et les `i2` premiers éléments `T2`"*.
 
 #### complexités {#complexites-colle}
 
+Allons un peu plus vite :
+
+* on a une boucle `while` de `len(T1) + len(T2)` itérations
+* chaque ligne de l'algorithme est en $\mathcal{O}(1)$
+
+> La complexité max et min de `colle` est $\mathcal{O}(n_1 + n_2)$ avec $n_1$ et $n_2$ les tailles des tableaux `T1` et `T2` respectivement.
+{: .note}
 
 ### algorithme fusion
 
-Une proposition de code est ci-après :
+Une proposition d'algorithme de la fonction récurente est ci-après :
 
 ```python
-def fusion(tab):
-    if len(tab) < 2:
-        return tab
+
+def fusion(tableau):
+    if len(tableau) < 2:
+        return tableau
     else:
-        milieu = len(tab) // 2
-    return colle(fusion(tab[:milieu]), fusion(tab[milieu:]))
+        milieu = len(tableau) // 2
+    return colle(fusion(tableau[:milieu]), fusion(tableau[milieu:]))
 
 ```
 
-L'algorithme fonctionne ainsi :
+#### fonctionnement {#fonctionnement-fusion}
 
-1. on coupe la liste à trier en 2
-2. on trie chacune des sous-listes à part
-3. on recolle les deux listes triées en une unique liste triée (c'est `fusion_colle`)
+On vérifie pour deux petits tableaux, par exemple :
 
-Comme on peut utiliser n'importe quel algorithme pour trier les 2 sous-listes, autant s'utiliser soit-même ! L'algorithme fusion utilise donc l'algorithme fusion pour trier les sous-listes de l'algorithme fusion.
+* `[4]`
+* `[1, 2, 0, 4, 3, 98, 7]`
 
-La complexité de l'algorithme est alors :
+#### preuve {#preuve-fusion}
 
-$$C(n) = 2 * C(n/2) + D(n)$$
+Comme  `milieu < len(tableau)` si `len(tableau) > 1`, l'algorihtme va bien converger. De plus, comme l'algorithme `colle` est démontré, `fusion` est bien un algorithme de tri.
+
+#### complexités {#complexites-fusion}
+
+La complexité de l'algorithme `fusion` est (avec $n$ la taille du tableau passé en entrée) :
+
+$$C(n) = 2 \cdot C(\frac{n}{2}) + D(n)$$
 
 Où :
+
 * $C(n)$ est la complexité de l'algorithme fusion pour une liste à $n$ éléments (algorithme `fusion`)
-* $D(n)$ est la complexité de fusionner deux listes triées en une unique liste triées (algorithme `fusion_colle`). 
+* $D(n)$ est la complexité de fusionner deux listes triées en une unique liste triées (algorithme `colle`).
 
-Comme l'algorithme `fusion_colle` est en $\mathcal{O}(n)$, l'équation de récurrence de la complexité est :
+Comme l'algorithme `colle` est en $\mathcal{O}(n)$, l'équation de récurrence de la complexité est :
 
-$$C(n) = 2 * C(n/2) + \mathcal{O}(n)$$
+$$C(n) = 2 \cdot C(\frac{n}{2}) + \mathcal{O}(n)$$
 
-Pour connaître la valeur de la complexité on utilise le [master theorem](https://fr.wikipedia.org/wiki/Master_theorem) qui est **LE** théorème des complexités pour les algorithmes récursifs. Sa preuve dépasse (de loin) le cadre de ce cours, mais son énoncé sous la  [notation de Landau](https://fr.wikipedia.org/wiki/Master_theorem#%C3%89nonc%C3%A9_avec_la_notation_de_Landau), nous permet de déterminer aisément la complexité de nombreux algorithmes récursifs, dont le notre : $\mathcal{O}(n\ln_2(n))$, puisque $1 = \ln_2(2)$.
+Pour connaître la valeur de la complexité on utilise le [master theorem](https://fr.wikipedia.org/wiki/Master_theorem) qui est **LE** théorème des complexités pour les algorithmes récursifs. Sa preuve dépasse (de loin) le cadre de ce cours, mais [son énoncé sous la notation de Landau](https://fr.wikipedia.org/wiki/Master_theorem#%C3%89nonc%C3%A9_avec_la_notation_de_Landau), nous permet de déterminer aisément la complexité de nombreux algorithmes récursifs dont le notre :
 
-> **Remarque** : tout comme le tri par sélection, le tri fusion a la particularité d'avoir toujours le même nombre d'opérations quelque soit la liste en entrée.
+> **Master Theorem**
+>  
+> $$T(n) = a \cdot T(\frac{n}{b}) + \mathcal{O}(n^d)$$
+>
+> * si $d < \log_b(a)$ alors $T(n)  = \mathcal{O}(n^{\log_b(a)})$
+> * si $d = \log_b(a)$ alors $T(n)  = \mathcal{O}(n^d \cdot \ln(n))$
+> * si $d > \log_b(a)$ alors $T(n)  = \mathcal{O}(n^d)$
+>
+{: .note}
 
-### principe
+Dans notre cas on a $a = 2$, $b = 2$  et $d = 1$ donc $d = \log_2(a)$ :
 
-La logique de l'algorithme `fusion` est appelée [diviser pour régner](https://fr.wikipedia.org/wiki/Diviser_pour_r%C3%A9gner_(informatique)) : on résout des sous-problèmes puis on crée une solution globale à partir des solutions partielles. Cette stratégie fonctionne lorsque la création d'une solution globale à partir de solutions partielle est aisée.
+> La complexité de l'algorithme `fusion` est $\mathcal{O}(n\ln(n))$ où $n$ est la taille de la liste en entrée
+{: .note}
 
-> expliciter
-{: .tbd}
+Tout comme le tri par sélection, le tri fusion a la particularité d'avoir toujours le même nombre d'opérations quelque soit la liste en entrée.
 
-Pour notre algorithme fusion :
+{% details calcul de la complexité sans utiliser le master theorem %}
 
-* quels sont les solutions partielles ?
-* comment sont calculées les solutions partielles ?
-* comment est construite la solution globale à partir des solutions partielles ?
-* la construction de la solution globale est-elle facile ? Quelle est sa complexité ?
+$$
+\begin{array}{lcl}
+C(n) &=& 2 \cdot C(\frac{n}{2}) + \mathcal{O}(n)\\
+&=& 2 \cdot (2 \cdot (C(\frac{n}{4}) + \mathcal{O}(\frac{n}{2})) + \mathcal{O}(n)\\
+&=& 2^2 \cdot C(\frac{n}{2^2}) + 2 \cdot \mathcal{O}(\frac{n}{2})) + \mathcal{O}(n)\\
+&=& 2^2 \cdot C(\frac{n}{2^2}) + 2 \cdot \mathcal{O}(n)\\
+&=& ...\\
+&=& 2^k \cdot C(\frac{n}{2^k}) + k \cdot \mathcal{O}(n)\\
+&=& ...\\
+&=& 2^{\log_2(n)} \cdot C(1) + \log_2(n) \cdot \mathcal{O}(n)\\
+&=& n \cdot C(1) + \log_2(n) \cdot \mathcal{O}(n)\\
+&=& \mathcal{O}(n) + \log_2(n) \cdot \mathcal{O}(n)\\
+&=& \mathcal{O}(n\log_2(n))\\
+&=& \mathcal{O}(n\ln(n))
+\end{array}
+$$
 
-### expérimentation
+{% enddetails %}
 
-Vérifier expérimentalement que la complexité est bien $\mathcal{O}(n\ln_2(n))$. Ici c'est bien la complexité maximale que l'on observe puisque le nombre d'opérations est constant (en grand O) quel que soit la liste à trier.
+## tri de python
 
-Regardez le aussi trier, c'est très différent des autres tris.
+```python
+
+T = [1, 3, 2, 6, 4, 5]
+T.sort()
+
+print(T)
+
+```
+
+Le tri de python est **in place**. L'algorithme utilisé est [timsort](https://en.wikipedia.org/wiki/Timsort), mix entre le tri fusion et le tri par insertion. C'est un tri très efficace puisque :
+
+> Pour un tableau de taille $n$ :
+>
+> * La complexité de l'algorithme timsort est $\mathcal{O}(n\ln(n))$
+> * La complexité min de l'algorithme timsort est $\mathcal{O}(n)$
+> * La complexité en moyenne de l'algorithme timsort est $\mathcal{O}(n\ln(n))$
+>
+{: .note}
 
 ## tri rapide {#tri-rapide}
 
-Le tri rapide est un cas d'algorithme de tri *rigolo*.
+Le tri rapide est un algorithme qui a été très utilisé par le passé. On le montre encore maintenant car c'est un exemple de *diviser pour régner* et, surout, le calcul complexités est très intéressant.
 
-Le tri rapide est une méthode de tri d'une liste à $n$ éléments dont :
+Son principe est le suivant, si on souhaite trier le tableau $T$ :
 
-* la complexité (maximale) est $\mathcal{O}(n^2)$,
-* la complexité en moyenne est $\mathcal{O}(n\ln_2 (n))$,
-* la complexité minimale est $\mathcal{O}(n\ln_2 (n))$,
+1. on choisit un élément du tableau, souvent $T[0]$
+2. on sépare $T[1:]$ en deux sous tableaux
+   * $T_1$ qui contient tous les éléments plus petit ou égal à $T[0]$
+   * $T_2$ qui contient tous les éléments plus grand strictement à $T[0]$
+3. on trie $T_1$ en $T'_1$ et $T_2$ en $T'_2$
+4. on constitue le tableau initial trié : $T'_1 + [T[0]] + T'_2$
 
-```python
-def rapide(tab):
-    if len(tab) <= 1:
-        return tab
+> Ecrivez cet algorithme en python
+{: .a-faire}
+{% details   une solution %}
 
-    pivot = tab[0]
+<style>
+    table, td, tr, th, pre {
+        padding:0;
+        margin:0;
+        border:none
+    }
+</style>
+{% highlight python linenos %}
 
-    tab_gauche = [tab[i] for i in range(1, len(tab)) if tab[i] <= pivot]
-    tab_droite = [tab[i] for i in range(1, len(tab)) if tab[i] > pivot]
+def rapide(tableau):
+    if len(tableau) <= 1:
+        return tableau
+
+    pivot = tableau[0]
+
+    tab_gauche = [tableau[i] for i in range(1, len(tableau)) if tableau[i] <= pivot]
+    tab_droite = [tableau[i] for i in range(1, len(tableau)) if tableau[i] > pivot]
 
     return rapide(tab_gauche) + [pivot] + rapide(tab_droite)
-```
 
-On utilise les [list comprehension](https://python.doctor/page-comprehension-list-listes-python-cours-debutants) de python. C'est un moyen clair et efficace de générer des listes.
+{% endhighlight %}
 
-### preuve du tri rapide
+On a utilisé les [list comprehension](https://python.doctor/page-comprehension-list-listes-python-cours-debutants) de python. C'est un moyen clair et efficace de générer des listes. Utilisez-les, ça rend le code plus clair et facile à écrire.
+
+{% enddetails %}
+
+### fonctionnement {#fonctionnement-rapide}
+
+Tout comme pour le tri fusion, on peut tester pour deux petits tableaux, par exemple :
+
+* `[4]`
+* `[1, 2, 0, 4, 3, 98, 7]`
+
+### preuve {#preuve-rapide}
 
 * `tab_gauche` contient tous les élements du tableau d'indice `> 0` et plus petit ou égal à `pivot` qui est égal à `tab[0]`
 * `tab_droite` contient tous les élements du tableau d'indice `> 0` et plus plus grand strictement à `pivot`
- 
-Si rapide fonctionne pour des tableaux de longeurs strictement plus petit que $n$, il fonctionne également pour des tableaux de longueur $n$ : le tableau rendu est le tableau des valeurs plus petite que `pivot` triées (ce tableau est de longueur `< n`, donc c'est trié par hypothèse de récurence) + `[pivot]` + le tableau des valeurs plus grande que `pivot` triées (ce tableau est de longueur `< n`, donc c'est trié par hypothèse de récurence)
 
-On il fonctionne pour des tableau de longueur 0 ou 1, donc par récurrence, c'est ok.
+Si rapide fonctionne pour des tableaux de longueurs strictement plus petit que $n$, il fonctionne également pour des tableaux de longueur $n$ : le tableau rendu est le tableau des valeurs plus petite que `pivot` triées (ce tableau est de longueur `< n`, donc c'est trié par hypothèse de récurence) + `[pivot]` + le tableau des valeurs plus grande que `pivot` triées (ce tableau est de longueur `< n`, donc c'est trié par hypothèse de récurence)
 
-### complexités du tri rapide
+Or il fonctionne pour des tableau de longueur 0 ou 1, donc par récurrence, c'est ok.
 
-Nous n'allons pas faire ici de calcul rigoureux. Si ça vous intéresse, reportez vous là : <http://perso.eleves.ens-rennes.fr/~mruffini/Files/Other/rapide.pdf>
+### complexités {#complexites-rapide}
 
 En notant $n$ la taille de la liste on a comme équation de récurrence pour la complexité $C(n)$ :
 
-$$C(n) = \mathcal{O}(n) + C(n_1) + C(n_2)$$
+$${
+C(n) = \underbrace{\mathcal{O}(n)}_{\mbox{création des tableaux}}{} + \underbrace{C(n_1) + C(n_2)}_{\mbox{récursions}}{}
+}$$
 
 Où $n_1$ est la taille du tableau de gauche et $n_2$ celle de droite ($n_1 + n_2 = n$)
 
-On voit que la complexité du tri rapide tient dans le nombre de récursions qui est fait.
+On va monter que :
+
+> Pour trier un tableau de longueur $n$, les complexités de `rapide` sont :
+>
+> * la complexité (maximale) est $\mathcal{O}(n^2)$,
+> * la complexité en moyenne est $\mathcal{O}(n\ln (n))$,
+> * la complexité minimale est $\mathcal{O}(n\ln (n))$,
+>
+{: .note}
+
+> Nous n'allons pas faire ici de calculs rigoureux, on utilisera des arguments de bon-sens pour aller plus vite. Ces arguments sont justes, mais si un calcul sans approximation vous intéresse, reportez vous à <http://perso.eleves.ens-rennes.fr/~mruffini/Files/Other/rapide.pdf>
 
 #### complexité (maximale) du tri rapide
 
-Un tableau de n-1 case et l'autre tout petit. Ca arrive pour des tableaux déjà triés. La complexité est alors de :
+Ce cas va arriver si un des deux tableaux est toujours vide. Par exemple lorsque le tableau est déjà trié. Dans ce cas là, l'autre tableau est de taille $n-1$, ce qui donne une complexité de :
 
 $$C(n) = \mathcal{O}(n) + C(n-1)$$
 
-Donc $C(n) = \mathcal{O}(n) + \dots + \mathcal{O}(n)$ où l'on additionne $n$ fois $\mathcal{O}(n)$ : la complexité est de $C(n) = \mathcal{O}(n^2)$.
+Donc :
 
-**Attention** : on additionne $n$ fois $\mathcal{O}(n)$. Comme $n$ n'est pas une constante, il **FAUT** le rentrer dans le $\mathcal{O}$.
+$$
+\begin{array}{lcl}
+C_m &=& \mathcal{O}(n) + C(n-1)\\
+&=& \mathcal{O}(n) + \mathcal{O}(n-1) + C(n-2)\\
+&=& ...
+&=& \sum_{i=2}^{n}\mathcal{O}(i) + C(1)\\
+&=& \sum_{i=2}^{n}\mathcal{O}(n) + C(1)\\
+&=& \mathcal{O}(n^2)\\
+\end{array}
+$$
 
-#### complexité en moyenne du tri rapide
-
-On coupe toujours le tableau en 2 parties égales. Si les nombres sont répartiés aléatoirement, il n'y a en effet aucune raison que notre pivot sot le plus petit ou le plus grand. Intuitivement, la plus grande probabilité est qu'il soit environ plus grand que la moitié des valeurs restantes et plus petit que l'autre moitié.
-
-Si l'on coupe toujours au milieu on a alors : 
-
-$$C(n) = \mathcal{O}(n) + 2 * C(\frac{n}{2})$$
-
-Ce qui donne :
-
-$$C(n) = \mathcal{O}(n) + 2 * (\mathcal{O}(\frac{n}{2}) + 2 * C(\frac{n}{4})) = 2 * \mathcal{O}(n) + 4 * C(\frac{n}{4})$$
-
->**Attention** : Comme on est entrain de tout calculer, il ne faut pas simplifier les $2 * \mathcal{O}(n)$. Si vous avez du mal, remplacez tous les $\mathcal{O}(n)$ par une constante $K$ et poursuivez le calcul jusqu'au baut, c'est à dire jusqu'à éliminer les $C(n)$.
-
-Une rapide récurrence nous donne alors : 
-
-$$C(n) = i * \mathcal{O}(n) + 2^{i} * C(\frac{n}{2^{i}})$$
-
-Au maximum $i = \ln_2(n)$ (après, $\frac{n}{2^{i}} < 1$) et dans ce cas là :
-
-$$C(n) = \ln_2(n) * \mathcal{O}(n) + 2^{\ln_2(n)} * C(\frac{n}{2^{\ln_2(n)}})$$
-
-$$C(n) = \ln_2(n) * \mathcal{O}(n) + n * C(1)$$
-
-On en conclut que la complexité vaut : $$C(n) = \mathcal{O}(\ln_2(n) * n)$$
+> on a utilisé la [règle de croissance]({% link cours/theorie-pratiques-algorithmique/algorithmie/complexite-max-min.md %}#regle-croissance) pour remplacer $\mathcal{O}(i)$ qui est croissant par sa valeur maximale de $\mathcal{O}(n)$
 
 #### complexité minimale du tri rapide
 
-Si l'on découpe notre tableau de façon  non équilibrée, une branche de la récursion va faire plus d'opérations que $C(n/2)$. La complexité minimale est ainsi atteinte lorsque l'on coupe notre tableau exactement en 2.
+Si l'on découpe notre tableau de façon non équilibrée, une branche de la récursion va faire plus d'opérations que $C(n/2)$. La complexité minimale est ainsi atteinte lorsque l'on coupe notre tableau exactement en 2.
 
-#### conclusion
+Dans ce cas là, on a l'équation de récurrence : $C(n) = \mathcal{O}(n) + 2 \cdot C(\frac{n}{2})$ qui est la même que celle du tri fusion. La complexité minimale du tri `rapide` est donc $\mathcal{O}(n\ln(n))$.
 
-Le tri rapide est donc rigolo :
+#### complexité en moyenne du tri rapide
 
-* il a une complexité moyenne qui vaut sa complexité minimale et qui est $\mathcal{O}(n * \ln(n))$, donc la meilleur possible
-* il est très rapide pour les tableaux en désordre et très lent pour les tableaux déjà triés.
+On utilise l'argument utiliser pour calculer la complexité en moyenne du [tri par insertion](#complexites-insertion). Si les données sont aléatoires la moitié de `tableau[1:]` est plus grande que `tableau[0]`. De là, en moyenne, on va toujours couper le talbeau en 2 parties (plus ou moins) égales.
 
-En pratique, on commence donc par mélanger le tableau pour le trier ensuite, c'est plus rapide que le trier tout court.
+Si l'on coupe toujours au milieu on a alors la même équation que pour la complexité minimale : $C(n) = \mathcal{O}(n) + 2 \cdot C(\frac{n}{2})$, ce qui donne une complexité de $\mathcal{O}(n\ln(n))$.
+
+### conclusion
+
+Le tri rapide a :
+
+* une complexité moyenne qui vaut sa complexité minimale et qui est $\mathcal{O}(n \ln(n))$, donc la meilleur possible
+* il très rapide pour les tableaux en désordre et très lent pour les tableaux déjà triés.
+
+C'est donc *rigolo* :
+
+> Commencer par mélanger un tableau pour le trier avec `rapide` ensuite est plus rapide en moyenne que de le trier directement.
+{: .note}

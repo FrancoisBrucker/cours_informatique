@@ -12,7 +12,8 @@ Les divers contrôles intermédiaires seront à rendre directement sur [ametice]
 
 L'ensemble du cours (et d'autres choses) est disponible [là]({% link cours/theorie-pratiques-algorithmique/index.md %})
 
-Chaque partie est une semaine (2h mercredi et 4h vendredi). Il y aura 2 DS, les mercredi de la séance 4 et 7. De plus, chaque vendredi, il y aura un contrôle de 15min sur la séance du mercredi s'il n'y avait pas de DS.
+> Chaque vendredi à partir de la semaine 2 il y aura un contrôle de 15min en début de séance portant sur le programme de la semaine précédente.
+{: .attention}
 
 ### semaine 1
 
@@ -36,12 +37,9 @@ Chaque partie est une semaine (2h mercredi et 4h vendredi). Il y aura 2 DS, les 
      2. [utilisation du terminal]({% post_url tutos/systeme/2021-12-02-terminal-utilisation %})
    * [sujet]({% link cours/theorie-pratiques-algorithmique/coder/projet-pourcentages.md %})
 
-> test de début de séance.
-{: .tbd}
-
 ### semaine 2
 
-A partir de la semaine 2, les tests de début séance seront à écrire en [markdown]({% post_url /tutos/2021-08-30-format-markdown %}) et envoyé converti en html (ou pdf) sur amétice.
+> Le contrôle de mercredi portera sur la partie code. Il faudra rendre un (ou plusieurs) fichiers python sur amétice.
 
 #### mercredi {#m-2}
 
@@ -54,6 +52,8 @@ A partir de la semaine 2, les tests de début séance seront à écrire en [mark
 2. [projet : l'exponentiation]({% link cours/theorie-pratiques-algorithmique/coder/projet-exponentiation.md %})
 
 ### semaine 3
+
+> Le contrôle de mercredi portera sur la partie complexité et preuve d'algorithme. Il faudra rendre une copie.
 
 #### mercredi {#m-3}
 
@@ -78,11 +78,16 @@ Au programme :
 
 ### semaine 5
 
+> Pas de contrôle.
+
 #### mercredi {#m-5}
 
 #### vendredi {#v-5}
 
 ### semaine 6
+
+> A partir de la semaine 6, les contrôles de début séance seront à écrire en [markdown]({% post_url /tutos/2021-08-30-format-markdown %}) et envoyé converti en html (ou pdf) sur amétice.
+{: .attention}
 
 #### mercredi {#m-6}
 
@@ -103,6 +108,8 @@ Au programme :
 * code
 
 ### semaine 9
+
+> Pas de contrôle.
 
 #### mercredi {#m-9}
 
@@ -139,7 +146,3 @@ Au programme :
 4. [DS (sujet et corrigé)]({% link cours/algorithmie_code/tests/2020_2021/4_ds_corrige.md %})
 5. modélisation : [sujet]({% link cours/algorithmie_code/tests/2020_2021/5_test_sujet.md %}) et [corrigé]({% link cours/algorithmie_code/tests/2020_2021/5_test_corrige.md %})
 6. gloutons : [sujet]({% link cours/algorithmie_code/tests/2020_2021/6_test_sujet.md %}) et [corrigé]({% link cours/algorithmie_code/tests/2020_2021/6_test_corrige.md %})
-
-### old
-
-[cours 2020/2021]({% link cours/algorithmie_code/index.md %})
