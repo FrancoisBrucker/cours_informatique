@@ -154,7 +154,7 @@ Le code précédent modifie l'algorithme `insertion` pour qu'il affiche dans un 
 
 ## autres tris
 
-### tri à bulle
+### tri à bulles
 
 Le [tri à bulles](https://fr.wikipedia.org/wiki/Tri_%C3%A0_bulles) est un tri inefficace mais joli à regarder.
 
