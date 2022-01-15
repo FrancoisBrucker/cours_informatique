@@ -13,14 +13,14 @@ author: "François Brucker"
 >* [algorithmie/pseudo-code]({% link cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.md %})
 {: .chemin}
 
-Ua algorithme **toujours** un but, quelque chose pour quoi il est fait. Dans notre cas, un algorithme calculera la solution d'un problème.
+Un algorithme **toujours** un but, quelque chose pour quoi il est fait. Dans notre cas, un algorithme calculera la solution d'un problème.
 
 Pour chaque algorithme que vous créerez ou que l'on demandera d'étudier il faudra :
 
-1. caractériser le problème que l'algorithme es sensé résoudre
+1. caractériser le problème que l'algorithme est sensé résoudre
 2. démontrer que l'algorithme fonctionne, c'est à dire qu'il le résout le problème en temps fini.
 
-Prouver qu'un algorithme s'arrête fait partie des problèmes théoriques difficiles en informatique. En algorithmie, les algorithmes résolvent des problèmes et donc ils sont sensé s'arrêter et il sera (normalement) de le voir. En revanche, la preuve de l'algorithme est parfois plus délicate. Le problème étant souvent (toujours ?) concentré dans les boucles ou les récursions de l'algorithme, on cherchera à trouver des propriétés qui sont conservées avant et après une itération ou une récursion :
+Prouver qu'un algorithme s'arrête fait partie des problèmes théoriques difficiles en informatique. En algorithmie, les algorithmes résolvent des problèmes et donc ils sont sensés s'arrêter et il sera (normalement) facile de le voir. En revanche, la preuve de l'algorithme est parfois plus délicate. Le problème étant souvent (toujours ?) concentré dans les boucles ou les récursions de l'algorithme, on cherchera à trouver des propriétés qui sont conservées avant et après une itération ou une récursion :
 
 > Pour prouver un algorithme on cherchera à établir :
 >
@@ -31,7 +31,7 @@ Prouver qu'un algorithme s'arrête fait partie des problèmes théoriques diffic
 
 Notez que bien souvent prouver un algorithme et le créer est la même chose. Comprendre comment on peut résoudre un problème donné nous donnera l'algorithme et réciproquement.
 
-A part la recommandation ci-dessus, il n'existe pas vraiment de règles à appliquer pour prouver un algorithme. Seule l'expérience et l'étude des algorithmes classique vous permettra de trouver facilement comment prouver un algorithme.
+A part la recommandation ci-dessus, il n'existe pas vraiment de règles à appliquer pour prouver un algorithme. Seule l'expérience et l'étude des algorithmes classiques vous permettra de trouver facilement comment prouver un algorithme.
 
 > dans la suite, les algorithmes seront tous donnés en python
 
@@ -118,7 +118,7 @@ def euclide(a, b):
     return (q, r)
 ```
 
-> On utilise la possibilité que donne python d'écrire `x += y` (*resp.* `x -= y`) à la place de `x = x + y` (*resp.* `x = x + y`).
+> On utilise la possibilité que donne python d'écrire `x += y` (*resp.* `x -= y`) à la place de `x = x + y` (*resp.* `x = x - y`).
 
 Notez que le retour de la fonction est un [tuple](https://docs.python.org/fr/3/tutorial/datastructures.html#tuples-and-sequences) à 2 éléments (c'est à dire un tableau à 2 éléments que l'on ne peut pas modifer)
 
@@ -128,13 +128,13 @@ le programme s'arrête ? : Oui si a et b sont des entiers positifs. Car
 
 * `r` est un entier
 * `r` après une itération est **strictement plus petit** que le `r` avant itération
-* on s'arête si `r` est strictement plus petit que `b`.
+* on s'arrête si `r` est strictement plus petit que `b`.
 
 ### complexité
 
 De l'ordre du nombre de fois où l'on rentre dans la boucle. Comme $r$ ne fait que décroître strictement et vaut $a$ au départ, on estime la complexité de l'algorithme en $\mathcal{O}(a)$.
 
-> Comme on décrémente de $b$ à chaque fois on a aurait pu aussi dire que la complexité est en $\mathcal{O}(\frac{a}{b})$
+> Comme on décrémente de $b$ à chaque fois on aurait pu aussi dire que la complexité est en $\mathcal{O}(\frac{a}{b})$
 
 ### preuve
 

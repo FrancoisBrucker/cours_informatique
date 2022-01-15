@@ -14,7 +14,7 @@ author: "François Brucker"
 >* [preuve d'algorithme]({% link cours/theorie-pratiques-algorithmique/algorithmie/preuve-algorithme.md %})
 {: .chemin}
 
-On va étudiez deux algorithmes permettant de calculer $a^b$  à partir de deux entiers $a$ et $b$. Pour chaque algorithme on étudiera son fonctionnement selon [3 axes]({% link cours/theorie-pratiques-algorithmique/algorithmie/algorithmes.md %}#étude) :
+On va étudier deux algorithmes permettant de calculer $a^b$  à partir de deux entiers $a$ et $b$. Pour chaque algorithme on étudiera son fonctionnement selon [3 axes]({% link cours/theorie-pratiques-algorithmique/algorithmie/algorithmes.md %}#étude) :
 
 * fonctionnement
 * preuve
@@ -83,13 +83,13 @@ En deux temps. On commence par montrer qu'il se termine, puis on prouve qu'il ca
 > Pour des nombres, on préférera toujours des conditions d'arrêt larges (plus petit que, plus grand que, différent de) plutôt que des conditions sur l'égalité stricte. Ceci pour deux raisons majeures :
 >
 > * L'égalité entre réels n'existe pas en informatique par exemple.
-> * dans l'exemple ci-dessus mettre des exposants négatifs ou des nombres rées ne fait pas boucler infiniment notre algorithme
+> * dans l'exemple ci-dessus mettre des exposants négatifs ou des nombres réels ne fait pas boucler infiniment notre algorithme
 >
 {: .note}
 
 #### preuve de l'algorithme
 
-Le fonctionnement de l'algorithme est *à peut prêt* clair si les entrées sont des entiers : il multiplie $a$ par lui-même $b$ fois grâce à une boucle. Une preuve par récurrence doit donc fonctionner, mais essayons de faire une *jolie* preuve en exhibant un invariant de boucle.
+Le fonctionnement de l'algorithme est *à peu prêt* clair si les entrées sont des entiers : il multiplie $a$ par lui-même $b$ fois grâce à une boucle. Une preuve par récurrence doit donc fonctionner, mais essayons de faire une *jolie* preuve en exhibant un invariant de boucle.
 
 > Si `nombre` et `exposant` sont des entiers naturels, on a l'invariant de boucle :
 > `resultat * nombre ** compteur = nombre ** exposant` (en utilisant l'opération `**` qui signifie exposant en python.)
@@ -180,7 +180,7 @@ Enfin, comme l'algorithme vérifie si `compteur` est pair ou impair, on peut ess
 
 ### preuve de finitude {#finitude-rapide}
 
-De même que pour l'algorithme simple, `compteur` diminue strictement à chaque boucle (ou il diminue de `-1` ou il est divisé par 2). Si `exposant` est un entier naturel en entrée, `compteur` reste entier après chaque boucle (on ne le divise par 2 que s'il est pair) et est strictement plus petit : l'algorihtme va s'arrêter à un moment.
+De même que pour l'algorithme simple, `compteur` diminue strictement à chaque boucle (ou il diminue de `-1` ou il est divisé par 2). Si `exposant` est un entier naturel en entrée, `compteur` reste entier après chaque boucle (on ne le divise par 2 que s'il est pair) et est strictement plus petit : l'algorithme va s'arrêter à un moment.
 
 ### preuve de l'algorihtme {#preuve-rapide}
 
@@ -195,7 +195,7 @@ Juste avant la première itération de la boucle, `resulat = 1` et `compteur = e
 On suppose l'invariant vrai au début de la boucle d'itération $i$. Regardons comment les variables ont été modifiées lors de cette itération :
 
 * si compteur est impair on a :
-  * `compteur' = compteur -1`
+  * `compteur' = compteur - 1`
   * `resultat' = resultat * nombre`
   * `nombre' = nombre`
   * l'invariant vaut alors en fin d'itération : `resultat * nombre ** compteur = (resultat * nombre) * nombre ** (compteur - 1) = resultat' * nombre' ** compteur'`
@@ -258,5 +258,5 @@ Cette différence va aller exponentiellement lorsque compteur augmente, par exem
 ## conclusions
 
 * la procédure utilisée pour l'étude de ces deux algorithmes est générale, vous pouvez (et devez) l'appliquer à l'étude de tout nouvel algorithme.
-* il ne faut jamais penser que l'in ne peut pas faire mieux pour un algorithme. Si vous ne connaissiez pas l'exponentiation indienne, il vous aurez été difficile de penser que l'on peut fair mieux que l'algorithme naïf pour calculer une exponentielle
+* il ne faut jamais penser que l'on ne peut pas faire mieux pour un algorithme. Si vous ne connaissiez pas l'exponentiation indienne, il vous aurait été difficile de penser que l'on peut faire mieux que l'algorithme naïf pour calculer une exponentielle
 * un algorithmicien ferait beaucoup de sacrifices pour obtenir une complexité en $\mathcal{O}(\ln(n))$ tellement c'est efficace.
