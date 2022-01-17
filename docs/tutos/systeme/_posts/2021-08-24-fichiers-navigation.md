@@ -15,7 +15,7 @@ Qu'est-ce qu'un fichier ? Un dossier ? Comment naviguer dans un système de fich
 
 Votre ordinateur est composé de **fichiers** et de **dossiers** (aussi appelé **répertoire**) :
 
-* un **dossier** est un conteneur qui peut contenir soit d'autres dossier, soit des fichiers
+* un **dossier** est un conteneur qui peut contenir soit d'autres dossiers, soit des fichiers
 * un **fichier** est ce que vous pouvez utiliser. C'est une image, du texte, ou encore un programme.
 
 > Il existe un dossier spécial, appelé **racine** qui est le départ : on peut atteindre tous les fichiers/dossiers de votre ordinateur à partir de celui-ci.
@@ -27,7 +27,7 @@ Cette organisation est appelée [arborescence de fichiers](https://fr.wikipedia.
 
 ### exploration de l'arborescence
 
-Chaque système d'exploitation fourni un outil pour naviguer dans l'arborescence des fichier. Nous nommerons cet outil **explorateur de fichiers**.
+Chaque système d'exploitation fournit un outil pour naviguer dans l'arborescence des fichier. Nous nommerons cet outil **explorateur de fichiers**.
 
 > Ouvrez une fenêtre de l'explorateur de fichier et placez vous à la racine de votre système de fichier.
 >
@@ -61,7 +61,7 @@ Dans l'exemple ci-après, j'ai navigué sur mon mac jusqu'à ma photo d'[Ada Lov
 
 On voit bien le chemin parcouru de la racine (appelé *"Macintosh HD"* sur un mac et le fichier).
 
-> Le nom des dossiers sur le disque dur et celui qui apparait dans l'explorateur de fichier peuvent être différent selon la langue du système d'exploitation.
+> Le nom des dossiers sur le disque dur et celui qui apparait dans l'explorateur de fichier peuvent être différents selon la langue du système d'exploitation.
 > Ainsi, le nom *Bureau* dans l'explorateur correspondra au dossier `Desktop` sur le disque dur.
 {: .attention}
 
@@ -73,7 +73,7 @@ Le chemin vers un fichier depuis la racine s'écrit en séparant tous les dossie
 /Users/fbrucker/Desktop/ada_lovelace.png 
 ```
 
-Tout fichier ou dossier de l'arborescence de fichier possède un chemin unique depuis la racine, c'est donc un moyen de l'identifier.
+Tout fichier ou dossier de l'arborescence de fichiers possède un chemin unique depuis la racine, c'est donc un moyen de l'identifier.
 
 > Le chemin du dossier racine est `/`.
 {: .note}
@@ -113,7 +113,7 @@ De là les 4 chemins suivants sont identiques :
   
 > On fait souvent commencer un chemin relatif par `.` pour bien montrer sa différence par rapport à un chemin absolu qui commence par `/`.
 
-L'intérêt principal de ces dossiers est qu'ils permettent de naviguer dans l'arborescence à partir d'un dossier. Par exemple dans un projet, si l'on n'utilise que des chemins relatifs, on pourra facilement déplacer le dossier du projet (voir le donner à une autre personne) sans casser les liens.
+L'intérêt principal de ces dossiers est qu'ils permettent de naviguer dans l'arborescence à partir d'un dossier. Par exemple dans un projet, si l'on n'utilise que des chemins relatifs, on pourra facilement déplacer le dossier du projet (voire le donner à une autre personne) sans casser les liens.
 
 > Dans un projet, utilisez **toujours** des chemins relatifs lorsque vous donnez des chemins, cela permet de déplacer le dossier sans casser les liens.
 {: .note}
@@ -122,14 +122,14 @@ L'intérêt principal de ces dossiers est qu'ils permettent de naviguer dans l'a
 
 {% details sous linux %}
 
-> TBD
+Dans l'explorateur de fichiers cliquez droit sur le dossier, puis copiez. Collez ensuite dans le terminal.
 {: .note}
 
 {% enddetails %}
 
 {% details sous mac %}
 
-Dans le finder cliquez droit sur le dossier, puis copier. Coller ensuite dans le terminal.
+Dans le finder cliquez droit sur le dossier, puis copiez. Collez ensuite dans le terminal.
 
 {% enddetails %}
 

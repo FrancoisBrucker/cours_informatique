@@ -24,7 +24,7 @@ De ces deux constatations, on en déduit trois règles fondamentales d'un code u
 
 Le langage d'application n'a que peu d'intérêt en soit. On choisit celui qui est le plus adapté à notre but. Ici, on utilisera le python mais tout ce qu'on verra est transposable pour tout autre langage sérieux. L'éditeur de texte que l'on utilisera sera vscode. Il en existe d'autres très bien aussi et tout ce qu'on verra avec vscode (les raccourcis claviers, et aides au développement) sont transposables à d'autres editeurs en lisant la doc.
 
-> Écrire du code nécessite ne nombreuses automatisations et aides pour que ce ne soit pas pénible, ne vous privez pas d'outils parce que vous n'avez pas envie d'apprendre de nouvelles choses et que *ça suffit bien pour ce que je veux faire*. Vous allez au final perdre plus de temps que l'apprentissage initial (ce qui est tarte).
+> Écrire du code nécessite de nombreuses automatisations et aides pour que ce ne soit pas pénible, ne vous privez pas d'outils parce que vous n'avez pas envie d'apprendre de nouvelles choses et que *ça suffit bien pour ce que je veux faire*. Vous allez au final perdre plus de temps que l'apprentissage initial (ce qui est tarte).
 {: .note}
 
 ## un projet
@@ -120,16 +120,16 @@ Vous devriez peut-être aussi avoir la parenthèse de fin souligné en jaune. C'
 > **style** : **la dernière ligne d'un fichier python est vide**
 {: .note}
 
-La documentation de pycodestyle vous indique [toutes les erreurs qu'il reconnait](https://pycodestyle.pycqa.org/en/latest/intro.html#error-codes). Elles sont conforme aux recommandations de la [PEP8](https://realpython.com/python-pep8/).
+La documentation de pycodestyle vous indique [toutes les erreurs qu'il reconnait](https://pycodestyle.pycqa.org/en/latest/intro.html#error-codes). Elles sont conformes aux recommandations de la [PEP8](https://realpython.com/python-pep8/).
 
-> Prenez l'habitude d'écrire du code sans aucune erreur de style. Et, surtout, **apprenez pourquoi cette règle existe**. Suivre une règle sans comprendre pourquoi elle elle existe n'est pas efficace... Parce qu'on ne sait pas s'il faut la suivre ou pas.
+> Prenez l'habitude d'écrire du code sans aucune erreur de style. Et, surtout, **apprenez pourquoi cette règle existe**. Suivre une règle sans comprendre pourquoi elle existe n'est pas efficace... Parce qu'on ne sait pas s'il faut la suivre ou pas.
 {: .note}
 
-Tout au long de ce projet et des prochains, il faut faire en sorte qu'il n'y jamais d'erreur de style. Soyez donc vigilant au début avant que cela devienne naturel.
+Tout au long de ce projet et des prochains, il faut faire en sorte qu'il n'y ait jamais d'erreur de style. Soyez donc vigilant au début avant que cela devienne naturel.
 
 ### séparer code et main
 
-> Un projet c'est trois chose d'égale importance :
+> Un projet c'est trois choses d'égale importance :
 >
 > * le code : les fonctions utilisées
 > * le main : le programme principal, c'est ce qu'on exécute lorsque veut faire marcher le projet
@@ -172,7 +172,7 @@ La notation pointée se lit alors : exécute le nom `bonjour` définit dans *"le
 
 > Pour plus d'information sur les modules vous pouvez lire [ceci]({% link cours/developpement/bases-python/modules.md %}).
 
-Ne **jamais jamais jamais** utiliser `from le_code import *` qui importe tous les noms définis dans *"le_code.py"*. On ne sais pas vraiment ce qui a été importé en lisant *"le_code.py"*. : notre code n'est pas lisible ! Le gain d'écriture de `*` plutôt que `bonjour` sera perdu au centuple plus tard lorsque l'on devra chercher dans tous les fichiers du projet où l'on a bien pu définir `bonjour`...
+Ne **jamais jamais jamais** utiliser `from le_code import *` qui importe tous les noms définis dans *"le_code.py"*. On ne sait pas vraiment ce qui a été importé en lisant *"le_code.py"*. : notre code n'est pas lisible ! Le gain d'écriture de `*` plutôt que `bonjour` sera perdu au centuple plus tard lorsque l'on devra chercher dans tous les fichiers du projet où l'on a bien pu définir `bonjour`...
 
 > Comme on va passer plus de temps à lire/comprendre du code qu'à l'écrire, il faut **optimiser la lecture et non l'écriture de code**.  On préférera toujours **la lisibilité à la rapidité**.
 {: .note}
@@ -183,7 +183,7 @@ Les tests permettent de vérifier que notre code fonctionne. Ils font partie du 
 
 > Vous avez du installer pytest et fait le lien avec vscode en suivant les prés-requis. Si ce n'est pas le cas, faites le.
 
-On y reviendra plus tard et à de nombreuses reprise :
+On y reviendra plus tard et à de nombreuses reprises :
 
 > les tests sont la pierre angulaire d'une bonne programmation : ils garantissent le fonctionnement de votre code et qu'[il ne peut régresser](https://blog.octo.com/via-negativa-tdd-et-la-conception-de-logiciel/).
 {: .note}
@@ -200,7 +200,7 @@ assert <expression logique>
 
 Si l'expression logique est vraie, le programme continue sans rien dire et si l'expression logique est fausse, le programme s'arrête avec l'erreur : `AssertionError`.
 
-Essayons ça avec la plus simple des expression logique : `True`
+Essayons ça avec la plus simple des expressions logiques : `True`
 
 > créez un fichier nommé *test_projet.py* qui contiendra le code :
 >
@@ -309,7 +309,7 @@ La raison est que *test_projet.py* définit des fonction mais ne les **exécute 
 
 On a donc 2 choix :
 
-* exécuter les fonctions dans le fichier après les avoir défini
+* exécuter les fonctions dans le fichier après les avoir définies
 * utiliser une bibliothèque que le fait pour nous
 
 Nous allons utiliser la seconde option avec pytset.
@@ -332,7 +332,7 @@ Que fait pytest :
 > pytest exécute toutes les fonctions commençant par `test_` de tous les fichiers commençant par `test_` d’un projet.
 {: .note}
 
-On peut aussi exécuter les tests directement avec vscode. Pour cela, cliquez sur [le petit erlenmyer](https://code.visualstudio.com/docs/python/testing#_configure-tests). Vous pourrez ensuite :
+On peut aussi exécuter les tests directement avec vscode. Pour cela, cliquez sur [le petit erlenmeyer](https://code.visualstudio.com/docs/python/testing#_configure-tests). Vous pourrez ensuite :
 
 1. découvrir les tests du projet
 2. exécuter tous les tests

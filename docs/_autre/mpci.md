@@ -29,7 +29,7 @@ L'ensemble du cours (et d'autres choses) est disponible [là]({% link cours/theo
 2. projet 1 : mise en œuvre d'un projet informatique
    * prérequis :
      1. [naviguer dans un système de fichiers]({% post_url tutos/systeme/2021-08-24-fichiers-navigation %})
-     2. [vscode et python]({% post_url tutos/editeur/vsc/2021-09-14-vsc-python %}))
+     2. [vscode et python]({% post_url tutos/editeur/vsc/2021-09-14-vsc-python %})
    * [sujet]({% link cours/theorie-pratiques-algorithmique/coder/projet-hello-dev.md %})
 3. projet 2 : pourcentages
    * prérequis :

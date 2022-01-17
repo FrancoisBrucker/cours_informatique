@@ -32,12 +32,12 @@ Ce projet suit l'[étude de l'exponentiation]({% link cours/theorie-pratiques-al
 ### vscode
 
 1. on vérifie que python est ok : le python utilisé par vscode (exécution via le triangle en haut à droite de la fenêtre) et le terminal doivent être le même :
-     * le python utilisé par vscode est marqué dans la [barre de status](https://code.visualstudio.com/docs/getstarted/userinterface)
+     * le python utilisé par vscode est marqué dans la [barre de statut](https://code.visualstudio.com/docs/getstarted/userinterface)
      * par défaut, c'est le paramètre `python.defaultInterpreterPath`
      * dans un terminal, la commande `which python` (ou `python3` si votre interpréteur est `python3`) vous indique quel interpréteur python est utilisé lorsque vous tapez `python`.
 2. on vérifie que le linter est actif (en faisant une faute de style)
 
-> On se force, jusqu'à que cela devienne un automatisme, d'écrire du code stylé. C'est à dire sans que le linter ne se fâche.
+> On se force, jusqu'à que cela devienne un automatisme, à écrire du code stylé. C'est à dire sans que le linter ne se fâche.
 {: .a-faire}
 
 ### bibliothèques
@@ -54,8 +54,8 @@ Nous aurons besoin d'utiliser deux bibliothèques ([matplotlib](https://matplotl
 
 ### algorithme naif
 
-> * dans le fichier *"exponentiation.py"* : implémetez l'algorithme naïf dans une fonction nommée `puissance_naif`
-> * dans le fichier *"test_exponentiation.py"* : implémetez les tests de l'algorithme naïf :
+> * dans le fichier *"exponentiation.py"* : implémentez l'algorithme naïf dans une fonction nommée `puissance_naif`
+> * dans le fichier *"test_exponentiation.py"* : implémentez les tests de l'algorithme naïf :
 >   * vérifiez que les cas simples avec nombre et/ou exposant à 1 fonctionnent
 >   * vérifiez qu'un cas général est ok (comme $2^4$ par exemple)
 >   * vérifiez que les cas particuliers avec l'exposant et/ou nombre valant 0 fonctionnent
@@ -76,8 +76,8 @@ Pour les tests, on utilisera les règles suivantes :
 
 ### algorithme rapide
 
-> * dans le fichier *"exponentiation.py"* : implémetez l'algorithme rapide dans une fonction nommée `puissance_rapide`
-> * dans le fichier *"test_exponentiation.py"* : implémetez les tests de l'algorithme rapide en faisant les même test que pour l'algorithme naïf. :
+> * dans le fichier *"exponentiation.py"* : implémentez l'algorithme rapide dans une fonction nommée `puissance_rapide`
+> * dans le fichier *"test_exponentiation.py"* : implémentez les tests de l'algorithme rapide en faisant les mêmes tests que pour l'algorithme naïf. :
 >
 > Vérifier que vos tests se lancent bien avec l'erlenmeyer et dans le terminal.
 >
@@ -92,13 +92,13 @@ La seule façon de mesurer expérimentalement la complexité d'un algorithme est
 
 Ce n'est cependant pas si simple de mesurer ce temps précisément parce que :
 
-* nous ne sommes pas seul sur la machine, tous les programmes actif s'exécutent souvent en même temps en se [partageant du temps de processeur](https://fr.wikipedia.org/wiki/Temps_partag%C3%A9) : il est donc difficile de mesurer précisément le temps uniquement pris pour notre algorithme par le processeur.
-* python fait des choses sans nous le dire, comme vérifier de temps en temps que les objets ont tous des noms et les supprimer s'ils n'en ont plus (on appelle ça un [ramasse miette](https://fr.wikipedia.org/wiki/Ramasse-miettes_(informatique))) : python lui-même exécute des instruction qui ne sont pas dans notre algorithme.
+* nous ne sommes pas seul sur la machine, tous les programmes actifs s'exécutent souvent en même temps en se [partageant du temps de processeur](https://fr.wikipedia.org/wiki/Temps_partag%C3%A9) : il est donc difficile de mesurer précisément le temps uniquement pris pour notre algorithme par le processeur.
+* python fait des choses sans nous le dire, comme vérifier de temps en temps que les objets ont tous des noms et les supprimer s'ils n'en ont plus (on appelle ça un [ramasse miette](https://fr.wikipedia.org/wiki/Ramasse-miettes_(informatique))) : python lui-même exécute des instructions qui ne sont pas dans notre algorithme.
 
 Mais pour ce qui nous importe, on va dire que c'est pas grave parce que ces *temps parasites* :
 
 * sont négligeables lorsque la taille des entrées deviennent grandes
-* ils peuvent être vues comme des constantes ans le calcul de notre complexité : il ne participent donc pas à l'allure générale de la courbe de complexité.
+* ils peuvent être vues comme des constantes dans le calcul de notre complexité : il ne participent donc pas à l'allure générale de la courbe de complexité.
 
 Le protocole de calcul sera alors le suivant :
 
@@ -132,7 +132,7 @@ Le code précédent utilise deux fonction du module [time](https://docs.python.o
 * [time.time()](https://docs.python.org/fr/3/library/time.html#time.time) qui rend le nombre de seconde depuis l'[origine des temps informatique](https://fr.wikipedia.org/wiki/Heure_Unix), c'est à dire le 1er janvier 1970
 * [`time.sleep(1)`](https://docs.python.org/fr/3/library/time.html#time.sleep) qui ne fait rien pendant un nombre de secondes données en entrée.
 
-> Exécutez plusieurs fois le code précédent pour voir que l'on passe bien environ 1seconde à ne rien faire.
+> Exécutez plusieurs fois le code précédent pour voir que l'on passe bien environ 1 seconde à ne rien faire.
 {: .a-faire}
 
 ### expérimentations
@@ -194,9 +194,9 @@ plt.show()
 > Créez un fichier *"main_graphique.py"* et représentez sur le même graphique (il suffit de mettre deux instructions `ax.plot`) le temps mis par les deux algorithmes pour effectuer l'exponentiation de $ 3^y$  où $y$ varie de $0$ à $100000$ par pas de $1000$.
 {: .a-faire}
 
-Attention au constantes de votre code :
+Attention aux constantes de votre code :
 
 > Mantra : pas de [magic numbers](https://en.wikipedia.org/wiki/Magic_number_(programming)#Unnamed_numerical_constants) dans le code.
 >
-> On remplace les nombres pas des constantes que l'on identifie dans le code par un nom (en majuscule) signifiant.
+> On remplace les nombres pas des constantes que l'on identifie dans le code par un nom (en majuscules) signifiant.
 {: .note}

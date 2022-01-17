@@ -57,7 +57,8 @@ Un algorithme est donc constitué de trois parties :
 
 * une liste d'actions possibles
 * le nombre d'actions nécessaires pour s'exécuter (ce qu'on appelle **complexité**)
-* une vérification
+* une vérification.
+
 On voit en creux que des notions de **vérification** (caractériser la sortie) et de  () apparaissent également.
 
 ## algorithmes ! {#algorithmes-trois-voies}
@@ -68,7 +69,7 @@ La définition très générale d'un algorithme se décline usuellement sous tro
 2. [calcul]({% link cours/theorie-pratiques-algorithmique/theorie/calcul.md %}). Un algorihtme est vu comme une fonction qui calcule un nombre. Le but est ici de comprendre ce que peuvent faire les algorithmes, quels sont les problèmes qu'ils peuvent résoudre.
 3. [code]({% link cours/theorie-pratiques-algorithmique/coder/code.md %}) : l'écriture d'un programme pouvant s'exécuter sur un ordinateur. Le but sera ici de faire en sorte de vérifier que le code correspond bien au pseudo-code et — surtout — de maintenir son fonctionnement au court du temps.
 
-Ces trois formes ont des buts diférents, mais on ne peut exceller dans l'une sans connaitre les autres. Tout algorithmicien doit avoir de bonnes connaissances théorique sur ce que peut calculer  un ordinatuer et — tôt ou tard — il devra programmer ses algorithmes ; tout développeur doit avoir des connaissances forte en algorithmie pour pouvoir écre du code performant.
+Ces trois formes ont des buts diférents, mais on ne peut exceller dans l'une sans connaitre les autres. Tout algorithmicien doit avoir de bonnes connaissances théoriques sur ce que peut calculer  un ordinateur et — tôt ou tard — il devra programmer ses algorithmes; tout développeur doit avoir des connaissances fortes en algorithmie pour pouvoir écrire du code performant.
 
 ## étude
 
@@ -76,11 +77,11 @@ Quelque-soit la forme que prendra vos algorithmes (pseudo-code, programme ou fon
 
 > Pour chaque algorithme il faudra :
 >
-> 1. vérifier le fonctionnement de l'algorithme sur de petits exemple que l'on peut tester à la main
+> 1. vérifier le fonctionnement de l'algorithme sur de petits exemples que l'on peut tester à la main
 > 2. prouver l'algorithme :
 >
->   * preuve que l'algorithme
->   * preuve qu'il résoud le problème demandé
+>   * preuve que l'algorithme termine
+>   * preuve qu'il résout le problème demandé
 >
 > 3. évaluer ses performances en calculant sa complexité
 >

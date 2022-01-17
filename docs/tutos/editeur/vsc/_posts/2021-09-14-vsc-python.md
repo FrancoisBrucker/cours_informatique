@@ -27,7 +27,7 @@ La principale extension à installer lorsque l'on fait du python est [python](ht
 
 Pour installer ces package :
 
-> Rendez vous dans la [gestion des extensions de vscode]({% post_url tutos/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main %}#extensions), puis tapez *python* dans la barre de recherche. Assurez vous d'installer les package créez par microsoft.
+> Rendez vous dans la [gestion des extensions de vscode]({% post_url tutos/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main %}#extensions), puis tapez *python* dans la barre de recherche. Assurez vous d'installer les package créés par microsoft.
 {: .a-faire}
 
 ## interpréteur python
@@ -36,7 +36,7 @@ Pour installer ces package :
 
 Les paramètres de l'interpréteur se trouvent dans [les paramètres vscode](https://code.visualstudio.com/docs/getstarted/settings) (sous mac : *menu Code > préférences > paramètres* ; sous windows/linux : *menu Fichier > préférences > paramètres*) puis, une fois dans l'onglet paramètres allez dans *extensions > python* dans le menu de gauche. Les préférences vscode consistent en des variables (*ID du paramètre*) à positionner selon ses envies, chaque variable modifiant un comportement de vscode.
 
-> Il y a deux fois les mêmes préférences : **utilisateur** et  **espace de travail**. Le premier concerne les préférences générales de vscode et le second les préférences du projet courant. Par défaut, modifiez les préférences **utilisateur**. POur plus d'information, lisez la [doc](https://code.visualstudio.com/docs/getstarted/settings).
+> Il y a deux fois les mêmes préférences : **utilisateur** et  **espace de travail**. Le premier concerne les préférences générales de vscode et le second les préférences du projet courant. Par défaut, modifiez les préférences **utilisateur**. Pour plus d'informations, lisez la [doc](https://code.visualstudio.com/docs/getstarted/settings).
 
 Il y a deux préférences qu'ils faut a priori modifier :
 
@@ -203,7 +203,7 @@ En suite le menu *TESTING* en haut de cette nouvelle fenêtre vous permet :
 
 ![tests]({{ "/assets/tutos/vsc-python/python-pytest-env.png" | relative_url }}){:style="margin: auto;display: block}
 
-On pet également directement utiliser pytest avec le terminal, en tapant `python -m pytest` (`python3 -m pytest` si votre interpréteur est `python3`) alors que vous êtes dans le dossier du projet.
+On peut également directement utiliser pytest avec le terminal, en tapant `python -m pytest` (`python3 -m pytest` si votre interpréteur est `python3`) alors que vous êtes dans le dossier du projet.
 
 ### linter
 

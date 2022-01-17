@@ -11,7 +11,7 @@ category: cours
 >* [algorithmie/algorithmes]({% link cours/theorie-pratiques-algorithmique/algorithmie/algorithmes.md %})
 {: .chemin}
 
-Le pseudo-code est la version papier d'un algorithme. Il décrit les différentes étapes permettant de dérouler un algorithme de son initialisation à son retour. Son but est d'être compréhensible par un humain. Ce n'est cependant pas une langue car il n'y a pas de place pour l'ambiguïté ni les inventions : tout doit y être rigoureusement défini, et chaque étape élémentaire doit être réalisable par un humain. Ce n'est pas un plus un langage informatique dont le but est d'être compris par un ordinateur.
+Le pseudo-code est la version papier d'un algorithme. Il décrit les différentes étapes permettant de dérouler un algorithme de son initialisation à son retour. Son but est d'être compréhensible par un humain. Ce n'est cependant pas une langue car il n'y a pas de place pour l'ambiguïté ni les inventions : tout doit y être rigoureusement défini, et chaque étape élémentaire doit être réalisable par un humain. Ce n'est pas non plus un langage informatique dont le but est d'être compris par un ordinateur.
 
 ## éléments de pseudo-code {#regles}
 
@@ -27,11 +27,11 @@ Il y a 3 types d'instruction basique :
 * [exécution conditionnelle d'instructions](#tests)
 * [répétition d'instructions](#répétition)
 
-Ce sont les atomes d'un pseudo-code. On considère qu'on ne peut pas les scinder plusieurs autres instructions.
+Ce sont les atomes d'un pseudo-code. On considère qu'on ne peut pas les scinder en plusieurs autres instructions.
 
 ### manipulations d'objets basiques {#objets-basique}
 
-On doit pouvoir manipuler et stocker des *objets*. On appelle ici **objets basiques** les booléens, les entiers, les réels et les chaines de caractères.
+On doit pouvoir manipuler et stocker des *objets*. On appelle ici **objets basiques** les booléens, les entiers, les réels et les chaînes de caractères.
 
 * **utiliser des objets**
   * opérations sur les entiers et/ou réels :
@@ -41,20 +41,20 @@ On doit pouvoir manipuler et stocker des *objets*. On appelle ici **objets basiq
   * opérations sur les booléens : négation (non, `NOT`, $\neg$), et logique (et, `&&`, `AND`), ou logique (ou, `||`, `OR`)
 * **utiliser des variables**. Une variable est un nom qui est associé à un objet.
   * affecter des variables : `a = 3` défini le nom `a` (appelé *variable*) qui vaut `3`. (vous verrez parfois utilisé $a \leftarrow 3$ à la place de $a = 3$ pour qu'il n'y ait pas de confusion si l'on utilise `=` pour l'égalité)
-  * lire une variable. Si j'ai affecté `3` à la variable `a`, je doit pouvoir l'utiliser, par exemple en écrivant `b = a * 3`
-* **utiliser un tableau**. Un tableau est un conteneur. Il contient $n$ objets où $n$ est sa **longueur**. On peut voir ça comme une variable contenant $n$ objet plutôt qu'un seul. On peut accéder à, et/ou modifier un élément stocké dans le tableau en lui donnant son **indice**, allant de $0$ à $n-1$ : `t[i]` correpond à l'objet d'indice $i$ d'un tableau stocké dans la variable `t`. On considère souvent une chaine de caractère comme un tableau de caractères.
+  * lire une variable. Si j'ai affecté `3` à la variable `a`, je dois pouvoir l'utiliser, par exemple en écrivant `b = a * 3`
+* **utiliser un tableau**. Un tableau est un conteneur. Il contient $n$ objets où $n$ est sa **longueur**. On peut voir ça comme une variable contenant $n$ objets plutôt qu'un seul. On peut accéder à, et/ou modifier un élément stocké dans le tableau en lui donnant son **indice**, allant de $0$ à $n-1$ : `t[i]` correspond à l'objet d'indice $i$ d'un tableau stocké dans la variable `t`. On considère souvent une chaîne de caractère comme un tableau de caractères.
 
-Les objets sont stockées en mémoire, que l'on identifiera à un gigantesque tableau. On considérera que l'on peut stocker sur une case mémoire :
+Les objets sont stockés en mémoire, que l'on identifiera à un gigantesque tableau. On considérera que l'on peut stocker sur une case mémoire :
 
 * un entier
 * un réel
 * un caractère
 
-Les chaines de caractères et les tableaux sont stockées sur des cases mémoires continues, ce qui permet de connaitre l'emplacement de l'élément d'indice $i$ en une opération basique si l'on connait l'emplacement du 1er élément (emplacement du premier élément + i).
+Les chaînes de caractères et les tableaux sont stockées sur des cases mémoires continues, ce qui permet de connaitre l'emplacement de l'élément d'indice $i$ en une opération basique si l'on connait l'emplacement du 1er élément (emplacement du premier élément + i).
 
 ### blocs
 
-Lier les instruction en blocs. On va utiliser ici le formalisme de python pour définir un bloc :
+Lier les instructions en blocs. On va utiliser ici le formalisme de python pour définir un bloc :
 
 ```text
 type de bloc:
@@ -64,9 +64,9 @@ type de bloc:
     instruction n
 ```
 
-On décale les instruction du bloc de sa définition. C'est un truc clair qui permet de voir du premier coup d'œil les instructions d'un bloc.
+On décale les instructions du bloc de sa définition. C'est un truc clair qui permet de voir du premier coup d'œil les instructions d'un bloc.
 
-### tests
+### exécution conditionnelle d’instructions
 
 On veut pouvoir exécuter un bloc de code si une condition logique est vérifiée :
 
@@ -127,19 +127,19 @@ pour chaque élément x d'un tableau:
     instruction n
 ```
 
-On exécutera alors le bloc autant de fois qu'il y a d'élément dans le tableau et à chaque itération du bloc, la variable `x` vaudra un autre élément du tableau. On prendra les éléments du tableau par indice croissant.
+On exécutera alors le bloc autant de fois qu'il y a d'éléments dans le tableau et à chaque itération du bloc, la variable `x` vaudra un autre élément du tableau. On prendra les éléments du tableau par indice croissant.
 
 > On peut dériver la variante `pour chaque` de la forme initiale `tant que`.
 
 ### complexité
 
-La complexité d'un pseudo-code est le nombre d'instructions basiques utilisées pour l'exécuter. La complexité d'un bloc d'instruction est égal à la somme des complexités des instructions qui le compose.
+La complexité d'un pseudo-code est le nombre d'instructions basiques utilisées pour l'exécuter. La complexité d'un bloc d'instruction est égale à la somme des complexités des instructions qui le composent.
 
 Par exemple le pseudo-code suivant :
 
 ```text
 x = 30
-if ((x > 12) AND (y < 36)):
+if ((x > 12) AND (x < 36)):
     z = x * "coucou"
 ```
 
@@ -205,7 +205,7 @@ variable = nom(entrée 1, ..., entrée n)
 
 Si on veut utiliser le pseudo code *recherche* défini plus haut, cela pourrait être une instruction du type : `trouve = recherche(tab, 3)`. On affecte la sortie de l'algorithme `recherche` avec comme paramètres `tab` (le tableau d'entier) et `3` (un entier) à la variable `trouve`.
 
-Il est important de voir que lorsque l'on exécute une fonction, les variable qu'elle crée le seront dans un espace à elle, pas dans celui du pseudo-code appelant. Ainsi dans le code suivant :
+Il est important de voir que lorsque l'on exécute une fonction, les variables qu'elle crée existeront dans un espace à elle, pas dans celui du pseudo-code appelant. Ainsi dans le code suivant :
 
 ```text
 e = 4
@@ -222,7 +222,7 @@ On affichera bien 4 à l'écran et pas 6 (le nom de variable `e` défini dans re
 
 Si l'on devait à chaque pseudocode redéfinir tout les algorithmes qu'on utilise ce serait vraiment fastidieux. On utilise souvent des fonctions non basiques (comme l'affichage à l'écran qu'on a déjà vu) ou des structures plus élaborées (les listes par exemples qui sont des extensions des tableaux). Il faudra cependant toujours connaitre les complexités de ce qu'on utilise.
 
-Par exemple pour les listes, qui sont des tableau redimensionnables :
+Par exemple pour les listes, qui sont des tableaux redimensionnables :
 
 * complexité d'ajout d'un élément à la fin de la liste : coût de 1 instruction
 * complexité de l'ajout d'un élément pas à la fin de la liste : coût de la taille de la liste instructions
@@ -245,15 +245,15 @@ Pour réaliser cela le plus simplement possible, on voudra **toujours** :
 
 * qu'il soit lisible,
 * qu'il soit juste,
-* en connaître ses performances.
+* en connaître les performances.
 
 ### lisible
 
 Le but d'un algorithme papier est d'être compris. On utilisera pour l'écrire une série de règles compréhensibles par tout le monde : le pseudo-code. Ce n'est ni une langue ni un langage.
 
-préférez des noms de variables explicites et n'hésitez pas à séparer votre pseudo-code en fonction pour qu'il soit plus clair
+préférez des noms de variables explicites et n'hésitez pas à séparer votre pseudo-code en fonctions pour qu'il soit plus clair.
 
-> N'oubliez pas que les fonctions doivent être décrits si elles ne sont pas immédiatement compréhensibles.
+> N'oubliez pas que les fonctions doivent être décrites si elles ne sont pas immédiatement compréhensibles.
 
 ### preuve
 

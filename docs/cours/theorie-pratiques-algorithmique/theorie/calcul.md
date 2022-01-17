@@ -26,57 +26,57 @@ Un algorithme, [on l'a vu]({% link cours/theorie-pratiques-algorithmique/algorit
 3. un humain doit pouvoir suivre chaque étape avec un papier et un crayon
 4. exécuter une règle ne doit pas nécessiter d'intelligence (à part celle pour comprendre la règle)
 
-Tout ça est un peu plus précis. On constate que c'est le terme **fini** qui revient constamment : pour qu'un humain comprenne, et surtout puisse agir, il faut pas qu'il y ait un nombre infini de choses à regarder (chaque chose à faire prend un temps de réflexion non nulle, une instruction contenant un nombre infini n'est humainement pas réalisable). En même, si l'on admet que l'on est immortel et que l'on peut réaliser un nombre infini d'opérations, elles sont réalisées les unes à la suite des autres et chaque opération ne peut manipuler qu'un nombre fini d'éléments : on ne ainsi atteindre que des choses [dénombrables](https://fr.wikipedia.org/wiki/Ensemble_d%C3%A9nombrable) c'est à dire représentables par des entiers.
+Tout ça est un peu plus précis. On constate que c'est le terme **fini** qui revient constamment : pour qu'un humain comprenne, et surtout puisse agir, il ne faut pas qu'il y ait un nombre infini de choses à regarder (chaque chose à faire prend un temps de réflexion non nul, une instruction contenant un nombre infini n'est humainement pas réalisable). Et même si l'on admet que l'on est immortel et que l'on peut réaliser un nombre infini d'opérations, elles sont réalisées les unes à la suite des autres et chaque opération ne peut manipuler qu'un nombre fini d'éléments : on ne peut ainsi atteindre que des choses [dénombrables](https://fr.wikipedia.org/wiki/Ensemble_d%C3%A9nombrable) c'est à dire représentables par des entiers.
 
->Cette remarque, évidente, a une conséquence fondamentale : **un algorithme ne peut pas manipuler de nombres réels**. On ne peut considérer un réel que comme une abstraction (un symbole particulier) ou une approximation (on ne considère qu'un nombre fini de décimale).
+>Cette remarque, évidente, a une conséquence fondamentale : **un algorithme ne peut pas manipuler de nombres réels**. On ne peut considérer un réel que comme une abstraction (un symbole particulier) ou une approximation (on ne considère qu'un nombre fini de décimales).
 {: .note}
 
-Prenons $\pi$ par exemple. On peut le considérer de deux manières : comme le symbole $\pi$ et de là faire de opérations sur lui (comme $2 \cdot \pi$, ou $\frac{3\pi}{3}$, ...) de façon formelle, c'est à dire sans jamais connaitre sa valeur ou comme une valeur approchée de lui (3.1415 par exemple) et ainsi rendre des valeurs approchées des différentes opérations. On ne pourra cependant **jamais** avoir la valeur exacte de $\pi$ avec un algorithme (et ce même s'il avait une mémoire infinie).
+Prenons $\pi$ par exemple. On peut le considérer de deux manières : comme le symbole $\pi$ et de là faire des opérations sur lui (comme $2 \cdot \pi$, ou $\frac{3\pi}{3}$, ...) de façon formelle, c'est à dire sans jamais connaître sa valeur ou comme une valeur approchée de lui (3.1415 par exemple) et ainsi rendre des valeurs approchées des différentes opérations. On ne pourra cependant **jamais** avoir la valeur exacte de $\pi$ avec un algorithme (et ce même s'il avait une mémoire infinie).
 
-Ce n'est pas bien grave en général puisque les lois physiques sont presque tout le temps stables (de petits effets impliquent de petites causes) : considérer les réels en [notation scientifique](https://fr.wikipedia.org/wiki/Notation_scientifique) en se fixant un précision ne gène pas les calculs physiques.
+Ce n'est pas bien grave en général puisque les lois physiques sont presque tout le temps stables (de petits effets impliquent de petites causes) : considérer les réels en [notation scientifique](https://fr.wikipedia.org/wiki/Notation_scientifique) en se fixant une précision ne gène pas les calculs physiques.
 
 > Faites tout de même attention car parfois, c'est problématique. Pour le calcul d'effets chaotiques comme la météo où [de petits effets produisent de grandes causes](https://fr.wikipedia.org/wiki/Effet_papillon), certes, mais aussi lorsque l'on prend l'inverse de choses très petites qui du coup deviennent très grandes. Ce sont des problèmes dit de [stabilité numérique](https://fr.wikipedia.org/wiki/Stabilit%C3%A9_num%C3%A9rique).
 
 Fini ne veut pas dire petit nombres. Un algorithme peut utiliser des nombres entiers aussi grand qu'il le veut, du moment qu'ils ne soient pas infini
 {: .attention}
 
->Les règles que l'on a défini [précédemment]({% link cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.md %}#regles) pour écrire un pseudo-code respectent alors les règles ci-dessus si on enlève les réels comme objets basique. On peut même se restreindre [sans perte de généralité](https://en.wikipedia.org/wiki/Structured_program_theorem) (même si ce sera plus compliqué d'écrire le code) aux règles suivantes (il n'y a même pas besoin de récursivité) :
+>Les règles que l'on a définies [précédemment]({% link cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.md %}#regles) pour écrire un pseudo-code respectent alors les règles ci-dessus si on enlève les réels comme objets basiques. On peut même se restreindre [sans perte de généralité](https://en.wikipedia.org/wiki/Structured_program_theorem) (même si ce sera plus compliqué d'écrire le code) aux règles suivantes (il n'y a même pas besoin de récursivité) :
 >
 > * de lire et d'affecter des entiers à des variables
 > * d'avoir un test d'égalité entre deux variables
-> * d'exécuter une instruction puis un autre, séquentiellement
-> * exécuter une instruction si un test d'égalité est vraie
-> * exécuter un bloc d'instructions tant qu'un test d'égalité est vraie
+> * d'exécuter une instruction puis une autre, séquentiellement
+> * exécuter une instruction si un test d'égalité est vrai
+> * exécuter un bloc d'instructions tant qu'un test d'égalité est vrai
 {: .note}
 
-Tous les pseudo-code utilisant les 5 règles ci-dessus auront la même expressivité (on pourra faire exactement les même choses) que ceux utilisant [les règles]({% link cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.md %}#regles) utilisées couramment.
+Tous les pseudo-codes utilisant les 5 règles ci-dessus auront la même expressivité (on pourra faire exactement les mêmes choses) que ceux utilisant [les règles]({% link cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.md %}#regles) utilisées couramment.
 
-On pense même (c'est ce qu'on appelle la [thèse de Church-Turing](https://fr.wikipedia.org/wiki/Th%C3%A8se_de_Church)) que quelque soit les règles qu'on va se donner, du moment qu'elles respectent les 4 règles générales, alors on ne pourra pas calculer plus de choses.
+On pense même (c'est ce qu'on appelle la [thèse de Church-Turing](https://fr.wikipedia.org/wiki/Th%C3%A8se_de_Church)) que quelque soient les règles qu'on va se donner, du moment qu'elles respectent les 4 règles générales, alors on ne pourra pas calculer plus de choses.
 
 ### fonctions
 
-Un algorithme, représenté par son pseudo code, a des entrées et une sorite. D'après ce qui précède, ces entrées et cette sortie peuvent être :
+Un algorithme, représenté par son pseudo code, a des entrées et une sortie. D'après ce qui précède, ces entrées et cette sortie peuvent être :
 
 * des entiers finis
 * des approximations finies de réels
-* des chaines de caractères
+* des chaînes de caractères
 
-> Un algorithme à $p$ entrées, dont $q$ entrées entières, $r$ entrées approximation des réels et $s$ chaines de caractères est une fonction de :
+> Un algorithme à $p$ entrées, dont $q$ entrées entières, $r$ entrées approximation des réels et $s$ chaînes de caractères est une fonction de :
 >
 > $$f: \mathbb{N}^{q} \times R^r \times C^t \rightarrow N \cup A \cup C$$
 >
-> où $\mathbb{N}$ est l'ensemble des entiers, $R$ l'ensemble des approximations de réels et $C$ l'ensemble des chaines de caractères.
+> où $\mathbb{N}$ est l'ensemble des entiers, $R$ l'ensemble des approximations de réels et $C$ l'ensemble des chaînes de caractères.
 {: .note}
 
-On a pas trop dit grand chose pour l'instant. On a fait que reécrire ce qu'on savait déjà sos la forme de fonctions. On va montrer qu'on peut faire bien mieux.
+On a pas trop dit grand chose pour l'instant. On a fait que reécrire ce qu'on savait déjà sous la forme de fonctions. On va montrer qu'on peut faire bien mieux.
 
 ## modèle
 
-On montre ici que l'on peut aller bien plus loin que la partie précédente et montrer qu'un algorithme est une fonction de $\mathbb{N}$ (les entiers) dans $\mathbb{N}$ 
+On montre ici que l'on peut aller bien plus loin que la partie précédente et montrer qu'un algorithme est une fonction de $\mathbb{N}$ (les entiers) dans $\mathbb{N}$.
 
 Cela nous permettra ensuite de montrer qu'un algorithme ne peut pas **tout** calculer : il existe des fonctions de $\mathbb{N}$ dans $\mathbb{N}$ qu'aucun ordinateur ne pourra calculer.
 
-> Trouver des fonctions non calculables par un ordinateur n'est pas une tâche simple cependant. Il faut connaitre les machines de Turing pour en exhiber.
+> Trouver des fonctions non calculables par un ordinateur n'est pas une tâche simple cependant. Il faut connaître les machines de Turing pour en exhiber.
 
 ### fonctions à plusieurs paramètres entiers {#fonction-plusieurs-entier}
 
@@ -84,7 +84,7 @@ Les paramètres d'un algorithme peuvent tous être représentés par des entiers
 
 * des entiers finis : c'est clair.
 * des approximations finies de réels : on peut utiliser la norme [IEEE 754](https://fr.wikipedia.org/wiki/IEEE_754). Par exemple 3.1415 en codage IEEE 754 sur 32 bits correspond à l'entier binaire : `01000000010010010000111001010110` (j'ai utilisé [un convertisseur](https://www.h-schmidt.net/FloatConverter/IEEE754.html))
-* des chaines de caractères : que l'on peut représenter comme un entier en utilisant le le codage [utf-8](https://fr.wikipedia.org/wiki/UTF-8). Par exemple la chaine de caractère "Yop !" correspond au nombre binaire `111100101101111011100000010000000100001` en utilisant  (là aussi, j'ai utilisé [un convertisseur](http://hapax.qc.ca/conversion.fr.html)).
+* des chaînes de caractères : que l'on peut représenter comme un entier en utilisant le le codage [utf-8](https://fr.wikipedia.org/wiki/UTF-8). Par exemple la chaîne de caractère "Yop !" correspond au nombre binaire `111100101101111011100000010000000100001` en utilisant  (là aussi, j'ai utilisé [un convertisseur](http://hapax.qc.ca/conversion.fr.html)).
 
 On peut donc reformuler notre assertion précédente en unifiant les paramètres (on les recodent tous sous la forme d'entiers) :
 
@@ -119,7 +119,7 @@ Cela fonctionne car :
 * si $f < e$ alors $\\{ g \mid g < f \\} \cup \\{f \\} \subseteq \\{ g \mid g < e \\}$ et donc $h(f) < h(e)$
 * si $e$ et $f$ sont deux éléments différents de $\mathbb{N}^p$ alors soit $e < f$ soit $f < e$
 
-On conclut en remarquant que la fonction $h'(n) = (n, 0, \dots , 0)$ est une injection de $\mathbb{N}$ dans $\mathbb{N}^p$. Il existe donc une injection de $\mathbb{N}$ dans $\mathbb{N}^p$ (la fonction $h'$) et une injection de $\mathbb{N}^p$ dans $\mathbb{N}$ (la fonction $h$) : il existe une bijection de $\mathbb{N}^p$ dans $\mathbb{N}$.
+On conclut en remarquant que la fonction $h'(n) = (n, 0, \dots , 0)$ est une injection de $\mathbb{N}$ dans $\mathbb{N}^p$. Il existe donc une injection de $\mathbb{N}$ dans $\mathbb{N}^p$ (la fonction $h'$) et une injection de $\mathbb{N}^p$ dans $\mathbb{N}$ (la fonction $h$) : il existe une bijection entre $\mathbb{N}^p$ et $\mathbb{N}$.
 
 Toute fonction de $\mathbb{N}^p$ dans $\mathbb{N}$ peut alors s'écrire comme une fonction de $\mathbb{N}$ dans $\mathbb{N}$ ce qui nous permet de dire que :
 
@@ -156,7 +156,7 @@ En remarquant que tout entier peut s'écrire sous sa [notation binaire](https://
 
 On a démontré qu'un algorithme était une fonction de $\mathbb{N}$ dans $\mathbb{N}$ (ou, ce qui est identique, de $\\{0, 1\\}^\star$ dans $\\{0, 1\\}$). Mais c'est une fonction particulière puisque ce qu'elle procède selon un plan détaillé (des instructions) qu'elle exécute petit à petit (séquentiellement).
 
-On ne donnera pas ici d'exemple concret de fonction non calculables on montre juste que contrairement à une idée répandue :
+On ne donnera pas ici d'exemple concret de fonction non calculable on montre juste que contrairement à une idée répandue :
 
 > Un algorithme ne peut pas **tout** calculer. En revanche, quelque soit le formalisme utilisé pour le calcul (le pseudo-code ou code) ils peuvent tous calculer **la même chose**.
 {: .note}
@@ -167,7 +167,7 @@ On va montrer qu'il existe des fonctions qui ne sont pas des algorithmes car il 
 
 #### nombre d'algorithmes {#nombre-algorithmes}
 
-Comme un algorithme peut-être décrit par son pseudo-code, qui est une chaine de caractères (qu'on peut limiter aux mots Français si on a envie), in y a au plus autant d'algorithmes que de chaines de caractères. Ca en fait un sacré paquet mais comme chaque chaine de caractère est un entier (on l'a vu [juste avant](#fonction-plusieurs-entier)) :
+Comme un algorithme peut-être décrit par son pseudo-code, qui est une chaîne de caractères (qu'on peut limiter aux mots Français si on a envie), il y a au plus autant d'algorithmes que de chaînes de caractères. Ça en fait un sacré paquet mais comme chaque chaîne de caractère est un entier (on l'a vu [juste avant](#fonction-plusieurs-entier)) :
 
 > Il ne peut y avoir plus d'algorithme que de nombres entiers.
 {: .note}
@@ -178,7 +178,7 @@ Soit $f: \mathbb{N} \rightarrow \mathbb{N}$. En associant pour chaque entier $n$
 
 $$I(f) = \{ (n, f(n)) \vert n \in \mathbb{N} \}$$
 
-Connaitre $f$ ou $I(f)$ est équivalent et comme $I(f) \subseteq \mathbb{N} \times \mathbb{N}$ on en conclut :
+Connaître $f$ ou $I(f)$ est équivalent et comme $I(f) \subseteq \mathbb{N} \times \mathbb{N}$ on en conclut :
 
 > Il y a autant de fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ que de parties de $\mathbb{N} \times \mathbb{N}$
 {: .note}
@@ -197,12 +197,12 @@ Bref, $y$ n'existe pas. On en conclut qu'il existe des éléments de $2^E$ qui n
 
 ### mais lorsqu'on calcule, on calcule la même chose
 
-Les règles qu'on s'est donné pour écrire du pseudo-code vont être pratiques pour décrire un algorithme pour un humain. Le fait qu'une fois posées, les règles ne nécessitent pas d'intelligence pour être exécutées, les rendent même accessible à des étudiants !
+Les règles qu'on s'est données pour écrire du pseudo-code vont être pratiques pour décrire un algorithme pour un humain. Le fait qu'une fois posées, les règles ne nécessitent pas d'intelligence pour être exécutées, les rendent même accessible à des étudiants !
 Cependant les termes qu'on peut utiliser ne sont pas définis clairement, il y a de multiples façons d'interpréter les [4 règles générales](#regles-generales) d'un calcul et donc de multiples façon d'écrire du pseudo-code.
 
 On peut déjà penser aux multiples langages de programmation, allant de [l'assembleur](https://fr.wikipedia.org/wiki/Assembleur) compréhensible par les processeurs de nos ordinateurs au [python](https://fr.wikipedia.org/wiki/Python_(langage)) que tout le monde connait, en passant par le [haskell](https://fr.wikipedia.org/wiki/Haskell) ou encore le [C](https://fr.wikipedia.org/wiki/C_(langage)). On trouve même des langages désignées pour être les plus simples possibles (appelés [turing tarpit](https://fr.wikipedia.org/wiki/Langage_de_programmation_exotique)) et permettant de calculer tout ce qu'on peut faire en python par exemple, comme le [brainfuck](https://fr.wikipedia.org/wiki/Brainfuck) qui est le plus célèbres d'entres eux.
 
-> *fun fact*, on peut utiliser aussi certains jeu comme langage de programmation comme [factorio](https://www.factorio.com/) (l'algorithme de tri [quicksort](https://www.youtube.com/watch?v=ts5EKp9w4TU)), ou encore [minecraft](https://www.minecraft.net/) ([une caculatrie](https://www.youtube.com/watch?v=uGug-4xkw6M)).
+> *fun fact*, on peut utiliser aussi certains jeu comme langage de programmation comme [factorio](https://www.factorio.com/) (l'algorithme de tri [quicksort](https://www.youtube.com/watch?v=ts5EKp9w4TU)), ou encore [minecraft](https://www.minecraft.net/) ([une caculatrice](https://www.youtube.com/watch?v=uGug-4xkw6M)).
 
 Et bien on peut démontrer que tous ces langages **calculent exactement la même chose** (mais de façon différente) !
 
@@ -223,9 +223,9 @@ On n'en parlera pas trop dans ce cours (à moins que vous me le demandiez très 
 De façon plus précise on a la suite d'équivalences :
 
 1. faire une démonstration consiste — à partir d'une série finie d'axiomes — à effectuer une suite finie de déductions pour parvenir à un résultat. ([Aristote](https://fr.wikipedia.org/wiki/Aristote#Enqu%C3%AAte,_d%C3%A9monstration_et_syllogisme), en -350 environ)
-2. (1) est équivalent à démontrer à l'aide d'une suite finie de déduction qu'une proposition logique est vraie ([Hilbert](https://fr.wikipedia.org/wiki/Syst%C3%A8me_%C3%A0_la_Hilbert), début XXe siècle)
-3. (en passant, [Gödel](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8mes_d%27incompl%C3%A9tude_de_G%C3%B6del), en 1931, démontre qu'il existe des propositions logiques qui sont vraies mais qu'il est impossible à démontrer)
-4. [Curry puis Howard qui généralise](https://fr.wikipedia.org/wiki/Correspondance_de_Curry-Howard), en 1950 et 1980, montrent que (2) est équivalent à écrire terme de [$\lambda$-calcul](https://fr.wikipedia.org/wiki/Lambda-calcul)
+2. (1) est équivalent à démontrer à l'aide d'une suite finie de déductions qu'une proposition logique est vraie ([Hilbert](https://fr.wikipedia.org/wiki/Syst%C3%A8me_%C3%A0_la_Hilbert), début XXe siècle)
+3. (en passant, [Gödel](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8mes_d%27incompl%C3%A9tude_de_G%C3%B6del), en 1931, démontre qu'il existe des propositions logiques qui sont vraies mais qu'il est impossible de démontrer)
+4. [Curry puis Howard qui généralise](https://fr.wikipedia.org/wiki/Correspondance_de_Curry-Howard), en 1950 et 1980, montrent que (2) est équivalent à écrire en terme de [$\lambda$-calcul](https://fr.wikipedia.org/wiki/Lambda-calcul)
 5. [Turing](https://fr.wikipedia.org/wiki/Alan_Turing) démontre en 1937, que (4) est équivalent à écrire une machine de Turing.
 6. (en passant, Turing démontre qu'il existe des machine de turing qui ne s'arrêtent jamais et que savoir si une machine de turing va s'arrêter est [indécidable](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_l%27arr%C3%AAt), ce qui est équivalent à (3))
 7. Turing, en 1936, démontre que (5) est équivalent à écrire un algorithme

@@ -53,7 +53,7 @@ Dans un explorateur de fichier cliquez sur le dossier, puis dans le menu fichier
 
 {% enddetails %}
 
-## exécuter un fichiers
+## exécuter un fichier
 
 Le premier élément de la ligne de commande est un fichier qui doit être exécuté. Par exemple :
 
@@ -102,7 +102,7 @@ La partie suivant le fichier exécutable correspondent aux paramètre du program
 
 Pour que notre commande soit exécutée sans erreur il faut donc :
 
-1. qu'un fichier exécutable nommé *"python"* (ou  *"python.exe"* sous windows) soit présent dansun des dossiers du path
+1. qu'un fichier exécutable nommé *"python"* (ou  *"python.exe"* sous windows) soit présent dans un des dossiers du path
 2. qu'il existe un fichier nommé *"mon_script.py"* dans le dossier courant du terminal
 
 ### quelle commande ?
@@ -179,7 +179,7 @@ On peut aussi combiner ces paramètres. Par exemple, si je veux voir tous les fi
 > sous powershell ?
 {: .tbd}
 
-> Pour les commandes unix, retenez quelques formes utiles de la commande (pour `ls`, je ne retiens que `ls -la`) et pour le reste ayez la reflex de regarder la documentation
+> Pour les commandes unix, retenez quelques formes utiles de la commande (pour `ls`, je ne retiens que `ls -la`) et pour le reste ayez le réflexe de regarder la documentation
 {: .note}
 
 * [ls du powershell](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-childitem?view=powershell-7.2) alias vers la commande `Get-ChildItem`
@@ -209,5 +209,5 @@ rm <chemin absolu ou relatif vers le fichier à supprimer>
 rm -r <chemin absolu ou relatif vers le dossier à supprimer>
 ```
 
-* [rm du powershell](https://ss64.com/ps/remove-item.html) alirs vers la commande `remove-item`
+* [rm du powershell](https://ss64.com/ps/remove-item.html) alors vers la commande `remove-item`
 * [rm unix](https://linuxtect.com/linux-rm-command-tutorial/) La commande `rm` a beaucoup, beaucoup de paramètres possibles
