@@ -9,7 +9,7 @@ authors:
 ---
 
 
-Le but de la programmation objet n'est pas d'utiliser des concepts fumeux (classes abstraites, encapsulation et polymorphismes) mais d'écrire du code :
+Le but de la programmation objet n'est pas d'utiliser des concepts plus ou moins fumeux (classes abstraites, encapsulation et polymorphismes) mais d'écrire du code :
 
 * facile à lire
 * maintenable
