@@ -66,7 +66,7 @@
   </ul>
 </blockquote>
 
-<p>Le pseudo-code est la version papier d’un algorithme. Il décrit les différentes étapes permettant de dérouler un algorithme de son initialisation à son retour. Son but est d’être compréhensible par un humain. Ce n’est cependant pas une langue car il n’y a pas de place pour l’ambiguïté ni les inventions : tout doit y être rigoureusement défini, et chaque étape élémentaire doit être réalisable par un humain. Ce n’est pas un plus un langage informatique dont le but est d’être compris par un ordinateur.</p>
+<p>Le pseudo-code est la version papier d’un algorithme. Il décrit les différentes étapes permettant de dérouler un algorithme de son initialisation à son retour. Son but est d’être compréhensible par un humain. Ce n’est cependant pas une langue car il n’y a pas de place pour l’ambiguïté ni les inventions : tout doit y être rigoureusement défini, et chaque étape élémentaire doit être réalisable par un humain. Ce n’est pas non plus un langage informatique dont le but est d’être compris par un ordinateur.</p>
 
 <h2 id="regles">éléments de pseudo-code</h2>
 
@@ -84,11 +84,11 @@
   <li><a href="#r%C3%A9p%C3%A9tition">répétition d’instructions</a></li>
 </ul>
 
-<p>Ce sont les atomes d’un pseudo-code. On considère qu’on ne peut pas les scinder plusieurs autres instructions.</p>
+<p>Ce sont les atomes d’un pseudo-code. On considère qu’on ne peut pas les scinder en plusieurs autres instructions.</p>
 
 <h3 id="objets-basique">manipulations d’objets basiques</h3>
 
-<p>On doit pouvoir manipuler et stocker des <em>objets</em>. On appelle ici <strong>objets basiques</strong> les booléens, les entiers, les réels et les chaines de caractères.</p>
+<p>On doit pouvoir manipuler et stocker des <em>objets</em>. On appelle ici <strong>objets basiques</strong> les booléens, les entiers, les réels et les chaînes de caractères.</p>
 
 <ul>
   <li>
@@ -108,15 +108,15 @@
 <strong>utiliser des variables</strong>. Une variable est un nom qui est associé à un objet.
     <ul>
       <li>affecter des variables : <code class="language-plaintext highlighter-rouge">a = 3</code> défini le nom <code class="language-plaintext highlighter-rouge">a</code> (appelé <em>variable</em>) qui vaut <code class="language-plaintext highlighter-rouge">3</code>. (vous verrez parfois utilisé $a \leftarrow 3$ à la place de $a = 3$ pour qu’il n’y ait pas de confusion si l’on utilise <code class="language-plaintext highlighter-rouge">=</code> pour l’égalité)</li>
-      <li>lire une variable. Si j’ai affecté <code class="language-plaintext highlighter-rouge">3</code> à la variable <code class="language-plaintext highlighter-rouge">a</code>, je doit pouvoir l’utiliser, par exemple en écrivant <code class="language-plaintext highlighter-rouge">b = a * 3</code>
+      <li>lire une variable. Si j’ai affecté <code class="language-plaintext highlighter-rouge">3</code> à la variable <code class="language-plaintext highlighter-rouge">a</code>, je dois pouvoir l’utiliser, par exemple en écrivant <code class="language-plaintext highlighter-rouge">b = a * 3</code>
 </li>
     </ul>
   </li>
   <li>
-<strong>utiliser un tableau</strong>. Un tableau est un conteneur. Il contient $n$ objets où $n$ est sa <strong>longueur</strong>. On peut voir ça comme une variable contenant $n$ objet plutôt qu’un seul. On peut accéder à, et/ou modifier un élément stocké dans le tableau en lui donnant son <strong>indice</strong>, allant de $0$ à $n-1$ : <code class="language-plaintext highlighter-rouge">t[i]</code> correpond à l’objet d’indice $i$ d’un tableau stocké dans la variable <code class="language-plaintext highlighter-rouge">t</code>. On considère souvent une chaine de caractère comme un tableau de caractères.</li>
+<strong>utiliser un tableau</strong>. Un tableau est un conteneur. Il contient $n$ objets où $n$ est sa <strong>longueur</strong>. On peut voir ça comme une variable contenant $n$ objets plutôt qu’un seul. On peut accéder à, et/ou modifier un élément stocké dans le tableau en lui donnant son <strong>indice</strong>, allant de $0$ à $n-1$ : <code class="language-plaintext highlighter-rouge">t[i]</code> correspond à l’objet d’indice $i$ d’un tableau stocké dans la variable <code class="language-plaintext highlighter-rouge">t</code>. On considère souvent une chaîne de caractère comme un tableau de caractères.</li>
 </ul>
 
-<p>Les objets sont stockées en mémoire, que l’on identifiera à un gigantesque tableau. On considérera que l’on peut stocker sur une case mémoire :</p>
+<p>Les objets sont stockés en mémoire, que l’on identifiera à un gigantesque tableau. On considérera que l’on peut stocker sur une case mémoire :</p>
 
 <ul>
   <li>un entier</li>
@@ -124,11 +124,11 @@
   <li>un caractère</li>
 </ul>
 
-<p>Les chaines de caractères et les tableaux sont stockées sur des cases mémoires continues, ce qui permet de connaitre l’emplacement de l’élément d’indice $i$ en une opération basique si l’on connait l’emplacement du 1er élément (emplacement du premier élément + i).</p>
+<p>Les chaînes de caractères et les tableaux sont stockées sur des cases mémoires continues, ce qui permet de connaitre l’emplacement de l’élément d’indice $i$ en une opération basique si l’on connait l’emplacement du 1er élément (emplacement du premier élément + i).</p>
 
 <h3 id="blocs">blocs</h3>
 
-<p>Lier les instruction en blocs. On va utiliser ici le formalisme de python pour définir un bloc :</p>
+<p>Lier les instructions en blocs. On va utiliser ici le formalisme de python pour définir un bloc :</p>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>type de bloc:
     instruction 1
@@ -137,9 +137,9 @@
     instruction n
 </code></pre></div></div>
 
-<p>On décale les instruction du bloc de sa définition. C’est un truc clair qui permet de voir du premier coup d’œil les instructions d’un bloc.</p>
+<p>On décale les instructions du bloc de sa définition. C’est un truc clair qui permet de voir du premier coup d’œil les instructions d’un bloc.</p>
 
-<h3 id="tests">tests</h3>
+<h3 id="exécution-conditionnelle-dinstructions">exécution conditionnelle d’instructions</h3>
 
 <p>On veut pouvoir exécuter un bloc de code si une condition logique est vérifiée :</p>
 
@@ -197,7 +197,7 @@ sinon si (autre condition logique) est vraie:
     instruction n
 </code></pre></div></div>
 
-<p>On exécutera alors le bloc autant de fois qu’il y a d’élément dans le tableau et à chaque itération du bloc, la variable <code class="language-plaintext highlighter-rouge">x</code> vaudra un autre élément du tableau. On prendra les éléments du tableau par indice croissant.</p>
+<p>On exécutera alors le bloc autant de fois qu’il y a d’éléments dans le tableau et à chaque itération du bloc, la variable <code class="language-plaintext highlighter-rouge">x</code> vaudra un autre élément du tableau. On prendra les éléments du tableau par indice croissant.</p>
 
 <blockquote>
   <p>On peut dériver la variante <code class="language-plaintext highlighter-rouge">pour chaque</code> de la forme initiale <code class="language-plaintext highlighter-rouge">tant que</code>.</p>
@@ -205,12 +205,12 @@ sinon si (autre condition logique) est vraie:
 
 <h3 id="complexité">complexité</h3>
 
-<p>La complexité d’un pseudo-code est le nombre d’instructions basiques utilisées pour l’exécuter. La complexité d’un bloc d’instruction est égal à la somme des complexités des instructions qui le compose.</p>
+<p>La complexité d’un pseudo-code est le nombre d’instructions basiques utilisées pour l’exécuter. La complexité d’un bloc d’instruction est égale à la somme des complexités des instructions qui le composent.</p>
 
 <p>Par exemple le pseudo-code suivant :</p>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x = 30
-if ((x &gt; 12) AND (y &lt; 36)):
+if ((x &gt; 12) AND (x &lt; 36)):
     z = x * "coucou"
 </code></pre></div></div>
 
@@ -272,7 +272,7 @@ Programme :
 
 <p>Si on veut utiliser le pseudo code <em>recherche</em> défini plus haut, cela pourrait être une instruction du type : <code class="language-plaintext highlighter-rouge">trouve = recherche(tab, 3)</code>. On affecte la sortie de l’algorithme <code class="language-plaintext highlighter-rouge">recherche</code> avec comme paramètres <code class="language-plaintext highlighter-rouge">tab</code> (le tableau d’entier) et <code class="language-plaintext highlighter-rouge">3</code> (un entier) à la variable <code class="language-plaintext highlighter-rouge">trouve</code>.</p>
 
-<p>Il est important de voir que lorsque l’on exécute une fonction, les variable qu’elle crée le seront dans un espace à elle, pas dans celui du pseudo-code appelant. Ainsi dans le code suivant :</p>
+<p>Il est important de voir que lorsque l’on exécute une fonction, les variables qu’elle crée existeront dans un espace à elle, pas dans celui du pseudo-code appelant. Ainsi dans le code suivant :</p>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>e = 4
 t = [1, 2, 6]
@@ -290,7 +290,7 @@ affiche à l'écran e
 
 <p>Si l’on devait à chaque pseudocode redéfinir tout les algorithmes qu’on utilise ce serait vraiment fastidieux. On utilise souvent des fonctions non basiques (comme l’affichage à l’écran qu’on a déjà vu) ou des structures plus élaborées (les listes par exemples qui sont des extensions des tableaux). Il faudra cependant toujours connaitre les complexités de ce qu’on utilise.</p>
 
-<p>Par exemple pour les listes, qui sont des tableau redimensionnables :</p>
+<p>Par exemple pour les listes, qui sont des tableaux redimensionnables :</p>
 
 <ul>
   <li>complexité d’ajout d’un élément à la fin de la liste : coût de 1 instruction</li>
@@ -321,17 +321,17 @@ affiche à l'écran e
 <ul>
   <li>qu’il soit lisible,</li>
   <li>qu’il soit juste,</li>
-  <li>en connaître ses performances.</li>
+  <li>en connaître les performances.</li>
 </ul>
 
 <h3 id="lisible">lisible</h3>
 
 <p>Le but d’un algorithme papier est d’être compris. On utilisera pour l’écrire une série de règles compréhensibles par tout le monde : le pseudo-code. Ce n’est ni une langue ni un langage.</p>
 
-<p>préférez des noms de variables explicites et n’hésitez pas à séparer votre pseudo-code en fonction pour qu’il soit plus clair</p>
+<p>préférez des noms de variables explicites et n’hésitez pas à séparer votre pseudo-code en fonctions pour qu’il soit plus clair.</p>
 
 <blockquote>
-  <p>N’oubliez pas que les fonctions doivent être décrits si elles ne sont pas immédiatement compréhensibles.</p>
+  <p>N’oubliez pas que les fonctions doivent être décrites si elles ne sont pas immédiatement compréhensibles.</p>
 </blockquote>
 
 <h3 id="preuve">preuve</h3>

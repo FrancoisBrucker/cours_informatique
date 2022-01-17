@@ -68,7 +68,7 @@
   </ul>
 </blockquote>
 
-<p>On va étudiez deux algorithmes permettant de calculer $a^b$  à partir de deux entiers $a$ et $b$. Pour chaque algorithme on étudiera son fonctionnement selon <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/algorithmes.html#%C3%A9tude">3 axes</a> :</p>
+<p>On va étudier deux algorithmes permettant de calculer $a^b$  à partir de deux entiers $a$ et $b$. Pour chaque algorithme on étudiera son fonctionnement selon <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/algorithmes.html#%C3%A9tude">3 axes</a> :</p>
 
 <ul>
   <li>fonctionnement</li>
@@ -162,14 +162,14 @@
 
   <ul>
     <li>L’égalité entre réels n’existe pas en informatique par exemple.</li>
-    <li>dans l’exemple ci-dessus mettre des exposants négatifs ou des nombres rées ne fait pas boucler infiniment notre algorithme</li>
+    <li>dans l’exemple ci-dessus mettre des exposants négatifs ou des nombres réels ne fait pas boucler infiniment notre algorithme</li>
   </ul>
 
 </blockquote>
 
 <h4 id="preuve-de-lalgorithme">preuve de l’algorithme</h4>
 
-<p>Le fonctionnement de l’algorithme est <em>à peut prêt</em> clair si les entrées sont des entiers : il multiplie $a$ par lui-même $b$ fois grâce à une boucle. Une preuve par récurrence doit donc fonctionner, mais essayons de faire une <em>jolie</em> preuve en exhibant un invariant de boucle.</p>
+<p>Le fonctionnement de l’algorithme est <em>à peu prêt</em> clair si les entrées sont des entiers : il multiplie $a$ par lui-même $b$ fois grâce à une boucle. Une preuve par récurrence doit donc fonctionner, mais essayons de faire une <em>jolie</em> preuve en exhibant un invariant de boucle.</p>
 
 <blockquote class="note">
   <p>Si <code class="language-plaintext highlighter-rouge">nombre</code> et <code class="language-plaintext highlighter-rouge">exposant</code> sont des entiers naturels, on a l’invariant de boucle :
@@ -273,7 +273,7 @@ C(n) &amp; = &amp; \mathcal{O}(1) + \\
 
 <h3 id="finitude-rapide">preuve de finitude</h3>
 
-<p>De même que pour l’algorithme simple, <code class="language-plaintext highlighter-rouge">compteur</code> diminue strictement à chaque boucle (ou il diminue de <code class="language-plaintext highlighter-rouge">-1</code> ou il est divisé par 2). Si <code class="language-plaintext highlighter-rouge">exposant</code> est un entier naturel en entrée, <code class="language-plaintext highlighter-rouge">compteur</code> reste entier après chaque boucle (on ne le divise par 2 que s’il est pair) et est strictement plus petit : l’algorihtme va s’arrêter à un moment.</p>
+<p>De même que pour l’algorithme simple, <code class="language-plaintext highlighter-rouge">compteur</code> diminue strictement à chaque boucle (ou il diminue de <code class="language-plaintext highlighter-rouge">-1</code> ou il est divisé par 2). Si <code class="language-plaintext highlighter-rouge">exposant</code> est un entier naturel en entrée, <code class="language-plaintext highlighter-rouge">compteur</code> reste entier après chaque boucle (on ne le divise par 2 que s’il est pair) et est strictement plus petit : l’algorithme va s’arrêter à un moment.</p>
 
 <h3 id="preuve-rapide">preuve de l’algorihtme</h3>
 
@@ -290,7 +290,7 @@ C(n) &amp; = &amp; \mathcal{O}(1) + \\
 <ul>
   <li>si compteur est impair on a :
     <ul>
-      <li><code class="language-plaintext highlighter-rouge">compteur' = compteur -1</code></li>
+      <li><code class="language-plaintext highlighter-rouge">compteur' = compteur - 1</code></li>
       <li><code class="language-plaintext highlighter-rouge">resultat' = resultat * nombre</code></li>
       <li><code class="language-plaintext highlighter-rouge">nombre' = nombre</code></li>
       <li>l’invariant vaut alors en fin d’itération : <code class="language-plaintext highlighter-rouge">resultat * nombre ** compteur = (resultat * nombre) * nombre ** (compteur - 1) = resultat' * nombre' ** compteur'</code>
@@ -362,7 +362,7 @@ C(n) &amp; = &amp; \mathcal{O}(1) + \\
 
 <ul>
   <li>la procédure utilisée pour l’étude de ces deux algorithmes est générale, vous pouvez (et devez) l’appliquer à l’étude de tout nouvel algorithme.</li>
-  <li>il ne faut jamais penser que l’in ne peut pas faire mieux pour un algorithme. Si vous ne connaissiez pas l’exponentiation indienne, il vous aurez été difficile de penser que l’on peut fair mieux que l’algorithme naïf pour calculer une exponentielle</li>
+  <li>il ne faut jamais penser que l’on ne peut pas faire mieux pour un algorithme. Si vous ne connaissiez pas l’exponentiation indienne, il vous aurait été difficile de penser que l’on peut faire mieux que l’algorithme naïf pour calculer une exponentielle</li>
   <li>un algorithmicien ferait beaucoup de sacrifices pour obtenir une complexité en $\mathcal{O}(\ln(n))$ tellement c’est efficace.</li>
 </ul>
 

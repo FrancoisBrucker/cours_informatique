@@ -94,7 +94,7 @@
 <ol>
   <li>on vérifie que python est ok : le python utilisé par vscode (exécution via le triangle en haut à droite de la fenêtre) et le terminal doivent être le même :
     <ul>
-      <li>le python utilisé par vscode est marqué dans la <a href="https://code.visualstudio.com/docs/getstarted/userinterface">barre de status</a>
+      <li>le python utilisé par vscode est marqué dans la <a href="https://code.visualstudio.com/docs/getstarted/userinterface">barre de statut</a>
 </li>
       <li>par défaut, c’est le paramètre <code class="language-plaintext highlighter-rouge">python.defaultInterpreterPath</code>
 </li>
@@ -105,7 +105,7 @@
 </ol>
 
 <blockquote class="a-faire">
-  <p>On se force, jusqu’à que cela devienne un automatisme, d’écrire du code stylé. C’est à dire sans que le linter ne se fâche.</p>
+  <p>On se force, jusqu’à que cela devienne un automatisme, à écrire du code stylé. C’est à dire sans que le linter ne se fâche.</p>
 </blockquote>
 
 <h3 id="bibliothèques">bibliothèques</h3>
@@ -128,9 +128,9 @@
 
 <blockquote class="a-faire">
   <ul>
-    <li>dans le fichier <em>“exponentiation.py”</em> : implémetez l’algorithme naïf dans une fonction nommée <code class="language-plaintext highlighter-rouge">puissance_naif</code>
+    <li>dans le fichier <em>“exponentiation.py”</em> : implémentez l’algorithme naïf dans une fonction nommée <code class="language-plaintext highlighter-rouge">puissance_naif</code>
 </li>
-    <li>dans le fichier <em>“test_exponentiation.py”</em> : implémetez les tests de l’algorithme naïf :
+    <li>dans le fichier <em>“test_exponentiation.py”</em> : implémentez les tests de l’algorithme naïf :
       <ul>
         <li>vérifiez que les cas simples avec nombre et/ou exposant à 1 fonctionnent</li>
         <li>vérifiez qu’un cas général est ok (comme $2^4$ par exemple)</li>
@@ -160,9 +160,9 @@
 
 <blockquote class="a-faire">
   <ul>
-    <li>dans le fichier <em>“exponentiation.py”</em> : implémetez l’algorithme rapide dans une fonction nommée <code class="language-plaintext highlighter-rouge">puissance_rapide</code>
+    <li>dans le fichier <em>“exponentiation.py”</em> : implémentez l’algorithme rapide dans une fonction nommée <code class="language-plaintext highlighter-rouge">puissance_rapide</code>
 </li>
-    <li>dans le fichier <em>“test_exponentiation.py”</em> : implémetez les tests de l’algorithme rapide en faisant les même test que pour l’algorithme naïf. :</li>
+    <li>dans le fichier <em>“test_exponentiation.py”</em> : implémentez les tests de l’algorithme rapide en faisant les mêmes tests que pour l’algorithme naïf. :</li>
   </ul>
 
   <p>Vérifier que vos tests se lancent bien avec l’erlenmeyer et dans le terminal.</p>
@@ -180,15 +180,15 @@
 <p>Ce n’est cependant pas si simple de mesurer ce temps précisément parce que :</p>
 
 <ul>
-  <li>nous ne sommes pas seul sur la machine, tous les programmes actif s’exécutent souvent en même temps en se <a href="https://fr.wikipedia.org/wiki/Temps_partag%C3%A9">partageant du temps de processeur</a> : il est donc difficile de mesurer précisément le temps uniquement pris pour notre algorithme par le processeur.</li>
-  <li>python fait des choses sans nous le dire, comme vérifier de temps en temps que les objets ont tous des noms et les supprimer s’ils n’en ont plus (on appelle ça un <a href="https://fr.wikipedia.org/wiki/Ramasse-miettes_(informatique)">ramasse miette</a>) : python lui-même exécute des instruction qui ne sont pas dans notre algorithme.</li>
+  <li>nous ne sommes pas seul sur la machine, tous les programmes actifs s’exécutent souvent en même temps en se <a href="https://fr.wikipedia.org/wiki/Temps_partag%C3%A9">partageant du temps de processeur</a> : il est donc difficile de mesurer précisément le temps uniquement pris pour notre algorithme par le processeur.</li>
+  <li>python fait des choses sans nous le dire, comme vérifier de temps en temps que les objets ont tous des noms et les supprimer s’ils n’en ont plus (on appelle ça un <a href="https://fr.wikipedia.org/wiki/Ramasse-miettes_(informatique)">ramasse miette</a>) : python lui-même exécute des instructions qui ne sont pas dans notre algorithme.</li>
 </ul>
 
 <p>Mais pour ce qui nous importe, on va dire que c’est pas grave parce que ces <em>temps parasites</em> :</p>
 
 <ul>
   <li>sont négligeables lorsque la taille des entrées deviennent grandes</li>
-  <li>ils peuvent être vues comme des constantes ans le calcul de notre complexité : il ne participent donc pas à l’allure générale de la courbe de complexité.</li>
+  <li>ils peuvent être vues comme des constantes dans le calcul de notre complexité : il ne participent donc pas à l’allure générale de la courbe de complexité.</li>
 </ul>
 
 <p>Le protocole de calcul sera alors le suivant :</p>
@@ -230,7 +230,7 @@
 </ul>
 
 <blockquote class="a-faire">
-  <p>Exécutez plusieurs fois le code précédent pour voir que l’on passe bien environ 1seconde à ne rien faire.</p>
+  <p>Exécutez plusieurs fois le code précédent pour voir que l’on passe bien environ 1 seconde à ne rien faire.</p>
 </blockquote>
 
 <h3 id="expérimentations">expérimentations</h3>
@@ -300,12 +300,12 @@
   <p>Créez un fichier <em>“main_graphique.py”</em> et représentez sur le même graphique (il suffit de mettre deux instructions <code class="language-plaintext highlighter-rouge">ax.plot</code>) le temps mis par les deux algorithmes pour effectuer l’exponentiation de $ 3^y$  où $y$ varie de $0$ à $100000$ par pas de $1000$.</p>
 </blockquote>
 
-<p>Attention au constantes de votre code :</p>
+<p>Attention aux constantes de votre code :</p>
 
 <blockquote class="note">
   <p>Mantra : pas de <a href="https://en.wikipedia.org/wiki/Magic_number_(programming)#Unnamed_numerical_constants">magic numbers</a> dans le code.</p>
 
-  <p>On remplace les nombres pas des constantes que l’on identifie dans le code par un nom (en majuscule) signifiant.</p>
+  <p>On remplace les nombres pas des constantes que l’on identifie dans le code par un nom (en majuscules) signifiant.</p>
 </blockquote>
 
   </div>

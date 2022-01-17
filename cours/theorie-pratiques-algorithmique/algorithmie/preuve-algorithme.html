@@ -67,16 +67,16 @@
   </ul>
 </blockquote>
 
-<p>Ua algorithme <strong>toujours</strong> un but, quelque chose pour quoi il est fait. Dans notre cas, un algorithme calculera la solution d’un problème.</p>
+<p>Un algorithme <strong>toujours</strong> un but, quelque chose pour quoi il est fait. Dans notre cas, un algorithme calculera la solution d’un problème.</p>
 
 <p>Pour chaque algorithme que vous créerez ou que l’on demandera d’étudier il faudra :</p>
 
 <ol>
-  <li>caractériser le problème que l’algorithme es sensé résoudre</li>
+  <li>caractériser le problème que l’algorithme est sensé résoudre</li>
   <li>démontrer que l’algorithme fonctionne, c’est à dire qu’il le résout le problème en temps fini.</li>
 </ol>
 
-<p>Prouver qu’un algorithme s’arrête fait partie des problèmes théoriques difficiles en informatique. En algorithmie, les algorithmes résolvent des problèmes et donc ils sont sensé s’arrêter et il sera (normalement) de le voir. En revanche, la preuve de l’algorithme est parfois plus délicate. Le problème étant souvent (toujours ?) concentré dans les boucles ou les récursions de l’algorithme, on cherchera à trouver des propriétés qui sont conservées avant et après une itération ou une récursion :</p>
+<p>Prouver qu’un algorithme s’arrête fait partie des problèmes théoriques difficiles en informatique. En algorithmie, les algorithmes résolvent des problèmes et donc ils sont sensés s’arrêter et il sera (normalement) facile de le voir. En revanche, la preuve de l’algorithme est parfois plus délicate. Le problème étant souvent (toujours ?) concentré dans les boucles ou les récursions de l’algorithme, on cherchera à trouver des propriétés qui sont conservées avant et après une itération ou une récursion :</p>
 
 <blockquote class="code">
   <p>Pour prouver un algorithme on cherchera à établir :</p>
@@ -91,7 +91,7 @@
 
 <p>Notez que bien souvent prouver un algorithme et le créer est la même chose. Comprendre comment on peut résoudre un problème donné nous donnera l’algorithme et réciproquement.</p>
 
-<p>A part la recommandation ci-dessus, il n’existe pas vraiment de règles à appliquer pour prouver un algorithme. Seule l’expérience et l’étude des algorithmes classique vous permettra de trouver facilement comment prouver un algorithme.</p>
+<p>A part la recommandation ci-dessus, il n’existe pas vraiment de règles à appliquer pour prouver un algorithme. Seule l’expérience et l’étude des algorithmes classiques vous permettra de trouver facilement comment prouver un algorithme.</p>
 
 <blockquote>
   <p>dans la suite, les algorithmes seront tous donnés en python</p>
@@ -192,7 +192,7 @@
 </code></pre></div></div>
 
 <blockquote>
-  <p>On utilise la possibilité que donne python d’écrire <code class="language-plaintext highlighter-rouge">x += y</code> (<em>resp.</em> <code class="language-plaintext highlighter-rouge">x -= y</code>) à la place de <code class="language-plaintext highlighter-rouge">x = x + y</code> (<em>resp.</em> <code class="language-plaintext highlighter-rouge">x = x + y</code>).</p>
+  <p>On utilise la possibilité que donne python d’écrire <code class="language-plaintext highlighter-rouge">x += y</code> (<em>resp.</em> <code class="language-plaintext highlighter-rouge">x -= y</code>) à la place de <code class="language-plaintext highlighter-rouge">x = x + y</code> (<em>resp.</em> <code class="language-plaintext highlighter-rouge">x = x - y</code>).</p>
 </blockquote>
 
 <p>Notez que le retour de la fonction est un <a href="https://docs.python.org/fr/3/tutorial/datastructures.html#tuples-and-sequences">tuple</a> à 2 éléments (c’est à dire un tableau à 2 éléments que l’on ne peut pas modifer)</p>
@@ -206,7 +206,7 @@
 <code class="language-plaintext highlighter-rouge">r</code> est un entier</li>
   <li>
 <code class="language-plaintext highlighter-rouge">r</code> après une itération est <strong>strictement plus petit</strong> que le <code class="language-plaintext highlighter-rouge">r</code> avant itération</li>
-  <li>on s’arête si <code class="language-plaintext highlighter-rouge">r</code> est strictement plus petit que <code class="language-plaintext highlighter-rouge">b</code>.</li>
+  <li>on s’arrête si <code class="language-plaintext highlighter-rouge">r</code> est strictement plus petit que <code class="language-plaintext highlighter-rouge">b</code>.</li>
 </ul>
 
 <h3 id="complexité">complexité</h3>
@@ -214,7 +214,7 @@
 <p>De l’ordre du nombre de fois où l’on rentre dans la boucle. Comme $r$ ne fait que décroître strictement et vaut $a$ au départ, on estime la complexité de l’algorithme en $\mathcal{O}(a)$.</p>
 
 <blockquote>
-  <p>Comme on décrémente de $b$ à chaque fois on a aurait pu aussi dire que la complexité est en $\mathcal{O}(\frac{a}{b})$</p>
+  <p>Comme on décrémente de $b$ à chaque fois on aurait pu aussi dire que la complexité est en $\mathcal{O}(\frac{a}{b})$</p>
 </blockquote>
 
 <h3 id="preuve">preuve</h3>

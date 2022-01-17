@@ -83,15 +83,15 @@
   <li>exécuter une règle ne doit pas nécessiter d’intelligence (à part celle pour comprendre la règle)</li>
 </ol>
 
-<p>Tout ça est un peu plus précis. On constate que c’est le terme <strong>fini</strong> qui revient constamment : pour qu’un humain comprenne, et surtout puisse agir, il faut pas qu’il y ait un nombre infini de choses à regarder (chaque chose à faire prend un temps de réflexion non nulle, une instruction contenant un nombre infini n’est humainement pas réalisable). En même, si l’on admet que l’on est immortel et que l’on peut réaliser un nombre infini d’opérations, elles sont réalisées les unes à la suite des autres et chaque opération ne peut manipuler qu’un nombre fini d’éléments : on ne ainsi atteindre que des choses <a href="https://fr.wikipedia.org/wiki/Ensemble_d%C3%A9nombrable">dénombrables</a> c’est à dire représentables par des entiers.</p>
+<p>Tout ça est un peu plus précis. On constate que c’est le terme <strong>fini</strong> qui revient constamment : pour qu’un humain comprenne, et surtout puisse agir, il ne faut pas qu’il y ait un nombre infini de choses à regarder (chaque chose à faire prend un temps de réflexion non nul, une instruction contenant un nombre infini n’est humainement pas réalisable). Et même si l’on admet que l’on est immortel et que l’on peut réaliser un nombre infini d’opérations, elles sont réalisées les unes à la suite des autres et chaque opération ne peut manipuler qu’un nombre fini d’éléments : on ne peut ainsi atteindre que des choses <a href="https://fr.wikipedia.org/wiki/Ensemble_d%C3%A9nombrable">dénombrables</a> c’est à dire représentables par des entiers.</p>
 
 <blockquote class="note">
-  <p>Cette remarque, évidente, a une conséquence fondamentale : <strong>un algorithme ne peut pas manipuler de nombres réels</strong>. On ne peut considérer un réel que comme une abstraction (un symbole particulier) ou une approximation (on ne considère qu’un nombre fini de décimale).</p>
+  <p>Cette remarque, évidente, a une conséquence fondamentale : <strong>un algorithme ne peut pas manipuler de nombres réels</strong>. On ne peut considérer un réel que comme une abstraction (un symbole particulier) ou une approximation (on ne considère qu’un nombre fini de décimales).</p>
 </blockquote>
 
-<p>Prenons $\pi$ par exemple. On peut le considérer de deux manières : comme le symbole $\pi$ et de là faire de opérations sur lui (comme $2 \cdot \pi$, ou $\frac{3\pi}{3}$, …) de façon formelle, c’est à dire sans jamais connaitre sa valeur ou comme une valeur approchée de lui (3.1415 par exemple) et ainsi rendre des valeurs approchées des différentes opérations. On ne pourra cependant <strong>jamais</strong> avoir la valeur exacte de $\pi$ avec un algorithme (et ce même s’il avait une mémoire infinie).</p>
+<p>Prenons $\pi$ par exemple. On peut le considérer de deux manières : comme le symbole $\pi$ et de là faire des opérations sur lui (comme $2 \cdot \pi$, ou $\frac{3\pi}{3}$, …) de façon formelle, c’est à dire sans jamais connaître sa valeur ou comme une valeur approchée de lui (3.1415 par exemple) et ainsi rendre des valeurs approchées des différentes opérations. On ne pourra cependant <strong>jamais</strong> avoir la valeur exacte de $\pi$ avec un algorithme (et ce même s’il avait une mémoire infinie).</p>
 
-<p>Ce n’est pas bien grave en général puisque les lois physiques sont presque tout le temps stables (de petits effets impliquent de petites causes) : considérer les réels en <a href="https://fr.wikipedia.org/wiki/Notation_scientifique">notation scientifique</a> en se fixant un précision ne gène pas les calculs physiques.</p>
+<p>Ce n’est pas bien grave en général puisque les lois physiques sont presque tout le temps stables (de petits effets impliquent de petites causes) : considérer les réels en <a href="https://fr.wikipedia.org/wiki/Notation_scientifique">notation scientifique</a> en se fixant une précision ne gène pas les calculs physiques.</p>
 
 <blockquote>
   <p>Faites tout de même attention car parfois, c’est problématique. Pour le calcul d’effets chaotiques comme la météo où <a href="https://fr.wikipedia.org/wiki/Effet_papillon">de petits effets produisent de grandes causes</a>, certes, mais aussi lorsque l’on prend l’inverse de choses très petites qui du coup deviennent très grandes. Ce sont des problèmes dit de <a href="https://fr.wikipedia.org/wiki/Stabilit%C3%A9_num%C3%A9rique">stabilité numérique</a>.</p>
@@ -100,49 +100,49 @@
 <p class="attention">Fini ne veut pas dire petit nombres. Un algorithme peut utiliser des nombres entiers aussi grand qu’il le veut, du moment qu’ils ne soient pas infini</p>
 
 <blockquote class="note">
-  <p>Les règles que l’on a défini <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.html#regles">précédemment</a> pour écrire un pseudo-code respectent alors les règles ci-dessus si on enlève les réels comme objets basique. On peut même se restreindre <a href="https://en.wikipedia.org/wiki/Structured_program_theorem">sans perte de généralité</a> (même si ce sera plus compliqué d’écrire le code) aux règles suivantes (il n’y a même pas besoin de récursivité) :</p>
+  <p>Les règles que l’on a définies <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.html#regles">précédemment</a> pour écrire un pseudo-code respectent alors les règles ci-dessus si on enlève les réels comme objets basiques. On peut même se restreindre <a href="https://en.wikipedia.org/wiki/Structured_program_theorem">sans perte de généralité</a> (même si ce sera plus compliqué d’écrire le code) aux règles suivantes (il n’y a même pas besoin de récursivité) :</p>
 
   <ul>
     <li>de lire et d’affecter des entiers à des variables</li>
     <li>d’avoir un test d’égalité entre deux variables</li>
-    <li>d’exécuter une instruction puis un autre, séquentiellement</li>
-    <li>exécuter une instruction si un test d’égalité est vraie</li>
-    <li>exécuter un bloc d’instructions tant qu’un test d’égalité est vraie</li>
+    <li>d’exécuter une instruction puis une autre, séquentiellement</li>
+    <li>exécuter une instruction si un test d’égalité est vrai</li>
+    <li>exécuter un bloc d’instructions tant qu’un test d’égalité est vrai</li>
   </ul>
 </blockquote>
 
-<p>Tous les pseudo-code utilisant les 5 règles ci-dessus auront la même expressivité (on pourra faire exactement les même choses) que ceux utilisant <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.html#regles">les règles</a> utilisées couramment.</p>
+<p>Tous les pseudo-codes utilisant les 5 règles ci-dessus auront la même expressivité (on pourra faire exactement les mêmes choses) que ceux utilisant <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.html#regles">les règles</a> utilisées couramment.</p>
 
-<p>On pense même (c’est ce qu’on appelle la <a href="https://fr.wikipedia.org/wiki/Th%C3%A8se_de_Church">thèse de Church-Turing</a>) que quelque soit les règles qu’on va se donner, du moment qu’elles respectent les 4 règles générales, alors on ne pourra pas calculer plus de choses.</p>
+<p>On pense même (c’est ce qu’on appelle la <a href="https://fr.wikipedia.org/wiki/Th%C3%A8se_de_Church">thèse de Church-Turing</a>) que quelque soient les règles qu’on va se donner, du moment qu’elles respectent les 4 règles générales, alors on ne pourra pas calculer plus de choses.</p>
 
 <h3 id="fonctions">fonctions</h3>
 
-<p>Un algorithme, représenté par son pseudo code, a des entrées et une sorite. D’après ce qui précède, ces entrées et cette sortie peuvent être :</p>
+<p>Un algorithme, représenté par son pseudo code, a des entrées et une sortie. D’après ce qui précède, ces entrées et cette sortie peuvent être :</p>
 
 <ul>
   <li>des entiers finis</li>
   <li>des approximations finies de réels</li>
-  <li>des chaines de caractères</li>
+  <li>des chaînes de caractères</li>
 </ul>
 
 <blockquote class="note">
-  <p>Un algorithme à $p$ entrées, dont $q$ entrées entières, $r$ entrées approximation des réels et $s$ chaines de caractères est une fonction de :</p>
+  <p>Un algorithme à $p$ entrées, dont $q$ entrées entières, $r$ entrées approximation des réels et $s$ chaînes de caractères est une fonction de :</p>
 
 \[f: \mathbb{N}^{q} \times R^r \times C^t \rightarrow N \cup A \cup C\]
 
-  <p>où $\mathbb{N}$ est l’ensemble des entiers, $R$ l’ensemble des approximations de réels et $C$ l’ensemble des chaines de caractères.</p>
+  <p>où $\mathbb{N}$ est l’ensemble des entiers, $R$ l’ensemble des approximations de réels et $C$ l’ensemble des chaînes de caractères.</p>
 </blockquote>
 
-<p>On a pas trop dit grand chose pour l’instant. On a fait que reécrire ce qu’on savait déjà sos la forme de fonctions. On va montrer qu’on peut faire bien mieux.</p>
+<p>On a pas trop dit grand chose pour l’instant. On a fait que reécrire ce qu’on savait déjà sous la forme de fonctions. On va montrer qu’on peut faire bien mieux.</p>
 
 <h2 id="modèle">modèle</h2>
 
-<p>On montre ici que l’on peut aller bien plus loin que la partie précédente et montrer qu’un algorithme est une fonction de $\mathbb{N}$ (les entiers) dans $\mathbb{N}$</p>
+<p>On montre ici que l’on peut aller bien plus loin que la partie précédente et montrer qu’un algorithme est une fonction de $\mathbb{N}$ (les entiers) dans $\mathbb{N}$.</p>
 
 <p>Cela nous permettra ensuite de montrer qu’un algorithme ne peut pas <strong>tout</strong> calculer : il existe des fonctions de $\mathbb{N}$ dans $\mathbb{N}$ qu’aucun ordinateur ne pourra calculer.</p>
 
 <blockquote>
-  <p>Trouver des fonctions non calculables par un ordinateur n’est pas une tâche simple cependant. Il faut connaitre les machines de Turing pour en exhiber.</p>
+  <p>Trouver des fonctions non calculables par un ordinateur n’est pas une tâche simple cependant. Il faut connaître les machines de Turing pour en exhiber.</p>
 </blockquote>
 
 <h3 id="fonction-plusieurs-entier">fonctions à plusieurs paramètres entiers</h3>
@@ -152,7 +152,7 @@
 <ul>
   <li>des entiers finis : c’est clair.</li>
   <li>des approximations finies de réels : on peut utiliser la norme <a href="https://fr.wikipedia.org/wiki/IEEE_754">IEEE 754</a>. Par exemple 3.1415 en codage IEEE 754 sur 32 bits correspond à l’entier binaire : <code class="language-plaintext highlighter-rouge">01000000010010010000111001010110</code> (j’ai utilisé <a href="https://www.h-schmidt.net/FloatConverter/IEEE754.html">un convertisseur</a>)</li>
-  <li>des chaines de caractères : que l’on peut représenter comme un entier en utilisant le le codage <a href="https://fr.wikipedia.org/wiki/UTF-8">utf-8</a>. Par exemple la chaine de caractère “Yop !” correspond au nombre binaire <code class="language-plaintext highlighter-rouge">111100101101111011100000010000000100001</code> en utilisant  (là aussi, j’ai utilisé <a href="http://hapax.qc.ca/conversion.fr.html">un convertisseur</a>).</li>
+  <li>des chaînes de caractères : que l’on peut représenter comme un entier en utilisant le le codage <a href="https://fr.wikipedia.org/wiki/UTF-8">utf-8</a>. Par exemple la chaîne de caractère “Yop !” correspond au nombre binaire <code class="language-plaintext highlighter-rouge">111100101101111011100000010000000100001</code> en utilisant  (là aussi, j’ai utilisé <a href="http://hapax.qc.ca/conversion.fr.html">un convertisseur</a>).</li>
 </ul>
 
 <p>On peut donc reformuler notre assertion précédente en unifiant les paramètres (on les recodent tous sous la forme d’entiers) :</p>
@@ -193,7 +193,7 @@
   <li>si $e$ et $f$ sont deux éléments différents de $\mathbb{N}^p$ alors soit $e &lt; f$ soit $f &lt; e$</li>
 </ul>
 
-<p>On conclut en remarquant que la fonction $h’(n) = (n, 0, \dots , 0)$ est une injection de $\mathbb{N}$ dans $\mathbb{N}^p$. Il existe donc une injection de $\mathbb{N}$ dans $\mathbb{N}^p$ (la fonction $h’$) et une injection de $\mathbb{N}^p$ dans $\mathbb{N}$ (la fonction $h$) : il existe une bijection de $\mathbb{N}^p$ dans $\mathbb{N}$.</p>
+<p>On conclut en remarquant que la fonction $h’(n) = (n, 0, \dots , 0)$ est une injection de $\mathbb{N}$ dans $\mathbb{N}^p$. Il existe donc une injection de $\mathbb{N}$ dans $\mathbb{N}^p$ (la fonction $h’$) et une injection de $\mathbb{N}^p$ dans $\mathbb{N}$ (la fonction $h$) : il existe une bijection entre $\mathbb{N}^p$ et $\mathbb{N}$.</p>
 
 <p>Toute fonction de $\mathbb{N}^p$ dans $\mathbb{N}$ peut alors s’écrire comme une fonction de $\mathbb{N}$ dans $\mathbb{N}$ ce qui nous permet de dire que :</p>
 
@@ -230,7 +230,7 @@
 
 <p>On a démontré qu’un algorithme était une fonction de $\mathbb{N}$ dans $\mathbb{N}$ (ou, ce qui est identique, de $\{0, 1\}^\star$ dans $\{0, 1\}$). Mais c’est une fonction particulière puisque ce qu’elle procède selon un plan détaillé (des instructions) qu’elle exécute petit à petit (séquentiellement).</p>
 
-<p>On ne donnera pas ici d’exemple concret de fonction non calculables on montre juste que contrairement à une idée répandue :</p>
+<p>On ne donnera pas ici d’exemple concret de fonction non calculable on montre juste que contrairement à une idée répandue :</p>
 
 <blockquote class="note">
   <p>Un algorithme ne peut pas <strong>tout</strong> calculer. En revanche, quelque soit le formalisme utilisé pour le calcul (le pseudo-code ou code) ils peuvent tous calculer <strong>la même chose</strong>.</p>
@@ -242,7 +242,7 @@
 
 <h4 id="nombre-algorithmes">nombre d’algorithmes</h4>
 
-<p>Comme un algorithme peut-être décrit par son pseudo-code, qui est une chaine de caractères (qu’on peut limiter aux mots Français si on a envie), in y a au plus autant d’algorithmes que de chaines de caractères. Ca en fait un sacré paquet mais comme chaque chaine de caractère est un entier (on l’a vu <a href="#fonction-plusieurs-entier">juste avant</a>) :</p>
+<p>Comme un algorithme peut-être décrit par son pseudo-code, qui est une chaîne de caractères (qu’on peut limiter aux mots Français si on a envie), il y a au plus autant d’algorithmes que de chaînes de caractères. Ça en fait un sacré paquet mais comme chaque chaîne de caractère est un entier (on l’a vu <a href="#fonction-plusieurs-entier">juste avant</a>) :</p>
 
 <blockquote class="note">
   <p>Il ne peut y avoir plus d’algorithme que de nombres entiers.</p>
@@ -254,7 +254,7 @@
 
 \[I(f) = \{ (n, f(n)) \vert n \in \mathbb{N} \}\]
 
-<p>Connaitre $f$ ou $I(f)$ est équivalent et comme $I(f) \subseteq \mathbb{N} \times \mathbb{N}$ on en conclut :</p>
+<p>Connaître $f$ ou $I(f)$ est équivalent et comme $I(f) \subseteq \mathbb{N} \times \mathbb{N}$ on en conclut :</p>
 
 <blockquote class="note">
   <p>Il y a autant de fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ que de parties de $\mathbb{N} \times \mathbb{N}$</p>
@@ -277,13 +277,13 @@
 
 <h3 id="mais-lorsquon-calcule-on-calcule-la-même-chose">mais lorsqu’on calcule, on calcule la même chose</h3>
 
-<p>Les règles qu’on s’est donné pour écrire du pseudo-code vont être pratiques pour décrire un algorithme pour un humain. Le fait qu’une fois posées, les règles ne nécessitent pas d’intelligence pour être exécutées, les rendent même accessible à des étudiants !
+<p>Les règles qu’on s’est données pour écrire du pseudo-code vont être pratiques pour décrire un algorithme pour un humain. Le fait qu’une fois posées, les règles ne nécessitent pas d’intelligence pour être exécutées, les rendent même accessible à des étudiants !
 Cependant les termes qu’on peut utiliser ne sont pas définis clairement, il y a de multiples façons d’interpréter les <a href="#regles-generales">4 règles générales</a> d’un calcul et donc de multiples façon d’écrire du pseudo-code.</p>
 
 <p>On peut déjà penser aux multiples langages de programmation, allant de <a href="https://fr.wikipedia.org/wiki/Assembleur">l’assembleur</a> compréhensible par les processeurs de nos ordinateurs au <a href="https://fr.wikipedia.org/wiki/Python_(langage)">python</a> que tout le monde connait, en passant par le <a href="https://fr.wikipedia.org/wiki/Haskell">haskell</a> ou encore le <a href="https://fr.wikipedia.org/wiki/C_(langage)">C</a>. On trouve même des langages désignées pour être les plus simples possibles (appelés <a href="https://fr.wikipedia.org/wiki/Langage_de_programmation_exotique">turing tarpit</a>) et permettant de calculer tout ce qu’on peut faire en python par exemple, comme le <a href="https://fr.wikipedia.org/wiki/Brainfuck">brainfuck</a> qui est le plus célèbres d’entres eux.</p>
 
 <blockquote>
-  <p><em>fun fact</em>, on peut utiliser aussi certains jeu comme langage de programmation comme <a href="https://www.factorio.com/">factorio</a> (l’algorithme de tri <a href="https://www.youtube.com/watch?v=ts5EKp9w4TU">quicksort</a>), ou encore <a href="https://www.minecraft.net/">minecraft</a> (<a href="https://www.youtube.com/watch?v=uGug-4xkw6M">une caculatrie</a>).</p>
+  <p><em>fun fact</em>, on peut utiliser aussi certains jeu comme langage de programmation comme <a href="https://www.factorio.com/">factorio</a> (l’algorithme de tri <a href="https://www.youtube.com/watch?v=ts5EKp9w4TU">quicksort</a>), ou encore <a href="https://www.minecraft.net/">minecraft</a> (<a href="https://www.youtube.com/watch?v=uGug-4xkw6M">une caculatrice</a>).</p>
 </blockquote>
 
 <p>Et bien on peut démontrer que tous ces langages <strong>calculent exactement la même chose</strong> (mais de façon différente) !</p>
@@ -308,10 +308,10 @@ Cependant les termes qu’on peut utiliser ne sont pas définis clairement, il y
 
 <ol>
   <li>faire une démonstration consiste — à partir d’une série finie d’axiomes — à effectuer une suite finie de déductions pour parvenir à un résultat. (<a href="https://fr.wikipedia.org/wiki/Aristote#Enqu%C3%AAte,_d%C3%A9monstration_et_syllogisme">Aristote</a>, en -350 environ)</li>
-  <li>(1) est équivalent à démontrer à l’aide d’une suite finie de déduction qu’une proposition logique est vraie (<a href="https://fr.wikipedia.org/wiki/Syst%C3%A8me_%C3%A0_la_Hilbert">Hilbert</a>, début XXe siècle)</li>
-  <li>(en passant, <a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8mes_d%27incompl%C3%A9tude_de_G%C3%B6del">Gödel</a>, en 1931, démontre qu’il existe des propositions logiques qui sont vraies mais qu’il est impossible à démontrer)</li>
+  <li>(1) est équivalent à démontrer à l’aide d’une suite finie de déductions qu’une proposition logique est vraie (<a href="https://fr.wikipedia.org/wiki/Syst%C3%A8me_%C3%A0_la_Hilbert">Hilbert</a>, début XXe siècle)</li>
+  <li>(en passant, <a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8mes_d%27incompl%C3%A9tude_de_G%C3%B6del">Gödel</a>, en 1931, démontre qu’il existe des propositions logiques qui sont vraies mais qu’il est impossible de démontrer)</li>
   <li>
-<a href="https://fr.wikipedia.org/wiki/Correspondance_de_Curry-Howard">Curry puis Howard qui généralise</a>, en 1950 et 1980, montrent que (2) est équivalent à écrire terme de <a href="https://fr.wikipedia.org/wiki/Lambda-calcul">$\lambda$-calcul</a>
+<a href="https://fr.wikipedia.org/wiki/Correspondance_de_Curry-Howard">Curry puis Howard qui généralise</a>, en 1950 et 1980, montrent que (2) est équivalent à écrire en terme de <a href="https://fr.wikipedia.org/wiki/Lambda-calcul">$\lambda$-calcul</a>
 </li>
   <li>
 <a href="https://fr.wikipedia.org/wiki/Alan_Turing">Turing</a> démontre en 1937, que (4) est équivalent à écrire une machine de Turing.</li>

@@ -80,7 +80,7 @@
 <p>Le langage d’application n’a que peu d’intérêt en soit. On choisit celui qui est le plus adapté à notre but. Ici, on utilisera le python mais tout ce qu’on verra est transposable pour tout autre langage sérieux. L’éditeur de texte que l’on utilisera sera vscode. Il en existe d’autres très bien aussi et tout ce qu’on verra avec vscode (les raccourcis claviers, et aides au développement) sont transposables à d’autres editeurs en lisant la doc.</p>
 
 <blockquote class="note">
-  <p>Écrire du code nécessite ne nombreuses automatisations et aides pour que ce ne soit pas pénible, ne vous privez pas d’outils parce que vous n’avez pas envie d’apprendre de nouvelles choses et que <em>ça suffit bien pour ce que je veux faire</em>. Vous allez au final perdre plus de temps que l’apprentissage initial (ce qui est tarte).</p>
+  <p>Écrire du code nécessite de nombreuses automatisations et aides pour que ce ne soit pas pénible, ne vous privez pas d’outils parce que vous n’avez pas envie d’apprendre de nouvelles choses et que <em>ça suffit bien pour ce que je veux faire</em>. Vous allez au final perdre plus de temps que l’apprentissage initial (ce qui est tarte).</p>
 </blockquote>
 
 <h2 id="un-projet">un projet</h2>
@@ -195,18 +195,18 @@
   <p><strong>style</strong> : <strong>la dernière ligne d’un fichier python est vide</strong></p>
 </blockquote>
 
-<p>La documentation de pycodestyle vous indique <a href="https://pycodestyle.pycqa.org/en/latest/intro.html#error-codes">toutes les erreurs qu’il reconnait</a>. Elles sont conforme aux recommandations de la <a href="https://realpython.com/python-pep8/">PEP8</a>.</p>
+<p>La documentation de pycodestyle vous indique <a href="https://pycodestyle.pycqa.org/en/latest/intro.html#error-codes">toutes les erreurs qu’il reconnait</a>. Elles sont conformes aux recommandations de la <a href="https://realpython.com/python-pep8/">PEP8</a>.</p>
 
 <blockquote class="note">
-  <p>Prenez l’habitude d’écrire du code sans aucune erreur de style. Et, surtout, <strong>apprenez pourquoi cette règle existe</strong>. Suivre une règle sans comprendre pourquoi elle elle existe n’est pas efficace… Parce qu’on ne sait pas s’il faut la suivre ou pas.</p>
+  <p>Prenez l’habitude d’écrire du code sans aucune erreur de style. Et, surtout, <strong>apprenez pourquoi cette règle existe</strong>. Suivre une règle sans comprendre pourquoi elle existe n’est pas efficace… Parce qu’on ne sait pas s’il faut la suivre ou pas.</p>
 </blockquote>
 
-<p>Tout au long de ce projet et des prochains, il faut faire en sorte qu’il n’y jamais d’erreur de style. Soyez donc vigilant au début avant que cela devienne naturel.</p>
+<p>Tout au long de ce projet et des prochains, il faut faire en sorte qu’il n’y ait jamais d’erreur de style. Soyez donc vigilant au début avant que cela devienne naturel.</p>
 
 <h3 id="séparer-code-et-main">séparer code et main</h3>
 
 <blockquote class="note">
-  <p>Un projet c’est trois chose d’égale importance :</p>
+  <p>Un projet c’est trois choses d’égale importance :</p>
 
   <ul>
     <li>le code : les fonctions utilisées</li>
@@ -251,7 +251,7 @@
   <p>Pour plus d’information sur les modules vous pouvez lire <a href="/cours_informatique/cours/developpement/bases-python/modules.html">ceci</a>.</p>
 </blockquote>
 
-<p>Ne <strong>jamais jamais jamais</strong> utiliser <code class="language-plaintext highlighter-rouge">from le_code import *</code> qui importe tous les noms définis dans <em>“le_code.py”</em>. On ne sais pas vraiment ce qui a été importé en lisant <em>“le_code.py”</em>. : notre code n’est pas lisible ! Le gain d’écriture de <code class="language-plaintext highlighter-rouge">*</code> plutôt que <code class="language-plaintext highlighter-rouge">bonjour</code> sera perdu au centuple plus tard lorsque l’on devra chercher dans tous les fichiers du projet où l’on a bien pu définir <code class="language-plaintext highlighter-rouge">bonjour</code>…</p>
+<p>Ne <strong>jamais jamais jamais</strong> utiliser <code class="language-plaintext highlighter-rouge">from le_code import *</code> qui importe tous les noms définis dans <em>“le_code.py”</em>. On ne sait pas vraiment ce qui a été importé en lisant <em>“le_code.py”</em>. : notre code n’est pas lisible ! Le gain d’écriture de <code class="language-plaintext highlighter-rouge">*</code> plutôt que <code class="language-plaintext highlighter-rouge">bonjour</code> sera perdu au centuple plus tard lorsque l’on devra chercher dans tous les fichiers du projet où l’on a bien pu définir <code class="language-plaintext highlighter-rouge">bonjour</code>…</p>
 
 <blockquote class="note">
   <p>Comme on va passer plus de temps à lire/comprendre du code qu’à l’écrire, il faut <strong>optimiser la lecture et non l’écriture de code</strong>.  On préférera toujours <strong>la lisibilité à la rapidité</strong>.</p>
@@ -265,7 +265,7 @@
   <p>Vous avez du installer pytest et fait le lien avec vscode en suivant les prés-requis. Si ce n’est pas le cas, faites le.</p>
 </blockquote>
 
-<p>On y reviendra plus tard et à de nombreuses reprise :</p>
+<p>On y reviendra plus tard et à de nombreuses reprises :</p>
 
 <blockquote class="note">
   <p>les tests sont la pierre angulaire d’une bonne programmation : ils garantissent le fonctionnement de votre code et qu’<a href="https://blog.octo.com/via-negativa-tdd-et-la-conception-de-logiciel/">il ne peut régresser</a>.</p>
@@ -282,7 +282,7 @@
 
 <p>Si l’expression logique est vraie, le programme continue sans rien dire et si l’expression logique est fausse, le programme s’arrête avec l’erreur : <code class="language-plaintext highlighter-rouge">AssertionError</code>.</p>
 
-<p>Essayons ça avec la plus simple des expression logique : <code class="language-plaintext highlighter-rouge">True</code></p>
+<p>Essayons ça avec la plus simple des expressions logiques : <code class="language-plaintext highlighter-rouge">True</code></p>
 
 <blockquote class="a-faire">
   <p>créez un fichier nommé <em>test_projet.py</em> qui contiendra le code :</p>
@@ -396,7 +396,7 @@ AssertionError
 <p>On a donc 2 choix :</p>
 
 <ul>
-  <li>exécuter les fonctions dans le fichier après les avoir défini</li>
+  <li>exécuter les fonctions dans le fichier après les avoir définies</li>
   <li>utiliser une bibliothèque que le fait pour nous</li>
 </ul>
 
@@ -423,7 +423,7 @@ AssertionError
   <p>pytest exécute toutes les fonctions commençant par <code class="language-plaintext highlighter-rouge">test_</code> de tous les fichiers commençant par <code class="language-plaintext highlighter-rouge">test_</code> d’un projet.</p>
 </blockquote>
 
-<p>On peut aussi exécuter les tests directement avec vscode. Pour cela, cliquez sur <a href="https://code.visualstudio.com/docs/python/testing#_configure-tests">le petit erlenmyer</a>. Vous pourrez ensuite :</p>
+<p>On peut aussi exécuter les tests directement avec vscode. Pour cela, cliquez sur <a href="https://code.visualstudio.com/docs/python/testing#_configure-tests">le petit erlenmeyer</a>. Vous pourrez ensuite :</p>
 
 <ol>
   <li>découvrir les tests du projet</li>
