@@ -24,6 +24,38 @@ On va étudier deux algorithmes permettant de calculer $a^b$  à partir de deux 
 
 ## algorithme naïf {#algo-naif}
 
+Le calcul *naïf* de l'exponentiel est basé sur sa définition mathématique, qui peut être décrite, pour deux entiers positifs $x$ et $y$,  par l'équation suivante :
+
+$$
+x^y = \left\{
+    \begin{array}{ll}
+        x \cdot x^{y-1} & \mbox{si } y > 0 \\
+        1 & \mbox{sinon.}
+    \end{array}
+\right.
+$$
+
+> Ecrivez un algorithme récursif pour résoudre cette équation.
+{: .a-faire}
+{% details  une solution possible %}
+
+```python
+def puissance(nombre, exposant):
+    if exposant == 0:
+        return 1
+    return nombre * puissance(nombre, exposant - 1)
+```
+
+Cet algorithme est exactement la transcription de la définition mathématique, il est donc correct.
+
+{% enddetails %}
+
+Pour cette étude, nous allons uniquement utiliser des algorithmes non récursifs (ils sont dit itératifs).
+
+> Ecrivez un algorithme itératif pour calculer $x^y$  avec $x$ et $y$ deux entiers positifs.
+{: .a-faire}
+{% details une solution possible  %}
+
 <style>
     table, td, tr, th, pre {
         padding:0;
@@ -42,10 +74,13 @@ def puissance(nombre, exposant):
     return résultat
 
 {% endhighlight %}
+{% enddetails %}
+
+C'est cet algorithme itératif que nous allons étudier maintenant.
 
 ### est-ce que ça marche ? {#marche-naïf}
 
-On test l'algorithme sur de petits exemples qui vont nous permettre d'appréhender son fonctionnement :
+On test l'algorithme itératif sur de petits exemples qui vont nous permettre d'appréhender son fonctionnement :
 
 > On teste sur de petits nombres en se mettant à la place de l'ordinateur.
 >
@@ -127,23 +162,72 @@ Ce qui donne une complexité de :
 
 $$
 \begin{array}{lcl}
-C(n) & = & \mathcal{O}(1) + \\
+C & = & \mathcal{O}(1) + \\
 &  & \mathcal{O}(1) + \\
 & & \mathcal{O}(1) + \\
-& & \mathcal{O}\mbox{exposant}) \cdot ( \\
+& & \mathcal{O}(\mbox{exposant}) \cdot ( \\
+& & \mathcal{O}(1) + \\
+& & \mathcal{O}(1)) + \\
+& & \mathcal{O}(1)\\
+& = & 3 \cdot \mathcal{O}(1) + \mathcal{O}(\mbox{exposant}) \cdot (2 \cdot \mathcal{O}(1)) + \mathcal{O}(1)\\
+&=& 4 \cdot \mathcal{O}(1) + 2 \cdot \mathcal{O}\mbox({exposant})\\
+&=& \mathcal{O}(1) + \mathcal{O}(\mbox{exposant})\\
+C&=& \mathcal{O}(\mbox{exposant})\\
 \end{array}
 $$
 
-* un boucle en $\mathcal{O}(\mbox{exposant})$
-* des lignes en $\mathcal{O}(1)$
-
-Donc : complexité en $\mathcal{O}(\mbox{exposant})$
-
 ## exponentiation indienne {#algo-rapide}
 
-Aussi appelé [exponentiation rapide](https://fr.wikipedia.org/wiki/Exponentiation_rapide), l'algorithme suivant permet de calculer `nombre ** exposant`.
+Aussi appelé [exponentiation rapide](https://fr.wikipedia.org/wiki/Exponentiation_rapide), cette façon de calculer l'exponentielle est basée sur l'équation suivante, pour deux entiers positifs $x$ et $y$ :
+
+$$
+x^y = \left\{
+    \begin{array}{ll}
+        1 & \mbox{si } y = 0 \\
+        x \cdot x^{y-1}  &\mbox{si } y  \mbox{ est impair}\\
+        x^2 \cdot x^{\frac{y}{2}} &\mbox{si } y  \mbox{ est pair}\\
+    \end{array}
+\right.
+$$
+
+> Ecrivez un algorithme récursif pour résoudre cette équation.
+{: .a-faire}
+{% details  une solution possible %}
 
 ```python
+def puissance(nombre, exposant):
+    if exposant == 0:
+        return 1
+    elif compteur % 2 != 0:
+        return nombre * puissance(nombre, exposant - 1)
+    else:
+        return nombre * nombre * puissance(nombre, exposant // 2)
+    return 
+```
+
+On a utiliser deux choses :
+
+* L'opérateur `%` signifie *modulo* en python : il retourne le reste de la division entière. L'algorithme s'en sert pour vérifier si `compteur` est pair (reste de la division entière par 2 vaut 0) ou impair (reste de la division entière par 2 vaut 1)
+* la division entière `//` pour s'assurer que exposant reste un entier. Le type de `4 / 2` en python est un réel alors que le type de `4 // 2` est un entier.
+
+Cet algorithme est exactement la transcription de la définition mathématique, il est donc correct.
+
+{% enddetails %}
+
+Pour cette étude, nous allons uniquement utiliser des algorithmes non récursifs (ils sont dit itératifs).
+
+> Ecrivez un algorithme itératif utilisant l'exponentiation indienne pour résoudre $x^y$  avec $x$ et $y$ deux entiers positifs.
+{: .a-faire}
+{% details une solution possible  %}
+
+<style>
+    table, td, tr, th, pre {
+        padding:0;
+        margin:0;
+        border:none
+    }
+</style>
+{% highlight python linenos %}
 
 def puissance(nombre, exposant):
     resultat = 1
@@ -159,9 +243,10 @@ def puissance(nombre, exposant):
 
     return resultat
 
-```
+{% endhighlight %}
+{% enddetails %}
 
-> L'opérateur `%` signifie *modulo* en python : il retourne le reste de la divison entière. L'algorithme s'en sert pour vérifier si `compteur` est pair (reste de la division entière par 2 vaut 0) ou impair (reste de la division entière par 2 vaut 1)
+C'est cet algorithme itératif que nous allons étudier maintenant.
 
 ### est-ce que ça marche ? {#marche-rapide}
 
@@ -215,7 +300,42 @@ Notre invariant est vrai avant et après chaque itération, il est donc égaleme
 
 Pourquoi s'embêter avec la parité de compteur ? Parce que ça permet d'aller vachement plus vite !
 
-On va le démontrer petit à petit.
+On va le démontrer petit à petit, mais commençons par analyer ligne à ligne la complexité :
+
+1. définition de fonction $\mathcal{O}(1)$
+2. une affectation : $\mathcal{O}(1)$
+3. une affectation : $\mathcal{O}(1)$
+4. 
+5. une comparaison en $\mathcal{O}(1)$ et $k$ itérations de boucle
+6. une opération de division entière et un test : $\mathcal{O}(1)$
+7. une opération et une affectation : $\mathcal{O}(1)$
+8. une opération et une affectation : $\mathcal{O}(1)$
+9. 
+10. une opération et une affectation : $\mathcal{O}(1)$
+11. une opération et une affectation : $\mathcal{O}(1)$
+12. 
+13. un retour de fonction : $\mathcal{O}(1)$
+
+Ce qui donne une complexité de :
+
+$$
+\begin{array}{lcll}
+C & = & \mathcal{O}(1) + &\\
+&  & \mathcal{O}(1) + &\\
+&  & \mathcal{O}(1) + &\\
+&  & k \cdot (\mathcal{O}(1) + &\\
+& & \mathcal{O}(1) + &\\
+& & \mathcal{O}(1) + &\mbox{(ligne 7 ou ligne 10)}\\
+& & \mathcal{O}(1) + & \mbox{(ligne 8 ou ligne 11)}\\
+& & \mathcal{O}(1)) +&\\
+& & \mathcal{O}(1)&\\
+&=& 3 \cdot \mathcal{O}(1) + k \cdot (5\cdot \mathcal{O}(1)) + \mathcal{O}(1)&\\
+&=& 4 \cdot \mathcal{O}(1) + k \cdot 5 + &\\
+C&=&\mathcal{O}(k)&\\
+\end{array}
+$$
+
+La complexité est de l'ordre du nombre de fois où l'on rentre dans la boucle `while` : c'est à dire le nombre de fois où `compteur` a été modifié sans être égal à 0.
 
 #### nombre de fois où compteur est impair
 

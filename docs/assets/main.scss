@@ -10,9 +10,11 @@ details {
         &::before {
             font-family: FontAwesome;
             font-size: 1.2em;
-            content: "\f152  [caché]  ";
+            content: "\f152  [caché]";
             font-weight: bold;
             float: left;
+            color: #FA5EEC;
+            padding-right: .5em;
         }
         list-style: none;
 
@@ -24,11 +26,14 @@ details {
     }
     &.open, &[open] {
         summary::before {
-            content: "\f150  [visible]  ";
+            content: "\f150  [visible]";
+            color: #49AD1F;
+            padding-right: .5em;
         }
     }
     & > div {
         padding-left: 1em;
-        border-left: 4px solid;
+        border-left: 4px solid #49AD1F;
+        background: #FBFFF2;
     }
 }
