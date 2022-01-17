@@ -84,6 +84,35 @@
 
 <h2 id="algo-naif">algorithme naïf</h2>
 
+<p>Le calcul <em>naïf</em> de l’exponentiel est basé sur sa définition mathématique, qui peut être décrite, pour deux entiers positifs $x$ et $y$,  par l’équation suivante :</p>
+
+\[x^y = \left\{
+    \begin{array}{ll}
+        x \cdot x^{y-1} &amp; \mbox{si } y &gt; 0 \\
+        1 &amp; \mbox{sinon.}
+    \end{array}
+\right.\]
+
+<blockquote class="a-faire">
+  <p>Ecrivez un algorithme récursif pour résoudre cette équation.</p>
+</blockquote>
+<details><summary>une solution possible</summary><div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">puissance</span><span class="p">(</span><span class="n">nombre</span><span class="p">,</span> <span class="n">exposant</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">exposant</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">nombre</span> <span class="o">*</span> <span class="n">puissance</span><span class="p">(</span><span class="n">nombre</span><span class="p">,</span> <span class="n">exposant</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Cet algorithme est exactement la transcription de la définition mathématique, il est donc correct.</p>
+
+</div></details>
+
+<p>Pour cette étude, nous allons uniquement utiliser des algorithmes non récursifs (ils sont dit itératifs).</p>
+
+<blockquote class="a-faire">
+  <p>Ecrivez un algorithme itératif pour calculer $x^y$  avec $x$ et $y$ deux entiers positifs.</p>
+</blockquote>
+<details><summary>une solution possible</summary><div>
 <style>
     table, td, tr, th, pre {
         padding:0;
@@ -111,9 +140,13 @@
 </pre></td>
 </tr></tbody></table></code></pre></figure>
 
+</div></details>
+
+<p>C’est cet algorithme itératif que nous allons étudier maintenant.</p>
+
 <h3 id="marche-naïf">est-ce que ça marche ?</h3>
 
-<p>On test l’algorithme sur de petits exemples qui vont nous permettre d’appréhender son fonctionnement :</p>
+<p>On test l’algorithme itératif sur de petits exemples qui vont nous permettre d’appréhender son fonctionnement :</p>
 
 <blockquote class="note">
   <p>On teste sur de petits nombres en se mettant à la place de l’ordinateur.</p>
@@ -214,25 +247,86 @@
 <p>Ce qui donne une complexité de :</p>
 
 \[\begin{array}{lcl}
-C(n) &amp; = &amp; \mathcal{O}(1) + \\
+C &amp; = &amp; \mathcal{O}(1) + \\
 &amp;  &amp; \mathcal{O}(1) + \\
 &amp; &amp; \mathcal{O}(1) + \\
-&amp; &amp; \mathcal{O}\mbox{exposant}) \cdot ( \\
+&amp; &amp; \mathcal{O}(\mbox{exposant}) \cdot ( \\
+&amp; &amp; \mathcal{O}(1) + \\
+&amp; &amp; \mathcal{O}(1)) + \\
+&amp; &amp; \mathcal{O}(1)\\
+&amp; = &amp; 3 \cdot \mathcal{O}(1) + \mathcal{O}(\mbox{exposant}) \cdot (2 \cdot \mathcal{O}(1)) + \mathcal{O}(1)\\
+&amp;=&amp; 4 \cdot \mathcal{O}(1) + 2 \cdot \mathcal{O}\mbox({exposant})\\
+&amp;=&amp; \mathcal{O}(1) + \mathcal{O}(\mbox{exposant})\\
+C&amp;=&amp; \mathcal{O}(\mbox{exposant})\\
 \end{array}\]
-
-<ul>
-  <li>un boucle en $\mathcal{O}(\mbox{exposant})$</li>
-  <li>des lignes en $\mathcal{O}(1)$</li>
-</ul>
-
-<p>Donc : complexité en $\mathcal{O}(\mbox{exposant})$</p>
 
 <h2 id="algo-rapide">exponentiation indienne</h2>
 
-<p>Aussi appelé <a href="https://fr.wikipedia.org/wiki/Exponentiation_rapide">exponentiation rapide</a>, l’algorithme suivant permet de calculer <code class="language-plaintext highlighter-rouge">nombre ** exposant</code>.</p>
+<p>Aussi appelé <a href="https://fr.wikipedia.org/wiki/Exponentiation_rapide">exponentiation rapide</a>, cette façon de calculer l’exponentielle est basée sur l’équation suivante, pour deux entiers positifs $x$ et $y$ :</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="k">def</span> <span class="nf">puissance</span><span class="p">(</span><span class="n">nombre</span><span class="p">,</span> <span class="n">exposant</span><span class="p">):</span>
+\[x^y = \left\{
+    \begin{array}{ll}
+        1 &amp; \mbox{si } y = 0 \\
+        x \cdot x^{y-1}  &amp;\mbox{si } y  \mbox{ est impair}\\
+        x^2 \cdot x^{\frac{y}{2}} &amp;\mbox{si } y  \mbox{ est pair}\\
+    \end{array}
+\right.\]
+
+<blockquote class="a-faire">
+  <p>Ecrivez un algorithme récursif pour résoudre cette équation.</p>
+</blockquote>
+<details><summary>une solution possible</summary><div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">puissance</span><span class="p">(</span><span class="n">nombre</span><span class="p">,</span> <span class="n">exposant</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">exposant</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">elif</span> <span class="n">compteur</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">nombre</span> <span class="o">*</span> <span class="n">puissance</span><span class="p">(</span><span class="n">nombre</span><span class="p">,</span> <span class="n">exposant</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">nombre</span> <span class="o">*</span> <span class="n">nombre</span> <span class="o">*</span> <span class="n">puissance</span><span class="p">(</span><span class="n">nombre</span><span class="p">,</span> <span class="n">exposant</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> 
+</code></pre></div></div>
+
+<p>On a utiliser deux choses :</p>
+
+<ul>
+  <li>L’opérateur <code class="language-plaintext highlighter-rouge">%</code> signifie <em>modulo</em> en python : il retourne le reste de la division entière. L’algorithme s’en sert pour vérifier si <code class="language-plaintext highlighter-rouge">compteur</code> est pair (reste de la division entière par 2 vaut 0) ou impair (reste de la division entière par 2 vaut 1)</li>
+  <li>la division entière <code class="language-plaintext highlighter-rouge">//</code> pour s’assurer que exposant reste un entier. Le type de <code class="language-plaintext highlighter-rouge">4 / 2</code> en python est un réel alors que le type de <code class="language-plaintext highlighter-rouge">4 // 2</code> est un entier.</li>
+</ul>
+
+<p>Cet algorithme est exactement la transcription de la définition mathématique, il est donc correct.</p>
+
+</div></details>
+
+<p>Pour cette étude, nous allons uniquement utiliser des algorithmes non récursifs (ils sont dit itératifs).</p>
+
+<blockquote class="a-faire">
+  <p>Ecrivez un algorithme itératif utilisant l’exponentiation indienne pour résoudre $x^y$  avec $x$ et $y$ deux entiers positifs.</p>
+</blockquote>
+<details><summary>une solution possible</summary><div>
+<style>
+    table, td, tr, th, pre {
+        padding:0;
+        margin:0;
+        border:none
+    }
+</style>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td>
+<td class="code"><pre><span class="k">def</span> <span class="nf">puissance</span><span class="p">(</span><span class="n">nombre</span><span class="p">,</span> <span class="n">exposant</span><span class="p">):</span>
     <span class="n">resultat</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="n">compteur</span> <span class="o">=</span> <span class="n">exposant</span>
 
@@ -245,12 +339,12 @@ C(n) &amp; = &amp; \mathcal{O}(1) + \\
             <span class="n">compteur</span> <span class="o">/=</span> <span class="mi">2</span>
 
     <span class="k">return</span> <span class="n">resultat</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
 
-</code></pre></div></div>
+</div></details>
 
-<blockquote>
-  <p>L’opérateur <code class="language-plaintext highlighter-rouge">%</code> signifie <em>modulo</em> en python : il retourne le reste de la divison entière. L’algorithme s’en sert pour vérifier si <code class="language-plaintext highlighter-rouge">compteur</code> est pair (reste de la division entière par 2 vaut 0) ou impair (reste de la division entière par 2 vaut 1)</p>
-</blockquote>
+<p>C’est cet algorithme itératif que nous allons étudier maintenant.</p>
 
 <h3 id="marche-rapide">est-ce que ça marche ?</h3>
 
@@ -320,7 +414,45 @@ C(n) &amp; = &amp; \mathcal{O}(1) + \\
 
 <p>Pourquoi s’embêter avec la parité de compteur ? Parce que ça permet d’aller vachement plus vite !</p>
 
-<p>On va le démontrer petit à petit.</p>
+<p>On va le démontrer petit à petit, mais commençons par analyer ligne à ligne la complexité :</p>
+
+<ol>
+  <li>définition de fonction $\mathcal{O}(1)$</li>
+  <li>une affectation : $\mathcal{O}(1)$</li>
+  <li>une affectation : $\mathcal{O}(1)$</li>
+  <li>
+  </li>
+<li>une comparaison en $\mathcal{O}(1)$ et $k$ itérations de boucle</li>
+  <li>une opération de division entière et un test : $\mathcal{O}(1)$</li>
+  <li>une opération et une affectation : $\mathcal{O}(1)$</li>
+  <li>une opération et une affectation : $\mathcal{O}(1)$</li>
+  <li>
+  </li>
+<li>une opération et une affectation : $\mathcal{O}(1)$</li>
+  <li>une opération et une affectation : $\mathcal{O}(1)$</li>
+  <li>
+  </li>
+<li>un retour de fonction : $\mathcal{O}(1)$</li>
+</ol>
+
+<p>Ce qui donne une complexité de :</p>
+
+\[\begin{array}{lcll}
+C &amp; = &amp; \mathcal{O}(1) + &amp;\\
+&amp;  &amp; \mathcal{O}(1) + &amp;\\
+&amp;  &amp; \mathcal{O}(1) + &amp;\\
+&amp;  &amp; k \cdot (\mathcal{O}(1) + &amp;\\
+&amp; &amp; \mathcal{O}(1) + &amp;\\
+&amp; &amp; \mathcal{O}(1) + &amp;\mbox{(ligne 7 ou ligne 10)}\\
+&amp; &amp; \mathcal{O}(1) + &amp; \mbox{(ligne 8 ou ligne 11)}\\
+&amp; &amp; \mathcal{O}(1)) +&amp;\\
+&amp; &amp; \mathcal{O}(1)&amp;\\
+&amp;=&amp; 3 \cdot \mathcal{O}(1) + k \cdot (5\cdot \mathcal{O}(1)) + \mathcal{O}(1)&amp;\\
+&amp;=&amp; 4 \cdot \mathcal{O}(1) + k \cdot 5 + &amp;\\
+C&amp;=&amp;\mathcal{O}(k)&amp;\\
+\end{array}\]
+
+<p>La complexité est de l’ordre du nombre de fois où l’on rentre dans la boucle <code class="language-plaintext highlighter-rouge">while</code> : c’est à dire le nombre de fois où <code class="language-plaintext highlighter-rouge">compteur</code> a été modifié sans être égal à 0.</p>
 
 <h4 id="nombre-de-fois-où-compteur-est-impair">nombre de fois où compteur est impair</h4>
 

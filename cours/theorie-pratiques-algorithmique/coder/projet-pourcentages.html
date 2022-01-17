@@ -146,29 +146,20 @@
 <p>Mais avant de penser à la conversion d’un entier, essayons de voir comment compter le nombre de <code class="language-plaintext highlighter-rouge">"0"</code> d’une chaine de caractères.</p>
 
 <blockquote class="a-faire">
-  <p>Mettez le code suivant dans <em>“pourcentage.py”</em> :</p>
+  <p>Dans le fichier <em>“pourcentage.py”</em> créez une fonction <code class="language-plaintext highlighter-rouge">pourcent</code> dont l’entrée nommée <code class="language-plaintext highlighter-rouge">chaîne_de_caractères</code> est une chaine de caractères composée de de “0” et de “1” et qui rend le pourcentage de “0” dans cette chaîne.</p>
+
+  <p>Assurez vous que le <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/projet-hello-dev.html#linter">linter</a> soit content. Il ne doit y avoir aucune faute de style.</p>
 </blockquote>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">pourcent</span><span class="p">(</span><span class="n">chaîne_de_caractères</span><span class="p">):</span>
-    <span class="n">nombre_de_0</span> <span class="o">=</span> <span class="mi">0</span>
-
-    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">chaîne_de_caractères</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">c</span> <span class="o">==</span> <span class="s">"0"</span><span class="p">:</span>
-            <span class="n">nombre_de_0</span> <span class="o">+=</span> <span class="mi">1</span>
-
-    <span class="k">return</span> <span class="n">nombre_de_0</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">chaîne_de_caractères</span><span class="p">)</span>
-
-</code></pre></div></div>
-
-<p>Remarquez que l’on ne vérifie pas dans la fonction :</p>
+<p>Vous ne vérifierez pas :</p>
 
 <ul>
-  <li>que notre entrée est une chaîne de caractères</li>
+  <li>que l’entrée est une chaîne de caractères</li>
   <li>que la chaîne est uniquement composée de <code class="language-plaintext highlighter-rouge">"0"</code> et de <code class="language-plaintext highlighter-rouge">"1"</code>
 </li>
 </ul>
 
-<p>En effet, Notre nom de paramètre est explicite, donc s’il y a une erreur c’est de la faute du développeur. Le programme va planter si on met un entier dans <code class="language-plaintext highlighter-rouge">chaîne_de_caractères</code>, puisque les entiers ne peuvent être mis dans une boucle for.</p>
+<p>En effet, le nom du paramètre est explicite, donc s’il y a une erreur c’est de la faute du développeur. Le programme va planter si on met un entier dans <code class="language-plaintext highlighter-rouge">chaîne_de_caractères</code>, puisque les entiers ne peuvent être mis dans une boucle for.</p>
 
 <blockquote class="note">
   <p>Si les entrées de nos méthodes sont spécifiées dans le code ou la documentation ou par des noms explicites, ce n’est pas la peine de vérifier dans le code que c’est ok.</p>
@@ -187,7 +178,9 @@
 
 <h3 id="les-tests">les tests</h3>
 
-<p>Notre fonction est codée. Ajoutons ses tests dans la foulée. Par exemple, on pourrait tester que :</p>
+<p>Pour nous assurer que la fonction <code class="language-plaintext highlighter-rouge">pourcent</code> fonctionne, vous avez du faire des tests. Il faut les conserver car un code c’est la fonction <strong>et</strong> ses tests.</p>
+
+<p>Par exemple, on pourrait tester que :</p>
 
 <ul>
   <li>
@@ -316,25 +309,34 @@
 
 <h3 id="programme-principal">programme principal</h3>
 
-<p>Faisons notre première tentative de programme principal. On va demander directement à l’utilisateur de rentrer un nombre écrit en binaire</p>
+<p>Faisons notre première tentative de programme principal. On va demander directement à l’utilisateur de rentrer un nombre écrit en binaire.</p>
+
+<h4 id="un-premier-jet">un premier jet</h4>
 
 <blockquote class="a-faire">
-  <p>Mettez le code suivant dans <em>“main.py”</em> :</p>
+  <p>Dans  le fichier <em>“main.py”</em>, créez un programme principal qui demande à l’utilisateur d’écrire un nombre en binaire, puis qui rende le pourcentage de “0” de ce nombre. Faite le programme le plus simple possible.</p>
+
+  <p>Pour interagir avec l’utilisateur, vous utiliserez la fonction <a href="https://docs.python.org/fr/3/library/functions.html#input">input</a> de python pour cela. Répondez aux questions :</p>
+
+  <ul>
+    <li>de quel type est le résultat de la fonction <code class="language-plaintext highlighter-rouge">input</code> ?</li>
+    <li>pourquoi ?</li>
+  </ul>
+
 </blockquote>
+<details><summary>input</summary><div>
+<p>Le retour de la fonction input est une chaine de caractères. C’est normal car l’utilisateur a tapé des caractères sur son clavier. Toute interaction avec l’utilisateur est par défaut considéré comme une chaine de caractères. C’est au programme de faire la conversion si nécessaire.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pourcentage</span> <span class="kn">import</span> <span class="n">pourcent</span>
+</div></details>
 
-<span class="n">chaîne</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'Donnez un nombre écrit en binaire :'</span><span class="p">)</span>
-
-<span class="k">print</span><span class="p">(</span><span class="s">"Votre nombre contient "</span><span class="p">,</span> <span class="n">pourcent</span><span class="p">(</span><span class="n">chaîne</span><span class="p">),</span> <span class="s">"pourcent de 0."</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>On ne vérifie pas que :</p>
+<p>A priori,comme le code est simple on ne vérifie pas que :</p>
 
 <ul>
   <li>c’est bien un nombre binaire : que donne le code si on ne met pas un nombre binaire ?</li>
   <li>il a une longueur non vide : que fait le programme si on appuie sur la touche entrée sans rien écrire ?</li>
 </ul>
+
+<h4 id="vérification-des-entrées-utilisateurs">vérification des entrées utilisateurs</h4>
 
 <p>Quand je vous avais dit de ne pas faire de vérification, c’est vrai pour tout ce qui a trait au code utilisé par l’ordinateur. Dès qu’un humain utilise du code, il faut <strong>TOUT</strong> vérifier et faire en sorte qu’il ait la meilleure expérience possible.</p>
 
@@ -382,7 +384,6 @@
 
   <ul>
     <li>comment fonctionne la boucle <code class="language-plaintext highlighter-rouge">while</code> ?</li>
-    <li>de quel type est le résultat de la fonction <code class="language-plaintext highlighter-rouge">input</code> ? Pourquoi ?</li>
     <li>notre nombre a été converti en plein de types différents. Lesquels ?</li>
     <li>comment est géré l’erreur possible ?</li>
     <li>..</li>
