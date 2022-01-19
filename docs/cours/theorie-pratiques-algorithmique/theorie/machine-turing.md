@@ -1,6 +1,6 @@
 ---
 layout: page
-title:  "Algorithme : machine de Turing"
+title:  "Machine de Turing"
 category: cours
 ---
 
@@ -11,22 +11,14 @@ category: cours
 >* [algorithmie/pseudo-code]({% link cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.md %})
 {: .chemin}
 
-Pour répondre à notre question initiale, *que peut-on calculer ?*, on peut alors étudier ce que peut calculer la machine de Turing. Le modèle de la machine de Turing est important car, malgré sa simplicité, il permet de capturer tout ce que peu faire un ordinateur. De plus, de nombreux modèle plus compliqué n'arrivent pas à calculer plus.
+La [machine de Turing](https://fr.wikipedia.org/wiki/Machine_de_Turing) est une façon simple d'implémenter les [4 règles générales d'un algorithme]({% link cours/theorie-pratiques-algorithmique/theorie/calcul.md %}#regles-generales). Turing lui-même a montré que :
 
-On peut même montrer qu'une machine de Turing est elle même équivalent à un ordinateur !
-
-[On l'a vu]({% link cours/theorie-pratiques-algorithmique/theorie/calcul.md %}), les algorithmes décrits par leur [pseudo-code]({% link cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.md %}#regles) permettent de calculer certaines fonctions de $f: \mathbb{N} \rightarrow \mathbb{N}$.
-
-Ce que Turing a montré c'est que :
-
-> le modèle très simple de la machine de Turing permet exactement de calculer tout ce qu'on peut faire avec un pseudo-code [tel qu'on l'a défini]({% link cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.md %}#regles).
+> La machine de Turing permet exactement de calculer tout ce qu'on peut faire avec un [pseudo-code]({% link cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.md %}#regles).
 {: .note}
 
-L'idée de la preuve est de montrer que l'on peut avec une machine de Turing :
+Deplus, toutes les tentatives de généralisation de son modèle se sont révélés infructueuses : on arrive pas à calculer plus de choses qu'avec la machine de Turing (c'est juste plus simple de le faire).
 
-* faire de boucles
-* évaluer des expressions logiques
-* stocker et lire des entiers
+On peut même montrer qu'une machine de Turing est elle même équivalent à un ordinateur !
 
 ## définition
 
@@ -40,7 +32,7 @@ Une **machine de Turing** est un quintuplet $(Q, \Gamma, q_0, \delta, F)$ où :
 * $\delta : Q \times \Gamma \rightarrow Q \times \Gamma \times \\{ \leftarrow, \rightarrow \\}$ est la **fonction de transition**
 * $F \subset Q$ est l'ensemble des **états finaux**.
 
-> On appelle cette machine, machine de Turing **déterministe** car $\delta$ est une fonction.
+> On appelle cette machine **déterministe** car $\delta$ est une fonction.
 
 Pour fonctionner, la machine nécessite :
 
@@ -64,7 +56,7 @@ L'exécution d'un programme est alors comme suit :
 5. on écrit $q'$ dans la case du ruban pointé par le curseur, on place la machine dans l'état $q'$ et on déplace le curseur vers la gauche si $f$ vaut $\leftarrow$ et vers la droite sinon ($f$ vaut $\rightarrow$)
 6. retour en 3.
 
-> L'article où d'Allan Turing décrit cette machine est [là](http://www.espace-Turing.fr/IMG/pdf/Turing_oncomputablenumbers_1936.pdf)
+> L'article où d'Allan Turing décrit cette machine est [là](https://www.espace-turing.fr/IMG/pdf/turing_paper_1936.pdf)
 
 ## exemples de programmes
 
@@ -129,7 +121,7 @@ Le site représente la machine sous la forme de son diagramme de transition. Les
 
 ### doublement des bâtons
 
-Exemple classique des machines de Turing, le doublement des bâtons s'écrit comme ça :
+AUtre exemple classique des machines de Turing, le doublement des bâtons. Elle s'écrit comme ça :
 
 |      | 1                         | $\sharp$                   |
 |------|---------------------------|----------------------------|
@@ -142,7 +134,7 @@ On a représenté la machine sous la forme d'un tableau où les état sont des l
 
 On initialise cette machine avec une chaine de 1. Par exemple, en commençant par un ruban valant `11`, on obtient la résolution suivante (la position du curseur est en orange) :
 
-| instruction| ruban ||||||| état |
+| # instruction| ruban ||||||| état |
 | ^^   |-3|-2|-1|0|1|2|3| ^^|
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 |----|--|--|--|-|-|-|-|----|
@@ -163,7 +155,10 @@ On initialise cette machine avec une chaine de 1. Par exemple, en commençant pa
 |14   |1|1|1|1|#| **#** {: .cls style=";background: orange" }|   #  | s |
 |15   |1|1|1|1|#| #| **#** {: .cls style=";background: orange" } | e |
 
-La machine s'arrête ! Avant de voir exactement pourquoi cette machine s'arrête, essayer de comprendre son fonctionnement. Si vous ne voulez pas tester votre machine à la main, Le code précédent a été traduit ci-dessous dans le formalisme de <https://Turingmachine.io/> avec une entrée de `1111` :
+La machine s'arrête ! Avant de voir exactement pourquoi cette machine s'arrête, essayer de comprendre son fonctionnement. 
+
+> Testez la machine avec <https://Turingmachine.io/> en utilsant le code ci-dessous, traduction de la machine, avec une entrée de `1111` :
+{: .a-faire}
 
 ```text
 input: '1111'
@@ -196,7 +191,7 @@ On aura toujours une configuration où les nouveaux 1 seront à gauche des ancie
 
 Le programme de la machine de Turing a machine va donc ici s'arrêter puisqu'à un moment tous les anciens $1$ auront-été effacés et on se retrouvera à l'état initial avec le curseur placé sur un $\sharp$ , ce qui enverra vers l'état final.
 
-> Félicitations ! Vous venez d'implémenter la fonction $f(n) = 2n$ dans une machine de Turing.
+**Félicitations** ! Vous venez d'implémenter la fonction $f(n) = 2n$ dans une machine de Turing.
 
 Remarquez que par construction de la machine de Turing, le nombre d'opérations nécessaires pour exécuter le programme correspond aussi au nombre maximum de cases différentes du ruban qui ont peu être parcourues :
 
@@ -215,6 +210,9 @@ Notez qu'il est facile de composer des machines de Turing ensemble en *concatén
 * ...
 
 ## substantifique moelle de la machine de Turing
+
+> ecrire des choses pour s'en rappeler et faire un calcul. Genre la somme. On voit qu'on peut le décomposer en écrire des entier dans des cases, quand s'arrêter ? Qeules sont les [atomes](https://fr.wikipedia.org/wiki/Atome) (insécable en grec) de l'algorithme ? C'est la machine de turing...
+{: .tbd}
 
 Le modèle de la machine de Turing admet quatre paramètres :
 

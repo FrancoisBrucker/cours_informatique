@@ -111,7 +111,7 @@ Un deck est une pile de cartes. Le deck est initialement vide et on peut ajouter
 >On vous demande de modifier l'UI précédente pour avoir :
 >
 > * deux decks côte à côte initialement vides
-> * un bouton qui ajoute une carte (que l'on choisit grâce à deux menus   déroulants) au premier deck
+> * un bouton qui ajoute une carte (que l'on choisit grâce à deux menus déroulants) au premier deck
 > * un bouton permettant de passer une carte du premier au second deck.
 > * connaître le nombre de cartes dans chaque deck
 {: .a-faire}

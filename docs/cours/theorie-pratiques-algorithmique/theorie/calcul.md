@@ -13,22 +13,38 @@ category: cours
 
 Dans [la partie précédente]({% link cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.md %}), on a donné une façon d'écrire des pseudo-codes. Mais est-ce la seule façon de faire ? Et, au final, que peut-on réellement faire avec un algorithme ?
 
-## algorithmes et fonctions
+## algorithmes et pseudo-code
 
-On va montrer qu'un algorithme peut être vu comme une fonction particulière.
+Un algorithme, [on l'a vu]({% link cours/theorie-pratiques-algorithmique/algorithmie/algorithmes.md %}#algorithme), est un ensemble de règles propre à un **calcul**. La [définition de calcul](https://dictionnaire.lerobert.com/definition/calcul) du Petit Robert est cependant très générale et ne pose pas vraiment la question du choix des règles, ni de comment réaliser effectivement ce calcul.
 
-### règles d'un algorithme {#regles-generales}
+La définition générale d'un algorithme est alors (voir [la page wikipedia sur la calculabilité](https://fr.wikipedia.org/wiki/Th%C3%A8se_de_Church#Formulation_de_la_th%C3%A8se))  :
 
-Un algorithme, [on l'a vu]({% link cours/theorie-pratiques-algorithmique/algorithmie/algorithmes.md %}#algorithme), est un ensemble de règles propre à un **calcul**. La [définition de calcul](https://dictionnaire.lerobert.com/definition/calcul) du Petit Robert est cependant très générale et ne pose pas vraiment la question du choix des règles, de comment réaliser effectivement ce calcul. On s'accorde (voir [la page wikipedia sur la calculabilité](https://fr.wikipedia.org/wiki/Th%C3%A8se_de_Church#Formulation_de_la_th%C3%A8se)) à garder **4 règles générales** :
+> Les **4 propriétés générales** qui définissent un algorithme :
+>
+>1. un algorithme est constitué d'un ensemble fini de règles, décrites avec un nombre fini de symboles
+>2. si l'algorithme produit un résultat cela doit être fait après un nombre fini d'étapes (une étape étant l'application d'une règle) successives.
+>3. un humain doit pouvoir suivre chaque étape avec un papier et un crayon
+>4. exécuter une règle ne doit pas nécessiter d'intelligence (à part celle pour comprendre la règle)
+>
+{: .note}
 
-1. un algorithme possède un ensemble fini de règles, décrites avec un nombre fini de symboles
-2. si l'algorithme produit un résultat cela doit être fait après un nombre fini d'étapes
-3. un humain doit pouvoir suivre chaque étape avec un papier et un crayon
-4. exécuter une règle ne doit pas nécessiter d'intelligence (à part celle pour comprendre la règle)
+Le terme **fini** est crucial : pour qu'un humain comprenne, et surtout puisse agir, il ne faut pas qu'il y ait un nombre infini de choses à regarder (chaque chose à faire prend un temps de réflexion non nul, une instruction contenant un nombre infini n'est humainement pas réalisable).
 
-Tout ça est un peu plus précis. On constate que c'est le terme **fini** qui revient constamment : pour qu'un humain comprenne, et surtout puisse agir, il ne faut pas qu'il y ait un nombre infini de choses à regarder (chaque chose à faire prend un temps de réflexion non nul, une instruction contenant un nombre infini n'est humainement pas réalisable). Et même si l'on admet que l'on est immortel et que l'on peut réaliser un nombre infini d'opérations, elles sont réalisées les unes à la suite des autres et chaque opération ne peut manipuler qu'un nombre fini d'éléments : on ne peut ainsi atteindre que des choses [dénombrables](https://fr.wikipedia.org/wiki/Ensemble_d%C3%A9nombrable) c'est à dire représentables par des entiers.
+### règles d'un algorithme
 
->Cette remarque, évidente, a une conséquence fondamentale : **un algorithme ne peut pas manipuler de nombres réels**. On ne peut considérer un réel que comme une abstraction (un symbole particulier) ou une approximation (on ne considère qu'un nombre fini de décimales).
+On en déduit la définition (très générale) d'une règle d'un algorithme :
+
+> Une **règle** d'un algorithme est une instruction définie par un nombre **fini** de symboles.
+{: .note}
+
+Fini ne veut pas dire petit nombres. Un algorithme peut utiliser des nombres entiers aussi grand qu'il
+le veut, du moment qu'ils ne soient pas infini.
+
+### objet manipulables
+
+Puisque l'on a le droit de ne manipuler que des choses finies, un algorithme ne peut manipuler que des [mots d'un alphabet fini](https://fr.wikipedia.org/wiki/Mot_(math%C3%A9matiques)). La conséquence fondamentale de ceci est que :
+
+> **un algorithme ne peut pas manipuler de nombres réels**. On ne peut considérer un réel que comme une abstraction (un symbole particulier) ou une approximation (on ne considère qu'un nombre fini de décimales).
 {: .note}
 
 Prenons $\pi$ par exemple. On peut le considérer de deux manières : comme le symbole $\pi$ et de là faire des opérations sur lui (comme $2 \cdot \pi$, ou $\frac{3\pi}{3}$, ...) de façon formelle, c'est à dire sans jamais connaître sa valeur ou comme une valeur approchée de lui (3.1415 par exemple) et ainsi rendre des valeurs approchées des différentes opérations. On ne pourra cependant **jamais** avoir la valeur exacte de $\pi$ avec un algorithme (et ce même s'il avait une mémoire infinie).
@@ -37,29 +53,44 @@ Ce n'est pas bien grave en général puisque les lois physiques sont presque tou
 
 > Faites tout de même attention car parfois, c'est problématique. Pour le calcul d'effets chaotiques comme la météo où [de petits effets produisent de grandes causes](https://fr.wikipedia.org/wiki/Effet_papillon), certes, mais aussi lorsque l'on prend l'inverse de choses très petites qui du coup deviennent très grandes. Ce sont des problèmes dit de [stabilité numérique](https://fr.wikipedia.org/wiki/Stabilit%C3%A9_num%C3%A9rique).
 
-Fini ne veut pas dire petit nombres. Un algorithme peut utiliser des nombres entiers aussi grand qu'il le veut, du moment qu'ils ne soient pas infini
-{: .attention}
+En conclusion :
 
->Les règles que l'on a définies [précédemment]({% link cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.md %}#regles) pour écrire un pseudo-code respectent alors les règles ci-dessus si on enlève les réels comme objets basiques. On peut même se restreindre [sans perte de généralité](https://en.wikipedia.org/wiki/Structured_program_theorem) (même si ce sera plus compliqué d'écrire le code) aux règles suivantes (il n'y a même pas besoin de récursivité) :
+> Les objets manipulables par un algorithme sont uniquement :
 >
-> * de lire et d'affecter des entiers à des variables
-> * d'avoir un test d'égalité entre deux variables
-> * d'exécuter une instruction puis une autre, séquentiellement
+> * les entiers finis
+> * les approximations finies de réels
+> * les chaînes de caractères
+>
+{: .note}
+
+### règles d'un pseudo-code {#regles-pseudo-code}
+
+Un [pseudo-code]({% link cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.md %}#regles) est un algorithme particulier. Il respecte bien les 4 propriétés générales d'un algorithme, mais les règles qui le régissent sont [définies précisément]({% link cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.md %}#regles). On peut montrer que toutes ces règles peuvent être réduites à un ensemble bien plus petit :
+
+> On peut ramener l'ensemble des [règles d'un pseudo-code](https://en.wikipedia.org/wiki/Structured_program_theorem) (même si ce sera plus compliqué d'écrire le code) à trois types d'instructions et à trois façon de les exécuter.
+>
+> Une **instruction**  est soit :
+>
+> * une affectation d'un entier (voir même juste un bit) à une variable
+> * une lecture d'une variable
+> * un test d'égalité entre deux variables
+>
+> Un pseudo-code doit pouvoir :
+>
+> * exécuter une instruction puis une autre, **séquentiellement**
 > * exécuter une instruction si un test d'égalité est vrai
 > * exécuter un bloc d'instructions tant qu'un test d'égalité est vrai
 {: .note}
 
-Tous les pseudo-codes utilisant les 5 règles ci-dessus auront la même expressivité (on pourra faire exactement les mêmes choses) que ceux utilisant [les règles]({% link cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.md %}#regles) utilisées couramment.
+Tous les pseudo-codes utilisant les 6 règles ci-dessus auront la même expressivité (on pourra faire exactement les mêmes choses) que ceux utilisant [les règles]({% link cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.md %}#regles) utilisées couramment, ce sera juste plus long et compliquer à écrire, c'est pourquoi leur intérêt est uniquement théorique.
 
-On pense même (c'est ce qu'on appelle la [thèse de Church-Turing](https://fr.wikipedia.org/wiki/Th%C3%A8se_de_Church)) que quelque soient les règles qu'on va se donner, du moment qu'elles respectent les 4 règles générales, alors on ne pourra pas calculer plus de choses.
+### équivalence entre algorithme et pseudo-code ? {#equi-algo-pseudo-code}
 
-### fonctions
+On est intimement convaincu (c'est ce qu'on appelle la [thèse de Church-Turing](https://fr.wikipedia.org/wiki/Th%C3%A8se_de_Church)) que les règles d'un pseudo-code sont équivalentes aux règles d'un algorithme, c'est çà dire que toutes les règles qu'on pourrait inventer en un nombre fini de symbole peuvent s'écrire sous la forme de règles d'un pseudo-code.
 
-Un algorithme, représenté par son pseudo code, a des entrées et une sortie. D'après ce qui précède, ces entrées et cette sortie peuvent être :
+## fonctions
 
-* des entiers finis
-* des approximations finies de réels
-* des chaînes de caractères
+Un algorithme, représenté par son pseudo code, a des entrées et une sortie : c'est une fonction. D'après ce qui précède, on a donc :
 
 > Un algorithme à $p$ entrées, dont $q$ entrées entières, $r$ entrées approximation des réels et $s$ chaînes de caractères est une fonction de :
 >
@@ -68,15 +99,9 @@ Un algorithme, représenté par son pseudo code, a des entrées et une sortie. D
 > où $\mathbb{N}$ est l'ensemble des entiers, $R$ l'ensemble des approximations de réels et $C$ l'ensemble des chaînes de caractères.
 {: .note}
 
-On a pas trop dit grand chose pour l'instant. On a fait que reécrire ce qu'on savait déjà sous la forme de fonctions. On va montrer qu'on peut faire bien mieux.
+On a pas trop dit grand chose pour l'instant. On a fait que reécrire ce qu'on savait déjà sous la forme de fonctions. On va montrer qu'on peut faire bien mieux en montran qu'un algorithme est une fonction de $\mathbb{N}$ (les entiers) dans $\mathbb{N}$.
 
-## modèle
-
-On montre ici que l'on peut aller bien plus loin que la partie précédente et montrer qu'un algorithme est une fonction de $\mathbb{N}$ (les entiers) dans $\mathbb{N}$.
-
-Cela nous permettra ensuite de montrer qu'un algorithme ne peut pas **tout** calculer : il existe des fonctions de $\mathbb{N}$ dans $\mathbb{N}$ qu'aucun ordinateur ne pourra calculer.
-
-> Trouver des fonctions non calculables par un ordinateur n'est pas une tâche simple cependant. Il faut connaître les machines de Turing pour en exhiber.
+Cela nous permettra de montrer qu'un algorithme ne peut pas **tout** calculer : il existe des fonctions de $\mathbb{N}$ dans $\mathbb{N}$ qu'aucun ordinateur ne pourra calculer (trouver des fonctions non calculables par un ordinateur n'est pas une tâche simple cependant. Il nous faudra un peut plus de connaissances pour en exhiber).
 
 ### fonctions à plusieurs paramètres entiers {#fonction-plusieurs-entier}
 
@@ -198,27 +223,24 @@ Bref, $y$ n'existe pas. On en conclut qu'il existe des éléments de $2^E$ qui n
 ### mais lorsqu'on calcule, on calcule la même chose
 
 Les règles qu'on s'est données pour écrire du pseudo-code vont être pratiques pour décrire un algorithme pour un humain. Le fait qu'une fois posées, les règles ne nécessitent pas d'intelligence pour être exécutées, les rendent même accessible à des étudiants !
-Cependant les termes qu'on peut utiliser ne sont pas définis clairement, il y a de multiples façons d'interpréter les [4 règles générales](#regles-generales) d'un calcul et donc de multiples façon d'écrire du pseudo-code.
+Cependant les termes qu'on peut utiliser ne sont pas définis clairement, il y a de multiples façons d'interpréter les [4 règles générales](#regles-generales), ou de manipuler les [6 règles d'un pseudo-code](#regles-pseudo-code).
 
-On peut déjà penser aux multiples langages de programmation, allant de [l'assembleur](https://fr.wikipedia.org/wiki/Assembleur) compréhensible par les processeurs de nos ordinateurs au [python](https://fr.wikipedia.org/wiki/Python_(langage)) que tout le monde connait, en passant par le [haskell](https://fr.wikipedia.org/wiki/Haskell) ou encore le [C](https://fr.wikipedia.org/wiki/C_(langage)). On trouve même des langages désignées pour être les plus simples possibles (appelés [turing tarpit](https://fr.wikipedia.org/wiki/Langage_de_programmation_exotique)) et permettant de calculer tout ce qu'on peut faire en python par exemple, comme le [brainfuck](https://fr.wikipedia.org/wiki/Brainfuck) qui est le plus célèbres d'entres eux.
+On peut déjà penser aux multiples langages de programmation, allant de [l'assembleur](https://fr.wikipedia.org/wiki/Assembleur) compréhensible par les processeurs de nos ordinateurs au [python](https://fr.wikipedia.org/wiki/Python_(langage)) que tout le monde connait, en passant par le [haskell](https://fr.wikipedia.org/wiki/Haskell) ou encore le [C](https://fr.wikipedia.org/wiki/C_(langage)).
 
-> *fun fact*, on peut utiliser aussi certains jeu comme langage de programmation comme [factorio](https://www.factorio.com/) (l'algorithme de tri [quicksort](https://www.youtube.com/watch?v=ts5EKp9w4TU)), ou encore [minecraft](https://www.minecraft.net/) ([une caculatrice](https://www.youtube.com/watch?v=uGug-4xkw6M)).
+On trouve même des langages désignées pour être les plus simples possibles (appelés [turing tarpit](https://fr.wikipedia.org/wiki/Langage_de_programmation_exotique)) tout en étant aussi expressif que le python. Le plus célèbre d'entre eux est le [brainfuck](https://fr.wikipedia.org/wiki/Brainfuck).
 
-Et bien on peut démontrer que tous ces langages **calculent exactement la même chose** (mais de façon différente) !
+> *fun fact*, on peut utiliser aussi certains jeu comme langage de programmation comme [factorio](https://www.factorio.com/) (l'algorithme de tri [quicksort](https://www.youtube.com/watch?v=ts5EKp9w4TU)), ou encore [minecraft](https://www.minecraft.net/) ([une calculatrice](https://www.youtube.com/watch?v=uGug-4xkw6M)).
 
-> l'assembleur, le python ou encore le C sont des langages qui permettent de calculer exactement ce qu'on peut calculer avec une [machine de Turing](https://fr.wikipedia.org/wiki/Machine_de_Turing). De plus, on ne connait pas de langages qui permettent de calculer plus de choses.
-{: .note}
+Le représentant de toute ces variabilités est la [machine de Turing]({% link cours/theorie-pratiques-algorithmique/theorie/machine-turing.md %}). C'est un outil simple qui capture merveilleusement les [4 règles générales](#regles-generales) dans le sens où c'est **et** un outil puissant de démonstration **et** un un moyen de créer des algorithmes. C'est pourquoi la [question sur l'équivalence entre algorithme et pseudo-code](#equi-algo-pseudo-code) est souvent écrite de cette façon  :
 
-Tous ces exemples, plus bien d'autres essais, tendent à [accréditer la thèse de Church-Turing](https://plato.stanford.edu/entries/church-turing/#ReasForAcceThes) selon laquelle :
-
-> On est convaincu que tout ce qu'un humain, une machine, ou encore un système physique peut calculer (c'est à dire en suivant les 4 règles générales) est exactement égal à ce qu'une machine de Turing peut calculer.
+> On est convaincu que tout ce qu'un humain, une machine, ou encore un système physique peut calculer (c'est à dire en suivant les 4 règles générales de l'algorithme) est exactement égal à ce qu'une machine de Turing peut calculer.
 {: .note}
 
 Pour répondre à notre question initiale, *que peut-on calculer ?*, on peut maintenant répondre : ce qu'une machine de Turing peut calculer (et ce n'est pas tout, mais c'est quand même pas mal de choses).
 
 ## algorithmes et démonstration mathématiques
 
-On n'en parlera pas trop dans ce cours (à moins que vous me le demandiez très fort) mais, en gros, les mathématiques sont une partie de l'informatique. 
+On n'en parlera pas trop dans ce cours (à moins que vous me le demandiez très fort) mais, en gros, les mathématiques sont une partie de l'informatique.
 
 De façon plus précise on a la suite d'équivalences :
 

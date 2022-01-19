@@ -11,7 +11,7 @@ category: cours
 >* [théorie / machine de turing]({% link cours/theorie-pratiques-algorithmique/theorie/machine-turing.md %})
 {: .chemin}
 
-
+Que peut calculer une machine de turing ? 
 
 ## problème de l'arrêt
 
