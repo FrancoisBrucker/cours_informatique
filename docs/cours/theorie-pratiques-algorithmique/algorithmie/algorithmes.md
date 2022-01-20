@@ -79,10 +79,8 @@ Quelque-soit la forme que prendra vos algorithmes (pseudo-code, programme ou fon
 >
 > 1. vérifier le fonctionnement de l'algorithme sur de petits exemples que l'on peut tester à la main
 > 2. prouver l'algorithme :
->
 >   * preuve que l'algorithme termine
 >   * preuve qu'il résout le problème demandé
->
 > 3. évaluer ses performances en calculant sa complexité
 >
 {: .note}

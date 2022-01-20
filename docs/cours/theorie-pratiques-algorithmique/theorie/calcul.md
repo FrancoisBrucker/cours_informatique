@@ -233,7 +233,7 @@ On trouve même des langages désignées pour être les plus simples possibles (
 
 Le représentant de toute ces variabilités est la [machine de Turing]({% link cours/theorie-pratiques-algorithmique/theorie/machine-turing.md %}). C'est un outil simple qui capture merveilleusement les [4 règles générales](#regles-generales) dans le sens où c'est **et** un outil puissant de démonstration **et** un un moyen de créer des algorithmes. C'est pourquoi la [question sur l'équivalence entre algorithme et pseudo-code](#equi-algo-pseudo-code) est souvent écrite de cette façon  :
 
-> On est convaincu que tout ce qu'un humain, une machine, ou encore un système physique peut calculer (c'est à dire en suivant les 4 règles générales de l'algorithme) est exactement égal à ce qu'une machine de Turing peut calculer.
+> On est convaincu que tout ce qu'un humain, une machine, ou encore un système physique peut calculer (c'est à dire en suivant les 4 règles générales de l'algorithme) est exactement égal à ce qu'une machine de Turing peut calculer. C'est ce qu'on appelle [la thèse de Church-Turing](https://plato.stanford.edu/entries/church-Turing/#ReasForAcceThes)
 {: .note}
 
 Pour répondre à notre question initiale, *que peut-on calculer ?*, on peut maintenant répondre : ce qu'une machine de Turing peut calculer (et ce n'est pas tout, mais c'est quand même pas mal de choses).

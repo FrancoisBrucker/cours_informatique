@@ -6,21 +6,51 @@ category: cours
 
 > [Théorie et pratiques algorithmique]({% link cours/theorie-pratiques-algorithmique/index.md %}) / [théorie]({% link cours/theorie-pratiques-algorithmique/theorie/index.md %}) / [calculabilité]({% link cours/theorie-pratiques-algorithmique/theorie/calculabilite.md %})
 >
->prérequis :
+> prérequis :
 >
->* [théorie / machine de turing]({% link cours/theorie-pratiques-algorithmique/theorie/machine-turing.md %})
+> * [machine de turing]({% link cours/theorie-pratiques-algorithmique/theorie/machine-turing.md %})
+> * [complexité d'un problème]({% link cours/theorie-pratiques-algorithmique/algorithmie/complexite-probleme.md %})
 {: .chemin}
 
-Que peut calculer une machine de turing ? 
+La machine de Turing est un modèle permettant de rendre compte d'un algorithme. Soit $M$ une machine de turing. A partir d'un mot $E$ sur le ruban, la machine va soit :
 
-## problème de l'arrêt
+* ne pas s'arrêter (elle n'arrivera jamais sur un état final)
+* s'arrêter avec l'état $q$ et le mot $S$ inscrit sur le ruban au bout d'un nombre fini d'opérations.
+
+Connaitre l'algorithme de la machine correspond ainsi à **deux** problèmes :
+
+1. connaitre les mots d'entrée qui vont faire stopper la machine : c'est la *décidabilité*
+2. connaitre la sortie de la machine pour un mot d'entrée qui la fait s'arrêter : c'est la *calculabilité*
+
+Aucun de ces deux problèmes n'est simple.
+
+## décidabilité
+
+Formalisons le problème :
+
+> Soit $M$ une machine de Turing sur un alphabet d'entrée $\Sigma$. L'ensemble des mots de $\Sigma$ acceptés par $M$ est noté $\mathcal{L}(M)$.
+> ne ensemble de mots $L$ d'un alphabet $\Sigma$ est **reconnaissable** s'il existe une machine de Turing $M$ d'alphabet d'entrée $\Sigma$ tel que $L = $\mathcal{L}(M)$
+{: .note}
 
 
-## fonctions calculables
+> la notion de rejet ?
+{: .note}
+
+
+> U Soit $M$ une machine de Turing sur un alphabet d'entrée $\Sigma$. L'ensemble des mots de $\Sigma$ acceptés par $M$ est noté $\mathcal{L}(M)$.
+{: .note}
+
+> Etant donné un ensemble $\Gamma$ appelé *alphabet*, un **mot** est une suite finie  et un ensemble de mots $L$ de 
+décidable = reconu et s'arrête sur oui ou non.
+ex : syracuse
+
+## calculabilité 
+
+### fonctions calculables
 
 
 
-## nombres calculables
+### nombres calculables
 
 
 <https://en.wikipedia.org/wiki/Computable_number>
@@ -28,17 +58,7 @@ Que peut calculer une machine de turing ?
 * que peut-on calculer ? 
 * de pseudo code à calcul de f(N) -> N
 
-## turing complet
-
-si on peut faire une machine de turing dans notre programme on est turing complet.
-
-machine de turing universelle
-
-> TBD
-> * turing : pb de l'arrêt de la machine ?
-> 
-
-pour l'instant tous les pseudo-code qu'on a écrit s'arrêtent tout le temps. Mais celui là ? syracuse. On ne sais pas. 
+pour l'instant tous les pseudo-code qu'on a écrit s'arrêtent tout le temps. Mais celui là ? syracuse. On ne sais pas.
 
 ## arrêt de la machine
 
