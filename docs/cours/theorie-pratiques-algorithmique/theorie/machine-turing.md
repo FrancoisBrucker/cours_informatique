@@ -30,7 +30,7 @@ La force d'une machine de turing est qu'il n'y a rien (modèle très simple) et 
 
 Il existe plusieurs définitions équivalentes d'une machine de Turing. Nous allons utiliser une variation de [celle de wikipedia](https://fr.wikipedia.org/wiki/Machine_de_Turing#D%C3%A9finition_formelle), que l'on va pouvoir utiliser tout au long de ce cours :
 
-Une **machine de Turing** est un 7-uplet $(Q, \Gamma, \Sigma, \delta, q_0, q_a, q_r)$ où :
+Une **machine de Turing** est un 6-uplet $(Q, \Gamma, \Sigma, \delta, q_0, q_a)$ où :
 
 * $Q$ est un ensemble fini d'**état**
 * $\Gamma$ est un ensemble fini nommé **alphabet de travail**. Il contient un symbole spécial $\sharp$, dit **blanc**.
@@ -38,7 +38,6 @@ Une **machine de Turing** est un 7-uplet $(Q, \Gamma, \Sigma, \delta, q_0, q_a, 
 * $\delta : Q \times \Gamma \rightarrow Q \times \Gamma \times \\{ \leftarrow, \rightarrow \\}$ est la **fonction de transition**
 * $q_0 \in Q$ est l'**état initial** de la machine
 * $q_a \in Q$ est l'**état d'acceptation** de la machine
-* $q_r \in Q \backslash \{ q_0, q_a \}$ est l'**état de rejet** de la machine
 
 > On appelle cette machine **déterministe** car $\delta$ est une fonction.
 
@@ -59,14 +58,14 @@ Par convention, on considérera que le ruban initial aura comme numéro d'instru
 >
 > 1. on place la tête de lecture sur une case du ruban
 > 2. on initialise si besoin le ruban avec une chaine de caractères (finie) contenant des caractères de $\Sigma$ et on place le curseur sur la première case de la chaine.
-> 3. si l'état de la machine est $q_a$ ou $q_r$, on stoppe le programme.
+> 3. si l'état de la machine est $q_a$ on stoppe le programme.
 > 4. on lit le caractère $a$ sous le curseur, l'état $q$ de la machine et on note $\delta(a, q) = (a', q', f)$
 > 5. on écrit $a'$ dans la case du ruban pointé par le curseur, on place la machine dans l'état $q'$ et on déplace le curseur vers la gauche si $f$ vaut $\leftarrow$ et vers la droite sinon ($f$ vaut $\rightarrow$)
 > 6. retour en 3.
 >
 {: .note}
 
-> L'exécution d'une machine de Turing, n'est pas forcément finie. Elle ne s'arrête que si elle atteind l'état $q_a$ ou $q_r$, ce qui peut ne jamais arriver.
+> L'exécution d'une machine de Turing, n'est pas forcément finie. Elle ne s'arrête que si elle atteind l'état $q_a$, ce qui peut ne jamais arriver.
 
 Remarquez la minimalité du fonctionnement :
 
@@ -83,10 +82,10 @@ Essayez de supprimer une règle et plus rien ne marche et en ajouter ne sert à 
 
 ## machine de turing, algorithmes et fonctions
 
-Une machine de Turing peut être vue comme un algorithme dont l'entrée et la sorite sont écrits sur le ruban. Pour préciser cela, il faut commencer par définir clairemnt les entrées et sorties.
+Une machine de Turing peut être vue comme un algorithme dont l'entrée et la sortie sont écrits sur le ruban. Pour préciser cela, il faut commencer par définir clairement entrées et sorties.
 
 > Un **mot** $\omega$ d'un ensemble fini $\Sigma$ est une suite fini $\omega = (\omega_1, \dots, \omega_n)$ d'éléments de $\Sigma$. La **longueur** d'un mot est la longueur de la suite (le mot de longueur 0 est la suite vide).
-> On appelle alors souvent $\Sigma$ l'**alphabet** et **caractère** un élément de la suite d'un mot.
+> On appelle alors $\Sigma$ l'**alphabet** et **caractère** un élément de la suite d'un mot.
 > On note $\Sigma^\star$ l'ensemble des mots de $\Sigma$ et $\Sigma^+$ l'ensemble des mots non vide (de longeur strictement positive)
 {: .note}
 
@@ -109,20 +108,18 @@ On peut maintenant préciser l'entrée et la sortie (si elle existe) de l'exécu
 > L'**entrée** d'une exécution est un mot $m \in \Sigma^\star$ telle que la **configuration initiale** de l'exécution de la machine (l'étape 2 lors de l'exéctuion) soit $(\emptyset, q_0, m)$ avec des blancs à gauche et à droite de la configuration.
 {: .note}
 
-Si l'exécution d'une machine s'arrête dans l'état $q_a$, on peut lire la **sortie** de la machine :
+Si l'exécution d'une machine s'arrête, on peut lire la **sortie** de la machine :
 
 > La **sortie** de l'exécution d'une machine de Turing est la concaténation des mots $m_1$ et $m_2$ où la machine est dans la configuration  $(\sharp m_1, q_a, m_2\sharp)$ avec $m_1, m_2 \in \Sigma^*$.
 {: .note}
 
 En reprenant la machine de la figure précédente et un considérant que $b$ est son état d'acceptation. La sortie de la machine serait : $1011010$.
 
-> Notez que la sortie de l'exécution d'une machine de Turing n'est définie que si la machine s'est arrêtée dans l'état d'acceptation et que dans ce cas là, elle est définie de façon unique (c'est les cases autour du curseur qui contiennent des caractères de l'alphabet d'entrée).
+> Notez que la sortie de l'exécution d'une machine de Turing est définie de façon unique (c'est les cases autour du curseur qui contiennent des caractères de l'alphabet d'entrée).
 
-Finissons par quelques définitions qui précisent des différents résultats de l'exécution d'une machine $M = (Q, \Gamma, \Sigma, \delta, q_0, q_a, q_r)$.
+Finissons par quelques définitions qui précisent des différents résultats de l'exécution d'une machine $M = (Q, \Gamma, \Sigma, \delta, q_0, q_a)$.
 
-> Un mot $\mu$ de $\Sigma^\star$ est **accepté** par $M$ si l'exécution de $M$ pour l'entrée $\mu$ se termine sur l'état $q_a$, il est **rejeté** si l'exécution de $M$ pour l'entrée $\mu$ se termine sur l'état $q_r$. Dans les deux cas on dira que la machine s'**arrête** pour $\mu$, sinon on dira qu'elle **boucle**.
->
-> Le **langage** de $M$ est l'ensemble des mots acceptés par elle et on le note $\mathcal{L}(M)$.
+> Un mot $\mu$ de $\Sigma^\star$ est **accepté** par $M$ si l'exécution de $M$ pour l'entrée $\mu$ se termine sur l'état $q_a$. L'ensemble des mots acceptés par $M$ est le **langage** de $M$ et est noté $\mathcal{L}(M)$.
 {: .note}
 
 ## exemples de programmes
@@ -134,13 +131,13 @@ Le premier exemple donné par Allan Turing est celui-ci :
 * $Q = \\{ a, b, c, d \\}$
 * $\Gamma = \\{ 0, 1, \sharp \\}$ et $\Sigma = \\{ 0, 1 \\}$
 * $q_0 = a$
-* on aura pas besoin d'états finaux
+* on aura pas besoin d'état final
 * $\delta(a, \sharp) = (0, b, \rightarrow)$
 * $\delta(b, \sharp) = (\sharp, c, \rightarrow)$
 * $\delta(c, \sharp) = (1, d, \rightarrow)$
 * $\delta(d, \sharp) = (\sharp, a, \rightarrow)$
 
-La fonction $\delta$ est ici partielle, avec la convention que si l'on arrive dans une configuration non décrite, on stoppe la machine dans un état de rejet (on peut donc étendre $\delta$ à tout $Q \times \Gamma$ si on le voulait).
+La fonction $\delta$ est ici partielle, avec la convention que si l'on arrive dans une configuration non décrite, on stoppe la machine (on peut donc étendre $\delta$ à tout $Q \times \Gamma$ si on le voulait).
 
 Allons-y. Essayons ce code. On considère la machine de Turing ci-après, avec l'entrée vide :
 
@@ -199,7 +196,7 @@ Autre exemple classique des machines de Turing, le doublement des bâtons. Elle 
 |g     | $(1, g, \leftarrow)$      | $(1, d, \rightarrow)$      |
 |d     | $(1, d, \rightarrow)$     | $(\sharp, s, \rightarrow)$ |
 
-On a représenté la machine sous la forme d'un tableau où les état sont des lignes et chaque colonne est un élément de l'alphabet. L'état initial est la première ligne et les états finaux sont ceux qui n'ont pas de ligne, ici $e$ qui est notre état d'acceptation.
+On a représenté la machine sous la forme d'un tableau où les état sont des lignes et chaque colonne est un élément de l'alphabet. L'état initial est la première ligne et l'état final n'a pas de ligne, c'est $e$.
 
 On initialise cette machine avec une chaine de 1 : $\Sigma = \\{ 1 \\}$ (et $\Gamma = \\{ 1, \sharp \\}$).
 
@@ -311,7 +308,7 @@ Il existent de nombreuses généralisations des machines de Turing, elles ne per
 
 Une machine de Turing à $k$ rubans peut être définie comme suit.
 
-Une **machine de Turing à $k$ rubans** est un 7-uplet $(Q, \Gamma, \Sigma, \delta_k, q_0, q_a, q_r)$ où :
+Une **machine de Turing à $k$ rubans** est un 7-uplet $(Q, \Gamma, \Sigma, \delta_k, q_0, q_a)$ où :
 
 * tout est idendique à la machine de turing classique sauf $\delta_k$
 * $\delta_k : Q \times \Gamma^k \rightarrow Q \times \Gamma^k \times \\{ \leftarrow, \rightarrow \\}^k$ est la **fonction de transition**
@@ -343,7 +340,7 @@ De là, à chaque itération de la machine à 1 seul ruban, on commence par cher
 
 Plutôt que de multiplier les rubans, on peut aussi multiplier les curseurs :
 
-Une **machine de Turing à $k$ curseurs** est un 7-uplet $(Q, \Gamma, \Sigma, \delta_k, q_0, q_a, q_r)$ où :
+Une **machine de Turing à $k$ curseurs** est un 7-uplet $(Q, \Gamma, \Sigma, \delta_k, q_0, q_a)$ où :
 
 * tout est idendique à la machine de turing classique sauf $\delta_k$
 * $\delta_k : Q \times \Gamma^k \rightarrow Q \times \Gamma^k \times \\{ \leftarrow, \rightarrow \\}^k$ est la **fonction de transition**
@@ -371,14 +368,14 @@ On peut bien sur combiner les deux approches et construire une machine de Turing
 
 Il existe aussi, [la machine de Turing non déterministe](https://fr.wikipedia.org/wiki/Machine_de_Turing_non_d%C3%A9terministe), qui se définit comme suit :
 
-Une **machine de Turing non déterministe** est un 7-uplet $(Q, \Gamma, \Sigma, \delta, q_0, q_a, q_r)$ où :
+Une **machine de Turing non déterministe** est un 7-uplet $(Q, \Gamma, \Sigma, \delta, q_0, q_a)$ où :
 
 * tout est idendique à la machine de turing classique sauf $\delta$
 * $\delta : Q \times \Gamma \rightarrow 2^{Q \times \Gamma \times \\{ \leftarrow, \rightarrow \\}}$ est la **fonction de transition**
 
 Cette machine se distingue de la machine de Turing normale parce que la fonction de transition rend un sous ensemble fini de $Q \times \Gamma \times \\{ \leftarrow, \rightarrow \\}$ et non juste un élément de $Q \times \Gamma \times \\{ \leftarrow, \rightarrow \\}$. Cette machine donne un ensemble de transitions possible pour chaque transition.
 
-Ce qui nous intéresse ici ce n'est plus le calcul effectif mais **s'il existe pour une entrée donnée une suite de transitions emmenant à un état final**. C'est à dire qu'il existe une suite de nombres $(t_1, \dots, t_k)$ telle que à chaque instruction $i$  on ait pu choisir le $t_i$ème choix pour que la $k$ instruction mêne à un état final.
+Ce qui nous intéresse ici ce n'est plus le calcul effectif mais **s'il existe pour une entrée donnée, une suite de transitions emmenant à l'état final**. C'est à dire qu'il existe une suite de nombres $(t_1, \dots, t_k)$ telle que à chaque instruction $i$  on ait pu choisir le $t_i$ème choix pour que la $k$ instruction mêne à un état final.
 
 En représentant les choix sous la forme d'un arbre, on peut représenter $\delta$ comme ça :
 
@@ -400,7 +397,7 @@ Idée de la preuve. En utilisant la représentation arborée, en regardant chaqu
 
 par exemple des machines utilisant [plusieurs rubans et/ou plusieurs curseurs](https://perso.liris.cnrs.fr/sylvain.brandel/wiki/lib/exe/fetch.php?media=ens:m1if09:m1if09-cm03.pdf). L'intérêt de ces machines est qu'elle sont plus facilement programmables.
 
-### simplification de l'alphabet
+### simplification de l'alphabet {#alphabet-01}
 
 Diminuer ou agrandir l'alphabet d'une machine de Turing ne permet pas de calculer plus de choses non plus. On peut se restreindre à un alphabet à 2 lettres :
 
@@ -413,7 +410,7 @@ On termine par coder le caractère blanc par une suite de $\Gamma$ caractères $
 
 On montre par là que :
 
-> Une machine de Turing $M$ calcule un fonction  $f: A \rightarrow \\{0, 1\\}$ où $A$ est l'ensemble des mots de $\\{0, 1\\}$ qui sont soit acceptés (et dans ce cas là $f(m) = 1$) soit rejetés (et $f(m) = 0$) par $M$.
+> Une machine de Turing $M$ calcule un fonction  $f: \mathcal{L}(M) \rightarrow \\{0, 1\\}^\star$ où $f(\mu)$ est la sortie de $M$ pour l'entrée $\mu$.
 {: .note}
 
 Si l'on considère des machines de Turing sans alphabet d'entrée (c'est à dire que l'alphabet de travail est aussi l'alphabet d'entrée, on peut simuler toute machine de Turing sur uniquemnt $\\{\sharp, 1\\}$ (on remplace les $0$ par des $\sharp$ dans l'encodage).
@@ -424,11 +421,10 @@ Ce qui différentie une machine de Turing d'une autre c'est l'alphabet et la fon
 
 Un des résultat les plus surprenant de Turing est qu'en fait on ne peut construire qu'**une seule machine** qui simulera toutes les autres. Cette machine est appelée [Machine de Turing universelle](https://fr.wikipedia.org/wiki/Machine_de_Turing_universelle) et possède deux paramètres, le premier, $M$ représentant le programme d'une machine de Turing et le second $E$ une entrée.
 
-> Il existe une machine de Turing $U$ à 2 rubans sur l'alphabet d'entrée $\\{ 0, 1\\}$ (et $\\{\sharp, 0, 1\\}$ comme alphabet de traval) telle que pour une machine de Turing $M$ et une entrée $E$ donnée, $U(M, E)$ calculera ce que calcule $M$ pour l'entrée $E$ :
+> Il existe une machine de Turing $U$ à 2 rubans sur l'alphabet d'entrée $\\{ 0, 1\\}$ (et $\\{\sharp, 0, 1\\}$ comme alphabet de traval) telle que pour une machine de Turing $M$ et une entrée $\mu$ donnée, $U(M, \mu)$ calculera ce que calcule $M$ pour l'entrée $\mu$ :
 >
-> * elle ne s'arrête pas si l'exécution de $M$ avec $E$ comme entrée ne s'arrête pas,
-> * elle rejette $E$ si $M$ la rejette,
-> * elle accepte $E$ si $M$ 'accepte et sa sortie est celle de $M$ pour l'entrée $E$.
+> * elle accepte $\mu$ si $M$ l'accepte et sa sortie est celle de $M$ pour l'entrée $\mu$.
+> * elle ne s'arrête pas si l'exécution de $M$ avec $\mu$ comme entrée ne s'arrête pas,
 >
 {: .note}
 
@@ -496,8 +492,9 @@ Son frère lui dit alors : " Tu la racontes mal !"
   * toutes les généralisations des machines de Turing ne permettent pas de calculer plus de chose que la machine toute simple.
   * on peut se restreindre à une machine à une entrée sur un alphabet à 2 lettres sans perte de généralité
 * on peut encoder une machine de Turing $M$ sous la forme d'un mot de $\\{0, 1 \\}$ noté $\langle M \rangle$
-* il existe une machine de Turing universelle $U$ qui permet de simuler toutes les machine de Turing existantes : $U(M, E)$ sera égal à $M(E)$
+* il existe une machine de Turing universelle $U$ qui permet de simuler toutes les machine de Turing existantes : $U(M, \mu)$ sera égal à $M(\mu)$
 
 Enfin :
 
 > la simplicité de son fonctionnement et la puissance de ce qu'elle calcule convainc (les informaticiens de tous les pays) que tout ce qu'un humain, une machine, ou encore un système physique peut calculer (c'est à dire en suivant des opérations que l'on peut décrire en un nombre fini d'opérations) est exactement égal à ce qu'une machine de Turing peut calculer. C'est ce qu'on appelle [la thèse de Church-Turing](https://plato.stanford.edu/entries/church-Turing/#ReasForAcceThes).
+{: .note}

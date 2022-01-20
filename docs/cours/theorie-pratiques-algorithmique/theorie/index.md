@@ -14,10 +14,9 @@ Que peut ou pas faire un algorithme.
 
 * [calcul ?]({% link cours/theorie-pratiques-algorithmique/theorie/calcul.md %})
 * [machine de Turing]({% link cours/theorie-pratiques-algorithmique/theorie/machine-turing.md %})
+* [calculabilité]({% link cours/theorie-pratiques-algorithmique/theorie/calculabilite.md %})
 
 
 * algorithmes et fonctions
-* machines de turing
-* calculabilité
 
 * logique = formule logique = sat

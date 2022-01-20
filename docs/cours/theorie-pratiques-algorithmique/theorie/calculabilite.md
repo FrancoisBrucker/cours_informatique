@@ -9,13 +9,12 @@ category: cours
 > prérequis :
 >
 > * [machine de turing]({% link cours/theorie-pratiques-algorithmique/theorie/machine-turing.md %})
-> * [complexité d'un problème]({% link cours/theorie-pratiques-algorithmique/algorithmie/complexite-probleme.md %})
 {: .chemin}
 
-La machine de Turing est un modèle permettant de rendre compte d'un algorithme. Soit $M$ une machine de turing. A partir d'un mot $E$ sur le ruban, la machine va soit :
+La machine de Turing est un modèle permettant de rendre compte d'un algorithme. Soit $M$ une machine de turing et considérons son exécution pour l'entrée $\mu$. La machine va alors soit :
 
-* ne pas s'arrêter (elle n'arrivera jamais sur un état final)
-* s'arrêter avec l'état $q$ et le mot $S$ inscrit sur le ruban au bout d'un nombre fini d'opérations.
+* ne pas s'arrêter (elle n'arrivera jamais à l'état final)
+* s'arrêter et sortir un résultat.
 
 Connaitre l'algorithme de la machine correspond ainsi à **deux** problèmes :
 
@@ -24,34 +23,53 @@ Connaitre l'algorithme de la machine correspond ainsi à **deux** problèmes :
 
 Aucun de ces deux problèmes n'est simple.
 
+> Dans la suite, une machine de Turing sera **toujours** une machine sur un alphabet $\\{\sharp, 0, 1\\}$, avec $\\{0, 1\\}$ comme alphabet d'entrée.
+> Ceci, [On l'a vu]({% link cours/theorie-pratiques-algorithmique/theorie/machine-turing.md %}#alphabet-01), se fait sans perte de généralité et va grandement nous simplifier les notations.
+{: .attention}
+
 ## décidabilité
 
+> deux sous-problème : langage decidable et arret décidable. 
+> important car on doit pouvoir savoir si ça va s'arrêter ou pas. 
+> dans la plupart des cas oui (tout nos algos le devrait sauf si on se trompe), mais il y a des cas ou on sait pas.
+{: .tbd}
+
+Commençons par définir un *décideur* :
+
+> Un **décideur** est une machine de Turing qui accepte tous les mots $\\{0, 1\\}$ et dont la sortie est soit $1$ (on dit que la sortie est *Vrai*) soit $0$ (la sortie est *fausse*).
+{: .note}
+
+### langage décidable
+
+De là, 
 Formalisons le problème :
 
-> Soit $M$ une machine de Turing sur un alphabet d'entrée $\Sigma$. L'ensemble des mots de $\Sigma$ acceptés par $M$ est noté $\mathcal{L}(M)$.
-> ne ensemble de mots $L$ d'un alphabet $\Sigma$ est **reconnaissable** s'il existe une machine de Turing $M$ d'alphabet d'entrée $\Sigma$ tel que $L = $\mathcal{L}(M)$
+> Un ensemble de mots $L$ d'un alphabet $\Sigma$ est **reconnaissable** s'il existe une machine de Turing $M$ d'alphabet d'entrée $\Sigma$ tel que $L = $\mathcal{L}(M)$
 {: .note}
 
+> langage decidable. solution à un problème. vrai et faux, via un décideur). Donner exemple de langage décidable, puis laisser un exemple que pas pour la suite.
+{: .tbd}
 
-> la notion de rejet ?
-{: .note}
+### arret ou acceptation
 
-
-> U Soit $M$ une machine de Turing sur un alphabet d'entrée $\Sigma$. L'ensemble des mots de $\Sigma$ acceptés par $M$ est noté $\mathcal{L}(M)$.
-{: .note}
-
-> Etant donné un ensemble $\Gamma$ appelé *alphabet*, un **mot** est une suite finie  et un ensemble de mots $L$ de 
-décidable = reconu et s'arrête sur oui ou non.
 ex : syracuse
 
-## calculabilité 
+arret de la machine.
+
+## calculabilité
+
+>ex de ackerman. Impossible de connaitre la valeur sans exécuter l'algo.
+{: .tbd}
+
+
 
 ### fonctions calculables
 
-
+> castor affairées non
 
 ### nombres calculables
 
+> pi oui
 
 <https://en.wikipedia.org/wiki/Computable_number>
 
@@ -62,12 +80,9 @@ pour l'instant tous les pseudo-code qu'on a écrit s'arrêtent tout le temps. Ma
 
 ## arrêt de la machine
 
-
-
 des actions sussessivent qui ment au résultat : ce n'est pas immédiat ! Et on ne sais pas si ça s'arrête.
 
 passer d'un pseudo code à la machine. entier/réels/chaine de caractères. Permet de voir théoriquement ce qu'on peut faire.
-
 
 ## logique, démonstrations mathématiques et calculabilité
 

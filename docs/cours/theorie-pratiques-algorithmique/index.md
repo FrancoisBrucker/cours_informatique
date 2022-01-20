@@ -212,6 +212,16 @@ graph.links.push({
 })
 
 graph.nodes.push({
+  id: 'calculabilité',
+  link: "{% link cours/theorie-pratiques-algorithmique/theorie/calculabilite.md %}",
+  group: groups.theorie
+})
+graph.links.push({
+  source: 'machine de Turing',
+  target: 'calculabilité'
+})
+
+graph.nodes.push({
   id: 'projet informatique',
   link: "{% link cours/theorie-pratiques-algorithmique/coder/projet-hello-dev.md %}",
   group: groups.code
