@@ -65,15 +65,14 @@
 
   <ul>
     <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/machine-turing.html">machine de turing</a></li>
-    <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/complexite-probleme.html">complexité d’un problème</a></li>
   </ul>
 </blockquote>
 
-<p>La machine de Turing est un modèle permettant de rendre compte d’un algorithme. Soit $M$ une machine de turing. A partir d’un mot $E$ sur le ruban, la machine va soit :</p>
+<p>La machine de Turing est un modèle permettant de rendre compte d’un algorithme. Soit $M$ une machine de turing et considérons son exécution pour l’entrée $\mu$. La machine va alors soit :</p>
 
 <ul>
-  <li>ne pas s’arrêter (elle n’arrivera jamais sur un état final)</li>
-  <li>s’arrêter avec l’état $q$ et le mot $S$ inscrit sur le ruban au bout d’un nombre fini d’opérations.</li>
+  <li>ne pas s’arrêter (elle n’arrivera jamais à l’état final)</li>
+  <li>s’arrêter et sortir un résultat.</li>
 </ul>
 
 <p>Connaitre l’algorithme de la machine correspond ainsi à <strong>deux</strong> problèmes :</p>
@@ -87,34 +86,61 @@
 
 <p>Aucun de ces deux problèmes n’est simple.</p>
 
+<blockquote class="attention">
+  <p>Dans la suite, une machine de Turing sera <strong>toujours</strong> une machine sur un alphabet $\{\sharp, 0, 1\}$, avec $\{0, 1\}$ comme alphabet d’entrée.
+Ceci, <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/machine-turing.html#alphabet-01">On l’a vu</a>, se fait sans perte de généralité et va grandement nous simplifier les notations.</p>
+</blockquote>
+
 <h2 id="décidabilité">décidabilité</h2>
 
-<p>Formalisons le problème :</p>
+<blockquote class="tbd">
+  <p>deux sous-problème : langage decidable et arret décidable. 
+important car on doit pouvoir savoir si ça va s’arrêter ou pas. 
+dans la plupart des cas oui (tout nos algos le devrait sauf si on se trompe), mais il y a des cas ou on sait pas.</p>
+</blockquote>
+
+<p>Commençons par définir un <em>décideur</em> :</p>
 
 <blockquote class="note">
-  <p>Soit $M$ une machine de Turing sur un alphabet d’entrée $\Sigma$. L’ensemble des mots de $\Sigma$ acceptés par $M$ est noté $\mathcal{L}(M)$.
-ne ensemble de mots $L$ d’un alphabet $\Sigma$ est <strong>reconnaissable</strong> s’il existe une machine de Turing $M$ d’alphabet d’entrée $\Sigma$ tel que $L = $\mathcal{L}(M)$</p>
+  <p>Un <strong>décideur</strong> est une machine de Turing qui accepte tous les mots $\{0, 1\}$ et dont la sortie est soit $1$ (on dit que la sortie est <em>Vrai</em>) soit $0$ (la sortie est <em>fausse</em>).</p>
 </blockquote>
+
+<h3 id="langage-décidable">langage décidable</h3>
+
+<p>De là, 
+Formalisons le problème :</p>
 
 <blockquote class="note">
-  <p>la notion de rejet ?</p>
+  <p>Un ensemble de mots $L$ d’un alphabet $\Sigma$ est <strong>reconnaissable</strong> s’il existe une machine de Turing $M$ d’alphabet d’entrée $\Sigma$ tel que $L = $\mathcal{L}(M)$</p>
 </blockquote>
 
-<blockquote class="note">
-  <p>U Soit $M$ une machine de Turing sur un alphabet d’entrée $\Sigma$. L’ensemble des mots de $\Sigma$ acceptés par $M$ est noté $\mathcal{L}(M)$.</p>
+<blockquote class="tbd">
+  <p>langage decidable. solution à un problème. vrai et faux, via un décideur). Donner exemple de langage décidable, puis laisser un exemple que pas pour la suite.</p>
 </blockquote>
 
-<blockquote>
-  <p>Etant donné un ensemble $\Gamma$ appelé <em>alphabet</em>, un <strong>mot</strong> est une suite finie  et un ensemble de mots $L$ de 
-décidable = reconu et s’arrête sur oui ou non.
-ex : syracuse</p>
-</blockquote>
+<h3 id="arret-ou-acceptation">arret ou acceptation</h3>
+
+<p>ex : syracuse</p>
+
+<p>arret de la machine.</p>
 
 <h2 id="calculabilité">calculabilité</h2>
 
+<blockquote class="tbd">
+  <p>ex de ackerman. Impossible de connaitre la valeur sans exécuter l’algo.</p>
+</blockquote>
+
 <h3 id="fonctions-calculables">fonctions calculables</h3>
 
+<blockquote>
+  <p>castor affairées non</p>
+</blockquote>
+
 <h3 id="nombres-calculables">nombres calculables</h3>
+
+<blockquote>
+  <p>pi oui</p>
+</blockquote>
 
 <p><a href="https://en.wikipedia.org/wiki/Computable_number">https://en.wikipedia.org/wiki/Computable_number</a></p>
 
