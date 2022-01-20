@@ -64,15 +64,57 @@
   <p>prérequis :</p>
 
   <ul>
-    <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/machine-turing.html">théorie / machine de turing</a></li>
+    <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/machine-turing.html">machine de turing</a></li>
+    <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/complexite-probleme.html">complexité d’un problème</a></li>
   </ul>
 </blockquote>
 
-<h2 id="problème-de-larrêt">problème de l’arrêt</h2>
+<p>La machine de Turing est un modèle permettant de rendre compte d’un algorithme. Soit $M$ une machine de turing. A partir d’un mot $E$ sur le ruban, la machine va soit :</p>
 
-<h2 id="fonctions-calculables">fonctions calculables</h2>
+<ul>
+  <li>ne pas s’arrêter (elle n’arrivera jamais sur un état final)</li>
+  <li>s’arrêter avec l’état $q$ et le mot $S$ inscrit sur le ruban au bout d’un nombre fini d’opérations.</li>
+</ul>
 
-<h2 id="nombres-calculables">nombres calculables</h2>
+<p>Connaitre l’algorithme de la machine correspond ainsi à <strong>deux</strong> problèmes :</p>
+
+<ol>
+  <li>connaitre les mots d’entrée qui vont faire stopper la machine : c’est la <em>décidabilité</em>
+</li>
+  <li>connaitre la sortie de la machine pour un mot d’entrée qui la fait s’arrêter : c’est la <em>calculabilité</em>
+</li>
+</ol>
+
+<p>Aucun de ces deux problèmes n’est simple.</p>
+
+<h2 id="décidabilité">décidabilité</h2>
+
+<p>Formalisons le problème :</p>
+
+<blockquote class="note">
+  <p>Soit $M$ une machine de Turing sur un alphabet d’entrée $\Sigma$. L’ensemble des mots de $\Sigma$ acceptés par $M$ est noté $\mathcal{L}(M)$.
+ne ensemble de mots $L$ d’un alphabet $\Sigma$ est <strong>reconnaissable</strong> s’il existe une machine de Turing $M$ d’alphabet d’entrée $\Sigma$ tel que $L = $\mathcal{L}(M)$</p>
+</blockquote>
+
+<blockquote class="note">
+  <p>la notion de rejet ?</p>
+</blockquote>
+
+<blockquote class="note">
+  <p>U Soit $M$ une machine de Turing sur un alphabet d’entrée $\Sigma$. L’ensemble des mots de $\Sigma$ acceptés par $M$ est noté $\mathcal{L}(M)$.</p>
+</blockquote>
+
+<blockquote>
+  <p>Etant donné un ensemble $\Gamma$ appelé <em>alphabet</em>, un <strong>mot</strong> est une suite finie  et un ensemble de mots $L$ de 
+décidable = reconu et s’arrête sur oui ou non.
+ex : syracuse</p>
+</blockquote>
+
+<h2 id="calculabilité">calculabilité</h2>
+
+<h3 id="fonctions-calculables">fonctions calculables</h3>
+
+<h3 id="nombres-calculables">nombres calculables</h3>
 
 <p><a href="https://en.wikipedia.org/wiki/Computable_number">https://en.wikipedia.org/wiki/Computable_number</a></p>
 
@@ -80,20 +122,6 @@
   <li>que peut-on calculer ?</li>
   <li>de pseudo code à calcul de f(N) -&gt; N</li>
 </ul>
-
-<h2 id="turing-complet">turing complet</h2>
-
-<p>si on peut faire une machine de turing dans notre programme on est turing complet.</p>
-
-<p>machine de turing universelle</p>
-
-<blockquote>
-  <p>TBD</p>
-  <ul>
-    <li>turing : pb de l’arrêt de la machine ?</li>
-  </ul>
-
-</blockquote>
 
 <p>pour l’instant tous les pseudo-code qu’on a écrit s’arrêtent tout le temps. Mais celui là ? syracuse. On ne sais pas.</p>
 
