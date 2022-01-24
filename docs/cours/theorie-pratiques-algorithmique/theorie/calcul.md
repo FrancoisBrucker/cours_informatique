@@ -197,7 +197,7 @@ Comme un algorithme peut-être décrit par son pseudo-code, qui est une chaîne 
 > Il ne peut y avoir plus d'algorithme que de nombres entiers.
 {: .note}
 
-#### nombre de fonctions
+#### nombre de fonctions {#nombre-fonction}
 
 Soit $f: \mathbb{N} \rightarrow \mathbb{N}$. En associant pour chaque entier $n$ le couple $(n, f(n))$ on associe à chaque fonction de $\mathbb{N}$ dans $\mathbb{N}$ l'ensemble :
 

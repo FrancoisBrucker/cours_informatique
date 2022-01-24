@@ -22,7 +22,7 @@ De plus, toutes les tentatives de généralisation de son modèle se sont révé
 
 On peut même montrer qu'une machine de Turing est elle même équivalent à un ordinateur !
 
-La force d'une machine de turing est qu'il n'y a rien (modèle très simple) et pourtant il y a tout (on peut tout calculer).
+La force d'une machine de Turing est qu'il n'y a rien (modèle très simple) et pourtant il y a tout (on peut tout calculer).
 
 > L'article où d'Allan Turing décrit cette machine est [là](https://www.espace-turing.fr/IMG/pdf/turing_paper_1936.pdf)
 
@@ -54,44 +54,44 @@ Voici la représentation d'une machine à la fin de la $i$ème instruction. Son 
 
 Par convention, on considérera que le ruban initial aura comme numéro d'instruction 0 et que l'indice de la case où est initialement le curseur sera d'indice 0.
 
-> L'**exécution** d'une machine de Turing $(Q, \Gamma, \Sigma, \delta, q_0, q_a, q_r)$ se déroule comme suit :
+> L'**exécution** d'une machine de Turing $(Q, \Gamma, \Sigma, \delta, q_0, q_a)$ se déroule comme suit :
 >
 > 1. on place la tête de lecture sur une case du ruban
 > 2. on initialise si besoin le ruban avec une chaine de caractères (finie) contenant des caractères de $\Sigma$ et on place le curseur sur la première case de la chaine.
 > 3. si l'état de la machine est $q_a$ on stoppe le programme.
-> 4. on lit le caractère $a$ sous le curseur, l'état $q$ de la machine et on note $\delta(a, q) = (a', q', f)$
-> 5. on écrit $a'$ dans la case du ruban pointé par le curseur, on place la machine dans l'état $q'$ et on déplace le curseur vers la gauche si $f$ vaut $\leftarrow$ et vers la droite sinon ($f$ vaut $\rightarrow$)
+> 4. on lit le caractère $a$ sous le curseur, l'état $q$ de la machine et on note $\delta(a, q) = (a', q', d)$
+> 5. on écrit $a'$ dans la case du ruban pointé par le curseur, on place la machine dans l'état $q'$ et on déplace le curseur vers la gauche si $d$ vaut $\leftarrow$ et vers la droite sinon ($d$ vaut $\rightarrow$)
 > 6. retour en 3.
 >
 {: .note}
 
-> L'exécution d'une machine de Turing, n'est pas forcément finie. Elle ne s'arrête que si elle atteind l'état $q_a$, ce qui peut ne jamais arriver.
+> L'exécution d'une machine de Turing, n'est pas forcément finie. Elle ne s'arrête que si elle atteint l'état $q_a$, ce qui peut ne jamais arriver.
 
 Remarquez la minimalité du fonctionnement :
 
-* on ne peut déplacer la tête de lecture que d'une case vers la gauche ou vers la droite (il est impossilbe d'écrire ou l'on veut dans la mémoire comme on peut le faire avec un ordinateur classique)
+* on ne peut déplacer la tête de lecture que d'une case vers la gauche ou vers la droite (il est impossible d'écrire ou l'on veut dans la mémoire comme on peut le faire avec un ordinateur classique)
 * on ne peut écrire qu'une lettre à la fois (pas d'entier, de réel, rien que des lettres)
 * pas de variables
 * pas de boucle for ni de saut
 * un unique test entre un état et une case du tableau
 * ...
 
-Et pourtant, elle capte toutes les possiblités d'un alorithme.
+Et pourtant, elle capte toutes les possibilités d'un algorithme.
 
 Essayez de supprimer une règle et plus rien ne marche et en ajouter ne sert à rien, comme on le verra dans la partie [substantifique moelle](#substantifique-moelle)
 
-## machine de turing, algorithmes et fonctions
+## machine de Turing, algorithmes et fonctions
 
 Une machine de Turing peut être vue comme un algorithme dont l'entrée et la sortie sont écrits sur le ruban. Pour préciser cela, il faut commencer par définir clairement entrées et sorties.
 
-> Un **mot** $\omega$ d'un ensemble fini $\Sigma$ est une suite fini $\omega = (\omega_1, \dots, \omega_n)$ d'éléments de $\Sigma$. La **longueur** d'un mot est la longueur de la suite (le mot de longueur 0 est la suite vide).
+> Un **mot** $\omega$ d'un ensemble fini $\Sigma$ est une suite fini d'éléments de $\Sigma$, que l'on note : $\omega = \omega_1 \cdots \omega_n$ . La **longueur** d'un mot est la longueur de la suite (le mot de longueur 0 est la suite vide).
 > On appelle alors $\Sigma$ l'**alphabet** et **caractère** un élément de la suite d'un mot.
-> On note $\Sigma^\star$ l'ensemble des mots de $\Sigma$ et $\Sigma^+$ l'ensemble des mots non vide (de longeur strictement positive)
+> On note $\Sigma^\star$ l'ensemble des mots de $\Sigma$ et $\Sigma^+$ l'ensemble des mots non vide (de longueur strictement positive)
 {: .note}
 
 A chaque étape de l'exécution du programme d'une machine le ruban contient des caractères de $\Gamma$. On sait de plus que les bords du rubans sont constituées de $\sharp$.
 
-> Une **configuration** d'une machine de Turing $M = (Q, \Gamma, \Sigma, \delta, q_0, q_a, q_r)$ est un triplet $(m_1, q, m_2)$ de $\Gamma^\star \times Q \times \Gamma^+$ tel que :
+> Une **configuration** d'une machine de Turing $M = (Q, \Gamma, \Sigma, \delta, q_0, q_a)$ est un triplet $(m_1, q, m_2)$ de $\Gamma^\star \times Q \times \Gamma^+$ tel que :
 >
 > * l'état de la machine soit $q$
 > * le mot $m_1$ suivi directement du mot $m_2$ est sur le ruban
@@ -105,7 +105,7 @@ Par exemple, la figure suivante correspond par exemple aux configurations $(1011
 
 On peut maintenant préciser l'entrée et la sortie (si elle existe) de l'exécution d'une machine de Turing.
 
-> L'**entrée** d'une exécution est un mot $m \in \Sigma^\star$ telle que la **configuration initiale** de l'exécution de la machine (l'étape 2 lors de l'exéctuion) soit $(\emptyset, q_0, m)$ avec des blancs à gauche et à droite de la configuration.
+> L'**entrée** d'une exécution est un mot $m \in \Sigma^\star$ telle que la **configuration initiale** de l'exécution de la machine (l'étape 2 lors de l'exécution) soit $(\emptyset, q_0, m)$ avec des blancs partout ailleurs sur le ruban.
 {: .note}
 
 Si l'exécution d'une machine s'arrête, on peut lire la **sortie** de la machine :
@@ -181,7 +181,7 @@ Et ainsi de suite. On voit que cette machine ne va jamais s'arrêter et qu'elle 
 
 Si vous voulez le voir en action, allez sur <https://Turingmachine.io/>. C'est le programme "repeat 0 1".
 
-> Si vous avez trifouillé le code sur <https://Turingmachine.io/> et que vous ne retouvez pas vos petits, recommencez en ouvrant une nouvelle fenêtre de naviguation privée pour supprimer les données conservées.
+> Si vous avez trifouillé le code sur <https://Turingmachine.io/> et que vous ne retrouvez pas vos petits, recommencez en ouvrant une nouvelle fenêtre de navigation privée pour supprimer les données conservées.
 
 Le site représente la machine sous la forme de son diagramme de transition. Les nœuds représentent l'état de la machine et sur l'arc est représenté la transition selon selon la lecture sur le ruban.
 
@@ -200,7 +200,7 @@ On a représenté la machine sous la forme d'un tableau où les état sont des l
 
 On initialise cette machine avec une chaine de 1 : $\Sigma = \\{ 1 \\}$ (et $\Gamma = \\{ 1, \sharp \\}$).
 
-Suivont l'exécution de cette machine avec l'entrée `11` (la position du curseur est en orange) :
+Suivons l'exécution de cette machine avec l'entrée `11` (la position du curseur est en orange) :
 
 | # instruction| ruban ||||||| état |
 | ^^   |-3|-2|-1|0|1|2| ^^|
@@ -225,7 +225,7 @@ Suivont l'exécution de cette machine avec l'entrée `11` (la position du curseu
 
 La machine s'arrête ! Avant de voir exactement pourquoi cette machine s'arrête, essayer de comprendre son fonctionnement.
 
-> Testez la machine avec <https://Turingmachine.io/> en utilsant le code ci-dessous, traduction de la machine, avec une entrée de `1111` :
+> Testez la machine avec <https://Turingmachine.io/> en utilisant le code ci-dessous, traduction de la machine, avec une entrée de `1111` :
 {: .a-faire}
 
 ```text
@@ -257,7 +257,7 @@ Son fonctionnement est le suivant :
 4. Arrivé là on écrit 1, puis on se déplace autant de fois que nécessaire sur la droite jusqu'à arriver sur une case $\sharp$.
 5. Arrivé là, on se déplace à droite et on replace la machine de Turing à son été initial pour recommencer en 1. si on est placé sur un 1.
 
-A chaque itération, la machine supprime un 1 et en écrit 2 nouveaux : un à droite et un à gauche des nouveaux 1 inscrits. Les étapes de cette itération poeut être décrite comme suit :
+A chaque itération, la machine supprime un 1 et en écrit 2 nouveaux : un à droite et un à gauche des nouveaux 1 inscrits. Les étapes de cette itération peut être décrite comme suit :
 
 ![Turing 6]({{ "/assets/cours/algorithmie/turing-6.png" | relative_url }}){:style="margin: auto;display: block;"}
 
@@ -308,9 +308,9 @@ Il existent de nombreuses généralisations des machines de Turing, elles ne per
 
 Une machine de Turing à $k$ rubans peut être définie comme suit.
 
-Une **machine de Turing à $k$ rubans** est un 7-uplet $(Q, \Gamma, \Sigma, \delta_k, q_0, q_a)$ où :
+Une **machine de Turing à $k$ rubans** est un 6-uplet $(Q, \Gamma, \Sigma, \delta_k, q_0, q_a)$ où :
 
-* tout est idendique à la machine de turing classique sauf $\delta_k$
+* tout est identique à la machine de Turing classique à part $\delta_k$
 * $\delta_k : Q \times \Gamma^k \rightarrow Q \times \Gamma^k \times \\{ \leftarrow, \rightarrow \\}^k$ est la **fonction de transition**
 
 Pour fonctionner, la machine nécessite :
@@ -340,9 +340,9 @@ De là, à chaque itération de la machine à 1 seul ruban, on commence par cher
 
 Plutôt que de multiplier les rubans, on peut aussi multiplier les curseurs :
 
-Une **machine de Turing à $k$ curseurs** est un 7-uplet $(Q, \Gamma, \Sigma, \delta_k, q_0, q_a)$ où :
+Une **machine de Turing à $k$ curseurs** est un 6-uplet $(Q, \Gamma, \Sigma, \delta_k, q_0, q_a)$ où :
 
-* tout est idendique à la machine de turing classique sauf $\delta_k$
+* tout est identique à la machine de Turing classique à part $\delta_k$
 * $\delta_k : Q \times \Gamma^k \rightarrow Q \times \Gamma^k \times \\{ \leftarrow, \rightarrow \\}^k$ est la **fonction de transition**
 
 Pour fonctionner, la machine nécessite :
@@ -359,7 +359,7 @@ La preuve est identique à celle pour simuler une machine à $k$ rubans sur une 
 
 #### machines à plusieurs curseurs et rubans
 
-On peut bien sur combiner les deux approches et construire une machine de Turing à $k$ rubans et $k'$ curseurs réparis sur les rubans. Mais, comme vous devez vous en douter :
+On peut bien sur combiner les deux approches et construire une machine de Turing à $k$ rubans et $k'$ curseurs répartis sur les rubans. Mais, comme vous devez vous en douter :
 
 > On peut toujours transformer une machine à plusieurs rubans et plusieurs curseurs en une machine de Turing normale équivalente.
 {: .note}
@@ -368,9 +368,9 @@ On peut bien sur combiner les deux approches et construire une machine de Turing
 
 Il existe aussi, [la machine de Turing non déterministe](https://fr.wikipedia.org/wiki/Machine_de_Turing_non_d%C3%A9terministe), qui se définit comme suit :
 
-Une **machine de Turing non déterministe** est un 7-uplet $(Q, \Gamma, \Sigma, \delta, q_0, q_a)$ où :
+Une **machine de Turing non déterministe** est un 6-uplet $(Q, \Gamma, \Sigma, \delta, q_0, q_a)$ où :
 
-* tout est idendique à la machine de turing classique sauf $\delta$
+* tout est identique à la machine de Turing classique à part $\delta$
 * $\delta : Q \times \Gamma \rightarrow 2^{Q \times \Gamma \times \\{ \leftarrow, \rightarrow \\}}$ est la **fonction de transition**
 
 Cette machine se distingue de la machine de Turing normale parce que la fonction de transition rend un sous ensemble fini de $Q \times \Gamma \times \\{ \leftarrow, \rightarrow \\}$ et non juste un élément de $Q \times \Gamma \times \\{ \leftarrow, \rightarrow \\}$. Cette machine donne un ensemble de transitions possible pour chaque transition.
@@ -406,16 +406,16 @@ Diminuer ou agrandir l'alphabet d'une machine de Turing ne permet pas de calcule
 
 Idée de la preuve. Comme l'alphabet $\Gamma$ d'une machine de Turing est fini, on peut associer à chaque lettre non blanc un numéro allant de $1$ à $\vert \Gamma \vert$, puis coder celui-ci par le mot $0 \cdots 0 1 \cdots 1$ de longueur $\vert \Gamma \vert$ et ayant autant de $1$ que la valeur de son numéro.
 
-On termine par coder le caractère blanc par une suite de $\Gamma$ caractères $\sharp$. Une fois cette traduction d'alphabet effectué, on modifie les transitions pour qu'elles se déplacent de $\vert \Gamma \vert$ cases à chaque fois en utilisant des états transitoires (comme l'état $l$ dans l'exemple du [doublement des batons](#exemple-doublement-batons)).
+On termine par coder le caractère blanc par une suite de $\Gamma$ caractères $\sharp$. Une fois cette traduction d'alphabet effectué, on modifie les transitions pour qu'elles se déplacent de $\vert \Gamma \vert$ cases à chaque fois en utilisant des états transitoires (comme l'état $l$ dans l'exemple du [doublement des bâtons](#exemple-doublement-batons)).
 
 On montre par là que :
 
 > Une machine de Turing $M$ calcule un fonction  $f: \mathcal{L}(M) \rightarrow \\{0, 1\\}^\star$ où $f(\mu)$ est la sortie de $M$ pour l'entrée $\mu$.
 {: .note}
 
-Si l'on considère des machines de Turing sans alphabet d'entrée (c'est à dire que l'alphabet de travail est aussi l'alphabet d'entrée, on peut simuler toute machine de Turing sur uniquemnt $\\{\sharp, 1\\}$ (on remplace les $0$ par des $\sharp$ dans l'encodage).
+Si l'on considère des machines de Turing sans alphabet d'entrée (c'est à dire que l'alphabet de travail est aussi l'alphabet d'entrée, on peut simuler toute machine de Turing sur uniquement $\\{\sharp, 1\\}$ (on remplace les $0$ par des $\sharp$ dans l'encodage).
 
-## machine de Turing universelle
+## machine de Turing universelle {#mtu}
 
 Ce qui différentie une machine de Turing d'une autre c'est l'alphabet et la fonction de transition. On a vu qu'on pouvait utiliser un alphabet commun ($\\{ \sharp, 0, 1\\}$), les différences entre machines sont donc uniquement dues à la fonction de transition.
 

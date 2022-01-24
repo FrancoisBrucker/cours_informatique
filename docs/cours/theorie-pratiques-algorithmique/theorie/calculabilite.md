@@ -29,43 +29,163 @@ Aucun de ces deux problèmes n'est simple.
 
 ## décidabilité
 
-> deux sous-problème : langage decidable et arret décidable. 
-> important car on doit pouvoir savoir si ça va s'arrêter ou pas. 
-> dans la plupart des cas oui (tout nos algos le devrait sauf si on se trompe), mais il y a des cas ou on sait pas.
-{: .tbd}
+La décidabilité dans le cadre des machines de Turing couvre deux sous-problèmes :
+
+* savoir si, pour un ensemble de mots $L$, il existe une machine de Turing $M$ telle que $\mathcal{L}(M) = L$ (la machine s'arrête exactement sur les mots de $L$)
+* savoir si, pour une machine de Turing $M$ donnée et une entrée $E$, $E \in \mathcal{L}(M)$ (est-ce que la machine va s'arrêter avec l'entrée $E$)
+
+Nous utiliserons une machine spéciale, appelée *décideur* pour nous aider à formaliser ces deux problèmes :
 
 Commençons par définir un *décideur* :
 
-> Un **décideur** est une machine de Turing qui accepte tous les mots $\\{0, 1\\}$ et dont la sortie est soit $1$ (on dit que la sortie est *Vrai*) soit $0$ (la sortie est *fausse*).
+> Un **décideur** est une machine de Turing qui accepte tous les mots et dont la sortie est soit $1$ (on dit alors que la sortie est *Vraie*) soit $0$ (la sortie est *fausse*).
 {: .note}
 
 ### langage décidable
 
-De là, 
-Formalisons le problème :
+Savoir si un ensemble de mots $L$ est le langage d'une machine se formalise ainsi :
 
-> Un ensemble de mots $L$ d'un alphabet $\Sigma$ est **reconnaissable** s'il existe une machine de Turing $M$ d'alphabet d'entrée $\Sigma$ tel que $L = $\mathcal{L}(M)$
+> Un ensemble de mots $L$ est **reconnaissable** s'il existe une machine de Turing $M$ d'alphabet d'entrée $\Sigma$ tel que $L = \mathcal{L}(M)$
 {: .note}
 
-> langage decidable. solution à un problème. vrai et faux, via un décideur). Donner exemple de langage décidable, puis laisser un exemple que pas pour la suite.
-{: .tbd}
+{% details  Par exemple, l'ensemble des palindromes $L$ est reconnaissable. %}
+On utilise le fait qu'on mot $m$ est un palindrome si :
 
-### arret ou acceptation
+* le mot vide est un palindrome
+* le mot d'un caractère est un palindrome
+* le premier et le dernier caractère doivent être identique
+* le mot privé de son premier et dernier caractères doit être un palindrome
 
-ex : syracuse
+On ne décrit pas précisément les différents états, mais on va décrire sont fonctionnement assez précisément pour que ce soit faisable :
 
-arret de la machine.
+1. lit le 1er caractère :
+   * si c'est $0$ on place la machine dans l'état $a$
+   * si c'est $1$ on place la machine dans l'état $b$
+   * si c'est $\sharp$ : on écrit $\sharp 1 \sharp$ sur le ruban, on place le curseur sur le $1$ et l'état de la machine sur l'état d'acceptation : **on a un palindrome** (c'est le mot vide)
+2. on remplace le caractère par $\sharp$ on se déplace à droite jusqu'à arriver sur un $\sharp$, on déplace d'un cran à gauche et on lit le caractère :
+   * s'il est vide : on écrit $\sharp 1 \sharp$ sur le ruban, on place le curseur sur le $1$ et l'état de la machine sur l'état d'acceptation : **on a un palindrome** (c'est le mot d'un caractère)
+   * si c'est $0$ et qu'on est dans l'état $b$ : on écrit $\sharp 0 \sharp$ sur le ruban, on place le curseur sur le $0$ et l'état de la machine sur l'état d'acceptation : **on a pas un palindrome** (le mot ne commence et ne fini pas avec la même lettre)
+   * si c'est $1$ et qu'on est dans l'état $a$ : on écrit $\sharp 0 \sharp$ sur le ruban, on place le curseur sur le $0$ et l'état de la machine sur l'état d'acceptation : **on a pas un palindrome** (le mot ne commence et ne fini pas avec la même lettre)
+3. on remplace le caractère par $\sharp$ on se déplace à gauche jusqu'à arriver sur un $\sharp$, on déplace d'un cran à droite et on se place dans l'état initial : **on revient à l'étape 1 en ayant supprimer le premier et dernier caractère de l'entrée**
+
+{% enddetails %}
+
+La machine précédente fait même plus que juste reconnaitre un palindrome, si le mot n'est pas un palindrome elle rend faux : notre machine est un décideur pour l'ensemble des palindromes. Reconnaitre si un mot est un palindrome est *décidable* :
+
+> Un ensemble de mots $L$ est **décidable** s'il existe un décideur qui rend $1$ si l'entrée est dans $L$ et $0$ sinon.
+{: .note}
+
+La notion de *décidabilité* est centrale en informatique théorique puisqu'elle permet de rendre compte des problèmes que peut résoudre un ordinateur :
+
+> Savoir s'il existe un algorithme permettant de répondre *Vrai* si un élément $A$ à la propriété $P$ et *faux* sinon, est équivalent à savoir si l'ensemble des éléments $A$ ayant la propriété $P$ est décidable.
+{: .note}
+
+Prenons par exemple le problème suivant : Soit $P(X)$ un [polynôme](https://fr.wikipedia.org/wiki/Polyn%C3%B4me) à coefficients dans $\mathbb{Z}$. Possède-t-il une [racine](https://fr.wikipedia.org/wiki/Racine_d%27un_polyn%C3%B4me) dans $\mathbb{N}$ (un entier $a$ tel que $P(a) = 0$) ?
+
+{% details ce problème est reconnaissable %}
+
+On peut facilement créer un algorithme qui, à partir d'un polynôme $P(x)$ à coefficients dans $\mathbb{Z}$ et d'un entier $a$ calcule $P(a)$ (on peut donc aussi fabriquer une machine de Turing qui le fait).
+
+Il suffit ensuite d'essayer tous les entiers un à un. Si le polynôme en entrée admet une racine entière, on va bien tomber dessus à un moment donné.
+
+{% enddetails %}
+
+{% details il est même décidable %}
+
+On peut borner les racines d'un polynôme. Voir par exemple [le corollaire de ce lien](https://fr.wikipedia.org/wiki/Racine_d%27un_polyn%C3%B4me_r%C3%A9el_ou_complexe#Une_premi%C3%A8re_estimation). On aura donc pour chaque polynôme qu'un nombre fini de possibilités à examiner avant de donner la réponse.
+
+{% enddetails %}
+
+Notez que *décidable* est bien plus fort que *reconnaissable*. En effet, si un langage est juste reconnaissable on ne saura pas si l'exécution de la machine avec une entrée donnée met juste longtemps à répondre oui ou si le mot n'est pas accepté par elle.
+
+Il existe bien sûr des langages qui sont reconnaissables et non décidables, par exemple une généralisation de notre problème précédent :
+
+> Le problème consistant à savoir si un [polynôme à plusieurs variables](https://fr.wikipedia.org/wiki/Polyn%C3%B4me_en_plusieurs_ind%C3%A9termin%C3%A9es) à coefficients dans $\mathbb{Z}$ admet une racine dans $\mathbb{N}$ est indécidable.
+{: .note}
+
+**Félicitations !** Vous venez de rencontrer votre premier problème que ne pourra pas résoudre un ordinateur.
+
+> Ce cas est historiquement important car il correspond au [dixième problème de Hilbert](https://fr.wikipedia.org/wiki/Dixi%C3%A8me_probl%C3%A8me_de_Hilbert). Il a été prouvé indécidable par Matiiassevitch en 1970 en montrant qu'on ne pouvait pas borner les racine d'un polynôme à plusieurs variables.
+
+### arrêt d'un algorithme
+
+Savoir si un algorithme (ou une machine de Turing puisque c'est équivalent) va s'arrêter sur une entrée ou pas est un problème compliqué. Prenez par exemple l'[algorithme suivant](https://fr.wikipedia.org/wiki/Conjecture_de_Syracuse) :
+
+```python
+
+def syracuse(n):
+    while n > 1:
+        if n % 2 == 0:
+            n = n // 2
+        else:
+            n = 3 * n + 1
+
+```
+
+L'algorithme est très simple : à partir d'un entier $n$, il le divise par 2 s'il est pair ou le multiplie par 3 et ajoute 1 s'il est impair et recommence tant que ce nombre est strictement plus grand que 1.
+
+Personne ne sait (à l'heure où je tape ces caractères) si cet algorithme s'arrête pour tout $n$.
+> Testez chez vous pour plusieurs nombres, c'est assez bluffant. 
+> Vous pouvez aussi afficher la suite de nombre ou la représenter graphiquement pour voir l'évolution de votre nombre d'entrée jusqu'à 1.
+{: .a-faire}
+
+De façon plus générale :
+
+> [Le problème](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_l%27arr%C3%AAt) de savoir si une machine de Turing $M$ va s'arrêter sur l'entrée $E$ est un problème indécidable.
+{: .note}
+{% details preuve %}
+
+On doit la preuve à Turing lui-même.
+
+Commençons par remarquer que comme une machine de Turing peut s'[encoder sous la forme d'une suite de 0 et de 1]({% link cours/theorie-pratiques-algorithmique/theorie/machine-turing.md %}#mtu), on peut bien encoder la paire consituée de la machine de Turing et d'un mot (l'entrée) sous la forme d'un unique mot qui sera l'entrée du décideur s'il existe.
+
+On va maintenant supposer qu'un tel décideur existe et notons le `halt(<M>, E)` avec `<M>` le mot encodant la machine `M`. Cet encodeur rend `1` si l'exécution de `M` avec `E` va s'arrêter et `0` sinon.
+
+On peut alors créer une autre machine dont le pseudo-code est :
+
+```text
+def diag(x):
+    if halt(x, x) == 1:
+        boucle infinie
+    else:
+        return 1
+```
+
+Tout comme [la preuve du théorème de Cantor]({% link cours/theorie-pratiques-algorithmique/theorie/calcul.md %}#nombre-fonction) cette nouvelle machine va tout casser :
+
+1. `diag(x)` ne va s'arrêter que si `halt(x, x)` est faux
+2. `halt(<diag>, x)` va répondre 1 que si `diag(x)` s'arrête
+3. `halt(<diag>, <diag>)` va répondre 1 si `diag(<diag>)` s'arrête or `diag(<diag>)` ne peut s'arrêter que si `halt(<diag>, <diag>)` ne s'arrête pas
+4. contradiction
+
+{% enddetails %}
+
+Il faut bien comprendre l'énoncé ci-dessus. Il n'existe pas de décideur qui prend comme entrée une machine de Turing et un mot et qui rend *Vrai* si la machine va s'arrêter : la machine **et** le mot d'entrée sont les paramètres du décideur.
+
+Cela ne contredit pas le fait qu'on puisse créer un décideur spécifique à une machine qui réponde *vrai* ou *faux* selon le paramètre d'entrée de celle-ci. C'est l'algorithme qui décide pour toutes les machines qui est impossible.
+
+> lorsque l'on parle de décidabilité ou de problème il faut toujours bien faire attention à ce qui est un paramètre d'entrée et ce qui est donné.
+
+Le théorème d'indécidabilité de l'arrêt de machine de Turing est fondamental théoriquement. Il est à la base de nombreux contre-exemples et :
+
+* il exhibe le fait qu'il existe des choses que l'on ne peut pas calculer avec un ordinateur
+* en creux, il montre qu'on peut tout de même faire beaucoup de choses avec un ordinateur puisqu'il faut chercher des exemples bien tordus pour que ça ne marche pas
 
 ## calculabilité
+
+On a vu qu'il existe des problèmes qu'on ne peut pas résoudre avec un algorithme
 
 >ex de ackerman. Impossible de connaitre la valeur sans exécuter l'algo.
 {: .tbd}
 
-
+<https://en.wikipedia.org/wiki/Computable_function>
 
 ### fonctions calculables
 
+comme reconnaissable puisque (E, F(E)) est reconnaissable si la fonction est calculable
+
 > castor affairées non
+
 
 ### nombres calculables
 
@@ -73,14 +193,14 @@ arret de la machine.
 
 <https://en.wikipedia.org/wiki/Computable_number>
 
-* que peut-on calculer ? 
+* que peut-on calculer ?
 * de pseudo code à calcul de f(N) -> N
 
 pour l'instant tous les pseudo-code qu'on a écrit s'arrêtent tout le temps. Mais celui là ? syracuse. On ne sais pas.
 
 ## arrêt de la machine
 
-des actions sussessivent qui ment au résultat : ce n'est pas immédiat ! Et on ne sais pas si ça s'arrête.
+des actions successives qui menent au résultat : ce n'est pas immédiat ! Et on ne sais pas si ça s'arrête.
 
 passer d'un pseudo code à la machine. entier/réels/chaine de caractères. Permet de voir théoriquement ce qu'on peut faire.
 

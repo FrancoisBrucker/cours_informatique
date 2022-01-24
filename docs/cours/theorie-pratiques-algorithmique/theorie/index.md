@@ -20,3 +20,4 @@ Que peut ou pas faire un algorithme.
 * algorithmes et fonctions
 
 * logique = formule logique = sat
+* problème de décision : sous ensemble vrai d'un ensemble. se dérive de langage décidable
