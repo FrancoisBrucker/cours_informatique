@@ -8,8 +8,7 @@ category: cours
 >
 > prérequis :
 >
-> * [calculabilité]({% link cours/theorie-pratiques-algorithmique/theorie/calculabilite.md %})
-> * [algorithmie/pseudo-code]({% link cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.md %})
+> * [calcul]({% link cours/theorie-pratiques-algorithmique/theorie/calcul.md %})
 >
 {: .chemin}
 
@@ -120,6 +119,8 @@ En reprenant la machine de la figure précédente et un considérant que $b$ est
 Finissons par quelques définitions qui précisent des différents résultats de l'exécution d'une machine $M = (Q, \Gamma, \Sigma, \delta, q_0, q_a)$.
 
 > Un mot $\mu$ de $\Sigma^\star$ est **accepté** par $M$ si l'exécution de $M$ pour l'entrée $\mu$ se termine sur l'état $q_a$. L'ensemble des mots acceptés par $M$ est le **langage** de $M$ et est noté $\mathcal{L}(M)$.
+>
+> L'exécution de la machine $M$ avec l'entrées $\mu$ est notée $M(\mu)$ et si $\mu \in \mathcal{L}(M)$, contient sa sortie.
 {: .note}
 
 ## exemples de programmes
@@ -304,7 +305,7 @@ Commençons par répondre à la seconde question : *est-ce que complexifier le m
 
 Il existent de nombreuses généralisations des machines de Turing, elles ne permettent pas de calculer plus de choses, mais sont utiles car elle permettent de calculer plus facilement/rapidement. Ces généralisations nous permettent d'écrire rapidement des programmes en sachant qu'on pourrait (si on en avait très envie) les écrire avec une machine de Turing normale.
 
-#### machines à plusieurs rubans
+#### machines à plusieurs rubans {#plusieurs-rubans}
 
 Une machine de Turing à $k$ rubans peut être définie comme suit.
 
@@ -335,6 +336,11 @@ Lorsque l'on a une machine à 2 rubans, on a un curseur pour chaque ruban. A cha
 Enfin, on peut toujours s'arranger pour qu'au départ, le curseur du premier ruban et du second ruban soient sur le même paquet de 4 cases.
 
 De là, à chaque itération de la machine à 1 seul ruban, on commence par chercher les paquets de 4 cases contenant les curseurs de chaque ruban et on lit leurs valeurs (on peut faire ça en parcourant le ruban jusqu'à trouver $\bigtriangledown$ en premier ou en troisième position d'un paquet à 4 cases) puis on effectue la fonction de transition de la machine à 2 rubans et on écrit les nouvelles valeurs en recherchant les positions respectives des curseurs dans les paquets à 4 cases.
+
+> La suite de $k$ mots $(\mu_1, \dots, \mu_k)$ de $\Sigma^\star$ est **accepté** par une machine $M$ à $k$ rubans si l'exécution de $M$ pour l'entrée $(\mu_1, \dots, \mu_k)$ se termine sur l'état $q_a$. L'ensemble des mots acceptés par $M$ est le **langage** de $M$ et est noté $\mathcal{L}(M)$.
+>
+> L'exécution de la machine $M$ à $k$ rubans, avec l's entrées $\mu_1, \dots, \mu_k$ est notée $M(\mu_1, \dots, \mu_k)$ et si $(\mu_1, \dots, \mu_k) \in \mathcal{L}(M)$, contient sa sortie.
+{: .note}
 
 #### machines à plusieurs curseurs
 

@@ -57,7 +57,7 @@ Ce cours est composée de trois grandes parties qui s'enchevêtrent.
 
 1. [calcul ?]({% link cours/theorie-pratiques-algorithmique/theorie/calcul.md %})
 2. [machines de Turing]({% link cours/theorie-pratiques-algorithmique/theorie/machine-turing.md %})
-3. [calculabilité]({% link cours/theorie-pratiques-algorithmique/theorie/calculabilite.md %})
+3. [décidabilité et calculabilité]({% link cours/theorie-pratiques-algorithmique/theorie/calculabilite.md %})
 
 ### coder
 
@@ -212,13 +212,13 @@ graph.links.push({
 })
 
 graph.nodes.push({
-  id: 'calculabilité',
+  id: 'décidabilité et calculabilité',
   link: "{% link cours/theorie-pratiques-algorithmique/theorie/calculabilite.md %}",
   group: groups.theorie
 })
 graph.links.push({
   source: 'machine de Turing',
-  target: 'calculabilité'
+  target: 'décidabilité et calculabilité'
 })
 
 graph.nodes.push({

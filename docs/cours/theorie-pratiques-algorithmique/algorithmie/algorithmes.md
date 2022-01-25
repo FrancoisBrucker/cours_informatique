@@ -19,7 +19,7 @@ Définition du 'Petit Robert'  d'un **algorithme** :
 Qu'est-ce que ça veut dire ?
 
 * **algorithme** : ensemble des règles opératoires propres à un **calcul**
-* **calcul** : enchaînement des actions nécessaires à l'accomplissement d'une **tâche**
+* **calcul** : enchaînement des instructions nécessaires à l'accomplissement d'une **tâche**
 * **tâche** : ...
 
 On a utilisé un algorithme pour comprendre ce qu'est un algorithme :
@@ -31,45 +31,50 @@ On a utilisé un algorithme pour comprendre ce qu'est un algorithme :
 * *corps de l'algorithme* :
   1. étant donné la définition nommée *définition* de *mot_à_définir* dans le 'Petit Robert'
   2. afficher *définition* à l'écran.
-  3. pour chaque *mot* non compris dans *définition_mot* :
+  3. pour chaque *mot* non compris dans *définition* :
      1. *définition_petit_robert(mot)*
 
-Nota Bene :
+Règles de construction d'un algorithme que j'ai utilisé :
 
+* **des** paramètres en entrée mais **une** sortie (qui peut être une structure composée comme une liste ou un dictionnaire).
+* le **retour** d'un algorithme est la dernière instruction qu'il fait, en rendant la sortie (ici, il ne rend rien)
+* L'exécution d'un algorithme est signifié par son nom suivie de parenthèses contenant ses paramètres
 * afficher à l'écran n'est **PAS** un retour de fonction/méthode/algorithme.
-* différence entre nom d'algorithme et exécution de fonction/méthode/algorithme avec des parenthèses
-* **des** paramètres en entrée mais **une** sortie (qui peut être une structure composée comme une liste ou un dictionnaire)
+
+C'est un algorithme tout à fait valable. Ce n'est pas du python, mais c'est :
+
+* compréhensible
+* chaque instruction (lire une définition, afficher à l'écran, ...) peut être caractérisée par un petit texte en français
+* notre algorithme s'arrête bien à un moment (au pire une fois que l'on a passé en revu tous les mots du dictionnaire)
 
 Donald Knuth (1938-) liste, comme prérequis d'un algorithme, [cinq propriétés](https://fr.wikipedia.org/wiki/Algorithme) :
 
-* finitude : *« Un algorithme doit toujours se terminer après un nombre fini d’étapes. »*
+* **finitude** : *« Un algorithme doit toujours se terminer après un nombre fini d’étapes. »*
 * définition précise : *« Chaque étape d'un algorithme doit être définie précisément, les actions à transposer doivent être spécifiées rigoureusement et sans ambiguïté pour chaque cas. »*
-* entrées : *« […] des quantités qui lui sont données avant qu'un algorithme ne commence. Ces entrées sont prises dans un ensemble d'objets spécifié. »*
-* sortie : *« […] des quantités ayant une relation spécifiée avec les entrées. »*
-* rendement : *« […] toutes les opérations que l'algorithme doit accomplir doivent être suffisamment basiques pour pouvoir être en principe réalisées dans une durée finie par un homme utilisant un papier et un crayon. »*
+* **entrées** : *« […] des quantités qui lui sont données avant qu'un algorithme ne commence. Ces entrées sont prises dans un ensemble d'objets spécifié. »*
+* **sortie** : *« […] des quantités ayant une relation spécifiée avec les entrées. »*
+* **rendement** : *« […] toutes les opérations que l'algorithme doit accomplir doivent être suffisamment basiques pour pouvoir être en principe réalisées dans une durée finie par un homme utilisant un papier et un crayon. »*
 
 On pourrait en déduire la définition suivante :
 
-> Un algorithme est une succession d'actions simples et clairement définies. A partir d'entrées, il produit une sortie en un nombre fini d'actions.
+> Un algorithme est une succession d'instructions simples et clairement définies. A partir d'entrées, il produit une sortie en un nombre fini d'instruction.
 {: .note}
 
 Un algorithme est donc constitué de trois parties :
 
-* une liste d'actions possibles
-* le nombre d'actions nécessaires pour s'exécuter (ce qu'on appelle **complexité**)
+* une liste d'instructions possibles
+* le nombre d'instructions nécessaires pour s'exécuter (ce qu'on appelle **complexité**)
 * une vérification.
-
-On voit en creux que des notions de **vérification** (caractériser la sortie) et de  () apparaissent également.
 
 ## algorithmes ! {#algorithmes-trois-voies}
 
 La définition très générale d'un algorithme se décline usuellement sous trois formes :
 
-1. [pseudo-code]({% link cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.md %}) : l'écriture (sans ordinateur) d'algorithmes en utilisant un nombre restreint d'actions que l'on définira précisément. Un pseudo-code n'est pas directement fait pour être exécuté par un ordinateur, même si l'on peut utiliser un langage de programmation pour décrire notre code. Le but ici est de résoudre un problème donné avec un algorithme de complexité la plus faible possible.
+1. [pseudo-code]({% link cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.md %}) : l'écriture (sans ordinateur) d'algorithmes en utilisant un nombre restreint d'instructions précisément définies. Un pseudo-code n'est pas directement fait pour être exécuté par un ordinateur, même si l'on peut utiliser un langage de programmation pour décrire notre code. Le but ici est de résoudre un problème donné avec un algorithme utilisant le moins d'instructions possibles.
 2. [calcul]({% link cours/theorie-pratiques-algorithmique/theorie/calcul.md %}). Un algorihtme est vu comme une fonction qui calcule un nombre. Le but est ici de comprendre ce que peuvent faire les algorithmes, quels sont les problèmes qu'ils peuvent résoudre.
 3. [code]({% link cours/theorie-pratiques-algorithmique/coder/code.md %}) : l'écriture d'un programme pouvant s'exécuter sur un ordinateur. Le but sera ici de faire en sorte de vérifier que le code correspond bien au pseudo-code et — surtout — de maintenir son fonctionnement au court du temps.
 
-Ces trois formes ont des buts diférents, mais on ne peut exceller dans l'une sans connaitre les autres. Tout algorithmicien doit avoir de bonnes connaissances théoriques sur ce que peut calculer  un ordinateur et — tôt ou tard — il devra programmer ses algorithmes; tout développeur doit avoir des connaissances fortes en algorithmie pour pouvoir écrire du code performant.
+Ces trois formes ont des buts différents, mais on ne peut exceller dans l'une sans connaitre les autres. Tout algorithmicien doit avoir de bonnes connaissances théoriques sur ce que peut calculer  un ordinateur et — tôt ou tard — il devra programmer ses algorithmes ; tout développeur doit avoir des connaissances fortes en algorithmie pour pouvoir écrire du code performant.
 
 ## étude
 
@@ -81,6 +86,6 @@ Quelque-soit la forme que prendra vos algorithmes (pseudo-code, programme ou fon
 > 2. prouver l'algorithme :
 >    * preuve que l'algorithme termine
 >    * preuve qu'il résout le problème demandé
-> 3. évaluer ses performances en calculant sa complexité
+> 3. évaluer ses performances en calculant sa complexité, c'est à dire le nombre d'instructions qu'il a effectué avant de se terminer
 >
 {: .note}

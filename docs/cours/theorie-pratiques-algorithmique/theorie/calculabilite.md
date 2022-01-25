@@ -1,17 +1,17 @@
 ---
 layout: page
-title:  "Algorithme : machine de Turing calculs ?"
+title:  "Décidabilité et calculabilité"
 category: cours
 ---
 
-> [Théorie et pratiques algorithmique]({% link cours/theorie-pratiques-algorithmique/index.md %}) / [théorie]({% link cours/theorie-pratiques-algorithmique/theorie/index.md %}) / [calculabilité]({% link cours/theorie-pratiques-algorithmique/theorie/calculabilite.md %})
+> [Théorie et pratiques algorithmique]({% link cours/theorie-pratiques-algorithmique/index.md %}) / [théorie]({% link cours/theorie-pratiques-algorithmique/theorie/index.md %}) / [décidabilité et calculabilité]({% link cours/theorie-pratiques-algorithmique/theorie/calculabilite.md %})
 >
 > prérequis :
 >
-> * [machine de turing]({% link cours/theorie-pratiques-algorithmique/theorie/machine-turing.md %})
+> * [machine de Turing]({% link cours/theorie-pratiques-algorithmique/theorie/machine-turing.md %})
 {: .chemin}
 
-La machine de Turing est un modèle permettant de rendre compte d'un algorithme. Soit $M$ une machine de turing et considérons son exécution pour l'entrée $\mu$. La machine va alors soit :
+La machine de Turing est un modèle permettant de rendre compte d'un algorithme. Soit $M$ une machine de Turing et considérons son exécution pour l'entrée $\mu$. La machine va alors soit :
 
 * ne pas s'arrêter (elle n'arrivera jamais à l'état final)
 * s'arrêter et sortir un résultat.
@@ -26,6 +26,8 @@ Aucun de ces deux problèmes n'est simple.
 > Dans la suite, une machine de Turing sera **toujours** une machine sur un alphabet $\\{\sharp, 0, 1\\}$, avec $\\{0, 1\\}$ comme alphabet d'entrée.
 > Ceci, [On l'a vu]({% link cours/theorie-pratiques-algorithmique/theorie/machine-turing.md %}#alphabet-01), se fait sans perte de généralité et va grandement nous simplifier les notations.
 {: .attention}
+
+Comme l'utilisation d'un machine de Turing est équivalente à l'utilisation d'un [pseudo-code]({% link cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.md %}) nous décrirons nos machines en python on en pseudo-code, pour plus d'accessibilité. Enfin, nous ne nous contenterons pas de machines à 1 seule entrée, nous prendrons autant de paramètres que nécessaire pour rendre l'algorithme facile à comprendre. Ceci se fait bien sur [sans perte de généralité]({% link cours/theorie-pratiques-algorithmique/theorie/machine-turing.md %}#plusieurs-rubans).
 
 ## décidabilité
 
@@ -70,7 +72,7 @@ On ne décrit pas précisément les différents états, mais on va décrire sont
 
 {% enddetails %}
 
-La machine précédente fait même plus que juste reconnaitre un palindrome, si le mot n'est pas un palindrome elle rend faux : notre machine est un décideur pour l'ensemble des palindromes. Reconnaitre si un mot est un palindrome est *décidable* :
+La machine précédente (dans la partie initialement cachée) qui prouve que l'ensemble des palindromes est reconnaissable fait même plus, si le mot n'est pas un palindrome elle rend faux : cette machine est un décideur pour l'ensemble des palindromes. Reconnaitre si un mot est un palindrome est ainsi *décidable* :
 
 > Un ensemble de mots $L$ est **décidable** s'il existe un décideur qui rend $1$ si l'entrée est dans $L$ et $0$ sinon.
 {: .note}
@@ -96,11 +98,11 @@ On peut borner les racines d'un polynôme. Voir par exemple [le corollaire de ce
 
 {% enddetails %}
 
-Notez que *décidable* est bien plus fort que *reconnaissable*. En effet, si un langage est juste reconnaissable on ne saura pas si l'exécution de la machine avec une entrée donnée met juste longtemps à répondre oui ou si le mot n'est pas accepté par elle.
+Notez que *décidable* est bien plus fort que *reconnaissable*. En effet, si un langage est juste reconnaissable on ne saura pas si l'exécution de la machine avec une entrée donnée met juste longtemps à répondre oui ou si le mot n'est pas accepté et donc que la machine boucle indéfiniment.
 
-Il existe bien sûr des langages qui sont reconnaissables et non décidables, par exemple une généralisation de notre problème précédent :
+Il existe bien sûr des langages qui sont reconnaissables et non décidables, par exemple une généralisation du problème précédent :
 
-> Le problème consistant à savoir si un [polynôme à plusieurs variables](https://fr.wikipedia.org/wiki/Polyn%C3%B4me_en_plusieurs_ind%C3%A9termin%C3%A9es) à coefficients dans $\mathbb{Z}$ admet une racine dans $\mathbb{N}$ est indécidable.
+> Savoir si un [polynôme à plusieurs variables](https://fr.wikipedia.org/wiki/Polyn%C3%B4me_en_plusieurs_ind%C3%A9termin%C3%A9es) à coefficients dans $\mathbb{Z}$ admet une racine dans $\mathbb{N}$ est un problème indécidable.
 {: .note}
 
 **Félicitations !** Vous venez de rencontrer votre premier problème que ne pourra pas résoudre un ordinateur.
@@ -109,7 +111,7 @@ Il existe bien sûr des langages qui sont reconnaissables et non décidables, pa
 
 ### arrêt d'un algorithme
 
-Savoir si un algorithme (ou une machine de Turing puisque c'est équivalent) va s'arrêter sur une entrée ou pas est un problème compliqué. Prenez par exemple l'[algorithme suivant](https://fr.wikipedia.org/wiki/Conjecture_de_Syracuse) :
+Savoir si un algorithme (ou une machine de Turing puisque c'est équivalent) va s'arrêter, ou pas, sur une entrée est un problème compliqué. Prenez par exemple l'[algorithme suivant](https://fr.wikipedia.org/wiki/Conjecture_de_Syracuse) :
 
 ```python
 
@@ -123,11 +125,12 @@ def syracuse(n):
 ```
 
 L'algorithme est très simple : à partir d'un entier $n$, il le divise par 2 s'il est pair ou le multiplie par 3 et ajoute 1 s'il est impair et recommence tant que ce nombre est strictement plus grand que 1.
+> Testez chez vous pour plusieurs nombres, c'est assez bluffant.
+>
+> Affichez également la suite de nombre ou la représenter graphiquement pour voir l'évolution de votre nombre d'entrée jusqu'à 1.
+{: .a-faire}
 
 Personne ne sait (à l'heure où je tape ces caractères) si cet algorithme s'arrête pour tout $n$.
-> Testez chez vous pour plusieurs nombres, c'est assez bluffant. 
-> Vous pouvez aussi afficher la suite de nombre ou la représenter graphiquement pour voir l'évolution de votre nombre d'entrée jusqu'à 1.
-{: .a-faire}
 
 De façon plus générale :
 
@@ -160,36 +163,177 @@ Tout comme [la preuve du théorème de Cantor]({% link cours/theorie-pratiques-a
 
 {% enddetails %}
 
-Il faut bien comprendre l'énoncé ci-dessus. Il n'existe pas de décideur qui prend comme entrée une machine de Turing et un mot et qui rend *Vrai* si la machine va s'arrêter : la machine **et** le mot d'entrée sont les paramètres du décideur.
+Il faut bien comprendre l'énoncé ci-dessus. Il n'existe pas de décideur qui prend comme entrée **et** une machine de Turing **et** un mot et qui rend *Vrai* si la machine va s'arrêter : la machine et le mot d'entrée sont les paramètres du décideur.
 
-Cela ne contredit pas le fait qu'on puisse créer un décideur spécifique à une machine qui réponde *vrai* ou *faux* selon le paramètre d'entrée de celle-ci. C'est l'algorithme qui décide pour toutes les machines qui est impossible.
+Cela ne contredit pas le fait qu'on puisse créer un décideur spécifique à une machine qui réponde *vrai* ou *faux* selon le paramètre d'entrée de celle-ci. C'est l'algorithme général, indépendant de la machine, qui n'existe pas.
 
 > lorsque l'on parle de décidabilité ou de problème il faut toujours bien faire attention à ce qui est un paramètre d'entrée et ce qui est donné.
 
 Le théorème d'indécidabilité de l'arrêt de machine de Turing est fondamental théoriquement. Il est à la base de nombreux contre-exemples et :
 
 * il exhibe le fait qu'il existe des choses que l'on ne peut pas calculer avec un ordinateur
-* en creux, il montre qu'on peut tout de même faire beaucoup de choses avec un ordinateur puisqu'il faut chercher des exemples bien tordus pour que ça ne marche pas
+* en creux, il montre qu'on peut tout de même faire beaucoup de choses avec des algorithmes puisqu'il faut chercher des exemples bien tordus pour que ça ne marche pas
 
 ## calculabilité
 
+La décidabilité cherche à reconnaitre des solutions d'un problème avec un algorithme. La calculabilité utilise la sortie d'une machine pour calculer des valeurs.
+
+[On l'a vu]({% link cours/theorie-pratiques-algorithmique/theorie/calcul.md %}#nombre-fonction), il existe bien plus de fonctions que d'algorithmes. On peut maintenant essayer d'y voir un peu plus clair.
+
+### fonctions calculables
+
+> Un fonction de $f: \mathcal{F} \rightarrow \\{0, 1\\}^\star$, avec $\mathcal{F} \in \\{0, 1\\}^\star$ ($f$ prend en entrée un mot d'un sous-ensemble de $\\{0, 1\\}^\star$ et redonne un mot en sortie) est **calculable** s'il existe une machine de Turing $M$ telle que :
+>
+> * $M(\mu) = f(\mu)$ si $\mu \in \mathcal{F}$
+> * $\mathcal{L}(M) = \mathcal{F}$
+>
+{: .note}
+
+[Par exemple](https://en.wikipedia.org/wiki/Computable_function#Examples) :
+
+* les fonctions constantes sont calculables
+* si $f$ et $g$ sont deux fonctions calculables, alors $f+g$, $f \cdot g$ et $f \circ g$ sont calculables
+* les fonctions dont le domaine de définition est fini, sont calculables
+* ...
+
+Beaucoup, beaucoup, beaucoup de fonctions sont calculables, il suffit d'exhiber un algorithme pour le prouver. De façon plus bizarre, il existe aussi des fonctions, que l'on sait calculable, mais dont on ne connait pas l'algorithme pour le calculer :
+
+```text
+def f(n):
+    si il existe n 5 consécutifs dans les décimals de π:
+        rend 1
+    sinon:
+        rend 0
+```
+
+La fonction ci-dessus est :
+
+* soit constante et $f(n) = 1$ pour tout $n$ (ce qui est calculable)
+* soit il existe $n_0$ tel que pour tout $n \geq n_0$ ont ait $f(n) = 0$ et avant $f(n) = 1$ ($f$ revient à faire un test sur $n$, ce qui est aussi calculable).
+
+Elle est donc calculable, mais on ne sait pas quel algorithme c'est (cas on ne sais pas si π est [un nombre univers](https://fr.wikipedia.org/wiki/Nombre_univers) ou pas]).
+
+Enfin, finissons cette partie en remarquant que décidabilité et calculabilité sont les deux faces d'une même pièce en remarquant que :
+
+> Si une fonction $f: \mathcal{F} \rightarrow \\{0, 1\\}^\star$ est calculable alors $\\{ (a, f(a) \mid a \in \mathcal{F}\\}$ est reconnaissable.
+{: .note}
+{% details preuve %}
+
+Si $f: \mathcal{F} \rightarrow \\{0, 1\\}^\star$ est calculable, la machine de Turing $M$ prenant en entrée deux mots $a$ et $b$ et qui rend 1 si $f(a) = b$ et ne s'arrête pas sinon  est bien telle que $\mathcal{L}(M) = \\{ (a, f(a) \mid a \in \mathcal{F}\\}$.
+
+{% enddetails %}
+
+Et si $f$ est défini sur tout mot (ce qui est très souvent le cas) on a même :
+
+> Une fonction $f: \\{0, 1\\}^\star \rightarrow \\{0, 1\\}^\star$ est calculable si et seulement si $\\{ (a, f(a) \mid a \in \\{0, 1\\}^\star\\}$ est décidable.
+{: .note}
+{% details preuve %}
+
+Si $f: \mathcal{F} \rightarrow \\{0, 1\\}^\star$ est calculable, la machine de Turing $M$ prenant en entrée deux mots $a$ et $b$ et qui rend 1 si $f(a) = b$ et 0 sinon est bien un décideur sur $\\{ (a, f(a) \mid a \in \\{0, 1\\}^\star\\}$
+
+Réciproquement, soit $M$ un décideur sur $\\{ (a, f(a) \mid a \in \\{0, 1\\}^\star\\}$, la machine $M'$ qui prend itérativement tous les mots $b$ et qui rend $b$ lorsque $M(a, b)$ rend $1$ est bien fini pour tout $a$ et calcule bien $f(a)$.
+
+{% enddetails %}
+
+### fonctions non calculables
+
+Comme il suffit d'exhiber un algorithme pour montrer qu'une fonction est calculable,  presque toutes les fonctions auxquelles on peut penser le sont. Pour trouver des fonctions non calculables, il faut chercher des exemples tordus, le plus plus souvent en lien avec le problème de l'arrêt de la machine.
+
+#### busy beavers
+
+L'exemple le plus classique des fonctions non calculables est le calcul des [castors affairés](https://fr.wikipedia.org/wiki/Castor_affair%C3%A9) (*busy beavers* dans la verion originale):
+
+> On définit le **score** $\rho(M)$ d'une machine de Turing $M$ acceptant le mot vide comme étant le nombre de $1$ de $M()$.
+>
+> La fonction du **castor affairé** $\Sigma : \mathbb{N} \rightarrow \mathbb{N}$ est définie telle que $\beta(n)$ vaut le score maximal pour toutes les machine de Turing à $n$ états acceptant le mot vide.
+>
+{: .note}
+
+La fonction est bien définie pour tout $n>0$ puisqu'il n'y a qu'un nombre fini de machine de Turing à $n$ états : la valeur $\beta(n)$ est un maximum d'un ensemble fini, ce nombre existe.
+
+> $\beta(n) \geq n - 1$ pour tout $n >0$
+{: .note}
+{% details  preuve %}
+Considérons la machine $M_n$ à $n$ états $(q_0, \dots, q_{n-1}) telle que :
+
+* $q_0$ est l'état initial
+* $q_{n-1}$ l'état d'acceptation
+* la fonction de transition $\delta$ telle que $\delta(q_i, \sharp) = (q_{i+1}, 1, \rightarrow)$
+
+On a $M_n() = \underbrace{1\cdots 1}_{n-1}{}$.
+{% enddetails %}
+
+> $\beta(n)$ est strictement croissante
+{: .note}
+{% details  preuve %}
+Soit $B_n$ une machine à $n$ états telle que $\rho(B_n) = \beta(n)$. La machine obtenue en enchaînant $B_n$ et $M_1$ (voir preuve précédente) en associant l'état final de $B_n$ à l'état initial de $M_1$ a $n+1$ états (les état de B_n$ plus l'état d'acceptation de $M_1$) et sa sorite produit un 1 de plus que $\beta_n$ : $\beta(n+1) \geq \beta(n) + 1$.
+
+{% enddetails %}
+
+Ce qui nous permet de prouver que :
+
+> $\beta$ est non calculable.
+{: .note}
+{% details  preuve %}
+
+Supposons que $\beta$ soit calculable. Il existe alors une machine $F$ de pseudo code :
+
+```text
+def F(n):
+
+efface l'entrée du ruban
+
+i = 0
+tant que i < 2 * β(n):
+    écrit 1 sur le ruban et décale toi à droite
+    i = i + 1
+```
+
+On peut supposer, sans perte de généralité, que l'entrée de $F$ soit uniquement composée de $1$(donc $n$ signifie que l'entrée est composée de n $1$ consécutifs).
+
+De là, on peut également construire la machine $M$ :
+
+```text
+def M():
+    M_n()
+    déplace le curseur à gauche jusqu'à obtenir un blanc puis déplace le curseur d'un cran à droite
+    F(n)
+```
+
+Cette machine enchaîne $M_n$ à $F$. Pour la sorite de $M_n()$ soit l'entrée de $F$, il faut décaler le ruban pour le placer jusqu'au premier 1 (ceci se fait avec une machine à 3 états). Cette machine à un nombre d'états égal au nombre d'état de $M_n$ plus le nombre d'état de la machine qui déplace le ruban (3) plus le nombre d'état de $F$ (disons $k$) moins les liants entre les machines (les états finaux des machines intermédiaires sont les états initiaux des machines suivantes), c'est à dire 2. Au final, la machine $M$ à : $n + 3 + k - 2 = n + k +1$ états et est telle que $\rho(M) = \beta(2n)$.
+
+On en déduit l'inégalité : $\beta(n + k + 1) \geq \beta(2n)$ et comme $\beta$ est strictement croissante : $2n \leq n + k + 1$ pour tout $n > 0$ ce qui est impossible.
+
+{% enddetails %}
+
+#### théorème de Rice
+
+plein d'algo font la même chose. et il est très difficile (ie indécidable) se savoir a priori ce qu'il fait (il faut analyser chaque algorithme particulièrement, cela ne peut pas être dans les paramètres)
+<https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Rice>
+
+
+l'ensemble des algos calculant des nombres est indécidable
+
+
+<https://en.wikipedia.org/wiki/Computable_function>
+comme reconnaissable puisque (E, F(E)) est reconnaissable si la fonction est calculable
+
+
+
+Ces deux problème ne sont pas fondamentalement différent d'un point de vue théorique puisque
+réponse attendue  La calculabilité cherche 
 On a vu qu'il existe des problèmes qu'on ne peut pas résoudre avec un algorithme
 
 >ex de ackerman. Impossible de connaitre la valeur sans exécuter l'algo.
 {: .tbd}
 
-<https://en.wikipedia.org/wiki/Computable_function>
-
-### fonctions calculables
-
-comme reconnaissable puisque (E, F(E)) est reconnaissable si la fonction est calculable
-
-> castor affairées non
-
-
 ### nombres calculables
 
+tous les entiers sont calculables. C'est les réels qui peuvnet ne pas l'être (ou son approximables), ou même certains entiers bien tordus.
+
 > pi oui
+
+de plus en plus proche par etapes = calculer les décimales.
 
 <https://en.wikipedia.org/wiki/Computable_number>
 
@@ -198,26 +342,32 @@ comme reconnaissable puisque (E, F(E)) est reconnaissable si la fonction est cal
 
 pour l'instant tous les pseudo-code qu'on a écrit s'arrêtent tout le temps. Mais celui là ? syracuse. On ne sais pas.
 
-## arrêt de la machine
-
-des actions successives qui menent au résultat : ce n'est pas immédiat ! Et on ne sais pas si ça s'arrête.
-
-passer d'un pseudo code à la machine. entier/réels/chaine de caractères. Permet de voir théoriquement ce qu'on peut faire.
+savoir si un algorithme calcule un nombre est non décidable.
 
 ## logique, démonstrations mathématiques et calculabilité
 
-<https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Rice>
+
 <https://en.wikipedia.org/wiki/List_of_undecidable_problems>
 
-démonstation = pseudo-code
+démonstration = pseudo-code
 
-## Ackermann
+## fonctions calculables d'intérêt
+
+### takeuchi
+
+scalculable, ne peut pas dire simple. Il existe plein d'algorithme pour calculer la memem chose 
+
+### fonction d'Ackermann
+
+> for et while qui se terminent sont calculables. Mais c'est pas les seules.
+> <https://fr.wikipedia.org/wiki/Fonction_r%C3%A9cursive_primitive>
+{: .tbd}
 
 Souvent, savoir si un algorithme va finir est trivial. Mais qu'en est-il de la [fonction d'Ackermann](https://fr.wikipedia.org/wiki/Fonction_d%27Ackermann), très importante en informatique théorique ?
 
 En gros, c'est une fonction qui ne peut être décrite que par un algorithme. Il n'existe pas de fonction qui la calcule. Elle se définit de la manière suivante, pour tous entiers m et n positifs :
 
-* A(m, n) = n + 1 si m = 0 
+* A(m, n) = n + 1 si m = 0
 * A(m - 1, 1) si n = 0
 * A(m - 1, A(m, n - 1)) sinon.
 
@@ -245,6 +395,8 @@ Complexité : nombre d'opération au moins supérieure à son résultat puisque 
 
 
 ## refs
+
+poly de Pascal.
 
 <https://plato.stanford.edu/entries/church-turing/>
 <http://pageperso.lif.univ-mrs.fr/~kevin.perrot/documents/2016/calculabilite/Cours_16.pdf>

@@ -94,7 +94,7 @@ Un algorithme, représenté par son pseudo code, a des entrées et une sortie : 
 
 > Un algorithme à $p$ entrées, dont $q$ entrées entières, $r$ entrées approximation des réels et $s$ chaînes de caractères est une fonction de :
 >
-> $$f: \mathbb{N}^{q} \times R^r \times C^t \rightarrow N \cup A \cup C$$
+> $$f: \mathbb{N}^{q} \times R^r \times C^t \rightarrow \mathbb{N} \cup R \cup C$$
 >
 > où $\mathbb{N}$ est l'ensemble des entiers, $R$ l'ensemble des approximations de réels et $C$ l'ensemble des chaînes de caractères.
 {: .note}
@@ -154,6 +154,16 @@ Toute fonction de $\mathbb{N}^p$ dans $\mathbb{N}$ peut alors s'écrire comme un
 >
 {: .note}
 
+En remarquant que tout entier peut s'écrire sous sa [notation binaire](https://fr.wikipedia.org/wiki/Syst%C3%A8me_binaire), il existe une bijection entre $\mathbb{N}$ et l'ensemble des mots que l'on peut former avec $0$ et $1$. En notant cet ensemble $\\{0, 1\\}^\star$, on en conclut que :
+
+> Un algorithme est une fonction de :
+>
+> $$f: \{0, 1\}^\star \rightarrow \{0, 1\}^\star$$
+>
+{: .note}
+
+C'est cette formulation que l'on utilisera le plus souvent.
+
 ### pour la bonne bouche {#fonction-un-binaire}
 
 Vous allez rire, on peut encore aller plus loin. Pour l'instant, on sait qu'un algorithme est une fonction $f: \mathbb{N} \rightarrow \mathbb{N}$. Elle associe donc un entier à un autre. Cette fonction est alors équivalente à la fonction $f'$ ci-dessous :
@@ -169,7 +179,7 @@ $$
 
 D'après ce qui précède, en utilisant une bijection entre $\mathbb{N} \times \mathbb{N}$ et $\mathbb{N}$, il existe alors une fonction $f'': \mathbb{N} \rightarrow \\{0, 1\\}$ équivalente à $f'$ et donc à $f$.
 
-En remarquant que tout entier peut s'écrire sous sa [notation binaire](https://fr.wikipedia.org/wiki/Syst%C3%A8me_binaire), il existe une bijection entre $\mathbb{N}$ et l'ensemble des mots que l'on peut former avec $0$ et $1$. En notant cet ensemble $\\{0, 1\\}^\star$, on en conclut que :
+En utilisant les notations binaires on a alors :
 
 > Un algorithme est une fonction de :
 >
@@ -183,7 +193,7 @@ On a démontré qu'un algorithme était une fonction de $\mathbb{N}$ dans $\math
 
 On ne donnera pas ici d'exemple concret de fonction non calculable on montre juste que contrairement à une idée répandue :
 
-> Un algorithme ne peut pas **tout** calculer. En revanche, quelque soit le formalisme utilisé pour le calcul (le pseudo-code ou code) ils peuvent tous calculer **la même chose**.
+> Un algorithme **ne peut pas** tout calculer. En revanche, quelque soit le formalisme utilisé pour le calcul (le pseudo-code ou code) ils calculent tous **la même chose**.
 {: .note}
 
 ### on ne calcule pas tout
@@ -192,9 +202,9 @@ On va montrer qu'il existe des fonctions qui ne sont pas des algorithmes car il 
 
 #### nombre d'algorithmes {#nombre-algorithmes}
 
-Comme un algorithme peut-être décrit par son pseudo-code, qui est une chaîne de caractères (qu'on peut limiter aux mots Français si on a envie), il y a au plus autant d'algorithmes que de chaînes de caractères. Ça en fait un sacré paquet mais comme chaque chaîne de caractère est un entier (on l'a vu [juste avant](#fonction-plusieurs-entier)) :
+Comme un algorithme peut-être décrit par son pseudo-code, qui est une chaîne de caractères (qu'on peut limiter aux mots Français si on a envie) : il y a au plus autant d'algorithmes que de chaînes de caractères. Ça en fait un sacré paquet mais comme chaque chaîne de caractère est un entier (on l'a vu [juste avant](#fonction-plusieurs-entier)) :
 
-> Il ne peut y avoir plus d'algorithme que de nombres entiers.
+> Il ne peut y avoir plus d'algorithmes que de nombres entiers.
 {: .note}
 
 #### nombre de fonctions {#nombre-fonction}
@@ -213,12 +223,18 @@ Or pour tout ensemble $E$ il y a strictement plus d'éléments dans l'ensemble d
 > Il y a strictement plus de fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ que de nombres entiers.
 {: .note}
 
+{% details élément de la preuve du théorème de Cantor %}
+
 La preuve du Théorème de Cantor repose sur le fait que pour toute fonction $f: E \rightarrow 2^E$, l'ensemble $D = \\{x \in E \vert x \notin f(x)\\}$ n'a pas d'antécédent pour $f$. En effet, s'il en avait un, disons $y$, on aurait $f(y) = D$ et alors :
 
 * $y \notin D$ car s'il y était alors $y \notin f(y)$ ce qui est incohérent avec le fait que $f(y) = D$
 * $y \in D$ car s'il n'y était pas alors $y \in f(y)$ ce qui est incohérent avec le fait que $f(y) = D$
 
 Bref, $y$ n'existe pas. On en conclut qu'il existe des éléments de $2^E$ qui ne sont pas des images de $f$ : ce n'est pas une [surjection](https://fr.wikipedia.org/wiki/Surjection). Comme $f$ a été prise au hasard, ça signifie que pour toute fonction de $E$ dans $2^E$ il existera des éléments de $2^E$ qui ne seront pas atteints : il y a strictement plus d'élément dans $2^E$ que dans $E$.
+
+On fini la preuve en utilisant le fait qu'il y a autant  de fonction $f: \mathbb{N} \rightarrow \mathbb{N}$ que de parties de $\mathbb{N} \times \mathbb{N}$, et comme $\mathbb{N} \times \mathbb{N}$ est en bijection avec $\mathbb{N}$ il y a plus de fonctions (il y en a autant que $2^{\mathbb{N}}$) que d'élément dans $\mathbb{N}$.
+
+{% enddetails %}
 
 ### mais lorsqu'on calcule, on calcule la même chose
 
@@ -249,8 +265,7 @@ De façon plus précise on a la suite d'équivalences :
 3. (en passant, [Gödel](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8mes_d%27incompl%C3%A9tude_de_G%C3%B6del), en 1931, démontre qu'il existe des propositions logiques qui sont vraies mais qu'il est impossible de démontrer)
 4. [Curry puis Howard qui généralise](https://fr.wikipedia.org/wiki/Correspondance_de_Curry-Howard), en 1950 et 1980, montrent que (2) est équivalent à écrire en terme de [$\lambda$-calcul](https://fr.wikipedia.org/wiki/Lambda-calcul)
 5. [Turing](https://fr.wikipedia.org/wiki/Alan_Turing) démontre en 1937, que (4) est équivalent à écrire une machine de Turing.
-6. (en passant, Turing démontre qu'il existe des machine de turing qui ne s'arrêtent jamais et que savoir si une machine de turing va s'arrêter est [indécidable](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_l%27arr%C3%AAt), ce qui est équivalent à (3))
-7. Turing, en 1936, démontre que (5) est équivalent à écrire un algorithme
+6. (en passant, Turing démontre qu'il existe des machines de Turing qui ne s'arrêtent jamais et que savoir si une machine de Turing va s'arrêter est [indécidable](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_l%27arr%C3%AAt), ce qui est équivalent à (3))
 
 ## Conclusion
 
@@ -266,4 +281,4 @@ Ceci signifie que l'on doit toujours utiliser le formalisme (ou langage) qui est
 * de code : on utilisera le langage qui est plus adapté à notre problème car ils ont tous leurs spécificités. Il est donc impératif d'apprendre plus d'un langage et surtout d'apprendre à en changer quand on change de problème à résoudre.
 * théorique : on utilisera [la machine de Turing]({% link cours/theorie-pratiques-algorithmique/theorie/machine-turing.md %}), modèle théorique simple qui permet d'appréhender tout ce qui est calculable.
 
-Enfin, faites attention aux réels ! Ils n'existent pas (en informatique). Vous ne manipulez que des approximations : il faut faire attention à la stabilité numérique de vos algorithme et ne **jamais** tester l'égalité entre deux réels mais **toujours** les comparer à epsilon prêt.
+Enfin, faites attention aux réels ! Ils n'existent pas (du moins en informatique). Vous ne manipulez que des approximations : il faut faire attention à la stabilité numérique de vos algorithmes et ne **jamais** tester l'égalité entre deux réels mais **toujours** les comparer à epsilon prêt.

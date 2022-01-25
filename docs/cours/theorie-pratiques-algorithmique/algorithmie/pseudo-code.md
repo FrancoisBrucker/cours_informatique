@@ -11,7 +11,11 @@ category: cours
 >* [algorithmie/algorithmes]({% link cours/theorie-pratiques-algorithmique/algorithmie/algorithmes.md %})
 {: .chemin}
 
-Le pseudo-code est la version papier d'un algorithme. Il décrit les différentes étapes permettant de dérouler un algorithme de son initialisation à son retour. Son but est d'être compréhensible par un humain. Ce n'est cependant pas une langue car il n'y a pas de place pour l'ambiguïté ni les inventions : tout doit y être rigoureusement défini, et chaque étape élémentaire doit être réalisable par un humain. Ce n'est pas non plus un langage informatique dont le but est d'être compris par un ordinateur.
+Le pseudo-code est la version papier d'un algorithme. Il décrit les différentes étapes permettant de dérouler un algorithme de son initialisation à son retour. Son but est d'être compréhensible par un humain.
+
+Ce n'est cependant pas une langue car il n'y a pas de place pour l'ambiguïté ni les inventions : tout doit y être rigoureusement défini, et chaque étape élémentaire doit être réalisable en un temps fini par un humain.
+
+Ce n'est pas non plus un langage informatique dont le but est d'être compris par un ordinateur.
 
 ## éléments de pseudo-code {#regles}
 
@@ -23,7 +27,7 @@ Il y a quelques instructions basiques qu'auront tous les pseudo-codes que vous p
 
 Il y a 3 types d'instruction basique :
 
-* [manipulation d'objets basique](#manipulations-dobjets-basiques)
+* [manipulation d'objets basiques](#manipulations-dobjets-basiques)
 * [exécution conditionnelle d'instructions](#tests)
 * [répétition d'instructions](#répétition)
 
@@ -38,13 +42,13 @@ On doit pouvoir manipuler et stocker des *objets*. On appelle ici **objets basiq
     * arithmétique : addition (`+`), soustraction (`-`), multiplication (`*`), division (`/`)
     * opérations usuelles : prendre la valeur entière, valeur absolue, le modulo
     * logique : égalité (avec le signe `==` ou `=`), plus petit que (`<`), plus grand que (`>`), plus petit ou égal (`≤`), plus grand ou égal (`≥`)
-  * opérations sur les booléens : négation (non, `NOT`, $\neg$), et logique (et, `&&`, `AND`), ou logique (ou, `||`, `OR`)
+  * opérations sur les booléens : "négation logique" (non, `NOT`, $\neg$), "et logique" (et, `&&`, `AND`), "ou logique" (ou, `||`, `OR`)
 * **utiliser des variables**. Une variable est un nom qui est associé à un objet.
   * affecter des variables : `a = 3` défini le nom `a` (appelé *variable*) qui vaut `3`. (vous verrez parfois utilisé $a \leftarrow 3$ à la place de $a = 3$ pour qu'il n'y ait pas de confusion si l'on utilise `=` pour l'égalité)
   * lire une variable. Si j'ai affecté `3` à la variable `a`, je dois pouvoir l'utiliser, par exemple en écrivant `b = a * 3`
 * **utiliser un tableau**. Un tableau est un conteneur. Il contient $n$ objets où $n$ est sa **longueur**. On peut voir ça comme une variable contenant $n$ objets plutôt qu'un seul. On peut accéder à, et/ou modifier un élément stocké dans le tableau en lui donnant son **indice**, allant de $0$ à $n-1$ : `t[i]` correspond à l'objet d'indice $i$ d'un tableau stocké dans la variable `t`. On considère souvent une chaîne de caractère comme un tableau de caractères.
 
-Les objets sont stockés en mémoire, que l'on identifiera à un gigantesque tableau. On considérera que l'on peut stocker sur une case mémoire :
+Les objets sont stockés en mémoire, que l'on identifiera à un gigantesque tableau fini. On considérera que l'on peut stocker sur une case mémoire :
 
 * un entier
 * un réel
@@ -109,7 +113,7 @@ Ou tout mix de tout ça, du moment que c'est clair !
 
 ### répétition
 
-On doit pouvoir répéter un bloc tant qu'une condition logique est vérifiée :
+On doit pouvoir répéter un bloc tant qu'une condition logique est vérifiée (boucle *while*):
 
 ```text
 tant que (condition logique) est vraie:
@@ -118,7 +122,7 @@ tant que (condition logique) est vraie:
     instruction n
 ```
 
-Il existe une variation de ce bloc très utile :
+Il existe une variation de ce bloc très utile (boucle *for*):
 
 ```text
 pour chaque élément x d'un tableau:
@@ -151,7 +155,7 @@ Un nombre total d'instructions de 6.
 
 ### nom des termes utilisés ?
 
-Leurs noms importent peu, seuls leurs fonctions sont importantes. Vous pouvez donc utiliser les mots qu'il vous plait, du moment qu'ils sont compréhensible pour vous et — surtout — pour votre lecteur. Le plus souvent, on utilisera un mix de python et de français, ou d'anglais.
+Leurs noms importent peu, seuls leurs fonctions sont importantes. Vous pouvez donc utiliser les mots qui vous plaisent, du moment qu'ils sont compréhensible pour vous et — surtout — pour votre lecteur. Le plus souvent, on utilisera un mix de python et de français, ou d'anglais.
 
 Les trois pseudo-code suivant sont ainsi équivalent :
 
@@ -197,6 +201,9 @@ Une fonction est un algorithme. Une fois que sa complexité est connue, on peut 
 nom(entrée 1, ..., entrée n)
 ```
 
+> Ne confondez pas `nom`qui est l'algorithme et `nom(a, b)` qui est le résultat de son exécution avec les paramètres `a` et `b`
+{: .attention}
+
 Si l'algorithme a un retour, on peut directement l'utiliser, en l'affectant à une variable par exemple :
 
 ```text
@@ -220,7 +227,7 @@ On affichera bien 4 à l'écran et pas 6 (le nom de variable `e` défini dans re
 
 ### instructions avancées
 
-Si l'on devait à chaque pseudocode redéfinir tout les algorithmes qu'on utilise ce serait vraiment fastidieux. On utilise souvent des fonctions non basiques (comme l'affichage à l'écran qu'on a déjà vu) ou des structures plus élaborées (les listes par exemples qui sont des extensions des tableaux). Il faudra cependant toujours connaitre les complexités de ce qu'on utilise.
+Si l'on devait à chaque pseudo-code redéfinir tout les algorithmes qu'on utilise ce serait vraiment fastidieux. On utilise souvent des fonctions non basiques (comme l'affichage à l'écran qu'on a déjà vu) ou des structures plus élaborées (les listes par exemples qui sont des extensions des tableaux). Il faudra cependant toujours connaitre les complexités de ce qu'on utilise.
 
 Par exemple pour les listes, qui sont des tableaux redimensionnables :
 
@@ -238,7 +245,7 @@ Le pseudo-code est une représentation d'un algorithme. Son but est de :
 
 * démontrer que l'algorithme fait bien ce qu'on pense qu'il fait
 * calculer ses performances :
-  * nombre d'opérations utilisées
+  * nombre d'instructions utilisées
   * nombre de cases mémoire utilisées
 
 Pour réaliser cela le plus simplement possible, on voudra **toujours** :
@@ -263,7 +270,7 @@ On **démontrera** le fonctionnement de l'algorithme en utilisant des preuves ma
 
 On calculera la complexité de l'algorithme :
 
-* nombre d'opérations
+* nombre d'instructions
 * place en mémoire
 
 Ces complexités dépendent des paramètres de l'algorithme et, parfois de circonstances extérieures comme l'état du réseau par exemple.
