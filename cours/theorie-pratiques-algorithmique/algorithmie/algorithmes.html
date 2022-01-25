@@ -78,7 +78,7 @@
 <strong>algorithme</strong> : ensemble des règles opératoires propres à un <strong>calcul</strong>
 </li>
   <li>
-<strong>calcul</strong> : enchaînement des actions nécessaires à l’accomplissement d’une <strong>tâche</strong>
+<strong>calcul</strong> : enchaînement des instructions nécessaires à l’accomplissement d’une <strong>tâche</strong>
 </li>
   <li>
 <strong>tâche</strong> : …</li>
@@ -104,7 +104,7 @@
     <ol>
       <li>étant donné la définition nommée <em>définition</em> de <em>mot_à_définir</em> dans le ‘Petit Robert’</li>
       <li>afficher <em>définition</em> à l’écran.</li>
-      <li>pour chaque <em>mot</em> non compris dans <em>définition_mot</em> :
+      <li>pour chaque <em>mot</em> non compris dans <em>définition</em> :
         <ol>
           <li><em>définition_petit_robert(mot)</em></li>
         </ol>
@@ -113,45 +113,56 @@
   </li>
 </ul>
 
-<p>Nota Bene :</p>
+<p>Règles de construction d’un algorithme que j’ai utilisé :</p>
 
 <ul>
-  <li>afficher à l’écran n’est <strong>PAS</strong> un retour de fonction/méthode/algorithme.</li>
-  <li>différence entre nom d’algorithme et exécution de fonction/méthode/algorithme avec des parenthèses</li>
   <li>
-<strong>des</strong> paramètres en entrée mais <strong>une</strong> sortie (qui peut être une structure composée comme une liste ou un dictionnaire)</li>
+<strong>des</strong> paramètres en entrée mais <strong>une</strong> sortie (qui peut être une structure composée comme une liste ou un dictionnaire).</li>
+  <li>le <strong>retour</strong> d’un algorithme est la dernière instruction qu’il fait, en rendant la sortie (ici, il ne rend rien)</li>
+  <li>L’exécution d’un algorithme est signifié par son nom suivie de parenthèses contenant ses paramètres</li>
+  <li>afficher à l’écran n’est <strong>PAS</strong> un retour de fonction/méthode/algorithme.</li>
+</ul>
+
+<p>C’est un algorithme tout à fait valable. Ce n’est pas du python, mais c’est :</p>
+
+<ul>
+  <li>compréhensible</li>
+  <li>chaque instruction (lire une définition, afficher à l’écran, …) peut être caractérisée par un petit texte en français</li>
+  <li>notre algorithme s’arrête bien à un moment (au pire une fois que l’on a passé en revu tous les mots du dictionnaire)</li>
 </ul>
 
 <p>Donald Knuth (1938-) liste, comme prérequis d’un algorithme, <a href="https://fr.wikipedia.org/wiki/Algorithme">cinq propriétés</a> :</p>
 
 <ul>
-  <li>finitude : <em>« Un algorithme doit toujours se terminer après un nombre fini d’étapes. »</em>
+  <li>
+<strong>finitude</strong> : <em>« Un algorithme doit toujours se terminer après un nombre fini d’étapes. »</em>
 </li>
   <li>définition précise : <em>« Chaque étape d’un algorithme doit être définie précisément, les actions à transposer doivent être spécifiées rigoureusement et sans ambiguïté pour chaque cas. »</em>
 </li>
-  <li>entrées : <em>« […] des quantités qui lui sont données avant qu’un algorithme ne commence. Ces entrées sont prises dans un ensemble d’objets spécifié. »</em>
+  <li>
+<strong>entrées</strong> : <em>« […] des quantités qui lui sont données avant qu’un algorithme ne commence. Ces entrées sont prises dans un ensemble d’objets spécifié. »</em>
 </li>
-  <li>sortie : <em>« […] des quantités ayant une relation spécifiée avec les entrées. »</em>
+  <li>
+<strong>sortie</strong> : <em>« […] des quantités ayant une relation spécifiée avec les entrées. »</em>
 </li>
-  <li>rendement : <em>« […] toutes les opérations que l’algorithme doit accomplir doivent être suffisamment basiques pour pouvoir être en principe réalisées dans une durée finie par un homme utilisant un papier et un crayon. »</em>
+  <li>
+<strong>rendement</strong> : <em>« […] toutes les opérations que l’algorithme doit accomplir doivent être suffisamment basiques pour pouvoir être en principe réalisées dans une durée finie par un homme utilisant un papier et un crayon. »</em>
 </li>
 </ul>
 
 <p>On pourrait en déduire la définition suivante :</p>
 
 <blockquote class="note">
-  <p>Un algorithme est une succession d’actions simples et clairement définies. A partir d’entrées, il produit une sortie en un nombre fini d’actions.</p>
+  <p>Un algorithme est une succession d’instructions simples et clairement définies. A partir d’entrées, il produit une sortie en un nombre fini d’instruction.</p>
 </blockquote>
 
 <p>Un algorithme est donc constitué de trois parties :</p>
 
 <ul>
-  <li>une liste d’actions possibles</li>
-  <li>le nombre d’actions nécessaires pour s’exécuter (ce qu’on appelle <strong>complexité</strong>)</li>
+  <li>une liste d’instructions possibles</li>
+  <li>le nombre d’instructions nécessaires pour s’exécuter (ce qu’on appelle <strong>complexité</strong>)</li>
   <li>une vérification.</li>
 </ul>
-
-<p>On voit en creux que des notions de <strong>vérification</strong> (caractériser la sortie) et de  () apparaissent également.</p>
 
 <h2 id="algorithmes-trois-voies">algorithmes !</h2>
 
@@ -159,14 +170,14 @@
 
 <ol>
   <li>
-<a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.html">pseudo-code</a> : l’écriture (sans ordinateur) d’algorithmes en utilisant un nombre restreint d’actions que l’on définira précisément. Un pseudo-code n’est pas directement fait pour être exécuté par un ordinateur, même si l’on peut utiliser un langage de programmation pour décrire notre code. Le but ici est de résoudre un problème donné avec un algorithme de complexité la plus faible possible.</li>
+<a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.html">pseudo-code</a> : l’écriture (sans ordinateur) d’algorithmes en utilisant un nombre restreint d’instructions précisément définies. Un pseudo-code n’est pas directement fait pour être exécuté par un ordinateur, même si l’on peut utiliser un langage de programmation pour décrire notre code. Le but ici est de résoudre un problème donné avec un algorithme utilisant le moins d’instructions possibles.</li>
   <li>
 <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/calcul.html">calcul</a>. Un algorihtme est vu comme une fonction qui calcule un nombre. Le but est ici de comprendre ce que peuvent faire les algorithmes, quels sont les problèmes qu’ils peuvent résoudre.</li>
   <li>
 <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/code.html">code</a> : l’écriture d’un programme pouvant s’exécuter sur un ordinateur. Le but sera ici de faire en sorte de vérifier que le code correspond bien au pseudo-code et — surtout — de maintenir son fonctionnement au court du temps.</li>
 </ol>
 
-<p>Ces trois formes ont des buts diférents, mais on ne peut exceller dans l’une sans connaitre les autres. Tout algorithmicien doit avoir de bonnes connaissances théoriques sur ce que peut calculer  un ordinateur et — tôt ou tard — il devra programmer ses algorithmes; tout développeur doit avoir des connaissances fortes en algorithmie pour pouvoir écrire du code performant.</p>
+<p>Ces trois formes ont des buts différents, mais on ne peut exceller dans l’une sans connaitre les autres. Tout algorithmicien doit avoir de bonnes connaissances théoriques sur ce que peut calculer  un ordinateur et — tôt ou tard — il devra programmer ses algorithmes ; tout développeur doit avoir des connaissances fortes en algorithmie pour pouvoir écrire du code performant.</p>
 
 <h2 id="étude">étude</h2>
 
@@ -183,7 +194,7 @@
         <li>preuve qu’il résout le problème demandé</li>
       </ul>
     </li>
-    <li>évaluer ses performances en calculant sa complexité</li>
+    <li>évaluer ses performances en calculant sa complexité, c’est à dire le nombre d’instructions qu’il a effectué avant de se terminer</li>
   </ol>
 
 </blockquote>

@@ -168,7 +168,7 @@ le veut, du moment qu’ils ne soient pas infini.</p>
 <blockquote class="note">
   <p>Un algorithme à $p$ entrées, dont $q$ entrées entières, $r$ entrées approximation des réels et $s$ chaînes de caractères est une fonction de :</p>
 
-\[f: \mathbb{N}^{q} \times R^r \times C^t \rightarrow N \cup A \cup C\]
+\[f: \mathbb{N}^{q} \times R^r \times C^t \rightarrow \mathbb{N} \cup R \cup C\]
 
   <p>où $\mathbb{N}$ est l’ensemble des entiers, $R$ l’ensemble des approximations de réels et $C$ l’ensemble des chaînes de caractères.</p>
 </blockquote>
@@ -236,6 +236,17 @@ le veut, du moment qu’ils ne soient pas infini.</p>
 
 </blockquote>
 
+<p>En remarquant que tout entier peut s’écrire sous sa <a href="https://fr.wikipedia.org/wiki/Syst%C3%A8me_binaire">notation binaire</a>, il existe une bijection entre $\mathbb{N}$ et l’ensemble des mots que l’on peut former avec $0$ et $1$. En notant cet ensemble $\{0, 1\}^\star$, on en conclut que :</p>
+
+<blockquote class="note">
+  <p>Un algorithme est une fonction de :</p>
+
+\[f: \{0, 1\}^\star \rightarrow \{0, 1\}^\star\]
+
+</blockquote>
+
+<p>C’est cette formulation que l’on utilisera le plus souvent.</p>
+
 <h3 id="fonction-un-binaire">pour la bonne bouche</h3>
 
 <p>Vous allez rire, on peut encore aller plus loin. Pour l’instant, on sait qu’un algorithme est une fonction $f: \mathbb{N} \rightarrow \mathbb{N}$. Elle associe donc un entier à un autre. Cette fonction est alors équivalente à la fonction $f’$ ci-dessous :</p>
@@ -249,7 +260,7 @@ le veut, du moment qu’ils ne soient pas infini.</p>
 
 <p>D’après ce qui précède, en utilisant une bijection entre $\mathbb{N} \times \mathbb{N}$ et $\mathbb{N}$, il existe alors une fonction $f’’: \mathbb{N} \rightarrow \{0, 1\}$ équivalente à $f’$ et donc à $f$.</p>
 
-<p>En remarquant que tout entier peut s’écrire sous sa <a href="https://fr.wikipedia.org/wiki/Syst%C3%A8me_binaire">notation binaire</a>, il existe une bijection entre $\mathbb{N}$ et l’ensemble des mots que l’on peut former avec $0$ et $1$. En notant cet ensemble $\{0, 1\}^\star$, on en conclut que :</p>
+<p>En utilisant les notations binaires on a alors :</p>
 
 <blockquote class="note">
   <p>Un algorithme est une fonction de :</p>
@@ -265,7 +276,7 @@ le veut, du moment qu’ils ne soient pas infini.</p>
 <p>On ne donnera pas ici d’exemple concret de fonction non calculable on montre juste que contrairement à une idée répandue :</p>
 
 <blockquote class="note">
-  <p>Un algorithme ne peut pas <strong>tout</strong> calculer. En revanche, quelque soit le formalisme utilisé pour le calcul (le pseudo-code ou code) ils peuvent tous calculer <strong>la même chose</strong>.</p>
+  <p>Un algorithme <strong>ne peut pas</strong> tout calculer. En revanche, quelque soit le formalisme utilisé pour le calcul (le pseudo-code ou code) ils calculent tous <strong>la même chose</strong>.</p>
 </blockquote>
 
 <h3 id="on-ne-calcule-pas-tout">on ne calcule pas tout</h3>
@@ -274,10 +285,10 @@ le veut, du moment qu’ils ne soient pas infini.</p>
 
 <h4 id="nombre-algorithmes">nombre d’algorithmes</h4>
 
-<p>Comme un algorithme peut-être décrit par son pseudo-code, qui est une chaîne de caractères (qu’on peut limiter aux mots Français si on a envie), il y a au plus autant d’algorithmes que de chaînes de caractères. Ça en fait un sacré paquet mais comme chaque chaîne de caractère est un entier (on l’a vu <a href="#fonction-plusieurs-entier">juste avant</a>) :</p>
+<p>Comme un algorithme peut-être décrit par son pseudo-code, qui est une chaîne de caractères (qu’on peut limiter aux mots Français si on a envie) : il y a au plus autant d’algorithmes que de chaînes de caractères. Ça en fait un sacré paquet mais comme chaque chaîne de caractère est un entier (on l’a vu <a href="#fonction-plusieurs-entier">juste avant</a>) :</p>
 
 <blockquote class="note">
-  <p>Il ne peut y avoir plus d’algorithme que de nombres entiers.</p>
+  <p>Il ne peut y avoir plus d’algorithmes que de nombres entiers.</p>
 </blockquote>
 
 <h4 id="nombre-fonction">nombre de fonctions</h4>
@@ -298,6 +309,7 @@ le veut, du moment qu’ils ne soient pas infini.</p>
   <p>Il y a strictement plus de fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ que de nombres entiers.</p>
 </blockquote>
 
+<details><summary>élément de la preuve du théorème de Cantor</summary><div>
 <p>La preuve du Théorème de Cantor repose sur le fait que pour toute fonction $f: E \rightarrow 2^E$, l’ensemble $D = \{x \in E \vert x \notin f(x)\}$ n’a pas d’antécédent pour $f$. En effet, s’il en avait un, disons $y$, on aurait $f(y) = D$ et alors :</p>
 
 <ul>
@@ -306,6 +318,10 @@ le veut, du moment qu’ils ne soient pas infini.</p>
 </ul>
 
 <p>Bref, $y$ n’existe pas. On en conclut qu’il existe des éléments de $2^E$ qui ne sont pas des images de $f$ : ce n’est pas une <a href="https://fr.wikipedia.org/wiki/Surjection">surjection</a>. Comme $f$ a été prise au hasard, ça signifie que pour toute fonction de $E$ dans $2^E$ il existera des éléments de $2^E$ qui ne seront pas atteints : il y a strictement plus d’élément dans $2^E$ que dans $E$.</p>
+
+<p>On fini la preuve en utilisant le fait qu’il y a autant  de fonction $f: \mathbb{N} \rightarrow \mathbb{N}$ que de parties de $\mathbb{N} \times \mathbb{N}$, et comme $\mathbb{N} \times \mathbb{N}$ est en bijection avec $\mathbb{N}$ il y a plus de fonctions (il y en a autant que $2^{\mathbb{N}}$) que d’élément dans $\mathbb{N}$.</p>
+
+</div></details>
 
 <h3 id="mais-lorsquon-calcule-on-calcule-la-même-chose">mais lorsqu’on calcule, on calcule la même chose</h3>
 
@@ -343,8 +359,7 @@ Cependant les termes qu’on peut utiliser ne sont pas définis clairement, il y
 </li>
   <li>
 <a href="https://fr.wikipedia.org/wiki/Alan_Turing">Turing</a> démontre en 1937, que (4) est équivalent à écrire une machine de Turing.</li>
-  <li>(en passant, Turing démontre qu’il existe des machine de turing qui ne s’arrêtent jamais et que savoir si une machine de turing va s’arrêter est <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_l%27arr%C3%AAt">indécidable</a>, ce qui est équivalent à (3))</li>
-  <li>Turing, en 1936, démontre que (5) est équivalent à écrire un algorithme</li>
+  <li>(en passant, Turing démontre qu’il existe des machines de Turing qui ne s’arrêtent jamais et que savoir si une machine de Turing va s’arrêter est <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_l%27arr%C3%AAt">indécidable</a>, ce qui est équivalent à (3))</li>
 </ol>
 
 <h2 id="conclusion">Conclusion</h2>
@@ -365,7 +380,7 @@ Cependant les termes qu’on peut utiliser ne sont pas définis clairement, il y
   <li>théorique : on utilisera <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/machine-turing.html">la machine de Turing</a>, modèle théorique simple qui permet d’appréhender tout ce qui est calculable.</li>
 </ul>
 
-<p>Enfin, faites attention aux réels ! Ils n’existent pas (en informatique). Vous ne manipulez que des approximations : il faut faire attention à la stabilité numérique de vos algorithme et ne <strong>jamais</strong> tester l’égalité entre deux réels mais <strong>toujours</strong> les comparer à epsilon prêt.</p>
+<p>Enfin, faites attention aux réels ! Ils n’existent pas (du moins en informatique). Vous ne manipulez que des approximations : il faut faire attention à la stabilité numérique de vos algorithmes et ne <strong>jamais</strong> tester l’égalité entre deux réels mais <strong>toujours</strong> les comparer à epsilon prêt.</p>
 
   </div>
 
