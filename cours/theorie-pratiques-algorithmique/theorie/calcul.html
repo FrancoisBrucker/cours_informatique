@@ -68,37 +68,41 @@
   </ul>
 </blockquote>
 
-<p>Dans <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.html">la partie précédente</a>, on a donné une façon d’écrire des pseudo-codes. Mais est-ce la seule façon de faire ? Et, au final, que peut-on réellement faire avec un algorithme ?</p>
+<p>Dans <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.html">la partie pseudo-code</a>, on a donné une façon d’écrire des algorithmes. Mais est-ce la seule façon de faire ? Et, au final, que peut-on réellement faire avec un algorithme ?</p>
 
 <h2 id="algorithmes-et-pseudo-code">algorithmes et pseudo-code</h2>
 
-<p>Un algorithme, <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/algorithmes.html#algorithme">on l’a vu</a>, est un ensemble de règles propre à un <strong>calcul</strong>. La <a href="https://dictionnaire.lerobert.com/definition/calcul">définition de calcul</a> du Petit Robert est cependant très générale et ne pose pas vraiment la question du choix des règles, ni de comment réaliser effectivement ce calcul.</p>
-
-<p>La définition générale d’un algorithme est alors (voir <a href="https://fr.wikipedia.org/wiki/Th%C3%A8se_de_Church#Formulation_de_la_th%C3%A8se">la page wikipedia sur la calculabilité</a>)  :</p>
+<p>Un algorithme, <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/algorithmes.html#algorithme">on l’a vu</a>, c’est :</p>
 
 <blockquote class="note">
-  <p>Les <strong>4 propriétés générales</strong> qui définissent un algorithme :</p>
+  <p>Un algorithme est une succession d’instructions simples et clairement définies. A partir d’entrées, il produit une sortie en un nombre fini d’instructions.</p>
+</blockquote>
+
+<p>La définition est cependant très générale et ne pose pas vraiment la question du choix des instructions, ni de comment réaliser effectivement ce calcul. Tentons de le faire (voir <a href="https://fr.wikipedia.org/wiki/Th%C3%A8se_de_Church#Formulation_de_la_th%C3%A8se">la page wikipedia sur la calculabilité</a>) :</p>
+
+<blockquote class="note">
+  <p>Les <strong>4 propriétés générales</strong> qui définissent une instruction :</p>
 
   <ol>
-    <li>un algorithme est constitué d’un ensemble fini de règles, décrites avec un nombre fini de symboles</li>
-    <li>si l’algorithme produit un résultat cela doit être fait après un nombre fini d’étapes (une étape étant l’application d’une règle) successives.</li>
+    <li>un algorithme est constitué d’un ensemble fini d’instructions, décrites avec un nombre fini de symboles</li>
+    <li>si l’algorithme produit un résultat cela doit être fait après un nombre fini d’étapes (une étape étant l’application d’une instruction) successives.</li>
     <li>un humain doit pouvoir suivre chaque étape avec un papier et un crayon</li>
-    <li>exécuter une règle ne doit pas nécessiter d’intelligence (à part celle pour comprendre la règle)</li>
+    <li>exécuter une instruction ne doit pas nécessiter d’intelligence (à part celle pour comprendre l’instruction)</li>
   </ol>
 
 </blockquote>
 
 <p>Le terme <strong>fini</strong> est crucial : pour qu’un humain comprenne, et surtout puisse agir, il ne faut pas qu’il y ait un nombre infini de choses à regarder (chaque chose à faire prend un temps de réflexion non nul, une instruction contenant un nombre infini n’est humainement pas réalisable).</p>
 
-<h3 id="règles-dun-algorithme">règles d’un algorithme</h3>
+<h3 id="instruction-dun-algorithme">instruction d’un algorithme</h3>
 
-<p>On en déduit la définition (très générale) d’une règle d’un algorithme :</p>
+<p>On en déduit la définition (très générale) d’une instruction d’un algorithme :</p>
 
 <blockquote class="note">
-  <p>Une <strong>règle</strong> d’un algorithme est une instruction définie par un nombre <strong>fini</strong> de symboles.</p>
+  <p>Une <strong>instruction</strong> d’un algorithme est une règle définie par un nombre <strong>fini</strong> de symboles.</p>
 </blockquote>
 
-<p>Fini ne veut pas dire petit nombres. Un algorithme peut utiliser des nombres entiers aussi grand qu’il
+<p>Fini ne veut pas dire petit nombre. Un algorithme peut utiliser des nombres entiers aussi grand qu’il
 le veut, du moment qu’ils ne soient pas infini.</p>
 
 <h3 id="objet-manipulables">objet manipulables</h3>
@@ -130,12 +134,12 @@ le veut, du moment qu’ils ne soient pas infini.</p>
 
 </blockquote>
 
-<h3 id="regles-pseudo-code">règles d’un pseudo-code</h3>
+<h3 id="regles-pseudo-code">instructions d’un pseudo-code</h3>
 
-<p>Un <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.html#regles">pseudo-code</a> est un algorithme particulier. Il respecte bien les 4 propriétés générales d’un algorithme, mais les règles qui le régissent sont <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.html#regles">définies précisément</a>. On peut montrer que toutes ces règles peuvent être réduites à un ensemble bien plus petit :</p>
+<p>Un <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.html#regles">pseudo-code</a> est un algorithme particulier. Ses <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.html#regles">instructions</a> respectent bien les 4 propriétés générales. On peut cependant montrer qu’elles peuvent être réduites à un ensemble bien plus petit :</p>
 
 <blockquote class="note">
-  <p>On peut ramener l’ensemble des <a href="https://en.wikipedia.org/wiki/Structured_program_theorem">règles d’un pseudo-code</a> (même si ce sera plus compliqué d’écrire le code) à trois types d’instructions et à trois façon de les exécuter.</p>
+  <p>On peut ramener l’ensemble des <a href="https://en.wikipedia.org/wiki/Structured_program_theorem">instructions d’un pseudo-code</a> (même si ce sera plus compliqué d’écrire le code) à trois types d’instructions et à trois façon de les exécuter.</p>
 
   <p>Une <strong>instruction</strong>  est soit :</p>
 
@@ -155,11 +159,11 @@ le veut, du moment qu’ils ne soient pas infini.</p>
   </ul>
 </blockquote>
 
-<p>Tous les pseudo-codes utilisant les 6 règles ci-dessus auront la même expressivité (on pourra faire exactement les mêmes choses) que ceux utilisant <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.html#regles">les règles</a> utilisées couramment, ce sera juste plus long et compliquer à écrire, c’est pourquoi leur intérêt est uniquement théorique.</p>
+<p>Tous les pseudo-codes utilisant les 6 règles ci-dessus auront la même expressivité (on pourra faire exactement les mêmes choses) que ceux utilisant <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.html#regles">les instruction d’un pseudo-code</a>, ce sera juste plus long et compliqué à écrire, c’est pourquoi leur intérêt est uniquement théorique.</p>
 
 <h3 id="equi-algo-pseudo-code">équivalence entre algorithme et pseudo-code ?</h3>
 
-<p>On est intimement convaincu (c’est ce qu’on appelle la <a href="https://fr.wikipedia.org/wiki/Th%C3%A8se_de_Church">thèse de Church-Turing</a>) que les règles d’un pseudo-code sont équivalentes aux règles d’un algorithme, c’est çà dire que toutes les règles qu’on pourrait inventer en un nombre fini de symbole peuvent s’écrire sous la forme de règles d’un pseudo-code.</p>
+<p>On est intimement convaincu (c’est ce qu’on appelle la <a href="https://fr.wikipedia.org/wiki/Th%C3%A8se_de_Church">thèse de Church-Turing</a>) que les instructions d’un pseudo-code sont équivalentes aux instructions d’un algorithme, c’est çà dire que toutes les instructions que l’on pourrait inventer en un nombre fini de symboles peuvent s’écrire sous la forme des instructions d’un pseudo-code.</p>
 
 <h2 id="fonctions">fonctions</h2>
 
@@ -187,7 +191,7 @@ le veut, du moment qu’ils ne soient pas infini.</p>
   <li>des chaînes de caractères : que l’on peut représenter comme un entier en utilisant le le codage <a href="https://fr.wikipedia.org/wiki/UTF-8">utf-8</a>. Par exemple la chaîne de caractère “Yop !” correspond au nombre binaire <code class="language-plaintext highlighter-rouge">111100101101111011100000010000000100001</code> en utilisant  (là aussi, j’ai utilisé <a href="http://hapax.qc.ca/conversion.fr.html">un convertisseur</a>).</li>
 </ul>
 
-<p>On peut donc reformuler notre assertion précédente en unifiant les paramètres (on les recodent tous sous la forme d’entiers) :</p>
+<p>On peut donc reformuler notre assertion précédente en unifiant les paramètres (on les recode tous sous la forme d’entiers) :</p>
 
 <blockquote class="note">
   <p>Un algorithme est une fonction de $p$ paramètres entiers et qui rend un entier.</p>
