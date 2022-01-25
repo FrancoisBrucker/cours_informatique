@@ -38,6 +38,7 @@ Règles de construction d'un algorithme que j'ai utilisé :
 
 * **des** paramètres en entrée mais **une** sortie (qui peut être une structure composée comme une liste ou un dictionnaire).
 * le **retour** d'un algorithme est la dernière instruction qu'il fait, en rendant la sortie (ici, il ne rend rien)
+* une description de ce qu'il fait
 * L'exécution d'un algorithme est signifié par son nom suivie de parenthèses contenant ses paramètres
 * afficher à l'écran n'est **PAS** un retour de fonction/méthode/algorithme.
 
