@@ -51,7 +51,7 @@ C'est un algorithme tout à fait valable. Ce n'est pas du python, mais c'est :
 Donald Knuth (1938-) liste, comme prérequis d'un algorithme, [cinq propriétés](https://fr.wikipedia.org/wiki/Algorithme) :
 
 * **finitude** : *« Un algorithme doit toujours se terminer après un nombre fini d’étapes. »*
-* définition précise : *« Chaque étape d'un algorithme doit être définie précisément, les actions à transposer doivent être spécifiées rigoureusement et sans ambiguïté pour chaque cas. »*
+* **définition précise** : *« Chaque étape d'un algorithme doit être définie précisément, les actions à transposer doivent être spécifiées rigoureusement et sans ambiguïté pour chaque cas. »*
 * **entrées** : *« […] des quantités qui lui sont données avant qu'un algorithme ne commence. Ces entrées sont prises dans un ensemble d'objets spécifié. »*
 * **sortie** : *« […] des quantités ayant une relation spécifiée avec les entrées. »*
 * **rendement** : *« […] toutes les opérations que l'algorithme doit accomplir doivent être suffisamment basiques pour pouvoir être en principe réalisées dans une durée finie par un homme utilisant un papier et un crayon. »*
