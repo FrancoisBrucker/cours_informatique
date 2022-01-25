@@ -56,16 +56,16 @@ Donald Knuth (1938-) liste, comme prérequis d'un algorithme, [cinq propriétés
 * **sortie** : *« […] des quantités ayant une relation spécifiée avec les entrées. »*
 * **rendement** : *« […] toutes les opérations que l'algorithme doit accomplir doivent être suffisamment basiques pour pouvoir être en principe réalisées dans une durée finie par un homme utilisant un papier et un crayon. »*
 
-On pourrait en déduire la définition suivante :
+On peut en déduire la définition suivante :
 
-> Un algorithme est une succession d'instructions simples et clairement définies. A partir d'entrées, il produit une sortie en un nombre fini d'instruction.
+> Un algorithme est une succession d'instructions simples et clairement définies. A partir d'entrées, il produit une sortie en un nombre fini d'instructions.
 {: .note}
 
 Un algorithme est donc constitué de trois parties :
 
 * une liste d'instructions possibles
 * le nombre d'instructions nécessaires pour s'exécuter (ce qu'on appelle **complexité**)
-* une vérification.
+* une caractérisation de la sortie
 
 ## algorithmes ! {#algorithmes-trois-voies}
 

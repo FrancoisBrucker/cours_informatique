@@ -11,33 +11,36 @@ category: cours
 >* [algorithmie/pseudo-code]({% link cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.md %})
 {: .chemin}
 
-Dans [la partie précédente]({% link cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.md %}), on a donné une façon d'écrire des pseudo-codes. Mais est-ce la seule façon de faire ? Et, au final, que peut-on réellement faire avec un algorithme ?
+Dans [la partie pseudo-code]({% link cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.md %}), on a donné une façon d'écrire des algorithmes. Mais est-ce la seule façon de faire ? Et, au final, que peut-on réellement faire avec un algorithme ?
 
 ## algorithmes et pseudo-code
 
-Un algorithme, [on l'a vu]({% link cours/theorie-pratiques-algorithmique/algorithmie/algorithmes.md %}#algorithme), est un ensemble de règles propre à un **calcul**. La [définition de calcul](https://dictionnaire.lerobert.com/definition/calcul) du Petit Robert est cependant très générale et ne pose pas vraiment la question du choix des règles, ni de comment réaliser effectivement ce calcul.
+Un algorithme, [on l'a vu]({% link cours/theorie-pratiques-algorithmique/algorithmie/algorithmes.md %}#algorithme), c'est :
 
-La définition générale d'un algorithme est alors (voir [la page wikipedia sur la calculabilité](https://fr.wikipedia.org/wiki/Th%C3%A8se_de_Church#Formulation_de_la_th%C3%A8se))  :
+> Un algorithme est une succession d'instructions simples et clairement définies. A partir d'entrées, il produit une sortie en un nombre fini d'instructions.
+{: .note}
 
-> Les **4 propriétés générales** qui définissent un algorithme :
+La définition est cependant très générale et ne pose pas vraiment la question du choix des instructions, ni de comment réaliser effectivement ce calcul. Tentons de le faire (voir [la page wikipedia sur la calculabilité](https://fr.wikipedia.org/wiki/Th%C3%A8se_de_Church#Formulation_de_la_th%C3%A8se)) :
+
+> Les **4 propriétés générales** qui définissent une instruction :
 >
->1. un algorithme est constitué d'un ensemble fini de règles, décrites avec un nombre fini de symboles
->2. si l'algorithme produit un résultat cela doit être fait après un nombre fini d'étapes (une étape étant l'application d'une règle) successives.
+>1. un algorithme est constitué d'un ensemble fini d'instructions, décrites avec un nombre fini de symboles
+>2. si l'algorithme produit un résultat cela doit être fait après un nombre fini d'étapes (une étape étant l'application d'une instruction) successives.
 >3. un humain doit pouvoir suivre chaque étape avec un papier et un crayon
->4. exécuter une règle ne doit pas nécessiter d'intelligence (à part celle pour comprendre la règle)
+>4. exécuter une instruction ne doit pas nécessiter d'intelligence (à part celle pour comprendre l'instruction)
 >
 {: .note}
 
 Le terme **fini** est crucial : pour qu'un humain comprenne, et surtout puisse agir, il ne faut pas qu'il y ait un nombre infini de choses à regarder (chaque chose à faire prend un temps de réflexion non nul, une instruction contenant un nombre infini n'est humainement pas réalisable).
 
-### règles d'un algorithme
+### instruction d'un algorithme
 
-On en déduit la définition (très générale) d'une règle d'un algorithme :
+On en déduit la définition (très générale) d'une instruction d'un algorithme :
 
-> Une **règle** d'un algorithme est une instruction définie par un nombre **fini** de symboles.
+> Une **instruction** d'un algorithme est une règle définie par un nombre **fini** de symboles.
 {: .note}
 
-Fini ne veut pas dire petit nombres. Un algorithme peut utiliser des nombres entiers aussi grand qu'il
+Fini ne veut pas dire petit nombre. Un algorithme peut utiliser des nombres entiers aussi grand qu'il
 le veut, du moment qu'ils ne soient pas infini.
 
 ### objet manipulables
@@ -63,11 +66,11 @@ En conclusion :
 >
 {: .note}
 
-### règles d'un pseudo-code {#regles-pseudo-code}
+### instructions d'un pseudo-code {#regles-pseudo-code}
 
-Un [pseudo-code]({% link cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.md %}#regles) est un algorithme particulier. Il respecte bien les 4 propriétés générales d'un algorithme, mais les règles qui le régissent sont [définies précisément]({% link cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.md %}#regles). On peut montrer que toutes ces règles peuvent être réduites à un ensemble bien plus petit :
+Un [pseudo-code]({% link cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.md %}#regles) est un algorithme particulier. Ses [instructions]({% link cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.md %}#regles) respectent bien les 4 propriétés générales. On peut cependant montrer qu'elles peuvent être réduites à un ensemble bien plus petit :
 
-> On peut ramener l'ensemble des [règles d'un pseudo-code](https://en.wikipedia.org/wiki/Structured_program_theorem) (même si ce sera plus compliqué d'écrire le code) à trois types d'instructions et à trois façon de les exécuter.
+> On peut ramener l'ensemble des [instructions d'un pseudo-code](https://en.wikipedia.org/wiki/Structured_program_theorem) (même si ce sera plus compliqué d'écrire le code) à trois types d'instructions et à trois façon de les exécuter.
 >
 > Une **instruction**  est soit :
 >
@@ -82,11 +85,11 @@ Un [pseudo-code]({% link cours/theorie-pratiques-algorithmique/algorithmie/pseud
 > * exécuter un bloc d'instructions tant qu'un test d'égalité est vrai
 {: .note}
 
-Tous les pseudo-codes utilisant les 6 règles ci-dessus auront la même expressivité (on pourra faire exactement les mêmes choses) que ceux utilisant [les règles]({% link cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.md %}#regles) utilisées couramment, ce sera juste plus long et compliquer à écrire, c'est pourquoi leur intérêt est uniquement théorique.
+Tous les pseudo-codes utilisant les 6 règles ci-dessus auront la même expressivité (on pourra faire exactement les mêmes choses) que ceux utilisant [les instruction d'un pseudo-code]({% link cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.md %}#regles), ce sera juste plus long et compliqué à écrire, c'est pourquoi leur intérêt est uniquement théorique.
 
 ### équivalence entre algorithme et pseudo-code ? {#equi-algo-pseudo-code}
 
-On est intimement convaincu (c'est ce qu'on appelle la [thèse de Church-Turing](https://fr.wikipedia.org/wiki/Th%C3%A8se_de_Church)) que les règles d'un pseudo-code sont équivalentes aux règles d'un algorithme, c'est çà dire que toutes les règles qu'on pourrait inventer en un nombre fini de symbole peuvent s'écrire sous la forme de règles d'un pseudo-code.
+On est intimement convaincu (c'est ce qu'on appelle la [thèse de Church-Turing](https://fr.wikipedia.org/wiki/Th%C3%A8se_de_Church)) que les instructions d'un pseudo-code sont équivalentes aux instructions d'un algorithme, c'est çà dire que toutes les instructions que l'on pourrait inventer en un nombre fini de symboles peuvent s'écrire sous la forme des instructions d'un pseudo-code.
 
 ## fonctions
 
@@ -111,7 +114,7 @@ Les paramètres d'un algorithme peuvent tous être représentés par des entiers
 * des approximations finies de réels : on peut utiliser la norme [IEEE 754](https://fr.wikipedia.org/wiki/IEEE_754). Par exemple 3.1415 en codage IEEE 754 sur 32 bits correspond à l'entier binaire : `01000000010010010000111001010110` (j'ai utilisé [un convertisseur](https://www.h-schmidt.net/FloatConverter/IEEE754.html))
 * des chaînes de caractères : que l'on peut représenter comme un entier en utilisant le le codage [utf-8](https://fr.wikipedia.org/wiki/UTF-8). Par exemple la chaîne de caractère "Yop !" correspond au nombre binaire `111100101101111011100000010000000100001` en utilisant  (là aussi, j'ai utilisé [un convertisseur](http://hapax.qc.ca/conversion.fr.html)).
 
-On peut donc reformuler notre assertion précédente en unifiant les paramètres (on les recodent tous sous la forme d'entiers) :
+On peut donc reformuler notre assertion précédente en unifiant les paramètres (on les recode tous sous la forme d'entiers) :
 
 > Un algorithme est une fonction de $p$ paramètres entiers et qui rend un entier.
 >

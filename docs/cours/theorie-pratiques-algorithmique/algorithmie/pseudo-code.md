@@ -191,6 +191,17 @@ Programme :
     Retour faux 
 ```
 
+ou de manière équivalente, en un mélange de python et de français :
+
+```python
+
+def recherche(t, x):
+    pour chaque élément e de t:
+        si e == x:
+            return vrai
+    return faux
+```
+
 Ceci permet ensuite de définir des fonctions pour écrire des algorithmes de façon plus concise.
 
 ### fonctions
