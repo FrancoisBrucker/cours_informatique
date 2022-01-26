@@ -12,7 +12,7 @@ Les divers contrôles intermédiaires seront à rendre directement sur [ametice]
 
 L'ensemble du cours (et d'autres choses) est disponible [là]({% link cours/theorie-pratiques-algorithmique/index.md %})
 
-> Chaque mercredi à partir de la semaine 2 il y aura un contrôle de 15min en début de séance portant sur le programme de la semaine précédente.
+> Chaque **vendredi** à partir de la semaine 2 il y aura un contrôle de 15min en début de séance portant sur le programme de la semaine précédente.
 {: .attention}
 
 ### semaine 1
@@ -39,7 +39,7 @@ L'ensemble du cours (et d'autres choses) est disponible [là]({% link cours/theo
 
 ### semaine 2
 
-> Le contrôle de mercredi portera sur la partie code. Il faudra rendre un (ou plusieurs) fichiers python sur amétice.
+> Le contrôle de vendredi portera sur la partie code. Il faudra rendre un (ou plusieurs) fichiers python sur amétice.
 
 #### mercredi {#m-2}
 
@@ -53,7 +53,7 @@ L'ensemble du cours (et d'autres choses) est disponible [là]({% link cours/theo
 
 ### semaine 3
 
-> Le contrôle de mercredi portera sur la partie complexité et preuve d'algorithme. Il faudra rendre une copie.
+> Le contrôle de vendredi portera sur la partie complexité et preuve d'algorithme. Il faudra rendre une copie.
 
 #### mercredi {#m-3}
 
