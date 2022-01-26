@@ -235,8 +235,6 @@ La preuve du Théorème de Cantor repose sur le fait que pour toute fonction $f:
 
 Bref, $y$ n'existe pas. On en conclut qu'il existe des éléments de $2^E$ qui ne sont pas des images de $f$ : ce n'est pas une [surjection](https://fr.wikipedia.org/wiki/Surjection). Comme $f$ a été prise au hasard, ça signifie que pour toute fonction de $E$ dans $2^E$ il existera des éléments de $2^E$ qui ne seront pas atteints : il y a strictement plus d'élément dans $2^E$ que dans $E$.
 
-On fini la preuve en utilisant le fait qu'il y a autant  de fonction $f: \mathbb{N} \rightarrow \mathbb{N}$ que de parties de $\mathbb{N} \times \mathbb{N}$, et comme $\mathbb{N} \times \mathbb{N}$ est en bijection avec $\mathbb{N}$ il y a plus de fonctions (il y en a autant que $2^{\mathbb{N}}$) que d'élément dans $\mathbb{N}$.
-
 {% enddetails %}
 
 ### mais lorsqu'on calcule, on calcule la même chose
