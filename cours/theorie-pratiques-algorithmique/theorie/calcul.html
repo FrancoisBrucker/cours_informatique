@@ -70,6 +70,16 @@
 
 <p>Dans <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.html">la partie pseudo-code</a>, on a donné une façon d’écrire des algorithmes. Mais est-ce la seule façon de faire ? Et, au final, que peut-on réellement faire avec un algorithme ?</p>
 
+<p>Ce qu’il faut retenir de cette partie :</p>
+
+<ul>
+  <li>un algorithme peut-être vue une fonction prenant <strong>un</strong> mot composé de 0 et de 1 en entrée et qui donne un mot composé de 0 et de 1 en sortie</li>
+  <li>que l’on ne peut pas manipuler de réels directement que des approximations</li>
+  <li>que toutes les fonctions prenant <strong>un</strong> mot composé de 0 et de 1 en entrée et qui donne un mot composé de 0 et de 1 en sortie ne peuvent pas être calculées par un algorithme (et savoir pourquoi)</li>
+  <li>qu’importe le jeu fini d’instructions utilisé pour le calcul (du moment que les instructions peuvent être décrite de façon finie) on ne pourra pas calculer plus de choses qu’en utilisant le jeu d’instructions défini dans la partie <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.html">pseudo-code</a>
+</li>
+</ul>
+
 <h2 id="algorithmes-et-pseudo-code">algorithmes et pseudo-code</h2>
 
 <p>Un algorithme, <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/algorithmes.html#algorithme">on l’a vu</a>, c’est :</p>
@@ -175,7 +185,7 @@ le veut, du moment qu’ils ne soient pas infini.</p>
   <p>Il ne peut y avoir plus d’algorithmes que de chaine de caractères écrites en Français.</p>
 </blockquote>
 
-<p>Ça en fait un sacré paquet. Tentons d’être un peu plus précis. Comme chaque chaîne de caractères peut être associée à un entier en utilisant le le code <a href="https://fr.wikipedia.org/wiki/UTF-8">utf-8</a> qui représente le codage de <a href="https://en.wikipedia.org/wiki/List_of_Unicode_characters">tous les caractères possible</a> :</p>
+<p>Ça en fait un sacré paquet. Tentons d’être un peu plus précis. Comme chaque chaîne de caractères peut être associée à un entier en concaténant le code <a href="https://fr.wikipedia.org/wiki/Unicode">unicode</a> associé à chaque caractère de la description de l’algorithme et des instructions utilisées (cela ne fait pas beaucoup de caractères différents si on écrit tout nos algorithmes en n’utilisant que les caracTères qui nous permettent d’écrire en Français) :</p>
 
 <blockquote class="note">
   <p>Il ne peut y avoir plus d’algorithmes que de nombres entiers.</p>
