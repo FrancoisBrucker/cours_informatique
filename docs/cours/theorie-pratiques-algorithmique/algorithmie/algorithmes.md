@@ -34,19 +34,19 @@ On a utilisé un algorithme pour comprendre ce qu'est un algorithme :
   3. pour chaque *mot* non compris dans *définition* :
      1. *définition_petit_robert(mot)*
 
-Règles de construction d'un algorithme que j'ai utilisé :
+C'est un algorithme tout à fait valable. Ce n'est pas du python, mais c'est :
+
+* compréhensible
+* chaque instruction (lire une définition, afficher à l'écran, ...) peut être caractérisée par un petit texte en français
+* notre algorithme s'arrête bien à un moment (au pire une fois que l'on a passé en revu tous les mots du dictionnaire)
+
+Règles de construction de l'algorithme utilisé :
 
 * **des** paramètres en entrée mais **une** sortie (qui peut être une structure composée comme une liste ou un dictionnaire).
 * le **retour** d'un algorithme est la dernière instruction qu'il fait, en rendant la sortie (ici, il ne rend rien)
 * une description de ce qu'il fait
 * L'exécution d'un algorithme est signifié par son nom suivie de parenthèses contenant ses paramètres
 * afficher à l'écran n'est **PAS** un retour de fonction/méthode/algorithme.
-
-C'est un algorithme tout à fait valable. Ce n'est pas du python, mais c'est :
-
-* compréhensible
-* chaque instruction (lire une définition, afficher à l'écran, ...) peut être caractérisée par un petit texte en français
-* notre algorithme s'arrête bien à un moment (au pire une fois que l'on a passé en revu tous les mots du dictionnaire)
 
 Donald Knuth (1938-) liste, comme prérequis d'un algorithme, [cinq propriétés](https://fr.wikipedia.org/wiki/Algorithme) :
 

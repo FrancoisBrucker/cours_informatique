@@ -124,7 +124,7 @@ On peut donc reformuler notre assertion précédente en unifiant les paramètres
 
 C'est bien mieux mais on sépare encore les algorithmes par leur nombre de paramètres. Allons plus loin.
 
-### fonctions à un paramètre entiers {#fonction-un-entier}
+### fonctions à un paramètre entier {#fonction-un-entier}
 
 Démontrons que tout élément de $\mathbb{N}^p$ peut être représenté par un entier. Pour ce faire on montrera que $\mathbb{N}^p$ est en bijection avec $\mathbb{N}$ quelque soit $p$.
 
