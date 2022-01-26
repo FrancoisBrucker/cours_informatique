@@ -125,6 +125,7 @@ def syracuse(n):
 ```
 
 L'algorithme est très simple : à partir d'un entier $n$, il le divise par 2 s'il est pair ou le multiplie par 3 et ajoute 1 s'il est impair et recommence tant que ce nombre est strictement plus grand que 1.
+
 > Testez chez vous pour plusieurs nombres, c'est assez bluffant.
 >
 > Affichez également la suite de nombre ou la représenter graphiquement pour voir l'évolution de votre nombre d'entrée jusqu'à 1.
@@ -200,7 +201,7 @@ Beaucoup, beaucoup, beaucoup de fonctions sont calculables, il suffit d'exhiber 
 
 ```text
 def f(n):
-    si il existe n 5 consécutifs dans les décimals de π:
+    si il existe n "5" consécutifs dans les décimals de π:
         rend 1
     sinon:
         rend 0
@@ -211,7 +212,7 @@ La fonction ci-dessus est :
 * soit constante et $f(n) = 1$ pour tout $n$ (ce qui est calculable)
 * soit il existe $n_0$ tel que pour tout $n \geq n_0$ ont ait $f(n) = 0$ et avant $f(n) = 1$ ($f$ revient à faire un test sur $n$, ce qui est aussi calculable).
 
-Elle est donc calculable, mais on ne sait pas quel algorithme c'est (cas on ne sais pas si π est [un nombre univers](https://fr.wikipedia.org/wiki/Nombre_univers) ou pas]).
+Elle est donc calculable, mais on ne sait pas quel algorithme c'est (cas on ne sais pas si π est [un nombre univers](https://fr.wikipedia.org/wiki/Nombre_univers)).
 
 Enfin, finissons cette partie en remarquant que décidabilité et calculabilité sont les deux faces d'une même pièce en remarquant que :
 
@@ -237,7 +238,7 @@ Réciproquement, soit $M$ un décideur sur $\\{ (a, f(a) \mid a \in \\{0, 1\\}^\
 
 ### fonctions non calculables
 
-Comme il suffit d'exhiber un algorithme pour montrer qu'une fonction est calculable,  presque toutes les fonctions auxquelles on peut penser le sont. Pour trouver des fonctions non calculables, il faut chercher des exemples tordus, le plus plus souvent en lien avec le problème de l'arrêt de la machine. 
+Comme il suffit d'exhiber un algorithme pour montrer qu'une fonction est calculable,  presque toutes les fonctions auxquelles on peut penser le sont. Pour trouver des fonctions non calculables, il faut chercher des exemples tordus, le plus plus souvent en lien avec le problème de l'arrêt de la machine.
 
 Nous en donnons une ici, la plus célèbre : [les castors affairés](https://fr.wikipedia.org/wiki/Castor_affair%C3%A9) (*busy beavers* dans la verion originale):
 
@@ -284,7 +285,7 @@ efface l'entrée du ruban
 
 i = 0
 tant que i < 2 * β(n):
-    écrit 1 sur le ruban et décale toi à droite
+    écrire 1 sur le ruban et décaler le curseur un cran à droite
     i = i + 1
 ```
 
@@ -301,7 +302,7 @@ def M():
 
 Cette machine enchaîne $M_n$ à $F$. Pour la sorite de $M_n()$ soit l'entrée de $F$, il faut décaler le ruban pour le placer jusqu'au premier 1 (ceci se fait avec une machine à 3 états). Cette machine à un nombre d'états égal au nombre d'état de $M_n$ plus le nombre d'état de la machine qui déplace le ruban (3) plus le nombre d'état de $F$ (disons $k$) moins les liants entre les machines (les états finaux des machines intermédiaires sont les états initiaux des machines suivantes), c'est à dire 2. Au final, la machine $M$ à : $n + 3 + k - 2 = n + k +1$ états et est telle que $\rho(M) = \beta(2n)$.
 
-On en déduit l'inégalité : $\beta(n + k + 1) \geq \beta(2n)$ et comme $\beta$ est strictement croissante : $2n \leq n + k + 1$ pour tout $n > 0$ ce qui est impossible.
+On en déduit l'inégalité : $\beta(n + k + 1) \geq \beta(2n)$ et comme $\beta$ est strictement croissante on a l'inégalité : $2n \leq n + k + 1$ pour tout $n > 0$ ce qui est impossible.
 
 {% enddetails %}
 
@@ -328,7 +329,7 @@ savoir si un algorithme calcule un nombre est non décidable.
 
 ## théorème de Rice
 
-plein d'algo font la même chose. et il est très difficile (ie indécidable) se savoir a priori ce qu'il fait (il faut analyser chaque algorithme particulièrement, cela ne peut pas être dans les paramètres)
+Plein d'algo font la même chose. et il est très difficile (ie indécidable) se savoir a priori ce qu'il fait (il faut analyser chaque algorithme particulièrement, cela ne peut pas être dans les paramètres)
 <https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Rice>
 
 
@@ -347,11 +348,23 @@ On a vu qu'il existe des problèmes qu'on ne peut pas résoudre avec un algorith
 >ex de ackerman. Impossible de connaitre la valeur sans exécuter l'algo.
 {: .tbd}
 
-## logique, démonstrations mathématiques et calculabilité
+### nombres calculables
 
-<https://en.wikipedia.org/wiki/List_of_undecidable_problems>
+tous les entiers sont calculables. C'est les réels qui peuvnet ne pas l'être (ou son approximables), ou même certains entiers bien tordus.
 
-démonstration = pseudo-code
+> nombre omega non calculable
+> pi oui
+> de plus en plus proche par etapes = calculer les décimales.
+{:.tbd}
+
+<https://en.wikipedia.org/wiki/Computable_number>
+
+* que peut-on calculer ?
+* de pseudo code à calcul de f(N) -> N
+
+pour l'instant tous les pseudo-code qu'on a écrit s'arrêtent tout le temps. Mais celui là ? syracuse. On ne sais pas.
+
+savoir si un algorithme calcule un nombre est non décidable.
 
 ## fonctions calculables d'intérêt
 
@@ -400,6 +413,7 @@ Complexité : nombre d'opération au moins supérieure à son résultat puisque 
 
 poly de Pascal.
 
+<https://en.wikipedia.org/wiki/List_of_undecidable_problems>
 <https://plato.stanford.edu/entries/church-turing/>
 <http://pageperso.lif.univ-mrs.fr/~kevin.perrot/documents/2016/calculabilite/Cours_16.pdf>
 <https://www.cs.odu.edu/~zeil/cs390/latest/Public/turing-complete/index.html>
