@@ -215,7 +215,7 @@ Elle est donc calculable, mais on ne sait pas quel algorithme c'est (cas on ne s
 
 Enfin, finissons cette partie en remarquant que décidabilité et calculabilité sont les deux faces d'une même pièce en remarquant que :
 
-> Si une fonction $f: \mathcal{F} \rightarrow \\{0, 1\\}^\star$ est calculable alors $\\{ (a, f(a) \mid a \in \mathcal{F}\\}$ est reconnaissable.
+> Si une fonction $f: \mathcal{F} \rightarrow \\{0, 1\\}^\star$ est **calculable** alors $\\{ (a, f(a) \mid a \in \mathcal{F}\\}$ est **reconnaissable**.
 {: .note}
 {% details preuve %}
 
@@ -225,7 +225,7 @@ Si $f: \mathcal{F} \rightarrow \\{0, 1\\}^\star$ est calculable, la machine de T
 
 Et si $f$ est défini sur tout mot (ce qui est très souvent le cas) on a même :
 
-> Une fonction $f: \\{0, 1\\}^\star \rightarrow \\{0, 1\\}^\star$ est calculable si et seulement si $\\{ (a, f(a) \mid a \in \\{0, 1\\}^\star\\}$ est décidable.
+> Une fonction $f: \\{0, 1\\}^\star \rightarrow \\{0, 1\\}^\star$ est **calculable** si et seulement si $\\{ (a, f(a) \mid a \in \\{0, 1\\}^\star\\}$ est **décidable**.
 {: .note}
 {% details preuve %}
 
@@ -237,11 +237,9 @@ Réciproquement, soit $M$ un décideur sur $\\{ (a, f(a) \mid a \in \\{0, 1\\}^\
 
 ### fonctions non calculables
 
-Comme il suffit d'exhiber un algorithme pour montrer qu'une fonction est calculable,  presque toutes les fonctions auxquelles on peut penser le sont. Pour trouver des fonctions non calculables, il faut chercher des exemples tordus, le plus plus souvent en lien avec le problème de l'arrêt de la machine.
+Comme il suffit d'exhiber un algorithme pour montrer qu'une fonction est calculable,  presque toutes les fonctions auxquelles on peut penser le sont. Pour trouver des fonctions non calculables, il faut chercher des exemples tordus, le plus plus souvent en lien avec le problème de l'arrêt de la machine. 
 
-#### busy beavers
-
-L'exemple le plus classique des fonctions non calculables est le calcul des [castors affairés](https://fr.wikipedia.org/wiki/Castor_affair%C3%A9) (*busy beavers* dans la verion originale):
+Nous en donnons une ici, la plus célèbre : [les castors affairés](https://fr.wikipedia.org/wiki/Castor_affair%C3%A9) (*busy beavers* dans la verion originale):
 
 > On définit le **score** $\rho(M)$ d'une machine de Turing $M$ acceptant le mot vide comme étant le nombre de $1$ de $M()$.
 >
@@ -254,6 +252,7 @@ La fonction est bien définie pour tout $n>0$ puisqu'il n'y a qu'un nombre fini 
 > $\beta(n) \geq n - 1$ pour tout $n >0$
 {: .note}
 {% details  preuve %}
+
 Considérons la machine $M_n$ à $n$ états $(q_0, \dots, q_{n-1}) telle que :
 
 * $q_0$ est l'état initial
@@ -272,7 +271,7 @@ Soit $B_n$ une machine à $n$ états telle que $\rho(B_n) = \beta(n)$. La machin
 
 Ce qui nous permet de prouver que :
 
-> $\beta$ est non calculable.
+> La fonction $\beta$ est non calculable.
 {: .note}
 {% details  preuve %}
 
@@ -306,7 +305,28 @@ On en déduit l'inégalité : $\beta(n + k + 1) \geq \beta(2n)$ et comme $\beta$
 
 {% enddetails %}
 
-#### théorème de Rice
+> L'[article](https://www.gwern.net/docs/cs/1962-rado.pdf) de Tibor Radò où les busy beavers sont définis.
+
+### nombres calculables
+
+Tous les entiers sont calculables. Un réel est calculable si on peut construite 
+
+C'est les réels qui peuvnet ne pas l'être (ou son approximables), ou même certains entiers bien tordus.
+
+> pi oui
+
+de plus en plus proche par etapes = calculer les décimales.
+
+<https://en.wikipedia.org/wiki/Computable_number>
+
+* que peut-on calculer ?
+* de pseudo code à calcul de f(N) -> N
+
+pour l'instant tous les pseudo-code qu'on a écrit s'arrêtent tout le temps. Mais celui là ? syracuse. On ne sais pas.
+
+savoir si un algorithme calcule un nombre est non décidable.
+
+## théorème de Rice
 
 plein d'algo font la même chose. et il est très difficile (ie indécidable) se savoir a priori ce qu'il fait (il faut analyser chaque algorithme particulièrement, cela ne peut pas être dans les paramètres)
 <https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Rice>
@@ -327,25 +347,7 @@ On a vu qu'il existe des problèmes qu'on ne peut pas résoudre avec un algorith
 >ex de ackerman. Impossible de connaitre la valeur sans exécuter l'algo.
 {: .tbd}
 
-### nombres calculables
-
-tous les entiers sont calculables. C'est les réels qui peuvnet ne pas l'être (ou son approximables), ou même certains entiers bien tordus.
-
-> pi oui
-
-de plus en plus proche par etapes = calculer les décimales.
-
-<https://en.wikipedia.org/wiki/Computable_number>
-
-* que peut-on calculer ?
-* de pseudo code à calcul de f(N) -> N
-
-pour l'instant tous les pseudo-code qu'on a écrit s'arrêtent tout le temps. Mais celui là ? syracuse. On ne sais pas.
-
-savoir si un algorithme calcule un nombre est non décidable.
-
 ## logique, démonstrations mathématiques et calculabilité
-
 
 <https://en.wikipedia.org/wiki/List_of_undecidable_problems>
 
