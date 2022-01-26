@@ -12,13 +12,13 @@
 <meta property="og:locale" content="en_US">
 <meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille.">
 <meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille.">
-<link rel="canonical" href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/calculabilite.html">
-<meta property="og:url" content="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/calculabilite.html">
+<link rel="canonical" href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/decidabilite_calculabilite.html">
+<meta property="og:url" content="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/decidabilite_calculabilite.html">
 <meta property="og:site_name" content="cours d’informatique">
 <meta name="twitter:card" content="summary">
 <meta property="twitter:title" content="Décidabilité et calculabilité">
 <script type="application/ld+json">
-{"description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/calculabilite.html","headline":"Décidabilité et calculabilité","@context":"https://schema.org"}</script>
+{"description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/decidabilite_calculabilite.html","headline":"Décidabilité et calculabilité","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
@@ -59,13 +59,18 @@
 
   <div class="post-content">
     <blockquote class="chemin">
-  <p><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/">Théorie et pratiques algorithmique</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/">théorie</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/calculabilite.html">décidabilité et calculabilité</a></p>
+  <p><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/">Théorie et pratiques algorithmique</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/">théorie</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/decidabilite_calculabilite.html">décidabilité et calculabilité</a></p>
 
   <p>prérequis :</p>
 
   <ul>
     <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/machine-turing.html">machine de Turing</a></li>
   </ul>
+</blockquote>
+
+<blockquote class="tbd">
+  <p>voir si on peut supprimer la machine de turing du cours
+dire qu’on utilisera des machines que si on en a besoin et que sinon on décrira tout sous la forme d’un pseudo-code (qui est de toute façon équivalent)</p>
 </blockquote>
 
 <p>La machine de Turing est un modèle permettant de rendre compte d’un algorithme. Soit $M$ une machine de Turing et considérons son exécution pour l’entrée $\mu$. La machine va alors soit :</p>
@@ -93,16 +98,15 @@ Ceci, <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie
 
 <p>Comme l’utilisation d’un machine de Turing est équivalente à l’utilisation d’un <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.html">pseudo-code</a> nous décrirons nos machines en python on en pseudo-code, pour plus d’accessibilité. Enfin, nous ne nous contenterons pas de machines à 1 seule entrée, nous prendrons autant de paramètres que nécessaire pour rendre l’algorithme facile à comprendre. Ceci se fait bien sur <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/machine-turing.html#plusieurs-rubans">sans perte de généralité</a>.</p>
 
-<h2 id="décidabilité">décidabilité</h2>
-
-<p>La décidabilité dans le cadre des machines de Turing couvre deux sous-problèmes :</p>
+<p>Ce qui faut retenir de cette partie :</p>
 
 <ul>
-  <li>savoir si, pour un ensemble de mots $L$, il existe une machine de Turing $M$ telle que $\mathcal{L}(M) = L$ (la machine s’arrête exactement sur les mots de $L$)</li>
-  <li>savoir si, pour une machine de Turing $M$ donnée et une entrée $E$, $E \in \mathcal{L}(M)$ (est-ce que la machine va s’arrêter avec l’entrée $E$)</li>
+  <li>un décideur est un algorithme spécifique à un problème de décision donné. Il répond oui si l’entrée admet une réponse au problème et non sinon</li>
+  <li>savoir si un algorithme va s’arrêter est un problème indécidable</li>
+  <li>il existe des fonctions ou des nombres qu’on ne peut pas calculer avec un algorithme (même beaucoup) mais ceux qu’on utilise couramment le sont</li>
 </ul>
 
-<p>Nous utiliserons une machine spéciale, appelée <em>décideur</em> pour nous aider à formaliser ces deux problèmes :</p>
+<h2 id="décidabilité">décidabilité</h2>
 
 <p>Commençons par définir un <em>décideur</em> :</p>
 
@@ -110,16 +114,38 @@ Ceci, <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie
   <p>Un <strong>décideur</strong> est une machine de Turing qui accepte tous les mots et dont la sortie est soit $1$ (on dit alors que la sortie est <em>Vraie</em>) soit $0$ (la sortie est <em>fausse</em>).</p>
 </blockquote>
 
-<h3 id="langage-décidable">langage décidable</h3>
+<p>On associe un décideur à un <em>problème de décision</em>, c’est à dire un problème qui correspond à une question qui ne peut avoir que deux réponses <em>vrai</em> ou <em>faux</em> selon l’entrée donnée. Par exemple le problème suivant :</p>
 
-<p>Savoir si un ensemble de mots $L$ est le langage d’une machine se formalise ainsi :</p>
+<ul>
+  <li>nom : premier</li>
+  <li>entrée : un nombre $n$</li>
+  <li>question : $n$ est-il un nombre premier ?</li>
+</ul>
+
+<p>Le problème de décision <em>premier</em> admet un décideur (il suffit de tester tous les entier plus petit que $n$ pour voir si le reste de la division entière vaut 0), mais ce n’est pas de tous les les problèmes. Par exemple le problème suivant n’admet pas de décideur (on va le démontrer), ce problème est indécidable :</p>
+
+<ul>
+  <li>nom : arrêt</li>
+  <li>entrées : une machine de Turing M, et une entrée $E$</li>
+  <li>question : La machine de Turing $M$ accepte-t-elle $E$ ?</li>
+</ul>
+
+<p>La décidabilité est donc le fait de savoir si on peut résoudre un problème de décision par un algorithme. Dans le cadre des machines de Turing cela se traduit par savoir si, pour un ensemble de mots $L$, il existe une machine de Turing $M$ telle que $\mathcal{L}(M) = L$ (la machine s’arrête exactement sur les mots de $L$)</p>
+
+<p>On finira cette partie en montrant deux problèmes de décision d’interêts le premier historique et le second théorique.</p>
+
+<h3 id="langage-reconnaissables-et-décidable">langage reconnaissables et décidable</h3>
+
+<p>Pour un problème de décision donné, soit $L$ l’ensemble des mots en entrée pour lesquels il va répondre <em>vrai</em>. S’il existe un pseudo-code pour le résoudre, c’est que $L$ doit être le langage d’une machine de Turing.</p>
+
+<p>Cela se formalise ainsi :</p>
 
 <blockquote class="note">
   <p>Un ensemble de mots $L$ est <strong>reconnaissable</strong> s’il existe une machine de Turing $M$ d’alphabet d’entrée $\Sigma$ tel que $L = \mathcal{L}(M)$</p>
 </blockquote>
 
-<details><summary>Par exemple, l’ensemble des palindromes $L$ est reconnaissable.</summary><div>
-<p>On utilise le fait qu’on mot $m$ est un palindrome si :</p>
+<details><summary>Par exemple, le problème de décision de savoir si un mot donné est un palindrome est un problème reconnaissable.</summary><div>
+<p>Soit $L$ l’ensemble des palindromes. On utilise le fait qu’on mot $m$ est un palindrome si :</p>
 
 <ul>
   <li>le mot vide est un palindrome</li>
@@ -151,19 +177,25 @@ Ceci, <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie
 
 </div></details>
 
-<p>La machine précédente (dans la partie initialement cachée) qui prouve que l’ensemble des palindromes est reconnaissable fait même plus, si le mot n’est pas un palindrome elle rend faux : cette machine est un décideur pour l’ensemble des palindromes. Reconnaitre si un mot est un palindrome est ainsi <em>décidable</em> :</p>
+<p>La machine précédente (dans la partie initialement cachée) qui prouve que l’ensemble des palindromes est reconnaissable fait même plus, si le mot n’est pas un palindrome elle rend faux : cette machine est un décideur pour l’ensemble des palindromes. Le problème de décision de savoir si un mot donné est un palindrome est ainsi <em>décidable</em></p>
 
 <blockquote class="note">
   <p>Un ensemble de mots $L$ est <strong>décidable</strong> s’il existe un décideur qui rend $1$ si l’entrée est dans $L$ et $0$ sinon.</p>
 </blockquote>
 
-<p>La notion de <em>décidabilité</em> est centrale en informatique théorique puisqu’elle permet de rendre compte des problèmes que peut résoudre un ordinateur :</p>
+<p>Pour le problème de décision <em>premier</em>, le langage $L$ serait l’ensemble des entiers premiers.</p>
+
+<p>Notez que <em>décidable</em> est bien plus fort que <em>reconnaissable</em>. En effet, si un langage est juste reconnaissable on ne saura pas si l’exécution de la machine avec une entrée donnée met juste longtemps à répondre oui ou si le mot n’est pas accepté et donc que la machine boucle indéfiniment.</p>
+
+<p>Plus généralement, on a  :</p>
 
 <blockquote class="note">
   <p>Savoir s’il existe un algorithme permettant de répondre <em>Vrai</em> si un élément $A$ à la propriété $P$ et <em>faux</em> sinon, est équivalent à savoir si l’ensemble des éléments $A$ ayant la propriété $P$ est décidable.</p>
 </blockquote>
 
-<p>Prenons par exemple le problème suivant : Soit $P(X)$ un <a href="https://fr.wikipedia.org/wiki/Polyn%C3%B4me">polynôme</a> à coefficients dans $\mathbb{Z}$. Possède-t-il une <a href="https://fr.wikipedia.org/wiki/Racine_d%27un_polyn%C3%B4me">racine</a> dans $\mathbb{N}$ (un entier $a$ tel que $P(a) = 0$) ?</p>
+<h3 id="exemple-des-polynômes-à-coefficients-dans-mathbbz">exemple des polynômes à coefficients dans $\mathbb{Z}$</h3>
+
+<p>Soit le problème de décision suivant : Soit $P(X)$ un <a href="https://fr.wikipedia.org/wiki/Polyn%C3%B4me">polynôme</a> à coefficients dans $\mathbb{Z}$. Possède-t-il une <a href="https://fr.wikipedia.org/wiki/Racine_d%27un_polyn%C3%B4me">racine</a> dans $\mathbb{N}$ (un entier $a$ tel que $P(a) = 0$) ?</p>
 
 <details><summary>ce problème est reconnaissable</summary><div>
 <p>On peut facilement créer un algorithme qui, à partir d’un polynôme $P(x)$ à coefficients dans $\mathbb{Z}$ et d’un entier $a$ calcule $P(a)$ (on peut donc aussi fabriquer une machine de Turing qui le fait).</p>
@@ -177,8 +209,6 @@ Ceci, <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie
 
 </div></details>
 
-<p>Notez que <em>décidable</em> est bien plus fort que <em>reconnaissable</em>. En effet, si un langage est juste reconnaissable on ne saura pas si l’exécution de la machine avec une entrée donnée met juste longtemps à répondre oui ou si le mot n’est pas accepté et donc que la machine boucle indéfiniment.</p>
-
 <p>Il existe bien sûr des langages qui sont reconnaissables et non décidables, par exemple une généralisation du problème précédent :</p>
 
 <blockquote class="note">
@@ -191,7 +221,7 @@ Ceci, <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie
   <p>Ce cas est historiquement important car il correspond au <a href="https://fr.wikipedia.org/wiki/Dixi%C3%A8me_probl%C3%A8me_de_Hilbert">dixième problème de Hilbert</a>. Il a été prouvé indécidable par Matiiassevitch en 1970 en montrant qu’on ne pouvait pas borner les racine d’un polynôme à plusieurs variables.</p>
 </blockquote>
 
-<h3 id="arrêt-dun-algorithme">arrêt d’un algorithme</h3>
+<h3 id="arret">arrêt d’un algorithme</h3>
 
 <p>Savoir si un algorithme (ou une machine de Turing puisque c’est équivalent) va s’arrêter, ou pas, sur une entrée est un problème compliqué. Prenez par exemple l’<a href="https://fr.wikipedia.org/wiki/Conjecture_de_Syracuse">algorithme suivant</a> :</p>
 
@@ -218,7 +248,7 @@ Ceci, <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie
 <p>De façon plus générale :</p>
 
 <blockquote class="note">
-  <p><a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_l%27arr%C3%AAt">Le problème</a> de savoir si une machine de Turing $M$ va s’arrêter sur l’entrée $E$ est un problème indécidable.</p>
+  <p><a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_l%27arr%C3%AAt">Le problème</a> de décision de savoir si une machine de Turing $M$ va s’arrêter sur l’entrée $E$ est indécidable.</p>
 </blockquote>
 <details><summary>preuve</summary><div>
 <p>On doit la preuve à Turing lui-même.</p>
@@ -334,7 +364,7 @@ Ceci, <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie
 
 <h3 id="fonctions-non-calculables">fonctions non calculables</h3>
 
-<p>Comme il suffit d’exhiber un algorithme pour montrer qu’une fonction est calculable,  presque toutes les fonctions auxquelles on peut penser le sont. Pour trouver des fonctions non calculables, il faut chercher des exemples tordus, le plus plus souvent en lien avec le problème de l’arrêt de la machine.</p>
+<p>Comme il suffit d’exhiber un algorithme pour montrer qu’une fonction est calculable, presque toutes les fonctions auxquelles on peut penser le sont. Pour trouver des fonctions non calculables, il faut chercher des exemples tordus, le plus plus souvent en lien avec le problème de l’arrêt de la machine.</p>
 
 <p>Nous en donnons une ici, la plus célèbre : <a href="https://fr.wikipedia.org/wiki/Castor_affair%C3%A9">les castors affairés</a> (<em>busy beavers</em> dans la verion originale):</p>
 
@@ -408,119 +438,54 @@ tant que i &lt; 2 * β(n):
   <p>L’<a href="https://www.gwern.net/docs/cs/1962-rado.pdf">article</a> de Tibor Radò où les busy beavers sont définis.</p>
 </blockquote>
 
-<h3 id="nombres-calculables">nombres calculables</h3>
+<h3 id="réels-calculables">réels calculables</h3>
 
-<p>Tous les entiers sont calculables. Un réel est calculable si on peut construite</p>
+<p>Tous les entiers sont calculables, il suffit de créer une machine qui écrit l’entier désiré sur le ruban. Comme les réels ont une notation décimale avec ne infinité de chiffre, on ne peut de toute façon  pas les écrire sur le ruban en temps fini. Certains d’entre eux sont cependant approchable d’aussi prêt que l’on veut à partir d’une machine de Turing :</p>
 
-<p>C’est les réels qui peuvnet ne pas l’être (ou son approximables), ou même certains entiers bien tordus.</p>
+<blockquote class="note">
+  <p>Un réel $x$ est calculable s’il existe une machine de Turing $X$ à un paramètre tel que :</p>
 
-<blockquote>
-  <p>pi oui</p>
+  <ul>
+    <li>$X(0)$ rend la partie entière de $x$</li>
+    <li>$X(i)$ rend la $i$-ème décimale de $x$, pour tout $i &gt; 0$</li>
+  </ul>
+
 </blockquote>
 
-<p>de plus en plus proche par etapes = calculer les décimales.</p>
+<p>Il existe d’autres définitions équivalentes, voir <a href="https://fr.wikipedia.org/wiki/Nombre_r%C3%A9el_calculable">cette page wikipédia</a>, des nombres calculable. Un cas particulier important est lorsque le nombre est la limite d’une suite $u_n$ :</p>
 
-<p><a href="https://en.wikipedia.org/wiki/Computable_number">https://en.wikipedia.org/wiki/Computable_number</a></p>
+<blockquote class="note">
+  <p>Si $x$ est la limite d’une suite $(u_n)_{n \geq 0}$ et qu’il existe une machine de Turing $M$ telle que $M(n) = u_n$ pour tout $n$, alors $x$ est calculable.</p>
+</blockquote>
+<details><summary>preuve</summary><div>
+<p>Comme $u_n$ converge vers $x$, pour tout $i&gt; 0$, il existe $N_i$ tel que $\mid x - u_n\mid &lt; 10^{-i}$ pour tout $n &gt; N_i$. Si l’on veut calculer la $i$-ème décimale de $x$, Il suffit de calculer $u_{N_{i}}$ et de prendre sa $i$-ème décimale</p>
 
-<ul>
-  <li>que peut-on calculer ?</li>
-  <li>de pseudo code à calcul de f(N) -&gt; N</li>
-</ul>
+</div></details>
 
-<p>pour l’instant tous les pseudo-code qu’on a écrit s’arrêtent tout le temps. Mais celui là ? syracuse. On ne sais pas.</p>
+<p>Par exemple, $\pi$ est calculable en utilisant <a href="https://fr.wikipedia.org/wiki/Formule_de_Leibniz#S%C3%A9rie_altern%C3%A9e">la série de Leibniz de $\pi$</a>. De la même manière, on peut calculer $cos(x)$, $sin(x) ou encore $\sqrt{x}$ pour tout $x$ calculable grâce à leur <a href="https://fr.wikipedia.org/wiki/Formulaire_de_d%C3%A9veloppements_en_s%C3%A9ries">développement en séries entières</a>.</p>
 
-<p>savoir si un algorithme calcule un nombre est non décidable.</p>
-
-<h2 id="théorème-de-rice">théorème de Rice</h2>
-
-<p>Plein d’algo font la même chose. et il est très difficile (ie indécidable) se savoir a priori ce qu’il fait (il faut analyser chaque algorithme particulièrement, cela ne peut pas être dans les paramètres)
-<a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Rice">https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Rice</a></p>
-
-<p>l’ensemble des algos calculant des nombres est indécidable</p>
-
-<p><a href="https://en.wikipedia.org/wiki/Computable_function">https://en.wikipedia.org/wiki/Computable_function</a>
-comme reconnaissable puisque (E, F(E)) est reconnaissable si la fonction est calculable</p>
-
-<p>Ces deux problème ne sont pas fondamentalement différent d’un point de vue théorique puisque
-réponse attendue  La calculabilité cherche 
-On a vu qu’il existe des problèmes qu’on ne peut pas résoudre avec un algorithme</p>
-
-<blockquote class="tbd">
-  <p>ex de ackerman. Impossible de connaitre la valeur sans exécuter l’algo.</p>
+<blockquote class="note">
+  <p>Si l’on pense à un réel calculé à partir d’une fonction mathématique usuelle, il y a toute les chance qu’il soit calculable</p>
 </blockquote>
 
-<h3 id="nombres-calculables-1">nombres calculables</h3>
+<h3 id="réels-non-calculables">réels non calculables</h3>
 
-<p>tous les entiers sont calculables. C’est les réels qui peuvnet ne pas l’être (ou son approximables), ou même certains entiers bien tordus.</p>
+<p>On l’<a href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/calcul.html#r-et-n">a démontré</a>, il y a beaucoup plus de réels que de nombres entiers et il y a au plus autant d’algorithmes différents que de nombres entiers. Il y a donc de très nombreux réels qu’on ne peut pas calculer, et beaucoup plus qu’on ne peux en calculer.</p>
 
-<blockquote class="tbd">
-  <p>nombre omega non calculable
-pi oui
-de plus en plus proche par etapes = calculer les décimales.</p>
-</blockquote>
+<p>Il est cependant dur d’en trouver un car tout ceux auxquels on peut penser sont soit des limites de suites, soit combinaison de fonctions calculables… Les exemples de nombres non calculables sont donc tordus.</p>
 
-<p><a href="https://en.wikipedia.org/wiki/Computable_number">https://en.wikipedia.org/wiki/Computable_number</a></p>
+<p>Nous allons en montrer un nombre non calculable, le <a href="https://fr.wikipedia.org/wiki/Om%C3%A9ga_de_Chaitin#Le_%C2%AB_nombre_de_Turing_%C2%BB">nombre de Turing</a>, dérivé du célèbre<a href="https://fr.wikipedia.org/wiki/Om%C3%A9ga_de_Chaitin">nombre oméga de Chaitin</a>, lui aussi non dénombrable.</p>
 
-<ul>
-  <li>que peut-on calculer ?</li>
-  <li>de pseudo code à calcul de f(N) -&gt; N</li>
-</ul>
+<p>Comme il n’existe qu’un nombre dénombrable de machine de Turing (moins ou égal aux nombres d’entiers), on peut les ranger selon un ordre : $M_1$ première machine de Turing, $M_2$ deuxième machine de Turing, etc.</p>
 
-<p>pour l’instant tous les pseudo-code qu’on a écrit s’arrêtent tout le temps. Mais celui là ? syracuse. On ne sais pas.</p>
-
-<p>savoir si un algorithme calcule un nombre est non décidable.</p>
-
-<h2 id="fonctions-calculables-dintérêt">fonctions calculables d’intérêt</h2>
-
-<h3 id="takeuchi">takeuchi</h3>
-
-<p>scalculable, ne peut pas dire simple. Il existe plein d’algorithme pour calculer la memem chose</p>
-
-<h3 id="fonction-dackermann">fonction d’Ackermann</h3>
-
-<blockquote class="tbd">
-  <p>for et while qui se terminent sont calculables. Mais c’est pas les seules.
-<a href="https://fr.wikipedia.org/wiki/Fonction_r%C3%A9cursive_primitive">https://fr.wikipedia.org/wiki/Fonction_r%C3%A9cursive_primitive</a></p>
-</blockquote>
-
-<p>Souvent, savoir si un algorithme va finir est trivial. Mais qu’en est-il de la <a href="https://fr.wikipedia.org/wiki/Fonction_d%27Ackermann">fonction d’Ackermann</a>, très importante en informatique théorique ?</p>
-
-<p>En gros, c’est une fonction qui ne peut être décrite que par un algorithme. Il n’existe pas de fonction qui la calcule. Elle se définit de la manière suivante, pour tous entiers m et n positifs :</p>
+<p>Le nombre de Turing $T$ est un réel entre 0 et 1 tel que sa $i$-ème décimal soit :</p>
 
 <ul>
-  <li>A(m, n) = n + 1 si m = 0</li>
-  <li>A(m - 1, 1) si n = 0</li>
-  <li>A(m - 1, A(m, n - 1)) sinon.</li>
+  <li>égale à 1 si la machine $M_i$ s’arrête pour une entrée vide</li>
+  <li>égale à 0 si la machine $M_i$ se s’arrête pas pour une entrée vide</li>
 </ul>
 
-<p>Cette fonction s’arrête bien un jour.</p>
-
-<p>Pour chaque appel récursif de la fonction d’ackerman, soit m, soit $n$ est strictement plus petit dans la fonction appelée que dans la fonction appelante. On arrivera donc toujours à $m = 0$ qui stoppera la récursion ou $n = 0$ qui fera baisser la valeur de $m$.</p>
-
-<p>Pour calculer Ack(2, 3) par exemple, on a les récurrences suivantes :</p>
-
-<ul>
-  <li>Ack(2, 3) = Ack(1, Ack(2, 2))</li>
-  <li>Ack(2, 2) = Ack(1, Ack(2, 1))</li>
-  <li>Ack(2, 1) = Ack(1, Ack(2, 0))</li>
-  <li>Ack(2, 0) = Ack(1, 1)</li>
-  <li>Ack(1, 1) = Ack(0, Ack(1, 0))</li>
-  <li>Ack(1, 0) = Ack(0, 1) = 2</li>
-  <li>puis on remonte d’un cran et les récursions recommencent…</li>
-</ul>
-
-<p>Au final on trouve Ack(2, 3) = 9. La fonction croît très très vite. Par exemple Ack(5, 0) = Ack (4, 1) = 65533 et Ack(4, 2) = $2^{65536} - 3$.</p>
-
-<p>Complexité : nombre d’opération au moins supérieure à son résultat puisque que l’on ne fait qu’ajouter 1 à n comme calcul et les valeurs de n sont modifiées de +1 ou -1.</p>
-
-<h2 id="refs">refs</h2>
-
-<p>poly de Pascal.</p>
-
-<p><a href="https://en.wikipedia.org/wiki/List_of_undecidable_problems">https://en.wikipedia.org/wiki/List_of_undecidable_problems</a>
-<a href="https://plato.stanford.edu/entries/church-turing/">https://plato.stanford.edu/entries/church-turing/</a>
-<a href="http://pageperso.lif.univ-mrs.fr/~kevin.perrot/documents/2016/calculabilite/Cours_16.pdf">http://pageperso.lif.univ-mrs.fr/~kevin.perrot/documents/2016/calculabilite/Cours_16.pdf</a>
-<a href="https://www.cs.odu.edu/~zeil/cs390/latest/Public/turing-complete/index.html">https://www.cs.odu.edu/~zeil/cs390/latest/Public/turing-complete/index.html</a></p>
+<p>Ce nombre n’est évidemment pas calculable car si on pouvait le faire, le problème de l’<a href="#arret">arrêt de la machine de Turing</a> serait décidable.</p>
 
   </div>
 

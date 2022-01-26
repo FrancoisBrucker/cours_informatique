@@ -281,13 +281,28 @@ Programme :
 
 <p>ou de manière équivalente, en un mélange de python et de français :</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="k">def</span> <span class="nf">recherche</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+<style>
+    table, td, tr, th, pre {
+        padding:0;
+        margin:0;
+        border:none
+    }
+</style>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td>
+<td class="code"><pre><span class="k">def</span> <span class="nf">recherche</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
     <span class="n">pour</span> <span class="n">chaque</span> <span class="n">élément</span> <span class="n">e</span> <span class="n">de</span> <span class="n">t</span><span class="p">:</span>
         <span class="n">si</span> <span class="n">e</span> <span class="o">==</span> <span class="n">x</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">vrai</span>
     <span class="k">return</span> <span class="n">faux</span>
-</code></pre></div></div>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
 
 <p>Ceci permet ensuite de définir des fonctions pour écrire des algorithmes de façon plus concise.</p>
 
@@ -307,21 +322,71 @@ Programme :
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>variable = nom(entrée 1, ..., entrée n)
 </code></pre></div></div>
 
+<blockquote>
+  <p>Les fonctions nous donnent accès à la récursivité : Il suffit que notre pseudo-code s’appelle lui-même comme une fonction.</p>
+</blockquote>
+
 <p>Si on veut utiliser le pseudo code <em>recherche</em> défini plus haut, cela pourrait être une instruction du type : <code class="language-plaintext highlighter-rouge">trouve = recherche(tab, 3)</code>. On affecte la sortie de l’algorithme <code class="language-plaintext highlighter-rouge">recherche</code> avec comme paramètres <code class="language-plaintext highlighter-rouge">tab</code> (le tableau d’entier) et <code class="language-plaintext highlighter-rouge">3</code> (un entier) à la variable <code class="language-plaintext highlighter-rouge">trouve</code>.</p>
 
 <p>Il est important de voir que lorsque l’on exécute une fonction, les variables qu’elle crée existeront dans un espace à elle, pas dans celui du pseudo-code appelant. Ainsi dans le code suivant :</p>
 
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>e = 4
+<style>
+    table, td, tr, th, pre {
+        padding:0;
+        margin:0;
+        border:none
+    }
+</style>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td>
+<td class="code"><pre>e = 4
 t = [1, 2, 6]
 trouve = recherche(t, 6)
 affiche à l'écran e
-</code></pre></div></div>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
 
 <p>On affichera bien 4 à l’écran et pas 6 (le nom de variable <code class="language-plaintext highlighter-rouge">e</code> défini dans recherche reste dans recherche).</p>
 
-<blockquote>
-  <p>Le fonctions nous donnent accès à la récursivité : Il suffit que notre pseudo-code s’appelle lui-même comme une fonction.</p>
+<blockquote class="attention">
+  <p>Lorsque l’on calcule la complexité d’un pseudo-code utilisant des fonctions, il faut compter le nombre d’instructions de l’exécution des fonctions !</p>
 </blockquote>
+
+<p>Prenons par exemple le code précédent et comptons les instructions utilisées ligne à ligne :</p>
+
+<ol>
+  <li>affectation d’un variable : 1 instruction</li>
+  <li>affectation d’un variable : 1 instruction</li>
+  <li>affectation d’une variable (1 instruction) plus l’exécution de la fonction recherche (ligne à ligne) :
+    <ol>
+      <li>affectation des paramètres :
+        <ul>
+          <li>pour le premier paramètre il faut trouver l’objet associé à t : 1 instruction</li>
+          <li>pour le second paramètre, c’est un objet donc il n’y a rien à faire : 0 instruction</li>
+          <li>affectation du premier paramètre à la variable locale t : 1 instruction</li>
+          <li>affectation du second paramètre à la variable locale e : 1 instruction</li>
+        </ul>
+      </li>
+      <li>une boucle de 3 itérations</li>
+      <li>un test
+        <ul>
+          <li>on trouve les objets associées à t et e : 2 instructions</li>
+          <li>on teste l’égalité : 1 instruction</li>
+          <li>on fait le <code class="language-plaintext highlighter-rouge">if</code> : 1 instruction</li>
+        </ul>
+      </li>
+      <li>on arrive à cette ligne à la troisième itération : 1 instruction</li>
+    </ol>
+  </li>
+  <li>on ne sait pas combien d’opération est nécessaire pour afficher quelque chose à l’écran. disons que ça prend $P$ instructions</li>
+</ol>
+
+<p>Au total on eu besoin de : $1+1+1+\underbrace{(1+0+1+1+3 \cdot (2+1+1) + 1)}_{\mbox{recherche(t, 6)}}{} + P$ instructions c’est à dire $19+P$ instructions.</p>
 
 <h3 id="instructions-avancées">instructions avancées</h3>
 
