@@ -50,7 +50,9 @@ Puisque l'on a le droit de ne manipuler que des choses finies, un algorithme ne 
 > **un algorithme ne peut pas manipuler de nombres réels**. On ne peut considérer un réel que comme une abstraction (un symbole particulier) ou une approximation (on ne considère qu'un nombre fini de décimales).
 {: .note}
 
-Prenons $\pi$ par exemple. On peut le considérer de deux manières : comme le symbole $\pi$ et de là faire des opérations sur lui (comme $2 \cdot \pi$, ou $\frac{3\pi}{3}$, ...) de façon formelle, c'est à dire sans jamais connaître sa valeur ou comme une valeur approchée de lui (3.1415 par exemple) et ainsi rendre des valeurs approchées des différentes opérations. On ne pourra cependant **jamais** avoir la valeur exacte de $\pi$ avec un algorithme (et ce même s'il avait une mémoire infinie).
+Prenons $\pi$ par exemple. Il existe des algorithmes qui [calculent les décimales de pi](https://fr.wikipedia.org/wiki/Approximation_de_%CF%80#Calcul_de_la_n-i%C3%A8me_d%C3%A9cimale_de_%CF%80), mais on ne pourra jamais écrire que pi est le résultat d'un algorithme, puisque l'algorithme doit s"arrêter : on aura qu'un nombre fini de décimales, donc on aura pas $\pi$.
+
+On ne peut le considérer que de deux manières : comme le symbole $\pi$ et de là faire des opérations sur lui (comme $2 \cdot \pi$, ou $\frac{3\pi}{3}$, ...) de façon formelle, c'est à dire sans jamais connaître sa valeur ou comme une valeur approchée de lui (3.1415 par exemple) et ainsi rendre des valeurs approchées des différentes opérations. On ne pourra cependant **jamais** avoir la valeur exacte de $\pi$ avec un algorithme (et ce même s'il avait une mémoire infinie).
 
 Ce n'est pas bien grave en général puisque les lois physiques sont presque tout le temps stables (de petits effets impliquent de petites causes) : considérer les réels en [notation scientifique](https://fr.wikipedia.org/wiki/Notation_scientifique) en se fixant une précision ne gène pas les calculs physiques.
 
@@ -91,18 +93,25 @@ Tous les pseudo-codes utilisant les 6 règles ci-dessus auront la même expressi
 
 On est intimement convaincu (c'est ce qu'on appelle la [thèse de Church-Turing](https://fr.wikipedia.org/wiki/Th%C3%A8se_de_Church)) que les instructions d'un pseudo-code sont équivalentes aux instructions d'un algorithme, c'est çà dire que toutes les instructions que l'on pourrait inventer en un nombre fini de symboles peuvent s'écrire sous la forme des instructions d'un pseudo-code.
 
+### nombre d'algorithmes
+
+Comme un algorithme peut-être décrit par son pseudo-code, qui est une chaîne de caractères (qu'on peut limiter aux mots Français si on a envie) : il y a au plus autant d'algorithmes que de chaînes de caractères. Ça en fait un sacré paquet mais comme chaque chaîne de caractères peut être associée à un entier (un fichier sur ordinateur est une suite de 0 et de 1, donc on peut sauver notre algorithme décrit sous la forme d'un texte et récupérer la suite de 0 et de 1 qui le constitue. On peut aussi associer à chaque caractère par son code [unicode](https://fr.wikipedia.org/wiki/Unicode) et on concatène ces nombres pour encoder toute la chaine) :
+
+> Il ne peut y avoir plus d'algorithmes que de nombres entiers.
+{: .note}
+
 ## fonctions
 
 Un algorithme, représenté par son pseudo code, a des entrées et une sortie : c'est une fonction. D'après ce qui précède, on a donc :
 
 > Un algorithme à $p$ entrées, dont $q$ entrées entières, $r$ entrées approximation des réels et $s$ chaînes de caractères est une fonction de :
 >
-> $$f: \mathbb{N}^{q} \times R^r \times C^t \rightarrow \mathbb{N} \cup R \cup C$$
+> $$f: \mathbb{N}^{q} \times R^r \times C^s \rightarrow \mathbb{N} \cup R \cup C$$
 >
 > où $\mathbb{N}$ est l'ensemble des entiers, $R$ l'ensemble des approximations de réels et $C$ l'ensemble des chaînes de caractères.
 {: .note}
 
-On a pas trop dit grand chose pour l'instant. On a fait que reécrire ce qu'on savait déjà sous la forme de fonctions. On va montrer qu'on peut faire bien mieux en montran qu'un algorithme est une fonction de $\mathbb{N}$ (les entiers) dans $\mathbb{N}$.
+On a pas trop dit grand chose pour l'instant. On a fait que re-écrire ce qu'on savait déjà sous la forme de fonctions. On va montrer qu'on peut faire bien mieux en montrant qu'un algorithme est une fonction de $\mathbb{N}$ (les entiers) dans $\mathbb{N}$.
 
 Cela nous permettra de montrer qu'un algorithme ne peut pas **tout** calculer : il existe des fonctions de $\mathbb{N}$ dans $\mathbb{N}$ qu'aucun ordinateur ne pourra calculer (trouver des fonctions non calculables par un ordinateur n'est pas une tâche simple cependant. Il nous faudra un peut plus de connaissances pour en exhiber).
 
@@ -203,15 +212,6 @@ On ne donnera pas ici d'exemple concret de fonction non calculable on montre jus
 
 On va montrer qu'il existe des fonctions qui ne sont pas des algorithmes car il existe strictement plus de fonctions que d'algorithmes.
 
-#### nombre d'algorithmes {#nombre-algorithmes}
-
-Comme un algorithme peut-être décrit par son pseudo-code, qui est une chaîne de caractères (qu'on peut limiter aux mots Français si on a envie) : il y a au plus autant d'algorithmes que de chaînes de caractères. Ça en fait un sacré paquet mais comme chaque chaîne de caractère est un entier (on l'a vu [juste avant](#fonction-plusieurs-entier)) :
-
-> Il ne peut y avoir plus d'algorithmes que de nombres entiers.
-{: .note}
-
-#### nombre de fonctions {#nombre-fonction}
-
 Soit $f: \mathbb{N} \rightarrow \mathbb{N}$. En associant pour chaque entier $n$ le couple $(n, f(n))$ on associe à chaque fonction de $\mathbb{N}$ dans $\mathbb{N}$ l'ensemble :
 
 $$I(f) = \{ (n, f(n)) \vert n \in \mathbb{N} \}$$
@@ -224,6 +224,11 @@ Connaître $f$ ou $I(f)$ est équivalent et comme $I(f) \subseteq \mathbb{N} \ti
 Or pour tout ensemble $E$ il y a strictement plus d'éléments dans l'ensemble de ses parties (qu'on note $2^E$) que dans $E$ (c'est le [théorème de Cantor](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Cantor)). On en conclut qu'il y a strictement plus de fonctions que d'éléments dans $\mathbb{N} \times \mathbb{N}$. Or comme $\mathbb{N} \times \mathbb{N}$ et $\mathbb{N}$ sont en bijection (mais si, on l'a vu [précédemment](#fonction-un-entier)) :
 
 > Il y a strictement plus de fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ que de nombres entiers.
+{: .note}
+
+Comme il y a au plus autant d'algorithmes différent que de nombres entiers on en conclut :
+
+> Il existe des fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ qui ne peuvent pas être calculées par des algorithmes.
 {: .note}
 
 {% details élément de la preuve du théorème de Cantor %}

@@ -148,10 +148,18 @@ if ((x > 12) AND (x < 36)):
 ```
 
 1. on affecte un objet à x : 1 instruction
-2. un test avec 2 comparaisons et un `AND` : 3 instructions
-3. on affecte le résultat d'une opération élémentaire : 2 instructions
+2. Pour faire cette instruction il faut :
+   * faire `x > 12`. Pour cela :
+     * on récupère la valeur de `x` : 1 instruction
+     * on effectue la comparaison : 1 instruction
+   * faire `x < 36`. Pour cela :
+     * on récupère la valeur de `x` : 1 instruction
+     * on effectue la comparaison : 1 instruction
+   * faire l'instruction `AND`: 1 instruction
+   * fair le `if`: 1 instruction
+3. on commence par récupérer la valeur de `x` (1 instruction) puis affecte le résultat d'une opération élémentaire : 2 instructions
 
-Un nombre total d'instructions de 6.
+Un nombre total d'instructions de 10.
 
 ### nom des termes utilisés ?
 
