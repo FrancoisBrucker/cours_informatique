@@ -504,3 +504,5 @@ Enfin :
 
 > la simplicité de son fonctionnement et la puissance de ce qu'elle calcule convainc (les informaticiens de tous les pays) que tout ce qu'un humain, une machine, ou encore un système physique peut calculer (c'est à dire en suivant des opérations que l'on peut décrire en un nombre fini d'opérations) est exactement égal à ce qu'une machine de Turing peut calculer. C'est ce qu'on appelle [la thèse de Church-Turing](https://plato.stanford.edu/entries/church-Turing/#ReasForAcceThes).
 {: .note}
+
+Dans toute la suite de ce cours, on supposera la thèse de Church-Turing vraie et on parlera indifféremment d'algorithme, de pseudo-code ou encore de machine de Turing de façon équivalente.

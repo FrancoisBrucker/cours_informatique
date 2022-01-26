@@ -107,7 +107,7 @@ Comme un algorithme peut-être décrit par son pseudo-code, qui est une chaîne 
 > Il ne peut y avoir plus d'algorithmes que de chaine de caractères écrites en Français.
 {: .note}
 
-Ça en fait un sacré paquet. Tentons d'être un peu plus précis. Comme chaque chaîne de caractères peut être associée à un entier en concaténant le code [unicode](https://fr.wikipedia.org/wiki/Unicode) associé à chaque caractère de la description de l'algorithme et des instructions utilisées (cela ne fait pas beaucoup de caractères différents si on écrit tout nos algorithmes en n'utilisant que les caracTères qui nous permettent d'écrire en Français) :
+Ça en fait un sacré paquet. Tentons d'être un peu plus précis. Comme chaque chaîne de caractères peut être associée à un entier en concaténant  un à un le code [unicode](https://fr.wikipedia.org/wiki/Unicode) associé à chaque caractère de la description de l'algorithme et des instructions utilisées (comme si on sauvait le fichier au format texte sur un ordinateur) :
 
 > Il ne peut y avoir plus d'algorithmes que de nombres entiers.
 {: .note}
@@ -372,7 +372,7 @@ On a vu qu'il ne pouvait pas y avoir plus d'algorithmes que d'entiers puisque ch
 > Il existe des fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ qui ne peuvent pas être calculées par des algorithmes.
 {: .note}
 
-#### pour la bonne bouche
+#### pour la bonne bouche {#r-et-n}
 
 Je ne saurais vous laisser dans l'ignorance du nombre de sous-sembles de $\mathbb{N}$. Nous allons démontrer ensemble qu'i y en a autant que de nombres réels entre 0 et 1 (exclus).
 

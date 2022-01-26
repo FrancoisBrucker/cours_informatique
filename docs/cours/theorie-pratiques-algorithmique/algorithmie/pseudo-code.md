@@ -201,14 +201,22 @@ Programme :
 
 ou de manière équivalente, en un mélange de python et de français :
 
-```python
+<style>
+    table, td, tr, th, pre {
+        padding:0;
+        margin:0;
+        border:none
+    }
+</style>
+{% highlight python linenos %}
 
 def recherche(t, x):
     pour chaque élément e de t:
         si e == x:
             return vrai
     return faux
-```
+
+{% endhighlight %}
 
 Ceci permet ensuite de définir des fonctions pour écrire des algorithmes de façon plus concise.
 
@@ -229,20 +237,51 @@ Si l'algorithme a un retour, on peut directement l'utiliser, en l'affectant à u
 variable = nom(entrée 1, ..., entrée n)
 ```
 
+> Les fonctions nous donnent accès à la récursivité : Il suffit que notre pseudo-code s'appelle lui-même comme une fonction.
+
 Si on veut utiliser le pseudo code *recherche* défini plus haut, cela pourrait être une instruction du type : `trouve = recherche(tab, 3)`. On affecte la sortie de l'algorithme `recherche` avec comme paramètres `tab` (le tableau d'entier) et `3` (un entier) à la variable `trouve`.
 
 Il est important de voir que lorsque l'on exécute une fonction, les variables qu'elle crée existeront dans un espace à elle, pas dans celui du pseudo-code appelant. Ainsi dans le code suivant :
 
-```text
+<style>
+    table, td, tr, th, pre {
+        padding:0;
+        margin:0;
+        border:none
+    }
+</style>
+{% highlight text linenos %}
+
 e = 4
 t = [1, 2, 6]
 trouve = recherche(t, 6)
 affiche à l'écran e
-```
+{% endhighlight %}
 
 On affichera bien 4 à l'écran et pas 6 (le nom de variable `e` défini dans recherche reste dans recherche).
 
-> Le fonctions nous donnent accès à la récursivité : Il suffit que notre pseudo-code s'appelle lui-même comme une fonction.
+> Lorsque l'on calcule la complexité d'un pseudo-code utilisant des fonctions, il faut compter le nombre d'instructions de l'exécution des fonctions !
+{: .attention}
+
+Prenons par exemple le code précédent et comptons les instructions utilisées ligne à ligne :
+
+1. affectation d'un variable : 1 instruction
+2. affectation d'un variable : 1 instruction
+3. affectation d'une variable (1 instruction) plus l'exécution de la fonction recherche (ligne à ligne) :
+   1. affectation des paramètres :
+      * pour le premier paramètre il faut trouver l'objet associé à t : 1 instruction
+      * pour le second paramètre, c'est un objet donc il n'y a rien à faire : 0 instruction
+      * affectation du premier paramètre à la variable locale t : 1 instruction
+      * affectation du second paramètre à la variable locale e : 1 instruction
+   2. une boucle de 3 itérations
+   3. un test
+      * on trouve les objets associées à t et e : 2 instructions
+      * on teste l'égalité : 1 instruction
+      * on fait le `if` : 1 instruction
+   4. on arrive à cette ligne à la troisième itération : 1 instruction
+4. on ne sait pas combien d'opération est nécessaire pour afficher quelque chose à l'écran. disons que ça prend $P$ instructions
+
+Au total on eu besoin de : $1+1+1+\underbrace{(1+0+1+1+3 \cdot (2+1+1) + 1)}_{\mbox{recherche(t, 6)}}{} + P$ instructions c'est à dire $19+P$ instructions.
 
 ### instructions avancées
 
