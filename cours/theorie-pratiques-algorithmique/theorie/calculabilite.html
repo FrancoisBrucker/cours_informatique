@@ -312,7 +312,7 @@ Ceci, <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie
 <p>Enfin, finissons cette partie en remarquant que décidabilité et calculabilité sont les deux faces d’une même pièce en remarquant que :</p>
 
 <blockquote class="note">
-  <p>Si une fonction $f: \mathcal{F} \rightarrow \{0, 1\}^\star$ est calculable alors $\{ (a, f(a) \mid a \in \mathcal{F}\}$ est reconnaissable.</p>
+  <p>Si une fonction $f: \mathcal{F} \rightarrow \{0, 1\}^\star$ est <strong>calculable</strong> alors $\{ (a, f(a) \mid a \in \mathcal{F}\}$ est <strong>reconnaissable</strong>.</p>
 </blockquote>
 <details><summary>preuve</summary><div>
 <p>Si $f: \mathcal{F} \rightarrow \{0, 1\}^\star$ est calculable, la machine de Turing $M$ prenant en entrée deux mots $a$ et $b$ et qui rend 1 si $f(a) = b$ et ne s’arrête pas sinon  est bien telle que $\mathcal{L}(M) = \{ (a, f(a) \mid a \in \mathcal{F}\}$.</p>
@@ -322,7 +322,7 @@ Ceci, <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie
 <p>Et si $f$ est défini sur tout mot (ce qui est très souvent le cas) on a même :</p>
 
 <blockquote class="note">
-  <p>Une fonction $f: \{0, 1\}^\star \rightarrow \{0, 1\}^\star$ est calculable si et seulement si $\{ (a, f(a) \mid a \in \{0, 1\}^\star\}$ est décidable.</p>
+  <p>Une fonction $f: \{0, 1\}^\star \rightarrow \{0, 1\}^\star$ est <strong>calculable</strong> si et seulement si $\{ (a, f(a) \mid a \in \{0, 1\}^\star\}$ est <strong>décidable</strong>.</p>
 </blockquote>
 <details><summary>preuve</summary><div>
 <p>Si $f: \mathcal{F} \rightarrow \{0, 1\}^\star$ est calculable, la machine de Turing $M$ prenant en entrée deux mots $a$ et $b$ et qui rend 1 si $f(a) = b$ et 0 sinon est bien un décideur sur $\{ (a, f(a) \mid a \in \{0, 1\}^\star\}$</p>
@@ -335,9 +335,7 @@ Ceci, <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie
 
 <p>Comme il suffit d’exhiber un algorithme pour montrer qu’une fonction est calculable,  presque toutes les fonctions auxquelles on peut penser le sont. Pour trouver des fonctions non calculables, il faut chercher des exemples tordus, le plus plus souvent en lien avec le problème de l’arrêt de la machine.</p>
 
-<h4 id="busy-beavers">busy beavers</h4>
-
-<p>L’exemple le plus classique des fonctions non calculables est le calcul des <a href="https://fr.wikipedia.org/wiki/Castor_affair%C3%A9">castors affairés</a> (<em>busy beavers</em> dans la verion originale):</p>
+<p>Nous en donnons une ici, la plus célèbre : <a href="https://fr.wikipedia.org/wiki/Castor_affair%C3%A9">les castors affairés</a> (<em>busy beavers</em> dans la verion originale):</p>
 
 <blockquote class="note">
   <p>On définit le <strong>score</strong> $\rho(M)$ d’une machine de Turing $M$ acceptant le mot vide comme étant le nombre de $1$ de $M()$.</p>
@@ -374,7 +372,7 @@ Ceci, <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie
 <p>Ce qui nous permet de prouver que :</p>
 
 <blockquote class="note">
-  <p>$\beta$ est non calculable.</p>
+  <p>La fonction $\beta$ est non calculable.</p>
 </blockquote>
 <details><summary>preuve</summary><div>
 <p>Supposons que $\beta$ soit calculable. Il existe alors une machine $F$ de pseudo code :</p>
@@ -405,27 +403,15 @@ tant que i &lt; 2 * β(n):
 
 </div></details>
 
-<h4 id="théorème-de-rice">théorème de Rice</h4>
-
-<p>plein d’algo font la même chose. et il est très difficile (ie indécidable) se savoir a priori ce qu’il fait (il faut analyser chaque algorithme particulièrement, cela ne peut pas être dans les paramètres)
-<a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Rice">https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Rice</a></p>
-
-<p>l’ensemble des algos calculant des nombres est indécidable</p>
-
-<p><a href="https://en.wikipedia.org/wiki/Computable_function">https://en.wikipedia.org/wiki/Computable_function</a>
-comme reconnaissable puisque (E, F(E)) est reconnaissable si la fonction est calculable</p>
-
-<p>Ces deux problème ne sont pas fondamentalement différent d’un point de vue théorique puisque
-réponse attendue  La calculabilité cherche 
-On a vu qu’il existe des problèmes qu’on ne peut pas résoudre avec un algorithme</p>
-
-<blockquote class="tbd">
-  <p>ex de ackerman. Impossible de connaitre la valeur sans exécuter l’algo.</p>
+<blockquote>
+  <p>L’<a href="https://www.gwern.net/docs/cs/1962-rado.pdf">article</a> de Tibor Radò où les busy beavers sont définis.</p>
 </blockquote>
 
 <h3 id="nombres-calculables">nombres calculables</h3>
 
-<p>tous les entiers sont calculables. C’est les réels qui peuvnet ne pas l’être (ou son approximables), ou même certains entiers bien tordus.</p>
+<p>Tous les entiers sont calculables. Un réel est calculable si on peut construite</p>
+
+<p>C’est les réels qui peuvnet ne pas l’être (ou son approximables), ou même certains entiers bien tordus.</p>
 
 <blockquote>
   <p>pi oui</p>
@@ -443,6 +429,24 @@ On a vu qu’il existe des problèmes qu’on ne peut pas résoudre avec un algo
 <p>pour l’instant tous les pseudo-code qu’on a écrit s’arrêtent tout le temps. Mais celui là ? syracuse. On ne sais pas.</p>
 
 <p>savoir si un algorithme calcule un nombre est non décidable.</p>
+
+<h2 id="théorème-de-rice">théorème de Rice</h2>
+
+<p>plein d’algo font la même chose. et il est très difficile (ie indécidable) se savoir a priori ce qu’il fait (il faut analyser chaque algorithme particulièrement, cela ne peut pas être dans les paramètres)
+<a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Rice">https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Rice</a></p>
+
+<p>l’ensemble des algos calculant des nombres est indécidable</p>
+
+<p><a href="https://en.wikipedia.org/wiki/Computable_function">https://en.wikipedia.org/wiki/Computable_function</a>
+comme reconnaissable puisque (E, F(E)) est reconnaissable si la fonction est calculable</p>
+
+<p>Ces deux problème ne sont pas fondamentalement différent d’un point de vue théorique puisque
+réponse attendue  La calculabilité cherche 
+On a vu qu’il existe des problèmes qu’on ne peut pas résoudre avec un algorithme</p>
+
+<blockquote class="tbd">
+  <p>ex de ackerman. Impossible de connaitre la valeur sans exécuter l’algo.</p>
+</blockquote>
 
 <h2 id="logique-démonstrations-mathématiques-et-calculabilité">logique, démonstrations mathématiques et calculabilité</h2>
 
