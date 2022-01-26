@@ -169,7 +169,13 @@ le veut, du moment qu’ils ne soient pas infini.</p>
 
 <h3 id="nombre-dalgorithmes">nombre d’algorithmes</h3>
 
-<p>Comme un algorithme peut-être décrit par son pseudo-code, qui est une chaîne de caractères (qu’on peut limiter aux mots Français si on a envie) : il y a au plus autant d’algorithmes que de chaînes de caractères. Ça en fait un sacré paquet mais comme chaque chaîne de caractères peut être associée à un entier (un fichier sur ordinateur est une suite de 0 et de 1, donc on peut sauver notre algorithme décrit sous la forme d’un texte et récupérer la suite de 0 et de 1 qui le constitue. On peut aussi associer à chaque caractère par son code <a href="https://fr.wikipedia.org/wiki/Unicode">unicode</a> et on concatène ces nombres pour encoder toute la chaine) :</p>
+<p>Comme un algorithme peut-être décrit par son pseudo-code, qui est une chaîne de caractères (qu’on peut limiter aux mots Français si on a envie) :</p>
+
+<blockquote class="note">
+  <p>Il ne peut y avoir plus d’algorithmes que de chaine de caractères écrites en Français.</p>
+</blockquote>
+
+<p>Ça en fait un sacré paquet. Tentons d’être un peu plus précis. Comme chaque chaîne de caractères peut être associée à un entier en utilisant le le code <a href="https://fr.wikipedia.org/wiki/UTF-8">utf-8</a> qui représente le codage de <a href="https://en.wikipedia.org/wiki/List_of_Unicode_characters">tous les caractères possible</a> :</p>
 
 <blockquote class="note">
   <p>Il ne peut y avoir plus d’algorithmes que de nombres entiers.</p>
@@ -191,6 +197,10 @@ le veut, du moment qu’ils ne soient pas infini.</p>
 
 <p>Cela nous permettra de montrer qu’un algorithme ne peut pas <strong>tout</strong> calculer : il existe des fonctions de $\mathbb{N}$ dans $\mathbb{N}$ qu’aucun ordinateur ne pourra calculer (trouver des fonctions non calculables par un ordinateur n’est pas une tâche simple cependant. Il nous faudra un peut plus de connaissances pour en exhiber).</p>
 
+<blockquote class="attention">
+  <p>Dans la suite de cette partie on utilisera les <a href="https://fr.wikipedia.org/wiki/Bijection">bijections</a> entre ensembles. Si deux ensembles sont en bijections on peut passer de l’un à autre (et réciproquement) sans soucis, les deux ensembles sont équivalents : on peut utiliser l’un ou l’autre sans perte de généralité.</p>
+</blockquote>
+
 <h3 id="fonction-plusieurs-entier">fonctions à plusieurs paramètres entiers</h3>
 
 <p>Les paramètres d’un algorithme peuvent tous être représentés par des entiers :</p>
@@ -198,7 +208,7 @@ le veut, du moment qu’ils ne soient pas infini.</p>
 <ul>
   <li>des entiers finis : c’est clair.</li>
   <li>des approximations finies de réels : on peut utiliser la norme <a href="https://fr.wikipedia.org/wiki/IEEE_754">IEEE 754</a>. Par exemple 3.1415 en codage IEEE 754 sur 32 bits correspond à l’entier binaire : <code class="language-plaintext highlighter-rouge">01000000010010010000111001010110</code> (j’ai utilisé <a href="https://www.h-schmidt.net/FloatConverter/IEEE754.html">un convertisseur</a>)</li>
-  <li>des chaînes de caractères : que l’on peut représenter comme un entier en utilisant le le codage <a href="https://fr.wikipedia.org/wiki/UTF-8">utf-8</a>. Par exemple la chaîne de caractère “Yop !” correspond au nombre binaire <code class="language-plaintext highlighter-rouge">111100101101111011100000010000000100001</code> en utilisant  (là aussi, j’ai utilisé <a href="http://hapax.qc.ca/conversion.fr.html">un convertisseur</a>).</li>
+  <li>des chaînes de caractères : que l’on peut représenter comme un entier. Par exemple la chaîne de caractères “Yop !” correspond au nombre binaire <code class="language-plaintext highlighter-rouge">111100101101111011100000010000000100001</code> en utilisant  (là aussi, j’ai utilisé <a href="http://hapax.qc.ca/conversion.fr.html">un convertisseur</a>).</li>
 </ul>
 
 <p>On peut donc reformuler notre assertion précédente en unifiant les paramètres (on les recode tous sous la forme d’entiers) :</p>
@@ -216,30 +226,61 @@ le veut, du moment qu’ils ne soient pas infini.</p>
 
 <p>Démontrons que tout élément de $\mathbb{N}^p$ peut être représenté par un entier. Pour ce faire on montrera que $\mathbb{N}^p$ est en bijection avec $\mathbb{N}$ quelque soit $p$.</p>
 
-<p>La figure ci-dessous montre comment faire pour $\mathbb{N}^2$. On ordonne les diagonales (la diagonale $D_i$ contient les éléments dont la somme des coordonnées est égale à $i$) les une par rapport aux autres et dans chaque diagonale on prend l’ordre lexicographque (ordre du dictionnaire en considérant chaque coordonnée comme une lettre).</p>
+<p>La figure ci-dessous montre comment faire pour $\mathbb{N}^2$. On commence par placer tout élément $(x, y)$ de $\mathbb{N}^2$ dans le plan. puis on passe de l’un à l’autre en suivant les diagonales.</p>
 
-<p><img src="/cours_informatique/assets/cours/algorithmie/theorie_n2dansN.png" alt="compteur" style="margin: auto;display: block; width: 200px"></p>
+<p><img src="/cours_informatique/assets/cours/algorithmie/theorie_n2dansN.png" alt="compteur" style="margin: auto;
+display: block; width: 200px"></p>
 
-<p>Dans le cas général, notons $D_k$ (la diagonale numéro $k$) l’ensemble des éléments $(n_1, \dots, n_p)$ de $\mathbb{N}^p$ dont la somme $\sum_i n_i$ vaut $k$. Il y a un nombre fini d’éléments dans $D_k$ puisque chaque coordonnées est plus petite que $k$ (il y a au plus $k^p$ éléments dans $D_k$), ce qui nous permet d’ordonner tous les éléments de $\mathbb{N}^p$ : $e &lt; f$ si :</p>
+<p>On chemine alors comme ça :</p>
+
+<ol>
+  <li>$(0, 0)$</li>
+  <li>$(1, 0)$</li>
+  <li>$(0, 1)$</li>
+  <li>$(2, 0)$</li>
+  <li>$(1, 1)$</li>
+  <li>$(0, 2)$</li>
+  <li>$(3, 0)$</li>
+  <li>…</li>
+</ol>
+
+<p>L’entier associé à $(x, y)$ est alors l’ordre dans ce cheminement : on peut associer un unique entier à tout couple d’entiers et réciproquement. On en conclue que :</p>
+
+<blockquote class="note">
+  <p>Il existe une bijection entre $\mathbb{N}^2$ et $\mathbb{N}$ : il y a autant de couples d’entiers que d’entiers.</p>
+</blockquote>
+
+<p>De façon générale :</p>
+
+<blockquote class="note">
+  <p>Il existe une bijection entre $\mathbb{N}^p$ et $\mathbb{N}$ : il y a autant de $p$-uplets d’entiers que d’entiers.</p>
+</blockquote>
+
+<details><summary>preuve</summary><div>
+<p>On note $D_i$ (une diagonale) l’ensemble des $p$-uplets $(n_1, \dots, n_p)$ tels que $\sum_{i=1}^p n_i = p$.</p>
+
+<p>Comme chaque diagonale a un nombre fini d’élément, on peut les ordonner, en suivant l’<a href="https://fr.wikipedia.org/wiki/Ordre_lexicographique#G%C3%A9n%C3%A9ralisation_aux_produits_cart%C3%A9siens_finis">ordre lexicographique</a> (le plus petit élément de $D_i$ est $(0, \dots, 0, i)$ et $(i, 0, \dots, 0)$ le plus grand par exemple).</p>
+
+<p>De cet ordre dans une diagonale, on peut en déduire un ordre sur tous les $p$-uplets, en disant que $e &lt; f$ si :</p>
 
 <ul>
   <li>$e \in D_k$ et $f \in D_{k’}$ avec $k’ &lt; k$</li>
   <li>ou si $e, f \in D_k$ et que $e$ est avant $f$ dans l’<a href="https://fr.wikipedia.org/wiki/Ordre_lexicographique#G%C3%A9n%C3%A9ralisation_aux_produits_cart%C3%A9siens_finis">ordre lexicographique</a> de $D_k$.</li>
 </ul>
 
-<p>Cet ordre nous permet de définir <a href="https://fr.wikipedia.org/wiki/Injection_(math%C3%A9matiques)">une injection</a> de $\mathbb{N}^p$ dans $\mathbb{N}$ par l’application :</p>
+<p>La fonction $h$ suivante est alors une bijection de $\mathbb{N}^p$ dans $\mathbb{N}$ :</p>
 
 \[h(e) = \vert \{ g \mid g &lt; e \}\vert\]
 
-<p>Cela fonctionne car :</p>
+<p>En effet :</p>
 
 <ul>
-  <li>si $f &lt; e$ alors $f$ est dans une diagonale plus petite ou égale à $e$, il y a donc un nombre fini d’éléments plus petit que $e$</li>
-  <li>si $f &lt; e$ alors $\{ g \mid g &lt; f \} \cup \{f \} \subseteq \{ g \mid g &lt; e \}$ et donc $h(f) &lt; h(e)$</li>
-  <li>si $e$ et $f$ sont deux éléments différents de $\mathbb{N}^p$ alors soit $e &lt; f$ soit $f &lt; e$</li>
+  <li>la fonction est bien définie pour tout $p$-uplet : si $f &lt; e$ alors $f$ est dans une diagonale plus petite ou égale à $e$, il y a donc un nombre fini d’éléments plus petit que $e$</li>
+  <li>soit $f \neq e$ sont 2 $p$-uplets différents. On peut considérer sans perte de généralité que $f &lt; e$ et donc $\{ g \mid g &lt; f \} \cup \{f \} \subseteq \{ g \mid g &lt; e \}$. On en déduit que $h(f) &lt; h(e)$ et donc que pour tout entier $i$, il existe au plus 1 $p$-uplet $e$ tel que $h(e) = i$</li>
+  <li>si on prend deux $p$-uplets successif pour otre ordre, disons $e &lt; e’$ (et il n’existe pas $e’’$ tel que $e &lt; e’’ &lt; e’$) on a $h(e) + 1 = h(e’)$ : pour tout entier $i$ il existe un $p$-uplet $e$ tel $h(e) = i$</li>
 </ul>
 
-<p>On conclut en remarquant que la fonction $h’(n) = (n, 0, \dots , 0)$ est une injection de $\mathbb{N}$ dans $\mathbb{N}^p$. Il existe donc une injection de $\mathbb{N}$ dans $\mathbb{N}^p$ (la fonction $h’$) et une injection de $\mathbb{N}^p$ dans $\mathbb{N}$ (la fonction $h$) : il existe une bijection entre $\mathbb{N}^p$ et $\mathbb{N}$.</p>
+</div></details>
 
 <p>Toute fonction de $\mathbb{N}^p$ dans $\mathbb{N}$ peut alors s’écrire comme une fonction de $\mathbb{N}$ dans $\mathbb{N}$ ce qui nous permet de dire que :</p>
 
@@ -297,43 +338,191 @@ le veut, du moment qu’ils ne soient pas infini.</p>
 
 <p>On va montrer qu’il existe des fonctions qui ne sont pas des algorithmes car il existe strictement plus de fonctions que d’algorithmes.</p>
 
-<p>Soit $f: \mathbb{N} \rightarrow \mathbb{N}$. En associant pour chaque entier $n$ le couple $(n, f(n))$ on associe à chaque fonction de $\mathbb{N}$ dans $\mathbb{N}$ l’ensemble :</p>
+<p>Pour faire cela, on va procéder par étapes :</p>
+
+<ol>
+  <li>on montre qu’il y a exactement autant de fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ que de sous ensembles de $\mathbb{N}$</li>
+  <li>on montre qu’il y a strictement plus de sous-ensembles de $\mathbb{N}$ que d’éléments dans $\mathb{N}$</li>
+  <li>on conclut</li>
+</ol>
+
+<p>On finira cette partie en montrant, pour la bonne bouche, qu’il y a autant de sous-ensembles de $\mathbb{N}$ que ne nombres réels.</p>
+
+<h4 id="fonctions-et-sous-ensembles-de-mathbbn">fonctions et sous ensembles de $\mathbb{N}$</h4>
+
+<p>On va montrer qu’il existe autant de fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ que de sous-ensembles de $\mathbb{N}$. Pour cela on commence par montrer qu’il y en a plus puis qu’il y en a moins pour en conclure finalement qu’il y en a donc autant.</p>
+
+<p>Tout d’abord, il est clair que pour tout ensemble d’entiers $A$, on peut construire la fonction :</p>
+
+\[f_A(x) = \left\{
+    \begin{array}{ll}
+        x + 1 &amp; \mbox{si } x \in A \\
+        0 &amp; \mbox{sinon.}
+    \end{array}
+\right.\]
+
+<p>On vérifie facilement que si $A \neq A’$ on a $f_A \neq f_{A’}$ (si $x \in A$ et $x \notin A’$ $f_A(x) = x + 1 &gt; 0 = f_{A’}$) et donc que tout sous-ensemble d’entiers peut être associé à une fonction $f: \mathbb{N} \rightarrow \mathbb{N}$ différente. On peut donc dire que :</p>
+
+<blockquote class="note">
+  <p>Il y a plus de fonction $f: \mathbb{N} \rightarrow \mathbb{N}$ que de sous-ensembles de $\mathbb{N}$.</p>
+</blockquote>
+
+<p>Réciproquement, on peut associer pour chaque fonction $f: \mathbb{N} \rightarrow \mathbb{N}$ le sous ensemble de $\mathbb{N}^2$ :</p>
 
 \[I(f) = \{ (n, f(n)) \vert n \in \mathbb{N} \}\]
 
-<p>Connaître $f$ ou $I(f)$ est équivalent et comme $I(f) \subseteq \mathbb{N} \times \mathbb{N}$ on en conclut :</p>
+<p>Si $f$ et $f’$ sont deux fonctions de $\mathbb{N} \rightarrow \mathbb{N}$ différentes on a clairement que $I(f) \neq I(f’)$. Ceci nous permet de dire que :</p>
 
 <blockquote class="note">
-  <p>Il y a autant de fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ que de parties de $\mathbb{N} \times \mathbb{N}$</p>
+  <p>Il y a moins de fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ que de sous-ensembles de $\mathbb{N}^2$</p>
 </blockquote>
 
-<p>Or pour tout ensemble $E$ il y a strictement plus d’éléments dans l’ensemble de ses parties (qu’on note $2^E$) que dans $E$ (c’est le <a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Cantor">théorème de Cantor</a>). On en conclut qu’il y a strictement plus de fonctions que d’éléments dans $\mathbb{N} \times \mathbb{N}$. Or comme $\mathbb{N} \times \mathbb{N}$ et $\mathbb{N}$ sont en bijection (mais si, on l’a vu <a href="#fonction-un-entier">précédemment</a>) :</p>
+<p>Comme on a vu qu’il y avait une bijection entre $\mathbb{N}^2$  et $\mathbb{N}$, il y a autant de sous-ensembles de $\mathbb{N}^2$ que de sous ensemble de $\mathbb{N}$, ce qui nous permet d’écrire :</p>
 
 <blockquote class="note">
-  <p>Il y a strictement plus de fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ que de nombres entiers.</p>
+  <p>Il y a moins de fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ que de sous-ensembles de $\mathbb{N}$</p>
 </blockquote>
 
-<p>Comme il y a au plus autant d’algorithmes différent que de nombres entiers on en conclut :</p>
+<p>S’il y a à la fois plus et moins de fonction $f: \mathbb{N} \rightarrow \mathbb{N}$ que de sous-ensembles de $\mathbb{N}$, c’est que :</p>
 
 <blockquote class="note">
-  <p>Il existe des fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ qui ne peuvent pas être calculées par des algorithmes.</p>
+  <p>Il y a autant de fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ que de sous-ensembles de $\mathbb{N}$</p>
 </blockquote>
 
-<details><summary>élément de la preuve du théorème de Cantor</summary><div>
-<p>La preuve du Théorème de Cantor repose sur le fait que pour toute fonction $f: E \rightarrow 2^E$, l’ensemble $D = \{x \in E \vert x \notin f(x)\}$ n’a pas d’antécédent pour $f$. En effet, s’il en avait un, disons $y$, on aurait $f(y) = D$ et alors :</p>
+<h4 id="nombre-de-sous-ensembles-de-mathbbn">nombre de sous-ensembles de $\mathbb{N}$</h4>
+
+<p>Si on prend un ensemble $E$ fini, il est clair qu’il y a strictement plus de sous-ensembles de $E$ que d’éléments dans $E$.</p>
+
+<p>Par exemple, si on prend l’ensemble $\{a, b, c\}$. Les différents sous-ensembles qu’on peut faire sont :</p>
+
+<ul>
+  <li>$\emptyset$</li>
+  <li>$\{1\}$</li>
+  <li>$\{2\}$</li>
+  <li>$\{3\}$</li>
+  <li>$\{1, 2\}$</li>
+  <li>$\{1, 3\}$</li>
+  <li>$\{2, 3\}$</li>
+  <li>$\{1, 2, 3\}$</li>
+</ul>
+
+<p>Il y a 8 sous-ensemble d’un ensemble à 3 éléments. De façon plus générale, on montre facilement que :</p>
+
+<blockquote class="note">
+  <p>Si $E$ est un ensemble fini et contient $n$ éléments, il y a $2^n$ sous-ensembles possibles à un ensemble à $n$ éléments.</p>
+</blockquote>
+<details><summary>preuve</summary><div>
+<p>Si l’ensemble $E$ est fini on peut ordonner ses éléments. On a alors $E = \{ e_1, \dots, e_n\}$.</p>
+
+<p>Un sous ensemble $F$ de $E$ est alors égal à un $n$-uplet : $T(F) = (u_1, \dots, u_n)$ avec $u_i = 1$ si $e_i \in F$ et $u_i = 0$ sinon.</p>
+
+<p>Comme il est clair que $T$ est une bijection entre l’ensemble des sous-ensembles de $F$ et l’ensemble des $n$-uplets de $\{0, 1\}^n$, il y a autant de sous-ensembles de $F$ que d’éléments dans $\{0, 1\}^n$, c’est à dire $2^n$ (chaque coordonnée à deux possibilités et il y a $n$ coordonnées).</p>
+
+</div></details>
+
+<p>Comme $2^n &gt; n$ pour tout $n$, il y a strictement plus de sous-ensembles de $E$ que d’éléments de $E$ si $E$ est fini. Etrangement, ceci est toujours vrai si $E$ est infini :</p>
+
+<blockquote class="note">
+  <p><a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Cantor"><strong>Théorème de Cantor</strong></a> :</p>
+
+  <p>Pour tout ensemble $E$ (même infini), il y a strictement plus de sous-ensembles de $E$ que d’éléments de $E$.</p>
+</blockquote>
+
+<details><summary>preuve du théorème de Cantor</summary><div>
+<p>La preuve du Théorème de Cantor repose sur le fait que pour toute fonction $f$ qui associe à un élément de $E$ un sous-ensemble de $E$, il existe des éléments qui n’ont pas d’antécédent.</p>
+
+<p>L’ensemble $D = \{x \in E \vert x \notin f(x)\}$ est un de ceux là. En effet, s’il en avait un, disons $y$, on aurait $f(y) = D$ et alors :</p>
 
 <ul>
   <li>$y \notin D$ car s’il y était alors $y \notin f(y)$ ce qui est incohérent avec le fait que $f(y) = D$</li>
   <li>$y \in D$ car s’il n’y était pas alors $y \in f(y)$ ce qui est incohérent avec le fait que $f(y) = D$</li>
 </ul>
 
-<p>Bref, $y$ n’existe pas. On en conclut qu’il existe des éléments de $2^E$ qui ne sont pas des images de $f$ : ce n’est pas une <a href="https://fr.wikipedia.org/wiki/Surjection">surjection</a>. Comme $f$ a été prise au hasard, ça signifie que pour toute fonction de $E$ dans $2^E$ il existera des éléments de $2^E$ qui ne seront pas atteints : il y a strictement plus d’élément dans $2^E$ que dans $E$.</p>
+<p>Bref, $y$ n’existe pas.</p>
+
+<p>On en conclut qu’il existe des sous-ensembles de $E$ qui ne sont pas des images de $f$ : ce n’est pas une <a href="https://fr.wikipedia.org/wiki/Surjection">surjection</a>. Comme $f$ a été prise au hasard, ça signifie que pour toute fonction il existera des sous-ensembles de $E$ qui ne seront pas atteints : il y a strictement plus de sous ensembles de $E$ que d’éléments de $E$.</p>
 
 </div></details>
 
+<blockquote class="attention">
+  <p>Ce théorème est vachement profond !</p>
+
+  <p>Il stipule qu’il existe plusieurs infinis, de plus en plus gros. L’infini de $\mathbb{N}$ étant plus petit que celui de l’ensemble de ses sous-ensembles.</p>
+
+  <p>Regardez ce lien <a href="https://www.arte.tv/fr/videos/097454-005-A/voyages-au-pays-des-maths/">https://www.arte.tv/fr/videos/097454-005-A/voyages-au-pays-des-maths/</a> par exemple qui illustre parfaitement cela.</p>
+</blockquote>
+
+<p>En utilisant le théorème de Cantor et le fait qu’il y ait autant de fonction $f: \mathbb{N} \rightarrow \mathbb{N}$ que de sous-ensembles de$\mathbb{N}$ on en déduit donc :</p>
+
+<blockquote class="note">
+  <p>Il y a strictement plus de fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ que d’entiers.</p>
+</blockquote>
+
+<h4 id="conclusion">conclusion</h4>
+
+<p>On a vu qu’il ne pouvait pas y avoir plus d’algorithmes que d’entiers puisque chaque algorithme a une description finie. En utilisant ce qui précède on a alors :</p>
+
+<blockquote class="note">
+  <p>Il existe des fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ qui ne peuvent pas être calculées par des algorithmes.</p>
+</blockquote>
+
+<h4 id="pour-la-bonne-bouche">pour la bonne bouche</h4>
+
+<p>Je ne saurais vous laisser dans l’ignorance du nombre de sous-sembles de $\mathbb{N}$. Nous allons démontrer ensemble qu’i y en a autant que de nombres réels entre 0 et 1 (exclus).</p>
+
+<p>On va commencer par montrer qu’il y en a moins puis qu’il y en a plus pour en conclure finalement qu’il y en a donc autant.</p>
+
+<p>Prenons un sous-ensemble $A$ de $\mathbb{N}$. On peut ranger ses éléments par ordre croissant et concaténer leurs représentations décimales en une chaine de caractères (possiblement infini) contenant uniquement des chiffres. On concatène cette chaine à “0.1” pour obtenir la représentation décimale d’un réel.</p>
+
+<p>Exemple : Si $A = \{0, 1, 4, 42\}$ on lui associe le réel $R(A) = 0.101442$</p>
+
+<p>Il est clair que cette opération est une injection, c’est à dire que sir $A \neq A’$, on a bien $R(A) \neq R(A’)$ et donc que :</p>
+
+<blockquote class="note">
+  <p>Il y a plus d’éléments dans $]0, 1[$ que de sous-ensembles de $\mathbb{N}$</p>
+</blockquote>
+
+<p>Prenons maintenant un réel $r$ dans l’intervalle $]0, 1[$. Son écriture décimale s’écrit : $0.a_1a_2\dots a_i\dots$ de longueur infinie, avec possiblement des 0 à la fin. On peut lui associer le sous ensemble infini : $S(r) = \{a_i + 10 \cdot i \mid i &gt; 0 \}$.</p>
+
+<p>Il est clair que cette opération est une injection, c’est à dire que sir $r \neq r’$, on a bien $S(r) \neq S(r’)$ et donc que :</p>
+
+<blockquote class="note">
+  <p>Il y a plus de sous-ensembles de $\mathbb{N}$ que d’éléments dans $]0, 1[$</p>
+</blockquote>
+
+<p>Il y a à la fois plus et moins d’éléments dans $]0, 1[$ que de sous ensembles de $\mathbb{N}$, donc :</p>
+
+<blockquote class="note">
+  <p>Il y a autant de sous-ensembles de $\mathbb{N}$ que d’éléments dans $]0, 1[$</p>
+</blockquote>
+
+<p>En remarquant que la fonction $f(x) = \tan(\frac{x-1}{2}\cdot \pi)$ est une bijection de $]0, 1[$ dans $]-\infty, +\infty[$, on en conlut qui’l y a autant de réels dans $]0, 1[$ que dans $]-\infty, +\infty[$ et donc :</p>
+
+<blockquote class="note">
+  <p>Il y a autant de sous-ensembles de $\mathbb{N}$ que de réels</p>
+</blockquote>
+
+<p>Le théorème de Cantor nous indique alors deux choses :</p>
+
+<ul>
+  <li>que le nombre d’entiers que l’on note $\aleph_0$ est strictement plus petit que le nombre de réels, noté $\aleph_1$.</li>
+  <li>Il y a des infinis plus grand que d’autre et qu’il y en a autant qu’on veut. Il suffit de prendre l’ensemble des sous-ensemble de de $\mathbb{R}$ (il y en a $\aleph_2$) pour avoir un infini plus grand que le nombre de réels. Et ainsi de suite… Pour obtenir $\aleph_0 &lt; \aleph_1 &lt; \dots \aleph_i &lt; dots$</li>
+</ul>
+
+<blockquote>
+  <p>Une question reste encore en suspend, mais on a pour l’instant toujours pas la réponse, c’est : y a-t-il un infini entre \aleph_0$ et \aleph_1$ ? On ne sais pas, mais on pense que non. C’est l’<a href="https://fr.wikipedia.org/wiki/Hypoth%C3%A8se_du_continu">hypothèse du continu</a>.</p>
+</blockquote>
+
+<p>Concluant en rebouclant sur nos algorithmes :</p>
+
+<blockquote class="note">
+  <p>Un algorithme est une fonction $\mathbb{N} \rightarrow \mathbb{N}$.
+Parmi les $\aleph_1$ fonctions de $\mathbb{N} \rightarrow \mathbb{N}$ possibles, seules au plus $\aleph_0$ peuvent être construites par des algorithmes.</p>
+</blockquote>
+
 <h3 id="mais-lorsquon-calcule-on-calcule-la-même-chose">mais lorsqu’on calcule, on calcule la même chose</h3>
 
-<p>Les règles qu’on s’est données pour écrire du pseudo-code vont être pratiques pour décrire un algorithme pour un humain. Le fait qu’une fois posées, les règles ne nécessitent pas d’intelligence pour être exécutées, les rendent même accessible à des étudiants !
+<p>Les instructions qu’on s’est données pour écrire du pseudo-code vont être pratiques pour décrire un algorithme pour un humain. Le fait qu’une fois posées, les règles ne nécessitent pas d’intelligence pour être exécutées, les rendent même accessible à des étudiants !
 Cependant les termes qu’on peut utiliser ne sont pas définis clairement, il y a de multiples façons d’interpréter les <a href="#regles-generales">4 règles générales</a>, ou de manipuler les <a href="#regles-pseudo-code">6 règles d’un pseudo-code</a>.</p>
 
 <p>On peut déjà penser aux multiples langages de programmation, allant de <a href="https://fr.wikipedia.org/wiki/Assembleur">l’assembleur</a> compréhensible par les processeurs de nos ordinateurs au <a href="https://fr.wikipedia.org/wiki/Python_(langage)">python</a> que tout le monde connait, en passant par le <a href="https://fr.wikipedia.org/wiki/Haskell">haskell</a> ou encore le <a href="https://fr.wikipedia.org/wiki/C_(langage)">C</a>.</p>
@@ -370,7 +559,7 @@ Cependant les termes qu’on peut utiliser ne sont pas définis clairement, il y
   <li>(en passant, Turing démontre qu’il existe des machines de Turing qui ne s’arrêtent jamais et que savoir si une machine de Turing va s’arrêter est <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_l%27arr%C3%AAt">indécidable</a>, ce qui est équivalent à (3))</li>
 </ol>
 
-<h2 id="conclusion">Conclusion</h2>
+<h2 id="conclusion-1">Conclusion</h2>
 
 <p>On a montré ici 3 choses fondamentales :</p>
 
