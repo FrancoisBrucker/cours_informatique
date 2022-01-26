@@ -13,6 +13,13 @@ category: cours
 
 Dans [la partie pseudo-code]({% link cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.md %}), on a donné une façon d'écrire des algorithmes. Mais est-ce la seule façon de faire ? Et, au final, que peut-on réellement faire avec un algorithme ?
 
+Ce qu'il faut retenir de cette partie :
+
+* un algorithme peut-être vue une fonction prenant **un** mot composé de 0 et de 1 en entrée et qui donne un mot composé de 0 et de 1 en sortie
+* que l'on ne peut pas manipuler de réels directement que des approximations
+* que toutes les fonctions prenant **un** mot composé de 0 et de 1 en entrée et qui donne un mot composé de 0 et de 1 en sortie ne peuvent pas être calculées par un algorithme (et savoir pourquoi)
+* qu'importe le jeu fini d'instructions utilisé pour le calcul (du moment que les instructions peuvent être décrite de façon finie) on ne pourra pas calculer plus de choses qu'en utilisant le jeu d'instructions défini dans la partie [pseudo-code]({% link cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.md %})
+
 ## algorithmes et pseudo-code
 
 Un algorithme, [on l'a vu]({% link cours/theorie-pratiques-algorithmique/algorithmie/algorithmes.md %}#algorithme), c'est :
@@ -100,7 +107,7 @@ Comme un algorithme peut-être décrit par son pseudo-code, qui est une chaîne 
 > Il ne peut y avoir plus d'algorithmes que de chaine de caractères écrites en Français.
 {: .note}
 
-Ça en fait un sacré paquet. Tentons d'être un peu plus précis. Comme chaque chaîne de caractères peut être associée à un entier en utilisant le le code [utf-8](https://fr.wikipedia.org/wiki/UTF-8) qui représente le codage de [tous les caractères possible](https://en.wikipedia.org/wiki/List_of_Unicode_characters) :
+Ça en fait un sacré paquet. Tentons d'être un peu plus précis. Comme chaque chaîne de caractères peut être associée à un entier en concaténant le code [unicode](https://fr.wikipedia.org/wiki/Unicode) associé à chaque caractère de la description de l'algorithme et des instructions utilisées (cela ne fait pas beaucoup de caractères différents si on écrit tout nos algorithmes en n'utilisant que les caracTères qui nous permettent d'écrire en Français) :
 
 > Il ne peut y avoir plus d'algorithmes que de nombres entiers.
 {: .note}
@@ -316,7 +323,7 @@ Il y a 8 sous-ensemble d'un ensemble à 3 éléments. De façon plus générale,
 {: .note}
 {% details preuve %}
 
-Si l'ensemble $E$ est fini on peut ordonner ses éléments. On a alors $E = \\{ e_1, \dots, e_n\\}$. 
+Si l'ensemble $E$ est fini on peut ordonner ses éléments. On a alors $E = \\{ e_1, \dots, e_n\\}$.
 
 Un sous ensemble $F$ de $E$ est alors égal à un $n$-uplet : $T(F) = (u_1, \dots, u_n)$ avec $u_i = 1$ si $e_i \in F$ et $u_i = 0$ sinon.
 
@@ -324,7 +331,7 @@ Comme il est clair que $T$ est une bijection entre l'ensemble des sous-ensembles
 
 {% enddetails %}
 
-Comme $2^n > n$ pour tout $n$, il y a strictement plus de sous-ensembles de $E$ que d'éléments de $E$ si $E$ est fini. Etrangement, ceci est toujours vrai si $E$ est infini : 
+Comme $2^n > n$ pour tout $n$, il y a strictement plus de sous-ensembles de $E$ que d'éléments de $E$ si $E$ est fini. Etrangement, ceci est toujours vrai si $E$ est infini :
 
 > [**Théorème de Cantor**](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Cantor) :
 >
