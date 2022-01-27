@@ -72,7 +72,7 @@
 
 </blockquote>
 
-<p>Les informaticiens adorent les <a href="https://fr.wikipedia.org/wiki/">algorithmes de tris</a>. Pas parce qu’ils aime l’ordre — loin de là — mais parce qu’il existe des millions de façons différentes de trier. Commençons par définir le problème :</p>
+<p>Les informaticiens adorent les <a href="https://fr.wikipedia.org/wiki/">algorithmes de tris</a>. Pas parce qu’ils aiment l’ordre — loin de là — mais parce qu’il existe des millions de façons différentes de trier. Commençons par définir le problème :</p>
 
 <blockquote class="note">
 
@@ -144,7 +144,7 @@
 
 <h4 id="preuve">preuve</h4>
 
-<p>La finitude de l’algorithme est clair puisqu’il n’y a qu’une boucle for avec autant d’itération que la taille du tableau passé en entrée.</p>
+<p>La finitude de l’algorithme est claire puisqu’il n’y a qu’une boucle for avec autant d’itérations que la taille du tableau passé en entrée.</p>
 
 <p>Le preuve en démontrant l’invariant de boucle : à la fin d’un itération, les $i + 1$ premiers éléments du tableau sont triés.</p>
 
@@ -157,7 +157,7 @@
 
 <ul>
   <li>L’invariant prouve que : si on arrive à la ligne 6 de l’algorithme c’est que les $n$ premiers éléments du tableau sont triés.</li>
-  <li>si on utilise le retour de la ligne 5 c’est qu’il existe $i$ avec $\mbox{tableau}[i] &lt; \mbox{tableau}[i-1]$, donc $\mbox{tableau}$ ne peut-être trié.</li>
+  <li>si on utilise le retour de la ligne 5 c’est qu’il existe $i$ avec $\mbox{tableau}[i] &lt; \mbox{tableau}[i-1]$, donc $\mbox{tableau}$ ne peut être trié.</li>
 </ul>
 
 <blockquote class="note">
@@ -178,7 +178,7 @@
   <li>un retour de fonction $\mathcal{O}(1)$</li>
 </ol>
 
-<p>Que l’on sorte par le retour de la ligne 5 oi 6, le complexité est : $\mathcal{O}(k)$. Dans le cas le pire, on parcours tout le tableau, donc :</p>
+<p>Que l’on sorte par le retour de la ligne 5 ou 6, le complexité est : $\mathcal{O}(k)$. Dans le cas le pire, on parcourt tout le tableau, donc :</p>
 
 <blockquote class="note">
   <p>La complexité de l’algorithme <code class="language-plaintext highlighter-rouge">est_trie</code> est $\mathcal{O}(n)$ avec $n$ la taille du tableau en entrée.</p>
@@ -186,7 +186,7 @@
 
 <h3 id="complexité-du-problème">complexité du problème</h3>
 
-<p>Comme toute case du tableau peut rendre le tableau non trié, on utilise l’argument de <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/complexite-probleme.html#complexite-recherche">complexité du problème de la <em>“recherche”</em></a>, un algorithme résolvant ce problème doit considérer toutes les cases du tableaux et donc une borne min du problème <em>“est trié ?”</em> est $\mathcal{O}(n)$ où $n$ est la taille du talbeau en entrée. Comme la complexité de <code class="language-plaintext highlighter-rouge">est_trie</code>  est égalemnt de $\mathcal{O}(n)$.On en conclut :</p>
+<p>Comme toute case du tableau peut rendre le tableau non trié, on utilise l’argument de <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/complexite-probleme.html#complexite-recherche">complexité du problème de la <em>“recherche”</em></a>, un algorithme résolvant ce problème doit considérer toutes les cases du tableau et donc une borne min du problème <em>“est trié ?”</em> est $\mathcal{O}(n)$ où $n$ est la taille du talbeau en entrée. Comme la complexité de <code class="language-plaintext highlighter-rouge">est_trie</code>  est égalemnt de $\mathcal{O}(n)$.On en conclut :</p>
 
 <blockquote class="note">
   <p>La complexité du problème <em>“est trié ?”</em> est de $\mathcal{O}(n)$ où $n$ est la taille du tableau en entrée</p>
@@ -196,7 +196,7 @@
 
 <h3 id="borne-maximum">borne maximum</h3>
 
-<p>La l’algorithme <code class="language-plaintext highlighter-rouge">permutations</code> de l’<a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/etude-melange.html#algo-toutes-permutations">étude sur les mélanges d’un tableau</a> permet de calculer en $\mathcal{O}((n+2)!)$ toutes les permutations d’un tableau à $n$ éléments. Comme l’algorithme <code class="language-plaintext highlighter-rouge">est_trie</code> permet de savoir si un tableau est trié en $\mathcal{O}(n)$ opérations, on peut résoudre le problème <em>“trie”</em> en énumérant toutes les permutations du tableau passé en paramètre et en vérifiant pour chaque d’entre elle s’il est trié ou non.</p>
+<p>La l’algorithme <code class="language-plaintext highlighter-rouge">permutations</code> de l’<a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/etude-melange.html#algo-toutes-permutations">étude sur les mélanges d’un tableau</a> permet de calculer en $\mathcal{O}((n+2)!)$ toutes les permutations d’un tableau à $n$ éléments. Comme l’algorithme <code class="language-plaintext highlighter-rouge">est_trie</code> permet de savoir si un tableau est trié en $\mathcal{O}(n)$ opérations, on peut résoudre le problème <em>“trie”</em> en énumérant toutes les permutations du tableau passé en paramètre et en vérifiant pour chacune d’entre elle s’il est trié ou non.</p>
 
 <p>La complexité de cet algorithme est alors le produit de la complexité de <code class="language-plaintext highlighter-rouge">permutations</code> et de <code class="language-plaintext highlighter-rouge">est_trie</code> : $\mathcal{O}(n \cdot (n+2)!)$. On en conclut :</p>
 
@@ -217,11 +217,11 @@
   <p>Alors la combinaison des deux algorithmes, de complexité le produit des deux algorithmes la constituant, est une solution au problème initial.</p>
 </blockquote>
 
-<p>Souvent les algorithme produit par la remarque précédente ne sont pas optimaux car on explore bien trop de cas.</p>
+<p>Souvent les algorithmes produits par la remarque précédente ne sont pas optimaux car on explore bien trop de cas.</p>
 
 <h3 id="borne-minimum">borne minimum</h3>
 
-<p>Si les éléments du tableau à trié sont tous différents, les permutations de celui-ci sont toutes différentes et une seule est la solution au problème “tri”.</p>
+<p>Si les éléments du tableau à trier sont tous différents, les permutations de celui-ci sont toutes différentes et une seule est la solution au problème “tri”.</p>
 
 <p>Par exemple, pour un tableau à trois éléments :</p>
 
@@ -234,7 +234,7 @@
   <li>$[3, 2, 1]$</li>
 </ol>
 
-<p>Quelque soit la forme de l’entrée (de 1 à 6), l’algorithme de tri doit rendre la forme 1 : un algorithme de tri doit pouvoir distinguer parmi toutes les permutations du tableau. Comme il y a $n!$  permutations différentes pour un tableau de taille $n$ dont éléments sont deux à deux différents, tout algorithme de tri doit pouvoir distinguer parmi $n!$ choix, en utilisant la propriété de nombre de cas à distinguer choix vue <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/complexite-probleme.html#complexite-recherche-ordonnee">dans la complexité du problème de la <em>“recherche ordonnée”</em></a>, on en déduit que :</p>
+<p>Quelque soit la forme de l’entrée (de 1 à 6), l’algorithme de tri doit rendre la forme 1 : un algorithme de tri doit pouvoir distinguer parmi toutes les permutations du tableau. Comme il y a $n!$  permutations différentes pour un tableau de taille $n$ dont les éléments sont deux à deux différents, tout algorithme de tri doit pouvoir distinguer parmi $n!$ choix, en utilisant la propriété de nombre de cas à distinguer vue <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/complexite-probleme.html#complexite-recherche-ordonnee">dans la complexité du problème de la <em>“recherche ordonnée”</em></a>, on en déduit que :</p>
 
 <p>Tout algorithme de tri d’un tableau à $n$ élément doit distinguer parmi $n!$ cas, il est donc au minimum de complexité $\mathcal{O}(\ln(n!))$. On rend cette borne min un peu plus jolie en utilisant le fait que ;</p>
 
@@ -333,7 +333,7 @@
 </pre></td>
 </tr></tbody></table></code></pre></figure>
 
-<p>L’algorithme <code class="language-plaintext highlighter-rouge">selection</code> <strong>modifie</strong> le tableau passé en paramètre. On appelle ces algorithmes <a href="https://en.wikipedia.org/wiki/In-place_algorithm">in place</a> car il ne rendent rien, mais modifient les données en entrées.</p>
+<p>L’algorithme <code class="language-plaintext highlighter-rouge">selection</code> <strong>modifie</strong> le tableau passé en paramètre. On appelle ces algorithmes <a href="https://en.wikipedia.org/wiki/In-place_algorithm">in place</a> car ils ne rendent rien, mais modifient les données en entrées.</p>
 
 </div></details>
 
@@ -356,7 +356,7 @@
   <li>la boucle <code class="language-plaintext highlighter-rouge">for</code> de la ligne 4 trouve l’indice du plus petit élément du tableau <code class="language-plaintext highlighter-rouge">tableau[i:]</code>.</li>
   <li>la ligne 7 échange le minium du tableau <code class="language-plaintext highlighter-rouge">tableau[i:]</code> avec <code class="language-plaintext highlighter-rouge">tableau[i]</code>
 </li>
-  <li>comme la boucle <code class="language-plaintext highlighter-rouge">for</code> de la ligne 2 incrémente $i$, on a l’invariant de boucle : <em>“à la fin de chaque étape $i$ de l’algorithme les $i$ plus petites valeurs du tableaux sont triées aux $i$ premiers indices du tableau”</em>
+  <li>comme la boucle <code class="language-plaintext highlighter-rouge">for</code> de la ligne 2 incrémente $i$, on a l’invariant de boucle : <em>“à la fin de chaque étape $i$ de l’algorithme les $i$ plus petites valeurs du tableau sont triées aux $i$ premiers indices du tableau”</em>
 </li>
 </ol>
 
@@ -376,7 +376,7 @@
   <li>deux affectation et quatre valeurs d’un tableau : $\mathcal{O}(1)$</li>
 </ol>
 
-<p>Le nombre d’itérations de la boucle for de la ligne 4 n’est pas constant, mais il décroit puisque $i$ augmente à chaque itération dela boucle <code class="language-plaintext highlighter-rouge">for</code>de la ligne 2. On peut alors utiliser la <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/complexite-max-min.html#regle-croissance">règle de croissance</a> pour utiliser le maximum, $n-1$, pour le calcul de la complexité.</p>
+<p>Le nombre d’itérations de la boucle for de la ligne 4 n’est pas constant, mais il décroit puisque $i$ augmente à chaque itération de la boucle <code class="language-plaintext highlighter-rouge">for</code>de la ligne 2. On peut alors utiliser la <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/complexite-max-min.html#regle-croissance">règle de croissance</a> pour utiliser le maximum, $n-1$, pour le calcul de la complexité.</p>
 
 <p>Ce qui donne une complexité de :</p>
 
@@ -392,7 +392,7 @@ C &amp; = &amp; \mathcal{O}(1) + \\
 &amp; = &amp; \mathcal{O}(n^2) \\
 \end{array}\]
 
-<p>Le nombre d’itération est constant quelque soit le tableau, on a donc :</p>
+<p>Le nombre d’itérations est constant quelque soit le tableau, on a donc :</p>
 
 <blockquote class="note">
   <p>La complexité de l’algorithme <code class="language-plaintext highlighter-rouge">selection</code> est ($n$ est la taille du tableau passé en entrée) :</p>
@@ -503,7 +503,7 @@ C &amp; = &amp; \mathcal{O}(1) + \\
 </li>
     </ul>
   </li>
-  <li>après la ligne 8, juste avant de faire une nouvelle itération de la boucle <code class="language-plaintext highlighter-rouge">for</code>. En notant <code class="language-plaintext highlighter-rouge">tableau</code> le tableau avant le début de l’itération et <code class="language-plaintext highlighter-rouge">tableau'</code> le tableau en fin d’itération’, on a : <code class="language-plaintext highlighter-rouge">tableau'[:i+1] = tableau[:j] + [tableau[i]] + tableau[j:i]</code>
+  <li>après la ligne 8, juste avant de faire une nouvelle itération de la boucle <code class="language-plaintext highlighter-rouge">for</code>. En notant <code class="language-plaintext highlighter-rouge">tableau</code> le tableau avant le début de l’itération et <code class="language-plaintext highlighter-rouge">tableau</code> le tableau en fin d’itération’, on a : <code class="language-plaintext highlighter-rouge">tableau'[:i+1] = tableau[:j] + [tableau[i]] + tableau[j:i]</code>
 </li>
 </ul>
 
@@ -563,7 +563,7 @@ C &amp; = &amp; \mathcal{O}(1) + \\
 
 </blockquote>
 
-<p>La complexité min et différente de la complexité maximale. On va donc calculer la complexité en moyenne pour connaitre la complexité pour des données <em>standard</em>.
+<p>La complexité min est différente de la complexité maximale. On va donc calculer la complexité en moyenne pour connaitre la complexité pour des données <em>standard</em>.
 Pour savoir ce que veut dire <em>standard</em>, il faut déterminer le modèle de données : prenons le équiprobable.</p>
 
 <p>Cela signifie que pour chaque itération $i$ :</p>
@@ -595,9 +595,9 @@ C_m &amp;=&amp; \mbox{complexité hors boucle for} + \sum_{i=1}^{n-1}(\mbox{comp
   <p>La <strong>complexité en moyenne</strong> de l’algorithme <code class="language-plaintext highlighter-rouge">insertion</code> est $\mathcal{O}(n^2)$ où $n$ est la taille du tableau passé en entrée.</p>
 </blockquote>
 
-<p>Le cas le meilleur arrive très rarement par rapport au cas le pire (parmi les $n!$ ordres possible, il y en a très peut qui sont presque triés).</p>
+<p>Le cas le meilleur arrive très rarement par rapport au cas le pire (parmi les $n!$ ordres possibles, il y en a très peu qui sont presque triés).</p>
 
-<p>Si l’on change le modèle de donnée et que l’on considère des tableaux <em>presque triées</em>, la complexité en moyenne va être de l’ordre de la complexité minimale, à savoir : $\mathcal{O}(n)$</p>
+<p>Si l’on change le modèle de données et que l’on considère des tableaux <em>presque triées</em>, la complexité en moyenne va être de l’ordre de la complexité minimale, à savoir : $\mathcal{O}(n)$</p>
 
 <blockquote class="note">
   <p>On utilise le tri par insertion lorsque nos données seront presque toujours déjà triées ou très peu en désordre.</p>
@@ -614,7 +614,7 @@ Pour tout $ y \in A$, il y a 50% de chances que $x \leq y$. Il y a donc en moyen
 
 <p>Le <a href="https://fr.wikipedia.org/wiki/Tri_fusion">tri fusion</a> est un tri de complexité $\mathcal{O}(n\ln(n))$ opérations où $n$ est la taille de la liste en entrée. Il fonctionne ainsi :</p>
 
-<p>Si l’on possède une fonction <code class="language-plaintext highlighter-rouge">colle(T1, T2)</code>, avec <code class="language-plaintext highlighter-rouge">T1</code> et <code class="language-plaintext highlighter-rouge">T2</code> des tableaux triés, qui rend le tri de la concaténation de <code class="language-plaintext highlighter-rouge">T1</code> et <code class="language-plaintext highlighter-rouge">T2</code>, alors la fonction récursive suivante (avec $\mid T \mid$ la longueur du talbeau $T$) est un algorithme de tri !</p>
+<p>Si l’on possède une fonction <code class="language-plaintext highlighter-rouge">colle(T1, T2)</code>, avec <code class="language-plaintext highlighter-rouge">T1</code> et <code class="language-plaintext highlighter-rouge">T2</code> des tableaux triés, qui rend le tri de la concaténation de <code class="language-plaintext highlighter-rouge">T1</code> et <code class="language-plaintext highlighter-rouge">T2</code>, alors la fonction récursive suivante (avec $\mid T \mid$ la longueur du tableau $T$) est un algorithme de tri !</p>
 
 \[\mbox{fusion}(T) = \left\{
     \begin{array}{lr}
@@ -824,7 +824,7 @@ C(n) &amp;=&amp; 2 \cdot C(\frac{n}{2}) + \mathcal{O}(n)\\
 
 <h2 id="tri-rapide">tri rapide</h2>
 
-<p>Le tri rapide est un algorithme qui a été très utilisé par le passé. On le montre encore maintenant car c’est un exemple de <em>diviser pour régner</em> et, surout, le calcul complexités est très intéressant.</p>
+<p>Le tri rapide est un algorithme qui a été très utilisé par le passé. On le montre encore maintenant car c’est un exemple de <em>diviser pour régner</em> et, surtout, le calcul complexités est très intéressant.</p>
 
 <p>Son principe est le suivant, si on souhaite trier le tableau $T$ :</p>
 

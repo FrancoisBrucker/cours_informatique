@@ -114,7 +114,7 @@
   <li>réponse : OUI ou NON</li>
 </ul>
 
-<p>Ou, si l’on cherche l’indice de valeur dans le dans ce tableau :</p>
+<p>Ou, si l’on cherche l’indice de valeur dans ce tableau :</p>
 
 <ul>
   <li>nom : recherche indice</li>
@@ -130,8 +130,8 @@
 
 <blockquote class="note">
   <ul>
-    <li>une <strong>borne minimale</strong> de complexité du problème : tout algorithme qui le résout sera de complexité supérieure ou égale (mais on ne sais pas si un tel algorithme existe)</li>
-    <li>une <strong>borne maximale</strong> de complexité du problème : le meilleur algorithme sera de complexité plus faible ou égale (mais on ne sais pas si un tel algorithme existe)</li>
+    <li>une <strong>borne minimale</strong> de complexité du problème : tout algorithme qui le résout sera de complexité supérieure ou égale (mais on ne sait pas si un tel algorithme existe)</li>
+    <li>une <strong>borne maximale</strong> de complexité du problème : le meilleur algorithme sera de complexité plus faible ou égale (mais on ne sait pas si un tel algorithme existe)</li>
     <li>la <strong>complexité du problème</strong> : la complexité maximale du meilleur algorithme permettant de résoudre le problème (cette complexité existe toujours puisqu’il existe un algorithme permettant de résoudre le problème et qu’il existe un <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/fonctions.html#nombre-algos">nombre dénombrable d’algorithmes</a>)</li>
   </ul>
 
@@ -180,7 +180,7 @@
 <p>Comme $T$ et $T’$ sont identiques sauf pour la case d’indice $i^\star$,
 si l’algorithme ne regarde pas la case $T[i^\star]$ lors de son exécution pour $T$, il ne regardera pas non plus la case $T’[i^\star]$ lors de son exécution pour $T’$. Il ne pourra donc répondre que la même chose pour $T$ et $T’$, ce qui est impossible puisque la réponse est NON pour $T$ et OUI pour $T’$.</p>
 
-<p>Notre hypothèse était fausse : un algorithme qui résout le problème de la recherche doit accéder au moins une fois à toutes les cases du tableau, il doit au moins être de complexité $\mathcal{O}(n)$</p>
+<p>Notre hypothèse était fausse : un algorithme qui résout le problème de la recherche doit accéder au moins une fois à toutes les cases du tableau, il doit au moins être de complexité $\mathcal{O}(n)$.</p>
 
 <p>Attention, ça ne veut pas dire qu’il n’existe pas des instances où l’algorithme va plus vite (si valeur est le 1er élément du tableau par exemple), mais que pour toute taille $n$ du tableau, il existe des tableaux pour lesquels on est obligé de vérifier toutes les cases (si valeur n’est pas dans tableau).</p>
 
@@ -200,7 +200,7 @@ si l’algorithme ne regarde pas la case $T[i^\star]$ lors de son exécution pou
 <p>On peut en déduire une règle générale de la complexité d’un problème :</p>
 
 <blockquote class="note">
-  <p>Si les données n’ont pas de structure particulière, très souvent, la complexité d’un problème est au moins égal à la taille de ses données</p>
+  <p>Si les données n’ont pas de structure particulière, très souvent, la complexité d’un problème est au moins égal à la taille de ses données.</p>
 </blockquote>
 
 <p>En effet, si ce n’est pas vrai, c’est que notre problème est mal posé.</p>
@@ -216,7 +216,7 @@ si l’algorithme ne regarde pas la case $T[i^\star]$ lors de son exécution pou
   <li>réponse : OUI ou NON</li>
 </ul>
 
-<p>Le problème “recherche ordonnée” est un sous problème de “recherche”, on a donc une borne maximale de $\mathcal{O}(n)$ (où $n$ est la taille du tableau) pour le résoudre puisqu’il il suffit d’utiliser l’algorithme <code class="language-plaintext highlighter-rouge">est_dans_tableau</code>. Cependant, on utilise souvent un autre algorithme : la recherche dichotomique.</p>
+<p>Le problème “recherche ordonnée” est un sous problème de “recherche”, on a donc une borne maximale de $\mathcal{O}(n)$ (où $n$ est la taille du tableau) pour le résoudre puisqu’il suffit d’utiliser l’algorithme <code class="language-plaintext highlighter-rouge">est_dans_tableau</code>. Cependant, on utilise souvent un autre algorithme : la recherche dichotomique.</p>
 
 <h4 id="algorithme-de-la-recherche-dichotomique">algorithme de la recherche dichotomique</h4>
 
@@ -285,7 +285,7 @@ si l’algorithme ne regarde pas la case $T[i^\star]$ lors de son exécution pou
       <li>
 <strong>preuve</strong>.
         <ol>
-          <li>on montre trivialement l’invariant de boucle suivant: si valeur est dans <code class="language-plaintext highlighter-rouge">tableau_trie</code>, alors sa position plus grande que <code class="language-plaintext highlighter-rouge">debut</code> et plus petite que <code class="language-plaintext highlighter-rouge">fin</code>
+          <li>on montre trivialement l’invariant de boucle suivant: si valeur est dans <code class="language-plaintext highlighter-rouge">tableau_trie</code>, alors sa position est plus grande que <code class="language-plaintext highlighter-rouge">debut</code> et plus petite que <code class="language-plaintext highlighter-rouge">fin</code>
 </li>
           <li>si l’on sort de la boucle l’invariant est toujours vérifié mais comme <code class="language-plaintext highlighter-rouge">debut</code> &gt; <code class="language-plaintext highlighter-rouge">fin</code>, valeur ne peut être dans <code class="language-plaintext highlighter-rouge">tableau_trie</code>
 </li>
@@ -358,7 +358,7 @@ C(n) &amp; = &amp; 3 \cdot \mathcal{O}(1) + \\
 
 <ul>
   <li>s’il y a 0 test, un algorithme ne peut pas distinguer de cas.</li>
-  <li>s’il y a 1 test, un algorithme peut distinguerau plus  2 cas :
+  <li>s’il y a 1 test, un algorithme peut distinguer au plus  2 cas :
     <ul>
       <li>1 cas si le test est vrai</li>
       <li>1 cas si le test est faux</li>
@@ -392,7 +392,7 @@ C(n) &amp; = &amp; 3 \cdot \mathcal{O}(1) + \\
 
 <p>Comme il y a $n+1$ cas au moins à traiter, notre algorithme sera de complexité supérieure à à $\mathcal{O}(\ln(n + 1)) = \mathcal{O}(\ln(n))$ opérations.</p>
 
-<p>AU final, le problème de la “recherche ordonnée” pour un tableau à $n$ éléments :</p>
+<p>Au final, le problème de la “recherche ordonnée” pour un tableau à $n$ éléments :</p>
 
 <ul>
   <li>une borne minimale de complexité égal à $\mathcal{O}(\ln(n))$</li>

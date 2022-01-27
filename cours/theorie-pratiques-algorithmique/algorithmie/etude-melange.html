@@ -190,12 +190,12 @@ rendre P[i]
 
 <ol>
   <li>pour <code class="language-plaintext highlighter-rouge">len(elements) == 0</code> c’est clair.</li>
-  <li>on suppose la propriété vrai pour <code class="language-plaintext highlighter-rouge">len(elements) == p</code>. Pour <code class="language-plaintext highlighter-rouge">len(elements) == p + 1</code>, par hypothèse de récurrence, le retour de la récursion <code class="language-plaintext highlighter-rouge">permutations_rec(elements_sans_premier)</code> sera l’ensemble des permutations de <code class="language-plaintext highlighter-rouge">elements[:i] + elements[i+1:]</code> pour une position <code class="language-plaintext highlighter-rouge">i</code> de <code class="language-plaintext highlighter-rouge">elements</code>. Pour un <code class="language-plaintext highlighter-rouge">i</code>  donné on obtient alors  toutes les permutations de <code class="language-plaintext highlighter-rouge">elements</code> ayant <code class="language-plaintext highlighter-rouge">elements[i]</code> en première position (on ajoute <code class="language-plaintext highlighter-rouge">elements[i]</code> à toutes les permutations de <code class="language-plaintext highlighter-rouge">elements[:i] + elements[i+1:]</code>). Comme <code class="language-plaintext highlighter-rouge">i</code> prend tous les indice de <code class="language-plaintext highlighter-rouge">elements</code>, on on obtient aufinal toutes les permutations du tableau <code class="language-plaintext highlighter-rouge">elements</code>.</li>
+  <li>on suppose la propriété vrai pour <code class="language-plaintext highlighter-rouge">len(elements) == p</code>. Pour <code class="language-plaintext highlighter-rouge">len(elements) == p + 1</code>, par hypothèse de récurrence, le retour de la récursion <code class="language-plaintext highlighter-rouge">permutations_rec(elements_sans_premier)</code> sera l’ensemble des permutations de <code class="language-plaintext highlighter-rouge">elements[:i] + elements[i+1:]</code> pour une position <code class="language-plaintext highlighter-rouge">i</code> de <code class="language-plaintext highlighter-rouge">elements</code>. Pour un <code class="language-plaintext highlighter-rouge">i</code>  donné on obtient alors  toutes les permutations de <code class="language-plaintext highlighter-rouge">elements</code> ayant <code class="language-plaintext highlighter-rouge">elements[i]</code> en première position (on ajoute <code class="language-plaintext highlighter-rouge">elements[i]</code> à toutes les permutations de <code class="language-plaintext highlighter-rouge">elements[:i] + elements[i+1:]</code>). Comme <code class="language-plaintext highlighter-rouge">i</code> prend tous les indice de <code class="language-plaintext highlighter-rouge">elements</code>, on obtient au final toutes les permutations du tableau <code class="language-plaintext highlighter-rouge">elements</code>.</li>
 </ol>
 
 <h3 id="complexite-permutations">complexité</h3>
 
-<p>La complexité de l’algorithme va dépendre de la taille $n$ du tableau <code class="language-plaintext highlighter-rouge">elements</code>. : on note sa complexité $C(n)$. Comme il est récursif, on va chercher une équation de récurrence que satisfait $C(n)$ à résoudre.</p>
+<p>La complexité de l’algorithme va dépendre de la taille $n$ du tableau <code class="language-plaintext highlighter-rouge">elements</code> : on note sa complexité $C(n)$. Comme il est récursif, on va chercher une équation de récurrence que satisfait $C(n)$ à résoudre.</p>
 
 <p>Complexité de chaque ligne :</p>
 
@@ -294,7 +294,7 @@ C(n) &amp; = &amp; n \cdot C(n-1) + \mathcal{O}(n\cdot n!)\\
   <p>L’intérêt de <code class="language-plaintext highlighter-rouge">mélange</code> est théorique. Il montre qu’il existe un algorithme pour résoudre le problème (et en donne par là également une borne max).</p>
 </blockquote>
 
-<h2 id="algorithme-fisher-yates">algorithme de fisher-yates ou de Knuth</h2>
+<h2 id="algorithme-fisher-yates">algorithme de Fisher-Yates ou de Knuth</h2>
 
 <p>L’algorithme que l’on va montrer maintenant, dit de <a href="https://fr.wikipedia.org/wiki/M%C3%A9lange_de_Fisher-Yates">fisher-yates ou encore de Knuth</a>, va également résoudre le problème “permutation”, mais de façon bien plus élégante.</p>
 
@@ -332,7 +332,7 @@ C(n) &amp; = &amp; n \cdot C(n-1) + \mathcal{O}(n\cdot n!)\\
 </tr></tbody></table></code></pre></figure>
 
 <blockquote class="a-faire">
-  <p>Testez cet algorithme pour voir s’il rend bien des permutation du tableau en entrée.</p>
+  <p>Testez cet algorithme pour voir s’il rend bien des permutations du tableau en entrée.</p>
 </blockquote>
 
 <blockquote>
@@ -341,7 +341,7 @@ C(n) &amp; = &amp; n \cdot C(n-1) + \mathcal{O}(n\cdot n!)\\
 
 <h3 id="finitude-knuth">finitude</h3>
 
-<p>Une unique boucle for sur la longueur du tableau : l’algorithme fini toujours.</p>
+<p>Une unique boucle for sur la longueur du tableau : l’algorithme finit toujours.</p>
 
 <h3 id="complexité-knuth">complexité</h3>
 
@@ -394,7 +394,7 @@ C(n) &amp; = &amp; \mathcal{O}(n) + \mathcal{O}(n) \cdot (\mathcal{O}(1) + \math
   <li>on a mis un <a href="https://docs.python.org/3/tutorial/controlflow.html#break-and-continue-statements-and-else-clauses-on-loops">break</a> dans la recherche de la permutation, pour éviter de faire des recherches inutiles.</li>
 </ul>
 
-<p>On a également a mis les constantes en majuscule, <a href="https://www.python.org/dev/peps/pep-0008/#constants">conformément au style</a></p>
+<p>On a également mis les constantes en majuscule, <a href="https://www.python.org/dev/peps/pep-0008/#constants">conformément au style</a></p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
@@ -474,21 +474,21 @@ C(n) &amp; = &amp; \mathcal{O}(n) + \mathcal{O}(n) \cdot (\mathcal{O}(1) + \math
 
 <ul>
   <li>qu’une fois un élément choisi, il n’est plus jamais déplacé</li>
-  <li>tous les éléments seront choisis une fois dans l’algorithme (il y a $n$ itérations et on choisi un élément à chaque itération)</li>
+  <li>tous les éléments seront choisis une fois dans l’algorithme (il y a $n$ itérations et on choisit un élément à chaque itération)</li>
 </ul>
 
 <h4 id="preuve-par-probabilités">preuve par probabilités</h4>
 
-<p>On va calculer la probabilité que l’élément originellement en position $i$ se retrouve en position $n-j$ à la fin de l’algorithme. Si notre tirage est équiprobable, cette probabilité doit être égal à $\frac{1}{n}$ quelquesoient $i$ et $j$.</p>
+<p>On va calculer la probabilité que l’élément originellement en position $i$ se retrouve en position $n-j$ à la fin de l’algorithme. Si notre tirage est équiprobable, cette probabilité doit être égal à $\frac{1}{n}$ quelque soient $i$ et $j$.</p>
 
 <p>Pour que cela arrive, il faut que :</p>
 
 <ul>
-  <li>l’élément n’ait pas été pris pendants la première itération : il y a $\frac{n-1}{n}$ chances que ça arrive (on ne choisit pas notre élément parmi $n$ possibles : $1-\frac{1}{n} = \frac{n-1}{n}$)</li>
-  <li>l’élément n’ait pas été pris pendants la deuxième itération : il y a $\frac{n-2}{n-1}$ chances que ça arrive (on ne choisit pas notre élément parmi $n - 1$ possibles : $1-\frac{1}{n-1} = \frac{n-2}{n-1}$)</li>
+  <li>l’élément n’ait pas été pris pendant la première itération : il y a $\frac{n-1}{n}$ chances que ça arrive (on ne choisit pas notre élément parmi $n$ possibles : $1-\frac{1}{n} = \frac{n-1}{n}$)</li>
+  <li>l’élément n’ait pas été pris pendant la deuxième itération : il y a $\frac{n-2}{n-1}$ chances que ça arrive (on ne choisit pas notre élément parmi $n - 1$ possibles : $1-\frac{1}{n-1} = \frac{n-2}{n-1}$)</li>
   <li>…</li>
-  <li>l’élément n’ait pas été pris pendants la $j-1$ ème itération : il y a $\frac{n-j+1}{n-j+2}$ chances que ça arrive (on ne choisit pas notre élément parmi $n-(j-1) +1$ possibles : $1-\frac{1}{n-j+2} = \frac{n-j+1}{n-j+2}$)</li>
-  <li>l’élément ait été pris pendants la $j$ ème itération : il y a $\frac{1}{n-j+1}$ chances que ça arrive</li>
+  <li>l’élément n’ait pas été pris pendant la $j-1$ ème itération : il y a $\frac{n-j+1}{n-j+2}$ chances que ça arrive (on ne choisit pas notre élément parmi $n-(j-1) +1$ possibles : $1-\frac{1}{n-j+2} = \frac{n-j+1}{n-j+2}$)</li>
+  <li>l’élément ait été pris pendant la $j$ ème itération : il y a $\frac{1}{n-j+1}$ chances que ça arrive</li>
 </ul>
 
 <p>De là, la probabilité que l’élément originellement en position $i$ se retrouve en position $n-j$ à la fin de l’algorithme est :</p>
@@ -509,11 +509,11 @@ C(n) &amp; = &amp; \mathcal{O}(n) + \mathcal{O}(n) \cdot (\mathcal{O}(1) + \math
   <li>lors de la première itération, on choisit un entier $k$ entre $0$ et $n-1$ et on échange l’élément d’indice $k$ avec celui d’indice $n-1$. Cet élément ne sera <strong>plus jamais changé</strong> dans la suite de l’algorithme. On en conclut que chaque élément du tableau d’entrée à la même chance d’être en dernière place de la permutation de sortie.</li>
   <li>une fois la première itération terminée, tout se passe comme si on exécutait l’algorithme avec un tableau de taille $n-1$ contenant tous les éléments du tableau de départ sauf celui placé lors de la 1ère itération.</li>
   <li>donc si l’algorithme fonctionne pour des tableau de longueur $n-1$, il fonctionne aussi pour des tableau de longueur $n$.</li>
-  <li>on peut terminer la preuve en remarquant que si le tableau a une longueur de 1, on a bien en sorite l’unique permutation du tableau en entrée.</li>
+  <li>on peut terminer la preuve en remarquant que si le tableau a une longueur de 1, on a bien en sortie l’unique permutation du tableau en entrée.</li>
 </ol>
 
 <blockquote>
-  <p>Cette preuve permet aussi de montrer que l’algorithme ne peux pas boucler et retrouver deux fois la même permutation avec 2 exécutions différentes.</p>
+  <p>Cette preuve permet aussi de montrer que l’algorithme ne peut pas boucler et retrouver deux fois la même permutation avec 2 exécutions différentes.</p>
 </blockquote>
 
 <h2 id="méthodes-de-python">méthodes de python</h2>
@@ -582,13 +582,13 @@ C(n) &amp; = &amp; \mathcal{O}(n) + \mathcal{O}(n) \cdot (\mathcal{O}(1) + \math
 
 <p><img src="/cours_informatique/assets/cours/algorithmie/melange_transposition.png" alt="mélange de transpositions" style="margin: auto;display: block"></p>
 
-<p>On remarque que les premières permutations sont surreprésentées par rapport à ce qu’on devrait avoir. On remarque aussi qui’l y a des piques réguliers que l’on observe pas avec le mélange de Knuth. Ceci est du au fait que l’on peut produire une même permutation de plusieurs manière avec cet algorithme : on produit plus facilement certaines permutations que d’autres, ce qui rend l’algorithme non équiprobable.</p>
+<p>On remarque que les premières permutations sont surreprésentées par rapport à ce qu’on devrait avoir. On remarque aussi qui’l y a des pics réguliers que l’on n’observe pas avec le mélange de Knuth. Ceci est du au fait que l’on peut produire une même permutation de plusieurs manière avec cet algorithme : on produit plus facilement certaines permutations que d’autres, ce qui rend l’algorithme non équiprobable.</p>
 
 <blockquote class="a-faire">
   <p>lisez et comprenez l’article : <a href="https://datagenetics.com/blog/november42014/index.html">https://datagenetics.com/blog/november42014/index.html</a>. Il explique pourquoi cette méthode n’est pas efficace.</p>
 </blockquote>
 
-<p>Nous allons ici juste montrer que les permutations ne sorties ne sont pas équiprobables. La probabilité que l’élément d’indice $l$ ne soit jamais choisi pendant l’algorithme est :</p>
+<p>Nous allons ici juste montrer que les permutations en sorties ne sont pas équiprobables. La probabilité que l’élément d’indice $l$ ne soit jamais choisi pendant l’algorithme est :</p>
 
 \[P_n = (\frac{n-1}{n} \cdot \frac{n-1}{n})^n\]
 
@@ -618,14 +618,14 @@ C(n) &amp; = &amp; \mathcal{O}(n) + \mathcal{O}(n) \cdot (\mathcal{O}(1) + \math
 
 <h3 id="randint-doit-être-puissant">randint doit être puissant</h3>
 
-<p>En informatique, il est impossible de tirer un nombre au hasard. On est obliger d’utiliser des suite périodique qui se comportent comme des nombre aléatoires. On appelle ces suites <a href="https://fr.wikipedia.org/wiki/G%C3%A9n%C3%A9rateur_de_nombres_pseudo-al%C3%A9atoires">pseudo-aléatoires</a>.</p>
+<p>En informatique, il est impossible de tirer un nombre au hasard. On est obligé d’utiliser des suites périodiques qui se comportent comme des nombre aléatoires. On appelle ces suites <a href="https://fr.wikipedia.org/wiki/G%C3%A9n%C3%A9rateur_de_nombres_pseudo-al%C3%A9atoires">pseudo-aléatoires</a>.</p>
 
 <p>La période de cette suite doit être très grande pour pouvoir générer toutes les permutations : la période doit être plus grande que $n!$. Sinon, certaines permutations seront sur-représentées.</p>
 
 <p>Par exemple, pour pouvoir mélanger un paquet de 52 cartes de façon équiprobable en utilisant une suite pseudo-aléatoire, il faut que sa période soit plus que grande que $52! = 80658175170943878571660636856403766975289505440883277824000000000000 \sim 2^{226}$</p>
 
 <blockquote>
-  <p>Une suite pseudo-aléatoire simple a souvent une période de $2^{64}$, ce uiq n’est vraiment pas assez grand pour pouvoir mélanger équiprobablement un jeu de carte.</p>
+  <p>Une suite pseudo-aléatoire simple a souvent une période de $2^{64}$, ce qui n’est vraiment pas assez grand pour pouvoir mélanger équiprobablement un jeu de carte.</p>
 </blockquote>
 
 <blockquote class="a-faire">
@@ -634,11 +634,11 @@ C(n) &amp; = &amp; \mathcal{O}(n) + \mathcal{O}(n) \cdot (\mathcal{O}(1) + \math
 
 <h3 id="attention-aux-humains">attention aux humains</h3>
 
-<p>La perception de ce qu’est l’aléatoire n’est pas aisée. Lorsque l’on joue à un jeu de carte par exemple, le <a href="https://fr.wikipedia.org/wiki/Biais_de_confirmation">biasi de confirmation</a> tend à se réppeler les évènement très défavorables au détriment de ceux juste <em>normaux</em>. De plus, lorsque l’on demande à des humains de tirer des nombres aléatoires, souvent ils ne le sont pas :</p>
+<p>La perception de ce qu’est l’aléatoire n’est pas aisée. Lorsque l’on joue à un jeu de cartes par exemple, le <a href="https://fr.wikipedia.org/wiki/Biais_de_confirmation">biais de confirmation</a> tend à se rappeler les évènement très défavorables au détriment de ceux juste <em>normaux</em>. De plus, lorsque l’on demande à des humains de tirer des nombres aléatoires, souvent ils ne le sont pas :</p>
 
 <ul>
-  <li>Lorsque l’ondemande à des humains de choisir un nombre aléatoirement entre 1 et 10, ils répondent le plus souvent 7 : <a href="https://www.reddit.com/r/dataisbeautiful/comments/acow6y/asking_over_8500_students_to_pick_a_random_number/">https://www.reddit.com/r/dataisbeautiful/comments/acow6y/asking_over_8500_students_to_pick_a_random_number/</a>.</li>
-  <li>lorsque l’on demande à des humains d’écrire une suite aléatoire de 200 nombres valant 0 ou 1, il y aura une sous-représentation des longues séquences avec le même nombre : celà ne <em>fait pas aléatoire</em> d’voir plein de fois le même nombre à la suite (alors que statistiquement, il faut bien que ces séquences equistent).</li>
+  <li>Lorsque l’on demande à des humains de choisir un nombre aléatoirement entre 1 et 10, ils répondent le plus souvent 7 : <a href="https://www.reddit.com/r/dataisbeautiful/comments/acow6y/asking_over_8500_students_to_pick_a_random_number/">https://www.reddit.com/r/dataisbeautiful/comments/acow6y/asking_over_8500_students_to_pick_a_random_number/</a>.</li>
+  <li>lorsque l’on demande à des humains d’écrire une suite aléatoire de 200 nombres valant 0 ou 1, il y aura une sous-représentation des longues séquences avec le même nombre : celà ne <em>fait pas aléatoire</em> d’avoir plein de fois le même nombre à la suite (alors que statistiquement, il faut bien que ces séquences existent).</li>
 </ul>
 
 <blockquote class="a-faire">
