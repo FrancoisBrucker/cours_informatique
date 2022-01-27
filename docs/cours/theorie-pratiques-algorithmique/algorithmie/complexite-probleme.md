@@ -64,7 +64,7 @@ On pourra définir pour un problème donné :
 
 > * une **borne minimale** de complexité du problème : tout algorithme qui le résout sera de complexité supérieure ou égale (mais on ne sais pas si un tel algorithme existe)
 > * une **borne maximale** de complexité du problème : le meilleur algorithme sera de complexité plus faible ou égale (mais on ne sais pas si un tel algorithme existe)
->* la **complexité du problème** : la complexité maximale du meilleur algorithme permettant de résoudre le problème (cette complexité existe toujours puisqu'il existe un algorithme permettant de résoudre le problème et qu'il existe un [nombre dénombrable d'algorithmes]({% link cours/theorie-pratiques-algorithmique/theorie/calcul.md %}#nombre-algorithmes))
+>* la **complexité du problème** : la complexité maximale du meilleur algorithme permettant de résoudre le problème (cette complexité existe toujours puisqu'il existe un algorithme permettant de résoudre le problème et qu'il existe un [nombre dénombrable d'algorithmes]({% link cours/theorie-pratiques-algorithmique/theorie/fonctions.md %}#nombre-algos))
 >
 {: .note}
 

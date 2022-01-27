@@ -12,10 +12,10 @@ Que peut ou pas faire un algorithme.
 > *L'informatique n'est pas plus la science des ordinateurs que l'astronomie n'est celle des télescopes* [E. Dijkstra](https://fr.wikipedia.org/wiki/Edsger_Dijkstra)
 {: .note}
 
-* [calcul ?]({% link cours/theorie-pratiques-algorithmique/theorie/calcul.md %})
+* [fonctions]({% link cours/theorie-pratiques-algorithmique/theorie/fonctions.md %})
+* [Algorithmes, fonctions et pseudo-code]({% link cours/theorie-pratiques-algorithmique/theorie/algorithmes-fonctions-pseudo-code.md %})
 * [machine de Turing]({% link cours/theorie-pratiques-algorithmique/theorie/machine-turing.md %})
 * [décidabilité et calculabilité]({% link cours/theorie-pratiques-algorithmique/theorie/decidabilite_calculabilite.md %})
-
 
 * algorithmes et fonctions
 

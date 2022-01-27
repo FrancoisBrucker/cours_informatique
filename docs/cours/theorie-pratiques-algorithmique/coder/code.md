@@ -32,6 +32,20 @@ Nous allons maintenant lister les bonnes pratiques fondamentales à posséder lo
 
 > Les différentes méthodes et mantra que l'on va voir sont issues de l'[XP](https://fr.wikipedia.org/wiki/Extreme_programming), qui date des années 2000 mais dont on à l'impression qu'elle a été écrite hier (voire demain tellement elle est encore novatrice).
 
+## quel langage utiliser ?
+
+> On utilise le langage qui est le plus adapté à notre problème
+{: .note}
+
+Nous utiliserons le python dans ce cours car il est très proche de l'algorithmie et qu'il est très facile de créer de petits programmes qui marchent.
+
+En revanche, si vous créez d'énormes programmes avec des milliers de lignes de codes, il vaudra peut-être mieux utiliser un langage comme le [java](https://www.java.com/fr/) ou le [C#](https://docs.microsoft.com/fr-fr/dotnet/csharp/programming-guide/). Et enfin, si vous coder des applications web, on utilisera beaucoup le [javascrpipt](https://developer.mozilla.org/fr/docs/Web/JavaScript).
+
+Bref, ne faites pas rentrer des carrés dans des ronds en utilisant un langage non adapté à votre problème. Vous allez perdre plus de temps qu'autre chose :
+
+> un langage informatique n'est **pas** une langue. C'est facile à apprendre !
+{: .note}
+
 ## noms explicites et découpage fonctionnel
 
 * des noms de variables **explicites**

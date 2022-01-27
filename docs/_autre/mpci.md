@@ -21,7 +21,8 @@ L'ensemble du cours (et d'autres choses) est disponible [là]({% link cours/theo
 
 1. [un algorithme ?]({% link cours/theorie-pratiques-algorithmique/algorithmie/algorithmes.md %})
 2. [pseudo-code]({% link cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.md %})
-3. [calcul]({% link cours/theorie-pratiques-algorithmique/theorie/calcul.md %})
+3. [fonctions]({% link cours/theorie-pratiques-algorithmique/theorie/fonctions.md %})
+4. [Algorithmes, fonctions et pseudo-code]({% link cours/theorie-pratiques-algorithmique/theorie/algorithmes-fonctions-pseudo-code.md %})
 
 #### vendredi {#v-1}
 

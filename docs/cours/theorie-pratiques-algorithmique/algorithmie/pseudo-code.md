@@ -11,7 +11,7 @@ category: cours
 >* [algorithmie/algorithmes]({% link cours/theorie-pratiques-algorithmique/algorithmie/algorithmes.md %})
 {: .chemin}
 
-Le pseudo-code est la version papier d'un algorithme. Il décrit les différentes étapes permettant de dérouler un algorithme de son initialisation à son retour. Son but est d'être compréhensible par un humain.
+La [définition générale d'un algorithme]({% link cours/theorie-pratiques-algorithmique/algorithmie/algorithmes.md %}#algorithme) ne spécifie rien sur les instructions à utiliser, juste qu'elles doivent être décrites en un nombre fini de mots. Un **pseudo-code** est une proposition d'instructions possibles pour décrire un algorithme, compréhensibles par un humain.
 
 Ce n'est cependant pas une langue car il n'y a pas de place pour l'ambiguïté ni les inventions : tout doit y être rigoureusement défini, et chaque étape élémentaire doit être réalisable en un temps fini par un humain.
 

@@ -55,9 +55,10 @@ Ce cours est composée de trois grandes parties qui s'enchevêtrent.
 
 ### théorie
 
-1. [calcul ?]({% link cours/theorie-pratiques-algorithmique/theorie/calcul.md %})
-2. [machines de Turing]({% link cours/theorie-pratiques-algorithmique/theorie/machine-turing.md %})
-3. [décidabilité et calculabilité]({% link cours/theorie-pratiques-algorithmique/theorie/decidabilite_calculabilite.md %})
+1. [fonctions]({% link cours/theorie-pratiques-algorithmique/theorie/fonctions.md %})
+2. [Algorithmes, fonctions et pseudo-code]({% link cours/theorie-pratiques-algorithmique/theorie/algorithmes-fonctions-pseudo-code.md %})
+3. [machines de Turing]({% link cours/theorie-pratiques-algorithmique/theorie/machine-turing.md %})
+4. [décidabilité et calculabilité]({% link cours/theorie-pratiques-algorithmique/theorie/decidabilite_calculabilite.md %})
 
 ### coder
 
@@ -188,18 +189,35 @@ graph.links.push({
 })
 
 graph.nodes.push({
-  id: 'calcul ?',
-  link: "{% link cours/theorie-pratiques-algorithmique/theorie/calcul.md %}",
+  id: 'fonctions',
+  link: "{% link cours/theorie-pratiques-algorithmique/theorie/fonctions.md %}",
+  group: groups.theorie
+})
+
+graph.links.push({
+  source: 'Théorie',
+  target: 'fonctions'
+})
+
+graph.links.push({
+  source: 'algorithme ?',
+  target: 'fonctions'
+})
+
+graph.nodes.push({
+  id: 'Algorithmes, fonctions et pseudo-code',
+  link: "{% link cours/theorie-pratiques-algorithmique/theorie/algorithmes-fonctions-pseudo-code.md %}",
   group: groups.theorie
 })
 graph.links.push({
-  source: 'Théorie',
-  target: 'calcul ?'
+  source: 'fonctions',
+  target: 'Algorithmes, fonctions et pseudo-code'
 })
 graph.links.push({
   source: 'pseudo-code',
-  target: 'calcul ?'
+  target: 'Algorithmes, fonctions et pseudo-code'
 })
+
 
 graph.nodes.push({
   id: 'machine de Turing',
@@ -207,7 +225,7 @@ graph.nodes.push({
   group: groups.theorie
 })
 graph.links.push({
-  source: 'calcul ?',
+  source: 'fonctions',
   target: 'machine de Turing'
 })
 
@@ -424,7 +442,6 @@ graph.links.push({
   source: "projet : exponentiation",
   target: "projet : les tris"
 })
-
 </script>
 
 <script>

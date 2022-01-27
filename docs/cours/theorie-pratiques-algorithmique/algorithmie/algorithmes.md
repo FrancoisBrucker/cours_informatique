@@ -58,9 +58,20 @@ Donald Knuth (1938-) liste, comme prérequis d'un algorithme, [cinq propriétés
 * **sortie** : *« […] des quantités ayant une relation spécifiée avec les entrées. »*
 * **rendement** : *« […] toutes les opérations que l'algorithme doit accomplir doivent être suffisamment basiques pour pouvoir être en principe réalisées dans une durée finie par un homme utilisant un papier et un crayon. »*
 
-On peut en déduire la définition suivante :
+On peut en déduire la **définition** suivante :
 
-> Un algorithme est une succession d'instructions simples et clairement définies. A partir d'entrées, il produit une sortie en un nombre fini d'instructions.
+> Un **algorithme** est une succession d'instructions simples et clairement définies. A partir d'entrées, il produit une sortie en un nombre fini d'instructions.
+{: .note}
+
+Ou, de façon équivalente :
+
+> Les **4 propriétés générales** qui définissent un algorithme :
+>
+>1. un algorithme est constitué d'un ensemble fini d'instructions, décrites avec un nombre fini de symboles
+>2. si l'algorithme produit un résultat cela doit être fait après un nombre fini d'étapes (une étape étant l'application d'une instruction) successives.
+>3. un humain doit pouvoir suivre chaque étape avec un papier et un crayon
+>4. exécuter une instruction ne doit pas nécessiter d'intelligence (à part celle pour comprendre l'instruction)
+>
 {: .note}
 
 Un algorithme est donc constitué de trois parties :
@@ -74,14 +85,15 @@ Un algorithme est donc constitué de trois parties :
 La définition très générale d'un algorithme se décline usuellement sous trois formes :
 
 1. [pseudo-code]({% link cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.md %}) : l'écriture (sans ordinateur) d'algorithmes en utilisant un nombre restreint d'instructions précisément définies. Un pseudo-code n'est pas directement fait pour être exécuté par un ordinateur, même si l'on peut utiliser un langage de programmation pour décrire notre code. Le but ici est de résoudre un problème donné avec un algorithme utilisant le moins d'instructions possibles.
-2. [calcul]({% link cours/theorie-pratiques-algorithmique/theorie/calcul.md %}). Un algorihtme est vu comme une fonction qui calcule un nombre. Le but est ici de comprendre ce que peuvent faire les algorithmes, quels sont les problèmes qu'ils peuvent résoudre.
+2. [fonctions]({% link cours/theorie-pratiques-algorithmique/theorie/fonctions.md %}). Un algorithme est vu comme une fonction qui calcule un nombre. Le but est ici de comprendre ce que peuvent faire les algorithmes, quels sont les problèmes qu'ils peuvent résoudre.
 3. [code]({% link cours/theorie-pratiques-algorithmique/coder/code.md %}) : l'écriture d'un programme pouvant s'exécuter sur un ordinateur. Le but sera ici de faire en sorte de vérifier que le code correspond bien au pseudo-code et — surtout — de maintenir son fonctionnement au court du temps.
 
 Ces trois formes ont des buts différents, mais on ne peut exceller dans l'une sans connaitre les autres. Tout algorithmicien doit avoir de bonnes connaissances théoriques sur ce que peut calculer  un ordinateur et — tôt ou tard — il devra programmer ses algorithmes ; tout développeur doit avoir des connaissances fortes en algorithmie pour pouvoir écrire du code performant.
 
+
 ## étude
 
-Quelque-soit la forme que prendra vos algorithmes (pseudo-code, programme ou fonction), il faudra toujours vérifier qu'il fait bien ce qu'on attend de lui. Ainsi :
+Quelque-soit la forme que prendra vos algorithmes (pseudo-code, code ou calcul), il faudra **toujours** vérifier qu'il fait bien ce qu'on attend de lui. Ainsi :
 
 > Pour chaque algorithme il faudra :
 >

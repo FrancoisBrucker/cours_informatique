@@ -8,11 +8,11 @@ category: cours
 >
 > prérequis :
 >
-> * [calcul]({% link cours/theorie-pratiques-algorithmique/theorie/calcul.md %})
+> * [fonctions]({% link cours/theorie-pratiques-algorithmique/theorie/fonctions.md %})
 >
 {: .chemin}
 
-La [machine de Turing](https://fr.wikipedia.org/wiki/Machine_de_Turing) est une façon simple d'implémenter les [4 règles générales d'un algorithme]({% link cours/theorie-pratiques-algorithmique/theorie/calcul.md %}#regles-generales). Turing lui-même a montré que :
+La [machine de Turing](https://fr.wikipedia.org/wiki/Machine_de_Turing) est une façon simple d'implémenter les [4 règles générales d'un algorithme]({% link cours/theorie-pratiques-algorithmique/theorie/algorithmes-fonctions-pseudo-code.md %}#regles-generales). Turing lui-même a montré que :
 
 > La machine de Turing permet exactement de calculer tout ce qu'on peut faire avec un [pseudo-code]({% link cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.md %}#regles).
 {: .note}
@@ -502,7 +502,7 @@ Son frère lui dit alors : " Tu la racontes mal !"
 
 Enfin :
 
-> la simplicité de son fonctionnement et la puissance de ce qu'elle calcule convainc (les informaticiens de tous les pays) que tout ce qu'un humain, une machine, ou encore un système physique peut calculer (c'est à dire en suivant des opérations que l'on peut décrire en un nombre fini d'opérations) est exactement égal à ce qu'une machine de Turing peut calculer. C'est ce qu'on appelle [la thèse de Church-Turing](https://plato.stanford.edu/entries/church-Turing/#ReasForAcceThes).
+> la simplicité de son fonctionnement et la puissance de ce qu'elle calcule convainc (les informaticiens de tous les pays) que tout ce qu'un humain, une machine, ou encore un système physique peut calculer (c'est à dire en suivant des opérations que l'on peut décrire en un nombre fini d'opérations) est exactement égal à ce qu'une machine de Turing peut calculer. C'est ce qu'on appelle [la thèse de Church-Turing](https://plato.stanford.edu/entries/turing-machine/#ThesDefiAxioTheo).
 {: .note}
 
 Dans toute la suite de ce cours, on supposera la thèse de Church-Turing vraie et on parlera indifféremment d'algorithme, de pseudo-code ou encore de machine de Turing de façon équivalente.

@@ -181,7 +181,7 @@ def diag(x):
         return 1
 ```
 
-Tout comme [la preuve du théorème de Cantor]({% link cours/theorie-pratiques-algorithmique/theorie/calcul.md %}#nombre-fonction) cette nouvelle machine va tout casser :
+Tout comme [la preuve du théorème de Cantor]({% link cours/theorie-pratiques-algorithmique/theorie/fonctions.md %}#nb-ss-ensemble-N) cette nouvelle machine va tout casser :
 
 1. `diag(x)` ne va s'arrêter que si `halt(x, x)` est faux
 2. `halt(<diag>, x)` va répondre 1 que si `diag(x)` s'arrête
@@ -208,7 +208,7 @@ Le théorème d'indécidabilité de l'arrêt de machine de Turing est fondamenta
 
 La décidabilité cherche à reconnaitre des solutions d'un problème avec un algorithme. La calculabilité utilise la sortie d'une machine pour calculer des valeurs.
 
-[On l'a vu]({% link cours/theorie-pratiques-algorithmique/theorie/calcul.md %}#nombre-fonction), il existe bien plus de fonctions que d'algorithmes. On peut maintenant essayer d'y voir un peu plus clair.
+[On l'a vu]({% link cours/theorie-pratiques-algorithmique/theorie/fonctions.md %}#nombre-fonction), il existe bien plus de fonctions que d'algorithmes. On peut maintenant essayer d'y voir un peu plus clair.
 
 ### fonctions calculables
 
@@ -265,7 +265,7 @@ Réciproquement, soit $M$ un décideur sur $\\{ (a, f(a) \mid a \in \\{0, 1\\}^\
 
 {% enddetails %}
 
-### fonctions non calculables
+### fonctions non calculables {#fct-non-calculable}
 
 Comme il suffit d'exhiber un algorithme pour montrer qu'une fonction est calculable, presque toutes les fonctions auxquelles on peut penser le sont. Pour trouver des fonctions non calculables, il faut chercher des exemples tordus, le plus plus souvent en lien avec le problème de l'arrêt de la machine.
 
@@ -365,7 +365,7 @@ Par exemple, $\pi$ est calculable en utilisant [la série de Leibniz de $\pi$](h
 
 ### réels non calculables
 
-On l'[a démontré]({% link cours/theorie-pratiques-algorithmique/theorie/calcul.md %}#r-et-n), il y a beaucoup plus de réels que de nombres entiers et il y a au plus autant d'algorithmes différents que de nombres entiers. Il y a donc de très nombreux réels qu'on ne peut pas calculer, et beaucoup plus qu'on ne peux en calculer.
+On l'[a démontré]({% link cours/theorie-pratiques-algorithmique/theorie/fonctions.md %}#r-et-n), il y a beaucoup plus de réels que de nombres entiers et il y a au plus autant d'algorithmes différents que de nombres entiers. Il y a donc de très nombreux réels qu'on ne peut pas calculer, et beaucoup plus qu'on ne peux en calculer.
 
 Il est cependant dur d'en trouver un car tout ceux auxquels on peut penser sont soit des limites de suites, soit combinaison de fonctions calculables... Les exemples de nombres non calculables sont donc tordus.
 
