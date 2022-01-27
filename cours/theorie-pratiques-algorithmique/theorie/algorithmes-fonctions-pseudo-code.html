@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Algorithmes, fonctions et pseudo-code | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0">
+<meta property="og:title" content="Algorithmes, fonctions et pseudo-code">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille.">
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille.">
+<link rel="canonical" href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/algorithmes-fonctions-pseudo-code.html">
+<meta property="og:url" content="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/algorithmes-fonctions-pseudo-code.html">
+<meta property="og:site_name" content="cours d’informatique">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Algorithmes, fonctions et pseudo-code">
+<script type="application/ld+json">
+{"description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/algorithmes-fonctions-pseudo-code.html","headline":"Algorithmes, fonctions et pseudo-code","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css">
+
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css">
+
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique">
+<script>MathJax={"tex":{"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["\\[","\\]"]]},"svg":{"fontCache":"global"},"svg":{"fontCache":"global"}}</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<header class="site-header" role="banner">
+
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/cours_informatique/">cours d'informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav>
+</div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Algorithmes, fonctions et pseudo-code</h1>
+  </header>
+
+  <div class="post-content">
+    <blockquote class="chemin">
+  <p><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/">Théorie et pratiques algorithmique</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/">théorie</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/algorithmes-fonctions-pseudo-code.html">Algorithmes, fonctions et pseudo-code</a></p>
+
+  <p>prérequis :</p>
+
+  <ul>
+    <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/fonctions.html">fonctions</a></li>
+    <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.html">pseudo-code</a></li>
+  </ul>
+</blockquote>
+
+<p>La partie <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/fonctions.html">fonctions</a> montre qu’un algorithme peut être vu comme une fonction particulière de $\mathbb{N}$ dans $\mathbb{N}$, indépendamment des instructions utilisées.</p>
+
+<p>La partie <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.html">pseudo-code</a> quant-a-elle défini un jeu d’instruction utilisable pour créer des algorithmes mais ne dit rien sur l’exhaustivité de ce jeu d’instruction. Existe-t-il des algorithmes que l’on ne peut pas écrire sous la forme d’un pseudo-code ?</p>
+
+<p>La réponse est : <em>on ne sait pas mais on pense que ce n’est pas possible</em>:</p>
+
+<blockquote class="note">
+  <p><a href="https://plato.stanford.edu/entries/turing-machine/#ThesDefiAxioTheo">la thèse de Church-Turing</a> stipule que pseudo-code et algorithmes sont deux notions équivalentes.</p>
+</blockquote>
+
+<p>Nous ne démontrerons bien sur pas dans cette partie la thèse de Church-Turing, mais nous essayerons d’en détailler un peu plus les contours.</p>
+
+<p>Et au final, dans la suite de ce cours :</p>
+
+<blockquote class="attention">
+  <p>On supposera la thèse de Church-Turing vraie et on parlera indifféremment d’algorithme, de pseudo-code ou encore de machine de Turing de façon équivalente.</p>
+</blockquote>
+
+<h2 id="les-multiples-faces-dun-algorithme">les multiples faces d’un algorithme</h2>
+
+<p>On montre ici que tout code ou pseudo-code est équivalent à une machine de Turing et qu’on se demande très fort si ce n’est pas aussi le cas pour les fonctions.</p>
+
+<h3 id="algorithmes-et-fonctions">algorithmes et fonctions</h3>
+
+<p>En utilisant juste la définition d’un algorithme, <a href="%5Bfonctions%5D(/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/fonctions.html)">on a vu</a> qu’un algorithme est : une fonction particulière de $\mathbb{N}$ dans $\mathbb{N}$.</p>
+
+<p>Il y a même bien plus de fonctions qui ne sont pas des algorithmes que de fonctions qui le sont. Il est cependant difficile d’en exhiber une car montrer un objet c’est le caractériser, donc bien souvent le construire : c’est à dire le produire à partir d’un algorithme.</p>
+
+<p>Notre quotidien est remplie de fonctions calculable par un algorithme.</p>
+
+<h3 id="algorithmes-et-pseudo-code">algorithmes et pseudo-code</h3>
+
+<p>Un algorithme, <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/algorithmes.html#algorithme">on l’a aussi vu</a>, c’est  :</p>
+
+<blockquote class="note">
+  <p>Un <strong>algorithme</strong> est une succession d’instructions simples et clairement définies. A partir d’entrées, il produit une sortie en un nombre fini d’instructions.</p>
+</blockquote>
+
+<p>Un <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.html#regles">pseudo-code</a> est ainsi un algorithme particulier, ses <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.html#regles">instructions</a> respectant bien la définition générale ci-dessus.</p>
+
+<p>On peut même montrer que les règles d’un pseudo-code peuvent être réduites à un ensemble bien plus petit :</p>
+
+<blockquote class="note">
+  <p>On peut ramener l’ensemble des <a href="https://en.wikipedia.org/wiki/Structured_program_theorem">instructions d’un pseudo-code</a> (même si ce sera plus compliqué d’écrire le code) à trois types d’instructions et à trois façon de les exécuter.</p>
+
+  <p>Une <strong>instruction</strong>  est soit :</p>
+
+  <ul>
+    <li>une affectation d’un entier (voir même juste un bit) à une variable</li>
+    <li>une lecture d’une variable</li>
+    <li>un test d’égalité entre deux variables</li>
+  </ul>
+
+  <p>Un pseudo-code doit pouvoir :</p>
+
+  <ul>
+    <li>exécuter une instruction puis une autre, <strong>séquentiellement</strong>
+</li>
+    <li>exécuter une instruction si un test d’égalité est vrai</li>
+    <li>exécuter un bloc d’instructions tant qu’un test d’égalité est vrai</li>
+  </ul>
+</blockquote>
+
+<p>Tous les pseudo-codes utilisant les 6 règles ci-dessus auront alors la même expressivité (on pourra faire exactement les mêmes choses) que ceux utilisant <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.html#regles">les instruction d’un pseudo-code</a>, ce sera juste plus long et compliqué à écrire, c’est pourquoi leur intérêt est uniquement théorique.</p>
+
+<h3 id="algorithmes-et-code">algorithmes et code</h3>
+
+<p>Il existe de nombreux langages de programmation, allant de <a href="https://fr.wikipedia.org/wiki/Assembleur">l’assembleur</a> compréhensible par les processeurs de nos ordinateurs au <a href="https://fr.wikipedia.org/wiki/Python_(langage)">python</a> que tout le monde connait, en passant par le <a href="https://fr.wikipedia.org/wiki/Haskell">haskell</a> ou encore le <a href="https://fr.wikipedia.org/wiki/C_(langage)">C</a>.</p>
+
+<p>On trouve même des langages désignées pour être les plus simples possibles (appelés <a href="https://fr.wikipedia.org/wiki/Langage_de_programmation_exotique">turing tarpit</a>) tout en étant aussi expressif que le python. Le plus célèbre d’entre eux est le <a href="https://fr.wikipedia.org/wiki/Brainfuck">brainfuck</a>.</p>
+
+<blockquote>
+  <p><em>fun fact</em> : on peut utiliser aussi certains jeu comme langage de programmation comme <a href="https://www.factorio.com/">factorio</a> (l’algorithme de tri <a href="https://www.youtube.com/watch?v=ts5EKp9w4TU">quicksort</a>), ou encore <a href="https://www.minecraft.net/">minecraft</a> (<a href="https://www.youtube.com/watch?v=uGug-4xkw6M">une calculatrice</a>).</p>
+</blockquote>
+
+<p>Tous ces langages respectent les 6 règles ci-dessus :</p>
+
+<blockquote class="note">
+  <p>On peut faire exactement la même chose avec chacun de ces langages et avec tout algorithme décrit par son pseudo-code</p>
+</blockquote>
+
+<h3 id="algorithme-et-machine-de-turing">algorithme et machine de Turing</h3>
+
+<p>Le jeu d’instruction minimale qui permet d’obtenir les 6 règles ci-dessus est la <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/machine-turing.html">machine de Turing</a> :</p>
+
+<blockquote class="note">
+  <p>On peut écrire tout pseudo-code en utilisant une machine de Turing et réciproquement</p>
+</blockquote>
+
+<p>C’est ainsi un outil simple qui capture merveilleusement les différentes possibilités d’écrire un algorithme. On ne l’utilisera presque jamais directement (autant utiliser un pseudo-code puisque c’est équivalent) mais la machine de Turing est à la fois :</p>
+
+<ul>
+  <li>un outil puissant de démonstration</li>
+  <li>un jeu d’instruction pour créer des algorithmes</li>
+  <li>un ensemble minimal permettant de créer tous les pseudo-code</li>
+</ul>
+
+<h3 id="thèse-de-church-turing">thèse de Church-Turing</h3>
+
+<p>Toutes les tentatives de généraliser le modèle (essayer de calculer plus de fonctions que celle atteignable pas un pseudo-code) ou de supprimer des règles tout en en conservant l’expressivité ont échouées. Ceci conforte l’idée selon la quelle :</p>
+
+<blockquote class="note">
+  <p>Algorithme et machine de Turing sont deux modèles équivalents</p>
+</blockquote>
+
+<p>C’est ce qu’on appelle <a href="https://plato.stanford.edu/entries/turing-machine/#ThesDefiAxioTheo">la thèse de Church-Turing</a> : tout ce qu’un humain, une machine, ou encore un système physique peut calculer  est exactement égal à ce qu’une machine de Turing peut calculer.</p>
+
+<h2 id="algorithmes-et-démonstration-mathématiques">algorithmes et démonstration mathématiques</h2>
+
+<p>On n’en parlera pas trop dans ce cours (à moins que vous me le demandiez très fort) mais, en gros, les mathématiques sont une partie de l’informatique (certains diraient même, et réciproquement. Des mathématiciens certainement…).</p>
+
+<p>De façon plus précise on a la suite d’équivalences :</p>
+
+<ol>
+  <li>faire une démonstration consiste — à partir d’une série finie d’axiomes — à effectuer une suite finie de déductions pour parvenir à un résultat. (<a href="https://fr.wikipedia.org/wiki/Aristote#Enqu%C3%AAte,_d%C3%A9monstration_et_syllogisme">Aristote</a>, en -350 environ)</li>
+  <li>(1) est équivalent à démontrer à l’aide d’une suite finie de déductions qu’une proposition logique est vraie (<a href="https://fr.wikipedia.org/wiki/Syst%C3%A8me_%C3%A0_la_Hilbert">Hilbert</a>, début XXe siècle)</li>
+  <li>(en passant, <a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8mes_d%27incompl%C3%A9tude_de_G%C3%B6del">Gödel</a>, en 1931, démontre qu’il existe des propositions logiques qui sont vraies mais qu’il est impossible de démontrer)</li>
+  <li>
+<a href="https://fr.wikipedia.org/wiki/Correspondance_de_Curry-Howard">Curry puis Howard qui généralise</a>, en 1950 et 1980, montrent que (2) est équivalent à écrire en terme de <a href="https://fr.wikipedia.org/wiki/Lambda-calcul">$\lambda$-calcul</a>
+</li>
+  <li>
+<a href="https://fr.wikipedia.org/wiki/Alan_Turing">Turing</a> démontre en 1937, que (4) est équivalent à écrire une machine de Turing.</li>
+  <li>(en passant, Turing démontre qu’il existe des machines de Turing qui ne s’arrêtent jamais et que savoir si une machine de Turing va s’arrêter est <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_l%27arr%C3%AAt">indécidable</a>, ce qui est équivalent à (3))</li>
+</ol>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Code, pseudo-code et machine de Turing sont un seul et même modèle.</p>
+
+<p>On pense même très fort que c’est exactement la même chose qu’un algorithme (<a href="https://plato.stanford.edu/entries/turing-machine/#ThesDefiAxioTheo">la thèse de Church-Turing</a>) : tout ce qui peut se décrire de façon finie peut se décrire comme une machine de Turing ou un pseudo-code.</p>
+
+<blockquote class="attention">
+  <p>En bons informaticiens, c’est exactement ce que l’on supposera par la suite : on utilisera indifféremment les notions d’algorithme, de pseudo-code, de code ou encore de machine de Turing.</p>
+</blockquote>
+
+<p>Enfin, cette équivalence  signifie que l’on doit toujours utiliser le formalisme (ou langage) qui est le plus simple pour résoudre le problème qu’on s’est fixé :</p>
+
+<ul>
+  <li>d’algorithmie : on utilisera les mots du pseudo-code les plus adaptés, dans le respect des 4 règles fondamentales (chaque instruction doit être simple ou explicitée)</li>
+  <li>de code : on utilisera le langage qui est plus adapté à notre problème car ils ont tous leurs spécificités. Il est donc impératif d’apprendre plus d’un langage et surtout d’apprendre à en changer quand on change de problème à résoudre.</li>
+  <li>théorique : on utilisera <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/machine-turing.html">la machine de Turing</a>, modèle théorique simple qui permet d’appréhender tout ce qui est calculable.</li>
+</ul>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d'informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d'informatique</li>
+</ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+<ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d'informatique à l'école centrale marseille.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

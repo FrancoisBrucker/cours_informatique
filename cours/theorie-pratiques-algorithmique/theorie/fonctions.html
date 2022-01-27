@@ -6,19 +6,19 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>Algorithme : calcul | cours d’informatique</title>
+<title>Algorithme et fonctions | cours d’informatique</title>
 <meta name="generator" content="Jekyll v4.2.0">
-<meta property="og:title" content="Algorithme : calcul">
+<meta property="og:title" content="Algorithme et fonctions">
 <meta property="og:locale" content="en_US">
 <meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille.">
 <meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille.">
-<link rel="canonical" href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/calcul.html">
-<meta property="og:url" content="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/calcul.html">
+<link rel="canonical" href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/fonctions.html">
+<meta property="og:url" content="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/fonctions.html">
 <meta property="og:site_name" content="cours d’informatique">
 <meta name="twitter:card" content="summary">
-<meta property="twitter:title" content="Algorithme : calcul">
+<meta property="twitter:title" content="Algorithme et fonctions">
 <script type="application/ld+json">
-{"description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/calcul.html","headline":"Algorithme : calcul","@context":"https://schema.org"}</script>
+{"description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/fonctions.html","headline":"Algorithme et fonctions","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
@@ -54,33 +54,19 @@
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Algorithme : calcul</h1>
+    <h1 class="post-title">Algorithme et fonctions</h1>
   </header>
 
   <div class="post-content">
     <blockquote class="chemin">
-  <p><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/">Théorie et pratiques algorithmique</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/">théorie</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/calcul.html">calcul</a></p>
+  <p><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/">Théorie et pratiques algorithmique</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/">théorie</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/fonctions.html">fonctions</a></p>
 
   <p>prérequis :</p>
 
   <ul>
-    <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.html">algorithmie/pseudo-code</a></li>
+    <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/algorithmes.html">algorithmes</a></li>
   </ul>
 </blockquote>
-
-<p>Dans <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.html">la partie pseudo-code</a>, on a donné une façon d’écrire des algorithmes. Mais est-ce la seule façon de faire ? Et, au final, que peut-on réellement faire avec un algorithme ?</p>
-
-<p>Ce qu’il faut retenir de cette partie :</p>
-
-<ul>
-  <li>un algorithme peut-être vue une fonction prenant <strong>un</strong> mot composé de 0 et de 1 en entrée et qui donne un mot composé de 0 et de 1 en sortie</li>
-  <li>que l’on ne peut pas manipuler de réels directement que des approximations</li>
-  <li>que toutes les fonctions prenant <strong>un</strong> mot composé de 0 et de 1 en entrée et qui donne un mot composé de 0 et de 1 en sortie ne peuvent pas être calculées par un algorithme (et savoir pourquoi)</li>
-  <li>qu’importe le jeu fini d’instructions utilisé pour le calcul (du moment que les instructions peuvent être décrite de façon finie) on ne pourra pas calculer plus de choses qu’en utilisant le jeu d’instructions défini dans la partie <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.html">pseudo-code</a>
-</li>
-</ul>
-
-<h2 id="algorithmes-et-pseudo-code">algorithmes et pseudo-code</h2>
 
 <p>Un algorithme, <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/algorithmes.html#algorithme">on l’a vu</a>, c’est :</p>
 
@@ -88,23 +74,21 @@
   <p>Un algorithme est une succession d’instructions simples et clairement définies. A partir d’entrées, il produit une sortie en un nombre fini d’instructions.</p>
 </blockquote>
 
-<p>La définition est cependant très générale et ne pose pas vraiment la question du choix des instructions, ni de comment réaliser effectivement ce calcul. Tentons de le faire (voir <a href="https://fr.wikipedia.org/wiki/Th%C3%A8se_de_Church#Formulation_de_la_th%C3%A8se">la page wikipedia sur la calculabilité</a>) :</p>
+<p>Nous allons dans cette partie, sans aucun présupposé sur les instructions à utiliser, montrer que l’on peut préciser ce qu’est un algorithme sous la forme de fonctions, juste en utilisant la finitude de sa description.</p>
 
-<blockquote class="note">
-  <p>Les <strong>4 propriétés générales</strong> qui définissent une instruction :</p>
+<p>Ce qu’il faut retenir de cette partie :</p>
 
-  <ol>
-    <li>un algorithme est constitué d’un ensemble fini d’instructions, décrites avec un nombre fini de symboles</li>
-    <li>si l’algorithme produit un résultat cela doit être fait après un nombre fini d’étapes (une étape étant l’application d’une instruction) successives.</li>
-    <li>un humain doit pouvoir suivre chaque étape avec un papier et un crayon</li>
-    <li>exécuter une instruction ne doit pas nécessiter d’intelligence (à part celle pour comprendre l’instruction)</li>
-  </ol>
+<ul>
+  <li>un algorithme peut-être vue une fonction prenant <strong>un</strong> mot composé de 0 et de 1 en entrée et qui donne un mot composé de 0 et de 1 en sortie</li>
+  <li>que l’on ne peut pas manipuler de réels directement que des approximations</li>
+  <li>que toutes les fonctions prenant <strong>un</strong> mot composé de 0 et de 1 en entrée et qui donne un mot composé de 0 et de 1 en sortie ne peuvent pas être calculées par un algorithme (et savoir pourquoi)</li>
+</ul>
 
-</blockquote>
+<h2 id="objets-et-instructions-dun-algorithme">objets et instructions d’un algorithme</h2>
 
-<p>Le terme <strong>fini</strong> est crucial : pour qu’un humain comprenne, et surtout puisse agir, il ne faut pas qu’il y ait un nombre infini de choses à regarder (chaque chose à faire prend un temps de réflexion non nul, une instruction contenant un nombre infini n’est humainement pas réalisable).</p>
+<p>Le terme <strong>fini</strong> de la définition d’un algorithme est crucial : pour qu’un humain comprenne, et surtout puisse agir, il ne faut pas qu’il y ait un nombre infini de choses à regarder (chaque chose à faire prend un temps de réflexion non nul, une instruction contenant un nombre infini n’est humainement pas réalisable).</p>
 
-<h3 id="instruction-dun-algorithme">instruction d’un algorithme</h3>
+<h3 id="instructions-dun-algorithme">instructions d’un algorithme</h3>
 
 <p>On en déduit la définition (très générale) d’une instruction d’un algorithme :</p>
 
@@ -146,40 +130,11 @@ le veut, du moment qu’ils ne soient pas infini.</p>
 
 </blockquote>
 
-<h3 id="regles-pseudo-code">instructions d’un pseudo-code</h3>
+<h2 id="nombre-algos">nombre d’algorithmes</h2>
 
-<p>Un <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.html#regles">pseudo-code</a> est un algorithme particulier. Ses <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.html#regles">instructions</a> respectent bien les 4 propriétés générales. On peut cependant montrer qu’elles peuvent être réduites à un ensemble bien plus petit :</p>
+<p>Comme un algorithme peut-être décrit par une description finie de son déroulé, qu’il ne peut utiliser qu’un nombre fini d’instructions et que chaque instruction doit être elle-même décrite de façon finie, on en déduit qu’un algorithme est une chaîne de caractères particulière (qu’on peut limiter aux mots Français si on a envie).</p>
 
-<blockquote class="note">
-  <p>On peut ramener l’ensemble des <a href="https://en.wikipedia.org/wiki/Structured_program_theorem">instructions d’un pseudo-code</a> (même si ce sera plus compliqué d’écrire le code) à trois types d’instructions et à trois façon de les exécuter.</p>
-
-  <p>Une <strong>instruction</strong>  est soit :</p>
-
-  <ul>
-    <li>une affectation d’un entier (voir même juste un bit) à une variable</li>
-    <li>une lecture d’une variable</li>
-    <li>un test d’égalité entre deux variables</li>
-  </ul>
-
-  <p>Un pseudo-code doit pouvoir :</p>
-
-  <ul>
-    <li>exécuter une instruction puis une autre, <strong>séquentiellement</strong>
-</li>
-    <li>exécuter une instruction si un test d’égalité est vrai</li>
-    <li>exécuter un bloc d’instructions tant qu’un test d’égalité est vrai</li>
-  </ul>
-</blockquote>
-
-<p>Tous les pseudo-codes utilisant les 6 règles ci-dessus auront la même expressivité (on pourra faire exactement les mêmes choses) que ceux utilisant <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.html#regles">les instruction d’un pseudo-code</a>, ce sera juste plus long et compliqué à écrire, c’est pourquoi leur intérêt est uniquement théorique.</p>
-
-<h3 id="equi-algo-pseudo-code">équivalence entre algorithme et pseudo-code ?</h3>
-
-<p>On est intimement convaincu (c’est ce qu’on appelle la <a href="https://fr.wikipedia.org/wiki/Th%C3%A8se_de_Church">thèse de Church-Turing</a>) que les instructions d’un pseudo-code sont équivalentes aux instructions d’un algorithme, c’est çà dire que toutes les instructions que l’on pourrait inventer en un nombre fini de symboles peuvent s’écrire sous la forme des instructions d’un pseudo-code.</p>
-
-<h3 id="nombre-dalgorithmes">nombre d’algorithmes</h3>
-
-<p>Comme un algorithme peut-être décrit par son pseudo-code, qui est une chaîne de caractères (qu’on peut limiter aux mots Français si on a envie) :</p>
+<p>De là :</p>
 
 <blockquote class="note">
   <p>Il ne peut y avoir plus d’algorithmes que de chaine de caractères écrites en Français.</p>
@@ -193,7 +148,7 @@ le veut, du moment qu’ils ne soient pas infini.</p>
 
 <h2 id="fonctions">fonctions</h2>
 
-<p>Un algorithme, représenté par son pseudo code, a des entrées et une sortie : c’est une fonction. D’après ce qui précède, on a donc :</p>
+<p>Un algorithme, représenté par sa description, a des entrées et une sortie : c’est une fonction. D’après ce qui précède, on a donc :</p>
 
 <blockquote class="note">
   <p>Un algorithme à $p$ entrées, dont $q$ entrées entières, $r$ entrées approximation des réels et $s$ chaînes de caractères est une fonction de :</p>
@@ -251,10 +206,14 @@ display: block; width: 200px"></p>
   <li>$(1, 1)$</li>
   <li>$(0, 2)$</li>
   <li>$(3, 0)$</li>
+  <li>$(2, 1)$</li>
+  <li>$(1, 2)$</li>
+  <li>$(0, 3)$</li>
+  <li>$(4, 0)$</li>
   <li>…</li>
 </ol>
 
-<p>L’entier associé à $(x, y)$ est alors l’ordre dans ce cheminement : on peut associer un unique entier à tout couple d’entiers et réciproquement. On en conclue que :</p>
+<p>L’entier $O((x, y))$ associé à $(x, y)$ est alors l’ordre dans ce cheminement (par exemple $O((2, 1)) = 8$) : on peut associer un unique entier à tout couple d’entiers et réciproquement ($O^{-1}(6) = (0, 2)$ par exemple). On en conclut que :</p>
 
 <blockquote class="note">
   <p>Il existe une bijection entre $\mathbb{N}^2$ et $\mathbb{N}$ : il y a autant de couples d’entiers que d’entiers.</p>
@@ -292,7 +251,7 @@ display: block; width: 200px"></p>
 
 </div></details>
 
-<p>Toute fonction de $\mathbb{N}^p$ dans $\mathbb{N}$ peut alors s’écrire comme une fonction de $\mathbb{N}$ dans $\mathbb{N}$ ce qui nous permet de dire que :</p>
+<p>La bijection entre $\mathbb{N}^p$ et $\mathbb{N}$ nous permet de dire que l’on peut indifféremment utiliser $\mathbb{N}^p$  ou $\mathbb{N}$ sans perte de généralité (on utilise la bijection pour passer de l’un à l’autre). De là, on peut dire que :</p>
 
 <blockquote class="note">
   <p>Un algorithme est une fonction de :</p>
@@ -338,27 +297,25 @@ display: block; width: 200px"></p>
 
 <p>On a démontré qu’un algorithme était une fonction de $\mathbb{N}$ dans $\mathbb{N}$ (ou, ce qui est identique, de $\{0, 1\}^\star$ dans $\{0, 1\}$). Mais c’est une fonction particulière puisque ce qu’elle procède selon un plan détaillé (des instructions) qu’elle exécute petit à petit (séquentiellement).</p>
 
-<p>On ne donnera pas ici d’exemple concret de fonction non calculable on montre juste que contrairement à une idée répandue :</p>
+<p>On ne donnera pas ici d’exemple concret de fonction qu’on ne peut pas décrire par un algorithme, on montre juste que contrairement à une idée répandue :</p>
 
 <blockquote class="note">
-  <p>Un algorithme <strong>ne peut pas</strong> tout calculer. En revanche, quelque soit le formalisme utilisé pour le calcul (le pseudo-code ou code) ils calculent tous <strong>la même chose</strong>.</p>
+  <p>Un algorithme <strong>ne peut pas</strong> tout calculer.</p>
 </blockquote>
 
-<h3 id="on-ne-calcule-pas-tout">on ne calcule pas tout</h3>
+<p>Pour cela, on va montrer qu’il existe strictement plus de fonctions que d’algorithmes.</p>
 
-<p>On va montrer qu’il existe des fonctions qui ne sont pas des algorithmes car il existe strictement plus de fonctions que d’algorithmes.</p>
-
-<p>Pour faire cela, on va procéder par étapes :</p>
+<p>On va procéder par étapes :</p>
 
 <ol>
   <li>on montre qu’il y a exactement autant de fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ que de sous ensembles de $\mathbb{N}$</li>
   <li>on montre qu’il y a strictement plus de sous-ensembles de $\mathbb{N}$ que d’éléments dans $\mathb{N}$</li>
-  <li>on conclut</li>
+  <li>on conclut puisqu’il ne peut y avoir plus d’algorithmes que de nombres entiers.</li>
 </ol>
 
 <p>On finira cette partie en montrant, pour la bonne bouche, qu’il y a autant de sous-ensembles de $\mathbb{N}$ que ne nombres réels.</p>
 
-<h4 id="fonctions-et-sous-ensembles-de-mathbbn">fonctions et sous ensembles de $\mathbb{N}$</h4>
+<h3 id="fonctions-et-sous-ensembles-de-mathbbn">fonctions et sous ensembles de $\mathbb{N}$</h3>
 
 <p>On va montrer qu’il existe autant de fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ que de sous-ensembles de $\mathbb{N}$. Pour cela on commence par montrer qu’il y en a plus puis qu’il y en a moins pour en conclure finalement qu’il y en a donc autant.</p>
 
@@ -399,7 +356,7 @@ display: block; width: 200px"></p>
   <p>Il y a autant de fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ que de sous-ensembles de $\mathbb{N}$</p>
 </blockquote>
 
-<h4 id="nombre-de-sous-ensembles-de-mathbbn">nombre de sous-ensembles de $\mathbb{N}$</h4>
+<h3 id="nb-ss-ensemble-N">nombre de sous-ensembles de $\mathbb{N}$</h3>
 
 <p>Si on prend un ensemble $E$ fini, il est clair qu’il y a strictement plus de sous-ensembles de $E$ que d’éléments dans $E$.</p>
 
@@ -468,13 +425,15 @@ display: block; width: 200px"></p>
   <p>Il y a strictement plus de fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ que d’entiers.</p>
 </blockquote>
 
-<h4 id="conclusion">conclusion</h4>
+<h3 id="nombre-fonction">conclusion</h3>
 
-<p>On a vu qu’il ne pouvait pas y avoir plus d’algorithmes que d’entiers puisque chaque algorithme a une description finie. En utilisant ce qui précède on a alors :</p>
+<p><a href="#nombre-algos">On a vu</a> qu’il ne pouvait pas y avoir plus d’algorithmes que d’entiers puisque chaque algorithme a une description finie. En utilisant ce qui précède on a alors :</p>
 
 <blockquote class="note">
   <p>Il existe des fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ qui ne peuvent pas être calculées par des algorithmes.</p>
 </blockquote>
+
+<p>On ne peut pas encore en exhiber une, mais <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/decidabilite_calculabilite.html#fct-non-calculable">ça viendra</a></p>
 
 <h4 id="r-et-n">pour la bonne bouche</h4>
 
@@ -523,7 +482,7 @@ display: block; width: 200px"></p>
   <p>Une question reste encore en suspend, mais on a pour l’instant toujours pas la réponse, c’est : y a-t-il un infini entre \aleph_0$ et \aleph_1$ ? On ne sais pas, mais on pense que non. C’est l’<a href="https://fr.wikipedia.org/wiki/Hypoth%C3%A8se_du_continu">hypothèse du continu</a>.</p>
 </blockquote>
 
-<p>Concluant en rebouclant sur nos algorithmes :</p>
+<p>Concluant en re-bouclant sur nos algorithmes :</p>
 
 <blockquote class="note">
   <p>Un algorithme est une fonction $\mathbb{N} \rightarrow \mathbb{N}$.
@@ -546,7 +505,7 @@ Cependant les termes qu’on peut utiliser ne sont pas définis clairement, il y
 <p>Le représentant de toute ces variabilités est la <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/machine-turing.html">machine de Turing</a>. C’est un outil simple qui capture merveilleusement les <a href="#regles-generales">4 règles générales</a> dans le sens où c’est <strong>et</strong> un outil puissant de démonstration <strong>et</strong> un un moyen de créer des algorithmes. C’est pourquoi la <a href="#equi-algo-pseudo-code">question sur l’équivalence entre algorithme et pseudo-code</a> est souvent écrite de cette façon  :</p>
 
 <blockquote class="note">
-  <p>On est convaincu que tout ce qu’un humain, une machine, ou encore un système physique peut calculer (c’est à dire en suivant les 4 règles générales de l’algorithme) est exactement égal à ce qu’une machine de Turing peut calculer. C’est ce qu’on appelle <a href="https://plato.stanford.edu/entries/church-Turing/#ReasForAcceThes">la thèse de Church-Turing</a></p>
+  <p>On est convaincu que tout ce qu’un humain, une machine, ou encore un système physique peut calculer (c’est à dire en suivant les 4 règles générales de l’algorithme) est exactement égal à ce qu’une machine de Turing peut calculer. C’est ce qu’on appelle <a href="https://plato.stanford.edu/entries/turing-machine/#ThesDefiAxioTheo">la thèse de Church-Turing</a></p>
 </blockquote>
 
 <p>Pour répondre à notre question initiale, <em>que peut-on calculer ?</em>, on peut maintenant répondre : ce qu’une machine de Turing peut calculer (et ce n’est pas tout, mais c’est quand même pas mal de choses).</p>
@@ -569,25 +528,14 @@ Cependant les termes qu’on peut utiliser ne sont pas définis clairement, il y
   <li>(en passant, Turing démontre qu’il existe des machines de Turing qui ne s’arrêtent jamais et que savoir si une machine de Turing va s’arrêter est <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_l%27arr%C3%AAt">indécidable</a>, ce qui est équivalent à (3))</li>
 </ol>
 
-<h2 id="conclusion-1">Conclusion</h2>
+<h2 id="conclusion">Conclusion</h2>
 
 <p>On a montré ici 3 choses fondamentales :</p>
 
 <ul>
   <li>un algorithme ne peut pas tout faire</li>
-  <li>un algorithme est une démonstration</li>
-  <li>quelque soit le langage utilisé on pourra résoudre les même problèmes</li>
+  <li>les réels n’existent pas ! Vous ne manipulez que des approximations.</li>
 </ul>
-
-<p>Ceci signifie que l’on doit toujours utiliser le formalisme (ou langage) qui est le plus simple pour résoudre le problème qu’on s’est fixé :</p>
-
-<ul>
-  <li>d’algorithmie : on utilisera les mots du pseudo-code les plus adaptés, dans le respect des 4 règles fondamentales (chaque instruction doit être simple ou explicitée)</li>
-  <li>de code : on utilisera le langage qui est plus adapté à notre problème car ils ont tous leurs spécificités. Il est donc impératif d’apprendre plus d’un langage et surtout d’apprendre à en changer quand on change de problème à résoudre.</li>
-  <li>théorique : on utilisera <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/machine-turing.html">la machine de Turing</a>, modèle théorique simple qui permet d’appréhender tout ce qui est calculable.</li>
-</ul>
-
-<p>Enfin, faites attention aux réels ! Ils n’existent pas (du moins en informatique). Vous ne manipulez que des approximations : il faut faire attention à la stabilité numérique de vos algorithmes et ne <strong>jamais</strong> tester l’égalité entre deux réels mais <strong>toujours</strong> les comparer à epsilon prêt.</p>
 
   </div>
 

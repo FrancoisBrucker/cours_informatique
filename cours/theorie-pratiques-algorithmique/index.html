@@ -125,7 +125,8 @@
 <h3 id="théorie">théorie</h3>
 
 <ol>
-  <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/calcul.html">calcul ?</a></li>
+  <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/fonctions.html">fonctions</a></li>
+  <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/algorithmes-fonctions-pseudo-code.html">Algorithmes, fonctions et pseudo-code</a></li>
   <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/machine-turing.html">machines de Turing</a></li>
   <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/decidabilite_calculabilite.html">décidabilité et calculabilité</a></li>
 </ol>
@@ -267,18 +268,35 @@ graph.links.push({
 })
 
 graph.nodes.push({
-  id: 'calcul ?',
-  link: "/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/calcul.html",
+  id: 'fonctions',
+  link: "/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/fonctions.html",
+  group: groups.theorie
+})
+
+graph.links.push({
+  source: 'Théorie',
+  target: 'fonctions'
+})
+
+graph.links.push({
+  source: 'algorithme ?',
+  target: 'fonctions'
+})
+
+graph.nodes.push({
+  id: 'Algorithmes, fonctions et pseudo-code',
+  link: "/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/algorithmes-fonctions-pseudo-code.html",
   group: groups.theorie
 })
 graph.links.push({
-  source: 'Théorie',
-  target: 'calcul ?'
+  source: 'fonctions',
+  target: 'Algorithmes, fonctions et pseudo-code'
 })
 graph.links.push({
   source: 'pseudo-code',
-  target: 'calcul ?'
+  target: 'Algorithmes, fonctions et pseudo-code'
 })
+
 
 graph.nodes.push({
   id: 'machine de Turing',
@@ -286,7 +304,7 @@ graph.nodes.push({
   group: groups.theorie
 })
 graph.links.push({
-  source: 'calcul ?',
+  source: 'fonctions',
   target: 'machine de Turing'
 })
 
@@ -503,7 +521,6 @@ graph.links.push({
   source: "projet : exponentiation",
   target: "projet : les tris"
 })
-
 </script>
 
 <script>
