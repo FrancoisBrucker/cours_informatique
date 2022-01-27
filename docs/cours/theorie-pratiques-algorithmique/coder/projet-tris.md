@@ -49,7 +49,7 @@ En reprenant le code donné dans l'[étude des tris]({% link cours/theorie-prati
 
 ## complexité
 
-Nous allons (enfin plutôt, vous allez) afficher les complexités temporelle des différents algorithmes de tri que vous avez codés. 
+Nous allons (enfin plutôt, vous allez) afficher les complexités temporelle des différents algorithmes de tri que vous avez codés.
 
 Pour faire cela, on utilisera ce que nous avons fait pendant le [projet exponentiation]({% link cours/theorie-pratiques-algorithmique/coder/projet-exponentiation.md %}).
 
@@ -58,7 +58,7 @@ Pour faire cela, on utilisera ce que nous avons fait pendant le [projet exponent
 > Créez un fichier *"mesure.py"*
 {: .a-faire}
 
-### tri par selection
+### tri par sélection
 
 > Créez dans le fichier *"mesure.py"* une fonction `temps_selection`  qui, à partir d'un tableau en entrée, rend le temps mis pour exécuter cet algorithme avec le tableau donné.
 >
@@ -76,14 +76,31 @@ Pour faire cela, on utilisera ce que nous avons fait pendant le [projet exponent
 > Dans un fichier *"main_insertion"*, affichez sur un même graphique le résultat des temps minimum et maximum mis pour trier avec `insertion`  un tableau de taille inférieure à 2000 et par pas de 10.
 {: .a-faire}
 
+La complexité minimale et maximale du tri par insertion doit différer.
+
+> vérifiez le sur avec vos mesures
+{: .a-faire}
+
+On va donc calculer la complexité en moyenne pour connaitre l'espérance de la complexité. POur cela, il faut pouvoir créer un tableau aléatoire et calculer le temps mis pour le trier. Pour éviter tout cas particulier, on fait des moyennes de mesures.
+
+> Créez dans le fichier *"mesure.py"* la fonction `temps_insertion_moyen` qui rend la moyenne de 10 temps pris pour trier avec `insertion` une permutation aléatoire du tableau en entrée.
+{: .a-faire}
+
+Pour mélanger une liste python, vous pouvez utiliser la fonction [shuffle](https://docs.python.org/3/library/random.html#random.shuffle) du module random.
+
+On peut maintenant visualiser les temps minimum, maximum et moyen de notre algorithme :
+
+> Dans le fichier *"main_insertion"*, affichez sur un graphique le résultat des temps minimum, moyens et maximum mis pour trier avec `insertion` un tableau de taille inférieure à 2000 et par pas de 10 (vous utiliserez `temps_insertion` et `temps_insertion_moyen` pour cela).
+{: .a-faire}
+
 ### tri fusion
 
-Pour mesurer une complexité moyenne, il faut pouvoir créer un tableau aléatoire et calculer le temps mis pour le trier. Pour éviter tout cas particulier, on fait des moyennes de mesures.
+Le temps min et maximum du tri fusion est le même. On a donc juste besoin de tracer la complexité moyenne de l'algorithme :
 
 > Créez dans le fichier *"mesure.py"* une fonction `temps_fusion` qui rend la moyenne de 10 temps pris pour trier avec `fusion` une permutation aléatoire du tableau en entrée.
 {: .a-faire}
 
-Pour mélanger une liste python, vous pouvez utiliser la fonction [shuffle](https://docs.python.org/3/library/random.html#random.shuffle) du module random.
+Si on doit choisir une complexité à afficher, on préfèrera toujours la complexité en moyenne, car elle est simple à mesurer (on fait des moyennes d'exécution), sans analyse au préalable de l'algorithme.
 
 > Dans un fichier *"main_fusion"*, affichez sur un graphique le résultat des temps moyens mis pour trier avec `fusion` un tableau de taille inférieure à 2000 et par pas de 10 (vous utiliserez `temps_fusion`).
 {: .a-faire}
@@ -95,9 +112,10 @@ La complexité du tri rapide est différente pour des tableaux déjà triés et 
 > Dans un fichier *"main_rapide"*, affichez sur un même graphique le résultat des temps maximum et moyen mis pour trier avec `rapide`  un tableau de taille inférieure à 2000 et par pas de 10.
 >
 > Pour cela, vous pourrez créer une fonction `temps_rapide` dans le fichier *"mesure.py"* qui rend les 2 résultats pour une taille de tableau donnée.
+> la fonction `temps_rapide` prendra alor comme paramètre la taille du tableau dont on veut calculer la complexité maximale et moyenne.
 {: .a-faire}
 
-Vous allez atteindre la limite de récursion de python. Pour eviter les récursions infinies, python met une limite très basse au nombre de récursions possible d'un algorithme (1000 par défaut). Mais pas de panique, il est facile d'augmenter ce nombre.
+Vous allez atteindre la limite de récursion de python. Pour éviter les récursions infinies, python met une limite très basse au nombre de récursions possible d'un algorithme (1000 par défaut). Mais pas de panique, il est facile d'augmenter ce nombre.
 
 > Suivez [ce tuto](https://www.pythoncentral.io/resetting-the-recursion-limit/) qui vous explique comment faire pour augmenter le nombre limite de récursion dans *"main_rapide"*.
 {: .a-faire}
@@ -158,7 +176,7 @@ Le code précédent modifie l'algorithme `insertion` pour qu'il affiche dans un 
 
 Le [tri à bulles](https://fr.wikipedia.org/wiki/Tri_%C3%A0_bulles) est un tri inefficace mais joli à regarder.
 
-> Implementez le tri à bulles et vérifiez que son temps moyen d'exécution est $\mathcal{O}(n^2)$.
+> Implémentez le tri à bulles et vérifiez que son temps moyen d'exécution est $\mathcal{O}(n^2)$.
 > Ajoutez le tri à bulles dans *"main_visu.py"* pour le voir trier des tableaux.
 {: .a-faire}
 

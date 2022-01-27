@@ -60,12 +60,13 @@ L'ensemble du cours (et d'autres choses) est disponible [là]({% link cours/theo
 
 1. [complexité en moyenne]({% link cours/theorie-pratiques-algorithmique/algorithmie/complexite-moyenne.md %})
 2. [complexité d'un problème]({% link cours/theorie-pratiques-algorithmique/algorithmie/complexite-probleme.md %})
-3. [étude : mélanger un tableau]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude-melange.md %})
+3. [étude : trier un tableau]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude-tris.md %}) (début)
 
 #### vendredi {#v-3}
 
-1. [étude : trier un tableau]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude-tris.md %})
+1. [étude : trier un tableau]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude-tris.md %}) (fin)
 2. [projet : tris]({% link cours/theorie-pratiques-algorithmique/coder/projet-tris.md %})
+3. [étude : mélanger un tableau]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude-melange.md %})
 
 ### semaine 4
 
