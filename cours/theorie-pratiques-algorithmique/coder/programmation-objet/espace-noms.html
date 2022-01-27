@@ -6,22 +6,20 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>Temps 2 digital·e : Analyse des données | cours d’informatique</title>
+<title>espaces de noms | cours d’informatique</title>
 <meta name="generator" content="Jekyll v4.2.0">
-<meta property="og:title" content="Temps 2 digital·e : Analyse des données">
+<meta property="og:title" content="espaces de noms">
 <meta name="author" content="François Brucker">
 <meta property="og:locale" content="en_US">
-<meta name="description" content="Cours en duo. Nous ne montrerons ici que les trois cours de François Brucker.">
-<meta property="og:description" content="Cours en duo. Nous ne montrerons ici que les trois cours de François Brucker.">
-<link rel="canonical" href="/cours_informatique/3A/analyse_des_donnees.html">
-<meta property="og:url" content="/cours_informatique/3A/analyse_des_donnees.html">
+<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille.">
+<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille.">
+<link rel="canonical" href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/programmation-objet/espace-noms.html">
+<meta property="og:url" content="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/programmation-objet/espace-noms.html">
 <meta property="og:site_name" content="cours d’informatique">
-<meta property="og:type" content="article">
-<meta property="article:published_time" content="2022-01-27T14:06:57+00:00">
 <meta name="twitter:card" content="summary">
-<meta property="twitter:title" content="Temps 2 digital·e : Analyse des données">
+<meta property="twitter:title" content="espaces de noms">
 <script type="application/ld+json">
-{"description":"Cours en duo. Nous ne montrerons ici que les trois cours de François Brucker.","mainEntityOfPage":{"@type":"WebPage","@id":"/cours_informatique/3A/analyse_des_donnees.html"},"@type":"BlogPosting","url":"/cours_informatique/3A/analyse_des_donnees.html","headline":"Temps 2 digital·e : Analyse des données","dateModified":"2022-01-27T14:06:57+00:00","datePublished":"2022-01-27T14:06:57+00:00","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
+{"description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/theorie-pratiques-algorithmique/coder/programmation-objet/espace-noms.html","headline":"espaces de noms","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
@@ -56,29 +54,31 @@
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Temps 2 digital·e : Analyse des données</h1>Auteurs :
+    <h1 class="post-title">espaces de noms</h1>Auteurs :
       <ul>
       
         <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></li>
-      
-        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Emmanuel Daucé</span></span></li>
       
       </ul>
   </header>
 
   <div class="post-content">
-    <p>Cours en duo. Nous ne montrerons ici que les trois cours de François Brucker.</p>
+    <blockquote class="chemin">
+  <p><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/">Théorie et pratiques algorithmique</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/">coder</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/programmation-objet/">programmation objet</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/programmation-objet/espace-noms.html">espace de noms</a></p>
+</blockquote>
 
-<p>Vous aurez besoin d’une installation de jupyter notebook opérationnelle sur votre ordinateur. Une façon simple d’obtenir ça est d’installer <a href="https://www.anaconda.com/products/individual">anaconda</a>, qui est une distribution python à visée data science. Pour cela, vous pouvez suivre <a href="/cours_informatique/tutos/python/installation/anaconda/2021/09/14/installation-anaconda.html">ce tutoriel</a>.</p>
+<p>Comment rendre compte d’une variable, et de la portée de celles-ci</p>
 
-<ol>
-  <li><a href="/cours_informatique/assets/cours/ana_data/ana-data-1.zip">téléchargez le cours 1</a></li>
-  <li><a href="/cours_informatique/assets/cours/ana_data/ana-data-2.zip">téléchargez le cours 2</a></li>
-  <li><a href="/cours_informatique/assets/cours/ana_data/ana-data-3.zip">téléchargez le cours 3</a></li>
-</ol>
-
-<blockquote>
-  <p>Les cours sont téléchargés sous la forme d’un dossier compressé au format zip. Si vous n’avez pas de logiciel pour dézipper des fichiers et que vous êtes sous windows, vous pouvez installer <a href="https://www.7-zip.org/download.html">7zip</a> (choisissez <em>64-bit Windows x64</em> comme système).</p>
+<blockquote class="tbd">
+  <ul>
+    <li>variable != objet (à répéter 20000 fois)</li>
+    <li>les noms représentes des objets</li>
+    <li>que des variables globales c’es nulles : variables dans les fonctions (c’est le cas par défaut en javascript)</li>
+    <li>quelle portée choisi ? Le bloc for ? non, la fonction ? les modules ?</li>
+    <li>comment savoir quelle variable utiliser si les espaces de noms s’embriquent?</li>
+    <li>et comment de temps en temps modifier un objet au-dessus</li>
+    <li>donner des exemples récursifs</li>
+  </ul>
 </blockquote>
 
   </div>

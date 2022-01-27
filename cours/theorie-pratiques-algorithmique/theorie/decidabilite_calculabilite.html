@@ -132,7 +132,13 @@
 <strong>question</strong> : L’algorithme s’arrête-t-il avec $E$ comme entrée ?</li>
 </ul>
 
-<p>La décidabilité est donc le fait de savoir si on peut reconnaitre l’ensemble $L$ des entrées qui satisfont une propriété donnée. Il existe un cas plus faible que la décidabilité, c’est la <em>reconnaissabilité</em> :</p>
+<p>La décidabilité est donc le fait de savoir si on peut reconnaitre l’ensemble $L$ des entrées qui satisfont une propriété donnée :</p>
+
+<blockquote class="note">
+  <p>Un ensemble de mots $L$ est décidable s’il existe un <strong>décideur</strong> qui répond <em>vrai</em> si l’entrée est dans $L$ et <em>faux</em> sinon.</p>
+</blockquote>
+
+<p>Il existe un cas plus faible que la décidabilité, c’est la <em>reconnaissabilité</em> :</p>
 
 <blockquote class="note">
   <p>Un ensemble de mots $L$ est <strong>reconnaissable</strong> s’il existe un algorithme $M$ telle que $L = \mathcal{L}(M)$ (l’algorithme ne va s’arrêter que pour les entrées de $L$)</p>
@@ -228,8 +234,20 @@
 </div></details>
 
 <blockquote>
-  <p>On ne le fera pas ici, mais une démonstration similaire montre que le problème de savoir si un algorithme avec une entrée vide s’arrête est également non décidable.</p>
+  <p>Le problème de l’arrêt est souvent donné pour une machine de Turing.  on cherche à savoir si une machine de Turing donnée s’arrête ou pas. Comme il y a équivalence entre pseudo-code et machine de Turing et qu’on a décidé d’accepter la thèse de Church-Turing, on a reformulé tout ces problèmes avec des algorithmes.</p>
 </blockquote>
+
+<p>On peut montrer que le cas particulier suivant est lui aussi indécidable :</p>
+
+<blockquote class="note">
+  <p>Le problème consistant à savoir si un algorithme $M$ va s’arrêter sur l’entrée vide est indécidable.</p>
+</blockquote>
+<details><summary>preuve</summary><div>
+<p>Si $E$ est une entrée et $M$ un algorithme, il existe un algorithme $M_E$ qui commente par affecter l’entrée $E$ à une variable, puis exécute l’algorithme $M(E)$. On a donc que $M$ accepte $E$ que si et seulement si $M_E$ accepte le mot vide.</p>
+
+<p>De là, un algorithme qui pourrait décider si $M$ accepte ou non le mot vide déciderait également si $M$ accepte $E$, ce qui est impossible puisque le problème de l’arrêt est indécidable.</p>
+
+</div></details>
 
 <p>Il faut bien comprendre l’énoncé ci-dessus. Il n’existe pas de décideur qui prend comme entrée <strong>et</strong> un algorithme <strong>et</strong> une entrée et qui rend <em>Vrai</em> si l’algorithme va s’arrêter : l’algorithme et le mot d’entrée sont les paramètres du décideur.</p>
 
