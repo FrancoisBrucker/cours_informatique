@@ -239,6 +239,11 @@ graph.links.push({
   target: 'décidabilité et calculabilité'
 })
 
+graph.links.push({
+  source: 'Algorithmes, fonctions et pseudo-code',
+  target: 'décidabilité et calculabilité'
+})
+
 graph.nodes.push({
   id: 'projet informatique',
   link: "{% link cours/theorie-pratiques-algorithmique/coder/projet-hello-dev.md %}",
