@@ -35,42 +35,44 @@ Nous allons maintenant lister les bonnes pratiques fondamentales à posséder lo
 ## noms explicites et découpage fonctionnel
 
 * des noms de variables **explicites**
-* on préfèrera de **petites fonctions/méthodes** avec noms explicites à de nombreuses lignes de code
+* on préfèrera de **petites fonctions/méthodes** avec un nommage explicite à de nombreuses lignes de code
 
 Ceci permet de lire le code comme on lirait un texte, ce qui permet de rapidement comprendre ce qu'il fait, juste en le lisant. Les petites fonctions sont de plus facilement modifiables et testables.
 
-Le découpage fonctionnel de votre code permet d'éviter la duplication de code, qui est un mal absolu en code. Si l'on copie/colle du code et qu'il y a un bug ou qu'on veut modifier le fonctionnement de ce code, il faudra se rappeler de tous les endroits où le code a été copié, ce qui est impossible ! De plus, cela rend votre code peu lisible.
+Le découpage fonctionnel de votre code permet d'éviter la duplication de code, qui est un mal absolu en code. Si l'on copie/colle du code et qu'il y a un bug ou qu'on veut modifier le fonctionnement de celui-ci, il faudra se rappeler de tous les endroits où il a été dupliqué, ce qui est impossible ! De plus, cela rend votre code peu lisible, il bégaie.
 
 > **Coding mantra :** [DRY](https://fr.wikipedia.org/wiki/Ne_vous_r%C3%A9p%C3%A9tez_pas)
 {: .note}
 
-On saura que le code est ok lorsqu'il ne nécessitera **pas** de commentaires pour être compris. Ils sont en effet remplacé par des noms de variables explicites et les noms de fonctions qui doivent expliquer ce qu'elles font.
+Vous saurez que votre code est lisible lorsqu'il ne nécessitera **pas** de commentaires pour être compris. Ils sont en effet avantageusement remplacés par des noms de variables explicites et les noms de fonctions qui doivent expliquer ce qu'elles font.
 
 > **Coding mantra :** [NO COMMENTS !](https://www.developpez.com/actu/150066/Programmation-quand-faut-il-commenter-son-code-Google-s-invite-dans-le-debat-et-montre-que-les-commentaires-peuvent-tres-souvent-etre-evites/)
 {: .note}
 
-En plus d'être inutile :
+En plus d'être inutile, les commentaires :
 
-* **les commentaires sont souvent des mensonges** : comme le commentaire n'est pas du code, lorsque l'on modifie le code on *oublie* de changer le commentaire. Au bout d'un moment le commentaire n'est donc plus en relation avec le code : au lieu d'aider à comprendre, il confuse : un commentaire est donc tôt ou tard un mensonge.
-* **ils cachent la difficulté**. S'il y a plein de commentaires, on ne les lira plus. Un commentaire se doit d'être rare. S'il est là c'est que l'on n'a pas vraiment pu faire autrement. Vous n'en aurez pas besoin dans 99% des cas...
+* **sont souvent des mensonges** : comme le commentaire n'est pas du code, lorsque l'on modifie le code on *oublie* de changer le commentaire. Au bout d'un moment le commentaire n'est donc plus en relation avec le code : au lieu d'aider à comprendre, il confuse : un commentaire est donc tôt ou tard un mensonge.
+* **cachent la difficulté**. S'il y a plein de commentaires, on ne les lira plus. Un commentaire se doit d'être rare. S'il est là c'est que l'on n'a pas vraiment pu faire autrement. Vous n'en aurez pas besoin dans 99% des cas...
 
-Attention cependant, commentaires != documentation :
+>**commentaires != documentation** :
+{: .attention}
 
 * Si votre code est destiné à être utilisé uniquement par vous ou votre équipe, on n'a pas besoin de le documenter. Son organisation et son écriture doit se suffire à lui-même.
-* si votre code va être utilisé par des inconnus (lorsque vous créez une [bibliothèque](https://fr.wikipedia.org/wiki/Biblioth%C3%A8que_logicielle) par exemple), les fonctions publiques doivent être documentées. Un utilisateur doit pouvoir utiliser votre code sans effort.
+* si votre code va être utilisé par des inconnus (lorsque vous créez une [bibliothèque](https://fr.wikipedia.org/wiki/Biblioth%C3%A8que_logicielle) par exemple), les fonctions publiques doivent être documentées. Un utilisateur doit pouvoir utiliser votre code sans effort et avoir à le lire pour le faire.
 
-Lorsque l'on utilise une [API](https://fr.wikipedia.org/wiki/Interface_de_programmation), on a en effet jamais accès aux corps des méthodes, mais juste à leurs noms : on a besoin de savoir comment elle fonctionne sans en connaitre le corps :
+Lorsque l'on utilise une [API](https://fr.wikipedia.org/wiki/Interface_de_programmation), on a en effet jamais accès aux corps des méthodes, mais juste à leurs noms : on a besoin de savoir comment elles fonctionnent sans en connaitre le corps :
 
 > Toutes les méthodes destinées à être utilisées par des clients/utilisateurs différents de l'équipe de développement doivent être documentées.
 {: .note}
 
 ## lisibilité
 
-Un code est fait pour être relu et amélioré. On doit donc privilégier la lecture à son écriture. Pour que votre équipe ou vous même puissiez le relire plus tard sans faire d'effort de compréhension.
+Un code est fait pour être relu et amélioré. On **doit** privilégier sa lecture à son écriture. Pour que votre équipe ou vous même puissiez le relire plus tard sans faire d'effort de compréhension.
 
->**Ecrire du code n'est pas un concours d'érudition.**
+> Ecrire du code n'est pas un concours d'érudition.
+{: .note}
 
-Ecriture claire du code : si on a le choix entre écrire du code utilisant des subtilités mais difficile à comprendre ou du code plus basique mais lisible on choisira **TOUJOURS** le code lisible.
+Si on a le choix entre écrire du code utilisant des subtilités algorithmiques ou du langage utilisé mais qui le rend plus difficile à comprendre sans gain réel en complexité on choisira **TOUJOURS** le code lisible ou du code plus basique mais clair.
 
 > **Coding mantra :** [KISS](https://fr.wikipedia.org/wiki/Principe_KISS)
 {: .note}
@@ -82,39 +84,65 @@ Si le fond doit être simple, la forme du code est importante aussi. Il se doit 
 
 ## efficacité
 
-On ne doit jamais coder de choses inutiles : tout bout de code doit être utilisé au moment où il est écrit. On ne codera jamais de fonctionnalités qui vont être utiles plus tard (car "plus tard" le code ne sera plus le même et l'intégration de la fonctionnalité ne sera pas immédiate et, vraisemblablement, les besoins auront changés et l'instant "plus tard" n'arrivera jamais) et tout code qui n'est plus utile est immédiatement supprimé (pour les mêmes raisons).
+On ne doit jamais coder de choses inutiles : tout bout de code doit être utilisé au moment où il est écrit.
+
+> On ne codera jamais de fonctionnalités qui vont être utiles plus tard
+{: .note}
+
+Car *"plus tard"* le code ne sera plus le même et — le plus souvent — les besoins auront changés : votre fonctionnalités ne sera jamais utilisé... "plus tard" veut souvent dire *"jamais"*.
+De plus, du code inutile contraint le développement : il est là, ne sert à rien, mais pas sa seule présence il empêche de modifier le code comme on veut.
+
+En conséquence :
+
+> tout code qui n'est plus/pas utile doit être immédiatement supprimé.
+{: .note}
+
+Le mieux étant encore de ne jamais l'écrire au départ :
 
 > **Coding mantra :** [YAGNI](https://fr.wikipedia.org/wiki/YAGNI)
+{: .note}
 
 ## tests
 
 Pour s'assurer que notre code fait bien ce qu'il est sensé faire, on effectuera des **tests**. C'est le pendant code de la preuve d'un algorithme.
 
-Comme on passe son temps à modifier son code, il est nécessaire de conserver ses tests pour pouvoir les exécuter très souvent et vérifier que son code continue de fonctionner.
+Comme on passe son temps à modifier son code, il est nécessaire de conserver ses tests pour pouvoir les exécuter très souvent et vérifier qu'il continue de fonctionner.
 
-Lorsque l'on ajoute des fonctionnalités au code ou que l'on corrige un bug, on écrit un test qui vérifie la fonctionnalité ou qui montre que le bug n'existe pas/plus. Ainsi, puisque les tests sont conservés, ce bug ne pourra plus jamais réapparaître et cette fonctionnalité ne pourra plus disparaître.
+Pour cela :
+
+> Lorsque l'on ajoute des fonctionnalités au code ou que l'on corrige un bug, on écrit un test qui vérifie la fonctionnalité ou qui montre que le bug n'existe pas/plus.
+> Ainsi, puisque les tests sont conservés, ce bug ne pourra plus jamais réapparaître et cette fonctionnalité ne pourra plus disparaître.
+{: .note}
+
+Une méthode très efficace de programmation consiste même à commencer par écrire le test, **avant** le code testé :
 
 > **Coding mantra :** [TDD](https://artificials.ch/test-driven-development-mantra/)
 {: .note}
 
-Nous n'utiliserons pas ici au début le mantra TDD dans son intégralité puisque l'on se permettra d'écrire les tests après avoir codé la fonctionnalité et pas avant. Mais, l'expérience venant, faites l'expérience de coder vos tests avant la fonction, c'est très utile car cela permet d'utiliser sa fonction avant de la coder, ce qui souvent change la façon dont on voulait coder la fonction initialement.
+Nous n'utiliserons pas ici le mantra TDD dans son intégralité : on se permettra d'écrire les tests après avoir codé la fonctionnalité et pas avant. Mais, l'expérience venant, faites l'essai de coder vos tests avant la fonction, cela permet d'utiliser sa fonction avant de la coder et change souvent la façon dont on voulait la coder initialement.
 
 Les tests sont autant de cas d'utilisation de vos programmes qui montrent qu'il fonctionne et comment il fonctionne. Il permettent de montrer les différentes fonctionnalités de votre code :
 
 > **La fonctionnalité est plus importante que le code** : Le code va changer, les fonctionnalités doivent rester.
 {: .note}
 
-Enfin, le code et ses tests doivent être fait par la **même personne** et au **même moment**. Il ne faut pas attendre d'avoir codé plusieurs fonctions avant de faire ses tests. Vous n'êtes en effet pas sûr que votre 1ère fonction codée fonctionne avant d'avoir fait des tests. De là, il est possible qu'un bug dans cette première fonction affecte le code de votre seconde fonction... Lorsque vous ferez vos tests vous serez alors obligé de re-coder toutes vos fonctions ce qui ne serait pas arrivé si vous aviez testé toutes vos fonctions une par une et au moment de les coder.
+Enfin, le code et ses tests doivent être fait par la **même personne** et au **même moment**. Il ne faut pas attendre d'avoir codé plusieurs fonctions avant de faire ses tests. Vous n'êtes en effet pas sûr que votre 1ère fonction codée fonctionne avant d'avoir fait des tests. 
+
+De là, il est possible qu'un bug dans cette première fonction affecte le code de votre seconde fonction... Et lorsque vous ferez enfin vos tests vous serez alors obligé de re-coder toutes vos fonctions ce qui ne serait pas arrivé si vous aviez testé toutes vos fonctions une par une et au moment de les coder.
 
 ## structure d'un programme
 
-Tout ce qu'on vient de voir structure un projet informatique en trois entités : 
+Tout ce qu'on vient de voir structure un projet informatique en trois entités :
 
-* le **programme principal** (aussi appelé **main**) qui est ce qui sera exécuté
-* le **code** qui regroupe l'ensemble des fonctions utilisée par le programme principal
-* les **tests** qui *certifient* que le code fonctionne.
+> Un projet informatique comporte **toujours** 3 parties d'égales importances :
+>
+> * le **programme principal** (aussi appelé **main**) qui est ce qui sera exécuté
+> * le **code** qui regroupe l'ensemble des fonctions utilisée par le programme principal
+> * les **tests** qui *certifient* que le code fonctionne.
+>
+{: .note}
 
-Ces trois entités sont d'égale importance et sont **toujours** codées en même temps.
+Ces trois entités sont **toujours** codées en même temps : un code doit être testé pour être sur qu'il fonctionne et comme on ne fait pas de code inutile, il doit être utilisé.
 
 Exemples :
 

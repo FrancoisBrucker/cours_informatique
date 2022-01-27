@@ -34,7 +34,27 @@ Pour installer ces package :
 
 > Si vous n'avez pas d'interpréteur python par défaut vscode vous demandera de le donner (il vous aide en cherchant lui même des possibilités) lors du premier chargement d'un fichier python.
 
-Les paramètres de l'interpréteur se trouvent dans [les paramètres vscode](https://code.visualstudio.com/docs/getstarted/settings) (sous mac : *menu Code > préférences > paramètres* ; sous windows/linux : *menu Fichier > préférences > paramètres*) puis, une fois dans l'onglet paramètres allez dans *extensions > python* dans le menu de gauche. Les préférences vscode consistent en des variables (*ID du paramètre*) à positionner selon ses envies, chaque variable modifiant un comportement de vscode.
+Les paramètres de l'interpréteur se trouvent dans [les paramètres vscode](https://code.visualstudio.com/docs/getstarted/settings) :
+
+{% details sous linux %}
+
+*menu Fichier > préférences > paramètres*
+
+{% enddetails %}
+
+{% details sous mac %}
+
+ *menu Code > préférences > paramètres*
+
+{% enddetails %}
+
+{% details sous windows %}
+
+*menu Fichier > préférences > paramètres*
+
+{% enddetails %}
+
+Puis, une fois dans l'onglet paramètres allez dans *extensions > python* dans le menu de gauche. Les préférences vscode consistent en des variables (*ID du paramètre*) à positionner selon ses envies, chaque variable modifiant un comportement de vscode.
 
 > Il y a deux fois les mêmes préférences : **utilisateur** et  **espace de travail**. Le premier concerne les préférences générales de vscode et le second les préférences du projet courant. Par défaut, modifiez les préférences **utilisateur**. Pour plus d'informations, lisez la [doc](https://code.visualstudio.com/docs/getstarted/settings).
 
@@ -45,12 +65,12 @@ Il y a deux préférences qu'ils faut a priori modifier :
 
 Vous pouvez directement chercher le paramètre en tapant son nom dans la barre de recherche.
 
-Si vous avez suivi le [tutoriel anaconda]({% post_url tutos/python/2021-09-14-installation-anaconda %}), vérifiez ou faites en sorte que les paramètres soient : pour installer votre système python ces paramètres sont :
+Si vous avez suivi le [tutoriel anaconda]({% post_url tutos/python/2021-09-14-installation-anaconda %}), vérifiez ou faites en sorte que les paramètres soient :
 
 {% details sous linux %}
 
-> TBD
-{: .note}
+> trouver un linux pour savoir
+{: .tbd}
 
 {% enddetails %}
 
