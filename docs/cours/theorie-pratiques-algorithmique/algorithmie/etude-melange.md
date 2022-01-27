@@ -106,11 +106,11 @@ Il arrivera donc une récursion où `elements` sera vide : le test de la ligne 2
 on prouve par récurrence sur la taille du tableau `elements` que `permutations_rec(elements)` donne un tableau contenant toutes les permutations de `elements`.
 
    1. pour `len(elements) == 0` c'est clair.
-   2. on suppose la propriété vrai pour `len(elements) == p`. Pour `len(elements) == p + 1`, par hypothèse de récurrence, le retour de la récursion `permutations_rec(elements_sans_premier)` sera l'ensemble des permutations de `elements[:i] + elements[i+1:]` pour une position `i` de `elements`. Pour un `i`  donné on obtient alors  toutes les permutations de `elements` ayant `elements[i]` en première position (on ajoute `elements[i]` à toutes les permutations de `elements[:i] + elements[i+1:]`). Comme `i` prend tous les indice de `elements`, on on obtient aufinal toutes les permutations du tableau `elements`.
+   2. on suppose la propriété vrai pour `len(elements) == p`. Pour `len(elements) == p + 1`, par hypothèse de récurrence, le retour de la récursion `permutations_rec(elements_sans_premier)` sera l'ensemble des permutations de `elements[:i] + elements[i+1:]` pour une position `i` de `elements`. Pour un `i`  donné on obtient alors  toutes les permutations de `elements` ayant `elements[i]` en première position (on ajoute `elements[i]` à toutes les permutations de `elements[:i] + elements[i+1:]`). Comme `i` prend tous les indice de `elements`, on obtient au final toutes les permutations du tableau `elements`.
 
 ### complexité {#complexite-permutations}
 
-La complexité de l'algorithme va dépendre de la taille $n$ du tableau `elements`. : on note sa complexité $C(n)$. Comme il est récursif, on va chercher une équation de récurrence que satisfait $C(n)$ à résoudre.
+La complexité de l'algorithme va dépendre de la taille $n$ du tableau `elements` : on note sa complexité $C(n)$. Comme il est récursif, on va chercher une équation de récurrence que satisfait $C(n)$ à résoudre.
 
 Complexité de chaque ligne :
 
@@ -212,7 +212,7 @@ Sa complexité est cependant prohibitive. Comme on a considéré que la complexi
 > L'intérêt de `mélange` est théorique. Il montre qu'il existe un algorithme pour résoudre le problème (et en donne par là également une borne max).
 {: .note}
 
-## algorithme de fisher-yates ou de Knuth {#algorithme-fisher-yates}
+## algorithme de Fisher-Yates ou de Knuth {#algorithme-fisher-yates}
 
 L'algorithme que l'on va montrer maintenant, dit de [fisher-yates ou encore de Knuth](https://fr.wikipedia.org/wiki/M%C3%A9lange_de_Fisher-Yates), va également résoudre le problème "permutation", mais de façon bien plus élégante.
 
@@ -237,14 +237,14 @@ def melange_knuth(elements):
 
 {% endhighlight %}
 
-> Testez cet algorithme pour voir s'il rend bien des permutation du tableau en entrée.
+> Testez cet algorithme pour voir s'il rend bien des permutations du tableau en entrée.
 {: .a-faire}
 
 > Notez que la boucle for pourrait aussi s'écrire `for i in range(len(copie_elements) - 1, 0, -1):` sans perte de généralité.
 
 ### finitude {#finitude-knuth}
 
-Une unique boucle for sur la longueur du tableau : l'algorithme fini toujours.
+Une unique boucle for sur la longueur du tableau : l'algorithme finit toujours.
 
 ### complexité {#complexité-knuth}
 
@@ -289,7 +289,7 @@ Il faut que [matplotlib](https://matplotlib.org/) soit installé pour que le cod
   * [un axe horizontal](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.axhline.html)
 * on a mis un [break](https://docs.python.org/3/tutorial/controlflow.html#break-and-continue-statements-and-else-clauses-on-loops) dans la recherche de la permutation, pour éviter de faire des recherches inutiles.
 
-On a également a mis les constantes en majuscule, [conformément au style](https://www.python.org/dev/peps/pep-0008/#constants)
+On a également mis les constantes en majuscule, [conformément au style](https://www.python.org/dev/peps/pep-0008/#constants)
 
 ```python
 from random import randint
@@ -365,19 +365,19 @@ On suppose que le tableau d'entrée possède $n$ éléments.
 On va montrer que les probabilités de sortie de chaque permutation sont bien équiprobables de trois façons différentes. Toutes les démonstrations reposent sur le fait :
 
 * qu'une fois un élément choisi, il n'est plus jamais déplacé
-* tous les éléments seront choisis une fois dans l'algorithme (il y a $n$ itérations et on choisi un élément à chaque itération)
+* tous les éléments seront choisis une fois dans l'algorithme (il y a $n$ itérations et on choisit un élément à chaque itération)
 
 #### preuve par probabilités
 
-On va calculer la probabilité que l'élément originellement en position $i$ se retrouve en position $n-j$ à la fin de l'algorithme. Si notre tirage est équiprobable, cette probabilité doit être égal à $\frac{1}{n}$ quelquesoient $i$ et $j$.
+On va calculer la probabilité que l'élément originellement en position $i$ se retrouve en position $n-j$ à la fin de l'algorithme. Si notre tirage est équiprobable, cette probabilité doit être égal à $\frac{1}{n}$ quelque soient $i$ et $j$.
 
 Pour que cela arrive, il faut que :
 
-* l'élément n'ait pas été pris pendants la première itération : il y a $\frac{n-1}{n}$ chances que ça arrive (on ne choisit pas notre élément parmi $n$ possibles : $1-\frac{1}{n} = \frac{n-1}{n}$)
-* l'élément n'ait pas été pris pendants la deuxième itération : il y a $\frac{n-2}{n-1}$ chances que ça arrive (on ne choisit pas notre élément parmi $n - 1$ possibles : $1-\frac{1}{n-1} = \frac{n-2}{n-1}$)
+* l'élément n'ait pas été pris pendant la première itération : il y a $\frac{n-1}{n}$ chances que ça arrive (on ne choisit pas notre élément parmi $n$ possibles : $1-\frac{1}{n} = \frac{n-1}{n}$)
+* l'élément n'ait pas été pris pendant la deuxième itération : il y a $\frac{n-2}{n-1}$ chances que ça arrive (on ne choisit pas notre élément parmi $n - 1$ possibles : $1-\frac{1}{n-1} = \frac{n-2}{n-1}$)
 * ...
-* l'élément n'ait pas été pris pendants la $j-1$ ème itération : il y a $\frac{n-j+1}{n-j+2}$ chances que ça arrive (on ne choisit pas notre élément parmi $n-(j-1) +1$ possibles : $1-\frac{1}{n-j+2} = \frac{n-j+1}{n-j+2}$)
-* l'élément ait été pris pendants la $j$ ème itération : il y a $\frac{1}{n-j+1}$ chances que ça arrive
+* l'élément n'ait pas été pris pendant la $j-1$ ème itération : il y a $\frac{n-j+1}{n-j+2}$ chances que ça arrive (on ne choisit pas notre élément parmi $n-(j-1) +1$ possibles : $1-\frac{1}{n-j+2} = \frac{n-j+1}{n-j+2}$)
+* l'élément ait été pris pendant la $j$ ème itération : il y a $\frac{1}{n-j+1}$ chances que ça arrive
 
 De là, la probabilité que l'élément originellement en position $i$ se retrouve en position $n-j$ à la fin de l'algorithme est :
 
@@ -396,9 +396,9 @@ L'algorithme choisit donc bien 1 permutation parmi $n!$, toutes différentes : i
 1. lors de la première itération, on choisit un entier $k$ entre $0$ et $n-1$ et on échange l'élément d'indice $k$ avec celui d'indice $n-1$. Cet élément ne sera **plus jamais changé** dans la suite de l'algorithme. On en conclut que chaque élément du tableau d'entrée à la même chance d'être en dernière place de la permutation de sortie.
 2. une fois la première itération terminée, tout se passe comme si on exécutait l'algorithme avec un tableau de taille $n-1$ contenant tous les éléments du tableau de départ sauf celui placé lors de la 1ère itération.
 3. donc si l'algorithme fonctionne pour des tableau de longueur $n-1$, il fonctionne aussi pour des tableau de longueur $n$.
-4. on peut terminer la preuve en remarquant que si le tableau a une longueur de 1, on a bien en sorite l'unique permutation du tableau en entrée.
+4. on peut terminer la preuve en remarquant que si le tableau a une longueur de 1, on a bien en sortie l'unique permutation du tableau en entrée.
 
-> Cette preuve permet aussi de montrer que l'algorithme ne peux pas boucler et retrouver deux fois la même permutation avec 2 exécutions différentes.
+> Cette preuve permet aussi de montrer que l'algorithme ne peut pas boucler et retrouver deux fois la même permutation avec 2 exécutions différentes.
 
 ## méthodes de python
 
@@ -452,12 +452,12 @@ J'obtiens quelque chose du type :
 
 ![mélange de transpositions]({{ "/assets/cours/algorithmie/melange_transposition.png" | relative_url }}){:style="margin: auto;display: block"}
 
-On remarque que les premières permutations sont surreprésentées par rapport à ce qu'on devrait avoir. On remarque aussi qui'l y a des piques réguliers que l'on observe pas avec le mélange de Knuth. Ceci est du au fait que l'on peut produire une même permutation de plusieurs manière avec cet algorithme : on produit plus facilement certaines permutations que d'autres, ce qui rend l'algorithme non équiprobable.
+On remarque que les premières permutations sont surreprésentées par rapport à ce qu'on devrait avoir. On remarque aussi qui'l y a des pics réguliers que l'on n'observe pas avec le mélange de Knuth. Ceci est du au fait que l'on peut produire une même permutation de plusieurs manière avec cet algorithme : on produit plus facilement certaines permutations que d'autres, ce qui rend l'algorithme non équiprobable.
 
 > lisez et comprenez l'article : <https://datagenetics.com/blog/november42014/index.html>. Il explique pourquoi cette méthode n'est pas efficace.
 {: .a-faire}
 
-Nous allons ici juste montrer que les permutations ne sorties ne sont pas équiprobables. La probabilité que l'élément d'indice $l$ ne soit jamais choisi pendant l'algorithme est :
+Nous allons ici juste montrer que les permutations en sorties ne sont pas équiprobables. La probabilité que l'élément d'indice $l$ ne soit jamais choisi pendant l'algorithme est :
 
 $$P_n = (\frac{n-1}{n} \cdot \frac{n-1}{n})^n$$
 
@@ -484,23 +484,23 @@ C'est bien ce qu'on remarque sur la figure avec la surreprésentation de la prem
 
 ### randint doit être puissant
 
-En informatique, il est impossible de tirer un nombre au hasard. On est obliger d'utiliser des suite périodique qui se comportent comme des nombre aléatoires. On appelle ces suites [pseudo-aléatoires](https://fr.wikipedia.org/wiki/G%C3%A9n%C3%A9rateur_de_nombres_pseudo-al%C3%A9atoires).
+En informatique, il est impossible de tirer un nombre au hasard. On est obligé d'utiliser des suites périodiques qui se comportent comme des nombre aléatoires. On appelle ces suites [pseudo-aléatoires](https://fr.wikipedia.org/wiki/G%C3%A9n%C3%A9rateur_de_nombres_pseudo-al%C3%A9atoires).
 
 La période de cette suite doit être très grande pour pouvoir générer toutes les permutations : la période doit être plus grande que $n!$. Sinon, certaines permutations seront sur-représentées.
 
 Par exemple, pour pouvoir mélanger un paquet de 52 cartes de façon équiprobable en utilisant une suite pseudo-aléatoire, il faut que sa période soit plus que grande que $52! = 80658175170943878571660636856403766975289505440883277824000000000000 \sim 2^{226}$
 
-> Une suite pseudo-aléatoire simple a souvent une période de $2^{64}$, ce uiq n'est vraiment pas assez grand pour pouvoir mélanger équiprobablement un jeu de carte.
+> Une suite pseudo-aléatoire simple a souvent une période de $2^{64}$, ce qui n'est vraiment pas assez grand pour pouvoir mélanger équiprobablement un jeu de carte.
 
 > Regardez la partie *A Shortage Of Random Numbers!* du lien suivant <https://www.i-programmer.info/programming/theory/2744-how-not-to-shuffle-the-kunth-fisher-yates-algorithm.html> qui explique celà.
 {: .a-faire}
 
 ### attention aux humains
 
-La perception de ce qu'est l'aléatoire n'est pas aisée. Lorsque l'on joue à un jeu de carte par exemple, le [biasi de confirmation](https://fr.wikipedia.org/wiki/Biais_de_confirmation) tend à se réppeler les évènement très défavorables au détriment de ceux juste *normaux*. De plus, lorsque l'on demande à des humains de tirer des nombres aléatoires, souvent ils ne le sont pas :
+La perception de ce qu'est l'aléatoire n'est pas aisée. Lorsque l'on joue à un jeu de cartes par exemple, le [biais de confirmation](https://fr.wikipedia.org/wiki/Biais_de_confirmation) tend à se rappeler les évènement très défavorables au détriment de ceux juste *normaux*. De plus, lorsque l'on demande à des humains de tirer des nombres aléatoires, souvent ils ne le sont pas :
 
-* Lorsque l'ondemande à des humains de choisir un nombre aléatoirement entre 1 et 10, ils répondent le plus souvent 7 : <https://www.reddit.com/r/dataisbeautiful/comments/acow6y/asking_over_8500_students_to_pick_a_random_number/>.
-* lorsque l'on demande à des humains d'écrire une suite aléatoire de 200 nombres valant 0 ou 1, il y aura une sous-représentation des longues séquences avec le même nombre : celà ne *fait pas aléatoire* d'voir plein de fois le même nombre à la suite (alors que statistiquement, il faut bien que ces séquences equistent).
+* Lorsque l'on demande à des humains de choisir un nombre aléatoirement entre 1 et 10, ils répondent le plus souvent 7 : <https://www.reddit.com/r/dataisbeautiful/comments/acow6y/asking_over_8500_students_to_pick_a_random_number/>.
+* lorsque l'on demande à des humains d'écrire une suite aléatoire de 200 nombres valant 0 ou 1, il y aura une sous-représentation des longues séquences avec le même nombre : celà ne *fait pas aléatoire* d'avoir plein de fois le même nombre à la suite (alors que statistiquement, il faut bien que ces séquences existent).
 
 > lisez l'article de <https://draftsim.com/mtg-arena-shuffler/> qui montre cela avec le mélangeur de [MTGA](https://magic.wizards.com/fr/mtgarena).
 {: .a-faire}

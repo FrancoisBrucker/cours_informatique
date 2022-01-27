@@ -16,7 +16,7 @@ author: "François Brucker"
 >
 {: .chemin}
 
-Les informaticiens adorent les [algorithmes de tris](https://fr.wikipedia.org/wiki/). Pas parce qu'ils aime l'ordre — loin de là — mais parce qu'il existe des millions de façons différentes de trier. Commençons par définir le problème :
+Les informaticiens adorent les [algorithmes de tris](https://fr.wikipedia.org/wiki/). Pas parce qu'ils aiment l'ordre — loin de là — mais parce qu'il existe des millions de façons différentes de trier. Commençons par définir le problème :
 
 >
 > * nom : tri
@@ -67,7 +67,7 @@ L'algorithme rend bien :
 
 #### preuve
 
-La finitude de l'algorithme est clair puisqu'il n'y a qu'une boucle for avec autant d'itération que la taille du tableau passé en entrée.
+La finitude de l'algorithme est claire puisqu'il n'y a qu'une boucle for avec autant d'itérations que la taille du tableau passé en entrée.
 
 Le preuve en démontrant l'invariant de boucle : à la fin d'un itération, les $i + 1$ premiers éléments du tableau sont triés.
 
@@ -77,7 +77,7 @@ Le preuve en démontrant l'invariant de boucle : à la fin d'un itération, les 
 Au final :
 
 * L'invariant prouve que : si on arrive à la ligne 6 de l'algorithme c'est que les $n$ premiers éléments du tableau sont triés.
-* si on utilise le retour de la ligne 5 c'est qu'il existe $i$ avec $\mbox{tableau}[i] < \mbox{tableau}[i-1]$, donc $\mbox{tableau}$ ne peut-être trié.
+* si on utilise le retour de la ligne 5 c'est qu'il existe $i$ avec $\mbox{tableau}[i] < \mbox{tableau}[i-1]$, donc $\mbox{tableau}$ ne peut être trié.
 
 > L'algorithme `est_trie` est une solution au problème *"est trié ?"*
 {: .note}
@@ -93,14 +93,14 @@ Ligne à ligne :
 5. un retour de fonction $\mathcal{O}(1)$
 6. un retour de fonction $\mathcal{O}(1)$
 
-Que l'on sorte par le retour de la ligne 5 oi 6, le complexité est : $\mathcal{O}(k)$. Dans le cas le pire, on parcours tout le tableau, donc :
+Que l'on sorte par le retour de la ligne 5 ou 6, le complexité est : $\mathcal{O}(k)$. Dans le cas le pire, on parcourt tout le tableau, donc :
 
 > La complexité de l'algorithme `est_trie` est $\mathcal{O}(n)$ avec $n$ la taille du tableau en entrée.
 {: .note}
 
 ### complexité du problème
 
-Comme toute case du tableau peut rendre le tableau non trié, on utilise l'argument de [complexité du problème de la *"recherche"*]({% link cours/theorie-pratiques-algorithmique/algorithmie/complexite-probleme.md %}#complexite-recherche), un algorithme résolvant ce problème doit considérer toutes les cases du tableaux et donc une borne min du problème *"est trié ?"* est $\mathcal{O}(n)$ où $n$ est la taille du talbeau en entrée. Comme la complexité de `est_trie`  est égalemnt de $\mathcal{O}(n)$.On en conclut :
+Comme toute case du tableau peut rendre le tableau non trié, on utilise l'argument de [complexité du problème de la *"recherche"*]({% link cours/theorie-pratiques-algorithmique/algorithmie/complexite-probleme.md %}#complexite-recherche), un algorithme résolvant ce problème doit considérer toutes les cases du tableau et donc une borne min du problème *"est trié ?"* est $\mathcal{O}(n)$ où $n$ est la taille du talbeau en entrée. Comme la complexité de `est_trie`  est égalemnt de $\mathcal{O}(n)$.On en conclut :
 
 > La complexité du problème *"est trié ?"* est de $\mathcal{O}(n)$ où $n$ est la taille du tableau en entrée
 {: .note}
@@ -109,7 +109,7 @@ Comme toute case du tableau peut rendre le tableau non trié, on utilise l'argum
 
 ### borne maximum
 
-La l'algorithme `permutations` de l'[étude sur les mélanges d'un tableau]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude-melange.md %}#algo-toutes-permutations) permet de calculer en $\mathcal{O}((n+2)!)$ toutes les permutations d'un tableau à $n$ éléments. Comme l'algorithme `est_trie` permet de savoir si un tableau est trié en $\mathcal{O}(n)$ opérations, on peut résoudre le problème *"trie"* en énumérant toutes les permutations du tableau passé en paramètre et en vérifiant pour chaque d'entre elle s'il est trié ou non.
+La l'algorithme `permutations` de l'[étude sur les mélanges d'un tableau]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude-melange.md %}#algo-toutes-permutations) permet de calculer en $\mathcal{O}((n+2)!)$ toutes les permutations d'un tableau à $n$ éléments. Comme l'algorithme `est_trie` permet de savoir si un tableau est trié en $\mathcal{O}(n)$ opérations, on peut résoudre le problème *"trie"* en énumérant toutes les permutations du tableau passé en paramètre et en vérifiant pour chacune d'entre elle s'il est trié ou non.
 
 La complexité de cet algorithme est alors le produit de la complexité de `permutations` et de `est_trie` : $\mathcal{O}(n \cdot (n+2)!)$. On en conclut :
 
@@ -126,11 +126,11 @@ Comme [n! est trop gros]({% link cours/theorie-pratiques-algorithmique/algorithm
 > Alors la combinaison des deux algorithmes, de complexité le produit des deux algorithmes la constituant, est une solution au problème initial.
 {: .note}
 
-Souvent les algorithme produit par la remarque précédente ne sont pas optimaux car on explore bien trop de cas.
+Souvent les algorithmes produits par la remarque précédente ne sont pas optimaux car on explore bien trop de cas.
 
 ### borne minimum
 
-Si les éléments du tableau à trié sont tous différents, les permutations de celui-ci sont toutes différentes et une seule est la solution au problème "tri".
+Si les éléments du tableau à trier sont tous différents, les permutations de celui-ci sont toutes différentes et une seule est la solution au problème "tri".
 
 Par exemple, pour un tableau à trois éléments :
 
@@ -141,7 +141,7 @@ Par exemple, pour un tableau à trois éléments :
 5. $[3, 1, 2]$
 6. $[3, 2, 1]$
 
-Quelque soit la forme de l'entrée (de 1 à 6), l'algorithme de tri doit rendre la forme 1 : un algorithme de tri doit pouvoir distinguer parmi toutes les permutations du tableau. Comme il y a $n!$  permutations différentes pour un tableau de taille $n$ dont éléments sont deux à deux différents, tout algorithme de tri doit pouvoir distinguer parmi $n!$ choix, en utilisant la propriété de nombre de cas à distinguer choix vue [dans la complexité du problème de la *"recherche ordonnée"*]({% link cours/theorie-pratiques-algorithmique/algorithmie/complexite-probleme.md %}#complexite-recherche-ordonnee), on en déduit que :
+Quelque soit la forme de l'entrée (de 1 à 6), l'algorithme de tri doit rendre la forme 1 : un algorithme de tri doit pouvoir distinguer parmi toutes les permutations du tableau. Comme il y a $n!$  permutations différentes pour un tableau de taille $n$ dont les éléments sont deux à deux différents, tout algorithme de tri doit pouvoir distinguer parmi $n!$ choix, en utilisant la propriété de nombre de cas à distinguer vue [dans la complexité du problème de la *"recherche ordonnée"*]({% link cours/theorie-pratiques-algorithmique/algorithmie/complexite-probleme.md %}#complexite-recherche-ordonnee), on en déduit que :
 
 Tout algorithme de tri d'un tableau à $n$ élément doit distinguer parmi $n!$ cas, il est donc au minimum de complexité $\mathcal{O}(\ln(n!))$. On rend cette borne min un peu plus jolie en utilisant le fait que ;
 
@@ -235,7 +235,7 @@ def selection(tableau):
 
 {% endhighlight %}
 
-L'algorithme `selection` **modifie** le tableau passé en paramètre. On appelle ces algorithmes [in place](https://en.wikipedia.org/wiki/In-place_algorithm) car il ne rendent rien, mais modifient les données en entrées.
+L'algorithme `selection` **modifie** le tableau passé en paramètre. On appelle ces algorithmes [in place](https://en.wikipedia.org/wiki/In-place_algorithm) car ils ne rendent rien, mais modifient les données en entrées.
 
 {% enddetails %}
 
@@ -252,7 +252,7 @@ Le principe de fonctionnement est clair. Il reste à prouver que c'est bien ce q
 
 1. la boucle `for` de la ligne 4 trouve l'indice du plus petit élément du tableau `tableau[i:]`.
 2. la ligne 7 échange le minium du tableau `tableau[i:]` avec `tableau[i]`
-3. comme la boucle `for` de la ligne 2 incrémente $i$, on a l'invariant de boucle : *"à la fin de chaque étape $i$ de l'algorithme les $i$ plus petites valeurs du tableaux sont triées aux $i$ premiers indices du tableau"*
+3. comme la boucle `for` de la ligne 2 incrémente $i$, on a l'invariant de boucle : *"à la fin de chaque étape $i$ de l'algorithme les $i$ plus petites valeurs du tableau sont triées aux $i$ premiers indices du tableau"*
 
 #### complexités {#complexites-selection}
 
@@ -268,7 +268,7 @@ Ligne à ligne :
 6. une affectation : $\mathcal{O}(1)$
 7. deux affectation et quatre valeurs d'un tableau : $\mathcal{O}(1)$
 
-Le nombre d'itérations de la boucle for de la ligne 4 n'est pas constant, mais il décroit puisque $i$ augmente à chaque itération dela boucle `for`de la ligne 2. On peut alors utiliser la [règle de croissance]({% link cours/theorie-pratiques-algorithmique/algorithmie/complexite-max-min.md %}#regle-croissance) pour utiliser le maximum, $n-1$, pour le calcul de la complexité.
+Le nombre d'itérations de la boucle for de la ligne 4 n'est pas constant, mais il décroit puisque $i$ augmente à chaque itération de la boucle `for`de la ligne 2. On peut alors utiliser la [règle de croissance]({% link cours/theorie-pratiques-algorithmique/algorithmie/complexite-max-min.md %}#regle-croissance) pour utiliser le maximum, $n-1$, pour le calcul de la complexité.
 
 Ce qui donne une complexité de :
 
@@ -286,7 +286,7 @@ C & = & \mathcal{O}(1) + \\
 \end{array}
 $$
 
-Le nombre d'itération est constant quelque soit le tableau, on a donc :
+Le nombre d'itérations est constant quelque soit le tableau, on a donc :
 
 > La complexité de l'algorithme `selection` est ($n$ est la taille du tableau passé en entrée) :
 >
@@ -366,7 +366,7 @@ A chaque itération $i$ de la boucle `for` (ligne 2), l'algorithme fonctionne ai
   * `tableau'[:i+1] = tableau[:j] + [tableau[j]] + tableau[j:i]`
   * `tableau[:j]` trié et `courant >= tableau[j-1]`
   * `tableau[j:i]` trié `courant < tableau[j]`
-* après la ligne 8, juste avant de faire une nouvelle itération de la boucle `for`. En notant `tableau` le tableau avant le début de l'itération et `tableau'` le tableau en fin d'itération', on a : `tableau'[:i+1] = tableau[:j] + [tableau[i]] + tableau[j:i]`
+* après la ligne 8, juste avant de faire une nouvelle itération de la boucle `for`. En notant `tableau` le tableau avant le début de l'itération et `tableau` le tableau en fin d'itération', on a : `tableau'[:i+1] = tableau[:j] + [tableau[i]] + tableau[j:i]`
 
 Notre invariant de boucle est donc : *"à la fin de l'itération i, les i premiers éléments du tableau sont triés"*
 
@@ -417,7 +417,7 @@ $$
 >
 {: .note}
 
-La complexité min et différente de la complexité maximale. On va donc calculer la complexité en moyenne pour connaitre la complexité pour des données *standard*.
+La complexité min est différente de la complexité maximale. On va donc calculer la complexité en moyenne pour connaitre la complexité pour des données *standard*.
 Pour savoir ce que veut dire *standard*, il faut déterminer le modèle de données : prenons le équiprobable.
 
 Cela signifie que pour chaque itération $i$ :
@@ -444,9 +444,9 @@ $$
 > La **complexité en moyenne** de l'algorithme `insertion` est $\mathcal{O}(n^2)$ où $n$ est la taille du tableau passé en entrée.
 {: .note}
 
-Le cas le meilleur arrive très rarement par rapport au cas le pire (parmi les $n!$ ordres possible, il y en a très peut qui sont presque triés).
+Le cas le meilleur arrive très rarement par rapport au cas le pire (parmi les $n!$ ordres possibles, il y en a très peu qui sont presque triés).
 
-Si l'on change le modèle de donnée et que l'on considère des tableaux *presque triées*, la complexité en moyenne va être de l'ordre de la complexité minimale, à savoir : $\mathcal{O}(n)$
+Si l'on change le modèle de données et que l'on considère des tableaux *presque triées*, la complexité en moyenne va être de l'ordre de la complexité minimale, à savoir : $\mathcal{O}(n)$
 
 > On utilise le tri par insertion lorsque nos données seront presque toujours déjà triées ou très peu en désordre.
 {: .note}
@@ -461,7 +461,7 @@ Ce calcul de complexité nous permet d'utiliser la règle suivante, qui va se r�
 
 Le [tri fusion](https://fr.wikipedia.org/wiki/Tri_fusion) est un tri de complexité $\mathcal{O}(n\ln(n))$ opérations où $n$ est la taille de la liste en entrée. Il fonctionne ainsi :
 
-Si l'on possède une fonction `colle(T1, T2)`, avec `T1` et `T2` des tableaux triés, qui rend le tri de la concaténation de `T1` et `T2`, alors la fonction récursive suivante (avec $\mid T \mid$ la longueur du talbeau $T$) est un algorithme de tri !
+Si l'on possède une fonction `colle(T1, T2)`, avec `T1` et `T2` des tableaux triés, qui rend le tri de la concaténation de `T1` et `T2`, alors la fonction récursive suivante (avec $\mid T \mid$ la longueur du tableau $T$) est un algorithme de tri !
 
 $$
 \mbox{fusion}(T) = \left\{
@@ -643,7 +643,7 @@ Le tri de python est **in place**. L'algorithme utilisé est [timsort](https://e
 
 ## tri rapide {#tri-rapide}
 
-Le tri rapide est un algorithme qui a été très utilisé par le passé. On le montre encore maintenant car c'est un exemple de *diviser pour régner* et, surout, le calcul complexités est très intéressant.
+Le tri rapide est un algorithme qui a été très utilisé par le passé. On le montre encore maintenant car c'est un exemple de *diviser pour régner* et, surtout, le calcul complexités est très intéressant.
 
 Son principe est le suivant, si on souhaite trier le tableau $T$ :
 

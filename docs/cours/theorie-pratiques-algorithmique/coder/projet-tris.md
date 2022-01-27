@@ -49,13 +49,13 @@ En reprenant le code donné dans l'[étude des tris]({% link cours/theorie-prati
 
 ## complexité
 
-Nous allons (enfin plutôt, vous allez) afficher les complexités temporelle des différents algorithmes de tri que vous avez codé. 
+Nous allons (enfin plutôt, vous allez) afficher les complexités temporelle des différents algorithmes de tri que vous avez codés. 
 
-POur faire cela, on utilisera ce que nous avons fait pendant le [projet exponentiation]({% link cours/theorie-pratiques-algorithmique/coder/projet-exponentiation.md %}).
+Pour faire cela, on utilisera ce que nous avons fait pendant le [projet exponentiation]({% link cours/theorie-pratiques-algorithmique/coder/projet-exponentiation.md %}).
 
 ### calcul des complexités temporelles
 
-> Créez dans un fichier *"mesure.py"*
+> Créez un fichier *"mesure.py"*
 {: .a-faire}
 
 ### tri par selection
@@ -90,11 +90,11 @@ Pour mélanger une liste python, vous pouvez utiliser la fonction [shuffle](http
 
 ### tri rapide
 
-La complexité du tri rapide est différente pour pour des tableaux déjà triés et pour des tableaux mélangés.
+La complexité du tri rapide est différente pour des tableaux déjà triés et pour des tableaux mélangés.
 
-> Dans un fichier *"main_rapide"*, , affichez sur un même graphique le résultat des temps maximum et moyen mis pour trier avec `rapide`  un tableau de taille inférieure à 2000 et par pas de 10.
+> Dans un fichier *"main_rapide"*, affichez sur un même graphique le résultat des temps maximum et moyen mis pour trier avec `rapide`  un tableau de taille inférieure à 2000 et par pas de 10.
 >
-> Pour cela, vous pourrez créer une fonction `temps_rapide` dans le fichier *"mesure.py"* qui rend les 2 résultats pour une taille de talbeau donnée.
+> Pour cela, vous pourrez créer une fonction `temps_rapide` dans le fichier *"mesure.py"* qui rend les 2 résultats pour une taille de tableau donnée.
 {: .a-faire}
 
 Vous allez atteindre la limite de récursion de python. Pour eviter les récursions infinies, python met une limite très basse au nombre de récursions possible d'un algorithme (1000 par défaut). Mais pas de panique, il est facile d'augmenter ce nombre.
@@ -104,7 +104,7 @@ Vous allez atteindre la limite de récursion de python. Pour eviter les récursi
 
 ## visualisation
 
-> Copiez le code suivant dans un ficheir *3main_visu.py"* :
+> Copiez le code suivant dans un fichier *3main_visu.py"* :
 {: .a-faire}
 
 ```python
@@ -159,7 +159,7 @@ Le code précédent modifie l'algorithme `insertion` pour qu'il affiche dans un 
 Le [tri à bulles](https://fr.wikipedia.org/wiki/Tri_%C3%A0_bulles) est un tri inefficace mais joli à regarder.
 
 > Implementez le tri à bulles et vérifiez que son temps moyen d'exécution est $\mathcal{O}(n^2)$.
-> Ajoutez le tri à bulles dans *"main_visu.py"* pur le voir trier des tableaux.
+> Ajoutez le tri à bulles dans *"main_visu.py"* pour le voir trier des tableaux.
 {: .a-faire}
 
 ### bogo sort
