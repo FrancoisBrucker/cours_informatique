@@ -50,7 +50,7 @@ Par exemple :
 * question : valeur est-elle présente dans le tableau ?
 * réponse : OUI ou NON
 
-Ou, si l'on cherche l'indice de valeur dans le dans ce tableau :
+Ou, si l'on cherche l'indice de valeur dans ce tableau :
 
 * nom : recherche indice
 * données : une valeur et un tableau d'entiers contenant valeur
@@ -62,8 +62,8 @@ On voit que la question peut-être omise si la réponse est spécifique.
 
 On pourra définir pour un problème donné :
 
-> * une **borne minimale** de complexité du problème : tout algorithme qui le résout sera de complexité supérieure ou égale (mais on ne sais pas si un tel algorithme existe)
-> * une **borne maximale** de complexité du problème : le meilleur algorithme sera de complexité plus faible ou égale (mais on ne sais pas si un tel algorithme existe)
+> * une **borne minimale** de complexité du problème : tout algorithme qui le résout sera de complexité supérieure ou égale (mais on ne sait pas si un tel algorithme existe)
+> * une **borne maximale** de complexité du problème : le meilleur algorithme sera de complexité plus faible ou égale (mais on ne sait pas si un tel algorithme existe)
 >* la **complexité du problème** : la complexité maximale du meilleur algorithme permettant de résoudre le problème (cette complexité existe toujours puisqu'il existe un algorithme permettant de résoudre le problème et qu'il existe un [nombre dénombrable d'algorithmes]({% link cours/theorie-pratiques-algorithmique/theorie/fonctions.md %}#nombre-algos))
 >
 {: .note}
@@ -106,7 +106,7 @@ On crée alors un tableau $T'$ de $n$ cases tel que :
 Comme $T$ et $T'$ sont identiques sauf pour la case d'indice $i^\star$,
 si l'algorithme ne regarde pas la case $T[i^\star]$ lors de son exécution pour $T$, il ne regardera pas non plus la case $T'[i^\star]$ lors de son exécution pour $T'$. Il ne pourra donc répondre que la même chose pour $T$ et $T'$, ce qui est impossible puisque la réponse est NON pour $T$ et OUI pour $T'$.
 
-Notre hypothèse était fausse : un algorithme qui résout le problème de la recherche doit accéder au moins une fois à toutes les cases du tableau, il doit au moins être de complexité $\mathcal{O}(n)$
+Notre hypothèse était fausse : un algorithme qui résout le problème de la recherche doit accéder au moins une fois à toutes les cases du tableau, il doit au moins être de complexité $\mathcal{O}(n)$.
 
 Attention, ça ne veut pas dire qu'il n'existe pas des instances où l'algorithme va plus vite (si valeur est le 1er élément du tableau par exemple), mais que pour toute taille $n$ du tableau, il existe des tableaux pour lesquels on est obligé de vérifier toutes les cases (si valeur n'est pas dans tableau).
 
@@ -122,7 +122,7 @@ Donc :
 
 On peut en déduire une règle générale de la complexité d'un problème :
 
-> Si les données n'ont pas de structure particulière, très souvent, la complexité d'un problème est au moins égal à la taille de ses données
+> Si les données n'ont pas de structure particulière, très souvent, la complexité d'un problème est au moins égal à la taille de ses données.
 {: .note}
 
 En effet, si ce n'est pas vrai, c'est que notre problème est mal posé.
@@ -136,7 +136,7 @@ Un cas particulier courant de recherche est le problème :
 * question : valeur est-elle présente dans le tableau ?
 * réponse : OUI ou NON
 
-Le problème "recherche ordonnée" est un sous problème de "recherche", on a donc une borne maximale de $\mathcal{O}(n)$ (où $n$ est la taille du tableau) pour le résoudre puisqu'il il suffit d'utiliser l'algorithme `est_dans_tableau`. Cependant, on utilise souvent un autre algorithme : la recherche dichotomique.
+Le problème "recherche ordonnée" est un sous problème de "recherche", on a donc une borne maximale de $\mathcal{O}(n)$ (où $n$ est la taille du tableau) pour le résoudre puisqu'il suffit d'utiliser l'algorithme `est_dans_tableau`. Cependant, on utilise souvent un autre algorithme : la recherche dichotomique.
 
 #### algorithme de la recherche dichotomique
 
@@ -175,7 +175,7 @@ def recherche_dichotomique(valeur, tableau_trie):
 * **preuve** :
   * **finitude**. La quantité entière `fin - debut` décroit strictement à chaque itération, elle sera donc strictement négative après un nombre fini d'opération.
   * **preuve**.
-    1. on montre trivialement l'invariant de boucle suivant: si valeur est dans `tableau_trie`, alors sa position plus grande que `debut` et plus petite que `fin`
+    1. on montre trivialement l'invariant de boucle suivant: si valeur est dans `tableau_trie`, alors sa position est plus grande que `debut` et plus petite que `fin`
     2. si l'on sort de la boucle l'invariant est toujours vérifié mais comme `debut` > `fin`, valeur ne peut être dans `tableau_trie`
 
 Les remarques ci-dessus prouvent que l'algorithme `recherche_dichotomique` résout bien le problème "recherche ordonnée".
@@ -232,7 +232,7 @@ Commençons par remarquer que `valeur` peut se trouver à chaque position du tab
 En algorithmie, distinguer parmi plusieurs cas se fait par des tests (on utilise les opérations `si alors sinon`). De là :
 
 * s'il y a 0 test, un algorithme ne peut pas distinguer de cas.
-* s'il y a 1 test, un algorithme peut distinguerau plus  2 cas :
+* s'il y a 1 test, un algorithme peut distinguer au plus  2 cas :
   * 1 cas si le test est vrai
   * 1 cas si le test est faux
 * s'il y a 2 tests, un algorithme peut distinguer au plus $2 \cdot 2 = 4$ cas :
@@ -255,7 +255,7 @@ On a alors la proprité suivante :
 
 Comme il y a $n+1$ cas au moins à traiter, notre algorithme sera de complexité supérieure à à $\mathcal{O}(\ln(n + 1)) = \mathcal{O}(\ln(n))$ opérations.
 
-AU final, le problème de la "recherche ordonnée" pour un tableau à $n$ éléments :
+Au final, le problème de la "recherche ordonnée" pour un tableau à $n$ éléments :
 
 * une borne minimale de complexité égal à $\mathcal{O}(\ln(n))$
 * la complexité de l'algorithme `recherche_dichotomique` est en $\mathcal{O}(\ln(n))$

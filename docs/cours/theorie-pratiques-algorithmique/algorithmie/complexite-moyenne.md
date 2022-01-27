@@ -13,16 +13,16 @@ author: "François Brucker"
 >* [complexité max/min]({% link cours/theorie-pratiques-algorithmique/algorithmie/complexite-max-min.md %})
 {: .chemin}
 
-Lorsque le nombre d'opérations d'un algorithme dépend non seulement de la taille de ses entrée mais également de la structure de celles-ci, on a coutume de calculer sa complexité en moyenne :
+Lorsque le nombre d'opérations d'un algorithme dépend non seulement de la taille de ses entrées mais également de la structure de celles-ci, on a coutume de calculer sa complexité en moyenne :
 
-> La **complexité en moyenne** d'un algorithme est le nombre moyens d'opérations nécessaires pour se terminer par rapport à une taille fixée de ses entrées.
+> La **complexité en moyenne** d'un algorithme est le nombre moyen d'opérations nécessaires pour se terminer par rapport à une taille fixée de ses entrées.
 {: .note}
 
-Cette mesure est très utile en pratique car si la complexité maximale et minimale d'un algorithme est très différente, cela permet de savoir le nombre d'opération espéré pour un tableau quelconque de taille donné.
+Cette mesure est très utile en pratique car si la complexité maximale et minimale d'un algorithme est très différente, cela permet de savoir le nombre d'opérations espéré pour un tableau quelconque de taille donné.
 
 ## calcul de la complexité en moyenne
 
-La complexité en moyenne d'un algorithme dépend des entrées de celui-ci et plus précisément du nombre de fois où une entrée donnée peut être choisie. Pour pouvoir la calculer de façon formelle, il faut connaitre ainsi le modèle probabiliste associé au donnés :
+La complexité en moyenne d'un algorithme dépend des entrées de celui-ci et plus précisément du nombre de fois où une entrée donnée peut être choisie. Pour pouvoir la calculer de façon formelle, il faut connaitre ainsi le modèle probabiliste associé aux données :
 
 > La **complexité en moyenne** de $A$ pour une entrée de taille $n$ est :
 >
@@ -48,8 +48,8 @@ def est_dans_tableau(valeur, tableau):
 
 On avait déterminé ses complexités par rapport à la taille $n$ du tableau :
 
-* la complexité maximale de l'algorithme `est_dans_tableau` est $\mathcal{O}(n)$ (on parcours tout le tableau sans trouver `valeur`)
-* la complexité minimale de l'algorithme `est_dans_tableau` est $\mathcal{O}(1)$ (`valeur est le premier élément du tableau)
+* la complexité maximale de l'algorithme `est_dans_tableau` est $\mathcal{O}(n)$ (on parcourt tout le tableau sans trouver `valeur`)
+* la complexité minimale de l'algorithme `est_dans_tableau` est $\mathcal{O}(1)$ (`valeur` est le premier élément du tableau)
 
 La complexité en moyenne est calculée en considérant le nombre d'opérations moyenne pris pour toutes les entrées d'une taille fixée.
 
@@ -65,7 +65,7 @@ $$C =  (\sum_{i=0}^{i = n}\frac{1}{n + 1} \mathcal{O}(i + 1)) = \mathcal{O}(\fra
 
 Comme $\sum_{i=0}^{i = n}(i + 1) = \frac{(n +2)(n + 1)}{2}$ on en déduit que :
 
-$$C = \mathcal{O}(\frac{n+2}{2}) = \mathcal{O$(n)$$
+$$C = \mathcal{O}(\frac{n+2}{2}) = \mathcal{O$(n)}$$
 
 Pour aller plus vite, on aurait pu dire que si notre modèle est équiprobable, `valeur` va se trouver en moyenne au milieu de notre tableau, et donc qu'il faut parcourir de l'ordre de $\frac{n}{2}$ éléments de `tableau`, la complexité en moyenne est de $\mathcal{O}(n/2) = \mathcal{O}(n)$.
 
@@ -76,7 +76,7 @@ Pour tout algorithme, on a les inégalités suivantes :
 >
 >$$\mbox{complexité minimale} \leq \mbox{complexité en moyenne} \leq \mbox{complexité (maximale)}$$
 >
->La complexité en moyenne nous indique, pour un modèle de donnée, si les cas extrêmes (complexité minimale et maximale) arrivent fréquemment ou pas.
+>La complexité en moyenne nous indique, pour un modèle de données, si les cas extrêmes (complexité minimale et maximale) arrivent fréquemment ou pas.
 >
 > La complexité en moyenne nous donne le nombre d'opérations *normal* qu'on aura si on exécute l'algorithme.
 {: .note}
@@ -87,7 +87,7 @@ Ainsi :
 * si la complexité minimale est égale à la complexité en moyenne (comme pour l'algorithme du [tri rapide]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude-tris.md %}#tri-rapide)) alors la complexité minimale arrivera souvent
 * si les trois complexités sont différentes, les cas minimum et maximum arriveront rarement.
 
-En pratique — si l'algorithme dont on veut calculer les complexité est codé — la complexité en moyenne est très facile à estimer sans aucun calcul :
+En pratique — si l'algorithme dont on veut calculer les complexités est codé — la complexité en moyenne est très facile à estimer sans aucun calcul :
 
 > Pour estimer la complexité en moyenne d'un algorithme codé, il suffit de mesurer le temps pris par l'algorithme pour s'exécuter pour des données aléatoires et d'en faire la moyenne (c'est un [estimateur sans biais de la moyenne théorique](https://fr.wikipedia.org/wiki/Estimateur_(statistique)#Estimateur_de_la_moyenne_de_Y)).
 {: .note}
