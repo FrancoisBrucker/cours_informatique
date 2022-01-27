@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/cours_informatique/feed.xml" rel="self" type="application/atom+xml" /><link href="/cours_informatique/" rel="alternate" type="text/html" /><updated>2022-01-27T05:09:32+00:00</updated><id>/cours_informatique/feed.xml</id><title type="html">cours d’informatique</title><subtitle>Support de cours/td d'informatique à l'école centrale marseille.</subtitle><entry><title type="html">utiliser un terminal</title><link href="/cours_informatique/tutos/systeme/cli/terminal/2021/12/02/terminal-utilisation.html" rel="alternate" type="text/html" title="utiliser un terminal" /><published>2021-12-02T00:00:00+00:00</published><updated>2021-12-02T00:00:00+00:00</updated><id>/cours_informatique/tutos/systeme/cli/terminal/2021/12/02/terminal-utilisation</id><content type="html" xml:base="/cours_informatique/tutos/systeme/cli/terminal/2021/12/02/terminal-utilisation.html">&lt;blockquote class=&quot;chemin&quot;&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/cours_informatique/feed.xml" rel="self" type="application/atom+xml" /><link href="/cours_informatique/" rel="alternate" type="text/html" /><updated>2022-01-27T06:48:07+00:00</updated><id>/cours_informatique/feed.xml</id><title type="html">cours d’informatique</title><subtitle>Support de cours/td d'informatique à l'école centrale marseille.</subtitle><entry><title type="html">utiliser un terminal</title><link href="/cours_informatique/tutos/systeme/cli/terminal/2021/12/02/terminal-utilisation.html" rel="alternate" type="text/html" title="utiliser un terminal" /><published>2021-12-02T00:00:00+00:00</published><updated>2021-12-02T00:00:00+00:00</updated><id>/cours_informatique/tutos/systeme/cli/terminal/2021/12/02/terminal-utilisation</id><content type="html" xml:base="/cours_informatique/tutos/systeme/cli/terminal/2021/12/02/terminal-utilisation.html">&lt;blockquote class=&quot;chemin&quot;&gt;
   &lt;p&gt;&lt;strong&gt;prérequis :&lt;/strong&gt;&lt;/p&gt;
 
   &lt;ul&gt;
@@ -1572,7 +1572,24 @@ hello
   &lt;p&gt;Si vous n’avez pas d’interpréteur python par défaut vscode vous demandera de le donner (il vous aide en cherchant lui même des possibilités) lors du premier chargement d’un fichier python.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;Les paramètres de l’interpréteur se trouvent dans &lt;a href=&quot;https://code.visualstudio.com/docs/getstarted/settings&quot;&gt;les paramètres vscode&lt;/a&gt; (sous mac : &lt;em&gt;menu Code &amp;gt; préférences &amp;gt; paramètres&lt;/em&gt; ; sous windows/linux : &lt;em&gt;menu Fichier &amp;gt; préférences &amp;gt; paramètres&lt;/em&gt;) puis, une fois dans l’onglet paramètres allez dans &lt;em&gt;extensions &amp;gt; python&lt;/em&gt; dans le menu de gauche. Les préférences vscode consistent en des variables (&lt;em&gt;ID du paramètre&lt;/em&gt;) à positionner selon ses envies, chaque variable modifiant un comportement de vscode.&lt;/p&gt;
+&lt;p&gt;Les paramètres de l’interpréteur se trouvent dans &lt;a href=&quot;https://code.visualstudio.com/docs/getstarted/settings&quot;&gt;les paramètres vscode&lt;/a&gt; :&lt;/p&gt;
+
+&lt;details&gt;&lt;summary&gt;sous linux&lt;/summary&gt;&lt;div&gt;
+&lt;p&gt;&lt;em&gt;menu Fichier &amp;gt; préférences &amp;gt; paramètres&lt;/em&gt;&lt;/p&gt;
+
+&lt;/div&gt;&lt;/details&gt;
+
+&lt;details&gt;&lt;summary&gt;sous mac&lt;/summary&gt;&lt;div&gt;
+&lt;p&gt;&lt;em&gt;menu Code &amp;gt; préférences &amp;gt; paramètres&lt;/em&gt;&lt;/p&gt;
+
+&lt;/div&gt;&lt;/details&gt;
+
+&lt;details&gt;&lt;summary&gt;sous windows&lt;/summary&gt;&lt;div&gt;
+&lt;p&gt;&lt;em&gt;menu Fichier &amp;gt; préférences &amp;gt; paramètres&lt;/em&gt;&lt;/p&gt;
+
+&lt;/div&gt;&lt;/details&gt;
+
+&lt;p&gt;Puis, une fois dans l’onglet paramètres allez dans &lt;em&gt;extensions &amp;gt; python&lt;/em&gt; dans le menu de gauche. Les préférences vscode consistent en des variables (&lt;em&gt;ID du paramètre&lt;/em&gt;) à positionner selon ses envies, chaque variable modifiant un comportement de vscode.&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;Il y a deux fois les mêmes préférences : &lt;strong&gt;utilisateur&lt;/strong&gt; et  &lt;strong&gt;espace de travail&lt;/strong&gt;. Le premier concerne les préférences générales de vscode et le second les préférences du projet courant. Par défaut, modifiez les préférences &lt;strong&gt;utilisateur&lt;/strong&gt;. Pour plus d’informations, lisez la &lt;a href=&quot;https://code.visualstudio.com/docs/getstarted/settings&quot;&gt;doc&lt;/a&gt;.&lt;/p&gt;
@@ -1587,11 +1604,11 @@ hello
 
 &lt;p&gt;Vous pouvez directement chercher le paramètre en tapant son nom dans la barre de recherche.&lt;/p&gt;
 
-&lt;p&gt;Si vous avez suivi le &lt;a href=&quot;/cours_informatique/tutos/python/installation/anaconda/2021/09/14/installation-anaconda.html&quot;&gt;tutoriel anaconda&lt;/a&gt;, vérifiez ou faites en sorte que les paramètres soient : pour installer votre système python ces paramètres sont :&lt;/p&gt;
+&lt;p&gt;Si vous avez suivi le &lt;a href=&quot;/cours_informatique/tutos/python/installation/anaconda/2021/09/14/installation-anaconda.html&quot;&gt;tutoriel anaconda&lt;/a&gt;, vérifiez ou faites en sorte que les paramètres soient :&lt;/p&gt;
 
 &lt;details&gt;&lt;summary&gt;sous linux&lt;/summary&gt;&lt;div&gt;
-&lt;blockquote class=&quot;note&quot;&gt;
-  &lt;p&gt;TBD&lt;/p&gt;
+&lt;blockquote class=&quot;tbd&quot;&gt;
+  &lt;p&gt;trouver un linux pour savoir&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;/div&gt;&lt;/details&gt;
