@@ -15,7 +15,7 @@ category: cours
 > dire qu'on utilisera des machines que si on en a besoin et que sinon on décrira tout sous la forme d'un pseudo-code (qui est de toute façon équivalent)
 {: .tbd}
 
-La machine de Turing est un modèle permettant de rendre compte d'un algorithme. Soit $M$ une machine de Turing et considérons son exécution pour l'entrée $\mu$. La machine va alors soit :
+La machine de Turing est un modèle permettant de rendre compte d'un algorithme. Tout ce qu'on peut écrire avec un pseudo-code Soit $M$ une machine de Turing et considérons son exécution pour l'entrée $\mu$. La machine va alors soit :
 
 * ne pas s'arrêter (elle n'arrivera jamais à l'état final)
 * s'arrêter et sortir un résultat.
@@ -189,6 +189,9 @@ Tout comme [la preuve du théorème de Cantor]({% link cours/theorie-pratiques-a
 4. contradiction
 
 {% enddetails %}
+
+>faire pareil pour l'entrée vide. il existe les machine M(E) = M'()
+{: .tbd}
 
 Il faut bien comprendre l'énoncé ci-dessus. Il n'existe pas de décideur qui prend comme entrée **et** une machine de Turing **et** un mot et qui rend *Vrai* si la machine va s'arrêter : la machine et le mot d'entrée sont les paramètres du décideur.
 
