@@ -133,7 +133,8 @@ import matplotlib.pyplot as plt
 
 def draw_tab(tab):
     ax.cla()  # on efface le dessin
-    ax.plot(tab, 'ro')
+    ax.
+    lot(tab, 'ro')
     plt.pause(0.1)  # on pause le dessin
 
 

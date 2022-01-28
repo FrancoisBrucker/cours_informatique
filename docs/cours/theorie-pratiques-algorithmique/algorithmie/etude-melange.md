@@ -10,7 +10,7 @@ author: "François Brucker"
 >
 > prérequis :
 >
->* [étude : l'exponentiation]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude-exponentiation.md %})
+> * [étude : l'exponentiation]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude-exponentiation.md %})
 >
 {: .chemin}
 
@@ -59,7 +59,7 @@ i = randint(0, n! - 1)
 rendre P[i]
 ```
 
-Il nous reste à créer toutes les permutations possibles d'un tableau. C'est ce que fait l'algorithme suivant, récursif et en python.
+Il nous reste à créer toutes les permutations possibles d'un tableau. C'est ce que fait l'algorithme suivant, récursif et en python qui implémente la récurence de [la partie étude des tris]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude-tris.md %}#borne-max).
 
 ## toutes les permutations {#algo-toutes-permutations}
 

@@ -12,7 +12,6 @@ author: "François Brucker"
 >
 >* [complexité moyenne]({% link cours/theorie-pratiques-algorithmique/algorithmie/complexite-moyenne.md %})
 >* [complexité d'un problème]({% link cours/theorie-pratiques-algorithmique/algorithmie/complexite-probleme.md %})
->* [étude : mélanger un tableau]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude-melange.md %})
 >
 {: .chemin}
 
@@ -107,13 +106,46 @@ Comme toute case du tableau peut rendre le tableau non trié, on utilise l'argum
 
 ## bornes du problème
 
-### borne maximum
+### borne maximum {#borne-max}
 
-La l'algorithme `permutations` de l'[étude sur les mélanges d'un tableau]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude-melange.md %}#algo-toutes-permutations) permet de calculer en $\mathcal{O}((n+2)!)$ toutes les permutations d'un tableau à $n$ éléments. Comme l'algorithme `est_trie` permet de savoir si un tableau est trié en $\mathcal{O}(n)$ opérations, on peut résoudre le problème *"trie"* en énumérant toutes les permutations du tableau passé en paramètre et en vérifiant pour chacune d'entre elle s'il est trié ou non.
+Etant donné un tableau $T$ de taille $n$, il doit exister un algorithme — disons `permutations(T)` — permettant de rendre toutes les permutations de celui-ci. Même si on ne sait pas exactement comment faire on *se doute* que ça doit exister...
 
-La complexité de cet algorithme est alors le produit de la complexité de `permutations` et de `est_trie` : $\mathcal{O}(n \cdot (n+2)!)$. On en conclut :
+> Essayez d'en imaginer un. Comment feriez-vous ?
+{: .a-faire}
+{% details %}
 
-> Une borne maximum du problème *"tri"* est $\mathcal{O}(n \cdot (n+2)!)$ où $n$ est la taille du tableau passé en entrée
+Une permutation de $T$ revient à :
+
+1. choisir un indice $0 \leq i < n$ tel que $T[i]$ sera le premier élément de la permutation
+2. créer le tableau $T_i = T[:i] + T[i+1:]$
+3. trouver toutes les permuations $T'$ du tableau $T_i$ ($T$ auquel on a supprimé l'indice $i$)
+4. une permutation de $T$ est alors $T[i] + T'$
+
+Cette procédure nous donne l'idée d'un algorithme récursif permettant de rendre toutes les permuations de $T$.
+
+Sa complexité $C(n)$ satisfait l'équation de récurrence : $C(n) = n \cdot (n-1 + C(n-1) + n \cdot (n-1)!) = n\cdot(n-1) + n \dot C(n-1) + n\cdot n! = \dots = n \cdot C(n-1) + \mathcal{O}(n\cdot n!) \leq n \cdot C(n-1) + \mathcal{O}((n+1)!) = \dots \leq n \cdot (n-1) \cdot C(n-2) + 2 \cdot \mathcal{O}((n+1)!) \leq \dots \leq n! C(0) + n \cdot \mathcal{O}((n+1)!) = \mathcal{O}((n+2)!)$
+
+Pour un algorithme exact ainsi que son calcul de complexité, regardez du côté de [l'étude sur les mélanges]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude-melange.md %}#algo-toutes-permutations).
+
+{% enddetails %}
+
+On suppose donc que cet algorithme existe, et qu'on l'utilise comme ça : `permutation([1, 3, 2])` doit rendre un tableau contenant toutes les permutations, donc par exemple : `[[1, 3, 2], [1, 2, 3], [3, 1, 2], [3, 2, 1], [2, 1, 3], [2, 3, 1]]`, ou toute autre ordre dans les permutations.
+
+Comme l'algorithme `permutation`  doit rendre toutes les permutations pssibles du tableau en entrée, sa complexité, qu'on note $P(n)$ (avec $n$ la taille du tableau en entrée) est forcément supérieure à $\mathcal{O}(n \cdot (n)!)$ (il lui faut écrire sa sortie).
+
+C'est une complexité énorme, mais cela nous permet de résoudre notre problème puisque l'algorithme `est_trie` permet de savoir si un tableau est trié en $\mathcal{O}(n)$ opérations : on peut résoudre le problème *"trie"* en énumérant toutes les permutations du tableau passé en paramètre et en vérifiant pour chacune d'entre elle s'il est trié ou non. Un proposition d'algorithme peut alors être :
+
+```text
+def trie_long(T):
+    possibles = permutations(T)
+    pour chaque element de possible:
+        si est_trie(element):
+            rendre True
+```
+
+La complexité de `trie_long` est égalz à la complexité de `permutations`  plus la complexité de  `est_trie` ($\mathcal{O}(n)$) multiplié par le nombre de permutations ($n!$) : ce qui donne une complexité de $P(n) + \mathcal{O}(n \cdot (n)!) \geq  \mathcal{O}(n \cdot (n)!) =  \mathcal{O}((n + 1)!)$.
+
+> Une borne maximum du problème *"tri"* existe, et est de complexité supérieure à $\mathcal{O}(n+1)!)$ où $n$ est la taille du tableau passé en entrée.
 {: .note}
 
 Comme [n! est trop gros]({% link cours/theorie-pratiques-algorithmique/algorithmie/complexite-max-min.md %}#n_factoriel), ce n'est vraiment pas un algorithme à utiliser si on peut faire mieux... Mais il nous permet d'énoncer la propriété :
@@ -123,7 +155,7 @@ Comme [n! est trop gros]({% link cours/theorie-pratiques-algorithmique/algorithm
 > * un algorithme énumérant tous les cas possibles
 > * un algorithme permettant de vérifier si un cas donné est une solution
 >
-> Alors la combinaison des deux algorithmes, de complexité le produit des deux algorithmes la constituant, est une solution au problème initial.
+> Alors la combinaison des deux algorithmes est une solution au problème initial.
 {: .note}
 
 Souvent les algorithmes produits par la remarque précédente ne sont pas optimaux car on explore bien trop de cas.
