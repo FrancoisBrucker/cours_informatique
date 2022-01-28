@@ -67,7 +67,6 @@
   <ul>
     <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/complexite-moyenne.html">complexité moyenne</a></li>
     <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/complexite-probleme.html">complexité d’un problème</a></li>
-    <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/etude-melange.html">étude : mélanger un tableau</a></li>
   </ul>
 
 </blockquote>
@@ -194,14 +193,48 @@
 
 <h2 id="bornes-du-problème">bornes du problème</h2>
 
-<h3 id="borne-maximum">borne maximum</h3>
+<h3 id="borne-max">borne maximum</h3>
 
-<p>La l’algorithme <code class="language-plaintext highlighter-rouge">permutations</code> de l’<a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/etude-melange.html#algo-toutes-permutations">étude sur les mélanges d’un tableau</a> permet de calculer en $\mathcal{O}((n+2)!)$ toutes les permutations d’un tableau à $n$ éléments. Comme l’algorithme <code class="language-plaintext highlighter-rouge">est_trie</code> permet de savoir si un tableau est trié en $\mathcal{O}(n)$ opérations, on peut résoudre le problème <em>“trie”</em> en énumérant toutes les permutations du tableau passé en paramètre et en vérifiant pour chacune d’entre elle s’il est trié ou non.</p>
+<p>Etant donné un tableau $T$ de taille $n$, il doit exister un algorithme — disons <code class="language-plaintext highlighter-rouge">permutations(T)</code> — permettant de rendre toutes les permutations de celui-ci. Même si on ne sait pas exactement comment faire on <em>se doute</em> que ça doit exister…</p>
 
-<p>La complexité de cet algorithme est alors le produit de la complexité de <code class="language-plaintext highlighter-rouge">permutations</code> et de <code class="language-plaintext highlighter-rouge">est_trie</code> : $\mathcal{O}(n \cdot (n+2)!)$. On en conclut :</p>
+<blockquote class="a-faire">
+  <p>Essayez d’en imaginer un. Comment feriez-vous ?</p>
+</blockquote>
+<details><summary></summary><div>
+<p>Une permutation de $T$ revient à :</p>
+
+<ol>
+  <li>choisir un indice $0 \leq i &lt; n$ tel que $T[i]$ sera le premier élément de la permutation</li>
+  <li>créer le tableau $T_i = T[:i] + T[i+1:]$</li>
+  <li>trouver toutes les permuations $T’$ du tableau $T_i$ ($T$ auquel on a supprimé l’indice $i$)</li>
+  <li>une permutation de $T$ est alors $T[i] + T’$</li>
+</ol>
+
+<p>Cette procédure nous donne l’idée d’un algorithme récursif permettant de rendre toutes les permuations de $T$.</p>
+
+<p>Sa complexité $C(n)$ satisfait l’équation de récurrence : $C(n) = n \cdot (n-1 + C(n-1) + n \cdot (n-1)!) = n\cdot(n-1) + n \dot C(n-1) + n\cdot n! = \dots = n \cdot C(n-1) + \mathcal{O}(n\cdot n!) \leq n \cdot C(n-1) + \mathcal{O}((n+1)!) = \dots \leq n \cdot (n-1) \cdot C(n-2) + 2 \cdot \mathcal{O}((n+1)!) \leq \dots \leq n! C(0) + n \cdot \mathcal{O}((n+1)!) = \mathcal{O}((n+2)!)$</p>
+
+<p>Pour un algorithme exact ainsi que son calcul de complexité, regardez du côté de <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/etude-melange.html#algo-toutes-permutations">l’étude sur les mélanges</a>.</p>
+
+</div></details>
+
+<p>On suppose donc que cet algorithme existe, et qu’on l’utilise comme ça : <code class="language-plaintext highlighter-rouge">permutation([1, 3, 2])</code> doit rendre un tableau contenant toutes les permutations, donc par exemple : <code class="language-plaintext highlighter-rouge">[[1, 3, 2], [1, 2, 3], [3, 1, 2], [3, 2, 1], [2, 1, 3], [2, 3, 1]]</code>, ou toute autre ordre dans les permutations.</p>
+
+<p>Comme l’algorithme <code class="language-plaintext highlighter-rouge">permutation</code>  doit rendre toutes les permutations pssibles du tableau en entrée, sa complexité, qu’on note $P(n)$ (avec $n$ la taille du tableau en entrée) est forcément supérieure à $\mathcal{O}(n \cdot (n)!)$ (il lui faut écrire sa sortie).</p>
+
+<p>C’est une complexité énorme, mais cela nous permet de résoudre notre problème puisque l’algorithme <code class="language-plaintext highlighter-rouge">est_trie</code> permet de savoir si un tableau est trié en $\mathcal{O}(n)$ opérations : on peut résoudre le problème <em>“trie”</em> en énumérant toutes les permutations du tableau passé en paramètre et en vérifiant pour chacune d’entre elle s’il est trié ou non. Un proposition d’algorithme peut alors être :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def trie_long(T):
+    possibles = permutations(T)
+    pour chaque element de possible:
+        si est_trie(element):
+            rendre True
+</code></pre></div></div>
+
+<p>La complexité de <code class="language-plaintext highlighter-rouge">trie_long</code> est égalz à la complexité de <code class="language-plaintext highlighter-rouge">permutations</code>  plus la complexité de  <code class="language-plaintext highlighter-rouge">est_trie</code> ($\mathcal{O}(n)$) multiplié par le nombre de permutations ($n!$) : ce qui donne une complexité de $P(n) + \mathcal{O}(n \cdot (n)!) \geq  \mathcal{O}(n \cdot (n)!) =  \mathcal{O}((n + 1)!)$.</p>
 
 <blockquote class="note">
-  <p>Une borne maximum du problème <em>“tri”</em> est $\mathcal{O}(n \cdot (n+2)!)$ où $n$ est la taille du tableau passé en entrée</p>
+  <p>Une borne maximum du problème <em>“tri”</em> existe, et est de complexité supérieure à $\mathcal{O}(n+1)!)$ où $n$ est la taille du tableau passé en entrée.</p>
 </blockquote>
 
 <p>Comme <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/complexite-max-min.html#n_factoriel">n! est trop gros</a>, ce n’est vraiment pas un algorithme à utiliser si on peut faire mieux… Mais il nous permet d’énoncer la propriété :</p>
@@ -214,7 +247,7 @@
     <li>un algorithme permettant de vérifier si un cas donné est une solution</li>
   </ul>
 
-  <p>Alors la combinaison des deux algorithmes, de complexité le produit des deux algorithmes la constituant, est une solution au problème initial.</p>
+  <p>Alors la combinaison des deux algorithmes est une solution au problème initial.</p>
 </blockquote>
 
 <p>Souvent les algorithmes produits par la remarque précédente ne sont pas optimaux car on explore bien trop de cas.</p>
