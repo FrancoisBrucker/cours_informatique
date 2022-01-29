@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/cours_informatique/feed.xml" rel="self" type="application/atom+xml" /><link href="/cours_informatique/" rel="alternate" type="text/html" /><updated>2022-01-28T06:32:17+00:00</updated><id>/cours_informatique/feed.xml</id><title type="html">cours d’informatique</title><subtitle>Support de cours/td d'informatique à l'école centrale marseille.</subtitle><entry><title type="html">utiliser un terminal</title><link href="/cours_informatique/tutos/systeme/cli/terminal/2021/12/02/terminal-utilisation.html" rel="alternate" type="text/html" title="utiliser un terminal" /><published>2021-12-02T00:00:00+00:00</published><updated>2021-12-02T00:00:00+00:00</updated><id>/cours_informatique/tutos/systeme/cli/terminal/2021/12/02/terminal-utilisation</id><content type="html" xml:base="/cours_informatique/tutos/systeme/cli/terminal/2021/12/02/terminal-utilisation.html">&lt;blockquote class=&quot;chemin&quot;&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/cours_informatique/feed.xml" rel="self" type="application/atom+xml" /><link href="/cours_informatique/" rel="alternate" type="text/html" /><updated>2022-01-29T06:38:07+00:00</updated><id>/cours_informatique/feed.xml</id><title type="html">cours d’informatique</title><subtitle>Support de cours/td d'informatique à l'école centrale marseille.</subtitle><entry><title type="html">utiliser un terminal</title><link href="/cours_informatique/tutos/systeme/cli/terminal/2021/12/02/terminal-utilisation.html" rel="alternate" type="text/html" title="utiliser un terminal" /><published>2021-12-02T00:00:00+00:00</published><updated>2021-12-02T00:00:00+00:00</updated><id>/cours_informatique/tutos/systeme/cli/terminal/2021/12/02/terminal-utilisation</id><content type="html" xml:base="/cours_informatique/tutos/systeme/cli/terminal/2021/12/02/terminal-utilisation.html">&lt;blockquote class=&quot;chemin&quot;&gt;
   &lt;p&gt;&lt;strong&gt;prérequis :&lt;/strong&gt;&lt;/p&gt;
 
   &lt;ul&gt;
@@ -1762,7 +1762,21 @@ hello
 
 &lt;h4 id=&quot;utilisation-pytest&quot;&gt;utilisation&lt;/h4&gt;
 
-&lt;p&gt;On peut utiliser les tests directement avec vscode en ouvrant la fenêtre de tests avec &lt;em&gt;Menu Affichage testing&lt;/em&gt; (le petit erlenmeyer de la &lt;a href=&quot;https://code.visualstudio.com/docs/getstarted/userinterface&quot;&gt;barre d’activité&lt;/a&gt;).&lt;/p&gt;
+&lt;blockquote class=&quot;a-faire&quot;&gt;
+  &lt;p&gt;Créez un fichier que vous appellerez &lt;em&gt;“test_projet.py”&lt;/em&gt; dans votre projet. Collez-y- le code suivant :&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;test_oui&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;assert&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;test_non&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;assert&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;4&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Le fichier créé est un fichier de test. Il faut l’utiliser via la bibliothèque &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pytest&lt;/code&gt; que vous venez d’installer. Ceci peut se faire directement avec vscode en ouvrant la fenêtre de tests avec &lt;em&gt;Menu Affichage testing&lt;/em&gt; (le petit erlenmeyer de la &lt;a href=&quot;https://code.visualstudio.com/docs/getstarted/userinterface&quot;&gt;barre d’activité&lt;/a&gt;).&lt;/p&gt;
 
 &lt;p&gt;En suite le menu &lt;em&gt;TESTING&lt;/em&gt; en haut de cette nouvelle fenêtre vous permet :&lt;/p&gt;
 
@@ -2053,7 +2067,7 @@ Je pense que c’est comme mac, mais pas sur.&lt;/p&gt;
 
 &lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 
-&lt;p&gt;Si vous ne l’avez pas déjà fait, téléchargez &lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;vscode&lt;/a&gt; le et installez le.&lt;/p&gt;
+&lt;p&gt;Si vous ne l’avez pas déjà fait, téléchargez &lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;vscode&lt;/a&gt; le et installez le (sous Ubuntu, il vous sera peut-être nécessaire d’utiliser la commande &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo snap install code --classic&lt;/code&gt; dans un terminal)&lt;/p&gt;
 
 &lt;p&gt;vscode permet, comme dans tout éditeur de texte, d’éditer et de créer des fichiers texte mais aussi de gérer des &lt;em&gt;workspace&lt;/em&gt; qui sont des dossiers contenant des projets.&lt;/p&gt;
 

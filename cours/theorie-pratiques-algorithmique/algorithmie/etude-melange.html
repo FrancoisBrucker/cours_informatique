@@ -70,6 +70,12 @@
 
 </blockquote>
 
+<p>Avant toute chose :</p>
+
+<blockquote class="a-faire">
+  <p>Creéz un projet vscode pour implémenter, tester et utiliser les différents algorithmes.</p>
+</blockquote>
+
 <p>Nous allons étudier ici deux algorithmes permettant de mélanger un tableau. Commençons par identifier le problème. Nous allons utiliser le problème suivant, qui consiste à rendre une permutation des $n$ premiers entiers :</p>
 
 <ul>
@@ -104,7 +110,9 @@
 
 <h2 id="remarques-préliminaires">remarques préliminaires</h2>
 
-<p>Attention, l’algorithme suivant :</p>
+<blockquote class="a-faire">
+  <p>Lalgorithme suivant ne résout pas le problème “permutation”. Pourquoi ?</p>
+</blockquote>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>soit T un tableau à n cases
 de i = 0 à n-1:
@@ -112,11 +120,24 @@ de i = 0 à n-1:
 rendre T
 </code></pre></div></div>
 
-<p>Ne résout pas le problème “permutation” puisqu’il peut y avoir des répétitions.</p>
+<details><summary>solution</summary><div>
+<p>Il peut y avoir des répétitions.</p>
+
+</div></details>
+
+<blockquote class="a-faire">
+  <p>Codez cette méthode (en utilisant la fonction <a href="https://docs.python.org/fr/3/library/random.html#random.randint">randint</a> du module <a href="https://docs.python.org/fr/3/library/random.html">random</a>) pour vous rendre compte par vous-même qu’elle ne résout pas le problème.</p>
+</blockquote>
 
 <h2 id="borne-min-du-problème">borne min du problème</h2>
 
+<blockquote class="a-faire">
+  <p>Donnez la borne min du problème “permuation”, même si on se sait pas si un tel algorithme</p>
+</blockquote>
+<details><summary>solution</summary><div>
 <p>Comme il faut rendre un tableau de longueur $n$, une borne minimum du problème “permutation” est de $\mathcal{O}(n)$. Mais rien ne dit qu’un tel algorithme existe.</p>
+
+</div></details>
 
 <h2 id="existence-dun-algorithme">existence d’un algorithme</h2>
 
@@ -131,50 +152,26 @@ rendre P[i]
 
 <h2 id="algo-toutes-permutations">toutes les permutations</h2>
 
-<style>
-    table, td, tr, th, pre {
-        padding:0;
-        margin:0;
-        border:none
-    }
-</style>
+<p>Une permutation de $T$ étant la concaténation de la liste à un élément $[T[i]]$ ($0 \leq i &lt; n$)  et d’une permutation de $T’= T[:i] + T[i+1:]$ (le tableau des éléments d’indiced différents de $i$ du tableau), on peut forger un algorithme récursif permettant de rendre toutes les permuations de $T$ :</p>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><table class="rouge-table"><tbody><tr>
-<td class="gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-</pre></td>
-<td class="code"><pre><span class="k">def</span> <span class="nf">permutations</span><span class="p">(</span><span class="n">elements</span><span class="p">):</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">elements</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">return</span> <span class="p">[[]]</span>
-
-    <span class="n">les_permutations</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">elements</span><span class="p">)):</span>
-        <span class="n">premier</span> <span class="o">=</span> <span class="n">elements</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-        <span class="n">elements_sans_premier</span> <span class="o">=</span> <span class="n">elements</span><span class="p">[:</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">elements</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span>
-        <span class="n">permutations_sans_premier</span> <span class="o">=</span> <span class="n">permutations</span><span class="p">(</span><span class="n">elements_sans_premier</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">une_fin_de_permutation</span> <span class="ow">in</span> <span class="n">permutations_sans_premier</span><span class="p">:</span>
-            <span class="n">permutation</span> <span class="o">=</span> <span class="p">[</span><span class="n">premier</span><span class="p">]</span> <span class="o">+</span> <span class="n">une_fin_de_permutation</span>
-            <span class="n">les_permutations</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">permutation</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">les_permutations</span>
-</pre></td>
-</tr></tbody></table></code></pre></figure>
-
-<p>Pour placer dans la liste de listes <code class="language-plaintext highlighter-rouge">P</code> toutes les permutations de <code class="language-plaintext highlighter-rouge">[0, 1, 2, 3, 4, 5]</code>, on lance l’algorithme comme ça : <code class="language-plaintext highlighter-rouge">P = permutations([0, 1, 2, 3, 4, 5])</code>.</p>
+<ol>
+  <li>on note $L$ une liste, initialement vide qui va contenir nos permutations.</li>
+  <li>pour chaque indice $0 \leq i &lt; n$ tel que $T[i]$ sera le premier élément de la permutation
+    <ol>
+      <li>créer le tableau $T_i = T[:i] + T[i+1:]$ qui est le tableau initial auquel on a supprimé l’indice $i$</li>
+      <li>trouver toutes les permuations $L’$ du tableau $T_i$ (s’il est non vide)</li>
+      <li>pour chaque permuation $T’$ de $L’$</li>
+      <li>ajoutez la permutatuin $T[i] + T’$ à $L$</li>
+    </ol>
+  </li>
+  <li>rendre $L$</li>
+</ol>
 
 <blockquote class="a-faire">
-  <p>Testez cet algorithme.</p>
+  <p>Codez cet algorithme et mettez en places des tests pour vérifier qu’il fonctionne.</p>
 </blockquote>
+
+<p>Pour placer dans la liste de listes <code class="language-plaintext highlighter-rouge">P</code> toutes les permutations de <code class="language-plaintext highlighter-rouge">[0, 1, 2, 3, 4, 5]</code>, on lance l’algorithme comme ça : <code class="language-plaintext highlighter-rouge">P = permutations([0, 1, 2, 3, 4, 5])</code>.</p>
 
 <p>Analysons cet algorithme pour vérifier qu’il fait bien ce qu’on pense qu’il fait (bien).</p>
 
@@ -277,6 +274,12 @@ C(n) &amp; = &amp; n \cdot C(n-1) + \mathcal{O}(n\cdot n!)\\
 
 <h2 id="un-algorithme-inefficace">un algorithme inefficace</h2>
 
+<p>Un algorithme de mélange utilisant <code class="language-plaintext highlighter-rouge">permutations</code> est alors de choisir 1 permutation parmi toutes les permutations d’un tableau en entrée.</p>
+
+<blockquote class="a-faire">
+  <p>Codez un algorithme <code class="language-plaintext highlighter-rouge">melange(T)</code> qui commence par utiliser <code class="language-plaintext highlighter-rouge">permutations(T)</code> pour créer toutes les permutations possible, puis en choisi un au hasard (en utilisant la fonction <a href="https://docs.python.org/fr/3/library/random.html#random.randint">randint</a> du module <a href="https://docs.python.org/fr/3/library/random.html">random</a>) pour la rendre.</p>
+</blockquote>
+
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
 
 <span class="k">def</span> <span class="nf">melange</span><span class="p">(</span><span class="n">elements</span><span class="p">):</span>
@@ -286,9 +289,20 @@ C(n) &amp; = &amp; n \cdot C(n-1) + \mathcal{O}(n\cdot n!)\\
 
 </code></pre></div></div>
 
-<p>Comme la fonction <a href="https://docs.python.org/fr/3/library/random.html#random.randint">randint</a> du module <a href="https://docs.python.org/fr/3/library/random.html">random</a> de python rend un nombre aléatoire, <code class="language-plaintext highlighter-rouge">melange</code> est bien une solution au problème puisque chaque permutation sera équiprobable.</p>
+<p>Tester un algorithme avec du hasard est une technique avancée. Nous ne la traiterons pas ici, en revanche, on peut vérifier expérimentalement que c’est cohérent.</p>
 
-<p>Sa complexité est cependant prohibitive. Comme on a considéré que la complexité de <code class="language-plaintext highlighter-rouge">randint</code> est de $\mathcal{O}(1)$, la complexité de <code class="language-plaintext highlighter-rouge">melange</code> est de l’ordre de la complexité de <code class="language-plaintext highlighter-rouge">permutations</code> donc : $\mathcal{O}((n+2)!)$ avec $n$ la taille du tableau <code class="language-plaintext highlighter-rouge">element</code>. L’algorithme <code class="language-plaintext highlighter-rouge">melange</code> n’est pas utilisable en pratique car <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/complexite-max-min.html#n_factoriel">n! est trop gros</a></p>
+<blockquote class="a-faire">
+  <p>Obtient-on bien toutes les permutations du tableau <code class="language-plaintext highlighter-rouge">[1, 2, 3]</code> si on exécute <code class="language-plaintext highlighter-rouge">melange</code> un grand nombre de fois ?
+Toutes les permutaions apparaissent-elles *à peu prêt$ le même nombre de fois ?</p>
+
+  <p>Vérifiez-le expérimentalement</p>
+</blockquote>
+
+<p>A priori, oui, tout doit bien se passer si la la fonction <a href="https://docs.python.org/fr/3/library/random.html#random.randint">randint</a> de python rend un nombre aléatoire : <code class="language-plaintext highlighter-rouge">melange</code> doit bien rendre qcache permutation de façon équiprobable.</p>
+
+<p>C’est bien une solution au problème, mais sa complexité est cependant prohibitive.</p>
+
+<p>Comme on a considéré que la complexité de <code class="language-plaintext highlighter-rouge">randint</code> est de $\mathcal{O}(1)$, la complexité de <code class="language-plaintext highlighter-rouge">melange</code> est de l’ordre de la complexité de <code class="language-plaintext highlighter-rouge">permutations</code> donc : $\mathcal{O}((n+2)!)$ avec $n$ la taille du tableau <code class="language-plaintext highlighter-rouge">element</code>. L’algorithme <code class="language-plaintext highlighter-rouge">melange</code> n’est pas utilisable en pratique car <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/complexite-max-min.html#n_factoriel">n! est trop gros</a></p>
 
 <blockquote class="note">
   <p>L’intérêt de <code class="language-plaintext highlighter-rouge">mélange</code> est théorique. Il montre qu’il existe un algorithme pour résoudre le problème (et en donne par là également une borne max).</p>
@@ -377,66 +391,19 @@ C(n) &amp; = &amp; \mathcal{O}(n) + \mathcal{O}(n) \cdot (\mathcal{O}(1) + \math
 </ol>
 
 <blockquote class="a-faire">
-  <p>Codez cette expérience.</p>
+  <p>Codez cette expérience.
+Pour rendre le résultat graphiquem, vous pourrez représenter la courbe $(i, compte[i])$.</p>
 </blockquote>
 
-<details><summary>une solution possible</summary><div>
-<p>Il faut que <a href="https://matplotlib.org/">matplotlib</a> soit installé pour que le code fonctionne.</p>
+<p>Pour la partie graphique, il faut que <a href="https://matplotlib.org/">matplotlib</a> soit installé pour que le code fonctionne.  On a utilisé quelques trucs de matplotlib pour que la figue soit jolie :</p>
 
 <ul>
-  <li>On a utilisé quelques trucs de matplotlib pour que la figue soit jolie :
-    <ul>
-      <li>
+  <li>
 <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.legend.html">des legendes</a>, que l’on a placé en dehors de la figure</li>
-      <li><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.axhline.html">un axe horizontal</a></li>
-    </ul>
-  </li>
-  <li>on a mis un <a href="https://docs.python.org/3/tutorial/controlflow.html#break-and-continue-statements-and-else-clauses-on-loops">break</a> dans la recherche de la permutation, pour éviter de faire des recherches inutiles.</li>
+  <li><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.axhline.html">un axe horizontal</a></li>
 </ul>
 
-<p>On a également mis les constantes en majuscule, <a href="https://www.python.org/dev/peps/pep-0008/#constants">conformément au style</a></p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-
-<span class="k">def</span> <span class="nf">permutations</span><span class="p">(</span><span class="n">elements</span><span class="p">):</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">elements</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">return</span> <span class="p">[[]]</span>
-    
-    <span class="n">les_permutations</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">elements</span><span class="p">)):</span>
-        <span class="n">premier</span> <span class="o">=</span> <span class="n">elements</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-        <span class="n">elements_sans_premier</span> <span class="o">=</span> <span class="n">elements</span><span class="p">[:</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">elements</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span>
-        <span class="n">permutations_sans_premier</span> <span class="o">=</span> <span class="n">permutations</span><span class="p">(</span><span class="n">elements_sans_premier</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">une_fin_de_permutation</span> <span class="ow">in</span> <span class="n">permutations_sans_premier</span><span class="p">:</span>
-            <span class="n">permutation</span> <span class="o">=</span> <span class="p">[</span><span class="n">premier</span><span class="p">]</span> <span class="o">+</span> <span class="n">une_fin_de_permutation</span>
-            <span class="n">les_permutations</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">permutation</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">les_permutations</span>
-    
-
-<span class="k">def</span> <span class="nf">melange_knuth</span><span class="p">(</span><span class="n">elements</span><span class="p">):</span>
-    <span class="n">copie_elements</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">elements</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">copie_elements</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
-        <span class="n">j</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
-        <span class="n">copie_elements</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">copie_elements</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">copie_elements</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">copie_elements</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">copie_elements</span>
-
-
-<span class="n">NOMBRE_ITERATION</span> <span class="o">=</span> <span class="mi">100000</span>
-<span class="n">TABLEAU</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
-<span class="n">PERMUTATIONS</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">permutations</span><span class="p">(</span><span class="n">TABLEAU</span><span class="p">)]</span>
-
-<span class="n">compte</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">PERMUTATIONS</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">NOMBRE_ITERATION</span><span class="p">):</span>
-    <span class="n">res</span> <span class="o">=</span> <span class="n">melange_knuth</span><span class="p">(</span><span class="n">TABLEAU</span><span class="p">)</span>
-    
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">PERMUTATIONS</span><span class="p">)):</span>
-        <span class="k">if</span>  <span class="n">PERMUTATIONS</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">res</span><span class="p">:</span>
-            <span class="n">compte</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
-            <span class="k">break</span>
-
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 
 <span class="n">ax</span><span class="p">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">PERMUTATIONS</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
 
@@ -447,16 +414,9 @@ C(n) &amp; = &amp; \mathcal{O}(n) + \mathcal{O}(n) \cdot (\mathcal{O}(1) + \math
 <span class="n">ax</span><span class="p">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">"nombre de permutations"</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
-
 </code></pre></div></div>
 
-<blockquote>
-  <p>Une version avancée du code précédent aurait utilisé un <a href="https://docs.python.org/fr/3/library/collections.html#counter-objects">compteur</a> du module <a href="https://docs.python.org/fr/3/library/collections.html">collections</a> pour accélérer le comptage, mais cela aurait nécessiter de changer nos listes en tuples.</p>
-</blockquote>
-
-</div></details>
-
-<p>J’obtiens le résultat suivant :</p>
+<p>Vous devirez obtenir le résultat suivant :</p>
 
 <p><img src="/cours_informatique/assets/cours/algorithmie/melange_knuth.png" alt="mélange de Knuth" style="margin: auto;display: block"></p>
 
@@ -493,7 +453,7 @@ C(n) &amp; = &amp; \mathcal{O}(n) + \mathcal{O}(n) \cdot (\mathcal{O}(1) + \math
 
 <p>De là, la probabilité que l’élément originellement en position $i$ se retrouve en position $n-j$ à la fin de l’algorithme est :</p>
 
-\[\frac{n-1}{n} \cdot \frac{n-2}{n-1} \cdot \ ...\  \cdot \frac{n-j+1}{n-j+2} \cdot \frac{1}{n-j+1} = \frac{1}{n}\]
+\[\frac{n-1}{n} \cdot \frac{n-2}{n-1} \cdot \\ ...\\  \cdot \frac{n-j+1}{n-j+2} \cdot \frac{1}{n-j+1} = \frac{1}{n}\]
 
 <p>C’est bien équiprobable !</p>
 
@@ -545,40 +505,22 @@ C(n) &amp; = &amp; \mathcal{O}(n) + \mathcal{O}(n) \cdot (\mathcal{O}(1) + \math
 
 <p>On en déduit l’algorithme de mélange suivant :</p>
 
-<style>
-    table, td, tr, th, pre {
-        padding:0;
-        margin:0;
-        border:none
-    }
-</style>
-
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><table class="rouge-table"><tbody><tr>
-<td class="gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-</pre></td>
-<td class="code"><pre><span class="k">def</span> <span class="nf">melange_transposition</span><span class="p">(</span><span class="n">elements</span><span class="p">):</span>
-    <span class="n">copie_elements</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">elements</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">copie_elements</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
-        <span class="n">i</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">copie_elements</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="n">j</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">copie_elements</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
-        
-        <span class="n">copie_elements</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">copie_elements</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">copie_elements</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">copie_elements</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">copie_elements</span>
-</pre></td>
-</tr></tbody></table></code></pre></figure>
+<ol>
+  <li>soit $T$ un tableau à $n$ éléments</li>
+  <li>répétez $n-1$ fois
+    <ol>
+      <li>soit i un nombre aléatoire entre 0 et $n-1$</li>
+      <li>soit j un nombre aléatoire entre 0 et $n-1$</li>
+      <li>échanger $T[i]$ et $T[j]$</li>
+    </ol>
+  </li>
+</ol>
 
 <blockquote class="a-faire">
-  <p>Refaites l’expérience de la <a href="#verif-expe">vérification expérimentale</a> pour cet algorithme.</p>
+  <p>Codez cet algorithme et refaites l’expérience de la <a href="#verif-expe">vérification expérimentale</a> pour cet algorithme.</p>
 </blockquote>
 
-<p>J’obtiens quelque chose du type :</p>
+<p>Vous devirez obtenir quelque chose du type :</p>
 
 <p><img src="/cours_informatique/assets/cours/algorithmie/melange_transposition.png" alt="mélange de transpositions" style="margin: auto;display: block"></p>
 
@@ -637,7 +579,7 @@ C(n) &amp; = &amp; \mathcal{O}(n) + \mathcal{O}(n) \cdot (\mathcal{O}(1) + \math
 <p>La perception de ce qu’est l’aléatoire n’est pas aisée. Lorsque l’on joue à un jeu de cartes par exemple, le <a href="https://fr.wikipedia.org/wiki/Biais_de_confirmation">biais de confirmation</a> tend à se rappeler les évènement très défavorables au détriment de ceux juste <em>normaux</em>. De plus, lorsque l’on demande à des humains de tirer des nombres aléatoires, souvent ils ne le sont pas :</p>
 
 <ul>
-  <li>Lorsque l’on demande à des humains de choisir un nombre aléatoirement entre 1 et 10, ils répondent le plus souvent 7 : <a href="https://www.reddit.com/r/dataisbeautiful/comments/acow6y/asking_over_8500_students_to_pick_a_random_number/">https://www.reddit.com/r/dataisbeautiful/comments/acow6y/asking_over_8500_students_to_pick_a_random_number/</a>.</li>
+  <li>Lorsque l’on demande à des humains de choisir un nombre aléatoirement entre 1 et 10, <a href="https://www.reddit.com/r/dataisbeautiful/comments/acow6y/asking_over_8500_students_to_pick_a_random_number/">ils répondent le plus souvent 7</a>.</li>
   <li>lorsque l’on demande à des humains d’écrire une suite aléatoire de 200 nombres valant 0 ou 1, il y aura une sous-représentation des longues séquences avec le même nombre : celà ne <em>fait pas aléatoire</em> d’avoir plein de fois le même nombre à la suite (alors que statistiquement, il faut bien que ces séquences existent).</li>
 </ul>
 
