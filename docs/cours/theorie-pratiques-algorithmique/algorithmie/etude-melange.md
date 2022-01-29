@@ -14,6 +14,11 @@ author: "François Brucker"
 >
 {: .chemin}
 
+Avant toute chose :
+
+> Creéz un projet vscode pour implémenter, tester et utiliser les différents algorithmes.
+{: .a-faire}
+
 Nous allons étudier ici deux algorithmes permettant de mélanger un tableau. Commençons par identifier le problème. Nous allons utiliser le problème suivant, qui consiste à rendre une permutation des $n$ premiers entiers :
 
 * **nom** : permutation
@@ -34,7 +39,8 @@ On ne va pas définir plus que ça la notion d'aléatoire en informatique. On va
 
 ## remarques préliminaires
 
-Attention, l'algorithme suivant :
+> Lalgorithme suivant ne résout pas le problème "permutation". Pourquoi ?
+{: .a-faire}
 
 ```text
 soit T un tableau à n cases
@@ -43,11 +49,23 @@ de i = 0 à n-1:
 rendre T
 ```
 
-Ne résout pas le problème "permutation" puisqu'il peut y avoir des répétitions.
+{% details solution %}
+
+Il peut y avoir des répétitions.
+
+{% enddetails %}
+
+> Codez cette méthode (en utilisant la fonction [randint](https://docs.python.org/fr/3/library/random.html#random.randint) du module [random](https://docs.python.org/fr/3/library/random.html)) pour vous rendre compte par vous-même qu'elle ne résout pas le problème.
+{: .a-faire}
 
 ## borne min du problème
 
+> Donnez la borne min du problème "permuation", même si on se sait pas si un tel algorithme
+{: .a-faire}
+{% details solution %}
 Comme il faut rendre un tableau de longueur $n$, une borne minimum du problème "permutation" est de $\mathcal{O}(n)$. Mais rien ne dit qu'un tel algorithme existe.
+
+{% enddetails %}
 
 ## existence d'un algorithme
 
@@ -63,35 +81,20 @@ Il nous reste à créer toutes les permutations possibles d'un tableau. C'est ce
 
 ## toutes les permutations {#algo-toutes-permutations}
 
-<style>
-    table, td, tr, th, pre {
-        padding:0;
-        margin:0;
-        border:none
-    }
-</style>
-{% highlight python linenos %}
+Une permutation de $T$ étant la concaténation de la liste à un élément $[T[i]]$ ($0 \leq i < n$)  et d'une permutation de $T'= T[:i] + T[i+1:]$ (le tableau des éléments d'indiced différents de $i$ du tableau), on peut forger un algorithme récursif permettant de rendre toutes les permuations de $T$ :
 
-def permutations(elements):
-    if len(elements) == 0:
-        return [[]]
+1. on note $L$ une liste, initialement vide qui va contenir nos permutations.
+2. pour chaque indice $0 \leq i < n$ tel que $T[i]$ sera le premier élément de la permutation
+   1. créer le tableau $T_i = T[:i] + T[i+1:]$ qui est le tableau initial auquel on a supprimé l'indice $i$
+   2. trouver toutes les permuations $L'$ du tableau $T_i$ (s'il est non vide)
+   3. pour chaque permuation $T'$ de $L'$
+   4. ajoutez la permutatuin $T[i] + T'$ à $L$
+3. rendre $L$
 
-    les_permutations = []
-    for i in range(len(elements)):
-        premier = elements[i]
-        elements_sans_premier = elements[:i] + elements[i+1:]
-        permutations_sans_premier = permutations(elements_sans_premier)
-        for une_fin_de_permutation in permutations_sans_premier:
-            permutation = [premier] + une_fin_de_permutation
-            les_permutations.append(permutation)
-    return les_permutations
-
-{% endhighlight %}
+> Codez cet algorithme et mettez en places des tests pour vérifier qu'il fonctionne.
+{: .a-faire}
 
 Pour placer dans la liste de listes `P` toutes les permutations de `[0, 1, 2, 3, 4, 5]`, on lance l'algorithme comme ça : `P = permutations([0, 1, 2, 3, 4, 5])`.
-
-> Testez cet algorithme.
-{: .a-faire}
 
 Analysons cet algorithme pour vérifier qu'il fait bien ce qu'on pense qu'il fait (bien).
 
@@ -195,6 +198,11 @@ On remarque que :
 
 ## un algorithme inefficace
 
+Un algorithme de mélange utilisant `permutations` est alors de choisir 1 permutation parmi toutes les permutations d'un tableau en entrée.
+
+> Codez un algorithme `melange(T)` qui commence par utiliser `permutations(T)` pour créer toutes les permutations possible, puis en choisi un au hasard (en utilisant la fonction [randint](https://docs.python.org/fr/3/library/random.html#random.randint) du module [random](https://docs.python.org/fr/3/library/random.html)) pour la rendre.
+{: .a-faire}
+
 ```python
 from random import randint
 
@@ -205,9 +213,19 @@ def melange(elements):
 
 ```
 
-Comme la fonction [randint](https://docs.python.org/fr/3/library/random.html#random.randint) du module [random](https://docs.python.org/fr/3/library/random.html) de python rend un nombre aléatoire, `melange` est bien une solution au problème puisque chaque permutation sera équiprobable.
+Tester un algorithme avec du hasard est une technique avancée. Nous ne la traiterons pas ici, en revanche, on peut vérifier expérimentalement que c'est cohérent.
 
-Sa complexité est cependant prohibitive. Comme on a considéré que la complexité de `randint` est de $\mathcal{O}(1)$, la complexité de `melange` est de l'ordre de la complexité de `permutations` donc : $\mathcal{O}((n+2)!)$ avec $n$ la taille du tableau `element`. L'algorithme `melange` n'est pas utilisable en pratique car [n! est trop gros]({% link cours/theorie-pratiques-algorithmique/algorithmie/complexite-max-min.md %}#n_factoriel)
+> Obtient-on bien toutes les permutations du tableau `[1, 2, 3]` si on exécute `melange` un grand nombre de fois ?
+> Toutes les permutaions apparaissent-elles *à peu prêt$ le même nombre de fois ?
+>
+> Vérifiez-le expérimentalement
+{: .a-faire}
+
+A priori, oui, tout doit bien se passer si la la fonction [randint](https://docs.python.org/fr/3/library/random.html#random.randint) de python rend un nombre aléatoire : `melange` doit bien rendre qcache permutation de façon équiprobable.
+
+C'est bien une solution au problème, mais sa complexité est cependant prohibitive.
+
+Comme on a considéré que la complexité de `randint` est de $\mathcal{O}(1)$, la complexité de `melange` est de l'ordre de la complexité de `permutations` donc : $\mathcal{O}((n+2)!)$ avec $n$ la taille du tableau `element`. L'algorithme `melange` n'est pas utilisable en pratique car [n! est trop gros]({% link cours/theorie-pratiques-algorithmique/algorithmie/complexite-max-min.md %}#n_factoriel)
 
 > L'intérêt de `mélange` est théorique. Il montre qu'il existe un algorithme pour résoudre le problème (et en donne par là également une borne max).
 {: .note}
@@ -278,60 +296,15 @@ On va le vérifier expérimentalement en regardant les permutations du tableau `
 4. on affiche le résultat en le comparant au résultat théorique (s'il y a équiprobabilité, on devrait retrouver $100000 / 720 \simeq 139$ fois chaque permutation)
 
 > Codez cette expérience.
+> Pour rendre le résultat graphiquem, vous pourrez représenter la courbe $(i, compte[i])$.
 {: .a-faire}
 
-{% details  une solution possible %}
+Pour la partie graphique, il faut que [matplotlib](https://matplotlib.org/) soit installé pour que le code fonctionne.  On a utilisé quelques trucs de matplotlib pour que la figue soit jolie :
 
-Il faut que [matplotlib](https://matplotlib.org/) soit installé pour que le code fonctionne.
-
-* On a utilisé quelques trucs de matplotlib pour que la figue soit jolie :
-  * [des legendes](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.legend.html), que l'on a placé en dehors de la figure
-  * [un axe horizontal](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.axhline.html)
-* on a mis un [break](https://docs.python.org/3/tutorial/controlflow.html#break-and-continue-statements-and-else-clauses-on-loops) dans la recherche de la permutation, pour éviter de faire des recherches inutiles.
-
-On a également mis les constantes en majuscule, [conformément au style](https://www.python.org/dev/peps/pep-0008/#constants)
+* [des legendes](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.legend.html), que l'on a placé en dehors de la figure
+* [un axe horizontal](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.axhline.html)
 
 ```python
-from random import randint
-import matplotlib.pyplot as plt
-
-def permutations(elements):
-    if len(elements) == 0:
-        return [[]]
-    
-    les_permutations = []
-    for i in range(len(elements)):
-        premier = elements[i]
-        elements_sans_premier = elements[:i] + elements[i+1:]
-        permutations_sans_premier = permutations(elements_sans_premier)
-        for une_fin_de_permutation in permutations_sans_premier:
-            permutation = [premier] + une_fin_de_permutation
-            les_permutations.append(permutation)
-    return les_permutations
-    
-
-def melange_knuth(elements):
-    copie_elements = list(elements)
-    for i in range(len(copie_elements) - 1, -1, -1):
-        j = randint(0, i)
-        copie_elements[i], copie_elements[j] = copie_elements[j], copie_elements[i]
-    return copie_elements
-
-
-NOMBRE_ITERATION = 100000
-TABLEAU = [1, 2, 3, 4, 5, 6]
-PERMUTATIONS = [x for x in permutations(TABLEAU)]
-
-compte = [0] * len(PERMUTATIONS)
-
-for k in range(NOMBRE_ITERATION):
-    res = melange_knuth(TABLEAU)
-    
-    for i in range(len(PERMUTATIONS)):
-        if  PERMUTATIONS[i] == res:
-            compte[i] += 1
-            break
-
 fig, ax = plt.subplots(figsize=(20, 5))
 
 ax.set_xlim(-1, len(PERMUTATIONS) - 1)
@@ -343,14 +316,9 @@ ax.legend(loc='upper left', bbox_to_anchor=(1, 1))
 ax.set_title("nombre de permutations")
 
 plt.show()
-
 ```
 
-> Une version avancée du code précédent aurait utilisé un [compteur](https://docs.python.org/fr/3/library/collections.html#counter-objects) du module [collections](https://docs.python.org/fr/3/library/collections.html) pour accélérer le comptage, mais cela aurait nécessiter de changer nos listes en tuples.
-
-{% enddetails %}
-
-J'obtiens le résultat suivant :
+Vous devirez obtenir le résultat suivant :
 
 ![mélange de Knuth]({{ "/assets/cours/algorithmie/melange_knuth.png" | relative_url }}){:style="margin: auto;display: block"}
 
@@ -427,28 +395,16 @@ On sait que toute permutation d'un tableau peut être atteinte en échangeant it
 
 On en déduit l'algorithme de mélange suivant :
 
-<style>
-    table, td, tr, th, pre {
-        padding:0;
-        margin:0;
-        border:none
-    }
-</style>
-{% highlight python linenos %}
-def melange_transposition(elements):
-    copie_elements = list(elements)
-    for k in range(len(copie_elements) - 1):
-        i = randint(0, len(copie_elements) - 1)
-        j = randint(0, len(copie_elements) - 1)
-        
-        copie_elements[i], copie_elements[j] = copie_elements[j], copie_elements[i]
-    return copie_elements
-{% endhighlight %}
+1. soit $T$ un tableau à $n$ éléments
+2. répétez $n-1$ fois
+   1. soit i un nombre aléatoire entre 0 et $n-1$
+   2. soit j un nombre aléatoire entre 0 et $n-1$
+   3. échanger $T[i]$ et $T[j]$
 
-> Refaites l'expérience de la [vérification expérimentale](#verif-expe) pour cet algorithme.
+> Codez cet algorithme et refaites l'expérience de la [vérification expérimentale](#verif-expe) pour cet algorithme.
 {: .a-faire}
 
-J'obtiens quelque chose du type :
+Vous devirez obtenir quelque chose du type :
 
 ![mélange de transpositions]({{ "/assets/cours/algorithmie/melange_transposition.png" | relative_url }}){:style="margin: auto;display: block"}
 
@@ -499,7 +455,7 @@ Par exemple, pour pouvoir mélanger un paquet de 52 cartes de façon équiprobab
 
 La perception de ce qu'est l'aléatoire n'est pas aisée. Lorsque l'on joue à un jeu de cartes par exemple, le [biais de confirmation](https://fr.wikipedia.org/wiki/Biais_de_confirmation) tend à se rappeler les évènement très défavorables au détriment de ceux juste *normaux*. De plus, lorsque l'on demande à des humains de tirer des nombres aléatoires, souvent ils ne le sont pas :
 
-* Lorsque l'on demande à des humains de choisir un nombre aléatoirement entre 1 et 10, ils répondent le plus souvent 7 : <https://www.reddit.com/r/dataisbeautiful/comments/acow6y/asking_over_8500_students_to_pick_a_random_number/>.
+* Lorsque l'on demande à des humains de choisir un nombre aléatoirement entre 1 et 10, [ils répondent le plus souvent 7](https://www.reddit.com/r/dataisbeautiful/comments/acow6y/asking_over_8500_students_to_pick_a_random_number/).
 * lorsque l'on demande à des humains d'écrire une suite aléatoire de 200 nombres valant 0 ou 1, il y aura une sous-représentation des longues séquences avec le même nombre : celà ne *fait pas aléatoire* d'avoir plein de fois le même nombre à la suite (alors que statistiquement, il faut bien que ces séquences existent).
 
 > lisez l'article de <https://draftsim.com/mtg-arena-shuffler/> qui montre cela avec le mélangeur de [MTGA](https://magic.wizards.com/fr/mtgarena).

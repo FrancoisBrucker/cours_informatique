@@ -310,7 +310,7 @@ La raison est que *test_projet.py* définit des fonction mais ne les **exécute 
 On a donc 2 choix :
 
 * exécuter les fonctions dans le fichier après les avoir définies
-* utiliser une bibliothèque que le fait pour nous
+* utiliser un module que le fait pour nous
 
 Nous allons utiliser la seconde option avec pytset.
 

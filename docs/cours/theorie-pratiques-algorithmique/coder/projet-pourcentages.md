@@ -113,7 +113,7 @@ def test_pourcent_0():
 
 
 def test_pourcent_1():
-    assert pourcent('00') == 1
+    assert pourcent('00') == 100
 
 ```
 
@@ -124,13 +124,13 @@ def test_pourcent_1():
 >
 {: .a-faire}
 
-On a testé les cas limites de notre fonction. Ajoutons un cas général, où il y a à la fois des `"0"` et des `"1"`, par exemple que  `"101"` rende `1/3`.
+On a testé les cas limites de notre fonction. Ajoutons un cas général, où il y a à la fois des `"0"` et des `"1"`, par exemple que  `"101"` rende `100 * (1/3)`.
 
 Ceci nous impose de tester l'égalité entre 2 réels. Ceci est impossible à faire en informatique car il faudrait regarder une infinité de chiffres après la virgule... Or les réels en informatique sont en fait des entiers déguisés, ce sont des approximations (voir [la doc](https://docs.python.org/fr/3/tutorial/floatingpoint.html))).
 
 > Les réels sont des limites, ils n'ont pas d'existence tangible. En bref : les réels ne le sont pas, seuls les entiers le sont.
 
-On ne peut donc pas écrire directement `assert pourcent('101') == 1/3` (même si là, ça risque de marcher) car si ça se trouve on aura `.3333333332` à la place de `1/3`.
+On ne peut donc pas écrire directement `assert pourcent('101') == 100 * (1/3)` (même si là, ça risque de marcher) car si ça se trouve on aura `33.333333336` à la place de `100/3`.
 
 > On ne teste **JAMAIS** l'égalité entre 2 réels. On les compare toujours à $\epsilon$ près.
 {: .note}
@@ -153,14 +153,14 @@ def test_pourcent_0():
 
 
 def test_pourcent_1():
-    assert pourcent('00') == approx(1)
+    assert pourcent('00') == approx(100)
 
 ```
 
 > **style** : L'ordre des `import` est, [par coutume](https://google.github.io/styleguide/pyguide.html#s3.13-imports-formatting), le suivant :
 >
 > 1. les modules de python
-> 2. les bibliothèques externes
+> 2. les modules externes
 > 3. les imports de notre projet
 >
 > On saute une ligne entre chaque groupe d'import pour bien voir les différences.
@@ -175,7 +175,7 @@ On peut maintenant ajouter le nouveau test :
 # ...
 
 def test_pourcent_01():
-    assert pourcent('101') == approx(1/3)
+    assert pourcent('101') == approx(100/3)
 
 # ...
 ```

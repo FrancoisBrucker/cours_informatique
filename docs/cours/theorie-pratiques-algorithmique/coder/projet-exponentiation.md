@@ -34,7 +34,7 @@ Ce projet suit l'[étude de l'exponentiation]({% link cours/theorie-pratiques-al
 1. on vérifie que python est ok : le python utilisé par vscode (exécution via le triangle en haut à droite de la fenêtre) et le terminal doivent être le même :
      * le python utilisé par vscode est marqué dans la [barre de statut](https://code.visualstudio.com/docs/getstarted/userinterface)
      * par défaut, c'est le paramètre `python.defaultInterpreterPath`
-     * dans un terminal, la commande `which python` (ou `python3` si votre interpréteur est `python3`) vous indique quel interpréteur python est utilisé lorsque vous tapez `python`.
+     * dans un terminal, la commande `which python3` (mac/unix)/`get-command python.exe` (windows) vous indique quel interpréteur python est utilisé lorsque vous tapez `python`.
 2. on vérifie que le linter est actif (en faisant une faute de style)
 
 > On se force, jusqu'à que cela devienne un automatisme, à écrire du code stylé. C'est à dire sans que le linter ne se fâche.

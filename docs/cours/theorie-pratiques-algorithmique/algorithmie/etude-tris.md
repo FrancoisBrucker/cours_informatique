@@ -110,30 +110,62 @@ Comme toute case du tableau peut rendre le tableau non trié, on utilise l'argum
 
 Etant donné un tableau $T$ de taille $n$, il doit exister un algorithme — disons `permutations(T)` — permettant de rendre toutes les permutations de celui-ci. Même si on ne sait pas exactement comment faire on *se doute* que ça doit exister...
 
-> Essayez d'en imaginer un. Comment feriez-vous ?
+Une permutation de $T$ étant la concaténation de la liste à un élément $[T[i]]$ ($0 \leq i < n$)  et d'une permutation de $T'= T[:i] + T[i+1:]$ (le tableau des éléments d'indice différents de $i$ du tableau), on peut forger un algorithme récursif permettant de rendre toutes les permuations de $T$ :
+
+1. on note $L$ une liste, initialement vide qui va contenir nos permutations.
+2. pour chaque indice $0 \leq i < n$ tel que $T[i]$ sera le premier élément de la permutation
+   1. créer le tableau $T_i = T[:i] + T[i+1:]$ qui est le tableau initial auquel on a supprimé l'indice $i$
+   2. trouver toutes les permuations $L'$ du tableau $T_i$ (s'il est non vide)
+   3. pour chaque permuation $T'$ de $L'$
+   4. ajoutez la permutatuin $T[i] + T'$ à $L$
+3. rendre $L$
+
+> Donnez (un majorant de) de sa complexité.
 {: .a-faire}
-{% details %}
+{% details une solution possible %}
 
-Une permutation de $T$ revient à :
+Sa complexité $C(n)$ satisfait l'équation de récurrence :
+$$
+\begin{array}{lcll}
+C(n) & = & n \cdot (& \mbox{tous les indices }i\\
+     & = & (n-1) + & \mbox{création de }T_i\\
+     & = & C(n-1) + & \mbox{tous les permutaions du tableau sans }i\\
+     & = & (n-1)! \cdot (& \mbox{pour chaque permuation de } $T_i$\\
+    & = & n ))& \mbox{création d'une permutation de } T { commançant par }T_i\\
+\end{array}
+$$
 
-1. choisir un indice $0 \leq i < n$ tel que $T[i]$ sera le premier élément de la permutation
-2. créer le tableau $T_i = T[:i] + T[i+1:]$
-3. trouver toutes les permuations $T'$ du tableau $T_i$ ($T$ auquel on a supprimé l'indice $i$)
-4. une permutation de $T$ est alors $T[i] + T'$
+De là :
 
-Cette procédure nous donne l'idée d'un algorithme récursif permettant de rendre toutes les permuations de $T$.
-
-Sa complexité $C(n)$ satisfait l'équation de récurrence : $C(n) = n \cdot (n-1 + C(n-1) + n \cdot (n-1)!) = n\cdot(n-1) + n \dot C(n-1) + n\cdot n! = \dots = n \cdot C(n-1) + \mathcal{O}(n\cdot n!) \leq n \cdot C(n-1) + \mathcal{O}((n+1)!) = \dots \leq n \cdot (n-1) \cdot C(n-2) + 2 \cdot \mathcal{O}((n+1)!) \leq \dots \leq n! C(0) + n \cdot \mathcal{O}((n+1)!) = \mathcal{O}((n+2)!)$
-
-Pour un algorithme exact ainsi que son calcul de complexité, regardez du côté de [l'étude sur les mélanges]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude-melange.md %}#algo-toutes-permutations).
+$$
+\begin{array}{lcl}
+C(n) & = & n \cdot (n-1) + n \cdot C(n-1) + n \cdot n!\\
+     & = & n \cdot C(n-1) + \mathcal{O}(n+1)!\\
+     & = & n \cdot ((n-1) \cdot C(n-1) + \mathcal{O}(n)!) + \mathcal{O}(n+1)!\\
+     & = & n \cdot (n-1) \cdot C(n-1) + n \cdot \mathcal{O}(n)! + \mathcal{O}(n+1)!\\
+     & = & n \cdot (n-1) \cdot C(n-1) + 2 \dot  \mathcal{O}(n+1)!\\
+     & = & \dots \\
+     & = & \Pi_{i=0}^k (n-i) \cdot C(n-k-1) + (k+1) \cdot \mathcal{O}(n+1)!\\
+    & = & \dots \\
+      & = & \Pi_{i=0}^{n-1} (n-i) \cdot C(0) + n \cdot \mathcal{O}(n+1)!\\
+    & = & n! \cdot C(0) + \mathcal{O}(n+2)!\\
+    & = & \mathcal{O}(n+2)!\\
+\end{array}
+$$
 
 {% enddetails %}
 
-On suppose donc que cet algorithme existe, et qu'on l'utilise comme ça : `permutation([1, 3, 2])` doit rendre un tableau contenant toutes les permutations, donc par exemple : `[[1, 3, 2], [1, 2, 3], [3, 1, 2], [3, 2, 1], [2, 1, 3], [2, 3, 1]]`, ou toute autre ordre dans les permutations.
+L'algorithme `permutations([1, 3, 2])` rendra :
 
-Comme l'algorithme `permutation`  doit rendre toutes les permutations pssibles du tableau en entrée, sa complexité, qu'on note $P(n)$ (avec $n$ la taille du tableau en entrée) est forcément supérieure à $\mathcal{O}(n \cdot (n)!)$ (il lui faut écrire sa sortie).
+```python
+[[1, 3, 2], [1, 2, 3], [3, 1, 2], [3, 2, 1], [2, 1, 3], [2, 3, 1]]
+```
 
-C'est une complexité énorme, mais cela nous permet de résoudre notre problème puisque l'algorithme `est_trie` permet de savoir si un tableau est trié en $\mathcal{O}(n)$ opérations : on peut résoudre le problème *"trie"* en énumérant toutes les permutations du tableau passé en paramètre et en vérifiant pour chacune d'entre elle s'il est trié ou non. Un proposition d'algorithme peut alors être :
+L'algorithme `permutations` de la solution possible est en $\mathcal{O}((n+2)!)$. On ne peut pas beaucoup faire mieux car on  doit rendre toutes les permutations pssibles du tableau en entrée, ce qui nous fera déjà $\mathcal{O}(n \cdot n!) = \mathcal{O}((n+1)!)$ opérations (il faut créer $n!$ tableaux de $n$ éléments).
+
+C'est une complexité énorme, mais cela nous permet de résoudre notre problème puisque l'algorithme `est_trie` permet de savoir si un tableau est trié en $\mathcal{O}(n)$ opérations : on peut résoudre le problème *"trie"* en énumérant toutes les permutations du tableau passé en paramètre et en vérifiant pour chacune d'entre elle s'il est trié ou non. 
+
+Un proposition d'algorithme peut alors être :
 
 ```text
 def trie_long(T):
@@ -143,9 +175,9 @@ def trie_long(T):
             rendre True
 ```
 
-La complexité de `trie_long` est égalz à la complexité de `permutations`  plus la complexité de  `est_trie` ($\mathcal{O}(n)$) multiplié par le nombre de permutations ($n!$) : ce qui donne une complexité de $P(n) + \mathcal{O}(n \cdot (n)!) \geq  \mathcal{O}(n \cdot (n)!) =  \mathcal{O}((n + 1)!)$.
+La complexité de `trie_long` est égale à la complexité de `permutations`  ($\mathcal{O}(n+2)!$) plus la complexité de  `est_trie` ($\mathcal{O}(n)$) multiplié par le nombre de permutations ($n!$) : ce qui donne une complexité finale de $\mathcal{O}(n+2)!$.
 
-> Une borne maximum du problème *"tri"* existe, et est de complexité supérieure à $\mathcal{O}(n+1)!)$ où $n$ est la taille du tableau passé en entrée.
+> Une borne maximum du problème *"tri"* existe, et est de complexité $\mathcal{O}((n+2)!)$ où $n$ est la taille du tableau passé en entrée.
 {: .note}
 
 Comme [n! est trop gros]({% link cours/theorie-pratiques-algorithmique/algorithmie/complexite-max-min.md %}#n_factoriel), ce n'est vraiment pas un algorithme à utiliser si on peut faire mieux... Mais il nous permet d'énoncer la propriété :

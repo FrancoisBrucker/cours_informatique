@@ -8,6 +8,10 @@ Cours de programmation en S2 MPCI. Il suit [le cours du S1](https://ametice.univ
 
 Les divers contrôles intermédiaires seront à rendre directement sur [ametice](https://ametice.univ-amu.fr/course/view.php?id=87451).
 
+> Pour que tout se passe au mieux, il est recommendé de partir d'une installation fraiche de votre ordinateur. Nous allons apprendre à installer correctement les logiciels de développements et cela vous évitera de jongler avec les multiples versions de pythons ordinateur.
+> Un tuto pour installer proprement un ordinateur pour le développement est [disponible ici](({% post_url tutos/systeme/2021-09-01-installation-ordinateur %})).
+{: .note}
+
 ## Plan des cours
 
 L'ensemble du cours (et d'autres choses) est disponible [là]({% link cours/theorie-pratiques-algorithmique/index.md %})
@@ -51,6 +55,7 @@ L'ensemble du cours (et d'autres choses) est disponible [là]({% link cours/theo
 
 1. [étude : l'exponentiation]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude-exponentiation.md %})
 2. [projet : l'exponentiation]({% link cours/theorie-pratiques-algorithmique/coder/projet-exponentiation.md %})
+3. [étude : mélanger un tableau]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude-melange.md %}) (si on a le temps)
 
 ### semaine 3
 
@@ -66,7 +71,7 @@ L'ensemble du cours (et d'autres choses) est disponible [là]({% link cours/theo
 
 1. [étude : trier un tableau]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude-tris.md %}) (fin)
 2. [projet : tris]({% link cours/theorie-pratiques-algorithmique/coder/projet-tris.md %})
-3. [étude : mélanger un tableau]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude-melange.md %})
+3. [étude : mélanger un tableau]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude-melange.md %}) (si on a le temps)
 
 ### semaine 4
 

@@ -213,7 +213,21 @@ python -m pip install pytest
 
 #### utilisation {#utilisation-pytest}
 
-On peut utiliser les tests directement avec vscode en ouvrant la fenêtre de tests avec *Menu Affichage testing* (le petit erlenmeyer de la [barre d'activité](https://code.visualstudio.com/docs/getstarted/userinterface)).
+> Créez un fichier que vous appellerez *"test_projet.py"* dans votre projet. Collez-y- le code suivant :
+{: .a-faire}
+
+```python
+
+def test_oui():
+    assert 4 = 2 + 2
+
+
+def test_non():
+    assert "4" == 2 + 2
+
+```
+
+Le fichier créé est un fichier de test. Il faut l'utiliser via la bibliothèque `pytest` que vous venez d'installer. Ceci peut se faire directement avec vscode en ouvrant la fenêtre de tests avec *Menu Affichage testing* (le petit erlenmeyer de la [barre d'activité](https://code.visualstudio.com/docs/getstarted/userinterface)).
 
 En suite le menu *TESTING* en haut de cette nouvelle fenêtre vous permet :
 

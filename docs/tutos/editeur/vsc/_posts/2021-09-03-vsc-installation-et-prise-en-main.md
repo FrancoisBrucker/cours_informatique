@@ -12,7 +12,7 @@ Installation et premières configurations de [visual studio code](https://code.v
 
 ## Introduction
 
-Si vous ne l'avez pas déjà fait, téléchargez [vscode](https://code.visualstudio.com/) le et installez le.
+Si vous ne l'avez pas déjà fait, téléchargez [vscode](https://code.visualstudio.com/) le et installez le (sous Ubuntu, il vous sera peut-être nécessaire d'utiliser la commande `sudo snap install code --classic` dans un terminal)
 
 vscode permet, comme dans tout éditeur de texte, d'éditer et de créer des fichiers texte mais aussi de gérer des *workspace* qui sont des dossiers contenant des projets.
 

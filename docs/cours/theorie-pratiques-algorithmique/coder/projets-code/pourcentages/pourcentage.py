@@ -5,4 +5,4 @@ def pourcent(chaîne_de_caractères):
         if c == "0":
             nombre_de_0 += 1
 
-    return nombre_de_0 / len(chaîne_de_caractères)
+    return 100 * (nombre_de_0 / len(chaîne_de_caractères))
