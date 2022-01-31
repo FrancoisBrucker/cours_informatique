@@ -8,9 +8,12 @@ Cours de programmation en S2 MPCI. Il suit [le cours du S1](https://ametice.univ
 
 Les divers contrôles intermédiaires seront à rendre directement sur [ametice](https://ametice.univ-amu.fr/course/view.php?id=87451).
 
-> Pour que tout se passe au mieux, il est recommendé de partir d'une installation fraiche de votre ordinateur. Nous allons apprendre à installer correctement les logiciels de développements et cela vous évitera de jongler avec les multiples versions de pythons ordinateur.
+> Pour que tout se passe au mieux, il est recommandé de partir d'une installation fraiche de votre système (pour éviter les $N \gg 1$ versions différentes de python par exemple).
+>
 > Un tuto pour installer proprement un ordinateur pour le développement est [disponible ici](({% post_url tutos/systeme/2021-09-01-installation-ordinateur %})).
-{: .note}
+>
+> Sinon demandez au prof, il vous aidera à bien faire les choses.
+{: .attention}
 
 ## Plan des cours
 

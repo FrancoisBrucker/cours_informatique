@@ -19,10 +19,12 @@ Le but de la programmation objet n'est pas d'utiliser des concepts plus ou moins
   
 Si un concept objet va à l'encontre de ce principe dans votre programme **NE L'UTILISEZ PAS**. C'est souvent vrai pour l'héritage qui n'a d'utilité que dans des cas très précis...
 
-Un objet est un bout de code auquel est associé :
-
-* des fonctionnalités (des méthodes) qui sont communes à tous les objets de sa classe
-* des choses à lui tout seul (des attributs) qui lui permettent de se différentier des autres objets de sa classe même s'il a les mêmes fonctionnalités.
+> Un objet est un bout de code auquel est associé :
+>
+>* des fonctionnalités (des méthodes) qui sont communes à tous les objets de sa classe
+>* des choses à lui tout seul (des attributs) qui lui permettent de se différentier des autres objets de sa classe même s'il a les mêmes fonctionnalités.
+>
+{: .note}
 
 Un objet, n'est donc pas isolé, il partage ses fonctionnalités avec tous les objets de sa *classe*. Pour s'y retrouver entre, classes, objets méthode et attribut et trouver qui appartient à qui, python utilise les *namespaces* (espaces de noms). Cela lui permet le même code pour plusieurs objets.
 
