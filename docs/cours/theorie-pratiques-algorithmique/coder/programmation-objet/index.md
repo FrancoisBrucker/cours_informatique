@@ -8,7 +8,6 @@ author: "François Brucker"
 {: .chemin}
 
 
-* 
 ### Deuxième partie : programmation objet
 
 Créer et utiliser les objets et les classes en python. On montrera également les principes fondamentaux de la programmation objet que sont la composition et l'agrégation d'objet et on s'intéressera un peu à l'héritage.
