@@ -67,6 +67,37 @@
   <p><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/">Théorie et pratiques algorithmique</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/">coder</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/programmation-objet/">programmation objet</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/programmation-objet/espace-noms.html">espace de noms</a></p>
 </blockquote>
 
+<p>faire des dessins ave des tableau (mémoire) et des objets (d’abord dans la méméoire puis des liens.)</p>
+<ol>
+  <li>memoire = tableau de 1 octet.</li>
+  <li>valaible = endroit dans la mémoire</li>
+  <li>soucis : combien de case mémoire pour chaque objet. Dépedn de l’objet (ex des entier 16, 32 ou 64 bit er qu’est ce qu’il se passe si on fait +1)</li>
+  <li>on change de point de vue : on ne donne que des “références” vers les objets (vous entendrez souvent ça chez les boomer de l’informatique :-).</li>
+  <li>objet est stocker dans la mémoire. Il est unique, mais on meut le référence plein de fois.</li>
+  <li>respace de noms = lien entre variable et objet</li>
+  <li>si un objet n’est plus dans aucun espace de nom il disparait (on libère de la méméoire). Ex.</li>
+  <li>pluseirus espaces de noms, il faut pouvoir s’y retrouver.
+    <ol>
+      <li>lorsque l’on crée on crée dans l’espace le plus proche.</li>
+      <li>Si on ne le trouve pas on remonte</li>
+      <li>ex de la création de fonction.
+        <ol>
+          <li>espace de nom par défaut</li>
+          <li>lorsque l’on exécute une fonction on crée un espace de nom</li>
+          <li>on y place les entrées</li>
+          <li>à la fin de la fonction, on supprime l’espace de nom si on en a plus besoin.</li>
+        </ol>
+      </li>
+    </ol>
+  </li>
+  <li>règle des espaces de noms</li>
+  <li>exemples d’espace de noms:</li>
+  <li>fnction</li>
+  <li>modules</li>
+  <li>objets et classes (on va le voir</li>
+  <li>ex 2 : fonction de fonctions. O garde l’espace de nom car on en a encore besoin</li>
+</ol>
+
 <p>Comment rendre compte d’une variable, et de la portée de celles-ci</p>
 
 <blockquote class="tbd">
