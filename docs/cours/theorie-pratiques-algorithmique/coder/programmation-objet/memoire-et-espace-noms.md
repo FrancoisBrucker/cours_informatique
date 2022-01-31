@@ -200,7 +200,62 @@ Pour chaque *espace de noms* :
 
 Pour expliciter comment tout ça se passe, on va se concentrer sur le [langage python](https://docs.python.org/3/tutorial/classes.html#python-scopes-and-namespaces), mais la procédure est similaire pour les autres langages à objets.
 
-Lorsqu'un nouveau programme démarre l'espace de nom principal, nommé `global` est crée. C'est  espaces de noms sont crées :
+Lorsqu'un nouveau programme démarre l'espace de nom principal, nommé `global` est crée. Au départ, il ne contient rien, à part des noms commençant et finissant par `__`, et qui sont utilisés par python.
+
+> La fonction `globals()` donne l'espace de nom global de python.
+
+```python
+x = 1
+print(x)
+```
+
+module builtins. A l'import d'un module, on crée un espace de noms. 
+
+`vars(__builtins__)`
+
+
+### noms et variables
+
+```python
+x = 1
+y = 1
+```
+
+deux objets différents
+
+```python
+x = 1
+x = 3
+```
+
+un nouveau nom `x` qui remplace l'autre. L'objet 1 n'a plus de nom (il n'est plus référencé nulle part), il disparait.
+
+```python
+x = 1
+y = x
+```
+
+On commence par trouver les objets puis on affecte. Pour les noms, ils sont toujorus remplacé par les objets.
+
+```python
+x = 1
+y = 3
+y, x = y, x
+```
+
+d'abord à droite du `=` puis affectation des noms.
+
+### import
+
+exemple d'import : `import random` (`vars(random)`) et `from random import randint`(pas importé)
+
+### fonctions
+
+espace de crée, puis disparait.
+
+Il y a toujours un namespace associé à la ligne entrain d'être exéctué, c'est le `locals()`
+
+mettre ne caché pour la bonne bouche. (comme les noms, un espace de nom qui est encore référencé ne disparait pas)
 
 1. *globals* : il ne contient rien au départ (à part des objets spécifiques à python, c'est à dire commençant et finissant par des `__`).
 
