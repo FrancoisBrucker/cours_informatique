@@ -287,7 +287,58 @@
 
 <p>Pour expliciter comment tout ça se passe, on va se concentrer sur le <a href="https://docs.python.org/3/tutorial/classes.html#python-scopes-and-namespaces">langage python</a>, mais la procédure est similaire pour les autres langages à objets.</p>
 
-<p>Lorsqu’un nouveau programme démarre l’espace de nom principal, nommé <code class="language-plaintext highlighter-rouge">global</code> est crée. C’est  espaces de noms sont crées :</p>
+<p>Lorsqu’un nouveau programme démarre l’espace de nom principal, nommé <code class="language-plaintext highlighter-rouge">global</code> est crée. Au départ, il ne contient rien, à part des noms commençant et finissant par <code class="language-plaintext highlighter-rouge">__</code>, et qui sont utilisés par python.</p>
+
+<blockquote>
+  <p>La fonction <code class="language-plaintext highlighter-rouge">globals()</code> donne l’espace de nom global de python.</p>
+</blockquote>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>module builtins. A l’import d’un module, on crée un espace de noms.</p>
+
+<p><code class="language-plaintext highlighter-rouge">vars(__builtins__)</code></p>
+
+<h3 id="noms-et-variables">noms et variables</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">1</span>
+</code></pre></div></div>
+
+<p>deux objets différents</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">3</span>
+</code></pre></div></div>
+
+<p>un nouveau nom <code class="language-plaintext highlighter-rouge">x</code> qui remplace l’autre. L’objet 1 n’a plus de nom (il n’est plus référencé nulle part), il disparait.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span>
+</code></pre></div></div>
+
+<p>On commence par trouver les objets puis on affecte. Pour les noms, ils sont toujorus remplacé par les objets.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">y</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span>
+</code></pre></div></div>
+
+<p>d’abord à droite du <code class="language-plaintext highlighter-rouge">=</code> puis affectation des noms.</p>
+
+<h3 id="import">import</h3>
+
+<p>exemple d’import : <code class="language-plaintext highlighter-rouge">import random</code> (<code class="language-plaintext highlighter-rouge">vars(random)</code>) et <code class="language-plaintext highlighter-rouge">from random import randint</code>(pas importé)</p>
+
+<h3 id="fonctions">fonctions</h3>
+
+<p>espace de crée, puis disparait.</p>
+
+<p>Il y a toujours un namespace associé à la ligne entrain d’être exéctué, c’est le <code class="language-plaintext highlighter-rouge">locals()</code></p>
+
+<p>mettre ne caché pour la bonne bouche. (comme les noms, un espace de nom qui est encore référencé ne disparait pas)</p>
 
 <ol>
   <li>
