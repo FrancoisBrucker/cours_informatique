@@ -99,7 +99,9 @@
   <p>dans la suite, les algorithmes seront tous donnés en python</p>
 </blockquote>
 
-<h2 id="factorielle-récursive">factorielle récursive</h2>
+<h2 id="factorielle">factorielle</h2>
+
+<h3 id="facto-rec">algorihtme récursif</h3>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">factorielle</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
@@ -109,33 +111,31 @@
 
 <ul>
   <li>finitude : Si $n$ est un réel, l’algorithme va s’arrêter : $n$ décroît strictement à chaque appelle récursif et on stoppe si $n \leq 1$.</li>
-  <li>complexité : dépend de $n$, le nombre pas sa taille.</li>
   <li>preuve : par récurrence sur $n$, avec $n$ entier positif.
     <ul>
       <li>entrée : des entiers positifs</li>
-      <li>fonction de récurrence. Si $n=0$ ça marche. Si ça marche pour l’entrée n-1, ça marche pour $n$ car la fonction rend $n \cdot factorielle(n-1)$ qui vaut $n \cdot (n-1)!$ par hypothèse de récurrence.</li>
+      <li>fonction de récurrence. Si $n=0$ ça marche. Si ça marche pour l’entrée n-1, ça marche pour $n$ car la fonction rend $n \cdot \mbox{factorielle}(n-1)$ qui vaut $n \cdot (n-1)!$ par hypothèse de récurrence.</li>
     </ul>
   </li>
 </ul>
 
-<h2 id="maximum-dun-tableau">maximum d’un tableau</h2>
+<h3 id="facto-iter">algorithme itératif</h3>
 
-<p>On va voir 2 algorithmes pour calculer la valeur maximum d’un tableau de réels.</p>
-
-<h3 id="algorithme-itératif">algorithme itératif</h3>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">maximum</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
-    <span class="n">m</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">t</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">m</span> <span class="o">&lt;</span> <span class="n">x</span><span class="p">:</span>
-            <span class="n">m</span> <span class="o">=</span> <span class="n">x</span>
-    <span class="k">return</span> <span class="n">m</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">factorielle</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">r</span> <span class="o">*=</span> <span class="n">n</span>
+        <span class="n">n</span> <span class="o">-=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">r</span>
 </code></pre></div></div>
 
+<blockquote>
+  <p>On utilise la possibilité que donne python d’écrire <code class="language-plaintext highlighter-rouge">x += y</code> (<em>resp.</em> <code class="language-plaintext highlighter-rouge">x -= y</code>, <code class="language-plaintext highlighter-rouge">x *= y</code> ou encore <code class="language-plaintext highlighter-rouge">x /= y</code>) à la place de <code class="language-plaintext highlighter-rouge">x = x + y</code> (<em>resp.</em> <code class="language-plaintext highlighter-rouge">x = x - y</code>, <code class="language-plaintext highlighter-rouge">x = x * y</code>, <code class="language-plaintext highlighter-rouge">x = x / y</code>).</p>
+</blockquote>
+
 <ul>
-  <li>finitude : clair car une unique boucle for.</li>
-  <li>complexité : une boucle en $\mathcal{O}(len(t))$ et des choses en $\mathcal{O}(1)$. Sa complexité est en $\mathcal{O}(len(t))$</li>
-  <li>preuve : par invariant de boucle.</li>
+  <li>finitude : Si $n$ est un entier, l’algorithme va s’arrêter car $n$ décroît strictement à chaque itération de la boucle <code class="language-plaintext highlighter-rouge">while</code>.</li>
+  <li>preuve : par invariant de boucle</li>
 </ul>
 
 <blockquote class="note">
@@ -149,15 +149,26 @@
   <p>Pour simplifier l’écriture, on note avec un <code class="language-plaintext highlighter-rouge">'</code> (prim) les variables à la fin de la boucle d’itération $i$.</p>
 </blockquote>
 
-<p>Ici notre invariant est : <em>“Au début l’itération $i + 1 &gt; 1$ de la boucle, $m$ vaut le maximum des $i$ premiers élément du tableau.”</em></p>
+<p>Ici notre invariant est : <em>“Au début de la boucle while : $r = (n+1) \cdot \dots \cdot n_0$ avec $n_0$ la valeur de $n$ passé en argument de la fonction ou $r=1$ si $n = n_0$”</em>.</p>
 
-<p>Après la première itération de la boucle, comme $m$ vaut initialement le premier élément du tableau, on a que $m=t[0]$ qui est bien le maximum des 1 premier éléments du tableau. L’invariant est vérifié au début de l’itération $2$.</p>
+<ol>
+  <li>à la première itération $n = n_0$, la propriété est vraie.</li>
+  <li>on suppose la propriété vraie à la $i$ème itération. A la fin de cette itération on a :
+    <ul>
+      <li>$n’ = n - 1$</li>
+      <li>$r’ = r \cdot n$</li>
+    </ul>
+  </li>
+  <li>on vérifie que si $n+1=n_0$ (fin de la première itération), c’est correct. Sinon, on est dans le cas général de 4.</li>
+  <li>comme $r = (n+1) \cdot n_0$ on a $\frac{r’}{n} = (n+1) \cdot \dots \cdot n_0$ et donc $r’ = n \cdot (n+1) \cdot \dots \cdot n_0$. On a bien $r’ = (n’+1) \cdot \dots \cdot n_0$</li>
+  <li>on en conclut que notre invariant reste vérifié.</li>
+</ol>
 
-<p>On suppose l’invariant vrai au début de l’itération $i + 1 &gt;1$. A la fin de l’itération, $m’$ (la valeur de $m$ à l’issue de la boucle d’itération $i + 1$) vaut soit $m$ (la valeur de $m$ au début de la boucle d’itération $i +1 $) soit $x’$ (la variable $x$ affectée lors de) qui vaut la $i + 1$ème valeur du tableau.</p>
+<h2 id="maximum-dun-tableau">maximum d’un tableau</h2>
 
-<p>Comme l’invariant est vrai au début de la boucle d’itération $i + 1$, $m$ vaut le maximum du tableau sur les $i$ premiers éléments. Or $m’ = \max(m, x)$, donc $m’$ vaut bien le maximum du tableau sur les $i + 1$ premiers éléments.</p>
+<p>On va voir 2 algorithmes pour calculer la valeur maximum d’un tableau de réels.</p>
 
-<h3 id="algorithme-récursif">algorithme récursif</h3>
+<h3 id="max-rec">algorithme récursif</h3>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">maximum</span><span class="p">(</span><span class="n">tab</span><span class="p">,</span> <span class="n">debut</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">debut</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">tableau</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
@@ -176,9 +187,31 @@
 <ul>
   <li>finitude : début augmente strictement et s’arrête lorsqu’il vaut <code class="language-plaintext highlighter-rouge">len(tableau) - 1</code>
 </li>
-  <li>complexité : de l’ordre $\mathcal{O}(len(t))$ puisque l’on effectue au maximum <code class="language-plaintext highlighter-rouge">len(tableau)</code> récursions d’un algorithme en $\mathcal{O}(1)$.</li>
   <li>preuve : par récurrence sur la longueur d’un tableau. On vérifie que l’algorithme fonctionne pour une longueur de tableau valant 1, puis on effectue preuve par récurrence sur la longueur du tableau.</li>
 </ul>
+
+<h3 id="max-iter">algorithme itératif</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">maximum</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">t</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">m</span> <span class="o">&lt;</span> <span class="n">x</span><span class="p">:</span>
+            <span class="n">m</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="k">return</span> <span class="n">m</span>
+</code></pre></div></div>
+
+<ul>
+  <li>finitude : clair car une unique boucle for.</li>
+  <li>preuve : par invariant de boucle.</li>
+</ul>
+
+<p>Ici notre invariant est : <em>“Au début l’itération $i + 1 &gt; 1$ de la boucle, $m$ vaut le maximum des $i$ premiers élément du tableau.”</em></p>
+
+<p>Après la première itération de la boucle, comme $m$ vaut initialement le premier élément du tableau, on a que $m=t[0]$ qui est bien le maximum des 1 premier éléments du tableau. L’invariant est vérifié au début de l’itération $2$.</p>
+
+<p>On suppose l’invariant vrai au début de l’itération $i + 1 &gt;1$. A la fin de l’itération, $m’$ (la valeur de $m$ à l’issue de la boucle d’itération $i + 1$) vaut soit $m$ (la valeur de $m$ au début de la boucle d’itération $i +1 $) soit $x’$ (la variable $x$ affectée lors de) qui vaut la $i + 1$ème valeur du tableau.</p>
+
+<p>Comme l’invariant est vrai au début de la boucle d’itération $i + 1$, $m$ vaut le maximum du tableau sur les $i$ premiers éléments. Or $m’ = \max(m, x)$, donc $m’$ vaut bien le maximum du tableau sur les $i + 1$ premiers éléments.</p>
 
 <h2 id="division-euclidienne">division euclidienne</h2>
 
@@ -193,10 +226,6 @@
     <span class="k">return</span> <span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
 </code></pre></div></div>
 
-<blockquote>
-  <p>On utilise la possibilité que donne python d’écrire <code class="language-plaintext highlighter-rouge">x += y</code> (<em>resp.</em> <code class="language-plaintext highlighter-rouge">x -= y</code>) à la place de <code class="language-plaintext highlighter-rouge">x = x + y</code> (<em>resp.</em> <code class="language-plaintext highlighter-rouge">x = x - y</code>).</p>
-</blockquote>
-
 <p>Notez que le retour de la fonction est un <a href="https://docs.python.org/fr/3/tutorial/datastructures.html#tuples-and-sequences">tuple</a> à 2 éléments (c’est à dire un tableau à 2 éléments que l’on ne peut pas modifer)</p>
 
 <h3 id="finitude">finitude</h3>
@@ -210,14 +239,6 @@
 <code class="language-plaintext highlighter-rouge">r</code> après une itération est <strong>strictement plus petit</strong> que le <code class="language-plaintext highlighter-rouge">r</code> avant itération</li>
   <li>on s’arrête si <code class="language-plaintext highlighter-rouge">r</code> est strictement plus petit que <code class="language-plaintext highlighter-rouge">b</code>.</li>
 </ul>
-
-<h3 id="complexité">complexité</h3>
-
-<p>De l’ordre du nombre de fois où l’on rentre dans la boucle. Comme $r$ ne fait que décroître strictement et vaut $a$ au départ, on estime la complexité de l’algorithme en $\mathcal{O}(a)$.</p>
-
-<blockquote>
-  <p>Comme on décrémente de $b$ à chaque fois on aurait pu aussi dire que la complexité est en $\mathcal{O}(\frac{a}{b})$</p>
-</blockquote>
 
 <h3 id="preuve">preuve</h3>
 

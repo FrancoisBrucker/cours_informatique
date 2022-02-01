@@ -272,34 +272,40 @@
 <p>Les espaces de noms nous permettent d’abstraire ce qu’il se passe en mémoire :</p>
 
 <ul>
-  <li>on considère que les objets sont stocké dans <em>l’espace des objets</em>
+  <li>on considère que les objets sont stocké dans <em>l’espace des objets</em> : cet espace est <strong>unique</strong>
 </li>
-  <li>on accède aux objets via leurs noms, eux même stockés des des <em>espaces de noms</em>
-</li>
+  <li>on accède aux objets via leurs noms, eux même stockés des des <em>espaces de noms</em> : il y a de <strong>nombreux</strong> espaces de noms.</li>
 </ul>
 
 <p>Pour chaque <em>espace de noms</em> :</p>
 
 <ul>
   <li>il ne peut y avoir 2 noms identiques dans un même espace de noms</li>
-  <li>les espaces de noms sont hiérarchisés : chaque espace de nom (à part le premier) possède un parent au-dessus de lui.</li>
+  <li>à chaque nom est associé un objet</li>
+  <li>certains espaces de noms possèdent un parent</li>
 </ul>
 
-<p>Pour expliciter comment tout ça se passe, on va se concentrer sur le <a href="https://docs.python.org/3/tutorial/classes.html#python-scopes-and-namespaces">langage python</a>, mais la procédure est similaire pour les autres langages à objets.</p>
+<blockquote>
+  <p>Pour expliciter comment tout ça se passe, on va se concentrer sur le <a href="https://docs.python.org/3/tutorial/classes.html#python-scopes-and-namespaces">langage python</a>, mais la procédure est similaire pour les autres langages à objets.</p>
+</blockquote>
 
-<p>Lorsqu’un nouveau programme démarre l’espace de nom principal, nommé <code class="language-plaintext highlighter-rouge">global</code> est crée. Au départ, il ne contient rien, à part des noms commençant et finissant par <code class="language-plaintext highlighter-rouge">__</code>, et qui sont utilisés par python.</p>
+<blockquote class="note">
+  <p>Lorsqu’un nouveau programme démarre l’espace de nom principal, nommé <code class="language-plaintext highlighter-rouge">global</code> est crée.</p>
+</blockquote>
 
 <blockquote>
-  <p>La fonction <code class="language-plaintext highlighter-rouge">globals()</code> donne l’espace de nom global de python.</p>
+  <p>La fonction <code class="language-plaintext highlighter-rouge">globals()</code> en python donne l’espace de nom global de python. C’est la racine</p>
+</blockquote>
+
+<p>Au départ, il ne contient rien, à part des noms commençant et finissant par <code class="language-plaintext highlighter-rouge">__</code>, et qui sont utilisés par python.</p>
+
+<blockquote>
+  <p>A tout moment du programme, il existe <strong>un</strong> espace courant</p>
 </blockquote>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </code></pre></div></div>
-
-<p>module builtins. A l’import d’un module, on crée un espace de noms.</p>
-
-<p><code class="language-plaintext highlighter-rouge">vars(__builtins__)</code></p>
 
 <h3 id="noms-et-variables">noms et variables</h3>
 
@@ -328,15 +334,44 @@
 
 <p>d’abord à droite du <code class="language-plaintext highlighter-rouge">=</code> puis affectation des noms.</p>
 
-<h3 id="import">import</h3>
-
-<p>exemple d’import : <code class="language-plaintext highlighter-rouge">import random</code> (<code class="language-plaintext highlighter-rouge">vars(random)</code>) et <code class="language-plaintext highlighter-rouge">from random import randint</code>(pas importé)</p>
-
 <h3 id="fonctions">fonctions</h3>
 
 <p>espace de crée, puis disparait.</p>
 
 <p>Il y a toujours un namespace associé à la ligne entrain d’être exéctué, c’est le <code class="language-plaintext highlighter-rouge">locals()</code></p>
+
+<blockquote>
+  <p>Toujour un espace de nom local : celui le plus bas dans la hiérarchie qui est le départ de la recherche et celui où sont écrit les noms (avec =)</p>
+</blockquote>
+
+<p>local = espace de nom courant.
+global = la racine</p>
+
+<h3 class="note" id="import">import</h3>
+
+<p>exemple d’import : <code class="language-plaintext highlighter-rouge">import random</code> (<code class="language-plaintext highlighter-rouge">vars(random)</code>) et <code class="language-plaintext highlighter-rouge">from random import randint</code>(pas importé)</p>
+
+<p>vars.</p>
+
+<h3 id="hiérarchie-des-espaces-de-noms">hiérarchie des espaces de noms</h3>
+
+<p>cherche une globale dans une fonciton.</p>
+
+<p>! diffrent d’affecter. Ce n’est pas parce que le meme nom que ça marche.</p>
+
+<p>Modifier ok : exemple de l a liste. On modifie l’objet, on cherche/place de noms.</p>
+
+<h2 id="notation-pointée">notation pointée</h2>
+
+<p>Beaucoup de choses ont des espaces de noms. ON a vu les import, une fonction lorsqu’elle s’exécute, mais tout objet et types aussi :</p>
+
+<p>$A.B$ : cherche $B$ dans l’espace de nom de $A$</p>
+
+<pre><code class="language-pyhton">c = "coucou"
+c2 = c.uppercase()
+</code></pre>
+
+<p>$B$ aussi appelé attribut de $A$ (dans l’espace de nom de $A$)</p>
 
 <p>mettre ne caché pour la bonne bouche. (comme les noms, un espace de nom qui est encore référencé ne disparait pas)</p>
 

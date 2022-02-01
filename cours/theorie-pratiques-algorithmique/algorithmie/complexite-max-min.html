@@ -136,49 +136,64 @@
 </blockquote>
 
 <details><summary>Démonstration de $\mathcal{O}(A) \Leftrightarrow \mathcal{O}(1)$, avec $A$ une constante strictement positive</summary><div>
-<p>Soit $f(N) = \mathcal{O}(A)$. Il existe donc $c_0$ et $N_0$ tels que pour tout $N &gt; N_0$, on ait $f(N) &lt; c_0 \cdot A$. En posant $c’_0 = c_0 \cdot A$, on a $f(N) &lt; c’_0 \cdot 1$ pour tout $N &gt; N_0$ donc $f(N) = \mathcal{O}(1)$.</p>
+<p>Soit $f(N) = \mathcal{O}(A)$. Il existe donc $c_0$ et $N_0$ tels que pour tout $N &gt; N_0$, on ait $f(N) &lt; c_0 \cdot A$.</p>
 
-<p>Réciproquement, soit $f(N) = \mathcal{O}(1)$. Il existe donc $c_0$ et $N_0$ tels que pour tout $N &gt; N_0$, on ait $f(N) &lt; c_0 \cdot 1$. En posant $c’_0 = c_0 / A$, on a $f(N) &lt; c’_0 \cdot A$ pour tout $N &gt; N_0$ donc $f(N) = \mathcal{O}(A)$.</p>
+<p>En posant $c’_0 = c_0 \cdot A$, on a $f(N) &lt; c’_0 \cdot 1$ pour tout $N &gt; N_0$ donc : $f(N) = \mathcal{O}(1)$.</p>
+
+<p>Réciproquement, soit $f(N) = \mathcal{O}(1)$.</p>
+
+<p>Il existe donc $c_0$ et $N_0$ tels que pour tout $N &gt; N_0$, on ait $f(N) &lt; c_0 \cdot 1$. En posant $c’_0 = c_0 / A$, on a $f(N) &lt; c’_0 \cdot A$ pour tout $N &gt; N_0$ donc $f(N) = \mathcal{O}(A)$.</p>
 
 </div></details>
 
 <details><summary>Démonstration de $\mathcal{O}(N^p) \Rightarrow \mathcal{O}(N^q)$ pour $q \geq p$</summary><div>
-<p>Soit $f(N) = \mathcal{O}(N^p)$. Il existe donc $c_0$ et $N_0$ tels que $f(N) &lt; c_0 \cdot N^p$ pour $N &gt; N_0$.
-Comme $1 &lt; 2 \cdot N^\alpha$ pour $\alpha \geq 0$ et $N&gt; 1$, on a $N^p &lt; c_0 \cdot N^q$ pour $c_0 = 2$, $N &gt; 1 = N_0$  et $p \leq q$ : $N^p = \mathcal{O}(N^q)$ pour tout $p \leq q$</p>
+<p>Soit $f(N) = \mathcal{O}(N^p)$. Il existe donc $c_0$ et $N_0$ tels que $f(N) &lt; c_0 \cdot N^p$ pour $N &gt; N_0$.</p>
+
+<p>Comme $1 &lt; 2 \cdot N^\alpha$ pour $\alpha \geq 0$ et $N&gt; 1$, on a $N^p &lt; N^p \cdot (2 \cdot N^{q-p}) = c_0 \cdot N^q$ pour $c_0 = 2$, $N &gt; 1 = N_0$  et $p \leq q$ : $N^p = \mathcal{O}(N^q)$ pour tout $p \leq q$</p>
 
 </div></details>
 
 <details><summary>Démonstration de $f(N) = \mathcal{O}(g(N))$ implique $\mathcal{O}(f(N) + g(N) + h(N)) \Rightarrow \mathcal{O}(g(N) + h(N))$</summary><div>
-<p>Soit $f(N) = \mathcal{O}(g(N))$. Il existe donc $c_0$ et $N_0$ tels que $f(N) &lt; c_0 \cdot N^p$ pour $N &gt; N_0$. Si $f’(N) = \mathcal{O}(f(N) + g(N) + h(N))$ il existe $c’_0$ et $N’_0$ tels que $f’(N) &lt; c’_0(f(N) + g(N) + h(N))$ pour $N &gt; N_0$.</p>
+<p>Soit $f(N) = \mathcal{O}(g(N))$. Il existe donc $c_0$ et $N_0$ tels que $f(N) &lt; c_0 \cdot g(N)$ pour $N &gt; N_0$.</p>
 
-<p>De là, $f’(N) &lt; c’_0 c_0 g(N) + c’_0 g(N) + c’_0 h(N)$ pour $N &gt; \max \{ N_0, N’_0 \}$ ce qui implique $f’(N) &lt; \max \{ c’_0, c_0 \}^2 (g(N) + h(N))$ pour $N &gt; \max \{ N_0, N’_0 \}$ : $f’(N) = \mathcal{O}(g(N) + h(N))$</p>
+<p>Si $f’(N) = \mathcal{O}(f(N) + g(N) + h(N))$ il existe $c’_0$ et $N’_0$ tels que $f’(N) &lt; c’_0(f(N) + g(N) + h(N))$ pour $N &gt; N_0$.</p>
+
+<p>De là, $f’(N) &lt; c’_0 c_0 g(N) + c’_0 g(N) + c’_0 h(N)$ pour $N &gt; \max \{ N_0, N’_0 \}$ ce qui implique $f’(N) &lt; \max \{ c’_0, c_0 \}^2 (g(N) + h(N))$ pour $N &gt; \max \{ N_0, N’_0 \}$</p>
+
+<p>On a bien : $f’(N) = \mathcal{O}(g(N) + h(N))$</p>
 
 </div></details>
 
 <details><summary>Démonstration de $f(N) = \mathcal{O}(g(N))$ implique $\mathcal{O}(f(N) \cdot g(N) \cdot h(N) + h’(N)) \Rightarrow \mathcal{O}((g(N))^2 \cdot h(N)+ h’(N))$</summary><div>
-<p>Soit $f(N) = \mathcal{O}(g(N))$. Il existe donc $c_0$ et $N_0$ tels que $f(N) &lt; c_0 \cdot N^p$ pour $N &gt; N_0$. Si $f’(N) = \mathcal{O}(f(N)\cdot g(N) \cdot h(N) + h’(N))$ il existe $c’_0$ et $N’_0$ tels que $f’(N) &lt; c’_0(f(N) \cdot g(N) \cdot h(N) + h’(N))$ pour $N &gt; N_0$.</p>
+<p>Soit $f(N) = \mathcal{O}(g(N))$. Il existe donc $c_0$ et $N_0$ tels que $f(N) &lt; c_0 \cdot g(N)$ pour $N &gt; N_0$.</p>
 
-<p>De là, $f’(N) &lt; c’_0 (c_0 g(N) \cdot g(N) \cdot h(N) + h’(N)$ pour $N &gt; \max \{ N_0, N’_0 \}$ ce qui implique $f’(N) &lt; \max \{ c’_0, c_0 \}^2 (g(N)^2 \cdot  h(N) + h’(N))$ pour $N &gt; \max \{ N_0, N’_0 \}$ : $f’(N) = \mathcal{O}((g(N))^2 \cdot h(N) + h’(N))$</p>
+<p>Si $f’(N) = \mathcal{O}(f(N)\cdot g(N) \cdot h(N) + h’(N))$ il existe $c’_0$ et $N’_0$ tels que $f’(N) &lt; c’_0(f(N) \cdot g(N) \cdot h(N) + h’(N))$ pour $N &gt; N_0$.</p>
+
+<p>De là, $f’(N) &lt; c’_0 (c_0 g(N) \cdot g(N) \cdot h(N) + h’(N)$ pour $N &gt; \max \{ N_0, N’_0 \}$ ce qui implique $f’(N) &lt; \max \{ c’_0, c_0 \}^2 \cdot (g(N)^2 \cdot  h(N) + h’(N))$ pour $N &gt; \max \{ N_0, N’_0 \}$.</p>
+
+<p>On a bien : $f’(N) = \mathcal{O}((g(N))^2 \cdot h(N) + h’(N))$</p>
 
 </div></details>
 
 <details><summary>Démonstration de $\mathcal{O}(f(N)) + \mathcal{O}(g(N)) \Rightarrow \mathcal{O}(f(N) + g(N))$</summary><div>
 <p>Soient $f’(N) = \mathcal{O}(f(N))$ et $g’ = \mathcal{O}(g(N))$, il existe donc $c_0$, $c’_0$, $N_0$ et $N’_0$ tels que $f’(N) &lt; c_0 f(N)$ pour $N &gt; N_0$ et $g’(N) &lt; c’_0 g(N)$ pour $N &gt; N’_0$.</p>
 
-<p>On a alors $f’(N) + g’(N) &lt; \max \{c_0, c’_0\} (f(N) + g(N))$ pour $N &gt; \max \{ N_0, N’_0\}$ : $f’(N) + g’(N) = \mathcal{O}(f(N) + g(N))$.</p>
+<p>On a alors $f’(N) + g’(N) &lt; \max \{c_0, c’_0\} \cdot (f(N) + g(N))$ pour $N &gt; \max \{ N_0, N’_0\}$.</p>
+
+<p>On a bien : $f’(N) + g’(N) = \mathcal{O}(f(N) + g(N))$.</p>
 
 </div></details>
 
 <details><summary>Démonstration de $\mathcal{O}(f(N)) \cdot \mathcal{O}(g(N)) \Rightarrow \mathcal{O}(f(N) \cdot g(N))$</summary><div>
 <p>Soient $f’(N) = \mathcal{O}(f(N))$ et $g’ = \mathcal{O}(g(N))$, il existe donc $c_0$, $c’_0$, $N_0$ et $N’_0$ tels que $f’(N) &lt; c_0 f(N)$ pour $N &gt; N_0$ et $g’(N) &lt; c’_0 g(N)$ pour $N &gt; N’_0$.</p>
 
-<p>On a alors $f’(N) \cdot g’(N) &lt; \max \{c_0, c’_0, 1 \}^2 (f(N) \cdot g(N))$ pour $N &gt; \max \{ N_0, N’_0\}$ car $f$ et $g$ sont positives : $f’(N) \cdot g’(N) = \mathcal{O}(f(N) \cdot g(N))$.</p>
+<p>On a alors $f’(N) \cdot g’(N) &lt; \max \{c_0, c’_0, 1 \}^2 \cdot (f(N) \cdot g(N))$ pour $N &gt; \max \{ N_0, N’_0\}$ car $f$ et $g$ sont positives : $f’(N) \cdot g’(N) = \mathcal{O}(f(N) \cdot g(N))$.</p>
 
 </div></details>
 
 <h3 id="conséquences-algorithmique">conséquences algorithmique</h3>
 
-<p>La règle (1) montre qu’un nombre constant est toujours en $\mathcal{O}(1)$. Pour un algorithme, il est souvent compliqué de savoir exactement de combien d’<a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.html#instruction-basique">opérations basiques</a> est constitué une opération, ou le temps exact qu’elle va prendre (pour un ordinateur, cela dépend du type de processeur par exemple. L’addition avec un x68 est faites <a href="https://ensiwiki.ensimag.fr/index.php?title=Constructions_de_base_en_assembleur_x86">avec des registres</a> par exemple, et donc l’addition nécessite 2 opération du processeur). Mais on pourra toujours montrer qu’il y en a un nombre constant (ou borné par un nombre constant) :</p>
+<p>La règle (1) montre qu’un nombre constant est toujours en $\mathcal{O}(1)$. Pour un algorithme, il est souvent compliqué de savoir exactement de combien d’<a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.html#instruction-basique">opérations basiques</a> est constituée une opération, ou le temps exact qu’elle va prendre (pour un ordinateur, cela dépend du type de processeur. Par exemple, l’addition avec un x68 est faite <a href="https://ensiwiki.ensimag.fr/index.php?title=Constructions_de_base_en_assembleur_x86">avec des registres</a>, elle nécessite ainsi 2 opérations du processeur). On pourra cependant toujours montrer qu’il y en a un nombre constant (ou borné par un nombre constant) :</p>
 
 <blockquote class="note">
   <p>La complexité d’une opération basique nécessite $\mathcal{O}(1)$ opérations.</p>
@@ -205,8 +220,8 @@ if ((x &gt; 12) AND (x &lt; 36)):
 
 <ol>
   <li>on affecte un objet à x : 1 instruction, donc $\mathcal{O}(1)$ opérations.</li>
-  <li>un test avec 2 comparaisons et un <code class="language-plaintext highlighter-rouge">AND</code> : 3 instructions, donc $\mathcal{O}(3) = \mathcal{O}(1)$ opérations.</li>
-  <li>on affecte le résultat d’une opération élémentaire : 2 instructions, donc $\mathcal{O}(2) = \mathcal{O}(1)$ opérations.</li>
+  <li>un test avec 2 comparaisons et un <code class="language-plaintext highlighter-rouge">AND</code> pour deux variables : 6 instructions, donc $\mathcal{O}(6) = \mathcal{O}(1)$ opérations.</li>
+  <li>on affecte le résultat d’une opération élémentaire : 3 instructions, donc $\mathcal{O}(3) = \mathcal{O}(1)$ opérations.</li>
 </ol>
 
 <p>Un nombre total d’instructions de $3 \mathcal{O}(1) = \mathcal{O}(1)$ opérations.</p>
@@ -214,13 +229,13 @@ if ((x &gt; 12) AND (x &lt; 36)):
 <p>En revanche, faites attention, cela ne marche que pour les constantes !</p>
 
 <blockquote class="attention">
-  <p>Si le nombre d’opérations élémentaires est variable on a : $n \cdot \mathcal{O}(1) = \mathcal{O}(n)$. On ne peut pas simplifier les variables.</p>
+  <p>Si le nombre d’opérations élémentaires est variable on a : $n \cdot \mathcal{O}(1) = \mathcal{O}(n)$. On ne peut pas simplifier les éléments variables.</p>
 </blockquote>
 
 <p>Enfin, comme en algorithmie on manipulera souvent des polynômes, on peut montrer facilement avec les règles précédentes que :</p>
 
 <blockquote class="note">
-\[\sum_{i=0}^na_i x^i = \mathcal{O}(x^n)\]
+\[\sum_{i=0}^na_i x^i = \mathcal{O}(x^n) \mbox{ si } a_n \neq 0\]
 </blockquote>
 
 <h2 id="complexité-dun-algorithme">complexité d’un algorithme</h2>
@@ -238,7 +253,7 @@ if ((x &gt; 12) AND (x &lt; 36)):
 <p>Les complexités vont toutes dépendre des entrées, plus précisément d’un paramètre rendant compte de leur <strong>taille</strong>, c’est à dire du nombre de cases mémoires nécessaires pour les stocker.</p>
 
 <blockquote class="attention">
-  <p>Lorsque l’on donne des complexité c’est toujours en fonction d’un ou plusieurs paramètres qu’il <strong>faut</strong> expliciter</p>
+  <p>Lorsque l’on donne des complexités c’est toujours en fonction d’un ou plusieurs paramètres qu’il <strong>faut</strong> expliciter</p>
 </blockquote>
 
 <h3 id="nombre-dopérations-basiques">nombre d’opérations basiques</h3>
@@ -253,7 +268,7 @@ if ((x &gt; 12) AND (x &lt; 36)):
   <p>Lorsque vous entendrez parler de <em>complexité</em> d’un algorithme, ce sera par défaut <strong>toujours</strong> la complexité maximale.</p>
 </blockquote>
 
-<p>Il arrive que certains algorithmes aient un comportement très différent selon les entrées. Parler seulement de la complexité (nombre maximum d’opérations) ne permet pas alors de le caractériser complètement. On parlera alors aussi de :</p>
+<p>Il arrive que certains algorithmes aient un comportement très différent selon les entrées. Parler seulement de la complexité (nombre maximum d’opérations) ne permet alors pas de le caractériser complètement. On parlera  aussi de :</p>
 
 <blockquote class="note">
   <p>La <strong>complexité minimale</strong> d’un algorithme est le <strong>nombre minium d’opérations basiques</strong> effectué par celui-ci pour des entrées <strong>de taille totale donnée</strong>. Elle sera donnée en $\mathcal{O}(f(N))$, où $N$ est une variable rendant compte de la taille des données.</p>
@@ -263,7 +278,7 @@ if ((x &gt; 12) AND (x &lt; 36)):
 
 <h3 id="temps-dexécution">temps d’exécution</h3>
 
-<p>Un moyen efficace de mesurer la complexité d’un algorithme écrit sous la forme d’un code exécutable est de mesurer le temps mis pour son exécution pour un jeu d’entrée donné.</p>
+<p>Un moyen efficace de mesurer la complexité d’un algorithme écrit sous la forme d’un code exécutable est de mesurer le temps mis par son exécution pour un jeu d’entrée donné.</p>
 
 <blockquote class="note">
   <p>la <strong>complexité en temps</strong> d’un algorithme est le temps mis pour l’exécuter en utilisant un jeu de donné <strong>pour lequel la complexité (max) est atteinte</strong> et d’une taille totale donnée.</p>
@@ -272,7 +287,7 @@ if ((x &gt; 12) AND (x &lt; 36)):
 <p>Le temps pris sera bien sur différent si l’on prend une machine plus puissante ou si l’on change le code de l’algorithme mais <strong>l’évolution de la complexité en temps par rapport à la taille des données est toujours proportionnelle à la complexité</strong>. Pour le voir, il suffit de mesurer la durée d’exécution de chaque instruction basique et de la borner par le max.</p>
 
 <blockquote class="attention">
-  <p>Si vous ne prenez pas un jeu de donné pour lequel la complexité de l’algorithme est atteinte, vous ne mesurez <strong>pas</strong> la complexité temporelle de l’algorithme…</p>
+  <p>Si vous ne prenez <strong>pas</strong> un jeu de donné pour lequel la complexité de l’algorithme est atteinte, vous ne mesurez <strong>pas</strong> la complexité temporelle de l’algorithme…</p>
 </blockquote>
 
 <h3 id="taille-mémoire">taille mémoire</h3>
@@ -308,14 +323,19 @@ if ((x &gt; 12) AND (x &lt; 36)):
 
 </blockquote>
 
-<p>Prenons le type <a href="https://fr.wikipedia.org/wiki/Tableau_(structure_de_donn%C3%A9es)">tableau</a> comme exemple. Un tableau est un conteneur pouvant contenir $n$ objets (on appelle $n$ la taille d’un tableau). On peut accéder et affecter un objet au tableau grâce à un indice allant de $0$ à $n-1$ : si <code class="language-plaintext highlighter-rouge">t</code> est un tableau <code class="language-plaintext highlighter-rouge">t[i]</code> correspond à l’objet d’indice $i$ du tableau. Avec un tableau on peut :</p>
+<p>Prenons le type <a href="https://fr.wikipedia.org/wiki/Tableau_(structure_de_donn%C3%A9es)">tableau</a> comme exemple. Un tableau est un conteneur pouvant contenir $n$ objets (on appelle $n$ la taille d’un tableau). On peut accéder et affecter un objet au tableau grâce à un indice allant de $0$ à $n-1$ : si <code class="language-plaintext highlighter-rouge">t</code> est un tableau <code class="language-plaintext highlighter-rouge">t[i]</code> correspond à l’objet d’indice $i$ du tableau.</p>
+
+<p>Avec un tableau on peut :</p>
 
 <ul>
-  <li>créer un tableau de taille $n$ en $\mathcal{O}(1)$ opérations</li>
-  <li>supprimer un tableau est possible en $\mathcal{O}(1)$ opérations</li>
-  <li>récupérer et affecter l’objet d’indice $i$ du tableau (objet <code class="language-plaintext highlighter-rouge">t[i]</code>) se fait en $\mathcal{O}(1)$ opérations</li>
-  <li>pour augmenter la taille d’un tableau, il faut recréer un tableau vide avec la nouvelle taille puis recopier tous les éléments de l’ancien tableau au nouveau. Cela se fait donc en $\mathcal{O}(n)$ opérations où $n$ est la taille de l’ancien tableau.</li>
-  <li>pour réduire la taille d’un tableau, il faut recréer un tableau vide avec la nouvelle taille puis recopier les éléments que l’on veut garder de l’ancien tableau au nouveau. Cela se fait en $\mathcal{O}(n)$ opérations où $n$ est la taille du nouveau tableau.</li>
+  <li>
+<strong>créer un tableau</strong> de taille $n$ en $\mathcal{O}(1)$ opérations</li>
+  <li>
+<strong>supprimer un tableau</strong> est possible en $\mathcal{O}(1)$ opérations</li>
+  <li>
+<strong>récupérer et affecter</strong> l’objet d’indice $i$ du tableau (objet <code class="language-plaintext highlighter-rouge">t[i]</code>) se fait en $\mathcal{O}(1)$ opérations</li>
+  <li>pour <strong>augmenter la taille</strong> d’un tableau, il faut recréer un tableau vide avec la nouvelle taille puis recopier tous les éléments de l’ancien tableau au nouveau. Cela se fait donc en $\mathcal{O}(n)$ opérations où $n$ est la taille de l’ancien tableau.</li>
+  <li>pour <strong>réduire la taille</strong> d’un tableau, il faut recréer un tableau vide avec la nouvelle taille puis recopier les éléments que l’on veut garder de l’ancien tableau au nouveau. Cela se fait en $\mathcal{O}(n)$ opérations où $n$ est la taille du nouveau tableau.</li>
 </ul>
 
 <blockquote>
@@ -325,13 +345,19 @@ if ((x &gt; 12) AND (x &lt; 36)):
 <p>Le langage python ne connait pas les tableaux. Il utilise le type <strong>liste</strong> à la place. Une liste peut être vue comme l’évolution du type tableau. On donne ici juste les complexités de cette structure pour que vous puissiez les utiliser dans vos programmes, nous ne les démontrerons pas :</p>
 
 <ul>
-  <li>créer et supprimer une liste de taille $n$ en $\mathcal{O}(1)$ opérations</li>
-  <li>récupérer et affecter l’objet d’indice $i$ d’une liste (objet <code class="language-plaintext highlighter-rouge">t[i]</code>) se fait en $\mathcal{O}(1)$ opérations</li>
-  <li>augmenter la taille d’une liste d’un élément se fait en $\mathcal{O}(1)$ opérations</li>
-  <li>supprimer le dernier élément d’une liste se fait en $\mathcal{O}(1)$ opérations</li>
+  <li>
+<strong>créer et supprimer une liste</strong> de taille $n$ en $\mathcal{O}(1)$ opérations</li>
+  <li>
+<strong>récupérer et affecter</strong> l’objet d’indice $i$ d’une liste (objet <code class="language-plaintext highlighter-rouge">t[i]</code>) se fait en $\mathcal{O}(1)$ opérations</li>
+  <li>
+<strong>augmenter la taille</strong> d’une liste d’un élément se fait en $\mathcal{O}(1)$ opérations</li>
+  <li>
+<strong>supprimer le dernier élément</strong> d’une liste se fait en $\mathcal{O}(1)$ opérations</li>
 </ul>
 
-<p>Une liste peut être vue comme un tableau dont on peut augmenter ou diminuer la taille par la fin en $\mathcal{O}(1)$ opérations.</p>
+<blockquote class="note">
+  <p>Une liste est un tableau dont on peut augmenter ou diminuer la taille par la fin en $\mathcal{O}(1)$ opérations.</p>
+</blockquote>
 
 <blockquote class="attention">
   <p>Ne confondez pas liste et <a href="https://fr.wikipedia.org/wiki/Liste_cha%C3%AEn%C3%A9e">liste chaînée</a> ce n’est pas du tout la même structure !</p>
@@ -376,7 +402,7 @@ if ((x &gt; 12) AND (x &lt; 36)):
 
 <p>Cet algorithme recherche si le paramètre <code class="language-plaintext highlighter-rouge">valeur</code> est un élément de <code class="language-plaintext highlighter-rouge">tableau</code>.</p>
 
-<p>Calculons ses complexité maximale et minimale. Commençons par regarder les complexités de chaque ligne :</p>
+<p>Calculons ses complexités maximale et minimale. Commençons par regarder les complexités de chaque ligne :</p>
 
 <ol>
   <li>définition de la fonction : $C_1 = \mathcal{O}(1)$</li>
@@ -386,7 +412,7 @@ if ((x &gt; 12) AND (x &lt; 36)):
   <li>un retour de fonction : $C_5 = \mathcal{O}(1)$</li>
 </ol>
 
-<p>Comme il y a 2 retour de fonctions (lignes 4 et 5), la complexité sera soit :</p>
+<p>Comme il y a 2 retours de fonctions (lignes 4 et 5), la complexité sera soit :</p>
 
 <ul>
   <li>$C = C_1 + k \cdot (C_3) + C_5 = \mathcal{O}(1) + k \cdot (\mathcal{O}(1)) + \mathcal{O}(1)$ si on utilise la sortie de la ligne 5 (on est jamais passé par le ligne 4)</li>
@@ -654,7 +680,7 @@ tant que condition:
 </code></pre></div></div>
 
 <blockquote class="note">
-  <p>La complexité est : $\mathcal{O}$(nombre de fois ou la condition est remplie) * ($\mathcal{O}$(complexité du bloc d’instruction) + $\mathcal{O}$(complexité de la vérification de la condition))</p>
+  <p>La complexité est : $\mathcal{O}$(nombre de fois ou la condition est remplie) $\cdot$ ($\mathcal{O}$(complexité de la vérification de la condition) + $\mathcal{O}$(complexité du bloc d’instruction))</p>
 </blockquote>
 
 <p>Souvent, $\mathcal{O}$(complexité de la vérification de la condition) sera égal à $\mathcal{O}(1)$ et pourra ne pas en tenir compte dans le calcul. C’est le cas, entre autre pour une boucle tant que :</p>
@@ -666,7 +692,7 @@ pour chaque element de structure:
 </code></pre></div></div>
 
 <blockquote class="note">
-  <p>La complexité est : $\mathcal{O}$(nombre d’éléments de la structure) * $\mathcal{O}$(complexité du bloc d’instruction)</p>
+  <p>La complexité est : $\mathcal{O}$(nombre d’éléments de la structure) $\cdot$ $\mathcal{O}$(complexité du bloc d’instruction)</p>
 </blockquote>
 
 <p>Si le bloc d’instructions est une suite d’instructions de complexité $\mathcal{O}(1)$, on pourra ne pas en tenir compte dans le calcul et la complexité est alors égale à la taille de la structure.</p>
@@ -696,10 +722,10 @@ pour chaque element de structure:
 
 <p>Exemple :</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">total</span><span class="o">=</span><span class="mi">0</span>
-<span class="n">de</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span> <span class="n">à</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span> <span class="n">faire</span><span class="p">:</span>
-    <span class="n">de</span> <span class="n">j</span><span class="o">=</span><span class="mi">1</span> <span class="n">à</span> <span class="n">n</span> <span class="n">faire</span> <span class="p">:</span>
-        <span class="n">total</span><span class="o">=</span><span class="n">total</span><span class="o">+</span><span class="mi">1</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">de</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">à</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span> <span class="n">faire</span><span class="p">:</span>
+    <span class="n">de</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">à</span> <span class="n">n</span> <span class="n">faire</span><span class="p">:</span>
+        <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">+</span> <span class="mi">1</span>
 <span class="n">Rendre</span> <span class="n">total</span>
 </code></pre></div></div>
 
@@ -710,7 +736,7 @@ pour chaque element de structure:
 } = \mathcal{O}(n^2)\]
 
 <blockquote>
-  <p>Ne comptez pas trop précisément le nombre de fois où l’on rentre dans une boucle $n-3$ exécution de la boucle pouvant être avantageusement remplacé par $\mathcal{O}(n)$</p>
+  <p>Ne comptez pas trop précisément le nombre de fois où l’on rentre dans une boucle $n-3$ exécutions de la boucle pouvant être avantageusement remplacé par $\mathcal{O}(n)$</p>
 </blockquote>
 
 <h3 id="regle-croissance">boucles dépendantes mais monotones</h3>
