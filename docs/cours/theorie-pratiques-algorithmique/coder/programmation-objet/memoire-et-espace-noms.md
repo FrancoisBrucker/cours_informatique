@@ -201,45 +201,98 @@ Pour chaque *espace de noms* :
 
 > Pour expliciter comment tout ça se passe, on va se concentrer sur le [langage python](https://docs.python.org/3/tutorial/classes.html#python-scopes-and-namespaces), mais la procédure est similaire pour les autres langages à objets.
 
-> Lorsqu'un nouveau programme démarre l'espace de nom principal, nommé `global` est crée.
+Lorsque l'on exécute un programme, un premier espace de nom est créé :
+
+> Au démarrage d'une exécution d'un programme l'espace de nom principal, nommé `global` est crée.
 {: .note}
-
-> La fonction `globals()` en python donne l'espace de nom global de python. C'est la racine
-
 
 Au départ, il ne contient rien, à part des noms commençant et finissant par `__`, et qui sont utilisés par python.
 
+> Pour voir les noms définit dans l'espace de nom global, on utilise en python la fonction `globals()`.
 
-> A tout moment du programme, il existe **un** espace courant
+A tout moment de l'exécution d'un programme, un espace de nom pourra être crée. En  revanche :
 
-```python
-x = 1
-print(x)
-```
+> A tout moment du programme, on pourra créer un nouvel espace de nom : de nombreux espaces de noms pourront être définis, mais il existera toujours **un** espace de nom courant qui où l'on créera les et où dont on cherchera le nom par défaut.
+{: .note}
 
+On donnera dans la suite de cette partie des exemples qui permettront de mieux comprendre ce processus.
+
+> Pour voir les noms définit dans l'espace de nom courant, on utilise en python la fonction `locals()`.
 
 ### noms et variables
+
+Prenons plusieurs exemples, qui illustrerons les cas principaux.
+
+#### association objet et noms
+
+Considérons le programme suivant :
 
 ```python
 x = 1
 y = 1
 ```
 
-deux objets différents
+On a pas créé d'espaces de noms : l'espace de nom courant est `global`.
+
+1. avant l'exécution de la première ligne, l'espace de nom global ne contient aucun nom.
+2. on exécute la première ligne. Elle s'exécute ainsi :
+   1. on commence à droite du `=` : on crée un objet de type entier
+   2. on crée le nom `x` dans l'espace de nom courant (ici `global`) et on lui affecte l'objet.
+3. on exécute la deuxième ligne. Elle s'exécute ainsi :
+   1. on commence à droite du `=` : on crée un objet de type entier
+   2. on crée le nom `y` dans l'espace de nom courant (ici `global`) et on lui affecte l'objet.
+
+A la fin du programme, il y a **2 objets entiers différents** (même si tous les 2 valent 1), dont les noms sont, dans l'espace de nom global, respectivement `x`et `y`.
+
+#### réutilisation du même nom
 
 ```python
 x = 1
 x = 3
 ```
 
-un nouveau nom `x` qui remplace l'autre. L'objet 1 n'a plus de nom (il n'est plus référencé nulle part), il disparait.
+1. on exécute la première ligne. Elle s'exécute ainsi :
+   1. on commence à droite du `=` : on crée un objet de type entier
+   2. on crée le nom `x` dans l'espace de nom courant (ici `global`) et on lui affecte l'objet.
+2. on exécute la deuxième ligne. Elle s'exécute ainsi :
+   1. on commence à droite du `=` : on crée un objet de type entier
+   2. on crée le nom `x` dans l'espace de nom courant (ici `global`) et on lui affecte l'objet.
+
+Notez que le fait qu'un nom identique existe déjà n'est pas important. Le nouveau nom écrase l'autre :
+
+> Dans un espace de noms, chaque nom est différent. Réutiliser le même nom remplace le nom précédent.
+{: .note}
+
+Le programme a créé 2 objets (un entier valant 1 et un entier valant 3), mais à la fin de la deuxième ligne du programme, seul l'entier valant 3 a un nom (`x`) : il est impossible d'accéder à l'entier valant `1` : python le détruit.
+
+> Tout objet qui n'est plus référencé par une variable est détruit.
+{: .note}
+
+#### trouver un objet à plusieurs noms
 
 ```python
 x = 1
 y = x
 ```
 
-On commence par trouver les objets puis on affecte. Pour les noms, ils sont toujorus remplacé par les objets.
+1. on exécute la première ligne. Elle s'exécute ainsi :
+   1. on commence à droite du `=` : on crée un objet de type entier
+   2. on crée le nom `x` dans l'espace de nom courant (ici `global`) et on lui affecte l'objet.
+2. on exécute la deuxième ligne. Elle s'exécute ainsi :
+   1. on commence à droite du `=` : on cherche le nom `x` dans l'espace de nom courant. On le trouve et on lui substitue son objet (un entier valant 1)
+   2. on crée le nom `x` dans l'espace de nom courant (ici `global`) et on lui affecte l'objet.
+
+Le programme n'a crée qu'un objet (un entier valant 1) et il a deux noms (`x` et `y`) :
+
+> Dans un même espace de noms, un même objet peut être référencé plusieurs fois, sous plusieurs noms.
+{: .note}
+
+Les noms ne sont jamais utilisés. Dès qu'on les rencontre, on les remplace immédiatement par les objets qu'ils référencent.
+
+> Pour exécuter une instruction, on commence **toujours** par remplacer les variables par les objets qu'elles référencent.
+{: .note}
+
+La remarque précédente permet de comprendre mieux ce que fait le code suivant (et pourquoi cela fonctionne) :
 
 ```python
 x = 1
@@ -247,33 +300,72 @@ y = 3
 y, x = y, x
 ```
 
-d'abord à droite du `=` puis affectation des noms.
+{% details solution %}
+Il échange les objets référencés par `x` et `y`.
+
+Cela marche car on commence par remplacer les variables par les objets (la droite du `=`) avant de créer les variables (la gauche du `=`).
+{% enddetails %}
 
 ### fonctions
 
-espace de crée, puis disparait.
+L'exécution d'une fonction est un moment où un espace de nom est créé. L'exécution d'une fonction se passe alors selon le processus suivant :
 
-Il y a toujours un namespace associé à la ligne entrain d'être exéctué, c'est le `locals()`
+> Lorsque l'on exécute une fonction on procède comme suit :
+>
+> 1. on crée un nouvel espace de nom $F$
+> 2. l'espace de nom courant est affecté au parent de $F$
+> 3. $F$ devient le nouvel espace de nom courant.
+> 4. on affecte les paramètres de la fonction à leurs noms
+> 5. on exécute ligne à ligne la fonction
+> 6. le parent de $F$ devient le nouvel espace de nom courant
+> 7. on supprime l'espace de nom $F$
 
-> Toujour un espace de nom local : celui le plus bas dans la hiérarchie qui est le départ de la recherche et celui où sont écrit les noms (avec =)
+#### exécution d'une fonction
 
-local = espace de nom courant.
-global = la racine
+<style>
+    table, td, tr, th, pre {
+        padding:0;
+        margin:0;
+        border:none
+    }
+</style>
+{% highlight python linenos %}
+def f(x):
+   i = 2 * x
+   return i + 3
 
-{: .note}
+i = 2
+x = f(i)
+{% endhighlight %}
+
+par le même i et suppression des objets plus utiles
+
+#### hiérarchie des espaces de noms
+
+<style>
+    table, td, tr, th, pre {
+        padding:0;
+        margin:0;
+        border:none
+    }
+</style>
+{% highlight python linenos %}
+def f(x):
+   i = C * x
+   return i + 3
+
+C = 2
+i = 2
+x = f(i)
+{% endhighlight %}
+
+recherche d'un nom on remonte si on ne le trouve pas et création dans l'espace de nom courant
+
 ### import
 
 exemple d'import : `import random` (`vars(random)`) et `from random import randint`(pas importé)
 
 vars.
-
-### hiérarchie des espaces de noms
-
-cherche une globale dans une fonciton.
-
-! diffrent d'affecter. Ce n'est pas parce que le meme nom que ça marche.
-
-Modifier ok : exemple de l a liste. On modifie l'objet, on cherche/place de noms.
 
 ## notation pointée
 
@@ -288,80 +380,17 @@ c2 = c.uppercase()
 
 $B$ aussi appelé attribut de $A$ (dans l'espace de nom de $A$)
 
-mettre ne caché pour la bonne bouche. (comme les noms, un espace de nom qui est encore référencé ne disparait pas)
+## portée d'une variable
 
-1. *globals* : il ne contient rien au départ (à part des objets spécifiques à python, c'est à dire commençant et finissant par des `__`).
+lire : on remonte
+écrire : dans l'espace de nom courant
 
-module *built-in* qui contient tous les mots du langage utilisable (`list` ou encore `range`, `print`, etc)
+modifier un objet, où on veut du moment qu'on a l'objet.
 
-lorsqu'une ligne de code est exécutée, il existe l'espace de nom le plus proche d'elle. 
+Ex : modificaiton d'un objet retrouvé dans l'espace de nom global 
 
-Création d'espace de noms :
+attention : on ne fait pas ca si on peut faire autrement.
 
-* import de modules
-* exécution de fonctions : l'espace de nom est (a priori) détruit lorsque la fonction s'arrête
-* création de classes ou d'objets : l'espace de nom est détruit lorsque l'objet o la classe est détruit
-
-un objet est détruit lorsqu'il n'est plus présent dans aucun espace de nom.
-
-vars() et vars(truc avec un namespace)
-Les variables que l'on va créer se retrouve
-
-> Si un objet contient un
-quand quoi pourquoi
+## références
 
 <https://sebastianraschka.com/Articles/2014_python_scope_and_namespaces.html>
-
-En python, tout peut être vu comme un *namespace* particulier, un endroit où sont rangés des noms : noms de variables, de fonctions, de classes, etc.
-
-Les namespaces possibles sont :
-
-* le namespace global
-* la classe, ici `Counter`. Contient tout ce qui est défini dans la classe comme les méthodes ou les constantes.
-* l'objet : ici un objet counter de la classe `Counter`. Contient tout ce qui est défini pour l'objet en particulier (par exemple dans le `__init__` quand l'objet est appelé self)
-* les méthodes : ce qui n'existe que de l'exécution de la méthode à la fin de son exécution
-
-Plusieurs namespaces peuvent cohabiter en même temps, pour connaître celui qui va être utilisé, python va du [local au global](http://sebastianraschka.com/Articles/2014_python_scope_and_namespaces.html). S'il n'y a pas d'inclusion (comme une fonction dans une fonction), cela donne :
-
-1. fonction (inclut les méthodes)
-2. objet
-3. classe
-4. global
-5. built-in (les mots du langage python comme `list` ou encore `range`)
-
-
-les imports et leurs espaces de noms.
-
-`[i for i in range(4)]` : i n'existe pas
-`for i in range(4):` : i existe
-
-[module inspect](https://docs.python.org/3/library/inspect.html)
-
-namespace plus référencé : il meure (comme tout autre objet)
-
-1. si un objet n'est plus dans aucun espace de nom il disparait (on libère de la méméoire). Ex.
-2. pluseirus espaces de noms, il faut pouvoir s'y retrouver. 
-   1. lorsque l'on crée on crée dans l'espace le plus proche.
-   2. Si on ne le trouve pas on remonte
-   3. ex de la création de fonction. 
-      1. espace de nom par défaut
-      2. lorsque l'on exécute une fonction on crée un espace de nom
-      3. on y place les entrées
-      4. à la fin de la fonction, on supprime l'espace de nom si on en a plus besoin.
-3. règle des espaces de noms
-4.  exemples d'espace de noms: 
-   1.  fnction
-   2.  modules
-   3.  objets et classes (on va le voir
-5.  ex 2 : fonction de fonctions. O garde l'espace de nom car on en a encore besoin
-
-   
-Comment rendre compte d'une variable, et de la portée de celles-ci
-
-
-> * que des variables globales c'es nulles : variables dans les fonctions (c'est le cas par défaut en javascript)
-> * quelle portée choisi ? Le bloc for ? non, la fonction ? les modules ?
-> * comment savoir quelle variable utiliser si les espaces de noms s'embriquent?
-> * et comment de temps en temps modifier un objet au-dessus
-> * donner des exemples récursifs
-{: .tbd}
