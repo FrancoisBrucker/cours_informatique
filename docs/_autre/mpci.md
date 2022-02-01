@@ -51,8 +51,8 @@ L'ensemble du cours (et d'autres choses) est disponible [là]({% link cours/theo
 
 #### mercredi {#m-2}
 
-1. [complexité max/min]({% link cours/theorie-pratiques-algorithmique/algorithmie/complexite-max-min.md %})
-2. [preuve d'algorithme]({% link cours/theorie-pratiques-algorithmique/algorithmie/preuve-algorithme.md %})
+1. [preuve d'algorithme]({% link cours/theorie-pratiques-algorithmique/algorithmie/preuve-algorithme.md %})
+2. [complexité max/min]({% link cours/theorie-pratiques-algorithmique/algorithmie/complexite-max-min.md %})
 
 #### vendredi {#v-2}
 

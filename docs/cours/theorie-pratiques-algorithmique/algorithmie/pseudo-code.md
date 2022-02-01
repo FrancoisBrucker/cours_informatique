@@ -157,7 +157,7 @@ if ((x > 12) AND (x < 36)):
      * on effectue la comparaison : 1 instruction
    * faire l'instruction `AND`: 1 instruction
    * fair le `if`: 1 instruction
-3. on commence par récupérer la valeur de `x` (1 instruction) puis affecte le résultat d'une opération élémentaire : 2 instructions
+3. on commence par récupérer la valeur de `x` (1 instruction) puis affecte le résultat d'une opération élémentaire (2 instructions) : donc un total de 3 instructions
 
 Un nombre total d'instructions de 10.
 

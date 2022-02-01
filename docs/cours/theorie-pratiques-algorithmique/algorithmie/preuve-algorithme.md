@@ -35,7 +35,9 @@ A part la recommandation ci-dessus, il n'existe pas vraiment de règles à appli
 
 > dans la suite, les algorithmes seront tous donnés en python
 
-## factorielle récursive
+## factorielle
+
+### algorihtme récursif {#facto-rec}
 
 ```python
 def factorielle(n):
@@ -45,29 +47,25 @@ def factorielle(n):
 ```
 
 * finitude : Si $n$ est un réel, l'algorithme va s'arrêter : $n$ décroît strictement à chaque appelle récursif et on stoppe si $n \leq 1$.
-* complexité : dépend de $n$, le nombre pas sa taille.
 * preuve : par récurrence sur $n$, avec $n$ entier positif.
   * entrée : des entiers positifs
-  * fonction de récurrence. Si $n=0$ ça marche. Si ça marche pour l'entrée n-1, ça marche pour $n$ car la fonction rend $n \cdot factorielle(n-1)$ qui vaut $n \cdot (n-1)!$ par hypothèse de récurrence.
+  * fonction de récurrence. Si $n=0$ ça marche. Si ça marche pour l'entrée n-1, ça marche pour $n$ car la fonction rend $n \cdot \mbox{factorielle}(n-1)$ qui vaut $n \cdot (n-1)!$ par hypothèse de récurrence.
 
-## maximum d'un tableau
-
-On va voir 2 algorithmes pour calculer la valeur maximum d'un tableau de réels.
-
-### algorithme itératif
+### algorithme itératif {#facto-iter}
 
 ```python
-def maximum(t):
-    m = t[0]
-    for x in t:
-        if m < x:
-            m = x
-    return m
+def factorielle(n):
+    r = 1
+    while n > 1:
+        r *= n
+        n -= 1
+    return r
 ```
 
-* finitude : clair car une unique boucle for.
-* complexité : une boucle en $\mathcal{O}(len(t))$ et des choses en $\mathcal{O}(1)$. Sa complexité est en $\mathcal{O}(len(t))$
-* preuve : par invariant de boucle.
+> On utilise la possibilité que donne python d'écrire `x += y` (*resp.* `x -= y`, `x *= y` ou encore `x /= y`) à la place de `x = x + y` (*resp.* `x = x - y`, `x = x * y`, `x = x / y`).
+
+* finitude : Si $n$ est un entier, l'algorithme va s'arrêter car $n$ décroît strictement à chaque itération de la boucle `while`.
+* preuve : par invariant de boucle
 
 > Pour les preuves par invariant de boucle, le schéma de preuve est le suivant :
 >
@@ -77,15 +75,21 @@ def maximum(t):
 > Pour simplifier l'écriture, on note avec un `'` (prim) les variables à la fin de la boucle d'itération $i$.
 {: .note}
 
-Ici notre invariant est : *"Au début l'itération $i + 1 > 1$ de la boucle, $m$ vaut le maximum des $i$ premiers élément du tableau."*
+Ici notre invariant est : *"Au début de la boucle while : $r = (n+1) \cdot \dots \cdot n_0$ avec $n_0$ la valeur de $n$ passé en argument de la fonction ou $r=1$ si $n = n_0$"*.
 
-Après la première itération de la boucle, comme $m$ vaut initialement le premier élément du tableau, on a que $m=t[0]$ qui est bien le maximum des 1 premier éléments du tableau. L'invariant est vérifié au début de l'itération $2$.
+1. à la première itération $n = n_0$, la propriété est vraie.
+2. on suppose la propriété vraie à la $i$ème itération. A la fin de cette itération on a :
+   * $n' = n - 1$
+   * $r' = r \cdot n$
+3. on vérifie que si $n+1=n_0$ (fin de la première itération), c'est correct. Sinon, on est dans le cas général de 4.
+4. comme $r = (n+1) \cdot n_0$ on a $\frac{r'}{n} = (n+1) \cdot \dots \cdot n_0$ et donc $r' = n \cdot (n+1) \cdot \dots \cdot n_0$. On a bien $r' = (n'+1) \cdot \dots \cdot n_0$
+5. on en conclut que notre invariant reste vérifié.
 
-On suppose l'invariant vrai au début de l'itération $i + 1 >1$. A la fin de l'itération, $m'$ (la valeur de $m$ à l'issue de la boucle d'itération $i + 1$) vaut soit $m$ (la valeur de $m$ au début de la boucle d'itération $i +1 $) soit $x'$ (la variable $x$ affectée lors de) qui vaut la $i + 1$ème valeur du tableau.
+## maximum d'un tableau
 
-Comme l'invariant est vrai au début de la boucle d'itération $i + 1$, $m$ vaut le maximum du tableau sur les $i$ premiers éléments. Or $m' = \max(m, x)$, donc $m'$ vaut bien le maximum du tableau sur les $i + 1$ premiers éléments.
+On va voir 2 algorithmes pour calculer la valeur maximum d'un tableau de réels.
 
-### algorithme récursif
+### algorithme récursif {#max-rec}
 
 ```python
 def maximum(tab, debut=0):
@@ -101,8 +105,29 @@ def maximum(tab, debut=0):
 > On a utilisé la possibilité d'avoir des [arguments par défaut](https://docs.python.org/fr/3.9/tutorial/controlflow.html#default-argument-values) en python. Ceci nous permet d'exécuter la fonction maximum comme si elle n'avait qu'un seul paramètre.
 
 * finitude : début augmente strictement et s'arrête lorsqu'il vaut `len(tableau) - 1`
-* complexité : de l'ordre $\mathcal{O}(len(t))$ puisque l'on effectue au maximum `len(tableau)` récursions d'un algorithme en $\mathcal{O}(1)$.
 * preuve : par récurrence sur la longueur d'un tableau. On vérifie que l'algorithme fonctionne pour une longueur de tableau valant 1, puis on effectue preuve par récurrence sur la longueur du tableau.
+
+### algorithme itératif {#max-iter}
+
+```python
+def maximum(t):
+    m = t[0]
+    for x in t:
+        if m < x:
+            m = x
+    return m
+```
+
+* finitude : clair car une unique boucle for.
+* preuve : par invariant de boucle.
+
+Ici notre invariant est : *"Au début l'itération $i + 1 > 1$ de la boucle, $m$ vaut le maximum des $i$ premiers élément du tableau."*
+
+Après la première itération de la boucle, comme $m$ vaut initialement le premier élément du tableau, on a que $m=t[0]$ qui est bien le maximum des 1 premier éléments du tableau. L'invariant est vérifié au début de l'itération $2$.
+
+On suppose l'invariant vrai au début de l'itération $i + 1 >1$. A la fin de l'itération, $m'$ (la valeur de $m$ à l'issue de la boucle d'itération $i + 1$) vaut soit $m$ (la valeur de $m$ au début de la boucle d'itération $i +1 $) soit $x'$ (la variable $x$ affectée lors de) qui vaut la $i + 1$ème valeur du tableau.
+
+Comme l'invariant est vrai au début de la boucle d'itération $i + 1$, $m$ vaut le maximum du tableau sur les $i$ premiers éléments. Or $m' = \max(m, x)$, donc $m'$ vaut bien le maximum du tableau sur les $i + 1$ premiers éléments.
 
 ## division euclidienne
 
@@ -118,8 +143,6 @@ def euclide(a, b):
     return (q, r)
 ```
 
-> On utilise la possibilité que donne python d'écrire `x += y` (*resp.* `x -= y`) à la place de `x = x + y` (*resp.* `x = x - y`).
-
 Notez que le retour de la fonction est un [tuple](https://docs.python.org/fr/3/tutorial/datastructures.html#tuples-and-sequences) à 2 éléments (c'est à dire un tableau à 2 éléments que l'on ne peut pas modifer)
 
 ### finitude
@@ -129,12 +152,6 @@ le programme s'arrête ? : Oui si a et b sont des entiers positifs. Car
 * `r` est un entier
 * `r` après une itération est **strictement plus petit** que le `r` avant itération
 * on s'arrête si `r` est strictement plus petit que `b`.
-
-### complexité
-
-De l'ordre du nombre de fois où l'on rentre dans la boucle. Comme $r$ ne fait que décroître strictement et vaut $a$ au départ, on estime la complexité de l'algorithme en $\mathcal{O}(a)$.
-
-> Comme on décrémente de $b$ à chaque fois on aurait pu aussi dire que la complexité est en $\mathcal{O}(\frac{a}{b})$
 
 ### preuve
 
