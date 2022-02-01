@@ -289,77 +289,224 @@
   <p>Pour expliciter comment tout ça se passe, on va se concentrer sur le <a href="https://docs.python.org/3/tutorial/classes.html#python-scopes-and-namespaces">langage python</a>, mais la procédure est similaire pour les autres langages à objets.</p>
 </blockquote>
 
-<blockquote class="note">
-  <p>Lorsqu’un nouveau programme démarre l’espace de nom principal, nommé <code class="language-plaintext highlighter-rouge">global</code> est crée.</p>
-</blockquote>
+<p>Lorsque l’on exécute un programme, un premier espace de nom est créé :</p>
 
-<blockquote>
-  <p>La fonction <code class="language-plaintext highlighter-rouge">globals()</code> en python donne l’espace de nom global de python. C’est la racine</p>
+<blockquote class="note">
+  <p>Au démarrage d’une exécution d’un programme l’espace de nom principal, nommé <code class="language-plaintext highlighter-rouge">global</code> est crée.</p>
 </blockquote>
 
 <p>Au départ, il ne contient rien, à part des noms commençant et finissant par <code class="language-plaintext highlighter-rouge">__</code>, et qui sont utilisés par python.</p>
 
 <blockquote>
-  <p>A tout moment du programme, il existe <strong>un</strong> espace courant</p>
+  <p>Pour voir les noms définit dans l’espace de nom global, on utilise en python la fonction <code class="language-plaintext highlighter-rouge">globals()</code>.</p>
 </blockquote>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</code></pre></div></div>
+<p>A tout moment de l’exécution d’un programme, un espace de nom pourra être crée. En  revanche :</p>
+
+<blockquote class="note">
+  <p>A tout moment du programme, on pourra créer un nouvel espace de nom : de nombreux espaces de noms pourront être définis, mais il existera toujours <strong>un</strong> espace de nom courant qui où l’on créera les et où dont on cherchera le nom par défaut.</p>
+</blockquote>
+
+<p>On donnera dans la suite de cette partie des exemples qui permettront de mieux comprendre ce processus.</p>
+
+<blockquote>
+  <p>Pour voir les noms définit dans l’espace de nom courant, on utilise en python la fonction <code class="language-plaintext highlighter-rouge">locals()</code>.</p>
+</blockquote>
 
 <h3 id="noms-et-variables">noms et variables</h3>
+
+<p>Prenons plusieurs exemples, qui illustrerons les cas principaux.</p>
+
+<h4 id="association-objet-et-noms">association objet et noms</h4>
+
+<p>Considérons le programme suivant :</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span>
 </code></pre></div></div>
 
-<p>deux objets différents</p>
+<p>On a pas créé d’espaces de noms : l’espace de nom courant est <code class="language-plaintext highlighter-rouge">global</code>.</p>
+
+<ol>
+  <li>avant l’exécution de la première ligne, l’espace de nom global ne contient aucun nom.</li>
+  <li>on exécute la première ligne. Elle s’exécute ainsi :
+    <ol>
+      <li>on commence à droite du <code class="language-plaintext highlighter-rouge">=</code> : on crée un objet de type entier</li>
+      <li>on crée le nom <code class="language-plaintext highlighter-rouge">x</code> dans l’espace de nom courant (ici <code class="language-plaintext highlighter-rouge">global</code>) et on lui affecte l’objet.</li>
+    </ol>
+  </li>
+  <li>on exécute la deuxième ligne. Elle s’exécute ainsi :
+    <ol>
+      <li>on commence à droite du <code class="language-plaintext highlighter-rouge">=</code> : on crée un objet de type entier</li>
+      <li>on crée le nom <code class="language-plaintext highlighter-rouge">y</code> dans l’espace de nom courant (ici <code class="language-plaintext highlighter-rouge">global</code>) et on lui affecte l’objet.</li>
+    </ol>
+  </li>
+</ol>
+
+<p>A la fin du programme, il y a <strong>2 objets entiers différents</strong> (même si tous les 2 valent 1), dont les noms sont, dans l’espace de nom global, respectivement <code class="language-plaintext highlighter-rouge">x</code>et <code class="language-plaintext highlighter-rouge">y</code>.</p>
+
+<h4 id="réutilisation-du-même-nom">réutilisation du même nom</h4>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span>
 </code></pre></div></div>
 
-<p>un nouveau nom <code class="language-plaintext highlighter-rouge">x</code> qui remplace l’autre. L’objet 1 n’a plus de nom (il n’est plus référencé nulle part), il disparait.</p>
+<ol>
+  <li>on exécute la première ligne. Elle s’exécute ainsi :
+    <ol>
+      <li>on commence à droite du <code class="language-plaintext highlighter-rouge">=</code> : on crée un objet de type entier</li>
+      <li>on crée le nom <code class="language-plaintext highlighter-rouge">x</code> dans l’espace de nom courant (ici <code class="language-plaintext highlighter-rouge">global</code>) et on lui affecte l’objet.</li>
+    </ol>
+  </li>
+  <li>on exécute la deuxième ligne. Elle s’exécute ainsi :
+    <ol>
+      <li>on commence à droite du <code class="language-plaintext highlighter-rouge">=</code> : on crée un objet de type entier</li>
+      <li>on crée le nom <code class="language-plaintext highlighter-rouge">x</code> dans l’espace de nom courant (ici <code class="language-plaintext highlighter-rouge">global</code>) et on lui affecte l’objet.</li>
+    </ol>
+  </li>
+</ol>
+
+<p>Notez que le fait qu’un nom identique existe déjà n’est pas important. Le nouveau nom écrase l’autre :</p>
+
+<blockquote class="note">
+  <p>Dans un espace de noms, chaque nom est différent. Réutiliser le même nom remplace le nom précédent.</p>
+</blockquote>
+
+<p>Le programme a créé 2 objets (un entier valant 1 et un entier valant 3), mais à la fin de la deuxième ligne du programme, seul l’entier valant 3 a un nom (<code class="language-plaintext highlighter-rouge">x</code>) : il est impossible d’accéder à l’entier valant <code class="language-plaintext highlighter-rouge">1</code> : python le détruit.</p>
+
+<blockquote class="note">
+  <p>Tout objet qui n’est plus référencé par une variable est détruit.</p>
+</blockquote>
+
+<h4 id="trouver-un-objet-à-plusieurs-noms">trouver un objet à plusieurs noms</h4>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">x</span>
 </code></pre></div></div>
 
-<p>On commence par trouver les objets puis on affecte. Pour les noms, ils sont toujorus remplacé par les objets.</p>
+<ol>
+  <li>on exécute la première ligne. Elle s’exécute ainsi :
+    <ol>
+      <li>on commence à droite du <code class="language-plaintext highlighter-rouge">=</code> : on crée un objet de type entier</li>
+      <li>on crée le nom <code class="language-plaintext highlighter-rouge">x</code> dans l’espace de nom courant (ici <code class="language-plaintext highlighter-rouge">global</code>) et on lui affecte l’objet.</li>
+    </ol>
+  </li>
+  <li>on exécute la deuxième ligne. Elle s’exécute ainsi :
+    <ol>
+      <li>on commence à droite du <code class="language-plaintext highlighter-rouge">=</code> : on cherche le nom <code class="language-plaintext highlighter-rouge">x</code> dans l’espace de nom courant. On le trouve et on lui substitue son objet (un entier valant 1)</li>
+      <li>on crée le nom <code class="language-plaintext highlighter-rouge">x</code> dans l’espace de nom courant (ici <code class="language-plaintext highlighter-rouge">global</code>) et on lui affecte l’objet.</li>
+    </ol>
+  </li>
+</ol>
+
+<p>Le programme n’a crée qu’un objet (un entier valant 1) et il a deux noms (<code class="language-plaintext highlighter-rouge">x</code> et <code class="language-plaintext highlighter-rouge">y</code>) :</p>
+
+<blockquote class="note">
+  <p>Dans un même espace de noms, un même objet peut être référencé plusieurs fois, sous plusieurs noms.</p>
+</blockquote>
+
+<p>Les noms ne sont jamais utilisés. Dès qu’on les rencontre, on les remplace immédiatement par les objets qu’ils référencent.</p>
+
+<blockquote class="note">
+  <p>Pour exécuter une instruction, on commence <strong>toujours</strong> par remplacer les variables par les objets qu’elles référencent.</p>
+</blockquote>
+
+<p>La remarque précédente permet de comprendre mieux ce que fait le code suivant (et pourquoi cela fonctionne) :</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">y</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="n">y</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span>
 </code></pre></div></div>
 
-<p>d’abord à droite du <code class="language-plaintext highlighter-rouge">=</code> puis affectation des noms.</p>
+<details><summary>solution</summary><div>
+<p>Il échange les objets référencés par <code class="language-plaintext highlighter-rouge">x</code> et <code class="language-plaintext highlighter-rouge">y</code>.</p>
+
+<p>Cela marche car on commence par remplacer les variables par les objets (la droite du <code class="language-plaintext highlighter-rouge">=</code>) avant de créer les variables (la gauche du <code class="language-plaintext highlighter-rouge">=</code>).</p>
+</div></details>
 
 <h3 id="fonctions">fonctions</h3>
 
-<p>espace de crée, puis disparait.</p>
-
-<p>Il y a toujours un namespace associé à la ligne entrain d’être exéctué, c’est le <code class="language-plaintext highlighter-rouge">locals()</code></p>
+<p>L’exécution d’une fonction est un moment où un espace de nom est créé. L’exécution d’une fonction se passe alors selon le processus suivant :</p>
 
 <blockquote>
-  <p>Toujour un espace de nom local : celui le plus bas dans la hiérarchie qui est le départ de la recherche et celui où sont écrit les noms (avec =)</p>
+  <p>Lorsque l’on exécute une fonction on procède comme suit :</p>
+
+  <ol>
+    <li>on crée un nouvel espace de nom $F$</li>
+    <li>l’espace de nom courant est affecté au parent de $F$</li>
+    <li>$F$ devient le nouvel espace de nom courant.</li>
+    <li>on affecte les paramètres de la fonction à leurs noms</li>
+    <li>on exécute ligne à ligne la fonction</li>
+    <li>le parent de $F$ devient le nouvel espace de nom courant</li>
+    <li>on supprime l’espace de nom $F$</li>
+  </ol>
 </blockquote>
 
-<p>local = espace de nom courant.
-global = la racine</p>
+<h4 id="exécution-dune-fonction">exécution d’une fonction</h4>
 
-<h3 class="note" id="import">import</h3>
+<style>
+    table, td, tr, th, pre {
+        padding:0;
+        margin:0;
+        border:none
+    }
+</style>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td>
+<td class="code"><pre><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+   <span class="n">i</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span>
+   <span class="k">return</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">3</span>
+
+<span class="n">i</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+
+<p>par le même i et suppression des objets plus utiles</p>
+
+<h4 id="hiérarchie-des-espaces-de-noms">hiérarchie des espaces de noms</h4>
+
+<style>
+    table, td, tr, th, pre {
+        padding:0;
+        margin:0;
+        border:none
+    }
+</style>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td>
+<td class="code"><pre><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+   <span class="n">i</span> <span class="o">=</span> <span class="n">C</span> <span class="o">*</span> <span class="n">x</span>
+   <span class="k">return</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">3</span>
+
+<span class="n">C</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+
+<p>recherche d’un nom on remonte si on ne le trouve pas et création dans l’espace de nom courant</p>
+
+<h3 id="import">import</h3>
 
 <p>exemple d’import : <code class="language-plaintext highlighter-rouge">import random</code> (<code class="language-plaintext highlighter-rouge">vars(random)</code>) et <code class="language-plaintext highlighter-rouge">from random import randint</code>(pas importé)</p>
 
 <p>vars.</p>
-
-<h3 id="hiérarchie-des-espaces-de-noms">hiérarchie des espaces de noms</h3>
-
-<p>cherche une globale dans une fonciton.</p>
-
-<p>! diffrent d’affecter. Ce n’est pas parce que le meme nom que ça marche.</p>
-
-<p>Modifier ok : exemple de l a liste. On modifie l’objet, on cherche/place de noms.</p>
 
 <h2 id="notation-pointée">notation pointée</h2>
 
@@ -373,102 +520,20 @@ c2 = c.uppercase()
 
 <p>$B$ aussi appelé attribut de $A$ (dans l’espace de nom de $A$)</p>
 
-<p>mettre ne caché pour la bonne bouche. (comme les noms, un espace de nom qui est encore référencé ne disparait pas)</p>
+<h2 id="portée-dune-variable">portée d’une variable</h2>
 
-<ol>
-  <li>
-<em>globals</em> : il ne contient rien au départ (à part des objets spécifiques à python, c’est à dire commençant et finissant par des <code class="language-plaintext highlighter-rouge">__</code>).</li>
-</ol>
+<p>lire : on remonte
+écrire : dans l’espace de nom courant</p>
 
-<p>module <em>built-in</em> qui contient tous les mots du langage utilisable (<code class="language-plaintext highlighter-rouge">list</code> ou encore <code class="language-plaintext highlighter-rouge">range</code>, <code class="language-plaintext highlighter-rouge">print</code>, etc)</p>
+<p>modifier un objet, où on veut du moment qu’on a l’objet.</p>
 
-<p>lorsqu’une ligne de code est exécutée, il existe l’espace de nom le plus proche d’elle.</p>
+<p>Ex : modificaiton d’un objet retrouvé dans l’espace de nom global</p>
 
-<p>Création d’espace de noms :</p>
+<p>attention : on ne fait pas ca si on peut faire autrement.</p>
 
-<ul>
-  <li>import de modules</li>
-  <li>exécution de fonctions : l’espace de nom est (a priori) détruit lorsque la fonction s’arrête</li>
-  <li>création de classes ou d’objets : l’espace de nom est détruit lorsque l’objet o la classe est détruit</li>
-</ul>
-
-<p>un objet est détruit lorsqu’il n’est plus présent dans aucun espace de nom.</p>
-
-<p>vars() et vars(truc avec un namespace)
-Les variables que l’on va créer se retrouve</p>
-
-<blockquote>
-  <p>Si un objet contient un
-quand quoi pourquoi</p>
-</blockquote>
+<h2 id="références">références</h2>
 
 <p><a href="https://sebastianraschka.com/Articles/2014_python_scope_and_namespaces.html">https://sebastianraschka.com/Articles/2014_python_scope_and_namespaces.html</a></p>
-
-<p>En python, tout peut être vu comme un <em>namespace</em> particulier, un endroit où sont rangés des noms : noms de variables, de fonctions, de classes, etc.</p>
-
-<p>Les namespaces possibles sont :</p>
-
-<ul>
-  <li>le namespace global</li>
-  <li>la classe, ici <code class="language-plaintext highlighter-rouge">Counter</code>. Contient tout ce qui est défini dans la classe comme les méthodes ou les constantes.</li>
-  <li>l’objet : ici un objet counter de la classe <code class="language-plaintext highlighter-rouge">Counter</code>. Contient tout ce qui est défini pour l’objet en particulier (par exemple dans le <code class="language-plaintext highlighter-rouge">__init__</code> quand l’objet est appelé self)</li>
-  <li>les méthodes : ce qui n’existe que de l’exécution de la méthode à la fin de son exécution</li>
-</ul>
-
-<p>Plusieurs namespaces peuvent cohabiter en même temps, pour connaître celui qui va être utilisé, python va du <a href="http://sebastianraschka.com/Articles/2014_python_scope_and_namespaces.html">local au global</a>. S’il n’y a pas d’inclusion (comme une fonction dans une fonction), cela donne :</p>
-
-<ol>
-  <li>fonction (inclut les méthodes)</li>
-  <li>objet</li>
-  <li>classe</li>
-  <li>global</li>
-  <li>built-in (les mots du langage python comme <code class="language-plaintext highlighter-rouge">list</code> ou encore <code class="language-plaintext highlighter-rouge">range</code>)</li>
-</ol>
-
-<p>les imports et leurs espaces de noms.</p>
-
-<p><code class="language-plaintext highlighter-rouge">[i for i in range(4)]</code> : i n’existe pas
-<code class="language-plaintext highlighter-rouge">for i in range(4):</code> : i existe</p>
-
-<p><a href="https://docs.python.org/3/library/inspect.html">module inspect</a></p>
-
-<p>namespace plus référencé : il meure (comme tout autre objet)</p>
-
-<ol>
-  <li>si un objet n’est plus dans aucun espace de nom il disparait (on libère de la méméoire). Ex.</li>
-  <li>pluseirus espaces de noms, il faut pouvoir s’y retrouver.
-    <ol>
-      <li>lorsque l’on crée on crée dans l’espace le plus proche.</li>
-      <li>Si on ne le trouve pas on remonte</li>
-      <li>ex de la création de fonction.
-        <ol>
-          <li>espace de nom par défaut</li>
-          <li>lorsque l’on exécute une fonction on crée un espace de nom</li>
-          <li>on y place les entrées</li>
-          <li>à la fin de la fonction, on supprime l’espace de nom si on en a plus besoin.</li>
-        </ol>
-      </li>
-    </ol>
-  </li>
-  <li>règle des espaces de noms</li>
-  <li>exemples d’espace de noms:</li>
-  <li>fnction</li>
-  <li>modules</li>
-  <li>objets et classes (on va le voir</li>
-  <li>ex 2 : fonction de fonctions. O garde l’espace de nom car on en a encore besoin</li>
-</ol>
-
-<p>Comment rendre compte d’une variable, et de la portée de celles-ci</p>
-
-<blockquote class="tbd">
-  <ul>
-    <li>que des variables globales c’es nulles : variables dans les fonctions (c’est le cas par défaut en javascript)</li>
-    <li>quelle portée choisi ? Le bloc for ? non, la fonction ? les modules ?</li>
-    <li>comment savoir quelle variable utiliser si les espaces de noms s’embriquent?</li>
-    <li>et comment de temps en temps modifier un objet au-dessus</li>
-    <li>donner des exemples récursifs</li>
-  </ul>
-</blockquote>
 
   </div>
 
