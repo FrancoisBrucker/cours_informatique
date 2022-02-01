@@ -190,28 +190,32 @@ Pour s'y retrouver et et avoir une procédure déterministe pour retrouver les o
 
 Les espaces de noms nous permettent d'abstraire ce qu'il se passe en mémoire :
 
-* on considère que les objets sont stocké dans *l'espace des objets*
-* on accède aux objets via leurs noms, eux même stockés des des *espaces de noms*
+* on considère que les objets sont stocké dans *l'espace des objets* : cet espace est **unique**
+* on accède aux objets via leurs noms, eux même stockés des des *espaces de noms* : il y a de **nombreux** espaces de noms.
 
 Pour chaque *espace de noms* :
 
 * il ne peut y avoir 2 noms identiques dans un même espace de noms
-* les espaces de noms sont hiérarchisés : chaque espace de nom (à part le premier) possède un parent au-dessus de lui.
+* à chaque nom est associé un objet
+* certains espaces de noms possèdent un parent
 
-Pour expliciter comment tout ça se passe, on va se concentrer sur le [langage python](https://docs.python.org/3/tutorial/classes.html#python-scopes-and-namespaces), mais la procédure est similaire pour les autres langages à objets.
+> Pour expliciter comment tout ça se passe, on va se concentrer sur le [langage python](https://docs.python.org/3/tutorial/classes.html#python-scopes-and-namespaces), mais la procédure est similaire pour les autres langages à objets.
 
-Lorsqu'un nouveau programme démarre l'espace de nom principal, nommé `global` est crée. Au départ, il ne contient rien, à part des noms commençant et finissant par `__`, et qui sont utilisés par python.
+> Lorsqu'un nouveau programme démarre l'espace de nom principal, nommé `global` est crée.
+{: .note}
 
-> La fonction `globals()` donne l'espace de nom global de python.
+> La fonction `globals()` en python donne l'espace de nom global de python. C'est la racine
+
+
+Au départ, il ne contient rien, à part des noms commençant et finissant par `__`, et qui sont utilisés par python.
+
+
+> A tout moment du programme, il existe **un** espace courant
 
 ```python
 x = 1
 print(x)
 ```
-
-module builtins. A l'import d'un module, on crée un espace de noms. 
-
-`vars(__builtins__)`
 
 
 ### noms et variables
@@ -245,15 +249,44 @@ y, x = y, x
 
 d'abord à droite du `=` puis affectation des noms.
 
-### import
-
-exemple d'import : `import random` (`vars(random)`) et `from random import randint`(pas importé)
-
 ### fonctions
 
 espace de crée, puis disparait.
 
 Il y a toujours un namespace associé à la ligne entrain d'être exéctué, c'est le `locals()`
+
+> Toujour un espace de nom local : celui le plus bas dans la hiérarchie qui est le départ de la recherche et celui où sont écrit les noms (avec =)
+
+local = espace de nom courant.
+global = la racine
+
+{: .note}
+### import
+
+exemple d'import : `import random` (`vars(random)`) et `from random import randint`(pas importé)
+
+vars.
+
+### hiérarchie des espaces de noms
+
+cherche une globale dans une fonciton.
+
+! diffrent d'affecter. Ce n'est pas parce que le meme nom que ça marche.
+
+Modifier ok : exemple de l a liste. On modifie l'objet, on cherche/place de noms.
+
+## notation pointée
+
+Beaucoup de choses ont des espaces de noms. ON a vu les import, une fonction lorsqu'elle s'exécute, mais tout objet et types aussi :
+
+$A.B$ : cherche $B$ dans l'espace de nom de $A$
+
+```pyhton
+c = "coucou"
+c2 = c.uppercase()
+```
+
+$B$ aussi appelé attribut de $A$ (dans l'espace de nom de $A$)
 
 mettre ne caché pour la bonne bouche. (comme les noms, un espace de nom qui est encore référencé ne disparait pas)
 
