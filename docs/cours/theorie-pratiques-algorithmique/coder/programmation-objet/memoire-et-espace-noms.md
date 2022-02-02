@@ -12,7 +12,7 @@ authors:
 
 On montrer comment on peut gérer les variables dans un programme, et l'utilité des espaces de noms (en prenant l'exemple de python) pour le faire.
 
-Nous ne rentrerons pas dans les détails, la gestion de la mémoire est quelque chose de compliqué. Nous présenterons juste ici les caractéristiques fondamentales et les conséquences que cela a sur les variables et les objets.
+Nous ne rentrerons pas dans les détails, la gestion de la mémoire est quelque chose de compliqué. Nous nous contenterons de présenter les caractéristiques fondamentales et les conséquences que cela implique sur la gestion des variables et des objets.
 
 ## la mémoire
 
@@ -104,7 +104,7 @@ Les bénéfices de cette méthode sont énormes :
 * un tableau devient un tableau de référence, il peut contenir des types d'objets différents sans soucis
 * on peut facilement modifier un objet, sans avoir à changer toutes les variables qui le référencent.
 
-> Avec de grands pouvoirs viennent de grandes responsabilités. Il faut tout de même faire un peu attention à l'unicité des objets.
+> Comme on manipule directement les objets, il faut faire attention aux effets de bords lorsqu'e 'on les modifie
 {: .attention}
 
 Par exemple en python :
@@ -268,7 +268,7 @@ Le programme a créé 2 objets (un entier valant 1 et un entier valant 3), mais 
 > Tout objet qui n'est plus référencé par une variable est détruit.
 {: .note}
 
-#### trouver un objet à plusieurs noms
+#### un objet peut avoir plusieurs noms
 
 ```python
 x = 1
@@ -284,10 +284,10 @@ y = x
 
 Le programme n'a crée qu'un objet (un entier valant 1) et il a deux noms (`x` et `y`) :
 
-> Dans un même espace de noms, un même objet peut être référencé plusieurs fois, sous plusieurs noms.
+> Dans un même espace de noms, un même objet peut être référencé plusieurs fois, sous plusieurs noms différents.
 {: .note}
 
-Les noms ne sont jamais utilisés. Dès qu'on les rencontre, on les remplace immédiatement par les objets qu'ils référencent.
+Les noms ne sont jamais utilisés en tant que tel. Dès qu'ils sont rencontrés, ils sont immédiatement remplacés par les objets qu'ils référencent.
 
 > Pour exécuter une instruction, on commence **toujours** par remplacer les variables par les objets qu'elles référencent.
 {: .note}
@@ -308,7 +308,7 @@ Cela marche car on commence par remplacer les variables par les objets (la droit
 
 ### fonctions
 
-L'exécution d'une fonction est un moment où un espace de nom est créé. L'exécution d'une fonction se passe alors selon le processus suivant :
+L'exécution d'une fonction est un moment où un espace de nom est créé. Cela se passe  selon le processus suivant :
 
 > Lorsque l'on exécute une fonction on procède comme suit :
 >
@@ -338,9 +338,31 @@ i = 2
 x = f(i)
 {% endhighlight %}
 
-par le même i et suppression des objets plus utiles
+Lorsque le programme s'exécute, il effectue les opérations suivantes :
 
-#### hiérarchie des espaces de noms
+1. l'espace de nom `global` est créé
+2. la ligne 2 définit une fonction de nom `f` qui est ajouté à l'espace de nom courant (ici c'est global)
+3. on passe directement à la ligne 5 puisque les ligne 3 et 4 sont le contenu de la fonction. Cette ligne crée un objet entier (valant 2) et l'affecte au nom `i`.
+4. la ligne 6 est encore une affectation. On commence par trouver l'objet à droite du `=` c'est le résultat de `f(i)`. Il faut donc exécuter lafonction `f` pour connaître cet objet :
+   1. on cherche l'objet associé à `i` qui sera le (premier) paramère de la fonction
+   2. on crée un espace de nom qui devient l'espace de nom courant
+   3. on affecte le premier paramètre de `f` au nom `x`(le nom du premeir paramètre de `f`lors de sa définition)
+   4. on exécute la ligne 2 qui est la première ligne de la fonction `f` : on crée un objet qui entier (valant 4) qui est le résulat de l'opération à droite du `=` (notez que le nom `x` est bien défini dans l'espace de nom courant) et on l'affecte au nom `i` dans l'espace de nom courant
+   5. on exécute la ligne 3 : on rend l'objet résultant de l'opération somme (un entier valant 7)
+   6. l'espace de nom courant est détruit
+   7. la droite du signe `=` de la ligne 6 est trouvée (c'est un entier valant 6) et il est affecté à la variable `x` de l'espace de nom courant (qui est à ouveau `global`)
+
+Notez que l'objet créé ligne 2 lors de la création de la fonction n'a plus de nom dans aucun espace de nom : il n'y a plus aucun moyen d'y accéder.
+
+> python détruit automatiquement tout objet qui n'a plus de nom
+{:.note}
+
+#### espaces de noms parent
+
+L'espace de nom parent sert lorsque l'on cherche un nom qui n'est pas défini dans l'espace de nom courant :
+
+> Si un nom est recherché, mais que celui-ci n'est défini dans l'espace de nom courant, le nom est recherché dans l'espace de nom parent de l'espace courant.
+{: .note}
 
 <style>
     table, td, tr, th, pre {
@@ -359,9 +381,15 @@ i = 2
 x = f(i)
 {% endhighlight %}
 
-recherche d'un nom on remonte si on ne le trouve pas et création dans l'espace de nom courant
+Lors de l'exécution de la fonction `f` (instruction de la ligne 7), on cherche la variable nommée `C`. Elle n'exite pas dans l'espace de nom courant (celui de `f`), mais dans l'espace de nom `global` qui est son parent : le programme ne produit donc pas une erreur.
+
+> Les variables sont **toujours** crées dans l'espace d nom courant, mais leur recherche remonte de parent en parent jusqu'à trouver le nom.
+{:.note}
 
 ### import
+
+Lorsque l'on importe un fichier, un espace de nom est créé.
+
 
 exemple d'import : `import random` (`vars(random)`) et `from random import randint`(pas importé)
 

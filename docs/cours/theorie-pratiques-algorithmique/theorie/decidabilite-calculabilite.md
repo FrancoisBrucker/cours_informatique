@@ -4,7 +4,7 @@ title:  "Décidabilité et calculabilité"
 category: cours
 ---
 
-> [Théorie et pratiques algorithmique]({% link cours/theorie-pratiques-algorithmique/index.md %}) / [théorie]({% link cours/theorie-pratiques-algorithmique/theorie/index.md %}) / [décidabilité et calculabilité]({% link cours/theorie-pratiques-algorithmique/theorie/decidabilite_calculabilite.md %})
+> [Théorie et pratiques algorithmique]({% link cours/theorie-pratiques-algorithmique/index.md %}) / [théorie]({% link cours/theorie-pratiques-algorithmique/theorie/index.md %}) / [décidabilité et calculabilité]({% link cours/theorie-pratiques-algorithmique/theorie/decidabilite-calculabilite.md %})
 >
 > prérequis :
 >
@@ -95,7 +95,7 @@ Il existe bien sûr des langages qui sont reconnaissables et non décidables, pa
 
 > Ce cas est historiquement important car il correspond au [dixième problème de Hilbert](https://fr.wikipedia.org/wiki/Dixi%C3%A8me_probl%C3%A8me_de_Hilbert). Il a été prouvé indécidable par Matiiassevitch en 1970 en montrant qu'on ne pouvait pas borner les racine d'un polynôme à plusieurs variables.
 
-### arrêt d'un algorithme {#arret}
+### exemple de l'arrêt d'un algorithme {#arret}
 
 Savoir si un algorithme va s'arrêter, ou pas, sur une entrée est un problème compliqué. Prenez par exemple l'[algorithme suivant](https://fr.wikipedia.org/wiki/Conjecture_de_Syracuse) :
 
@@ -173,6 +173,12 @@ Le théorème d'indécidabilité de l'arrêt d'un algorithme est fondamental th�
 
 * il exhibe le fait qu'il existe des choses que l'on ne peut pas calculer avec un ordinateur
 * en creux, il montre qu'on peut tout de même faire beaucoup de choses avec des algorithmes puisqu'il faut chercher des exemples bien tordus pour que ça ne marche pas
+
+### exemple de la reconnaissance d'algorithmes
+
+> savoir si un algorithme résoud un problème donné par son langage
+> conséquence sur la preuve de programme. Thm de Rice
+{:.tbd}
 
 ## calculabilité
 

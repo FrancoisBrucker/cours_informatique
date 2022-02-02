@@ -58,7 +58,7 @@ Ce cours est composée de trois grandes parties qui s'enchevêtrent.
 1. [fonctions]({% link cours/theorie-pratiques-algorithmique/theorie/fonctions.md %})
 2. [Algorithmes, fonctions et pseudo-code]({% link cours/theorie-pratiques-algorithmique/theorie/algorithmes-fonctions-pseudo-code.md %})
 3. [machines de Turing]({% link cours/theorie-pratiques-algorithmique/theorie/machine-turing.md %})
-4. [décidabilité et calculabilité]({% link cours/theorie-pratiques-algorithmique/theorie/decidabilite_calculabilite.md %})
+4. [décidabilité et calculabilité]({% link cours/theorie-pratiques-algorithmique/theorie/decidabilite-calculabilite.md %})
 
 ### coder
 
@@ -67,6 +67,7 @@ Ce cours est composée de trois grandes parties qui s'enchevêtrent.
 3. [projet : pourcentages]({% link cours/theorie-pratiques-algorithmique/coder/projet-pourcentages.md %})
 4. [projet : exponentiation]({% link cours/theorie-pratiques-algorithmique/coder/projet-exponentiation.md %})
 5. [projet : tris]({% link cours/theorie-pratiques-algorithmique/coder/projet-tris.md %})
+6. [mémoire et espace de noms]({% link cours/theorie-pratiques-algorithmique/coder/programmation-objet/memoire-et-espace-noms.md %})
 
 ### autre
 
@@ -231,7 +232,7 @@ graph.links.push({
 
 graph.nodes.push({
   id: 'décidabilité et calculabilité',
-  link: "{% link cours/theorie-pratiques-algorithmique/theorie/decidabilite_calculabilite.md %}",
+  link: "{% link cours/theorie-pratiques-algorithmique/theorie/decidabilite-calculabilite.md %}",
   group: groups.theorie
 })
 graph.links.push({
@@ -242,6 +243,16 @@ graph.links.push({
 graph.links.push({
   source: 'Algorithmes, fonctions et pseudo-code',
   target: 'décidabilité et calculabilité'
+})
+
+graph.nodes.push({
+  id: 'mémoire et espace de noms',
+  link: "{% link cours/theorie-pratiques-algorithmique/coder/programmation-objet/memoire-et-espace-noms.md %}",
+  group: groups.code
+})
+graph.links.push({
+  source: 'code',
+  target: 'mémoire et espace de noms'
 })
 
 graph.nodes.push({

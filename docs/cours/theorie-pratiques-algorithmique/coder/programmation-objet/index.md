@@ -8,6 +8,7 @@ author: "François Brucker"
 {: .chemin}
 
 1. [mémoire et espace de noms]({% link cours/theorie-pratiques-algorithmique/coder/programmation-objet/memoire-et-espace-noms.md %})
+2. 1.[classes et objets]({% link cours/theorie-pratiques-algorithmique/coder/programmation-objet/classes-et-objets.md %})
 
 ### Deuxième partie : programmation objet
 
@@ -27,10 +28,5 @@ Créer et utiliser les objets et les classes en python. On montrera également l
 
 ### autres
 
-* structures avancées dict
-
-## les références
-
-* [installation complète de python]({% post_url /tutos/python/2021-08-20-installation-de-python %})
-* [tutoriel python](https://docs.python.org/fr/3/tutorial/)
-* [figures uml](./programmation-objet/plantuml.txt)
+> structures avancées dict
+{: .tbd}

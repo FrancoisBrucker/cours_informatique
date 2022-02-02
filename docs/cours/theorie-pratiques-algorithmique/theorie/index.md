@@ -15,7 +15,7 @@ Que peut ou pas faire un algorithme.
 * [fonctions]({% link cours/theorie-pratiques-algorithmique/theorie/fonctions.md %})
 * [Algorithmes, fonctions et pseudo-code]({% link cours/theorie-pratiques-algorithmique/theorie/algorithmes-fonctions-pseudo-code.md %})
 * [machine de Turing]({% link cours/theorie-pratiques-algorithmique/theorie/machine-turing.md %})
-* [décidabilité et calculabilité]({% link cours/theorie-pratiques-algorithmique/theorie/decidabilite_calculabilite.md %})
+* [décidabilité et calculabilité]({% link cours/theorie-pratiques-algorithmique/theorie/decidabilite-calculabilite.md %})
 
 * algorithmes et fonctions
 
