@@ -142,27 +142,32 @@
   <p>Pour les preuves par invariant de boucle, le schéma de preuve est le suivant :</p>
 
   <ol>
-    <li>on vérifie que l’invariant est vrai juste avant la première itération de la boucle</li>
-    <li>on suppose l’invariant vrai au début de l’itération $i$ de la boucle et on vérifie qu’il est toujours vérifié à la fin de l’itération $i$.</li>
+    <li>on vérifie que l’invariant est vrai à la fin de la première itération de la boucle</li>
+    <li>on suppose l’invariant à la fin de l’itération $i$ de la boucle et on vérifie qu’il est toujours vérifié à la fin de l’itération $i + 1$.</li>
   </ol>
 
-  <p>Pour simplifier l’écriture, on note avec un <code class="language-plaintext highlighter-rouge">'</code> (prim) les variables à la fin de la boucle d’itération $i$.</p>
+  <p>Pour simplifier l’écriture, on note avec un <code class="language-plaintext highlighter-rouge">'</code> (prim) les variables à la fin de la boucle d’itération $i+1$ pour les différentier des variables de la fin de l’itération $i$.</p>
 </blockquote>
 
-<p>Ici notre invariant est : <em>“Au début de la boucle while : $r = (n+1) \cdot \dots \cdot n_0$ avec $n_0$ la valeur de $n$ passé en argument de la fonction ou $r=1$ si $n = n_0$”</em>.</p>
+<p>Ici notre invariant est : <em>“A la fin d’une itération de la boucle while : $r = (n+1) \cdot \dots \cdot n_0$ avec $n_0$ la valeur de $n$ passé en argument de la fonction”</em>.</p>
 
 <ol>
-  <li>à la première itération $n = n_0$, la propriété est vraie.</li>
-  <li>on suppose la propriété vraie à la $i$ème itération. A la fin de cette itération on a :
+  <li>à la fin de la première itération $n = n_0 - 1$ et r = $n_0$ : la propriété est vraie.</li>
+  <li>on suppose la propriété vraie à la fin de la $i$ème itération. A la fin de l’itération suivante on a :
     <ul>
       <li>$n’ = n - 1$</li>
       <li>$r’ = r \cdot n$</li>
     </ul>
   </li>
-  <li>on vérifie que si $n+1=n_0$ (fin de la première itération), c’est correct. Sinon, on est dans le cas général de 4.</li>
   <li>comme $r = (n+1) \cdot n_0$ on a $\frac{r’}{n} = (n+1) \cdot \dots \cdot n_0$ et donc $r’ = n \cdot (n+1) \cdot \dots \cdot n_0$. On a bien $r’ = (n’+1) \cdot \dots \cdot n_0$</li>
   <li>on en conclut que notre invariant reste vérifié.</li>
 </ol>
+
+<p>L’invariant étant vérifié à la fin de chaque itération, il est donc aussi vrai à la fin de la dernière itération. A ce moment là, on a $n=1$ et donc $r = 1 \cdot 2 \cdot \dots \cdot n_0 = n_0!$</p>
+
+<blockquote>
+  <p>Il existe des variantes dans les preuve par invariants selon que l’on vérifie juste à la fin de la boucle ou au début et à la fin de l’itération. Les deux formes sont équivalentes, mais il est parfois plus aisée d’utiliser une forme que l’autre.</p>
+</blockquote>
 
 <h2 id="maximum-dun-tableau">maximum d’un tableau</h2>
 
@@ -173,7 +178,7 @@
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">maximum</span><span class="p">(</span><span class="n">tab</span><span class="p">,</span> <span class="n">debut</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">debut</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">tableau</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">tab</span><span class="p">[</span><span class="n">debut</span><span class="p">]</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">maximum_tableau</span><span class="p">(</span><span class="n">tab</span><span class="p">,</span> <span class="n">debut</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">maximum</span><span class="p">(</span><span class="n">tab</span><span class="p">,</span> <span class="n">debut</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">tab</span><span class="p">[</span><span class="n">debut</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">x</span>
         <span class="k">return</span> <span class="n">tab</span><span class="p">[</span><span class="n">debut</span><span class="p">]</span>
     <span class="k">else</span><span class="p">:</span>
@@ -205,13 +210,17 @@
   <li>preuve : par invariant de boucle.</li>
 </ul>
 
-<p>Ici notre invariant est : <em>“Au début l’itération $i + 1 &gt; 1$ de la boucle, $m$ vaut le maximum des $i$ premiers élément du tableau.”</em></p>
+<p>Ici notre invariant est : <em>“A la fin de l’itération $i$ de la boucle, $m$ vaut le maximum des $i$ premiers élément du tableau.”</em></p>
 
-<p>Après la première itération de la boucle, comme $m$ vaut initialement le premier élément du tableau, on a que $m=t[0]$ qui est bien le maximum des 1 premier éléments du tableau. L’invariant est vérifié au début de l’itération $2$.</p>
+<p>Après la première itération de la boucle, comme $m$ vaut initialement le premier élément du tableau, on a que $m=t[0]$ qui est bien le maximum des 1 premier éléments du tableau. L’invariant est vérifié à la fin  de l’itération $1$.</p>
 
-<p>On suppose l’invariant vrai au début de l’itération $i + 1 &gt;1$. A la fin de l’itération, $m’$ (la valeur de $m$ à l’issue de la boucle d’itération $i + 1$) vaut soit $m$ (la valeur de $m$ au début de la boucle d’itération $i +1 $) soit $x’$ (la variable $x$ affectée lors de) qui vaut la $i + 1$ème valeur du tableau.</p>
+<p>On suppose l’invariant vrai à la fin de l’itération $i$. A la fin de l’itération $i+1$, $m’$ (la valeur de $m$ à l’issue de la boucle d’itération $i + 1$) vaut soit $m$ (la valeur de $m$ au début de la boucle d’itération $i +1 $) soit $x’$ (la variable $x$ affectée lors de) qui vaut la $i + 1$ème valeur du tableau.</p>
 
-<p>Comme l’invariant est vrai au début de la boucle d’itération $i + 1$, $m$ vaut le maximum du tableau sur les $i$ premiers éléments. Or $m’ = \max(m, x)$, donc $m’$ vaut bien le maximum du tableau sur les $i + 1$ premiers éléments.</p>
+<p>Comme l’invariant est vrai à la fin la boucle d’itération $i$, $m$ vaut le maximum du tableau sur les $i$ premiers éléments. Or $m’ = \max(m, x)$, donc $m’$ vaut bien le maximum du tableau sur les $i + 1$ premiers éléments.</p>
+
+<p>Notre invariant est vérifié.</p>
+
+<p>Il est donc aussi vrai à la fin des itérations : $m$ vaut le maximum du tableau à la fin de la boucle for.</p>
 
 <h2 id="division-euclidienne">division euclidienne</h2>
 
@@ -241,6 +250,10 @@
 </ul>
 
 <h3 id="preuve">preuve</h3>
+
+<blockquote class="tbd">
+  <p>ici invariant début et fin</p>
+</blockquote>
 
 <p>On veut montrer que l’on obtient bien une division euclidienne de $a$ par $b$. C’est à dire que $a = bq + r$ avec $r &lt; b$. Pour cela on va s’aider de l’invariant de boucle : <code class="language-plaintext highlighter-rouge">a = r + q * b</code></p>
 
