@@ -70,7 +70,7 @@
 
 <p>On montrer comment on peut gérer les variables dans un programme, et l’utilité des espaces de noms (en prenant l’exemple de python) pour le faire.</p>
 
-<p>Nous ne rentrerons pas dans les détails, la gestion de la mémoire est quelque chose de compliqué. Nous présenterons juste ici les caractéristiques fondamentales et les conséquences que cela a sur les variables et les objets.</p>
+<p>Nous ne rentrerons pas dans les détails, la gestion de la mémoire est quelque chose de compliqué. Nous nous contenterons de présenter les caractéristiques fondamentales et les conséquences que cela implique sur la gestion des variables et des objets.</p>
 
 <h2 id="la-mémoire">la mémoire</h2>
 
@@ -181,7 +181,7 @@
 </ul>
 
 <blockquote class="attention">
-  <p>Avec de grands pouvoirs viennent de grandes responsabilités. Il faut tout de même faire un peu attention à l’unicité des objets.</p>
+  <p>Comme on manipule directement les objets, il faut faire attention aux effets de bords lorsqu’e ‘on les modifie</p>
 </blockquote>
 
 <p>Par exemple en python :</p>
@@ -378,7 +378,7 @@
   <p>Tout objet qui n’est plus référencé par une variable est détruit.</p>
 </blockquote>
 
-<h4 id="trouver-un-objet-à-plusieurs-noms">trouver un objet à plusieurs noms</h4>
+<h4 id="un-objet-peut-avoir-plusieurs-noms">un objet peut avoir plusieurs noms</h4>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">x</span>
@@ -402,10 +402,10 @@
 <p>Le programme n’a crée qu’un objet (un entier valant 1) et il a deux noms (<code class="language-plaintext highlighter-rouge">x</code> et <code class="language-plaintext highlighter-rouge">y</code>) :</p>
 
 <blockquote class="note">
-  <p>Dans un même espace de noms, un même objet peut être référencé plusieurs fois, sous plusieurs noms.</p>
+  <p>Dans un même espace de noms, un même objet peut être référencé plusieurs fois, sous plusieurs noms différents.</p>
 </blockquote>
 
-<p>Les noms ne sont jamais utilisés. Dès qu’on les rencontre, on les remplace immédiatement par les objets qu’ils référencent.</p>
+<p>Les noms ne sont jamais utilisés en tant que tel. Dès qu’ils sont rencontrés, ils sont immédiatement remplacés par les objets qu’ils référencent.</p>
 
 <blockquote class="note">
   <p>Pour exécuter une instruction, on commence <strong>toujours</strong> par remplacer les variables par les objets qu’elles référencent.</p>
@@ -426,7 +426,7 @@
 
 <h3 id="fonctions">fonctions</h3>
 
-<p>L’exécution d’une fonction est un moment où un espace de nom est créé. L’exécution d’une fonction se passe alors selon le processus suivant :</p>
+<p>L’exécution d’une fonction est un moment où un espace de nom est créé. Cela se passe  selon le processus suivant :</p>
 
 <blockquote>
   <p>Lorsque l’on exécute une fonction on procède comme suit :</p>
@@ -469,9 +469,38 @@
 </pre></td>
 </tr></tbody></table></code></pre></figure>
 
-<p>par le même i et suppression des objets plus utiles</p>
+<p>Lorsque le programme s’exécute, il effectue les opérations suivantes :</p>
 
-<h4 id="hiérarchie-des-espaces-de-noms">hiérarchie des espaces de noms</h4>
+<ol>
+  <li>l’espace de nom <code class="language-plaintext highlighter-rouge">global</code> est créé</li>
+  <li>la ligne 2 définit une fonction de nom <code class="language-plaintext highlighter-rouge">f</code> qui est ajouté à l’espace de nom courant (ici c’est global)</li>
+  <li>on passe directement à la ligne 5 puisque les ligne 3 et 4 sont le contenu de la fonction. Cette ligne crée un objet entier (valant 2) et l’affecte au nom <code class="language-plaintext highlighter-rouge">i</code>.</li>
+  <li>la ligne 6 est encore une affectation. On commence par trouver l’objet à droite du <code class="language-plaintext highlighter-rouge">=</code> c’est le résultat de <code class="language-plaintext highlighter-rouge">f(i)</code>. Il faut donc exécuter lafonction <code class="language-plaintext highlighter-rouge">f</code> pour connaître cet objet :
+    <ol>
+      <li>on cherche l’objet associé à <code class="language-plaintext highlighter-rouge">i</code> qui sera le (premier) paramère de la fonction</li>
+      <li>on crée un espace de nom qui devient l’espace de nom courant</li>
+      <li>on affecte le premier paramètre de <code class="language-plaintext highlighter-rouge">f</code> au nom <code class="language-plaintext highlighter-rouge">x</code>(le nom du premeir paramètre de <code class="language-plaintext highlighter-rouge">f</code>lors de sa définition)</li>
+      <li>on exécute la ligne 2 qui est la première ligne de la fonction <code class="language-plaintext highlighter-rouge">f</code> : on crée un objet qui entier (valant 4) qui est le résulat de l’opération à droite du <code class="language-plaintext highlighter-rouge">=</code> (notez que le nom <code class="language-plaintext highlighter-rouge">x</code> est bien défini dans l’espace de nom courant) et on l’affecte au nom <code class="language-plaintext highlighter-rouge">i</code> dans l’espace de nom courant</li>
+      <li>on exécute la ligne 3 : on rend l’objet résultant de l’opération somme (un entier valant 7)</li>
+      <li>l’espace de nom courant est détruit</li>
+      <li>la droite du signe <code class="language-plaintext highlighter-rouge">=</code> de la ligne 6 est trouvée (c’est un entier valant 6) et il est affecté à la variable <code class="language-plaintext highlighter-rouge">x</code> de l’espace de nom courant (qui est à ouveau <code class="language-plaintext highlighter-rouge">global</code>)</li>
+    </ol>
+  </li>
+</ol>
+
+<p>Notez que l’objet créé ligne 2 lors de la création de la fonction n’a plus de nom dans aucun espace de nom : il n’y a plus aucun moyen d’y accéder.</p>
+
+<blockquote class="note">
+  <p>python détruit automatiquement tout objet qui n’a plus de nom</p>
+</blockquote>
+
+<h4 id="espaces-de-noms-parent">espaces de noms parent</h4>
+
+<p>L’espace de nom parent sert lorsque l’on cherche un nom qui n’est pas défini dans l’espace de nom courant :</p>
+
+<blockquote class="note">
+  <p>Si un nom est recherché, mais que celui-ci n’est défini dans l’espace de nom courant, le nom est recherché dans l’espace de nom parent de l’espace courant.</p>
+</blockquote>
 
 <style>
     table, td, tr, th, pre {
@@ -500,9 +529,15 @@
 </pre></td>
 </tr></tbody></table></code></pre></figure>
 
-<p>recherche d’un nom on remonte si on ne le trouve pas et création dans l’espace de nom courant</p>
+<p>Lors de l’exécution de la fonction <code class="language-plaintext highlighter-rouge">f</code> (instruction de la ligne 7), on cherche la variable nommée <code class="language-plaintext highlighter-rouge">C</code>. Elle n’exite pas dans l’espace de nom courant (celui de <code class="language-plaintext highlighter-rouge">f</code>), mais dans l’espace de nom <code class="language-plaintext highlighter-rouge">global</code> qui est son parent : le programme ne produit donc pas une erreur.</p>
+
+<blockquote class="note">
+  <p>Les variables sont <strong>toujours</strong> crées dans l’espace d nom courant, mais leur recherche remonte de parent en parent jusqu’à trouver le nom.</p>
+</blockquote>
 
 <h3 id="import">import</h3>
+
+<p>Lorsque l’on importe un fichier, un espace de nom est créé.</p>
 
 <p>exemple d’import : <code class="language-plaintext highlighter-rouge">import random</code> (<code class="language-plaintext highlighter-rouge">vars(random)</code>) et <code class="language-plaintext highlighter-rouge">from random import randint</code>(pas importé)</p>
 
