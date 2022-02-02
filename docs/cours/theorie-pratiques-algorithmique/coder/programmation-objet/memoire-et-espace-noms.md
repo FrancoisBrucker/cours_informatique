@@ -367,6 +367,8 @@ exemple d'import : `import random` (`vars(random)`) et `from random import randi
 
 vars.
 
+variable dans l'import utilisé dans une fonction de l'import.
+
 ## notation pointée
 
 Beaucoup de choses ont des espaces de noms. ON a vu les import, une fonction lorsqu'elle s'exécute, mais tout objet et types aussi :

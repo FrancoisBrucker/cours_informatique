@@ -69,21 +69,24 @@ def factorielle(n):
 
 > Pour les preuves par invariant de boucle, le schéma de preuve est le suivant :
 >
-> 1. on vérifie que l'invariant est vrai juste avant la première itération de la boucle
-> 2. on suppose l'invariant vrai au début de l'itération $i$ de la boucle et on vérifie qu'il est toujours vérifié à la fin de l'itération $i$.
+> 1. on vérifie que l'invariant est vrai à la fin de la première itération de la boucle
+> 2. on suppose l'invariant à la fin de l'itération $i$ de la boucle et on vérifie qu'il est toujours vérifié à la fin de l'itération $i + 1$.
 >
-> Pour simplifier l'écriture, on note avec un `'` (prim) les variables à la fin de la boucle d'itération $i$.
+> Pour simplifier l'écriture, on note avec un `'` (prim) les variables à la fin de la boucle d'itération $i+1$ pour les différentier des variables de la fin de l'itération $i$.
 {: .note}
 
-Ici notre invariant est : *"Au début de la boucle while : $r = (n+1) \cdot \dots \cdot n_0$ avec $n_0$ la valeur de $n$ passé en argument de la fonction ou $r=1$ si $n = n_0$"*.
+Ici notre invariant est : *"A la fin d'une itération de la boucle while : $r = (n+1) \cdot \dots \cdot n_0$ avec $n_0$ la valeur de $n$ passé en argument de la fonction"*.
 
-1. à la première itération $n = n_0$, la propriété est vraie.
-2. on suppose la propriété vraie à la $i$ème itération. A la fin de cette itération on a :
+1. à la fin de la première itération $n = n_0 - 1$ et r = $n_0$ : la propriété est vraie.
+2. on suppose la propriété vraie à la fin de la $i$ème itération. A la fin de l'itération suivante on a :
    * $n' = n - 1$
    * $r' = r \cdot n$
-3. on vérifie que si $n+1=n_0$ (fin de la première itération), c'est correct. Sinon, on est dans le cas général de 4.
-4. comme $r = (n+1) \cdot n_0$ on a $\frac{r'}{n} = (n+1) \cdot \dots \cdot n_0$ et donc $r' = n \cdot (n+1) \cdot \dots \cdot n_0$. On a bien $r' = (n'+1) \cdot \dots \cdot n_0$
-5. on en conclut que notre invariant reste vérifié.
+3. comme $r = (n+1) \cdot n_0$ on a $\frac{r'}{n} = (n+1) \cdot \dots \cdot n_0$ et donc $r' = n \cdot (n+1) \cdot \dots \cdot n_0$. On a bien $r' = (n'+1) \cdot \dots \cdot n_0$
+4. on en conclut que notre invariant reste vérifié.
+
+L'invariant étant vérifié à la fin de chaque itération, il est donc aussi vrai à la fin de la dernière itération. A ce moment là, on a $n=1$ et donc $r = 1 \cdot 2 \cdot \dots \cdot n_0 = n_0!$
+
+> Il existe des variantes dans les preuve par invariants selon que l'on vérifie juste à la fin de la boucle ou au début et à la fin de l'itération. Les deux formes sont équivalentes, mais il est parfois plus aisée d'utiliser une forme que l'autre.
 
 ## maximum d'un tableau
 
@@ -95,7 +98,7 @@ On va voir 2 algorithmes pour calculer la valeur maximum d'un tableau de réels.
 def maximum(tab, debut=0):
     if debut == len(tableau) - 1:
         return tab[debut]
-    x = maximum_tableau(tab, debut + 1)
+    x = maximum(tab, debut + 1)
     if tab[debut] < x
         return tab[debut]
     else:
@@ -121,13 +124,17 @@ def maximum(t):
 * finitude : clair car une unique boucle for.
 * preuve : par invariant de boucle.
 
-Ici notre invariant est : *"Au début l'itération $i + 1 > 1$ de la boucle, $m$ vaut le maximum des $i$ premiers élément du tableau."*
+Ici notre invariant est : *"A la fin de l'itération $i$ de la boucle, $m$ vaut le maximum des $i$ premiers élément du tableau."*
 
-Après la première itération de la boucle, comme $m$ vaut initialement le premier élément du tableau, on a que $m=t[0]$ qui est bien le maximum des 1 premier éléments du tableau. L'invariant est vérifié au début de l'itération $2$.
+Après la première itération de la boucle, comme $m$ vaut initialement le premier élément du tableau, on a que $m=t[0]$ qui est bien le maximum des 1 premier éléments du tableau. L'invariant est vérifié à la fin  de l'itération $1$.
 
-On suppose l'invariant vrai au début de l'itération $i + 1 >1$. A la fin de l'itération, $m'$ (la valeur de $m$ à l'issue de la boucle d'itération $i + 1$) vaut soit $m$ (la valeur de $m$ au début de la boucle d'itération $i +1 $) soit $x'$ (la variable $x$ affectée lors de) qui vaut la $i + 1$ème valeur du tableau.
+On suppose l'invariant vrai à la fin de l'itération $i$. A la fin de l'itération $i+1$, $m'$ (la valeur de $m$ à l'issue de la boucle d'itération $i + 1$) vaut soit $m$ (la valeur de $m$ au début de la boucle d'itération $i +1 $) soit $x'$ (la variable $x$ affectée lors de) qui vaut la $i + 1$ème valeur du tableau.
 
-Comme l'invariant est vrai au début de la boucle d'itération $i + 1$, $m$ vaut le maximum du tableau sur les $i$ premiers éléments. Or $m' = \max(m, x)$, donc $m'$ vaut bien le maximum du tableau sur les $i + 1$ premiers éléments.
+Comme l'invariant est vrai à la fin la boucle d'itération $i$, $m$ vaut le maximum du tableau sur les $i$ premiers éléments. Or $m' = \max(m, x)$, donc $m'$ vaut bien le maximum du tableau sur les $i + 1$ premiers éléments.
+
+Notre invariant est vérifié.
+
+Il est donc aussi vrai à la fin des itérations : $m$ vaut le maximum du tableau à la fin de la boucle for.
 
 ## division euclidienne
 
@@ -154,6 +161,9 @@ le programme s'arrête ? : Oui si a et b sont des entiers positifs. Car
 * on s'arrête si `r` est strictement plus petit que `b`.
 
 ### preuve
+
+> ici invariant début et fin
+{: .tbd}
 
 On veut montrer que l'on obtient bien une division euclidienne de $a$ par $b$. C'est à dire que $a = bq + r$ avec $r < b$. Pour cela on va s'aider de l'invariant de boucle : `a = r + q * b`
 
