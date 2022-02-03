@@ -66,6 +66,12 @@
   <div class="post-content">
     <blockquote class="chemin">
   <p><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/">Théorie et pratiques algorithmique</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/">coder</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/programmation-objet/">programmation objet</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/programmation-objet/memoire-et-espace-noms.html">mémoire et espace de noms</a></p>
+
+  <p><strong>prérequis :</strong></p>
+
+  <ul>
+    <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/code.html">code</a></li>
+  </ul>
 </blockquote>
 
 <p>On montrer comment on peut gérer les variables dans un programme, et l’utilité des espaces de noms (en prenant l’exemple de python) pour le faire.</p>
@@ -267,7 +273,7 @@
 
 <p>Pour s’y retrouver et et avoir une procédure déterministe pour retrouver les objets associés aux variables, voir choisir parmi plusieurs variables de même noms, elles sont regroupées par ensembles — nommés <strong>espaces de noms</strong> hiérarchiquement ordonnés.</p>
 
-<h2 id="espaces-de-noms">espaces de noms</h2>
+<h2 id="espace-noms">espaces de noms</h2>
 
 <p>Les espaces de noms nous permettent d’abstraire ce qu’il se passe en mémoire :</p>
 
@@ -325,20 +331,27 @@
 <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span>
 </code></pre></div></div>
 
-<p>On a pas créé d’espaces de noms : l’espace de nom courant est <code class="language-plaintext highlighter-rouge">global</code>.</p>
+<p>Exécutons le ligne à ligne :</p>
 
 <ol>
-  <li>avant l’exécution de la première ligne, l’espace de nom global ne contient aucun nom.</li>
+  <li>avant l’exécution de la première ligne :
+    <ol>
+      <li>on a un unique espace de nom (<code class="language-plaintext highlighter-rouge">global</code>) qui est l’espace courant (en vert sur la figure)</li>
+      <li><img src="/cours_informatique/assets/cours/algorithmie/poo/cas-1-1.png" alt="cas-1-1" style="margin: auto;display: block;"></li>
+    </ol>
+  </li>
   <li>on exécute la première ligne. Elle s’exécute ainsi :
     <ol>
       <li>on commence à droite du <code class="language-plaintext highlighter-rouge">=</code> : on crée un objet de type entier</li>
       <li>on crée le nom <code class="language-plaintext highlighter-rouge">x</code> dans l’espace de nom courant (ici <code class="language-plaintext highlighter-rouge">global</code>) et on lui affecte l’objet.</li>
+      <li><img src="/cours_informatique/assets/cours/algorithmie/poo/cas-1-2.png" alt="cas-1-2" style="margin: auto;display: block;"></li>
     </ol>
   </li>
   <li>on exécute la deuxième ligne. Elle s’exécute ainsi :
     <ol>
       <li>on commence à droite du <code class="language-plaintext highlighter-rouge">=</code> : on crée un objet de type entier</li>
       <li>on crée le nom <code class="language-plaintext highlighter-rouge">y</code> dans l’espace de nom courant (ici <code class="language-plaintext highlighter-rouge">global</code>) et on lui affecte l’objet.</li>
+      <li><img src="/cours_informatique/assets/cours/algorithmie/poo/cas-1-3.png" alt="cas-1-3" style="margin: auto;display: block;"></li>
     </ol>
   </li>
 </ol>
@@ -351,17 +364,27 @@
 <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span>
 </code></pre></div></div>
 
+<p>Exécutons le ligne à ligne :</p>
+
 <ol>
+  <li>avant l’exécution de la première ligne :
+    <ol>
+      <li>on a un unique espace de nom (<code class="language-plaintext highlighter-rouge">global</code>) qui est l’espace courant (en vert sur la figure)</li>
+      <li><img src="/cours_informatique/assets/cours/algorithmie/poo/cas-1-1.png" alt="cas-1-1" style="margin: auto;display: block;"></li>
+    </ol>
+  </li>
   <li>on exécute la première ligne. Elle s’exécute ainsi :
     <ol>
       <li>on commence à droite du <code class="language-plaintext highlighter-rouge">=</code> : on crée un objet de type entier</li>
       <li>on crée le nom <code class="language-plaintext highlighter-rouge">x</code> dans l’espace de nom courant (ici <code class="language-plaintext highlighter-rouge">global</code>) et on lui affecte l’objet.</li>
+      <li><img src="/cours_informatique/assets/cours/algorithmie/poo/cas-1-2.png" alt="cas-1-2" style="margin: auto;display: block;"></li>
     </ol>
   </li>
   <li>on exécute la deuxième ligne. Elle s’exécute ainsi :
     <ol>
       <li>on commence à droite du <code class="language-plaintext highlighter-rouge">=</code> : on crée un objet de type entier</li>
       <li>on crée le nom <code class="language-plaintext highlighter-rouge">x</code> dans l’espace de nom courant (ici <code class="language-plaintext highlighter-rouge">global</code>) et on lui affecte l’objet.</li>
+      <li><img src="/cours_informatique/assets/cours/algorithmie/poo/cas-2-1.png" alt="cas-2-1" style="margin: auto;display: block;"></li>
     </ol>
   </li>
 </ol>
@@ -372,7 +395,11 @@
   <p>Dans un espace de noms, chaque nom est différent. Réutiliser le même nom remplace le nom précédent.</p>
 </blockquote>
 
-<p>Le programme a créé 2 objets (un entier valant 1 et un entier valant 3), mais à la fin de la deuxième ligne du programme, seul l’entier valant 3 a un nom (<code class="language-plaintext highlighter-rouge">x</code>) : il est impossible d’accéder à l’entier valant <code class="language-plaintext highlighter-rouge">1</code> : python le détruit.</p>
+<p>Le programme a créé <strong>2 objets</strong> (un entier valant 1 et un entier valant 3), mais à la fin de la deuxième ligne du programme, seul l’entier valant 3 a un nom (<code class="language-plaintext highlighter-rouge">x</code>).</p>
+
+<p>Comme il est maintenant impossible d’accéder à l’entier valant <code class="language-plaintext highlighter-rouge">1</code> : python le détruit.</p>
+
+<p><img src="/cours_informatique/assets/cours/algorithmie/poo/cas-2-2.png" alt="cas-2-2" style="margin: auto;display: block;"></p>
 
 <blockquote class="note">
   <p>Tout objet qui n’est plus référencé par une variable est détruit.</p>
@@ -384,17 +411,27 @@
 <span class="n">y</span> <span class="o">=</span> <span class="n">x</span>
 </code></pre></div></div>
 
+<p>Exécutons le ligne à ligne :</p>
+
 <ol>
+  <li>avant l’exécution de la première ligne :
+    <ol>
+      <li>on a un unique espace de nom (<code class="language-plaintext highlighter-rouge">global</code>) qui est l’espace courant (en vert sur la figure)</li>
+      <li><img src="/cours_informatique/assets/cours/algorithmie/poo/cas-1-1.png" alt="cas-1-1" style="margin: auto;display: block;"></li>
+    </ol>
+  </li>
   <li>on exécute la première ligne. Elle s’exécute ainsi :
     <ol>
       <li>on commence à droite du <code class="language-plaintext highlighter-rouge">=</code> : on crée un objet de type entier</li>
       <li>on crée le nom <code class="language-plaintext highlighter-rouge">x</code> dans l’espace de nom courant (ici <code class="language-plaintext highlighter-rouge">global</code>) et on lui affecte l’objet.</li>
+      <li><img src="/cours_informatique/assets/cours/algorithmie/poo/cas-1-2.png" alt="cas-1-2" style="margin: auto;display: block;"></li>
     </ol>
   </li>
   <li>on exécute la deuxième ligne. Elle s’exécute ainsi :
     <ol>
       <li>on commence à droite du <code class="language-plaintext highlighter-rouge">=</code> : on cherche le nom <code class="language-plaintext highlighter-rouge">x</code> dans l’espace de nom courant. On le trouve et on lui substitue son objet (un entier valant 1)</li>
       <li>on crée le nom <code class="language-plaintext highlighter-rouge">x</code> dans l’espace de nom courant (ici <code class="language-plaintext highlighter-rouge">global</code>) et on lui affecte l’objet.</li>
+      <li><img src="/cours_informatique/assets/cours/algorithmie/poo/cas-3-1.png" alt="cas-3-1" style="margin: auto;display: block;"></li>
     </ol>
   </li>
 </ol>
@@ -469,30 +506,66 @@
 </pre></td>
 </tr></tbody></table></code></pre></figure>
 
-<p>Lorsque le programme s’exécute, il effectue les opérations suivantes :</p>
+<p>Exécutons le ligne à ligne :</p>
 
 <ol>
-  <li>l’espace de nom <code class="language-plaintext highlighter-rouge">global</code> est créé</li>
-  <li>la ligne 2 définit une fonction de nom <code class="language-plaintext highlighter-rouge">f</code> qui est ajouté à l’espace de nom courant (ici c’est global)</li>
-  <li>on passe directement à la ligne 5 puisque les ligne 3 et 4 sont le contenu de la fonction. Cette ligne crée un objet entier (valant 2) et l’affecte au nom <code class="language-plaintext highlighter-rouge">i</code>.</li>
-  <li>la ligne 6 est encore une affectation. On commence par trouver l’objet à droite du <code class="language-plaintext highlighter-rouge">=</code> c’est le résultat de <code class="language-plaintext highlighter-rouge">f(i)</code>. Il faut donc exécuter lafonction <code class="language-plaintext highlighter-rouge">f</code> pour connaître cet objet :
+  <li>avant l’exécution de la première ligne :
     <ol>
-      <li>on cherche l’objet associé à <code class="language-plaintext highlighter-rouge">i</code> qui sera le (premier) paramère de la fonction</li>
-      <li>on crée un espace de nom qui devient l’espace de nom courant</li>
-      <li>on affecte le premier paramètre de <code class="language-plaintext highlighter-rouge">f</code> au nom <code class="language-plaintext highlighter-rouge">x</code>(le nom du premeir paramètre de <code class="language-plaintext highlighter-rouge">f</code>lors de sa définition)</li>
-      <li>on exécute la ligne 2 qui est la première ligne de la fonction <code class="language-plaintext highlighter-rouge">f</code> : on crée un objet qui entier (valant 4) qui est le résulat de l’opération à droite du <code class="language-plaintext highlighter-rouge">=</code> (notez que le nom <code class="language-plaintext highlighter-rouge">x</code> est bien défini dans l’espace de nom courant) et on l’affecte au nom <code class="language-plaintext highlighter-rouge">i</code> dans l’espace de nom courant</li>
-      <li>on exécute la ligne 3 : on rend l’objet résultant de l’opération somme (un entier valant 7)</li>
-      <li>l’espace de nom courant est détruit</li>
-      <li>la droite du signe <code class="language-plaintext highlighter-rouge">=</code> de la ligne 6 est trouvée (c’est un entier valant 6) et il est affecté à la variable <code class="language-plaintext highlighter-rouge">x</code> de l’espace de nom courant (qui est à ouveau <code class="language-plaintext highlighter-rouge">global</code>)</li>
+      <li>on a un unique espace de nom (<code class="language-plaintext highlighter-rouge">global</code>) qui est l’espace courant (en vert sur la figure)</li>
+      <li><img src="/cours_informatique/assets/cours/algorithmie/poo/cas-1-1.png" alt="cas-1-1" style="margin: auto;display: block;"></li>
+    </ol>
+  </li>
+  <li>la ligne 2 définit une fonction de nom <code class="language-plaintext highlighter-rouge">f</code> qui est ajouté à l’espace de nom courant.
+    <ol>
+      <li><img src="/cours_informatique/assets/cours/algorithmie/poo/cas-4-1.png" alt="cas-4-1" style="margin: auto;display: block;"></li>
+    </ol>
+  </li>
+  <li>on passe directement à la ligne 5 puisque les lignes 3 et 4 sont le contenu de la fonction.
+    <ol>
+      <li>Cette ligne crée un objet entier (valant 2) et l’affecte au nom <code class="language-plaintext highlighter-rouge">i</code>.</li>
+      <li><img src="/cours_informatique/assets/cours/algorithmie/poo/cas-4-2.png" alt="cas-4-2" style="margin: auto;display: block;"></li>
+    </ol>
+  </li>
+  <li>la ligne 6 est encore une affectation. On commence par trouver l’objet à droite du <code class="language-plaintext highlighter-rouge">=</code> c’est le résultat de <code class="language-plaintext highlighter-rouge">f(i)</code>. Il faut donc exécuter la fonction <code class="language-plaintext highlighter-rouge">f</code> pour connaître cet objet :
+    <ol>
+      <li>on cherche l’objet associé à <code class="language-plaintext highlighter-rouge">i</code> qui sera le (premier) paramètre de la fonction</li>
+      <li>on crée un espace de nom qui devient l’espace de nom courant :
+        <ol>
+          <li>l’ancien espace de nom courant devient son parent</li>
+          <li><img src="/cours_informatique/assets/cours/algorithmie/poo/cas-4-3.png" alt="cas-4-3" style="margin: auto;display: block;"></li>
+        </ol>
+      </li>
+      <li>on affecte le premier paramètre de <code class="language-plaintext highlighter-rouge">f</code> au nom <code class="language-plaintext highlighter-rouge">x</code>(le nom du premier paramètre de <code class="language-plaintext highlighter-rouge">f</code> lors de sa définition)
+        <ol>
+          <li>les nouveaux noms sont <strong>toujours</strong> créés dans l’espace de nom courant</li>
+          <li><img src="/cours_informatique/assets/cours/algorithmie/poo/cas-4-4.png" alt="cas-4-4" style="margin: auto;display: block;"></li>
+        </ol>
+      </li>
+      <li>on exécute la ligne 2 qui est la première ligne de la fonction <code class="language-plaintext highlighter-rouge">f</code> :
+        <ol>
+          <li>on crée un objet entier (valant 4) qui est le résultat de l’opération à droite du <code class="language-plaintext highlighter-rouge">=</code> (notez que le nom <code class="language-plaintext highlighter-rouge">x</code> est bien défini dans l’espace de nom courant) et on l’affecte au nom <code class="language-plaintext highlighter-rouge">i</code> dans l’espace de nom courant</li>
+          <li><img src="/cours_informatique/assets/cours/algorithmie/poo/cas-4-5.png" alt="cas-4-5" style="margin: auto;display: block;"></li>
+        </ol>
+      </li>
+      <li>on exécute la ligne 3 :
+        <ol>
+          <li>on crée l’objet résultant de l’opération somme (un entier valant 7)</li>
+          <li>la fonction est terminée, son espace de nom courant est détruit</li>
+          <li>l’espace de nom courant devient le parent de l’espace de nom détruit</li>
+          <li><img src="/cours_informatique/assets/cours/algorithmie/poo/cas-4-6.png" alt="cas-4-6" style="margin: auto;display: block;"></li>
+          <li>on rend l’objet résultat de la fonction</li>
+        </ol>
+      </li>
+      <li>la droite du signe <code class="language-plaintext highlighter-rouge">=</code> de la ligne 6 est trouvée (c’est un entier valant 6) et il est affecté à la variable <code class="language-plaintext highlighter-rouge">x</code> de l’espace de nom courant (qui est à nouveau <code class="language-plaintext highlighter-rouge">global</code>)
+        <ol>
+          <li><img src="/cours_informatique/assets/cours/algorithmie/poo/cas-4-7.png" alt="cas-4-7" style="margin: auto;display: block;"></li>
+          <li>les objets sans nom sont détruits</li>
+          <li><img src="/cours_informatique/assets/cours/algorithmie/poo/cas-4-8.png" alt="cas-4-8" style="margin: auto;display: block;"></li>
+        </ol>
+      </li>
     </ol>
   </li>
 </ol>
-
-<p>Notez que l’objet créé ligne 2 lors de la création de la fonction n’a plus de nom dans aucun espace de nom : il n’y a plus aucun moyen d’y accéder.</p>
-
-<blockquote class="note">
-  <p>python détruit automatiquement tout objet qui n’a plus de nom</p>
-</blockquote>
 
 <h4 id="espaces-de-noms-parent">espaces de noms parent</h4>
 
@@ -529,48 +602,71 @@
 </pre></td>
 </tr></tbody></table></code></pre></figure>
 
-<p>Lors de l’exécution de la fonction <code class="language-plaintext highlighter-rouge">f</code> (instruction de la ligne 7), on cherche la variable nommée <code class="language-plaintext highlighter-rouge">C</code>. Elle n’exite pas dans l’espace de nom courant (celui de <code class="language-plaintext highlighter-rouge">f</code>), mais dans l’espace de nom <code class="language-plaintext highlighter-rouge">global</code> qui est son parent : le programme ne produit donc pas une erreur.</p>
+<p>Lors de l’exécution de la fonction <code class="language-plaintext highlighter-rouge">f</code> (instruction de la ligne 7), sa première ligne cherche la variable nommée <code class="language-plaintext highlighter-rouge">C</code>. On se trouve dans cet état là :</p>
+
+<p><img src="/cours_informatique/assets/cours/algorithmie/poo/cas-5-1.png" alt="cas-5-1" style="margin: auto;display: block;"></p>
+
+<p>La variable <code class="language-plaintext highlighter-rouge">C</code> n’existe pas dans l’espace de nom courant (celui de <code class="language-plaintext highlighter-rouge">f</code>), le programme va alors cherche dans l’espace de nom parent s’il existe. Ici c’est le cas puisque l’espace parent de <code class="language-plaintext highlighter-rouge">f</code> est <code class="language-plaintext highlighter-rouge">global</code> dans lequel <code class="language-plaintext highlighter-rouge">C</code> est défini : le programme ne produit donc pas une erreur et trouve le bon objet.</p>
 
 <blockquote class="note">
-  <p>Les variables sont <strong>toujours</strong> crées dans l’espace d nom courant, mais leur recherche remonte de parent en parent jusqu’à trouver le nom.</p>
+  <p>Les variables sont <strong>toujours</strong> crées dans l’espace d nom courant, mais leur recherche remonte de parent en parent jusqu’à la trouver.</p>
 </blockquote>
 
 <h3 id="import">import</h3>
 
-<p>Lorsque l’on importe un fichier, un espace de nom est créé.</p>
+<p>Lorsque l’on importe un fichier, un espace de nom est créé et le fichier entier est lu. Lors de sa lecture, les noms définis sont placés dans cet espace.</p>
 
-<p>exemple d’import : <code class="language-plaintext highlighter-rouge">import random</code> (<code class="language-plaintext highlighter-rouge">vars(random)</code>) et <code class="language-plaintext highlighter-rouge">from random import randint</code>(pas importé)</p>
+<blockquote class="note">
+  <p>Les modules possèdent un espace de nom qui contient les variables qui y sont définies</p>
+</blockquote>
 
-<p>vars.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">log</span>
 
-<p>variable dans l’import utilisé dans une fonction de l’import.</p>
+<span class="k">print</span><span class="p">(</span><span class="n">log</span><span class="p">(</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">42</span><span class="p">)))</span>
+</code></pre></div></div>
+
+<p>Avant l’exécution de l’instruction <code class="language-plaintext highlighter-rouge">print</code> on est dans cet état :</p>
+
+<p><img src="/cours_informatique/assets/cours/algorithmie/poo/cas-4-8.png" alt="cas-6-1" style="margin: auto;display: block;"></p>
+
+<p>On accède à l’espace de nom du module par la notation pointée : <code class="language-plaintext highlighter-rouge">random.randint</code> signifie le nom <code class="language-plaintext highlighter-rouge">randint</code> dans l’espace de nom de <code class="language-plaintext highlighter-rouge">random</code>.</p>
+
+<blockquote>
+  <p>notez que le module <code class="language-plaintext highlighter-rouge">math</code> n’a plus d’espace de nom associé puisque l’on a juste <em>récupéré</em> un nom qui y est défini.</p>
+</blockquote>
 
 <h2 id="notation-pointée">notation pointée</h2>
 
-<p>Beaucoup de choses ont des espaces de noms. ON a vu les import, une fonction lorsqu’elle s’exécute, mais tout objet et types aussi :</p>
+<p>En python, (pratiquement) tout a un espace de nom. On s’en sert dès qu’on utilise la notation pointée.</p>
 
-<p>$A.B$ : cherche $B$ dans l’espace de nom de $A$</p>
+<p>on l’a vue pour les modules, mais c’est aussi vrai pour les objets. En considérant le code suivant :</p>
 
 <pre><code class="language-pyhton">c = "coucou"
 c2 = c.uppercase()
 </code></pre>
 
-<p>$B$ aussi appelé attribut de $A$ (dans l’espace de nom de $A$)</p>
+<p>Le nom <code class="language-plaintext highlighter-rouge">uppercase</code> est défini dans l’espace de nom de la chaine de caractère <code class="language-plaintext highlighter-rouge">"coucou"</code> (en fait, c’est dans sa classe, mais on le verra précisément plus tard).</p>
 
-<h2 id="portée-dune-variable">portée d’une variable</h2>
+<p>C’est une notation <strong>très puissante</strong> ! Il ne faut pas avoir peur de chainer ces notations. ON appelle cela des chaînages :</p>
 
-<p>lire : on remonte
-écrire : dans l’espace de nom courant</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="p">.</span><span class="n">b</span><span class="p">.</span><span class="n">c</span><span class="p">.</span><span class="n">d</span><span class="p">()</span>
+</code></pre></div></div>
 
-<p>modifier un objet, où on veut du moment qu’on a l’objet.</p>
+<p>Signifie :</p>
 
-<p>Ex : modificaiton d’un objet retrouvé dans l’espace de nom global</p>
-
-<p>attention : on ne fait pas ca si on peut faire autrement.</p>
-
-<h2 id="références">références</h2>
-
-<p><a href="https://sebastianraschka.com/Articles/2014_python_scope_and_namespaces.html">https://sebastianraschka.com/Articles/2014_python_scope_and_namespaces.html</a></p>
+<ol>
+  <li>On exécute <code class="language-plaintext highlighter-rouge">d</code> qui est dans l’espace de nom de <code class="language-plaintext highlighter-rouge">a.b.c</code>
+</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">c</code> est dans l’espace de nom de <code class="language-plaintext highlighter-rouge">a.b</code>
+</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">b</code> est dans l’espace de nom de <code class="language-plaintext highlighter-rouge">a</code>
+</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">a</code> est dans l’espace de noms courant.</li>
+</ol>
 
   </div>
 

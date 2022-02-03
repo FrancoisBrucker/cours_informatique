@@ -67,6 +67,10 @@
   <div class="post-content">
     <blockquote class="chemin">
   <p><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/">Théorie et pratiques algorithmique</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/">coder</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/programmation-objet/">programmation objet</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/programmation-objet/classes-et-objets.html">classes et objets</a></p>
+
+  <ul>
+    <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/programmation-objet/memoire-et-espace-noms.html">mémoire et espace de noms</a></li>
+  </ul>
 </blockquote>
 
 <p>Le but de la programmation objet n’est pas d’utiliser des concepts plus ou moins fumeux (classes abstraites, encapsulation et polymorphismes) mais d’écrire du code :</p>
@@ -89,13 +93,17 @@
 
 </blockquote>
 
-<p>Un objet, n’est donc pas isolé, il partage ses fonctionnalités avec tous les objets de sa <em>classe</em>. Pour s’y retrouver entre, classes, objets méthode et attribut et trouver qui appartient à qui, python utilise les <em>namespaces</em> (espaces de noms). Cela lui permet le même code pour plusieurs objets.</p>
+<p>Un objet, n’est donc pas isolé, il partage ses fonctionnalités avec tous les objets de sa <em>classe</em>. Pour s’y retrouver entre, classes, objets méthode et attribut et trouver qui appartient à qui, python utilise les <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/programmation-objet/memoire-et-espace-noms.html#espace-noms">espaces de noms</a> (<em>namespaces</em>). Cela lui permet de réutiliser le même code pour plusieurs objets.</p>
 
 <h2 id="classes-et-objets">classes et objets</h2>
 
 <p>Lorsque l’on écrit du code python, on ne fait que manipuler des objets. Les entier, les chaines de caractères et même les fonctions peuvent être considérées comme des objets.</p>
 
-<p>De façon générale, on peut considérer un <strong>objet</strong> comme étant <em>une structure de données</em> sur laquelle on peut <em>effectuer des opérations</em>. Pour pouvoir facilement créer une structure particulière et donner un moyen simple d’effectuer les opérations sur celle-ci, on utilise des <strong>classes</strong>.</p>
+<p>De façon générale, on peut considérer que :</p>
+
+<blockquote class="note">
+  <p>un <strong>objet</strong> est <strong>une structure de données</strong> sur laquelle on peut <em>effectuer des opérations</em>. Pour pouvoir facilement créer une structure particulière et donner un moyen simple d’effectuer les opérations sur celle-ci, on utilise des <strong>classes</strong> comme patron de ces objets.</p>
+</blockquote>
 
 <p>Pour résumer, une classe :</p>
 
@@ -120,17 +128,24 @@
 
 <p>On cherchera <code class="language-plaintext highlighter-rouge">méthode</code> définie pour l’<code class="language-plaintext highlighter-rouge">objet</code>.</p>
 
+<blockquote>
+  <p>Le mécanisme pour réaliser ceci utilise les espaces de noms : on cherche le nom <code class="language-plaintext highlighter-rouge">méthode</code> défini dans l’espace de nom de <code class="language-plaintext highlighter-rouge">objet</code></p>
+</blockquote>
+
 <h3 id="but">but</h3>
 
+<p>La programmation objet n’a pas pour but de révolutionner votre façon de programmer. Elle permet juste de bien mettre en œuvre les paradigmes de développement que l’on a vu jusqu’à présent. Il est fortement conseiller de <em>coder objet</em> car :</p>
+
 <ul>
-  <li>factorisation du code ! c’est bien</li>
-  <li>lisibilité avec la notation <code class="language-plaintext highlighter-rouge">.</code>
-</li>
+  <li>cela favorise la factorisation du code (<a href="https://fr.wikipedia.org/wiki/Ne_vous_r%C3%A9p%C3%A9tez_pas">on ne se répète pas</a>) : on ne défini ses méthodes qu’une seule fois dans les classes</li>
+  <li>lisibilité avec la notation <code class="language-plaintext highlighter-rouge">.</code> : on sait clairement à qui s’applique telle ou telle méthode</li>
   <li>compartimentation du code : chaque partie du code et chaque opération est compartimentée, ce qui permet de les tester et des améliorer indépendamment du reste du code.</li>
   <li>plutôt que de créer un gros programme complexe, on crée plein de petits programmes indépendants (les objets) qui interagissent entre eux.</li>
 </ul>
 
-<p>Ces principes sont mis en ouvre de façon différentes selon les langages mais on retrouvera toujours ces notions.</p>
+<blockquote>
+  <p>ces principes sont mis en œuvre de façon différentes selon les langages mais on retrouvera toujours ces notions.</p>
+</blockquote>
 
 <h3 id="exemple-dobjets-en-python">exemple d’objets en python</h3>
 
@@ -152,17 +167,19 @@
 
 <p>La notation pointée permet de dire que c’est la méthode à droite du <code class="language-plaintext highlighter-rouge">.</code> que l’on cherche dans l’objet à gauche du point.</p>
 
-<blockquote>
-  <p>En python, ce la se fait en cherchant le nom <code class="language-plaintext highlighter-rouge">upper</code> dans le <em>namespace</em> (espace de nom) de l’objet à gauche du point.</p>
+<blockquote class="a-faire">
+  <p>Le code suivant produit une erreur. Pourquoi ?</p>
 </blockquote>
 
-<p>Le code suivant produit donc une erreur car la fonction <code class="language-plaintext highlighter-rouge">upper</code>n’existe pas ! C’est la méthode définie dans la classe <code class="language-plaintext highlighter-rouge">str</code> qui s’appelle <code class="language-plaintext highlighter-rouge">upper</code> qui existe…</p>
-
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; upper("coucou")
-Traceback (most recent call last):
-  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
-NameError: name 'upper' is not defined
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">upper</span><span class="p">(</span><span class="s">"coucou"</span><span class="p">)</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="nb">NameError</span><span class="p">:</span> <span class="n">name</span> <span class="s">'upper'</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">defined</span>
 </code></pre></div></div>
+
+<details><summary>solution</summary><div>
+<p>C’est la méthode définie dans la classe <code class="language-plaintext highlighter-rouge">str</code> qui s’appelle <code class="language-plaintext highlighter-rouge">upper</code> qui existe…</p>
+</div></details>
 
 <p>Ce qui fait que le résultat est différent lorsque l’on applique la méthode <code class="language-plaintext highlighter-rouge">upper</code> à <code class="language-plaintext highlighter-rouge">"bonjour"</code> et <code class="language-plaintext highlighter-rouge">"toi"</code> est que ces deux objets, bien que de la même classe, sont différents : dan l’un il y a les caractère “bonjour”, dans l’autres les caractères “toi”.</p>
 
@@ -190,7 +207,7 @@ NameError: name 'upper' is not defined
 </ol>
 
 <blockquote>
-  <p>Remarquez que l’opération <code class="language-plaintext highlighter-rouge">+</code> n’est pas identique pour <code class="language-plaintext highlighter-rouge">1 + 2</code> et <code class="language-plaintext highlighter-rouge">1.0 + 2</code>. Dans le premier cas c’est l’addition définie dans <code class="language-plaintext highlighter-rouge">int</code> qui est utilisé, dans le second cas c’est celle définie dans <code class="language-plaintext highlighter-rouge">float</code> qui est utilisée.</p>
+  <p>Remarquez que l’opération <code class="language-plaintext highlighter-rouge">+</code> n’est pas identique pour <code class="language-plaintext highlighter-rouge">1 + 2</code> et <code class="language-plaintext highlighter-rouge">1.0 + 2</code>. Dans le premier cas c’est l’addition définie dans <code class="language-plaintext highlighter-rouge">int</code> qui est utilisé, dans le second cas c’est celle définie dans <code class="language-plaintext highlighter-rouge">float</code>.</p>
 </blockquote>
 
 <h3 id="créer-des-objets">créer des objets</h3>
@@ -215,28 +232,19 @@ NameError: name 'upper' is not defined
 
 <h2 id="outils">outils</h2>
 
-<p>On va utiliser un outil <em>papier</em> pour écrire nos classe (l’<a href="https://fr.wikipedia.org/wiki/UML_(informatique)">uml</a>) et un outil clavier (le python).</p>
+<p>On va utiliser un outil <em>papier</em> (l’<a href="https://fr.wikipedia.org/wiki/UML_(informatique)">uml</a>) et un outil clavier (le python) pour écrire nos classes.</p>
 
 <h3 id="uml">uml</h3>
 
 <p>L’uml est une façon de représenter des objets et des classes. Nous allons l’utiliser pour décrire les classes que nous allons créer.</p>
 
-<blockquote>
-  <p><a href="https://www.sparxsystems.fr/resources/tutorials/uml/datamodel.html">un tutoriel uml</a> pour comprendre sa notation et son utilité.</p>
+<blockquote class="note">
+  <p>Vous pouvez suivre ce petit <a href="https://www.sparxsystems.fr/resources/tutorials/uml/datamodel.html">tutoriel uml</a> pour comprendre sa notation et son utilité.</p>
 </blockquote>
 
-<p>L’uml peut être très compliqué. Nous allons uniquement l’utiliser ici comme une représentation synthétique d’une classe/objet. Vous le verrez dans les exemples ci-dessous mais, en gros, une classe en uml c’est :</p>
+<p>L’uml peut être très compliqué. Nous allons uniquement l’utiliser ici comme une représentation synthétique d’une classe/objet. Vous le verrez dans les exemples ci-dessous mais, en gros, une classe en uml c’est le diagramme :</p>
 
-<pre><code class="language-uml">-----------------------
-| Nom de la Classe    |
-|---------------------|
-| Attributs : propre  |
-| à chaque objet      |
-|---------------------|
-| méthodes : commun   |
-| à tous les objets   |
------------------------
-</code></pre>
+<p><img src="/cours_informatique/assets/cours/algorithmie/poo/classes-1.png" alt="une classe uml" style="margin: auto;display: block;"></p>
 
 <ul>
   <li>pour chaque attribut on pourra préciser le <em>type</em> (entier, chaine de caractère, une classe particulière d’objet, …) si c’est important</li>
@@ -250,6 +258,8 @@ NameError: name 'upper' is not defined
 <blockquote>
   <p>En python, beaucoup de choses sont des <a href="https://en.wikipedia.org/wiki/Convention_over_configuration">conventions</a> (variable privée, premier nom est self, …) mais tout le monde s’y tient car la lecture du code en devient aisée.</p>
 </blockquote>
+
+<p>N’hésitez pas à jeter un coup d’œil au <a href="https://docs.python.org/3/tutorial/classes.html">tuto python sur les classes de python</a>. Ce cours est là pour vous montrer tout ce qu’il y a dedans, à part (peut-être) la partie sur l’héritage et les itérateurs.</p>
 
 <h4 id="constructeur">constructeur</h4>
 
@@ -267,17 +277,7 @@ NameError: name 'upper' is not defined
 
 <h4 id="espace-de-nom-namespaces">espace de nom (namespaces)</h4>
 
-<p>La gestion des noms en python se fait via des <a href="http://sebastianraschka.com/Articles/2014_python_scope_and_namespaces.html">espaces de noms</a>. L’ordre dans lequel ces noms sons cherché pour être associé à un objet est logique et se règle en sachant quel namespace est utilisé.</p>
-
-<p>On fera des exercices pour travailler avec les différents namespaces.</p>
-
-<h4 id="ressource">ressource</h4>
-
-<ul>
-  <li>Le <a href="https://docs.python.org/3/tutorial/classes.html">tuto python sur les classes de python</a>. Ce cours est là pour vous montrer tout ce qu’il y a dedans, à part (peut-être) la partie sur l’héritage et les itérateurs.</li>
-  <li>les <a href="https://docs.python.org/3/tutorial/classes.html#python-scopes-and-namespaces">namespaces</a>
-</li>
-</ul>
+<p>La gestion des noms en python se fait via des <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/programmation-objet/memoire-et-espace-noms.html#espace-noms">espaces de noms</a>. L’ordre dans lequel ces noms sons cherché pour être associé à un objet est logique et se règle en sachant quel namespace est utilisé.</p>
 
 <h2 id="premier-exemple--le-compteur">Premier exemple : le Compteur</h2>
 
@@ -289,7 +289,26 @@ NameError: name 'upper' is not defined
 
 <p>Cette modélisation doit être capable de répondre au code suivant, dans le fichier <em>“main.py”</em> :</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">compteur</span> <span class="kn">import</span> <span class="n">Compteur</span>
+<style>
+    table, td, tr, th, pre {
+        padding:0;
+        margin:0;
+        border:none
+    }
+</style>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td>
+<td class="code"><pre><span class="kn">from</span> <span class="nn">compteur</span> <span class="kn">import</span> <span class="n">Compteur</span>
     
 <span class="n">c1</span> <span class="o">=</span> <span class="n">Compteur</span><span class="p">()</span>
 <span class="n">c2</span> <span class="o">=</span> <span class="n">Compteur</span><span class="p">()</span>
@@ -298,7 +317,8 @@ NameError: name 'upper' is not defined
 <span class="n">c1</span><span class="p">.</span><span class="n">ajoute</span><span class="p">()</span>
 
 <span class="k">print</span><span class="p">(</span><span class="n">c2</span><span class="p">.</span><span class="n">donne_valeur</span><span class="p">())</span>
-</code></pre></div></div>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
 
 <h4 id="analyse-du-programme">analyse du programme</h4>
 
@@ -356,10 +376,10 @@ compteur. Les fonctionnalités sont :</p>
 
 <p>Ce qui donne le diagramme uml du compteur :</p>
 
-<p><img src="/cours_informatique/assets/cours/developpement/programmation-objet/counter_init.png" alt="compteur"></p>
+<p><img src="/cours_informatique/assets/cours/algorithmie/poo/classes-2.png" alt="compteur" style="margin: auto;display: block;"></p>
 
 <blockquote>
-  <p>On a utilisé ici un <code class="language-plaintext highlighter-rouge">_</code> en début de nom de la variable <code class="language-plaintext highlighter-rouge">value</code> pour signifier qu’elle est <em>privée</em>, c’est à dire que personne d’autre n’a le droit de l’utiliser à part l’objet. Cette convention n’est pas indispensable à utiliser car il est parfois un peut flou de savoir si telle ou telle attribut et <em>privé</em> ou <em>publique</em>…</p>
+  <p>On a utilisé ici un <code class="language-plaintext highlighter-rouge">_</code> en début de nom de la variable <code class="language-plaintext highlighter-rouge">valeur</code> pour signifier qu’elle est <em>privée</em>, c’est à dire que personne d’autre n’a le droit de l’utiliser à part l’objet. Cette convention n’est pas indispensable à utiliser car il est parfois un peut flou de savoir si telle ou telle attribut et <em>privé</em> ou <em>publique</em>…</p>
 </blockquote>
 
 <h3 id="code-python">code python</h3>
@@ -368,13 +388,13 @@ compteur. Les fonctionnalités sont :</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Compteur</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">valeur</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_valeur</span> <span class="o">=</span> <span class="mi">0</span>
            
     <span class="k">def</span> <span class="nf">ajoute</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">valeur</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">valeur</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_valeur</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">_valeur</span> <span class="o">+</span> <span class="mi">1</span>
     
     <span class="k">def</span> <span class="nf">donne_valeur</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">valeur</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">_valeur</span>
 </code></pre></div></div>
 
 <p>La définition d’une classe est un bloc python :</p>
@@ -403,7 +423,9 @@ class &lt;nom de la classe&gt;:
 </li>
 </ul>
 
-<p>En python, lorsque l’on définit une classe, le 1er paramètre de chaque méthode est <strong>toujours</strong> <code class="language-plaintext highlighter-rouge">self</code>. A l’exécution, python donnera à ce paramètre l’objet qui appelle la méthode, on ne le vois pas lorsque l’on écrit le code.</p>
+<blockquote class="note">
+  <p>En python, lorsque l’on définit une méthode d’un classe, le 1er paramètre de chaque méthode est <strong>toujours</strong> <code class="language-plaintext highlighter-rouge">self</code>. A l’exécution, python donnera à ce paramètre l’objet qui appelle la méthode, on ne le voit pas lorsque l’on écrit le code.</p>
+</blockquote>
 
 <p>Par exemple dans le code la ligne <code class="language-plaintext highlighter-rouge">c1.ajoute()</code> sera transformée par python en : <code class="language-plaintext highlighter-rouge">Compteur.ajoute(c1)</code> qui peut se lire : on exécute la fonction <code class="language-plaintext highlighter-rouge">ajoute</code> de l’espace de nom du bloc <code class="language-plaintext highlighter-rouge">Compteur</code> avec comme paramètre <code class="language-plaintext highlighter-rouge">c1</code>.</p>
 
@@ -416,54 +438,62 @@ moins lisible (tout le monde utilise le nom <code class="language-plaintext high
 
 <h3 id="exécution-du-code">exécution du code</h3>
 
-<p>En python, tout peut être vu comme un <em>namespace</em> particulier, un endroit où sont rangés des noms : noms de variables, de fonctions, de classes, etc.</p>
-
-<p>Les namespaces possibles sont :</p>
-
-<ul>
-  <li>le namespace global</li>
-  <li>la classe, ici <code class="language-plaintext highlighter-rouge">Compteur</code>. Contient tout ce qui est défini dans la classe comme les méthodes ou les constantes.</li>
-  <li>l’objet : ici deux objets <code class="language-plaintext highlighter-rouge">c1</code> et <code class="language-plaintext highlighter-rouge">c2</code> de la classe <code class="language-plaintext highlighter-rouge">Compteur</code>. Chaque objet contient tout ce qui est défini pour l’objet en particulier (par exemple dans le <code class="language-plaintext highlighter-rouge">__init__</code> quand l’objet est appelé self)</li>
-  <li>les méthodes : ce qui n’existe que de l’exécution de la méthode à la fin de son exécution</li>
-</ul>
-
-<p>Plusieurs namespaces peuvent cohabiter en même temps, pour connaître celui qui va être utilisé, python va du <a href="http://sebastianraschka.com/Articles/2014_python_scope_and_namespaces.html">local au global</a>. S’il n’y a pas d’inclusion (comme une fonction dans une fonction), cela donne :</p>
-
-<ol>
-  <li>fonction (inclut les méthodes)</li>
-  <li>objet</li>
-  <li>classe</li>
-  <li>global</li>
-  <li>built-in (les mots du langage python)</li>
-</ol>
-
 <blockquote>
-  <p>S’il y a inclusion de namespaces, on suit la règle <a href="http://sebastianraschka.com/Articles/2014_python_scope_and_namespaces.html#3-legb---local-enclosed-global-built-in">LEGB</a></p>
+  <p>Lorsque l’on définit une classe, python lui associe un espace de noms. Les différents noms définit dans la classes y seront consignés.
+{ .note}</p>
 </blockquote>
 
-<p>Pour le code de <em>“main.py”</em>, ligne à ligne :</p>
+<p>Dans l’exemple du compteur, lorsque le fichier <em>“main.py”</em> importe le fichier <em>“compteur.py”</em>, la classe <code class="language-plaintext highlighter-rouge">Compteur</code> y est définie. Dans son namespace seront alors placés les noms :</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">__init__</code></li>
+  <li><code class="language-plaintext highlighter-rouge">ajoute</code></li>
+  <li><code class="language-plaintext highlighter-rouge">donne_valeur</code></li>
+</ul>
+
+<p>Qui correspondent aux noms ds 3 méthodes définies dans la classe.</p>
+
+<p>De même :</p>
+
+<blockquote class="note">
+  <p>Lorsque l’on crée un objet, python lui associe un espace de noms.</p>
+
+  <p>Son espace de nom parent est celui de sa classe.</p>
+</blockquote>
+
+<p>L’espace de noms de l’objet est important, il est utilisé à chaque notation pointée. Par exemple dans la méthode <code class="language-plaintext highlighter-rouge">__init__</code>, la ligne <code class="language-plaintext highlighter-rouge">self._valeur = 0</code> crée un objet entier (valant 0) et l’affecte au nom <code class="language-plaintext highlighter-rouge">_valeur</code> dans l’espace de nom de l’objet nommé <code class="language-plaintext highlighter-rouge">self</code>.</p>
+
+<p>Reprenons le code de <em>“main.py”</em>, et exécutons le ligne à ligne :</p>
 
 <ol>
   <li>lorsque python commence l’exécution du fichier, il crée le namespace global. C’est le namespace le plus haut.</li>
   <li>
-<code class="language-plaintext highlighter-rouge">from compteur import Compteur</code> : cherche un fichier <em>“compteur.py”</em> dans le répertoire courant. Python l’exécute (il lit chaque ligne) avec son propre namespace. Une fois ceci fait, il prend le nom <code class="language-plaintext highlighter-rouge">Compteur</code> dans ce namespace et l’ajoute au namespace global. On peut donc utiliser le nom <code class="language-plaintext highlighter-rouge">Compteur</code> qui est défini dans le namespace de <em>“compteur.py”</em>
+<code class="language-plaintext highlighter-rouge">from compteur import Compteur</code> :
+    <ol>
+      <li>cherche un fichier <em>“compteur.py”</em> dans le répertoire courant.</li>
+      <li>on crée un espace de nom <code class="language-plaintext highlighter-rouge">compteur</code>
 </li>
+      <li>Python exécute le fichier <em>“compteur.py”</em> (il lit chaque ligne) dans l’espace de nom <code class="language-plaintext highlighter-rouge">compteur</code>.</li>
+      <li>Une fois ceci fait, il prend le nom <code class="language-plaintext highlighter-rouge">Compteur</code> dans cet espace et l’ajoute dans l’espace de nom <code class="language-plaintext highlighter-rouge">global</code>. On peut donc utiliser le nom <code class="language-plaintext highlighter-rouge">Compteur</code>
+</li>
+    </ol>
+  </li>
   <li>
 <code class="language-plaintext highlighter-rouge">c1 = Compteur()</code> :
     <ul>
       <li>en informatique <code class="language-plaintext highlighter-rouge">=</code> n’est pas symétrique. A gauche un nom à droite un objet. Ici ceci signifie que l’on ajoute le nom <code class="language-plaintext highlighter-rouge">c1</code> au namespace global et que sa valeur sera le résultat de <code class="language-plaintext highlighter-rouge">Compteur()</code>
 </li>
       <li>
-<code class="language-plaintext highlighter-rouge">Compteur()</code> : est le résultat de l’exécution du nom <code class="language-plaintext highlighter-rouge">Compteur</code>. Les parenthèses (et les paramètres éventuels) après un nom l’exécute. On aurait pu tout à fait écrire <code class="language-plaintext highlighter-rouge">c1 = Compteur</code> on aurait alors eu un nom <code class="language-plaintext highlighter-rouge">c1</code> qui sera égal à la classe <code class="language-plaintext highlighter-rouge">Compteur</code>.</li>
+<code class="language-plaintext highlighter-rouge">Compteur()</code> : est le résultat de l’exécution du nom <code class="language-plaintext highlighter-rouge">Compteur</code>. Les parenthèses (et les paramètres éventuels) après un nom l’exécute. (si on avait juste écrit <code class="language-plaintext highlighter-rouge">c1 = Compteur</code> on aurait alors eu un nom <code class="language-plaintext highlighter-rouge">c1</code> qui sera égal à la classe <code class="language-plaintext highlighter-rouge">Compteur</code>).</li>
       <li>
-<code class="language-plaintext highlighter-rouge">Compteur</code> est dans le namespace global grâce à la ligne précédente. Exécuter une classe revient à :
+<code class="language-plaintext highlighter-rouge">Compteur()</code> Exécuter une classe revient à :
         <ul>
-          <li>créer un namespace vierge</li>
-          <li>chercher la méthode <code class="language-plaintext highlighter-rouge">__init__</code> de la classe et l’exécuter en passant le nouveau namespace en premier paramètre :
+          <li>créer un objet vide et lui associer un espace de nom vierge</li>
+          <li>chercher la méthode <code class="language-plaintext highlighter-rouge">__init__</code> de la classe et l’exécuter en passant le nouvel objet en premier paramètre :
             <ul>
               <li>pour exécuter une fonction on crée un namespace pour elle.</li>
               <li>on place le nom <code class="language-plaintext highlighter-rouge">self</code> qui vaut ici le nouveau namespace créé</li>
-              <li>la première ligne crée le nom <code class="language-plaintext highlighter-rouge">value</code> dans le namespace nommé <code class="language-plaintext highlighter-rouge">self</code>
+              <li>la première ligne crée le nom <code class="language-plaintext highlighter-rouge">_valeur</code> dans le namespace de l’objet <code class="language-plaintext highlighter-rouge">self</code>
 </li>
               <li>la fonction étant terminée, on supprime le namespace de la fonction (qui contenait le nom <code class="language-plaintext highlighter-rouge">self</code>)</li>
               <li>on rend l’objet</li>
@@ -471,13 +501,19 @@ moins lisible (tout le monde utilise le nom <code class="language-plaintext high
           </li>
         </ul>
       </li>
-      <li>l’objet (qu’on peut assimiler au namespace) créé est associer au nom <code class="language-plaintext highlighter-rouge">c1</code>
+      <li>l’objet créé est associé au nom <code class="language-plaintext highlighter-rouge">c1</code> dans le namespace <code class="language-plaintext highlighter-rouge">global</code>
 </li>
     </ul>
   </li>
   <li>idem que la ligne précédente avec un nouvel objet</li>
   <li>
-<code class="language-plaintext highlighter-rouge">c1.ajoute()</code> : python cherche le nom <code class="language-plaintext highlighter-rouge">ajoute</code>. Il regarde d’abord dans l’objet de nom <code class="language-plaintext highlighter-rouge">c1</code>. Ça n’y est pas. Il regarde donc au dessus : dans le namespace de la classe qui définit le nom <code class="language-plaintext highlighter-rouge">ajoute</code> (une fonction). C’est cette fonction qui est utilisée. Comme pour toutes les fonctions définies dans une classe et utilisée par un objet, le premier paramètre (le self dans le namespace de la méthode) est l’objet. On peut donc ensuite l’utiliser dans le namespace de la méthode pour modifier un attribut dans le namespace de l’objet (ici le position de l’objet).</li>
+<code class="language-plaintext highlighter-rouge">c1.ajoute()</code> : python cherche le nom <code class="language-plaintext highlighter-rouge">ajoute</code> dans l’espace de nom de l’objet nommé <code class="language-plaintext highlighter-rouge">c1</code>.
+    <ol>
+      <li>Il regarde d’abord dans l’objet de nom <code class="language-plaintext highlighter-rouge">c1</code>. Ça n’y est pas (dans l’espace de noms de <code class="language-plaintext highlighter-rouge">c1</code> il n’y a que le nom <code class="language-plaintext highlighter-rouge">_valeur</code>).</li>
+      <li>Il regarde donc dans l’espace de nom parent : l’espace de nom de de la classe. Il y est puisqu’<code class="language-plaintext highlighter-rouge">ajoute</code> est une fonction définie.</li>
+      <li>On peut maintenant exécuter cette fonction. Comme pour toutes les fonctions définies dans une classe et utilisée par un objet, le premier paramètre est l’objet (le self). Ce mécanisme permet d’utiliser les noms définis dans l’espace de noms de l’objet (ici la valeur de l’objet).</li>
+    </ol>
+  </li>
   <li>idem que la ligne d’avant</li>
   <li>idem que la ligne d’avant</li>
   <li>
@@ -485,11 +521,8 @@ moins lisible (tout le monde utilise le nom <code class="language-plaintext high
 </li>
 </ol>
 
-<p>Exécutez le code de la partie précédente un utilisant le code python de la
-classe ci-avant. Montrez tous les <em>namespaces</em> utilisés.</p>
-
-<blockquote>
-  <p><code class="language-plaintext highlighter-rouge">objet.nom</code> est <strong>toujours</strong> résolu de façon identique en python : on commence par chercher le nom dans l’objet et si on ne le trouve pas on cherche dans la classe</p>
+<blockquote class="note">
+  <p><code class="language-plaintext highlighter-rouge">objet.nom</code> est <strong>toujours</strong> résolu de façon identique en python : on commence par chercher le nom dans l’objet et si on ne le trouve pas on cherche dans sa classe</p>
 </blockquote>
 
 <h2 id="deuxième-exemple--compteur-à-pas-choisi">Deuxième exemple : Compteur à pas choisi</h2>
@@ -506,11 +539,16 @@ classe ci-avant. Montrez tous les <em>namespaces</em> utilisés.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Compteur</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pas</span><span class="p">):</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">valeur</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_valeur</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="bp">self</span><span class="p">.</span><span class="n">pas</span> <span class="o">=</span> <span class="n">pas</span>
 
 <span class="c1"># ...           
 </span></code></pre></div></div>
+
+<blockquote>
+  <p>On a pas utilisé d’<code class="language-plaintext highlighter-rouge">_</code> pour la définition de l’attribut <code class="language-plaintext highlighter-rouge">pas</code> (on a défini <code class="language-plaintext highlighter-rouge">pas</code> et non <code class="language-plaintext highlighter-rouge">_pas</code>). Son utilisation n’est qu’une convention.
+De plus, si un utilisateur modifie le pas sans utiliser de méthodes (<code class="language-plaintext highlighter-rouge">c1.pas = 12</code> par exemple dans le programme), ce n’est pas bien grave.</p>
+</blockquote>
 
 <p>Il faut alors changer le code pour construire les objets avec ce nouveau paramètre :</p>
 
@@ -533,16 +571,32 @@ classe ci-avant. Montrez tous les <em>namespaces</em> utilisés.</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Compteur</span><span class="p">:</span>
     <span class="c1"># ...
 </span>    <span class="k">def</span> <span class="nf">ajoute</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">valeur</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">valeur</span> <span class="o">+</span> <span class="bp">self</span><span class="p">.</span><span class="n">pas</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_valeur</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">_valeur</span> <span class="o">+</span> <span class="bp">self</span><span class="p">.</span><span class="n">pas</span>
     <span class="c1"># ...
 </span></code></pre></div></div>
 
-<p>On définit toujours les différents attributs de l’objet dans le constructeur <code class="language-plaintext highlighter-rouge">__init__</code> de la même façon :</p>
+<blockquote class="note">
+  <p>On définira <strong>toujours</strong> les différents attributs de l’objet dans le constructeur <code class="language-plaintext highlighter-rouge">__init__</code>.
+On le fera de cette façon :</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="bp">self</span><span class="p">.</span><span class="n">nom_attribut</span> <span class="o">=</span> <span class="n">valeur_attribut</span>
-</code></pre></div></div>
+  <div class="language-python highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="bp">self</span><span class="p">.</span><span class="n">nom_attribut</span> <span class="o">=</span> <span class="n">valeur_attribut</span>
+</code></pre></div>  </div>
 
-<p>Cette façon de faire permet à chaque objet (le paramètre <code class="language-plaintext highlighter-rouge">self</code>) d’être différent. Lors de l’utilisation de méthode, l’objet est toujours passé en premier paramètre, ce qui permet de réutiliser tous les attributs définis dans le constructeur.</p>
+</blockquote>
+
+<p>Cette façon de faire :</p>
+
+<ul>
+  <li>attributs dans les objets</li>
+  <li>méthodes (fonctions) dans les classes</li>
+</ul>
+
+<p>permet à chaque objet (le paramètre <code class="language-plaintext highlighter-rouge">self</code>) d’être différent tout en utilisant les mêmes méthodes.</p>
+
+<blockquote class="note">
+  <p>Lors de l’utilisation de méthode l’objet est passé en premier paramètre, ce qui permet de réutiliser tous ses attributs.</p>
+</blockquote>
 
 <h3 id="paramètre-par-défaut">paramètre par défaut</h3>
 
@@ -552,20 +606,20 @@ classe ci-avant. Montrez tous les <em>namespaces</em> utilisés.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Compteur</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pas</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">valeur</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_valeur</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="bp">self</span><span class="p">.</span><span class="n">pas</span> <span class="o">=</span> <span class="n">pas</span>
 
     <span class="k">def</span> <span class="nf">ajoute</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">valeur</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">valeur</span> <span class="o">+</span> <span class="bp">self</span><span class="p">.</span><span class="n">pas</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_valeur</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">_valeur</span> <span class="o">+</span> <span class="bp">self</span><span class="p">.</span><span class="n">pas</span>
 
     <span class="k">def</span> <span class="nf">donne_valeur</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">valeur</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">_valeur</span>
 </code></pre></div></div>
 
-<p>On peut utiliser deux fois le même nom <code class="language-plaintext highlighter-rouge">pas</code> car ils sont dans des namespaces différent :</p>
+<p>On peut utiliser deux fois le même nom <code class="language-plaintext highlighter-rouge">pas</code> car ils sont dans des espaces de noms différent :</p>
 
 <ul>
-  <li>un dans le namespace de la fonction (créé lorsque l’on exécute la fonction et détruit à la fin. Attention : on détruit les noms pas les objets)</li>
+  <li>un dans l’espace de nom de la fonction (créé lorsque l’on exécute la fonction et détruit à la fin. Attention : on détruit les noms pas les objets)</li>
   <li>un dans l’objet lui-même.</li>
 </ul>
 
@@ -590,14 +644,14 @@ classe ci-avant. Montrez tous les <em>namespaces</em> utilisés.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Compteur</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pas</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">valeur</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">valeur</span> <span class="o">=</span> <span class="n">valeur</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_valeur</span> <span class="o">=</span> <span class="n">valeur</span>
         <span class="bp">self</span><span class="p">.</span><span class="n">pas</span> <span class="o">=</span> <span class="n">pas</span>
 
     <span class="k">def</span> <span class="nf">ajoute</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">valeur</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">valeur</span> <span class="o">+</span> <span class="bp">self</span><span class="p">.</span><span class="n">pas</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_valeur</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">_valeur</span> <span class="o">+</span> <span class="bp">self</span><span class="p">.</span><span class="n">pas</span>
 
     <span class="k">def</span> <span class="nf">donne_valeur</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">valeur</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">_valeur</span>
 </code></pre></div></div>
 
 <p>On peut créer de compteur de plein de façon différente maintenant. Par exemple :</p>
@@ -644,7 +698,7 @@ en utiliser ici quelques-unes sur notre classe. Ces méthodes se présentent tou
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Compteur</span>
     <span class="c1"># ...
 </span>    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s">"Compteur(pas="</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">pas</span><span class="p">)</span> <span class="o">+</span> <span class="s">", valeur="</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">valeur</span><span class="p">)</span> <span class="o">+</span> <span class="s">")"</span>
+        <span class="k">return</span> <span class="s">"Compteur(pas="</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">pas</span><span class="p">)</span> <span class="o">+</span> <span class="s">", valeur="</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">_valeur</span><span class="p">)</span> <span class="o">+</span> <span class="s">")"</span>
 </code></pre></div></div>
 
 <p>Avec cette nouvelle méthode, le code précédent donne :</p>
@@ -678,7 +732,7 @@ directement les opérateurs <code class="language-plaintext highlighter-rouge">&
         <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">valeur</span> <span class="o">&lt;</span> <span class="n">other</span><span class="p">.</span><span class="n">valeur</span>
 </code></pre></div></div>
 
-<blockquote>
+<blockquote class="note">
   <p>On peut maintenant comparer 2 compteurs, ou un compteur à toute autre objet qui possède l’attribut valeur.</p>
 </blockquote>
 
@@ -690,17 +744,17 @@ directement les opérateurs <code class="language-plaintext highlighter-rouge">&
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Compteur</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pas</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">valeur</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">valeur</span> <span class="o">=</span> <span class="n">valeur</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_valeur</span> <span class="o">=</span> <span class="n">valeur</span>
         <span class="bp">self</span><span class="p">.</span><span class="n">pas</span> <span class="o">=</span> <span class="n">pas</span>
 
     <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s">"Compteur(pas="</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">pas</span><span class="p">)</span> <span class="o">+</span> <span class="s">", valeur="</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">valeur</span><span class="p">)</span> <span class="o">+</span> <span class="s">")"</span>
+        <span class="k">return</span> <span class="s">"Compteur(pas="</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">pas</span><span class="p">)</span> <span class="o">+</span> <span class="s">", valeur="</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">_valeur</span><span class="p">)</span> <span class="o">+</span> <span class="s">")"</span>
 
     <span class="k">def</span> <span class="nf">__lt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">valeur</span> <span class="o">&lt;</span> <span class="n">other</span><span class="p">.</span><span class="n">valeur</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">_valeur</span> <span class="o">&lt;</span> <span class="n">other</span><span class="p">.</span><span class="n">_valeur</span>
         
     <span class="k">def</span> <span class="nf">ajoute</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">valeur</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">valeur</span> <span class="o">+</span> <span class="bp">self</span><span class="p">.</span><span class="n">pas</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_valeur</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">_valeur</span> <span class="o">+</span> <span class="bp">self</span><span class="p">.</span><span class="n">pas</span>
 
     <span class="k">def</span> <span class="nf">donne_valeur</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">valeur</span>        

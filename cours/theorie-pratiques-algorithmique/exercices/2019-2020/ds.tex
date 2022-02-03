@@ -1,0 +1,114 @@
+% Title:  pc1.graphe
+%
+% Doc: /users/enstb1/thesards/brucker/Tex/pc1.graphe.tex
+% Original Author:     BRUCKER Francois
+% Created:             Tue Nov 30 1999
+%
+
+\documentclass
+[12pt]
+{article}
+\usepackage[utf8]{inputenc}
+
+%\usepackage{truc2}
+\usepackage[pdftex]{graphicx}
+
+\usepackage{xcolor}
+
+\usepackage{amssymb}
+\usepackage[ruled, vlined, french]{algorithm2e}
+
+\usepackage{fullpage} \usepackage{setspace}
+
+\begin{document}
+
+\begin{center}
+  \begin{tabular}{c}
+  \hline\\%\vspace{0.1cm}
+  {\textsc{Licence MPCI}}\vspace{0.1cm}
+  \\
+      {\bf {Programmation 2}}\\\vspace{0.2cm}
+    ·  \\
+    {\bf  {\large Devoir surveillé}}\vspace{0.1cm}\\ 
+    \hline
+  \end{tabular}
+\end{center}
+\vspace{0.6cm}
+%
+%
+{\it Les documents de cours sont autorisés. 
+\textbf {Tous les algorithmes doivent être prouvés et donnés avec leur complexité que l'on justifiera.}}
+\vspace{0.1cm}
+
+\section{}
+
+\begin{enumerate}
+    \item Donnez les 4 types de complexités vus en cours.
+    \item Quels sont leurs intérêts respectifs ?
+\end{enumerate}
+
+
+\section{}
+
+On considère l'algorithme suivant:
+{\footnotesize{
+\begin{tabbing}
+cc\=cccp\=cccp\=cccp\=cccp\=\kill
+\>\textsf{def Fusion (Liste1, Liste2) :} \\
+\>\>\textsf{n $\gets$ len(Liste1) + len(Liste2) } \\
+\>\>\textsf{p1 $\gets$ 0 ; p2 $\gets$ 0 } \\
+\>\>\textsf{Liste1 $\gets$ Liste1 + [$+\infty$]   } \\
+\>\>\textsf{Liste2 $\gets$ Liste2 + [$+\infty$]  } \\
+\>\>\textsf{Resultat $\gets$  [ ]  } \\
+\>\>\textsf{while len(Resultat) $<$ n :  } \\
+\>\>\>\textsf{if Liste1[p1] $<$ Liste2[p2] :} \\
+\>\>\>\>\textsf{Resultat.append(Liste1[p1])} \\
+\>\>\>\>\textsf{p1 $\gets$ p1 + 1} \\
+\>\>\>\textsf{else :} \\
+\>\>\>\>\textsf{Resultat.append(Liste2[p2])} \\
+\>\>\>\>\textsf{p2 $\gets$ p2 + 1} \\
+\>\>\textsf{return Resultat } 
+\end{tabbing}
+}}
+%
+On rappelle que, appliqué à des listes, le $+$ est la concaténation \& que {\sf append} ajoute un élément à la fin d'une liste. 
+%
+\begin{enumerate}
+    \item Montrez que la complexité de cet algorithme est en $O(n)$
+    \item  Montrez que si {\sf Liste1} \& {\sf Liste2} sont triées, alors le résultat est trié \& est constitué de tous les éléments de {\sf Liste1} \& {\sf Liste2}.
+    \item  Que faudrait-il changer pour fusionner $k$ listes (au lieu de 2) en $O(n\cdot k)$, où $n$ est la somme des longueurs des listes.
+\end{enumerate}
+
+
+\section{}
+
+\begin{enumerate}
+    \item En utilisant la question précédente, proposez un algorithme de tri récursif qui trie 2 parties d'une liste avant de les fusionner.
+    \item Peut-on faire mieux pour trier une liste ?
+\end{enumerate}
+
+\section{}
+
+\'Etant donné un polynôme $\mathcal{P}(X) = \sum_{k=0}^{n} a_k\cdot X^k$ (par exemple  $\mathcal{P}(X) = 4X^3 + 2X^2 +7$) \& un réel $x$ (par exemple $x=2$), évaluer $\mathcal{P}$ (en $x$) consiste à déterminer la valeur de $\mathcal{P}$ pour $X=x$ (ici, 47).
+
+\begin{enumerate}
+    \item Proposez une façon de stocker un polynôme dans une liste.
+    \item  Si l'on possède une fonction \texttt{puissance(x, n)} qui élève \texttt{x} à la puissance \texttt{n} en $\mathcal{O}(n)$ opérations,  proposez un algorithme qui prend en entrée une liste représentant un polynôme et un réel et qui rend l'évaluation du polynôme. 
+    \item En remarquant que $x^n = x * x^{n-1}$, proposez un algorithme linéaire pour évaluer un polynôme.
+\end{enumerate}
+
+\section{}
+
+ Soient deux chaînes de caractères $S_1$ et $S_2$. On dit que $S_2$ est un {\em sous-mot} de $S_1$ s'il existe un indice $i$ tel que $S_2[j] = S_1[i + j]$ pour tout $j$ de $0$ à $len(S_2) - 1$.
+
+
+ Proposez un algorithme qui détermine si $S_2$ est un sous-mot de $S_1$.
+ 
+
+\end{document}
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 

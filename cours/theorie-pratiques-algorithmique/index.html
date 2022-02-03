@@ -140,6 +140,7 @@
   <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/projet-exponentiation.html">projet : exponentiation</a></li>
   <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/projet-tris.html">projet : tris</a></li>
   <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/programmation-objet/memoire-et-espace-noms.html">mémoire et espace de noms</a></li>
+  <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/programmation-objet/classes-et-objets.html">classes et objets</a></li>
 </ol>
 
 <h3 id="autre">autre</h3>
@@ -322,16 +323,6 @@ graph.links.push({
 graph.links.push({
   source: 'Algorithmes, fonctions et pseudo-code',
   target: 'décidabilité et calculabilité'
-})
-
-graph.nodes.push({
-  id: 'mémoire et espace de noms',
-  link: "/cours_informatique/cours/theorie-pratiques-algorithmique/coder/programmation-objet/memoire-et-espace-noms.html",
-  group: groups.code
-})
-graph.links.push({
-  source: 'code',
-  target: 'mémoire et espace de noms'
 })
 
 graph.nodes.push({
@@ -537,6 +528,28 @@ graph.links.push({
   source: "projet : exponentiation",
   target: "projet : les tris"
 })
+
+graph.nodes.push({
+  id: 'mémoire et espace de noms',
+  link: "/cours_informatique/cours/theorie-pratiques-algorithmique/coder/programmation-objet/memoire-et-espace-noms.html",
+  group: groups.code
+})
+graph.links.push({
+  source: 'code',
+  target: 'mémoire et espace de noms'
+})
+
+graph.nodes.push({
+id: "classes et objets",
+  link: "/cours_informatique/cours/theorie-pratiques-algorithmique/coder/programmation-objet/classes-et-objets.html",
+  group: groups.code
+})
+
+graph.links.push({
+  source: "mémoire et espace de noms",
+  target: "classes et objets"
+})
+
 </script>
 
 <script>
