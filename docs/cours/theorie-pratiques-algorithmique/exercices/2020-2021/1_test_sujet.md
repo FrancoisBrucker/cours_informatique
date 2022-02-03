@@ -35,3 +35,7 @@ La suite de syracuse est définie telle que :
 * on s'arrête lorsque $u_n =1$
 
 ## 3. le programme principale demande à l'utilisateur de taper un nombre et rend la suite de syracuse de ce nombre
+
+* vous supposerez que l'utilisateur ne se trompe pas (pas besoin de gérer ses erreurs potentielles)
+* vous utiliserez la fonction `input()` qui rend une chaine de caractère tapée par l'utilisateur
+* `int(x)` est l'entier représenté par la chaine de caractère `x` est un entier sous la forme d'une chaine de caractère
