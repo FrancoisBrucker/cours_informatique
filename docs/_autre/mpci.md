@@ -97,6 +97,9 @@ Au programme :
 
 #### vendredi {#v-5}
 
+1. [composition et agrégation]({% link cours/theorie-pratiques-algorithmique/coder/programmation-objet/composition-agregation.md %})
+2. [projet : composition et agrégation]({% link cours/theorie-pratiques-algorithmique/coder/programmation-objet/projet-composition-agregation.md %})
+
 ### semaine 6
 
 > A partir de la semaine 6, les contrôles de début séance seront à écrire en [markdown]({% post_url /tutos/2021-08-30-format-markdown %}) et envoyé converti en html (ou pdf) sur amétice.

@@ -69,6 +69,8 @@ Ce cours est composée de trois grandes parties qui s'enchevêtrent.
 5. [projet : tris]({% link cours/theorie-pratiques-algorithmique/coder/projet-tris.md %})
 6. [mémoire et espace de noms]({% link cours/theorie-pratiques-algorithmique/coder/programmation-objet/memoire-et-espace-noms.md %})
 7. [classes et objets]({% link cours/theorie-pratiques-algorithmique/coder/programmation-objet/classes-et-objets.md %})
+8. [composition et agrégation]({% link cours/theorie-pratiques-algorithmique/coder/programmation-objet/composition-agregation.md %})
+9. [projet : composition et agrégation]({% link cours/theorie-pratiques-algorithmique/coder/programmation-objet/projet-composition-agregation.md %})
 
 ### autre
 
@@ -469,6 +471,28 @@ id: "classes et objets",
 graph.links.push({
   source: "mémoire et espace de noms",
   target: "classes et objets"
+})
+
+graph.nodes.push({
+id: "composition et agrégation",
+  link: "{% link cours/theorie-pratiques-algorithmique/coder/programmation-objet/composition-agregation.md %}",
+  group: groups.code
+})
+
+graph.links.push({
+  source: "mémoire et espace de noms",
+  target: "composition et agrégation"
+})
+
+graph.nodes.push({
+id: "projet : composition et agrégation",
+  link: "{% link cours/theorie-pratiques-algorithmique/coder/programmation-objet/projet-composition-agregation.md %}",
+  group: groups.code
+})
+
+graph.links.push({
+  source: "composition et agrégation",
+  target: "projet : composition et agrégation"
 })
 
 </script>

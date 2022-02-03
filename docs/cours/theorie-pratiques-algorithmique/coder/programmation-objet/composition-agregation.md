@@ -2,14 +2,18 @@
 layout: page
 title:  "Composition et agrégation"
 category: cours
-tags: mie
 authors: 
   - François Brucker
   - Célia Châtel
 ---
 
+> [Théorie et pratiques algorithmique]({% link cours/theorie-pratiques-algorithmique/index.md %}) / [coder]({% link cours/theorie-pratiques-algorithmique/coder/index.md %}) / [programmation objet]({% link cours/theorie-pratiques-algorithmique/coder/programmation-objet/index.md %}) / [composition et agrégation]({% link cours/theorie-pratiques-algorithmique/coder/programmation-objet/composition-agregation.md %})
+>
+>* [classes et objets]({% link cours/theorie-pratiques-algorithmique/coder/programmation-objet/classes-et-objets.md %})
+{: .chemin}
+
 Le but de cette séance est de consolider les concepts fondamentaux de classe et d'objet et d'ajouter les notions de
-composition, d'agrégation et d'attributs de classe. On verra aussi l'utilisation des tests.
+composition, d'agrégation et d'attributs de classe.
 
 ## liens entre classes
 
@@ -17,8 +21,10 @@ Composition et agrégation permettent de lier des classes ensembles, et plus pri
 
 Ce qui les distingue :
 
-* **agrégation** : quand les objets utilisés sont créés en dehors de la classe,
-* **composition** : quand les objets utilisés sont créés dans le constructeur de la classe qui les utilise.
+>
+>* **agrégation** : quand les objets utilisés sont créés en dehors de la classe,
+>* **composition** : quand les objets utilisés sont créés dans le constructeur de la classe qui les utilise.
+{: .note}
 
 Il est important de comprendre que si des objets n'ont pas été crées dans la classe qui l'utilise, ils peuvent être connus par d'autres méthodes du programme et donc être modifiées par celles-ci.
 
@@ -31,7 +37,7 @@ Les exemple de composition et d'agrégation de *la vraie vie* sont souvent un pe
 
 Lorsque l'on utilise la composition ou l'agrégation de nos classes dans des schéma uml, on liera la classe composé (*resp.* agrégée) à la classe l'utilisant par une flèche. Cette flèche sera différente pour une composition ou une agrégation :
 
-![uml composition et agrégation]({{ "/assets/cours/developpement/programmation-objet/uml_composition_agregation.png" | relative_url }}){:style="margin: auto;display: block}
+![uml composition et agrégation]({{ "/assets/cours/algorithmie/poo/classes-3.png" | relative_url }}){:style="margin: auto;display: block;"}
 
 ## exemple du panier de fruit
 
@@ -197,6 +203,7 @@ Ces objets possèdent des valeurs et des méthodes pour y accéder mais que l'on
 Vous avez utilisé des value objects bien souvent en python comme : les  entiers, les réels ou encore les chaines de caractères. Enfin de nombreux objets modifiables en python ont leur contrepartie non modifiable comme les `tuple` qui sont des listes non modifiables ou encore les `frozenset` sont des ensembles non modifiables.
 
 > Une bonne façon de programmer est de n'utiliser par défaut que des objets non modifiables et que si le besoin s'en fait sentir de les rendre modifiables.
+{: .note}
 
 #### 3ère solution
 
@@ -256,12 +263,13 @@ def test_supprime_dans_panier():
 > * pour l'initialisation, on vérifie juste que notre objet existe. Comme il n'a pas de paramètre, on ne peut pas tester grand chose d'autre
 > * On crée pour chaque test un nouveau objet, pour être sur que les tests n'interfèrent pas les uns avec les autres
 > * Chaque test doit permettre d'utiliser la méthode testée comme elle doit être utilisée dans le code
+{: .note}
 
 ### projet final
 
 Vous devez avoir 3 fichiers :
 
-*"panier.py"*
+#### *"panier.py"*
 
 ```python
 class Panier:
@@ -281,7 +289,7 @@ class Panier:
          
 ```
 
-le programme principal *"main.py"*
+#### le programme principal *"main.py"*
 
 ```python
 from panier import Panier
@@ -296,7 +304,7 @@ panier.supprime("orange")
 print(panier.montre_panier())
 ```
 
-Et les tests:
+#### *"test_panier.py"*
 
 ```python
 from panier import Panier
@@ -326,6 +334,4 @@ def test_supprime_dans_panier():
     assert panier.montre_panier() == tuple()
 ```
 
-Pour exécutez les tests tapez dans un terminal : `pytest test_panier.py`.
-
-> Si la commande précédente ne fonctionne pas essayez `python -m pytest test_panier.py`, et se cela ne marche pas non plus c'est que vous n'avez pas installé pytest (on l'installe avec la commande `pip install pytest`)
+Pour exécutez les tests tapez dans un terminal : `python -m pytest test_panier.py`.
