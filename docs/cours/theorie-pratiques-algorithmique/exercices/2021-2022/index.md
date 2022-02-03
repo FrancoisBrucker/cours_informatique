@@ -1,0 +1,12 @@
+---
+layout: page
+title:  "exercices : 2021/2022"
+category: cours
+---
+
+> [Théorie et pratiques algorithmique]({% link cours/theorie-pratiques-algorithmique/index.md %}) / [exercices]({% link cours/theorie-pratiques-algorithmique/exercices/index.md %}) / [2021-2022]({% link cours/theorie-pratiques-algorithmique/exercices/2021-2022/index.md %})
+{: .chemin}
+
+Tests et examens pour l'année scolaire 2021/2022
+
+## Tests

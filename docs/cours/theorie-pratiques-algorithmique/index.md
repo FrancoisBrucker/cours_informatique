@@ -68,6 +68,7 @@ Ce cours est composée de trois grandes parties qui s'enchevêtrent.
 4. [projet : exponentiation]({% link cours/theorie-pratiques-algorithmique/coder/projet-exponentiation.md %})
 5. [projet : tris]({% link cours/theorie-pratiques-algorithmique/coder/projet-tris.md %})
 6. [mémoire et espace de noms]({% link cours/theorie-pratiques-algorithmique/coder/programmation-objet/memoire-et-espace-noms.md %})
+7. [classes et objets]({% link cours/theorie-pratiques-algorithmique/coder/programmation-objet/classes-et-objets.md %})
 
 ### autre
 
@@ -243,16 +244,6 @@ graph.links.push({
 graph.links.push({
   source: 'Algorithmes, fonctions et pseudo-code',
   target: 'décidabilité et calculabilité'
-})
-
-graph.nodes.push({
-  id: 'mémoire et espace de noms',
-  link: "{% link cours/theorie-pratiques-algorithmique/coder/programmation-objet/memoire-et-espace-noms.md %}",
-  group: groups.code
-})
-graph.links.push({
-  source: 'code',
-  target: 'mémoire et espace de noms'
 })
 
 graph.nodes.push({
@@ -458,6 +449,28 @@ graph.links.push({
   source: "projet : exponentiation",
   target: "projet : les tris"
 })
+
+graph.nodes.push({
+  id: 'mémoire et espace de noms',
+  link: "{% link cours/theorie-pratiques-algorithmique/coder/programmation-objet/memoire-et-espace-noms.md %}",
+  group: groups.code
+})
+graph.links.push({
+  source: 'code',
+  target: 'mémoire et espace de noms'
+})
+
+graph.nodes.push({
+id: "classes et objets",
+  link: "{% link cours/theorie-pratiques-algorithmique/coder/programmation-objet/classes-et-objets.md %}",
+  group: groups.code
+})
+
+graph.links.push({
+  source: "mémoire et espace de noms",
+  target: "classes et objets"
+})
+
 </script>
 
 <script>

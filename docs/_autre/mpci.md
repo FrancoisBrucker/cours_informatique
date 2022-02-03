@@ -92,6 +92,9 @@ Au programme :
 
 #### mercredi {#m-5}
 
+1. [mémoire et espace de noms]({% link cours/theorie-pratiques-algorithmique/coder/programmation-objet/memoire-et-espace-noms.md %})
+2. [classes et objets]({% link cours/theorie-pratiques-algorithmique/coder/programmation-objet/classes-et-objets.md %})
+
 #### vendredi {#v-5}
 
 ### semaine 6
@@ -100,6 +103,9 @@ Au programme :
 {: .attention}
 
 #### mercredi {#m-6}
+
+1. [machine de Turing]({% link cours/theorie-pratiques-algorithmique/theorie/machine-turing.md %})
+2. [décidabilité et calculabilité]({% link cours/theorie-pratiques-algorithmique/theorie/decidabilite-calculabilite.md %})
 
 #### vendredi {#v-6}
 
@@ -146,13 +152,6 @@ Au programme :
 * tout
 * voir un peu plus
 
-## ressources
+## on s'entraine
 
-### tests
-
-1. code : [sujet]({% link cours/algorithmie_code/tests/2020_2021/1_test_sujet.md %}) et [corrigé]({% link cours/algorithmie_code/tests/2020_2021/1_test_corrige.md %})
-2. complexité : [sujet]({% link cours/algorithmie_code/tests/2020_2021/2_test_sujet.md %}) et [corrigé]({% link cours/algorithmie_code/tests/2020_2021/2_test_corrige.md %})
-3. preuve : [sujet]({% link cours/algorithmie_code/tests/2020_2021/3_test_sujet.md %}) et [corrigé]({% link cours/algorithmie_code/tests/2020_2021/3_test_corrige.md %})
-4. [DS (sujet et corrigé)]({% link cours/algorithmie_code/tests/2020_2021/4_ds_corrige.md %})
-5. modélisation : [sujet]({% link cours/algorithmie_code/tests/2020_2021/5_test_sujet.md %}) et [corrigé]({% link cours/algorithmie_code/tests/2020_2021/5_test_corrige.md %})
-6. gloutons : [sujet]({% link cours/algorithmie_code/tests/2020_2021/6_test_sujet.md %}) et [corrigé]({% link cours/algorithmie_code/tests/2020_2021/6_test_corrige.md %})
+[Exercices passés]({% link cours/theorie-pratiques-algorithmique/exercices/index.md %})
