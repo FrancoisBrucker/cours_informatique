@@ -365,7 +365,7 @@ On a donc que : **le nombre d'itérations où compteur est pair est au pire éga
 
 #### nombre de fois où l'on rentre dans la boucle
 
-Le nombre de fois où l'on rentre dans la boucle est égal au nombre de fois où le compteur est pair plus le nombre de fois où le compteur est impair, c'est donc au pire égal à deux fois le nombre de fois où compteur est pair, c'est à dire $2 * \log_2(\mbox{compteur})$ pour la valeur initiale de compteur.
+Le nombre de fois où l'on rentre dans la boucle est égal au nombre de fois où le compteur est pair plus le nombre de fois où le compteur est impair, c'est donc au pire égal à deux fois le nombre de fois où compteur est pair, c'est à dire $2 \cdot \log_2(\mbox{compteur})$ pour la valeur initiale de compteur.
 
 Comme `compteur` vaut initialement `exposant`, le nombre de fois où l'on rentre dans la boucle est de l'ordre de $\mathcal{O}(\log_2(\mbox{exposant}))$ donc en $\mathcal{O}(\ln(\mbox{exposant}))$.
 
