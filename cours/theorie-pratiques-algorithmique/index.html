@@ -141,6 +141,8 @@
   <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/projet-tris.html">projet : tris</a></li>
   <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/programmation-objet/memoire-et-espace-noms.html">mémoire et espace de noms</a></li>
   <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/programmation-objet/classes-et-objets.html">classes et objets</a></li>
+  <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/programmation-objet/composition-agregation.html">composition et agrégation</a></li>
+  <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/programmation-objet/projet-composition-agregation.html">projet : composition et agrégation</a></li>
 </ol>
 
 <h3 id="autre">autre</h3>
@@ -548,6 +550,28 @@ id: "classes et objets",
 graph.links.push({
   source: "mémoire et espace de noms",
   target: "classes et objets"
+})
+
+graph.nodes.push({
+id: "composition et agrégation",
+  link: "/cours_informatique/cours/theorie-pratiques-algorithmique/coder/programmation-objet/composition-agregation.html",
+  group: groups.code
+})
+
+graph.links.push({
+  source: "mémoire et espace de noms",
+  target: "composition et agrégation"
+})
+
+graph.nodes.push({
+id: "projet : composition et agrégation",
+  link: "/cours_informatique/cours/theorie-pratiques-algorithmique/coder/programmation-objet/projet-composition-agregation.html",
+  group: groups.code
+})
+
+graph.links.push({
+  source: "composition et agrégation",
+  target: "projet : composition et agrégation"
 })
 
 </script>
