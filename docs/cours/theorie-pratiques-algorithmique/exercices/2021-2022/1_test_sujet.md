@@ -43,6 +43,8 @@ Votre programme doit demander à l'utilisateur un entier $x$ et il rend la valeu
   * $[a_0 + b_0, \dots, a_n+b_n, b_{n+1}, \dots, b_m]$ si $n < m$
   * $[a_0 + b_0, \dots, a_m+b_m, a_{m+1}, \dots, a_n]$ si $m < n$
 
+Vous pourrez utiliser la méthode `append` des listes qui ajoute un élément en fin de liste (si `l= [1, 2]`, l'instruction `l.append(3)` **modifie** `l`, pour qu'elle soit égale à `l= [1, 2, 3]`)
+
 ## 4. écrivez une fonction *produit* telle que
 
 * **paramètres d'entrée** :

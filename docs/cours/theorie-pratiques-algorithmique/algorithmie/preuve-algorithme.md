@@ -13,7 +13,7 @@ author: "François Brucker"
 >* [algorithmie/pseudo-code]({% link cours/theorie-pratiques-algorithmique/algorithmie/pseudo-code.md %})
 {: .chemin}
 
-Un algorithme **toujours** un but, quelque chose pour quoi il est fait. Dans notre cas, un algorithme calculera la solution d'un problème.
+Un algorithme a **toujours** un but, quelque chose pour quoi il est fait. Dans notre cas, un algorithme calculera la solution d'un problème.
 
 Pour chaque algorithme que vous créerez ou que l'on demandera d'étudier il faudra :
 
@@ -27,7 +27,7 @@ Prouver qu'un algorithme s'arrête fait partie des problèmes théoriques diffic
 > * une équation de récurrence plus une condition d'arrêt pour prouver un algorithme récursif.
 > * [un invariant de boucle](https://fr.wikipedia.org/wiki/Invariant_de_boucle) pour des algorithme itératifs. Ces invariants vont alors être conservés jusqu'à la fin de l'algorithme et nous permettre de prouver son résultat.
 >
-{: .code}
+{: .note}
 
 Notez que bien souvent prouver un algorithme et le créer est la même chose. Comprendre comment on peut résoudre un problème donné nous donnera l'algorithme et réciproquement.
 
@@ -162,16 +162,13 @@ le programme s'arrête ? : Oui si a et b sont des entiers positifs. Car
 
 ### preuve
 
-> ici invariant début et fin
-{: .tbd}
-
 On veut montrer que l'on obtient bien une division euclidienne de $a$ par $b$. C'est à dire que $a = bq + r$ avec $r < b$. Pour cela on va s'aider de l'invariant de boucle : `a = r + q * b`
 
 Prouvons l'invariant :
 
-1. l'invariant est bien vrai avant la première boucle puisque $q=0$ et $r=a$ à ce moment là.
-2. on doit prouver que `a' = r' + q' * b'`
+1. l'invariant est bien vrai à la fin de la première boucle puisque $q=1$ et $r=a-b$ à ce moment là.
+2. on doit prouver que `a' = r' + q' * b'` à la fin de la $i+1$ème itération.
 3. si l'on est passé dans la boucle on a `a'=a`, `r' = r - b`, `b' = b` et `q' = q + 1`
-4. donc `r' + q' * b' = r-b + (q+1) * b = r + q * b = a = a'`. On a bien `a' = r' + q' * b'`, l'invariant est démontré.
+4. donc `r' + q' * b' = r-b + (q+1) * b = r + q * b = a = a'` puisque l'invariant est vrai à la fin de la $i$ème itération. On a bien `a' = r' + q' * b'`, l'invariant est démontré.
 
 L'invariant étant juste tout le temps, il l'est en particulier à l'issue de la dernière boucle. A ce moment là on a `a = r + qb` avec `r < b` ce qui est bien ce qu'il fallait démontrer.

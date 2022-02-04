@@ -104,11 +104,11 @@ Puis un cas un peu plus compliqué pour **tester si les boucles fonctionnent bie
 > Vérifiez que l'algorithme donne bien les bons résultats sur les exemples ci-dessus.
 {: .a-faire}
 
-Une fois qu'on est convaincu que ça fonctionne, on peut essayer de prouver la finitude, la complexité et la preuve.
+Une fois qu'on est convaincu que ça fonctionne, on prouvera sa finitude, sa preuve et on calculera sa complexité.
 
 ### preuve {#preuve-naif}
 
-En deux temps. On commence par montrer qu'il se termine, puis on prouve qu'il calcule bien l'exponenciation.
+En deux temps. On commence par montrer qu'il se termine, puis on prouve qu'il calcule bien l'exponentiation.
 
 #### finitude {#finitude-naif}
 
