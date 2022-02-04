@@ -69,7 +69,7 @@
   </ul>
 </blockquote>
 
-<p>Un algorithme <strong>toujours</strong> un but, quelque chose pour quoi il est fait. Dans notre cas, un algorithme calculera la solution d’un problème.</p>
+<p>Un algorithme a <strong>toujours</strong> un but, quelque chose pour quoi il est fait. Dans notre cas, un algorithme calculera la solution d’un problème.</p>
 
 <p>Pour chaque algorithme que vous créerez ou que l’on demandera d’étudier il faudra :</p>
 
@@ -80,7 +80,7 @@
 
 <p>Prouver qu’un algorithme s’arrête fait partie des problèmes théoriques difficiles en informatique. En algorithmie, les algorithmes résolvent des problèmes et donc ils sont sensés s’arrêter et il sera (normalement) facile de le voir. En revanche, la preuve de l’algorithme est parfois plus délicate. Le problème étant souvent (toujours ?) concentré dans les boucles ou les récursions de l’algorithme, on cherchera à trouver des propriétés qui sont conservées avant et après une itération ou une récursion :</p>
 
-<blockquote class="code">
+<blockquote class="note">
   <p>Pour prouver un algorithme on cherchera à établir :</p>
 
   <ul>
@@ -251,21 +251,16 @@
 
 <h3 id="preuve">preuve</h3>
 
-<blockquote class="tbd">
-  <p>ici invariant début et fin</p>
-</blockquote>
-
 <p>On veut montrer que l’on obtient bien une division euclidienne de $a$ par $b$. C’est à dire que $a = bq + r$ avec $r &lt; b$. Pour cela on va s’aider de l’invariant de boucle : <code class="language-plaintext highlighter-rouge">a = r + q * b</code></p>
 
 <p>Prouvons l’invariant :</p>
 
 <ol>
-  <li>l’invariant est bien vrai avant la première boucle puisque $q=0$ et $r=a$ à ce moment là.</li>
-  <li>on doit prouver que <code class="language-plaintext highlighter-rouge">a' = r' + q' * b'</code>
-</li>
+  <li>l’invariant est bien vrai à la fin de la première boucle puisque $q=1$ et $r=a-b$ à ce moment là.</li>
+  <li>on doit prouver que <code class="language-plaintext highlighter-rouge">a' = r' + q' * b'</code> à la fin de la $i+1$ème itération.</li>
   <li>si l’on est passé dans la boucle on a <code class="language-plaintext highlighter-rouge">a'=a</code>, <code class="language-plaintext highlighter-rouge">r' = r - b</code>, <code class="language-plaintext highlighter-rouge">b' = b</code> et <code class="language-plaintext highlighter-rouge">q' = q + 1</code>
 </li>
-  <li>donc <code class="language-plaintext highlighter-rouge">r' + q' * b' = r-b + (q+1) * b = r + q * b = a = a'</code>. On a bien <code class="language-plaintext highlighter-rouge">a' = r' + q' * b'</code>, l’invariant est démontré.</li>
+  <li>donc <code class="language-plaintext highlighter-rouge">r' + q' * b' = r-b + (q+1) * b = r + q * b = a = a'</code> puisque l’invariant est vrai à la fin de la $i$ème itération. On a bien <code class="language-plaintext highlighter-rouge">a' = r' + q' * b'</code>, l’invariant est démontré.</li>
 </ol>
 
 <p>L’invariant étant juste tout le temps, il l’est en particulier à l’issue de la dernière boucle. A ce moment là on a <code class="language-plaintext highlighter-rouge">a = r + qb</code> avec <code class="language-plaintext highlighter-rouge">r &lt; b</code> ce qui est bien ce qu’il fallait démontrer.</p>

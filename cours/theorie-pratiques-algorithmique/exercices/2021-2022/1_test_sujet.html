@@ -12,13 +12,13 @@
 <meta property="og:locale" content="en_US">
 <meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille.">
 <meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille.">
-<link rel="canonical" href="/cours_informatique/cours/theorie-pratiques-algorithmique/exercices/2020-2021/1_test_sujet.html">
-<meta property="og:url" content="/cours_informatique/cours/theorie-pratiques-algorithmique/exercices/2020-2021/1_test_sujet.html">
+<link rel="canonical" href="/cours_informatique/cours/theorie-pratiques-algorithmique/exercices/2021-2022/1_test_sujet.html">
+<meta property="og:url" content="/cours_informatique/cours/theorie-pratiques-algorithmique/exercices/2021-2022/1_test_sujet.html">
 <meta property="og:site_name" content="cours d’informatique">
 <meta name="twitter:card" content="summary">
 <meta property="twitter:title" content="sujet Test 1 : code">
 <script type="application/ld+json">
-{"description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/theorie-pratiques-algorithmique/exercices/2020-2021/1_test_sujet.html","headline":"sujet Test 1 : code","@context":"https://schema.org"}</script>
+{"description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/theorie-pratiques-algorithmique/exercices/2021-2022/1_test_sujet.html","headline":"sujet Test 1 : code","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
@@ -60,52 +60,81 @@
   <div class="post-content">
     <p>Toute fonction écrite doit être testée.</p>
 
-<p>Faites les questions dans l’ordre. Ce n’est pas grave si vous ne faites pas toutes les questions, mais si vous donnez une fonctions sans ses tests elle ne sera pas notée.</p>
+<p>Faites les questions dans l’ordre. Ce n’est pas grave si vous ne faites pas toutes les questions, mais si vous donnez une fonction sans ses tests ou qui ne fonctionne pas elle ne sera pas notée.</p>
 
-<p>Questions :</p>
+<p>Enfin, faites aussi en sorte que votre code ait 0 défaut de style (le linter ne doit pas râler).</p>
 
-<p>En utilisant le fait que le modulo s’écrit <code class="language-plaintext highlighter-rouge">%</code> en python.</p>
-
-<h2 id="1-écrivez-une-fonction-syracuse-telle-que">1. écrivez une fonction <em>syracuse</em> telle que</h2>
+<h2 id="1-écrivez-une-fonction-valeur-telle-que">1. écrivez une fonction <em>valeur</em> telle que</h2>
 
 <ul>
   <li>
-    <p><strong>paramètre d’entrée</strong> : un entier $x$</p>
+<strong>paramètres d’entrée</strong> :
+    <ol>
+      <li>une liste de $n+1$ réels $[a_0, \dots, a_n]$ $n \geq 0$</li>
+      <li>un réel $x$</li>
+    </ol>
   </li>
   <li>
-    <p><strong>sortie</strong> :</p>
-
+<strong>sortie</strong> :
     <ul>
-      <li>$x/2$ si $x$ est pair</li>
-      <li>$3x + 1$ si $x$ est impair</li>
+      <li>$\sum_{i=0}^na_i x^i$</li>
     </ul>
   </li>
 </ul>
 
-<h2 id="2-une-fonction-qui-rend-tous-les-éléments-de-la-suite-de-syracuse-associée-à-un-nombre">2. une fonction qui rend tous les éléments de la suite de syracuse associée à un nombre</h2>
+<p>Vous pourrez utiliser le fait que <code class="language-plaintext highlighter-rouge">x ** i</code> en python soit égal à $x^i$</p>
+
+<h2 id="2-programme-principal">2. programme principal</h2>
+
+<p>Votre programme doit demander à l’utilisateur un entier $x$ et il rend la valeur $\sum_{i=0}^{4} x^i$.</p>
 
 <ul>
-  <li>
-<strong>entrée</strong> : un entier $x$</li>
-  <li>
-<strong>sortie</strong> : les élément de la suite de syracuse associée à $x$</li>
-</ul>
-
-<p>La suite de syracuse est définie telle que :</p>
-
-<ul>
-  <li>$u_0 =x$</li>
-  <li>$u_{n+1} = {syracuse}(u_n)$</li>
-  <li>on s’arrête lorsque $u_n =1$</li>
-</ul>
-
-<h2 id="3-le-programme-principale-demande-à-lutilisateur-de-taper-un-nombre-et-rend-la-suite-de-syracuse-de-ce-nombre">3. le programme principale demande à l’utilisateur de taper un nombre et rend la suite de syracuse de ce nombre</h2>
-
-<ul>
+  <li>vous utiliserez la fonction créée en 1</li>
   <li>vous supposerez que l’utilisateur ne se trompe pas (pas besoin de gérer ses erreurs potentielles)</li>
   <li>vous utiliserez la fonction <code class="language-plaintext highlighter-rouge">input()</code> qui rend une chaine de caractère tapée par l’utilisateur</li>
   <li>
-<code class="language-plaintext highlighter-rouge">int(x)</code> est l’entier représenté par la chaine de caractère <code class="language-plaintext highlighter-rouge">x</code> est un entier sous la forme d’une chaine de caractère</li>
+<code class="language-plaintext highlighter-rouge">int(x)</code> est l’entier représenté par la chaine de caractère <code class="language-plaintext highlighter-rouge">x</code>
+</li>
+</ul>
+
+<h2 id="3-écrivez-une-fonction-somme-telle-que">3. écrivez une fonction <em>somme</em> telle que</h2>
+
+<ul>
+  <li>
+<strong>paramètres d’entrée</strong> :
+    <ol>
+      <li>une liste de réels $[a_0, \dots, a_n]$</li>
+      <li>une liste de réels $[b_0, \dots, b_m]$</li>
+    </ol>
+  </li>
+  <li>
+<strong>sortie</strong> :
+    <ul>
+      <li>$[a_0 + b_0, \dots, a_n+b_n]$ si $n = m$</li>
+      <li>$[a_0 + b_0, \dots, a_n+b_n, b_{n+1}, \dots, b_m]$ si $n &lt; m$</li>
+      <li>$[a_0 + b_0, \dots, a_m+b_m, a_{m+1}, \dots, a_n]$ si $m &lt; n$</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Vous pourrez utiliser la méthode <code class="language-plaintext highlighter-rouge">append</code> des listes qui ajoute un élément en fin de liste (si <code class="language-plaintext highlighter-rouge">l= [1, 2]</code>, l’instruction <code class="language-plaintext highlighter-rouge">l.append(3)</code> <strong>modifie</strong> <code class="language-plaintext highlighter-rouge">l</code>, pour qu’elle soit égale à <code class="language-plaintext highlighter-rouge">l= [1, 2, 3]</code>)</p>
+
+<h2 id="4-écrivez-une-fonction-produit-telle-que">4. écrivez une fonction <em>produit</em> telle que</h2>
+
+<ul>
+  <li>
+<strong>paramètres d’entrée</strong> :
+    <ol>
+      <li>une liste de réels $[a_0, \dots, a_n]$</li>
+      <li>une liste de réels $[b_0, \dots, b_m]$</li>
+    </ol>
+  </li>
+  <li>
+<strong>sortie</strong>  (on suppose):
+    <ul>
+      <li>une liste $[c_0, \dots, c_{m+n}]$ telle que $c_k = \sum_{i+j=k}a_ib_j$ pour tout $0\leq k \leq m+n$</li>
+    </ul>
+  </li>
 </ul>
 
   </div>
