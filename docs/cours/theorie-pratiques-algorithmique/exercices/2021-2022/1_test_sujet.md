@@ -30,7 +30,7 @@ Votre programme doit demander à l'utilisateur un entier $x$ et il rend la valeu
 * vous utiliserez la fonction créée en 1
 * vous supposerez que l'utilisateur ne se trompe pas (pas besoin de gérer ses erreurs potentielles)
 * vous utiliserez la fonction `input()` qui rend une chaine de caractère tapée par l'utilisateur
-* `int(x)` est l'entier représenté par la chaine de caractère `x` est un entier sous la forme d'une chaine de caractère
+* `int(x)` est l'entier représenté par la chaine de caractère `x`
 
 ## 3. écrivez une fonction *somme* telle que
 
