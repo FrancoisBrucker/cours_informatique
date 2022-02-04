@@ -185,7 +185,7 @@ x^y = \left\{
     \begin{array}{ll}
         1 & \mbox{si } y = 0 \\
         x \cdot x^{y-1}  &\mbox{si } y  \mbox{ est impair}\\
-        x^2 \cdot x^{\frac{y}{2}} &\mbox{si } y  \mbox{ est pair}\\
+        x^{\frac{y}{2}}  \cdot x^{\frac{y}{2}} = (x^2)^{\frac{y}{2}}  &\mbox{si } y  \mbox{ est pair}\\
     \end{array}
 \right.
 $$
