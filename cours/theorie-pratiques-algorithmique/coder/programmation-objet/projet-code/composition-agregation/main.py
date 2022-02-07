@@ -14,4 +14,5 @@ panier.ajoute("poire")
 print(panier.montre_panier())
 
 panier.supprime("pomme")
+
 print(panier.montre_panier())

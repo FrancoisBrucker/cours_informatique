@@ -148,7 +148,16 @@
 
 <h3 id="poli-z">exemple des polynômes à coefficients dans $\mathbb{Z}$</h3>
 
-<p>Soit le problème de décision suivant : Soit $P(X)$ un <a href="https://fr.wikipedia.org/wiki/Polyn%C3%B4me">polynôme</a> à coefficients dans $\mathbb{Z}$. Possède-t-il une <a href="https://fr.wikipedia.org/wiki/Racine_d%27un_polyn%C3%B4me">racine</a> dans $\mathbb{N}$ (un entier $a$ tel que $P(a) = 0$) ?</p>
+<p>Soit le problème de décision suivant :</p>
+
+<ul>
+  <li>
+<strong>nom</strong> : racine polynôme</li>
+  <li>
+<strong>entrées</strong> : $P(X)$ un <a href="https://fr.wikipedia.org/wiki/Polyn%C3%B4me">polynôme</a> à coefficients dans $\mathbb{Z}$</li>
+  <li>
+<strong>question</strong> : $P(X)$ Possède-t-il une <a href="https://fr.wikipedia.org/wiki/Racine_d%27un_polyn%C3%B4me">racine</a> dans $\mathbb{N}$ (un entier $a$ tel que $P(a) = 0$) ?</li>
+</ul>
 
 <details><summary>ce problème est reconnaissable</summary><div>
 <p>On peut facilement créer un algorithme qui, à partir d’un polynôme $P(x)$ à coefficients dans $\mathbb{Z}$ et d’un entier $a$ calcule $P(a)$.</p>
@@ -164,8 +173,17 @@
 
 <p>Il existe bien sûr des langages qui sont reconnaissables et non décidables, par exemple une généralisation du problème précédent :</p>
 
+<ul>
+  <li>
+<strong>nom</strong> : racine polynôme plusieurs variables</li>
+  <li>
+<strong>entrées</strong> : $P(X)$ un <a href="https://fr.wikipedia.org/wiki/Polyn%C3%B4me_en_plusieurs_ind%C3%A9termin%C3%A9es">polynôme à plusieurs variables</a> à coefficients dans $\mathbb{Z}$</li>
+  <li>
+<strong>question</strong> : $P(X)$ Possède-t-il une <a href="https://fr.wikipedia.org/wiki/Racine_d%27un_polyn%C3%B4me">racine</a> dans $\mathbb{N}$ (un entier $a$ tel que $P(a) = 0$) ?</li>
+</ul>
+
 <blockquote class="note">
-  <p>Savoir si un <a href="https://fr.wikipedia.org/wiki/Polyn%C3%B4me_en_plusieurs_ind%C3%A9termin%C3%A9es">polynôme à plusieurs variables</a> à coefficients dans $\mathbb{Z}$ admet une racine dans $\mathbb{N}$ est un problème <strong>reconnaissable</strong> mais <strong>indécidable</strong>.</p>
+  <p><em>“racine polynôme plusieurs variables”</em> est un problème <strong>reconnaissable</strong> mais <strong>indécidable</strong>.</p>
 </blockquote>
 
 <p><strong>Félicitations !</strong> Vous venez de rencontrer votre premier problème que ne pourra pas résoudre un ordinateur.</p>
@@ -198,10 +216,25 @@
 
 <p>Personne ne sait (à l’heure où je tape ces caractères) si cet algorithme s’arrête pour tout $n$.</p>
 
-<p>De façon plus générale :</p>
-
+<p>De façon plus générale le problème de décision :</p>
 <blockquote class="note">
-  <p><a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_l%27arr%C3%AAt">Le problème</a> de décision de savoir si un algorithme $M$ va s’arrêter sur l’entrée $E$ est indécidable.</p>
+
+  <ul>
+    <li>
+<strong>nom</strong> : <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_l%27arr%C3%AAt">Arrêt</a>
+</li>
+    <li>
+<strong>entrées</strong> :
+      <ul>
+        <li>un algorithme $M$</li>
+        <li>une entrée $E$</li>
+      </ul>
+    </li>
+    <li>
+<strong>question</strong> : $M$ s’arrête sur l’entrée $E$ ?</li>
+  </ul>
+
+  <p>est <strong>indécidable</strong>.</p>
 </blockquote>
 <details><summary>preuve</summary><div>
 <p>On doit la preuve à Turing lui-même, qui l’a démontrée dans le cadre des machine de Turing.</p>
@@ -240,7 +273,18 @@
 <p>On peut montrer que le cas particulier suivant est lui aussi indécidable :</p>
 
 <blockquote class="note">
-  <p>Le problème consistant à savoir si un algorithme $M$ va s’arrêter sur l’entrée vide est indécidable.</p>
+  <p>Le problème :</p>
+
+  <ul>
+    <li>
+<strong>nom</strong> : Arrêt vide</li>
+    <li>
+<strong>entrée</strong> : un algorithme $M$</li>
+    <li>
+<strong>question</strong> : $M$ s’arrête sur l’entrée vide ?</li>
+  </ul>
+
+  <p>est <strong>indécidable</strong>.</p>
 </blockquote>
 <details><summary>preuve</summary><div>
 <p>Si $E$ est une entrée et $M$ un algorithme, il existe un algorithme $M_E$ qui commente par affecter l’entrée $E$ à une variable, puis exécute l’algorithme $M(E)$. On a donc que $M$ accepte $E$ que si et seulement si $M_E$ accepte le mot vide.</p>
@@ -249,12 +293,16 @@
 
 </div></details>
 
-<p>Il faut bien comprendre l’énoncé ci-dessus. Il n’existe pas de décideur qui prend comme entrée <strong>et</strong> un algorithme <strong>et</strong> une entrée et qui rend <em>Vrai</em> si l’algorithme va s’arrêter : l’algorithme et le mot d’entrée sont les paramètres du décideur.</p>
+<p>Il faut bien comprendre l’énoncé ci-dessus.</p>
+
+<blockquote class="note">
+  <p>Il n’existe pas de décideur qui prend comme entrée <strong>et</strong> un algorithme <strong>et</strong> une entrée et qui rend <em>Vrai</em> si l’algorithme va s’arrêter : l’algorithme et le mot d’entrée sont les paramètres du décideur.</p>
+</blockquote>
 
 <p>Cela ne contredit pas le fait qu’on puisse créer un décideur spécifique à un algorithme qui réponde <em>vrai</em> ou <em>faux</em> selon le paramètre d’entrée de celle-ci. C’est l’algorithme général, indépendant de l’algorithme à tester, qui n’existe pas.</p>
 
-<blockquote>
-  <p>lorsque l’on parle de décidabilité ou de problème il faut toujours bien faire attention à ce qui est un paramètre d’entrée et ce qui est donné.</p>
+<blockquote class="note">
+  <p>Lorsque l’on parle de décidabilité ou de problème <strong>il faut toujours bien faire attention à ce qui est un paramètre d’entrée et ce qui est donné</strong>.</p>
 </blockquote>
 
 <p>Le théorème d’indécidabilité de l’arrêt d’un algorithme est fondamental théoriquement. Il est à la base de nombreux contre-exemples et :</p>
@@ -266,9 +314,16 @@
 
 <h3 id="exemple-de-la-reconnaissance-dalgorithmes">exemple de la reconnaissance d’algorithmes</h3>
 
+<p>Soit $P$ un ensemble d’algorithme. Par exemple,</p>
 <blockquote class="tbd">
   <p>savoir si un algorithme résoud un problème donné par son langage
 conséquence sur la preuve de programme. Thm de Rice</p>
+</blockquote>
+
+<p>indécidable en général. Mais dans des cas particulier ok. preuve d’un algorihtme ok. Algor général pour tout prouver non.</p>
+
+<blockquote>
+  <p>Hilbert.</p>
 </blockquote>
 
 <h2 id="calculabilité">calculabilité</h2>
