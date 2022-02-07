@@ -9,3 +9,6 @@ tmp/
 
 #python stuff
 __pycache__
+.pytest_cache
+.coverage
+cov.xml

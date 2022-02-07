@@ -104,7 +104,7 @@ Pour mettre en route le linting via pycodestyle, deux paramètres sont à positi
 
 Vous pouvez aussi toujours exécuter la commande `pycodestyle mon-fichier.py` dans un [terminal intégré]({% post_url tutos/editeur/vsc/2021-09-14-vsc-terminal %}#terminal-integre) pour obtenir le linting de votre fichier. C'est moins pratique que lorsque vscode le fait puisque la ligne en question n'est pas soulignée dans l'interface.
 
-## black
+## black {#black}
 
 [BLack](https://black.readthedocs.io/en/stable/index.html) est un bijou. Ne pas l'utiliser tout le temps est bête.
 
@@ -169,6 +169,8 @@ Permet de voir le code couvert par les tests.
 
 ### installation {#installation-coverage}
 
+#### coverage pour pytest
+
 On va utiliser le *code coverage* de pytest :
 
 {% details sous linux et mac %}
@@ -187,21 +189,27 @@ python -m pip install pytest-cov
 
 {% enddetails %}
 
+#### extension vscode
+
 Puis l'extension de vscode qui permet de rendre compte du coverage dans l'interface. Tapez [Coverage Gutters](https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters) dans le *menu affichage > extensions*.
 
 ### utilisation {#code-coverge}
 
+La documentation complète du module est disponible à cette adresse : <https://pytest-cov.readthedocs.io/en/latest/>.
+
+Ce module utilise [coverage](https://coverage.readthedocs.io/en/6.3.1/index.html), qui est le module de couverture de code utilisé. Il est très configurable.
+
 #### sans l'extension
 
-Dans un terminal tapez `pytest --cov=.`. Cela exécute les tests à partir du dossier courant (`.`) avec le coverage qui sera retourné au format texte.
+Dans un terminal tapez `python3 -m pytest --cov=.`. Cela exécute les tests à partir du dossier courant (`.`) avec le coverage qui sera retourné au format texte.
 
->si la commande `pytest` n'est pas reconnue, mais que `python` l'est vous pouvez exécuter pytest, via python en tapant la commande `python3 -m pytest --cov=.`
+Si l'on veut les ligne manquantes, on peut utiliser la commande : `--cov-report term-missing`
+
+Enfin, pour avoir un rapport html complet on peut utiliser la ligne : `python3 -m pytest --cov=. --cov-report html`.
 
 #### utilisation de l'extension
 
-La commande `pytest --cov=.` crée un fichier de coverage qui s'appelle `.coverage`. Il n'est cependant pas lisible dans ce format par défaut par l'extension. Il faut générer un format de sorti en [xml](https://fr.wikipedia.org/wiki/Extensible_Markup_Language) avec la commande : `pytest --cov=.  --cov-report xml:cov.xml`
+La commande `python3 -m pytest --cov=.` crée un fichier de coverage qui s'appelle `.coverage`. Il n'est cependant pas lisible dans ce format par défaut par l'extension. Il faut générer un format de sorti en [xml](https://fr.wikipedia.org/wiki/Extensible_Markup_Language) avec la commande : `python3 -m pytest --cov=.  --cov-report xml:cov.xml`
 
-> Si le petit *watch* n'est pas visible, vous pouvez le faire à la main dans avec la [palette de commande]({% post_url tutos/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main %}#palette-de-commande))
+> Si le petit *watch* n'est pas visible dans la barre de status, vous pouvez le faire à la main dans avec la [palette de commande]({% post_url tutos/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main %}#palette-de-commande))
  *Coverage Gutters: Display Coverage*.
-
-

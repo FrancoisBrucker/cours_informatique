@@ -20,7 +20,5 @@ Comment coder, maintenir et aimer ses programmes. Les projets constituent une pr
 
 ordre des concepts de code :
 
-1. semaine 4 : black
-2. semaine 4 : coverage
-3. semaine 7 : poetry
-4. semaine 7 : venv
+1. semaine 7 : poetry
+2. semaine 7 : venv

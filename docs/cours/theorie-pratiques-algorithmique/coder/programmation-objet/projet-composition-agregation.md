@@ -15,6 +15,12 @@ authors:
 
 Classes et objets, le code !
 
+## aide au code
+
+Dans toute la partie code, vous utiliserez la [couverture de code]({% link cours/theorie-pratiques-algorithmique/coder/programmation-objet/composition-agregation.md %}#couverture-code), pour vérifier que les tests vérifient bien les lignes de votre code.
+
+De plus, maintenant que vous avez pris l'habitude de faire du joli code en utilisant un linter, vous pouvez utiliser [black](https://black.readthedocs.io/en/stable/) pour le faire automatiquement. Suivez le [tuto]({% post_url tutos/editeur/vsc/2021-09-14-vsc-python-modules-supplementaires %}#black) pour l'installer.
+
 ## Un Dé
 
 On veut créer une classe `Dice`. Elle doit être capable de :

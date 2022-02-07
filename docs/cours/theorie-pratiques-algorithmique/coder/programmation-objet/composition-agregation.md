@@ -230,6 +230,8 @@ Lorsque l'on crée ses propres objets, il est important de tester leurs fonction
 
 Dans la mesure du possible, on ne teste pas la valeur des attributs. On utilise des méthodes publique pour tester. En effet les attributs montrent l'implémentation de la classe et pas son usage.
 
+### exemple
+
 Par exemple, pour notre panier. Fichier *"test_panier.py"* :
 
 ```python
@@ -265,11 +267,68 @@ def test_supprime_dans_panier():
 > * Chaque test doit permettre d'utiliser la méthode testée comme elle doit être utilisée dans le code
 {: .note}
 
-### projet final
+### couverture de code {#couverture-code}
+
+Les tests doivent nous permettre d'avoir confiance dans la qualité du code. Il faut donc que les tests vérifient tous les cas du code (passent bien par tous les blocs `alors` et `sinon` du code par exemple).
+
+Un outil pour vérifier cela est la [couverture de code](https://fr.wikipedia.org/wiki/Couverture_de_code). On exécute les tests et on regarde, fichier par fichier quelles sont les lignes qui ont été vue pour ces tests.
+
+Le [tuto couverture de code]({% post_url tutos/editeur/vsc/2021-09-14-vsc-python-modules-supplementaires %}#code-coverage) vous montre comment l'installer. Son fonctionnement est le suivant :
+
+1. on exécute les tests dans le terminal en ajoutant l'extension coverage  `python3 -m pytest --cov=.`
+2. le résultat est donné dans le terminal.
+
+```text
+---------- coverage: platform darwin, python 3.9.9-final-0 -----------
+Name             Stmts   Miss  Cover
+------------------------------------
+main.py             10     10     0%
+panier.py           13      0   100%
+test_panier.py      16      0   100%
+------------------------------------
+TOTAL               39     10    74%
+```
+
+On voit que l'exécution des tests à eu besoin d'utiliser 100% du fichier *"test_panier.py"* (ce qui est normal) et 100% du fichier *"panier.py"*. Le fichier *"main.py"* n'a pas été utilisé du tout (aucune des 10 lignes n'a été vue), ce qui est normal.
+
+> Il faut tenter de passer par 100% du code utile dans nos tests.
+{: .note}
+
+Pour s'en rendre compte, on peut commenter le test `test_supprime_dans_panier` et re-exécuter les tests. j'obtiens alors :
+
+```text
+---------- coverage: platform darwin, python 3.9.9-final-0 -----------
+Name             Stmts   Miss  Cover
+------------------------------------
+main.py             10     10     0%
+panier.py           13      3    77%
+test_panier.py      11      0   100%
+------------------------------------
+TOTAL               34     13    62%
+```
+
+3 lignes de `panier.py` n'ont pas été vue. POur savoir exactement les quelles, la commande `python3 -m pytest --cov=. --cov-report term-missing` donne :
+
+```text
+---------- coverage: platform darwin, python 3.9.9-final-0 -----------
+Name             Stmts   Miss  Cover   Missing
+----------------------------------------------
+main.py             10     10     0%   1-17
+panier.py           13      3    77%   15-18
+test_panier.py      11      0   100%
+----------------------------------------------
+TOTAL               34     13    62%
+```
+
+C'est bien l'intérieur de la fonction `test_supprime_dans_panier`.
+
+> Notez que la ligne contenant la définition de la fonction a été vue. En effet, lors de l'import du fichier *"panier.py"*, le ficher est lu, donc les noms des fonctions sont mises dans l'espace de nom du module.
+
+## projet final
 
 Vous devez avoir 3 fichiers :
 
-#### *"panier.py"*
+### *"panier.py"*
 
 ```python
 class Panier:
@@ -289,7 +348,7 @@ class Panier:
          
 ```
 
-#### le programme principal *"main.py"*
+### le programme principal *"main.py"*
 
 ```python
 from panier import Panier
@@ -304,7 +363,7 @@ panier.supprime("orange")
 print(panier.montre_panier())
 ```
 
-#### *"test_panier.py"*
+### *"test_panier.py"*
 
 ```python
 from panier import Panier
@@ -333,5 +392,3 @@ def test_supprime_dans_panier():
 
     assert panier.montre_panier() == tuple()
 ```
-
-Pour exécutez les tests tapez dans un terminal : `python -m pytest test_panier.py`.
