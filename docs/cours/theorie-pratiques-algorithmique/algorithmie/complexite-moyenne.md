@@ -24,7 +24,7 @@ Cette mesure est très utile en pratique car si la complexité maximale et minim
 
 La complexité en moyenne d'un algorithme dépend des entrées de celui-ci et plus précisément du nombre de fois où une entrée donnée peut être choisie. Pour pouvoir la calculer de façon formelle, il faut connaitre ainsi le modèle probabiliste associé aux données :
 
-> La **complexité en moyenne** de $A$ pour une entrée de taille $n$ est :
+> La **complexité en moyenne** de l'algorithme $A$ pour une entrée de taille $n$ est :
 >
 > $$C = \sum_{e \in \mathcal{E}} p_e \cdot C(e)$$
 >
@@ -32,7 +32,7 @@ La complexité en moyenne d'un algorithme dépend des entrées de celui-ci et pl
 >
 {: .note}
 
-Si l'on a pas de modèle a priori, on considérera que chaque donnée est équiprobable : chaque entrée a la même probabilité d'être choisie.
+Si l'on a pas de modèle a priori, on considérera que chaque donnée est équiprobable : chaque entrée a la même probabilité d'être choisie, $p_e = \frac{1}{\mid \mathcal{E} \mid}$.
 
 ## exemple de la recherche d'un élément dans un tableau {#exemple-recherche}
 
@@ -53,21 +53,24 @@ On avait déterminé ses complexités par rapport à la taille $n$ du tableau :
 
 La complexité en moyenne est calculée en considérant le nombre d'opérations moyenne pris pour toutes les entrées d'une taille fixée.
 
-Pour une entrée donnée, la complexité dépend de l'endroit où se trouve `valeur` dans le `tableau` : si `valeur` est à la position $i$ du tableau, il faudra $\mathcal{O}(i + 1)$ opérations et si `valeur` n'est pas dans le tableau, il faudra $\mathcal{O}(n + 1)$ opérations (avec $n$ la taille du tableau).
+Pour une entrée donnée, la complexité dépend de l'endroit où se trouve `valeur` dans le `tableau` : si `valeur` est à la position $i$ du tableau, il faudra $\mathcal{O}(i)$ opérations et si `valeur` n'est pas dans le tableau, il faudra $\mathcal{O}(n)$ opérations (avec $n$ la taille du tableau).
 
 Si l'on note $p_i$  la probabilité que valeur soit à la position $i$ `tableau` et $p_{n}$ la probabilité qu'elle ne soit pas dans le tableau, la complexité moyenne de l'algorithme s'écrit :
 
-$$C = \sum_{i=0}^{i = n} (p_i \cdot \mathcal{O}(i + 1))$$
+$$C = \sum_{i=0}^{i = n} (p_i \cdot \mathcal{O}(i))$$
 
-Pour pouvoir la calculer effectivement, il faut connaitre les $p_i$. Comme on a pas de modèle a priori, on va considérer que chaque tableau de taille $n$ à la même probabilité d'être choisie et donc que la position de `valeur` dans tableau est équiprobable : $p_i = \frac{1}{n + 1}$ et donc :
+Pour pouvoir la calculer effectivement, il faut connaitre les $p_i$. Comme on a pas de modèle a priori, on va considérer que chaque tableau de taille $n$ à la même probabilité d'être choisie et donc que la position de `valeur` dans tableau est équiprobable : $p_i = \frac{1}{n + 1}$ :
 
-$$C =  (\sum_{i=0}^{i = n}\frac{1}{n + 1} \mathcal{O}(i + 1)) = \mathcal{O}(\frac{\sum_{i=0}^{i = n}(i + 1)}{n +1})$$
+$$C =  (\sum_{i=0}^{i = n}\frac{1}{n + 1} \mathcal{O}(i)) = \mathcal{O}(\frac{\sum_{i=0}^{i = n}(i)}{n +1})$$
 
-Comme $\sum_{i=0}^{i = n}(i + 1) = \frac{(n +2)(n + 1)}{2}$ on en déduit que :
+Comme $\sum_{i=0}^{i = n}(i) = \frac{(n + 1)(n)}{2}$ on en déduit que :
 
-$$C = \mathcal{O}(\frac{n+2}{2}) = \mathcal{O$(n)}$$
+$$C = \mathcal{O}(\frac{n}{2}) = \mathcal{O(n)}$$
 
-Pour aller plus vite, on aurait pu dire que si notre modèle est équiprobable, `valeur` va se trouver en moyenne au milieu de notre tableau, et donc qu'il faut parcourir de l'ordre de $\frac{n}{2}$ éléments de `tableau`, la complexité en moyenne est de $\mathcal{O}(n/2) = \mathcal{O}(n)$.
+Pour aller plus vite, on aurait pu dire que si notre modèle est équiprobable, `valeur` va se trouver en moyenne au milieu de notre tableau, et donc qu'il faut parcourir de l'ordre de $\frac{n}{2}$ éléments de `tableau`, la complexité en moyenne est de $\mathcal{O}(n/2) = \mathcal{O}(n)$ qui est la même que la complexité maximale.
+
+> En moyenne la complexité l'algorithme `est_dans_tableau` est la même que la complexité maximale. La complexité minimale est très rarement atteinte.
+{: .note}
 
 ## intérêt
 

@@ -45,7 +45,7 @@ On ne va pas définir plus que ça la notion d'aléatoire en informatique. On va
 ```text
 soit T un tableau à n cases
 de i = 0 à n-1:
-    T[i] = randint(0, n-1)
+    T[i] = T[randint(0, n-1)]
 rendre T
 ```
 
@@ -81,18 +81,45 @@ Il nous reste à créer toutes les permutations possibles d'un tableau. C'est ce
 
 ## toutes les permutations {#algo-toutes-permutations}
 
-Une permutation de $T$ étant la concaténation de la liste à un élément $[T[i]]$ ($0 \leq i < n$)  et d'une permutation de $T'= T[:i] + T[i+1:]$ (le tableau des éléments d'indiced différents de $i$ du tableau), on peut forger un algorithme récursif permettant de rendre toutes les permuations de $T$ :
+Une permutation de $T$ peut être vu comme la [concaténation](https://fr.wikipedia.org/wiki/Concat%C3%A9nation#Programmation) de la liste à un élément $[T[i]]$ ($0 \leq i < n$)  et d'une permutation de $T'$ qui contient tous les éléments de $T$ sauf $T[i]$.
 
-1. on note $L$ une liste, initialement vide qui va contenir nos permutations.
-2. pour chaque indice $0 \leq i < n$ tel que $T[i]$ sera le premier élément de la permutation
-   1. créer le tableau $T_i = T[:i] + T[i+1:]$ qui est le tableau initial auquel on a supprimé l'indice $i$
-   2. trouver toutes les permuations $L'$ du tableau $T_i$ (s'il est non vide)
-   3. pour chaque permuation $T'$ de $L'$
-   4. ajoutez la permutatuin $T[i] + T'$ à $L$
-3. rendre $L$
+La remarque précédente nous donne la forme générale d'un algorithme récursif permettant de résoudre le problème. Le pseudo-code ci-après décrit une fonction `permutations` rend une liste contenant toutes les permutations de $T$ (chaque élément de `L` est un tableau) :
+
+<style>
+    table, td, tr, th, pre {
+        padding:0;
+        margin:0;
+        border:none
+    }
+</style>
+{% highlight text linenos %}
+permutations(T):
+    si T est vide:
+        rendre [T] # la liste contenant toutes les permutation de de T, c'est à dire T
+    L = []  # va contenir les permutations de T
+    pour chaque i allant de 0 à len(T) - 1:
+        soit a = T[i]
+        soit T' la liste contenant tous les él&ments de T sauf T[i]
+        soit L' = permutations(T')
+        pour chaque P' de L':
+            P = concaténation de [a] et de P'
+            ajoute P à la fin de L
+    rendre L
+{% endhighlight %}
 
 > Codez cet algorithme et mettez en places des tests pour vérifier qu'il fonctionne.
 {: .a-faire}
+{% details aide à la programmation %}
+
+Vous pourrez utiliser le fait que :
+
+* en python, la concaténation de deux tableaux `T1` et `T2` s'écrit `T1 + T2` (sa complexité est la somme de la taille des 2 tableaux puisqu'il faut créer un nouveau tableau)
+* le [slycing de listes](https://zestedesavoir.com/tutoriels/582/les-slices-en-python/) en python est très puissant. Par exemple :
+  * `T[:i]` contient les `i`prémiers éléments de la liste (de 0 à `i-1` inclut. Elle **ne continet donc pas** `T[i]`)
+  * `T[i:]` contient la fin de la liste à partir de l'élément `i`.
+  * `T[:i] + T[:i+1]` contient donc toute la liste sauf l'élément `T[i]`
+
+{% enddetails %}
 
 Pour placer dans la liste de listes `P` toutes les permutations de `[0, 1, 2, 3, 4, 5]`, on lance l'algorithme comme ça : `P = permutations([0, 1, 2, 3, 4, 5])`.
 
@@ -100,36 +127,35 @@ Analysons cet algorithme pour vérifier qu'il fait bien ce qu'on pense qu'il fai
 
 ### finitude {#finitude-permutations}
 
-A chaque récursion, le tableau `elements` est strictement plus petit. En effet le tableau `elements_sans_premier` sur lequel porte la récursion est la restriction du tableau `elements` en supprimant l'élément d'indice `i` (`elements_sans_premier = elements[:i] + elements[i+1:]`).
+A chaque récursion, le tableau `T` est strictement plus petit. En effet le tableau `T'` sur lequel porte la récursion est la restriction du tableau `T` en supprimant l'élément d'indice `i`.
 
-Il arrivera donc une récursion où `elements` sera vide : le test de la ligne 2 stoppera la récursion.
+Il arrivera donc une récursion où `T` sera vide : le test de la ligne 2 stoppera la récursion.
 
 ### preuve {#preuve-permutations}
 
-on prouve par récurrence sur la taille du tableau `elements` que `permutations_rec(elements)` donne un tableau contenant toutes les permutations de `elements`.
+on prouve par récurrence sur la taille du tableau `T` que `permutations(T)` donne un tableau contenant toutes les permutations de `T`.
 
-   1. pour `len(elements) == 0` c'est clair.
-   2. on suppose la propriété vrai pour `len(elements) == p`. Pour `len(elements) == p + 1`, par hypothèse de récurrence, le retour de la récursion `permutations_rec(elements_sans_premier)` sera l'ensemble des permutations de `elements[:i] + elements[i+1:]` pour une position `i` de `elements`. Pour un `i`  donné on obtient alors  toutes les permutations de `elements` ayant `elements[i]` en première position (on ajoute `elements[i]` à toutes les permutations de `elements[:i] + elements[i+1:]`). Comme `i` prend tous les indice de `elements`, on obtient au final toutes les permutations du tableau `elements`.
+   1. pour `len(T) == 0` c'est clair.
+   2. on suppose la propriété vrai pour `len(T) == p`. Pour `len(T) == p + 1`, par hypothèse de récurrence, le retour de la récursion `permutations(T')` sera l'ensemble des permutations `T'`. Pour un `i`  donné on obtient alors toutes les permutations de `T` ayant `T[i]` en première position (on ajoute `T[i]` à toutes les permutations de `T'`). Comme `i` prend tous les indice de `T`, on obtient au final toutes les permutations du tableau `T`.
 
 ### complexité {#complexite-permutations}
 
-La complexité de l'algorithme va dépendre de la taille $n$ du tableau `elements` : on note sa complexité $C(n)$. Comme il est récursif, on va chercher une équation de récurrence que satisfait $C(n)$ à résoudre.
+La complexité de l'algorithme va dépendre de la taille $n$ du tableau `T` : on note sa complexité $C(n)$. Comme il est récursif, on va chercher une équation de récurrence que satisfait $C(n)$ à résoudre.
 
 Complexité de chaque ligne :
 
 1. $\mathcal{O}(1)$ définition de la fonction
 2. $\mathcal{O}(1)$ un test
 3. $\mathcal{O}(1)$ retour d'une constante
-4.
-5. $\mathcal{O}(1)$ affectation d'une constante
-6. une boucle de $n$ itérations
-7. $\mathcal{O}(1)$ une affectation d'un élément d'un tableau
-8. $\mathcal{O}(n)$ car on crée un **nouveau** tableau de taille $n-1$
-9. $C(n-1)$, c'est notre récursion.
-10. une boucle de $\mathcal{O}((n-1)!)$ itérations (toutes les permutations d'un tableau à n-1 éléments)
-11. $\mathcal{O}(n)$ car on crée un **nouveau** tableau de taille $n$
-12. $\mathcal{O}(1)$, on ajoute un élément à la fin d'une liste (les tableau en pthon sont des listes, l'ajout d'un élément à la fin d'une liste est en temps constant)
-13. $\mathcal{O}(1)$ retour d'une fonction
+4. $\mathcal{O}(1)$ affectation d'une constante
+5. une boucle de $n$ itérations
+6. $\mathcal{O}(1)$ une affectation d'un élément d'un tableau
+7. $\mathcal{O}(n)$ car on crée un **nouveau** tableau de taille $n-1$
+8. $C(n-1)$, c'est notre récursion.
+9. une boucle de $\mathcal{O}((n-1)!)$ itérations (toutes les permutations d'un tableau à n-1 éléments)
+10. $\mathcal{O}(n)$ car on crée un **nouveau** tableau de taille $n$
+11. $\mathcal{O}(1)$, on ajoute un élément à la fin d'une liste (les tableau en python sont des listes, l'ajout d'un élément à la fin d'une liste est en temps constant)
+12. $\mathcal{O}(1)$ retour d'une fonction
 
 Ce qui donne :
 
@@ -304,7 +330,18 @@ Pour la partie graphique, il faut que [matplotlib](https://matplotlib.org/) soit
 * [des legendes](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.legend.html), que l'on a placé en dehors de la figure
 * [un axe horizontal](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.axhline.html)
 
+Eléments du code :
+
 ```python
+
+NOMBRE_ITERATION = 100000
+TABLEAU = [1, 2, 3, 4, 5, 6]
+PERMUTATIONS = permutations(TABLEAU)
+
+compte = [0] * len(PERMUTATIONS)
+
+#  ICI : on remplit le talbeau compte.
+
 fig, ax = plt.subplots(figsize=(20, 5))
 
 ax.set_xlim(-1, len(PERMUTATIONS) - 1)
@@ -318,7 +355,7 @@ ax.set_title("nombre de permutations")
 plt.show()
 ```
 
-Vous devirez obtenir le résultat suivant :
+Vous devriez obtenir le résultat suivant :
 
 ![mélange de Knuth]({{ "/assets/cours/algorithmie/melange_knuth.png" | relative_url }}){:style="margin: auto;display: block"}
 

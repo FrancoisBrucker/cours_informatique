@@ -183,4 +183,4 @@ Le [tri à bulles](https://fr.wikipedia.org/wiki/Tri_%C3%A0_bulles) est un tri i
 
 ### bogo sort
 
-Implémentez le [tri stupide](https://fr.wikipedia.org/wiki/Tri_stupide) et vérifiez son temps moyen de tri (en espérant que vous n'atteignez jamais le temps max).
+Implémentez le [tri stupide](https://fr.wikipedia.org/wiki/Tri_stupide) et vérifiez son temps moyen de tri.

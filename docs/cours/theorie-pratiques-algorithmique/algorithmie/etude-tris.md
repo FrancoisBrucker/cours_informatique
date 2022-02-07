@@ -108,62 +108,15 @@ Comme toute case du tableau peut rendre le tableau non trié, on utilise l'argum
 
 ### borne maximum {#borne-max}
 
-Etant donné un tableau $T$ de taille $n$, il doit exister un algorithme — disons `permutations(T)` — permettant de rendre toutes les permutations de celui-ci. Même si on ne sait pas exactement comment faire on *se doute* que ça doit exister...
+Etant donné un tableau $T$ de taille $n$, on peut utiliser l'algorithme `permutations(T)` de l'[étude sur les mélanges]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude-melange.md %}#algo-toutes-permutations) qui rend toutes les permutations d'un tableau donné en $\mathcal{O}((n+2)!)$ opérations.
 
-Une permutation de $T$ étant la concaténation de la liste à un élément $[T[i]]$ ($0 \leq i < n$)  et d'une permutation de $T'= T[:i] + T[i+1:]$ (le tableau des éléments d'indice différents de $i$ du tableau), on peut forger un algorithme récursif permettant de rendre toutes les permuations de $T$ :
-
-1. on note $L$ une liste, initialement vide qui va contenir nos permutations.
-2. pour chaque indice $0 \leq i < n$ tel que $T[i]$ sera le premier élément de la permutation
-   1. créer le tableau $T_i = T[:i] + T[i+1:]$ qui est le tableau initial auquel on a supprimé l'indice $i$
-   2. trouver toutes les permuations $L'$ du tableau $T_i$ (s'il est non vide)
-   3. pour chaque permuation $T'$ de $L'$
-   4. ajoutez la permutatuin $T[i] + T'$ à $L$
-3. rendre $L$
-
-> Donnez (un majorant de) de sa complexité.
-{: .a-faire}
-{% details une solution possible %}
-
-Sa complexité $C(n)$ satisfait l'équation de récurrence :
-$$
-\begin{array}{lcll}
-C(n) & = & n \cdot (& \mbox{tous les indices }i\\
-     & = & (n-1) + & \mbox{création de }T_i\\
-     & = & C(n-1) + & \mbox{tous les permutaions du tableau sans }i\\
-     & = & (n-1)! \cdot (& \mbox{pour chaque permuation de } $T_i$\\
-    & = & n ))& \mbox{création d'une permutation de } T { commançant par }T_i\\
-\end{array}
-$$
-
-De là :
-
-$$
-\begin{array}{lcl}
-C(n) & = & n \cdot (n-1) + n \cdot C(n-1) + n \cdot n!\\
-     & = & n \cdot C(n-1) + \mathcal{O}(n+1)!\\
-     & = & n \cdot ((n-1) \cdot C(n-1) + \mathcal{O}(n)!) + \mathcal{O}(n+1)!\\
-     & = & n \cdot (n-1) \cdot C(n-1) + n \cdot \mathcal{O}(n)! + \mathcal{O}(n+1)!\\
-     & = & n \cdot (n-1) \cdot C(n-1) + 2 \dot  \mathcal{O}(n+1)!\\
-     & = & \dots \\
-     & = & \Pi_{i=0}^k (n-i) \cdot C(n-k-1) + (k+1) \cdot \mathcal{O}(n+1)!\\
-    & = & \dots \\
-      & = & \Pi_{i=0}^{n-1} (n-i) \cdot C(0) + n \cdot \mathcal{O}(n+1)!\\
-    & = & n! \cdot C(0) + \mathcal{O}(n+2)!\\
-    & = & \mathcal{O}(n+2)!\\
-\end{array}
-$$
-
-{% enddetails %}
-
-L'algorithme `permutations([1, 3, 2])` rendra :
+Par exemple, l'algorithme `permutations([1, 3, 2])` rendra :
 
 ```python
 [[1, 3, 2], [1, 2, 3], [3, 1, 2], [3, 2, 1], [2, 1, 3], [2, 3, 1]]
 ```
 
-L'algorithme `permutations` de la solution possible est en $\mathcal{O}((n+2)!)$. On ne peut pas beaucoup faire mieux car on  doit rendre toutes les permutations pssibles du tableau en entrée, ce qui nous fera déjà $\mathcal{O}(n \cdot n!) = \mathcal{O}((n+1)!)$ opérations (il faut créer $n!$ tableaux de $n$ éléments).
-
-C'est une complexité énorme, mais cela nous permet de résoudre notre problème puisque l'algorithme `est_trie` permet de savoir si un tableau est trié en $\mathcal{O}(n)$ opérations : on peut résoudre le problème *"trie"* en énumérant toutes les permutations du tableau passé en paramètre et en vérifiant pour chacune d'entre elle s'il est trié ou non. 
+C'est une complexité énorme, mais cela nous permet de résoudre notre problème puisque l'algorithme `est_trie` permet de savoir si un tableau est trié en $\mathcal{O}(n)$ opérations : on peut résoudre le problème *"trie"* en énumérant toutes les permutations du tableau passé en paramètre et en vérifiant pour chacune d'entre elle s'il est trié ou non.
 
 Un proposition d'algorithme peut alors être :
 
@@ -272,8 +225,6 @@ oui, de tels algorithmes exitent.
 Notre algorithme pour trier un tableau est un monstre de complexité. Il en existe de très simples et de complexité bien plus faible. Nous en montrons 2, classiques.
 
 ### tri par sélection {#tri-selection}
-
-Le principe du tri par sélection est l'inverse de l'algorithme de [Fisher-Yates]({% link cours/theorie-pratiques-algorithmique/algorithmie/etude-melange.md %}#algorithme-fisher-yates), plutôt que de placer un élément au hasard à l'indice $i$ du tableau, on choisi de placer le $i$-ème plus petit élément à l'indice $i$.
 
 L'algorithme procède alors ainsi : à chaque itération de l'algorithme, on place à l'indice $i$ du tableau son $i$-ème plus petit élément.
 

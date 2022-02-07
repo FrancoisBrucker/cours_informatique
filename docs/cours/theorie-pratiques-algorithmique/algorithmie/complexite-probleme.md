@@ -125,7 +125,7 @@ On peut en déduire une règle générale de la complexité d'un problème :
 > Si les données n'ont pas de structure particulière, très souvent, la complexité d'un problème est au moins égal à la taille de ses données.
 {: .note}
 
-En effet, si ce n'est pas vrai, c'est que notre problème est mal posé.
+Si ce n'est pas vrai, c'est que très souvent notre problème est mal posé et qu'on peut se passer de certaines entrées.
 
 ### cas particulier des tableaux ordonnés
 
@@ -250,7 +250,7 @@ En algorithmie, distinguer parmi plusieurs cas se fait par des tests (on utilise
 
 On a alors la proprité suivante :
 
-> Si un algorithme doit distinguer $n$ cas, il devra posséder au moins $\log_2(n)$ tests. Sa complexité sera ainsi supérieure à $\mathcal{O}(\ln(n))$
+> Si un algorithme doit distinguer parmi $n$ cas, il devra posséder au moins $\log_2(n)$ tests. Sa complexité sera ainsi supérieure à $\mathcal{O}(\ln(n))$
 {: .note}
 
 Comme il y a $n+1$ cas au moins à traiter, notre algorithme sera de complexité supérieure à à $\mathcal{O}(\ln(n + 1)) = \mathcal{O}(\ln(n))$ opérations.
