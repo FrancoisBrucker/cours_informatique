@@ -82,7 +82,7 @@
 <p>La complexité en moyenne d’un algorithme dépend des entrées de celui-ci et plus précisément du nombre de fois où une entrée donnée peut être choisie. Pour pouvoir la calculer de façon formelle, il faut connaitre ainsi le modèle probabiliste associé aux données :</p>
 
 <blockquote class="note">
-  <p>La <strong>complexité en moyenne</strong> de $A$ pour une entrée de taille $n$ est :</p>
+  <p>La <strong>complexité en moyenne</strong> de l’algorithme $A$ pour une entrée de taille $n$ est :</p>
 
 \[C = \sum_{e \in \mathcal{E}} p_e \cdot C(e)\]
 
@@ -90,7 +90,7 @@
 
 </blockquote>
 
-<p>Si l’on a pas de modèle a priori, on considérera que chaque donnée est équiprobable : chaque entrée a la même probabilité d’être choisie.</p>
+<p>Si l’on a pas de modèle a priori, on considérera que chaque donnée est équiprobable : chaque entrée a la même probabilité d’être choisie, $p_e = \frac{1}{\mid \mathcal{E} \mid}$.</p>
 
 <h2 id="exemple-recherche">exemple de la recherche d’un élément dans un tableau</h2>
 
@@ -112,21 +112,25 @@
 
 <p>La complexité en moyenne est calculée en considérant le nombre d’opérations moyenne pris pour toutes les entrées d’une taille fixée.</p>
 
-<p>Pour une entrée donnée, la complexité dépend de l’endroit où se trouve <code class="language-plaintext highlighter-rouge">valeur</code> dans le <code class="language-plaintext highlighter-rouge">tableau</code> : si <code class="language-plaintext highlighter-rouge">valeur</code> est à la position $i$ du tableau, il faudra $\mathcal{O}(i + 1)$ opérations et si <code class="language-plaintext highlighter-rouge">valeur</code> n’est pas dans le tableau, il faudra $\mathcal{O}(n + 1)$ opérations (avec $n$ la taille du tableau).</p>
+<p>Pour une entrée donnée, la complexité dépend de l’endroit où se trouve <code class="language-plaintext highlighter-rouge">valeur</code> dans le <code class="language-plaintext highlighter-rouge">tableau</code> : si <code class="language-plaintext highlighter-rouge">valeur</code> est à la position $i$ du tableau, il faudra $\mathcal{O}(i)$ opérations et si <code class="language-plaintext highlighter-rouge">valeur</code> n’est pas dans le tableau, il faudra $\mathcal{O}(n)$ opérations (avec $n$ la taille du tableau).</p>
 
 <p>Si l’on note $p_i$  la probabilité que valeur soit à la position $i$ <code class="language-plaintext highlighter-rouge">tableau</code> et $p_{n}$ la probabilité qu’elle ne soit pas dans le tableau, la complexité moyenne de l’algorithme s’écrit :</p>
 
-\[C = \sum_{i=0}^{i = n} (p_i \cdot \mathcal{O}(i + 1))\]
+\[C = \sum_{i=0}^{i = n} (p_i \cdot \mathcal{O}(i))\]
 
-<p>Pour pouvoir la calculer effectivement, il faut connaitre les $p_i$. Comme on a pas de modèle a priori, on va considérer que chaque tableau de taille $n$ à la même probabilité d’être choisie et donc que la position de <code class="language-plaintext highlighter-rouge">valeur</code> dans tableau est équiprobable : $p_i = \frac{1}{n + 1}$ et donc :</p>
+<p>Pour pouvoir la calculer effectivement, il faut connaitre les $p_i$. Comme on a pas de modèle a priori, on va considérer que chaque tableau de taille $n$ à la même probabilité d’être choisie et donc que la position de <code class="language-plaintext highlighter-rouge">valeur</code> dans tableau est équiprobable : $p_i = \frac{1}{n + 1}$ :</p>
 
-\[C =  (\sum_{i=0}^{i = n}\frac{1}{n + 1} \mathcal{O}(i + 1)) = \mathcal{O}(\frac{\sum_{i=0}^{i = n}(i + 1)}{n +1})\]
+\[C =  (\sum_{i=0}^{i = n}\frac{1}{n + 1} \mathcal{O}(i)) = \mathcal{O}(\frac{\sum_{i=0}^{i = n}(i)}{n +1})\]
 
-<p>Comme $\sum_{i=0}^{i = n}(i + 1) = \frac{(n +2)(n + 1)}{2}$ on en déduit que :</p>
+<p>Comme $\sum_{i=0}^{i = n}(i) = \frac{(n + 1)(n)}{2}$ on en déduit que :</p>
 
-\[C = \mathcal{O}(\frac{n+2}{2}) = \mathcal{O$(n)}\]
+\[C = \mathcal{O}(\frac{n}{2}) = \mathcal{O(n)}\]
 
-<p>Pour aller plus vite, on aurait pu dire que si notre modèle est équiprobable, <code class="language-plaintext highlighter-rouge">valeur</code> va se trouver en moyenne au milieu de notre tableau, et donc qu’il faut parcourir de l’ordre de $\frac{n}{2}$ éléments de <code class="language-plaintext highlighter-rouge">tableau</code>, la complexité en moyenne est de $\mathcal{O}(n/2) = \mathcal{O}(n)$.</p>
+<p>Pour aller plus vite, on aurait pu dire que si notre modèle est équiprobable, <code class="language-plaintext highlighter-rouge">valeur</code> va se trouver en moyenne au milieu de notre tableau, et donc qu’il faut parcourir de l’ordre de $\frac{n}{2}$ éléments de <code class="language-plaintext highlighter-rouge">tableau</code>, la complexité en moyenne est de $\mathcal{O}(n/2) = \mathcal{O}(n)$ qui est la même que la complexité maximale.</p>
+
+<blockquote class="note">
+  <p>En moyenne la complexité l’algorithme <code class="language-plaintext highlighter-rouge">est_dans_tableau</code> est la même que la complexité maximale. La complexité minimale est très rarement atteinte.</p>
+</blockquote>
 
 <h2 id="intérêt">intérêt</h2>
 

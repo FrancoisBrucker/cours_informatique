@@ -56,7 +56,7 @@ def melange_transposition(elements):
 def draw():
     NOMBRE_ITERATION = 100000
     TABLEAU = [1, 2, 3, 4, 5, 6]
-    PERMUTATIONS = [x for x in permutations(TABLEAU)]
+    PERMUTATIONS = permutations(TABLEAU)
 
     compte = [0] * len(PERMUTATIONS)
 

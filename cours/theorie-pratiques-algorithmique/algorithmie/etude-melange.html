@@ -116,7 +116,7 @@
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>soit T un tableau à n cases
 de i = 0 à n-1:
-    T[i] = randint(0, n-1)
+    T[i] = T[randint(0, n-1)]
 rendre T
 </code></pre></div></div>
 
@@ -152,24 +152,69 @@ rendre P[i]
 
 <h2 id="algo-toutes-permutations">toutes les permutations</h2>
 
-<p>Une permutation de $T$ étant la concaténation de la liste à un élément $[T[i]]$ ($0 \leq i &lt; n$)  et d’une permutation de $T’= T[:i] + T[i+1:]$ (le tableau des éléments d’indiced différents de $i$ du tableau), on peut forger un algorithme récursif permettant de rendre toutes les permuations de $T$ :</p>
+<p>Une permutation de $T$ peut être vu comme la <a href="https://fr.wikipedia.org/wiki/Concat%C3%A9nation#Programmation">concaténation</a> de la liste à un élément $[T[i]]$ ($0 \leq i &lt; n$)  et d’une permutation de $T’$ qui contient tous les éléments de $T$ sauf $T[i]$.</p>
 
-<ol>
-  <li>on note $L$ une liste, initialement vide qui va contenir nos permutations.</li>
-  <li>pour chaque indice $0 \leq i &lt; n$ tel que $T[i]$ sera le premier élément de la permutation
-    <ol>
-      <li>créer le tableau $T_i = T[:i] + T[i+1:]$ qui est le tableau initial auquel on a supprimé l’indice $i$</li>
-      <li>trouver toutes les permuations $L’$ du tableau $T_i$ (s’il est non vide)</li>
-      <li>pour chaque permuation $T’$ de $L’$</li>
-      <li>ajoutez la permutatuin $T[i] + T’$ à $L$</li>
-    </ol>
-  </li>
-  <li>rendre $L$</li>
-</ol>
+<p>La remarque précédente nous donne la forme générale d’un algorithme récursif permettant de résoudre le problème. Le pseudo-code ci-après décrit une fonction <code class="language-plaintext highlighter-rouge">permutations</code> rend une liste contenant toutes les permutations de $T$ (chaque élément de <code class="language-plaintext highlighter-rouge">L</code> est un tableau) :</p>
+
+<style>
+    table, td, tr, th, pre {
+        padding:0;
+        margin:0;
+        border:none
+    }
+</style>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td>
+<td class="code"><pre>permutations(T):
+    si T est vide:
+        rendre [T] # la liste contenant toutes les permutation de de T, c'est à dire T
+    L = []  # va contenir les permutations de T
+    pour chaque i allant de 0 à len(T) - 1:
+        soit a = T[i]
+        soit T' la liste contenant tous les él&amp;ments de T sauf T[i]
+        soit L' = permutations(T')
+        pour chaque P' de L':
+            P = concaténation de [a] et de P'
+            ajoute P à la fin de L
+    rendre L
+</pre></td>
+</tr></tbody></table></code></pre></figure>
 
 <blockquote class="a-faire">
   <p>Codez cet algorithme et mettez en places des tests pour vérifier qu’il fonctionne.</p>
 </blockquote>
+<details><summary>aide à la programmation</summary><div>
+<p>Vous pourrez utiliser le fait que :</p>
+
+<ul>
+  <li>en python, la concaténation de deux tableaux <code class="language-plaintext highlighter-rouge">T1</code> et <code class="language-plaintext highlighter-rouge">T2</code> s’écrit <code class="language-plaintext highlighter-rouge">T1 + T2</code> (sa complexité est la somme de la taille des 2 tableaux puisqu’il faut créer un nouveau tableau)</li>
+  <li>le <a href="https://zestedesavoir.com/tutoriels/582/les-slices-en-python/">slycing de listes</a> en python est très puissant. Par exemple :
+    <ul>
+      <li>
+<code class="language-plaintext highlighter-rouge">T[:i]</code> contient les <code class="language-plaintext highlighter-rouge">i</code>prémiers éléments de la liste (de 0 à <code class="language-plaintext highlighter-rouge">i-1</code> inclut. Elle <strong>ne continet donc pas</strong> <code class="language-plaintext highlighter-rouge">T[i]</code>)</li>
+      <li>
+<code class="language-plaintext highlighter-rouge">T[i:]</code> contient la fin de la liste à partir de l’élément <code class="language-plaintext highlighter-rouge">i</code>.</li>
+      <li>
+<code class="language-plaintext highlighter-rouge">T[:i] + T[:i+1]</code> contient donc toute la liste sauf l’élément <code class="language-plaintext highlighter-rouge">T[i]</code>
+</li>
+    </ul>
+  </li>
+</ul>
+
+</div></details>
 
 <p>Pour placer dans la liste de listes <code class="language-plaintext highlighter-rouge">P</code> toutes les permutations de <code class="language-plaintext highlighter-rouge">[0, 1, 2, 3, 4, 5]</code>, on lance l’algorithme comme ça : <code class="language-plaintext highlighter-rouge">P = permutations([0, 1, 2, 3, 4, 5])</code>.</p>
 
@@ -177,30 +222,29 @@ rendre P[i]
 
 <h3 id="finitude-permutations">finitude</h3>
 
-<p>A chaque récursion, le tableau <code class="language-plaintext highlighter-rouge">elements</code> est strictement plus petit. En effet le tableau <code class="language-plaintext highlighter-rouge">elements_sans_premier</code> sur lequel porte la récursion est la restriction du tableau <code class="language-plaintext highlighter-rouge">elements</code> en supprimant l’élément d’indice <code class="language-plaintext highlighter-rouge">i</code> (<code class="language-plaintext highlighter-rouge">elements_sans_premier = elements[:i] + elements[i+1:]</code>).</p>
+<p>A chaque récursion, le tableau <code class="language-plaintext highlighter-rouge">T</code> est strictement plus petit. En effet le tableau <code class="language-plaintext highlighter-rouge">T'</code> sur lequel porte la récursion est la restriction du tableau <code class="language-plaintext highlighter-rouge">T</code> en supprimant l’élément d’indice <code class="language-plaintext highlighter-rouge">i</code>.</p>
 
-<p>Il arrivera donc une récursion où <code class="language-plaintext highlighter-rouge">elements</code> sera vide : le test de la ligne 2 stoppera la récursion.</p>
+<p>Il arrivera donc une récursion où <code class="language-plaintext highlighter-rouge">T</code> sera vide : le test de la ligne 2 stoppera la récursion.</p>
 
 <h3 id="preuve-permutations">preuve</h3>
 
-<p>on prouve par récurrence sur la taille du tableau <code class="language-plaintext highlighter-rouge">elements</code> que <code class="language-plaintext highlighter-rouge">permutations_rec(elements)</code> donne un tableau contenant toutes les permutations de <code class="language-plaintext highlighter-rouge">elements</code>.</p>
+<p>on prouve par récurrence sur la taille du tableau <code class="language-plaintext highlighter-rouge">T</code> que <code class="language-plaintext highlighter-rouge">permutations(T)</code> donne un tableau contenant toutes les permutations de <code class="language-plaintext highlighter-rouge">T</code>.</p>
 
 <ol>
-  <li>pour <code class="language-plaintext highlighter-rouge">len(elements) == 0</code> c’est clair.</li>
-  <li>on suppose la propriété vrai pour <code class="language-plaintext highlighter-rouge">len(elements) == p</code>. Pour <code class="language-plaintext highlighter-rouge">len(elements) == p + 1</code>, par hypothèse de récurrence, le retour de la récursion <code class="language-plaintext highlighter-rouge">permutations_rec(elements_sans_premier)</code> sera l’ensemble des permutations de <code class="language-plaintext highlighter-rouge">elements[:i] + elements[i+1:]</code> pour une position <code class="language-plaintext highlighter-rouge">i</code> de <code class="language-plaintext highlighter-rouge">elements</code>. Pour un <code class="language-plaintext highlighter-rouge">i</code>  donné on obtient alors  toutes les permutations de <code class="language-plaintext highlighter-rouge">elements</code> ayant <code class="language-plaintext highlighter-rouge">elements[i]</code> en première position (on ajoute <code class="language-plaintext highlighter-rouge">elements[i]</code> à toutes les permutations de <code class="language-plaintext highlighter-rouge">elements[:i] + elements[i+1:]</code>). Comme <code class="language-plaintext highlighter-rouge">i</code> prend tous les indice de <code class="language-plaintext highlighter-rouge">elements</code>, on obtient au final toutes les permutations du tableau <code class="language-plaintext highlighter-rouge">elements</code>.</li>
+  <li>pour <code class="language-plaintext highlighter-rouge">len(T) == 0</code> c’est clair.</li>
+  <li>on suppose la propriété vrai pour <code class="language-plaintext highlighter-rouge">len(T) == p</code>. Pour <code class="language-plaintext highlighter-rouge">len(T) == p + 1</code>, par hypothèse de récurrence, le retour de la récursion <code class="language-plaintext highlighter-rouge">permutations(T')</code> sera l’ensemble des permutations <code class="language-plaintext highlighter-rouge">T'</code>. Pour un <code class="language-plaintext highlighter-rouge">i</code>  donné on obtient alors toutes les permutations de <code class="language-plaintext highlighter-rouge">T</code> ayant <code class="language-plaintext highlighter-rouge">T[i]</code> en première position (on ajoute <code class="language-plaintext highlighter-rouge">T[i]</code> à toutes les permutations de <code class="language-plaintext highlighter-rouge">T'</code>). Comme <code class="language-plaintext highlighter-rouge">i</code> prend tous les indice de <code class="language-plaintext highlighter-rouge">T</code>, on obtient au final toutes les permutations du tableau <code class="language-plaintext highlighter-rouge">T</code>.</li>
 </ol>
 
 <h3 id="complexite-permutations">complexité</h3>
 
-<p>La complexité de l’algorithme va dépendre de la taille $n$ du tableau <code class="language-plaintext highlighter-rouge">elements</code> : on note sa complexité $C(n)$. Comme il est récursif, on va chercher une équation de récurrence que satisfait $C(n)$ à résoudre.</p>
+<p>La complexité de l’algorithme va dépendre de la taille $n$ du tableau <code class="language-plaintext highlighter-rouge">T</code> : on note sa complexité $C(n)$. Comme il est récursif, on va chercher une équation de récurrence que satisfait $C(n)$ à résoudre.</p>
 
 <p>Complexité de chaque ligne :</p>
 
 <ol>
   <li>$\mathcal{O}(1)$ définition de la fonction</li>
   <li>$\mathcal{O}(1)$ un test</li>
-  <li>$\mathcal{O}(1)$ retour d’une constante
-4.</li>
+  <li>$\mathcal{O}(1)$ retour d’une constante</li>
   <li>$\mathcal{O}(1)$ affectation d’une constante</li>
   <li>une boucle de $n$ itérations</li>
   <li>$\mathcal{O}(1)$ une affectation d’un élément d’un tableau</li>
@@ -208,7 +252,7 @@ rendre P[i]
   <li>$C(n-1)$, c’est notre récursion.</li>
   <li>une boucle de $\mathcal{O}((n-1)!)$ itérations (toutes les permutations d’un tableau à n-1 éléments)</li>
   <li>$\mathcal{O}(n)$ car on crée un <strong>nouveau</strong> tableau de taille $n$</li>
-  <li>$\mathcal{O}(1)$, on ajoute un élément à la fin d’une liste (les tableau en pthon sont des listes, l’ajout d’un élément à la fin d’une liste est en temps constant)</li>
+  <li>$\mathcal{O}(1)$, on ajoute un élément à la fin d’une liste (les tableau en python sont des listes, l’ajout d’un élément à la fin d’une liste est en temps constant)</li>
   <li>$\mathcal{O}(1)$ retour d’une fonction</li>
 </ol>
 
@@ -403,7 +447,18 @@ Pour rendre le résultat graphiquem, vous pourrez représenter la courbe $(i, co
   <li><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.axhline.html">un axe horizontal</a></li>
 </ul>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<p>Eléments du code :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">NOMBRE_ITERATION</span> <span class="o">=</span> <span class="mi">100000</span>
+<span class="n">TABLEAU</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<span class="n">PERMUTATIONS</span> <span class="o">=</span> <span class="n">permutations</span><span class="p">(</span><span class="n">TABLEAU</span><span class="p">)</span>
+
+<span class="n">compte</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">PERMUTATIONS</span><span class="p">)</span>
+
+<span class="c1">#  ICI : on remplit le talbeau compte.
+</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 
 <span class="n">ax</span><span class="p">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">PERMUTATIONS</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
 
@@ -416,7 +471,7 @@ Pour rendre le résultat graphiquem, vous pourrez représenter la courbe $(i, co
 <span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p>Vous devirez obtenir le résultat suivant :</p>
+<p>Vous devriez obtenir le résultat suivant :</p>
 
 <p><img src="/cours_informatique/assets/cours/algorithmie/melange_knuth.png" alt="mélange de Knuth" style="margin: auto;display: block"></p>
 

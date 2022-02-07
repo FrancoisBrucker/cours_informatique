@@ -195,60 +195,12 @@
 
 <h3 id="borne-max">borne maximum</h3>
 
-<p>Etant donné un tableau $T$ de taille $n$, il doit exister un algorithme — disons <code class="language-plaintext highlighter-rouge">permutations(T)</code> — permettant de rendre toutes les permutations de celui-ci. Même si on ne sait pas exactement comment faire on <em>se doute</em> que ça doit exister…</p>
+<p>Etant donné un tableau $T$ de taille $n$, on peut utiliser l’algorithme <code class="language-plaintext highlighter-rouge">permutations(T)</code> de l’<a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/etude-melange.html#algo-toutes-permutations">étude sur les mélanges</a> qui rend toutes les permutations d’un tableau donné en $\mathcal{O}((n+2)!)$ opérations.</p>
 
-<p>Une permutation de $T$ étant la concaténation de la liste à un élément $[T[i]]$ ($0 \leq i &lt; n$)  et d’une permutation de $T’= T[:i] + T[i+1:]$ (le tableau des éléments d’indice différents de $i$ du tableau), on peut forger un algorithme récursif permettant de rendre toutes les permuations de $T$ :</p>
-
-<ol>
-  <li>on note $L$ une liste, initialement vide qui va contenir nos permutations.</li>
-  <li>pour chaque indice $0 \leq i &lt; n$ tel que $T[i]$ sera le premier élément de la permutation
-    <ol>
-      <li>créer le tableau $T_i = T[:i] + T[i+1:]$ qui est le tableau initial auquel on a supprimé l’indice $i$</li>
-      <li>trouver toutes les permuations $L’$ du tableau $T_i$ (s’il est non vide)</li>
-      <li>pour chaque permuation $T’$ de $L’$</li>
-      <li>ajoutez la permutatuin $T[i] + T’$ à $L$</li>
-    </ol>
-  </li>
-  <li>rendre $L$</li>
-</ol>
-
-<blockquote class="a-faire">
-  <p>Donnez (un majorant de) de sa complexité.</p>
-</blockquote>
-<details><summary>une solution possible</summary><div>
-<p>Sa complexité $C(n)$ satisfait l’équation de récurrence :
-\(\begin{array}{lcll}
-C(n) &amp; = &amp; n \cdot (&amp; \mbox{tous les indices }i\\
-     &amp; = &amp; (n-1) + &amp; \mbox{création de }T_i\\
-     &amp; = &amp; C(n-1) + &amp; \mbox{tous les permutaions du tableau sans }i\\
-     &amp; = &amp; (n-1)! \cdot (&amp; \mbox{pour chaque permuation de } $T_i$\\
-    &amp; = &amp; n ))&amp; \mbox{création d'une permutation de } T { commançant par }T_i\\
-\end{array}\)</p>
-
-<p>De là :</p>
-
-\[\begin{array}{lcl}
-C(n) &amp; = &amp; n \cdot (n-1) + n \cdot C(n-1) + n \cdot n!\\
-     &amp; = &amp; n \cdot C(n-1) + \mathcal{O}(n+1)!\\
-     &amp; = &amp; n \cdot ((n-1) \cdot C(n-1) + \mathcal{O}(n)!) + \mathcal{O}(n+1)!\\
-     &amp; = &amp; n \cdot (n-1) \cdot C(n-1) + n \cdot \mathcal{O}(n)! + \mathcal{O}(n+1)!\\
-     &amp; = &amp; n \cdot (n-1) \cdot C(n-1) + 2 \dot  \mathcal{O}(n+1)!\\
-     &amp; = &amp; \dots \\
-     &amp; = &amp; \Pi_{i=0}^k (n-i) \cdot C(n-k-1) + (k+1) \cdot \mathcal{O}(n+1)!\\
-    &amp; = &amp; \dots \\
-      &amp; = &amp; \Pi_{i=0}^{n-1} (n-i) \cdot C(0) + n \cdot \mathcal{O}(n+1)!\\
-    &amp; = &amp; n! \cdot C(0) + \mathcal{O}(n+2)!\\
-    &amp; = &amp; \mathcal{O}(n+2)!\\
-\end{array}\]
-
-</div></details>
-
-<p>L’algorithme <code class="language-plaintext highlighter-rouge">permutations([1, 3, 2])</code> rendra :</p>
+<p>Par exemple, l’algorithme <code class="language-plaintext highlighter-rouge">permutations([1, 3, 2])</code> rendra :</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
 </code></pre></div></div>
-
-<p>L’algorithme <code class="language-plaintext highlighter-rouge">permutations</code> de la solution possible est en $\mathcal{O}((n+2)!)$. On ne peut pas beaucoup faire mieux car on  doit rendre toutes les permutations pssibles du tableau en entrée, ce qui nous fera déjà $\mathcal{O}(n \cdot n!) = \mathcal{O}((n+1)!)$ opérations (il faut créer $n!$ tableaux de $n$ éléments).</p>
 
 <p>C’est une complexité énorme, mais cela nous permet de résoudre notre problème puisque l’algorithme <code class="language-plaintext highlighter-rouge">est_trie</code> permet de savoir si un tableau est trié en $\mathcal{O}(n)$ opérations : on peut résoudre le problème <em>“trie”</em> en énumérant toutes les permutations du tableau passé en paramètre et en vérifiant pour chacune d’entre elle s’il est trié ou non.</p>
 
@@ -360,8 +312,6 @@ C(n) &amp; = &amp; n \cdot (n-1) + n \cdot C(n-1) + n \cdot n!\\
 <p>Notre algorithme pour trier un tableau est un monstre de complexité. Il en existe de très simples et de complexité bien plus faible. Nous en montrons 2, classiques.</p>
 
 <h3 id="tri-selection">tri par sélection</h3>
-
-<p>Le principe du tri par sélection est l’inverse de l’algorithme de <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/etude-melange.html#algorithme-fisher-yates">Fisher-Yates</a>, plutôt que de placer un élément au hasard à l’indice $i$ du tableau, on choisi de placer le $i$-ème plus petit élément à l’indice $i$.</p>
 
 <p>L’algorithme procède alors ainsi : à chaque itération de l’algorithme, on place à l’indice $i$ du tableau son $i$-ème plus petit élément.</p>
 

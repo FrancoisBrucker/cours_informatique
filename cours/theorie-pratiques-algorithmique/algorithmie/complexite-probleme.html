@@ -203,7 +203,7 @@ si l’algorithme ne regarde pas la case $T[i^\star]$ lors de son exécution pou
   <p>Si les données n’ont pas de structure particulière, très souvent, la complexité d’un problème est au moins égal à la taille de ses données.</p>
 </blockquote>
 
-<p>En effet, si ce n’est pas vrai, c’est que notre problème est mal posé.</p>
+<p>Si ce n’est pas vrai, c’est que très souvent notre problème est mal posé et qu’on peut se passer de certaines entrées.</p>
 
 <h3 id="cas-particulier-des-tableaux-ordonnés">cas particulier des tableaux ordonnés</h3>
 
@@ -387,7 +387,7 @@ C(n) &amp; = &amp; 3 \cdot \mathcal{O}(1) + \\
 <p>On a alors la proprité suivante :</p>
 
 <blockquote class="note">
-  <p>Si un algorithme doit distinguer $n$ cas, il devra posséder au moins $\log_2(n)$ tests. Sa complexité sera ainsi supérieure à $\mathcal{O}(\ln(n))$</p>
+  <p>Si un algorithme doit distinguer parmi $n$ cas, il devra posséder au moins $\log_2(n)$ tests. Sa complexité sera ainsi supérieure à $\mathcal{O}(\ln(n))$</p>
 </blockquote>
 
 <p>Comme il y a $n+1$ cas au moins à traiter, notre algorithme sera de complexité supérieure à à $\mathcal{O}(\ln(n + 1)) = \mathcal{O}(\ln(n))$ opérations.</p>
