@@ -224,6 +224,8 @@
 
 <h3 id="installation-coverage">installation</h3>
 
+<h4 id="coverage-pour-pytest">coverage pour pytest</h4>
+
 <p>On va utiliser le <em>code coverage</em> de pytest :</p>
 
 <details><summary>sous linux et mac</summary><div>
@@ -238,27 +240,32 @@
 
 </div></details>
 
+<h4 id="extension-vscode">extension vscode</h4>
+
 <p>Puis l’extension de vscode qui permet de rendre compte du coverage dans l’interface. Tapez <a href="https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters">Coverage Gutters</a> dans le <em>menu affichage &gt; extensions</em>.</p>
 
 <h3 id="code-coverge">utilisation</h3>
 
+<p>La documentation complète du module est disponible à cette adresse : <a href="https://pytest-cov.readthedocs.io/en/latest/">https://pytest-cov.readthedocs.io/en/latest/</a>.</p>
+
+<p>Ce module utilise <a href="https://coverage.readthedocs.io/en/6.3.1/index.html">coverage</a>, qui est le module de couverture de code utilisé. Il est très configurable.</p>
+
 <h4 id="sans-lextension">sans l’extension</h4>
 
-<p>Dans un terminal tapez <code class="language-plaintext highlighter-rouge">pytest --cov=.</code>. Cela exécute les tests à partir du dossier courant (<code class="language-plaintext highlighter-rouge">.</code>) avec le coverage qui sera retourné au format texte.</p>
+<p>Dans un terminal tapez <code class="language-plaintext highlighter-rouge">python3 -m pytest --cov=.</code>. Cela exécute les tests à partir du dossier courant (<code class="language-plaintext highlighter-rouge">.</code>) avec le coverage qui sera retourné au format texte.</p>
 
-<blockquote>
-  <p>si la commande <code class="language-plaintext highlighter-rouge">pytest</code> n’est pas reconnue, mais que <code class="language-plaintext highlighter-rouge">python</code> l’est vous pouvez exécuter pytest, via python en tapant la commande <code class="language-plaintext highlighter-rouge">python3 -m pytest --cov=.</code></p>
-</blockquote>
+<p>Si l’on veut les ligne manquantes, on peut utiliser la commande : <code class="language-plaintext highlighter-rouge">--cov-report term-missing</code></p>
+
+<p>Enfin, pour avoir un rapport html complet on peut utiliser la ligne : <code class="language-plaintext highlighter-rouge">python3 -m pytest --cov=. --cov-report html</code>.</p>
 
 <h4 id="utilisation-de-lextension">utilisation de l’extension</h4>
 
-<p>La commande <code class="language-plaintext highlighter-rouge">pytest --cov=.</code> crée un fichier de coverage qui s’appelle <code class="language-plaintext highlighter-rouge">.coverage</code>. Il n’est cependant pas lisible dans ce format par défaut par l’extension. Il faut générer un format de sorti en <a href="https://fr.wikipedia.org/wiki/Extensible_Markup_Language">xml</a> avec la commande : <code class="language-plaintext highlighter-rouge">pytest --cov=.  --cov-report xml:cov.xml</code></p>
+<p>La commande <code class="language-plaintext highlighter-rouge">python3 -m pytest --cov=.</code> crée un fichier de coverage qui s’appelle <code class="language-plaintext highlighter-rouge">.coverage</code>. Il n’est cependant pas lisible dans ce format par défaut par l’extension. Il faut générer un format de sorti en <a href="https://fr.wikipedia.org/wiki/Extensible_Markup_Language">xml</a> avec la commande : <code class="language-plaintext highlighter-rouge">python3 -m pytest --cov=.  --cov-report xml:cov.xml</code></p>
 
 <blockquote>
-  <p>Si le petit <em>watch</em> n’est pas visible, vous pouvez le faire à la main dans avec la <a href="/cours_informatique/tutos/editeur/vsc/installation/configuration/2021/09/03/vsc-installation-et-prise-en-main.html#palette-de-commande">palette de commande</a>)
+  <p>Si le petit <em>watch</em> n’est pas visible dans la barre de status, vous pouvez le faire à la main dans avec la <a href="/cours_informatique/tutos/editeur/vsc/installation/configuration/2021/09/03/vsc-installation-et-prise-en-main.html#palette-de-commande">palette de commande</a>)
  <em>Coverage Gutters: Display Coverage</em>.</p>
 </blockquote>
-
 
   </div>
 

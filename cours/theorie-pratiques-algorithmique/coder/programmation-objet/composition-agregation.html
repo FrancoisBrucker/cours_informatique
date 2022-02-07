@@ -301,6 +301,8 @@ composition, d’agrégation et d’attributs de classe.</p>
 
 <p>Dans la mesure du possible, on ne teste pas la valeur des attributs. On utilise des méthodes publique pour tester. En effet les attributs montrent l’implémentation de la classe et pas son usage.</p>
 
+<h3 id="exemple">exemple</h3>
+
 <p>Par exemple, pour notre panier. Fichier <em>“test_panier.py”</em> :</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">panier</span> <span class="kn">import</span> <span class="n">Panier</span>
@@ -338,11 +340,71 @@ composition, d’agrégation et d’attributs de classe.</p>
   </ul>
 </blockquote>
 
-<h3 id="projet-final">projet final</h3>
+<h3 id="couverture-code">couverture de code</h3>
+
+<p>Les tests doivent nous permettre d’avoir confiance dans la qualité du code. Il faut donc que les tests vérifient tous les cas du code (passent bien par tous les blocs <code class="language-plaintext highlighter-rouge">alors</code> et <code class="language-plaintext highlighter-rouge">sinon</code> du code par exemple).</p>
+
+<p>Un outil pour vérifier cela est la <a href="https://fr.wikipedia.org/wiki/Couverture_de_code">couverture de code</a>. On exécute les tests et on regarde, fichier par fichier quelles sont les lignes qui ont été vue pour ces tests.</p>
+
+<p>Le <a href="/cours_informatique/tutos/editeur/vsc/installation/configuration/python/2021/09/14/vsc-python-modules-supplementaires.html#code-coverage">tuto couverture de code</a> vous montre comment l’installer. Son fonctionnement est le suivant :</p>
+
+<ol>
+  <li>on exécute les tests dans le terminal en ajoutant l’extension coverage  <code class="language-plaintext highlighter-rouge">python3 -m pytest --cov=.</code>
+</li>
+  <li>le résultat est donné dans le terminal.</li>
+</ol>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------- coverage: platform darwin, python 3.9.9-final-0 -----------
+Name             Stmts   Miss  Cover
+------------------------------------
+main.py             10     10     0%
+panier.py           13      0   100%
+test_panier.py      16      0   100%
+------------------------------------
+TOTAL               39     10    74%
+</code></pre></div></div>
+
+<p>On voit que l’exécution des tests à eu besoin d’utiliser 100% du fichier <em>“test_panier.py”</em> (ce qui est normal) et 100% du fichier <em>“panier.py”</em>. Le fichier <em>“main.py”</em> n’a pas été utilisé du tout (aucune des 10 lignes n’a été vue), ce qui est normal.</p>
+
+<blockquote class="note">
+  <p>Il faut tenter de passer par 100% du code utile dans nos tests.</p>
+</blockquote>
+
+<p>Pour s’en rendre compte, on peut commenter le test <code class="language-plaintext highlighter-rouge">test_supprime_dans_panier</code> et re-exécuter les tests. j’obtiens alors :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------- coverage: platform darwin, python 3.9.9-final-0 -----------
+Name             Stmts   Miss  Cover
+------------------------------------
+main.py             10     10     0%
+panier.py           13      3    77%
+test_panier.py      11      0   100%
+------------------------------------
+TOTAL               34     13    62%
+</code></pre></div></div>
+
+<p>3 lignes de <code class="language-plaintext highlighter-rouge">panier.py</code> n’ont pas été vue. POur savoir exactement les quelles, la commande <code class="language-plaintext highlighter-rouge">python3 -m pytest --cov=. --cov-report term-missing</code> donne :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------- coverage: platform darwin, python 3.9.9-final-0 -----------
+Name             Stmts   Miss  Cover   Missing
+----------------------------------------------
+main.py             10     10     0%   1-17
+panier.py           13      3    77%   15-18
+test_panier.py      11      0   100%
+----------------------------------------------
+TOTAL               34     13    62%
+</code></pre></div></div>
+
+<p>C’est bien l’intérieur de la fonction <code class="language-plaintext highlighter-rouge">test_supprime_dans_panier</code>.</p>
+
+<blockquote>
+  <p>Notez que la ligne contenant la définition de la fonction a été vue. En effet, lors de l’import du fichier <em>“panier.py”</em>, le ficher est lu, donc les noms des fonctions sont mises dans l’espace de nom du module.</p>
+</blockquote>
+
+<h2 id="projet-final">projet final</h2>
 
 <p>Vous devez avoir 3 fichiers :</p>
 
-<h4 id="panierpy"><em>“panier.py”</em></h4>
+<h3 id="panierpy"><em>“panier.py”</em></h3>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Panier</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -361,8 +423,8 @@ composition, d’agrégation et d’attributs de classe.</p>
          
 </code></pre></div></div>
 
-<h4 id="le-programme-principal-mainpy">le programme principal <em>“main.py”</em>
-</h4>
+<h3 id="le-programme-principal-mainpy">le programme principal <em>“main.py”</em>
+</h3>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">panier</span> <span class="kn">import</span> <span class="n">Panier</span>
 
@@ -376,7 +438,7 @@ composition, d’agrégation et d’attributs de classe.</p>
 <span class="k">print</span><span class="p">(</span><span class="n">panier</span><span class="p">.</span><span class="n">montre_panier</span><span class="p">())</span>
 </code></pre></div></div>
 
-<h4 id="test_panierpy"><em>“test_panier.py”</em></h4>
+<h3 id="test_panierpy"><em>“test_panier.py”</em></h3>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">panier</span> <span class="kn">import</span> <span class="n">Panier</span>
 
@@ -404,8 +466,6 @@ composition, d’agrégation et d’attributs de classe.</p>
 
     <span class="k">assert</span> <span class="n">panier</span><span class="p">.</span><span class="n">montre_panier</span><span class="p">()</span> <span class="o">==</span> <span class="nb">tuple</span><span class="p">()</span>
 </code></pre></div></div>
-
-<p>Pour exécutez les tests tapez dans un terminal : <code class="language-plaintext highlighter-rouge">python -m pytest test_panier.py</code>.</p>
 
   </div>
 

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/cours_informatique/feed.xml" rel="self" type="application/atom+xml" /><link href="/cours_informatique/" rel="alternate" type="text/html" /><updated>2022-02-07T08:12:48+00:00</updated><id>/cours_informatique/feed.xml</id><title type="html">cours d’informatique</title><subtitle>Support de cours/td d'informatique à l'école centrale marseille.</subtitle><entry><title type="html">utiliser un terminal</title><link href="/cours_informatique/tutos/systeme/cli/terminal/2021/12/02/terminal-utilisation.html" rel="alternate" type="text/html" title="utiliser un terminal" /><published>2021-12-02T00:00:00+00:00</published><updated>2021-12-02T00:00:00+00:00</updated><id>/cours_informatique/tutos/systeme/cli/terminal/2021/12/02/terminal-utilisation</id><content type="html" xml:base="/cours_informatique/tutos/systeme/cli/terminal/2021/12/02/terminal-utilisation.html">&lt;blockquote class=&quot;chemin&quot;&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/cours_informatique/feed.xml" rel="self" type="application/atom+xml" /><link href="/cours_informatique/" rel="alternate" type="text/html" /><updated>2022-02-07T09:51:03+00:00</updated><id>/cours_informatique/feed.xml</id><title type="html">cours d’informatique</title><subtitle>Support de cours/td d'informatique à l'école centrale marseille.</subtitle><entry><title type="html">utiliser un terminal</title><link href="/cours_informatique/tutos/systeme/cli/terminal/2021/12/02/terminal-utilisation.html" rel="alternate" type="text/html" title="utiliser un terminal" /><published>2021-12-02T00:00:00+00:00</published><updated>2021-12-02T00:00:00+00:00</updated><id>/cours_informatique/tutos/systeme/cli/terminal/2021/12/02/terminal-utilisation</id><content type="html" xml:base="/cours_informatique/tutos/systeme/cli/terminal/2021/12/02/terminal-utilisation.html">&lt;blockquote class=&quot;chemin&quot;&gt;
   &lt;p&gt;&lt;strong&gt;prérequis :&lt;/strong&gt;&lt;/p&gt;
 
   &lt;ul&gt;
@@ -1505,6 +1505,8 @@ hello
 
 &lt;h3 id=&quot;installation-coverage&quot;&gt;installation&lt;/h3&gt;
 
+&lt;h4 id=&quot;coverage-pour-pytest&quot;&gt;coverage pour pytest&lt;/h4&gt;
+
 &lt;p&gt;On va utiliser le &lt;em&gt;code coverage&lt;/em&gt; de pytest :&lt;/p&gt;
 
 &lt;details&gt;&lt;summary&gt;sous linux et mac&lt;/summary&gt;&lt;div&gt;
@@ -1519,24 +1521,30 @@ hello
 
 &lt;/div&gt;&lt;/details&gt;
 
+&lt;h4 id=&quot;extension-vscode&quot;&gt;extension vscode&lt;/h4&gt;
+
 &lt;p&gt;Puis l’extension de vscode qui permet de rendre compte du coverage dans l’interface. Tapez &lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters&quot;&gt;Coverage Gutters&lt;/a&gt; dans le &lt;em&gt;menu affichage &amp;gt; extensions&lt;/em&gt;.&lt;/p&gt;
 
 &lt;h3 id=&quot;code-coverge&quot;&gt;utilisation&lt;/h3&gt;
 
+&lt;p&gt;La documentation complète du module est disponible à cette adresse : &lt;a href=&quot;https://pytest-cov.readthedocs.io/en/latest/&quot;&gt;https://pytest-cov.readthedocs.io/en/latest/&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Ce module utilise &lt;a href=&quot;https://coverage.readthedocs.io/en/6.3.1/index.html&quot;&gt;coverage&lt;/a&gt;, qui est le module de couverture de code utilisé. Il est très configurable.&lt;/p&gt;
+
 &lt;h4 id=&quot;sans-lextension&quot;&gt;sans l’extension&lt;/h4&gt;
 
-&lt;p&gt;Dans un terminal tapez &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pytest --cov=.&lt;/code&gt;. Cela exécute les tests à partir du dossier courant (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.&lt;/code&gt;) avec le coverage qui sera retourné au format texte.&lt;/p&gt;
+&lt;p&gt;Dans un terminal tapez &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python3 -m pytest --cov=.&lt;/code&gt;. Cela exécute les tests à partir du dossier courant (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.&lt;/code&gt;) avec le coverage qui sera retourné au format texte.&lt;/p&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;si la commande &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pytest&lt;/code&gt; n’est pas reconnue, mais que &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python&lt;/code&gt; l’est vous pouvez exécuter pytest, via python en tapant la commande &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python3 -m pytest --cov=.&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Si l’on veut les ligne manquantes, on peut utiliser la commande : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--cov-report term-missing&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Enfin, pour avoir un rapport html complet on peut utiliser la ligne : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python3 -m pytest --cov=. --cov-report html&lt;/code&gt;.&lt;/p&gt;
 
 &lt;h4 id=&quot;utilisation-de-lextension&quot;&gt;utilisation de l’extension&lt;/h4&gt;
 
-&lt;p&gt;La commande &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pytest --cov=.&lt;/code&gt; crée un fichier de coverage qui s’appelle &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.coverage&lt;/code&gt;. Il n’est cependant pas lisible dans ce format par défaut par l’extension. Il faut générer un format de sorti en &lt;a href=&quot;https://fr.wikipedia.org/wiki/Extensible_Markup_Language&quot;&gt;xml&lt;/a&gt; avec la commande : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pytest --cov=.  --cov-report xml:cov.xml&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;La commande &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python3 -m pytest --cov=.&lt;/code&gt; crée un fichier de coverage qui s’appelle &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.coverage&lt;/code&gt;. Il n’est cependant pas lisible dans ce format par défaut par l’extension. Il faut générer un format de sorti en &lt;a href=&quot;https://fr.wikipedia.org/wiki/Extensible_Markup_Language&quot;&gt;xml&lt;/a&gt; avec la commande : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python3 -m pytest --cov=.  --cov-report xml:cov.xml&lt;/code&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;Si le petit &lt;em&gt;watch&lt;/em&gt; n’est pas visible, vous pouvez le faire à la main dans avec la &lt;a href=&quot;/cours_informatique/tutos/editeur/vsc/installation/configuration/2021/09/03/vsc-installation-et-prise-en-main.html#palette-de-commande&quot;&gt;palette de commande&lt;/a&gt;)
+  &lt;p&gt;Si le petit &lt;em&gt;watch&lt;/em&gt; n’est pas visible dans la barre de status, vous pouvez le faire à la main dans avec la &lt;a href=&quot;/cours_informatique/tutos/editeur/vsc/installation/configuration/2021/09/03/vsc-installation-et-prise-en-main.html#palette-de-commande&quot;&gt;palette de commande&lt;/a&gt;)
  &lt;em&gt;Coverage Gutters: Display Coverage&lt;/em&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;</content><author><name></name></author><category term="tutos" /><category term="editeur" /><category term="vsc" /><category term="installation" /><category term="configuration" /><category term="python" /><summary type="html">Configuration d’outils supplémentaires pour visual studio code et le développement en python.</summary></entry><entry><title type="html">vscode et python</title><link href="/cours_informatique/tutos/editeur/vsc/installation/configuration/python/2021/09/14/vsc-python.html" rel="alternate" type="text/html" title="vscode et python" /><published>2021-09-14T00:00:00+00:00</published><updated>2021-09-14T00:00:00+00:00</updated><id>/cours_informatique/tutos/editeur/vsc/installation/configuration/python/2021/09/14/vsc-python</id><content type="html" xml:base="/cours_informatique/tutos/editeur/vsc/installation/configuration/python/2021/09/14/vsc-python.html">&lt;blockquote class=&quot;chemin&quot;&gt;
   &lt;p&gt;prérequis&lt;/p&gt;
