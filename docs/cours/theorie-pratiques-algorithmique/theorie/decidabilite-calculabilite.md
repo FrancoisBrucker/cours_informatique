@@ -70,7 +70,11 @@ Notez que tout problème décidable est reconnaissable (à la place de répondre
 
 ### exemple des polynômes à coefficients dans $\mathbb{Z}$ {#poli-z}
 
-Soit le problème de décision suivant : Soit $P(X)$ un [polynôme](https://fr.wikipedia.org/wiki/Polyn%C3%B4me) à coefficients dans $\mathbb{Z}$. Possède-t-il une [racine](https://fr.wikipedia.org/wiki/Racine_d%27un_polyn%C3%B4me) dans $\mathbb{N}$ (un entier $a$ tel que $P(a) = 0$) ?
+Soit le problème de décision suivant :
+
+* **nom** : racine polynôme
+* **entrées** : $P(X)$ un [polynôme](https://fr.wikipedia.org/wiki/Polyn%C3%B4me) à coefficients dans $\mathbb{Z}$
+* **question** : $P(X)$ Possède-t-il une [racine](https://fr.wikipedia.org/wiki/Racine_d%27un_polyn%C3%B4me) dans $\mathbb{N}$ (un entier $a$ tel que $P(a) = 0$) ?
 
 {% details ce problème est reconnaissable %}
 
@@ -88,7 +92,11 @@ On peut borner les racines d'un polynôme. Voir par exemple [le corollaire de ce
 
 Il existe bien sûr des langages qui sont reconnaissables et non décidables, par exemple une généralisation du problème précédent :
 
-> Savoir si un [polynôme à plusieurs variables](https://fr.wikipedia.org/wiki/Polyn%C3%B4me_en_plusieurs_ind%C3%A9termin%C3%A9es) à coefficients dans $\mathbb{Z}$ admet une racine dans $\mathbb{N}$ est un problème **reconnaissable** mais **indécidable**.
+* **nom** : racine polynôme plusieurs variables
+* **entrées** : $P(X)$ un [polynôme à plusieurs variables](https://fr.wikipedia.org/wiki/Polyn%C3%B4me_en_plusieurs_ind%C3%A9termin%C3%A9es) à coefficients dans $\mathbb{Z}$
+* **question** : $P(X)$ Possède-t-il une [racine](https://fr.wikipedia.org/wiki/Racine_d%27un_polyn%C3%B4me) dans $\mathbb{N}$ (un entier $a$ tel que $P(a) = 0$) ?
+
+> *"racine polynôme plusieurs variables"* est un problème **reconnaissable** mais **indécidable**.
 {: .note}
 
 **Félicitations !** Vous venez de rencontrer votre premier problème que ne pourra pas résoudre un ordinateur.
@@ -119,9 +127,15 @@ L'algorithme est très simple : à partir d'un entier $n$, il le divise par 2 s'
 
 Personne ne sait (à l'heure où je tape ces caractères) si cet algorithme s'arrête pour tout $n$.
 
-De façon plus générale :
-
-> [Le problème](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_l%27arr%C3%AAt) de décision de savoir si un algorithme $M$ va s'arrêter sur l'entrée $E$ est indécidable.
+De façon plus générale le problème de décision :
+>
+> * **nom** : [Arrêt](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_l%27arr%C3%AAt)
+> * **entrées** :
+>   * un algorithme $M$
+>   * une entrée $E$
+> * **question** : $M$ s'arrête sur l'entrée $E$ ?
+>
+> est **indécidable**.
 {: .note}
 {% details preuve %}
 
@@ -154,7 +168,13 @@ Tout comme [la preuve du théorème de Cantor]({% link cours/theorie-pratiques-a
 
 On peut montrer que le cas particulier suivant est lui aussi indécidable :
 
-> Le problème consistant à savoir si un algorithme $M$ va s'arrêter sur l'entrée vide est indécidable.
+> Le problème :
+>
+> * **nom** : Arrêt vide
+> * **entrée** : un algorithme $M$
+> * **question** : $M$ s'arrête sur l'entrée vide ?
+>
+> est **indécidable**.
 {: .note}
 {% details preuve %}
 Si $E$ est une entrée et $M$ un algorithme, il existe un algorithme $M_E$ qui commente par affecter l'entrée $E$ à une variable, puis exécute l'algorithme $M(E)$. On a donc que $M$ accepte $E$ que si et seulement si $M_E$ accepte le mot vide.
@@ -163,11 +183,15 @@ De là, un algorithme qui pourrait décider si $M$ accepte ou non le mot vide d�
 
 {% enddetails %}
 
-Il faut bien comprendre l'énoncé ci-dessus. Il n'existe pas de décideur qui prend comme entrée **et** un algorithme **et** une entrée et qui rend *Vrai* si l'algorithme va s'arrêter : l'algorithme et le mot d'entrée sont les paramètres du décideur.
+Il faut bien comprendre l'énoncé ci-dessus.
+
+> Il n'existe pas de décideur qui prend comme entrée **et** un algorithme **et** une entrée et qui rend *Vrai* si l'algorithme va s'arrêter : l'algorithme et le mot d'entrée sont les paramètres du décideur.
+{: .note}
 
 Cela ne contredit pas le fait qu'on puisse créer un décideur spécifique à un algorithme qui réponde *vrai* ou *faux* selon le paramètre d'entrée de celle-ci. C'est l'algorithme général, indépendant de l'algorithme à tester, qui n'existe pas.
 
-> lorsque l'on parle de décidabilité ou de problème il faut toujours bien faire attention à ce qui est un paramètre d'entrée et ce qui est donné.
+> Lorsque l'on parle de décidabilité ou de problème **il faut toujours bien faire attention à ce qui est un paramètre d'entrée et ce qui est donné**.
+{: .note}
 
 Le théorème d'indécidabilité de l'arrêt d'un algorithme est fondamental théoriquement. Il est à la base de nombreux contre-exemples et :
 
@@ -176,9 +200,14 @@ Le théorème d'indécidabilité de l'arrêt d'un algorithme est fondamental th�
 
 ### exemple de la reconnaissance d'algorithmes
 
+Soit $P$ un ensemble d'algorithme. Par exemple, 
 > savoir si un algorithme résoud un problème donné par son langage
 > conséquence sur la preuve de programme. Thm de Rice
 {:.tbd}
+
+indécidable en général. Mais dans des cas particulier ok. preuve d'un algorihtme ok. Algor général pour tout prouver non.
+
+> Hilbert.
 
 ## calculabilité
 
