@@ -128,7 +128,8 @@
   <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/fonctions.html">fonctions</a></li>
   <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/algorithmes-fonctions-pseudo-code.html">Algorithmes, fonctions et pseudo-code</a></li>
   <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/machine-turing.html">machines de Turing</a></li>
-  <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/decidabilite-calculabilite.html">décidabilité et calculabilité</a></li>
+  <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/decidabilite.html">décidabilité</a></li>
+  <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/calculabilite.html">calculabilité</a></li>
 </ol>
 
 <h3 id="coder">coder</h3>
@@ -313,18 +314,29 @@ graph.links.push({
 })
 
 graph.nodes.push({
-  id: 'décidabilité et calculabilité',
-  link: "/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/decidabilite-calculabilite.html",
+  id: 'décidabilité',
+  link: "/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/decidabilite.html",
   group: groups.theorie
-})
-graph.links.push({
-  source: 'machine de Turing',
-  target: 'décidabilité et calculabilité'
 })
 
 graph.links.push({
   source: 'Algorithmes, fonctions et pseudo-code',
-  target: 'décidabilité et calculabilité'
+  target: 'décidabilité'
+})
+
+graph.nodes.push({
+  id: 'calculabilité',
+  link: "/cours_informatique/cours/theorie-pratiques-algorithmique/theorie/calculabilite.html",
+  group: groups.theorie
+})
+graph.links.push({
+  source: 'machine de Turing',
+  target: 'calculabilité'
+})
+
+graph.links.push({
+  source: 'décidabilité',
+  target: 'calculabilité'
 })
 
 graph.nodes.push({
