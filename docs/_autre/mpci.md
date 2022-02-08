@@ -108,7 +108,8 @@ Au programme :
 #### mercredi {#m-6}
 
 1. [machine de Turing]({% link cours/theorie-pratiques-algorithmique/theorie/machine-turing.md %})
-2. [décidabilité et calculabilité]({% link cours/theorie-pratiques-algorithmique/theorie/decidabilite-calculabilite.md %})
+2. [décidabilité]({% link cours/theorie-pratiques-algorithmique/theorie/decidabilite.md %})
+3. [calculabilité]({% link cours/theorie-pratiques-algorithmique/theorie/calculabilite.md %})
 
 #### vendredi {#v-6}
 

@@ -339,7 +339,7 @@ En utilisant le théorème de Cantor et le fait qu'il y ait autant de fonction $
 > Il existe des fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ qui ne peuvent pas être calculées par des algorithmes.
 {: .note}
 
-On ne peut pas encore en exhiber une, mais [ça viendra]({% link cours/theorie-pratiques-algorithmique/theorie/decidabilite-calculabilite.md %}#fct-non-calculable)
+On ne peut pas encore en exhiber une, mais [ça viendra]({% link cours/theorie-pratiques-algorithmique/theorie/calculabilite.md %}#fct-non-calculable)
 
 #### pour la bonne bouche {#r-et-n}
 

@@ -15,16 +15,14 @@ Que peut ou pas faire un algorithme.
 * [fonctions]({% link cours/theorie-pratiques-algorithmique/theorie/fonctions.md %})
 * [Algorithmes, fonctions et pseudo-code]({% link cours/theorie-pratiques-algorithmique/theorie/algorithmes-fonctions-pseudo-code.md %})
 * [machine de Turing]({% link cours/theorie-pratiques-algorithmique/theorie/machine-turing.md %})
-* [décidabilité et calculabilité]({% link cours/theorie-pratiques-algorithmique/theorie/decidabilite-calculabilite.md %})
+* [décidabilité]({% link cours/theorie-pratiques-algorithmique/theorie/decidabilite.md %})
+* [calculabilité]({% link cours/theorie-pratiques-algorithmique/theorie/calculabilite.md %})
 
 * algorithmes et fonctions
 
 * logique = formule logique = sat
 * problème de décision : sous ensemble vrai d'un ensemble. se dérive de langage décidable
 
-> calculabilité :
-> théorème de rice sur le langage ${(a, M(a)) | a \in L}$ : preuve de programme automatique impossible
-> fonction calculable d'intérêt (Takeuchi : compliqué pour n truc simple. Multiplicité des algos, ackerman : boucle for et while important
 > ref à remanier propre)
 {: .tbd}
 

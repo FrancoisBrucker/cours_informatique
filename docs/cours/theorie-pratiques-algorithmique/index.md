@@ -58,7 +58,8 @@ Ce cours est composée de trois grandes parties qui s'enchevêtrent.
 1. [fonctions]({% link cours/theorie-pratiques-algorithmique/theorie/fonctions.md %})
 2. [Algorithmes, fonctions et pseudo-code]({% link cours/theorie-pratiques-algorithmique/theorie/algorithmes-fonctions-pseudo-code.md %})
 3. [machines de Turing]({% link cours/theorie-pratiques-algorithmique/theorie/machine-turing.md %})
-4. [décidabilité et calculabilité]({% link cours/theorie-pratiques-algorithmique/theorie/decidabilite-calculabilite.md %})
+4. [décidabilité]({% link cours/theorie-pratiques-algorithmique/theorie/decidabilite.md %})
+5. [calculabilité]({% link cours/theorie-pratiques-algorithmique/theorie/calculabilite.md %})
 
 ### coder
 
@@ -234,18 +235,29 @@ graph.links.push({
 })
 
 graph.nodes.push({
-  id: 'décidabilité et calculabilité',
-  link: "{% link cours/theorie-pratiques-algorithmique/theorie/decidabilite-calculabilite.md %}",
+  id: 'décidabilité',
+  link: "{% link cours/theorie-pratiques-algorithmique/theorie/decidabilite.md %}",
   group: groups.theorie
-})
-graph.links.push({
-  source: 'machine de Turing',
-  target: 'décidabilité et calculabilité'
 })
 
 graph.links.push({
   source: 'Algorithmes, fonctions et pseudo-code',
-  target: 'décidabilité et calculabilité'
+  target: 'décidabilité'
+})
+
+graph.nodes.push({
+  id: 'calculabilité',
+  link: "{% link cours/theorie-pratiques-algorithmique/theorie/calculabilite.md %}",
+  group: groups.theorie
+})
+graph.links.push({
+  source: 'machine de Turing',
+  target: 'calculabilité'
+})
+
+graph.links.push({
+  source: 'décidabilité',
+  target: 'calculabilité'
 })
 
 graph.nodes.push({

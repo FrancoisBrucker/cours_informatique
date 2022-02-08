@@ -94,7 +94,7 @@ C'est ainsi un outil simple qui capture merveilleusement les différentes possib
 * un jeu d'instruction pour créer des algorithmes
 * un ensemble minimal permettant de créer tous les pseudo-code
 
-### thèse de Church-Turing
+### thèse de Church-Turing {#church-turing}
 
 Toutes les tentatives de généraliser le modèle (essayer de calculer plus de fonctions que celle atteignable pas un pseudo-code) ou de supprimer des règles tout en en conservant l'expressivité ont échouées. Ceci conforte l'idée selon la quelle :
 
