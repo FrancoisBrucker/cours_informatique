@@ -210,17 +210,42 @@
   <li>preuve : par invariant de boucle.</li>
 </ul>
 
-<p>Ici notre invariant est : <em>“A la fin de l’itération $i$ de la boucle, $m$ vaut le maximum des $i$ premiers élément du tableau.”</em></p>
+<p>Pour trouver l’invariant, on remarque que si $t’$ est le tableau des $n-1$ premiers éléments de $t$ (<code class="language-plaintext highlighter-rouge">t'= t[:-1]</code>), l’algorithme va :</p>
 
-<p>Après la première itération de la boucle, comme $m$ vaut initialement le premier élément du tableau, on a que $m=t[0]$ qui est bien le maximum des 1 premier éléments du tableau. L’invariant est vérifié à la fin  de l’itération $1$.</p>
+<ol>
+  <li>faire exactement pareil que pour $t’$</li>
+  <li>vérifiera $m$ avec le dernier élément de $t$.</li>
+</ol>
 
-<p>On suppose l’invariant vrai à la fin de l’itération $i$. A la fin de l’itération $i+1$, $m’$ (la valeur de $m$ à l’issue de la boucle d’itération $i + 1$) vaut soit $m$ (la valeur de $m$ au début de la boucle d’itération $i +1 $) soit $x’$ (la variable $x$ affectée lors de) qui vaut la $i + 1$ème valeur du tableau.</p>
+<p>Notre invariant doit donc lier les $i$ premiers éléments du tableaux à la $i$ème itération : $m$ doit être le plus grand éléments des $i$ premiers éléments du tableaux pour que notre algorithme puisse fonctionner et avec $t’$ et avec $t$.</p>
 
-<p>Comme l’invariant est vrai à la fin la boucle d’itération $i$, $m$ vaut le maximum du tableau sur les $i$ premiers éléments. Or $m’ = \max(m, x)$, donc $m’$ vaut bien le maximum du tableau sur les $i + 1$ premiers éléments.</p>
+<p>Lorsque l’on étudie des algorithmes avec des boucles <code class="language-plaintext highlighter-rouge">for</code> il est parfois plus simple d’exhiber directement le nombre d’itérations pour formaliser l’invariant. On utilise alors l’algorithme suivant (qui est strictement équivalent à l’algorithme <code class="language-plaintext highlighter-rouge">maximum</code>) :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">maximum</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">m</span> <span class="o">&lt;</span> <span class="n">x</span><span class="p">:</span>
+            <span class="n">m</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="k">return</span> <span class="n">m</span>
+</code></pre></div></div>
+
+<p>L’invariant est alors : <em>“A la fin d’une itération, $m$ vaut le maximum des $i+1$ premiers élément du tableau.”</em></p>
+
+<p>Après la première itération de la boucle, comme $m$ vaut initialement le premier élément du tableau, on a que $m=t[0]$ qui est bien le maximum des $0+1=1$ premiers éléments du tableau. L’invariant est vérifié à la fin  de la première itération où $i=0$.</p>
+
+<p>On suppose l’invariant vrai à la fin d’une itération. A la fin de l’itération suivante, $m’$ (la valeur de $m$ à l’issue de cette itération) vaut soit $m$ (la valeur de $m$ au début de l’itération) soit $x’=t[i’]$ ($i’$ étant la valeur de $i$ pour cette nouvelle itération). Comme $i’ = i+1$ et que l’invariant est vrai à la fin de l’itération précédente :</p>
+
+<ul>
+  <li>$m$ vaut le maximum du tableau sur les $i+1$ premiers éléments (hypothèse de récurrence)</li>
+  <li>$m’ = \max(m, x’) = \max(m, t[i’]) = \max(m, t[i + 1])$ (ce qu’il se passe dans l’itération suivante)</li>
+</ul>
+
+<p>On en conclut que $m’$ vaut bien le maximum du tableau sur les $i + 2$ premiers éléments.</p>
 
 <p>Notre invariant est vérifié.</p>
 
-<p>Il est donc aussi vrai à la fin des itérations : $m$ vaut le maximum du tableau à la fin de la boucle for.</p>
+<p>L’invariant est donc aussi vrai à la fin des itérations : $m$ vaut le maximum du tableau à la fin de la boucle <code class="language-plaintext highlighter-rouge">for</code> : $m$ est le maximum des valeurs du tableau.</p>
 
 <h2 id="division-euclidienne">division euclidienne</h2>
 
