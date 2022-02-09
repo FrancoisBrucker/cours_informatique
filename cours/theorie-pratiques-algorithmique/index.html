@@ -144,6 +144,8 @@
   <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/programmation-objet/classes-et-objets.html">classes et objets</a></li>
   <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/programmation-objet/composition-agregation.html">composition et agrégation</a></li>
   <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/programmation-objet/projet-composition-agregation.html">projet : composition et agrégation</a></li>
+  <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/programmation-objet/heritage.html">héritage</a></li>
+  <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/programmation-objet/projet-heritage.html">projet : héritage</a></li>
 </ol>
 
 <h3 id="autre">autre</h3>
@@ -584,6 +586,33 @@ id: "projet : composition et agrégation",
 graph.links.push({
   source: "composition et agrégation",
   target: "projet : composition et agrégation"
+})
+
+graph.nodes.push({
+id: "héritage",
+  link: "/cours_informatique/cours/theorie-pratiques-algorithmique/coder/programmation-objet/heritage.html",
+  group: groups.code
+})
+
+graph.links.push({
+  source: "composition et agrégation",
+  target: "héritage"
+})
+
+graph.nodes.push({
+id: "projet : héritage",
+  link: "/cours_informatique/cours/theorie-pratiques-algorithmique/coder/programmation-objet/projet-heritage.html",
+  group: groups.code
+})
+
+graph.links.push({
+  source: "héritage",
+  target: "projet : héritage"
+})
+
+graph.links.push({
+  source: "projet : composition et agrégation",
+  target: "projet : héritage"
 })
 
 </script>

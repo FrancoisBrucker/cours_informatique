@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/cours_informatique/feed.xml" rel="self" type="application/atom+xml" /><link href="/cours_informatique/" rel="alternate" type="text/html" /><updated>2022-02-09T14:17:15+00:00</updated><id>/cours_informatique/feed.xml</id><title type="html">cours d’informatique</title><subtitle>Support de cours/td d'informatique à l'école centrale marseille.</subtitle><entry><title type="html">utiliser un terminal</title><link href="/cours_informatique/tutos/systeme/cli/terminal/2021/12/02/terminal-utilisation.html" rel="alternate" type="text/html" title="utiliser un terminal" /><published>2021-12-02T00:00:00+00:00</published><updated>2021-12-02T00:00:00+00:00</updated><id>/cours_informatique/tutos/systeme/cli/terminal/2021/12/02/terminal-utilisation</id><content type="html" xml:base="/cours_informatique/tutos/systeme/cli/terminal/2021/12/02/terminal-utilisation.html">&lt;blockquote class=&quot;chemin&quot;&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/cours_informatique/feed.xml" rel="self" type="application/atom+xml" /><link href="/cours_informatique/" rel="alternate" type="text/html" /><updated>2022-02-09T15:59:03+00:00</updated><id>/cours_informatique/feed.xml</id><title type="html">cours d’informatique</title><subtitle>Support de cours/td d'informatique à l'école centrale marseille.</subtitle><entry><title type="html">utiliser un terminal</title><link href="/cours_informatique/tutos/systeme/cli/terminal/2021/12/02/terminal-utilisation.html" rel="alternate" type="text/html" title="utiliser un terminal" /><published>2021-12-02T00:00:00+00:00</published><updated>2021-12-02T00:00:00+00:00</updated><id>/cours_informatique/tutos/systeme/cli/terminal/2021/12/02/terminal-utilisation</id><content type="html" xml:base="/cours_informatique/tutos/systeme/cli/terminal/2021/12/02/terminal-utilisation.html">&lt;blockquote class=&quot;chemin&quot;&gt;
   &lt;p&gt;&lt;strong&gt;prérequis :&lt;/strong&gt;&lt;/p&gt;
 
   &lt;ul&gt;
@@ -1483,7 +1483,12 @@ hello
 
 &lt;p&gt;Si vous avez le paramètre &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;editor.formatOnSave&lt;/code&gt; de coché à chaque sauvegarde de votre fichier, il sera reformaté. Notez que cela ne marche pas si votre fichier est sauvegardé automatiquement après un délai.&lt;/p&gt;
 
-&lt;p&gt;Vous pouvez aussi exécuter la commande &lt;em&gt;format document&lt;/em&gt; dans &lt;a href=&quot;/cours_informatique/tutos/editeur/vsc/installation/configuration/2021/09/03/vsc-installation-et-prise-en-main.html#palette-de-commande&quot;&gt;palette de commande&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Vous pouvez aussi :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;exécuter directement la commande &lt;em&gt;format document&lt;/em&gt; dans &lt;a href=&quot;/cours_informatique/tutos/editeur/vsc/installation/configuration/2021/09/03/vsc-installation-et-prise-en-main.html#palette-de-commande&quot;&gt;palette de commande&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;utiliser son &lt;a href=&quot;https://code.visualstudio.com/docs/editor/codebasics#_formatting&quot;&gt;raccourci clavier&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h3 id=&quot;black-dans-le-terminal&quot;&gt;black dans le terminal&lt;/h3&gt;
 

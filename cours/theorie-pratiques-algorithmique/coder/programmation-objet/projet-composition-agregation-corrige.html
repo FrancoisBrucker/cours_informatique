@@ -13,13 +13,13 @@
 <meta property="og:locale" content="en_US">
 <meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille.">
 <meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille.">
-<link rel="canonical" href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/programmation-objet/objets-composition-agregation-exercices-corrige.html">
-<meta property="og:url" content="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/programmation-objet/objets-composition-agregation-exercices-corrige.html">
+<link rel="canonical" href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/programmation-objet/projet-composition-agregation-corrige.html">
+<meta property="og:url" content="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/programmation-objet/projet-composition-agregation-corrige.html">
 <meta property="og:site_name" content="cours d’informatique">
 <meta name="twitter:card" content="summary">
 <meta property="twitter:title" content="exercices sur la création d’objets et leurs composition : corrigé">
 <script type="application/ld+json">
-{"description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/theorie-pratiques-algorithmique/coder/programmation-objet/objets-composition-agregation-exercices-corrige.html","headline":"exercices sur la création d’objets et leurs composition : corrigé","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
+{"description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/theorie-pratiques-algorithmique/coder/programmation-objet/projet-composition-agregation-corrige.html","headline":"exercices sur la création d’objets et leurs composition : corrigé","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
@@ -65,7 +65,11 @@
   </header>
 
   <div class="post-content">
-    <h2 id="dice">dice</h2>
+    <blockquote class="tbd">
+  <p>a remettre en forme</p>
+</blockquote>
+
+<h2 id="dice">dice</h2>
 
 <h3 id="dice-uml">modèle UML</h3>
 
@@ -100,16 +104,20 @@
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">dice</span> <span class="kn">import</span> <span class="n">Dice</span>
 
-<span class="n">d</span> <span class="o">=</span> <span class="n">Dice</span><span class="p">()</span>
+<span class="c1"># création d'un dé sans argument
+</span><span class="n">d</span> <span class="o">=</span> <span class="n">Dice</span><span class="p">()</span>
 <span class="k">print</span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">get_position</span><span class="p">())</span>
 
-<span class="n">d2</span> <span class="o">=</span> <span class="n">Dice</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="c1"># création d'un dé avec argument
+</span><span class="n">d2</span> <span class="o">=</span> <span class="n">Dice</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">d2</span><span class="p">.</span><span class="n">get_position</span><span class="p">())</span>
 
-<span class="n">d</span><span class="p">.</span><span class="n">set_position</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="c1"># modification de la position d'un dé
+</span><span class="n">d</span><span class="p">.</span><span class="n">set_position</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">get_position</span><span class="p">())</span>
 
-<span class="n">d2</span><span class="p">.</span><span class="n">roll</span><span class="p">()</span>
+<span class="c1"># lancer de dé
+</span><span class="n">d2</span><span class="p">.</span><span class="n">roll</span><span class="p">()</span>
 <span class="k">print</span><span class="p">(</span><span class="n">d2</span><span class="p">.</span><span class="n">get_position</span><span class="p">())</span>
 </code></pre></div></div>
 

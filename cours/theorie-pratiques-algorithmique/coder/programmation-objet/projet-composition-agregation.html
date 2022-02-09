@@ -68,6 +68,8 @@
     <blockquote class="chemin">
   <p><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/">Théorie et pratiques algorithmique</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/">coder</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/programmation-objet/">programmation objet</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/programmation-objet/projet-composition-agregation.html">projet : composition et agrégation</a></p>
 
+  <p><strong>prérequis :</strong></p>
+
   <ul>
     <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/programmation-objet/composition-agregation.html">composition et agrégation</a></li>
   </ul>
@@ -98,36 +100,57 @@
   <p>Cela permet d’abstraire un attribut de son implémentation.</p>
 </blockquote>
 
-<p>Pour justifier de passer par des méthodes plutôt que d’accéder directement aux attributs, lisez ce <a href="https://stackoverflow.com/questions/1568091/why-use-getters-and-setters-accessors?rq=1">fil stackoverflow</a>, bien que vieux il dit encore tout ce qu’il faut savoir.</p>
+<p>Pour justifier de passer par des méthodes plutôt que d’accéder directement aux attributs, je vous conseille de lire ce <a href="https://stackoverflow.com/questions/1568091/why-use-getters-and-setters-accessors?rq=1">fil de stackoverflow</a>, bien que vieux il dit encore tout ce qu’il faut savoir.</p>
 
 <h3 id="dice-modele">Modèle</h3>
 
 <blockquote class="a-faire">
   <ol>
     <li>Proposez une modélisation UML de la classe <code class="language-plaintext highlighter-rouge">Dice</code>.</li>
-    <li>donnez des exemples de manipulation d’objets de cette classe, comme créer un objet, modifier la valeur de sa position, obtenir sa position et le lancer.</li>
+    <li>donnez des exemples de manipulation d’objets de cette classe, comme :
+      <ul>
+        <li>créer un objet</li>
+        <li>modifier la valeur de sa position</li>
+        <li>obtenir sa position</li>
+        <li>le lancer</li>
+      </ul>
+    </li>
   </ol>
+
 </blockquote>
 
 <h3 id="dice-python">code python</h3>
 
-<p>Créez le code python de la classe <code class="language-plaintext highlighter-rouge">Dice</code> (fichier <em>“dice.py”</em>). Pour vérifier que votre code fait ce qu’on lui demande, vous devez créer un fichier <em>main.py</em> et essayez de :</p>
-
-<ul>
-  <li>de créer un objet sans argument et de vérifier dans quelle position il est</li>
-  <li>de créer un objet en choisissant sa position et de vérifier sa position,</li>
-  <li>de modifier la position d’un dé créé et de vérifier qu’elle a bien été changée,</li>
-  <li>de lancer le dé et de vérifier que sa position est toujours cohérente avec le nombre de faces.</li>
-</ul>
-
 <blockquote class="a-faire">
-  <p>Implémentez le tout et Vérifier que tout fonctionne.</p>
+  <p>Créez le code python de la classe <code class="language-plaintext highlighter-rouge">Dice</code> (fichier <em>“dice.py”</em>).</p>
 </blockquote>
 
-<h3 id="dice-tests">tests</h3>
+<p>Pour être sûr que tout fonctionne comme prévu :</p>
 
 <blockquote class="a-faire">
-  <p>Ajoutez finalement les tests de chaque méthode de la classe <code class="language-plaintext highlighter-rouge">Dice</code> (fichier <em>“test_dice”</em>).</p>
+  <p>Ajoutez les tests de chaque méthode de la classe <code class="language-plaintext highlighter-rouge">Dice</code> (fichier <em>“test_dice”</em>).</p>
+
+  <p>Il est impossible de tester le hasard, donc pour la méthode <code class="language-plaintext highlighter-rouge">roll</code> vérifiez juste que la position du dé est cohérente (entre 1 et 6) après l’utilisation de la méthode.</p>
+
+  <p>Vérifiez que vous avez ben 100% de couverture de code.</p>
+</blockquote>
+
+<p>Pour jouer avec notre classe dice :</p>
+
+<blockquote class="a-faire">
+  <p>Créez un fchier <em>“main_dice.py”</em> qui :</p>
+
+  <ol>
+    <li>demande à l’utilisateur :
+      <ul>
+        <li>la position initiale du dé</li>
+        <li>la valeur pour laquelle arrêter les lancer</li>
+      </ul>
+    </li>
+    <li>lance le dé jusqu’à tant que la valeur demandée par l’utilsateur soit trouvée.</li>
+    <li>le programme affiche le nombre de lancer nécessaire (celà peut être 0)</li>
+  </ol>
+
 </blockquote>
 
 <h2 id="5-dés">5 dés</h2>
@@ -135,20 +158,29 @@
 <p>Méthode naïve pour manipuler 5 dés.</p>
 
 <blockquote class="a-faire">
-  <p>Dans un ficheir <em>main_des.py</em> Créez une liste avec 5 dés. Utilisez une boucle <code class="language-plaintext highlighter-rouge">for</code> pour les lancer tous les 5, puis voir le résultat du lancé des 5 dés.</p>
+  <p>Dans un fichier <em>“main_5_des.py”</em> Créez une liste avec 5 dés. Utilisez une boucle <code class="language-plaintext highlighter-rouge">for</code> pour les lancer tous les 5, puis voir le résultat du lancer des 5 dés.</p>
+</blockquote>
+
+<p>Pour afficher la position d’un dé, il faut tout d’abord chercher sa position. Améliorons ça :</p>
+
+<blockquote class="a-faire">
+  <p>créez une méthode  <code class="language-plaintext highlighter-rouge">__str__</code> pour la classe <code class="language-plaintext highlighter-rouge">Dice</code> qui rende la position du dé (sous la forme d’une chaine de caractère).</p>
+
+  <p>ajoutez son test et utilisez là (de façon implicite) dans le fichier <em>“main_5_des.py”</em> en <em>printant</em> directement les dés plutôt que leurs positions.</p>
 </blockquote>
 
 <h2 id="tapis-vert">Tapis vert</h2>
+
+<p>Nous allons créer une classe permettant de gérer nos 5 dès de façon plus pratique qu’avec notre liste.</p>
 
 <p>Pour pouvoir jouer à des jeux de dés, implémentons une classe <code class="language-plaintext highlighter-rouge">TapisVert</code>.</p>
 
 <p>Cette classe doit avoir :</p>
 
 <ul>
-  <li>5 dés comme attribut (un attribut  nommée <code class="language-plaintext highlighter-rouge">dice</code> de type <code class="language-plaintext highlighter-rouge">tuple</code> qui contiendra 5 dés),</li>
-  <li>pouvoir lancer les 5 dés simultanément (une méthode <code class="language-plaintext highlighter-rouge">roll()</code> sans paramètre),</li>
-  <li>pouvoir donner les 5 dés,</li>
-  <li>connaître la somme des valeurs des dés (un méthode <code class="language-plaintext highlighter-rouge">sum()</code> sans paramètre).</li>
+  <li>un tuple de 5 dés comme attribut (un attribut  nommée <code class="language-plaintext highlighter-rouge">dice</code> de type <code class="language-plaintext highlighter-rouge">tuple</code> qui contiendra 5 dés),</li>
+  <li>pouvoir lancer les 5 dés simultanément (une méthode <code class="language-plaintext highlighter-rouge">roll()</code> sans paramètre)</li>
+  <li>pouvoir donner les 5 dés</li>
 </ul>
 
 <h3 id="tapis-vert-modele">Modèle</h3>
@@ -156,13 +188,23 @@
 <blockquote class="a-faire">
   <ol>
     <li>Proposez une modélisation UML de la classe <code class="language-plaintext highlighter-rouge">TapisVert</code>.</li>
-    <li>donnez des exemples de manipulation d’objets de cette classe, comme créer un objet, modifier la valeur de sa position, obtenir sa position et le lancer.</li>
+    <li>donnez des exemples de manipulation d’objets de cette classe comme :
+      <ul>
+        <li>créer un objet</li>
+        <li>modifier la valeur d’un dé ou obtenir sa position</li>
+        <li>lancer les dés</li>
+      </ul>
+    </li>
   </ol>
 </blockquote>
 
 <h3 id="tapis-vert-python">code python</h3>
 
-<p>Créez le code python de la classe <code class="language-plaintext highlighter-rouge">TapisVert</code> (fichier <em>“dice.py”</em>). Pour vérifier que votre code fait ce qu’on lui demande, vous devez créer un fichier <em>main.py</em> et essayez de :</p>
+<blockquote class="tbd">
+  <p>ICI</p>
+</blockquote>
+
+<p>Créez le code python de la classe <code class="language-plaintext highlighter-rouge">TapisVert</code> (dans le fichier <em>“dice.py”</em>). Pour vérifier que votre code fait ce qu’on lui demande, vous devez créer un fichier <em>main.py</em> et essayez de :</p>
 
 <ul>
   <li>de créer un objet sans argument et de vérifier dans quelle position sont les dés</li>
@@ -196,10 +238,11 @@
 
 <blockquote class="a-faire">
   <ol>
-    <li>ajouter une méthode <code class="language-plaintext highlighter-rouge">__str__</code> pour la classe <code class="language-plaintext highlighter-rouge">Dice</code> histoire de pouvoir faire un <code class="language-plaintext highlighter-rouge">print</code> sympathique pour les dés.</li>
     <li>faites en sorte de pouvoir afficher joliement les valeurs des dés d’un objet <code class="language-plaintext highlighter-rouge">TapisVert</code>
 </li>
-    <li>Ajoutez une méthode à <code class="language-plaintext highlighter-rouge">TapisVert</code> permettant de relancer les dés tant qu’on n’obtient pas une paire, un brelan, etc.</li>
+    <li>Ajoutez une méthode à <code class="language-plaintext highlighter-rouge">TapisVert</code> permettant de savoir s’il a une paire, un brelan, etc.</li>
+    <li>
+<a href="https://fr.wikipedia.org/wiki/Poker_d%27as">https://fr.wikipedia.org/wiki/Poker_d%27as</a> (il faudra lancer quelques des seulement. il faut pouvoir bloquer un dé qui ne sera pas lancé dans roll)</li>
   </ol>
 </blockquote>
 

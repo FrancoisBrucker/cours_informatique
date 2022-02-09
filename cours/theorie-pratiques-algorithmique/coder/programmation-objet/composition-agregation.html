@@ -68,6 +68,8 @@
     <blockquote class="chemin">
   <p><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/">Théorie et pratiques algorithmique</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/">coder</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/programmation-objet/">programmation objet</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/programmation-objet/composition-agregation.html">composition et agrégation</a></p>
 
+  <p><strong>prérequis :</strong></p>
+
   <ul>
     <li><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/coder/programmation-objet/classes-et-objets.html">classes et objets</a></li>
   </ul>
@@ -412,15 +414,13 @@ TOTAL               34     13    62%
 
     <span class="k">def</span> <span class="nf">ajoute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fruit</span><span class="p">):</span>
         <span class="bp">self</span><span class="p">.</span><span class="n">stock</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">fruit</span><span class="p">)</span>
-        
 
     <span class="k">def</span> <span class="nf">montre_panier</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">stock</span><span class="p">)</span>
 
-
     <span class="k">def</span> <span class="nf">supprime</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fruit</span><span class="p">):</span>
         <span class="bp">self</span><span class="p">.</span><span class="n">stock</span><span class="p">.</span><span class="n">remove</span><span class="p">(</span><span class="n">fruit</span><span class="p">)</span>
-         
+        
 </code></pre></div></div>
 
 <h3 id="le-programme-principal-mainpy">le programme principal <em>“main.py”</em>
@@ -430,12 +430,21 @@ TOTAL               34     13    62%
 
 <span class="n">panier</span> <span class="o">=</span> <span class="n">Panier</span><span class="p">()</span>
 
-
-<span class="n">panier</span><span class="p">.</span><span class="n">ajoute</span><span class="p">(</span><span class="s">"orange"</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">panier</span><span class="p">.</span><span class="n">montre_panier</span><span class="p">())</span>
 
-<span class="n">panier</span><span class="p">.</span><span class="n">supprime</span><span class="p">(</span><span class="s">"orange"</span><span class="p">)</span>
+<span class="n">panier</span><span class="p">.</span><span class="n">ajoute</span><span class="p">(</span><span class="s">"pomme"</span><span class="p">)</span>
+
 <span class="k">print</span><span class="p">(</span><span class="n">panier</span><span class="p">.</span><span class="n">montre_panier</span><span class="p">())</span>
+
+<span class="n">panier</span><span class="p">.</span><span class="n">ajoute</span><span class="p">(</span><span class="s">"pomme"</span><span class="p">)</span>
+<span class="n">panier</span><span class="p">.</span><span class="n">ajoute</span><span class="p">(</span><span class="s">"poire"</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">panier</span><span class="p">.</span><span class="n">montre_panier</span><span class="p">())</span>
+
+<span class="n">panier</span><span class="p">.</span><span class="n">supprime</span><span class="p">(</span><span class="s">"pomme"</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">panier</span><span class="p">.</span><span class="n">montre_panier</span><span class="p">())</span>
+
 </code></pre></div></div>
 
 <h3 id="test_panierpy"><em>“test_panier.py”</em></h3>
@@ -465,6 +474,21 @@ TOTAL               34     13    62%
     <span class="n">panier</span><span class="p">.</span><span class="n">supprime</span><span class="p">(</span><span class="s">"pomme"</span><span class="p">)</span>
 
     <span class="k">assert</span> <span class="n">panier</span><span class="p">.</span><span class="n">montre_panier</span><span class="p">()</span> <span class="o">==</span> <span class="nb">tuple</span><span class="p">()</span>
+
+</code></pre></div></div>
+
+<h3 id="couverture-de-code">couverture de code</h3>
+
+<p>Avec le projet ci-dessus, j’ai 100% de couverture du code :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------- coverage: platform darwin, python 3.9.9-final-0 -----------
+Name             Stmts   Miss  Cover   Missing
+----------------------------------------------
+main.py             10     10     0%   1-18
+panier.py            9      0   100%
+test_panier.py      16      0   100%
+----------------------------------------------
+TOTAL               35     10    71%
 </code></pre></div></div>
 
   </div>
