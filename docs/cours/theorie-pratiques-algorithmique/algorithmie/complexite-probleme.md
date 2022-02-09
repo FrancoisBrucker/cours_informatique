@@ -36,27 +36,27 @@ On supposera toujours ici qu'il existe un algorithme pour résoudre notre probl�
 
 > Un **problème algorithmique** est composé de 4 parties :
 >
-> * nom : le nom du problème
-> * des données : les paramètres dont aura besoin l'algorithme
-> * la question : ce que l'on cherche à résoudre
-> * la réponse : la sortie de l'algorithme
+> * **nom** : le nom du problème
+> * **données** : les paramètres dont aura besoin l'algorithme
+> * **question** : ce que l'on cherche à résoudre
+> * **réponse** : la sortie de l'algorithme
 >
 {: .note}
 
 Par exemple :
 
-* nom : recherche
-* données : une valeur et un tableau d'entiers
-* question : valeur est-elle présente dans le tableau ?
-* réponse : OUI ou NON
+* **nom** : recherche
+* **données** : une valeur et un tableau d'entiers
+* **question** : valeur est-elle présente dans le tableau ?
+* **réponse** : OUI ou NON
 
 Ou, si l'on cherche l'indice de valeur dans ce tableau :
 
-* nom : recherche indice
-* données : une valeur et un tableau d'entiers contenant valeur
-* réponse : l'indice du tableau contenant valeur
+* **nom** : recherche indice
+* **données** : une valeur et un tableau d'entiers contenant valeur
+* **réponse** : l'indice du tableau contenant valeur
 
-On voit que la question peut-être omise si la réponse est spécifique.
+La question peut-être omise si la réponse est spécifique.
 
 ### complexités
 
@@ -72,15 +72,15 @@ On pourra définir pour un problème donné :
 
 On va chercher à résoudre le problème d'existence dans le tableau :
 
-* nom : recherche
-* données : une valeur et un tableau d'entiers
-* question : valeur est-elle présente dans le tableau ?
-* réponse : OUI ou NON
+* **nom** : recherche
+* **données** : une valeur et un tableau d'entiers
+* **question** : valeur est-elle présente dans le tableau ?
+* **réponse** : OUI ou NON
 
 Ce qu'on peut déjà dire de notre problème :
 
-* une borne minimale : $\mathcal{O}(1)$ puisque la taille la sortie est un booléen
-* une borne maximale : $\mathcal{O}(n)$ où $n$ est la taille du tableau puisque l'on a un [algorithme qui résout le problème]({% link cours/theorie-pratiques-algorithmique/algorithmie/complexite-max-min.md %}#exemple-recherche) :
+* une **borne minimale** : $\mathcal{O}(1)$ puisque la taille la sortie est un booléen
+* une **borne maximale** : $\mathcal{O}(n)$ où $n$ est la taille du tableau puisque l'algorithme ci-dessous (qu'on [a déjà vu]({% link cours/theorie-pratiques-algorithmique/algorithmie/complexite-max-min.md %}#exemple-recherche) résout le problème
 
 ```python
 def est_dans_tableau(valeur, tableau):
@@ -165,7 +165,10 @@ def recherche_dichotomique(valeur, tableau_trie):
 
 {% endhighlight %}
 
+> Lorsque l'on code la recherche dichotomique, il faut faire **très** attention à ce que l'on prend comme milieu et comme condition d'arrêt. Sans quoi votre algorithme risque de tourner indéfiniment.
+>
 > On a utilisé ici le fait que  `(fin + debut) // 2` va donner la valeur entière de `(fin + debut) / 2`.
+{: .attention}
 
 [Etude]({% link cours/theorie-pratiques-algorithmique/algorithmie/algorithmes.md %}#étude) de l'algorithme :
 
@@ -173,7 +176,7 @@ def recherche_dichotomique(valeur, tableau_trie):
   * un tableau `[1, 3, 7]` l'algorithme trouve bien `7` et ne trouve pas `8`
   * un tableau `[1, 3, 3, 7]` l'algorithme trouve bien `7` et ne trouve pas `9`
 * **preuve** :
-  * **finitude**. La quantité entière `fin - debut` décroit strictement à chaque itération, elle sera donc strictement négative après un nombre fini d'opération.
+  * **finitude**. La quantité entière `fin - debut` **décroit strictement** à chaque itération, elle sera donc strictement négative après un nombre fini d'opération.
   * **preuve**.
     1. on montre trivialement l'invariant de boucle suivant: si valeur est dans `tableau_trie`, alors sa position est plus grande que `debut` et plus petite que `fin`
     2. si l'on sort de la boucle l'invariant est toujours vérifié mais comme `debut` > `fin`, valeur ne peut être dans `tableau_trie`
