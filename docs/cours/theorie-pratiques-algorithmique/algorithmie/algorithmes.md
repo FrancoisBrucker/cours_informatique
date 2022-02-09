@@ -11,6 +11,8 @@ Pseudo-code, calcul et code sont les trois faces d'une même pièce nommée algo
 
 > Une super introduction aux algorithmes : <https://www.arte.tv/fr/videos/094414-012-A/declics/>
 
+Le mot algorithme vient d'un savant persan du IXème siècle (né vers 780 et mort en 850 à Bagdad) nommé [Abu Ja’far Mohamed Ibn Al-Khowârizmi](https://fr.wikipedia.org/wiki/Al-Khw%C3%A2rizm%C3%AE). Il a publié le premier manuel d'algèbre connu à ce jour.
+
 ## algorithme ? {#algorithme}
 
 Définition du 'Petit Robert'  d'un **algorithme** :

@@ -37,7 +37,7 @@ A part la recommandation ci-dessus, il n'existe pas vraiment de règles à appli
 
 ## factorielle
 
-### algorihtme récursif {#facto-rec}
+### algorithme récursif {#facto-rec}
 
 ```python
 def factorielle(n):
