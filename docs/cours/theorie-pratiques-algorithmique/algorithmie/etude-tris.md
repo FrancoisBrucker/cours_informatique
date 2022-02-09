@@ -794,7 +794,7 @@ Notre hypothèse est démontrée. Au final on a l'encadrement :
 
 $$\mathcal{O}(n^2) \leq C(n) \leq \mathcal{O}(n^2)$$
 
-> La complexité tu tri rapide pour un tableau de taille $n$ est $\mathcal{O}(n^2)$
+> La complexité du tri rapide pour un tableau de taille $n$ est $\mathcal{O}(n^2)$
 {: .note}
 
 #### complexité minimale du tri rapide
@@ -802,6 +802,9 @@ $$\mathcal{O}(n^2) \leq C(n) \leq \mathcal{O}(n^2)$$
 Si l'on découpe notre tableau de façon non équilibrée, une branche de la récursion va faire plus d'opérations que $C(n/2)$. La complexité minimale est ainsi atteinte lorsque l'on coupe notre tableau exactement en 2.
 
 Dans ce cas là, on a l'équation de récurrence : $C(n) = \mathcal{O}(n) + 2 \cdot C(\frac{n}{2})$ qui est la même que celle du tri fusion. La complexité minimale du tri `rapide` est donc $\mathcal{O}(n\ln(n))$.
+
+> La complexité **minimale** du tri rapide pour un tableau de taille $n$ est $\mathcal{O}(n\ln(n))$
+{: .note}
 
 #### complexité en moyenne du tri rapide
 
@@ -888,6 +891,9 @@ On a alors $A(n) = \mathcal{O}(\ln(n))$ et au final :
 $$
 C_{\mbox{moy}}(n) = \mathcal{O}(n\ln(n))
 $$
+
+> La complexité **en moyenne** du tri rapide pour un tableau de taille $n$ est $\mathcal{O}(n\ln(n))$
+{: .note}
 
 ### conclusion
 
