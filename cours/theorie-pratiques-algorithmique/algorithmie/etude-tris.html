@@ -367,7 +367,7 @@
 
 <ol>
   <li>la boucle <code class="language-plaintext highlighter-rouge">for</code> de la ligne 4 trouve l’indice du plus petit élément du tableau <code class="language-plaintext highlighter-rouge">tableau[i:]</code>.</li>
-  <li>la ligne 7 échange le minium du tableau <code class="language-plaintext highlighter-rouge">tableau[i:]</code> avec <code class="language-plaintext highlighter-rouge">tableau[i]</code>
+  <li>la ligne 7 échange le minimum du tableau <code class="language-plaintext highlighter-rouge">tableau[i:]</code> avec <code class="language-plaintext highlighter-rouge">tableau[i]</code>
 </li>
   <li>comme la boucle <code class="language-plaintext highlighter-rouge">for</code> de la ligne 2 incrémente $i$, on a l’invariant de boucle : <em>“à la fin de chaque étape $i$ de l’algorithme les $i$ plus petites valeurs du tableau sont triées aux $i$ premiers indices du tableau”</em>
 </li>
@@ -417,7 +417,7 @@ C &amp; = &amp; \mathcal{O}(1) + \\
 
 </blockquote>
 
-<p>Puisque la complexité min et max sont égales, on en déduit que la <strong>complexité en moyenne</strong> vaut également s$\mathcal{O}(n^2)$.</p>
+<p>Puisque la complexité min et max sont égales, on en déduit que la <strong>complexité en moyenne</strong> vaut également $\mathcal{O}(n^2)$.</p>
 
 <h3 id="tri-insertion">tri par insertion</h3>
 
@@ -496,7 +496,7 @@ C &amp; = &amp; \mathcal{O}(1) + \\
 
 <h4 id="preuve-insertion">preuve</h4>
 
-<p>Le principe de programmation du tri par insertion est correct puisque <code class="language-plaintext highlighter-rouge">est_tre</code> est prouvé. Mais il faut vérifier qu’il est bien mis en œuvre dans l’algorithme. On utilise ici celui donné en solution.</p>
+<p>Le principe de programmation du tri par insertion est correct puisque <code class="language-plaintext highlighter-rouge">est_trie</code> est prouvé. Mais il faut vérifier qu’il est bien mis en œuvre dans l’algorithme. On utilise ici celui donné en solution.</p>
 
 <p>Tout d’abord, comme la condition de la boucle <code class="language-plaintext highlighter-rouge">while</code> de la ligne 5 contient <code class="language-plaintext highlighter-rouge">(j &gt; 0)</code> et que <code class="language-plaintext highlighter-rouge">j</code> décroit strictement à chaque itération (ligne 7), notre algorithme va bien s’arrêter.</p>
 
@@ -752,7 +752,7 @@ Pour tout $ y \in A$, il y a 50% de chances que $x \leq y$. Il y a donc en moyen
 
 <h4 id="preuve-fusion">preuve</h4>
 
-<p>Comme  <code class="language-plaintext highlighter-rouge">milieu &lt; len(tableau)</code> si <code class="language-plaintext highlighter-rouge">len(tableau) &gt; 1</code>, l’algorihtme va bien converger. De plus, comme l’algorithme <code class="language-plaintext highlighter-rouge">colle</code> est démontré, <code class="language-plaintext highlighter-rouge">fusion</code> est bien un algorithme de tri.</p>
+<p>Comme  <code class="language-plaintext highlighter-rouge">milieu &lt; len(tableau)</code> si <code class="language-plaintext highlighter-rouge">len(tableau) &gt; 1</code>, l’algorithme va bien converger. De plus, comme l’algorithme <code class="language-plaintext highlighter-rouge">colle</code> est démontré, <code class="language-plaintext highlighter-rouge">fusion</code> est bien un algorithme de tri.</p>
 
 <h4 id="complexites-fusion">complexités</h4>
 
@@ -771,7 +771,7 @@ Pour tout $ y \in A$, il y a 50% de chances que $x \leq y$. Il y a donc en moyen
 
 \[C(n) = 2 \cdot C(\frac{n}{2}) + \mathcal{O}(n)\]
 
-<p>Pour connaître la valeur de la complexité on utilise le <a href="https://fr.wikipedia.org/wiki/Master_theorem">master theorem</a> qui est <strong>LE</strong> théorème des complexités pour les algorithmes récursifs. Sa preuve dépasse (de loin) le cadre de ce cours, mais <a href="https://fr.wikipedia.org/wiki/Master_theorem#%C3%89nonc%C3%A9_avec_la_notation_de_Landau">son énoncé sous la notation de Landau</a>, nous permet de déterminer aisément la complexité de nombreux algorithmes récursifs dont le notre :</p>
+<p>Pour connaître la valeur de la complexité on utilise le <a href="https://fr.wikipedia.org/wiki/Master_theorem">master theorem</a> qui est <strong>LE</strong> théorème des complexités pour les algorithmes récursifs. Sa preuve dépasse (de loin) le cadre de ce cours, mais <a href="https://fr.wikipedia.org/wiki/Master_theorem#%C3%89nonc%C3%A9_avec_la_notation_de_Landau">son énoncé sous la notation de Landau</a>, nous permet de déterminer aisément la complexité de nombreux algorithmes récursifs dont le nôtre :</p>
 
 <blockquote class="note">
   <p><strong>Master Theorem</strong></p>
@@ -798,7 +798,7 @@ Pour tout $ y \in A$, il y a 50% de chances que $x \leq y$. Il y a donc en moyen
 \[\begin{array}{lcl}
 C(n) &amp;=&amp; 2 \cdot C(\frac{n}{2}) + \mathcal{O}(n)\\
 &amp;=&amp; 2 \cdot (2 \cdot (C(\frac{n}{4}) + \mathcal{O}(\frac{n}{2})) + \mathcal{O}(n)\\
-&amp;=&amp; 2^2 \cdot C(\frac{n}{2^2}) + 2 \cdot \mathcal{O}(\frac{n}{2})) + \mathcal{O}(n)\\
+&amp;=&amp; 2^2 \cdot C(\frac{n}{2^2}) + 2 \cdot \mathcal{O}(\frac{n}{2}) + \mathcal{O}(n)\\
 &amp;=&amp; 2^2 \cdot C(\frac{n}{2^2}) + 2 \cdot \mathcal{O}(n)\\
 &amp;=&amp; ...\\
 &amp;=&amp; 2^k \cdot C(\frac{n}{2^k}) + k \cdot \mathcal{O}(n)\\
@@ -837,7 +837,7 @@ C(n) &amp;=&amp; 2 \cdot C(\frac{n}{2}) + \mathcal{O}(n)\\
 
 <h2 id="tri-rapide">tri rapide</h2>
 
-<p>Le tri rapide est un algorithme qui a été très utilisé par le passé. On le montre encore maintenant car c’est un exemple de <em>diviser pour régner</em> et, surtout, le calcul complexités est très intéressant.</p>
+<p>Le tri rapide est un algorithme qui a été très utilisé par le passé. On le montre encore maintenant car c’est un exemple de <em>diviser pour régner</em> et, surtout, le calcul des complexités est très intéressant.</p>
 
 <p>Son principe est le suivant, si on souhaite trier le tableau $T$ :</p>
 
@@ -916,7 +916,7 @@ C(n) &amp;=&amp; 2 \cdot C(\frac{n}{2}) + \mathcal{O}(n)\\
 
 <p>Si rapide fonctionne pour des tableaux de longueurs strictement plus petit que $n$, il fonctionne également pour des tableaux de longueur $n$ : le tableau rendu est le tableau des valeurs plus petite que <code class="language-plaintext highlighter-rouge">pivot</code> triées (ce tableau est de longueur <code class="language-plaintext highlighter-rouge">&lt; n</code>, donc c’est trié par hypothèse de récurrence) + <code class="language-plaintext highlighter-rouge">[pivot]</code> + le tableau des valeurs plus grande que <code class="language-plaintext highlighter-rouge">pivot</code> triées (ce tableau est de longueur <code class="language-plaintext highlighter-rouge">&lt; n</code>, donc c’est trié par hypothèse de récurrence)</p>
 
-<p>Or il fonctionne pour des tableau de longueur 0 ou 1, donc par récurrence, c’est ok.</p>
+<p>Or il fonctionne pour des tableaux de longueur 0 ou 1, donc par récurrence, c’est ok.</p>
 
 <h3 id="complexites-rapide">complexités</h3>
 
@@ -932,7 +932,7 @@ C(n) = \underbrace{\mathcal{O}(n)}_{\mbox{création des tableaux}}{} + \underbra
 C(n) = \mathcal{O}(n) + \max_{0 \leq i &lt; n}(C(i) + C(n-i-1))
 }\]
 
-<p>On va monter que :</p>
+<p>On va montrer que :</p>
 
 <blockquote class="note">
   <p>Pour trier un tableau de longueur $n$, les complexités de <code class="language-plaintext highlighter-rouge">rapide</code> sont :</p>
@@ -1028,7 +1028,7 @@ C_{\mbox{moy}}(n) = \mathcal{O}(n) + \sum_{0 \leq i &lt; n}p_i(C_{\mbox{moy}}(i)
 C_{\mbox{moy}}(n) = K\cdot n + \sum_{0 \leq i &lt; n}p_i(C_{\mbox{moy}}(i) + C_{\mbox{moy}}(n-i-1))
 }\]
 
-<p>De plus on va considérer que nos données sont équiprobable, c’est à dire que le pivot à la même probabilité d’être le $i$ ou le $j$ ème plus petit élément du tableau : $p_i = \frac{1}{n}$. On a alors à résoudre :</p>
+<p>De plus on va considérer que nos données sont équiprobables, c’est à dire que le pivot a la même probabilité d’être le $i$ ou le $j$ ème plus petit élément du tableau : $p_i = \frac{1}{n}$. On a alors à résoudre :</p>
 
 \[{
 C_{\mbox{moy}}(n) = K\cdot n + \frac{1}{n}\sum_{0 \leq i &lt; n}(C_{\mbox{moy}}(i) + C_{\mbox{moy}}(n-i-1))

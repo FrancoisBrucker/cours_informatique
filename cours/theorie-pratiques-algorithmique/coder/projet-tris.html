@@ -150,10 +150,10 @@
 <p>La complexité minimale et maximale du tri par insertion doit différer.</p>
 
 <blockquote class="a-faire">
-  <p>vérifiez le sur avec vos mesures</p>
+  <p>vérifiez le avec vos mesures</p>
 </blockquote>
 
-<p>On va donc calculer la complexité en moyenne pour connaitre l’espérance de la complexité. POur cela, il faut pouvoir créer un tableau aléatoire et calculer le temps mis pour le trier. Pour éviter tout cas particulier, on fait des moyennes de mesures.</p>
+<p>On va donc calculer la complexité en moyenne pour connaitre l’espérance de la complexité. Pour cela, il faut pouvoir créer un tableau aléatoire et calculer le temps mis pour le trier. Pour éviter tout cas particulier, on fait des moyennes de mesures.</p>
 
 <blockquote class="a-faire">
   <p>Créez dans le fichier <em>“mesure.py”</em> la fonction <code class="language-plaintext highlighter-rouge">temps_insertion_moyen</code> qui rend la moyenne de 10 temps pris pour trier avec <code class="language-plaintext highlighter-rouge">insertion</code> une permutation aléatoire du tableau en entrée.</p>
@@ -189,7 +189,7 @@
   <p>Dans un fichier <em>“main_rapide”</em>, affichez sur un même graphique le résultat des temps maximum et moyen mis pour trier avec <code class="language-plaintext highlighter-rouge">rapide</code>  un tableau de taille inférieure à 2000 et par pas de 10.</p>
 
   <p>Pour cela, vous pourrez créer une fonction <code class="language-plaintext highlighter-rouge">temps_rapide</code> dans le fichier <em>“mesure.py”</em> qui rend les 2 résultats pour une taille de tableau donnée.
-la fonction <code class="language-plaintext highlighter-rouge">temps_rapide</code> prendra alor comme paramètre la taille du tableau dont on veut calculer la complexité maximale et moyenne.</p>
+la fonction <code class="language-plaintext highlighter-rouge">temps_rapide</code> prendra alors comme paramètre la taille du tableau dont on veut calculer la complexité maximale et moyenne.</p>
 </blockquote>
 
 <p>Vous allez atteindre la limite de récursion de python. Pour éviter les récursions infinies, python met une limite très basse au nombre de récursions possible d’un algorithme (1000 par défaut). Mais pas de panique, il est facile d’augmenter ce nombre.</p>
@@ -201,7 +201,7 @@ la fonction <code class="language-plaintext highlighter-rouge">temps_rapide</cod
 <h2 id="visualisation">visualisation</h2>
 
 <blockquote class="a-faire">
-  <p>Copiez le code suivant dans un fichier <em>3main_visu.py”</em> :</p>
+  <p>Copiez le code suivant dans un fichier <em>“main_visu.py”</em> :</p>
 </blockquote>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">random</span>
@@ -211,8 +211,7 @@ la fonction <code class="language-plaintext highlighter-rouge">temps_rapide</cod
 
 <span class="k">def</span> <span class="nf">draw_tab</span><span class="p">(</span><span class="n">tab</span><span class="p">):</span>
     <span class="n">ax</span><span class="p">.</span><span class="n">cla</span><span class="p">()</span>  <span class="c1"># on efface le dessin
-</span>    <span class="n">ax</span><span class="p">.</span>
-    <span class="n">lot</span><span class="p">(</span><span class="n">tab</span><span class="p">,</span> <span class="s">'ro'</span><span class="p">)</span>
+</span>    <span class="n">ax</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tab</span><span class="p">,</span> <span class="s">'ro'</span><span class="p">)</span>
     <span class="n">plt</span><span class="p">.</span><span class="n">pause</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>  <span class="c1"># on pause le dessin
 </span>
 
