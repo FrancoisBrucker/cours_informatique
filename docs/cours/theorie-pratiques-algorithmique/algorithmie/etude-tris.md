@@ -266,7 +266,7 @@ On vérifie que l'algorithme fonctionne pour :
 Le principe de fonctionnement est clair. Il reste à prouver que c'est bien ce que l'algorithme `selection` fait.
 
 1. la boucle `for` de la ligne 4 trouve l'indice du plus petit élément du tableau `tableau[i:]`.
-2. la ligne 7 échange le minium du tableau `tableau[i:]` avec `tableau[i]`
+2. la ligne 7 échange le minimum du tableau `tableau[i:]` avec `tableau[i]`
 3. comme la boucle `for` de la ligne 2 incrémente $i$, on a l'invariant de boucle : *"à la fin de chaque étape $i$ de l'algorithme les $i$ plus petites valeurs du tableau sont triées aux $i$ premiers indices du tableau"*
 
 #### complexités {#complexites-selection}
@@ -310,7 +310,7 @@ Le nombre d'itérations est constant quelque soit le tableau, on a donc :
 >
 {: .note}
 
-Puisque la complexité min et max sont égales, on en déduit que la **complexité en moyenne** vaut également s$\mathcal{O}(n^2)$.
+Puisque la complexité min et max sont égales, on en déduit que la **complexité en moyenne** vaut également $\mathcal{O}(n^2)$.
 
 ### tri par insertion {#tri-insertion}
 
@@ -370,7 +370,7 @@ Tout comme pour l'algorithme de tri par sélection, on vérifie que l'algorithme
 
 #### preuve {#preuve-insertion}
 
-Le principe de programmation du tri par insertion est correct puisque `est_tre` est prouvé. Mais il faut vérifier qu'il est bien mis en œuvre dans l'algorithme. On utilise ici celui donné en solution.
+Le principe de programmation du tri par insertion est correct puisque `est_trie` est prouvé. Mais il faut vérifier qu'il est bien mis en œuvre dans l'algorithme. On utilise ici celui donné en solution.
 
 Tout d'abord, comme la condition de la boucle `while` de la ligne 5 contient `(j > 0)` et que `j` décroit strictement à chaque itération (ligne 7), notre algorithme va bien s'arrêter.
 
@@ -578,7 +578,7 @@ On vérifie pour deux petits tableaux, par exemple :
 
 #### preuve {#preuve-fusion}
 
-Comme  `milieu < len(tableau)` si `len(tableau) > 1`, l'algorihtme va bien converger. De plus, comme l'algorithme `colle` est démontré, `fusion` est bien un algorithme de tri.
+Comme  `milieu < len(tableau)` si `len(tableau) > 1`, l'algorithme va bien converger. De plus, comme l'algorithme `colle` est démontré, `fusion` est bien un algorithme de tri.
 
 #### complexités {#complexites-fusion}
 
@@ -595,7 +595,7 @@ Comme l'algorithme `colle` est en $\mathcal{O}(n)$, l'équation de récurrence d
 
 $$C(n) = 2 \cdot C(\frac{n}{2}) + \mathcal{O}(n)$$
 
-Pour connaître la valeur de la complexité on utilise le [master theorem](https://fr.wikipedia.org/wiki/Master_theorem) qui est **LE** théorème des complexités pour les algorithmes récursifs. Sa preuve dépasse (de loin) le cadre de ce cours, mais [son énoncé sous la notation de Landau](https://fr.wikipedia.org/wiki/Master_theorem#%C3%89nonc%C3%A9_avec_la_notation_de_Landau), nous permet de déterminer aisément la complexité de nombreux algorithmes récursifs dont le notre :
+Pour connaître la valeur de la complexité on utilise le [master theorem](https://fr.wikipedia.org/wiki/Master_theorem) qui est **LE** théorème des complexités pour les algorithmes récursifs. Sa preuve dépasse (de loin) le cadre de ce cours, mais [son énoncé sous la notation de Landau](https://fr.wikipedia.org/wiki/Master_theorem#%C3%89nonc%C3%A9_avec_la_notation_de_Landau), nous permet de déterminer aisément la complexité de nombreux algorithmes récursifs dont le nôtre :
 
 > **Master Theorem**
 >  
@@ -620,7 +620,7 @@ $$
 \begin{array}{lcl}
 C(n) &=& 2 \cdot C(\frac{n}{2}) + \mathcal{O}(n)\\
 &=& 2 \cdot (2 \cdot (C(\frac{n}{4}) + \mathcal{O}(\frac{n}{2})) + \mathcal{O}(n)\\
-&=& 2^2 \cdot C(\frac{n}{2^2}) + 2 \cdot \mathcal{O}(\frac{n}{2})) + \mathcal{O}(n)\\
+&=& 2^2 \cdot C(\frac{n}{2^2}) + 2 \cdot \mathcal{O}(\frac{n}{2}) + \mathcal{O}(n)\\
 &=& 2^2 \cdot C(\frac{n}{2^2}) + 2 \cdot \mathcal{O}(n)\\
 &=& ...\\
 &=& 2^k \cdot C(\frac{n}{2^k}) + k \cdot \mathcal{O}(n)\\
@@ -658,7 +658,7 @@ Le tri de python est **in place**. L'algorithme utilisé est [timsort](https://e
 
 ## tri rapide {#tri-rapide}
 
-Le tri rapide est un algorithme qui a été très utilisé par le passé. On le montre encore maintenant car c'est un exemple de *diviser pour régner* et, surtout, le calcul complexités est très intéressant.
+Le tri rapide est un algorithme qui a été très utilisé par le passé. On le montre encore maintenant car c'est un exemple de *diviser pour régner* et, surtout, le calcul des complexités est très intéressant.
 
 Son principe est le suivant, si on souhaite trier le tableau $T$ :
 
@@ -713,7 +713,7 @@ Tout comme pour le tri fusion, on peut tester pour deux petits tableaux, par exe
 
 Si rapide fonctionne pour des tableaux de longueurs strictement plus petit que $n$, il fonctionne également pour des tableaux de longueur $n$ : le tableau rendu est le tableau des valeurs plus petite que `pivot` triées (ce tableau est de longueur `< n`, donc c'est trié par hypothèse de récurrence) + `[pivot]` + le tableau des valeurs plus grande que `pivot` triées (ce tableau est de longueur `< n`, donc c'est trié par hypothèse de récurrence)
 
-Or il fonctionne pour des tableau de longueur 0 ou 1, donc par récurrence, c'est ok.
+Or il fonctionne pour des tableaux de longueur 0 ou 1, donc par récurrence, c'est ok.
 
 ### complexités {#complexites-rapide}
 
@@ -729,7 +729,7 @@ $${
 C(n) = \mathcal{O}(n) + \max_{0 \leq i < n}(C(i) + C(n-i-1))
 }$$
 
-On va monter que :
+On va montrer que :
 
 > Pour trier un tableau de longueur $n$, les complexités de `rapide` sont :
 >
@@ -826,7 +826,7 @@ $${
 C_{\mbox{moy}}(n) = K\cdot n + \sum_{0 \leq i < n}p_i(C_{\mbox{moy}}(i) + C_{\mbox{moy}}(n-i-1))
 }$$
 
-De plus on va considérer que nos données sont équiprobable, c'est à dire que le pivot à la même probabilité d'être le $i$ ou le $j$ ème plus petit élément du tableau : $p_i = \frac{1}{n}$. On a alors à résoudre :
+De plus on va considérer que nos données sont équiprobables, c'est à dire que le pivot a la même probabilité d'être le $i$ ou le $j$ ème plus petit élément du tableau : $p_i = \frac{1}{n}$. On a alors à résoudre :
 
 $${
 C_{\mbox{moy}}(n) = K\cdot n + \frac{1}{n}\sum_{0 \leq i < n}(C_{\mbox{moy}}(i) + C_{\mbox{moy}}(n-i-1))
