@@ -27,6 +27,7 @@
 
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique">
+<script>MathJax={"tex":{"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["\\[","\\]"]]},"svg":{"fontCache":"global"},"svg":{"fontCache":"global"}}</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
 <body>
@@ -104,13 +105,26 @@
 
 <h2 id="implémentation-des-tris">implémentation des tris</h2>
 
-<p>En reprenant le code donné dans l’<a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/etude-tris.html">étude des tris</a> implémentez :</p>
+<p>En reprenant le code donné dans l’<a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/etude-tris.html">étude des tris</a> :</p>
+
+<blockquote class="a-faire">
+  <p>Implémentez :</p>
+
+  <ul>
+    <li>l’algorithme du tri <code class="language-plaintext highlighter-rouge">insertion</code> et ses tests</li>
+    <li>l’algorithme du tri <code class="language-plaintext highlighter-rouge">selection</code> et ses tests</li>
+    <li>l’algorithme du tri <code class="language-plaintext highlighter-rouge">rapide</code> et ses tests</li>
+    <li>l’algorithme du tri <code class="language-plaintext highlighter-rouge">fusion</code> et ses tests (on n’oublie pas que le tri fusion possède une fonction annexe <code class="language-plaintext highlighter-rouge">colle</code> qu’il faut aussi tester)</li>
+  </ul>
+
+</blockquote>
+
+<p>Pour les tests des algorithmes de tri, vous pouvez par exemple utiliser 3 tableaux différents :</p>
 
 <ul>
-  <li>l’algorithme du tri <code class="language-plaintext highlighter-rouge">insertion</code> et ses tests</li>
-  <li>l’algorithme du tri <code class="language-plaintext highlighter-rouge">selection</code> et ses tests</li>
-  <li>l’algorithme du tri <code class="language-plaintext highlighter-rouge">rapide</code> et ses tests</li>
-  <li>l’algorithme du tri <code class="language-plaintext highlighter-rouge">fusion</code> et ses tests (on n’oublie pas que le tri fusion possède une fonction annexe <code class="language-plaintext highlighter-rouge">colle</code> qu’il faut aussi tester)</li>
+  <li>le tableau des $5$ premiers entiers triés par ordre croissant</li>
+  <li>le tableau des $5$ premiers entiers triés par ordre décroissant</li>
+  <li>le tableau des $5$ premiers entiers mélangé (choisissez une permutation)</li>
 </ul>
 
 <h2 id="complexité">complexité</h2>
@@ -133,7 +147,9 @@
 </blockquote>
 
 <blockquote class="a-faire">
-  <p>Dans un fichier <em>“main_selection”</em>, affichez le résultat des temps mis pour trier avec <code class="language-plaintext highlighter-rouge">selection</code> un tableau de taille inférieure à 2000 et par pas de 10.</p>
+  <p>Dans un fichier <em>“main_selection”</em>, affichez sur un graphique courbe du temps mis (axe des ordonnées) pour trier avec <code class="language-plaintext highlighter-rouge">selection</code> le tableau des $n$ premiers entiers triés, pour une taille $n$ (axe des abcisses) allant de 1 à 2000 par pas de 10.</p>
+
+  <p>A quel type de complexité correpond cette mesure ?</p>
 </blockquote>
 
 <h3 id="tri-par-insertion">tri par insertion</h3>
@@ -144,16 +160,32 @@
 </blockquote>
 
 <blockquote class="a-faire">
-  <p>Dans un fichier <em>“main_insertion”</em>, affichez sur un même graphique le résultat des temps minimum et maximum mis pour trier avec <code class="language-plaintext highlighter-rouge">insertion</code>  un tableau de taille inférieure à 2000 et par pas de 10.</p>
+  <ul>
+    <li>pour quel type de tableau est atteint la complexité minimale de l’algorithme <code class="language-plaintext highlighter-rouge">insertion</code> ?</li>
+    <li>pour quel type de tableau est atteint la complexité maximale de l’algorithme <code class="language-plaintext highlighter-rouge">insertion</code> ?</li>
+  </ul>
 </blockquote>
 
-<p>La complexité minimale et maximale du tri par insertion doit différer.</p>
+<p>Utilisez ces tableaux pour :</p>
 
 <blockquote class="a-faire">
-  <p>vérifiez le avec vos mesures</p>
+  <p>Dans un fichier <em>“main_insertion”</em>, affichez sur un même graphique :</p>
+
+  <ul>
+    <li>la courbe du temps mis (axe des ordonnées) pour trier avec le tri par insertion des tableaux de taille $n$ (axe des abcisses) réalisant la complexité minimale</li>
+    <li>la courbe du temps mis (axe des ordonnées) pour trier avec le tri par insertion  des tableaux de taille $n$ (axe des abcisses) réalisant la complexité maximale</li>
+  </ul>
+
+  <p>Faites varier la taille $n$ des tableaux de 1 à 2000 par pas de 10.</p>
 </blockquote>
 
-<p>On va donc calculer la complexité en moyenne pour connaitre l’espérance de la complexité. Pour cela, il faut pouvoir créer un tableau aléatoire et calculer le temps mis pour le trier. Pour éviter tout cas particulier, on fait des moyennes de mesures.</p>
+<p>Comme la complexité minimale et maximale du tri par insertion sont différentes, les deux courbes doivent être distinctes.</p>
+
+<blockquote class="a-faire">
+  <p>l’allure des 2 courbes est-elle conforme aux résultats théorique de complexité ?</p>
+</blockquote>
+
+<p>Pour connaitre l’espérance de la complexité, il faut calculer la complexité en moyenne de l’algorithme. Pour cela il faut pouvoir créer un tableau aléatoire et calculer le temps mis pour le trier. Pour éviter tout cas particulier, on fait des moyennes de mesures.</p>
 
 <blockquote class="a-faire">
   <p>Créez dans le fichier <em>“mesure.py”</em> la fonction <code class="language-plaintext highlighter-rouge">temps_insertion_moyen</code> qui rend la moyenne de 10 temps pris pour trier avec <code class="language-plaintext highlighter-rouge">insertion</code> une permutation aléatoire du tableau en entrée.</p>
@@ -164,38 +196,50 @@
 <p>On peut maintenant visualiser les temps minimum, maximum et moyen de notre algorithme :</p>
 
 <blockquote class="a-faire">
-  <p>Dans le fichier <em>“main_insertion”</em>, affichez sur un graphique le résultat des temps minimum, moyens et maximum mis pour trier avec <code class="language-plaintext highlighter-rouge">insertion</code> un tableau de taille inférieure à 2000 et par pas de 10 (vous utiliserez <code class="language-plaintext highlighter-rouge">temps_insertion</code> et <code class="language-plaintext highlighter-rouge">temps_insertion_moyen</code> pour cela).</p>
+  <p>Dans le fichier <em>“main_insertion”</em>, en utilisant <code class="language-plaintext highlighter-rouge">temps_insertion_moyen</code>, ajoutez au graphique la courbe de la moyenne des temps mis (axe des ordonnées) pour trier 10 tableaux aléatoire de taille $n$ (axe des abcisses) avec l’algorithme <code class="language-plaintext highlighter-rouge">insertion</code>.</p>
+
+  <p>Faites varier la taille $n$ des tableaux de 1 à 2000 par pas de 10.</p>
 </blockquote>
 
 <h3 id="tri-fusion">tri fusion</h3>
 
-<p>Le temps min et maximum du tri fusion est le même. On a donc juste besoin de tracer la complexité moyenne de l’algorithme :</p>
+<p>La complexité minimum et maximum du tri fusion est la même. On peut juste tracer la complexité moyenne de l’algorithme :</p>
 
 <blockquote class="a-faire">
   <p>Créez dans le fichier <em>“mesure.py”</em> une fonction <code class="language-plaintext highlighter-rouge">temps_fusion</code> qui rend la moyenne de 10 temps pris pour trier avec <code class="language-plaintext highlighter-rouge">fusion</code> une permutation aléatoire du tableau en entrée.</p>
 </blockquote>
 
-<p>Si on doit choisir une complexité à afficher, on préfèrera toujours la complexité en moyenne, car elle est simple à mesurer (on fait des moyennes d’exécution), sans analyse au préalable de l’algorithme.</p>
+<p>Si on doit choisir une complexité à afficher, on préfèrera toujours la complexité en moyenne, car elle est simple à mesurer (on fait des moyennes de temps d’exécution) sans analyse au préalable de l’algorithme.</p>
 
 <blockquote class="a-faire">
-  <p>Dans un fichier <em>“main_fusion”</em>, affichez sur un graphique le résultat des temps moyens mis pour trier avec <code class="language-plaintext highlighter-rouge">fusion</code> un tableau de taille inférieure à 2000 et par pas de 10 (vous utiliserez <code class="language-plaintext highlighter-rouge">temps_fusion</code>).</p>
+  <p>Dans le fichier <em>“main_fusion”</em>, en utilisant <code class="language-plaintext highlighter-rouge">temps_fusion</code>, ajoutez au graphique la courbe de la moyenne des temps mis (axe des ordonnées) pour trier 10 tableaux aléatoire de taille $n$ (axe des abcisses) avec l’algorithme <code class="language-plaintext highlighter-rouge">fusion</code>.</p>
+
+  <p>Faites varier la taille $n$ des tableaux de 1 à 2000 par pas de 10.</p>
+</blockquote>
+
+<blockquote class="a-faire">
+  <p>l’allure de la courbe est-elle conforme aux résultats théorique de complexité ?</p>
 </blockquote>
 
 <h3 id="tri-rapide">tri rapide</h3>
 
-<p>La complexité du tri rapide est différente pour des tableaux déjà triés et pour des tableaux mélangés.</p>
+<p>La complexité du tri rapide est différente pour des tableaux déjà triés (la complexité est alors maximum) et pour des tableaux mélangés (ou la complexité moyenne est égale à la complexité minimale).</p>
 
 <blockquote class="a-faire">
-  <p>Dans un fichier <em>“main_rapide”</em>, affichez sur un même graphique le résultat des temps maximum et moyen mis pour trier avec <code class="language-plaintext highlighter-rouge">rapide</code>  un tableau de taille inférieure à 2000 et par pas de 10.</p>
+  <p>Dans un fichier <em>“main_rapide”</em>, affichez sur un même graphique :</p>
 
-  <p>Pour cela, vous pourrez créer une fonction <code class="language-plaintext highlighter-rouge">temps_rapide</code> dans le fichier <em>“mesure.py”</em> qui rend les 2 résultats pour une taille de tableau donnée.
-la fonction <code class="language-plaintext highlighter-rouge">temps_rapide</code> prendra alors comme paramètre la taille du tableau dont on veut calculer la complexité maximale et moyenne.</p>
+  <ul>
+    <li>la courbe du temps mis (axe des ordonnées) pour trier avec le tri rapide des tableaux triés par ordre croissant de taille $n$ (axe des abcisses)</li>
+    <li>la courbe du temps mis (axe des ordonnées) pour trier avec le tri rapide des tableaux aléatoire de taille $n$ (axe des abcisses).</li>
+  </ul>
+
+  <p>Faites varier la taille $n$ des tableaux de 1 à 2000 par pas de 10. Pour chaque taille vous ferez une moyenne de 10 mesures.</p>
 </blockquote>
 
 <p>Vous allez atteindre la limite de récursion de python. Pour éviter les récursions infinies, python met une limite très basse au nombre de récursions possible d’un algorithme (1000 par défaut). Mais pas de panique, il est facile d’augmenter ce nombre.</p>
 
 <blockquote class="a-faire">
-  <p>Suivez <a href="https://www.pythoncentral.io/resetting-the-recursion-limit/">ce tuto</a> qui vous explique comment faire pour augmenter le nombre limite de récursion dans <em>“main_rapide”</em>.</p>
+  <p>Suivez <a href="https://www.pythoncentral.io/resetting-the-recursion-limit/">ce tuto</a> qui vous explique comment faire pour augmenter le nombre limite de récursions dans <em>“main_rapide”</em>.</p>
 </blockquote>
 
 <h2 id="visualisation">visualisation</h2>
@@ -264,7 +308,9 @@ Ajoutez le tri à bulles dans <em>“main_visu.py”</em> pour le voir trier des
 
 <h3 id="bogo-sort">bogo sort</h3>
 
-<p>Implémentez le <a href="https://fr.wikipedia.org/wiki/Tri_stupide">tri stupide</a> et vérifiez son temps moyen de tri.</p>
+<blockquote class="a-faire">
+  <p>Implémentez le <a href="https://fr.wikipedia.org/wiki/Tri_stupide">tri stupide</a> et vérifiez son temps moyen de tri.</p>
+</blockquote>
 
   </div>
 
