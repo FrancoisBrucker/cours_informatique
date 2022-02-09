@@ -10,7 +10,9 @@ authors:
 
 > [Théorie et pratiques algorithmique]({% link cours/theorie-pratiques-algorithmique/index.md %}) / [coder]({% link cours/theorie-pratiques-algorithmique/coder/index.md %}) / [programmation objet]({% link cours/theorie-pratiques-algorithmique/coder/programmation-objet/index.md %}) / [projet : composition et agrégation]({% link cours/theorie-pratiques-algorithmique/coder/programmation-objet/projet-composition-agregation.md %})
 >
->* [composition et agrégation]({% link cours/theorie-pratiques-algorithmique/coder/programmation-objet/composition-agregation.md %})
+> **prérequis :**
+>
+> * [composition et agrégation]({% link cours/theorie-pratiques-algorithmique/coder/programmation-objet/composition-agregation.md %})
 {: .chemin}
 
 Classes et objets, le code !
@@ -35,58 +37,86 @@ On veut créer une classe `Dice`. Elle doit être capable de :
 > Cela permet d'abstraire un attribut de son implémentation.
 {: .note}
 
-Pour justifier de passer par des méthodes plutôt que d'accéder directement aux attributs, lisez ce [fil stackoverflow](https://stackoverflow.com/questions/1568091/why-use-getters-and-setters-accessors?rq=1), bien que vieux il dit encore tout ce qu'il faut savoir.
+Pour justifier de passer par des méthodes plutôt que d'accéder directement aux attributs, je vous conseille de lire ce [fil de stackoverflow](https://stackoverflow.com/questions/1568091/why-use-getters-and-setters-accessors?rq=1), bien que vieux il dit encore tout ce qu'il faut savoir.
 
 ### Modèle {#dice-modele}
 
 > 1. Proposez une modélisation UML de la classe `Dice`.
-> 2. donnez des exemples de manipulation d'objets de cette classe, comme créer un objet, modifier la valeur de sa position, obtenir sa position et le lancer.
+> 2. donnez des exemples de manipulation d'objets de cette classe, comme :
+>    * créer un objet
+>    * modifier la valeur de sa position
+>    * obtenir sa position
+>    * le lancer
+>
 {: .a-faire}
 
 ### code python {#dice-python}
 
-Créez le code python de la classe `Dice` (fichier *"dice.py"*). Pour vérifier que votre code fait ce qu'on lui demande, vous devez créer un fichier *main.py* et essayez de :
-
-* de créer un objet sans argument et de vérifier dans quelle position il est
-* de créer un objet en choisissant sa position et de vérifier sa position,
-* de modifier la position d'un dé créé et de vérifier qu'elle a bien été changée,
-* de lancer le dé et de vérifier que sa position est toujours cohérente avec le nombre de faces.
-
-> Implémentez le tout et Vérifier que tout fonctionne.
+> Créez le code python de la classe `Dice` (fichier *"dice.py"*). 
 {: .a-faire}
 
-### tests {#dice-tests}
+Pour être sûr que tout fonctionne comme prévu :
 
-> Ajoutez finalement les tests de chaque méthode de la classe `Dice` (fichier *"test_dice"*).
+> Ajoutez les tests de chaque méthode de la classe `Dice` (fichier *"test_dice"*).
+>
+> Il est impossible de tester le hasard, donc pour la méthode `roll` vérifiez juste que la position du dé est cohérente (entre 1 et 6) après l'utilisation de la méthode.
+>
+> Vérifiez que vous avez ben 100% de couverture de code.
+{: .a-faire}
+
+Pour jouer avec notre classe dice :
+
+> Créez un fchier *"main_dice.py"* qui :
+>
+> 1. demande à l'utilisateur :
+>    * la position initiale du dé
+>    * la valeur pour laquelle arrêter les lancer
+> 2. lance le dé jusqu'à tant que la valeur demandée par l'utilsateur soit trouvée.
+> 3. le programme affiche le nombre de lancer nécessaire (celà peut être 0)
+>
 {: .a-faire}
 
 ## 5 dés
 
 Méthode naïve pour manipuler 5 dés.
 
-> Dans un ficheir *main_des.py* Créez une liste avec 5 dés. Utilisez une boucle `for` pour les lancer tous les 5, puis voir le résultat du lancé des 5 dés.
+> Dans un fichier *"main_5_des.py"* Créez une liste avec 5 dés. Utilisez une boucle `for` pour les lancer tous les 5, puis voir le résultat du lancer des 5 dés.
+{: .a-faire}
+
+Pour afficher la position d'un dé, il faut tout d'abord chercher sa position. Améliorons ça :
+
+> créez une méthode  `__str__` pour la classe `Dice` qui rende la position du dé (sous la forme d'une chaine de caractère).
+>
+> ajoutez son test et utilisez là (de façon implicite) dans le fichier *"main_5_des.py"* en *printant* directement les dés plutôt que leurs positions.
 {: .a-faire}
 
 ## Tapis vert
+
+Nous allons créer une classe permettant de gérer nos 5 dès de façon plus pratique qu'avec notre liste.
 
 Pour pouvoir jouer à des jeux de dés, implémentons une classe `TapisVert`.
 
 Cette classe doit avoir :
 
-* 5 dés comme attribut (un attribut  nommée `dice` de type `tuple` qui contiendra 5 dés),
-* pouvoir lancer les 5 dés simultanément (une méthode `roll()` sans paramètre),
-* pouvoir donner les 5 dés,
-* connaître la somme des valeurs des dés (un méthode `sum()` sans paramètre).
+* un tuple de 5 dés comme attribut (un attribut  nommée `dice` de type `tuple` qui contiendra 5 dés),
+* pouvoir lancer les 5 dés simultanément (une méthode `roll()` sans paramètre)
+* pouvoir donner les 5 dés
 
 ### Modèle {#tapis-vert-modele}
 
 > 1. Proposez une modélisation UML de la classe `TapisVert`.
-> 2. donnez des exemples de manipulation d'objets de cette classe, comme créer un objet, modifier la valeur de sa position, obtenir sa position et le lancer.
+> 2. donnez des exemples de manipulation d'objets de cette classe comme :
+>    * créer un objet
+>    * modifier la valeur d'un dé ou obtenir sa position
+>    * lancer les dés
 {: .a-faire}
 
 ### code python {#tapis-vert-python}
 
-Créez le code python de la classe `TapisVert` (fichier *"dice.py"*). Pour vérifier que votre code fait ce qu'on lui demande, vous devez créer un fichier *main.py* et essayez de :
+> ICI
+{: .tbd}
+
+Créez le code python de la classe `TapisVert` (dans le fichier *"dice.py"*). Pour vérifier que votre code fait ce qu'on lui demande, vous devez créer un fichier *main.py* et essayez de :
 
 * de créer un objet sans argument et de vérifier dans quelle position sont les dés
 * de changer la position des 5 dés et de vérifier que la somme fonctionne
@@ -110,7 +140,8 @@ Ajoutez finalement les tests de chaque méthode de la classe `Dice` (fichier *"t
 
 ### Pour aller plus loin
 
-> 1. ajouter une méthode `__str__` pour la classe `Dice` histoire de pouvoir faire un `print` sympathique pour les dés.
+
 > 2. faites en sorte de pouvoir afficher joliement les valeurs des dés d'un objet `TapisVert`
-> 3. Ajoutez une méthode à `TapisVert` permettant de relancer les dés tant qu'on n'obtient pas une paire, un brelan, etc.
+> 3. Ajoutez une méthode à `TapisVert` permettant de savoir s'il a une paire, un brelan, etc.
+> 4. <https://fr.wikipedia.org/wiki/Poker_d%27as> (il faudra lancer quelques des seulement. il faut pouvoir bloquer un dé qui ne sera pas lancé dans roll)
 {: .a-faire}

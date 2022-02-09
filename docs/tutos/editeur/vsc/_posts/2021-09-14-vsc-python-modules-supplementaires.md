@@ -143,7 +143,10 @@ A priori tout est ok sans aucune autre configuration sous vscode. On peut lister
 
 Si vous avez le paramètre `editor.formatOnSave` de coché à chaque sauvegarde de votre fichier, il sera reformaté. Notez que cela ne marche pas si votre fichier est sauvegardé automatiquement après un délai.
 
-Vous pouvez aussi exécuter la commande *format document* dans [palette de commande]({% post_url tutos/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main %}#palette-de-commande).
+Vous pouvez aussi :
+
+* exécuter directement la commande *format document* dans [palette de commande]({% post_url tutos/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main %}#palette-de-commande).
+* utiliser son [raccourci clavier](https://code.visualstudio.com/docs/editor/codebasics#_formatting)
 
 ### black dans le terminal
 

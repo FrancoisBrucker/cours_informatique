@@ -8,6 +8,9 @@ authors:
   - Célia Châtel
 ---
 
+> a remettre en forme
+{: .tbd}
+
 ## dice 
 
 ### modèle UML  {#dice-uml}
@@ -45,15 +48,19 @@ Fichier *"main_dice.py"* :
 ```python
 from dice import Dice
 
+# création d'un dé sans argument
 d = Dice()
 print(d.get_position())
 
+# création d'un dé avec argument
 d2 = Dice(4)
 print(d2.get_position())
 
+# modification de la position d'un dé
 d.set_position(6)
 print(d.get_position())
 
+# lancer de dé
 d2.roll()
 print(d2.get_position())
 ```

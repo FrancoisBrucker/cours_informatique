@@ -9,7 +9,9 @@ authors:
 
 > [Théorie et pratiques algorithmique]({% link cours/theorie-pratiques-algorithmique/index.md %}) / [coder]({% link cours/theorie-pratiques-algorithmique/coder/index.md %}) / [programmation objet]({% link cours/theorie-pratiques-algorithmique/coder/programmation-objet/index.md %}) / [composition et agrégation]({% link cours/theorie-pratiques-algorithmique/coder/programmation-objet/composition-agregation.md %})
 >
->* [classes et objets]({% link cours/theorie-pratiques-algorithmique/coder/programmation-objet/classes-et-objets.md %})
+> **prérequis :**
+>
+> * [classes et objets]({% link cours/theorie-pratiques-algorithmique/coder/programmation-objet/classes-et-objets.md %})
 {: .chemin}
 
 Le but de cette séance est de consolider les concepts fondamentaux de classe et d'objet et d'ajouter les notions de
@@ -337,15 +339,13 @@ class Panier:
 
     def ajoute(self, fruit):
         self.stock.append(fruit)
-        
 
     def montre_panier(self):
         return tuple(self.stock)
 
-
     def supprime(self, fruit):
         self.stock.remove(fruit)
-         
+        
 ```
 
 ### le programme principal *"main.py"*
@@ -355,12 +355,21 @@ from panier import Panier
 
 panier = Panier()
 
-
-panier.ajoute("orange")
 print(panier.montre_panier())
 
-panier.supprime("orange")
+panier.ajoute("pomme")
+
 print(panier.montre_panier())
+
+panier.ajoute("pomme")
+panier.ajoute("poire")
+
+print(panier.montre_panier())
+
+panier.supprime("pomme")
+
+print(panier.montre_panier())
+
 ```
 
 ### *"test_panier.py"*
@@ -391,4 +400,20 @@ def test_supprime_dans_panier():
     panier.supprime("pomme")
 
     assert panier.montre_panier() == tuple()
+
+```
+
+### couverture de code
+
+Avec le projet ci-dessus, j'ai 100% de couverture du code :
+
+```text
+---------- coverage: platform darwin, python 3.9.9-final-0 -----------
+Name             Stmts   Miss  Cover   Missing
+----------------------------------------------
+main.py             10     10     0%   1-18
+panier.py            9      0   100%
+test_panier.py      16      0   100%
+----------------------------------------------
+TOTAL               35     10    71%
 ```

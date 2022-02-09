@@ -113,6 +113,9 @@ Au programme :
 
 #### vendredi {#v-6}
 
+1. [héritage]({% link cours/theorie-pratiques-algorithmique/coder/programmation-objet/heritage.md %})
+2. [projet : héritage]({% link cours/theorie-pratiques-algorithmique/coder/programmation-objet/projet-heritage.md %})
+
 ### semaine 7
 
 #### mercredi {#m-7}

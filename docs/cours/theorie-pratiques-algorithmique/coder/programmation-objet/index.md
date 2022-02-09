@@ -11,6 +11,8 @@ author: "François Brucker"
 2. [classes et objets]({% link cours/theorie-pratiques-algorithmique/coder/programmation-objet/classes-et-objets.md %})
 3. [composition et agrégation]({% link cours/theorie-pratiques-algorithmique/coder/programmation-objet/composition-agregation.md %})
 4. [projet : composition et agrégation]({% link cours/theorie-pratiques-algorithmique/coder/programmation-objet/projet-composition-agregation.md %})
+5. [héritage]({% link cours/theorie-pratiques-algorithmique/coder/programmation-objet/heritage.md %})
+6. [projet : héritage]({% link cours/theorie-pratiques-algorithmique/coder/programmation-objet/projet-heritage.md %})
 
 ### Deuxième partie : programmation objet
 

@@ -72,6 +72,8 @@ Ce cours est composée de trois grandes parties qui s'enchevêtrent.
 7. [classes et objets]({% link cours/theorie-pratiques-algorithmique/coder/programmation-objet/classes-et-objets.md %})
 8. [composition et agrégation]({% link cours/theorie-pratiques-algorithmique/coder/programmation-objet/composition-agregation.md %})
 9. [projet : composition et agrégation]({% link cours/theorie-pratiques-algorithmique/coder/programmation-objet/projet-composition-agregation.md %})
+10. [héritage]({% link cours/theorie-pratiques-algorithmique/coder/programmation-objet/heritage.md %})
+11. [projet : héritage]({% link cours/theorie-pratiques-algorithmique/coder/programmation-objet/projet-heritage.md %})
 
 ### autre
 
@@ -505,6 +507,33 @@ id: "projet : composition et agrégation",
 graph.links.push({
   source: "composition et agrégation",
   target: "projet : composition et agrégation"
+})
+
+graph.nodes.push({
+id: "héritage",
+  link: "{% link cours/theorie-pratiques-algorithmique/coder/programmation-objet/heritage.md %}",
+  group: groups.code
+})
+
+graph.links.push({
+  source: "composition et agrégation",
+  target: "héritage"
+})
+
+graph.nodes.push({
+id: "projet : héritage",
+  link: "{% link cours/theorie-pratiques-algorithmique/coder/programmation-objet/projet-heritage.md %}",
+  group: groups.code
+})
+
+graph.links.push({
+  source: "héritage",
+  target: "projet : héritage"
+})
+
+graph.links.push({
+  source: "projet : composition et agrégation",
+  target: "projet : héritage"
 })
 
 </script>

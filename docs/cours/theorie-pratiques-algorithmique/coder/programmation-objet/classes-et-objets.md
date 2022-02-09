@@ -10,7 +10,9 @@ authors:
 
 > [Théorie et pratiques algorithmique]({% link cours/theorie-pratiques-algorithmique/index.md %}) / [coder]({% link cours/theorie-pratiques-algorithmique/coder/index.md %}) / [programmation objet]({% link cours/theorie-pratiques-algorithmique/coder/programmation-objet/index.md %}) / [classes et objets]({% link cours/theorie-pratiques-algorithmique/coder/programmation-objet/classes-et-objets.md %})
 >
->* [mémoire et espace de noms]({% link cours/theorie-pratiques-algorithmique/coder/programmation-objet/memoire-et-espace-noms.md %})
+> **prérequis :**
+>
+> * [mémoire et espace de noms]({% link cours/theorie-pratiques-algorithmique/coder/programmation-objet/memoire-et-espace-noms.md %})
 {: .chemin}
 
 Le but de la programmation objet n'est pas d'utiliser des concepts plus ou moins fumeux (classes abstraites, encapsulation et polymorphismes) mais d'écrire du code :
