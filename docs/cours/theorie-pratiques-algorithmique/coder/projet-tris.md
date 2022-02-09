@@ -78,10 +78,10 @@ Pour faire cela, on utilisera ce que nous avons fait pendant le [projet exponent
 
 La complexité minimale et maximale du tri par insertion doit différer.
 
-> vérifiez le sur avec vos mesures
+> vérifiez le avec vos mesures
 {: .a-faire}
 
-On va donc calculer la complexité en moyenne pour connaitre l'espérance de la complexité. POur cela, il faut pouvoir créer un tableau aléatoire et calculer le temps mis pour le trier. Pour éviter tout cas particulier, on fait des moyennes de mesures.
+On va donc calculer la complexité en moyenne pour connaitre l'espérance de la complexité. Pour cela, il faut pouvoir créer un tableau aléatoire et calculer le temps mis pour le trier. Pour éviter tout cas particulier, on fait des moyennes de mesures.
 
 > Créez dans le fichier *"mesure.py"* la fonction `temps_insertion_moyen` qui rend la moyenne de 10 temps pris pour trier avec `insertion` une permutation aléatoire du tableau en entrée.
 {: .a-faire}
@@ -112,7 +112,7 @@ La complexité du tri rapide est différente pour des tableaux déjà triés et 
 > Dans un fichier *"main_rapide"*, affichez sur un même graphique le résultat des temps maximum et moyen mis pour trier avec `rapide`  un tableau de taille inférieure à 2000 et par pas de 10.
 >
 > Pour cela, vous pourrez créer une fonction `temps_rapide` dans le fichier *"mesure.py"* qui rend les 2 résultats pour une taille de tableau donnée.
-> la fonction `temps_rapide` prendra alor comme paramètre la taille du tableau dont on veut calculer la complexité maximale et moyenne.
+> la fonction `temps_rapide` prendra alors comme paramètre la taille du tableau dont on veut calculer la complexité maximale et moyenne.
 {: .a-faire}
 
 Vous allez atteindre la limite de récursion de python. Pour éviter les récursions infinies, python met une limite très basse au nombre de récursions possible d'un algorithme (1000 par défaut). Mais pas de panique, il est facile d'augmenter ce nombre.
@@ -122,7 +122,7 @@ Vous allez atteindre la limite de récursion de python. Pour éviter les récurs
 
 ## visualisation
 
-> Copiez le code suivant dans un fichier *3main_visu.py"* :
+> Copiez le code suivant dans un fichier *"main_visu.py"* :
 {: .a-faire}
 
 ```python
@@ -133,8 +133,7 @@ import matplotlib.pyplot as plt
 
 def draw_tab(tab):
     ax.cla()  # on efface le dessin
-    ax.
-    lot(tab, 'ro')
+    ax.plot(tab, 'ro')
     plt.pause(0.1)  # on pause le dessin
 
 
