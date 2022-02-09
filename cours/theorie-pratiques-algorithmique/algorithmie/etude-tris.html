@@ -19,7 +19,7 @@
 <meta name="twitter:card" content="summary">
 <meta property="twitter:title" content="étude / algorithmes de tris">
 <script type="application/ld+json">
-{"description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/etude-tris.html","headline":"étude / algorithmes de tris","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
+{"description":"Support de cours/td d’informatique à l’école centrale marseille.","author":{"@type":"Person","name":"François Brucker"},"@type":"WebPage","url":"/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/etude-tris.html","headline":"étude / algorithmes de tris","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
@@ -1078,8 +1078,8 @@ A(n) &amp;=&amp; K \sum_{i=1}^{n}\frac{2i-1}{i(i+1)} + A(0)\\
 <p>On peut utiliser des résultats sur les séries entières pour conclure :</p>
 
 <ul>
-  <li>$\sum_{i=1}^{n}\frac{1}{i(i+1)} \leq \sum_{i=1}^{n}\frac{1}{i^2} \leq \sum_{i=1}^{+\infty}\frac{1}{i^2} = \frac{\pi^2}{6}$</li>
-  <li>$\sum_{i=1}^{n}\frac{1}{i} = \mathcal{O}(\ln(n))$</li>
+  <li>$\sum_{i=1}^{n}\frac{1}{i(i+1)} \leq \sum_{i=1}^{n}\frac{1}{i^2} \leq \sum_{i=1}^{+\infty}\frac{1}{i^2} = \frac{\pi^2}{6}$ (c’est <a href="https://fr.wikipedia.org/wiki/S%C3%A9rie_de_Riemann">une série de Riemann</a>)</li>
+  <li>$\sum_{i=1}^{n}\frac{1}{i} = \mathcal{O}(\ln(n))$ (c’est la <a href="https://fr.wikipedia.org/wiki/S%C3%A9rie_harmonique">série harmonique</a>. Elle est <a href="https://fr.wikipedia.org/wiki/%C3%89quivalent">équivalente</a> à $\ln(n)$ en $+\infty$)</li>
 </ul>
 
 <p>On a alors $A(n) = \mathcal{O}(\ln(n))$ et au final :</p>

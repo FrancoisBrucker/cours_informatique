@@ -19,7 +19,7 @@
 <meta name="twitter:card" content="summary">
 <meta property="twitter:title" content="Complexité d’un problème">
 <script type="application/ld+json">
-{"description":"Support de cours/td d’informatique à l’école centrale marseille.","@type":"WebPage","url":"/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/complexite-probleme.html","headline":"Complexité d’un problème","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
+{"description":"Support de cours/td d’informatique à l’école centrale marseille.","author":{"@type":"Person","name":"François Brucker"},"@type":"WebPage","url":"/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/complexite-probleme.html","headline":"Complexité d’un problème","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
@@ -97,10 +97,14 @@
   <p>Un <strong>problème algorithmique</strong> est composé de 4 parties :</p>
 
   <ul>
-    <li>nom : le nom du problème</li>
-    <li>des données : les paramètres dont aura besoin l’algorithme</li>
-    <li>la question : ce que l’on cherche à résoudre</li>
-    <li>la réponse : la sortie de l’algorithme</li>
+    <li>
+<strong>nom</strong> : le nom du problème</li>
+    <li>
+<strong>données</strong> : les paramètres dont aura besoin l’algorithme</li>
+    <li>
+<strong>question</strong> : ce que l’on cherche à résoudre</li>
+    <li>
+<strong>réponse</strong> : la sortie de l’algorithme</li>
   </ul>
 
 </blockquote>
@@ -108,21 +112,28 @@
 <p>Par exemple :</p>
 
 <ul>
-  <li>nom : recherche</li>
-  <li>données : une valeur et un tableau d’entiers</li>
-  <li>question : valeur est-elle présente dans le tableau ?</li>
-  <li>réponse : OUI ou NON</li>
+  <li>
+<strong>nom</strong> : recherche</li>
+  <li>
+<strong>données</strong> : une valeur et un tableau d’entiers</li>
+  <li>
+<strong>question</strong> : valeur est-elle présente dans le tableau ?</li>
+  <li>
+<strong>réponse</strong> : OUI ou NON</li>
 </ul>
 
 <p>Ou, si l’on cherche l’indice de valeur dans ce tableau :</p>
 
 <ul>
-  <li>nom : recherche indice</li>
-  <li>données : une valeur et un tableau d’entiers contenant valeur</li>
-  <li>réponse : l’indice du tableau contenant valeur</li>
+  <li>
+<strong>nom</strong> : recherche indice</li>
+  <li>
+<strong>données</strong> : une valeur et un tableau d’entiers contenant valeur</li>
+  <li>
+<strong>réponse</strong> : l’indice du tableau contenant valeur</li>
 </ul>
 
-<p>On voit que la question peut-être omise si la réponse est spécifique.</p>
+<p>La question peut-être omise si la réponse est spécifique.</p>
 
 <h3 id="complexités">complexités</h3>
 
@@ -142,17 +153,21 @@
 <p>On va chercher à résoudre le problème d’existence dans le tableau :</p>
 
 <ul>
-  <li>nom : recherche</li>
-  <li>données : une valeur et un tableau d’entiers</li>
-  <li>question : valeur est-elle présente dans le tableau ?</li>
-  <li>réponse : OUI ou NON</li>
+  <li>
+<strong>nom</strong> : recherche</li>
+  <li>
+<strong>données</strong> : une valeur et un tableau d’entiers</li>
+  <li>
+<strong>question</strong> : valeur est-elle présente dans le tableau ?</li>
+  <li>
+<strong>réponse</strong> : OUI ou NON</li>
 </ul>
 
 <p>Ce qu’on peut déjà dire de notre problème :</p>
 
 <ul>
-  <li>une borne minimale : $\mathcal{O}(1)$ puisque la taille la sortie est un booléen</li>
-  <li>une borne maximale : $\mathcal{O}(n)$ où $n$ est la taille du tableau puisque l’on a un <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/complexite-max-min.html#exemple-recherche">algorithme qui résout le problème</a> :</li>
+  <li>une <strong>borne minimale</strong> : $\mathcal{O}(1)$ puisque la taille la sortie est un booléen</li>
+  <li>une <strong>borne maximale</strong> : $\mathcal{O}(n)$ où $n$ est la taille du tableau puisque l’algorithme ci-dessous (qu’on <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/algorithmie/complexite-max-min.html#exemple-recherche">a déjà vu</a> résout le problème</li>
 </ul>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">est_dans_tableau</span><span class="p">(</span><span class="n">valeur</span><span class="p">,</span> <span class="n">tableau</span><span class="p">):</span>
@@ -261,7 +276,9 @@ si l’algorithme ne regarde pas la case $T[i^\star]$ lors de son exécution pou
 </pre></td>
 </tr></tbody></table></code></pre></figure>
 
-<blockquote>
+<blockquote class="attention">
+  <p>Lorsque l’on code la recherche dichotomique, il faut faire <strong>très</strong> attention à ce que l’on prend comme milieu et comme condition d’arrêt. Sans quoi votre algorithme risque de tourner indéfiniment.</p>
+
   <p>On a utilisé ici le fait que  <code class="language-plaintext highlighter-rouge">(fin + debut) // 2</code> va donner la valeur entière de <code class="language-plaintext highlighter-rouge">(fin + debut) / 2</code>.</p>
 </blockquote>
 
@@ -281,7 +298,7 @@ si l’algorithme ne regarde pas la case $T[i^\star]$ lors de son exécution pou
 <strong>preuve</strong> :
     <ul>
       <li>
-<strong>finitude</strong>. La quantité entière <code class="language-plaintext highlighter-rouge">fin - debut</code> décroit strictement à chaque itération, elle sera donc strictement négative après un nombre fini d’opération.</li>
+<strong>finitude</strong>. La quantité entière <code class="language-plaintext highlighter-rouge">fin - debut</code> <strong>décroit strictement</strong> à chaque itération, elle sera donc strictement négative après un nombre fini d’opération.</li>
       <li>
 <strong>preuve</strong>.
         <ol>
