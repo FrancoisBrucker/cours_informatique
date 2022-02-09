@@ -995,7 +995,7 @@ C(n) &amp; = &amp; \mathcal{O}(n) + \max_{0 \leq i &lt; n}(C(i) + C(n-i-1))&amp;
 \[\mathcal{O}(n^2) \leq C(n) \leq \mathcal{O}(n^2)\]
 
 <blockquote class="note">
-  <p>La complexité tu tri rapide pour un tableau de taille $n$ est $\mathcal{O}(n^2)$</p>
+  <p>La complexité du tri rapide pour un tableau de taille $n$ est $\mathcal{O}(n^2)$</p>
 </blockquote>
 
 <h4 id="complexité-minimale-du-tri-rapide">complexité minimale du tri rapide</h4>
@@ -1003,6 +1003,10 @@ C(n) &amp; = &amp; \mathcal{O}(n) + \max_{0 \leq i &lt; n}(C(i) + C(n-i-1))&amp;
 <p>Si l’on découpe notre tableau de façon non équilibrée, une branche de la récursion va faire plus d’opérations que $C(n/2)$. La complexité minimale est ainsi atteinte lorsque l’on coupe notre tableau exactement en 2.</p>
 
 <p>Dans ce cas là, on a l’équation de récurrence : $C(n) = \mathcal{O}(n) + 2 \cdot C(\frac{n}{2})$ qui est la même que celle du tri fusion. La complexité minimale du tri <code class="language-plaintext highlighter-rouge">rapide</code> est donc $\mathcal{O}(n\ln(n))$.</p>
+
+<blockquote class="note">
+  <p>La complexité <strong>minimale</strong> du tri rapide pour un tableau de taille $n$ est $\mathcal{O}(n\ln(n))$</p>
+</blockquote>
 
 <h4 id="complexité-en-moyenne-du-tri-rapide">complexité en moyenne du tri rapide</h4>
 
@@ -1081,6 +1085,10 @@ A(n) &amp;=&amp; K \sum_{i=1}^{n}\frac{2i-1}{i(i+1)} + A(0)\\
 <p>On a alors $A(n) = \mathcal{O}(\ln(n))$ et au final :</p>
 
 \[C_{\mbox{moy}}(n) = \mathcal{O}(n\ln(n))\]
+
+<blockquote class="note">
+  <p>La complexité <strong>en moyenne</strong> du tri rapide pour un tableau de taille $n$ est $\mathcal{O}(n\ln(n))$</p>
+</blockquote>
 
 <h3 id="conclusion">conclusion</h3>
 
