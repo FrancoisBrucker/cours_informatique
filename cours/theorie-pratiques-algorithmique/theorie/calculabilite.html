@@ -360,18 +360,19 @@ tant que i &lt; 2 * β(n):
   </li>
   <li>$x &gt; y &gt; z$ : On a $\tau(x, y, z) = \tau(\tau(x-1, y, z), \tau(y-1, z, x), \tau(z-1, x, y))$
     <ul>
-      <li>on a $z-1 &lt; y&lt; x$ et donc $\tau(z-1, x, y) = x$</li>
+      <li>on a $z-1 &lt; y&lt; x$ et donc $\tau(x, y, z) =  \tau(\tau(x-1, y, z), \tau(y-1, z, x), x)$</li>
       <li>on procède de même que précédemment en analysant tous les cas
         <ul>
-          <li>$x-1 &gt; y$ ou $x -1 = y$ et</li>
-          <li>$y-1&gt;z$ ou $y-1=z$</li>
+          <li>$x-1 &gt; y$ et $y-1&gt;z$ : $\tau(x, y, z) = \tau(x-1, x, x) = x$</li>
+          <li>$x-1 &gt; y$ et $y-1=z$ : $\tau(x, y, z) = \tau(x-1, z, x) = x$</li>
+          <li>$x-1 = y$ et $y-1&gt;z$ : $\tau(x, y, z) = \tau(y, x, x) = x$</li>
+          <li>$x-1 = y$ et $y-1=z$ : $\tau(x, y, z) = \tau(y, z, x) = x$</li>
         </ul>
       </li>
     </ul>
   </li>
 </ul>
 </div></details>
-
 
   </div>
 
