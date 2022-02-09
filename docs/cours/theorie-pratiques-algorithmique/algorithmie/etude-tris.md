@@ -708,10 +708,10 @@ Tout comme pour le tri fusion, on peut tester pour deux petits tableaux, par exe
 
 ### preuve {#preuve-rapide}
 
-* `tab_gauche` contient tous les élements du tableau d'indice `> 0` et plus petit ou égal à `pivot` qui est égal à `tab[0]`
-* `tab_droite` contient tous les élements du tableau d'indice `> 0` et plus plus grand strictement à `pivot`
+* `tab_gauche` contient tous les éléments du tableau d'indice `> 0` et plus petit ou égal à `pivot` qui est égal à `tab[0]`
+* `tab_droite` contient tous les éléments du tableau d'indice `> 0` et plus plus grand strictement à `pivot`
 
-Si rapide fonctionne pour des tableaux de longueurs strictement plus petit que $n$, il fonctionne également pour des tableaux de longueur $n$ : le tableau rendu est le tableau des valeurs plus petite que `pivot` triées (ce tableau est de longueur `< n`, donc c'est trié par hypothèse de récurence) + `[pivot]` + le tableau des valeurs plus grande que `pivot` triées (ce tableau est de longueur `< n`, donc c'est trié par hypothèse de récurence)
+Si rapide fonctionne pour des tableaux de longueurs strictement plus petit que $n$, il fonctionne également pour des tableaux de longueur $n$ : le tableau rendu est le tableau des valeurs plus petite que `pivot` triées (ce tableau est de longueur `< n`, donc c'est trié par hypothèse de récurrence) + `[pivot]` + le tableau des valeurs plus grande que `pivot` triées (ce tableau est de longueur `< n`, donc c'est trié par hypothèse de récurrence)
 
 Or il fonctionne pour des tableau de longueur 0 ou 1, donc par récurrence, c'est ok.
 
@@ -723,7 +723,11 @@ $${
 C(n) = \underbrace{\mathcal{O}(n)}_{\mbox{création des tableaux}}{} + \underbrace{C(n_1) + C(n_2)}_{\mbox{récursions}}{}
 }$$
 
-Où $n_1$ est la taille du tableau de gauche et $n_2$ celle de droite ($n_1 + n_2 = n$)
+Où $n_1$ est la taille du tableau de gauche et $n_2$ celle de droite ($n_1 + n_2 = n$). Pour trouver $n_1$ et $n_2$, il faut  résoudre l'équation :
+
+$${
+C(n) = \mathcal{O}(n) + \max_{0 \leq i < n}(C(i) + C(n-i-1))
+}$$
 
 On va monter que :
 
@@ -735,28 +739,63 @@ On va monter que :
 >
 {: .note}
 
-> Nous n'allons pas faire ici de calculs rigoureux, on utilisera des arguments de bon-sens pour aller plus vite. Ces arguments sont justes, mais si un calcul sans approximation vous intéresse, reportez vous à <http://perso.eleves.ens-rennes.fr/~mruffini/Files/Other/rapide.pdf>
-
 #### complexité (maximale) du tri rapide
 
-Ce cas va arriver si un des deux tableaux est toujours vide. Par exemple lorsque le tableau est déjà trié. Dans ce cas là, l'autre tableau est de taille $n-1$, ce qui donne une complexité de :
+**Intuitivement**, ce cas va arriver si un des deux tableaux est toujours vide. Par exemple lorsque le tableau est déjà trié. Dans ce cas là, l'autre tableau est de taille $n-1$, ce qui donne une complexité de :
 
-$$C(n) = \mathcal{O}(n) + C(n-1)$$
+$$C_{\mbox{trié}}(n) = \mathcal{O}(n) + C(0) +  C_{\mbox{trié}}(n-1)$$
 
 Donc :
 
 $$
 \begin{array}{lcl}
-C_m &=& \mathcal{O}(n) + C(n-1)\\
-&=& \mathcal{O}(n) + \mathcal{O}(n-1) + C(n-2)\\
-&=& ...
-&=& \sum_{i=2}^{n}\mathcal{O}(i) + C(1)\\
-&=& \sum_{i=2}^{n}\mathcal{O}(n) + C(1)\\
+C_{\mbox{trié}}(n) &=& \mathcal{O}(n) + C(0) + C_{\mbox{trié}}(n-1)\\
+&=& \mathcal{O}(n) + \mathcal{O}(1) + C_{\mbox{trié}}(n-1)\\
+&=& \mathcal{O}(n) + C_{\mbox{trié}}(n-1)\\
+&=& \mathcal{O}(n) + \mathcal{O}(n-1) + C_{\mbox{trié}}(n-2)\\
+&=& ...\\
+&=& \sum_{i=2}^{n}\mathcal{O}(i) + C_{\mbox{trié}}(1)\\
+&=& \sum_{i=2}^{n}\mathcal{O}(i) + \mathcal{O}(1)\\
+&=& \mathcal{O}(\sum_{i=1}^{n}i)\\
 &=& \mathcal{O}(n^2)\\
 \end{array}
 $$
 
-> on a utilisé la [règle de croissance]({% link cours/theorie-pratiques-algorithmique/algorithmie/complexite-max-min.md %}#regle-croissance) pour remplacer $\mathcal{O}(i)$ qui est croissant par sa valeur maximale de $\mathcal{O}(n)$
+Finalement, si le tableau de taille $n$ en entrée est trié l'algorithme du tri rapide va effectuer $\mathcal{O}(n^2)$ opérations. En notant $C(n)$ la complexité de l'algorithme du tri rapide, on alors :
+
+$$
+\begin{array}{lcl}
+C_{\mbox{trié}}(n) &\leq& C(n)\\
+\mathcal{O}(n^2) &\leq& C(n)\\
+\end{array}
+$$
+
+Pour finir la preuve il nous reste à démontrer que $C(n) \leq \mathcal{O}(n^2)$.
+
+Faisons le par récurrence. Notre hypothèse de récurrence est : il existe $k$ tel que $C(n) \leq k \cdot n^2$
+Cette hypothèse est trivialement vraie pour $n=1$ et supposons la vraie pour $n-1$. Examinons le cas $n$ :
+
+$$
+\begin{array}{lcll}
+C(n) & = & \mathcal{O}(n) + \max_{0 \leq i < n}(C(i) + C(n-i-1))&\\
+& \leq & \mathcal{O}(n) + \max_{0 \leq i < n}(k\cdot i^2 + k\cdot(n-i-1)^2)&\mbox{par hypothèse de récurrence}\\
+& \leq & \mathcal{O}(n) + \max_{0 \leq i < n}(k\cdot(i + n-i-1)^2)&\mbox{car } a^2+b^2 \leq (a+b)^2\\
+& \leq & \mathcal{O}(n) + \max_{0 \leq i < n}(k\cdot(n-1)^2)&\\
+& \leq & \mathcal{O}(n) + k\cdot(n-1)^2&\\
+& \leq & \mathcal{O}(n) + k\cdot n^2 -k(2n-1)&\\
+\end{array}
+$$
+
+Comme une fonction $f$ en $\mathcal{O}(n)$ est telle que pour tout $N \geq N_0$ on a $f(N) \leq k'\cdot N$, On peut prendre $k'' = \max(\max_{1\leq N \leq N_0}f(N), k, k')$ et alors :
+
+$$C(n) \leq  k''\cdot n^2$$
+
+Notre hypothèse est démontrée. Au final on a l'encadrement :
+
+$$\mathcal{O}(n^2) \leq C(n) \leq \mathcal{O}(n^2)$$
+
+> La complexité tu tri rapide pour un tableau de taille $n$ est $\mathcal{O}(n^2)$
+{: .note}
 
 #### complexité minimale du tri rapide
 
@@ -766,9 +805,89 @@ Dans ce cas là, on a l'équation de récurrence : $C(n) = \mathcal{O}(n) + 2 \c
 
 #### complexité en moyenne du tri rapide
 
-On utilise l'argument utiliser pour calculer la complexité en moyenne du [tri par insertion](#complexites-insertion). Si les données sont aléatoires la moitié de `tableau[1:]` est plus grande que `tableau[0]`. De là, en moyenne, on va toujours couper le talbeau en 2 parties (plus ou moins) égales.
+**Intuitivement**, on utilise l'argument utilisé pour calculer la complexité en moyenne du [tri par insertion](#complexites-insertion). Si les données sont aléatoires la moitié de `tableau[1:]` est plus grande que `tableau[0]`. De là, en moyenne, on va toujours couper le tableau en 2 parties (plus ou moins) égales.
 
 Si l'on coupe toujours au milieu on a alors la même équation que pour la complexité minimale : $C(n) = \mathcal{O}(n) + 2 \cdot C(\frac{n}{2})$, ce qui donne une complexité de $\mathcal{O}(n\ln(n))$.
+
+**De façon formelle**, il faut résoudre l'équation :
+
+$${
+C_{\mbox{moy}}(n) = \mathcal{O}(n) + \sum_{0 \leq i < n}p_i(C_{\mbox{moy}}(i) + C_{\mbox{moy}}(n-i-1))
+}$$
+
+où $p_i$ est la probabilité que le pivot soit le $i+1$ plus petit élément du tableau.
+
+Pour éviter de nous trimballer des $\mathcal{O}(n)$ partout, on va considérer que l'on y effectue $K\cdot n$ opérations où $K$ est une constante. On peut alors écrire :
+
+$${
+C_{\mbox{moy}}(n) = K\cdot n + \sum_{0 \leq i < n}p_i(C_{\mbox{moy}}(i) + C_{\mbox{moy}}(n-i-1))
+}$$
+
+De plus on va considérer que nos données sont équiprobable, c'est à dire que le pivot à la même probabilité d'être le $i$ ou le $j$ ème plus petit élément du tableau : $p_i = \frac{1}{n}$. On a alors à résoudre :
+
+$${
+C_{\mbox{moy}}(n) = K\cdot n + \frac{1}{n}\sum_{0 \leq i < n}(C_{\mbox{moy}}(i) + C_{\mbox{moy}}(n-i-1))
+}$$
+
+Comme :
+
+* $\sum_{0 \leq i < n}C_{\mbox{moy}}(i) = \sum_{1 \leq i \leq n}C_{\mbox{moy}}(i-1)$
+* $\sum_{0 \leq i < n}C_{\mbox{moy}}(n-i-1) = \sum_{1 \leq i \leq n}C_{\mbox{moy}}(i-1)$
+
+On a :
+
+$${
+C_{\mbox{moy}}(n) = K\cdot n + \frac{2}{n}\sum_{1 \leq i \leq n}C_{\mbox{moy}}(i-1)
+}$$
+
+Il va maintenant y avoir 2 astuces coup sur coup. La première astuce est de considérer l'équation :
+
+$$
+\begin{array}{lcl}
+n\cdot C_{\mbox{moy}}(n) - (n-1)\cdot C_{\mbox{moy}}(n-1) & = & K\cdot n^2 +2\sum_{1 \leq i \leq n}C_{\mbox{moy}}(i-1)\\
+&&- K\cdot (n-1)^2 - 2\sum_{1 \leq i \leq n-1}C_{\mbox{moy}}(i-1)\\
+&=& K(n^2 - (n-1)^2) + 2\cdot C_{\mbox{moy}}(n-1)\\
+&=& K(2n - 1) + 2\cdot C_{\mbox{moy}}(n-1)\\
+\end{array}
+$$
+
+On en déduit :
+
+$$
+n\cdot C_{\mbox{moy}}(n) = K(2n - 1) + (n+1)\cdot C_{\mbox{moy}}(n-1)
+$$
+
+Et maintenant la seconde astuce : on divise l'équation ci-dessus par $n(n+1)$ :
+
+$$
+\frac{C_{\mbox{moy}}(n)}{n+1}=\frac{C_{\mbox{moy}}(n-1)}{n} + K\cdot\frac{2n - 1}{n(n+1)}
+$$
+
+On peut alors poser $A(n) = \frac{C_{\mbox{moy}}(n)}{n+1}$ et on doit maintenant résoudre :
+
+$$
+A(n) = A(n-1) + K\cdot\frac{2n - 1}{n(n+1)}
+$$
+
+Ce qui donne :
+
+$$
+\begin{array}{lcl}
+A(n) &=& K \sum_{i=1}^{n}\frac{2i-1}{i(i+1)} + A(0)\\
+&=&K \sum_{i=1}^{n}\frac{2}{(i+1)} - K \sum_{i=1}^{n}\frac{1}{i(i+1)} + A(0)\\
+\end{array}
+$$
+
+On peut utiliser des résultats sur les séries entières pour conclure :
+
+* $\sum_{i=1}^{n}\frac{1}{i(i+1)} \leq \sum_{i=1}^{n}\frac{1}{i^2} \leq \sum_{i=1}^{+\infty}\frac{1}{i^2} = \frac{\pi^2}{6}$
+* $\sum_{i=1}^{n}\frac{1}{i} = \mathcal{O}(\ln(n))$
+
+On a alors $A(n) = \mathcal{O}(\ln(n))$ et au final :
+
+$$
+C_{\mbox{moy}}(n) = \mathcal{O}(n\ln(n))
+$$
 
 ### conclusion
 

@@ -124,17 +124,39 @@ def maximum(t):
 * finitude : clair car une unique boucle for.
 * preuve : par invariant de boucle.
 
-Ici notre invariant est : *"A la fin de l'itération $i$ de la boucle, $m$ vaut le maximum des $i$ premiers élément du tableau."*
+Pour trouver l'invariant, on remarque que si $t'$ est le tableau des $n-1$ premiers éléments de $t$ (`t'= t[:-1]`), l'algorithme va :
 
-Après la première itération de la boucle, comme $m$ vaut initialement le premier élément du tableau, on a que $m=t[0]$ qui est bien le maximum des 1 premier éléments du tableau. L'invariant est vérifié à la fin  de l'itération $1$.
+1. faire exactement pareil que pour $t'$
+2. vérifiera $m$ avec le dernier élément de $t$.
 
-On suppose l'invariant vrai à la fin de l'itération $i$. A la fin de l'itération $i+1$, $m'$ (la valeur de $m$ à l'issue de la boucle d'itération $i + 1$) vaut soit $m$ (la valeur de $m$ au début de la boucle d'itération $i +1 $) soit $x'$ (la variable $x$ affectée lors de) qui vaut la $i + 1$ème valeur du tableau.
+Notre invariant doit donc lier les $i$ premiers éléments du tableaux à la $i$ème itération : $m$ doit être le plus grand éléments des $i$ premiers éléments du tableaux pour que notre algorithme puisse fonctionner et avec $t'$ et avec $t$.
 
-Comme l'invariant est vrai à la fin la boucle d'itération $i$, $m$ vaut le maximum du tableau sur les $i$ premiers éléments. Or $m' = \max(m, x)$, donc $m'$ vaut bien le maximum du tableau sur les $i + 1$ premiers éléments.
+Lorsque l'on étudie des algorithmes avec des boucles `for` il est parfois plus simple d'exhiber directement le nombre d'itérations pour formaliser l'invariant. On utilise alors l'algorithme suivant (qui est strictement équivalent à l'algorithme `maximum`) :
+
+```python
+def maximum(t):
+    m = t[0]
+    for i in range(len(t)):
+        x = t[i]
+        if m < x:
+            m = x
+    return m
+```
+
+L'invariant est alors : *"A la fin d'une itération, $m$ vaut le maximum des $i+1$ premiers élément du tableau."*
+
+Après la première itération de la boucle, comme $m$ vaut initialement le premier élément du tableau, on a que $m=t[0]$ qui est bien le maximum des $0+1=1$ premiers éléments du tableau. L'invariant est vérifié à la fin  de la première itération où $i=0$.
+
+On suppose l'invariant vrai à la fin d'une itération. A la fin de l'itération suivante, $m'$ (la valeur de $m$ à l'issue de cette itération) vaut soit $m$ (la valeur de $m$ au début de l'itération) soit $x'=t[i']$ ($i'$ étant la valeur de $i$ pour cette nouvelle itération). Comme $i' = i+1$ et que l'invariant est vrai à la fin de l'itération précédente :
+
+* $m$ vaut le maximum du tableau sur les $i+1$ premiers éléments (hypothèse de récurrence)
+* $m' = \max(m, x') = \max(m, t[i']) = \max(m, t[i + 1])$ (ce qu'il se passe dans l'itération suivante)
+
+On en conclut que $m'$ vaut bien le maximum du tableau sur les $i + 2$ premiers éléments.
 
 Notre invariant est vérifié.
 
-Il est donc aussi vrai à la fin des itérations : $m$ vaut le maximum du tableau à la fin de la boucle for.
+L'invariant est donc aussi vrai à la fin des itérations : $m$ vaut le maximum du tableau à la fin de la boucle `for` : $m$ est le maximum des valeurs du tableau.
 
 ## division euclidienne
 

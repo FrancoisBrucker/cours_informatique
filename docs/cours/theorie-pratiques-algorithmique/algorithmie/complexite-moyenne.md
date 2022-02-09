@@ -84,7 +84,7 @@ C & = & \sum_{e \in \mathcal{E}} p_e \cdot C(e) \\
 \end{array}
 $$
 
-En notant $p_{i}$ la probabilité qu'à un tableau d'être dans $\mathcal{E}_i$ on a alors :
+En notant $p_{i}$ la probabilité qu'à un tableau d'être dans $\mathcal{E}_i$ ($p_i =\sum_{e \in \mathcal{E}_i} p_e$)  on a alors :
 
 $$
 \begin{array}{lcl}
