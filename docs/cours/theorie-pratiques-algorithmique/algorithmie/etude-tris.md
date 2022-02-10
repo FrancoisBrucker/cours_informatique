@@ -876,21 +876,41 @@ Ce qui donne :
 
 $$
 \begin{array}{lcl}
-A(n) &=& K \sum_{i=1}^{n}\frac{2i-1}{i(i+1)} + A(0)\\
+A(n) &=& A(n-1) + K\cdot\frac{2n - 1}{n(n+1)}\\
+&=& A(n-2) + K\cdot\frac{2(n-1) - 1}{(n-1)(n)} +  K\cdot\frac{2n - 1}{n(n+1)}\\
+&=& \dots \\
+&=&K \sum_{i=1}^{n}\frac{2i-1}{i(i+1)} + A(0)\\
 &=&K \sum_{i=1}^{n}\frac{2}{(i+1)} - K \sum_{i=1}^{n}\frac{1}{i(i+1)} + A(0)\\
 \end{array}
 $$
 
-On peut utiliser des résultats sur les séries entières pour conclure :
+On peut facilement montrer (par récurrence) que $\sum_{i=1}^{n}\frac{1}{i(i+1)} = \frac{n}{n+1} \leq 1$ et donc que :
 
-* $\sum_{i=1}^{n}\frac{1}{i(i+1)} = \frac{n}{n+1} \leq 1$ (cela se montre facilement par récurrence)
-* $\sum_{i=1}^{n}\frac{1}{i} = \mathcal{O}(\ln(n))$ (c'est la [série harmonique](https://fr.wikipedia.org/wiki/S%C3%A9rie_harmonique). Elle est [équivalente](https://fr.wikipedia.org/wiki/%C3%89quivalent) à $\ln(n)$ en $+\infty$, c'est à dire que $\frac{\sum_{i=1}^{n}(1/i)}{\ln(n)}$ tend vers 1 lorsque $n$ tend vers $+\infty$)
+$$
+\begin{array}{lcl}
+A(n) &=& 2K\sum_{i=1}^{n}\frac{1}{(i+1)} + \mathcal{O}(1)\\
+&=& 2K\sum_{i=1}^{n}\frac{1}{i} - 2K + \mathcal{O}(1)\\
+&=& 2K\sum_{i=1}^{n}\frac{1}{i} + \mathcal{O}(1)\\
+&=& \mathcal{O}(\sum_{i=1}^{n}\frac{1}{i})\\
+\end{array}
+$$
 
-On a alors $A(n) = \mathcal{O}(\ln(n)) + \mathcal{O}(1) = \mathcal{O}(\ln(n))$ et au final :
+La suite $A(n)$ se comporte comme un $\mathcal{O}(H(n)$ où $H(n) = \sum_{i=1}^{n}\frac{1}{i}$.
+
+Cette fonction est connue, elle s'appelle la [série harmonique](https://fr.wikipedia.org/wiki/S%C3%A9rie_harmonique),
+et est [équivalente](https://fr.wikipedia.org/wiki/%C3%89quivalent) à $\ln(n)$ lorsque $n$ tend vers $+\infty$.  On a alors que $\mathcal{O}(H(n)) = \mathcal{O}(\ln(n))$, et de là :
+
+$$
+A(n) = \mathcal{O}(\ln(n))
+$$
+
+En revenant aux $C_{\mbox{moy}}(n) = n\cdot A(n)$ :
 
 $$
 C_{\mbox{moy}}(n) = \mathcal{O}(n\ln(n))
 $$
+
+ouf.
 
 > La complexité **en moyenne** du tri rapide pour un tableau de taille $n$ est $\mathcal{O}(n\ln(n))$
 {: .note}
