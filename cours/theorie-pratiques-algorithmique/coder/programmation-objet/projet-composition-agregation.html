@@ -83,13 +83,23 @@
 
 <p>De plus, maintenant que vous avez pris l’habitude de faire du joli code en utilisant un linter, vous pouvez utiliser <a href="https://black.readthedocs.io/en/stable/">black</a> pour le faire automatiquement. Suivez le <a href="/cours_informatique/tutos/editeur/vsc/installation/configuration/python/2021/09/14/vsc-python-modules-supplementaires.html#black">tuto</a> pour l’installer.</p>
 
+<h2 id="les-tests">les tests</h2>
+
+<p>Les tests sont bien sur toujours obligatoires ! Vous testerez chaque fonction que vous développerez.</p>
+
+<blockquote class="note">
+  <p>Lorsque l’on teste un objets et ses méthodes, on essaie dans la mesure du possible de ne pas avoir besoin des attributs. On ne vérifie que les résultats de la méthode, pas comment l’objet stocke ses informations.</p>
+
+  <p>On teste de <strong>fonctionnalités</strong> pas une <strong>implémentation particulière de celles-ci</strong>.</p>
+</blockquote>
+
 <h2 id="un-dé">Un Dé</h2>
 
 <p>On veut créer une classe <code class="language-plaintext highlighter-rouge">Dice</code>. Elle doit être capable de :</p>
 
 <ul>
-  <li>créer un objet sans paramètre,</li>
-  <li>créer un objet avec sa valeur initiale,</li>
+  <li>créer un objet sans paramètre (sa position est alors 1),</li>
+  <li>créer un objet avec sa position initiale,</li>
   <li>connaître et donner la valeur du dé (avec les méthodes <code class="language-plaintext highlighter-rouge">get_position</code> et <code class="language-plaintext highlighter-rouge">set_position</code>),</li>
   <li>lancer un dé en utilisant une méthode nommée <code class="language-plaintext highlighter-rouge">roll()</code> (la valeur du dé doit être modifiée aléatoirement).</li>
 </ul>
@@ -169,19 +179,19 @@
   <p>ajoutez son test et utilisez là (de façon implicite) dans le fichier <em>“main_5_des.py”</em> en <em>printant</em> directement les dés plutôt que leurs positions.</p>
 </blockquote>
 
+<p>Une autre amélioration :</p>
+
+<blockquote class="a-faire">
+  <p>Faites en sorte que l’on puisse écrire : <code class="language-plaintext highlighter-rouge">d.roll().roll()</code> si l’on veut lancer deux fois de suite le dé <code class="language-plaintext highlighter-rouge">d</code>.</p>
+
+  <p>Cela permettra aussi d’afficher <code class="language-plaintext highlighter-rouge">d</code> directement après l’avoir lancé : <code class="language-plaintext highlighter-rouge">print(d.roll())</code>.</p>
+</blockquote>
+
 <h2 id="tapis-vert">Tapis vert</h2>
 
 <p>Nous allons créer une classe permettant de gérer nos 5 dès de façon plus pratique qu’avec notre liste.</p>
 
 <p>Pour pouvoir jouer à des jeux de dés, implémentons une classe <code class="language-plaintext highlighter-rouge">TapisVert</code>.</p>
-
-<p>Cette classe doit avoir :</p>
-
-<ul>
-  <li>un tuple de 5 dés comme attribut (un attribut  nommée <code class="language-plaintext highlighter-rouge">dice</code> de type <code class="language-plaintext highlighter-rouge">tuple</code> qui contiendra 5 dés),</li>
-  <li>pouvoir lancer les 5 dés simultanément (une méthode <code class="language-plaintext highlighter-rouge">roll()</code> sans paramètre)</li>
-  <li>pouvoir donner les 5 dés</li>
-</ul>
 
 <h3 id="tapis-vert-modele">Modèle</h3>
 
@@ -191,8 +201,8 @@
     <li>donnez des exemples de manipulation d’objets de cette classe comme :
       <ul>
         <li>créer un objet</li>
-        <li>modifier la valeur d’un dé ou obtenir sa position</li>
-        <li>lancer les dés</li>
+        <li>donner un tuple contenant ses 5 dés</li>
+        <li>lancer les dés qu’il contient avec une méthode <code class="language-plaintext highlighter-rouge">roll()</code> (la méthode <code class="language-plaintext highlighter-rouge">roll</code> ne doit pas avoir de paramètres)</li>
       </ul>
     </li>
   </ol>
@@ -200,28 +210,25 @@
 
 <h3 id="tapis-vert-python">code python</h3>
 
-<blockquote class="tbd">
-  <p>ICI</p>
-</blockquote>
-
-<p>Créez le code python de la classe <code class="language-plaintext highlighter-rouge">TapisVert</code> (dans le fichier <em>“dice.py”</em>). Pour vérifier que votre code fait ce qu’on lui demande, vous devez créer un fichier <em>main.py</em> et essayez de :</p>
-
-<ul>
-  <li>de créer un objet sans argument et de vérifier dans quelle position sont les dés</li>
-  <li>de changer la position des 5 dés et de vérifier que la somme fonctionne</li>
-  <li>de lancer les dés et de vérifier que leurs positions est toujours cohérente avec le nombre de faces.</li>
-</ul>
-
 <blockquote class="a-faire">
-  <p>Implémentez le tout et Vérifier que tout fonctionne.</p>
+  <p>Créez le code python de la classe <code class="language-plaintext highlighter-rouge">TapisVert</code> (dans le fichier <em>“dice.py”</em>)</p>
 </blockquote>
 
-<h3 id="tapis-vert-tests">tests</h3>
+<p>Pour ses tests vous pourrez :</p>
 
-<p>Ajoutez finalement les tests de chaque méthode de la classe <code class="language-plaintext highlighter-rouge">Dice</code> (fichier <em>“test_dice”</em>).</p>
-
-<blockquote class="note">
-  <p>Vérifier que vos tests fonctionnent dans vscode.</p>
+<blockquote>
+  <ul>
+    <li>vérifier qu’après la création d’un objet <code class="language-plaintext highlighter-rouge">TapisVert</code> on dispose bien de 5 dés positionnés sur 1.</li>
+    <li>vérifiez qu’après avoir lancé les dés, leurs positions sont toujours cohérentes avec le nombre de faces.</li>
+    <li>vérifiez que <code class="language-plaintext highlighter-rouge">TapisVert</code> donne bien ses dés et non une copie de ceux-ci. POur réaliser ceci vous pourrez implémenter le test suivant :
+      <ol>
+        <li>demander les dés d’un objet de type <code class="language-plaintext highlighter-rouge">TapisVert</code>
+</li>
+        <li>modifier la position d’un dé</li>
+        <li>redemander les dés de l’objet de type <code class="language-plaintext highlighter-rouge">TapisVert</code> et vérifier que la position du dé est bien celle modifiée</li>
+      </ol>
+    </li>
+  </ul>
 </blockquote>
 
 <h3 id="analyse-du-code">Analyse du code</h3>
@@ -238,12 +245,18 @@
 
 <blockquote class="a-faire">
   <ol>
-    <li>faites en sorte de pouvoir afficher joliement les valeurs des dés d’un objet <code class="language-plaintext highlighter-rouge">TapisVert</code>
-</li>
-    <li>Ajoutez une méthode à <code class="language-plaintext highlighter-rouge">TapisVert</code> permettant de savoir s’il a une paire, un brelan, etc.</li>
-    <li>
-<a href="https://fr.wikipedia.org/wiki/Poker_d%27as">https://fr.wikipedia.org/wiki/Poker_d%27as</a> (il faudra lancer quelques des seulement. il faut pouvoir bloquer un dé qui ne sera pas lancé dans roll)</li>
+    <li>faites en sorte de pouvoir afficher joliment un objet <code class="language-plaintext highlighter-rouge">TapisVert</code> (en affichant par exemple la valeurs de ses 5 dés)</li>
+    <li>Ajoutez des méthodes à <code class="language-plaintext highlighter-rouge">TapisVert</code> permettant de savoir s’il a une paire, un brelan, un carré.</li>
+    <li>Ajoutez des méthodes à <code class="language-plaintext highlighter-rouge">TapisVert</code> permettant de savoir s’il a une double-paire ou un full.</li>
   </ol>
+</blockquote>
+
+<h3 id="pour-aller-encore-plus-loin">Pour aller encore plus loin</h3>
+
+<blockquote class="a-faire">
+  <p>Implémentez le jeu <a href="https://fr.wikipedia.org/wiki/Poker_d%27as">poker d’as</a>.</p>
+
+  <p>Notez qu’il faudra ajouter des méthodes permettant de bloquer un dé pour qu’il ne participe pas au lancer.</p>
 </blockquote>
 
   </div>
