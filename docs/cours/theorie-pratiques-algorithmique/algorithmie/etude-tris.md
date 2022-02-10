@@ -770,7 +770,7 @@ C_{\mbox{trié}}(n) &\leq& C(n)\\
 \end{array}
 $$
 
-Pour finir la preuve il nous reste à démontrer que $C(n) \leq \mathcal{O}(n^2)$.
+**Pour finir la preuve de façon formelle** il nous reste à démontrer que $C(n) \leq \mathcal{O}(n^2)$.
 
 Faisons le par récurrence. Notre hypothèse de récurrence est : il existe $k$ tel que $C(n) \leq k \cdot n^2$
 Cette hypothèse est trivialement vraie pour $n=1$ et supposons la vraie pour $n-1$. Examinons le cas $n$ :
