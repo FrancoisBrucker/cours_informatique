@@ -883,10 +883,10 @@ $$
 
 On peut utiliser des résultats sur les séries entières pour conclure :
 
-* $\sum_{i=1}^{n}\frac{1}{i(i+1)} \leq \sum_{i=1}^{n}\frac{1}{i^2} \leq \sum_{i=1}^{+\infty}\frac{1}{i^2} = \frac{\pi^2}{6}$ (c'est [une série de Riemann](https://fr.wikipedia.org/wiki/S%C3%A9rie_de_Riemann))
+* $\sum_{i=1}^{n}\frac{1}{i(i+1)} = \frac{n}{n+1} \leq 1$ (cela se montre facilement par récurrence)
 * $\sum_{i=1}^{n}\frac{1}{i} = \mathcal{O}(\ln(n))$ (c'est la [série harmonique](https://fr.wikipedia.org/wiki/S%C3%A9rie_harmonique). Elle est [équivalente](https://fr.wikipedia.org/wiki/%C3%89quivalent) à $\ln(n)$ en $+\infty$, c'est à dire que $\frac{\sum_{i=1}^{n}(1/i)}{\ln(n)}$ tend vers 1 lorsque $n$ tend vers $+\infty$)
 
-On a alors $A(n) = \mathcal{O}(\ln(n))$ et au final :
+On a alors $A(n) = \mathcal{O}(\ln(n)) + \mathcal{O}(1) = \mathcal{O}(\ln(n))$ et au final :
 
 $$
 C_{\mbox{moy}}(n) = \mathcal{O}(n\ln(n))
