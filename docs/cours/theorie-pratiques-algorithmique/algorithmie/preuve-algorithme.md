@@ -53,40 +53,86 @@ def factorielle(n):
 
 ### algorithme itératif {#facto-iter}
 
+On va voir ici 2 version du même algorithme. L'un qui construit la factorielle en *montant*, et l'autre qui la construit en *descendant*. ON prouvera ces 2 algorithme en utilisant des invariants de boucles :
+
+> Pour les preuves par invariant de boucle, le schéma de preuve est le suivant :
+>
+> 1. on vérifie que l'invariant est vrai à la fin de la première itération de la boucle
+> 2. on suppose l'invariant à la fin de l'itération $k$ de la boucle et on vérifie qu'il est toujours vérifié à la fin de l'itération $k + 1$.
+>
+> Pour simplifier l'écriture, on note avec un `'` (prim) les variables à la fin de la boucle d'itération $k+1$ pour les différentier des variables de la fin de l'itération $k$.
+{: .note}
+
+Un invariant doit résumer ce que fait la boucle avec une équation qui est toujours vérifiées, même si on modifie des variables.
+
+> Il existe des variantes dans les preuve par invariants selon que l'on vérifie juste à la fin de la boucle ou au début et à la fin de l'itération. Les deux formes sont équivalentes, mais il est parfois plus aisée d'utiliser une forme que l'autre.
+
+#### première version
+
 ```python
 def factorielle(n):
     r = 1
-    while n > 1:
-        r *= n
-        n -= 1
+    i = 1
+    while i <= n:
+        r *= i
+        i += 1
     return r
 ```
 
 > On utilise la possibilité que donne python d'écrire `x += y` (*resp.* `x -= y`, `x *= y` ou encore `x /= y`) à la place de `x = x + y` (*resp.* `x = x - y`, `x = x * y`, `x = x / y`).
 
-* finitude : Si $n$ est un entier, l'algorithme va s'arrêter car $n$ décroît strictement à chaque itération de la boucle `while`.
+* finitude : Si $n$ est un entier non nul, l'algorithme va s'arrêter car $i$ croît strictement à chaque itération de la boucle `while`.
 * preuve : par invariant de boucle
 
-> Pour les preuves par invariant de boucle, le schéma de preuve est le suivant :
->
-> 1. on vérifie que l'invariant est vrai à la fin de la première itération de la boucle
-> 2. on suppose l'invariant à la fin de l'itération $i$ de la boucle et on vérifie qu'il est toujours vérifié à la fin de l'itération $i + 1$.
->
-> Pour simplifier l'écriture, on note avec un `'` (prim) les variables à la fin de la boucle d'itération $i+1$ pour les différentier des variables de la fin de l'itération $i$.
-{: .note}
+On peut procéder ainsi pour trouver l'invariant de boucle :
 
-Ici notre invariant est : *"A la fin d'une itération de la boucle while : $r = (n+1) \cdot \dots \cdot n_0$ avec $n_0$ la valeur de $n$ passé en argument de la fonction"*.
+1. l'algorithme retourne r à la fin : ce doit donc être le résultat et il doit valoir $n!$
+2. $r$ est multiplié par $i$ à chaque itération
+3. $i$ est incrémenté de 1 à chaque itération et commence à 1.
 
-1. à la fin de la première itération $n = n_0 - 1$ et r = $n_0$ : la propriété est vraie.
-2. on suppose la propriété vraie à la fin de la $i$ème itération. A la fin de l'itération suivante on a :
-   * $n' = n - 1$
-   * $r' = r \cdot n$
-3. comme $r = (n+1) \cdot n_0$ on a $\frac{r'}{n} = (n+1) \cdot \dots \cdot n_0$ et donc $r' = n \cdot (n+1) \cdot \dots \cdot n_0$. On a bien $r' = (n'+1) \cdot \dots \cdot n_0$
-4. on en conclut que notre invariant reste vérifié.
+On doit donc avoir un invariant du type *$r \simeq i!$ à la fin de chaque itération* à plus ou moins 1 près. Pour en être sur regardons ce que vallent nos variables à la fin de la première itération :
 
-L'invariant étant vérifié à la fin de chaque itération, il est donc aussi vrai à la fin de la dernière itération. A ce moment là, on a $n=1$ et donc $r = 1 \cdot 2 \cdot \dots \cdot n_0 = n_0!$
+* $r = 1$
+* $i = 2$ (on a modifié $i$ après l'avoir multiplié par $r$)
 
-> Il existe des variantes dans les preuve par invariants selon que l'on vérifie juste à la fin de la boucle ou au début et à la fin de l'itération. Les deux formes sont équivalentes, mais il est parfois plus aisée d'utiliser une forme que l'autre.
+Notre invariant doit donc être : *$r = (i-1)!$ à la fin de chaque itération*.
+
+1. c'est vrai à la fin de la 1ère itération (on a tout fait pour)
+2. si c'est vrai à la fin de la $k$ème itération, à la fin de la $k+1$ème itération on a :
+   * $r'=r \cdot i$ (le $r$ de la fin de la $k+1$ème boucle est égal à celui de la fin de la $k$ème boucle fois le $i$ de la fin de $k$ème boucle)
+   * $i' = i + 1$ (le $i$ de la fin de la $k+1$ème boucle est le $i$ de la fin de la $k$ème boucle plus 1)
+   * $r = (i-1)!$ (c'est notre invariant, vrai à la fin de l'itération $k$ ar hypothèse)
+3. on a donc : $r' = (i-1)! \cdot i = i! = (i'-1)!$ : **notre invariant est vérifié**.
+
+L'invariant étant vérifié à la fin de chaque itération, il est donc aussi vrai à la fin de la dernière itération. A ce moment là, on a $i=n+1$ et donc $r = n!$
+
+#### seconde version
+
+```python
+def factorielle(n):
+    r = 1
+    i = n
+    while i > 1:
+        r *= i
+        i -= 1
+    return r
+```
+
+> l'algorithme construit la factorielle en *descendant.
+
+* finitude : Si $n$ est un entier non nul, l'algorithme va s'arrêter car $n$ décroît strictement à chaque itération de la boucle `while`.
+* preuve : par invariant de boucle
+
+Ici notre invariant est : *"A la fin d'une itération de la boucle while : $r = (i+1) \cdot (i+2) \dots (n-1) \cdot n$*
+
+1. à la fin de la première itération $i = n - 1$ et $r = n = (i+1)$ : notre invariant est vérifié.
+2. on suppose la propriété vraie à la fin de la $k$ème itération. A la fin de l'itération suivante on a :
+   * $r' = r \cdot i$ (le $r$ de la fin de la $k+1$ème boucle est égal à celui de la fin de la $k$ème boucle fois le $i$ de la fin de $k$ème boucle)
+   * $i' = i - 1$ (le $i$ de la fin de la $k+1$ème boucle est le $i$ de la fin de la $k$ème boucle moins 1)
+   * $r = (i+1) \cdot \dots n$ (c'est notre invariant, vrai à la fin de l'itération $k$ ar hypothèse)
+3. on a donc : $r' = (i+1) \cdot \dots n \cdot (i) = i \cdot (i+1) \dots n = (i'+1) \dots \cdot n$ : **notre invariant est vérifié**.
+
+L'invariant étant vérifié à la fin de chaque itération, il est donc aussi vrai à la fin de la dernière itération. A ce moment là, on a $i=1$ et donc $r = 1 \cdot 2 \cdot \dots \cdot n = n!$
 
 ## maximum d'un tableau
 
