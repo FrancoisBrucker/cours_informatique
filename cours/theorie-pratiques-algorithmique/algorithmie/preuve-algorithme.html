@@ -121,11 +121,33 @@
 
 <h3 id="facto-iter">algorithme itératif</h3>
 
+<p>On va voir ici 2 version du même algorithme. L’un qui construit la factorielle en <em>montant</em>, et l’autre qui la construit en <em>descendant</em>. ON prouvera ces 2 algorithme en utilisant des invariants de boucles :</p>
+
+<blockquote class="note">
+  <p>Pour les preuves par invariant de boucle, le schéma de preuve est le suivant :</p>
+
+  <ol>
+    <li>on vérifie que l’invariant est vrai à la fin de la première itération de la boucle</li>
+    <li>on suppose l’invariant à la fin de l’itération $k$ de la boucle et on vérifie qu’il est toujours vérifié à la fin de l’itération $k + 1$.</li>
+  </ol>
+
+  <p>Pour simplifier l’écriture, on note avec un <code class="language-plaintext highlighter-rouge">'</code> (prim) les variables à la fin de la boucle d’itération $k+1$ pour les différentier des variables de la fin de l’itération $k$.</p>
+</blockquote>
+
+<p>Un invariant doit résumer ce que fait la boucle avec une équation qui est toujours vérifiées, même si on modifie des variables.</p>
+
+<blockquote>
+  <p>Il existe des variantes dans les preuve par invariants selon que l’on vérifie juste à la fin de la boucle ou au début et à la fin de l’itération. Les deux formes sont équivalentes, mais il est parfois plus aisée d’utiliser une forme que l’autre.</p>
+</blockquote>
+
+<h4 id="première-version">première version</h4>
+
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">factorielle</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="n">r</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="k">while</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="n">r</span> <span class="o">*=</span> <span class="n">n</span>
-        <span class="n">n</span> <span class="o">-=</span> <span class="mi">1</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">:</span>
+        <span class="n">r</span> <span class="o">*=</span> <span class="n">i</span>
+        <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="k">return</span> <span class="n">r</span>
 </code></pre></div></div>
 
@@ -134,40 +156,76 @@
 </blockquote>
 
 <ul>
-  <li>finitude : Si $n$ est un entier, l’algorithme va s’arrêter car $n$ décroît strictement à chaque itération de la boucle <code class="language-plaintext highlighter-rouge">while</code>.</li>
+  <li>finitude : Si $n$ est un entier non nul, l’algorithme va s’arrêter car $i$ croît strictement à chaque itération de la boucle <code class="language-plaintext highlighter-rouge">while</code>.</li>
   <li>preuve : par invariant de boucle</li>
 </ul>
 
-<blockquote class="note">
-  <p>Pour les preuves par invariant de boucle, le schéma de preuve est le suivant :</p>
-
-  <ol>
-    <li>on vérifie que l’invariant est vrai à la fin de la première itération de la boucle</li>
-    <li>on suppose l’invariant à la fin de l’itération $i$ de la boucle et on vérifie qu’il est toujours vérifié à la fin de l’itération $i + 1$.</li>
-  </ol>
-
-  <p>Pour simplifier l’écriture, on note avec un <code class="language-plaintext highlighter-rouge">'</code> (prim) les variables à la fin de la boucle d’itération $i+1$ pour les différentier des variables de la fin de l’itération $i$.</p>
-</blockquote>
-
-<p>Ici notre invariant est : <em>“A la fin d’une itération de la boucle while : $r = (n+1) \cdot \dots \cdot n_0$ avec $n_0$ la valeur de $n$ passé en argument de la fonction”</em>.</p>
+<p>On peut procéder ainsi pour trouver l’invariant de boucle :</p>
 
 <ol>
-  <li>à la fin de la première itération $n = n_0 - 1$ et r = $n_0$ : la propriété est vraie.</li>
-  <li>on suppose la propriété vraie à la fin de la $i$ème itération. A la fin de l’itération suivante on a :
-    <ul>
-      <li>$n’ = n - 1$</li>
-      <li>$r’ = r \cdot n$</li>
-    </ul>
-  </li>
-  <li>comme $r = (n+1) \cdot n_0$ on a $\frac{r’}{n} = (n+1) \cdot \dots \cdot n_0$ et donc $r’ = n \cdot (n+1) \cdot \dots \cdot n_0$. On a bien $r’ = (n’+1) \cdot \dots \cdot n_0$</li>
-  <li>on en conclut que notre invariant reste vérifié.</li>
+  <li>l’algorithme retourne r à la fin : ce doit donc être le résultat et il doit valoir $n!$</li>
+  <li>$r$ est multiplié par $i$ à chaque itération</li>
+  <li>$i$ est incrémenté de 1 à chaque itération et commence à 1.</li>
 </ol>
 
-<p>L’invariant étant vérifié à la fin de chaque itération, il est donc aussi vrai à la fin de la dernière itération. A ce moment là, on a $n=1$ et donc $r = 1 \cdot 2 \cdot \dots \cdot n_0 = n_0!$</p>
+<p>On doit donc avoir un invariant du type <em>$r \simeq i!$ à la fin de chaque itération</em> à plus ou moins 1 près. Pour en être sur regardons ce que vallent nos variables à la fin de la première itération :</p>
+
+<ul>
+  <li>$r = 1$</li>
+  <li>$i = 2$ (on a modifié $i$ après l’avoir multiplié par $r$)</li>
+</ul>
+
+<p>Notre invariant doit donc être : <em>$r = (i-1)!$ à la fin de chaque itération</em>.</p>
+
+<ol>
+  <li>c’est vrai à la fin de la 1ère itération (on a tout fait pour)</li>
+  <li>si c’est vrai à la fin de la $k$ème itération, à la fin de la $k+1$ème itération on a :
+    <ul>
+      <li>$r’=r \cdot i$ (le $r$ de la fin de la $k+1$ème boucle est égal à celui de la fin de la $k$ème boucle fois le $i$ de la fin de $k$ème boucle)</li>
+      <li>$i’ = i + 1$ (le $i$ de la fin de la $k+1$ème boucle est le $i$ de la fin de la $k$ème boucle plus 1)</li>
+      <li>$r = (i-1)!$ (c’est notre invariant, vrai à la fin de l’itération $k$ ar hypothèse)</li>
+    </ul>
+  </li>
+  <li>on a donc : $r’ = (i-1)! \cdot i = i! = (i’-1)!$ : <strong>notre invariant est vérifié</strong>.</li>
+</ol>
+
+<p>L’invariant étant vérifié à la fin de chaque itération, il est donc aussi vrai à la fin de la dernière itération. A ce moment là, on a $i=n+1$ et donc $r = n!$</p>
+
+<h4 id="seconde-version">seconde version</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">factorielle</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">n</span>
+    <span class="k">while</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">r</span> <span class="o">*=</span> <span class="n">i</span>
+        <span class="n">i</span> <span class="o">-=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">r</span>
+</code></pre></div></div>
 
 <blockquote>
-  <p>Il existe des variantes dans les preuve par invariants selon que l’on vérifie juste à la fin de la boucle ou au début et à la fin de l’itération. Les deux formes sont équivalentes, mais il est parfois plus aisée d’utiliser une forme que l’autre.</p>
+  <p>l’algorithme construit la factorielle en *descendant.</p>
 </blockquote>
+
+<ul>
+  <li>finitude : Si $n$ est un entier non nul, l’algorithme va s’arrêter car $n$ décroît strictement à chaque itération de la boucle <code class="language-plaintext highlighter-rouge">while</code>.</li>
+  <li>preuve : par invariant de boucle</li>
+</ul>
+
+<p>Ici notre invariant est : <em>“A la fin d’une itération de la boucle while : $r = (i+1) \cdot (i+2) \dots (n-1) \cdot n$</em></p>
+
+<ol>
+  <li>à la fin de la première itération $i = n - 1$ et $r = n = (i+1)$ : notre invariant est vérifié.</li>
+  <li>on suppose la propriété vraie à la fin de la $k$ème itération. A la fin de l’itération suivante on a :
+    <ul>
+      <li>$r’ = r \cdot i$ (le $r$ de la fin de la $k+1$ème boucle est égal à celui de la fin de la $k$ème boucle fois le $i$ de la fin de $k$ème boucle)</li>
+      <li>$i’ = i - 1$ (le $i$ de la fin de la $k+1$ème boucle est le $i$ de la fin de la $k$ème boucle moins 1)</li>
+      <li>$r = (i+1) \cdot \dots n$ (c’est notre invariant, vrai à la fin de l’itération $k$ ar hypothèse)</li>
+    </ul>
+  </li>
+  <li>on a donc : $r’ = (i+1) \cdot \dots n \cdot (i) = i \cdot (i+1) \dots n = (i’+1) \dots \cdot n$ : <strong>notre invariant est vérifié</strong>.</li>
+</ol>
+
+<p>L’invariant étant vérifié à la fin de chaque itération, il est donc aussi vrai à la fin de la dernière itération. A ce moment là, on a $i=1$ et donc $r = 1 \cdot 2 \cdot \dots \cdot n = n!$</p>
 
 <h2 id="maximum-dun-tableau">maximum d’un tableau</h2>
 
