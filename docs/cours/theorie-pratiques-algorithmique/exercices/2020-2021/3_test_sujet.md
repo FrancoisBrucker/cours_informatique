@@ -13,7 +13,7 @@ Donnez la complexité et prouvez  que l'algorithme suivant rend  une liste `L2`,
 * **Début** :
   * création d’une liste `L2` vide
   * pour chaque élément `x` de L:
-    * si `x `≠ `val`: ajoute `x` à la fin de `L2`
+    * si `x` ≠ `val`: ajoute `x` à la fin de `L2`
 * **Rendre** : `L2`
 
 ## 2. suppression de doublon
