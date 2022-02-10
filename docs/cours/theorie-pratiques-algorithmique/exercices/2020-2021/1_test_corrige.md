@@ -5,7 +5,7 @@ category: cours
 tags: informatique cours 
 ---
 
-## barême
+## barème
 
 * syracuse + test : 2pt
 * suite + test : 2pt
