@@ -926,7 +926,7 @@ C(n) &amp;=&amp; 2 \cdot C(\frac{n}{2}) + \mathcal{O}(n)\\
 C(n) = \underbrace{\mathcal{O}(n)}_{\mbox{création des tableaux}}{} + \underbrace{C(n_1) + C(n_2)}_{\mbox{récursions}}{}
 }\]
 
-<p>Où $n_1$ est la taille du tableau de gauche et $n_2$ celle de droite ($n_1 + n_2 = n$). Pour trouver $n_1$ et $n_2$, il faut  résoudre l’équation :</p>
+<p>Où $n_1$ est la taille du tableau de gauche et $n_2$ celle de droite ($n_1 + n_2 = n-1$). Pour trouver $n_1$ et $n_2$, il faut  résoudre l’équation :</p>
 
 \[{
 C(n) = \mathcal{O}(n) + \max_{0 \leq i &lt; n}(C(i) + C(n-i-1))
@@ -972,7 +972,7 @@ C_{\mbox{trié}}(n) &amp;\leq&amp; C(n)\\
 \mathcal{O}(n^2) &amp;\leq&amp; C(n)\\
 \end{array}\]
 
-<p>Pour finir la preuve il nous reste à démontrer que $C(n) \leq \mathcal{O}(n^2)$.</p>
+<p><strong>Pour finir la preuve de façon formelle</strong> il nous reste à démontrer que $C(n) \leq \mathcal{O}(n^2)$.</p>
 
 <p>Faisons le par récurrence. Notre hypothèse de récurrence est : il existe $k$ tel que $C(n) \leq k \cdot n^2$
 Cette hypothèse est trivialement vraie pour $n=1$ et supposons la vraie pour $n-1$. Examinons le cas $n$ :</p>
@@ -1000,7 +1000,7 @@ C(n) &amp; = &amp; \mathcal{O}(n) + \max_{0 \leq i &lt; n}(C(i) + C(n-i-1))&amp;
 
 <h4 id="complexité-minimale-du-tri-rapide">complexité minimale du tri rapide</h4>
 
-<p>Si l’on découpe notre tableau de façon non équilibrée, une branche de la récursion va faire plus d’opérations que $C(n/2)$. La complexité minimale est ainsi atteinte lorsque l’on coupe notre tableau exactement en 2.</p>
+<p><strong>intuitivement</strong>, si l’on découpe notre tableau de façon non équilibrée, une branche de la récursion va faire plus d’opérations que $C(n/2)$. La complexité minimale est ainsi atteinte lorsque l’on coupe notre tableau exactement en 2.</p>
 
 <p>Dans ce cas là, on a l’équation de récurrence : $C(n) = \mathcal{O}(n) + 2 \cdot C(\frac{n}{2})$ qui est la même que celle du tri fusion. La complexité minimale du tri <code class="language-plaintext highlighter-rouge">rapide</code> est donc $\mathcal{O}(n\ln(n))$.</p>
 
@@ -1047,7 +1047,7 @@ C_{\mbox{moy}}(n) = K\cdot n + \frac{1}{n}\sum_{0 \leq i &lt; n}(C_{\mbox{moy}}(
 C_{\mbox{moy}}(n) = K\cdot n + \frac{2}{n}\sum_{1 \leq i \leq n}C_{\mbox{moy}}(i-1)
 }\]
 
-<p>Il va maintenant y avoir 2 astuces coup sur coup. La première astuce est de considérer l’équation :</p>
+<p>Il va maintenant y avoir 2 astuces coup sur coup. La première astuce est de considérer l’équation $n\cdot C_{\mbox{moy}}(n) - (n-1)\cdot C_{\mbox{moy}}(n-1)$ qui va nous permettre d’éliminer la somme :</p>
 
 \[\begin{array}{lcl}
 n\cdot C_{\mbox{moy}}(n) - (n-1)\cdot C_{\mbox{moy}}(n-1) &amp; = &amp; K\cdot n^2 +2\sum_{1 \leq i \leq n}C_{\mbox{moy}}(i-1)\\
@@ -1060,7 +1060,7 @@ n\cdot C_{\mbox{moy}}(n) - (n-1)\cdot C_{\mbox{moy}}(n-1) &amp; = &amp; K\cdot n
 
 \[n\cdot C_{\mbox{moy}}(n) = K(2n - 1) + (n+1)\cdot C_{\mbox{moy}}(n-1)\]
 
-<p>Et maintenant la seconde astuce : on divise l’équation ci-dessus par $n(n+1)$ :</p>
+<p>Et maintenant la seconde astuce : on divise l’équation ci-dessus par $n(n+1)$ pour obtenir un terme générique identique des deux côtés de l’équation :</p>
 
 \[\frac{C_{\mbox{moy}}(n)}{n+1}=\frac{C_{\mbox{moy}}(n-1)}{n} + K\cdot\frac{2n - 1}{n(n+1)}\]
 
@@ -1071,20 +1071,34 @@ n\cdot C_{\mbox{moy}}(n) - (n-1)\cdot C_{\mbox{moy}}(n-1) &amp; = &amp; K\cdot n
 <p>Ce qui donne :</p>
 
 \[\begin{array}{lcl}
-A(n) &amp;=&amp; K \sum_{i=1}^{n}\frac{2i-1}{i(i+1)} + A(0)\\
+A(n) &amp;=&amp; A(n-1) + K\cdot\frac{2n - 1}{n(n+1)}\\
+&amp;=&amp; A(n-2) + K\cdot\frac{2(n-1) - 1}{(n-1)(n)} +  K\cdot\frac{2n - 1}{n(n+1)}\\
+&amp;=&amp; \dots \\
+&amp;=&amp;K \sum_{i=1}^{n}\frac{2i-1}{i(i+1)} + A(0)\\
 &amp;=&amp;K \sum_{i=1}^{n}\frac{2}{(i+1)} - K \sum_{i=1}^{n}\frac{1}{i(i+1)} + A(0)\\
 \end{array}\]
 
-<p>On peut utiliser des résultats sur les séries entières pour conclure :</p>
+<p>On peut facilement montrer (par récurrence) que $\sum_{i=1}^{n}\frac{1}{i(i+1)} = \frac{n}{n+1} \leq 1$ et donc que :</p>
 
-<ul>
-  <li>$\sum_{i=1}^{n}\frac{1}{i(i+1)} = \frac{n}{n+1} \leq 1$ (cela se montre facilement par récurrence)</li>
-  <li>$\sum_{i=1}^{n}\frac{1}{i} = \mathcal{O}(\ln(n))$ (c’est la <a href="https://fr.wikipedia.org/wiki/S%C3%A9rie_harmonique">série harmonique</a>. Elle est <a href="https://fr.wikipedia.org/wiki/%C3%89quivalent">équivalente</a> à $\ln(n)$ en $+\infty$, c’est à dire que $\frac{\sum_{i=1}^{n}(1/i)}{\ln(n)}$ tend vers 1 lorsque $n$ tend vers $+\infty$)</li>
-</ul>
+\[\begin{array}{lcl}
+A(n) &amp;=&amp; 2K\sum_{i=1}^{n}\frac{1}{(i+1)} + \mathcal{O}(1)\\
+&amp;=&amp; 2K\sum_{i=1}^{n}\frac{1}{i} - 2K + \mathcal{O}(1)\\
+&amp;=&amp; 2K\sum_{i=1}^{n}\frac{1}{i} + \mathcal{O}(1)\\
+&amp;=&amp; \mathcal{O}(\sum_{i=1}^{n}\frac{1}{i})\\
+\end{array}\]
 
-<p>On a alors $A(n) = \mathcal{O}(\ln(n)) + \mathcal{O}(1) = \mathcal{O}(\ln(n))$ et au final :</p>
+<p>La suite $A(n)$ se comporte comme un $\mathcal{O}(H(n)$ où $H(n) = \sum_{i=1}^{n}\frac{1}{i}$.</p>
+
+<p>Cette fonction est connue, elle s’appelle la <a href="https://fr.wikipedia.org/wiki/S%C3%A9rie_harmonique">série harmonique</a>,
+et est <a href="https://fr.wikipedia.org/wiki/%C3%89quivalent">équivalente</a> à $\ln(n)$ lorsque $n$ tend vers $+\infty$.  On a alors que $\mathcal{O}(H(n)) = \mathcal{O}(\ln(n))$, et de là :</p>
+
+\[A(n) = \mathcal{O}(\ln(n))\]
+
+<p>En revenant aux $C_{\mbox{moy}}(n) = n\cdot A(n)$ :</p>
 
 \[C_{\mbox{moy}}(n) = \mathcal{O}(n\ln(n))\]
+
+<p>ouf.</p>
 
 <blockquote class="note">
   <p>La complexité <strong>en moyenne</strong> du tri rapide pour un tableau de taille $n$ est $\mathcal{O}(n\ln(n))$</p>
