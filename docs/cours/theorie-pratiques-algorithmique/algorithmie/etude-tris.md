@@ -723,7 +723,7 @@ $${
 C(n) = \underbrace{\mathcal{O}(n)}_{\mbox{création des tableaux}}{} + \underbrace{C(n_1) + C(n_2)}_{\mbox{récursions}}{}
 }$$
 
-Où $n_1$ est la taille du tableau de gauche et $n_2$ celle de droite ($n_1 + n_2 = n$). Pour trouver $n_1$ et $n_2$, il faut  résoudre l'équation :
+Où $n_1$ est la taille du tableau de gauche et $n_2$ celle de droite ($n_1 + n_2 = n-1$). Pour trouver $n_1$ et $n_2$, il faut  résoudre l'équation :
 
 $${
 C(n) = \mathcal{O}(n) + \max_{0 \leq i < n}(C(i) + C(n-i-1))
@@ -799,7 +799,7 @@ $$\mathcal{O}(n^2) \leq C(n) \leq \mathcal{O}(n^2)$$
 
 #### complexité minimale du tri rapide
 
-Si l'on découpe notre tableau de façon non équilibrée, une branche de la récursion va faire plus d'opérations que $C(n/2)$. La complexité minimale est ainsi atteinte lorsque l'on coupe notre tableau exactement en 2.
+**intuitivement**, si l'on découpe notre tableau de façon non équilibrée, une branche de la récursion va faire plus d'opérations que $C(n/2)$. La complexité minimale est ainsi atteinte lorsque l'on coupe notre tableau exactement en 2.
 
 Dans ce cas là, on a l'équation de récurrence : $C(n) = \mathcal{O}(n) + 2 \cdot C(\frac{n}{2})$ qui est la même que celle du tri fusion. La complexité minimale du tri `rapide` est donc $\mathcal{O}(n\ln(n))$.
 
@@ -843,7 +843,7 @@ $${
 C_{\mbox{moy}}(n) = K\cdot n + \frac{2}{n}\sum_{1 \leq i \leq n}C_{\mbox{moy}}(i-1)
 }$$
 
-Il va maintenant y avoir 2 astuces coup sur coup. La première astuce est de considérer l'équation :
+Il va maintenant y avoir 2 astuces coup sur coup. La première astuce est de considérer l'équation $n\cdot C_{\mbox{moy}}(n) - (n-1)\cdot C_{\mbox{moy}}(n-1)$ qui va nous permettre d'éliminer la somme :
 
 $$
 \begin{array}{lcl}
@@ -860,7 +860,7 @@ $$
 n\cdot C_{\mbox{moy}}(n) = K(2n - 1) + (n+1)\cdot C_{\mbox{moy}}(n-1)
 $$
 
-Et maintenant la seconde astuce : on divise l'équation ci-dessus par $n(n+1)$ :
+Et maintenant la seconde astuce : on divise l'équation ci-dessus par $n(n+1)$ pour obtenir un terme générique identique des deux côtés de l'équation :
 
 $$
 \frac{C_{\mbox{moy}}(n)}{n+1}=\frac{C_{\mbox{moy}}(n-1)}{n} + K\cdot\frac{2n - 1}{n(n+1)}
