@@ -159,6 +159,11 @@ Au programme :
 * tout
 * voir un peu plus
 
+## tests
+
+1. code : [sujet]({% link cours/theorie-pratiques-algorithmique/exercices/2021-2022/1_test_sujet.md %}) et [corrigé]({% link cours/theorie-pratiques-algorithmique/exercices/2021-2022/1_test_corrige.md %})
+2. complexité et preuve : [sujet]({% link cours/theorie-pratiques-algorithmique/exercices/2021-2022/2_test_sujet.md %}) et [corrigé]({% link cours/theorie-pratiques-algorithmique/exercices/2021-2022/2_test_corrige.md %})
+
 ## on s'entraine
 
-[Exercices passés]({% link cours/theorie-pratiques-algorithmique/exercices/index.md %})
+Les tests, les DS et les ET des années précédentes sont disponibles dans les [annales]({% link cours/theorie-pratiques-algorithmique/exercices/index.md %}).

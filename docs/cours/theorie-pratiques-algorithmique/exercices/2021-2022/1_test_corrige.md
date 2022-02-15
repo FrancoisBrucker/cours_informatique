@@ -5,6 +5,9 @@ category: cours
 tags: informatique cours 
 ---
 
+> [Théorie et pratiques algorithmique]({% link cours/theorie-pratiques-algorithmique/index.md %}) / [exercices]({% link cours/theorie-pratiques-algorithmique/exercices/index.md %}) / [2021-2022]({% link cours/theorie-pratiques-algorithmique/exercices/2021-2022/index.md %}) / [corrigé Test 1 : code]({% link cours/theorie-pratiques-algorithmique/exercices/2021-2022/1_test_corrige.md %})
+{: .chemin}
+
 L'exercice portait sur la structure de [polynômes](https://fr.wikipedia.org/wiki/Polyn%C3%B4me).
 
 Un polynôme est défini mathématiquement par la fonction :

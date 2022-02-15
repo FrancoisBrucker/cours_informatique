@@ -5,6 +5,9 @@ category: cours
 tags: code python
 ---
 
+> [Théorie et pratiques algorithmique]({% link cours/theorie-pratiques-algorithmique/index.md %}) / [exercices]({% link cours/theorie-pratiques-algorithmique/exercices/index.md %}) / [2021-2022]({% link cours/theorie-pratiques-algorithmique/exercices/2021-2022/index.md %}) / [sujet Test 1 : code]({% link cours/theorie-pratiques-algorithmique/exercices/2021-2022/1_test_sujet.md %})
+{: .chemin}
+
 
 Toute fonction écrite doit être testée.
 

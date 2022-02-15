@@ -739,6 +739,8 @@ On va montrer que :
 >
 {: .note}
 
+Retenez les complexités ci-dessus et les raisons intuitives de leurs calculs. Si vous voulez aller plus loin, vous pouvez étudier les preuves formelles, surtout qu'elles sont jolies et vous apprendront à calculer des complexités dans des cas non triviaux.
+
 #### complexité (maximale) du tri rapide
 
 **Intuitivement**, ce cas va arriver si un des deux tableaux est toujours vide. Par exemple lorsque le tableau est déjà trié. Dans ce cas là, l'autre tableau est de taille $n-1$, ce qui donne une complexité de :
@@ -802,17 +804,72 @@ $$\mathcal{O}(n^2) \leq C(n) \leq \mathcal{O}(n^2)$$
 
 **intuitivement**, si l'on découpe notre tableau de façon non équilibrée, une branche de la récursion va faire plus d'opérations que $C(n/2)$. La complexité minimale est ainsi atteinte lorsque l'on coupe notre tableau exactement en 2.
 
-Dans ce cas là, on a l'équation de récurrence : $C(n) = \mathcal{O}(n) + 2 \cdot C(\frac{n}{2})$ qui est la même que celle du tri fusion. La complexité minimale du tri `rapide` est inférieure à $\mathcal{O}(n\ln(n))$.
+Dans ce cas là, on a l'équation de récurrence : $C(n) = \mathcal{O}(n) + 2 \cdot C(\frac{n}{2})$ qui est la même que celle du tri fusion. La complexité minimale du tri `rapide` de l'ordre de $\mathcal{O}(n\ln(n))$.
 
-Pour finir la preuve, remarquons que $C(k) \geq k$ : la courbe de $C(n)$ est plus grande qu'une droite. On en conclut que $C(\frac{(k-1)n}{k})$ est au dessus de la droite liant $C(\frac{n}{k})$ et $C(\frac{n}{2})$, pour $k >2$ :
+{% details preuve du **calcul formel** de la complexité minimale %}
 
-![droite]({{ "/assets/cours/algorithmie/etude-tris-1.png" | relative_url }}){:style="margin: auto;display: block;"}
+Pour chaque exécution de l'algorithme, le nombre d'opérations hors récursion est proportionnelle au nombre d'élément du tableau en paramètre. La complexité totale est donc de l'ordre de la somme des tailles des tableaux pour chaque récursion.
 
-De là, $C(\frac{n}{2})$ est en-dessous de la droite liant $C(\frac{n}{k})$ à $C(\frac{(k-1)n}{k})$ :
+En réordonnant les récursions par *étage*, on obtient alors un schéma suivant :
 
-![courbe C(n)]({{ "/assets/cours/algorithmie/etude-tris-2.png" | relative_url }}){:style="margin: auto;display: block;"}
+![récursions]({{ "/assets/cours/algorithmie/etude-tris-1.png" | relative_url }}){:style="margin: auto;display: block;"}
 
-On a donc $C(\frac{n}{2}) \leq \frac{1}{2}(C(\frac{n}{k}) + C(\frac{(k-1)n}{k}))$ (le rond vide est au-desus du rond plein) pour tout $k > 2$. Il est donc **toujours** plus avantageux de découper le tableau en 2 parties égales.
+où :
+
+1. le premier étage a $k_0 = 1$ algorithme qui produit 2 récursions
+2. le deuxième étage a au plus $k_1 = 2$ algorithmes qui produit chacun 2 récursions au maximums
+3. ...
+4. la $i+1$ ème étage a au plus $k_i = 2^i$ algorithmes qui produisent chacun 2 récursions au maximum.
+5. ...
+
+La complexité totale de l'algorithme est alors égale à :
+
+$$
+C = n + n_{1} + n_{2} + n_{1, 1} + n_{1, 2} + n_{2, 1} + n_{2, 2} + \dots
+$$
+
+Comme à chaque récursion on supprime un élément du tableau ($T[0]$), le nombre d'opérations pour le $i+1$ème étage est égal à $N_i = N_{i-1} - k_{i-1}$ où $k_{i}$ est le nombre de récursion pour l'étage $i$.
+
+![nombre par étage]({{ "/assets/cours/algorithmie/etude-tris-2.png" | relative_url }}){:style="margin: auto;display: block;"}
+
+On a alors, s'il y a $h+1$ étages :
+
+$$
+\begin{array}{lcl}
+C &=& (n - 0) + (n - k_0) + (n - k_0 - k_1) + \dots (n- \sum_{j=0}^i k_j) + \dots \\
+&=& \sum_{i=0}^h (n- \sum_{j=0}^i k_j)\\
+\end{array}
+$$
+
+La complexité va être minimale si le nombre d'éléments à chaque étage $i$ est maximum, c'est à dire si $k_i = 2^{i}$ :
+
+$$
+\begin{array}{lcl}
+C &\geq& \sum_{i=0}^h (n- \sum_{j=0}^i 2^j)\\
+&\geq& h \cdot n - \sum_{i=0}^h\sum_{j=0}^i 2^j\\
+\end{array}
+$$
+
+Comme $\sum_{i=0}^k(2^i) = 2^{k+1}-1$ on a :
+
+$$
+\begin{array}{lcl}
+C &\geq& \sum_{i=0}^h (n- \sum_{j=0}^i 2^j)\\
+&\geq& h\cdot n - \sum_{i=0}^h(2^{i+1}-1)\\
+&\geq& h\cdot n - 2^{h+2}-h)\\
+\end{array}
+$$
+
+Et comme $h \geq \log_2(n)$ (au dernier étage tous les tableaux ont 1 élément, donc $2^h \geq n$) on en déduit :
+
+$$
+\begin{array}{lcl}
+C &\geq& n\log_2(n)- 2^{ln(n)+2}-\log_2(n))\\
+&\geq& n\log_2(n) - \log_2(n)^2 - \log_2(n)\\
+&\geq& \mathcal{O}(n\ln(n))
+\end{array}
+$$
+{% enddetails %}
 
 > La complexité **minimale** du tri rapide pour un tableau de taille $n$ est $\mathcal{O}(n\ln(n))$
 {: .note}

@@ -5,6 +5,8 @@ category: cours
 tags: code python
 ---
 
+> [Théorie et pratiques algorithmique]({% link cours/theorie-pratiques-algorithmique/index.md %}) / [exercices]({% link cours/theorie-pratiques-algorithmique/exercices/index.md %}) / [2021-2022]({% link cours/theorie-pratiques-algorithmique/exercices/2021-2022/index.md %}) / [sujet Test 2 : complexité et preuve]({% link cours/theorie-pratiques-algorithmique/exercices/2021-2022/2_test_sujet.md %})
+{: .chemin}
 
 Toute tentative d'enfumage sera sanctionnée avec des points en moins :
 
