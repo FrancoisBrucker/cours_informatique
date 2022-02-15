@@ -26,6 +26,7 @@
 
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique">
+<script>MathJax={"tex":{"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["\\[","\\]"]]},"svg":{"fontCache":"global"},"svg":{"fontCache":"global"}}</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
 <body>
@@ -57,7 +58,235 @@
   </header>
 
   <div class="post-content">
-    
+    <blockquote class="chemin">
+  <p><a href="/cours_informatique/cours/theorie-pratiques-algorithmique/">Théorie et pratiques algorithmique</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/exercices/">exercices</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/exercices/2021-2022/">2021-2022</a> / <a href="/cours_informatique/cours/theorie-pratiques-algorithmique/exercices/2021-2022/2_test_corrige.html">corrigé Test 2 : complexité et preuve</a></p>
+</blockquote>
+
+<h2 id="barème">barème</h2>
+
+<p>La note est sur 5.</p>
+
+<ol>
+  <li>complexité recherche + complexité autres fonctions : 2pt</li>
+  <li>.5pt</li>
+  <li>preuve recherche + preuve autres fonctions : 2pt</li>
+  <li>.5pt</li>
+</ol>
+
+<h2 id="erreurs-fréquemment-rencontrées">erreurs fréquemment rencontrées</h2>
+
+<blockquote class="tbd">
+  <p>à écrire</p>
+</blockquote>
+
+<h2 id="1">1</h2>
+
+<h3 id="complexité-maximum-et-minimum">complexité maximum et minimum</h3>
+
+<p>Les deux algorithmes ne varient que de 1 test, les deux complexités sont donc égales. On ne calculera que la complexité de <code class="language-plaintext highlighter-rouge">maximum</code> :</p>
+
+<style>
+    table, td, tr, th, pre {
+        padding:0;
+        margin:0;
+        border:none
+    }
+</style>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td>
+<td class="code"><pre><span class="k">def</span> <span class="nf">maximum</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">T</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">T</span><span class="p">[</span><span class="n">m</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+            <span class="n">m</span> <span class="o">=</span> <span class="n">i</span>
+    <span class="k">return</span> <span class="n">m</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+
+<p>On note $n$ la longueur du tableau.</p>
+
+<p>Ligne à ligne :</p>
+
+<ol>
+  <li>affectation des paramètres : $\mathcal{O}(1)$</li>
+  <li>affectation d’une variable : $\mathcal{O}(1)$</li>
+  <li>boucle de $n$ itérations</li>
+  <li>un test et une comparaison : $\mathcal{O}(1)$</li>
+  <li>une affectation : $\mathcal{O}(1)$</li>
+  <li>retour de fonction : $\mathcal{O}(1)$</li>
+</ol>
+
+\[\begin{array}{lcl}
+C(n) &amp;=&amp; \mathcal{O}(1) + \\
+&amp;&amp; \mathcal{O}(1) + \\
+&amp;&amp; n \cdot(\\
+&amp;&amp; \mathcal{O}(1) + \\
+&amp;&amp; \mathcal{O}(1)) + \\
+&amp;&amp; \mathcal{O}(1) \\
+&amp;=&amp; 3\cdot\mathcal{O}(1) + n\cdot (2\cdot\mathcal{O}(1)) \\
+&amp;=&amp; \mathcal{O}(n)\\
+\end{array}\]
+
+<p>On en conclut que la complexité des algorithmes <code class="language-plaintext highlighter-rouge">maximum</code> et <code class="language-plaintext highlighter-rouge">minimum</code> ne dépendent que de la taille de <code class="language-plaintext highlighter-rouge">T</code> et vaut $\mathcal{O}(n)$</p>
+
+<h3 id="complexité-de-copie">complexité de copie</h3>
+
+<style>
+    table, td, tr, th, pre {
+        padding:0;
+        margin:0;
+        border:none
+    }
+</style>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td>
+<td class="code"><pre><span class="k">def</span> <span class="nf">copie</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
+    <span class="n">nouveau</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">T</span><span class="p">:</span>
+        <span class="n">nouveau</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">nouveau</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+
+<p>On note $n$ la longueur du tableau.</p>
+
+<p>Ligne à ligne :</p>
+
+<ol>
+  <li>affectation des paramètres : $\mathcal{O}(1)$</li>
+  <li>affectation d’une variable : $\mathcal{O}(1)$</li>
+  <li>boucle de $n$ itérations</li>
+  <li>on ajoute un élément en fin de tableau : $\mathcal{O}(1)$</li>
+  <li>retour de fonction : $\mathcal{O}(1)$</li>
+</ol>
+
+\[\begin{array}{lcl}
+C(n) &amp;=&amp; \mathcal{O}(1) + \\
+&amp;&amp; \mathcal{O}(1) + \\
+&amp;&amp; n \cdot(\\
+&amp;&amp; \mathcal{O}(1)) + \\
+&amp;&amp; \mathcal{O}(1) \\
+&amp;=&amp; 3\cdot\mathcal{O}(1) + n \cdot(\mathcal{O}(1)) \\
+&amp;=&amp; \mathcal{O}(n)\\
+\end{array}\]
+
+<p>On en conclut que la complexité des algorithmes <code class="language-plaintext highlighter-rouge">copie</code>  ne dépend que de la taille de <code class="language-plaintext highlighter-rouge">T</code> et vaut $\mathcal{O}(n)$</p>
+
+<h3 id="complexité-recherche">complexité recherche</h3>
+
+<style>
+    table, td, tr, th, pre {
+        padding:0;
+        margin:0;
+        border:none
+    }
+</style>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td>
+<td class="code"><pre><span class="k">def</span> <span class="nf">recherche</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+    <span class="n">max_value</span> <span class="o">=</span> <span class="n">T</span><span class="p">[</span><span class="n">maximum</span><span class="p">(</span><span class="n">T</span><span class="p">)]</span>
+
+    <span class="n">T_copie</span> <span class="o">=</span> <span class="n">copie</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="nb">min</span> <span class="o">=</span> <span class="n">minimum</span><span class="p">(</span><span class="n">T_copie</span><span class="p">)</span>
+        <span class="n">T_copie</span><span class="p">[</span><span class="nb">min</span><span class="p">]</span> <span class="o">=</span> <span class="n">max_value</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">minimum</span><span class="p">(</span><span class="n">T_copie</span><span class="p">)</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+
+<p>Ligne à ligne :</p>
+
+<ol>
+  <li>affectation des paramètres : $\mathcal{O}(1)$</li>
+  <li>en deux temps :
+    <ol>
+      <li>exécution de la fonction <code class="language-plaintext highlighter-rouge">maximum(T)</code> : $C_\mbox{maximum}(T)$</li>
+      <li>affectation d’une variable à un élément d’un tableau : $\mathcal{O}(1)$</li>
+    </ol>
+  </li>
+  <li>
+  </li>
+<li>affection d’une variable au résultat de la fonction <code class="language-plaintext highlighter-rouge">copie(T)</code> : $\mathcal{O}(1) + C_\mbox{copie}(T)$</li>
+  <li>boucle for de $k-1$ itérations</li>
+  <li>affection d’une variable au résultat de la fonction <code class="language-plaintext highlighter-rouge">minimum(T_copie)</code> : $\mathcal{O}(1) + C_\mbox{mininmum}(\mbox{T_copie})$</li>
+  <li>affectation d’un élément d’un tableau : $\mathcal{O}(1)$</li>
+  <li>
+  </li>
+<li>en deux temps :
+    <ol>
+      <li>exécution de la fonction <code class="language-plaintext highlighter-rouge">minimum(T_copie)</code> : $C_\mbox{mininmum}(\mbox{T_copie})$</li>
+      <li>retour de la fonction $\mathcal{O}(1)$</li>
+    </ol>
+  </li>
+</ol>
+
+<p>La complexité de l’algorithme est alors, avec $n$ la taille du tableau <code class="language-plaintext highlighter-rouge">T</code> :</p>
+
+\[\begin{array}{lcl}
+C(n) &amp;=&amp; \mathcal{O}(1) + \\
+&amp;&amp; C_\mbox{maximum}(T) + \mathcal{O}(1) +\\
+&amp;&amp; \mathcal{O}(1) + C_\mbox{copie}(T) +\\
+&amp;&amp; (k - 1)\cdot (\\
+&amp;&amp; \mathcal{O}(1) + C_\mbox{mininmum}(\mbox{T_copie}) +\\
+&amp;&amp; \mathcal{O}(1)) +\\
+&amp;&amp; \mathcal{O}(1) + C_\mbox{mininmum}(\mbox{T_copie})\\
+&amp;=&amp; 4 \cdot \mathcal{O}(1) + \\
+&amp;&amp; C_\mbox{maximum}(T) + C_\mbox{copie}(T) + C_\mbox{mininmum}(\mbox{T_copie}) + \\
+&amp;&amp; (k-1) \cdot(2 \mathcal{O}(1) + C_\mbox{mininmum}(\mbox{T_copie}))\\
+&amp;=&amp; \mathcal{O}(k) + \\
+&amp;&amp; C_\mbox{maximum}(T) + C_\mbox{copie}(T) + \\
+&amp;&amp; k \cdot C_\mbox{mininmum}(\mbox{T_copie}) \\
+\end{array}\]
+
+<p>En reprenant les complexités des algorithmes <code class="language-plaintext highlighter-rouge">minimum</code>, <code class="language-plaintext highlighter-rouge">maximum</code> et <code class="language-plaintext highlighter-rouge">copie</code>, et en notant $n$ la taille du tableau <code class="language-plaintext highlighter-rouge">T</code>, on a :</p>
+
+\[\begin{array}{lcl}
+C(n) &amp;=&amp; \mathcal{O}(k) + \\
+&amp;&amp; C_\mbox{maximum}(T) + C_\mbox{copie}(T) + \\
+&amp;&amp; k \cdot C_\mbox{mininmum}(\mbox{T_copie}) \\
+&amp;=&amp; \mathcal{O}(k) + \mathcal{O}(n) + \mathcal{O}(n) + k\cdot\mathcal{O}(n)\\
+&amp;=&amp;  \mathcal{O}(k\cdot n)\\
+\end{array}\]
+
+<h2 id="2">2</h2>
+
+<p>On utilise l’algorithme <code class="language-plaintext highlighter-rouge">copie</code> pour ne pas modifier les données initiales (on change les valeurs du tableau en ligne 70)</p>
+
+<h2 id="3">3</h2>
+
+<blockquote class="tbd">
+  <p>à écrire</p>
+</blockquote>
+
+<h2 id="4">4</h2>
+
+<p>La médiane d’un tableau revient à chercher le $\frac{n}{2}$ ème plus petit élément d’un tableau de taille $n$ : c’est le résultat de <code class="language-plaintext highlighter-rouge">recherche(T, len(T)//2)</code>et est de complexité : $\mathcal{O}(n^2)$</p>
 
   </div>
 
