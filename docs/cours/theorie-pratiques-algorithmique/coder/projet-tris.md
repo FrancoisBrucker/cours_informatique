@@ -34,7 +34,7 @@ Ce projet suit l'[étude des tris]({% link cours/theorie-pratiques-algorithmique
 >
 > * on vérifie que python est ok avec le terminal et avec vscode
 > * on vérifie que le linter est actif dans vscode
->* on verifie que les tests fonctionnent (en créant un test bidon dans *"tests_tris"* et en vérifiant que `pytest` et vscode le trouvent)
+>* on vérifie que les tests fonctionnent (en créant un test bidon dans *"tests_tris"* et en vérifiant que `pytest` et vscode le trouvent)
 >
 {: .a-faire}
 
@@ -125,6 +125,26 @@ La complexité minimum et maximum du tri fusion est la même. On peut juste trac
 > Créez dans le fichier *"mesure.py"* une fonction `temps_fusion` qui rend la moyenne de 10 temps pris pour trier avec `fusion` une permutation aléatoire du tableau en entrée.
 {: .a-faire}
 
+Pour ne pas refaire la même chose que pour le calcul de la complexité en moyenne du tri par `insertion`, vous pourrez utiliser le fait que l'on peut passer une fonction en paramètre d'une autre !
+
+Vous pourrez ainsi modifier l'exemple ci-dessous pour forger une fonction qui rend le temps moyen pris pour trier 10 listes de taille $n$.
+
+```python
+import random, time
+
+def temps_tri(f, n):
+    L = list(range(n))
+    random.shuffle(L)
+    d = time.time()
+    f(L)
+    f = time.time()
+ 
+    return f - d
+
+# en supposant qu'une fonction instertion existe
+delta = tri(insertion, 10)  # delta est le temps mis par insertion pour trier une liste de taille 10
+```
+
 Si on doit choisir une complexité à afficher, on préfèrera toujours la complexité en moyenne, car elle est simple à mesurer (on fait des moyennes de temps d'exécution) sans analyse au préalable de l'algorithme.
 
 > Dans le fichier *"main_fusion"*, en utilisant `temps_fusion`, ajoutez au graphique la courbe de la moyenne des temps mis (axe des ordonnées) pour trier 10 tableaux aléatoire de taille $n$ (axe des abcisses) avec l'algorithme `fusion`.
@@ -198,7 +218,7 @@ Le code précédent modifie l'algorithme `insertion` pour qu'il affiche dans un 
 
 >
 > 1. Exécutez le code précédent, et comprenez pourquoi il fonctionne.
-> 2. Ajoutez une modification du tri par `selection` pour le voir trier des tableaux et voir les différences entre les deux algorithmes.
+> 2. Ajoutez une modification du tri par `selection` pour le voir trier un tableau et voir les différences entre les deux algorithmes.
 >
 {:.a-faire}
 
@@ -209,7 +229,7 @@ Le code précédent modifie l'algorithme `insertion` pour qu'il affiche dans un 
 Le [tri à bulles](https://fr.wikipedia.org/wiki/Tri_%C3%A0_bulles) est un tri inefficace mais joli à regarder.
 
 > Implémentez le tri à bulles et vérifiez que son temps moyen d'exécution est $\mathcal{O}(n^2)$.
-> Ajoutez le tri à bulles dans *"main_visu.py"* pour le voir trier des tableaux.
+> Ajoutez le tri à bulles dans *"main_visu.py"* pour le voir trier un tableau.
 {: .a-faire}
 
 ### bogo sort

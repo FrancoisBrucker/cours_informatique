@@ -134,7 +134,7 @@ Pour ses tests vous pourrez :
 >    1. demander les dés d'un objet de type `TapisVert`
 >    2. modifier la position d'un dé
 >    3. redemander les dés de l'objet de type `TapisVert` et vérifier que la position du dé est bien celle modifiée
-{:. a-faire}
+{: .a-faire}
 
 ### Analyse du code
 
