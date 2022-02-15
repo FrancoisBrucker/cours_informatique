@@ -280,9 +280,25 @@ C(n) &amp;=&amp; \mathcal{O}(k) + \\
 
 <h2 id="3">3</h2>
 
-<blockquote class="tbd">
-  <p>à écrire</p>
-</blockquote>
+<h3 id="copie">copie</h3>
+
+<p>On peut utiliser l’invariant de boucle : <em>au bout de la $k$ème itération, <code class="language-plaintext highlighter-rouge">nouveau</code>contient les $i$ premiers éléments de <code class="language-plaintext highlighter-rouge">T</code></em> pour démontrer que <code class="language-plaintext highlighter-rouge">nouveau</code> continent tous les éléments du tableau passé en paramètre.</p>
+
+<h3 id="maximum-et-minimum">maximum et minimum</h3>
+
+<p>On peut utiliser l’invariant de boucle : <em>au bout de chaque itération <code class="language-plaintext highlighter-rouge">m</code> contient l’<strong>indice</strong> de l’élément maximum (respectivement minimum) des $i$ premières cases de <code class="language-plaintext highlighter-rouge">T</code></em> pour démontrer que <code class="language-plaintext highlighter-rouge">maximum</code> (respectivement <code class="language-plaintext highlighter-rouge">minimum</code>) rendra l’indice du p^lus grand (respectivement plus petit) élément de <code class="language-plaintext highlighter-rouge">T</code>.</p>
+
+<h3 id="recherche">recherche</h3>
+
+<p>L’invariant suivant peut être démontré :</p>
+
+<p>Au bout de chaque itération :</p>
+
+<ul>
+  <li>les cases des $i+1$ plus petits éléments de <code class="language-plaintext highlighter-rouge">T</code> contiennent la valeur <code class="language-plaintext highlighter-rouge">max_value + 1</code> pour <code class="language-plaintext highlighter-rouge">T_copie</code>,</li>
+  <li>les valeurs des autres cases de <code class="language-plaintext highlighter-rouge">T_copie</code> sont identiques à celles de <code class="language-plaintext highlighter-rouge">T</code>
+</li>
+</ul>
 
 <h2 id="4">4</h2>
 
