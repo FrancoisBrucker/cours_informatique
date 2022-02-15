@@ -802,9 +802,17 @@ $$\mathcal{O}(n^2) \leq C(n) \leq \mathcal{O}(n^2)$$
 
 #### complexité minimale du tri rapide
 
-**intuitivement**, si l'on découpe notre tableau de façon non équilibrée, une branche de la récursion va faire plus d'opérations que $C(n/2)$. La complexité minimale est ainsi atteinte lorsque l'on coupe notre tableau exactement en 2.
+**intuitivement**, on a que $C(n) \geq \mathcal{O}(n)$, la complexité de l'algorithme croit donc de façon linéaire ou plus. La valeur de de $C((k-1)n/k)$ (cercle plein) est ainsi plus grande que la valeur de la croissance linéaire  (cercle vide) pour tout $k > 2$ :
 
-Dans ce cas là, on a l'équation de récurrence : $C(n) = \mathcal{O}(n) + 2 \cdot C(\frac{n}{2})$ qui est la même que celle du tri fusion. La complexité minimale du tri `rapide` de l'ordre de $\mathcal{O}(n\ln(n))$.
+![croissance]({{ "/assets/cours/algorithmie/etude-tris-3.png" | relative_url }}){:style="margin: auto;display: block;"}
+
+Ceci implique que l'allure générale de la courbe est concave :
+
+![croissance concave]({{ "/assets/cours/algorithmie/etude-tris-4.png" | relative_url }}){:style="margin: auto;display: block;"}
+
+et donc que $C(\frac{n}{k}) + C(\frac{(k-1)n}{k}) \geq 2\cdot C(\frac{n}{2})$. Il sera donc **toujours** plus intéressant de couper notre tableau en 2 exactement. Dans ce cas là, on a l'équation de récurrence : $C_\min(n) = \mathcal{O}(n) + 2 \cdot C_\min(\frac{n}{2})$ qui est la même que celle du tri fusion. La complexité minimale du tri `rapide` de l'ordre de $\mathcal{O}(n\ln(n))$.
+
+On a ici supposé que la courbe de complexité est régulière (sans point d'inflexion par exemple), ce qui est presque toujours le cas lorsque l'on manipule des complexités.
 
 {% details preuve du **calcul formel** de la complexité minimale %}
 
