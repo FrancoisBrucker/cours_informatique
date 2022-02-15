@@ -191,8 +191,22 @@ On utilise l'algorithme `copie` pour ne pas modifier les données initiales (on 
 
 ## 3
 
-> à écrire
-{: .tbd}
+### copie
+
+On peut utiliser l'invariant de boucle : *au bout de la $k$ème itération, `nouveau`contient les $i$ premiers éléments de `T`* pour démontrer que `nouveau` continent tous les éléments du tableau passé en paramètre.
+
+### maximum et minimum
+
+On peut utiliser l'invariant de boucle : *au bout de chaque itération `m` contient l'**indice** de l'élément maximum (respectivement minimum) des $i$ premières cases de `T`* pour démontrer que `maximum` (respectivement `minimum`) rendra l'indice du p^lus grand (respectivement plus petit) élément de `T`.
+
+### recherche
+
+L'invariant suivant peut être démontré :
+
+Au bout de chaque itération :
+
+* les cases des $i+1$ plus petits éléments de `T` contiennent la valeur `max_value + 1` pour `T_copie`,
+* les valeurs des autres cases de `T_copie` sont identiques à celles de `T`
 
 ## 4
 
