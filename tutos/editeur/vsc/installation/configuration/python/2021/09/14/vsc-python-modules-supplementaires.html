@@ -163,6 +163,14 @@
 
 <p>Vous pouvez aussi toujours exécuter la commande <code class="language-plaintext highlighter-rouge">pycodestyle mon-fichier.py</code> dans un <a href="/cours_informatique/tutos/editeur/vsc/installation/configuration/terminal/2021/09/14/vsc-terminal.html#terminal-integre">terminal intégré</a> pour obtenir le linting de votre fichier. C’est moins pratique que lorsque vscode le fait puisque la ligne en question n’est pas soulignée dans l’interface.</p>
 
+<h3 id="style">style</h3>
+
+<p>Certaines erreurs de pycodestyle sont énervante, car ce n’en sont pas vraiment (comme le nombre maximum de caractère dans une ligne). On peut le configurer pour qu’il <em>oublie</em> ces erreurs.</p>
+
+<p>La liste des différentes erreur est <a href="https://pycodestyle.pycqa.org/en/latest/intro.html#error-codes">disponible dans la doc</a>. L’erreur de ligne trop longue est ainsi l’erreur <code class="language-plaintext highlighter-rouge">E501</code>.</p>
+
+<p>Nous pouvons ajouter dans la configuration de pycodestyle pour vscode au paramètre <code class="language-plaintext highlighter-rouge">python.linting.pycodestyleArgs</code> la ligne <code class="language-plaintext highlighter-rouge">--ignore=E501</code>.</p>
+
 <h2 id="black">black</h2>
 
 <p><a href="https://black.readthedocs.io/en/stable/index.html">BLack</a> est un bijou. Ne pas l’utiliser tout le temps est bête.</p>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/cours_informatique/feed.xml" rel="self" type="application/atom+xml" /><link href="/cours_informatique/" rel="alternate" type="text/html" /><updated>2022-02-11T06:50:16+00:00</updated><id>/cours_informatique/feed.xml</id><title type="html">cours d’informatique</title><subtitle>Support de cours/td d'informatique à l'école centrale marseille.</subtitle><entry><title type="html">utiliser un terminal</title><link href="/cours_informatique/tutos/systeme/cli/terminal/2021/12/02/terminal-utilisation.html" rel="alternate" type="text/html" title="utiliser un terminal" /><published>2021-12-02T00:00:00+00:00</published><updated>2021-12-02T00:00:00+00:00</updated><id>/cours_informatique/tutos/systeme/cli/terminal/2021/12/02/terminal-utilisation</id><content type="html" xml:base="/cours_informatique/tutos/systeme/cli/terminal/2021/12/02/terminal-utilisation.html">&lt;blockquote class=&quot;chemin&quot;&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/cours_informatique/feed.xml" rel="self" type="application/atom+xml" /><link href="/cours_informatique/" rel="alternate" type="text/html" /><updated>2022-02-15T07:27:05+00:00</updated><id>/cours_informatique/feed.xml</id><title type="html">cours d’informatique</title><subtitle>Support de cours/td d'informatique à l'école centrale marseille.</subtitle><entry><title type="html">utiliser un terminal</title><link href="/cours_informatique/tutos/systeme/cli/terminal/2021/12/02/terminal-utilisation.html" rel="alternate" type="text/html" title="utiliser un terminal" /><published>2021-12-02T00:00:00+00:00</published><updated>2021-12-02T00:00:00+00:00</updated><id>/cours_informatique/tutos/systeme/cli/terminal/2021/12/02/terminal-utilisation</id><content type="html" xml:base="/cours_informatique/tutos/systeme/cli/terminal/2021/12/02/terminal-utilisation.html">&lt;blockquote class=&quot;chemin&quot;&gt;
   &lt;p&gt;&lt;strong&gt;prérequis :&lt;/strong&gt;&lt;/p&gt;
 
   &lt;ul&gt;
@@ -1445,6 +1445,14 @@ hello
 &lt;h3 id=&quot;pycodestyle-dans-le-terminal&quot;&gt;pycodestyle dans le terminal&lt;/h3&gt;
 
 &lt;p&gt;Vous pouvez aussi toujours exécuter la commande &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pycodestyle mon-fichier.py&lt;/code&gt; dans un &lt;a href=&quot;/cours_informatique/tutos/editeur/vsc/installation/configuration/terminal/2021/09/14/vsc-terminal.html#terminal-integre&quot;&gt;terminal intégré&lt;/a&gt; pour obtenir le linting de votre fichier. C’est moins pratique que lorsque vscode le fait puisque la ligne en question n’est pas soulignée dans l’interface.&lt;/p&gt;
+
+&lt;h3 id=&quot;style&quot;&gt;style&lt;/h3&gt;
+
+&lt;p&gt;Certaines erreurs de pycodestyle sont énervante, car ce n’en sont pas vraiment (comme le nombre maximum de caractère dans une ligne). On peut le configurer pour qu’il &lt;em&gt;oublie&lt;/em&gt; ces erreurs.&lt;/p&gt;
+
+&lt;p&gt;La liste des différentes erreur est &lt;a href=&quot;https://pycodestyle.pycqa.org/en/latest/intro.html#error-codes&quot;&gt;disponible dans la doc&lt;/a&gt;. L’erreur de ligne trop longue est ainsi l’erreur &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;E501&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Nous pouvons ajouter dans la configuration de pycodestyle pour vscode au paramètre &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python.linting.pycodestyleArgs&lt;/code&gt; la ligne &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--ignore=E501&lt;/code&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;black&quot;&gt;black&lt;/h2&gt;
 

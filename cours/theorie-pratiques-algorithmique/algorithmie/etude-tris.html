@@ -972,8 +972,7 @@ C_{\mbox{trié}}(n) &amp;\leq&amp; C(n)\\
 \mathcal{O}(n^2) &amp;\leq&amp; C(n)\\
 \end{array}\]
 
-<p><strong>Pour finir la preuve de façon formelle</strong> il nous reste à démontrer que $C(n) \leq \mathcal{O}(n^2)$.</p>
-
+<details><summary><strong>Pour finir la preuve de façon formelle</strong> il reste à démontrer que $C(n) \leq \mathcal{O}(n^2)$.</summary><div>
 <p>Faisons le par récurrence. Notre hypothèse de récurrence est : il existe $k$ tel que $C(n) \leq k \cdot n^2$
 Cette hypothèse est trivialement vraie pour $n=1$ et supposons la vraie pour $n-1$. Examinons le cas $n$ :</p>
 
@@ -994,6 +993,8 @@ C(n) &amp; = &amp; \mathcal{O}(n) + \max_{0 \leq i &lt; n}(C(i) + C(n-i-1))&amp;
 
 \[\mathcal{O}(n^2) \leq C(n) \leq \mathcal{O}(n^2)\]
 
+</div></details>
+
 <blockquote class="note">
   <p>La complexité du tri rapide pour un tableau de taille $n$ est $\mathcal{O}(n^2)$</p>
 </blockquote>
@@ -1002,7 +1003,17 @@ C(n) &amp; = &amp; \mathcal{O}(n) + \max_{0 \leq i &lt; n}(C(i) + C(n-i-1))&amp;
 
 <p><strong>intuitivement</strong>, si l’on découpe notre tableau de façon non équilibrée, une branche de la récursion va faire plus d’opérations que $C(n/2)$. La complexité minimale est ainsi atteinte lorsque l’on coupe notre tableau exactement en 2.</p>
 
-<p>Dans ce cas là, on a l’équation de récurrence : $C(n) = \mathcal{O}(n) + 2 \cdot C(\frac{n}{2})$ qui est la même que celle du tri fusion. La complexité minimale du tri <code class="language-plaintext highlighter-rouge">rapide</code> est donc $\mathcal{O}(n\ln(n))$.</p>
+<p>Dans ce cas là, on a l’équation de récurrence : $C(n) = \mathcal{O}(n) + 2 \cdot C(\frac{n}{2})$ qui est la même que celle du tri fusion. La complexité minimale du tri <code class="language-plaintext highlighter-rouge">rapide</code> est inférieure à $\mathcal{O}(n\ln(n))$.</p>
+
+<p>Pour finir la preuve, remarquons que $C(k) \geq k$ : la courbe de $C(n)$ est plus grande qu’une droite. On en conclut que $C(\frac{(k-1)n}{k})$ est au dessus de la droite liant $C(\frac{n}{k})$ et $C(\frac{n}{2})$, pour $k &gt;2$ :</p>
+
+<p><img src="/cours_informatique/assets/cours/algorithmie/etude-tris-1.png" alt="droite" style="margin: auto;display: block;"></p>
+
+<p>De là, $C(\frac{n}{2})$ est en-dessous de la droite liant $C(\frac{n}{k})$ à $C(\frac{(k-1)n}{k})$ :</p>
+
+<p><img src="/cours_informatique/assets/cours/algorithmie/etude-tris-2.png" alt="courbe C(n)" style="margin: auto;display: block;"></p>
+
+<p>On a donc $C(\frac{n}{2}) \leq \frac{1}{2}(C(\frac{n}{k}) + C(\frac{(k-1)n}{k}))$ (le rond vide est au-desus du rond plein) pour tout $k &gt; 2$. Il est donc <strong>toujours</strong> plus avantageux de découper le tableau en 2 parties égales.</p>
 
 <blockquote class="note">
   <p>La complexité <strong>minimale</strong> du tri rapide pour un tableau de taille $n$ est $\mathcal{O}(n\ln(n))$</p>
@@ -1022,6 +1033,7 @@ C_{\mbox{moy}}(n) = \mathcal{O}(n) + \sum_{0 \leq i &lt; n}p_i(C_{\mbox{moy}}(i)
 
 <p>où $p_i$ est la probabilité que le pivot soit le $i+1$ plus petit élément du tableau.</p>
 
+<details><summary><strong>résolution</strong> de l’équation qui montre que $C_{\mbox{moy}}(n) = \mathcal{O}(n\ln(n))$</summary><div>
 <p>Pour éviter de nous trimballer des $\mathcal{O}(n)$ partout, on va considérer que l’on y effectue $K\cdot n$ opérations où $K$ est une constante. On peut alors écrire :</p>
 
 \[{
@@ -1099,6 +1111,7 @@ et est <a href="https://fr.wikipedia.org/wiki/%C3%89quivalent">équivalente</a> 
 \[C_{\mbox{moy}}(n) = \mathcal{O}(n\ln(n))\]
 
 <p>ouf.</p>
+</div></details>
 
 <blockquote class="note">
   <p>La complexité <strong>en moyenne</strong> du tri rapide pour un tableau de taille $n$ est $\mathcal{O}(n\ln(n))$</p>

@@ -98,7 +98,7 @@
   <ul>
     <li>on vérifie que python est ok avec le terminal et avec vscode</li>
     <li>on vérifie que le linter est actif dans vscode</li>
-    <li>on verifie que les tests fonctionnent (en créant un test bidon dans <em>“tests_tris”</em> et en vérifiant que <code class="language-plaintext highlighter-rouge">pytest</code> et vscode le trouvent)</li>
+    <li>on vérifie que les tests fonctionnent (en créant un test bidon dans <em>“tests_tris”</em> et en vérifiant que <code class="language-plaintext highlighter-rouge">pytest</code> et vscode le trouvent)</li>
   </ul>
 
 </blockquote>
@@ -209,6 +209,25 @@
   <p>Créez dans le fichier <em>“mesure.py”</em> une fonction <code class="language-plaintext highlighter-rouge">temps_fusion</code> qui rend la moyenne de 10 temps pris pour trier avec <code class="language-plaintext highlighter-rouge">fusion</code> une permutation aléatoire du tableau en entrée.</p>
 </blockquote>
 
+<p>Pour ne pas refaire la même chose que pour le calcul de la complexité en moyenne du tri par <code class="language-plaintext highlighter-rouge">insertion</code>, vous pourrez utiliser le fait que l’on peut passer une fonction en paramètre d’une autre !</p>
+
+<p>Vous pourrez ainsi modifier l’exemple ci-dessous pour forger une fonction qui rend le temps moyen pris pour trier 10 listes de taille $n$.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">random</span><span class="p">,</span> <span class="n">time</span>
+
+<span class="k">def</span> <span class="nf">temps_tri</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="n">L</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+    <span class="n">random</span><span class="p">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">f</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
+ 
+    <span class="k">return</span> <span class="n">f</span> <span class="o">-</span> <span class="n">d</span>
+
+<span class="c1"># en supposant qu'une fonction instertion existe
+</span><span class="n">delta</span> <span class="o">=</span> <span class="n">tri</span><span class="p">(</span><span class="n">insertion</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>  <span class="c1"># delta est le temps mis par insertion pour trier une liste de taille 10
+</span></code></pre></div></div>
+
 <p>Si on doit choisir une complexité à afficher, on préfèrera toujours la complexité en moyenne, car elle est simple à mesurer (on fait des moyennes de temps d’exécution) sans analyse au préalable de l’algorithme.</p>
 
 <blockquote class="a-faire">
@@ -290,7 +309,7 @@
 
   <ol>
     <li>Exécutez le code précédent, et comprenez pourquoi il fonctionne.</li>
-    <li>Ajoutez une modification du tri par <code class="language-plaintext highlighter-rouge">selection</code> pour le voir trier des tableaux et voir les différences entre les deux algorithmes.</li>
+    <li>Ajoutez une modification du tri par <code class="language-plaintext highlighter-rouge">selection</code> pour le voir trier un tableau et voir les différences entre les deux algorithmes.</li>
   </ol>
 
 </blockquote>
@@ -303,7 +322,7 @@
 
 <blockquote class="a-faire">
   <p>Implémentez le tri à bulles et vérifiez que son temps moyen d’exécution est $\mathcal{O}(n^2)$.
-Ajoutez le tri à bulles dans <em>“main_visu.py”</em> pour le voir trier des tableaux.</p>
+Ajoutez le tri à bulles dans <em>“main_visu.py”</em> pour le voir trier un tableau.</p>
 </blockquote>
 
 <h3 id="bogo-sort">bogo sort</h3>
