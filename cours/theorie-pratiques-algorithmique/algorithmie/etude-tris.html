@@ -1003,9 +1003,17 @@ C(n) &amp; = &amp; \mathcal{O}(n) + \max_{0 \leq i &lt; n}(C(i) + C(n-i-1))&amp;
 
 <h4 id="complexité-minimale-du-tri-rapide">complexité minimale du tri rapide</h4>
 
-<p><strong>intuitivement</strong>, si l’on découpe notre tableau de façon non équilibrée, une branche de la récursion va faire plus d’opérations que $C(n/2)$. La complexité minimale est ainsi atteinte lorsque l’on coupe notre tableau exactement en 2.</p>
+<p><strong>intuitivement</strong>, on a que $C(n) \geq \mathcal{O}(n)$, la complexité de l’algorithme croit donc de façon linéaire ou plus. La valeur de de $C((k-1)n/k)$ (cercle plein) est ainsi plus grande que la valeur de la croissance linéaire  (cercle vide) pour tout $k &gt; 2$ :</p>
 
-<p>Dans ce cas là, on a l’équation de récurrence : $C(n) = \mathcal{O}(n) + 2 \cdot C(\frac{n}{2})$ qui est la même que celle du tri fusion. La complexité minimale du tri <code class="language-plaintext highlighter-rouge">rapide</code> de l’ordre de $\mathcal{O}(n\ln(n))$.</p>
+<p><img src="/cours_informatique/assets/cours/algorithmie/etude-tris-3.png" alt="croissance" style="margin: auto;display: block;"></p>
+
+<p>Ceci implique que l’allure générale de la courbe est concave :</p>
+
+<p><img src="/cours_informatique/assets/cours/algorithmie/etude-tris-4.png" alt="croissance concave" style="margin: auto;display: block;"></p>
+
+<p>et donc que $C(\frac{n}{k}) + C(\frac{(k-1)n}{k}) \geq 2\cdot C(\frac{n}{2})$. Il sera donc <strong>toujours</strong> plus intéressant de couper notre tableau en 2 exactement. Dans ce cas là, on a l’équation de récurrence : $C_\min(n) = \mathcal{O}(n) + 2 \cdot C_\min(\frac{n}{2})$ qui est la même que celle du tri fusion. La complexité minimale du tri <code class="language-plaintext highlighter-rouge">rapide</code> de l’ordre de $\mathcal{O}(n\ln(n))$.</p>
+
+<p>On a ici supposé que la courbe de complexité est régulière (sans point d’inflexion par exemple), ce qui est presque toujours le cas lorsque l’on manipule des complexités.</p>
 
 <details><summary>preuve du <strong>calcul formel</strong> de la complexité minimale</summary><div>
 <p>Pour chaque exécution de l’algorithme, le nombre d’opérations hors récursion est proportionnelle au nombre d’élément du tableau en paramètre. La complexité totale est donc de l’ordre de la somme des tailles des tableaux pour chaque récursion.</p>
