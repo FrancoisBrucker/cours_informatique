@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Algorithme, code et théorie | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0">
+<meta property="og:title" content="Algorithme, code et théorie">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Support de cours/td d’informatique de François Brucker.">
+<meta property="og:description" content="Support de cours/td d’informatique de François Brucker.">
+<link rel="canonical" href="/cours_informatique/cours/algorithme-code-theorie/">
+<meta property="og:url" content="/cours_informatique/cours/algorithme-code-theorie/">
+<meta property="og:site_name" content="cours d’informatique">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Algorithme, code et théorie">
+<script type="application/ld+json">
+{"description":"Support de cours/td d’informatique de François Brucker.","@type":"WebPage","url":"/cours_informatique/cours/algorithme-code-theorie/","headline":"Algorithme, code et théorie","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css">
+
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css">
+
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique">
+</head>
+
+<body>
+<header class="site-header" role="banner">
+
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/cours_informatique/">cours d'informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav>
+</div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Algorithme, code et théorie</h1>
+  </header>
+
+  <div class="post-content">
+    <blockquote class="chemin">
+  <p><a href="/cours_informatique/cours/algorithme-code-theorie/">Algorithme, code et théorie</a></p>
+</blockquote>
+
+<p>Ce cours montrera l’informatique sous trois aspects complémentaires — théorie, code et algorithmes — que tout <a href="https://fr.wikipedia.org/wiki/Honn%C3%AAte_homme">honnête informaticien</a> devrait connaître. Il s’adresse à des personnes ayant des connaissances minimales en informatiques mais voulant (ou étant obligé d’ :-)) approfondir le sujet.</p>
+
+<h2 id="prés-requis">prés-requis</h2>
+
+<p>Les connaissances et les outils que vous devez avoir pour commencer le cours. Ils sont minimaux.</p>
+
+<h3 id="un-ordinateur-pour-le-développement">un ordinateur pour le développement</h3>
+
+<p>Pour développer, il faudra coder et exécuter du code. Il vous faut donc un ordinateur (portable ou tour) en état de marche. Il devra être sous un des trois systèmes d’exploitation suivant : windows 10, macos ou linux.</p>
+
+<p>Vous devez dans l’idéal être administrateur de votre ordinateur et avoir fait <a href="/cours_informatique/tutoriels/systeme/2021-09-01-installation-ordinateur.html">une installation fraîche de tout votre système</a> pour éviter toute interférence lors de nos installations.</p>
+
+<h3 id="connaissances-système-minimale">connaissances système minimale</h3>
+
+<ul>
+  <li>pouvoir ouvrir un explorateur de fichier</li>
+  <li>installer un programme avec un installeur</li>
+</ul>
+
+<h3 id="base-dalgorithmie">base d’algorithmie</h3>
+
+<ul>
+  <li>savoir coder et exécuter de petits programmes en python :
+    <ul>
+      <li>savoir affecter des variables entières, réelles ou sous la forme de chaine de caractères</li>
+      <li>manipulation basique de conteneur comme les listes</li>
+      <li>savoir ce qu’est une fonction, ses paramètres, son code et son retour</li>
+    </ul>
+  </li>
+  <li>avoir une notion intuitive de ce qu’est un algorithme
+    <ul>
+      <li>pouvoir compter le nombre d’opération d’un algorithme simple</li>
+      <li>connaitre le principe de récursivité</li>
+    </ul>
+  </li>
+  <li>notion de base en mathématiques (niveau lycée)
+    <ul>
+      <li>les entiers</li>
+      <li>fonctions et bijections entre ensembles</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="parties">parties</h2>
+
+<p>Ce cours est composée de trois grandes parties qui s’enchevêtrent.</p>
+
+<h3 id="algorithmie">algorithmie</h3>
+
+<ol>
+  <li><a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/algorithmes.html">un algorithme ?</a></li>
+  <li><a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/pseudo-code.html">pseudo-code</a></li>
+  <li><a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/complexite-max-min.html">complexité max/min</a></li>
+  <li><a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/preuve-algorithme.html">preuve d’algorithme</a></li>
+  <li><a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/etude-exponentiation.html">étude de cas : l’exponentiation</a></li>
+  <li><a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/complexite-moyenne.html">complexité en moyenne</a></li>
+  <li><a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/complexite-probleme.html">complexité d’un problème</a></li>
+  <li><a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/etude-melange.html">étude : mélanger un tableau</a></li>
+  <li><a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/etude-tris.html">étude : trier un tableau</a></li>
+</ol>
+
+<h3 id="théorie">théorie</h3>
+
+<ol>
+  <li><a href="/cours_informatique/cours/algorithme-code-theorie/theorie/fonctions.html">fonctions</a></li>
+  <li><a href="/cours_informatique/cours/algorithme-code-theorie/theorie/algorithmes-fonctions-pseudo-code.html">Algorithmes, fonctions et pseudo-code</a></li>
+  <li><a href="/cours_informatique/cours/algorithme-code-theorie/theorie/machine-turing.html">machines de Turing</a></li>
+  <li><a href="/cours_informatique/cours/algorithme-code-theorie/theorie/decidabilite.html">décidabilité</a></li>
+  <li><a href="/cours_informatique/cours/algorithme-code-theorie/theorie/calculabilite.html">calculabilité</a></li>
+</ol>
+
+<h3 id="code">code</h3>
+
+<ol>
+  <li><a href="/cours_informatique/cours/algorithme-code-theorie/code/coder.html">coder</a></li>
+  <li><a href="/cours_informatique/cours/algorithme-code-theorie/code/projet-hello-dev.html">projet informatique</a></li>
+  <li><a href="/cours_informatique/cours/algorithme-code-theorie/code/projet-pourcentages.html">projet : pourcentages</a></li>
+  <li><a href="/cours_informatique/cours/algorithme-code-theorie/code/projet-exponentiation.html">projet : exponentiation</a></li>
+  <li><a href="/cours_informatique/cours/algorithme-code-theorie/code/projet-tris.html">projet : tris</a></li>
+  <li><a href="/cours_informatique/cours/algorithme-code-theorie/code/programmation-objet/memoire-et-espace-noms.html">mémoire et espace de noms</a></li>
+  <li><a href="/cours_informatique/cours/algorithme-code-theorie/code/programmation-objet/classes-et-objets.html">classes et objets</a></li>
+  <li><a href="/cours_informatique/cours/algorithme-code-theorie/code/programmation-objet/composition-agregation.html">composition et agrégation</a></li>
+  <li><a href="/cours_informatique/cours/algorithme-code-theorie/code/programmation-objet/projet-composition-agregation.html">projet : composition et agrégation</a></li>
+  <li><a href="/cours_informatique/cours/algorithme-code-theorie/code/programmation-objet/heritage.html">héritage</a></li>
+  <li><a href="/cours_informatique/cours/algorithme-code-theorie/code/programmation-objet/projet-heritage.html">projet : héritage</a></li>
+</ol>
+
+<h3 id="autre">autre</h3>
+
+<p>Outils, concepts et méthodes utiles pour comprendre le cours</p>
+
+<ol>
+  <li><a href="/cours_informatique/tutoriels/systeme/2021-08-24-fichiers-navigation.html">naviguer dans un système de fichiers</a></li>
+  <li>
+<a href="/cours_informatique/tutoriels/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main.html">installation vscode</a>, <a href="/cours_informatique/tutoriels/python/2021-08-20-installation-de-python.html">installation python</a> et <a href="/cours_informatique/tutoriels/editeur/vsc/2021-09-14-vsc-python.html">vscode &amp; python</a>
+</li>
+  <li>
+<a href="/cours_informatique/tutoriels/systeme/2021-08-24-terminal.html">terminal</a> et <a href="/cours_informatique/tutoriels/systeme/2021-12-02-terminal-utilisation.html">utilisation du terminal</a>
+</li>
+</ol>
+
+<h2 id="structure">structure</h2>
+
+<div id="graph">
+  <style>
+
+  .links line {
+    stroke: #999;
+    stroke-opacity: 0.6;
+    stroke-width: 1px;
+    marker-end: url(#end-arrow);
+  }
+
+  .nodes circle {
+    stroke: #fff;
+    stroke-width: 1.5px;
+  }
+
+  text {
+    font-family: sans-serif;
+  }
+
+  </style>
+  <svg id="dessin" style="width:100%;"></svg>
+</div>
+
+<script src="https://d3js.org/d3.v7.min.js"></script>
+
+<script>
+var svg = d3.select('#dessin');
+
+var width = svg.node().getBoundingClientRect().width,
+    height = width
+
+svg.style("height", height)
+</script>
+
+<script> 
+  // data
+var graph = {
+  nodes: [],
+  links: []
+}
+
+var groups = {
+  theorie: 1,
+  algorithmie: 2,
+  code: 3,
+  autre: 4,
+}
+
+graph.nodes.push({
+  id: 'Algorithmie',
+  link: "/cours_informatique/cours/algorithme-code-theorie/algorithme/",
+  group: groups.algorithmie,
+  root: true,
+  fx: 0.1 * width,
+  fy: 0.1 * height,
+})
+
+graph.nodes.push({
+  id: 'Code',
+  link: "/cours_informatique/cours/algorithme-code-theorie/code/",
+  group: groups.code,
+  root: true,
+  fx: 0.5 * width,
+  fy: 0.1 * height,
+})
+
+graph.nodes.push({
+  id: 'Théorie',
+  link: "/cours_informatique/cours/algorithme-code-theorie/theorie/",
+  group: groups.theorie,
+  root: true,
+  fx: 0.9 * width,
+  fy: 0.1 * height,
+})
+
+graph.nodes.push({
+  id: 'algorithme ?',
+  link: "/cours_informatique/cours/algorithme-code-theorie/algorithme/algorithmes.html",
+  group: groups.algorithmie
+})
+graph.links.push({
+  source: 'Algorithmie',
+  target: 'algorithme ?'
+})
+
+graph.nodes.push({
+  id: 'pseudo-code',
+  link: "/cours_informatique/cours/algorithme-code-theorie/algorithme/pseudo-code.html",
+  group: groups.algorithmie
+})
+graph.links.push({
+  source: 'algorithme ?',
+  target: 'pseudo-code'
+})
+
+graph.nodes.push({
+  id: 'coder',
+  link: "/cours_informatique/cours/algorithme-code-theorie/code/coder.html",
+  group: groups.code
+})
+graph.links.push({
+  source: 'Code',
+  target: 'coder'
+})
+
+graph.links.push({
+  source: 'pseudo-code',
+  target: 'coder'
+})
+
+graph.nodes.push({
+  id: 'fonctions',
+  link: "/cours_informatique/cours/algorithme-code-theorie/theorie/fonctions.html",
+  group: groups.theorie
+})
+
+graph.links.push({
+  source: 'Théorie',
+  target: 'fonctions'
+})
+
+graph.links.push({
+  source: 'algorithme ?',
+  target: 'fonctions'
+})
+
+graph.nodes.push({
+  id: 'Algorithmes, fonctions et pseudo-code',
+  link: "/cours_informatique/cours/algorithme-code-theorie/theorie/algorithmes-fonctions-pseudo-code.html",
+  group: groups.theorie
+})
+graph.links.push({
+  source: 'fonctions',
+  target: 'Algorithmes, fonctions et pseudo-code'
+})
+graph.links.push({
+  source: 'pseudo-code',
+  target: 'Algorithmes, fonctions et pseudo-code'
+})
+
+
+graph.nodes.push({
+  id: 'machine de Turing',
+  link: "/cours_informatique/cours/algorithme-code-theorie/theorie/machine-turing.html",
+  group: groups.theorie
+})
+graph.links.push({
+  source: 'fonctions',
+  target: 'machine de Turing'
+})
+
+graph.nodes.push({
+  id: 'décidabilité',
+  link: "/cours_informatique/cours/algorithme-code-theorie/theorie/decidabilite.html",
+  group: groups.theorie
+})
+
+graph.links.push({
+  source: 'Algorithmes, fonctions et pseudo-code',
+  target: 'décidabilité'
+})
+
+graph.nodes.push({
+  id: 'calculabilité',
+  link: "/cours_informatique/cours/algorithme-code-theorie/theorie/calculabilite.html",
+  group: groups.theorie
+})
+graph.links.push({
+  source: 'machine de Turing',
+  target: 'calculabilité'
+})
+
+graph.links.push({
+  source: 'décidabilité',
+  target: 'calculabilité'
+})
+
+graph.nodes.push({
+  id: 'projet informatique',
+  link: "/cours_informatique/cours/algorithme-code-theorie/code/projet-hello-dev.html",
+  group: groups.code
+})
+graph.links.push({
+  source: 'code',
+  target: 'projet informatique'
+})
+
+graph.nodes.push({
+  id: 'naviguer dans un système de fichiers',
+  link: "/cours_informatique/tutoriels/systeme/2021-08-24-fichiers-navigation.html",
+  group: groups.autre
+})
+graph.nodes.push({
+  id: 'vscode & python',
+  link: "/cours_informatique/tutoriels/editeur/vsc/2021-09-14-vsc-python.html",
+  group: groups.autre
+})
+graph.links.push({
+  source: 'vscode & python',
+  target: 'projet informatique'
+})
+graph.links.push({
+  source: 'naviguer dans un système de fichiers',
+  target: 'projet informatique'
+})
+
+graph.nodes.push({
+  id: 'installation vscode',
+  link: "/cours_informatique/tutoriels/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main.html",
+  group: groups.autre
+})
+graph.nodes.push({
+  id: 'installation python',
+  link: "/cours_informatique/tutoriels/python/2021-08-20-installation-de-python.html",
+  group: groups.autre
+})
+graph.links.push({
+  source: 'installation vscode',
+  target: 'vscode & python'
+})
+graph.links.push({
+  source: 'installation python',
+  target: 'vscode & python'
+})
+
+graph.nodes.push({
+  id: 'terminal',
+  link: "/cours_informatique/tutoriels/systeme/2021-08-24-terminal.html",
+  group: groups.autre
+})
+graph.nodes.push({
+  id: 'utilisation du terminal',
+  link: "/cours_informatique/tutoriels/systeme/2021-12-02-terminal-utilisation.html",
+  group: groups.autre
+})
+graph.links.push({
+  source: 'naviguer dans un système de fichiers',
+  target: 'terminal'
+})
+graph.links.push({
+  source: 'terminal',
+  target: 'utilisation du terminal'
+})
+
+graph.nodes.push({
+  id: 'projet : pourcentages',
+  link: "/cours_informatique/cours/algorithme-code-theorie/code/projet-pourcentages.html",
+  group: groups.code
+})
+graph.links.push({
+  source: 'projet informatique',
+  target: 'projet : pourcentages'
+})
+graph.links.push({
+  source: 'utilisation du terminal',
+  target: 'projet : pourcentages'
+})
+
+graph.nodes.push({
+  id: 'complexité max/min',
+  link: "/cours_informatique/cours/algorithme-code-theorie/algorithme/complexite-max-min.html",
+  group: groups.algorithmie
+})
+graph.links.push({
+  source: 'pseudo-code',
+  target: 'complexité max/min'
+})
+
+graph.nodes.push({
+  id: "preuve d'algorithme",
+  link: "/cours_informatique/cours/algorithme-code-theorie/algorithme/preuve-algorithme.html",
+  group: groups.algorithmie
+})
+graph.links.push({
+  source: 'pseudo-code',
+  target: "preuve d'algorithme"
+})
+
+graph.nodes.push({
+  id: "étude : l'exponentiation",
+  link: "/cours_informatique/cours/algorithme-code-theorie/algorithme/etude-exponentiation.html",
+  group: groups.algorithmie
+})
+graph.links.push({
+  source: "preuve d'algorithme",
+  target: "étude : l'exponentiation"
+})
+
+graph.links.push({
+  source: 'complexité max/min',
+  target: "étude : l'exponentiation"
+})
+
+graph.nodes.push({
+  id: "projet : exponentiation",
+  link: "/cours_informatique/cours/algorithme-code-theorie/code/projet-exponentiation.html",
+  group: groups.code
+})
+
+graph.links.push({
+  source: "étude : l'exponentiation",
+  target: "projet : exponentiation"
+})
+
+graph.links.push({
+  source: 'projet : pourcentages',
+  target: "projet : exponentiation"
+})
+
+graph.nodes.push({
+  id: "complexité en moyenne",
+  link: "/cours_informatique/cours/algorithme-code-theorie/algorithme/complexite-moyenne.html",
+  group: groups.algorithmie
+})
+
+graph.links.push({
+  source: 'complexité max/min',
+  target: "complexité en moyenne"
+})
+
+graph.nodes.push({
+  id: "complexité d'un problème",
+  link: "/cours_informatique/cours/algorithme-code-theorie/algorithme/complexite-probleme.html",
+  group: groups.algorithmie
+})
+
+graph.links.push({
+  source: "étude : l'exponentiation",
+  target: "complexité d'un problème"
+
+})
+
+graph.nodes.push({
+  id: "étude : mélanger un tableau",
+  link: "/cours_informatique/cours/algorithme-code-theorie/algorithme/etude-melange.html",
+  group: groups.algorithmie
+})
+
+graph.links.push({
+  source: "étude : l'exponentiation",
+  target: "étude : mélanger un tableau"
+
+})
+
+graph.nodes.push({
+  id: "étude : trier un tableau",
+  link: "/cours_informatique/cours/algorithme-code-theorie/algorithme/etude-tris.html",
+  group: groups.algorithmie
+})
+
+graph.links.push({
+  source: "complexité d'un problème",
+  target: "étude : trier un tableau"
+})
+
+graph.links.push({
+  source: "étude : mélanger un tableau",
+  target: "étude : trier un tableau"
+})
+
+graph.links.push({
+  source: "complexité en moyenne",
+  target: "étude : trier un tableau"
+})
+
+graph.nodes.push({
+  id: "projet : les tris",
+  link: "/cours_informatique/cours/algorithme-code-theorie/code/projet-tris.html",
+  group: groups.code
+})
+
+graph.links.push({
+  source: "étude : trier un tableau",
+  target: "projet : les tris"
+})
+
+graph.links.push({
+  source: "projet : exponentiation",
+  target: "projet : les tris"
+})
+
+graph.nodes.push({
+  id: 'mémoire et espace de noms',
+  link: "/cours_informatique/cours/algorithme-code-theorie/code/programmation-objet/memoire-et-espace-noms.html",
+  group: groups.code
+})
+graph.links.push({
+  source: 'code',
+  target: 'mémoire et espace de noms'
+})
+
+graph.nodes.push({
+id: "classes et objets",
+  link: "/cours_informatique/cours/algorithme-code-theorie/code/programmation-objet/classes-et-objets.html",
+  group: groups.code
+})
+
+graph.links.push({
+  source: "mémoire et espace de noms",
+  target: "classes et objets"
+})
+
+graph.nodes.push({
+id: "composition et agrégation",
+  link: "/cours_informatique/cours/algorithme-code-theorie/code/programmation-objet/composition-agregation.html",
+  group: groups.code
+})
+
+graph.links.push({
+  source: "mémoire et espace de noms",
+  target: "composition et agrégation"
+})
+
+graph.nodes.push({
+id: "projet : composition et agrégation",
+  link: "/cours_informatique/cours/algorithme-code-theorie/code/programmation-objet/projet-composition-agregation.html",
+  group: groups.code
+})
+
+graph.links.push({
+  source: "composition et agrégation",
+  target: "projet : composition et agrégation"
+})
+
+graph.nodes.push({
+id: "héritage",
+  link: "/cours_informatique/cours/algorithme-code-theorie/code/programmation-objet/heritage.html",
+  group: groups.code
+})
+
+graph.links.push({
+  source: "composition et agrégation",
+  target: "héritage"
+})
+
+graph.nodes.push({
+id: "projet : héritage",
+  link: "/cours_informatique/cours/algorithme-code-theorie/code/programmation-objet/projet-heritage.html",
+  group: groups.code
+})
+
+graph.links.push({
+  source: "héritage",
+  target: "projet : héritage"
+})
+
+graph.links.push({
+  source: "projet : composition et agrégation",
+  target: "projet : héritage"
+})
+
+</script>
+
+<script>
+var color = d3.scaleOrdinal(d3.schemeCategory10);
+
+svg.append("rect")
+    .attr("width", "100%")
+    .attr("height", "100%")
+    .attr("fill", "#EEE6FA");
+
+// define arrow markers for graph links
+svg.append("svg:defs").append("svg:marker")
+  .attr("id", "end-arrow")
+  .attr("viewBox", "0 -5 20 10")
+  .attr("refX", 25)
+  .attr("markerWidth", 20)
+  .attr("markerHeight", 20)
+  .attr("orient", "auto")
+  .append("svg:path")
+  .attr("d", "M0,-5L20,0L0,5")
+  .attr("fill", "#000");
+
+var simulation = d3.forceSimulation()
+    .force("link", d3.forceLink().id(d => { return d.id; }))
+    .force("charge", d3.forceManyBody().strength(-100))
+    .force("center", d3.forceCenter(width / 2, height / 2));
+
+var link = svg.append("g")
+    .attr("class", "links")
+    .selectAll("line")
+    .data(graph.links)
+    .enter().append("line");
+
+  var node = svg.append("g")
+    .attr("class", "nodes")
+    .selectAll("g")
+    .data(graph.nodes)
+    .enter().append("g")
+    .attr("fx", d => {return d.fx})
+    .attr("fy", d => {return d.fy})
+
+  node.append("a")
+    .attr("xlink:href", d => { return d.link})
+    .append("circle")
+    .attr("r", 5)
+    .attr("fill", function(d) { return color(d.group); })
+
+  node.append("a")
+    .attr("xlink:href", d => { return d.link})
+    .append("text")
+      .text(function(d) {
+        return d.id;
+      })
+      .attr('x', 6)
+      .attr('y', 3)
+      .style('fill', d => { if (d.root) {return color(d.group)} else { return 'black'}})
+
+  // Create a drag handler and append it to the node object instead
+  var drag_handler = d3.drag()
+      .on("start", dragstarted)
+      .on("drag", dragged)
+      .on("end", dragended)
+
+  drag_handler(node);
+  
+  node.on("click", clicked);
+
+  simulation
+      .nodes(graph.nodes)
+      .on("tick", ticked);
+
+  simulation.force("link")
+      .links(graph.links);
+
+  function ticked() {
+    link
+        .attr("x1", function(d) { return d.source.x; })
+        .attr("y1", function(d) { return d.source.y; })
+        .attr("x2", function(d) { return d.target.x; })
+        .attr("y2", function(d) { return d.target.y; });
+
+    radius = 15;
+    node
+        .attr("transform", (d) => {
+          d.x = Math.max(radius, Math.min(width - radius, d.x))
+          d.y = Math.max(radius, Math.min(height - radius, d.y))
+          return "translate(" + d.x + "," + d.y + ")";
+        })
+  }
+
+  function dragstarted(event, d) {
+    if (!event.active) simulation.alphaTarget(0.3).restart();
+    d.fx = d.x;
+    d.fy = d.y;
+  }
+
+  function dragged(event, d) {
+    d.fx = event.x;
+    d.fy = event.y;
+  }
+
+  function dragended(event, d) {
+    // if (!event.active) simulation.alphaTarget(0);
+    d.fx = Math.max(0, d.fx);
+    d.fx = Math.min(width, d.fx);
+
+    d.fy = Math.max(0, d.fy);
+    d.fy = Math.min(height, d.fy);
+  }
+  function clicked(event, d) {
+    console.log(d)
+  }
+
+</script>
+
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d'informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d'informatique</li>
+</ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+<ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d'informatique de François Brucker.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

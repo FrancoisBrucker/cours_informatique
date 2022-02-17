@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Héritage : élément de corrigé | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0">
+<meta property="og:title" content="Héritage : élément de corrigé">
+<meta name="author" content="François Brucker">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Support de cours/td d’informatique de François Brucker.">
+<meta property="og:description" content="Support de cours/td d’informatique de François Brucker.">
+<link rel="canonical" href="/cours_informatique/cours/algorithme-code-theorie/code/programmation-objet/projet-heritage-corrige.html">
+<meta property="og:url" content="/cours_informatique/cours/algorithme-code-theorie/code/programmation-objet/projet-heritage-corrige.html">
+<meta property="og:site_name" content="cours d’informatique">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Héritage : élément de corrigé">
+<script type="application/ld+json">
+{"description":"Support de cours/td d’informatique de François Brucker.","@type":"WebPage","author":{"@type":"Person","name":"François Brucker"},"url":"/cours_informatique/cours/algorithme-code-theorie/code/programmation-objet/projet-heritage-corrige.html","headline":"Héritage : élément de corrigé","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css">
+
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css">
+
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique">
+</head>
+
+<body>
+<header class="site-header" role="banner">
+
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/cours_informatique/">cours d'informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav>
+</div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Héritage : élément de corrigé</h1>Auteurs :
+      <ul>
+      
+        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></li>
+      
+        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Célia Châtel</span></span></li>
+      
+      </ul>
+  </header>
+
+  <div class="post-content">
+    <h2 id="le-cours">le cours</h2>
+
+<h3 id="odds-and-ends">odds and ends</h3>
+
+<p>refaite les exercice de la partie <a href="/cours_informatique/cours/developpement/programmation-objet/heritage.html#odds-and-ends">odds and ends</a> du cours sans regarder la solution.</p>
+
+<p>Puis créez un objet <code class="language-plaintext highlighter-rouge">objet_a</code> de la classe <code class="language-plaintext highlighter-rouge">A</code> et un objet <code class="language-plaintext highlighter-rouge">objet_b</code> de la classe <code class="language-plaintext highlighter-rouge">B</code>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">objet_a</span> <span class="o">=</span> <span class="n">A</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">objet_b</span> <span class="o">=</span> <span class="n">B</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Essayez les lignes suivantes (une à la
+fois) et prenez le temps de comprendre ce qu’elles font et pourquoi.</p>
+
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">print(objet_a.a)</code> : affiche 10</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">print(objet_a.b)</code> : produit une erreur, <code class="language-plaintext highlighter-rouge">b</code> est un attribut de <code class="language-plaintext highlighter-rouge">B</code>, pas de <code class="language-plaintext highlighter-rouge">A</code>
+</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">print(objet_b.a)</code> : par héritage et utilisation du constructeur de la classe mère, affiche 3</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">print(objet_b.b)</code> : affiche 7</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">objet_a.truc_que_fait_a()</code> : affiche <code class="language-plaintext highlighter-rouge">"Autre truc dans la classe mère"</code>
+</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">objet_a.autre_truc()</code> : produit une erreur, <code class="language-plaintext highlighter-rouge">autre_truc</code>  est défini dans la classe <code class="language-plaintext highlighter-rouge">B</code>
+</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">objet_a.que_de_b()</code> : produit une erreur, <code class="language-plaintext highlighter-rouge">autre_truc</code>  est défini dans la classe <code class="language-plaintext highlighter-rouge">B</code>
+</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">objet_b.truc_que_fait_a()</code> : par héritage, affiche <code class="language-plaintext highlighter-rouge">"Autre truc dans la classe mère"</code>
+</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">objet_b.autre_truc()</code> : affiche <code class="language-plaintext highlighter-rouge">"C'est mon autre truc à moi"</code>, méthode définie dans <code class="language-plaintext highlighter-rouge">B</code>
+</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">objet_b.que_de_b()</code>  :  affiche <code class="language-plaintext highlighter-rouge">"Méthode seulement de la classe fille"</code>, méthode définie dans <code class="language-plaintext highlighter-rouge">B</code>
+</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">print(A.CTE)</code> : affiche <code class="language-plaintext highlighter-rouge">"un attribut de classe"</code>
+</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">print(objet_a.CTE)</code> : affiche <code class="language-plaintext highlighter-rouge">"un attribut de classe"</code> car si le nom n’est pas dans l’espace de nom de l’objet, on le cherche dans sa classe</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">print(objet_b.CTE)</code> : affiche <code class="language-plaintext highlighter-rouge">"un attribut de classe"</code>  par héritage.</li>
+</ul>
+
+<h3 id="donjons-et-dragons">donjons et dragons</h3>
+
+<p>Créez un personnage, un magicien et une guerrière. Faite en sorte que la guerrière tue le personnage en combat rapproché, puis que le magicien tue la guerrière avec un de ses sorts dans un programme principal <em>“main_donjons”</em>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">random</span>
+
+
+<span class="k">class</span> <span class="nc">Personnage</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vie</span><span class="p">,</span> <span class="n">attaque</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_vie</span> <span class="o">=</span> <span class="n">vie</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">attaque</span> <span class="o">=</span> <span class="n">attaque</span>
+
+    <span class="k">def</span> <span class="nf">se_faire_taper</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">personnage</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">set_vie</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">get_vie</span><span class="p">()</span> <span class="o">-</span> <span class="n">personnage</span><span class="p">.</span><span class="n">attaque</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">taper</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">personnage</span><span class="p">):</span>
+        <span class="n">personnage</span><span class="p">.</span><span class="n">se_faire_taper</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">get_vie</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">_vie</span>
+
+    <span class="k">def</span> <span class="nf">set_vie</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valeur</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_vie</span> <span class="o">=</span> <span class="n">valeur</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">_vie</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">_vie</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">"je suis mort"</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">Guerriere</span><span class="p">(</span><span class="n">Personnage</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vie</span><span class="p">,</span> <span class="n">attaque</span><span class="p">,</span> <span class="n">blocage</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">().</span><span class="n">__init__</span><span class="p">(</span><span class="n">vie</span><span class="p">,</span> <span class="n">attaque</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">blocage</span> <span class="o">=</span> <span class="n">blocage</span>
+
+    <span class="k">def</span> <span class="nf">se_faire_taper</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">personnage</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">blocage</span> <span class="o">&gt;=</span> <span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">):</span>
+            <span class="nb">super</span><span class="p">().</span><span class="n">se_faire_taper</span><span class="p">(</span><span class="n">personnage</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">Magicien</span><span class="p">(</span><span class="n">Personnage</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vie</span><span class="p">,</span> <span class="n">attaque</span><span class="p">,</span> <span class="n">attaque_magique</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">().</span><span class="n">__init__</span><span class="p">(</span><span class="n">vie</span><span class="p">,</span> <span class="n">attaque</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">attaque_magique</span> <span class="o">=</span> <span class="n">attaque_magique</span>
+
+    <span class="k">def</span> <span class="nf">lancer_sort</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">personnage</span><span class="p">):</span>
+        <span class="n">personnage</span><span class="p">.</span><span class="n">set_vie</span><span class="p">(</span><span class="n">personnage</span><span class="p">.</span><span class="n">get_vie</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="p">.</span><span class="n">attaque_magique</span><span class="p">)</span>
+
+<span class="n">xena</span> <span class="o">=</span> <span class="n">Guerriere</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">peon</span> <span class="o">=</span> <span class="n">Personnage</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">gandalf</span> <span class="o">=</span> <span class="n">Magicien</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="n">xena</span><span class="p">.</span><span class="n">get_vie</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">peon</span><span class="p">.</span><span class="n">get_vie</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"xena : "</span><span class="p">,</span> <span class="n">xena</span><span class="p">.</span><span class="n">get_vie</span><span class="p">(),</span> <span class="s">" peon : "</span><span class="p">,</span> <span class="n">peon</span><span class="p">.</span><span class="n">get_vie</span><span class="p">())</span>
+    <span class="n">xena</span><span class="p">.</span><span class="n">taper</span><span class="p">(</span><span class="n">peon</span><span class="p">)</span>
+    <span class="n">peon</span><span class="p">.</span><span class="n">taper</span><span class="p">(</span><span class="n">xena</span><span class="p">)</span>
+
+
+<span class="k">print</span><span class="p">(</span><span class="s">"xena : "</span><span class="p">,</span> <span class="n">xena</span><span class="p">.</span><span class="n">get_vie</span><span class="p">(),</span> <span class="s">" peon : "</span><span class="p">,</span> <span class="n">peon</span><span class="p">.</span><span class="n">get_vie</span><span class="p">())</span>
+
+<span class="k">if</span> <span class="n">xena</span><span class="p">.</span><span class="n">get_vie</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">surviant</span> <span class="o">=</span> <span class="n">xena</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">surviant</span> <span class="o">=</span> <span class="n">peon</span>
+
+<span class="k">while</span> <span class="n">surviant</span><span class="p">.</span><span class="n">get_vie</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"survivant : "</span><span class="p">,</span> <span class="n">surviant</span><span class="p">.</span><span class="n">get_vie</span><span class="p">())</span>
+    <span class="n">gandalf</span><span class="p">.</span><span class="n">lancer_sort</span><span class="p">(</span><span class="n">surviant</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<h2 id="le-dé">Le dé</h2>
+
+<p>Nous allons ici réutiliser la classe <code class="language-plaintext highlighter-rouge">Dice</code> entamée la dernière fois. Pour être sûr de repartir sur de bonnes bases, utilisez l’implémentation minimale suivante (dans un fichier <code class="language-plaintext highlighter-rouge">dice.py</code>).</p>
+
+<h3 id="code-de-dice">code de Dice</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">random</span>
+
+
+<span class="k">class</span> <span class="nc">Dice</span><span class="p">:</span>
+    <span class="n">NUMBER_FACES</span> <span class="o">=</span> <span class="mi">6</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_position</span> <span class="o">=</span> <span class="n">position</span>
+
+    <span class="k">def</span> <span class="nf">get_position</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">_position</span>
+
+    <span class="k">def</span> <span class="nf">set_position</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_position</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_position</span> <span class="o">=</span> <span class="n">new_position</span>
+
+    <span class="k">def</span> <span class="nf">roll</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">set_position</span><span class="p">(</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">NUMBER_FACES</span><span class="p">))</span>
+</code></pre></div></div>
+
+<h3 id="un-dé-qui-compte">Un dé qui compte</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">random</span>
+
+
+<span class="k">class</span> <span class="nc">Dice</span><span class="p">:</span>
+    <span class="n">NUMBER_FACES</span> <span class="o">=</span> <span class="mi">6</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_position</span> <span class="o">=</span> <span class="n">position</span>
+
+    <span class="k">def</span> <span class="nf">get_position</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">_position</span>
+
+    <span class="k">def</span> <span class="nf">set_position</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_position</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_position</span> <span class="o">=</span> <span class="n">new_position</span>
+
+    <span class="k">def</span> <span class="nf">roll</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">set_position</span><span class="p">(</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">NUMBER_FACES</span><span class="p">))</span>
+
+
+<span class="k">class</span> <span class="nc">StatDice</span><span class="p">(</span><span class="n">Dice</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">().</span><span class="n">__init__</span><span class="p">(</span><span class="n">position</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_memory</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">NUMBER_FACES</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+    
+    <span class="k">def</span> <span class="nf">get_memory</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">_memory</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">set_position</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_position</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">().</span><span class="n">set_position</span><span class="p">(</span><span class="n">new_position</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_memory</span><span class="p">[</span><span class="n">new_position</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">def</span> <span class="nf">stats</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">n_roll</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">_memory</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="p">[</span><span class="n">x</span> <span class="o">/</span> <span class="n">n_roll</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">.</span><span class="n">_memory</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">mean</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">n_roll</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">_memory</span><span class="p">))</span>
+        <span class="n">valeur</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">_memory</span><span class="p">)):</span>
+            <span class="n">valeur</span> <span class="o">+=</span> <span class="n">i</span> <span class="o">*</span> <span class="bp">self</span><span class="p">.</span><span class="n">_memory</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">valeur</span> <span class="o">/</span> <span class="n">n_roll</span>
+
+
+<span class="n">d</span> <span class="o">=</span> <span class="n">StatDice</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10000</span><span class="p">):</span>
+    <span class="n">d</span><span class="p">.</span><span class="n">roll</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">memory</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">stats</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">mean</span><span class="p">())</span>
+</code></pre></div></div>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d'informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d'informatique</li>
+</ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+<ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d'informatique de François Brucker.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

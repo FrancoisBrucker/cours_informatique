@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>étude / algorithmes d’exponentiation | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0">
+<meta property="og:title" content="étude / algorithmes d’exponentiation">
+<meta name="author" content="François Brucker">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Support de cours/td d’informatique de François Brucker.">
+<meta property="og:description" content="Support de cours/td d’informatique de François Brucker.">
+<link rel="canonical" href="/cours_informatique/cours/algorithme-code-theorie/algorithme/etude-exponentiation.html">
+<meta property="og:url" content="/cours_informatique/cours/algorithme-code-theorie/algorithme/etude-exponentiation.html">
+<meta property="og:site_name" content="cours d’informatique">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="étude / algorithmes d’exponentiation">
+<script type="application/ld+json">
+{"description":"Support de cours/td d’informatique de François Brucker.","@type":"WebPage","author":{"@type":"Person","name":"François Brucker"},"url":"/cours_informatique/cours/algorithme-code-theorie/algorithme/etude-exponentiation.html","headline":"étude / algorithmes d’exponentiation","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css">
+
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css">
+
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique">
+<script>MathJax={"tex":{"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["\\[","\\]"]]},"svg":{"fontCache":"global"},"svg":{"fontCache":"global"}}</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<header class="site-header" role="banner">
+
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/cours_informatique/">cours d'informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav>
+</div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">étude / algorithmes d'exponentiation</h1>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span>
+  </header>
+
+  <div class="post-content">
+    <blockquote class="chemin">
+  <p><a href="/cours_informatique/cours/algorithme-code-theorie/">Algorithme, code et théorie</a> / <a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/">algorithmie</a> / <a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/etude-exponentiation.html">étude : l’exponentiation</a></p>
+
+  <p>prérequis :</p>
+
+  <ul>
+    <li><a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/complexite-max-min.html">complexité max/min</a></li>
+    <li><a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/preuve-algorithme.html">preuve d’algorithme</a></li>
+  </ul>
+</blockquote>
+
+<p>On va étudier deux algorithmes permettant de calculer $a^b$  à partir de deux entiers $a$ et $b$. Pour chaque algorithme on étudiera son fonctionnement selon <a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/algorithmes.html#%C3%A9tude">3 axes</a> :</p>
+
+<ul>
+  <li>fonctionnement</li>
+  <li>preuve</li>
+  <li>complexité</li>
+</ul>
+
+<blockquote>
+  <p>On utilisera le python comme langage de pseudo-code</p>
+</blockquote>
+
+<h2 id="algo-naif">algorithme naïf</h2>
+
+<p>Le calcul <em>naïf</em> de l’exponentiel est basé sur sa définition mathématique, qui peut être décrite, pour deux entiers positifs $x$ et $y$,  par l’équation suivante :</p>
+
+\[x^y = \left\{
+    \begin{array}{ll}
+        x \cdot x^{y-1} &amp; \mbox{si } y &gt; 0 \\
+        1 &amp; \mbox{sinon.}
+    \end{array}
+\right.\]
+
+<blockquote class="a-faire">
+  <p>Ecrivez un algorithme récursif pour résoudre cette équation.</p>
+</blockquote>
+<details><summary>une solution possible</summary><div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">puissance</span><span class="p">(</span><span class="n">nombre</span><span class="p">,</span> <span class="n">exposant</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">exposant</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">nombre</span> <span class="o">*</span> <span class="n">puissance</span><span class="p">(</span><span class="n">nombre</span><span class="p">,</span> <span class="n">exposant</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Cet algorithme est exactement la transcription de la définition mathématique, il est donc correct.</p>
+
+</div></details>
+
+<p>Pour cette étude, nous allons uniquement utiliser des algorithmes non récursifs (ils sont dit itératifs).</p>
+
+<blockquote class="a-faire">
+  <p>Ecrivez un algorithme itératif pour calculer $x^y$  avec $x$ et $y$ deux entiers positifs.</p>
+</blockquote>
+<details><summary>une solution possible</summary><div>
+<style>
+    table, td, tr, th, pre {
+        padding:0;
+        margin:0;
+        border:none
+    }
+</style>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td>
+<td class="code"><pre><span class="k">def</span> <span class="nf">puissance</span><span class="p">(</span><span class="n">nombre</span><span class="p">,</span> <span class="n">exposant</span><span class="p">):</span>
+    <span class="n">résultat</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">compteur</span> <span class="o">=</span> <span class="n">exposant</span>
+    <span class="k">while</span> <span class="n">compteur</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">résultat</span> <span class="o">*=</span> <span class="n">nombre</span>
+        <span class="n">compteur</span> <span class="o">-=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">résultat</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+
+</div></details>
+
+<p>C’est cet algorithme itératif que nous allons étudier maintenant.</p>
+
+<h3 id="marche-naïf">est-ce que ça marche ?</h3>
+
+<p>On test l’algorithme itératif sur de petits exemples qui vont nous permettre d’appréhender son fonctionnement :</p>
+
+<blockquote class="note">
+  <p>On teste sur de petits nombres en se mettant à la place de l’ordinateur.</p>
+
+  <ul>
+    <li>on numérote chaque ligne</li>
+    <li>on note sur une feuille les variables</li>
+    <li>on exécute ligne à ligne en notant les différents résultats.</li>
+    <li>à la fin on vérifie que <code class="language-plaintext highlighter-rouge">résultat</code> vaut bien ce qu’il doit valoir.</li>
+  </ul>
+
+</blockquote>
+
+<p>Les cas simples que l’on peut essayer sans peine, et permet de <strong>tester les cas limites</strong> :</p>
+
+<ul>
+  <li>exposant vaut 0 ou 1</li>
+  <li>nombre vaut 2 ou 3 (un peu plus que les cas triviaux)</li>
+</ul>
+
+<p>Puis un cas un peu plus compliqué pour <strong>tester si les boucles fonctionnent bien</strong> :</p>
+
+<ul>
+  <li>exposant vaut 2 ou 3</li>
+  <li>nombre vaut 2 ou 3</li>
+</ul>
+
+<blockquote class="a-faire">
+  <p>Vérifiez que l’algorithme donne bien les bons résultats sur les exemples ci-dessus.</p>
+</blockquote>
+
+<p>Une fois qu’on est convaincu que ça fonctionne, on prouvera sa finitude, sa preuve et on calculera sa complexité.</p>
+
+<h3 id="preuve-naif">preuve</h3>
+
+<p>En deux temps. On commence par montrer qu’il se termine, puis on prouve qu’il calcule bien l’exponentiation.</p>
+
+<h4 id="finitude-naif">finitude</h4>
+
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">compteur</code> diminue strictement à chaque boucle et la condition d’arrêt est lorsqu’il vaut 0</li>
+  <li>condition : il faut que <code class="language-plaintext highlighter-rouge">compteur</code> soit un nombre &gt;= 0 pour que l’algorithme s’arrête. Donc <code class="language-plaintext highlighter-rouge">exposant</code> doit être un nombre positif.</li>
+</ul>
+
+<blockquote class="note">
+  <p>Pour des nombres, on préférera toujours des conditions d’arrêt larges (plus petit que, plus grand que, différent de) plutôt que des conditions sur l’égalité stricte. Ceci pour deux raisons majeures :</p>
+
+  <ul>
+    <li>L’égalité entre réels n’existe pas en informatique par exemple.</li>
+    <li>dans l’exemple ci-dessus mettre des exposants négatifs ou des nombres réels ne fait pas boucler infiniment notre algorithme</li>
+  </ul>
+
+</blockquote>
+
+<h4 id="preuve-de-lalgorithme">preuve de l’algorithme</h4>
+
+<p>Le fonctionnement de l’algorithme est <em>à peu prêt</em> clair si les entrées sont des entiers : il multiplie $a$ par lui-même $b$ fois grâce à une boucle. Une preuve par récurrence doit donc fonctionner, mais essayons de faire une <em>jolie</em> preuve en exhibant un invariant de boucle.</p>
+
+<blockquote class="note">
+  <p>Si <code class="language-plaintext highlighter-rouge">nombre</code> et <code class="language-plaintext highlighter-rouge">exposant</code> sont des entiers naturels, on a l’invariant de boucle :
+<code class="language-plaintext highlighter-rouge">resultat * nombre ** compteur = nombre ** exposant</code> (en utilisant l’opération <code class="language-plaintext highlighter-rouge">**</code> qui signifie exposant en python.)</p>
+</blockquote>
+
+<p>Prouvons cet invariant.</p>
+
+<p>Juste avant la première itération de la boucle, <code class="language-plaintext highlighter-rouge">resulat = 1</code> et <code class="language-plaintext highlighter-rouge">compteur = exposant</code> notre invariant est donc vérifié. On suppose l’invariant vrai au début de la boucle $i$. Comme expliqué dans la partie sur les <a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/preuve-algorithme.html">preuves d’algorithmes</a>, on met un <code class="language-plaintext highlighter-rouge">'</code> aux variable après l’itération :</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">nombre' = nombre</code></li>
+  <li><code class="language-plaintext highlighter-rouge">exposant' = exposant</code></li>
+  <li><code class="language-plaintext highlighter-rouge">resulat' = resultat * nombre</code></li>
+  <li><code class="language-plaintext highlighter-rouge">compteur' = compteur - 1</code></li>
+</ul>
+
+<p>On a alors :  <code class="language-plaintext highlighter-rouge">resultat' * nombre' ** compteur' = (resultat * nombre) * nombre ** (compteur - 1) = resultat * nombre ** compteur = nombre ** exposant = nombre' ** exposant'</code></p>
+
+<p>On a démontré notre invariant de boucle.</p>
+
+<blockquote class="note">
+  <p>Notre invariant est vrai avant et après chaque itération, il est donc également vrai à la fin de l’algorithme, lorsque <code class="language-plaintext highlighter-rouge">compteur = 0</code>. Et là : <code class="language-plaintext highlighter-rouge">resultat * nombre ** compteur = resultat = nombre ** exposant</code></p>
+</blockquote>
+
+<h3 id="complexite-naif">complexité</h3>
+
+<p>Ligne à ligne :</p>
+
+<ol>
+  <li>définition de la fonction : $\mathcal{O}(1)$</li>
+  <li>une affection : $\mathcal{O}(1)$</li>
+  <li>une affection : $\mathcal{O}(1)$</li>
+  <li>une boucle de $\mathcal{O}(\mbox{exposant})$ itération (<code class="language-plaintext highlighter-rouge">compteur</code> vaut initialement <code class="language-plaintext highlighter-rouge">exposant</code> et décrémente de $1$ à chaque itération)</li>
+  <li>une multiplication et une affection : $\mathcal{O}(1)$</li>
+  <li>une soustraction et une affection : $\mathcal{O}(1)$</li>
+  <li>retour de la fonction : $\mathcal{O}(1)$</li>
+</ol>
+
+<p>Ce qui donne une complexité de :</p>
+
+\[\begin{array}{lcl}
+C &amp; = &amp; \mathcal{O}(1) + \\
+&amp;  &amp; \mathcal{O}(1) + \\
+&amp; &amp; \mathcal{O}(1) + \\
+&amp; &amp; \mathcal{O}(\mbox{exposant}) \cdot ( \\
+&amp; &amp; \mathcal{O}(1) + \\
+&amp; &amp; \mathcal{O}(1)) + \\
+&amp; &amp; \mathcal{O}(1)\\
+&amp; = &amp; 3 \cdot \mathcal{O}(1) + \mathcal{O}(\mbox{exposant}) \cdot (2 \cdot \mathcal{O}(1)) + \mathcal{O}(1)\\
+&amp;=&amp; 4 \cdot \mathcal{O}(1) + 2 \cdot \mathcal{O}\mbox({exposant})\\
+&amp;=&amp; \mathcal{O}(1) + \mathcal{O}(\mbox{exposant})\\
+C&amp;=&amp; \mathcal{O}(\mbox{exposant})\\
+\end{array}\]
+
+<h2 id="algo-rapide">exponentiation indienne</h2>
+
+<p>Aussi appelé <a href="https://fr.wikipedia.org/wiki/Exponentiation_rapide">exponentiation rapide</a>, cette façon de calculer l’exponentielle est basée sur l’équation suivante, pour deux entiers positifs $x$ et $y$ :</p>
+
+\[x^y = \left\{
+    \begin{array}{ll}
+        1 &amp; \mbox{si } y = 0 \\
+        x \cdot x^{y-1}  &amp;\mbox{si } y  \mbox{ est impair}\\
+        x^{\frac{y}{2}}  \cdot x^{\frac{y}{2}} = (x^2)^{\frac{y}{2}}  &amp;\mbox{si } y  \mbox{ est pair}\\
+    \end{array}
+\right.\]
+
+<blockquote class="a-faire">
+  <p>Ecrivez un algorithme récursif pour résoudre cette équation.</p>
+</blockquote>
+<details><summary>une solution possible</summary><div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">puissance</span><span class="p">(</span><span class="n">nombre</span><span class="p">,</span> <span class="n">exposant</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">exposant</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">elif</span> <span class="n">compteur</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">nombre</span> <span class="o">*</span> <span class="n">puissance</span><span class="p">(</span><span class="n">nombre</span><span class="p">,</span> <span class="n">exposant</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">nombre</span> <span class="o">*</span> <span class="n">nombre</span> <span class="o">*</span> <span class="n">puissance</span><span class="p">(</span><span class="n">nombre</span><span class="p">,</span> <span class="n">exposant</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> 
+</code></pre></div></div>
+
+<p>On a utiliser deux choses :</p>
+
+<ul>
+  <li>L’opérateur <code class="language-plaintext highlighter-rouge">%</code> signifie <em>modulo</em> en python : il retourne le reste de la division entière. L’algorithme s’en sert pour vérifier si <code class="language-plaintext highlighter-rouge">compteur</code> est pair (reste de la division entière par 2 vaut 0) ou impair (reste de la division entière par 2 vaut 1)</li>
+  <li>la division entière <code class="language-plaintext highlighter-rouge">//</code> pour s’assurer que exposant reste un entier. Le type de <code class="language-plaintext highlighter-rouge">4 / 2</code> en python est un réel alors que le type de <code class="language-plaintext highlighter-rouge">4 // 2</code> est un entier.</li>
+</ul>
+
+<p>Cet algorithme est exactement la transcription de la définition mathématique, il est donc correct.</p>
+
+</div></details>
+
+<p>Pour cette étude, nous allons uniquement utiliser des algorithmes non récursifs (ils sont dit itératifs).</p>
+
+<blockquote class="a-faire">
+  <p>Ecrivez un algorithme itératif utilisant l’exponentiation indienne pour résoudre $x^y$  avec $x$ et $y$ deux entiers positifs.</p>
+</blockquote>
+<details><summary>une solution possible</summary><div>
+<style>
+    table, td, tr, th, pre {
+        padding:0;
+        margin:0;
+        border:none
+    }
+</style>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td>
+<td class="code"><pre><span class="k">def</span> <span class="nf">puissance</span><span class="p">(</span><span class="n">nombre</span><span class="p">,</span> <span class="n">exposant</span><span class="p">):</span>
+    <span class="n">resultat</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">compteur</span> <span class="o">=</span> <span class="n">exposant</span>
+
+    <span class="k">while</span> <span class="n">compteur</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">compteur</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">resultat</span> <span class="o">*=</span> <span class="n">nombre</span>
+            <span class="n">compteur</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">nombre</span> <span class="o">*=</span> <span class="n">nombre</span>
+            <span class="n">compteur</span> <span class="o">/=</span> <span class="mi">2</span>
+
+    <span class="k">return</span> <span class="n">resultat</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+
+</div></details>
+
+<p>C’est cet algorithme itératif que nous allons étudier maintenant.</p>
+
+<h3 id="marche-rapide">est-ce que ça marche ?</h3>
+
+<p>Comme pour l’algorithme naïf, on vérifie que tout fonctionne avec les cas simples :</p>
+
+<ul>
+  <li>exposant vaut 0 ou 1</li>
+  <li>nombre vaut 2 ou 3 (un peu plus que les cas triviaux)</li>
+</ul>
+
+<p>Enfin, comme l’algorithme vérifie si <code class="language-plaintext highlighter-rouge">compteur</code> est pair ou impair, on peut essaier un exposant un peu plus grand, par exemple :</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">exposant = 7</code></li>
+  <li>
+<code class="language-plaintext highlighter-rouge">nombre = 2</code> (pas trop grand pour pouvoir calculer facilement les résultats de tête)</li>
+</ul>
+
+<blockquote class="a-faire">
+  <p>Vérifiez que l’algorithme donne bien les bons résultats sur les exemples ci-dessus.</p>
+</blockquote>
+
+<h3 id="finitude-rapide">preuve de finitude</h3>
+
+<p>De même que pour l’algorithme simple, <code class="language-plaintext highlighter-rouge">compteur</code> diminue strictement à chaque boucle (ou il diminue de <code class="language-plaintext highlighter-rouge">-1</code> ou il est divisé par 2). Si <code class="language-plaintext highlighter-rouge">exposant</code> est un entier naturel en entrée, <code class="language-plaintext highlighter-rouge">compteur</code> reste entier après chaque boucle (on ne le divise par 2 que s’il est pair) et est strictement plus petit : l’algorithme va s’arrêter à un moment.</p>
+
+<h3 id="preuve-rapide">preuve de l’algorihtme</h3>
+
+<p>On va montrer que l’invariant de l’algorithme naïf fonctionne aussi. En notant <code class="language-plaintext highlighter-rouge">compteur_initial</code>, la valeur de compteur en entrée de l’algorithme, on a l’invariant suivant : <code class="language-plaintext highlighter-rouge">resultat * nombre ** compteur = nombre_initial ** exposant</code></p>
+
+<h4 id="invariant-rapide-init">conditions initiales</h4>
+
+<p>Juste avant la première itération de la boucle, <code class="language-plaintext highlighter-rouge">resulat = 1</code> et <code class="language-plaintext highlighter-rouge">compteur = exposant</code> notre invariant est donc vérifié.</p>
+
+<h4 id="invariant-rapide-preuve">preuve de l’invariant</h4>
+
+<p>On suppose l’invariant vrai au début de la boucle d’itération $i$. Regardons comment les variables ont été modifiées lors de cette itération :</p>
+
+<ul>
+  <li>si compteur est impair on a :
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">compteur' = compteur - 1</code></li>
+      <li><code class="language-plaintext highlighter-rouge">resultat' = resultat * nombre</code></li>
+      <li><code class="language-plaintext highlighter-rouge">nombre' = nombre</code></li>
+      <li>l’invariant vaut alors en fin d’itération : <code class="language-plaintext highlighter-rouge">resultat * nombre ** compteur = (resultat * nombre) * nombre ** (compteur - 1) = resultat' * nombre' ** compteur'</code>
+</li>
+    </ul>
+  </li>
+  <li>si compteur est impair on a :
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">compteur' = compteur - 1</code></li>
+      <li><code class="language-plaintext highlighter-rouge">resultat' = resultat</code></li>
+      <li><code class="language-plaintext highlighter-rouge">nombre' = nombre * nombre</code></li>
+      <li>l’invariant vaut alors en fin d’itération : <code class="language-plaintext highlighter-rouge">resultat * nombre ** compteur = resultat * (nombre * nombre) ** (compteur / 2)  = resultat' * nombre' ** compteur'</code>
+</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Dans tous les cas, l’invariant est toujours vérifié puisqu’en début de boucle notre invariant vaut <code class="language-plaintext highlighter-rouge">resultat * nombre ** compteur = nombre_initial ** exposant</code>.</p>
+
+<h4 id="preuve-rapide">preuve de l’algorithme</h4>
+
+<p>Notre invariant est vrai avant et après chaque itération, il est donc également vrai à la fin de l’algorithme, lorsque <code class="language-plaintext highlighter-rouge">compteur = 0</code>. Et là : <code class="language-plaintext highlighter-rouge">resultat * nombre ** compteur = resultat = nombre_initial ** exposant</code></p>
+
+<h3 id="complexite-rapide">complexité</h3>
+
+<p>Pourquoi s’embêter avec la parité de compteur ? Parce que ça permet d’aller vachement plus vite !</p>
+
+<p>On va le démontrer petit à petit, mais commençons par analyer ligne à ligne la complexité :</p>
+
+<ol>
+  <li>définition de fonction $\mathcal{O}(1)$</li>
+  <li>une affectation : $\mathcal{O}(1)$</li>
+  <li>une affectation : $\mathcal{O}(1)$</li>
+  <li>
+  </li>
+<li>une comparaison en $\mathcal{O}(1)$ et $k$ itérations de boucle</li>
+  <li>une opération de division entière et un test : $\mathcal{O}(1)$</li>
+  <li>une opération et une affectation : $\mathcal{O}(1)$</li>
+  <li>une opération et une affectation : $\mathcal{O}(1)$</li>
+  <li>
+  </li>
+<li>une opération et une affectation : $\mathcal{O}(1)$</li>
+  <li>une opération et une affectation : $\mathcal{O}(1)$</li>
+  <li>
+  </li>
+<li>un retour de fonction : $\mathcal{O}(1)$</li>
+</ol>
+
+<p>Ce qui donne une complexité de :</p>
+
+\[\begin{array}{lcll}
+C &amp; = &amp; \mathcal{O}(1) + &amp;\\
+&amp;  &amp; \mathcal{O}(1) + &amp;\\
+&amp;  &amp; \mathcal{O}(1) + &amp;\\
+&amp;  &amp; k \cdot (\mathcal{O}(1) + &amp;\\
+&amp; &amp; \mathcal{O}(1) + &amp;\\
+&amp; &amp; \mathcal{O}(1) + &amp;\mbox{(ligne 7 ou ligne 10)}\\
+&amp; &amp; \mathcal{O}(1) + &amp; \mbox{(ligne 8 ou ligne 11)}\\
+&amp; &amp; \mathcal{O}(1)) +&amp;\\
+&amp; &amp; \mathcal{O}(1)&amp;\\
+&amp;=&amp; 3 \cdot \mathcal{O}(1) + k \cdot (5\cdot \mathcal{O}(1)) + \mathcal{O}(1)&amp;\\
+&amp;=&amp; 4 \cdot \mathcal{O}(1) + k \cdot 5 + &amp;\\
+C&amp;=&amp;\mathcal{O}(k)&amp;\\
+\end{array}\]
+
+<p>La complexité est de l’ordre du nombre de fois où l’on rentre dans la boucle <code class="language-plaintext highlighter-rouge">while</code> : c’est à dire le nombre de fois où <code class="language-plaintext highlighter-rouge">compteur</code> a été modifié sans être égal à 0.</p>
+
+<h4 id="nombre-de-fois-où-compteur-est-impair">nombre de fois où compteur est impair</h4>
+
+<p>Si à l’itération numéro $i$ compteur est impair, il sera pair à l’itération $i + 1$ car <code class="language-plaintext highlighter-rouge">compteur' = compteur - 1</code> dans ce cas là.</p>
+
+<p>On a donc que : <strong>le nombre d’itérations où compteur est impair est au pire égal au nombre de fois où il est pair</strong></p>
+
+<h4 id="nombre-de-fois-où-le-compteur-est-pair">nombre de fois où le compteur est pair</h4>
+
+<p>A chaque fois où compteur est pair, on le divise par 2. Si $k$ est le nombre de fois où le compteur a été pair, on a que : $2^k \leq \mbox{nombre}$ (avec  <code class="language-plaintext highlighter-rouge">nombre</code> le paramètre d’entrée).</p>
+
+<p>Comme <code class="language-plaintext highlighter-rouge">nombre</code> est un entier, il existe un nombre $p$ tel que $2^p \leq \mbox{nombre} &lt; 2^{p + 1}$.</p>
+
+<p>On ne peut donc pas diviser par 2 <code class="language-plaintext highlighter-rouge">nombre</code>, ou un nombre plus petit que lui, plus de <code class="language-plaintext highlighter-rouge">p</code> fois. Et $p$ vaut la partie entière de $\log_2(\mbox{nombre})$. En effet :</p>
+
+\[\begin{array}{lcccl}
+    2^p &amp;\leq &amp;\mbox{nombre} &amp;&lt;&amp; 2^{p + 1}\\
+    \log_2(2^p) &amp;\leq &amp;\log_2(\mbox{nombre}) &amp;&lt; &amp;\log_2(2^{p + 1}) \mbox{ (car la fonction est croissante)} \\
+    p &amp;\leq &amp;\log_2(\mbox{nombre}) &amp;&lt;&amp; p + 1
+\end{array}\]
+
+<blockquote>
+  <p>Pour tout nombre k, le nombre de fois où l’on peut diviser un nombre $x$ par $k$ est $\log_k(x)$</p>
+</blockquote>
+
+<p>On a donc que : <strong>le nombre d’itérations où compteur est pair est au pire égal à $\log_2(\mbox{nombre})$</strong></p>
+
+<h4 id="nombre-de-fois-où-lon-rentre-dans-la-boucle">nombre de fois où l’on rentre dans la boucle</h4>
+
+<p>Le nombre de fois où l’on rentre dans la boucle est égal au nombre de fois où le compteur est pair plus le nombre de fois où le compteur est impair, c’est donc au pire égal à deux fois le nombre de fois où compteur est pair, c’est à dire $2 \cdot \log_2(\mbox{compteur})$ pour la valeur initiale de compteur.</p>
+
+<p>Comme <code class="language-plaintext highlighter-rouge">compteur</code> vaut initialement <code class="language-plaintext highlighter-rouge">exposant</code>, le nombre de fois où l’on rentre dans la boucle est de l’ordre de $\mathcal{O}(\log_2(\mbox{exposant}))$ donc en $\mathcal{O}(\ln(\mbox{exposant}))$.</p>
+
+<p>Comme les autres lignes sont en $\mathcal{O}(1)$ on a une complexité de l’algorithme en $\mathcal{O}(\ln(\mbox{exposant}))$.</p>
+
+<p>Cette complexité est très faible ! Comparez par exemple : $2^{16} = 65536$ opérations et $\log_2(65536) = 16$ opérations.</p>
+
+<p>Cette différence va aller exponentiellement lorsque compteur augmente, par exemple entre $2^{100} = 1267650600228229401496703205376$ et $100$ opérations</p>
+
+<h2 id="conclusions">conclusions</h2>
+
+<ul>
+  <li>la procédure utilisée pour l’étude de ces deux algorithmes est générale, vous pouvez (et devez) l’appliquer à l’étude de tout nouvel algorithme.</li>
+  <li>il ne faut jamais penser que l’on ne peut pas faire mieux pour un algorithme. Si vous ne connaissiez pas l’exponentiation indienne, il vous aurait été difficile de penser que l’on peut faire mieux que l’algorithme naïf pour calculer une exponentielle</li>
+  <li>un algorithmicien ferait beaucoup de sacrifices pour obtenir une complexité en $\mathcal{O}(\ln(n))$ tellement c’est efficace.</li>
+</ul>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d'informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d'informatique</li>
+</ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+<ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d'informatique de François Brucker.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

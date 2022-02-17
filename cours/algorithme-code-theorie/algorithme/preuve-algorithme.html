@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>preuve d’algorithme | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0">
+<meta property="og:title" content="preuve d’algorithme">
+<meta name="author" content="François Brucker">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Support de cours/td d’informatique de François Brucker.">
+<meta property="og:description" content="Support de cours/td d’informatique de François Brucker.">
+<link rel="canonical" href="/cours_informatique/cours/algorithme-code-theorie/algorithme/preuve-algorithme.html">
+<meta property="og:url" content="/cours_informatique/cours/algorithme-code-theorie/algorithme/preuve-algorithme.html">
+<meta property="og:site_name" content="cours d’informatique">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="preuve d’algorithme">
+<script type="application/ld+json">
+{"description":"Support de cours/td d’informatique de François Brucker.","@type":"WebPage","author":{"@type":"Person","name":"François Brucker"},"url":"/cours_informatique/cours/algorithme-code-theorie/algorithme/preuve-algorithme.html","headline":"preuve d’algorithme","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css">
+
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css">
+
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique">
+<script>MathJax={"tex":{"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["\\[","\\]"]]},"svg":{"fontCache":"global"},"svg":{"fontCache":"global"}}</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<header class="site-header" role="banner">
+
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/cours_informatique/">cours d'informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav>
+</div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">preuve d'algorithme</h1>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span>
+  </header>
+
+  <div class="post-content">
+    <blockquote class="chemin">
+  <p><a href="/cours_informatique/cours/algorithme-code-theorie/">Algorithme, code et théorie</a> / <a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/">algorithmie</a> / <a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/preuve-algorithme.html">preuve d’algorithme</a></p>
+
+  <p>prérequis :</p>
+
+  <ul>
+    <li><a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/pseudo-code.html">algorithmie/pseudo-code</a></li>
+  </ul>
+</blockquote>
+
+<p>Un algorithme a <strong>toujours</strong> un but, quelque chose pour quoi il est fait. Dans notre cas, un algorithme calculera la solution d’un problème.</p>
+
+<p>Pour chaque algorithme que vous créerez ou que l’on demandera d’étudier il faudra :</p>
+
+<ol>
+  <li>caractériser le problème que l’algorithme est sensé résoudre</li>
+  <li>démontrer que l’algorithme fonctionne, c’est à dire qu’il le résout le problème en temps fini.</li>
+</ol>
+
+<p>Prouver qu’un algorithme s’arrête fait partie des problèmes théoriques difficiles en informatique. En algorithmie, les algorithmes résolvent des problèmes et donc ils sont sensés s’arrêter et il sera (normalement) facile de le voir. En revanche, la preuve de l’algorithme est parfois plus délicate. Le problème étant souvent (toujours ?) concentré dans les boucles ou les récursions de l’algorithme, on cherchera à trouver des propriétés qui sont conservées avant et après une itération ou une récursion :</p>
+
+<blockquote class="note">
+  <p>Pour prouver un algorithme on cherchera à établir :</p>
+
+  <ul>
+    <li>une équation de récurrence plus une condition d’arrêt pour prouver un algorithme récursif.</li>
+    <li>
+<a href="https://fr.wikipedia.org/wiki/Invariant_de_boucle">un invariant de boucle</a> pour des algorithme itératifs. Ces invariants vont alors être conservés jusqu’à la fin de l’algorithme et nous permettre de prouver son résultat.</li>
+  </ul>
+
+</blockquote>
+
+<p>Notez que bien souvent prouver un algorithme et le créer est la même chose. Comprendre comment on peut résoudre un problème donné nous donnera l’algorithme et réciproquement.</p>
+
+<p>A part la recommandation ci-dessus, il n’existe pas vraiment de règles à appliquer pour prouver un algorithme. Seule l’expérience et l’étude des algorithmes classiques vous permettra de trouver facilement comment prouver un algorithme.</p>
+
+<blockquote>
+  <p>dans la suite, les algorithmes seront tous donnés en python</p>
+</blockquote>
+
+<h2 id="factorielle">factorielle</h2>
+
+<h3 id="facto-rec">algorithme récursif</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">factorielle</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">factorielle</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<ul>
+  <li>finitude : Si $n$ est un réel, l’algorithme va s’arrêter : $n$ décroît strictement à chaque appelle récursif et on stoppe si $n \leq 1$.</li>
+  <li>preuve : par récurrence sur $n$, avec $n$ entier positif.
+    <ul>
+      <li>entrée : des entiers positifs</li>
+      <li>fonction de récurrence. Si $n=0$ ça marche. Si ça marche pour l’entrée n-1, ça marche pour $n$ car la fonction rend $n \cdot \mbox{factorielle}(n-1)$ qui vaut $n \cdot (n-1)!$ par hypothèse de récurrence.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="facto-iter">algorithme itératif</h3>
+
+<p>On va voir ici 2 version du même algorithme. L’un qui construit la factorielle en <em>montant</em>, et l’autre qui la construit en <em>descendant</em>. ON prouvera ces 2 algorithme en utilisant des invariants de boucles :</p>
+
+<blockquote class="note">
+  <p>Pour les preuves par invariant de boucle, le schéma de preuve est le suivant :</p>
+
+  <ol>
+    <li>on vérifie que l’invariant est vrai à la fin de la première itération de la boucle</li>
+    <li>on suppose l’invariant à la fin de l’itération $k$ de la boucle et on vérifie qu’il est toujours vérifié à la fin de l’itération $k + 1$.</li>
+  </ol>
+
+  <p>Pour simplifier l’écriture, on note avec un <code class="language-plaintext highlighter-rouge">'</code> (prim) les variables à la fin de la boucle d’itération $k+1$ pour les différentier des variables de la fin de l’itération $k$.</p>
+</blockquote>
+
+<p>Un invariant doit résumer ce que fait la boucle avec une équation qui est toujours vérifiées, même si on modifie des variables.</p>
+
+<blockquote>
+  <p>Il existe des variantes dans les preuve par invariants selon que l’on vérifie juste à la fin de la boucle ou au début et à la fin de l’itération. Les deux formes sont équivalentes, mais il est parfois plus aisée d’utiliser une forme que l’autre.</p>
+</blockquote>
+
+<h4 id="première-version">première version</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">factorielle</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">:</span>
+        <span class="n">r</span> <span class="o">*=</span> <span class="n">i</span>
+        <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">r</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>On utilise la possibilité que donne python d’écrire <code class="language-plaintext highlighter-rouge">x += y</code> (<em>resp.</em> <code class="language-plaintext highlighter-rouge">x -= y</code>, <code class="language-plaintext highlighter-rouge">x *= y</code> ou encore <code class="language-plaintext highlighter-rouge">x /= y</code>) à la place de <code class="language-plaintext highlighter-rouge">x = x + y</code> (<em>resp.</em> <code class="language-plaintext highlighter-rouge">x = x - y</code>, <code class="language-plaintext highlighter-rouge">x = x * y</code>, <code class="language-plaintext highlighter-rouge">x = x / y</code>).</p>
+</blockquote>
+
+<ul>
+  <li>finitude : Si $n$ est un entier non nul, l’algorithme va s’arrêter car $i$ croît strictement à chaque itération de la boucle <code class="language-plaintext highlighter-rouge">while</code>.</li>
+  <li>preuve : par invariant de boucle</li>
+</ul>
+
+<p>On peut procéder ainsi pour trouver l’invariant de boucle :</p>
+
+<ol>
+  <li>l’algorithme retourne r à la fin : ce doit donc être le résultat et il doit valoir $n!$</li>
+  <li>$r$ est multiplié par $i$ à chaque itération</li>
+  <li>$i$ est incrémenté de 1 à chaque itération et commence à 1.</li>
+</ol>
+
+<p>On doit donc avoir un invariant du type <em>$r \simeq i!$ à la fin de chaque itération</em> à plus ou moins 1 près. Pour en être sur regardons ce que vallent nos variables à la fin de la première itération :</p>
+
+<ul>
+  <li>$r = 1$</li>
+  <li>$i = 2$ (on a modifié $i$ après l’avoir multiplié par $r$)</li>
+</ul>
+
+<p>Notre invariant doit donc être : <em>$r = (i-1)!$ à la fin de chaque itération</em>.</p>
+
+<ol>
+  <li>c’est vrai à la fin de la 1ère itération (on a tout fait pour)</li>
+  <li>si c’est vrai à la fin de la $k$ème itération, à la fin de la $k+1$ème itération on a :
+    <ul>
+      <li>$r’=r \cdot i$ (le $r$ de la fin de la $k+1$ème boucle est égal à celui de la fin de la $k$ème boucle fois le $i$ de la fin de $k$ème boucle)</li>
+      <li>$i’ = i + 1$ (le $i$ de la fin de la $k+1$ème boucle est le $i$ de la fin de la $k$ème boucle plus 1)</li>
+      <li>$r = (i-1)!$ (c’est notre invariant, vrai à la fin de l’itération $k$ ar hypothèse)</li>
+    </ul>
+  </li>
+  <li>on a donc : $r’ = (i-1)! \cdot i = i! = (i’-1)!$ : <strong>notre invariant est vérifié</strong>.</li>
+</ol>
+
+<p>L’invariant étant vérifié à la fin de chaque itération, il est donc aussi vrai à la fin de la dernière itération. A ce moment là, on a $i=n+1$ et donc $r = n!$</p>
+
+<h4 id="seconde-version">seconde version</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">factorielle</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">n</span>
+    <span class="k">while</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">r</span> <span class="o">*=</span> <span class="n">i</span>
+        <span class="n">i</span> <span class="o">-=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">r</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>l’algorithme construit la factorielle en *descendant.</p>
+</blockquote>
+
+<ul>
+  <li>finitude : Si $n$ est un entier non nul, l’algorithme va s’arrêter car $n$ décroît strictement à chaque itération de la boucle <code class="language-plaintext highlighter-rouge">while</code>.</li>
+  <li>preuve : par invariant de boucle</li>
+</ul>
+
+<p>Ici notre invariant est : <em>“A la fin d’une itération de la boucle while : $r = (i+1) \cdot (i+2) \dots (n-1) \cdot n$</em></p>
+
+<ol>
+  <li>à la fin de la première itération $i = n - 1$ et $r = n = (i+1)$ : notre invariant est vérifié.</li>
+  <li>on suppose la propriété vraie à la fin de la $k$ème itération. A la fin de l’itération suivante on a :
+    <ul>
+      <li>$r’ = r \cdot i$ (le $r$ de la fin de la $k+1$ème boucle est égal à celui de la fin de la $k$ème boucle fois le $i$ de la fin de $k$ème boucle)</li>
+      <li>$i’ = i - 1$ (le $i$ de la fin de la $k+1$ème boucle est le $i$ de la fin de la $k$ème boucle moins 1)</li>
+      <li>$r = (i+1) \cdot \dots n$ (c’est notre invariant, vrai à la fin de l’itération $k$ ar hypothèse)</li>
+    </ul>
+  </li>
+  <li>on a donc : $r’ = (i+1) \cdot \dots n \cdot (i) = i \cdot (i+1) \dots n = (i’+1) \dots \cdot n$ : <strong>notre invariant est vérifié</strong>.</li>
+</ol>
+
+<p>L’invariant étant vérifié à la fin de chaque itération, il est donc aussi vrai à la fin de la dernière itération. A ce moment là, on a $i=1$ et donc $r = 1 \cdot 2 \cdot \dots \cdot n = n!$</p>
+
+<h2 id="maximum-dun-tableau">maximum d’un tableau</h2>
+
+<p>On va voir 2 algorithmes pour calculer la valeur maximum d’un tableau de réels.</p>
+
+<h3 id="max-rec">algorithme récursif</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">maximum</span><span class="p">(</span><span class="n">tab</span><span class="p">,</span> <span class="n">debut</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">debut</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">tableau</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">tab</span><span class="p">[</span><span class="n">debut</span><span class="p">]</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">maximum</span><span class="p">(</span><span class="n">tab</span><span class="p">,</span> <span class="n">debut</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">tab</span><span class="p">[</span><span class="n">debut</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">x</span>
+        <span class="k">return</span> <span class="n">tab</span><span class="p">[</span><span class="n">debut</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">x</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>On a utilisé la possibilité d’avoir des <a href="https://docs.python.org/fr/3.9/tutorial/controlflow.html#default-argument-values">arguments par défaut</a> en python. Ceci nous permet d’exécuter la fonction maximum comme si elle n’avait qu’un seul paramètre.</p>
+</blockquote>
+
+<ul>
+  <li>finitude : début augmente strictement et s’arrête lorsqu’il vaut <code class="language-plaintext highlighter-rouge">len(tableau) - 1</code>
+</li>
+  <li>preuve : par récurrence sur la longueur d’un tableau. On vérifie que l’algorithme fonctionne pour une longueur de tableau valant 1, puis on effectue preuve par récurrence sur la longueur du tableau.</li>
+</ul>
+
+<h3 id="max-iter">algorithme itératif</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">maximum</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">t</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">m</span> <span class="o">&lt;</span> <span class="n">x</span><span class="p">:</span>
+            <span class="n">m</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="k">return</span> <span class="n">m</span>
+</code></pre></div></div>
+
+<ul>
+  <li>finitude : clair car une unique boucle for.</li>
+  <li>preuve : par invariant de boucle.</li>
+</ul>
+
+<p>Pour trouver l’invariant, on remarque que si $t’$ est le tableau des $n-1$ premiers éléments de $t$ (<code class="language-plaintext highlighter-rouge">t'= t[:-1]</code>), l’algorithme va :</p>
+
+<ol>
+  <li>faire exactement pareil que pour $t’$</li>
+  <li>vérifiera $m$ avec le dernier élément de $t$.</li>
+</ol>
+
+<p>Notre invariant doit donc lier les $i$ premiers éléments du tableaux à la $i$ème itération : $m$ doit être le plus grand éléments des $i$ premiers éléments du tableaux pour que notre algorithme puisse fonctionner et avec $t’$ et avec $t$.</p>
+
+<p>Lorsque l’on étudie des algorithmes avec des boucles <code class="language-plaintext highlighter-rouge">for</code> il est parfois plus simple d’exhiber directement le nombre d’itérations pour formaliser l’invariant. On utilise alors l’algorithme suivant (qui est strictement équivalent à l’algorithme <code class="language-plaintext highlighter-rouge">maximum</code>) :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">maximum</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">m</span> <span class="o">&lt;</span> <span class="n">x</span><span class="p">:</span>
+            <span class="n">m</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="k">return</span> <span class="n">m</span>
+</code></pre></div></div>
+
+<p>L’invariant est alors : <em>“A la fin d’une itération, $m$ vaut le maximum des $i+1$ premiers élément du tableau.”</em></p>
+
+<p>Après la première itération de la boucle, comme $m$ vaut initialement le premier élément du tableau, on a que $m=t[0]$ qui est bien le maximum des $0+1=1$ premiers éléments du tableau. L’invariant est vérifié à la fin  de la première itération où $i=0$.</p>
+
+<p>On suppose l’invariant vrai à la fin d’une itération. A la fin de l’itération suivante, $m’$ (la valeur de $m$ à l’issue de cette itération) vaut soit $m$ (la valeur de $m$ au début de l’itération) soit $x’=t[i’]$ ($i’$ étant la valeur de $i$ pour cette nouvelle itération). Comme $i’ = i+1$ et que l’invariant est vrai à la fin de l’itération précédente :</p>
+
+<ul>
+  <li>$m$ vaut le maximum du tableau sur les $i+1$ premiers éléments (hypothèse de récurrence)</li>
+  <li>$m’ = \max(m, x’) = \max(m, t[i’]) = \max(m, t[i + 1])$ (ce qu’il se passe dans l’itération suivante)</li>
+</ul>
+
+<p>On en conclut que $m’$ vaut bien le maximum du tableau sur les $i + 2$ premiers éléments.</p>
+
+<p>Notre invariant est vérifié.</p>
+
+<p>L’invariant est donc aussi vrai à la fin des itérations : $m$ vaut le maximum du tableau à la fin de la boucle <code class="language-plaintext highlighter-rouge">for</code> : $m$ est le maximum des valeurs du tableau.</p>
+
+<h2 id="division-euclidienne">division euclidienne</h2>
+
+<p>Prouvons l’algorithme de la division euclidienne ci-après :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">euclide</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">a</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">r</span> <span class="o">&gt;=</span> <span class="n">b</span><span class="p">:</span>
+        <span class="n">r</span> <span class="o">-=</span> <span class="n">b</span>
+        <span class="n">q</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Notez que le retour de la fonction est un <a href="https://docs.python.org/fr/3/tutorial/datastructures.html#tuples-and-sequences">tuple</a> à 2 éléments (c’est à dire un tableau à 2 éléments que l’on ne peut pas modifer)</p>
+
+<h3 id="finitude">finitude</h3>
+
+<p>le programme s’arrête ? : Oui si a et b sont des entiers positifs. Car</p>
+
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">r</code> est un entier</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">r</code> après une itération est <strong>strictement plus petit</strong> que le <code class="language-plaintext highlighter-rouge">r</code> avant itération</li>
+  <li>on s’arrête si <code class="language-plaintext highlighter-rouge">r</code> est strictement plus petit que <code class="language-plaintext highlighter-rouge">b</code>.</li>
+</ul>
+
+<h3 id="preuve">preuve</h3>
+
+<p>On veut montrer que l’on obtient bien une division euclidienne de $a$ par $b$. C’est à dire que $a = bq + r$ avec $r &lt; b$. Pour cela on va s’aider de l’invariant de boucle : <code class="language-plaintext highlighter-rouge">a = r + q * b</code></p>
+
+<p>Prouvons l’invariant :</p>
+
+<ol>
+  <li>l’invariant est bien vrai à la fin de la première boucle puisque $q=1$ et $r=a-b$ à ce moment là.</li>
+  <li>on doit prouver que <code class="language-plaintext highlighter-rouge">a' = r' + q' * b'</code> à la fin de la $i+1$ème itération.</li>
+  <li>si l’on est passé dans la boucle on a <code class="language-plaintext highlighter-rouge">a'=a</code>, <code class="language-plaintext highlighter-rouge">r' = r - b</code>, <code class="language-plaintext highlighter-rouge">b' = b</code> et <code class="language-plaintext highlighter-rouge">q' = q + 1</code>
+</li>
+  <li>donc <code class="language-plaintext highlighter-rouge">r' + q' * b' = r-b + (q+1) * b = r + q * b = a = a'</code> puisque l’invariant est vrai à la fin de la $i$ème itération. On a bien <code class="language-plaintext highlighter-rouge">a' = r' + q' * b'</code>, l’invariant est démontré.</li>
+</ol>
+
+<p>L’invariant étant juste tout le temps, il l’est en particulier à l’issue de la dernière boucle. A ce moment là on a <code class="language-plaintext highlighter-rouge">a = r + qb</code> avec <code class="language-plaintext highlighter-rouge">r &lt; b</code> ce qui est bien ce qu’il fallait démontrer.</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d'informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d'informatique</li>
+</ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+<ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d'informatique de François Brucker.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Algorithme, code et théorie : coder | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0">
+<meta property="og:title" content="Algorithme, code et théorie : coder">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Support de cours/td d’informatique de François Brucker.">
+<meta property="og:description" content="Support de cours/td d’informatique de François Brucker.">
+<link rel="canonical" href="/cours_informatique/cours/algorithme-code-theorie/code/coder.html">
+<meta property="og:url" content="/cours_informatique/cours/algorithme-code-theorie/code/coder.html">
+<meta property="og:site_name" content="cours d’informatique">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Algorithme, code et théorie : coder">
+<script type="application/ld+json">
+{"description":"Support de cours/td d’informatique de François Brucker.","@type":"WebPage","url":"/cours_informatique/cours/algorithme-code-theorie/code/coder.html","headline":"Algorithme, code et théorie : coder","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css">
+
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css">
+
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique">
+</head>
+
+<body>
+<header class="site-header" role="banner">
+
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/cours_informatique/">cours d'informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav>
+</div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Algorithme, code et théorie : coder</h1>
+  </header>
+
+  <div class="post-content">
+    <blockquote class="chemin">
+  <p><a href="/cours_informatique/cours/algorithme-code-theorie/">Algorithme, code et théorie</a> / <a href="/cours_informatique/cours/algorithme-code-theorie/code/">code</a> / <a href="/cours_informatique/cours/algorithme-code-theorie/code/coder.html">coder</a></p>
+
+  <p><strong>prérequis :</strong></p>
+
+  <ul>
+    <li><a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/pseudo-code.html">algorithmie/pseudo-code</a></li>
+  </ul>
+</blockquote>
+
+<p><em>Coder</em> c’est passer d’un algorithme <em>papier</em> (pseudo-code ou idées) à un programme informatique, appelé <strong>code</strong>. Par extension, on inclura dans cette partie la modification d’un code existant. Le <strong>but</strong> d’un code est d’être exécuté par un ordinateur pour réaliser une tâche.</p>
+
+<p>Pour permettre son exécution, le code est écrit dans un <a href="https://fr.wikipedia.org/wiki/Langage_de_programmation">langage de programmation</a>. Celui-ci <strong>dépend de la tâche à réaliser</strong> : <a href="https://www.jesuisundev.com/la-religion-chez-les-developpeureuses-informatiques/">le code est un outil</a> il faut utiliser celui qui est le plus adapté au résultat voulu.</p>
+
+<blockquote>
+  <p>Nous utiliserons ici le <a href="https://www.python.org/">python</a> car notre but est ici de coder des algorithmes classiques et python est très proche d’un pseudo-code.</p>
+</blockquote>
+
+<p>Modifier du code est ce vous ferez le plus souvent : on passe son temps à modifier du code plutôt que d’implémenter des algorithmes (c’est ce que l’on appelle le <a href="https://fr.wikipedia.org/wiki/R%C3%A9usinage_de_code">refactoring</a>).</p>
+
+<p>Il en découle que :</p>
+
+<blockquote class="note">
+  <p><strong>Vous allez passer plus de temps à lire du code qu’à en écrire.</strong></p>
+</blockquote>
+
+<p>Comme il faut que : <em>ce qui se fait souvent doit se faire rapidement</em>, on utilisera une série de règles pour lire aisément son code et — surtout — se faire comprendre aisément de ses partenaires.</p>
+
+<p>Ces règles sont appelées des <strong>coding mantra</strong>. Comme toutes les règles, il ne faut pas apprendre ce qu’elle dit, mais pourquoi elle le dit. Par exemple : on ne doit pas passer du temps à chaque lecture pour comprendre ce que fait un bout de code, comment il est organisé ou encore se questionner pour savoir s’il fonctionne : il faut pouvoir aller rapidement là où l’on veut modifier son code et comprendre aisément comment le modifier.</p>
+
+<p>Nous allons maintenant lister les bonnes pratiques fondamentales à posséder lorsque l’on code.</p>
+
+<blockquote>
+  <p>Les différentes méthodes et mantra que l’on va voir sont issues de l’<a href="https://fr.wikipedia.org/wiki/Extreme_programming">XP</a>, qui date des années 2000 mais dont on à l’impression qu’elle a été écrite hier (voire demain tellement elle est encore novatrice).</p>
+</blockquote>
+
+<h2 id="quel-langage-utiliser-">quel langage utiliser ?</h2>
+
+<blockquote class="note">
+  <p>On utilise le langage qui est le plus adapté à notre problème</p>
+</blockquote>
+
+<p>Nous utiliserons le python dans ce cours car il est très proche de l’algorithmie et qu’il est très facile de créer de petits programmes qui marchent.</p>
+
+<p>En revanche, si vous créez d’énormes programmes avec des milliers de lignes de codes, il vaudra peut-être mieux utiliser un langage comme le <a href="https://www.java.com/fr/">java</a> ou le <a href="https://docs.microsoft.com/fr-fr/dotnet/csharp/programming-guide/">C#</a>. Et enfin, si vous coder des applications web, on utilisera beaucoup le <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript">javascrpipt</a>.</p>
+
+<p>Bref, ne faites pas rentrer des carrés dans des ronds en utilisant un langage non adapté à votre problème. Vous allez perdre plus de temps qu’autre chose :</p>
+
+<blockquote class="note">
+  <p>un langage informatique n’est <strong>pas</strong> une langue. C’est facile à apprendre !</p>
+</blockquote>
+
+<h2 id="noms-explicites-et-découpage-fonctionnel">noms explicites et découpage fonctionnel</h2>
+
+<ul>
+  <li>des noms de variables <strong>explicites</strong>
+</li>
+  <li>on préfèrera de <strong>petites fonctions/méthodes</strong> avec un nommage explicite à de nombreuses lignes de code</li>
+</ul>
+
+<p>Ceci permet de lire le code comme on lirait un texte, ce qui permet de rapidement comprendre ce qu’il fait, juste en le lisant. Les petites fonctions sont de plus facilement modifiables et testables.</p>
+
+<p>Le découpage fonctionnel de votre code permet d’éviter la duplication de code, qui est un mal absolu en code. Si l’on copie/colle du code et qu’il y a un bug ou qu’on veut modifier le fonctionnement de celui-ci, il faudra se rappeler de tous les endroits où il a été dupliqué, ce qui est impossible ! De plus, cela rend votre code peu lisible, il bégaie.</p>
+
+<blockquote class="note">
+  <p><strong>Coding mantra :</strong> <a href="https://fr.wikipedia.org/wiki/Ne_vous_r%C3%A9p%C3%A9tez_pas">DRY</a></p>
+</blockquote>
+
+<p>Vous saurez que votre code est lisible lorsqu’il ne nécessitera <strong>pas</strong> de commentaires pour être compris. Ils sont en effet avantageusement remplacés par des noms de variables explicites et les noms de fonctions qui doivent expliquer ce qu’elles font.</p>
+
+<blockquote class="note">
+  <p><strong>Coding mantra :</strong> <a href="https://www.developpez.com/actu/150066/Programmation-quand-faut-il-commenter-son-code-Google-s-invite-dans-le-debat-et-montre-que-les-commentaires-peuvent-tres-souvent-etre-evites/">NO COMMENTS !</a></p>
+</blockquote>
+
+<p>En plus d’être inutile, les commentaires :</p>
+
+<ul>
+  <li>
+<strong>sont souvent des mensonges</strong> : comme le commentaire n’est pas du code, lorsque l’on modifie le code on <em>oublie</em> de changer le commentaire. Au bout d’un moment le commentaire n’est donc plus en relation avec le code : au lieu d’aider à comprendre, il confuse : un commentaire est donc tôt ou tard un mensonge.</li>
+  <li>
+<strong>cachent la difficulté</strong>. S’il y a plein de commentaires, on ne les lira plus. Un commentaire se doit d’être rare. S’il est là c’est que l’on n’a pas vraiment pu faire autrement. Vous n’en aurez pas besoin dans 99% des cas…</li>
+</ul>
+
+<blockquote class="attention">
+  <p><strong>commentaires != documentation</strong> :</p>
+</blockquote>
+
+<ul>
+  <li>Si votre code est destiné à être utilisé uniquement par vous ou votre équipe, on n’a pas besoin de le documenter. Son organisation et son écriture doit se suffire à lui-même.</li>
+  <li>si votre code va être utilisé par des inconnus (lorsque vous créez une <a href="https://fr.wikipedia.org/wiki/Biblioth%C3%A8que_logicielle">bibliothèque</a> par exemple), les fonctions publiques doivent être documentées. Un utilisateur doit pouvoir utiliser votre code sans effort et avoir à le lire pour le faire.</li>
+</ul>
+
+<p>Lorsque l’on utilise une <a href="https://fr.wikipedia.org/wiki/Interface_de_programmation">API</a>, on a en effet jamais accès aux corps des méthodes, mais juste à leurs noms : on a besoin de savoir comment elles fonctionnent sans en connaitre le corps :</p>
+
+<blockquote class="note">
+  <p>Toutes les méthodes destinées à être utilisées par des clients/utilisateurs différents de l’équipe de développement doivent être documentées.</p>
+</blockquote>
+
+<h2 id="lisibilité">lisibilité</h2>
+
+<p>Un code est fait pour être relu et amélioré. On <strong>doit</strong> privilégier sa lecture à son écriture. Pour que votre équipe ou vous même puissiez le relire plus tard sans faire d’effort de compréhension.</p>
+
+<blockquote class="note">
+  <p>Ecrire du code n’est pas un concours d’érudition.</p>
+</blockquote>
+
+<p>Si on a le choix entre écrire du code utilisant des subtilités algorithmiques ou du langage utilisé mais qui le rend plus difficile à comprendre sans gain réel en complexité on choisira <strong>TOUJOURS</strong> le code lisible ou du code plus basique mais clair.</p>
+
+<blockquote class="note">
+  <p><strong>Coding mantra :</strong> <a href="https://fr.wikipedia.org/wiki/Principe_KISS">KISS</a></p>
+</blockquote>
+
+<p>Si le fond doit être simple, la forme du code est importante aussi. Il se doit d’être agréable à lire et homogène. L’équipe de développement doit se mettre d’accord sur un <a href="https://fr.wikipedia.org/wiki/Style_de_programmation">coding style</a>. Par défaut on utilise le standard du langage. En python, c’est la  <a href="https://www.python.org/dev/peps/pep-0008/">PEP8</a></p>
+
+<blockquote class="code">
+  <p>Utilisez un style de programmation homogène pour faciliter la lecture de code. Si possible, automatisez ce processus avec un outil automatique de formatage de code.</p>
+</blockquote>
+
+<h2 id="efficacité">efficacité</h2>
+
+<p>On ne doit jamais coder de choses inutiles : tout bout de code doit être utilisé au moment où il est écrit.</p>
+
+<blockquote class="note">
+  <p>On ne codera jamais de fonctionnalités qui vont être utiles plus tard</p>
+</blockquote>
+
+<p>Car <em>“plus tard”</em> le code ne sera plus le même et — le plus souvent — les besoins auront changés : votre fonctionnalités ne sera jamais utilisé… “plus tard” veut souvent dire <em>“jamais”</em>.
+De plus, du code inutile contraint le développement : il est là, ne sert à rien, mais pas sa seule présence il empêche de modifier le code comme on veut.</p>
+
+<p>En conséquence :</p>
+
+<blockquote class="note">
+  <p>tout code qui n’est plus/pas utile doit être immédiatement supprimé.</p>
+</blockquote>
+
+<p>Le mieux étant encore de ne jamais l’écrire au départ :</p>
+
+<blockquote class="note">
+  <p><strong>Coding mantra :</strong> <a href="https://fr.wikipedia.org/wiki/YAGNI">YAGNI</a></p>
+</blockquote>
+
+<h2 id="tests">tests</h2>
+
+<p>Pour s’assurer que notre code fait bien ce qu’il est sensé faire, on effectuera des <strong>tests</strong>. C’est le pendant code de la preuve d’un algorithme.</p>
+
+<p>Comme on passe son temps à modifier son code, il est nécessaire de conserver ses tests pour pouvoir les exécuter très souvent et vérifier qu’il continue de fonctionner.</p>
+
+<p>Pour cela :</p>
+
+<blockquote class="note">
+  <p>Lorsque l’on ajoute des fonctionnalités au code ou que l’on corrige un bug, on écrit un test qui vérifie la fonctionnalité ou qui montre que le bug n’existe pas/plus.
+Ainsi, puisque les tests sont conservés, ce bug ne pourra plus jamais réapparaître et cette fonctionnalité ne pourra plus disparaître.</p>
+</blockquote>
+
+<p>Une méthode très efficace de programmation consiste même à commencer par écrire le test, <strong>avant</strong> le code testé :</p>
+
+<blockquote class="note">
+  <p><strong>Coding mantra :</strong> <a href="https://artificials.ch/test-driven-development-mantra/">TDD</a></p>
+</blockquote>
+
+<p>Nous n’utiliserons pas ici le mantra TDD dans son intégralité : on se permettra d’écrire les tests après avoir codé la fonctionnalité et pas avant. Mais, l’expérience venant, faites l’essai de coder vos tests avant la fonction, cela permet d’utiliser sa fonction avant de la coder et change souvent la façon dont on voulait la coder initialement.</p>
+
+<p>Les tests sont autant de cas d’utilisation de vos programmes qui montrent qu’il fonctionne et comment il fonctionne. Il permettent de montrer les différentes fonctionnalités de votre code :</p>
+
+<blockquote class="note">
+  <p><strong>La fonctionnalité est plus importante que le code</strong> : Le code va changer, les fonctionnalités doivent rester.</p>
+</blockquote>
+
+<p>Enfin, le code et ses tests doivent être fait par la <strong>même personne</strong> et au <strong>même moment</strong>. Il ne faut pas attendre d’avoir codé plusieurs fonctions avant de faire ses tests. Vous n’êtes en effet pas sûr que votre 1ère fonction codée fonctionne avant d’avoir fait des tests.</p>
+
+<p>De là, il est possible qu’un bug dans cette première fonction affecte le code de votre seconde fonction… Et lorsque vous ferez enfin vos tests vous serez alors obligé de re-coder toutes vos fonctions ce qui ne serait pas arrivé si vous aviez testé toutes vos fonctions une par une et au moment de les coder.</p>
+
+<h2 id="structure-dun-programme">structure d’un programme</h2>
+
+<p>Tout ce qu’on vient de voir structure un projet informatique en trois entités :</p>
+
+<blockquote class="note">
+  <p>Un projet informatique comporte <strong>toujours</strong> 3 parties d’égales importances :</p>
+
+  <ul>
+    <li>le <strong>programme principal</strong> (aussi appelé <strong>main</strong>) qui est ce qui sera exécuté</li>
+    <li>le <strong>code</strong> qui regroupe l’ensemble des fonctions utilisée par le programme principal</li>
+    <li>les <strong>tests</strong> qui <em>certifient</em> que le code fonctionne.</li>
+  </ul>
+
+</blockquote>
+
+<p>Ces trois entités sont <strong>toujours</strong> codées en même temps : un code doit être testé pour être sur qu’il fonctionne et comme on ne fait pas de code inutile, il doit être utilisé.</p>
+
+<p>Exemples :</p>
+
+<ul>
+  <li>pour rajouter une fonctionnalité au programme principal, on ajoute du code qui doit lui-même être testé pour vérifier qu’il fonctionne.</li>
+  <li>pour corriger un bug du programme principal, on modifie du code et on ajoute des tests qui montrent que le bug n’existe plus.</li>
+</ul>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d'informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d'informatique</li>
+</ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+<ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d'informatique de François Brucker.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
