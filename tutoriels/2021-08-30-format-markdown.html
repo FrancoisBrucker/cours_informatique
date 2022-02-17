@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Format markdown | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0">
+<meta property="og:title" content="Format markdown">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Une introduction au format markdown.">
+<meta property="og:description" content="Une introduction au format markdown.">
+<link rel="canonical" href="/cours_informatique/tutoriels/2021-08-30-format-markdown.html">
+<meta property="og:url" content="/cours_informatique/tutoriels/2021-08-30-format-markdown.html">
+<meta property="og:site_name" content="cours d’informatique">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-08-30T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Format markdown">
+<script type="application/ld+json">
+{"dateModified":"2021-08-30T00:00:00+00:00","datePublished":"2021-08-30T00:00:00+00:00","description":"Une introduction au format markdown.","mainEntityOfPage":{"@type":"WebPage","@id":"/cours_informatique/tutoriels/2021-08-30-format-markdown.html"},"@type":"BlogPosting","url":"/cours_informatique/tutoriels/2021-08-30-format-markdown.html","headline":"Format markdown","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css">
+
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css">
+
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique">
+<script>MathJax={"tex":{"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["\\[","\\]"]]},"svg":{"fontCache":"global"},"svg":{"fontCache":"global"}}</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<header class="site-header" role="banner">
+
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/cours_informatique/">cours d'informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav>
+</div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Format markdown</h1>
+  </header>
+
+  <div class="post-content">
+    <p>Une introduction au format markdown.</p>
+
+<!--more-->
+
+<h2 id="quest-ce-">Qu’est-ce ?</h2>
+
+<p><a href="https://fr.wikipedia.org/wiki/Markdown">Markdown</a> est un format de fichier texte, donc modifiable par tout éditeur de texte. L’extension de fichier est <em>“.md”</em>.</p>
+
+<p>L’intérêt de ce format de fichier texte est qu’il est parfaitement lisible dans tout éditeur de texte et qu’on peut de plus le <em>compiler</em> dans un autre format comme le pdf ou encore le html si on veut le partager.</p>
+
+<blockquote>
+  <p>Par exemple, tout ce site a par exemple été écrit en markdown (plus précisément une extension de celui-ci nommé <a href="https://kramdown.gettalong.org/documentation.html">kramdown</a>) puis transformé en html grâce à <a href="https://jekyllrb.com/">jekyll</a>. Le code source du site est <a href="https://github.com/FrancoisBrucker/cours_informatique">visible</a>, en particulier le code source de <a href="https://github.com/FrancoisBrucker/cours_informatique/blob/master/docs/tutos/_posts/2021-08-30-format-markdown.md">ce fichier</a> (cliquez sur le bouton <code class="language-plaintext highlighter-rouge">raw</code> à droite, juste avant que le fichier ne soit représenté).</p>
+</blockquote>
+
+<h2 id="syntaxe">syntaxe</h2>
+
+<p>Markdown permet facilement de représenter des titres, des listes, mettre des choses en exergue, …, uniquement avec du texte. Ce format est à la base un guide de lecture de fichiers textes.</p>
+
+<p>Par exemple, <code class="language-plaintext highlighter-rouge">*coucou*</code> signifie que <code class="language-plaintext highlighter-rouge">coucou</code> est en exergue (ce qui sera traduit par une police en italique à l’exportation en html ou pdf par exemple), ou encore <code class="language-plaintext highlighter-rouge">**salut !**</code> signifie que <code class="language-plaintext highlighter-rouge">salut !</code> est important (et sera traduit par une police en gras à l’exportation en html ou pdf).</p>
+
+<blockquote class="note">
+  <p>Pour une introduction et une liste des possibilités offertes, vous pouvez consulter le site : <a href="https://www.markdownguide.org/">https://www.markdownguide.org/</a> par exemple</p>
+</blockquote>
+
+<p>Le format markdown est basique. Il possède plein de variantes qui permettent d’étendre ses possibilités. Deux d’entre elles sont devenus des standard de fait :</p>
+
+<ul>
+  <li>
+<a href="https://guides.github.com/features/mastering-markdown/">github flavored markdown</a>.</li>
+  <li>
+<a href="https://kramdown.gettalong.org/documentation.html">kramdown</a>.</li>
+</ul>
+
+<blockquote class="note">
+  <p>Vous pouvez écrire du markdown dans le format github ou kramdown. Les principales fonctionnalités sont décrites dans <a href="https://www.markdownguide.org/cheat-sheet/">ce site</a></p>
+</blockquote>
+
+<h2 id="markdown-avec-vscode">markdown avec vscode</h2>
+
+<p>L’éditeur de texte <a href="/cours_informatique/tutoriels/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main.html">vscode</a> permet d’écrire et d’exporter facilement du markdown. Sa documentation comporte une <a href="https://code.visualstudio.com/docs/languages/markdown">partie consacrée au markdown</a>. Nous allons utiliser deux extensions :</p>
+
+<ul>
+  <li>
+<a href="https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one">Markdown All in One</a> qui permet de fluidifier l’écriture de markdown et permet un export de celui-ci en html.</li>
+  <li>
+<a href="https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint">markdownlint</a> qui souligne en orange les fautes de style (un espace après un <code class="language-plaintext highlighter-rouge">.</code> par exemple) et les erreurs de markdown (sauf dans la hiérarchie des paragraphes par exemple).</li>
+</ul>
+
+<blockquote>
+  <p>Le seconde extension est un <a href="https://mindsers.blog/fr/post/linting-good-practices/">linter</a>, qui incite à utiliser les bonnes pratiques d’écriture. Il en existe pour quasi tous les langages.</p>
+</blockquote>
+
+<h2 id="formules-mathématiques">Formules mathématiques</h2>
+
+<p>Lorsque l’on écrit des textes scientifique, vient inévitablement la question de l’écriture des équations.</p>
+
+<h3 id="latex">latex</h3>
+
+<p>Le langage <a href="https://fr.wikipedia.org/wiki/LaTeX">Latex</a> permet d’écrire toutes les équations imaginable (et même plus) avec un petit langage que l’on peut utiliser directement dans un éditeur de texte (ceux qui ont déjà utilisé l’éditeur d’équation de Word savent que c’est l’enfer de devoir tout cliquer).</p>
+
+<blockquote>
+  <p>L’ancêtre de <a href="https://fr.wikipedia.org/wiki/LaTeX">Latex</a> : <a href="https://fr.wikipedia.org/wiki/TeX">Tex</a>, a été créé par le célèbre informaticien <a href="https://fr.wikipedia.org/wiki/Donald_Knuth">Donald Knuth</a> par ce qu’il n’existait rien sur ordinateur à l’époque pour écrire <a href="https://fr.wikipedia.org/wiki/The_Art_of_Computer_Programming">ses livres</a> en respectant une typographie correcte.</p>
+</blockquote>
+
+<p>Une fois ce langage appris, il est étonnement clair, même non compilé en <em>jolies formules</em>. Avec un peut d’habitude, on voit bien que : <code class="language-plaintext highlighter-rouge">$$\cos x=\sum_{k=0}^{\infty}\frac{(-1)^k}{(2k)!}x^{2k}$$</code> est égal à :</p>
+
+\[\cos x=\sum_{k=0}^{\infty}\frac{(-1)^k}{(2k)!}x^{2k}\]
+
+<p>Quelques aides :</p>
+
+<ul>
+  <li>Un <a href="http://tug.ctan.org/info/undergradmath/undergradmath.pdf">résumé</a> des possibibités</li>
+  <li>un <a href="https://www.science-emergence.com/Articles/Formules-math%C3%A9matiques-sous-LaTeX/">tuto</a> Latex contenant aussi des instructions pour les équations.</li>
+</ul>
+
+<h3 id="en-markdown">en markdown</h3>
+
+<p>On peut écrire en markdown les équation latex.</p>
+
+<ul>
+  <li>pour une équation dans le texte, on dit <em>inline</em> on entoure notre équation  par des <code class="language-plaintext highlighter-rouge">$</code>
+</li>
+  <li>pour équation au milieu de la page, on dit <em>display</em>, on entoure notre équation par des <code class="language-plaintext highlighter-rouge">$$</code> et on saute une ligne avant et après les <code class="language-plaintext highlighter-rouge">$$</code>. comme dans l’exemple ci-après.</li>
+</ul>
+
+<p>Equation en mode inline :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>je pense que $3 + 2$ vaut 5.
+</code></pre></div></div>
+
+<p>Equation en mode <em>display</em> :</p>
+
+<div class="language-tex highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="p">$$</span><span class="m">3</span><span class="o">+</span><span class="m">2</span><span class="p">$$</span>
+
+</code></pre></div></div>
+
+<p>Lorsque vous faites de l’exportation en html, les mathématiques sont représentées en utilisant <a href="https://www.mathjax.org/">Mathjax</a>. Ce <a href="https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference">post</a> résume les possibilités basique de mathjax pour écrire des équations.</p>
+
+<blockquote class="attention">
+  <p>Il ne faut pas mettre d’espace après le premier <code class="language-plaintext highlighter-rouge">$</code> et avant le dernier <code class="language-plaintext highlighter-rouge">$</code> lorsque l’on écrit des équations, sinon les convertisseur ne reconnaitront pas que ce sont des équations que vous voulez écrire. Ansi <code class="language-plaintext highlighter-rouge">$ \frac{1}{2}$</code> affichera <code class="language-plaintext highlighter-rouge">$ \frac{1}{2}$</code>, alors que <code class="language-plaintext highlighter-rouge">$\frac{1}{2}$</code> affichera $\frac{1}{2}$.</p>
+</blockquote>
+
+<h2 id="export">export</h2>
+
+<p>Si le markdown est pratique pour être écrit et lu rapidement, pour de long documents ou le partage de ceux-ci, il est important de les exporter dans un format plus :</p>
+
+<ul>
+  <li>imprimable comme le pdf ou l’html</li>
+  <li>modifiable comme un docx ou un fichier latex</li>
+  <li>un autre format que l’on aime.</li>
+</ul>
+
+<h3 id="avec-vscode">avec vscode</h3>
+
+<p>Pour exporter le markdown dans quelque chose de plus joli avec vscode, on peut utiliser la <a href="/cours_informatique/tutoriels/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main.html#palette-de-commande">palette de commande</a> pour exécuter la commande : <em>markdown All in One: Print current document to HTML</em> : qui va rendre un fichier html.</p>
+
+<p>Cela suffit pour la majorité des cas.</p>
+
+<h3 id="utilitaire-pandoc">utilitaire pandoc</h3>
+
+<p>Si l’on veut exporter dans des formats plus exotiques ou encore finement contrôler le résultat de l’export, on peut utiliser le logiciel  <a href="https://pandoc.org/">pandoc</a>.</p>
+
+<p><a href="https://pandoc.org/">pandoc</a> est un monstre. Il permet (parfois avec un peu d’huile de coude il est vrai) de convertir à peut prêt tout document en un autre format (voir les <a href="https://pandoc.org/demos.html">démos</a> pour différentes conversions).</p>
+
+<h4 id="installation-de-pandoc">Installation de pandoc</h4>
+
+<p>D’après la <a href="https://pandoc.org/installing.html">doc</a>, selon le système d’exploitation :</p>
+
+<details><summary>sous linux</summary><div>
+<p><code class="language-plaintext highlighter-rouge">sudo apt install pandoc</code> dans un <a href="/cours_informatique/tutoriels/systeme/2021-08-24-terminal.html">terminal</a></p>
+</div></details>
+
+<details><summary>sous mac</summary><div>
+<p>installez <a href="https://brew.sh/">brew</a> puis <code class="language-plaintext highlighter-rouge">brew install pandoc</code> dans un <a href="/cours_informatique/tutoriels/systeme/2021-08-24-terminal.html">terminal</a></p>
+</div></details>
+
+<details><summary>sous windows</summary><div>
+<p>installez <a href="https://chocolatey.org/">Chocolatly</a> puis <code class="language-plaintext highlighter-rouge">choco install pandoc</code> dans un <a href="/cours_informatique/tutoriels/systeme/2021-08-24-terminal.html">terminal</a></p>
+</div></details>
+
+<p>Selon le format d’export, il vous faudra d’autres logiciels. Je vous conseille d’ores et déjà d’<a href="https://www.latex-project.org/get/">installer latex</a> pour pouvoir facilement exporter en pdf sans passer par html et un navigateur.</p>
+
+<h4 id="exemple-dutilisation--en-html">exemple d’utilisation : en html</h4>
+
+<p>Pour l’export en html, j’utilise la commande suivante qui m’écrit de jolies équations avec <a href="https://www.mathjax.org/">https://www.mathjax.org/</a> : <code class="language-plaintext highlighter-rouge">pandoc --mathjax --standalone --metadata pagetitle="titre page" --metadata charset="UTF-8"  page.md -o page.html</code></p>
+
+<ul>
+  <li>premier élément : le nom de la commande, ici <code class="language-plaintext highlighter-rouge">pandoc</code>.</li>
+  <li>cette commande prend en entrée le fichier <code class="language-plaintext highlighter-rouge">page.md</code> qui est le dernier élément de la ligne</li>
+  <li>les autres éléments de la lignes sont des <a href="https://fr.wikipedia.org/wiki/Commandes_Unix#Le_passage_d'arguments_aux_commandes">arguments</a>. Dans le monde des commandes, il y a deux types de paramètres “un <code class="language-plaintext highlighter-rouge">-</code> suivit d’une lettre” et “deux <code class="language-plaintext highlighter-rouge">--</code> suivi d’un mot” Ces paramètre peuvent être suivi d’arguments, c’est à dire des mots ne commençant pas par un <code class="language-plaintext highlighter-rouge">-</code> (<code class="language-plaintext highlighter-rouge">-o page.html</code>), ou pas (<code class="language-plaintext highlighter-rouge">--mathjax</code>) Notre commande a 4 paramètres :
+    <ul>
+      <li>
+<code class="language-plaintext highlighter-rouge">-o page.html</code>. <em>Un paramètre avec un argument</em>. Le fichier se sorti s’appellera <code class="language-plaintext highlighter-rouge">page.html</code>. Il determine le type de sortie (ici de l’html) et sera dans le même dossier que le fichier <code class="language-plaintext highlighter-rouge">page.md</code>
+</li>
+      <li>
+<code class="language-plaintext highlighter-rouge">--mathjax</code>. <em>Un paramètre sans argument</em>. On utilise la bibliothèque mathjax pour <em>compiler</em> les équations latex</li>
+      <li>
+<code class="language-plaintext highlighter-rouge">--standalone</code>. <em>Un paramètre sans argument</em>. On crée un fichier html complet (par défaut, <code class="language-plaintext highlighter-rouge">pandoc</code> ne crée qu’un bout de html qui peut être combiner avec d’autres bout)</li>
+      <li>
+<code class="language-plaintext highlighter-rouge">--metadata pagetitle="titre page"</code>. <em>Un paramètre avec un argument</em>. En combinaison avec le paramètre <code class="language-plaintext highlighter-rouge">standalone</code>. Permet de donner un titre à la page html, ici “titre page”.</li>
+      <li>
+<code class="language-plaintext highlighter-rouge">--metadata charset="UTF-8"</code>. <em>Un paramètre avec un argument</em>. Permet de spécifier l’encodage des caractères (voir cours sur les fichiers). Devrait permettre de voir les accents.</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>Si vous avez à compiler plein de fois votre page, n’oubliez pas qu’utiliser la <em>flèche du haut</em> dans un terminal rappelle la dernière commande utilisée. Donc même une commande avec plein de paramètres est facile à réutiliser. Il suffit d’appuyer sur la flèche du haut.</p>
+</blockquote>
+
+<p>Lorsque je fais mes tests en html, après chaque re-compilation je recharge la page avec <em>“F5”</em> ou <em>“ctrl+R”</em> dans le navigateur. Le process est <strong>très rapide</strong>.</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d'informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d'informatique</li>
+</ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+<ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d'informatique de François Brucker.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

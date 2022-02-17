@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Nouvelle installation de son système | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0">
+<meta property="og:title" content="Nouvelle installation de son système">
+<meta name="author" content="François Brucker">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Comment bien préparer son ordinateur pour faire du développement. On ne montrera ici que le départ, c’est à dire l’installation fraiche d’un système sur lequel on pourra ensuite installer — proprement — les divers outils et logiciels utiles pour le développement.">
+<meta property="og:description" content="Comment bien préparer son ordinateur pour faire du développement. On ne montrera ici que le départ, c’est à dire l’installation fraiche d’un système sur lequel on pourra ensuite installer — proprement — les divers outils et logiciels utiles pour le développement.">
+<link rel="canonical" href="/cours_informatique/tutoriels/systeme/2021-09-01-installation-ordinateur.html">
+<meta property="og:url" content="/cours_informatique/tutoriels/systeme/2021-09-01-installation-ordinateur.html">
+<meta property="og:site_name" content="cours d’informatique">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-09-01T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Nouvelle installation de son système">
+<script type="application/ld+json">
+{"dateModified":"2021-09-01T00:00:00+00:00","datePublished":"2021-09-01T00:00:00+00:00","description":"Comment bien préparer son ordinateur pour faire du développement. On ne montrera ici que le départ, c’est à dire l’installation fraiche d’un système sur lequel on pourra ensuite installer — proprement — les divers outils et logiciels utiles pour le développement.","mainEntityOfPage":{"@type":"WebPage","@id":"/cours_informatique/tutoriels/systeme/2021-09-01-installation-ordinateur.html"},"@type":"BlogPosting","author":{"@type":"Person","name":"François Brucker"},"url":"/cours_informatique/tutoriels/systeme/2021-09-01-installation-ordinateur.html","headline":"Nouvelle installation de son système","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css">
+
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css">
+
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique">
+</head>
+
+<body>
+<header class="site-header" role="banner">
+
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/cours_informatique/">cours d'informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav>
+</div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Nouvelle installation de son système</h1>Auteurs :
+      <ul>
+      
+        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></li>
+      
+      </ul>
+  </header>
+
+  <div class="post-content">
+    <p>Comment bien préparer son ordinateur pour faire du développement. On ne montrera ici que le départ, c’est à dire l’installation fraiche d’un système sur lequel on pourra ensuite installer — proprement — les divers outils et logiciels utiles pour le développement.</p>
+
+<!--more-->
+
+<h2 id="introduction">Introduction</h2>
+
+<p>Pouvoir développer des logiciels et exécuter ses propres programmes nécessite quelques connaissances et compétences.</p>
+
+<p>Rien d’insurmontable, mais si on ne le fait pas on a vite un système instable où rien de marche comme il faudrait.</p>
+
+<p>Il faut résister à la tentation de faire n’importe quoi en espérant que ça passe car, au bout du compte, on perd plus de temps à réparer qu’on en gagne à installer sans préparation.</p>
+
+<blockquote>
+  <p>Il est recommandé de partir d’un système propre est vierge. En effet, si quelque chose ne fonctionne pas c’est souvent parce qu’on a précédemment installé quelque chose d’incompatible en suivant sans comprendre un tuto de l’internet.</p>
+</blockquote>
+
+<p>A la fin de ce tuto vous devez avoir :</p>
+<ul>
+  <li>un système d’installation sain</li>
+  <li>un gestionnaire de package</li>
+  <li>un éditeur de texte</li>
+</ul>
+
+<h2 id="un-nouveau-compte">Un nouveau compte</h2>
+
+<p>Si vous ne vous pouvez pas réinstaller un nouveau système, pour que tout se passe au mieux assurez vous que votre compte :</p>
+
+<ul>
+  <li>soit un compte administrateur (pouvant exécuter sudo si vous êtes sous linux)</li>
+  <li>votre login ne doit contenir aucun espace, ni accent.</li>
+</ul>
+
+<blockquote class="attention">
+  <p>le login est différent de votre nom.</p>
+</blockquote>
+<p>compte admin :  sans accent ni espace</p>
+
+<ul>
+  <li>administrateur sous windows/mac</li>
+  <li>pouvant exécuter sudo sous linux</li>
+</ul>
+
+<blockquote>
+  <p>Il peut être utile d’avoir un compte uniquement pour travailler/développer et un autre pour jouer. Ceci évitera déjà les conflits de configuration.</p>
+</blockquote>
+
+<h2 id="un-nouveau-système">Un nouveau système</h2>
+
+<p>Il est souvent possible de réinstaller un nouveau système en conservant vos données. C’est souvent très pratique mais pour une première fois, je vous conseille de faire une installation sur un disque vierge, c’est à dire en ne <strong>conservant rien</strong> de ce qu’il y avait sur votre disque dur.</p>
+
+<p>Installer un nouveau système nécessite de reformater votre disque dur. Avant cela il vous faut faire trois choses :</p>
+
+<ul>
+  <li>sauvegardez vos données sur une clé pour que vous puissiez facilement les remettre sur votre nouveau système</li>
+  <li>vérifier les différentes applications actuellement installées et listez celles que vous voulez à nouveau installer.</li>
+  <li>lister les différents compte et mots de passe dont vous aurez besoin (wifi, steam, google, …)</li>
+</ul>
+
+<blockquote>
+  <p>Avec le cloud (<a href="https://support.apple.com/fr-fr/guide/icloud/welcome/icloud">icloud</a> sur mac ou <a href="https://www.microsoft.com/fr-fr/microsoft-365/onedrive/online-cloud-storage">onedrive</a> sous windows) les données personnelles sont souvent déjà sauvegardées. Mais il faut se souvenir du login/mot de passe pour réactiver le tout sur le nouveau système.</p>
+</blockquote>
+
+<blockquote class="attention">
+  <p>Notez votre wifi et son mot de passe, ou mieux connectez le réseau directement avec un fil si possible pour votre installation.</p>
+</blockquote>
+
+<h3 id="linux">Linux</h3>
+
+<details><summary>détails</summary><div>
+<blockquote class="note">
+  <p>TBD</p>
+</blockquote>
+
+</div></details>
+
+<h3 id="mac">Mac</h3>
+<details><summary>détails</summary><div>
+<blockquote>
+  <p><a href="https://support.apple.com/fr-fr/guide/mac-help/mchlp1599/mac">https://support.apple.com/fr-fr/guide/mac-help/mchlp1599/mac</a></p>
+</blockquote>
+
+<p>Le plus simple est d’installer une nouvelle version du système en utilisant internet. Redémarrez votre ordinateur en maintenant enfoncé les touches :  <em>“Maj + Option + Commande + R enfoncées”</em></p>
+
+<blockquote class="attention">
+  <p>Notez votre login et mot de passe icloud. Vous en aurez besoin à l’installation</p>
+</blockquote>
+
+<p>Une fois votre système installé, il faudra également installé <a href="https://apps.apple.com/fr/app/xcode/id497799835?mt=12">xcode</a>. Prenez votre mal en patience, ça va prendre du temps…</p>
+
+<h4 id="finder">finder</h4>
+
+<p>Le finder est l’outil principal qui vous permettra de naviguer dans les fichiers. Pour qu’il soit un peut plus facile d’y naviguer :</p>
+<ul>
+  <li>
+<em>menu présentation &gt; personnaliser la barre d’outils…</em> ajoutez le “chemin” (trois barres horizontales) aux outils du finder en le glissant/déposant.</li>
+  <li>ajoutez le dossier “<em>Départ</em>”, aussi appelé “<em>maison</em>” (le dossier principal de l’utilisateur) et le dossier “<em>applications</em>” aux éléments à la gauche du finder. Pour cela, choisissez le dossier dans le menu <em>Aller</em> puis  avec l’outils chemin que l’on vient d’ajouter sélectionnez le dossier parent(Par exemple pour la maison, le dossier parent est “Utilisateurs” et pour application, le dossier parent est “Macintosh HD”). Vous pouvez ensuite glisser/déposer le dossier à gauche du finder.</li>
+</ul>
+
+<h4 id="terminal">terminal</h4>
+
+<p>Le terminal va être un outil fondamental en développement. Ajoutez le aux icônes du finder. Il est dans le dossier Utilitaires de application.</p>
+
+<h4 id="drivers">drivers</h4>
+
+<ul>
+  <li>imprimante</li>
+  <li>autres trucs bas niveau (icloud drive, tablette, …)</li>
+</ul>
+
+</div></details>
+
+<h3 id="windows">Windows</h3>
+
+<details><summary>détails</summary><div>
+<blockquote class="attention">
+  <p>Notez le numéro de série de votre windows 10. Vous en aurez besoin à l’installation</p>
+</blockquote>
+
+<p>On va suivre la procédure de <a href="https://support.microsoft.com/fr-fr/windows/r%C3%A9installer-windows-d8369486-3e33-7d9c-dccc-859e2b022fc7#ID0EBD=Windows_10">mirosoft</a> en suivant les instructions de <em>Installer une nouvelle installation Windows 10 à l’aide d’un support d’installation</em>.</p>
+
+<h4 id="confidentialité">confidentialité</h4>
+
+<p>Une fois l’installation terminée, allez dans <code class="language-plaintext highlighter-rouge">Démarrer &gt; Paramètres &gt; Confidentialité</code> et vérifier pour chaque onglet à gauche que les paramètres d’envoi de vos données vous satisfont.</p>
+
+<blockquote>
+  <p>Pour les paramètres de sécurité, vous pouvez toujours aller voir la <a href="https://www.cnil.fr/fr/reglez-les-parametres-vie-privee-de-windows-10-apres-installation">cnil</a> ou <a href="http://www.win10.fr/reglages-confidentialite-windows10">ce site</a></p>
+</blockquote>
+
+<h4 id="compte">compte</h4>
+
+<p>J’utilise un compte local et pas mon compte Microsoft pour me connecter. Assurez vous que le nom de votre compte ne contient aucun espace ou accent (on le voit avec l’explorateur de fichier <code class="language-plaintext highlighter-rouge">c:\Utilisateurs</code>) et que c’est un compte administrateur.</p>
+
+<h4 id="windows-update">Windows update</h4>
+
+<p>Vérifier que votre système est à jour en cliquant sur <code class="language-plaintext highlighter-rouge">Démarrer &gt; Paramètres &gt; mise à jour et sécurité &gt; Windows update</code></p>
+
+<h4 id="version-du-système">Version du système</h4>
+
+<p>Pour connaître votre version : <code class="language-plaintext highlighter-rouge">Menu Démarrer &gt; Paramètres &gt; Système &gt; information système</code> Dans la partie Spécification de Windows.</p>
+
+<blockquote>
+  <p>Pour installer la wsl 2, il faut nécessairement avoir une version de w10 supérieure ou égale à la 2004.</p>
+</blockquote>
+
+<h4 id="explorer">explorer</h4>
+
+<p>Affichez les fichier caché dans l’explorateur de fichiers. Cela va être utile à de nombreuses reprises. Pour cela, ouvrez un explorateur de fichier puis choisissez affichage et cochez la case <em>Éléments masqués</em></p>
+
+<h4 id="drivers">drivers</h4>
+
+<ul>
+  <li>carte graphique</li>
+  <li>clavier/souris si nécessaire</li>
+  <li>imprimante</li>
+  <li>autres trucs bas niveau (icloud drive, tablette, …)</li>
+</ul>
+
+</div></details>
+
+<h2 id="applications-indispensables">Applications indispensables</h2>
+
+<h3 id="un-navigateur">Un navigateur</h3>
+
+<p>Prenez celui de votre choix, personnellement j’utilise <a href="https://www.google.com/intl/fr_fr/chrome/">chrome</a> que je mets en navigateur par défaut.</p>
+
+<h3 id="un-éditeur-de-texte">Un éditeur de texte</h3>
+
+<p>On en installera d’autres par la suite, mais il est toujours appréciable d’avoir un éditeur de texte sous la main pour modifier rapidement un fichier de conf.</p>
+
+<p>Selon le système d’exploitation, mon éditeur à tout faire est différent :</p>
+
+<details><summary>Linux</summary><div>
+<p>Comme j’utilise linux essentiellement en ligne de commande, mon éditeur de choix est <a href="https://www.vim.org/">vim</a>. Bon, il peut faire un peu peur mais si vous voulez faire de l’informatique votre métier et que vous devrez vous connecter sur des ordinateurs uni distant (un serveur web par exemple) connaitre vim est un gain de temps considérable.</p>
+
+<p>Sinon, pourquoi pas <a href="https://atom.io/">Atom</a> ?</p>
+
+</div></details>
+<details><summary>Mac</summary><div>
+<p>J’utilise <a href="https://macromates.com/">Textmate</a>.</p>
+
+</div></details>
+<details><summary>Windows</summary><div>
+<p>J’utilise <a href="https://notepad-plus-plus.org/downloads/">notepad++</a>.</p>
+
+</div></details>
+
+<h3 id="un-gestionnaire-de-package">Un gestionnaire de package</h3>
+
+<p>N’installez <strong>RIEN</strong> sans avoir un installeur de package qui vous permettra de savoir ce que vous avez installé et de mettre à jour le tout.</p>
+
+<details><summary>Linux</summary><div>
+<p>Déjà installé par défaut. Cela dépend de votre distribution linux, mais c’est souvent 
+<a href="https://doc.ubuntu-fr.org/apt-get">Apt-get</a>. Donc rien à faire.</p>
+
+</div></details>
+
+<details><summary>Mac</summary><div>
+<p>Pasz vraiment de choix, on installe <a href="https://brew.sh/">brew</a> et plus vite que ça !</p>
+
+</div></details>
+
+<details><summary>Windows</summary><div>
+<blockquote>
+  <p>Je n’utilise pas de gesionnaire de package sous windows.  Je laisse windows gérer le tout dans le menu application des paramètres.</p>
+</blockquote>
+
+<p>Si vous voulez en installer un, il en existe plusieurs mais je ne sais pas trop le quel est le mieux. Trois alternatives a priori :</p>
+<ul>
+  <li>
+<a href="https://docs.microsoft.com/fr-fr/windows/package-manager/winget/">winget</a>.</li>
+  <li><a href="https://chocolatey.org/">chocolately</a></li>
+  <li><a href="https://scoop.sh/">scoop.sh</a></li>
+</ul>
+
+<p><a href="https://nodachisoft.com/common/en/article/en000009/">https://nodachisoft.com/common/en/article/en000009/</a></p>
+
+</div></details>
+
+<h3 id="outils-de-compression">outils de compression</h3>
+
+<details><summary>Linux</summary><div>
+<p>Surement déjà installé.</p>
+
+</div></details>
+
+<details><summary>Windows</summary><div>
+<p>Surement déjà installé.</p>
+
+</div></details>
+
+<details><summary>Windows</summary><div>
+<p>Il y en a plusieurs. <a href="https://www.7-zip.org/">7zip</a> est simple d’utilisation et très complet.</p>
+
+</div></details>
+
+<h3 id="utilitaires-de-tous-les-jours">utilitaires de tous les jours</h3>
+
+<p>Non indispensable mais que vous utilisez tous les jours</p>
+
+<ul>
+  <li>steam, gog, epic, battle.net, origin, uplay, etc</li>
+  <li>vlc, office 360</li>
+  <li>discord</li>
+  <li>…</li>
+</ul>
+
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d'informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d'informatique</li>
+</ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+<ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d'informatique de François Brucker.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

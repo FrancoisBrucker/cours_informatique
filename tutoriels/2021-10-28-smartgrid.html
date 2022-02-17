@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Smartgrid | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0">
+<meta property="og:title" content="Smartgrid">
+<meta name="author" content="Patrick Ouedraogo">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Le jeu smartgrid">
+<meta property="og:description" content="Le jeu smartgrid">
+<link rel="canonical" href="/cours_informatique/tutoriels/2021-10-28-smartgrid.html">
+<meta property="og:url" content="/cours_informatique/tutoriels/2021-10-28-smartgrid.html">
+<meta property="og:site_name" content="cours d’informatique">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-10-28T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Smartgrid">
+<script type="application/ld+json">
+{"dateModified":"2021-10-28T00:00:00+00:00","datePublished":"2021-10-28T00:00:00+00:00","description":"Le jeu smartgrid","mainEntityOfPage":{"@type":"WebPage","@id":"/cours_informatique/tutoriels/2021-10-28-smartgrid.html"},"@type":"BlogPosting","author":{"@type":"Person","name":"Patrick Ouedraogo"},"url":"/cours_informatique/tutoriels/2021-10-28-smartgrid.html","headline":"Smartgrid","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css">
+
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css">
+
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique">
+</head>
+
+<body>
+<header class="site-header" role="banner">
+
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/cours_informatique/">cours d'informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav>
+</div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Smartgrid</h1>Auteurs :
+      <ul>
+      
+        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Patrick Ouedraogo</span></span></li>
+      
+      </ul>
+  </header>
+
+  <div class="post-content">
+    <p>Le jeu smartgrid</p>
+
+<!--more-->
+
+<h2 id="smartgrid">Smartgrid</h2>
+
+<h3 id="présentation-du-jeu">Présentation du jeu</h3>
+
+<p>Ce projet s’inscrit dans le cadre de
+l’UE Serveur Web, et consiste au développement d’un jeu en utilisant les technologies du Web</p>
+
+<h3 id="règles">Règles</h3>
+<p>Le jeu consiste à placer des pions à tout de rôle sur la grille.
+Le premier joueur qui aligne quatre pions réalise une smartgrid et gagne la partie</p>
+<h3 id="espace-détats">Espace d’états</h3>
+
+<p>La grille de jeu est de dimension 6*7, donc 42 positions que les deux joueurs d’une partie se partagent. Chaque joueur possédant en tout 21 pions placera son pion sur au maximum 7 positions permises, jusqu’à l’obtention du premier état solution.
+Les positions permises pour le placement d’un pion sont limitées au nombre de colonnes de la grille ; le joueur ne pouvant placer pour chacune des colonnes que sur la première case vide, et ne pouvant placer dans une colonne si celle-ci est pleine.
+Chaque case de la grille sera représentée par trois états possibles: {‘vide’, ’occupée par joueur 1’, ’occupée par joueur 2’}.</p>
+
+<h2 id="détails-techniques">Détails techniques</h2>
+
+<h3 id="avec-quoi-il-a-été-fait-">Avec quoi il a été fait ?</h3>
+
+<p>Le jeu a été réalisé avec la librairie React sur le front, et Node côté serveur.</p>
+
+<h3 id="architecture">Architecture</h3>
+
+<h3 id="dépendances-principales-frontback">Dépendances principales front/back</h3>
+
+<p>Backend :</p>
+
+<ul>
+  <li>express : framework très répandu pour la construction d’applications web.</li>
+  <li>sequelize : ORM prenant en charge le dialecte PostgreSQL.</li>
+</ul>
+
+<p>Frontend :</p>
+
+<ul>
+  <li>React : librairie JavaScript pour la construction d’applications web monopages.</li>
+  <li>React-router-dom: permet de gérer le routage sur une application react monopage</li>
+</ul>
+
+<h3 id="installer-le-projet-et-lancer-le-projet">Installer le projet et lancer le projet</h3>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/ipkminu/Smartgrid.git
+<span class="nb">cd </span>Smartgrid
+npm <span class="nb">install
+</span>npm run build
+node index.js
+</code></pre></div></div>
+<h2 id="react">React</h2>
+
+<h3 id="routage">routage</h3>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import React from <span class="s2">"react"</span><span class="p">;</span>
+import Home from <span class="s1">'../views/Home'</span><span class="p">;</span>
+import Nbrejoueurs from <span class="s1">'../views/Nbrejoueurs'</span><span class="p">;</span>
+import Niveaujeu from <span class="s2">"../views/Niveaujeu"</span><span class="p">;</span>
+import Grille from <span class="s2">"../views/Grille"</span><span class="p">;</span>
+import Aide from <span class="s1">'../views/Aide'</span><span class="p">;</span>
+import Cgus from <span class="s1">'../views/Cgus'</span><span class="p">;</span>
+import Espace from <span class="s1">'../views/Espace'</span>
+import <span class="o">{</span>
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+<span class="o">}</span> from <span class="s2">"react-router-dom"</span><span class="p">;</span>
+
+<span class="nb">export </span>default <span class="k">function </span>Routes<span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="o">(</span>
+        &lt;Router&gt;
+            &lt;div&gt;
+                &lt;div <span class="nv">className</span><span class="o">=</span><span class="s2">"titre"</span><span class="o">&gt;</span>
+                    &lt;div&gt;
+                        &lt;Link <span class="nv">to</span><span class="o">=</span><span class="s2">"/"</span><span class="o">&gt;</span>
+                            SMARTGRID
+                        &lt;/Link&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                <span class="o">{</span>/<span class="k">*</span> A &lt;Switch&gt; looks through its children &lt;Route&gt;s and
+            renders the first one that matches the current URL. <span class="k">*</span>/<span class="o">}</span>
+                &lt;Switch&gt;
+
+                    &lt;Route <span class="nv">path</span><span class="o">=</span><span class="s2">"/jouer"</span><span class="o">&gt;</span>
+                        &lt;Nbrejoueurs /&gt;
+                    &lt;/Route&gt;
+                    &lt;Route <span class="nv">path</span><span class="o">=</span><span class="s2">"/nbr1"</span><span class="o">&gt;</span>
+                        &lt;Niveaujeu /&gt;
+                    &lt;/Route&gt;
+                    &lt;Route <span class="nv">path</span><span class="o">=</span><span class="s2">"/grille"</span><span class="o">&gt;</span>
+                        &lt;Grille /&gt;
+                    &lt;/Route&gt;
+
+                    &lt;Route <span class="nv">path</span><span class="o">=</span><span class="s2">"/aide"</span><span class="o">&gt;</span>
+                        &lt;Aide /&gt;
+                    &lt;/Route&gt;
+                    &lt;Route <span class="nv">path</span><span class="o">=</span><span class="s2">"/cgus"</span><span class="o">&gt;</span>
+                        &lt;Cgus /&gt;
+                    &lt;/Route&gt;
+
+                    &lt;Route <span class="nv">path</span><span class="o">=</span><span class="s2">"/espace"</span><span class="o">&gt;</span>
+                        &lt;Espace /&gt;
+                    &lt;/Route&gt;
+
+                    &lt;Route <span class="nv">path</span><span class="o">=</span><span class="s2">"/"</span><span class="o">&gt;</span>
+                        &lt;Home /&gt;
+                    &lt;/Route&gt;
+                &lt;/Switch&gt;
+            &lt;/div&gt;
+        &lt;/Router&gt;
+    <span class="o">)</span><span class="p">;</span>
+<span class="o">}</span>
+
+
+
+
+</code></pre></div></div>
+
+<h3 id="ia">IA</h3>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="nb">export </span>default class IA <span class="o">{</span>
+    constructor<span class="o">(</span>grille, couleur_machine<span class="o">)</span> <span class="o">{</span>
+        this.grille <span class="o">=</span> grille<span class="p">;</span>
+        this.couleur <span class="o">=</span> couleur_machine<span class="p">;</span>
+
+    <span class="o">}</span>
+
+    cp_grille<span class="o">(</span>grille<span class="o">)</span> <span class="o">{</span>
+        var tab <span class="o">=</span> new Array<span class="o">(</span>6<span class="o">)</span>
+        <span class="k">for</span> <span class="o">(</span><span class="nb">let </span>i <span class="o">=</span> 0<span class="p">;</span> i &lt; 6<span class="p">;</span> i++<span class="o">)</span> <span class="o">{</span>
+            tab[i] <span class="o">=</span> new Array<span class="o">(</span>7<span class="o">)</span>
+            <span class="k">for</span> <span class="o">(</span><span class="nb">let </span>j <span class="o">=</span> 0<span class="p">;</span> j &lt; 7<span class="p">;</span> j++<span class="o">)</span> <span class="o">{</span>
+                tab[i][j] <span class="o">=</span> grille[i][j]<span class="p">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return </span>tab<span class="p">;</span>
+    <span class="o">}</span>
+
+    create_fils<span class="o">(</span>pere, joueur, colonne<span class="o">)</span> <span class="o">{</span>
+        var copie <span class="o">=</span> this.cp_grille<span class="o">(</span>pere<span class="o">)</span><span class="p">;</span>
+        <span class="k">for</span> <span class="o">(</span><span class="nb">let </span>i <span class="o">=</span> 0<span class="p">;</span> i &lt; 6<span class="p">;</span> i++<span class="o">)</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span>copie[i][colonne] <span class="o">===</span> 0<span class="o">)</span> <span class="o">{</span>
+                copie[i][colonne] <span class="o">=</span> joueur<span class="p">;</span>
+                <span class="k">return </span>copie<span class="p">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return </span>null<span class="p">;</span>
+    <span class="o">}</span>
+    smart4<span class="o">(</span>grille, joueur<span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span>grille <span class="o">===</span> null<span class="o">)</span> <span class="k">return </span>0<span class="p">;</span>
+        //Verticales
+        <span class="k">for</span> <span class="o">(</span><span class="nb">let </span>j <span class="o">=</span> 0<span class="p">;</span> j &lt; 7<span class="p">;</span> j++<span class="o">)</span> <span class="o">{</span>
+            <span class="k">for</span> <span class="o">(</span><span class="nb">let </span>i <span class="o">=</span> 0<span class="p">;</span> i &lt; 3<span class="p">;</span> i++<span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span>grille[i][j] <span class="o">===</span> joueur <span class="o">&amp;&amp;</span> grille[i + 1][j] <span class="o">===</span> joueur <span class="o">&amp;&amp;</span> grille[i + 2][j] <span class="o">===</span> joueur <span class="o">&amp;&amp;</span> grille[i + 3][j] <span class="o">===</span> joueur<span class="o">)</span> <span class="o">{</span>
+                    //console.log<span class="o">(</span>grille<span class="o">)</span>
+                    //console.log<span class="o">(</span><span class="s2">"Verticales"</span><span class="o">)</span>
+                    <span class="k">return </span><span class="nb">true</span><span class="p">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        //Horizontales
+        <span class="k">for</span> <span class="o">(</span><span class="nb">let </span>i <span class="o">=</span> 0<span class="p">;</span> i &lt; 6<span class="p">;</span> i++<span class="o">)</span> <span class="o">{</span>
+            <span class="k">for</span> <span class="o">(</span><span class="nb">let </span>j <span class="o">=</span> 0<span class="p">;</span> j &lt; 4<span class="p">;</span> j++<span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span>grille[i][j] <span class="o">===</span> joueur <span class="o">&amp;&amp;</span> grille[i][j + 1] <span class="o">===</span> joueur <span class="o">&amp;&amp;</span> grille[i][j + 2] <span class="o">===</span> joueur <span class="o">&amp;&amp;</span> grille[i][j + 3] <span class="o">===</span> joueur<span class="o">)</span> <span class="o">{</span>
+                    //console.log<span class="o">(</span><span class="s2">"Horiontales"</span><span class="o">)</span>
+                    <span class="k">return </span><span class="nb">true</span><span class="p">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        //Oblique /
+        <span class="k">for</span> <span class="o">(</span><span class="nb">let </span>i <span class="o">=</span> 0<span class="p">;</span> i &lt; 3<span class="p">;</span> i++<span class="o">)</span> <span class="o">{</span>
+            <span class="k">for</span> <span class="o">(</span><span class="nb">let </span>j <span class="o">=</span> 0<span class="p">;</span> j &lt; 4<span class="p">;</span> j++<span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span>grille[i][j] <span class="o">===</span> joueur <span class="o">&amp;&amp;</span> grille[i + 1][j + 1] <span class="o">===</span> joueur <span class="o">&amp;&amp;</span> grille[i + 2][j + 2] <span class="o">===</span> joueur <span class="o">&amp;&amp;</span> grille[i + 3][j + 3] <span class="o">===</span> joueur<span class="o">)</span> <span class="o">{</span>
+                    <span class="k">return </span><span class="nb">true</span><span class="p">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        //Oblique <span class="se">\</span>
+        <span class="k">for</span> <span class="o">(</span><span class="nb">let </span>i <span class="o">=</span> 0<span class="p">;</span> i &lt; 3<span class="p">;</span> i++<span class="o">)</span> <span class="o">{</span>
+            <span class="k">for</span> <span class="o">(</span><span class="nb">let </span>j <span class="o">=</span> 3<span class="p">;</span> j &lt; 7<span class="p">;</span> j++<span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span>grille[i][j] <span class="o">===</span> joueur <span class="o">&amp;&amp;</span> grille[i + 1][j - 1] <span class="o">===</span> joueur <span class="o">&amp;&amp;</span> grille[i + 2][j - 2] <span class="o">===</span> joueur <span class="o">&amp;&amp;</span> grille[i + 3][j - 3] <span class="o">===</span> joueur<span class="o">)</span> <span class="o">{</span>
+                    <span class="k">return </span><span class="nb">true</span><span class="p">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return </span><span class="nb">false</span><span class="p">;</span>
+    <span class="o">}</span>
+    smart3<span class="o">(</span>grille, joueur<span class="o">)</span> <span class="o">{</span>
+
+        //Verticales
+        <span class="k">for</span> <span class="o">(</span><span class="nb">let </span>j <span class="o">=</span> 0<span class="p">;</span> j &lt; 7<span class="p">;</span> j++<span class="o">)</span> <span class="o">{</span>
+            <span class="k">for</span> <span class="o">(</span><span class="nb">let </span>i <span class="o">=</span> 0<span class="p">;</span> i &lt; 4<span class="p">;</span> i++<span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span>grille[i][j] <span class="o">===</span> joueur <span class="o">&amp;&amp;</span> grille[i + 1][j] <span class="o">===</span> joueur <span class="o">&amp;&amp;</span> grille[i + 2][j] <span class="o">===</span> joueur<span class="o">)</span> <span class="o">{</span>
+                    //console.log<span class="o">(</span>grille<span class="o">)</span>
+                    //console.log<span class="o">(</span><span class="s2">"Verticales"</span><span class="o">)</span>
+                    <span class="k">return </span><span class="nb">true</span><span class="p">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        //Horizontales
+        <span class="k">for</span> <span class="o">(</span><span class="nb">let </span>i <span class="o">=</span> 0<span class="p">;</span> i &lt; 6<span class="p">;</span> i++<span class="o">)</span> <span class="o">{</span>
+            <span class="k">for</span> <span class="o">(</span><span class="nb">let </span>j <span class="o">=</span> 0<span class="p">;</span> j &lt; 5<span class="p">;</span> j++<span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span>grille[i][j] <span class="o">===</span> joueur <span class="o">&amp;&amp;</span> grille[i][j + 1] <span class="o">===</span> joueur <span class="o">&amp;&amp;</span> grille[i][j + 2] <span class="o">===</span> joueur<span class="o">)</span> <span class="o">{</span>
+                    //console.log<span class="o">(</span><span class="s2">"Horiontales"</span><span class="o">)</span>
+                    <span class="k">return </span><span class="nb">true</span><span class="p">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        //Oblique /
+        <span class="k">for</span> <span class="o">(</span><span class="nb">let </span>i <span class="o">=</span> 0<span class="p">;</span> i &lt; 4<span class="p">;</span> i++<span class="o">)</span> <span class="o">{</span>
+            <span class="k">for</span> <span class="o">(</span><span class="nb">let </span>j <span class="o">=</span> 0<span class="p">;</span> j &lt; 5<span class="p">;</span> j++<span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span>grille[i][j] <span class="o">===</span> joueur <span class="o">&amp;&amp;</span> grille[i + 1][j + 1] <span class="o">===</span> joueur <span class="o">&amp;&amp;</span> grille[i + 2][j + 2] <span class="o">===</span> joueur<span class="o">)</span> <span class="o">{</span>
+                    <span class="k">return </span><span class="nb">true</span><span class="p">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        //Oblique <span class="se">\</span>
+        <span class="k">for</span> <span class="o">(</span><span class="nb">let </span>i <span class="o">=</span> 0<span class="p">;</span> i &lt; 4<span class="p">;</span> i++<span class="o">)</span> <span class="o">{</span>
+            <span class="k">for</span> <span class="o">(</span><span class="nb">let </span>j <span class="o">=</span> 2<span class="p">;</span> j &lt; 7<span class="p">;</span> j++<span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span>grille[i][j] <span class="o">===</span> joueur <span class="o">&amp;&amp;</span> grille[i + 1][j - 1] <span class="o">===</span> joueur <span class="o">&amp;&amp;</span> grille[i + 2][j - 2] <span class="o">===</span> joueur<span class="o">)</span> <span class="o">{</span>
+                    <span class="k">return </span><span class="nb">true</span><span class="p">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return </span><span class="nb">false</span><span class="p">;</span>
+    <span class="o">}</span>
+
+    smart2<span class="o">(</span>grille, joueur<span class="o">)</span> <span class="o">{</span>
+        //Verticales
+        <span class="k">for</span> <span class="o">(</span><span class="nb">let </span>j <span class="o">=</span> 0<span class="p">;</span> j &lt; 7<span class="p">;</span> j++<span class="o">)</span> <span class="o">{</span>
+            <span class="k">for</span> <span class="o">(</span><span class="nb">let </span>i <span class="o">=</span> 0<span class="p">;</span> i &lt; 5<span class="p">;</span> i++<span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span>grille[i][j] <span class="o">===</span> joueur <span class="o">&amp;&amp;</span> grille[i + 1][j] <span class="o">===</span> joueur<span class="o">)</span> <span class="o">{</span>
+                    //console.log<span class="o">(</span>grille<span class="o">)</span>
+                    //console.log<span class="o">(</span><span class="s2">"Verticales"</span><span class="o">)</span>
+                    <span class="k">return </span><span class="nb">true</span><span class="p">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        //Horizontales
+        <span class="k">for</span> <span class="o">(</span><span class="nb">let </span>i <span class="o">=</span> 0<span class="p">;</span> i &lt; 6<span class="p">;</span> i++<span class="o">)</span> <span class="o">{</span>
+            <span class="k">for</span> <span class="o">(</span><span class="nb">let </span>j <span class="o">=</span> 0<span class="p">;</span> j &lt; 6<span class="p">;</span> j++<span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span>grille[i][j] <span class="o">===</span> joueur <span class="o">&amp;&amp;</span> grille[i][j + 1] <span class="o">===</span> joueur<span class="o">)</span> <span class="o">{</span>
+                    //console.log<span class="o">(</span><span class="s2">"Horiontales"</span><span class="o">)</span>
+                    <span class="k">return </span><span class="nb">true</span><span class="p">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        //Oblique /
+        <span class="k">for</span> <span class="o">(</span><span class="nb">let </span>i <span class="o">=</span> 0<span class="p">;</span> i &lt; 5<span class="p">;</span> i++<span class="o">)</span> <span class="o">{</span>
+            <span class="k">for</span> <span class="o">(</span><span class="nb">let </span>j <span class="o">=</span> 0<span class="p">;</span> j &lt; 6<span class="p">;</span> j++<span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span>grille[i][j] <span class="o">===</span> joueur <span class="o">&amp;&amp;</span> grille[i + 1][j + 1] <span class="o">===</span> joueur<span class="o">)</span> <span class="o">{</span>
+                    <span class="k">return </span><span class="nb">true</span><span class="p">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        //Oblique <span class="se">\</span>
+        <span class="k">for</span> <span class="o">(</span><span class="nb">let </span>i <span class="o">=</span> 0<span class="p">;</span> i &lt; 5<span class="p">;</span> i++<span class="o">)</span> <span class="o">{</span>
+            <span class="k">for</span> <span class="o">(</span><span class="nb">let </span>j <span class="o">=</span> 1<span class="p">;</span> j &lt; 7<span class="p">;</span> j++<span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span>grille[i][j] <span class="o">===</span> joueur <span class="o">&amp;&amp;</span> grille[i + 1][j - 1] <span class="o">===</span> joueur<span class="o">)</span> <span class="o">{</span>
+                    <span class="k">return </span><span class="nb">true</span><span class="p">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return </span><span class="nb">false</span><span class="p">;</span>
+
+    <span class="o">}</span>
+
+    heuristique<span class="o">(</span>grille, joueur, colonne<span class="o">)</span> <span class="o">{</span> //Notation des colonnes 
+        var fils <span class="o">=</span> this.create_fils<span class="o">(</span>grille, joueur, colonne<span class="o">)</span><span class="p">;</span>
+        <span class="k">if</span> <span class="o">(</span>fils <span class="o">===</span> null<span class="o">)</span> <span class="k">return </span>0<span class="p">;</span>
+        var note <span class="o">=</span> 0<span class="p">;</span>
+        <span class="k">if</span> <span class="o">(</span>this.smart4<span class="o">(</span>fils, joueur<span class="o">))</span> note +<span class="o">=</span> 100000<span class="p">;</span>
+        
+        <span class="k">if</span> <span class="o">(</span>this.smart4<span class="o">(</span>this.create_fils<span class="o">(</span>grille, 3 - joueur, colonne<span class="o">)</span>, 3 - joueur<span class="o">))</span> note +<span class="o">=</span> 10000<span class="p">;</span>
+
+        <span class="k">if</span> <span class="o">(</span>this.smart3<span class="o">(</span>this.create_fils<span class="o">(</span>grille, 3 - joueur, colonne<span class="o">)</span>, 3 - joueur<span class="o">))</span> note +<span class="o">=</span> 1000<span class="p">;</span>
+        <span class="k">if</span> <span class="o">(</span>this.smart3<span class="o">(</span>fils, joueur<span class="o">))</span> note +<span class="o">=</span> 1000<span class="p">;</span>
+        <span class="k">if</span> <span class="o">(</span>this.smart2<span class="o">(</span>fils, joueur<span class="o">))</span> note +<span class="o">=</span> 100<span class="p">;</span>
+        <span class="k">if</span> <span class="o">(</span>this.smart2<span class="o">(</span>this.create_fils<span class="o">(</span>grille, 3 - joueur, colonne<span class="o">)</span>, 3 - joueur<span class="o">))</span> note +<span class="o">=</span> 10<span class="p">;</span>
+        <span class="k">return </span>note<span class="p">;</span>
+    <span class="o">}</span>
+
+    choix<span class="o">(</span>grille, joueur<span class="o">)</span> <span class="o">{</span>
+        var note <span class="o">=</span> 0, col <span class="o">=</span> 0<span class="p">;</span>
+        <span class="k">for</span> <span class="o">(</span><span class="nb">let </span>j <span class="o">=</span> 0<span class="p">;</span> j &lt; 7<span class="p">;</span> j++<span class="o">)</span> <span class="o">{</span>
+            var h <span class="o">=</span> this.heuristique<span class="o">(</span>grille, joueur, j<span class="o">)</span><span class="p">;</span>
+            <span class="k">if</span> <span class="o">(</span>h <span class="o">&gt;</span> note<span class="o">)</span> <span class="o">{</span>
+                note <span class="o">=</span> h<span class="p">;</span>
+                col <span class="o">=</span> j<span class="p">;</span>
+            <span class="o">}</span>
+
+        <span class="o">}</span>
+        <span class="k">return </span>col<span class="p">;</span>
+    <span class="o">}</span>
+
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="grille">Grille</h2>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import Grilleinner from <span class="s2">"../components/Grilleinner"</span>
+import ReactDOM from <span class="s1">'react-dom'</span><span class="p">;</span>
+import React from <span class="s2">"react"</span>
+import <span class="o">{</span> Link <span class="o">}</span> from <span class="s2">"react-router-dom"</span>
+
+class Grille extends React.Component <span class="o">{</span>
+    constructor<span class="o">(</span>props<span class="o">)</span> <span class="o">{</span>
+        super<span class="o">(</span>props<span class="o">)</span><span class="p">;</span>
+        var courant <span class="o">=</span> Math.floor<span class="o">(</span>Math.random<span class="o">()</span> <span class="k">*</span> 2 + 1<span class="o">)</span><span class="p">;</span>
+        this.state <span class="o">=</span> <span class="o">({</span>
+            grille: <span class="o">([</span>
+                <span class="o">[</span>0, 0, 0, 0, 0, 0, 0,],
+                <span class="o">[</span>0, 0, 0, 0, 0, 0, 0,],
+                <span class="o">[</span>0, 0, 0, 0, 0, 0, 0,],
+                <span class="o">[</span>0, 0, 0, 0, 0, 0, 0,],
+                <span class="o">[</span>0, 0, 0, 0, 0, 0, 0,],
+                <span class="o">[</span>0, 0, 0, 0, 0, 0, 0,],
+            <span class="o">])</span>,
+            grille_hist: <span class="o">([</span>
+                <span class="o">[</span>0, 0, 0, 0, 0, 0, 0,],
+                <span class="o">[</span>0, 0, 0, 0, 0, 0, 0,],
+                <span class="o">[</span>0, 0, 0, 0, 0, 0, 0,],
+                <span class="o">[</span>0, 0, 0, 0, 0, 0, 0,],
+                <span class="o">[</span>0, 0, 0, 0, 0, 0, 0,],
+                <span class="o">[</span>0, 0, 0, 0, 0, 0, 0,],
+            <span class="o">])</span>,
+            joueur: <span class="o">{</span>
+                pseudo: <span class="s2">""</span>,
+                couleur: 1
+            <span class="o">}</span>,
+            jeu: <span class="o">{</span>
+                identifiant: null,
+                niveau: 1,
+                Vainqueur: null,
+                courant: Math.floor<span class="o">(</span>Math.random<span class="o">()</span> <span class="k">*</span> 2 + 1<span class="o">)</span>,
+                messageFin: <span class="s2">"fin"</span>
+            <span class="o">}</span>
+
+
+        <span class="o">})</span>
+    <span class="o">}</span>
+    Color<span class="o">(</span>i<span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span>i <span class="o">===</span> 0<span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="s2">"white"</span><span class="p">;</span>
+        <span class="o">}</span>
+        <span class="k">else if</span> <span class="o">(</span>i <span class="o">===</span> 1<span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="s2">"red"</span>
+        <span class="o">}</span>
+        <span class="k">else if</span> <span class="o">(</span>i <span class="o">===</span> 2<span class="o">)</span> <span class="k">return</span> <span class="s2">"yellow"</span><span class="p">;</span>
+    <span class="o">}</span>
+    render<span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="o">(</span>
+            &lt;div&gt;
+
+                &lt;div <span class="nv">className</span><span class="o">=</span><span class="s2">"sous-titre"</span><span class="o">&gt;</span>
+                    &lt;div&gt;
+                        Jeu <span class="o">{</span>/<span class="k">**</span>Pion <span class="nb">du </span>joueur et bouton de pause à ajouter <span class="k">*</span>/<span class="o">}</span>
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div <span class="nv">className</span><span class="o">=</span><span class="s2">"controles row"</span> <span class="o">&gt;</span>
+                    &lt;div <span class="nv">className</span><span class="o">=</span><span class="s2">"sous-titre col"</span><span class="o">&gt;</span>
+                        &lt;div data-toggle<span class="o">=</span><span class="s2">"modal"</span> data-target<span class="o">=</span><span class="s2">"#pauseModal"</span><span class="o">&gt;</span>
+                            &lt;svg <span class="nv">xmlns</span><span class="o">=</span><span class="s2">"http://www.w3.org/2000/svg"</span> <span class="nv">width</span><span class="o">=</span><span class="s2">"55"</span> <span class="nv">height</span><span class="o">=</span><span class="s2">"55"</span> <span class="nv">fill</span><span class="o">=</span><span class="s2">"white"</span> <span class="nv">className</span><span class="o">=</span><span class="s2">"bi bi-pause-fill"</span> <span class="nv">viewBox</span><span class="o">=</span><span class="s2">"0 0 16 16"</span><span class="o">&gt;</span>
+                                &lt;path <span class="nv">d</span><span class="o">=</span><span class="s2">"M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z"</span> /&gt;
+                            &lt;/svg&gt;
+                            <span class="o">{</span>/<span class="k">*</span> Modal à ajouter pour la pause <span class="k">*</span>/<span class="o">}</span>
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div <span class="nv">className</span><span class="o">=</span><span class="s2">"sous-titre col"</span><span class="o">&gt;</span>
+                        &lt;div&gt;Vous êtes:&lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div <span class="nv">className</span><span class="o">=</span><span class="s2">"sous-titre col"</span><span class="o">&gt;</span>
+                        &lt;div&gt;
+                            &lt;svg <span class="nv">viewBox</span><span class="o">=</span><span class="s2">"0 0 100 100"</span> <span class="nv">xmlns</span><span class="o">=</span><span class="s2">"http://www.w3.org/2000/svg"</span><span class="o">&gt;</span>
+                                &lt;circle <span class="nv">fill</span><span class="o">=</span><span class="s2">"yellow"</span> <span class="nv">cx</span><span class="o">=</span><span class="s2">"30"</span> <span class="nv">cy</span><span class="o">=</span><span class="s2">"30"</span> <span class="nv">r</span><span class="o">=</span><span class="s2">"30"</span> /&gt;
+                            &lt;/svg&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;Grilleinner <span class="nv">data</span><span class="o">={</span>this.state<span class="o">}</span> /&gt;
+
+            &lt;/div <span class="o">&gt;</span>
+        <span class="o">)</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+
+<span class="nb">export </span>default Grille<span class="p">;</span>
+
+</code></pre></div></div>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import React from <span class="s2">"react"</span>
+import IA from <span class="s2">"./IA"</span><span class="p">;</span>
+
+<span class="nb">export </span>default class Grilleinner extends React.Component <span class="o">{</span>
+    constructor<span class="o">(</span>props<span class="o">)</span> <span class="o">{</span>
+        super<span class="o">(</span>props<span class="o">)</span>
+        this.state <span class="o">=</span> <span class="o">{</span>
+            data: props.data,
+            messageFin: <span class="s2">"Fin du jeu"</span>
+        <span class="o">}</span><span class="p">;</span>
+
+    <span class="o">}</span>
+    messageFin <span class="o">=</span> <span class="s2">""</span>
+    color<span class="o">(</span>i, j<span class="o">)</span> <span class="o">{</span>
+        var num <span class="o">=</span> this.props.data.grille[i][j]
+        //console.log<span class="o">(</span>num<span class="o">)</span>
+        //var num <span class="o">=</span> 2<span class="p">;</span>
+        <span class="k">if</span> <span class="o">(</span>num <span class="o">===</span> 0<span class="o">)</span> <span class="k">return</span> <span class="s2">"white"</span>
+        <span class="k">else if</span> <span class="o">(</span>num <span class="o">===</span> 1<span class="o">)</span> <span class="k">return</span> <span class="s2">"yellow"</span>
+        <span class="k">else if</span> <span class="o">(</span>num <span class="o">===</span> 2<span class="o">)</span> <span class="k">return</span> <span class="s2">"red"</span><span class="p">;</span>
+
+    <span class="o">}</span>
+    update_color<span class="o">(</span>joueur<span class="o">)</span> <span class="o">{</span>
+
+        <span class="k">for</span> <span class="o">(</span><span class="nb">let </span>j <span class="o">=</span> 0<span class="p">;</span> j &lt; 7<span class="p">;</span> j++<span class="o">)</span> <span class="o">{</span>
+            <span class="k">for</span> <span class="o">(</span><span class="nb">let </span>i <span class="o">=</span> 0<span class="p">;</span> i &lt; 6<span class="p">;</span> i++<span class="o">)</span> <span class="o">{</span>
+
+                var el <span class="o">=</span> document.getElementById<span class="o">(</span><span class="s2">"col"</span> + j<span class="o">)</span>.querySelector<span class="o">(</span><span class="s2">".l"</span> + i<span class="o">)</span><span class="p">;</span>
+                var num <span class="o">=</span> this.props.data.grille[i][j]
+                var couleur <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
+                <span class="k">if</span> <span class="o">(</span>num <span class="o">===</span> 0<span class="o">)</span> couleur <span class="o">=</span> <span class="s2">"white"</span>
+                <span class="k">else if</span> <span class="o">(</span>num <span class="o">===</span> 1<span class="o">)</span> couleur <span class="o">=</span> <span class="s2">"yellow"</span>
+                <span class="k">else if</span> <span class="o">(</span>num <span class="o">===</span> 2<span class="o">)</span> couleur <span class="o">=</span> <span class="s2">"red"</span><span class="p">;</span>
+                el.style.backgroundColor <span class="o">=</span> couleur<span class="p">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+
+        this.fin_jeu<span class="o">(</span>joueur<span class="o">)</span><span class="p">;</span>
+    <span class="o">}</span>
+    placement_machine<span class="o">()</span> <span class="o">{</span>
+        //console.log<span class="o">(</span><span class="s2">"Placement de la machine"</span><span class="o">)</span><span class="p">;</span>
+        <span class="k">if</span> <span class="o">(</span>this.props.data.jeu.courant <span class="o">===</span> 3 - this.props.data.joueur.couleur<span class="o">)</span> <span class="o">{</span>
+            var libres <span class="o">=</span> <span class="o">[]</span><span class="p">;</span>
+            <span class="k">for</span> <span class="o">(</span><span class="nb">let </span>j <span class="o">=</span> 0<span class="p">;</span> j &lt; 7<span class="p">;</span> j++<span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span>this.props.data.grille[5][j] <span class="o">===</span> 0<span class="o">)</span> <span class="o">{</span>
+                    libres.push<span class="o">(</span>j<span class="o">)</span><span class="p">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+            //console.log<span class="o">(</span><span class="s2">"libres:"</span> + libres<span class="o">)</span>
+            //var choix <span class="o">=</span> libres[Math.floor<span class="o">(</span>Math.random<span class="o">()</span> <span class="k">*</span> libres.length<span class="o">)]</span> //Choix de la machine
+
+            var choix <span class="o">=</span> <span class="o">(</span>new IA<span class="o">())</span>.choix<span class="o">((</span>new IA<span class="o">())</span>.cp_grille<span class="o">(</span>this.props.data.grille<span class="o">)</span>, 2<span class="o">)</span>
+            console.log<span class="o">(</span><span class="s2">"choix machine:"</span> + choix<span class="o">)</span>
+            <span class="k">for</span> <span class="o">(</span><span class="nb">let </span>i <span class="o">=</span> 0<span class="p">;</span> i &lt; 6<span class="p">;</span> i++<span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span>this.props.data.grille[i][choix] <span class="o">===</span> 0<span class="o">)</span> <span class="o">{</span>
+                    this.props.data.grille[i][choix] <span class="o">=</span> 3 - this.props.data.joueur.couleur
+                    this.update_color<span class="o">(</span>3 - this.props.data.joueur.couleur<span class="o">)</span><span class="p">;</span>
+                    this.props.data.jeu.courant <span class="o">=</span> 3 - this.props.data.jeu.courant<span class="p">;</span>
+                    //console.log<span class="o">(</span>this.props.data.grille<span class="o">)</span>
+                    <span class="k">return</span><span class="p">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    handleClick<span class="o">(</span>j<span class="o">)</span> <span class="o">{</span>
+        //console.log<span class="o">(</span><span class="s2">"Click handled"</span><span class="o">)</span><span class="p">;</span>
+
+        //console.log<span class="o">(</span><span class="s2">"courant: "</span> + this.props.data.jeu.courant<span class="o">)</span>
+        <span class="k">if</span> <span class="o">(</span>this.props.data.jeu.courant <span class="o">===</span> this.props.data.joueur.couleur<span class="o">)</span> <span class="o">{</span>
+            <span class="k">for</span> <span class="o">(</span><span class="nb">let </span>i <span class="o">=</span> 0<span class="p">;</span> i &lt; 6<span class="p">;</span> i++<span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span>this.props.data.grille[i][j] <span class="o">===</span> 0<span class="o">)</span> <span class="o">{</span>
+                    this.props.data.grille[i][j] <span class="o">=</span> this.props.data.joueur.couleur
+                    this.update_color<span class="o">(</span>this.props.data.joueur.couleur<span class="o">)</span><span class="p">;</span>
+                    this.props.data.jeu.courant <span class="o">=</span> 3 - this.props.data.jeu.courant<span class="p">;</span>
+
+                    //console.log<span class="o">(</span>this.props.data.grille<span class="o">)</span>
+
+                    this.placement_machine<span class="o">()</span>
+                    <span class="k">return</span><span class="p">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span> this.placement_machine<span class="o">()</span>
+
+
+    <span class="o">}</span>
+
+    fin_jeu<span class="o">(</span>joueur<span class="o">)</span> <span class="o">{</span>
+
+        <span class="k">if</span> <span class="o">(</span>this.smart<span class="o">(</span>joueur<span class="o">))</span> <span class="o">{</span>
+
+            //this.state.messageFin <span class="o">=</span> <span class="s2">"Jeu terminé. Le vainqueur est le joueur n°"</span> + joueur<span class="p">;</span>
+            this.setState<span class="o">({</span>
+                messageFin: <span class="s2">"Jeu terminé. Le vainqueur est le joueur n°"</span> + joueur
+            <span class="o">})</span>
+            console.log<span class="o">(</span>this.state.messageFin<span class="o">)</span>
+            this.props.data.jeu.courant <span class="o">=</span> 0<span class="p">;</span>
+            this.props.data.jeu.messageFin <span class="o">=</span> <span class="s2">"Jeu terminé. Vainqueur; joueur n°"</span> + joueur
+            document.getElementById<span class="o">(</span><span class="s2">"finjeu"</span><span class="o">)</span>.click<span class="o">()</span><span class="p">;</span>
+            <span class="k">return </span><span class="nb">true</span><span class="p">;</span>
+        <span class="o">}</span>
+
+        <span class="k">for</span> <span class="o">(</span><span class="nb">let </span>i <span class="o">=</span> 0<span class="p">;</span> i &lt; 6<span class="p">;</span> i++<span class="o">)</span> <span class="o">{</span>
+            <span class="k">for</span> <span class="o">(</span><span class="nb">let </span>j <span class="o">=</span> 0<span class="p">;</span> j &lt; 7<span class="p">;</span> j++<span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span>this.props.data.grille[i][j] <span class="o">===</span> 0<span class="o">)</span> <span class="k">return </span><span class="nb">false</span><span class="p">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        this.props.data.jeu.courant <span class="o">=</span> 0<span class="p">;</span>
+        console.log<span class="o">(</span><span class="s2">"Jeu terminé, grille pleine"</span><span class="o">)</span><span class="p">;</span>
+        this.props.data.jeu.messageFin <span class="o">=</span> <span class="s2">"Jeu terminé, grille pleine"</span><span class="p">;</span>
+        document.getElementById<span class="o">(</span><span class="s2">"finjeu"</span><span class="o">)</span>.click<span class="o">()</span><span class="p">;</span>
+        <span class="k">return </span><span class="nb">true</span><span class="p">;</span>
+    <span class="o">}</span>
+    smart<span class="o">(</span>joueur<span class="o">)</span> <span class="o">{</span>
+        const grille <span class="o">=</span> this.props.data.grille<span class="p">;</span>
+        //Verticales
+        <span class="k">for</span> <span class="o">(</span><span class="nb">let </span>j <span class="o">=</span> 0<span class="p">;</span> j &lt; 7<span class="p">;</span> j++<span class="o">)</span> <span class="o">{</span>
+            <span class="k">for</span> <span class="o">(</span><span class="nb">let </span>i <span class="o">=</span> 0<span class="p">;</span> i &lt; 3<span class="p">;</span> i++<span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span>grille[i][j] <span class="o">===</span> joueur <span class="o">&amp;&amp;</span> grille[i + 1][j] <span class="o">===</span> joueur <span class="o">&amp;&amp;</span> grille[i + 2][j] <span class="o">===</span> joueur <span class="o">&amp;&amp;</span> grille[i + 3][j] <span class="o">===</span> joueur<span class="o">)</span> <span class="o">{</span>
+                    //console.log<span class="o">(</span>grille<span class="o">)</span>
+                    //console.log<span class="o">(</span><span class="s2">"Verticales"</span><span class="o">)</span>
+                    <span class="k">return </span><span class="nb">true</span><span class="p">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        //Horizontales
+        <span class="k">for</span> <span class="o">(</span><span class="nb">let </span>i <span class="o">=</span> 0<span class="p">;</span> i &lt; 6<span class="p">;</span> i++<span class="o">)</span> <span class="o">{</span>
+            <span class="k">for</span> <span class="o">(</span><span class="nb">let </span>j <span class="o">=</span> 0<span class="p">;</span> j &lt; 4<span class="p">;</span> j++<span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span>grille[i][j] <span class="o">===</span> joueur <span class="o">&amp;&amp;</span> grille[i][j + 1] <span class="o">===</span> joueur <span class="o">&amp;&amp;</span> grille[i][j + 2] <span class="o">===</span> joueur <span class="o">&amp;&amp;</span> grille[i][j + 3] <span class="o">===</span> joueur<span class="o">)</span> <span class="o">{</span>
+                    //console.log<span class="o">(</span><span class="s2">"Horiontales"</span><span class="o">)</span>
+                    <span class="k">return </span><span class="nb">true</span><span class="p">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        //Oblique /
+        <span class="k">for</span> <span class="o">(</span><span class="nb">let </span>i <span class="o">=</span> 0<span class="p">;</span> i &lt; 3<span class="p">;</span> i++<span class="o">)</span> <span class="o">{</span>
+            <span class="k">for</span> <span class="o">(</span><span class="nb">let </span>j <span class="o">=</span> 0<span class="p">;</span> j &lt; 4<span class="p">;</span> j++<span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span>grille[i][j] <span class="o">===</span> joueur <span class="o">&amp;&amp;</span> grille[i + 1][j + 1] <span class="o">===</span> joueur <span class="o">&amp;&amp;</span> grille[i + 2][j + 2] <span class="o">===</span> joueur <span class="o">&amp;&amp;</span> grille[i + 3][j + 3] <span class="o">===</span> joueur<span class="o">)</span> <span class="o">{</span>
+                    <span class="k">return </span><span class="nb">true</span><span class="p">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        //Oblique <span class="se">\</span>
+        <span class="k">for</span> <span class="o">(</span><span class="nb">let </span>i <span class="o">=</span> 0<span class="p">;</span> i &lt; 3<span class="p">;</span> i++<span class="o">)</span> <span class="o">{</span>
+            <span class="k">for</span> <span class="o">(</span><span class="nb">let </span>j <span class="o">=</span> 3<span class="p">;</span> j &lt; 7<span class="p">;</span> j++<span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span>grille[i][j] <span class="o">===</span> joueur <span class="o">&amp;&amp;</span> grille[i + 1][j - 1] <span class="o">===</span> joueur <span class="o">&amp;&amp;</span> grille[i + 2][j - 2] <span class="o">===</span> joueur <span class="o">&amp;&amp;</span> grille[i + 3][j - 3] <span class="o">===</span> joueur<span class="o">)</span> <span class="o">{</span>
+                    <span class="k">return </span><span class="nb">true</span><span class="p">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+
+        <span class="k">return </span><span class="nb">false</span><span class="p">;</span>
+    <span class="o">}</span>
+
+
+    render<span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="o">(</span>
+            &lt;div&gt;
+                &lt;div <span class="nv">className</span><span class="o">=</span><span class="s2">"grille"</span><span class="o">&gt;</span>
+                    &lt;div <span class="nb">id</span><span class="o">=</span><span class="s2">"col0"</span> <span class="nv">onClick</span><span class="o">={()</span> <span class="o">=&gt;</span> this.handleClick<span class="o">(</span>0<span class="o">)}&gt;</span>
+                        &lt;div <span class="nv">className</span><span class="o">={</span><span class="s2">"l5 p "</span><span class="o">}&gt;</span>&lt;/div&gt;
+                        &lt;div <span class="nv">className</span><span class="o">={</span><span class="s2">"l4 p "</span><span class="o">}&gt;</span>&lt;/div&gt;
+                        &lt;div <span class="nv">className</span><span class="o">={</span><span class="s2">"l3 p "</span><span class="o">}&gt;</span>&lt;/div&gt;
+                        &lt;div <span class="nv">className</span><span class="o">={</span><span class="s2">"l2 p "</span><span class="o">}&gt;</span>&lt;/div&gt;
+                        &lt;div <span class="nv">className</span><span class="o">={</span><span class="s2">"l1 p "</span><span class="o">}&gt;</span>&lt;/div&gt;
+                        &lt;div <span class="nv">className</span><span class="o">={</span><span class="s2">"l0 p "</span><span class="o">}&gt;</span>&lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div <span class="nb">id</span><span class="o">=</span><span class="s2">"col1"</span> <span class="nv">onClick</span><span class="o">={()</span> <span class="o">=&gt;</span> this.handleClick<span class="o">(</span>1<span class="o">)}&gt;</span>
+                        &lt;div <span class="nv">className</span><span class="o">={</span><span class="s2">"l5 p "</span><span class="o">}&gt;</span>&lt;/div&gt;
+                        &lt;div <span class="nv">className</span><span class="o">={</span><span class="s2">"l4 p "</span><span class="o">}&gt;</span>&lt;/div&gt;
+                        &lt;div <span class="nv">className</span><span class="o">={</span><span class="s2">"l3 p "</span><span class="o">}&gt;</span>&lt;/div&gt;
+                        &lt;div <span class="nv">className</span><span class="o">={</span><span class="s2">"l2 p "</span><span class="o">}&gt;</span>&lt;/div&gt;
+                        &lt;div <span class="nv">className</span><span class="o">={</span><span class="s2">"l1 p "</span><span class="o">}&gt;</span>&lt;/div&gt;
+                        &lt;div <span class="nv">className</span><span class="o">={</span><span class="s2">"l0 p "</span><span class="o">}&gt;</span>&lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div <span class="nb">id</span><span class="o">=</span><span class="s2">"col2"</span> <span class="nv">onClick</span><span class="o">={()</span> <span class="o">=&gt;</span> this.handleClick<span class="o">(</span>2<span class="o">)}&gt;</span>
+                        &lt;div <span class="nv">className</span><span class="o">={</span><span class="s2">"l5 p"</span><span class="o">}&gt;</span>&lt;/div&gt;
+                        &lt;div <span class="nv">className</span><span class="o">={</span><span class="s2">"l4 p"</span><span class="o">}&gt;</span>&lt;/div&gt;
+                        &lt;div <span class="nv">className</span><span class="o">={</span><span class="s2">"l3 p"</span><span class="o">}&gt;</span>&lt;/div&gt;
+                        &lt;div <span class="nv">className</span><span class="o">={</span><span class="s2">"l2 p"</span><span class="o">}&gt;</span>&lt;/div&gt;
+                        &lt;div <span class="nv">className</span><span class="o">={</span><span class="s2">"l1 p"</span><span class="o">}&gt;</span>&lt;/div&gt;
+                        &lt;div <span class="nv">className</span><span class="o">={</span><span class="s2">"l0 p"</span><span class="o">}&gt;</span>&lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div <span class="nb">id</span><span class="o">=</span><span class="s2">"col3"</span> <span class="nv">onClick</span><span class="o">={()</span> <span class="o">=&gt;</span> this.handleClick<span class="o">(</span>3<span class="o">)}&gt;</span>
+                        &lt;div <span class="nv">className</span><span class="o">={</span><span class="s2">"l5 p"</span><span class="o">}&gt;</span>&lt;/div&gt;
+                        &lt;div <span class="nv">className</span><span class="o">={</span><span class="s2">"l4 p"</span><span class="o">}&gt;</span>&lt;/div&gt;
+                        &lt;div <span class="nv">className</span><span class="o">={</span><span class="s2">"l3 p"</span><span class="o">}&gt;</span>&lt;/div&gt;
+                        &lt;div <span class="nv">className</span><span class="o">={</span><span class="s2">"l2 p"</span><span class="o">}&gt;</span>&lt;/div&gt;
+                        &lt;div <span class="nv">className</span><span class="o">={</span><span class="s2">"l1 p"</span><span class="o">}&gt;</span>&lt;/div&gt;
+                        &lt;div <span class="nv">className</span><span class="o">={</span><span class="s2">"l0 p"</span><span class="o">}&gt;</span>&lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div <span class="nb">id</span><span class="o">=</span><span class="s2">"col4"</span> <span class="nv">onClick</span><span class="o">={()</span> <span class="o">=&gt;</span> this.handleClick<span class="o">(</span>4<span class="o">)}&gt;</span>
+                        &lt;div <span class="nv">className</span><span class="o">={</span><span class="s2">"l5 p"</span><span class="o">}&gt;</span>&lt;/div&gt;
+                        &lt;div <span class="nv">className</span><span class="o">={</span><span class="s2">"l4 p"</span><span class="o">}&gt;</span>&lt;/div&gt;
+                        &lt;div <span class="nv">className</span><span class="o">={</span><span class="s2">"l3 p"</span><span class="o">}&gt;</span>&lt;/div&gt;
+                        &lt;div <span class="nv">className</span><span class="o">={</span><span class="s2">"l2 p"</span><span class="o">}&gt;</span>&lt;/div&gt;
+                        &lt;div <span class="nv">className</span><span class="o">={</span><span class="s2">"l1 p"</span><span class="o">}&gt;</span>&lt;/div&gt;
+                        &lt;div <span class="nv">className</span><span class="o">={</span><span class="s2">"l0 p"</span><span class="o">}&gt;</span>&lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div <span class="nb">id</span><span class="o">=</span><span class="s2">"col5"</span> <span class="nv">onClick</span><span class="o">={()</span> <span class="o">=&gt;</span> this.handleClick<span class="o">(</span>5<span class="o">)}&gt;</span>
+                        &lt;div <span class="nv">className</span><span class="o">={</span><span class="s2">"l5 p"</span><span class="o">}&gt;</span>&lt;/div&gt;
+                        &lt;div <span class="nv">className</span><span class="o">={</span><span class="s2">"l4 p"</span><span class="o">}&gt;</span>&lt;/div&gt;
+                        &lt;div <span class="nv">className</span><span class="o">={</span><span class="s2">"l3 p"</span><span class="o">}&gt;</span>&lt;/div&gt;
+                        &lt;div <span class="nv">className</span><span class="o">={</span><span class="s2">"l2 p"</span><span class="o">}&gt;</span>&lt;/div&gt;
+                        &lt;div <span class="nv">className</span><span class="o">={</span><span class="s2">"l1 p"</span><span class="o">}&gt;</span>&lt;/div&gt;
+                        &lt;div <span class="nv">className</span><span class="o">={</span><span class="s2">"l0 p"</span><span class="o">}&gt;</span>&lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div <span class="nb">id</span><span class="o">=</span><span class="s2">"col6"</span> <span class="nv">onClick</span><span class="o">={()</span> <span class="o">=&gt;</span> this.handleClick<span class="o">(</span>6<span class="o">)}&gt;</span>
+                        &lt;div <span class="nv">className</span><span class="o">={</span><span class="s2">"l5 p"</span><span class="o">}&gt;</span>&lt;/div&gt;
+                        &lt;div <span class="nv">className</span><span class="o">={</span><span class="s2">"l4 p"</span><span class="o">}&gt;</span>&lt;/div&gt;
+                        &lt;div <span class="nv">className</span><span class="o">={</span><span class="s2">"l3 p"</span><span class="o">}&gt;</span>&lt;/div&gt;
+                        &lt;div <span class="nv">className</span><span class="o">={</span><span class="s2">"l2 p"</span><span class="o">}&gt;</span>&lt;/div&gt;
+                        &lt;div <span class="nv">className</span><span class="o">={</span><span class="s2">"l1 p"</span><span class="o">}&gt;</span>&lt;/div&gt;
+                        &lt;div <span class="nv">className</span><span class="o">={</span><span class="s2">"l0 p"</span><span class="o">}&gt;</span>&lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+
+                <span class="o">{</span>/<span class="k">*</span><span class="nt">--</span> Pause Modal <span class="nt">--</span><span class="k">*</span>/<span class="o">}</span>
+                &lt;div <span class="nv">className</span><span class="o">=</span><span class="s2">"modal fade"</span> <span class="nb">id</span><span class="o">=</span><span class="s2">"pauseModal"</span> <span class="nv">tabIndex</span><span class="o">=</span><span class="s2">"-1"</span> <span class="nv">role</span><span class="o">=</span><span class="s2">"dialog"</span> aria-labelledby<span class="o">=</span><span class="s2">"exampleModalCenterTitle"</span> aria-hidden<span class="o">=</span><span class="s2">"true"</span><span class="o">&gt;</span>
+                    &lt;div <span class="nv">className</span><span class="o">=</span><span class="s2">"modal-dialog modal-dialog-centered"</span> <span class="nv">role</span><span class="o">=</span><span class="s2">"document"</span><span class="o">&gt;</span>
+                        &lt;div <span class="nv">className</span><span class="o">=</span><span class="s2">"modal-content"</span><span class="o">&gt;</span>
+                            &lt;div <span class="nv">className</span><span class="o">=</span><span class="s2">"modal-header"</span><span class="o">&gt;</span>
+                                &lt;h5 <span class="nv">className</span><span class="o">=</span><span class="s2">"modal-title"</span> <span class="nb">id</span><span class="o">=</span><span class="s2">"pauseModalLongTitle"</span><span class="o">&gt;</span> Pause&lt;/h5&gt;
+                                &lt;button <span class="nb">type</span><span class="o">=</span><span class="s2">"button"</span> <span class="nv">className</span><span class="o">=</span><span class="s2">"close"</span> data-dismiss<span class="o">=</span><span class="s2">"modal"</span> aria-label<span class="o">=</span><span class="s2">"Close"</span><span class="o">&gt;</span>
+                                    &lt;span aria-hidden<span class="o">=</span><span class="s2">"true"</span><span class="o">&gt;</span>&amp;times<span class="p">;</span>&lt;/span&gt;
+                                &lt;/button&gt;
+                            &lt;/div&gt;
+                            &lt;div <span class="nv">className</span><span class="o">=</span><span class="s2">"modal-body"</span><span class="o">&gt;</span>
+                                Arrêt de jeu
+                                Vous pouvez continuer à tout moment.
+                            &lt;/div&gt;
+                            &lt;div <span class="nv">className</span><span class="o">=</span><span class="s2">"modal-footer"</span><span class="o">&gt;</span>
+
+                                &lt;button <span class="nb">type</span><span class="o">=</span><span class="s2">"button"</span> <span class="nv">className</span><span class="o">=</span><span class="s2">"btn btn-secondary"</span> data-dismiss<span class="o">=</span><span class="s2">"modal"</span> <span class="o">&gt;</span>Quitter&lt;/button&gt;
+
+                                &lt;button <span class="nb">type</span><span class="o">=</span><span class="s2">"button"</span> <span class="nv">className</span><span class="o">=</span><span class="s2">"btn btn-primary"</span> data-dismiss<span class="o">=</span><span class="s2">"modal"</span> aria-label<span class="o">=</span><span class="s2">"Close"</span><span class="o">&gt;</span>Continuer&lt;/button&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                <span class="o">{</span>/<span class="k">**</span>Fin jeu Modal  <span class="k">*</span>/<span class="o">}</span>
+                &lt;div <span class="nb">id</span><span class="o">=</span><span class="s2">"finjeu"</span> data-toggle<span class="o">=</span><span class="s2">"modal"</span> data-target<span class="o">=</span><span class="s2">"#finjeuModal"</span> <span class="o">&gt;</span>
+
+                &lt;/div&gt;
+                &lt;div <span class="nv">className</span><span class="o">=</span><span class="s2">"modal fade"</span> <span class="nb">id</span><span class="o">=</span><span class="s2">"finjeuModal"</span> <span class="nv">tabIndex</span><span class="o">=</span><span class="s2">"-1"</span> <span class="nv">role</span><span class="o">=</span><span class="s2">"dialog"</span> aria-labelledby<span class="o">=</span><span class="s2">"exampleModalLabel"</span> aria-hidden<span class="o">=</span><span class="s2">"true"</span><span class="o">&gt;</span>
+                    &lt;div <span class="nv">className</span><span class="o">=</span><span class="s2">"modal-dialog"</span> <span class="nv">role</span><span class="o">=</span><span class="s2">"document"</span><span class="o">&gt;</span>
+                        &lt;div <span class="nv">className</span><span class="o">=</span><span class="s2">"modal-content"</span><span class="o">&gt;</span>
+                            &lt;div <span class="nv">className</span><span class="o">=</span><span class="s2">"modal-header"</span><span class="o">&gt;</span>
+                                &lt;h5 <span class="nv">className</span><span class="o">=</span><span class="s2">"modal-title"</span> <span class="nb">id</span><span class="o">=</span><span class="s2">"exampleModalLabel"</span><span class="o">&gt;</span>The end!!!&lt;/h5&gt;
+                                &lt;button <span class="nb">type</span><span class="o">=</span><span class="s2">"button"</span> <span class="nv">className</span><span class="o">=</span><span class="s2">"close"</span> data-dismiss<span class="o">=</span><span class="s2">"modal"</span> aria-label<span class="o">=</span><span class="s2">"Close"</span><span class="o">&gt;</span>
+                                    &lt;span aria-hidden<span class="o">=</span><span class="s2">"true"</span><span class="o">&gt;</span>&amp;times<span class="p">;</span>&lt;/span&gt;
+                                &lt;/button&gt;
+                            &lt;/div&gt;
+                            &lt;div <span class="nv">className</span><span class="o">=</span><span class="s2">"modal-body"</span><span class="o">&gt;</span>
+                                <span class="o">{</span>this.state.messageFin<span class="o">}</span>
+                            &lt;/div&gt;
+                            &lt;div <span class="nv">className</span><span class="o">=</span><span class="s2">"modal-footer"</span><span class="o">&gt;</span>
+                                &lt;button <span class="nb">type</span><span class="o">=</span><span class="s2">"button"</span> <span class="nv">className</span><span class="o">=</span><span class="s2">"btn btn-secondary"</span> data-dismiss<span class="o">=</span><span class="s2">"modal"</span><span class="o">&gt;</span>Quitter&lt;/button&gt;
+                                &lt;button <span class="nb">type</span><span class="o">=</span><span class="s2">"button"</span> <span class="nv">className</span><span class="o">=</span><span class="s2">"btn btn-primary"</span> data-dismiss<span class="o">=</span><span class="s2">"modal"</span> aria-label<span class="o">=</span><span class="s2">"Close"</span><span class="o">&gt;</span>Nouvelle Partie&lt;/button&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+            &lt;/div&gt;
+
+
+        <span class="o">)</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d'informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d'informatique</li>
+</ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+<ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d'informatique de François Brucker.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

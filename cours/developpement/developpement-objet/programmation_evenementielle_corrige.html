@@ -11,15 +11,15 @@
 <meta property="og:title" content="Programmation événementielle corrigé">
 <meta name="author" content="François Brucker">
 <meta property="og:locale" content="en_US">
-<meta name="description" content="Support de cours/td d’informatique à l’école centrale marseille.">
-<meta property="og:description" content="Support de cours/td d’informatique à l’école centrale marseille.">
+<meta name="description" content="Support de cours/td d’informatique de François Brucker.">
+<meta property="og:description" content="Support de cours/td d’informatique de François Brucker.">
 <link rel="canonical" href="/cours_informatique/cours/developpement/developpement-objet/programmation_evenementielle_corrige.html">
 <meta property="og:url" content="/cours_informatique/cours/developpement/developpement-objet/programmation_evenementielle_corrige.html">
 <meta property="og:site_name" content="cours d’informatique">
 <meta name="twitter:card" content="summary">
 <meta property="twitter:title" content="Programmation événementielle corrigé">
 <script type="application/ld+json">
-{"description":"Support de cours/td d’informatique à l’école centrale marseille.","author":{"@type":"Person","name":"François Brucker"},"@type":"WebPage","url":"/cours_informatique/cours/developpement/developpement-objet/programmation_evenementielle_corrige.html","headline":"Programmation événementielle corrigé","@context":"https://schema.org"}</script>
+{"description":"Support de cours/td d’informatique de François Brucker.","@type":"WebPage","author":{"@type":"Person","name":"François Brucker"},"url":"/cours_informatique/cours/developpement/developpement-objet/programmation_evenementielle_corrige.html","headline":"Programmation événementielle corrigé","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
@@ -547,7 +547,37 @@ La seconde essai sur un exemple différent de 0.</p>
 
 <p>Pour https://www.planttext.com/</p>
 
-<pre><code class="language-uml">&lt;img class="plantuml" src="http://www.plantuml.com/plantuml/svg/~h407374617274756d6c0a407374617274756d6c0a0a7469746c65204d6f64c3a86c65204d56430a0a0a636c61737320567565207b0a20202d207374722074657874650a20202d20626f75746f6e0a20200a20202b20737472206765745f746578746528290a20202b207365745f746578746528737472290a20202b206173736f6369655f616374696f6e28666374290a7d0a0a0a636c617373204d6f64c3a86c65207b0a202020202d20696e742076616c6575720a202020200a202020202b696e74206765745f76616c65757228290a202020202b207365745f76616c65757228696e74290a7d0a636c61737320436f6e7472c3b46c657572207b0a20202b20616a6f7574655f3128290a7d0a0a567565203c7c2d75702d204d6f64c3a86c653a204d69736520c3a0206a6f75720a436f6e7472c3b46c65757220203c7c2d75702d7c3e205675650a436f6e7472c3b46c65757220203c7c2d75702d7c3e204d6f64c3a86c650a0a40656e64756d6c"&gt;
+<pre><code class="language-uml">@startuml
+@startuml
+
+title Modèle MVC
+
+
+class Vue {
+  - str texte
+  - bouton
+  
+  + str get_texte()
+  + set_texte(str)
+  + associe_action(fct)
+}
+
+
+class Modèle {
+    - int valeur
+    
+    +int get_valeur()
+    + set_valeur(int)
+}
+class Contrôleur {
+  + ajoute_1()
+}
+
+Vue &lt;|-up- Modèle: Mise à jour
+Contrôleur  &lt;|-up-|&gt; Vue
+Contrôleur  &lt;|-up-|&gt; Modèle
+
+@enduml
 </code></pre>
 
   </div>
@@ -574,7 +604,7 @@ La seconde essai sur un exemple différent de 0.</p>
 </div>
 
       <div class="footer-col footer-col-3">
-        <p>Support de cours/td d'informatique à l'école centrale marseille.</p>
+        <p>Support de cours/td d'informatique de François Brucker.</p>
       </div>
     </div>
 

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Configuration Pycharm | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0">
+<meta property="og:title" content="Configuration Pycharm">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Le but de ce tutoriel est d’installer une distribution python avec anaconda et l’IDE pycharm. On suppose que vous avez déjà installé une distribution python avec anaconda.">
+<meta property="og:description" content="Le but de ce tutoriel est d’installer une distribution python avec anaconda et l’IDE pycharm. On suppose que vous avez déjà installé une distribution python avec anaconda.">
+<link rel="canonical" href="/cours_informatique/tutoriels/editeur/pycharm/2021-08-30-configuration-pycharm.html">
+<meta property="og:url" content="/cours_informatique/tutoriels/editeur/pycharm/2021-08-30-configuration-pycharm.html">
+<meta property="og:site_name" content="cours d’informatique">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-08-30T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Configuration Pycharm">
+<script type="application/ld+json">
+{"dateModified":"2021-08-30T00:00:00+00:00","datePublished":"2021-08-30T00:00:00+00:00","description":"Le but de ce tutoriel est d’installer une distribution python avec anaconda et l’IDE pycharm. On suppose que vous avez déjà installé une distribution python avec anaconda.","mainEntityOfPage":{"@type":"WebPage","@id":"/cours_informatique/tutoriels/editeur/pycharm/2021-08-30-configuration-pycharm.html"},"@type":"BlogPosting","url":"/cours_informatique/tutoriels/editeur/pycharm/2021-08-30-configuration-pycharm.html","headline":"Configuration Pycharm","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css">
+
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css">
+
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique">
+</head>
+
+<body>
+<header class="site-header" role="banner">
+
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/cours_informatique/">cours d'informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav>
+</div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Configuration Pycharm</h1>
+  </header>
+
+  <div class="post-content">
+    <p>Le but de ce tutoriel est d’installer une distribution python avec <a href="https://www.anaconda.com/">anaconda</a> et l’IDE <a href="https://www.jetbrains.com/fr-fr/pycharm/">pycharm</a>. On suppose que vous avez déjà installé une distribution python avec anaconda.</p>
+
+<h2 id="pycharm">pycharm</h2>
+
+<p>Commencez par <a href="https://www.jetbrains.com/fr-fr/pycharm/download">télécharger</a> la version professionnels de <em>pycharm</em>. En temps qu’étudiant vous avez droit à une licence gratuite pendant 1an (renouvelable temps que vous êtes étudiant). Puis installez le logiciel.</p>
+
+<h3 id="lier-anaconda-et-pycharm">lier anaconda et pycharm</h3>
+
+<p>Lorsque vous lancez <em>pycharm</em> une fenêtre de choix apparaît.</p>
+
+<ol>
+  <li>Créez un nouveau projet</li>
+  <li>une fenêtre apparaît, vous demandant quel type de projet vous voulez faire. Choisissez <em>pure Python</em> et à droite :
+    <ul>
+      <li>choisissez un dossier où vous mettrez votre projet</li>
+      <li>décochez la case <em>“Create a main.py welcome script”</em>
+</li>
+      <li>cliquez sur le triangle pour étendre la partie consacrée à l’interpréteur.</li>
+    </ul>
+  </li>
+  <li>Dans la partie dédiée à l’interpréteur, vous voyez plusieurs choix. Nous allons utiliser un interpréteur existant (choisissez cette option) en cherchant le python d’anaconda. Pour cela :
+    <ul>
+      <li>cliquez sur les <em>“…”</em> à droite de la ligne de choix de l’interpréteur,</li>
+      <li>dans la nouvelle fenêtre, choisissez <em>Conda Environnement</em>. Il faut maintenant savoir où vous avez installé anaconda. En trouvant où se trouve votre interpréteur (voir <a href="#anaconda-avec-un-terminal">partie précédente</a>) vous trouverez où se trouve anaconda</li>
+      <li>On a trois choses à faire : trouver l’interpréteur python, l’éxécutable anaconda et faire en sorte que pycharm se rappelle de tout ça.</li>
+      <li>interpréteur python. Il suffit de suivre <a href="#anaconda-avec-un-terminal">cette partie</a>. Pour mon mac <code class="language-plaintext highlighter-rouge">which python3</code> me rend : <code class="language-plaintext highlighter-rouge">/opt/anaconda3/bin/python3</code>
+</li>
+      <li>l’exécutable conda : c’est le début du chemin de l’interpréteur, jusqu’à <code class="language-plaintext highlighter-rouge">anaconda3</code>. (pour mon mac, à partir de la ligne précédente, j’en débuit qu’anaconda est dans le dossier : <code class="language-plaintext highlighter-rouge">/opt/anaconda3/</code>)</li>
+      <li>cochez la case <em>Make avaliable to all projects</em> pour que vous puissiez retrouver cet environnement à chaque nouveau projet.</li>
+      <li>cliquez sur le bouton <em>OK</em>
+</li>
+    </ul>
+  </li>
+  <li>cliquez sur le bouton <em>Create</em> pour créer le projet avec notre nouvel environnement conda.</li>
+</ol>
+
+<p>Une nouvelle fenêtre apparaît avec votre projet.</p>
+
+<blockquote>
+  <p>Il se peut que pycharm ne réponde pas bien au début. C’est normal, il est entrain d’analyser votre tout nouvel interpréteur python. Vous voyez une barre de progression en bas à droite qui vous indique ce qu’il fait. Laissez le finir d’indexer tout ça, cela peut durer un certain temps (surtout qu’anaconda a déjà plein de bibliothèque d’installées), mais il ne le fait que lorsque vous changez d’interpréteur.</p>
+</blockquote>
+
+<p>Notre premier projet avec pycharm :</p>
+
+<ol>
+  <li>créons un fichier <em>“file &gt; new… &gt; python file”</em> et appelons le <code class="language-plaintext highlighter-rouge">main.py</code>
+</li>
+  <li>à gauche de la fenêtre vous voyez les différents fichiers et à droite des fichiers. Pour l’instant nous n’en avons qu’un seul et il est vide.</li>
+  <li>écrivez <code class="language-plaintext highlighter-rouge">print("Hello World")</code> dans le fichier. Vous n’avez pas à vous préoccuper de sauver, <em>pycharm</em> le fait automatiquement.</li>
+  <li>exécuter votre code en allant dans le menu <em>Run &gt; Run…</em>, une petite fenêtre s’affiche et choisissez <em>main.py</em>, c’est le fichier qui sera exécuté.</li>
+  <li>Regardez la fenêtre du bas de <em>pycharm</em> où vous voyez le résultat de votre programme.</li>
+</ol>
+
+<p>Vous voyez maintenant en haut à droite de la fenêtre un endroit où est écrit <em>main</em> et à droite un petit triangle vert. Si vous glissez votre souris sur ce triangle vert vous voyez son raccourci clavier (sur mac c’est <code class="language-plaintext highlighter-rouge">ctrl + R</code>). Vous pouvez être n’importe où dans Pycharm, en particulier sur d’autres fichiers, si vous cliquez sur le triangle vert ou si vous utilisez le raccourci clavier (qui correspond au menu <em>Run &gt; Run</em>, sans les “…”), le fichier main sera exécuté.</p>
+
+<p>Cela correspond à une configuration d’exécution. Ici <em>main</em> est le nom de la configuration d’exécution courante. On peut bien sur en créer d’autres, c’est ce qu’on fera lorsque l’on exécutera des tests, par exemple.</p>
+
+<h3 id="propriétés-de-pycharm">Propriétés de pycharm</h3>
+
+<h4 id="aide-en-ligne">aide en ligne</h4>
+
+<p>PyCharm est un éditeur professionnel, c’est normal que la prise en main soit plus complexe qu’avec un éditeur moins performant (comme notepad++ voir Sublime Text) ou scolaire (comme Spyder). En revanche, bien l’utiliser permet d’une part des gains de productivité importants et d’autre part de coder plus agréablement.</p>
+
+<p>Le système d’aide de PyCharm est très complet et vous permet de vous familiariser mieux avec la bête. Il est disponible sur le site de l’éditeur : <a href="https://www.jetbrains.com/help/pycharm/meet-pycharm.html">aide Pycharm</a></p>
+
+<h4 id="configurations-dexécution">configurations d’exécution</h4>
+
+<p>Les configurations d’exécutions permettent d’exécuter des programmes ou des tests python. On les trouve soit grâce au menu <em>Run &gt; edit configurations…</em>, ou en haut à droite de la fenêtre en cliquant sur le nom de la configuration courante (le nom à gauche du petit triangle vert).</p>
+
+<p>Pour créer un nouvel environnement d’exécution :</p>
+
+<ul>
+  <li>Ouvrez la fenêtre des contextes d’exécution dans le menu <em>Run &gt; Edit configurations…</em>.</li>
+  <li>La fenêtre qui s’est ouverte contient tous les contextes d’exécution de votre projet. Cliquez sur le <em>+</em> en haut à gauche de la fenêtre pour en créer un nouveau.</li>
+  <li>Choisissez <em>python</em> si vous voulez exécuter du code ou <em>python tests</em> pour un framework de test. Paramétrez votre environnement en choisissant le script à exécuter (on pourra également nommer son environnement).</li>
+  <li>Cliquez sur <em>OK</em> pour créer l’environnement.</li>
+</ul>
+
+<blockquote class="attention">
+  <p>Dans la fenêtre de gestion des contextes, ne modifiez pas les contextes par défaut. Ce sont des templates.</p>
+</blockquote>
+
+<p>Pour plus d’informations, reportez vous à <a href="https://www.jetbrains.com/help/pycharm/2016.3/working-with-run-debug-configurations.html?search=run">la documentation de pycharm</a>.</p>
+
+<h4 id="linterpréteur-python-dun-projet-pycharm">L’interpréteur python d’un projet pycharm</h4>
+
+<p>Les préférences de pycharm sont accessibles via le menu <em>File &gt; Settings…</em>. La fenêtre de préférences ressemble à ça :</p>
+
+<p><img src="/cours_informatique/assets/tutos/pycharm/settings/settings.jpg" alt="un projet vide" style="margin: auto;display: block;"></p>
+
+<p>On peut quasiment tout changer, de l’apparence à l’interpréteur en passant par les raccourcis clavier.</p>
+
+<blockquote>
+  <p>En haut à gauche se trouve un champ texte. Il permet de réduire les préférences à celles contenant le texte tapé (voir image ci-après).</p>
+</blockquote>
+
+<p>L’interpréteur du projet se trouve dans la partie <em>Project</em> de la fenêtre des préférences.</p>
+
+<p><img src="/cours_informatique/assets/tutos/pycharm/settings/interpreter.jpg" alt="l'interpréteur" style="margin: auto;display: block;"></p>
+
+<p>Pour créer un nouvel interpréteur à partir de la fenêtre de l’interpréteur, il suffit de cliquer sur l’engrenage dans la partie réservée à l’interpréteur :</p>
+
+<p><img src="/cours_informatique/assets/tutos/pycharm/settings/engrenage.png" alt="engrenage" style="margin: auto;display: block;"></p>
+
+<p>Si l’on veut ajouter un programme python déjà présent sur la machine, on choisit <em>Add…</em>.</p>
+
+<p>Une nouvelle fenêtre s’affiche, qui doit ressembler à ça :</p>
+
+<p><img src="/cours_informatique/assets/tutos/pycharm/settings/nouvel_interpreteur_venv.png" alt="ajout d'un interpréteur" style="margin: auto;display: block;"></p>
+
+<p>Attention, par défaut <code class="language-plaintext highlighter-rouge">virtualenv environment</code> (en haut à gauche de la fenêtre) est utilisé. Dans l’absolu <a href="http://sametmax.com/les-environnement-virtuels-python-virtualenv-et-virtualenvwrapper/">c’est très bien</a>, mais pour nous, ça va plus nous embêter qu’autre chose (en particulier il faudrait réinstaller numpy à chaque tp…). On choisi donc <em>Conda Environment</em> ou <em>system interpréteur</em>  et un python 3 d’installé :</p>
+
+<p><img src="/cours_informatique/assets/tutos/pycharm/settings/interpreteur_python.png" alt="interpréteur python" style="margin: auto;display: block;"></p>
+
+<p>Dans l’image ci-dessus, mon interpréteur python3 (python3.6) était dans le dossier <code class="language-plaintext highlighter-rouge">/usr/local/bin</code> (ce qui est souvent le cas dans le monde unix ou mac)</p>
+
+<h4 id="installer-des-modules">Installer des modules</h4>
+
+<p>On commence par aller trouver son interpréteur via le menu <em>File &gt; Settings…</em> (je l’ai trouvé en tapant <code class="language-plaintext highlighter-rouge">interp</code> dans l’onglet de recherche) :</p>
+
+<p><img src="/cours_informatique/assets/tutos/pycharm/settings/interpreteur_par_recherche.png" alt="interpréteur par recherche" style="margin: auto;display: block;"></p>
+
+<p>Les packages installé sont listé dans la fenêtre, avec le numéro de version installé et la dernère version disponible. Pour installer le package <code class="language-plaintext highlighter-rouge">numpy</code> on commence par cliquer sur le bouton <code class="language-plaintext highlighter-rouge">+</code> en bas à gauche de la fenêtre. Un zillion de package sont disponible. On cherche numpy :</p>
+
+<p><img src="/cours_informatique/assets/tutos/pycharm/settings/package_numpy.png" alt="package numpy" style="margin: auto;display: block;"></p>
+
+<p>On peut ensuite cliquer sur <code class="language-plaintext highlighter-rouge">install package</code> en bas à gauche pour installer le package.</p>
+
+<h4 id="les-raccourcis-claviers">Les raccourcis claviers</h4>
+
+<p>De nombreuses actions disponibles via un menu dans pycharm possèdent un raccourci clavier.</p>
+
+<p>Par exemple, sous unix :</p>
+
+<ul>
+  <li>Commenter une ligne ou un bloc : <em>ctrl + /</em> (Utiliser la touche <em>/</em> du pavé numérique)</li>
+  <li>Rechercher : <em>ctrl + F</em>
+</li>
+  <li>Exécuter la configuration d’exécution courante : <em>shift + F10</em>
+</li>
+</ul>
+
+<p>L’utilisation des raccourcis clavier est décrite dans  l’aide en ligne de pycharm sur les <a href="https://www.jetbrains.com/help/pycharm/keymap.html">keymap</a>.
+Si une commande possède un raccourci clavier, il est montré à droite de son nom :</p>
+
+<p><img src="/cours_informatique/assets/tutos/pycharm/keymap/raccourci_clavier.png" alt="commande rename" style="margin: auto;display: block;"></p>
+
+<p>L’image ci-dessus montre la commande <em>Rename</em> et son raccourci clavier <em>shift + F6</em> (cette commande est très très utile et vous l’utiliserez souvent car elle permet de renommer n’importe quoi. Le nom est modifié dans tout le fichier et dans d’autres fichiers du même projet).</p>
+
+<p>Selon la plateforme, les raccourcis par défaut changent :</p>
+
+<ul>
+  <li><a href="https://resources.jetbrains.com/storage/products/pycharm/docs/PyCharm_ReferenceCard.pdf">Raccourcis par défaut unix</a></li>
+  <li><a href="https://resources.jetbrains.com/storage/products/pycharm/docs/PyCharm_ReferenceCard_mac.pdf">Raccourcis par défaut mac</a></li>
+</ul>
+
+<p>Tous les raccourcis sont disponibles dans les préférences (menu <em>File &gt; Settings…</em>) dans la partie keymap :</p>
+
+<p><img src="/cours_informatique/assets/tutos/pycharm/keymap/keymap_settings.jpg" alt="raccourcis claviers" style="margin: auto;display: block;"></p>
+
+<p>Le raccourci clavier pour commenter automatiquement une ligne ou une partie de texte sélectionné par défaut de Pycharm n’est pas fonctionnel avec un clavier Français.</p>
+
+<p>Le raccourci concerne les commentaires : <em>comment</em> en anglais. Pour trouver rapidement les raccourcis on tape donc <em>comment</em> dans la barre de recherche de la partie <em>keymap</em> de la fenêtre des paramètres :</p>
+
+<p><img src="/cours_informatique/assets/tutos/pycharm/keymap/keymap_comment.jpg" alt="raccourcis comments" style="margin: auto;display: block;"></p>
+
+<p>Il y a 2 types de commentaires : commentaire d’une ligne et d’un bloc de texte. Certains langages utilisent ces deux types de commentaires (le C++ ou le Java par exemple), mais pas python puisqu’il suffit de mettre un <code class="language-plaintext highlighter-rouge">#</code> devant la ligne à commenter. Nous n’aurons à modifier que le raccourci : <em>Comment with Line Comment</em>.</p>
+
+<p>Dans de nombreux éditeurs, ce raccourci est sur <em>ctrl + /</em> (<code class="language-plaintext highlighter-rouge">//</code> est le commentaire de ligne de nombreux langages comme le javascript, Java, C++, …). C’est ce que pense faire Pycharm, et ceci marche avec un clavier Américain. Le clavier Français a la touche <em>/</em> comme modificateur de la touche <code class="language-plaintext highlighter-rouge">:</code>, ce qui confuse python.</p>
+
+<p>Ajoutons donc le raccourci clavier qui consiste à taper simultanément sur <em>ctrl</em>, <em>shift</em> et <em>:</em>, c’est à dire la combinaison : <em>ctrl + shift + :</em> (sur mac, vous pouvez remplacer <em>ctrl</em> par <em>cmd</em> qui correspond mieux à l’usage courant sur cette plateforme).</p>
+
+<p>Après avoir double cliqué sur la ligne <em>Comment with Line Comment</em> et choisi d’ajouter un raccourci clavier, effectuez la combinaison de touche puis cliquez sur <em>Ok</em> (appuyer sur <em>Entrée</em> change le raccourci…) :</p>
+
+<p><img src="/cours_informatique/assets/tutos/pycharm/keymap/keymap_shortcut.jpg" alt="changement de raccourcis comments" style="margin: auto;display: block;"></p>
+
+<p>Le raccourci est alors ajouté :</p>
+
+<p><img src="/cours_informatique/assets/tutos/pycharm/keymap/keymap_result.jpg" alt="raccourcis comments ajouté" style="margin: auto;display: block;"></p>
+
+<p>Testez le !</p>
+
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d'informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d'informatique</li>
+</ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+<ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d'informatique de François Brucker.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

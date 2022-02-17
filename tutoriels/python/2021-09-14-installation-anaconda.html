@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Installation d’Anaconda python | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0">
+<meta property="og:title" content="Installation d’Anaconda python">
+<meta name="author" content="François Brucker">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Comment installer la distribution anaconda de python.">
+<meta property="og:description" content="Comment installer la distribution anaconda de python.">
+<link rel="canonical" href="/cours_informatique/tutoriels/python/2021-09-14-installation-anaconda.html">
+<meta property="og:url" content="/cours_informatique/tutoriels/python/2021-09-14-installation-anaconda.html">
+<meta property="og:site_name" content="cours d’informatique">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-09-14T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Installation d’Anaconda python">
+<script type="application/ld+json">
+{"dateModified":"2021-09-14T00:00:00+00:00","datePublished":"2021-09-14T00:00:00+00:00","description":"Comment installer la distribution anaconda de python.","mainEntityOfPage":{"@type":"WebPage","@id":"/cours_informatique/tutoriels/python/2021-09-14-installation-anaconda.html"},"@type":"BlogPosting","author":{"@type":"Person","name":"François Brucker"},"url":"/cours_informatique/tutoriels/python/2021-09-14-installation-anaconda.html","headline":"Installation d’Anaconda python","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css">
+
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css">
+
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique">
+</head>
+
+<body>
+<header class="site-header" role="banner">
+
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/cours_informatique/">cours d'informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav>
+</div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Installation d'Anaconda python</h1>Auteurs :
+      <ul>
+      
+        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></li>
+      
+      </ul>
+  </header>
+
+  <div class="post-content">
+    <p>Comment installer la <a href="https://www.anaconda.com/">distribution anaconda</a> de python.</p>
+
+<!--more-->
+
+<blockquote>
+  <p>Si vous cherchez un tutoriel pour général sur ce qu’est python et comment l’installer/utiliser : <a href="/cours_informatique/tutoriels/python/2021-08-20-installation-de-python.html">installation python</a>.</p>
+</blockquote>
+
+<h2 id="introduction">introduction</h2>
+
+<p><a href="https://www.anaconda.com/">Anaconda</a> est une entreprise gérant des distributions python orientées data science. L’intérêt d’une telle distribution est qu’elle regroupe et met à disposition de nombreuses bibliothèques. Le côté négatif est que l’on ne maîtrise pas les bibliothèques installées et l’installation de paquets supplémentaires est parfois problématique.</p>
+
+<p>Cependant, pour une utilisation basique de python ou une utilisation via <a href="https://jupyter.org/">jupyter notebook</a>, c’est une solution tout à fait satisfaisante car facile à mettre en œuvre sans être informaticien.</p>
+
+<h2 id="installation">installation</h2>
+
+<p>Il existe plusieurs distributions de python anaconda. Nous allons utiliser l’<a href="https://www.anaconda.com/products/individual">édition individuelle</a> qui est open source.</p>
+
+<blockquote class="attention">
+  <p>Si vous avez déjà une ancienne version d’anaconda et que vous souhaitez installer une mise à jour, il vous faudra commencer par supprimer <a href="#ou-est-anaconda">le dossier contenant l’ancienne version</a>.</p>
+</blockquote>
+
+<h3 id="installateur">installateur</h3>
+
+<p>Téléchargez la version 64bit graphique correspondant à votre système d’installation, puis cliquez sur l’installeur.</p>
+
+<blockquote>
+  <p>Lorsque vous téléchargez l’installeur, Anaconda vous demandera de vous inscrire. Ce n’est pas nécessaire, pour obtenir l’installeur (il doit déjà être entrain de se télécharger).</p>
+</blockquote>
+
+<h3 id="installation-de-python">installation de python</h3>
+
+<blockquote class="attention">
+  <p>Il faudra faire des choix qui ne sont pas par défaut lors de l’installation.
+<strong>Ne cliquez pas sur <em>suivant</em> comme des sauvages…</strong> Lisez les choix qui vous sont proposés.</p>
+</blockquote>
+
+<p>Lors de l’installation :</p>
+
+<details><summary>sous linux</summary><div>
+<blockquote class="tbd">
+  <p>Je n’ai pas de linux sous la main. A tester.
+Je pense que c’est comme mac, mais pas sur.</p>
+</blockquote>
+
+</div></details>
+
+<details><summary>sous mac</summary><div>
+<p>Après avoir accepté la licence d’utilisation, l’installateur vous demandera pour quoi vous voulez installer anaconda :</p>
+
+<p><img src="/cours_informatique/assets/tutos/install-anaconda/ou-installer.png" alt="où installer anaconda" style="margin: auto;display: block;width: 500px"></p>
+
+<p>choisissez <em>installer sur un disque spécifique…</em> (ce n’est <strong>pas</strong> le choix par défaut) :</p>
+
+<p><img src="/cours_informatique/assets/tutos/install-anaconda/disque-specifique.png" alt="où installer anaconda : disque spécifique" style="margin: auto;display: block;width: 500px"></p>
+
+<p>Puis choisissez votre disque dur (il doit s’(appeler <em>“Macintosh HD”</em>)). On peut maintenant cliquer sur le bouton <em>continuer</em></p>
+
+<blockquote>
+  <p>Ceci n’est possible que si vous êtes administrateur de votre mac.</p>
+</blockquote>
+
+<p><strong>Ne cliquez pas tout de suite sur installer</strong> lorsque vous avez cette fenêtre :</p>
+
+<p><img src="/cours_informatique/assets/tutos/install-anaconda/personnaliser.png" alt="personnaliser" style="margin: auto;display: block;width: 500px"></p>
+
+<p>Vous pouvez cliquer sur le bouton personnaliser si vous voulez que le python d’anaconda ne soit pas le python par défaut :</p>
+
+<p><img src="/cours_informatique/assets/tutos/install-anaconda/modification-path.png" alt="modifiaction PATH" style="margin: auto;display: block;width: 500px"></p>
+
+<p>Si anaconda est votre principale installation de python (cela devrait être le cas si vous lisez cette doc), assurez vous que ces cases soient cochées.</p>
+
+<blockquote>
+  <p>Le path est modifié dans le fichier de configuration du shell.</p>
+</blockquote>
+
+<p>On peut maintenant cliquer sur le bouton <em>installer</em> pour finaliser l’installation</p>
+
+</div></details>
+
+<details><summary>sous windows</summary><div>
+<p>Lors de votre installation, choisissez une installation pour tous les utilisateurs :</p>
+
+<p><img src="/cours_informatique/assets/tutos/install-anaconda/windows-anaconda-alluser.png" alt="all users" style="margin: auto;display: block;width: 500px"></p>
+
+<p>Juste avant l’installation, vous pourrez choisir des options. Cochez les deux, <strong>même si c’est déconseillé</strong> :</p>
+
+<p><img src="/cours_informatique/assets/tutos/install-anaconda/anaconda-options.png" alt="options" style="margin: auto;display: block;width: 500px"></p>
+
+</div></details>
+
+<p>A la fin de l’installation vous devriez avoir un python qui fonctionne.</p>
+
+<h3 id="ou-est-anaconda">où est anaconda ?</h3>
+
+<p>Si vous avez suivi à la lettre le processus d’installation, anaconda devrait être installé :</p>
+
+<details><summary>sous linux</summary><div>
+<blockquote class="tbd">
+  <p>à faire avec un linux</p>
+</blockquote>
+
+</div></details>
+
+<details><summary>sous mac</summary><div>
+<p>Dans le dossier : <code class="language-plaintext highlighter-rouge">/opt/anaconda3</code>.</p>
+
+<p>On ne le voit pas par défaut dans le finder, il faut aller directement au dossier en allant dans le <em>menu Aller &gt; Aller au dossier…</em>, puis en tapant <code class="language-plaintext highlighter-rouge">/opt</code>.</p>
+
+</div></details>
+
+<details><summary>sous windows</summary><div>
+<p>Dans le dossier : <code class="language-plaintext highlighter-rouge">C:\programData\Anaconda3</code>.</p>
+
+<p>Il faudra surement <a href="/cours_informatique/tutoriels/systeme/2021-08-24-fichiers-navigation.html#dossiers-et-fichiers-cach%C3%A9s">révéler les fichiers cachés</a> pour voir le dossier dans un explorateur de fichier.
+)</p>
+
+</div></details>
+
+<h2 id="test-de-la-distribution">test de la distribution</h2>
+
+<p>Anaconda a installé des choses, en particulier l’application <em>Anaconda-Navigator</em> qui vous permet de lancer toutes les applications liées à Anaconda.</p>
+
+<blockquote class="attention">
+  <p>Le langage python est appelé : <code class="language-plaintext highlighter-rouge">python</code> sous windows et <code class="language-plaintext highlighter-rouge">python3</code> sous mac et linux</p>
+</blockquote>
+
+<h3 id="python-avec-jupyter">python avec jupyter</h3>
+
+<p>Lancez l’application <em>Notebook</em> puis :</p>
+
+<ol>
+  <li>créez un nouveau notebook <code class="language-plaintext highlighter-rouge">python</code> sous windows et <code class="language-plaintext highlighter-rouge">python3</code> sous mac et linux.</li>
+  <li>dans la cellule tapez <code class="language-plaintext highlighter-rouge">print("Hello world!")</code>
+</li>
+  <li>cliquez sur l’icône <em>Exécuter</em> sur la bannière de titre ou appuyer sur <code class="language-plaintext highlighter-rouge">shift + entrée</code>.</li>
+</ol>
+
+<p>Vous devriez voir le texte <code class="language-plaintext highlighter-rouge">Hello World</code> en sortie de votre cellule.</p>
+
+<blockquote class="tbd">
+  <p>sous windows, est-ce aussi python3 ?</p>
+</blockquote>
+
+<h3 id="python-avec-un-terminal-anaconda">python avec un terminal anaconda</h3>
+
+<p>Dans l’<em>anaconda navigator</em>, cliquez sur <em>Environnements</em> dans le menu de gauche (c’est le deuxième choix, après <em>Home</em> et avant <em>Learning</em>).</p>
+
+<p>Vous devez avoir un unique environnement : <em>base (root)</em>. Un environnement est un interpréteur python et tous ses packages installés. On aura parfois envie de créer ses propres environnements pour installer soit une version spécifique de python, soit n’installer que certains packages.</p>
+
+<p>Pour l’instant utilisons l’environnement de base. En cliquant sur le triangle vert à droite de l’environnement <em>base (root)</em>, vous pouvez cliquer sur <em>open terminal</em>, ce qui ouvrira un terminal. Une fois le terminal ouvert, remarquez qu’à gauche de l’invite de commande vous avez <code class="language-plaintext highlighter-rouge">(base)</code> d’écrit. Ceci montre quel environnement python vous avez.</p>
+
+<blockquote>
+  <p>Vos pouvez <a href="https://docs.anaconda.com/anaconda/user-guide/tasks/integration/python-path/">connaitre l’interpréteur</a>.</p>
+</blockquote>
+
+<p>Vous pouvez ensuite taper <code class="language-plaintext highlighter-rouge">python</code> sous windows et <code class="language-plaintext highlighter-rouge">python3</code> sous mac et linux pour entrer dans un <a href="/cours_informatique/tutoriels/python/2021-08-20-installation-de-python.html#interpreteur-id">interpréteur python</a>.</p>
+
+<h3 id="python-avec-un-terminal-normal">python avec un terminal normal</h3>
+
+<p>Ouvrez un <a href="/cours_informatique/tutoriels/systeme/2021-08-24-terminal.html">terminal</a> et tapez <code class="language-plaintext highlighter-rouge">python</code> sous windows et <code class="language-plaintext highlighter-rouge">python3</code> sous mac et linux pour entrer dans un
+<a href="/cours_informatique/tutoriels/python/2021-08-20-installation-de-python.html#interpreteur-id">interpréteur python</a>.</p>
+
+<h2 id="installation-de-nouveaux-modules">installation de nouveaux modules</h2>
+
+<p>Anaconda vient avec de nombreux modules déjà installé. Si on veut en installer d’autres, il y a deux solutions :</p>
+
+<ul>
+  <li>utiliser le gestionnaire de modules de python <code class="language-plaintext highlighter-rouge">python -m pip install &lt;nom du module à installer&gt;</code>
+</li>
+  <li>utiliser <a href="https://conda.io/projects/conda/en/latest/user-guide/index.html">conda</a> qui est le gestionnaire de modules spécifique à anaconda.</li>
+</ul>
+
+<blockquote>
+  <p>Si vous avez le choix, utilisez le gestionnaire de modules de python.</p>
+</blockquote>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d'informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d'informatique</li>
+</ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+<ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d'informatique de François Brucker.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

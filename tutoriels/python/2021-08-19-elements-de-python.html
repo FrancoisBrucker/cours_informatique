@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>éléments du langage python | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0">
+<meta property="og:title" content="éléments du langage python">
+<meta name="author" content="Augustin Agbo-Kpati">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="On rassemble ici les notions qui n’ont pas encore été ajoutées au cours de développement.">
+<meta property="og:description" content="On rassemble ici les notions qui n’ont pas encore été ajoutées au cours de développement.">
+<link rel="canonical" href="/cours_informatique/tutoriels/python/2021-08-19-elements-de-python.html">
+<meta property="og:url" content="/cours_informatique/tutoriels/python/2021-08-19-elements-de-python.html">
+<meta property="og:site_name" content="cours d’informatique">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-08-19T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="éléments du langage python">
+<script type="application/ld+json">
+{"dateModified":"2021-08-19T00:00:00+00:00","datePublished":"2021-08-19T00:00:00+00:00","description":"On rassemble ici les notions qui n’ont pas encore été ajoutées au cours de développement.","mainEntityOfPage":{"@type":"WebPage","@id":"/cours_informatique/tutoriels/python/2021-08-19-elements-de-python.html"},"@type":"BlogPosting","author":{"@type":"Person","name":"Augustin Agbo-Kpati"},"url":"/cours_informatique/tutoriels/python/2021-08-19-elements-de-python.html","headline":"éléments du langage python","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css">
+
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css">
+
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique">
+</head>
+
+<body>
+<header class="site-header" role="banner">
+
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/cours_informatique/">cours d'informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav>
+</div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">éléments du langage python</h1>Auteurs :
+      <ul>
+      
+        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Augustin Agbo-Kpati</span></span></li>
+      
+        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></li>
+      
+        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Pascal Préa</span></span></li>
+      
+      </ul>
+  </header>
+
+  <div class="post-content">
+    <p>On rassemble ici les notions qui n’ont pas encore été ajoutées au cours de développement.</p>
+
+<!--more-->
+
+<h3 id="les-structures-de-données">Les structures de données</h3>
+
+<ul>
+  <li>list comprehenstion</li>
+  <li>fonction lambda</li>
+</ul>
+
+<h4 id="les-dictionnaires">Les dictionnaires</h4>
+
+<blockquote>
+  <ul>
+    <li><a href="https://docs.python.org/3/tutorial/datastructures.html#dictionaries">https://docs.python.org/3/tutorial/datastructures.html#dictionaries</a></li>
+    <li><a href="https://docs.python.org/3/library/stdtypes.html#mapping-types-dict">https://docs.python.org/3/library/stdtypes.html#mapping-types-dict</a></li>
+  </ul>
+</blockquote>
+
+<p>Un dictionnaire (ou <a href="http://fr.wikipedia.org/wiki/Tableau_associatif">tableau associatif</a>) permet d’associer des clés à des valeurs, ces clés pouvant être des chaines de caractères ou des nombres. C’est en gros comme une ‘liste’ où l’on remplace les indices par à peu près ce que l’on veut.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">d</span> <span class="o">=</span> <span class="p">{}</span> <span class="c1">#on crée un dictionnaire vide
+</span><span class="n">d</span><span class="p">[</span><span class="s">"quarante deux"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">42</span> <span class="c1">#on associe à la clé "quarante deux" la valeur 42
+</span><span class="n">d</span><span class="p">[</span><span class="mf">3.14</span><span class="p">]</span> <span class="o">=</span> <span class="s">"pi"</span> <span class="c1">#on associe à la clé 3.14 la valeur "pi"
+</span><span class="k">print</span><span class="p">(</span><span class="s">"quarante deux"</span> <span class="ow">in</span> <span class="n">d</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="mi">42</span> <span class="ow">in</span> <span class="n">d</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">cle</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"cle :"</span><span class="p">,</span> <span class="n">cle</span><span class="p">,</span> <span class="s">"valeur :"</span><span class="p">,</span> <span class="n">d</span><span class="p">[</span><span class="n">cle</span><span class="p">])</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>Attention</strong> : Un dictionnaire n’est pas ordonné, L’ordre dans lequel les valeurs sont examniés dans une boucle for par exmple n’est pas défini.</p>
+</blockquote>
+
+<h4 id="les-ensembles--set">Les ensembles : set</h4>
+
+<blockquote>
+  <p><a href="https://docs.python.org/3/library/stdtypes.htm#set">https://docs.python.org/3/library/stdtypes.htm#set</a></p>
+</blockquote>
+
+<p>Un ensemble permet de garder des données en mémoire de manière non indexée. Contrairement aux listes, où l’on rangeait les éléments dans des cases distinctes, on ne peut <strong>pas</strong> accéder aux éléments d’un ensemble <code class="language-plaintext highlighter-rouge">d</code> avec <code class="language-plaintext highlighter-rouge">d[i]</code>.</p>
+
+<h4 id="notion-dobjets-mutables">Notion d’objets mutables</h4>
+
+<p>Les objets que nous avons rencontrés sont mutables, c’est à dire que lorsque on crée une liste <code class="language-plaintext highlighter-rouge">l = [1, 2, 3]</code>, il est toujours possible de changer la valeur d’un indice, ou d’ajouter un élément.</p>
+
+<p>Cela n’est toutefois pas possible avec les <a href="https://docs.python.org/3/library/stdtypes.html#tuples">tuples</a> par exemple.</p>
+
+<p>Un tuple peut se créer de la manière suivante :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Essayez maintenant des commandes telles que :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">t</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Cela nous renvoie alors des erreurs.</p>
+
+<p>Pour ajouter un élément, il faut créer un autre tuple :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">t2</span> <span class="o">=</span> <span class="n">t</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">)</span>
+</code></pre></div></div>
+
+<p>Le <a href="https://docs.python.org/3/library/stdtypes.html#frozenset"><code class="language-plaintext highlighter-rouge">frozenset</code></a> est un <code class="language-plaintext highlighter-rouge">set</code> (ensemble), mais cette fois non mutable.</p>
+
+<h3 id="boucle-for">Boucle for</h3>
+
+<h4 id="les-itérateurs">Les itérateurs</h4>
+
+<p>Pour faire simple, les itérateurs sont des objets qui permettent de créer des suites de données.
+Prenons un exemple connu: <code class="language-plaintext highlighter-rouge">range()</code></p>
+
+<p>range permet de créer des itérateurs : <code class="language-plaintext highlighter-rouge">range(10)</code> est un itérateur qui va renvoyer les valeurs de 0 à 9.</p>
+
+<p>Pour utiliser <code class="language-plaintext highlighter-rouge">for</code>, il faut un itérateur tel que: <code class="language-plaintext highlighter-rouge">for x in mon_iterateur</code> est la syntaxe.</p>
+
+<p>Exemple :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mon_iterateur</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">mon_iterateur</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Essayez ce code et comprenez le : les itérateurs sont de puissants objets python.</p>
+
+<p>Vous pouvez créer votre propre itérateur à l’aide de l’instruction <code class="language-plaintext highlighter-rouge">yield</code></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">mon_iterateur</span><span class="p">(</span><span class="n">valeur</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">valeur</span><span class="p">):</span>
+        <span class="k">yield</span> <span class="n">valeur</span> <span class="o">*</span> <span class="n">x</span>
+
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">mon_iterateur</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Ce qui va s’afficher sera :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">0</span>
+<span class="mi">5</span>
+<span class="mi">10</span>
+<span class="mi">15</span>
+<span class="mi">20</span>
+</code></pre></div></div>
+
+<p>On peut également boucler sur une liste, qui est un <strong>objet itérable</strong> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Jet fuel"</span><span class="p">,</span> <span class="s">"can't"</span><span class="p">,</span> <span class="s">"melt"</span><span class="p">,</span> <span class="s">"steel beams"</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">mot</span> <span class="ow">in</span> <span class="n">l</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">mot</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="méthodes-fonctions-et-modules">Méthodes, fonctions et modules</h2>
+
+<h3 id="récursion">Récursion</h3>
+
+<h4 id="modification-dobjets-dans-une-fonction">Modification d’objets dans une fonction</h4>
+
+<p>Dans un programme récursif, on a souvent besoin de modifier le même objet plusieurs fois. Même si la fonction récursive ne rend rien. Pour cela, on doit modifier les objets passés en paramètres. Pour comprendre comment cela marche, considérez la fonction suivante :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">ajoute_max</span><span class="p">(</span><span class="n">liste_en_parametre</span><span class="p">):</span>
+    <span class="n">maximum_liste</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">liste_en_parametre</span><span class="p">)</span>
+    <span class="n">liste_en_parametre</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">maximum_liste</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Cette fonction ajoute à la fin d’une liste passée en paramètre son maximum (au passage, on a apprit une nouvelle fonction, <code class="language-plaintext highlighter-rouge">max</code>.
+regardons le programme suivant qui utilise cette fonction :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">ajoute_max</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="/cours_informatique/assets/tutos/bases-de-python/obj_nom.png" alt="nom et objets" style="margin: auto;display: block;"></p>
+
+<p>La figure précédente montre ce qu’il s’est passé dans le monde des noms et des objets. Il reste un objet sans nom après l’exécution de la fonction (un entier valant 9), il est détruit. On a pu ainsi modifier un objet sans utiliser de retour de fonction. C’est une technique puissante mais à n’utiliser qu’à bon escient.</p>
+
+<h2 id="modules-utiles">Modules utiles</h2>
+
+<p>De nombreux modules existent pour python et permettent de réaliser aisément de très nombreuses tâches. Pour python, si avez les droits administrateurs on pourra utiliser l’utilitaire <a href="https://pypi.org/project/pip/">pip</a> qui est l’installeur de package python3 (attention, si vous tapez juste pip, vous installerez des module pour la version 2 de python…).</p>
+
+<p>Si vous n’avez pas de droits administrateur, ou pour une utilisation plus “pro” des modules, on préfèrera créer des environnements virtuels avec <em>virtualenv</em>, mais ceci  dépasse (de peu) le cadre de notre introduction à python.</p>
+
+<p>On utilise l’utilitaire <code class="language-plaintext highlighter-rouge">pip</code> via python avec la commande : <code class="language-plaintext highlighter-rouge">python -m pip [des commandes pip]</code> (ou <code class="language-plaintext highlighter-rouge">python3 -m pip [des commandes pip]</code> si vous êtes sous mac ou linux)</p>
+
+<blockquote class="attention">
+  <p>Si vous utilisez un interpréteur qui s’appelle <code class="language-plaintext highlighter-rouge">python3</code> et pas <code class="language-plaintext highlighter-rouge">python</code>, il est fort possible que le programme <code class="language-plaintext highlighter-rouge">python</code>(sans le 3) soit un interpréteur de la version 2 de python. Il vous faut alors utiliser la commande <code class="language-plaintext highlighter-rouge">pip3</code>et non <code class="language-plaintext highlighter-rouge">pip</code> (qui sera elle associée à l’interpréteur <code class="language-plaintext highlighter-rouge">python</code>)</p>
+</blockquote>
+
+<h3 id="le-module-random">Le module random</h3>
+
+<blockquote>
+  <p><a href="https://docs.python.org/3/library/random.html">https://docs.python.org/3/library/random.html</a></p>
+</blockquote>
+
+<p>Regardez <a href="https://python.sdv.univ-paris-diderot.fr/08_modules/#85-module-random-generation-de-nombres-aleatoires">ces exemples</a> pour le module random.</p>
+
+<p>Installé par défaut, il permet notamment de mélanger les éléments d’une liste, générer un nombre aléatoire, choisir un élément aléatoire dans une liste… Vous pouvez même simuler une loi Gaussienne (si, si).</p>
+
+<h3 id="openpyxl">openpyxl</h3>
+
+<blockquote>
+  <p><a href="http://openpyxl.readthedocs.org">http://openpyxl.readthedocs.org</a></p>
+</blockquote>
+
+<p>Permet de manipuler des <a href="https://automatetheboringstuff.com/chapter12/">fichiers excel avec python</a>.</p>
+
+<p>Il s’installe avec pip : <code class="language-plaintext highlighter-rouge">python -m pip install openpyxl</code> (ou <code class="language-plaintext highlighter-rouge">sudo python3 -m pip install openpyxl</code> suivi de votre mot de passe si vous êtes sous unix/mac).</p>
+
+<h3 id="matplotlib">matplotlib</h3>
+
+<blockquote>
+  <p><a href="http://matplotlib.org">http://matplotlib.org</a></p>
+</blockquote>
+
+<p>Installé par défaut si vous utilisez l’interpréteur d’<a href="https://www.anaconda.com/">anaconda</a>, ce module permet d’afficher des graphiques en python.</p>
+
+<h2 id="les-fichiers--lecture-écriture">Les fichiers : lecture, écriture</h2>
+
+<blockquote>
+  <p><a href="https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files">https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files</a></p>
+</blockquote>
+
+<h3 id="lecture">Lecture</h3>
+
+<p>Pour lire le fichier ligne par ligne :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">'fichier.txt'</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">ligne</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+<span class="n">f</span><span class="p">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>Ou de façon équivalente avec <code class="language-plaintext highlighter-rouge">with</code>, qui est la façon recommandée  car elle délimite l’utilisation du fichier dans un bloc :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">'fichier.txt'</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">ligne</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>On peut aussi compter le nombre de mots dans le texte, par exemple:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">nombre_mots</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">'fichier.txt'</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">ligne</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">ligne</span> <span class="o">=</span> <span class="n">ligne</span><span class="p">.</span><span class="n">strip</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+        <span class="n">mots</span> <span class="o">=</span> <span class="n">ligne</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">' '</span><span class="p">)</span>
+
+        <span class="n">nombre_mots</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">mots</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">nombre_mots</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="écriture">Écriture</h3>
+
+<p>Pour lire-écrire, ouvrez le fichier avec ‘r+’ au lieu de ‘r’. Pour l’écriture seule, ‘w’.</p>
+
+<blockquote class="attention">
+  <p>Ouvrir en écriture un fichier existant <strong>l’efface</strong>. Pour ajouter des choses à la fin d’un fichier on utilise ‘a’ (pour append)</p>
+</blockquote>
+
+<p>Utilisez ensuite la méthode <code class="language-plaintext highlighter-rouge">write()</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">'fichier.txt'</span><span class="p">,</span> <span class="s">'w'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="s">'For the night is dark and full of terrors'</span><span class="p">)</span>
+</code></pre></div></div>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d'informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d'informatique</li>
+</ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+<ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d'informatique de François Brucker.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
