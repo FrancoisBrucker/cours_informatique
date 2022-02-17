@@ -79,15 +79,14 @@
 
 <h2 id="principe-de-lhéritage">principe de l’héritage</h2>
 
-<p>Dans un programme, les classes sont organisées hiérarchiquement, la classe <em>racine</em> étant appelé <em>object</em>.</p>
+<p>Dans un programme, les classes sont organisées hiérarchiquement, la classe <em>racine</em> étant la classe la plus haute (ici elle s’appelle <strong>object</strong>).</p>
 
 <p><img src="./assets/heritage-classes.png" alt="classes héritage" style="margin: auto;display: block;"></p>
 
 <p>Dans la figure précédente :</p>
 
 <ul>
-  <li>la classe <strong>object</strong> est la <em>racine</em>
-</li>
+  <li>la classe <strong>object</strong> est la <em>racine</em> de la hiérarchie, c’est la classe la plus haute</li>
   <li>la classe <strong>1</strong> est la <em>classe mère</em> de la classe <strong>2</strong>
 </li>
   <li>la classe <strong>2</strong> est une <em>classe fille</em> de la classe <strong>1</strong>
@@ -95,6 +94,10 @@
 </ul>
 
 <p>La figure montre également la désignation UML de l’héritage : une flèche avec un triangle vide.</p>
+
+<blockquote>
+  <p>En python, toutes les classes héritent de la classe <code class="language-plaintext highlighter-rouge">object</code>. Par exemple <code class="language-plaintext highlighter-rouge">issubclass(list, object)</code> répond <code class="language-plaintext highlighter-rouge">True</code>.</p>
+</blockquote>
 
 <h3 id="utilisation-de-lhéritage">utilisation de l’héritage</h3>
 
@@ -122,7 +125,7 @@
 
 <h4 id="appeler-directement">appeler directement</h4>
 
-<p>Supposons que dans la définition de <code class="language-plaintext highlighter-rouge">méthode1</code> de la classe <code class="language-plaintext highlighter-rouge">2'</code> on particulariser la méthode <code class="language-plaintext highlighter-rouge">méthode1</code> de la <code class="language-plaintext highlighter-rouge">classe1</code>. On appelle alors la méthode <code class="language-plaintext highlighter-rouge">méthode1</code> de la classe 1 dans la définition de la <code class="language-plaintext highlighter-rouge">méthode1</code> de la classe <code class="language-plaintext highlighter-rouge">2'</code>.</p>
+<p>Supposons que dans la définition de <code class="language-plaintext highlighter-rouge">méthode1</code> de la “classe 2’” on particularise la méthode <code class="language-plaintext highlighter-rouge">méthode1</code> de la <code class="language-plaintext highlighter-rouge">classe1</code>. On appelle alors la méthode <code class="language-plaintext highlighter-rouge">méthode1</code> de la classe 1 dans la définition de la <code class="language-plaintext highlighter-rouge">méthode1</code> de la classe <code class="language-plaintext highlighter-rouge">2'</code>.</p>
 
 <blockquote>
   <p>si l’on ne retrouve pas la méthode dans la classe mère, on remonte la hiérarchie. De là tenter d’utiliser la méthode <code class="language-plaintext highlighter-rouge">méthode1</code>  de la classe <code class="language-plaintext highlighter-rouge">1'</code> en définissant la  méthode <code class="language-plaintext highlighter-rouge">méthode1</code>  de la classe <code class="language-plaintext highlighter-rouge">2''</code> va en fait exécuter la méthode  méthode <code class="language-plaintext highlighter-rouge">méthode1</code>  de la classe <code class="language-plaintext highlighter-rouge">object</code></p>
@@ -134,12 +137,12 @@
 
 <p>Par exemple, dans un interpréteur :</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">str</span><span class="p">.</span><span class="n">mro</span><span class="p">()</span>
-<span class="p">[</span><span class="o">&lt;</span><span class="k">class</span> <span class="err">'</span><span class="nc">str</span><span class="s">'&gt;, &lt;class '</span><span class="nb">object</span><span class="s">'&gt;]
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; str.mro()
+[&lt;class 'str'&gt;, &lt;class 'object'&gt;]
 &gt;&gt;&gt; str.__mro__
-(&lt;class '</span><span class="nb">str</span><span class="s">'&gt;, &lt;class '</span><span class="nb">object</span><span class="s">'&gt;)
+(&lt;class 'str'&gt;, &lt;class 'object'&gt;)
 &gt;&gt;&gt; 
-</span></code></pre></div></div>
+</code></pre></div></div>
 
 <p>L’ordre dans lequel est examinée les classe pour les chaines de caractères est donc : d’abord la classe <code class="language-plaintext highlighter-rouge">str</code> puis la classe <code class="language-plaintext highlighter-rouge">object</code></p>
 
@@ -322,8 +325,8 @@
 
 <p>Si on regarde l’ordre dans lequel est examiné les espaces de nom, on a (c’est la commande <code class="language-plaintext highlighter-rouge">Triangle.mro()</code>) :</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="o">&lt;</span><span class="k">class</span> <span class="err">'</span><span class="nc">__main__</span><span class="p">.</span><span class="n">Triangle</span><span class="s">'&gt;, &lt;class '</span><span class="n">__main__</span><span class="p">.</span><span class="n">Polygone</span><span class="s">'&gt;, &lt;class '</span><span class="nb">object</span><span class="s">'&gt;]
-</span></code></pre></div></div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[&lt;class '__main__.Triangle'&gt;, &lt;class '__main__.Polygone'&gt;, &lt;class 'object'&gt;]
+</code></pre></div></div>
 
 <blockquote>
   <p>Un petit tuto sur <a href="https://he-arc.github.io/livre-python/super/index.html">la fonction super</a></p>
@@ -331,9 +334,9 @@
 
 <p>On peut maintenant utiliser toutes les méthodes définies dans Polygone puisque le constructeur de <code class="language-plaintext highlighter-rouge">Triangle</code> appelle directement le constructeur de <code class="language-plaintext highlighter-rouge">Polygone</code> : à la fin du constructeur, il existera une liste de points dans le triangle.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">triangle</span> <span class="o">=</span> <span class="n">Triangle</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">triangle</span><span class="p">.</span><span class="n">périmètre</span><span class="p">())</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">triangle</span><span class="p">.</span><span class="n">aire</span><span class="p">())</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">triangle</span> <span class="o">=</span> <span class="n">Triangle</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">triangle</span><span class="p">.</span><span class="n">périmètre</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">triangle</span><span class="p">.</span><span class="n">aire</span><span class="p">())</span>
 </code></pre></div></div>
 
 <p>Pour trouver le périmètre, python fonctionne ainsi :</p>
@@ -408,7 +411,7 @@
         <span class="bp">self</span><span class="p">.</span><span class="n">blocage</span> <span class="o">=</span> <span class="n">blocage</span>
 
     <span class="k">def</span> <span class="nf">se_faire_taper</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">personnage</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">blocage</span> <span class="o">&lt;=</span> <span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">blocage</span> <span class="o">&gt;</span> <span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">):</span>
             <span class="nb">super</span><span class="p">().</span><span class="n">se_faire_taper</span><span class="p">(</span><span class="n">personnage</span><span class="p">)</span>
 </code></pre></div></div>
 

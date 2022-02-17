@@ -27,6 +27,7 @@
 
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique">
+<script>MathJax={"tex":{"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["\\[","\\]"]]},"svg":{"fontCache":"global"},"svg":{"fontCache":"global"}}</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
 <body>
@@ -78,50 +79,15 @@
 
 <p>Présentation du mécanisme d’héritage qui permettant de factoriser du code entre classes.</p>
 
-<blockquote class="tbd">
-  <p>a mettre à jour avec un vrai projet</p>
-</blockquote>
-
-<h2 id="le-cours">le cours</h2>
-
-<p>Refaite le code du cours pour comprendre mieux l’héritage en python.</p>
-
-<h3 id="géométrie">géométrie</h3>
-
-<p>Codez les classes <code class="language-plaintext highlighter-rouge">Point</code>, <code class="language-plaintext highlighter-rouge">Polygone</code> et <code class="language-plaintext highlighter-rouge">Triangle</code>. Testez les méthodes dans un programme principal nommé <em>“main_geometrie.py”</em>.</p>
-
-<h3 id="odds-and-ends">odds and ends</h3>
-
-<p>refaite les exercices de la partie <a href="/cours_informatique/cours/developpement/programmation-objet/heritage.html#odds-and-ends">odds and ends</a> du cours sans regarder la solution.</p>
-
-<p>Puis créez un objet <code class="language-plaintext highlighter-rouge">objet_a</code> de la classe <code class="language-plaintext highlighter-rouge">A</code> et un objet <code class="language-plaintext highlighter-rouge">objet_b</code> de la classe <code class="language-plaintext highlighter-rouge">B</code>. Essayez les lignes suivantes (une à la
-fois) et prenez le temps de comprendre ce qu’elles font et pourquoi.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="k">print</span><span class="p">(</span><span class="n">objet_a</span><span class="p">.</span><span class="n">a</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">objet_a</span><span class="p">.</span><span class="n">b</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">objet_b</span><span class="p">.</span><span class="n">a</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">objet_b</span><span class="p">.</span><span class="n">b</span><span class="p">)</span>
-<span class="n">objet_a</span><span class="p">.</span><span class="n">truc_que_fait_a</span><span class="p">()</span>
-<span class="n">objet_a</span><span class="p">.</span><span class="n">autre_truc</span><span class="p">()</span>
-<span class="n">objet_a</span><span class="p">.</span><span class="n">que_de_b</span><span class="p">()</span>
-<span class="n">objet_b</span><span class="p">.</span><span class="n">truc_que_fait_a</span><span class="p">()</span>
-<span class="n">objet_b</span><span class="p">.</span><span class="n">autre_truc</span><span class="p">()</span>
-<span class="n">objet_b</span><span class="p">.</span><span class="n">que_de_b</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">A</span><span class="p">.</span><span class="n">CTE</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">objet_a</span><span class="p">.</span><span class="n">CTE</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">objet_b</span><span class="p">.</span><span class="n">CTE</span><span class="p">)</span>
-</code></pre></div></div>
-
-<h3 id="donjons-et-dragons">donjons et dragons</h3>
-
-<p>Créez un personnage, un magicien et une guerrière. Faite en sorte que la guerrière et le personnage se tapent dessus à tour de rôle jusqu’à ce que une personne meure. Le dernier personnage est ensuite tué par le magicien en lui jetant des sorts jusqu’à ce qu’il meurt.</p>
-
 <h2 id="le-dé">Le dé</h2>
 
-<p>Nous allons ici réutiliser la classe <code class="language-plaintext highlighter-rouge">Dice</code> entamée la dernière fois. Pour être sûr de repartir sur de bonnes bases, utilisez l’implémentation minimale suivante (dans un fichier <code class="language-plaintext highlighter-rouge">dice.py</code>).</p>
+<p>Nous allons ici réutiliser la classe <code class="language-plaintext highlighter-rouge">Dice</code> entamée lors du <a href="/cours_informatique/cours/algorithme-code-theorie/code/programmation-objet/projet-composition-agregation.html">projet : composition et agrégation</a>. Pour être sûr de repartir sur de bonnes bases, utilisez l’implémentation minimale ci-après.</p>
 
-<h3 id="code-dice">code de Dice</h3>
+<h3 id="code-dice">code</h3>
+
+<h4 id="classe">classe</h4>
+
+<p>Fichier <em>“dice.py”</em> :</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">random</span>
 
@@ -142,24 +108,144 @@ fois) et prenez le temps de comprendre ce qu’elles font et pourquoi.</p>
         <span class="bp">self</span><span class="p">.</span><span class="n">set_position</span><span class="p">(</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">NUMBER_FACES</span><span class="p">))</span>
 </code></pre></div></div>
 
+<h4 id="tests">tests</h4>
+
+<p>Fichier <em>“test_dice.py”</em> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">dice</span> <span class="kn">import</span> <span class="n">Dice</span>
+
+
+<span class="k">def</span> <span class="nf">test_dice_creation_no_argument</span><span class="p">():</span>
+    <span class="n">dice</span> <span class="o">=</span> <span class="n">Dice</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">dice</span><span class="p">.</span><span class="n">get_position</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span>
+
+
+<span class="k">def</span> <span class="nf">test_dice_creation_argument</span><span class="p">():</span>
+    <span class="n">dice</span> <span class="o">=</span> <span class="n">Dice</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">dice</span><span class="p">.</span><span class="n">get_position</span><span class="p">()</span> <span class="o">==</span> <span class="mi">4</span>
+
+
+<span class="k">def</span> <span class="nf">test_dice_set_position</span><span class="p">():</span>
+    <span class="n">dice</span> <span class="o">=</span> <span class="n">Dice</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">dice</span><span class="p">.</span><span class="n">get_position</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span>
+    <span class="n">dice</span><span class="p">.</span><span class="n">set_position</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">dice</span><span class="p">.</span><span class="n">get_position</span><span class="p">()</span> <span class="o">==</span> <span class="mi">3</span>
+
+
+<span class="k">def</span> <span class="nf">test_dice_roll</span><span class="p">():</span>
+    <span class="n">dice</span> <span class="o">=</span> <span class="n">Dice</span><span class="p">()</span>
+    <span class="n">dice</span><span class="p">.</span><span class="n">roll</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">dice</span><span class="p">.</span><span class="n">get_position</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="mi">6</span>
+
+</code></pre></div></div>
+
 <h3 id="un-dé-qui-compte">Un dé qui compte</h3>
 
 <p>Nous voulons créer une version particulière d’un dé : un dé permettant de conserver les statistiques de ses lancers.</p>
 
-<p>Implémentez la classe <code class="language-plaintext highlighter-rouge">StatDice</code> qui hérite de <code class="language-plaintext highlighter-rouge">Dice</code>, retient le nombre de fois que chaque valeur possible a été obtenue et permet de calculer les statistiques associées. Vous devez donc écrire :</p>
+<p>Implémentez la classe <code class="language-plaintext highlighter-rouge">StatDice</code> qui hérite de <code class="language-plaintext highlighter-rouge">Dice</code>, retient le nombre de fois que chaque valeur possible a été obtenue et permet de calculer les statistiques associées.</p>
+
+<blockquote class="a-faire">
+  <p>Vous devez donc écrire et tester pour la classe <code class="language-plaintext highlighter-rouge">StatDice</code> :</p>
+
+  <ul>
+    <li>la méthode <code class="language-plaintext highlighter-rouge">__init__</code> sans oublier d’appeler le constructeur de la classe mère,</li>
+    <li>une nouvelle méthode <code class="language-plaintext highlighter-rouge">set_position</code> qui utilise la méthode <code class="language-plaintext highlighter-rouge">set_position</code> du dé classique et met à jour les décomptes de lancers du dé</li>
+    <li>une méthode <code class="language-plaintext highlighter-rouge">stats</code> qui renvoie les nombres d’apparition de chaque valeur</li>
+  </ul>
+
+</blockquote>
+
+<p>On pourra stocker le nombre d’apparition de chaque face dans une liste où l’indice + 1 correspond à la face.</p>
+
+<h3 id="programme">programme</h3>
+
+<blockquote class="a-faire">
+  <p>Créez un programme qui lance $N=1000$  fois votre dé (par exemple) et rend ses statistiques.</p>
+
+  <p>Vous utiliserez ensuite ces statistiques pour faire un <a href="https://fr.wikipedia.org/wiki/Test_du_%CF%87%C2%B2#Exemple_1_:_d%C3%A9termination_de_l'%C3%A9quilibrage_d'un_d%C3%A9">test d’adéquation du $\chi^2$</a> pour vérifier que votre dés est bien équiprobable.</p>
+</blockquote>
+
+<p>Un test d’adéquation du $\chi^2$ permet de s’assurer que le résultat d’une expérience est conforme à ce qu’on devrait avoir théoriquement.</p>
+
+<p>Pour cela on calcule le nombre :</p>
+
+\[\chi^2 = \sum_{i=1}^I\frac{(O_i - T_i)^2}{T_i}\]
+
+<p>Où :</p>
 
 <ul>
-  <li>la méthode <code class="language-plaintext highlighter-rouge">__init__</code> sans oublier d’appeler le constructeur de la classe mère,</li>
-  <li>une nouvelle méthode <code class="language-plaintext highlighter-rouge">set_position</code> qui utilise la méthode <code class="language-plaintext highlighter-rouge">set_position</code> du dé classique et met à jour les décomptes de lancers du dé</li>
-  <li>une méthode <code class="language-plaintext highlighter-rouge">stats</code> qui renvoie les fréquences d’apparition de chaque valeur</li>
-  <li>une méthode <code class="language-plaintext highlighter-rouge">mean</code> qui renvoie la moyenne des lancers du dé</li>
+  <li>$I$ : l’ensemble des possibilités (pour nous $I=6$ puisque la valeur d’un dés pour aller de 1 à 6)</li>
+  <li>$O_i$ est le nombre de cas <strong>observés</strong> pour la modalité $i$ (pour nous c’est le nombre de fois où le dé à eu la position $i$)</li>
+  <li>$T_i$ est le nombre de cas <strong>théorique</strong> que l’on devrait avoir (dans notre cas $\frac{N}{6}$ si on a lancé $N$ fois notre dé)</li>
 </ul>
 
-<p>On pourra stocker le nombre d’apparition de chaque face dans une liste où l’index + 1 correspond à la face.</p>
+<p>Plus ce nombre est petit, plus l’expérience est conforme à la théorie.</p>
 
-<h3 id="tests">tests</h3>
+<p>De façon formelle :</p>
 
-<p>Prenez le temps de tester votre code avec un fichier <em>“main.py”</em> et de bien comprendre quelle méthode est appelée et pourquoi quand vous utilisez un <code class="language-plaintext highlighter-rouge">StatDice</code>.</p>
+<ul>
+  <li>si la théorie est conforme à la réalité, le nombre $\chi^2$  suit une loi du chi2 à $N-1$ degrés de libertés (ici 5 degrés de libertés)</li>
+  <li>la probabilité $P_{\mbox{df}}(X \geq K)=\alpha$ nous donne la chance d’obtenir $K$ ou plus pour une loi du chi2 à df degrés de libertés.</li>
+</ul>
+
+<p>Pour nous $df = 5$ et si on prend $\alpha = .1$ on trouve : $P_{5}(X \geq 9.236) = .1$ (pour connaitre ces valeurs, on utilise des tables comme <a href="https://people.richland.edu/james/lecture/m170/tbl-chi.html">celle-ci</a>).</p>
+
+<p>Donc si on trouve un $\chi^2$ plus grand ou égal que $9.206$, il y a moins de 10% de chance que l’on ait obtenu ce nombre si l’on suivait une loi du chi2 à df degrés de liberté :</p>
+
+<ul>
+  <li>Il y a moins de 10% de chance de se tromper en supposant que notre expérience ne suit pas la théorie</li>
+  <li>Il y a moins de 10% de chance de supposer que notre dé n’est pas équilibré</li>
+</ul>
+
+<p>C’est que l’on appelle le <a href="https://fr.wikipedia.org/wiki/Test_statistique#Risque_de_premi%C3%A8re_esp%C3%A8ce_et_confiance">risque de première espèce</a> lorsque l’on fait des <a href="https://fr.wikipedia.org/wiki/Test_statistique">test statistiques</a></p>
+
+<blockquote>
+  <p>Le test du chi2 est très pratique lorsque l’on veut vérifier nos hypothèse théoriques sont satisfaites expérimentalement.</p>
+</blockquote>
+
+<h2 id="donjons-et-dragons">donjons et dragons</h2>
+
+<h3 id="personnages">personnages</h3>
+
+<p>En reprenant le cours :</p>
+
+<blockquote class="a-faire">
+  <p>Créez (et testez) les classes personnage, magicien et guerrière.</p>
+</blockquote>
+
+<h3 id="bataille">bataille</h3>
+
+<blockquote class="a-faire">
+  <p>Créez un programme doit faire en sorte qu’une guerrière et un personnage se tapent dessus à tour de rôle jusqu’à ce que une personne meure. Le dernier héros en vie est ensuite tué par le magicien en lui jetant des sorts jusqu’à ce qu’il meurt.</p>
+
+  <p>Vous donnerez le nombre de tour nécessaire pour cela.</p>
+</blockquote>
+
+<h3 id="équipement">équipement</h3>
+
+<blockquote class="a-faire">
+  <p>Proposez un modèle de classe d’équipement :</p>
+
+  <ul>
+    <li>tout personnage peut porter de l’équipement</li>
+    <li>chaque équipement peut servir soit (pas exclusif) :
+      <ul>
+        <li>en défense : lors d’une attaque, le score d’armure est retranchée à l’attaque</li>
+        <li>en attaque : lors d’une attaque, l’attaque du personnage est augmenté du score d’attaque</li>
+        <li>la méthode <code class="language-plaintext highlighter-rouge">has(event)</code> doit répondre True si l’équipement répond à <code class="language-plaintext highlighter-rouge">event</code> et <code class="language-plaintext highlighter-rouge">False</code> sinon. L’évènement sera soit <code class="language-plaintext highlighter-rouge">ATTAQUE</code> soit <code class="language-plaintext highlighter-rouge">DEFENSE</code> et permettra de savoir si l’objet est utilisable ou pas dans telle ou telle circonstance.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <p>La classe d’équipement est là pour être héritée par des objets <em>réels</em>. Créez des classes d’équipements comme les armures (qui n’ont qu’un score d’armure) ou des armes (qui n’ont qu’un score d’attaque)</p>
+</blockquote>
+
+<p>Une fois le modèle fait, implémenté et testé :</p>
+
+<blockquote class="a-faire">
+  <p>Modifier votre programme pour que le personnage et la guerrière ait des équipements différents.</p>
+</blockquote>
 
   </div>
 
