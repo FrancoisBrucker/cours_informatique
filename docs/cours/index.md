@@ -11,6 +11,7 @@ Liste des différents cours. La plupart de ceux-ci sont enseignés par bouts dan
 
 ## Liste
 
+* [algorithme, code et théorie]({% link cours/algorithme-code-theorie/index.md %})
 * [web]({% link cours/web/index.md %})
 * [graphes]({% link cours/graphes/index.md %})
 * [développement]({% link cours/developpement/index.md %})
