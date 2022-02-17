@@ -17,50 +17,15 @@ authors:
 
 Présentation du mécanisme d'héritage qui permettant de factoriser du code entre classes.
 
->a mettre à jour avec un vrai projet
-{: .tbd}
-
-## le cours
-
-Refaite le code du cours pour comprendre mieux l'héritage en python.
-
-### géométrie
-
-Codez les classes `Point`, `Polygone` et `Triangle`. Testez les méthodes dans un programme principal nommé *"main_geometrie.py"*.
-
-### odds and ends
-
-refaite les exercices de la partie [odds and ends]({% link cours/developpement/programmation-objet/heritage.md %}#odds-and-ends) du cours sans regarder la solution.
-
-Puis créez un objet `objet_a` de la classe `A` et un objet `objet_b` de la classe `B`. Essayez les lignes suivantes (une à la
-fois) et prenez le temps de comprendre ce qu'elles font et pourquoi.
-
-```python
-
-print(objet_a.a)
-print(objet_a.b)
-print(objet_b.a)
-print(objet_b.b)
-objet_a.truc_que_fait_a()
-objet_a.autre_truc()
-objet_a.que_de_b()
-objet_b.truc_que_fait_a()
-objet_b.autre_truc()
-objet_b.que_de_b()
-print(A.CTE)
-print(objet_a.CTE)
-print(objet_b.CTE)
-```
-
-### donjons et dragons
-
-Créez un personnage, un magicien et une guerrière. Faite en sorte que la guerrière et le personnage se tapent dessus à tour de rôle jusqu'à ce que une personne meure. Le dernier personnage est ensuite tué par le magicien en lui jetant des sorts jusqu'à ce qu'il meurt.
-
 ## Le dé
 
-Nous allons ici réutiliser la classe `Dice` entamée la dernière fois. Pour être sûr de repartir sur de bonnes bases, utilisez l'implémentation minimale suivante (dans un fichier `dice.py`).
+Nous allons ici réutiliser la classe `Dice` entamée lors du [projet : composition et agrégation]({% link cours/algorithme-code-theorie/code/programmation-objet/projet-composition-agregation.md %}). Pour être sûr de repartir sur de bonnes bases, utilisez l'implémentation minimale ci-après.
 
-### code de Dice {#code-dice}
+### code {#code-dice}
+
+#### classe
+
+Fichier *"dice.py"* :
 
 ```python
 import random
@@ -82,19 +47,123 @@ class Dice:
         self.set_position(random.randint(1, self.NUMBER_FACES))
 ```
 
+#### tests
+
+Fichier *"test_dice.py"* :
+
+```python
+from dice import Dice
+
+
+def test_dice_creation_no_argument():
+    dice = Dice()
+    assert dice.get_position() == 1
+
+
+def test_dice_creation_argument():
+    dice = Dice(4)
+    assert dice.get_position() == 4
+
+
+def test_dice_set_position():
+    dice = Dice()
+    assert dice.get_position() == 1
+    dice.set_position(3)
+    assert dice.get_position() == 3
+
+
+def test_dice_roll():
+    dice = Dice()
+    dice.roll()
+    assert 1 <= dice.get_position() <= 6
+
+```
+
 ### Un dé qui compte
 
 Nous voulons créer une version particulière d'un dé : un dé permettant de conserver les statistiques de ses lancers.
 
-Implémentez la classe `StatDice` qui hérite de `Dice`, retient le nombre de fois que chaque valeur possible a été obtenue et permet de calculer les statistiques associées. Vous devez donc écrire :
+Implémentez la classe `StatDice` qui hérite de `Dice`, retient le nombre de fois que chaque valeur possible a été obtenue et permet de calculer les statistiques associées.
 
-* la méthode `__init__` sans oublier d'appeler le constructeur de la classe mère,
-* une nouvelle méthode `set_position` qui utilise la méthode `set_position` du dé classique et met à jour les décomptes de lancers du dé
-* une méthode `stats` qui renvoie les fréquences d'apparition de chaque valeur
-* une méthode `mean` qui renvoie la moyenne des lancers du dé
+> Vous devez donc écrire et tester pour la classe `StatDice` :
+>
+> * la méthode `__init__` sans oublier d'appeler le constructeur de la classe mère,
+> * une nouvelle méthode `set_position` qui utilise la méthode `set_position` du dé classique et met à jour les décomptes de lancers du dé
+> * une méthode `stats` qui renvoie les nombres d'apparition de chaque valeur
+>
+{: .a-faire}
 
-On pourra stocker le nombre d'apparition de chaque face dans une liste où l'index + 1 correspond à la face.
+On pourra stocker le nombre d'apparition de chaque face dans une liste où l'indice + 1 correspond à la face.
 
-### tests
+### programme
 
-Prenez le temps de tester votre code avec un fichier *"main.py"* et de bien comprendre quelle méthode est appelée et pourquoi quand vous utilisez un `StatDice`.
+> Créez un programme qui lance $N=1000$  fois votre dé (par exemple) et rend ses statistiques.
+>
+> Vous utiliserez ensuite ces statistiques pour faire un [test d'adéquation du $\chi^2$](https://fr.wikipedia.org/wiki/Test_du_%CF%87%C2%B2#Exemple_1_:_d%C3%A9termination_de_l'%C3%A9quilibrage_d'un_d%C3%A9) pour vérifier que votre dés est bien équiprobable.
+{: .a-faire}
+
+Un test d'adéquation du $\chi^2$ permet de s'assurer que le résultat d'une expérience est conforme à ce qu'on devrait avoir théoriquement.
+
+Pour cela on calcule le nombre :
+
+$$
+\chi^2 = \sum_{i=1}^I\frac{(O_i - T_i)^2}{T_i}
+$$
+
+Où :
+
+* $I$ : l'ensemble des possibilités (pour nous $I=6$ puisque la valeur d'un dés pour aller de 1 à 6)
+* $O_i$ est le nombre de cas **observés** pour la modalité $i$ (pour nous c'est le nombre de fois où le dé à eu la position $i$)
+* $T_i$ est le nombre de cas **théorique** que l'on devrait avoir (dans notre cas $\frac{N}{6}$ si on a lancé $N$ fois notre dé)
+
+Plus ce nombre est petit, plus l'expérience est conforme à la théorie.
+
+De façon formelle :
+
+* si la théorie est conforme à la réalité, le nombre $\chi^2$  suit une loi du chi2 à $N-1$ degrés de libertés (ici 5 degrés de libertés)
+* la probabilité $P_{\mbox{df}}(X \geq K)=\alpha$ nous donne la chance d'obtenir $K$ ou plus pour une loi du chi2 à df degrés de libertés.
+
+Pour nous $df = 5$ et si on prend $\alpha = .1$ on trouve : $P_{5}(X \geq 9.236) = .1$ (pour connaitre ces valeurs, on utilise des tables comme [celle-ci](https://people.richland.edu/james/lecture/m170/tbl-chi.html)).
+
+Donc si on trouve un $\chi^2$ plus grand ou égal que $9.206$, il y a moins de 10% de chance que l'on ait obtenu ce nombre si l'on suivait une loi du chi2 à df degrés de liberté :
+
+* Il y a moins de 10% de chance de se tromper en supposant que notre expérience ne suit pas la théorie
+* Il y a moins de 10% de chance de supposer que notre dé n'est pas équilibré
+
+C'est que l'on appelle le [risque de première espèce](https://fr.wikipedia.org/wiki/Test_statistique#Risque_de_premi%C3%A8re_esp%C3%A8ce_et_confiance) lorsque l'on fait des [test statistiques](https://fr.wikipedia.org/wiki/Test_statistique)
+
+> Le test du chi2 est très pratique lorsque l'on veut vérifier nos hypothèse théoriques sont satisfaites expérimentalement.
+
+## donjons et dragons
+
+### personnages
+
+En reprenant le cours :
+
+> Créez (et testez) les classes personnage, magicien et guerrière.
+{: .a-faire}
+
+### bataille
+
+> Créez un programme doit faire en sorte qu'une guerrière et un personnage se tapent dessus à tour de rôle jusqu'à ce que une personne meure. Le dernier héros en vie est ensuite tué par le magicien en lui jetant des sorts jusqu'à ce qu'il meurt.
+>  
+> Vous donnerez le nombre de tour nécessaire pour cela.
+{: .a-faire}
+
+### équipement
+
+> Proposez un modèle de classe d'équipement :
+>
+> * tout personnage peut porter de l'équipement
+> * chaque équipement peut servir soit (pas exclusif) :
+>   * en défense : lors d'une attaque, le score d'armure est retranchée à l'attaque
+>   * en attaque : lors d'une attaque, l'attaque du personnage est augmenté du score d'attaque
+>   * la méthode `has(event)` doit répondre True si l'équipement répond à `event` et `False` sinon. L'évènement sera soit `ATTAQUE` soit `DEFENSE` et permettra de savoir si l'objet est utilisable ou pas dans telle ou telle circonstance.
+>
+> La classe d'équipement est là pour être héritée par des objets *réels*. Créez des classes d'équipements comme les armures (qui n'ont qu'un score d'armure) ou des armes (qui n'ont qu'un score d'attaque)
+{: .a-faire}
+
+Une fois le modèle fait, implémenté et testé :
+
+> Modifier votre programme pour que le personnage et la guerrière ait des équipements différents.
+{: .a-faire}

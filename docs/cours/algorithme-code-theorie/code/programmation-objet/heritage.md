@@ -18,17 +18,19 @@ Présentation du mécanisme d'héritage qui permettant de factoriser du code ent
 
 ## principe de l'héritage
 
-Dans un programme, les classes sont organisées hiérarchiquement, la classe *racine* étant appelé *object*.
+Dans un programme, les classes sont organisées hiérarchiquement, la classe *racine* étant la classe la plus haute (ici elle s'appelle **object**).
 
 ![classes héritage](./assets/heritage-classes.png){:style="margin: auto;display: block;"}
 
 Dans la figure précédente :
 
-* la classe **object** est la *racine*
+* la classe **object** est la *racine* de la hiérarchie, c'est la classe la plus haute
 * la classe **1** est la *classe mère* de la classe **2**
 * la classe **2** est une *classe fille* de la classe **1**
 
 La figure montre également la désignation UML de l'héritage : une flèche avec un triangle vide.
+
+> En python, toutes les classes héritent de la classe `object`. Par exemple `issubclass(list, object)` répond `True`.
 
 ### utilisation de l'héritage
 
@@ -49,7 +51,7 @@ Supposons que j'ai un objet de la "classe 2" `obj` qui veut appeler la méthode 
 
 #### appeler directement
 
-Supposons que dans la définition de `méthode1` de la classe `2'` on particulariser la méthode `méthode1` de la `classe1`. On appelle alors la méthode `méthode1` de la classe 1 dans la définition de la `méthode1` de la classe `2'`.
+Supposons que dans la définition de `méthode1` de la "classe 2'" on particularise la méthode `méthode1` de la `classe1`. On appelle alors la méthode `méthode1` de la classe 1 dans la définition de la `méthode1` de la classe `2'`.
 
 >si l'on ne retrouve pas la méthode dans la classe mère, on remonte la hiérarchie. De là tenter d'utiliser la méthode `méthode1`  de la classe `1'` en définissant la  méthode `méthode1`  de la classe `2''` va en fait exécuter la méthode  méthode `méthode1`  de la classe `object`
 
@@ -59,7 +61,7 @@ En python, si l'on veut connaitre l'ordre dans lequel les classes vont être exa
 
 Par exemple, dans un interpréteur :
 
-```python
+```text
 >>> str.mro()
 [<class 'str'>, <class 'object'>]
 >>> str.__mro__
@@ -231,7 +233,7 @@ Le mot clé `super()` désigne la classe parente, ici `Polygone`. Ce mot clé pe
 
 Si on regarde l'ordre dans lequel est examiné les espaces de nom, on a (c'est la commande `Triangle.mro()`) :
 
-```python
+```text
 [<class '__main__.Triangle'>, <class '__main__.Polygone'>, <class 'object'>]
 ```
 
@@ -240,9 +242,9 @@ Si on regarde l'ordre dans lequel est examiné les espaces de nom, on a (c'est l
 On peut maintenant utiliser toutes les méthodes définies dans Polygone puisque le constructeur de `Triangle` appelle directement le constructeur de `Polygone` : à la fin du constructeur, il existera une liste de points dans le triangle.
 
 ```python
-    triangle = Triangle(Point(0, 0), Point(1, 1), Point(2, 0))
-    print(triangle.périmètre())
-    print(triangle.aire())
+triangle = Triangle(Point(0, 0), Point(1, 1), Point(2, 0))
+print(triangle.périmètre())
+print(triangle.aire())
 ```
 
 Pour trouver le périmètre, python fonctionne ainsi :
@@ -315,7 +317,7 @@ class Guerriere(Personnage):
         self.blocage = blocage
 
     def se_faire_taper(self, personnage):
-        if self.blocage <= random.randint(0, 100):
+        if self.blocage > random.randint(0, 100):
             super().se_faire_taper(personnage)
 ```
 

@@ -6,6 +6,11 @@ def test_dice_creation_no_argument():
     assert dice.get_position() == 1
 
 
+def test_dice_creation_argument():
+    dice = Dice(4)
+    assert dice.get_position() == 4
+
+
 def test_dice_set_position():
     dice = Dice()
     assert dice.get_position() == 1
