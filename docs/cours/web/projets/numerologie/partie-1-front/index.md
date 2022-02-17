@@ -21,7 +21,7 @@ Avant de se lancer à corps perdu dans le développement et le code, vérifions 
 3. avoir **un éditeur de texte** fonctionnel. Nous utiliserons [vscode](https://code.visualstudio.com/) dans ce cours, téléchargez le et installez le.
 4. un **navigateur internet** munis d'outils de développement. Tous les exemple seront fait avec [chrome](https://www.google.fr/chrome/).
 5. un interpréteur javascript. On utilisera [node](https://nodejs.org/en/). Suivez le [tutoriel pour l'installation]({% link cours/web/js/bases.md %}#bloc-id-installation-node).
-6. Sachez ouvrir [une fenêtre terminal]({% post_url tutos/systeme/2021-08-24-terminal %})
+6. Sachez ouvrir [une fenêtre terminal]({% link _tutoriels/systeme/2021-08-24-terminal.md %})
 
 ## Niveaux
 

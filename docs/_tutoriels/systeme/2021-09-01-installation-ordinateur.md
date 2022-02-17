@@ -2,7 +2,6 @@
 layout: page
 title:  Nouvelle installation de son système
 tags: système terminal
-category: installation
 authors: 
     - François Brucker
 ---

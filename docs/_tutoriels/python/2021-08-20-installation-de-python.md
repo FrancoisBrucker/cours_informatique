@@ -1,7 +1,7 @@
 ---
 layout: page
 title:  Installation de python
-categories: installation python terminal
+tags: installation python terminal
 authors: 
     - François Brucker
 ---
@@ -107,7 +107,7 @@ Une fois que vous aurez installé python (ou pour savoir si vous l'avez déjà i
 
 ### installation via anaconda {#install-anaconda}
 
-Suivez ce [tutoriel]({% post_url /tutos/python/2021-09-14-installation-anaconda %}) pour installer anaconda sur votre machine.
+Suivez ce [tutoriel]({% link _tutoriels/python/2021-09-14-installation-anaconda.md %}) pour installer anaconda sur votre machine.
 
 ### installation via un gestionnaire de package {#gestionnaire-package-id}
 
@@ -117,7 +117,7 @@ C'est un peut plus compliqué qu'utiliser anaconda mais si vous voulez faire de 
 
 {% details sous mac %}
 
-On utilise [brew](https://brew.sh/index_fr), qu'il vous faudra tout d'abord installer. Toutes les commandes se font ensuite via le [terminal]({% post_url /tutos/systeme/2021-08-24-terminal %}).
+On utilise [brew](https://brew.sh/index_fr), qu'il vous faudra tout d'abord installer. Toutes les commandes se font ensuite via le [terminal]({% link _tutoriels/systeme/2021-08-24-terminal.md %}).
 
 Une fois brew installé, vous pouvez installer python en tapant la commande :
 
@@ -142,7 +142,7 @@ Pour l'instant téléchargez le tout depuis le store. Suivez ce [tutoriel](https
 
 ## utiliser l'interpréteur python {#interpreteur-id}
 
-Commencer par ouvrir une fenêtre Terminal. Si vous ne savez ps ce que c'est regardez ce [tutoriel]({% post_url /tutos/systeme/2021-08-24-terminal %})
+Commencer par ouvrir une fenêtre Terminal. Si vous ne savez ps ce que c'est regardez ce [tutoriel]({% link _tutoriels/systeme/2021-08-24-terminal.md %})
 
 ### exécution de l'interpréteur python
 

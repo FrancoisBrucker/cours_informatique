@@ -20,7 +20,7 @@ Présentation du mécanisme d'héritage qui permettant de factoriser du code ent
 
 Dans un programme, les classes sont organisées hiérarchiquement, la classe *racine* étant appelé *object*.
 
-![classes héritage]({{ "/assets/cours/developpement/programmation-objet/classes_heritage.png" | relative_url }}){:style="margin: auto;display: block}
+![classes héritage](./heritage-classes.png){:style="margin: auto;display: block;"}
 
 Dans la figure précédente :
 

@@ -17,7 +17,7 @@ Les connaissances et les outils que vous devez avoir pour commencer le cours. Il
 
 Pour développer, il faudra coder et exécuter du code. Il vous faut donc un ordinateur (portable ou tour) en état de marche. Il devra être sous un des trois systèmes d'exploitation suivant : windows 10, macos ou linux.
 
-Vous devez dans l'idéal être administrateur de votre ordinateur et avoir fait [une installation fraîche de tout votre système]({% post_url tutos/systeme/2021-09-01-installation-ordinateur %}) pour éviter toute interférence lors de nos installations.
+Vous devez dans l'idéal être administrateur de votre ordinateur et avoir fait [une installation fraîche de tout votre système]({% link _tutoriels/systeme/2021-09-01-installation-ordinateur.md %}) pour éviter toute interférence lors de nos installations.
 
 ### connaissances système minimale
 
@@ -79,9 +79,9 @@ Ce cours est composée de trois grandes parties qui s'enchevêtrent.
 
 Outils, concepts et méthodes utiles pour comprendre le cours
 
-1. [naviguer dans un système de fichiers]({% post_url tutos/systeme/2021-08-24-fichiers-navigation %})
-2. [installation vscode]({% post_url tutos/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main %}), [installation python]({% post_url tutos/python/2021-08-20-installation-de-python %}) et [vscode & python]({% post_url tutos/editeur/vsc/2021-09-14-vsc-python %})
-3. [terminal]({% post_url tutos/systeme/2021-08-24-terminal %}) et [utilisation du terminal]({% post_url tutos/systeme/2021-12-02-terminal-utilisation %})
+1. [naviguer dans un système de fichiers]({% link _tutoriels/systeme/2021-08-24-fichiers-navigation.md %})
+2. [installation vscode]({% link _tutoriels/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main.md %}), [installation python]({% link _tutoriels/python/2021-08-20-installation-de-python.md %}) et [vscode & python]({% link _tutoriels/editeur/vsc/2021-09-14-vsc-python.md %})
+3. [terminal]({%link _tutoriels/systeme/2021-08-24-terminal.md %}) et [utilisation du terminal]({% link _tutoriels/systeme/2021-12-02-terminal-utilisation.md %})
 
 ## structure
 
@@ -274,12 +274,12 @@ graph.links.push({
 
 graph.nodes.push({
   id: 'naviguer dans un système de fichiers',
-  link: "{% post_url tutos/systeme/2021-08-24-fichiers-navigation %}",
+  link: "{% link _tutoriels/systeme/2021-08-24-fichiers-navigation.md %}",
   group: groups.autre
 })
 graph.nodes.push({
   id: 'vscode & python',
-  link: "{% post_url tutos/editeur/vsc/2021-09-14-vsc-python %}",
+  link: "{% link _tutoriels/editeur/vsc/2021-09-14-vsc-python.md %}",
   group: groups.autre
 })
 graph.links.push({
@@ -293,12 +293,12 @@ graph.links.push({
 
 graph.nodes.push({
   id: 'installation vscode',
-  link: "{% post_url tutos/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main %}",
+  link: "{% link _tutoriels/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main.md %}",
   group: groups.autre
 })
 graph.nodes.push({
   id: 'installation python',
-  link: "{% post_url tutos/python/2021-08-20-installation-de-python %}",
+  link: "{% link _tutoriels/python/2021-08-20-installation-de-python.md %}",
   group: groups.autre
 })
 graph.links.push({
@@ -312,12 +312,12 @@ graph.links.push({
 
 graph.nodes.push({
   id: 'terminal',
-  link: "{% post_url tutos/systeme/2021-08-24-terminal %}",
+  link: "{% link _tutoriels/systeme/2021-08-24-terminal.md %}",
   group: groups.autre
 })
 graph.nodes.push({
   id: 'utilisation du terminal',
-  link: "{% post_url tutos/systeme/2021-12-02-terminal-utilisation %}",
+  link: "{% link _tutoriels/systeme/2021-12-02-terminal-utilisation.md %}",
   group: groups.autre
 })
 graph.links.push({

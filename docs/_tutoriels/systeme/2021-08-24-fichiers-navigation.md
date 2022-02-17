@@ -1,8 +1,7 @@
 ---
 layout: page
 title:  naviguer dans un système de fichiers
-tags: système fichiers terminal
-category: fichiers
+tags: fichiers
 authors: 
     - François Brucker
 ---
@@ -201,7 +200,7 @@ Si vous voulez aller dans un dossier particulier, vous pouvez utiliser : *menu A
 
 ## utiliser le terminal
 
-Naviguer dans un système de fichier et exécuter ds commandes est le but de l'[application terminal]({% post_url /tutos/systeme/2021-12-02-terminal-utilisation %})
+Naviguer dans un système de fichier et exécuter ds commandes est le but de l'[application terminal]({% link _tutoriels/systeme/2021-12-02-terminal-utilisation.md %})
 
 ## pour aller plus loin
 

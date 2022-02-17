@@ -1,7 +1,7 @@
 ---
 layout: page
 title:  "Générateur de site statique jekyll"
-categories: langage jekyll
+tags: langage jekyll
 ---
 
 Une introduction générateur de site statique [jekyll](https://jekyllrb.com/). On y y verra aussi comment est organisé et fonctionne ce [site de cours](https://github.com/FrancoisBrucker/cours_informatique), généré en jekyll.

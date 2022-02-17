@@ -1,7 +1,7 @@
 ---
 layout: page
 title:  Installation d'Anaconda python
-categories: installation python anaconda
+tags: installation python anaconda
 authors: 
     - François Brucker
 ---
@@ -10,7 +10,7 @@ Comment installer la [distribution anaconda](https://www.anaconda.com/) de pytho
 
 <!--more-->
 
-> Si vous cherchez un tutoriel pour général sur ce qu'est python et comment l'installer/utiliser : [installation python]({% post_url /tutos/python/2021-08-20-installation-de-python %}).
+> Si vous cherchez un tutoriel pour général sur ce qu'est python et comment l'installer/utiliser : [installation python]({% link _tutoriels/python/2021-08-20-installation-de-python.md %}).
 
 ## introduction
 
@@ -114,7 +114,7 @@ On ne le voit pas par défaut dans le finder, il faut aller directement au dossi
 
 Dans le dossier : `C:\programData\Anaconda3`.
 
-Il faudra surement [révéler les fichiers cachés]({% post_url /tutos/systeme/2021-08-24-fichiers-navigation %}#dossiers-et-fichiers-cachés) pour voir le dossier dans un explorateur de fichier.
+Il faudra surement [révéler les fichiers cachés]({% link _tutoriels/systeme/2021-08-24-fichiers-navigation.md %}#dossiers-et-fichiers-cachés) pour voir le dossier dans un explorateur de fichier.
 )
 
 {% enddetails %}
@@ -149,11 +149,12 @@ Pour l'instant utilisons l'environnement de base. En cliquant sur le triangle ve
 
 > Vos pouvez [connaitre l'interpréteur](https://docs.anaconda.com/anaconda/user-guide/tasks/integration/python-path/).
 
-Vous pouvez ensuite taper `python` sous windows et `python3` sous mac et linux pour entrer dans un [interpréteur python]({% post_url /tutos/python/2021-08-20-installation-de-python %}#interpreteur-id).
+Vous pouvez ensuite taper `python` sous windows et `python3` sous mac et linux pour entrer dans un [interpréteur python]({% link _tutoriels/python/2021-08-20-installation-de-python.md %}#interpreteur-id).
 
 ### python avec un terminal normal
 
-Ouvrez un [terminal]({% post_url /tutos/systeme/2021-08-24-terminal %}) et tapez `python` sous windows et `python3` sous mac et linux pour entrer dans un [interpréteur python]({% post_url /tutos/python/2021-08-20-installation-de-python %}#interpreteur-id).
+Ouvrez un [terminal]({% link _tutoriels/systeme/2021-08-24-terminal.md %}) et tapez `python` sous windows et `python3` sous mac et linux pour entrer dans un
+[interpréteur python]({% link _tutoriels/python/2021-08-20-installation-de-python.md %}#interpreteur-id).
 
 ## installation de nouveaux modules
 

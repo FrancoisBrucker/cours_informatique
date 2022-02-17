@@ -1,7 +1,7 @@
 ---
 layout: page
 title:  "vsc et python : outils supplémentaires"
-categories: 
+tags: 
     - installation 
     - configuration
     - python
@@ -11,7 +11,7 @@ Configuration d'outils supplémentaires pour [visual studio code](https://code.v
 
 <!--more-->
 
-Ce tutoriel fait suite au [tutoriel python et vscode]({% post_url tutos/editeur/vsc/2021-09-14-vsc-python %}). Il se consacre à l'installation d'extension non fondamentales mais bien sympathique pour le développement python. avec vscode.
+Ce tutoriel fait suite au [tutoriel python et vscode]({% link _tutoriels/editeur/vsc/2021-09-14-vsc-python.md %}). Il se consacre à l'installation d'extension non fondamentales mais bien sympathique pour le développement python. avec vscode.
 
 ## tests
 
@@ -38,7 +38,7 @@ python -m pip install pytest
 ### configuration {#configuration-pytest}
 
 1. dans les préférences (*menu file/code > Préferences > settings*) tapez `python.testing.pytestEnabled`  dans la barre de recherche et cochez la case. Ceci dit à vscode que notre framework de test est pytest (il y en a d'autres possible comme [unittest](https://docs.python.org/fr/3.9/library/unittest.html) ou encore [nosetests](https://nose.readthedocs.io/en/latest/), mais on ne va pas les utiliser. Assurez vous cependant qu'un seul framework de test soit utilisé à la fois. Ca devrait être le cas si vous n'avez pas cliqué un peu partout).
-2. on configure les tests de notre projet en tapant la commande (dans la [palette de commande]({% post_url tutos/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main %}#palette-de-commande)) : *python : Configure tests* on choisit *pytest* puis *. (root)* qui donne le dossier de départ où aller chercher nos tests
+2. on configure les tests de notre projet en tapant la commande (dans la [palette de commande]({% link _tutoriels/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main.md %}#palette-de-commande)) : *python : Configure tests* on choisit *pytest* puis *. (root)* qui donne le dossier de départ où aller chercher nos tests
 
 ### utilisation {#utilisation-pytest}
 
@@ -70,7 +70,8 @@ Il faut installer des plugins pythons spécifiques pour le linting. Il en existe
 
 ### installation {#installation-pycodestyle}
 
-Dans un [terminal]({% post_url tutos/systeme/2021-08-24-terminal %}), qui peut être [celui de vscode]({% post_url tutos/editeur/vsc/2021-09-14-vsc-terminal %}#terminal-integre) tapez la commande :
+Dans un [terminal]({% link _tutoriels/systeme/2021-08-24-terminal.md %}),
+qui peut être [celui de vscode]({% link _tutoriels/editeur/vsc/2021-09-14-vsc-terminal.md %}#terminal-integre) tapez la commande :
 
 {% details sous linux et mac %}
 
@@ -98,11 +99,11 @@ Pour mettre en route le linting via pycodestyle, deux paramètres sont à positi
 * `python.linting.pycodestyleEnabled` doit être coché pour utiliser `pycodestyle` comme linter
 * `python.linting.pycodestylePath` doit donner le chemin vers `pycodestyle`. Il est par défaut positionné sur `pycodestyle` ce qui devrait être correct.
 
-> Notez que vous pouvez aussi accéder à ces commande via la [palette de commande]({% post_url tutos/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main %}#palette-de-commande),par exemple avec la commande *python: enable/disable linting*.
+> Notez que vous pouvez aussi accéder à ces commande via la [palette de commande]({% link _tutoriels/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main.md %}#palette-de-commande),par exemple avec la commande *python: enable/disable linting*.
 
 ### pycodestyle dans le terminal
 
-Vous pouvez aussi toujours exécuter la commande `pycodestyle mon-fichier.py` dans un [terminal intégré]({% post_url tutos/editeur/vsc/2021-09-14-vsc-terminal %}#terminal-integre) pour obtenir le linting de votre fichier. C'est moins pratique que lorsque vscode le fait puisque la ligne en question n'est pas soulignée dans l'interface.
+Vous pouvez aussi toujours exécuter la commande `pycodestyle mon-fichier.py` dans un [terminal intégré]({% link _tutoriels/editeur/vsc/2021-09-14-vsc-terminal.md %}#terminal-integre) pour obtenir le linting de votre fichier. C'est moins pratique que lorsque vscode le fait puisque la ligne en question n'est pas soulignée dans l'interface.
 
 ### style
 
@@ -120,7 +121,8 @@ Son but est de re-formater sans faute de style tout programme python.
 
 ### installation {#installation-black}
 
-Dans un [terminal]({% post_url tutos/systeme/2021-08-24-terminal %}), qui peut être [celui de vscode]({% post_url tutos/editeur/vsc/2021-09-14-vsc-terminal %}#terminal-integre) tapez la commande :
+Dans un [terminal]({% link _tutoriels/systeme/2021-08-24-terminal.md %}),
+qui peut être [celui de vscode]({% link _tutoriels/editeur/vsc/2021-09-14-vsc-terminal.md %}#terminal-integre) tapez la commande :
 
 {% details sous linux et mac %}
 
@@ -153,7 +155,7 @@ Si vous avez le paramètre `editor.formatOnSave` de coché à chaque sauvegarde 
 
 Vous pouvez aussi :
 
-* exécuter directement la commande *format document* dans [palette de commande]({% post_url tutos/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main %}#palette-de-commande).
+* exécuter directement la commande *format document* dans [palette de commande]({% link _tutoriels/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main.md %}#palette-de-commande).
 * utiliser son [raccourci clavier](https://code.visualstudio.com/docs/editor/codebasics#_formatting)
 
 ### black dans le terminal
@@ -222,5 +224,5 @@ Enfin, pour avoir un rapport html complet on peut utiliser la ligne : `python3 -
 
 La commande `python3 -m pytest --cov=.` crée un fichier de coverage qui s'appelle `.coverage`. Il n'est cependant pas lisible dans ce format par défaut par l'extension. Il faut générer un format de sorti en [xml](https://fr.wikipedia.org/wiki/Extensible_Markup_Language) avec la commande : `python3 -m pytest --cov=.  --cov-report xml:cov.xml`
 
-> Si le petit *watch* n'est pas visible dans la barre de status, vous pouvez le faire à la main dans avec la [palette de commande]({% post_url tutos/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main %}#palette-de-commande))
+> Si le petit *watch* n'est pas visible dans la barre de status, vous pouvez le faire à la main dans avec la [palette de commande]({% link _tutoriels/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main.md %}#palette-de-commande))
  *Coverage Gutters: Display Coverage*.

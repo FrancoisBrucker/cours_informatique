@@ -186,7 +186,7 @@ Et on modifie le fichier *"numerologie/index.html"* pour qu'il puisse lire le fi
 </html>
 ```
 
-La balise `<link>` qui va chercher le fichier css. L'emplacement du fichier est décrit de [façon relative]({% post_url tutos/systeme/2021-08-24-fichiers-navigation %}#block-.-..), par rapport à l'emplacement du fichier html sur le disque dur. Ici c'est simple c'est dans le même dossier.
+La balise `<link>` qui va chercher le fichier css. L'emplacement du fichier est décrit de [façon relative]({% link _tutoriels/systeme/2021-08-24-fichiers-navigation.md %}#block-.-..), par rapport à l'emplacement du fichier html sur le disque dur. Ici c'est simple c'est dans le même dossier.
 
 ## Tâche 3 : bibliothèque css {#tache-3}
 

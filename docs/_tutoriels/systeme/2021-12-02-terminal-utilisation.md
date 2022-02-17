@@ -2,15 +2,18 @@
 layout: page
 title:  utiliser un terminal
 tags: système terminal CLI
-categories: CLI terminal
 authors: 
     - François Brucker
 ---
 
+Comment utiliser un terminal.
+
+<!--more-->
+
 > **prérequis :**
 >
->* [le terminal]({% post_url /tutos/systeme/2021-08-24-terminal %})
->* [naviguer dans un système de fichiers]({% post_url /tutos/systeme/2021-08-24-fichiers-navigation %})
+>* [le terminal]({% link _tutoriels/systeme/2021-08-24-terminal.md %})
+>* [naviguer dans un système de fichiers]({% link _tutoriels/systeme/2021-08-24-fichiers-navigation.md %})
 {: .chemin}
 
 Comment utiliser un terminal pour taper des commandes.

@@ -1,8 +1,9 @@
 ---
 layout: page
 title:  "Tests unitaires en Python avec pytest et pycharm"
-category: tests unitaires
-tags: pytest unittest
+tags: 
+  - tests unitaires
+
 ---
 
 Mise en œuvre de tests unitaires en python avec l'éditeur pycharm.
@@ -101,7 +102,7 @@ Puis nous allons demander à [Pycharm](https://www.jetbrains.com/pycharm/) d'ex�
 
 
 
- Pour cela, créez un environnement d'exécution (expliqué dans ce [tuto]({% post_url tutos/editeur/pycharm/2021-08-30-configuration-pycharm %})) et créez une configuration  *pyhton test > pytest*. Ici, les paramètres dont nous aurons besoin sont :
+ Pour cela, créez un environnement d'exécution (expliqué dans ce [tuto]({% link _tutoriels/editeur/pycharm/2021-08-30-configuration-pycharm.md %})) et créez une configuration  *pyhton test > pytest*. Ici, les paramètres dont nous aurons besoin sont :
  
 * le champ *name*, qui donne un nom à notre contexte. Par exemple *"mes tests"**
 * le champ *target*, qui spécifie quel script utiliser. Cliquez tout à droite de ce champ sur un petit bouton avec *…* puis choisissez le fichier `test_aide_mathematiques.py`

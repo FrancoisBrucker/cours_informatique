@@ -1,8 +1,7 @@
 ---
 layout: page
 title:  "Configuration Pycharm"
-category: pycharm
-tags: python anaconda 
+tags: pycharm
 ---
 
 Le but de ce tutoriel est d'installer une distribution python avec [anaconda](https://www.anaconda.com/) et l'IDE [pycharm](https://www.jetbrains.com/fr-fr/pycharm/). On suppose que vous avez déjà installé une distribution python avec anaconda.

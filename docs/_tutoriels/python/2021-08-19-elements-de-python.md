@@ -1,7 +1,8 @@
 ---
 layout: page
 title:  éléments du langage python
-categories: langage python
+tags: 
+    - langage python
 authors: 
     - Augustin Agbo-Kpati
     - François Brucker

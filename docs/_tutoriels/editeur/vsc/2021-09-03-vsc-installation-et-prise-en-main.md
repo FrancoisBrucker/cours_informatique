@@ -1,7 +1,7 @@
 ---
 layout: page
 title:  "Installation et prise en main de vscode"
-categories: 
+tags: 
     - installation 
     - configuration
 ---

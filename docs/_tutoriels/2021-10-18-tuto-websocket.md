@@ -1,7 +1,7 @@
 ﻿---
 layout: page
 title:  "Tuto Websocket"
-category: websocket
+tags: websocket
 authors: 
   - "Axel Chouraki"
   - "Jean Martinez"

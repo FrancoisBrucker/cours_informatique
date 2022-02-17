@@ -15,9 +15,9 @@ Vous devrez écrire du code et installer des applications durant ce cours. Vous 
 
 Plus précisément, peu importe le système d'exploitation (Linux, Mac ou windows) vous devez :
 
-* avoir un système sain. Dans le doute [faire une installation fraîche de tout votre système]({% post_url tutos/systeme/2021-09-01-installation-ordinateur %})
-* connaitre les bases d'un système d'exploitation, [les fichiers et les dossiers]({% post_url tutos/systeme/2021-08-24-fichiers-navigation %})
-* avoir accès à un [terminal]({% post_url tutos/systeme/2021-08-24-terminal %})
+* avoir un système sain. Dans le doute [faire une installation fraîche de tout votre système]({% link _tutoriels/systeme/2021-09-01-installation-ordinateur.md %})
+* connaitre les bases d'un système d'exploitation, [les fichiers et les dossiers]({% link _tutoriels/systeme/2021-08-24-fichiers-navigation.md %})
+* avoir accès à un [terminal]({% link _tutoriels/systeme/2021-08-24-terminal.md %})
 
 ### bases en programmation
 

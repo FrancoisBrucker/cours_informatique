@@ -10,7 +10,7 @@ author: "François Brucker"
 >
 > **prérequis :**
 >
->* [python et vscode]({% post_url tutos/editeur/vsc/2021-09-14-vsc-python %})
+>* [python et vscode]({% link _tutoriels/editeur/vsc/2021-09-14-vsc-python.md %})
 >
 {: .chemin}
 
@@ -72,7 +72,7 @@ Vscode à compris que c'était du python, il l'écrit dans la barre de statut (l
 >
 {: .a-faire}
 
-En vous rappelant ce que vous avez vu dans [le tutorial python et vscode]({% post_url tutos/editeur/vsc/2021-09-14-vsc-python %}#execution-python) :
+En vous rappelant ce que vous avez vu dans [le tutorial python et vscode]({% link _tutoriels/editeur/vsc/2021-09-14-vsc-python.md %}#execution-python) :
 
 > Exécutez le code de deux manières différentes :
 >

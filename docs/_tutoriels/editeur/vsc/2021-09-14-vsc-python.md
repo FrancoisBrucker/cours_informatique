@@ -1,16 +1,20 @@
 ---
 layout: page
 title:  "vscode et python"
-categories: 
+tags: 
     - installation 
     - configuration
     - python
 ---
 
+Configuration de python avec vscode.
+
+<!--more-->
+
 > prérequis
 >
->* [vscode]({% post_url tutos/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main %})
->* [python installation]({% post_url tutos/python/2021-08-20-installation-de-python %})
+> * [vscode]({% link _tutoriels/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main.md %})
+> * [python installation]({% link _tutoriels/python/2021-08-20-installation-de-python.md %})
 >
 {: .chemin}
 
@@ -27,7 +31,7 @@ La principale extension à installer lorsque l'on fait du python est [python](ht
 
 Pour installer ces package :
 
-> Rendez vous dans la [gestion des extensions de vscode]({% post_url tutos/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main %}#extensions), puis tapez *python* dans la barre de recherche. Assurez vous d'installer les package créés par microsoft.
+> Rendez vous dans la [gestion des extensions de vscode]({% link _tutoriels/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main.md %}#extensions), puis tapez *python* dans la barre de recherche. Assurez vous d'installer les package créés par microsoft.
 {: .a-faire}
 
 ## interpréteur python
@@ -65,7 +69,7 @@ Il y a deux préférences qu'ils faut a priori modifier :
 
 Vous pouvez directement chercher le paramètre en tapant son nom dans la barre de recherche.
 
-Si vous avez suivi le [tutoriel anaconda]({% post_url tutos/python/2021-09-14-installation-anaconda %}), vérifiez ou faites en sorte que les paramètres soient :
+Si vous avez suivi le [tutoriel anaconda]({% link _tutoriels/python/2021-09-14-installation-anaconda.md %}), vérifiez ou faites en sorte que les paramètres soient :
 
 {% details sous linux %}
 
@@ -101,7 +105,7 @@ Vous pouvez exécuter l'onglet courant en python en [cliquant sur le triangle en
 
 ### terminal
 
-Vous pouvez utiliser [le terminal intégré]({% post_url tutos/editeur/vsc/2021-09-14-vsc-terminal %}#terminal-integre) pour exécuter vous programmes python comme vous le feriez avec un terminal externe.
+Vous pouvez utiliser [le terminal intégré]({% link _tutoriels/editeur/vsc/2021-09-14-vsc-terminal.md %}#terminal-integre) pour exécuter vous programmes python comme vous le feriez avec un terminal externe.
 
 ## premier programme
 
@@ -112,19 +116,19 @@ Vous pouvez utiliser [le terminal intégré]({% post_url tutos/editeur/vsc/2021-
 
 Une fois que vous avez dit que vous faisiez confiance au développeur de ce projet, fermez l'onglet *Welcome*. Vous pouvez même fermer l'explorer en cliquant sur l'icône en sur-brillance dans la barre d'activité de [l'interface vsc](https://code.visualstudio.com/docs/getstarted/userinterface).
 
-Nous allons commencer par utiliser le [le terminal intégré]({% post_url tutos/editeur/vsc/2021-09-14-vsc-terminal %}#terminal-integre) de vscode pour exécuter nos premiers programmes python avant d'écrire nos programmes de plusieurs lignes.
+Nous allons commencer par utiliser le [le terminal intégré]({% link _tutoriels/editeur/vsc/2021-09-14-vsc-terminal.md %}#terminal-integre) de vscode pour exécuter nos premiers programmes python avant d'écrire nos programmes de plusieurs lignes.
 
 ### interpréteur python dans le terminal vscode
 
-> Ouvrez un [terminal dans vscode]({% post_url tutos/editeur/vsc/2021-09-14-vsc-terminal %}) : *menu Affichage > Terminal*.
+> Ouvrez un [terminal dans vscode]({% link _tutoriels/editeur/vsc/2021-09-14-vsc-terminal.md %}) : *menu Affichage > Terminal*.
 {: .a-faire}
 
-Le [terminal]({% post_url /tutos/systeme/2021-08-24-terminal %}) permet d'exécuter des commandes de votre système.
+Le [terminal]({% link _tutoriels/systeme/2021-08-24-terminal.md %}) permet d'exécuter des commandes de votre système.
 
 > taper `python` sous windows ou `python3` sous linux et mac pour rentrer dans l'interpréteur python.
 {: .a-faire}
 
-![interpreteur]({{ "/assets/tutos/vsc-python/python-interpreteur.png" | relative_url }}){:style="margin: auto;display: block}
+![interpreteur]({{ "/assets/tutos/vsc-python/python-interpreteur.png" | relative_url }}){:style="margin: auto;display: block"}
 
 #### une première ligne de python
 
@@ -209,7 +213,7 @@ python -m pip install pytest
 #### configuration {#configuration-pytest}
 
 1. dans les préférences (*menu file/code > Préferences > settings*) tapez `python.testing.pytestEnabled`  dans la barre de recherche et cochez la case. Ceci dit à vscode que notre framework de test est pytest (il y en a d'autres possible comme [unittest](https://docs.python.org/fr/3.9/library/unittest.html) ou encore [nosetests](https://nose.readthedocs.io/en/latest/), mais on ne va pas les utiliser. Assurez vous cependant qu'un seul framework de test soit utilisé à la fois. Ca devrait être le cas si vous n'avez pas cliqué un peu partout).
-2. on configure les tests de notre projet en tapant la commande (dans la [palette de commande]({% post_url tutos/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main %}#palette-de-commande)) : *python : Configure tests* on choisit *pytest* puis *. (root)* qui donne le dossier de départ où aller chercher nos tests
+2. on configure les tests de notre projet en tapant la commande (dans la [palette de commande]({% link _tutoriels/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main.md %}#palette-de-commande)) : *python : Configure tests* on choisit *pytest* puis *. (root)* qui donne le dossier de départ où aller chercher nos tests
 
 #### utilisation {#utilisation-pytest}
 
@@ -249,7 +253,7 @@ Il faut installer des plugins pythons spécifiques pour le linting. Il en existe
 
 #### installation {#installation-pycodestyle}
 
-Dans un [terminal]({% post_url tutos/systeme/2021-08-24-terminal %}), qui peut être [celui de vscode]({% post_url tutos/editeur/vsc/2021-09-14-vsc-terminal %}#terminal-integre) tapez la commande :
+Dans un [terminal]({% link _tutoriels/systeme/2021-08-24-terminal.md %}), qui peut être [celui de vscode]({% link _tutoriels/editeur/vsc/2021-09-14-vsc-terminal.md %}#terminal-integre) tapez la commande :
 
 {% details sous linux et mac %}
 
@@ -277,8 +281,8 @@ Pour mettre en route le linting via pycodestyle, deux paramètres sont à positi
 * `python.linting.pycodestyleEnabled` doit être coché pour utiliser `pycodestyle` comme linter
 * `python.linting.pycodestylePath` doit donner le chemin vers `pycodestyle`. Il est par défaut positionné sur `pycodestyle` ce qui devrait être correct.
 
-> Notez que vous pouvez aussi accéder à ces commande via la [palette de commande]({% post_url tutos/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main %}#palette-de-commande),par exemple avec la commande *python: enable/disable linting*.
+> Notez que vous pouvez aussi accéder à ces commande via la [palette de commande]({% link _tutoriels/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main.md %}#palette-de-commande),par exemple avec la commande *python: enable/disable linting*.
 
 #### pycodestyle dans le terminal
 
-Vous pouvez aussi toujours exécuter la commande `pycodestyle mon-fichier.py`  dans un [terminal intégré]({% post_url tutos/editeur/vsc/2021-09-14-vsc-terminal %}#terminal-integre) pour obtenir le linting de votre fichier. C'est moins pratique que lorsque vscode le fait puisque la ligne en question n'est pas soulignée dans l'interface.
+Vous pouvez aussi toujours exécuter la commande `pycodestyle mon-fichier.py`  dans un [terminal intégré]({% link _tutoriels/editeur/vsc/2021-09-14-vsc-terminal.md %}#terminal-integre) pour obtenir le linting de votre fichier. C'est moins pratique que lorsque vscode le fait puisque la ligne en question n'est pas soulignée dans l'interface.

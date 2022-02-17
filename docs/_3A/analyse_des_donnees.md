@@ -9,7 +9,7 @@ authors:
 
 Cours en duo. Nous ne montrerons ici que les trois cours de François Brucker.
 
-Vous aurez besoin d'une installation de jupyter notebook opérationnelle sur votre ordinateur. Une façon simple d'obtenir ça est d'installer [anaconda](https://www.anaconda.com/products/individual), qui est une distribution python à visée data science. Pour cela, vous pouvez suivre [ce tutoriel]({% post_url /tutos/python/2021-09-14-installation-anaconda %}).
+Vous aurez besoin d'une installation de jupyter notebook opérationnelle sur votre ordinateur. Une façon simple d'obtenir ça est d'installer [anaconda](https://www.anaconda.com/products/individual), qui est une distribution python à visée data science. Pour cela, vous pouvez suivre [ce tutoriel]({% link _tutoriels/python/2021-09-14-installation-anaconda.md %}).
 
 1. [téléchargez le cours 1]({% link /assets/cours/ana_data/ana-data-1.zip %})
 2. [téléchargez le cours 2]({% link /assets/cours/ana_data/ana-data-2.zip %})

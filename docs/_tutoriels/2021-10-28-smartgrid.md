@@ -1,12 +1,14 @@
 ---
 layout: page
 title:  "Smartgrid"
-category: projets
 tags: React node
 authors:
 - "Patrick Ouedraogo"
 ---
 
+Le jeu smartgrid
+
+<!--more-->
 
 ## Smartgrid
 

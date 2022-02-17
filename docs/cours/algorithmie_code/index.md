@@ -63,7 +63,7 @@ category: cours
 
 ### Tuto markdown
 
-[Le format markdown]({% post_url tutos/2021-08-30-format-markdown %})
+[Le format markdown]({% link _tutoriels/2021-08-30-format-markdown.md %})
 
 ### tuto python
 
@@ -71,7 +71,7 @@ TBD
 
 #### eval
 
-#### import 
+#### import
 
 * `import truc` et pas `import truc.py`
 * qu'est ce que *"__pycache__"* ?

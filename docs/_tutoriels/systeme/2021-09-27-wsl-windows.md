@@ -1,8 +1,7 @@
 ---
 layout: page
 title:  wsl ou linux dans windows
-tags: système terminal
-categories: 
+tags: 
     - installation
     - WSL
 authors: 

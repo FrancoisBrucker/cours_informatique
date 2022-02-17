@@ -1,6 +1,6 @@
 ---
 layout: page
-title:  "MPCI S2 : Programmation 2"
+title:  "MPCI S2 : Programmation et Algorithmes"
 category: cours
 ---
 
@@ -10,7 +10,7 @@ Les divers contrôles intermédiaires seront à rendre directement sur [ametice]
 
 > Pour que tout se passe au mieux, il est recommandé de partir d'une installation fraiche de votre système (pour éviter les $N \gg 1$ versions différentes de python par exemple).
 >
-> Un tuto pour installer proprement un ordinateur pour le développement est [disponible ici](({% post_url tutos/systeme/2021-09-01-installation-ordinateur %})).
+> Un tuto pour installer proprement un ordinateur pour le développement est [disponible ici](({% link _tutoriels/systeme/2021-09-01-installation-ordinateur.md %})).
 >
 > Sinon demandez au prof, il vous aidera à bien faire les choses.
 {: .attention}
@@ -36,13 +36,13 @@ L'ensemble du cours (et d'autres choses) est disponible [là]({% link cours/theo
 1. [code]({% link cours/theorie-pratiques-algorithmique/coder/code.md %})
 2. projet 1 : mise en œuvre d'un projet informatique
    * prérequis :
-     1. [naviguer dans un système de fichiers]({% post_url tutos/systeme/2021-08-24-fichiers-navigation %})
-     2. [vscode et python]({% post_url tutos/editeur/vsc/2021-09-14-vsc-python %})
+     1. [naviguer dans un système de fichiers]({% link _tutoriels/systeme/2021-08-24-fichiers-navigation.md %})
+     2. [vscode et python]({% link _tutoriels/editeur/vsc/2021-09-14-vsc-python.md %})
    * [sujet]({% link cours/theorie-pratiques-algorithmique/coder/projet-hello-dev.md %})
 3. projet 2 : pourcentages
    * prérequis :
-     1. [terminal]({% post_url tutos/systeme/2021-08-24-terminal %})
-     2. [utilisation du terminal]({% post_url tutos/systeme/2021-12-02-terminal-utilisation %})
+     1. [terminal]({% link _tutoriels/systeme/2021-08-24-terminal.md %})
+     2. [utilisation du terminal]({% link _tutoriels/systeme/2021-12-02-terminal-utilisation.md %})
    * [sujet]({% link cours/theorie-pratiques-algorithmique/coder/projet-pourcentages.md %})
 
 ### semaine 2
@@ -102,7 +102,7 @@ Au programme :
 
 ### semaine 6
 
-> A partir de la semaine 6, les contrôles de début séance seront à écrire en [markdown]({% post_url /tutos/2021-08-30-format-markdown %}) et envoyé converti en html (ou pdf) sur amétice.
+> A partir de la semaine 6, les contrôles de début séance seront à écrire en [markdown]({% link _tutoriels/2021-08-30-format-markdown.md %}) et envoyé converti en html (ou pdf) sur amétice.
 {: .attention}
 
 #### mercredi {#m-6}

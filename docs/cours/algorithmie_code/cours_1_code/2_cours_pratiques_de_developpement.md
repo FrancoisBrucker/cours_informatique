@@ -24,7 +24,7 @@ Le langage d'application n'a que peut d'intérêt en soit. On choisit celui qui 
 
 ### un interpréteur python qui fonctionne
 
-Vous pouvez soit utiliser l'interpréteur de votre système soit l'installer à la main.Une solution courante et pratique est d'installer [Anaconda](https://www.anaconda.com/) (voir [le début de ce tuto]({% post_url tutos/python/2021-08-20-installation-de-python %})
+Vous pouvez soit utiliser l'interpréteur de votre système soit l'installer à la main.Une solution courante et pratique est d'installer [Anaconda](https://www.anaconda.com/) (voir [le début de ce tuto]({% link _tutoriels/python/2021-08-20-installation-de-python.md %})
 
 ### interpréteur python
 
@@ -88,7 +88,7 @@ On peut ensuite exécuter notre code de plusieurs façons :
 
 ### linter
 
-[linting vsc et python]({% post_url tutos/editeur/vsc/2021-09-14-vsc-python %}#linter)
+[linting vsc et python]({% link _tutoriels/editeur/vsc/2021-09-14-vsc-python.md %}#linter)
 
 Une fois le fichier sauvé, on voit s'il y a des soucis ou pas. Créons en un pour voir si le linter fonctionne :
 

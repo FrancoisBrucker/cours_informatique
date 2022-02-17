@@ -15,11 +15,11 @@ Avant de se lancer à corps perdu dans le développement et le code, vérifions 
 D'après les [prérequis du projet]({% link cours/web/projets/numerologie/index.md %}#prérequis), vous avez :
 
 * [vscode](https://code.visualstudio.com/)
-* [node](https://nodejs.org/en/) que vous pouvez exécuter dans un [terminal]({% post_url tutos/systeme/2021-08-24-terminal %})
+* [node](https://nodejs.org/en/) que vous pouvez exécuter dans un [terminal]({% link _tutoriels/systeme/2021-08-24-terminal.md %})
 
 ## projet
 
-Commencez par vos familiariser avec vscode si ce n'est déjà fait grâce à [ce tutoriel]({% post_url tutos/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main %}). On supposera par la suite que vous avez lu et fait les installations de ce tutoriel.
+Commencez par vos familiariser avec vscode si ce n'est déjà fait grâce à [ce tutoriel]({% link _tutoriels/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main.md %}). On supposera par la suite que vous avez lu et fait les installations de ce tutoriel.
 
 Nous allons préparer le projet dans lequel nous allons coder. Ceci se fait avec vscode en ouvrant un dossier. Ce dossier sera le départ de votre projet et s'appelle *workspace*.
 
@@ -43,11 +43,11 @@ console.log("bonjour " + nom + " !")
 
 ### exécution du code
 
-Tapez ">terminal" dans la [palette de commande]({% post_url tutos/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main %}#palette-de-commande) (*menu Affichage >  Palette de commandes...*)/ et choisissez la commande *Open New External Terminal*.
+Tapez ">terminal" dans la [palette de commande]({% link _tutoriels/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main.md %}#palette-de-commande) (*menu Affichage >  Palette de commandes...*)/ et choisissez la commande *Open New External Terminal*.
 
 Un nouveau terminal s'ouvre directement dans le dossier de votre projet. Magique non ?
 
 >On peut Maintenant exécuter notre fichier en tapant dans ce nouveau terminal : `node mes_tests.js`.
 {: .note}
 
-N'oubliez pas non plus le [termnial de vscode]({% post_url tutos/editeur/vsc/2021-09-14-vsc-terminal %}#terminal-integre), ouvrez le (*"menu Affichage > Terminal"*) et exécutez votre code comme précédemment..
+N'oubliez pas non plus le [termnial de vscode]({% link _tutoriels/editeur/vsc/2021-09-14-vsc-terminal.md %}#terminal-integre), ouvrez le (*"menu Affichage > Terminal"*) et exécutez votre code comme précédemment..

@@ -216,7 +216,7 @@ Pour savoir si nos tests couvrent bien l'ensemble du projet, c'est à dire si le
 >* ça ne prouve pas que les fonctionnalités de votre code sont correctes
 >* certaines fonctions n'ont pas besoin d'être testées (comme les constantes ou les affichages à l'écran par exemple)
 
-Suivez le [tutoriel d'installation]({% post_url tutos/editeur/vsc/2021-09-14-vsc-python-modules-supplementaires %}#code-coverage) pour mettre en place les outils de coverage. 
+Suivez le [tutoriel d'installation]({% link _tutoriels/editeur/vsc/2021-09-14-vsc-python-modules-supplementaires.md %}#code-coverage) pour mettre en place les outils de coverage.
 
 En tapant `pytest --cov=.` dans [un terminal](https://code.visualstudio.com/docs/editor/integrated-terminal), j'obtient le résultat suivant ;
 

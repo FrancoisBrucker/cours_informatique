@@ -275,7 +275,7 @@ Les tests doivent nous permettre d'avoir confiance dans la qualité du code. Il 
 
 Un outil pour vérifier cela est la [couverture de code](https://fr.wikipedia.org/wiki/Couverture_de_code). On exécute les tests et on regarde, fichier par fichier quelles sont les lignes qui ont été vue pour ces tests.
 
-Le [tuto couverture de code]({% post_url tutos/editeur/vsc/2021-09-14-vsc-python-modules-supplementaires %}#code-coverage) vous montre comment l'installer. Son fonctionnement est le suivant :
+Le [tuto couverture de code]({% link _tutoriels/editeur/vsc/2021-09-14-vsc-python-modules-supplementaires.md %}#code-coverage) vous montre comment l'installer. Son fonctionnement est le suivant :
 
 1. on exécute les tests dans le terminal en ajoutant l'extension coverage  `python3 -m pytest --cov=.`
 2. le résultat est donné dans le terminal.

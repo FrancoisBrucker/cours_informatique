@@ -1,8 +1,7 @@
 ---
 layout: page
 title:  "Format markdown"
-categories: langage markdown
-tags: informatique cours 
+tags: langage markdown
 ---
 
 Une introduction au format markdown.
@@ -36,7 +35,7 @@ Le format markdown est basique. Il possède plein de variantes qui permettent d'
 
 ## markdown avec vscode
 
-L'éditeur de texte [vscode]({% post_url tutos/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main %}) permet d'écrire et d'exporter facilement du markdown. Sa documentation comporte une [partie consacrée au markdown](https://code.visualstudio.com/docs/languages/markdown). Nous allons utiliser deux extensions :
+L'éditeur de texte [vscode]({% link _tutoriels/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main.md %}) permet d'écrire et d'exporter facilement du markdown. Sa documentation comporte une [partie consacrée au markdown](https://code.visualstudio.com/docs/languages/markdown). Nous allons utiliser deux extensions :
 
 * [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one) qui permet de fluidifier l'écriture de markdown et permet un export de celui-ci en html.
 * [markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint) qui souligne en orange les fautes de style (un espace après un `.` par exemple) et les erreurs de markdown (sauf dans la hiérarchie des paragraphes par exemple).
@@ -98,7 +97,7 @@ Si le markdown est pratique pour être écrit et lu rapidement, pour de long doc
 
 ### avec vscode
 
-Pour exporter le markdown dans quelque chose de plus joli avec vscode, on peut utiliser la [palette de commande]({% post_url tutos/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main %}#palette-de-commande) pour exécuter la commande : *markdown All in One: Print current document to HTML* : qui va rendre un fichier html.
+Pour exporter le markdown dans quelque chose de plus joli avec vscode, on peut utiliser la [palette de commande]({% link _tutoriels/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main.md %}#palette-de-commande) pour exécuter la commande : *markdown All in One: Print current document to HTML* : qui va rendre un fichier html.
 
 Cela suffit pour la majorité des cas.
 
@@ -113,15 +112,15 @@ Si l'on veut exporter dans des formats plus exotiques ou encore finement contrô
 D'après la [doc](https://pandoc.org/installing.html), selon le système d'exploitation :
 
 {% details sous linux %}
-`sudo apt install pandoc` dans un [terminal]({% post_url /tutos/systeme/2021-08-24-terminal %})
+`sudo apt install pandoc` dans un [terminal]({% link _tutoriels/systeme/2021-08-24-terminal.md %})
 {% enddetails %}
 
 {% details sous mac %}
-installez [brew](https://brew.sh/) puis `brew install pandoc` dans un [terminal]({% post_url /tutos/systeme/2021-08-24-terminal %})
+installez [brew](https://brew.sh/) puis `brew install pandoc` dans un [terminal]({% link _tutoriels/systeme/2021-08-24-terminal.md %})
 {% enddetails %}
 
 {% details sous windows %}
-installez [Chocolatly](https://chocolatey.org/) puis `choco install pandoc` dans un [terminal]({% post_url /tutos/systeme/2021-08-24-terminal %})
+installez [Chocolatly](https://chocolatey.org/) puis `choco install pandoc` dans un [terminal]({% link _tutoriels/systeme/2021-08-24-terminal.md %})
 {% enddetails %}
 
 Selon le format d'export, il vous faudra d'autres logiciels. Je vous conseille d'ores et déjà d'[installer latex](https://www.latex-project.org/get/) pour pouvoir facilement exporter en pdf sans passer par html et un navigateur.

@@ -21,7 +21,7 @@
 title: cours d'informatique
 # email: francois.brucker@centrale-marseille.fr
 description: >- # this means to ignore newlines until "baseurl:"
-  Support de cours/td d'informatique à l'école centrale marseille.
+  Support de cours/td d'informatique de François Brucker.
 
 #urls
 baseurl: "/cours_informatique" # the subpath of your site, e.g. /blog
@@ -50,21 +50,24 @@ collections:
   autre:
     name: autres formations
     output: true
+  tutoriels:
+    name: tutoriels
+    output: true
 
 jekyll-spaceship:
   # default enabled processors
   processors:
     - table-processor
     - mathjax-processor
-    - plantuml-processor
-    - mermaid-processor
-    - polyfill-processor
+    # - plantuml-processor
+    # - mermaid-processor
+    # - polyfill-processor
     - media-processor
-    - emoji-processor
-    - element-processor
+    # - emoji-processor
+    # - element-processor
   mathjax-processor:
     src:
-      - https://polyfill.io/v3/polyfill.min.js?features=es6
+      # - https://polyfill.io/v3/polyfill.min.js?features=es6
       - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
     config:
       tex:

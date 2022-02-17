@@ -21,7 +21,7 @@ Classes et objets, le code !
 
 Dans toute la partie code, vous utiliserez la [couverture de code]({% link cours/theorie-pratiques-algorithmique/coder/programmation-objet/composition-agregation.md %}#couverture-code), pour vérifier que les tests vérifient bien les lignes de votre code.
 
-De plus, maintenant que vous avez pris l'habitude de faire du joli code en utilisant un linter, vous pouvez utiliser [black](https://black.readthedocs.io/en/stable/) pour le faire automatiquement. Suivez le [tuto]({% post_url tutos/editeur/vsc/2021-09-14-vsc-python-modules-supplementaires %}#black) pour l'installer.
+De plus, maintenant que vous avez pris l'habitude de faire du joli code en utilisant un linter, vous pouvez utiliser [black](https://black.readthedocs.io/en/stable/) pour le faire automatiquement. Suivez le [tuto]({% link _tutoriels/editeur/vsc/2021-09-14-vsc-python-modules-supplementaires.md %}#black) pour l'installer.
 
 ## les tests
 

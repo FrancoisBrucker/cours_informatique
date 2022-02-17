@@ -11,7 +11,7 @@ layout: home
 </style>
 <h1>Liste des différents cours, par année</h1>
 {% for collection in site.collections %}
-    {% if collection.label != "posts" and site[collection.label].size  > 0 %}
+    {% if collection.label != "tutoriels" and site[collection.label].size  > 0 %}
         <div>
             <h2 class="post-list-heading">{{ collection.name | default: collection.label}}</h2>
             <ul class="post-list">
@@ -37,5 +37,6 @@ layout: home
 
 <ul>
     <li><a href="cours/">Les différents cours</a></li>
+    <li><a href="tutoriels.html">les tutoriels</a></li>
     <li><a href="tutos/">les tutos</a></li>
 </ul>
