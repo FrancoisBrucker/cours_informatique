@@ -142,7 +142,7 @@ Vous allez y apprendre le <a href="https://naruto.fandom.com/fr/wiki/Nind%C3%B4"
 
 <p>Avec le taux de conversion : 1 CHF = $0.5</p>
 
-<h2 id="comment-">Comment ?</h2>
+<h3 id="comment-">Comment ?</h3>
 
 <p>En programmant par les tests bien sur !</p>
 
@@ -211,7 +211,7 @@ Vous allez y apprendre le <a href="https://naruto.fandom.com/fr/wiki/Nind%C3%B4"
   <p>Toutes ces règles visent à diminuer la peur qui bloque tout progrès</p>
 </blockquote>
 
-<h2 id="code">Code</h2>
+<h3 id="code">Code</h3>
 
 <p>On va développer petit à petit notre propre application de change en utilisant le TDD. La logique est :</p>
 
@@ -222,9 +222,9 @@ Vous allez y apprendre le <a href="https://naruto.fandom.com/fr/wiki/Nind%C3%B4"
   <li>le refactoring est fait par petites touches</li>
 </ul>
 
-<h3 id="1---départ">1 - départ</h3>
+<h2 id="1---départ">1 - départ</h2>
 
-<h4 id="faire-1.1">faire</h4>
+<h3 id="faire-1.1">faire</h3>
 
 <p>Commençons par noter ce qu’il faut faire pour que notre application de change fonctionne :</p>
 
@@ -253,7 +253,7 @@ Vous allez y apprendre le <a href="https://naruto.fandom.com/fr/wiki/Nind%C3%B4"
 
 </blockquote>
 
-<h4 id="todo-list-1.1">todo list</h4>
+<h3 id="todo-list-1.1">todo list</h3>
 
 <p>Première todo-list :</p>
 
@@ -264,7 +264,7 @@ Vous allez y apprendre le <a href="https://naruto.fandom.com/fr/wiki/Nind%C3%B4"
 <input type="checkbox" class="task-list-item-checkbox" disabled>\$5 * 2 = \$10</li>
 </ul>
 
-<h4 id="faire-1.2">faire</h4>
+<h3 id="faire-1.2">faire</h3>
 
 <p>Par quoi on commence ?</p>
 
@@ -306,14 +306,16 @@ Vous allez y apprendre le <a href="https://naruto.fandom.com/fr/wiki/Nind%C3%B4"
 
 <p>L’écriture de notre test (un cas d’utilisation de la classe dollar qui valide l’item courant de la todo-list) nous montre des choses que l’on doit pouvoir faire, et par là augmente notre todo-list avec des choses à implémenter ou des questions auxquelles il va falloir répondre un jour.</p>
 
-<h4 id="todo-list-1.2">todo list</h4>
+<h3 id="todo-list-1.2">todo list</h3>
 
 <p>Le test nous pose quelques questions quand à l’utilisation dela classe dollar. Notre todo-list devient :</p>
 
 <ul class="task-list">
   <li class="task-list-item">
 <input type="checkbox" class="task-list-item-checkbox" disabled>\$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
-  <li class="task-list-item"><strong>[ ] \$5 * 2 = \$10</strong></li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled><strong>\$5 * 2 = \$10</strong>
+</li>
   <li class="task-list-item">
 <input type="checkbox" class="task-list-item-checkbox" disabled>utiliser <code class="language-plaintext highlighter-rouge">montant</code> ? Le rendre privé (le cacher à l’utilisateur (ici les tests))</li>
   <li class="task-list-item">
@@ -322,7 +324,7 @@ Vous allez y apprendre le <a href="https://naruto.fandom.com/fr/wiki/Nind%C3%B4"
 <input type="checkbox" class="task-list-item-checkbox" disabled>gestion des arrondis (lorsque les montants seront des réels)</li>
 </ul>
 
-<h4 id="faire-1.3">faire</h4>
+<h3 id="faire-1.3">faire</h3>
 
 <p>Rien ne marche avec nos tests lorsqu’on les exécute via le terminal :</p>
 
@@ -478,7 +480,7 @@ test_change.py .
   <p>Corriger petit à petit un test pour qu’il passe ne nécessite presque pas d’intelligence. Il suffit de se laisser guider par l’interpréteur python.</p>
 </blockquote>
 
-<h4 id="faire-1.4">faire</h4>
+<h3 id="faire-1.4">faire</h3>
 
 <p><strong>Halte là !</strong> Ce n’est pas fini.</p>
 
@@ -547,7 +549,7 @@ test_change.py .
 
 <p>Nos tests continuent de passer et nous n’avons plus de duplication: on peut supprimer la tâche de la todo-list</p>
 
-<h4 id="todo-list-1.3">todo list</h4>
+<h3 id="todo-list-1.3">todo list</h3>
 
 <p>Le test nous pose quelques questions quand à l’utilisation dela classe dollar. Notre todo-list devient :</p>
 
@@ -583,7 +585,7 @@ test_change.py .
   <p>Dupliquer la réponse du test dans le code est la méthode appelée : <strong>fake it</strong>.</p>
 </blockquote>
 
-<h3 id="2---value-object">2 - value object</h3>
+<h2 id="2---value-object">2 - value object</h2>
 
 <p>On veut faire du <strong>clean code that works</strong>. Mais c’est très difficile même pour des très bons codeurs. On va ainsi séparer le problème :</p>
 
@@ -594,7 +596,7 @@ test_change.py .
 </li>
 </ol>
 
-<blockquote class="code">
+<blockquote class="note">
   <p>La règle d’un bon code est de procéder par ordre :</p>
 
   <ol>
@@ -608,7 +610,7 @@ test_change.py .
 
 <p>Que faire maintenant ?</p>
 
-<h4 id="todo-list-2.1">todo list</h4>
+<h3 id="todo-list-2.1">todo list</h3>
 
 <p>On choisit <strong>toujours</strong> l’élément le plus simple à faire dans la todo-list. Ici, le quatrième item semble le facileemtn implémentable :</p>
 
@@ -619,20 +621,26 @@ test_change.py .
 <input type="checkbox" class="task-list-item-checkbox" disabled checked>\$5 * 2 = \$10</li>
   <li class="task-list-item">
 <input type="checkbox" class="task-list-item-checkbox" disabled>utiliser <code class="language-plaintext highlighter-rouge">montant</code> ? Le rendre privé (le cacher à l’utilisateur (ici les tests))</li>
-  <li class="task-list-item"><strong>[ ] <code class="language-plaintext highlighter-rouge">cinq == $10</code> (ce n’est pas vraiment super car nos \$5 initiaux valent maintenant \$10). rendre <code class="language-plaintext highlighter-rouge">Dollar</code> non modifiable</strong></li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled><strong><code class="language-plaintext highlighter-rouge">cinq == $10</code> (ce n’est pas vraiment super car nos \$5 initiaux valent maintenant \$10). rendre <code class="language-plaintext highlighter-rouge">Dollar</code> non modifiable</strong>
+</li>
   <li class="task-list-item">
 <input type="checkbox" class="task-list-item-checkbox" disabled>gestion des arrondis (lorsque les montants seront des réels)</li>
 </ul>
 
-<h4 id="faire-2.1">faire</h4>
+<h3 id="faire-2.1">faire</h3>
+
+<blockquote class="note">
+  <p>Un objet non modifiable est appelé <strong>value object</strong>.</p>
+</blockquote>
+
+<p>C’est super chouette d’avoir des objets non modifiable, on a pas besoin de faire attention à eux : une fois créés ils ne bougent plus.</p>
+
+<p>Ceci nous permet de les donner à des méthodes inconnues sans avoir peur qu’ils soient modifiés, ou les utiliser dans nos propres méthodes sans craindre qu’ils soient modifiés plus tard. Le seul point négatif d’un value object est que l’on doit regcréer un nouvel objet si on veut le changer. Heureusement, dans la plupart du temps ce n’est pas très coûteux.</p>
 
 <blockquote class="tbd">
   <p>ici</p>
 </blockquote>
-
-<p>Rendre des objets non mutable : des <em>value object</em> c’est super chouette. On a plus besoin de faire attention à eux. Une fois créés ils ne bougent plus. On peut donc les donner à des méthodes inconnues sans avoir peur qu’ils soient modifiés, ou les utiliser dans nos propres méthodes sans craindre qu’ils soient modifiés plus tard.</p>
-
-<p>Si l’on veut modifier un value objet, il faut en créer un autre. Heureusement, dans la plupart du temps ce n’est pas très coûteux.</p>
 
 <h4 id="testspy">tests.py</h4>
 
