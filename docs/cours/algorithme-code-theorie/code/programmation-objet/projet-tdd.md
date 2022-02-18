@@ -149,7 +149,7 @@ La bonne question n'est donc pas "que fait-on en premier" mais :
 La deuxième ligne semble la plus simple. Donc allons-y, mettons en **gras** l'item de la todo list qu'on veut faire :
 
 * [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
-* **[ ] \\$5 * 2 = \\$10**
+* **[-] \\$5 * 2 = \\$10**
 
 Puis :
 
@@ -179,7 +179,7 @@ L'écriture de notre test (un cas d'utilisation de la classe dollar qui valide l
 Le test nous pose quelques questions quand à l'utilisation dela classe dollar. Notre todo-list devient :
 
 * [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
-* [ ] **\\$5 * 2 = \\$10**
+* **[-] \\$5 * 2 = \\$10**
 * [ ] utiliser `montant` ? Le rendre privé (le cacher à l'utilisateur (ici les tests))
 * [ ] `cinq == $10` (ce n'est pas vraiment super car nos \\$5 initiaux valent maintenant \\$10). rendre `Dollar` non modifiable
 * [ ] gestion des arrondis (lorsque les montants seront des réels)
@@ -465,7 +465,7 @@ On choisit **toujours** l'élément le plus simple à faire dans la todo-list. I
 * [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
 * [X] \\$5 * 2 = \\$10
 * [ ] utiliser `montant` ? Le rendre privé (le cacher à l'utilisateur (ici les tests))
-* [ ] **`cinq == $10` (ce n'est pas vraiment super car nos \\$5 initiaux valent maintenant \\$10). rendre `Dollar` non modifiable**
+* **[-] `cinq == $10` (ce n'est pas vraiment super car nos \\$5 initiaux valent maintenant \\$10). rendre `Dollar` non modifiable**
 * [ ] gestion des arrondis (lorsque les montants seront des réels)
 
 ### faire {#faire-2.1}
