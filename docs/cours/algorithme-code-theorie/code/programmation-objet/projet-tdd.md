@@ -54,7 +54,7 @@ Vous allez créer dans cette séance une application de change entre Franc suiss
 
 Avec le taux de conversion : 1 CHF = $0.5
 
-## Comment ?
+### Comment ?
 
 En programmant par les tests bien sur !
 
@@ -99,7 +99,7 @@ Cela permet de prendre du plaisir à coder :
 > Toutes ces règles visent à diminuer la peur qui bloque tout progrès
 {: .note}
 
-## Code
+### Code
 
 On va développer petit à petit notre propre application de change en utilisant le TDD. La logique est :
 
@@ -108,9 +108,9 @@ On va développer petit à petit notre propre application de change en utilisant
 * toute les modifications de code sont effectuées alors que les testent passent
 * le refactoring est fait par petites touches
 
-### 1 - départ
+## 1 - départ
 
-#### faire {#faire-1.1}
+### faire {#faire-1.1}
 
 Commençons par noter ce qu'il faut faire pour que notre application de change fonctionne :
 
@@ -129,14 +129,14 @@ Cette todo-list (ou *backlog*) nous indique :
 >
 {: .a-faire}
 
-#### todo list {#todo-list-1.1}
+### todo list {#todo-list-1.1}
 
 Première todo-list :
 
 * [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
 * [ ] \\$5 * 2 = \\$10
 
-#### faire {#faire-1.2}
+### faire {#faire-1.2}
 
 Par quoi on commence ?
 
@@ -174,17 +174,17 @@ Nous n'avons pas encore écrit de classe `Dollar`, mais on l'utilise déjà...
 
 L'écriture de notre test (un cas d'utilisation de la classe dollar qui valide l'item courant de la todo-list) nous montre des choses que l'on doit pouvoir faire, et par là augmente notre todo-list avec des choses à implémenter ou des questions auxquelles il va falloir répondre un jour.
 
-#### todo list {#todo-list-1.2}
+### todo list {#todo-list-1.2}
 
 Le test nous pose quelques questions quand à l'utilisation dela classe dollar. Notre todo-list devient :
 
 * [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
-* **[ ] \\$5 * 2 = \\$10**
+* [ ] **\\$5 * 2 = \\$10**
 * [ ] utiliser `montant` ? Le rendre privé (le cacher à l'utilisateur (ici les tests))
 * [ ] `cinq == $10` (ce n'est pas vraiment super car nos \\$5 initiaux valent maintenant \\$10). rendre `Dollar` non modifiable
 * [ ] gestion des arrondis (lorsque les montants seront des réels)
 
-#### faire {#faire-1.3}
+### faire {#faire-1.3}
 
 Rien ne marche avec nos tests lorsqu'on les exécute via le terminal :
 
@@ -341,7 +341,7 @@ test_change.py .
 > Corriger petit à petit un test pour qu'il passe ne nécessite presque pas d'intelligence. Il suffit de se laisser guider par l'interpréteur python.
 {: .note}
 
-#### faire {#faire-1.4}
+### faire {#faire-1.4}
 
 **Halte là !** Ce n'est pas fini.
 
@@ -415,7 +415,7 @@ class Dollar:
 
 Nos tests continuent de passer et nous n'avons plus de duplication: on peut supprimer la tâche de la todo-list
 
-#### todo list {#todo-list-1.3}
+### todo list {#todo-list-1.3}
 
 Le test nous pose quelques questions quand à l'utilisation dela classe dollar. Notre todo-list devient :
 
@@ -440,7 +440,7 @@ La méthode qu'on a utilisé pour faire passer nos tests en duplicant la répons
 > Dupliquer la réponse du test dans le code est la méthode appelée : **fake it**.
 {: .note}
 
-### 2 - value object
+## 2 - value object
 
 On veut faire du **clean code that works**. Mais c'est très difficile même pour des très bons codeurs. On va ainsi séparer le problème :
 
@@ -454,30 +454,33 @@ On veut faire du **clean code that works**. Mais c'est très difficile même pou
 > 3. faire du code rapide
 >
 > Il ne faut cependant pas s'arrêter à 1, sinon votre code ne sera pas maintenable dans le temps.
-{: .code}
+{: .note}
 
 Que faire maintenant ?
 
-#### todo list {#todo-list-2.1}
+### todo list {#todo-list-2.1}
 
 On choisit **toujours** l'élément le plus simple à faire dans la todo-list. Ici, le quatrième item semble le facileemtn implémentable :
 
 * [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
 * [X] \\$5 * 2 = \\$10
 * [ ] utiliser `montant` ? Le rendre privé (le cacher à l'utilisateur (ici les tests))
-* **[ ] `cinq == $10` (ce n'est pas vraiment super car nos \\$5 initiaux valent maintenant \\$10). rendre `Dollar` non modifiable**
+* [ ] **`cinq == $10` (ce n'est pas vraiment super car nos \\$5 initiaux valent maintenant \\$10). rendre `Dollar` non modifiable**
 * [ ] gestion des arrondis (lorsque les montants seront des réels)
 
-#### faire {#faire-2.1}
+### faire {#faire-2.1}
+
+> Un objet non modifiable est appelé **value object**.
+{: .note}
+
+C'est super chouette d'avoir des objets non modifiable, on a pas besoin de faire attention à eux : une fois créés ils ne bougent plus.
+
+Ceci nous permet de les donner à des méthodes inconnues sans avoir peur qu'ils soient modifiés, ou les utiliser dans nos propres méthodes sans craindre qu'ils soient modifiés plus tard. Le seul point négatif d'un value object est que l'on doit regcréer un nouvel objet si on veut le changer. Heureusement, dans la plupart du temps ce n'est pas très coûteux.
 
 > ici
 {: .tbd}
 
-Rendre des objets non mutable : des *value object* c'est super chouette. On a plus besoin de faire attention à eux. Une fois créés ils ne bougent plus. On peut donc les donner à des méthodes inconnues sans avoir peur qu'ils soient modifiés, ou les utiliser dans nos propres méthodes sans craindre qu'ils soient modifiés plus tard.
-
-Si l'on veut modifier un value objet, il faut en créer un autre. Heureusement, dans la plupart du temps ce n'est pas très coûteux.
-
-#### tests.py 
+#### tests.py
 
 On voudrait pouvoir multiplier plein de fois différentes nos dollars et que ça ne pose pas de soucis. Genre : 
 
