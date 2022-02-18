@@ -22,3 +22,4 @@ ordre des concepts de code :
 
 1. semaine 7 : poetry
 2. semaine 7 : venv
+3. prog. événementielle avec qt ?

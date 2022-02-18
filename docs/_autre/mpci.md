@@ -58,7 +58,7 @@ L'ensemble du cours (et d'autres choses) est disponible [là]({% link cours/algo
 
 1. [étude : l'exponentiation]({% link cours/algorithme-code-theorie/algorithme/etude-exponentiation.md %})
 2. [projet : l'exponentiation]({% link cours/algorithme-code-theorie/code/projet-exponentiation.md %})
-3. [étude : mélanger un tableau]({% link cours/algorithme-code-theorie/algorithme/etude-melange.md %}) (si on a le temps)
+3. **Pour aller plus loin** : [étude : mélanger un tableau]({% link cours/algorithme-code-theorie/algorithme/etude-melange.md %})
 
 ### semaine 3
 
@@ -74,7 +74,7 @@ L'ensemble du cours (et d'autres choses) est disponible [là]({% link cours/algo
 
 1. [étude : trier un tableau]({% link cours/algorithme-code-theorie/algorithme/etude-tris.md %}) (fin)
 2. [projet : tris]({% link cours/algorithme-code-theorie/code/projet-tris.md %})
-3. [étude : mélanger un tableau]({% link cours/algorithme-code-theorie/algorithme/etude-melange.md %}) (si on a le temps)
+3. **Pour aller plus loin** : [étude : mélanger un tableau]({% link cours/algorithme-code-theorie/algorithme/etude-melange.md %})
 
 ### semaine 4
 
@@ -115,12 +115,15 @@ Au programme :
 
 1. [héritage]({% link cours/algorithme-code-theorie/code/programmation-objet/heritage.md %})
 2. [projet : héritage]({% link cours/algorithme-code-theorie/code/programmation-objet/projet-heritage.md %})
+3. **Pour aller plus loin** : [projet : TDD]({% link cours/algorithme-code-theorie/code/programmation-objet/projet-tdd.md %})
 
 ### semaine 7
 
 #### mercredi {#m-7}
 
 #### vendredi {#v-7}
+
+1. **Pour aller plus loin** : [projet : TDD]({% link cours/algorithme-code-theorie/code/programmation-objet/projet-tdd.md %})
 
 ### semaine 8
 

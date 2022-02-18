@@ -145,25 +145,17 @@ En reprenant le cours :
 
 ### bataille
 
-> Créez un programme doit faire en sorte qu'une guerrière et un personnage se tapent dessus à tour de rôle jusqu'à ce que une personne meure. Le dernier héros en vie est ensuite tué par le magicien en lui jetant des sorts jusqu'à ce qu'il meurt.
+> Créez un programme qui :
+>
+> * demande à l'utilsateur :
+>   * les caractéristiques d'une guerrière (points de vie, attaque et score de défence
+>   * les caractéristiques d'un [gobelin](https://www.aidedd.org/dnd/monstres.php?vf=gobelin) (points de vie, attaque)
+>   * les caractérisitques d'un mago (points de vie, attaque et attaque magique)
+>
+> Puis,  faites en sorte que la guerrière et le Gobelin se tapent dessus à tour de rôle
+> jusqu'à ce qu'un des deux ne meure.
+>
+> Le dernier héros en vie est ensuite tué par le magicien qui le kite en lui jetant des sorts (comme un fourbe), puis le loote pour aller tout revendre au marchand du bourg (mais c'est une autre histoire et d'autres implémentations).
 >  
-> Vous donnerez le nombre de tour nécessaire pour cela.
-{: .a-faire}
-
-### équipement
-
-> Proposez un modèle de classe d'équipement :
->
-> * tout personnage peut porter de l'équipement
-> * chaque équipement peut servir soit (pas exclusif) :
->   * en défense : lors d'une attaque, le score d'armure est retranchée à l'attaque
->   * en attaque : lors d'une attaque, l'attaque du personnage est augmenté du score d'attaque
->   * la méthode `has(event)` doit répondre True si l'équipement répond à `event` et `False` sinon. L'évènement sera soit `ATTAQUE` soit `DEFENSE` et permettra de savoir si l'objet est utilisable ou pas dans telle ou telle circonstance.
->
-> La classe d'équipement est là pour être héritée par des objets *réels*. Créez des classes d'équipements comme les armures (qui n'ont qu'un score d'armure) ou des armes (qui n'ont qu'un score d'attaque)
-{: .a-faire}
-
-Une fois le modèle fait, implémenté et testé :
-
-> Modifier votre programme pour que le personnage et la guerrière ait des équipements différents.
+> Vous donnerez le nombre de tour nécessaire pour cela (testez plusieurs possibilités).
 {: .a-faire}

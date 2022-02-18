@@ -38,11 +38,3 @@ class Magicien(Personnage):
 
     def lancer_sort(self, personnage):
         personnage.set_vie(personnage.get_vie() - self.attaque_magique)
-
-
-class Equipement:
-    def has(self, event):
-        return False
-
-    def react(self, event):
-        return None

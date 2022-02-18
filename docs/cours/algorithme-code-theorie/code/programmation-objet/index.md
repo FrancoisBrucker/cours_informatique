@@ -13,6 +13,7 @@ author: "François Brucker"
 4. [projet : composition et agrégation]({% link cours/algorithme-code-theorie/code/programmation-objet/projet-composition-agregation.md %})
 5. [héritage]({% link cours/algorithme-code-theorie/code/programmation-objet/heritage.md %})
 6. [projet : héritage]({% link cours/algorithme-code-theorie/code/programmation-objet/projet-heritage.md %})
+7. [projet : TDD]({% link cours/algorithme-code-theorie/code/programmation-objet/projet-tdd.md %})
 
 ### Deuxième partie : programmation objet
 

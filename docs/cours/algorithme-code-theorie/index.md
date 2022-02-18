@@ -74,6 +74,7 @@ Ce cours est composée de trois grandes parties qui s'enchevêtrent.
 9. [projet : composition et agrégation]({% link cours/algorithme-code-theorie/code/programmation-objet/projet-composition-agregation.md %})
 10. [héritage]({% link cours/algorithme-code-theorie/code/programmation-objet/heritage.md %})
 11. [projet : héritage]({% link cours/algorithme-code-theorie/code/programmation-objet/projet-heritage.md %})
+12. [projet : TDD]({% link cours/algorithme-code-theorie/code/programmation-objet/projet-tdd.md %})
 
 ### autre
 
@@ -534,6 +535,17 @@ graph.links.push({
 graph.links.push({
   source: "projet : composition et agrégation",
   target: "projet : héritage"
+})
+
+graph.nodes.push({
+id: "projet : TDD",
+  link: "{% link cours/algorithme-code-theorie/code/programmation-objet/projet-tdd.md %}",
+  group: groups.code
+})
+
+graph.links.push({
+  source: "projet : héritage",
+  target: "projet : TDD"
 })
 
 </script>
