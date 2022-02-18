@@ -217,34 +217,24 @@
 <h3 id="bataille">bataille</h3>
 
 <blockquote class="a-faire">
-  <p>Créez un programme doit faire en sorte qu’une guerrière et un personnage se tapent dessus à tour de rôle jusqu’à ce que une personne meure. Le dernier héros en vie est ensuite tué par le magicien en lui jetant des sorts jusqu’à ce qu’il meurt.</p>
-
-  <p>Vous donnerez le nombre de tour nécessaire pour cela.</p>
-</blockquote>
-
-<h3 id="équipement">équipement</h3>
-
-<blockquote class="a-faire">
-  <p>Proposez un modèle de classe d’équipement :</p>
+  <p>Créez un programme qui :</p>
 
   <ul>
-    <li>tout personnage peut porter de l’équipement</li>
-    <li>chaque équipement peut servir soit (pas exclusif) :
+    <li>demande à l’utilsateur :
       <ul>
-        <li>en défense : lors d’une attaque, le score d’armure est retranchée à l’attaque</li>
-        <li>en attaque : lors d’une attaque, l’attaque du personnage est augmenté du score d’attaque</li>
-        <li>la méthode <code class="language-plaintext highlighter-rouge">has(event)</code> doit répondre True si l’équipement répond à <code class="language-plaintext highlighter-rouge">event</code> et <code class="language-plaintext highlighter-rouge">False</code> sinon. L’évènement sera soit <code class="language-plaintext highlighter-rouge">ATTAQUE</code> soit <code class="language-plaintext highlighter-rouge">DEFENSE</code> et permettra de savoir si l’objet est utilisable ou pas dans telle ou telle circonstance.</li>
+        <li>les caractéristiques d’une guerrière (points de vie, attaque et score de défence</li>
+        <li>les caractéristiques d’un <a href="https://www.aidedd.org/dnd/monstres.php?vf=gobelin">gobelin</a> (points de vie, attaque)</li>
+        <li>les caractérisitques d’un mago (points de vie, attaque et attaque magique)</li>
       </ul>
     </li>
   </ul>
 
-  <p>La classe d’équipement est là pour être héritée par des objets <em>réels</em>. Créez des classes d’équipements comme les armures (qui n’ont qu’un score d’armure) ou des armes (qui n’ont qu’un score d’attaque)</p>
-</blockquote>
+  <p>Puis,  faites en sorte que la guerrière et le Gobelin se tapent dessus à tour de rôle
+jusqu’à ce qu’un des deux ne meure.</p>
 
-<p>Une fois le modèle fait, implémenté et testé :</p>
+  <p>Le dernier héros en vie est ensuite tué par le magicien qui le kite en lui jetant des sorts (comme un fourbe), puis le loote pour aller tout revendre au marchand du bourg (mais c’est une autre histoire et d’autres implémentations).</p>
 
-<blockquote class="a-faire">
-  <p>Modifier votre programme pour que le personnage et la guerrière ait des équipements différents.</p>
+  <p>Vous donnerez le nombre de tour nécessaire pour cela (testez plusieurs possibilités).</p>
 </blockquote>
 
   </div>
