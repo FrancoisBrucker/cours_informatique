@@ -115,7 +115,7 @@ Au programme :
 
 1. [héritage]({% link cours/algorithme-code-theorie/code/programmation-objet/heritage.md %})
 2. [projet : héritage]({% link cours/algorithme-code-theorie/code/programmation-objet/projet-heritage.md %})
-3. **Pour aller plus loin** : [projet : TDD]({% link cours/algorithme-code-theorie/code/programmation-objet/projet-tdd.md %})
+3. pour aller plus loin : [projet : TDD]({% link cours/algorithme-code-theorie/code/programmation-objet/projet-tdd.md %})
 
 ### semaine 7
 
@@ -123,7 +123,7 @@ Au programme :
 
 #### vendredi {#v-7}
 
-1. **Pour aller plus loin** : [projet : TDD]({% link cours/algorithme-code-theorie/code/programmation-objet/projet-tdd.md %})
+1. pour aller plus loin : [projet : TDD]({% link cours/algorithme-code-theorie/code/programmation-objet/projet-tdd.md %})
 
 ### semaine 8
 
