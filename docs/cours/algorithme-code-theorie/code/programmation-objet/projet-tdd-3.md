@@ -37,17 +37,24 @@ Nous allons ici faire en sorte que l'on puisse additionner des devises ensemble 
 
 ## Addition 1/3
 
-Avant de traiter l'addition de deux monnaies différentes, commençons par traiter le cas de 1 unique monnaie : 
+Avant de traiter l'addition de deux monnaies différentes, commençons par traiter le cas de 1 unique monnaie.
 
+### todo list {#todo-list-1/3-1}
 
-### todo list {#todo-list-fin}
+* [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
+* **[-] \\$5 + \\$5 = \\$10**
 
+### faire {#faire-1/3-1}
 
-#### tbd
+> Ecrivez un test permettant de tester que \\$5 + \\$5 = \\$10 en :
+>
+> * utilisant une méthode `plus` de `Monnaie` qui rend une monnaie
+> * les objets de `Monnaie` snt otujours non mutable
+>
+> {: .a-faire}
 
- - $5 + 2.5CHF = $10 si le taux de change est 1:.5
- - **$5 + $5 = $10**
-
+> ici
+{: .tbd}
 
 Commençons par écrire un test permettant de tester que $5 + $5 = $10 en supposant que :
 
