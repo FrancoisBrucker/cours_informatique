@@ -1,23 +1,41 @@
 ---
 layout: page
-title:  "TDD et test pattern"
+title:  "TDD et test pattern : partie 3/3"
 author: "François Brucker"
 ---
 
-### RAZ de la todo list
+Partie 3/3.
 
-On est arrivé à un point clé de notre projet. La classe `Money` permet de gérer plusieurs devises et de multiplier les montant par un entier.
+<!--more-->
 
-A partir de maintenant, on va vous laisser un peu plus libre.
+> [Algorithme, code et théorie]({% link cours/algorithme-code-theorie/index.md %}) / [code]({% link cours/algorithme-code-theorie/code/index.md %}) / [programmation objet]({% link cours/algorithme-code-theorie/code/programmation-objet/index.md %}) / [projet : TDD]({% link cours/algorithme-code-theorie/code/programmation-objet/projet-tdd.md %}) / [partie 3/3]({% link cours/algorithme-code-theorie/code/programmation-objet/projet-tdd-3.md %})
+>
+> **prérequis :**
+>
+> * [partie 2/3]({% link cours/algorithme-code-theorie/code/programmation-objet/projet-tdd-2.md %})
+>
+{: .chemin}
 
-On va épurer la todo list en supprimant les améliorations possibles de `==` et la gestion des arrondis (que l'on vous laisse en exercice :-)) : 
+## todo list initiale
 
-#### tbd
+* [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
+* [ ] gestion des arrondis (lorsque les montants seront des réels)
+* [ ] `== None`
+* [ ] `==` avec autre chose qu'un `Dollar`
 
-  - $5 + 2.5CHF = $10 si le taux de change est 1:.5
+On est arrivé à un point clé de notre projet. La classe `Monnaie` permet de gérer plusieurs devises et de multiplier les montant par un entier.
 
+On va encore épurer la todo list en supprimant les améliorations possibles de `==` et la gestion des arrondis (que l'on vous laisse en exercice :-)) :
 
-### Addition 1/3
+* [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
+
+## Déroulé
+
+On va dans cette partie vous laisser plus libre et moins détailler les étapes. Ce sera à vous de modifier petit à petit votre code et à lancer les tests autant de de fois que nécessaire.
+
+## Addition 1/3
+
+### 
 
 Avant de traiter l'addition de deux monnaies différentes, commençons par traiter le cas de 1 unique monnaie : 
 

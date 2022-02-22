@@ -78,6 +78,7 @@ Pour cela on va se fixer quelques règles :
 
 Ces 2 règles impliquent un mode de fonctionnement de note production code :
 
+> **Principe du TDD :**
 >
 > 1. **rouge** :
 >    * écrire *rapidement* un *petit* test
@@ -88,6 +89,7 @@ Ces 2 règles impliquent un mode de fonctionnement de note production code :
 > 3. **refactor** :
 >    * élimine les duplications tout en conservant la validité des tests.
 >
+> La partie refactor, qui est la partie réelle où l'on code ne se fait **que sur du vert** : on est assuré de ne pas casser le code puisque les tests passent.
 {: .note}
 
 Cela permet de prendre du plaisir à coder :

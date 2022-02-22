@@ -16,6 +16,28 @@ Partie 2/3.
 >
 {: .chemin}
 
+## Principe du TDD
+
+On rappelle le principe du TDD :
+
+> **Principe du TDD :**
+>
+> 1. **rouge** :
+>    * écrire *rapidement* un *petit* test
+>    * lancer les tests et les voir planter, voir même  ne correspondre à aucun code.
+> 2. **vert** :
+>    * écrire le code *minimal* qui permet de faire passer le test
+>    * lancer les tests et les voir tous réussir
+> 3. **refactor** :
+>    * élimine les duplications tout en conservant la validité des tests.
+>
+> La partie refactor, qui est la partie réelle où l'on code ne se fait **que sur du vert** : on est assuré de ne pas casser le code puisque les tests passent.
+{: .note}
+
+Cela va être bien présent dans cette partie ou l'on va drastiquement modifier notre code. On va créer des tests qui seront notre filet de sécurité puis une fois que tout est vert on codera **tout en conservant le vert**.
+
+Cela permet, en plus d'avoir un feedback imédiat en cas d'erreur (les tests ne passent plus on est **rouge**), d'avoir confiance dans ce que l'on code (si c'est vert c'est quo'n a rien cassé).
+
 ## todo list initiale
 
 On reprend la tdo list de la fin de la partie 1 :
@@ -102,7 +124,7 @@ Tous les péchés qui ont été commis pour faire passer le test doivent être e
 * [X] 5 CHF * 2 = 10CHF
 * [ ] duplication Franc/dollar
 * [ ] même `==` (code identique dans 2 classes différentes)
-* [ ] `*` presque identique.
+* [ ] `*` presque identique
 
 Notez que même s'il n'y pas de duplication proprement dite entre les deux méthode `__mul__` elles sont trop semblable pour être honnêtes. On rajoute donc un item dans la toto-list pour voir si à un moment donné il ne faudra pas les unifier.
 
@@ -117,7 +139,7 @@ Notez que même s'il n'y pas de duplication proprement dite entre les deux méth
 * [X] 5 CHF * 2 = 10CHF
 * [ ] duplication Franc/dollar
 * **[-] même `==` (code identique dans 2 classes différentes)**
-* [ ] `*` presque identique.
+* [ ] `*` presque identique
 
 ### faire {#faire-7.1}
 
@@ -227,7 +249,7 @@ En revanche, comme il va falloir le faire :
 * [X] 5 CHF * 2 = 10CHF
 * [ ] duplication Franc/dollar
 * **[-] même `==` (code identique dans 2 classes différentes)**
-* [ ] `*` presque identique.
+* [ ] `*` presque identique
 * [ ] compare Franc et Dollar
 
 ### faire {#faire-7.2}
@@ -270,7 +292,7 @@ class Franc(Monnaie):
 * [X] 5 CHF * 2 = 10CHF
 * [ ] duplication Franc/dollar
 * [X] même `==` (code identique dans 2 classes différentes)
-* [ ] `*` presque identique.
+* [ ] `*` presque identique
 * [ ] compare Franc et Dollar
 
 ## 8 -  Franc et Dollar
@@ -286,7 +308,7 @@ On peut maintenant s'occuper de la tâche que l'on vient de rajouter.
 * [X] 5 CHF * 2 = 10CHF
 * [ ] duplication Franc/dollar
 * [X] même `==` (code identique dans 2 classes différentes)
-* [ ] `*` presque identique.
+* [ ] `*` presque identique
 * **[-] compare Franc et Dollar**
 
 ### faire {#faire-8.1}
@@ -355,7 +377,7 @@ On rajoute donc un todo pour montrer que cela nous embête tout de même un peu.
 * [X] 5 CHF * 2 = 10CHF
 * [ ] duplication Franc/dollar
 * [X] même `==` (code identique dans 2 classes différentes)
-* [ ] `*` presque identique.
+* [ ] `*` presque identique
 * [X] compare Franc et Dollar
 * [ ] utilisation de devises plutôt que de classes ?
 
@@ -370,7 +392,7 @@ On rajoute donc un todo pour montrer que cela nous embête tout de même un peu.
 * [X] 5 CHF * 2 = 10CHF
 * **[-] duplication Franc/dollar**
 * [X] même `==` (code identique dans 2 classes différentes)
-* [ ] `*` presque identique.
+* [ ] `*` presque identique
 * [X] compare Franc et Dollar
 * [ ] utilisation de devises plutôt que de classes ?
 
@@ -378,796 +400,1053 @@ On rajoute donc un todo pour montrer que cela nous embête tout de même un peu.
 
 Les 2 implémentations de `__mul__` sont très semblables : la seule chose qui les sépare est leurs retours (un `Franc` ou un `Dollar`).
 
-C'est même la seule chose qui diffère entre `DOllar` et `Franc`... L'existence même des 2 classes est sujette à caution : est-il vraiment utile d'avoir 2 classes juste pour une comparaison ?
+C'est même la seule chose qui diffère entre `Dollar` et `Franc`... L'existence des 2 classes est sujette à caution : est-il vraiment utile d'avoir 2 classes juste pour une comparaison ?
 
 **On ne va garder qu'une seule classe**.
 
-Pour réaliser cela, on va commencer par gommer leurs existences dans les tests. 
+Mais avant cela on va s'assurer que les fonctionnalités des `Franc` et des `Dollars` sont bien toutes représentées dans nos tests, ceci nous permettra de supprimer les classes en confiance : leurs fonctionalités sont préservées grace aux tests on ne risque pas de supprimer une fonctionnalité par inadvertance.
 
-> ici : parler de factory. Design pattern évident > on crée les objet par des méthodes pas par des construteurs
-{: .tbd}
+> Regardez les fonctionnlités différentes ajouter un test pour chaque monnaie si ce n'est pas encore fait.
+{: .a-faire}
+{% details solution %}
 
-Commençons par supprimer la classe dollar en passant par un factory dans le test `test_dollar_multiplication()`
+Il n'y a rien à changer, tous les tests sont fait et pour les `Dollar` et pour les `Franc`.
 
-#### tests.py 
+{% enddetails %}
+
+POur supprimer des bout de code, il ne faut pas qu'ils soient utilisés. Pour supprimer les classes `Franc` et `Dollar`, on va ainsi commencer par gommer leurs existences dans les tests (dans l'utilisation du code).
+
+Une fois l'utilisation des classes masquées dans les tests, on pourra les supprimer tranquilement du code en gardant du vert.
+
+### faire {#faire-9.2}
+
+Gommer supprimer l'utilsation des classes, on va utiliser un design pattern :
+
+> Un [design patterns](https://fr.wikipedia.org/wiki/Patron_de_conception), ou façons de faire, est pour ainsi dire de l'algorithmie objet. C'est une organisation de classes pratique pour résoudre des problèmes courant en développement.
+>
+> Ils permettent de résoudre nombre de problèmes courants en développement et d'éviter les [erreurs classiques](http://sahandsaba.com/nine-anti-patterns-every-programmer-should-be-aware-of-with-examples.html), aussi appelées [anti-pattern](https://fr.wikipedia.org/wiki/Antipattern).
+{: .note}
+
+Le pattern que l'on va utiliser est appelé **factory**, puisqu'il utilise des fonctions pour créer des objets.
+
+> **design pattern :** [factory](https://refactoring.guru/fr/design-patterns/factory-method)
+>
+> On crée les objets via des fonctions sans (ou très peu) de paramètres plutôt qu'avec le constructeur.
+>
+> L'intérêt est que l'on a ppas à se rappeler de toutes les possiblités du constructeur, les cas classiques d'objets sont directement accessible via une fonction.
+{: .note}
+
+Commençons par tester le *factory* la classe `Dollar`  dans le test `test_multiplication_dollar()` :
+
+```python
+from monnaie import Dollar, Franc
+import monnaie
+
+# ...
+
+def test_multiplication_dollar():
+    cinq = monnaie.dollar(5)
+
+    assert Dollar(10) == cinq * 2
+    assert Dollar(15) == cinq * 3
+
+# ...
+```
+
+Bien sur nos tests ne passent pas (encore) :
+
+```text
+___________________________________________________
+test_multiplication_dollar 
+___________________________________________________
+
+    def test_multiplication_dollar():
+>       cinq = monnaie.dollar(5)
+E       AttributeError: module 'monnaie' has no attribute 'dollar'
+
+test_monnaie.py:6: AttributeError
+```
+
+Ici la fonction `dollar` définie dans le module `monnaie` (le fichier *"monnaie.py"*) est le
+*factory* des objets de classe `Dollar`.
+
+> Créez la fonction `dollar` dans le module `monnaie` pour faire passer les tests.
+{: .a-faire}
+{% details solution %}
+
+*"monnaie.py"* :
+
+```python
+# ...
+
+def dollar(montant):
+    return Dollar(montant)
+
+# ...
+```
+
+{% enddetails %}
+
+Et hop ! Les tests passent : on est sur du vert. On va pouvoir modifier massivement nos tests.
+
+### faire {#faire-9.3}
+
+Maintenant que notre *factory* fonctionne (on est sur du vert), on remplace toute référence à `Dollar` en `monnaie.dollar` dans les tests.
+
+> Remplacez toute référence à `Dollar` par `monnaie.dollar` dans les tests
+{: .a-faire}
+{% details solution %}
+
+*"test_monnaie.py"* :
+
+```python
+from monnaie import Dollar, Franc
+import monnaie
 
 
-Allons-y pour un petit test en plus
+def test_multiplication_dollar():
+    cinq = monnaie.dollar(5)
 
-~~~ python
-from money import Dollar, Franc
-import money
+    assert monnaie.dollar(10) == cinq * 2
+    assert monnaie.dollar(15) == cinq * 3
 
-def test_equality():
-    assert Dollar(5) == Dollar(5)
-    assert Dollar(5) != Dollar(6)
-    
+
+def test_multiplication_franc():
+    cinq = Franc(5)
+
+    assert Franc(10) == cinq * 2
+    assert Franc(15) == cinq * 3
+
+
+def test_egalite_dollar():
+    assert monnaie.dollar(5) == monnaie.dollar(5)
+
+
+def test_egalite_franc():
     assert Franc(5) == Franc(5)
-    assert Franc(5) != Franc(6)
-    assert Franc(5) != Dollar(5)
-
-def test_dollar_multiplication():
-    five = money.dollar(5)
-
-    assert Dollar(10) == five * 2
-    assert Dollar(15) == five * 3
-    
-def test_franc_multiplication():
-    five = Franc(5)
-
-    assert Franc(10) == five * 2
-    assert Franc(15) == five * 3
-~~~
 
 
-#### money.py
-
-Un factory de la classe `Dollar` dans `money.py`
-
-~~~ python
-def dollar(amount):
-    return Dollar(amount)
+def test_non_egalite_dollar():
+    assert monnaie.dollar(5) != monnaie.dollar(6)
 
 
-class Money:
-    def __init__(self, amount):
-        self.amount = amount
-
-    def __eq__(self, other):
-        return self.__class__ == other.__class__ and self.amount == other.amount
-
-
-class Franc(Money):
-    def __mul__(self, multiplier):
-        return Franc(self.amount * multiplier)
-
-
-class Dollar(Money):
-    def __mul__(self, multiplier):
-        return Dollar(self.amount * multiplier)
-~~~
-
-
-Les tests passent (en ajoutant l'import des factory) ! Donc on remplace toute référence à `Dollar` en `money.dollar` dans les tests
-
-
-#### tests.py 
-
-
-~~~ python
-from money import Franc
-import money
-
-
-def test_equality():
-    assert money.dollar(5) == money.dollar(5)
-    assert money.dollar(5) != money.dollar(6)
-
-    assert Franc(5) == Franc(5)
+def test_non_egalite_franc():
     assert Franc(5) != Franc(6)
 
-    assert Franc(5) != money.dollar(5)
 
+def test_franc_dollar():
+    assert Franc(1) != monnaie.dollar(1)
 
-def test_dollar_multiplication():
-    five = money.dollar(5)
+```
 
-    assert money.dollar(10) == five * 2
-    assert money.dollar(15) == five * 3
+{% enddetails %}
 
+Avant de faire la même chose pour `Franc`, posons nous la question de l'utilité de garder ces tests. Ont-ils une utilité dans le code ? Pas sûr puisque on ne fait plus qu'une seule classe, mais dons le doute on les conserve, mais on l'ajoute à la todo list.
 
-def test_franc_multiplication():
-    five = Franc(5)
+### todo list {#todo-list-9.2}
 
-    assert Franc(10) == five * 2
-    assert Franc(15) == five * 3
-~~~
- 
+* [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
+* [ ] gestion des arrondis (lorsque les montants seront des réels)
+* [ ] `== None`
+* [ ] `==`avec autre chose qu'un `Dollar`
+* [X] 5 CHF * 2 = 10CHF
+* **[-] duplication Franc/dollar**
+* [X] même `==` (code identique dans 2 classes différentes)
+* [ ] `*` presque identique
+* [X] compare Franc et Dollar
+* [ ] utilisation de devises plutôt que de classes ?
+* [ ] supprimer les tests de `Franc` ?
 
+### faire {#faire-9.4}
 
-Avant de faire la même chose pour les Francs, posons nous la question de l'utilité de garder ces tests. Ont-ils une utilité dans le code ? Pas sûr puisque on ne fait plus qu'une seule classe, mais dons le doute on les conserve, mais on l'ajoute à la todo list.
+Maintenant que notre *factory* fonctionne (on est sur du vert), on remplace toute référence à `Franc` en `monnaie.franc` dans les tests.
 
+> Remplacez toute référence à `Franc` par `monnaie.franc` dans les tests. POur cela procédez comme pour les `Dollar`:
+>
+> 1. on modifie 1 occurence de `Franc`par `monnaie.franc`
+> 2. on fait passer les tests.
+> 3. Une fois sur du vert on fait la modification en masse.
+{: .a-faire}
+{% details solution %}
 
-~~~ python
-import money
+*"monnaie.py"* :
 
+```python
+# ...
 
-def test_equality():
-    assert money.dollar(5) == money.dollar(5)
-    assert money.dollar(5) != money.dollar(6)
+def franc(montant):
+    return Franc(montant)
 
-    assert money.franc(5) == money.franc(5)
-    assert money.franc(5) != money.franc(6)
+# ...
+```
 
-    assert money.franc(5) != money.dollar(5)
+*"test_monnaie.py"* :
 
+```python
+import monnaie
 
-def test_dollar_multiplication():
-    five = money.dollar(5)
 
-    assert money.dollar(10) == five * 2
-    assert money.dollar(15) == five * 3
+def test_multiplication_dollar():
+    cinq = monnaie.dollar(5)
 
+    assert monnaie.dollar(10) == cinq * 2
+    assert monnaie.dollar(15) == cinq * 3
 
-def test_franc_multiplication():
-    five = money.franc(5)
 
-    assert money.franc(10) == five * 2
-    assert money.franc(15) == five * 3
-~~~
+def test_multiplication_franc():
+    cinq = monnaie.franc(5)
 
+    assert monnaie.franc(10) == cinq * 2
+    assert monnaie.franc(15) == cinq * 3
 
-On est maintenant dans une meilleure position qu'au début. Le code utilisateur n'étant pas au courant qu'il existe 2 classes différentes. On va pouvoir passer à la suite du programme les supprimer également dans le code.
 
-#### tbd
+def test_egalite_dollar():
+    assert monnaie.dollar(5) == monnaie.dollar(5)
 
-  - $5 + 2.5CHF = $10 si le taux de change est 1:.5
-  - ~~$5 * 2 = $10~~
-  - ~~utiliser `amount` ? Le rendre privé~~
-  - ~~five == 10 n'est pas vraiment super. non mutable~~
-  - gestion des arrondis 
-  - ~~==~~
-  - == None
-  - == autre chose qu'un Dollar
-  - ~~`__mul__`~~
-  - ~~5 CHF * 2 = 10CHF~~
-  - **duplication Franc/dollar**
-  - ~~même ==~~
-  - `*` presque identique.
-  - compare Franc et Dollar
-  - utilisation de devise ?
-  - supprimer `test_franc_multiplication` ?
 
+def test_egalite_franc():
+    assert monnaie.franc(5) == monnaie.franc(5)
 
-#### money.py
 
+def test_non_egalite_dollar():
+    assert monnaie.dollar(5) != monnaie.dollar(6)
 
-~~~ python
-def dollar(amount):
-    return Dollar(amount)
 
+def test_non_egalite_franc():
+    assert monnaie.franc(5) != monnaie.franc(6)
 
-def franc(amount):
-    return Franc(amount)
 
+def test_franc_dollar():
+    assert monnaie.franc(1) != monnaie.dollar(1)
 
-class Money:
-    def __init__(self, amount):
-        self.amount = amount
+```
 
-    def __eq__(self, other):
-        return self.__class__ == other.__class__ and self.amount == other.amount
+{% enddetails %}
 
+On est maintenant dans une meilleure position qu'au début pour notre projet d'unifier les classes `Franc` et `Dollar` puisque Le code utilisateur n'est pas au courant qu'il existe deux classes différentes (grace au *factory*).
 
-class Franc(Money):
-    def __mul__(self, multiplier):
-        return Franc(self.amount * multiplier)
+On va pouvoir passer à la suite qui consiste à les supprimer également dans le code.
 
+### todo list {#todo-list-9.3}
 
-class Dollar(Money):
-    def __mul__(self, multiplier):
-        return Dollar(self.amount * multiplier)
-~~~
+Il reste des duplications entre Franc et Dollar, mais pour les supprimer il faut passer par quelque chose qui les remplace. Il est donc plus judicieux de faire un autre item de notre liste.
 
-### 10 - devises
+* [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
+* [ ] gestion des arrondis (lorsque les montants seront des réels)
+* [ ] `== None`
+* [ ] `==`avec autre chose qu'un `Dollar`
+* [X] 5 CHF * 2 = 10CHF
+* [ ] duplication Franc/dollar
+* [X] même `==` (code identique dans 2 classes différentes)
+* [ ] `*` presque identique
+* [X] compare Franc et Dollar
+* [ ] utilisation de devises plutôt que de classes ?
+* [ ] supprimer les tests de `Franc` ?
 
-Pour pouvoir supprimer les 2 sous classes, il va nous falloir un moyen de distinguer les Francs des Dollars. Donc autant travailler sur l'ajout d'une devise.
+## 10 - devises
 
+Pour pouvoir supprimer les deux classes `Franc` et `Dollar`, il va nous falloir un moyen de les distinguer. Donc autant travailler sur l'ajout d'une devise.
 
-#### tbd
+### todo list {#todo-list-10.1}
 
-  - $5 + 2.5CHF = $10 si le taux de change est 1:.5
-  - ~~$5 * 2 = $10~~
-  - ~~utiliser `amount` ? Le rendre privé~~
-  - ~~five == 10 n'est pas vraiment super. non mutable~~
-  - gestion des arrondis 
-  - ~~==~~
-  -  == None
-  - == autre chose qu'un Dollar
-  - ~~`__mul__`~~
-  - ~~5 CHF * 2 = 10CHF~~
-  - duplication Franc/dollar
-  - ~~même ==~~
-  - * presque identique.
-  - compare Franc et Dollar
-  - **utilisation de devise ?** 
-  - supprimer `test_franc_multiplication` ?
+Il reste des duplications entre Franc et Dollar, mais pour les supprimer il faut passer par quelque chose qui les remplace. Il est donc plus judicieux de faire un autre item de notre liste.
 
-#### tests.py 
+* [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
+* [ ] gestion des arrondis (lorsque les montants seront des réels)
+* [ ] `== None`
+* [ ] `==`avec autre chose qu'un `Dollar`
+* [X] 5 CHF * 2 = 10CHF
+* [ ] duplication Franc/dollar
+* [X] même `==` (code identique dans 2 classes différentes)
+* [ ] `*` presque identique
+* [X] compare Franc et Dollar
+* **[-] utilisation de devises plutôt que de classes ?**
+* [ ] supprimer les tests de `Franc` ?
 
-On ajoute un test pour vérifier que les dollars et les francs ont des devises différentes.
+### faire {#faire-10.1}
 
-~~~ python
-import money
+La classe `Devise` que l'on veut créer doit avoir un attribut qui nous permettra de distinguer les `Franc` des `Dollar`.
 
+Faisons un test pour implémenter cette idée :
 
-def test_currencies():
-    assert "USD" == money.dollar(1).currencies()
-    assert "CHF" == money.franc(1).currencies()
-    
-    
-def test_equality():
-    assert money.dollar(5) == money.dollar(5)
-    assert money.dollar(5) != money.dollar(6)
+*"test_monnaie.py"* :
 
-    assert money.franc(5) == money.franc(5)
-    assert money.franc(5) != money.franc(6)
+```python
+# ...
 
-    assert money.franc(5) != money.dollar(5)
+def test_devise():
+    assert "USD" == monnaie.dollar(1).devise
+    assert "CHF" == monnaie.franc(1).devise
 
+# ...
+```
 
-def test_dollar_multiplication():
-    five = money.dollar(5)
+> Faites passer les tests en créant cet attribut dans les classes `Dollar` et `Franc`
+{: .a-faire}
+{% details solution %}
 
-    assert money.dollar(10) == five * 2
-    assert money.dollar(15) == five * 3
+*"monnaie.py"* :
 
+```python
+# ...
 
-def test_franc_multiplication():
-    five = money.franc(5)
+def franc(montant):
+    return Franc(montant)
 
-    assert money.franc(10) == five * 2
-    assert money.franc(15) == five * 3
-~~~
+# ...
+```
 
+On implémente cet attribut sous la forme d'un attribut de classe, en le définissant directement dans la classe.
 
+*"monnaie.py"* :
 
-#### money.py
+```python
+# ...
 
-une *obvious implementation* plus tard : 
+class Dollar(Monnaie):
+    devise = "USD"
 
-~~~ python
-def dollar(amount):
-    return Dollar(amount)
+    # ...
 
 
-def franc(amount):
-    return Franc(amount)
+class Franc(Monnaie):
+    devise = "CHF"
 
+    # ...
 
-class Money:
-    def __init__(self, amount):
-        self.amount = amount
+# ...
+```
 
-    def __eq__(self, other):
-        return self.__class__ == other.__class__ and self.amount == other.amount
+{% enddetails %}
 
+On peut maintenant travailler à faire monter les devise au niveau de la classe `Monnaie`.
 
-class Franc(Money):
-    def __mul__(self, multiplier):
-        return Franc(self.amount * multiplier)
+### faire {#faire-10.2}
 
-    def currencies(self):
-        return "CHF"
+L'idée est ici de placer la bonne devise lors dela création de l'objet dans `Monnaie`. Pour faire cela dans les règle de l'art on va utiliser un [pattern de refactoring](https://martinfowler.com/books/refactoring.html) qui permet de modifier le code sans problème.
 
-class Dollar(Money):
-    def __mul__(self, multiplier):
-        return Dollar(self.amount * multiplier)
+On va utiliser :
 
-    def currencies(self):
-        return "USD"
-~~~
+> **refactoring pattern :** [Pull Up Field](https://refactoring.guru/fr/pull-up-field)
+>
+> Le but est de faire remonter un champ de sous-classes à la classe mère.
+>
+> Pour cela, on rend **identique** le champ dans chaqune des sous-classes puis on le déplace dans la classe mère.
+{: .note}
 
+En premier lieu :
 
-On peut maintenant travailler à faire monter les currencies au niveau de `Money`. Commençons par les faire monter au niveu des classes. On va créer un attribut `currency` dans chaque classe et l'utiliser dans les méthodes. Il faut pour cela redescendre les `__init__` dans chaque classe.
+> Faite de l'ttribut `devise` deux attributs affectés chacun affecté dans sa classe
+{: .a-faire}
+{% details solution %}
 
+*"monnaie.py"* :
 
-~~~ python
-def dollar(amount):
-    return Dollar(amount)
+```python
+# ...
 
+class Dollar(Monnaie):
+    def __init__(self, montant):
+        super().__init__(montant)
+        self.devise = "USD"
 
-def franc(amount):
-    return Franc(amount)
+    # ...
 
+class Franc(Monnaie):
+    def __init__(self, montant):
+        super().__init__(montant)
+        self.devise = "CHF"
 
-class Money:
-    def __eq__(self, other):
-        return self.__class__ == other.__class__ and self.amount == other.amount
+    # ...
 
+# ...
+```
 
-class Franc(Money):
-    def __init__(self, amount):
-        self.amount = amount
-        self.currency = "CHF"
+{% enddetails %}
 
-    def currencies(self):
-        return self.currency
+Afin de faire remonter l'attribut `devise` dans la classe `Monnaie`, il va falloir ajouter la devise en paramètre du constructeur.
 
-    def __mul__(self, multiplier):
-        return Franc(self.amount * multiplier)
+Pour que cela se passe sans risque, on va commencer par juste ajouter le paramètre et voir ce que ça donne :
 
+*"monnaie.py"* :
 
-class Dollar(Money):
-    def __init__(self, amount):
-        self.amount = amount
-        self.currency = "USD"
+```python
+# ...
 
-    def currencies(self):
-        return self.currency
+class Monnaie:
+    def __init__(self, montant, devise):
+        self.montant = montant
 
-    def __mul__(self, multiplier):
-        return Dollar(self.amount * multiplier)
-~~~
+    # ...
 
+# ...
+```
 
-Afin de faire remonter l'attribut `currency` dans la classe Money, on va commencer par dire que currency est un paramètre des `__init__`. Comme toute devise est créé avec le factory, ça devrait passer et nous permettre ensuite de ne faire plus qu'une seule classe puisque seuls les paramètres des méthodes vont différer.
+Et les tests plantent :
 
-En ajoutant le paramètre les tests plantent ! C'est parce que l'on a oublié d'ajouter un paramètre aux factory : 
+```text
 
-~~~ python
-def franc(amount):
-    return Franc(amount, None)
-~~~
+    def __init__(self, montant):
+>       super().__init__(montant)
+E       TypeError: __init__() missing 1 required positional argument: 'devise'
 
+monnaie.py:19: TypeError
+```
 
-Les tests plantent encore... C'est parce que `__mul__` n'utilise pas le factory : 
+On a oublié de modifier l'appel au constructeur dans les constructeur des classes. 
 
-~~~ python
-class Franc(Money):
-    def __init__(self, amount, currency):
-        self.amount = amount
-        self.currency = "CHF"
+> Ajouter devise dans l'appel au `super` du constructeur des classes `Franc` et `Dollar`
+{: .a-faire}
+{% details solution %}
 
-    def currencies(self):
-        return self.currency
+*"monnaie.py"* :
 
-    def __mul__(self, multiplier):
-        return franc(self.amount * multiplier)
-~~~
+```python
+# ...
 
+class Dollar(Monnaie):
+    def __init__(self, montant, "USD"):
+        super().__init__(montant)
+        self.devise = "USD"
 
-Ouf, les tests passent. On peut faire pareil pour dollar : 
+    # ...
 
-~~~ python
-def dollar(amount):
-    return Dollar(amount, None)
+class Franc(Monnaie):
+    def __init__(self, montant, "CHF"):
+        super().__init__(montant)
+        self.devise = "CHF"
 
+    # ...
 
-def franc(amount):
-    return Franc(amount, None)
+# ...
+```
 
+{% enddetails %}
 
-class Money:
+Et nos tests passent ! On est sur du vert, c'est bien. On peut finir notre refactoring pattern :
 
-    def __eq__(self, other):
-        return self.__class__ == other.__class__ and self.amount == other.amount
+> Faite remonter l'attribut `devise` dans `Monnaie`
+{: .a-faire}
+{% details solution %}
 
+*"monnaie.py"* :
 
-class Franc(Money):
-    def __init__(self, amount, currency):
-        self.amount = amount
-        self.currency = "CHF"
+```python
+# ...
 
-    def currencies(self):
-        return self.currency
+class Monnaie:
+    def __init__(self, montant, devise):
+        self.montant = montant
+        self.devise = devise
 
-    def __mul__(self, multiplier):
-        return franc(self.amount * multiplier)
+    # ...
 
+class Dollar(Monnaie):
+    def __init__(self, montant, "USD"):
+        super().__init__(montant)
 
-class Dollar(Money):
-    def __init__(self, amount, currency):
-        self.amount = amount
-        self.currency = "USD"
+    # ...
 
-    def currencies(self):
-        return self.currency
+class Franc(Monnaie):
+    def __init__(self, montant, "CHF"):
+        super().__init__(montant)
 
-    def __mul__(self, multiplier):
-        return dollar(self.amount * multiplier)
-~~~
+    # ...
 
+# ...
+```
 
-Il nous reste plus qu'à utiliser le paramètre `currency` des constructeurs dans les factory. Les classes se ressemblent de plus en plus : 
+{% enddetails %}
 
-~~~ python
-def dollar(amount):
-    return Dollar(amount, "USD")
+Et nos tests passent ! Félicitations, vous avez réussi votre premier refactoring pattern.
 
+### faire {#faire-10.3}
 
-def franc(amount):
-    return Franc(amount, "CHF")
+Pour supprimer les classes, il faut créer nos objets avec la classe `Monnaie`. Notre problème est encore un problème de refactoring :
 
+> **refactoring pattern :** [Pull Up Method](https://refactoring.guru/fr/pull-up-method)
+>
+> Le but est de faire remonter une méthode de sous-classes à la classe mère.
+>
+> Pour cela, on rend **identique** la méthode dans chaqune des sous-classes puis on le déplace dans la classe mère.
+{: .note}
 
-class Money:
+Puisque si les constructeurs sont identique, on pourra facilement créer nos objets avec `Monnaie` plutôt qu'avec `Franc` ou `Dollar`. C'est encore impossible pour l'instant car les constructeurs sont :
 
-    def __eq__(self, other):
-        return self.__class__ == other.__class__ and self.amount == other.amount
+* `__init__(self, montant)` pour `Franc` et `Dollar`
+* `def __init__(self, montant, devise)` pour `Devise`
 
+On va petit à petit modifer les constructeurs (et les effets de bords dans le code) pour les rendre identique.
 
-class Franc(Money):
-    def __init__(self, amount, currency):
-        self.amount = amount
-        self.currency = currency
+> Ajoutez un champ devise au constructeur de `Franc` et lancez les tests.
+{: .a-faire}
+{% details solution %}
+*"monnaie.py"* :
 
-    def currencies(self):
-        return self.currency
+```python
+# ...
 
-    def __mul__(self, multiplier):
-        return franc(self.amount * multiplier)
+class Franc(Monnaie):
+    def __init__(self, montant, devise):
+        super().__init__(montant, "CHF")
 
+    # ...
 
-class Dollar(Money):
-    def __init__(self, amount, currency):
-        self.amount = amount
-        self.currency = currency
+# ...
+```
 
-    def currencies(self):
-        return self.currency
+{% enddetails %}
 
-    def __mul__(self, multiplier):
-        return dollar(self.amount * multiplier)
-~~~
+Les tests donnent :
 
+```test
+    def franc(montant):
+>       return Franc(montant)
+E       TypeError: __init__() missing 1 required positional argument: 'devise'
 
-Le `__init__` est re le même, ainsi que `currencies`on peut les bouger dans money (courage on y est presque) :
+monnaie.py:6: TypeError
+```
 
+C'est le factory.
 
-~~~ python
-def dollar(amount):
-    return Dollar(amount, "USD")
+> Modifiez le factory pour qu'il corresponde au constructeur. On donnera `None` comme paramètre pour devise.
+{: .a-faire}
+{% details solution %}
 
+*"monnaie.py"* :
 
-def franc(amount):
-    return Franc(amount, "CHF")
+```python
+# ...
 
+def franc(montant):
+    return Franc(montant, None)
 
-class Money:
-    def __init__(self, amount, currency):
-        self.amount = amount
-        self.currency = currency
+# ...
+```
 
-    def currencies(self):
-        return self.currency
+{% enddetails %}
 
-    def __eq__(self, other):
-        return self.__class__ == other.__class__ and self.amount == other.amount
+> On met `None` comme paramètre car comme sa valeur n'est pas utile pour l'instant autant ne pas s'en occuper.
 
+Les tests ratent toujours :
 
-class Franc(Money):
-    def __mul__(self, multiplier):
-        return franc(self.amount * multiplier)
+```text
+    def __mul__(self, multiplicateur):
+>       return Franc(self.montant * multiplicateur)
+E       TypeError: __init__() missing 1 required positional argument: 'devise'
 
+monnaie.py:31: TypeError
+```
 
-class Dollar(Money):
-    def __mul__(self, multiplier):
-        return dollar(self.amount * multiplier)
-~~~
+Ah, c'est inatendu... On avait oublié `__mul__`: elle n'utilise pas le factory pour créer ses objets.
 
-Tout est prêt pour maintenant supprimer les sous-classes.
+> Modifiez la méthode `__mul__` de `Franc` pour qu'elle utilise le factory.
+{: .a-faire}
+{% details solution %}
 
+*"monnaie.py"* :
 
-#### tbd
+```python
+# ...
 
-  - $5 + 2.5CHF = $10 si le taux de change est 1:.5
-  - ~~$5 * 2 = $10~~
-  - ~~utiliser `amount` ? Le rendre privé~~
-  - ~~five == 10 n'est pas vraiment super. non mutable~~
-  - gestion des arrondis 
-  - ~~==~~
-  - == None
-  - == autre chose qu'un Dollar
-  - ~~`__mul__`~~
-  - ~~5 CHF * 2 = 10CHF~~
-  - duplication Franc/dollar
-  - ~~même ==~~
-  - * presque identique.
-  - compare Franc et Dollar
-  - ~~utilisation de devise ?~~
-  - supprimer `test_franc_multiplication` ?
+class Franc(Monnaie):
+    # ...
 
+    def __mul__(self, multiplicateur):
+        return franc(self.montant * multiplicateur)
 
-Ici, utiliser une tâche annexe (les devises) nous a permis d'avancer vers notre but : supprimer les sous classes.
+# ...
+```
 
+{% enddetails %}
 
+Et nos tests passent !
+
+> Faites la même chose pour `Dollar` en ajoutant un champ devise au constructeur.
+>
+> Faites en sorte que les tests passent.
+{: .a-faire}
+{% details solution %}
+
+*"monnaie.py"* :
+
+```python
+# ...
+
+def dollar(montant):
+    return Dollar(montant, None)
+
+# ...
+
+class Dollar(Monnaie):
+    def __init__(self, montant, devise):
+        super().__init__(montant, "USD")
+
+    def __mul__(self, multiplicateur):
+        return dollar(self.montant * multiplicateur)
+
+# ...
+```
+
+{% enddetails %}
+
+### faire {#faire-10.4}
+
+Maintenant que les signatures des constructeurs sont les mêmes, pour finir le travail il faut que le corps des fonctions soient égales.
+
+> Le second paramètre du constructeur de `Franc` est pour l'instant inutile. Rendez le utile en utilisant son factory (la chaine `"CHF"` doit aller du factory au constructeur)
+{: .a-faire}
+{% details solution %}
+*"monnaie.py"* :
+
+```python
+# ...
+
+def franc(montant):
+    return Franc(montant, "CHF")
+
+# ...
+
+class Franc(Monnaie):
+    def __init__(self, montant, devise):
+        super().__init__(montant, devise)
+
+    def __mul__(self, multiplicateur):
+        return franc(self.montant * multiplicateur)
+
+# ...
+```
+
+{% enddetails %}
+
+Les tests passent, on peut donc faire pareil avec `Dollar` :
+
+> Le second paramètre du constructeur de `Dollar` est pour l'instant inutile. Rendez le utile en utilisant son factory (la chaine `"USD"` doit aller du factory au constructeur)
+{: .a-faire}
+{% details solution %}
+*"monnaie.py"* :
+
+```python
+# ...
+
+def dollar(montant):
+    return Dollar(montant, "USD")
+
+# ...
+
+class Dollar(Monnaie):
+    def __init__(self, montant, devise):
+        super().__init__(montant, devise)
+
+    def __mul__(self, multiplicateur):
+        return dollar(self.montant * multiplicateur)
+
+# ...
+```
+
+{% enddetails %}
+
+Tout est enfin prêt : nos constructeurs sont identiques.
+
+> Supprimez les constructeurs des classes `Dollar` et `Franc`
+{: .a-faire}
+{% details solution %}
+*"monnaie.py"* :
+
+```python
+# ...
+
+class Dollar(Monnaie):
+    def __mul__(self, multiplicateur):
+        return dollar(self.montant * multiplicateur)
+
+
+class Franc(Monnaie):
+    def __mul__(self, multiplicateur):
+        return franc(self.montant * multiplicateur)
+
+# ...
+```
+
+{% enddetails %}
+
+Les testes passent : tout est prêt pour maintenant supprimer les sous-classes.
+
+### todo list {#todo-list-10.2}
+
+Il reste des duplications entre Franc et Dollar, mais pour les supprimer il faut passer par quelque chose qui les remplace. Il est donc plus judicieux de faire un autre item de notre liste.
+
+* [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
+* [ ] gestion des arrondis (lorsque les montants seront des réels)
+* [ ] `== None`
+* [ ] `==`avec autre chose qu'un `Dollar`
+* [X] 5 CHF * 2 = 10CHF
+* [ ] duplication Franc/dollar
+* [X] même `==` (code identique dans 2 classes différentes)
+* [ ] `*` presque identique
+* [X] compare Franc et Dollar
+* [X] utilisation de devises plutôt que de classes ?
+* [ ] supprimer les tests de `Franc` ?
 
 ### 11 -  unification de `*`
 
 Tout est prêt pour unifier les `__mul__` et ainsi faire disparaitre les dernières différences entre les 2 classes.
 
-#### tbd
+### todo list {#todo-list-11.1}
 
-  - $5 + 2.5CHF = $10 si le taux de change est 1:.5
-  - ~~$5 * 2 = $10~~
-  - ~~utiliser `amount` ? Le rendre privé~~
-  - ~~five == 10 n'est pas vraiment super. non mutable~~
-  - gestion des arrondis 
-  - ~~==~~
-  - == None
-  - == autre chose qu'un Dollar
-  - ~~`__mul__`~~
-  - ~~5 CHF * 2 = 10CHF~~
-  - duplication Franc/dollar
-  - ~~même ==~~
-  - **`*` presque identique.**
-  - compare Franc et Dollar
-  - ~~utilisation de devise ?~~
-  - supprimer `test_franc_multiplication` ?
+Il reste des duplications entre Franc et Dollar, mais pour les supprimer il faut passer par quelque chose qui les remplace. Il est donc plus judicieux de faire un autre item de notre liste.
 
+* [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
+* [ ] gestion des arrondis (lorsque les montants seront des réels)
+* [ ] `== None`
+* [ ] `==`avec autre chose qu'un `Dollar`
+* [X] 5 CHF * 2 = 10CHF
+* [ ] duplication Franc/dollar
+* [X] même `==` (code identique dans 2 classes différentes)
+* **[-] `*` presque identique**
+* [X] compare Franc et Dollar
+* [X] utilisation de devises plutôt que de classes ?
+* [ ] supprimer les tests de `Franc` ?
 
-#### money.py 
+### faire {#faire-11.1}
 
-Les deux `__mul__` ne changent que par la classe produite. Donc commençons par expliciter la construction en remplaçant le factory par l'utilisation explicite des constructeurs : 
+Les deux `__mul__` ne changent que par le factory utilisé.
 
-~~~ python
-def dollar(amount):
-    return Dollar(amount, "USD")
+> Remplacez le factory du retour de la méthode par un appel explicite à la classe.
+{: .a-faire}
+{% details solution %}
+*"monnaie.py"* :
 
+```python
+# ...
 
-def franc(amount):
-    return Franc(amount, "CHF")
-
-
-class Money:
-    def __init__(self, amount, currency):
-        self.amount = amount
-        self.currency = currency
-
-    def currencies(self):
-        return self.currency
-
-    def __eq__(self, other):
-        return self.__class__ == other.__class__ and self.amount == other.amount
+class Dollar(Monnaie):
+    def __mul__(self, multiplicateur):
+        return Dollar(self.montant * multiplicateur, "USD)
 
 
-class Franc(Money):
-    def __mul__(self, multiplier):
-        return Franc(self.amount * multiplier, self.currency)
+class Franc(Monnaie):
+    def __mul__(self, multiplicateur):
+        return Franc(self.montant * multiplicateur; "CHF)
 
+# ...
+```
 
-class Dollar(Money):
-    def __mul__(self, multiplier):
-        return Dollar(self.amount * multiplier, self.currency)
-~~~
+{% enddetails %}
 
+les tests sont toujours Ok. Parfait.
 
-On peut maintenant ajouter une méthode `__mul__` das la classe money : 
+On peut maintenant ajouter une méthode `__mul__` das la classe money :
 
-~~~ python
-def dollar(amount):
-    return Dollar(amount, "USD")
+> Ajoutez une méthode `__mul__` dans `Monnaie`
+{: .a-faire}
+{% details solution %}
+*"monnaie.py"* :
 
+```python
+# ...
 
-def franc(amount):
-    return Franc(amount, "CHF")
-
-
-class Money:
-    def __init__(self, amount, currency):
-        self.amount = amount
-        self.currency = currency
-
-    def currencies(self):
-        return self.currency
+class Monnaie:
+    def __init__(self, montant, devise):
+        self.montant = montant
+        self.devise = devise
 
     def __eq__(self, other):
-        return self.__class__ == other.__class__ and self.amount == other.amount
+        return self.__class__ == other.__class__ and self.montant == other.montant
 
-    def __mul__(self, multiplier):
-        return Money(self.amount * multiplier, self.currency)
+    def __mul__(self, multiplicateur):
+        return Monnaie(self.montant * multiplicateur, self.devise)
 
+# ...
+```
 
-class Franc(Money):
-    def __mul__(self, multiplier):
-        return Franc(self.amount * multiplier, self.currency)
+{% enddetails %}
 
+On va maintenant supprimer les méthodes `__mul__` des classes filles pour utiliser celle de `Monnaie`.
 
-class Dollar(Money):
-    def __mul__(self, multiplier):
-        return Dollar(self.amount * multiplier, self.currency)
-~~~
+> Supprimez la méthode `__mul__` de la classe `Franc` et lancez les tests.
+{: .a-faire}
+{% details solution %}
+*"monnaie.py"* :
 
+```python
+# ...
 
-En supprimant la methode `__mul__` des Francs, et en rendant un `Money` dans le factory `franc`, les tests passent.
-
-~~~ python
-def dollar(amount):
-    return Dollar(amount, "USD")
-
-
-def franc(amount):
-    return Money(amount, "CHF")
-
-
-class Money:
-    def __init__(self, amount, currency):
-        self.amount = amount
-        self.currency = currency
-
-    def currencies(self):
-        return self.currency
-
-    def __eq__(self, other):
-        return self.__class__ == other.__class__ and self.amount == other.amount
-
-    def __mul__(self, multiplier):
-        return Money(self.amount * multiplier, self.currency)
-
-
-class Franc(Money):
+class Franc(Monnaie):
     pass
 
-class Dollar(Money):
-    def __mul__(self, multiplier):
-        return Dollar(self.amount * multiplier, self.currency)
-~~~
+# ...
+```
 
+{% enddetails %}
 
-Mais supprimer la méthode `__mul__` de `Dollar` casse les tests : le test d'égalité est cassé. C'est normal il compare des classes et pas des `currency`. On revient donc en arrière jusqu'à ce que les tests passes (on remet la méthode `__mul__` à `Dollar`) puis on corrige la méthode `__eq__` pour qu'elle compare les `currency` plutôt que les classes.
+Les tests ratent.
 
-~~~ python
-def dollar(amount):
-    return Dollar(amount, "USD")
+Et oui, on le savait quand on l'a fait que ça allait nous sauter à la figure : c'est le `__eq__` et sa comparaison entre classes.
 
+En TDD il est **interdit** de modifier du code alors qu'on est rouge. On revient donc en arrivère :
 
-def franc(amount):
-    return Money(amount, "CHF")
+> Replacez la méthode `__mul__` dans `Franc` et assurez vous que les tests passent.
+{: .a-faire}
+{% details solution %}
+*"monnaie.py"* :
 
+```python
+# ...
 
-class Money:
-    def __init__(self, amount, currency):
-        self.amount = amount
-        self.currency = currency
+class Franc(Monnaie):
+    def __mul__(self, multiplicateur):
+        return Franc(self.montant * multiplicateur, "CHF")
 
-    def currencies(self):
-        return self.currency
+# ...
+```
+
+{% enddetails %}
+
+Maintenant qu'on est sur du vert, on peut modifier du code :
+
+> Modifiez `__eq__` de `Monnaie` pour qu'il utilise l'attibut `devise` plutôt que la classe
+{: .a-faire}
+{% details solution %}
+*"monnaie.py"* :
+
+```python
+# ...
+
+class Monnaie:
+    # ...
 
     def __eq__(self, other):
-        return self.currency == other.currency and self.amount == other.amount
+        return self.devise == other.devise and self.montant == other.montant
 
-    def __mul__(self, multiplier):
-        return Money(self.amount * multiplier, self.currency)
+    # ...
 
+# ...
+```
 
-class Franc(Money):
+{% enddetails %}
+
+Les tests repassent ! On peut retenter la suppression de `__mul__` :
+
+> Supprimez la méthode `__mul__` dans `Franc` et assurez vous que les tests passent.
+{: .a-faire}
+{% details solution %}
+*"monnaie.py"* :
+
+```python
+# ...
+
+class Franc(Monnaie):
     pass
 
+# ...
+```
 
-class Dollar(Money):
-    def __mul__(self, multiplier):
-        return Dollar(self.amount * multiplier, self.currency)
-~~~
+{% enddetails %}
 
-On peut maintenant supprimer la méthode `__mul__` de `Dollar` et ainsi supprimer les 2 classes. ON vient de supprimer 2 items en un seul refactoring.
+**victoire !** Nos tests passent.
 
-~~~ python
-def dollar(amount):
-    return Money(amount, "USD")
+On procède de même avec `Dollar` :
 
+> Supprimez la méthode `__mul__` dans `Dollar` et assurez vous que les tests passent.
+{: .a-faire}
+{% details solution %}
+*"monnaie.py"* :
 
-def franc(amount):
-    return Money(amount, "CHF")
+```python
+# ...
 
+class Dollar(Monnaie):
+    pass
 
-class Money:
-    def __init__(self, amount, currency):
-        self.amount = amount
-        self.currency = currency
+# ...
+```
 
-    def currencies(self):
-        return self.currency
+{% enddetails %}
 
-    def __eq__(self, other):
-        return self.currency == other.currency and self.amount == other.amount
+Jusqu'à présent tout va bien. On est toujours vert.
 
-    def __mul__(self, multiplier):
-        return Money(self.amount * multiplier, self.currency)
-~~~
+### todo list {#todo-list-11.2}
 
+On a fini un item (`__mul__`) et on peut directement enchaîner sur le suivant :
 
+* [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
+* [ ] gestion des arrondis (lorsque les montants seront des réels)
+* [ ] `== None`
+* [ ] `==`avec autre chose qu'un `Dollar`
+* [X] 5 CHF * 2 = 10CHF
+* **[-] duplication Franc/dollar**
+* [X] même `==` (code identique dans 2 classes différentes)
+* [X] `*` presque identique
+* [X] compare Franc et Dollar
+* [X] utilisation de devises plutôt que de classes ?
+* [ ] supprimer les tests de `Franc` ?
 
-#### tbd
+### faire {#faire-11.2}
 
-  - $5 + 2.5CHF = $10 si le taux de change est 1:.5
-  - ~~$5 * 2 = $10~~
-  - ~~utiliser `amount` ? Le rendre privé~~
-  - ~~five == 10 n'est pas vraiment super. non mutable~~
-  - gestion des arrondis 
-  - ~~==~~
-  - == None
-  - == autre chose qu'un Dollar
-  - ~~`__mul__`~~
-  - ~~5 CHF * 2 = 10CHF~~
-  - ~~duplication Franc/dollar~~
-  - ~~même ==~~
-  - ~~ * presque identique.~~
-  - compare Franc et Dollar
-  - ~~utilisation de devise ?~~
-  - supprimer `test_franc_multiplication` ?
+On se sent en confiance.
 
-Maintenant les tests d'égalité et de multiplication des `Franc` sont vraiment inutiles puisque le code est le même que celui de dollar : 
+> Utilisez le constructeur de `Monnaie`  pour les deux factory.
+{: .a-faire}
+{% details solution %}
+*"monnaie.py"* :
 
+```python
+# ...
 
-#### tests.py
-
-~~~ python
-import money
+def dollar(montant):
+    return Monnaie(montant, "USD")
 
 
-def test_currencies():
-    assert "USD" == money.dollar(1).currencies()
-    assert "CHF" == money.franc(1).currencies()
+def franc(montant):
+    return Monnaie(montant, "CHF")
 
+# ...
+```
 
-def test_equality():
-    assert money.dollar(5) == money.dollar(5)
-    assert money.dollar(5) != money.dollar(6)
+{% enddetails %}
 
-    assert money.franc(5) != money.dollar(5)
+Et enfin :
+
+> Supprimez les classes `Dollar` et `Franc`
+{: .a-faire}
+
+### todo list {#todo-list-11.3}
+
+* [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
+* [ ] gestion des arrondis (lorsque les montants seront des réels)
+* [ ] `== None`
+* [ ] `==`avec autre chose qu'un `Dollar`
+* [X] 5 CHF * 2 = 10CHF
+* [X] duplication Franc/dollar
+* [X] même `==` (code identique dans 2 classes différentes)
+* [X] `*` presque identique
+* [X] compare Franc et Dollar
+* [X] utilisation de devises plutôt que de classes ?
+* [ ] supprimer les tests de `Franc` ?
+
+## Fin de Partie
+
+Maintenant les tests d'égalité et de multiplication des `Franc` sont vraiment inutiles puisque le code est le même que celui de dollar :
+
+> Suprimez les tests de concernant les francs.
+{: .a-faire}
+{% details solution %}
+*"test_monnaie.py"* :
+
+```python
+import monnaie
 
 
 def test_multiplication():
-    five = money.dollar(5)
+    cinq = monnaie.dollar(5)
 
-    assert money.dollar(10) == five * 2
-    assert money.dollar(15) == five * 3
-~~~
-
+    assert monnaie.dollar(10) == cinq * 2
+    assert monnaie.dollar(15) == cinq * 3
 
 
-#### money.py
-
-~~~ python
-def dollar(amount):
-    return Money(amount, "USD")
+def test_egalite():
+    assert monnaie.dollar(5) == monnaie.dollar(5)
 
 
-def franc(amount):
-    return Money(amount, "CHF")
+def test_non_egalite_dollar():
+    assert monnaie.dollar(5) != monnaie.dollar(6)
 
 
-class Money:
-    def __init__(self, amount, currency):
-        self.amount = amount
-        self.currency = currency
+def test_franc_dollar():
+    assert monnaie.franc(1) != monnaie.dollar(1)
 
-    def currencies(self):
-        return self.currency
+
+def test_devise():
+    assert "USD" == monnaie.dollar(1).devise
+    assert "CHF" == monnaie.franc(1).devise
+
+```
+
+{% enddetails %}
+
+### todo list {#todo-list-fin}
+
+* [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
+* [ ] gestion des arrondis (lorsque les montants seront des réels)
+* [ ] `== None`
+* [ ] `==`avec autre chose qu'un `Dollar`
+* [X] 5 CHF * 2 = 10CHF
+* [X] duplication Franc/dollar
+* [X] même `==` (code identique dans 2 classes différentes)
+* [X] `*` presque identique
+* [X] compare Franc et Dollar
+* [X] utilisation de devises plutôt que de classes ?
+* [X] supprimer les tests de `Franc` ?
+
+## bilan
+
+Vous voyez le développement organique en TDD. On a commencé par deux classes distinctes, puis en codant, on s'est rendu compte qu'elles étaient inutiles et on les a petit à petit supprimées.
+
+Si vous aviez codés sans tests, cela aurait été impossible de réaliser cette opérations en un temps aussi court. De plus, vous n'auriez pas été tenté de le faire car les conséquences auraient pu être dramatique en effet de bord sur le code.
+
+### épurage de la todo list
+
+En supprimant les items effectués, il nous reste à faire ;
+
+* [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
+* [ ] gestion des arrondis (lorsque les montants seront des réels)
+* [ ] `== None`
+* [ ] `==` avec autre chose qu'un `Dollar`
+
+### code
+
+#### *"test_monnaie.py"*
+
+```python
+import monnaie
+
+
+def test_multiplication():
+    cinq = monnaie.dollar(5)
+
+    assert monnaie.dollar(10) == cinq * 2
+    assert monnaie.dollar(15) == cinq * 3
+
+
+def test_egalite():
+    assert monnaie.dollar(5) == monnaie.dollar(5)
+
+
+def test_non_egalite_dollar():
+    assert monnaie.dollar(5) != monnaie.dollar(6)
+
+
+def test_franc_dollar():
+    assert monnaie.franc(1) != monnaie.dollar(1)
+
+
+def test_devise():
+    assert "USD" == monnaie.dollar(1).devise
+    assert "CHF" == monnaie.franc(1).devise
+
+```
+
+#### *"monnaie.py"*
+
+```python
+def dollar(montant):
+    return Monnaie(montant, "USD")
+
+
+def franc(montant):
+    return Monnaie(montant, "CHF")
+
+
+class Monnaie:
+    def __init__(self, montant, devise):
+        self.montant = montant
+        self.devise = devise
 
     def __eq__(self, other):
-        return self.currency == other.currency and self.amount == other.amount
+        return self.devise == other.devise and self.montant == other.montant
 
-    def __mul__(self, multiplier):
-        return Money(self.amount * multiplier, self.currency)
-~~~
+    def __mul__(self, multiplicateur):
+        return Monnaie(self.montant * multiplicateur, self.devise)
 
-
-#### tbd
-
-  - $5 + 2.5CHF = $10 si le taux de change est 1:.5
-  - ~~$5 * 2 = $10~~
-  - ~~utiliser `amount` ? Le rendre privé~~
-  - ~~five == 10 n'est pas vraiment super. non mutable~~
-  - gestion des arrondis 
-  - ~~==~~
-  - == None
-  - == autre chose qu'un Dollar
-  - ~~`__mul__`~~
-  - ~~5 CHF * 2 = 10CHF~~
-  - ~~duplication Franc/dollar~~
-  - ~~même ==~~
-  - ~~* presque identique.~~
-  - ~~compare Franc et Dollar~~
-  - ~~utilisation de devise ?~~
-  - ~~supprimer `test_franc_multiplication` ?~~
+```
