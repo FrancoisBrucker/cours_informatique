@@ -1,35 +1,25 @@
-from monnaie import Dollar, Franc
+import monnaie
 
 
-def test_multiplication_dollar():
-    cinq = Dollar(5)
+def test_multiplication():
+    cinq = monnaie.dollar(5)
 
-    assert Dollar(10) == cinq * 2
-    assert Dollar(15) == cinq * 3
-
-
-def test_multiplication_franc():
-    cinq = Franc(5)
-
-    assert Franc(10) == cinq * 2
-    assert Franc(15) == cinq * 3
+    assert monnaie.dollar(10) == cinq * 2
+    assert monnaie.dollar(15) == cinq * 3
 
 
-def test_egalite_dollar():
-    assert Dollar(5) == Dollar(5)
-
-
-def test_egalite_franc():
-    assert Franc(5) == Franc(5)
+def test_egalite():
+    assert monnaie.dollar(5) == monnaie.dollar(5)
 
 
 def test_non_egalite_dollar():
-    assert Dollar(5) != Dollar(6)
-
-
-def test_non_egalite_franc():
-    assert Franc(5) != Franc(6)
+    assert monnaie.dollar(5) != monnaie.dollar(6)
 
 
 def test_franc_dollar():
-    assert Franc(1) != Dollar(1)
+    assert monnaie.franc(1) != monnaie.dollar(1)
+
+
+def test_devise():
+    assert "USD" == monnaie.dollar(1).devise
+    assert "CHF" == monnaie.franc(1).devise

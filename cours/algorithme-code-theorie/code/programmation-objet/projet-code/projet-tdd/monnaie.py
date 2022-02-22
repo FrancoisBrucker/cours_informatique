@@ -1,16 +1,18 @@
+def dollar(montant):
+    return Monnaie(montant, "USD")
+
+
+def franc(montant):
+    return Monnaie(montant, "CHF")
+
+
 class Monnaie:
-    def __init__(self, montant):
+    def __init__(self, montant, devise):
         self.montant = montant
+        self.devise = devise
 
     def __eq__(self, other):
-        return self.__class__ == other.__class__ and self.montant == other.montant
+        return self.devise == other.devise and self.montant == other.montant
 
-
-class Dollar(Monnaie):
     def __mul__(self, multiplicateur):
-        return Dollar(self.montant * multiplicateur)
-
-
-class Franc(Monnaie):
-    def __mul__(self, multiplicateur):
-        return Franc(self.montant * multiplicateur)
+        return Monnaie(self.montant * multiplicateur, self.devise)

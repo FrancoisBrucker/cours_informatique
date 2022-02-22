@@ -74,9 +74,46 @@
 
 </blockquote>
 
+<h2 id="principe-du-tdd">Principe du TDD</h2>
+
+<p>On rappelle le principe du TDD :</p>
+
+<blockquote class="note">
+  <p><strong>Principe du TDD :</strong></p>
+
+  <ol>
+    <li>
+<strong>rouge</strong> :
+      <ul>
+        <li>écrire <em>rapidement</em> un <em>petit</em> test</li>
+        <li>lancer les tests et les voir planter, voir même  ne correspondre à aucun code.</li>
+      </ul>
+    </li>
+    <li>
+<strong>vert</strong> :
+      <ul>
+        <li>écrire le code <em>minimal</em> qui permet de faire passer le test</li>
+        <li>lancer les tests et les voir tous réussir</li>
+      </ul>
+    </li>
+    <li>
+<strong>refactor</strong> :
+      <ul>
+        <li>élimine les duplications tout en conservant la validité des tests.</li>
+      </ul>
+    </li>
+  </ol>
+
+  <p>La partie refactor, qui est la partie réelle où l’on code ne se fait <strong>que sur du vert</strong> : on est assuré de ne pas casser le code puisque les tests passent.</p>
+</blockquote>
+
+<p>Cela va être bien présent dans cette partie ou l’on va drastiquement modifier notre code. On va créer des tests qui seront notre filet de sécurité puis une fois que tout est vert on codera <strong>tout en conservant le vert</strong>.</p>
+
+<p>Cela permet, en plus d’avoir un feedback immédiat en cas d’erreur (les tests ne passent plus on est <strong>rouge</strong>), d’avoir confiance dans ce que l’on code (si c’est vert c’est quo’n a rien cassé).</p>
+
 <h2 id="todo-list-initiale">todo list initiale</h2>
 
-<p>On reprend la tdo list de la fin de la partie 1 :</p>
+<p>On reprend la todo list de la fin de la partie 1 :</p>
 
 <ul class="task-list">
   <li class="task-list-item">
@@ -93,7 +130,7 @@
 
 <h2 id="6----les-francs">6 -  les Francs</h2>
 
-<p>Le seul item dans la todolist qui ne soit pas de l’optimisation est : \$5 + 2.5CHF = \$10 si le taux de change est 1:.5.</p>
+<p>Le seul item dans la todo list qui ne soit pas de l’optimisation est : \$5 + 2.5CHF = \$10 si le taux de change est 1:.5.</p>
 
 <p>Cela semble bien trop ambitieux pour une seule étape. On va la découper, en commençant par introduire les CHF.</p>
 
@@ -187,10 +224,10 @@
   <li class="task-list-item">
 <input type="checkbox" class="task-list-item-checkbox" disabled>même <code class="language-plaintext highlighter-rouge">==</code> (code identique dans 2 classes différentes)</li>
   <li class="task-list-item">
-<input type="checkbox" class="task-list-item-checkbox" disabled><code class="language-plaintext highlighter-rouge">*</code> presque identique.</li>
+<input type="checkbox" class="task-list-item-checkbox" disabled><code class="language-plaintext highlighter-rouge">*</code> presque identique</li>
 </ul>
 
-<p>Notez que même s’il n’y pas de duplication proprement dite entre les deux méthode <code class="language-plaintext highlighter-rouge">__mul__</code> elles sont trop semblable pour être honnêtes. On rajoute donc un item dans la toto-list pour voir si à un moment donné il ne faudra pas les unifier.</p>
+<p>Notez que même s’il n’y pas de duplication proprement dite entre les deux méthode <code class="language-plaintext highlighter-rouge">__mul__</code> elles sont trop semblable pour être honnêtes. On rajoute donc un item dans la todo list pour voir si à un moment donné il ne faudra pas les unifier.</p>
 
 <h2 id="7---même---pour-tous">7 - même <code class="language-plaintext highlighter-rouge">==</code>  pour tous</h2>
 
@@ -213,7 +250,7 @@
 <input type="checkbox" class="task-list-item-checkbox" disabled>duplication Franc/dollar</li>
   <li class="task-list-item"><strong>[-] même <code class="language-plaintext highlighter-rouge">==</code> (code identique dans 2 classes différentes)</strong></li>
   <li class="task-list-item">
-<input type="checkbox" class="task-list-item-checkbox" disabled><code class="language-plaintext highlighter-rouge">*</code> presque identique.</li>
+<input type="checkbox" class="task-list-item-checkbox" disabled><code class="language-plaintext highlighter-rouge">*</code> presque identique</li>
 </ul>
 
 <h3 id="faire-7.1">faire</h3>
@@ -308,7 +345,7 @@
 <p>On se rend compte que l’on ne teste pas l’inégalité entre <code class="language-plaintext highlighter-rouge">Dollar</code> et <code class="language-plaintext highlighter-rouge">Franc</code> : <strong>on ne le fait pas tout de suite</strong>, car on a pas fini notre item de la todo list</p>
 
 <blockquote class="note">
-  <p><strong>Test pattern :</strong> On ne fait pas 2 choses en même temps. On résoud chaque item de la todo  list les uns à la suite des autres.</p>
+  <p><strong>Test pattern :</strong> On ne fait pas 2 choses en même temps. On résout chaque item de la todo  list les uns à la suite des autres.</p>
 </blockquote>
 
 <p>En revanche, comme il va falloir le faire :</p>
@@ -336,7 +373,7 @@
 <input type="checkbox" class="task-list-item-checkbox" disabled>duplication Franc/dollar</li>
   <li class="task-list-item"><strong>[-] même <code class="language-plaintext highlighter-rouge">==</code> (code identique dans 2 classes différentes)</strong></li>
   <li class="task-list-item">
-<input type="checkbox" class="task-list-item-checkbox" disabled><code class="language-plaintext highlighter-rouge">*</code> presque identique.</li>
+<input type="checkbox" class="task-list-item-checkbox" disabled><code class="language-plaintext highlighter-rouge">*</code> presque identique</li>
   <li class="task-list-item">
 <input type="checkbox" class="task-list-item-checkbox" disabled>compare Franc et Dollar</li>
 </ul>
@@ -391,7 +428,7 @@
   <li class="task-list-item">
 <input type="checkbox" class="task-list-item-checkbox" disabled checked>même <code class="language-plaintext highlighter-rouge">==</code> (code identique dans 2 classes différentes)</li>
   <li class="task-list-item">
-<input type="checkbox" class="task-list-item-checkbox" disabled><code class="language-plaintext highlighter-rouge">*</code> presque identique.</li>
+<input type="checkbox" class="task-list-item-checkbox" disabled><code class="language-plaintext highlighter-rouge">*</code> presque identique</li>
   <li class="task-list-item">
 <input type="checkbox" class="task-list-item-checkbox" disabled>compare Franc et Dollar</li>
 </ul>
@@ -420,7 +457,7 @@
   <li class="task-list-item">
 <input type="checkbox" class="task-list-item-checkbox" disabled checked>même <code class="language-plaintext highlighter-rouge">==</code> (code identique dans 2 classes différentes)</li>
   <li class="task-list-item">
-<input type="checkbox" class="task-list-item-checkbox" disabled><code class="language-plaintext highlighter-rouge">*</code> presque identique.</li>
+<input type="checkbox" class="task-list-item-checkbox" disabled><code class="language-plaintext highlighter-rouge">*</code> presque identique</li>
   <li class="task-list-item"><strong>[-] compare Franc et Dollar</strong></li>
 </ul>
 
@@ -446,9 +483,7 @@
 
 <p>Une façon simple de corriger cela est de rajouter le fait que les 2 objets à comparer soient de la même classe.</p>
 
-<blockquote>
-  <p>En python, la classe d’un objet est l’attribut spécial <code class="language-plaintext highlighter-rouge">__class__</code> présent dans chaque objet.</p>
-</blockquote>
+<p>En python, la classe d’un objet est l’attribut spécial <code class="language-plaintext highlighter-rouge">__class__</code> présent dans chaque objet.</p>
 
 <blockquote>
   <p>Modifiez le code de <code class="language-plaintext highlighter-rouge">__eq__</code> pour vérifier que les classes des 2 objets sont bien différentes.</p>
@@ -472,16 +507,16 @@
 </div></details>
 
 <blockquote class="attention">
-  <p>Votre <strong>code smell</strong> doit être en alerte maxiale !</p>
+  <p>Votre <strong>code smell</strong> doit être en alerte maximale !</p>
 </blockquote>
 
-<p>Ceci n’est en effet pas du tout une bonne façon de coder. Notre comparateur utilise ce que sont les devise d’un point de vue de python (deux classes différentes) pas d’un point de vue de la finance (devise ?). Ce n’est jamais bon. Ca risque (va) nous sauter à la figure tôt ou tard.</p>
+<p>Ceci n’est en effet pas du tout une bonne façon de coder. Notre comparateur utilise ce que sont les devise d’un point de vue de python (deux classes différentes) pas d’un point de vue de la finance (devise ?). Ce n’est jamais bon. Ça risque (va) nous sauter à la figure tôt ou tard.</p>
 
 <blockquote class="note">
   <p>Dans la mesure du possible, votre code doit être écrit du point de vue de ce que représentent les objets codées et non comment ils sont codés</p>
 </blockquote>
 
-<p>On rajoute donc un todo pour montrer que cela nous embête tout de même un peu.</p>
+<p>On rajoute donc un item dans la todo list pour montrer que cela nous embête tout de même un peu.</p>
 
 <h3 id="todo-list-8.2">todo list</h3>
 
@@ -503,7 +538,7 @@
   <li class="task-list-item">
 <input type="checkbox" class="task-list-item-checkbox" disabled checked>même <code class="language-plaintext highlighter-rouge">==</code> (code identique dans 2 classes différentes)</li>
   <li class="task-list-item">
-<input type="checkbox" class="task-list-item-checkbox" disabled><code class="language-plaintext highlighter-rouge">*</code> presque identique.</li>
+<input type="checkbox" class="task-list-item-checkbox" disabled><code class="language-plaintext highlighter-rouge">*</code> presque identique</li>
   <li class="task-list-item">
 <input type="checkbox" class="task-list-item-checkbox" disabled checked>compare Franc et Dollar</li>
   <li class="task-list-item">
@@ -531,7 +566,7 @@
   <li class="task-list-item">
 <input type="checkbox" class="task-list-item-checkbox" disabled checked>même <code class="language-plaintext highlighter-rouge">==</code> (code identique dans 2 classes différentes)</li>
   <li class="task-list-item">
-<input type="checkbox" class="task-list-item-checkbox" disabled><code class="language-plaintext highlighter-rouge">*</code> presque identique.</li>
+<input type="checkbox" class="task-list-item-checkbox" disabled><code class="language-plaintext highlighter-rouge">*</code> presque identique</li>
   <li class="task-list-item">
 <input type="checkbox" class="task-list-item-checkbox" disabled checked>compare Franc et Dollar</li>
   <li class="task-list-item">
@@ -542,766 +577,1176 @@
 
 <p>Les 2 implémentations de <code class="language-plaintext highlighter-rouge">__mul__</code> sont très semblables : la seule chose qui les sépare est leurs retours (un <code class="language-plaintext highlighter-rouge">Franc</code> ou un <code class="language-plaintext highlighter-rouge">Dollar</code>).</p>
 
-<p>C’est même la seule chose qui diffère entre <code class="language-plaintext highlighter-rouge">DOllar</code> et <code class="language-plaintext highlighter-rouge">Franc</code>… L’existence même des 2 classes est sujette à caution : est-il vraiment utile d’avoir 2 classes juste pour une comparaison ?</p>
+<p>C’est même la seule chose qui diffère entre <code class="language-plaintext highlighter-rouge">Dollar</code> et <code class="language-plaintext highlighter-rouge">Franc</code>… L’existence des 2 classes est sujette à caution : est-il vraiment utile d’avoir 2 classes juste pour une comparaison ?</p>
 
 <p><strong>On ne va garder qu’une seule classe</strong>.</p>
 
-<p>Pour réaliser cela, on va commencer par gommer leurs existences dans les tests.</p>
+<p>Mais avant cela on va s’assurer que les fonctionnalités des <code class="language-plaintext highlighter-rouge">Franc</code> et des <code class="language-plaintext highlighter-rouge">Dollars</code> sont bien toutes représentées dans nos tests, ceci nous permettra de supprimer les classes en confiance : leurs fonctionnalités sont préservées grâce aux tests on ne risque pas de supprimer une fonctionnalité par inadvertance.</p>
 
-<blockquote class="tbd">
-  <p>ici : parler de factory. Design pattern évident &gt; on crée les objet par des méthodes pas par des construteurs</p>
+<blockquote class="a-faire">
+  <p>Regardez les fonctionnalités différentes ajouter un test pour chaque monnaie si ce n’est pas encore fait.</p>
+</blockquote>
+<details><summary>solution</summary><div>
+<p>Il n’y a rien à changer, tous les tests sont fait et pour les <code class="language-plaintext highlighter-rouge">Dollar</code> et pour les <code class="language-plaintext highlighter-rouge">Franc</code>.</p>
+
+</div></details>
+
+<p>POur supprimer des bout de code, il ne faut pas qu’ils soient utilisés. Pour supprimer les classes <code class="language-plaintext highlighter-rouge">Franc</code> et <code class="language-plaintext highlighter-rouge">Dollar</code>, on va ainsi commencer par gommer leurs existences dans les tests (dans l’utilisation du code).</p>
+
+<p>Une fois l’utilisation des classes masquées dans les tests, on pourra les supprimer tranquillement du code en gardant du vert.</p>
+
+<h3 id="faire-9.2">faire</h3>
+
+<p>Gommer supprimer l’utilisation des classes, on va utiliser un design pattern :</p>
+
+<blockquote class="note">
+  <p>Un <a href="https://fr.wikipedia.org/wiki/Patron_de_conception">design patterns</a>, ou façons de faire, est pour ainsi dire de l’algorithmie objet. C’est une organisation de classes pratique pour résoudre des problèmes courant en développement.</p>
+
+  <p>Ils permettent de résoudre nombre de problèmes courants en développement et d’éviter les <a href="http://sahandsaba.com/nine-anti-patterns-every-programmer-should-be-aware-of-with-examples.html">erreurs classiques</a>, aussi appelées <a href="https://fr.wikipedia.org/wiki/Antipattern">anti-pattern</a>.</p>
 </blockquote>
 
-<p>Commençons par supprimer la classe dollar en passant par un factory dans le test <code class="language-plaintext highlighter-rouge">test_dollar_multiplication()</code></p>
+<p>Le pattern que l’on va utiliser est appelé <strong>factory</strong>, puisqu’il utilise des fonctions pour créer des objets.</p>
 
-<h4 id="testspy">tests.py</h4>
+<blockquote class="note">
+  <p><strong>design pattern :</strong> <a href="https://refactoring.guru/fr/design-patterns/factory-method">factory</a></p>
 
-<p>Allons-y pour un petit test en plus</p>
+  <p>On crée les objets via des fonctions sans (ou très peu) de paramètres plutôt qu’avec le constructeur.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">money</span> <span class="kn">import</span> <span class="n">Dollar</span><span class="p">,</span> <span class="n">Franc</span>
-<span class="kn">import</span> <span class="nn">money</span>
+  <p>L’intérêt est que l’on a pas à se rappeler de toutes les possibilités du constructeur, les cas classiques d’objets sont directement accessible via une fonction.</p>
+</blockquote>
 
-<span class="k">def</span> <span class="nf">test_equality</span><span class="p">():</span>
-    <span class="k">assert</span> <span class="n">Dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="n">Dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-    <span class="k">assert</span> <span class="n">Dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">!=</span> <span class="n">Dollar</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
-    
+<p>Commençons par tester le <em>factory</em> la classe <code class="language-plaintext highlighter-rouge">Dollar</code>  dans le test <code class="language-plaintext highlighter-rouge">test_multiplication_dollar()</code> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">monnaie</span> <span class="kn">import</span> <span class="n">Dollar</span><span class="p">,</span> <span class="n">Franc</span>
+<span class="kn">import</span> <span class="nn">monnaie</span>
+
+<span class="c1"># ...
+</span>
+<span class="k">def</span> <span class="nf">test_multiplication_dollar</span><span class="p">():</span>
+    <span class="n">cinq</span> <span class="o">=</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+    <span class="k">assert</span> <span class="n">Dollar</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="n">cinq</span> <span class="o">*</span> <span class="mi">2</span>
+    <span class="k">assert</span> <span class="n">Dollar</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span> <span class="o">==</span> <span class="n">cinq</span> <span class="o">*</span> <span class="mi">3</span>
+
+<span class="c1"># ...
+</span></code></pre></div></div>
+
+<p>Bien sur nos tests ne passent pas (encore) :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>___________________________________________________
+test_multiplication_dollar 
+___________________________________________________
+
+    def test_multiplication_dollar():
+&gt;       cinq = monnaie.dollar(5)
+E       AttributeError: module 'monnaie' has no attribute 'dollar'
+
+test_monnaie.py:6: AttributeError
+</code></pre></div></div>
+
+<p>Ici la fonction <code class="language-plaintext highlighter-rouge">dollar</code> définie dans le module <code class="language-plaintext highlighter-rouge">monnaie</code> (le fichier <em>“monnaie.py”</em>) est le
+<em>factory</em> des objets de classe <code class="language-plaintext highlighter-rouge">Dollar</code>.</p>
+
+<blockquote class="a-faire">
+  <p>Créez la fonction <code class="language-plaintext highlighter-rouge">dollar</code> dans le module <code class="language-plaintext highlighter-rouge">monnaie</code> pour faire passer les tests.</p>
+</blockquote>
+<details><summary>solution</summary><div>
+<p><em>“monnaie.py”</em> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ...
+</span>
+<span class="k">def</span> <span class="nf">dollar</span><span class="p">(</span><span class="n">montant</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">Dollar</span><span class="p">(</span><span class="n">montant</span><span class="p">)</span>
+
+<span class="c1"># ...
+</span></code></pre></div></div>
+
+</div></details>
+
+<p>Et hop ! Les tests passent : on est sur du vert. On va pouvoir modifier massivement nos tests.</p>
+
+<h3 id="faire-9.3">faire</h3>
+
+<p>Maintenant que notre <em>factory</em> fonctionne (on est sur du vert), on remplace toute référence à <code class="language-plaintext highlighter-rouge">Dollar</code> en <code class="language-plaintext highlighter-rouge">monnaie.dollar</code> dans les tests.</p>
+
+<blockquote class="a-faire">
+  <p>Remplacez toute référence à <code class="language-plaintext highlighter-rouge">Dollar</code> par <code class="language-plaintext highlighter-rouge">monnaie.dollar</code> dans les tests</p>
+</blockquote>
+<details><summary>solution</summary><div>
+<p><em>“test_monnaie.py”</em> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">monnaie</span> <span class="kn">import</span> <span class="n">Dollar</span><span class="p">,</span> <span class="n">Franc</span>
+<span class="kn">import</span> <span class="nn">monnaie</span>
+
+
+<span class="k">def</span> <span class="nf">test_multiplication_dollar</span><span class="p">():</span>
+    <span class="n">cinq</span> <span class="o">=</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+    <span class="k">assert</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="n">cinq</span> <span class="o">*</span> <span class="mi">2</span>
+    <span class="k">assert</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span> <span class="o">==</span> <span class="n">cinq</span> <span class="o">*</span> <span class="mi">3</span>
+
+
+<span class="k">def</span> <span class="nf">test_multiplication_franc</span><span class="p">():</span>
+    <span class="n">cinq</span> <span class="o">=</span> <span class="n">Franc</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+    <span class="k">assert</span> <span class="n">Franc</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="n">cinq</span> <span class="o">*</span> <span class="mi">2</span>
+    <span class="k">assert</span> <span class="n">Franc</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span> <span class="o">==</span> <span class="n">cinq</span> <span class="o">*</span> <span class="mi">3</span>
+
+
+<span class="k">def</span> <span class="nf">test_egalite_dollar</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">test_egalite_franc</span><span class="p">():</span>
     <span class="k">assert</span> <span class="n">Franc</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="n">Franc</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-    <span class="k">assert</span> <span class="n">Franc</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">!=</span> <span class="n">Franc</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
-    <span class="k">assert</span> <span class="n">Franc</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">!=</span> <span class="n">Dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">test_dollar_multiplication</span><span class="p">():</span>
-    <span class="n">five</span> <span class="o">=</span> <span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-
-    <span class="k">assert</span> <span class="n">Dollar</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="n">five</span> <span class="o">*</span> <span class="mi">2</span>
-    <span class="k">assert</span> <span class="n">Dollar</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span> <span class="o">==</span> <span class="n">five</span> <span class="o">*</span> <span class="mi">3</span>
-    
-<span class="k">def</span> <span class="nf">test_franc_multiplication</span><span class="p">():</span>
-    <span class="n">five</span> <span class="o">=</span> <span class="n">Franc</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-
-    <span class="k">assert</span> <span class="n">Franc</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="n">five</span> <span class="o">*</span> <span class="mi">2</span>
-    <span class="k">assert</span> <span class="n">Franc</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span> <span class="o">==</span> <span class="n">five</span> <span class="o">*</span> <span class="mi">3</span>
-</code></pre></div></div>
-
-<h4 id="moneypy">money.py</h4>
-
-<p>Un factory de la classe <code class="language-plaintext highlighter-rouge">Dollar</code> dans <code class="language-plaintext highlighter-rouge">money.py</code></p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">dollar</span><span class="p">(</span><span class="n">amount</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">Dollar</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
 
 
-<span class="k">class</span> <span class="nc">Money</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">):</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">=</span> <span class="n">amount</span>
-
-    <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">__class__</span> <span class="o">==</span> <span class="n">other</span><span class="p">.</span><span class="n">__class__</span> <span class="ow">and</span> <span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">==</span> <span class="n">other</span><span class="p">.</span><span class="n">amount</span>
+<span class="k">def</span> <span class="nf">test_non_egalite_dollar</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">!=</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
 
 
-<span class="k">class</span> <span class="nc">Franc</span><span class="p">(</span><span class="n">Money</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multiplier</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">Franc</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">*</span> <span class="n">multiplier</span><span class="p">)</span>
-
-
-<span class="k">class</span> <span class="nc">Dollar</span><span class="p">(</span><span class="n">Money</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multiplier</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">Dollar</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">*</span> <span class="n">multiplier</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>Les tests passent (en ajoutant l’import des factory) ! Donc on remplace toute référence à <code class="language-plaintext highlighter-rouge">Dollar</code> en <code class="language-plaintext highlighter-rouge">money.dollar</code> dans les tests</p>
-
-<h4 id="testspy-1">tests.py</h4>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">money</span> <span class="kn">import</span> <span class="n">Franc</span>
-<span class="kn">import</span> <span class="nn">money</span>
-
-
-<span class="k">def</span> <span class="nf">test_equality</span><span class="p">():</span>
-    <span class="k">assert</span> <span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-    <span class="k">assert</span> <span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">!=</span> <span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
-
-    <span class="k">assert</span> <span class="n">Franc</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="n">Franc</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">test_non_egalite_franc</span><span class="p">():</span>
     <span class="k">assert</span> <span class="n">Franc</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">!=</span> <span class="n">Franc</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
 
-    <span class="k">assert</span> <span class="n">Franc</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">!=</span> <span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 
+<span class="k">def</span> <span class="nf">test_franc_dollar</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">Franc</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">!=</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">test_dollar_multiplication</span><span class="p">():</span>
-    <span class="n">five</span> <span class="o">=</span> <span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-
-    <span class="k">assert</span> <span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="n">five</span> <span class="o">*</span> <span class="mi">2</span>
-    <span class="k">assert</span> <span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span> <span class="o">==</span> <span class="n">five</span> <span class="o">*</span> <span class="mi">3</span>
-
-
-<span class="k">def</span> <span class="nf">test_franc_multiplication</span><span class="p">():</span>
-    <span class="n">five</span> <span class="o">=</span> <span class="n">Franc</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-
-    <span class="k">assert</span> <span class="n">Franc</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="n">five</span> <span class="o">*</span> <span class="mi">2</span>
-    <span class="k">assert</span> <span class="n">Franc</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span> <span class="o">==</span> <span class="n">five</span> <span class="o">*</span> <span class="mi">3</span>
 </code></pre></div></div>
 
-<p>Avant de faire la même chose pour les Francs, posons nous la question de l’utilité de garder ces tests. Ont-ils une utilité dans le code ? Pas sûr puisque on ne fait plus qu’une seule classe, mais dons le doute on les conserve, mais on l’ajoute à la todo list.</p>
+</div></details>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">money</span>
+<p>Avant de faire la même chose pour <code class="language-plaintext highlighter-rouge">Franc</code>, posons nous la question de l’utilité de garder ces tests. Ont-ils une utilité dans le code ? Pas sûr puisque on ne fait plus qu’une seule classe, mais dons le doute on les conserve, mais on l’ajoute à la todo list.</p>
 
+<h3 id="todo-list-9.2">todo list</h3>
 
-<span class="k">def</span> <span class="nf">test_equality</span><span class="p">():</span>
-    <span class="k">assert</span> <span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-    <span class="k">assert</span> <span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">!=</span> <span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
-
-    <span class="k">assert</span> <span class="n">money</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="n">money</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-    <span class="k">assert</span> <span class="n">money</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">!=</span> <span class="n">money</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
-
-    <span class="k">assert</span> <span class="n">money</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">!=</span> <span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-
-
-<span class="k">def</span> <span class="nf">test_dollar_multiplication</span><span class="p">():</span>
-    <span class="n">five</span> <span class="o">=</span> <span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-
-    <span class="k">assert</span> <span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="n">five</span> <span class="o">*</span> <span class="mi">2</span>
-    <span class="k">assert</span> <span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span> <span class="o">==</span> <span class="n">five</span> <span class="o">*</span> <span class="mi">3</span>
-
-
-<span class="k">def</span> <span class="nf">test_franc_multiplication</span><span class="p">():</span>
-    <span class="n">five</span> <span class="o">=</span> <span class="n">money</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-
-    <span class="k">assert</span> <span class="n">money</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="n">five</span> <span class="o">*</span> <span class="mi">2</span>
-    <span class="k">assert</span> <span class="n">money</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span> <span class="o">==</span> <span class="n">five</span> <span class="o">*</span> <span class="mi">3</span>
-</code></pre></div></div>
-
-<p>On est maintenant dans une meilleure position qu’au début. Le code utilisateur n’étant pas au courant qu’il existe 2 classes différentes. On va pouvoir passer à la suite du programme les supprimer également dans le code.</p>
-
-<h4 id="tbd">tbd</h4>
-
-<ul>
-  <li>$5 + 2.5CHF = $10 si le taux de change est 1:.5</li>
-  <li><del>$5 * 2 = $10</del></li>
-  <li><del>utiliser <code class="language-plaintext highlighter-rouge">amount</code> ? Le rendre privé</del></li>
-  <li><del>five == 10 n’est pas vraiment super. non mutable</del></li>
-  <li>gestion des arrondis</li>
-  <li><del>==</del></li>
-  <li>== None</li>
-  <li>== autre chose qu’un Dollar</li>
-  <li><del><code class="language-plaintext highlighter-rouge">__mul__</code></del></li>
-  <li><del>5 CHF * 2 = 10CHF</del></li>
-  <li><strong>duplication Franc/dollar</strong></li>
-  <li><del>même ==</del></li>
-  <li>
-<code class="language-plaintext highlighter-rouge">*</code> presque identique.</li>
-  <li>compare Franc et Dollar</li>
-  <li>utilisation de devise ?</li>
-  <li>supprimer <code class="language-plaintext highlighter-rouge">test_franc_multiplication</code> ?</li>
+<ul class="task-list">
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>\$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>gestion des arrondis (lorsque les montants seront des réels)</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled><code class="language-plaintext highlighter-rouge">== None</code>
+</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled><code class="language-plaintext highlighter-rouge">==</code>avec autre chose qu’un <code class="language-plaintext highlighter-rouge">Dollar</code>
+</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>5 CHF * 2 = 10CHF</li>
+  <li class="task-list-item"><strong>[-] duplication Franc/dollar</strong></li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>même <code class="language-plaintext highlighter-rouge">==</code> (code identique dans 2 classes différentes)</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled><code class="language-plaintext highlighter-rouge">*</code> presque identique</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>compare Franc et Dollar</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>utilisation de devises plutôt que de classes ?</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>supprimer les tests de <code class="language-plaintext highlighter-rouge">Franc</code> ?</li>
 </ul>
 
-<h4 id="moneypy-1">money.py</h4>
+<h3 id="faire-9.4">faire</h3>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">dollar</span><span class="p">(</span><span class="n">amount</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">Dollar</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
+<p>Maintenant que notre <em>factory</em> fonctionne (on est sur du vert), on remplace toute référence à <code class="language-plaintext highlighter-rouge">Franc</code> en <code class="language-plaintext highlighter-rouge">monnaie.franc</code> dans les tests.</p>
+
+<blockquote class="a-faire">
+  <p>Remplacez toute référence à <code class="language-plaintext highlighter-rouge">Franc</code> par <code class="language-plaintext highlighter-rouge">monnaie.franc</code> dans les tests. POur cela procédez comme pour les <code class="language-plaintext highlighter-rouge">Dollar</code>:</p>
+
+  <ol>
+    <li>on modifie 1 occurence de <code class="language-plaintext highlighter-rouge">Franc</code>par <code class="language-plaintext highlighter-rouge">monnaie.franc</code>
+</li>
+    <li>on fait passer les tests.</li>
+    <li>Une fois sur du vert on fait la modification en masse.</li>
+  </ol>
+</blockquote>
+<details><summary>solution</summary><div>
+<p><em>“monnaie.py”</em> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ...
+</span>
+<span class="k">def</span> <span class="nf">franc</span><span class="p">(</span><span class="n">montant</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">Franc</span><span class="p">(</span><span class="n">montant</span><span class="p">)</span>
+
+<span class="c1"># ...
+</span></code></pre></div></div>
+
+<p><em>“test_monnaie.py”</em> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">monnaie</span>
 
 
-<span class="k">def</span> <span class="nf">franc</span><span class="p">(</span><span class="n">amount</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">Franc</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">test_multiplication_dollar</span><span class="p">():</span>
+    <span class="n">cinq</span> <span class="o">=</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+    <span class="k">assert</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="n">cinq</span> <span class="o">*</span> <span class="mi">2</span>
+    <span class="k">assert</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span> <span class="o">==</span> <span class="n">cinq</span> <span class="o">*</span> <span class="mi">3</span>
 
 
-<span class="k">class</span> <span class="nc">Money</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">):</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">=</span> <span class="n">amount</span>
+<span class="k">def</span> <span class="nf">test_multiplication_franc</span><span class="p">():</span>
+    <span class="n">cinq</span> <span class="o">=</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">__class__</span> <span class="o">==</span> <span class="n">other</span><span class="p">.</span><span class="n">__class__</span> <span class="ow">and</span> <span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">==</span> <span class="n">other</span><span class="p">.</span><span class="n">amount</span>
-
-
-<span class="k">class</span> <span class="nc">Franc</span><span class="p">(</span><span class="n">Money</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multiplier</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">Franc</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">*</span> <span class="n">multiplier</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="n">cinq</span> <span class="o">*</span> <span class="mi">2</span>
+    <span class="k">assert</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span> <span class="o">==</span> <span class="n">cinq</span> <span class="o">*</span> <span class="mi">3</span>
 
 
-<span class="k">class</span> <span class="nc">Dollar</span><span class="p">(</span><span class="n">Money</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multiplier</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">Dollar</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">*</span> <span class="n">multiplier</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">test_egalite_dollar</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">test_egalite_franc</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">test_non_egalite_dollar</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">!=</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">test_non_egalite_franc</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">!=</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">test_franc_dollar</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">!=</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
 </code></pre></div></div>
 
-<h3 id="10---devises">10 - devises</h3>
+</div></details>
 
-<p>Pour pouvoir supprimer les 2 sous classes, il va nous falloir un moyen de distinguer les Francs des Dollars. Donc autant travailler sur l’ajout d’une devise.</p>
+<p>On est maintenant dans une meilleure position qu’au début pour notre projet d’unifier les classes <code class="language-plaintext highlighter-rouge">Franc</code> et <code class="language-plaintext highlighter-rouge">Dollar</code> puisque Le code utilisateur n’est pas au courant qu’il existe deux classes différentes (grâce au <em>factory</em>).</p>
 
-<h4 id="tbd-1">tbd</h4>
+<p>On va pouvoir passer à la suite qui consiste à les supprimer également dans le code.</p>
 
-<ul>
-  <li>$5 + 2.5CHF = $10 si le taux de change est 1:.5</li>
-  <li><del>$5 * 2 = $10</del></li>
-  <li><del>utiliser <code class="language-plaintext highlighter-rouge">amount</code> ? Le rendre privé</del></li>
-  <li><del>five == 10 n’est pas vraiment super. non mutable</del></li>
-  <li>gestion des arrondis</li>
-  <li><del>==</del></li>
-  <li>== None</li>
-  <li>== autre chose qu’un Dollar</li>
-  <li><del><code class="language-plaintext highlighter-rouge">__mul__</code></del></li>
-  <li><del>5 CHF * 2 = 10CHF</del></li>
-  <li>duplication Franc/dollar</li>
-  <li><del>même ==</del></li>
-  <li>
-    <ul>
-      <li>presque identique.</li>
-    </ul>
-  </li>
-  <li>compare Franc et Dollar</li>
-  <li><strong>utilisation de devise ?</strong></li>
-  <li>supprimer <code class="language-plaintext highlighter-rouge">test_franc_multiplication</code> ?</li>
+<h3 id="todo-list-9.3">todo list</h3>
+
+<p>Il reste des duplications entre Franc et Dollar, mais pour les supprimer il faut passer par quelque chose qui les remplace. Il est donc plus judicieux de faire un autre item de notre liste.</p>
+
+<ul class="task-list">
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>\$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>gestion des arrondis (lorsque les montants seront des réels)</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled><code class="language-plaintext highlighter-rouge">== None</code>
+</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled><code class="language-plaintext highlighter-rouge">==</code>avec autre chose qu’un <code class="language-plaintext highlighter-rouge">Dollar</code>
+</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>5 CHF * 2 = 10CHF</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>duplication Franc/dollar</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>même <code class="language-plaintext highlighter-rouge">==</code> (code identique dans 2 classes différentes)</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled><code class="language-plaintext highlighter-rouge">*</code> presque identique</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>compare Franc et Dollar</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>utilisation de devises plutôt que de classes ?</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>supprimer les tests de <code class="language-plaintext highlighter-rouge">Franc</code> ?</li>
 </ul>
 
-<h4 id="testspy-2">tests.py</h4>
-
-<p>On ajoute un test pour vérifier que les dollars et les francs ont des devises différentes.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">money</span>
-
-
-<span class="k">def</span> <span class="nf">test_currencies</span><span class="p">():</span>
-    <span class="k">assert</span> <span class="s">"USD"</span> <span class="o">==</span> <span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="n">currencies</span><span class="p">()</span>
-    <span class="k">assert</span> <span class="s">"CHF"</span> <span class="o">==</span> <span class="n">money</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="n">currencies</span><span class="p">()</span>
-    
-    
-<span class="k">def</span> <span class="nf">test_equality</span><span class="p">():</span>
-    <span class="k">assert</span> <span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-    <span class="k">assert</span> <span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">!=</span> <span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
-
-    <span class="k">assert</span> <span class="n">money</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="n">money</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-    <span class="k">assert</span> <span class="n">money</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">!=</span> <span class="n">money</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
-
-    <span class="k">assert</span> <span class="n">money</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">!=</span> <span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-
-
-<span class="k">def</span> <span class="nf">test_dollar_multiplication</span><span class="p">():</span>
-    <span class="n">five</span> <span class="o">=</span> <span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-
-    <span class="k">assert</span> <span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="n">five</span> <span class="o">*</span> <span class="mi">2</span>
-    <span class="k">assert</span> <span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span> <span class="o">==</span> <span class="n">five</span> <span class="o">*</span> <span class="mi">3</span>
-
-
-<span class="k">def</span> <span class="nf">test_franc_multiplication</span><span class="p">():</span>
-    <span class="n">five</span> <span class="o">=</span> <span class="n">money</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-
-    <span class="k">assert</span> <span class="n">money</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="n">five</span> <span class="o">*</span> <span class="mi">2</span>
-    <span class="k">assert</span> <span class="n">money</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span> <span class="o">==</span> <span class="n">five</span> <span class="o">*</span> <span class="mi">3</span>
-</code></pre></div></div>
-
-<h4 id="moneypy-2">money.py</h4>
-
-<p>une <em>obvious implementation</em> plus tard :</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">dollar</span><span class="p">(</span><span class="n">amount</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">Dollar</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
-
-
-<span class="k">def</span> <span class="nf">franc</span><span class="p">(</span><span class="n">amount</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">Franc</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
-
-
-<span class="k">class</span> <span class="nc">Money</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">):</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">=</span> <span class="n">amount</span>
-
-    <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">__class__</span> <span class="o">==</span> <span class="n">other</span><span class="p">.</span><span class="n">__class__</span> <span class="ow">and</span> <span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">==</span> <span class="n">other</span><span class="p">.</span><span class="n">amount</span>
-
-
-<span class="k">class</span> <span class="nc">Franc</span><span class="p">(</span><span class="n">Money</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multiplier</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">Franc</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">*</span> <span class="n">multiplier</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">currencies</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s">"CHF"</span>
-
-<span class="k">class</span> <span class="nc">Dollar</span><span class="p">(</span><span class="n">Money</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multiplier</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">Dollar</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">*</span> <span class="n">multiplier</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">currencies</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s">"USD"</span>
-</code></pre></div></div>
-
-<p>On peut maintenant travailler à faire monter les currencies au niveau de <code class="language-plaintext highlighter-rouge">Money</code>. Commençons par les faire monter au niveu des classes. On va créer un attribut <code class="language-plaintext highlighter-rouge">currency</code> dans chaque classe et l’utiliser dans les méthodes. Il faut pour cela redescendre les <code class="language-plaintext highlighter-rouge">__init__</code> dans chaque classe.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">dollar</span><span class="p">(</span><span class="n">amount</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">Dollar</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
-
-
-<span class="k">def</span> <span class="nf">franc</span><span class="p">(</span><span class="n">amount</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">Franc</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
-
-
-<span class="k">class</span> <span class="nc">Money</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">__class__</span> <span class="o">==</span> <span class="n">other</span><span class="p">.</span><span class="n">__class__</span> <span class="ow">and</span> <span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">==</span> <span class="n">other</span><span class="p">.</span><span class="n">amount</span>
-
-
-<span class="k">class</span> <span class="nc">Franc</span><span class="p">(</span><span class="n">Money</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">):</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">=</span> <span class="n">amount</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">currency</span> <span class="o">=</span> <span class="s">"CHF"</span>
-
-    <span class="k">def</span> <span class="nf">currencies</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">currency</span>
-
-    <span class="k">def</span> <span class="nf">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multiplier</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">Franc</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">*</span> <span class="n">multiplier</span><span class="p">)</span>
-
-
-<span class="k">class</span> <span class="nc">Dollar</span><span class="p">(</span><span class="n">Money</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">):</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">=</span> <span class="n">amount</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">currency</span> <span class="o">=</span> <span class="s">"USD"</span>
-
-    <span class="k">def</span> <span class="nf">currencies</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">currency</span>
-
-    <span class="k">def</span> <span class="nf">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multiplier</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">Dollar</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">*</span> <span class="n">multiplier</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>Afin de faire remonter l’attribut <code class="language-plaintext highlighter-rouge">currency</code> dans la classe Money, on va commencer par dire que currency est un paramètre des <code class="language-plaintext highlighter-rouge">__init__</code>. Comme toute devise est créé avec le factory, ça devrait passer et nous permettre ensuite de ne faire plus qu’une seule classe puisque seuls les paramètres des méthodes vont différer.</p>
-
-<p>En ajoutant le paramètre les tests plantent ! C’est parce que l’on a oublié d’ajouter un paramètre aux factory :</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">franc</span><span class="p">(</span><span class="n">amount</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">Franc</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>Les tests plantent encore… C’est parce que <code class="language-plaintext highlighter-rouge">__mul__</code> n’utilise pas le factory :</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Franc</span><span class="p">(</span><span class="n">Money</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">,</span> <span class="n">currency</span><span class="p">):</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">=</span> <span class="n">amount</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">currency</span> <span class="o">=</span> <span class="s">"CHF"</span>
-
-    <span class="k">def</span> <span class="nf">currencies</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">currency</span>
-
-    <span class="k">def</span> <span class="nf">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multiplier</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">franc</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">*</span> <span class="n">multiplier</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>Ouf, les tests passent. On peut faire pareil pour dollar :</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">dollar</span><span class="p">(</span><span class="n">amount</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">Dollar</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
-
-
-<span class="k">def</span> <span class="nf">franc</span><span class="p">(</span><span class="n">amount</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">Franc</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
-
-
-<span class="k">class</span> <span class="nc">Money</span><span class="p">:</span>
-
-    <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">__class__</span> <span class="o">==</span> <span class="n">other</span><span class="p">.</span><span class="n">__class__</span> <span class="ow">and</span> <span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">==</span> <span class="n">other</span><span class="p">.</span><span class="n">amount</span>
-
-
-<span class="k">class</span> <span class="nc">Franc</span><span class="p">(</span><span class="n">Money</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">,</span> <span class="n">currency</span><span class="p">):</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">=</span> <span class="n">amount</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">currency</span> <span class="o">=</span> <span class="s">"CHF"</span>
-
-    <span class="k">def</span> <span class="nf">currencies</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">currency</span>
-
-    <span class="k">def</span> <span class="nf">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multiplier</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">franc</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">*</span> <span class="n">multiplier</span><span class="p">)</span>
-
-
-<span class="k">class</span> <span class="nc">Dollar</span><span class="p">(</span><span class="n">Money</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">,</span> <span class="n">currency</span><span class="p">):</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">=</span> <span class="n">amount</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">currency</span> <span class="o">=</span> <span class="s">"USD"</span>
-
-    <span class="k">def</span> <span class="nf">currencies</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">currency</span>
-
-    <span class="k">def</span> <span class="nf">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multiplier</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">dollar</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">*</span> <span class="n">multiplier</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>Il nous reste plus qu’à utiliser le paramètre <code class="language-plaintext highlighter-rouge">currency</code> des constructeurs dans les factory. Les classes se ressemblent de plus en plus :</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">dollar</span><span class="p">(</span><span class="n">amount</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">Dollar</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span> <span class="s">"USD"</span><span class="p">)</span>
-
-
-<span class="k">def</span> <span class="nf">franc</span><span class="p">(</span><span class="n">amount</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">Franc</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span> <span class="s">"CHF"</span><span class="p">)</span>
-
-
-<span class="k">class</span> <span class="nc">Money</span><span class="p">:</span>
-
-    <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">__class__</span> <span class="o">==</span> <span class="n">other</span><span class="p">.</span><span class="n">__class__</span> <span class="ow">and</span> <span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">==</span> <span class="n">other</span><span class="p">.</span><span class="n">amount</span>
-
-
-<span class="k">class</span> <span class="nc">Franc</span><span class="p">(</span><span class="n">Money</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">,</span> <span class="n">currency</span><span class="p">):</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">=</span> <span class="n">amount</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">currency</span> <span class="o">=</span> <span class="n">currency</span>
-
-    <span class="k">def</span> <span class="nf">currencies</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">currency</span>
-
-    <span class="k">def</span> <span class="nf">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multiplier</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">franc</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">*</span> <span class="n">multiplier</span><span class="p">)</span>
-
-
-<span class="k">class</span> <span class="nc">Dollar</span><span class="p">(</span><span class="n">Money</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">,</span> <span class="n">currency</span><span class="p">):</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">=</span> <span class="n">amount</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">currency</span> <span class="o">=</span> <span class="n">currency</span>
-
-    <span class="k">def</span> <span class="nf">currencies</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">currency</span>
-
-    <span class="k">def</span> <span class="nf">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multiplier</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">dollar</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">*</span> <span class="n">multiplier</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>Le <code class="language-plaintext highlighter-rouge">__init__</code> est re le même, ainsi que <code class="language-plaintext highlighter-rouge">currencies</code>on peut les bouger dans money (courage on y est presque) :</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">dollar</span><span class="p">(</span><span class="n">amount</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">Dollar</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span> <span class="s">"USD"</span><span class="p">)</span>
-
-
-<span class="k">def</span> <span class="nf">franc</span><span class="p">(</span><span class="n">amount</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">Franc</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span> <span class="s">"CHF"</span><span class="p">)</span>
-
-
-<span class="k">class</span> <span class="nc">Money</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">,</span> <span class="n">currency</span><span class="p">):</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">=</span> <span class="n">amount</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">currency</span> <span class="o">=</span> <span class="n">currency</span>
-
-    <span class="k">def</span> <span class="nf">currencies</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">currency</span>
-
-    <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">__class__</span> <span class="o">==</span> <span class="n">other</span><span class="p">.</span><span class="n">__class__</span> <span class="ow">and</span> <span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">==</span> <span class="n">other</span><span class="p">.</span><span class="n">amount</span>
-
-
-<span class="k">class</span> <span class="nc">Franc</span><span class="p">(</span><span class="n">Money</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multiplier</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">franc</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">*</span> <span class="n">multiplier</span><span class="p">)</span>
-
-
-<span class="k">class</span> <span class="nc">Dollar</span><span class="p">(</span><span class="n">Money</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multiplier</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">dollar</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">*</span> <span class="n">multiplier</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>Tout est prêt pour maintenant supprimer les sous-classes.</p>
-
-<h4 id="tbd-2">tbd</h4>
-
-<ul>
-  <li>$5 + 2.5CHF = $10 si le taux de change est 1:.5</li>
-  <li><del>$5 * 2 = $10</del></li>
-  <li><del>utiliser <code class="language-plaintext highlighter-rouge">amount</code> ? Le rendre privé</del></li>
-  <li><del>five == 10 n’est pas vraiment super. non mutable</del></li>
-  <li>gestion des arrondis</li>
-  <li><del>==</del></li>
-  <li>== None</li>
-  <li>== autre chose qu’un Dollar</li>
-  <li><del><code class="language-plaintext highlighter-rouge">__mul__</code></del></li>
-  <li><del>5 CHF * 2 = 10CHF</del></li>
-  <li>duplication Franc/dollar</li>
-  <li><del>même ==</del></li>
-  <li>
-    <ul>
-      <li>presque identique.</li>
-    </ul>
-  </li>
-  <li>compare Franc et Dollar</li>
-  <li><del>utilisation de devise ?</del></li>
-  <li>supprimer <code class="language-plaintext highlighter-rouge">test_franc_multiplication</code> ?</li>
+<h2 id="10---devises">10 - devises</h2>
+
+<p>Pour pouvoir supprimer les deux classes <code class="language-plaintext highlighter-rouge">Franc</code> et <code class="language-plaintext highlighter-rouge">Dollar</code>, il va nous falloir un moyen de les distinguer. Donc autant travailler sur l’ajout d’une devise.</p>
+
+<h3 id="todo-list-10.1">todo list</h3>
+
+<p>Il reste des duplications entre Franc et Dollar, mais pour les supprimer il faut passer par quelque chose qui les remplace. Il est donc plus judicieux de faire un autre item de notre liste.</p>
+
+<ul class="task-list">
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>\$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>gestion des arrondis (lorsque les montants seront des réels)</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled><code class="language-plaintext highlighter-rouge">== None</code>
+</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled><code class="language-plaintext highlighter-rouge">==</code>avec autre chose qu’un <code class="language-plaintext highlighter-rouge">Dollar</code>
+</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>5 CHF * 2 = 10CHF</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>duplication Franc/dollar</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>même <code class="language-plaintext highlighter-rouge">==</code> (code identique dans 2 classes différentes)</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled><code class="language-plaintext highlighter-rouge">*</code> presque identique</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>compare Franc et Dollar</li>
+  <li class="task-list-item"><strong>[-] utilisation de devises plutôt que de classes ?</strong></li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>supprimer les tests de <code class="language-plaintext highlighter-rouge">Franc</code> ?</li>
 </ul>
 
-<p>Ici, utiliser une tâche annexe (les devises) nous a permis d’avancer vers notre but : supprimer les sous classes.</p>
+<h3 id="faire-10.1">faire</h3>
+
+<p>La classe <code class="language-plaintext highlighter-rouge">Devise</code> que l’on veut créer doit avoir un attribut qui nous permettra de distinguer les <code class="language-plaintext highlighter-rouge">Franc</code> des <code class="language-plaintext highlighter-rouge">Dollar</code>.</p>
+
+<p>Faisons un test pour implémenter cette idée :</p>
+
+<p><em>“test_monnaie.py”</em> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ...
+</span>
+<span class="k">def</span> <span class="nf">test_devise</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="s">"USD"</span> <span class="o">==</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="n">devise</span>
+    <span class="k">assert</span> <span class="s">"CHF"</span> <span class="o">==</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="n">devise</span>
+
+<span class="c1"># ...
+</span></code></pre></div></div>
+
+<blockquote class="a-faire">
+  <p>Faites passer les tests en créant cet attribut dans les classes <code class="language-plaintext highlighter-rouge">Dollar</code> et <code class="language-plaintext highlighter-rouge">Franc</code></p>
+</blockquote>
+<details><summary>solution</summary><div>
+<p><em>“monnaie.py”</em> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ...
+</span>
+<span class="k">def</span> <span class="nf">franc</span><span class="p">(</span><span class="n">montant</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">Franc</span><span class="p">(</span><span class="n">montant</span><span class="p">)</span>
+
+<span class="c1"># ...
+</span></code></pre></div></div>
+
+<p>On implémente cet attribut sous la forme d’un attribut de classe, en le définissant directement dans la classe.</p>
+
+<p><em>“monnaie.py”</em> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ...
+</span>
+<span class="k">class</span> <span class="nc">Dollar</span><span class="p">(</span><span class="n">Monnaie</span><span class="p">):</span>
+    <span class="n">devise</span> <span class="o">=</span> <span class="s">"USD"</span>
+
+    <span class="c1"># ...
+</span>
+
+<span class="k">class</span> <span class="nc">Franc</span><span class="p">(</span><span class="n">Monnaie</span><span class="p">):</span>
+    <span class="n">devise</span> <span class="o">=</span> <span class="s">"CHF"</span>
+
+    <span class="c1"># ...
+</span>
+<span class="c1"># ...
+</span></code></pre></div></div>
+
+</div></details>
+
+<p>On peut maintenant travailler à faire monter les devise au niveau de la classe <code class="language-plaintext highlighter-rouge">Monnaie</code>.</p>
+
+<h3 id="faire-10.2">faire</h3>
+
+<p>L’idée est ici de placer la bonne devise lors dela création de l’objet dans <code class="language-plaintext highlighter-rouge">Monnaie</code>. Pour faire cela dans les règle de l’art on va utiliser un <a href="https://martinfowler.com/books/refactoring.html">pattern de refactoring</a> qui permet de modifier le code sans problème.</p>
+
+<p>On va utiliser :</p>
+
+<blockquote class="note">
+  <p><strong>refactoring pattern :</strong> <a href="https://refactoring.guru/fr/pull-up-field">Pull Up Field</a></p>
+
+  <p>Le but est de faire remonter un champ de sous-classes à la classe mère.</p>
+
+  <p>Pour cela, on rend <strong>identique</strong> le champ dans chacune des sous-classes puis on le déplace dans la classe mère.</p>
+</blockquote>
+
+<p>En premier lieu :</p>
+
+<blockquote class="a-faire">
+  <p>Faite de l’attribut <code class="language-plaintext highlighter-rouge">devise</code> deux attributs affectés chacun affecté dans sa classe</p>
+</blockquote>
+<details><summary>solution</summary><div>
+<p><em>“monnaie.py”</em> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ...
+</span>
+<span class="k">class</span> <span class="nc">Dollar</span><span class="p">(</span><span class="n">Monnaie</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">montant</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">().</span><span class="n">__init__</span><span class="p">(</span><span class="n">montant</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">devise</span> <span class="o">=</span> <span class="s">"USD"</span>
+
+    <span class="c1"># ...
+</span>
+<span class="k">class</span> <span class="nc">Franc</span><span class="p">(</span><span class="n">Monnaie</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">montant</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">().</span><span class="n">__init__</span><span class="p">(</span><span class="n">montant</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">devise</span> <span class="o">=</span> <span class="s">"CHF"</span>
+
+    <span class="c1"># ...
+</span>
+<span class="c1"># ...
+</span></code></pre></div></div>
+
+</div></details>
+
+<p>Afin de faire remonter l’attribut <code class="language-plaintext highlighter-rouge">devise</code> dans la classe <code class="language-plaintext highlighter-rouge">Monnaie</code>, il va falloir ajouter la devise en paramètre du constructeur.</p>
+
+<p>Pour que cela se passe sans risque, on va commencer par juste ajouter le paramètre et voir ce que ça donne :</p>
+
+<p><em>“monnaie.py”</em> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ...
+</span>
+<span class="k">class</span> <span class="nc">Monnaie</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">montant</span><span class="p">,</span> <span class="n">devise</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">montant</span> <span class="o">=</span> <span class="n">montant</span>
+
+    <span class="c1"># ...
+</span>
+<span class="c1"># ...
+</span></code></pre></div></div>
+
+<p>Et les tests plantent :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+    def __init__(self, montant):
+&gt;       super().__init__(montant)
+E       TypeError: __init__() missing 1 required positional argument: 'devise'
+
+monnaie.py:19: TypeError
+</code></pre></div></div>
+
+<p>On a oublié de modifier l’appel au constructeur dans les constructeur des classes.</p>
+
+<blockquote class="a-faire">
+  <p>Ajouter devise dans l’appel au <code class="language-plaintext highlighter-rouge">super</code> du constructeur des classes <code class="language-plaintext highlighter-rouge">Franc</code> et <code class="language-plaintext highlighter-rouge">Dollar</code></p>
+</blockquote>
+<details><summary>solution</summary><div>
+<p><em>“monnaie.py”</em> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ...
+</span>
+<span class="k">class</span> <span class="nc">Dollar</span><span class="p">(</span><span class="n">Monnaie</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">montant</span><span class="p">,</span> <span class="s">"USD"</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">().</span><span class="n">__init__</span><span class="p">(</span><span class="n">montant</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">devise</span> <span class="o">=</span> <span class="s">"USD"</span>
+
+    <span class="c1"># ...
+</span>
+<span class="k">class</span> <span class="nc">Franc</span><span class="p">(</span><span class="n">Monnaie</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">montant</span><span class="p">,</span> <span class="s">"CHF"</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">().</span><span class="n">__init__</span><span class="p">(</span><span class="n">montant</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">devise</span> <span class="o">=</span> <span class="s">"CHF"</span>
+
+    <span class="c1"># ...
+</span>
+<span class="c1"># ...
+</span></code></pre></div></div>
+
+</div></details>
+
+<p>Et nos tests passent ! On est sur du vert, c’est bien. On peut finir notre refactoring pattern :</p>
+
+<blockquote class="a-faire">
+  <p>Faite remonter l’attribut <code class="language-plaintext highlighter-rouge">devise</code> dans <code class="language-plaintext highlighter-rouge">Monnaie</code></p>
+</blockquote>
+<details><summary>solution</summary><div>
+<p><em>“monnaie.py”</em> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ...
+</span>
+<span class="k">class</span> <span class="nc">Monnaie</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">montant</span><span class="p">,</span> <span class="n">devise</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">montant</span> <span class="o">=</span> <span class="n">montant</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">devise</span> <span class="o">=</span> <span class="n">devise</span>
+
+    <span class="c1"># ...
+</span>
+<span class="k">class</span> <span class="nc">Dollar</span><span class="p">(</span><span class="n">Monnaie</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">montant</span><span class="p">,</span> <span class="s">"USD"</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">().</span><span class="n">__init__</span><span class="p">(</span><span class="n">montant</span><span class="p">)</span>
+
+    <span class="c1"># ...
+</span>
+<span class="k">class</span> <span class="nc">Franc</span><span class="p">(</span><span class="n">Monnaie</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">montant</span><span class="p">,</span> <span class="s">"CHF"</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">().</span><span class="n">__init__</span><span class="p">(</span><span class="n">montant</span><span class="p">)</span>
+
+    <span class="c1"># ...
+</span>
+<span class="c1"># ...
+</span></code></pre></div></div>
+
+</div></details>
+
+<p>Et nos tests passent ! Félicitations, vous avez réussi votre premier refactoring pattern.</p>
+
+<h3 id="faire-10.3">faire</h3>
+
+<p>Pour supprimer les classes, il faut créer nos objets avec la classe <code class="language-plaintext highlighter-rouge">Monnaie</code>. Notre problème est encore un problème de refactoring :</p>
+
+<blockquote class="note">
+  <p><strong>refactoring pattern :</strong> <a href="https://refactoring.guru/fr/pull-up-method">Pull Up Method</a></p>
+
+  <p>Le but est de faire remonter une méthode de sous-classes à la classe mère.</p>
+
+  <p>Pour cela, on rend <strong>identique</strong> la méthode dans chacune des sous-classes puis on le déplace dans la classe mère.</p>
+</blockquote>
+
+<p>Puisque si les constructeurs sont identique, on pourra facilement créer nos objets avec <code class="language-plaintext highlighter-rouge">Monnaie</code> plutôt qu’avec <code class="language-plaintext highlighter-rouge">Franc</code> ou <code class="language-plaintext highlighter-rouge">Dollar</code>. C’est encore impossible pour l’instant car les constructeurs sont :</p>
+
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">__init__(self, montant)</code> pour <code class="language-plaintext highlighter-rouge">Franc</code> et <code class="language-plaintext highlighter-rouge">Dollar</code>
+</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">def __init__(self, montant, devise)</code> pour <code class="language-plaintext highlighter-rouge">Devise</code>
+</li>
+</ul>
+
+<p>On va petit à petit modifier les constructeurs (et les effets de bords dans le code) pour les rendre identique.</p>
+
+<blockquote class="a-faire">
+  <p>Ajoutez un champ devise au constructeur de <code class="language-plaintext highlighter-rouge">Franc</code> et lancez les tests.</p>
+</blockquote>
+<details><summary>solution</summary><div>
+<p><em>“monnaie.py”</em> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ...
+</span>
+<span class="k">class</span> <span class="nc">Franc</span><span class="p">(</span><span class="n">Monnaie</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">montant</span><span class="p">,</span> <span class="n">devise</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">().</span><span class="n">__init__</span><span class="p">(</span><span class="n">montant</span><span class="p">,</span> <span class="s">"CHF"</span><span class="p">)</span>
+
+    <span class="c1"># ...
+</span>
+<span class="c1"># ...
+</span></code></pre></div></div>
+
+</div></details>
+
+<p>Les tests donnent :</p>
+
+<pre><code class="language-test">    def franc(montant):
+&gt;       return Franc(montant)
+E       TypeError: __init__() missing 1 required positional argument: 'devise'
+
+monnaie.py:6: TypeError
+</code></pre>
+
+<p>C’est le factory.</p>
+
+<blockquote class="a-faire">
+  <p>Modifiez le factory pour qu’il corresponde au constructeur. On donnera <code class="language-plaintext highlighter-rouge">None</code> comme paramètre pour devise.</p>
+</blockquote>
+<details><summary>solution</summary><div>
+<p><em>“monnaie.py”</em> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ...
+</span>
+<span class="k">def</span> <span class="nf">franc</span><span class="p">(</span><span class="n">montant</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">Franc</span><span class="p">(</span><span class="n">montant</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+
+<span class="c1"># ...
+</span></code></pre></div></div>
+
+</div></details>
+
+<blockquote>
+  <p>On met <code class="language-plaintext highlighter-rouge">None</code> comme paramètre car comme sa valeur n’est pas utile pour l’instant autant ne pas s’en occuper.</p>
+</blockquote>
+
+<p>Les tests ratent toujours :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    def __mul__(self, multiplicateur):
+&gt;       return Franc(self.montant * multiplicateur)
+E       TypeError: __init__() missing 1 required positional argument: 'devise'
+
+monnaie.py:31: TypeError
+</code></pre></div></div>
+
+<p>Ah, c’est inattendu… On avait oublié <code class="language-plaintext highlighter-rouge">__mul__</code>: elle n’utilise pas le factory pour créer ses objets.</p>
+
+<blockquote class="a-faire">
+  <p>Modifiez la méthode <code class="language-plaintext highlighter-rouge">__mul__</code> de <code class="language-plaintext highlighter-rouge">Franc</code> pour qu’elle utilise le factory.</p>
+</blockquote>
+<details><summary>solution</summary><div>
+<p><em>“monnaie.py”</em> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ...
+</span>
+<span class="k">class</span> <span class="nc">Franc</span><span class="p">(</span><span class="n">Monnaie</span><span class="p">):</span>
+    <span class="c1"># ...
+</span>
+    <span class="k">def</span> <span class="nf">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multiplicateur</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">franc</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">montant</span> <span class="o">*</span> <span class="n">multiplicateur</span><span class="p">)</span>
+
+<span class="c1"># ...
+</span></code></pre></div></div>
+
+</div></details>
+
+<p>Et nos tests passent !</p>
+
+<blockquote class="a-faire">
+  <p>Faites la même chose pour <code class="language-plaintext highlighter-rouge">Dollar</code> en ajoutant un champ devise au constructeur.</p>
+
+  <p>Faites en sorte que les tests passent.</p>
+</blockquote>
+<details><summary>solution</summary><div>
+<p><em>“monnaie.py”</em> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ...
+</span>
+<span class="k">def</span> <span class="nf">dollar</span><span class="p">(</span><span class="n">montant</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">Dollar</span><span class="p">(</span><span class="n">montant</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+
+<span class="c1"># ...
+</span>
+<span class="k">class</span> <span class="nc">Dollar</span><span class="p">(</span><span class="n">Monnaie</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">montant</span><span class="p">,</span> <span class="n">devise</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">().</span><span class="n">__init__</span><span class="p">(</span><span class="n">montant</span><span class="p">,</span> <span class="s">"USD"</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multiplicateur</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">dollar</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">montant</span> <span class="o">*</span> <span class="n">multiplicateur</span><span class="p">)</span>
+
+<span class="c1"># ...
+</span></code></pre></div></div>
+
+</div></details>
+
+<h3 id="faire-10.4">faire</h3>
+
+<p>Maintenant que les signatures des constructeurs sont les mêmes, pour finir le travail il faut que le corps des fonctions soient égales.</p>
+
+<blockquote class="a-faire">
+  <p>Le second paramètre du constructeur de <code class="language-plaintext highlighter-rouge">Franc</code> est pour l’instant inutile. Rendez le utile en utilisant son factory (la chaine <code class="language-plaintext highlighter-rouge">"CHF"</code> doit aller du factory au constructeur)</p>
+</blockquote>
+<details><summary>solution</summary><div>
+<p><em>“monnaie.py”</em> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ...
+</span>
+<span class="k">def</span> <span class="nf">franc</span><span class="p">(</span><span class="n">montant</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">Franc</span><span class="p">(</span><span class="n">montant</span><span class="p">,</span> <span class="s">"CHF"</span><span class="p">)</span>
+
+<span class="c1"># ...
+</span>
+<span class="k">class</span> <span class="nc">Franc</span><span class="p">(</span><span class="n">Monnaie</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">montant</span><span class="p">,</span> <span class="n">devise</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">().</span><span class="n">__init__</span><span class="p">(</span><span class="n">montant</span><span class="p">,</span> <span class="n">devise</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multiplicateur</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">franc</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">montant</span> <span class="o">*</span> <span class="n">multiplicateur</span><span class="p">)</span>
+
+<span class="c1"># ...
+</span></code></pre></div></div>
+
+</div></details>
+
+<p>Les tests passent, on peut donc faire pareil avec <code class="language-plaintext highlighter-rouge">Dollar</code> :</p>
+
+<blockquote class="a-faire">
+  <p>Le second paramètre du constructeur de <code class="language-plaintext highlighter-rouge">Dollar</code> est pour l’instant inutile. Rendez le utile en utilisant son factory (la chaine <code class="language-plaintext highlighter-rouge">"USD"</code> doit aller du factory au constructeur)</p>
+</blockquote>
+<details><summary>solution</summary><div>
+<p><em>“monnaie.py”</em> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ...
+</span>
+<span class="k">def</span> <span class="nf">dollar</span><span class="p">(</span><span class="n">montant</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">Dollar</span><span class="p">(</span><span class="n">montant</span><span class="p">,</span> <span class="s">"USD"</span><span class="p">)</span>
+
+<span class="c1"># ...
+</span>
+<span class="k">class</span> <span class="nc">Dollar</span><span class="p">(</span><span class="n">Monnaie</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">montant</span><span class="p">,</span> <span class="n">devise</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">().</span><span class="n">__init__</span><span class="p">(</span><span class="n">montant</span><span class="p">,</span> <span class="n">devise</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multiplicateur</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">dollar</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">montant</span> <span class="o">*</span> <span class="n">multiplicateur</span><span class="p">)</span>
+
+<span class="c1"># ...
+</span></code></pre></div></div>
+
+</div></details>
+
+<p>Tout est enfin prêt : nos constructeurs sont identiques.</p>
+
+<blockquote class="a-faire">
+  <p>Supprimez les constructeurs des classes <code class="language-plaintext highlighter-rouge">Dollar</code> et <code class="language-plaintext highlighter-rouge">Franc</code></p>
+</blockquote>
+<details><summary>solution</summary><div>
+<p><em>“monnaie.py”</em> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ...
+</span>
+<span class="k">class</span> <span class="nc">Dollar</span><span class="p">(</span><span class="n">Monnaie</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multiplicateur</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">dollar</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">montant</span> <span class="o">*</span> <span class="n">multiplicateur</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">Franc</span><span class="p">(</span><span class="n">Monnaie</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multiplicateur</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">franc</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">montant</span> <span class="o">*</span> <span class="n">multiplicateur</span><span class="p">)</span>
+
+<span class="c1"># ...
+</span></code></pre></div></div>
+
+</div></details>
+
+<p>Les testes passent : tout est prêt pour maintenant supprimer les sous-classes.</p>
+
+<h3 id="todo-list-10.2">todo list</h3>
+
+<p>Il reste des duplications entre Franc et Dollar, mais pour les supprimer il faut passer par quelque chose qui les remplace. Il est donc plus judicieux de faire un autre item de notre liste.</p>
+
+<ul class="task-list">
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>\$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>gestion des arrondis (lorsque les montants seront des réels)</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled><code class="language-plaintext highlighter-rouge">== None</code>
+</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled><code class="language-plaintext highlighter-rouge">==</code>avec autre chose qu’un <code class="language-plaintext highlighter-rouge">Dollar</code>
+</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>5 CHF * 2 = 10CHF</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>duplication Franc/dollar</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>même <code class="language-plaintext highlighter-rouge">==</code> (code identique dans 2 classes différentes)</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled><code class="language-plaintext highlighter-rouge">*</code> presque identique</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>compare Franc et Dollar</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>utilisation de devises plutôt que de classes ?</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>supprimer les tests de <code class="language-plaintext highlighter-rouge">Franc</code> ?</li>
+</ul>
 
 <h3 id="11----unification-de-">11 -  unification de <code class="language-plaintext highlighter-rouge">*</code>
 </h3>
 
 <p>Tout est prêt pour unifier les <code class="language-plaintext highlighter-rouge">__mul__</code> et ainsi faire disparaitre les dernières différences entre les 2 classes.</p>
 
-<h4 id="tbd-3">tbd</h4>
+<h3 id="todo-list-11.1">todo list</h3>
 
-<ul>
-  <li>$5 + 2.5CHF = $10 si le taux de change est 1:.5</li>
-  <li><del>$5 * 2 = $10</del></li>
-  <li><del>utiliser <code class="language-plaintext highlighter-rouge">amount</code> ? Le rendre privé</del></li>
-  <li><del>five == 10 n’est pas vraiment super. non mutable</del></li>
-  <li>gestion des arrondis</li>
-  <li><del>==</del></li>
-  <li>== None</li>
-  <li>== autre chose qu’un Dollar</li>
-  <li><del><code class="language-plaintext highlighter-rouge">__mul__</code></del></li>
-  <li><del>5 CHF * 2 = 10CHF</del></li>
-  <li>duplication Franc/dollar</li>
-  <li><del>même ==</del></li>
-  <li><strong><code class="language-plaintext highlighter-rouge">*</code> presque identique.</strong></li>
-  <li>compare Franc et Dollar</li>
-  <li><del>utilisation de devise ?</del></li>
-  <li>supprimer <code class="language-plaintext highlighter-rouge">test_franc_multiplication</code> ?</li>
+<p>Il reste des duplications entre Franc et Dollar, mais pour les supprimer il faut passer par quelque chose qui les remplace. Il est donc plus judicieux de faire un autre item de notre liste.</p>
+
+<ul class="task-list">
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>\$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>gestion des arrondis (lorsque les montants seront des réels)</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled><code class="language-plaintext highlighter-rouge">== None</code>
+</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled><code class="language-plaintext highlighter-rouge">==</code>avec autre chose qu’un <code class="language-plaintext highlighter-rouge">Dollar</code>
+</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>5 CHF * 2 = 10CHF</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>duplication Franc/dollar</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>même <code class="language-plaintext highlighter-rouge">==</code> (code identique dans 2 classes différentes)</li>
+  <li class="task-list-item"><strong>[-] <code class="language-plaintext highlighter-rouge">*</code> presque identique</strong></li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>compare Franc et Dollar</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>utilisation de devises plutôt que de classes ?</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>supprimer les tests de <code class="language-plaintext highlighter-rouge">Franc</code> ?</li>
 </ul>
 
-<h4 id="moneypy-3">money.py</h4>
+<h3 id="faire-11.1">faire</h3>
 
-<p>Les deux <code class="language-plaintext highlighter-rouge">__mul__</code> ne changent que par la classe produite. Donc commençons par expliciter la construction en remplaçant le factory par l’utilisation explicite des constructeurs :</p>
+<p>Les deux <code class="language-plaintext highlighter-rouge">__mul__</code> ne changent que par le factory utilisé.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">dollar</span><span class="p">(</span><span class="n">amount</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">Dollar</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span> <span class="s">"USD"</span><span class="p">)</span>
+<blockquote class="a-faire">
+  <p>Remplacez le factory du retour de la méthode par un appel explicite à la classe.</p>
+</blockquote>
+<details><summary>solution</summary><div>
+<p><em>“monnaie.py”</em> :</p>
 
-
-<span class="k">def</span> <span class="nf">franc</span><span class="p">(</span><span class="n">amount</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">Franc</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span> <span class="s">"CHF"</span><span class="p">)</span>
-
-
-<span class="k">class</span> <span class="nc">Money</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">,</span> <span class="n">currency</span><span class="p">):</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">=</span> <span class="n">amount</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">currency</span> <span class="o">=</span> <span class="n">currency</span>
-
-    <span class="k">def</span> <span class="nf">currencies</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">currency</span>
-
-    <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">__class__</span> <span class="o">==</span> <span class="n">other</span><span class="p">.</span><span class="n">__class__</span> <span class="ow">and</span> <span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">==</span> <span class="n">other</span><span class="p">.</span><span class="n">amount</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ...
+</span>
+<span class="k">class</span> <span class="nc">Dollar</span><span class="p">(</span><span class="n">Monnaie</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multiplicateur</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Dollar</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">montant</span> <span class="o">*</span> <span class="n">multiplicateur</span><span class="p">,</span> <span class="s">"USD)
 
 
-<span class="k">class</span> <span class="nc">Franc</span><span class="p">(</span><span class="n">Money</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multiplier</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">Franc</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">*</span> <span class="n">multiplier</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">currency</span><span class="p">)</span>
+class Franc(Monnaie):
+    def __mul__(self, multiplicateur):
+        return Franc(self.montant * multiplicateur; "</span><span class="n">CHF</span><span class="p">)</span>
 
+<span class="c1"># ...
+</span></code></pre></div></div>
 
-<span class="k">class</span> <span class="nc">Dollar</span><span class="p">(</span><span class="n">Money</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multiplier</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">Dollar</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">*</span> <span class="n">multiplier</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">currency</span><span class="p">)</span>
-</code></pre></div></div>
+</div></details>
 
-<p>On peut maintenant ajouter une méthode <code class="language-plaintext highlighter-rouge">__mul__</code> das la classe money :</p>
+<p>les tests sont toujours Ok. Parfait.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">dollar</span><span class="p">(</span><span class="n">amount</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">Dollar</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span> <span class="s">"USD"</span><span class="p">)</span>
+<p>On peut maintenant ajouter une méthode <code class="language-plaintext highlighter-rouge">__mul__</code> dans la classe money :</p>
 
+<blockquote class="a-faire">
+  <p>Ajoutez une méthode <code class="language-plaintext highlighter-rouge">__mul__</code> dans <code class="language-plaintext highlighter-rouge">Monnaie</code></p>
+</blockquote>
+<details><summary>solution</summary><div>
+<p><em>“monnaie.py”</em> :</p>
 
-<span class="k">def</span> <span class="nf">franc</span><span class="p">(</span><span class="n">amount</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">Franc</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span> <span class="s">"CHF"</span><span class="p">)</span>
-
-
-<span class="k">class</span> <span class="nc">Money</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">,</span> <span class="n">currency</span><span class="p">):</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">=</span> <span class="n">amount</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">currency</span> <span class="o">=</span> <span class="n">currency</span>
-
-    <span class="k">def</span> <span class="nf">currencies</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">currency</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ...
+</span>
+<span class="k">class</span> <span class="nc">Monnaie</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">montant</span><span class="p">,</span> <span class="n">devise</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">montant</span> <span class="o">=</span> <span class="n">montant</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">devise</span> <span class="o">=</span> <span class="n">devise</span>
 
     <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">__class__</span> <span class="o">==</span> <span class="n">other</span><span class="p">.</span><span class="n">__class__</span> <span class="ow">and</span> <span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">==</span> <span class="n">other</span><span class="p">.</span><span class="n">amount</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">__class__</span> <span class="o">==</span> <span class="n">other</span><span class="p">.</span><span class="n">__class__</span> <span class="ow">and</span> <span class="bp">self</span><span class="p">.</span><span class="n">montant</span> <span class="o">==</span> <span class="n">other</span><span class="p">.</span><span class="n">montant</span>
 
-    <span class="k">def</span> <span class="nf">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multiplier</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">Money</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">*</span> <span class="n">multiplier</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">currency</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multiplicateur</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Monnaie</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">montant</span> <span class="o">*</span> <span class="n">multiplicateur</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">devise</span><span class="p">)</span>
 
+<span class="c1"># ...
+</span></code></pre></div></div>
 
-<span class="k">class</span> <span class="nc">Franc</span><span class="p">(</span><span class="n">Money</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multiplier</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">Franc</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">*</span> <span class="n">multiplier</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">currency</span><span class="p">)</span>
+</div></details>
 
+<p>On va maintenant supprimer les méthodes <code class="language-plaintext highlighter-rouge">__mul__</code> des classes filles pour utiliser celle de <code class="language-plaintext highlighter-rouge">Monnaie</code>.</p>
 
-<span class="k">class</span> <span class="nc">Dollar</span><span class="p">(</span><span class="n">Money</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multiplier</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">Dollar</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">*</span> <span class="n">multiplier</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">currency</span><span class="p">)</span>
-</code></pre></div></div>
+<blockquote class="a-faire">
+  <p>Supprimez la méthode <code class="language-plaintext highlighter-rouge">__mul__</code> de la classe <code class="language-plaintext highlighter-rouge">Franc</code> et lancez les tests.</p>
+</blockquote>
+<details><summary>solution</summary><div>
+<p><em>“monnaie.py”</em> :</p>
 
-<p>En supprimant la methode <code class="language-plaintext highlighter-rouge">__mul__</code> des Francs, et en rendant un <code class="language-plaintext highlighter-rouge">Money</code> dans le factory <code class="language-plaintext highlighter-rouge">franc</code>, les tests passent.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">dollar</span><span class="p">(</span><span class="n">amount</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">Dollar</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span> <span class="s">"USD"</span><span class="p">)</span>
-
-
-<span class="k">def</span> <span class="nf">franc</span><span class="p">(</span><span class="n">amount</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">Money</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span> <span class="s">"CHF"</span><span class="p">)</span>
-
-
-<span class="k">class</span> <span class="nc">Money</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">,</span> <span class="n">currency</span><span class="p">):</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">=</span> <span class="n">amount</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">currency</span> <span class="o">=</span> <span class="n">currency</span>
-
-    <span class="k">def</span> <span class="nf">currencies</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">currency</span>
-
-    <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">__class__</span> <span class="o">==</span> <span class="n">other</span><span class="p">.</span><span class="n">__class__</span> <span class="ow">and</span> <span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">==</span> <span class="n">other</span><span class="p">.</span><span class="n">amount</span>
-
-    <span class="k">def</span> <span class="nf">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multiplier</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">Money</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">*</span> <span class="n">multiplier</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">currency</span><span class="p">)</span>
-
-
-<span class="k">class</span> <span class="nc">Franc</span><span class="p">(</span><span class="n">Money</span><span class="p">):</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ...
+</span>
+<span class="k">class</span> <span class="nc">Franc</span><span class="p">(</span><span class="n">Monnaie</span><span class="p">):</span>
     <span class="k">pass</span>
 
-<span class="k">class</span> <span class="nc">Dollar</span><span class="p">(</span><span class="n">Money</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multiplier</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">Dollar</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">*</span> <span class="n">multiplier</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">currency</span><span class="p">)</span>
-</code></pre></div></div>
+<span class="c1"># ...
+</span></code></pre></div></div>
 
-<p>Mais supprimer la méthode <code class="language-plaintext highlighter-rouge">__mul__</code> de <code class="language-plaintext highlighter-rouge">Dollar</code> casse les tests : le test d’égalité est cassé. C’est normal il compare des classes et pas des <code class="language-plaintext highlighter-rouge">currency</code>. On revient donc en arrière jusqu’à ce que les tests passes (on remet la méthode <code class="language-plaintext highlighter-rouge">__mul__</code> à <code class="language-plaintext highlighter-rouge">Dollar</code>) puis on corrige la méthode <code class="language-plaintext highlighter-rouge">__eq__</code> pour qu’elle compare les <code class="language-plaintext highlighter-rouge">currency</code> plutôt que les classes.</p>
+</div></details>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">dollar</span><span class="p">(</span><span class="n">amount</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">Dollar</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span> <span class="s">"USD"</span><span class="p">)</span>
+<p>Les tests ratent.</p>
 
+<p>Et oui, on le savait quand on l’a fait que ça allait nous sauter à la figure : c’est le <code class="language-plaintext highlighter-rouge">__eq__</code> et sa comparaison entre classes.</p>
 
-<span class="k">def</span> <span class="nf">franc</span><span class="p">(</span><span class="n">amount</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">Money</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span> <span class="s">"CHF"</span><span class="p">)</span>
+<p>En TDD il est <strong>interdit</strong> de modifier du code alors qu’on est rouge. On revient donc en arrière :</p>
 
+<blockquote class="a-faire">
+  <p>Replacez la méthode <code class="language-plaintext highlighter-rouge">__mul__</code> dans <code class="language-plaintext highlighter-rouge">Franc</code> et assurez vous que les tests passent.</p>
+</blockquote>
+<details><summary>solution</summary><div>
+<p><em>“monnaie.py”</em> :</p>
 
-<span class="k">class</span> <span class="nc">Money</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">,</span> <span class="n">currency</span><span class="p">):</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">=</span> <span class="n">amount</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">currency</span> <span class="o">=</span> <span class="n">currency</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ...
+</span>
+<span class="k">class</span> <span class="nc">Franc</span><span class="p">(</span><span class="n">Monnaie</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multiplicateur</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Franc</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">montant</span> <span class="o">*</span> <span class="n">multiplicateur</span><span class="p">,</span> <span class="s">"CHF"</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">currencies</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">currency</span>
+<span class="c1"># ...
+</span></code></pre></div></div>
 
+</div></details>
+
+<p>Maintenant qu’on est sur du vert, on peut modifier du code :</p>
+
+<blockquote class="a-faire">
+  <p>Modifiez <code class="language-plaintext highlighter-rouge">__eq__</code> de <code class="language-plaintext highlighter-rouge">Monnaie</code> pour qu’il utilise l’attribut <code class="language-plaintext highlighter-rouge">devise</code> plutôt que la classe</p>
+</blockquote>
+<details><summary>solution</summary><div>
+<p><em>“monnaie.py”</em> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ...
+</span>
+<span class="k">class</span> <span class="nc">Monnaie</span><span class="p">:</span>
+    <span class="c1"># ...
+</span>
     <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">currency</span> <span class="o">==</span> <span class="n">other</span><span class="p">.</span><span class="n">currency</span> <span class="ow">and</span> <span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">==</span> <span class="n">other</span><span class="p">.</span><span class="n">amount</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">devise</span> <span class="o">==</span> <span class="n">other</span><span class="p">.</span><span class="n">devise</span> <span class="ow">and</span> <span class="bp">self</span><span class="p">.</span><span class="n">montant</span> <span class="o">==</span> <span class="n">other</span><span class="p">.</span><span class="n">montant</span>
 
-    <span class="k">def</span> <span class="nf">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multiplier</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">Money</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">*</span> <span class="n">multiplier</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">currency</span><span class="p">)</span>
+    <span class="c1"># ...
+</span>
+<span class="c1"># ...
+</span></code></pre></div></div>
 
+</div></details>
 
-<span class="k">class</span> <span class="nc">Franc</span><span class="p">(</span><span class="n">Money</span><span class="p">):</span>
+<p>Les tests repassent ! On peut retenter la suppression de <code class="language-plaintext highlighter-rouge">__mul__</code> :</p>
+
+<blockquote class="a-faire">
+  <p>Supprimez la méthode <code class="language-plaintext highlighter-rouge">__mul__</code> dans <code class="language-plaintext highlighter-rouge">Franc</code> et assurez vous que les tests passent.</p>
+</blockquote>
+<details><summary>solution</summary><div>
+<p><em>“monnaie.py”</em> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ...
+</span>
+<span class="k">class</span> <span class="nc">Franc</span><span class="p">(</span><span class="n">Monnaie</span><span class="p">):</span>
     <span class="k">pass</span>
 
+<span class="c1"># ...
+</span></code></pre></div></div>
 
-<span class="k">class</span> <span class="nc">Dollar</span><span class="p">(</span><span class="n">Money</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multiplier</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">Dollar</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">*</span> <span class="n">multiplier</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">currency</span><span class="p">)</span>
-</code></pre></div></div>
+</div></details>
 
-<p>On peut maintenant supprimer la méthode <code class="language-plaintext highlighter-rouge">__mul__</code> de <code class="language-plaintext highlighter-rouge">Dollar</code> et ainsi supprimer les 2 classes. ON vient de supprimer 2 items en un seul refactoring.</p>
+<p><strong>victoire !</strong> Nos tests passent.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">dollar</span><span class="p">(</span><span class="n">amount</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">Money</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span> <span class="s">"USD"</span><span class="p">)</span>
+<p>On procède de même avec <code class="language-plaintext highlighter-rouge">Dollar</code> :</p>
 
+<blockquote class="a-faire">
+  <p>Supprimez la méthode <code class="language-plaintext highlighter-rouge">__mul__</code> dans <code class="language-plaintext highlighter-rouge">Dollar</code> et assurez vous que les tests passent.</p>
+</blockquote>
+<details><summary>solution</summary><div>
+<p><em>“monnaie.py”</em> :</p>
 
-<span class="k">def</span> <span class="nf">franc</span><span class="p">(</span><span class="n">amount</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">Money</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span> <span class="s">"CHF"</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ...
+</span>
+<span class="k">class</span> <span class="nc">Dollar</span><span class="p">(</span><span class="n">Monnaie</span><span class="p">):</span>
+    <span class="k">pass</span>
 
+<span class="c1"># ...
+</span></code></pre></div></div>
 
-<span class="k">class</span> <span class="nc">Money</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">,</span> <span class="n">currency</span><span class="p">):</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">=</span> <span class="n">amount</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">currency</span> <span class="o">=</span> <span class="n">currency</span>
+</div></details>
 
-    <span class="k">def</span> <span class="nf">currencies</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">currency</span>
+<p>Jusqu’à présent tout va bien. On est toujours vert.</p>
 
-    <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">currency</span> <span class="o">==</span> <span class="n">other</span><span class="p">.</span><span class="n">currency</span> <span class="ow">and</span> <span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">==</span> <span class="n">other</span><span class="p">.</span><span class="n">amount</span>
+<h3 id="todo-list-11.2">todo list</h3>
 
-    <span class="k">def</span> <span class="nf">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multiplier</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">Money</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">*</span> <span class="n">multiplier</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">currency</span><span class="p">)</span>
-</code></pre></div></div>
+<p>On a fini un item (<code class="language-plaintext highlighter-rouge">__mul__</code>) et on peut directement enchaîner sur le suivant :</p>
 
-<h4 id="tbd-4">tbd</h4>
-
-<ul>
-  <li>$5 + 2.5CHF = $10 si le taux de change est 1:.5</li>
-  <li><del>$5 * 2 = $10</del></li>
-  <li><del>utiliser <code class="language-plaintext highlighter-rouge">amount</code> ? Le rendre privé</del></li>
-  <li><del>five == 10 n’est pas vraiment super. non mutable</del></li>
-  <li>gestion des arrondis</li>
-  <li><del>==</del></li>
-  <li>== None</li>
-  <li>== autre chose qu’un Dollar</li>
-  <li><del><code class="language-plaintext highlighter-rouge">__mul__</code></del></li>
-  <li><del>5 CHF * 2 = 10CHF</del></li>
-  <li><del>duplication Franc/dollar</del></li>
-  <li><del>même ==</del></li>
-  <li>~~ * presque identique.~~</li>
-  <li>compare Franc et Dollar</li>
-  <li><del>utilisation de devise ?</del></li>
-  <li>supprimer <code class="language-plaintext highlighter-rouge">test_franc_multiplication</code> ?</li>
+<ul class="task-list">
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>\$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>gestion des arrondis (lorsque les montants seront des réels)</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled><code class="language-plaintext highlighter-rouge">== None</code>
+</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled><code class="language-plaintext highlighter-rouge">==</code>avec autre chose qu’un <code class="language-plaintext highlighter-rouge">Dollar</code>
+</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>5 CHF * 2 = 10CHF</li>
+  <li class="task-list-item"><strong>[-] duplication Franc/dollar</strong></li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>même <code class="language-plaintext highlighter-rouge">==</code> (code identique dans 2 classes différentes)</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked><code class="language-plaintext highlighter-rouge">*</code> presque identique</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>compare Franc et Dollar</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>utilisation de devises plutôt que de classes ?</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>supprimer les tests de <code class="language-plaintext highlighter-rouge">Franc</code> ?</li>
 </ul>
+
+<h3 id="faire-11.2">faire</h3>
+
+<p>On se sent en confiance.</p>
+
+<blockquote class="a-faire">
+  <p>Utilisez le constructeur de <code class="language-plaintext highlighter-rouge">Monnaie</code>  pour les deux factory.</p>
+</blockquote>
+<details><summary>solution</summary><div>
+<p><em>“monnaie.py”</em> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ...
+</span>
+<span class="k">def</span> <span class="nf">dollar</span><span class="p">(</span><span class="n">montant</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">Monnaie</span><span class="p">(</span><span class="n">montant</span><span class="p">,</span> <span class="s">"USD"</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">franc</span><span class="p">(</span><span class="n">montant</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">Monnaie</span><span class="p">(</span><span class="n">montant</span><span class="p">,</span> <span class="s">"CHF"</span><span class="p">)</span>
+
+<span class="c1"># ...
+</span></code></pre></div></div>
+
+</div></details>
+
+<p>Et enfin :</p>
+
+<blockquote class="a-faire">
+  <p>Supprimez les classes <code class="language-plaintext highlighter-rouge">Dollar</code> et <code class="language-plaintext highlighter-rouge">Franc</code></p>
+</blockquote>
+
+<h3 id="todo-list-11.3">todo list</h3>
+
+<ul class="task-list">
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>\$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>gestion des arrondis (lorsque les montants seront des réels)</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled><code class="language-plaintext highlighter-rouge">== None</code>
+</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled><code class="language-plaintext highlighter-rouge">==</code>avec autre chose qu’un <code class="language-plaintext highlighter-rouge">Dollar</code>
+</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>5 CHF * 2 = 10CHF</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>duplication Franc/dollar</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>même <code class="language-plaintext highlighter-rouge">==</code> (code identique dans 2 classes différentes)</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked><code class="language-plaintext highlighter-rouge">*</code> presque identique</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>compare Franc et Dollar</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>utilisation de devises plutôt que de classes ?</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>supprimer les tests de <code class="language-plaintext highlighter-rouge">Franc</code> ?</li>
+</ul>
+
+<h2 id="fin-de-partie">Fin de Partie</h2>
 
 <p>Maintenant les tests d’égalité et de multiplication des <code class="language-plaintext highlighter-rouge">Franc</code> sont vraiment inutiles puisque le code est le même que celui de dollar :</p>
 
-<h4 id="testspy-3">tests.py</h4>
+<blockquote class="a-faire">
+  <p>Suprimez les tests de concernant les francs.</p>
+</blockquote>
+<details><summary>solution</summary><div>
+<p><em>“test_monnaie.py”</em> :</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">money</span>
-
-
-<span class="k">def</span> <span class="nf">test_currencies</span><span class="p">():</span>
-    <span class="k">assert</span> <span class="s">"USD"</span> <span class="o">==</span> <span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="n">currencies</span><span class="p">()</span>
-    <span class="k">assert</span> <span class="s">"CHF"</span> <span class="o">==</span> <span class="n">money</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="n">currencies</span><span class="p">()</span>
-
-
-<span class="k">def</span> <span class="nf">test_equality</span><span class="p">():</span>
-    <span class="k">assert</span> <span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-    <span class="k">assert</span> <span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">!=</span> <span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
-
-    <span class="k">assert</span> <span class="n">money</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">!=</span> <span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">monnaie</span>
 
 
 <span class="k">def</span> <span class="nf">test_multiplication</span><span class="p">():</span>
-    <span class="n">five</span> <span class="o">=</span> <span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+    <span class="n">cinq</span> <span class="o">=</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 
-    <span class="k">assert</span> <span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="n">five</span> <span class="o">*</span> <span class="mi">2</span>
-    <span class="k">assert</span> <span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span> <span class="o">==</span> <span class="n">five</span> <span class="o">*</span> <span class="mi">3</span>
+    <span class="k">assert</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="n">cinq</span> <span class="o">*</span> <span class="mi">2</span>
+    <span class="k">assert</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span> <span class="o">==</span> <span class="n">cinq</span> <span class="o">*</span> <span class="mi">3</span>
+
+
+<span class="k">def</span> <span class="nf">test_egalite</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">test_non_egalite_dollar</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">!=</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">test_franc_dollar</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">!=</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">test_devise</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="s">"USD"</span> <span class="o">==</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="n">devise</span>
+    <span class="k">assert</span> <span class="s">"CHF"</span> <span class="o">==</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="n">devise</span>
+
 </code></pre></div></div>
 
-<h4 id="moneypy-4">money.py</h4>
+</div></details>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">dollar</span><span class="p">(</span><span class="n">amount</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">Money</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span> <span class="s">"USD"</span><span class="p">)</span>
+<h3 id="todo-list-fin">todo list</h3>
+
+<ul class="task-list">
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>\$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>gestion des arrondis (lorsque les montants seront des réels)</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled><code class="language-plaintext highlighter-rouge">== None</code>
+</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled><code class="language-plaintext highlighter-rouge">==</code>avec autre chose qu’un <code class="language-plaintext highlighter-rouge">Dollar</code>
+</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>5 CHF * 2 = 10CHF</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>duplication Franc/dollar</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>même <code class="language-plaintext highlighter-rouge">==</code> (code identique dans 2 classes différentes)</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked><code class="language-plaintext highlighter-rouge">*</code> presque identique</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>compare Franc et Dollar</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>utilisation de devises plutôt que de classes ?</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>supprimer les tests de <code class="language-plaintext highlighter-rouge">Franc</code> ?</li>
+</ul>
+
+<h2 id="bilan">bilan</h2>
+
+<p>Vous voyez le développement organique en TDD. On a commencé par deux classes distinctes, puis en codant, on s’est rendu compte qu’elles étaient inutiles et on les a petit à petit supprimées.</p>
+
+<p>Si vous aviez codés sans tests, cela aurait été impossible de réaliser cette opérations en un temps aussi court. De plus, vous n’auriez pas été tenté de le faire car les conséquences auraient pu être dramatique en effet de bord sur le code.</p>
+
+<h3 id="élagage-de-la-todo-list">élagage de la todo list</h3>
+
+<p>En supprimant les items effectués, il nous reste à faire ;</p>
+
+<ul class="task-list">
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>\$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>gestion des arrondis (lorsque les montants seront des réels)</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled><code class="language-plaintext highlighter-rouge">== None</code>
+</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled><code class="language-plaintext highlighter-rouge">==</code> avec autre chose qu’un <code class="language-plaintext highlighter-rouge">Dollar</code>
+</li>
+</ul>
+
+<h3 id="code">code</h3>
+
+<h4 id="test_monnaiepy"><em>“test_monnaie.py”</em></h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">monnaie</span>
 
 
-<span class="k">def</span> <span class="nf">franc</span><span class="p">(</span><span class="n">amount</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">Money</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span> <span class="s">"CHF"</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">test_multiplication</span><span class="p">():</span>
+    <span class="n">cinq</span> <span class="o">=</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+    <span class="k">assert</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="n">cinq</span> <span class="o">*</span> <span class="mi">2</span>
+    <span class="k">assert</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span> <span class="o">==</span> <span class="n">cinq</span> <span class="o">*</span> <span class="mi">3</span>
 
 
-<span class="k">class</span> <span class="nc">Money</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">,</span> <span class="n">currency</span><span class="p">):</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">=</span> <span class="n">amount</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">currency</span> <span class="o">=</span> <span class="n">currency</span>
+<span class="k">def</span> <span class="nf">test_egalite</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">currencies</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">currency</span>
+
+<span class="k">def</span> <span class="nf">test_non_egalite_dollar</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">!=</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">test_franc_dollar</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">!=</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">test_devise</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="s">"USD"</span> <span class="o">==</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="n">devise</span>
+    <span class="k">assert</span> <span class="s">"CHF"</span> <span class="o">==</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="n">devise</span>
+
+</code></pre></div></div>
+
+<h4 id="monnaiepy"><em>“monnaie.py”</em></h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">dollar</span><span class="p">(</span><span class="n">montant</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">Monnaie</span><span class="p">(</span><span class="n">montant</span><span class="p">,</span> <span class="s">"USD"</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">franc</span><span class="p">(</span><span class="n">montant</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">Monnaie</span><span class="p">(</span><span class="n">montant</span><span class="p">,</span> <span class="s">"CHF"</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">Monnaie</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">montant</span><span class="p">,</span> <span class="n">devise</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">montant</span> <span class="o">=</span> <span class="n">montant</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">devise</span> <span class="o">=</span> <span class="n">devise</span>
 
     <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">currency</span> <span class="o">==</span> <span class="n">other</span><span class="p">.</span><span class="n">currency</span> <span class="ow">and</span> <span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">==</span> <span class="n">other</span><span class="p">.</span><span class="n">amount</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">devise</span> <span class="o">==</span> <span class="n">other</span><span class="p">.</span><span class="n">devise</span> <span class="ow">and</span> <span class="bp">self</span><span class="p">.</span><span class="n">montant</span> <span class="o">==</span> <span class="n">other</span><span class="p">.</span><span class="n">montant</span>
 
-    <span class="k">def</span> <span class="nf">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multiplier</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">Money</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">*</span> <span class="n">multiplier</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">currency</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multiplicateur</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Monnaie</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">montant</span> <span class="o">*</span> <span class="n">multiplicateur</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">devise</span><span class="p">)</span>
+
 </code></pre></div></div>
-
-<h4 id="tbd-5">tbd</h4>
-
-<ul>
-  <li>$5 + 2.5CHF = $10 si le taux de change est 1:.5</li>
-  <li><del>$5 * 2 = $10</del></li>
-  <li><del>utiliser <code class="language-plaintext highlighter-rouge">amount</code> ? Le rendre privé</del></li>
-  <li><del>five == 10 n’est pas vraiment super. non mutable</del></li>
-  <li>gestion des arrondis</li>
-  <li><del>==</del></li>
-  <li>== None</li>
-  <li>== autre chose qu’un Dollar</li>
-  <li><del><code class="language-plaintext highlighter-rouge">__mul__</code></del></li>
-  <li><del>5 CHF * 2 = 10CHF</del></li>
-  <li><del>duplication Franc/dollar</del></li>
-  <li><del>même ==</del></li>
-  <li><del>* presque identique.</del></li>
-  <li><del>compare Franc et Dollar</del></li>
-  <li><del>utilisation de devise ?</del></li>
-  <li><del>supprimer <code class="language-plaintext highlighter-rouge">test_franc_multiplication</code> ?</del></li>
-</ul>
 
   </div>
 

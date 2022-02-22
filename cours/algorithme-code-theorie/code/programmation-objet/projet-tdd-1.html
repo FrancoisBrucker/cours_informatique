@@ -82,7 +82,7 @@
 
 <ul>
   <li>il faut plusieurs devises (ici CHF et $)</li>
-  <li>il faut multiplier les devises par des nombres (nb actions * prix)</li>
+  <li>il faut multiplier les devises par des nombres (nombre d’actions * prix)</li>
 </ul>
 
 <p>Cette todo-list (ou <em>backlog</em>) nous indique :</p>
@@ -107,7 +107,7 @@
 
 <h3 id="todo-list-1.1">todo list</h3>
 
-<p>Première todo-list :</p>
+<p>Première todo list :</p>
 
 <ul class="task-list">
   <li class="task-list-item">
@@ -156,11 +156,11 @@
   <p>En TDD on utilise notre code avant de l’écrire. Avoir une idée de comment utiliser le code nous donne une idée de comment il doit fonctionner.</p>
 </blockquote>
 
-<p>L’écriture de notre test (un cas d’utilisation de la classe dollar qui valide l’item courant de la todo-list) nous montre des choses que l’on doit pouvoir faire, et par là augmente notre todo-list avec des choses à implémenter ou des questions auxquelles il va falloir répondre un jour.</p>
+<p>L’écriture de notre test (un cas d’utilisation de la classe dollar qui valide l’item courant de la todo list) nous montre des choses que l’on doit pouvoir faire, et par là augmente notre todo list avec des choses à implémenter ou des questions auxquelles il va falloir répondre un jour.</p>
 
 <h3 id="todo-list-1.2">todo list</h3>
 
-<p>Le test nous pose quelques questions quand à l’utilisation dela classe dollar. Notre todo-list devient :</p>
+<p>Le test nous pose quelques questions quand à l’utilisation de la classe dollar. Notre todo list devient :</p>
 
 <ul class="task-list">
   <li class="task-list-item">
@@ -201,7 +201,7 @@ ERROR test_monnaie.py
 <span class="o">=========================</span> 1 error <span class="k">in </span>0.13s <span class="o">===========================</span>
 </code></pre></div></div>
 
-<p>Ca en fait des erreurs !</p>
+<p>Ça en fait des erreurs !</p>
 
 <p>Mais c’est une chance, car les messages d’erreurs vont nous permettre de faire un programme qui fonctionne. Il suffit de les supprimer une à une.</p>
 
@@ -373,7 +373,7 @@ test_monnaie.py .
 
 <p>Et on vérifie que les tests passent.</p>
 
-<p>Le <code class="language-plaintext highlighter-rouge">2</code> est aussi une duplication, mais elle vient d’une autre ligne du test : <code class="language-plaintext highlighter-rouge">cinq.fois(2)</code>. COmençons donc pas déplacer notre 2 dans la méthode <code class="language-plaintext highlighter-rouge">fois</code>pour voir si c’est possible :</p>
+<p>Le <code class="language-plaintext highlighter-rouge">2</code> est aussi une duplication, mais elle vient d’une autre ligne du test : <code class="language-plaintext highlighter-rouge">cinq.fois(2)</code>. Commençons donc pas déplacer notre 2 dans la méthode <code class="language-plaintext highlighter-rouge">fois</code>pour voir si c’est possible :</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Dollar</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">montant</span><span class="p">):</span>
@@ -397,11 +397,11 @@ test_monnaie.py .
 
 </code></pre></div></div>
 
-<p>Nos tests continuent de passer et nous n’avons plus de duplication: on peut supprimer la tâche de la todo-list</p>
+<p>Nos tests continuent de passer et nous n’avons plus de duplication: on peut supprimer la tâche de la todo list</p>
 
 <h3 id="todo-list-1.3">todo list</h3>
 
-<p>Le test nous pose quelques questions quand à l’utilisation dela classe dollar. Notre todo-list devient :</p>
+<p>Le test nous pose quelques questions quand à l’utilisation de la classe dollar. Notre todo list devient :</p>
 
 <ul class="task-list">
   <li class="task-list-item">
@@ -418,18 +418,18 @@ test_monnaie.py .
 
 <h4 id="bilan-1">bilan</h4>
 
-<p>La procédure utilisée dans cette étape cera générale :</p>
+<p>La procédure utilisée dans cette étape sera générale :</p>
 
 <ol>
   <li>on crée un test</li>
-  <li>on éxécute nos tests et on voit que ça ne marche pas. Le test que l’on vient d’écrire est le seul test qui doit rater : <strong>rouge</strong>
+  <li>on exécute nos tests et on voit que ça ne marche pas. Le test que l’on vient d’écrire est le seul test qui doit rater : <strong>rouge</strong>
 </li>
-  <li>on change le code pour que nos tests fonctionne. Le but est que le test passe donc on peut comêtre les pires attrocités pour cela (comme on a fait en mettant directement 10 à montant par exemple). Pour cela, la façon la plus simple est de se laisser guider par l’interpréteur.</li>
-  <li>Une fois que les tests passent, on est <strong>vert</strong>. A partir de là, on ne modifiera <strong>jamais</strong> de code si tout les tesrs ne passent pas</li>
+  <li>on change le code pour que nos tests fonctionne. Le but est que le test passe donc on peut commettre les pires atrocités pour cela (comme on a fait en mettant directement 10 à montant par exemple). Pour cela, la façon la plus simple est de se laisser guider par l’interpréteur.</li>
+  <li>Une fois que les tests passent, on est <strong>vert</strong>. A partir de là, on ne modifiera <strong>jamais</strong> de code si tout les tests ne passent pas</li>
   <li>on supprime petit à petit les duplications tout en s’assurant que les tests sont toujours vert</li>
 </ol>
 
-<p>La méthode qu’on a utilisé pour faire passer nos tests en duplicant la réponse du test dans le code à un nom :</p>
+<p>La méthode qu’on a utilisé pour faire passer nos tests en dupliquant la réponse du test dans le code à un nom :</p>
 
 <blockquote class="note">
   <p><strong>premier pattern du TDD :</strong>
@@ -463,7 +463,7 @@ Dupliquer la réponse du test dans le code est la méthode appelée : <strong>fa
 
 <h3 id="todo-list-2.1">todo list</h3>
 
-<p>On choisit <strong>toujours</strong> l’élément le plus simple à faire dans la todo-list. Ici, le quatrième item semble le facileemtn implémentable :</p>
+<p>On choisit <strong>toujours</strong> l’élément le plus simple à faire dans la todo list. Ici, le quatrième item semble le facilement implémentable :</p>
 
 <ul class="task-list">
   <li class="task-list-item">
@@ -479,7 +479,7 @@ Dupliquer la réponse du test dans le code est la méthode appelée : <strong>fa
 
 <h3 id="faire-2.1">faire</h3>
 
-<p>Pour vérifier que nos 5 dollaors restent 5 dollars, on peut faire un test du style :</p>
+<p>Pour vérifier que nos 5 dollars restent 5 dollars, on peut faire un test du style :</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">money</span> <span class="kn">import</span> <span class="n">Dollar</span>
 
@@ -495,14 +495,14 @@ Dupliquer la réponse du test dans le code est la méthode appelée : <strong>fa
 </code></pre></div></div>
 
 <blockquote class="a-faire">
-  <p>On execute nos tests et — comme attendu — ça rate.</p>
+  <p>On exécute nos tests et — comme attendu — ça rate.</p>
 </blockquote>
 
 <p>Ce test n’est cependant pas vraiment satisfaisant pour au moins deux raisons :</p>
 
 <ol>
   <li>cela semble un peut compliqué de changer montant tout en gardant 5 quelque-part</li>
-  <li>le code est vraiment étrange. Comment <code class="language-plaintext highlighter-rouge">cinq</code> pourrait-il valloir 15 ?</li>
+  <li>le code est vraiment étrange. Comment <code class="language-plaintext highlighter-rouge">cinq</code> pourrait-il valoir 15 ?</li>
 </ol>
 
 <p>La seconde raison est de loin la plus importante. Notre code est étrange et peu lisible (bref, <em>ça ne sent pas bon</em>). C’est souvent le signe qu’il se passe quelque chose de mal.</p>
@@ -510,7 +510,7 @@ Dupliquer la réponse du test dans le code est la méthode appelée : <strong>fa
 <blockquote class="note">
   <p>Le <strong><a href="https://en.wikipedia.org/wiki/Code_smell">code smell</a></strong> est la capacité qu’à un bon développeur de reconnaître un soucis profond juste en lisant l’organisation ou l’utilisation d’un code.</p>
 
-  <p>Le code smell s’acquiert avec le temps, mais vous pouvez acccélérer son accisition en lisant du obon code</p>
+  <p>Le <em>code smell</em> s’acquiert avec le temps, mais vous pouvez accélérer son acquisition en lisant du bon code</p>
 </blockquote>
 
 <p>Une façon simple et élégante de régler notre soucis est d’utiliser des objet qui ne peuvent être modifiés.</p>
@@ -521,12 +521,12 @@ Dupliquer la réponse du test dans le code est la méthode appelée : <strong>fa
 
 <p>C’est super chouette d’avoir des objets non modifiable, on a pas besoin de faire attention à eux : une fois créés ils ne bougent plus.</p>
 
-<p>Ceci nous permet de les donner à des méthodes inconnues sans avoir peur qu’ils soient modifiés, ou les utiliser dans nos propres méthodes sans craindre qu’ils soient modifiés plus tard. Le seul point négatif d’un value object est que l’on doit regcréer un nouvel objet si on veut le changer. Heureusement, dans la plupart du temps ce n’est pas très coûteux.</p>
+<p>Ceci nous permet de les donner à des méthodes inconnues sans avoir peur qu’ils soient modifiés, ou les utiliser dans nos propres méthodes sans craindre qu’ils soient modifiés plus tard. Le seul point négatif d’un value object est que l’on doit recréer un nouvel objet si on veut le changer. Heureusement, dans la plupart du temps ce n’est pas très coûteux.</p>
 
 <blockquote>
-  <p>En python, de nombreux objet sont des values objcet. On peut citer les chaines de caractères, les entiers, les réels ou encore le booleens.</p>
+  <p>En python, de nombreux objet sont des values object. On peut citer les chaines de caractères, les entiers, les réels ou encore le booleens.</p>
 
-  <p>De plus, de nombreuses stuctures modifiables ont leurs contrepartie non modifiables. Par exemple les <a href="https://docs.python.org/fr/3/library/stdtypes.html">tuples</a> pour les listes ou les <a href="https://docs.python.org/fr/3/library/stdtypes.html">frozenset</a> pour les ensembles.</p>
+  <p>De plus, de nombreuses structures modifiables ont leurs contrepartie non modifiables. Par exemple les <a href="https://docs.python.org/fr/3/library/stdtypes.html">tuples</a> pour les listes ou les <a href="https://docs.python.org/fr/3/library/stdtypes.html">frozenset</a> pour les ensembles.</p>
 </blockquote>
 
 <p>Pour un <em>value object</em>, à la place de modifier un objet il faut en rendre un nouveau on en rende un nouveau : la méthode <code class="language-plaintext highlighter-rouge">fois</code> doit rendre un objet. Modifions notre test  :</p>
@@ -551,7 +551,7 @@ Dupliquer la réponse du test dans le code est la méthode appelée : <strong>fa
 <p>Le test est bien plus joli : il est lisible et compréhensible. Bon bien sur, ce n’est que le début :</p>
 
 <blockquote class="a-faire">
-  <p>On execute nos tests et — comme attendu — ça rate.</p>
+  <p>On exécute nos tests et — comme attendu — ça rate.</p>
 </blockquote>
 
 <p>Ce coup ci, pas besoin de grandes manipulations pour faire passer le test. Il faut que la méthode <em>fois</em> rende un objet <code class="language-plaintext highlighter-rouge">Dollar</code>. Si l’implémentation semble évidente, autant la coder de suite (mais après le test !).  On vient de découvrir une autre règle :</p>
@@ -578,7 +578,7 @@ Dupliquer la réponse du test dans le code est la méthode appelée : <strong>fa
 </div></details>
 
 <blockquote class="a-faire">
-  <p>On execute nos tests et ça passe !</p>
+  <p>On exécute nos tests et ça passe !</p>
 </blockquote>
 
 <p>On a en même temps fait passer le test et fini l’implémentation.</p>
@@ -601,7 +601,7 @@ Dupliquer la réponse du test dans le code est la méthode appelée : <strong>fa
 <h2 id="3---">3 - <code class="language-plaintext highlighter-rouge">==</code>
 </h2>
 
-<p>Pour vérifier que deux objets sont égaux, on ne va pas passer son temps à vérifier que tous leurs attributs soient les mêmes. On va le faire une fois pour toute (ce qui évitera en plus les duplications). On le rajoute donc dans la todo liste :</p>
+<p>Pour vérifier que deux objets sont égaux, on ne va pas passer son temps à vérifier que tous leurs attributs soient les mêmes. On va le faire une fois pour toute (ce qui évitera en plus les duplications). On le rajoute donc dans la todo list :</p>
 
 <h3 id="todo-list-3.1">todo list</h3>
 
@@ -642,7 +642,7 @@ Dupliquer la réponse du test dans le code est la méthode appelée : <strong>fa
 <p>L’implémentation n’étant pas forcément évidente :</p>
 
 <blockquote class="a-faire">
-  <p>Commençons par faire marcher le test en utilisant la techique <em>fake it</em> :</p>
+  <p>Commençons par faire marcher le test en utilisant la technique <em>fake it</em> :</p>
 </blockquote>
 <details><summary>solution</summary><div>
 <p><em>“monnaie.py”</em> :</p>
@@ -716,7 +716,7 @@ Dupliquer la réponse du test dans le code est la méthode appelée : <strong>fa
 
 </div></details>
 <blockquote class="a-faire">
-  <p>On peut mainteannt re-exécuter le test, qui passe.</p>
+  <p>On peut maintenant re-exécuter le test, qui passe.</p>
 </blockquote>
 
 <p>Ce traitement de l’égalité est frustre, on ne vérifie pas :</p>
@@ -758,7 +758,7 @@ Dupliquer la réponse du test dans le code est la méthode appelée : <strong>fa
 
 <p>La méthode <code class="language-plaintext highlighter-rouge">__eq__</code> n’est pas la seule utilisée en python pour donner des comportement spéciaux au objets (il en <a href="https://micropyramid.com/blog/python-special-class-methods-or-magic-methods/">existe beaucop d’autres</a>. Notre objet <code class="language-plaintext highlighter-rouge">Dollar</code> devant se comporter plus ou moins comme un nombre, on peut implémenter les <a href="https://diveintopython3.net/special-method-names.html#acts-like-number">méthodes spéciales utiles pour ressembler à des nombres</a>.</p>
 
-<p>Comencçons par implémenter <a href="https://docs.python.org/3/library/operator.html#operator.__mul__"><code class="language-plaintext highlighter-rouge">__mul__</code></a>.</p>
+<p>Commençons par implémenter <a href="https://docs.python.org/3/library/operator.html#operator.__mul__"><code class="language-plaintext highlighter-rouge">__mul__</code></a>.</p>
 
 <h3 id="todo-list-4.1">todo list</h3>
 
@@ -856,7 +856,7 @@ Dupliquer la réponse du test dans le code est la méthode appelée : <strong>fa
 
 <h2 id="5---privacy">5 - privacy</h2>
 
-<p>Tput est prêt pour travailler sur l’attribut <code class="language-plaintext highlighter-rouge">montant</code>.</p>
+<p>Tout est prêt pour travailler sur l’attribut <code class="language-plaintext highlighter-rouge">montant</code>.</p>
 
 <h3 id="todo-list-5.1">todo list</h3>
 
@@ -928,7 +928,7 @@ Dupliquer la réponse du test dans le code est la méthode appelée : <strong>fa
 <p>On fait petit à petit disparaitre des tests les références explicites à l’implémentation des classes. C’est une bonne pratique.</p>
 
 <blockquote class="note">
-  <p><strong>Test pattern :</strong> Lorsque l’on teste, il est important de toujours tester du point de vue de l’utilisation. Il faut éviter le plus possible de tester des attebiuts internes à la classe.</p>
+  <p><strong>Test pattern :</strong> Lorsque l’on teste, il est important de toujours tester du point de vue de l’utilisation. Il faut éviter le plus possible de tester des attributs internes à la classe.</p>
 </blockquote>
 
 <h3 id="todo-list-5.2">todo list</h3>
@@ -962,7 +962,7 @@ Dupliquer la réponse du test dans le code est la méthode appelée : <strong>fa
 
 <h3 id="todo-list-fin-1">todo list</h3>
 
-<p>On peut épurer notre todo-list en supprimant les items déjà résolus. On obtient :</p>
+<p>On peut épurer notre todo list en supprimant les items déjà résolus. On obtient :</p>
 
 <ul class="task-list">
   <li class="task-list-item">
