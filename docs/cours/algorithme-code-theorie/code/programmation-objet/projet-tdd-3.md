@@ -33,11 +33,15 @@ On va encore épurer la todo list en supprimant les améliorations possibles de 
 
 On va dans cette partie vous laisser plus libre et moins détailler les étapes. Ce sera à vous de modifier petit à petit votre code et à lancer les tests autant de de fois que nécessaire.
 
+Nous allons ici faire en sorte que l'on puisse additionner des devises ensemble et gérer le taux de change. Cela va nécessiter l'utilisation de design patterns adaptés.
+
 ## Addition 1/3
 
-### 
-
 Avant de traiter l'addition de deux monnaies différentes, commençons par traiter le cas de 1 unique monnaie : 
+
+
+### todo list {#todo-list-fin}
+
 
 #### tbd
 

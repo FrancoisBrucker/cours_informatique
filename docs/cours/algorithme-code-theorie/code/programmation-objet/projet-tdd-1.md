@@ -23,7 +23,7 @@ Partie 1/3.
 Commençons par noter ce qu'il faut faire pour que notre application de change fonctionne :
 
 * il faut plusieurs devises (ici CHF et $)
-* il faut multiplier les devises par des nombres (nb actions * prix)
+* il faut multiplier les devises par des nombres (nombre d'actions * prix)
 
 Cette todo-list (ou *backlog*) nous indique :
 
@@ -39,7 +39,7 @@ Cette todo-list (ou *backlog*) nous indique :
 
 ### todo list {#todo-list-1.1}
 
-Première todo-list :
+Première todo list :
 
 * [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
 * [ ] \\$5 * 2 = \\$10
@@ -80,11 +80,11 @@ Nous n'avons pas encore écrit de classe `Dollar`, mais on l'utilise déjà...
 > En TDD on utilise notre code avant de l'écrire. Avoir une idée de comment utiliser le code nous donne une idée de comment il doit fonctionner.
 {: .note}
 
-L'écriture de notre test (un cas d'utilisation de la classe dollar qui valide l'item courant de la todo-list) nous montre des choses que l'on doit pouvoir faire, et par là augmente notre todo-list avec des choses à implémenter ou des questions auxquelles il va falloir répondre un jour.
+L'écriture de notre test (un cas d'utilisation de la classe dollar qui valide l'item courant de la todo list) nous montre des choses que l'on doit pouvoir faire, et par là augmente notre todo list avec des choses à implémenter ou des questions auxquelles il va falloir répondre un jour.
 
 ### todo list {#todo-list-1.2}
 
-Le test nous pose quelques questions quand à l'utilisation dela classe dollar. Notre todo-list devient :
+Le test nous pose quelques questions quand à l'utilisation de la classe dollar. Notre todo list devient :
 
 * [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
 * **[-] \\$5 * 2 = \\$10**
@@ -120,7 +120,7 @@ ERROR test_monnaie.py
 ========================= 1 error in 0.13s ===========================
 ```
 
-Ca en fait des erreurs !
+Ça en fait des erreurs !
 
 Mais c'est une chance, car les messages d'erreurs vont nous permettre de faire un programme qui fonctionne. Il suffit de les supprimer une à une.
 
@@ -295,7 +295,7 @@ class Dollar:
 
 Et on vérifie que les tests passent.
 
-Le `2` est aussi une duplication, mais elle vient d'une autre ligne du test : `cinq.fois(2)`. COmençons donc pas déplacer notre 2 dans la méthode `fois`pour voir si c'est possible :
+Le `2` est aussi une duplication, mais elle vient d'une autre ligne du test : `cinq.fois(2)`. Commençons donc pas déplacer notre 2 dans la méthode `fois`pour voir si c'est possible :
 
 ```python
 class Dollar:
@@ -321,11 +321,11 @@ class Dollar:
 
 ```
 
-Nos tests continuent de passer et nous n'avons plus de duplication: on peut supprimer la tâche de la todo-list
+Nos tests continuent de passer et nous n'avons plus de duplication: on peut supprimer la tâche de la todo list
 
 ### todo list {#todo-list-1.3}
 
-Le test nous pose quelques questions quand à l'utilisation dela classe dollar. Notre todo-list devient :
+Le test nous pose quelques questions quand à l'utilisation de la classe dollar. Notre todo list devient :
 
 * [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
 * [X] \\$5 * 2 = \\$10
@@ -335,15 +335,15 @@ Le test nous pose quelques questions quand à l'utilisation dela classe dollar. 
 
 #### bilan {#bilan-1}
 
-La procédure utilisée dans cette étape cera générale :
+La procédure utilisée dans cette étape sera générale :
 
 1. on crée un test
-2. on éxécute nos tests et on voit que ça ne marche pas. Le test que l'on vient d'écrire est le seul test qui doit rater : **rouge**
-3. on change le code pour que nos tests fonctionne. Le but est que le test passe donc on peut comêtre les pires attrocités pour cela (comme on a fait en mettant directement 10 à montant par exemple). Pour cela, la façon la plus simple est de se laisser guider par l'interpréteur.
-4. Une fois que les tests passent, on est **vert**. A partir de là, on ne modifiera **jamais** de code si tout les tesrs ne passent pas
+2. on exécute nos tests et on voit que ça ne marche pas. Le test que l'on vient d'écrire est le seul test qui doit rater : **rouge**
+3. on change le code pour que nos tests fonctionne. Le but est que le test passe donc on peut commettre les pires atrocités pour cela (comme on a fait en mettant directement 10 à montant par exemple). Pour cela, la façon la plus simple est de se laisser guider par l'interpréteur.
+4. Une fois que les tests passent, on est **vert**. A partir de là, on ne modifiera **jamais** de code si tout les tests ne passent pas
 5. on supprime petit à petit les duplications tout en s'assurant que les tests sont toujours vert
 
-La méthode qu'on a utilisé pour faire passer nos tests en duplicant la réponse du test dans le code à un nom :
+La méthode qu'on a utilisé pour faire passer nos tests en dupliquant la réponse du test dans le code à un nom :
 
 > **premier pattern du TDD :**
 > Dupliquer la réponse du test dans le code est la méthode appelée : **fake it**.
@@ -369,7 +369,7 @@ Que faire maintenant ?
 
 ### todo list {#todo-list-2.1}
 
-On choisit **toujours** l'élément le plus simple à faire dans la todo-list. Ici, le quatrième item semble le facileemtn implémentable :
+On choisit **toujours** l'élément le plus simple à faire dans la todo list. Ici, le quatrième item semble le facilement implémentable :
 
 * [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
 * [X] \\$5 * 2 = \\$10
@@ -379,7 +379,7 @@ On choisit **toujours** l'élément le plus simple à faire dans la todo-list. I
 
 ### faire {#faire-2.1}
 
-Pour vérifier que nos 5 dollaors restent 5 dollars, on peut faire un test du style :
+Pour vérifier que nos 5 dollars restent 5 dollars, on peut faire un test du style :
 
 ```python
 from money import Dollar
@@ -395,19 +395,19 @@ def test_multiplication():
     assert 15 == cinq.montant
 ```
 
-> On execute nos tests et — comme attendu — ça rate.
+> On exécute nos tests et — comme attendu — ça rate.
 {: .a-faire}
 
 Ce test n'est cependant pas vraiment satisfaisant pour au moins deux raisons :
 
 1. cela semble un peut compliqué de changer montant tout en gardant 5 quelque-part
-2. le code est vraiment étrange. Comment `cinq` pourrait-il valloir 15 ?
+2. le code est vraiment étrange. Comment `cinq` pourrait-il valoir 15 ?
 
 La seconde raison est de loin la plus importante. Notre code est étrange et peu lisible (bref, *ça ne sent pas bon*). C'est souvent le signe qu'il se passe quelque chose de mal.
 
 > Le **[code smell](https://en.wikipedia.org/wiki/Code_smell)** est la capacité qu'à un bon développeur de reconnaître un soucis profond juste en lisant l'organisation ou l'utilisation d'un code.
 >
-> Le code smell s'acquiert avec le temps, mais vous pouvez acccélérer son accisition en lisant du obon code
+> Le *code smell* s'acquiert avec le temps, mais vous pouvez accélérer son acquisition en lisant du bon code
 {: .note}
 
 Une façon simple et élégante de régler notre soucis est d'utiliser des objet qui ne peuvent être modifiés.
@@ -417,11 +417,11 @@ Une façon simple et élégante de régler notre soucis est d'utiliser des objet
 
 C'est super chouette d'avoir des objets non modifiable, on a pas besoin de faire attention à eux : une fois créés ils ne bougent plus.
 
-Ceci nous permet de les donner à des méthodes inconnues sans avoir peur qu'ils soient modifiés, ou les utiliser dans nos propres méthodes sans craindre qu'ils soient modifiés plus tard. Le seul point négatif d'un value object est que l'on doit regcréer un nouvel objet si on veut le changer. Heureusement, dans la plupart du temps ce n'est pas très coûteux.
+Ceci nous permet de les donner à des méthodes inconnues sans avoir peur qu'ils soient modifiés, ou les utiliser dans nos propres méthodes sans craindre qu'ils soient modifiés plus tard. Le seul point négatif d'un value object est que l'on doit recréer un nouvel objet si on veut le changer. Heureusement, dans la plupart du temps ce n'est pas très coûteux.
 
-> En python, de nombreux objet sont des values objcet. On peut citer les chaines de caractères, les entiers, les réels ou encore le booleens.
+> En python, de nombreux objet sont des values object. On peut citer les chaines de caractères, les entiers, les réels ou encore le booleens.
 >
-> De plus, de nombreuses stuctures modifiables ont leurs contrepartie non modifiables. Par exemple les [tuples](https://docs.python.org/fr/3/library/stdtypes.html) pour les listes ou les [frozenset](https://docs.python.org/fr/3/library/stdtypes.html) pour les ensembles.
+> De plus, de nombreuses structures modifiables ont leurs contrepartie non modifiables. Par exemple les [tuples](https://docs.python.org/fr/3/library/stdtypes.html) pour les listes ou les [frozenset](https://docs.python.org/fr/3/library/stdtypes.html) pour les ensembles.
 
 Pour un *value object*, à la place de modifier un objet il faut en rendre un nouveau on en rende un nouveau : la méthode `fois` doit rendre un objet. Modifions notre test  :
 
@@ -445,7 +445,7 @@ def test_multiplication():
 
 Le test est bien plus joli : il est lisible et compréhensible. Bon bien sur, ce n'est que le début :
 
-> On execute nos tests et — comme attendu — ça rate.
+> On exécute nos tests et — comme attendu — ça rate.
 {: .a-faire}
 
 Ce coup ci, pas besoin de grandes manipulations pour faire passer le test. Il faut que la méthode *fois* rende un objet `Dollar`. Si l'implémentation semble évidente, autant la coder de suite (mais après le test !).  On vient de découvrir une autre règle :
@@ -470,7 +470,7 @@ class Dollar:
 
 {% enddetails %}
 
-> On execute nos tests et ça passe !
+> On exécute nos tests et ça passe !
 {: .a-faire}
 
 On a en même temps fait passer le test et fini l'implémentation.
@@ -485,7 +485,7 @@ On a en même temps fait passer le test et fini l'implémentation.
 
 ## 3 - `==`
 
-Pour vérifier que deux objets sont égaux, on ne va pas passer son temps à vérifier que tous leurs attributs soient les mêmes. On va le faire une fois pour toute (ce qui évitera en plus les duplications). On le rajoute donc dans la todo liste :
+Pour vérifier que deux objets sont égaux, on ne va pas passer son temps à vérifier que tous leurs attributs soient les mêmes. On va le faire une fois pour toute (ce qui évitera en plus les duplications). On le rajoute donc dans la todo list :
 
 ### todo list {#todo-list-3.1}
 
@@ -518,7 +518,7 @@ Bien sur, le test rate. Par défaut, lorsque l'on a pas défini de méthode `__e
 
 L'implémentation n'étant pas forcément évidente :
 
-> Commençons par faire marcher le test en utilisant la techique *fake it* :
+> Commençons par faire marcher le test en utilisant la technique *fake it* :
 {: .a-faire}
 {% details solution %}
 *"monnaie.py"* :
@@ -591,7 +591,7 @@ class Dollar:
 ```
 
 {% enddetails %}
-> On peut mainteannt re-exécuter le test, qui passe.
+> On peut maintenant re-exécuter le test, qui passe.
 {: .a-faire}
 
 Ce traitement de l'égalité est frustre, on ne vérifie pas :
@@ -616,7 +616,7 @@ On va pas s'embêter avec ça pour l'instant, mais on va tout de même le rajout
 
 La méthode `__eq__` n'est pas la seule utilisée en python pour donner des comportement spéciaux au objets (il en [existe beaucop d'autres](https://micropyramid.com/blog/python-special-class-methods-or-magic-methods/). Notre objet `Dollar` devant se comporter plus ou moins comme un nombre, on peut implémenter les [méthodes spéciales utiles pour ressembler à des nombres](https://diveintopython3.net/special-method-names.html#acts-like-number).
 
-Comencçons par implémenter [`__mul__`](https://docs.python.org/3/library/operator.html#operator.__mul__).
+Commençons par implémenter [`__mul__`](https://docs.python.org/3/library/operator.html#operator.__mul__).
 
 ### todo list {#todo-list-4.1}
 
@@ -687,7 +687,7 @@ class Dollar:
 
 ## 5 - privacy
 
-Tput est prêt pour travailler sur l'attribut `montant`.
+Tout est prêt pour travailler sur l'attribut `montant`.
 
 ### todo list {#todo-list-5.1}
 
@@ -745,7 +745,7 @@ Notez que l'on a utilisé une fonctionnalité que l'on vient de créer (`__mul__
 
 On fait petit à petit disparaitre des tests les références explicites à l'implémentation des classes. C'est une bonne pratique.
 
-> **Test pattern :** Lorsque l'on teste, il est important de toujours tester du point de vue de l'utilisation. Il faut éviter le plus possible de tester des attebiuts internes à la classe.
+> **Test pattern :** Lorsque l'on teste, il est important de toujours tester du point de vue de l'utilisation. Il faut éviter le plus possible de tester des attributs internes à la classe.
 {: .note}
 
 ### todo list {#todo-list-5.2}
@@ -764,7 +764,7 @@ On fait petit à petit disparaitre des tests les références explicites à l'im
 
 ### todo list {#todo-list-fin-1}
 
-On peut épurer notre todo-list en supprimant les items déjà résolus. On obtient :
+On peut épurer notre todo list en supprimant les items déjà résolus. On obtient :
 
 * [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
 * [ ] gestion des arrondis (lorsque les montants seront des réels)

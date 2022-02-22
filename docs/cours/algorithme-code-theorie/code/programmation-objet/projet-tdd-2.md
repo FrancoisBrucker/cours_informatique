@@ -36,11 +36,11 @@ On rappelle le principe du TDD :
 
 Cela va être bien présent dans cette partie ou l'on va drastiquement modifier notre code. On va créer des tests qui seront notre filet de sécurité puis une fois que tout est vert on codera **tout en conservant le vert**.
 
-Cela permet, en plus d'avoir un feedback imédiat en cas d'erreur (les tests ne passent plus on est **rouge**), d'avoir confiance dans ce que l'on code (si c'est vert c'est quo'n a rien cassé).
+Cela permet, en plus d'avoir un feedback immédiat en cas d'erreur (les tests ne passent plus on est **rouge**), d'avoir confiance dans ce que l'on code (si c'est vert c'est quo'n a rien cassé).
 
 ## todo list initiale
 
-On reprend la tdo list de la fin de la partie 1 :
+On reprend la todo list de la fin de la partie 1 :
 
 * [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
 * [ ] gestion des arrondis (lorsque les montants seront des réels)
@@ -49,7 +49,7 @@ On reprend la tdo list de la fin de la partie 1 :
 
 ## 6 -  les Francs
 
-Le seul item dans la todolist qui ne soit pas de l'optimisation est : \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5.
+Le seul item dans la todo list qui ne soit pas de l'optimisation est : \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5.
 
 Cela semble bien trop ambitieux pour une seule étape. On va la découper, en commençant par introduire les CHF.
 
@@ -126,7 +126,7 @@ Tous les péchés qui ont été commis pour faire passer le test doivent être e
 * [ ] même `==` (code identique dans 2 classes différentes)
 * [ ] `*` presque identique
 
-Notez que même s'il n'y pas de duplication proprement dite entre les deux méthode `__mul__` elles sont trop semblable pour être honnêtes. On rajoute donc un item dans la toto-list pour voir si à un moment donné il ne faudra pas les unifier.
+Notez que même s'il n'y pas de duplication proprement dite entre les deux méthode `__mul__` elles sont trop semblable pour être honnêtes. On rajoute donc un item dans la todo list pour voir si à un moment donné il ne faudra pas les unifier.
 
 ## 7 - même `==`  pour tous
 
@@ -232,7 +232,7 @@ def test_non_egalite_franc():
 
 On se rend compte que l'on ne teste pas l'inégalité entre `Dollar` et `Franc` : **on ne le fait pas tout de suite**, car on a pas fini notre item de la todo list
 
-> **Test pattern :** On ne fait pas 2 choses en même temps. On résoud chaque item de la todo  list les uns à la suite des autres.
+> **Test pattern :** On ne fait pas 2 choses en même temps. On résout chaque item de la todo  list les uns à la suite des autres.
 {: .note}
 
 En revanche, comme il va falloir le faire :
@@ -334,7 +334,7 @@ Et les tests ratent ! En effet, selon `__eq__` les Francs **sont** des dollars.
 
 Une façon simple de corriger cela est de rajouter le fait que les 2 objets à comparer soient de la même classe.
 
-> En python, la classe d'un objet est l'attribut spécial `__class__` présent dans chaque objet.
+En python, la classe d'un objet est l'attribut spécial `__class__` présent dans chaque objet.
 
 > Modifiez le code de `__eq__` pour vérifier que les classes des 2 objets sont bien différentes.
 {: . a-faire}
@@ -358,15 +358,15 @@ class Monnaie:
 
 {% enddetails %}
 
-> Votre **code smell** doit être en alerte maxiale !
+> Votre **code smell** doit être en alerte maximale !
 {: .attention}
 
-Ceci n'est en effet pas du tout une bonne façon de coder. Notre comparateur utilise ce que sont les devise d'un point de vue de python (deux classes différentes) pas d'un point de vue de la finance (devise ?). Ce n'est jamais bon. Ca risque (va) nous sauter à la figure tôt ou tard.
+Ceci n'est en effet pas du tout une bonne façon de coder. Notre comparateur utilise ce que sont les devise d'un point de vue de python (deux classes différentes) pas d'un point de vue de la finance (devise ?). Ce n'est jamais bon. Ça risque (va) nous sauter à la figure tôt ou tard.
 
 > Dans la mesure du possible, votre code doit être écrit du point de vue de ce que représentent les objets codées et non comment ils sont codés
 {: .note}
 
-On rajoute donc un todo pour montrer que cela nous embête tout de même un peu.
+On rajoute donc un item dans la todo list pour montrer que cela nous embête tout de même un peu.
 
 ### todo list {#todo-list-8.2}
 
@@ -404,9 +404,9 @@ C'est même la seule chose qui diffère entre `Dollar` et `Franc`... L'existence
 
 **On ne va garder qu'une seule classe**.
 
-Mais avant cela on va s'assurer que les fonctionnalités des `Franc` et des `Dollars` sont bien toutes représentées dans nos tests, ceci nous permettra de supprimer les classes en confiance : leurs fonctionalités sont préservées grace aux tests on ne risque pas de supprimer une fonctionnalité par inadvertance.
+Mais avant cela on va s'assurer que les fonctionnalités des `Franc` et des `Dollars` sont bien toutes représentées dans nos tests, ceci nous permettra de supprimer les classes en confiance : leurs fonctionnalités sont préservées grâce aux tests on ne risque pas de supprimer une fonctionnalité par inadvertance.
 
-> Regardez les fonctionnlités différentes ajouter un test pour chaque monnaie si ce n'est pas encore fait.
+> Regardez les fonctionnalités différentes ajouter un test pour chaque monnaie si ce n'est pas encore fait.
 {: .a-faire}
 {% details solution %}
 
@@ -416,11 +416,11 @@ Il n'y a rien à changer, tous les tests sont fait et pour les `Dollar` et pour 
 
 POur supprimer des bout de code, il ne faut pas qu'ils soient utilisés. Pour supprimer les classes `Franc` et `Dollar`, on va ainsi commencer par gommer leurs existences dans les tests (dans l'utilisation du code).
 
-Une fois l'utilisation des classes masquées dans les tests, on pourra les supprimer tranquilement du code en gardant du vert.
+Une fois l'utilisation des classes masquées dans les tests, on pourra les supprimer tranquillement du code en gardant du vert.
 
 ### faire {#faire-9.2}
 
-Gommer supprimer l'utilsation des classes, on va utiliser un design pattern :
+Gommer supprimer l'utilisation des classes, on va utiliser un design pattern :
 
 > Un [design patterns](https://fr.wikipedia.org/wiki/Patron_de_conception), ou façons de faire, est pour ainsi dire de l'algorithmie objet. C'est une organisation de classes pratique pour résoudre des problèmes courant en développement.
 >
@@ -433,7 +433,7 @@ Le pattern que l'on va utiliser est appelé **factory**, puisqu'il utilise des f
 >
 > On crée les objets via des fonctions sans (ou très peu) de paramètres plutôt qu'avec le constructeur.
 >
-> L'intérêt est que l'on a ppas à se rappeler de toutes les possiblités du constructeur, les cas classiques d'objets sont directement accessible via une fonction.
+> L'intérêt est que l'on a pas à se rappeler de toutes les possibilités du constructeur, les cas classiques d'objets sont directement accessible via une fonction.
 {: .note}
 
 Commençons par tester le *factory* la classe `Dollar`  dans le test `test_multiplication_dollar()` :
@@ -623,7 +623,7 @@ def test_franc_dollar():
 
 {% enddetails %}
 
-On est maintenant dans une meilleure position qu'au début pour notre projet d'unifier les classes `Franc` et `Dollar` puisque Le code utilisateur n'est pas au courant qu'il existe deux classes différentes (grace au *factory*).
+On est maintenant dans une meilleure position qu'au début pour notre projet d'unifier les classes `Franc` et `Dollar` puisque Le code utilisateur n'est pas au courant qu'il existe deux classes différentes (grâce au *factory*).
 
 On va pouvoir passer à la suite qui consiste à les supprimer également dans le code.
 
@@ -731,12 +731,12 @@ On va utiliser :
 >
 > Le but est de faire remonter un champ de sous-classes à la classe mère.
 >
-> Pour cela, on rend **identique** le champ dans chaqune des sous-classes puis on le déplace dans la classe mère.
+> Pour cela, on rend **identique** le champ dans chacune des sous-classes puis on le déplace dans la classe mère.
 {: .note}
 
 En premier lieu :
 
-> Faite de l'ttribut `devise` deux attributs affectés chacun affecté dans sa classe
+> Faite de l'attribut `devise` deux attributs affectés chacun affecté dans sa classe
 {: .a-faire}
 {% details solution %}
 
@@ -868,7 +868,7 @@ Pour supprimer les classes, il faut créer nos objets avec la classe `Monnaie`. 
 >
 > Le but est de faire remonter une méthode de sous-classes à la classe mère.
 >
-> Pour cela, on rend **identique** la méthode dans chaqune des sous-classes puis on le déplace dans la classe mère.
+> Pour cela, on rend **identique** la méthode dans chacune des sous-classes puis on le déplace dans la classe mère.
 {: .note}
 
 Puisque si les constructeurs sont identique, on pourra facilement créer nos objets avec `Monnaie` plutôt qu'avec `Franc` ou `Dollar`. C'est encore impossible pour l'instant car les constructeurs sont :
@@ -876,7 +876,7 @@ Puisque si les constructeurs sont identique, on pourra facilement créer nos obj
 * `__init__(self, montant)` pour `Franc` et `Dollar`
 * `def __init__(self, montant, devise)` pour `Devise`
 
-On va petit à petit modifer les constructeurs (et les effets de bords dans le code) pour les rendre identique.
+On va petit à petit modifier les constructeurs (et les effets de bords dans le code) pour les rendre identique.
 
 > Ajoutez un champ devise au constructeur de `Franc` et lancez les tests.
 {: .a-faire}
@@ -938,7 +938,7 @@ E       TypeError: __init__() missing 1 required positional argument: 'devise'
 monnaie.py:31: TypeError
 ```
 
-Ah, c'est inatendu... On avait oublié `__mul__`: elle n'utilise pas le factory pour créer ses objets.
+Ah, c'est inattendu... On avait oublié `__mul__`: elle n'utilise pas le factory pour créer ses objets.
 
 > Modifiez la méthode `__mul__` de `Franc` pour qu'elle utilise le factory.
 {: .a-faire}
@@ -1136,7 +1136,7 @@ class Franc(Monnaie):
 
 les tests sont toujours Ok. Parfait.
 
-On peut maintenant ajouter une méthode `__mul__` das la classe money :
+On peut maintenant ajouter une méthode `__mul__` dans la classe money :
 
 > Ajoutez une méthode `__mul__` dans `Monnaie`
 {: .a-faire}
@@ -1184,7 +1184,7 @@ Les tests ratent.
 
 Et oui, on le savait quand on l'a fait que ça allait nous sauter à la figure : c'est le `__eq__` et sa comparaison entre classes.
 
-En TDD il est **interdit** de modifier du code alors qu'on est rouge. On revient donc en arrivère :
+En TDD il est **interdit** de modifier du code alors qu'on est rouge. On revient donc en arrière :
 
 > Replacez la méthode `__mul__` dans `Franc` et assurez vous que les tests passent.
 {: .a-faire}
@@ -1205,7 +1205,7 @@ class Franc(Monnaie):
 
 Maintenant qu'on est sur du vert, on peut modifier du code :
 
-> Modifiez `__eq__` de `Monnaie` pour qu'il utilise l'attibut `devise` plutôt que la classe
+> Modifiez `__eq__` de `Monnaie` pour qu'il utilise l'attribut `devise` plutôt que la classe
 {: .a-faire}
 {% details solution %}
 *"monnaie.py"* :
@@ -1385,7 +1385,7 @@ Vous voyez le développement organique en TDD. On a commencé par deux classes d
 
 Si vous aviez codés sans tests, cela aurait été impossible de réaliser cette opérations en un temps aussi court. De plus, vous n'auriez pas été tenté de le faire car les conséquences auraient pu être dramatique en effet de bord sur le code.
 
-### épurage de la todo list
+### élagage de la todo list
 
 En supprimant les items effectués, il nous reste à faire ;
 
