@@ -226,7 +226,6 @@ graph.links.push({
   target: 'Algorithmes, fonctions et pseudo-code'
 })
 
-
 graph.nodes.push({
   id: 'machine de Turing',
   link: "{% link cours/algorithme-code-theorie/theorie/machine-turing.md %}",
@@ -268,8 +267,9 @@ graph.nodes.push({
   link: "{% link cours/algorithme-code-theorie/code/projet-hello-dev.md %}",
   group: groups.code
 })
+
 graph.links.push({
-  source: 'code',
+  source: 'coder',
   target: 'projet informatique'
 })
 
@@ -473,7 +473,7 @@ graph.nodes.push({
   group: groups.code
 })
 graph.links.push({
-  source: 'code',
+  source: 'coder',
   target: 'mémoire et espace de noms'
 })
 
