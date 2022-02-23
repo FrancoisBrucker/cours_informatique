@@ -104,461 +104,1005 @@
 
 <p>Nous allons ici faire en sorte que l’on puisse additionner des devises ensemble et gérer le taux de change. Cela va nécessiter l’utilisation de design patterns adaptés.</p>
 
+<p>Rappelez vous (et forcez vous à le faire jusqu’à ce que ça devienne un automatisme) que l’on écrit <strong>d’abord</strong> le test, puis que l’on code <strong>après</strong> : on ne code que sur du <strong>vert</strong>, il n’y a <strong>aucune</strong> exception.</p>
+
+<blockquote class="note">
+  <p><strong>Principe du TDD :</strong></p>
+
+  <ol>
+    <li>
+<strong>rouge</strong> :
+      <ul>
+        <li>écrire <em>rapidement</em> un <em>petit</em> test</li>
+        <li>lancer les tests et les voir planter, voir même  ne correspondre à aucun code.</li>
+      </ul>
+    </li>
+    <li>
+<strong>vert</strong> :
+      <ul>
+        <li>écrire le code <em>minimal</em> qui permet de faire passer le test</li>
+        <li>lancer les tests et les voir tous réussir</li>
+      </ul>
+    </li>
+    <li>
+<strong>code/refactor</strong> :
+      <ul>
+        <li>élimine les duplications tout en conservant la validité des tests.</li>
+      </ul>
+    </li>
+  </ol>
+
+  <p>La partie refactor, qui est la partie réelle où l’on code ne se fait <strong>que sur du vert</strong> : on est assuré de ne pas casser le code puisque les tests passent.</p>
+</blockquote>
+
 <h2 id="addition-13">Addition 1/3</h2>
 
 <p>Avant de traiter l’addition de deux monnaies différentes, commençons par traiter le cas de 1 unique monnaie.</p>
 
-<h3 id="todo-list-todo-list-13-1">todo list {#todo-list-1/3-1}</h3>
+<h3 id="todo-list-add-1-1">todo list</h3>
 
 <ul class="task-list">
   <li class="task-list-item">
 <input type="checkbox" class="task-list-item-checkbox" disabled>\$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
-  <li class="task-list-item"><strong>[-] \$5 + \$5 = \$10</strong></li>
+  <li class="task-list-item"><strong>[-] \$5 + \$2 = \$7</strong></li>
 </ul>
 
-<h3 id="faire-faire-13-1">faire {#faire-1/3-1}</h3>
+<p>On s’assure dans le test qu’on ne somme pas deux fois la même chose pour éviter des effets de bord possible dans le code (c’est du code smell).</p>
 
-<blockquote>
-  <p>Ecrivez un test permettant de tester que \$5 + \$5 = \$10 en :</p>
+<h3 id="faire-add-1-1">faire</h3>
+
+<blockquote class="a-faire">
+  <p>Ecrivez un test permettant de tester que \$5 + \$2 = \$7 en :</p>
 
   <ul>
-    <li>utilisant une méthode <code class="language-plaintext highlighter-rouge">plus</code> de <code class="language-plaintext highlighter-rouge">Monnaie</code> qui rend une monnaie</li>
-    <li>les objets de <code class="language-plaintext highlighter-rouge">Monnaie</code> snt otujours non mutable</li>
+    <li>
+      <p>utilisant la méthode <code class="language-plaintext highlighter-rouge">plus</code> de <code class="language-plaintext highlighter-rouge">Monnaie</code> qui prend une autre monnaie en paramètre et rend une monnaie</p>
+    </li>
+    <li>
+      <p>les objets de <code class="language-plaintext highlighter-rouge">Monnaie</code> sont toujours non mutable</p>
+    </li>
   </ul>
-
 </blockquote>
 
-<blockquote class="tbd">
-  <p>ici</p>
-</blockquote>
+<p>Une fois les tests écris, une <em>obvious implementation</em> devrait faire l’affaire.</p>
+<details><summary>solution</summary><div>
+<p><em>“test_monnaie.py”</em> :</p>
 
-<p>Commençons par écrire un test permettant de tester que $5 + $5 = $10 en supposant que :</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ...
+</span>
+<span class="k">def</span> <span class="nf">test_plus</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span> <span class="o">==</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">).</span><span class="n">plus</span><span class="p">(</span><span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
 
-<ul>
-  <li>on utilise la méthode <code class="language-plaintext highlighter-rouge">plus</code> de <code class="language-plaintext highlighter-rouge">Money</code> qui rend un objet <code class="language-plaintext highlighter-rouge">Money</code>
-</li>
-  <li>les objets de la classe <code class="language-plaintext highlighter-rouge">Money</code> sont toujours non mutables</li>
-</ul>
+<span class="c1"># ...
+</span></code></pre></div></div>
 
-<p>Ce test réalisé, on l’oplémente (une obvious implémentation devrait suffire)</p>
+<p><em>“monnaie.py”</em> :</p>
 
-<h4 id="testspy">tests.py</h4>
-
-<p>On a ajouté le test ci-après à la batterie de test précédent</p>
-
-<pre><code class="language-pyhton">def test_sum():
-    sum = money.dollar(5).plus(money.dollar(5))
-
-    assert money.dollar(10) == sum
-</code></pre>
-
-<h4 id="moneypy">money.py</h4>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">dollar</span><span class="p">(</span><span class="n">amount</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">Money</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span> <span class="s">"USD"</span><span class="p">)</span>
-
-
-<span class="k">def</span> <span class="nf">franc</span><span class="p">(</span><span class="n">amount</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">Money</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span> <span class="s">"CHF"</span><span class="p">)</span>
-
-
-<span class="k">class</span> <span class="nc">Money</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">,</span> <span class="n">currency</span><span class="p">):</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">=</span> <span class="n">amount</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">currency</span> <span class="o">=</span> <span class="n">currency</span>
-
-    <span class="k">def</span> <span class="nf">currencies</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">currency</span>
-
-    <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">currency</span> <span class="o">==</span> <span class="n">other</span><span class="p">.</span><span class="n">currency</span> <span class="ow">and</span> <span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">==</span> <span class="n">other</span><span class="p">.</span><span class="n">amount</span>
-
-    <span class="k">def</span> <span class="nf">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multiplier</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">Money</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">*</span> <span class="n">multiplier</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">currency</span><span class="p">)</span>
-
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ...
+</span>
+<span class="k">class</span> <span class="nc">Monnaie</span><span class="p">:</span>
+    <span class="c1"># ...
+</span>
     <span class="k">def</span> <span class="nf">plus</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">Money</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">+</span> <span class="n">other</span><span class="p">.</span><span class="n">amount</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">currency</span><span class="p">)</span>
-</code></pre></div></div>
+        <span class="k">return</span> <span class="n">Monnaie</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">montant</span> <span class="o">+</span> <span class="n">other</span><span class="p">.</span><span class="n">montant</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">devise</span><span class="p">)</span>
 
-<h4 id="addition">addition</h4>
+    <span class="c1"># ...
+</span>
+<span class="c1"># ...
+</span></code></pre></div></div>
 
-<p>Tout comme <code class="language-plaintext highlighter-rouge">__mul__</code> il existe une méthode en python pour gérer l’addition : <code class="language-plaintext highlighter-rouge">__add__</code>. On modifie nos tests et le code pour l’utiliser.</p>
+</div></details>
 
-<h4 id="testspy-1">tests.py</h4>
+<h3 id="faire-add-1-2">faire</h3>
 
-<p>On a ajouté le test ci-après à la batterie de test précédent</p>
+<p>Rendons les choses jolies en utilisant <code class="language-plaintext highlighter-rouge">__add__</code> qui est le pendant pour l’addition de <code class="language-plaintext highlighter-rouge">__mul__</code></p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">test_sum</span><span class="p">():</span>
-    <span class="nb">sum</span> <span class="o">=</span> <span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">+</span> <span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<blockquote class="a-faire">
+  <p>Remplacez la méthode <code class="language-plaintext highlighter-rouge">plus</code> par <code class="language-plaintext highlighter-rouge">__add__</code>dans <code class="language-plaintext highlighter-rouge">Monnaie</code>.</p>
+</blockquote>
+<details><summary>solution</summary><div>
+<p>easy peasy, on remplace juste <code class="language-plaintext highlighter-rouge">plus</code> par <code class="language-plaintext highlighter-rouge">+</code></p>
 
-    <span class="k">assert</span> <span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="nb">sum</span>
-</code></pre></div></div>
+<p><em>“test_monnaie.py”</em> :</p>
 
-<h4 id="moneypy-1">money.py</h4>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ...
+</span>
+<span class="k">def</span> <span class="nf">test_plus</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span> <span class="o">==</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">+</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Money</span><span class="p">:</span>
-    
+<span class="c1"># ...
+</span></code></pre></div></div>
+
+<p>et  <code class="language-plaintext highlighter-rouge">plus</code> par <code class="language-plaintext highlighter-rouge">__add__</code></p>
+
+<p><em>“monnaie.py”</em> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ...
+</span>
+<span class="k">class</span> <span class="nc">Monnaie</span><span class="p">:</span>
     <span class="c1"># ...
 </span>
     <span class="k">def</span> <span class="nf">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">Money</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">+</span> <span class="n">other</span><span class="p">.</span><span class="n">amount</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">currency</span><span class="p">)</span>
-</code></pre></div></div>
+        <span class="k">return</span> <span class="n">Monnaie</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">montant</span> <span class="o">+</span> <span class="n">other</span><span class="p">.</span><span class="n">montant</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">devise</span><span class="p">)</span>
 
-<h3 id="addition-23">Addition 2/3</h3>
+    <span class="c1"># ...
+</span>
+<span class="c1"># ...
+</span></code></pre></div></div>
 
-<p>Notre implémentation de <code class="language-plaintext highlighter-rouge">+</code> qui rend un objet de type <code class="language-plaintext highlighter-rouge">Money</code> ne sera pas tenable longtemps. En effet <code class="language-plaintext highlighter-rouge">$5 + 2.5CHF</code> ne peut être un objet de type <code class="language-plaintext highlighter-rouge">Money</code>. Ce sont deux devises différentes qui vont avoir une valeur dépendant du cours actuel, qui va fluctuer sans cesse. Il faut donc résoudre deux problèmes :</p>
+</div></details>
 
-<ul>
-  <li>comment stocker plusieurs devises</li>
-  <li>comment convertir une monnaie ou un ensemble de monnaies en une autre.</li>
+<h3 id="todo-list-add-1-2">todo list</h3>
+
+<ul class="task-list">
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>\$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>\$5 + \$2 = \$7</li>
 </ul>
 
-<h4 id="tests-py">tests. py</h4>
+<h2 id="addition-23">Addition 2/3</h2>
+
+<p>Notre implémentation de <code class="language-plaintext highlighter-rouge">+</code> qui rend un objet de type <code class="language-plaintext highlighter-rouge">Mnnaie</code> ne sera pas tenable longtemps.</p>
+
+<p>En effet <code class="language-plaintext highlighter-rouge">$5 + 2.5CHF</code> <strong>ne peut pas être</strong> un objet de type <code class="language-plaintext highlighter-rouge">Monnaie</code>. Ce sont en effet deux devises différentes dont la valeur va dépendre d’un cours <a href="https://fr.tradingview.com/symbols/USDCHF/">qui change au cours du temps</a>. La somme <code class="language-plaintext highlighter-rouge">$5 + 2.5CHF</code> peut ainsi valoir <code class="language-plaintext highlighter-rouge">$10</code> en 2022 et <code class="language-plaintext highlighter-rouge">$7</code> en 2034.</p>
+
+<p>Il faut donc résoudre deux problèmes :</p>
+
+<ul>
+  <li>comment stocker une somme sous la forme de plusieurs devises ?</li>
+  <li>comment convertir une monnaie ou un ensemble de monnaies en une autre ?</li>
+</ul>
+
+<h3 id="todo-list-add-2-1">todo list</h3>
+
+<ul class="task-list">
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>\$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
+  <li class="task-list-item"><strong>[-] \$5 + \$2 = quelque chose qui correspond à $7</strong></li>
+</ul>
+
+<h3 id="faire-add-2-1">faire</h3>
 
 <p>Pour imaginer cela rien de mieux qu’un test ! On va l’écrire à l’envers, en partant du résultat, car  on sait où on veut arriver : à $10 :</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">test_simple_addition</span><span class="p">():</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">### ...
+</span>
+<span class="k">def</span> <span class="nf">test_conversion_addition</span><span class="p">():</span>
     <span class="c1"># ...
-</span>    <span class="k">assert</span> <span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="n">reduced</span>
-</code></pre></div></div>
+</span>    
+    <span class="k">assert</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span> <span class="o">==</span> <span class="n">conversion</span>
 
-<p>Ces $10 viennent d’une conversion en dollar d’une somme de deux monnaies, conversion qui – d’un point de vue métier – ne peut venir que d’une banque</p>
+<span class="c1"># ...
+</span></code></pre></div></div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">test_simple_addition</span><span class="p">():</span>
+<p>Ces $10 viennent d’une conversion en dollar d’une somme de deux monnaies, conversion qui – d’un point de vue métier – ne peut venir que d’une banque :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">### ...
+</span>
+<span class="k">def</span> <span class="nf">test_conversion_addition</span><span class="p">():</span>
     <span class="c1"># ...
-</span>    <span class="n">reduced</span> <span class="o">=</span> <span class="n">bank</span><span class="p">.</span><span class="nb">reduce</span><span class="p">(</span><span class="nb">sum</span><span class="p">,</span> <span class="s">"USD"</span><span class="p">)</span>
-    <span class="k">assert</span> <span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="n">reduced</span>
-</code></pre></div></div>
+</span>    
+    <span class="n">conversion</span> <span class="o">=</span> <span class="n">banque</span><span class="p">.</span><span class="n">conversion</span><span class="p">(</span><span class="n">somme</span><span class="p">,</span> <span class="s">"USD"</span><span class="p">)</span>
+
+    <span class="k">assert</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span> <span class="o">==</span> <span class="n">conversion</span>
+
+<span class="c1"># ...
+</span></code></pre></div></div>
 
 <p>Banque qu’il faut créer :</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">test_simple_addition</span><span class="p">():</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">### ...
+</span>
+<span class="k">def</span> <span class="nf">test_conversion_addition</span><span class="p">():</span>
     <span class="c1"># ...
-</span>    <span class="n">bank</span> <span class="o">=</span> <span class="n">Bank</span><span class="p">()</span>
-    <span class="n">reduced</span> <span class="o">=</span> <span class="n">bank</span><span class="p">.</span><span class="nb">reduce</span><span class="p">(</span><span class="nb">sum</span><span class="p">,</span> <span class="s">"USD"</span><span class="p">)</span>
-    <span class="k">assert</span> <span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="n">reduced</span>
-</code></pre></div></div>
+</span>    
+    <span class="n">banque</span> <span class="o">=</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">Banque</span><span class="p">()</span>
+    <span class="n">conversion</span> <span class="o">=</span> <span class="n">banque</span><span class="p">.</span><span class="n">conversion</span><span class="p">(</span><span class="n">somme</span><span class="p">,</span> <span class="s">"USD"</span><span class="p">)</span>
+
+    <span class="k">assert</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span> <span class="o">==</span> <span class="n">conversion</span>
+
+<span class="c1"># ...
+</span></code></pre></div></div>
 
 <p>Il ne reste plus qu’à fabriquer notre expression pur avoir notre test final :</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">test_simple_addition</span><span class="p">():</span>
-    <span class="n">five</span> <span class="o">=</span> <span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-    <span class="nb">sum</span> <span class="o">=</span> <span class="n">five</span> <span class="o">+</span> <span class="n">five</span>
-    <span class="n">bank</span> <span class="o">=</span> <span class="n">Bank</span><span class="p">()</span>
-    <span class="n">reduced</span> <span class="o">=</span> <span class="n">bank</span><span class="p">.</span><span class="nb">reduce</span><span class="p">(</span><span class="nb">sum</span><span class="p">,</span> <span class="s">"USD"</span><span class="p">)</span>
-    <span class="k">assert</span> <span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="n">reduced</span>
-</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">### ...
+</span>
+<span class="k">def</span> <span class="nf">test_conversion_addition</span><span class="p">():</span>
+    <span class="n">somme</span> <span class="o">=</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">+</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">banque</span> <span class="o">=</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">Banque</span><span class="p">()</span>
+    <span class="n">conversion</span> <span class="o">=</span> <span class="n">banque</span><span class="p">.</span><span class="n">conversion</span><span class="p">(</span><span class="n">somme</span><span class="p">,</span> <span class="s">"USD"</span><span class="p">)</span>
 
-<h4 id="moneypy-2">money.py</h4>
+    <span class="k">assert</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span> <span class="o">==</span> <span class="n">conversion</span>
 
-<p>On fake le tout pour avoir un test qui passe et du pain sur la planche pour plus tard.</p>
+<span class="c1"># ...
+</span></code></pre></div></div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Bank</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">reduce</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expression</span><span class="p">,</span> <span class="n">currency</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">dollar</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-</code></pre></div></div>
+<blockquote class="a-faire">
+  <p>Ajoutez le test dans <em>“test_monnaie.py”</em> et fakez le tout dans <em>“monnaie.py”</em>  pour que le test passe.</p>
+</blockquote>
+<details><summary>solution</summary><div>
+<p><em>“monnaie.py”</em> :</p>
 
-<h3 id="addition-33">Addition 3/3</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ...
+</span>
+<span class="k">class</span> <span class="nc">Banque</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">conversion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expression</span><span class="p">,</span> <span class="n">currency</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">dollar</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+
+<span class="c1"># ...
+</span></code></pre></div></div>
+
+</div></details>
+
+<h2 id="addition-33">Addition 3/3</h2>
 
 <p>L’implémentation réelle de tout ce qu’on a <em>faké</em> n’est pas si évidente que ça. On va donc devoir faire des choix restrictifs et ajouter à la todo list les généralisations à effectuer pour terminer le travail.</p>
 
-<p>On va considérer que toute somme de deux monnaies est une nouvelle classe somme (on va cependant ajouter que la somme de 2 monnaies identiques devrait rendre une monnaie dans la todo list).</p>
+<p>On va considérer que toute somme de deux monnaies est une nouvelle classe <code class="language-plaintext highlighter-rouge">Somme</code> (on va cependant ajouter que la somme de 2 monnaies identiques devrait rendre une monnaie, comme pour la multiplication,  dans la todo list).</p>
 
-<p>Donc :</p>
+<h3 id="todo-list-add-3-1">todo list</h3>
 
-<ul>
-  <li>on ajoute que la somme de deux monnaies $ devrait donner des $ dans la todo list</li>
-  <li>on supprime du coup le test <code class="language-plaintext highlighter-rouge">test_sum</code> qui vérifie que $5 + $5 = $10 ce qui n’est plus vrai.</li>
-  <li>on ajoute un test pour montrer que la somme de deux monnaies est un objet contenant une partie gauche (la partie à gauche du <code class="language-plaintext highlighter-rouge">+</code>) et une partie droite (la partie à droite du <code class="language-plaintext highlighter-rouge">+</code>).</li>
+<p>On change notre iitem de la todo list puique \$5 + \$2 ne sera plus égal à \$7, mais que ce serait bien qu’il soit :</p>
+
+<ul class="task-list">
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>\$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>\$5 + \$2 doit être égal à \$7</li>
+  <li class="task-list-item"><strong>[-] \$5 + \$2 = quelque chose qui correspond à $7</strong></li>
 </ul>
 
-<p>Une fois ceci fait, on implémente le tout en <em>obvious implementation</em>.</p>
+<h3 id="faire-add-3-1">faire</h3>
 
-<h4 id="tbd">tbd</h4>
-
-<ul>
-  <li>$5 + 2.5CHF = $10 si le taux de change est 1:.5</li>
-  <li><strong>$5 + $5 = quelque chose qui correspond à $10</strong></li>
-  <li>$5 + $5 devrait rendre une Money</li>
-</ul>
-
-<h4 id="tests-py-1">tests. py</h4>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">test_plus_returns_sum</span><span class="p">():</span>
-    <span class="n">five</span> <span class="o">=</span> <span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-    <span class="n">three</span> <span class="o">=</span> <span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-    <span class="nb">sum</span> <span class="o">=</span> <span class="n">five</span> <span class="o">+</span> <span class="n">three</span>
-    <span class="k">assert</span> <span class="nb">sum</span><span class="p">.</span><span class="n">left</span> <span class="o">==</span> <span class="n">five</span>
-    <span class="k">assert</span> <span class="nb">sum</span><span class="p">.</span><span class="n">right</span> <span class="o">==</span> <span class="n">three</span>
-</code></pre></div></div>
-
-<h4 id="moneypy-3">money.py</h4>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Money</span><span class="p">:</span>
-    <span class="c1"># ... 
-</span>    <span class="k">def</span> <span class="nf">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">Sum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
-
-<span class="k">class</span> <span class="nc">Sum</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">):</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">left</span> <span class="o">=</span> <span class="n">left</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">right</span> <span class="o">=</span> <span class="n">right</span>
-</code></pre></div></div>
-
-<h4 id="reduce-13">reduce 1/3</h4>
-
-<p>Il faut faire en sorte de trianguler pour l’implémentation de la méthode <code class="language-plaintext highlighter-rouge">reduce</code> de la banque (pour l’instant c’est un <em>fake</em> qui rend 10 dollar). Maintenant elle prend en paramètre une somme. On va donc faire un test qui vérifiera que <code class="language-plaintext highlighter-rouge">bank.reduce(money.dollar(3) + money.dollar(4), "USD")</code> rende bien 7 dollars.</p>
-
-<p>En implémentant la méthode (après avoir écrit le test bien sur), on considérera que la partie gauche et droite de la somme sont de la monnaie du deuxième paramètre pour l’instant.</p>
-
-<p>En faisant cette implémentation, on va rajouter un todo pour noter que l’on doit aussi implémenter <code class="language-plaintext highlighter-rouge">Bank.reduce</code> pour un objet de type Money (et pas juste pour les sommes)</p>
-
-<h4 id="tbd-1">tbd</h4>
-
-<ul>
-  <li>$5 + 2.5CHF = $10 si le taux de change est 1:.5</li>
-  <li><strong>$5 + $5 = quelque chose qui correspond à $10</strong></li>
-  <li>$5 + $5 devrait rendre une <code class="language-plaintext highlighter-rouge">Money</code>
+<blockquote class="a-faire">
+  <ol>
+    <li>supprimez le test <code class="language-plaintext highlighter-rouge">test_plus</code> qui vérifie que \$5 + \$2 = \$7 ce qui n’est plus vrai</li>
+    <li>on ajoute un test pour montrer que la somme de deux monnaies est un objet contenant une partie gauche (la partie à gauche du <code class="language-plaintext highlighter-rouge">+</code>) et une partie droite (la partie à droite du <code class="language-plaintext highlighter-rouge">+</code>)</li>
+    <li>on implémente le tout en une petite <em>obvious implementation</em>
 </li>
-  <li><code class="language-plaintext highlighter-rouge">Bank.reduce(Money)</code></li>
-</ul>
+  </ol>
+</blockquote>
+<details><summary>solution</summary><div>
+<p><em>“test_monnaie.py”</em> :</p>
 
-<h4 id="tests-py-2">tests. py</h4>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ...
+</span>
+<span class="k">def</span> <span class="nf">test_plus_est_une_Somme</span><span class="p">():</span>
+    <span class="n">somme</span> <span class="o">=</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">+</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">test_bank_reduce_sum</span><span class="p">():</span>
-    <span class="n">bank</span> <span class="o">=</span> <span class="n">Bank</span><span class="p">()</span>
-    <span class="k">assert</span> <span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span> <span class="o">==</span> <span class="n">bank</span><span class="p">.</span><span class="nb">reduce</span><span class="p">(</span><span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">+</span> <span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="s">"USD"</span><span class="p">)</span>
-</code></pre></div></div>
-<h4 id="moneypy-4">money.py</h4>
+    <span class="k">assert</span> <span class="n">somme</span><span class="p">.</span><span class="n">gauche</span> <span class="o">==</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">somme</span><span class="p">.</span><span class="n">droite</span> <span class="o">==</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Bank</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">reduce</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expression</span><span class="p">,</span> <span class="n">currency</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">Money</span><span class="p">(</span><span class="n">expression</span><span class="p">.</span><span class="n">left</span><span class="p">.</span><span class="n">amount</span> <span class="o">+</span> <span class="n">expression</span><span class="p">.</span><span class="n">right</span><span class="p">.</span><span class="n">amount</span><span class="p">,</span> <span class="n">currency</span><span class="p">)</span>
-</code></pre></div></div>
+<span class="c1"># ...
+</span></code></pre></div></div>
 
-<h4 id="reduce-23">reduce 2/3</h4>
+<p><em>“monnaie.py”</em> :</p>
 
-<p>Implémenter juste la méthode <code class="language-plaintext highlighter-rouge">reduce</code> pour la banque pose quelques problèmes. En particulier : la banque doit connaître l’implémentation de Money pour avoir accès à l’attribut amount.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ...
+</span>
+<span class="k">class</span> <span class="nc">Somme</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gauche</span><span class="p">,</span> <span class="n">droite</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">gauche</span> <span class="o">=</span> <span class="n">gauche</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">droite</span> <span class="o">=</span> <span class="n">droite</span>
 
-<p>Pour cela on va déplacer le corps de la méthode <code class="language-plaintext highlighter-rouge">reduce</code> de la <code class="language-plaintext highlighter-rouge">Bank</code> à <code class="language-plaintext highlighter-rouge">Sum</code>. Banque ne fera qu’appeler la méthode de <code class="language-plaintext highlighter-rouge">Sum</code>. Pour l’instant on ne va considérer qu’un seul paramètre pour la méthode <code class="language-plaintext highlighter-rouge">reduce</code> de <code class="language-plaintext highlighter-rouge">Sum</code>, la devise d’arrivée (on rajoutera la banque comme paramètre plus tard, lorsque l’on utilisera effectivement des conversions. On place tout de même cette fonctionnalité dans la todo list pour ne pas l’oublier).</p>
-
-<h4 id="moneypy-5">money.py</h4>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Bank</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">reduce</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expression</span><span class="p">,</span> <span class="n">currency</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">expression</span><span class="p">.</span><span class="nb">reduce</span><span class="p">(</span><span class="n">currency</span><span class="p">)</span>
-
-
-<span class="k">class</span> <span class="nc">Sum</span><span class="p">:</span>
-    <span class="c1"># ... 
-</span>    <span class="k">def</span> <span class="nf">reduce</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">currency</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">Money</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">left</span><span class="p">.</span><span class="n">amount</span> <span class="o">+</span> <span class="bp">self</span><span class="p">.</span><span class="n">right</span><span class="p">.</span><span class="n">amount</span><span class="p">,</span> <span class="n">currency</span><span class="p">)</span>
-</code></pre></div></div>
-
-<h4 id="reduce-33">reduce 3/3</h4>
-
-<p>L’étape précédente a permis de baisser le niveau de connaissance de la banque des objets qui l’entourent. C’est une bonne chose. Un bon programme utilise plein d’objets qui interagissent entre eux mais qui ne connaissent pas l’implémentation des autres classes. Les objets doivent être le plus découplé possible.</p>
-
-<p>Monter le reduce au niveau de <code class="language-plaintext highlighter-rouge">Sum</code> nous permet également de traiter le cas où Bank.reduce à une Money comme paramètre. Il suffit de rajouter  une méthode <code class="language-plaintext highlighter-rouge">reduce</code> à Money !</p>
-
-<p>Pour faire cela, on commence par faire un test où l’argument de reduce pour la banque est un objet de type <code class="language-plaintext highlighter-rouge">Money</code> puis on écrit le code correspondant. De même que précédemment, on va considérer que le seul paramètre de la méthode <code class="language-plaintext highlighter-rouge">reduce</code> pour <code class="language-plaintext highlighter-rouge">Money</code> est la devise d’arrivée et on ajoute dans la todo list qu’il faudra implémenter une conversion si nécessaire.</p>
-
-<h4 id="tbd-2">tbd</h4>
-
-<ul>
-  <li>$5 + 2.5CHF = $10 si le taux de change est 1:.5</li>
-  <li><del>$5 + $5 = quelque chose qui correspond à $10</del></li>
-  <li>$5 + $5 devrait rendre une Money</li>
-  <li><del>Bank.reduce(Money)</del></li>
-  <li>Sum.reduce avec conversion</li>
-  <li>Money.reduce avec conversion</li>
-</ul>
-
-<h4 id="tests-py-3">tests. py</h4>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">test_reduce_money</span><span class="p">():</span>
-    <span class="n">bank</span> <span class="o">=</span> <span class="n">Bank</span><span class="p">()</span>
-    <span class="k">assert</span> <span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="n">bank</span><span class="p">.</span><span class="nb">reduce</span><span class="p">(</span><span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="s">"USD"</span><span class="p">)</span>
-</code></pre></div></div>
-
-<h4 id="moneypy-6">money.py</h4>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Money</span><span class="p">:</span>
+<span class="c1"># ... 
+</span>
+<span class="k">class</span> <span class="nc">Monnaie</span><span class="p">:</span>
     <span class="c1"># ...
-</span>    <span class="k">def</span> <span class="nf">reduce</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">currency</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span>
-</code></pre></div></div>
+</span>
+    <span class="k">def</span> <span class="nf">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Somme</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
 
-<h3 id="taux-de-change-12">Taux de change 1/2</h3>
+    <span class="c1"># ...
+</span>
+<span class="c1"># ...
+</span></code></pre></div></div>
 
-<p>On va maintenant s’attaquer à la conversion. Commençons simple avec les objets de type <code class="language-plaintext highlighter-rouge">Money</code></p>
+</div></details>
 
-<h4 id="tbd-3">tbd</h4>
+<h3 id="todo-list-add-3-2">todo list</h3>
 
-<ul>
-  <li>$5 + 2.5CHF = $10 si le taux de change est 1:.5</li>
-  <li><del>$5 + $5 = quelque chose qui correspond à $10</del></li>
-  <li>$5 + $5 devrait rendre une Money</li>
-  <li><del>Bank.reduce(Money)</del></li>
-  <li>Sum.reduce avec conversion</li>
-  <li><strong>Money.reduce avec conversion</strong></li>
+<p>On a pas fini notre item.</p>
+
+<ul class="task-list">
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>\$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>\$5 + \$2 doit être égal à \$7</li>
+  <li class="task-list-item"><strong>[-] \$5 + \$2 = quelque chose qui correspond à $7</strong></li>
 </ul>
 
-<p>On va écrire un test permettant de gérer le change :</p>
+<p>Mais on a bien avancé puisque  \$5 + \$2 n’est plus une <code class="language-plaintext highlighter-rouge">Monnaie</code>. Il nous reste à faire en sorte que ce quelque chose corresponde à \$7.</p>
 
-<ul>
-  <li>on veut convertir $2 en CHF</li>
-  <li>le taux de change que l’on ajoute à la banque lors du test. par exemple 1CHF -&gt; $2 (on y est presque en réalité)</li>
+<h2 id="conversion-13">conversion 1/3</h2>
+
+<p>Pour que \$5 + \$2 corresponde à quelque chose qui vaut à \$7, on doit travailler sur la méthode <code class="language-plaintext highlighter-rouge">conversion</code> de la <code class="language-plaintext highlighter-rouge">Banque</code>. C’est elle qui doit pouvoir faire le change (pour l’instant c’est un <em>fake</em> qui rend \$7).</p>
+
+<h3 id="todo-list-conv-1-2">todo list</h3>
+
+<p>Pour l’instant, <code class="language-plaintext highlighter-rouge">Banque.conversion</code> prend pour une <code class="language-plaintext highlighter-rouge">Somme</code> en paramètre. Nous n’allons pas ous en occuper tout de suite, mais il pourrait être intéressant qu’elle puisse aussi prendre une <code class="language-plaintext highlighter-rouge">Monnaie</code> en paramètre pour faire le change :</p>
+
+<ul class="task-list">
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>\$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>\$5 + \$2 doit être égal à \$7</li>
+  <li class="task-list-item"><strong>[-] \$5 + \$2 = quelque chose qui correspond à $7</strong></li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled><code class="language-plaintext highlighter-rouge">Banque.conversion(Monnaie)</code>
+</li>
 </ul>
 
-<p>Il faut donc ajouter une méthode <code class="language-plaintext highlighter-rouge">add_rate</code> à la banque dont les paramètres pourraient être la monnaie d’origine, la monnaie d’arrivée et le taux de change.</p>
+<h3 id="faire-conv-1-1">faire</h3>
 
-<p>Une fois le test créé, on implémente le tout. En commençant par un fake, puis petit à petit on ajoute la bonne implémentation. Cela peut être long car il vous faudra déterminer comment fonctionne le taux de change.</p>
+<p>Le test <code class="language-plaintext highlighter-rouge">test_conversion_addition</code> affirme que <code class="language-plaintext highlighter-rouge">banque.conversion(monnaie.dollar(5) + monaie.dollar(2), "USD")</code> vaut  <code class="language-plaintext highlighter-rouge">monnaie.dollar(7)</code>. Mais n’otre implémentation est encore un fake (il reste plein de duplications.</p>
 
-<h4 id="tbd-4">tbd</h4>
+<blockquote class="a-faire">
+  <p>Supprimer les duplication de la méthode <code class="language-plaintext highlighter-rouge">Banque.conversion</code> en :</p>
+
+  <ul>
+    <li>supposant que les parties <code class="language-plaintext highlighter-rouge">gauche</code> et <code class="language-plaintext highlighter-rouge">droite</code> de la somme sont des <code class="language-plaintext highlighter-rouge">Monnaie</code>
+</li>
+    <li>que le taux de change est toujours de 1 pour 1</li>
+  </ul>
+</blockquote>
+<details><summary>solution</summary><div>
+<p><em>“monnaie.py”</em> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ...
+</span>
+<span class="k">class</span> <span class="nc">Banque</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">conversion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expression</span><span class="p">,</span> <span class="n">devise</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Monnaie</span><span class="p">(</span><span class="n">expression</span><span class="p">.</span><span class="n">gauche</span><span class="p">.</span><span class="n">montant</span> <span class="o">+</span> <span class="n">expression</span><span class="p">.</span><span class="n">droite</span><span class="p">.</span><span class="n">montant</span><span class="p">,</span> <span class="n">devise</span><span class="p">)</span>
+
+<span class="c1"># ...
+</span></code></pre></div></div>
+
+</div></details>
+
+<p>C’est un début. Il nous reste à gérer :</p>
 
 <ul>
-  <li>$5 + 2.5CHF = $10 si le taux de change est 1:.5</li>
-  <li><del>$5 + $5 = quelque chose qui correspond à $10</del></li>
-  <li>$5 + $5 devrait rendre une Money</li>
-  <li><del>Bank.reduce(Money)</del></li>
-  <li>Sum.reduce avec conversion</li>
-  <li><del>Money.reduce avec conversion</del></li>
+  <li>lorsque les deux parties de la <code class="language-plaintext highlighter-rouge">Somme</code> ne sont pas des <code class="language-plaintext highlighter-rouge">Monnaie</code>
+</li>
+  <li>le taux de change</li>
 </ul>
 
-<h4 id="tests-py-4">tests. py</h4>
+<h2 id="conversion-23">conversion 2/3</h2>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">test_reduce_money_conversion</span><span class="p">():</span>
-    <span class="n">bank</span> <span class="o">=</span> <span class="n">Bank</span><span class="p">()</span>
-    <span class="n">bank</span><span class="p">.</span><span class="n">add_rate</span><span class="p">(</span><span class="s">"CHF"</span><span class="p">,</span> <span class="s">"USD"</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-    <span class="k">assert</span> <span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="n">bank</span><span class="p">.</span><span class="nb">reduce</span><span class="p">(</span><span class="n">money</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="s">"USD"</span><span class="p">)</span>
+<p>L’implémentation actuelle de la méthode <code class="language-plaintext highlighter-rouge">Banque.conversion</code> — même si incomplète — pose déjà des soucis. En particulier : la banque doit connaître l’implémentation de <code class="language-plaintext highlighter-rouge">Monnaie</code> pour avoir accès à l’attribut <code class="language-plaintext highlighter-rouge">montant</code>.</p>
+
+<p>Lorsque l’on fait du développement objet, on aime pas trop que tous les objets conaissent les attributs de tout le monde. Cela couple les objets entre eux et le code en devient moins maniable (en changeant une classe, il faut changer toutes les autres…)</p>
+
+<blockquote class="note">
+  <p><strong>Principe de développement objet :</strong> <a href="https://fr.wikipedia.org/wiki/Loi_de_D%C3%A9m%C3%A9ter">loi de Déméter</a></p>
+
+  <p>Toute méthode <code class="language-plaintext highlighter-rouge">m</code> d’un objet <code class="language-plaintext highlighter-rouge">o</code> de classe <code class="language-plaintext highlighter-rouge">C</code> ne peut invoquer que :</p>
+
+  <ul>
+    <li>les paramètres de <code class="language-plaintext highlighter-rouge">m</code>
+</li>
+    <li>les objets créés par <code class="language-plaintext highlighter-rouge">m</code>
+</li>
+    <li>lui-même</li>
+    <li>les méthodes de <code class="language-plaintext highlighter-rouge">C</code>
+</li>
+  </ul>
+
+  <p>Un bon programme utilise des objets qui interagissent entre eux mais qui ne connaissent pas l’implémentation des autres classes. Les objets doivent être le plus découplé possible.</p>
+</blockquote>
+
+<p>En particulier, la loi de Déméter demande d’éviter d’appeler les méthodes d’un attribut d’un objet ce qui est exactement ce que l’on fait.</p>
+
+<h3 id="faire-conv-2-1">faire</h3>
+
+<p>Pour éviter cette double indirection :</p>
+
+<blockquote class="a-faire">
+  <p>Remontez d’un cran le code de <code class="language-plaintext highlighter-rouge">Banque.conversion</code> en le plaçant dans une méthode <code class="language-plaintext highlighter-rouge">Somme.conversion(devise)</code>. Pour l’instant on suppose toujours que le taux de conversion est de 1 pour 1 quelque soient les monnaies et que les parties gauche et droite des <code class="language-plaintext highlighter-rouge">Somme</code> sont des <code class="language-plaintext highlighter-rouge">Monnaies</code>.</p>
+</blockquote>
+<details><summary>solution</summary><div>
+<p><em>“monnaie.py”</em> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ...
+</span>
+<span class="k">class</span> <span class="nc">Banque</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">conversion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expression</span><span class="p">,</span> <span class="n">devise</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">expression</span><span class="p">.</span><span class="n">conversion</span><span class="p">(</span><span class="n">devise</span><span class="p">)</span>
+
+<span class="c1"># ...
+</span>
+<span class="k">class</span> <span class="nc">Somme</span><span class="p">:</span>
+    <span class="c1"># ... 
+</span>
+    <span class="k">def</span> <span class="nf">conversion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">devise</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Monnaie</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">gauche</span><span class="p">.</span><span class="n">montant</span> <span class="o">+</span> <span class="bp">self</span><span class="p">.</span><span class="n">droite</span><span class="p">.</span><span class="n">montant</span><span class="p">,</span> <span class="n">devise</span><span class="p">)</span>
+
+    <span class="c1"># ... 
+</span>
+<span class="c1"># ...
+</span></code></pre></div></div>
+
+</div></details>
+
+<h3 id="todo-list-conv-2-1">todo list</h3>
+
+<p>On a fini un item, mais avec plein de restrictions. Ajoutons les à la la todo list.</p>
+
+<ul class="task-list">
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>\$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>\$5 + \$2 doit être égal à \$7</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>\$5 + \$2 = quelque chose qui correspond à $7</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled><code class="language-plaintext highlighter-rouge">Banque.conversion(Monnaie)</code>
+</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled><code class="language-plaintext highlighter-rouge">Somme.conversion(devise)</code> doit vraiment faire des conversions</li>
+</ul>
+
+<h2 id="conversion-33">conversion 3/3</h2>
+
+<p>L’étape précédente a permis de baisser le niveau de connaissance de la banque des objets qui l’entourent. C’est une bonne chose car cela suit la loi de Déméter.</p>
+
+<p>Monter la méthode <code class="language-plaintext highlighter-rouge">conversion</code> de la <code class="language-plaintext highlighter-rouge">Banque</code> à la <code class="language-plaintext highlighter-rouge">Somme</code> nous permet également de traiter le cas où <code class="language-plaintext highlighter-rouge">Banque.reducconversiontion</code> a une  <code class="language-plaintext highlighter-rouge">Monnaie</code> comme paramètre : il suffit de rajouter une méthode <code class="language-plaintext highlighter-rouge">Monnaie.conversion</code> !</p>
+
+<h3 id="todo-list-conv-3-1">todo list</h3>
+
+<ul class="task-list">
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>\$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>\$5 + \$2 doit être égal à \$7</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>\$5 + \$2 = quelque chose qui correspond à $7</li>
+  <li class="task-list-item"><strong>[-] <code class="language-plaintext highlighter-rouge">Banque.conversion(Monnaie)</code></strong></li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled><code class="language-plaintext highlighter-rouge">Somme.conversion(devise)</code> doit vraiment faire des conversions</li>
+</ul>
+
+<h3 id="faire-conv-3-1">faire</h3>
+
+<blockquote class="a-faire">
+  <ol>
+    <li>créez un test où l’argument de <code class="language-plaintext highlighter-rouge">Banque.conversion</code> est un objet de type <code class="language-plaintext highlighter-rouge">Monnaie</code>
+</li>
+    <li>implémentez le code correspondant</li>
+  </ol>
+
+  <p>De même que précédemment, on va considérer que le seul paramètre de la méthode <code class="language-plaintext highlighter-rouge">Monnaie.conversion</code> la devise d’arrivée et que — pour l’instant — le taux de change est de 1 pour 1</p>
+</blockquote>
+<details><summary>solution</summary><div>
+<p><em>“test_monnaie.py”</em> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ...
+</span>
+<span class="k">def</span> <span class="nf">test_banque_conversion_monnaie_identique</span><span class="p">():</span>
+    <span class="n">banque</span> <span class="o">=</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">Banque</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="n">banque</span><span class="p">.</span><span class="n">conversion</span><span class="p">(</span><span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="s">"USD"</span><span class="p">)</span>
+
+<span class="c1"># ...
+</span></code></pre></div></div>
+
+<p><em>“monnaie.py”</em> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ...
+</span>
+<span class="k">class</span> <span class="nc">Monnaie</span><span class="p">:</span>
+    <span class="c1"># ...
+</span>
+    <span class="k">def</span> <span class="nf">conversion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">devise</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Monnaie</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">montant</span><span class="p">,</span> <span class="n">devise</span><span class="p">)</span>
+
+    <span class="c1"># ...
+</span>
+<span class="c1"># ...
+</span></code></pre></div></div>
+
+</div></details>
+
+<h3 id="todo-list-conv-3-2">todo list</h3>
+
+<p>On a fini un item, mais avec plein de restrictions. Ajoutons les à la la todo list :</p>
+
+<ul class="task-list">
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>\$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>\$5 + \$2 doit être égal à \$7</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>\$5 + \$2 = quelque chose qui correspond à $7</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked><code class="language-plaintext highlighter-rouge">Banque.conversion(Monnaie)</code>
+</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled><code class="language-plaintext highlighter-rouge">Somme.conversion(devise)</code> doit vraiment faire des conversions</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled><code class="language-plaintext highlighter-rouge">Monnaie.conversion(devise)</code> doit vraiment faire des conversions</li>
+</ul>
+
+<h2 id="taux-de-change-12">Taux de change 1/2</h2>
+
+<p>On va maintenant s’attaquer à la conversion. Commençons simple avec les objets de type <code class="language-plaintext highlighter-rouge">Monnaie</code></p>
+
+<h3 id="todo-list-change-1-1">todo list</h3>
+
+<ul class="task-list">
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>\$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>\$5 + \$2 doit être égal à \$7</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>\$5 + \$2 = quelque chose qui correspond à $7</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked><code class="language-plaintext highlighter-rouge">Banque.conversion(Monnaie)</code>
+</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled><code class="language-plaintext highlighter-rouge">Somme.conversion(devise)</code> doit vraiment faire des conversions</li>
+  <li class="task-list-item"><strong>[-] <code class="language-plaintext highlighter-rouge">Monnaie.conversion(devise)</code> doit vraiment faire des conversions</strong></li>
+</ul>
+
+<h3 id="faire-change-1-1">faire</h3>
+
+<blockquote class="a-faire">
+  <p>On veut que <code class="language-plaintext highlighter-rouge">Banque.conversion(monnaie.dollar(2), "CHF")</code> donne 1. On doit pour cela utilisez un taux de change donné par <code class="language-plaintext highlighter-rouge">Banque.change</code> qui prend 2 devises en paramètres, celle de départ et celle d’arrivée.</p>
+
+  <ol>
+    <li>créez un test qui vérifie que <code class="language-plaintext highlighter-rouge">Banque.change</code> fonctionne pour deux devises identiques et utilisez cette méthode dans <code class="language-plaintext highlighter-rouge">Banque.conversion</code>.</li>
+    <li>créez un test qui vérifie que <code class="language-plaintext highlighter-rouge">Banque.change</code> fonctionne pour convertir des dollar en CHF avec un taux de 2 dollars pour 1 CHF.</li>
+    <li>créez un test qui vérifie que <code class="language-plaintext highlighter-rouge">Banque.conversion(monnaie.dollar(2), "CHF")</code> donne 1</li>
+    <li>utilisez la banque pour faire la conversion dans <code class="language-plaintext highlighter-rouge">Monnaie.conversion</code> (il faudra ajouter la banque comme paramètre)</li>
+  </ol>
+</blockquote>
+<details><summary>solution</summary><div>
+<p><em>“test_monnaie.py”</em> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ...
+</span>
+<span class="k">def</span> <span class="nf">test_banque_change_identique</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="mi">1</span> <span class="o">==</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">Banque</span><span class="p">().</span><span class="n">change</span><span class="p">(</span><span class="s">"USD"</span><span class="p">,</span> <span class="s">"USD"</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">test_identity_rate</span><span class="p">():</span>
-    <span class="n">bank</span> <span class="o">=</span> <span class="n">Bank</span><span class="p">()</span>
-    <span class="k">assert</span> <span class="mi">1</span> <span class="o">==</span> <span class="n">bank</span><span class="p">.</span><span class="n">rate</span><span class="p">(</span><span class="s">"USD"</span><span class="p">,</span> <span class="s">"USD"</span><span class="p">)</span>
-</code></pre></div></div>
+<span class="k">def</span> <span class="nf">test_banque_change_CHF_dollar</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="mi">2</span> <span class="o">==</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">Banque</span><span class="p">().</span><span class="n">change</span><span class="p">(</span><span class="s">"CHF"</span><span class="p">,</span> <span class="s">"USD"</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="mf">0.5</span> <span class="o">==</span> <span class="n">approx</span><span class="p">(</span><span class="n">monnaie</span><span class="p">.</span><span class="n">Banque</span><span class="p">().</span><span class="n">change</span><span class="p">(</span><span class="s">"USD"</span><span class="p">,</span> <span class="s">"CHF"</span><span class="p">))</span>
 
-<h4 id="moneypy-7">money.py</h4>
+<span class="c1"># ...
+</span>
+<span class="k">def</span> <span class="nf">test_banque_conversion_monnaie_differente</span><span class="p">():</span>
+    <span class="n">banque</span> <span class="o">=</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">Banque</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="n">banque</span><span class="p">.</span><span class="n">conversion</span><span class="p">(</span><span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="s">"CHF"</span><span class="p">)</span>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Bank</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">_rate</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+<span class="c1"># ...
+</span></code></pre></div></div>
 
-    <span class="k">def</span> <span class="nf">reduce</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expression</span><span class="p">,</span> <span class="n">currency</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">expression</span><span class="p">.</span><span class="nb">reduce</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">currency</span><span class="p">)</span>
+<p><em>“monnaie.py”</em> :</p>
 
-    <span class="k">def</span> <span class="nf">add_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">from_currency</span><span class="p">,</span> <span class="n">to_currency</span><span class="p">,</span> <span class="n">rate</span><span class="p">):</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">_rate</span><span class="p">[(</span><span class="n">from_currency</span><span class="p">,</span> <span class="n">to_currency</span><span class="p">)]</span> <span class="o">=</span> <span class="n">rate</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">_rate</span><span class="p">[(</span><span class="n">to_currency</span><span class="p">,</span> <span class="n">from_currency</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">rate</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ...
+</span>
+<span class="k">class</span> <span class="nc">Banque</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">conversion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expression</span><span class="p">,</span> <span class="n">devise</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">expression</span><span class="p">.</span><span class="n">conversion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">devise</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">rate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">from_currency</span><span class="p">,</span> <span class="n">to_currency</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">from_currency</span> <span class="o">==</span> <span class="n">to_currency</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">change</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">devise_depart</span><span class="p">,</span> <span class="n">devise_arrivee</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">devise_depart</span> <span class="o">==</span> <span class="n">devise_arrivee</span><span class="p">:</span>
             <span class="k">return</span> <span class="mi">1</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">_rate</span><span class="p">[(</span><span class="n">from_currency</span><span class="p">,</span> <span class="n">to_currency</span><span class="p">)]</span>
+        <span class="k">elif</span> <span class="n">devise_depart</span> <span class="o">==</span> <span class="s">"USD"</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">.</span><span class="mi">5</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">2</span>
 
-<span class="k">class</span> <span class="nc">Money</span><span class="p">:</span>
-    <span class="c1"># ... 
-</span>    <span class="k">def</span> <span class="nf">reduce</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bank</span><span class="p">,</span> <span class="n">currency</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">Money</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">amount</span> <span class="o">*</span> <span class="n">bank</span><span class="p">.</span><span class="n">rate</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">currency</span><span class="p">,</span> <span class="n">currency</span><span class="p">),</span> <span class="n">currency</span><span class="p">)</span>
-    
-<span class="k">class</span> <span class="nc">Sum</span><span class="p">:</span>
-    <span class="c1"># ... 
-</span>    <span class="k">def</span> <span class="nf">reduce</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bank</span><span class="p">,</span> <span class="n">currency</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">Money</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">left</span><span class="p">.</span><span class="n">amount</span> <span class="o">+</span> <span class="bp">self</span><span class="p">.</span><span class="n">right</span><span class="p">.</span><span class="n">amount</span><span class="p">,</span> <span class="n">currency</span><span class="p">)</span>    
-</code></pre></div></div>
+<span class="c1"># ... 
+</span>
+<span class="k">class</span> <span class="nc">Somme</span><span class="p">:</span>
+    <span class="c1"># ...
+</span>
+    <span class="k">def</span> <span class="nf">conversion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">banque</span><span class="p">,</span> <span class="n">devise</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Monnaie</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">gauche</span><span class="p">.</span><span class="n">montant</span> <span class="o">+</span> <span class="bp">self</span><span class="p">.</span><span class="n">droite</span><span class="p">.</span><span class="n">montant</span><span class="p">,</span> <span class="n">devise</span><span class="p">)</span>
+
+    <span class="c1"># ...
+</span>
+<span class="c1"># ...
+</span>
+<span class="k">class</span> <span class="nc">Monnaie</span><span class="p">:</span>
+    <span class="c1"># ...
+</span>
+    <span class="k">def</span> <span class="nf">conversion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">banque</span><span class="p">,</span> <span class="n">devise</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Monnaie</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">montant</span> <span class="o">*</span> <span class="n">banque</span><span class="p">.</span><span class="n">change</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">devise</span><span class="p">,</span> <span class="n">devise</span><span class="p">),</span> <span class="n">devise</span><span class="p">)</span>
+
+    <span class="c1"># ...
+</span>
+<span class="c1"># ...
+</span></code></pre></div></div>
+
+<p>Remarquez qu’on a du également modifier <code class="language-plaintext highlighter-rouge">Somme.conversion</code> pour que les tests continuent de passer.</p>
+
+</div></details>
+
+<h3 id="todo-list-change-1-2">todo list</h3>
+
+<ul class="task-list">
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>\$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>\$5 + \$2 doit être égal à \$7</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>\$5 + \$2 = quelque chose qui correspond à $7</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked><code class="language-plaintext highlighter-rouge">Banque.conversion(Monnaie)</code>
+</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled><code class="language-plaintext highlighter-rouge">Somme.conversion(devise)</code> doit vraiment faire des conversions</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked><code class="language-plaintext highlighter-rouge">Monnaie.conversion(devise)</code> doit vraiment faire des conversions</li>
+</ul>
 
 <h3 id="taux-de-change-22">Taux de change 2/2</h3>
 
 <p>Pour l’instant notre conversion pour les sommes ne considère que les mêmes devises. On va travailler maintenant sur des devises différentes.</p>
 
-<p>On va écrire un test pour convertir une somme de 2 devises différentes. Puis implémentez le tout.</p>
+<h3 id="todo-list-change-2-1">todo list</h3>
 
-<h4 id="tbd-5">tbd</h4>
-
-<ul>
-  <li>$5 + 2.5CHF = $10 si le taux de change est 1:.5</li>
-  <li><del>$5 + $5 = quelque chose qui correspond à $10</del></li>
-  <li>$5 + $5 devrait rendre une Money</li>
-  <li><del>Bank.reduce(Money)</del></li>
-  <li><del>Sum.reduce avec conversion</del></li>
-  <li><del>Money.reduce avec conversion</del></li>
+<ul class="task-list">
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>\$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>\$5 + \$2 doit être égal à \$7</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>\$5 + \$2 = quelque chose qui correspond à $7</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked><code class="language-plaintext highlighter-rouge">Banque.conversion(Monnaie)</code>
+</li>
+  <li class="task-list-item"><strong>[-] <code class="language-plaintext highlighter-rouge">Somme.conversion(devise)</code> doit vraiment faire des conversions</strong></li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked><code class="language-plaintext highlighter-rouge">Monnaie.conversion(devise)</code> doit vraiment faire des conversions</li>
 </ul>
 
-<h4 id="tests-py-5">tests. py</h4>
+<h3 id="faire-change-2-1">faire</h3>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">test_sum_reduce_different_currency</span><span class="p">():</span>
-    <span class="n">bank</span> <span class="o">=</span> <span class="n">Bank</span><span class="p">()</span>
-    <span class="n">bank</span><span class="p">.</span><span class="n">add_rate</span><span class="p">(</span><span class="s">"CHF"</span><span class="p">,</span> <span class="s">"USD"</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<p>Commençons simplement :</p>
 
-    <span class="k">assert</span> <span class="n">money</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="n">bank</span><span class="p">.</span><span class="nb">reduce</span><span class="p">(</span><span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">money</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="s">"CHF"</span><span class="p">)</span>
-</code></pre></div></div>
+<blockquote class="a-faire">
+  <p>Faire un test qui convertit la somme de \$2 et 1CHF en franc suisse et implémentez le tout.</p>
+</blockquote>
+<details><summary>solution</summary><div>
+<p><em>“test_monnaie.py”</em> :</p>
 
-<h4 id="moneypy-8">money.py</h4>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ...
+</span>
+<span class="k">def</span> <span class="nf">test_somme_conversion_deux_monnaies</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">Banque</span><span class="p">().</span><span class="n">conversion</span><span class="p">(</span><span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="s">"CHF"</span><span class="p">)</span>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Sum</span><span class="p">:</span>
-    <span class="c1"># ... 
-</span>    <span class="k">def</span> <span class="nf">reduce</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bank</span><span class="p">,</span> <span class="n">currency</span><span class="p">):</span>
-        <span class="n">left_money</span> <span class="o">=</span> <span class="n">bank</span><span class="p">.</span><span class="nb">reduce</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">left</span><span class="p">,</span> <span class="n">currency</span><span class="p">)</span>
-        <span class="n">right_money</span> <span class="o">=</span> <span class="n">bank</span><span class="p">.</span><span class="nb">reduce</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">right</span><span class="p">,</span> <span class="n">currency</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">Money</span><span class="p">(</span><span class="n">left_money</span><span class="p">.</span><span class="n">amount</span> <span class="o">+</span> <span class="n">right_money</span><span class="p">.</span><span class="n">amount</span><span class="p">,</span> <span class="n">currency</span><span class="p">)</span>
-</code></pre></div></div>
+<span class="c1"># ...
+</span></code></pre></div></div>
 
-<h3 id="expressions">Expressions</h3>
+<p><em>“monnaie.py”</em> :</p>
 
-<p>Pour finir, il nous reste à généraliser le tout. C’est à dire que l’on aimerait bien pouvoir multiplier une <code class="language-plaintext highlighter-rouge">Sum</code> par un entier par exemple ou additionner des <code class="language-plaintext highlighter-rouge">Sum entre elles</code>.</p>
-
-<p>A priori, une partie de la somme de sommes est déjà implémentée. 
-Par exemple le test suivant doit passer :</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">test_sum_of_sum_1</span><span class="p">():</span>
-    <span class="n">bank</span> <span class="o">=</span> <span class="n">Bank</span><span class="p">()</span>
-    <span class="n">bank</span><span class="p">.</span><span class="n">add_rate</span><span class="p">(</span><span class="s">"CHF"</span><span class="p">,</span> <span class="s">"USD"</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-    <span class="n">expression</span> <span class="o">=</span> <span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">money</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
-    <span class="k">assert</span> <span class="n">money</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="n">bank</span><span class="p">.</span><span class="nb">reduce</span><span class="p">(</span><span class="n">expression</span><span class="p">,</span> <span class="s">"CHF"</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>Mais pas celui là :</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">test_sum_of_sum_2</span><span class="p">():</span>
-    <span class="n">bank</span> <span class="o">=</span> <span class="n">Bank</span><span class="p">()</span>
-    <span class="n">bank</span><span class="p">.</span><span class="n">add_rate</span><span class="p">(</span><span class="s">"CHF"</span><span class="p">,</span> <span class="s">"USD"</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-    <span class="n">expression</span> <span class="o">=</span> <span class="p">(</span><span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">money</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-    <span class="k">assert</span> <span class="n">money</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="n">bank</span><span class="p">.</span><span class="nb">reduce</span><span class="p">(</span><span class="n">expression</span><span class="p">,</span> <span class="s">"CHF"</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>Pourquoi ?</p>
-
-<p>(réfléchissez un peu)</p>
-
-<p>Implémentons la solution.</p>
-
-<h4 id="moneypy-9">money.py</h4>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Sum</span><span class="p">:</span>
-    <span class="c1"># ... 
-</span>    <span class="k">def</span> <span class="nf">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">Sum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
-</code></pre></div></div>
-
-<h4 id="testspy-2">tests.py</h4>
-
-<p>Il ne reste plus qu’à tester la multiplication</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">test_sum_of_sum</span><span class="p">():</span>
-    <span class="n">bank</span> <span class="o">=</span> <span class="n">Bank</span><span class="p">()</span>
-    <span class="n">bank</span><span class="p">.</span><span class="n">add_rate</span><span class="p">(</span><span class="s">"CHF"</span><span class="p">,</span> <span class="s">"USD"</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-    <span class="n">expression</span> <span class="o">=</span> <span class="p">(</span><span class="n">money</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">money</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="o">*</span> <span class="mi">4</span>
-    <span class="k">assert</span> <span class="n">money</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="n">bank</span><span class="p">.</span><span class="nb">reduce</span><span class="p">(</span><span class="n">expression</span><span class="p">,</span> <span class="s">"CHF"</span><span class="p">)</span>
-</code></pre></div></div>
-
-<h4 id="moneypy-10">money.py</h4>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Sum</span><span class="p">:</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ...
+</span>
+<span class="k">class</span> <span class="nc">Somme</span><span class="p">:</span>
     <span class="c1"># ...
-</span>    
+</span>
+    <span class="k">def</span> <span class="nf">conversion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">banque</span><span class="p">,</span> <span class="n">devise</span><span class="p">):</span>
+        <span class="n">gauche</span> <span class="o">=</span> <span class="n">banque</span><span class="p">.</span><span class="n">conversion</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">gauche</span><span class="p">,</span> <span class="n">devise</span><span class="p">)</span>
+        <span class="n">droite</span> <span class="o">=</span> <span class="n">banque</span><span class="p">.</span><span class="n">conversion</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">droite</span><span class="p">,</span> <span class="n">devise</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Monnaie</span><span class="p">(</span><span class="n">gauche</span><span class="p">.</span><span class="n">montant</span> <span class="o">+</span> <span class="n">droite</span><span class="p">.</span><span class="n">montant</span><span class="p">,</span> <span class="n">devise</span><span class="p">)</span>
+
+    <span class="c1"># ...
+</span>
+<span class="c1"># ...
+</span>
+<span class="k">class</span> <span class="nc">Monnaie</span><span class="p">:</span>
+    <span class="c1"># ...
+</span>
+    <span class="k">def</span> <span class="nf">conversion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">banque</span><span class="p">,</span> <span class="n">devise</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Monnaie</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">montant</span> <span class="o">*</span> <span class="n">banque</span><span class="p">.</span><span class="n">change</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">devise</span><span class="p">,</span> <span class="n">devise</span><span class="p">),</span> <span class="n">devise</span><span class="p">)</span>
+
+    <span class="c1"># ...
+</span>
+<span class="c1"># ...
+</span></code></pre></div></div>
+
+<p>Remarquez qu’on a du également modifier <code class="language-plaintext highlighter-rouge">Somme.conversion</code> pour que les tests continuent de passer.</p>
+
+</div></details>
+
+<h3 id="todo-list-change-2-2">todo list</h3>
+
+<ul class="task-list">
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>\$5 + 2.5CHF = \$10 si le taux de change est 1:.5</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>\$5 + \$2 doit être égal à \$7</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>\$5 + \$2 = quelque chose qui correspond à $7</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked><code class="language-plaintext highlighter-rouge">Banque.conversion(Monnaie)</code>
+</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked><code class="language-plaintext highlighter-rouge">Somme.conversion(devise)</code> doit vraiment faire des conversions**</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked><code class="language-plaintext highlighter-rouge">Monnaie.conversion(devise)</code> doit vraiment faire des conversions</li>
+</ul>
+
+<h2 id="expressions">Expressions</h2>
+
+<p>Pour finir, il nous reste à généraliser le tout. C’est à dire que l’on aimerait bien pouvoir multiplier une <code class="language-plaintext highlighter-rouge">Somme</code> par un entier par exemple ou additionner des <code class="language-plaintext highlighter-rouge">Somme</code> entre elles.</p>
+
+<h3 id="faire-exp-1">faire</h3>
+
+<p>A priori, une partie de la somme de sommes est déjà implémentée. Par exemple le test suivant doit passer :</p>
+
+<p><em>“test_monnaie.py”</em> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ...
+</span>
+<span class="k">def</span> <span class="nf">test_somme_de_somme</span><span class="p">():</span>
+    <span class="n">banque</span> <span class="o">=</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">Banque</span><span class="p">()</span>
+    <span class="n">expression</span> <span class="o">=</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">monnaie</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+    <span class="k">assert</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="n">banque</span><span class="p">.</span><span class="n">conversion</span><span class="p">(</span><span class="n">expression</span><span class="p">,</span> <span class="s">"CHF"</span><span class="p">)</span>
+
+<span class="c1"># ...
+</span></code></pre></div></div>
+
+<blockquote class="a-faire">
+  <p>pourquoi ?</p>
+</blockquote>
+<details><summary>solution</summary><div>
+<p>La méthode conversion est récursive dans <code class="language-plaintext highlighter-rouge">Somme</code>. Les terminaison se faisant lorsque une partie de la somme est une <code class="language-plaintext highlighter-rouge">Monnaie</code>.</p>
+
+</div></details>
+
+<p>En revanche, ce test ne passe pas encore :</p>
+
+<p><em>“test_monnaie.py”</em> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ...
+</span>
+<span class="k">def</span> <span class="nf">test_somme_de_somme_2</span><span class="p">():</span>
+    <span class="n">banque</span> <span class="o">=</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">Banque</span><span class="p">()</span>
+    <span class="n">expression</span> <span class="o">=</span> <span class="p">(</span><span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="n">banque</span><span class="p">.</span><span class="n">conversion</span><span class="p">(</span><span class="n">expression</span><span class="p">,</span> <span class="s">"CHF"</span><span class="p">)</span>
+
+<span class="c1"># ...
+</span></code></pre></div></div>
+
+<blockquote class="a-faire">
+  <p>pourquoi ?</p>
+</blockquote>
+<details><summary>solution</summary><div>
+<p>Le résultat des tests donne :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+    def test_somme_de_somme_2():
+        banque = monnaie.Banque()
+&gt;       expression = (monnaie.dollar(1) + monnaie.franc(2)) + monnaie.dollar(1)
+E       TypeError: unsupported operand type(s) for +: 'Somme' and 'Monnaie'
+</code></pre></div></div>
+
+<p>Nous n’avons pas implémenté de méthode <code class="language-plaintext highlighter-rouge">__add__</code> pour les <code class="language-plaintext highlighter-rouge">Somme</code>.</p>
+</div></details>
+
+<blockquote class="a-faire">
+  <p>Faite passer les tests.</p>
+</blockquote>
+<details><summary>solution</summary><div>
+<p><em>“monnaie.py”</em> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ...
+</span>
+<span class="k">class</span> <span class="nc">Somme</span><span class="p">:</span>
+    <span class="c1"># ...
+</span>
+    <span class="k">def</span> <span class="nf">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Somme</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+
+    <span class="c1"># ...
+</span>
+<span class="c1"># ...
+</span></code></pre></div></div>
+
+</div></details>
+
+<h3 id="faire-exp-2">faire</h3>
+
+<p>Il ne reste plus qu’à tester la multiplication pour finir.</p>
+
+<p><em>“test_monnaie.py”</em> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">test_mult_de_somme</span><span class="p">():</span>
+    <span class="n">banque</span> <span class="o">=</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">Banque</span><span class="p">()</span>
+
+    <span class="n">expression</span> <span class="o">=</span> <span class="p">(</span><span class="n">monnaie</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="o">*</span> <span class="mi">4</span>
+    <span class="k">assert</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="n">banque</span><span class="p">.</span><span class="n">conversion</span><span class="p">(</span><span class="n">expression</span><span class="p">,</span> <span class="s">"CHF"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<blockquote class="a-faire">
+  <p>Faite passer le test ci-dessus</p>
+</blockquote>
+<details><summary>solution</summary><div>
+<p><em>“monnaie.py”</em> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ...
+</span>
+<span class="k">class</span> <span class="nc">Somme</span><span class="p">:</span>
+    <span class="c1"># ...
+</span>
     <span class="k">def</span> <span class="nf">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multiplier</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">Sum</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">left</span> <span class="o">*</span> <span class="n">multiplier</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">right</span> <span class="o">*</span> <span class="n">multiplier</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Somme</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">gauche</span> <span class="o">*</span> <span class="n">multiplier</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">droite</span> <span class="o">*</span> <span class="n">multiplier</span><span class="p">)</span>
+    
+    <span class="c1"># ...
+</span>
+<span class="c1"># ...
+</span></code></pre></div></div>
+
+</div></details>
+
+<blockquote class="a-faire">
+  <p>Pourquoi nous sera-t-il impossible d’écrire : <code class="language-plaintext highlighter-rouge">4 * (monnaie.franc(2) + monnaie.dollar(1))</code> ?</p>
+</blockquote>
+<details><summary>solution</summary><div>
+<p>Parce qu’il faudrait modifier la méthode <code class="language-plaintext highlighter-rouge">__mul__</code> des entiers de python, ce qui est impossible.</p>
+
+</div></details>
+
+<h2 id="bilan">bilan</h2>
+
+<p>Vous avez suivi tout un projet de développement par les tests. J’espère vous avoir convaincu que cette méthode permet de développer rapidement et proprement du code (<em>“clean code that works</em>”).</p>
+
+<h3 id="code">code</h3>
+
+<h4 id="test_monnaiepy"><em>“test_monnaie.py”</em></h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pytest</span> <span class="kn">import</span> <span class="n">approx</span>
+<span class="kn">import</span> <span class="nn">monnaie</span>
+
+
+<span class="k">def</span> <span class="nf">test_multiplication</span><span class="p">():</span>
+    <span class="n">cinq</span> <span class="o">=</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+    <span class="k">assert</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="n">cinq</span> <span class="o">*</span> <span class="mi">2</span>
+    <span class="k">assert</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span> <span class="o">==</span> <span class="n">cinq</span> <span class="o">*</span> <span class="mi">3</span>
+
+
+<span class="k">def</span> <span class="nf">test_egalite</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">test_non_egalite_dollar</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">!=</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">test_franc_dollar</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">!=</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">test_devise</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="s">"USD"</span> <span class="o">==</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="n">devise</span>
+    <span class="k">assert</span> <span class="s">"CHF"</span> <span class="o">==</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="n">devise</span>
+
+
+<span class="k">def</span> <span class="nf">test_plus_est_une_Somme</span><span class="p">():</span>
+    <span class="n">somme</span> <span class="o">=</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">+</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="k">assert</span> <span class="n">somme</span><span class="p">.</span><span class="n">gauche</span> <span class="o">==</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">somme</span><span class="p">.</span><span class="n">droite</span> <span class="o">==</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">test_conversion_addition</span><span class="p">():</span>
+    <span class="n">somme</span> <span class="o">=</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">+</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">banque</span> <span class="o">=</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">Banque</span><span class="p">()</span>
+    <span class="n">conversion</span> <span class="o">=</span> <span class="n">banque</span><span class="p">.</span><span class="n">conversion</span><span class="p">(</span><span class="n">somme</span><span class="p">,</span> <span class="s">"USD"</span><span class="p">)</span>
+
+    <span class="k">assert</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span> <span class="o">==</span> <span class="n">conversion</span>
+
+
+<span class="k">def</span> <span class="nf">test_banque_conversion_monnaie_identique</span><span class="p">():</span>
+    <span class="n">banque</span> <span class="o">=</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">Banque</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="n">banque</span><span class="p">.</span><span class="n">conversion</span><span class="p">(</span><span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="s">"USD"</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">test_banque_conversion_monnaie_differente</span><span class="p">():</span>
+    <span class="n">banque</span> <span class="o">=</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">Banque</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="n">banque</span><span class="p">.</span><span class="n">conversion</span><span class="p">(</span><span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="s">"CHF"</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">test_banque_change_identique</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="mi">1</span> <span class="o">==</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">Banque</span><span class="p">().</span><span class="n">change</span><span class="p">(</span><span class="s">"USD"</span><span class="p">,</span> <span class="s">"USD"</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">test_banque_change_CHF_dollar</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="mi">2</span> <span class="o">==</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">Banque</span><span class="p">().</span><span class="n">change</span><span class="p">(</span><span class="s">"CHF"</span><span class="p">,</span> <span class="s">"USD"</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="mf">0.5</span> <span class="o">==</span> <span class="n">approx</span><span class="p">(</span><span class="n">monnaie</span><span class="p">.</span><span class="n">Banque</span><span class="p">().</span><span class="n">change</span><span class="p">(</span><span class="s">"USD"</span><span class="p">,</span> <span class="s">"CHF"</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">test_somme_conversion_deux_monnaies</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">Banque</span><span class="p">().</span><span class="n">conversion</span><span class="p">(</span>
+        <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="s">"CHF"</span>
+    <span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">test_somme_de_somme</span><span class="p">():</span>
+    <span class="n">banque</span> <span class="o">=</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">Banque</span><span class="p">()</span>
+    <span class="n">expression</span> <span class="o">=</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">monnaie</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+    <span class="k">assert</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="n">banque</span><span class="p">.</span><span class="n">conversion</span><span class="p">(</span><span class="n">expression</span><span class="p">,</span> <span class="s">"CHF"</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">test_somme_de_somme_2</span><span class="p">():</span>
+    <span class="n">banque</span> <span class="o">=</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">Banque</span><span class="p">()</span>
+    <span class="n">expression</span> <span class="o">=</span> <span class="p">(</span><span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="n">banque</span><span class="p">.</span><span class="n">conversion</span><span class="p">(</span><span class="n">expression</span><span class="p">,</span> <span class="s">"CHF"</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">test_mult_de_somme</span><span class="p">():</span>
+    <span class="n">banque</span> <span class="o">=</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">Banque</span><span class="p">()</span>
+
+    <span class="n">expression</span> <span class="o">=</span> <span class="p">(</span><span class="n">monnaie</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">dollar</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="o">*</span> <span class="mi">4</span>
+    <span class="k">assert</span> <span class="n">monnaie</span><span class="p">.</span><span class="n">franc</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="n">banque</span><span class="p">.</span><span class="n">conversion</span><span class="p">(</span><span class="n">expression</span><span class="p">,</span> <span class="s">"CHF"</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<h4 id="monnaiepy"><em>“monnaie.py”</em></h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">dollar</span><span class="p">(</span><span class="n">montant</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">Monnaie</span><span class="p">(</span><span class="n">montant</span><span class="p">,</span> <span class="s">"USD"</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">franc</span><span class="p">(</span><span class="n">montant</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">Monnaie</span><span class="p">(</span><span class="n">montant</span><span class="p">,</span> <span class="s">"CHF"</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">Monnaie</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">montant</span><span class="p">,</span> <span class="n">devise</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">montant</span> <span class="o">=</span> <span class="n">montant</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">devise</span> <span class="o">=</span> <span class="n">devise</span>
+
+    <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">devise</span> <span class="o">==</span> <span class="n">other</span><span class="p">.</span><span class="n">devise</span> <span class="ow">and</span> <span class="bp">self</span><span class="p">.</span><span class="n">montant</span> <span class="o">==</span> <span class="n">other</span><span class="p">.</span><span class="n">montant</span>
+
+    <span class="k">def</span> <span class="nf">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multiplicateur</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Monnaie</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">montant</span> <span class="o">*</span> <span class="n">multiplicateur</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">devise</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Somme</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">conversion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">banque</span><span class="p">,</span> <span class="n">devise</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Monnaie</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">montant</span> <span class="o">*</span> <span class="n">banque</span><span class="p">.</span><span class="n">change</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">devise</span><span class="p">,</span> <span class="n">devise</span><span class="p">),</span> <span class="n">devise</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">Banque</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">conversion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expression</span><span class="p">,</span> <span class="n">devise</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">expression</span><span class="p">.</span><span class="n">conversion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">devise</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">change</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">devise_depart</span><span class="p">,</span> <span class="n">devise_arrivee</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">devise_depart</span> <span class="o">==</span> <span class="n">devise_arrivee</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">1</span>
+        <span class="k">elif</span> <span class="n">devise_depart</span> <span class="o">==</span> <span class="s">"USD"</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mf">0.5</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">2</span>
+
+
+<span class="k">class</span> <span class="nc">Somme</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gauche</span><span class="p">,</span> <span class="n">droite</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">gauche</span> <span class="o">=</span> <span class="n">gauche</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">droite</span> <span class="o">=</span> <span class="n">droite</span>
+
+    <span class="k">def</span> <span class="nf">conversion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">banque</span><span class="p">,</span> <span class="n">devise</span><span class="p">):</span>
+        <span class="n">gauche</span> <span class="o">=</span> <span class="n">banque</span><span class="p">.</span><span class="n">conversion</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">gauche</span><span class="p">,</span> <span class="n">devise</span><span class="p">)</span>
+        <span class="n">droite</span> <span class="o">=</span> <span class="n">banque</span><span class="p">.</span><span class="n">conversion</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">droite</span><span class="p">,</span> <span class="n">devise</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Monnaie</span><span class="p">(</span><span class="n">gauche</span><span class="p">.</span><span class="n">montant</span> <span class="o">+</span> <span class="n">droite</span><span class="p">.</span><span class="n">montant</span><span class="p">,</span> <span class="n">devise</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Somme</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multiplier</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Somme</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">gauche</span> <span class="o">*</span> <span class="n">multiplier</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">droite</span> <span class="o">*</span> <span class="n">multiplier</span><span class="p">)</span>
+
 </code></pre></div></div>
 
   </div>
