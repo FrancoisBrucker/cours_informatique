@@ -86,7 +86,7 @@ Ces 2 règles impliquent un mode de fonctionnement de note production code :
 > 2. **vert** :
 >    * écrire le code *minimal* qui permet de faire passer le test
 >    * lancer les tests et les voir tous réussir
-> 3. **refactor** :
+> 3. **code/refactor** :
 >    * élimine les duplications tout en conservant la validité des tests.
 >
 > La partie refactor, qui est la partie réelle où l'on code ne se fait **que sur du vert** : on est assuré de ne pas casser le code puisque les tests passent.
@@ -120,3 +120,9 @@ Le déroulé du projet est séparé en trois parties :
 1. [projet : TDD 1/3]({% link cours/algorithme-code-theorie/code/programmation-objet/projet-tdd-1.md %}) (introduciton et principes de la méthode en action)
 2. [projet : TDD 2/3]({% link cours/algorithme-code-theorie/code/programmation-objet/projet-tdd-2.md %}) (on s'entraîne)
 3. [projet : TDD 3/3]({% link cours/algorithme-code-theorie/code/programmation-objet/projet-tdd-3.md %}) (on progresse en utilisant des design pattern)
+
+## bilan
+
+Cette méthode vous aidera à mieux coder, elle élimine la peur de faire des essais et de modifier le code. En revanche, elle n'est vraiment efficace qu'une fois bien assimilée. Avant, vous allez avoir l'impression de perdre votre temps.
+
+Faire l'effort de maitriser la technique, les effets vous seront bénéfique tout au long de votre vie de code.

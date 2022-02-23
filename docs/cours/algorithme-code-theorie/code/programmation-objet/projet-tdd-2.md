@@ -28,7 +28,7 @@ On rappelle le principe du TDD :
 > 2. **vert** :
 >    * écrire le code *minimal* qui permet de faire passer le test
 >    * lancer les tests et les voir tous réussir
-> 3. **refactor** :
+> 3. **code/refactor** :
 >    * élimine les duplications tout en conservant la validité des tests.
 >
 > La partie refactor, qui est la partie réelle où l'on code ne se fait **que sur du vert** : on est assuré de ne pas casser le code puisque les tests passent.
