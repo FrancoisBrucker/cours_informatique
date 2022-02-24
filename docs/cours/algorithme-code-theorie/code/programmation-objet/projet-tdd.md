@@ -121,7 +121,7 @@ Le déroulé du projet est séparé en trois parties :
 2. [projet : TDD 2/3]({% link cours/algorithme-code-theorie/code/programmation-objet/projet-tdd-2.md %}) (on s'entraîne)
 3. [projet : TDD 3/3]({% link cours/algorithme-code-theorie/code/programmation-objet/projet-tdd-3.md %}) (on progresse en utilisant des design pattern)
 
-## bilan
+## Bilan
 
 Cette méthode vous aidera à mieux coder, elle élimine la peur de faire des essais et de modifier le code. En revanche, elle n'est vraiment efficace qu'une fois bien assimilée. Avant, vous allez avoir l'impression de perdre votre temps.
 
