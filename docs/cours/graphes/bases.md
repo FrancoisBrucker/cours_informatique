@@ -36,7 +36,7 @@ C'est cette dernière définition que nous adopterons.
 
 Le multi-graphe $G = (V, E)$ avec :
 
-* $V = {1, 2, 3, 4, 5}$,
+* $V = \\{1, 2, 3, 4, 5\\}$,
 * $E = ((1, 2), (2, 3), (2, 2), (1, 2), (4, 5), (5, 4))$.
 
 Peut se représenter graphiquement (sur le plan) :
@@ -80,7 +80,7 @@ On appelle **graphe simple** un graphe sans boucle et non orienté. Classiquemen
 * *graphe avec boucles* si le graphe peut posséder des boucles,
 * ...
 
-Par abus de langage on écrira $xy$ pour designer une arête (*resp.* arc) plutôt que $\{x, y\}$ (*resp.* $(x, y)$).
+Par abus de langage on écrira $xy$ pour designer une arête (*resp.* arc) plutôt que $\\{x, y\\}$ (*resp.* $(x, y)$).
 
  >**Nota Bene :** ne soyez pas étonné que selon l'application ou le problème étudié on appelle graphe, le cas particulier de mutli-graphe qui nous intéresse. Donc parfois, selon le contexte, un graphe sera orienté et dans d'autres cas il ne le sera pas s'il n'y a pas de confusion possible. En cas de doute, revenez au vocabulaire précis.
 
