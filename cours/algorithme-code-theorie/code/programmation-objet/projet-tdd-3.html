@@ -19,7 +19,7 @@
 <meta name="twitter:card" content="summary">
 <meta property="twitter:title" content="TDD et test pattern : partie 3/3">
 <script type="application/ld+json">
-{"description":"Support de cours/td d’informatique de François Brucker.","@type":"WebPage","author":{"@type":"Person","name":"François Brucker"},"url":"/cours_informatique/cours/algorithme-code-theorie/code/programmation-objet/projet-tdd-3.html","headline":"TDD et test pattern : partie 3/3","@context":"https://schema.org"}</script>
+{"headline":"TDD et test pattern : partie 3/3","description":"Support de cours/td d’informatique de François Brucker.","@type":"WebPage","url":"/cours_informatique/cours/algorithme-code-theorie/code/programmation-objet/projet-tdd-3.html","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
@@ -833,9 +833,19 @@
 
 <p>Pour finir, il nous reste à généraliser le tout. C’est à dire que l’on aimerait bien pouvoir multiplier une <code class="language-plaintext highlighter-rouge">Somme</code> par un entier par exemple ou additionner des <code class="language-plaintext highlighter-rouge">Somme</code> entre elles.</p>
 
+<p>Le design pattern utilisé pour cela est :</p>
+
+<blockquote class="note">
+  <p><strong>design pattern :</strong> <a href="https://refactoring.guru/fr/design-patterns/composite">composite</a></p>
+
+  <p>Son but est de pouvoir traiter un groupe d’individu comme un seul. Il utilise une structuration récursive pour cela.</p>
+</blockquote>
+
 <h3 id="faire-exp-1">faire</h3>
 
-<p>A priori, une partie de la somme de sommes est déjà implémentée. Par exemple le test suivant doit passer :</p>
+<p>A priori, une partie de la somme de sommes est déjà implémentée. Regardez comment <code class="language-plaintext highlighter-rouge">Somme</code> est construite, en particulier la méthode <code class="language-plaintext highlighter-rouge">__add__</code>.</p>
+
+<p>Par exemple, le test suivant doit passer :</p>
 
 <p><em>“test_monnaie.py”</em> :</p>
 
