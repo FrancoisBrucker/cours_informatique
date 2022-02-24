@@ -6,19 +6,19 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>Algorithme, code et théorie : théorie | cours d’informatique</title>
+<title>fonction de hash | cours d’informatique</title>
 <meta name="generator" content="Jekyll v4.2.0">
-<meta property="og:title" content="Algorithme, code et théorie : théorie">
+<meta property="og:title" content="fonction de hash">
 <meta property="og:locale" content="en_US">
 <meta name="description" content="Support de cours/td d’informatique de François Brucker.">
 <meta property="og:description" content="Support de cours/td d’informatique de François Brucker.">
-<link rel="canonical" href="/cours_informatique/cours/algorithme-code-theorie/theorie/">
-<meta property="og:url" content="/cours_informatique/cours/algorithme-code-theorie/theorie/">
+<link rel="canonical" href="/cours_informatique/cours/algorithme-code-theorie/theorie/fonctions-hash.html">
+<meta property="og:url" content="/cours_informatique/cours/algorithme-code-theorie/theorie/fonctions-hash.html">
 <meta property="og:site_name" content="cours d’informatique">
 <meta name="twitter:card" content="summary">
-<meta property="twitter:title" content="Algorithme, code et théorie : théorie">
+<meta property="twitter:title" content="fonction de hash">
 <script type="application/ld+json">
-{"headline":"Algorithme, code et théorie : théorie","description":"Support de cours/td d’informatique de François Brucker.","@type":"WebPage","url":"/cours_informatique/cours/algorithme-code-theorie/theorie/","@context":"https://schema.org"}</script>
+{"headline":"fonction de hash","description":"Support de cours/td d’informatique de François Brucker.","@type":"WebPage","url":"/cours_informatique/cours/algorithme-code-theorie/theorie/fonctions-hash.html","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
@@ -53,45 +53,99 @@
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Algorithme, code et théorie : théorie</h1>
+    <h1 class="post-title">fonction de hash</h1>
   </header>
 
   <div class="post-content">
-    <blockquote class="chemin">
-  <p><a href="/cours_informatique/cours/algorithme-code-theorie/">Algorithme, code et théorie</a> / <a href="/cours_informatique/cours/algorithme-code-theorie/theorie/">théorie</a></p>
+    <p>Les fonctions de hashage. De la définition mathéma</p>
+
+<blockquote class="chemin">
+  <p><a href="/cours_informatique/cours/algorithme-code-theorie/">Algorithme, code et théorie</a> / <a href="/cours_informatique/cours/algorithme-code-theorie/theorie/">théorie</a> / <a href="/cours_informatique/cours/algorithme-code-theorie/theorie/fonctions-hash.html">fonctions de hash</a></p>
+
+  <p>prérequis :</p>
+
+  <ul>
+    <li><a href="/cours_informatique/cours/algorithme-code-theorie/theorie/fonctions.html">fonctions</a></li>
+  </ul>
 </blockquote>
 
-<p>Que peut ou pas faire un algorithme.</p>
-
-<blockquote class="note">
-  <p><em>L’informatique n’est pas plus la science des ordinateurs que l’astronomie n’est celle des télescopes</em> <a href="https://fr.wikipedia.org/wiki/Edsger_Dijkstra">E. Dijkstra</a></p>
-</blockquote>
+<h2 id="définition">définition</h2>
 
 <ul>
-  <li><a href="/cours_informatique/cours/algorithme-code-theorie/theorie/fonctions.html">fonctions</a></li>
-  <li><a href="/cours_informatique/cours/algorithme-code-theorie/theorie/algorithmes-fonctions-pseudo-code.html">Algorithmes, fonctions et pseudo-code</a></li>
-  <li><a href="/cours_informatique/cours/algorithme-code-theorie/theorie/machine-turing.html">machine de Turing</a></li>
-  <li><a href="/cours_informatique/cours/algorithme-code-theorie/theorie/decidabilite.html">décidabilité</a></li>
-  <li><a href="/cours_informatique/cours/algorithme-code-theorie/theorie/calculabilite.html">calculabilité</a></li>
-  <li>
-    <p><a href="/cours_informatique/cours/algorithme-code-theorie/theorie/fonctions-hash.html">fonctions de hash</a></p>
-  </li>
-  <li>logique = formule logique = sat</li>
-  <li>problème de décision : sous ensemble vrai d’un ensemble. se dérive de langage décidable</li>
+  <li>de N dans [0, k] déterministe</li>
 </ul>
 
-<blockquote class="tbd">
-  <p>ref à remanier propre)</p>
-</blockquote>
+<p>OK en info puisqu’on a vu que tout est un entier, donc une suite de 0 et de 1</p>
 
-<h2 id="refs">refs</h2>
+<ul>
+  <li>hash de 01* à O1m : déterministe</li>
+</ul>
 
-<p>poly de Pascal.</p>
+<h2 id="exemple">exemple</h2>
 
-<p><a href="https://en.wikipedia.org/wiki/List_of_undecidable_problems">https://en.wikipedia.org/wiki/List_of_undecidable_problems</a>
-<a href="https://plato.stanford.edu/entries/church-turing/">https://plato.stanford.edu/entries/church-turing/</a>
-<a href="http://pageperso.lif.univ-mrs.fr/~kevin.perrot/documents/2016/calculabilite/Cours_16.pdf">http://pageperso.lif.univ-mrs.fr/~kevin.perrot/documents/2016/calculabilite/Cours_16.pdf</a>
-<a href="https://www.cs.odu.edu/~zeil/cs390/latest/Public/turing-complete/index.html">https://www.cs.odu.edu/~zeil/cs390/latest/Public/turing-complete/index.html</a></p>
+<h3 id="une-constante">une constante</h3>
+
+<p>bof.</p>
+
+<h3 id="du-modulo">du modulo</h3>
+
+<p>équiprobable</p>
+
+<p>Si pas premier attention, pas forcément gros changements si les nombres changes exemple avec puissance de 10 (ou 2 ou quelconque pour la base)</p>
+
+<p>Pas crypto du tout</p>
+
+<h2 id="propriété-voulues">propriété voulues</h2>
+
+<ul>
+  <li>équiprobable (proba collision faible)</li>
+  <li>calcul facile (implique calcul par bloc)</li>
+  <li>doit dépendre de tout le mot : petit changement dans le mot doit produire de gros changement dans l’emprunte (pensez aux numéros de carte bleues)</li>
+</ul>
+
+<h2 id="collisions">collisions</h2>
+
+<p>paradoxe des anniversaires</p>
+
+<h2 id="utilisation">utilisation</h2>
+
+<ul>
+  <li>résumé d’un texte</li>
+  <li>dans des structure de données avancées : dictionnaire.</li>
+</ul>
+
+<h2 id="exemples">exemples</h2>
+
+<h2 id="hash-cryptographique">hash cryptographique</h2>
+
+<h3 id="propriétés-en-plus">propriétés en plus</h3>
+
+<ul>
+  <li>doit changer (beaucoup) si on change un peu l’entrée (crypto)</li>
+  <li>difficile de trouver 2 mots de même hash (crypto)</li>
+  <li>trouver un mot qui a le même hash doit être compliqué (pour crypto)</li>
+</ul>
+
+<h3 id="comment">comment</h3>
+
+<p>sha-X</p>
+
+<h3 id="exemple-dutilisation">exemple d’utilisation</h3>
+
+<ul>
+  <li>les mots de passes</li>
+  <li>l’empreinte/vérification d’un texte/bibliothèque (hash sha)</li>
+  <li>
+</li>
+</ul>
+
+<ol class="tbd">
+  <li>definition
+    <blockquote>
+      <p>ici</p>
+    </blockquote>
+  </li>
+</ol>
 
   </div>
 
