@@ -17,8 +17,7 @@ Que peut ou pas faire un algorithme.
 * [machine de Turing]({% link cours/algorithme-code-theorie/theorie/machine-turing.md %})
 * [décidabilité]({% link cours/algorithme-code-theorie/theorie/decidabilite.md %})
 * [calculabilité]({% link cours/algorithme-code-theorie/theorie/calculabilite.md %})
-
-* algorithmes et fonctions
+* [fonctions de hash]({% link cours/algorithme-code-theorie/theorie/fonctions-hash.md %})
 
 * logique = formule logique = sat
 * problème de décision : sous ensemble vrai d'un ensemble. se dérive de langage décidable

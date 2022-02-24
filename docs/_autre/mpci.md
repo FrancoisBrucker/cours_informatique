@@ -121,6 +121,9 @@ Au programme :
 
 #### mercredi {#m-7}
 
+1. [fonctions de hash]({% link cours/algorithme-code-theorie/theorie/fonctions-hash.md %})
+2. dictionnaires
+
 #### vendredi {#v-7}
 
 1. pour aller plus loin : [projet : TDD]({% link cours/algorithme-code-theorie/code/programmation-objet/projet-tdd.md %})

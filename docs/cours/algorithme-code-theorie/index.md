@@ -60,6 +60,7 @@ Ce cours est composée de trois grandes parties qui s'enchevêtrent.
 3. [machines de Turing]({% link cours/algorithme-code-theorie/theorie/machine-turing.md %})
 4. [décidabilité]({% link cours/algorithme-code-theorie/theorie/decidabilite.md %})
 5. [calculabilité]({% link cours/algorithme-code-theorie/theorie/calculabilite.md %})
+6. [fonctions de hash]({% link cours/algorithme-code-theorie/theorie/fonctions-hash.md %})
 
 ### code
 
@@ -548,6 +549,16 @@ graph.links.push({
   target: "projet : TDD"
 })
 
+graph.nodes.push({
+id: "fonctions de hash",
+  link: "{% link cours/algorithme-code-theorie/theorie/fonctions-hash.md %}",
+  group: groups.theorie
+})
+
+graph.links.push({
+  source: 'fonctions',
+  target: "fonctions de hash"
+})
 </script>
 
 <script>
