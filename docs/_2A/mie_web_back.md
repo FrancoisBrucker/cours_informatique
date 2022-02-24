@@ -94,7 +94,6 @@ Projet [numérologie]({% link cours/web/projets/numerologie/index.md %}), [parti
 
 Projet [commentaires]({% link cours/web/projets/commentaires/index.md %})
 
-
 1. Lundi 8-10 : autonomie : on finalise le TD
 2. Lundi 10-12 : cours
 3. Mercredi 8-10 : TD

@@ -14,27 +14,28 @@ Comment bien préparer son ordinateur pour faire du développement. On ne montre
 
 Pouvoir développer des logiciels et exécuter ses propres programmes nécessite quelques connaissances et compétences.
 
-Rien d'insurmontable, mais si on ne le fait pas on a vite un système instable où rien de marche comme il faudrait. 
+Rien d'insurmontable, mais si on ne le fait pas on a vite un système instable où rien de marche comme il faudrait.
 
 Il faut résister à la tentation de faire n'importe quoi en espérant que ça passe car, au bout du compte, on perd plus de temps à réparer qu'on en gagne à installer sans préparation.
 
 > Il est recommandé de partir d'un système propre est vierge. En effet, si quelque chose ne fonctionne pas c'est souvent parce qu'on a précédemment installé quelque chose d'incompatible en suivant sans comprendre un tuto de l'internet.
 
-
 A la fin de ce tuto vous devez avoir :
+
 * un système d'installation sain
 * un gestionnaire de package
 * un éditeur de texte
 
-## Un nouveau compte 
+## Un nouveau compte
 
 Si vous ne vous pouvez pas réinstaller un nouveau système, pour que tout se passe au mieux assurez vous que votre compte :
 
 * soit un compte administrateur (pouvant exécuter sudo si vous êtes sous linux)
 * votre login ne doit contenir aucun espace, ni accent.
 
-> le login est différent de votre nom. 
+> le login est différent de votre nom.
 {: .attention}
+
 compte admin :  sans accent ni espace
 
 * administrateur sous windows/mac
@@ -54,7 +55,6 @@ Installer un nouveau système nécessite de reformater votre disque dur. Avant c
 
 > Avec le cloud ([icloud](https://support.apple.com/fr-fr/guide/icloud/welcome/icloud) sur mac ou [onedrive](https://www.microsoft.com/fr-fr/microsoft-365/onedrive/online-cloud-storage) sous windows) les données personnelles sont souvent déjà sauvegardées. Mais il faut se souvenir du login/mot de passe pour réactiver le tout sur le nouveau système.
 
-
 > Notez votre wifi et son mot de passe, ou mieux connectez le réseau directement avec un fil si possible pour votre installation.
 {: .attention}
 
@@ -68,6 +68,7 @@ Installer un nouveau système nécessite de reformater votre disque dur. Avant c
 {% enddetails %}
 
 ### Mac
+
 {% details détails %}
 
 > <https://support.apple.com/fr-fr/guide/mac-help/mchlp1599/mac>
@@ -82,6 +83,7 @@ Une fois votre système installé, il faudra également installé [xcode](https:
 #### finder
 
 Le finder est l'outil principal qui vous permettra de naviguer dans les fichiers. Pour qu'il soit un peut plus facile d'y naviguer :
+
 * *menu présentation > personnaliser la barre d'outils...* ajoutez le "chemin" (trois barres horizontales) aux outils du finder en le glissant/déposant.
 * ajoutez le dossier "*Départ*", aussi appelé "*maison*" (le dossier principal de l'utilisateur) et le dossier "*applications*" aux éléments à la gauche du finder. Pour cela, choisissez le dossier dans le menu *Aller* puis  avec l'outils chemin que l'on vient d'ajouter sélectionnez le dossier parent(Par exemple pour la maison, le dossier parent est "Utilisateurs" et pour application, le dossier parent est “Macintosh HD"). Vous pouvez ensuite glisser/déposer le dossier à gauche du finder.
 
@@ -89,7 +91,7 @@ Le finder est l'outil principal qui vous permettra de naviguer dans les fichiers
 
 Le terminal va être un outil fondamental en développement. Ajoutez le aux icônes du finder. Il est dans le dossier Utilitaires de application.
 
-#### drivers 
+#### drivers
 
 * imprimante
 * autres trucs bas niveau (icloud drive, tablette, ...)
@@ -105,18 +107,15 @@ Le terminal va être un outil fondamental en développement. Ajoutez le aux icô
 
 On va suivre la procédure de [mirosoft](https://support.microsoft.com/fr-fr/windows/r%C3%A9installer-windows-d8369486-3e33-7d9c-dccc-859e2b022fc7#ID0EBD=Windows_10) en suivant les instructions de *Installer une nouvelle installation Windows 10 à l’aide d’un support d’installation*.
 
-
 #### confidentialité
 
 Une fois l'installation terminée, allez dans `Démarrer > Paramètres > Confidentialité` et vérifier pour chaque onglet à gauche que les paramètres d'envoi de vos données vous satisfont.
-
 
 >Pour les paramètres de sécurité, vous pouvez toujours aller voir la [cnil](https://www.cnil.fr/fr/reglez-les-parametres-vie-privee-de-windows-10-apres-installation) ou [ce site](http://www.win10.fr/reglages-confidentialite-windows10)
 
 #### compte
 
 J'utilise un compte local et pas mon compte Microsoft pour me connecter. Assurez vous que le nom de votre compte ne contient aucun espace ou accent (on le voit avec l'explorateur de fichier `c:\Utilisateurs`) et que c'est un compte administrateur.
-
 
 #### Windows update
 
@@ -189,15 +188,15 @@ Pasz vraiment de choix, on installe [brew](https://brew.sh/) et plus vite que ç
 
 {% details Windows %}
 
-> Je n'utilise pas de gesionnaire de package sous windows.  Je laisse windows gérer le tout dans le menu application des paramètres. 
+> Je n'utilise pas de gesionnaire de package sous windows.  Je laisse windows gérer le tout dans le menu application des paramètres.
 
-Si vous voulez en installer un, il en existe plusieurs mais je ne sais pas trop le quel est le mieux. Trois alternatives a priori : 
-* [winget](https://docs.microsoft.com/fr-fr/windows/package-manager/winget/). 
+Si vous voulez en installer un, il en existe plusieurs mais je ne sais pas trop le quel est le mieux. Trois alternatives a priori :
+
+* [winget](https://docs.microsoft.com/fr-fr/windows/package-manager/winget/).
 * [chocolately](https://chocolatey.org/)
 * [scoop.sh](https://scoop.sh/)
 
 <https://nodachisoft.com/common/en/article/en000009/>
-
 
 {% enddetails %}
 
@@ -205,7 +204,7 @@ Si vous voulez en installer un, il en existe plusieurs mais je ne sais pas trop 
 
 {% details Linux %}
 
-Surement déjà installé. 
+Surement déjà installé.
 
 {% enddetails %}
 
@@ -221,13 +220,11 @@ Il y en a plusieurs. [7zip](https://www.7-zip.org/) est simple d'utilisation et 
 
 {% enddetails %}
 
-
 ### utilitaires de tous les jours
 
 Non indispensable mais que vous utilisez tous les jours
 
 * steam, gog, epic, battle.net, origin, uplay, etc
-*  vlc, office 360
+* vlc, office 360
 * discord
 * ...
-

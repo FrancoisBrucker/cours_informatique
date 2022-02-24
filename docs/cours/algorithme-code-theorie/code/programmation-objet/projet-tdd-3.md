@@ -660,9 +660,18 @@ Remarquez qu'on a du également modifier `Somme.conversion` pour que les tests c
 
 Pour finir, il nous reste à généraliser le tout. C'est à dire que l'on aimerait bien pouvoir multiplier une `Somme` par un entier par exemple ou additionner des `Somme` entre elles.
 
+Le design pattern utilisé pour cela est :
+
+> **design pattern :** [composite](https://refactoring.guru/fr/design-patterns/composite)
+>
+> Son but est de pouvoir traiter un groupe d'individu comme un seul. Il utilise une structuration récursive pour cela.
+{: .note}
+
 ### faire {#faire-exp-1}
 
-A priori, une partie de la somme de sommes est déjà implémentée. Par exemple le test suivant doit passer :
+A priori, une partie de la somme de sommes est déjà implémentée. Regardez comment `Somme` est construite, en particulier la méthode `__add__`.
+
+Par exemple, le test suivant doit passer :
 
 *"test_monnaie.py"* :
 
