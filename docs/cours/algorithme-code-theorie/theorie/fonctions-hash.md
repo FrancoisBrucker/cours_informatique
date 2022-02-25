@@ -15,6 +15,14 @@ Les fonctions de hashage. De la définition mathématique à son utilité en inf
 
 ## définition
 
+> Une **fonction de hashage** est une fonction :
+>
+> $$
+> f: \mathbb{N} \rightarrow [0\mathrel{{.}\,{.}}\nobreak m]
+> $$
+>
+{: .note}
+
 * de N dans [0, k] déterministe
 
 OK en info puisqu'on a vu que tout est un entier, donc une suite de 0 et de 1
