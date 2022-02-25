@@ -6,19 +6,19 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>fonction de hash | cours d’informatique</title>
+<title>DS | cours d’informatique</title>
 <meta name="generator" content="Jekyll v4.2.0">
-<meta property="og:title" content="fonction de hash">
+<meta property="og:title" content="DS">
 <meta property="og:locale" content="en_US">
 <meta name="description" content="Support de cours/td d’informatique de François Brucker.">
 <meta property="og:description" content="Support de cours/td d’informatique de François Brucker.">
-<link rel="canonical" href="/cours_informatique/cours/algorithme-code-theorie/theorie/fonctions-hash.html">
-<meta property="og:url" content="/cours_informatique/cours/algorithme-code-theorie/theorie/fonctions-hash.html">
+<link rel="canonical" href="/cours_informatique/cours/algorithme-code-theorie/exercices/2021-2022/3_ds_corrige.html">
+<meta property="og:url" content="/cours_informatique/cours/algorithme-code-theorie/exercices/2021-2022/3_ds_corrige.html">
 <meta property="og:site_name" content="cours d’informatique">
 <meta name="twitter:card" content="summary">
-<meta property="twitter:title" content="fonction de hash">
+<meta property="twitter:title" content="DS">
 <script type="application/ld+json">
-{"headline":"fonction de hash","description":"Support de cours/td d’informatique de François Brucker.","@type":"WebPage","url":"/cours_informatique/cours/algorithme-code-theorie/theorie/fonctions-hash.html","@context":"https://schema.org"}</script>
+{"headline":"DS","description":"Support de cours/td d’informatique de François Brucker.","@type":"WebPage","url":"/cours_informatique/cours/algorithme-code-theorie/exercices/2021-2022/3_ds_corrige.html","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
@@ -53,95 +53,20 @@
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">fonction de hash</h1>
+    <h1 class="post-title">DS</h1>Auteurs :
+      <ul>
+      
+        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></li>
+      
+      </ul>
   </header>
 
   <div class="post-content">
-    <p>Les fonctions de hashage. De la définition mathématique à son utilité en informatique.</p>
-
-<blockquote class="chemin">
-  <p><a href="/cours_informatique/cours/algorithme-code-theorie/">Algorithme, code et théorie</a> / <a href="/cours_informatique/cours/algorithme-code-theorie/theorie/">théorie</a> / <a href="/cours_informatique/cours/algorithme-code-theorie/theorie/fonctions-hash.html">fonctions de hash</a></p>
-
-  <p>prérequis :</p>
-
-  <ul>
-    <li><a href="/cours_informatique/cours/algorithme-code-theorie/theorie/fonctions.html">fonctions</a></li>
-  </ul>
-</blockquote>
-
-<h2 id="définition">définition</h2>
-
-<blockquote class="note">
-  <p>Une <strong>fonction de hashage</strong> est une fonction :</p>
-
-\[f: \mathbb{N} \rightarrow [0..m]\]
-
-</blockquote>
-
-<ul>
-  <li>de N dans [0, k] déterministe</li>
-</ul>
-
-<p>OK en info puisqu’on a vu que tout est un entier, donc une suite de 0 et de 1</p>
-
-<ul>
-  <li>hash de 01* à O1m : déterministe</li>
-</ul>
-
-<h2 id="exemple">exemple</h2>
-
-<h3 id="une-constante">une constante</h3>
-
-<p>bof.</p>
-
-<h3 id="du-modulo">du modulo</h3>
-
-<p>équiprobable (même nombre d’éléments dans chaque classe)</p>
-
-<p>Mais : Si pas premier attention, pas forcément gros changements si les nombres changes exemple avec puissance de 10 (ou 2 ou quelconque pour la base)</p>
-
-<h2 id="propriété-voulues">propriété voulues</h2>
-
-<ul>
-  <li>équiprobable (proba collision faible)</li>
-  <li>calcul facile (implique calcul par bloc)</li>
-  <li>doit dépendre de tout le mot : petit changement dans le mot doit produire de gros changement dans l’emprunte (pensez aux numéros de carte bleues)</li>
-</ul>
-
-<h2 id="collisions">collisions</h2>
-
-<p>paradoxe des anniversaires</p>
-
-<h2 id="utilisation">utilisation</h2>
-
-<ul>
-  <li>résumé d’un objet (texte, commit dans github)</li>
-  <li>dans des structure de données avancées : dictionnaire.</li>
-</ul>
-
-<h2 id="hash-cryptographique">hash cryptographique</h2>
-
-<h3 id="propriétés-en-plus">propriétés en plus</h3>
-
-<ul>
-  <li>doit changer (beaucoup) si on change un peu l’entrée (crypto)</li>
-  <li>difficile de trouver 2 mots de même hash (crypto)</li>
-  <li>trouver un mot qui a le même hash doit être compliqué (pour crypto)</li>
-</ul>
-
-<h3 id="comment">comment</h3>
-
-<p>sha-X</p>
-
-<h3 id="exemple-dutilisation">exemple d’utilisation</h3>
-
-<ul>
-  <li>les mots de passes</li>
-  <li>l’empreinte/vérification d’un texte/bibliothèque (hash sha)</li>
-</ul>
-
-<blockquote class="tbd">
-  <p>ici</p>
+    <blockquote class="tbd">
+  <ol>
+    <li>tri de crêpes : Bill Gates et Papadimitriou ont travaillé dessus</li>
+    <li>cours où on ne connait pas la complexité max la plus faible. La borne est gigantesque, alors que la moyenne est toute simple.</li>
+  </ol>
 </blockquote>
 
   </div>
