@@ -18,7 +18,7 @@ Les fonctions de hashage. De la définition mathématique à son utilité en inf
 > Une **fonction de hashage** est une fonction :
 >
 > $$
-> f: \mathbb{N} \rightarrow [0\mathrel{{.}\,{.}}\nobreak m]
+> f: \mathbb{N} \rightarrow [0..m]
 > $$
 >
 {: .note}
