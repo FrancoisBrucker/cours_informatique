@@ -58,7 +58,7 @@ L'ensemble du cours (et d'autres choses) est disponible [là]({% link cours/algo
 
 1. [étude : l'exponentiation]({% link cours/algorithme-code-theorie/algorithme/etude-exponentiation.md %})
 2. [projet : l'exponentiation]({% link cours/algorithme-code-theorie/code/projet-exponentiation.md %})
-3. **Pour aller plus loin** : [étude : mélanger un tableau]({% link cours/algorithme-code-theorie/algorithme/etude-melange.md %})
+3. Pour aller plus loin : [étude : mélanger un tableau]({% link cours/algorithme-code-theorie/algorithme/etude-melange.md %})
 
 ### semaine 3
 
@@ -74,11 +74,11 @@ L'ensemble du cours (et d'autres choses) est disponible [là]({% link cours/algo
 
 1. [étude : trier un tableau]({% link cours/algorithme-code-theorie/algorithme/etude-tris.md %}) (fin)
 2. [projet : tris]({% link cours/algorithme-code-theorie/code/projet-tris.md %})
-3. **Pour aller plus loin** : [étude : mélanger un tableau]({% link cours/algorithme-code-theorie/algorithme/etude-melange.md %})
+3. Pour aller plus loin : [étude : mélanger un tableau]({% link cours/algorithme-code-theorie/algorithme/etude-melange.md %})
 
 ### semaine 4
 
-contrôle 1 : sur table.
+contrôle 1 : sur table. [sujet]({% link cours/algorithme-code-theorie/exercices/2021-2022/3_ds_sujet.md %})
 
 Au programme :
 

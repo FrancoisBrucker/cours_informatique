@@ -4,7 +4,7 @@ title:  "fonction de hash"
 category: cours
 ---
 
-Les fonctions de hashage. De la définition mathéma
+Les fonctions de hashage. De la définition mathématique à son utilité en informatique.
 
 > [Algorithme, code et théorie]({% link cours/algorithme-code-theorie/index.md %}) / [théorie]({% link cours/algorithme-code-theorie/theorie/index.md %}) / [fonctions de hash]({% link cours/algorithme-code-theorie/theorie/fonctions-hash.md %})
 >
@@ -12,7 +12,6 @@ Les fonctions de hashage. De la définition mathéma
 >
 >* [fonctions]({% link cours/algorithme-code-theorie/theorie/fonctions.md %})
 {: .chemin}
-
 
 ## définition
 
@@ -28,13 +27,11 @@ OK en info puisqu'on a vu que tout est un entier, donc une suite de 0 et de 1
 
 bof.
 
-###  du modulo
+### du modulo
 
-équiprobable
+équiprobable (même nombre d'éléments dans chaque classe)
 
-Si pas premier attention, pas forcément gros changements si les nombres changes exemple avec puissance de 10 (ou 2 ou quelconque pour la base)
-
-Pas crypto du tout
+Mais : Si pas premier attention, pas forcément gros changements si les nombres changes exemple avec puissance de 10 (ou 2 ou quelconque pour la base)
 
 ## propriété voulues
 
@@ -48,11 +45,8 @@ paradoxe des anniversaires
 
 ## utilisation
 
-* résumé d'un texte
+* résumé d'un objet (texte, commit dans github)
 * dans des structure de données avancées : dictionnaire.
-
-## exemples
-
 
 ## hash cryptographique
 
@@ -70,10 +64,6 @@ sha-X
 
 * les mots de passes
 * l'empreinte/vérification d'un texte/bibliothèque (hash sha)
-* 
 
-
-
-1. definition
 >ici
 {: .tbd}
