@@ -15,37 +15,75 @@ Les fonctions de hashage. De la définition mathématique à son utilité en inf
 
 ## définition
 
-> Une **fonction de hashage** est une fonction :
+On peut définit dans toute sa généralité une [fonction de hashage](https://fr.wikipedia.org/wiki/Fonction_de_hachage) $f$ comme étant :
+
+> Une **fonction de hashage** est une fonction $f$ :
 >
-> $$
-> f: \mathbb{N} \rightarrow [0..m]
-> $$
+> $$f: \mathbb{N} \rightarrow [0 \mathrel{ {.}\,{.} } m]$$
 >
+> où $m$  est un entier positif.
 {: .note}
 
-* de N dans [0, k] déterministe
+Une définition alternative, souvent utilisé en informatique, est :
 
-OK en info puisqu'on a vu que tout est un entier, donc une suite de 0 et de 1
+> Une **fonction de hashage** est une fonction $f$ qui associe à tout mot de $\\{0, 1\\}^\star$ un mot de $\\{0, 1\\}^\star$ de longueur $m$.
+>
+> où $m$  est un entier positif.
+{: .note}
 
-* hash de 01* à O1m : déterministe
+Enfin, comme tout en informatique est codé comme une suite de 0 et de 1, une fonction de hashage peut être vue comme :
 
-## exemple
+> Une **fonction de hashage** est une fonction qui associe un entier entre 0 et $m$ à tout objet.
+>
+> où $m$  est un entier positif.
+{:.note}
+
+En python par exemple, on peut utiliser la fonction [`hash`](https://docs.python.org/fr/3/library/functions.html?highlight=hash#hash) :
+
+```python
+>>> hash("du texte")
+1183064373567153871
+>>> hash(True)
+1
+>>> hash(1)
+1
+>>> hash(3.14)
+322818021289917443
+```
+
+La principale raison de l'utilisation des fonctions de hashage est :
+
+> Si $f$ est une fonction de hashage, alors :
+>
+> $$ f(a) \neq f(b) \rightarrow a \neq b$$
+>
+{:.note}
+
+Une fonction de hashage permet de partitionner les entiers ({\em ie.} les objets) en $m+1$ classes. Pour que ce partitionnement soit utile, on demande à une *bonne* fonction de hashage d'avoir en plus les propriétés suivantes :
+
+> Une fonction de hashage $f: \mathbb{N} \rightarrow [0\mathrel{ {.}\,{.} } m]$ utile doit avoir les 3 propriétés suivantes :
+>
+> 1. elle doit être {\bf équiprobable} : la probabilité que $f(a) = i $ doit être de $\frac{1}{m+1}$ pour tout $a\in \mathcal{N}$ et 0\eq i \leq m$
+> 2. elle doit être facilement calculable
+> 3. tout changement dans l'entrée doit produire un changement dans la sortie
+>
+{:.note}
+
+## exemples
 
 ### une constante
 
-bof.
+facilement calculable.
+
+Mais autrement peut d'intérêt.
 
 ### du modulo
 
 équiprobable (même nombre d'éléments dans chaque classe)
 
+facilement calculable : on peut couper par bloc
+
 Mais : Si pas premier attention, pas forcément gros changements si les nombres changes exemple avec puissance de 10 (ou 2 ou quelconque pour la base)
-
-## propriété voulues
-
-* équiprobable (proba collision faible)
-* calcul facile (implique calcul par bloc)
-* doit dépendre de tout le mot : petit changement dans le mot doit produire de gros changement dans l'emprunte (pensez aux numéros de carte bleues)
 
 ## collisions
 
@@ -64,6 +102,8 @@ paradoxe des anniversaires
 * difficile de trouver 2 mots de même hash (crypto)
 * trouver un mot qui a le même hash doit être compliqué (pour crypto)
 
+il faut que de petit changement dans l'entrée produisentde gros changements dans la sortie.
+
 ### comment
 
 sha-X
@@ -72,6 +112,3 @@ sha-X
 
 * les mots de passes
 * l'empreinte/vérification d'un texte/bibliothèque (hash sha)
-
->ici
-{: .tbd}

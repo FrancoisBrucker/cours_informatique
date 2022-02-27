@@ -52,8 +52,8 @@ Un **arbre** est un *graphe simple* $T = (V, E)$ qui est :
 
 Là comme ça, ça n'a pas l'air simple de répondre à cette question. On va plutôt ruser et prouver deux propriétés des graphes connexes à la place.
 
->* Tout graphe sans cycle contient au maximum $\vert V \vert - 1$ arêtes.
->* Tout graphe connexe contient au minimum $\vert V \vert - 1$ arêtes.
+>* Tout graphe (non vide) sans cycle contient au maximum $\vert V \vert - 1$ arêtes.
+>* Tout graphe (non vide) connexe contient au minimum $\vert V \vert - 1$ arêtes.
 {: .a-faire}
 
 #### conditions
@@ -132,7 +132,7 @@ Un arbre planté est binaire si tout noeud intérieur a **au plus 2 enfants**. O
 
 >Montrer que pour un arbre binaire, si tout noeud intérieur a exactement 2 enfants, alors en notant $f$ le nombre de feuilles de l'arbre, on a :
 >
->* la hauteur de l'arbre est égale à $\log_2(f)$
+>* la hauteur de l'arbre est comprise entre $\log_2(f)$ et $f$
 >* $f$ est égal au nombre de nœuds intérieurs plus 1.
 {: .a-faire}
 
@@ -211,7 +211,7 @@ On utilise ce principe pour parcourir tous les sommets d'un arbre planté effica
 
 ```text
 pré-ordre(racine)
-Si la racine a des descendants:
+Si la racine existe:
     Examen de la racine 
     pré-ordre(enfant gauche) 
     pré-ordre(enfant droit)
@@ -221,7 +221,7 @@ Si la racine a des descendants:
 
 ```text
 post-ordre(racine)
-Si la racine a des descendants:
+Si la racine existe:
     post-ordre(enfant gauche) 
     post-ordre(enfant droit)
     Examen de la racine 
@@ -231,7 +231,7 @@ Si la racine a des descendants:
 
 ```text
 en-ordre(racine)
-Si la racine a des descendants:
+Si la racine existe:
     en-ordre(enfant gauche) 
     Examen de la racine 
     en-ordre(enfant droit)
