@@ -26,6 +26,7 @@
 
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique">
+<script>MathJax={"tex":{"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["\\[","\\]"]]},"svg":{"fontCache":"global"},"svg":{"fontCache":"global"}}</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
 <body>
@@ -71,42 +72,81 @@
 
 <h2 id="définition">définition</h2>
 
-<blockquote class="note">
-  <p>Une <strong>fonction de hashage</strong> est une fonction :</p>
+<p>On peut définit dans toute sa généralité une <a href="https://fr.wikipedia.org/wiki/Fonction_de_hachage">fonction de hashage</a> $f$ comme étant :</p>
 
-\[f: \mathbb{N} \rightarrow [0..m]\]
+<blockquote class="note">
+  <p>Une <strong>fonction de hashage</strong> est une fonction $f$ :</p>
+
+\[f: \mathbb{N} \rightarrow [0 \mathrel{ {.}\,{.} } m]\]
+
+  <p>où $m$  est un entier positif.</p>
+</blockquote>
+
+<p>Une définition alternative, souvent utilisé en informatique, est :</p>
+
+<blockquote class="note">
+  <p>Une <strong>fonction de hashage</strong> est une fonction $f$ qui associe à tout mot de $\{0, 1\}^\star$ un mot de $\{0, 1\}^\star$ de longueur $m$.</p>
+
+  <p>où $m$  est un entier positif.</p>
+</blockquote>
+
+<p>Enfin, comme tout en informatique est codé comme une suite de 0 et de 1, une fonction de hashage peut être vue comme :</p>
+
+<blockquote class="note">
+  <p>Une <strong>fonction de hashage</strong> est une fonction qui associe un entier entre 0 et $m$ à tout objet.</p>
+
+  <p>où $m$  est un entier positif.</p>
+</blockquote>
+
+<p>En python par exemple, on peut utiliser la fonction <a href="https://docs.python.org/fr/3/library/functions.html?highlight=hash#hash"><code class="language-plaintext highlighter-rouge">hash</code></a> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">hash</span><span class="p">(</span><span class="s">"du texte"</span><span class="p">)</span>
+<span class="mi">1183064373567153871</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">hash</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+<span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">hash</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">hash</span><span class="p">(</span><span class="mf">3.14</span><span class="p">)</span>
+<span class="mi">322818021289917443</span>
+</code></pre></div></div>
+
+<p>La principale raison de l’utilisation des fonctions de hashage est :</p>
+
+<blockquote class="note">
+  <p>Si $f$ est une fonction de hashage, alors :</p>
+
+\[f(a) \neq f(b) \rightarrow a \neq b\]
 
 </blockquote>
 
-<ul>
-  <li>de N dans [0, k] déterministe</li>
-</ul>
+<p>Une fonction de hashage permet de partitionner les entiers ({\em ie.} les objets) en $m+1$ classes. Pour que ce partitionnement soit utile, on demande à une <em>bonne</em> fonction de hashage d’avoir en plus les propriétés suivantes :</p>
 
-<p>OK en info puisqu’on a vu que tout est un entier, donc une suite de 0 et de 1</p>
+<blockquote class="note">
+  <p>Une fonction de hashage $f: \mathbb{N} \rightarrow [0\mathrel{ {.}\,{.} } m]$ utile doit avoir les 3 propriétés suivantes :</p>
 
-<ul>
-  <li>hash de 01* à O1m : déterministe</li>
-</ul>
+  <ol>
+    <li>elle doit être {\bf équiprobable} : la probabilité que $f(a) = i $ doit être de $\frac{1}{m+1}$ pour tout $a\in \mathcal{N}$ et 0\eq i \leq m$</li>
+    <li>elle doit être facilement calculable</li>
+    <li>tout changement dans l’entrée doit produire un changement dans la sortie</li>
+  </ol>
 
-<h2 id="exemple">exemple</h2>
+</blockquote>
+
+<h2 id="exemples">exemples</h2>
 
 <h3 id="une-constante">une constante</h3>
 
-<p>bof.</p>
+<p>facilement calculable.</p>
+
+<p>Mais autrement peut d’intérêt.</p>
 
 <h3 id="du-modulo">du modulo</h3>
 
 <p>équiprobable (même nombre d’éléments dans chaque classe)</p>
 
+<p>facilement calculable : on peut couper par bloc</p>
+
 <p>Mais : Si pas premier attention, pas forcément gros changements si les nombres changes exemple avec puissance de 10 (ou 2 ou quelconque pour la base)</p>
-
-<h2 id="propriété-voulues">propriété voulues</h2>
-
-<ul>
-  <li>équiprobable (proba collision faible)</li>
-  <li>calcul facile (implique calcul par bloc)</li>
-  <li>doit dépendre de tout le mot : petit changement dans le mot doit produire de gros changement dans l’emprunte (pensez aux numéros de carte bleues)</li>
-</ul>
 
 <h2 id="collisions">collisions</h2>
 
@@ -129,6 +169,8 @@
   <li>trouver un mot qui a le même hash doit être compliqué (pour crypto)</li>
 </ul>
 
+<p>il faut que de petit changement dans l’entrée produisentde gros changements dans la sortie.</p>
+
 <h3 id="comment">comment</h3>
 
 <p>sha-X</p>
@@ -139,10 +181,6 @@
   <li>les mots de passes</li>
   <li>l’empreinte/vérification d’un texte/bibliothèque (hash sha)</li>
 </ul>
-
-<blockquote class="tbd">
-  <p>ici</p>
-</blockquote>
 
   </div>
 

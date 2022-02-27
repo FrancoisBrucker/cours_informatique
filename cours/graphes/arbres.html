@@ -126,8 +126,8 @@
 
 <blockquote class="a-faire">
   <ul>
-    <li>Tout graphe sans cycle contient au maximum $\vert V \vert - 1$ arêtes.</li>
-    <li>Tout graphe connexe contient au minimum $\vert V \vert - 1$ arêtes.</li>
+    <li>Tout graphe (non vide) sans cycle contient au maximum $\vert V \vert - 1$ arêtes.</li>
+    <li>Tout graphe (non vide) connexe contient au minimum $\vert V \vert - 1$ arêtes.</li>
   </ul>
 </blockquote>
 
@@ -223,7 +223,7 @@
   <p>Montrer que pour un arbre binaire, si tout noeud intérieur a exactement 2 enfants, alors en notant $f$ le nombre de feuilles de l’arbre, on a :</p>
 
   <ul>
-    <li>la hauteur de l’arbre est égale à $\log_2(f)$</li>
+    <li>la hauteur de l’arbre est comprise entre $\log_2(f)$ et $f$</li>
     <li>$f$ est égal au nombre de nœuds intérieurs plus 1.</li>
   </ul>
 </blockquote>
@@ -317,7 +317,7 @@ Un informaticien est prêt à beaucoup, beaucoup de choses pour avoir une struct
 <h4 id="pré-ordre">pré-ordre</h4>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pré-ordre(racine)
-Si la racine a des descendants:
+Si la racine existe:
     Examen de la racine 
     pré-ordre(enfant gauche) 
     pré-ordre(enfant droit)
@@ -326,7 +326,7 @@ Si la racine a des descendants:
 <h4 id="post-ordre">post-ordre</h4>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>post-ordre(racine)
-Si la racine a des descendants:
+Si la racine existe:
     post-ordre(enfant gauche) 
     post-ordre(enfant droit)
     Examen de la racine 
@@ -335,7 +335,7 @@ Si la racine a des descendants:
 <h4 id="en-ordre">en-ordre</h4>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>en-ordre(racine)
-Si la racine a des descendants:
+Si la racine existe:
     en-ordre(enfant gauche) 
     Examen de la racine 
     en-ordre(enfant droit)

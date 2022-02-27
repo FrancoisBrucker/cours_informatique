@@ -66,7 +66,7 @@ Rappelez les définitions de :
 
 \subsubsection{Complexité du tri}
 
-Donnez et justifiez\footnote{vous pourrez utiliser le fait que $\mathcal{O}(\ln(n!)) = \mathcal{O}(n\ln(n))$ sans le démontrer} la complexité du {\bf problème du tri} d'un tableau d'entiers.
+Donnez et justifiez\footnote{vous pourrez utiliser le fait que $\mathcal{O}(\ln(n!)) = \mathcal{O}(n\ln(n))$ et donner les complexités des algorithmes de tri du cours sans les démontrer.} la complexité du {\bf problème du tri} d'un tableau d'entiers.
 
 
 \section{Tri de crêpes}
@@ -76,7 +76,7 @@ Définition tirée de \href{https://fr.wikipedia.org/wiki/Tri_de_cr%C3%AApes#Con
 \begin{verse}
 Un cuisinier fait des crêpes et les pose en pile à côté de la poêle lorsqu'elles sont cuites. Toutes les crêpes sont de taille différente. On dispose donc d'une pile de crêpes, chacune de taille différente et il s'agit d'ordonner les crêpes dans la pile par diamètre croissant, avec la crêpe de plus petit diamètre en haut de la pile.
 
-Un seul type d'opération est autorisé pour manipuler la pile : le {\bf retournement}. Il consiste à insérer une spatule à un endroit de la pile et retourner d'un coup toutes les crêpes qui se trouvent au-dessus de la spatule.   
+Un seul type d'opération est autorisé pour manipuler la pile : le {\bf retournement}. Il consiste à insérer une spatule à un endroit de la pile et retourner d'un coup sur la pile toutes les crêpes qui se trouvent au-dessus de la spatule.   
 \end{verse}
 
 \subsection{Problème}
@@ -86,7 +86,7 @@ Formalisez le problème de façon informatique. En particulier, il vous faudra :
 \begin{itemize}
     \item montrer que l'entrée du problème peut être un tableau de taille $n$ contenant tous les entiers de $0$ à $n-1$
     \item montrer que le problème peut être vue comme un tri
-    \item définir l'opération de {\bf retournement}
+    \item définir ce que signifie l'opération de {\bf retournement} avec votre modélisation
 \end{itemize}
 
 \subsection{Algorithme de retournement}
@@ -99,8 +99,8 @@ Proposez un algorithme permettant d'effectuer l'opération de retournement.
 Montrez que l'on peut toujours :
 
 \begin{enumerate}
-    \item placer un élément quelconque de la pile au début de celle-ci en 1 opération de retournement
-    \item placer le premier élément de la pile à la fin de celle-ci en 1 opération de retournement
+    \item placer un élément quelconque de la pile en haut de celle-ci en 1 opération de retournement
+    \item placer le premier élément de la pile en bas de celle-ci en 1 opération de retournement
 \end{enumerate}
 
 \subsubsection{}
@@ -173,7 +173,7 @@ $$
 
 \begin{enumerate}
     \item Donnez la valeur de $L(T)$ pour chaque itération de l'exécution de l'algorithme avec le tableau $[2, 1, 6, 7, 0, 4, 5, 3]$ comme entrée
-    \item Montrez qu'à chaque itération de l'algorithme $L(T)$ a exactement un $1$ de plus.
+    \item Montrez qu'à chaque itération de l'algorithme, le nombre de 1 de $L(T)$ augmente strictement.
 \end{enumerate}
 
 
@@ -224,7 +224,7 @@ Déduisez de la question précédente que l'algorithme s'arrête forcément et d
 
 \subsection{}
 
-En utilisant le fait qu'il faut en moyenne $k$ essais pour obtenir un évènement de probabilité $\frac{1}{k}$ (c'est une \href{https://fr.wikipedia.org/wiki/Loi_g%C3%A9om%C3%A9trique}{loi géométrique}), démontrez que la complexité moyenne de l'algorithme est en $\mathcal{O}(n)$ en nombre de retournements.
+En utilisant le fait qu'il faut en moyenne $k$ essais pour obtenir un évènement de probabilité $\frac{1}{k}$ (c'est une \href{https://fr.wikipedia.org/wiki/Loi_g%C3%A9om%C3%A9trique}{loi géométrique}), démontrez que la complexité en moyenne de l'algorithme est de $\mathcal{O}(n)$ retournements.
 
 \subsection{}
 
