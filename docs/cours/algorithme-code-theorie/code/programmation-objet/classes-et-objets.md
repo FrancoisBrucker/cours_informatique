@@ -34,7 +34,7 @@ Un objet, n'est donc pas isolé, il partage ses fonctionnalités avec tous les o
 
 ## classes et objets
 
-Lorsque l'on écrit du code python, on ne fait que manipuler des objets. Les entier, les chaines de caractères et même les fonctions peuvent être considérées comme des objets.
+Lorsque l'on écrit du code python, on ne fait que manipuler des objets. Les entiers, les chaines de caractères et même les fonctions peuvent être considérées comme des objets.
 
 De façon générale, on peut considérer que :
 
@@ -49,7 +49,7 @@ Pour résumer, une classe :
 Un objet issu d'une certaine classe :
 
 * possède la même structure de données que les autres objets de la classe mais les valeurs de celle-ci lui sont uniques : ses **attributs**
-* possède un lien vers les méthodes définies dans sa class et on peut les utiliser via la notation pointée : ses **méthodes**
+* possède un lien vers les méthodes définies dans sa classe et on peut les utiliser via la notation pointée : ses **méthodes**
 
 Exemple :
 
@@ -59,13 +59,13 @@ objet.méthode(paramètre 1, ..., paramètre n)
 
 On cherchera `méthode` définie pour l'`objet`.
 
-> Le mécanisme pour réaliser ceci utilise les espaces de noms : on cherche le nom `méthode` défini dans l'espace de nom de `objet`
+> Le mécanisme pour réaliser ceci utilise les espaces de noms : on cherche le nom `méthode` défini dans l'espace de noms de `objet`
 
 ### but
 
-La programmation objet n'a pas pour but de révolutionner votre façon de programmer. Elle permet juste de bien mettre en œuvre les paradigmes de développement que l'on a vu jusqu'à présent. Il est fortement conseiller de *coder objet* car :
+La programmation objet n'a pas pour but de révolutionner votre façon de programmer. Elle permet juste de bien mettre en œuvre les paradigmes de développement que l'on a vus jusqu'à présent. Il est fortement conseiller de *coder objet* car :
 
-* cela favorise la factorisation du code ([on ne se répète pas](https://fr.wikipedia.org/wiki/Ne_vous_r%C3%A9p%C3%A9tez_pas)) : on ne défini ses méthodes qu'une seule fois dans les classes
+* cela favorise la factorisation du code ([on ne se répète pas](https://fr.wikipedia.org/wiki/Ne_vous_r%C3%A9p%C3%A9tez_pas)) : on ne définit ses méthodes qu'une seule fois dans les classes
 * lisibilité avec la notation `.` : on sait clairement à qui s'applique telle ou telle méthode
 * compartimentation du code : chaque partie du code et chaque opération est compartimentée, ce qui permet de les tester et des améliorer indépendamment du reste du code.
 * plutôt que de créer un gros programme complexe, on crée plein de petits programmes indépendants (les objets) qui interagissent entre eux.
@@ -108,7 +108,7 @@ NameError: name 'upper' is not defined
 C'est la méthode définie dans la classe `str` qui s'appelle `upper` qui existe...
 {% enddetails %}
 
-Ce qui fait que le résultat est différent lorsque l'on applique la méthode `upper` à `"bonjour"` et `"toi"` est que ces deux objets, bien que de la même classe, sont différents : dan l'un il y a les caractère "bonjour", dans l'autres les caractères "toi".
+Ce qui fait que le résultat est différent lorsque l'on applique la méthode `upper` à `"bonjour"` et `"toi"` est que ces deux objets, bien que de la même classe, sont différents : dans l'un il y a les caractère "bonjour", dans l'autres les caractères "toi".
 
 On appelle les spécificités de chaque objet, c'est à dire les valeurs de sa structure de données, des **attributs**.
 
@@ -136,10 +136,10 @@ Les deux écritures sont identiques en python, mais bien sur, nous préférerons
 
 Pour créer des objets d'une classe, on utilise un **constructeur**.
 
-En python, c'est le nom de la classe. Par Exemples :
+En python, c'est le nom de la classe. Par exemples :
 
 * `list(range(5))` : crée une liste (de type `list`) avec le résultat de la fonction `range`
-* `float("3.1415")` : crée un réel à partir de la chaine de caractère `"3.1415"`.
+* `float("3.1415")` : crée un réel à partir de la chaine de caractères `"3.1415"`.
 * `int(3.1415)` : crée un entier à partir du réel `3.1415`.
 
 > Certains objets se créent juste avec leur valeur comme les entiers, les réels ou les chaines de caractères. En python `3` est équivalent à `int(3)` par exemple.
@@ -176,15 +176,15 @@ En python, le constructeur d'une classe sera **toujours** la méthode : `__init_
 
 #### variables spéciales
 
-En regardant du code python, vous allez voir beaucoup de noms qui commencent par des `_`. Ils sont une signification spéciale en python :
+En regardant du code python, vous allez voir beaucoup de noms qui commencent par des `_`. Ils ont une signification spéciale en python :
 
 * qui commencent par `_` : non public. Ce sont des attributs ou méthodes que l'utilisateur n'est pas sensé utiliser. Ils sont uniquement là pour le bon fonctionnement de la classe.
-* qui commencent par `__` : privé (non disponibles pour les descendants lorsque l'on fait de l'héritage). Ces attributs ou méthodes sont réservé exclusivement à être utilisé dans la classe.
+* qui commencent par `__` : privé (non disponibles pour les descendants lorsque l'on fait de l'héritage). Ces attributs ou méthodes sont réservés exclusivement à être utilisés dans la classe.
 * qui commencent et finissent par `__` : méthodes spécifiques de python qui ont un sens (par exemple __str__, __eq__), elles sont utilisées dans des cas précis et documentés.
 
-#### espace de nom (namespaces)
+#### espace de noms (namespaces)
 
-La gestion des noms en python se fait via des [espaces de noms]({% link cours/algorithme-code-theorie/code/programmation-objet/memoire-et-espace-noms.md %}#espace-noms). L'ordre dans lequel ces noms sons cherché pour être associé à un objet est logique et se règle en sachant quel namespace est utilisé.
+La gestion des noms en python se fait via des [espaces de noms]({% link cours/algorithme-code-theorie/code/programmation-objet/memoire-et-espace-noms.md %}#espace-noms). L'ordre dans lequel ces noms sons cherchés pour être associés à un objet est logique et se règle en sachant quel namespace est utilisé.
 
 ## Premier exemple : le Compteur
 
@@ -220,14 +220,14 @@ print(c2.donne_valeur())
 C'est du python. On va essayer de comprendre le code pour produire une représentation uml de la classe `Compteur`.
 
 1. on importe le mot `Compteur` et on l'exécute 2 fois pour l'affecter à 2 noms différents : cela **ne doit pas être** une fonction normale, sinon `c1` et `c2` seraient identiques.
-2. on suppose donc que `Compteur` est une *classe* et que l'on a crée 2 **objets** `c1` et `c2`.
+2. on suppose donc que `Compteur` est une *classe* et que l'on a créé 2 **objets** `c1` et `c2`.
 
 **Les objets d'une classe partagent les mêmes méthodes**, donc :
 
 * `ajoute()` doit faire la même chose pour `c1` et `c2`
 * je dois pouvoir écrire : `c1.donne_valeur()`, même si ce n'est pas écrit dans le code.
 
-De plus, comme j'appelle `c1.ajoute()` et `c2.ajoute()` sans paramètre on doit surement modifier un attribut des objets `c1` et `c2`, car les **attributs sont spécifique à chaque objet d'une classe**
+De plus, comme j'appelle `c1.ajoute()` et `c2.ajoute()` sans paramètre on doit surement modifier un attribut des objets `c1` et `c2`, car les **attributs sont spécifiques à chaque objet d'une classe**
 
 #### exécution du programme
 
@@ -259,7 +259,7 @@ Ce qui donne le diagramme uml du compteur :
 
 ![compteur](./assets/classes-2.png){:style="margin: auto;display: block;"}
 
->On a utilisé ici un `_` en début de nom de la variable `valeur` pour signifier qu'elle est *privée*, c'est à dire que personne d'autre n'a le droit de l'utiliser à part l'objet. Cette convention n'est pas indispensable à utiliser car il est parfois un peut flou de savoir si telle ou telle attribut et *privé* ou *publique*...
+>On a utilisé ici un `_` en début de nom de la variable `valeur` pour signifier qu'elle est *privée*, c'est à dire que personne d'autre n'a le droit de l'utiliser à part l'objet. Cette convention n'est pas indispensable à utiliser car il est parfois un peu flou de savoir si telle ou telle attribut et *privé* ou *publique*...
 
 ### code python
 
@@ -303,17 +303,17 @@ class <nom de la classe>:
 > En python, lorsque l'on définit une méthode d'un classe, le 1er paramètre de chaque méthode est **toujours** `self`. A l'exécution, python donnera à ce paramètre l'objet qui appelle la méthode, on ne le voit pas lorsque l'on écrit le code.
 {: .note}
 
-Par exemple dans le code la ligne `c1.ajoute()` sera transformée par python en : `Compteur.ajoute(c1)` qui peut se lire : on exécute la fonction `ajoute` de l'espace de nom du bloc `Compteur` avec comme paramètre `c1`.
+Par exemple dans le code la ligne `c1.ajoute()` sera transformée par python en : `Compteur.ajoute(c1)` qui peut se lire : on exécute la fonction `ajoute` de l'espace de noms du bloc `Compteur` avec comme paramètre `c1`.
 
 La première façon d'écrire (`c1.ajoute()`) est plus simple à comprendre **pour un humain** et évite les erreurs (la méthode est appliquée à l'objet à gauche du point), alors que la seconde est plus facile à comprendre **pour un ordinateur** en utilisant les espaces de noms et le passage explicite de l'objet appelant.
 
->`self` qui peut souvent paraître magique. Ce premier paramètre est l'objet qui a appelé la méthode (à gauche du *.*). C'est la manière explicite de python de montrer quel objet est utilisé. Vous pouvez appeler ce premier paramètre comme vous voulez, mais c'est **très très** déconseillé car votre code en deviendra
+>`self` peut souvent paraître magique. Ce premier paramètre est l'objet qui a appelé la méthode (à gauche du *.*). C'est la manière explicite de python de montrer quel objet est utilisé. Vous pouvez appeler ce premier paramètre comme vous voulez, mais c'est **très très** déconseillé car votre code en deviendra
 moins lisible (tout le monde utilise le nom `self`).
 
 ### exécution du code
 
 > Lorsque l'on définit une classe, python lui associe un espace de noms. Les différents noms définit dans la classes y seront consignés.
-{ .note}
+{: .note}
 
 Dans l'exemple du compteur, lorsque le fichier *"main.py"* importe le fichier *"compteur.py"*, la classe `Compteur` y est définie. Dans son namespace seront alors placés les noms :
 
@@ -321,30 +321,30 @@ Dans l'exemple du compteur, lorsque le fichier *"main.py"* importe le fichier *"
 * `ajoute`
 * `donne_valeur`
 
-Qui correspondent aux noms ds 3 méthodes définies dans la classe.
+Qui correspondent aux noms des 3 méthodes définies dans la classe.
 
 De même :
 
 > Lorsque l'on crée un objet, python lui associe un espace de noms.
 >
-> Son espace de nom parent est celui de sa classe.
+> Son espace de noms parent est celui de sa classe.
 {: .note}
 
-L'espace de noms de l'objet est important, il est utilisé à chaque notation pointée. Par exemple dans la méthode `__init__`, la ligne `self._valeur = 0` crée un objet entier (valant 0) et l'affecte au nom `_valeur` dans l'espace de nom de l'objet nommé `self`.
+L'espace de noms de l'objet est important, il est utilisé à chaque notation pointée. Par exemple dans la méthode `__init__`, la ligne `self._valeur = 0` crée un objet entier (valant 0) et l'affecte au nom `_valeur` dans l'espace de noms de l'objet nommé `self`.
 
 Reprenons le code de *"main.py"*, et exécutons le ligne à ligne :
 
 1. lorsque python commence l'exécution du fichier, il crée le namespace global. C'est le namespace le plus haut.
 2. `from compteur import Compteur` :
    1. cherche un fichier *"compteur.py"* dans le répertoire courant.
-   2. on crée un espace de nom `compteur`
-   3. Python exécute le fichier *"compteur.py"* (il lit chaque ligne) dans l'espace de nom `compteur`.
-   4. Une fois ceci fait, il prend le nom `Compteur` dans cet espace et l'ajoute dans l'espace de nom `global`. On peut donc utiliser le nom `Compteur`
+   2. on crée un espace de noms `compteur`
+   3. Python exécute le fichier *"compteur.py"* (il lit chaque ligne) dans l'espace de noms `compteur`.
+   4. Une fois ceci fait, il prend le nom `Compteur` dans cet espace et l'ajoute dans l'espace de noms `global`. On peut donc utiliser le nom `Compteur`
 3. `c1 = Compteur()` :
    * en informatique `=` n'est pas symétrique. A gauche un nom à droite un objet. Ici ceci signifie que l'on ajoute le nom `c1` au namespace global et que sa valeur sera le résultat de `Compteur()`
    * `Compteur()` : est le résultat de l'exécution du nom `Compteur`. Les parenthèses (et les paramètres éventuels) après un nom l'exécute. (si on avait juste écrit `c1 = Compteur` on aurait alors eu un nom `c1` qui sera égal à la classe `Compteur`).
    * `Compteur()` Exécuter une classe revient à :
-     * créer un objet vide et lui associer un espace de nom vierge
+     * créer un objet vide et lui associer un espace de noms vierge
      * chercher la méthode `__init__` de la classe et l'exécuter en passant le nouvel objet en premier paramètre :
         * pour exécuter une fonction on crée un namespace pour elle.
         * on place le nom `self` qui vaut ici le nouveau namespace créé
@@ -353,9 +353,9 @@ Reprenons le code de *"main.py"*, et exécutons le ligne à ligne :
         * on rend l'objet
    * l'objet créé est associé au nom `c1` dans le namespace `global`
 4. idem que la ligne précédente avec un nouvel objet
-5. `c1.ajoute()` : python cherche le nom `ajoute` dans l'espace de nom de l'objet nommé `c1`.
+5. `c1.ajoute()` : python cherche le nom `ajoute` dans l'espace de noms de l'objet nommé `c1`.
    1. Il regarde d'abord dans l'objet de nom `c1`. Ça n'y est pas (dans l'espace de noms de `c1` il n'y a que le nom `_valeur`).
-   2. Il regarde donc dans l'espace de nom parent : l'espace de nom de de la classe. Il y est puisqu'`ajoute` est une fonction définie.
+   2. Il regarde donc dans l'espace de noms parent : l'espace de noms de de la classe. Il y est puisqu'`ajoute` est une fonction définie.
    3. On peut maintenant exécuter cette fonction. Comme pour toutes les fonctions définies dans une classe et utilisée par un objet, le premier paramètre est l'objet (le self). Ce mécanisme permet d'utiliser les noms définis dans l'espace de noms de l'objet (ici la valeur de l'objet).
 6. idem que la ligne d'avant
 7. idem que la ligne d'avant
@@ -435,7 +435,7 @@ permet à chaque objet (le paramètre `self`) d'être différent tout en utilisa
 
 ### paramètre par défaut
 
-Le soucis avec la méthode précédente, c'est que même si le pas est de `1` il faut le définir dans la construction de l'objet. Nous allns hanger ça en mettant un [paramètre par défaut](https://docs.python.org/3/tutorial/controlflow.html#default-argument-values).
+Le soucis avec la méthode précédente, c'est que même si le pas est de `1` il faut le définir dans la construction de l'objet. Nous allons changer ça en mettant un [paramètre par défaut](https://docs.python.org/3/tutorial/controlflow.html#default-argument-values).
 
 En python cela donne (fichier *"compteur.py"*) :
 
@@ -454,7 +454,7 @@ class Compteur:
 
 On peut utiliser deux fois le même nom `pas` car ils sont dans des espaces de noms différent :
 
-* un dans l'espace de nom de la fonction (créé lorsque l'on exécute la fonction et détruit à la fin. Attention : on détruit les noms pas les objets)
+* un dans l'espace de noms de la fonction (créé lorsque l'on exécute la fonction et détruit à la fin. Attention : on détruit les noms pas les objets)
 * un dans l'objet lui-même.
   
 Le code final de *"main.py"* pourra alors être :
@@ -519,7 +519,7 @@ Vous devriez obtenir quelque chose comme :
 <__main__.Compteur object at 0x107149100>
 ```
 
-La fonction `print` appelle la méthode `__str__` de notre classe. En effet, `print` affiche à l'écran une chaine de caractère. L'Objet à afficher est donc converti en `str` avant.  
+La fonction `print` appelle la méthode `__str__` de notre classe. En effet, `print` affiche à l'écran une chaine de caractère. L'objet à afficher est donc converti en `str` avant.  
 
  Comme nous n'avons pas défini cette méthode, c'est donc la méthode par défaut de tous les objets python qui est appelée. Comme vous le constatez, elle n'est pas très intéressante pour nous. Il faut donc la définir dans notre classe.
 
@@ -540,7 +540,7 @@ Compteur(pas=1, valeur=0)
 
 Ce qui est bien plus lisible.
 
-Finissons en essayons de comparer deux compteurs :
+Finissons en essayant de comparer deux compteurs :
 
 ```python
 c1 = Compteur(valeur=1)
@@ -548,7 +548,7 @@ c2 = Compteur(valeur=4)
 c1 < c2
 ```
 
-Si on testez ça avec votre code tel qu'il est, on obtiendra :
+Si on teste ça avec votre code tel qu'il est, on obtiendra :
 
 ```text
 TypeError: '<' not supported between instances of 'Compteur' and 'Compteur'

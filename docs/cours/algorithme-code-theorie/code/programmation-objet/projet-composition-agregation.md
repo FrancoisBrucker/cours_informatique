@@ -29,7 +29,7 @@ Les tests sont bien sur toujours obligatoires ! Vous testerez chaque fonction qu
 
 > Lorsque l'on teste un objets et ses méthodes, on essaie dans la mesure du possible de ne pas avoir besoin des attributs. On ne vérifie que les résultats de la méthode, pas comment l'objet stocke ses informations.
 >
-> On teste de **fonctionnalités** pas une **implémentation particulière de celles-ci**.
+> On teste des **fonctionnalités** pas une **implémentation particulière de celles-ci**.
 {: .note}
 
 ## Un Dé
@@ -70,7 +70,7 @@ Pour être sûr que tout fonctionne comme prévu :
 >
 > Il est impossible de tester le hasard, donc pour la méthode `roll` vérifiez juste que la position du dé est cohérente (entre 1 et 6) après l'utilisation de la méthode.
 >
-> Vérifiez que vous avez ben 100% de couverture de code.
+> Vérifiez que vous avez bien 100% de couverture de code.
 {: .a-faire}
 
 Pour jouer avec notre classe dice :
@@ -79,9 +79,9 @@ Pour jouer avec notre classe dice :
 >
 > 1. demande à l'utilisateur :
 >    * la position initiale du dé
->    * la valeur pour laquelle arrêter les lancer
+>    * la valeur pour laquelle arrêter les lancers
 > 2. lance le dé jusqu'à tant que la valeur demandée par l'utilsateur soit trouvée.
-> 3. le programme affiche le nombre de lancer nécessaire (celà peut être 0)
+> 3. le programme affiche le nombre de lancer nécessaire (cela peut être 0)
 >
 {: .a-faire}
 
@@ -130,7 +130,7 @@ Pour ses tests vous pourrez :
 
 > * vérifier qu'après la création d'un objet `TapisVert` on dispose bien de 5 dés positionnés sur 1.
 > * vérifiez qu'après avoir lancé les dés, leurs positions sont toujours cohérentes avec le nombre de faces.
-> * vérifiez que `TapisVert` donne bien ses dés et non une copie de ceux-ci. POur réaliser ceci vous pourrez implémenter le test suivant :
+> * vérifiez que `TapisVert` donne bien ses dés et non une copie de ceux-ci. Pour réaliser ceci vous pourrez implémenter le test suivant :
 >    1. demander les dés d'un objet de type `TapisVert`
 >    2. modifier la position d'un dé
 >    3. redemander les dés de l'objet de type `TapisVert` et vérifier que la position du dé est bien celle modifiée

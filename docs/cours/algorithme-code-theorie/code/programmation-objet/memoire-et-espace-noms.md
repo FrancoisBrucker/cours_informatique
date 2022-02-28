@@ -445,7 +445,7 @@ print(log(random.randint(1, 42)))
 
 Avant l'exécution de l'instruction `print` on est dans cet état :
 
-![cas-6-1](./assets/cas-4-8.png){:style="margin: auto;display: block;"}
+![cas-6-1](./assets/cas-6-1.png){:style="margin: auto;display: block;"}
 
 On accède à l'espace de noms du module par la notation pointée : `random.randint` signifie le nom `randint` dans l'espace de noms de `random`.
 

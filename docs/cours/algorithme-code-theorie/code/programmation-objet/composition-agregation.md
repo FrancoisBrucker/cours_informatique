@@ -30,7 +30,7 @@ Ce qui les distingue :
 
 Il est important de comprendre que si des objets n'ont pas été crées dans la classe qui l'utilise, ils peuvent être connus par d'autres méthodes du programme et donc être modifiées par celles-ci.
 
-Les exemple de composition et d'agrégation de *la vraie vie* sont souvent un peu bizarre. Mais par exemple :
+Les exemples de composition et d'agrégation de *la vraie vie* sont souvent un peu bizarres. Mais par exemple :
 
 * Un livre est composé de pages : pour créer le livre on a créé les pages : c'est une **composition**
 * Les télécommandes ont besoin de piles pour fonctionner, mais on peut les remplacer : c'est une **agrégation**.
@@ -47,7 +47,7 @@ Prenons un autre exemple, le panier de fruits. Je voudrais modéliser un panier 
 
 * il doit être vide initialement
 * je dois pouvoir ajouter des fruits dans le panier
-* je dois pouvoir montrer les fruits que j'a dans le panier
+* je dois pouvoir montrer les fruits que j'ai dans le panier
 * je dois pouvoir reprendre un fruit du panier
 
 ### modélisation uml
@@ -84,8 +84,8 @@ Pour que l'on puisse faire ces différentes méthodes, il faut que `Panier` puis
 
 ### composition et agrégation
 
-* Le stock est une **composition** : il est crée avec le panier
-* les fruits sont une **agrégation** : ils sont ajouté par une méthode dans l'objet.
+* Le stock est une **composition** : il est créé avec le panier
+* les fruits sont une **agrégation** : ils sont ajoutés par une méthode dans l'objet.
 
 ### code python
 
@@ -165,7 +165,7 @@ La 1ère solution est ce qu'on a pour l'instant.
 
 #### 2nde solution
 
-La seconde solution reviendrait à donner un nouveau panier à chaque fois en modifiant la méthode `donne_panier()` :
+La seconde solution reviendrait à donner un nouveau panier à chaque fois en modifiant la méthode `montre_panier()` :
 
 ```python
 class Panier:
@@ -176,6 +176,8 @@ class Panier:
     
     #...
 ```
+
+#### 3ère solution
 
 Enfin, la dernière solution reviendrait à ne pas pouvoir modifier l'attribut et à le recréer à chaque modification, par exemple dans la méthode `ajoute_fruit()`. On utilise un [tuple](https://python.doctor/page-apprendre-tuples-tuple-python) :
 
@@ -196,9 +198,9 @@ class Panier:
     #...
 ```
 
-Selon que l'on aura beaucoup d'ajout ou beaucoup de montrage de panier, on choisira l'une au l'autre solution. Mais si on a pas d'idée, on préférera **toujours** la 3ème solution qui est la plus robuste.
+Selon que l'on aura beaucoup d'ajouts ou beaucoup de montrages de panier, on choisira l'une au l'autre solution. Mais si on a pas d'idée, on préférera **toujours** la 3ème solution qui est la plus robuste.
 
-Le fait d'avoir des objet qui ne se modifient pas est appelé [value object](https://en.wikipedia.org/wiki/Value_object).
+Le fait d'avoir des objets qui ne se modifient pas est appelé [value object](https://en.wikipedia.org/wiki/Value_object).
 
 Ces objets possèdent des valeurs et des méthodes pour y accéder mais que l'on ne peut pas modifier. La seule façon de changer de valeur c'est de recréer de nouveaux objets. Pour que l'utilisation de ce genre d'objets soit fluide, on fait en sorte qu'ils puissent supporter l'opération `==`.
 
@@ -206,22 +208,6 @@ Vous avez utilisé des value objects bien souvent en python comme : les  entiers
 
 > Une bonne façon de programmer est de n'utiliser par défaut que des objets non modifiables et que si le besoin s'en fait sentir de les rendre modifiables.
 {: .note}
-
-#### 3ère solution
-
-Enfin la troisième solution revient à rendre un tuple dans la méthode `montre_panier` :
-
-```python
-class Panier:
-    # ...
-
-    def montre_panier(self):
-      return tuple(self.stock)
-    
-    #...
-```
-
-C'est la solution la plus simple puisque le reste du code reste identique et l'on a juste fait en sorte de sécuriser notre attribut.
 
 ## tests
 
@@ -265,7 +251,7 @@ def test_supprime_dans_panier():
 ```
 
 > * pour l'initialisation, on vérifie juste que notre objet existe. Comme il n'a pas de paramètre, on ne peut pas tester grand chose d'autre
-> * On crée pour chaque test un nouveau objet, pour être sur que les tests n'interfèrent pas les uns avec les autres
+> * On crée pour chaque test un nouvel objet, pour être sur que les tests n'interfèrent pas les uns avec les autres
 > * Chaque test doit permettre d'utiliser la méthode testée comme elle doit être utilisée dans le code
 {: .note}
 
@@ -273,7 +259,7 @@ def test_supprime_dans_panier():
 
 Les tests doivent nous permettre d'avoir confiance dans la qualité du code. Il faut donc que les tests vérifient tous les cas du code (passent bien par tous les blocs `alors` et `sinon` du code par exemple).
 
-Un outil pour vérifier cela est la [couverture de code](https://fr.wikipedia.org/wiki/Couverture_de_code). On exécute les tests et on regarde, fichier par fichier quelles sont les lignes qui ont été vue pour ces tests.
+Un outil pour vérifier cela est la [couverture de code](https://fr.wikipedia.org/wiki/Couverture_de_code). On exécute les tests et on regarde, fichier par fichier quelles sont les lignes qui ont été vues pour ces tests.
 
 Le [tuto couverture de code]({% link _tutoriels/editeur/vsc/2021-09-14-vsc-python-modules-supplementaires.md %}#code-coverage) vous montre comment l'installer. Son fonctionnement est le suivant :
 
@@ -291,7 +277,7 @@ test_panier.py      16      0   100%
 TOTAL               39     10    74%
 ```
 
-On voit que l'exécution des tests à eu besoin d'utiliser 100% du fichier *"test_panier.py"* (ce qui est normal) et 100% du fichier *"panier.py"*. Le fichier *"main.py"* n'a pas été utilisé du tout (aucune des 10 lignes n'a été vue), ce qui est normal.
+On voit que l'exécution des tests a eu besoin d'utiliser 100% du fichier *"test_panier.py"* (ce qui est normal) et 100% du fichier *"panier.py"*. Le fichier *"main.py"* n'a pas été utilisé du tout (aucune des 10 lignes n'a été vue), ce qui est normal.
 
 > Il faut tenter de passer par 100% du code utile dans nos tests.
 {: .note}
@@ -309,7 +295,7 @@ test_panier.py      11      0   100%
 TOTAL               34     13    62%
 ```
 
-3 lignes de `panier.py` n'ont pas été vue. POur savoir exactement les quelles, la commande `python3 -m pytest --cov=. --cov-report term-missing` donne :
+3 lignes de `panier.py` n'ont pas été vue. Pour savoir exactement les quelles, la commande `python3 -m pytest --cov=. --cov-report term-missing` donne :
 
 ```text
 ---------- coverage: platform darwin, python 3.9.9-final-0 -----------
