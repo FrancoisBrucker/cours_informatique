@@ -96,7 +96,7 @@ composition, d’agrégation et d’attributs de classe.</p>
 
 <p>Il est important de comprendre que si des objets n’ont pas été crées dans la classe qui l’utilise, ils peuvent être connus par d’autres méthodes du programme et donc être modifiées par celles-ci.</p>
 
-<p>Les exemple de composition et d’agrégation de <em>la vraie vie</em> sont souvent un peu bizarre. Mais par exemple :</p>
+<p>Les exemples de composition et d’agrégation de <em>la vraie vie</em> sont souvent un peu bizarres. Mais par exemple :</p>
 
 <ul>
   <li>Un livre est composé de pages : pour créer le livre on a créé les pages : c’est une <strong>composition</strong>
@@ -117,7 +117,7 @@ composition, d’agrégation et d’attributs de classe.</p>
 <ul>
   <li>il doit être vide initialement</li>
   <li>je dois pouvoir ajouter des fruits dans le panier</li>
-  <li>je dois pouvoir montrer les fruits que j’a dans le panier</li>
+  <li>je dois pouvoir montrer les fruits que j’ai dans le panier</li>
   <li>je dois pouvoir reprendre un fruit du panier</li>
 </ul>
 
@@ -154,8 +154,8 @@ composition, d’agrégation et d’attributs de classe.</p>
 <h3 id="composition-et-agrégation">composition et agrégation</h3>
 
 <ul>
-  <li>Le stock est une <strong>composition</strong> : il est crée avec le panier</li>
-  <li>les fruits sont une <strong>agrégation</strong> : ils sont ajouté par une méthode dans l’objet.</li>
+  <li>Le stock est une <strong>composition</strong> : il est créé avec le panier</li>
+  <li>les fruits sont une <strong>agrégation</strong> : ils sont ajoutés par une méthode dans l’objet.</li>
 </ul>
 
 <h3 id="code-python">code python</h3>
@@ -236,7 +236,7 @@ composition, d’agrégation et d’attributs de classe.</p>
 
 <h4 id="2nde-solution">2nde solution</h4>
 
-<p>La seconde solution reviendrait à donner un nouveau panier à chaque fois en modifiant la méthode <code class="language-plaintext highlighter-rouge">donne_panier()</code> :</p>
+<p>La seconde solution reviendrait à donner un nouveau panier à chaque fois en modifiant la méthode <code class="language-plaintext highlighter-rouge">montre_panier()</code> :</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Panier</span><span class="p">:</span>
     <span class="c1"># ...
@@ -246,6 +246,8 @@ composition, d’agrégation et d’attributs de classe.</p>
     
     <span class="c1">#...
 </span></code></pre></div></div>
+
+<h4 id="3ère-solution">3ère solution</h4>
 
 <p>Enfin, la dernière solution reviendrait à ne pas pouvoir modifier l’attribut et à le recréer à chaque modification, par exemple dans la méthode <code class="language-plaintext highlighter-rouge">ajoute_fruit()</code>. On utilise un <a href="https://python.doctor/page-apprendre-tuples-tuple-python">tuple</a> :</p>
 
@@ -265,9 +267,9 @@ composition, d’agrégation et d’attributs de classe.</p>
     <span class="c1">#...
 </span></code></pre></div></div>
 
-<p>Selon que l’on aura beaucoup d’ajout ou beaucoup de montrage de panier, on choisira l’une au l’autre solution. Mais si on a pas d’idée, on préférera <strong>toujours</strong> la 3ème solution qui est la plus robuste.</p>
+<p>Selon que l’on aura beaucoup d’ajouts ou beaucoup de montrages de panier, on choisira l’une au l’autre solution. Mais si on a pas d’idée, on préférera <strong>toujours</strong> la 3ème solution qui est la plus robuste.</p>
 
-<p>Le fait d’avoir des objet qui ne se modifient pas est appelé <a href="https://en.wikipedia.org/wiki/Value_object">value object</a>.</p>
+<p>Le fait d’avoir des objets qui ne se modifient pas est appelé <a href="https://en.wikipedia.org/wiki/Value_object">value object</a>.</p>
 
 <p>Ces objets possèdent des valeurs et des méthodes pour y accéder mais que l’on ne peut pas modifier. La seule façon de changer de valeur c’est de recréer de nouveaux objets. Pour que l’utilisation de ce genre d’objets soit fluide, on fait en sorte qu’ils puissent supporter l’opération <code class="language-plaintext highlighter-rouge">==</code>.</p>
 
@@ -276,21 +278,6 @@ composition, d’agrégation et d’attributs de classe.</p>
 <blockquote class="note">
   <p>Une bonne façon de programmer est de n’utiliser par défaut que des objets non modifiables et que si le besoin s’en fait sentir de les rendre modifiables.</p>
 </blockquote>
-
-<h4 id="3ère-solution">3ère solution</h4>
-
-<p>Enfin la troisième solution revient à rendre un tuple dans la méthode <code class="language-plaintext highlighter-rouge">montre_panier</code> :</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Panier</span><span class="p">:</span>
-    <span class="c1"># ...
-</span>
-    <span class="k">def</span> <span class="nf">montre_panier</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-      <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">stock</span><span class="p">)</span>
-    
-    <span class="c1">#...
-</span></code></pre></div></div>
-
-<p>C’est la solution la plus simple puisque le reste du code reste identique et l’on a juste fait en sorte de sécuriser notre attribut.</p>
 
 <h2 id="tests">tests</h2>
 
@@ -337,7 +324,7 @@ composition, d’agrégation et d’attributs de classe.</p>
 <blockquote class="note">
   <ul>
     <li>pour l’initialisation, on vérifie juste que notre objet existe. Comme il n’a pas de paramètre, on ne peut pas tester grand chose d’autre</li>
-    <li>On crée pour chaque test un nouveau objet, pour être sur que les tests n’interfèrent pas les uns avec les autres</li>
+    <li>On crée pour chaque test un nouvel objet, pour être sur que les tests n’interfèrent pas les uns avec les autres</li>
     <li>Chaque test doit permettre d’utiliser la méthode testée comme elle doit être utilisée dans le code</li>
   </ul>
 </blockquote>
@@ -346,7 +333,7 @@ composition, d’agrégation et d’attributs de classe.</p>
 
 <p>Les tests doivent nous permettre d’avoir confiance dans la qualité du code. Il faut donc que les tests vérifient tous les cas du code (passent bien par tous les blocs <code class="language-plaintext highlighter-rouge">alors</code> et <code class="language-plaintext highlighter-rouge">sinon</code> du code par exemple).</p>
 
-<p>Un outil pour vérifier cela est la <a href="https://fr.wikipedia.org/wiki/Couverture_de_code">couverture de code</a>. On exécute les tests et on regarde, fichier par fichier quelles sont les lignes qui ont été vue pour ces tests.</p>
+<p>Un outil pour vérifier cela est la <a href="https://fr.wikipedia.org/wiki/Couverture_de_code">couverture de code</a>. On exécute les tests et on regarde, fichier par fichier quelles sont les lignes qui ont été vues pour ces tests.</p>
 
 <p>Le <a href="/cours_informatique/tutoriels/editeur/vsc/2021-09-14-vsc-python-modules-supplementaires.html#code-coverage">tuto couverture de code</a> vous montre comment l’installer. Son fonctionnement est le suivant :</p>
 
@@ -366,7 +353,7 @@ test_panier.py      16      0   100%
 TOTAL               39     10    74%
 </code></pre></div></div>
 
-<p>On voit que l’exécution des tests à eu besoin d’utiliser 100% du fichier <em>“test_panier.py”</em> (ce qui est normal) et 100% du fichier <em>“panier.py”</em>. Le fichier <em>“main.py”</em> n’a pas été utilisé du tout (aucune des 10 lignes n’a été vue), ce qui est normal.</p>
+<p>On voit que l’exécution des tests a eu besoin d’utiliser 100% du fichier <em>“test_panier.py”</em> (ce qui est normal) et 100% du fichier <em>“panier.py”</em>. Le fichier <em>“main.py”</em> n’a pas été utilisé du tout (aucune des 10 lignes n’a été vue), ce qui est normal.</p>
 
 <blockquote class="note">
   <p>Il faut tenter de passer par 100% du code utile dans nos tests.</p>
@@ -384,7 +371,7 @@ test_panier.py      11      0   100%
 TOTAL               34     13    62%
 </code></pre></div></div>
 
-<p>3 lignes de <code class="language-plaintext highlighter-rouge">panier.py</code> n’ont pas été vue. POur savoir exactement les quelles, la commande <code class="language-plaintext highlighter-rouge">python3 -m pytest --cov=. --cov-report term-missing</code> donne :</p>
+<p>3 lignes de <code class="language-plaintext highlighter-rouge">panier.py</code> n’ont pas été vue. Pour savoir exactement les quelles, la commande <code class="language-plaintext highlighter-rouge">python3 -m pytest --cov=. --cov-report term-missing</code> donne :</p>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---------- coverage: platform darwin, python 3.9.9-final-0 -----------
 Name             Stmts   Miss  Cover   Missing

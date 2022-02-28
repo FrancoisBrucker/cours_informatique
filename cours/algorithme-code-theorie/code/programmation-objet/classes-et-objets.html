@@ -99,7 +99,7 @@
 
 <h2 id="classes-et-objets">classes et objets</h2>
 
-<p>Lorsque l’on écrit du code python, on ne fait que manipuler des objets. Les entier, les chaines de caractères et même les fonctions peuvent être considérées comme des objets.</p>
+<p>Lorsque l’on écrit du code python, on ne fait que manipuler des objets. Les entiers, les chaines de caractères et même les fonctions peuvent être considérées comme des objets.</p>
 
 <p>De façon générale, on peut considérer que :</p>
 
@@ -119,7 +119,7 @@
 <ul>
   <li>possède la même structure de données que les autres objets de la classe mais les valeurs de celle-ci lui sont uniques : ses <strong>attributs</strong>
 </li>
-  <li>possède un lien vers les méthodes définies dans sa class et on peut les utiliser via la notation pointée : ses <strong>méthodes</strong>
+  <li>possède un lien vers les méthodes définies dans sa classe et on peut les utiliser via la notation pointée : ses <strong>méthodes</strong>
 </li>
 </ul>
 
@@ -131,15 +131,15 @@
 <p>On cherchera <code class="language-plaintext highlighter-rouge">méthode</code> définie pour l’<code class="language-plaintext highlighter-rouge">objet</code>.</p>
 
 <blockquote>
-  <p>Le mécanisme pour réaliser ceci utilise les espaces de noms : on cherche le nom <code class="language-plaintext highlighter-rouge">méthode</code> défini dans l’espace de nom de <code class="language-plaintext highlighter-rouge">objet</code></p>
+  <p>Le mécanisme pour réaliser ceci utilise les espaces de noms : on cherche le nom <code class="language-plaintext highlighter-rouge">méthode</code> défini dans l’espace de noms de <code class="language-plaintext highlighter-rouge">objet</code></p>
 </blockquote>
 
 <h3 id="but">but</h3>
 
-<p>La programmation objet n’a pas pour but de révolutionner votre façon de programmer. Elle permet juste de bien mettre en œuvre les paradigmes de développement que l’on a vu jusqu’à présent. Il est fortement conseiller de <em>coder objet</em> car :</p>
+<p>La programmation objet n’a pas pour but de révolutionner votre façon de programmer. Elle permet juste de bien mettre en œuvre les paradigmes de développement que l’on a vus jusqu’à présent. Il est fortement conseiller de <em>coder objet</em> car :</p>
 
 <ul>
-  <li>cela favorise la factorisation du code (<a href="https://fr.wikipedia.org/wiki/Ne_vous_r%C3%A9p%C3%A9tez_pas">on ne se répète pas</a>) : on ne défini ses méthodes qu’une seule fois dans les classes</li>
+  <li>cela favorise la factorisation du code (<a href="https://fr.wikipedia.org/wiki/Ne_vous_r%C3%A9p%C3%A9tez_pas">on ne se répète pas</a>) : on ne définit ses méthodes qu’une seule fois dans les classes</li>
   <li>lisibilité avec la notation <code class="language-plaintext highlighter-rouge">.</code> : on sait clairement à qui s’applique telle ou telle méthode</li>
   <li>compartimentation du code : chaque partie du code et chaque opération est compartimentée, ce qui permet de les tester et des améliorer indépendamment du reste du code.</li>
   <li>plutôt que de créer un gros programme complexe, on crée plein de petits programmes indépendants (les objets) qui interagissent entre eux.</li>
@@ -183,7 +183,7 @@
 <p>C’est la méthode définie dans la classe <code class="language-plaintext highlighter-rouge">str</code> qui s’appelle <code class="language-plaintext highlighter-rouge">upper</code> qui existe…</p>
 </div></details>
 
-<p>Ce qui fait que le résultat est différent lorsque l’on applique la méthode <code class="language-plaintext highlighter-rouge">upper</code> à <code class="language-plaintext highlighter-rouge">"bonjour"</code> et <code class="language-plaintext highlighter-rouge">"toi"</code> est que ces deux objets, bien que de la même classe, sont différents : dan l’un il y a les caractère “bonjour”, dans l’autres les caractères “toi”.</p>
+<p>Ce qui fait que le résultat est différent lorsque l’on applique la méthode <code class="language-plaintext highlighter-rouge">upper</code> à <code class="language-plaintext highlighter-rouge">"bonjour"</code> et <code class="language-plaintext highlighter-rouge">"toi"</code> est que ces deux objets, bien que de la même classe, sont différents : dans l’un il y a les caractère “bonjour”, dans l’autres les caractères “toi”.</p>
 
 <p>On appelle les spécificités de chaque objet, c’est à dire les valeurs de sa structure de données, des <strong>attributs</strong>.</p>
 
@@ -216,14 +216,14 @@
 
 <p>Pour créer des objets d’une classe, on utilise un <strong>constructeur</strong>.</p>
 
-<p>En python, c’est le nom de la classe. Par Exemples :</p>
+<p>En python, c’est le nom de la classe. Par exemples :</p>
 
 <ul>
   <li>
 <code class="language-plaintext highlighter-rouge">list(range(5))</code> : crée une liste (de type <code class="language-plaintext highlighter-rouge">list</code>) avec le résultat de la fonction <code class="language-plaintext highlighter-rouge">range</code>
 </li>
   <li>
-<code class="language-plaintext highlighter-rouge">float("3.1415")</code> : crée un réel à partir de la chaine de caractère <code class="language-plaintext highlighter-rouge">"3.1415"</code>.</li>
+<code class="language-plaintext highlighter-rouge">float("3.1415")</code> : crée un réel à partir de la chaine de caractères <code class="language-plaintext highlighter-rouge">"3.1415"</code>.</li>
   <li>
 <code class="language-plaintext highlighter-rouge">int(3.1415)</code> : crée un entier à partir du réel <code class="language-plaintext highlighter-rouge">3.1415</code>.</li>
 </ul>
@@ -269,17 +269,17 @@
 
 <h4 id="variables-spéciales">variables spéciales</h4>
 
-<p>En regardant du code python, vous allez voir beaucoup de noms qui commencent par des <code class="language-plaintext highlighter-rouge">_</code>. Ils sont une signification spéciale en python :</p>
+<p>En regardant du code python, vous allez voir beaucoup de noms qui commencent par des <code class="language-plaintext highlighter-rouge">_</code>. Ils ont une signification spéciale en python :</p>
 
 <ul>
   <li>qui commencent par <code class="language-plaintext highlighter-rouge">_</code> : non public. Ce sont des attributs ou méthodes que l’utilisateur n’est pas sensé utiliser. Ils sont uniquement là pour le bon fonctionnement de la classe.</li>
-  <li>qui commencent par <code class="language-plaintext highlighter-rouge">__</code> : privé (non disponibles pour les descendants lorsque l’on fait de l’héritage). Ces attributs ou méthodes sont réservé exclusivement à être utilisé dans la classe.</li>
+  <li>qui commencent par <code class="language-plaintext highlighter-rouge">__</code> : privé (non disponibles pour les descendants lorsque l’on fait de l’héritage). Ces attributs ou méthodes sont réservés exclusivement à être utilisés dans la classe.</li>
   <li>qui commencent et finissent par <code class="language-plaintext highlighter-rouge">__</code> : méthodes spécifiques de python qui ont un sens (par exemple <strong>str</strong>, <strong>eq</strong>), elles sont utilisées dans des cas précis et documentés.</li>
 </ul>
 
-<h4 id="espace-de-nom-namespaces">espace de nom (namespaces)</h4>
+<h4 id="espace-de-noms-namespaces">espace de noms (namespaces)</h4>
 
-<p>La gestion des noms en python se fait via des <a href="/cours_informatique/cours/algorithme-code-theorie/code/programmation-objet/memoire-et-espace-noms.html#espace-noms">espaces de noms</a>. L’ordre dans lequel ces noms sons cherché pour être associé à un objet est logique et se règle en sachant quel namespace est utilisé.</p>
+<p>La gestion des noms en python se fait via des <a href="/cours_informatique/cours/algorithme-code-theorie/code/programmation-objet/memoire-et-espace-noms.html#espace-noms">espaces de noms</a>. L’ordre dans lequel ces noms sons cherchés pour être associés à un objet est logique et se règle en sachant quel namespace est utilisé.</p>
 
 <h2 id="premier-exemple--le-compteur">Premier exemple : le Compteur</h2>
 
@@ -328,7 +328,7 @@
 
 <ol>
   <li>on importe le mot <code class="language-plaintext highlighter-rouge">Compteur</code> et on l’exécute 2 fois pour l’affecter à 2 noms différents : cela <strong>ne doit pas être</strong> une fonction normale, sinon <code class="language-plaintext highlighter-rouge">c1</code> et <code class="language-plaintext highlighter-rouge">c2</code> seraient identiques.</li>
-  <li>on suppose donc que <code class="language-plaintext highlighter-rouge">Compteur</code> est une <em>classe</em> et que l’on a crée 2 <strong>objets</strong> <code class="language-plaintext highlighter-rouge">c1</code> et <code class="language-plaintext highlighter-rouge">c2</code>.</li>
+  <li>on suppose donc que <code class="language-plaintext highlighter-rouge">Compteur</code> est une <em>classe</em> et que l’on a créé 2 <strong>objets</strong> <code class="language-plaintext highlighter-rouge">c1</code> et <code class="language-plaintext highlighter-rouge">c2</code>.</li>
 </ol>
 
 <p><strong>Les objets d’une classe partagent les mêmes méthodes</strong>, donc :</p>
@@ -340,7 +340,7 @@
   <li>je dois pouvoir écrire : <code class="language-plaintext highlighter-rouge">c1.donne_valeur()</code>, même si ce n’est pas écrit dans le code.</li>
 </ul>
 
-<p>De plus, comme j’appelle <code class="language-plaintext highlighter-rouge">c1.ajoute()</code> et <code class="language-plaintext highlighter-rouge">c2.ajoute()</code> sans paramètre on doit surement modifier un attribut des objets <code class="language-plaintext highlighter-rouge">c1</code> et <code class="language-plaintext highlighter-rouge">c2</code>, car les <strong>attributs sont spécifique à chaque objet d’une classe</strong></p>
+<p>De plus, comme j’appelle <code class="language-plaintext highlighter-rouge">c1.ajoute()</code> et <code class="language-plaintext highlighter-rouge">c2.ajoute()</code> sans paramètre on doit surement modifier un attribut des objets <code class="language-plaintext highlighter-rouge">c1</code> et <code class="language-plaintext highlighter-rouge">c2</code>, car les <strong>attributs sont spécifiques à chaque objet d’une classe</strong></p>
 
 <h4 id="exécution-du-programme">exécution du programme</h4>
 
@@ -381,7 +381,7 @@ compteur. Les fonctionnalités sont :</p>
 <p><img src="./assets/classes-2.png" alt="compteur" style="margin: auto;display: block;"></p>
 
 <blockquote>
-  <p>On a utilisé ici un <code class="language-plaintext highlighter-rouge">_</code> en début de nom de la variable <code class="language-plaintext highlighter-rouge">valeur</code> pour signifier qu’elle est <em>privée</em>, c’est à dire que personne d’autre n’a le droit de l’utiliser à part l’objet. Cette convention n’est pas indispensable à utiliser car il est parfois un peut flou de savoir si telle ou telle attribut et <em>privé</em> ou <em>publique</em>…</p>
+  <p>On a utilisé ici un <code class="language-plaintext highlighter-rouge">_</code> en début de nom de la variable <code class="language-plaintext highlighter-rouge">valeur</code> pour signifier qu’elle est <em>privée</em>, c’est à dire que personne d’autre n’a le droit de l’utiliser à part l’objet. Cette convention n’est pas indispensable à utiliser car il est parfois un peu flou de savoir si telle ou telle attribut et <em>privé</em> ou <em>publique</em>…</p>
 </blockquote>
 
 <h3 id="code-python">code python</h3>
@@ -429,20 +429,19 @@ class &lt;nom de la classe&gt;:
   <p>En python, lorsque l’on définit une méthode d’un classe, le 1er paramètre de chaque méthode est <strong>toujours</strong> <code class="language-plaintext highlighter-rouge">self</code>. A l’exécution, python donnera à ce paramètre l’objet qui appelle la méthode, on ne le voit pas lorsque l’on écrit le code.</p>
 </blockquote>
 
-<p>Par exemple dans le code la ligne <code class="language-plaintext highlighter-rouge">c1.ajoute()</code> sera transformée par python en : <code class="language-plaintext highlighter-rouge">Compteur.ajoute(c1)</code> qui peut se lire : on exécute la fonction <code class="language-plaintext highlighter-rouge">ajoute</code> de l’espace de nom du bloc <code class="language-plaintext highlighter-rouge">Compteur</code> avec comme paramètre <code class="language-plaintext highlighter-rouge">c1</code>.</p>
+<p>Par exemple dans le code la ligne <code class="language-plaintext highlighter-rouge">c1.ajoute()</code> sera transformée par python en : <code class="language-plaintext highlighter-rouge">Compteur.ajoute(c1)</code> qui peut se lire : on exécute la fonction <code class="language-plaintext highlighter-rouge">ajoute</code> de l’espace de noms du bloc <code class="language-plaintext highlighter-rouge">Compteur</code> avec comme paramètre <code class="language-plaintext highlighter-rouge">c1</code>.</p>
 
 <p>La première façon d’écrire (<code class="language-plaintext highlighter-rouge">c1.ajoute()</code>) est plus simple à comprendre <strong>pour un humain</strong> et évite les erreurs (la méthode est appliquée à l’objet à gauche du point), alors que la seconde est plus facile à comprendre <strong>pour un ordinateur</strong> en utilisant les espaces de noms et le passage explicite de l’objet appelant.</p>
 
 <blockquote>
-  <p><code class="language-plaintext highlighter-rouge">self</code> qui peut souvent paraître magique. Ce premier paramètre est l’objet qui a appelé la méthode (à gauche du <em>.</em>). C’est la manière explicite de python de montrer quel objet est utilisé. Vous pouvez appeler ce premier paramètre comme vous voulez, mais c’est <strong>très très</strong> déconseillé car votre code en deviendra
+  <p><code class="language-plaintext highlighter-rouge">self</code> peut souvent paraître magique. Ce premier paramètre est l’objet qui a appelé la méthode (à gauche du <em>.</em>). C’est la manière explicite de python de montrer quel objet est utilisé. Vous pouvez appeler ce premier paramètre comme vous voulez, mais c’est <strong>très très</strong> déconseillé car votre code en deviendra
 moins lisible (tout le monde utilise le nom <code class="language-plaintext highlighter-rouge">self</code>).</p>
 </blockquote>
 
 <h3 id="exécution-du-code">exécution du code</h3>
 
-<blockquote>
-  <p>Lorsque l’on définit une classe, python lui associe un espace de noms. Les différents noms définit dans la classes y seront consignés.
-{ .note}</p>
+<blockquote class="note">
+  <p>Lorsque l’on définit une classe, python lui associe un espace de noms. Les différents noms définit dans la classes y seront consignés.</p>
 </blockquote>
 
 <p>Dans l’exemple du compteur, lorsque le fichier <em>“main.py”</em> importe le fichier <em>“compteur.py”</em>, la classe <code class="language-plaintext highlighter-rouge">Compteur</code> y est définie. Dans son namespace seront alors placés les noms :</p>
@@ -453,17 +452,17 @@ moins lisible (tout le monde utilise le nom <code class="language-plaintext high
   <li><code class="language-plaintext highlighter-rouge">donne_valeur</code></li>
 </ul>
 
-<p>Qui correspondent aux noms ds 3 méthodes définies dans la classe.</p>
+<p>Qui correspondent aux noms des 3 méthodes définies dans la classe.</p>
 
 <p>De même :</p>
 
 <blockquote class="note">
   <p>Lorsque l’on crée un objet, python lui associe un espace de noms.</p>
 
-  <p>Son espace de nom parent est celui de sa classe.</p>
+  <p>Son espace de noms parent est celui de sa classe.</p>
 </blockquote>
 
-<p>L’espace de noms de l’objet est important, il est utilisé à chaque notation pointée. Par exemple dans la méthode <code class="language-plaintext highlighter-rouge">__init__</code>, la ligne <code class="language-plaintext highlighter-rouge">self._valeur = 0</code> crée un objet entier (valant 0) et l’affecte au nom <code class="language-plaintext highlighter-rouge">_valeur</code> dans l’espace de nom de l’objet nommé <code class="language-plaintext highlighter-rouge">self</code>.</p>
+<p>L’espace de noms de l’objet est important, il est utilisé à chaque notation pointée. Par exemple dans la méthode <code class="language-plaintext highlighter-rouge">__init__</code>, la ligne <code class="language-plaintext highlighter-rouge">self._valeur = 0</code> crée un objet entier (valant 0) et l’affecte au nom <code class="language-plaintext highlighter-rouge">_valeur</code> dans l’espace de noms de l’objet nommé <code class="language-plaintext highlighter-rouge">self</code>.</p>
 
 <p>Reprenons le code de <em>“main.py”</em>, et exécutons le ligne à ligne :</p>
 
@@ -473,10 +472,10 @@ moins lisible (tout le monde utilise le nom <code class="language-plaintext high
 <code class="language-plaintext highlighter-rouge">from compteur import Compteur</code> :
     <ol>
       <li>cherche un fichier <em>“compteur.py”</em> dans le répertoire courant.</li>
-      <li>on crée un espace de nom <code class="language-plaintext highlighter-rouge">compteur</code>
+      <li>on crée un espace de noms <code class="language-plaintext highlighter-rouge">compteur</code>
 </li>
-      <li>Python exécute le fichier <em>“compteur.py”</em> (il lit chaque ligne) dans l’espace de nom <code class="language-plaintext highlighter-rouge">compteur</code>.</li>
-      <li>Une fois ceci fait, il prend le nom <code class="language-plaintext highlighter-rouge">Compteur</code> dans cet espace et l’ajoute dans l’espace de nom <code class="language-plaintext highlighter-rouge">global</code>. On peut donc utiliser le nom <code class="language-plaintext highlighter-rouge">Compteur</code>
+      <li>Python exécute le fichier <em>“compteur.py”</em> (il lit chaque ligne) dans l’espace de noms <code class="language-plaintext highlighter-rouge">compteur</code>.</li>
+      <li>Une fois ceci fait, il prend le nom <code class="language-plaintext highlighter-rouge">Compteur</code> dans cet espace et l’ajoute dans l’espace de noms <code class="language-plaintext highlighter-rouge">global</code>. On peut donc utiliser le nom <code class="language-plaintext highlighter-rouge">Compteur</code>
 </li>
     </ol>
   </li>
@@ -490,7 +489,7 @@ moins lisible (tout le monde utilise le nom <code class="language-plaintext high
       <li>
 <code class="language-plaintext highlighter-rouge">Compteur()</code> Exécuter une classe revient à :
         <ul>
-          <li>créer un objet vide et lui associer un espace de nom vierge</li>
+          <li>créer un objet vide et lui associer un espace de noms vierge</li>
           <li>chercher la méthode <code class="language-plaintext highlighter-rouge">__init__</code> de la classe et l’exécuter en passant le nouvel objet en premier paramètre :
             <ul>
               <li>pour exécuter une fonction on crée un namespace pour elle.</li>
@@ -509,10 +508,10 @@ moins lisible (tout le monde utilise le nom <code class="language-plaintext high
   </li>
   <li>idem que la ligne précédente avec un nouvel objet</li>
   <li>
-<code class="language-plaintext highlighter-rouge">c1.ajoute()</code> : python cherche le nom <code class="language-plaintext highlighter-rouge">ajoute</code> dans l’espace de nom de l’objet nommé <code class="language-plaintext highlighter-rouge">c1</code>.
+<code class="language-plaintext highlighter-rouge">c1.ajoute()</code> : python cherche le nom <code class="language-plaintext highlighter-rouge">ajoute</code> dans l’espace de noms de l’objet nommé <code class="language-plaintext highlighter-rouge">c1</code>.
     <ol>
       <li>Il regarde d’abord dans l’objet de nom <code class="language-plaintext highlighter-rouge">c1</code>. Ça n’y est pas (dans l’espace de noms de <code class="language-plaintext highlighter-rouge">c1</code> il n’y a que le nom <code class="language-plaintext highlighter-rouge">_valeur</code>).</li>
-      <li>Il regarde donc dans l’espace de nom parent : l’espace de nom de de la classe. Il y est puisqu’<code class="language-plaintext highlighter-rouge">ajoute</code> est une fonction définie.</li>
+      <li>Il regarde donc dans l’espace de noms parent : l’espace de noms de de la classe. Il y est puisqu’<code class="language-plaintext highlighter-rouge">ajoute</code> est une fonction définie.</li>
       <li>On peut maintenant exécuter cette fonction. Comme pour toutes les fonctions définies dans une classe et utilisée par un objet, le premier paramètre est l’objet (le self). Ce mécanisme permet d’utiliser les noms définis dans l’espace de noms de l’objet (ici la valeur de l’objet).</li>
     </ol>
   </li>
@@ -602,7 +601,7 @@ On le fera de cette façon :</p>
 
 <h3 id="paramètre-par-défaut">paramètre par défaut</h3>
 
-<p>Le soucis avec la méthode précédente, c’est que même si le pas est de <code class="language-plaintext highlighter-rouge">1</code> il faut le définir dans la construction de l’objet. Nous allns hanger ça en mettant un <a href="https://docs.python.org/3/tutorial/controlflow.html#default-argument-values">paramètre par défaut</a>.</p>
+<p>Le soucis avec la méthode précédente, c’est que même si le pas est de <code class="language-plaintext highlighter-rouge">1</code> il faut le définir dans la construction de l’objet. Nous allons changer ça en mettant un <a href="https://docs.python.org/3/tutorial/controlflow.html#default-argument-values">paramètre par défaut</a>.</p>
 
 <p>En python cela donne (fichier <em>“compteur.py”</em>) :</p>
 
@@ -621,7 +620,7 @@ On le fera de cette façon :</p>
 <p>On peut utiliser deux fois le même nom <code class="language-plaintext highlighter-rouge">pas</code> car ils sont dans des espaces de noms différent :</p>
 
 <ul>
-  <li>un dans l’espace de nom de la fonction (créé lorsque l’on exécute la fonction et détruit à la fin. Attention : on détruit les noms pas les objets)</li>
+  <li>un dans l’espace de noms de la fonction (créé lorsque l’on exécute la fonction et détruit à la fin. Attention : on détruit les noms pas les objets)</li>
   <li>un dans l’objet lui-même.</li>
 </ul>
 
@@ -691,7 +690,7 @@ en utiliser ici quelques-unes sur notre classe. Ces méthodes se présentent tou
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="n">__main__</span><span class="p">.</span><span class="n">Compteur</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x107149100</span><span class="o">&gt;</span>
 </code></pre></div></div>
 
-<p>La fonction <code class="language-plaintext highlighter-rouge">print</code> appelle la méthode <code class="language-plaintext highlighter-rouge">__str__</code> de notre classe. En effet, <code class="language-plaintext highlighter-rouge">print</code> affiche à l’écran une chaine de caractère. L’Objet à afficher est donc converti en <code class="language-plaintext highlighter-rouge">str</code> avant.</p>
+<p>La fonction <code class="language-plaintext highlighter-rouge">print</code> appelle la méthode <code class="language-plaintext highlighter-rouge">__str__</code> de notre classe. En effet, <code class="language-plaintext highlighter-rouge">print</code> affiche à l’écran une chaine de caractère. L’objet à afficher est donc converti en <code class="language-plaintext highlighter-rouge">str</code> avant.</p>
 
 <p>Comme nous n’avons pas défini cette méthode, c’est donc la méthode par défaut de tous les objets python qui est appelée. Comme vous le constatez, elle n’est pas très intéressante pour nous. Il faut donc la définir dans notre classe.</p>
 
@@ -710,14 +709,14 @@ en utiliser ici quelques-unes sur notre classe. Ces méthodes se présentent tou
 
 <p>Ce qui est bien plus lisible.</p>
 
-<p>Finissons en essayons de comparer deux compteurs :</p>
+<p>Finissons en essayant de comparer deux compteurs :</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">c1</span> <span class="o">=</span> <span class="n">Compteur</span><span class="p">(</span><span class="n">valeur</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">c2</span> <span class="o">=</span> <span class="n">Compteur</span><span class="p">(</span><span class="n">valeur</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 <span class="n">c1</span> <span class="o">&lt;</span> <span class="n">c2</span>
 </code></pre></div></div>
 
-<p>Si on testez ça avec votre code tel qu’il est, on obtiendra :</p>
+<p>Si on teste ça avec votre code tel qu’il est, on obtiendra :</p>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TypeError: '&lt;' not supported between instances of 'Compteur' and 'Compteur'
 </code></pre></div></div>

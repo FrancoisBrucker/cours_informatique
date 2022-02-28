@@ -90,7 +90,7 @@
 <blockquote class="note">
   <p>Lorsque l’on teste un objets et ses méthodes, on essaie dans la mesure du possible de ne pas avoir besoin des attributs. On ne vérifie que les résultats de la méthode, pas comment l’objet stocke ses informations.</p>
 
-  <p>On teste de <strong>fonctionnalités</strong> pas une <strong>implémentation particulière de celles-ci</strong>.</p>
+  <p>On teste des <strong>fonctionnalités</strong> pas une <strong>implémentation particulière de celles-ci</strong>.</p>
 </blockquote>
 
 <h2 id="un-dé">Un Dé</h2>
@@ -142,7 +142,7 @@
 
   <p>Il est impossible de tester le hasard, donc pour la méthode <code class="language-plaintext highlighter-rouge">roll</code> vérifiez juste que la position du dé est cohérente (entre 1 et 6) après l’utilisation de la méthode.</p>
 
-  <p>Vérifiez que vous avez ben 100% de couverture de code.</p>
+  <p>Vérifiez que vous avez bien 100% de couverture de code.</p>
 </blockquote>
 
 <p>Pour jouer avec notre classe dice :</p>
@@ -154,11 +154,11 @@
     <li>demande à l’utilisateur :
       <ul>
         <li>la position initiale du dé</li>
-        <li>la valeur pour laquelle arrêter les lancer</li>
+        <li>la valeur pour laquelle arrêter les lancers</li>
       </ul>
     </li>
     <li>lance le dé jusqu’à tant que la valeur demandée par l’utilsateur soit trouvée.</li>
-    <li>le programme affiche le nombre de lancer nécessaire (celà peut être 0)</li>
+    <li>le programme affiche le nombre de lancer nécessaire (cela peut être 0)</li>
   </ol>
 
 </blockquote>
@@ -220,7 +220,7 @@
   <ul>
     <li>vérifier qu’après la création d’un objet <code class="language-plaintext highlighter-rouge">TapisVert</code> on dispose bien de 5 dés positionnés sur 1.</li>
     <li>vérifiez qu’après avoir lancé les dés, leurs positions sont toujours cohérentes avec le nombre de faces.</li>
-    <li>vérifiez que <code class="language-plaintext highlighter-rouge">TapisVert</code> donne bien ses dés et non une copie de ceux-ci. POur réaliser ceci vous pourrez implémenter le test suivant :
+    <li>vérifiez que <code class="language-plaintext highlighter-rouge">TapisVert</code> donne bien ses dés et non une copie de ceux-ci. Pour réaliser ceci vous pourrez implémenter le test suivant :
       <ol>
         <li>demander les dés d’un objet de type <code class="language-plaintext highlighter-rouge">TapisVert</code>
 </li>
