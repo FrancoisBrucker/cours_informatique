@@ -37,7 +37,7 @@ Ceci devrait vous permettre de diminuer le nombre de WTFs/minute, qui est le mei
 > Faites l'effort de suivre cette séance en codant **en même temps** le projet. Tout est donné mais le voir fonctionner pour de vrai est plus impressionnant que de juste le lire.
 {: .note}
 
-On va exécuter les tests un gazillion de fois. Pour eviter la luxation de l'index il faut retenir les raccourcis claviers qui vont vous permettre de lancer les tests sans problème :
+On va exécuter les tests un million de fois. Pour éviter la luxation de l'index il faut retenir les raccourcis claviers qui vont vous permettre de lancer les tests sans problème :
 
 * dédiez un terminal pour cela. Une fois la commande tapée, il vous suffit de faire *flèche du haut* pour revenir à la commande précédente et l'exécuter
 * lorsque vos tests passent, il est intéressant d'utiliser le raccourci clavier de votre éditeur pour exécuter tous les tests (sous [vscode](https://docs.microsoft.com/fr-fr/visualstudio/ide/default-keyboard-shortcuts-in-visual-studio?view=vs-2022#bkmk_test-global-shortcuts)).
