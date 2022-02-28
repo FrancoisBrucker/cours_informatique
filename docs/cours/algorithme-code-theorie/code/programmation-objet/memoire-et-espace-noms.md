@@ -14,7 +14,7 @@ authors:
 > * [coder]({% link cours/algorithme-code-theorie/code/coder.md %})
 {: .chemin}
 
-On montrer comment on peut gérer les variables dans un programme, et l'utilité des espaces de noms (en prenant l'exemple de python) pour le faire.
+On montre comment on peut gérer les variables dans un programme, et l'utilité des espaces de noms (en prenant l'exemple de python) pour le faire.
 
 Nous ne rentrerons pas dans les détails, la gestion de la mémoire est quelque chose de compliqué. Nous nous contenterons de présenter les caractéristiques fondamentales et les conséquences que cela implique sur la gestion des variables et des objets.
 
@@ -60,9 +60,9 @@ La façon courante de stocker des objets est d'utiliser des **références**. Ma
 
 La mémoire étant une suite fini d'octets, si l'on veut stocker plus qu'un nombre entre 0 et 255 (ou -128, 127 s'il est [signé](https://en.wikipedia.org/wiki/Signed_number_representations)), il faut lui réserver plus d'une case.
 
-Au début de l'informatique, il y avait plusieurs types d'entiers, selon ce qu'on voulait stocker. Pa exemple :
+Au début de l'informatique, il y avait plusieurs types d'entiers, selon ce qu'on voulait stocker. Par exemple :
 
-* pour stocker ds entier de 0 à 255 on avait le `char` ( octet)
+* pour stocker des entier de 0 à 255 on avait le `char` (1 octet)
 * pour stocker des entiers de -32768 à 32767 on avait le type `int` (2 octet)
 * pour des entiers allant de −2147483647 à 2147483647 on avait le type `long` (4 octet)
 
@@ -81,7 +81,7 @@ Ce type de fonctionnement a ses avantages :
 
 Mais cela avait aussi de (très) gros inconvénients :
 
-* comment coder 32768 si je n'ai décidé au départ que ma variable était un `int` ?
+* comment coder 32768 si j'ai décidé au départ que ma variable était un `int` ?
 * on ne peut pas avoir de tableaux combinant plusieurs types d'objets car il est impossible de calculer facilement l'indice donné d'un tableau contenant plusieurs types .
 * si on écrit `i = j`, il **faut** recopier le contenu de `i` (à l'adresse mémoire de `i`) dans `j` (à l'adresse mémoire de `j`) : un même objet ne peut pas avoir plusieurs noms.
 
@@ -96,7 +96,7 @@ Pour cela, il faut dissocier la variable de l'emplacement en mémoire de l'objet
 
 Le moyen de le plus simple de définir une référence, c'est de prendre l'indice de la première case mémoire contenant l'objet.
 
-Prenons un exemple : supposons que notre ordinateur dispose de 16Go octets de RAM. L'indice de notre notre tableau de mémoire va alors de $0$ à $10^9-1$ : il faut 4 octets pour stocker un indice en mémoire.
+Prenons un exemple : supposons que notre ordinateur dispose de 16Go (gigaoctets) de RAM. L'indice de notre tableau de mémoire va alors de $0$ à $10^9-1$ : il faut 4 octets pour stocker un indice en mémoire.
 
 ![référence](./assets/memoire-reference.png){:style="margin: auto;display: block;"}
 
@@ -108,7 +108,7 @@ Les bénéfices de cette méthode sont énormes :
 * un tableau devient un tableau de référence, il peut contenir des types d'objets différents sans soucis
 * on peut facilement modifier un objet, sans avoir à changer toutes les variables qui le référencent.
 
-> Comme on manipule directement les objets, il faut faire attention aux effets de bords lorsqu'e 'on les modifie
+> Comme on manipule directement les objets, il faut faire attention aux effets de bords lorsqu'on les modifie.
 {: .attention}
 
 Par exemple en python :
@@ -186,16 +186,16 @@ Il est important de comprendre que l’opérateur d’affectation `=` n’est pa
 > Une variable n'est **pas** l'objet, c'est une référence à celui-ci
 {: .note}
 
-La variable peut être vue comme le **nom** de l'objet à ce moment du programme. Un objet pourra avoir plein de noms différents au cours de l'exécution du programme, voir plusieurs noms en même temps.
+La variable peut être vue comme le **nom** de l'objet à ce moment du programme. Un objet pourra avoir plein de noms différents au cours de l'exécution du programme, voire plusieurs noms en même temps.
 
-Pour s'y retrouver et et avoir une procédure déterministe pour retrouver les objets associés aux variables, voir choisir parmi plusieurs variables de même noms, elles sont regroupées par ensembles — nommés **espaces de noms** hiérarchiquement ordonnés.
+Pour s'y retrouver et et avoir une procédure déterministe pour retrouver les objets associés aux variables, voire choisir parmi plusieurs variables de même noms, elles sont regroupées par ensembles — nommés **espaces de noms** hiérarchiquement ordonnés.
 
 ## espaces de noms {#espace-noms}
 
 Les espaces de noms nous permettent d'abstraire ce qu'il se passe en mémoire :
 
-* on considère que les objets sont stocké dans *l'espace des objets* : cet espace est **unique**
-* on accède aux objets via leurs noms, eux même stockés des des *espaces de noms* : il y a de **nombreux** espaces de noms.
+* on considère que les objets sont stockés dans *l'espace des objets* : cet espace est **unique**
+* on accède aux objets via leurs noms, eux même stockés dans des *espaces de noms* : il y a de **nombreux** espaces de noms.
 
 Pour chaque *espace de noms* :
 
@@ -205,27 +205,27 @@ Pour chaque *espace de noms* :
 
 > Pour expliciter comment tout ça se passe, on va se concentrer sur le [langage python](https://docs.python.org/3/tutorial/classes.html#python-scopes-and-namespaces), mais la procédure est similaire pour les autres langages à objets.
 
-Lorsque l'on exécute un programme, un premier espace de nom est créé :
+Lorsque l'on exécute un programme, un premier espace de noms est créé :
 
-> Au démarrage d'une exécution d'un programme l'espace de nom principal, nommé `global` est crée.
+> Au démarrage d'une exécution d'un programme, l'espace de noms principal, nommé `global` est créé.
 {: .note}
 
 Au départ, il ne contient rien, à part des noms commençant et finissant par `__`, et qui sont utilisés par python.
 
-> Pour voir les noms définit dans l'espace de nom global, on utilise en python la fonction `globals()`.
+> Pour voir les noms définit dans l'espace de noms global, on utilise en python la fonction `globals()`.
 
-A tout moment de l'exécution d'un programme, un espace de nom pourra être crée. En  revanche :
+A tout moment de l'exécution d'un programme, un espace de noms pourra être créé. En  revanche :
 
-> A tout moment du programme, on pourra créer un nouvel espace de nom : de nombreux espaces de noms pourront être définis, mais il existera toujours **un** espace de nom courant qui où l'on créera les et où dont on cherchera le nom par défaut.
+> A tout moment du programme, on pourra créer un nouvel espace de noms : de nombreux espaces de noms pourront être définis, mais il existera toujours **un** espace de noms courant où l'on créera les variables et où on cherchera les noms par défaut.
 {: .note}
 
 On donnera dans la suite de cette partie des exemples qui permettront de mieux comprendre ce processus.
 
-> Pour voir les noms définit dans l'espace de nom courant, on utilise en python la fonction `locals()`.
+> Pour voir les noms définis dans l'espace de noms courant, on utilise en python la fonction `locals()`.
 
 ### noms et variables
 
-Prenons plusieurs exemples, qui illustrerons les cas principaux.
+Prenons plusieurs exemples, qui illustreront les cas principaux.
 
 #### association objet et noms
 
@@ -239,18 +239,18 @@ y = 1
 Exécutons le ligne à ligne :
 
 1. avant l'exécution de la première ligne :
-   1. on a un unique espace de nom (`global`) qui est l'espace courant (en vert sur la figure)
+   1. on a un unique espace de noms (`global`) qui est l'espace courant (en vert sur la figure)
    2. ![cas-1-1](./assets/cas-1-1.png){:style="margin: auto;display: block;"}
 2. on exécute la première ligne. Elle s'exécute ainsi :
    1. on commence à droite du `=` : on crée un objet de type entier
-   2. on crée le nom `x` dans l'espace de nom courant (ici `global`) et on lui affecte l'objet.
+   2. on crée le nom `x` dans l'espace de noms courant (ici `global`) et on lui affecte l'objet.
    3. ![cas-1-2](./assets/cas-1-2.png){:style="margin: auto;display: block;"}
 3. on exécute la deuxième ligne. Elle s'exécute ainsi :
    1. on commence à droite du `=` : on crée un objet de type entier
-   2. on crée le nom `y` dans l'espace de nom courant (ici `global`) et on lui affecte l'objet.
+   2. on crée le nom `y` dans l'espace de noms courant (ici `global`) et on lui affecte l'objet.
    3. ![cas-1-3](./assets/cas-1-3.png){:style="margin: auto;display: block;"}
 
-A la fin du programme, il y a **2 objets entiers différents** (même si tous les 2 valent 1), dont les noms sont, dans l'espace de nom global, respectivement `x`et `y`.
+A la fin du programme, il y a **2 objets entiers différents** (même si tous les 2 valent 1), dont les noms sont, dans l'espace de noms global, respectivement `x`et `y`.
 
 #### réutilisation du même nom
 
@@ -262,15 +262,15 @@ x = 3
 Exécutons le ligne à ligne :
 
 1. avant l'exécution de la première ligne :
-   1. on a un unique espace de nom (`global`) qui est l'espace courant (en vert sur la figure)
+   1. on a un unique espace de noms (`global`) qui est l'espace courant (en vert sur la figure)
    2. ![cas-1-1](./assets/cas-1-1.png){:style="margin: auto;display: block;"}
 2. on exécute la première ligne. Elle s'exécute ainsi :
    1. on commence à droite du `=` : on crée un objet de type entier
-   2. on crée le nom `x` dans l'espace de nom courant (ici `global`) et on lui affecte l'objet.
+   2. on crée le nom `x` dans l'espace de noms courant (ici `global`) et on lui affecte l'objet.
    3. ![cas-1-2](./assets/cas-1-2.png){:style="margin: auto;display: block;"}
 3. on exécute la deuxième ligne. Elle s'exécute ainsi :
    1. on commence à droite du `=` : on crée un objet de type entier
-   2. on crée le nom `x` dans l'espace de nom courant (ici `global`) et on lui affecte l'objet.
+   2. on crée le nom `x` dans l'espace de noms courant (ici `global`) et on lui affecte l'objet.
    3. ![cas-2-1](./assets/cas-2-1.png){:style="margin: auto;display: block;"}
 
 Notez que le fait qu'un nom identique existe déjà n'est pas important. Le nouveau nom écrase l'autre :
@@ -297,15 +297,15 @@ y = x
 Exécutons le ligne à ligne :
 
 1. avant l'exécution de la première ligne :
-   1. on a un unique espace de nom (`global`) qui est l'espace courant (en vert sur la figure)
+   1. on a un unique espace de noms (`global`) qui est l'espace courant (en vert sur la figure)
    2. ![cas-1-1](./assets/cas-1-1.png){:style="margin: auto;display: block;"}
 2. on exécute la première ligne. Elle s'exécute ainsi :
    1. on commence à droite du `=` : on crée un objet de type entier
-   2. on crée le nom `x` dans l'espace de nom courant (ici `global`) et on lui affecte l'objet.
+   2. on crée le nom `x` dans l'espace de noms courant (ici `global`) et on lui affecte l'objet.
    3. ![cas-1-2](./assets/cas-1-2.png){:style="margin: auto;display: block;"}
 3. on exécute la deuxième ligne. Elle s'exécute ainsi :
-   1. on commence à droite du `=` : on cherche le nom `x` dans l'espace de nom courant. On le trouve et on lui substitue son objet (un entier valant 1)
-   2. on crée le nom `x` dans l'espace de nom courant (ici `global`) et on lui affecte l'objet.
+   1. on commence à droite du `=` : on cherche le nom `x` dans l'espace de noms courant. On le trouve et on lui substitue son objet (un entier valant 1)
+   2. on crée le nom `x` dans l'espace de noms courant (ici `global`) et on lui affecte l'objet.
    3. ![cas-3-1](./assets/cas-3-1.png){:style="margin: auto;display: block;"}
 
 Le programme n'a crée qu'un objet (un entier valant 1) et il a deux noms (`x` et `y`) :
@@ -334,17 +334,17 @@ Cela marche car on commence par remplacer les variables par les objets (la droit
 
 ### fonctions
 
-L'exécution d'une fonction est un moment où un espace de nom est créé. Cela se passe  selon le processus suivant :
+L'exécution d'une fonction est un moment où un espace de noms est créé. Cela se passe  selon le processus suivant :
 
 > Lorsque l'on exécute une fonction on procède comme suit :
 >
-> 1. on crée un nouvel espace de nom $F$
-> 2. l'espace de nom courant est affecté au parent de $F$
-> 3. $F$ devient le nouvel espace de nom courant.
+> 1. on crée un nouvel espace de noms $F$
+> 2. l'espace de noms courant est affecté au parent de $F$
+> 3. $F$ devient le nouvel espace de noms courant.
 > 4. on affecte les paramètres de la fonction à leurs noms
 > 5. on exécute ligne à ligne la fonction
-> 6. le parent de $F$ devient le nouvel espace de nom courant
-> 7. on supprime l'espace de nom $F$
+> 6. le parent de $F$ devient le nouvel espace de noms courant
+> 7. on supprime l'espace de noms $F$
 
 #### exécution d'une fonction
 
@@ -367,40 +367,40 @@ x = f(i)
 Exécutons le ligne à ligne :
 
 1. avant l'exécution de la première ligne :
-   1. on a un unique espace de nom (`global`) qui est l'espace courant (en vert sur la figure)
+   1. on a un unique espace de noms (`global`) qui est l'espace courant (en vert sur la figure)
    2. ![cas-1-1](./assets/cas-1-1.png){:style="margin: auto;display: block;"}
-2. la ligne 2 définit une fonction de nom `f` qui est ajouté à l'espace de nom courant.
+2. la ligne 2 définit une fonction de nom `f` qui est ajouté à l'espace de noms courant.
    1. ![cas-4-1](./assets/cas-4-1.png){:style="margin: auto;display: block;"}
 3. on passe directement à la ligne 5 puisque les lignes 3 et 4 sont le contenu de la fonction.
    1. Cette ligne crée un objet entier (valant 2) et l'affecte au nom `i`.
    2. ![cas-4-2](./assets/cas-4-2.png){:style="margin: auto;display: block;"}
 4. la ligne 6 est encore une affectation. On commence par trouver l'objet à droite du `=` c'est le résultat de `f(i)`. Il faut donc exécuter la fonction `f` pour connaître cet objet :
    1. on cherche l'objet associé à `i` qui sera le (premier) paramètre de la fonction
-   2. on crée un espace de nom qui devient l'espace de nom courant :
-      1. l'ancien espace de nom courant devient son parent
+   2. on crée un espace de noms qui devient l'espace de noms courant :
+      1. l'ancien espace de noms courant devient son parent
       2. ![cas-4-3](./assets/cas-4-3.png){:style="margin: auto;display: block;"}
    3. on affecte le premier paramètre de `f` au nom `x`(le nom du premier paramètre de `f` lors de sa définition)
-      1. les nouveaux noms sont **toujours** créés dans l'espace de nom courant
+      1. les nouveaux noms sont **toujours** créés dans l'espace de noms courant
       2. ![cas-4-4](./assets/cas-4-4.png){:style="margin: auto;display: block;"}
    4. on exécute la ligne 2 qui est la première ligne de la fonction `f` :
-      1. on crée un objet entier (valant 4) qui est le résultat de l'opération à droite du `=` (notez que le nom `x` est bien défini dans l'espace de nom courant) et on l'affecte au nom `i` dans l'espace de nom courant
+      1. on crée un objet entier (valant 4) qui est le résultat de l'opération à droite du `=` (notez que le nom `x` est bien défini dans l'espace de noms courant) et on l'affecte au nom `i` dans l'espace de noms courant
       2. ![cas-4-5](./assets/cas-4-5.png){:style="margin: auto;display: block;"}
    5. on exécute la ligne 3 :
       1. on crée l'objet résultant de l'opération somme (un entier valant 7)
-      2. la fonction est terminée, son espace de nom courant est détruit
-      3. l'espace de nom courant devient le parent de l'espace de nom détruit
+      2. la fonction est terminée, son espace de noms courant est détruit
+      3. l'espace de noms courant devient le parent de l'espace de noms détruit
       4. ![cas-4-6](./assets/cas-4-6.png){:style="margin: auto;display: block;"}
       5. on rend l'objet résultat de la fonction
-   6. la droite du signe `=` de la ligne 6 est trouvée (c'est un entier valant 6) et il est affecté à la variable `x` de l'espace de nom courant (qui est à nouveau `global`)
+   6. la droite du signe `=` de la ligne 6 est trouvée (c'est un entier valant 7) et il est affecté à la variable `x` de l'espace de noms courant (qui est à nouveau `global`)
       1. ![cas-4-7](./assets/cas-4-7.png){:style="margin: auto;display: block;"}
       2. les objets sans nom sont détruits
       3. ![cas-4-8](./assets/cas-4-8.png){:style="margin: auto;display: block;"}
 
 #### espaces de noms parent
 
-L'espace de nom parent sert lorsque l'on cherche un nom qui n'est pas défini dans l'espace de nom courant :
+L'espace de noms parent sert lorsque l'on cherche un nom qui n'est pas défini dans l'espace de noms courant :
 
-> Si un nom est recherché, mais que celui-ci n'est défini dans l'espace de nom courant, le nom est recherché dans l'espace de nom parent de l'espace courant.
+> Si un nom est recherché, mais que celui-ci n'est défini dans l'espace de noms courant, le nom est recherché dans l'espace de noms parent de l'espace courant.
 {: .note}
 
 <style>
@@ -424,16 +424,16 @@ Lors de l'exécution de la fonction `f` (instruction de la ligne 7), sa premièr
 
 ![cas-5-1](./assets/cas-5-1.png){:style="margin: auto;display: block;"}
 
-La variable `C` n'existe pas dans l'espace de nom courant (celui de `f`), le programme va alors cherche dans l'espace de nom parent s'il existe. Ici c'est le cas puisque l'espace parent de `f` est `global` dans lequel `C` est défini : le programme ne produit donc pas une erreur et trouve le bon objet.
+La variable `C` n'existe pas dans l'espace de noms courant (celui de `f`), le programme va alors chercher dans l'espace de noms parent s'il existe. Ici c'est le cas puisque l'espace parent de `f` est `global` dans lequel `C` est défini : le programme ne produit donc pas une erreur et trouve le bon objet.
 
-> Les variables sont **toujours** crées dans l'espace d nom courant, mais leur recherche remonte de parent en parent jusqu'à la trouver.
+> Les variables sont **toujours** créées dans l'espace de noms courant, mais leur recherche remonte de parent en parent jusqu'à la trouver.
 {:.note}
 
 ### import
 
-Lorsque l'on importe un fichier, un espace de nom est créé et le fichier entier est lu. Lors de sa lecture, les noms définis sont placés dans cet espace.
+Lorsque l'on importe un fichier, un espace de noms est créé et le fichier entier est lu. Lors de sa lecture, les noms définis sont placés dans cet espace.
 
-> Les modules possèdent un espace de nom qui contient les variables qui y sont définies
+> Les modules possèdent un espace de noms qui contient les variables qui y sont définies
 {: .note}
 
 ```python
@@ -445,11 +445,11 @@ print(log(random.randint(1, 42)))
 
 Avant l'exécution de l'instruction `print` on est dans cet état :
 
-![cas-6-1](./assets/cas-4-8.png){:style="margin: auto;display: block;"}
+![cas-6-1](./assets/cas-6-1.png){:style="margin: auto;display: block;"}
 
-On accède à l'espace de nom du module par la notation pointée : `random.randint` signifie le nom `randint` dans l'espace de nom de `random`.
+On accède à l'espace de noms du module par la notation pointée : `random.randint` signifie le nom `randint` dans l'espace de noms de `random`.
 
-> notez que le module `math` n'a plus d'espace de nom associé puisque l'on a juste *récupéré* un nom qui y est défini.
+> notez que le module `math` n'a plus d'espace de noms associé puisque l'on a juste *récupéré* un nom qui y est défini.
 
 ## notation pointée
 
@@ -462,9 +462,9 @@ c = "coucou"
 c2 = c.uppercase()
 ```
 
-Le nom `uppercase` est défini dans l'espace de nom de la chaine de caractère `"coucou"` (en fait, c'est dans sa classe, mais on le verra précisément plus tard).
+Le nom `uppercase` est défini dans l'espace de noms de la chaine de caractère `"coucou"` (en fait, c'est dans sa classe, mais on le verra précisément plus tard).
 
-C'est une notation **très puissante** ! Il ne faut pas avoir peur de chainer ces notations. ON appelle cela des chaînages :
+C'est une notation **très puissante** ! Il ne faut pas avoir peur de chainer ces notations. On appelle cela des chaînages :
 
 ```python
 a.b.c.d()
@@ -472,7 +472,7 @@ a.b.c.d()
 
 Signifie :
 
-1. On exécute `d` qui est dans l'espace de nom de `a.b.c`
-2. `c` est dans l'espace de nom de `a.b`
-3. `b` est dans l'espace de nom de `a`
+1. On exécute `d` qui est dans l'espace de noms de `a.b.c`
+2. `c` est dans l'espace de noms de `a.b`
+3. `b` est dans l'espace de noms de `a`
 4. `a` est dans l'espace de noms courant.
