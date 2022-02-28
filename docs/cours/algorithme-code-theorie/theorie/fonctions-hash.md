@@ -276,6 +276,9 @@ Les fonctions de hachages sont même utilisées pour stocker les mots de passe s
 
 ## hash cryptographique
 
+> ici
+{: .tbd}
+
 ### propriétés en plus
 
 * doit changer (beaucoup) si on change un peu l'entrée (crypto)
