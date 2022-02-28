@@ -841,6 +841,14 @@
   <p>Son but est de pouvoir traiter un groupe d’individu comme un seul. Il utilise une structuration récursive pour cela.</p>
 </blockquote>
 
+<p>Le diagramme de classe du pattern composite peut -être vu comme ça :</p>
+
+<p><img src="./assets/composite.png" alt="composite" style="margin: auto;display: block"></p>
+
+<p>Un noeud va être composé d’autre noeud ou de feuilles, les deux classes ayant une méthode <code class="language-plaintext highlighter-rouge">opération</code>. La méthode <code class="language-plaintext highlighter-rouge">opération</code> de la classe noeud consistant uniquement à successivement appeler la méthode <code class="language-plaintext highlighter-rouge">opérations</code> pour chacun de ses enfants. La terminaison intervenant lorsqu’est appelé la méthode opération d’une feuille.</p>
+
+<p>L’intérêt principal de ce design pattern est que la façon d’appeler la méthode <code class="language-plaintext highlighter-rouge">opération</code> est identique pour un ensemble ou un unique élément.</p>
+
 <h3 id="faire-exp-1">faire</h3>
 
 <p>A priori, une partie de la somme de sommes est déjà implémentée. Regardez comment <code class="language-plaintext highlighter-rouge">Somme</code> est construite, en particulier la méthode <code class="language-plaintext highlighter-rouge">__add__</code>.</p>
