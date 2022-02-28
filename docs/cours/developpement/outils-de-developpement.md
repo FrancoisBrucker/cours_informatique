@@ -60,7 +60,7 @@ print("bonjour les gens !")
 
 ```
 
-Exécutez le deux manière que vous avez vu dans [le tutorial python et vscode]({% post_url tutos/editeur/vsc/2021-09-14-vsc-python %}#execution-python) :
+Exécutez le deux manière que vous avez vu dans [le tutorial python et vscode]({% link _tutoriels/editeur/vsc/2021-09-14-vsc-python.md %}#execution-python) :
 
 * avec le terminal
 * avec le triangle
@@ -79,7 +79,7 @@ Pour cela il faut que le style de code soit cohérent. Python donne des règle d
 
 ### linter
 
-Suivez la partie [linter]({% post_url tutos/editeur/vsc/2021-09-14-vsc-python-modules-supplementaires %}#linter) du tuto des installations supplémentaires.
+Suivez la partie [linter]({% link _tutoriels/editeur/vsc/2021-09-14-vsc-python-modules-supplementaires.md %}#linter) du tuto des installations supplémentaires.
 
 Puis testons le de suite. Modifiez le fichier *"main.py"* pour écrire :
 
@@ -143,7 +143,7 @@ En code comme dans la vie, il faut faire rapidement ce que l'on fait souvent. Co
 
 Quand on utilise black, c'est facile d'écire du joli code : il le fait tout seul.
 
-Suivez la partie [black]({% post_url tutos/editeur/vsc/2021-09-14-vsc-python-modules-supplementaires %}#black) du tuto des installations supplémentaires.
+Suivez la partie [black]({% link _tutoriels/editeur/vsc/2021-09-14-vsc-python-modules-supplementaires.md %}#black) du tuto des installations supplémentaires.
 
 Testons black, en modifiant le fichier *"le_code.py"* :
 
@@ -166,7 +166,7 @@ def bonjour():
 
 Les tests permettent de vérifier que notre code fonctionne. Ils sont parti du programme et on peut s'y référer quand on veut. Lorsque l'on modifie le code, on pourra toujours exécuter tous les tests pour vérifier que notre programme fonctionne toujours aussi bien qu'avant.
 
-Mettez en place les outils pour exécuter les tests en suivant la partie [tests]({% post_url tutos/editeur/vsc/2021-09-14-vsc-python-modules-supplementaires %}#tests).
+Mettez en place les outils pour exécuter les tests en suivant la partie [tests]({% link _tutoriels/editeur/vsc/2021-09-14-vsc-python-modules-supplementaires.md %}#tests).
 
 ### test des tests
 

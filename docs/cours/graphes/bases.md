@@ -36,7 +36,7 @@ C'est cette dernière définition que nous adopterons.
 
 Le multi-graphe $G = (V, E)$ avec :
 
-* $V = {1, 2, 3, 4, 5}$,
+* $V = \\{1, 2, 3, 4, 5\\}$,
 * $E = ((1, 2), (2, 3), (2, 2), (1, 2), (4, 5), (5, 4))$.
 
 Peut se représenter graphiquement (sur le plan) :
@@ -56,12 +56,13 @@ Ils sont très utilisés lorsque l'on cherche **une solution globale à partir d
 
 * [google maps](https://www.google.fr/maps/dir/). On cherche un itinéraire entre deux villes en ne connaissant à priori que ce qui se passe entre deux croisement consécutifs, mais on connaît tous les croisements,
 * les contraintes d'allocations de ressources. Les sommets sont les antennes et les arêtes si il y a des interférences possibles, on cherche à trouver une [coloration du graphe](https://fr.wikipedia.org/wiki/Coloration_de_graphe),
-* problèmes de transports où l'on veut distribuer le plus de ressources possibles dans un réseau routier/fluvial/informatique.
+* problèmes de transports où l'on veut distribuer le plus de ressources possibles dans un réseau routier/fluvial/informatique,
+* problèmes de construction ou de maintien de réseaux
 
 Ils sont aussi très utiles de modélisation pour comprendre le réel en utilisant des classes particulières de multi-graphes. Ainsi :
 
 * le modèle arboré des [arbres phylogénétique](https://fr.wikipedia.org/wiki/Arbre_phylog%C3%A9n%C3%A9tique) modélisent l'évolution des espèces
-* des graphes aléatoire générrés en utilisant par exmple [le modèle de Barabasi-Albert](https://fr.wikipedia.org/wiki/Mod%C3%A8le_de_Barab%C3%A1si-Albert) permettent de créer des graphes "*petit monde*" typiques des réseaux sociaux ou de l'internet.
+* des graphes aléatoire générés en utilisant par exemple [le modèle de Barabasi-Albert](https://fr.wikipedia.org/wiki/Mod%C3%A8le_de_Barab%C3%A1si-Albert) permettent de créer des graphes "*petit monde*" typiques des réseaux sociaux ou de l'internet.
 
 Enfin, ils procurent une satisfaction purement esthétique de part la grande beauté des démonstrations.
 
@@ -79,7 +80,7 @@ On appelle **graphe simple** un graphe sans boucle et non orienté. Classiquemen
 * *graphe avec boucles* si le graphe peut posséder des boucles,
 * ...
 
-Par abus de langage on écrira $xy$ pour designer une arête (*resp.* arc) plutôt que $\{x, y\}$ (*resp.* $(x, y)$).
+Par abus de langage on écrira $xy$ pour designer une arête (*resp.* arc) plutôt que $\\{x, y\\}$ (*resp.* $(x, y)$).
 
  >**Nota Bene :** ne soyez pas étonné que selon l'application ou le problème étudié on appelle graphe, le cas particulier de mutli-graphe qui nous intéresse. Donc parfois, selon le contexte, un graphe sera orienté et dans d'autres cas il ne le sera pas s'il n'y a pas de confusion possible. En cas de doute, revenez au vocabulaire précis.
 

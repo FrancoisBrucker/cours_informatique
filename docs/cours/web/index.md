@@ -23,8 +23,8 @@ Pour démarrer :
 
 Plus tard :
 
-* avoir accès au [terminal]({% post_url tutos/systeme/2021-08-24-terminal %})
-* posséder [un vrai éditeur de texte]({% post_url tutos/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main %})
+* avoir accès au [terminal]({% link _tutoriels/systeme/2021-08-24-terminal.md %})
+* posséder [un vrai éditeur de texte]({% link _tutoriels/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main.md %})
 
 ## Introduction
 

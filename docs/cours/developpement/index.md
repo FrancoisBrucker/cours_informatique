@@ -17,12 +17,12 @@ Les connaissances et les outils que vous devez avoir pour commencer le cours.
 
 Pour développer, il faudra coder et exécuter du code. Il vous faut donc un ordinateur (portable ou tour) en état de marche. Il devra être sous un des trois systèmes d'exploitation suivant windows, macos ou linux.
 
-Vous devez dans l'idéal être administrateur de votre ordinateur et avoir fait [une installation fraîche de tout votre système]({% post_url tutos/systeme/2021-09-01-installation-ordinateur %}) pour éviter toutes interférences lors de nos installations.
+Vous devez dans l'idéal être administrateur de votre ordinateur et avoir fait [une installation fraîche de tout votre système]({% link _tutoriels/systeme/2021-09-01-installation-ordinateur.md %}) pour éviter toutes interférences lors de nos installations.
 
 ### connaissances système minimale
 
-* connaitre les bases d'un système d'exploitation, [les fichiers et les dossiers]({% post_url tutos/systeme/2021-08-24-fichiers-navigation %})
-* avoir accès à un [terminal]({% post_url tutos/systeme/2021-08-24-terminal %})
+* connaitre les bases d'un système d'exploitation, [les fichiers et les dossiers]({% link _tutoriels/systeme/2021-08-24-fichiers-navigation.md %})
+* avoir accès à un [terminal]({% link _tutoriels/systeme/2021-08-24-terminal.md %})
 
 ### base d'algorithmie
 
@@ -70,6 +70,6 @@ Créer et utiliser les objets et les classes en python. On montrera également l
 
 ## les références
 
-* [installation complète de python]({% post_url /tutos/python/2021-08-20-installation-de-python %})
+* [installation complète de python]({% link _tutoriels/python/2021-08-20-installation-de-python.md %})
 * [tutoriel python](https://docs.python.org/fr/3/tutorial/)
 * [figures uml](./programmation-objet/plantuml.txt)

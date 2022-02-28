@@ -219,7 +219,7 @@ On peut maintenant supprimer vos tests de *"numerologie/numerologie.js*. On pour
 Plusieurs remarques :
 
 * on a été obligé d'importer la bibliothèque `fs`. Dans un interpréteur node elle est importée par défaut, pas lorsque l'on exécute le fichier. Retenez d'un import node que l'on utilise [`require`](https://nodejs.org/en/knowledge/getting-started/what-is-require/) et que l'**on importe quelque chose** : le résultat de l'import doit être placé dans une variable
-* on importe depuis un fichier dans le dossier *"tests"*. Le fichier *"numerologie/numerologie.js"* étant dans le dossier parent, on utilise la [notation *"../*"]({% post_url tutos/systeme/2021-08-24-fichiers-navigation %}#block-.-..).
+* on importe depuis un fichier dans le dossier *"tests"*. Le fichier *"numerologie/numerologie.js"* étant dans le dossier parent, on utilise la [notation *"../*"]({% link _tutoriels/systeme/2021-08-24-fichiers-navigation.md %}#block-.-..).
 * on a combiné la lecture et l'eval en une seule ligne.
 
 ## Tache 4 : somme itérative

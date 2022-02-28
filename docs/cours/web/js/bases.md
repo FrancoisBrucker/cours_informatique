@@ -71,11 +71,11 @@ Vous pouvez utiliser [nodesource](https://github.com/nodesource/distributions/bl
 {% details sous Mac %}
 Comme dit dans le tuto d'installation, on utilise le gestionnaire de package [brew](https://brew.sh/).
 
-Une fois celui ci installé, on tape dans un [terminal]({% post_url tutos/systeme/2021-08-24-terminal %}) la commande : `brew install node`
+Une fois celui ci installé, on tape dans un [terminal]({% link _tutoriels/systeme/2021-08-24-terminal.md %}) la commande : `brew install node`
 {% enddetails %}
 
 {% details sous Windows %}
-Vous téléchargez la version courante de node : <https://nodejs.org/en/download/current/>. 
+Vous téléchargez la version courante de node : <https://nodejs.org/en/download/current/>.
 {% enddetails %}
 
 > Il existe 2 versions de Node](https://nodejs.org/en/), la *LTS (long term support)* et la *current*. On choisira la version *current* qui est la plus récente. La version *LTS* est là pour des raisons de compatibilité.
@@ -83,7 +83,7 @@ Vous téléchargez la version courante de node : <https://nodejs.org/en/download
 
 #### utilisation de node
 
-Une fois <https://nodejs.org/en/>, tapez `node` dans un [terminal]({% post_url tutos/systeme/2021-08-24-terminal %}). Vous êtes dans un interpréteur javascript. Vous pouvez ensuite taper `console.log("bonjour monde !")`. Vous devriez obtenir quelque chose du genre : 
+Une fois <https://nodejs.org/en/>, tapez `node` dans un [terminal]({% link _tutoriels/systeme/2021-08-24-terminal.md %}). Vous êtes dans un interpréteur javascript. Vous pouvez ensuite taper `console.log("bonjour monde !")`. Vous devriez obtenir quelque chose du genre : 
 
 ```js
 > console.log("coucou")
@@ -106,7 +106,7 @@ console.log("bonjour " + nom + " !")
 
 Qu'on pourra exécuter avec la commande : `node hello.js` dans un terminal se trouvant dans le dossier contenant le fichier *"hello.js"*.
 
-> Soyez à l'aise avec la notion de [terminal]({% post_url tutos/systeme/2021-08-24-terminal %}) et de [dossiers]({% post_url tutos/systeme/2021-08-24-fichiers-navigation %}). Entraînez vous si nécessaire.
+> Soyez à l'aise avec la notion de [terminal]({% link _tutoriels/systeme/2021-08-24-terminal.md %}) et de [dossiers]({% link _tutoriels/systeme/2021-08-24-fichiers-navigation.md %}). Entraînez vous si nécessaire.
 {: .attention}
 
 Pour la bonne bouche, un petit exemple de javascript utilisant node un peu plus compliqué : 
