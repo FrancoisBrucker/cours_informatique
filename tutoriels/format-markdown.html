@@ -16,11 +16,11 @@
 <meta property="og:url" content="/cours_informatique/tutoriels/format-markdown.html">
 <meta property="og:site_name" content="cours d’informatique">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2022-03-01T05:40:42+00:00">
+<meta property="article:published_time" content="2022-03-01T06:22:19+00:00">
 <meta name="twitter:card" content="summary">
 <meta property="twitter:title" content="Format markdown">
 <script type="application/ld+json">
-{"headline":"Format markdown","dateModified":"2022-03-01T05:40:42+00:00","datePublished":"2022-03-01T05:40:42+00:00","description":"Une introduction au format markdown.","mainEntityOfPage":{"@type":"WebPage","@id":"/cours_informatique/tutoriels/format-markdown.html"},"@type":"BlogPosting","url":"/cours_informatique/tutoriels/format-markdown.html","@context":"https://schema.org"}</script>
+{"headline":"Format markdown","dateModified":"2022-03-01T06:22:19+00:00","datePublished":"2022-03-01T06:22:19+00:00","description":"Une introduction au format markdown.","mainEntityOfPage":{"@type":"WebPage","@id":"/cours_informatique/tutoriels/format-markdown.html"},"@type":"BlogPosting","url":"/cours_informatique/tutoriels/format-markdown.html","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
@@ -84,14 +84,113 @@
 <p>L’intérêt de ce format de fichier texte est qu’il est parfaitement lisible dans tout éditeur de texte et qu’on peut de plus le <em>compiler</em> dans un autre format comme le pdf ou encore le html si on veut le partager.</p>
 
 <blockquote>
-  <p>Par exemple, tout ce site a par exemple été écrit en markdown avant d’être compié en html. Le code source du site est <a href="https://github.com/FrancoisBrucker/cours_informatique">visible</a>, en particulier le code source de <a href="">ce fichier</a> (cliquez sur le bouton <code class="language-plaintext highlighter-rouge">raw</code> à droite, juste avant que le fichier ne soit représenté).</p>
+  <p>Tout ce site par exemple été écrit en markdown avant d’être compilé en html. Le code source est <a href="https://github.com/FrancoisBrucker/cours_informatique">visible</a>, en particulier celui de <a href="https://github.com/FrancoisBrucker/cours_informatique/blob/master/docs/_tutoriels/format-markdown.md">ce fichier</a> (cliquez sur le bouton <code class="language-plaintext highlighter-rouge">raw</code> à droite, juste avant que le fichier ne soit représenté).</p>
 </blockquote>
 
-<blockquote class="tbd">
-  <p>lien fichier source de ce fichier</p>
+<h3 id="plugins-vscode">plugins vscode</h3>
+
+<p>L’éditeur de texte <a href="https://code.visualstudio.com/">vscode</a> permet d’écrire et d’exporter facilement du markdown. Sa documentation comporte une <a href="https://code.visualstudio.com/docs/languages/markdown">partie consacrée au markdown</a>. Nous allons utiliser deux extensions :</p>
+
+<ul>
+  <li>
+<a href="https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one">Markdown All in One</a> qui permet de fluidifier l’écriture de markdown et permet un export de celui-ci en html.</li>
+  <li>
+<a href="https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint">markdownlint</a>, un <a href="https://mindsers.blog/fr/post/linting-good-practices/">linter</a> qui souligne en jaune les fautes de style de markdown (saus dans la hiérarchie des sections par exemple) pour que vous puissiez les corriger et écrire parfaitement du markdown</li>
+</ul>
+
+<blockquote class="a-faire">
+  <p>Installez les deux plugins ci-dessus dans votre vscode.</p>
 </blockquote>
+
+<h3 id="export-en-html">export en html</h3>
+
+<p>Si le markdown est pratique pour être écrit et lu rapidement, pour de long documents ou le partage de ceux-ci, il est important de les exporter dans un format comme le html.</p>
+
+<p>Avec le plugin <em>Markdown All in One</em> de vscode, il suffit de taper la commande :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>markdown All in One: Print current document to HTML
+</code></pre></div></div>
+
+<p>dans la <a href="/cours_informatique/tutoriels/editeur/vsc/vsc-installation-et-prise-en-main.html#palette-de-commande">palette de commande</a> (que l’on peut copier/coller). Ceci va créer un fichier html contenant votre code markdown <em>compilé</em>.</p>
 
 <h2 id="syntaxe">syntaxe</h2>
+
+<p>Le markdown est un format très simple. Il permet de structurer minimalement un texte, ce qui est suffisant pour la plupart des rapports/documentations de code.</p>
+
+<p>Les principales fonctionnalités sont décrites ici : <a href="https://www.markdownguide.org/cheat-sheet/#basic-syntax">https://www.markdownguide.org/cheat-sheet/#basic-syntax</a></p>
+
+<h3 id="un-exemple">un exemple</h3>
+
+<blockquote class="a-faire">
+  <p>Dans vscode, créez un nouveau fichier que vous appellerez <em>“exemple.md”</em> (<em>“.md”</em> est l’extension par défaut des fichiers markdown).</p>
+
+  <p>Copiez/collez-y- le texte ci-dessous et sauvez le fichier.</p>
+</blockquote>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+# Un petit peu de Markdown
+
+## quoi
+
+Le [Markdown](https://fr.wikipedia.org/wiki/Markdown) est un format texte éditable et visualisable dans tout éditeur.
+
+## syntaxe
+
+### style 
+
+- peut écrire en *italique*
+- ou en **gras**
+- du `code` 
+- des équations latex comme $2 \pi + \frac{1}{2}$
+
+### bloc
+
+On peut aussi écrire des blocs de code, comme :
+
+1. des équations en latex
+2. du code python
+3. du texte brut
+
+</code></pre></div></div>
+
+<p>Le texte ci-dessus est un petit panel de ce qu’on peut faire en markdown. Il montre en particulier comment on peut représenter :</p>
+
+<ul>
+  <li>des sections</li>
+  <li>des liste ordonnées ou non</li>
+  <li>du style (italique, gras, code, équations)</li>
+</ul>
+
+<p>Vous voyez que ce format est <em>lisible</em> directement dans vscode (on comprend qu’un titre est un titre par exemple). Mais o  peut aussi <em>compiler</em> ce fichier texte en html.</p>
+
+<blockquote class="a-faire">
+  <p>Dans vscode, en ayant comme onglet actif celui contenant le fichier <em>“exemple.md”</em>, ouvrez la <a href="/cours_informatique/tutoriels/editeur/vsc/vsc-installation-et-prise-en-main.html#palette-de-commande">palette de commande</a> et taper la commande <code class="language-plaintext highlighter-rouge">markdown All in One: Print current document to HTML</code>.</p>
+
+  <p><strong>Attention</strong> : une commande dans la palette commence toujours par <code class="language-plaintext highlighter-rouge">&gt;</code> qui doit être le 1er caractère.</p>
+
+</blockquote>
+
+<p>Vous devez avoir crée un fichier <em>“exemple.html”</em> dans le même dossier que votre fochier <em>“exemple.md”</em>.</p>
+
+<blockquote class="a-fair">
+  <p>Ouvrez le fichier <em>“exemple.html”</em> dans votre navigateur favori pour voir le résultat.</p>
+</blockquote>
+
+<h3 id="balise-à-connaître">balise à connaître</h3>
+
+<h4 id="sections">sections</h4>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code># titre du document
+
+## section
+
+### sous-section
+
+#### sous-sous-section
+
+</code></pre></div></div>
+
+<h4 id="autres-trucs">autres trucs</h4>
 
 <blockquote class="tbd">
   <p>ajouter les trucs fondamentaux:</p>
@@ -115,48 +214,6 @@
 <blockquote class="note">
   <p>Pour une introduction et une liste des possibilités offertes, vous pouvez consulter le site : <a href="https://www.markdownguide.org/">https://www.markdownguide.org/</a> par exemple</p>
 </blockquote>
-
-<p>Le format markdown est basique. Il possède plein de variantes qui permettent d’étendre ses possibilités. Deux d’entre elles sont devenus des standard de fait :</p>
-
-<ul>
-  <li>
-<a href="https://guides.github.com/features/mastering-markdown/">github flavored markdown</a>.</li>
-  <li>
-<a href="https://kramdown.gettalong.org/documentation.html">kramdown</a>.</li>
-</ul>
-
-<blockquote class="note">
-  <p>Vous pouvez écrire du markdown dans le format github ou kramdown. Les principales fonctionnalités sont décrites dans <a href="https://www.markdownguide.org/cheat-sheet/">ce site</a></p>
-</blockquote>
-
-<h2 id="markdown-avec-vscode">markdown avec vscode</h2>
-
-<p>L’éditeur de texte <a href="/cours_informatique/tutoriels/editeur/vsc/vsc-installation-et-prise-en-main.html">vscode</a> permet d’écrire et d’exporter facilement du markdown. Sa documentation comporte une <a href="https://code.visualstudio.com/docs/languages/markdown">partie consacrée au markdown</a>. Nous allons utiliser deux extensions :</p>
-
-<ul>
-  <li>
-<a href="https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one">Markdown All in One</a> qui permet de fluidifier l’écriture de markdown et permet un export de celui-ci en html.</li>
-  <li>
-<a href="https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint">markdownlint</a> qui souligne en orange les fautes de style (un espace après un <code class="language-plaintext highlighter-rouge">.</code> par exemple) et les erreurs de markdown (sauf dans la hiérarchie des paragraphes par exemple).</li>
-</ul>
-
-<blockquote>
-  <p>Le seconde extension est un <a href="https://mindsers.blog/fr/post/linting-good-practices/">linter</a>, qui incite à utiliser les bonnes pratiques d’écriture. Il en existe pour quasi tous les langages.</p>
-</blockquote>
-
-<h2 id="export">export</h2>
-
-<p>Si le markdown est pratique pour être écrit et lu rapidement, pour de long documents ou le partage de ceux-ci, il est important de les exporter dans un format plus :</p>
-
-<ul>
-  <li>imprimable comme le pdf ou l’html</li>
-  <li>modifiable comme un docx ou un fichier latex</li>
-  <li>un autre format que l’on aime.</li>
-</ul>
-
-<p>Pour exporter le markdown dans quelque chose de plus joli avec vscode, on peut utiliser la <a href="/cours_informatique/tutoriels/editeur/vsc/vsc-installation-et-prise-en-main.html#palette-de-commande">palette de commande</a> pour exécuter la commande : <em>markdown All in One: Print current document to HTML</em> : qui va rendre un fichier html.</p>
-
-<p>Cela suffit pour la majorité des cas.</p>
 
 <h2 id="tuto">tuto</h2>
 
@@ -205,9 +262,15 @@
 <p>Equation en mode <em>display</em> :</p>
 
 <div class="language-tex highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="p">$$</span><span class="m">3</span><span class="o">+</span><span class="m">2</span><span class="p">$$</span>
+<span class="p">$$</span><span class="nb">
+</span><span class="m">3</span><span class="o">+</span><span class="m">2</span><span class="nb">
+</span><span class="p">$$</span>
 
 </code></pre></div></div>
+
+<blockquote class="tbd">
+  <p>avant et après chaque bloc des lignes vides</p>
+</blockquote>
 
 <p>Lorsque vous faites de l’exportation en html, les mathématiques sont représentées en utilisant <a href="https://www.mathjax.org/">Mathjax</a>. Ce <a href="https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference">post</a> résume les possibilités basique de mathjax pour écrire des équations.</p>
 
@@ -223,6 +286,19 @@
   <p>kramdown etc. Car markdown très frustre au départ.</p>
 </blockquote>
 <p>(plus précisément une extension de celui-ci nommé <a href="https://kramdown.gettalong.org/documentation.html">kramdown</a>) puis transformé en html grâce à <a href="https://jekyllrb.com/">jekyll</a>.</p>
+
+<p>Le format markdown est basique. Il possède plein de variantes qui permettent d’étendre ses possibilités. Deux d’entre elles sont devenus des standard de fait :</p>
+
+<ul>
+  <li>
+<a href="https://guides.github.com/features/mastering-markdown/">github flavored markdown</a>.</li>
+  <li>
+<a href="https://kramdown.gettalong.org/documentation.html">kramdown</a>.</li>
+</ul>
+
+<blockquote class="note">
+  <p>Vous pouvez écrire du markdown dans le format github ou kramdown. Les principales fonctionnalités sont décrites dans <a href="https://www.markdownguide.org/cheat-sheet/">ce site</a></p>
+</blockquote>
 
 <h3 id="export-avec-lutilitaire-pandoc">export avec l’utilitaire pandoc</h3>
 
