@@ -63,11 +63,12 @@
 <blockquote class="chemin">
   <p><a href="/cours_informatique/cours/algorithme-code-theorie/">Algorithme, code et théorie</a> / <a href="/cours_informatique/cours/algorithme-code-theorie/theorie/">théorie</a> / <a href="/cours_informatique/cours/algorithme-code-theorie/theorie/fonctions-hash.html">fonctions de hash</a></p>
 
-  <p>prérequis :</p>
+  <p><strong>prérequis :</strong></p>
 
   <ul>
     <li><a href="/cours_informatique/cours/algorithme-code-theorie/theorie/fonctions.html">fonctions</a></li>
   </ul>
+
 </blockquote>
 
 <h2 id="définition">définition</h2>
@@ -132,7 +133,7 @@
 <p>Une fonction de hachage permet de partitionner les entiers (<em>ie.</em> les objets) en $m+1$ classes. Pour que ce partitionnement soit utile, on demande à une <em>bonne</em> fonction de hachage d’avoir en plus les propriétés suivantes :</p>
 
 <blockquote class="note">
-  <p>Une fonction de hachage $f: \mathbb{N} \rightarrow [0\mathrel{ {.}\,{.} } m]$ utile doit avoir les 3 propriétés suivantes :</p>
+  <p>Pour qu’une fonction de hachage $f: \mathbb{N} \rightarrow [0\mathrel{ {.}\,{.} } m]$ soit <strong>utile</strong>, elle doit avoir les 3 propriétés suivantes :</p>
 
   <ol>
     <li>elle doit être <strong>déterministe</strong> : un même message doit toujours avoir la même valeur de hachage.</li>
@@ -330,30 +331,66 @@ pour chaque élément e du tuple:
 
 <h2 id="hash-cryptographique">hash cryptographique</h2>
 
-<blockquote class="tbd">
-  <p>ici</p>
-</blockquote>
+<p>Les fonctions de hash sont très utilisée en cryptographie. Pour être robuste, elles doivent cependant avoir <a href="https://fr.wikipedia.org/wiki/Fonction_de_hachage_cryptographique">des propriétés spécifiques</a> :</p>
 
-<h3 id="propriétés-en-plus">propriétés en plus</h3>
+<ol>
+  <li>elles doivent être utiles (déterministe, facilement calculable et uniforme)</li>
+  <li>une petite modification de l’entrée doit produire une grosse modification du hash</li>
+  <li>en connaissant une valeur de hash $x$ il est très difficile de retrouver un $a$ tel que $f(a) = x$</li>
+  <li>en connaissant $a$ il est très difficile de trouver $b \neq a$ tel que $f(b) = f(a)$</li>
+</ol>
+
+<p>En cryptographie, <strong>très difficile</strong> signifie que le temps pour le faire doit être supérieure à la durée de vie (l’utilité) du message.</p>
+
+<p>Ici l’utilité réside dans le fait qu’en pratique :</p>
 
 <ul>
-  <li>doit changer (beaucoup) si on change un peu l’entrée (crypto)</li>
-  <li>difficile de trouver 2 mots de même hash (crypto)</li>
-  <li>trouver un mot qui a le même hash doit être compliqué (pour crypto)</li>
+  <li>la fonction de hash est une injection</li>
+  <li>il est impossible de trouver un objet ayant un hash donné.</li>
 </ul>
 
-<p>il faut que de petit changement dans l’entrée produisent de gros changements dans la sortie.</p>
+<p>La fonction de hash ($f$) peut alors être utilisée comme une serrure ($x$) qui ne s’ouvre que si l’on a la bonne clé (un $a$ tel que $f(a) = x$).</p>
+
+<p>Cracker une fonction hash cryptographique revient soit :</p>
+
+<ul>
+  <li>à pouvoir trouver 2 éléments $a$ et $a’$ tels que $f(a) = f(a’)$ : trouver des collision montrerait que la fonction n’est pas injective et donc $a$ n’est pas une clé unique</li>
+  <li>pouvoir trouver $a$ tel que $f(a) = x$ en ne connaissant que $x$ : revient à forger une clé en ne connaissant que la serrure.</li>
+</ul>
 
 <h3 id="comment">comment</h3>
 
-<p>sha-X</p>
+<p>Plusieurs méthode de hash cryptographique existent. On peut en citer deux, issues de sha :</p>
+
+<ul>
+  <li>
+<a href="https://fr.wikipedia.org/wiki/SHA-1">sha-1</a> utilisé par git mais plus trop de façon cryptographique</li>
+  <li>SHA256 (protocole <a href="https://fr.wikipedia.org/wiki/SHA-2">sha-2</a>)</li>
+</ul>
+
+<blockquote class="note">
+  <p>On recommande actuellement d’utiliser l’algorithme SHA256 ou SHA512 pour un usage cryptographique.</p>
+</blockquote>
+
+<p>Ils sont directement utilisable :</p>
+
+<ul>
+  <li>
+<a href="https://fre.applersg.com/check-sha1-checksum-mac-os-x">sous mac</a> et <a href="https://www.lojiciels.com/quest-ce-que-shasum-sous-linux/">linux</a> avec le programme <code class="language-plaintext highlighter-rouge">shasum</code>
+</li>
+  <li>
+<a href="https://lecrabeinfo.net/verifier-integrite-calculer-empreinte-checksum-md5-sha1-sha256-fichier-windows.html">sous windows</a> avec la commande <a href="module">Get-FileHash</a> sous powershell.</li>
+</ul>
 
 <h3 id="exemple-dutilisation">exemple d’utilisation</h3>
 
-<ul>
-  <li>les mots de passes</li>
-  <li>l’empreinte/vérification d’un texte/bibliothèque (hash sha)</li>
-</ul>
+<h4 id="vérification-de-lintégrité-dun-fichier">vérification de l’intégrité d’un fichier</h4>
+
+<p>Si l’on connait le hash d’un fichier et qu’il est impossible de le modifier en conservant le même hash. On peut être sur qu’un fichier n’a pas été modifié. Dans ce cadre là, on appelle cette valeur de hash le <a href="https://fr.wikipedia.org/wiki/Somme_de_contr%C3%B4le">checksum ou somme de contrôle</a></p>
+
+<h4 id="stockage-des-mots-de-passes">stockage des mots de passes</h4>
+
+<p>Les mots de passe d’un système son normalement stockés sous la forme d’un hash, auquel on ajoute un <em>sel</em> aléatoire. Voir par exemple <a href="https://patouche.github.io/2015/03/21/stocker-des-mots-de-passe/">ce post de blog</a> qui vous explique un peu comment tout ça fonctionne.</p>
 
   </div>
 

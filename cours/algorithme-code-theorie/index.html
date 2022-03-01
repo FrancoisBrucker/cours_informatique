@@ -120,6 +120,8 @@
   <li><a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/complexite-probleme.html">complexité d’un problème</a></li>
   <li><a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/etude-melange.html">étude : mélanger un tableau</a></li>
   <li><a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/etude-tris.html">étude : trier un tableau</a></li>
+  <li><a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/structure-dictionnaire.html">structure : dictionnaire</a></li>
+  <li><a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/structure-liste.html">structure : liste</a></li>
 </ol>
 
 <h3 id="théorie">théorie</h3>
@@ -638,6 +640,34 @@ graph.links.push({
   source: 'fonctions',
   target: "fonctions de hash"
 })
+
+graph.nodes.push({
+id: "structure : dictionnaire",
+  link: "/cours_informatique/cours/algorithme-code-theorie/algorithme/structure-dictionnaire.html",
+  group: groups.algorithmie
+})
+
+graph.links.push({
+  source: "fonctions de hash",
+  target: "structure : dictionnaire"
+})
+
+graph.links.push({
+  source: "complexité en moyenne",
+  target: "structure : dictionnaire"
+})
+
+graph.nodes.push({
+id: "structure : liste",
+  link: "/cours_informatique/cours/algorithme-code-theorie/algorithme/structure-liste.html",
+  group: groups.algorithmie
+})
+
+graph.links.push({
+  source: "complexité en moyenne",
+  target: "structure : liste"
+})
+
 </script>
 
 <script>
