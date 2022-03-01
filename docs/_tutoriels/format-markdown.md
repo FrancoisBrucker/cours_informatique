@@ -51,8 +51,6 @@ dans la [palette de commande]({% link _tutoriels/editeur/vsc/vsc-installation-et
 
 Le markdown est un format très simple. Il permet de structurer minimalement un texte, ce qui est suffisant pour la plupart des rapports/documentations de code.
 
-Les principales fonctionnalités sont décrites ici : <https://www.markdownguide.org/cheat-sheet/#basic-syntax>
-
 ### un exemple
 
 > Dans vscode, créez un nouveau fichier que vous appellerez *"exemple.md"* (*".md"* est l'extension par défaut des fichiers markdown).
@@ -64,11 +62,11 @@ Les principales fonctionnalités sont décrites ici : <https://www.markdownguide
 
 # Un petit peu de Markdown
 
-## quoi
+## quoi ?
 
 Le [Markdown](https://fr.wikipedia.org/wiki/Markdown) est un format texte éditable et visualisable dans tout éditeur.
 
-## syntaxe
+## comment ?
 
 ### style 
 
@@ -101,12 +99,14 @@ Vous voyez que ce format est *lisible* directement dans vscode (on comprend qu'u
 >
 {: .a-faire}
 
-Vous devez avoir crée un fichier *"exemple.html"* dans le même dossier que votre fochier *"exemple.md"*.
+Vous devez avoir crée un fichier *"exemple.html"* dans le même dossier que votre fichier *"exemple.md"*.
 
 > Ouvrez le fichier *"exemple.html"* dans votre navigateur favori pour voir le résultat.
 {: .a-fair}
 
 ### balise à connaître
+
+Les principales fonctionnalités sont décrites dans [cette liste](https://www.markdownguide.org/cheat-sheet/#basic-syntax).
 
 #### sections
 
@@ -121,40 +121,42 @@ Vous devez avoir crée un fichier *"exemple.html"* dans le même dossier que vot
 
 ```
 
-#### autres trucs
+#### paragraphes
 
-> ajouter les trucs fondamentaux:
->
-> 1. titres
-> 2. gras, italique
-> 3. listes (avant et après vide) ordered ou non
-> 4. code inline et blocs (langage après)
-> 5. latex inline et block
-> 6. block text
-> 7. tableau (avancé)
->
-{: .tbd}
+Un saut de ligne est nécessaire pour commencer un nouveau paragraphe. Aller à la ligne sera équivalent à un espace.
 
-Markdown permet facilement de représenter des titres, des listes, mettre des choses en exergue, ..., uniquement avec du texte. Ce format est à la base un guide de lecture de fichiers textes.
+#### style inline
 
-Par exemple, `*coucou*` signifie que `coucou` est en exergue (ce qui sera traduit par une police en italique à l'exportation en html ou pdf par exemple), ou encore `**salut !**` signifie que `salut !` est important (et sera traduit par une police en gras à l'exportation en html ou pdf).
+Dans le flot du texte, on peut mettre en exergue des parties de texte :
 
-> Pour une introduction et une liste des possibilités offertes, vous pouvez consulter le site : <https://www.markdownguide.org/> par exemple
-{: .note}
+* *en italique* : `*texte*`
+* **en gras** : `**texte**`
+* ~~barré~~ : `~~texte~~`
+* `code` : `` `texte` ``
+* équations : \$latex\$
 
+#### style bloc
 
+En markdown, un bloc commence et fini par une ligne vide.
 
+Plusieurs symboles peuvent être utilisées :
 
-## tuto
+* [code](https://www.markdownguide.org/extended-syntax/#fenced-code-blocks). Mettez le langage utilisé pour pour activer la coloration syntaxique (par défaut, je mets comme langage `text` lorsque j'écris un algorithme en pseudo-code)
+* [remarques](https://www.markdownguide.org/basic-syntax/#blockquotes-1)
+* [latex](#latex)
 
-> tuto avec tout code + titres + export (même si le .md suffit très souvent).
-{: .tbd}
+#### listes
+
+Comme chaque bloc, les listes commencent et frinissent toujours par une ligne vide. Il y a deux types de listes :
+
+* [non ordonnées](https://www.markdownguide.org/basic-syntax/#unordered-lists). Chaque item peut comencer par un `-`, un `*` ou encore un `+`. Choisissez en un et tenez vous y dans tout le document.
+* [ordonnées](https://www.markdownguide.org/basic-syntax/#ordered-lists)
 
 ## Formules mathématiques
 
 Lorsque l'on écrit des textes scientifique, vient inévitablement la question de l'écriture des équations.
 
-### latex
+### latex {#latex}
 
 Le langage [Latex](https://fr.wikipedia.org/wiki/LaTeX) permet d'écrire toutes les équations imaginable (et même plus) avec un petit langage que l'on peut utiliser directement dans un éditeur de texte (ceux qui ont déjà utilisé l'éditeur d'équation de Word savent que c'est l'enfer de devoir tout cliquer).
 
@@ -166,7 +168,7 @@ $$\cos x=\sum_{k=0}^{\infty}\frac{(-1)^k}{(2k)!}x^{2k}$$
 
 Quelques aides :
 
-* Un [résumé](http://tug.ctan.org/info/undergradmath/undergradmath.pdf) des possibibités
+* Un [résumé](http://tug.ctan.org/info/undergradmath/undergradmath.pdf) des possibilités
 * un [tuto](https://www.science-emergence.com/Articles/Formules-math%C3%A9matiques-sous-LaTeX/) Latex contenant aussi des instructions pour les équations.
 
 ### en markdown
@@ -192,32 +194,25 @@ $$
 
 ```
 
-> avant et après chaque bloc des lignes vides
-{: .tbd}
-
-
-Lorsque vous faites de l'exportation en html, les mathématiques sont représentées en utilisant [Mathjax](https://www.mathjax.org/). Ce [post](https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference) résume les possibilités basique de mathjax pour écrire des équations.
+Lorsque vous faites de l'exportation en html, les mathématiques sont représentées en utilisant la bibliothèque [Mathjax](https://www.mathjax.org/).
 
 >Il ne faut pas mettre d'espace après le premier `$` et avant le dernier `$` lorsque l'on écrit des équations, sinon les convertisseur ne reconnaitront pas que ce sont des équations que vous voulez écrire. Ansi `$ \frac{1}{2}$` affichera `$ \frac{1}{2}$`, alors que `$\frac{1}{2}$` affichera $\frac{1}{2}$.
 {: .attention}
 
-
-
 ## pour aller plus loin
 
-### variantes de markdown
+### guides
 
-> kramdown etc. Car markdown très frustre au départ.
-{: .tbd}
-(plus précisément une extension de celui-ci nommé [kramdown](https://kramdown.gettalong.org/documentation.html)) puis transformé en html grâce à [jekyll](https://jekyllrb.com/).
+* base markdown et latex : <https://ashki23.github.io/markdown-latex.html>
+* base markdwon : <https://www.markdownguide.org/> par exemple
+* [Mathjax et latex](https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference)
+
+### variantes de markdown
 
 Le format markdown est basique. Il possède plein de variantes qui permettent d'étendre ses possibilités. Deux d'entre elles sont devenus des standard de fait :
 
 * [github flavored markdown](https://guides.github.com/features/mastering-markdown/).
 * [kramdown](https://kramdown.gettalong.org/documentation.html).
-
-> Vous pouvez écrire du markdown dans le format github ou kramdown. Les principales fonctionnalités sont décrites dans [ce site](https://www.markdownguide.org/cheat-sheet/)
-{: .note}
 
 ### export avec l'utilitaire pandoc
 

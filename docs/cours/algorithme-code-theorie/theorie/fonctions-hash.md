@@ -285,7 +285,7 @@ Les fonctions de hachages sont même utilisées pour stocker les mots de passe s
 * difficile de trouver 2 mots de même hash (crypto)
 * trouver un mot qui a le même hash doit être compliqué (pour crypto)
 
-il faut que de petit changement dans l'entrée produisentde gros changements dans la sortie.
+il faut que de petit changement dans l'entrée produisent de gros changements dans la sortie.
 
 ### comment
 
