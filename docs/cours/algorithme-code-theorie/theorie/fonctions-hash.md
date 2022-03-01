@@ -8,9 +8,10 @@ Les fonctions de hachage. De la définition mathématique à son utilité en inf
 
 > [Algorithme, code et théorie]({% link cours/algorithme-code-theorie/index.md %}) / [théorie]({% link cours/algorithme-code-theorie/theorie/index.md %}) / [fonctions de hash]({% link cours/algorithme-code-theorie/theorie/fonctions-hash.md %})
 >
-> prérequis :
+> **prérequis :**
 >
->* [fonctions]({% link cours/algorithme-code-theorie/theorie/fonctions.md %})
+> * [fonctions]({% link cours/algorithme-code-theorie/theorie/fonctions.md %})
+>
 {: .chemin}
 
 ## définition
@@ -67,7 +68,7 @@ La principale raison de l'utilisation des fonctions de hachage est :
 
 Une fonction de hachage permet de partitionner les entiers (*ie.* les objets) en $m+1$ classes. Pour que ce partitionnement soit utile, on demande à une *bonne* fonction de hachage d'avoir en plus les propriétés suivantes :
 
-> Une fonction de hachage $f: \mathbb{N} \rightarrow [0\mathrel{ {.}\,{.} } m]$ utile doit avoir les 3 propriétés suivantes :
+> Pour qu'une fonction de hachage $f: \mathbb{N} \rightarrow [0\mathrel{ {.}\,{.} } m]$ soit **utile**, elle doit avoir les 3 propriétés suivantes :
 >
 > 1. elle doit être **déterministe** : un même message doit toujours avoir la même valeur de hachage.
 > 2. elle doit être facilement calculable
@@ -276,22 +277,48 @@ Les fonctions de hachages sont même utilisées pour stocker les mots de passe s
 
 ## hash cryptographique
 
-> ici
-{: .tbd}
+Les fonctions de hash sont très utilisée en cryptographie. Pour être robuste, elles doivent cependant avoir [des propriétés spécifiques](https://fr.wikipedia.org/wiki/Fonction_de_hachage_cryptographique) :
 
-### propriétés en plus
+1. elles doivent être utiles (déterministe, facilement calculable et uniforme)
+2. une petite modification de l'entrée doit produire une grosse modification du hash
+3. en connaissant une valeur de hash $x$ il est très difficile de retrouver un $a$ tel que $f(a) = x$
+4. en connaissant $a$ il est très difficile de trouver $b \neq a$ tel que $f(b) = f(a)$
 
-* doit changer (beaucoup) si on change un peu l'entrée (crypto)
-* difficile de trouver 2 mots de même hash (crypto)
-* trouver un mot qui a le même hash doit être compliqué (pour crypto)
+En cryptographie, **très difficile** signifie que le temps pour le faire doit être supérieure à la durée de vie (l'utilité) du message.
 
-il faut que de petit changement dans l'entrée produisent de gros changements dans la sortie.
+Ici l'utilité réside dans le fait qu'en pratique :
+
+* la fonction de hash est une injection
+* il est impossible de trouver un objet ayant un hash donné.
+
+La fonction de hash ($f$) peut alors être utilisée comme une serrure ($x$) qui ne s'ouvre que si l'on a la bonne clé (un $a$ tel que $f(a) = x$).
+
+Cracker une fonction hash cryptographique revient soit :
+
+* à pouvoir trouver 2 éléments $a$ et $a'$ tels que $f(a) = f(a')$ : trouver des collision montrerait que la fonction n'est pas injective et donc $a$ n'est pas une clé unique
+* pouvoir trouver $a$ tel que $f(a) = x$ en ne connaissant que $x$ : revient à forger une clé en ne connaissant que la serrure.
 
 ### comment
 
-sha-X
+Plusieurs méthode de hash cryptographique existent. On peut en citer deux, issues de sha :
+
+* [sha-1](https://fr.wikipedia.org/wiki/SHA-1) utilisé par git mais plus trop de façon cryptographique
+* SHA256 (protocole [sha-2](https://fr.wikipedia.org/wiki/SHA-2))
+
+> On recommande actuellement d'utiliser l'algorithme SHA256 ou SHA512 pour un usage cryptographique.
+{: .note}
+
+Ils sont directement utilisable :
+
+* [sous mac](https://fre.applersg.com/check-sha1-checksum-mac-os-x) et [linux](https://www.lojiciels.com/quest-ce-que-shasum-sous-linux/) avec le programme `shasum`
+* [sous windows](https://lecrabeinfo.net/verifier-integrite-calculer-empreinte-checksum-md5-sha1-sha256-fichier-windows.html) avec la commande [Get-FileHash](module) sous powershell.
 
 ### exemple d'utilisation
 
-* les mots de passes
-* l'empreinte/vérification d'un texte/bibliothèque (hash sha)
+#### vérification de l'intégrité d'un fichier
+
+Si l'on connait le hash d'un fichier et qu'il est impossible de le modifier en conservant le même hash. On peut être sur qu'un fichier n'a pas été modifié. Dans ce cadre là, on appelle cette valeur de hash le [checksum ou somme de contrôle](https://fr.wikipedia.org/wiki/Somme_de_contr%C3%B4le)
+
+#### stockage des mots de passes
+
+Les mots de passe d'un système son normalement stockés sous la forme d'un hash, auquel on ajoute un *sel* aléatoire. Voir par exemple [ce post de blog](https://patouche.github.io/2015/03/21/stocker-des-mots-de-passe/) qui vous explique un peu comment tout ça fonctionne.

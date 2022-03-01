@@ -122,11 +122,14 @@ Au programme :
 #### mercredi {#m-7}
 
 1. [fonctions de hash]({% link cours/algorithme-code-theorie/theorie/fonctions-hash.md %})
-2. dictionnaires
+2. [structure : dictionnaire]({% link cours/algorithme-code-theorie/algorithme/structure-dictionnaire.md %})
+3. [structure : liste]({% link cours/algorithme-code-theorie/algorithme/structure-liste.md %})
 
 #### vendredi {#v-7}
 
-1. pour aller plus loin : [projet : TDD]({% link cours/algorithme-code-theorie/code/programmation-objet/projet-tdd.md %})
+1. fichiers
+2. projets fichiers
+3. pour aller plus loin : [projet : TDD]({% link cours/algorithme-code-theorie/code/programmation-objet/projet-tdd.md %})
 
 ### semaine 8
 

@@ -8,9 +8,10 @@ author: "François Brucker"
 
 > [Algorithme, code et théorie]({% link cours/algorithme-code-theorie/index.md %}) / [algorithmie]({% link cours/algorithme-code-theorie/algorithme/index.md %}) / [complexité en moyenne]({% link cours/algorithme-code-theorie/algorithme/complexite-moyenne.md %})
 >
-> prérequis :
+> **prérequis :**
 >
->* [complexité max/min]({% link cours/algorithme-code-theorie/algorithme/complexite-max-min.md %})
+> * [complexité max/min]({% link cours/algorithme-code-theorie/algorithme/complexite-max-min.md %})
+>
 {: .chemin}
 
 Lorsque le nombre d'opérations d'un algorithme dépend non seulement de la taille de ses entrées mais également de la structure de celles-ci, on a coutume de calculer sa complexité en moyenne :

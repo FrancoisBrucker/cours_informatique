@@ -18,3 +18,5 @@ Création, preuve et complexité des algorithmes.
 * [complexité d'un problème]({% link cours/algorithme-code-theorie/algorithme/complexite-probleme.md %})
 * [étude : mélanger un tableau]({% link cours/algorithme-code-theorie/algorithme/etude-melange.md %})
 * [étude : trier un tableau]({% link cours/algorithme-code-theorie/algorithme/etude-tris.md %})
+* [structure : dictionnaire]({% link cours/algorithme-code-theorie/algorithme/structure-dictionnaire.md %})
+* [structure : liste]({% link cours/algorithme-code-theorie/algorithme/structure-liste.md %})

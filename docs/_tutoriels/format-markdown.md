@@ -10,7 +10,7 @@ Une introduction au format markdown.
 
 > [Format Markdown]({% link _tutoriels/format-markdown.md %})
 >
-> Prérequis :
+> **prérequis :**
 >
 > * [vscode]({% link _tutoriels/editeur/vsc/vsc-installation-et-prise-en-main.md %})
 >

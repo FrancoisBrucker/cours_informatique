@@ -52,6 +52,8 @@ Ce cours est composée de trois grandes parties qui s'enchevêtrent.
 7. [complexité d'un problème]({% link cours/algorithme-code-theorie/algorithme/complexite-probleme.md %})
 8. [étude : mélanger un tableau]({% link cours/algorithme-code-theorie/algorithme/etude-melange.md %})
 9. [étude : trier un tableau]({% link cours/algorithme-code-theorie/algorithme/etude-tris.md %})
+10. [structure : dictionnaire]({% link cours/algorithme-code-theorie/algorithme/structure-dictionnaire.md %})
+11. [structure : liste]({% link cours/algorithme-code-theorie/algorithme/structure-liste.md %})
 
 ### théorie
 
@@ -559,6 +561,34 @@ graph.links.push({
   source: 'fonctions',
   target: "fonctions de hash"
 })
+
+graph.nodes.push({
+id: "structure : dictionnaire",
+  link: "{% link cours/algorithme-code-theorie/algorithme/structure-dictionnaire.md %}",
+  group: groups.algorithmie
+})
+
+graph.links.push({
+  source: "fonctions de hash",
+  target: "structure : dictionnaire"
+})
+
+graph.links.push({
+  source: "complexité en moyenne",
+  target: "structure : dictionnaire"
+})
+
+graph.nodes.push({
+id: "structure : liste",
+  link: "{% link cours/algorithme-code-theorie/algorithme/structure-liste.md %}",
+  group: groups.algorithmie
+})
+
+graph.links.push({
+  source: "complexité en moyenne",
+  target: "structure : liste"
+})
+
 </script>
 
 <script>
