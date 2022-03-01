@@ -30,7 +30,7 @@ L'intérêt de ce format de fichier texte est qu'il est parfaitement lisible dan
 L'éditeur de texte [vscode](https://code.visualstudio.com/) permet d'écrire et d'exporter facilement du markdown. Sa documentation comporte une [partie consacrée au markdown](https://code.visualstudio.com/docs/languages/markdown). Nous allons utiliser deux extensions :
 
 * [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one) qui permet de fluidifier l'écriture de markdown et permet un export de celui-ci en html.
-* [markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint), un [linter](https://mindsers.blog/fr/post/linting-good-practices/) qui souligne en jaune les fautes de style de markdown (saus dans la hiérarchie des sections par exemple) pour que vous puissiez les corriger et écrire parfaitement du markdown
+* [markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint), un [linter](https://mindsers.blog/fr/post/linting-good-practices/) qui souligne en jaune les fautes de style de markdown (saut dans la hiérarchie des sections par exemple) pour que vous puissiez les corriger et écrire parfaitement du markdown
 
 > Installez les deux plugins ci-dessus dans votre vscode.
 {: .a-faire}
@@ -91,7 +91,7 @@ Le texte ci-dessus est un petit panel de ce qu'on peut faire en markdown. Il mon
 * des liste ordonnées ou non
 * du style (italique, gras, code, équations)
 
-Vous voyez que ce format est *lisible* directement dans vscode (on comprend qu'un titre est un titre par exemple). Mais o  peut aussi *compiler* ce fichier texte en html.
+Vous voyez que ce format est *lisible* directement dans vscode (on comprend qu'un titre est un titre par exemple). Mais on  peut aussi *compiler* ce fichier texte en html.
 
 > Dans vscode, en ayant comme onglet actif celui contenant le fichier *"exemple.md"*, ouvrez la [palette de commande]({% link _tutoriels/editeur/vsc/vsc-installation-et-prise-en-main.md %}#palette-de-commande) et taper la commande `markdown All in One: Print current document to HTML`.
 >
@@ -99,7 +99,7 @@ Vous voyez que ce format est *lisible* directement dans vscode (on comprend qu'u
 >
 {: .a-faire}
 
-Vous devez avoir crée un fichier *"exemple.html"* dans le même dossier que votre fichier *"exemple.md"*.
+Après l'exécution de cette commande, vous aurez un fichier *"exemple.html"* dans le même dossier que votre fichier *"exemple.md"*.
 
 > Ouvrez le fichier *"exemple.html"* dans votre navigateur favori pour voir le résultat.
 {: .a-fair}
@@ -137,24 +137,24 @@ Dans le flot du texte, on peut mettre en exergue des parties de texte :
 
 #### style bloc
 
-En markdown, un bloc commence et fini par une ligne vide.
+En markdown, un bloc commence et finit par une ligne vide.
 
 Plusieurs symboles peuvent être utilisées :
 
-* [code](https://www.markdownguide.org/extended-syntax/#fenced-code-blocks). Mettez le langage utilisé pour pour activer la coloration syntaxique (par défaut, je mets comme langage `text` lorsque j'écris un algorithme en pseudo-code)
+* [code](https://www.markdownguide.org/extended-syntax/#fenced-code-blocks). Mettez le langage utilisé pour activer la coloration syntaxique (par défaut, je mets comme langage `text` lorsque j'écris un algorithme en pseudo-code)
 * [remarques](https://www.markdownguide.org/basic-syntax/#blockquotes-1)
 * [latex](#latex)
 
 #### listes
 
-Comme chaque bloc, les listes commencent et frinissent toujours par une ligne vide. Il y a deux types de listes :
+Comme chaque bloc, les listes commencent et finissent toujours par une ligne vide. Il y a deux types de listes :
 
-* [non ordonnées](https://www.markdownguide.org/basic-syntax/#unordered-lists). Chaque item peut comencer par un `-`, un `*` ou encore un `+`. Choisissez en un et tenez vous y dans tout le document.
+* [non ordonnées](https://www.markdownguide.org/basic-syntax/#unordered-lists). Chaque item peut commencer par un `-`, un `*` ou encore un `+`. Choisissez en un et tenez vous y dans tout le document.
 * [ordonnées](https://www.markdownguide.org/basic-syntax/#ordered-lists)
 
 ## Formules mathématiques
 
-Lorsque l'on écrit des textes scientifique, vient inévitablement la question de l'écriture des équations.
+Lorsque l'on écrit des textes scientifiques, vient inévitablement la question de l'écriture des équations.
 
 ### latex {#latex}
 
@@ -173,7 +173,7 @@ Quelques aides :
 
 ### en markdown
 
-On peut écrire en markdown les équation latex.
+On peut écrire en markdown les équations latex.
 
 * pour une équation dans le texte, on dit *inline* on entoure notre équation  par des `$`
 * pour équation au milieu de la page, on dit *display*, on entoure notre équation par des `$$` et on saute une ligne avant et après les `$$`. comme dans l'exemple ci-après.
@@ -218,7 +218,7 @@ Le format markdown est basique. Il possède plein de variantes qui permettent d'
 
 Si l'on veut exporter dans des formats plus exotiques ou encore finement contrôler le résultat de l'export, on peut utiliser le logiciel  [pandoc](https://pandoc.org/).
 
-[pandoc](https://pandoc.org/) est un monstre. Il permet (parfois avec un peu d'huile de coude il est vrai) de convertir à peut prêt tout document en un autre format (voir les [démos](https://pandoc.org/demos.html) pour différentes conversions).
+[pandoc](https://pandoc.org/) est un monstre. Il permet (parfois avec un peu d'huile de coude il est vrai) de convertir à peu près tout document en un autre format (voir les [démos](https://pandoc.org/demos.html) pour différentes conversions).
 
 #### Installation de pandoc
 
