@@ -63,7 +63,7 @@ category: cours
 
 ### Tuto markdown
 
-[Le format markdown]({% link _tutoriels/2021-08-30-format-markdown.md %})
+[Le format markdown]({% link _tutoriels/format-markdown.md %})
 
 ### tuto python
 

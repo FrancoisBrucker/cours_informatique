@@ -82,7 +82,7 @@ Ce cours est composée de trois grandes parties qui s'enchevêtrent.
 Outils, concepts et méthodes utiles pour comprendre le cours
 
 1. [naviguer dans un système de fichiers]({% link _tutoriels/systeme/2021-08-24-fichiers-navigation.md %})
-2. [installation vscode]({% link _tutoriels/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main.md %}), [installation python]({% link _tutoriels/python/2021-08-20-installation-de-python.md %}) et [vscode & python]({% link _tutoriels/editeur/vsc/2021-09-14-vsc-python.md %})
+2. [installation vscode]({% link _tutoriels/editeur/vsc/vsc-installation-et-prise-en-main.md %}), [installation python]({% link _tutoriels/python/2021-08-20-installation-de-python.md %}) et [vscode & python]({% link _tutoriels/editeur/vsc/2021-09-14-vsc-python.md %})
 3. [terminal]({%link _tutoriels/systeme/2021-08-24-terminal.md %}) et [utilisation du terminal]({% link _tutoriels/systeme/2021-12-02-terminal-utilisation.md %})
 
 ## structure
@@ -295,7 +295,7 @@ graph.links.push({
 
 graph.nodes.push({
   id: 'installation vscode',
-  link: "{% link _tutoriels/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main.md %}",
+  link: "{% link _tutoriels/editeur/vsc/vsc-installation-et-prise-en-main.md %}",
   group: groups.autre
 })
 graph.nodes.push({

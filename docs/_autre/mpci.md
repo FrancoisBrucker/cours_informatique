@@ -102,7 +102,7 @@ Au programme :
 
 ### semaine 6
 
-> A partir de la semaine 6, les contrôles de début séance seront à écrire en [markdown]({% link _tutoriels/2021-08-30-format-markdown.md %}) et envoyé converti en html (ou pdf) sur amétice.
+> A partir de la semaine 6, les contrôles de début séance seront à écrire en [markdown]({% link _tutoriels/format-markdown.md %}) et envoyé converti en html (ou pdf) sur amétice.
 {: .attention}
 
 #### mercredi {#m-6}

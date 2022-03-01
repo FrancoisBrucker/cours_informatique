@@ -13,7 +13,7 @@ Utiliation du terminal avec vscode
 
 > prérequis
 >
->* [vscode]({% link _tutoriels/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main.md %})
+>* [vscode]({% link _tutoriels/editeur/vsc/vsc-installation-et-prise-en-main.md %})
 >* [terminal]({% link _tutoriels/systeme/2021-08-24-terminal.md %})
 >
 {: .chemin}
@@ -24,7 +24,7 @@ Les différentes manières d'invoquer un terminal avec  [visual studio code](htt
 
 ## palette de commande
 
-Si vous tapez *">terminal"* dans la [palette de commande]({% link _tutoriels/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main.md %}#palette-de-commande.md), vous verrez toutes les commandes qui ont terminal dans leur nom. Il y a des commandes spécifiques à un langage (javascript, python, etc) et certaines très générales comme : *Open New External Terminal* qui ouvre un terminal dans le dossier de votre projet.
+Si vous tapez *">terminal"* dans la [palette de commande]({% link _tutoriels/editeur/vsc/vsc-installation-et-prise-en-main.md %}#palette-de-commande.md), vous verrez toutes les commandes qui ont terminal dans leur nom. Il y a des commandes spécifiques à un langage (javascript, python, etc) et certaines très générales comme : *Open New External Terminal* qui ouvre un terminal dans le dossier de votre projet.
 
 ## intégration dans vscode {#terminal-integre}
 

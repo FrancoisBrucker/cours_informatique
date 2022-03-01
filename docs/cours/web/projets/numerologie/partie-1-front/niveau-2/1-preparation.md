@@ -51,7 +51,7 @@ Ecrire les user stories et gérer nos todos ne peut se faire qu'en écrivant du 
 * ça prend trop de temps
 * les users stories et les todos font partie du projet, il doivent pouvoir être géré avec un gestionnaire de sources
 
-Heureusement, il existe plusieurs *langages* qui permettent d'écrire du texte structuré dans un éditeur de texte et qui sont jolis même en texte. Nous allons utiliser le [markdown]({% link _tutoriels/2021-08-30-format-markdown.md %}).
+Heureusement, il existe plusieurs *langages* qui permettent d'écrire du texte structuré dans un éditeur de texte et qui sont jolis même en texte. Nous allons utiliser le [markdown]({% link _tutoriels/format-markdown.md %}).
 
 ### fichiers de user stories
 

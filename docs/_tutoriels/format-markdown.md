@@ -8,15 +8,39 @@ Une introduction au format markdown.
 
 <!--more-->
 
+> [Format Markdown]({% link _tutoriels/format-markdown.md %})
+>
+> Prérequis :
+>
+> * [vscode]({% link _tutoriels/editeur/vsc/vsc-installation-et-prise-en-main.md %})
+>
+{: .chemin}
+
 ## Qu'est-ce ?
 
-[Markdown](https://fr.wikipedia.org/wiki/Markdown) est un format de fichier texte, donc modifiable par tout éditeur de texte. L'extension de fichier est *".md"*.
+> [Markdown](https://fr.wikipedia.org/wiki/Markdown) est un format de fichier texte, donc modifiable par tout éditeur de texte. L'extension de fichier est *".md"*.
+{: .note}
 
 L'intérêt de ce format de fichier texte est qu'il est parfaitement lisible dans tout éditeur de texte et qu'on peut de plus le *compiler* dans un autre format comme le pdf ou encore le html si on veut le partager.
 
-> Par exemple, tout ce site a par exemple été écrit en markdown (plus précisément une extension de celui-ci nommé [kramdown](https://kramdown.gettalong.org/documentation.html)) puis transformé en html grâce à [jekyll](https://jekyllrb.com/). Le code source du site est [visible](https://github.com/FrancoisBrucker/cours_informatique), en particulier le code source de [ce fichier](https://github.com/FrancoisBrucker/cours_informatique/blob/master/docs/tutos/_posts/2021-08-30-format-markdown.md) (cliquez sur le bouton `raw` à droite, juste avant que le fichier ne soit représenté).
+> Par exemple, tout ce site a par exemple été écrit en markdown avant d'être compié en html. Le code source du site est [visible](https://github.com/FrancoisBrucker/cours_informatique), en particulier le code source de [ce fichier]() (cliquez sur le bouton `raw` à droite, juste avant que le fichier ne soit représenté).
+
+> lien fichier source de ce fichier
+{: .tbd}
 
 ## syntaxe
+
+> ajouter les trucs fondamentaux:
+>
+> 1. titres
+> 2. gras, italique
+> 3. listes (avant et après vide) ordered ou non
+> 4. code inline et blocs (langage après)
+> 5. latex inline et block
+> 6. block text
+> 7. tableau (avancé)
+>
+{: .tbd}
 
 Markdown permet facilement de représenter des titres, des listes, mettre des choses en exergue, ..., uniquement avec du texte. Ce format est à la base un guide de lecture de fichiers textes.
 
@@ -35,12 +59,29 @@ Le format markdown est basique. Il possède plein de variantes qui permettent d'
 
 ## markdown avec vscode
 
-L'éditeur de texte [vscode]({% link _tutoriels/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main.md %}) permet d'écrire et d'exporter facilement du markdown. Sa documentation comporte une [partie consacrée au markdown](https://code.visualstudio.com/docs/languages/markdown). Nous allons utiliser deux extensions :
+L'éditeur de texte [vscode]({% link _tutoriels/editeur/vsc/vsc-installation-et-prise-en-main.md %}) permet d'écrire et d'exporter facilement du markdown. Sa documentation comporte une [partie consacrée au markdown](https://code.visualstudio.com/docs/languages/markdown). Nous allons utiliser deux extensions :
 
 * [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one) qui permet de fluidifier l'écriture de markdown et permet un export de celui-ci en html.
 * [markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint) qui souligne en orange les fautes de style (un espace après un `.` par exemple) et les erreurs de markdown (sauf dans la hiérarchie des paragraphes par exemple).
 
 > Le seconde extension est un [linter](https://mindsers.blog/fr/post/linting-good-practices/), qui incite à utiliser les bonnes pratiques d'écriture. Il en existe pour quasi tous les langages.
+
+## export
+
+Si le markdown est pratique pour être écrit et lu rapidement, pour de long documents ou le partage de ceux-ci, il est important de les exporter dans un format plus :
+
+* imprimable comme le pdf ou l'html
+* modifiable comme un docx ou un fichier latex
+* un autre format que l'on aime.
+
+Pour exporter le markdown dans quelque chose de plus joli avec vscode, on peut utiliser la [palette de commande]({% link _tutoriels/editeur/vsc/vsc-installation-et-prise-en-main.md %}#palette-de-commande) pour exécuter la commande : *markdown All in One: Print current document to HTML* : qui va rendre un fichier html.
+
+Cela suffit pour la majorité des cas.
+
+## tuto
+
+> tuto avec tout code + titres + export (même si le .md suffit très souvent).
+{: .tbd}
 
 ## Formules mathématiques
 
@@ -87,21 +128,17 @@ Lorsque vous faites de l'exportation en html, les mathématiques sont représent
 >Il ne faut pas mettre d'espace après le premier `$` et avant le dernier `$` lorsque l'on écrit des équations, sinon les convertisseur ne reconnaitront pas que ce sont des équations que vous voulez écrire. Ansi `$ \frac{1}{2}$` affichera `$ \frac{1}{2}$`, alors que `$\frac{1}{2}$` affichera $\frac{1}{2}$.
 {: .attention}
 
-## export
 
-Si le markdown est pratique pour être écrit et lu rapidement, pour de long documents ou le partage de ceux-ci, il est important de les exporter dans un format plus :
 
-* imprimable comme le pdf ou l'html
-* modifiable comme un docx ou un fichier latex
-* un autre format que l'on aime.
+## pour aller plus loin
 
-### avec vscode
+### variantes de markdown
 
-Pour exporter le markdown dans quelque chose de plus joli avec vscode, on peut utiliser la [palette de commande]({% link _tutoriels/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main.md %}#palette-de-commande) pour exécuter la commande : *markdown All in One: Print current document to HTML* : qui va rendre un fichier html.
+> kramdown etc. Car markdown très frustre au départ.
+{: .tbd}
+(plus précisément une extension de celui-ci nommé [kramdown](https://kramdown.gettalong.org/documentation.html)) puis transformé en html grâce à [jekyll](https://jekyllrb.com/).
 
-Cela suffit pour la majorité des cas.
-
-### utilitaire pandoc
+### export avec l'utilitaire pandoc
 
 Si l'on veut exporter dans des formats plus exotiques ou encore finement contrôler le résultat de l'export, on peut utiliser le logiciel  [pandoc](https://pandoc.org/).
 

@@ -11,7 +11,7 @@ Nous allons installer et configurer les principaux outils dont nous aurons besoi
 On installe l'éditeur de texte vscode :
 
 1. Installez [vscode](https://code.visualstudio.com/)
-2. commencez par vos familiariser avec grâce à [ce tutoriel]({% link _tutoriels/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main.md %}).
+2. commencez par vos familiariser avec grâce à [ce tutoriel]({% link _tutoriels/editeur/vsc/vsc-installation-et-prise-en-main.md %}).
 
 On supposera par la suite que vous avez lu et fait les installations de ce tutoriel.
 

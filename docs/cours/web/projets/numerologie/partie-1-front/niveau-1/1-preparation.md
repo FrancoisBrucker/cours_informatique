@@ -19,7 +19,7 @@ D'après les [prérequis du projet]({% link cours/web/projets/numerologie/index.
 
 ## projet
 
-Commencez par vos familiariser avec vscode si ce n'est déjà fait grâce à [ce tutoriel]({% link _tutoriels/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main.md %}). On supposera par la suite que vous avez lu et fait les installations de ce tutoriel.
+Commencez par vos familiariser avec vscode si ce n'est déjà fait grâce à [ce tutoriel]({% link _tutoriels/editeur/vsc/vsc-installation-et-prise-en-main.md %}). On supposera par la suite que vous avez lu et fait les installations de ce tutoriel.
 
 Nous allons préparer le projet dans lequel nous allons coder. Ceci se fait avec vscode en ouvrant un dossier. Ce dossier sera le départ de votre projet et s'appelle *workspace*.
 
@@ -43,7 +43,7 @@ console.log("bonjour " + nom + " !")
 
 ### exécution du code
 
-Tapez ">terminal" dans la [palette de commande]({% link _tutoriels/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main.md %}#palette-de-commande) (*menu Affichage >  Palette de commandes...*)/ et choisissez la commande *Open New External Terminal*.
+Tapez ">terminal" dans la [palette de commande]({% link _tutoriels/editeur/vsc/vsc-installation-et-prise-en-main.md %}#palette-de-commande) (*menu Affichage >  Palette de commandes...*)/ et choisissez la commande *Open New External Terminal*.
 
 Un nouveau terminal s'ouvre directement dans le dossier de votre projet. Magique non ?
 
