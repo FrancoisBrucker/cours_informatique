@@ -16,11 +16,11 @@
 <meta property="og:url" content="/cours_informatique/tutoriels/format-markdown.html">
 <meta property="og:site_name" content="cours d’informatique">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2022-03-01T06:22:19+00:00">
+<meta property="article:published_time" content="2022-03-01T07:23:15+00:00">
 <meta name="twitter:card" content="summary">
 <meta property="twitter:title" content="Format markdown">
 <script type="application/ld+json">
-{"headline":"Format markdown","dateModified":"2022-03-01T06:22:19+00:00","datePublished":"2022-03-01T06:22:19+00:00","description":"Une introduction au format markdown.","mainEntityOfPage":{"@type":"WebPage","@id":"/cours_informatique/tutoriels/format-markdown.html"},"@type":"BlogPosting","url":"/cours_informatique/tutoriels/format-markdown.html","@context":"https://schema.org"}</script>
+{"headline":"Format markdown","dateModified":"2022-03-01T07:23:15+00:00","datePublished":"2022-03-01T07:23:15+00:00","description":"Une introduction au format markdown.","mainEntityOfPage":{"@type":"WebPage","@id":"/cours_informatique/tutoriels/format-markdown.html"},"@type":"BlogPosting","url":"/cours_informatique/tutoriels/format-markdown.html","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
@@ -117,8 +117,6 @@
 
 <p>Le markdown est un format très simple. Il permet de structurer minimalement un texte, ce qui est suffisant pour la plupart des rapports/documentations de code.</p>
 
-<p>Les principales fonctionnalités sont décrites ici : <a href="https://www.markdownguide.org/cheat-sheet/#basic-syntax">https://www.markdownguide.org/cheat-sheet/#basic-syntax</a></p>
-
 <h3 id="un-exemple">un exemple</h3>
 
 <blockquote class="a-faire">
@@ -130,11 +128,11 @@
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 # Un petit peu de Markdown
 
-## quoi
+## quoi ?
 
 Le [Markdown](https://fr.wikipedia.org/wiki/Markdown) est un format texte éditable et visualisable dans tout éditeur.
 
-## syntaxe
+## comment ?
 
 ### style 
 
@@ -170,13 +168,15 @@ On peut aussi écrire des blocs de code, comme :
 
 </blockquote>
 
-<p>Vous devez avoir crée un fichier <em>“exemple.html”</em> dans le même dossier que votre fochier <em>“exemple.md”</em>.</p>
+<p>Vous devez avoir crée un fichier <em>“exemple.html”</em> dans le même dossier que votre fichier <em>“exemple.md”</em>.</p>
 
 <blockquote class="a-fair">
   <p>Ouvrez le fichier <em>“exemple.html”</em> dans votre navigateur favori pour voir le résultat.</p>
 </blockquote>
 
 <h3 id="balise-à-connaître">balise à connaître</h3>
+
+<p>Les principales fonctionnalités sont décrites dans <a href="https://www.markdownguide.org/cheat-sheet/#basic-syntax">cette liste</a>.</p>
 
 <h4 id="sections">sections</h4>
 
@@ -190,36 +190,52 @@ On peut aussi écrire des blocs de code, comme :
 
 </code></pre></div></div>
 
-<h4 id="autres-trucs">autres trucs</h4>
+<h4 id="paragraphes">paragraphes</h4>
 
-<blockquote class="tbd">
-  <p>ajouter les trucs fondamentaux:</p>
+<p>Un saut de ligne est nécessaire pour commencer un nouveau paragraphe. Aller à la ligne sera équivalent à un espace.</p>
 
-  <ol>
-    <li>titres</li>
-    <li>gras, italique</li>
-    <li>listes (avant et après vide) ordered ou non</li>
-    <li>code inline et blocs (langage après)</li>
-    <li>latex inline et block</li>
-    <li>block text</li>
-    <li>tableau (avancé)</li>
-  </ol>
+<h4 id="style-inline">style inline</h4>
 
-</blockquote>
+<p>Dans le flot du texte, on peut mettre en exergue des parties de texte :</p>
 
-<p>Markdown permet facilement de représenter des titres, des listes, mettre des choses en exergue, …, uniquement avec du texte. Ce format est à la base un guide de lecture de fichiers textes.</p>
+<ul>
+  <li>
+<em>en italique</em> : <code class="language-plaintext highlighter-rouge">*texte*</code>
+</li>
+  <li>
+<strong>en gras</strong> : <code class="language-plaintext highlighter-rouge">**texte**</code>
+</li>
+  <li>
+<del>barré</del> : <code class="language-plaintext highlighter-rouge">~~texte~~</code>
+</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">code</code> : <code class="language-plaintext highlighter-rouge">`texte`</code>
+</li>
+  <li>équations : $latex$</li>
+</ul>
 
-<p>Par exemple, <code class="language-plaintext highlighter-rouge">*coucou*</code> signifie que <code class="language-plaintext highlighter-rouge">coucou</code> est en exergue (ce qui sera traduit par une police en italique à l’exportation en html ou pdf par exemple), ou encore <code class="language-plaintext highlighter-rouge">**salut !**</code> signifie que <code class="language-plaintext highlighter-rouge">salut !</code> est important (et sera traduit par une police en gras à l’exportation en html ou pdf).</p>
+<h4 id="style-bloc">style bloc</h4>
 
-<blockquote class="note">
-  <p>Pour une introduction et une liste des possibilités offertes, vous pouvez consulter le site : <a href="https://www.markdownguide.org/">https://www.markdownguide.org/</a> par exemple</p>
-</blockquote>
+<p>En markdown, un bloc commence et fini par une ligne vide.</p>
 
-<h2 id="tuto">tuto</h2>
+<p>Plusieurs symboles peuvent être utilisées :</p>
 
-<blockquote class="tbd">
-  <p>tuto avec tout code + titres + export (même si le .md suffit très souvent).</p>
-</blockquote>
+<ul>
+  <li>
+<a href="https://www.markdownguide.org/extended-syntax/#fenced-code-blocks">code</a>. Mettez le langage utilisé pour pour activer la coloration syntaxique (par défaut, je mets comme langage <code class="language-plaintext highlighter-rouge">text</code> lorsque j’écris un algorithme en pseudo-code)</li>
+  <li><a href="https://www.markdownguide.org/basic-syntax/#blockquotes-1">remarques</a></li>
+  <li><a href="#latex">latex</a></li>
+</ul>
+
+<h4 id="listes">listes</h4>
+
+<p>Comme chaque bloc, les listes commencent et frinissent toujours par une ligne vide. Il y a deux types de listes :</p>
+
+<ul>
+  <li>
+<a href="https://www.markdownguide.org/basic-syntax/#unordered-lists">non ordonnées</a>. Chaque item peut comencer par un <code class="language-plaintext highlighter-rouge">-</code>, un <code class="language-plaintext highlighter-rouge">*</code> ou encore un <code class="language-plaintext highlighter-rouge">+</code>. Choisissez en un et tenez vous y dans tout le document.</li>
+  <li><a href="https://www.markdownguide.org/basic-syntax/#ordered-lists">ordonnées</a></li>
+</ul>
 
 <h2 id="formules-mathématiques">Formules mathématiques</h2>
 
@@ -240,7 +256,7 @@ On peut aussi écrire des blocs de code, comme :
 <p>Quelques aides :</p>
 
 <ul>
-  <li>Un <a href="http://tug.ctan.org/info/undergradmath/undergradmath.pdf">résumé</a> des possibibités</li>
+  <li>Un <a href="http://tug.ctan.org/info/undergradmath/undergradmath.pdf">résumé</a> des possibilités</li>
   <li>un <a href="https://www.science-emergence.com/Articles/Formules-math%C3%A9matiques-sous-LaTeX/">tuto</a> Latex contenant aussi des instructions pour les équations.</li>
 </ul>
 
@@ -268,11 +284,7 @@ On peut aussi écrire des blocs de code, comme :
 
 </code></pre></div></div>
 
-<blockquote class="tbd">
-  <p>avant et après chaque bloc des lignes vides</p>
-</blockquote>
-
-<p>Lorsque vous faites de l’exportation en html, les mathématiques sont représentées en utilisant <a href="https://www.mathjax.org/">Mathjax</a>. Ce <a href="https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference">post</a> résume les possibilités basique de mathjax pour écrire des équations.</p>
+<p>Lorsque vous faites de l’exportation en html, les mathématiques sont représentées en utilisant la bibliothèque <a href="https://www.mathjax.org/">Mathjax</a>.</p>
 
 <blockquote class="attention">
   <p>Il ne faut pas mettre d’espace après le premier <code class="language-plaintext highlighter-rouge">$</code> et avant le dernier <code class="language-plaintext highlighter-rouge">$</code> lorsque l’on écrit des équations, sinon les convertisseur ne reconnaitront pas que ce sont des équations que vous voulez écrire. Ansi <code class="language-plaintext highlighter-rouge">$ \frac{1}{2}$</code> affichera <code class="language-plaintext highlighter-rouge">$ \frac{1}{2}$</code>, alors que <code class="language-plaintext highlighter-rouge">$\frac{1}{2}$</code> affichera $\frac{1}{2}$.</p>
@@ -280,12 +292,16 @@ On peut aussi écrire des blocs de code, comme :
 
 <h2 id="pour-aller-plus-loin">pour aller plus loin</h2>
 
-<h3 id="variantes-de-markdown">variantes de markdown</h3>
+<h3 id="guides">guides</h3>
 
-<blockquote class="tbd">
-  <p>kramdown etc. Car markdown très frustre au départ.</p>
-</blockquote>
-<p>(plus précisément une extension de celui-ci nommé <a href="https://kramdown.gettalong.org/documentation.html">kramdown</a>) puis transformé en html grâce à <a href="https://jekyllrb.com/">jekyll</a>.</p>
+<ul>
+  <li>base markdown et latex : <a href="https://ashki23.github.io/markdown-latex.html">https://ashki23.github.io/markdown-latex.html</a>
+</li>
+  <li>base markdwon : <a href="https://www.markdownguide.org/">https://www.markdownguide.org/</a> par exemple</li>
+  <li><a href="https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference">Mathjax et latex</a></li>
+</ul>
+
+<h3 id="variantes-de-markdown">variantes de markdown</h3>
 
 <p>Le format markdown est basique. Il possède plein de variantes qui permettent d’étendre ses possibilités. Deux d’entre elles sont devenus des standard de fait :</p>
 
@@ -295,10 +311,6 @@ On peut aussi écrire des blocs de code, comme :
   <li>
 <a href="https://kramdown.gettalong.org/documentation.html">kramdown</a>.</li>
 </ul>
-
-<blockquote class="note">
-  <p>Vous pouvez écrire du markdown dans le format github ou kramdown. Les principales fonctionnalités sont décrites dans <a href="https://www.markdownguide.org/cheat-sheet/">ce site</a></p>
-</blockquote>
 
 <h3 id="export-avec-lutilitaire-pandoc">export avec l’utilitaire pandoc</h3>
 
