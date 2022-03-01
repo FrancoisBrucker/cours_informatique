@@ -57,9 +57,7 @@ Exemple :
 objet.méthode(paramètre 1, ..., paramètre n)
 ```
 
-On cherchera `méthode` définie pour l'`objet`.
-
-> Le mécanisme pour réaliser ceci utilise les espaces de noms : on cherche le nom `méthode` défini dans l'espace de noms de `objet`
+On cherchera `méthode` définie pour `objet` en utilisant la [notation pointée]({% link cours/algorithme-code-theorie/code/programmation-objet/memoire-et-espace-noms.md %}#notation-pointee).
 
 ### but
 
@@ -95,15 +93,15 @@ Les méthodes définies dans la classe `str`, comme `upper()` par exemple sont u
 La notation pointée permet de dire que c'est la méthode à droite du `.` que l'on cherche dans l'objet à gauche du point.
 
 >Le code suivant produit une erreur. Pourquoi ?
+>
+> ```python
+> >>> upper("coucou")
+> Traceback (most recent call last):
+>   File "<stdin>", line 1, in <module>
+> NameError: name 'upper' is not defined
+> ```
+>
 {: .a-faire}
-
-```python
->>> upper("coucou")
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-NameError: name 'upper' is not defined
-```
-
 {% details solution %}
 C'est la méthode définie dans la classe `str` qui s'appelle `upper` qui existe...
 {% enddetails %}
@@ -112,7 +110,10 @@ Ce qui fait que le résultat est différent lorsque l'on applique la méthode `u
 
 On appelle les spécificités de chaque objet, c'est à dire les valeurs de sa structure de données, des **attributs**.
 
-> un objet `str` est bien plus que juste ses caractères : **Un objet est bien plus que ses composants**
+un objet `str` est bien plus que juste ses caractères :
+  
+> Un objet est est constitué d'attributs défini pour lui et de méthodes définies dans sa classe.
+{: .note}
 
 #### entiers
 
@@ -300,7 +301,7 @@ class <nom de la classe>:
 * `__init__` est le constructeur. L'usage courant est de déclarer tous les attributs d'un objets dans celui-ci.
 * deux méthodes : `ajoute` et `donne_valeur`
 
-> En python, lorsque l'on définit une méthode d'un classe, le 1er paramètre de chaque méthode est **toujours** `self`. A l'exécution, python donnera à ce paramètre l'objet qui appelle la méthode, on ne le voit pas lorsque l'on écrit le code.
+> En python, lorsque l'on définit une méthode d'une classe, le 1er paramètre de chaque méthode est **toujours** `self`. A l'exécution, python donnera à ce paramètre l'objet qui appelle la méthode, on ne le voit pas lorsque l'on écrit le code.
 {: .note}
 
 Par exemple dans le code la ligne `c1.ajoute()` sera transformée par python en : `Compteur.ajoute(c1)` qui peut se lire : on exécute la fonction `ajoute` de l'espace de noms du bloc `Compteur` avec comme paramètre `c1`.
