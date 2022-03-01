@@ -89,7 +89,7 @@
 
 <ol>
   <li>dans les préférences (<em>menu file/code &gt; Préferences &gt; settings</em>) tapez <code class="language-plaintext highlighter-rouge">python.testing.pytestEnabled</code>  dans la barre de recherche et cochez la case. Ceci dit à vscode que notre framework de test est pytest (il y en a d’autres possible comme <a href="https://docs.python.org/fr/3.9/library/unittest.html">unittest</a> ou encore <a href="https://nose.readthedocs.io/en/latest/">nosetests</a>, mais on ne va pas les utiliser. Assurez vous cependant qu’un seul framework de test soit utilisé à la fois. Ca devrait être le cas si vous n’avez pas cliqué un peu partout).</li>
-  <li>on configure les tests de notre projet en tapant la commande (dans la <a href="/cours_informatique/tutoriels/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main.html#palette-de-commande">palette de commande</a>) : <em>python : Configure tests</em> on choisit <em>pytest</em> puis <em>. (root)</em> qui donne le dossier de départ où aller chercher nos tests</li>
+  <li>on configure les tests de notre projet en tapant la commande (dans la <a href="/cours_informatique/tutoriels/editeur/vsc/vsc-installation-et-prise-en-main.html#palette-de-commande">palette de commande</a>) : <em>python : Configure tests</em> on choisit <em>pytest</em> puis <em>. (root)</em> qui donne le dossier de départ où aller chercher nos tests</li>
 </ol>
 
 <h3 id="utilisation-pytest">utilisation</h3>
@@ -157,7 +157,7 @@ qui peut être <a href="/cours_informatique/tutoriels/editeur/vsc/2021-09-14-vsc
 </ul>
 
 <blockquote>
-  <p>Notez que vous pouvez aussi accéder à ces commande via la <a href="/cours_informatique/tutoriels/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main.html#palette-de-commande">palette de commande</a>,par exemple avec la commande <em>python: enable/disable linting</em>.</p>
+  <p>Notez que vous pouvez aussi accéder à ces commande via la <a href="/cours_informatique/tutoriels/editeur/vsc/vsc-installation-et-prise-en-main.html#palette-de-commande">palette de commande</a>,par exemple avec la commande <em>python: enable/disable linting</em>.</p>
 </blockquote>
 
 <h3 id="pycodestyle-dans-le-terminal">pycodestyle dans le terminal</h3>
@@ -215,7 +215,7 @@ qui peut être <a href="/cours_informatique/tutoriels/editeur/vsc/2021-09-14-vsc
 <p>Vous pouvez aussi :</p>
 
 <ul>
-  <li>exécuter directement la commande <em>format document</em> dans <a href="/cours_informatique/tutoriels/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main.html#palette-de-commande">palette de commande</a>.</li>
+  <li>exécuter directement la commande <em>format document</em> dans <a href="/cours_informatique/tutoriels/editeur/vsc/vsc-installation-et-prise-en-main.html#palette-de-commande">palette de commande</a>.</li>
   <li>utiliser son <a href="https://code.visualstudio.com/docs/editor/codebasics#_formatting">raccourci clavier</a>
 </li>
 </ul>
@@ -279,7 +279,7 @@ qui peut être <a href="/cours_informatique/tutoriels/editeur/vsc/2021-09-14-vsc
 <p>La commande <code class="language-plaintext highlighter-rouge">python3 -m pytest --cov=.</code> crée un fichier de coverage qui s’appelle <code class="language-plaintext highlighter-rouge">.coverage</code>. Il n’est cependant pas lisible dans ce format par défaut par l’extension. Il faut générer un format de sorti en <a href="https://fr.wikipedia.org/wiki/Extensible_Markup_Language">xml</a> avec la commande : <code class="language-plaintext highlighter-rouge">python3 -m pytest --cov=.  --cov-report xml:cov.xml</code></p>
 
 <blockquote>
-  <p>Si le petit <em>watch</em> n’est pas visible dans la barre de status, vous pouvez le faire à la main dans avec la <a href="/cours_informatique/tutoriels/editeur/vsc/2021-09-03-vsc-installation-et-prise-en-main.html#palette-de-commande">palette de commande</a>)
+  <p>Si le petit <em>watch</em> n’est pas visible dans la barre de status, vous pouvez le faire à la main dans avec la <a href="/cours_informatique/tutoriels/editeur/vsc/vsc-installation-et-prise-en-main.html#palette-de-commande">palette de commande</a>)
  <em>Coverage Gutters: Display Coverage</em>.</p>
 </blockquote>
 
