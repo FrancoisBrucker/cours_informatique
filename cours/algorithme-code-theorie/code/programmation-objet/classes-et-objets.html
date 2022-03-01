@@ -128,11 +128,7 @@
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>objet.méthode(paramètre 1, ..., paramètre n)
 </code></pre></div></div>
 
-<p>On cherchera <code class="language-plaintext highlighter-rouge">méthode</code> définie pour l’<code class="language-plaintext highlighter-rouge">objet</code>.</p>
-
-<blockquote>
-  <p>Le mécanisme pour réaliser ceci utilise les espaces de noms : on cherche le nom <code class="language-plaintext highlighter-rouge">méthode</code> défini dans l’espace de noms de <code class="language-plaintext highlighter-rouge">objet</code></p>
-</blockquote>
+<p>On cherchera <code class="language-plaintext highlighter-rouge">méthode</code> définie pour <code class="language-plaintext highlighter-rouge">objet</code> en utilisant la <a href="/cours_informatique/cours/algorithme-code-theorie/code/programmation-objet/memoire-et-espace-noms.html#notation-pointee">notation pointée</a>.</p>
 
 <h3 id="but">but</h3>
 
@@ -171,14 +167,15 @@
 
 <blockquote class="a-faire">
   <p>Le code suivant produit une erreur. Pourquoi ?</p>
-</blockquote>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">upper</span><span class="p">(</span><span class="s">"coucou"</span><span class="p">)</span>
+  <div class="language-python highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">upper</span><span class="p">(</span><span class="s">"coucou"</span><span class="p">)</span>
 <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
   <span class="n">File</span> <span class="s">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="nb">NameError</span><span class="p">:</span> <span class="n">name</span> <span class="s">'upper'</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">defined</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
 
+</blockquote>
 <details><summary>solution</summary><div>
 <p>C’est la méthode définie dans la classe <code class="language-plaintext highlighter-rouge">str</code> qui s’appelle <code class="language-plaintext highlighter-rouge">upper</code> qui existe…</p>
 </div></details>
@@ -187,8 +184,10 @@
 
 <p>On appelle les spécificités de chaque objet, c’est à dire les valeurs de sa structure de données, des <strong>attributs</strong>.</p>
 
-<blockquote>
-  <p>un objet <code class="language-plaintext highlighter-rouge">str</code> est bien plus que juste ses caractères : <strong>Un objet est bien plus que ses composants</strong></p>
+<p>un objet <code class="language-plaintext highlighter-rouge">str</code> est bien plus que juste ses caractères :</p>
+
+<blockquote class="note">
+  <p>Un objet est est constitué d’attributs défini pour lui et de méthodes définies dans sa classe.</p>
 </blockquote>
 
 <h4 id="entiers">entiers</h4>
@@ -426,7 +425,7 @@ class &lt;nom de la classe&gt;:
 </ul>
 
 <blockquote class="note">
-  <p>En python, lorsque l’on définit une méthode d’un classe, le 1er paramètre de chaque méthode est <strong>toujours</strong> <code class="language-plaintext highlighter-rouge">self</code>. A l’exécution, python donnera à ce paramètre l’objet qui appelle la méthode, on ne le voit pas lorsque l’on écrit le code.</p>
+  <p>En python, lorsque l’on définit une méthode d’une classe, le 1er paramètre de chaque méthode est <strong>toujours</strong> <code class="language-plaintext highlighter-rouge">self</code>. A l’exécution, python donnera à ce paramètre l’objet qui appelle la méthode, on ne le voit pas lorsque l’on écrit le code.</p>
 </blockquote>
 
 <p>Par exemple dans le code la ligne <code class="language-plaintext highlighter-rouge">c1.ajoute()</code> sera transformée par python en : <code class="language-plaintext highlighter-rouge">Compteur.ajoute(c1)</code> qui peut se lire : on exécute la fonction <code class="language-plaintext highlighter-rouge">ajoute</code> de l’espace de noms du bloc <code class="language-plaintext highlighter-rouge">Compteur</code> avec comme paramètre <code class="language-plaintext highlighter-rouge">c1</code>.</p>
