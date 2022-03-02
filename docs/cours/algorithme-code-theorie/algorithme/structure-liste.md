@@ -115,19 +115,30 @@ On a même le résultat suivant :
 > L'ajout de $n$ éléments à une liste originellement vide prend $\mathcal{O}(n)$ opérations au maximum
 {: .note}
 {% details preuve %}
-Complexité d'ajout de $n$ éléments à une liste : 
+Complexité d'ajout de $n$ éléments à une liste :
 
 * Dans le cas le pire le dernier ajout entraine un doublement de la taille de la structure : un nouveau tableau est créé en $\mathcal{O}(1)$ puis les $n$ éléments de l'ancien tableau sont copiés dans le nouveau en $\mathcal{O}(n)$ opérations
-* Le précédent tabeau  était de taille $n-1$ et a nécessité $\mathcal{O}(n)$ opérations pour être créé puis rempli (recopie de $n/2$ anciens éléments puis insertion de $n/2$ nouveaux éléments).
-* Le tableau encore d'avant d'avant était de taille $n/2$ et son remplissage a pris un temps $\mathcal{O}(n/2)$ opérations
-* Le tableau encore encore d'avant d'avant était de taille $n/4$ et son remplissage a pris un temps $\mathcal{O}(n/4)$ opérations
+* Le précédent tableau  était de taille $n-1$ et a nécessité $\mathcal{O}(n)$ opérations pour être créé puis rempli (recopie de $n/2$ anciens éléments puis insertion de $n/2$ nouveaux éléments).
+* Le tableau encore d'avant d'avant était de taille $n/2$ et son remplissage a pris $\mathcal{O}(n/2)$ opérations (recopie de $n/4$ anciens éléments puis insertion de $n/4$ nouveaux éléments)
+* Le tableau encore encore d'avant d'avant était de taille $n/4$ et son remplissage a pris $\mathcal{O}(n/4)$ opérations
 * ...
-* le $i$ème tableau précédent était de taille $n / {2^i}$ et son remplissage a pris un temps $\mathcal{O}(n/{2^i})$ opérations
+* le $i$ème tableau précédent était de taille $n / {2^i}$ et son remplissage a pris $\mathcal{O}(n/{2^i})$ opérations
 * ...
-* le $log_2(n)$ tableau précédent était de taille $n / {2^{log_2(n}} = 1$ et son remplissage a pris un temps $\mathcal{O}(n / {2^{log_2(n}}) = \mathcal{O}(1)$ opérations
+* le $\log_2(n)$ tableau précédent était de taille $n / {2^{\log_2(n}} = 1$ et son remplissage a pris un nombre d'opérations de $\mathcal{O}(n / {2^{\log_2(n}}) = \mathcal{O}(1)$ opérations
 
-Le temps total est donc de $\mathcal{O}(n + n + n / 2 + n / 4 + n / 8 + \dots + 1) = \mathcal{O}((\sum1/2^i)* n) = \mathcal{O}(n)$ (puisque $\sum_{1\leq i} 1/ 2^i = 1$. PO
-our plus d'info sur ce résultat rigolo :  <https://fr.wikipedia.org/wiki/1/2_%2B_1/4_%2B_1/8_%2B_1/16_%2B_%E2%8B%AF>).
+La complexité totale est donc de :
+
+$$
+C(n) = \mathcal{O}(n + n + \frac{n}{2} + \frac{n}{4} + \frac{n}{8} + \dots + 1) = \mathcal{O}(n + \sum_{i=0}^{\log_2(n)}\frac{n}{2^i}) = \mathcal{O}(n(1+\sum_{i=0}^{\log_2(n)}\frac{1}{2^i}))
+$$
+
+[Comme](https://fr.wikipedia.org/wiki/1/2_%2B_1/4_%2B_1/8_%2B_1/16_%2B_%E2%8B%AF) $\sum_{i=0}^{+\infty}\frac{1}{2^i} = 1$, on a :
+
+$$
+(1+\sum_{i=0}^{\log_2(n)}\frac{1}{2^i})) \leq (1+\sum_{i=0}^{+\infty}\frac{1}{2^i})) \leq 2
+$$
+
+Et donc : $C(n) = \mathcal{O}(n)$
 
 {% enddetails %}
 
@@ -148,6 +159,3 @@ Un piège courant lorsque l'on débute avec les liste en python est d'ajouter un
 
 * complexité de `l = l + [x]` : $\mathcal{O}(\mbox{len}(l))$ car on crée une nouvelle liste !
 * complexité de : `l.append(x)` : $\mathcal{O}(1)$ car on ajoute à la fin d'une liste déjà existante
-
-
-

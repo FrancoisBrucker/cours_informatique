@@ -308,8 +308,21 @@ Par exemple dans le code la ligne `c1.ajoute()` sera transformée par python en 
 
 La première façon d'écrire (`c1.ajoute()`) est plus simple à comprendre **pour un humain** et évite les erreurs (la méthode est appliquée à l'objet à gauche du point), alors que la seconde est plus facile à comprendre **pour un ordinateur** en utilisant les espaces de noms et le passage explicite de l'objet appelant.
 
->`self` peut souvent paraître magique. Ce premier paramètre est l'objet qui a appelé la méthode (à gauche du *.*). C'est la manière explicite de python de montrer quel objet est utilisé. Vous pouvez appeler ce premier paramètre comme vous voulez, mais c'est **très très** déconseillé car votre code en deviendra
-moins lisible (tout le monde utilise le nom `self`).
+`self` peut souvent paraître magique. Une façon simple de comprendre ce qu'il fait est :
+
+> `self`, le premier paramètre de la définition d'une méthode, est l'objet à gauche du `.` lors de l'appel celle-ci par une notation pointée.
+>
+> C'est la manière explicite de python de montrer quel objet est utilisé lors de l'appel de méthodes.
+{: .note}
+
+Vous pouvez appeler ce premier paramètre comme vous voulez, mais c'est **très très** déconseillé car votre code en deviendra moins lisible (tout le monde utilise le nom `self`).
+
+Par exemple, considérons la ligne de code `"coucou".upper().count("U")` :
+
+1. on exécute la méthode `count` de l'objet à gauche du `.`, c'est à dire `"coucou".upper()`. **Attention** C'est bien toute la partie gauche, pas seulement jusqu'au `.`suivant.
+2. l'objet `"coucou".upper()` est le résultat de la méthode `upper` appliquée à l'objet à gauche du `.`, c'est à dire la chaine de caractères `"coucou"`.
+3. le résultat de `"coucou".upper()` est ainsi égal à l'objet `"COUCOU"`
+4. donc  `"coucou".upper().count("U")` est égal à `"COUCOU".count("U")` qui vaut 2
 
 ### exécution du code
 
