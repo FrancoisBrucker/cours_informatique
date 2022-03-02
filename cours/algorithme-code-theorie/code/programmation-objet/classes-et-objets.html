@@ -432,10 +432,25 @@ class &lt;nom de la classe&gt;:
 
 <p>La première façon d’écrire (<code class="language-plaintext highlighter-rouge">c1.ajoute()</code>) est plus simple à comprendre <strong>pour un humain</strong> et évite les erreurs (la méthode est appliquée à l’objet à gauche du point), alors que la seconde est plus facile à comprendre <strong>pour un ordinateur</strong> en utilisant les espaces de noms et le passage explicite de l’objet appelant.</p>
 
-<blockquote>
-  <p><code class="language-plaintext highlighter-rouge">self</code> peut souvent paraître magique. Ce premier paramètre est l’objet qui a appelé la méthode (à gauche du <em>.</em>). C’est la manière explicite de python de montrer quel objet est utilisé. Vous pouvez appeler ce premier paramètre comme vous voulez, mais c’est <strong>très très</strong> déconseillé car votre code en deviendra
-moins lisible (tout le monde utilise le nom <code class="language-plaintext highlighter-rouge">self</code>).</p>
+<p><code class="language-plaintext highlighter-rouge">self</code> peut souvent paraître magique. Une façon simple de comprendre ce qu’il fait est :</p>
+
+<blockquote class="note">
+  <p><code class="language-plaintext highlighter-rouge">self</code>, le premier paramètre de la définition d’une méthode, est l’objet à gauche du <code class="language-plaintext highlighter-rouge">.</code> lors de l’appel celle-ci par une notation pointée.</p>
+
+  <p>C’est la manière explicite de python de montrer quel objet est utilisé lors de l’appel de méthodes.</p>
 </blockquote>
+
+<p>Vous pouvez appeler ce premier paramètre comme vous voulez, mais c’est <strong>très très</strong> déconseillé car votre code en deviendra moins lisible (tout le monde utilise le nom <code class="language-plaintext highlighter-rouge">self</code>).</p>
+
+<p>Par exemple, considérons la ligne de code <code class="language-plaintext highlighter-rouge">"coucou".upper().count("U")</code> :</p>
+
+<ol>
+  <li>on exécute la méthode <code class="language-plaintext highlighter-rouge">count</code> de l’objet à gauche du <code class="language-plaintext highlighter-rouge">.</code>, c’est à dire <code class="language-plaintext highlighter-rouge">"coucou".upper()</code>. <strong>Attention</strong> C’est bien toute la partie gauche, pas seulement jusqu’au <code class="language-plaintext highlighter-rouge">.</code>suivant.</li>
+  <li>l’objet <code class="language-plaintext highlighter-rouge">"coucou".upper()</code> est le résultat de la méthode <code class="language-plaintext highlighter-rouge">upper</code> appliquée à l’objet à gauche du <code class="language-plaintext highlighter-rouge">.</code>, c’est à dire la chaine de caractères <code class="language-plaintext highlighter-rouge">"coucou"</code>.</li>
+  <li>le résultat de <code class="language-plaintext highlighter-rouge">"coucou".upper()</code> est ainsi égal à l’objet <code class="language-plaintext highlighter-rouge">"COUCOU"</code>
+</li>
+  <li>donc  <code class="language-plaintext highlighter-rouge">"coucou".upper().count("U")</code> est égal à <code class="language-plaintext highlighter-rouge">"COUCOU".count("U")</code> qui vaut 2</li>
+</ol>
 
 <h3 id="exécution-du-code">exécution du code</h3>
 

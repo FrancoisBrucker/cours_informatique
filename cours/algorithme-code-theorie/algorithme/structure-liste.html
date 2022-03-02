@@ -203,17 +203,24 @@ Le programme suivant par exemple crée une liste de nom l, contenant des objets 
 
 <ul>
   <li>Dans le cas le pire le dernier ajout entraine un doublement de la taille de la structure : un nouveau tableau est créé en $\mathcal{O}(1)$ puis les $n$ éléments de l’ancien tableau sont copiés dans le nouveau en $\mathcal{O}(n)$ opérations</li>
-  <li>Le précédent tabeau  était de taille $n-1$ et a nécessité $\mathcal{O}(n)$ opérations pour être créé puis rempli (recopie de $n/2$ anciens éléments puis insertion de $n/2$ nouveaux éléments).</li>
-  <li>Le tableau encore d’avant d’avant était de taille $n/2$ et son remplissage a pris un temps $\mathcal{O}(n/2)$ opérations</li>
-  <li>Le tableau encore encore d’avant d’avant était de taille $n/4$ et son remplissage a pris un temps $\mathcal{O}(n/4)$ opérations</li>
+  <li>Le précédent tableau  était de taille $n-1$ et a nécessité $\mathcal{O}(n)$ opérations pour être créé puis rempli (recopie de $n/2$ anciens éléments puis insertion de $n/2$ nouveaux éléments).</li>
+  <li>Le tableau encore d’avant d’avant était de taille $n/2$ et son remplissage a pris $\mathcal{O}(n/2)$ opérations (recopie de $n/4$ anciens éléments puis insertion de $n/4$ nouveaux éléments)</li>
+  <li>Le tableau encore encore d’avant d’avant était de taille $n/4$ et son remplissage a pris $\mathcal{O}(n/4)$ opérations</li>
   <li>…</li>
-  <li>le $i$ème tableau précédent était de taille $n / {2^i}$ et son remplissage a pris un temps $\mathcal{O}(n/{2^i})$ opérations</li>
+  <li>le $i$ème tableau précédent était de taille $n / {2^i}$ et son remplissage a pris $\mathcal{O}(n/{2^i})$ opérations</li>
   <li>…</li>
-  <li>le $log_2(n)$ tableau précédent était de taille $n / {2^{log_2(n}} = 1$ et son remplissage a pris un temps $\mathcal{O}(n / {2^{log_2(n}}) = \mathcal{O}(1)$ opérations</li>
+  <li>le $\log_2(n)$ tableau précédent était de taille $n / {2^{\log_2(n}} = 1$ et son remplissage a pris un nombre d’opérations de $\mathcal{O}(n / {2^{\log_2(n}}) = \mathcal{O}(1)$ opérations</li>
 </ul>
 
-<p>Le temps total est donc de $\mathcal{O}(n + n + n / 2 + n / 4 + n / 8 + \dots + 1) = \mathcal{O}((\sum1/2^i)* n) = \mathcal{O}(n)$ (puisque $\sum_{1\leq i} 1/ 2^i = 1$. PO
-our plus d’info sur ce résultat rigolo :  <a href="https://fr.wikipedia.org/wiki/1/2_%2B_1/4_%2B_1/8_%2B_1/16_%2B_%E2%8B%AF">https://fr.wikipedia.org/wiki/1/2_%2B_1/4_%2B_1/8_%2B_1/16_%2B_%E2%8B%AF</a>).</p>
+<p>La complexité totale est donc de :</p>
+
+\[C(n) = \mathcal{O}(n + n + \frac{n}{2} + \frac{n}{4} + \frac{n}{8} + \dots + 1) = \mathcal{O}(n + \sum_{i=0}^{\log_2(n)}\frac{n}{2^i}) = \mathcal{O}(n(1+\sum_{i=0}^{\log_2(n)}\frac{1}{2^i}))\]
+
+<p><a href="https://fr.wikipedia.org/wiki/1/2_%2B_1/4_%2B_1/8_%2B_1/16_%2B_%E2%8B%AF">Comme</a> $\sum_{i=0}^{+\infty}\frac{1}{2^i} = 1$, on a :</p>
+
+\[(1+\sum_{i=0}^{\log_2(n)}\frac{1}{2^i})) \leq (1+\sum_{i=0}^{+\infty}\frac{1}{2^i})) \leq 2\]
+
+<p>Et donc : $C(n) = \mathcal{O}(n)$</p>
 
 </div></details>
 
@@ -237,7 +244,6 @@ ${\mbox{complexité d’ajout de n éléments dans une liste }} / {n} = {\mathca
   <li>complexité de <code class="language-plaintext highlighter-rouge">l = l + [x]</code> : $\mathcal{O}(\mbox{len}(l))$ car on crée une nouvelle liste !</li>
   <li>complexité de : <code class="language-plaintext highlighter-rouge">l.append(x)</code> : $\mathcal{O}(1)$ car on ajoute à la fin d’une liste déjà existante</li>
 </ul>
-
 
   </div>
 
