@@ -11,17 +11,27 @@ tags: code python
 
 ## barème
 
-La note est sur 5.
+La note est sur 4.
 
-1. complexité recherche + complexité autres fonctions : 2pt
-2. .5pt
-3. preuve recherche + preuve autres fonctions : 2pt
-4. .5pt
+1. complexité recherche + complexité autres fonctions : 3pt
+2. 1pt
+3. preuve recherche + preuve autres fonctions : 1pt (bonus)
+4. 1pt (bonus)
+
+Les questions 3 et 4 n'ont pratiquement jamais été traitées, alors que la question 4 était facile.
+
+La ventilation des notes est :
+
+|note  | 1  | 1.5 | 2.5 | 2.75| 3   |3.25 | 3.5 |3.75 | 4 |
+-------|----|-----|-----|-----|-----|-----|-----|-----|---|
+|nombre|1   |2    |2    |1    |6    |1    |  2  |  17 |14 |
+|rang  |46  | 44  | 42  | 41  | 35  |34   |32   | 15  | 1 |
+
+Pour une moyenne de 3.5 et un écart-type de 0.7.
 
 ## erreurs fréquemment rencontrées
 
-> à écrire
-{: .tbd}
+Attention, $k$ fait partie des données de l'algorithme. Pour une taille de tableau de $n$, Donner une complexité de $\mathcal{O}(kn)$ dans la question 1 est donc plus précis qu'une complexité de $\mathcal{O}(n^2)$, $k$ pouvant varier de $1$ à $n$.
 
 ## 1
 
