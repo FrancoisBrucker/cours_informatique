@@ -122,6 +122,7 @@
   <li><a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/etude-tris.html">étude : trier un tableau</a></li>
   <li><a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/structure-dictionnaire.html">structure : dictionnaire</a></li>
   <li><a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/structure-liste.html">structure : liste</a></li>
+  <li><a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/structure-chaine-de-caracteres.html">structure : chaine de caractères</a></li>
 </ol>
 
 <h3 id="théorie">théorie</h3>
@@ -143,13 +144,15 @@
   <li><a href="/cours_informatique/cours/algorithme-code-theorie/code/projet-pourcentages.html">projet : pourcentages</a></li>
   <li><a href="/cours_informatique/cours/algorithme-code-theorie/code/projet-exponentiation.html">projet : exponentiation</a></li>
   <li><a href="/cours_informatique/cours/algorithme-code-theorie/code/projet-tris.html">projet : tris</a></li>
-  <li><a href="/cours_informatique/cours/algorithme-code-theorie/code/programmation-objet/memoire-et-espace-noms.html">mémoire et espace de noms</a></li>
+  <li><a href="/cours_informatique/cours/algorithme-code-theorie/code/memoire-et-espace-noms.html">mémoire et espace de noms</a></li>
   <li><a href="/cours_informatique/cours/algorithme-code-theorie/code/programmation-objet/classes-et-objets.html">classes et objets</a></li>
   <li><a href="/cours_informatique/cours/algorithme-code-theorie/code/programmation-objet/composition-agregation.html">composition et agrégation</a></li>
   <li><a href="/cours_informatique/cours/algorithme-code-theorie/code/programmation-objet/projet-composition-agregation.html">projet : composition et agrégation</a></li>
   <li><a href="/cours_informatique/cours/algorithme-code-theorie/code/programmation-objet/heritage.html">héritage</a></li>
   <li><a href="/cours_informatique/cours/algorithme-code-theorie/code/programmation-objet/projet-heritage.html">projet : héritage</a></li>
   <li><a href="/cours_informatique/cours/algorithme-code-theorie/code/programmation-objet/projet-tdd.html">projet : TDD</a></li>
+  <li><a href="/cours_informatique/cours/algorithme-code-theorie/code/fichiers.html">fichiers</a></li>
+  <li><a href="/cours_informatique/cours/algorithme-code-theorie/code/projet-fichiers.html">projet : fichiers</a></li>
 </ol>
 
 <h3 id="autre">autre</h3>
@@ -157,7 +160,7 @@
 <p>Outils, concepts et méthodes utiles pour comprendre le cours</p>
 
 <ol>
-  <li><a href="/cours_informatique/tutoriels/systeme/2021-08-24-fichiers-navigation.html">naviguer dans un système de fichiers</a></li>
+  <li><a href="/cours_informatique/tutoriels/systeme/fichiers-navigation.html">naviguer dans un système de fichiers</a></li>
   <li>
 <a href="/cours_informatique/tutoriels/editeur/vsc/vsc-installation-et-prise-en-main.html">installation vscode</a>, <a href="/cours_informatique/tutoriels/python/2021-08-20-installation-de-python.html">installation python</a> et <a href="/cours_informatique/tutoriels/editeur/vsc/2021-09-14-vsc-python.html">vscode &amp; python</a>
 </li>
@@ -357,7 +360,7 @@ graph.links.push({
 
 graph.nodes.push({
   id: 'naviguer dans un système de fichiers',
-  link: "/cours_informatique/tutoriels/systeme/2021-08-24-fichiers-navigation.html",
+  link: "/cours_informatique/tutoriels/systeme/fichiers-navigation.html",
   group: groups.autre
 })
 graph.nodes.push({
@@ -551,7 +554,7 @@ graph.links.push({
 
 graph.nodes.push({
   id: 'mémoire et espace de noms',
-  link: "/cours_informatique/cours/algorithme-code-theorie/code/programmation-objet/memoire-et-espace-noms.html",
+  link: "/cours_informatique/cours/algorithme-code-theorie/code/memoire-et-espace-noms.html",
   group: groups.code
 })
 graph.links.push({
@@ -666,6 +669,59 @@ id: "structure : liste",
 graph.links.push({
   source: "complexité en moyenne",
   target: "structure : liste"
+})
+
+graph.nodes.push({
+id: "structure : chaine de caractères",
+  link: "/cours_informatique/cours/algorithme-code-theorie/algorithme/structure-chaine-de-caracteres.html",
+  group: groups.algorithmie
+})
+
+graph.links.push({
+  source: "Algorithmie",
+  target: "structure : chaine de caractères"
+})
+
+graph.links.push({
+  source: "mémoire et espace de noms",
+  target: "structure : chaine de caractères"
+})
+
+graph.nodes.push({
+id: "fichiers",
+  link: "/cours_informatique/cours/algorithme-code-theorie/code/fichiers.html",
+  group: groups.code
+})
+
+graph.links.push({
+  source: "Code",
+  target: "fichiers"
+})
+
+graph.links.push({
+  source: "structure : chaine de caractères",
+  target: "fichiers"
+})
+
+graph.links.push({
+  source: "naviguer dans un système de fichiers",
+  target: "fichiers"
+})
+
+graph.links.push({
+  source: "structure : dictionnaire",
+  target: "fichiers"
+})
+
+graph.nodes.push({
+id: "projet : fichiers",
+  link: "/cours_informatique/cours/algorithme-code-theorie/code/projet-fichiers.html",
+  group: groups.code
+})
+
+graph.links.push({
+  source: "fichiers",
+  target: "projet : fichiers"
 })
 
 </script>

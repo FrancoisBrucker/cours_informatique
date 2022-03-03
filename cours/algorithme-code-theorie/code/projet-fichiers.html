@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>projet : fichiers | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0">
+<meta property="og:title" content="projet : fichiers">
+<meta name="author" content="François Brucker">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Support de cours/td d’informatique de François Brucker.">
+<meta property="og:description" content="Support de cours/td d’informatique de François Brucker.">
+<link rel="canonical" href="/cours_informatique/cours/algorithme-code-theorie/code/projet-fichiers.html">
+<meta property="og:url" content="/cours_informatique/cours/algorithme-code-theorie/code/projet-fichiers.html">
+<meta property="og:site_name" content="cours d’informatique">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="projet : fichiers">
+<script type="application/ld+json">
+{"headline":"projet : fichiers","description":"Support de cours/td d’informatique de François Brucker.","@type":"WebPage","url":"/cours_informatique/cours/algorithme-code-theorie/code/projet-fichiers.html","author":{"@type":"Person","name":"François Brucker"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css">
+
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css">
+
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique">
+</head>
+
+<body>
+<header class="site-header" role="banner">
+
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/cours_informatique/">cours d'informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav>
+</div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">projet : fichiers</h1>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span>
+  </header>
+
+  <div class="post-content">
+    <blockquote class="chemin">
+  <p><a href="/cours_informatique/cours/algorithme-code-theorie/">Algorithme, code et théorie</a> / <a href="/cours_informatique/cours/algorithme-code-theorie/code/">code</a> / <a href="/cours_informatique/cours/algorithme-code-theorie/code/projet-fichiers.html">projet : fichiers</a></p>
+
+  <p><strong>prérequis :</strong></p>
+
+  <ul>
+    <li><a href="/cours_informatique/cours/algorithme-code-theorie/code/fichiers.html">fichiers</a></li>
+  </ul>
+
+</blockquote>
+
+<h2 id="mise-en-place">mise en place</h2>
+
+<blockquote class="a-faire">
+  <ol>
+    <li>créez un dossier nommé <em>“fichiers-donnees”</em> où vous placerez vos fichiers</li>
+    <li>créez un projet vscode dans ce dossier</li>
+  </ol>
+
+</blockquote>
+
+<h2 id="texte">texte</h2>
+
+<p>Utilisez python pour :</p>
+
+<blockquote class="a-faire">
+  <ol>
+    <li>télécharger le comte de Monte-Cristo avec python (<a href="http://www.gutenberg.org/cache/epub/17989/pg17989.txt">http://www.gutenberg.org/cache/epub/17989/pg17989.txt</a>),</li>
+    <li>sauvegardez le dans un fichier sur votre ordinateur (toujours en utilisant python)</li>
+  </ol>
+</blockquote>
+
+<p>Avec ce fichier :</p>
+
+<blockquote>
+  <p>Combien de fois est-il question de <code class="language-plaintext highlighter-rouge">Marseille</code> dans le texte ?</p>
+</blockquote>
+
+<h2 id="formats-de-données">formats de données</h2>
+
+<h3 id="liste-de-mots">liste de mots</h3>
+
+<p>Le fichier <code class="language-plaintext highlighter-rouge">https://data.senat.fr/data/senateurs/ODSEN_GENERAL.json</code> contient des données générales relatives aux sénateurs (https://www.data.gouv.fr/fr/datasets/les-senateurs/).</p>
+
+<blockquote class="a-faire">
+  <p>Téléchargez le fichier <a href="https://gist.githubusercontent.com/wchargin/8927565/raw/d9783627c731268fb2935a731a618aa8e95cf465/words">https://gist.githubusercontent.com/wchargin/8927565/raw/d9783627c731268fb2935a731a618aa8e95cf465/words</a> (vient de <a href="https://gist.github.com/wchargin/8927565/">ce gist</a>) et sauvegardez son contenu dans un fichier que vous nommerez *“words.txt”.</p>
+</blockquote>
+
+<p>En utilisant le fichier <em>“words.txt</em>” :</p>
+
+<blockquote class="a-faire">
+
+  <ol>
+    <li>créez une liste contenant tous les mots de ce fichier (vous pourrez utiliser la méthode <a href="https://docs.python.org/3/library/stdtypes.html#str.strip"><code class="language-plaintext highlighter-rouge">strip</code></a> des chaines de caractères pour supprimer les fin delignes à chaque mot.)</li>
+    <li>combien de mots du fichier contiennent la chaine de caractères <code class="language-plaintext highlighter-rouge">prout</code> ? (<code class="language-plaintext highlighter-rouge">"a" in "ab"</code> rendra <code class="language-plaintext highlighter-rouge">True</code> en pyhton)</li>
+    <li>quels sont ces mots ?</li>
+  </ol>
+
+</blockquote>
+
+<h3 id="csv">csv</h3>
+
+<blockquote class="a-faire">
+  <p>Téléchargez la base officielle des codes postaux  au format csv à partir de la page : <a href="https://www.data.gouv.fr/fr/datasets/base-officielle-des-codes-postaux/#_">https://www.data.gouv.fr/fr/datasets/base-officielle-des-codes-postaux/#_</a>.</p>
+</blockquote>
+
+<p>En utilisant ce fichier csv :</p>
+
+<blockquote class="a-faire">
+  <p>A quel code postal est associé la charmante bourgade d’OTTERSWILLER ?</p>
+</blockquote>
+
+<p>En utilisant le fait que le numéro du département est présent dans le code postal :</p>
+
+<blockquote class="a-faire">
+  <p>Créez un dictionnaire dont les clés sont le numéro de département et la clé le nombre code postaux différents de ce département.</p>
+</blockquote>
+
+<p>Puis triez le tout :</p>
+
+<blockquote class="a-faire">
+  <p>Classez les départements par nombre de code postal</p>
+</blockquote>
+
+<p>Pour trier les élément d’un tableau selon un autre ordre que l’ordre <em>naturel</em> des élément d’un tableau, vous pourrez adapter le bout de code suivant :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">trie</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s">"a"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s">"b"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">"c"</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">d</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+
+<span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="s">"a"</span><span class="p">,</span> <span class="s">"c"</span><span class="p">,</span> <span class="s">"b"</span><span class="p">]</span>
+<span class="n">l</span><span class="p">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+
+<span class="n">l</span><span class="p">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">trie</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="json">json</h3>
+
+<blockquote class="a-faire">
+  <p>Téléchargez Informations générales sur les Sénateurs au format json à partir de la page : <a href="https://www.data.gouv.fr/fr/datasets/les-senateurs/">https://www.data.gouv.fr/fr/datasets/les-senateurs/</a>.</p>
+</blockquote>
+
+<p>Examinez le fichier json :</p>
+
+<blockquote class="a-faire">
+  <ol>
+    <li>comment sont organisés les données ?</li>
+    <li>quelles sont les données stockées pour chaque sénateur ?</li>
+    <li>combien y a-t-il de sénateurs actifs ?</li>
+  </ol>
+</blockquote>
+
+<p>En utilisant la partie date ci-après :</p>
+
+<blockquote class="a-faire">
+  <p>Déterminez l’âge moyen des sénateurs.</p>
+</blockquote>
+
+<h4 id="dates-en-python">dates en python</h4>
+
+<p>Lorsque l’on travaille avec des date en informatique, il ne faut <strong>JAMAIS</strong> le faire à la main. On utilise toujours une bibliothèque our cela car il y a trop de cas particulier.</p>
+
+<p>En python, cette bibliothèque s’appelle <a href="https://docs.python.org/fr/3.9/library/datetime.html"><code class="language-plaintext highlighter-rouge">datetime</code></a>. Pour le sujet qui nous intéresse, on a besoin de transformer une chaine de caractère en date. Ceci est possible avec la méthode <a href="https://docs.python.org/fr/3.9/library/datetime.html#strftime-strptime-behavior"><code class="language-plaintext highlighter-rouge">strptime</code></a>.</p>
+
+<p>Si on veut par exemple convertir la date “01/04/2020 à 14h34” en date python, on passe la chaine de caractère et le format à <a href="https://docs.python.org/fr/3.7/library/datetime.html#strftime-strptime-behavior"><code class="language-plaintext highlighter-rouge">strptime</code></a> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="n">date_en_chaine</span> <span class="o">=</span> <span class="s">"01/04/2020 à 14h34"</span>
+<span class="nb">format</span> <span class="o">=</span> <span class="s">"%d/%m/%Y à %Hh%M"</span>
+
+<span class="n">date</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">date_en_chaine</span><span class="p">,</span> <span class="nb">format</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="différences-de-date-en-python">différences de date en python</h4>
+
+<p>En python la différence de 2 dates est un objet spécial de type <a href="https://docs.python.org/fr/3.7/library/datetime.html#timedelta-objects"><code class="language-plaintext highlighter-rouge">timedelta</code></a>. Par exemple, la différence de temps entre le moment présent et la date précédemment calculée est :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">maintenant</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">.</span><span class="n">now</span><span class="p">()</span>  <span class="c1">#  la date de maintenant
+</span>
+<span class="n">delta</span> <span class="o">=</span> <span class="n">maintenant</span> <span class="o">-</span> <span class="n">date</span>
+</code></pre></div></div>
+
+<p>On peut ensuite connaitre le nombre de secondes de cette différence :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">delta</span><span class="p">.</span><span class="n">total_seconds</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>Ou le nombre de jours, secondes et microsecondes que cela représente :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">delta</span><span class="p">.</span><span class="n">days</span>
+<span class="n">delta</span><span class="p">.</span><span class="n">seconds</span>
+<span class="n">delta</span><span class="p">.</span><span class="n">microseconds</span>
+</code></pre></div></div>
+
+<h2 id="prénoms">prénoms</h2>
+
+<blockquote class="a-faire">
+  <p>En utilisant cette page : <a href="https://www.insee.fr/fr/statistiques/2540004?sommaire=4767262">https://www.insee.fr/fr/statistiques/2540004?sommaire=4767262</a>, récupérez le fichier des naissances en France (hors Mayotte) de 1900 à 2020.</p>
+</blockquote>
+
+<p>En utilisant ce fichier :</p>
+
+<blockquote class="a-faire">
+
+  <ol>
+    <li>Quel le prénom le plus donné chez les garçons et chez les filles en 2020 ?</li>
+    <li>Représentez graphiquement l’évolution au cours du temps (de l’année 1900 à 2020) de votre prénom (ou d’un prénom que vous aimez bien) au cours du temps</li>
+  </ol>
+
+</blockquote>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d'informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d'informatique</li>
+</ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+<ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d'informatique de François Brucker.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
