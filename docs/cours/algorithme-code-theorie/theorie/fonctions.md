@@ -6,9 +6,9 @@ category: cours
 
 > [Algorithme, code et théorie]({% link cours/algorithme-code-theorie/index.md %}) / [théorie]({% link cours/algorithme-code-theorie/theorie/index.md %}) / [fonctions]({% link cours/algorithme-code-theorie/theorie/fonctions.md %})
 >
-> prérequis :
+> **prérequis :**
 >
->* [algorithmes]({% link cours/algorithme-code-theorie/algorithme/algorithmes.md %})
+> * [algorithmes]({% link cours/algorithme-code-theorie/algorithme/algorithmes.md %})
 {: .chemin}
 
 Un algorithme, [on l'a vu]({% link cours/algorithme-code-theorie/algorithme/algorithmes.md %}#algorithme), c'est :

@@ -7,7 +7,7 @@ authors:
   - François Brucker
 ---
 
-> [Algorithme, code et théorie]({% link cours/algorithme-code-theorie/index.md %}) / [code]({% link cours/algorithme-code-theorie/code/index.md %}) / [programmation objet]({% link cours/algorithme-code-theorie/code/programmation-objet/index.md %}) / [mémoire et espace de noms]({% link cours/algorithme-code-theorie/code/programmation-objet/memoire-et-espace-noms.md %})
+> [Algorithme, code et théorie]({% link cours/algorithme-code-theorie/index.md %}) / [code]({% link cours/algorithme-code-theorie/code/index.md %}) / [mémoire et espace de noms]({% link cours/algorithme-code-theorie/code/memoire-et-espace-noms.md %})
 >
 > **prérequis :**
 >

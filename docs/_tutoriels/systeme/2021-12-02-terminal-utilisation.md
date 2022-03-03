@@ -13,7 +13,7 @@ Comment utiliser un terminal.
 > **prérequis :**
 >
 >* [le terminal]({% link _tutoriels/systeme/2021-08-24-terminal.md %})
->* [naviguer dans un système de fichiers]({% link _tutoriels/systeme/2021-08-24-fichiers-navigation.md %})
+>* [naviguer dans un système de fichiers]({% link _tutoriels/systeme/fichiers-navigation.md %})
 {: .chemin}
 
 Comment utiliser un terminal pour taper des commandes.

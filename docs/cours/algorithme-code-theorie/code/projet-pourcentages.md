@@ -11,7 +11,7 @@ author: "François Brucker"
 > **prérequis :**
 >
 >* [coder/mise en oeuvre d'un projet]({% link cours/algorithme-code-theorie/code/projet-hello-dev.md %})
->* [naviguer dans un système de fichiers]({% link _tutoriels/systeme/2021-08-24-fichiers-navigation.md %})
+>* [naviguer dans un système de fichiers]({% link _tutoriels/systeme/fichiers-navigation.md %})
 {: .chemin}
 
 Vous allez créer un projet visant à compter le pourcentage de `0` dans un nombre écrit en binaire.

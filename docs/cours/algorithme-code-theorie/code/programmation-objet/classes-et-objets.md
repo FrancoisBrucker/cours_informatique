@@ -12,7 +12,8 @@ authors:
 >
 > **prérequis :**
 >
-> * [mémoire et espace de noms]({% link cours/algorithme-code-theorie/code/programmation-objet/memoire-et-espace-noms.md %})
+> * [mémoire et espace de noms]({% link cours/algorithme-code-theorie/code/memoire-et-espace-noms.md %})
+>
 {: .chemin}
 
 Le but de la programmation objet n'est pas d'utiliser des concepts plus ou moins fumeux (classes abstraites, encapsulation et polymorphismes) mais d'écrire du code :
@@ -30,7 +31,7 @@ Si un concept objet va à l'encontre de ce principe dans votre programme **NE L'
 >
 {: .note}
 
-Un objet, n'est donc pas isolé, il partage ses fonctionnalités avec tous les objets de sa *classe*. Pour s'y retrouver entre, classes, objets méthode et attribut et trouver qui appartient à qui, python utilise les [espaces de noms]({% link cours/algorithme-code-theorie/code/programmation-objet/memoire-et-espace-noms.md %}#espace-noms) (*namespaces*). Cela lui permet de réutiliser le même code pour plusieurs objets.
+Un objet, n'est donc pas isolé, il partage ses fonctionnalités avec tous les objets de sa *classe*. Pour s'y retrouver entre, classes, objets méthode et attribut et trouver qui appartient à qui, python utilise les [espaces de noms]({% link cours/algorithme-code-theorie/code/memoire-et-espace-noms.md %}#espace-noms) (*namespaces*). Cela lui permet de réutiliser le même code pour plusieurs objets.
 
 ## classes et objets
 
@@ -57,7 +58,7 @@ Exemple :
 objet.méthode(paramètre 1, ..., paramètre n)
 ```
 
-On cherchera `méthode` définie pour `objet` en utilisant la [notation pointée]({% link cours/algorithme-code-theorie/code/programmation-objet/memoire-et-espace-noms.md %}#notation-pointee).
+On cherchera `méthode` définie pour `objet` en utilisant la [notation pointée]({% link cours/algorithme-code-theorie/code/memoire-et-espace-noms.md %}#notation-pointee).
 
 ### but
 
@@ -185,7 +186,7 @@ En regardant du code python, vous allez voir beaucoup de noms qui commencent par
 
 #### espace de noms (namespaces)
 
-La gestion des noms en python se fait via des [espaces de noms]({% link cours/algorithme-code-theorie/code/programmation-objet/memoire-et-espace-noms.md %}#espace-noms). L'ordre dans lequel ces noms sons cherchés pour être associés à un objet est logique et se règle en sachant quel namespace est utilisé.
+La gestion des noms en python se fait via des [espaces de noms]({% link cours/algorithme-code-theorie/code/memoire-et-espace-noms.md %}#espace-noms). L'ordre dans lequel ces noms sons cherchés pour être associés à un objet est logique et se règle en sachant quel namespace est utilisé.
 
 ## Premier exemple : le Compteur
 

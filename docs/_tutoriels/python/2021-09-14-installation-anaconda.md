@@ -114,7 +114,7 @@ On ne le voit pas par défaut dans le finder, il faut aller directement au dossi
 
 Dans le dossier : `C:\programData\Anaconda3`.
 
-Il faudra surement [révéler les fichiers cachés]({% link _tutoriels/systeme/2021-08-24-fichiers-navigation.md %}#dossiers-et-fichiers-cachés) pour voir le dossier dans un explorateur de fichier.
+Il faudra surement [révéler les fichiers cachés]({% link _tutoriels/systeme/fichiers-navigation.md %}#dossiers-et-fichiers-cachés) pour voir le dossier dans un explorateur de fichier.
 )
 
 {% enddetails %}

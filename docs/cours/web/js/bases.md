@@ -106,7 +106,7 @@ console.log("bonjour " + nom + " !")
 
 Qu'on pourra exécuter avec la commande : `node hello.js` dans un terminal se trouvant dans le dossier contenant le fichier *"hello.js"*.
 
-> Soyez à l'aise avec la notion de [terminal]({% link _tutoriels/systeme/2021-08-24-terminal.md %}) et de [dossiers]({% link _tutoriels/systeme/2021-08-24-fichiers-navigation.md %}). Entraînez vous si nécessaire.
+> Soyez à l'aise avec la notion de [terminal]({% link _tutoriels/systeme/2021-08-24-terminal.md %}) et de [dossiers]({% link _tutoriels/systeme/fichiers-navigation.md %}). Entraînez vous si nécessaire.
 {: .attention}
 
 Pour la bonne bouche, un petit exemple de javascript utilisant node un peu plus compliqué : 

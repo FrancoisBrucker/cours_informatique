@@ -133,7 +133,7 @@ Dans le flot du texte, on peut mettre en exergue des parties de texte :
 * **en gras** : `**texte**`
 * ~~barré~~ : `~~texte~~`
 * `code` : `` `texte` ``
-* équations : \$latex\$
+* équations : `$\LaTeX$`
 
 #### style bloc
 

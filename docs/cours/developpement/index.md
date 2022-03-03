@@ -21,7 +21,7 @@ Vous devez dans l'idéal être administrateur de votre ordinateur et avoir fait 
 
 ### connaissances système minimale
 
-* connaitre les bases d'un système d'exploitation, [les fichiers et les dossiers]({% link _tutoriels/systeme/2021-08-24-fichiers-navigation.md %})
+* connaitre les bases d'un système d'exploitation, [les fichiers et les dossiers]({% link _tutoriels/systeme/fichiers-navigation.md %})
 * avoir accès à un [terminal]({% link _tutoriels/systeme/2021-08-24-terminal.md %})
 
 ### base d'algorithmie

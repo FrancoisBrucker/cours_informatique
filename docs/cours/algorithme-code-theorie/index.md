@@ -54,6 +54,7 @@ Ce cours est composée de trois grandes parties qui s'enchevêtrent.
 9. [étude : trier un tableau]({% link cours/algorithme-code-theorie/algorithme/etude-tris.md %})
 10. [structure : dictionnaire]({% link cours/algorithme-code-theorie/algorithme/structure-dictionnaire.md %})
 11. [structure : liste]({% link cours/algorithme-code-theorie/algorithme/structure-liste.md %})
+12. [structure : chaine de caractères]({% link cours/algorithme-code-theorie/algorithme/structure-chaine-de-caracteres.md %})
 
 ### théorie
 
@@ -71,19 +72,21 @@ Ce cours est composée de trois grandes parties qui s'enchevêtrent.
 3. [projet : pourcentages]({% link cours/algorithme-code-theorie/code/projet-pourcentages.md %})
 4. [projet : exponentiation]({% link cours/algorithme-code-theorie/code/projet-exponentiation.md %})
 5. [projet : tris]({% link cours/algorithme-code-theorie/code/projet-tris.md %})
-6. [mémoire et espace de noms]({% link cours/algorithme-code-theorie/code/programmation-objet/memoire-et-espace-noms.md %})
+6. [mémoire et espace de noms]({% link cours/algorithme-code-theorie/code/memoire-et-espace-noms.md %})
 7. [classes et objets]({% link cours/algorithme-code-theorie/code/programmation-objet/classes-et-objets.md %})
 8. [composition et agrégation]({% link cours/algorithme-code-theorie/code/programmation-objet/composition-agregation.md %})
 9. [projet : composition et agrégation]({% link cours/algorithme-code-theorie/code/programmation-objet/projet-composition-agregation.md %})
 10. [héritage]({% link cours/algorithme-code-theorie/code/programmation-objet/heritage.md %})
 11. [projet : héritage]({% link cours/algorithme-code-theorie/code/programmation-objet/projet-heritage.md %})
 12. [projet : TDD]({% link cours/algorithme-code-theorie/code/programmation-objet/projet-tdd.md %})
+13. [fichiers]({% link cours/algorithme-code-theorie/code/fichiers.md %})
+14. [projet : fichiers]({% link cours/algorithme-code-theorie/code/projet-fichiers.md %})
 
 ### autre
 
 Outils, concepts et méthodes utiles pour comprendre le cours
 
-1. [naviguer dans un système de fichiers]({% link _tutoriels/systeme/2021-08-24-fichiers-navigation.md %})
+1. [naviguer dans un système de fichiers]({% link _tutoriels/systeme/fichiers-navigation.md %})
 2. [installation vscode]({% link _tutoriels/editeur/vsc/vsc-installation-et-prise-en-main.md %}), [installation python]({% link _tutoriels/python/2021-08-20-installation-de-python.md %}) et [vscode & python]({% link _tutoriels/editeur/vsc/2021-09-14-vsc-python.md %})
 3. [terminal]({%link _tutoriels/systeme/2021-08-24-terminal.md %}) et [utilisation du terminal]({% link _tutoriels/systeme/2021-12-02-terminal-utilisation.md %})
 
@@ -278,7 +281,7 @@ graph.links.push({
 
 graph.nodes.push({
   id: 'naviguer dans un système de fichiers',
-  link: "{% link _tutoriels/systeme/2021-08-24-fichiers-navigation.md %}",
+  link: "{% link _tutoriels/systeme/fichiers-navigation.md %}",
   group: groups.autre
 })
 graph.nodes.push({
@@ -472,7 +475,7 @@ graph.links.push({
 
 graph.nodes.push({
   id: 'mémoire et espace de noms',
-  link: "{% link cours/algorithme-code-theorie/code/programmation-objet/memoire-et-espace-noms.md %}",
+  link: "{% link cours/algorithme-code-theorie/code/memoire-et-espace-noms.md %}",
   group: groups.code
 })
 graph.links.push({
@@ -589,8 +592,60 @@ graph.links.push({
   target: "structure : liste"
 })
 
-</script>
+graph.nodes.push({
+id: "structure : chaine de caractères",
+  link: "{% link cours/algorithme-code-theorie/algorithme/structure-chaine-de-caracteres.md %}",
+  group: groups.algorithmie
+})
 
+graph.links.push({
+  source: "Algorithmie",
+  target: "structure : chaine de caractères"
+})
+
+graph.links.push({
+  source: "mémoire et espace de noms",
+  target: "structure : chaine de caractères"
+})
+
+graph.nodes.push({
+id: "fichiers",
+  link: "{% link cours/algorithme-code-theorie/code/fichiers.md %}",
+  group: groups.code
+})
+
+graph.links.push({
+  source: "Code",
+  target: "fichiers"
+})
+
+graph.links.push({
+  source: "structure : chaine de caractères",
+  target: "fichiers"
+})
+
+graph.links.push({
+  source: "naviguer dans un système de fichiers",
+  target: "fichiers"
+})
+
+graph.links.push({
+  source: "structure : dictionnaire",
+  target: "fichiers"
+})
+
+graph.nodes.push({
+id: "projet : fichiers",
+  link: "{% link cours/algorithme-code-theorie/code/projet-fichiers.md %}",
+  group: groups.code
+})
+
+graph.links.push({
+  source: "fichiers",
+  target: "projet : fichiers"
+})
+
+</script>
 <script>
 var color = d3.scaleOrdinal(d3.schemeCategory10);
 

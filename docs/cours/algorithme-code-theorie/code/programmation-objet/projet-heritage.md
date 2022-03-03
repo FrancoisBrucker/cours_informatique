@@ -147,10 +147,10 @@ En reprenant le cours :
 
 > Créez un programme qui :
 >
-> * demande à l'utilsateur :
->   * les caractéristiques d'une guerrière (points de vie, attaque et score de défence
+> * demande à l'utilisateur :
+>   * les caractéristiques d'une guerrière (points de vie, attaque et score de défense
 >   * les caractéristiques d'un [gobelin](https://www.aidedd.org/dnd/monstres.php?vf=gobelin) (points de vie, attaque)
->   * les caractérisitques d'un mago (points de vie, attaque et attaque magique)
+>   * les caractéristiques d'un mago (points de vie, attaque et attaque magique)
 >
 > Puis,  faites en sorte que la guerrière et le Gobelin se tapent dessus à tour de rôle
 > jusqu'à ce qu'un des deux ne meure.

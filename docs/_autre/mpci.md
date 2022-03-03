@@ -36,7 +36,7 @@ L'ensemble du cours (et d'autres choses) est disponible [là]({% link cours/algo
 1. [coder]({% link cours/algorithme-code-theorie/code/coder.md %})
 2. projet 1 : mise en œuvre d'un projet informatique
    * prérequis :
-     1. [naviguer dans un système de fichiers]({% link _tutoriels/systeme/2021-08-24-fichiers-navigation.md %})
+     1. [naviguer dans un système de fichiers]({% link _tutoriels/systeme/fichiers-navigation.md %})
      2. [vscode et python]({% link _tutoriels/editeur/vsc/2021-09-14-vsc-python.md %})
    * [sujet]({% link cours/algorithme-code-theorie/code/projet-hello-dev.md %})
 3. projet 2 : pourcentages
@@ -92,7 +92,7 @@ Au programme :
 
 #### mercredi {#m-5}
 
-1. [mémoire et espace de noms]({% link cours/algorithme-code-theorie/code/programmation-objet/memoire-et-espace-noms.md %})
+1. [mémoire et espace de noms]({% link cours/algorithme-code-theorie/code/memoire-et-espace-noms.md %})
 2. [classes et objets]({% link cours/algorithme-code-theorie/code/programmation-objet/classes-et-objets.md %})
 
 #### vendredi {#v-5}
@@ -127,9 +127,10 @@ Au programme :
 
 #### vendredi {#v-7}
 
-1. fichiers
-2. projets fichiers
-3. pour aller plus loin : [projet : TDD]({% link cours/algorithme-code-theorie/code/programmation-objet/projet-tdd.md %})
+1. [structure : chaine de caractères]({% link cours/algorithme-code-theorie/algorithme/structure-chaine-de-caracteres.md %})
+2. [fichiers]({% link cours/algorithme-code-theorie/code/fichiers.md %})
+3. [projet : fichiers]({% link cours/algorithme-code-theorie/code/projet-fichiers.md %})
+4. pour aller plus loin : [projet : TDD]({% link cours/algorithme-code-theorie/code/programmation-objet/projet-tdd.md %})
 
 ### semaine 8
 

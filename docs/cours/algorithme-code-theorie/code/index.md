@@ -14,7 +14,9 @@ Comment coder, maintenir et aimer ses programmes. Les projets constituent une pr
 3. [projet : pourcentages]({% link cours/algorithme-code-theorie/code/projet-pourcentages.md %})
 4. [projet : exponentiation]({% link cours/algorithme-code-theorie/code/projet-exponentiation.md %})
 5. [projet : tris]({% link cours/algorithme-code-theorie/code/projet-tris.md %})
-6. [programmation objets]({% link cours/algorithme-code-theorie/code/programmation-objet/index.md %})
+6. [mémoire et espace de noms]({% link cours/algorithme-code-theorie/code/memoire-et-espace-noms.md %})
+7. [programmation objets]({% link cours/algorithme-code-theorie/code/programmation-objet/index.md %})
+8. [fichiers]({% link cours/algorithme-code-theorie/code/fichiers.md %})
 
 ## tbd
 
