@@ -107,13 +107,12 @@ Au programme :
 
 #### mercredi {#m-6}
 
-1. [machine de Turing]({% link cours/algorithme-code-theorie/theorie/machine-turing.md %})
-2. [décidabilité]({% link cours/algorithme-code-theorie/theorie/decidabilite.md %})
-3. [calculabilité]({% link cours/algorithme-code-theorie/theorie/calculabilite.md %})
+1. corrigé du [projet : composition et agrégation]({% link cours/algorithme-code-theorie/code/programmation-objet/projet-composition-agregation.md %})
+2. [héritage]({% link cours/algorithme-code-theorie/code/programmation-objet/heritage.md %}) (début)
 
 #### vendredi {#v-6}
 
-1. [héritage]({% link cours/algorithme-code-theorie/code/programmation-objet/heritage.md %})
+1. [héritage]({% link cours/algorithme-code-theorie/code/programmation-objet/heritage.md %}) (fin)
 2. [projet : héritage]({% link cours/algorithme-code-theorie/code/programmation-objet/projet-heritage.md %})
 3. pour aller plus loin : [projet : TDD]({% link cours/algorithme-code-theorie/code/programmation-objet/projet-tdd.md %})
 
@@ -127,10 +126,7 @@ Au programme :
 
 #### vendredi {#v-7}
 
-1. [structure : chaine de caractères]({% link cours/algorithme-code-theorie/algorithme/structure-chaine-de-caracteres.md %})
-2. [fichiers]({% link cours/algorithme-code-theorie/code/fichiers.md %})
-3. [projet : fichiers]({% link cours/algorithme-code-theorie/code/projet-fichiers.md %})
-4. pour aller plus loin : [projet : TDD]({% link cours/algorithme-code-theorie/code/programmation-objet/projet-tdd.md %})
+1. projet code
 
 ### semaine 8
 
@@ -146,7 +142,15 @@ Au programme :
 
 #### mercredi {#m-9}
 
+1. [machine de Turing]({% link cours/algorithme-code-theorie/theorie/machine-turing.md %})
+2. [décidabilité]({% link cours/algorithme-code-theorie/theorie/decidabilite.md %})
+3. [calculabilité]({% link cours/algorithme-code-theorie/theorie/calculabilite.md %})
+
 #### vendredi {#v-9}
+
+1. [structure : chaine de caractères]({% link cours/algorithme-code-theorie/algorithme/structure-chaine-de-caracteres.md %})
+2. [fichiers]({% link cours/algorithme-code-theorie/code/fichiers.md %})
+3. [projet : fichiers]({% link cours/algorithme-code-theorie/code/projet-fichiers.md %})
 
 ### semaine 10
 
@@ -173,7 +177,7 @@ Au programme :
 
 1. code : [sujet]({% link cours/algorithme-code-theorie/exercices/2021-2022/1_test_sujet.md %}) et [corrigé]({% link cours/algorithme-code-theorie/exercices/2021-2022/1_test_corrige.md %})
 2. complexité et preuve : [sujet]({% link cours/algorithme-code-theorie/exercices/2021-2022/2_test_sujet.md %}) et [corrigé]({% link cours/algorithme-code-theorie/exercices/2021-2022/2_test_corrige.md %})
-3. DS 1 : [sujet]({% link cours/algorithme-code-theorie/exercices/2021-2022/3_ds_sujet.md %})
+3. DS 1 : [sujet]({% link cours/algorithme-code-theorie/exercices/2021-2022/3_ds_sujet.md %}) et [corrigé]({% link cours/algorithme-code-theorie/exercices/2021-2022/3_ds_corrige.md %})
 
 ## on s'entraine
 
