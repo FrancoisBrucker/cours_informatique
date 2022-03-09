@@ -14,7 +14,7 @@ authors:
 > * [composition et agrégation]({% link cours/algorithme-code-theorie/code/programmation-objet/composition-agregation.md %})
 {: .chemin}
 
-Présentation du mécanisme d'héritage qui permettant de factoriser du code entre classes.
+Présentation du mécanisme d'héritage qui permet de factoriser du code entre classes.
 
 ## principe de l'héritage
 
@@ -53,11 +53,11 @@ Supposons que j'ai un objet de la "classe 2" `obj` qui veut appeler la méthode 
 
 Supposons que dans la définition de `méthode1` de la "classe 2'" on particularise la méthode `méthode1` de la `classe1`. On appelle alors la méthode `méthode1` de la classe 1 dans la définition de la `méthode1` de la classe `2'`.
 
->si l'on ne retrouve pas la méthode dans la classe mère, on remonte la hiérarchie. De là tenter d'utiliser la méthode `méthode1`  de la classe `1'` en définissant la  méthode `méthode1`  de la classe `2''` va en fait exécuter la méthode  méthode `méthode1`  de la classe `object`
+>si l'on ne retrouve pas la méthode dans la classe mère, on remonte la hiérarchie. De là, tenter d'utiliser la méthode `méthode1`  de la classe `1'` en définissant la  méthode `méthode1`  de la classe `2''` va en fait exécuter la méthode  méthode `méthode1`  de la classe `object`
 
 ### connaitre la hiérarchie
 
-En python, si l'on veut connaitre l'ordre dans lequel les classes vont être examinée lors de la remontée de la hiérarchie, on peut utiliser la méthode `mro()` des classes. Cette méthode regarde l'attribut `__mro__`.
+En python, si l'on veut connaitre l'ordre dans lequel les classes vont être examinée lors de la remontée de la hiérarchie, on peut utiliser la méthode `mro()` (pour "method resolution order") des classes. Cette méthode regarde l'attribut `__mro__`.
 
 Par exemple, dans un interpréteur :
 
@@ -80,15 +80,15 @@ La composition et l'agrégation permettent de factoriser des fonctionnalités al
 Il y a cependant des cas où l'héritage est très utile :
 
 * lorsque l'on veut spécifier une classe : la nouvelle classe est un cas particulier de la classe mère
-* lors de l'utilisation de bibliothèques : on particularise à nos besoin une classe générique donnée par un module que l'on a pas écrit.
+* lors de l'utilisation de bibliothèques : on particularise à nos besoins une classe générique donnée par un module que l'on n'a pas écrit.
 
-La règle est que lorsque l'héritage doit re-écrire toutes les méthodes de sa classe mère pour qu'il n'y ait pas de conflit, alors il faut changer d'approche. Une classe et sa classe mère doivent partager beaucoup de méthodes (ou que les méthodes soient des cas particuliers)
+La règle est que lorsque l'héritage doit ré-écrire toutes les méthodes de sa classe mère pour qu'il n'y ait pas de conflit, alors il faut changer d'approche. Une classe et sa classe mère doivent partager beaucoup de méthodes (ou que les méthodes soient des cas particuliers).
 
 ### héritage multiple
 
 Python autorise l'[héritage multiple](https://docs.python.org/fr/3/tutorial/classes.html#multiple-inheritance), mais sans très bonne raison il est plus que recommandé de ne pas l'utiliser. Il existe **toujours** une solution utilisant l'héritage simple qui sera plus facile à comprendre et surtout à maintenir dans le temps.
 
-D'ailleurs, certains langages, comme le java ou par exemple, interdisent carrément l'héritage multiple.
+D'ailleurs, certains langages, comme le java par exemple, interdisent carrément l'héritage multiple.
 
 > Si cela vous intéresse, python utilise la règle [de linéarisation C3](https://en.wikipedia.org/wiki/C3_linearization) pour réaliser l'ordre de priorité des classes (le mro), ceci permet de résoudre le [problème du diamant](https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_diamant) en héritage multiple.
 
@@ -119,7 +119,7 @@ On va supposer que le [polygone est simple](https://fr.wikipedia.org/wiki/Polygo
 
 #### uml
 
-Point et polygone entretiennent un lien d'agrégation (les points sont passé au polygone à sa construction). Le modèle UML suivant :
+Point et polygone entretiennent un lien d'agrégation (les points sont passés au polygone à sa construction). Le modèle UML suivant :
 
 ![point polygone]({{ "/assets/cours/developpement/programmation-objet/heritage_point_poly.png" | relative_url }}){:style="margin: auto;display: block}
 
@@ -186,12 +186,12 @@ class Polygone:
 
 ```
 
-> On a rendu les attributs des classes privé. La convention en python pour rendre un attribut privé est de lui coller un `_` avant son nom.
+> On a rendu les attributs des classes privés. La convention en python pour rendre un attribut privé est de lui coller un `_` avant son nom.
 
 Remarques :
 
-1. Remarquez que l'on utiliser toujours les méthodes (si elles existent) pour accéder aux attributs, cela permettra si besoin de changer les attributs de la classes (passer en coordonnées polaires par exemple) sans changer le code des méthodes.
-2. Pour la classe polygone, on recrée une liste de points pour être sur que le nombre de points reste constant (la liste est passée en paramètre et peut donc être modifiées à 'extérieur de la classe)
+1. Remarquez que l'on utilise toujours les méthodes (si elles existent) pour accéder aux attributs, cela permettra si besoin de changer les attributs de la classes (passer en coordonnées polaires par exemple) sans changer le code des méthodes.
+2. Pour la classe polygone, on recrée une liste de points pour être sûr que le nombre de points reste constant (la liste est passée en paramètre et peut donc être modifiée à l'extérieur de la classe)
 3. Notez que l'on ne recrée pas les points, ils peuvent donc changer car ils sont passés en paramètre de la construction du polygone
 
 On peut tester le code avec, par exemple :
@@ -265,7 +265,7 @@ Le personnage générique doit :
 
 * avoir un score d'attaque
 * avoir des points de vie
-* pouvoir modifier son score d'ataque et ses points de vie
+* pouvoir modifier son score d'attaque et ses points de vie
 * taper un autre personnage (lui faire perdre un nombre de point de vie égale à son score d'attaque)
 * se faire taper par un autre personnage
 
@@ -275,7 +275,7 @@ Le personnage générique doit :
 
 #### code python du personnage
 
-On a décidé ici de ne pas mettre de méthode get et set, mais de laisser libre accès aux attributs. C'est un choix possible. L'UML dérive donc un peut du code python ce qui est normal, chaque langage ayant ses spécificités.
+On a décidé ici de ne pas mettre de méthode get et set, mais de laisser libre accès aux attributs. C'est un choix possible. L'UML dérive donc un peu du code python ce qui est normal, chaque langage ayant ses spécificités.
 
 ```python
 class Personnage:
@@ -327,7 +327,7 @@ Comprenez bien le code :
 * on ajoute un attribut à la guerrière par rapport au personnage normal,
 * la méthode `se_faire_taper(personnage)` utilise la méthode `se_faire_taper` de la classe `Personnage` seulement si la guerrière ne bloque pas le coup. Le `super().methode_de_la_mere()` permet d'accéder à la méthode de la classe mère même de même nom qu'une méthode (différente) de la classe fille.
 
-> On utilise **toujours** le constructeur de la classe mère pour garantir que les méthodes définie dans la classe mère fonctionnent avec les objets de la classe fille. Sinon ici, `se_faire_taper` ne fonctionnerait pas puisque vie et attaque ne seraient pas défini
+> On utilise **toujours** le constructeur de la classe mère pour garantir que les méthodes définies dans la classe mère fonctionnent avec les objets de la classe fille. Sinon ici, `se_faire_taper` ne fonctionnerait pas puisque vie et attaque ne seraient pas définies
 {: .attention}
 
 ### le magicien
@@ -380,7 +380,7 @@ class Personnage:
 
 ## on vérifie qu'on a compris
 
-Quelques petit tests qui ne servent à rien en pratique mais qui permettent de
+Quelques petit tests qui ne servent à rien en pratique mais qui permettent de vérifier qu'on a bien compris.
 
 ### héritage de méthodes
 

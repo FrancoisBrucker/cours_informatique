@@ -15,7 +15,7 @@ authors:
 > * [projet : composition et agrégation]({% link cours/algorithme-code-theorie/code/programmation-objet/projet-composition-agregation.md %})
 {: .chemin}
 
-Présentation du mécanisme d'héritage qui permettant de factoriser du code entre classes.
+Présentation du mécanisme d'héritage qui permet de factoriser du code entre classes.
 
 ## Le dé
 
@@ -113,8 +113,8 @@ $$
 Où :
 
 * $I$ : l'ensemble des possibilités (pour nous $I=6$ puisque la valeur d'un dés pour aller de 1 à 6)
-* $O_i$ est le nombre de cas **observés** pour la modalité $i$ (pour nous c'est le nombre de fois où le dé à eu la position $i$)
-* $T_i$ est le nombre de cas **théorique** que l'on devrait avoir (dans notre cas $\frac{N}{6}$ si on a lancé $N$ fois notre dé)
+* $O_i$ est le nombre de cas **observés** pour la modalité $i$ (pour nous c'est le nombre de fois où le dé a eu la position $i$)
+* $T_i$ est le nombre de cas **théoriques** que l'on devrait avoir (dans notre cas $\frac{N}{6}$ si on a lancé $N$ fois notre dé)
 
 Plus ce nombre est petit, plus l'expérience est conforme à la théorie.
 
@@ -125,7 +125,7 @@ De façon formelle :
 
 Pour nous $df = 5$ et si on prend $\alpha = .1$ on trouve : $P_{5}(X \geq 9.236) = .1$ (pour connaitre ces valeurs, on utilise des tables comme [celle-ci](https://people.richland.edu/james/lecture/m170/tbl-chi.html)).
 
-Donc si on trouve un $\chi^2$ plus grand ou égal que $9.206$, il y a moins de 10% de chance que l'on ait obtenu ce nombre si l'on suivait une loi du chi2 à df degrés de liberté :
+Donc si on trouve un $\chi^2$ plus grand ou égal que $9.206$, il y a moins de 10% de chance d'obtenir ce nombre si l'on suit une loi du chi2 à df degrés de liberté :
 
 * Il y a moins de 10% de chance de se tromper en supposant que notre expérience ne suit pas la théorie
 * Il y a moins de 10% de chance de supposer que notre dé n'est pas équilibré
@@ -157,5 +157,5 @@ En reprenant le cours :
 >
 > Le dernier héros en vie est ensuite tué par le magicien qui le kite en lui jetant des sorts (comme un fourbe), puis le loote pour aller tout revendre au marchand du bourg (mais c'est une autre histoire et d'autres implémentations).
 >  
-> Vous donnerez le nombre de tour nécessaire pour cela (testez plusieurs possibilités).
+> Vous donnerez le nombre de tours nécessaires pour cela (testez plusieurs possibilités).
 {: .a-faire}
