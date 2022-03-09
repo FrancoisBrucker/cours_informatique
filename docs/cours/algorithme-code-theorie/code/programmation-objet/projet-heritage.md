@@ -157,5 +157,5 @@ En reprenant le cours :
 >
 > Le dernier héros en vie est ensuite tué par le magicien qui le kite en lui jetant des sorts (comme un fourbe), puis le loote pour aller tout revendre au marchand du bourg (mais c'est une autre histoire et d'autres implémentations).
 >  
-> Vous donnerez le nombre de tour nécessaire pour cela (testez plusieurs possibilités).
+> Vous donnerez le nombre de tours nécessaires pour cela (testez plusieurs possibilités).
 {: .a-faire}
