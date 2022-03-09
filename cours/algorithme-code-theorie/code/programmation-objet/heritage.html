@@ -75,7 +75,7 @@
   </ul>
 </blockquote>
 
-<p>Présentation du mécanisme d’héritage qui permettant de factoriser du code entre classes.</p>
+<p>Présentation du mécanisme d’héritage qui permet de factoriser du code entre classes.</p>
 
 <h2 id="principe-de-lhéritage">principe de l’héritage</h2>
 
@@ -128,12 +128,12 @@
 <p>Supposons que dans la définition de <code class="language-plaintext highlighter-rouge">méthode1</code> de la “classe 2’” on particularise la méthode <code class="language-plaintext highlighter-rouge">méthode1</code> de la <code class="language-plaintext highlighter-rouge">classe1</code>. On appelle alors la méthode <code class="language-plaintext highlighter-rouge">méthode1</code> de la classe 1 dans la définition de la <code class="language-plaintext highlighter-rouge">méthode1</code> de la classe <code class="language-plaintext highlighter-rouge">2'</code>.</p>
 
 <blockquote>
-  <p>si l’on ne retrouve pas la méthode dans la classe mère, on remonte la hiérarchie. De là tenter d’utiliser la méthode <code class="language-plaintext highlighter-rouge">méthode1</code>  de la classe <code class="language-plaintext highlighter-rouge">1'</code> en définissant la  méthode <code class="language-plaintext highlighter-rouge">méthode1</code>  de la classe <code class="language-plaintext highlighter-rouge">2''</code> va en fait exécuter la méthode  méthode <code class="language-plaintext highlighter-rouge">méthode1</code>  de la classe <code class="language-plaintext highlighter-rouge">object</code></p>
+  <p>si l’on ne retrouve pas la méthode dans la classe mère, on remonte la hiérarchie. De là, tenter d’utiliser la méthode <code class="language-plaintext highlighter-rouge">méthode1</code>  de la classe <code class="language-plaintext highlighter-rouge">1'</code> en définissant la  méthode <code class="language-plaintext highlighter-rouge">méthode1</code>  de la classe <code class="language-plaintext highlighter-rouge">2''</code> va en fait exécuter la méthode  méthode <code class="language-plaintext highlighter-rouge">méthode1</code>  de la classe <code class="language-plaintext highlighter-rouge">object</code></p>
 </blockquote>
 
 <h3 id="connaitre-la-hiérarchie">connaitre la hiérarchie</h3>
 
-<p>En python, si l’on veut connaitre l’ordre dans lequel les classes vont être examinée lors de la remontée de la hiérarchie, on peut utiliser la méthode <code class="language-plaintext highlighter-rouge">mro()</code> des classes. Cette méthode regarde l’attribut <code class="language-plaintext highlighter-rouge">__mro__</code>.</p>
+<p>En python, si l’on veut connaitre l’ordre dans lequel les classes vont être examinée lors de la remontée de la hiérarchie, on peut utiliser la méthode <code class="language-plaintext highlighter-rouge">mro()</code> (pour “method resolution order”) des classes. Cette méthode regarde l’attribut <code class="language-plaintext highlighter-rouge">__mro__</code>.</p>
 
 <p>Par exemple, dans un interpréteur :</p>
 
@@ -158,16 +158,16 @@
 
 <ul>
   <li>lorsque l’on veut spécifier une classe : la nouvelle classe est un cas particulier de la classe mère</li>
-  <li>lors de l’utilisation de bibliothèques : on particularise à nos besoin une classe générique donnée par un module que l’on a pas écrit.</li>
+  <li>lors de l’utilisation de bibliothèques : on particularise à nos besoins une classe générique donnée par un module que l’on n’a pas écrit.</li>
 </ul>
 
-<p>La règle est que lorsque l’héritage doit re-écrire toutes les méthodes de sa classe mère pour qu’il n’y ait pas de conflit, alors il faut changer d’approche. Une classe et sa classe mère doivent partager beaucoup de méthodes (ou que les méthodes soient des cas particuliers)</p>
+<p>La règle est que lorsque l’héritage doit ré-écrire toutes les méthodes de sa classe mère pour qu’il n’y ait pas de conflit, alors il faut changer d’approche. Une classe et sa classe mère doivent partager beaucoup de méthodes (ou que les méthodes soient des cas particuliers).</p>
 
 <h3 id="héritage-multiple">héritage multiple</h3>
 
 <p>Python autorise l’<a href="https://docs.python.org/fr/3/tutorial/classes.html#multiple-inheritance">héritage multiple</a>, mais sans très bonne raison il est plus que recommandé de ne pas l’utiliser. Il existe <strong>toujours</strong> une solution utilisant l’héritage simple qui sera plus facile à comprendre et surtout à maintenir dans le temps.</p>
 
-<p>D’ailleurs, certains langages, comme le java ou par exemple, interdisent carrément l’héritage multiple.</p>
+<p>D’ailleurs, certains langages, comme le java par exemple, interdisent carrément l’héritage multiple.</p>
 
 <blockquote>
   <p>Si cela vous intéresse, python utilise la règle <a href="https://en.wikipedia.org/wiki/C3_linearization">de linéarisation C3</a> pour réaliser l’ordre de priorité des classes (le mro), ceci permet de résoudre le <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_diamant">problème du diamant</a> en héritage multiple.</p>
@@ -210,7 +210,7 @@
 
 <h4 id="uml">uml</h4>
 
-<p>Point et polygone entretiennent un lien d’agrégation (les points sont passé au polygone à sa construction). Le modèle UML suivant :</p>
+<p>Point et polygone entretiennent un lien d’agrégation (les points sont passés au polygone à sa construction). Le modèle UML suivant :</p>
 
 <p><img src="/cours_informatique/assets/cours/developpement/programmation-objet/heritage_point_poly.png" alt="point polygone"></p>
 
@@ -277,14 +277,14 @@
 </code></pre></div></div>
 
 <blockquote>
-  <p>On a rendu les attributs des classes privé. La convention en python pour rendre un attribut privé est de lui coller un <code class="language-plaintext highlighter-rouge">_</code> avant son nom.</p>
+  <p>On a rendu les attributs des classes privés. La convention en python pour rendre un attribut privé est de lui coller un <code class="language-plaintext highlighter-rouge">_</code> avant son nom.</p>
 </blockquote>
 
 <p>Remarques :</p>
 
 <ol>
-  <li>Remarquez que l’on utiliser toujours les méthodes (si elles existent) pour accéder aux attributs, cela permettra si besoin de changer les attributs de la classes (passer en coordonnées polaires par exemple) sans changer le code des méthodes.</li>
-  <li>Pour la classe polygone, on recrée une liste de points pour être sur que le nombre de points reste constant (la liste est passée en paramètre et peut donc être modifiées à ‘extérieur de la classe)</li>
+  <li>Remarquez que l’on utilise toujours les méthodes (si elles existent) pour accéder aux attributs, cela permettra si besoin de changer les attributs de la classes (passer en coordonnées polaires par exemple) sans changer le code des méthodes.</li>
+  <li>Pour la classe polygone, on recrée une liste de points pour être sûr que le nombre de points reste constant (la liste est passée en paramètre et peut donc être modifiée à l’extérieur de la classe)</li>
   <li>Notez que l’on ne recrée pas les points, ils peuvent donc changer car ils sont passés en paramètre de la construction du polygone</li>
 </ol>
 
@@ -360,7 +360,7 @@
 <ul>
   <li>avoir un score d’attaque</li>
   <li>avoir des points de vie</li>
-  <li>pouvoir modifier son score d’ataque et ses points de vie</li>
+  <li>pouvoir modifier son score d’attaque et ses points de vie</li>
   <li>taper un autre personnage (lui faire perdre un nombre de point de vie égale à son score d’attaque)</li>
   <li>se faire taper par un autre personnage</li>
 </ul>
@@ -371,7 +371,7 @@
 
 <h4 id="code-python-du-personnage">code python du personnage</h4>
 
-<p>On a décidé ici de ne pas mettre de méthode get et set, mais de laisser libre accès aux attributs. C’est un choix possible. L’UML dérive donc un peut du code python ce qui est normal, chaque langage ayant ses spécificités.</p>
+<p>On a décidé ici de ne pas mettre de méthode get et set, mais de laisser libre accès aux attributs. C’est un choix possible. L’UML dérive donc un peu du code python ce qui est normal, chaque langage ayant ses spécificités.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Personnage</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vie</span><span class="p">,</span> <span class="n">attaque</span><span class="p">):</span>
@@ -424,7 +424,7 @@
 </ul>
 
 <blockquote class="attention">
-  <p>On utilise <strong>toujours</strong> le constructeur de la classe mère pour garantir que les méthodes définie dans la classe mère fonctionnent avec les objets de la classe fille. Sinon ici, <code class="language-plaintext highlighter-rouge">se_faire_taper</code> ne fonctionnerait pas puisque vie et attaque ne seraient pas défini</p>
+  <p>On utilise <strong>toujours</strong> le constructeur de la classe mère pour garantir que les méthodes définies dans la classe mère fonctionnent avec les objets de la classe fille. Sinon ici, <code class="language-plaintext highlighter-rouge">se_faire_taper</code> ne fonctionnerait pas puisque vie et attaque ne seraient pas définies</p>
 </blockquote>
 
 <h3 id="le-magicien">le magicien</h3>
@@ -475,7 +475,7 @@
 
 <h2 id="on-vérifie-quon-a-compris">on vérifie qu’on a compris</h2>
 
-<p>Quelques petit tests qui ne servent à rien en pratique mais qui permettent de</p>
+<p>Quelques petit tests qui ne servent à rien en pratique mais qui permettent de vérifier qu’on a bien compris.</p>
 
 <h3 id="héritage-de-méthodes">héritage de méthodes</h3>
 
