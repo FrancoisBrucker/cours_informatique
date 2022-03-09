@@ -10,12 +10,13 @@ authors: "François Brucker"
 ## Introduction
 
 > ventilation des notes
+> 
 {: .tbd}
 
 ### remarques
 
 * optimisez votre temps. Si vous bloquez passez à un autre exercice. Les premières questions sont souvent plus faisables que les dernières.
-* les sujets de concours ne sont pas fait pour être fini.
+* les sujets de concours ne sont pas fait pour être fini. 2h c'est trop court. Avec 1h de plus vous devriez être capable de le finir.
 
 ### erreurs communes
 
@@ -25,6 +26,9 @@ authors: "François Brucker"
 2. question 2
    * votre algorithme de retournement fait identité. Il faut s'arrêter à la moitié.
    * il y a 2 paramètres à l'algorithme de retournement
+3. question 3
+   * `T[T[0]], T[0] = T[0], T[T[0]]` et pas le contraire. C'est une erreur subtile que je n'ai pas compté. C'est que l'écriture ne se fais pas en même temps. n commence par celui de gauche.
+4. l'exercice 4 est difficile.
 
 ## Question 1
 
@@ -121,7 +125,7 @@ def tri(T):
 
 ##### 2.3.3
 
-On note $n$ la taile de la liste.
+On note $n$ la taille de la liste.
 
 On pourrait croire que notre algorithme de tri en $\mathcal{O}(n)$ retournement est inférieur à la complexité du tri qui est de $\mathcal{O}(n\ln(n))$ ($n < n \ln(n)$ si $n > e$).
 
@@ -131,7 +135,7 @@ Mais l'opération de retournement est en $\mathcal{O}(n)$ opérations. Donc notr
 
 #### 2.4.1
 
-Notre algorithme est en $\mathcal{O}(\mid T \mid)$ retournement, c'est don cune borne maximum du problème du retournement de crêpes.
+Notre algorithme est en $\mathcal{O}(\mid T \mid)$ retournement, c'est donc une borne maximum du problème du retournement de crêpes.
 
 #### 2.4.2
 
@@ -150,9 +154,67 @@ Pour trier la pile il faut au moins autant de retournements que de paires non ad
 
 ## Question 3
 
+### 3.1
+
+#### 3.1.1
+
+```python
+def echange(T):
+    while T[0] != 0:
+        a = T[0]
+        T[a], T[0] = a, T[a]
+```
+
+#### 3.1.2
+
+```python
+[2, 1, 6, 7, 0, 4, 5, 3]
+[6, 1, 2, 7, 0, 4, 5, 3]
+[5, 1, 2, 7, 0, 4, 6, 3]
+[4, 1, 2, 7, 0, 5, 6, 3]
+[0, 1, 2, 7, 4, 5, 6, 3]
+```
+
+### 3.2
+
+A la fin d'une itération de l'algorithme on a $a = T[a]$ avec $a \neq 0$. L'indice $a$ ne changera plus jamais tout au long de l'algorithme, donc $L(T)$ a un 1 de plus si $0 \neq T[0]$ à la fin de l'itération.
+
+Lors de la dernière itération, comme $a= T[a]$ et $0 = T[0]$, $L(T)$ augmente de deux 1.
+
+#### 3.3
+
+Comme le nombre de 1 de $L(T)$ augmente strictement à chaque étape et qu'il ne peut y a voir que $n$ 1 à la fin : l'algorithme s'arrête bien au bout d'au pire $n$ itérations.
+
+#### 3.4
+
+```python
+def tri(T):
+    for i in range(len(T)):
+        while T[i] != i:
+            a = T[i]
+            T[a], T[i] = a, T[a]
+```
+
+On ajoute une boucle qui parcours tous les éléments et qui fait les permutations si $T[i] \neq i$. 
+
+La complexité est bien en $\mathcal{O}(n)$ car à chaque itération de la boucle while $L(T)$ augmente strictement : on ne peut rentrer dans la boucle while qu'au pire $n$ fois.
+
+#### 3.5
+
+Ici on doit trier une permutation des n premiers entiers. C'est bien plus restrictif que le problème du tri où les éléments à trier peuvent avoir des égalités, et des éléments non consécutifs.
+
+En fait, l'algorithme le plus simple qui trie les $n$ premiers entiers est :
+
+```python
+
+def tri(T):
+    return list(range(len(T)))
+```
+
+Qui est bien en $\mathcal{O}(n)$...
+
+Notre problème est donc un sous-problème du problème du tri et pas le problème du tri.
+
 ## Question 4
 
->
-> 1. cours où on ne connait pas la complexité max la plus faible. La borne est gigantesque, alors que la moyenne est toute simple.
->
-{: .tbd}
+Comme personne n'a avancé sur cet exercice, je vais le garder pour une autre occasion.
