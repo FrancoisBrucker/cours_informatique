@@ -6,23 +6,25 @@ tags: informatique cours
 authors: "François Brucker"
 ---
 
->
-> 1. cours où on ne connait pas la complexité max la plus faible. La borne est gigantesque, alors que la moyenne est toute simple.
->
-{: .tbd}
-
-* optimisez votre temps. Si vous bloquez passez à un autre exercice.
-* les sujets de concours ne sont pas fait pour être fini.
 
 ## Introduction
 
-Erreurs communes :
+> ventilation des notes
+{: .tbd}
+
+### remarques
+
+* optimisez votre temps. Si vous bloquez passez à un autre exercice. Les premières questions sont souvent plus faisables que les dernières.
+* les sujets de concours ne sont pas fait pour être fini.
+
+### erreurs communes
 
 1. question 1
    * 1.1 rahhhh. C'est les 3 qui sont tout aussi importants. Seuls 2 personnes ont eu juste.
    * 1.2.2 : peut de bonne solution. Borne min puis borne atteinte
 2. question 2
    * votre algorithme de retournement fait identité. Il faut s'arrêter à la moitié.
+   * il y a 2 paramètres à l'algorithme de retournement
 
 ## Question 1
 
@@ -70,19 +72,21 @@ L'opération de retournement revient à retourner le début du tableau T.
 
 ### 2.2
 
+Il faut 2 paramètres pour l'algorithme de retournement : la liste et la position de la spatule
+
 ```python
-def retournement(T, r):
+def retournement(T, spatule):
     T2 = []
-    for i in range(r, -1, -1):
+    for i in range(spatule, -1, -1):
         T2.append(T[i])
 
-    for i in range(r+1, len(T)):
+    for i in range(spatule + 1, len(T)):
         T2.append(T[i])
 
     return T2
 ```
 
-L'algorithme est constitué de deux boucles for, la première de $r+1$ itérations et la seconde de $\mid T \mid - r-1$ opérations. Toutes les autres opérationÒ sont en $\mathcal{O}(1)$, l'algorithme s'arrête bien et est de complexité $\mathcal{O}(\mid T \mid)$.
+L'algorithme est constitué de deux boucles for, la première de $\mbox{spatule}+1$ itérations et la seconde de $\mid T \mid - \mbox{spatule}-1$ opérations. Toutes les autres opérations sont en $\mathcal{O}(1)$, l'algorithme s'arrête bien et est de complexité $\mathcal{O}(\mid T \mid)$.
 
 La première boucle for effectue le retournement du tableau $T[:r+1]$, c'est à dire des $r+1$ premières crêpes de la pile (de l'indice 0 à $r$ inclus), la seconde ajoute dans le même ordre la fin de la pile. 
 
@@ -96,22 +100,32 @@ De même l'élément en $T[0]$ avant retournement se retrouve en position $T[r]$
 
 #### 2.3.2
 
+Comme les tailles sont des entiers de 0 à $n-1$, on connait le maximum du tableau. On a écrit le code de l'algorithme en python mais on aurait tout aussi bien pu l'écrire en pseudo-code
+
 ```python
 def tri(T):
     n = len(T)
-    for t in range(n-1, -1, -1):
-        trouver l'indice i de l'élément de taille t
+    for t in range(n-1, -1, -1):  #  de t=n-1 à t=0
+        i = 0                     # trouve l'indice i tel que T[i] == t
+        while T[i] != t:
+            i += 1
+
         T = retournement(T, i)
         T = retournement(T, t)
 
     return T
 ```
 
-Invariant de boucle : **à la fin d'une itération de la boucle, $T[i] = i$ pour tout $i \geq t$.**
+1. complexité en nombre de retournements : $\mathcal{O}(n)$ itérations dans la boucle for, et deux retournements par itérations.
+2. preuve de l'algorithme par invariant de boucle : *à la fin d'une itération de la boucle for, $T[i] = i$ pour tout $i \geq t$.*. Sa preuve est immédiate car elle découle de la question 2.3.1
 
 ##### 2.3.3
 
-L'opération de retournement est en $\mathcal{O}(\mid T \mid)$ opérations. Donc notre algorithme de tri est en $\mathcal{O}(\mid T \mid ^2)$ opérations, ce i est plus grand que la complexité du problème du tri. C'est cohérent.
+On note $n$ la taile de la liste.
+
+On pourrait croire que notre algorithme de tri en $\mathcal{O}(n)$ retournement est inférieur à la complexité du tri qui est de $\mathcal{O}(n\ln(n))$ ($n < n \ln(n)$ si $n > e$).
+
+Mais l'opération de retournement est en $\mathcal{O}(n)$ opérations. Donc notre algorithme de tri est en réalité en $\mathcal{O}(n^2)$ opérations, ce i est plus grand que la complexité du problème du tri. C'est cohérent.
 
 ### 2.4
 
@@ -123,11 +137,22 @@ Notre algorithme est en $\mathcal{O}(\mid T \mid)$ retournement, c'est don cune 
 
 1. une adjacence étant un un couple $(i, i+1)$ tel que $\mid T[i] - T[i+1] \mid > 1$,il faut que $0 \leq i < \mid T \mid -1 = n -1$
 2. Si $(i-1, i)$ et $(i, i+1)$ sont deux adjacences, alors :
-   * soit $T[i-1] < T[i]$ et donc $T[i] = T[i-1] - 1$. De là on ne peut avoir $T[i] > T[i+1]$ car sinon $T[i+1] = T[i-1]$ ce qui est impossible. On a donc $T[i-1] < T[i] < T[i+1]$
-   * soit $T[i-1] > T[i]$ et un raisonnement similaire au précédent nous permet de montrer que $T[i-1] > T[i] > T[i+1]$.
+   1. prouvons $n-1$ adjacences implique trié.
+      * soit $T[i-1] < T[i]$ et donc $T[i] = T[i-1] - 1$. De là on ne peut avoir $T[i] > T[i+1]$ car sinon $T[i+1] = T[i-1]$ ce qui est impossible. On a donc $T[i-1] < T[i] < T[i+1]$
+      * soit $T[i-1] > T[i]$ et un raisonnement similaire au précédent nous permet de montrer que $T[i-1] > T[i] > T[i+1]$.
 
-   Donc s'il y a $n-1$ adjacences, soit $T$ est trié par ordre croissant, soit par ordre décroissant.
+      Donc s'il y a $n-1$ adjacences, $T$ est trié par ordre croissant ou par ordre décroissant.
+   2. réciproquement, si la liste est triée avec le plus grand élément à la fin, il y a bien $n-1$ adjacences.
 3. un retournement `retournement(T, r)` ne peut changer les adjacences pour $i < r - 1$ (si (i, i+1) est une adjacence avant retournement, alors $(r-i-1, r-i)$  est une adjacence après retournement), et pour $i \geq r$. La seule adjacence qui peut être modifiée est $(r-1, r)$.
 4. L'ordre $[n-2, n-4, \dots, (1\mbox{ ou }0\mbox{ selon la parité de }n), n-1, n-3, \dots, 0\mbox{ ou }1\mbox{ selon la parité de }n]$ a bien 0 adjacences et si $n \geq 4$.
 
 Pour trier la pile il faut au moins autant de retournements que de paires non adjacentes plus 1 pour mettre l'élément $n-1$ en fin de liste qui est une opération qui ne change pas le nombre d'adjacences.
+
+## Question 3
+
+## Question 4
+
+>
+> 1. cours où on ne connait pas la complexité max la plus faible. La borne est gigantesque, alors que la moyenne est toute simple.
+>
+{: .tbd}
