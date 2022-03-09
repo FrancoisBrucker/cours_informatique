@@ -18,7 +18,7 @@
 <meta name="twitter:card" content="summary">
 <meta property="twitter:title" content="DS">
 <script type="application/ld+json">
-{"headline":"DS","description":"Support de cours/td d’informatique de François Brucker.","@type":"WebPage","url":"/cours_informatique/cours/algorithme-code-theorie/exercices/2021-2022/3_ds_corrige.html","@context":"https://schema.org"}</script>
+{"description":"Support de cours/td d’informatique de François Brucker.","@type":"WebPage","url":"/cours_informatique/cours/algorithme-code-theorie/exercices/2021-2022/3_ds_corrige.html","headline":"DS","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
@@ -67,13 +67,14 @@
 
 <blockquote class="tbd">
   <p>ventilation des notes</p>
+
 </blockquote>
 
 <h3 id="remarques">remarques</h3>
 
 <ul>
   <li>optimisez votre temps. Si vous bloquez passez à un autre exercice. Les premières questions sont souvent plus faisables que les dernières.</li>
-  <li>les sujets de concours ne sont pas fait pour être fini.</li>
+  <li>les sujets de concours ne sont pas fait pour être fini. 2h c’est trop court. Avec 1h de plus vous devriez être capable de le finir.</li>
 </ul>
 
 <h3 id="erreurs-communes">erreurs communes</h3>
@@ -91,6 +92,13 @@
       <li>il y a 2 paramètres à l’algorithme de retournement</li>
     </ul>
   </li>
+  <li>question 3
+    <ul>
+      <li>
+<code class="language-plaintext highlighter-rouge">T[T[0]], T[0] = T[0], T[T[0]]</code> et pas le contraire. C’est une erreur subtile que je n’ai pas compté. C’est que l’écriture ne se fais pas en même temps. n commence par celui de gauche.</li>
+    </ul>
+  </li>
+  <li>l’exercice 4 est difficile.</li>
 </ol>
 
 <h2 id="question-1">Question 1</h2>
@@ -194,7 +202,7 @@
 
 <h5 id="233">2.3.3</h5>
 
-<p>On note $n$ la taile de la liste.</p>
+<p>On note $n$ la taille de la liste.</p>
 
 <p>On pourrait croire que notre algorithme de tri en $\mathcal{O}(n)$ retournement est inférieur à la complexité du tri qui est de $\mathcal{O}(n\ln(n))$ ($n &lt; n \ln(n)$ si $n &gt; e$).</p>
 
@@ -204,7 +212,7 @@
 
 <h4 id="241">2.4.1</h4>
 
-<p>Notre algorithme est en $\mathcal{O}(\mid T \mid)$ retournement, c’est don cune borne maximum du problème du retournement de crêpes.</p>
+<p>Notre algorithme est en $\mathcal{O}(\mid T \mid)$ retournement, c’est donc une borne maximum du problème du retournement de crêpes.</p>
 
 <h4 id="242">2.4.2</h4>
 
@@ -231,15 +239,66 @@
 
 <h2 id="question-3">Question 3</h2>
 
+<h3 id="31">3.1</h3>
+
+<h4 id="311">3.1.1</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">echange</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
+    <span class="k">while</span> <span class="n">T</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">T</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">T</span><span class="p">[</span><span class="n">a</span><span class="p">],</span> <span class="n">T</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">,</span> <span class="n">T</span><span class="p">[</span><span class="n">a</span><span class="p">]</span>
+</code></pre></div></div>
+
+<h4 id="312">3.1.2</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</code></pre></div></div>
+
+<h3 id="32">3.2</h3>
+
+<p>A la fin d’une itération de l’algorithme on a $a = T[a]$ avec $a \neq 0$. L’indice $a$ ne changera plus jamais tout au long de l’algorithme, donc $L(T)$ a un 1 de plus si $0 \neq T[0]$ à la fin de l’itération.</p>
+
+<p>Lors de la dernière itération, comme $a= T[a]$ et $0 = T[0]$, $L(T)$ augmente de deux 1.</p>
+
+<h4 id="33">3.3</h4>
+
+<p>Comme le nombre de 1 de $L(T)$ augmente strictement à chaque étape et qu’il ne peut y a voir que $n$ 1 à la fin : l’algorithme s’arrête bien au bout d’au pire $n$ itérations.</p>
+
+<h4 id="34">3.4</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">tri</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">T</span><span class="p">)):</span>
+        <span class="k">while</span> <span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="n">i</span><span class="p">:</span>
+            <span class="n">a</span> <span class="o">=</span> <span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">T</span><span class="p">[</span><span class="n">a</span><span class="p">],</span> <span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">,</span> <span class="n">T</span><span class="p">[</span><span class="n">a</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>On ajoute une boucle qui parcours tous les éléments et qui fait les permutations si $T[i] \neq i$.</p>
+
+<p>La complexité est bien en $\mathcal{O}(n)$ car à chaque itération de la boucle while $L(T)$ augmente strictement : on ne peut rentrer dans la boucle while qu’au pire $n$ fois.</p>
+
+<h4 id="35">3.5</h4>
+
+<p>Ici on doit trier une permutation des n premiers entiers. C’est bien plus restrictif que le problème du tri où les éléments à trier peuvent avoir des égalités, et des éléments non consécutifs.</p>
+
+<p>En fait, l’algorithme le plus simple qui trie les $n$ premiers entiers est :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">def</span> <span class="nf">tri</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">T</span><span class="p">)))</span>
+</code></pre></div></div>
+
+<p>Qui est bien en $\mathcal{O}(n)$…</p>
+
+<p>Notre problème est donc un sous-problème du problème du tri et pas le problème du tri.</p>
+
 <h2 id="question-4">Question 4</h2>
 
-<blockquote class="tbd">
-
-  <ol>
-    <li>cours où on ne connait pas la complexité max la plus faible. La borne est gigantesque, alors que la moyenne est toute simple.</li>
-  </ol>
-
-</blockquote>
+<p>Comme personne n’a avancé sur cet exercice, je vais le garder pour une autre occasion.</p>
 
   </div>
 
