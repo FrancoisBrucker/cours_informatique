@@ -120,7 +120,7 @@ Plus ce nombre est petit, plus l'expérience est conforme à la théorie.
 
 De façon formelle :
 
-* si la théorie est conforme à la réalité, le nombre $\chi^2$  suit une loi du chi2 à $N-1$ degrés de libertés (ici 5 degrés de libertés)
+* si la théorie est conforme à la réalité, le nombre $\chi^2$  suit une loi du chi2 à $I-1$ degrés de libertés (ici 5 degrés de libertés)
 * la probabilité $P_{\mbox{df}}(X \geq K)=\alpha$ nous donne la chance d'obtenir $K$ ou plus pour une loi du chi2 à df degrés de libertés.
 
 Pour nous $df = 5$ et si on prend $\alpha = .1$ on trouve : $P_{5}(X \geq 9.236) = .1$ (pour connaitre ces valeurs, on utilise des tables comme [celle-ci](https://people.richland.edu/james/lecture/m170/tbl-chi.html)).
