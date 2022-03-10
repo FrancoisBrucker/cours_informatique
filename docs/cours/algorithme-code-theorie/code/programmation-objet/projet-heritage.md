@@ -125,10 +125,7 @@ De façon formelle :
 
 Pour nous $df = 5$ et si on prend $\alpha = .1$ on trouve : $P_{5}(X \geq 9.236) = .1$ (pour connaitre ces valeurs, on utilise des tables comme [celle-ci](https://people.richland.edu/james/lecture/m170/tbl-chi.html)).
 
-Donc si on trouve un $\chi^2$ plus grand ou égal que $9.206$, il y a moins de 10% de chance d'obtenir ce nombre si l'on suit une loi du chi2 à df degrés de liberté :
-
-* Il y a moins de 10% de chance de se tromper en supposant que notre expérience ne suit pas la théorie
-* Il y a moins de 10% de chance de supposer que notre dé n'est pas équilibré
+Donc si on trouve un $\chi^2$ plus grand ou égal que $9.206$, il y a moins de 10% de chance d'obtenir ce nombre si l'on suit une loi du chi2 à df degrés de liberté : Il y a moins de 10% de chance de se tromper en supposant que notre expérience ne suit pas la théorie. Dans notre cas, cela signifie qu'il y a moins de 10% de chance de supposer que notre dé n'est pas équilibré.
 
 C'est que l'on appelle le [risque de première espèce](https://fr.wikipedia.org/wiki/Test_statistique#Risque_de_premi%C3%A8re_esp%C3%A8ce_et_confiance) lorsque l'on fait des [test statistiques](https://fr.wikipedia.org/wiki/Test_statistique)
 
