@@ -16,12 +16,12 @@ authors: "François Brucker"
 ### remarques
 
 * les 3 exercices doivent être faisable en 2h.
-* optimisez votre temps. Si vous bloquez passez à un autre exercice. Les premières questions sont souvent plus faisables que les dernières
+* optimisez votre temps. Si vous bloquez passez à un autre exercice. Les premières questions sont souvent plus faisables que les dernières (Si vous prenez une copie par exercice cela permet de revenir à une exercice plus tard sans perdre le correcteur)
 
 ### erreurs communes
 
 1. question 1
-   * 1.1 rogntujdu ! C'est les 3 qui sont tout aussi importants l'in que l'autre. Seuls 2 personnes ont eu juste.
+   * 1.1 rogntujdu ! Les 3 qui sont tout aussi importants l'un que l'autre. Seuls 2 personnes ont eu juste.
    * 1.2.2 : peu de bonnes solutions. On démontre en >2 temps :
      1. on prouve une borne minium
      2. on montre qu'elle est atteinte pour un algorithme qu'on exhibe.
@@ -30,7 +30,6 @@ authors: "François Brucker"
    * il y a 2 paramètres à l'algorithme de retournement : la liste et la position de la spatule
 3. question 3
    * `T[T[0]], T[0] = T[0], T[T[0]]` et pas le contraire. C'est une erreur subtile que je n'ai pas compté. C'est que l'écriture ne se fais pas en même temps. n commence par celui de gauche.
-4. l'exercice 4 est difficile. Personne ne l'a exploré, surement faute de temps. Alors qu'il est vachement beau.
 
 ## Question 1
 
