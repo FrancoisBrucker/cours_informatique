@@ -169,6 +169,14 @@
                 ? 'unset' 
                 : 'none';
                     
+            var cats = ["langage","markdown"]
+            id += 1;
+            
+            var postDiv = document.getElementById(id);
+            postDiv.style.display = (selectedTag == 'All' || cats.includes(selectedTag)) 
+                ? 'unset' 
+                : 'none';
+                    
             var cats = ["installation","python","anaconda"]
             id += 1;
             
@@ -186,14 +194,6 @@
                 : 'none';
                     
             var cats = ["React","node"]
-            id += 1;
-            
-            var postDiv = document.getElementById(id);
-            postDiv.style.display = (selectedTag == 'All' || cats.includes(selectedTag)) 
-                ? 'unset' 
-                : 'none';
-                    
-            var cats = ["langage","markdown"]
             id += 1;
             
             var postDiv = document.getElementById(id);
@@ -247,6 +247,8 @@
         
                 <button id="configuration" onclick="filterUsingTag(this.id)">configuration</button>
         
+                <button id="markdown" onclick="filterUsingTag(this.id)">markdown</button>
+        
                 <button id="anaconda" onclick="filterUsingTag(this.id)">anaconda</button>
         
                 <button id="WSL" onclick="filterUsingTag(this.id)">WSL</button>
@@ -254,8 +256,6 @@
                 <button id="React" onclick="filterUsingTag(this.id)">React</button>
         
                 <button id="node" onclick="filterUsingTag(this.id)">node</button>
-        
-                <button id="markdown" onclick="filterUsingTag(this.id)">markdown</button>
         
                 <button id="fichiers" onclick="filterUsingTag(this.id)">fichiers</button>
         
@@ -573,6 +573,33 @@
         <li id="12">
             
             <h3>
+                <a class="post-link" href="/cours_informatique/tutoriels/format-markdown.html">
+                  Format markdown
+                </a>
+              </h3>
+              <div style="padding-left:20px;">
+                <div>
+                    catégories : 
+                    
+                    • <span class="post-meta">langage</span>
+                    
+                    • <span class="post-meta">markdown</span>
+                    
+                    • 
+                </div>
+                <p>
+                    </p>
+<p>Une introduction au format markdown.</p>
+
+                
+                
+              </div>                              
+              
+        </li>
+        
+        <li id="13">
+            
+            <h3>
                 <a class="post-link" href="/cours_informatique/tutoriels/python/2021-09-14-installation-anaconda.html">
                   Installation d'Anaconda python
                 </a>
@@ -599,7 +626,7 @@
               
         </li>
         
-        <li id="13">
+        <li id="14">
             
             <h3>
                 <a class="post-link" href="/cours_informatique/tutoriels/systeme/2021-09-27-wsl-windows.html">
@@ -626,7 +653,7 @@
               
         </li>
         
-        <li id="14">
+        <li id="15">
             
             <h3>
                 <a class="post-link" href="/cours_informatique/tutoriels/2021-10-28-smartgrid.html">
@@ -646,33 +673,6 @@
                 <p>
                     </p>
 <p>Le jeu smartgrid</p>
-
-                
-                
-              </div>                              
-              
-        </li>
-        
-        <li id="15">
-            
-            <h3>
-                <a class="post-link" href="/cours_informatique/tutoriels/format-markdown.html">
-                  Format markdown
-                </a>
-              </h3>
-              <div style="padding-left:20px;">
-                <div>
-                    catégories : 
-                    
-                    • <span class="post-meta">langage</span>
-                    
-                    • <span class="post-meta">markdown</span>
-                    
-                    • 
-                </div>
-                <p>
-                    </p>
-<p>Une introduction au format markdown.</p>
 
                 
                 
