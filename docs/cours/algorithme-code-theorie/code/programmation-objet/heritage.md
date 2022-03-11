@@ -349,7 +349,7 @@ class Magicien(Personnage):
         self.attaque_magique = attaque_magique
 
     def lancer_sort(self, personnage):
-        personnage.vie -= self.attaque_magique
+        personnage._vie -= self.attaque_magique
 ```
 
 On voit là que le personnage peut mourir si sa vie descend en dessous de 0. Comme on ne modifie qu'un attribut, on ne peut associer aucune méthode à cette mort. Il faut donc rendre l'attribut vie privé et n'y accéder qu'avec une méthode.
