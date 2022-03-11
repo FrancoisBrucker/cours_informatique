@@ -191,44 +191,44 @@ En déduire un algorithme (que vous expliciterez) de complexité $\mathcal{O}(n)
 
 Le résultat de la question précédente est-il compatible avec la complexité du problème du tri d'un tableau d'entiers ?
 
-\section{Inversion de préfixes}
+% \section{Inversion de préfixes}
 
-Dans toute cette partie, $T$ sera un tableau de taille $n$ contenant tous les entiers allant de $0$ à $n-1$.
-~\\
+% Dans toute cette partie, $T$ sera un tableau de taille $n$ contenant tous les entiers allant de $0$ à $n-1$.
+% ~\\
 
-On considère un algorithme\footnote{algorithme tiré d'un \href{https://www.irif.fr/~habib/Documents/IntroAlgoL3.pdf}{cours de M. Habib}} qui {\bf retourne} tous les éléments de $T$ entre les indices 0 et $T[0]$ inclus (cette opération de {\bf retournement} est identique à celui du tri de crêpes de la question 2), tant que $T[0] \neq 0$.
-
-
-
-\subsection{}
-
-\begin{enumerate}
-    \item Ecrivez un pseudo-code de cet algorithme
-    \item testez le sur le tableau $[2, 1, 6, 7, 0, 4, 5, 3]$
-\end{enumerate}
+% On considère un algorithme\footnote{algorithme tiré d'un \href{https://www.irif.fr/~habib/Documents/IntroAlgoL3.pdf}{cours de M. Habib}} qui {\bf retourne} tous les éléments de $T$ entre les indices 0 et $T[0]$ inclus (cette opération de {\bf retournement} est identique à celui du tri de crêpes de la question 2), tant que $T[0] \neq 0$.
 
 
-\subsection{}
 
-On note $N(T)$ le nombre défini tel que : 
+% \subsection{}
 
-$$
-N(T) = \sum_{i=0}^{n-1}L(T)[i]\cdot 2^{i}
-$$
+% \begin{enumerate}
+%     \item Ecrivez un pseudo-code de cet algorithme
+%     \item testez le sur le tableau $[2, 1, 6, 7, 0, 4, 5, 3]$
+% \end{enumerate}
 
-Montrez qu'à chaque itération de l'algorithme, $N(T)$ augmente strictement.
 
-\subsection{}
+% \subsection{}
 
-Déduisez de la question précédente que l'algorithme s'arrête forcément et donnez une borne maximale de sa complexité en nombre de retournements.
+% On note $N(T)$ le nombre défini tel que : 
 
-\subsection{}
+% $$
+% N(T) = \sum_{i=0}^{n-1}L(T)[i]\cdot 2^{i}
+% $$
 
-En utilisant le fait qu'il faut en moyenne $k$ essais pour obtenir un évènement de probabilité $\frac{1}{k}$ (c'est une \href{https://fr.wikipedia.org/wiki/Loi_g%C3%A9om%C3%A9trique}{loi géométrique}), démontrez que la complexité en moyenne de l'algorithme est de $\mathcal{O}(n)$ retournements.
+% Montrez qu'à chaque itération de l'algorithme, $N(T)$ augmente strictement.
 
-\subsection{}
+% \subsection{}
 
-Que pouvez vous conclure de ces complexités ?
+% Déduisez de la question précédente que l'algorithme s'arrête forcément et donnez une borne maximale de sa complexité en nombre de retournements.
+
+% \subsection{}
+
+% En utilisant le fait qu'il faut en moyenne $k$ essais pour obtenir un évènement de probabilité $\frac{1}{k}$ (c'est une \href{https://fr.wikipedia.org/wiki/Loi_g%C3%A9om%C3%A9trique}{loi géométrique}), démontrez que la complexité en moyenne de l'algorithme est de $\mathcal{O}(n)$ retournements.
+
+% \subsection{}
+
+% Que pouvez vous conclure de ces complexités ?
 
 \end{document}
 

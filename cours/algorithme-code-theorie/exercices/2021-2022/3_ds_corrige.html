@@ -73,8 +73,8 @@
 <h3 id="remarques">remarques</h3>
 
 <ul>
-  <li>optimisez votre temps. Si vous bloquez passez à un autre exercice. Les premières questions sont souvent plus faisables que les dernières.</li>
-  <li>les sujets de concours ne sont pas fait pour être fini. 2h c’est trop court. Avec 1h de plus vous devriez être capable de le finir.</li>
+  <li>les 3 exercices doivent être faisable en 2h.</li>
+  <li>optimisez votre temps. Si vous bloquez passez à un autre exercice. Les premières questions sont souvent plus faisables que les dernières (Si vous prenez une copie par exercice cela permet de revenir à une exercice plus tard sans perdre le correcteur)</li>
 </ul>
 
 <h3 id="erreurs-communes">erreurs communes</h3>
@@ -82,14 +82,19 @@
 <ol>
   <li>question 1
     <ul>
-      <li>1.1 rahhhh. C’est les 3 qui sont tout aussi importants. Seuls 2 personnes ont eu juste.</li>
-      <li>1.2.2 : peut de bonne solution. Borne min puis borne atteinte</li>
+      <li>1.1 rogntujdu ! Les 3 qui sont tout aussi importants l’un que l’autre. Seuls 2 personnes ont eu juste.</li>
+      <li>1.2.2 : peu de bonnes solutions. On démontre en &gt;2 temps :
+        <ol>
+          <li>on prouve une borne minium</li>
+          <li>on montre qu’elle est atteinte pour un algorithme qu’on exhibe.</li>
+        </ol>
+      </li>
     </ul>
   </li>
   <li>question 2
     <ul>
-      <li>votre algorithme de retournement fait identité. Il faut s’arrêter à la moitié.</li>
-      <li>il y a 2 paramètres à l’algorithme de retournement</li>
+      <li>votre algorithme de retournement fait souvent identité (il retourne 2 fois et fait donc un virage à 360 degrés). Il faut s’arrêter à la moitié.</li>
+      <li>il y a 2 paramètres à l’algorithme de retournement : la liste et la position de la spatule</li>
     </ul>
   </li>
   <li>question 3
@@ -98,7 +103,6 @@
 <code class="language-plaintext highlighter-rouge">T[T[0]], T[0] = T[0], T[T[0]]</code> et pas le contraire. C’est une erreur subtile que je n’ai pas compté. C’est que l’écriture ne se fais pas en même temps. n commence par celui de gauche.</li>
     </ul>
   </li>
-  <li>l’exercice 4 est difficile.</li>
 </ol>
 
 <h2 id="question-1">Question 1</h2>
@@ -294,11 +298,7 @@
 
 <p>Qui est bien en $\mathcal{O}(n)$…</p>
 
-<p>Notre problème est donc un sous-problème du problème du tri et pas le problème du tri.</p>
-
-<h2 id="question-4">Question 4</h2>
-
-<p>Comme personne n’a avancé sur cet exercice, je vais le garder pour une autre occasion.</p>
+<p>Notre problème est un <strong>sous-problème</strong> du problème du tri et pas le problème général du tri : il peut admettre une complexité plus faible.</p>
 
   </div>
 
