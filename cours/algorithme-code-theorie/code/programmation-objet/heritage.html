@@ -445,7 +445,7 @@
         <span class="bp">self</span><span class="p">.</span><span class="n">attaque_magique</span> <span class="o">=</span> <span class="n">attaque_magique</span>
 
     <span class="k">def</span> <span class="nf">lancer_sort</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">personnage</span><span class="p">):</span>
-        <span class="n">personnage</span><span class="p">.</span><span class="n">vie</span> <span class="o">-=</span> <span class="bp">self</span><span class="p">.</span><span class="n">attaque_magique</span>
+        <span class="n">personnage</span><span class="p">.</span><span class="n">_vie</span> <span class="o">-=</span> <span class="bp">self</span><span class="p">.</span><span class="n">attaque_magique</span>
 </code></pre></div></div>
 
 <p>On voit là que le personnage peut mourir si sa vie descend en dessous de 0. Comme on ne modifie qu’un attribut, on ne peut associer aucune méthode à cette mort. Il faut donc rendre l’attribut vie privé et n’y accéder qu’avec une méthode.</p>
