@@ -10,25 +10,27 @@ authors: "François Brucker"
 ## Introduction
 
 > ventilation des notes
-> 
+>
 {: .tbd}
 
 ### remarques
 
-* optimisez votre temps. Si vous bloquez passez à un autre exercice. Les premières questions sont souvent plus faisables que les dernières.
-* les sujets de concours ne sont pas fait pour être fini. 2h c'est trop court. Avec 1h de plus vous devriez être capable de le finir.
+* les 3 exercices doivent être faisable en 2h.
+* optimisez votre temps. Si vous bloquez passez à un autre exercice. Les premières questions sont souvent plus faisables que les dernières
 
 ### erreurs communes
 
 1. question 1
-   * 1.1 rahhhh. C'est les 3 qui sont tout aussi importants. Seuls 2 personnes ont eu juste.
-   * 1.2.2 : peut de bonne solution. Borne min puis borne atteinte
+   * 1.1 rogntujdu ! C'est les 3 qui sont tout aussi importants l'in que l'autre. Seuls 2 personnes ont eu juste.
+   * 1.2.2 : peu de bonnes solutions. On démontre en >2 temps :
+     1. on prouve une borne minium
+     2. on montre qu'elle est atteinte pour un algorithme qu'on exhibe.
 2. question 2
-   * votre algorithme de retournement fait identité. Il faut s'arrêter à la moitié.
-   * il y a 2 paramètres à l'algorithme de retournement
+   * votre algorithme de retournement fait souvent identité (il retourne 2 fois et fait donc un virage à 360 degrés). Il faut s'arrêter à la moitié.
+   * il y a 2 paramètres à l'algorithme de retournement : la liste et la position de la spatule
 3. question 3
    * `T[T[0]], T[0] = T[0], T[T[0]]` et pas le contraire. C'est une erreur subtile que je n'ai pas compté. C'est que l'écriture ne se fais pas en même temps. n commence par celui de gauche.
-4. l'exercice 4 est difficile.
+4. l'exercice 4 est difficile. Personne ne l'a exploré, surement faute de temps. Alors qu'il est vachement beau.
 
 ## Question 1
 
@@ -195,7 +197,7 @@ def tri(T):
             T[a], T[i] = a, T[a]
 ```
 
-On ajoute une boucle qui parcours tous les éléments et qui fait les permutations si $T[i] \neq i$. 
+On ajoute une boucle qui parcours tous les éléments et qui fait les permutations si $T[i] \neq i$.
 
 La complexité est bien en $\mathcal{O}(n)$ car à chaque itération de la boucle while $L(T)$ augmente strictement : on ne peut rentrer dans la boucle while qu'au pire $n$ fois.
 
@@ -213,8 +215,4 @@ def tri(T):
 
 Qui est bien en $\mathcal{O}(n)$...
 
-Notre problème est donc un sous-problème du problème du tri et pas le problème du tri.
-
-## Question 4
-
-Comme personne n'a avancé sur cet exercice, je vais le garder pour une autre occasion.
+Notre problème est un **sous-problème** du problème du tri et pas le problème général du tri : il peut admettre une complexité plus faible.

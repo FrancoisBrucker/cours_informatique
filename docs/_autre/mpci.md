@@ -178,6 +178,7 @@ Au programme :
 1. code : [sujet]({% link cours/algorithme-code-theorie/exercices/2021-2022/1_test_sujet.md %}) et [corrigé]({% link cours/algorithme-code-theorie/exercices/2021-2022/1_test_corrige.md %})
 2. complexité et preuve : [sujet]({% link cours/algorithme-code-theorie/exercices/2021-2022/2_test_sujet.md %}) et [corrigé]({% link cours/algorithme-code-theorie/exercices/2021-2022/2_test_corrige.md %})
 3. DS 1 : [sujet]({% link cours/algorithme-code-theorie/exercices/2021-2022/3_ds_sujet.md %}) et [corrigé]({% link cours/algorithme-code-theorie/exercices/2021-2022/3_ds_corrige.md %})
+4. classes et objets : [sujet]({% link cours/algorithme-code-theorie/exercices/2021-2022/4_test_sujet.md %})
 
 ## on s'entraine
 

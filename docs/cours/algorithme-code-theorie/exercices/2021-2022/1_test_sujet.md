@@ -8,7 +8,6 @@ tags: code python
 > [Algorithme, code et théorie]({% link cours/algorithme-code-theorie/index.md %}) / [exercices]({% link cours/algorithme-code-theorie/exercices/index.md %}) / [2021-2022]({% link cours/algorithme-code-theorie/exercices/2021-2022/index.md %}) / [sujet Test 1 : code]({% link cours/algorithme-code-theorie/exercices/2021-2022/1_test_sujet.md %})
 {: .chemin}
 
-
 Toute fonction écrite doit être testée.
 
 Faites les questions dans l'ordre. Ce n'est pas grave si vous ne faites pas toutes les questions, mais si vous donnez une fonction sans ses tests ou qui ne fonctionne pas elle ne sera pas notée.
