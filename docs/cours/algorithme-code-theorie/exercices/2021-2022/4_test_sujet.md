@@ -1,6 +1,6 @@
 ---
 layout: page
-title:  "corrigé Test 4 : classes et objets"
+title:  "sujet Test 4 : classes et objets"
 category: cours
 tags: code python
 ---
