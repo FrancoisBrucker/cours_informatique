@@ -423,7 +423,7 @@ Ceci nous permet de les donner à des méthodes inconnues sans avoir peur qu'ils
 >
 > De plus, de nombreuses structures modifiables ont leurs contrepartie non modifiables. Par exemple les [tuples](https://docs.python.org/fr/3/library/stdtypes.html) pour les listes ou les [frozenset](https://docs.python.org/fr/3/library/stdtypes.html) pour les ensembles.
 
-Pour un *value object*, à la place de modifier un objet il faut en rendre un nouveau on en rende un nouveau : la méthode `fois` doit rendre un objet. Modifions notre test  :
+Pour un *value object*, à la place de modifier un objet il faut en rendre un nouveau : la méthode `fois` doit rendre un objet. Modifions notre test  :
 
 *"test_monnaie.py"* :
 
