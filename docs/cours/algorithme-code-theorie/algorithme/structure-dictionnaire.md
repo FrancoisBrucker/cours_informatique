@@ -207,7 +207,7 @@ Supposons que l'on ait une fonction de hachage $f$ qui a tout objet associe un n
 
 On peut de plus supposer que le hash est calculé en $\mathcal{O}$ de la taille de l'objet à hacher. Par exemple en $\mathcal{O}(len(s))$ pour une chaine de caractères `s` par exemple.
 
-Si la fonction $f$ est injective, il suffit de stocker nos valeurs dans une liste $L$ à m+1$ éléments à l'indice égal au hash de sa clé. Ainsi si je veux associer la valeur $v$ à la clé $c$, on effectuera l'opération : `L[f(c)] = v`.
+Si la fonction $f$ est injective, il suffit de stocker nos valeurs dans une liste $L$ à $m+1$ éléments à l'indice égal au hash de sa clé. Ainsi si je veux associer la valeur $v$ à la clé $c$, on effectuera l'opération : `L[f(c)] = v`.
 
 Si la fonction n'est pas injective, chaque élément de la liste $L$ est une liste qui stockera les différentes clés ayant même hash. De là :
 
