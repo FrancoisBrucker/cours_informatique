@@ -71,7 +71,7 @@ Une fonction de hachage permet de partitionner les entiers (*ie.* les objets) en
 > Pour qu'une fonction de hachage $f: \mathbb{N} \rightarrow [0\mathrel{ {.}\,{.} } m]$ soit **utile**, elle doit avoir les 3 propriétés suivantes :
 >
 > 1. elle doit être **déterministe** : un même message doit toujours avoir la même valeur de hachage.
-> 2. elle doit être facilement calculable
+> 2. elle doit être **facilement calculable**
 > 3. elle doit être  **uniforme** : la probabilité que $f(a) = i$ doit être de $\frac{1}{m+1}$ pour tout $a\in \mathcal{N}$ et $0 \leq i \leq m$
 >
 {:.note}
@@ -114,7 +114,7 @@ Comme $a \mod m$  est égal au reste de la division entière de $a$ par $m$ son 
 
 #### facilement calculable
 
-Même lorsque les objets deviennent grand, le caclul du modulo peut se faire aisément. En effet le fait que :
+Même lorsque les objets deviennent grand, le calcul du modulo peut se faire aisément. En effet le fait que :
 
 * $(a + b) \mod m$ = $((a \mod m) + (b\mod m)) \mod m$
 * $(a \times b) \mod m$ = $((a \mod m) \times (b\mod m)) \mod m$
@@ -124,7 +124,7 @@ Par exemple :
 * $7 \mod 3 = (4 \mod 3) + (3 \mod 3) = 1 + 0 = 1$
 * $4 \times 3 \mod 3 = (4 \mod 3) \times (3 \mod 3) = 1 \times 0 = 0$
 
-Permet de calculer le modulo *par morceau*.
+Ce qui permet de calculer le modulo *par morceau*.
 
 Per exemple, prenons un objet $n$, qui est représenté en mémoire par une suite de $k \times l$ $0$ et $1$ :
 
@@ -223,7 +223,7 @@ On peut en extraire des solutions approchées si $m$ est très grand devant $n$ 
 > Si $m$ est grand devant $n$, on a :
 >
 > $$
-> \bar{p}(n, m) \simeq \exp(\frac{n^2}{2(m+1)})
+> \bar{p}(n, m) \simeq \exp(-\frac{n^2}{2(m+1)})
 > $$
 >
 > et donc :
@@ -293,7 +293,7 @@ Ici l'utilité réside dans le fait qu'en pratique :
 
 La fonction de hash ($f$) peut alors être utilisée comme une serrure ($x$) qui ne s'ouvre que si l'on a la bonne clé (un $a$ tel que $f(a) = x$).
 
-Cracker une fonction hash cryptographique revient soit :
+Craquer une fonction hash cryptographique revient soit :
 
 * à pouvoir trouver 2 éléments $a$ et $a'$ tels que $f(a) = f(a')$ : trouver des collision montrerait que la fonction n'est pas injective et donc $a$ n'est pas une clé unique
 * pouvoir trouver $a$ tel que $f(a) = x$ en ne connaissant que $x$ : revient à forger une clé en ne connaissant que la serrure.

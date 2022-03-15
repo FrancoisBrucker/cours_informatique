@@ -155,7 +155,7 @@ La complexité amortie est un concept avancé. Il ne faut pas le confondre avec 
 
 ## Attention
 
-Un piège courant lorsque l'on débute avec les liste en python est d'ajouter un élément en fin de liste avec la commande : `l = l + [x]`. C'est une erreur car la complexité est beaucoup plus importante que si l'on utilise la méthode `append`: 
+Un piège courant lorsque l'on débute avec les liste en python est d'ajouter un élément en fin de liste avec la commande : `l = l + [x]`. C'est une erreur car la complexité est beaucoup plus importante que si l'on utilise la méthode `append` :
 
 * complexité de `l = l + [x]` : $\mathcal{O}(\mbox{len}(l))$ car on crée une nouvelle liste !
 * complexité de : `l.append(x)` : $\mathcal{O}(1)$ car on ajoute à la fin d'une liste déjà existante
