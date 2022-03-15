@@ -93,7 +93,7 @@ Une liste peut être implémentée de cette façon :
      * si oui :
        * $n = n + 1$.
      * sinon :
-       * on alloue un tableau $2 \timest$ éléments et $t = 2 \times t$
+       * on alloue un tableau $2 \times t$ éléments et $t = 2 \times t$
        * on copie les $n$ premiers éléments du tableau initial dans le nouveau tableau et on supprime le tableau initial.
        * $n = n + 1$.
   2. décalage de tous les éléments d'indice supérieur au rang de l'ajout et insertion de l'élément.
