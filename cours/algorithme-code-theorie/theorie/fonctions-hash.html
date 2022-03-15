@@ -137,7 +137,8 @@
 
   <ol>
     <li>elle doit être <strong>déterministe</strong> : un même message doit toujours avoir la même valeur de hachage.</li>
-    <li>elle doit être facilement calculable</li>
+    <li>elle doit être <strong>facilement calculable</strong>
+</li>
     <li>elle doit être  <strong>uniforme</strong> : la probabilité que $f(a) = i$ doit être de $\frac{1}{m+1}$ pour tout $a\in \mathcal{N}$ et $0 \leq i \leq m$</li>
   </ol>
 
@@ -177,7 +178,7 @@ f &amp; : &amp; \mathbb{N} &amp; \to &amp; [0\mathrel{ {.}\,{.} } m] \\
 
 <h4 id="facilement-calculable">facilement calculable</h4>
 
-<p>Même lorsque les objets deviennent grand, le caclul du modulo peut se faire aisément. En effet le fait que :</p>
+<p>Même lorsque les objets deviennent grand, le calcul du modulo peut se faire aisément. En effet le fait que :</p>
 
 <ul>
   <li>$(a + b) \mod m$ = $((a \mod m) + (b\mod m)) \mod m$</li>
@@ -191,7 +192,7 @@ f &amp; : &amp; \mathbb{N} &amp; \to &amp; [0\mathrel{ {.}\,{.} } m] \\
   <li>$4 \times 3 \mod 3 = (4 \mod 3) \times (3 \mod 3) = 1 \times 0 = 0$</li>
 </ul>
 
-<p>Permet de calculer le modulo <em>par morceau</em>.</p>
+<p>Ce qui permet de calculer le modulo <em>par morceau</em>.</p>
 
 <p>Per exemple, prenons un objet $n$, qui est représenté en mémoire par une suite de $k \times l$ $0$ et $1$ :</p>
 
@@ -282,7 +283,7 @@ pour chaque élément e du tuple:
 <blockquote class="note">
   <p>Si $m$ est grand devant $n$, on a :</p>
 
-\[\bar{p}(n, m) \simeq \exp(\frac{n^2}{2(m+1)})\]
+\[\bar{p}(n, m) \simeq \exp(-\frac{n^2}{2(m+1)})\]
 
   <p>et donc :</p>
 
@@ -351,7 +352,7 @@ pour chaque élément e du tuple:
 
 <p>La fonction de hash ($f$) peut alors être utilisée comme une serrure ($x$) qui ne s’ouvre que si l’on a la bonne clé (un $a$ tel que $f(a) = x$).</p>
 
-<p>Cracker une fonction hash cryptographique revient soit :</p>
+<p>Craquer une fonction hash cryptographique revient soit :</p>
 
 <ul>
   <li>à pouvoir trouver 2 éléments $a$ et $a’$ tels que $f(a) = f(a’)$ : trouver des collision montrerait que la fonction n’est pas injective et donc $a$ n’est pas une clé unique</li>
