@@ -436,6 +436,83 @@
 
 <p>La structure de dictionnaire est donc une structure très efficace ! N’hésitez pas à l’utiliser car son temps moyen d’exécution est très rapide.</p>
 
+<h2 id="exercice">exercice</h2>
+
+<ul>
+  <li>données :
+    <ul>
+      <li>une liste de $n$ prix : $p_i$ ($0 \leq i &lt; n$)</li>
+      <li>un crédit : $C$</li>
+    </ul>
+  </li>
+  <li>Question : donner deux indices $i$ et $j$ tels que $p_i + p_j = C$ ou `None si cela n’existe pas.</li>
+</ul>
+
+<p>On va essayer de répondre à cet exercice de trois façons différentes, toutes avec des complexités différentes.</p>
+
+<h3 id="deux-boucles-for-imbriquées">deux boucles for imbriquées</h3>
+
+<p>Comme il faut trouver deux indices différents dans la liste $p$ (à $n$ éléments), deux boucles imbriquées allant de $0$ à $n-1$ permettent de balayer tous les couples $(i, j)$ avec $0 \leq i, j &lt; n$.</p>
+
+<blockquote class="a-faire">
+  <p>Créer cet algorithlme et calculez-en sa complexité.</p>
+</blockquote>
+<details><summary>solution</summary><div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">recherche</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">for</span>  <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">p</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="n">C</span><span class="p">:</span>
+                <span class="k">return</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">None</span>
+</code></pre></div></div>
+
+<p>Deux boucles imbriues et le reste en $\mathcal{O}(1)$ : la complexité totale est en $\mathcal{O}(n^2)$.</p>
+
+</div></details>
+
+<h3 id="une-boucle-et-un-tri">une boucle et un tri</h3>
+
+<details><summary>solution</summary><div>
+<p>solution en  nlog(n)</p>
+
+<p>On trie la liste (ce qui donne la complexité de la solution) puis :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">recherche</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+    <span class="n">p</span><span class="p">.</span><span class="n">sort</span><span class="p">()</span>
+
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">j</span> <span class="o">=</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span>
+    <span class="k">while</span> <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">p</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="n">C</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">p</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">C</span><span class="p">:</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">j</span> <span class="o">-=</span> <span class="mi">1</span>
+        
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="n">j</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">None</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+</code></pre></div></div>
+
+</div></details>
+
+<h3 id="avec-un-dictionnaire">avec un dictionnaire</h3>
+
+<details><summary>solution</summary><div>
+<p>solution en O(n) en moyenne.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">recherche</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">C</span> <span class="o">-</span> <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">C</span><span class="o">-</span><span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span> <span class="n">i</span><span class="p">)</span>
+        <span class="n">d</span><span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">i</span>
+    <span class="k">return</span> <span class="bp">None</span>
+</code></pre></div></div>
+
+</div></details>
+
+
   </div>
 
 </article>
