@@ -423,5 +423,6 @@ class HelloWorldWindow(pyglet.window.Window):
 
 > faire un todo
 > y aller petit à petit
+> fixer des objectif de code en 1/2h : classe/tests/programme principal
 > faire une classe ses tests et implémenter le tout.
 {: .tbd}

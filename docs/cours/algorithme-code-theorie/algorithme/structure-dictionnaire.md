@@ -318,3 +318,81 @@ Cette technique, identique à celle utilisée dans les [listes]({% link cours/al
 {: .note}
 
 La structure de dictionnaire est donc une structure très efficace ! N'hésitez pas à l'utiliser car son temps moyen d'exécution est très rapide.
+
+## exercice
+
+* données :  
+  * une liste de $n$ prix : $p_i$ ($0 \leq i < n$)
+  * un crédit : $C$
+* Question : donner deux indices $i$ et $j$ tels que $p_i + p_j = C$ ou `None si cela n'existe pas.
+
+On va essayer de répondre à cet exercice de trois façons différentes, toutes avec des complexités différentes.
+
+### deux boucles for imbriquées
+
+Comme il faut trouver deux indices différents dans la liste $p$ (à $n$ éléments), deux boucles imbriquées allant de $0$ à $n-1$ permettent de balayer tous les couples $(i, j)$ avec $0 \leq i, j < n$.
+
+> Créer cet algorithlme et calculez-en sa complexité.
+{: .a-faire}
+{% details solution %}
+
+```python
+def recherche(p):
+    for i in range(n):
+        for  in range(i + 1, n):
+            if p[i] + p[j] == C:
+                return (i, j)
+    return None
+```
+
+Deux boucles imbriues et le reste en $\mathcal{O}(1)$ : la complexité totale est en $\mathcal{O}(n^2)$.
+
+{% enddetails %}
+
+### une boucle et un tri
+
+{% details solution %}
+
+solution en  nlog(n)
+
+On trie la liste (ce qui donne la complexité de la solution) puis :
+
+```python
+def recherche(p):
+    p.sort()
+
+    i = 0
+    j = n-1
+    while p[i] + p[j] != C:
+        if p[i] + p[j] < C:
+            i += 1
+        else:
+            j -= 1
+        
+        if i > j:
+            return None
+    return (i, j)
+```
+
+{% enddetails %}
+
+### avec un dictionnaire
+
+{% details solution %}
+
+solution en O(n) en moyenne.
+
+```python
+def recherche(p):
+    d = dict()
+
+    for i in range(n):
+        if C - p[i] in d:
+            return (d[C-p[i]], i)
+        d[p[i]] = i
+    return None
+```
+
+{% enddetails %}
+
+

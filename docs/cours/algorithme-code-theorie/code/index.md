@@ -16,7 +16,8 @@ Comment coder, maintenir et aimer ses programmes. Les projets constituent une pr
 5. [projet : tris]({% link cours/algorithme-code-theorie/code/projet-tris.md %})
 6. [mémoire et espace de noms]({% link cours/algorithme-code-theorie/code/memoire-et-espace-noms.md %})
 7. [programmation objets]({% link cours/algorithme-code-theorie/code/programmation-objet/index.md %})
-8. [fichiers]({% link cours/algorithme-code-theorie/code/fichiers.md %})
+8. [projet : programmation événementielle]({% link cours/algorithme-code-theorie/code/projet-programmation-evenementielle.md %})
+9. [fichiers]({% link cours/algorithme-code-theorie/code/fichiers.md %})
 
 ## tbd
 
@@ -24,4 +25,4 @@ ordre des concepts de code :
 
 1. semaine 7 : poetry
 2. semaine 7 : venv
-3. prog. événementielle avec qt ?
+3. dear pygui ?

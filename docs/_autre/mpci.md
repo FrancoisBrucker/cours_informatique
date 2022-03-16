@@ -120,13 +120,13 @@ Au programme :
 
 #### mercredi {#m-7}
 
-1. [fonctions de hash]({% link cours/algorithme-code-theorie/theorie/fonctions-hash.md %})
-2. [structure : dictionnaire]({% link cours/algorithme-code-theorie/algorithme/structure-dictionnaire.md %})
-3. [structure : liste]({% link cours/algorithme-code-theorie/algorithme/structure-liste.md %})
+1. [structure : liste]({% link cours/algorithme-code-theorie/algorithme/structure-liste.md %})
+2. [fonctions de hash]({% link cours/algorithme-code-theorie/theorie/fonctions-hash.md %})
+3. [structure : dictionnaire]({% link cours/algorithme-code-theorie/algorithme/structure-dictionnaire.md %})
 
 #### vendredi {#v-7}
 
-1. projet code
+1. [projet : programmation événementielle]({% link cours/algorithme-code-theorie/code/projet-programmation-evenementielle.md %})
 
 ### semaine 8
 

@@ -79,8 +79,9 @@ Ce cours est composée de trois grandes parties qui s'enchevêtrent.
 10. [héritage]({% link cours/algorithme-code-theorie/code/programmation-objet/heritage.md %})
 11. [projet : héritage]({% link cours/algorithme-code-theorie/code/programmation-objet/projet-heritage.md %})
 12. [projet : TDD]({% link cours/algorithme-code-theorie/code/programmation-objet/projet-tdd.md %})
-13. [fichiers]({% link cours/algorithme-code-theorie/code/fichiers.md %})
-14. [projet : fichiers]({% link cours/algorithme-code-theorie/code/projet-fichiers.md %})
+13. [projet : programmation événementielle]({% link cours/algorithme-code-theorie/code/projet-programmation-evenementielle.md %})
+14. [fichiers]({% link cours/algorithme-code-theorie/code/fichiers.md %})
+15. [projet : fichiers]({% link cours/algorithme-code-theorie/code/projet-fichiers.md %})
 
 ### autre
 
@@ -632,6 +633,17 @@ graph.links.push({
 graph.links.push({
   source: "structure : dictionnaire",
   target: "fichiers"
+})
+
+graph.nodes.push({
+id: "projet : programmation événementielle",
+  link: "{% link cours/algorithme-code-theorie/code/projet-programmation-evenementielle.md %}",
+  group: groups.code
+})
+
+graph.links.push({
+  source: "projet : héritage",
+  target: "projet : programmation événementielle"
 })
 
 graph.nodes.push({
