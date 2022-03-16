@@ -543,4 +543,4 @@ Conservez en plus de votre projet un fichier markdown dans le quel vous décrire
 N'oubliez pas :
 
 > Les tests et l'utilisation de tâches ne fond pas perdre de temps à votre projet, il vous en font **gagner**.
-{: .note}
+{: .attention}
