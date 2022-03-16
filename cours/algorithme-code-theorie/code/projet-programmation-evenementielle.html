@@ -232,8 +232,10 @@ En revanche, le texte <code class="language-plaintext highlighter-rouge">c'est f
 
   <ul>
     <li>déduire l’origine de la fenêtre en utilisant le redimensionnement de la fenêtre.</li>
-    <li>utiliser l’événement <code class="language-plaintext highlighter-rouge">on_resize(width, height)</code>  pour recréer un nouveau label à la bonne position après chaque redimensionnement (attention, <code class="language-plaintext highlighter-rouge">on_resize</code> est utilisée par <code class="language-plaintext highlighter-rouge">Window</code>, n’oubliez pas de l’appeler avec un <code class="language-plaintext highlighter-rouge">super</code>)</li>
+    <li>utiliser l’événement <code class="language-plaintext highlighter-rouge">on_resize(width, height)</code> pour replacer le label à la bonne position après chaque redimensionnement en modifiant ses attributs <code class="language-plaintext highlighter-rouge">x</code> et <code class="language-plaintext highlighter-rouge">y</code>.</li>
   </ul>
+
+  <p>Attention, <code class="language-plaintext highlighter-rouge">on_resize</code> est utilisée par <code class="language-plaintext highlighter-rouge">Window</code>, n’oubliez pas de l’appeler avec un <code class="language-plaintext highlighter-rouge">super</code>.</p>
 
 </blockquote>
 <details><summary>solution</summary><div>
@@ -244,14 +246,8 @@ En revanche, le texte <code class="language-plaintext highlighter-rouge">c'est f
 </span>
     <span class="k">def</span> <span class="nf">on_resize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">().</span><span class="n">on_resize</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
-
-        <span class="bp">self</span><span class="p">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">pyglet</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="n">Label</span><span class="p">(</span>
-            <span class="s">"Hello, world!"</span><span class="p">,</span>
-            <span class="n">x</span><span class="o">=</span><span class="n">width</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span>
-            <span class="n">y</span><span class="o">=</span><span class="n">height</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span>
-            <span class="n">anchor_x</span><span class="o">=</span><span class="s">"center"</span><span class="p">,</span>
-            <span class="n">anchor_y</span><span class="o">=</span><span class="s">"center"</span><span class="p">,</span>
-        <span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">width</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">height</span> <span class="o">//</span> <span class="mi">2</span>
 
     <span class="c1"># ...
 </span>
@@ -270,7 +266,7 @@ En revanche, le texte <code class="language-plaintext highlighter-rouge">c'est f
 <code class="language-plaintext highlighter-rouge">on_key_release(symbol, modifiers)</code> qui s’active lorsque qu’une touche est relâchée</li>
 </ul>
 
-<p>L’attribut <code class="language-plaintext highlighter-rouge">symbol</code> est un entier qui correspond au code de la touche et <code class="language-plaintext highlighter-rouge">modifiers</code> gère les touches comme <em>shift</em>, <em>control</em> ou encore <em>alt</em>.</p>
+<p>Le paramètre <code class="language-plaintext highlighter-rouge">symbol</code> est un entier qui correspond au code de la touche et <code class="language-plaintext highlighter-rouge">modifiers</code> gère les touches comme <em>shift</em>, <em>control</em> ou encore <em>alt</em>.</p>
 
 <p>Ajoutons une gestion basique du clavier dans le programme :</p>
 
@@ -287,25 +283,32 @@ En revanche, le texte <code class="language-plaintext highlighter-rouge">c'est f
 </span>
 </code></pre></div></div>
 
-<p>Nous n’avons pas utilisé <code class="language-plaintext highlighter-rouge">super</code> pour appeler la méthode de la classe mère, car <code class="language-plaintext highlighter-rouge">Window</code> ne gère pas le clavier par défaut.</p>
+<p>Nous n’avons pas utilisé de <code class="language-plaintext highlighter-rouge">super</code> pour appeler la méthode de la classe mère, car <code class="language-plaintext highlighter-rouge">Window</code> ne gère pas le clavier par défaut.</p>
 
 <blockquote class="a-faire">
-  <p>Exécutez le code et remarquez :</p>
+  <p>Exécutez le code précédent et remarquez :</p>
 
   <ul>
     <li>que chaque touche a bien un code, ainsi que les touche de modfication</li>
     <li>shift gauche et shift droit sont indiscernables</li>
     <li>qu’après chaque touche appuyée ou relâchée l’évènement <code class="language-plaintext highlighter-rouge">on_draw</code> est lancé</li>
+    <li>que même si on laisse appuyé la touche longtemps, il n’y a qu’un seul événement <code class="language-plaintext highlighter-rouge">on_key_press</code> qui est lancé.</li>
   </ul>
 
 </blockquote>
 
 <h4 id="flèches-gauche-et-droite">flèches gauche et droite</h4>
 
-<p>Les code des différentes touches est disponible dans l’objet <a href="https://pyglet.readthedocs.io/en/latest/modules/window_key.html#module-pyglet.window.key">pyglet.window.key</a>.</p>
+<p>Les code des différentes touches est disponible dans l’objet <a href="https://pyglet.readthedocs.io/en/latest/modules/window_key.html#module-pyglet.window.key">pyglet.window.key</a>. Chaque touche est une constante dont le nom correspond à la la touche et sa valeur au code. Par exemple, la constante <code class="language-plaintext highlighter-rouge">pyglet.window.key.SPACE</code> correspond au nombre 32.</p>
 
 <blockquote class="a-faire">
-  <p>En utilisant le fait que les deux attributs <code class="language-plaintext highlighter-rouge">x</code> et <code class="language-plaintext highlighter-rouge">y</code> contiennent la position du label : déplacez le texte en utilisant les touches de déplacement du clavier.</p>
+  <p>Vérifiez qe lorsque vous appuyez sur la touche espace de votre clavier, c’est bien le symbole 32 qui et affiché</p>
+</blockquote>
+
+<p>Nous allons mainteannt faire bouger d’un cran notre texte lorsque l’on appuye sur les touches “flèche gauche” et “flèche droite”.</p>
+
+<blockquote class="a-faire">
+  <p>En utilisant le fait que les deux attributs <code class="language-plaintext highlighter-rouge">x</code> et <code class="language-plaintext highlighter-rouge">y</code> contiennent la position du label : faite en sorte que lorsque l’on appuye sur une flèche du clavier (le nom des constantes de  <code class="language-plaintext highlighter-rouge">pyglet.window.key</code> correspondant aux fléches sont disponible <a href="https://pyglet.readthedocs.io/en/latest/modules/window_key.html#cursor-control-and-motion">là</a>), le texte se déplace de 10pixel vers la direction de la flèche.</p>
 </blockquote>
 <details><summary>solution</summary><div>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ...
@@ -318,46 +321,26 @@ En revanche, le texte <code class="language-plaintext highlighter-rouge">c'est f
     <span class="c1"># ...
 </span>    
     <span class="k">def</span> <span class="nf">on_key_press</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol</span><span class="p">,</span> <span class="n">modifiers</span><span class="p">):</span>
-        <span class="n">delta</span> <span class="o">=</span> <span class="mi">10</span>
-        <span class="n">update</span> <span class="o">=</span> <span class="bp">False</span>
         <span class="k">if</span> <span class="n">symbol</span> <span class="o">==</span> <span class="n">key</span><span class="p">.</span><span class="n">UP</span><span class="p">:</span>
-            <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">x</span>
-            <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">delta</span>
-            <span class="n">update</span> <span class="o">=</span> <span class="bp">True</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">y</span> <span class="o">+=</span> <span class="mi">10</span>
         <span class="k">elif</span> <span class="n">symbol</span> <span class="o">==</span> <span class="n">key</span><span class="p">.</span><span class="n">DOWN</span><span class="p">:</span>
-            <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">x</span>
-            <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">delta</span>
-            <span class="n">update</span> <span class="o">=</span> <span class="bp">True</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">y</span> <span class="o">-=</span> <span class="mi">10</span>
         <span class="k">elif</span> <span class="n">symbol</span> <span class="o">==</span> <span class="n">key</span><span class="p">.</span><span class="n">LEFT</span><span class="p">:</span>
-            <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">delta</span>
-            <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">y</span>
-            <span class="n">update</span> <span class="o">=</span> <span class="bp">True</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">x</span> <span class="o">-=</span> <span class="mi">10</span>
         <span class="k">elif</span> <span class="n">symbol</span> <span class="o">==</span> <span class="n">key</span><span class="p">.</span><span class="n">RIGHT</span><span class="p">:</span>
-            <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">delta</span>
-            <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">y</span>
-            <span class="n">update</span> <span class="o">=</span> <span class="bp">True</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">x</span> <span class="o">+=</span> <span class="mi">10</span>
 
-        <span class="k">if</span> <span class="n">update</span><span class="p">:</span>
-            <span class="bp">self</span><span class="p">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">pyglet</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="n">Label</span><span class="p">(</span>
-                <span class="s">"Hello, world!"</span><span class="p">,</span>
-                <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span>
-                <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
-                <span class="n">anchor_x</span><span class="o">=</span><span class="s">"center"</span><span class="p">,</span>
-                <span class="n">anchor_y</span><span class="o">=</span><span class="s">"center"</span><span class="p">,</span>
-            <span class="p">)</span>
     <span class="c1"># ...
 </span>
 </code></pre></div></div>
 
-<blockquote>
-  <p>On ne se déplace qu’une fois pas appui sur la touche. Pour gérer les déplacement continu, il faut prendre en compte le temps. C’est le boulot de la partie suivante.</p>
-</blockquote>
-
 </div></details>
+
+<p>Avec cette technique, on ne peut se déplacer que d’un cran par appui sur la touche. Pour gérer les déplacements continus, il faut prendre en compte le temps d’appui sur la touche. C’est le boulot de la partie suivante.</p>
 
 <h3 id="gestion-du-temps">gestion du temps</h3>
 
-<p><a href="https://pyglet.readthedocs.io/en/latest/programming_guide/time.html">La gestion du temps</a> se fait également par un événement. Sa mise en place est cependant différentes des événements que l’on a vu jusqu’à présent :</p>
+<p><a href="https://pyglet.readthedocs.io/en/latest/programming_guide/time.html">La gestion du temps</a> se fait également par un événement. Sa mise en place est cependant différente des événements que l’on a vu jusqu’à présent :</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">HelloWorldWindow</span><span class="p">(</span><span class="n">pyglet</span><span class="p">.</span><span class="n">window</span><span class="p">.</span><span class="n">Window</span><span class="p">):</span>
     <span class="c1"># ...
@@ -382,11 +365,20 @@ En revanche, le texte <code class="language-plaintext highlighter-rouge">c'est f
     <span class="c1"># ...
 </span></code></pre></div></div>
 
-<p>Le code suivant va faire en sorte que la méthode <code class="language-plaintext highlighter-rouge">update</code> soit exécutée toute les secondes. Le paramètre <code class="language-plaintext highlighter-rouge">dt</code> donne le nombre de secondes exactes depuis le dernier appel de la fonction. Cela permet de gérer le lag s’il existe.</p>
+<p>Le code précédent fait en sorte que la méthode <code class="language-plaintext highlighter-rouge">update</code> soit exécutée toute les secondes. Le paramètre <code class="language-plaintext highlighter-rouge">dt</code> donne le nombre de secondes exactes depuis le dernier appel de la fonction. Cela permet de gérer le lag s’il existe (remarquez qu’il vaut otujours un peut plus que 1).</p>
 
 <blockquote class="a-faire">
 
   <p>Faites en sorte que le texte avance de 10 pixels toutes les .5s si une touche est appuyée.</p>
+
+  <p>Pour cela on ne va pas modifier la position du label dans <code class="language-plaintext highlighter-rouge">on_key_press</code> mais dans update :</p>
+
+  <ul>
+    <li>créez deux attributs <code class="language-plaintext highlighter-rouge">dx</code> et <code class="language-plaintext highlighter-rouge">dy</code> à notre objet <code class="language-plaintext highlighter-rouge">HelloWorldWindow</code>. Par défaut ces deux attributs vaudront 0</li>
+    <li>à chaque appelle de <code class="language-plaintext highlighter-rouge">update</code>, bougez la position du label de <code class="language-plaintext highlighter-rouge">self.dx</code> et <code class="language-plaintext highlighter-rouge">self.dy</code>
+</li>
+    <li>gérez les valeurs de <code class="language-plaintext highlighter-rouge">self.dx</code> et <code class="language-plaintext highlighter-rouge">self.dy</code> dans <code class="language-plaintext highlighter-rouge">on_key_press</code> et <code class="language-plaintext highlighter-rouge">on_key_release</code> (par exemple <code class="language-plaintext highlighter-rouge">self.dx = -10</code> lorsque l’on appuie sur la flèche gauche et <code class="language-plaintext highlighter-rouge">self.dx = 0</code> lorsque la flèche gauche est relâchée)</li>
+  </ul>
 
 </blockquote>
 <details><summary>solution</summary><div>
@@ -394,51 +386,28 @@ En revanche, le texte <code class="language-plaintext highlighter-rouge">c'est f
 </span>
 <span class="k">class</span> <span class="nc">HelloWorldWindow</span><span class="p">(</span><span class="n">pyglet</span><span class="p">.</span><span class="n">window</span><span class="p">.</span><span class="n">Window</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">().</span><span class="n">__init__</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="s">"texte"</span><span class="p">,</span> <span class="n">resizable</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-
-        <span class="bp">self</span><span class="p">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">pyglet</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="n">Label</span><span class="p">(</span>
-            <span class="s">"Hello, world!"</span><span class="p">,</span>
-            <span class="n">x</span><span class="o">=</span><span class="bp">self</span><span class="p">.</span><span class="n">width</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span>
-            <span class="n">y</span><span class="o">=</span><span class="bp">self</span><span class="p">.</span><span class="n">height</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span>
-            <span class="n">anchor_x</span><span class="o">=</span><span class="s">"center"</span><span class="p">,</span>
-            <span class="n">anchor_y</span><span class="o">=</span><span class="s">"center"</span><span class="p">,</span>
-        <span class="p">)</span>
+        <span class="c1"># ...
+</span>
         <span class="bp">self</span><span class="p">.</span><span class="n">dx</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="bp">self</span><span class="p">.</span><span class="n">dy</span> <span class="o">=</span> <span class="mi">0</span>
 
-        <span class="n">pyglet</span><span class="p">.</span><span class="n">clock</span><span class="p">.</span><span class="n">schedule_interval</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">update</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
-
+        <span class="c1"># ...
+</span>
     <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">dx</span> <span class="o">!=</span> <span class="mi">0</span> <span class="ow">or</span> <span class="bp">self</span><span class="p">.</span><span class="n">dy</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="bp">self</span><span class="p">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">pyglet</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="n">Label</span><span class="p">(</span>
-                <span class="s">"Hello, world!"</span><span class="p">,</span>
-                <span class="n">x</span><span class="o">=</span><span class="bp">self</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="bp">self</span><span class="p">.</span><span class="n">dx</span><span class="p">,</span>
-                <span class="n">y</span><span class="o">=</span><span class="bp">self</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">y</span> <span class="o">+</span> <span class="bp">self</span><span class="p">.</span><span class="n">dy</span><span class="p">,</span>
-                <span class="n">anchor_x</span><span class="o">=</span><span class="s">"center"</span><span class="p">,</span>
-                <span class="n">anchor_y</span><span class="o">=</span><span class="s">"center"</span><span class="p">,</span>
-            <span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">x</span> <span class="o">+=</span> <span class="n">dx</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">y</span> <span class="o">+=</span> <span class="n">dy</span>
 
-    <span class="k">def</span> <span class="nf">on_resize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">().</span><span class="n">on_resize</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
-
-        <span class="bp">self</span><span class="p">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">pyglet</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="n">Label</span><span class="p">(</span>
-            <span class="s">"Hello, world!"</span><span class="p">,</span>
-            <span class="n">x</span><span class="o">=</span><span class="n">width</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span>
-            <span class="n">y</span><span class="o">=</span><span class="n">height</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span>
-            <span class="n">anchor_x</span><span class="o">=</span><span class="s">"center"</span><span class="p">,</span>
-            <span class="n">anchor_y</span><span class="o">=</span><span class="s">"center"</span><span class="p">,</span>
-        <span class="p">)</span>
-
+    <span class="c1"># ...
+</span>
     <span class="k">def</span> <span class="nf">on_key_press</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol</span><span class="p">,</span> <span class="n">modifiers</span><span class="p">):</span>
-        <span class="n">delta</span> <span class="o">=</span> <span class="mi">10</span>
         <span class="k">if</span> <span class="n">symbol</span> <span class="o">==</span> <span class="n">key</span><span class="p">.</span><span class="n">UP</span><span class="p">:</span>
-            <span class="bp">self</span><span class="p">.</span><span class="n">dy</span> <span class="o">=</span> <span class="n">delta</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">dy</span> <span class="o">=</span> <span class="mi">10</span>
         <span class="k">elif</span> <span class="n">symbol</span> <span class="o">==</span> <span class="n">key</span><span class="p">.</span><span class="n">DOWN</span><span class="p">:</span>
-            <span class="bp">self</span><span class="p">.</span><span class="n">dy</span> <span class="o">=</span> <span class="o">-</span><span class="n">delta</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">dy</span> <span class="o">=</span> <span class="o">-</span><span class="mi">10</span>
         <span class="k">elif</span> <span class="n">symbol</span> <span class="o">==</span> <span class="n">key</span><span class="p">.</span><span class="n">LEFT</span><span class="p">:</span>
-            <span class="bp">self</span><span class="p">.</span><span class="n">dx</span> <span class="o">=</span> <span class="o">-</span><span class="n">delta</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">dx</span> <span class="o">=</span> <span class="o">-</span><span class="mi">10</span>
         <span class="k">elif</span> <span class="n">symbol</span> <span class="o">==</span> <span class="n">key</span><span class="p">.</span><span class="n">RIGHT</span><span class="p">:</span>
-            <span class="bp">self</span><span class="p">.</span><span class="n">dx</span> <span class="o">=</span> <span class="o">+</span><span class="n">delta</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">dx</span> <span class="o">=</span> <span class="o">+</span><span class="mi">10</span>
 
     <span class="k">def</span> <span class="nf">on_key_release</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol</span><span class="p">,</span> <span class="n">modifiers</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">symbol</span> <span class="o">==</span> <span class="n">key</span><span class="p">.</span><span class="n">UP</span><span class="p">:</span>
@@ -449,24 +418,23 @@ En revanche, le texte <code class="language-plaintext highlighter-rouge">c'est f
             <span class="bp">self</span><span class="p">.</span><span class="n">dx</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">elif</span> <span class="n">symbol</span> <span class="o">==</span> <span class="n">key</span><span class="p">.</span><span class="n">RIGHT</span><span class="p">:</span>
             <span class="bp">self</span><span class="p">.</span><span class="n">dx</span> <span class="o">=</span> <span class="mi">0</span>
-
-    <span class="k">def</span> <span class="nf">on_draw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">print</span><span class="p">(</span><span class="s">"draw:"</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">get_size</span><span class="p">())</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">clear</span><span class="p">()</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">draw</span><span class="p">()</span>
-
+    
+    <span class="c1"># ...
+</span>
 <span class="c1"># ...
 </span></code></pre></div></div>
 
-<p>On a utilisé deux attributs <code class="language-plaintext highlighter-rouge">dx</code> et <code class="language-plaintext highlighter-rouge">dy</code> qui définisse si on doit bouger ou non. la méthode update met à jour la position du texte.</p>
-
 </div></details>
+
+<p>Avec cette méthode le texte va continuer de se déplacer tant qu’une flèche reste appuyée. On peut même taper plusieurs flèches en même temps pour se déplacer en diagonale (cool, non ?).</p>
+
+<p>Il reste un problème : le texte va sortir de la fenêtre si on reste appuyé trop longtemps. Corrigez ça :</p>
 
 <blockquote class="a-faire">
 
-  <p>Ajoutez à votre code une sentinelle qui empêche les coordonnées <code class="language-plaintext highlighter-rouge">x</code> et <code class="language-plaintext highlighter-rouge">y</code> du label de sortie hors de la fenêtre.</p>
+  <p>Ajoutez à votre code une sentinelle qui empêche les coordonnées <code class="language-plaintext highlighter-rouge">x</code> et <code class="language-plaintext highlighter-rouge">y</code> du label de sortir hors de la fenêtre.</p>
 
-  <p>Les dimensions de la fenêtres sont données par les attributs <code class="language-plaintext highlighter-rouge">width</code> et <code class="language-plaintext highlighter-rouge">height</code>.</p>
+  <p>Les dimensions de la fenêtres sont données par ses attributs <code class="language-plaintext highlighter-rouge">width</code> et <code class="language-plaintext highlighter-rouge">height</code>.</p>
 
 </blockquote>
 <details><summary>solution</summary><div>
@@ -475,14 +443,17 @@ En revanche, le texte <code class="language-plaintext highlighter-rouge">c'est f
     <span class="c1"># ...
 </span>
     <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">dx</span> <span class="o">!=</span> <span class="mi">0</span> <span class="ow">or</span> <span class="bp">self</span><span class="p">.</span><span class="n">dy</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="bp">self</span><span class="p">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">pyglet</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="n">Label</span><span class="p">(</span>
-                <span class="s">"Hello, world!"</span><span class="p">,</span>
-                <span class="n">x</span><span class="o">=</span><span class="nb">max</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="bp">self</span><span class="p">.</span><span class="n">dx</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">width</span><span class="p">),</span> <span class="mi">0</span><span class="p">),</span>
-                <span class="n">y</span><span class="o">=</span><span class="nb">max</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">y</span> <span class="o">+</span> <span class="bp">self</span><span class="p">.</span><span class="n">dy</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">height</span><span class="p">),</span> <span class="mi">0</span><span class="p">),</span>
-                <span class="n">anchor_x</span><span class="o">=</span><span class="s">"center"</span><span class="p">,</span>
-                <span class="n">anchor_y</span><span class="o">=</span><span class="s">"center"</span><span class="p">,</span>
-            <span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">x</span> <span class="o">+=</span> <span class="n">dx</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">x</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="p">.</span><span class="n">width</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">width</span>
+
+        <span class="bp">self</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">y</span> <span class="o">+=</span> <span class="n">dy</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">y</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">y</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="p">.</span><span class="n">height</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">height</span>
     
     <span class="c1"># ...
 </span></code></pre></div></div>
@@ -522,7 +493,7 @@ En revanche, le texte <code class="language-plaintext highlighter-rouge">c'est f
 
 <blockquote class="a-faire">
 
-  <p>En utilisant l’événement <code class="language-plaintext highlighter-rouge">on_mouse_motion(self, x, y, dx, dy)</code> repérez quand la souris rentre et sort du label</p>
+  <p>En utilisant l’événement <code class="language-plaintext highlighter-rouge">on_mouse_motion(self, x, y, dx, dy)</code> repérez quand la souris rentre et sort du label. N’hésitez pas à regarder <a href="https://pyglet.readthedocs.io/en/latest/modules/window.html#pyglet.window.Window.on_mouse_motion">la documentation de l’événement</a> pour comprendre la définition de chaque paramètre.</p>
 
 </blockquote>
 <details><summary>solution</summary><div>
