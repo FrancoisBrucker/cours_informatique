@@ -2,9 +2,9 @@ import pyglet
 from pyglet.window import key
 
 
-class HelloWorldWindow(pyglet.window.Window):
+class Fenetre(pyglet.window.Window):
     def __init__(self):
-        super().__init__(400, 200, "texte", resizable=True)
+        super(self).__init__(400, 200, "texte", resizable=True)
 
         self.label = pyglet.text.Label(
             "Hello, world!",

@@ -221,7 +221,7 @@ Entrée :
     * un flot f admissible
 Initialisation :
     * marquer s par ({}, +∞)
-    * considérer tous les sommet différent d s comme non marqué
+    * considérer tous les sommet différent de s comme non marqué
     * considérer qu'aucun sommet n'est examiné
 Algorithme :
     * tant que p est non marqué et qu'il existe un sommet marqué et non examiné:

@@ -73,7 +73,7 @@ import pyglet
 
 class HelloWorldWindow(pyglet.window.Window):
     def __init__(self):
-        super(HelloWorldWindow, self).__init__(400, 200, "texte")
+        super().__init__(400, 200, "texte")
 
         self.label = pyglet.text.Label("Hello, world!")
 
@@ -114,7 +114,7 @@ import pyglet
 
 class HelloWorldWindow(pyglet.window.Window):
     def __init__(self):
-        super(HelloWorldWindow, self).__init__(400, 200, "texte", resizable=True)
+        super().__init__(400, 200, "texte", resizable=True)
 
         self.label = pyglet.text.Label("Hello, world!")
 
@@ -286,7 +286,7 @@ class HelloWorldWindow(pyglet.window.Window):
     # ...
 
     def __init__(self):
-        super(HelloWorldWindow, self).__init__(400, 200, "texte", resizable=True)
+        super().__init__(400, 200, "texte", resizable=True)
 
         self.label = pyglet.text.Label(
             "Hello, world!",
@@ -318,7 +318,7 @@ Le code suivant va faire en sorte que la méthode `update` soit exécutée toute
 
 class HelloWorldWindow(pyglet.window.Window):
     def __init__(self):
-        super(HelloWorldWindow, self).__init__(400, 200, "texte", resizable=True)
+        super().__init__(400, 200, "texte", resizable=True)
 
         self.label = pyglet.text.Label(
             "Hello, world!",
