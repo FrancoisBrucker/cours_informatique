@@ -1,4 +1,3 @@
-from turtle import update
 import pyglet
 from pyglet.window import key
 
@@ -40,6 +39,36 @@ class HelloWorldWindow(pyglet.window.Window):
             anchor_y="center",
         )
 
+    def on_mouse_press(self, x, y, button, modifiers):
+        print("press:", x, y, button)
+
+        if (abs(self.label.x - x) <= self.label.content_width / 2) and (
+            abs(self.label.y - y) <= self.label.content_height / 2
+        ):
+            print("clique dans le label")
+
+    def on_mouse_release(self, x, y, button, modifiers):
+        print("release:", x, y, button)
+
+        if (abs(self.label.x - x) <= self.label.content_width / 2) and (
+            abs(self.label.y - y) <= self.label.content_height / 2
+        ):
+            print("relâcher le bouton dans le label")
+
+    def on_mouse_motion(self, x, y, dx, dy):
+        if (abs(self.label.x - x) <= self.label.content_width / 2) and (
+            abs(self.label.y - y) <= self.label.content_height / 2
+        ):
+            if (abs(self.label.x - (x - dx)) > self.label.content_width / 2) or (
+                abs(self.label.y - (y - dy)) > self.label.content_height / 2
+            ):
+                print("entre dans label")
+        else:
+            if (abs(self.label.x - (x - dx)) <= self.label.content_width / 2) and (
+                abs(self.label.y - (y - dy)) <= self.label.content_height / 2
+            ):
+                print("sort du label")
+
     def on_key_press(self, symbol, modifiers):
         delta = 10
         if symbol == key.UP:
@@ -62,7 +91,7 @@ class HelloWorldWindow(pyglet.window.Window):
             self.dx = 0
 
     def on_draw(self):
-        print("draw:", self.get_size())
+        # print("draw:", self.get_size())
         self.clear()
         self.label.draw()
 
