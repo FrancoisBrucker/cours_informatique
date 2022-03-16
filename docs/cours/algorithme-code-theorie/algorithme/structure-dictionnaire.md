@@ -332,7 +332,7 @@ On va essayer de répondre à cet exercice de trois façons différentes, toutes
 
 Comme il faut trouver deux indices différents dans la liste $p$ (à $n$ éléments), deux boucles imbriquées allant de $0$ à $n-1$ permettent de balayer tous les couples $(i, j)$ avec $0 \leq i, j < n$.
 
-> Créer cet algorithlme et calculez-en sa complexité.
+> Créer cet algorithme et calculez-en sa complexité.
 {: .a-faire}
 {% details solution %}
 
@@ -394,5 +394,3 @@ def recherche(p):
 ```
 
 {% enddetails %}
-
-

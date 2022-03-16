@@ -22,9 +22,6 @@ Nous utiliserons la bibliothèque [pyglet](http://pyglet.org/) pour ce projet. C
 python -m pip install pyglet
 ```
 
-> installation pyglet
-{: .tbd}
-
 ### structures
 
 > 1. créez un dossier nommé *"arkanoid"* où vous placerez vos fichiers
@@ -235,6 +232,12 @@ Les code des différentes touches est disponible dans l'objet [pyglet.window.key
 {% details solution %}
 
 ```python
+# ...
+
+from pyglet.window import key
+
+# ...
+
 class HelloWorldWindow(pyglet.window.Window):
     # ...
     
@@ -413,16 +416,131 @@ class HelloWorldWindow(pyglet.window.Window):
 
 ### gestion de la souris
 
-> début des collisions
-{: .tbd}
+[Pour gérer la souris](https://pyglet.readthedocs.io/en/latest/programming_guide/mouse.html), comme vous pouvez vous en douter, il s'agit de s'abonner à des événements. Il en existe plusieurs. Commençons par voir ce que ça donne avec les événements `on_mouse_press(x, y, button, modifiers)` et `on_mouse_release(x, y, button, modifiers)` :
 
-## arkanoid
+```python
 
-<http://tisofts.free.fr/pages/arkanoid/Arkanoid.htm>
-<https://www.youtube.com/watch?v=l1E15FOYmKc>
+class HelloWorldWindow(pyglet.window.Window):
+    # ...
 
-> faire un todo
-> y aller petit à petit
-> fixer des objectif de code en 1/2h : classe/tests/programme principal
-> faire une classe ses tests et implémenter le tout.
-{: .tbd}
+    def on_mouse_press(self, x, y, button, modifiers):
+        print("press:", x, y, button)
+
+        if (abs(self.label.x - x) <= self.label.content_width / 2) and (
+            abs(self.label.y - y) <= self.label.content_height / 2
+        ):
+            print("clique dans le label")
+
+    def on_mouse_release(self, x, y, button, modifiers):
+        print("release:", x, y, button)
+
+        if (abs(self.label.x - x) <= self.label.content_width / 2) and (
+            abs(self.label.y - y) <= self.label.content_height / 2
+        ):
+            print("relâcher le bouton dans le label")
+    
+    # ...
+```
+
+Lorsque vous cliquez sur un bouton de la souris puis que vous le relâchez, vous devriez voir affiché à l'écran la position du curseur ainsi que le numéro du bouton de la souris qui a servi à cliquer.
+
+Cerise sur le gâteau, lorsque vous cliquez ou relâchez le bouton de la souris sur le label, cela devrait vous l'indiquer.
+
+>
+> En utilisant l'événement `on_mouse_motion(self, x, y, dx, dy)` repérez quand la souris rentre et sort du label
+>
+{: .a-faire}
+{% details solution %}
+
+```python
+
+class HelloWorldWindow(pyglet.window.Window):
+    # ...
+
+    def on_mouse_motion(self, x, y, dx, dy):
+        if (abs(self.label.x - x) <= self.label.content_width / 2) and (
+            abs(self.label.y - y) <= self.label.content_height / 2
+        ):
+            if (abs(self.label.x - (x - dx)) > self.label.content_width / 2) or (
+                abs(self.label.y - (y - dy)) > self.label.content_height / 2
+            ):
+                print("entre dans label")
+        else:
+            if (abs(self.label.x - (x - dx)) <= self.label.content_width / 2) and (
+                abs(self.label.y - (y - dy)) <= self.label.content_height / 2
+            ):
+                print("sort du label")
+    
+    # ...
+```
+
+{% enddetails %}
+
+## arkanoïd
+
+Le but de ce projet est que vous créiez un jeu de type [Arkanoïd](https://fr.wikipedia.org/wiki/Arkanoid). De nombreuses parties d'arkanoïd existent sur youtube, comme par exemple :
+
+![](https://www.youtube.com/watch?v=Th-Z6QQ5AOQ)
+
+Une partie du jeu est visible. Vous devriez avoir les connaissances nécessaire en pyglet pour vous en sortir.
+
+Pour ne pas passer des heures à coder sans résultats, découpez votre programme en plusieurs parties, toutes réalisables en environ 1/2 heure.
+
+Prenez le temps de modéliser proprement vos objets et classes pour que tout votre programme ne soit qu'une imbrication de classes qui interagissent les unes avec les autres.
+
+Pour chaque classe il faudra bien sur ses tests qui permettent de certifier que les méthodes fonctionnent. Il faut faire en sorte que chaque méthode soit testable sans `pyglet`, juste en simulant une partie.
+
+### entités du projet
+
+A priori, les objets dont vous aurez besoin sont :
+
+* la fenêtre qui gère les différents événements du projet.
+* le vaisseau qui doit pouvoir bouger de gauche à droite sans dépasser les limites de la fenêtre
+* la balle qui doit vérifier à chaque déplacement qu'elle ne touche pas le bord de la fenêtre, une brique ou le vaisseau
+* les briques qui peuvent être détruites par la balle et lâcher un bonus en mourant
+* les bonus qui tombent de l'écran et qui peuvent être récupéré par le vaisseau( s'il y a collision) ou disparaissent en bas de l'écran
+* le score
+* ... ?
+
+> Lister les différentes classes et événements que vous devrez gérer pour mener à bien le projet. et essayer de construire un premier jet du modèle UML du projet. Ce modèle n'a pas besoin d'être précis, il doit servir de guide à votre découpage en tâche.
+{: .a-faire}
+
+### découpage du projet en tâche
+
+Commencez par découper le projet en classes et déterminez leurs attributs et méthodes. Une fois ceci fait, décrivez votre 1ère tâche : quelle fonctionnalité du jeu est la plus simple à créer tout en ayant un jeu fonctionnel (même incomplet)
+
+> chaque tâche doit correspondre à une fonctionnalité que vous ajoutez à votre jeu. Cette tâche doit :
+>
+> * être constituée de méthodes et ou attributs à ajouter à une ou plusieurs classes
+> * aux tests de ces méthodes
+> * à l'ajoute de cette fonctionnalité au programme
+>
+{: .note}
+
+Pour que votre première tâche ne soit pas *"faire un jeu arkanoïd"* on ajoute les contraintes :
+
+> La fonctionnalité doit pouvoir être ajoutée en 1/2 heure.
+{: .note}
+
+Enfin :
+
+> On vous demande de garder dans un fichier markdown les différentes taches que vous avez effectuées avec votre projet.
+{: .a-faire}
+
+Si vous suivez ce principe, toutes les 1/2 heure votre jeu sera plus complet. **Ne passez pas 1 heure à coder quelque chose sans l'utiliser !**
+
+### déroulé
+
+Conservez en plus de votre projet un fichier markdown dans le quel vous décrirez chaque tâche que vous voulez implémenter, ainsi que l'heure de début et l'heure de fin de la tâche. Si vous voyez que votre tâche prend trop de temps à être créer, scindez votre tâche en tâches plus petites. Au bout de quelques tâches vous devriez être rodé.
+
+> Au début de chaque étape :
+>
+> 1. demandez l'aval de votre encadrant avant de commencer l'implémentation de la tâche
+> 2. conservez dans le fichier markdown de votre projet la fonctionnalité que vous allez ajouter
+>
+{: .a-faire}
+
+N'oubliez pas :
+
+> Les tests et l'utilisation de tâches ne fond pas perdre de temps à votre projet, il vous en font **gagner**.
+{: .note}
