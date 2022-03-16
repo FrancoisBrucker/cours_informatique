@@ -4,7 +4,7 @@ from pyglet.window import key
 
 class Fenetre(pyglet.window.Window):
     def __init__(self):
-        super(self).__init__(400, 200, "texte", resizable=True)
+        super().__init__(640, 480, "Arkanoid")
 
         self.label = pyglet.text.Label(
             "Hello, world!",

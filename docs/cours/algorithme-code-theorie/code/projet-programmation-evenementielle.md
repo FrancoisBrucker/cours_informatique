@@ -476,6 +476,11 @@ class HelloWorldWindow(pyglet.window.Window):
 
 {% enddetails %}
 
+### dessiner des formes
+
+> a faire
+{: .tbd}
+
 ## arkanoïd
 
 Le but de ce projet est que vous créiez un jeu de type [Arkanoïd](https://fr.wikipedia.org/wiki/Arkanoid). De nombreuses parties d'arkanoïd existent sur youtube, comme par exemple :
