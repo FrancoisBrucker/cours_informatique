@@ -121,8 +121,7 @@ Au programme :
 #### mercredi {#m-7}
 
 1. [structure : liste]({% link cours/algorithme-code-theorie/algorithme/structure-liste.md %})
-2. [fonctions de hash]({% link cours/algorithme-code-theorie/theorie/fonctions-hash.md %})
-3. [structure : dictionnaire]({% link cours/algorithme-code-theorie/algorithme/structure-dictionnaire.md %})
+2. [fonctions de hash]({% link cours/algorithme-code-theorie/th. [structure : dictionnaire]({% link cours/algorithme-code-theorie/algorithme/structure-dictionnaire.md %})
 
 #### vendredi {#v-7}
 

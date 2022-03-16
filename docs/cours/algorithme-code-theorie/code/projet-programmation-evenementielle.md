@@ -161,7 +161,9 @@ En exécutant le code, le texte est placé au milieu de l'écran ! En revanche, 
 
 >
 > * déduire l'origine de la fenêtre en utilisant le redimensionnement de la fenêtre.
-> * utiliser l'événement `on_resize(width, height)`  pour recréer un nouveau label à la bonne position après chaque redimensionnement (attention, `on_resize` est utilisée par `Window`, n'oubliez pas de l'appeler avec un `super`)
+> * utiliser l’événement `on_resize(width, height)` pour replacer le label à la bonne position après chaque redimensionnement en modifiant ses attributs `x` et `y`.
+>
+> Attention, `on_resize` est utilisée par `Window`, n’oubliez pas de l’appeler avec un `super`.
 >
 {: .a-faire}
 {% details  solution %}
@@ -173,14 +175,8 @@ class HelloWorldWindow(pyglet.window.Window):
 
     def on_resize(self, width, height):
         super().on_resize(width, height)
-
-        self.label = pyglet.text.Label(
-            "Hello, world!",
-            x=width // 2,
-            y=height // 2,
-            anchor_x="center",
-            anchor_y="center",
-        )
+        self.label.x = width // 2
+        self.label.y = height // 2
 
     # ...
 
@@ -195,7 +191,7 @@ La [gestion du clavier sous pyglet](https://pyglet.readthedocs.io/en/latest/prog
 * `on_key_press(symbol, modifiers)` qui s'active lorsque qu'une touche est appuyée
 * `on_key_release(symbol, modifiers)` qui s'active lorsque qu'une touche est relâchée
 
-L'attribut `symbol` est un entier qui correspond au code de la touche et `modifiers` gère les touches comme *shift*, *control* ou encore *alt*.
+Le paramètre `symbol` est un entier qui correspond au code de la touche et `modifiers` gère les touches comme *shift*, *control* ou encore *alt*.
 
 Ajoutons une gestion basique du clavier dans le programme :
 
@@ -213,21 +209,27 @@ class HelloWorldWindow(pyglet.window.Window):
 
 ```
 
-Nous n'avons pas utilisé `super` pour appeler la méthode de la classe mère, car `Window` ne gère pas le clavier par défaut.
+Nous n'avons pas utilisé de `super` pour appeler la méthode de la classe mère, car `Window` ne gère pas le clavier par défaut.
 
-> Exécutez le code et remarquez :
+> Exécutez le code précédent et remarquez :
 >
 > * que chaque touche a bien un code, ainsi que les touche de modfication
 > * shift gauche et shift droit sont indiscernables
 > * qu'après chaque touche appuyée ou relâchée l'évènement `on_draw` est lancé
+> * que même si on laisse appuyé la touche longtemps, il n'y a qu'un seul événement `on_key_press` qui est lancé.
 >
 {: .a-faire}
 
 #### flèches gauche et droite
 
-Les code des différentes touches est disponible dans l'objet [pyglet.window.key](https://pyglet.readthedocs.io/en/latest/modules/window_key.html#module-pyglet.window.key).
+Les code des différentes touches est disponible dans l'objet [pyglet.window.key](https://pyglet.readthedocs.io/en/latest/modules/window_key.html#module-pyglet.window.key). Chaque touche est une constante dont le nom correspond à la la touche et sa valeur au code. Par exemple, la constante `pyglet.window.key.SPACE` correspond au nombre 32.
 
-> En utilisant le fait que les deux attributs `x` et `y` contiennent la position du label : déplacez le texte en utilisant les touches de déplacement du clavier.
+> Vérifiez qe lorsque vous appuyez sur la touche espace de votre clavier, c'est bien le symbole 32 qui et affiché
+{: .a-faire}
+
+Nous allons mainteannt faire bouger d'un cran notre texte lorsque l'on appuye sur les touches "flèche gauche" et "flèche droite".
+
+> En utilisant le fait que les deux attributs `x` et `y` contiennent la position du label : faite en sorte que lorsque l'on appuye sur une flèche du clavier (le nom des constantes de  `pyglet.window.key` correspondant aux fléches sont disponible [là](https://pyglet.readthedocs.io/en/latest/modules/window_key.html#cursor-control-and-motion)), le texte se déplace de 10pixel vers la direction de la flèche.
 {: .a-faire}
 {% details solution %}
 
@@ -242,44 +244,26 @@ class HelloWorldWindow(pyglet.window.Window):
     # ...
     
     def on_key_press(self, symbol, modifiers):
-        delta = 10
-        update = False
         if symbol == key.UP:
-            x = self.label.x
-            y = self.label.y + delta
-            update = True
+            self.label.y += 10
         elif symbol == key.DOWN:
-            x = self.label.x
-            y = self.label.y - delta
-            update = True
+            self.label.y -= 10
         elif symbol == key.LEFT:
-            x = self.label.x - delta
-            y = self.label.y
-            update = True
+            self.label.x -= 10
         elif symbol == key.RIGHT:
-            x = self.label.x + delta
-            y = self.label.y
-            update = True
+            self.label.x += 10
 
-        if update:
-            self.label = pyglet.text.Label(
-                "Hello, world!",
-                x=x,
-                y=y,
-                anchor_x="center",
-                anchor_y="center",
-            )
     # ...
 
 ```
 
-> On ne se déplace qu'une fois pas appui sur la touche. Pour gérer les déplacement continu, il faut prendre en compte le temps. C'est le boulot de la partie suivante.
-
 {% enddetails %}
+
+Avec cette technique, on ne peut se déplacer que d'un cran par appui sur la touche. Pour gérer les déplacements continus, il faut prendre en compte le temps d'appui sur la touche. C'est le boulot de la partie suivante.
 
 ### gestion du temps
 
-[La gestion du temps](https://pyglet.readthedocs.io/en/latest/programming_guide/time.html) se fait également par un événement. Sa mise en place est cependant différentes des événements que l'on a vu jusqu'à présent :
+[La gestion du temps](https://pyglet.readthedocs.io/en/latest/programming_guide/time.html) se fait également par un événement. Sa mise en place est cependant différente des événements que l'on a vu jusqu'à présent :
 
 ```python
 class HelloWorldWindow(pyglet.window.Window):
@@ -305,10 +289,16 @@ class HelloWorldWindow(pyglet.window.Window):
     # ...
 ```
 
-Le code suivant va faire en sorte que la méthode `update` soit exécutée toute les secondes. Le paramètre `dt` donne le nombre de secondes exactes depuis le dernier appel de la fonction. Cela permet de gérer le lag s'il existe.
+Le code précédent fait en sorte que la méthode `update` soit exécutée toute les secondes. Le paramètre `dt` donne le nombre de secondes exactes depuis le dernier appel de la fonction. Cela permet de gérer le lag s'il existe (remarquez qu'il vaut otujours un peut plus que 1).
 
 >
 > Faites en sorte que le texte avance de 10 pixels toutes les .5s si une touche est appuyée.
+>
+> Pour cela on ne va pas modifier la position du label dans `on_key_press` mais dans update :
+>
+> * créez deux attributs `dx` et `dy` à notre objet `HelloWorldWindow`. Par défaut ces deux attributs vaudront 0
+> * à chaque appelle de `update`, bougez la position du label de `self.dx` et `self.dy`
+> * gérez les valeurs de `self.dx` et `self.dy` dans `on_key_press` et `on_key_release` (par exemple `self.dx = -10` lorsque l'on appuie sur la flèche gauche et `self.dx = 0` lorsque la flèche gauche est relâchée)
 >
 {: .a-faire}
 {% details solution %}
@@ -318,51 +308,28 @@ Le code suivant va faire en sorte que la méthode `update` soit exécutée toute
 
 class HelloWorldWindow(pyglet.window.Window):
     def __init__(self):
-        super().__init__(400, 200, "texte", resizable=True)
+        # ...
 
-        self.label = pyglet.text.Label(
-            "Hello, world!",
-            x=self.width // 2,
-            y=self.height // 2,
-            anchor_x="center",
-            anchor_y="center",
-        )
         self.dx = 0
         self.dy = 0
 
-        pyglet.clock.schedule_interval(self.update, 0.5)
+        # ...
 
     def update(self, dt):
-        if self.dx != 0 or self.dy != 0:
-            self.label = pyglet.text.Label(
-                "Hello, world!",
-                x=self.label.x + self.dx,
-                y=self.label.y + self.dy,
-                anchor_x="center",
-                anchor_y="center",
-            )
+        self.label.x += dx
+        self.label.y += dy
 
-    def on_resize(self, width, height):
-        super().on_resize(width, height)
-
-        self.label = pyglet.text.Label(
-            "Hello, world!",
-            x=width // 2,
-            y=height // 2,
-            anchor_x="center",
-            anchor_y="center",
-        )
+    # ...
 
     def on_key_press(self, symbol, modifiers):
-        delta = 10
         if symbol == key.UP:
-            self.dy = delta
+            self.dy = 10
         elif symbol == key.DOWN:
-            self.dy = -delta
+            self.dy = -10
         elif symbol == key.LEFT:
-            self.dx = -delta
+            self.dx = -10
         elif symbol == key.RIGHT:
-            self.dx = +delta
+            self.dx = +10
 
     def on_key_release(self, symbol, modifiers):
         if symbol == key.UP:
@@ -373,23 +340,22 @@ class HelloWorldWindow(pyglet.window.Window):
             self.dx = 0
         elif symbol == key.RIGHT:
             self.dx = 0
-
-    def on_draw(self):
-        print("draw:", self.get_size())
-        self.clear()
-        self.label.draw()
+    
+    # ...
 
 # ...
 ```
 
-On a utilisé deux attributs `dx` et `dy` qui définisse si on doit bouger ou non. la méthode update met à jour la position du texte.
-
 {% enddetails %}
 
+Avec cette méthode le texte va continuer de se déplacer tant qu'une flèche reste appuyée. On peut même taper plusieurs flèches en même temps pour se déplacer en diagonale (cool, non ?).
+
+Il reste un problème : le texte va sortir de la fenêtre si on reste appuyé trop longtemps. Corrigez ça :
+
 >
-> Ajoutez à votre code une sentinelle qui empêche les coordonnées `x` et `y` du label de sortie hors de la fenêtre. 
+> Ajoutez à votre code une sentinelle qui empêche les coordonnées `x` et `y` du label de sortir hors de la fenêtre.
 >
-> Les dimensions de la fenêtres sont données par les attributs `width` et `height`.
+> Les dimensions de la fenêtres sont données par ses attributs `width` et `height`.
 >
 {: .a-faire}
 {% details solution %}
@@ -400,14 +366,17 @@ class HelloWorldWindow(pyglet.window.Window):
     # ...
 
     def update(self, dt):
-        if self.dx != 0 or self.dy != 0:
-            self.label = pyglet.text.Label(
-                "Hello, world!",
-                x=max(min(self.label.x + self.dx, self.width), 0),
-                y=max(min(self.label.y + self.dy, self.height), 0),
-                anchor_x="center",
-                anchor_y="center",
-            )
+        self.label.x += dx
+        if self.label.x < 0:
+            self.label.x = 0
+        elif self.label.x > self.width:
+            self.label.x = self.width
+
+        self.label.y += dy
+        if self.label.y < 0:
+            self.label.y = 0
+        elif self.label.y > self.height:
+            self.label.y = self.height
     
     # ...
 ```
@@ -447,7 +416,7 @@ Lorsque vous cliquez sur un bouton de la souris puis que vous le relâchez, vous
 Cerise sur le gâteau, lorsque vous cliquez ou relâchez le bouton de la souris sur le label, cela devrait vous l'indiquer.
 
 >
-> En utilisant l'événement `on_mouse_motion(self, x, y, dx, dy)` repérez quand la souris rentre et sort du label
+> En utilisant l'événement `on_mouse_motion(self, x, y, dx, dy)` repérez quand la souris rentre et sort du label. N'hésitez pas à regarder [la documentation de l'événement](https://pyglet.readthedocs.io/en/latest/modules/window.html#pyglet.window.Window.on_mouse_motion) pour comprendre la définition de chaque paramètre.
 >
 {: .a-faire}
 {% details solution %}

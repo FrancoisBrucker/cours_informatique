@@ -19,25 +19,23 @@ class HelloWorldWindow(pyglet.window.Window):
         pyglet.clock.schedule_interval(self.update, 0.5)
 
     def update(self, dt):
-        if self.dx != 0 or self.dy != 0:
-            self.label = pyglet.text.Label(
-                "Hello, world!",
-                x=max(min(self.label.x + self.dx, self.width), 0),
-                y=max(min(self.label.y + self.dy, self.height), 0),
-                anchor_x="center",
-                anchor_y="center",
-            )
+        self.label.x += self.dx
+        if self.label.x < 0:
+            self.label.x = 0
+        elif self.label.x > self.width:
+            self.label.x = self.width
+
+        self.label.y += self.dy
+        if self.label.y < 0:
+            self.label.y = 0
+        elif self.label.y > self.height:
+            self.label.y = self.height
 
     def on_resize(self, width, height):
         super().on_resize(width, height)
 
-        self.label = pyglet.text.Label(
-            "Hello, world!",
-            x=width // 2,
-            y=height // 2,
-            anchor_x="center",
-            anchor_y="center",
-        )
+        self.label.x = width // 2
+        self.label.y = height // 2
 
     def on_mouse_press(self, x, y, button, modifiers):
         print("press:", x, y, button)
