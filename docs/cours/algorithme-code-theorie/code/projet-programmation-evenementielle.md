@@ -447,8 +447,68 @@ class HelloWorldWindow(pyglet.window.Window):
 
 ### dessiner des formes
 
-> a faire
-{: .tbd}
+[La documentation](https://pyglet.readthedocs.io/en/latest/programming_guide/shapes.html) permet de voir que l'on peut facilement dessiner des cercle ou des rectangles en pyglet.
+
+De façon générale, la gestion des graphique en `pyglet` se fait directement en opengl, ce qui dépasse de loin le cadre de ce cours (même si c'est chouette de parler directement à la carte graphique). Nous allons donc uniquement nous restreindre au dessin d'un cercle et d'un rectangle ce qui sera suffisant pour notre projet.
+
+Fichier : *"arkanoid/essais-pyglet/forme.py"* :
+
+```python
+import pyglet
+from pyglet import shapes
+from pyglet.window import mouse
+
+
+class Formes(pyglet.window.Window):
+    def __init__(self):
+        super().__init__(640, 480, "formes")
+
+        self.rectangle = shapes.Rectangle(200, 200, 200, 200, color=(55, 55, 255))
+        self.circle = shapes.Circle(0, 0, 50, color=(255, 0, 0))
+        self.circle.opacity = 128
+
+        self.drag = False
+
+    def on_mouse_press(self, x, y, button, modifiers):
+        if button == mouse.LEFT and (
+            (self.circle.x - x) ** 2 + (self.circle.y - y) ** 2 <= self.circle.radius ** 2
+        ):
+            self.drag = True
+
+    def on_mouse_release(self, x, y, button, modifiers):
+        if button == mouse.LEFT:
+            self.drag = False
+
+    def on_mouse_drag(self, x, y, dx, dy, buttons, modifiers):
+        if self.drag:
+            self.circle.x += dx
+            self.circle.y += dy
+
+    def on_draw(self):
+        self.clear()
+
+        self.rectangle.draw()
+        self.circle.draw()
+
+
+forme = Formes()
+
+pyglet.app.run()
+print("c'est fini !")
+```
+
+> Testez l'exemple ci-dessus et comprenez ce qu'il fait.
+{: .a-faire}
+
+Les couleurs sont décrites au [format RGB](https://fr.wikipedia.org/wiki/Rouge_vert_bleu) sous la forme de 3 entiers allant de 0 à 255 en base 10 :
+
+* le premier décrit la composante rouge
+* le second la composante verte
+* le dernier la composante bleue
+
+On a souvent coutume (dans le monde du web par exemple) de représenter ces 3 nombres par un nombre hexadécimal de 6 chiffres (2 par composante, chaque composante étant codée par un nombre allant de 00 à FF). Par exemple, le nombre `#F58318` correspond à la couleur ayant F5 en rouge, 83 en vert et 18 en bleu. Ce qui en python donne avec un tuple de 3 coordonnées : `(0xF5, 0x83, 0x18)`, ou `(245, 131, 24)` en base 10.
+
+> Pour gérer et trouver des couleurs sympathiques, utilisez une roue des couleurs, comme [celle d'adobe](https://color.adobe.com/fr/create/color-wheel) par exemple.
 
 ## arkanoïd
 
