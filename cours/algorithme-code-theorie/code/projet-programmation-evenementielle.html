@@ -522,8 +522,71 @@ En revanche, le texte <code class="language-plaintext highlighter-rouge">c'est f
 
 <h3 id="dessiner-des-formes">dessiner des formes</h3>
 
-<blockquote class="tbd">
-  <p>a faire</p>
+<p><a href="https://pyglet.readthedocs.io/en/latest/programming_guide/shapes.html">La documentation</a> permet de voir que l’on peut facilement dessiner des cercle ou des rectangles en pyglet.</p>
+
+<p>De façon générale, la gestion des graphique en <code class="language-plaintext highlighter-rouge">pyglet</code> se fait directement en opengl, ce qui dépasse de loin le cadre de ce cours (même si c’est chouette de parler directement à la carte graphique). Nous allons donc uniquement nous restreindre au dessin d’un cercle et d’un rectangle ce qui sera suffisant pour notre projet.</p>
+
+<p>Fichier : <em>“arkanoid/essais-pyglet/forme.py”</em> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pyglet</span>
+<span class="kn">from</span> <span class="nn">pyglet</span> <span class="kn">import</span> <span class="n">shapes</span>
+<span class="kn">from</span> <span class="nn">pyglet.window</span> <span class="kn">import</span> <span class="n">mouse</span>
+
+
+<span class="k">class</span> <span class="nc">Formes</span><span class="p">(</span><span class="n">pyglet</span><span class="p">.</span><span class="n">window</span><span class="p">.</span><span class="n">Window</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">().</span><span class="n">__init__</span><span class="p">(</span><span class="mi">640</span><span class="p">,</span> <span class="mi">480</span><span class="p">,</span> <span class="s">"formes"</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="p">.</span><span class="n">rectangle</span> <span class="o">=</span> <span class="n">shapes</span><span class="p">.</span><span class="n">Rectangle</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">55</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">255</span><span class="p">))</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">circle</span> <span class="o">=</span> <span class="n">shapes</span><span class="p">.</span><span class="n">Circle</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">circle</span><span class="p">.</span><span class="n">opacity</span> <span class="o">=</span> <span class="mi">128</span>
+
+        <span class="bp">self</span><span class="p">.</span><span class="n">drag</span> <span class="o">=</span> <span class="bp">False</span>
+
+    <span class="k">def</span> <span class="nf">on_mouse_press</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">button</span><span class="p">,</span> <span class="n">modifiers</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">button</span> <span class="o">==</span> <span class="n">mouse</span><span class="p">.</span><span class="n">LEFT</span> <span class="ow">and</span> <span class="p">(</span>
+            <span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">circle</span><span class="p">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">circle</span><span class="p">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="p">.</span><span class="n">circle</span><span class="p">.</span><span class="n">radius</span> <span class="o">**</span> <span class="mi">2</span>
+        <span class="p">):</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">drag</span> <span class="o">=</span> <span class="bp">True</span>
+
+    <span class="k">def</span> <span class="nf">on_mouse_release</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">button</span><span class="p">,</span> <span class="n">modifiers</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">button</span> <span class="o">==</span> <span class="n">mouse</span><span class="p">.</span><span class="n">LEFT</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">drag</span> <span class="o">=</span> <span class="bp">False</span>
+
+    <span class="k">def</span> <span class="nf">on_mouse_drag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">,</span> <span class="n">buttons</span><span class="p">,</span> <span class="n">modifiers</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">drag</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">circle</span><span class="p">.</span><span class="n">x</span> <span class="o">+=</span> <span class="n">dx</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">circle</span><span class="p">.</span><span class="n">y</span> <span class="o">+=</span> <span class="n">dy</span>
+
+    <span class="k">def</span> <span class="nf">on_draw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">clear</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="p">.</span><span class="n">rectangle</span><span class="p">.</span><span class="n">draw</span><span class="p">()</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">circle</span><span class="p">.</span><span class="n">draw</span><span class="p">()</span>
+
+
+<span class="n">forme</span> <span class="o">=</span> <span class="n">Formes</span><span class="p">()</span>
+
+<span class="n">pyglet</span><span class="p">.</span><span class="n">app</span><span class="p">.</span><span class="n">run</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"c'est fini !"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<blockquote class="a-faire">
+  <p>Testez l’exemple ci-dessus et comprenez ce qu’il fait.</p>
+</blockquote>
+
+<p>Les couleurs sont décrites au <a href="https://fr.wikipedia.org/wiki/Rouge_vert_bleu">format RGB</a> sous la forme de 3 entiers allant de 0 à 255 en base 10 :</p>
+
+<ul>
+  <li>le premier décrit la composante rouge</li>
+  <li>le second la composante verte</li>
+  <li>le dernier la composante bleue</li>
+</ul>
+
+<p>On a souvent coutume (dans le monde du web par exemple) de représenter ces 3 nombres par un nombre hexadécimal de 6 chiffres (2 par composante, chaque composante étant codée par un nombre allant de 00 à FF). Par exemple, le nombre <code class="language-plaintext highlighter-rouge">#F58318</code> correspond à la couleur ayant F5 en rouge, 83 en vert et 18 en bleu. Ce qui en python donne avec un tuple de 3 coordonnées : <code class="language-plaintext highlighter-rouge">(0xF5, 0x83, 0x18)</code>, ou <code class="language-plaintext highlighter-rouge">(245, 131, 24)</code> en base 10.</p>
+
+<blockquote>
+  <p>Pour gérer et trouver des couleurs sympathiques, utilisez une roue des couleurs, comme <a href="https://color.adobe.com/fr/create/color-wheel">celle d’adobe</a> par exemple.</p>
 </blockquote>
 
 <h2 id="arkanoïd">arkanoïd</h2>
