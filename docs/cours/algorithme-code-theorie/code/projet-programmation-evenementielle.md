@@ -576,5 +576,183 @@ Conservez en plus de votre projet un fichier markdown dans le quel vous décrire
 
 N'oubliez pas :
 
-> Les tests et l'utilisation de tâches ne fond pas perdre de temps à votre projet, il vous en font **gagner**.
+> Les tests et l'utilisation de tâches ne font pas perdre de temps à votre projet, il en font **gagner**.
 {: .attention}
+
+## exemple de déroulé
+
+Pour débuter le projet, si vous n'avez pas d'idée de déroulé, vous pouvez suivre celui-ci. Il vous mènera jusqu'au début de l'implémentation des briques.
+
+Ici nous créerons une classe `Fenetre` qui contiendra notre interface. On ne testera pas l'interface (donc la classe `Fenetre`), mais tout le reste devra être testé.
+
+### tâche 1
+
+Création d'une fenêtre de 640x480 non redimensionnable avec :
+
+* un label du nombre de vie (2 par défaut), en bas à gauche
+* un label avec le score (0 par défaut), en haut à droite
+
+![fenêtre](./assets/arkanoid/tache-1.png)
+
+Vous créerez une classe `Fenetre` héritant de `pyglet.window.Window` contenant les différents contenus. Votre programme principal consistera à créer un objet de la classe `Fenetre` et d'exécuter pyglet avec la commande : `pyglet.app.run()`.
+
+### tâche 2
+
+* ajout du sol : une [ligne pyglet](https://pyglet.readthedocs.io/en/latest/modules/shapes.html#pyglet.shapes.Line) à hauteur $50$
+* ajout du plafond : une [ligne pyglet](https://pyglet.readthedocs.io/en/latest/modules/shapes.html#pyglet.shapes.Line) à hauteur $480-50$
+* ajout du vaisseau :
+  * doit être placé sur le sol
+  * un rectangle (de hauteur 20 et de longueur 50) de couleur #47B6FF
+
+![fenêtre aire de jeu](./assets/arkanoid/tache-2.png)
+
+### tâche 3
+
+Faire déplacer le vaisseau de gauche à droite sans cogner les bords.
+
+Comme la gestion des déplacement doit être interne au vaisseau, il faut qu'il puisse avoir sa classe à lui. On va donc réaliser cette tâche en 2 temps.
+
+#### tache 3.1
+
+Création de la classe :
+
+* classe : `Vaisseau` (dans le fichier *"vaisseau.py"*)
+* attributs :
+  * `forme` un [rectangle pyglet](https://pyglet.readthedocs.io/en/latest/modules/shapes.html#pyglet.shapes.Rectangle) de longueur 50, de hauteur 20, initialement placé au centre de la fenêtre
+* méthode :
+  * `__init__(sol, largeur_fenetre)` : position du sol et largeur de la fenêtre de jeu
+  * `draw()`
+
+Les tests du vaisseau seront fait dans le fichier *"arkanoid/test_vaisseau.py"*. Pour commencer les tests de cette classe, vous pourrez vérifier que le vaisseau est bien initialement placé au centre de la fenêtre en comparant :
+
+* la valeur de `vaisseau.forme.x` à sa valeur théorique selon la taille de l'écran.
+* la valeur de `vaisseau.forme.y` à la hauteur du sol
+
+#### tâche 3.2
+
+Ajout des méthodes et des attributs permettant de déplacer le vaisseau.
+
+Il nous faut côté `Fenetre` :
+
+1. modifier la classe fenêtre pour qu'elle prenne en compte les touches "flèche gauche" et "flèche droite"
+2. que l'on change la position du vaisseau à au plus 60 fps (tous les 1/60 secondes)
+
+On doit gérer les mouvement côté `Vaisseau` en ajoutant :
+
+* un attribut `vitesse` qui donne le déplacement en pixel par seconde (500 pixel/s)
+* une méthode `bouge(dt, direction)` qui déplace le curseur selon :
+  * la direction (-1 à gauche, 0 on ne bouge pas et +1 à droite)
+  * par défaut le déplacement sera de sa vitesse fois `dt` sauf si cela le fait dépasser l'écran à gauche ou à droite et dans ce cas là le vaisseau est collé au bord
+
+Pour tester la méthode `bouge` vous pourrez faire 4 tests :
+
+* `test_bouge_droite()` : qui vérifie que la position change bien lorsque l'on  veut se déplacer à droite
+* `test_bouge_gauche()` : qui vérifie que la position change bien lorsque l'on  veut se déplacer à gauche
+* `test_bouge_negatif()` : qui vérifie que l'on se cogne bien au bord gauche de l'écran
+* `test_bouge_depasse_taille()` : qui vérifie que l'on se cogne bien au bord droit de l'écran
+
+Pour faire passer ces tests, vous pourrez modifier à la main les différents paramètres comme la vitesse (`vaisseau.vitesse`) ou la position du vaisseau (`vaisseau.forme.x`) pour que votre test soit facile à écrire.
+
+> Félicitations, votre programme doit pouvoir faire bouger le vaisseau ! Vérifiez le.
+
+### tâche 4
+
+Création et gestion de la bille :
+
+* La bille apparaît au milieu de l'écran avec une vitesse initiale.
+* si elle passe sous le sol, on perd une vie
+* à 0 vie, elle réapparait avec une vitesse nulle
+* elle rebondit (selon la normale de la surface) sur :
+  * 3 bords de l'écran sur 4
+  * sur le vaisseau
+
+POur réaliser tout ça on va travailler par morceaux.
+
+#### tache 4.1
+
+Création d'une bille et de ses bornes de jeu. Pour cela, il nous faut commencer à créer une classe bille avec un cercle comme dessin.
+
+Création de la classe :
+
+* classe : `Bille` (dans le fichier *"bille.py"*)
+* attributs :
+  * `forme` un [cercle pyglet](https://pyglet.readthedocs.io/en/latest/modules/shapes.html#pyglet.shapes.Circle) de rayon 5, initialement placé au centre de la fenêtre
+* méthode :
+  * `__init__(hauteur_sol, hauteur_plafond, largeur_fenetre)` : position du sol, hauteur du plafond et largeur de la fenêtre de jeu pour déterminer les bornes de déplacement possible de la bille
+  * `draw()`
+
+Les tests de la bille seront fait dans le fichier *"arkanoid/test_bille.py"*. Testez que la position initiale de la bille est bien correcte.
+
+Ajoutez la bille à l'interface :
+
+![bille](./assets/arkanoid/tache-41.png)
+
+#### tâche 4.2
+
+Ajoutons une première version du déplacement de la bille :
+
+* ajoutez un attribut `vitesse` qui est un vecteur à 2 dimension à la classe `Bille`
+* ajoutez une méthode : `bouge(dt)` qui déplacera la bille selon son vecteur vitesse. Pour l'instant ne prenez pas en compte les contraintes des bords et du vaisseau
+
+Les tests de la bille seront fait dans le fichier *"arkanoid/test_bille.py"*. Pour tester la méthode `bouge`, vous pourrez faire 1 test `test_bouge()` qui vérifie que pour `dt=2` et une vitesse `(2, 5)`, le déplacement de la bille est bien correct. N'hésitez pas à changer directement les attributs dans votre test.
+
+Ajoutez la bille dans le jeu, avec une vitesse initiale de (0, -1)
+
+#### tâche 4.3
+
+Ajoutons le fait que si la bille sort de la fenêtre par le bas (sa position `y` est inférieure à la hauteur du sol),  elle réapparait au milieu de l'écran avec la même vitesse.
+
+Testez cette fonctionnalité.
+
+#### tâche 4.4
+
+Faite maintenant rebondir la bille sur les murs. Cela peut se faire en changeant la direction d'une des coordonnées du vecteur vitesse (cette coordonnée change selon le mur) dans `update` si la bille devait dépasser le mur.
+
+Testez ces fonctionnalités avec un test par mur en :
+
+1. vous plaçant juste avant l'impact
+2. effectuez une méthode `update`
+3. vérifier que la vitesse de la  bille a bien changé et que sa position est bien à nouveau dans les bornes de la fenêtre.
+
+### tâche 5
+
+Le vaisseau doit se comporter comme un mur lorsque la bille le touche. Pour cela il faut gérer les collisions entre éléments du jeu.
+
+Nous allons gérer ceci en plusieurs temps.
+
+#### tâche 5.1
+
+Ajoutez une méthode `collision(bille)` au Vaisseau. Cette méthode doit répondre `True` si la bille touche le vaisseau, et `False` sinon (il faut que le centre de la bille soit dans le rectangle du vaisseau augmenté du rayon de la bille).
+
+Testez cette méthode.
+
+#### tâche 5.2
+
+Après la mise à jour des position dans la méthode `update`, testez s'il y a collision entre la bille et le vaisseau. Si oui, faite rebondir la bille.
+
+### tache 6
+
+Gestion de la vie et du score.
+
+#### tâche 6.1
+
+Lorsqu'il y a collision entre le vaisseau et la bille, le score augmente de 1.
+
+#### tâche 6.2
+
+Lorsque la la bille tombe dans le sol, on l'a faite réapparaitre au milieu de l'écran avec la même vitesse (tâche 4.3).
+
+Pour gérer facilement la vie vous pouvez :
+
+* faire réapparaitre la bille avec une position nulle
+* après la mise à our des positions, si la vitesse de la bille est nulle c'est que l'on est mort. Décrémentez alors le nombre de vie. Si ce nombre reste positif, redonner de la vitesse à la bille.
+
+### tâche 7
+
+> une brique
+{: .tbd}
+
+### tâche 8
+
+> des briques
+{: .tbd}
