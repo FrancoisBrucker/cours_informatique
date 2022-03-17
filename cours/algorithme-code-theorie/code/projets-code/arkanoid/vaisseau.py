@@ -33,3 +33,15 @@ class Vaisseau:
 
     def draw(self):
         self.forme.draw()
+
+    def collision(self, bille):
+        if (bille.forme.x < self.forme.x - bille.forme.radius):
+            return False
+
+        if (bille.forme.x > self.forme.x + self.forme.width + bille.forme.radius):
+            return False
+
+        if (bille.forme.y > self.forme.y + self.forme.height + bille.forme.radius):
+            return False
+
+        return True
