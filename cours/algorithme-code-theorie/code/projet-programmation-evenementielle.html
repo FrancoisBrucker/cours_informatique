@@ -290,7 +290,7 @@ En revanche, le texte <code class="language-plaintext highlighter-rouge">c'est f
 
   <ul>
     <li>que chaque touche a bien un code, ainsi que les touche de modfication</li>
-    <li>shift gauche et shift droit sont indiscernables</li>
+    <li>shift gauche et shift droit sont discernables</li>
     <li>qu’après chaque touche appuyée ou relâchée l’évènement <code class="language-plaintext highlighter-rouge">on_draw</code> est lancé</li>
     <li>que même si on laisse appuyé la touche longtemps, il n’y a qu’un seul événement <code class="language-plaintext highlighter-rouge">on_key_press</code> qui est lancé.</li>
   </ul>
@@ -394,8 +394,8 @@ En revanche, le texte <code class="language-plaintext highlighter-rouge">c'est f
         <span class="c1"># ...
 </span>
     <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">x</span> <span class="o">+=</span> <span class="n">dx</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">y</span> <span class="o">+=</span> <span class="n">dy</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">x</span> <span class="o">+=</span> <span class="bp">self</span><span class="p">.</span><span class="n">dx</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">y</span> <span class="o">+=</span> <span class="bp">self</span><span class="p">.</span><span class="n">dy</span>
 
     <span class="c1"># ...
 </span>
@@ -443,13 +443,13 @@ En revanche, le texte <code class="language-plaintext highlighter-rouge">c'est f
     <span class="c1"># ...
 </span>
     <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">x</span> <span class="o">+=</span> <span class="n">dx</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">x</span> <span class="o">+=</span> <span class="bp">self</span><span class="p">.</span><span class="n">dx</span>
         <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="bp">self</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">elif</span> <span class="bp">self</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">x</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="p">.</span><span class="n">width</span><span class="p">:</span>
             <span class="bp">self</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">width</span>
 
-        <span class="bp">self</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">y</span> <span class="o">+=</span> <span class="n">dy</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">y</span> <span class="o">+=</span> <span class="bp">self</span><span class="p">.</span><span class="n">dy</span>
         <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">y</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="bp">self</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">elif</span> <span class="bp">self</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">y</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="p">.</span><span class="n">height</span><span class="p">:</span>
