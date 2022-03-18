@@ -213,7 +213,7 @@ Nous n'avons pas utilisé de `super` pour appeler la méthode de la classe mère
 
 > Exécutez le code précédent et remarquez :
 >
-> * que chaque touche a bien un code, ainsi que les touche de modfication
+> * que chaque touche a bien un code, ainsi que les touche de modification
 > * shift gauche et shift droit sont discernables
 > * qu'après chaque touche appuyée ou relâchée l'évènement `on_draw` est lancé
 > * que même si on laisse appuyé la touche longtemps, il n'y a qu'un seul événement `on_key_press` qui est lancé.
@@ -224,12 +224,12 @@ Nous n'avons pas utilisé de `super` pour appeler la méthode de la classe mère
 
 Les code des différentes touches est disponible dans l'objet [pyglet.window.key](https://pyglet.readthedocs.io/en/latest/modules/window_key.html#module-pyglet.window.key). Chaque touche est une constante dont le nom correspond à la la touche et sa valeur au code. Par exemple, la constante `pyglet.window.key.SPACE` correspond au nombre 32.
 
-> Vérifiez qe lorsque vous appuyez sur la touche espace de votre clavier, c'est bien le symbole 32 qui et affiché
+> Vérifiez que lorsque vous appuyez sur la touche espace de votre clavier, c'est bien le symbole 32 qui et affiché
 {: .a-faire}
 
-Nous allons mainteannt faire bouger d'un cran notre texte lorsque l'on appuye sur les touches "flèche gauche" et "flèche droite".
+Nous allons maintenant faire bouger d'un cran notre texte lorsque l'on appuie sur les touches "flèche gauche" et "flèche droite".
 
-> En utilisant le fait que les deux attributs `x` et `y` contiennent la position du label : faite en sorte que lorsque l'on appuye sur une flèche du clavier (le nom des constantes de  `pyglet.window.key` correspondant aux fléches sont disponible [là](https://pyglet.readthedocs.io/en/latest/modules/window_key.html#cursor-control-and-motion)), le texte se déplace de 10pixel vers la direction de la flèche.
+> En utilisant le fait que les deux attributs `x` et `y` contiennent la position du label : faite en sorte que lorsque l'on appuie sur une flèche du clavier (le nom des constantes de  `pyglet.window.key` correspondant aux flèches sont disponible [là](https://pyglet.readthedocs.io/en/latest/modules/window_key.html#cursor-control-and-motion)), le texte se déplace de 10pixel vers la direction de la flèche.
 {: .a-faire}
 {% details solution %}
 
@@ -289,7 +289,7 @@ class HelloWorldWindow(pyglet.window.Window):
     # ...
 ```
 
-Le code précédent fait en sorte que la méthode `update` soit exécutée toute les secondes. Le paramètre `dt` donne le nombre de secondes exactes depuis le dernier appel de la fonction. Cela permet de gérer le lag s'il existe (remarquez qu'il vaut otujours un peut plus que 1).
+Le code précédent fait en sorte que la méthode `update` soit exécutée toute les secondes. Le paramètre `dt` donne le nombre de secondes exactes depuis le dernier appel de la fonction. Cela permet de gérer le lag s'il existe (remarquez qu'il vaut toujours un peut plus que 1).
 
 >
 > Faites en sorte que le texte avance de 10 pixels toutes les .5s si une touche est appuyée.
