@@ -292,7 +292,7 @@ class HelloWorldWindow(pyglet.window.Window):
 Le code précédent fait en sorte que la méthode `update` soit exécutée toute les secondes. Le paramètre `dt` donne le nombre de secondes exactes depuis le dernier appel de la fonction. Cela permet de gérer le lag s'il existe (remarquez qu'il vaut toujours un peut plus que 1).
 
 >
-> Faites en sorte que le texte avance de 10 pixels toutes les .5s si une touche est appuyée.
+> Faites en sorte que le texte avance de 10 pixels toutes les 0.5s si une touche est appuyée.
 >
 > Pour cela on ne va pas modifier la position du label dans `on_key_press` mais dans update :
 >
