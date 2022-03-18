@@ -214,7 +214,7 @@ Nous n'avons pas utilisé de `super` pour appeler la méthode de la classe mère
 > Exécutez le code précédent et remarquez :
 >
 > * que chaque touche a bien un code, ainsi que les touche de modfication
-> * shift gauche et shift droit sont indiscernables
+> * shift gauche et shift droit sont discernables
 > * qu'après chaque touche appuyée ou relâchée l'évènement `on_draw` est lancé
 > * que même si on laisse appuyé la touche longtemps, il n'y a qu'un seul événement `on_key_press` qui est lancé.
 >
@@ -316,8 +316,8 @@ class HelloWorldWindow(pyglet.window.Window):
         # ...
 
     def update(self, dt):
-        self.label.x += dx
-        self.label.y += dy
+        self.label.x += self.dx
+        self.label.y += self.dy
 
     # ...
 
@@ -366,13 +366,13 @@ class HelloWorldWindow(pyglet.window.Window):
     # ...
 
     def update(self, dt):
-        self.label.x += dx
+        self.label.x += self.dx
         if self.label.x < 0:
             self.label.x = 0
         elif self.label.x > self.width:
             self.label.x = self.width
 
-        self.label.y += dy
+        self.label.y += self.dy
         if self.label.y < 0:
             self.label.y = 0
         elif self.label.y > self.height:
