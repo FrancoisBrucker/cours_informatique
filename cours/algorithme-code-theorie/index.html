@@ -122,6 +122,8 @@
   <li><a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/etude-tris.html">étude : trier un tableau</a></li>
   <li><a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/structure-dictionnaire.html">structure : dictionnaire</a></li>
   <li><a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/structure-liste.html">structure : liste</a></li>
+  <li><a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/methode-gloutons.html">algorithmes gloutons</a></li>
+  <li><a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/etude-voyageur-de-commerce.html">étude : heuristiques gloutonnes</a></li>
   <li><a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/structure-chaine-de-caracteres.html">structure : chaine de caractères</a></li>
 </ol>
 
@@ -734,6 +736,30 @@ id: "projet : fichiers",
 graph.links.push({
   source: "fichiers",
   target: "projet : fichiers"
+})
+
+graph.nodes.push({
+id: "algorithmes gloutons",
+  link: "/cours_informatique/cours/algorithme-code-theorie/algorithme/methode-gloutons.html",
+  group: groups.algorithmie
+})
+
+graph.links.push({
+  source: "complexité max/min",
+  target: "algorithmes gloutons"
+
+})
+
+graph.nodes.push({
+id: "étude : voyageur de commerce",
+  link: "/cours_informatique/cours/algorithme-code-theorie/algorithme/etude-voyageur-de-commerce.html",
+  group: groups.algorithmie
+})
+
+graph.links.push({
+  source: "algorithmes gloutons",
+  target: "étude : voyageur de commerce"
+  
 })
 
 </script>

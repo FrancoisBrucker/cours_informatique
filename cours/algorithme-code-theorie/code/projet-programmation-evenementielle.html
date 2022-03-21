@@ -173,7 +173,7 @@ En revanche, le texte <code class="language-plaintext highlighter-rouge">c'est f
 
 <h4 id="une-fenêtre-redimensionnable">une fenêtre redimensionnable</h4>
 
-<p>La méthode <code class="language-plaintext highlighter-rouge">on_draw</code> est une méthode spéciale. A chaque fois que l’événement <code class="language-plaintext highlighter-rouge">draw</code> est activé, cette méthode est exécutée. POur le voir concrètement, modifiez le code précédent avec :</p>
+<p>La méthode <code class="language-plaintext highlighter-rouge">on_draw</code> est une méthode spéciale. A chaque fois que l’événement <code class="language-plaintext highlighter-rouge">draw</code> est activé, cette méthode est exécutée. Pour le voir concrètement, modifiez le code précédent avec :</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pyglet</span>
 
@@ -574,7 +574,7 @@ En revanche, le texte <code class="language-plaintext highlighter-rouge">c'est f
   <li>le dernier la composante bleue</li>
 </ul>
 
-<p>On a souvent coutume (dans le monde du web par exemple) de représenter ces 3 nombres par un nombre hexadécimal de 6 chiffres (2 par composante, chaque composante étant codée par un nombre allant de 00 à FF). Par exemple, le nombre <code class="language-plaintext highlighter-rouge">#F58318</code> correspond à la couleur ayant F5 en rouge, 83 en vert et 18 en bleu. Ce qui en python donne avec un tuple de 3 coordonnées : <code class="language-plaintext highlighter-rouge">(0xF5, 0x83, 0x18)</code>, ou <code class="language-plaintext highlighter-rouge">(245, 131, 24)</code> en base 10.</p>
+<p>On a souvent coutume (dans le monde du web par exemple) de représenter ces 3 nombres par un nombre hexadécimal de 6 chiffres (2 par composante, chaque composante étant codée par un nombre allant de 00 à FF). Par exemple, le nombre <code class="language-plaintext highlighter-rouge">#F58318</code> correspond à la couleur ayant F5 en rouge, 83 en vert et 18 en bleu, les 3 nombres étant en codage hexadécimal. Ce qui en python donne avec un tuple de 3 coordonnées : <code class="language-plaintext highlighter-rouge">(0xF5, 0x83, 0x18)</code>, ou <code class="language-plaintext highlighter-rouge">(245, 131, 24)</code> en base 10 (un nombre écrit en hexadécimal en python commence par <code class="language-plaintext highlighter-rouge">0x</code>).</p>
 
 <blockquote>
   <p>Pour gérer et trouver des couleurs sympathiques, utilisez une roue des couleurs, comme <a href="https://color.adobe.com/fr/create/color-wheel">celle d’adobe</a> par exemple.</p>
@@ -787,7 +787,7 @@ En revanche, le texte <code class="language-plaintext highlighter-rouge">c'est f
   </li>
 </ul>
 
-<p>POur réaliser tout ça on va travailler par morceaux.</p>
+<p>Pour réaliser tout ça on va travailler par morceaux.</p>
 
 <h4 id="tache-41">tache 4.1</h4>
 
@@ -888,15 +888,37 @@ En revanche, le texte <code class="language-plaintext highlighter-rouge">c'est f
 
 <h3 id="tâche-7">tâche 7</h3>
 
-<blockquote class="tbd">
-  <p>une brique</p>
-</blockquote>
+<p>Une brique doit se comporter comme le vaisseau lorsque la bille la touche (elle rebondit), puis disparaître. Commençons par dessiner les briques</p>
+
+<p>Création de la classe :</p>
+
+<ul>
+  <li>classe : <code class="language-plaintext highlighter-rouge">Brique</code> (dans le fichier <em>“brique.py”</em>)</li>
+  <li>attributs :
+ <code class="language-plaintext highlighter-rouge">forme</code> un <a href="https://pyglet.readthedocs.io/en/latest/modules/shapes.html#pyglet.shapes.Rectangle">rectangle pyglet</a> de longueur 40, de hauteur 20</li>
+  <li>méthode :
+    <ul>
+      <li>
+<code class="language-plaintext highlighter-rouge">__init__(x, y)</code> : création de la brique à la position <code class="language-plaintext highlighter-rouge">(x, y)</code>
+</li>
+      <li><code class="language-plaintext highlighter-rouge">draw()</code></li>
+    </ul>
+  </li>
+</ul>
+
+<p>Dans <code class="language-plaintext highlighter-rouge">Fenetre</code> créez une liste <code class="language-plaintext highlighter-rouge">self.briques</code> et ajoutez y un mur de briques à notre interface. On pourra créer 5 rangées de 12 briques, par exemple.</p>
 
 <h3 id="tâche-8">tâche 8</h3>
 
-<blockquote class="tbd">
-  <p>des briques</p>
-</blockquote>
+<p>Pour finir, il reste à mettre en place la gestion des collisions entre a bille et les briques. Il n’y a presque rien à faire car tout va se passer comme pour le vaisseau.</p>
+
+<p>Ajoutez une méthode <code class="language-plaintext highlighter-rouge">collision(bille)</code> à la classe <code class="language-plaintext highlighter-rouge">Brique</code>. Cette méthode doit répondre <code class="language-plaintext highlighter-rouge">True</code> si la bille touche la brique, et <code class="language-plaintext highlighter-rouge">False</code> sinon (il faut que le centre de la bille soit dans le rectangle du vaisseau augmenté du rayon de la bille, tout comme pour le vaisseau).</p>
+
+<p>Après la mise à jour des positions dans la méthode <code class="language-plaintext highlighter-rouge">update</code>, testez s’il y a collision entre la bille et une brique. Si oui, augmentez le score de 5, faite rebondir la bille et supprimez cette brique de la liste des briques.</p>
+
+<h2 id="fin-de-projet">fin de projet</h2>
+
+<p>Le code de ce projet est disponible <a href="https://github.com/FrancoisBrucker/cours_informatique/tree/master/docs/cours/algorithme-code-theorie/code/projets-code/arkanoid">à cette adresse</a>.</p>
 
   </div>
 

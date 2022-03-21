@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Algorithmes gloutons | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0">
+<meta property="og:title" content="Algorithmes gloutons">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Support de cours/td d’informatique de François Brucker.">
+<meta property="og:description" content="Support de cours/td d’informatique de François Brucker.">
+<link rel="canonical" href="/cours_informatique/cours/algorithme-code-theorie/algorithme/methode-gloutons.html">
+<meta property="og:url" content="/cours_informatique/cours/algorithme-code-theorie/algorithme/methode-gloutons.html">
+<meta property="og:site_name" content="cours d’informatique">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Algorithmes gloutons">
+<script type="application/ld+json">
+{"description":"Support de cours/td d’informatique de François Brucker.","@type":"WebPage","url":"/cours_informatique/cours/algorithme-code-theorie/algorithme/methode-gloutons.html","headline":"Algorithmes gloutons","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css">
+
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css">
+
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique">
+<script>MathJax={"tex":{"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["\\[","\\]"]]},"svg":{"fontCache":"global"},"svg":{"fontCache":"global"}}</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<header class="site-header" role="banner">
+
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/cours_informatique/">cours d'informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav>
+</div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Algorithmes gloutons</h1>
+  </header>
+
+  <div class="post-content">
+    <blockquote class="chemin">
+  <p><a href="/cours_informatique/cours/algorithme-code-theorie/">Algorithme, code et théorie</a> / <a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/">algorithmie</a> / <a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/methode-gloutons.html">algorithmes gloutons</a></p>
+
+  <p><strong>prérequis :</strong></p>
+
+  <ul>
+    <li><a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/complexite-max-min.html">complexité max/min</a></li>
+  </ul>
+
+</blockquote>
+
+<p>Montrer l’intérêt des algorithmes gloutons, la façon de les construire et de prouver qu’ils fonctionnent. On s’attachera dans ce cours à prouver qu’ils rendent une solution optimale à un problème donné.</p>
+
+<p>On va voir la construction et la preuve des algorithmes gloutons à l’aide d’exemples, de plus en plus complexes :</p>
+
+<ol>
+  <li><a href="#exemple-le-rendu-de-pi%C3%A8ces">le rendu de pièce</a></li>
+  <li><a href="#exemple-allocation-de-salles-de-cin%C3%A9ma">l’allocation de ressources</a></li>
+  <li><a href="#exemple-ordonnancement">ordonnancement</a></li>
+</ol>
+
+<h2 id="algorithmes-gloutons">Algorithmes gloutons</h2>
+
+<blockquote class="note">
+  <p>Un <a href="https://fr.wikipedia.org/wiki/Algorithme_glouton">algorithme glouton</a> choisit à chaque étape la meilleure possibilité localement et ne se remet jamais en question.</p>
+</blockquote>
+
+<p>On voit en creux que ce type d’algorithmes :</p>
+
+<ol>
+  <li>va être utilisé dans des problèmes d’optimisation, où l’on cherche la <em>meilleure solution</em> parmi un ensemble de possibilités.</li>
+  <li>l’ordre des étapes est primordial</li>
+</ol>
+
+<p>Ils sont très utilisés car :</p>
+
+<ul>
+  <li>ils donnent toujours un résultat</li>
+  <li>ils sont souvent de complexités faibles</li>
+</ul>
+
+<p>Attention cependant :</p>
+
+<ul>
+  <li>ils ne donne pas forcément le meilleur résultat : c’est souvent des <a href="https://fr.wikipedia.org/wiki/Heuristique">heuristiques</a>
+</li>
+  <li>il n’y pas forcément de solution unique</li>
+</ul>
+
+<p>En conclusion :</p>
+
+<blockquote class="note">
+  <p>Ce type d’algorithmes est très utilisé pour résoudre des problèmes où l’on veut une réponse rapidement, mais pas forcément une réponse optimale. D’un point de vue théorique, ces algorithmes sont extrêmement importants. Il sont, par exemple, en bijection avec la <a href="https://fr.wikipedia.org/wiki/Matro%C3%AFde">structure de matroïde</a>.</p>
+</blockquote>
+
+<p>Pour beaucoup de problèmes d’optimisation réels, un algorithme glouton est optimal pour une version simplifiée du problème. Comme l’algorithme va vite, on peut recommencer plusieurs fois pour trouver une meilleure solution.</p>
+
+<h3 id="comment-designer-un-algorithme-glouton">comment designer un algorithme glouton</h3>
+
+<ol>
+  <li>écrire le problème comme un problème d’optimisation</li>
+  <li>découper le problème en une succession d’tapes où il est facile de choisir la meilleure solution</li>
+  <li>choisir un ordre de parcours des différentes étapes.</li>
+</ol>
+
+<h3 id="optimalité-et-glouton">optimalité et glouton</h3>
+
+<p>Les problèmes d’optimalité demandent de trouver, parmi un ensemble de solutions possible, une solution minimisant (ou maximisant) un critère. Par exemple :</p>
+
+<ul>
+  <li>pour un ensemble de coûts de constructions possibles d’une voiture, trouver celle qui minimise le coûts tout en maximisant la qualité totale des pièces,</li>
+  <li>parmi tous les parcours passant par un ensemble de villes donné, choisir celui qui minimise le nombre de kilomètres parcourus</li>
+  <li>maximiser le nombre de films projetés dans un multiplexe de cinéma</li>
+  <li>…</li>
+</ul>
+
+<p>La difficulté de ces problèmes vient du fait que l’on ne peut a priori pas trouver la meilleure solution sans les examiner toutes. Et s’il y a beaucoup de solutions ça peut prendre vraiment beaucoup de temps.</p>
+
+<p>Certains problèmes cependant permettent d’être résolus en construisant petit à petit une solution, sans jamais remettre en cause ses choix. On peut alors souvent trouver très rapidement la meilleure solution possible. On peut également utiliser cette solution construite petit à petit pour trouver une solution approchée à un problème plus général. Cette classe d’algorithmes qui construit itérativement d’une solution est appelée <em>algorithmes gloutons</em>.</p>
+
+<h3 id="condition-nécessaire-et-suffisante-doptimalité">condition nécessaire et suffisante d’optimalité</h3>
+
+<p>Pour qu’un algorithme glouton <strong>trouve une solution optimale</strong> il faut :</p>
+
+<ul>
+  <li>
+<strong>initialisation</strong> : montrer qu’il existe une solution optimale contenant le 1er choix de l’algorithme</li>
+  <li>
+<strong>récurrence</strong> : montrer que la première différence entre une solution optimale et la solution de l’algorithme ne peut résulter en une meilleure solution.</li>
+</ul>
+
+<p>On pourra également utiliser la technique de preuve suivante :</p>
+
+<ul>
+  <li>on suppose que l’algorithme glouton ne donne pas une solution optimale et on considère une solution optimale coïncidant le plus longtemps possible avec la solution donnée par celui-ci</li>
+  <li>on démontre que l’on cependant construire une solution optimale coïncident plus longtemps avec l’algorithme glouton ce qui invalide notre hypothèse de départ: l’algorithme glouton est optimal.</li>
+</ul>
+
+<h2 id="exemple-le-rendu-de-pièces">exemple 1 : le rendu de pièces</h2>
+
+<p>Proposons un algorithme glouton permettant de rendre la monnaie $R$ d’un achat en un nombre minimum de pièces valant $v=5$, $v=2$ et $v=1$ pokédollar.</p>
+
+<h3 id="design-de-lalgorithme">design de l’algorithme</h3>
+
+<ol>
+  <li>
+<strong>écrire le problème comme un problème d’optimisation</strong> : Il faut rendre un nombre minimum de pièces</li>
+  <li>
+<strong>découper le problème en une succession d’étapes</strong> : si l’on doit rendre en pièces d’une valeur $de v$, il faut rendre le maximum de pièces possibles (la division entière de $R$ par $v$). On va donc considérer à chaque étape qu’une seule valeur $v$ de pièce.   on ne peut pas rendre plus de $p$ pièces où $p$ est . On va donc itérativement rendre le nombre maximum de pièces pour une valeur de pièce donnée</li>
+  <li>
+<strong>choisir un ordre de parcours</strong> : comme il faut rendre le minimum de pièces données, on va examiner les pièces par valeur décroissantes</li>
+</ol>
+
+<p>Un cas particulier important est lorsque le problème d’optimisation revient à trouver un sous-ensemble <em>optimal</em> d’un ensemble connu. Dans ce cas là, l’item 2 revient à examiner itérativement les éléments de l’ensemble et à les ajouter un à un si possible à l’ensemble à trouver.</p>
+
+<h3 id="algorithme--rendu-de-pièce">algorithme : rendu de pièce</h3>
+
+<ul>
+  <li>
+<strong>Problème</strong> : “comment rendre R sous en un nombre minimum de pièces”</li>
+  <li>
+<strong>algorithme glouton</strong> :
+    <ol>
+      <li>choisir la plus grande valeur $v$ de pièce plus petite que $R$</li>
+      <li>donner $p$ pièces où $p$ est la division entière de $R$ par $v$ (<code class="language-plaintext highlighter-rouge">p = R // v</code>)</li>
+      <li>$R = R - p \cdot v$</li>
+      <li>revenir en 1. si $R &gt; 0$</li>
+    </ol>
+  </li>
+  <li>
+<strong>complexité</strong> : tri des valeur de pièce + une opération par pièce (division puis soustraction). Comme il suffit de trier une fois pour toute, la complexité peut être de l’ordre du nombre de pièces.</li>
+</ul>
+
+<h3 id="preuve-doptimalité-pour-un-système-de-pièce-valant-1-2-et-5">Preuve d’optimalité pour un système de pièce valant 1, 2 et 5</h3>
+
+<h4 id="initialisation">initialisation</h4>
+
+<p>Il faut montrer qu’il existe une solution optimale qui continent notre choix, c’est à dire la division entière de $R$ par 5.</p>
+
+<p>Considérons une solution optimale. Elle ne peut pas contenir plus de 2 pièces de 2, sinon on pourrait rendre moins de pièces en échangeant 3 pièces de 2 par 1 pièce de 5 et une pièce de 1 ce qui diminuerait strictement le nombre de pièces rendues. De même, cette solution optimale ne contient pas plus de 1 pièce de 1, sinon on échangerait 2 pièces de 1 par une pièce de 2, ce qui diminuerait strictement le nombre de pièces rendues.</p>
+
+<p>Enfin, cette solution optimale ne peut pas avoir exactement 2 pièces de 2 et une pièce de 1, sinon on les échangeraient pour une pièce de 5…</p>
+
+<p>On en déduit donc que la somme d’argent rendu en pièce de 2 et de 1 pour une solution optimale ne peut dépasser 4, ce qui est exactement la division entière de $R$ par 5 et est le premier choix de l’algorithme glouton.</p>
+
+<h4 id="récurrence">récurrence</h4>
+
+<p>Après le premier choix (les pièces de 5), il ne reste à rendre qu’une somme inférieure ou égale à 4. Il n’y a donc pas à proprement parler de récurrence à faire ici, juste à démontrer (ce qui est évident) que l’algorithme glouton donnera une solution optimale lorsqu’il y a 0, 1, 2, 3 ou 4 à rendre.</p>
+
+<h3 id="système-de-pièces-quelconque-">système de pièces quelconque ?</h3>
+
+<p>On peut démontrer que le système de pièce européen fonctionne avec les pièces et billets de : 1, 2, 5, 10, 20, 50, 100 et 200. Mais attention, cela ne marche pas pour tous les systèmes de pièces :</p>
+
+<ul>
+  <li>exemple 1, 3, 4. Pour rendre 6 il donne 4 + 1 + 1 alors que c’est 3 + 3 le mieux.</li>
+  <li>1, 6, 11, 19 ne fonctionne pas non plus pour 22 par exemple (le système est cependant super-croissant).</li>
+</ul>
+
+<p>Remarques :</p>
+
+<ul>
+  <li>c’est pourquoi il n’y a pas de billets de 7 euros (car rendre 10 euros donnerait $10 = 7 + 2 + 1$, mais la solution optimales serait $10 = 5 + 5$).</li>
+  <li>ce n’est pas la seule solution possible pour avoir un système optimal puisque les américains ont des pièces de 25c (les quarter)</li>
+  <li>peut poser des soucis : les machines à café vous indiquent qu’elles ne peuvent plus vous rendre la monnaie car il n’y a plus de pièces d’une valeur particulière, alors qu’en réalité elle disposent de la somme à rendre en utilisant une autre combinaison.</li>
+</ul>
+
+<h2 id="exemple-allocation-de-salles-de-cinéma">exemple 2 : allocation de salles de cinéma</h2>
+
+<p>Un gérant de cinéma a en sa possession $m$ films caractérisés chacun par des couples ($d_i$, $f_i$) où $d_i$ est l’heure de début du film et $f_i$ l’heure de fin. Il se pose 2 problèmes :</p>
+
+<ul>
+  <li>Quel est le nombre maximum de films que je peux voir en une journée ?</li>
+  <li>Quel est le nombre minimum de salles à avoir pour visionner tous les films en stock.</li>
+</ul>
+
+<p>Chaque film est décrit par un couple $(d, f)$ où $d$ est la date de début du film et $f$ la date de fin.</p>
+
+<h3 id="voir-un-maximum-de-films">voir un maximum de films</h3>
+
+<ol>
+  <li>
+<strong>le problème d’optimisation</strong> : on cherche à rendre une liste maximale de films à voir en une journée.</li>
+  <li>
+<strong>découpage en étapes</strong> : Comme il faut trouver un sous-ensemble maximal de films, chaque étape consistera en l’examen d’un film et voir si on peut le rajouter à l’ensemble déjà constitué.</li>
+  <li>
+<strong>ordre d’examen des films</strong> : date de fin croissante.</li>
+</ol>
+
+<p>Pour l’ordre d’examen, il n’y a pas vraiment d’autre choix. En effet, si l’on classe les séances de cinéma par :</p>
+
+<ul>
+  <li>durée croissante : l’ensemble de films $[(1, 3), (3, 5), (5, 7), (2.5, 3.5), (4.5, 5.5)]$ produit un contre exemple,</li>
+  <li>date de début croissante : l’ensemble de films $[(1, 10), (2, 3), (3, 4)]$ produit un contre exemple,</li>
+</ul>
+
+<h4 id="algorithme--maximum-de-films">algorithme : maximum de films</h4>
+
+<ul>
+  <li>entrée : liste de films, chaque liste étant une liste <code class="language-plaintext highlighter-rouge">[depart, fin, nom]</code>.</li>
+  <li>sortie : liste d’indices de films où indice est l’indice du film dans la liste d’entrée.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">nombre_films_maximal</span><span class="p">(</span><span class="n">films</span><span class="p">):</span>
+
+    <span class="n">films</span><span class="p">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="n">films_a_voir</span> <span class="o">=</span> <span class="p">[</span><span class="n">films</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+    <span class="k">for</span> <span class="n">film</span> <span class="ow">in</span> <span class="n">films</span><span class="p">:</span>
+        <span class="n">fin_dernier_film</span> <span class="o">=</span> <span class="n">films_a_voir</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">début_nouveau_film</span> <span class="o">=</span> <span class="n">film</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">fin_dernier_film</span> <span class="o">&lt;=</span> <span class="n">début_nouveau_film</span><span class="p">:</span>
+            <span class="n">films_a_voir</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">film</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">films_a_voir</span>
+</code></pre></div></div>
+
+<p>La sortie de l’algorithme glouton correspond à un ordre de visionnage de films maximisant le nombre de films vus.</p>
+
+<blockquote>
+  <p>On a utilisé quelques astuces de programmation python :</p>
+
+  <ul>
+    <li>
+<code class="language-plaintext highlighter-rouge">l[-1]</code> rend le dernier élément d’une liste.
+boucle <code class="language-plaintext highlighter-rouge">for</code>.</li>
+    <li>
+      <p>on a un peu fait de magie noire sur les tris en utilisant le paramètre <a href="https://docs.python.org/fr/3/howto/sorting.html#key-functions">key</a> qui permet de passer une fonction en paramètre. Cette fonction est appelé pour chaque élément. C’est pratique pour ne trier que selon 1 élément d’une liste (ici le 2ème élément).</p>
+    </li>
+    <li>on utilise aussi l’écriture lambda qui permet de créer des fonction d’une ligne anonyme. Notre fonction lambda est équivalente à :</li>
+  </ul>
+
+  <div class="language-python highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">truc</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</code></pre></div>  </div>
+</blockquote>
+
+<h4 id="preuve-de-lalgorithme--maximum-de-films">preuve de l’algorithme : maximum de films</h4>
+
+<p>On prouve notre algorithme en utilisant la technique de preuve par l’absurde : on suppose que l’algorithme glouton ne donne pas une solution optimale et on considère une solution optimale coïncidant le plus longtemps possible avec la solution donnée par celui-ci.</p>
+
+<p>Soit $i$ l’indice de la première différence. On note $f_i$ le film choisi par le glouton et $f’_i$ le film (différent de $f_i$) choisi par la solution optimale :</p>
+
+<ul>
+  <li>la date de fin de $f’_i$ est plus grande que la date de fin de $f_i$ par construction de la solution par l’algorithme glouton.</li>
+  <li>la date de début de $f’_i$ est avant la date de fin de $f_i$ sinon on pourrait ajouter $f_i$ à la solution optimale et rendre une solution avec strictement  plus de films</li>
+</ul>
+
+<p>Les deux remarques ci-dessus amènent au fait que l’on peut construire une nouvelle solution en échangeant $f’_i$ par $f_i$ dans la solution optimale. Comme cette nouvelle solution a autant de films que la solution optimale, elle est aussi optimale. Ceci est impossible par hypothèse (on prend une solution optimale coïncidant le plus longtemps possible avec la solution de l’algorithme glouton) : notre hypothèse était fausse, l’algorithme glouton est optimal.</p>
+
+<h3 id="nombre-minimum-de-salles-pour-placer-tous-les-films-en-stock">nombre minimum de salles pour placer tous les films en stock</h3>
+
+<p>On essaie ici de trouver le nombre minimum de salles à construire pour pouvoir projeter tous les films</p>
+
+<h4 id="algorithme--nombre-de-salle-minimum">algorithme : nombre de salle minimum</h4>
+
+<p>On va ici classer les films par date de début croissante. On commence par 0 salles de cinéma.</p>
+
+<p>En analysant dans cet ordre les films, on cherche s’il existe une salle à laquelle on peut rajouter le film (la date de fin du dernier film de la salle est plus tôt que le début du nouveau film). Si oui on rajoute le film à cette salle, si non on crée une nouvelle salle et l’on ajoute notre film à cette nouvelle salle.</p>
+
+<h4 id="preuve-de-lalgorithme--minimum-de-salles">preuve de l’algorithme : minimum de salles</h4>
+
+<p>La preuve est ici aisée car si on rajoute une salle pour loger un nouveau film $f$, ça veut dire que pour toutes les $k$ salles actuelles il y a un film qui n’est pas fini pendant le début du nouveau film : il existe au moins $k$ films dont le début est avant $f$ et la fin après $f$ : il faut donc au moins $k+1$ salles pour jouer tous ces films en parallèle.</p>
+
+<h2 id="exemple-ordonnancement">exemple 3 : ordonnancement</h2>
+
+<p>Les problèmes d’ordonnancement sont multiples. Certains sont durs d’autres faciles. Mais un algorithme glouton permet de trouver souvent une solution acceptable pour beaucoup d’entres eux et même parfois optimale pour certains problèmes.</p>
+
+<p>Le problème suivant est résoluble par un algorithme glouton : On considère $m$ produits de durée 1 à fabriquer. Si le produit $i$ est réalisée avant la date $d_i$ on peut le vendre pour un prix $p_i$, sinon il est invendable. Proposez un algorithme permettant de maximiser les profits en considérant que l’on a qu’un seul ouvrier.</p>
+
+<p>Là encore il faut trouver un sous-ensemble de produit à créer, mais contrairement au problème précédent connaitre uniquement les éléments à produire n’est pas suffisant : il faut <em>a priori</em> également connaitre l’ordre dans lequel les produire.</p>
+
+<p>Commençons par montrer que cet ordre est facile à trouver</p>
+
+<h3 id="ordre-de-production">ordre de production</h3>
+
+<p>Un ensemble de produits est dit <em>compatible</em> s’il existe un ordonnancement de leur production permettant de tous les vendre (chaque produit est fabriqué avant sa date de péremption).</p>
+
+<p>On a la proposition suivante :</p>
+
+<blockquote class="note">
+  <p>Un ensemble de produits est compatible si et seulement si la production par date $d_i$ croissante permet de tous les vendre.</p>
+</blockquote>
+
+<p>Preuve :</p>
+
+<ul>
+  <li>si la production par date croissante permet de tout vendre il est compatible</li>
+  <li>s’il existe un autre ordonnancement avec la tâche $j$ placé avant la tâche $i$ alors que $d_j &gt; d_i$, on peut échanger la tâche $i$ et la tâche $j$ et l’ordonnancement reste compatible</li>
+</ul>
+
+<p>Grace à cette propriété, on est ramené à un problème glouton classique : on a plus qu’un seul paramètre à optimiser.</p>
+
+<h3 id="algorithme--ensemble-compatible-maximum">algorithme : ensemble compatible maximum</h3>
+
+<p>Montrons que l’algorithme glouton suivant est optimal :</p>
+
+<ol>
+  <li>on trie les produits par prix décroissant</li>
+  <li>ensemble = {}</li>
+  <li>pour chaque produit x examiné par ordre de prix décroissant : on ajoute x à ensemble s’il reste compatible</li>
+  <li>rendre ensemble (qui est un ensemble de profit maximal)</li>
+</ol>
+
+<h3 id="preuve--ensemble-compatible-maximum">preuve : ensemble compatible maximum</h3>
+
+<ul>
+  <li>initialisation : si une solution ne contient pas l’élément de prix maximum on l’échange avec le 1er élément produit et la solution reste compatible tout en ayant un profit plus grand</li>
+  <li>récurrence : Si une solution optimale et la solution gloutonne coïncident au bout de $i$ étapes (les éléments pris sont deux les solutions et les éléments écartés le sont aussi pour les deux solutions), à l’étape $i+1$ on a deux cas :
+    <ul>
+      <li>on écarte ce produit car la solution n’est plus compatible pour la solution gloutonne. Comme La solution optimale contenait jusqu’à présent tous les éléments de la solution gloutonne, le produit de l’étape $i+1$ n’est pas on plus compatible avec la solution optimale.</li>
+      <li>on ajoute le produit à la solution gloutonne. Si la solution optimale ne contient pas ce produit on peut échanger n’importe quel autre élément de la solution avec celui-ci pour augmenter le profit.</li>
+    </ul>
+  </li>
+</ul>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d'informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d'informatique</li>
+</ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+<ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d'informatique de François Brucker.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
