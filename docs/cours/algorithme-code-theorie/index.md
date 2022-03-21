@@ -54,7 +54,9 @@ Ce cours est composée de trois grandes parties qui s'enchevêtrent.
 9. [étude : trier un tableau]({% link cours/algorithme-code-theorie/algorithme/etude-tris.md %})
 10. [structure : dictionnaire]({% link cours/algorithme-code-theorie/algorithme/structure-dictionnaire.md %})
 11. [structure : liste]({% link cours/algorithme-code-theorie/algorithme/structure-liste.md %})
-12. [structure : chaine de caractères]({% link cours/algorithme-code-theorie/algorithme/structure-chaine-de-caracteres.md %})
+12. [algorithmes gloutons]({% link cours/algorithme-code-theorie/algorithme/methode-gloutons.md %})
+13. [étude : heuristiques gloutonnes]({% link cours/algorithme-code-theorie/algorithme/etude-voyageur-de-commerce.md %})
+14. [structure : chaine de caractères]({% link cours/algorithme-code-theorie/algorithme/structure-chaine-de-caracteres.md %})
 
 ### théorie
 
@@ -655,6 +657,30 @@ id: "projet : fichiers",
 graph.links.push({
   source: "fichiers",
   target: "projet : fichiers"
+})
+
+graph.nodes.push({
+id: "algorithmes gloutons",
+  link: "{% link cours/algorithme-code-theorie/algorithme/methode-gloutons.md %}",
+  group: groups.algorithmie
+})
+
+graph.links.push({
+  source: "complexité max/min",
+  target: "algorithmes gloutons"
+
+})
+
+graph.nodes.push({
+id: "étude : voyageur de commerce",
+  link: "{% link cours/algorithme-code-theorie/algorithme/etude-voyageur-de-commerce.md %}",
+  group: groups.algorithmie
+})
+
+graph.links.push({
+  source: "algorithmes gloutons",
+  target: "étude : voyageur de commerce"
+  
 })
 
 </script>

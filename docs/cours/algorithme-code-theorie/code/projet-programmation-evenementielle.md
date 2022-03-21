@@ -106,7 +106,7 @@ En revanche, le texte `c'est fini !` ne devrait apparaître dans le terminal que
 
 #### une fenêtre redimensionnable
 
-La méthode `on_draw` est une méthode spéciale. A chaque fois que l'événement `draw` est activé, cette méthode est exécutée. POur le voir concrètement, modifiez le code précédent avec :
+La méthode `on_draw` est une méthode spéciale. A chaque fois que l'événement `draw` est activé, cette méthode est exécutée. Pour le voir concrètement, modifiez le code précédent avec :
 
 ```python
 import pyglet
@@ -497,7 +497,7 @@ Les couleurs sont décrites au [format RGB](https://fr.wikipedia.org/wiki/Rouge_
 * le second la composante verte
 * le dernier la composante bleue
 
-On a souvent coutume (dans le monde du web par exemple) de représenter ces 3 nombres par un nombre hexadécimal de 6 chiffres (2 par composante, chaque composante étant codée par un nombre allant de 00 à FF). Par exemple, le nombre `#F58318` correspond à la couleur ayant F5 en rouge, 83 en vert et 18 en bleu. Ce qui en python donne avec un tuple de 3 coordonnées : `(0xF5, 0x83, 0x18)`, ou `(245, 131, 24)` en base 10.
+On a souvent coutume (dans le monde du web par exemple) de représenter ces 3 nombres par un nombre hexadécimal de 6 chiffres (2 par composante, chaque composante étant codée par un nombre allant de 00 à FF). Par exemple, le nombre `#F58318` correspond à la couleur ayant F5 en rouge, 83 en vert et 18 en bleu, les 3 nombres étant en codage hexadécimal. Ce qui en python donne avec un tuple de 3 coordonnées : `(0xF5, 0x83, 0x18)`, ou `(245, 131, 24)` en base 10 (un nombre écrit en hexadécimal en python commence par `0x`).
 
 > Pour gérer et trouver des couleurs sympathiques, utilisez une roue des couleurs, comme [celle d'adobe](https://color.adobe.com/fr/create/color-wheel) par exemple.
 
@@ -657,7 +657,7 @@ Création et gestion de la bille :
   * 3 bords de l'écran sur 4
   * sur le vaisseau
 
-POur réaliser tout ça on va travailler par morceaux.
+Pour réaliser tout ça on va travailler par morceaux.
 
 #### tache 4.1
 
@@ -740,10 +740,27 @@ Pour gérer facilement la vie vous pouvez :
 
 ### tâche 7
 
-> une brique
-{: .tbd}
+Une brique doit se comporter comme le vaisseau lorsque la bille la touche (elle rebondit), puis disparaître. Commençons par dessiner les briques
+
+Création de la classe :
+
+* classe : `Brique` (dans le fichier *"brique.py"*)
+* attributs :
+   `forme` un [rectangle pyglet](https://pyglet.readthedocs.io/en/latest/modules/shapes.html#pyglet.shapes.Rectangle) de longueur 40, de hauteur 20
+* méthode :
+  * `__init__(x, y)` : création de la brique à la position `(x, y)`
+  * `draw()`
+
+Dans `Fenetre` créez une liste `self.briques` et ajoutez y un mur de briques à notre interface. On pourra créer 5 rangées de 12 briques, par exemple.
 
 ### tâche 8
 
-> des briques
-{: .tbd}
+Pour finir, il reste à mettre en place la gestion des collisions entre a bille et les briques. Il n'y a presque rien à faire car tout va se passer comme pour le vaisseau.
+
+Ajoutez une méthode `collision(bille)` à la classe `Brique`. Cette méthode doit répondre `True` si la bille touche la brique, et `False` sinon (il faut que le centre de la bille soit dans le rectangle du vaisseau augmenté du rayon de la bille, tout comme pour le vaisseau).
+
+Après la mise à jour des positions dans la méthode `update`, testez s'il y a collision entre la bille et une brique. Si oui, augmentez le score de 5, faite rebondir la bille et supprimez cette brique de la liste des briques.
+
+## fin de projet
+
+Le code de ce projet est disponible [à cette adresse](https://github.com/FrancoisBrucker/cours_informatique/tree/master/docs/cours/algorithme-code-theorie/code/projets-code/arkanoid).

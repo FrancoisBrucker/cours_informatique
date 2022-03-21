@@ -142,21 +142,26 @@ Au programme :
 
 #### mercredi {#m-9}
 
-1. [machine de Turing]({% link cours/algorithme-code-theorie/theorie/machine-turing.md %})
-2. [décidabilité]({% link cours/algorithme-code-theorie/theorie/decidabilite.md %})
-3. [calculabilité]({% link cours/algorithme-code-theorie/theorie/calculabilite.md %})
+1. [algorithmes gloutons]({% link cours/algorithme-code-theorie/algorithme/methode-gloutons.md %})
 
 #### vendredi {#v-9}
 
-1. [structure : chaine de caractères]({% link cours/algorithme-code-theorie/algorithme/structure-chaine-de-caracteres.md %})
-2. [fichiers]({% link cours/algorithme-code-theorie/code/fichiers.md %})
-3. [projet : fichiers]({% link cours/algorithme-code-theorie/code/projet-fichiers.md %})
+1. [étude : voyageur de commerce]({% link cours/algorithme-code-theorie/algorithme/etude-voyageur-de-commerce.md %})
 
 ### semaine 10
 
+> faire la partie fichier avant le cours (vous avez les vacances)
+{: .tbd}
+
 #### mercredi {#m-10}
 
+1. [structure : chaine de caractères]({% link cours/algorithme-code-theorie/algorithme/structure-chaine-de-caracteres.md %})
+2. algorithmes de chaines de caractères
+
 #### vendredi {#v-10}
+
+1. [fichiers]({% link cours/algorithme-code-theorie/code/fichiers.md %})
+2. [projet : fichiers]({% link cours/algorithme-code-theorie/code/projet-fichiers.md %})
 
 ### semaine 11
 

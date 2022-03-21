@@ -20,4 +20,6 @@ Création, preuve et complexité des algorithmes.
 * [étude : trier un tableau]({% link cours/algorithme-code-theorie/algorithme/etude-tris.md %})
 * [structure : dictionnaire]({% link cours/algorithme-code-theorie/algorithme/structure-dictionnaire.md %})
 * [structure : liste]({% link cours/algorithme-code-theorie/algorithme/structure-liste.md %})
+* [algorithmes gloutons]({% link cours/algorithme-code-theorie/algorithme/structure-liste.md %})
+* [étude : voyageur de commerce]({% link cours/algorithme-code-theorie/algorithme/etude-voyageur-de-commerce.md %})
 * [structure : chaine de caractères]({% link cours/algorithme-code-theorie/algorithme/structure-chaine-de-caracteres.md %})
