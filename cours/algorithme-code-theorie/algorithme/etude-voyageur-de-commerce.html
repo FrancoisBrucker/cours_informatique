@@ -73,34 +73,22 @@
 
 <p>En plus d’être des problèmes courant, ils de plus très jolis algorithmiquement. On espère que vous aimerez la ballade.</p>
 
-<h2 id="voyageur-de-commerce">Voyageur de commerce</h2>
+<h2 id="graphes-connexes">graphes connexes</h2>
 
-<p>Le <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_voyageur_de_commerce">problème du voyageur de commerce</a> peut se formuler ainsi :</p>
-
-<p><em>“un voyageur de commerce doit visiter $n$ villes dans la journée. Il veut donc partir de chez lui, parcourir toutes les villes puis revenir chez lui en ayant parcouru le minimum de distance”</em>.</p>
-
-<p>Il existe de nombreuses formalisation de ce problème, nous allons en donner 2. Commençons par la première, qui est la plus utilisée car elle s’applique directement aux villes sur une carte (la distance routière entre 2 villes étant une distance) :</p>
-
-<blockquote class="note">
-  <p><strong>Voyageur de commerce euclidien</strong> : Soit $V$ un ensemble de $n$ éléments et $d: V \times V \rightarrow \mathbb{R}^+$ une distance (donc symétrique et respectant l’inégalité triangulaire) sur $V$.</p>
-
-  <p>Donnez un ordre $v_1, \dots, v_n$ entre les villes minimisant :</p>
-
-\[\sum_{i=1}^{i=n-1} d(v_i, v_{i+1}) + d(v_n, v_1)\]
-
-</blockquote>
-
-<blockquote class="tbd">
-  <p>exemple</p>
-</blockquote>
-
-<p>La seconde formulation, plus générale, nécessite l’utilisation de <em>graphes</em>. Nous n’allons pas faire un cours de graphe ici (une introduction est disponible <a href="/cours_informatique/cours/graphes/">ici</a> pour les personnes intéressées), juste donner quelques définitions (simples) utiles :</p>
+<p>Les problèmes que nous allons étudier dans cette partie sont tous plus ou moins relier à la notion de <strong>graphe</strong>. Nous n’allons pas faire un cours de graphe ici (une introduction est disponible <a href="/cours_informatique/cours/graphes/">ici</a> pour les personnes intéressées), juste donner quelques définitions et propriétés utiles :</p>
 
 <blockquote class="note">
   <p>Un <strong>graphe</strong> $G = (V, E)$ est un couple où $E$ est un ensemble de sous-ensemble à 2 éléments de $V$. $E$ est l’ensemble des <strong>sommets</strong> de $G$ et $E$ l’ensemble des <strong>arêtes</strong> (on notera les arêtes $xy$ plutôt que ${x, y}$ pour rendre les notations plus digestes).</p>
 
+  <p>Une <strong>valuation</strong> d’un graphe $G = (V, E)$ est une fonction $\omega: E \rightarrow \mathbb{R}^+$</p>
+</blockquote>
+
+<p>Nous allons en particulier nous intéresser aux problématiques de chemin et cycles dans un graphe, que l’on peut définir ainsi :</p>
+
+<blockquote class="note">
+  <p>Pour un graphe $G=(V, E)$ :</p>
+
   <ul>
-    <li>une <strong>valuation</strong> d’un graphe $G = (V, E)$ est une fonction $\omega: E \rightarrow \mathbb{R}^+$</li>
     <li>un <strong>chemin</strong> est une suite de sommets $v_1,\dots, v_i, \dots, v_m$ tels que :
       <ul>
         <li>$v_iv_{i+1} \in E$ pour tout $1\leq i &lt; m$,</li>
@@ -112,37 +100,7 @@
 
 </blockquote>
 
-<p>De là, la définition générale du voyageur de commerce est :</p>
-
-<blockquote class="note">
-  <p><strong>Problème du voyageur de commerce</strong> :</p>
-
-  <ul>
-    <li>
-<strong>Données</strong> :
-      <ul>
-        <li>un graphe $G = (V, E)$ à $n$ sommets</li>
-        <li>une valuation $\omega$ sur $G$</li>
-      </ul>
-    </li>
-    <li>
-<strong>question</strong> :
-      <ul>
-        <li>donnez un cycle $v_1, \dots, v_i, \dots, v_n = v_1$ passant par tous les sommets tel que $\sum_{i=1}^{i=n-1} d(v_i, v_{i+1}) + d(v_n, v_1)$ soit minimal.</li>
-      </ul>
-    </li>
-  </ul>
-
-</blockquote>
-
-<p>Remarquez que si le <em>problème du voyageur de commerce euclidien</em> admet toujours une solution (tous les parcours entre les villes sont possibles), le problème du  le voyageur de commerce euclidien est un sous-problème du problème de voyageur de commerce. Avant de s’attaquer à ces problèmes, commençons par nous échauffer en considérant quelques problèmes de graphes connexes, traitant de chemins et de cycles</p>
-
-<h2 id="problèmes-de-graphes">problèmes de graphes</h2>
-
-<p>Le problème 
-Avant d’étudier le problème général, commençons par un problème plus simple : “est-il possible d’atteindre toutes les villes” ? Il n’est en effet pas dit qu’il existe une solution pour le <em>problème du voyageur de commerce</em>, ni même qu’il soit possible de p</p>
-
-<h3 id="connexité">connexité</h3>
+<p>Enfin, nous introduisons la notion, de connectivité d’un graphe :</p>
 
 <blockquote class="note">
   <p><strong>Problème de connexité d’un graphe</strong> :</p>
@@ -166,7 +124,7 @@ Avant d’étudier le problème général, commençons par un problème plus sim
 
 <p>Les graphes qui répondent OUI à cette question sont dit <strong>connexes</strong>.</p>
 
-<p>Remarquez que le problème de connexité est équivalent au problème suivant (pour un graphe donné, les réponses aux deux problèmes sont identiques), qui semble cependant plus simple :</p>
+<p>Remarquez que le problème de connexité est équivalent au problème suivant (pour un graphe donné, les réponses aux deux problèmes sont identiques), alors qu’il semble pourtant plus simple :</p>
 
 <blockquote class="note">
   <p><strong>Problème des chemins à partir d’un sommet</strong> :</p>
@@ -208,6 +166,178 @@ Avant d’étudier le problème général, commençons par un problème plus sim
 
 </div></details>
 
+<p>La preuve de l’équivalence entre ces deux problèmes nous donne une propriété fondamentale de la connexité :</p>
+
+<blockquote class="note">
+  <p>Soit $G=(V, E)$ un graphe. S’il existe un chemin allant de $x$ à $y$ et un chemin allant de $y$ à $z$ dans $G$, alors il existe un chemin allant de $x$ à $z$.</p>
+</blockquote>
+
+<p>De là, la propriété suivante :</p>
+
+<blockquote class="note">
+  <p>Soit $G=(V, E)$ un graphe. Une <strong>composante connexe</strong> de $G$ est un sous-ensemble $A$ de sommets de $G$, maximal pour l’inclusion, tel que le graphe $G \vert_A = (A, { uv \in E \mid u, v \in A})$, restriction de $G$ à $A$, est connexe.</p>
+
+  <p>En ajoutant à $G$ une arête $xy$ où $x$ et $y$ sont dans des composantes connexes différentes, l’union de ces deux ensembles forme une unique composante connexe dans le nouveau graphe.</p>
+</blockquote>
+
+<p>Il faut donc un petit nombre d’arête à un graphe pour qu’il soit connexe :</p>
+
+<blockquote class="note">
+  <p>Si $G=(V, E)$ est un graphe connexe, alors $\vert E \vert \geq \vert V \vert -1$.</p>
+</blockquote>
+<details><summary>preuve</summary><div>
+<p>On le prouve par récurrence sur $\vert V \vert$. Si le graphe contient 1 sommet, la propriété est vérifiée. Supposons la propriété vrai pour $n-1$ sommet et considérons un graphe connexe à $n &gt; 1$ sommet.</p>
+
+<p>Choisissons un sommet $x$ du graphe est supprimons le de $G$. La restriction de $G$ contient alors $k$ composantes connexes à $n_i$ sommets ($1 \leq i \leq k$), contenant (par hypothèse de récurrence) chacune au moins $n_i -1$ arêtes.</p>
+
+<p>Comme $G$ était connexe, $x$ était relié à chacune des composantes connexes par une arête, c’est à dire au moins $k$. De là, le nombre d’arête de $G$ est :</p>
+
+\[\vert E\vert \geq \sum_{i=1}^k (n_i -1) + k = \sum_{i=1}^k n_i = n - 1\]
+
+</div></details>
+
+<blockquote class="attention">
+  <p>La réciproque est cependant fausse… Il existe des graphes $G=(V, E)$ non connexe ayant plus de $\vert V\vert -1$ arêtes.</p>
+</blockquote>
+
+<p>Ces diverses propriétés vont nous permettre de créer à coût min un réseau routier entre villes.</p>
+
+<h2 id="relier-des-villes-entre-elles">Relier des villes entre elles</h2>
+
+<p>Avant de voyager de ville en ville, commençons par nous mettre dans la peau d’une entreprise de travaux public dont le but est de construire un réseau routier :</p>
+
+<blockquote class="note">
+  <p><strong>réseau routier à coût min</strong></p>
+
+  <ul>
+    <li>
+<strong>Données</strong> :
+      <ul>
+        <li>$V$, un ensemble de $n$ villes</li>
+        <li>$c: V \times V \rightarrow \mathbb{R}^+$ une fonction de coût pour créer une route à double sens entre 2 villes.</li>
+      </ul>
+    </li>
+    <li>
+<strong>question</strong> :
+      <ul>
+        <li>donnez un graphe $G=(V, E)$ connexe telle que $\sum_{xy \in E} c(x, y)$  soit minimum parmi tous les graphes connexes.</li>
+      </ul>
+    </li>
+  </ul>
+
+</blockquote>
+
+<h2 id="voyageur-de-commerce">Voyageur de commerce</h2>
+
+<p>Le <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_voyageur_de_commerce">problème du voyageur de commerce</a> peut se formuler ainsi :</p>
+
+<p><em>“un voyageur de commerce doit visiter $n$ villes dans la journée. Il veut donc partir de chez lui, parcourir toutes les villes puis revenir chez lui en ayant parcouru le minimum de distance”</em>.</p>
+
+<p>Il existe de nombreuses formalisation de ce problème, nous allons en donner 2. Commençons par la première, qui est la plus utilisée car elle s’applique directement aux villes sur une carte (la distance routière entre 2 villes étant une distance) :</p>
+
+<blockquote class="note">
+  <p><strong>Voyageur de commerce euclidien</strong> : Soit $V$ un ensemble de $n$ éléments et $d: V \times V \rightarrow \mathbb{R}^+$ une distance (donc symétrique et respectant l’inégalité triangulaire) sur $V$.</p>
+
+  <p>Donnez un ordre $v_1, \dots, v_n$ entre les villes minimisant :</p>
+
+\[\sum_{i=1}^{i=n-1} d(v_i, v_{i+1}) + d(v_n, v_1)\]
+
+</blockquote>
+
+<blockquote class="tbd">
+  <p>exemple</p>
+</blockquote>
+
+<p>De là, la définition générale du voyageur de commerce est :</p>
+
+<blockquote class="note">
+  <p><strong>Problème du voyageur de commerce</strong> :</p>
+
+  <ul>
+    <li>
+<strong>Données</strong> :
+      <ul>
+        <li>un graphe $G = (V, E)$ à $n$ sommets</li>
+        <li>une valuation $\omega$ sur $G$</li>
+      </ul>
+    </li>
+    <li>
+<strong>question</strong> :
+      <ul>
+        <li>donnez un cycle $v_1, \dots, v_i, \dots, v_n = v_1$ passant par tous les sommets tel que $\sum_{i=1}^{i=n-1} d(v_i, v_{i+1}) + d(v_n, v_1)$ soit minimal.</li>
+      </ul>
+    </li>
+  </ul>
+
+</blockquote>
+
+<p>Remarquez que si le <em>problème du voyageur de commerce euclidien</em> admet toujours une solution (tous les parcours entre les villes sont possibles), le <em>problème du  le voyageur de commerce</em> n’en a pas forcément. On n’est même pas garanti que l’on puisse passer par toutes les villes.</p>
+
+<h2 id="problèmes-de-graphes">problèmes de graphes</h2>
+
+<p>Commençons par étudier deux cas particuliers du <em>problème du voyageur de commerce</em>, le premier sera simple à résoudre, le second beaucoup plus dur.</p>
+
+<h3 id="connexité">connexité</h3>
+
+<p>Commençons par regarder si pour un graphe donné il existe un moyen de passer par tous les sommets. Ceci peut se formaliser par le problème suivant :</p>
+
+<p>On peut maintenant poser au problème suivant :</p>
+
+<blockquote class="note">
+  <p><strong>Connectivité minimale d’un graphe</strong></p>
+
+  <ul>
+    <li>
+<strong>Données</strong> :
+      <ul>
+        <li>un graphe $G=(V, E)$</li>
+      </ul>
+    </li>
+    <li>
+<strong>question</strong> :
+      <ul>
+        <li>Donnez, s’il existe, un sous-ensemble de $E’$ de $E$ de taille minimale telle que $G’=(V, E’)$ soit connexe</li>
+      </ul>
+    </li>
+  </ul>
+
+</blockquote>
+
+<p>Ce problème permet de savoir si $G$ est connexe et si oui, rend un ensemble d’arête qui rende le graphe connexe. En pratique, c’est souvent plutôt le problème suivant qui est posé :</p>
+
+<blockquote class="note">
+  <p><strong>connectivité minimale euclidienne</strong> : Soit $V$ un ensemble de $n$ éléments et $d: V \times V \rightarrow \mathbb{R}^+$ une distance (donc symétrique et respectant l’inégalité triangulaire) sur $V$.</p>
+
+  <p>Donnez un ensemble $E^\star$ de couples telle que :</p>
+  <ul>
+    <li>$G = (V, E^\star)$ soit connexe</li>
+    <li>$\sum_{xy \in E^\star}d(x, y)$ soit minimale
+\(\sum_{i=1}^{i=n-1} d(v_i, v_{i+1}) + d(v_n, v_1)\)</li>
+  </ul>
+
+</blockquote>
+
+<blockquote class="note">
+  <p><strong>Problème de connexité minimal</strong> :</p>
+
+  <ul>
+    <li>
+<strong>Données</strong> :
+      <ul>
+        <li>un graphe $G = (V, E)$ à $n$ sommets</li>
+        <li>une valuation $\omega$ sur $G$</li>
+      </ul>
+    </li>
+    <li>
+<strong>question</strong> :
+      <ul>
+        <li>donnez un cycle $v_1, \dots, v_i, \dots, v_n = v_1$ passant par tous les sommets tel que $\sum_{i=1}^{i=n-1} d(v_i, v_{i+1}) + d(v_n, v_1)$ soit minimal.</li>
+      </ul>
+    </li>
+  </ul>
+
+</blockquote>
+
 <h3 id="cycle-hamiltonien">cycle hamiltonien</h3>
 
 <p>Passer une seule fois par chaque ville</p>
@@ -245,6 +375,8 @@ Avant d’étudier le problème général, commençons par un problème plus sim
 <h3 id="gloutons">gloutons</h3>
 
 <h3 id="2-opt">2-opt</h3>
+
+<p><img src="./assets/voyageur-1.png" alt="croisements" style="margin: auto;display: block;"></p>
 
 <h3 id="à-performance-garantie">à performance garantie</h3>
 
