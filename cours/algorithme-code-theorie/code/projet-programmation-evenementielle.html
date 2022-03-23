@@ -859,7 +859,30 @@ En revanche, le texte <code class="language-plaintext highlighter-rouge">c'est f
 
 <h4 id="tâche-51">tâche 5.1</h4>
 
-<p>Ajoutez une méthode <code class="language-plaintext highlighter-rouge">collision(bille)</code> au Vaisseau. Cette méthode doit répondre <code class="language-plaintext highlighter-rouge">True</code> si la bille touche le vaisseau, et <code class="language-plaintext highlighter-rouge">False</code> sinon (il faut que le centre de la bille soit dans le rectangle du vaisseau augmenté du rayon de la bille).</p>
+<p>Ajoutez une méthode <code class="language-plaintext highlighter-rouge">collision(bille)</code> au Vaisseau. Cette méthode doit répondre <code class="language-plaintext highlighter-rouge">True</code> si la bille touche le vaisseau, et <code class="language-plaintext highlighter-rouge">False</code> sinon. Pour cela vous pouvez utiliser l’algorithme suivant, qui regarde s’il y a collision entre un disque de centre $(x0, y0)$ et de rayon $R$ avec un rectangle dont le somment en bas à gauche est en $(x1, y1)$ :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">collision</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">rayon</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">longueur</span><span class="p">,</span> <span class="n">largeur</span><span class="p">):</span>
+        <span class="n">dist_x</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span>
+            <span class="p">(</span><span class="n">x0</span> <span class="o">-</span> <span class="n">x1</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="p">(</span><span class="n">x0</span> <span class="o">-</span> <span class="n">x1</span> <span class="o">-</span> <span class="n">largeur</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">dist_y</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span>
+            <span class="p">(</span><span class="n">y0</span> <span class="o">-</span> <span class="n">y1</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="p">(</span><span class="n">y0</span> <span class="o">-</span> <span class="n">y1</span> <span class="o">-</span> <span class="n">hauteur</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">x1</span> <span class="o">&lt;=</span> <span class="n">x0</span> <span class="o">&lt;=</span> <span class="n">x1</span> <span class="o">+</span> <span class="n">largeur</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span>
+            <span class="n">y1</span> <span class="o">&lt;=</span> <span class="n">y0</span> <span class="o">&lt;=</span> <span class="n">y1</span> <span class="o">+</span> <span class="n">hauteur</span>
+        <span class="p">):</span>
+            <span class="k">return</span> <span class="bp">True</span>
+        <span class="k">elif</span> <span class="n">x1</span> <span class="o">&lt;=</span> <span class="n">x0</span> <span class="o">&lt;=</span> <span class="n">x1</span> <span class="o">+</span> <span class="n">largeur</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">dist_y</span> <span class="o">&lt;</span> <span class="n">rayon</span><span class="o">**</span><span class="mi">2</span>
+        <span class="k">elif</span> <span class="n">y1</span> <span class="o">&lt;=</span> <span class="n">y0</span> <span class="o">&lt;=</span> <span class="n">y1</span> <span class="o">+</span> <span class="n">hauteur</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">dist_x</span> <span class="o">&lt;</span> <span class="n">rayon</span><span class="o">**</span><span class="mi">2</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">dist_x</span> <span class="o">+</span> <span class="n">dist_y</span> <span class="o">&lt;</span> <span class="n">rayon</span><span class="o">**</span><span class="mi">2</span>
+
+</code></pre></div></div>
 
 <p>Testez cette méthode.</p>
 

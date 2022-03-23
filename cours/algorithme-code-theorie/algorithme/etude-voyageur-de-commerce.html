@@ -26,6 +26,7 @@
 
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique">
+<script>MathJax={"tex":{"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["\\[","\\]"]]},"svg":{"fontCache":"global"},"svg":{"fontCache":"global"}}</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
 <body>
@@ -68,24 +69,170 @@
 
 </blockquote>
 
-<p>Nous allons étudier ici un problème d’intérêt pratique ainsi que certains problèmes connexes. L’étude de ces problèmes nous permettra d’utiliser des tehcnique de designe d’algorithme conus comme les algorithmes gloutons ou d’en découvrir d’autres comme la programmation dynamique.</p>
+<p>Nous allons étudier ici un problème d’intérêt pratique ainsi que certains problèmes connexes. L’étude de ces problèmes nous permettra d’utiliser des technique de design d’algorithmes connus comme les algorithmes gloutons ou d’en découvrir d’autres comme la programmation dynamique.</p>
 
 <p>En plus d’être des problèmes courant, ils de plus très jolis algorithmiquement. On espère que vous aimerez la ballade.</p>
 
 <h2 id="voyageur-de-commerce">Voyageur de commerce</h2>
 
-<p>problème général
-problème euclidien</p>
+<p>Le <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_voyageur_de_commerce">problème du voyageur de commerce</a> peut se formuler ainsi :</p>
+
+<p><em>“un voyageur de commerce doit visiter $n$ villes dans la journée. Il veut donc partir de chez lui, parcourir toutes les villes puis revenir chez lui en ayant parcouru le minimum de distance”</em>.</p>
+
+<p>Il existe de nombreuses formalisation de ce problème, nous allons en donner 2. Commençons par la première, qui est la plus utilisée car elle s’applique directement aux villes sur une carte (la distance routière entre 2 villes étant une distance) :</p>
+
+<blockquote class="note">
+  <p><strong>Voyageur de commerce euclidien</strong> : Soit $V$ un ensemble de $n$ éléments et $d: V \times V \rightarrow \mathbb{R}^+$ une distance (donc symétrique et respectant l’inégalité triangulaire) sur $V$.</p>
+
+  <p>Donnez un ordre $v_1, \dots, v_n$ entre les villes minimisant :</p>
+
+\[\sum_{i=1}^{i=n-1} d(v_i, v_{i+1}) + d(v_n, v_1)\]
+
+</blockquote>
+
+<blockquote class="tbd">
+  <p>exemple</p>
+</blockquote>
+
+<p>La seconde formulation, plus générale, nécessite l’utilisation de <em>graphes</em>. Nous n’allons pas faire un cours de graphe ici (une introduction est disponible <a href="/cours_informatique/cours/graphes/">ici</a> pour les personnes intéressées), juste donner quelques définitions (simples) utiles :</p>
+
+<blockquote class="note">
+  <p>Un <strong>graphe</strong> $G = (V, E)$ est un couple où $E$ est un ensemble de sous-ensemble à 2 éléments de $V$. $E$ est l’ensemble des <strong>sommets</strong> de $G$ et $E$ l’ensemble des <strong>arêtes</strong> (on notera les arêtes $xy$ plutôt que ${x, y}$ pour rendre les notations plus digestes).</p>
+
+  <ul>
+    <li>une <strong>valuation</strong> d’un graphe $G = (V, E)$ est une fonction $\omega: E \rightarrow \mathbb{R}^+$</li>
+    <li>un <strong>chemin</strong> est une suite de sommets $v_1,\dots, v_i, \dots, v_m$ tels que :
+      <ul>
+        <li>$v_iv_{i+1} \in E$ pour tout $1\leq i &lt; m$,</li>
+        <li>$v_iv_{i+1} \neq v_jv_{j+1}$ si $i \neq j$</li>
+      </ul>
+    </li>
+    <li>un <strong>cycle</strong> est un chemin dans le premier et le dernier élément sont identiques.</li>
+  </ul>
+
+</blockquote>
+
+<p>De là, la définition générale du voyageur de commerce est :</p>
+
+<blockquote class="note">
+  <p><strong>Problème du voyageur de commerce</strong> :</p>
+
+  <ul>
+    <li>
+<strong>Données</strong> :
+      <ul>
+        <li>un graphe $G = (V, E)$ à $n$ sommets</li>
+        <li>une valuation $\omega$ sur $G$</li>
+      </ul>
+    </li>
+    <li>
+<strong>question</strong> :
+      <ul>
+        <li>donnez un cycle $v_1, \dots, v_i, \dots, v_n = v_1$ passant par tous les sommets tel que $\sum_{i=1}^{i=n-1} d(v_i, v_{i+1}) + d(v_n, v_1)$ soit minimal.</li>
+      </ul>
+    </li>
+  </ul>
+
+</blockquote>
+
+<p>Remarquez que si le <em>problème du voyageur de commerce euclidien</em> admet toujours une solution (tous les parcours entre les villes sont possibles), le problème du  le voyageur de commerce euclidien est un sous-problème du problème de voyageur de commerce. Avant de s’attaquer à ces problèmes, commençons par nous échauffer en considérant quelques problèmes de graphes connexes, traitant de chemins et de cycles</p>
+
+<h2 id="problèmes-de-graphes">problèmes de graphes</h2>
+
+<p>Le problème 
+Avant d’étudier le problème général, commençons par un problème plus simple : “est-il possible d’atteindre toutes les villes” ? Il n’est en effet pas dit qu’il existe une solution pour le <em>problème du voyageur de commerce</em>, ni même qu’il soit possible de p</p>
+
+<h3 id="connexité">connexité</h3>
+
+<blockquote class="note">
+  <p><strong>Problème de connexité d’un graphe</strong> :</p>
+
+  <ul>
+    <li>
+<strong>Données</strong> :
+      <ul>
+        <li>un graphe $G = (V, E)$ à $n$ sommets</li>
+      </ul>
+    </li>
+    <li>
+<strong>question</strong> :
+      <ul>
+        <li>peut-on trouver un chemin entre $x$ et $y$, quelque soient $x, y \in V$ ?</li>
+      </ul>
+    </li>
+  </ul>
+
+</blockquote>
+
+<p>Les graphes qui répondent OUI à cette question sont dit <strong>connexes</strong>.</p>
+
+<p>Remarquez que le problème de connexité est équivalent au problème suivant (pour un graphe donné, les réponses aux deux problèmes sont identiques), qui semble cependant plus simple :</p>
+
+<blockquote class="note">
+  <p><strong>Problème des chemins à partir d’un sommet</strong> :</p>
+
+  <ul>
+    <li>
+<strong>Données</strong> :
+      <ul>
+        <li>un graphe $G = (V, E)$ à $n$ sommets</li>
+        <li>un sommet $x \in V$</li>
+      </ul>
+    </li>
+    <li>
+<strong>question</strong> :
+      <ul>
+        <li>peut-on trouver un chemin entre $x$ et $y$, quelque soit $xy \in V$ ?</li>
+      </ul>
+    </li>
+  </ul>
+
+</blockquote>
+<details><summary>preuve de l’équivalence</summary><div>
+<p>Soit $G = (V, E)$ un graphe. Il est clair que s’il est connexe, le <em>problème des chemins à partir d’un sommet</em> est aussi vrai, $\forall x \in V$</p>
+
+<p>Réciproquement, supposons que le problème <em>problème des chemins à partir d’un sommet</em> est vrai pour $G$ et un sommet $x^\star$</p>
+
+<p>Soient alors $x \neq y \in V$. Il existe :</p>
+
+<ul>
+  <li>un chemin $u_1\dots u_k$ entre $x^\star$ et $x$ ($u_1 = x^\star$ et $u_k = x$)</li>
+  <li>un chemin $v_1\dots v_l$ entre $y$ et $x^\star$ ($v_l = y$ et $v_l = x^\star$)</li>
+</ul>
+
+<p>On peut alors noter $i^\star$ le plus grand indice tel qu’il existe $j^\star$ avec : $u_{i^\star$} = v_j^\star$. Comme $u_1 = v_l$, $i^\star$ existe.</p>
+
+<p>La suite $v_1 \dots v_{j^\star} u_{i^\star+1} \dots u_k$ est alors un chemin entre $x$ et $y$.</p>
+
+<p>Comme $x$ et $y$ ont été pris au hasard, on en conclut que $G$ est connexe.</p>
+
+</div></details>
+
+<h3 id="cycle-hamiltonien">cycle hamiltonien</h3>
+
+<p>Passer une seule fois par chaque ville</p>
+
+<p>NP-difficile</p>
+
+<p>(remarque sommet est dur passer par toutes les arêtes, c’est facile)</p>
 
 <h2 id="problèmes-np-complets">problèmes NP-complets</h2>
 
+<p>nous pb optimisation =&gt; pb de décision + dichotomie</p>
+
+<p>réduction : https://fr.wikipedia.org/wiki/R%C3%A9duction_(complexit%C3%A9)</p>
+
+<p>et SAT</p>
+
+<p>on peut montrer que (si vous insistez on pourra le faire)</p>
+
 <p>déf (avec les mains) + on sait que c’est dur et donc on peut se passer de chercher une solution optimale.</p>
 
-<h2 id="problèmes-connexes-sur-les-chemins">problèmes connexes sur les chemins</h2>
-
-<h3 id="arbre-de-poids-min-euclidien">arbre de poids min euclidien</h3>
-
-<h3 id="passer-par-tous-les-chemins">passer par tous les chemins</h3>
+<p>-&gt; voyageur de commerce dur 2x :</p>
+<ul>
+  <li>trouver le chemin hamiltonien</li>
+  <li>si facile de trouver un chemin hamiltonien (euclidien), il y en a trop.</li>
+</ul>
 
 <p>euler euclidien</p>
 
@@ -99,15 +246,18 @@ problème euclidien</p>
 
 <h3 id="2-opt">2-opt</h3>
 
-<h2 id="à-performance-garantie">à performance garantie</h2>
+<h3 id="à-performance-garantie">à performance garantie</h3>
 
-<h3 id="2">2</h3>
+<p>2 optimal</p>
 
-<h3 id="15-chritophides">1.5 (chritophides)</h3>
+<p>on peut faire mieux (christofides, lien wiki) et c’est le min.</p>
 
 <h2 id="code">code</h2>
 
 <p>csv ou json avec villes + coordonnées gps</p>
+
+<p>connexité et labyrinte ?</p>
+
 
   </div>
 

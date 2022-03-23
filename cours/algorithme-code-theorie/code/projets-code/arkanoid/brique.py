@@ -18,16 +18,12 @@ class Brique:
         self.forme.draw()
 
     def collision(self, bille):
-        if (bille.forme.x < self.forme.x - bille.forme.radius):
-            return False
+        dist_x = min((bille.forme.x - self.forme.x) ** 2, (bille.forme.x - self.forme.x - self.forme.width) ** 2)
+        dist_y = min((bille.forme.y - self.forme.y) ** 2, (bille.forme.y - self.forme.y - self.forme.height) ** 2)
 
-        if (bille.forme.x > self.forme.x + self.forme.width + bille.forme.radius):
-            return False
-
-        if (bille.forme.y < self.forme.y - bille.forme.radius):
-            return False
-
-        if (bille.forme.y > self.forme.y + self.forme.height + bille.forme.radius):
-            return False
-
-        return True
+        if (self.forme.x <= bille.forme.x <= self.forme.x + self.forme.width):
+            return dist_y < bille.forme.radius ** 2
+        elif (self.forme.y <= bille.forme.y <= self.forme.y + self.forme.height):
+            return dist_x < bille.forme.radius ** 2
+        else:
+            return dist_x + dist_y < bille.forme.radius ** 2
