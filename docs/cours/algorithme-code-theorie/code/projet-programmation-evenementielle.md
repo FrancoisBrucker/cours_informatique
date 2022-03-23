@@ -713,7 +713,31 @@ Nous allons gérer ceci en plusieurs temps.
 
 #### tâche 5.1
 
-Ajoutez une méthode `collision(bille)` au Vaisseau. Cette méthode doit répondre `True` si la bille touche le vaisseau, et `False` sinon (il faut que le centre de la bille soit dans le rectangle du vaisseau augmenté du rayon de la bille).
+Ajoutez une méthode `collision(bille)` au Vaisseau. Cette méthode doit répondre `True` si la bille touche le vaisseau, et `False` sinon. Pour cela vous pouvez utiliser l'algorithme suivant, qui regarde s'il y a collision entre un disque de centre $(x0, y0)$ et de rayon $R$ avec un rectangle dont le somment en bas à gauche est en $(x1, y1)$ :
+
+```python
+def collision(x0, y0, rayon, x1, y1, longueur, largeur):
+        dist_x = min(
+            (x0 - x1) ** 2,
+            (x0 - x1 - largeur) ** 2,
+        )
+        dist_y = min(
+            (y0 - y1) ** 2,
+            (y0 - y1 - hauteur) ** 2,
+        )
+
+        if (x1 <= x0 <= x1 + largeur) and (
+            y1 <= y0 <= y1 + hauteur
+        ):
+            return True
+        elif x1 <= x0 <= x1 + largeur:
+            return dist_y < rayon**2
+        elif y1 <= y0 <= y1 + hauteur:
+            return dist_x < rayon**2
+        else:
+            return dist_x + dist_y < rayon**2
+
+```
 
 Testez cette méthode.
 
