@@ -687,7 +687,7 @@ Ajoutons une première version du déplacement de la bille :
 
 Les tests de la bille seront fait dans le fichier *"arkanoid/test_bille.py"*. Pour tester la méthode `bouge`, vous pourrez faire 1 test `test_bouge()` qui vérifie que pour `dt=2` et une vitesse `(2, 5)`, le déplacement de la bille est bien correct. N'hésitez pas à changer directement les attributs dans votre test.
 
-Ajoutez la bille dans le jeu, avec une vitesse initiale de (0, -1)
+Ajoutez la bille dans le jeu, avec une vitesse initiale de (0, -100)
 
 #### tâche 4.3
 
