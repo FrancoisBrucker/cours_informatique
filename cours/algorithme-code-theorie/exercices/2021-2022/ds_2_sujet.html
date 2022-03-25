@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>DS 2 : projet de code | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0">
+<meta property="og:title" content="DS 2 : projet de code">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Support de cours/td d’informatique de François Brucker.">
+<meta property="og:description" content="Support de cours/td d’informatique de François Brucker.">
+<link rel="canonical" href="/cours_informatique/cours/algorithme-code-theorie/exercices/2021-2022/ds_2_sujet.html">
+<meta property="og:url" content="/cours_informatique/cours/algorithme-code-theorie/exercices/2021-2022/ds_2_sujet.html">
+<meta property="og:site_name" content="cours d’informatique">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="DS 2 : projet de code">
+<script type="application/ld+json">
+{"description":"Support de cours/td d’informatique de François Brucker.","@type":"WebPage","url":"/cours_informatique/cours/algorithme-code-theorie/exercices/2021-2022/ds_2_sujet.html","headline":"DS 2 : projet de code","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css">
+
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css">
+
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique">
+</head>
+
+<body>
+<header class="site-header" role="banner">
+
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/cours_informatique/">cours d'informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav>
+</div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">DS 2 : projet de code</h1>
+  </header>
+
+  <div class="post-content">
+    <h2 id="documents-à-rendre">documents à rendre</h2>
+
+<ol>
+  <li>le code (on doit pouvoir taper <code class="language-plaintext highlighter-rouge">python main.py</code> pour lancer le jeu)</li>
+  <li>un ficher markdown comportant les différentes étapes du projet que vous avez effectuées</li>
+</ol>
+
+<h2 id="sujet">sujet</h2>
+
+<p>Création d’un <a href="https://fr.wikipedia.org/wiki/Snake_(genre_de_jeu_vid%C3%A9o)">jeu du snake</a></p>
+
+<ul>
+  <li>à chaque update (toutes les 1/10 secondes), le snake avance dans une des quatre directions haut, bas, gauche ou droite. Initialement, la tête du snake est placée au milieu de l’écran et il se déplace vers le haut.</li>
+  <li>lorsque l’on appuie sur une touche de direction, la direction du snake change. On ne peut cependant pas aller à l’opposé de la direction actuelle</li>
+  <li>lorsque l’on appuie sur la touche espace, le jeu se met en pause (le snake s’arrête de bouger et le score s’arrête d’augmenter). En appuyant sur la barre d’espace, le jeu redémarre.</li>
+</ul>
+
+<p>Initialement, le jeu est en pause. Il faut appuyer sur la barre d’espace pour que le snake se déplace. La direction par défaut est vers le haut.</p>
+
+<p>Le snake est composé de carrés de 20 pixels de long qui se suivent en se touchant par un côté. Initialement, le snake est constitué de 3 carrés.</p>
+
+<p>Position initiale du snake (□ est la tête du snake) :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code> □
+ O
+ O
+</code></pre></div></div>
+
+<p>A chaque déplacement le 1er carré se déplace de 20 pixels dans la direction de déplacement, les carrés suivant se plaçant là où était le carré précédent (attention, le snake ne peut pas reculer).</p>
+
+<p>Exemple. Position initiale du snake composé de 6 carrés (0 est la tête du snake) :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  O□
+  O
+OOO
+</code></pre></div></div>
+
+<p>Déplacement vers le haut (de 20pixels) :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   □
+  OO
+  O
+ OO
+</code></pre></div></div>
+
+<p>Le jeu s’arrête si :</p>
+
+<ul>
+  <li>le snake sort de l’écran</li>
+  <li>un carré composant le snake se superpose avec un autre après un déplacement.</li>
+</ul>
+
+<p>Le score augmente de 1 toutes les secondes où le snake est vivant et que le jeu n’est pas en pause. Initialement, le score vaut 0 et est affiché en haut à droite de l’écran.</p>
+
+<p>Toutes les 5 secondes vont apparaître à l’écran (à une position aléatoire mais pas sur le snake) des disques de rayon 40 pixels. Lorsque le snake passe dessus, son score augmente de 5 et sa taille augmente de 5 carrés (le snake va grossir de 1 carré à chacun des 5 déplacements suivants) :</p>
+
+<p>Exemple de grossissement du snake.</p>
+
+<p>Position initiale :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code> OO□
+</code></pre></div></div>
+
+<p>On veut faire augmenter la taille du snake de 2 carrés. On suppose également que le snake se déplace vers le haut.</p>
+
+<p>Après le 1er déplacement, le snake à grossi de 1 carré (X est le nouveau carré) :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   □
+ XOO
+</code></pre></div></div>
+
+<p>Après le 2ème déplacement, le snake a encore grossi de  carré (X est le nouveau carré) :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   □
+   O
+ XOO
+</code></pre></div></div>
+
+<p>Finalement, le snake se déplace <em>normalement</em>. Par exemple, s’il continue de se déplacer vers le haut :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   □
+   O
+   O
+  OO
+</code></pre></div></div>
+
+<p>etc…</p>
+
+<h2 id="pour-aller-plus-loin">pour aller plus loin</h2>
+
+<p>Vous pouvez ajouter :</p>
+
+<ul>
+  <li>des vies à votre snake</li>
+  <li>bonus qui diminuent la taille</li>
+  <li>bonus qui augmentent le score</li>
+  <li>malus qui font mourir le snake lorsque qu’il passe dessus.</li>
+</ul>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d'informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d'informatique</li>
+</ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+<ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d'informatique de François Brucker.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
