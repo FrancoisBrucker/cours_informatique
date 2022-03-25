@@ -14,7 +14,7 @@ tags: code python
 
 Création d'un [jeu du snake](https://fr.wikipedia.org/wiki/Snake_(genre_de_jeu_vid%C3%A9o))
 
-* à chaque update (toutes les 1/1O secondes), le snake avance dans une des quatre directions haut, bas, gauche ou droite. Initialement, la tête du snake est placée au milieu de l'écran et il se déplace vers le haut.
+* à chaque update (toutes les 1/10 secondes), le snake avance dans une des quatre directions haut, bas, gauche ou droite. Initialement, la tête du snake est placée au milieu de l'écran et il se déplace vers le haut.
 * lorsque l'on appuie sur une touche de direction, la direction du snake change. On ne peut cependant pas aller à l'opposé de la direction actuelle
 * lorsque l'on appuie sur la touche espace, le jeu se met en pause (le snake s'arrête de bouger et le score s'arrête d'augmenter). En appuyant sur la barre d'espace, le jeu redémarre.
 
