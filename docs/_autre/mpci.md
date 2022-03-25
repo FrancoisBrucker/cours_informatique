@@ -130,7 +130,7 @@ Au programme :
 
 ### semaine 8
 
-contrôle 2 : sur ordinateur.
+contrôle 2 : sur ordinateur. [sujet]({% link cours/algorithme-code-theorie/exercices/2021-2022/ds_2_sujet.md %})
 
 Au programme :
 
