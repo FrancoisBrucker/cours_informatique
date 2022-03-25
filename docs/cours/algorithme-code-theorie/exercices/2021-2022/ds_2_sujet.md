@@ -99,6 +99,6 @@ etc...
 Vous pouvez ajouter :
 
 * des vies à votre snake
-* bonus qui diminuent la taille
-* bonus qui augmentent le score
-* malus qui font mourir le snake lorsque qu'il passe dessus.
+* des bonus qui diminuent la taille
+* des bonus qui augmentent le score
+* des malus qui font mourir le snake lorsque qu'il passe dessus.
