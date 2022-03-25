@@ -94,8 +94,11 @@ Finalement, le snake se déplace *normalement*. Par exemple, s'il continue de se
 
 etc...
 
-Pour aller plus loin :
+## pour aller plus loin
 
+Vous pouvez ajouter :
+
+* des vies à votre snake
 * bonus qui diminuent la taille
 * bonus qui augmentent le score
 * malus qui font mourir le snake lorsque qu'il passe dessus.
