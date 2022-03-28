@@ -128,6 +128,100 @@ Avant de voyager de ville en ville, commençons par nous mettre dans la peau d'u
 >
 {: .note}
 
+On peut utiliser un algorithme glouton pour résoudre ce problème. Comme tout algorithme glouton, on peut le réduire à :
+
+1. $E = \emptyset$
+2. pour chaque couple $xy$ : si le graphe $G=(V, E \cup \{xy\})$ a moins de composantes connexes que $G=(V, E)$ alors $E = E \cup \{ xy \}$
+
+> Combien d'arête aura $E$ à la fin de l'algorithme ?
+{: .a-faire}
+{% details solution %}
+
+Lorsque l'on ajoute une arête, on diminue de 1 le nombre de composantes connexes de $G$. Comme au départ il y en a $n$, $E$ aura exactement $n-1$ arêtes : ce sera un graphe connexe avec un nombre minimum d'arêtes.
+{% enddetails %}
+
+Il reste deux inconnues :
+
+1. dans quel ordre parcourir les différents couples ?
+2. comme vérifier efficacement qu'un graphe à moins de composantes connexe qu'un autre
+
+En répondant à la première question, on démontrera que notre algorithme glouton est optimal et en répondant à la seconde question, on le fera rapidement.
+
+> Montrer qu'en parcourant les arêtes par coût croissant, on obtient un graphe connexe de coût minimum.
+{: .a-faire}
+{% details solution %}
+
+Soit $E^\star$ une solution optimale et considérons le déroulement de l'algorithme étape par étape. On suppose que $E \neq E^\star$. On s'arrête alors à la **première** étape telle que soit :
+
+1. l'algorithme rejette $xy$ alors qu'il est dans $E^\star$
+2. l'algorithme accepte $xy$ alors qu'il n'est pas $E^\star$
+
+On peut même sans perte de généralité considérer que parmi toutes les solutions optimale, $E^\star$ est celle qui coïncide le plus longtemps avec $E$.
+
+Le premier cas est impossible car si l'algorithme rejette $xy$, c'est que cette arête ne diminue pas le nombre de composantes connexes, on pourrait donc la supprimer de $E^\star$ sans altérer le nombre de composantes connexes du graphe.
+
+Dans le deuxième cas. Si $xy$ n'est pas dans $E^\star$ c'est qu'il existe un chemin allant de $x$ à $y$ dans $E^\star$ dont au moins une arête, disons $uv$ n'est pas dans $E$. Cette arête est de coût supérieur à celui de $xy$ ($xy$ est la première arête qui diffère entre $E$ et $E^\star$, donc on a pas encore vu $uv$ lorsque l'on examine $xy$).
+
+L'ensemble $E^\star \backslash \{ uv \} \cup \{ xy \}$ serait alors encore connexe, mais de coût inférieure. Ceci est doublement impossible car on aurait une solution optimale qui coïnciderait plus longtemps avec $E$ que $E^\star$ ce qui est impossible par hypothèse.
+
+{% enddetails %}
+
+> Soit $G=(V, E)$. Supposons que l'on ait une fonction $f: V \rightarrow V$ tel que $f(x) = f(y)$ si et seulement si il existe un chemin entre $x$ et $y$.
+>
+> * quand est-ce que $x$ est dans la même composante connexe que $y$ ?
+> * comment mettre à jour $f$ si on ajoute l'arête $xy$ à $G$ ?
+{: .a-faire}
+{% details algorithme %}
+
+Le sommet $x$ est dans la même composante connexe que $y$ si et seulement si $f(x) == f(y)$
+
+La mise à jour se fait ainsi :
+
+```python
+c = f(x)
+for z in V:
+    if f(z) == c:
+        f(z) = f(y)
+```
+
+> la variable `c` est **indispensable**. Si on fait le fest `if f(z) == f(x):` à la place, une fois qu'on a examiné $x$, son $f$ aura changé et le test ne fonctionnera plus...
+{: .attention}
+
+{% enddetails %}
+
+> Déduire de tout ce qu'on a fait précédemment un algorithme en $\mathcal{O}(n^2\log(n))$ permettant de résoudre le problème du **réseau routier à coût min** pour $n$ villes.
+{: .a-faire}
+{% details algorithme %}
+
+```text
+def reseau(V, d):
+    Soit E l'ensemble vide
+
+    Soit F l'ensemble des couples (x, y) avec x ≠ y triés par ordre croissant
+    pour chaque x de V:
+        f(x) = x
+    
+    pour chaque xy de F:
+        si f(x) ≠ f(y):
+            ajoute xy à E
+            c = f(x)
+            pour chaque z de V:
+                si f(z) == c:
+                    f(z) = f(y)
+            
+    rendre E
+```
+
+C'est algorithme s'appelle l'algorithme de Kruskal dans le cadre de la théorie des graphes.
+
+Sa complexité est la suivante :
+
+* tris de $\frac{n(n-1)}{2}$ couples : $\mathcal{O}(n^2\log(n^2)) = \mathcal{O}(n^2 \cdot2\cdot \log(n)) = \mathcal{O}(n^2\log(n))$
+* assignation d'une valeur à $f$ pour chaque élément de $V$ : $\mathcal{O}(n)$
+* parcours tous les couples ($\frac{n(n-1)}{2}$ couples), et on met à jour $f$ en $\mathcal{O}(n)$ opérations. Comme on ne fait la modification de $f$ que si le nombre de composantes connexes diminues, c'est à dire au maximum $n$ fois !,  la complexité totale de cette parie est en $\mathcal{O}(n^2)$
+
+{% enddetails %}
+
 ## Voyageur de commerce
 
 Le [problème du voyageur de commerce](https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_voyageur_de_commerce) peut se formuler ainsi :
@@ -136,7 +230,7 @@ Le [problème du voyageur de commerce](https://fr.wikipedia.org/wiki/Probl%C3%A8
 
 Il existe de nombreuses formalisation de ce problème, nous allons en donner 2. Commençons par la première, qui est la plus utilisée car elle s'applique directement aux villes sur une carte (la distance routière entre 2 villes étant une distance) :
 
-> **Voyageur de commerce euclidien** : Soit $V$ un ensemble de $n$ éléments et $d: V \times V \rightarrow \mathbb{R}^+$ une distance (donc symétrique et respectant l'inégalité triangulaire) sur $V$.
+> **Voyageur de commerce (euclidien)** : Soit $V$ un ensemble de $n$ éléments et $d: V \times V \rightarrow \mathbb{R}^+$ une distance (donc symétrique et respectant l'inégalité triangulaire) sur $V$.
 >
 > Donnez un ordre $v_1, \dots, v_n$ entre les villes minimisant :
 >
@@ -146,109 +240,98 @@ Il existe de nombreuses formalisation de ce problème, nous allons en donner 2. 
 >
 {: .note}
 
-> exemple
+## résolution exacte
+
+Nous n'allons pas chercher à résoudre par un algorithme polynomial le problème du voyageur de commerce, car c'est un problème NP-difficile et que beaucoup (tous ?) les informaticiens on tenter au moins une fois de le faire sans y parvenir. En revanche, on peut trouver une solution exact à notre problème en utilisant un algorithme exponentiel.
+
+> Le problème du voyageur de commerce fait parti des problèmes NP-difficiles (une variante des problèmes [NP complets](https://fr.wikipedia.org/wiki/Probl%C3%A8me_NP-complet)) : on ne connait pas d'algorithmes polynomial pour le résoudre.
+>
+> Ces problèmes sont théoriquement intéressant car ce sont des **problèmes universels** : si on sait résoudre un seul problème NP-difficile avec un algorithme polynoial, le même algorithme permettrait de résoudre non seulement tous les problèmes NP-difficiles mais également tous les problèmes résolubles par un ordinateur.
+>
+{: .note}
+
+### toutes les solutions
+
+On peut tenter d'énumérer tous les cycles possibles et en garder le minimum.
+
+> Combien de cycles différents faut-il examiner ?
+>
+> Donnez un algorithme pour les générer.
+{: .a-faire}
+{% details solution %}
+Comme le cycle doit passer par tous les sommets, je peux considérer que je commence toujours en $v_1$, il faut donc ensuite passer par $n-1$ autres villes, dans un ordre donné (il y en a $(n-1)!$).
+
+De plus, un cycle peut être parcouru dans 2 sens différents, un cycle donné correspond ainsi à 2 ordres différents ($v_1v_2\dots v_n$ et v_1v_n \v_{n-1}\dots v_2$ correspondent au même cycle parcouru dans un sens ou dans l'autre). 
+
+Il faut donc générer $\frac{(n-1)!}{2}$ cycles différents.
+
+Pour ne générer qu'une seule fois chaque ordre on peut considérer tous les cycles :
+
+$$
+v_1v_{\sigma(1)}\dots v_{\sigma(n-1)}v_1
+$$
+
+Avec :
+
+* $\sigma$ une permutation de $[2..n]$
+* $\sigma(1) < \sigma(n-1)$
+
+On peut alors utiliser l'algorithme `permutation(T)` de l'[étude sur les mélanges](#algo-toutes-permutations) :
+
+```text
+
+Cycles = [] 
+de i allant de 2 à n-1:
+    de j allant de i+1 à n:
+        L = l'ensemble des permutation de la liste contenant tous les entiers de de 2 à n sans i ni j
+        pour chaque P de L:
+            ajouter [1] + [i] + L + [j] + [1] à Cycles
+```
+
+{% enddetails %}
+
+> Ecrivez l'algorithme qui énumère tous les cycles et en garde le minimum.
+>
+> Quelle est la complexité de cet algorithme ?
+>
+{: .a-faire}
+{% details solution %}
+
+```text
+cycle_min = [1, 2, 3, ..., n, 1]
+valeur_min = somme des couts de cycle_min
+
+pour chaque cycle de n villes:
+    si la valeur du cycle est plus petite strictement que valeur_min:
+        cycle_min = cycle
+        valeur_min = somme des couts de cycle_min
+```
+
+Il faut parcourir les $\frac{(n-1)!}{2}$ cycles et pour chacun calculer son cout (ce qui peut se faire en $\mathcal{O}(n)$ opérations). La complexité totale de l'algorithme est donc de $\mathcal{O}(n!)$ opérations.
+
+{% enddetails %}
+
+### par programmation dynamique
+
+Générer tous les cycles prend énormément de temps. On va de plus refaire plein de fois les mêmes erreurs (faire plein de fois Brest -> Marseille -> Rennes -> Paris par exemple alors qu'on localement faire bien mieux) : on va utiliser une méthode de programmation appelé **programmation dynamique** qui va nous permettre de factoriser des résultats.
+
+> La [**programmation dynamique**](https://fr.wikipedia.org/wiki/Programmation_dynamique) est une méthode de création d'algorithme basé sur le fait qu'une solution minimale est composée de sous-solutions elles-même minimale.
+{: .note}
+
+> exemple chemin
 {: .tbd}
 
-
-
-De là, la définition générale du voyageur de commerce est :
-
-> **Problème du voyageur de commerce** :
->
-> * **Données** :
->   * un graphe $G = (V, E)$ à $n$ sommets
->   * une valuation $\omega$ sur $G$
-> * **question** :
->   * donnez un cycle $v_1, \dots, v_i, \dots, v_n = v_1$ passant par tous les sommets tel que $\sum_{i=1}^{i=n-1} d(v_i, v_{i+1}) + d(v_n, v_1)$ soit minimal.
->
-{: .note}
-
-Remarquez que si le *problème du voyageur de commerce euclidien* admet toujours une solution (tous les parcours entre les villes sont possibles), le *problème du  le voyageur de commerce* n'en a pas forcément. On n'est même pas garanti que l'on puisse passer par toutes les villes.
-
-## problèmes de graphes
-
-Commençons par étudier deux cas particuliers du *problème du voyageur de commerce*, le premier sera simple à résoudre, le second beaucoup plus dur.
-
-### connexité
-
-Commençons par regarder si pour un graphe donné il existe un moyen de passer par tous les sommets. Ceci peut se formaliser par le problème suivant :
-
-
-
-On peut maintenant poser au problème suivant :
-
-> **Connectivité minimale d'un graphe**
->
-> * **Données** :
->   * un graphe $G=(V, E)$
-> * **question** :
->   * Donnez, s'il existe, un sous-ensemble de $E'$ de $E$ de taille minimale telle que $G'=(V, E')$ soit connexe
->
-{: .note}
-
-Ce problème permet de savoir si $G$ est connexe et si oui, rend un ensemble d'arête qui rende le graphe connexe. En pratique, c'est souvent plutôt le problème suivant qui est posé :
-
-> **connectivité minimale euclidienne** : Soit $V$ un ensemble de $n$ éléments et $d: V \times V \rightarrow \mathbb{R}^+$ une distance (donc symétrique et respectant l'inégalité triangulaire) sur $V$.
->
-> Donnez un ensemble $E^\star$ de couples telle que :
->   * $G = (V, E^\star)$ soit connexe
->   * $\sum_{xy \in E^\star}d(x, y)$ soit minimale
-> $$
-> \sum_{i=1}^{i=n-1} d(v_i, v_{i+1}) + d(v_n, v_1)
-> $$
->
-{: .note}
-
-> **Problème de connexité minimal** :
->
-> * **Données** :
->   * un graphe $G = (V, E)$ à $n$ sommets
->   * une valuation $\omega$ sur $G$
-> * **question** :
->   * donnez un cycle $v_1, \dots, v_i, \dots, v_n = v_1$ passant par tous les sommets tel que $\sum_{i=1}^{i=n-1} d(v_i, v_{i+1}) + d(v_n, v_1)$ soit minimal.
->
-{: .note}
-
-### cycle hamiltonien
-
-Passer une seule fois par chaque ville
-
-NP-difficile
-
-(remarque sommet est dur passer par toutes les arêtes, c'est facile)
-
-## problèmes NP-complets
-
-nous pb optimisation => pb de décision + dichotomie
-
-
-réduction : https://fr.wikipedia.org/wiki/R%C3%A9duction_(complexit%C3%A9)
-
-et SAT
-
-
-on peut montrer que (si vous insistez on pourra le faire)
-
-
-déf (avec les mains) + on sait que c'est dur et donc on peut se passer de chercher une solution optimale.
-
--> voyageur de commerce dur 2x :
-* trouver le chemin hamiltonien
-* si facile de trouver un chemin hamiltonien (euclidien), il y en a trop.
-
-
-euler euclidien
-
-marche sur les graphes de b des sommets impair
-
-## résolution exacte par programmation dynamique
-
+On peut faire un algorithme plus efficace en ne reca
 
 ## heurisitique
 
 ### gloutons
 
+pas ouf
+
 ### 2-opt
+
+algo (aléatoire/glouton) + 2opt 
 
 ![croisements](./assets/voyageur-1.png){:style="margin: auto;display: block;"}
 
@@ -260,7 +343,12 @@ on peut faire mieux (christofides, lien wiki) et c'est le min.
 
 ## code
 
-csv ou json avec villes + coordonnées gps
+### villes
 
-connexité et labyrinte ?
+1. dessin villes (juste matplotlib, pas de geojson ni rien)
+2. un cycle aléatoire
+3. résolution exacte de peu de villes (on généère toutes les permutations, tant pis s'il y en a 2n de trop)
+4. glouton
+5. glouton + 2ops
+6. à performance garanties
 

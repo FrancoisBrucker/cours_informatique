@@ -99,7 +99,7 @@ permutations(T):
     L = []  # va contenir les permutations de T
     pour chaque i allant de 0 à len(T) - 1:
         soit a = T[i]
-        soit T' la liste contenant tous les él&ments de T sauf T[i]
+        soit T' la liste contenant tous les éléments de T sauf T[i]
         soit L' = permutations(T')
         pour chaque P' de L':
             P = concaténation de [a] et de P'
@@ -115,9 +115,30 @@ Vous pourrez utiliser le fait que :
 
 * en python, la concaténation de deux tableaux `T1` et `T2` s'écrit `T1 + T2` (sa complexité est la somme de la taille des 2 tableaux puisqu'il faut créer un nouveau tableau)
 * le [slycing de listes](https://zestedesavoir.com/tutoriels/582/les-slices-en-python/) en python est très puissant. Par exemple :
-  * `T[:i]` contient les `i`prémiers éléments de la liste (de 0 à `i-1` inclut. Elle **ne continet donc pas** `T[i]`)
+  * `T[:i]` contient les `i` premiers éléments de la liste (de 0 à `i-1` inclut. Elle **ne contient donc pas** `T[i]`)
   * `T[i:]` contient la fin de la liste à partir de l'élément `i`.
   * `T[:i] + T[:i+1]` contient donc toute la liste sauf l'élément `T[i]`
+
+{% enddetails %}
+{% details solution pour les feignants %}
+
+```python
+def permutations(elements):
+    if len(elements) == 0:
+        return [[]]
+
+    les_permutations = []
+    for i in range(len(elements)):
+        premier = elements[i]
+        elements_sans_premier = elements[:i] + elements[i + 1:]
+
+        permutations_sans_premier = permutations(elements_sans_premier)
+        for une_fin_de_permutation in permutations_sans_premier:
+            permutation = [premier] + une_fin_de_permutation
+            les_permutations.append(permutation)
+
+    return les_permutations
+```
 
 {% enddetails %}
 
