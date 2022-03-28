@@ -55,7 +55,7 @@ jekyll (4.1.1)
 
 > **Nota Bene : ** Sous mac avec [https://brew.sh/](brew), les *gems* ne sont pas
 > automatiquement mis dans un endroit exécutable. Il faut rajouter le chemin dans le path. 
-> Chez moi, ça donne (en utilisant le chemin de la gem liée à Jekyll) à la fin de mon `.zshrc` (ou `.bashrc` si vous êtes avec bash ) : `export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/2.7.0/bin:$PATH"`
+> Chez moi, ça donne (en utilisant le chemin de la gem liée à Jekyll) à la fin de mon `.zshrc` (ou `.bashrc` si vous êtes avec bash ) : `export PATH="/usr/local/opt/ruby/bin:$PATH"`
 
 #### bundler
 
