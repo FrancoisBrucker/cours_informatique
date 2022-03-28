@@ -9,11 +9,13 @@ def permutations(elements):
     les_permutations = []
     for i in range(len(elements)):
         premier = elements[i]
-        elements_sans_premier = elements[:i] + elements[i + 1:]
+        elements_sans_premier = elements[:i] + elements[i + 1 :]
         permutations_sans_premier = permutations(elements_sans_premier)
+
         for une_fin_de_permutation in permutations_sans_premier:
             permutation = [premier] + une_fin_de_permutation
             les_permutations.append(permutation)
+
     return les_permutations
 
 
@@ -26,7 +28,14 @@ def test_permutation_singleton():
 
 
 def test_permutation_trois():
-    assert [[1, 3, 2], [1, 2, 3], [3, 1, 2], [3, 2, 1], [2, 1, 3], [2, 3, 1]] == permutations([1, 3, 2])
+    assert [
+        [1, 3, 2],
+        [1, 2, 3],
+        [3, 1, 2],
+        [3, 2, 1],
+        [2, 1, 3],
+        [2, 3, 1],
+    ] == permutations([1, 3, 2])
 
 
 def melange(elements):
@@ -76,7 +85,7 @@ def draw():
     ax.plot(compte, label="knuth")
     ax.axhline(y=NOMBRE_ITERATION / len(PERMUTATIONS), color="red", label="théorique")
 
-    ax.legend(loc='upper left', bbox_to_anchor=(1, 1))
+    ax.legend(loc="upper left", bbox_to_anchor=(1, 1))
     ax.set_title("nombre de permutations")
 
     plt.show()

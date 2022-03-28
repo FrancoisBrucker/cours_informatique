@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Begin Jekyll SEO tag v2.7.1 -->
+<!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>étude / mélanger un tableau | cours d’informatique</title>
 <meta name="generator" content="Jekyll v4.2.0">
 <meta property="og:title" content="étude / mélanger un tableau">
@@ -16,10 +16,11 @@
 <link rel="canonical" href="/cours_informatique/cours/algorithme-code-theorie/algorithme/etude-melange.html">
 <meta property="og:url" content="/cours_informatique/cours/algorithme-code-theorie/algorithme/etude-melange.html">
 <meta property="og:site_name" content="cours d’informatique">
+<meta property="og:type" content="website">
 <meta name="twitter:card" content="summary">
 <meta property="twitter:title" content="étude / mélanger un tableau">
 <script type="application/ld+json">
-{"description":"Support de cours/td d’informatique de François Brucker.","author":{"@type":"Person","name":"François Brucker"},"@type":"WebPage","url":"/cours_informatique/cours/algorithme-code-theorie/algorithme/etude-melange.html","headline":"étude / mélanger un tableau","@context":"https://schema.org"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"François Brucker"},"description":"Support de cours/td d’informatique de François Brucker.","headline":"étude / mélanger un tableau","url":"/cours_informatique/cours/algorithme-code-theorie/algorithme/etude-melange.html"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
@@ -184,7 +185,7 @@ rendre P[i]
     L = []  # va contenir les permutations de T
     pour chaque i allant de 0 à len(T) - 1:
         soit a = T[i]
-        soit T' la liste contenant tous les él&amp;ments de T sauf T[i]
+        soit T' la liste contenant tous les éléments de T sauf T[i]
         soit L' = permutations(T')
         pour chaque P' de L':
             P = concaténation de [a] et de P'
@@ -204,7 +205,7 @@ rendre P[i]
   <li>le <a href="https://zestedesavoir.com/tutoriels/582/les-slices-en-python/">slycing de listes</a> en python est très puissant. Par exemple :
     <ul>
       <li>
-<code class="language-plaintext highlighter-rouge">T[:i]</code> contient les <code class="language-plaintext highlighter-rouge">i</code>prémiers éléments de la liste (de 0 à <code class="language-plaintext highlighter-rouge">i-1</code> inclut. Elle <strong>ne continet donc pas</strong> <code class="language-plaintext highlighter-rouge">T[i]</code>)</li>
+<code class="language-plaintext highlighter-rouge">T[:i]</code> contient les <code class="language-plaintext highlighter-rouge">i</code> premiers éléments de la liste (de 0 à <code class="language-plaintext highlighter-rouge">i-1</code> inclut. Elle <strong>ne contient donc pas</strong> <code class="language-plaintext highlighter-rouge">T[i]</code>)</li>
       <li>
 <code class="language-plaintext highlighter-rouge">T[i:]</code> contient la fin de la liste à partir de l’élément <code class="language-plaintext highlighter-rouge">i</code>.</li>
       <li>
@@ -213,6 +214,25 @@ rendre P[i]
     </ul>
   </li>
 </ul>
+
+</div></details>
+<details><summary>solution pour les feignants</summary><div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">permutations</span><span class="p">(</span><span class="n">elements</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">elements</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[[]]</span>
+
+    <span class="n">les_permutations</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">elements</span><span class="p">)):</span>
+        <span class="n">premier</span> <span class="o">=</span> <span class="n">elements</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">elements_sans_premier</span> <span class="o">=</span> <span class="n">elements</span><span class="p">[:</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">elements</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:]</span>
+
+        <span class="n">permutations_sans_premier</span> <span class="o">=</span> <span class="n">permutations</span><span class="p">(</span><span class="n">elements_sans_premier</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">une_fin_de_permutation</span> <span class="ow">in</span> <span class="n">permutations_sans_premier</span><span class="p">:</span>
+            <span class="n">permutation</span> <span class="o">=</span> <span class="p">[</span><span class="n">premier</span><span class="p">]</span> <span class="o">+</span> <span class="n">une_fin_de_permutation</span>
+            <span class="n">les_permutations</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">permutation</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">les_permutations</span>
+</code></pre></div></div>
 
 </div></details>
 

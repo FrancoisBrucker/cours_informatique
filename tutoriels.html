@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Begin Jekyll SEO tag v2.7.1 -->
+<!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>cours d’informatique | Support de cours/td d’informatique de François Brucker.</title>
 <meta name="generator" content="Jekyll v4.2.0">
 <meta property="og:title" content="cours d’informatique">
@@ -15,10 +15,11 @@
 <link rel="canonical" href="/cours_informatique/tutoriels.html">
 <meta property="og:url" content="/cours_informatique/tutoriels.html">
 <meta property="og:site_name" content="cours d’informatique">
+<meta property="og:type" content="website">
 <meta name="twitter:card" content="summary">
 <meta property="twitter:title" content="cours d’informatique">
 <script type="application/ld+json">
-{"description":"Support de cours/td d’informatique de François Brucker.","@type":"WebPage","url":"/cours_informatique/tutoriels.html","headline":"cours d’informatique","@context":"https://schema.org"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"Support de cours/td d’informatique de François Brucker.","headline":"cours d’informatique","url":"/cours_informatique/tutoriels.html"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
@@ -161,22 +162,6 @@
                 ? 'unset' 
                 : 'none';
                     
-            var cats = ["installation","configuration"]
-            id += 1;
-            
-            var postDiv = document.getElementById(id);
-            postDiv.style.display = (selectedTag == 'All' || cats.includes(selectedTag)) 
-                ? 'unset' 
-                : 'none';
-                    
-            var cats = ["langage","markdown"]
-            id += 1;
-            
-            var postDiv = document.getElementById(id);
-            postDiv.style.display = (selectedTag == 'All' || cats.includes(selectedTag)) 
-                ? 'unset' 
-                : 'none';
-                    
             var cats = ["installation","python","anaconda"]
             id += 1;
             
@@ -194,6 +179,22 @@
                 : 'none';
                     
             var cats = ["React","node"]
+            id += 1;
+            
+            var postDiv = document.getElementById(id);
+            postDiv.style.display = (selectedTag == 'All' || cats.includes(selectedTag)) 
+                ? 'unset' 
+                : 'none';
+                    
+            var cats = ["installation","configuration"]
+            id += 1;
+            
+            var postDiv = document.getElementById(id);
+            postDiv.style.display = (selectedTag == 'All' || cats.includes(selectedTag)) 
+                ? 'unset' 
+                : 'none';
+                    
+            var cats = ["langage","markdown"]
             id += 1;
             
             var postDiv = document.getElementById(id);
@@ -247,8 +248,6 @@
         
                 <button id="configuration" onclick="filterUsingTag(this.id)">configuration</button>
         
-                <button id="markdown" onclick="filterUsingTag(this.id)">markdown</button>
-        
                 <button id="anaconda" onclick="filterUsingTag(this.id)">anaconda</button>
         
                 <button id="WSL" onclick="filterUsingTag(this.id)">WSL</button>
@@ -256,6 +255,8 @@
                 <button id="React" onclick="filterUsingTag(this.id)">React</button>
         
                 <button id="node" onclick="filterUsingTag(this.id)">node</button>
+        
+                <button id="markdown" onclick="filterUsingTag(this.id)">markdown</button>
         
                 <button id="fichiers" onclick="filterUsingTag(this.id)">fichiers</button>
         
@@ -545,61 +546,6 @@
         <li id="11">
             
             <h3>
-                <a class="post-link" href="/cours_informatique/tutoriels/editeur/vsc/vsc-installation-et-prise-en-main.html">
-                  Installation et prise en main de vscode
-                </a>
-              </h3>
-              <div style="padding-left:20px;">
-                <div>
-                    catégories : 
-                    
-                    • <span class="post-meta">installation</span>
-                    
-                    • <span class="post-meta">configuration</span>
-                    
-                    • 
-                </div>
-                <p>
-                    </p>
-<p>Installation et premières configurations de <a href="https://code.visualstudio.com/">visual studio code</a> (vsc).
-<!--more--></p>
-
-                
-                
-              </div>                              
-              
-        </li>
-        
-        <li id="12">
-            
-            <h3>
-                <a class="post-link" href="/cours_informatique/tutoriels/format-markdown.html">
-                  Format markdown
-                </a>
-              </h3>
-              <div style="padding-left:20px;">
-                <div>
-                    catégories : 
-                    
-                    • <span class="post-meta">langage</span>
-                    
-                    • <span class="post-meta">markdown</span>
-                    
-                    • 
-                </div>
-                <p>
-                    </p>
-<p>Une introduction au format markdown.</p>
-
-                
-                
-              </div>                              
-              
-        </li>
-        
-        <li id="13">
-            
-            <h3>
                 <a class="post-link" href="/cours_informatique/tutoriels/python/2021-09-14-installation-anaconda.html">
                   Installation d'Anaconda python
                 </a>
@@ -626,7 +572,7 @@
               
         </li>
         
-        <li id="14">
+        <li id="12">
             
             <h3>
                 <a class="post-link" href="/cours_informatique/tutoriels/systeme/2021-09-27-wsl-windows.html">
@@ -653,7 +599,7 @@
               
         </li>
         
-        <li id="15">
+        <li id="13">
             
             <h3>
                 <a class="post-link" href="/cours_informatique/tutoriels/2021-10-28-smartgrid.html">
@@ -673,6 +619,61 @@
                 <p>
                     </p>
 <p>Le jeu smartgrid</p>
+
+                
+                
+              </div>                              
+              
+        </li>
+        
+        <li id="14">
+            
+            <h3>
+                <a class="post-link" href="/cours_informatique/tutoriels/editeur/vsc/vsc-installation-et-prise-en-main.html">
+                  Installation et prise en main de vscode
+                </a>
+              </h3>
+              <div style="padding-left:20px;">
+                <div>
+                    catégories : 
+                    
+                    • <span class="post-meta">installation</span>
+                    
+                    • <span class="post-meta">configuration</span>
+                    
+                    • 
+                </div>
+                <p>
+                    </p>
+<p>Installation et premières configurations de <a href="https://code.visualstudio.com/">visual studio code</a> (vsc).
+<!--more--></p>
+
+                
+                
+              </div>                              
+              
+        </li>
+        
+        <li id="15">
+            
+            <h3>
+                <a class="post-link" href="/cours_informatique/tutoriels/format-markdown.html">
+                  Format markdown
+                </a>
+              </h3>
+              <div style="padding-left:20px;">
+                <div>
+                    catégories : 
+                    
+                    • <span class="post-meta">langage</span>
+                    
+                    • <span class="post-meta">markdown</span>
+                    
+                    • 
+                </div>
+                <p>
+                    </p>
+<p>Une introduction au format markdown.</p>
 
                 
                 
