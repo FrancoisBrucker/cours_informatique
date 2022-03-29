@@ -523,19 +523,33 @@ pour chaque cycle de n villes:
   <li>de raffiner la solution pour en trouver une meilleure</li>
 </ol>
 
-<p>Pour la deuxième idée, la méthode utilisée est appelée <a href="https://fr.wikipedia.org/wiki/2-opt">2-opt</a> :</p>
+<p>Pour la deuxième idée, la méthode couramment utilisée est appelée <a href="https://fr.wikipedia.org/wiki/2-opt">2-opt</a> :</p>
 
-<blockquote>
-  <p>L’algorithme 2-opt consiste à modifier localement une solution plusieurs fois. Une étape de l’algorithme consiste à  Soit $v_1 \dots v_n v_1$ un cycle. On 
-algo (aléatoire/glouton) + 2opt</p>
+<blockquote class="note">
+  <p>L’algorithme 2-opt consiste à itérativement modifier localement une solution pour l’améliorer.</p>
+
+  <p>Dans le cas du voyageur de commerce, on suppose que l’on possède un cycle $c$.</p>
+
+  <ol>
+    <li>commence par choisir une ville $v_1$ aléatoire comme début du cycle : $c = v_1 \dots v_n v_1$</li>
+    <li>on choisit ensuite une ville $v_i$ au hasard telle que $2 &lt; i &lt; n$</li>
+    <li>on considère le cycle $c’ = v_1\dots v_{i}v_{i-1}\dots v_{2}v_{i+1}\dots v_n v_1$</li>
+    <li>si le coût de $c’$ est inférieure strictement au coût de $c$ on le conserve, sinon on le rejette et on conserve $c$.</li>
+  </ol>
+
 </blockquote>
+
+<p>L’algorithme 2-opt permet de <em>décroiser</em> les cycle, comme par exemple dans l’exemple suivant :</p>
 
 <p><img src="./assets/voyageur-1.png" alt="croisements" style="margin: auto;display: block;"></p>
 
 <h3 id="recuit-simulé">recuit simulé</h3>
 
-<p>chemin aléatoire
-2-opt aléatoire + recuit</p>
+<p><a href="https://fr.wikipedia.org/wiki/Recuit_simul%C3%A9">recuit simulé</a></p>
+
+<blockquote class="tbd">
+  <p>2-opt où l’on accepte le nouveau cycle même s’il n’améliore pas la solution avec une proba qui diminue avec le nombre d’étapes</p>
+</blockquote>
 
 <h2 id="algorithmes-à-performances-garanties">algorithmes à performances garanties</h2>
 
@@ -548,6 +562,8 @@ algo (aléatoire/glouton) + 2opt</p>
 <p>utilisation de dictionnaires</p>
 
 <h3 id="villes">villes</h3>
+
+<p>avec des villes aléatoires et avec des villes de métropole.</p>
 
 <ol>
   <li>dessin villes (juste matplotlib, pas de geojson ni rien)</li>
