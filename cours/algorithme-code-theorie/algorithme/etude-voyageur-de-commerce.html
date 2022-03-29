@@ -476,11 +476,11 @@ pour chaque cycle de n villes:
 \($\mathcal{O}(2^k(n-k)^2)$\)</p>
 </div></details>
 
-<blockquote>
+<blockquote class="a-faire">
   <p>Ecrivez l’algorithme de résolution du problème du voyageur de commerce itérativement en partant de l’ensemble $E = {{1}}$.</p>
-</blockquote>
 
-<p class="a-faire">Montrez que sa complexité peut-être estimée à $\mathcal{O}(n^22^n)$.</p>
+  <p>Montrez que sa complexité peut-être estimée à $\mathcal{O}(n^22^n)$.</p>
+</blockquote>
 <details><summary>solution</summary><div>
 <p>Il suffit d’appliquer itérativement l’algorithme précédent jusqu’à obtenir $C(I, k)$ pour tous les sous-ensembles à $n-1$ éléments contenant 1.</p>
 
@@ -520,10 +520,15 @@ pour chaque cycle de n villes:
 
 <ol>
   <li>de relancer plusieurs fois l’algorithme (en particulier celui qui rend des cycles aléatoires) et de prendre la meilleure solution</li>
-  <li>de raffiner est de raffiner les solutions</li>
+  <li>de raffiner la solution pour en trouver une meilleure</li>
 </ol>
 
-<p>algo (aléatoire/glouton) + 2opt</p>
+<p>Pour la deuxième idée, la méthode utilisée est appelée <a href="https://fr.wikipedia.org/wiki/2-opt">2-opt</a> :</p>
+
+<blockquote>
+  <p>L’algorithme 2-opt consiste à modifier localement une solution plusieurs fois. Une étape de l’algorithme consiste à  Soit $v_1 \dots v_n v_1$ un cycle. On 
+algo (aléatoire/glouton) + 2opt</p>
+</blockquote>
 
 <p><img src="./assets/voyageur-1.png" alt="croisements" style="margin: auto;display: block;"></p>
 
