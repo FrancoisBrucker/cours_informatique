@@ -246,11 +246,11 @@ Nous n'allons pas chercher à résoudre par un algorithme polynomial le problèm
 
 > Le problème du voyageur de commerce fait parti des problèmes NP-difficiles (une variante des problèmes [NP complets](https://fr.wikipedia.org/wiki/Probl%C3%A8me_NP-complet)) : on ne connait pas d'algorithmes polynomial pour le résoudre.
 >
-> Ces problèmes sont théoriquement intéressant car ce sont des **problèmes universels** : si on sait résoudre un seul problème NP-difficile avec un algorithme polynoial, le même algorithme permettrait de résoudre non seulement tous les problèmes NP-difficiles mais également tous les problèmes résolubles par un ordinateur.
+> Ces problèmes sont théoriquement intéressant car ce sont des **problèmes universels** : si on sait résoudre un seul problème NP-difficile avec un algorithme polynomial, le même algorithme permettrait de résoudre non seulement tous les problèmes NP-difficiles mais également tous les problèmes résolubles par un ordinateur.
 >
 {: .note}
 
-### toutes les solutions
+### énumération de tous les cycles
 
 On peut tenter d'énumérer tous les cycles possibles et en garder le minimum.
 
@@ -292,7 +292,7 @@ de i allant de 2 à n-1:
 
 > Ecrivez l'algorithme qui énumère tous les cycles et en garde le minimum.
 >
-> Quelle est la complexité de cet algorithme ?
+> Montrez que sa complexité peut être estimée à $\mathcal{O}(n!)$.
 >
 {: .a-faire}
 {% details solution %}
@@ -311,31 +311,127 @@ Il faut parcourir les $\frac{(n-1)!}{2}$ cycles et pour chacun calculer son cout
 
 {% enddetails %}
 
-### par programmation dynamique
+### résolution par programmation dynamique
 
 Générer tous les cycles prend énormément de temps. On va de plus refaire plein de fois les mêmes erreurs (faire plein de fois Brest -> Marseille -> Rennes -> Paris par exemple alors qu'on localement faire bien mieux) : on va utiliser une méthode de programmation appelé **programmation dynamique** qui va nous permettre de factoriser des résultats.
 
 > La [**programmation dynamique**](https://fr.wikipedia.org/wiki/Programmation_dynamique) est une méthode de création d'algorithme basé sur le fait qu'une solution minimale est composée de sous-solutions elles-même minimale.
 {: .note}
 
-> exemple chemin
-{: .tbd}
+L'exemple classique donné pour expliquer la programmation dynamique est : si un chemin $\mathcal{C}$ le plus court entre 2 points $A$ et $B$ passe par le point $C$, alors le chemin de $A$ vers $C$ et le chemin de $C$ vers $B$ dans $\mathcal{C}$ sont tous deux minimaux (s'il existait par exemple un chemin plus court entre $A$ et $C$ il suffirait de l'emprunter et $\mathcal{C}$ ne serait plus minimal).
 
-On peut faire un algorithme plus efficace en ne reca
+Le principe de création d'algorithme utilisant la programmation dynamique est alors le suivant : on essaie de créer des solution optimales avec des solutions partielles elles-même optimales.
 
-## heurisitique
+Ceci se concrétise souvent par une équation récurrente à vérifier. Dans le cas de voyageur de commerce à $n$ villes $(v_i)_{1\leq i \leq n}$ et avec $c$ comme fonction de coût, on peut construire un algorithme de programmation dynamique en remarquant que :
+
+> Soit $I$ un sous ensemble de $[1 \mathrel{ {.}\,{.} } n]$ contenant $1$, et $j\notin I$.
+>
+> Si l'on note $C(I, j)$ le coût d'un plus court chemin allant de $v_1$ à $v_j$ en utilisant que des villes de $\{ v_i \mid i \in I \}$, on peut écrire :
+>
+> $$
+> C(I, j) = \min_{k \in I \backslash \{ 1 \}} (C(I \backslash \{ k\}, k) + c(v_k, v_j))
+> $$
+>
+{: .note}
+
+L'équation ci-dessous nous donne un moyen de construire itérativement des chemins minimaux jusqu'à arriver au calcul final :
+
+$$
+\min_{k \in [1 \mathrel{ {.}\,{.} } n] \backslash \{ 1 \}} (C([1 \mathrel{ {.}\,{.} } n] \backslash \{ k\}, k) + c(v_k, v_1))
+$$
+
+Qui est le coût minimal du voyageur de commerce.
+
+> En supposant que l'on connaisse $C(I, j)$ pour tous les sous-ensembles $I$ à $k$ éléments et tous les $j$, écrivez l'algorithme qui calcule tous les $C(I', j)$ pour tous les sous-ensembles $I'$ à $k+1$ éléments.
+{: .a-faire}
+{% details solution %}
+
+On a :
+
+$$
+C(I', j) =  \min_{k \in I' \backslash \{ 1 \}} (C(I' \backslash \{ k\}, k) + c(v_k, v_j))
+$$
+
+Comme j n'est pas dans $I'$, ceci est équivalent à :
+
+$$
+C(I', j) = \min_{I \cup \{ \{ k\}\} = I'} (C(I, k) + c(v_k, v_j))
+$$
+
+On peut donc écrire :
+
+```text
+    pour chaque I de E:
+        pour chaque l de [1..n] qui n'est pas dans I:
+            pour chaque j de [1..n] qui n'est pas dans I et qui n'est pas l:                        
+                m = C(I, l) + c(v_l, v_j)
+                si C(I + {l}, j) n'existe pas:
+                    C(I + {l}, j) = m
+                sinon:
+                    C(I + {l}, j) = min(C(I + {l}, j), m)
+```
+
+La complexité de cet algorithme est en $\mathcal{O}((n-k)(n-k-1))$ pour chaque élément de $E$ et comme il y en a $2^k$ éléments, la complexité totale de cet algorithme est :
+$$
+$\mathcal{O}(2^k(n-k)^2)$
+$$
+{% enddetails %}
+
+> Ecrivez l'algorithme de résolution du problème du voyageur de commerce itérativement en partant de l'ensemble $E = \{\{1\}\}$.
+
+Montrez que sa complexité peut-être estimée à $\mathcal{O}(n^22^n)$.
+{: .a-faire}
+{% details solution %}
+
+Il suffit d'appliquer itérativement l'algorithme précédent jusqu'à obtenir $C(I, k)$ pour tous les sous-ensembles à $n-1$ éléments contenant 1.
+
+La complexité totale est donc : $\mathcal{O}(\sum_{k=1}^{n-1}2^k \cdot (n-k)^2) = \mathcal{O}(n^22^n)$
+
+{% enddetails %}
+
+Cette complexité est importante, mais tout de même plus petite que l'énumération de tous les cycles : on ne garde qu'une solution pour un sous-ensemble donné et par tous les cycles possibles.
+
+## heuristiques
+
+Les deux algorithmes exact sont impossible à mettre en pratique pour un nombre de villes plus grand que 10 environ. Il y a tout simplement trop d'opérations à effectuer.
+
+Nous allons montrer ici quelques algorithmes approchés (appelées [heuristiques](https://fr.wikipedia.org/wiki/Heuristique)) permettant de trouver une solution acceptable au problème du voyageur de commerce.
+
+### aléatoire
+
+> Créez un algorithme permettant de résoudre le problème du voyageur de commerce en donnant un cycle aléatoire.
+{: .a-faire}
+
+Cet algorithme n'est pas du tout performant, mais va servir de base à d'autres algorithmes.
 
 ### gloutons
 
-pas ouf
+> Créez un algorithme glouton permettant de résoudre le problème du voyageur de commerce
+{: .a-faire}
+{% details solution %}
+
+On prend toujours le plus proche et on construit le cycle petit à petit.
+
+{% enddetails %}
 
 ### 2-opt
+
+L'algorithme glouton et l'algorithme aléatoire ne produisent pas vraiment de bons résultats. L'idée est alors :
+
+1. de relancer plusieurs fois l'algorithme (en particulier celui qui rend des cycles aléatoires) et de prendre la meilleure solution
+2. de raffiner est de raffiner les solutions
+
 
 algo (aléatoire/glouton) + 2opt 
 
 ![croisements](./assets/voyageur-1.png){:style="margin: auto;display: block;"}
 
-### à performance garantie
+### recuit simulé
+
+chemin aléatoire
+2-opt aléatoire + recuit
+
+## algorithmes à performances garanties
 
 2 optimal
 
@@ -343,11 +439,13 @@ on peut faire mieux (christofides, lien wiki) et c'est le min.
 
 ## code
 
+utilisation de dictionnaires
+
 ### villes
 
 1. dessin villes (juste matplotlib, pas de geojson ni rien)
 2. un cycle aléatoire
-3. résolution exacte de peu de villes (on généère toutes les permutations, tant pis s'il y en a 2n de trop)
+3. résolution exacte dynamique de peu de villes (on génère toutes les permutations, tant pis s'il y en a 2n de trop)
 4. glouton
 5. glouton + 2ops
 6. à performance garanties

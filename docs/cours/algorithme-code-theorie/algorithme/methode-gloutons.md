@@ -53,6 +53,8 @@ Pour beaucoup de problèmes d'optimisation réels, un algorithme glouton est opt
 2. découper le problème en une succession d'tapes où il est facile de choisir la meilleure solution
 3. choisir un ordre de parcours des différentes étapes.
 
+Un cas particulier important est lorsque le problème d'optimisation revient à trouver un sous-ensemble *optimal* d'un ensemble connu. Dans ce cas là, l'item 2 revient à examiner itérativement les éléments de l'ensemble et à les ajouter un à un si possible à l'ensemble à trouver.
+
 ### optimalité et glouton
 
 Les problèmes d'optimalité demandent de trouver, parmi un ensemble de solutions possible, une solution minimisant (ou maximisant) un critère. Par exemple :
@@ -76,7 +78,7 @@ Pour qu'un algorithme glouton **trouve une solution optimale** il faut :
 On pourra également utiliser la technique de preuve suivante :
 
 * on suppose que l'algorithme glouton ne donne pas une solution optimale et on considère une solution optimale coïncidant le plus longtemps possible avec la solution donnée par celui-ci
-* on démontre que l'on cependant construire une solution optimale coïncident plus longtemps avec l'algorithme glouton ce qui invalide notre hypothèse de départ: l'algorithme glouton est optimal.
+* on démontre que l'on peut cependant construire une solution optimale coïncidant plus longtemps avec l'algorithme glouton ce qui invalide notre hypothèse de départ: l'algorithme glouton est optimal.
 
 ## exemple 1 : le rendu de pièces {#exemple-le-rendu-de-pièces}
 
@@ -85,10 +87,8 @@ Proposons un algorithme glouton permettant de rendre la monnaie $R$ d'un achat e
 ### design de l'algorithme
 
 1. **écrire le problème comme un problème d'optimisation** : Il faut rendre un nombre minimum de pièces
-2. **découper le problème en une succession d'étapes** : si l'on doit rendre en pièces d'une valeur $de v$, il faut rendre le maximum de pièces possibles (la division entière de $R$ par $v$). On va donc considérer à chaque étape qu'une seule valeur $v$ de pièce.   on ne peut pas rendre plus de $p$ pièces où $p$ est . On va donc itérativement rendre le nombre maximum de pièces pour une valeur de pièce donnée
+2. **découper le problème en une succession d'étapes** : si l'on doit rendre en pièces d'une valeur de $v$, il faut rendre le maximum de pièces possibles, qui correspond à la division entière de $R$ par $v$. On va donc considérer à chaque étape qu'une seule valeur $v$ de pièce, puisqu'il est facile de trouver l'optimum dans ce cas là. Notre algorithme va donc itérativement rendre le nombre maximum de pièces pour une valeur de pièce donnée
 3. **choisir un ordre de parcours** : comme il faut rendre le minimum de pièces données, on va examiner les pièces par valeur décroissantes
-
-Un cas particulier important est lorsque le problème d'optimisation revient à trouver un sous-ensemble *optimal* d'un ensemble connu. Dans ce cas là, l'item 2 revient à examiner itérativement les éléments de l'ensemble et à les ajouter un à un si possible à l'ensemble à trouver.
 
 ### algorithme : rendu de pièce
 
