@@ -421,19 +421,32 @@ L'algorithme glouton et l'algorithme aléatoire ne produisent pas vraiment de bo
 1. de relancer plusieurs fois l'algorithme (en particulier celui qui rend des cycles aléatoires) et de prendre la meilleure solution
 2. de raffiner la solution pour en trouver une meilleure
 
-Pour la deuxième idée, la méthode utilisée est appelée [2-opt](https://fr.wikipedia.org/wiki/2-opt) :
+Pour la deuxième idée, la méthode couramment utilisée est appelée [2-opt](https://fr.wikipedia.org/wiki/2-opt) :
 
-> L'algorithme 2-opt consiste à modifier localement une solution plusieurs fois. Une étape de l'algorithme consiste à  Soit $v_1 \dots v_n v_1$ un cycle. On 
-algo (aléatoire/glouton) + 2opt 
+> L'algorithme 2-opt consiste à itérativement modifier localement une solution pour l'améliorer.
+>
+> Dans le cas du voyageur de commerce, on suppose que l'on possède un cycle $c$.
+>
+> 1. commence par choisir une ville $v_1$ aléatoire comme début du cycle : $c = v_1 \dots v_n v_1$
+> 2. on choisit ensuite une ville $v_i$ au hasard telle que $2 < i < n$
+> 3. on considère le cycle $c' = v_1\dots v_{i}v_{i-1}\dots v_{2}v_{i+1}\dots v_n v_1$
+> 4. si le coût de $c'$ est inférieure strictement au coût de $c$ on le conserve, sinon on le rejette et on conserve $c$.
+>
+{: .note}
+
+L'algorithme 2-opt permet de *décroiser* les cycle, comme par exemple dans l'exemple suivant :
 
 ![croisements](./assets/voyageur-1.png){:style="margin: auto;display: block;"}
 
 ### recuit simulé
 
-chemin aléatoire
-2-opt aléatoire + recuit
+[recuit simulé](https://fr.wikipedia.org/wiki/Recuit_simul%C3%A9)
+
+> 2-opt où l'on accepte le nouveau cycle même s'il n'améliore pas la solution avec une proba qui diminue avec le nombre d'étapes
+{: .tbd}
 
 ## algorithmes à performances garanties
+
 
 2 optimal
 
@@ -444,6 +457,9 @@ on peut faire mieux (christofides, lien wiki) et c'est le min.
 utilisation de dictionnaires
 
 ### villes
+
+avec des villes aléatoires et avec des villes de métropole.
+
 
 1. dessin villes (juste matplotlib, pas de geojson ni rien)
 2. un cycle aléatoire
