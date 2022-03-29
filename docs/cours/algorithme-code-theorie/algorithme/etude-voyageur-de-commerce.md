@@ -14,29 +14,29 @@ category: cours
 
 Nous allons étudier ici un problème d'intérêt pratique ainsi que certains problèmes connexes. L'étude de ces problèmes nous permettra d'utiliser des technique de design d'algorithmes connus comme les algorithmes gloutons ou d'en découvrir d'autres comme la programmation dynamique.
 
-En plus d'être des problèmes courant, ils de plus très jolis algorithmiquement. On espère que vous aimerez la ballade.
+En plus d'être des problèmes courants, ils sont très jolis algorithmiquement. On espère que vous aimerez la ballade.
 
 ## graphes connexes
 
-Les problèmes que nous allons étudier dans cette partie sont tous plus ou moins relier à la notion de **graphe**. Nous n'allons pas faire un cours de graphe ici (une introduction est disponible [ici]({% link cours/graphes/index.md %}) pour les personnes intéressées), juste donner quelques définitions et propriétés utiles :
+Les problèmes que nous allons étudier dans cette partie sont tous plus ou moins reliés à la notion de **graphe**. Nous n'allons pas faire un cours de graphe ici (une introduction est disponible [ici]({% link cours/graphes/index.md %}) pour les personnes intéressées), juste donner quelques définitions et propriétés utiles :
 
-> Un **graphe** $G = (V, E)$ est un couple où $E$ est un ensemble de sous-ensemble à 2 éléments de $V$. $E$ est l'ensemble des **sommets** de $G$ et $E$ l'ensemble des **arêtes** (on notera les arêtes $xy$ plutôt que $\{x, y\}$ pour rendre les notations plus digestes).
+> Un **graphe** $G = (V, E)$ est un couple où $E$ est un ensemble de sous-ensembles à 2 éléments de $V$. $E$ est l'ensemble des **sommets** de $G$ et $E$ l'ensemble des **arêtes** (on notera les arêtes $xy$ plutôt que $\{x, y\}$ pour rendre les notations plus digestes).
 >
 > Une **valuation** d'un graphe $G = (V, E)$ est une fonction $\omega: E \rightarrow \mathbb{R}^+$
 {: .note}
 
-Nous allons en particulier nous intéresser aux problématiques de chemin et cycles dans un graphe, que l'on peut définir ainsi :
+Nous allons en particulier nous intéresser aux problématiques de chemins et cycles dans un graphe, que l'on peut définir ainsi :
 
 > Pour un graphe $G=(V, E)$ :
 >
 > * un **chemin** est une suite de sommets $v_1,\dots, v_i, \dots, v_m$ tels que :
 >   * $v_iv_{i+1} \in E$ pour tout $1\leq i < m$,
 >   * $v_iv_{i+1} \neq v_jv_{j+1}$ si $i \neq j$
-> * un **cycle** est un chemin dans le premier et le dernier élément sont identiques.
+> * un **cycle** est un chemin dont le premier et le dernier élément sont identiques.
 >
 {: .note}
 
-Enfin, nous introduisons la notion, de connectivité d'un graphe :
+Enfin, nous introduisons la notion de connexité d'un graphe :
 
 > **Problème de connexité d'un graphe** :
 >
@@ -64,14 +64,14 @@ Remarquez que le problème de connexité est équivalent au problème suivant (p
 
 Soit $G = (V, E)$ un graphe. Il est clair que s'il est connexe, le *problème des chemins à partir d'un sommet* est aussi vrai, $\forall x \in V$
 
-Réciproquement, supposons que le problème *problème des chemins à partir d'un sommet* est vrai pour $G$ et un sommet $x^\star$
+Réciproquement, supposons que le *problème des chemins à partir d'un sommet* est vrai pour $G$ et un sommet $x^\star$
 
 Soient alors $x \neq y \in V$. Il existe :
 
 * un chemin $u_1\dots u_k$ entre $x^\star$ et $x$ ($u_1 = x^\star$ et $u_k = x$)
 * un chemin $v_1\dots v_l$ entre $y$ et $x^\star$ ($v_l = y$ et $v_l = x^\star$)
 
-On peut alors noter $i^\star$ le plus grand indice tel qu'il existe $j^\star$ avec : $u_{i^\star$} = v_j^\star$. Comme $u_1 = v_l$, $i^\star$ existe.
+On peut alors noter $i^\star$ le plus grand indice tel qu'il existe $j^\star$ avec : $u_{i^\star} = v_{j^\star}$. Comme $u_1 = v_l$, $i^\star$ existe.
 
 La suite $v_1 \dots v_{j^\star} u_{i^\star+1} \dots u_k$ est alors un chemin entre $x$ et $y$. 
 
@@ -99,7 +99,7 @@ Il faut donc un petit nombre d'arête à un graphe pour qu'il soit connexe :
 
 On le prouve par récurrence sur $\vert V \vert$. Si le graphe contient 1 sommet, la propriété est vérifiée. Supposons la propriété vrai pour $n-1$ sommet et considérons un graphe connexe à $n > 1$ sommet.
 
-Choisissons un sommet $x$ du graphe est supprimons le de $G$. La restriction de $G$ contient alors $k$ composantes connexes à $n_i$ sommets ($1 \leq i \leq k$), contenant (par hypothèse de récurrence) chacune au moins $n_i -1$ arêtes.
+Choisissons un sommet $x$ du graphe et supprimons le de $G$. La restriction de $G$ contient alors $k$ composantes connexes à $n_i$ sommets ($1 \leq i \leq k$), contenant (par hypothèse de récurrence) chacune au moins $n_i -1$ arêtes.
 
 Comme $G$ était connexe, $x$ était relié à chacune des composantes connexes par une arête, c'est à dire au moins $k$. De là, le nombre d'arête de $G$ est :
 
@@ -133,7 +133,7 @@ On peut utiliser un algorithme glouton pour résoudre ce problème. Comme tout a
 1. $E = \emptyset$
 2. pour chaque couple $xy$ : si le graphe $G=(V, E \cup \{xy\})$ a moins de composantes connexes que $G=(V, E)$ alors $E = E \cup \{ xy \}$
 
-> Combien d'arête aura $E$ à la fin de l'algorithme ?
+> Combien d'arêtes aura $E$ à la fin de l'algorithme ?
 {: .a-faire}
 {% details solution %}
 
@@ -143,7 +143,7 @@ Lorsque l'on ajoute une arête, on diminue de 1 le nombre de composantes connexe
 Il reste deux inconnues :
 
 1. dans quel ordre parcourir les différents couples ?
-2. comme vérifier efficacement qu'un graphe à moins de composantes connexe qu'un autre
+2. comme vérifier efficacement qu'un graphe a moins de composantes connexes qu'un autre
 
 En répondant à la première question, on démontrera que notre algorithme glouton est optimal et en répondant à la seconde question, on le fera rapidement.
 
@@ -156,17 +156,17 @@ Soit $E^\star$ une solution optimale et considérons le déroulement de l'algori
 1. l'algorithme rejette $xy$ alors qu'il est dans $E^\star$
 2. l'algorithme accepte $xy$ alors qu'il n'est pas $E^\star$
 
-On peut même sans perte de généralité considérer que parmi toutes les solutions optimale, $E^\star$ est celle qui coïncide le plus longtemps avec $E$.
+On peut même sans perte de généralité considérer que parmi toutes les solutions optimales, $E^\star$ est celle qui coïncide le plus longtemps avec $E$.
 
 Le premier cas est impossible car si l'algorithme rejette $xy$, c'est que cette arête ne diminue pas le nombre de composantes connexes, on pourrait donc la supprimer de $E^\star$ sans altérer le nombre de composantes connexes du graphe.
 
 Dans le deuxième cas. Si $xy$ n'est pas dans $E^\star$ c'est qu'il existe un chemin allant de $x$ à $y$ dans $E^\star$ dont au moins une arête, disons $uv$ n'est pas dans $E$. Cette arête est de coût supérieur à celui de $xy$ ($xy$ est la première arête qui diffère entre $E$ et $E^\star$, donc on a pas encore vu $uv$ lorsque l'on examine $xy$).
 
-L'ensemble $E^\star \backslash \{ uv \} \cup \{ xy \}$ serait alors encore connexe, mais de coût inférieure. Ceci est doublement impossible car on aurait une solution optimale qui coïnciderait plus longtemps avec $E$ que $E^\star$ ce qui est impossible par hypothèse.
+L'ensemble $E^\star \backslash \{ uv \} \cup \{ xy \}$ serait alors encore connexe, mais de coût inférieur. Ceci est doublement impossible car on aurait une solution optimale qui coïnciderait plus longtemps avec $E$ que $E^\star$ ce qui est impossible par hypothèse.
 
 {% enddetails %}
 
-> Soit $G=(V, E)$. Supposons que l'on ait une fonction $f: V \rightarrow V$ tel que $f(x) = f(y)$ si et seulement si il existe un chemin entre $x$ et $y$.
+> Soit $G=(V, E)$. Supposons que l'on ait une fonction $f: V \rightarrow V$ telle que $f(x) = f(y)$ si et seulement si il existe un chemin entre $x$ et $y$.
 >
 > * quand est-ce que $x$ est dans la même composante connexe que $y$ ?
 > * comment mettre à jour $f$ si on ajoute l'arête $xy$ à $G$ ?
@@ -212,13 +212,13 @@ def reseau(V, d):
     rendre E
 ```
 
-C'est algorithme s'appelle l'algorithme de Kruskal dans le cadre de la théorie des graphes.
+Cet algorithme s'appelle l'algorithme de Kruskal dans le cadre de la théorie des graphes.
 
 Sa complexité est la suivante :
 
 * tris de $\frac{n(n-1)}{2}$ couples : $\mathcal{O}(n^2\log(n^2)) = \mathcal{O}(n^2 \cdot2\cdot \log(n)) = \mathcal{O}(n^2\log(n))$
 * assignation d'une valeur à $f$ pour chaque élément de $V$ : $\mathcal{O}(n)$
-* parcours tous les couples ($\frac{n(n-1)}{2}$ couples), et on met à jour $f$ en $\mathcal{O}(n)$ opérations. Comme on ne fait la modification de $f$ que si le nombre de composantes connexes diminues, c'est à dire au maximum $n$ fois !,  la complexité totale de cette parie est en $\mathcal{O}(n^2)$
+* parcours de tous les couples ($\frac{n(n-1)}{2}$ couples), et on met à jour $f$ en $\mathcal{O}(n)$ opérations. Comme on ne fait la modification de $f$ que si le nombre de composantes connexes diminue, c'est à dire au maximum $n$ fois,  la complexité totale de cette partie est en $\mathcal{O}(n^2)$
 
 {% enddetails %}
 
@@ -242,11 +242,11 @@ Il existe de nombreuses formalisation de ce problème, nous allons en donner 2. 
 
 ## résolution exacte
 
-Nous n'allons pas chercher à résoudre par un algorithme polynomial le problème du voyageur de commerce, car c'est un problème NP-difficile et que beaucoup (tous ?) les informaticiens on tenter au moins une fois de le faire sans y parvenir. En revanche, on peut trouver une solution exact à notre problème en utilisant un algorithme exponentiel.
+Nous n'allons pas chercher à résoudre par un algorithme polynomial le problème du voyageur de commerce, car c'est un problème NP-difficile et que beaucoup (tous ?) les informaticiens ont tenté au moins une fois de le faire sans y parvenir. En revanche, on peut trouver une solution exacte à notre problème en utilisant un algorithme exponentiel.
 
 > Le problème du voyageur de commerce fait parti des problèmes NP-difficiles (une variante des problèmes [NP complets](https://fr.wikipedia.org/wiki/Probl%C3%A8me_NP-complet)) : on ne connait pas d'algorithmes polynomial pour le résoudre.
 >
-> Ces problèmes sont théoriquement intéressant car ce sont des **problèmes universels** : si on sait résoudre un seul problème NP-difficile avec un algorithme polynomial, le même algorithme permettrait de résoudre non seulement tous les problèmes NP-difficiles mais également tous les problèmes résolubles par un ordinateur.
+> Ces problèmes sont théoriquement intéressants car ce sont des **problèmes universels** : si on sait résoudre un seul problème NP-difficile avec un algorithme polynomial, le même algorithme permettrait de résoudre non seulement tous les problèmes NP-difficiles mais également tous les problèmes résolubles par un ordinateur.
 >
 {: .note}
 
@@ -261,7 +261,7 @@ On peut tenter d'énumérer tous les cycles possibles et en garder le minimum.
 {% details solution %}
 Comme le cycle doit passer par tous les sommets, je peux considérer que je commence toujours en $v_1$, il faut donc ensuite passer par $n-1$ autres villes, dans un ordre donné (il y en a $(n-1)!$).
 
-De plus, un cycle peut être parcouru dans 2 sens différents, un cycle donné correspond ainsi à 2 ordres différents ($v_1v_2\dots v_n$ et v_1v_n \v_{n-1}\dots v_2$ correspondent au même cycle parcouru dans un sens ou dans l'autre). 
+De plus, un cycle peut être parcouru dans 2 sens différents, un cycle donné correspond ainsi à 2 ordres différents ($v_1v_2\dots v_n$ et $v_1v_n \v_{n-1}\dots v_2$ correspondent au même cycle parcouru dans un sens ou dans l'autre). 
 
 Il faut donc générer $\frac{(n-1)!}{2}$ cycles différents.
 
@@ -313,16 +313,16 @@ Il faut parcourir les $\frac{(n-1)!}{2}$ cycles et pour chacun calculer son cout
 
 ### résolution par programmation dynamique
 
-Générer tous les cycles prend énormément de temps. On va de plus refaire plein de fois les mêmes erreurs (faire plein de fois Brest -> Marseille -> Rennes -> Paris par exemple alors qu'on localement faire bien mieux) : on va utiliser une méthode de programmation appelé **programmation dynamique** qui va nous permettre de factoriser des résultats.
+Générer tous les cycles prend énormément de temps. On va de plus refaire plein de fois les mêmes erreurs (faire plein de fois Brest -> Marseille -> Rennes -> Paris par exemple alors qu'on peut localement faire bien mieux) : on va utiliser une méthode de programmation appelé **programmation dynamique** qui va nous permettre de factoriser des résultats.
 
-> La [**programmation dynamique**](https://fr.wikipedia.org/wiki/Programmation_dynamique) est une méthode de création d'algorithme basé sur le fait qu'une solution minimale est composée de sous-solutions elles-même minimale.
+> La [**programmation dynamique**](https://fr.wikipedia.org/wiki/Programmation_dynamique) est une méthode de création d'algorithme basée sur le fait qu'une solution minimale est composée de sous-solutions elles-mêmes minimales.
 {: .note}
 
 L'exemple classique donné pour expliquer la programmation dynamique est : si un chemin $\mathcal{C}$ le plus court entre 2 points $A$ et $B$ passe par le point $C$, alors le chemin de $A$ vers $C$ et le chemin de $C$ vers $B$ dans $\mathcal{C}$ sont tous deux minimaux (s'il existait par exemple un chemin plus court entre $A$ et $C$ il suffirait de l'emprunter et $\mathcal{C}$ ne serait plus minimal).
 
 Le principe de création d'algorithme utilisant la programmation dynamique est alors le suivant : on essaie de créer des solution optimales avec des solutions partielles elles-même optimales.
 
-Ceci se concrétise souvent par une équation récurrente à vérifier. Dans le cas de voyageur de commerce à $n$ villes $(v_i)_{1\leq i \leq n}$ et avec $c$ comme fonction de coût, on peut construire un algorithme de programmation dynamique en remarquant que :
+Ceci se concrétise souvent par une équation récurrente à vérifier. Dans le cas du voyageur de commerce à $n$ villes $(v_i)_{1\leq i \leq n}$ et avec $c$ comme fonction de coût, on peut construire un algorithme de programmation dynamique en remarquant que :
 
 > Soit $I$ un sous ensemble de $[1 \mathrel{ {.}\,{.} } n]$ contenant $1$, et $j\notin I$.
 >
@@ -373,13 +373,13 @@ On peut donc écrire :
 
 La complexité de cet algorithme est en $\mathcal{O}((n-k)(n-k-1))$ pour chaque élément de $E$ et comme il y en a $2^k$ éléments, la complexité totale de cet algorithme est :
 $$
-$\mathcal{O}(2^k(n-k)^2)$
+\mathcal{O}(2^k(n-k)^2)
 $$
 {% enddetails %}
 
 > Ecrivez l'algorithme de résolution du problème du voyageur de commerce itérativement en partant de l'ensemble $E = \{\{1\}\}$.
 >
->Montrez que sa complexité peut-être estimée à $\mathcal{O}(n^22^n)$.
+>Montrez que sa complexité peut être estimée à $\mathcal{O}(n^22^n)$.
 {: .a-faire}
 {% details solution %}
 
@@ -389,11 +389,11 @@ La complexité totale est donc : $\mathcal{O}(\sum_{k=1}^{n-1}2^k \cdot (n-k)^2)
 
 {% enddetails %}
 
-Cette complexité est importante, mais tout de même plus petite que l'énumération de tous les cycles : on ne garde qu'une solution pour un sous-ensemble donné et par tous les cycles possibles.
+Cette complexité est importante, mais tout de même plus petite que l'énumération de tous les cycles : on ne garde qu'une solution pour un sous-ensemble donné et pas tous les cycles possibles.
 
 ## heuristiques
 
-Les deux algorithmes exact sont impossible à mettre en pratique pour un nombre de villes plus grand que 10 environ. Il y a tout simplement trop d'opérations à effectuer.
+Les deux algorithmes exacts sont impossibles à mettre en pratique pour un nombre de villes plus grand que 10 environ. Il y a tout simplement trop d'opérations à effectuer.
 
 Nous allons montrer ici quelques algorithmes approchés (appelées [heuristiques](https://fr.wikipedia.org/wiki/Heuristique)) permettant de trouver une solution acceptable au problème du voyageur de commerce.
 
@@ -418,7 +418,7 @@ On prend toujours le plus proche et on construit le cycle petit à petit.
 
 L'algorithme glouton et l'algorithme aléatoire ne produisent pas vraiment de bons résultats. L'idée est alors :
 
-1. de relancer plusieurs fois l'algorithme (en particulier celui qui rend des cycles aléatoires) et de prendre la meilleure solution
+1. de relancer plusieurs fois l'algorithmes (en particulier celui qui rend des cycles aléatoires) et de prendre la meilleure solution
 2. de raffiner la solution pour en trouver une meilleure
 
 Pour la deuxième idée, la méthode couramment utilisée est appelée [2-opt](https://fr.wikipedia.org/wiki/2-opt) :
@@ -427,9 +427,9 @@ Pour la deuxième idée, la méthode couramment utilisée est appelée [2-opt](h
 >
 > Dans le cas du voyageur de commerce, on suppose que l'on possède un cycle $c$.
 >
-> 1. commence par choisir une ville $v_1$ aléatoire comme début du cycle : $c = v_1 \dots v_n v_1$
+> 1. on commence par choisir une ville $v_1$ aléatoire comme début du cycle : $c = v_1 \dots v_n v_1$
 > 2. on choisit ensuite une ville $v_i$ au hasard telle que $2 < i < n$
-> 3. on considère le cycle $c' = v_1\dots v_{i}v_{i-1}\dots v_{2}v_{i+1}\dots v_n v_1$
+> 3. on considère le cycle $c' = v_1 v_{i} v_{i-1}\dots v_{2} v_{i+1}\dots v_n v_1$
 > 4. si le coût de $c'$ est inférieure strictement au coût de $c$ on le conserve, sinon on le rejette et on conserve $c$.
 >
 {: .note}
