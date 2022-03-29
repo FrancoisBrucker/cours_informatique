@@ -378,8 +378,8 @@ $$
 {% enddetails %}
 
 > Ecrivez l'algorithme de résolution du problème du voyageur de commerce itérativement en partant de l'ensemble $E = \{\{1\}\}$.
-
-Montrez que sa complexité peut-être estimée à $\mathcal{O}(n^22^n)$.
+>
+>Montrez que sa complexité peut-être estimée à $\mathcal{O}(n^22^n)$.
 {: .a-faire}
 {% details solution %}
 
@@ -419,9 +419,11 @@ On prend toujours le plus proche et on construit le cycle petit à petit.
 L'algorithme glouton et l'algorithme aléatoire ne produisent pas vraiment de bons résultats. L'idée est alors :
 
 1. de relancer plusieurs fois l'algorithme (en particulier celui qui rend des cycles aléatoires) et de prendre la meilleure solution
-2. de raffiner est de raffiner les solutions
+2. de raffiner la solution pour en trouver une meilleure
 
+Pour la deuxième idée, la méthode utilisée est appelée [2-opt](https://fr.wikipedia.org/wiki/2-opt) :
 
+> L'algorithme 2-opt consiste à modifier localement une solution plusieurs fois. Une étape de l'algorithme consiste à  Soit $v_1 \dots v_n v_1$ un cycle. On 
 algo (aléatoire/glouton) + 2opt 
 
 ![croisements](./assets/voyageur-1.png){:style="margin: auto;display: block;"}
