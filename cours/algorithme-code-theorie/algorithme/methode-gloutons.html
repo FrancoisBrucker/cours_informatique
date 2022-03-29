@@ -124,6 +124,8 @@
   <li>choisir un ordre de parcours des différentes étapes.</li>
 </ol>
 
+<p>Un cas particulier important est lorsque le problème d’optimisation revient à trouver un sous-ensemble <em>optimal</em> d’un ensemble connu. Dans ce cas là, l’item 2 revient à examiner itérativement les éléments de l’ensemble et à les ajouter un à un si possible à l’ensemble à trouver.</p>
+
 <h3 id="optimalité-et-glouton">optimalité et glouton</h3>
 
 <p>Les problèmes d’optimalité demandent de trouver, parmi un ensemble de solutions possible, une solution minimisant (ou maximisant) un critère. Par exemple :</p>
@@ -154,7 +156,7 @@
 
 <ul>
   <li>on suppose que l’algorithme glouton ne donne pas une solution optimale et on considère une solution optimale coïncidant le plus longtemps possible avec la solution donnée par celui-ci</li>
-  <li>on démontre que l’on cependant construire une solution optimale coïncident plus longtemps avec l’algorithme glouton ce qui invalide notre hypothèse de départ: l’algorithme glouton est optimal.</li>
+  <li>on démontre que l’on peut cependant construire une solution optimale coïncidant plus longtemps avec l’algorithme glouton ce qui invalide notre hypothèse de départ: l’algorithme glouton est optimal.</li>
 </ul>
 
 <h2 id="exemple-le-rendu-de-pièces">exemple 1 : le rendu de pièces</h2>
@@ -167,12 +169,10 @@
   <li>
 <strong>écrire le problème comme un problème d’optimisation</strong> : Il faut rendre un nombre minimum de pièces</li>
   <li>
-<strong>découper le problème en une succession d’étapes</strong> : si l’on doit rendre en pièces d’une valeur $de v$, il faut rendre le maximum de pièces possibles (la division entière de $R$ par $v$). On va donc considérer à chaque étape qu’une seule valeur $v$ de pièce.   on ne peut pas rendre plus de $p$ pièces où $p$ est . On va donc itérativement rendre le nombre maximum de pièces pour une valeur de pièce donnée</li>
+<strong>découper le problème en une succession d’étapes</strong> : si l’on doit rendre en pièces d’une valeur de $v$, il faut rendre le maximum de pièces possibles, qui correspond à la division entière de $R$ par $v$. On va donc considérer à chaque étape qu’une seule valeur $v$ de pièce, puisqu’il est facile de trouver l’optimum dans ce cas là. Notre algorithme va donc itérativement rendre le nombre maximum de pièces pour une valeur de pièce donnée</li>
   <li>
 <strong>choisir un ordre de parcours</strong> : comme il faut rendre le minimum de pièces données, on va examiner les pièces par valeur décroissantes</li>
 </ol>
-
-<p>Un cas particulier important est lorsque le problème d’optimisation revient à trouver un sous-ensemble <em>optimal</em> d’un ensemble connu. Dans ce cas là, l’item 2 revient à examiner itérativement les éléments de l’ensemble et à les ajouter un à un si possible à l’ensemble à trouver.</p>
 
 <h3 id="algorithme--rendu-de-pièce">algorithme : rendu de pièce</h3>
 
