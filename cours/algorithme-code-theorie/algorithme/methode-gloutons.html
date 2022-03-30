@@ -120,11 +120,11 @@
 
 <ol>
   <li>écrire le problème comme un problème d’optimisation</li>
-  <li>découper le problème en une succession d’tapes où il est facile de choisir la meilleure solution</li>
+  <li>découper le problème en une succession d’étapes où il est facile de choisir la meilleure solution</li>
   <li>choisir un ordre de parcours des différentes étapes.</li>
 </ol>
 
-<p>Un cas particulier important est lorsque le problème d’optimisation revient à trouver un sous-ensemble <em>optimal</em> d’un ensemble connu. Dans ce cas là, l’item 2 revient à examiner itérativement les éléments de l’ensemble et à les ajouter un à un si possible à l’ensemble à trouver.</p>
+<p>Un cas particulier important est lorsque le problème d’optimisation revient à trouver un sous-ensemble <em>optimal</em> d’un ensemble connu. Dans ce cas là, l’item 2 revient à examiner itérativement les éléments de l’ensemble et à les ajouter un à un si possible à l’ensemble solution.</p>
 
 <h3 id="optimalité-et-glouton">optimalité et glouton</h3>
 
@@ -300,10 +300,19 @@ boucle <code class="language-plaintext highlighter-rouge">for</code>.</li>
 
 <p>On prouve notre algorithme en utilisant la technique de preuve par l’absurde : on suppose que l’algorithme glouton ne donne pas une solution optimale et on considère une solution optimale coïncidant le plus longtemps possible avec la solution donnée par celui-ci.</p>
 
-<p>Soit $i$ l’indice de la première différence. On note $f_i$ le film choisi par le glouton et $f’_i$ le film (différent de $f_i$) choisi par la solution optimale :</p>
+<p>Soit $i$ l’indice de l’étape de la première différence. On a deux cas :</p>
+
+<ol>
+  <li>soit le film $f_i$ a été refusé par l’algorithme glouton et il est dans la solution optimale</li>
+  <li>soit le film $f_i$ a été accepté par l’algorithme glouton et il n’est pas dans la solution optimale</li>
+</ol>
+
+<p>Le premier cas est impossible car s’il a été refusé par l’algorithme glouton, c’est qu’il empiète avec un film déjà accepté et comme les solutions optimale et gloutonne coïncident jusqu’à $i$ ces films sont aussi dans la solution optimale.</p>
+
+<p>Dans le deuxième cas, on note $f_j$ le dernier film qui est présent et dans la solution optimale et dans la solution gloutonne (celui choisi juste avant $f_i$). Soit alors $f’_i$ le film de la solution optimale (forcément différent de $f_i$) dont le début est le plus proche possible de la fin de $f_j$. On a alors que :</p>
 
 <ul>
-  <li>la date de fin de $f’_i$ est plus grande que la date de fin de $f_i$ par construction de la solution par l’algorithme glouton.</li>
+  <li>la date de fin de $f’_i$ est plus grande que la date de fin de $f_i$ par construction de l’algorithme glouton.</li>
   <li>la date de début de $f’_i$ est avant la date de fin de $f_i$ sinon on pourrait ajouter $f_i$ à la solution optimale et rendre une solution avec strictement  plus de films</li>
 </ul>
 
@@ -329,9 +338,9 @@ boucle <code class="language-plaintext highlighter-rouge">for</code>.</li>
 
 <p>Le problème suivant est résoluble par un algorithme glouton : On considère $m$ produits de durée 1 à fabriquer. Si le produit $i$ est réalisée avant la date $d_i$ on peut le vendre pour un prix $p_i$, sinon il est invendable. Proposez un algorithme permettant de maximiser les profits en considérant que l’on a qu’un seul ouvrier.</p>
 
-<p>Là encore il faut trouver un sous-ensemble de produit à créer, mais contrairement au problème précédent connaitre uniquement les éléments à produire n’est pas suffisant : il faut <em>a priori</em> également connaitre l’ordre dans lequel les produire.</p>
+<p>Il faut donc trouver un sous-ensemble de produits à créer <strong>et</strong> l’ordre dans lequel les produire. Il faut a priori optimiser deux paramètres alors que les algorithmes gloutons classiques ne sont fait que pour en optimiser un seul.</p>
 
-<p>Commençons par montrer que cet ordre est facile à trouver</p>
+<p>Commençons par montrer que cet ordre est facile à trouver.</p>
 
 <h3 id="ordre-de-production">ordre de production</h3>
 
