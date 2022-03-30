@@ -406,64 +406,180 @@ Cet algorithme n'est pas du tout performant, mais va servir de base à d'autres 
 
 ### gloutons
 
-> Créez un algorithme glouton permettant de résoudre le problème du voyageur de commerce
+> Créez un algorithme glouton permettant de résoudre le problème du voyageur de commerce.
+>
+> Montrez qu'il existe des cas où votre algorithme glouton ne trouvera pas la solution.
 {: .a-faire}
 {% details solution %}
 
-On prend toujours le plus proche et on construit le cycle petit à petit.
+On commence par une ville au hasard, puis on prend à chaque étape la ville la pus proche de la dernière ville choisie.
+
+Il ne sera jamais optimal pour le graphe suivant :
+
+![croisements](./assets/voyageur_commerce_1_2.png){:style="margin: auto;display: block;"}
 
 {% enddetails %}
 
-### 2-opt
+## raffinage de solutions
 
 L'algorithme glouton et l'algorithme aléatoire ne produisent pas vraiment de bons résultats. L'idée est alors :
 
 1. de relancer plusieurs fois l'algorithmes (en particulier celui qui rend des cycles aléatoires) et de prendre la meilleure solution
 2. de raffiner la solution pour en trouver une meilleure
 
-Pour la deuxième idée, la méthode couramment utilisée est appelée [2-opt](https://fr.wikipedia.org/wiki/2-opt) :
+Nous allons montrer deux idées pour mettre en œuvre la deuxième idée. Ces méthodes sont génériques et peuvent être appliquées à de nombreux problèmes, on les appelles des [méta-heuristiques](https://fr.wikipedia.org/wiki/M%C3%A9taheuristique), et dans notre cas font toutes deux parties des méthodes dites de [recherche locale](https://fr.wikipedia.org/wiki/M%C3%A9taheuristique) où l'on optimise localement une solution admissible.
 
-> L'algorithme 2-opt consiste à itérativement modifier localement une solution pour l'améliorer.
+Ces procédures d'optimisation dépendent de paramètres qui dépendent des données : il faut donc en essayer plusieurs...
+
+### 2-opt
+
+La méthode couramment utilisée est appelée [2-opt](https://fr.wikipedia.org/wiki/2-opt) :
+
+> L'algorithme 2-opt consiste à itérativement modifier localement une solution en échangeant 2 arêtes du cycle $c$ à optimiser.
 >
-> Dans le cas du voyageur de commerce, on suppose que l'on possède un cycle $c$.
->
-> 1. on commence par choisir une ville $v_1$ aléatoire comme début du cycle : $c = v_1 \dots v_n v_1$
-> 2. on choisit ensuite une ville $v_i$ au hasard telle que $2 < i < n$
-> 3. on considère le cycle $c' = v_1 v_{i} v_{i-1}\dots v_{2} v_{i+1}\dots v_n v_1$
+> 1. on commence par choisir une ville $v_1$ comme début du cycle : $c = v_1 \dots v_n v_1$
+> 2. on choisit ensuite une ville $v_i$ telle que $2 < i < n$
+> 3. on considère le cycle $c' = v_1v_{i} v_{i-1}\dots v_{2} v_{i+1}\dots v_n v_1$
 > 4. si le coût de $c'$ est inférieure strictement au coût de $c$ on le conserve, sinon on le rejette et on conserve $c$.
 >
 {: .note}
 
-L'algorithme 2-opt permet de *décroiser* les cycle, comme par exemple dans l'exemple suivant :
+L'algorithme 2-opt permet de *décroiser* localement les cycles, comme dans l'exemple suivant :
 
 ![croisements](./assets/voyageur-1.png){:style="margin: auto;display: block;"}
 
+On peut alors exécuter cet algorithme de 2 façons différentes :
+
+* on regarde exhaustivement toutes les possibilités et on continue tant qu'il existe une amélioration possible (tant que tous les couples n'ont pas été examinés sans aucune amélioration).
+* on exécute le 2-opt un nombre fixé de fois pour des couples pris aléatoirement.
+
+L'inconvénient de cette méthode est qu'elle peut durer longtemps sans garantir que l'optimum local trouvé soit pertinent. C'est pourquoi on a coutume de favoriser la seconde façon de faire.
+
 ### recuit simulé
 
-[recuit simulé](https://fr.wikipedia.org/wiki/Recuit_simul%C3%A9)
+Le problème de n'accepter la modification que lorsque l'on améliore la solution est que l'on est souvent bloqué dans des minima locaux :
 
-> 2-opt où l'on accepte le nouveau cycle même s'il n'améliore pas la solution avec une proba qui diminue avec le nombre d'étapes
-{: .tbd}
+![minimum local](./assets/recuit-1.png){:style="margin: auto;display: block;"}
+
+Pour trouver la solution en ne faisant que des changements locaux, il faut parfois accepter une solution moins bonne de temps en temps :
+
+![solution moins bonne](./assets/recuit-2.png){:style="margin: auto;display: block;"}
+
+pour trouver le minimum global :
+
+![solution moins bonne](./assets/recuit-3.png){:style="margin: auto;display: block;"}
+
+Il existe plusieurs techniques pour faire cela, la méthode du [recuit simulé](https://fr.wikipedia.org/wiki/Recuit_simul%C3%A9) accepte une solution moins bonne avec une probabilité qui va diminuer avec le nombre d'itérations.
+
+L'algorithme du recuit simulé appliqué au voyageur de commerce est alors (avec `P()` un réel aléatoire entre 0 et 1) :
+
+```text
+
+c = cycle initial
+cycle_min = c
+
+pour k allant de 1 à n:
+    c' = 2-opt-aléatoire(c)
+    si le coût de c' est inférieur au cout de c ou si P() ≤ P_k:
+        c = c'
+    
+    si le cout de c est strictement inférieur au cout de cycle_min:
+        cycle_min = c
+
+rendre cycle_min
+```
+
+Dans le recuit simulé, la probabilité de choisir une solution moins bonne est égale à :
+
+$$
+P_k = e^\frac{-(C'-C)}{T_k}
+$$
+
+Où :
+
+* $C'$ et $C$ sont les cout du circuit $c'$ et $c$ respectivement
+* $T_k = \Lambda T_{k-1}$ avec $\lambda < 1$
 
 ## algorithmes à performances garanties
 
-2 optimal
+Pour résoudre le problème du voyageur de commerce on a pour l'instant vu deux méthodes :
 
-on peut faire mieux (christofides, lien wiki) et c'est le min.
+* un calcul optima, mais qui prend trop de temps pour être utilisé en pratique
+* un calcul par heuristique, mais qui rend une solution dont on ne sait pas si elle est correcte ou non
+
+Il existe une troisième voie, qui consiste à créer des algorithmes qui vont trouver une solution dont on peut garantir la performance.
+
+On va montrer dans ce qui suit que l'on peut forger une solution qui sera au pire 2 fois moins bonne que la solution optimale. On ne rentrera cependant pas dans les détails algorithmiques de cet algorithme qui nécessiterait un cours supplémentaire de théorie des graphes.
+
+Le principe est le suivant :
+
+1. on crée le réseau routier minimum
+2. on voyage sur le réseau routier minimum
+3. on optimise pour ne pas repasser 2 fois par la même ville.
+
+Pour voir ce qu'il se passe regardons ce qu'il se passe avec l'exemple suivant :
+
+![les villes](./assets/voyageur-2-opti-1.png){:style="margin: auto;display: block;"}
+
+Créons le réseau routier :
+
+![le réseau](./assets/voyageur-2-opti-2.png){:style="margin: auto;display: block;"}
+
+On parcours ensuite toute les villes sur ce réseau routier (on utilise un [parcours en profondeur](https://fr.wikipedia.org/wiki/Algorithme_de_parcours_en_profondeur) c'est à dire qu'on part le plus loin possible avant de revenir)
+
+![le parcours sur le réseau](./assets/voyageur-2-opti-3.png){:style="margin: auto;display: block;"}
+
+Puis on supprime les villes par lesquelles on est déjà passé pour créer le cycle final :
+
+![cycle final](./assets/voyageur-2-opti-4.png){:style="margin: auto;display: block;"}
+
+Ce qui est beau, c'est que la longueur de ce cycle est au pire 2 fois plus longueur que la longueur du cycle optimal.
+
+> Prouvez-le.
+{: .a-faire}
+{% details preuve %}
+Le cycle optimal est un graphe connexe. Il est donc de cout plus grand que la somme de toutes les arêtes de notre réseau routier.
+
+Lorsque l'on suit le parcours sur le réseau routier, on passe exactement 2 fois par chaque arête, le coût de ce parcours est donc exactement 2 fois le coût du réseau qui est plus petit ou égal à 2 fois le coût du cycle minimal.
+
+Enfin, le coût du cycle final ne peut être plus grand que le coût du parcours sur le réseau routier car les distances respectent l'inégalité triangulaire.
+
+{% enddetails %}
+
+> On peut faire mieux en utilisant l'[algorithme de Christofides](https://fr.wikipedia.org/wiki/Algorithme_de_Christofides) qui est au pire 1.5 fois plus long que la longueur minimale,  mais cela nous mènerait encore trop loin. Mais jetez-y un coup d'oeil si cela vous intéresse, l'algorithme est superbe et combine de nombreuses techniques informatiques et de théorie des graphes en un tout élégant et performant.
 
 ## code
 
+### génération de villes
+
 utilisation de dictionnaires
 
-### villes
+#### aléatoires
 
-avec des villes aléatoires et avec des villes de métropole.
+#### coordonnées gps
 
+#### dessin matplotlib
 
-1. dessin villes (juste matplotlib, pas de geojson ni rien)
-2. un cycle aléatoire
-3. résolution exacte dynamique de peu de villes (on génère toutes les permutations, tant pis s'il y en a 2n de trop)
-4. glouton
-5. glouton + 2ops
-6. à performance garanties
+points
 
+### réseau routier
+
+#### algorithme
+
+#### dessin
+
+points et arêtes
+
+### cycle aléatoire
+
+#### simple {#aleatoire-simple}
+
+#### 2-opt et recuit {#aleatoire-2-opt}
+
+### glouton
+
+#### simple {#glouton-simple}
+
+#### 2-opt et recuit {#glouton-2-opt}
+
+### algorithme exact
