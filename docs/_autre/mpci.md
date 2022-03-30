@@ -150,9 +150,6 @@ Au programme :
 
 ### semaine 10
 
-> faire la partie fichier avant le cours (vous avez les vacances)
-{: .tbd}
-
 #### mercredi {#m-10}
 
 1. [structure : chaine de caractères]({% link cours/algorithme-code-theorie/algorithme/structure-chaine-de-caracteres.md %})

@@ -50,10 +50,10 @@ Pour beaucoup de problèmes d'optimisation réels, un algorithme glouton est opt
 ### comment designer un algorithme glouton
 
 1. écrire le problème comme un problème d'optimisation
-2. découper le problème en une succession d'tapes où il est facile de choisir la meilleure solution
+2. découper le problème en une succession d'étapes où il est facile de choisir la meilleure solution
 3. choisir un ordre de parcours des différentes étapes.
 
-Un cas particulier important est lorsque le problème d'optimisation revient à trouver un sous-ensemble *optimal* d'un ensemble connu. Dans ce cas là, l'item 2 revient à examiner itérativement les éléments de l'ensemble et à les ajouter un à un si possible à l'ensemble à trouver.
+Un cas particulier important est lorsque le problème d'optimisation revient à trouver un sous-ensemble *optimal* d'un ensemble connu. Dans ce cas là, l'item 2 revient à examiner itérativement les éléments de l'ensemble et à les ajouter un à un si possible à l'ensemble solution.
 
 ### optimalité et glouton
 
@@ -188,9 +188,16 @@ boucle `for`.
 
 On prouve notre algorithme en utilisant la technique de preuve par l'absurde : on suppose que l'algorithme glouton ne donne pas une solution optimale et on considère une solution optimale coïncidant le plus longtemps possible avec la solution donnée par celui-ci.
 
-Soit $i$ l'indice de la première différence. On note $f_i$ le film choisi par le glouton et $f'_i$ le film (différent de $f_i$) choisi par la solution optimale :
+Soit $i$ l'indice de l'étape de la première différence. On a deux cas :
 
-* la date de fin de $f'_i$ est plus grande que la date de fin de $f_i$ par construction de la solution par l'algorithme glouton.
+1. soit le film $f_i$ a été refusé par l'algorithme glouton et il est dans la solution optimale
+2. soit le film $f_i$ a été accepté par l'algorithme glouton et il n'est pas dans la solution optimale
+
+Le premier cas est impossible car s'il a été refusé par l'algorithme glouton, c'est qu'il empiète avec un film déjà accepté et comme les solutions optimale et gloutonne coïncident jusqu'à $i$ ces films sont aussi dans la solution optimale.  
+
+Dans le deuxième cas, on note $f_j$ le dernier film qui est présent et dans la solution optimale et dans la solution gloutonne (celui choisi juste avant $f_i$). Soit alors $f'_i$ le film de la solution optimale (forcément différent de $f_i$) dont le début est le plus proche possible de la fin de $f_j$. On a alors que :
+
+* la date de fin de $f'_i$ est plus grande que la date de fin de $f_i$ par construction de l'algorithme glouton.
 * la date de début de $f'_i$ est avant la date de fin de $f_i$ sinon on pourrait ajouter $f_i$ à la solution optimale et rendre une solution avec strictement  plus de films
 
 Les deux remarques ci-dessus amènent au fait que l'on peut construire une nouvelle solution en échangeant $f'_i$ par $f_i$ dans la solution optimale. Comme cette nouvelle solution a autant de films que la solution optimale, elle est aussi optimale. Ceci est impossible par hypothèse (on prend une solution optimale coïncidant le plus longtemps possible avec la solution de l'algorithme glouton) : notre hypothèse était fausse, l'algorithme glouton est optimal.
@@ -215,9 +222,9 @@ Les problèmes d'ordonnancement sont multiples. Certains sont durs d'autres faci
 
 Le problème suivant est résoluble par un algorithme glouton : On considère $m$ produits de durée 1 à fabriquer. Si le produit $i$ est réalisée avant la date $d_i$ on peut le vendre pour un prix $p_i$, sinon il est invendable. Proposez un algorithme permettant de maximiser les profits en considérant que l'on a qu'un seul ouvrier.
 
-Là encore il faut trouver un sous-ensemble de produit à créer, mais contrairement au problème précédent connaitre uniquement les éléments à produire n'est pas suffisant : il faut *a priori* également connaitre l'ordre dans lequel les produire.
+Il faut donc trouver un sous-ensemble de produits à créer **et** l'ordre dans lequel les produire. Il faut a priori optimiser deux paramètres alors que les algorithmes gloutons classiques ne sont fait que pour en optimiser un seul.
 
-Commençons par montrer que cet ordre est facile à trouver
+Commençons par montrer que cet ordre est facile à trouver.
 
 ### ordre de production
 
