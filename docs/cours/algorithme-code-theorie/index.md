@@ -55,7 +55,7 @@ Ce cours est composée de trois grandes parties qui s'enchevêtrent.
 10. [structure : dictionnaire]({% link cours/algorithme-code-theorie/algorithme/structure-dictionnaire.md %})
 11. [structure : liste]({% link cours/algorithme-code-theorie/algorithme/structure-liste.md %})
 12. [algorithmes gloutons]({% link cours/algorithme-code-theorie/algorithme/methode-gloutons.md %})
-13. [étude : heuristiques gloutonnes]({% link cours/algorithme-code-theorie/algorithme/etude-voyageur-de-commerce.md %})
+13. [étude : voyageur de commerce]({% link cours/algorithme-code-theorie/algorithme/etude-voyageur-de-commerce.md %})
 14. [structure : chaine de caractères]({% link cours/algorithme-code-theorie/algorithme/structure-chaine-de-caracteres.md %})
 
 ### théorie
@@ -679,6 +679,12 @@ id: "étude : voyageur de commerce",
 
 graph.links.push({
   source: "algorithmes gloutons",
+  target: "étude : voyageur de commerce"
+  
+})
+
+graph.links.push({
+  source: "projet : exponentiation",
   target: "étude : voyageur de commerce"
   
 })

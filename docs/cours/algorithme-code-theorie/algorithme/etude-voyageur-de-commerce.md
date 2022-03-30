@@ -9,6 +9,7 @@ category: cours
 > **prérequis :**
 >
 > * [algorithmes gloutons]({% link cours/algorithme-code-theorie/algorithme/methode-gloutons.md %})
+> * [projet : exponentiation]({% link cours/algorithme-code-theorie/code/projet-exponentiation.md %})
 >
 {: .chemin}
 
@@ -552,34 +553,66 @@ Enfin, le coût du cycle final ne peut être plus grand que le coût du parcours
 
 ### génération de villes
 
-utilisation de dictionnaires
+Nous allons ici générer des villes aléatoires dans un carré unité.
 
-#### aléatoires
+> Créez un fonction `villes_aleatoires(n)` qui rend un tableau de `n` couples `(x, y)` où `x` et `y` sont des nombres aléatoires entre 0 et 1.
+{: .a-faire}
 
-#### coordonnées gps
+En utilisant ce que vous avez vu dans le [projet : exponentiation]({% link cours/algorithme-code-theorie/code/projet-exponentiation.md %}) :
 
-#### dessin matplotlib
-
-points
+> Représentez graphiquement avec matplotlib la liste de villes crée par la fonction `villes_aleatoires(n)`.
+{: .a-faire}
 
 ### réseau routier
 
-#### algorithme
+> A partir d'une liste de villes (représentées chacune par un couple de coordonnées) rendez une liste d'arêtes représentant le réseau routier de valuation minimal reliant toutes les villes entre elles
+{: .a-faire}
+{% details indice d'implémentation %}
 
-#### dessin
+Vous pourrez utiliser un dictionnaire pour gérer la marque `f(x)` associée à chaque ville.
 
-points et arêtes
+Pour le tri des arêtes selon leur valuation (ici la distance), vous pourrez utiliser l'argument `key` de la méthode `sort` des listes.
 
-### cycle aléatoire
+La commande `l.sort(key=f)` permet de trier la liste `l`  par rapport à l'ordre $x < y$ si  $f(x) < f(y)$.
 
-#### simple {#aleatoire-simple}
+Le code suivant est un exemple concret de comment tout ça fonctionne :
 
-#### 2-opt et recuit {#aleatoire-2-opt}
+```python
+ma_liste = ["1001", "0011111", "000"]
+
+ma_liste.sort()
+print(ma_liste)
+
+def nombre_de_1(x):
+    return x.count("1")
+
+ma_liste.sort(key=nombre_de_1)
+print(ma_liste)
+```
+
+{% enddetails %}
+
+Une fois l'algorithme crée et testé vous pourrez :
+
+> Représentez graphiquement avec matplotlib le réseau routier d'une liste de villes.
+{: .a-faire}
 
 ### glouton
 
-#### simple {#glouton-simple}
+> Créez l'algorithme glouton qui permet de créer de proche en proche un cycle.
+{: .a-faire}
 
-#### 2-opt et recuit {#glouton-2-opt}
+Une fois crée et testé vous pourrez :
+
+> Représentez graphiquement avec matplotlib le cycle issu de l'algorithme glouton pour une liste de villes.
+{: .a-faire}
+
+### recuit simulé
+
+> Implémentez l'algorithme du recuit simulé qui , à partir d'un cycle aléatoire le raffine pendant $k$ itérations.
+{: .a-faire}
 
 ### algorithme exact
+
+> Implémentez l'algorithme exact qui, à partir d'une liste de ville rend le cycle optimal.
+{: .a-faire}
