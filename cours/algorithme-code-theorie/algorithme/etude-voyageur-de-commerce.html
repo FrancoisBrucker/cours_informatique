@@ -507,14 +507,20 @@ pour chaque cycle de n villes:
 <h3 id="gloutons">gloutons</h3>
 
 <blockquote class="a-faire">
-  <p>Créez un algorithme glouton permettant de résoudre le problème du voyageur de commerce</p>
+  <p>Créez un algorithme glouton permettant de résoudre le problème du voyageur de commerce.</p>
+
+  <p>Montrez qu’il existe des cas où votre algorithme glouton ne trouvera pas la solution.</p>
 </blockquote>
 <details><summary>solution</summary><div>
-<p>On prend toujours le plus proche et on construit le cycle petit à petit.</p>
+<p>On commence par une ville au hasard, puis on prend à chaque étape la ville la pus proche de la dernière ville choisie.</p>
+
+<p>Il ne sera jamais optimal pour le graphe suivant :</p>
+
+<p><img src="./assets/voyageur_commerce_1_2.png" alt="croisements" style="margin: auto;display: block;"></p>
 
 </div></details>
 
-<h3 id="2-opt">2-opt</h3>
+<h2 id="raffinage-de-solutions">raffinage de solutions</h2>
 
 <p>L’algorithme glouton et l’algorithme aléatoire ne produisent pas vraiment de bons résultats. L’idée est alors :</p>
 
@@ -523,57 +529,173 @@ pour chaque cycle de n villes:
   <li>de raffiner la solution pour en trouver une meilleure</li>
 </ol>
 
-<p>Pour la deuxième idée, la méthode couramment utilisée est appelée <a href="https://fr.wikipedia.org/wiki/2-opt">2-opt</a> :</p>
+<p>Nous allons montrer deux idées pour mettre en œuvre la deuxième idée. Ces méthodes sont génériques et peuvent être appliquées à de nombreux problèmes, on les appelles des <a href="https://fr.wikipedia.org/wiki/M%C3%A9taheuristique">méta-heuristiques</a>, et dans notre cas font toutes deux parties des méthodes dites de <a href="https://fr.wikipedia.org/wiki/M%C3%A9taheuristique">recherche locale</a> où l’on optimise localement une solution admissible.</p>
+
+<p>Ces procédures d’optimisation dépendent de paramètres qui dépendent des données : il faut donc en essayer plusieurs…</p>
+
+<h3 id="2-opt">2-opt</h3>
+
+<p>La méthode couramment utilisée est appelée <a href="https://fr.wikipedia.org/wiki/2-opt">2-opt</a> :</p>
 
 <blockquote class="note">
-  <p>L’algorithme 2-opt consiste à itérativement modifier localement une solution pour l’améliorer.</p>
-
-  <p>Dans le cas du voyageur de commerce, on suppose que l’on possède un cycle $c$.</p>
+  <p>L’algorithme 2-opt consiste à itérativement modifier localement une solution en échangeant 2 arêtes du cycle $c$ à optimiser.</p>
 
   <ol>
-    <li>on commence par choisir une ville $v_1$ aléatoire comme début du cycle : $c = v_1 \dots v_n v_1$</li>
-    <li>on choisit ensuite une ville $v_i$ au hasard telle que $2 &lt; i &lt; n$</li>
-    <li>on considère le cycle $c’ = v_1 v_{i} v_{i-1}\dots v_{2} v_{i+1}\dots v_n v_1$</li>
+    <li>on commence par choisir une ville $v_1$ comme début du cycle : $c = v_1 \dots v_n v_1$</li>
+    <li>on choisit ensuite une ville $v_i$ telle que $2 &lt; i &lt; n$</li>
+    <li>on considère le cycle $c’ = v_1v_{i} v_{i-1}\dots v_{2} v_{i+1}\dots v_n v_1$</li>
     <li>si le coût de $c’$ est inférieure strictement au coût de $c$ on le conserve, sinon on le rejette et on conserve $c$.</li>
   </ol>
 
 </blockquote>
 
-<p>L’algorithme 2-opt permet de <em>décroiser</em> les cycle, comme par exemple dans l’exemple suivant :</p>
+<p>L’algorithme 2-opt permet de <em>décroiser</em> localement les cycles, comme dans l’exemple suivant :</p>
 
 <p><img src="./assets/voyageur-1.png" alt="croisements" style="margin: auto;display: block;"></p>
 
+<p>On peut alors exécuter cet algorithme de 2 façons différentes :</p>
+
+<ul>
+  <li>on regarde exhaustivement toutes les possibilités et on continue tant qu’il existe une amélioration possible (tant que tous les couples n’ont pas été examinés sans aucune amélioration).</li>
+  <li>on exécute le 2-opt un nombre fixé de fois pour des couples pris aléatoirement.</li>
+</ul>
+
+<p>L’inconvénient de cette méthode est qu’elle peut durer longtemps sans garantir que l’optimum local trouvé soit pertinent. C’est pourquoi on a coutume de favoriser la seconde façon de faire.</p>
+
 <h3 id="recuit-simulé">recuit simulé</h3>
 
-<p><a href="https://fr.wikipedia.org/wiki/Recuit_simul%C3%A9">recuit simulé</a></p>
+<p>Le problème de n’accepter la modification que lorsque l’on améliore la solution est que l’on est souvent bloqué dans des minima locaux :</p>
 
-<blockquote class="tbd">
-  <p>2-opt où l’on accepte le nouveau cycle même s’il n’améliore pas la solution avec une proba qui diminue avec le nombre d’étapes</p>
-</blockquote>
+<p><img src="./assets/recuit-1.png" alt="minimum local" style="margin: auto;display: block;"></p>
+
+<p>Pour trouver la solution en ne faisant que des changements locaux, il faut parfois accepter une solution moins bonne de temps en temps :</p>
+
+<p><img src="./assets/recuit-2.png" alt="solution moins bonne" style="margin: auto;display: block;"></p>
+
+<p>pour trouver le minimum global :</p>
+
+<p><img src="./assets/recuit-3.png" alt="solution moins bonne" style="margin: auto;display: block;"></p>
+
+<p>Il existe plusieurs techniques pour faire cela, la méthode du <a href="https://fr.wikipedia.org/wiki/Recuit_simul%C3%A9">recuit simulé</a> accepte une solution moins bonne avec une probabilité qui va diminuer avec le nombre d’itérations.</p>
+
+<p>L’algorithme du recuit simulé appliqué au voyageur de commerce est alors (avec <code class="language-plaintext highlighter-rouge">P()</code> un réel aléatoire entre 0 et 1) :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+c = cycle initial
+cycle_min = c
+
+pour k allant de 1 à n:
+    c' = 2-opt-aléatoire(c)
+    si le coût de c' est inférieur au cout de c ou si P() ≤ P_k:
+        c = c'
+    
+    si le cout de c est strictement inférieur au cout de cycle_min:
+        cycle_min = c
+
+rendre cycle_min
+</code></pre></div></div>
+
+<p>Dans le recuit simulé, la probabilité de choisir une solution moins bonne est égale à :</p>
+
+\[P_k = e^\frac{-(C'-C)}{T_k}\]
+
+<p>Où :</p>
+
+<ul>
+  <li>$C’$ et $C$ sont les cout du circuit $c’$ et $c$ respectivement</li>
+  <li>$T_k = \Lambda T_{k-1}$ avec $\lambda &lt; 1$</li>
+</ul>
 
 <h2 id="algorithmes-à-performances-garanties">algorithmes à performances garanties</h2>
 
-<p>2 optimal</p>
+<p>Pour résoudre le problème du voyageur de commerce on a pour l’instant vu deux méthodes :</p>
 
-<p>on peut faire mieux (christofides, lien wiki) et c’est le min.</p>
+<ul>
+  <li>un calcul optima, mais qui prend trop de temps pour être utilisé en pratique</li>
+  <li>un calcul par heuristique, mais qui rend une solution dont on ne sait pas si elle est correcte ou non</li>
+</ul>
+
+<p>Il existe une troisième voie, qui consiste à créer des algorithmes qui vont trouver une solution dont on peut garantir la performance.</p>
+
+<p>On va montrer dans ce qui suit que l’on peut forger une solution qui sera au pire 2 fois moins bonne que la solution optimale. On ne rentrera cependant pas dans les détails algorithmiques de cet algorithme qui nécessiterait un cours supplémentaire de théorie des graphes.</p>
+
+<p>Le principe est le suivant :</p>
+
+<ol>
+  <li>on crée le réseau routier minimum</li>
+  <li>on voyage sur le réseau routier minimum</li>
+  <li>on optimise pour ne pas repasser 2 fois par la même ville.</li>
+</ol>
+
+<p>Pour voir ce qu’il se passe regardons ce qu’il se passe avec l’exemple suivant :</p>
+
+<p><img src="./assets/voyageur-2-opti-1.png" alt="les villes" style="margin: auto;display: block;"></p>
+
+<p>Créons le réseau routier :</p>
+
+<p><img src="./assets/voyageur-2-opti-2.png" alt="le réseau" style="margin: auto;display: block;"></p>
+
+<p>On parcours ensuite toute les villes sur ce réseau routier (on utilise un <a href="https://fr.wikipedia.org/wiki/Algorithme_de_parcours_en_profondeur">parcours en profondeur</a> c’est à dire qu’on part le plus loin possible avant de revenir)</p>
+
+<p><img src="./assets/voyageur-2-opti-3.png" alt="le parcours sur le réseau" style="margin: auto;display: block;"></p>
+
+<p>Puis on supprime les villes par lesquelles on est déjà passé pour créer le cycle final :</p>
+
+<p><img src="./assets/voyageur-2-opti-4.png" alt="cycle final" style="margin: auto;display: block;"></p>
+
+<p>Ce qui est beau, c’est que la longueur de ce cycle est au pire 2 fois plus longueur que la longueur du cycle optimal.</p>
+
+<blockquote class="a-faire">
+  <p>Prouvez-le.</p>
+</blockquote>
+<details><summary>preuve</summary><div>
+<p>Le cycle optimal est un graphe connexe. Il est donc de cout plus grand que la somme de toutes les arêtes de notre réseau routier.</p>
+
+<p>Lorsque l’on suit le parcours sur le réseau routier, on passe exactement 2 fois par chaque arête, le coût de ce parcours est donc exactement 2 fois le coût du réseau qui est plus petit ou égal à 2 fois le coût du cycle minimal.</p>
+
+<p>Enfin, le coût du cycle final ne peut être plus grand que le coût du parcours sur le réseau routier car les distances respectent l’inégalité triangulaire.</p>
+
+</div></details>
+
+<blockquote>
+  <p>On peut faire mieux en utilisant l’<a href="https://fr.wikipedia.org/wiki/Algorithme_de_Christofides">algorithme de Christofides</a> qui est au pire 1.5 fois plus long que la longueur minimale,  mais cela nous mènerait encore trop loin. Mais jetez-y un coup d’oeil si cela vous intéresse, l’algorithme est superbe et combine de nombreuses techniques informatiques et de théorie des graphes en un tout élégant et performant.</p>
+</blockquote>
 
 <h2 id="code">code</h2>
 
+<h3 id="génération-de-villes">génération de villes</h3>
+
 <p>utilisation de dictionnaires</p>
 
-<h3 id="villes">villes</h3>
+<h4 id="aléatoires">aléatoires</h4>
 
-<p>avec des villes aléatoires et avec des villes de métropole.</p>
+<h4 id="coordonnées-gps">coordonnées gps</h4>
 
-<ol>
-  <li>dessin villes (juste matplotlib, pas de geojson ni rien)</li>
-  <li>un cycle aléatoire</li>
-  <li>résolution exacte dynamique de peu de villes (on génère toutes les permutations, tant pis s’il y en a 2n de trop)</li>
-  <li>glouton</li>
-  <li>glouton + 2ops</li>
-  <li>à performance garanties</li>
-</ol>
+<h4 id="dessin-matplotlib">dessin matplotlib</h4>
 
+<p>points</p>
+
+<h3 id="réseau-routier">réseau routier</h3>
+
+<h4 id="algorithme">algorithme</h4>
+
+<h4 id="dessin">dessin</h4>
+
+<p>points et arêtes</p>
+
+<h3 id="cycle-aléatoire">cycle aléatoire</h3>
+
+<h4 id="aleatoire-simple">simple</h4>
+
+<h4 id="aleatoire-2-opt">2-opt et recuit</h4>
+
+<h3 id="glouton">glouton</h3>
+
+<h4 id="glouton-simple">simple</h4>
+
+<h4 id="glouton-2-opt">2-opt et recuit</h4>
+
+<h3 id="algorithme-exact">algorithme exact</h3>
 
   </div>
 
