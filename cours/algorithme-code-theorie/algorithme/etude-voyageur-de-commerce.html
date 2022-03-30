@@ -66,6 +66,7 @@
 
   <ul>
     <li><a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/methode-gloutons.html">algorithmes gloutons</a></li>
+    <li><a href="/cours_informatique/cours/algorithme-code-theorie/code/projet-exponentiation.html">projet : exponentiation</a></li>
   </ul>
 
 </blockquote>
@@ -665,37 +666,75 @@ rendre cycle_min
 
 <h3 id="génération-de-villes">génération de villes</h3>
 
-<p>utilisation de dictionnaires</p>
+<p>Nous allons ici générer des villes aléatoires dans un carré unité.</p>
 
-<h4 id="aléatoires">aléatoires</h4>
+<blockquote class="a-faire">
+  <p>Créez un fonction <code class="language-plaintext highlighter-rouge">villes_aleatoires(n)</code> qui rend un tableau de <code class="language-plaintext highlighter-rouge">n</code> couples <code class="language-plaintext highlighter-rouge">(x, y)</code> où <code class="language-plaintext highlighter-rouge">x</code> et <code class="language-plaintext highlighter-rouge">y</code> sont des nombres aléatoires entre 0 et 1.</p>
+</blockquote>
 
-<h4 id="coordonnées-gps">coordonnées gps</h4>
+<p>En utilisant ce que vous avez vu dans le <a href="/cours_informatique/cours/algorithme-code-theorie/code/projet-exponentiation.html">projet : exponentiation</a> :</p>
 
-<h4 id="dessin-matplotlib">dessin matplotlib</h4>
-
-<p>points</p>
+<blockquote class="a-faire">
+  <p>Représentez graphiquement avec matplotlib la liste de villes crée par la fonction <code class="language-plaintext highlighter-rouge">villes_aleatoires(n)</code>.</p>
+</blockquote>
 
 <h3 id="réseau-routier">réseau routier</h3>
 
-<h4 id="algorithme">algorithme</h4>
+<blockquote class="a-faire">
+  <p>A partir d’une liste de villes (représentées chacune par un couple de coordonnées) rendez une liste d’arêtes représentant le réseau routier de valuation minimal reliant toutes les villes entre elles</p>
+</blockquote>
+<details><summary>indice d’implémentation</summary><div>
+<p>Vous pourrez utiliser un dictionnaire pour gérer la marque <code class="language-plaintext highlighter-rouge">f(x)</code> associée à chaque ville.</p>
 
-<h4 id="dessin">dessin</h4>
+<p>Pour le tri des arêtes selon leur valuation (ici la distance), vous pourrez utiliser l’argument <code class="language-plaintext highlighter-rouge">key</code> de la méthode <code class="language-plaintext highlighter-rouge">sort</code> des listes.</p>
 
-<p>points et arêtes</p>
+<p>La commande <code class="language-plaintext highlighter-rouge">l.sort(key=f)</code> permet de trier la liste <code class="language-plaintext highlighter-rouge">l</code>  par rapport à l’ordre $x &lt; y$ si  $f(x) &lt; f(y)$.</p>
 
-<h3 id="cycle-aléatoire">cycle aléatoire</h3>
+<p>Le code suivant est un exemple concret de comment tout ça fonctionne :</p>
 
-<h4 id="aleatoire-simple">simple</h4>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ma_liste</span> <span class="o">=</span> <span class="p">[</span><span class="s">"1001"</span><span class="p">,</span> <span class="s">"0011111"</span><span class="p">,</span> <span class="s">"000"</span><span class="p">]</span>
 
-<h4 id="aleatoire-2-opt">2-opt et recuit</h4>
+<span class="n">ma_liste</span><span class="p">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ma_liste</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">nombre_de_1</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">.</span><span class="n">count</span><span class="p">(</span><span class="s">"1"</span><span class="p">)</span>
+
+<span class="n">ma_liste</span><span class="p">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">nombre_de_1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">ma_liste</span><span class="p">)</span>
+</code></pre></div></div>
+
+</div></details>
+
+<p>Une fois l’algorithme crée et testé vous pourrez :</p>
+
+<blockquote class="a-faire">
+  <p>Représentez graphiquement avec matplotlib le réseau routier d’une liste de villes.</p>
+</blockquote>
 
 <h3 id="glouton">glouton</h3>
 
-<h4 id="glouton-simple">simple</h4>
+<blockquote class="a-faire">
+  <p>Créez l’algorithme glouton qui permet de créer de proche en proche un cycle.</p>
+</blockquote>
 
-<h4 id="glouton-2-opt">2-opt et recuit</h4>
+<p>Une fois crée et testé vous pourrez :</p>
+
+<blockquote class="a-faire">
+  <p>Représentez graphiquement avec matplotlib le cycle issu de l’algorithme glouton pour une liste de villes.</p>
+</blockquote>
+
+<h3 id="recuit-simulé-1">recuit simulé</h3>
+
+<blockquote class="a-faire">
+  <p>Implémentez l’algorithme du recuit simulé qui , à partir d’un cycle aléatoire le raffine pendant $k$ itérations.</p>
+</blockquote>
 
 <h3 id="algorithme-exact">algorithme exact</h3>
+
+<blockquote class="a-faire">
+  <p>Implémentez l’algorithme exact qui, à partir d’une liste de ville rend le cycle optimal.</p>
+</blockquote>
 
   </div>
 
