@@ -447,7 +447,6 @@ L'algorithme 2-opt permet de *décroiser* les cycle, comme par exemple dans l'ex
 
 ## algorithmes à performances garanties
 
-
 2 optimal
 
 on peut faire mieux (christofides, lien wiki) et c'est le min.
