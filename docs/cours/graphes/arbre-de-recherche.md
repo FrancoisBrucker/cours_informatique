@@ -440,7 +440,7 @@ Le noeud recherché sera un descendant de $x$ à gauche. Il ne peut avoir de fil
 {: .a-faire}
 {% details solution %}
 
-C'est le premier enfant à droite des descendants de $x$.
+C'est le descendant le plus à droite du sous-arbre gauche de $x$.
 
 {% enddetails %}
 {: .a-faire}
@@ -603,4 +603,4 @@ Les [arbres de recherche](https://fr.wikipedia.org/wiki/Arbre_binaire_de_recherc
 
 On l'utilise lorsque l'on veut maintenir une liste d'éléments qui varie au court du temps triés (si la liste est constante, autant juste la. trier).
 
-> L'ordre entre les éléments n'est pas forcément totale. Par exemple dans les [arbres AABB](https://www.azurefromthetrenches.com/, une variation des arbres binaires de recherche très utilisés en informatique graphique pour gérer efficacement les collisions en 2D ou 3D.
+> L'ordre entre les éléments n'est pas forcément totale. Par exemple dans les [arbres AABB](https://www.azurefromthetrenches.com), une variation des arbres binaires de recherche très utilisés en informatique graphique pour gérer efficacement les collisions en 2D ou 3D.
