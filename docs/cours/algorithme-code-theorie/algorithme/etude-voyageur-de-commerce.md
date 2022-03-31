@@ -30,9 +30,7 @@ Nous allons en particulier nous intéresser aux problématiques de chemins et cy
 
 > Pour un graphe $G=(V, E)$ :
 >
-> * un **chemin** est une suite de sommets $v_1,\dots, v_i, \dots, v_m$ tels que :
->   * $v_iv_{i+1} \in E$ pour tout $1\leq i < m$,
->   * $v_iv_{i+1} \neq v_jv_{j+1}$ si $i \neq j$
+> * un **chemin** est une suite de sommets $v_1,\dots, v_i, \dots, v_m$ tels que $v_iv_{i+1} \in E$ pour tout $1\leq i < m$.
 > * un **cycle** est un chemin dont le premier et le dernier élément sont identiques.
 >
 {: .note}
@@ -87,7 +85,7 @@ La preuve de l'équivalence entre ces deux problèmes nous donne une propriété
 
 De là, la propriété suivante :
 
-> Soit $G=(V, E)$ un graphe. Une **composante connexe** de $G$ est un sous-ensemble $A$ de sommets de $G$, maximal pour l'inclusion, tel que le graphe $G \vert_A = (A, \{ uv \in E \mid u, v \in A\})$, restriction de $G$ à $A$, est connexe.
+> Soit $G=(V, E)$ un graphe. Une **composante connexe** de $G$ est un sous-ensemble $A$ de sommets de $G$, maximal pour l'inclusion, tel que le graphe $G \vert_A = (A, \\{ uv \in E \mid u, v \in A\\})$, restriction de $G$ à $A$, est connexe.
 >
 > En ajoutant à $G$ une arête $xy$ où $x$ et $y$ sont dans des composantes connexes différentes, l'union de ces deux ensembles forme une unique composante connexe dans le nouveau graphe.
 {: .note}
@@ -110,7 +108,7 @@ $$
 
 {% enddetails %}
 
-> La réciproque est cependant fausse... Il existe des graphes $G=(V, E)$ non connexe ayant plus de $\vert V\vert -1$ arêtes.
+> La réciproque est cependant fausse... Il existe des graphes $G=(V, E)$ non connexes ayant plus de $\vert V\vert -1$ arêtes.
 {: .attention}
 
 Ces diverses propriétés vont nous permettre de créer à coût min un réseau routier entre villes.
@@ -262,7 +260,7 @@ On peut tenter d'énumérer tous les cycles possibles et en garder le minimum.
 {% details solution %}
 Comme le cycle doit passer par tous les sommets, je peux considérer que je commence toujours en $v_1$, il faut donc ensuite passer par $n-1$ autres villes, dans un ordre donné (il y en a $(n-1)!$).
 
-De plus, un cycle peut être parcouru dans 2 sens différents, un cycle donné correspond ainsi à 2 ordres différents ($v_1v_2\dots v_n$ et $v_1v_n \v_{n-1}\dots v_2$ correspondent au même cycle parcouru dans un sens ou dans l'autre). 
+De plus, un cycle peut être parcouru dans 2 sens différents, un cycle donné correspond ainsi à 2 ordres différents ($v_1v_2\dots v_n$ et $v_n v_{n-1}\dots v_2$ correspondent au même cycle parcouru dans un sens ou dans l'autre).
 
 Il faut donc générer $\frac{(n-1)!}{2}$ cycles différents.
 
