@@ -275,7 +275,7 @@ Avec :
 * $\sigma$ une permutation de $[2..n]$
 * $\sigma(1) < \sigma(n-1)$
 
-On peut alors utiliser l'algorithme `permutation(T)` de l'[étude sur les mélanges](#algo-toutes-permutations) :
+On peut alors utiliser l'algorithme `permutation(T)` de l'[étude sur les mélanges]({% link cours/algorithme-code-theorie/algorithme/etude-melange.md %}#algo-toutes-permutations) :
 
 ```text
 
@@ -497,7 +497,7 @@ $$
 Où :
 
 * $C'$ et $C$ sont les cout du circuit $c'$ et $c$ respectivement
-* $T_k = \Lambda T_{k-1}$ avec $\lambda < 1$
+* $T_k = \lambda T_{k-1}$ avec $\lambda < 1$
 
 ## algorithmes à performances garanties
 
