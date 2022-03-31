@@ -91,12 +91,7 @@
   <p>Pour un graphe $G=(V, E)$ :</p>
 
   <ul>
-    <li>un <strong>chemin</strong> est une suite de sommets $v_1,\dots, v_i, \dots, v_m$ tels que :
-      <ul>
-        <li>$v_iv_{i+1} \in E$ pour tout $1\leq i &lt; m$,</li>
-        <li>$v_iv_{i+1} \neq v_jv_{j+1}$ si $i \neq j$</li>
-      </ul>
-    </li>
+    <li>un <strong>chemin</strong> est une suite de sommets $v_1,\dots, v_i, \dots, v_m$ tels que $v_iv_{i+1} \in E$ pour tout $1\leq i &lt; m$.</li>
     <li>un <strong>cycle</strong> est un chemin dont le premier et le dernier élément sont identiques.</li>
   </ul>
 
@@ -177,7 +172,7 @@
 <p>De là, la propriété suivante :</p>
 
 <blockquote class="note">
-  <p>Soit $G=(V, E)$ un graphe. Une <strong>composante connexe</strong> de $G$ est un sous-ensemble $A$ de sommets de $G$, maximal pour l’inclusion, tel que le graphe $G \vert_A = (A, { uv \in E \mid u, v \in A})$, restriction de $G$ à $A$, est connexe.</p>
+  <p>Soit $G=(V, E)$ un graphe. Une <strong>composante connexe</strong> de $G$ est un sous-ensemble $A$ de sommets de $G$, maximal pour l’inclusion, tel que le graphe $G \vert_A = (A, \{ uv \in E \mid u, v \in A\})$, restriction de $G$ à $A$, est connexe.</p>
 
   <p>En ajoutant à $G$ une arête $xy$ où $x$ et $y$ sont dans des composantes connexes différentes, l’union de ces deux ensembles forme une unique composante connexe dans le nouveau graphe.</p>
 </blockquote>
@@ -199,7 +194,7 @@
 </div></details>
 
 <blockquote class="attention">
-  <p>La réciproque est cependant fausse… Il existe des graphes $G=(V, E)$ non connexe ayant plus de $\vert V\vert -1$ arêtes.</p>
+  <p>La réciproque est cependant fausse… Il existe des graphes $G=(V, E)$ non connexes ayant plus de $\vert V\vert -1$ arêtes.</p>
 </blockquote>
 
 <p>Ces diverses propriétés vont nous permettre de créer à coût min un réseau routier entre villes.</p>
@@ -372,7 +367,7 @@
 <details><summary>solution</summary><div>
 <p>Comme le cycle doit passer par tous les sommets, je peux considérer que je commence toujours en $v_1$, il faut donc ensuite passer par $n-1$ autres villes, dans un ordre donné (il y en a $(n-1)!$).</p>
 
-<p>De plus, un cycle peut être parcouru dans 2 sens différents, un cycle donné correspond ainsi à 2 ordres différents ($v_1v_2\dots v_n$ et $v_1v_n \v_{n-1}\dots v_2$ correspondent au même cycle parcouru dans un sens ou dans l’autre).</p>
+<p>De plus, un cycle peut être parcouru dans 2 sens différents, un cycle donné correspond ainsi à 2 ordres différents ($v_1v_2\dots v_n$ et $v_n v_{n-1}\dots v_2$ correspondent au même cycle parcouru dans un sens ou dans l’autre).</p>
 
 <p>Il faut donc générer $\frac{(n-1)!}{2}$ cycles différents.</p>
 
@@ -387,7 +382,7 @@
   <li>$\sigma(1) &lt; \sigma(n-1)$</li>
 </ul>
 
-<p>On peut alors utiliser l’algorithme <code class="language-plaintext highlighter-rouge">permutation(T)</code> de l’<a href="#algo-toutes-permutations">étude sur les mélanges</a> :</p>
+<p>On peut alors utiliser l’algorithme <code class="language-plaintext highlighter-rouge">permutation(T)</code> de l’<a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/etude-melange.html#algo-toutes-permutations">étude sur les mélanges</a> :</p>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 Cycles = [] 
@@ -604,7 +599,7 @@ rendre cycle_min
 
 <ul>
   <li>$C’$ et $C$ sont les cout du circuit $c’$ et $c$ respectivement</li>
-  <li>$T_k = \Lambda T_{k-1}$ avec $\lambda &lt; 1$</li>
+  <li>$T_k = \lambda T_{k-1}$ avec $\lambda &lt; 1$</li>
 </ul>
 
 <h2 id="algorithmes-à-performances-garanties">algorithmes à performances garanties</h2>
