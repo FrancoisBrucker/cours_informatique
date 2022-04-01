@@ -13,7 +13,11 @@ category: cours
 >
 {: .chemin}
 
-Nous allons étudier ici un problème d'intérêt pratique ainsi que certains problèmes connexes. L'étude de ces problèmes nous permettra d'utiliser des technique de design d'algorithmes connus comme les algorithmes gloutons ou d'en découvrir d'autres comme la programmation dynamique.
+Nous allons étudier ici un problème d'intérêt pratique nommé le [problème du voyageur de commerce](https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_voyageur_de_commerce). On peut le formuler ainsi :
+
+*"un voyageur de commerce doit visiter $n$ villes dans la journée. Il veut donc partir de chez lui, parcourir toutes les villes puis revenir chez lui en ayant parcouru le minimum de distance"*.
+
+L'étude de ce problème (ainsi que le problème associé traitant des graphes connexe) nous permettra d'utiliser des techniques de design d'algorithmes connus comme les algorithmes gloutons ou d'en découvrir d'autres comme la programmation dynamique.
 
 En plus d'être des problèmes courants, ils sont très jolis algorithmiquement. On espère que vous aimerez la ballade.
 
@@ -223,11 +227,7 @@ Sa complexité est la suivante :
 
 ## Voyageur de commerce
 
-Le [problème du voyageur de commerce](https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_voyageur_de_commerce) peut se formuler ainsi :
-
-*"un voyageur de commerce doit visiter $n$ villes dans la journée. Il veut donc partir de chez lui, parcourir toutes les villes puis revenir chez lui en ayant parcouru le minimum de distance"*.
-
-Il existe de nombreuses formalisation de ce problème, nous allons en donner 2. Commençons par la première, qui est la plus utilisée car elle s'applique directement aux villes sur une carte (la distance routière entre 2 villes étant une distance) :
+Il existe de nombreuses formalisation du problème du voyageur de commerce, nous allons en donner la version euclidienne qui est la plus utilisée car elle s'applique directement aux villes sur une carte (la distance routière entre 2 villes étant une distance) :
 
 > **Voyageur de commerce (euclidien)** : Soit $V$ un ensemble de $n$ éléments et $d: V \times V \rightarrow \mathbb{R}^+$ une distance (donc symétrique et respectant l'inégalité triangulaire) sur $V$.
 >
