@@ -553,7 +553,7 @@ Enfin, le coût du cycle final ne peut être plus grand que le coût du parcours
 
 Nous allons ici générer des villes aléatoires dans un carré unité.
 
-> Créez un fonction `villes_aleatoires(n)` qui rend un tableau de `n` couples `(x, y)` où `x` et `y` sont des nombres aléatoires entre 0 et 1.
+> Créez un fonction `villes_aleatoires(n)` qui rend un tableau de `n` couples `(x, y)` où `x` et `y` sont des nombres réels aléatoires entre 0 et 1.
 {: .a-faire}
 
 En utilisant ce que vous avez vu dans le [projet : exponentiation]({% link cours/algorithme-code-theorie/code/projet-exponentiation.md %}) :
