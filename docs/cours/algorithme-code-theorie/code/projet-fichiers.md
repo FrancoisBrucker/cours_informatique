@@ -23,20 +23,13 @@ author: "François Brucker"
 
 ## texte
 
-Utilisez python pour :
+> * un poeme en .txt à ecrire et sauver
+> * le retrouver avec python
+> * compter le nombre de mots diffrents
+> * compter combien de fois un nom arrive
+{:.tbd}
 
-> 1. télécharger le comte de Monte-Cristo avec python (<http://www.gutenberg.org/cache/epub/17989/pg17989.txt>),
-> 2. sauvegardez le dans un fichier sur votre ordinateur (toujours en utilisant python)
-{: .a-faire}
-
-Avec ce fichier :
-
-> Combien de fois est-il question de `Marseille` dans le texte ?
-{: A-faire}
-
-## formats de données
-
-### liste de mots
+### dictionnaire
 
 Le fichier `https://data.senat.fr/data/senateurs/ODSEN_GENERAL.json` contient des données générales relatives aux sénateurs (https://www.data.gouv.fr/fr/datasets/les-senateurs/).
 
@@ -51,6 +44,26 @@ En utilisant le fichier *"words.txt*" :
 > 3. quels sont ces mots ?
 >
 {: .a-faire}
+
+
+## texte
+
+Utilisez python pour :
+
+> 1. télécharger le comte de Monte-Cristo avec python (<http://www.gutenberg.org/cache/epub/17989/pg17989.txt>),
+> 2. sauvegardez le dans un fichier sur votre ordinateur (toujours en utilisant python)
+{: .a-faire}
+
+Avec ce fichier :
+
+> * Combien de fois est-il question de `Marseille` dans le texte ?
+> * rangez les mots de ce texte par fréquence d'apparition
+> * donner le mot avec le plus de caractères
+> * quelle est la longueur moyenne des mots de ce texte ?
+{: A-faire}
+
+## formats de données
+
 
 ### csv
 
@@ -156,5 +169,5 @@ En utilisant ce fichier :
 >
 > 1. Quel le prénom le plus donné chez les garçons et chez les filles en 2020 ?
 > 2. Représentez graphiquement l'évolution au cours du temps (de l'année 1900 à 2020) de votre prénom (ou d'un prénom que vous aimez bien) au cours du temps
->
+> 3. indice de gini ?
 {: .a-faire}

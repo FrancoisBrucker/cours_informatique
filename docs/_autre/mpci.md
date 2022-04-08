@@ -153,16 +153,20 @@ Au programme :
 #### mercredi {#m-10}
 
 1. [structure : chaine de caractères]({% link cours/algorithme-code-theorie/algorithme/structure-chaine-de-caracteres.md %})
-2. algorithmes de chaines de caractères
+2. [fichiers]({% link cours/algorithme-code-theorie/code/fichiers.md %})
 
 #### vendredi {#v-10}
 
-1. [fichiers]({% link cours/algorithme-code-theorie/code/fichiers.md %})
-2. [projet : fichiers]({% link cours/algorithme-code-theorie/code/projet-fichiers.md %})
+1. [projet : fichiers]({% link cours/algorithme-code-theorie/code/projet-fichiers.md %})
 
 ### semaine 11
 
 #### mercredi {#m-11}
+
+> chaine de caractère
+> arbre de recherche ?
+> coloration de graphe ?
+{: .tbd}
 
 #### vendredi {#v-11}
 
