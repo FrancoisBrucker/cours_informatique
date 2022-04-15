@@ -149,22 +149,20 @@ Les différents encoding possibles sont disponibles [dans la documentaion](https
 
 ### exercices
 
-On va s'amuser avec [les nombres de Mersenne](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier)
+On utilisera [les nombres de Mersenne](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier) comme prétexte à la manipulation de chaines de caractères en python. Ces exercices sont pour une grande partie tirés d'un cours donné il y a quelques temps par Aristide Grange, à l'université Paul Verlaine de Metz).
 
-Notez `m27` le 27ième nombre de Mersenne $2^{44497} -1$ :
+> Notez `m27` le 27ième nombre de Mersenne $2^{44497} -1$ :
+{: .a-faire}
 {% details solution %}
 
 ```python
-m27 = 2 ** 444497 -1
+m27 = 2 ** 444497 - 1
 ```
 
 {% enddetails %}
 
-### jouons avec les chaines de caractères
-
-Quelques exercice pour les chaines de caractères. On y verra quelques [méthodes de chaines](https://docs.python.org/3/library/stdtypes.html#string-methods) bien utiles en python :
-
-Combien de chiffre en base 10, 2 et 16 possède ce nombre ?
+> Combien de chiffre en base 10, 2 et 16 possède ce nombre ?
+{: .a-faire}
 {% details solution %}
 
 * en base 10 : `len(str(m27))` : conversion de l'entier en chaine de caractères puis son nombre
@@ -173,15 +171,22 @@ Combien de chiffre en base 10, 2 et 16 possède ce nombre ?
 
 {% enddetails %}
 
-Index de la première occurence de `1234` dans m27. Et de la deuxième ?
+#### méthodes de chaines de caractères
+
+Utilisez la documentation sur les [méthodes de chaines](https://docs.python.org/3/library/stdtypes.html#string-methods) en python pour résoudre les exercices suivants
+
+> Index de la première occurence de `1234` dans m27. Et de la deuxième ?
+{: .a-faire}
 {% details solution %}
 
 * `str(m27).find('1234')`
-* `str(m27).find('1234', 7152)` : la première occurence est à l'indice 7151, on cherche donc après. 
+* `str(m27).find('1234', 19260 + 1)` : la première occurence est à l'indice 19260, on cherche donc après.
+* on peut faire en une ligne : `str(m27).find('1234', str(m27).find('1234') + 1)`
 
 {% enddetails %}
 
-Nombre de 2 dans m27, nombre de 7
+> Nombre de 2 dans m27, nombre de 7
+{: .a-faire}
 {% details solution %}
 
 * `str(m27).count('2')`
@@ -189,14 +194,16 @@ Nombre de 2 dans m27, nombre de 7
 
 {% enddetails %}
 
-Remplacer des 2 par des 7 dans m27.
+> Remplacer des 2 par des 7 dans m27.
+{: .a-faire}
 {% details solution %}
 
 `str(m27).replace('2', '7')`
 
 {% enddetails %}
 
-Echanger les 2 et les 7 dans m27
+> Echanger les 2 et les 7 dans m27
+{: .a-faire}
 {% details solution %}
 
 `str(m27).replace('2', 'X').replace('7', '2').replace('X', '7')`
@@ -205,23 +212,33 @@ Echanger les 2 et les 7 dans m27
 
 #### slice
 
-sous-chaine comme une liste `s[a:b:c]` : de l'indice `a` à l'indice `b-1` avec un pas d `c`
+L'extraction de sous-chaines en python se fait par une opération appelé [slice](https://zestedesavoir.com/tutoriels/582/les-slices-en-python/). Cela peut se résumer en une seule grosse opération :
 
-Quels sont les 10 premiers chiffres de m27 ?
+> Si `s` est une chaine de caractère, la chaîne caractère `s[a:b:c]` est la sous chaine de `s` allant de l'indice `a` à l'indice `b-1` avec un pas de `c`.
+>
+> Par défaut `a=0`, `b=-1` et `c=1`
+{: .note}
+
+Ainsi `"abcdefghijklmnopqrstuvwxyz"[2:15:4]` vaut : `'cgko'`.
+
+> Quels sont les 10 premiers chiffres de m27 ?
+{: .a-faire}
 {% details solution %}
 
 `str(m27)[:10]`
 
 {% enddetails %}
 
-Quels sont les 10 derniers chiffres de m27 ?
+> Quels sont les 10 derniers chiffres de m27 ?
+{: .a-faire}
 {% details solution %}
 
 `str(m27)[-10:]`
 
 {% enddetails %}
 
-Est-ce que m27 est un [palindrome](https://fr.wikipedia.org/wiki/Palindrome) ?
+> Est-ce que m27 est un [palindrome](https://fr.wikipedia.org/wiki/Palindrome) ?
+{: .a-faire}
 {% details solution %}
 
 `str(m27) == str(m27)[::-1]` (`s[::-1]` renverse la chaine)

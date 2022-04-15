@@ -18,6 +18,8 @@ author: "François Brucker"
 
 Stocker des données est une préoccupation depuis les origines de l'informatique : d'abords sur carte perforées, puis sur bande magnétiques et enfin aux disques dur et clés actuelles. Un [fichier](https://fr.wikipedia.org/wiki/Fichier_informatique) est ainsi un ensemble de données que l'on peut lire ou écrire pour le sauvegarder. Nous n'entrerons cependant pas dans les détails des [systèmes de fichiers](https://fr.wikipedia.org/wiki/Syst%C3%A8me_de_fichiers) (comment sont effectivement stocké les fichiers sur le disque dur), car c'est une affaire (très) compliquée. Nous n'aborderons que le stricte nécessaire pour les manipuler en python.
 
+Toutes les manipulations spécifiques des fichiers (buffer, impossibilité de modifier, etc) sont issues des origines de l'informatique où stocker et charger des données était une chose compliquée *physiquement* (voir par exemple le [chargement d'un programme depuis une cassette sur un TO7](https://youtu.be/HQyckYYT3_8?t=1120) qui prenait plus d'un quart d'heure... Et c'est du vécu, le TO7 a été ma première machine)
+
 ## système de fichiers
 
 Un fichier est constitué d'une suite de blocs sur le disque dur, chaque bloc ayant une adresse contenant le bloc suivant. C'est une [liste chaînée](https://fr.wikipedia.org/wiki/Liste_cha%C3%AEn%C3%A9e) de tableaux de même taille contenant les données (des octets).
@@ -167,6 +169,8 @@ f.close()
 
 On ajoute un retour à la ligne, puis les dates de naissance et de mort de Bashô.
 
+Notez qu'aller à la ligne est un caractère comme un autre (il s'écrit `\n` et vaut U+0010). Il fait parti des [caractères de contrôle](https://fr.wikipedia.org/wiki/Caract%C3%A8re_de_contr%C3%B4le) comme la tabulation ou le bip (essayez par exemple `print(chr(0x7))`).
+
 #### Ecriture du fichier
 
 > Exécutez le code suivant pour remplacer le contenu du fichier :
@@ -212,14 +216,14 @@ L'exemple suivant ouvre le fichier `haiku.txt` en lecture sous la forme d'un fic
 
 En regardant le type de `x` (avec la commande `type(x)`) :
 
-```python
+```text
 >>> type(x)
 <class 'bytes'>
 ```
 
 On se rend compte que ce n'est pas une chaîne de caractère, mais un `bytes` (une suite d'octets). En l'affichant on voit que les accents ne passent pas :
 
-```python
+```text
 >>> print(x)
 b"dans le vieil \xc3\xa9tang,\nune grenouille saute,\nun ploc dans l'eau.\n\nBash\xc3\xb4.\n"
 ```
@@ -246,12 +250,81 @@ Bashô.
 
 ### manipulation des dossiers et des fichiers
 
-Par défaut python va chercher les fichiers à ouvrir dans le dossier du fichier python entrain d'être exécuté. On peut facilement chercher un fichier dans un dossier spécifique via le modules [pathlib](https://docs.python.org/fr/3/library/pathlib.html).
+Par défaut python va chercher les fichiers à ouvrir dans le dossier du fichier python entrain d'être exécuté. On peut facilement chercher un fichier dans un dossier spécifique en python.
 
-Deux tutos pour apprendre :
+Commencez par intégrer la règle d'or :
 
-* <https://jefftriplett.com/2017/pathlib-is-wonderful/>
-* <http://apprendre-python.com/page-gestion-fichiers-dossiers-python>
+> On ne présuppose jamais de l'endroit où un fichier est stocker sur un ordinateur.
+{: .note}
+
+Supposons  que vous ayez un fichier python dans le dossier *"/Users/fbrucker/Documents/mon_projet/main.py"* et que ce programme python utilise le fichier *"/Users/fbrucker/Documents/mon_projet/donnees.txt"*.
+
+Si votre programme *"main.py"* utilise le fichier *"donnees.txt"* de cette façon :
+
+```python
+donnees = open("/Users/fbrucker/Documents/mon_projet/donnees.txt").read()
+```
+
+Il ne pourra fonctionner **que** sur votre ordinateur ! En effet, Si vous copiez le dossier *"mon_projet"*  et tout son contenu  de l'ordinateur A à l'ordinateur B, il est très peu probable qu'il soit placé au même endroit sur le disque dur.
+
+Une première solution est d'utiliser un chemin relatif :
+
+```python
+donnees = open("donnees.txt").read()
+```
+
+On voit que le chemin utilisé est *relatif* car il ne commence pas par un *"/"*. On cherche le fichier *"donnees.txt"* par rapport au dossier courant du terminal qui a exécuté le fichier python. De là, si vous êtes dans le dossier *"mon_projet"* lorsque vous tapez la commande `python main.py` votre programme marchera sur tous les ordinateurs.
+
+Si cette technique fonctionne souvent, elle n'est cependant pas optimale car vous ne pouvez pas garantir que votre programme sera **toujours** exécuté depuis le dossier *"mon_projet"*. S'il est par exemple exécuté depuis le parent de *"mon_projet"* : `python mon_projet/main.py` ; votre code ne fonctionnera plus puisque le dossier par défaut ne sera plus le bon...
+
+La solution qui fonctionne tout le temps est de déterminer à l'exécution l'emplacement du fichier*"main.py"*. Ceci se fait grâce à la variable spéciale : `__file__`.
+
+> Copiez le code suivant dans un fichier et exécutez le pour voir le fonctionnement de la variable `__file__` :
+>
+> ```python
+> print(__file__)
+> ```
+>
+{: .a-faire}
+
+On a fait que la moitié du chemin, puisque l'on a l'emplacement du fichier, mais pas le dossier. Ceci peut se faire en utilisant le module [`os.path` de python](https://docs.python.org/fr/3/library/os.path.html) :
+
+> Copiez le code suivant dans un fichier et exécutez le pour voir comment récupérer le dossier à partir de `__file__` :
+>
+> ```python
+> import os
+>
+> print(__file__) # le chemin absolu jusqu'au fichier
+> print(os.path.dirname(__file__))  # le dossier
+> print(os.path.basename(__file__)) # le nom du fichier                                     
+> ```
+>
+{: .a-faire}
+
+Cette méthode permet d'obtenir un chemin absolu de référence pour garantir l'accès au fichiers de données sur toutes les machines où votre projet sera copié.
+
+Un fois un dossier de référence trouvé, on pourra l'utiliser pour accéder à nos données. Mais **jamais** à la main :
+
+> Lorsque l'on manipule des fichiers ou que l'on combine des dossier on utilise **toujours** une bibliothèque dédiée pour cela, on ne manipule **jamais** les noms de fichiers et de dossier en utilisant des méthodes de chaines de caractères
+{: .note}
+
+On va voir deux façon de faire en python, l'une classique avec le module [os.path](https://docs.python.org/fr/3/library/os.path.html), l'autre plus moderne qui utilise le module [pathlib](https://docs.python.org/fr/3/library/pathlib.html).
+
+#### module os.path
+
+On suppose que la variable `__file__` corresponde au chemin *"/Users/fbrucker/Documents/mon_projet/main.py"* sur le disque dur. On suppose qaussi que le module `os` a été impoté.
+
+* rendre le dossier où est `__file__` : `dossier = os.path.dirname(__file__)`
+* rendre le nom du fichier pointé par `__file__` : 
+
+* dossier, nom de fichier
+* chemin absolu d'un chemin relatif
+* combiner des dossiers entres eux avec .. ou combiner deux chemins
+
+#### module pathlib
+
+Le module [pathlib](https://docs.python.org/fr/3/library/pathlib.html) permet d'avoir une approche objet dela manipulation des fichiers. Le tuto suivant est parfait pour vous montrer comment l'utiliser : <https://jefftriplett.com/2017/pathlib-is-wonderful/>.
+
 
 ### fichiers distants
 
@@ -269,7 +342,9 @@ texte = page.text
 
 Une fois téléchargé, le fichier est décodé selon le format donné dans la requête (ici `utf-8`), voir `page.encoding`.
 
-## sauvegarder ses données
+## format de données
+
+Lorsque l'on manipule des données, il vaut mieux **toujours** utiliser un format de stockage 
 
 > Plutôt que d'écrire simplement un fichier texte contenant nos données, on préfèrera les structurer dans un format permettant de les relire simplement. On en conseille deux :
 >
@@ -456,3 +531,8 @@ data = json.loads(data_url.content)
 #### écriture de fichiers
 
 Pour lire un fichier on utilise la méthode  [`json.dump`](https://docs.python.org/fr/3/library/json.html#json.dump) (à ne pas confondre avec `json.dumps` qui est pour les chaines de caractères).
+
+### bibliothèque pandas
+
+> <https://pandas.pydata.org/>
+{: .note}

@@ -64,6 +64,8 @@ Avec ce fichier :
 
 ## formats de données
 
+> ajouter ds exercices de chargements de données avec des ; , des fr, etc
+{: .tbd}
 
 ### csv
 
