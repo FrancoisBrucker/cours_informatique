@@ -241,20 +241,20 @@
 
 <h3 id="exercices">exercices</h3>
 
-<p>On va s’amuser avec <a href="https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier">les nombres de Mersenne</a></p>
+<p>On utilisera <a href="https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier">les nombres de Mersenne</a> comme prétexte à la manipulation de chaines de caractères en python. Ces exercices sont pour une grande partie tirés d’un cours donné il y a quelques temps par Aristide Grange, à l’université Paul Verlaine de Metz).</p>
 
-<p>Notez <code class="language-plaintext highlighter-rouge">m27</code> le 27ième nombre de Mersenne $2^{44497} -1$ :</p>
+<blockquote class="a-faire">
+  <p>Notez <code class="language-plaintext highlighter-rouge">m27</code> le 27ième nombre de Mersenne $2^{44497} -1$ :</p>
+</blockquote>
 <details><summary>solution</summary><div>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">m27</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">**</span> <span class="mi">444497</span> <span class="o">-</span><span class="mi">1</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">m27</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">**</span> <span class="mi">444497</span> <span class="o">-</span> <span class="mi">1</span>
 </code></pre></div></div>
 
 </div></details>
 
-<h3 id="jouons-avec-les-chaines-de-caractères">jouons avec les chaines de caractères</h3>
-
-<p>Quelques exercice pour les chaines de caractères. On y verra quelques <a href="https://docs.python.org/3/library/stdtypes.html#string-methods">méthodes de chaines</a> bien utiles en python :</p>
-
-<p>Combien de chiffre en base 10, 2 et 16 possède ce nombre ?</p>
+<blockquote class="a-faire">
+  <p>Combien de chiffre en base 10, 2 et 16 possède ce nombre ?</p>
+</blockquote>
 <details><summary>solution</summary><div>
 <ul>
   <li>en base 10 : <code class="language-plaintext highlighter-rouge">len(str(m27))</code> : conversion de l’entier en chaine de caractères puis son nombre</li>
@@ -264,17 +264,27 @@
 
 </div></details>
 
-<p>Index de la première occurence de <code class="language-plaintext highlighter-rouge">1234</code> dans m27. Et de la deuxième ?</p>
+<h4 id="méthodes-de-chaines-de-caractères">méthodes de chaines de caractères</h4>
+
+<p>Utilisez la documentation sur les <a href="https://docs.python.org/3/library/stdtypes.html#string-methods">méthodes de chaines</a> en python pour résoudre les exercices suivants</p>
+
+<blockquote class="a-faire">
+  <p>Index de la première occurence de <code class="language-plaintext highlighter-rouge">1234</code> dans m27. Et de la deuxième ?</p>
+</blockquote>
 <details><summary>solution</summary><div>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">str(m27).find('1234')</code></li>
   <li>
-<code class="language-plaintext highlighter-rouge">str(m27).find('1234', 7152)</code> : la première occurence est à l’indice 7151, on cherche donc après.</li>
+<code class="language-plaintext highlighter-rouge">str(m27).find('1234', 19260 + 1)</code> : la première occurence est à l’indice 19260, on cherche donc après.</li>
+  <li>on peut faire en une ligne : <code class="language-plaintext highlighter-rouge">str(m27).find('1234', str(m27).find('1234') + 1)</code>
+</li>
 </ul>
 
 </div></details>
 
-<p>Nombre de 2 dans m27, nombre de 7</p>
+<blockquote class="a-faire">
+  <p>Nombre de 2 dans m27, nombre de 7</p>
+</blockquote>
 <details><summary>solution</summary><div>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">str(m27).count('2')</code></li>
@@ -283,13 +293,17 @@
 
 </div></details>
 
-<p>Remplacer des 2 par des 7 dans m27.</p>
+<blockquote class="a-faire">
+  <p>Remplacer des 2 par des 7 dans m27.</p>
+</blockquote>
 <details><summary>solution</summary><div>
 <p><code class="language-plaintext highlighter-rouge">str(m27).replace('2', '7')</code></p>
 
 </div></details>
 
-<p>Echanger les 2 et les 7 dans m27</p>
+<blockquote class="a-faire">
+  <p>Echanger les 2 et les 7 dans m27</p>
+</blockquote>
 <details><summary>solution</summary><div>
 <p><code class="language-plaintext highlighter-rouge">str(m27).replace('2', 'X').replace('7', '2').replace('X', '7')</code></p>
 
@@ -297,21 +311,35 @@
 
 <h4 id="slice">slice</h4>
 
-<p>sous-chaine comme une liste <code class="language-plaintext highlighter-rouge">s[a:b:c]</code> : de l’indice <code class="language-plaintext highlighter-rouge">a</code> à l’indice <code class="language-plaintext highlighter-rouge">b-1</code> avec un pas d <code class="language-plaintext highlighter-rouge">c</code></p>
+<p>L’extraction de sous-chaines en python se fait par une opération appelé <a href="https://zestedesavoir.com/tutoriels/582/les-slices-en-python/">slice</a>. Cela peut se résumer en une seule grosse opération :</p>
 
-<p>Quels sont les 10 premiers chiffres de m27 ?</p>
+<blockquote class="note">
+  <p>Si <code class="language-plaintext highlighter-rouge">s</code> est une chaine de caractère, la chaîne caractère <code class="language-plaintext highlighter-rouge">s[a:b:c]</code> est la sous chaine de <code class="language-plaintext highlighter-rouge">s</code> allant de l’indice <code class="language-plaintext highlighter-rouge">a</code> à l’indice <code class="language-plaintext highlighter-rouge">b-1</code> avec un pas de <code class="language-plaintext highlighter-rouge">c</code>.</p>
+
+  <p>Par défaut <code class="language-plaintext highlighter-rouge">a=0</code>, <code class="language-plaintext highlighter-rouge">b=-1</code> et <code class="language-plaintext highlighter-rouge">c=1</code></p>
+</blockquote>
+
+<p>Ainsi <code class="language-plaintext highlighter-rouge">"abcdefghijklmnopqrstuvwxyz"[2:15:4]</code> vaut : <code class="language-plaintext highlighter-rouge">'cgko'</code>.</p>
+
+<blockquote class="a-faire">
+  <p>Quels sont les 10 premiers chiffres de m27 ?</p>
+</blockquote>
 <details><summary>solution</summary><div>
 <p><code class="language-plaintext highlighter-rouge">str(m27)[:10]</code></p>
 
 </div></details>
 
-<p>Quels sont les 10 derniers chiffres de m27 ?</p>
+<blockquote class="a-faire">
+  <p>Quels sont les 10 derniers chiffres de m27 ?</p>
+</blockquote>
 <details><summary>solution</summary><div>
 <p><code class="language-plaintext highlighter-rouge">str(m27)[-10:]</code></p>
 
 </div></details>
 
-<p>Est-ce que m27 est un <a href="https://fr.wikipedia.org/wiki/Palindrome">palindrome</a> ?</p>
+<blockquote class="a-faire">
+  <p>Est-ce que m27 est un <a href="https://fr.wikipedia.org/wiki/Palindrome">palindrome</a> ?</p>
+</blockquote>
 <details><summary>solution</summary><div>
 <p><code class="language-plaintext highlighter-rouge">str(m27) == str(m27)[::-1]</code> (<code class="language-plaintext highlighter-rouge">s[::-1]</code> renverse la chaine)</p>
 

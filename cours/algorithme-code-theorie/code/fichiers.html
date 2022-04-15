@@ -74,6 +74,8 @@
 
 <p>Stocker des données est une préoccupation depuis les origines de l’informatique : d’abords sur carte perforées, puis sur bande magnétiques et enfin aux disques dur et clés actuelles. Un <a href="https://fr.wikipedia.org/wiki/Fichier_informatique">fichier</a> est ainsi un ensemble de données que l’on peut lire ou écrire pour le sauvegarder. Nous n’entrerons cependant pas dans les détails des <a href="https://fr.wikipedia.org/wiki/Syst%C3%A8me_de_fichiers">systèmes de fichiers</a> (comment sont effectivement stocké les fichiers sur le disque dur), car c’est une affaire (très) compliquée. Nous n’aborderons que le stricte nécessaire pour les manipuler en python.</p>
 
+<p>Toutes les manipulations spécifiques des fichiers (buffer, impossibilité de modifier, etc) sont issues des origines de l’informatique où stocker et charger des données était une chose compliquée <em>physiquement</em> (voir par exemple le <a href="https://youtu.be/HQyckYYT3_8?t=1120">chargement d’un programme depuis une cassette sur un TO7</a> qui prenait plus d’un quart d’heure… Et c’est du vécu, le TO7 a été ma première machine)</p>
+
 <h2 id="système-de-fichiers">système de fichiers</h2>
 
 <p>Un fichier est constitué d’une suite de blocs sur le disque dur, chaque bloc ayant une adresse contenant le bloc suivant. C’est une <a href="https://fr.wikipedia.org/wiki/Liste_cha%C3%AEn%C3%A9e">liste chaînée</a> de tableaux de même taille contenant les données (des octets).</p>
@@ -275,6 +277,8 @@ Bashô.
 
 <p>On ajoute un retour à la ligne, puis les dates de naissance et de mort de Bashô.</p>
 
+<p>Notez qu’aller à la ligne est un caractère comme un autre (il s’écrit <code class="language-plaintext highlighter-rouge">\n</code> et vaut U+0010). Il fait parti des <a href="https://fr.wikipedia.org/wiki/Caract%C3%A8re_de_contr%C3%B4le">caractères de contrôle</a> comme la tabulation ou le bip (essayez par exemple <code class="language-plaintext highlighter-rouge">print(chr(0x7))</code>).</p>
+
 <h4 id="ecriture-du-fichier">Ecriture du fichier</h4>
 
 <blockquote class="a-faire">
@@ -324,14 +328,14 @@ f.close()
 
 <p>En regardant le type de <code class="language-plaintext highlighter-rouge">x</code> (avec la commande <code class="language-plaintext highlighter-rouge">type(x)</code>) :</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="o">&lt;</span><span class="k">class</span> <span class="err">'</span><span class="nc">bytes</span><span class="s">'&gt;
-</span></code></pre></div></div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; type(x)
+&lt;class 'bytes'&gt;
+</code></pre></div></div>
 
 <p>On se rend compte que ce n’est pas une chaîne de caractère, mais un <code class="language-plaintext highlighter-rouge">bytes</code> (une suite d’octets). En l’affichant on voit que les accents ne passent pas :</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="sa">b</span><span class="s">"dans le vieil </span><span class="se">\xc3\xa9</span><span class="s">tang,</span><span class="se">\n</span><span class="s">une grenouille saute,</span><span class="se">\n</span><span class="s">un ploc dans l'eau.</span><span class="se">\n\n</span><span class="s">Bash</span><span class="se">\xc3\xb4</span><span class="s">.</span><span class="se">\n</span><span class="s">"</span>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; print(x)
+b"dans le vieil \xc3\xa9tang,\nune grenouille saute,\nun ploc dans l'eau.\n\nBash\xc3\xb4.\n"
 </code></pre></div></div>
 
 <p>Quand python affiche des suites d’octet, il essaie de les écrire en ascii et tous les caractères qu’il ne comprend pas (ici les accents car ils sont codés sur 2 octets en utf-8) il écrit juste le nombre sous format hexadécimal <code class="language-plaintext highlighter-rouge">\xc3</code> par exemple. De plus, il fait commencer l’affichage par un <code class="language-plaintext highlighter-rouge">b</code>  pour bien montrer que ce n’est <strong>PAS</strong> une chaîne de caractère.</p>
@@ -354,14 +358,86 @@ Bashô.
 
 <h3 id="manipulation-des-dossiers-et-des-fichiers">manipulation des dossiers et des fichiers</h3>
 
-<p>Par défaut python va chercher les fichiers à ouvrir dans le dossier du fichier python entrain d’être exécuté. On peut facilement chercher un fichier dans un dossier spécifique via le modules <a href="https://docs.python.org/fr/3/library/pathlib.html">pathlib</a>.</p>
+<p>Par défaut python va chercher les fichiers à ouvrir dans le dossier du fichier python entrain d’être exécuté. On peut facilement chercher un fichier dans un dossier spécifique en python.</p>
 
-<p>Deux tutos pour apprendre :</p>
+<p>Commencez par intégrer la règle d’or :</p>
+
+<blockquote class="note">
+  <p>On ne présuppose jamais de l’endroit où un fichier est stocker sur un ordinateur.</p>
+</blockquote>
+
+<p>Supposons  que vous ayez un fichier python dans le dossier <em>“/Users/fbrucker/Documents/mon_projet/main.py”</em> et que ce programme python utilise le fichier <em>“/Users/fbrucker/Documents/mon_projet/donnees.txt”</em>.</p>
+
+<p>Si votre programme <em>“main.py”</em> utilise le fichier <em>“donnees.txt”</em> de cette façon :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">donnees</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">"/Users/fbrucker/Documents/mon_projet/donnees.txt"</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>Il ne pourra fonctionner <strong>que</strong> sur votre ordinateur ! En effet, Si vous copiez le dossier <em>“mon_projet”</em>  et tout son contenu  de l’ordinateur A à l’ordinateur B, il est très peu probable qu’il soit placé au même endroit sur le disque dur.</p>
+
+<p>Une première solution est d’utiliser un chemin relatif :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">donnees</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">"donnees.txt"</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>On voit que le chemin utilisé est <em>relatif</em> car il ne commence pas par un <em>”/”</em>. On cherche le fichier <em>“donnees.txt”</em> par rapport au dossier courant du terminal qui a exécuté le fichier python. De là, si vous êtes dans le dossier <em>“mon_projet”</em> lorsque vous tapez la commande <code class="language-plaintext highlighter-rouge">python main.py</code> votre programme marchera sur tous les ordinateurs.</p>
+
+<p>Si cette technique fonctionne souvent, elle n’est cependant pas optimale car vous ne pouvez pas garantir que votre programme sera <strong>toujours</strong> exécuté depuis le dossier <em>“mon_projet”</em>. S’il est par exemple exécuté depuis le parent de <em>“mon_projet”</em> : <code class="language-plaintext highlighter-rouge">python mon_projet/main.py</code> ; votre code ne fonctionnera plus puisque le dossier par défaut ne sera plus le bon…</p>
+
+<p>La solution qui fonctionne tout le temps est de déterminer à l’exécution l’emplacement du fichier<em>“main.py”</em>. Ceci se fait grâce à la variable spéciale : <code class="language-plaintext highlighter-rouge">__file__</code>.</p>
+
+<blockquote class="a-faire">
+  <p>Copiez le code suivant dans un fichier et exécutez le pour voir le fonctionnement de la variable <code class="language-plaintext highlighter-rouge">__file__</code> :</p>
+
+  <div class="language-python highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">__file__</span><span class="p">)</span>
+</code></pre></div>  </div>
+
+</blockquote>
+
+<p>On a fait que la moitié du chemin, puisque l’on a l’emplacement du fichier, mais pas le dossier. Ceci peut se faire en utilisant le module <a href="https://docs.python.org/fr/3/library/os.path.html"><code class="language-plaintext highlighter-rouge">os.path</code> de python</a> :</p>
+
+<blockquote class="a-faire">
+  <p>Copiez le code suivant dans un fichier et exécutez le pour voir comment récupérer le dossier à partir de <code class="language-plaintext highlighter-rouge">__file__</code> :</p>
+
+  <div class="language-python highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">__file__</span><span class="p">)</span> <span class="c1"># le chemin absolu jusqu'au fichier
+</span><span class="k">print</span><span class="p">(</span><span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">))</span>  <span class="c1"># le dossier
+</span><span class="k">print</span><span class="p">(</span><span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">basename</span><span class="p">(</span><span class="n">__file__</span><span class="p">))</span> <span class="c1"># le nom du fichier                                     
+</span></code></pre></div>  </div>
+
+</blockquote>
+
+<p>Cette méthode permet d’obtenir un chemin absolu de référence pour garantir l’accès au fichiers de données sur toutes les machines où votre projet sera copié.</p>
+
+<p>Un fois un dossier de référence trouvé, on pourra l’utiliser pour accéder à nos données. Mais <strong>jamais</strong> à la main :</p>
+
+<blockquote class="note">
+  <p>Lorsque l’on manipule des fichiers ou que l’on combine des dossier on utilise <strong>toujours</strong> une bibliothèque dédiée pour cela, on ne manipule <strong>jamais</strong> les noms de fichiers et de dossier en utilisant des méthodes de chaines de caractères</p>
+</blockquote>
+
+<p>On va voir deux façon de faire en python, l’une classique avec le module <a href="https://docs.python.org/fr/3/library/os.path.html">os.path</a>, l’autre plus moderne qui utilise le module <a href="https://docs.python.org/fr/3/library/pathlib.html">pathlib</a>.</p>
+
+<h4 id="module-ospath">module os.path</h4>
+
+<p>On suppose que la variable <code class="language-plaintext highlighter-rouge">__file__</code> corresponde au chemin <em>“/Users/fbrucker/Documents/mon_projet/main.py”</em> sur le disque dur. On suppose qaussi que le module <code class="language-plaintext highlighter-rouge">os</code> a été impoté.</p>
 
 <ul>
-  <li><a href="https://jefftriplett.com/2017/pathlib-is-wonderful/">https://jefftriplett.com/2017/pathlib-is-wonderful/</a></li>
-  <li><a href="http://apprendre-python.com/page-gestion-fichiers-dossiers-python">http://apprendre-python.com/page-gestion-fichiers-dossiers-python</a></li>
+  <li>rendre le dossier où est <code class="language-plaintext highlighter-rouge">__file__</code> : <code class="language-plaintext highlighter-rouge">dossier = os.path.dirname(__file__)</code>
+</li>
+  <li>
+    <p>rendre le nom du fichier pointé par <code class="language-plaintext highlighter-rouge">__file__</code> :</p>
+  </li>
+  <li>dossier, nom de fichier</li>
+  <li>chemin absolu d’un chemin relatif</li>
+  <li>combiner des dossiers entres eux avec .. ou combiner deux chemins</li>
 </ul>
+
+<h4 id="module-pathlib">module pathlib</h4>
+
+<p>Le module <a href="https://docs.python.org/fr/3/library/pathlib.html">pathlib</a> permet d’avoir une approche objet dela manipulation des fichiers. Le tuto suivant est parfait pour vous montrer comment l’utiliser : <a href="https://jefftriplett.com/2017/pathlib-is-wonderful/">https://jefftriplett.com/2017/pathlib-is-wonderful/</a>.</p>
 
 <h3 id="fichiers-distants">fichiers distants</h3>
 
@@ -378,7 +454,9 @@ Bashô.
 
 <p>Une fois téléchargé, le fichier est décodé selon le format donné dans la requête (ici <code class="language-plaintext highlighter-rouge">utf-8</code>), voir <code class="language-plaintext highlighter-rouge">page.encoding</code>.</p>
 
-<h2 id="sauvegarder-ses-données">sauvegarder ses données</h2>
+<h2 id="format-de-données">format de données</h2>
+
+<p>Lorsque l’on manipule des données, il vaut mieux <strong>toujours</strong> utiliser un format de stockage</p>
 
 <blockquote class="note">
   <p>Plutôt que d’écrire simplement un fichier texte contenant nos données, on préfèrera les structurer dans un format permettant de les relire simplement. On en conseille deux :</p>
@@ -576,6 +654,12 @@ F, Charlotte, 1988
 <h4 id="écriture-de-fichiers">écriture de fichiers</h4>
 
 <p>Pour lire un fichier on utilise la méthode  <a href="https://docs.python.org/fr/3/library/json.html#json.dump"><code class="language-plaintext highlighter-rouge">json.dump</code></a> (à ne pas confondre avec <code class="language-plaintext highlighter-rouge">json.dumps</code> qui est pour les chaines de caractères).</p>
+
+<h3 id="bibliothèque-pandas">bibliothèque pandas</h3>
+
+<blockquote class="note">
+  <p><a href="https://pandas.pydata.org/">https://pandas.pydata.org/</a></p>
+</blockquote>
 
   </div>
 
