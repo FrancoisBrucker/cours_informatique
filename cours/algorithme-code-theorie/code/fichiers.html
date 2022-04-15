@@ -422,22 +422,22 @@ Bashô.
 
 <h4 id="module-ospath">module os.path</h4>
 
-<p>On suppose que la variable <code class="language-plaintext highlighter-rouge">__file__</code> corresponde au chemin <em>“/Users/fbrucker/Documents/mon_projet/main.py”</em> sur le disque dur. On suppose qaussi que le module <code class="language-plaintext highlighter-rouge">os</code> a été impoté.</p>
+<p>On suppose que la variable <code class="language-plaintext highlighter-rouge">__file__</code> corresponde au chemin <em>“/Users/fbrucker/Documents/mon_projet/main.py”</em> sur le disque dur. On suppose qaussi que le module <code class="language-plaintext highlighter-rouge">os</code> a été importé.</p>
 
 <ul>
-  <li>rendre le dossier où est <code class="language-plaintext highlighter-rouge">__file__</code> : <code class="language-plaintext highlighter-rouge">dossier = os.path.dirname(__file__)</code>
+  <li>rendre le dossier où est <code class="language-plaintext highlighter-rouge">__file__</code> avec <a href="https://docs.python.org/fr/3/library/os.path.html#os.path.dirname">dirname</a> : <code class="language-plaintext highlighter-rouge">dossier = os.path.dirname(__file__)</code>.</li>
+  <li>rendre le nom du fichier pointé par <code class="language-plaintext highlighter-rouge">__file__</code> avec <a href="https://docs.python.org/fr/3/library/os.path.html#os.path.basename">basename</a> : <code class="language-plaintext highlighter-rouge">nom_fichier = os.path.basename(__file__)</code>
 </li>
-  <li>
-    <p>rendre le nom du fichier pointé par <code class="language-plaintext highlighter-rouge">__file__</code> :</p>
-  </li>
-  <li>dossier, nom de fichier</li>
-  <li>chemin absolu d’un chemin relatif</li>
-  <li>combiner des dossiers entres eux avec .. ou combiner deux chemins</li>
+  <li>concaténer deux chemins avec <a href="https://docs.python.org/fr/3/library/os.path.html#os.path.join">join</a> : <code class="language-plaintext highlighter-rouge">os.path.join("/Users/fbrucker", "Documents/mon_projet")</code> rendra : <code class="language-plaintext highlighter-rouge">/Users/fbrucker/Documents/mon_projet</code>
+</li>
+  <li>rendre le dossier parent : <code class="language-plaintext highlighter-rouge">os.path.join(dossier, "..")</code>.</li>
+  <li>rendre le chemin absolu à partir d’un chemin relatif : <code class="language-plaintext highlighter-rouge">os.path.abspath(".")</code>
+</li>
 </ul>
 
 <h4 id="module-pathlib">module pathlib</h4>
 
-<p>Le module <a href="https://docs.python.org/fr/3/library/pathlib.html">pathlib</a> permet d’avoir une approche objet dela manipulation des fichiers. Le tuto suivant est parfait pour vous montrer comment l’utiliser : <a href="https://jefftriplett.com/2017/pathlib-is-wonderful/">https://jefftriplett.com/2017/pathlib-is-wonderful/</a>.</p>
+<p>Le module <a href="https://docs.python.org/fr/3/library/pathlib.html">pathlib</a> permet d’avoir une approche objet de la manipulation des fichiers. Le tuto suivant est parfait pour vous montrer comment l’utiliser : <a href="https://jefftriplett.com/2017/pathlib-is-wonderful/">https://jefftriplett.com/2017/pathlib-is-wonderful/</a>.</p>
 
 <h3 id="fichiers-distants">fichiers distants</h3>
 
@@ -453,6 +453,8 @@ Bashô.
 </code></pre></div></div>
 
 <p>Une fois téléchargé, le fichier est décodé selon le format donné dans la requête (ici <code class="language-plaintext highlighter-rouge">utf-8</code>), voir <code class="language-plaintext highlighter-rouge">page.encoding</code>.</p>
+
+<p><a href="https://www.tutorialspoint.com/downloading-files-from-web-using-python">https://www.tutorialspoint.com/downloading-files-from-web-using-python</a></p>
 
 <h2 id="format-de-données">format de données</h2>
 
