@@ -312,19 +312,17 @@ On va voir deux façon de faire en python, l'une classique avec le module [os.pa
 
 #### module os.path
 
-On suppose que la variable `__file__` corresponde au chemin *"/Users/fbrucker/Documents/mon_projet/main.py"* sur le disque dur. On suppose qaussi que le module `os` a été impoté.
+On suppose que la variable `__file__` corresponde au chemin *"/Users/fbrucker/Documents/mon_projet/main.py"* sur le disque dur. On suppose qaussi que le module `os` a été importé.
 
-* rendre le dossier où est `__file__` : `dossier = os.path.dirname(__file__)`
-* rendre le nom du fichier pointé par `__file__` : 
-
-* dossier, nom de fichier
-* chemin absolu d'un chemin relatif
-* combiner des dossiers entres eux avec .. ou combiner deux chemins
+* rendre le dossier où est `__file__` avec [dirname](https://docs.python.org/fr/3/library/os.path.html#os.path.dirname) : `dossier = os.path.dirname(__file__)`.
+* rendre le nom du fichier pointé par `__file__` avec [basename](https://docs.python.org/fr/3/library/os.path.html#os.path.basename) : `nom_fichier = os.path.basename(__file__)`
+* concaténer deux chemins avec [join](https://docs.python.org/fr/3/library/os.path.html#os.path.join) : `os.path.join("/Users/fbrucker", "Documents/mon_projet")` rendra : `/Users/fbrucker/Documents/mon_projet`
+* rendre le dossier parent : `os.path.join(dossier, "..")`.
+* rendre le chemin absolu à partir d'un chemin relatif : `os.path.abspath(".")`
 
 #### module pathlib
 
-Le module [pathlib](https://docs.python.org/fr/3/library/pathlib.html) permet d'avoir une approche objet dela manipulation des fichiers. Le tuto suivant est parfait pour vous montrer comment l'utiliser : <https://jefftriplett.com/2017/pathlib-is-wonderful/>.
-
+Le module [pathlib](https://docs.python.org/fr/3/library/pathlib.html) permet d'avoir une approche objet de la manipulation des fichiers. Le tuto suivant est parfait pour vous montrer comment l'utiliser : <https://jefftriplett.com/2017/pathlib-is-wonderful/>.
 
 ### fichiers distants
 
@@ -341,6 +339,8 @@ texte = page.text
 ```
 
 Une fois téléchargé, le fichier est décodé selon le format donné dans la requête (ici `utf-8`), voir `page.encoding`.
+
+<https://www.tutorialspoint.com/downloading-files-from-web-using-python>
 
 ## format de données
 
