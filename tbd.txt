@@ -1,2 +1,2 @@
 - spell check est mieux pour la correction orthorgraphique
-
+- changer nom par variable partout dans le cours memoire et objets

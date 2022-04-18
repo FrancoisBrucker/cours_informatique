@@ -23,30 +23,30 @@ author: "François Brucker"
 
 ## texte
 
-> * un poeme en .txt à ecrire et sauver
-> * le retrouver avec python
-> * compter le nombre de mots diffrents
-> * compter combien de fois un nom arrive
-{:.tbd}
+### jouons sur les mots
 
-### dictionnaire
+Utilisez python pour :
 
-Le fichier `https://data.senat.fr/data/senateurs/ODSEN_GENERAL.json` contient des données générales relatives aux sénateurs (https://www.data.gouv.fr/fr/datasets/les-senateurs/).
-
-> Téléchargez le fichier <https://gist.githubusercontent.com/wchargin/8927565/raw/d9783627c731268fb2935a731a618aa8e95cf465/words> (vient de [ce gist](https://gist.github.com/wchargin/8927565/)) et sauvegardez son contenu dans un fichier que vous nommerez *"words.txt".
+> 1. télécharger le fichier présent à cette adresse : <https://gist.githubusercontent.com/wchargin/8927565/raw/d9783627c731268fb2935a731a618aa8e95cf465/words>
+> 2. sauvegardez le dans un fichier nommé *"words.txt"*  sur votre ordinateur (toujours en utilisant python), dans le dossier *"fichiers-donnees"*.
 {: .a-faire}
 
-En utilisant le fichier *"words.txt*" :
+Le fichier contient une liste de mots, un mot par ligne.
 
->
-> 1. créez une liste contenant tous les mots de ce fichier (vous pourrez utiliser la méthode [`strip`](https://docs.python.org/3/library/stdtypes.html#str.strip) des chaines de caractères pour supprimer les fin delignes à chaque mot.)
-> 2. combien de mots du fichier contiennent la chaine de caractères `prout` ? (`"a" in "ab"` rendra `True` en pyhton)
-> 3. quels sont ces mots ?
->
+> 1. Combien de mots contient ce fichier ?
+> 2. quel est le 42ème mot du dictionnaire ?
+> 3. combien de mots finissent par 'g' ?
 {: .a-faire}
 
+Pour ne pas prendre en compte le caractère à la ligne, vous pourrez utiliser la méthode [strip](https://docs.python.org/fr/3/library/stdtypes.html#str.strip) des chaînes de caractères.
 
-## texte
+Enfin : 
+
+> 1. combien de mots du fichier contiennent la chaîne de caractères `prout` ? (`"b" in "abc"` rendra `True` en pytnon)
+> 2. quels sont ces mots ?
+{: .a-faire}
+
+### le compte de Monte-Cristo
 
 Utilisez python pour :
 
@@ -56,25 +56,33 @@ Utilisez python pour :
 
 Avec ce fichier :
 
-> * Combien de fois est-il question de `Marseille` dans le texte ?
-> * rangez les mots de ce texte par fréquence d'apparition
-> * donner le mot avec le plus de caractères
-> * quelle est la longueur moyenne des mots de ce texte ?
-{: A-faire}
+> 1. Comptez le nombre de caractères utilisés (vous pourrez mettre chaque caractère dans un [ensemble](https://docs.python.org/fr/3/tutorial/datastructures.html#sets)), et affichez les.
+> 2. Remplacez tous les caractères qui ne sont pas des lettres (c'est à dire qui ne sont pas dans : `"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzÀÇÉÊÎÔàâçèéêëîïôùû"`) par des espaces (vous pourrez utiliser la méthode [replace](https://docs.python.org/fr/3/library/stdtypes.html#str.replace))
+> 3. en déduire le nombre de mots utilisés (vous pourrez utiliser la méthode [split](https://docs.python.org/fr/3/library/stdtypes.html#str.split))
+> 4. en déduire le nombre de mots **différents** utilisés (vous pourrez utiliser la méthode [split](https://docs.python.org/fr/3/library/stdtypes.html#str.split))
+{: .a-faire}
+
+Comptons en utilisant ce que l'on a fait précédemment :
+
+> 1. Combien de fois chaque mot est-il utilisé dans le texte (utilisez un dictionnaire où les mots seront les clés et la valeur le nombre de fois ou ce mot est vue)? 
+> 2. est-il question de `Marseille` dans le texte ? Et si oui, combien de fois ?
+> 3. quelle est le mot qui revient le plus souvent ?
+> 4. quels sont les mots qui reviennent au moins $\frac{n}{2}$ fois où $n$ est le nombre de fois où apparaît le mot le plus fréquent.
+{: .a-faire}
 
 ## formats de données
 
-> ajouter ds exercices de chargements de données avec des ; , des fr, etc
-{: .tbd}
-
 ### csv
 
-> Téléchargez la base officielle des codes postaux  au format csv à partir de la page : <https://www.data.gouv.fr/fr/datasets/base-officielle-des-codes-postaux/#_>.
+> Téléchargez la base officielle des codes postaux au format csv à partir de la page : <https://www.data.gouv.fr/fr/datasets/base-officielle-des-codes-postaux/>.
 {: .a-faire}
 
 En utilisant ce fichier csv :
 
-> A quel code postal est associé la charmante bourgade d'OTTERSWILLER ?
+> 1. Quel est le format de ce fichier ?
+> 2. ouvrez ce fichier et déterminez :
+    * A quel code postal est associé la charmante bourgade d'OTTERSWILLER ?
+    * donnez sa latitude et longitude (vous pourrez l'admirer en les copiant/collant dans [google maps](https://www.google.fr/maps))
 {: .a-faire}
 
 En utilisant le fait que le numéro du département est présent dans le code postal :
@@ -84,7 +92,7 @@ En utilisant le fait que le numéro du département est présent dans le code po
 
 Puis triez le tout :
 
->Classez les départements par nombre de code postal
+> Classez les départements par nombre de code postal
 {: .a-faire}
 
 Pour trier les élément d'un tableau selon un autre ordre que l'ordre *naturel* des élément d'un tableau, vous pourrez adapter le bout de code suivant :
@@ -109,19 +117,19 @@ print(l)
 
 Examinez le fichier json :
 
-> 1. comment sont organisés les données ?
+> 1. comment sont organisées les données ?
 > 2. quelles sont les données stockées pour chaque sénateur ?
 > 3. combien y a-t-il de sénateurs actifs ?
 {: .a-faire}
 
 En utilisant la partie date ci-après :
 
-> Déterminez l'âge moyen des sénateurs.
+> Déterminez l'âge moyen des sénateurs encore en activité.
 {: .a-faire}
 
 #### dates en python
 
-Lorsque l'on travaille avec des date en informatique, il ne faut **JAMAIS** le faire à la main. On utilise toujours une bibliothèque our cela car il y a trop de cas particulier.
+Lorsque l'on travaille avec des dates en informatique, il ne faut **JAMAIS** le faire à la main. On utilise toujours une bibliothèque our cela car il y a trop de cas particulier.
 
 En python, cette bibliothèque s'appelle [`datetime`](https://docs.python.org/fr/3.9/library/datetime.html). Pour le sujet qui nous intéresse, on a besoin de transformer une chaine de caractère en date. Ceci est possible avec la méthode [`strptime`](https://docs.python.org/fr/3.9/library/datetime.html#strftime-strptime-behavior).
 
@@ -147,7 +155,7 @@ maintenant = datetime.now()  #  la date de maintenant
 delta = maintenant - date
 ```
 
-On peut ensuite connaitre le nombre de secondes de cette différence :
+On peut ensuite connaître le nombre de secondes de cette différence :
 
 ```python
 delta.total_seconds()
@@ -171,5 +179,4 @@ En utilisant ce fichier :
 >
 > 1. Quel le prénom le plus donné chez les garçons et chez les filles en 2020 ?
 > 2. Représentez graphiquement l'évolution au cours du temps (de l'année 1900 à 2020) de votre prénom (ou d'un prénom que vous aimez bien) au cours du temps
-> 3. indice de gini ?
 {: .a-faire}
