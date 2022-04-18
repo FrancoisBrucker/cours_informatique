@@ -143,7 +143,7 @@ print(t)
 
 ## programme objet
 
-La quasi-entièreté des langages actuellement sont dit *à objet*. C'est à dire que :
+La quasi-entièreté des langages actuellement sont dit *objet*. C'est à dire que :
 
 * ce que manipule un programme est appelé objet.
 * les variables sont des références aux objets.
