@@ -19,6 +19,13 @@ for mot in f:
     mots.append(mot.strip())
 
 print("nombre de mots :", len(mots))
+print("42ème mot :", mots[41])
+
+compte = 0
+for mot in mots:
+    if mot[-1] == 'g':
+        compte += 1
+print("nombre de mots finissant par 'g' :", compte)
 
 nombre_de_prout = 0
 for mot in mots:
