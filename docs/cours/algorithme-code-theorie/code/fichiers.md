@@ -10,7 +10,7 @@ author: "François Brucker"
 >
 > **prérequis :**
 >
-> * [structure : chaine de caractères]({% link cours/algorithme-code-theorie/algorithme/structure-chaine-de-caracteres.md %})
+> * [structure : chaîne de caractères]({% link cours/algorithme-code-theorie/algorithme/structure-chaine-de-caracteres.md %})
 > * [naviguer dans un système de fichiers]({% link _tutoriels/systeme/fichiers-navigation.md %})
 > * [structure : dictionnaire]({% link cours/algorithme-code-theorie/algorithme/structure-dictionnaire.md %})
 >
@@ -58,7 +58,7 @@ Passer des octets à leurs significations pour un fichier se fait via un [codec]
 
 ### voir un fichier
 
-Savoir comment interpréter les données d'un fichier n'est pas une chose facile. L'[extension](https://fr.wikipedia.org/wiki/Extension_de_nom_de_fichier) permet au système d'exploitation d'associer une application spécifique (un visualisateur d'image si le fichier fini par *".jpg"* par exemple). Mais ce n'est qu'une indication. Un fichier python ne se transforme pas par magie en image si on ajoute une extension *".jpg"* au fichier...
+Savoir comment interpréter les données d'un fichier n'est pas une chose facile. L'[extension](https://fr.wikipedia.org/wiki/Extension_de_nom_de_fichier) permet au système d'exploitation d'associer une application spécifique (un visualiseur d'image si le fichier fini par *".jpg"* par exemple). Mais ce n'est qu'une indication. Un fichier python ne se transforme pas par magie en image si on ajoute une extension *".jpg"* au fichier...
 
 > Utilisez **toujours** une extension à vos fichiers. Cela permet de gagner beaucoup de temps pour ouvrir directement la bonne application pour lire votre fichier.
 {: .note}
@@ -82,7 +82,7 @@ Cette extension permet d'ouvrir tout fichier comme la suite d'octet qu'il est r�
 >     ![pannel](./assets/fichiers-pannel.png){:style="margin: auto;display: block;width:400px;"}
 {: .a-faire}
 
-Certains type de fichiers sont reconnaissables par leurs premiers octets. On appelle ça des [*magic number* ou des *signatures*](https://en.wikipedia.org/wiki/List_of_file_signatures). Si vous ouvrez un fichier pdf par exemple, vous remarquerez qu'il commence par les caractères ascii : `%PDF-`. Mais ce n'est pas la norme. Donc pour vous éviter des soucis, pensez à bien bien les extensions de fichier pour aider votre système d'exploitiation )à trouver la bonne application à ouvrir.
+Certains type de fichiers sont reconnaissables par leurs premiers octets. On appelle ça des [*magic number* ou des *signatures*](https://en.wikipedia.org/wiki/List_of_file_signatures). Si vous ouvrez un fichier pdf par exemple, vous remarquerez qu'il commence par les caractères ascii : `%PDF-`. Mais ce n'est pas la norme. Donc pour vous éviter des soucis, pensez à bien bien les extensions de fichier pour aider votre système d'exploitation )à trouver la bonne application à ouvrir.
 
 ## python
 
@@ -105,12 +105,12 @@ En python, on utilise les fichiers *via* un objet `file`. On manipule les fichie
 2. On manipule ensuite le fichier grâce aux méthodes de la classe file :
 
    * en lecture avec les méthodes :
-     * `read`: `texte = f.read()` lit tout le fichier sous la forme d'une chaine de caractères)
+     * `read`: `texte = f.read()` lit tout le fichier sous la forme d'une chaîne de caractères)
      * `readline` qui lit la ligne suivante d'un fichier
    * en écriture avec `write` :
 3. enfin, on ferme le fichier : `f.close()`
 
-> Si vous ouvrez un fichier en écriture alors qu'il existait déjà, son contenu **disparait immédiatement et pour toujours**. Il n'y a aucun moyen de récupérer son contenu.
+> Si vous ouvrez un fichier en écriture alors qu'il existait déjà, son contenu **disparaît immédiatement et pour toujours**. Il n'y a aucun moyen de récupérer son contenu.
 {: .attention}
 
 ### exemple
@@ -133,7 +133,7 @@ En python, on utilise les fichiers *via* un objet `file`. On manipule les fichie
 {: .a-faire}
 
 ```python
-f = open("haiku.txt", "r")  # ouverture d'un fichier texte en lecture  dans le même dossier que le ficheir python
+f = open("haiku.txt", "r")  # ouverture d'un fichier texte en lecture  dans le même dossier que le fichier python
 poeme = f.read()
 f.close()
 print(poeme)
@@ -169,9 +169,9 @@ f.close()
 
 On ajoute un retour à la ligne, puis les dates de naissance et de mort de Bashô.
 
-Notez qu'aller à la ligne est un caractère comme un autre (il s'écrit `\n` et vaut U+0010). Il fait parti des [caractères de contrôle](https://fr.wikipedia.org/wiki/Caract%C3%A8re_de_contr%C3%B4le) comme la tabulation ou le bip (essayez par exemple `print(chr(0x7))`).
+Notez qu'aller à la ligne est un caractère comme un autre (il s'écrit `\n` et vaut U+0010). Il fait parti des [caractères de contrôles](https://fr.wikipedia.org/wiki/Caract%C3%A8re_de_contr%C3%B4le) comme la tabulation ou le bip (essayez par exemple `print(chr(0x7))`).
 
-#### Ecriture du fichier
+#### Écriture du fichier
 
 > Exécutez le code suivant pour remplacer le contenu du fichier :
 {: .a-faire}
@@ -305,14 +305,14 @@ Cette méthode permet d'obtenir un chemin absolu de référence pour garantir l'
 
 Un fois un dossier de référence trouvé, on pourra l'utiliser pour accéder à nos données. Mais **jamais** à la main :
 
-> Lorsque l'on manipule des fichiers ou que l'on combine des dossier on utilise **toujours** une bibliothèque dédiée pour cela, on ne manipule **jamais** les noms de fichiers et de dossier en utilisant des méthodes de chaines de caractères
+> Lorsque l'on manipule des fichiers ou que l'on combine des dossier on utilise **toujours** une bibliothèque dédiée pour cela, on ne manipule **jamais** les noms de fichiers et de dossiers en utilisant des méthodes de chaines de caractères
 {: .note}
 
 On va voir deux façon de faire en python, l'une classique avec le module [os.path](https://docs.python.org/fr/3/library/os.path.html), l'autre plus moderne qui utilise le module [pathlib](https://docs.python.org/fr/3/library/pathlib.html).
 
 #### module os.path
 
-On suppose que la variable `__file__` corresponde au chemin *"/Users/fbrucker/Documents/mon_projet/main.py"* sur le disque dur. On suppose qaussi que le module `os` a été importé.
+On suppose que la variable `__file__` corresponde au chemin *"/Users/fbrucker/Documents/mon_projet/main.py"* sur le disque dur. On suppose aussi que le module `os` a été importé.
 
 * rendre le dossier où est `__file__` avec [dirname](https://docs.python.org/fr/3/library/os.path.html#os.path.dirname) : `dossier = os.path.dirname(__file__)`.
 * rendre le nom du fichier pointé par `__file__` avec [basename](https://docs.python.org/fr/3/library/os.path.html#os.path.basename) : `nom_fichier = os.path.basename(__file__)`
@@ -326,7 +326,7 @@ Le module [pathlib](https://docs.python.org/fr/3/library/pathlib.html) permet d'
 
 ### fichiers distants
 
-Les fichiers stockés sur internet peuvent aussi être récupérés en python *via* leur [url](https://fr.wikipedia.org/wiki/Uniform_Resource_Locator). On utilise la bibliothèque [requests](https://requests-fr.readthedocs.io/en/latest/).
+Les fichiers stockés sur internet peuvent aussi être récupérés en python *via* leur [url](https://fr.wikipedia.org/wiki/Uniform_Resource_Locator). On utilise la bibliothèque [requests](https://requests-fr.readthedocs.io/en/latest/) (`python -m pip install requests`).
 
 Par exemple, le site <https://www.gutenberg.org> possède de nombreux livres au format utf-8 à télécharger. Par exemple <https://www.gutenberg.org/ebooks/14155> :
 
@@ -340,13 +340,14 @@ texte = page.text
 
 Une fois téléchargé, le fichier est décodé selon le format donné dans la requête (ici `utf-8`), voir `page.encoding`.
 
-<https://www.tutorialspoint.com/downloading-files-from-web-using-python>
+> Un petit tuto vous montrant quelques paramètres du module requests :
+> <https://www.tutorialspoint.com/downloading-files-from-web-using-python>
 
 ## format de données
 
-Lorsque l'on manipule des données, il vaut mieux **toujours** utiliser un format de stockage 
+Lorsque l'on manipule des données, il vaut mieux **toujours** utiliser un format de stockage connu et reconnu :
 
-> Plutôt que d'écrire simplement un fichier texte contenant nos données, on préfèrera les structurer dans un format permettant de les relire simplement. On en conseille deux :
+> Plutôt que d'écrire simplement un fichier texte contenant nos données, on préférera les structurer dans un format permettant de les relire simplement. On en conseille deux :
 >
 > * les fichiers csv pour des données de type tableaux excel
 > * les fichiers json pour des données structurées en fiches.
@@ -365,6 +366,7 @@ Sexe, Prénom, Année de naissance
 M, Alphonse, 1932
 F, Béatrice, 1964
 F, Charlotte, 1988
+
 ```
 
 > Créez un fichier nommé *"data.csv"* dans le quel vous copierez le texte précédent.
@@ -373,15 +375,6 @@ F, Charlotte, 1988
 La première ligne est souvent le noms des colonnes, chaque ligne représentant des données.
 
 python permet de facilement lire des fichiers `csv` sans avoir besoin de tout faire à la main : <https://docs.python.org/fr/3/library/csv.html>
-
-Il faut faire ça en plusieurs temps :
-
-1. `import csv` pour pouvoir utiliser le module `csv`
-2. ouvrir le fichier à lire avec `open`
-3. placez ce fichier dans un `reader` dont le but est de lire le fichier et de le structurer en utilisant ses paramètres. Il possède [plusieurs options](https://docs.python.org/fr/3/library/csv.html#csv-fmt-params) utiles :
-    * `delimiter`. Par défaut c'est des `','`, mais on verra souvent en France des csv dont le délimiteur est un `';'` (car les virgules sont déjà utilisés pour les nombres réels)
-    * `quotechar` : pour savoir ce qui est une chaine de caractère, souvent des `"`. Si vous ne mettez rien, tout sera considéré comme des chaine de caractères et il faudra convertir à la main chaque donné si nécessaire
-4. lire le fichier ligne à ligne. A chaque utilisation vous obtiendrez une liste contenant les différents champs de la ligne lue.
 
 #### Lire un fichier csv
 
@@ -396,13 +389,23 @@ donnees = []
 f = open("data.csv", "r")
 lecteur = csv.reader(f)
 for ligne in lecteur:
-    if len(ligne) == 3:
-        donnees.append(ligne)
+    donnees.append(ligne)
 ```
+
+
+1. `import csv` pour pouvoir utiliser le module `csv`
+2. ouvrir le fichier à lire avec `open`
+3. placez ce fichier dans un `reader` dont le but est de lire le fichier et de le structurer en utilisant ses paramètres. Il possède [plusieurs options](https://docs.python.org/fr/3/library/csv.html#csv-fmt-params) utiles :
+    * `delimiter`. Par défaut c'est des `','`, mais on verra souvent en France des csv dont le délimiteur est un `';'` (car les virgules sont déjà utilisés pour les nombres réels)
+    * `quotechar` : pour savoir ce qui est une chaîne de caractère, souvent des `"`. Si vous ne mettez rien, tout sera considéré comme des chaîne de caractères et il faudra convertir à la main chaque donné si nécessaire
+4. lire le fichier ligne à ligne. A chaque utilisation vous obtiendrez une liste contenant les différents champs de la ligne lue.
+
 
 #### Lire une ligne d'un fichier csv
 
-Pour lire une unique ligne, on peut utiliser la la commande `next`. Le code suivant lit la première ligne, qui est un titre, puis lit les autres données en transformant le dernier champ en `int`.
+Pour lire une unique ligne, on peut utiliser la la commande `next`. Le code suivant lit la première ligne, qui est un titre, puis lit les autres données en transformant le dernier champ en `int`. 
+
+> Cette technique permet de séparer le traitement des *méta-données* (le nom des colonnes) du reste (les données). 
 
 ```python
 import csv
@@ -414,20 +417,68 @@ f = open("data.csv", "r")
 lecteur = csv.reader(f)
 titres = next(lecteur)  # lit une unique ligne
 for ligne in lecteur:    # continue la lecture
-    if len(ligne) == 3:
-        ligne[2] = int(ligne[2])  # convertie l'année en entier.
-        donnees.append(ligne)
+    ligne[2] = int(ligne[2])  # convertie l'année en entier.
+    donnees.append(ligne)
+```
+
+#### interpreter du texte comme du csv
+
+Le lecteur de csv fonctionne avec tout [itérateur](https://docs.python.org/fr/3.7/glossary.html#term-iterator). Il fonctionne donc aussi avec une liste de chaînes de caractères.
+
+L'exemple suivant, reprend notre exemple précédent mais suppose que l'on a un texte plutôt qu'un fichier.
+
+```python
+text = """
+Sexe, Prénom, Année de naissance
+M, Alphonse, 1932
+F, Béatrice, 1964
+F, Charlotte, 1988
+"""
+
+lignes = text.splitlines() # une autre méthode utiles des chaines de caractères
+lecteur = csv.reader(lignes)
+
+donnees = []
+for ligne in lecteur:
+    donnees.append(ligne)
+
 ```
 
 #### exercice
 
-L'adresse <https://github.com/hbenbel/French-Dictionary/tree/master/dictionary> contient un dictionnaire français.
+L'adresse <https://github.com/hbenbel/French-Dictionary/tree/master/dictionary> contient plusieurs fichiers csv contenant des mots français.
 
-> 1. téléchargez le fichier `nouns.txt`
-> 2. importez le au format csv (**attention**, le séparateur n'est pas la virgule)
-> 3. répondez à cette question existentielle : `nycthémères` est-il masculin ou féminin ?
+> 1. récupérez le fichier `dictionary.csv` (il est  l'adresse <https://raw.githubusercontent.com/hbenbel/French-Dictionary/master/dictionary/dictionary.csv>)
+> 2. importez le au format csv
+> 3. répondez à cette question existentielle : `nycthémères` est-il un mot français ?
 >
 {: .a-faire}
+{% details Solution %}
+
+```python
+
+import csv
+import requests
+
+page = requests.get("https://raw.githubusercontent.com/hbenbel/French-Dictionary/master/dictionary/dictionary.csv")
+text = page.text
+
+lignes = text.splitlines()
+
+lecteur = csv.reader(lignes)
+
+donnees = []
+pos = 0
+for ligne in lecteur:
+    donnees.append(ligne)
+
+for ligne in donnees:
+    if ligne[1] == "nycthémères":
+        print("Oui: ", ligne)
+
+````
+
+{% enddetails %}
 
 ### le format json
 
@@ -465,11 +516,11 @@ Ci-après, un exemple de fichier json contenant des super-héros (pris de <https
 ]
 ```
 
-C'est une liste de deux éléments, chaque élément étant composée de *clés* et de *valeurs* comme dans un dictionnaire python. La seule différence est qu'une clé est **toujours** une chaine de caractère.
+C'est une liste de deux éléments, chaque élément étant composée de *clés* et de *valeurs* comme dans un dictionnaire python. La seule différence est qu'une clé est **toujours** une chaîne de caractère.
 
 #### json et dictionnaires en python
 
-Un json c'est **une chaine de caractère** qui est transformée en données (de type entier, réel, etc). Python utilise nativement le json via sa [bibliothèque json](https://docs.python.org/fr/3/library/json.html).
+Un json c'est **une chaîne de caractère** qui est transformée en données (de type entier, réel, etc). Python utilise nativement le json via sa [bibliothèque json](https://docs.python.org/fr/3/library/json.html).
 
 Un dictionnaire python :
 
@@ -480,7 +531,7 @@ mes_donnees_dictionnaire = {
 }
 ```
 
-Se transforme en json (une chaine de caractère) avec [`json.dumps`](https://docs.python.org/fr/3/library/json.html#json.dumps) :
+Se transforme en json (une chaîne de caractère) avec [`json.dumps`](https://docs.python.org/fr/3/library/json.html#json.dumps) :
 
 ```python
 
@@ -496,7 +547,7 @@ Pour le représenter de façon joli, on pourra ajouter les arguments :
 print(json.dumps(mes_donnees_dictionnaire, indent=4))
 ```
 
-Cette chaine peut à nouveau être transformée en dictionnaire grâce à [`json.loads`](https://docs.python.org/fr/3/library/json.html#json.loads) :
+Cette chaîne peut à nouveau être transformée en dictionnaire grâce à [`json.loads`](https://docs.python.org/fr/3/library/json.html#json.loads) :
 
 ```python
 donnees = json.loads(texte_json)
@@ -516,23 +567,11 @@ f.close()
 
 Une fois lu, le fichier json est converti en objet python. L'objet `data` est donc une liste composée de deux dictionnaires.
 
-On peut aussi lire des données json depuis internet facilement avec le module [`requests`](https://fr.python-requests.org/en/latest/) :
-
-```python
-
-import requests
-
-data_url = requests.get("https://data.senat.fr/data/senateurs/ODSEN_GENERAL.json")
-
-data = json.loads(data_url.content)
-
-```
-
 #### écriture de fichiers
 
 Pour lire un fichier on utilise la méthode  [`json.dump`](https://docs.python.org/fr/3/library/json.html#json.dump) (à ne pas confondre avec `json.dumps` qui est pour les chaines de caractères).
 
 ### bibliothèque pandas
 
-> <https://pandas.pydata.org/>
-{: .note}
+Nous ne l'étudierons pas ici, mais la plupart du temps, lorsque l'on utilise des données on ne le fait pas  la main, mais en utilisant une bibliothèque. En analyse des données, on utilise intensivement la bibliothèque [pandas](https://pandas.pydata.org/).
+
