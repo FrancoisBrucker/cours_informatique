@@ -345,7 +345,7 @@ Une fois téléchargé, le fichier est décodé selon le format donné dans la r
 
 ## format de données
 
-Lorsque l'on manipule des données, il vaut mieux **toujours** utiliser un format de stockage connu et reconnu :
+Lorsque l'on manipule des données, il vaut mieux **toujours** utiliser un format de stockage connu.
 
 > Plutôt que d'écrire simplement un fichier texte contenant nos données, on préférera les structurer dans un format permettant de les relire simplement. On en conseille deux :
 >
@@ -448,9 +448,15 @@ for ligne in lecteur:
 
 L'adresse <https://github.com/hbenbel/French-Dictionary/tree/master/dictionary> contient plusieurs fichiers csv contenant des mots français.
 
+<<<<<<< HEAD
 > 1. récupérez le fichier `dictionary.csv` (il est  l'adresse <https://raw.githubusercontent.com/hbenbel/French-Dictionary/master/dictionary/dictionary.csv>)
 > 2. importez le au format csv
 > 3. répondez à cette question existentielle : `nycthémères` est-il un mot français ?
+=======
+> 1. téléchargez le fichier `noun.csv`
+> 2. importez le au format csv
+> 3. répondez à cette question existentielle : `nycthémères` est-il masculin ou féminin ?
+>>>>>>> fa374697 (before pull)
 >
 {: .a-faire}
 {% details Solution %}
