@@ -18,18 +18,18 @@ Qu'est-ce qu'une chaine de caractères et comment on peut l'utiliser.
 
 En informatique tout est nombre. La base étant l'octet (équivalent à un byte, 8bits, 0xFF en hexadécimal, 255 en décimal). Texte et caractères n'a donc pas vraiment de sens intrinsèque en informatique : ce sont des octets et on les fait correspondre à des caractères.
 
-> On a coutume d'écrire les octet de façon hexadécimale, de 00 (0) à FF (255)
+> On a coutume d'écrire les octets de façon hexadécimale, de 00 (0) à FF (255)
 
 ## codage des caractères
 
-Le premier codage utilisé était le code [ASCII](http://fr.wikipedia.org/wiki/ASCII) dont chaque symbole était codé sur 7 bits, ce qui permettait de représenter 128 symboles. Plusieurs extensions ont été ensuite proposées par la suite dont le codage [ISO-8859-1](http://fr.wikipedia.org/wiki/ISO_8859-1) où chaque symbole est codé sur un octet (8 bits). Ce codage avait l'avantage de permettre d'écrire en français, les accents y étant présent.
+Le premier codage utilisé était le code [ASCII](http://fr.wikipedia.org/wiki/ASCII) dont chaque symbole était codé sur 7 bits, ce qui permettait de représenter 128 symboles. Plusieurs extensions ont été ensuite proposées par la suite dont le codage [ISO-8859-1](http://fr.wikipedia.org/wiki/ISO_8859-1) où chaque symbole est codé sur un octet (8 bits). Ce codage avait l'avantage de permettre d'écrire en français, les accents y étant présents.
 
 Il y en a eu une foultitude d'autres jusqu'à arriver à l'encodage actuel : [utf-8](https://fr.wikipedia.org/wiki/UTF-8).
 
 A priori lorsque l'on ouvre un fichier texte avec un éditeur rien ne dit quel est l'encodage utilisé : ce n'est qu'une suite d'octets. Par exemple, la chaine de caractère "j'écris en Français" se code :
 
-* `6A27E96372697320656E204672616EE7616973` dans le format [ISO-8859-1](https://fr.wikipedia.org/wiki/ISO/CEI_8859-1) aussi appelé ISO-latin 1, un format populaire pour écrire du Français avant l'utf-8. Remarquez qu'il y a autant d'octet que de lettres.
-* `6A278E6372697320656E204672616E8D616973`dans le format [mac-roman](https://fr.wikipedia.org/wiki/MacRoman). Remarquez comment le `é` et le `ç` ne se codent pas de la même manière... Vous imaginez l'enfer pour se passer des fichier entre possesseurs de mac et de pc ?
+* `6A27E96372697320656E204672616EE7616973` dans le format [ISO-8859-1](https://fr.wikipedia.org/wiki/ISO/CEI_8859-1) aussi appelé ISO-latin 1, un format populaire pour écrire du Français avant l'utf-8. Remarquez qu'il y a autant d'octets que de lettres.
+* `6A278E6372697320656E204672616E8D616973` dans le format [mac-roman](https://fr.wikipedia.org/wiki/MacRoman). Remarquez comment le `é` et le `ç` ne se codent pas de la même manière... Vous imaginez l'enfer pour se passer des fichier entre possesseurs de mac et de pc ?
 * `6A27C3A96372697320656E204672616EC3A7616973` dans le format [utf-8](https://fr.wikipedia.org/wiki/UTF-8). Remarquez qu'il y a plus d'octets que de lettres.
 * `FEFF006A002700E9006300720069007300200065006E0020004600720061006E00E7006100690073` dans le format [utf-16 big endian](https://fr.wikipedia.org/wiki/UTF-16)
 
@@ -40,11 +40,11 @@ Il n'y a aucun moyen a priori de savoir en quel format le texte est codé. Pour 
 
 ## unicode
 
-Les format  d'encodage ancien, comme le codage ASCII ou le ISO-8859-1 permettent d'écrire en anglais, voir en Français. Mais... Pas dans beaucoup de langues parlés par plus de locuteurs comme le Chinois ou encore le Russe. Ils avaient eux aussi leur propre format d'encodage.
+Les formats d'encodage anciens, comme le codage ASCII ou le ISO-8859-1 permettent d'écrire en anglais, voire en Français. Mais... Pas dans beaucoup de langues parlés par plus de locuteurs comme le Chinois ou encore le Russe. Ils avaient eux aussi leur propre format d'encodage.
 
-Pour rationaliser cela, le format [unicode](https://fr.wikipedia.org/wiki/Unicode) a été crée. Son but est d'associer un nombre à chaque caractère de toute les langues humaines possibles (donc pas de [Tengwar](https://fr.wikipedia.org/wiki/Tengwar), de [klingon](https://fr.wikipedia.org/wiki/Klingon_(langue)) ou encore de [Khuzdul](https://fr.wikipedia.org/wiki/Khuzdul) dans unicode)
+Pour rationaliser cela, le format [unicode](https://fr.wikipedia.org/wiki/Unicode) a été créé. Son but est d'associer un nombre à chaque caractère de toute les langues humaines possibles (donc pas de [Tengwar](https://fr.wikipedia.org/wiki/Tengwar), de [klingon](https://fr.wikipedia.org/wiki/Klingon_(langue)) ou encore de [Khuzdul](https://fr.wikipedia.org/wiki/Khuzdul) dans unicode)
 
-Ce n'est pas un format fixe, il évolue sans cesse en ajoutant de nouveaux caractère. Il y a actuellement (en 2022) prés de 150000 caractères possible. A chaque caractère est associé un numéro entre 0 et FFFFFF (16777215).
+Ce n'est pas un format fixe, il évolue sans cesse en ajoutant de nouveaux caractères. Il y a actuellement (en 2022) prés de 150000 caractères possible. A chaque caractère est associé un numéro entre 0 et FFFFFF (16777215).
 
 > On a coutume de faire précéder ce nombre par `U+` pour préciser que c'est un code unicode écrit en hexadécimal.
 >
@@ -102,21 +102,20 @@ Le symbole `é` est par exemple de code : `U+00E9`.
 4. en regardant le code utf-8 sur 2 octets <https://fr.wikipedia.org/wiki/UTF-8#Description>, on voit que le code unicode est la concaténation des 5 derniers bits du premier octet (qui commence par `110`) et des 6 dernier bits du deuxième (qui commence par `10`). On obtient ainsi `00011101001` qui est : `int('00011101001', 2)` et vaut : 233. Ouf, la boucle est bouclée on retrouve bien le code unicode de `é`.
 
 >
-> * On peut écrire des nombre en python en base 10, de façon normale, `42` par exemple. On peut écrire des nombres en base 2 directement en commençant le nombre par `0b`, comme `0b101010` par exemple. On encore en base 16, en les faisant commencer par `0x`, comme `0x2A`.
-> * convertir un nombre en binaire ou en hex via les fonctions `bin` et `hex` rendent des chaînes de caractères. En effet, un nombre est un nombre sa représentation dans une autre base est une chaine de caractère. Ainsi `bin(42)` donne `'0b101010'` et `hex(42)` donne `'0x2a'`.
+> * On peut écrire des nombres en python en base 10, de façon normale, `42` par exemple. On peut écrire des nombres en base 2 directement en commençant le nombre par `0b`, comme `0b101010` par exemple. On encore en base 16, en les faisant commencer par `0x`, comme `0x2A`.
+> * convertir un nombre en binaire ou en hex via les fonctions `bin` et `hex` rendent des chaînes de caractères. En effet, un nombre est un nombre; sa représentation dans une autre base est une chaine de caractères. Ainsi `bin(42)` donne `'0b101010'` et `hex(42)` donne `'0x2a'`.
 > * notez bien la différence entre écrire un nombre en base 10, 2, et 16 et voir sa forme dans une base particulière (2 ou 16)
 
 ## python et chaines de caractères
 
-Une chaine de caractères `s` est de type `str`. Elle peuvent être considérées comme des tableaux de `len(s)` cases. Ces objets son **non modifialbes**.
+Une chaine de caractères `s` est de type `str`. Elle peuvent être considérées comme des tableaux de `len(s)` cases. Ces objets son **non modifiables**.
 
 En python, la concaténation est symbolisée par l'opérateur `+`.
 
 On peut faire de nombreuses choses avec des chaines de caractères en python :
 
 * <https://miamondo.org/le-langage-python/chapitre-7-apercu-de-quelques-methodes-associees-aux-objets-de-type-chaine-de-caracteres-str/>
-* N'hésitez pas à aller voir la documentation si vous voulez faire une opérations sur les chaines, souvent elle est déjà implémentée :
-<https://docs.python.org/3/library/stdtypes.html#textseq>
+* N'hésitez pas à aller voir la documentation si vous voulez faire une opérations sur les chaines, souvent elle est déjà implémentée : <https://docs.python.org/3/library/stdtypes.html#textseq>
 
 ### texte vers types
 
@@ -128,12 +127,12 @@ x = input('entrez un nombre :')
 
 Dans le bout de code ci-dessus, `x` est une chaine de caractères. Pour la convertir en entier, on fera : `int(x)` qui rendra la conversion de `x` en entier.
 
-> **Toujours** convertir les données entrée par un utilisateur ou lues d'un fichier dans le type voulu.
+> **Toujours** convertir les données entrées par un utilisateur ou lues d'un fichier dans le type voulu.
 {: .note}
 
 ### byte et str
 
-Par défaut toutes les chaînes de caractères sont de type `str`, et encodée en `utf-8`. Si on veut connaitre explicitement les octets d'une chaine, il faut l'encoder en un autre format par la méthode `encode`  des chaines de caractères qui rend un objet de type byte qui est une suite d'octets.
+Par défaut toutes les chaînes de caractères sont de type `str`, et encodées en `utf-8`. Si on veut connaitre explicitement les octets d'une chaine, il faut l'encoder en un autre format par la méthode `encode`  des chaines de caractères qui rend un objet de type byte qui est une suite d'octets.
 
 C'est comme une chaine de caractères mais qui commence par `b` . On peut ensuite décoder un byte pour le retransformer en `str` :
 
@@ -143,7 +142,7 @@ x_en_byte = x.encode('utf8')  # devient : b'ma cha\xc3\xaene de caract\xc3\xa8re
 re_x = x_en_byte.decode('utf8')
 ```
 
-Ceci va s'avérer utile lorsque l'on récupérera des fichier depuis internet. Ce seront des `byte` qu'il faudra re-écrire en `utf8`.
+Ceci va s'avérer utile lorsque l'on récupérera des fichiers depuis internet. Ce seront des `byte` qu'il faudra re-écrire en `utf8`.
 
 Les différents encoding possibles sont disponibles [dans la documentaion](https://docs.python.org/3/library/codecs.html#standard-encodings).
 
@@ -161,13 +160,13 @@ m27 = 2 ** 444497 - 1
 
 {% enddetails %}
 
-> Combien de chiffre en base 10, 2 et 16 possède ce nombre ?
+> Combien de chiffres en base 10, 2 et 16 possède ce nombre ?
 {: .a-faire}
 {% details solution %}
 
-* en base 10 : `len(str(m27))` : conversion de l'entier en chaine de caractères puis son nombre
-* en base 2 : `len(bin(m27)) - 2` : `bin` transforme un entier en sa représentation binaire. C'est une chaine de caractère qui commence par `0b` donc on retranche 2 à la longueur.
-* en base 16 : `len(hex(m27)) - 2` : `hex` transforme un entier en sa représentation héxadécimale. C'est une chaine de caractère qui commence par `0x` donc on retranche 2 à la longueur.
+* en base 10 : `len(str(m27))` : conversion de l'entier en chaine de caractères puis son nombre de chiffres
+* en base 2 : `len(bin(m27)) - 2` : `bin` transforme un entier en sa représentation binaire. C'est une chaine de caractères qui commence par `0b` donc on retranche 2 à la longueur.
+* en base 16 : `len(hex(m27)) - 2` : `hex` transforme un entier en sa représentation héxadécimale. C'est une chaine de caractères qui commence par `0x` donc on retranche 2 à la longueur.
 
 {% enddetails %}
 
@@ -214,7 +213,7 @@ Utilisez la documentation sur les [méthodes de chaines](https://docs.python.org
 
 L'extraction de sous-chaines en python se fait par une opération appelé [slice](https://zestedesavoir.com/tutoriels/582/les-slices-en-python/). Cela peut se résumer en une seule grosse opération :
 
-> Si `s` est une chaine de caractère, la chaîne caractère `s[a:b:c]` est la sous chaine de `s` allant de l'indice `a` à l'indice `b-1` avec un pas de `c`.
+> Si `s` est une chaine de caractères, la chaîne de caractères `s[a:b:c]` est la sous chaine de `s` allant de l'indice `a` à l'indice `b-1` avec un pas de `c`.
 >
 > Par défaut `a=0`, `b=-1` et `c=1`
 {: .note}
