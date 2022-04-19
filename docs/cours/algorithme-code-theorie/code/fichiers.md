@@ -16,7 +16,7 @@ author: "François Brucker"
 >
 {: .chemin}
 
-Stocker des données est une préoccupation depuis les origines de l'informatique : d'abords sur carte perforées, puis sur bande magnétiques et enfin aux disques dur et clés actuelles. Un [fichier](https://fr.wikipedia.org/wiki/Fichier_informatique) est ainsi un ensemble de données que l'on peut lire ou écrire pour le sauvegarder. Nous n'entrerons cependant pas dans les détails des [systèmes de fichiers](https://fr.wikipedia.org/wiki/Syst%C3%A8me_de_fichiers) (comment sont effectivement stocké les fichiers sur le disque dur), car c'est une affaire (très) compliquée. Nous n'aborderons que le stricte nécessaire pour les manipuler en python.
+Stocker des données est une préoccupation depuis les origines de l'informatique : d'abord sur cartes perforée, puis sur bandes magnétiques et jusqu'aux disques durs et clés actuelles. Un [fichier](https://fr.wikipedia.org/wiki/Fichier_informatique) est ainsi un ensemble de données que l'on peut lire ou écrire pour le sauvegarder. Nous n'entrerons cependant pas dans les détails des [systèmes de fichiers](https://fr.wikipedia.org/wiki/Syst%C3%A8me_de_fichiers) (comment sont effectivement stockés les fichiers sur le disque dur), car c'est une affaire (très) compliquée. Nous n'aborderons que le strict nécessaire pour les manipuler en python.
 
 Toutes les manipulations spécifiques des fichiers (buffer, impossibilité de modifier, etc) sont issues des origines de l'informatique où stocker et charger des données était une chose compliquée *physiquement* (voir par exemple le [chargement d'un programme depuis une cassette sur un TO7](https://youtu.be/HQyckYYT3_8?t=1120) qui prenait plus d'un quart d'heure... Et c'est du vécu, le TO7 a été ma première machine)
 
@@ -26,7 +26,7 @@ Un fichier est constitué d'une suite de blocs sur le disque dur, chaque bloc ay
 
 Ce format a été choisi parce que :
 
-* des fichiers de tailles différentes doivent pouvoir être ajoutés et supprimés du disque dur. La place y est donc [fragmentée](https://fr.wikipedia.org/wiki/D%C3%A9fragmentation_(informatique)), et il n'est pas sur de pouvoir avoir la taille requise pour un fichier.
+* des fichiers de tailles différentes doivent pouvoir être ajoutés et supprimés du disque dur. La place y est donc [fragmentée](https://fr.wikipedia.org/wiki/D%C3%A9fragmentation_(informatique)), et il n'est pas sûr de pouvoir avoir la taille requise pour un fichier.
 * on doit pouvoir ajouter des choses à un fichier sans avoir à tout re-écrire
 
 Les limitations sont donc :
@@ -39,8 +39,8 @@ Les limitations sont donc :
 > Ce qu'on peut faire avec un fichier :
 >
 > * **ouvrir** le fichier : c'est se préparer à l'utiliser. Cette étape  crée un *buffer* (mémoire tampon), un pointeur de bloc, une tête de lecture, etc.
-> * **fermer** un fichier : arrêter de s'en servir. Il est **indispensable** de toujours fermer un fichier après s'en être servi. On écrit en effet à cette étape les dernières instruction non encore passée du *buffer* au disque dur (c'est comme démonter une clé USB proprement).
-> * **lire** un fichier : on fait avancer la *tête de lecture* du fichier de tout le fichier, d'une ligne ou d'un nombre donné d'octets
+> * **fermer** un fichier : arrêter de s'en servir. Il est **indispensable** de toujours fermer un fichier après s'en être servi. On écrit en effet à cette étape les dernières instruction non encore passées du *buffer* au disque dur (c'est comme démonter une clé USB proprement).
+> * **lire** un fichier : on fait avancer la *tête de lecture* du fichier, d'une ligne ou d'un nombre donné d'octets
 > * **écrire** un fichier : on ajoute des données à la fin d'un fichier (qui peut être initialement vide). Souvent on écrit pas tout de suite sur le disque dur, on attend d'avoir un nombre suffisant de données dans la mémoire tampon.
 >
 {: .note}
@@ -82,7 +82,7 @@ Cette extension permet d'ouvrir tout fichier comme la suite d'octet qu'il est r�
 >     ![pannel](./assets/fichiers-pannel.png){:style="margin: auto;display: block;width:400px;"}
 {: .a-faire}
 
-Certains type de fichiers sont reconnaissables par leurs premiers octets. On appelle ça des [*magic number* ou des *signatures*](https://en.wikipedia.org/wiki/List_of_file_signatures). Si vous ouvrez un fichier pdf par exemple, vous remarquerez qu'il commence par les caractères ascii : `%PDF-`. Mais ce n'est pas la norme. Donc pour vous éviter des soucis, pensez à bien bien les extensions de fichier pour aider votre système d'exploitation )à trouver la bonne application à ouvrir.
+Certains type de fichiers sont reconnaissables par leurs premiers octets. On appelle ça des [*magic number* ou des *signatures*](https://en.wikipedia.org/wiki/List_of_file_signatures). Si vous ouvrez un fichier pdf par exemple, vous remarquerez qu'il commence par les caractères ascii : `%PDF-`. Mais ce n'est pas la norme. Donc pour vous éviter des soucis, pensez à bien bien les extensions de fichier pour aider votre système d'exploitation à trouver la bonne application à ouvrir.
 
 ## python
 
@@ -102,10 +102,10 @@ En python, on utilise les fichiers *via* un objet `file`. On manipule les fichie
 
    Par défaut, les fichiers sont considérés comme étant du texte écrit en [utf-8]({% link cours/algorithme-code-theorie/algorithme/structure-chaine-de-caracteres.md %}#utf8). Si vous voulez ouvrir/écrire un fichier binaire, il faut ajouter `'b'` au paramètre. Par exemple : `f = open("mon_image.jpg", "br")` ouvre un fichier binaire en lecture.
 
-2. On manipule ensuite le fichier grâce aux méthodes de la classe file :
+2. On manipule ensuite le fichier grâce aux méthodes de la classe `file` :
 
    * en lecture avec les méthodes :
-     * `read`: `texte = f.read()` lit tout le fichier sous la forme d'une chaîne de caractères)
+     * `read`: `texte = f.read()` qui lit tout le fichier sous la forme d'une chaîne de caractères
      * `readline` qui lit la ligne suivante d'un fichier
    * en écriture avec `write` :
 3. enfin, on ferme le fichier : `f.close()`
@@ -153,7 +153,7 @@ for ligne in f:  # boucle sur les lignes
 f.close()
 ```
 
-> Notez la ligne vide vide entre deux affichage. Ceci est du au fait que chaque ligne du fichier contient déjà un retour à la ligne. Plus celui qui est ajouté automatiquement à la fin de l'instruction `python`.
+> Notez la ligne vide vide entre deux affichages. Ceci est du au fait que chaque ligne du fichier contient déjà un retour à la ligne. Plus celui qui est ajouté automatiquement à la fin de l'instruction `python`.
 
 #### Ajout au fichier
 
@@ -221,14 +221,14 @@ En regardant le type de `x` (avec la commande `type(x)`) :
 <class 'bytes'>
 ```
 
-On se rend compte que ce n'est pas une chaîne de caractère, mais un `bytes` (une suite d'octets). En l'affichant on voit que les accents ne passent pas :
+On se rend compte que ce n'est pas une chaîne de caractères, mais un `bytes` (une suite d'octets). En l'affichant on voit que les accents ne passent pas :
 
 ```text
 >>> print(x)
 b"dans le vieil \xc3\xa9tang,\nune grenouille saute,\nun ploc dans l'eau.\n\nBash\xc3\xb4.\n"
 ```
 
-Quand python affiche des suites d'octet, il essaie de les écrire en ascii et tous les caractères qu'il ne comprend pas (ici les accents car ils sont codés sur 2 octets en utf-8) il écrit juste le nombre sous format hexadécimal `\xc3` par exemple. De plus, il fait commencer l'affichage par un `b`  pour bien montrer que ce n'est **PAS** une chaîne de caractère.
+Quand python affiche des suites d'octets, il essaie de les écrire en ascii et pour tous les caractères qu'il ne comprend pas (ici les accents car ils sont codés sur 2 octets en utf-8), il écrit juste le nombre sous format hexadécimal `\xc3` par exemple. De plus, il fait commencer l'affichage par un `b`  pour bien montrer que ce n'est **PAS** une chaîne de caractère.
 
 On peut ensuite transformer les bytes `x` en autre chose, ici en `utf-8` puisque c'était l'encodage :
 
@@ -250,11 +250,11 @@ Bashô.
 
 ### manipulation des dossiers et des fichiers
 
-Par défaut python va chercher les fichiers à ouvrir dans le dossier du fichier python entrain d'être exécuté. On peut facilement chercher un fichier dans un dossier spécifique en python.
+Par défaut python va chercher les fichiers à ouvrir dans le dossier du fichier python en train d'être exécuté. On peut facilement chercher un fichier dans un dossier spécifique en python.
 
 Commencez par intégrer la règle d'or :
 
-> On ne présuppose jamais de l'endroit où un fichier est stocker sur un ordinateur.
+> On ne présuppose jamais de l'endroit où un fichier est stocké sur un ordinateur.
 {: .note}
 
 Supposons  que vous ayez un fichier python dans le dossier *"/Users/fbrucker/Documents/mon_projet/main.py"* et que ce programme python utilise le fichier *"/Users/fbrucker/Documents/mon_projet/donnees.txt"*.
@@ -265,7 +265,7 @@ Si votre programme *"main.py"* utilise le fichier *"donnees.txt"* de cette faço
 donnees = open("/Users/fbrucker/Documents/mon_projet/donnees.txt").read()
 ```
 
-Il ne pourra fonctionner **que** sur votre ordinateur ! En effet, Si vous copiez le dossier *"mon_projet"*  et tout son contenu  de l'ordinateur A à l'ordinateur B, il est très peu probable qu'il soit placé au même endroit sur le disque dur.
+Il ne pourra fonctionner **que** sur votre ordinateur ! En effet, si vous copiez le dossier *"mon_projet"*  et tout son contenu  de l'ordinateur A à l'ordinateur B, il est très peu probable qu'il soit placé au même endroit sur le disque dur.
 
 Une première solution est d'utiliser un chemin relatif :
 
@@ -301,11 +301,11 @@ On a fait que la moitié du chemin, puisque l'on a l'emplacement du fichier, mai
 >
 {: .a-faire}
 
-Cette méthode permet d'obtenir un chemin absolu de référence pour garantir l'accès au fichiers de données sur toutes les machines où votre projet sera copié.
+Cette méthode permet d'obtenir un chemin absolu de référence pour garantir l'accès aux fichiers de données sur toutes les machines où votre projet sera copié.
 
 Un fois un dossier de référence trouvé, on pourra l'utiliser pour accéder à nos données. Mais **jamais** à la main :
 
-> Lorsque l'on manipule des fichiers ou que l'on combine des dossier on utilise **toujours** une bibliothèque dédiée pour cela, on ne manipule **jamais** les noms de fichiers et de dossiers en utilisant des méthodes de chaines de caractères
+> Lorsque l'on manipule des fichiers ou que l'on combine des dossiers on utilise **toujours** une bibliothèque dédiée pour cela, on ne manipule **jamais** les noms de fichiers et de dossiers en utilisant des méthodes de chaines de caractères
 {: .note}
 
 On va voir deux façon de faire en python, l'une classique avec le module [os.path](https://docs.python.org/fr/3/library/os.path.html), l'autre plus moderne qui utilise le module [pathlib](https://docs.python.org/fr/3/library/pathlib.html).
@@ -378,7 +378,7 @@ python permet de facilement lire des fichiers `csv` sans avoir besoin de tout fa
 
 #### Lire un fichier csv
 
-le code ci-après lit le fichier csv et le place dans une liste de liste si la ligne contient bien 3 champs. Puis on converti le dernier élément en entier.
+le code ci-après lit le fichier csv et le place dans une liste de listes si la ligne contient bien 3 champs. Puis on convertit le dernier élément en entier.
 
 ```python
 import csv
@@ -397,13 +397,13 @@ for ligne in lecteur:
 2. ouvrir le fichier à lire avec `open`
 3. placez ce fichier dans un `reader` dont le but est de lire le fichier et de le structurer en utilisant ses paramètres. Il possède [plusieurs options](https://docs.python.org/fr/3/library/csv.html#csv-fmt-params) utiles :
     * `delimiter`. Par défaut c'est des `','`, mais on verra souvent en France des csv dont le délimiteur est un `';'` (car les virgules sont déjà utilisés pour les nombres réels)
-    * `quotechar` : pour savoir ce qui est une chaîne de caractère, souvent des `"`. Si vous ne mettez rien, tout sera considéré comme des chaîne de caractères et il faudra convertir à la main chaque donné si nécessaire
+    * `quotechar` : pour savoir ce qui est une chaîne de caractères, souvent des `"`. Si vous ne mettez rien, tout sera considéré comme des chaîne de caractères et il faudra convertir à la main chaque donnée si nécessaire
 4. lire le fichier ligne à ligne. A chaque utilisation vous obtiendrez une liste contenant les différents champs de la ligne lue.
 
 
 #### Lire une ligne d'un fichier csv
 
-Pour lire une unique ligne, on peut utiliser la la commande `next`. Le code suivant lit la première ligne, qui est un titre, puis lit les autres données en transformant le dernier champ en `int`. 
+Pour lire une unique ligne, on peut utiliser la commande `next`. Le code suivant lit la première ligne, qui est un titre, puis lit les autres données en transformant le dernier champ en `int`. 
 
 > Cette technique permet de séparer le traitement des *méta-données* (le nom des colonnes) du reste (les données). 
 
@@ -448,16 +448,10 @@ for ligne in lecteur:
 
 L'adresse <https://github.com/hbenbel/French-Dictionary/tree/master/dictionary> contient plusieurs fichiers csv contenant des mots français.
 
-<<<<<<< HEAD
 > 1. récupérez le fichier `dictionary.csv` (il est  l'adresse <https://raw.githubusercontent.com/hbenbel/French-Dictionary/master/dictionary/dictionary.csv>)
 > 2. importez le au format csv
 > 3. répondez à cette question existentielle : `nycthémères` est-il un mot français ?
-=======
-> 1. téléchargez le fichier `noun.csv`
-> 2. importez le au format csv
-> 3. répondez à cette question existentielle : `nycthémères` est-il masculin ou féminin ?
->>>>>>> fa374697 (before pull)
->
+
 {: .a-faire}
 {% details Solution %}
 
