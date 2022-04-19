@@ -72,7 +72,7 @@
 
 </blockquote>
 
-<p>Stocker des données est une préoccupation depuis les origines de l’informatique : d’abords sur carte perforées, puis sur bande magnétiques et enfin aux disques dur et clés actuelles. Un <a href="https://fr.wikipedia.org/wiki/Fichier_informatique">fichier</a> est ainsi un ensemble de données que l’on peut lire ou écrire pour le sauvegarder. Nous n’entrerons cependant pas dans les détails des <a href="https://fr.wikipedia.org/wiki/Syst%C3%A8me_de_fichiers">systèmes de fichiers</a> (comment sont effectivement stocké les fichiers sur le disque dur), car c’est une affaire (très) compliquée. Nous n’aborderons que le stricte nécessaire pour les manipuler en python.</p>
+<p>Stocker des données est une préoccupation depuis les origines de l’informatique : d’abord sur cartes perforée, puis sur bandes magnétiques et jusqu’aux disques durs et clés actuelles. Un <a href="https://fr.wikipedia.org/wiki/Fichier_informatique">fichier</a> est ainsi un ensemble de données que l’on peut lire ou écrire pour le sauvegarder. Nous n’entrerons cependant pas dans les détails des <a href="https://fr.wikipedia.org/wiki/Syst%C3%A8me_de_fichiers">systèmes de fichiers</a> (comment sont effectivement stockés les fichiers sur le disque dur), car c’est une affaire (très) compliquée. Nous n’aborderons que le strict nécessaire pour les manipuler en python.</p>
 
 <p>Toutes les manipulations spécifiques des fichiers (buffer, impossibilité de modifier, etc) sont issues des origines de l’informatique où stocker et charger des données était une chose compliquée <em>physiquement</em> (voir par exemple le <a href="https://youtu.be/HQyckYYT3_8?t=1120">chargement d’un programme depuis une cassette sur un TO7</a> qui prenait plus d’un quart d’heure… Et c’est du vécu, le TO7 a été ma première machine)</p>
 
@@ -83,7 +83,7 @@
 <p>Ce format a été choisi parce que :</p>
 
 <ul>
-  <li>des fichiers de tailles différentes doivent pouvoir être ajoutés et supprimés du disque dur. La place y est donc <a href="https://fr.wikipedia.org/wiki/D%C3%A9fragmentation_(informatique)">fragmentée</a>, et il n’est pas sur de pouvoir avoir la taille requise pour un fichier.</li>
+  <li>des fichiers de tailles différentes doivent pouvoir être ajoutés et supprimés du disque dur. La place y est donc <a href="https://fr.wikipedia.org/wiki/D%C3%A9fragmentation_(informatique)">fragmentée</a>, et il n’est pas sûr de pouvoir avoir la taille requise pour un fichier.</li>
   <li>on doit pouvoir ajouter des choses à un fichier sans avoir à tout re-écrire</li>
 </ul>
 
@@ -103,9 +103,9 @@
     <li>
 <strong>ouvrir</strong> le fichier : c’est se préparer à l’utiliser. Cette étape  crée un <em>buffer</em> (mémoire tampon), un pointeur de bloc, une tête de lecture, etc.</li>
     <li>
-<strong>fermer</strong> un fichier : arrêter de s’en servir. Il est <strong>indispensable</strong> de toujours fermer un fichier après s’en être servi. On écrit en effet à cette étape les dernières instruction non encore passée du <em>buffer</em> au disque dur (c’est comme démonter une clé USB proprement).</li>
+<strong>fermer</strong> un fichier : arrêter de s’en servir. Il est <strong>indispensable</strong> de toujours fermer un fichier après s’en être servi. On écrit en effet à cette étape les dernières instruction non encore passées du <em>buffer</em> au disque dur (c’est comme démonter une clé USB proprement).</li>
     <li>
-<strong>lire</strong> un fichier : on fait avancer la <em>tête de lecture</em> du fichier de tout le fichier, d’une ligne ou d’un nombre donné d’octets</li>
+<strong>lire</strong> un fichier : on fait avancer la <em>tête de lecture</em> du fichier, d’une ligne ou d’un nombre donné d’octets</li>
     <li>
 <strong>écrire</strong> un fichier : on ajoute des données à la fin d’un fichier (qui peut être initialement vide). Souvent on écrit pas tout de suite sur le disque dur, on attend d’avoir un nombre suffisant de données dans la mémoire tampon.</li>
   </ul>
@@ -160,7 +160,7 @@
   </ol>
 </blockquote>
 
-<p>Certains type de fichiers sont reconnaissables par leurs premiers octets. On appelle ça des <a href="https://en.wikipedia.org/wiki/List_of_file_signatures"><em>magic number</em> ou des <em>signatures</em></a>. Si vous ouvrez un fichier pdf par exemple, vous remarquerez qu’il commence par les caractères ascii : <code class="language-plaintext highlighter-rouge">%PDF-</code>. Mais ce n’est pas la norme. Donc pour vous éviter des soucis, pensez à bien bien les extensions de fichier pour aider votre système d’exploitation )à trouver la bonne application à ouvrir.</p>
+<p>Certains type de fichiers sont reconnaissables par leurs premiers octets. On appelle ça des <a href="https://en.wikipedia.org/wiki/List_of_file_signatures"><em>magic number</em> ou des <em>signatures</em></a>. Si vous ouvrez un fichier pdf par exemple, vous remarquerez qu’il commence par les caractères ascii : <code class="language-plaintext highlighter-rouge">%PDF-</code>. Mais ce n’est pas la norme. Donc pour vous éviter des soucis, pensez à bien bien les extensions de fichier pour aider votre système d’exploitation à trouver la bonne application à ouvrir.</p>
 
 <h2 id="python">python</h2>
 
@@ -193,13 +193,13 @@ Ces objets sont créés par la commande <a href="https://docs.python.org/fr/3/li
     <p>Par défaut, les fichiers sont considérés comme étant du texte écrit en <a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/structure-chaine-de-caracteres.html#utf8">utf-8</a>. Si vous voulez ouvrir/écrire un fichier binaire, il faut ajouter <code class="language-plaintext highlighter-rouge">'b'</code> au paramètre. Par exemple : <code class="language-plaintext highlighter-rouge">f = open("mon_image.jpg", "br")</code> ouvre un fichier binaire en lecture.</p>
   </li>
   <li>
-    <p>On manipule ensuite le fichier grâce aux méthodes de la classe file :</p>
+    <p>On manipule ensuite le fichier grâce aux méthodes de la classe <code class="language-plaintext highlighter-rouge">file</code> :</p>
 
     <ul>
       <li>en lecture avec les méthodes :
         <ul>
           <li>
-<code class="language-plaintext highlighter-rouge">read</code>: <code class="language-plaintext highlighter-rouge">texte = f.read()</code> lit tout le fichier sous la forme d’une chaîne de caractères)</li>
+<code class="language-plaintext highlighter-rouge">read</code>: <code class="language-plaintext highlighter-rouge">texte = f.read()</code> qui lit tout le fichier sous la forme d’une chaîne de caractères</li>
           <li>
 <code class="language-plaintext highlighter-rouge">readline</code> qui lit la ligne suivante d’un fichier</li>
         </ul>
@@ -260,7 +260,7 @@ Bashô.
 </code></pre></div></div>
 
 <blockquote>
-  <p>Notez la ligne vide vide entre deux affichage. Ceci est du au fait que chaque ligne du fichier contient déjà un retour à la ligne. Plus celui qui est ajouté automatiquement à la fin de l’instruction <code class="language-plaintext highlighter-rouge">python</code>.</p>
+  <p>Notez la ligne vide vide entre deux affichages. Ceci est du au fait que chaque ligne du fichier contient déjà un retour à la ligne. Plus celui qui est ajouté automatiquement à la fin de l’instruction <code class="language-plaintext highlighter-rouge">python</code>.</p>
 </blockquote>
 
 <h4 id="ajout-au-fichier">Ajout au fichier</h4>
@@ -332,13 +332,13 @@ f.close()
 &lt;class 'bytes'&gt;
 </code></pre></div></div>
 
-<p>On se rend compte que ce n’est pas une chaîne de caractère, mais un <code class="language-plaintext highlighter-rouge">bytes</code> (une suite d’octets). En l’affichant on voit que les accents ne passent pas :</p>
+<p>On se rend compte que ce n’est pas une chaîne de caractères, mais un <code class="language-plaintext highlighter-rouge">bytes</code> (une suite d’octets). En l’affichant on voit que les accents ne passent pas :</p>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; print(x)
 b"dans le vieil \xc3\xa9tang,\nune grenouille saute,\nun ploc dans l'eau.\n\nBash\xc3\xb4.\n"
 </code></pre></div></div>
 
-<p>Quand python affiche des suites d’octet, il essaie de les écrire en ascii et tous les caractères qu’il ne comprend pas (ici les accents car ils sont codés sur 2 octets en utf-8) il écrit juste le nombre sous format hexadécimal <code class="language-plaintext highlighter-rouge">\xc3</code> par exemple. De plus, il fait commencer l’affichage par un <code class="language-plaintext highlighter-rouge">b</code>  pour bien montrer que ce n’est <strong>PAS</strong> une chaîne de caractère.</p>
+<p>Quand python affiche des suites d’octets, il essaie de les écrire en ascii et pour tous les caractères qu’il ne comprend pas (ici les accents car ils sont codés sur 2 octets en utf-8), il écrit juste le nombre sous format hexadécimal <code class="language-plaintext highlighter-rouge">\xc3</code> par exemple. De plus, il fait commencer l’affichage par un <code class="language-plaintext highlighter-rouge">b</code>  pour bien montrer que ce n’est <strong>PAS</strong> une chaîne de caractère.</p>
 
 <p>On peut ensuite transformer les bytes <code class="language-plaintext highlighter-rouge">x</code> en autre chose, ici en <code class="language-plaintext highlighter-rouge">utf-8</code> puisque c’était l’encodage :</p>
 
@@ -358,12 +358,12 @@ Bashô.
 
 <h3 id="manipulation-des-dossiers-et-des-fichiers">manipulation des dossiers et des fichiers</h3>
 
-<p>Par défaut python va chercher les fichiers à ouvrir dans le dossier du fichier python entrain d’être exécuté. On peut facilement chercher un fichier dans un dossier spécifique en python.</p>
+<p>Par défaut python va chercher les fichiers à ouvrir dans le dossier du fichier python en train d’être exécuté. On peut facilement chercher un fichier dans un dossier spécifique en python.</p>
 
 <p>Commencez par intégrer la règle d’or :</p>
 
 <blockquote class="note">
-  <p>On ne présuppose jamais de l’endroit où un fichier est stocker sur un ordinateur.</p>
+  <p>On ne présuppose jamais de l’endroit où un fichier est stocké sur un ordinateur.</p>
 </blockquote>
 
 <p>Supposons  que vous ayez un fichier python dans le dossier <em>“/Users/fbrucker/Documents/mon_projet/main.py”</em> et que ce programme python utilise le fichier <em>“/Users/fbrucker/Documents/mon_projet/donnees.txt”</em>.</p>
@@ -373,7 +373,7 @@ Bashô.
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">donnees</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">"/Users/fbrucker/Documents/mon_projet/donnees.txt"</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p>Il ne pourra fonctionner <strong>que</strong> sur votre ordinateur ! En effet, Si vous copiez le dossier <em>“mon_projet”</em>  et tout son contenu  de l’ordinateur A à l’ordinateur B, il est très peu probable qu’il soit placé au même endroit sur le disque dur.</p>
+<p>Il ne pourra fonctionner <strong>que</strong> sur votre ordinateur ! En effet, si vous copiez le dossier <em>“mon_projet”</em>  et tout son contenu  de l’ordinateur A à l’ordinateur B, il est très peu probable qu’il soit placé au même endroit sur le disque dur.</p>
 
 <p>Une première solution est d’utiliser un chemin relatif :</p>
 
@@ -410,12 +410,12 @@ Bashô.
 
 </blockquote>
 
-<p>Cette méthode permet d’obtenir un chemin absolu de référence pour garantir l’accès au fichiers de données sur toutes les machines où votre projet sera copié.</p>
+<p>Cette méthode permet d’obtenir un chemin absolu de référence pour garantir l’accès aux fichiers de données sur toutes les machines où votre projet sera copié.</p>
 
 <p>Un fois un dossier de référence trouvé, on pourra l’utiliser pour accéder à nos données. Mais <strong>jamais</strong> à la main :</p>
 
 <blockquote class="note">
-  <p>Lorsque l’on manipule des fichiers ou que l’on combine des dossier on utilise <strong>toujours</strong> une bibliothèque dédiée pour cela, on ne manipule <strong>jamais</strong> les noms de fichiers et de dossiers en utilisant des méthodes de chaines de caractères</p>
+  <p>Lorsque l’on manipule des fichiers ou que l’on combine des dossiers on utilise <strong>toujours</strong> une bibliothèque dédiée pour cela, on ne manipule <strong>jamais</strong> les noms de fichiers et de dossiers en utilisant des méthodes de chaines de caractères</p>
 </blockquote>
 
 <p>On va voir deux façon de faire en python, l’une classique avec le module <a href="https://docs.python.org/fr/3/library/os.path.html">os.path</a>, l’autre plus moderne qui utilise le module <a href="https://docs.python.org/fr/3/library/pathlib.html">pathlib</a>.</p>
@@ -497,7 +497,7 @@ F, Charlotte, 1988
 
 <h4 id="lire-un-fichier-csv">Lire un fichier csv</h4>
 
-<p>le code ci-après lit le fichier csv et le place dans une liste de liste si la ligne contient bien 3 champs. Puis on converti le dernier élément en entier.</p>
+<p>le code ci-après lit le fichier csv et le place dans une liste de listes si la ligne contient bien 3 champs. Puis on convertit le dernier élément en entier.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">csv</span>
 
@@ -521,7 +521,7 @@ F, Charlotte, 1988
       <li>
 <code class="language-plaintext highlighter-rouge">delimiter</code>. Par défaut c’est des <code class="language-plaintext highlighter-rouge">','</code>, mais on verra souvent en France des csv dont le délimiteur est un <code class="language-plaintext highlighter-rouge">';'</code> (car les virgules sont déjà utilisés pour les nombres réels)</li>
       <li>
-<code class="language-plaintext highlighter-rouge">quotechar</code> : pour savoir ce qui est une chaîne de caractère, souvent des <code class="language-plaintext highlighter-rouge">"</code>. Si vous ne mettez rien, tout sera considéré comme des chaîne de caractères et il faudra convertir à la main chaque donné si nécessaire</li>
+<code class="language-plaintext highlighter-rouge">quotechar</code> : pour savoir ce qui est une chaîne de caractères, souvent des <code class="language-plaintext highlighter-rouge">"</code>. Si vous ne mettez rien, tout sera considéré comme des chaîne de caractères et il faudra convertir à la main chaque donnée si nécessaire</li>
     </ul>
   </li>
   <li>lire le fichier ligne à ligne. A chaque utilisation vous obtiendrez une liste contenant les différents champs de la ligne lue.</li>
@@ -529,7 +529,7 @@ F, Charlotte, 1988
 
 <h4 id="lire-une-ligne-dun-fichier-csv">Lire une ligne d’un fichier csv</h4>
 
-<p>Pour lire une unique ligne, on peut utiliser la la commande <code class="language-plaintext highlighter-rouge">next</code>. Le code suivant lit la première ligne, qui est un titre, puis lit les autres données en transformant le dernier champ en <code class="language-plaintext highlighter-rouge">int</code>.</p>
+<p>Pour lire une unique ligne, on peut utiliser la commande <code class="language-plaintext highlighter-rouge">next</code>. Le code suivant lit la première ligne, qui est un titre, puis lit les autres données en transformant le dernier champ en <code class="language-plaintext highlighter-rouge">int</code>.</p>
 
 <blockquote>
   <p>Cette technique permet de séparer le traitement des <em>méta-données</em> (le nom des colonnes) du reste (les données).</p>
@@ -574,36 +574,15 @@ F, Charlotte, 1988
 
 <p>L’adresse <a href="https://github.com/hbenbel/French-Dictionary/tree/master/dictionary">https://github.com/hbenbel/French-Dictionary/tree/master/dictionary</a> contient plusieurs fichiers csv contenant des mots français.</p>
 
-<p>«««&lt; HEAD</p>
-<blockquote class="a-faire">
+<blockquote>
   <ol>
     <li>récupérez le fichier <code class="language-plaintext highlighter-rouge">dictionary.csv</code> (il est  l’adresse <a href="https://raw.githubusercontent.com/hbenbel/French-Dictionary/master/dictionary/dictionary.csv">https://raw.githubusercontent.com/hbenbel/French-Dictionary/master/dictionary/dictionary.csv</a>)</li>
     <li>importez le au format csv</li>
-    <li>
-      <h1 id="répondez-à-cette-question-existentielle--nycthémères-est-il-un-mot-français-">répondez à cette question existentielle : <code class="language-plaintext highlighter-rouge">nycthémères</code> est-il un mot français ?</h1>
-    </li>
-    <li>téléchargez le fichier <code class="language-plaintext highlighter-rouge">noun.csv</code>
-</li>
-    <li>importez le au format csv</li>
-    <li>répondez à cette question existentielle : <code class="language-plaintext highlighter-rouge">nycthémères</code> est-il masculin ou féminin ?
-      <blockquote>
-        <blockquote>
-          <blockquote>
-            <blockquote>
-              <blockquote>
-                <blockquote>
-                  <p>fa374697 (before pull)</p>
-                </blockquote>
-              </blockquote>
-            </blockquote>
-          </blockquote>
-        </blockquote>
-      </blockquote>
-    </li>
+    <li>répondez à cette question existentielle : <code class="language-plaintext highlighter-rouge">nycthémères</code> est-il un mot français ?</li>
   </ol>
-
 </blockquote>
-<details><summary>Solution</summary><div>
+
+<details class="a-faire"><summary>Solution</summary><div>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 <span class="kn">import</span> <span class="nn">csv</span>
 <span class="kn">import</span> <span class="nn">requests</span>
