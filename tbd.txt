@@ -1,2 +1,5 @@
 - spell check est mieux pour la correction orthorgraphique
 - changer nom par variable partout dans le cours memoire et objets
+- utf8 table à changer https://www.compart.com/en/unicode/block
+- utf8 hex converter online à trouver
+- play -traw -r44100 -b16 -c1 -eunsigned <file> (fait parti du package sox) pour écouter ses fichiers
