@@ -324,6 +324,14 @@ On suppose que la variable `__file__` corresponde au chemin *"/Users/fbrucker/Do
 
 Le module [pathlib](https://docs.python.org/fr/3/library/pathlib.html) permet d'avoir une approche objet de la manipulation des fichiers. Le tuto suivant est parfait pour vous montrer comment l'utiliser : <https://jefftriplett.com/2017/pathlib-is-wonderful/>.
 
+#### conclusion 
+
+> * mettre ne cte pour le nom du dossier racine du projet
+> * toujours travailler à partir de là pour les autres dossier
+> * utiliser un module python pour combiner les dossiers eutre eux
+>
+{: .tbd}
+
 ### fichiers distants
 
 Les fichiers stockés sur internet peuvent aussi être récupérés en python *via* leur [url](https://fr.wikipedia.org/wiki/Uniform_Resource_Locator). On utilise la bibliothèque [requests](https://requests-fr.readthedocs.io/en/latest/) (`python -m pip install requests`).
