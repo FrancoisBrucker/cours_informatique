@@ -468,7 +468,6 @@ lignes = text.splitlines()
 lecteur = csv.reader(lignes)
 
 donnees = []
-pos = 0
 for ligne in lecteur:
     donnees.append(ligne)
 
