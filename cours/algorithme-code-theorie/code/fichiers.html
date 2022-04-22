@@ -439,6 +439,17 @@ Bashô.
 
 <p>Le module <a href="https://docs.python.org/fr/3/library/pathlib.html">pathlib</a> permet d’avoir une approche objet de la manipulation des fichiers. Le tuto suivant est parfait pour vous montrer comment l’utiliser : <a href="https://jefftriplett.com/2017/pathlib-is-wonderful/">https://jefftriplett.com/2017/pathlib-is-wonderful/</a>.</p>
 
+<h4 id="conclusion">conclusion</h4>
+
+<blockquote class="tbd">
+  <ul>
+    <li>mettre ne cte pour le nom du dossier racine du projet</li>
+    <li>toujours travailler à partir de là pour les autres dossier</li>
+    <li>utiliser un module python pour combiner les dossiers eutre eux</li>
+  </ul>
+
+</blockquote>
+
 <h3 id="fichiers-distants">fichiers distants</h3>
 
 <p>Les fichiers stockés sur internet peuvent aussi être récupérés en python <em>via</em> leur <a href="https://fr.wikipedia.org/wiki/Uniform_Resource_Locator">url</a>. On utilise la bibliothèque <a href="https://requests-fr.readthedocs.io/en/latest/">requests</a> (<code class="language-plaintext highlighter-rouge">python -m pip install requests</code>).</p>
@@ -595,7 +606,6 @@ F, Charlotte, 1988
 <span class="n">lecteur</span> <span class="o">=</span> <span class="n">csv</span><span class="p">.</span><span class="n">reader</span><span class="p">(</span><span class="n">lignes</span><span class="p">)</span>
 
 <span class="n">donnees</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">pos</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">for</span> <span class="n">ligne</span> <span class="ow">in</span> <span class="n">lecteur</span><span class="p">:</span>
     <span class="n">donnees</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">ligne</span><span class="p">)</span>
 
