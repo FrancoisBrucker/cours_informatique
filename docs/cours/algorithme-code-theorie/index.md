@@ -57,6 +57,7 @@ Ce cours est composée de trois grandes parties qui s'enchevêtrent.
 12. [algorithmes gloutons]({% link cours/algorithme-code-theorie/algorithme/methode-gloutons.md %})
 13. [étude : voyageur de commerce]({% link cours/algorithme-code-theorie/algorithme/etude-voyageur-de-commerce.md %})
 14. [structure : chaine de caractères]({% link cours/algorithme-code-theorie/algorithme/structure-chaine-de-caracteres.md %})
+15. [étude : recherche de sous-chaines]({% link cours/algorithme-code-theorie/algorithme/etude-recherche-sous-chaines.md %})
 
 ### théorie
 
@@ -687,6 +688,27 @@ graph.links.push({
   source: "projet : exponentiation",
   target: "étude : voyageur de commerce"
   
+})
+
+graph.nodes.push({
+id: "étude : recherche de sous-chaines",
+  link: "{% link cours/algorithme-code-theorie/algorithme/etude-recherche-sous-chaines.md %}",
+  group: groups.algorithmie
+})
+
+graph.links.push({
+  source: "structure : chaine de caractères",
+  target: "étude : recherche de sous-chaines",
+})
+
+graph.links.push({
+  source: "complexité en moyenne",
+  target: "étude : recherche de sous-chaines",
+})
+
+graph.links.push({
+  source: "fonctions de hash",
+  target: "étude : recherche de sous-chaines",
 })
 
 </script>

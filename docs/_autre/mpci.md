@@ -163,12 +163,11 @@ Au programme :
 
 #### mercredi {#m-11}
 
-> chaine de caractère
-> arbre de recherche ?
-> coloration de graphe ?
-{: .tbd}
+1. [étude : recherche de sous-chaines]({% link cours/algorithme-code-theorie/algorithme/etude-recherche-sous-chaines.md %})
 
 #### vendredi {#v-11}
+
+1. alignement de séquences
 
 ### semaine 12
 

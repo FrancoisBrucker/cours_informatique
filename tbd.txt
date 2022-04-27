@@ -3,3 +3,12 @@
 - utf8 table à changer https://www.compart.com/en/unicode/block
 - utf8 hex converter online à trouver
 - play -traw -r44100 -b16 -c1 -eunsigned <file> (fait parti du package sox) pour écouter ses fichiers
+- schema des block de fichiers dans le disque dur (avec les MZ pour dos ?)
+- parler de la fat ? La voir avec un explorateur de disque ?
+- données : 
+    - séparer fichier texte du reste
+    - faire un fichier binaire (image ?)
+    - enregistrer fichier texte en byte
+- faire un cours juste sur fichier texte (après dictionnaire t set ?)
+- faire un cours juste sur les données csv et json
+

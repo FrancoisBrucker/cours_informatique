@@ -64,15 +64,11 @@ GEM
       jekyll (>= 3.5, < 5.0)
       jekyll-feed (~> 0.9)
       jekyll-seo-tag (~> 2.1)
-    nokogiri (1.13.3-arm64-darwin)
-      racc (~> 1.4)
-    nokogiri (1.13.3-x86_64-darwin)
-      racc (~> 1.4)
-    nokogiri (1.13.3-x86_64-linux)
+    nokogiri (1.13.4-x86_64-darwin)
       racc (~> 1.4)
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
-    public_suffix (4.0.6)
+    public_suffix (4.0.7)
     racc (1.6.0)
     rainbow (3.1.1)
     rb-fsevent (0.11.1)
@@ -89,9 +85,7 @@ GEM
     webrick (1.7.0)
 
 PLATFORMS
-  arm64-darwin-21
   x86_64-darwin-21
-  x86_64-linux
 
 DEPENDENCIES
   http_parser.rb!
@@ -106,4 +100,4 @@ DEPENDENCIES
   webrick
 
 BUNDLED WITH
-   2.3.7
+   2.3.11

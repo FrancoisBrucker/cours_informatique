@@ -23,3 +23,4 @@ Création, preuve et complexité des algorithmes.
 * [algorithmes gloutons]({% link cours/algorithme-code-theorie/algorithme/structure-liste.md %})
 * [étude : voyageur de commerce]({% link cours/algorithme-code-theorie/algorithme/etude-voyageur-de-commerce.md %})
 * [structure : chaine de caractères]({% link cours/algorithme-code-theorie/algorithme/structure-chaine-de-caracteres.md %})
+* [étude : recherche de sous-chaines]({% link cours/algorithme-code-theorie/algorithme/etude-recherche-sous-chaines.md %})
