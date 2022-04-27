@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>étude / recherche de sous-chaines | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0">
+<meta property="og:title" content="étude / recherche de sous-chaines">
+<meta name="author" content="François Brucker">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Support de cours/td d’informatique de François Brucker.">
+<meta property="og:description" content="Support de cours/td d’informatique de François Brucker.">
+<link rel="canonical" href="/cours_informatique/cours/algorithme-code-theorie/algorithme/etude-recherche-sous-chaines.html">
+<meta property="og:url" content="/cours_informatique/cours/algorithme-code-theorie/algorithme/etude-recherche-sous-chaines.html">
+<meta property="og:site_name" content="cours d’informatique">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="étude / recherche de sous-chaines">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"François Brucker"},"description":"Support de cours/td d’informatique de François Brucker.","headline":"étude / recherche de sous-chaines","url":"/cours_informatique/cours/algorithme-code-theorie/algorithme/etude-recherche-sous-chaines.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css">
+
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css">
+
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique">
+<script>MathJax={"tex":{"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["\\[","\\]"]]},"svg":{"fontCache":"global"},"svg":{"fontCache":"global"}}</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<header class="site-header" role="banner">
+
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/cours_informatique/">cours d'informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav>
+</div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">étude / recherche de sous-chaines</h1>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span>
+  </header>
+
+  <div class="post-content">
+    <blockquote class="chemin">
+  <p><a href="/cours_informatique/cours/algorithme-code-theorie/">Algorithme, code et théorie</a> / <a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/">algorithmie</a> / <a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/etude-recherche-sous-chaines.html">étude : recherche de sous-chaines</a></p>
+
+  <p>prérequis :</p>
+
+  <ul>
+    <li><a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/complexite-moyenne.html">complexité en moyenne</a></li>
+    <li><a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/structure-chaine-de-caracteres.html">structure : chaine de caractères</a></li>
+    <li><a href="/cours_informatique/cours/algorithme-code-theorie/theorie/fonctions.html">fonctions</a></li>
+  </ul>
+
+</blockquote>
+
+<p>Nous allons dans cette partie analyser le problème de la <em>recherche d’une sous-chaine</em> :</p>
+
+<blockquote class="note">
+  <p><strong>Problème de la recherche d’une sous-chaîne</strong> :</p>
+
+  <ul>
+    <li>
+<strong>Données</strong> :
+      <ul>
+        <li>une chaine de caractère de $a$ de longueur $n$</li>
+        <li>une chaine de caractère de $b$ de longueur $m$, avec $m \leq n$</li>
+      </ul>
+    </li>
+    <li>
+<strong>question</strong> :
+      <ul>
+        <li>$b$ est-il une <em>sous-chaine</em> de $a$ ?</li>
+      </ul>
+    </li>
+    <li>
+<strong>réponse</strong> :
+      <ul>
+        <li>oui ou non.</li>
+      </ul>
+    </li>
+  </ul>
+</blockquote>
+
+<p>Une définition formelle de <em>sous-chaine</em> étant :</p>
+
+<blockquote class="note">
+  <p>Soient $a$ et $b$ deux chaines de caractères de longueurs $n$ et $m &lt;n$ respectivement.</p>
+
+  <p>La chaine $b$ est une <strong>sous-chaine</strong> de $a$ s’il existe $0 \leq i &lt; n$ tel que l’on ait pour tout $0 \leq j &lt; m$  :</p>
+
+\[b[j] = a[i + j]\]
+
+</blockquote>
+
+<h2 id="algorithme-naïf">algorithme naïf</h2>
+
+<p>La première idée pour résoudre le problème de <em>la recherche d’une sous-chaîne</em> est de vérifier pour pour tout $0 \leq i &lt; n$ si la définition est correcte :</p>
+
+<style>
+    table, td, tr, th, pre {
+        padding:0;
+        margin:0;
+        border:none
+    }
+</style>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><table class="rouge-table"><tbody><tr>
+<td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td>
+<td class="code"><pre><span class="k">def</span> <span class="nf">sous_chaine_naif</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">trouvé</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">b</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">]:</span>
+                <span class="n">trouvé</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="k">if</span> <span class="n">trouvé</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">True</span>
+    <span class="k">return</span> <span class="bp">False</span>
+</pre></td>
+</tr></tbody></table></code></pre></figure>
+
+<h3 id="pièges">pièges</h3>
+
+<p>L’algorithme semble une application directe de la définition, et pourtant… Attention aux multiples pièges de ce genre d’algorithme. Il faut <strong>toujours</strong> vérifier très consciencieusement :</p>
+
+<ul>
+  <li>les limites de boucles</li>
+  <li>les conditions d’arrêt</li>
+</ul>
+
+<p>Essayez de comprendre pourquoi les solutions suivantes ne fonctionnent pas en exhibant un contre-exemple.</p>
+
+<h4 id="limites-de-boucles">limites de boucles</h4>
+
+<p>Attention aux limites des boucles <code class="language-plaintext highlighter-rouge">for</code> ! Il faut <strong>toujours</strong> vérifier les bornes.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sous_chaine_naif_FAUX_1</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)):</span>
+        <span class="n">trouvé</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">b</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">]:</span>
+                <span class="n">trouvé</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="k">if</span> <span class="n">trouvé</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">True</span>
+    <span class="k">return</span> <span class="bp">False</span>
+</code></pre></div></div>
+
+<details><summary>quelle est l’erreur ?</summary><div>
+<p>Pas de sentinelle sur le positionnement. On peut avoir  $i + j \geq m$ et donc <code class="language-plaintext highlighter-rouge">a[i + j]</code> provoquer une erreur. Par exemple <code class="language-plaintext highlighter-rouge">sous_chaine_naif("aaa", "ca")</code></p>
+
+</div></details>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sous_chaine_naif_FAUX_2</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)):</span>
+        <span class="n">trouvé</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">b</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">]:</span>
+                <span class="n">trouvé</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="k">if</span> <span class="n">trouvé</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">True</span>
+    <span class="k">return</span> <span class="bp">False</span>
+</code></pre></div></div>
+
+<details><summary>quelle est l’erreur ?</summary><div>
+<p>On ne va pas assez loin. Par exemple <code class="language-plaintext highlighter-rouge">sous_chaine_naif("ab", "b")</code></p>
+
+</div></details>
+
+<h4 id="conditions-darrêt">conditions d’arrêt</h4>
+
+<p>Une erreur classique :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sous_chaine_naif_FAUX_3</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">b</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">]:</span>
+                <span class="k">return</span> <span class="bp">False</span>
+    <span class="k">return</span> <span class="bp">True</span>
+</code></pre></div></div>
+
+<details><summary>quelle est l’erreur ?</summary><div>
+<p>Ce n’est pas parce que l’on ne trouve pas la sous-chaine en $i=$ que ce n’et pas vrai pour $i=1$…</p>
+
+<p>Exemple : <code class="language-plaintext highlighter-rouge">sous_chaine_naif("ab", "b")</code></p>
+
+</div></details>
+
+<p>Une variation sur l’erreur précédente :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sous_chaine_naif_FAUX_4</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="n">trouvé</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">b</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">]:</span>
+                <span class="n">trouvé</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="k">return</span> <span class="n">trouvé</span>
+</code></pre></div></div>
+
+<details><summary>quelle est l’erreur ?</summary><div>
+<p>Erreur inverse du cas précédent. Il suffit que l’on ne trouve pas le sous-mot à une position pour que l’algorithme réponde faux : <code class="language-plaintext highlighter-rouge">sous_chaine_naif("ba", "b")</code>.</p>
+
+</div></details>
+
+<h3 id="complexité">complexité</h3>
+
+<h4 id="complexité-maximale">complexité maximale</h4>
+
+<p>Calculons la complexité ligne à ligne :</p>
+
+<ol>
+  <li>définition d’un fonction : $\mathcal{O}(1)$ opérations</li>
+  <li>boucle de $\mathcal{O}(n - m)$ itérations.</li>
+  <li>affectation : $\mathcal{O}(1)$ opérations</li>
+  <li>boucle de $\mathcal{O}(m)$ itérations.</li>
+  <li>positionnement dans 2 tableaux et test : $\mathcal{O}(1)$ opérations</li>
+  <li>affectation : $\mathcal{O}(1)$ opérations</li>
+  <li>test : $\mathcal{O}(1)$ opérations</li>
+  <li>retour de fonction : $\mathcal{O}(1)$ opérations</li>
+  <li>retour de fonction : $\mathcal{O}(1)$ opérations</li>
+</ol>
+
+<p>On en conclut que la complexité totale se niche dans l’exécution des deux boucles <code class="language-plaintext highlighter-rouge">for</code> imbriquées, et est donc de complexité : $\mathcal{O}((n - m) \cdot m) \simeq \mathcal{O}(n\cdot m)$ si $m \gg n$ ce qui est généralement le cas.</p>
+
+<h4 id="complexité-minimale">complexité minimale</h4>
+
+<p>La complexité minimale est atteinte lorsque la sous-chaine est trouvée dès $i=0$. Dans ce cas là, il aura fallu $\mathcal{O}(m)$ opérations.</p>
+
+<h4 id="complexité-en-moyenne">complexité en moyenne</h4>
+
+<p>On pourrait envisager deux calculs possible :</p>
+
+<ul>
+  <li>complexité en moyenne $b$ est une sous-chaine de $a$</li>
+  <li>complexité en moyenne lorsque $b$ n’est pas une sous-chaine de $a$</li>
+</ul>
+
+<p>Le premier cas dépend uniquement de la position de la sous-chaine $b$ dans $a$, pas de la <em>structure</em> de $a$ ou de $b$. Il est donc très dépendant de l’application et il n’y a aucune raison de choisir un modèle purement aléatoire (il  y a très peu d’application où il faut chercher si un mot aléatoire est présent dans une chaine également aléatoire)</p>
+
+<p>Le second cas est le cas le pire et à un nombre constant d’opérations : $\mathcal{O}(nm)$.</p>
+
+<h4 id="attention">attention</h4>
+
+<p>Attention ! L’algorithme suivant, qui utilise la comparaison de listes en python, n’est <strong>pas</strong> de complexité inférieure.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sous_chaine_naif_2</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">b</span> <span class="o">==</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span> <span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="bp">True</span>
+    <span class="k">return</span> <span class="bp">False</span>
+</code></pre></div></div>
+
+<p>En effet, la complexité de l’égalité entre deux liste est égale à la taille de la plus petite des listes.</p>
+
+<h3 id="une-amélioration-subtile">une amélioration subtile</h3>
+
+<p>La boucle en $j$ (lignes 4-6) de l’algorithme <code class="language-plaintext highlighter-rouge">sous_chaine_naif</code> pourrait être améliorée en l’arrêtant dès que <code class="language-plaintext highlighter-rouge">trouvé</code> est mis à <code class="language-plaintext highlighter-rouge">False</code>.</p>
+
+<p>On peut pour cela utiliser l’instruction <code class="language-plaintext highlighter-rouge">break</code> qui permet de sortir de la boucle la plus imbriquée (ici la boucle for en $j$ de la ligne 4). Lisez la <a href="https://docs.python.org/fr/3/tutorial/controlflow.html#break-and-continue-statements-and-else-clauses-on-loops">documentation</a> à ce sujet, elle est éclairante.</p>
+
+<p>On a alors l’algorithme suivant :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sous_chaine_naif_amélioré</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">trouvé</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">b</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">]:</span>
+                <span class="n">trouvé</span> <span class="o">=</span> <span class="bp">False</span>
+                <span class="k">break</span>
+        <span class="k">if</span> <span class="n">trouvé</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">True</span>
+    <span class="k">return</span> <span class="bp">False</span>
+</code></pre></div></div>
+
+<p>Cela peut sembler une amélioration de bout de chandelles car cela ne change pas la complexité maximale de l’algorithme. Mais… Cela va changer la complexité en moyenne lorsque $b$ n’est pas une sous-chaine de $a$.</p>
+
+<h4 id="calcul-de-la-complexité-en-moyenne">calcul de la complexité en moyenne</h4>
+
+<p>On suppose que l’on ait dans le cas où $b$ n’est pas une sous-chaine de $a$. Pour ce calcul on va se placer dans le cas fictif où chaque lettre est équiprobable. La probabilité que deux lettres soient égales est alors $p = \frac{1}{A}$ où $A$ est la taille de l’alphabet utilisé. C’est le cas le plus défavorable pour notre calcul.</p>
+
+<p>A $i$ fixé, on a alors :</p>
+
+<ol>
+  <li>la probabilité que $b[0] \neq a[i]$ vaut $1-p$</li>
+  <li>la probabilité que $b[0] = a[i]$ et $b[1] \neq a[i + 1]$ vaut $p\cdot (1-p)$</li>
+  <li>la probabilité que $b[j] = a[i + j]$ pour $0\leq j &lt; 2$ et $b[1] \neq a[i + 2]$ vaut $p^2\cdot (1-p)$</li>
+  <li>…</li>
+  <li>la probabilité que $b[j] = a[i + j]$ pour $0 \leq j &lt; k$ et $b[k] \neq a[i + k]$ vaut $p^k\cdot (1-p)$</li>
+  <li>…</li>
+  <li>la probabilité que $b[j] = a[i + j]$ pour $0\leq j &lt; m - 1$ et $b[m-1] \neq a[i + m - 1]$ vaut $p^{m-1}\cdot (1-p)$</li>
+</ol>
+
+<p>Le nombre moyens d’itérations de la boucle <code class="language-plaintext highlighter-rouge">for</code> en $j$ est alors :</p>
+
+\[1\cdot (1-p) + 2 \cdot p(1-p) + 3 \cdot p^2(1-p) + ... + m \cdot p^{m-1}(1-p) = \frac{1-p}{p}\sum_{k=1}^{m}k\cdot p^k\]
+
+<p>Comme $p &lt; 1$ la série $\sum_{k=1}^{m}k\cdot p^k$ est convergente et est toujours inférieure à $\sum_{k=1}^{+\infty}k\cdot p^k$ qui ne dépend plus de $m$.</p>
+
+<details><summary>preuve de la convergence de la série</summary><div>
+<p>Si l’on note $f_m(x) = \sum_{k=1}^mx^k$, on a : $\sum_{k=1}^mk\cdotp^k = p\cdot f’_m(p)$.</p>
+
+<p>Comme une récurrence immédiate montre que $f_m(x) = \frac{x^{m+1} - 1}{x-1}$, on a :</p>
+
+\[\sum_{k=1}^mk\cdot p^k = p \frac{(m+1)p^m(p-1)-(p^{m+1}-1)}{(p-1)^2} = \frac{p}{(p-1)^2}\cdot(mp^{m+1}-(m+1)p^m + 1)\]
+
+<p>comme $p &lt; 1$, $mp^m$ tend vers $0$ lorsque $m$ tend vers $+\infty$ et donc $\sum_{k=1}^mk\cdot p^k$ tend vers $ \frac{p}{(p-1)^2}$ lorsque $m$ tend vers $+\infty$.</p>
+
+<p>On en conclut :</p>
+
+\[\sum_{k=1}^{+\infty}k\cdot p^k =  \frac{p}{(p-1)^2}\]
+
+</div></details>
+
+<p>Le nombre moyen d’itérations de la boucle for en $j$ est donc indépendant de $m$ ! Il ne dépend que de $p$. De là, la complexité moyenne de l’algorithme est ainsi $\mathcal{O}(n)$.</p>
+
+<p>Enfin, comme le cas où $$ n’est pas une sous-chaine de $a$ est le cas le plus défavorable, on en conclut que la complexité en moyenne de l’algorithme est de $\mathcal{O}(n)$ opérations.</p>
+
+<blockquote class="note">
+  <p>Un simple <code class="language-plaintext highlighter-rouge">break</code> a rendu linéaire la complexité en moyenne de l’algorithme.</p>
+</blockquote>
+
+<h4 id="break-continue-et-while">break: continue et while</h4>
+
+<p>L’instruction <code class="language-plaintext highlighter-rouge">break</code> de l’algorithme <code class="language-plaintext highlighter-rouge">sous_chaine_naif_amélioré</code> aurait très bien pu s’écrire avec une boucle <code class="language-plaintext highlighter-rouge">while</code> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sous_chaine_naif_amélioré_sans_break</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">trouvé</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">while</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">b</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">]:</span>
+                <span class="n">trouvé</span> <span class="o">=</span> <span class="bp">False</span>
+                <span class="n">j</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">trouvé</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">True</span>
+    <span class="k">return</span> <span class="bp">False</span>
+</code></pre></div></div>
+
+<p><strong>Mais</strong> la lecture aurait été moins aisée. L’utilisation de l’instruction <code class="language-plaintext highlighter-rouge">break</code> permet :</p>
+
+<ul>
+  <li>d’expliciter le cas général (la boucle for)</li>
+  <li>le cas particulier : le <code class="language-plaintext highlighter-rouge">break</code>.</li>
+</ul>
+
+<p>Le pendant l’instruction <code class="language-plaintext highlighter-rouge">break</code> est l’instruction <code class="language-plaintext highlighter-rouge">continue</code> qui permet d’aller à la prochaine itération de la boucle la plus imbriquée.</p>
+
+<p>Comparez par exemple ces 2 implémentations d’un même algorithme dont le but est à partir d’une liste d’entiers $L$ de faire un traitement uniquement si l’élément est non nul.</p>
+
+<p>Sans utilisation de <code class="language-plaintext highlighter-rouge">continue</code>, le cas général est traité dans un bloc <code class="language-plaintext highlighter-rouge">if</code> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">L</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">element</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="c1"># ...
+</span></code></pre></div></div>
+
+<p>Utilisation de <code class="language-plaintext highlighter-rouge">continue</code>, le cas particulier est évacué directement.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">L</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">element</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">continue</span>
+    
+    <span class="c1"># ...
+</span></code></pre></div></div>
+
+<p>Le second cas est bien plus clair.</p>
+
+<blockquote class="note">
+  <p>L’utilisation de <code class="language-plaintext highlighter-rouge">break</code> et de <code class="language-plaintext highlighter-rouge">continue</code> permet de distinguer clairement dan l’algorithme ce qui est de l’ordre du cas général (la boucle) et du cas particulier (sortie de boucle)</p>
+</blockquote>
+
+<h2 id="algorithme-de-knuth-morris-pratt">Algorithme de Knuth-Morris-Pratt</h2>
+
+<p>L’algorithme <code class="language-plaintext highlighter-rouge">sous_chaine_naif_amélioré</code> est construit autour de la boucle for en <code class="language-plaintext highlighter-rouge">i</code> qui teste si $b$ est présent à chaque position de $a$.</p>
+
+<p>Ceci n’est pas optimal dans de nombreux cas. Par exemple considérons supposons que $a$ soit la chaine <code class="language-plaintext highlighter-rouge">abcabcabd</code> et $b$ la chaine <code class="language-plaintext highlighter-rouge">abd</code>.</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    
+    abcabcabde
+    abd         -&gt; dernière lettre pas bonne
+     abd        -&gt; inutile, car on sait que la chaine ne commence pas par un b
+      abd       -&gt; autant commencer là tout de suite.
+      ^
+</code></pre></div></div>
+
+<p>Ou encore :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    ababcabde
+    ababd        -&gt; dernière lettre pas bonne
+     ababd       -&gt; inutile, il n'y a pas de c dans la chaine à trouver.
+      ababd      -&gt; autant commencer là tout de suite.
+        ^
+</code></pre></div></div>
+
+<p>Il faut faire en sorte de n’avoir à regarder les éléments de $a$ qu’un nombre constant de fois : il ne faut pas refaire des choses que l’on sait déjà. Supposons que l’on soit dans cette configuration générale :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>           i
+a : .......xxxxxYttttt.........
+b :        xxxxxZuuuuu
+                j
+</code></pre></div></div>
+
+<p>Avec :</p>
+
+<ul>
+  <li>$a[i + k] = b[k]$ pour $0 \leq k &lt; j$</li>
+  <li>$a[i + j] \neq b[j]$</li>
+</ul>
+
+<p>Comme on connait tous les caractères de $a[i]$ à $a[i + j - 1]$ et qu’ils coïncident avec $b$, dans l’idéal pour ne pas se répéter il faudrait arriver à la situation suivante :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>              i'
+a : .......xxxxxYttttt.........
+b :           xxxxxZuuuuu
+                j'
+</code></pre></div></div>
+
+<p>C’est à dire de trouver le plus grand $k$ possible tel que $a[(i+j-1)-k:i+j] = b[:k]$ (la fin de $a[i:i+j]$ corresponde au début de $b$), puis poser :</p>
+
+<ul>
+  <li>$i’= i + j - k$</li>
+  <li>$j’ = j - k$</li>
+</ul>
+
+<p>Exemple :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>         i     
+a : .....bababac......
+b :      babababa 
+               j 
+</code></pre></div></div>
+
+<p>On continue du coup avec la configuration :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>         i     
+a : .....bababac......
+b :        babababa 
+               j 
+</code></pre></div></div>
+
+<p>Là encore $a[i+j] \neq b[j]$, la prochaine configuration sera :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>         i     
+a : .....bababac......
+b :          babababa 
+               j 
+</code></pre></div></div>
+
+<p>Encore une fois $a[i+j] \neq b[j]$, la prochaine configuration sera :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>         i     
+a : .....bababac......
+b :            babababa 
+               j 
+</code></pre></div></div>
+
+<ol>
+  <li>on suppose qu’on connaisse le max, algo</li>
+  <li>complexité de l’algo</li>
+  <li>calcul du décalage</li>
+</ol>
+
+<p>Automates : <a href="https://en.wikipedia.org/wiki/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm">Knuth-Morris-Pratt</a></p>
+
+<h2 id="autre-algorithmes">Autre algorithmes</h2>
+
+<h3 id="prétraitements">prétraitements</h3>
+
+<p>Rabin-Karp</p>
+
+<h3 id="autre-décalages">Autre décalages</h3>
+
+<p><a href="https://fr.wikipedia.org/wiki/Algorithme_de_Boyer-Moore-Horspool">Boyer-Moore-Horspool</a>, on part de la fin.</p>
+
+<p>Et <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Boyer-Moore">Boyer-Moore</a> qui rajoute une règle et est aussi linéaire (preuve dans KMP, mais c’est plus chaud à démontrer…)</p>
+
+<p>Pour implémenter cette idée, il est plus simple de comparer le mot et la séquence en partant de la fin du mot :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">début_algorithme_BMH</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">trouvé</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">b</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">]:</span>
+                <span class="n">trouvé</span> <span class="o">=</span> <span class="bp">False</span>
+                
+                <span class="c1"># décalage de i
+</span>        
+        <span class="k">if</span> <span class="n">trouvé</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">True</span>
+    <span class="k">return</span> <span class="bp">False</span>
+</code></pre></div></div>
+
+<p>L’algorithme de Boyer–Moore implémente 2 tables de saut permettant de décaler efficacement l’indice $i$</p>
+
+<h3 id="première-table-de-saut">première table de saut</h3>
+
+<p>Positionnement des deux chaines lors de la 1ère discordance $a[i + j] \neq b[j]$ :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        i    x
+a: .....COUCOU......
+b:      POUTOU
+           j
+</code></pre></div></div>
+
+<p>On va alors décaler $i$ du minimum possible, c’est à dire :</p>
+
+<ul>
+  <li>de $m$ (la longueur de $b$) si $a[i + m - 1]$ (le caractère à la position <code class="language-plaintext highlighter-rouge">x</code> du dessin) n’apparait pas dans les $m-1$ premiers caractères de $b$</li>
+  <li>de $m$ moins la position du dernier caractère $a[i + m - 1]$ dans les $m-1$ premiers caractères de $b$ (la chaine <code class="language-plaintext highlighter-rouge">b[:-1]</code> avec la notation de python). Ceci fera coïncider le caractère à la position <code class="language-plaintext highlighter-rouge">x</code> de $a$ avec le même caractère dans <code class="language-plaintext highlighter-rouge">b[:-1]</code>
+</li>
+</ul>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        i
+a: .....COUCOU......
+b:         POUTOU
+                j
+</code></pre></div></div>
+
+<p>Pour notre exemple avec $b$ valant <code class="language-plaintext highlighter-rouge">POUTOU</code>, ceci donne la table de décalage suivante :</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>lettre</th>
+      <th>décalage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>P</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>O</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>U</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>T</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>autre</td>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Cette technique est très efficace si le mot à chercher n’a pas beaucoup de répétition. Pour que le décalage aille vite (en $\mathcal{O}(1)$ opération), l’idée est de créer un tableau de longueur le maximum du numéro unicode de <code class="language-plaintext highlighter-rouge">mot</code> et de mettre le décalage qu’il faut. On ne peut pas prendre tous les code unicode possible, un tableau de plus de 100000 cases n’est pas raisonnable. Pour un texte avec l’alphabet latin, on aura des codes plus petit que 256 ce qui est raisonnable.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">creation_decalage</span><span class="p">(</span><span class="n">mot</span><span class="p">):</span>
+    <span class="n">unicode_max</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">mot</span><span class="p">)</span>
+    <span class="n">decalage</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">unicode_max</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">decalage</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mot</span><span class="p">))</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mot</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">decalage</span><span class="p">[</span><span class="nb">ord</span><span class="p">(</span><span class="n">mot</span><span class="p">[</span><span class="n">i</span><span class="p">])]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">mot</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">i</span>
+
+    <span class="k">return</span> <span class="n">decalage</span>
+</code></pre></div></div>
+
+<p>La complexité de la fonction <code class="language-plaintext highlighter-rouge">creation_decalage</code> est en $\mathcal{O}(m + A)$ opérations, où $A$ est la taille de l’alphabet utilisé, c’est à dire une constante.</p>
+
+<p>L’algorithme devient alors :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">suite_algorithme_BMH</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="n">decalage</span> <span class="o">=</span> <span class="n">creation_decalage</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>  <span class="c1"># à faire
+</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">trouvé</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">b</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">]:</span>
+                <span class="n">trouvé</span> <span class="o">=</span> <span class="bp">False</span>
+                
+                <span class="n">i</span> <span class="o">+=</span> <span class="n">decalage</span><span class="p">[</span><span class="nb">ord</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])]</span>
+        
+        <span class="k">if</span> <span class="n">trouvé</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">True</span>
+    <span class="k">return</span> <span class="bp">False</span>
+</code></pre></div></div>
+
+<p>Ce n’est cependant pas suffisant pour garantir que l’on ne va pas vérifier 2 fois de suite le même caractère de $a$. Par exemple si la chaîne $a$ vaut <code class="language-plaintext highlighter-rouge">xxxx</code> et $b$ vaut <code class="language-plaintext highlighter-rouge">Yxx</code></p>
+
+<p>Chaque caractère de $a$ (à partir du troisième) va être comparé à chaque caractère de $b$. La complexité maximale de l’algorithme est donc toujours en $\mathcal{O}(nm)$.</p>
+
+<h3 id="deuxième-table-de-saut">deuxième table de saut</h3>
+
+<p>Pour améliorer la complexité de l’algorithme il faut faire en sorte que l’on ne compare chaque caractère de $a$ qu’un nombre constant de fois.</p>
+
+<p>Ceci est possible en utilisant une autre table.</p>
+
+<blockquote class="tbd">
+  <p>décrire la table + algo + preuve O(m)</p>
+</blockquote>
+
+<p>décrite là <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Boyer-Moore">https://fr.wikipedia.org/wiki/Algorithme_de_Boyer-Moore</a>. <a href="http://static.cs.brown.edu/courses/csci1810/resources/ch2_readings/kmp_strings.pdf">Knuth, Morris et Pratt</a> on démontré qu’en utilisant cette deuxième table, chaque caractère de $a$ est au plus examiné 6 fois (la preuve est p343-346 du papier). Mais ceci dépasse le cadre de ce cours.</p>
+
+<h2 id="vers-les-expressions-régulières">vers les expressions régulières</h2>
+
+<p>expressions régulières : <a href="https://docs.python.org/fr/3/howto/regex.html">https://docs.python.org/fr/3/howto/regex.html</a></p>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d'informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d'informatique</li>
+</ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+<ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d'informatique de François Brucker.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
