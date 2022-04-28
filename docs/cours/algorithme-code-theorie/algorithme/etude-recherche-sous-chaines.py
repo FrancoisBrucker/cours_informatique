@@ -47,4 +47,31 @@ def suite_algorithme_BMH(a, b):
 
 # print(sous_chaine_naif_2("aaaaaaab", "ab"))
 
-print(suite_algorithme_BMH("aaaaaaab", "abc"))
+# print(suite_algorithme_BMH("aaaaaaab", "abc"))
+
+
+def sous_chaine_KMP(a, b):
+    # Tb = cree_tableau(b)
+    Tb = [1, 2, 2, 2, 5]
+
+    i = 0
+    j = 0
+
+    while i + j < len(a):
+        if a[i + j] == b[j]:
+            j += 1
+
+            if j >= len(b):
+                return True
+
+        else:
+            if j == 0:
+                i += 1
+            else:
+                l = Tb[j - 1]
+                i += l
+                j -= l
+    return False
+
+
+print(sous_chaine_KMP("ATATATATATCGGGAA", "ATATCG"))

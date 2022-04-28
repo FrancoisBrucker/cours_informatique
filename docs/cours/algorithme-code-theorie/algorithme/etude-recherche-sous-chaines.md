@@ -299,7 +299,6 @@ Comparez par exemple ces 2 implémentations d'un même algorithme dont le but es
 
 Sans utilisation de `continue`, le cas général est traité dans un bloc `if` :
 
-
 ```python
 for element in L:
     if element != 0:
@@ -323,98 +322,219 @@ Le second cas est bien plus clair.
 
 ## Algorithme de Knuth-Morris-Pratt
 
-L'algorithme `sous_chaine_naif_amélioré` est construit autour de la boucle for en `i` qui teste si $b$ est présent à chaque position de $a$.
+L'algorithme `sous_chaine_naif_amélioré` est construit autour de la boucle for en `i` qui teste si $b$ est présent à chaque position de $a$. A chaque étape on compare un élément de $b$ à l'élément de l'index $i + j$ de $a$. Le principal soucis de l'algorithme est que le nombre $i+j$ peut diminuer.
 
-Ceci n'est pas optimal dans de nombreux cas. Par exemple considérons supposons que $a$ soit la chaine `abcabcabd` et $b$ la chaine `abd`.
+Par exemple si on cherche la chaine `aab` dans la chaine `aaaaaaaa` $i+j$ vaudra :
 
-```text
-    
-    abcabcabde
-    abd         -> dernière lettre pas bonne
-     abd        -> inutile, car on sait que la chaine ne commence pas par un b
-      abd       -> autant commencer là tout de suite.
-      ^
-```
+1. $0+0 = 0$
+2. $0+1 = 1$
+3. $0+2 = 2$
+4. $1+0 = 1$
+5. $1+1 = 2$
+6. $1+2 = 3$
+7. $2+0 = 2$
+8. ...
 
-Ou encore :
+Chaque élément de $a$ sera vu $m$ fois.
 
-```text
-    ababcabde
-    ababd        -> dernière lettre pas bonne
-     ababd       -> inutile, il n'y a pas de c dans la chaine à trouver.
-      ababd      -> autant commencer là tout de suite.
-        ^
-```
+L'algorithme de [Knuth, Morris et Pratt](https://fr.wikipedia.org/wiki/Algorithme_de_Knuth-Morris-Pratt) publié en 1977 est une réponse optimale à ce problème. Il permet de trouver une sous-chaine $b$ d'une chaine $a$ en $\mathcal{O}(m + n)$ opérations. Il est basée sur une optimisation du décalage de $i$ et $j$ pour ne pas se répéter.
 
-Il faut faire en sorte de n'avoir à regarder les éléments de $a$ qu'un nombre constant de fois : il ne faut pas refaire des choses que l'on sait déjà. Supposons que l'on soit dans cette configuration générale :
+### décalage adapté
+
+Pour accélérer l'algorithme il faudrait pouvoir garantir que $i+j$ augmente à chaque étape, ou si $i+j$ est constant alors $i$ augmente (ce qui signifie que l'on a décalé la comparaison).
+
+Il faut donc que si on est dans la position suivante à la fin d'une étape :
 
 ```text
-           i
-a : .......xxxxxYttttt.........
-b :        xxxxxZuuuuu
-                j
+i + j :         v
+a:       ....aaaaaaaaa....
+b:           bbbbbb         
+i/j:         i  j
 ```
 
-Avec :
+Alors à l'étape suivante on a :
 
-* $a[i + k] = b[k]$ pour $0 \leq k < j$
-* $a[i + j] \neq b[j]$
+1. soit :
 
-Comme on connait tous les caractères de $a[i]$ à $a[i + j - 1]$ et qu'ils coïncident avec $b$, dans l'idéal pour ne pas se répéter il faudrait arriver à la situation suivante :
+    ```text
+    i + j :          v
+    a:       ....aaaaaaaaa....
+    b:           bbbbbb         
+    i/j:         i   j
+    ```
+
+    Qui correspond au fait que l'on continue de chercher si $b$ est une sous-chaine de $a$ à commençant à la position $i$
+2. soit :
+
+    ```text
+    i + j :         v
+    a:       ....aaaaaaaaa....
+    b:            bbbbbb         
+    i/j:          i j
+    ```
+
+    Qui correspond au fait que l'on chercher si $b$ est une sous-chaine de $a$ à commençant à une nouvelle position. Dans ce cas là, on est pas obligé de recommencer à $j=0$ car on connait déjà les premiers caractères de $a$.
+
+Prenons un cas concret. Supposons que l'on se trouve dans cette configuration :
 
 ```text
-              i'
-a : .......xxxxxYttttt.........
-b :           xxxxxZuuuuu
-                j'
+i + j :         v
+a:       ....ATATGACT....
+b:           ATATCG          
+i/j:         i  j
 ```
 
-C'est à dire de trouver le plus grand $k$ possible tel que $a[(i+j-1)-k:i+j] = b[:k]$ (la fin de $a[i:i+j]$ corresponde au début de $b$), puis poser :
-
-* $i'= i + j - k$
-* $j' = j - k$
-
-Exemple :
+L'étape suivante consistera à continuer la vérification :
 
 ```text
-         i     
-a : .....bababac......
-b :      babababa 
-               j 
+i + j :          v
+a:       ....ATATGACT....
+b:           ATATCG          
+i/j:         i   j
 ```
 
-On continue du coup avec la configuration :
+Le nombre $i+j$ aura augmenté strictement.
+
+Si en revanche, la comparaison échoue, par exemple dans ce cas là :
 
 ```text
-         i     
-a : .....bababac......
-b :        babababa 
-               j 
+i + j :          v
+a:       ....ATATGACT....
+b:           ATATCG          
+i/j:         i   j
 ```
 
-Là encore $a[i+j] \neq b[j]$, la prochaine configuration sera :
+On peut continuer la comparaison à la même position, mais en ayant décalé $i$ :
 
 ```text
-         i     
-a : .....bababac......
-b :          babababa 
-               j 
+i + j :          v
+a:       ....ATATGACT....
+b:             ATATCG          
+i/j:           i j
 ```
 
-Encore une fois $a[i+j] \neq b[j]$, la prochaine configuration sera :
+Le nombre $i+j$ n'augmentera pas, mais $i$ aura augmenté strictement.
+
+Le nombre minimum de décalage possible peut être formalisé comme suit :
+
+> Si à la fin d'une étape on a :
+>
+> * $j > 0$
+> * $a[i + k] = b[k]$ pour tout $0 \leq k < j$
+> * $a[i + j] \neq b[j]$
+>
+> Soit $l$ le plus petit entier strictement positif tel que $a[i + l + k] = b[k]$ pour tout $0 \leq k < j - l$.
+>
+> On peut continuer l'étape suivante avec :
+>
+> * $i' = i + l$
+> * $j' = j - l$
+>
+{: .note}
+
+On peut noter que $l$ existe toujours, au pire il vaut $j$ et que comme $a[i + l + k] = b[l + k]$, cela revient à chercher $l$ tel que :
+
+* $0 < l \leq j < m$
+* $b[l + k] = b[k]$ pour tout $0 \leq k < j - l$
+
+> On a plus besoin de $a$ dans le calcul de $l$ !
+{: .note}
+
+On peut donc considérer, pour toute chaine $b$ de longueur $m$ un tableau $T_b$ tel que :
+
+* $T_m$ soit de longueur $m - 1$
+* $T_m[j - 1]$ pour $0 < j < m$ vaut le plus petit entier $l$ tel que :
+  * $0 < l \leq j < m$
+  * $b[l + k] = b[k]$ pour tout $0 \leq k < j - l$
+
+Nous donnerons plus tard un moyen efficace de le calculer. Mais si $b$ vaut `ATATCG` on aurait par exemple $T_b = [1, 2, 2, 2, 5]$.
 
 ```text
-         i     
-a : .....bababac......
-b :            babababa 
-               j 
+ 12225 
+ATATCG
+ ATATCG
+  ATATCG
+     ATATCG
 ```
+
+### algorithme
+
+En supposant que l'on connaisse un moyen de créer $T_b$, l'algorithme de recherche d'une sous-chaine de Knuth, Morris et Pratt est :
+
+```python
+def sous_chaine_KMP(a, b):
+    Tb = cree_tableau(b)
+
+    i = 0
+    j = 0
+
+    while i + j < len(a):
+        if a[i + j] == b[j]:
+            j += 1
+        
+            if j >= len(b):
+                return True
+
+        else:
+            if j == 0:
+                i += 1
+            else :
+                l = Tb[j - 1]
+                i += l
+                j -= l
+    return False
+```
+
+Comme à chaque itération, soit $i+j$ croit strictement, soit $i$ croit strictement il y a au plus $2n$ étapes à l'algorithme et donc sa complexité est de l'ordre $\mathcal{O}(n + K(m))$ où $K(m)$ est la complexité de la fonction `cree_tableau(b)`
+
+### création de la table de décalage
+
+Créer la table de décalage revient à chercher les répétitions dans la chaîne $b$.
+
+En reprenant l'exemple précédent avec $b$ valant `ATATCG` il y a une répétition (on compte le nombre de fois où $b[0]$ apparait) :
+
+```text
+ 
+ATATCG
+  ATATCG
+```
+
+On peut ensuite remplir le tableau :
+
+* $T[0]$ correspond à une discordance lorsque $j=1$ : il faut donc décaler de 1
+* $T[1]$ correspond à une discordance lorsque $j=2$ : Comme $b[1] \neq b[0]$ il faut décaler de 2
+* $T[2]$ correspond à une discordance lorsque $j=3$ : Comme $b[1] \neq b[0]$ et $b[2] = b[0]$ on peut ne décaler que de 2
+* $T[3]$ correspond à une discordance lorsque $j=4$ : Comme $b[1] \neq b[0]$, $b[2] = b[0]$ et $b[3] = b[1]$ on peut toujours ne décaler que de 2
+* $T[4]$ correspond à une discordance lorsque $j=5$ :
+  * comme $b[1] \neq b[0]$, $b[2] = b[0]$, $b[3] = b[1]$ mais que $b[4] \neq b[2]$, il faut décaler de strictement plus que 2
+  * comme $b[3] \neq b[0]$ il faut décaler de strictement plus que 3
+  * comme $b[4] \neq b[0]$ il faut décaler de strictement plus que 4
+
+Cette procédure peut s'écrire très simplement avec l'algorithme suivant :
+
+```python
+def cree_tableau(b):
+    T = [1]
+    j = 2
+    k = 0
+
+    while j < len(b):
+        pred = T[-1]
+        if b[pred + 1] = b[j-1]:
+            T.append(pred)
+            egaux = egaux and (b[j-1] == b[j-2]) 
+        elif egaux:
+            T.append(pred + 1)
+        else:
+            T.append(j)
+    return T
+```
+
 
 1. on suppose qu'on connaisse le max, algo
 2. complexité de l'algo
 3. calcul du décalage
 
-Automates : [Knuth-Morris-Pratt](https://en.wikipedia.org/wiki/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm)
 
 ## Autre algorithmes
 
