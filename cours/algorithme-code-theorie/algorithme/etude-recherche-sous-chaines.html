@@ -400,87 +400,229 @@
 
 <h2 id="algorithme-de-knuth-morris-pratt">Algorithme de Knuth-Morris-Pratt</h2>
 
-<p>L’algorithme <code class="language-plaintext highlighter-rouge">sous_chaine_naif_amélioré</code> est construit autour de la boucle for en <code class="language-plaintext highlighter-rouge">i</code> qui teste si $b$ est présent à chaque position de $a$.</p>
+<p>L’algorithme <code class="language-plaintext highlighter-rouge">sous_chaine_naif_amélioré</code> est construit autour de la boucle for en <code class="language-plaintext highlighter-rouge">i</code> qui teste si $b$ est présent à chaque position de $a$. A chaque étape on compare un élément de $b$ à l’élément de l’index $i + j$ de $a$. Le principal soucis de l’algorithme est que le nombre $i+j$ peut diminuer.</p>
 
-<p>Ceci n’est pas optimal dans de nombreux cas. Par exemple considérons supposons que $a$ soit la chaine <code class="language-plaintext highlighter-rouge">abcabcabd</code> et $b$ la chaine <code class="language-plaintext highlighter-rouge">abd</code>.</p>
+<p>Par exemple si on cherche la chaine <code class="language-plaintext highlighter-rouge">aab</code> dans la chaine <code class="language-plaintext highlighter-rouge">aaaaaaaa</code> $i+j$ vaudra :</p>
 
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    
-    abcabcabde
-    abd         -&gt; dernière lettre pas bonne
-     abd        -&gt; inutile, car on sait que la chaine ne commence pas par un b
-      abd       -&gt; autant commencer là tout de suite.
-      ^
+<ol>
+  <li>$0+0 = 0$</li>
+  <li>$0+1 = 1$</li>
+  <li>$0+2 = 2$</li>
+  <li>$1+0 = 1$</li>
+  <li>$1+1 = 2$</li>
+  <li>$1+2 = 3$</li>
+  <li>$2+0 = 2$</li>
+  <li>…</li>
+</ol>
+
+<p>Chaque élément de $a$ sera vu $m$ fois.</p>
+
+<p>L’algorithme de <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Knuth-Morris-Pratt">Knuth, Morris et Pratt</a> publié en 1977 est une réponse optimale à ce problème. Il permet de trouver une sous-chaine $b$ d’une chaine $a$ en $\mathcal{O}(m + n)$ opérations. Il est basée sur une optimisation du décalage de $i$ et $j$ pour ne pas se répéter.</p>
+
+<h3 id="décalage-adapté">décalage adapté</h3>
+
+<p>Pour accélérer l’algorithme il faudrait pouvoir garantir que $i+j$ augmente à chaque étape, ou si $i+j$ est constant alors $i$ augmente (ce qui signifie que l’on a décalé la comparaison).</p>
+
+<p>Il faut donc que si on est dans la position suivante à la fin d’une étape :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>i + j :         v
+a:       ....aaaaaaaaa....
+b:           bbbbbb         
+i/j:         i  j
 </code></pre></div></div>
 
-<p>Ou encore :</p>
+<p>Alors à l’étape suivante on a :</p>
 
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    ababcabde
-    ababd        -&gt; dernière lettre pas bonne
-     ababd       -&gt; inutile, il n'y a pas de c dans la chaine à trouver.
-      ababd      -&gt; autant commencer là tout de suite.
-        ^
+<ol>
+  <li>
+    <p>soit :</p>
+
+    <div class="language-text highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> i + j :          v
+ a:       ....aaaaaaaaa....
+ b:           bbbbbb         
+ i/j:         i   j
+</code></pre></div>    </div>
+
+    <p>Qui correspond au fait que l’on continue de chercher si $b$ est une sous-chaine de $a$ à commençant à la position $i$</p>
+  </li>
+  <li>
+    <p>soit :</p>
+
+    <div class="language-text highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> i + j :         v
+ a:       ....aaaaaaaaa....
+ b:            bbbbbb         
+ i/j:          i j
+</code></pre></div>    </div>
+
+    <p>Qui correspond au fait que l’on chercher si $b$ est une sous-chaine de $a$ à commençant à une nouvelle position. Dans ce cas là, on est pas obligé de recommencer à $j=0$ car on connait déjà les premiers caractères de $a$.</p>
+  </li>
+</ol>
+
+<p>Prenons un cas concret. Supposons que l’on se trouve dans cette configuration :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>i + j :         v
+a:       ....ATATGACT....
+b:           ATATCG          
+i/j:         i  j
 </code></pre></div></div>
 
-<p>Il faut faire en sorte de n’avoir à regarder les éléments de $a$ qu’un nombre constant de fois : il ne faut pas refaire des choses que l’on sait déjà. Supposons que l’on soit dans cette configuration générale :</p>
+<p>L’étape suivante consistera à continuer la vérification :</p>
 
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>           i
-a : .......xxxxxYttttt.........
-b :        xxxxxZuuuuu
-                j
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>i + j :          v
+a:       ....ATATGACT....
+b:           ATATCG          
+i/j:         i   j
 </code></pre></div></div>
 
-<p>Avec :</p>
+<p>Le nombre $i+j$ aura augmenté strictement.</p>
+
+<p>Si en revanche, la comparaison échoue, par exemple dans ce cas là :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>i + j :          v
+a:       ....ATATGACT....
+b:           ATATCG          
+i/j:         i   j
+</code></pre></div></div>
+
+<p>On peut continuer la comparaison à la même position, mais en ayant décalé $i$ :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>i + j :          v
+a:       ....ATATGACT....
+b:             ATATCG          
+i/j:           i j
+</code></pre></div></div>
+
+<p>Le nombre $i+j$ n’augmentera pas, mais $i$ aura augmenté strictement.</p>
+
+<p>Le nombre minimum de décalage possible peut être formalisé comme suit :</p>
+
+<blockquote class="note">
+  <p>Si à la fin d’une étape on a :</p>
+
+  <ul>
+    <li>$j &gt; 0$</li>
+    <li>$a[i + k] = b[k]$ pour tout $0 \leq k &lt; j$</li>
+    <li>$a[i + j] \neq b[j]$</li>
+  </ul>
+
+  <p>Soit $l$ le plus petit entier strictement positif tel que $a[i + l + k] = b[k]$ pour tout $0 \leq k &lt; j - l$.</p>
+
+  <p>On peut continuer l’étape suivante avec :</p>
+
+  <ul>
+    <li>$i’ = i + l$</li>
+    <li>$j’ = j - l$</li>
+  </ul>
+
+</blockquote>
+
+<p>On peut noter que $l$ existe toujours, au pire il vaut $j$ et que comme $a[i + l + k] = b[l + k]$, cela revient à chercher $l$ tel que :</p>
 
 <ul>
-  <li>$a[i + k] = b[k]$ pour $0 \leq k &lt; j$</li>
-  <li>$a[i + j] \neq b[j]$</li>
+  <li>$0 &lt; l \leq j &lt; m$</li>
+  <li>$b[l + k] = b[k]$ pour tout $0 \leq k &lt; j - l$</li>
 </ul>
 
-<p>Comme on connait tous les caractères de $a[i]$ à $a[i + j - 1]$ et qu’ils coïncident avec $b$, dans l’idéal pour ne pas se répéter il faudrait arriver à la situation suivante :</p>
+<blockquote class="note">
+  <p>On a plus besoin de $a$ dans le calcul de $l$ !</p>
+</blockquote>
 
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>              i'
-a : .......xxxxxYttttt.........
-b :           xxxxxZuuuuu
-                j'
-</code></pre></div></div>
-
-<p>C’est à dire de trouver le plus grand $k$ possible tel que $a[(i+j-1)-k:i+j] = b[:k]$ (la fin de $a[i:i+j]$ corresponde au début de $b$), puis poser :</p>
+<p>On peut donc considérer, pour toute chaine $b$ de longueur $m$ un tableau $T_b$ tel que :</p>
 
 <ul>
-  <li>$i’= i + j - k$</li>
-  <li>$j’ = j - k$</li>
+  <li>$T_m$ soit de longueur $m - 1$</li>
+  <li>$T_m[j - 1]$ pour $0 &lt; j &lt; m$ vaut le plus petit entier $l$ tel que :
+    <ul>
+      <li>$0 &lt; l \leq j &lt; m$</li>
+      <li>$b[l + k] = b[k]$ pour tout $0 \leq k &lt; j - l$</li>
+    </ul>
+  </li>
 </ul>
 
-<p>Exemple :</p>
+<p>Nous donnerons plus tard un moyen efficace de le calculer. Mais si $b$ vaut <code class="language-plaintext highlighter-rouge">ATATCG</code> on aurait par exemple $T_b = [1, 2, 2, 2, 5]$.</p>
 
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>         i     
-a : .....bababac......
-b :      babababa 
-               j 
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 12225 
+ATATCG
+ ATATCG
+  ATATCG
+     ATATCG
 </code></pre></div></div>
 
-<p>On continue du coup avec la configuration :</p>
+<h3 id="algorithme">algorithme</h3>
 
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>         i     
-a : .....bababac......
-b :        babababa 
-               j 
+<p>En supposant que l’on connaisse un moyen de créer $T_b$, l’algorithme de recherche d’une sous-chaine de Knuth, Morris et Pratt est :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sous_chaine_KMP</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="n">Tb</span> <span class="o">=</span> <span class="n">cree_tableau</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">while</span> <span class="n">i</span> <span class="o">+</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="n">b</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
+            <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
+        
+            <span class="k">if</span> <span class="n">j</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+                <span class="k">return</span> <span class="bp">True</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">j</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">else</span> <span class="p">:</span>
+                <span class="n">l</span> <span class="o">=</span> <span class="n">Tb</span><span class="p">[</span><span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+                <span class="n">i</span> <span class="o">+=</span> <span class="n">l</span>
+                <span class="n">j</span> <span class="o">-=</span> <span class="n">l</span>
+    <span class="k">return</span> <span class="bp">False</span>
 </code></pre></div></div>
 
-<p>Là encore $a[i+j] \neq b[j]$, la prochaine configuration sera :</p>
+<p>Comme à chaque itération, soit $i+j$ croit strictement, soit $i$ croit strictement il y a au plus $2n$ étapes à l’algorithme et donc sa complexité est de l’ordre $\mathcal{O}(n + K(m))$ où $K(m)$ est la complexité de la fonction <code class="language-plaintext highlighter-rouge">cree_tableau(b)</code></p>
 
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>         i     
-a : .....bababac......
-b :          babababa 
-               j 
+<h3 id="création-de-la-table-de-décalage">création de la table de décalage</h3>
+
+<p>Créer la table de décalage revient à chercher les répétitions dans la chaîne $b$.</p>
+
+<p>En reprenant l’exemple précédent avec $b$ valant <code class="language-plaintext highlighter-rouge">ATATCG</code> il y a une répétition (on compte le nombre de fois où $b[0]$ apparait) :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 
+ATATCG
+  ATATCG
 </code></pre></div></div>
 
-<p>Encore une fois $a[i+j] \neq b[j]$, la prochaine configuration sera :</p>
+<p>On peut ensuite remplir le tableau :</p>
 
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>         i     
-a : .....bababac......
-b :            babababa 
-               j 
+<ul>
+  <li>$T[0]$ correspond à une discordance lorsque $j=1$ : il faut donc décaler de 1</li>
+  <li>$T[1]$ correspond à une discordance lorsque $j=2$ : Comme $b[1] \neq b[0]$ il faut décaler de 2</li>
+  <li>$T[2]$ correspond à une discordance lorsque $j=3$ : Comme $b[1] \neq b[0]$ et $b[2] = b[0]$ on peut ne décaler que de 2</li>
+  <li>$T[3]$ correspond à une discordance lorsque $j=4$ : Comme $b[1] \neq b[0]$, $b[2] = b[0]$ et $b[3] = b[1]$ on peut toujours ne décaler que de 2</li>
+  <li>$T[4]$ correspond à une discordance lorsque $j=5$ :
+    <ul>
+      <li>comme $b[1] \neq b[0]$, $b[2] = b[0]$, $b[3] = b[1]$ mais que $b[4] \neq b[2]$, il faut décaler de strictement plus que 2</li>
+      <li>comme $b[3] \neq b[0]$ il faut décaler de strictement plus que 3</li>
+      <li>comme $b[4] \neq b[0]$ il faut décaler de strictement plus que 4</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Cette procédure peut s’écrire très simplement avec l’algorithme suivant :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">cree_tableau</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">j</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">while</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+        <span class="n">pred</span> <span class="o">=</span> <span class="n">T</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">b</span><span class="p">[</span><span class="n">pred</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+            <span class="n">T</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">pred</span><span class="p">)</span>
+            <span class="n">egaux</span> <span class="o">=</span> <span class="n">egaux</span> <span class="ow">and</span> <span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">b</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span> 
+        <span class="k">elif</span> <span class="n">egaux</span><span class="p">:</span>
+            <span class="n">T</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">pred</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">T</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">T</span>
 </code></pre></div></div>
 
 <ol>
@@ -488,8 +630,6 @@ b :            babababa
   <li>complexité de l’algo</li>
   <li>calcul du décalage</li>
 </ol>
-
-<p>Automates : <a href="https://en.wikipedia.org/wiki/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm">Knuth-Morris-Pratt</a></p>
 
 <h2 id="autre-algorithmes">Autre algorithmes</h2>
 
