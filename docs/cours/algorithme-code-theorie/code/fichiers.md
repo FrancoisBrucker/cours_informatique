@@ -328,7 +328,7 @@ Le module [pathlib](https://docs.python.org/fr/3/library/pathlib.html) permet d'
 
 > * mettre ne cte pour le nom du dossier racine du projet
 > * toujours travailler à partir de là pour les autres dossier
-> * utiliser un module python pour combiner les dossiers eutre eux
+> * utiliser un module python pour combiner les dossiers entre eux
 >
 {: .tbd}
 
