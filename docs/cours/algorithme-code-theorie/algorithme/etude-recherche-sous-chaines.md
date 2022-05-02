@@ -387,7 +387,7 @@ b:           ATATCG
 i/j:         i  j
 ```
 
-Comme les caractères $a[i +j$ et $b[j]$ coincident, l'étape suivante consistera à augmenter $j$ pour continuer la vérification :
+Comme les caractères $a[i +j$ et $b[j]$ coïncident, l'étape suivante consistera à augmenter $j$ pour continuer la vérification :
 
 ```text
 i + j :          v
@@ -520,7 +520,7 @@ On peut maintenant construire le tableau $T_b$ tel que $T_b[j-1]$, $1 \leq j < m
 
 Le tableau $T_b$ vaut : $[0, 0, 0, 1, 0, 1, 2, 3, 4, 2]$.
 
-Ceci nous permet de créer un algorithme naïf pour trouver $T_b$. 
+Ceci nous permet de créer un algorithme naïf pour trouver $T_b$.
 {% details écrivez cet algorithme %}
 
 ```python
@@ -543,13 +543,13 @@ Cependant, sa complexité est de l'ordre de $\mathcal{O}(m^2)$, ce qui est trop.
 
 L'idée géniale de Knuth, Morris et Pratt est d'avoir remarqué que l'on peut construire le tableau de façon itérative et en $\mathcal{O}(m)$ opérations !
 
-On commence avec un tableau où seul $T_b[0] = 0$ est rempli (pour $j=1$), puis on considère que $j=2$. 
+On commence avec un tableau où seul $T_b[0] = 0$ est rempli (pour $j=1$), puis on considère que $j=2$.
 On note :
 
 * $T_b[j-1] = k_0$
 * $c = b[j-1]$
 
-On cherche $k$ tel que $b[:k_0]$ coincide avec la fin de la chaîne $b[1:j-1] + [c]$ : il y a 2 cas à considérer :
+On cherche $k$ tel que $b[:k_0]$ coïncide avec la fin de la chaîne $b[1:j-1] + [c]$ : il y a 2 cas à considérer :
 
 1. on peut continuer la chaine commencée avec $j-1$. Ceci se passe si $b[k] = c$ avec  $T_b[(j-1)-1] = k$. Dans ce cas là $T_b[j-1] = k + 1$
 2. on ne peut pas continuer la chaine commencée avec $j-1$. Ceci se passe si $b[k] \neq c$ avec  $T_b[j-2] = k$. On a alors 2 sous-cas :
@@ -559,9 +559,8 @@ On cherche $k$ tel que $b[:k_0]$ coincide avec la fin de la chaîne $b[1:j-1] + 
         * et tel que $b[k' + 1] = c$
 
         On a déjà fait une grande partie du travail puisque : $k'$ est aussi le plus grand entier tel que la fin de $b[1:k + 1]$ coincide avec le début de $b$ et tel que $b[k' + 1] = c$
-        
+
         Ceci revient a faire une récurrence en posant : j = k + 1 (c'est le cas $j=10$ de l'exemple)
-        
 
 Cette procédure peut s'écrire très simplement avec l'algorithme suivant :
 
@@ -604,16 +603,16 @@ Il y a au plus $m$ étapes où $k$ reste constant ou augmente donc au plus $m$ �
 Nous dne détaillerons pas les autres algorithmes, nous nous contenteront de donner les liens wikipedia et d'indiquer leur intérêt
 
 * [Rabin-Karp](https://fr.wikipedia.org/wiki/Algorithme_de_Rabin-Karp). Cet algorithme est intéressant car :
-    * plutôt que de chercher la sous-chaine directement, on passe par une fonction de hashage. On compare donc des valeur de hash plutôt que des sous-chaine ce qui est plus rapide en général
-    * la fonction de hashage utilisée (nommée [empreinte de Rabin](https://fr.wikipedia.org/wiki/Algorithme_de_Rabin-Karp#Empreinte_de_Rabin)) est très facilement itérativement calculable. 
+  * plutôt que de chercher la sous-chaine directement, on passe par une fonction de hashage. On compare donc des valeur de hash plutôt que des sous-chaine ce qui est plus rapide en général
+  * la fonction de hashage utilisée (nommée [empreinte de Rabin](https://fr.wikipedia.org/wiki/Algorithme_de_Rabin-Karp#Empreinte_de_Rabin)) est très facilement itérativement calculable.
 * [Boyer-Moore-Horspool](https://fr.wikipedia.org/wiki/Algorithme_de_Boyer-Moore-Horspool). Intéressant car on compare de la fin au début et la fonction de saut est plus simple à comprendre que celle de Knuth-Morris-Pratt. En revanche, sa complexité est en $\mathcal{O}(mn)$ et n'a donc que peu d'intérêt à part historique
-* [Boyer-Moore](https://fr.wikipedia.org/wiki/Algorithme_de_Boyer-Moore). Algorithme également linéaire. Sa fonction de saut est compliquée à comprendre (presque autant que celle de Knuth-Morris-Paratt). Son intérêt — à part historique — est le calcul de la complexité qui est tout sauf trivial. On la doit à [Knuth, Morris et Pratt (p343-346)](http://static.cs.brown.edu/courses/csci1810/resources/ch2_readings/kmp_strings.pdf) (oui oui, c'est dans le même article où ils présentent leurs propre algorithme).
+* [Boyer-Moore](https://fr.wikipedia.org/wiki/Algorithme_de_Boyer-Moore). Algorithme également linéaire. Sa fonction de saut est compliquée à comprendre (presque autant que celle de Knuth-Morris-Pratt). Son intérêt — à part historique — est le calcul de la complexité qui est tout sauf trivial. On la doit à [Knuth, Morris et Pratt (p343-346)](http://static.cs.brown.edu/courses/csci1810/resources/ch2_readings/kmp_strings.pdf) (oui oui, c'est dans le même article où ils présentent leurs propre algorithme).
 
 ## vers les expressions régulières
 
 La recherche de sous-chaine n'est presque jamais utilisée en tant que tel en informatique car il faut trouver l'expression exacte :
 
 * on ne cherche pas les formes proches (ce qui est possible en utilisant l'alignement de séquences)
-* on ne cherche pas de motifs (on appelle celà des [expression régulières](https://fr.wikipedia.org/wiki/Expression_r%C3%A9guli%C3%A8re))
+* on ne cherche pas de motifs (on appelle cela des [expression régulières](https://fr.wikipedia.org/wiki/Expression_r%C3%A9guli%C3%A8re))
 
-Les expressions régulières dépassent de loin le cadre de ce cours mais c'est un sujet à la fois marrant, utile et intéressant. Si vous voulez vous initier en douceur, liser [le tuto python](https://docs.python.org/fr/3/howto/regex.html) qui y est consacré, ou passez directement à [O'reilly](https://www.oreilly.com/library/view/introducing-regular-expressions/9781449338879/).
+Les expressions régulières dépassent de loin le cadre de ce cours mais c'est un sujet à la fois marrant, utile et intéressant. Si vous voulez vous initier en douceur, lisez [le tuto python](https://docs.python.org/fr/3/howto/regex.html) qui y est consacré, ou passez directement à [O'reilly](https://www.oreilly.com/library/view/introducing-regular-expressions/9781449338879/).

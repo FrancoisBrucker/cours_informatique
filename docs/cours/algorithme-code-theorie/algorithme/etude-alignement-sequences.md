@@ -142,11 +142,6 @@ MARLOU-
 MER-OUS
 ```
 
-Enfin, on a clairement que :
-
-> La distance d'édition entre deux chaînes correspond à l'alignement de coût minimum entre celles-ci.
-{: .note}
-
 De façon formelle :
 
 > Un alignement entre la chaîne $a =a_0\dots a_{n-1}$ et $b = b_0\dots b_{m-1}$ est un couple $(a^\star, b^\star)$ tel que :
@@ -160,6 +155,16 @@ De façon formelle :
 {: .note}
 
 On remarque que : $\max(n, m) - 1 \leq L < n + m$.
+
+Enfin, on a clairement que :
+
+> La distance d'édition entre deux chaînes $a$ et $b$ correspond à l'alignement $(a^\star, b^\star)$ de coût minimum entre celles-ci.
+>
+> $$
+> S(a^\star, b^\star) = \sum_{i=0}^{L-1} d(a^\star_i, b^\star_i)
+> $$
+>
+{: .note}
 
 ### nombres d'alignements
 
@@ -189,10 +194,81 @@ et bien d'autres encore sont possibles.
 
 {% enddetails %}
 
-### 
-> généralisation différences. Attention doit rester symétrique. 
-{: .tbd}
+On peut remarquer que ce nombre ne dépend que de la longueur des chaines $a$ et $b$, par de leur contenu. On note alors $f(n, m)$ le nombre possible d'alignements entre une chaines de longueur $n$ et une chaîne de longueur $m$.
+
+Comme un alignement ne peut finir sur $(-, -)$, on ne peut qu'avoir 3 possibilités :
+
+* $(a_{n-1}, b_{m-1})$
+* $(a_{n-1}, -)$
+* $(-, b_{m-1})$
+
+Aligner $a$ et $b$ revient alors soit à aligner :
+
+* $a[:-1]$ et $b[:-1]$
+* aligner $a[:-1]$ et $b$
+* aligner $a$ et $b[:-1]$
+
+Ce qui se donne l'équation de récurrence suivante :
+
+$$
+f(n, m) = f(n − 1, m − 1) + f(n − 1, m) + f(n, m − 1)
+$$
+
+On peut alors prouver, si $n=m$ que :
+
+$$
+f(n, n) \sim \frac{(1 + \sqrt{2})^{2n + 1}}{\sqrt{n}}
+$$
+
+Ce nombre est affreusement énorme :
+
+* pour $n = 10$, on a déjà  $f(10, 10) \sim 34537380$
+* pour $n = 10$, on a déjà  $f(100, 100) \sim 8.67 \cdot 10^{75}$
+
+> Il n'y a qu'environ $10^{80}$ particules dans l'univers.
 
 ## calcul
 
-## alignement local
+La distance d'édition entre $a$ et $b$ est équivalente à trouver le meilleurs alignement entre $a$ et $b$. Il n'est — heureusement —  pas nécessaire de  les  calculer tous pour trouver le meilleur. Il suffit d'utiliser notre équation de récurrence. On en déduit que la distance d'édition entre $a$ et $b$ est soit :
+
+* égale à la distance d'édition entre $a[:-1]$ et $b[:-1]$ plus le coût élémentaire de substitution des 2 derniers caractères : $d(a[-1], b[-1])$
+* égale à la distance d'édition entre $a[:-1]$ et $b$ plus le coût élémentaire de la suppression du dernier caractère de $a$ : $d(a[-1], -)$
+* égale à la distance d'édition entre $a$ et $b[:-1]$ plus le coût élémentaire de l'insertion du dernier caractère de $b$ $d(-, b[-1])$
+
+Donc, pour tout $i$ et $j$ :
+
+$$
+d(a[:i+1], b[:j+1]) = \min \begin{cases}
+      d(a[:i], b[:j]) + d(a[i], b[j]) & \text{substitution}\\
+      d(a[:i], b[:j + 1]) + d(a[i], -) & \text{suppression}\\
+      d(a[:i + 1], b[:j]) + d(-, b[j]) & \text{insertion}\\
+    \end{cases}
+$$
+
+Ceci nous donne une représentation matricielle de l'alignement et de la distance d'édition :
+
+|           | $-$ | $a[0]$ | ... | $a[i-1]$           | $a[i]$                | $a[n-1]$|
+|-----------|-----|---------------|-----|--------------------|-----------------------|---------|
+|    $-$    | 0   |  $d(a[0], -)$ |     |    $d(a[:i], -)$                | $d(a[:i], -)  + d(a[i], -)$                    |         |
+|$b[0]$     |$d(-, b[0])$ |        |     |                    |                       |         |
+|...        |     |        |     |                    |                       |         |
+|$b[j-1]$   | $d(-, b[:j])$    |        |     | $d(a[:i],b[:j])$   | $d(a[:i+1],b[:j])$    |         |
+|$b[j]$     | $d(-, b[:j]) + d(b[j], -)$    |        |     | $d(a[:i],b[:j+1])$ |  $d(a[:i+1],b[:j+1])$ |         |
+|...        |     |        |     |                    |                       |         |
+|$b[m-1]$   |     |        |     |                    |                       |$d(a,b)$ |
+
+Et nous donne un algorithme très facile pour la calculer, puisqu'il suffit de progresser ligne à ligne.
+
+## algorithme
+
+> écrire l'algorithme + complexité
+{: .tbd}
+
+
+> chemin = alignement
+{: .tbd}
+
+## exemple
+
+> dans le poly
+{: .tbd}
