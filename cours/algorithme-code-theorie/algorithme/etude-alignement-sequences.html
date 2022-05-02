@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>étude / alignement de séquences | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0">
+<meta property="og:title" content="étude / alignement de séquences">
+<meta name="author" content="François Brucker">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Support de cours/td d’informatique de François Brucker.">
+<meta property="og:description" content="Support de cours/td d’informatique de François Brucker.">
+<link rel="canonical" href="/cours_informatique/cours/algorithme-code-theorie/algorithme/etude-alignement-sequences.html">
+<meta property="og:url" content="/cours_informatique/cours/algorithme-code-theorie/algorithme/etude-alignement-sequences.html">
+<meta property="og:site_name" content="cours d’informatique">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="étude / alignement de séquences">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"François Brucker"},"description":"Support de cours/td d’informatique de François Brucker.","headline":"étude / alignement de séquences","url":"/cours_informatique/cours/algorithme-code-theorie/algorithme/etude-alignement-sequences.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css">
+
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css">
+
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique">
+<script>MathJax={"tex":{"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["\\[","\\]"]]},"svg":{"fontCache":"global"},"svg":{"fontCache":"global"}}</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<header class="site-header" role="banner">
+
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/cours_informatique/">cours d'informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav>
+</div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">étude / alignement de séquences</h1>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span>
+  </header>
+
+  <div class="post-content">
+    <blockquote class="chemin">
+  <p><a href="/cours_informatique/cours/algorithme-code-theorie/">Algorithme, code et théorie</a> / <a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/">algorithmie</a> / <a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/etude-alignement-sequences.html">étude : alignement de séquences</a></p>
+
+  <p>prérequis :</p>
+
+  <ul>
+    <li><a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/etude-recherche-sous-chaines.html">étude : recherche de sous-chaines</a></li>
+  </ul>
+
+</blockquote>
+
+<blockquote class="tbd">
+  <ul>
+    <li>definition problème</li>
+    <li>où on le retrouve (biologie/ correcteur orth)</li>
+    <li>analyse des possible</li>
+    <li>algorithme par programmation dynamique</li>
+    <li>problème connexe : alignement local</li>
+  </ul>
+</blockquote>
+
+<p>Nous allons voir dans cette étude comment définir/calculer une distance entre 2 chaînes de caractères. Nous utiliserons la <a href="https://fr.wikipedia.org/wiki/Distance_de_Levenshtein">distance d’édition</a>, très utilisée.</p>
+
+<h2 id="définition">définition</h2>
+
+<p>Soient $a$ et $b$ deux chaines de caractères définies sur un alphabet $\mathcal{A}$. Commençons par supposer qu’elles sont de même longueur (disons $n$). On peut compter les différences entre $a$ et $b$ :</p>
+
+\[d(a, b) = \vert \{i \mid a[i] \neq b[i], 0 \leq i &lt; n \} \vert\]
+
+<blockquote>
+  <p>La distance entre <em>“MISOS”</em> et <em>“TILOS”</em> est de 2 différences.</p>
+</blockquote>
+
+<p>Parfois, ce comptage brute des différences n’est pas suffisant. Si l’on cherche à trouver les erreurs de frappe, on pourra par exemple supposer que deux mots sont proches si les lettres qui les composent sont proches sur le clavier</p>
+
+<blockquote>
+  <p><em>“ORNE”</em> sera plus proche de <em>“ORBE”</em> que de <em>“URNE”</em> si l’on compte l’éloignement des touches sur le clavier</p>
+</blockquote>
+
+<p>Il faut donc généraliser notre distance en se donnant une distance de substitution $d$ définie entre deux caractères, que l’on généralise ensuite à la comparaison de deux chaînes :</p>
+
+\[d(a, b) = \sum_{i=0}^{n-1}d(a[i], b[i])\]
+
+<p>Cette définition de distance est cependant un peu frustre puisque qu’elle ne permet de comparer que deux mots ayant le même nombre de caractères. Il faut donc à nouveau généraliser.</p>
+
+<p>L’idée est de compter le nombre d’opérations élémentaires nécessaire pour passer d’un mot à l’autre. Les opérations élémentaires pouvant être :</p>
+
+<ul>
+  <li>l’ajout d’un caractère</li>
+  <li>la suppression d’un caractère</li>
+  <li>la substitution d’un caractère</li>
+</ul>
+
+<p>Par exemple pour passer de <em>“MEROUS”</em> à <em>“MARLOU”</em>, on peut :</p>
+
+<ul>
+  <li>changer un <em>“E”</em> en <em>“A”</em> : <em>“MAROUS”</em>
+</li>
+  <li>changer un <em>“O”</em> en <em>“L”</em> : <em>“MARLUS”</em>
+</li>
+  <li>changer un <em>“U”</em> en <em>“O”</em> : <em>“MARLOS”</em>
+</li>
+  <li>changer un <em>“S”</em> en <em>“U”</em> : <em>“MARLOU”</em>
+</li>
+</ul>
+
+<p>Ce qui donne une distance de 4 (c’est notre distance qui compte le nombre de caractères différents)</p>
+
+<p>Mais on peut aussi :</p>
+
+<ul>
+  <li>changer un <em>“E”</em> en <em>“A”</em> : <em>“MAROUS”</em>
+</li>
+  <li>ajouter un <em>“L”</em> : <em>“MARLOUS”</em>
+</li>
+  <li>supprimer un <em>“S”</em> : <em>“MARLOU”</em>
+</li>
+</ul>
+
+<p>La distance est maintenant de 3.</p>
+
+<p>Remarquez que l’on a bien une <a href="https://fr.wikipedia.org/wiki/Distance_(math%C3%A9matiques)#D%C3%A9finition">distance</a> :</p>
+
+<ul>
+  <li>symétrique</li>
+  <li>séparation</li>
+  <li>inégalité triangulaire</li>
+</ul>
+
+<blockquote>
+  <p>Cette façon de faire pour comparer 2 chaînes de caractères est très utilisé en biologie lorsque l’on compare deux séquences d’ADN car les opérations élémentaires correspondent aux processus biologique d’évolution.</p>
+</blockquote>
+
+<p>Enfin, ce compte peut être généralisé comme précédemment en utilisant une <strong>distance élémentaire entre caractères</strong> $d: \mathcal{A} \cup { \epsilon } \rightarrow \mathbb{R}^+$. Ses propriétés doivent être :</p>
+
+<ul>
+  <li>$\epsilon$ est le caractère vide, il n’appartient pas à l’alphabet au départ</li>
+  <li>$d(x, y) = d(y, x)$</li>
+  <li>$d(x, x) = 0$ pour tout $x \in \mathcal{A}$</li>
+  <li>$d(x, y) &gt; 0$ pour tout $x\neq y \in \mathcal{A}$</li>
+</ul>
+
+<p>On appelle alors <strong>coût élémentaires</strong> les valeurs :</p>
+
+<ul>
+  <li>$d(x, \epsilon)$ nommées <strong>coût de suppression</strong>,</li>
+  <li>$d(\epsilon, x)$ nommées <strong>coût d’insertion</strong>
+</li>
+  <li>$d(x, y)$ avec $x$ et $y$ 2 caractères, nommées <strong>coût de substitution</strong>
+</li>
+</ul>
+
+<p>Par symétrie le coût d’insertion d’un caractère est égal à son coût de suppression.</p>
+
+<blockquote class="note">
+  <p>La <strong>distance d’édition</strong> entre les chaînes $a$ et $b$ est la somme minimum des coûts élémentaires pour passer de $a$ à $b$.</p>
+</blockquote>
+
+<p>Notez que cette distance existe toujours puisque pour passer d’une chaîne $a$ à une chaine $b$, on peut toujours commencer par supprimer tous les caractères de $a$ puis insérer tous les caractères de $b$ :</p>
+
+\[d(a, b) = d(b, a) \leq \sum_{i}d(a[i], \epsilon) + \sum_{i}d(\epsilon, b[i]) =  \sum_{i}d(b[i], \epsilon) + \sum_{i}d(\epsilon, a[i])\]
+
+<blockquote>
+  <p>Ceci est très utilisé en biologie où l’on compare des protéines entre elles. Par exemple, lorsque l’on compare 2 protéines entre elles via leurs séquences d’acides aminées, on utilise une distance entre acide aminés basée sur les propriétés physico-chimiques de ceux-ci ou basé sur l’évolution des séquences (voir par exemple <a href="http://www.dsi.univ-paris5.fr/bio2/autof2/mod4_3b.ht">matrice protéiques</a>).</p>
+</blockquote>
+
+<h2 id="propriétés">propriétés</h2>
+
+<ul>
+  <li>existe car suppressison de l’une puis ajout de l’autre</li>
+  <li>très utilisé en bio car modélise bien l’évolution</li>
+</ul>
+
+<blockquote>
+  <p>limitations :</p>
+
+  <ul>
+    <li>indiférent à la position</li>
+    <li>indifférent au voisinage</li>
+  </ul>
+</blockquote>
+
+<blockquote class="tbd">
+  <p>Intérêt :</p>
+  <ul>
+    <li>facilement calculable</li>
+    <li>assez général pour être ok</li>
+  </ul>
+
+</blockquote>
+
+<h2 id="alignement">alignement</h2>
+
+<p>représente un <strong>alignement</strong></p>
+
+<p>On peut représenter la distance d’édition entre 2 chaines par le diagramme suivant :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>MER-OUS
+| | || 
+MARLOU-
+</code></pre></div></div>
+
+<p>Les identités sont notés avec une <code class="language-plaintext highlighter-rouge">|</code> les insertions et suppression en utilisant le caractère <code class="language-plaintext highlighter-rouge">-</code>.</p>
+
+<h3 id="nombres-dalignements">nombres d’alignements</h3>
+
+<p>###</p>
+<blockquote class="tbd">
+  <p>généralisation différences. Attention doit rester symétrique.</p>
+</blockquote>
+
+<h2 id="calcul">calcul</h2>
+
+<h2 id="alignement-local">alignement local</h2>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d'informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d'informatique</li>
+</ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+<ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d'informatique de François Brucker.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

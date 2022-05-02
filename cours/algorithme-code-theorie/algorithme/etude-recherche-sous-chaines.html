@@ -68,12 +68,12 @@
   <ul>
     <li><a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/complexite-moyenne.html">complexité en moyenne</a></li>
     <li><a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/structure-chaine-de-caracteres.html">structure : chaine de caractères</a></li>
-    <li><a href="/cours_informatique/cours/algorithme-code-theorie/theorie/fonctions.html">fonctions</a></li>
+    <li><a href="/cours_informatique/cours/algorithme-code-theorie/theorie/fonctions-hash.html">fonctions de hash</a></li>
   </ul>
 
 </blockquote>
 
-<p>Nous allons dans cette partie analyser le problème de la <em>recherche d’une sous-chaine</em> :</p>
+<p>Nous allons dans cette partie analyser le problème de la <em>recherche d’une sous-chaîne</em> :</p>
 
 <blockquote class="note">
   <p><strong>Problème de la recherche d’une sous-chaîne</strong> :</p>
@@ -82,14 +82,14 @@
     <li>
 <strong>Données</strong> :
       <ul>
-        <li>une chaine de caractère de $a$ de longueur $n$</li>
-        <li>une chaine de caractère de $b$ de longueur $m$, avec $m \leq n$</li>
+        <li>une chaîne de caractère de $a$ de longueur $n$</li>
+        <li>une chaîne de caractère de $b$ de longueur $m$, avec $m \leq n$</li>
       </ul>
     </li>
     <li>
 <strong>question</strong> :
       <ul>
-        <li>$b$ est-il une <em>sous-chaine</em> de $a$ ?</li>
+        <li>$b$ est-il une <em>sous-chaîne</em> de $a$ ?</li>
       </ul>
     </li>
     <li>
@@ -101,12 +101,12 @@
   </ul>
 </blockquote>
 
-<p>Une définition formelle de <em>sous-chaine</em> étant :</p>
+<p>Une définition formelle de <em>sous-chaîne</em> étant :</p>
 
 <blockquote class="note">
   <p>Soient $a$ et $b$ deux chaines de caractères de longueurs $n$ et $m &lt;n$ respectivement.</p>
 
-  <p>La chaine $b$ est une <strong>sous-chaine</strong> de $a$ s’il existe $0 \leq i &lt; n$ tel que l’on ait pour tout $0 \leq j &lt; m$  :</p>
+  <p>La chaîne $b$ est une <strong>sous-chaîne</strong> de $a$ s’il existe $0 \leq i &lt; n$ tel que l’on ait pour tout $0 \leq j &lt; m$  :</p>
 
 \[b[j] = a[i + j]\]
 
@@ -346,7 +346,9 @@
   <p>Un simple <code class="language-plaintext highlighter-rouge">break</code> a rendu linéaire la complexité en moyenne de l’algorithme.</p>
 </blockquote>
 
-<h4 id="break-continue-et-while">break: continue et while</h4>
+<h4 id="break-continue-et-while">
+<code class="language-plaintext highlighter-rouge">break</code>, <code class="language-plaintext highlighter-rouge">continue</code> et <code class="language-plaintext highlighter-rouge">while</code>
+</h4>
 
 <p>L’instruction <code class="language-plaintext highlighter-rouge">break</code> de l’algorithme <code class="language-plaintext highlighter-rouge">sous_chaine_naif_amélioré</code> aurait très bien pu s’écrire avec une boucle <code class="language-plaintext highlighter-rouge">while</code> :</p>
 
@@ -400,28 +402,33 @@
 
 <h2 id="algorithme-de-knuth-morris-pratt">Algorithme de Knuth-Morris-Pratt</h2>
 
-<p>L’algorithme <code class="language-plaintext highlighter-rouge">sous_chaine_naif_amélioré</code> est construit autour de la boucle for en <code class="language-plaintext highlighter-rouge">i</code> qui teste si $b$ est présent à chaque position de $a$. A chaque étape on compare un élément de $b$ à l’élément de l’index $i + j$ de $a$. Le principal soucis de l’algorithme est que le nombre $i+j$ peut diminuer.</p>
+<p>L’algorithme <code class="language-plaintext highlighter-rouge">sous_chaine_naif_amélioré</code> est construit autour de la boucle for en <code class="language-plaintext highlighter-rouge">i</code> qui teste si $b$ est présent à partir de chaque position de $a$. A chaque étape on compare un élément de $b$ à l’élément de l’index $i + j$ de $a$. Le principal soucis de l’algorithme est que le nombre $i+j$ peut diminuer.</p>
 
 <p>Par exemple si on cherche la chaine <code class="language-plaintext highlighter-rouge">aab</code> dans la chaine <code class="language-plaintext highlighter-rouge">aaaaaaaa</code> $i+j$ vaudra :</p>
 
 <ol>
-  <li>$0+0 = 0$</li>
-  <li>$0+1 = 1$</li>
-  <li>$0+2 = 2$</li>
-  <li>$1+0 = 1$</li>
-  <li>$1+1 = 2$</li>
-  <li>$1+2 = 3$</li>
-  <li>$2+0 = 2$</li>
+  <li>$i+j=0+0 = 0$</li>
+  <li>$i+j=0+1 = 1$</li>
+  <li>$i+j=0+2 = 2$</li>
+  <li>$i+j=1+0 = 1$</li>
+  <li>$i+j=1+1 = 2$</li>
+  <li>$i+j=1+2 = 3$</li>
+  <li>$i+j=2+0 = 2$</li>
   <li>…</li>
 </ol>
 
 <p>Chaque élément de $a$ sera vu $m$ fois.</p>
 
-<p>L’algorithme de <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Knuth-Morris-Pratt">Knuth, Morris et Pratt</a> publié en 1977 est une réponse optimale à ce problème. Il permet de trouver une sous-chaine $b$ d’une chaine $a$ en $\mathcal{O}(m + n)$ opérations. Il est basée sur une optimisation du décalage de $i$ et $j$ pour ne pas se répéter.</p>
+<p>L’algorithme de <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Knuth-Morris-Pratt">Knuth, Morris et Pratt</a> publié en 1977 est une réponse optimale à ce problème. Il permet de trouver une sous-chaine $b$ d’une chaine $a$ en $\mathcal{O}(m + n)$ opérations. Il est basée sur une optimisation du décalage de $i$ et $j$ que permet de rendre la somme $i+j$ croissante (on ne se répète plus).</p>
 
 <h3 id="décalage-adapté">décalage adapté</h3>
 
-<p>Pour accélérer l’algorithme il faudrait pouvoir garantir que $i+j$ augmente à chaque étape, ou si $i+j$ est constant alors $i$ augmente (ce qui signifie que l’on a décalé la comparaison).</p>
+<p>Pour accélérer l’algorithme il faut pouvoir garantir que :</p>
+
+<ul>
+  <li>soit $i+j$ augmente à chaque étape</li>
+  <li>soit $i+j$ est constant mais $i$ augmente (ce qui signifie que l’on a décalé la comparaison).</li>
+</ul>
 
 <p>Il faut donc que si on est dans la position suivante à la fin d’une étape :</p>
 
@@ -468,7 +475,7 @@ b:           ATATCG
 i/j:         i  j
 </code></pre></div></div>
 
-<p>L’étape suivante consistera à continuer la vérification :</p>
+<p>Comme les caractères $a[i +j$ et $b[j]$ coincident, l’étape suivante consistera à augmenter $j$ pour continuer la vérification :</p>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>i + j :          v
 a:       ....ATATGACT....
@@ -486,7 +493,7 @@ b:           ATATCG
 i/j:         i   j
 </code></pre></div></div>
 
-<p>On peut continuer la comparaison à la même position, mais en ayant décalé $i$ :</p>
+<p>On peut continuer la comparaison à la même position, mais en décalant $i$ :</p>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>i + j :          v
 a:       ....ATATGACT....
@@ -532,8 +539,8 @@ i/j:           i j
 <p>On peut donc considérer, pour toute chaine $b$ de longueur $m$ un tableau $T_b$ tel que :</p>
 
 <ul>
-  <li>$T_m$ soit de longueur $m - 1$</li>
-  <li>$T_m[j - 1]$ pour $0 &lt; j &lt; m$ vaut le plus petit entier $l$ tel que :
+  <li>$T_b$ soit de longueur $m - 1$</li>
+  <li>$T_b[j - 1] = j - l$ pour $0 &lt; j &lt; m$, avec $l$ le plus petit entier tel que :
     <ul>
       <li>$0 &lt; l \leq j &lt; m$</li>
       <li>$b[l + k] = b[k]$ pour tout $0 \leq k &lt; j - l$</li>
@@ -541,18 +548,20 @@ i/j:           i j
   </li>
 </ul>
 
-<p>Nous donnerons plus tard un moyen efficace de le calculer. Mais si $b$ vaut <code class="language-plaintext highlighter-rouge">ATATCG</code> on aurait par exemple $T_b = [1, 2, 2, 2, 5]$.</p>
+<blockquote class="note">
+  <p>La valeur $T_b[j-1]$ correspond à la longueur maximale d’un début de $b$ qui correspond à une fin de $b[1:j]$.</p>
+</blockquote>
 
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 12225 
+<p>Nous donnerons plus tard un moyen efficace de le calculer. Mais si $b$ vaut <code class="language-plaintext highlighter-rouge">ATATCG</code> on aurait par exemple $T_b = [0, 0, 1, 2, 0]$.</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 00120 
 ATATCG
- ATATCG
   ATATCG
-     ATATCG
 </code></pre></div></div>
 
 <h3 id="algorithme">algorithme</h3>
 
-<p>En supposant que l’on connaisse un moyen de créer $T_b$, l’algorithme de recherche d’une sous-chaine de Knuth, Morris et Pratt est :</p>
+<p>En supposant que l’on connaisse un moyen de créer $T_b$, l’algorithme de recherche d’une sous-chaine de Knuth, Morris et Pratt est alors :</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sous_chaine_KMP</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
     <span class="n">Tb</span> <span class="o">=</span> <span class="n">cree_tableau</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
@@ -571,7 +580,7 @@ ATATCG
             <span class="k">if</span> <span class="n">j</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
             <span class="k">else</span> <span class="p">:</span>
-                <span class="n">l</span> <span class="o">=</span> <span class="n">Tb</span><span class="p">[</span><span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+                <span class="n">l</span> <span class="o">=</span> <span class="n">j</span> <span class="o">-</span> <span class="n">Tb</span><span class="p">[</span><span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
                 <span class="n">i</span> <span class="o">+=</span> <span class="n">l</span>
                 <span class="n">j</span> <span class="o">-=</span> <span class="n">l</span>
     <span class="k">return</span> <span class="bp">False</span>
@@ -583,196 +592,147 @@ ATATCG
 
 <p>Créer la table de décalage revient à chercher les répétitions dans la chaîne $b$.</p>
 
-<p>En reprenant l’exemple précédent avec $b$ valant <code class="language-plaintext highlighter-rouge">ATATCG</code> il y a une répétition (on compte le nombre de fois où $b[0]$ apparait) :</p>
+<p>En reprenant la chaine $b$ valant <code class="language-plaintext highlighter-rouge">ACGAGACGACT</code> on note les répétitions possibles  :</p>
 
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 
-ATATCG
-  ATATCG
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0123456789    : index
+ACGAGACGACT   : la chaîne b
+   A          : une répétition de 1 caractères
+     ACGA     : une répétition de 4 caractères
+        AC    : une répétition de 2 caractères
 </code></pre></div></div>
 
-<p>On peut ensuite remplir le tableau :</p>
+<p>On peut maintenant construire le tableau $T_b$ tel que $T_b[j-1]$, $1 \leq j &lt; m$, correspond à la longueur maximale d’un début de $b$ qui correspond à une fin de $b[1:j]$ :</p>
+
+<ol>
+  <li>$j=1$. On a <code class="language-plaintext highlighter-rouge">b[1:1] = ""</code>. La fin  ne correspond à aucun début de $b$ : $T[1-1] = 0$</li>
+  <li>$j=2$. On a <code class="language-plaintext highlighter-rouge">b[1:2] = "C"</code>. La fin ne correspond à aucun début de $b$ : $T[2-1] = 0$</li>
+  <li>$j=3$. On a <code class="language-plaintext highlighter-rouge">b[1:3] = "CG"</code>. La fin ne correspond à aucun début de $b$ : $T[3-1] = 0$</li>
+  <li>$j=4$. On a <code class="language-plaintext highlighter-rouge">b[1:4] = "CGA"</code>. La fin correspond à <code class="language-plaintext highlighter-rouge">b[:1] = "A"</code> : $T[4-1] = 1$</li>
+  <li>$j=5$. On a <code class="language-plaintext highlighter-rouge">b[1:5] = "CGAG"</code>. La fin ne correspond à aucun début de $b$ : $T[5-1] = 0$</li>
+  <li>$j=6$. On a <code class="language-plaintext highlighter-rouge">b[1:6] = "CGAGA"</code>. La fin correspond à <code class="language-plaintext highlighter-rouge">b[:1] = "A"</code> :  : $T[6-1] = 1$</li>
+  <li>$j=7$. On a <code class="language-plaintext highlighter-rouge">b[1:7] = "CGAGAC"</code>. La fin correspond à <code class="language-plaintext highlighter-rouge">b[:2] = "AC"</code> : $T[7-1] = 2$</li>
+  <li>$j=8$. On a <code class="language-plaintext highlighter-rouge">b[1:8] = "CGAGACG"</code>. La fin correspond à <code class="language-plaintext highlighter-rouge">b[:3] = "ACG"</code> : $T[8-1] = 3$</li>
+  <li>$j=9$. On a <code class="language-plaintext highlighter-rouge">b[1:9] = "CGAGACGA"</code>. La fin correspond à <code class="language-plaintext highlighter-rouge">b[:4] = "ACGA"</code> : $T[9-1] = 4$</li>
+  <li>$j=10$. On a <code class="language-plaintext highlighter-rouge">b[1:10] = "CGAGACGAC"</code>. La fin correspond à <code class="language-plaintext highlighter-rouge">b[:1] = "AC"</code> : $T[10-1] = 2$</li>
+</ol>
+
+<p>Le tableau $T_b$ vaut : $[0, 0, 0, 1, 0, 1, 2, 3, 4, 2]$.</p>
+
+<p>Ceci nous permet de créer un algorithme naïf pour trouver $T_b$.</p>
+<details><summary>écrivez cet algorithme</summary><div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">algo_naif_construction_t</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+    <span class="n">T_b</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)):</span>
+        <span class="n">T_b</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">chaîne</span> <span class="o">=</span> <span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="n">j</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">chaîne</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">b</span><span class="p">[:</span><span class="n">k</span><span class="p">]</span> <span class="o">==</span> <span class="n">chaîne</span><span class="p">[</span><span class="o">-</span><span class="n">k</span><span class="p">:]:</span>
+                <span class="n">T_b</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">k</span>
+
+    <span class="k">return</span> <span class="n">T_b</span>
+</code></pre></div></div>
+
+</div></details>
+
+<p>Cependant, sa complexité est de l’ordre de $\mathcal{O}(m^2)$, ce qui est trop…</p>
+
+<p>L’idée géniale de Knuth, Morris et Pratt est d’avoir remarqué que l’on peut construire le tableau de façon itérative et en $\mathcal{O}(m)$ opérations !</p>
+
+<p>On commence avec un tableau où seul $T_b[0] = 0$ est rempli (pour $j=1$), puis on considère que $j=2$. 
+On note :</p>
 
 <ul>
-  <li>$T[0]$ correspond à une discordance lorsque $j=1$ : il faut donc décaler de 1</li>
-  <li>$T[1]$ correspond à une discordance lorsque $j=2$ : Comme $b[1] \neq b[0]$ il faut décaler de 2</li>
-  <li>$T[2]$ correspond à une discordance lorsque $j=3$ : Comme $b[1] \neq b[0]$ et $b[2] = b[0]$ on peut ne décaler que de 2</li>
-  <li>$T[3]$ correspond à une discordance lorsque $j=4$ : Comme $b[1] \neq b[0]$, $b[2] = b[0]$ et $b[3] = b[1]$ on peut toujours ne décaler que de 2</li>
-  <li>$T[4]$ correspond à une discordance lorsque $j=5$ :
+  <li>$T_b[j-1] = k_0$</li>
+  <li>$c = b[j-1]$</li>
+</ul>
+
+<p>On cherche $k$ tel que $b[:k_0]$ coincide avec la fin de la chaîne $b[1:j-1] + [c]$ : il y a 2 cas à considérer :</p>
+
+<ol>
+  <li>on peut continuer la chaine commencée avec $j-1$. Ceci se passe si $b[k] = c$ avec  $T_b[(j-1)-1] = k$. Dans ce cas là $T_b[j-1] = k + 1$</li>
+  <li>on ne peut pas continuer la chaine commencée avec $j-1$. Ceci se passe si $b[k] \neq c$ avec  $T_b[j-2] = k$. On a alors 2 sous-cas :
     <ul>
-      <li>comme $b[1] \neq b[0]$, $b[2] = b[0]$, $b[3] = b[1]$ mais que $b[4] \neq b[2]$, il faut décaler de strictement plus que 2</li>
-      <li>comme $b[3] \neq b[0]$ il faut décaler de strictement plus que 3</li>
-      <li>comme $b[4] \neq b[0]$ il faut décaler de strictement plus que 4</li>
+      <li>$k \leq 1$ et $b[k] \neq c$ : on a $T_b[j-1] = 0$</li>
+      <li>$k &gt; 1$ et $b[k] \neq c$. Ce problème est équivalent à trouver :
+        <ul>
+          <li>le plus grand $k’$ possible tel que début de $b$ qui coïncide avec la fin de $b[1:j-2]$</li>
+          <li>et tel que $b[k’ + 1] = c$</li>
+        </ul>
+
+        <p>On a déjà fait une grande partie du travail puisque : $k’$ est aussi le plus grand entier tel que la fin de $b[1:k + 1]$ coincide avec le début de $b$ et tel que $b[k’ + 1] = c$</p>
+
+        <p>Ceci revient a faire une récurrence en posant : j = k + 1 (c’est le cas $j=10$ de l’exemple)</p>
+      </li>
     </ul>
   </li>
-</ul>
+</ol>
 
 <p>Cette procédure peut s’écrire très simplement avec l’algorithme suivant :</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">cree_tableau</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
-    <span class="n">T</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">j</span> <span class="o">=</span> <span class="mi">2</span>
-    <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">T_b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-    <span class="k">while</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
-        <span class="n">pred</span> <span class="o">=</span> <span class="n">T</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-        <span class="k">if</span> <span class="n">b</span><span class="p">[</span><span class="n">pred</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
-            <span class="n">T</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">pred</span><span class="p">)</span>
-            <span class="n">egaux</span> <span class="o">=</span> <span class="n">egaux</span> <span class="ow">and</span> <span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">b</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span> 
-        <span class="k">elif</span> <span class="n">egaux</span><span class="p">:</span>
-            <span class="n">T</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">pred</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">j</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">T_b</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">b</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">T_b</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">k</span> <span class="o">=</span> <span class="n">T_b</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">c</span> <span class="o">==</span> <span class="n">b</span><span class="p">[</span><span class="n">k</span><span class="p">]:</span>
+            <span class="n">T_b</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+                        
+            <span class="n">j</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">T_b</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="n">c</span> <span class="o">=</span> <span class="n">b</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">k</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">T_b</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+                <span class="n">j</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">T_b</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+                <span class="n">c</span> <span class="o">=</span> <span class="n">b</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">T</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">T</span>
+            <span class="n">j</span> <span class="o">=</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">T_b</span>
 </code></pre></div></div>
 
-<ol>
-  <li>on suppose qu’on connaisse le max, algo</li>
-  <li>complexité de l’algo</li>
-  <li>calcul du décalage</li>
-</ol>
+<p>La complexité de cette fonction est en $\mathcal{O(m)}$ car à chaque étape :</p>
+
+<ul>
+  <li>soit $k$ augmente de 1</li>
+  <li>soit $k$ diminue strictement</li>
+  <li>soit $k$ reste constant à 0</li>
+</ul>
+
+<p>Il y a au plus $m$ étapes où $k$ reste constant ou augmente donc au plus $m$ étapes où $k$ diminue.</p>
 
 <h2 id="autre-algorithmes">Autre algorithmes</h2>
 
-<h3 id="prétraitements">prétraitements</h3>
-
-<p>Rabin-Karp</p>
-
-<h3 id="autre-décalages">Autre décalages</h3>
-
-<p><a href="https://fr.wikipedia.org/wiki/Algorithme_de_Boyer-Moore-Horspool">Boyer-Moore-Horspool</a>, on part de la fin.</p>
-
-<p>Et <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Boyer-Moore">Boyer-Moore</a> qui rajoute une règle et est aussi linéaire (preuve dans KMP, mais c’est plus chaud à démontrer…)</p>
-
-<p>Pour implémenter cette idée, il est plus simple de comparer le mot et la séquence en partant de la fin du mot :</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">début_algorithme_BMH</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="n">trouvé</span> <span class="o">=</span> <span class="bp">True</span>
-        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">b</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">]:</span>
-                <span class="n">trouvé</span> <span class="o">=</span> <span class="bp">False</span>
-                
-                <span class="c1"># décalage de i
-</span>        
-        <span class="k">if</span> <span class="n">trouvé</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">True</span>
-    <span class="k">return</span> <span class="bp">False</span>
-</code></pre></div></div>
-
-<p>L’algorithme de Boyer–Moore implémente 2 tables de saut permettant de décaler efficacement l’indice $i$</p>
-
-<h3 id="première-table-de-saut">première table de saut</h3>
-
-<p>Positionnement des deux chaines lors de la 1ère discordance $a[i + j] \neq b[j]$ :</p>
-
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        i    x
-a: .....COUCOU......
-b:      POUTOU
-           j
-</code></pre></div></div>
-
-<p>On va alors décaler $i$ du minimum possible, c’est à dire :</p>
+<p>Nous dne détaillerons pas les autres algorithmes, nous nous contenteront de donner les liens wikipedia et d’indiquer leur intérêt</p>
 
 <ul>
-  <li>de $m$ (la longueur de $b$) si $a[i + m - 1]$ (le caractère à la position <code class="language-plaintext highlighter-rouge">x</code> du dessin) n’apparait pas dans les $m-1$ premiers caractères de $b$</li>
-  <li>de $m$ moins la position du dernier caractère $a[i + m - 1]$ dans les $m-1$ premiers caractères de $b$ (la chaine <code class="language-plaintext highlighter-rouge">b[:-1]</code> avec la notation de python). Ceci fera coïncider le caractère à la position <code class="language-plaintext highlighter-rouge">x</code> de $a$ avec le même caractère dans <code class="language-plaintext highlighter-rouge">b[:-1]</code>
-</li>
+  <li>
+<a href="https://fr.wikipedia.org/wiki/Algorithme_de_Rabin-Karp">Rabin-Karp</a>. Cet algorithme est intéressant car :
+    <ul>
+      <li>plutôt que de chercher la sous-chaine directement, on passe par une fonction de hashage. On compare donc des valeur de hash plutôt que des sous-chaine ce qui est plus rapide en général</li>
+      <li>la fonction de hashage utilisée (nommée <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Rabin-Karp#Empreinte_de_Rabin">empreinte de Rabin</a>) est très facilement itérativement calculable.</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://fr.wikipedia.org/wiki/Algorithme_de_Boyer-Moore-Horspool">Boyer-Moore-Horspool</a>. Intéressant car on compare de la fin au début et la fonction de saut est plus simple à comprendre que celle de Knuth-Morris-Pratt. En revanche, sa complexité est en $\mathcal{O}(mn)$ et n’a donc que peu d’intérêt à part historique</li>
+  <li>
+<a href="https://fr.wikipedia.org/wiki/Algorithme_de_Boyer-Moore">Boyer-Moore</a>. Algorithme également linéaire. Sa fonction de saut est compliquée à comprendre (presque autant que celle de Knuth-Morris-Paratt). Son intérêt — à part historique — est le calcul de la complexité qui est tout sauf trivial. On la doit à <a href="http://static.cs.brown.edu/courses/csci1810/resources/ch2_readings/kmp_strings.pdf">Knuth, Morris et Pratt (p343-346)</a> (oui oui, c’est dans le même article où ils présentent leurs propre algorithme).</li>
 </ul>
-
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        i
-a: .....COUCOU......
-b:         POUTOU
-                j
-</code></pre></div></div>
-
-<p>Pour notre exemple avec $b$ valant <code class="language-plaintext highlighter-rouge">POUTOU</code>, ceci donne la table de décalage suivante :</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>lettre</th>
-      <th>décalage</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>P</td>
-      <td>5</td>
-    </tr>
-    <tr>
-      <td>O</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>U</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <td>T</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <td>autre</td>
-      <td>6</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>Cette technique est très efficace si le mot à chercher n’a pas beaucoup de répétition. Pour que le décalage aille vite (en $\mathcal{O}(1)$ opération), l’idée est de créer un tableau de longueur le maximum du numéro unicode de <code class="language-plaintext highlighter-rouge">mot</code> et de mettre le décalage qu’il faut. On ne peut pas prendre tous les code unicode possible, un tableau de plus de 100000 cases n’est pas raisonnable. Pour un texte avec l’alphabet latin, on aura des codes plus petit que 256 ce qui est raisonnable.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">creation_decalage</span><span class="p">(</span><span class="n">mot</span><span class="p">):</span>
-    <span class="n">unicode_max</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">mot</span><span class="p">)</span>
-    <span class="n">decalage</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">unicode_max</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
-        <span class="n">decalage</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mot</span><span class="p">))</span>
-
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mot</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
-        <span class="n">decalage</span><span class="p">[</span><span class="nb">ord</span><span class="p">(</span><span class="n">mot</span><span class="p">[</span><span class="n">i</span><span class="p">])]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">mot</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">i</span>
-
-    <span class="k">return</span> <span class="n">decalage</span>
-</code></pre></div></div>
-
-<p>La complexité de la fonction <code class="language-plaintext highlighter-rouge">creation_decalage</code> est en $\mathcal{O}(m + A)$ opérations, où $A$ est la taille de l’alphabet utilisé, c’est à dire une constante.</p>
-
-<p>L’algorithme devient alors :</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">suite_algorithme_BMH</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-    <span class="n">decalage</span> <span class="o">=</span> <span class="n">creation_decalage</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>  <span class="c1"># à faire
-</span>
-    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="n">trouvé</span> <span class="o">=</span> <span class="bp">True</span>
-        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">b</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">]:</span>
-                <span class="n">trouvé</span> <span class="o">=</span> <span class="bp">False</span>
-                
-                <span class="n">i</span> <span class="o">+=</span> <span class="n">decalage</span><span class="p">[</span><span class="nb">ord</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])]</span>
-        
-        <span class="k">if</span> <span class="n">trouvé</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">True</span>
-    <span class="k">return</span> <span class="bp">False</span>
-</code></pre></div></div>
-
-<p>Ce n’est cependant pas suffisant pour garantir que l’on ne va pas vérifier 2 fois de suite le même caractère de $a$. Par exemple si la chaîne $a$ vaut <code class="language-plaintext highlighter-rouge">xxxx</code> et $b$ vaut <code class="language-plaintext highlighter-rouge">Yxx</code></p>
-
-<p>Chaque caractère de $a$ (à partir du troisième) va être comparé à chaque caractère de $b$. La complexité maximale de l’algorithme est donc toujours en $\mathcal{O}(nm)$.</p>
-
-<h3 id="deuxième-table-de-saut">deuxième table de saut</h3>
-
-<p>Pour améliorer la complexité de l’algorithme il faut faire en sorte que l’on ne compare chaque caractère de $a$ qu’un nombre constant de fois.</p>
-
-<p>Ceci est possible en utilisant une autre table.</p>
-
-<blockquote class="tbd">
-  <p>décrire la table + algo + preuve O(m)</p>
-</blockquote>
-
-<p>décrite là <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Boyer-Moore">https://fr.wikipedia.org/wiki/Algorithme_de_Boyer-Moore</a>. <a href="http://static.cs.brown.edu/courses/csci1810/resources/ch2_readings/kmp_strings.pdf">Knuth, Morris et Pratt</a> on démontré qu’en utilisant cette deuxième table, chaque caractère de $a$ est au plus examiné 6 fois (la preuve est p343-346 du papier). Mais ceci dépasse le cadre de ce cours.</p>
 
 <h2 id="vers-les-expressions-régulières">vers les expressions régulières</h2>
 
-<p>expressions régulières : <a href="https://docs.python.org/fr/3/howto/regex.html">https://docs.python.org/fr/3/howto/regex.html</a></p>
+<p>La recherche de sous-chaine n’est presque jamais utilisée en tant que tel en informatique car il faut trouver l’expression exacte :</p>
+
+<ul>
+  <li>on ne cherche pas les formes proches (ce qui est possible en utilisant l’alignement de séquences)</li>
+  <li>on ne cherche pas de motifs (on appelle celà des <a href="https://fr.wikipedia.org/wiki/Expression_r%C3%A9guli%C3%A8re">expression régulières</a>)</li>
+</ul>
+
+<p>Les expressions régulières dépassent de loin le cadre de ce cours mais c’est un sujet à la fois marrant, utile et intéressant. Si vous voulez vous initier en douceur, liser <a href="https://docs.python.org/fr/3/howto/regex.html">le tuto python</a> qui y est consacré, ou passez directement à <a href="https://www.oreilly.com/library/view/introducing-regular-expressions/9781449338879/">O’reilly</a>.</p>
 
   </div>
 
