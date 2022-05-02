@@ -93,10 +93,10 @@
   <p>La distance entre <em>“MISOS”</em> et <em>“TILOS”</em> est de 2 différences.</p>
 </blockquote>
 
-<p>Parfois, ce comptage brute des différences n’est pas suffisant. Si l’on cherche à trouver les erreurs de frappe, on pourra par exemple supposer que deux mots sont proches si les lettres qui les composent sont proches sur le clavier</p>
+<p>Parfois, ce comptage brute des différences n’est pas suffisant. Si l’on cherche à trouver les erreurs de frappe, on pourra par exemple supposer que deux mots sont proches si les lettres qui les composent sont proches sur le clavier.</p>
 
 <blockquote>
-  <p><em>“ORNE”</em> sera plus proche de <em>“ORBE”</em> que de <em>“URNE”</em> si l’on compte l’éloignement des touches sur le clavier</p>
+  <p><em>“ORNE”</em> sera plus proche de <em>“ORBE”</em> que de <em>“URNE”</em> si l’on compte l’éloignement des touches sur le clavier.</p>
 </blockquote>
 
 <p>Il faut donc généraliser notre distance en se donnant une distance de substitution $d$ définie entre deux caractères, que l’on généralise ensuite à la comparaison de deux chaînes :</p>
@@ -112,6 +112,10 @@
   <li>la suppression d’un caractère</li>
   <li>la substitution d’un caractère</li>
 </ul>
+
+<blockquote>
+  <p>Cette façon de faire pour comparer 2 chaînes de caractères est très utilisé en biologie lorsque l’on compare deux séquences d’ADN car les opérations élémentaires correspondent aux processus biologique d’évolution.</p>
+</blockquote>
 
 <p>Par exemple pour passer de <em>“MEROUS”</em> à <em>“MARLOU”</em>, on peut :</p>
 
@@ -149,10 +153,6 @@
   <li>inégalité triangulaire</li>
 </ul>
 
-<blockquote>
-  <p>Cette façon de faire pour comparer 2 chaînes de caractères est très utilisé en biologie lorsque l’on compare deux séquences d’ADN car les opérations élémentaires correspondent aux processus biologique d’évolution.</p>
-</blockquote>
-
 <p>Enfin, ce compte peut être généralisé comme précédemment en utilisant une <strong>distance élémentaire entre caractères</strong> $d: \mathcal{A} \cup { \epsilon } \rightarrow \mathbb{R}^+$. Ses propriétés doivent être :</p>
 
 <ul>
@@ -162,7 +162,7 @@
   <li>$d(x, y) &gt; 0$ pour tout $x\neq y \in \mathcal{A}$</li>
 </ul>
 
-<p>On appelle alors <strong>coût élémentaires</strong> les valeurs :</p>
+<p>Le caractère vide $\epsilon$ est là pour simuler le coût pour supprimer un caractère ($d(x, \epsilon)$) ou en insérer un ($d(\epsilon, x)$). On appelle alors <strong>coût élémentaires</strong> les valeurs :</p>
 
 <ul>
   <li>$d(x, \epsilon)$ nommées <strong>coût de suppression</strong>,</li>
@@ -183,48 +183,99 @@
 \[d(a, b) = d(b, a) \leq \sum_{i}d(a[i], \epsilon) + \sum_{i}d(\epsilon, b[i]) =  \sum_{i}d(b[i], \epsilon) + \sum_{i}d(\epsilon, a[i])\]
 
 <blockquote>
-  <p>Ceci est très utilisé en biologie où l’on compare des protéines entre elles. Par exemple, lorsque l’on compare 2 protéines entre elles via leurs séquences d’acides aminées, on utilise une distance entre acide aminés basée sur les propriétés physico-chimiques de ceux-ci ou basé sur l’évolution des séquences (voir par exemple <a href="http://www.dsi.univ-paris5.fr/bio2/autof2/mod4_3b.ht">matrice protéiques</a>).</p>
+  <p>Ceci est très utilisé en biologie où l’on compare des protéines entre elles. Par exemple, lorsque l’on compare 2 protéines entre elles via leurs séquences d’acides aminées, on utilise une distance entre acide aminés basée sur les propriétés physico-chimiques de ceux-ci ou basé sur l’évolution des séquences (voir par exemple <a href="http://www.dsi.univ-paris5.fr/bio2/autof2/mod4_3b.htm">matrice protéiques</a>).</p>
 </blockquote>
 
 <h2 id="propriétés">propriétés</h2>
 
+<p>Avant de parler des propriétés de la distance d’édition, commençons par parler de ses limitations :</p>
+
 <ul>
-  <li>existe car suppressison de l’une puis ajout de l’autre</li>
-  <li>très utilisé en bio car modélise bien l’évolution</li>
+  <li>Les coûts élémentaires sont indifférents à la position dans la chaine</li>
+  <li>les coûts élémentaires ne dépendant pas des lettres alentours</li>
 </ul>
 
-<blockquote>
-  <p>limitations :</p>
+<p>Ces limitations ne sont souvent pas gênantes et permettent un calcul aisé (on le verra) de cette distance.</p>
 
-  <ul>
-    <li>indiférent à la position</li>
-    <li>indifférent au voisinage</li>
-  </ul>
-</blockquote>
+<h3 id="alignement">alignement</h3>
 
-<blockquote class="tbd">
-  <p>Intérêt :</p>
-  <ul>
-    <li>facilement calculable</li>
-    <li>assez général pour être ok</li>
-  </ul>
-
-</blockquote>
-
-<h2 id="alignement">alignement</h2>
-
-<p>représente un <strong>alignement</strong></p>
-
-<p>On peut représenter la distance d’édition entre 2 chaines par le diagramme suivant :</p>
+<p>Etant donné une distance d’édition entre deux chaînes de caractères, la liste des opérations élémentaires permettant de passer d’une chaîne à l’autre peut se représenter par un <strong>alignement</strong>. Par exemple l’alignement entre <code class="language-plaintext highlighter-rouge">MEROUS</code> et <code class="language-plaintext highlighter-rouge">MARLOU</code> précédent va s’écrire :</p>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>MER-OUS
 | | || 
 MARLOU-
 </code></pre></div></div>
 
-<p>Les identités sont notés avec une <code class="language-plaintext highlighter-rouge">|</code> les insertions et suppression en utilisant le caractère <code class="language-plaintext highlighter-rouge">-</code>.</p>
+<p>Il se lit comme ça :</p>
+
+<ul>
+  <li>La chaîne initiale est au-dessus et la chaîne finale en dessous</li>
+  <li>les caractères qui ne bougent pas sont représentées avec un <code class="language-plaintext highlighter-rouge">|</code> :</li>
+  <li>les insertions sont représentés par un <code class="language-plaintext highlighter-rouge">-</code> là où le caractère est inséré dans la chaîne de départ:</li>
+  <li>les suppression sont représentés par un <code class="language-plaintext highlighter-rouge">-</code> là où le caractère est supprimé dans la chaîne d’arrivée :</li>
+</ul>
+
+<p>Cela correspond bien à notre passage de  <code class="language-plaintext highlighter-rouge">MEROUS</code> et <code class="language-plaintext highlighter-rouge">MARLOU</code> :</p>
+
+<ol>
+  <li>une substitution</li>
+  <li>une insertion</li>
+  <li>une suppression</li>
+</ol>
+
+<p>Par symétrie des distances élémentaires, on peut bien sur faire le contraire (on transforme les insertions en suppression et vice versa) b:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>MARLOU-
+| | || 
+MER-OUS
+</code></pre></div></div>
+
+<p>Enfin, on a clairement que :</p>
+
+<blockquote class="note">
+  <p>La distance d’édition entre deux chaînes correspond à l’alignement de coût minimum entre celles-ci.</p>
+</blockquote>
+
+<p>De façon formelle :</p>
+
+<blockquote class="note">
+  <p>Un alignement entre la chaîne $a =a_0\dots a_{n-1}$ et $b = b_0\dots b_{m-1}$ est un couple $(a^\star, b^\star)$ tel que :</p>
+
+  <ul>
+    <li>$a^\star =a^\star_0\dots a^\star_{L-1}$</li>
+    <li>$b^\star =b^\star_0\dots b^\star_{L-1}$</li>
+    <li>chaque caractère de $a^\star$ et $b^\star$ sont soit <code class="language-plaintext highlighter-rouge">-</code> soit des caractères des chaines</li>
+    <li>$a^\star$ (respectivement $b^\star$) privé des caractères <code class="language-plaintext highlighter-rouge">-</code> est égal à $a$ (<em>resp.</em> $b$)
+ $(a^\star_i, b^\star_i) \neq (-, -)$ pour tout $0 \leq i &lt; L$</li>
+  </ul>
+
+</blockquote>
+
+<p>On remarque que : $\max(n, m) - 1 \leq L &lt; n + m$.</p>
 
 <h3 id="nombres-dalignements">nombres d’alignements</h3>
+
+<p>Il peut y avoir beaucoup (beaucoup) d’alignements possible entre 2 séquences.</p>
+
+<details><summary>exercice : trouver au moins 3 alignements différents entre les séquences ACTGC et ACGTC</summary><div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ACTG-C
+|  |
+A-CGTC
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ACTGC
+||  |
+ACGTC
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ACTG-C
+|| | |
+AC-GTC
+</code></pre></div></div>
+
+<p>et bien d’autres encore sont possibles.</p>
+
+</div></details>
 
 <p>###</p>
 <blockquote class="tbd">
