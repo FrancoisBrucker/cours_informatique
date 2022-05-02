@@ -230,12 +230,6 @@ MARLOU-
 MER-OUS
 </code></pre></div></div>
 
-<p>Enfin, on a clairement que :</p>
-
-<blockquote class="note">
-  <p>La distance d’édition entre deux chaînes correspond à l’alignement de coût minimum entre celles-ci.</p>
-</blockquote>
-
 <p>De façon formelle :</p>
 
 <blockquote class="note">
@@ -252,6 +246,15 @@ MER-OUS
 </blockquote>
 
 <p>On remarque que : $\max(n, m) - 1 \leq L &lt; n + m$.</p>
+
+<p>Enfin, on a clairement que :</p>
+
+<blockquote class="note">
+  <p>La distance d’édition entre deux chaînes $a$ et $b$ correspond à l’alignement $(a^\star, b^\star)$ de coût minimum entre celles-ci.</p>
+
+\[S(a^\star, b^\star) = \sum_{i=0}^{L-1} d(a^\star_i, b^\star_i)\]
+
+</blockquote>
 
 <h3 id="nombres-dalignements">nombres d’alignements</h3>
 
@@ -277,14 +280,159 @@ AC-GTC
 
 </div></details>
 
-<p>###</p>
-<blockquote class="tbd">
-  <p>généralisation différences. Attention doit rester symétrique.</p>
+<p>On peut remarquer que ce nombre ne dépend que de la longueur des chaines $a$ et $b$, par de leur contenu. On note alors $f(n, m)$ le nombre possible d’alignements entre une chaines de longueur $n$ et une chaîne de longueur $m$.</p>
+
+<p>Comme un alignement ne peut finir sur $(-, -)$, on ne peut qu’avoir 3 possibilités :</p>
+
+<ul>
+  <li>$(a_{n-1}, b_{m-1})$</li>
+  <li>$(a_{n-1}, -)$</li>
+  <li>$(-, b_{m-1})$</li>
+</ul>
+
+<p>Aligner $a$ et $b$ revient alors soit à aligner :</p>
+
+<ul>
+  <li>$a[:-1]$ et $b[:-1]$</li>
+  <li>aligner $a[:-1]$ et $b$</li>
+  <li>aligner $a$ et $b[:-1]$</li>
+</ul>
+
+<p>Ce qui se donne l’équation de récurrence suivante :</p>
+
+\[f(n, m) = f(n − 1, m − 1) + f(n − 1, m) + f(n, m − 1)\]
+
+<p>On peut alors prouver, si $n=m$ que :</p>
+
+\[f(n, n) \sim \frac{(1 + \sqrt{2})^{2n + 1}}{\sqrt{n}}\]
+
+<p>Ce nombre est affreusement énorme :</p>
+
+<ul>
+  <li>pour $n = 10$, on a déjà  $f(10, 10) \sim 34537380$</li>
+  <li>pour $n = 10$, on a déjà  $f(100, 100) \sim 8.67 \cdot 10^{75}$</li>
+</ul>
+
+<blockquote>
+  <p>Il n’y a qu’environ $10^{80}$ particules dans l’univers.</p>
 </blockquote>
 
 <h2 id="calcul">calcul</h2>
 
-<h2 id="alignement-local">alignement local</h2>
+<p>La distance d’édition entre $a$ et $b$ est équivalente à trouver le meilleurs alignement entre $a$ et $b$. Il n’est — heureusement —  pas nécessaire de  les  calculer tous pour trouver le meilleur. Il suffit d’utiliser notre équation de récurrence. On en déduit que la distance d’édition entre $a$ et $b$ est soit :</p>
+
+<ul>
+  <li>égale à la distance d’édition entre $a[:-1]$ et $b[:-1]$ plus le coût élémentaire de substitution des 2 derniers caractères : $d(a[-1], b[-1])$</li>
+  <li>égale à la distance d’édition entre $a[:-1]$ et $b$ plus le coût élémentaire de la suppression du dernier caractère de $a$ : $d(a[-1], -)$</li>
+  <li>égale à la distance d’édition entre $a$ et $b[:-1]$ plus le coût élémentaire de l’insertion du dernier caractère de $b$ $d(-, b[-1])$</li>
+</ul>
+
+<p>Donc, pour tout $i$ et $j$ :</p>
+
+\[d(a[:i+1], b[:j+1]) = \min \begin{cases}
+      d(a[:i], b[:j]) + d(a[i], b[j]) &amp; \text{substitution}\\
+      d(a[:i], b[:j + 1]) + d(a[i], -) &amp; \text{suppression}\\
+      d(a[:i + 1], b[:j]) + d(-, b[j]) &amp; \text{insertion}\\
+    \end{cases}\]
+
+<p>Ceci nous donne une représentation matricielle de l’alignement et de la distance d’édition :</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>$-$</th>
+      <th>$a[0]$</th>
+      <th>…</th>
+      <th>$a[i-1]$</th>
+      <th>$a[i]$</th>
+      <th>$a[n-1]$</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>$-$</td>
+      <td>0</td>
+      <td>$d(a[0], -)$</td>
+      <td> </td>
+      <td>$d(a[:i], -)$</td>
+      <td>$d(a[:i], -)  + d(a[i], -)$</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>$b[0]$</td>
+      <td>$d(-, b[0])$</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>…</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>$b[j-1]$</td>
+      <td>$d(-, b[:j])$</td>
+      <td> </td>
+      <td> </td>
+      <td>$d(a[:i],b[:j])$</td>
+      <td>$d(a[:i+1],b[:j])$</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>$b[j]$</td>
+      <td>$d(-, b[:j]) + d(b[j], -)$</td>
+      <td> </td>
+      <td> </td>
+      <td>$d(a[:i],b[:j+1])$</td>
+      <td>$d(a[:i+1],b[:j+1])$</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>…</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>$b[m-1]$</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>$d(a,b)$</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Et nous donne un algorithme très facile pour la calculer, puisqu’il suffit de progresser ligne à ligne.</p>
+
+<h2 id="algorithme">algorithme</h2>
+
+<blockquote class="tbd">
+  <p>écrire l’algorithme + complexité</p>
+</blockquote>
+
+<blockquote class="tbd">
+  <p>chemin = alignement</p>
+</blockquote>
+
+<h2 id="exemple">exemple</h2>
+
+<blockquote class="tbd">
+  <p>dans le poly</p>
+</blockquote>
 
   </div>
 

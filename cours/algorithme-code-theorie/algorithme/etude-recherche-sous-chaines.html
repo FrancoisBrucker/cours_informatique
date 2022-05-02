@@ -475,7 +475,7 @@ b:           ATATCG
 i/j:         i  j
 </code></pre></div></div>
 
-<p>Comme les caractères $a[i +j$ et $b[j]$ coincident, l’étape suivante consistera à augmenter $j$ pour continuer la vérification :</p>
+<p>Comme les caractères $a[i +j$ et $b[j]$ coïncident, l’étape suivante consistera à augmenter $j$ pour continuer la vérification :</p>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>i + j :          v
 a:       ....ATATGACT....
@@ -639,7 +639,7 @@ ACGAGACGACT   : la chaîne b
 
 <p>L’idée géniale de Knuth, Morris et Pratt est d’avoir remarqué que l’on peut construire le tableau de façon itérative et en $\mathcal{O}(m)$ opérations !</p>
 
-<p>On commence avec un tableau où seul $T_b[0] = 0$ est rempli (pour $j=1$), puis on considère que $j=2$. 
+<p>On commence avec un tableau où seul $T_b[0] = 0$ est rempli (pour $j=1$), puis on considère que $j=2$.
 On note :</p>
 
 <ul>
@@ -647,7 +647,7 @@ On note :</p>
   <li>$c = b[j-1]$</li>
 </ul>
 
-<p>On cherche $k$ tel que $b[:k_0]$ coincide avec la fin de la chaîne $b[1:j-1] + [c]$ : il y a 2 cas à considérer :</p>
+<p>On cherche $k$ tel que $b[:k_0]$ coïncide avec la fin de la chaîne $b[1:j-1] + [c]$ : il y a 2 cas à considérer :</p>
 
 <ol>
   <li>on peut continuer la chaine commencée avec $j-1$. Ceci se passe si $b[k] = c$ avec  $T_b[(j-1)-1] = k$. Dans ce cas là $T_b[j-1] = k + 1$</li>
@@ -720,7 +720,7 @@ On note :</p>
   <li>
 <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Boyer-Moore-Horspool">Boyer-Moore-Horspool</a>. Intéressant car on compare de la fin au début et la fonction de saut est plus simple à comprendre que celle de Knuth-Morris-Pratt. En revanche, sa complexité est en $\mathcal{O}(mn)$ et n’a donc que peu d’intérêt à part historique</li>
   <li>
-<a href="https://fr.wikipedia.org/wiki/Algorithme_de_Boyer-Moore">Boyer-Moore</a>. Algorithme également linéaire. Sa fonction de saut est compliquée à comprendre (presque autant que celle de Knuth-Morris-Paratt). Son intérêt — à part historique — est le calcul de la complexité qui est tout sauf trivial. On la doit à <a href="http://static.cs.brown.edu/courses/csci1810/resources/ch2_readings/kmp_strings.pdf">Knuth, Morris et Pratt (p343-346)</a> (oui oui, c’est dans le même article où ils présentent leurs propre algorithme).</li>
+<a href="https://fr.wikipedia.org/wiki/Algorithme_de_Boyer-Moore">Boyer-Moore</a>. Algorithme également linéaire. Sa fonction de saut est compliquée à comprendre (presque autant que celle de Knuth-Morris-Pratt). Son intérêt — à part historique — est le calcul de la complexité qui est tout sauf trivial. On la doit à <a href="http://static.cs.brown.edu/courses/csci1810/resources/ch2_readings/kmp_strings.pdf">Knuth, Morris et Pratt (p343-346)</a> (oui oui, c’est dans le même article où ils présentent leurs propre algorithme).</li>
 </ul>
 
 <h2 id="vers-les-expressions-régulières">vers les expressions régulières</h2>
@@ -729,10 +729,10 @@ On note :</p>
 
 <ul>
   <li>on ne cherche pas les formes proches (ce qui est possible en utilisant l’alignement de séquences)</li>
-  <li>on ne cherche pas de motifs (on appelle celà des <a href="https://fr.wikipedia.org/wiki/Expression_r%C3%A9guli%C3%A8re">expression régulières</a>)</li>
+  <li>on ne cherche pas de motifs (on appelle cela des <a href="https://fr.wikipedia.org/wiki/Expression_r%C3%A9guli%C3%A8re">expression régulières</a>)</li>
 </ul>
 
-<p>Les expressions régulières dépassent de loin le cadre de ce cours mais c’est un sujet à la fois marrant, utile et intéressant. Si vous voulez vous initier en douceur, liser <a href="https://docs.python.org/fr/3/howto/regex.html">le tuto python</a> qui y est consacré, ou passez directement à <a href="https://www.oreilly.com/library/view/introducing-regular-expressions/9781449338879/">O’reilly</a>.</p>
+<p>Les expressions régulières dépassent de loin le cadre de ce cours mais c’est un sujet à la fois marrant, utile et intéressant. Si vous voulez vous initier en douceur, lisez <a href="https://docs.python.org/fr/3/howto/regex.html">le tuto python</a> qui y est consacré, ou passez directement à <a href="https://www.oreilly.com/library/view/introducing-regular-expressions/9781449338879/">O’reilly</a>.</p>
 
   </div>
 
