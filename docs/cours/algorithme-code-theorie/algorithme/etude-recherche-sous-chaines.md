@@ -12,28 +12,28 @@ author: "François Brucker"
 >
 > * [complexité en moyenne]({% link cours/algorithme-code-theorie/algorithme/complexite-moyenne.md %})
 > * [structure : chaine de caractères]({% link cours/algorithme-code-theorie/algorithme/structure-chaine-de-caracteres.md %})
-> * [fonctions]({% link cours/algorithme-code-theorie/theorie/fonctions.md %})
+> * [fonctions de hash]({% link cours/algorithme-code-theorie/theorie/fonctions-hash.md %})
 >
 {: .chemin}
 
-Nous allons dans cette partie analyser le problème de la *recherche d'une sous-chaine* :
+Nous allons dans cette partie analyser le problème de la *recherche d'une sous-chaîne* :
 
 > **Problème de la recherche d'une sous-chaîne** :
 >
 > * **Données** :
->   * une chaine de caractère de $a$ de longueur $n$
->   * une chaine de caractère de $b$ de longueur $m$, avec $m \leq n$
+>   * une chaîne de caractère de $a$ de longueur $n$
+>   * une chaîne de caractère de $b$ de longueur $m$, avec $m \leq n$
 > * **question** :
->   * $b$ est-il une *sous-chaine* de $a$ ?
+>   * $b$ est-il une *sous-chaîne* de $a$ ?
 > * **réponse** :
 >   * oui ou non.
 {: .note}
 
-Une définition formelle de *sous-chaine* étant :
+Une définition formelle de *sous-chaîne* étant :
 
 > Soient $a$ et $b$ deux chaines de caractères de longueurs $n$ et $m <n$ respectivement.
 >
-> La chaine $b$ est une **sous-chaine** de $a$ s'il existe $0 \leq i < n$ tel que l'on ait pour tout $0 \leq j < m$  :
+> La chaîne $b$ est une **sous-chaîne** de $a$ s'il existe $0 \leq i < n$ tel que l'on ait pour tout $0 \leq j < m$  :
 >  
 > $$
 > b[j] = a[i + j]
@@ -268,7 +268,7 @@ Enfin, comme le cas où $$ n'est pas une sous-chaine de $a$ est le cas le plus d
 > Un simple `break` a rendu linéaire la complexité en moyenne de l'algorithme.
 {: .note}
 
-#### break: continue et while
+#### `break`, `continue` et `while`
 
 L'instruction `break` de l'algorithme `sous_chaine_naif_amélioré` aurait très bien pu s'écrire avec une boucle `while` :
 
@@ -322,26 +322,29 @@ Le second cas est bien plus clair.
 
 ## Algorithme de Knuth-Morris-Pratt
 
-L'algorithme `sous_chaine_naif_amélioré` est construit autour de la boucle for en `i` qui teste si $b$ est présent à chaque position de $a$. A chaque étape on compare un élément de $b$ à l'élément de l'index $i + j$ de $a$. Le principal soucis de l'algorithme est que le nombre $i+j$ peut diminuer.
+L'algorithme `sous_chaine_naif_amélioré` est construit autour de la boucle for en `i` qui teste si $b$ est présent à partir de chaque position de $a$. A chaque étape on compare un élément de $b$ à l'élément de l'index $i + j$ de $a$. Le principal soucis de l'algorithme est que le nombre $i+j$ peut diminuer.
 
 Par exemple si on cherche la chaine `aab` dans la chaine `aaaaaaaa` $i+j$ vaudra :
 
-1. $0+0 = 0$
-2. $0+1 = 1$
-3. $0+2 = 2$
-4. $1+0 = 1$
-5. $1+1 = 2$
-6. $1+2 = 3$
-7. $2+0 = 2$
+1. $i+j=0+0 = 0$
+2. $i+j=0+1 = 1$
+3. $i+j=0+2 = 2$
+4. $i+j=1+0 = 1$
+5. $i+j=1+1 = 2$
+6. $i+j=1+2 = 3$
+7. $i+j=2+0 = 2$
 8. ...
 
 Chaque élément de $a$ sera vu $m$ fois.
 
-L'algorithme de [Knuth, Morris et Pratt](https://fr.wikipedia.org/wiki/Algorithme_de_Knuth-Morris-Pratt) publié en 1977 est une réponse optimale à ce problème. Il permet de trouver une sous-chaine $b$ d'une chaine $a$ en $\mathcal{O}(m + n)$ opérations. Il est basée sur une optimisation du décalage de $i$ et $j$ pour ne pas se répéter.
+L'algorithme de [Knuth, Morris et Pratt](https://fr.wikipedia.org/wiki/Algorithme_de_Knuth-Morris-Pratt) publié en 1977 est une réponse optimale à ce problème. Il permet de trouver une sous-chaine $b$ d'une chaine $a$ en $\mathcal{O}(m + n)$ opérations. Il est basée sur une optimisation du décalage de $i$ et $j$ que permet de rendre la somme $i+j$ croissante (on ne se répète plus).
 
 ### décalage adapté
 
-Pour accélérer l'algorithme il faudrait pouvoir garantir que $i+j$ augmente à chaque étape, ou si $i+j$ est constant alors $i$ augmente (ce qui signifie que l'on a décalé la comparaison).
+Pour accélérer l'algorithme il faut pouvoir garantir que :
+
+* soit $i+j$ augmente à chaque étape
+* soit $i+j$ est constant mais $i$ augmente (ce qui signifie que l'on a décalé la comparaison).
 
 Il faut donc que si on est dans la position suivante à la fin d'une étape :
 
@@ -384,7 +387,7 @@ b:           ATATCG
 i/j:         i  j
 ```
 
-L'étape suivante consistera à continuer la vérification :
+Comme les caractères $a[i +j$ et $b[j]$ coincident, l'étape suivante consistera à augmenter $j$ pour continuer la vérification :
 
 ```text
 i + j :          v
@@ -404,7 +407,7 @@ b:           ATATCG
 i/j:         i   j
 ```
 
-On peut continuer la comparaison à la même position, mais en ayant décalé $i$ :
+On peut continuer la comparaison à la même position, mais en décalant $i$ :
 
 ```text
 i + j :          v
@@ -442,24 +445,25 @@ On peut noter que $l$ existe toujours, au pire il vaut $j$ et que comme $a[i + l
 
 On peut donc considérer, pour toute chaine $b$ de longueur $m$ un tableau $T_b$ tel que :
 
-* $T_m$ soit de longueur $m - 1$
-* $T_m[j - 1]$ pour $0 < j < m$ vaut le plus petit entier $l$ tel que :
+* $T_b$ soit de longueur $m - 1$
+* $T_b[j - 1] = j - l$ pour $0 < j < m$, avec $l$ le plus petit entier tel que :
   * $0 < l \leq j < m$
   * $b[l + k] = b[k]$ pour tout $0 \leq k < j - l$
 
-Nous donnerons plus tard un moyen efficace de le calculer. Mais si $b$ vaut `ATATCG` on aurait par exemple $T_b = [1, 2, 2, 2, 5]$.
+> La valeur $T_b[j-1]$ correspond à la longueur maximale d'un début de $b$ qui correspond à une fin de $b[1:j]$.
+{: .note}
+
+Nous donnerons plus tard un moyen efficace de le calculer. Mais si $b$ vaut `ATATCG` on aurait par exemple $T_b = [0, 0, 1, 2, 0]$.
 
 ```text
- 12225 
+ 00120 
 ATATCG
- ATATCG
   ATATCG
-     ATATCG
 ```
 
 ### algorithme
 
-En supposant que l'on connaisse un moyen de créer $T_b$, l'algorithme de recherche d'une sous-chaine de Knuth, Morris et Pratt est :
+En supposant que l'on connaisse un moyen de créer $T_b$, l'algorithme de recherche d'une sous-chaine de Knuth, Morris et Pratt est alors :
 
 ```python
 def sous_chaine_KMP(a, b):
@@ -479,7 +483,7 @@ def sous_chaine_KMP(a, b):
             if j == 0:
                 i += 1
             else :
-                l = Tb[j - 1]
+                l = j - Tb[j - 1]
                 i += l
                 j -= l
     return False
@@ -491,169 +495,125 @@ Comme à chaque itération, soit $i+j$ croit strictement, soit $i$ croit stricte
 
 Créer la table de décalage revient à chercher les répétitions dans la chaîne $b$.
 
-En reprenant l'exemple précédent avec $b$ valant `ATATCG` il y a une répétition (on compte le nombre de fois où $b[0]$ apparait) :
+En reprenant la chaine $b$ valant `ACGAGACGACT` on note les répétitions possibles  :
 
 ```text
- 
-ATATCG
-  ATATCG
+0123456789    : index
+ACGAGACGACT   : la chaîne b
+   A          : une répétition de 1 caractères
+     ACGA     : une répétition de 4 caractères
+        AC    : une répétition de 2 caractères
 ```
 
-On peut ensuite remplir le tableau :
+On peut maintenant construire le tableau $T_b$ tel que $T_b[j-1]$, $1 \leq j < m$, correspond à la longueur maximale d'un début de $b$ qui correspond à une fin de $b[1:j]$ :
 
-* $T[0]$ correspond à une discordance lorsque $j=1$ : il faut donc décaler de 1
-* $T[1]$ correspond à une discordance lorsque $j=2$ : Comme $b[1] \neq b[0]$ il faut décaler de 2
-* $T[2]$ correspond à une discordance lorsque $j=3$ : Comme $b[1] \neq b[0]$ et $b[2] = b[0]$ on peut ne décaler que de 2
-* $T[3]$ correspond à une discordance lorsque $j=4$ : Comme $b[1] \neq b[0]$, $b[2] = b[0]$ et $b[3] = b[1]$ on peut toujours ne décaler que de 2
-* $T[4]$ correspond à une discordance lorsque $j=5$ :
-  * comme $b[1] \neq b[0]$, $b[2] = b[0]$, $b[3] = b[1]$ mais que $b[4] \neq b[2]$, il faut décaler de strictement plus que 2
-  * comme $b[3] \neq b[0]$ il faut décaler de strictement plus que 3
-  * comme $b[4] \neq b[0]$ il faut décaler de strictement plus que 4
+1. $j=1$. On a `b[1:1] = ""`. La fin  ne correspond à aucun début de $b$ : $T[1-1] = 0$
+2. $j=2$. On a `b[1:2] = "C"`. La fin ne correspond à aucun début de $b$ : $T[2-1] = 0$
+3. $j=3$. On a `b[1:3] = "CG"`. La fin ne correspond à aucun début de $b$ : $T[3-1] = 0$
+4. $j=4$. On a `b[1:4] = "CGA"`. La fin correspond à `b[:1] = "A"` : $T[4-1] = 1$
+5. $j=5$. On a `b[1:5] = "CGAG"`. La fin ne correspond à aucun début de $b$ : $T[5-1] = 0$
+6. $j=6$. On a `b[1:6] = "CGAGA"`. La fin correspond à `b[:1] = "A"` :  : $T[6-1] = 1$
+7. $j=7$. On a `b[1:7] = "CGAGAC"`. La fin correspond à `b[:2] = "AC"` : $T[7-1] = 2$
+8. $j=8$. On a `b[1:8] = "CGAGACG"`. La fin correspond à `b[:3] = "ACG"` : $T[8-1] = 3$
+9. $j=9$. On a `b[1:9] = "CGAGACGA"`. La fin correspond à `b[:4] = "ACGA"` : $T[9-1] = 4$
+10. $j=10$. On a `b[1:10] = "CGAGACGAC"`. La fin correspond à `b[:1] = "AC"` : $T[10-1] = 2$
+
+Le tableau $T_b$ vaut : $[0, 0, 0, 1, 0, 1, 2, 3, 4, 2]$.
+
+Ceci nous permet de créer un algorithme naïf pour trouver $T_b$. 
+{% details écrivez cet algorithme %}
+
+```python
+def algo_naif_construction_t(b):
+    T_b = []
+
+    for j in range(1, len(b)):
+        T_b.append(0)
+        chaîne = b[1:j]
+        for k in range(len(chaîne)):
+            if b[:k] == chaîne[-k:]:
+                T_b[-1] = k
+
+    return T_b
+```
+
+{% enddetails %}
+
+Cependant, sa complexité est de l'ordre de $\mathcal{O}(m^2)$, ce qui est trop...
+
+L'idée géniale de Knuth, Morris et Pratt est d'avoir remarqué que l'on peut construire le tableau de façon itérative et en $\mathcal{O}(m)$ opérations !
+
+On commence avec un tableau où seul $T_b[0] = 0$ est rempli (pour $j=1$), puis on considère que $j=2$. 
+On note :
+
+* $T_b[j-1] = k_0$
+* $c = b[j-1]$
+
+On cherche $k$ tel que $b[:k_0]$ coincide avec la fin de la chaîne $b[1:j-1] + [c]$ : il y a 2 cas à considérer :
+
+1. on peut continuer la chaine commencée avec $j-1$. Ceci se passe si $b[k] = c$ avec  $T_b[(j-1)-1] = k$. Dans ce cas là $T_b[j-1] = k + 1$
+2. on ne peut pas continuer la chaine commencée avec $j-1$. Ceci se passe si $b[k] \neq c$ avec  $T_b[j-2] = k$. On a alors 2 sous-cas :
+    * $k \leq 1$ et $b[k] \neq c$ : on a $T_b[j-1] = 0$
+    * $k > 1$ et $b[k] \neq c$. Ce problème est équivalent à trouver :
+        * le plus grand $k'$ possible tel que début de $b$ qui coïncide avec la fin de $b[1:j-2]$
+        * et tel que $b[k' + 1] = c$
+
+        On a déjà fait une grande partie du travail puisque : $k'$ est aussi le plus grand entier tel que la fin de $b[1:k + 1]$ coincide avec le début de $b$ et tel que $b[k' + 1] = c$
+        
+        Ceci revient a faire une récurrence en posant : j = k + 1 (c'est le cas $j=10$ de l'exemple)
+        
 
 Cette procédure peut s'écrire très simplement avec l'algorithme suivant :
 
 ```python
 def cree_tableau(b):
-    T = [1]
-    j = 2
-    k = 0
+    T_b = [0]
 
-    while j < len(b):
-        pred = T[-1]
-        if b[pred + 1] = b[j-1]:
-            T.append(pred)
-            egaux = egaux and (b[j-1] == b[j-2]) 
-        elif egaux:
-            T.append(pred + 1)
+    j = len(T_b) + 1
+    c = b[j-1]
+
+    while len(T_b) < len(b) - 1:
+        k = T_b[j-2]
+
+        if c == b[k]:
+            T_b.append(k + 1)
+                        
+            j = len(T_b) + 1
+            c = b[j-1]
+        elif k <= 1:
+                T_b.append(0)
+
+                j = len(T_b) + 1
+                c = b[j-1]
         else:
-            T.append(j)
-    return T
+            j = k + 1
+
+    return T_b
 ```
 
+La complexité de cette fonction est en $\mathcal{O(m)}$ car à chaque étape :
 
-1. on suppose qu'on connaisse le max, algo
-2. complexité de l'algo
-3. calcul du décalage
+* soit $k$ augmente de 1
+* soit $k$ diminue strictement
+* soit $k$ reste constant à 0
 
+Il y a au plus $m$ étapes où $k$ reste constant ou augmente donc au plus $m$ étapes où $k$ diminue.
 
 ## Autre algorithmes
 
-### prétraitements
+Nous dne détaillerons pas les autres algorithmes, nous nous contenteront de donner les liens wikipedia et d'indiquer leur intérêt
 
-Rabin-Karp
-
-
-### Autre décalages
-
-[Boyer-Moore-Horspool](https://fr.wikipedia.org/wiki/Algorithme_de_Boyer-Moore-Horspool), on part de la fin.
-
-Et [Boyer-Moore](https://fr.wikipedia.org/wiki/Algorithme_de_Boyer-Moore) qui rajoute une règle et est aussi linéaire (preuve dans KMP, mais c'est plus chaud à démontrer...)
-
-Pour implémenter cette idée, il est plus simple de comparer le mot et la séquence en partant de la fin du mot :
-
-```python
-def début_algorithme_BMH(a, b):
-    i = 0
-    while i < len(a) - len(b) + 1:
-        trouvé = True
-        for j in range(len(b)-1, -1, -1):
-            if b[j] != a[i + j]:
-                trouvé = False
-                
-                # décalage de i
-        
-        if trouvé:
-            return True
-    return False
-```
-
-L'algorithme de Boyer–Moore implémente 2 tables de saut permettant de décaler efficacement l'indice $i$
-
-### première table de saut
-
-Positionnement des deux chaines lors de la 1ère discordance $a[i + j] \neq b[j]$ :
-
-```text
-        i    x
-a: .....COUCOU......
-b:      POUTOU
-           j
-```
-
-On va alors décaler $i$ du minimum possible, c'est à dire :
-
-* de $m$ (la longueur de $b$) si $a[i + m - 1]$ (le caractère à la position `x` du dessin) n'apparait pas dans les $m-1$ premiers caractères de $b$
-* de $m$ moins la position du dernier caractère $a[i + m - 1]$ dans les $m-1$ premiers caractères de $b$ (la chaine `b[:-1]` avec la notation de python). Ceci fera coïncider le caractère à la position `x` de $a$ avec le même caractère dans `b[:-1]`
-
-```text
-        i
-a: .....COUCOU......
-b:         POUTOU
-                j
-```
-
-Pour notre exemple avec $b$ valant `POUTOU`, ceci donne la table de décalage suivante :
-
-lettre | décalage
--------|---------
-P | 5
-O | 1
-U | 3
-T | 2
-autre | 6
-
-Cette technique est très efficace si le mot à chercher n'a pas beaucoup de répétition. Pour que le décalage aille vite (en $\mathcal{O}(1)$ opération), l'idée est de créer un tableau de longueur le maximum du numéro unicode de `mot` et de mettre le décalage qu'il faut. On ne peut pas prendre tous les code unicode possible, un tableau de plus de 100000 cases n'est pas raisonnable. Pour un texte avec l'alphabet latin, on aura des codes plus petit que 256 ce qui est raisonnable.
-
-```python
-def creation_decalage(mot):
-    unicode_max = max(ord(x) for x in mot)
-    decalage = []
-    for i in range(unicode_max + 1):
-        decalage.append(len(mot))
-
-    for i in range(len(mot) - 1):
-        decalage[ord(mot[i])] = len(mot) - 1 - i
-
-    return decalage
-```
-
-La complexité de la fonction `creation_decalage` est en $\mathcal{O}(m + A)$ opérations, où $A$ est la taille de l'alphabet utilisé, c'est à dire une constante.
-
-L'algorithme devient alors :
-
-```python
-def suite_algorithme_BMH(a, b):
-    decalage = creation_decalage(b)  # à faire
-
-    i = 0
-    while i < len(a) - len(b) + 1:
-        trouvé = True
-        for j in range(len(b)-1, -1, -1):
-            if b[j] != a[i + j]:
-                trouvé = False
-                
-                i += decalage[ord(a[i + len(b) - 1])]
-        
-        if trouvé:
-            return True
-    return False
-```
-
-Ce n'est cependant pas suffisant pour garantir que l'on ne va pas vérifier 2 fois de suite le même caractère de $a$. Par exemple si la chaîne $a$ vaut `xxxx` et $b$ vaut `Yxx`
-
-Chaque caractère de $a$ (à partir du troisième) va être comparé à chaque caractère de $b$. La complexité maximale de l'algorithme est donc toujours en $\mathcal{O}(nm)$.
-
-### deuxième table de saut
-
-Pour améliorer la complexité de l'algorithme il faut faire en sorte que l'on ne compare chaque caractère de $a$ qu'un nombre constant de fois.
-
-Ceci est possible en utilisant une autre table.
-
-> décrire la table + algo + preuve O(m)
-{: .tbd}
-
-décrite là <https://fr.wikipedia.org/wiki/Algorithme_de_Boyer-Moore>. [Knuth, Morris et Pratt](http://static.cs.brown.edu/courses/csci1810/resources/ch2_readings/kmp_strings.pdf) on démontré qu'en utilisant cette deuxième table, chaque caractère de $a$ est au plus examiné 6 fois (la preuve est p343-346 du papier). Mais ceci dépasse le cadre de ce cours.
+* [Rabin-Karp](https://fr.wikipedia.org/wiki/Algorithme_de_Rabin-Karp). Cet algorithme est intéressant car :
+    * plutôt que de chercher la sous-chaine directement, on passe par une fonction de hashage. On compare donc des valeur de hash plutôt que des sous-chaine ce qui est plus rapide en général
+    * la fonction de hashage utilisée (nommée [empreinte de Rabin](https://fr.wikipedia.org/wiki/Algorithme_de_Rabin-Karp#Empreinte_de_Rabin)) est très facilement itérativement calculable. 
+* [Boyer-Moore-Horspool](https://fr.wikipedia.org/wiki/Algorithme_de_Boyer-Moore-Horspool). Intéressant car on compare de la fin au début et la fonction de saut est plus simple à comprendre que celle de Knuth-Morris-Pratt. En revanche, sa complexité est en $\mathcal{O}(mn)$ et n'a donc que peu d'intérêt à part historique
+* [Boyer-Moore](https://fr.wikipedia.org/wiki/Algorithme_de_Boyer-Moore). Algorithme également linéaire. Sa fonction de saut est compliquée à comprendre (presque autant que celle de Knuth-Morris-Paratt). Son intérêt — à part historique — est le calcul de la complexité qui est tout sauf trivial. On la doit à [Knuth, Morris et Pratt (p343-346)](http://static.cs.brown.edu/courses/csci1810/resources/ch2_readings/kmp_strings.pdf) (oui oui, c'est dans le même article où ils présentent leurs propre algorithme).
 
 ## vers les expressions régulières
 
-expressions régulières : <https://docs.python.org/fr/3/howto/regex.html>
+La recherche de sous-chaine n'est presque jamais utilisée en tant que tel en informatique car il faut trouver l'expression exacte :
+
+* on ne cherche pas les formes proches (ce qui est possible en utilisant l'alignement de séquences)
+* on ne cherche pas de motifs (on appelle celà des [expression régulières](https://fr.wikipedia.org/wiki/Expression_r%C3%A9guli%C3%A8re))
+
+Les expressions régulières dépassent de loin le cadre de ce cours mais c'est un sujet à la fois marrant, utile et intéressant. Si vous voulez vous initier en douceur, liser [le tuto python](https://docs.python.org/fr/3/howto/regex.html) qui y est consacré, ou passez directement à [O'reilly](https://www.oreilly.com/library/view/introducing-regular-expressions/9781449338879/).

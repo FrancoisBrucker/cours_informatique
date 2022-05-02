@@ -1,6 +1,6 @@
 ---
 layout: page
-title:  "étude / algorithmes de tris"
+title:  "projet / algorithmes de tris"
 category: cours
 tags: informatique cours 
 author: "François Brucker"

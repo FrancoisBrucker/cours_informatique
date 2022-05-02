@@ -32,7 +32,7 @@ Vous devez dans l'idéal être administrateur de votre ordinateur et avoir fait 
   * savoir ce qu'est une fonction, ses paramètres, son code et son retour
 * avoir une notion intuitive de ce qu'est un algorithme
   * pouvoir compter le nombre d'opération d'un algorithme simple
-  * connaitre le principe de récursivité
+  * connaître le principe de récursivité
 * notion de base en mathématiques (niveau lycée)
   * les entiers
   * fonctions et bijections entre ensembles
@@ -58,6 +58,7 @@ Ce cours est composée de trois grandes parties qui s'enchevêtrent.
 13. [étude : voyageur de commerce]({% link cours/algorithme-code-theorie/algorithme/etude-voyageur-de-commerce.md %})
 14. [structure : chaine de caractères]({% link cours/algorithme-code-theorie/algorithme/structure-chaine-de-caracteres.md %})
 15. [étude : recherche de sous-chaines]({% link cours/algorithme-code-theorie/algorithme/etude-recherche-sous-chaines.md %})
+16. [étude : alignement de séquences]({% link cours/algorithme-code-theorie/algorithme/etude-alignement-sequences.md %})
 
 ### théorie
 
@@ -85,6 +86,7 @@ Ce cours est composée de trois grandes parties qui s'enchevêtrent.
 13. [projet : programmation événementielle]({% link cours/algorithme-code-theorie/code/projet-programmation-evenementielle.md %})
 14. [fichiers]({% link cours/algorithme-code-theorie/code/fichiers.md %})
 15. [projet : fichiers]({% link cours/algorithme-code-theorie/code/projet-fichiers.md %})
+16. [projet : alignement de sequences]({% link cours/algorithme-code-theorie/code/projet-alignement-sequences.md %})
 
 ### autre
 
@@ -709,6 +711,33 @@ graph.links.push({
 graph.links.push({
   source: "fonctions de hash",
   target: "étude : recherche de sous-chaines",
+})
+
+graph.nodes.push({
+id: "étude : alignement de séquences",
+  link: "{% link cours/algorithme-code-theorie/algorithme/etude-alignement-sequences.md %}",
+  group: groups.algorithmie
+})
+
+graph.links.push({
+  source: "étude : recherche de sous-chaines",
+  target: "étude : alignement de séquences",
+})
+
+graph.nodes.push({
+id: "projet : alignement de sequences",
+  link: "{% link cours/algorithme-code-theorie/code/projet-alignement-sequences.md %}",
+  group: groups.code
+})
+
+graph.links.push({
+  source: "étude : alignement de séquences",
+  target: "projet : alignement de sequences",
+})
+
+graph.links.push({
+  source: "projet : fichiers",
+  target: "projet : alignement de sequences",
 })
 
 </script>

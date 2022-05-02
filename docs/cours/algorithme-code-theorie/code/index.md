@@ -18,6 +18,7 @@ Comment coder, maintenir et aimer ses programmes. Les projets constituent une pr
 7. [programmation objets]({% link cours/algorithme-code-theorie/code/programmation-objet/index.md %})
 8. [projet : programmation événementielle]({% link cours/algorithme-code-theorie/code/projet-programmation-evenementielle.md %})
 9. [fichiers]({% link cours/algorithme-code-theorie/code/fichiers.md %})
+10. [projet : alignement de sequences]({% link cours/algorithme-code-theorie/code/projet-alignement-sequences.md %})
 
 ## tbd
 

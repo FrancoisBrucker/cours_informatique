@@ -1,6 +1,6 @@
 ---
 layout: page
-title:  "étude / programmation événementielle"
+title:  "projet / programmation événementielle"
 category: cours
 tags: informatique cours 
 author: "François Brucker"

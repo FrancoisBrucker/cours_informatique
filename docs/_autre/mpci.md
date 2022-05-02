@@ -167,7 +167,8 @@ Au programme :
 
 #### vendredi {#v-11}
 
-1. alignement de séquences
+1. [étude : alignement de séquences]({% link cours/algorithme-code-theorie/algorithme/etude-alignement-sequences.md %})
+2. [projet : alignement de sequences]({% link cours/algorithme-code-theorie/code/projet-alignement-sequences.md %})
 
 ### semaine 12
 
@@ -188,6 +189,6 @@ Au programme :
 6. DS 2 : [sujet]({% link cours/algorithme-code-theorie/exercices/2021-2022/ds_2_sujet.md %})
 7. algorithmes gloutons : [sujet]({% link cours/algorithme-code-theorie/exercices/2021-2022/6_test_sujet.md %})
 
-## on s'entraine
+## on s'entraîne
 
 Les tests, les DS et les ET des années précédentes sont disponibles dans les [annales]({% link cours/algorithme-code-theorie/exercices/index.md %}).
