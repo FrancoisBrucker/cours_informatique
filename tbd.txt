@@ -12,5 +12,7 @@
 - faire un cours juste sur fichier texte (après dictionnaire t set ?)
 - faire un cours juste sur les données csv et json
 
-- Knuth-morris-pratt à refaire. C''st beaucoup trop dur. 
+- la remontée en moyenne doit  être simlpifiée. L'Extraire cette partie de l'algo et juste montrer que la proba baisse très fortement avec m-> comlpexité en moyenne avec le calcul explicite car ils n'ont pas vue les séries.
+- Knuth-morris-pratt à refaire. C'est beaucoup trop dur. 
  ajourer des étapes en se déplaçant aux premières lettres d'abord, puis aux deux premières lettre, etc. -> algo non optimal en m^3
+- knutt-miorris-pratt attention avec les indice T_b[j] plutôt que T_b[j-1]
