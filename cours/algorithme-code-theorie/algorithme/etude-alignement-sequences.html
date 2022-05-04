@@ -71,16 +71,6 @@
 
 </blockquote>
 
-<blockquote class="tbd">
-  <ul>
-    <li>definition problème</li>
-    <li>où on le retrouve (biologie/ correcteur orth)</li>
-    <li>analyse des possible</li>
-    <li>algorithme par programmation dynamique</li>
-    <li>problème connexe : alignement local</li>
-  </ul>
-</blockquote>
-
 <p>Nous allons voir dans cette étude comment définir/calculer une distance entre 2 chaînes de caractères. Nous utiliserons la <a href="https://fr.wikipedia.org/wiki/Distance_de_Levenshtein">distance d’édition</a>, très utilisée.</p>
 
 <h2 id="définition">définition</h2>
@@ -256,6 +246,8 @@ MER-OUS
 
 </blockquote>
 
+<p>Notez bien que si le coût est minimum, il <strong>peut</strong> y avoir plusieurs alignements ayant ce coût : l’alignement optimal <strong>n’est pas</strong> unique.</p>
+
 <h3 id="nombres-dalignements">nombres d’alignements</h3>
 
 <p>Il peut y avoir beaucoup (beaucoup) d’alignements possible entre 2 séquences.</p>
@@ -357,7 +349,7 @@ AC-GTC
       <td> </td>
       <td>$d(a[:i], -)$</td>
       <td>$d(a[:i], -)  + d(a[i], -)$</td>
-      <td> </td>
+      <td>$d(a[:n], -)$</td>
     </tr>
     <tr>
       <td>$b[0]$</td>
@@ -406,7 +398,7 @@ AC-GTC
     </tr>
     <tr>
       <td>$b[m-1]$</td>
-      <td> </td>
+      <td>$d(-, b[:m])$</td>
       <td> </td>
       <td> </td>
       <td> </td>
@@ -416,10 +408,527 @@ AC-GTC
   </tbody>
 </table>
 
-<p>Et nous donne un algorithme très facile pour la calculer, puisqu’il suffit de progresser ligne à ligne.</p>
+<p>Et nous donne un algorithme très facile pour la calculer, puisqu’il suffit re remplir la première ligne et la première colonne, puis de progresser ligne à ligne avec la formule :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">M</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">][</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">M</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">d</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> 
+                      <span class="n">M</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="o">-</span><span class="p">,</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span>
+                      <span class="n">M</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="o">-</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>On appellera cette matrice <strong>matrice d’édition</strong>. Et elle calculable en $\mathcal{O}(mn)$ opérations, ce qui est bien plus petit que le nombre total d’alignements !</p>
+
+<blockquote>
+  <p>La technique de création algorithmique utilisée est appelée <a href="https://fr.wikipedia.org/wiki/Programmation_dynamique">programmation dynamique</a> : un chemin optimal est constitué de sous-chemins eux-mêmes optimaux.</p>
+</blockquote>
+
+<h2 id="alignement-à-partir-de-la-matrice">alignement à partir de la matrice</h2>
+
+<blockquote class="tbd">
+  <p>remontée</p>
+</blockquote>
+
+<h2 id="exemple">exemple</h2>
+
+<p>Distance élémentaire :</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>A</td>
+      <td>C</td>
+      <td>G</td>
+      <td>T</td>
+    </tr>
+    <tr>
+      <td>A</td>
+      <td>0</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>C</td>
+      <td>2</td>
+      <td>0</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>G</td>
+      <td>2</td>
+      <td>2</td>
+      <td>0</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>T</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>-</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Aller de <code class="language-plaintext highlighter-rouge">ACTGATT</code> (horizontal) à <code class="language-plaintext highlighter-rouge">GCTAATCG</code> (vertical).</p>
+
+<blockquote class="a-faire">
+  <p>Créez la matrice d’édition <em>vierge</em> à utiliser</p>
+</blockquote>
+<details><summary>solution</summary><div>
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>-</th>
+      <th>A</th>
+      <th>C</th>
+      <th>T</th>
+      <th>G</th>
+      <th>A</th>
+      <th>T</th>
+      <th>T</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>G</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>C</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>T</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>A</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>A</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>T</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>C</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>G</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+</div></details>
+
+<blockquote class="a-faire">
+  <p>Remplissez la première ligne et la première colonne</p>
+</blockquote>
+<details><summary>solution</summary><div>
+<table>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>-</td>
+      <td>A</td>
+      <td>C</td>
+      <td>T</td>
+      <td>G</td>
+      <td>A</td>
+      <td>T</td>
+      <td>T</td>
+    </tr>
+    <tr>
+      <td>-</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <td>G</td>
+      <td>1</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>C</td>
+      <td>2</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>T</td>
+      <td>3</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>A</td>
+      <td>4</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>A</td>
+      <td>5</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>T</td>
+      <td>6</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>C</td>
+      <td>7</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>G</td>
+      <td>8</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+</div></details>
+
+<blockquote class="a-faire">
+  <p>Remplissez le reste de la matrice ligne à ligne</p>
+</blockquote>
+<details><summary>solution</summary><div>
+<table>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>-</td>
+      <td>A</td>
+      <td>C</td>
+      <td>T</td>
+      <td>G</td>
+      <td>A</td>
+      <td>T</td>
+      <td>T</td>
+    </tr>
+    <tr>
+      <td>-</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <td>G</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+      <td>3</td>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>C</td>
+      <td>2</td>
+      <td>3</td>
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <td>T</td>
+      <td>3</td>
+      <td>4</td>
+      <td>3</td>
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>A</td>
+      <td>4</td>
+      <td>3</td>
+      <td>4</td>
+      <td>3</td>
+      <td>4</td>
+      <td>3</td>
+      <td>4</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>A</td>
+      <td>5</td>
+      <td>4</td>
+      <td>5</td>
+      <td>4</td>
+      <td>5</td>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>T</td>
+      <td>6</td>
+      <td>5</td>
+      <td>6</td>
+      <td>5</td>
+      <td>6</td>
+      <td>5</td>
+      <td>4</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>C</td>
+      <td>7</td>
+      <td>6</td>
+      <td>5</td>
+      <td>6</td>
+      <td>7</td>
+      <td>6</td>
+      <td>5</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>G</td>
+      <td>8</td>
+      <td>7</td>
+      <td>6</td>
+      <td>7</td>
+      <td>6</td>
+      <td>7</td>
+      <td>6</td>
+      <td>7</td>
+    </tr>
+  </tbody>
+</table>
+
+</div></details>
+
+<blockquote class="a-faire">
+  <p>Donnez la distance d’édition entre <code class="language-plaintext highlighter-rouge">ACTGATT</code> et <code class="language-plaintext highlighter-rouge">GCTAATCG</code></p>
+</blockquote>
+
+<details><summary>solution</summary><div>
+<p>la dernière colonne de la dernière ligne de la matrice ($M[-1][-1]$) vaut 7 : c’est la distance d’édition</p>
+</div></details>
+
+<blockquote class="a-faire">
+  <p>Donnez un alignement réalisant la distance d’édition entre <code class="language-plaintext highlighter-rouge">ACTGATT</code> et <code class="language-plaintext highlighter-rouge">GCTAATCG</code></p>
+</blockquote>
+<details><summary>solution</summary><div>
+<blockquote class="tbd">
+  <p>à faire</p>
+</blockquote>
+
+</div></details>
 
 <h2 id="algorithme">algorithme</h2>
 
+<p>Nous allons créer l’algorithme en plusieurs parties :</p>
+
+<ol>
+  <li>rendre une fonction de coût élémentaire</li>
+  <li>rendre la matrice d’édition</li>
+  <li>utiliser la matrice d’édition pour connaitre la distance d’édition</li>
+  <li>utiliser la matrice d’édition pour connaitre un alignement optimal</li>
+</ol>
+
+<h3 id="distance-élémentaire">distance élémentaire</h3>
+
+<p>La distance élémentaire doit associer un réel positif à :</p>
+
+<ul>
+  <li>un couple de caractère pour une substitution</li>
+  <li>un caractère pour une insertion ou une suppression</li>
+</ul>
+
+<p>Ces informations peuvent être stockées dans un dictionnaire <code class="language-plaintext highlighter-rouge">dist</code> avec comme clés :</p>
+
+<ul>
+  <li>$(x, y)$ avec $x$ et $y$ deux caractères. On peut de plus supposer que $x \leq y$</li>
+  <li>$x$ avec $x$ un caractère</li>
+</ul>
+
+<p>En supposant que l’on ait un dictionnaire <code class="language-plaintext highlighter-rouge">dist</code> de ce type, il sera plus aisé de d’avoir une fonction de signature <code class="language-plaintext highlighter-rouge">f(x, y=None)</code> telle que :</p>
+
+<ul>
+  <li>si $x$ et $y$ sont donné, rend <code class="language-plaintext highlighter-rouge">dist[(x, y)]</code> si $x &lt; y$ et <code class="language-plaintext highlighter-rouge">dist[(y, x)]</code> sinon.</li>
+  <li>si uniquement $x$ est renseigné ($y$ vaut <code class="language-plaintext highlighter-rouge">None</code>), la fonction devrait rendre $d[x]$.</li>
+</ul>
+
+<p>On peut alors créer une fonction qui prend en paramètre ce dictionnaire et rend une fonction de calcul. Ceci est facile à faire en python, et savoir créer une fonction qui rend une fonction est une compétence qui peut se révéler utile :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">crer_fonction</span><span class="p">(</span><span class="n">dist</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">y</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">dist</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">dist</span><span class="p">[(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">dist</span><span class="p">[(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="n">f</span>
+</code></pre></div></div>
+
+<h3 id="matrice-dédition">matrice d’édition</h3>
+
+<p>Maintenant qu’on a la fonction d’édition élémentaire, on peut écrire l’algorithme qui crée la matrice d’édition</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">calcul_matrice</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
+    <span class="n">M</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)]</span>
+    <span class="n">M</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)):</span>
+        <span class="n">M</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">M</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)):</span>
+        <span class="n">M</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">M</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)):</span>
+            <span class="n">M</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">][</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">M</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span>
+                                  <span class="n">M</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> 
+                                  <span class="n">M</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">]))</span>
+
+    <span class="k">return</span> <span class="n">M</span>
+</code></pre></div></div>
+
+<p>La distance d’édition entre $a$ et $b$ est alors <code class="language-plaintext highlighter-rouge">M[-1][-1]</code>.</p>
+
+<h3 id="alignement-à-partir-de-la-matrice-dédition">alignement à partir de la matrice d’édition</h3>
+
+<p>La matrice d’édition nous permet de retrouver l’alignement, en <em>remontant</em> la matrice.</p>
+
+<p>Ecrivez l’algorithme qui, à partir de deux séquences $a$ et $b$ et d’une distance élémentaire écrite sous forme d’une fonction rend la matrice d’édition.</p>
+
+<p>permet de rendre la matrice</p>
 <blockquote class="tbd">
   <p>écrire l’algorithme + complexité</p>
 </blockquote>
@@ -428,11 +937,6 @@ AC-GTC
   <p>chemin = alignement</p>
 </blockquote>
 
-<h2 id="exemple">exemple</h2>
-
-<blockquote class="tbd">
-  <p>dans le poly</p>
-</blockquote>
 
   </div>
 
