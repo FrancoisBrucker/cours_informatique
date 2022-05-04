@@ -684,16 +684,16 @@ ACGAGACGACT   : la chaîne b
   <li>on peut continuer la chaine commencée avec $j-1$. Ceci se passe si $b[k] = c$ avec  $T_b[(j-1)-1] = k$. Dans ce cas là $T_b[j-1] = k + 1$</li>
   <li>on ne peut pas continuer la chaine commencée avec $j-1$. Ceci se passe si $b[k] \neq c$ avec  $T_b[(j-1) -1] = k$. On a alors 2 sous-cas :
     <ul>
-      <li>$k \leq 1$ et $b[k] \neq c$ : on a $T_b[j-1] = 0$</li>
-      <li>$k &gt; 1$ et $b[k] \neq c$. Ce problème est équivalent à trouver :
+      <li>$k \leq 1$ (et $b[k] \neq c$) : on a $T_b[j-1] = 0$</li>
+      <li>$k &gt; 1$ (et $b[k] \neq c$). Ce problème est équivalent à trouver :
         <ul>
-          <li>le plus grand $k’$ possible tel que début de $b$ qui coïncide avec la fin de $b[1:j-2]$</li>
+          <li>le plus grand $k’$ possible tel que début de $b$ qui coïncide avec la fin de $b[1:(j-1)-1]$</li>
           <li>et tel que $b[k’ + 1] = c$</li>
         </ul>
 
-        <p>On a déjà fait une grande partie du travail puisque : $k’$ est aussi le plus grand entier tel que la fin de $b[1:k + 1]$ coincide avec le début de $b$ et tel que $b[k’ + 1] = c$</p>
+        <p>On a déjà fait une grande partie du travail puisque : $k’$ est aussi le plus grand entier tel que la fin de $b[1:k + 1]$ coincide avec le début de $b$.</p>
 
-        <p>Ceci revient a faire une récurrence en posant : j = k + 1 (c’est le cas $j=10$ de l’exemple)</p>
+        <p>On peut donc poser $j = k + 1$ et continuer l’algorithme.</p>
       </li>
     </ul>
   </li>
