@@ -217,7 +217,7 @@
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sous_chaine_naif_FAUX_4</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
     <span class="n">trouvé</span> <span class="o">=</span> <span class="bp">True</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)):</span>
             <span class="k">if</span> <span class="n">b</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">]:</span>
                 <span class="n">trouvé</span> <span class="o">=</span> <span class="bp">False</span>
@@ -247,7 +247,7 @@
   <li>retour de fonction : $\mathcal{O}(1)$ opérations</li>
 </ol>
 
-<p>On en conclut que la complexité totale se niche dans l’exécution des deux boucles <code class="language-plaintext highlighter-rouge">for</code> imbriquées, et est donc de complexité : $\mathcal{O}((n - m) \cdot m) \simeq \mathcal{O}(n\cdot m)$ si $m \gg n$ ce qui est généralement le cas.</p>
+<p>On en conclut que la complexité totale se niche dans l’exécution des deux boucles <code class="language-plaintext highlighter-rouge">for</code> imbriquées, et est donc de complexité : $\mathcal{O}((n - m) \cdot m) = \mathcal{O}(nm + m^2) \sim \mathcal{O}(n\cdot m)$ si $m \gg n$ ce qui est généralement le cas.</p>
 
 <h4 id="complexité-minimale">complexité minimale</h4>
 
@@ -258,7 +258,7 @@
 <p>On pourrait envisager deux calculs possible :</p>
 
 <ul>
-  <li>complexité en moyenne $b$ est une sous-chaine de $a$</li>
+  <li>complexité en moyenne lorsque $b$ est une sous-chaine de $a$</li>
   <li>complexité en moyenne lorsque $b$ n’est pas une sous-chaine de $a$</li>
 </ul>
 
@@ -400,6 +400,26 @@
   <p>L’utilisation de <code class="language-plaintext highlighter-rouge">break</code> et de <code class="language-plaintext highlighter-rouge">continue</code> permet de distinguer clairement dan l’algorithme ce qui est de l’ordre du cas général (la boucle) et du cas particulier (sortie de boucle)</p>
 </blockquote>
 
+<h3 id="trouver-toutes-les-sous-chaines">trouver toutes les sous-chaines</h3>
+
+<p>Si l’on cherche à trouver tous les indices où se trouvent $b$ dans $a$, il faut modifier l’algorithme.</p>
+
+<details><summary>solution</summary><div>
+<blockquote class="tbd">
+  <p>à faire</p>
+</blockquote>
+
+</div></details>
+
+<p>Quel est sa complexité ?</p>
+
+<details><summary>solution</summary><div>
+<blockquote class="tbd">
+  <p>à faire</p>
+</blockquote>
+
+</div></details>
+
 <h2 id="algorithme-de-knuth-morris-pratt">Algorithme de Knuth-Morris-Pratt</h2>
 
 <p>L’algorithme <code class="language-plaintext highlighter-rouge">sous_chaine_naif_amélioré</code> est construit autour de la boucle for en <code class="language-plaintext highlighter-rouge">i</code> qui teste si $b$ est présent à partir de chaque position de $a$. A chaque étape on compare un élément de $b$ à l’élément de l’index $i + j$ de $a$. Le principal soucis de l’algorithme est que le nombre $i+j$ peut diminuer.</p>
@@ -438,7 +458,7 @@ b:           bbbbbb
 i/j:         i  j
 </code></pre></div></div>
 
-<p>Alors à l’étape suivante on a :</p>
+<p>Alors à l’étape suivante on ait :</p>
 
 <ol>
   <li>
@@ -463,9 +483,13 @@ i/j:         i  j
  i/j:          i j
 </code></pre></div>    </div>
 
-    <p>Qui correspond au fait que l’on chercher si $b$ est une sous-chaine de $a$ à commençant à une nouvelle position. Dans ce cas là, on est pas obligé de recommencer à $j=0$ car on connait déjà les premiers caractères de $a$.</p>
+    <p>Qui correspond au fait que l’on chercher si $b$ est une sous-chaine de $a$ à commençant à une nouvelle position. Dans ce cas là, on est pas obligé de recommencer à $j=0$ car on connaît déjà les premiers caractères de $a$.</p>
   </li>
 </ol>
+
+<blockquote class="note">
+  <p>Le <em>curseur</em> <code class="language-plaintext highlighter-rouge">v</code> (à la position $i+j$ ne doit qu’augmenter)</p>
+</blockquote>
 
 <p>Prenons un cas concret. Supposons que l’on se trouve dans cette configuration :</p>
 
@@ -475,7 +499,7 @@ b:           ATATCG
 i/j:         i  j
 </code></pre></div></div>
 
-<p>Comme les caractères $a[i +j$ et $b[j]$ coïncident, l’étape suivante consistera à augmenter $j$ pour continuer la vérification :</p>
+<p>Comme les caractères $a[i +j]$ et $b[j]$ coïncident, l’étape suivante consistera à augmenter $j$ pour continuer la vérification :</p>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>i + j :          v
 a:       ....ATATGACT....
@@ -549,12 +573,12 @@ i/j:           i j
 </ul>
 
 <blockquote class="note">
-  <p>La valeur $T_b[j-1]$ correspond à la longueur maximale d’un début de $b$ qui correspond à une fin de $b[1:j]$.</p>
+  <p>La valeur $T_b[j-1]$ correspond à la longueur maximale d’un début de $b$ qui correspond à une fin de $b[1:j]$ (ce n’est <strong>pas</strong> de $b[:j]$ car il <strong>faut</strong> décaler $b$ d’au moins 1 case).</p>
 </blockquote>
 
 <p>Nous donnerons plus tard un moyen efficace de le calculer. Mais si $b$ vaut <code class="language-plaintext highlighter-rouge">ATATCG</code> on aurait par exemple $T_b = [0, 0, 1, 2, 0]$.</p>
 
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 00120 
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>00120 
 ATATCG
   ATATCG
 </code></pre></div></div>
@@ -618,6 +642,14 @@ ACGAGACGACT   : la chaîne b
 
 <p>Le tableau $T_b$ vaut : $[0, 0, 0, 1, 0, 1, 2, 3, 4, 2]$.</p>
 
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0123456789    : index
+ACGAGACGACT   : la chaîne b
+   A          : une répétition de 1 caractères
+     ACGA     : une répétition de 4 caractères
+        AC    : une répétition de 2 caractères
+0001012342    : Tb
+</code></pre></div></div>
+
 <p>Ceci nous permet de créer un algorithme naïf pour trouver $T_b$.</p>
 <details><summary>écrivez cet algorithme</summary><div>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">algo_naif_construction_t</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
@@ -635,23 +667,22 @@ ACGAGACGACT   : la chaîne b
 
 </div></details>
 
-<p>Cependant, sa complexité est de l’ordre de $\mathcal{O}(m^2)$, ce qui est trop…</p>
-
-<p>L’idée géniale de Knuth, Morris et Pratt est d’avoir remarqué que l’on peut construire le tableau de façon itérative et en $\mathcal{O}(m)$ opérations !</p>
-
-<p>On commence avec un tableau où seul $T_b[0] = 0$ est rempli (pour $j=1$), puis on considère que $j=2$.
-On note :</p>
+<p>La complexité de cet algorithme est clairement en $\mathcal{O}(m^2)$. Utiliser cet algorithme pour créer $T_b$ nous donne alors une complexité de $\mathcal{O}(n + m^2)$ :</p>
 
 <ul>
-  <li>$T_b[j-1] = k_0$</li>
-  <li>$c = b[j-1]$</li>
+  <li>c’est mieux que l’algorithme naïf dans le cas le max</li>
+  <li>c’est moins bien en moyenne</li>
 </ul>
 
-<p>On cherche $k$ tel que $b[:k_0]$ coïncide avec la fin de la chaîne $b[1:j-1] + [c]$ : il y a 2 cas à considérer :</p>
+<p>ON peut faire bien mieux avec un algorithme (très bel) algorithme de Knuth, Morris et Pratt. Ils ont en remarqué que l’on peut construire le tableau de façon itérative et en $\mathcal{O}(m)$ opérations !</p>
+
+<p>Décrivons cette idée. On commence avec un tableau où seul $T_b[0] = 0$ est rempli (pour $j=1$). On considère que $j \geq 2$ et on note $c = b[j-1]$</p>
+
+<p>On cherche $i$ tel que $b[:i]$ coïncide avec la fin de la chaîne $b[1:j-1] + [c]$ : il y a 2 cas à considérer :</p>
 
 <ol>
   <li>on peut continuer la chaine commencée avec $j-1$. Ceci se passe si $b[k] = c$ avec  $T_b[(j-1)-1] = k$. Dans ce cas là $T_b[j-1] = k + 1$</li>
-  <li>on ne peut pas continuer la chaine commencée avec $j-1$. Ceci se passe si $b[k] \neq c$ avec  $T_b[j-2] = k$. On a alors 2 sous-cas :
+  <li>on ne peut pas continuer la chaine commencée avec $j-1$. Ceci se passe si $b[k] \neq c$ avec  $T_b[(j-1) -1] = k$. On a alors 2 sous-cas :
     <ul>
       <li>$k \leq 1$ et $b[k] \neq c$ : on a $T_b[j-1] = 0$</li>
       <li>$k &gt; 1$ et $b[k] \neq c$. Ce problème est équivalent à trouver :
@@ -695,15 +726,49 @@ On note :</p>
     <span class="k">return</span> <span class="n">T_b</span>
 </code></pre></div></div>
 
-<p>La complexité de cette fonction est en $\mathcal{O(m)}$ car à chaque étape :</p>
+<p>Calculons la complexité de cette algorithme. Elle est proportionnelle au nombre d’étapes puisque toutes les autres opérations sont en $\mathcal{O}(1)$.</p>
+
+<p>À chaque étape :</p>
 
 <ul>
+  <li>soit $k$ reste constant à 0</li>
   <li>soit $k$ augmente de 1</li>
   <li>soit $k$ diminue strictement</li>
-  <li>soit $k$ reste constant à 0</li>
 </ul>
 
-<p>Il y a au plus $m$ étapes où $k$ reste constant ou augmente donc au plus $m$ étapes où $k$ diminue.</p>
+<p>Il y a donc au plus autant d’étapes où $k$ diminue que d’étapes où $k$ augmente ou reste constant.</p>
+
+<p>Comme $j$ augmente lorsque $k$ reste constant ou augmente, et que l’on s’arrête lorsque $j$ vaut $m-1$, il y a au plus $m$ étapes où $k$ reste constant ou augmente.</p>
+
+<p>On en déduit qu’il a donc également au plus $m$ étapes où $k$ diminue.</p>
+
+<p>Le nombre total d’étape est en $\mathcal{O(m)}$.</p>
+
+<blockquote class="note">
+  <p>La complexité de la création de $T_b$ est en $\mathcal{O(m)}$.</p>
+
+  <p>La complexité de l’algorithme de Knuth-Morris-Pratt est en $\mathcal{O}(n +n)$ opérations : elle est minimale.</p>
+</blockquote>
+
+<h3 id="trouver-toutes-les-sous-chaines-1">trouver toutes les sous-chaines</h3>
+
+<p>Si l’on cherche à trouver tous les indices où se trouvent $b$ dans $a$, il faut modifier l’algorithme.</p>
+
+<details><summary>solution</summary><div>
+<blockquote class="tbd">
+  <p>à faire</p>
+</blockquote>
+
+</div></details>
+
+<p>Quel est sa complexité ?</p>
+
+<details><summary>solution</summary><div>
+<blockquote class="tbd">
+  <p>à faire</p>
+</blockquote>
+
+</div></details>
 
 <h2 id="autre-algorithmes">Autre algorithmes</h2>
 
