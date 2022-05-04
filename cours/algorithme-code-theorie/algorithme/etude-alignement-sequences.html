@@ -97,8 +97,8 @@ MARLOU
 <p>La distance est donc égale :</p>
 
 <ul>
-  <li>au nombre de lettre différentes</li>
-  <li>à la longueur des mots moins le nombre de lettre identiques</li>
+  <li>au nombre de lettres différentes</li>
+  <li>à la longueur des mots moins le nombre de lettres identiques</li>
 </ul>
 
 <p>Ceci pose cependant deux (gros) problèmes :</p>
@@ -114,7 +114,7 @@ MARLOU
 </code></pre></div>    </div>
   </li>
   <li>
-    <p>on peut utiliser l’allongement pour changer la distance de 2 chaînes de même longueurs :</p>
+    <p>on peut utiliser l’allongement pour changer la distance de 2 chaînes de mêmes longueurs :</p>
 
     <div class="language-text highlighter-rouge">
 <div class="highlight"><pre class="highlight"><code> MEROUS       MER-OUS
@@ -134,7 +134,7 @@ MARLOU
   <ul>
     <li>$a^\star =a^\star_0\dots a^\star_{L-1}$</li>
     <li>$b^\star =b^\star_0\dots b^\star_{L-1}$</li>
-    <li>chaque caractère de $a^\star$ et $b^\star$ sont soit <code class="language-plaintext highlighter-rouge">-</code> soit des caractères des chaines</li>
+    <li>chaque caractère de $a^\star$ et $b^\star$ est soit <code class="language-plaintext highlighter-rouge">-</code> soit un caractère de la chaine initiale</li>
     <li>$(a^\star_i, b^\star_i) \neq (-, -)$ pour tout $0 \leq i &lt; L$</li>
     <li>$a^\star$ (respectivement $b^\star$) privé des caractères <code class="language-plaintext highlighter-rouge">-</code> est égal à $a$ (<em>resp.</em> $b$)</li>
   </ul>
@@ -157,8 +157,8 @@ MARLOU
 
 <ul>
   <li>elle est symétrique</li>
-  <li>positive</li>
-  <li>transitive</li>
+  <li>$d(a, a) = 0$</li>
+  <li>elle vérifie l’inégalité triangulaire</li>
 </ul>
 
 <h3 id="évolution-dune-séquence-en-lautre">évolution d’une séquence en l’autre</h3>
@@ -192,7 +192,7 @@ MARLOU-
 
 <h3 id="nombre-dalignements">nombre d’alignements</h3>
 
-<p>Il peut y avoir beaucoup (beaucoup) d’alignements possible entre 2 séquences.</p>
+<p>Il peut y avoir beaucoup (beaucoup) d’alignements possibles entre 2 séquences.</p>
 
 <details><summary>exercice : trouver au moins 3 alignements différents entre les séquences ACTGC et ACGTC</summary><div>
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ACTG-C
@@ -214,7 +214,7 @@ AC-GTC
 
 </div></details>
 
-<p>On peut remarquer que ce nombre ne dépend que de la longueur des chaines $a$ et $b$, par de leur contenu. On note alors $f(n, m)$ le nombre possible d’alignements entre une chaines de longueur $n$ et une chaîne de longueur $m$.</p>
+<p>On peut remarquer que ce nombre ne dépend que de la longueur des chaines $a$ et $b$, pas de leur contenu. On note alors $f(n, m)$ le nombre possible d’alignements entre une chaîne de longueur $n$ et une chaîne de longueur $m$.</p>
 
 <p>Comme un alignement ne peut finir sur $(-, -)$, on ne peut qu’avoir 3 possibilités :</p>
 
@@ -232,7 +232,7 @@ AC-GTC
   <li>aligner $a$ et $b_0\dots b_{m-2}$ et ajouter $(-, b_{m-1})$ à la fin de cet alignement</li>
 </ul>
 
-<p>Ce qui se donne l’équation de récurrence suivante :</p>
+<p>Ce qui donne l’équation de récurrence suivante :</p>
 
 \[f(n, m) = f(n − 1, m − 1) + f(n − 1, m) + f(n, m − 1)\]
 
@@ -244,7 +244,7 @@ AC-GTC
 
 <ul>
   <li>pour $n = 10$, on a déjà  $f(10, 10) \sim 34537380$</li>
-  <li>pour $n = 10$, on a déjà  $f(100, 100) \sim 8.67 \cdot 10^{75}$</li>
+  <li>pour $n = 100$, on a déjà  $f(100, 100) \sim 8.67 \cdot 10^{75}$</li>
 </ul>
 
 <blockquote>
@@ -253,7 +253,7 @@ AC-GTC
 
 <h2 id="distance-dédition">distance d’édition</h2>
 
-<p>L’alignement entre 2 séquences nous permet de définir, à partir d’une distance pour alignement, d’une distance pour séquences :</p>
+<p>L’alignement entre 2 séquences nous permet de définir, à partir d’une distance pour alignement, une distance pour séquences :</p>
 
 \[D(a, b) = \min \{ S(a^\star, b^\star) \mid \text{pour tous les alignements } (a^\star, b^\star) \text{ entre } a \text{ et } b\}\]
 
@@ -273,7 +273,7 @@ AC-GTC
 1 &amp; \text{sinon}
 \end{cases}\]
 
-<p>De la même façon que l’on a fait pour établir l’équation de récurrence pour déterminer le nombre d’alignement, on a que $(a^\star_{L-1}, b^\star_{L-1})$ peut être égal à :</p>
+<p>De la même façon que l’on a fait pour établir l’équation de récurrence pour déterminer le nombre d’alignements, on a que $(a^\star_{L-1}, b^\star_{L-1})$ peut être égal à :</p>
 
 <ul>
   <li>$(a_{n-1}, b_{m-1})$ et donc $(a^\star_0\dots a^\star_{L-2}, b^\star_0\dots b^\star_{L-2})$ est un alignement des séquences $a_0\dots a_{n-2}$ et $b_0\dots b_{m-2}$</li>
@@ -294,7 +294,7 @@ AC-GTC
 \[d(a, b) = \min  \begin{cases}
       d(a[:-1], b[:-1]) + \delta(a_{n-1}, b_{m-1}) &amp; \\
      d(a[:-1], b) + 1 &amp; \\
-      d(a, b[:j]) + 1 &amp;\\
+      d(a, b[:-1]) + 1 &amp;\\
     \end{cases}\]
 
 <blockquote class="note">
@@ -390,7 +390,7 @@ AC-GTC
   </tbody>
 </table>
 
-<p>Et nous donne un algorithme très facile pour la calculer, puisqu’il suffit re remplir la première ligne et la première colonne, puis de progresser ligne à ligne avec la formule:</p>
+<p>Et nous donne un algorithme très facile pour la calculer, puisqu’il suffit de remplir la première ligne et la première colonne, puis de progresser ligne à ligne avec la formule:</p>
 
 \[M[i + 1][j + 1] = \min \begin{cases}
 M[i][j] + 0  &amp; \text{si } a[j] = b[i]\\
@@ -399,7 +399,7 @@ M[i + 1][j] + 1 &amp;\\
 M[i][j + 1] + 1&amp;\\
 \end{cases}\]
 
-<p>La distance entre $a$ et $b$ qui correspond à un alignement de distance minimale est alors à la dernière ligne et dernire colonne de la matrice (en $M[-1][-1]$).</p>
+<p>La distance entre $a$ et $b$ qui correspond à un alignement de distance minimale est alors à la dernière ligne et dernière colonne de la matrice (en $M[-1][-1]$).</p>
 
 <h3 id="exemple-pour-la-distance-élémentaire">exemple pour la distance élémentaire</h3>
 
@@ -1080,12 +1080,12 @@ GCTAATCG
   <li>$\delta’(u, -) = \delta’(-, u) = K$, une constante.</li>
 </ul>
 
-<p>De façon général, on défini alors un cout entre caractères défini tel que</p>
+<p>De façon général, on définit alors un coût entre caractères défini tel que</p>
 
 <ul>
   <li>$d(x, -)$ est appelé <strong>coût de suppression</strong>,</li>
-  <li>$d(-, x)$ est appelé <strong>coût d’insertion</strong>et est égal à $d(x, -)$</li>
-  <li>$d(x, y)$ avec $x$ et $y$ 2 est nommé <strong>coût de substitution</strong>
+  <li>$d(-, x)$ est appelé <strong>coût d’insertion</strong> et est égal à $d(x, -)$</li>
+  <li>$d(x, y)$ est nommé <strong>coût de substitution</strong>
 </li>
 </ul>
 
