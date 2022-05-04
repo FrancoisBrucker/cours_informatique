@@ -40,8 +40,8 @@ MARLOU
 
 La distance est donc égale :
 
-* au nombre de lettre différentes
-* à la longueur des mots moins le nombre de lettre identiques
+* au nombre de lettres différentes
+* à la longueur des mots moins le nombre de lettres identiques
 
 Ceci pose cependant deux (gros) problèmes :
 
@@ -53,7 +53,7 @@ Ceci pose cependant deux (gros) problèmes :
     MARLOU
     ```
 
-2. on peut utiliser l'allongement pour changer la distance de 2 chaînes de même longueurs :
+2. on peut utiliser l'allongement pour changer la distance de 2 chaînes de mêmes longueurs :
 
     ```text
     MEROUS       MER-OUS
@@ -69,7 +69,7 @@ Il faut donc tout refaire... Une solution pour unifier les deux approches est de
 >
 > * $a^\star =a^\star_0\dots a^\star_{L-1}$
 > * $b^\star =b^\star_0\dots b^\star_{L-1}$
-> * chaque caractère de $a^\star$ et $b^\star$ sont soit `-` soit des caractères des chaines
+> * chaque caractère de $a^\star$ et $b^\star$ est soit `-` soit un caractère de la chaine initiale
 > * $(a^\star_i, b^\star_i) \neq (-, -)$ pour tout $0 \leq i < L$
 > * $a^\star$ (respectivement $b^\star$) privé des caractères `-` est égal à $a$ (*resp.* $b$)
 >
@@ -94,8 +94,8 @@ $$
 Notez que $D$ est bien une distance :
 
 * elle est symétrique
-* positive
-* transitive
+* $d(a, a) = 0$
+* elle vérifie l'inégalité triangulaire
 
 ### évolution d'une séquence en l'autre
 
@@ -120,7 +120,7 @@ En allant de gauche à droite on passe de `MEROUS` à `MARLOU` :
 
 ### nombre d'alignements
 
-Il peut y avoir beaucoup (beaucoup) d'alignements possible entre 2 séquences.
+Il peut y avoir beaucoup (beaucoup) d'alignements possibles entre 2 séquences.
 
 {% details exercice : trouver au moins 3 alignements différents entre les séquences ACTGC et ACGTC %}
 
@@ -146,7 +146,7 @@ et bien d'autres encore sont possibles.
 
 {% enddetails %}
 
-On peut remarquer que ce nombre ne dépend que de la longueur des chaines $a$ et $b$, par de leur contenu. On note alors $f(n, m)$ le nombre possible d'alignements entre une chaines de longueur $n$ et une chaîne de longueur $m$.
+On peut remarquer que ce nombre ne dépend que de la longueur des chaines $a$ et $b$, pas de leur contenu. On note alors $f(n, m)$ le nombre possible d'alignements entre une chaîne de longueur $n$ et une chaîne de longueur $m$.
 
 Comme un alignement ne peut finir sur $(-, -)$, on ne peut qu'avoir 3 possibilités :
 
@@ -160,7 +160,7 @@ Aligner $a$ et $b$ revient alors soit à aligner :
 * aligner $a_0\dots a_{n-2}$ et $b$ et ajouter $(a_{n-1}, -)$ à la fin de cet alignement
 * aligner $a$ et $b_0\dots b_{m-2}$ et ajouter $(-, b_{m-1})$ à la fin de cet alignement
 
-Ce qui se donne l'équation de récurrence suivante :
+Ce qui donne l'équation de récurrence suivante :
 
 $$
 f(n, m) = f(n − 1, m − 1) + f(n − 1, m) + f(n, m − 1)
@@ -175,13 +175,13 @@ $$
 Ce nombre est affreusement énorme :
 
 * pour $n = 10$, on a déjà  $f(10, 10) \sim 34537380$
-* pour $n = 10$, on a déjà  $f(100, 100) \sim 8.67 \cdot 10^{75}$
+* pour $n = 100$, on a déjà  $f(100, 100) \sim 8.67 \cdot 10^{75}$
 
 > Il n'y a qu'environ $10^{80}$ particules dans l'univers.
 
 ## distance d'édition
 
-L'alignement entre 2 séquences nous permet de définir, à partir d'une distance pour alignement, d'une distance pour séquences :
+L'alignement entre 2 séquences nous permet de définir, à partir d'une distance pour alignement, une distance pour séquences :
 
 $$
 D(a, b) = \min \{ S(a^\star, b^\star) \mid \text{pour tous les alignements } (a^\star, b^\star) \text{ entre } a \text{ et } b\}
@@ -207,7 +207,7 @@ D(a^\star, b^\star) = \sum_{i=0}^{L-1} \delta(a^\star_i, b^\star_i) = \sum_{i=0}
 \end{cases}
 $$
 
-De la même façon que l'on a fait pour établir l'équation de récurrence pour déterminer le nombre d'alignement, on a que $(a^\star_{L-1}, b^\star_{L-1})$ peut être égal à :
+De la même façon que l'on a fait pour établir l'équation de récurrence pour déterminer le nombre d'alignements, on a que $(a^\star_{L-1}, b^\star_{L-1})$ peut être égal à :
 
 * $(a_{n-1}, b_{m-1})$ et donc $(a^\star_0\dots a^\star_{L-2}, b^\star_0\dots b^\star_{L-2})$ est un alignement des séquences $a_0\dots a_{n-2}$ et $b_0\dots b_{m-2}$
 * $(a_{n-1}, -)$ et donc $(a^\star_0\dots a^\star_{L-2}, b^\star_0\dots b^\star_{L-2})$ est un alignement des séquences $a_0\dots a_{n-2}$ et $b$
@@ -225,7 +225,7 @@ $$
 d(a, b) = \min  \begin{cases}
       d(a[:-1], b[:-1]) + \delta(a_{n-1}, b_{m-1}) & \\
      d(a[:-1], b) + 1 & \\
-      d(a, b[:j]) + 1 &\\
+      d(a, b[:-1]) + 1 &\\
     \end{cases}
 $$
 
@@ -254,7 +254,7 @@ Et nous donne une représentation matricielle de l'alignement et de la distance 
 |...        |     |        |     |                    |                       |         |
 |$b[m-1]$   | $m$    |        |     |                    |                       |$d(a,b)$ |
 
-Et nous donne un algorithme très facile pour la calculer, puisqu'il suffit re remplir la première ligne et la première colonne, puis de progresser ligne à ligne avec la formule:
+Et nous donne un algorithme très facile pour la calculer, puisqu'il suffit de remplir la première ligne et la première colonne, puis de progresser ligne à ligne avec la formule:
 
 $$
 M[i + 1][j + 1] = \min \begin{cases}
@@ -265,7 +265,7 @@ M[i][j + 1] + 1&\\
 \end{cases}
 $$
 
-La distance entre $a$ et $b$ qui correspond à un alignement de distance minimale est alors à la dernière ligne et dernire colonne de la matrice (en $M[-1][-1]$).
+La distance entre $a$ et $b$ qui correspond à un alignement de distance minimale est alors à la dernière ligne et dernière colonne de la matrice (en $M[-1][-1]$).
 
 ### exemple pour la distance élémentaire
 
@@ -425,11 +425,11 @@ On pourra alors utiliser la distance :
 * $\delta'(u, v)$ vaut la distance entre les touches $u$ et $v$ sur le clavier
 * $\delta'(u, -) = \delta'(-, u) = K$, une constante.
 
-De façon général, on défini alors un cout entre caractères défini tel que  
+De façon général, on définit alors un coût entre caractères défini tel que  
 
 * $d(x, -)$ est appelé **coût de suppression**,
-* $d(-, x)$ est appelé **coût d'insertion**et est égal à $d(x, -)$
-* $d(x, y)$ avec $x$ et $y$ 2 est nommé **coût de substitution**
+* $d(-, x)$ est appelé **coût d'insertion** et est égal à $d(x, -)$
+* $d(x, y)$ est nommé **coût de substitution**
 
 ### définition du cas général
 
