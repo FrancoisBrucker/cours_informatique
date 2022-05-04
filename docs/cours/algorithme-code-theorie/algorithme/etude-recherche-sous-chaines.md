@@ -586,14 +586,14 @@ On cherche $i$ tel que $b[:i]$ coïncide avec la fin de la chaîne $b[1:j-1] + [
 
 1. on peut continuer la chaine commencée avec $j-1$. Ceci se passe si $b[k] = c$ avec  $T_b[(j-1)-1] = k$. Dans ce cas là $T_b[j-1] = k + 1$
 2. on ne peut pas continuer la chaine commencée avec $j-1$. Ceci se passe si $b[k] \neq c$ avec  $T_b[(j-1) -1] = k$. On a alors 2 sous-cas :
-    * $k \leq 1$ et $b[k] \neq c$ : on a $T_b[j-1] = 0$
-    * $k > 1$ et $b[k] \neq c$. Ce problème est équivalent à trouver :
-        * le plus grand $k'$ possible tel que début de $b$ qui coïncide avec la fin de $b[1:j-2]$
+    * $k \leq 1$ (et $b[k] \neq c$) : on a $T_b[j-1] = 0$
+    * $k > 1$ (et $b[k] \neq c$). Ce problème est équivalent à trouver :
+        * le plus grand $k'$ possible tel que début de $b$ qui coïncide avec la fin de $b[1:(j-1)-1]$
         * et tel que $b[k' + 1] = c$
 
-        On a déjà fait une grande partie du travail puisque : $k'$ est aussi le plus grand entier tel que la fin de $b[1:k + 1]$ coincide avec le début de $b$ et tel que $b[k' + 1] = c$
+        On a déjà fait une grande partie du travail puisque : $k'$ est aussi le plus grand entier tel que la fin de $b[1:k + 1]$ coincide avec le début de $b$.
 
-        Ceci revient a faire une récurrence en posant : j = k + 1 (c'est le cas $j=10$ de l'exemple)
+        On peut donc poser $j = k + 1$ et continuer l'algorithme.
 
 Cette procédure peut s'écrire très simplement avec l'algorithme suivant :
 
