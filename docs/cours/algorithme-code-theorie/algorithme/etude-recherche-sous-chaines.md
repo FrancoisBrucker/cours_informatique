@@ -573,7 +573,7 @@ def algo_naif_construction_t(b):
 
 {% enddetails %}
 
-La complexité de cet algorithme est clairement en $\mathcal{O}(m^2)$. Utiliser cet algorithme pour créer $T_b$ nous donne alors une complexité de $\mathcal{O}(n + m^2)$ :
+La complexité de cet algorithme est clairement en $\mathcal{O}(m^3)$. Utiliser cet algorithme pour créer $T_b$ nous donne alors une complexité de $\mathcal{O}(n + m^2)$ :
 
 * c'est mieux que l'algorithme naïf dans le cas le max
 * c'est moins bien en moyenne
