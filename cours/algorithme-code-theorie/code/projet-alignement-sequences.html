@@ -28,6 +28,7 @@
 
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique">
+<script>MathJax={"tex":{"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["\\[","\\]"]]},"svg":{"fontCache":"global"},"svg":{"fontCache":"global"}}</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
 <body>
@@ -80,6 +81,92 @@
     <li>méthode de parcimonie entre 2 et généralisation</li>
   </ul>
 </blockquote>
+
+<h2 id="algorithme">algorithme</h2>
+
+<p>Nous allons créer l’algorithme en plusieurs parties :</p>
+
+<ol>
+  <li>rendre une fonction de coût élémentaire</li>
+  <li>rendre la matrice d’édition</li>
+  <li>utiliser la matrice d’édition pour connaitre la distance d’édition</li>
+  <li>utiliser la matrice d’édition pour connaitre un alignement optimal</li>
+</ol>
+
+<h3 id="distance-élémentaire">distance élémentaire</h3>
+
+<p>La distance élémentaire doit associer un réel positif à :</p>
+
+<ul>
+  <li>un couple de caractère pour une substitution</li>
+  <li>un caractère pour une insertion ou une suppression</li>
+</ul>
+
+<p>Ces informations peuvent être stockées dans un dictionnaire <code class="language-plaintext highlighter-rouge">dist</code> avec comme clés :</p>
+
+<ul>
+  <li>$(x, y)$ avec $x$ et $y$ deux caractères. On peut de plus supposer que $x \leq y$</li>
+  <li>$x$ avec $x$ un caractère</li>
+</ul>
+
+<p>En supposant que l’on ait un dictionnaire <code class="language-plaintext highlighter-rouge">dist</code> de ce type, il sera plus aisé de d’avoir une fonction de signature <code class="language-plaintext highlighter-rouge">f(x, y=None)</code> telle que :</p>
+
+<ul>
+  <li>si $x$ et $y$ sont donné, rend <code class="language-plaintext highlighter-rouge">dist[(x, y)]</code> si $x &lt; y$ et <code class="language-plaintext highlighter-rouge">dist[(y, x)]</code> sinon.</li>
+  <li>si uniquement $x$ est renseigné ($y$ vaut <code class="language-plaintext highlighter-rouge">None</code>), la fonction devrait rendre $d[x]$.</li>
+</ul>
+
+<p>On peut alors créer une fonction qui prend en paramètre ce dictionnaire et rend une fonction de calcul. Ceci est facile à faire en python, et savoir créer une fonction qui rend une fonction est une compétence qui peut se révéler utile :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">crer_fonction</span><span class="p">(</span><span class="n">dist</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">y</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">dist</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">dist</span><span class="p">[(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">dist</span><span class="p">[(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="n">f</span>
+</code></pre></div></div>
+
+<h3 id="matrice-dédition">matrice d’édition</h3>
+
+<p>Maintenant qu’on a la fonction d’édition élémentaire, on peut écrire l’algorithme qui crée la matrice d’édition</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">calcul_matrice</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
+    <span class="n">M</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)]</span>
+    <span class="n">M</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)):</span>
+        <span class="n">M</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">M</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)):</span>
+        <span class="n">M</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">M</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)):</span>
+            <span class="n">M</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">][</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">M</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span>
+                                  <span class="n">M</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> 
+                                  <span class="n">M</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">]))</span>
+
+    <span class="k">return</span> <span class="n">M</span>
+</code></pre></div></div>
+
+<p>La distance d’édition entre $a$ et $b$ est alors <code class="language-plaintext highlighter-rouge">M[-1][-1]</code>.</p>
+
+<h3 id="alignement-à-partir-de-la-matrice-dédition">alignement à partir de la matrice d’édition</h3>
+
+<p>La matrice d’édition nous permet de retrouver l’alignement, en <em>remontant</em> la matrice.</p>
+
+<p>Ecrivez l’algorithme qui, à partir de deux séquences $a$ et $b$ et d’une distance élémentaire écrite sous forme d’une fonction rend la matrice d’édition.</p>
+
+<p>permet de rendre la matrice</p>
+<blockquote class="tbd">
+  <p>écrire l’algorithme + complexité</p>
+</blockquote>
+
+<blockquote class="tbd">
+  <p>chemin = alignement</p>
+</blockquote>
+
 
   </div>
 
