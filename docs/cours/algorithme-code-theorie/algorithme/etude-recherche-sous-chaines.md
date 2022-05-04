@@ -136,7 +136,7 @@ Une variation sur l'erreur précédente :
 ```python
 def sous_chaine_naif_FAUX_4(a, b):
     trouvé = True
-    for i in range(len(a)):
+    for i in range(len(a) - len(b) + 1):
         for j in range(len(b)):
             if b[j] != a[i + j]:
                 trouvé = False
@@ -165,7 +165,7 @@ Calculons la complexité ligne à ligne :
 8. retour de fonction : $\mathcal{O}(1)$ opérations
 9. retour de fonction : $\mathcal{O}(1)$ opérations
 
-On en conclut que la complexité totale se niche dans l'exécution des deux boucles `for` imbriquées, et est donc de complexité : $\mathcal{O}((n - m) \cdot m) \simeq \mathcal{O}(n\cdot m)$ si $m \gg n$ ce qui est généralement le cas.
+On en conclut que la complexité totale se niche dans l'exécution des deux boucles `for` imbriquées, et est donc de complexité : $\mathcal{O}((n - m) \cdot m) = \mathcal{O}(nm + m^2) \sim \mathcal{O}(n\cdot m)$ si $m \gg n$ ce qui est généralement le cas.
 
 #### complexité minimale
 
@@ -175,7 +175,7 @@ La complexité minimale est atteinte lorsque la sous-chaine est trouvée dès $i
 
 On pourrait envisager deux calculs possible :
 
-* complexité en moyenne $b$ est une sous-chaine de $a$
+* complexité en moyenne lorsque $b$ est une sous-chaine de $a$
 * complexité en moyenne lorsque $b$ n'est pas une sous-chaine de $a$
 
 Le premier cas dépend uniquement de la position de la sous-chaine $b$ dans $a$, pas de la *structure* de $a$ ou de $b$. Il est donc très dépendant de l'application et il n'y a aucune raison de choisir un modèle purement aléatoire (il  y a très peu d'application où il faut chercher si un mot aléatoire est présent dans une chaine également aléatoire)
@@ -320,6 +320,26 @@ Le second cas est bien plus clair.
 > L'utilisation de `break` et de `continue` permet de distinguer clairement dan l'algorithme ce qui est de l'ordre du cas général (la boucle) et du cas particulier (sortie de boucle)
 {: .note}
 
+### trouver toutes les sous-chaines
+
+Si l'on cherche à trouver tous les indices où se trouvent $b$ dans $a$, il faut modifier l'algorithme.
+
+{% details solution %}
+
+> à faire
+{: .tbd}
+
+{% enddetails %}
+
+Quel est sa complexité ?
+
+{% details solution %}
+
+> à faire
+{: .tbd}
+
+{% enddetails %}
+
 ## Algorithme de Knuth-Morris-Pratt
 
 L'algorithme `sous_chaine_naif_amélioré` est construit autour de la boucle for en `i` qui teste si $b$ est présent à partir de chaque position de $a$. A chaque étape on compare un élément de $b$ à l'élément de l'index $i + j$ de $a$. Le principal soucis de l'algorithme est que le nombre $i+j$ peut diminuer.
@@ -355,7 +375,7 @@ b:           bbbbbb
 i/j:         i  j
 ```
 
-Alors à l'étape suivante on a :
+Alors à l'étape suivante on ait :
 
 1. soit :
 
@@ -376,7 +396,10 @@ Alors à l'étape suivante on a :
     i/j:          i j
     ```
 
-    Qui correspond au fait que l'on chercher si $b$ est une sous-chaine de $a$ à commençant à une nouvelle position. Dans ce cas là, on est pas obligé de recommencer à $j=0$ car on connait déjà les premiers caractères de $a$.
+    Qui correspond au fait que l'on chercher si $b$ est une sous-chaine de $a$ à commençant à une nouvelle position. Dans ce cas là, on est pas obligé de recommencer à $j=0$ car on connaît déjà les premiers caractères de $a$.
+
+> Le *curseur* `v` (à la position $i+j$ ne doit qu'augmenter)
+{: .note}
 
 Prenons un cas concret. Supposons que l'on se trouve dans cette configuration :
 
@@ -387,7 +410,7 @@ b:           ATATCG
 i/j:         i  j
 ```
 
-Comme les caractères $a[i +j$ et $b[j]$ coïncident, l'étape suivante consistera à augmenter $j$ pour continuer la vérification :
+Comme les caractères $a[i +j]$ et $b[j]$ coïncident, l'étape suivante consistera à augmenter $j$ pour continuer la vérification :
 
 ```text
 i + j :          v
@@ -450,13 +473,13 @@ On peut donc considérer, pour toute chaine $b$ de longueur $m$ un tableau $T_b$
   * $0 < l \leq j < m$
   * $b[l + k] = b[k]$ pour tout $0 \leq k < j - l$
 
-> La valeur $T_b[j-1]$ correspond à la longueur maximale d'un début de $b$ qui correspond à une fin de $b[1:j]$.
+> La valeur $T_b[j-1]$ correspond à la longueur maximale d'un début de $b$ qui correspond à une fin de $b[1:j]$ (ce n'est **pas** de $b[:j]$ car il **faut** décaler $b$ d'au moins 1 case).
 {: .note}
 
 Nous donnerons plus tard un moyen efficace de le calculer. Mais si $b$ vaut `ATATCG` on aurait par exemple $T_b = [0, 0, 1, 2, 0]$.
 
 ```text
- 00120 
+00120 
 ATATCG
   ATATCG
 ```
@@ -520,6 +543,17 @@ On peut maintenant construire le tableau $T_b$ tel que $T_b[j-1]$, $1 \leq j < m
 
 Le tableau $T_b$ vaut : $[0, 0, 0, 1, 0, 1, 2, 3, 4, 2]$.
 
+
+```text
+0123456789    : index
+ACGAGACGACT   : la chaîne b
+   A          : une répétition de 1 caractères
+     ACGA     : une répétition de 4 caractères
+        AC    : une répétition de 2 caractères
+0001012342    : Tb
+```
+
+
 Ceci nous permet de créer un algorithme naïf pour trouver $T_b$.
 {% details écrivez cet algorithme %}
 
@@ -539,20 +573,19 @@ def algo_naif_construction_t(b):
 
 {% enddetails %}
 
-Cependant, sa complexité est de l'ordre de $\mathcal{O}(m^2)$, ce qui est trop...
+La complexité de cet algorithme est clairement en $\mathcal{O}(m^2)$. Utiliser cet algorithme pour créer $T_b$ nous donne alors une complexité de $\mathcal{O}(n + m^2)$ :
 
-L'idée géniale de Knuth, Morris et Pratt est d'avoir remarqué que l'on peut construire le tableau de façon itérative et en $\mathcal{O}(m)$ opérations !
+* c'est mieux que l'algorithme naïf dans le cas le max
+* c'est moins bien en moyenne
 
-On commence avec un tableau où seul $T_b[0] = 0$ est rempli (pour $j=1$), puis on considère que $j=2$.
-On note :
+ON peut faire bien mieux avec un algorithme (très bel) algorithme de Knuth, Morris et Pratt. Ils ont en remarqué que l'on peut construire le tableau de façon itérative et en $\mathcal{O}(m)$ opérations !
 
-* $T_b[j-1] = k_0$
-* $c = b[j-1]$
+Décrivons cette idée. On commence avec un tableau où seul $T_b[0] = 0$ est rempli (pour $j=1$). On considère que $j \geq 2$ et on note $c = b[j-1]$
 
-On cherche $k$ tel que $b[:k_0]$ coïncide avec la fin de la chaîne $b[1:j-1] + [c]$ : il y a 2 cas à considérer :
+On cherche $i$ tel que $b[:i]$ coïncide avec la fin de la chaîne $b[1:j-1] + [c]$ : il y a 2 cas à considérer :
 
 1. on peut continuer la chaine commencée avec $j-1$. Ceci se passe si $b[k] = c$ avec  $T_b[(j-1)-1] = k$. Dans ce cas là $T_b[j-1] = k + 1$
-2. on ne peut pas continuer la chaine commencée avec $j-1$. Ceci se passe si $b[k] \neq c$ avec  $T_b[j-2] = k$. On a alors 2 sous-cas :
+2. on ne peut pas continuer la chaine commencée avec $j-1$. Ceci se passe si $b[k] \neq c$ avec  $T_b[(j-1) -1] = k$. On a alors 2 sous-cas :
     * $k \leq 1$ et $b[k] \neq c$ : on a $T_b[j-1] = 0$
     * $k > 1$ et $b[k] \neq c$. Ce problème est équivalent à trouver :
         * le plus grand $k'$ possible tel que début de $b$ qui coïncide avec la fin de $b[1:j-2]$
@@ -590,13 +623,46 @@ def cree_tableau(b):
     return T_b
 ```
 
-La complexité de cette fonction est en $\mathcal{O(m)}$ car à chaque étape :
+Calculons la complexité de cette algorithme. Elle est proportionnelle au nombre d'étapes puisque toutes les autres opérations sont en $\mathcal{O}(1)$. 
 
+À chaque étape :
+
+* soit $k$ reste constant à 0
 * soit $k$ augmente de 1
 * soit $k$ diminue strictement
-* soit $k$ reste constant à 0
 
-Il y a au plus $m$ étapes où $k$ reste constant ou augmente donc au plus $m$ étapes où $k$ diminue.
+Il y a donc au plus autant d'étapes où $k$ diminue que d'étapes où $k$ augmente ou reste constant.
+
+Comme $j$ augmente lorsque $k$ reste constant ou augmente, et que l'on s'arrête lorsque $j$ vaut $m-1$, il y a au plus $m$ étapes où $k$ reste constant ou augmente. 
+
+On en déduit qu'il a donc également au plus $m$ étapes où $k$ diminue.
+
+Le nombre total d'étape est en $\mathcal{O(m)}$.
+
+> La complexité de la création de $T_b$ est en $\mathcal{O(m)}$.
+> 
+> La complexité de l'algorithme de Knuth-Morris-Pratt est en $\mathcal{O}(n +n)$ opérations : elle est minimale.
+{: .note}
+
+### trouver toutes les sous-chaines
+
+Si l'on cherche à trouver tous les indices où se trouvent $b$ dans $a$, il faut modifier l'algorithme.
+
+{% details solution %}
+
+> à faire
+{: .tbd}
+
+{% enddetails %}
+
+Quel est sa complexité ?
+
+{% details solution %}
+
+> à faire
+{: .tbd}
+
+{% enddetails %}
 
 ## Autre algorithmes
 
