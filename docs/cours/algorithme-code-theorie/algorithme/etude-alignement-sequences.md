@@ -14,13 +14,6 @@ author: "François Brucker"
 >
 {: .chemin}
 
-> * definition problème
-> * où on le retrouve (biologie/ correcteur orth)
-> * analyse des possible
-> * algorithme par programmation dynamique
-> * problème connexe : alignement local
-{: .tbd}
-
 Nous allons voir dans cette étude comment définir/calculer une distance entre 2 chaînes de caractères. Nous utiliserons la [distance d'édition](https://fr.wikipedia.org/wiki/Distance_de_Levenshtein), très utilisée.
 
 ## définition
@@ -166,6 +159,8 @@ Enfin, on a clairement que :
 >
 {: .note}
 
+Notez bien que si le coût est minimum, il **peut** y avoir plusieurs alignements ayant ce coût : l'alignement optimal **n'est pas** unique.
+
 ### nombres d'alignements
 
 Il peut y avoir beaucoup (beaucoup) d'alignements possible entre 2 séquences.
@@ -249,18 +244,184 @@ Ceci nous donne une représentation matricielle de l'alignement et de la distanc
 
 |           | $-$ | $a[0]$ | ... | $a[i-1]$           | $a[i]$                | $a[n-1]$|
 |-----------|-----|---------------|-----|--------------------|-----------------------|---------|
-|    $-$    | 0   |  $d(a[0], -)$ |     |    $d(a[:i], -)$                | $d(a[:i], -)  + d(a[i], -)$                    |         |
+|    $-$    | 0   |  $d(a[0], -)$ |     |    $d(a[:i], -)$                | $d(a[:i], -)  + d(a[i], -)$                    | $d(a[:n], -)$ |
 |$b[0]$     |$d(-, b[0])$ |        |     |                    |                       |         |
 |...        |     |        |     |                    |                       |         |
 |$b[j-1]$   | $d(-, b[:j])$    |        |     | $d(a[:i],b[:j])$   | $d(a[:i+1],b[:j])$    |         |
 |$b[j]$     | $d(-, b[:j]) + d(b[j], -)$    |        |     | $d(a[:i],b[:j+1])$ |  $d(a[:i+1],b[:j+1])$ |         |
 |...        |     |        |     |                    |                       |         |
-|$b[m-1]$   |     |        |     |                    |                       |$d(a,b)$ |
+|$b[m-1]$   | $d(-, b[:m])$    |        |     |                    |                       |$d(a,b)$ |
 
-Et nous donne un algorithme très facile pour la calculer, puisqu'il suffit de progresser ligne à ligne.
+Et nous donne un algorithme très facile pour la calculer, puisqu'il suffit re remplir la première ligne et la première colonne, puis de progresser ligne à ligne avec la formule :
+
+```python
+M[i + 1][j + 1] = min(M[i][j] + d(a[j], b[i]), 
+                      M[i + 1][j] + f(-, b[i]),
+                      M[i][j + 1] + f(a[j], -))
+```
+
+ On appellera cette matrice **matrice d'édition**. Et elle calculable en $\mathcal{O}(mn)$ opérations, ce qui est bien plus petit que le nombre total d'alignements !
+
+> La technique de création algorithmique utilisée est appelée [programmation dynamique](https://fr.wikipedia.org/wiki/Programmation_dynamique) : un chemin optimal est constitué de sous-chemins eux-mêmes optimaux.
+
+## alignement à partir de la matrice
+
+>remontée
+{: .tbd}
+
+## exemple
+
+Distance élémentaire :
+
+| |A|C|G|T
+|A|0| | |
+|C|2|0| |
+|G|2|2|0|
+|T|2|2|2|0
+|-|1|1|1|1
+
+Aller de `ACTGATT` (horizontal) à `GCTAATCG` (vertical).
+
+> Créez la matrice d'édition *vierge* à utiliser
+{: .a-faire}
+{% details solution %}
+
+| |-|A|C|T|G|A|T|T
+|-| | | | | | | |
+|G| | | | | | | |
+|C| | | | | | | |
+|T| | | | | | | |
+|A| | | | | | | |
+|A| | | | | | | |
+|T| | | | | | | |
+|C| | | | | | | |
+|G| | | | | | | |
+
+{% enddetails  %}
+
+> Remplissez la première ligne et la première colonne
+{: .a-faire}
+{% details solution %}
+
+| |-|A|C|T|G|A|T|T
+|-|0|1|2|3|4|5|6|7
+|G|1| | | | | | |
+|C|2| | | | | | |
+|T|3| | | | | | |
+|A|4| | | | | | |
+|A|5| | | | | | |
+|T|6| | | | | | |
+|C|7| | | | | | |
+|G|8| | | | | | |
+
+{% enddetails  %}
+
+> Remplissez le reste de la matrice ligne à ligne
+{: .a-faire}
+{% details solution %}
+
+| |-|A|C|T|G|A|T|T
+|-|0|1|2|3|4|5|6|7
+|G|1|2|3|4|3|4|5|6
+|C|2|3|2|3|4|5|6|7
+|T|3|4|3|2|3|4|5|6
+|A|4|3|4|3|4|3|4|5
+|A|5|4|5|4|5|4|5|6
+|T|6|5|6|5|6|5|4|5
+|C|7|6|5|6|7|6|5|6
+|G|8|7|6|7|6|7|6|7
+
+{% enddetails  %}
+
+> Donnez la distance d'édition entre `ACTGATT` et `GCTAATCG`
+{: .a-faire}
+
+{% details solution %}
+la dernière colonne de la dernière ligne de la matrice ($M[-1][-1]$) vaut 7 : c'est la distance d'édition
+{% enddetails  %}
+
+> Donnez un alignement réalisant la distance d'édition entre `ACTGATT` et `GCTAATCG`
+{: .a-faire}
+{% details solution %}
+
+> à faire
+{: .tbd}
+
+{% enddetails  %}
 
 ## algorithme
 
+Nous allons créer l'algorithme en plusieurs parties :
+
+1. rendre une fonction de coût élémentaire
+2. rendre la matrice d'édition
+3. utiliser la matrice d'édition pour connaitre la distance d'édition
+4. utiliser la matrice d'édition pour connaitre un alignement optimal
+
+### distance élémentaire
+
+La distance élémentaire doit associer un réel positif à :
+
+* un couple de caractère pour une substitution
+* un caractère pour une insertion ou une suppression
+
+Ces informations peuvent être stockées dans un dictionnaire `dist` avec comme clés :
+
+* $(x, y)$ avec $x$ et $y$ deux caractères. On peut de plus supposer que $x \leq y$
+* $x$ avec $x$ un caractère
+
+En supposant que l'on ait un dictionnaire `dist` de ce type, il sera plus aisé de d'avoir une fonction de signature `f(x, y=None)` telle que :
+
+* si $x$ et $y$ sont donné, rend `dist[(x, y)]` si $x < y$ et `dist[(y, x)]` sinon.
+* si uniquement $x$ est renseigné ($y$ vaut `None`), la fonction devrait rendre $d[x]$.
+
+On peut alors créer une fonction qui prend en paramètre ce dictionnaire et rend une fonction de calcul. Ceci est facile à faire en python, et savoir créer une fonction qui rend une fonction est une compétence qui peut se révéler utile :
+
+```python
+def crer_fonction(dist):
+    def f(x, y=None):
+        if y is None:
+            return dist[x]
+        elif x < y:
+            return dist[(x, y)]
+        else:
+            return dist[(y, x)]
+    return f
+```
+
+### matrice d'édition
+
+Maintenant qu'on a la fonction d'édition élémentaire, on peut écrire l'algorithme qui crée la matrice d'édition
+
+```python
+def calcul_matrice(a, b, f):
+    M = [[0] * len(a) for i in len(b)]
+    M[0][0] = 0
+    for j in range(len(a)):
+        M[0][j] = M[0][j + 1] + f(a[j])
+    for i in range(len(b)):
+        M[i][0] = M[j + 1][0] + f(b[i])
+    
+    for i in range(len(b)):
+        for j in range(len(a)):
+            M[i + 1][j + 1] = min(M[i][j] + f(a[j], b[i]),
+                                  M[i + 1][j] + f(b[i]), 
+                                  M[i][j + 1] + f(a[j]))
+
+    return M
+```
+
+La distance d'édition entre $a$ et $b$ est alors `M[-1][-1]`.
+
+### alignement à partir de la matrice d'édition
+
+La matrice d'édition nous permet de retrouver l'alignement, en *remontant* la matrice.
+
+
+Ecrivez l'algorithme qui, à partir de deux séquences $a$ et $b$ et d'une distance élémentaire écrite sous forme d'une fonction rend la matrice d'édition.
+
+
+ permet de rendre la matrice
 > écrire l'algorithme + complexité
 {: .tbd}
 
@@ -268,7 +429,3 @@ Et nous donne un algorithme très facile pour la calculer, puisqu'il suffit de p
 > chemin = alignement
 {: .tbd}
 
-## exemple
-
-> dans le poly
-{: .tbd}
