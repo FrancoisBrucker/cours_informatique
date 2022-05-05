@@ -554,11 +554,80 @@ def sous_chaine_naif_acceleration_2(a, b):
 On a donc 2 décalages possibles :
 
 * soit on déplace $i$ sur $j$ (on est avant le nouveau début)
-* soit on déplace i pour que a[i] soit un début de b (lorsque l'on a $j \geq p$ et que que l'on connait le début de $a$)
+* soit on déplace i pour que a[i] soit un début de b (lorsque l'on a $j \geq p$ et que que l'on connaît le début de $a$)
 
 Plus il y a de 0 dans $T_b$ plus les décalages seront importants
 
 Cependant, la forme de $T_b$ sera toujours $[0, 0, ..., 0, 1, 2, ..., k]$. On gagne de l'optimisation puisque l'on avance toujours du maximum possible jusqu'à la 1ère répétition. 
+
+### amélioration de l'amélioration
+
+L'amélioration précédente permet d'avancer $i$ jusqu'au second départ de $b$ — le premier indice $p > 0$ tel que b[0] = b[p]$ — si $j > p$. Plaçons nous dans ce cas là :
+
+```text
+            i  
+a:     .....abbbaa?aaa....
+b:          bbbbbbbb         
+                p j
+```
+
+On a :
+
+* $p>0$ le premier indice tel que $b[0] = b[p]$
+* $a[i + k] = b[k]$ pour tout $0 \leq k < j$
+* $p < j$
+* $a[i + j] \neq b[j]$
+
+On sait donc aussi que $a[i + p] = b[0]$.
+
+
+L'amélioration précédente revient à poser :
+
+* $i' = i + p$
+* $j' = 0$
+
+On se retrouve alors dans ce cas là :
+
+```text
+            i  
+                i'
+a:     .....abbbaa?aaa....
+b:              bbbbbbbb         
+                j' 
+                  j
+```
+
+Avec : 
+
+* $a[i'] = b[0] = b[p]$
+* $a[i' + k] = b[p + k]$ pour tout $k < j-p$
+
+On a alors deux choix :
+
+* soit $b[k] = b[p + k]$ pour tout $k < j-p$ et on peut poser $j' = i + j - p$ (on remet j' au niveau du ?)
+* soit ce n'est pas le cas et ça ne sert à rien de regarder si $b$ commence en $i'$ parce que ce n'est pas possible
+
+Remarquez que ceci peut se faire sans $a$. Ceci nous donne une nouvelle possibilité d'amélioration : 
+
+> si : 
+> * $j > 0$
+> * $a[i + k] = b[k]$ pour tout $0 \leq k < j$
+> * $a[i + j] \neq b[j]$
+>
+> alors soit $k'$ le plus petit entier tel que $b[:k'] == b[j-k':j]$ (au pire $k'=0$). 
+> Avec :
+>
+> * $i' = i + j - k$
+> * $j' = k$
+>
+> On a que :
+>
+> * $i'$ est le prochain indice de $a$ où $b$ peut être une sous-chaine de $a$ 
+> * $a[i' + l] = b[l]$ pour tout $0 \leq l < j'$
+>
+{: .note}
+
+C'est cette procédure que mets (optimalement) en œuvre l'algorithme de Knuth, Morris et Pratt.
 
 ## Algorithme de Knuth-Morris-Pratt
 
@@ -764,7 +833,7 @@ Le nombre total d'étape est en $\mathcal{O(m)}$.
 > La complexité de l'algorithme de Knuth-Morris-Pratt est en $\mathcal{O}(n +n)$ opérations : elle est minimale.
 {: .note}
 
-## Autre algorithmes
+## Autres algorithmes
 
 Nous ne détaillerons pas les autres algorithmes, nous nous contenteront de donner les liens wikipedia et d'indiquer leur intérêt
 
