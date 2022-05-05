@@ -299,52 +299,7 @@
     <span class="k">return</span> <span class="bp">False</span>
 </code></pre></div></div>
 
-<p>Cela peut sembler une amélioration de bout de chandelles car cela ne change pas la complexité maximale de l’algorithme. Mais… Cela va changer la complexité en moyenne lorsque $b$ n’est pas une sous-chaine de $a$.</p>
-
-<h4 id="calcul-de-la-complexité-en-moyenne">calcul de la complexité en moyenne</h4>
-
-<p>On suppose que l’on ait dans le cas où $b$ n’est pas une sous-chaine de $a$. Pour ce calcul on va se placer dans le cas fictif où chaque lettre est équiprobable. La probabilité que deux lettres soient égales est alors $p = \frac{1}{A}$ où $A$ est la taille de l’alphabet utilisé. C’est le cas le plus défavorable pour notre calcul.</p>
-
-<p>A $i$ fixé, on a alors :</p>
-
-<ol>
-  <li>la probabilité que $b[0] \neq a[i]$ vaut $1-p$</li>
-  <li>la probabilité que $b[0] = a[i]$ et $b[1] \neq a[i + 1]$ vaut $p\cdot (1-p)$</li>
-  <li>la probabilité que $b[j] = a[i + j]$ pour $0\leq j &lt; 2$ et $b[1] \neq a[i + 2]$ vaut $p^2\cdot (1-p)$</li>
-  <li>…</li>
-  <li>la probabilité que $b[j] = a[i + j]$ pour $0 \leq j &lt; k$ et $b[k] \neq a[i + k]$ vaut $p^k\cdot (1-p)$</li>
-  <li>…</li>
-  <li>la probabilité que $b[j] = a[i + j]$ pour $0\leq j &lt; m - 1$ et $b[m-1] \neq a[i + m - 1]$ vaut $p^{m-1}\cdot (1-p)$</li>
-</ol>
-
-<p>Le nombre moyens d’itérations de la boucle <code class="language-plaintext highlighter-rouge">for</code> en $j$ est alors :</p>
-
-\[1\cdot (1-p) + 2 \cdot p(1-p) + 3 \cdot p^2(1-p) + ... + m \cdot p^{m-1}(1-p) = \frac{1-p}{p}\sum_{k=1}^{m}k\cdot p^k\]
-
-<p>Comme $p &lt; 1$ la série $\sum_{k=1}^{m}k\cdot p^k$ est convergente et est toujours inférieure à $\sum_{k=1}^{+\infty}k\cdot p^k$ qui ne dépend plus de $m$.</p>
-
-<details><summary>preuve de la convergence de la série</summary><div>
-<p>Si l’on note $f_m(x) = \sum_{k=1}^mx^k$, on a : $\sum_{k=1}^mk\cdotp^k = p\cdot f’_m(p)$.</p>
-
-<p>Comme une récurrence immédiate montre que $f_m(x) = \frac{x^{m+1} - 1}{x-1}$, on a :</p>
-
-\[\sum_{k=1}^mk\cdot p^k = p \frac{(m+1)p^m(p-1)-(p^{m+1}-1)}{(p-1)^2} = \frac{p}{(p-1)^2}\cdot(mp^{m+1}-(m+1)p^m + 1)\]
-
-<p>comme $p &lt; 1$, $mp^m$ tend vers $0$ lorsque $m$ tend vers $+\infty$ et donc $\sum_{k=1}^mk\cdot p^k$ tend vers $ \frac{p}{(p-1)^2}$ lorsque $m$ tend vers $+\infty$.</p>
-
-<p>On en conclut :</p>
-
-\[\sum_{k=1}^{+\infty}k\cdot p^k =  \frac{p}{(p-1)^2}\]
-
-</div></details>
-
-<p>Le nombre moyen d’itérations de la boucle for en $j$ est donc indépendant de $m$ ! Il ne dépend que de $p$. De là, la complexité moyenne de l’algorithme est ainsi $\mathcal{O}(n)$.</p>
-
-<p>Enfin, comme le cas où $$ n’est pas une sous-chaine de $a$ est le cas le plus défavorable, on en conclut que la complexité en moyenne de l’algorithme est de $\mathcal{O}(n)$ opérations.</p>
-
-<blockquote class="note">
-  <p>Un simple <code class="language-plaintext highlighter-rouge">break</code> a rendu linéaire la complexité en moyenne de l’algorithme.</p>
-</blockquote>
+<p>Dès le premier élément qui ne correspond pas, on sort de la boucle for. Cela peut sembler une amélioration de bout de chandelles car cela ne change pas la complexité maximale de l’algorithme. Mais on le verra, cela va changer la complexité en moyenne lorsque $b$ n’est pas une sous-chaine de $a$.</p>
 
 <h4 id="break-continue-et-while">
 <code class="language-plaintext highlighter-rouge">break</code>, <code class="language-plaintext highlighter-rouge">continue</code> et <code class="language-plaintext highlighter-rouge">while</code>
@@ -400,31 +355,105 @@
   <p>L’utilisation de <code class="language-plaintext highlighter-rouge">break</code> et de <code class="language-plaintext highlighter-rouge">continue</code> permet de distinguer clairement dan l’algorithme ce qui est de l’ordre du cas général (la boucle) et du cas particulier (sortie de boucle)</p>
 </blockquote>
 
+<h4 id="calcul-de-la-complexité-en-moyenne">calcul de la complexité en moyenne</h4>
+
+<p>On suppose que l’on ait dans le cas où $b$ n’est pas une sous-chaine de $a$. Pour ce calcul on va se placer dans le cas fictif où chaque lettre est équiprobable. La probabilité que deux lettres soient égales est alors $p = \frac{1}{A}$ où $A$ est la taille de l’alphabet utilisé. C’est le cas le plus défavorable pour notre calcul.</p>
+
+<p>A $i$ fixé, on a alors :</p>
+
+<ol>
+  <li>la probabilité que $b[0] \neq a[i]$ vaut $1-p$</li>
+  <li>la probabilité que $b[0] = a[i]$ et $b[1] \neq a[i + 1]$ vaut $p\cdot (1-p)$</li>
+  <li>la probabilité que $b[j] = a[i + j]$ pour $0\leq j &lt; 2$ et $b[1] \neq a[i + 2]$ vaut $p^2\cdot (1-p)$</li>
+  <li>…</li>
+  <li>la probabilité que $b[j] = a[i + j]$ pour $0 \leq j &lt; k$ et $b[k] \neq a[i + k]$ vaut $p^k\cdot (1-p)$</li>
+  <li>…</li>
+  <li>la probabilité que $b[j] = a[i + j]$ pour $0\leq j &lt; m - 1$ et $b[m-1] \neq a[i + m - 1]$ vaut $p^{m-1}\cdot (1-p)$</li>
+</ol>
+
+<p>Cette probabilité devient vite très faible. Par exemple, si on a un alphabet à 2 caractères (0 et 1), la probabilité de s’arrêter au bout de 10 itérations vaut : $(\frac{1}{2})^10 = 0.1\%$.</p>
+
+<p>De là, la probabilité que l’on s’arrête après :</p>
+
+<ul>
+  <li>1 itérations de la boucle <code class="language-plaintext highlighter-rouge">for</code> en $j$  est égale à $(1-p)$</li>
+  <li>2 itérations de la boucle <code class="language-plaintext highlighter-rouge">for</code> en $j$  est égale à $p(1-p)$</li>
+  <li>…</li>
+  <li>$j$ itérations de la boucle <code class="language-plaintext highlighter-rouge">for</code> en $j$  est égale à $p^{j-1}(1-p)$</li>
+  <li>…</li>
+  <li>$m$ itérations de la boucle <code class="language-plaintext highlighter-rouge">for</code> en $j$  est égale à $p^{m-1}(1-p)$</li>
+</ul>
+
+<p>Le nombre moyens d’itérations de la boucle <code class="language-plaintext highlighter-rouge">for</code> en $j$ est alors :</p>
+
+\[1\cdot (1-p) + 2 \cdot p(1-p) + 3 \cdot p^2(1-p) + ... + m \cdot p^{m-1}(1-p) = \frac{1-p}{p}\sum_{k=1}^{m}k\cdot p^k\]
+
+<p>Et comme chaque itération se fait en $\mathcal{O}(1)$ opérations, La complexité en moyenne du passage dans la boucle <code class="language-plaintext highlighter-rouge">for</code> en $j$ vaut :</p>
+
+\[\mathcal{O}(1) \cdot \frac{1-p}{p}\sum_{k=1}^{m}k\cdot p^k = \mathcal{O}(\frac{1-p}{p}\sum_{k=1}^{m}k\cdot p^k) = \mathcal{O}(\sum_{k=1}^{m}k\cdot p^k)\]
+
+<p>Comme :</p>
+
+\[\sum_{k=1}^mk\cdot p^k = \frac{p}{(p-1)^2}\cdot(mp^{m+1}-(m+1)p^m + 1)\]
+
+<details><summary>preuve</summary><div>
+<p>Si l’on note $f_m(x) = \sum_{k=1}^mx^k$, on a : $\sum_{k=1}^mk\cdotp^k = p\cdot f’_m(p)$. De là, une récurrence immédiate montre que $f_m(x) = \frac{x^{m+1} - 1}{x-1}$. Ainsi :</p>
+
+\[\sum_{k=1}^mk\cdot p^k = p \frac{(m+1)p^m(p-1)-(p^{m+1}-1)}{(p-1)^2} = \frac{p}{(p-1)^2}\cdot(mp^{m+1}-(m+1)p^m + 1)\]
+</div></details>
+
+<p>Comme $p &lt; 1$, on a que :</p>
+
+\[\lim_{m \rightarrow +\infty} \frac{p}{(p-1)^2}\cdot(mp^{m+1}-(m+1)p^m + 1) = \frac{p}{(p-1)^2}\]
+
+<p>Et donc, pour tout $m$ :</p>
+
+\[\sum_{k=1}^mk\cdot p^k \leq \frac{p}{(p-1)^2}\]
+
+<p>Donc :</p>
+
+\[\mathcal{O}(\sum_{k=1}^{m}k\cdot p^k) = \mathcal{O}(\frac{p}{(p-1)^2}) = \mathcal{O}(1)\]
+
+<p>Le nombre moyen d’itérations de la boucle for en $j$ est donc toujours plus petit qu’une constante : c’est indépendant de $m$ et ne dépend que de $p$ !</p>
+
+<p>Ceci s’explique par le fait que la probabilité de s’arrêter au bout de $j$ itération devient très vite très petite, et d’autant plus petite que l’alphabet augmente. On s’arrêtera quasi toujours avant d’arriver à la fin de $b$.</p>
+
+<p>Ce résultat surprennent amène à un autre résultat tout aussi surprenant : comme le reste de l’algorithme est de complexité $\mathcal{O}(n)$ :</p>
+
+<blockquote class="note">
+  <p>la complexité en moyenne de l’algorithme naif est $\mathcal{O}(n)$.</p>
+</blockquote>
+
+<p>Un simple <code class="language-plaintext highlighter-rouge">break</code> a rendu linéaire la complexité en moyenne de l’algorithme.</p>
+
 <h3 id="trouver-toutes-les-sous-chaines">trouver toutes les sous-chaines</h3>
 
-<p>Si l’on cherche à trouver tous les indices où se trouvent $b$ dans $a$, il faut modifier l’algorithme.</p>
+<p>Si l’on cherche à trouver tous les indices où se trouvent $b$ dans $a$, il faut modifier l’algorithme pour stocker les indices où $b$ commence. Ceci se fait aisément :</p>
 
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sous_chaine_naif_tous</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="n">indices</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">trouvé</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">b</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">]:</span>
+                <span class="n">trouvé</span> <span class="o">=</span> <span class="bp">False</span>
+                <span class="k">break</span>
+        <span class="k">if</span> <span class="n">trouvé</span><span class="p">:</span>
+            <span class="n">indices</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">indices</span>
+</code></pre></div></div>
+
+<p>Donnez les complexités de ce nouvel algorithme.</p>
 <details><summary>solution</summary><div>
-<blockquote class="tbd">
-  <p>à faire</p>
-</blockquote>
+<p>Les complexités maximale et en moyenne de l’algorithme n’ont pas changé. Seule la complexité minimale est passé de $\mahtcal{O}(m)$ à $\mathcal{O}(n)$ puisque l’on parcours toute la chaine à chaque fois.</p>
 
 </div></details>
 
-<p>Quel est sa complexité ?</p>
+<h2 id="améliorations">améliorations</h2>
 
-<details><summary>solution</summary><div>
-<blockquote class="tbd">
-  <p>à faire</p>
-</blockquote>
+<p>it autour de la boucle for en <code class="language-plaintext highlighter-rouge">i</code> qui teste si $b$ est présent à partir de chaque position de $a$. A chaque étape on compare un élément de $b$ à l’élément de l’index $i + j$ de $a$. Le principal soucis de l’algorithme est que le nombre $i+j$ peut diminuer.</p>
 
-</div></details>
-
-<h2 id="algorithme-de-knuth-morris-pratt">Algorithme de Knuth-Morris-Pratt</h2>
-
-<p>L’algorithme <code class="language-plaintext highlighter-rouge">sous_chaine_naif_amélioré</code> est construit autour de la boucle for en <code class="language-plaintext highlighter-rouge">i</code> qui teste si $b$ est présent à partir de chaque position de $a$. A chaque étape on compare un élément de $b$ à l’élément de l’index $i + j$ de $a$. Le principal soucis de l’algorithme est que le nombre $i+j$ peut diminuer.</p>
-
-<p>Par exemple si on cherche la chaine <code class="language-plaintext highlighter-rouge">aab</code> dans la chaine <code class="language-plaintext highlighter-rouge">aaaaaaaa</code> $i+j$ vaudra :</p>
+<p>Par exemple si on cherche la chaine <code class="language-plaintext highlighter-rouge">b=CGT</code> dans la chaine <code class="language-plaintext highlighter-rouge">a=CGACGACGACGA</code> $i+j$ vaudra :</p>
 
 <ol>
   <li>$i+j=0+0 = 0$</li>
@@ -439,57 +468,259 @@
 
 <p>Chaque élément de $a$ sera vu $m$ fois.</p>
 
-<p>L’algorithme de <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Knuth-Morris-Pratt">Knuth, Morris et Pratt</a> publié en 1977 est une réponse optimale à ce problème. Il permet de trouver une sous-chaine $b$ d’une chaine $a$ en $\mathcal{O}(m + n)$ opérations. Il est basée sur une optimisation du décalage de $i$ et $j$ que permet de rendre la somme $i+j$ croissante (on ne se répète plus).</p>
+<p>Accélérer l’algorithme revient à faire en sorte que le nombre $i+j$ soit croissant le plus souvent possible.</p>
+
+<h3 id="prétraitement-utilisant-a">prétraitement utilisant $a$</h3>
+
+<p>Une première idée que l’on peut avoir pour accélérer le processus et de remarquer que ça ne sert à rien de faire commencer la recherche de $b$ dans $a$ à l’index $i$ si $a[i] \neq b[0]$.</p>
+
+<p>Ceci peut se faire en $\mathcal{O}(n)$ opérations en utilisant <code class="language-plaintext highlighter-rouge">sous_chaine_naif_tous(a, b[0])</code>. On utilise ensuite ces indices dans notre algorithme accéléré :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sous_chaine_naif_acceleration_1</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">sous_chaine_naif_tous</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="n">trouvé</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">b</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">]:</span>
+                <span class="n">trouvé</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="k">if</span> <span class="n">trouvé</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">True</span>
+    <span class="k">return</span> <span class="bp">False</span>
+</code></pre></div></div>
+
+<p>Il faut maintenant tenir compte du prétraitement dans le calcul de la complexité.</p>
+
+<ul>
+  <li>ce qu’on fait en plus : on parcourt toute la chaine $a$ pour rendre le tableau d’indices. Cela se fait en $\mathcal{O}(n)$ opérations</li>
+  <li>ce qu’on fait en moins : on ne parcourt plus que certains indices $i$ et pas tous.</li>
+</ul>
+
+<p>Si la première lettre de $b$ est une lettre rare dans $a$, notre algorithme sera très accéléré mais cette lettre est très fréquente on ne gagnera rien.</p>
+
+<p>Si on prend un modèle aléatoire, la première lettre de $b$ se retrouvera $\frac{n}{A}$ fois dans $a$ (avec $A$ le nombre de lettre de l’alphabet). La longueur du tableau d’indice sera donc de l’ordre de $\frac{n}{A} = \mathcal{O}(n)$ éléments. En moyenne, on ne gagne donc rien.</p>
+
+<blockquote class="note">
+  <p>Cet algorithme n’a pas une complexité théorique meilleure que l’algorithme naïf, mais en pratique il ira de l’ordre de $A$ fois plus vite.</p>
+</blockquote>
+
+<h3 id="prétraitement-sur-b">prétraitement sur $b$</h3>
+
+<p>Faire un prétraitement sur la chaine la plus longue n’est pas forcément très pratique. De plus, dans le cas ou les données sont streamées par exemple, on ne connait pas $a$ en entier.</p>
+
+<p>Ces deux raisons font que pour des algorithmes avec prétraitement, on préfère le faire sur les “petites” données que l’on connait. Ici ce serait $b$.</p>
+
+<p>Notre objectif est toujours de rendre la somme $i+j$ la plus croissante possible pour éviter les répétitions. Comment adapter l’idée précédente en ne connaissant pas $a$ ?</p>
+
+<p>Pour comprendre, regardons tous les cas possible avec notre algorithme naïf :</p>
+
+<p>On débute une recherche en comparant $a[i + 0]$ à $b[0] :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>             i  
+a:     ...aaa?aaaaaaaa....
+b:           bbbbbb         
+             j
+</code></pre></div></div>
+
+<p>Si $a[i] = b[0] alors on décale $j$ d’un cran :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>             i  
+a:     ...aaab?aaaaaaa....
+b:           bbbbbb         
+              j
+</code></pre></div></div>
+
+<p>Sinon, on a pas vraiment d’autre choix que de décaler i de 1 :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>              i  
+a:     ...aaaa?aaaaaaa....
+b:            bbbbbb         
+              j
+</code></pre></div></div>
+
+<p>Il n’y a pas vraiment de moyen de gagner des opérations dans ce cas là.</p>
+
+<p>Supposons maintenant que l’on ai un peu avancé :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>             i  
+a:     ...aaabbb?aaaaa....
+b:           bbbbbb         
+                j
+</code></pre></div></div>
+
+<p>On a $a[i + k] = b[k]$ pour tout $0 \leq k &lt; j$. Et on compare $a[i + j]$ à $b[j]$.</p>
+
+<p>Si $a[i + j] = b[j]$ alors on décale $j$ d’un cran et on recommence si $j &lt; m$ et sinon on s’arrête puisque l’on a trouvé $b$ dans $a$. Mais si $a[i + j] \neq b[j]$ on replace $j$ à 0 et on augmente $i$. Cette augmentation peut être de 1 à $j$ :</p>
+
+<ul>
+  <li>
+    <p>augmentation de 1 (comme pour le l’algorithme naïf)</p>
+
+    <div class="language-text highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>               i  
+  a:     ...aaabbb?aaaaa....
+  b:            bbbbbb         
+                j
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>augmentation max :</p>
+
+    <div class="language-text highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>                  i  
+  a:     ...aaabbb?aaaaa....
+  b:              bbbbbb         
+                  j
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>augmentation entre les deux :</p>
+
+    <div class="language-text highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>                 i  
+  a:     ...aaabbb?aaaaa....
+  b:             bbbbbb         
+                 j
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>En réutilisant la partie précédente, on a clairement que l’augmentation minimale de $i$ que l’on peut avoir est :</p>
+
+<ul>
+  <li>$i=i+j$ s’il n’existe pas $0 &lt; k &lt; j$ tel que $a[i+k] = b[j]$</li>
+  <li>$i=i+k$ avec $0 &lt; k \leq j$ le plus petit entier tel que $a[i+k] = b[0]$, sinon</li>
+</ul>
+
+<p>Comme on sait que $a[i:i+j]$ vaut $b[:j]$ on peut précalculer ces déplacements !</p>
+
+<p>On commence par chercher le premier endroit où $b[0]$ est répété dans $b$. On peut utiliser <code class="language-plaintext highlighter-rouge">sous_chaine_naif_tous(b, b[0])</code> et prendre, s’il existe, le deuxième élément de la sortie, disons $p$. Si cet élément n’existe pas, on note $p=m$</p>
+
+<p>Ensuite, si :</p>
+
+<ul>
+  <li>$a[i + k] = b[k]$ pour tout $0 \leq k &lt; j$</li>
+  <li>$a[i + j] \neq b[j]$</li>
+</ul>
+
+<p>On peut déplacer $i$ de :</p>
+
+<ul>
+  <li>1 si $j=0$</li>
+  <li>$p$ si $p &lt; j$</li>
+  <li>$j$ sinon</li>
+</ul>
+
+<p>Pour préparer la suite, on va ranger ces informations dans un tableau $T_b$ de longueur $m-1$ tel que :</p>
+
+<ul>
+  <li>$T_b[j-1] = 0$  pour tout $1 \leq j \leq p$</li>
+  <li>$T_b[j-1] = j - p$  pour tout $p &lt; j \leq m-1$</li>
+</ul>
+
+<p>Par exemple, pour $b=ACATGA$, on aurait : $T_b = [0, 0, 1, 2, 3]$</p>
+
+<p>Avec ce tableau, notre algorithme devient alors :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sous_chaine_naif_acceleration_2</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="n">T_b</span> <span class="o">=</span> <span class="n">creation_tableau_opti_1</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">while</span> <span class="n">i</span> <span class="o">+</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="n">b</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
+            <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
+        
+            <span class="k">if</span> <span class="n">j</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+                <span class="k">return</span> <span class="bp">True</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">j</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">else</span> <span class="p">:</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="n">j</span> <span class="o">-</span> <span class="n">T_b</span><span class="p">[</span><span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+                <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="bp">False</span>
+</code></pre></div></div>
+
+<p>On a donc 2 décalages possibles :</p>
+
+<ul>
+  <li>soit on déplace $i$ sur $j$ (on est avant le nouveau début)</li>
+  <li>soit on déplace i pour que a[i] soit un début de b (lorsque l’on a $j \geq p$ et que que l’on connait le début de $a$)</li>
+</ul>
+
+<p>Plus il y a de 0 dans $T_b$ plus les décalages seront importants</p>
+
+<p>Cependant, la forme de $T_b$ sera toujours $[0, 0, …, 0, 1, 2, …, k]$. On gagne de l’optimisation jusqu’à un certain point puis on ne décale plus beaucoup.</p>
+
+<h2 id="algorithme-de-knuth-morris-pratt">Algorithme de Knuth-Morris-Pratt</h2>
+
+<p>L’algorithme de <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Knuth-Morris-Pratt">Knuth, Morris et Pratt</a> publié en 1977, reprend l’idée de l’optimisation précédente mais la sublime. Il trouve un tableau $T_b$ optimal permettant de trouver un algorithme en $\mathcal{O}(n +m)$, c’est à dire de façon optimale.</p>
+
+<p>Nous allons procéder par étape pour essayer de le comprendre.</p>
 
 <h3 id="décalage-adapté">décalage adapté</h3>
 
-<p>Pour accélérer l’algorithme il faut pouvoir garantir que :</p>
+<p>L’idée force de l’algorithme est que les éléments $T_b[j]$ ne sont plus la distance à la première répétition, mais le nombre de caractères dont la fin de $b[:j+1]$ sont un début de $b$ différent de $b[:j+1]$.</p>
 
-<ul>
-  <li>soit $i+j$ augmente à chaque étape</li>
-  <li>soit $i+j$ est constant mais $i$ augmente (ce qui signifie que l’on a décalé la comparaison).</li>
-</ul>
+<p>Avant de formaliser tout ça regardons ce que ça donne sur un exemple :</p>
 
-<p>Il faut donc que si on est dans la position suivante à la fin d’une étape :</p>
-
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>i + j :         v
-a:       ....aaaaaaaaa....
-b:           bbbbbb         
-i/j:         i  j
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0123456789    : index
+ACGAGACGACT   : la chaîne b
+   A          : une répétition de 1 caractères
+     ACGA     : une répétition de 4 caractères
+        AC    : une répétition de 2 caractères
 </code></pre></div></div>
 
-<p>Alors à l’étape suivante on ait :</p>
+<p>Le tableau $T_b$ vaudra alors : $[0, 0, 0, 1, 0, 1, 2, 3, 4, 2]$.</p>
 
 <ol>
-  <li>
-    <p>soit :</p>
-
-    <div class="language-text highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code> i + j :          v
- a:       ....aaaaaaaaa....
- b:           bbbbbb         
- i/j:         i   j
-</code></pre></div>    </div>
-
-    <p>Qui correspond au fait que l’on continue de chercher si $b$ est une sous-chaine de $a$ à commençant à la position $i$</p>
-  </li>
-  <li>
-    <p>soit :</p>
-
-    <div class="language-text highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code> i + j :         v
- a:       ....aaaaaaaaa....
- b:            bbbbbb         
- i/j:          i j
-</code></pre></div>    </div>
-
-    <p>Qui correspond au fait que l’on chercher si $b$ est une sous-chaine de $a$ à commençant à une nouvelle position. Dans ce cas là, on est pas obligé de recommencer à $j=0$ car on connaît déjà les premiers caractères de $a$.</p>
-  </li>
+  <li>$j=0$ par convention on note $T_b[0] = 0$</li>
+  <li>$j=1$. On a <code class="language-plaintext highlighter-rouge">b[:2] = "AC"</code>. La fin ne correspond à aucun début de $b$ à part $b[:2]$ : $T[1] = 0$</li>
+  <li>$j=2$. On a <code class="language-plaintext highlighter-rouge">b[:3] = "ACG"</code>. La fin ne correspond à aucun début de $b$ à part $b[:3]$: $T[2] = 0$</li>
+  <li>$j=3$. On a <code class="language-plaintext highlighter-rouge">b[:4] = "ACGA"</code>. La fin correspond à <code class="language-plaintext highlighter-rouge">b[:1] = "A"</code> : $T[3] = 1$</li>
+  <li>$j=4$. On a <code class="language-plaintext highlighter-rouge">b[:5] = "ACGAG"</code>. La fin ne correspond à aucun début de $b$ à par $b[:5]$ : $T[4] = 0$</li>
+  <li>$j=5$. On a <code class="language-plaintext highlighter-rouge">b[:6] = "ACGAGA"</code>. La fin correspond à <code class="language-plaintext highlighter-rouge">b[:1] = "A"</code> :  : $T[5] = 1$</li>
+  <li>$j=6$. On a <code class="language-plaintext highlighter-rouge">b[:7] = "ACGAGAC"</code>. La fin correspond à <code class="language-plaintext highlighter-rouge">b[:2] = "AC"</code> : $T[6] = 2$</li>
+  <li>$j=7$. On a <code class="language-plaintext highlighter-rouge">b[:8] = "ACGAGACG"</code>. La fin correspond à <code class="language-plaintext highlighter-rouge">b[:3] = "ACG"</code> : $T[7] = 3$</li>
+  <li>$j=8$. On a <code class="language-plaintext highlighter-rouge">b[:9] = "ACGAGACGA"</code>. La fin correspond à <code class="language-plaintext highlighter-rouge">b[:4] = "ACGA"</code> : $T[8] = 4$</li>
+  <li>$j=9$. On a <code class="language-plaintext highlighter-rouge">b[:10] = "ACGAGACGAC"</code>. La fin correspond à <code class="language-plaintext highlighter-rouge">b[:1] = "AC"</code> : $T[9] = 2$</li>
 </ol>
 
+<p>Formalisons ça.</p>
+
 <blockquote class="note">
-  <p>Le <em>curseur</em> <code class="language-plaintext highlighter-rouge">v</code> (à la position $i+j$ ne doit qu’augmenter)</p>
+  <p>Soit $T_b$ un tableau de longueur $m-1$</p>
+
+  <ul>
+    <li>T_b[0] = 0</li>
+    <li>pour tout $1 \leq j &lt; m-1$, on note $T_b[j]$ le plus grand entier $k &lt; j +1$ tel que $b[:k] = b[j+1-k:j+1]$.</li>
+  </ul>
+
 </blockquote>
+
+<p>On peut noter que $T_b[j]$ existe toujours puisque $b[:0]$ et $b[k:k]$ sont la chaine vide pour tout $k$.</p>
+
+<p>On peut facilement calculer $T_b$, par exemple avec cet algorithme :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">algo_naif_construction_t</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+    <span class="n">T_b</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)):</span>
+        <span class="n">T_b</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">chaîne</span> <span class="o">=</span> <span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="n">j</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">chaîne</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">b</span><span class="p">[:</span><span class="n">k</span><span class="p">]</span> <span class="o">==</span> <span class="n">chaîne</span><span class="p">[</span><span class="o">-</span><span class="n">k</span><span class="p">:]:</span>
+                <span class="n">T_b</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">k</span>
+
+    <span class="k">return</span> <span class="n">T_b</span>
+</code></pre></div></div>
+
+<p>La complexité de cet algorithme est cependant assez grande, puisqu’elle est en $\mathcal{O}(m^3)$.</p>
+
+<h3 id="algorithme">algorithme</h3>
+
+<p>Avec le tableau $T_b$ défini comme précédemment, on a un gain monumental par rapport à l’optimisation précédente. On a plus besoin de revenir en arrière : on peut faire augmenter (au sens large) $i+j$ à chaque étape.</p>
 
 <p>Prenons un cas concret. Supposons que l’on se trouve dans cette configuration :</p>
 
@@ -517,7 +748,7 @@ b:           ATATCG
 i/j:         i   j
 </code></pre></div></div>
 
-<p>On peut continuer la comparaison à la même position, mais en décalant $i$ :</p>
+<p>On peut continuer la comparaison à la même position, mais en décalant $i$ de $T_b[j-1] = T_b[3] = 2$ :</p>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>i + j :          v
 a:       ....ATATGACT....
@@ -527,65 +758,7 @@ i/j:           i j
 
 <p>Le nombre $i+j$ n’augmentera pas, mais $i$ aura augmenté strictement.</p>
 
-<p>Le nombre minimum de décalage possible peut être formalisé comme suit :</p>
-
-<blockquote class="note">
-  <p>Si à la fin d’une étape on a :</p>
-
-  <ul>
-    <li>$j &gt; 0$</li>
-    <li>$a[i + k] = b[k]$ pour tout $0 \leq k &lt; j$</li>
-    <li>$a[i + j] \neq b[j]$</li>
-  </ul>
-
-  <p>Soit $l$ le plus petit entier strictement positif tel que $a[i + l + k] = b[k]$ pour tout $0 \leq k &lt; j - l$.</p>
-
-  <p>On peut continuer l’étape suivante avec :</p>
-
-  <ul>
-    <li>$i’ = i + l$</li>
-    <li>$j’ = j - l$</li>
-  </ul>
-
-</blockquote>
-
-<p>On peut noter que $l$ existe toujours, au pire il vaut $j$ et que comme $a[i + l + k] = b[l + k]$, cela revient à chercher $l$ tel que :</p>
-
-<ul>
-  <li>$0 &lt; l \leq j &lt; m$</li>
-  <li>$b[l + k] = b[k]$ pour tout $0 \leq k &lt; j - l$</li>
-</ul>
-
-<blockquote class="note">
-  <p>On a plus besoin de $a$ dans le calcul de $l$ !</p>
-</blockquote>
-
-<p>On peut donc considérer, pour toute chaine $b$ de longueur $m$ un tableau $T_b$ tel que :</p>
-
-<ul>
-  <li>$T_b$ soit de longueur $m - 1$</li>
-  <li>$T_b[j - 1] = j - l$ pour $0 &lt; j &lt; m$, avec $l$ le plus petit entier tel que :
-    <ul>
-      <li>$0 &lt; l \leq j &lt; m$</li>
-      <li>$b[l + k] = b[k]$ pour tout $0 \leq k &lt; j - l$</li>
-    </ul>
-  </li>
-</ul>
-
-<blockquote class="note">
-  <p>La valeur $T_b[j-1]$ correspond à la longueur maximale d’un début de $b$ qui correspond à une fin de $b[1:j]$ (ce n’est <strong>pas</strong> de $b[:j]$ car il <strong>faut</strong> décaler $b$ d’au moins 1 case).</p>
-</blockquote>
-
-<p>Nous donnerons plus tard un moyen efficace de le calculer. Mais si $b$ vaut <code class="language-plaintext highlighter-rouge">ATATCG</code> on aurait par exemple $T_b = [0, 0, 1, 2, 0]$.</p>
-
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>00120 
-ATATCG
-  ATATCG
-</code></pre></div></div>
-
-<h3 id="algorithme">algorithme</h3>
-
-<p>En supposant que l’on connaisse un moyen de créer $T_b$, l’algorithme de recherche d’une sous-chaine de Knuth, Morris et Pratt est alors :</p>
+<p>En supposant que la fonction  <code class="language-plaintext highlighter-rouge">cree_tableau(b)</code> crée $T_b$, l’algorithme de recherche d’une sous-chaine de Knuth, Morris et Pratt est alors :</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sous_chaine_KMP</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
     <span class="n">Tb</span> <span class="o">=</span> <span class="n">cree_tableau</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
@@ -610,73 +783,17 @@ ATATCG
     <span class="k">return</span> <span class="bp">False</span>
 </code></pre></div></div>
 
+<blockquote>
+  <p>par rapport à l’algorithme précédent, $T_b$ est différent et la mise à jour de $j$ n’est plus forcément égale à 0.</p>
+</blockquote>
+
 <p>Comme à chaque itération, soit $i+j$ croit strictement, soit $i$ croit strictement il y a au plus $2n$ étapes à l’algorithme et donc sa complexité est de l’ordre $\mathcal{O}(n + K(m))$ où $K(m)$ est la complexité de la fonction <code class="language-plaintext highlighter-rouge">cree_tableau(b)</code></p>
 
 <h3 id="création-de-la-table-de-décalage">création de la table de décalage</h3>
 
-<p>Créer la table de décalage revient à chercher les répétitions dans la chaîne $b$.</p>
+<p>L’algorithme naïf de création de la table est en $\mathcal{O}(m^3)$ ce qui n’est pas vraiment optimal. L’algorithme utilisé par Knutt, Morris-et Pratt est de complexité bien meilleure puisqu’il permet de créer le tableau $T_b$ en $\mathcal{O}(m)$ opérations !</p>
 
-<p>En reprenant la chaine $b$ valant <code class="language-plaintext highlighter-rouge">ACGAGACGACT</code> on note les répétitions possibles  :</p>
-
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0123456789    : index
-ACGAGACGACT   : la chaîne b
-   A          : une répétition de 1 caractères
-     ACGA     : une répétition de 4 caractères
-        AC    : une répétition de 2 caractères
-</code></pre></div></div>
-
-<p>On peut maintenant construire le tableau $T_b$ tel que $T_b[j-1]$, $1 \leq j &lt; m$, correspond à la longueur maximale d’un début de $b$ qui correspond à une fin de $b[1:j]$ :</p>
-
-<ol>
-  <li>$j=1$. On a <code class="language-plaintext highlighter-rouge">b[1:1] = ""</code>. La fin  ne correspond à aucun début de $b$ : $T[1-1] = 0$</li>
-  <li>$j=2$. On a <code class="language-plaintext highlighter-rouge">b[1:2] = "C"</code>. La fin ne correspond à aucun début de $b$ : $T[2-1] = 0$</li>
-  <li>$j=3$. On a <code class="language-plaintext highlighter-rouge">b[1:3] = "CG"</code>. La fin ne correspond à aucun début de $b$ : $T[3-1] = 0$</li>
-  <li>$j=4$. On a <code class="language-plaintext highlighter-rouge">b[1:4] = "CGA"</code>. La fin correspond à <code class="language-plaintext highlighter-rouge">b[:1] = "A"</code> : $T[4-1] = 1$</li>
-  <li>$j=5$. On a <code class="language-plaintext highlighter-rouge">b[1:5] = "CGAG"</code>. La fin ne correspond à aucun début de $b$ : $T[5-1] = 0$</li>
-  <li>$j=6$. On a <code class="language-plaintext highlighter-rouge">b[1:6] = "CGAGA"</code>. La fin correspond à <code class="language-plaintext highlighter-rouge">b[:1] = "A"</code> :  : $T[6-1] = 1$</li>
-  <li>$j=7$. On a <code class="language-plaintext highlighter-rouge">b[1:7] = "CGAGAC"</code>. La fin correspond à <code class="language-plaintext highlighter-rouge">b[:2] = "AC"</code> : $T[7-1] = 2$</li>
-  <li>$j=8$. On a <code class="language-plaintext highlighter-rouge">b[1:8] = "CGAGACG"</code>. La fin correspond à <code class="language-plaintext highlighter-rouge">b[:3] = "ACG"</code> : $T[8-1] = 3$</li>
-  <li>$j=9$. On a <code class="language-plaintext highlighter-rouge">b[1:9] = "CGAGACGA"</code>. La fin correspond à <code class="language-plaintext highlighter-rouge">b[:4] = "ACGA"</code> : $T[9-1] = 4$</li>
-  <li>$j=10$. On a <code class="language-plaintext highlighter-rouge">b[1:10] = "CGAGACGAC"</code>. La fin correspond à <code class="language-plaintext highlighter-rouge">b[:1] = "AC"</code> : $T[10-1] = 2$</li>
-</ol>
-
-<p>Le tableau $T_b$ vaut : $[0, 0, 0, 1, 0, 1, 2, 3, 4, 2]$.</p>
-
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0123456789    : index
-ACGAGACGACT   : la chaîne b
-   A          : une répétition de 1 caractères
-     ACGA     : une répétition de 4 caractères
-        AC    : une répétition de 2 caractères
-0001012342    : Tb
-</code></pre></div></div>
-
-<p>Ceci nous permet de créer un algorithme naïf pour trouver $T_b$.</p>
-<details><summary>écrivez cet algorithme</summary><div>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">algo_naif_construction_t</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
-    <span class="n">T_b</span> <span class="o">=</span> <span class="p">[]</span>
-
-    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)):</span>
-        <span class="n">T_b</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-        <span class="n">chaîne</span> <span class="o">=</span> <span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="n">j</span><span class="p">]</span>
-        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">chaîne</span><span class="p">)):</span>
-            <span class="k">if</span> <span class="n">b</span><span class="p">[:</span><span class="n">k</span><span class="p">]</span> <span class="o">==</span> <span class="n">chaîne</span><span class="p">[</span><span class="o">-</span><span class="n">k</span><span class="p">:]:</span>
-                <span class="n">T_b</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">k</span>
-
-    <span class="k">return</span> <span class="n">T_b</span>
-</code></pre></div></div>
-
-</div></details>
-
-<p>La complexité de cet algorithme est clairement en $\mathcal{O}(m^3)$. Utiliser cet algorithme pour créer $T_b$ nous donne alors une complexité de $\mathcal{O}(n + m^2)$ :</p>
-
-<ul>
-  <li>c’est mieux que l’algorithme naïf dans le cas le max</li>
-  <li>c’est moins bien en moyenne</li>
-</ul>
-
-<p>ON peut faire bien mieux avec un algorithme (très bel) algorithme de Knuth, Morris et Pratt. Ils ont en remarqué que l’on peut construire le tableau de façon itérative et en $\mathcal{O}(m)$ opérations !</p>
-
-<p>Décrivons cette idée. On commence avec un tableau où seul $T_b[0] = 0$ est rempli (pour $j=1$). On considère que $j \geq 2$ et on note $c = b[j-1]$</p>
+<p>Décrivons l’idée. On commence avec un tableau où seul $T_b[0] = 0$ est rempli (pour $j=1$). On considère que $j \geq 2$ et on note $c = b[j-1]$</p>
 
 <p>On cherche $i$ tel que $b[:i]$ coïncide avec la fin de la chaîne $b[1:j-1] + [c]$ : il y a 2 cas à considérer :</p>
 
@@ -750,29 +867,9 @@ ACGAGACGACT   : la chaîne b
   <p>La complexité de l’algorithme de Knuth-Morris-Pratt est en $\mathcal{O}(n +n)$ opérations : elle est minimale.</p>
 </blockquote>
 
-<h3 id="trouver-toutes-les-sous-chaines-1">trouver toutes les sous-chaines</h3>
-
-<p>Si l’on cherche à trouver tous les indices où se trouvent $b$ dans $a$, il faut modifier l’algorithme.</p>
-
-<details><summary>solution</summary><div>
-<blockquote class="tbd">
-  <p>à faire</p>
-</blockquote>
-
-</div></details>
-
-<p>Quel est sa complexité ?</p>
-
-<details><summary>solution</summary><div>
-<blockquote class="tbd">
-  <p>à faire</p>
-</blockquote>
-
-</div></details>
-
 <h2 id="autre-algorithmes">Autre algorithmes</h2>
 
-<p>Nous dne détaillerons pas les autres algorithmes, nous nous contenteront de donner les liens wikipedia et d’indiquer leur intérêt</p>
+<p>Nous ne détaillerons pas les autres algorithmes, nous nous contenteront de donner les liens wikipedia et d’indiquer leur intérêt</p>
 
 <ul>
   <li>
