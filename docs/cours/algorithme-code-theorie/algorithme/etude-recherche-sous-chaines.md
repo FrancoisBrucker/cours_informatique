@@ -419,22 +419,16 @@ Il faut maintenant tenir compte du prétraitement dans le calcul de la complexit
 * ce qu'on fait en plus : on parcourt toute la chaine $a$ pour rendre le tableau d'indices. Cela se fait en $\mathcal{O}(n)$ opérations
 * ce qu'on fait en moins : on ne parcourt plus que certains indices $i$ et pas tous.
 
-Si la première lettre de $b$ est une lettre rare dans $a$, notre algorithme sera très accéléré mais cette lettre est très fréquente on ne gagnera rien.
+Mais au final, on ne gagne rien... En effet le temps gagné pour ne parcourir que certains indices est compenser par le fait qu'il faut les trouver. 
+L'algorithme naïf ne prend pas plus de temps que notre optimisation car si $a[i] \neq b[0]$ on passe tout de suite à l'indice suivant.
 
-Si on prend un modèle aléatoire, la première lettre de $b$ se retrouvera $\frac{n}{A}$ fois dans $a$ (avec $A$ le nombre de lettre de l'alphabet). La longueur du tableau d'indice sera donc de l'ordre de $\frac{n}{A} = \mathcal{O}(n)$ éléments. En moyenne, on ne gagne donc rien.
-
-> Cet algorithme n'a pas une complexité théorique meilleure que l'algorithme naïf, mais en pratique il ira de l'ordre de $A$ fois plus vite.
-{: .note}
+Si on veut augmenter la rapidité de l'algorithme, il faut travailler sur $b$ pour optimiser les décalages.
 
 ### prétraitement sur $b$
 
-Faire un prétraitement sur la chaine la plus longue n'est pas forcément très pratique. De plus, dans le cas ou les données sont streamées par exemple, on ne connait pas $a$ en entier.
+Notre objectif est toujours de rendre la somme $i+j$ la plus croissante possible pour éviter les répétitions. Comment adapter l'idée précédente en ne travaillant que sur $b$ ?
 
-Ces deux raisons font que pour des algorithmes avec prétraitement, on préfère le faire sur les "petites" données que l'on connait. Ici ce serait $b$.
-
-Notre objectif est toujours de rendre la somme $i+j$ la plus croissante possible pour éviter les répétitions. Comment adapter l'idée précédente en ne connaissant pas $a$ ?
-
-Pour comprendre, regardons tous les cas possible avec notre algorithme naïf :
+Pour comprendre, regardons tous les cas possibles avec notre algorithme naïf :
 
 On débute une recherche en comparant $a[i + 0]$ à $b[0] :
 
@@ -445,7 +439,7 @@ b:           bbbbbb
              j
 ```
 
-Si $a[i] = b[0] alors on décale $j$ d'un cran :
+Si $a[i] = b[0]$ alors on décale $j$ d'un cran :
 
 ```text
              i  
@@ -465,7 +459,7 @@ b:            bbbbbb
 
 Il n'y a pas vraiment de moyen de gagner des opérations dans ce cas là.
 
-Supposons maintenant que l'on ai un peu avancé :
+Supposons maintenant que l'on ait un peu avancé :
 
 ```text
              i  
@@ -564,7 +558,7 @@ On a donc 2 décalages possibles :
 
 Plus il y a de 0 dans $T_b$ plus les décalages seront importants
 
-Cependant, la forme de $T_b$ sera toujours $[0, 0, ..., 0, 1, 2, ..., k]$. On gagne de l'optimisation jusqu'à un certain point puis on ne décale plus beaucoup.
+Cependant, la forme de $T_b$ sera toujours $[0, 0, ..., 0, 1, 2, ..., k]$. On gagne de l'optimisation puisque l'on avance toujours du maximum possible jusqu'à la 1ère répétition. 
 
 ## Algorithme de Knuth-Morris-Pratt
 
@@ -574,9 +568,9 @@ Nous allons procéder par étape pour essayer de le comprendre.
 
 ### décalage adapté
 
-L'idée force de l'algorithme est que les éléments $T_b[j]$ ne sont plus la distance à la première répétition du premier caractère, mais compte le nombre de caractères dont la fin de $b[:j+1]$ sont un début de $b$ différent de $b[:j+1]$.
+L'idée force de l'algorithme est que les éléments $T_b[j]$ ne sont plus la distance à la première répétition du premier caractère, mais compte le nombre de caractères dont la fin de $b[:j+1]$ sont un début de $b$ différent de $b[:j+1]$. 
 
-Avant de formaliser tout ça regardons ce que ça donne sur un exemple :
+Ce tableau permet également d'avancer $i$ plus que l'algorithme naïf. Avant de formaliser tout ça regardons ce que ça donne sur un exemple :
 
 ```text
 0123456789    : index
