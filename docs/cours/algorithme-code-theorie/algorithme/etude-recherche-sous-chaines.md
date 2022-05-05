@@ -574,7 +574,7 @@ Nous allons procéder par étape pour essayer de le comprendre.
 
 ### décalage adapté
 
-L'idée force de l'algorithme est que les éléments $T_b[j]$ ne sont plus la distance à la première répétition, mais le nombre de caractères dont la fin de $b[:j+1]$ sont un début de $b$ différent de $b[:j+1]$.
+L'idée force de l'algorithme est que les éléments $T_b[j]$ ne sont plus la distance à la première répétition du premier caractère, mais compte le nombre de caractères dont la fin de $b[:j+1]$ sont un début de $b$ différent de $b[:j+1]$.
 
 Avant de formaliser tout ça regardons ce que ça donne sur un exemple :
 
