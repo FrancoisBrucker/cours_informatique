@@ -639,12 +639,93 @@ b:           bbbbbb
 
 <ul>
   <li>soit on déplace $i$ sur $j$ (on est avant le nouveau début)</li>
-  <li>soit on déplace i pour que a[i] soit un début de b (lorsque l’on a $j \geq p$ et que que l’on connait le début de $a$)</li>
+  <li>soit on déplace i pour que a[i] soit un début de b (lorsque l’on a $j \geq p$ et que que l’on connaît le début de $a$)</li>
 </ul>
 
 <p>Plus il y a de 0 dans $T_b$ plus les décalages seront importants</p>
 
 <p>Cependant, la forme de $T_b$ sera toujours $[0, 0, …, 0, 1, 2, …, k]$. On gagne de l’optimisation puisque l’on avance toujours du maximum possible jusqu’à la 1ère répétition.</p>
+
+<h3 id="amélioration-de-lamélioration">amélioration de l’amélioration</h3>
+
+<p>L’amélioration précédente permet d’avancer $i$ jusqu’au second départ de $b$ — le premier indice $p &gt; 0$ tel que b[0] = b[p]$ — si $j &gt; p$. Plaçons nous dans ce cas là :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>            i  
+a:     .....abbbaa?aaa....
+b:          bbbbbbbb         
+                p j
+</code></pre></div></div>
+
+<p>On a :</p>
+
+<ul>
+  <li>$p&gt;0$ le premier indice tel que $b[0] = b[p]$</li>
+  <li>$a[i + k] = b[k]$ pour tout $0 \leq k &lt; j$</li>
+  <li>$p &lt; j$</li>
+  <li>$a[i + j] \neq b[j]$</li>
+</ul>
+
+<p>On sait donc aussi que $a[i + p] = b[0]$.</p>
+
+<p>L’amélioration précédente revient à poser :</p>
+
+<ul>
+  <li>$i’ = i + p$</li>
+  <li>$j’ = 0$</li>
+</ul>
+
+<p>On se retrouve alors dans ce cas là :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>            i  
+                i'
+a:     .....abbbaa?aaa....
+b:              bbbbbbbb         
+                j' 
+                  j
+</code></pre></div></div>
+
+<p>Avec :</p>
+
+<ul>
+  <li>$a[i’] = b[0] = b[p]$</li>
+  <li>$a[i’ + k] = b[p + k]$ pour tout $k &lt; j-p$</li>
+</ul>
+
+<p>On a alors deux choix :</p>
+
+<ul>
+  <li>soit $b[k] = b[p + k]$ pour tout $k &lt; j-p$ et on peut poser $j’ = i + j - p$ (on remet j’ au niveau du ?)</li>
+  <li>soit ce n’est pas le cas et ça ne sert à rien de regarder si $b$ commence en $i’$ parce que ce n’est pas possible</li>
+</ul>
+
+<p>Remarquez que ceci peut se faire sans $a$. Ceci nous donne une nouvelle possibilité d’amélioration :</p>
+
+<blockquote class="note">
+  <p>si :</p>
+  <ul>
+    <li>$j &gt; 0$</li>
+    <li>$a[i + k] = b[k]$ pour tout $0 \leq k &lt; j$</li>
+    <li>$a[i + j] \neq b[j]$</li>
+  </ul>
+
+  <p>alors soit $k’$ le plus petit entier tel que $b[:k’] == b[j-k’:j]$ (au pire $k’=0$). 
+Avec :</p>
+
+  <ul>
+    <li>$i’ = i + j - k$</li>
+    <li>$j’ = k$</li>
+  </ul>
+
+  <p>On a que :</p>
+
+  <ul>
+    <li>$i’$ est le prochain indice de $a$ où $b$ peut être une sous-chaine de $a$</li>
+    <li>$a[i’ + l] = b[l]$ pour tout $0 \leq l &lt; j’$</li>
+  </ul>
+
+</blockquote>
+
+<p>C’est cette procédure que mets (optimalement) en œuvre l’algorithme de Knuth, Morris et Pratt.</p>
 
 <h2 id="algorithme-de-knuth-morris-pratt">Algorithme de Knuth-Morris-Pratt</h2>
 
@@ -860,7 +941,7 @@ i/j:           i j
   <p>La complexité de l’algorithme de Knuth-Morris-Pratt est en $\mathcal{O}(n +n)$ opérations : elle est minimale.</p>
 </blockquote>
 
-<h2 id="autre-algorithmes">Autre algorithmes</h2>
+<h2 id="autres-algorithmes">Autres algorithmes</h2>
 
 <p>Nous ne détaillerons pas les autres algorithmes, nous nous contenteront de donner les liens wikipedia et d’indiquer leur intérêt</p>
 
