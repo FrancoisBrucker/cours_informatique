@@ -83,13 +83,13 @@
 
 <ul>
   <li>$a^\star$ et $b^\star$ soient de même longueur $L$</li>
-  <li>chaque caractère de $a^\star$ et $b^\star$ soient soit dans $\mathcal{A} \cup { - }$</li>
+  <li>chaque caractère de $a^\star$ et $b^\star$ soit dans $\mathcal{A} \cup { - }$</li>
   <li>$(a^\star_i, b^\star_i) \neq (-,-)$ pour tout $0 \leq i &lt; L$</li>
 </ul>
 
 <ol>
   <li>Représentez <em>graphiquement</em> l’alignement (les 2 chaines l’une sous l’autre avec les <code class="language-plaintext highlighter-rouge">|</code>, comme dans l’<a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/etude-alignement-sequences.html#distance-entre-chaines-">étude</a>)</li>
-  <li>pour un alignement $(a^\star, b^\star)$ donné, rendez les liste de chaînes de caraxtères permettant de passer de $a$ à $b$, comme fait dans l’<a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/etude-alignement-sequences.html#%C3%A9volution-dune-s%C3%A9quence-en-lautre">étude</a>
+  <li>pour un alignement $(a^\star, b^\star)$ donné, rendez les listes de chaînes de caractères permettant de passer de $a$ à $b$, comme fait dans l’<a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/etude-alignement-sequences.html#%C3%A9volution-dune-s%C3%A9quence-en-lautre">étude</a>
 </li>
 </ol>
 
@@ -109,7 +109,7 @@
         <li>
 <code class="language-plaintext highlighter-rouge">affiche()</code> qui affiche l’alignement</li>
         <li>
-<code class="language-plaintext highlighter-rouge">évolution()</code> qui rend la liste de chaines permettant de passer de $a$ à $b$</li>
+<code class="language-plaintext highlighter-rouge">evolution()</code> qui rend la liste de chaines permettant de passer de $a$ à $b$</li>
       </ul>
     </li>
   </ul>
@@ -185,7 +185,7 @@
 
 <h2 id="étude-biologique">étude biologique</h2>
 
-<p>Le fichier texte <a href="./pro-opsines.edi">pro-opsines.edi</a> contient le code (sous la formes d’acides aminées) 3 protéines d’<a href="https://fr.wikipedia.org/wiki/Opsine">opsines</a> qui permettent aux humain de voir en couleur. Ces 3 protéines dérivent d’un ancêtre commun.</p>
+<p>Le fichier texte <a href="./pro-opsines.edi">pro-opsines.edi</a> contient le code (sous la formes d’acides aminées) 3 protéines d’<a href="https://fr.wikipedia.org/wiki/Opsine">opsines</a> qui permettent aux humains de voir en couleurs. Ces 3 protéines dérivent d’un ancêtre commun.</p>
 
 <blockquote class="a-faire">
   <ol>
@@ -194,7 +194,7 @@
   </ol>
 </blockquote>
 
-<p>La distance élémentaire n’est pas très utilisée en pratique. POur l’étude de séquences protéiques, on utilise souvent la matrice de similarité <a href="https://en.wikipedia.org/wiki/BLOSUM">BLOSUM62</a>.</p>
+<p>La distance élémentaire n’est pas très utilisée en pratique. Pour l’étude de séquences protéiques, on utilise souvent la matrice de similarité <a href="https://en.wikipedia.org/wiki/BLOSUM">BLOSUM62</a>.</p>
 
 <p><strong>Attention</strong> :</p>
 
@@ -204,7 +204,7 @@
 </ul>
 
 <blockquote class="a-faire">
-  <p>Faites un alignement 2 à 2 de ces 3 protéines en utilisant la matrice de coût associé. Le fichier de la matrice de similarité (dont il faut prendre l’opposé) peut être téléchargé <a href="https://www.ncbi.nlm.nih.gov/Class/FieldGuide/BLOSUM62.txt">là</a>).</p>
+  <p>Faites un alignement 2 à 2 de ces 3 protéines en utilisant la matrice de coût associée. Le fichier de la matrice de similarité (dont il faut prendre l’opposé) peut être téléchargé <a href="https://www.ncbi.nlm.nih.gov/Class/FieldGuide/BLOSUM62.txt">là</a>).</p>
 </blockquote>
 
   </div>
