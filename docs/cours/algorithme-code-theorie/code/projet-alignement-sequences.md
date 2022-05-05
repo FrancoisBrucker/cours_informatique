@@ -25,11 +25,11 @@ On considérera pour ce projet que le caractère *"-"* ne fait **pas** parti de 
 On rappelle qu'un alignement est un couple de deux séquences $(a^\star, b^\star)$ tels que :
 
 * $a^\star$ et $b^\star$ soient de même longueur $L$
-* chaque caractère de $a^\star$ et $b^\star$ soient soit dans $\mathcal{A} \cup \{ - \}$
+* chaque caractère de $a^\star$ et $b^\star$ soit dans $\mathcal{A} \cup \{ - \}$
 * $(a^\star_i, b^\star_i) \neq (-,-)$ pour tout $0 \leq i < L$
 
 1. Représentez *graphiquement* l'alignement (les 2 chaines l'une sous l'autre avec les `|`, comme dans l'[étude]({% link cours/algorithme-code-theorie/algorithme/etude-alignement-sequences.md %}#distance-entre-chaines-))
-2. pour un alignement $(a^\star, b^\star)$ donné, rendez les liste de chaînes de caraxtères permettant de passer de $a$ à $b$, comme fait dans l'[étude]({% link cours/algorithme-code-theorie/algorithme/etude-alignement-sequences.md %}#évolution-dune-séquence-en-lautre)
+2. pour un alignement $(a^\star, b^\star)$ donné, rendez les listes de chaînes de caractères permettant de passer de $a$ à $b$, comme fait dans l'[étude]({% link cours/algorithme-code-theorie/algorithme/etude-alignement-sequences.md %}#évolution-dune-séquence-en-lautre)
 
 Pour cela :
 
@@ -40,7 +40,7 @@ Pour cela :
 >   * `a()` qui rend $a$
 >   * `b()` qui rend $b$
 >   * `affiche()` qui affiche l'alignement
->   * `évolution()` qui rend la liste de chaines permettant de passer de $a$ à $b$
+>   * `evolution()` qui rend la liste de chaines permettant de passer de $a$ à $b$
 >
 {: .a-faire}
 
@@ -92,18 +92,18 @@ On peut maintenant créer l'alignement général :
 
 ## étude biologique
 
-Le fichier texte [pro-opsines.edi](./pro-opsines.edi) contient le code (sous la formes d'acides aminées) 3 protéines d'[opsines](https://fr.wikipedia.org/wiki/Opsine) qui permettent aux humain de voir en couleur. Ces 3 protéines dérivent d'un ancêtre commun.
+Le fichier texte [pro-opsines.edi](./pro-opsines.edi) contient le code (sous la formes d'acides aminées) 3 protéines d'[opsines](https://fr.wikipedia.org/wiki/Opsine) qui permettent aux humains de voir en couleurs. Ces 3 protéines dérivent d'un ancêtre commun.
 
 > 1. En utilisant les techniques de lecture de fichier, récupérez sous la forme de 3 chaines de caractères les 3 protéines
 > 2. faites l'alignement élémentaire des 3 protéines 2 à 2
 {: .a-faire}
 
-La distance élémentaire n'est pas très utilisée en pratique. POur l'étude de séquences protéiques, on utilise souvent la matrice de similarité [BLOSUM62](https://en.wikipedia.org/wiki/BLOSUM).
+La distance élémentaire n'est pas très utilisée en pratique. Pour l'étude de séquences protéiques, on utilise souvent la matrice de similarité [BLOSUM62](https://en.wikipedia.org/wiki/BLOSUM).
 
 **Attention** :
 
 * pour la transformer en matrice de coût, il faut prendre l'opposé de sa valeur !
 * l'identité n'est plus de coût nul.
 
-> Faites un alignement 2 à 2 de ces 3 protéines en utilisant la matrice de coût associé. Le fichier de la matrice de similarité (dont il faut prendre l'opposé) peut être téléchargé [là](https://www.ncbi.nlm.nih.gov/Class/FieldGuide/BLOSUM62.txt)).
+> Faites un alignement 2 à 2 de ces 3 protéines en utilisant la matrice de coût associée. Le fichier de la matrice de similarité (dont il faut prendre l'opposé) peut être téléchargé [là](https://www.ncbi.nlm.nih.gov/Class/FieldGuide/BLOSUM62.txt)).
 {: .a-faire}
