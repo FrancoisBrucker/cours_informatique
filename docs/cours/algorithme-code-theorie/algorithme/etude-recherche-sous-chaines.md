@@ -217,56 +217,7 @@ def sous_chaine_naif_amélioré(a, b):
     return False
 ```
 
-Cela peut sembler une amélioration de bout de chandelles car cela ne change pas la complexité maximale de l'algorithme. Mais... Cela va changer la complexité en moyenne lorsque $b$ n'est pas une sous-chaine de $a$.
-
-#### calcul de la complexité en moyenne
-
-On suppose que l'on ait dans le cas où $b$ n'est pas une sous-chaine de $a$. Pour ce calcul on va se placer dans le cas fictif où chaque lettre est équiprobable. La probabilité que deux lettres soient égales est alors $p = \frac{1}{A}$ où $A$ est la taille de l'alphabet utilisé. C'est le cas le plus défavorable pour notre calcul.
-
-A $i$ fixé, on a alors :
-
-1. la probabilité que $b[0] \neq a[i]$ vaut $1-p$
-2. la probabilité que $b[0] = a[i]$ et $b[1] \neq a[i + 1]$ vaut $p\cdot (1-p)$
-3. la probabilité que $b[j] = a[i + j]$ pour $0\leq j < 2$ et $b[1] \neq a[i + 2]$ vaut $p^2\cdot (1-p)$
-4. ...
-5. la probabilité que $b[j] = a[i + j]$ pour $0 \leq j < k$ et $b[k] \neq a[i + k]$ vaut $p^k\cdot (1-p)$
-6. ...
-7. la probabilité que $b[j] = a[i + j]$ pour $0\leq j < m - 1$ et $b[m-1] \neq a[i + m - 1]$ vaut $p^{m-1}\cdot (1-p)$
-
-Le nombre moyens d'itérations de la boucle `for` en $j$ est alors :
-
-$$
-1\cdot (1-p) + 2 \cdot p(1-p) + 3 \cdot p^2(1-p) + ... + m \cdot p^{m-1}(1-p) = \frac{1-p}{p}\sum_{k=1}^{m}k\cdot p^k
-$$
-
-Comme $p < 1$ la série $\sum_{k=1}^{m}k\cdot p^k$ est convergente et est toujours inférieure à $\sum_{k=1}^{+\infty}k\cdot p^k$ qui ne dépend plus de $m$.
-
-{% details preuve de la convergence de la série %}
-
-Si l'on note $f_m(x) = \sum_{k=1}^mx^k$, on a : $\sum_{k=1}^mk\cdotp^k = p\cdot f'_m(p)$.
-
-Comme une récurrence immédiate montre que $f_m(x) = \frac{x^{m+1} - 1}{x-1}$, on a :
-
-$$
-\sum_{k=1}^mk\cdot p^k = p \frac{(m+1)p^m(p-1)-(p^{m+1}-1)}{(p-1)^2} = \frac{p}{(p-1)^2}\cdot(mp^{m+1}-(m+1)p^m + 1)
-$$
-
-comme $p < 1$, $mp^m$ tend vers $0$ lorsque $m$ tend vers $+\infty$ et donc $\sum_{k=1}^mk\cdot p^k$ tend vers $ \frac{p}{(p-1)^2}$ lorsque $m$ tend vers $+\infty$.
-
-On en conclut :
-
-$$
-\sum_{k=1}^{+\infty}k\cdot p^k =  \frac{p}{(p-1)^2}
-$$
-
-{% enddetails %}
-
-Le nombre moyen d'itérations de la boucle for en $j$ est donc indépendant de $m$ ! Il ne dépend que de $p$. De là, la complexité moyenne de l'algorithme est ainsi $\mathcal{O}(n)$.
-
-Enfin, comme le cas où $$ n'est pas une sous-chaine de $a$ est le cas le plus défavorable, on en conclut que la complexité en moyenne de l'algorithme est de $\mathcal{O}(n)$ opérations.
-
-> Un simple `break` a rendu linéaire la complexité en moyenne de l'algorithme.
-{: .note}
+Dès le premier élément qui ne correspond pas, on sort de la boucle for. Cela peut sembler une amélioration de bout de chandelles car cela ne change pas la complexité maximale de l'algorithme. Mais on le verra, cela va changer la complexité en moyenne lorsque $b$ n'est pas une sous-chaine de $a$.
 
 #### `break`, `continue` et `while`
 
@@ -320,31 +271,117 @@ Le second cas est bien plus clair.
 > L'utilisation de `break` et de `continue` permet de distinguer clairement dan l'algorithme ce qui est de l'ordre du cas général (la boucle) et du cas particulier (sortie de boucle)
 {: .note}
 
+#### calcul de la complexité en moyenne
+
+On suppose que l'on ait dans le cas où $b$ n'est pas une sous-chaine de $a$. Pour ce calcul on va se placer dans le cas fictif où chaque lettre est équiprobable. La probabilité que deux lettres soient égales est alors $p = \frac{1}{A}$ où $A$ est la taille de l'alphabet utilisé. C'est le cas le plus défavorable pour notre calcul.
+
+A $i$ fixé, on a alors :
+
+1. la probabilité que $b[0] \neq a[i]$ vaut $1-p$
+2. la probabilité que $b[0] = a[i]$ et $b[1] \neq a[i + 1]$ vaut $p\cdot (1-p)$
+3. la probabilité que $b[j] = a[i + j]$ pour $0\leq j < 2$ et $b[1] \neq a[i + 2]$ vaut $p^2\cdot (1-p)$
+4. ...
+5. la probabilité que $b[j] = a[i + j]$ pour $0 \leq j < k$ et $b[k] \neq a[i + k]$ vaut $p^k\cdot (1-p)$
+6. ...
+7. la probabilité que $b[j] = a[i + j]$ pour $0\leq j < m - 1$ et $b[m-1] \neq a[i + m - 1]$ vaut $p^{m-1}\cdot (1-p)$
+
+Cette probabilité devient vite très faible. Par exemple, si on a un alphabet à 2 caractères (0 et 1), la probabilité de s'arrêter au bout de 10 itérations vaut : $(\frac{1}{2})^10 = 0.1\%$.
+
+De là, la probabilité que l'on s'arrête après :
+
+* 1 itérations de la boucle `for` en $j$  est égale à $(1-p)$
+* 2 itérations de la boucle `for` en $j$  est égale à $p(1-p)$
+* ...
+* $j$ itérations de la boucle `for` en $j$  est égale à $p^{j-1}(1-p)$
+* ...
+* $m$ itérations de la boucle `for` en $j$  est égale à $p^{m-1}(1-p)$
+
+Le nombre moyens d'itérations de la boucle `for` en $j$ est alors :
+
+$$
+1\cdot (1-p) + 2 \cdot p(1-p) + 3 \cdot p^2(1-p) + ... + m \cdot p^{m-1}(1-p) = \frac{1-p}{p}\sum_{k=1}^{m}k\cdot p^k
+$$
+
+Et comme chaque itération se fait en $\mathcal{O}(1)$ opérations, La complexité en moyenne du passage dans la boucle `for` en $j$ vaut :
+
+$$
+\mathcal{O}(1) \cdot \frac{1-p}{p}\sum_{k=1}^{m}k\cdot p^k = \mathcal{O}(\frac{1-p}{p}\sum_{k=1}^{m}k\cdot p^k) = \mathcal{O}(\sum_{k=1}^{m}k\cdot p^k)
+$$
+
+Comme :
+
+$$
+\sum_{k=1}^mk\cdot p^k = \frac{p}{(p-1)^2}\cdot(mp^{m+1}-(m+1)p^m + 1)
+$$
+
+{% details preuve %}
+
+Si l'on note $f_m(x) = \sum_{k=1}^mx^k$, on a : $\sum_{k=1}^mk\cdotp^k = p\cdot f'_m(p)$. De là, une récurrence immédiate montre que $f_m(x) = \frac{x^{m+1} - 1}{x-1}$. Ainsi :
+
+$$
+\sum_{k=1}^mk\cdot p^k = p \frac{(m+1)p^m(p-1)-(p^{m+1}-1)}{(p-1)^2} = \frac{p}{(p-1)^2}\cdot(mp^{m+1}-(m+1)p^m + 1)
+$$
+{% enddetails %}
+
+Comme $p < 1$, on a que :
+
+$$
+\lim_{m \rightarrow +\infty} \frac{p}{(p-1)^2}\cdot(mp^{m+1}-(m+1)p^m + 1) = \frac{p}{(p-1)^2}
+$$
+
+Et donc, pour tout $m$ :
+
+$$
+\sum_{k=1}^mk\cdot p^k \leq \frac{p}{(p-1)^2}
+$$
+
+Donc :
+
+$$
+\mathcal{O}(\sum_{k=1}^{m}k\cdot p^k) = \mathcal{O}(\frac{p}{(p-1)^2}) = \mathcal{O}(1)
+$$
+
+Le nombre moyen d'itérations de la boucle for en $j$ est donc toujours plus petit qu'une constante : c'est indépendant de $m$ et ne dépend que de $p$ !
+
+Ceci s'explique par le fait que la probabilité de s'arrêter au bout de $j$ itération devient très vite très petite, et d'autant plus petite que l'alphabet augmente. On s'arrêtera quasi toujours avant d'arriver à la fin de $b$.
+
+Ce résultat surprennent amène à un autre résultat tout aussi surprenant : comme le reste de l'algorithme est de complexité $\mathcal{O}(n)$ :
+
+> la complexité en moyenne de l'algorithme naif est $\mathcal{O}(n)$.
+{: .note}
+
+Un simple `break` a rendu linéaire la complexité en moyenne de l'algorithme.
+
 ### trouver toutes les sous-chaines
 
-Si l'on cherche à trouver tous les indices où se trouvent $b$ dans $a$, il faut modifier l'algorithme.
+Si l'on cherche à trouver tous les indices où se trouvent $b$ dans $a$, il faut modifier l'algorithme pour stocker les indices où $b$ commence. Ceci se fait aisément :
 
+```python
+def sous_chaine_naif_tous(a, b):
+    indices = []
+    for i in range(len(a) - len(b) + 1):
+        trouvé = True
+        for j in range(len(b)):
+            if b[j] != a[i + j]:
+                trouvé = False
+                break
+        if trouvé:
+            indices.append(i)
+    return indices
+```
+
+Donnez les complexités de ce nouvel algorithme.
 {% details solution %}
 
-> à faire
-{: .tbd}
+Les complexités maximale et en moyenne de l'algorithme n'ont pas changé. Seule la complexité minimale est passé de $\mahtcal{O}(m)$ à $\mathcal{O}(n)$ puisque l'on parcours toute la chaine à chaque fois.
 
 {% enddetails %}
 
-Quel est sa complexité ?
+## améliorations
 
-{% details solution %}
+it autour de la boucle for en `i` qui teste si $b$ est présent à partir de chaque position de $a$. A chaque étape on compare un élément de $b$ à l'élément de l'index $i + j$ de $a$. Le principal soucis de l'algorithme est que le nombre $i+j$ peut diminuer.
 
-> à faire
-{: .tbd}
-
-{% enddetails %}
-
-## Algorithme de Knuth-Morris-Pratt
-
-L'algorithme `sous_chaine_naif_amélioré` est construit autour de la boucle for en `i` qui teste si $b$ est présent à partir de chaque position de $a$. A chaque étape on compare un élément de $b$ à l'élément de l'index $i + j$ de $a$. Le principal soucis de l'algorithme est que le nombre $i+j$ peut diminuer.
-
-Par exemple si on cherche la chaine `aab` dans la chaine `aaaaaaaa` $i+j$ vaudra :
+Par exemple si on cherche la chaine `b=CGT` dans la chaine `a=CGACGACGACGA` $i+j$ vaudra :
 
 1. $i+j=0+0 = 0$
 2. $i+j=0+1 = 1$
@@ -357,49 +394,243 @@ Par exemple si on cherche la chaine `aab` dans la chaine `aaaaaaaa` $i+j$ vaudra
 
 Chaque élément de $a$ sera vu $m$ fois.
 
-L'algorithme de [Knuth, Morris et Pratt](https://fr.wikipedia.org/wiki/Algorithme_de_Knuth-Morris-Pratt) publié en 1977 est une réponse optimale à ce problème. Il permet de trouver une sous-chaine $b$ d'une chaine $a$ en $\mathcal{O}(m + n)$ opérations. Il est basée sur une optimisation du décalage de $i$ et $j$ que permet de rendre la somme $i+j$ croissante (on ne se répète plus).
+Accélérer l'algorithme revient à faire en sorte que le nombre $i+j$ soit croissant le plus souvent possible.
+
+### prétraitement utilisant $a$
+
+Une première idée que l'on peut avoir pour accélérer le processus et de remarquer que ça ne sert à rien de faire commencer la recherche de $b$ dans $a$ à l'index $i$ si $a[i] \neq b[0]$.
+
+Ceci peut se faire en $\mathcal{O}(n)$ opérations en utilisant `sous_chaine_naif_tous(a, b[0])`. On utilise ensuite ces indices dans notre algorithme accéléré :
+
+```python
+def sous_chaine_naif_acceleration_1(a, b):
+    for i in sous_chaine_naif_tous(a, b[0]):
+        trouvé = True
+        for j in range(len(b)):
+            if b[j] != a[i + j]:
+                trouvé = False
+        if trouvé:
+            return True
+    return False
+```
+
+Il faut maintenant tenir compte du prétraitement dans le calcul de la complexité.
+
+* ce qu'on fait en plus : on parcourt toute la chaine $a$ pour rendre le tableau d'indices. Cela se fait en $\mathcal{O}(n)$ opérations
+* ce qu'on fait en moins : on ne parcourt plus que certains indices $i$ et pas tous.
+
+Si la première lettre de $b$ est une lettre rare dans $a$, notre algorithme sera très accéléré mais cette lettre est très fréquente on ne gagnera rien.
+
+Si on prend un modèle aléatoire, la première lettre de $b$ se retrouvera $\frac{n}{A}$ fois dans $a$ (avec $A$ le nombre de lettre de l'alphabet). La longueur du tableau d'indice sera donc de l'ordre de $\frac{n}{A} = \mathcal{O}(n)$ éléments. En moyenne, on ne gagne donc rien.
+
+> Cet algorithme n'a pas une complexité théorique meilleure que l'algorithme naïf, mais en pratique il ira de l'ordre de $A$ fois plus vite.
+{: .note}
+
+### prétraitement sur $b$
+
+Faire un prétraitement sur la chaine la plus longue n'est pas forcément très pratique. De plus, dans le cas ou les données sont streamées par exemple, on ne connait pas $a$ en entier.
+
+Ces deux raisons font que pour des algorithmes avec prétraitement, on préfère le faire sur les "petites" données que l'on connait. Ici ce serait $b$.
+
+Notre objectif est toujours de rendre la somme $i+j$ la plus croissante possible pour éviter les répétitions. Comment adapter l'idée précédente en ne connaissant pas $a$ ?
+
+Pour comprendre, regardons tous les cas possible avec notre algorithme naïf :
+
+On débute une recherche en comparant $a[i + 0]$ à $b[0] :
+
+```text
+             i  
+a:     ...aaa?aaaaaaaa....
+b:           bbbbbb         
+             j
+```
+
+Si $a[i] = b[0] alors on décale $j$ d'un cran :
+
+```text
+             i  
+a:     ...aaab?aaaaaaa....
+b:           bbbbbb         
+              j
+```
+
+Sinon, on a pas vraiment d'autre choix que de décaler i de 1 :
+
+```text
+              i  
+a:     ...aaaa?aaaaaaa....
+b:            bbbbbb         
+              j
+```
+
+Il n'y a pas vraiment de moyen de gagner des opérations dans ce cas là.
+
+Supposons maintenant que l'on ai un peu avancé :
+
+```text
+             i  
+a:     ...aaabbb?aaaaa....
+b:           bbbbbb         
+                j
+```
+
+On a $a[i + k] = b[k]$ pour tout $0 \leq k < j$. Et on compare $a[i + j]$ à $b[j]$.
+
+Si $a[i + j] = b[j]$ alors on décale $j$ d'un cran et on recommence si $j < m$ et sinon on s'arrête puisque l'on a trouvé $b$ dans $a$. Mais si $a[i + j] \neq b[j]$ on replace $j$ à 0 et on augmente $i$. Cette augmentation peut être de 1 à $j$ :
+
+* augmentation de 1 (comme pour le l'algorithme naïf)
+
+    ```text
+                 i  
+    a:     ...aaabbb?aaaaa....
+    b:            bbbbbb         
+                  j
+    ```
+
+* augmentation max :
+
+    ```text
+                    i  
+    a:     ...aaabbb?aaaaa....
+    b:              bbbbbb         
+                    j
+    ```
+
+* augmentation entre les deux :
+
+    ```text
+                   i  
+    a:     ...aaabbb?aaaaa....
+    b:             bbbbbb         
+                   j
+    ```
+
+En réutilisant la partie précédente, on a clairement que l'augmentation minimale de $i$ que l'on peut avoir est :
+
+* $i=i+j$ s'il n'existe pas $0 < k < j$ tel que $a[i+k] = b[j]$
+* $i=i+k$ avec $0 < k \leq j$ le plus petit entier tel que $a[i+k] = b[0]$, sinon
+
+Comme on sait que $a[i:i+j]$ vaut $b[:j]$ on peut précalculer ces déplacements !
+
+On commence par chercher le premier endroit où $b[0]$ est répété dans $b$. On peut utiliser `sous_chaine_naif_tous(b, b[0])` et prendre, s'il existe, le deuxième élément de la sortie, disons $p$. Si cet élément n'existe pas, on note $p=m$
+
+Ensuite, si :
+
+* $a[i + k] = b[k]$ pour tout $0 \leq k < j$
+* $a[i + j] \neq b[j]$
+
+On peut déplacer $i$ de :
+
+* 1 si $j=0$
+* $p$ si $p < j$
+* $j$ sinon
+
+Pour préparer la suite, on va ranger ces informations dans un tableau $T_b$ de longueur $m-1$ tel que :
+
+* $T_b[j-1] = 0$  pour tout $1 \leq j \leq p$
+* $T_b[j-1] = j - p$  pour tout $p < j \leq m-1$
+
+Par exemple, pour $b=ACATGA$, on aurait : $T_b = [0, 0, 1, 2, 3]$
+
+Avec ce tableau, notre algorithme devient alors :
+
+```python
+def sous_chaine_naif_acceleration_2(a, b):
+    T_b = creation_tableau_opti_1(b)
+
+    i = 0
+    j = 0
+
+    while i + j < len(a):
+        if a[i + j] == b[j]:
+            j += 1
+        
+            if j >= len(b):
+                return True
+
+        else:
+            if j == 0:
+                i += 1
+            else :
+                i = i + j - T_b[j - 1]
+                j = 0
+    return False
+```
+
+On a donc 2 décalages possibles :
+
+* soit on déplace $i$ sur $j$ (on est avant le nouveau début)
+* soit on déplace i pour que a[i] soit un début de b (lorsque l'on a $j \geq p$ et que que l'on connait le début de $a$)
+
+Plus il y a de 0 dans $T_b$ plus les décalages seront importants
+
+Cependant, la forme de $T_b$ sera toujours $[0, 0, ..., 0, 1, 2, ..., k]$. On gagne de l'optimisation jusqu'à un certain point puis on ne décale plus beaucoup.
+
+## Algorithme de Knuth-Morris-Pratt
+
+L'algorithme de [Knuth, Morris et Pratt](https://fr.wikipedia.org/wiki/Algorithme_de_Knuth-Morris-Pratt) publié en 1977, reprend l'idée de l'optimisation précédente mais la sublime. Il trouve un tableau $T_b$ optimal permettant de trouver un algorithme en $\mathcal{O}(n +m)$, c'est à dire de façon optimale.
+
+Nous allons procéder par étape pour essayer de le comprendre.
 
 ### décalage adapté
 
-Pour accélérer l'algorithme il faut pouvoir garantir que :
+L'idée force de l'algorithme est que les éléments $T_b[j]$ ne sont plus la distance à la première répétition, mais le nombre de caractères dont la fin de $b[:j+1]$ sont un début de $b$ différent de $b[:j+1]$.
 
-* soit $i+j$ augmente à chaque étape
-* soit $i+j$ est constant mais $i$ augmente (ce qui signifie que l'on a décalé la comparaison).
-
-Il faut donc que si on est dans la position suivante à la fin d'une étape :
+Avant de formaliser tout ça regardons ce que ça donne sur un exemple :
 
 ```text
-i + j :         v
-a:       ....aaaaaaaaa....
-b:           bbbbbb         
-i/j:         i  j
+0123456789    : index
+ACGAGACGACT   : la chaîne b
+   A          : une répétition de 1 caractères
+     ACGA     : une répétition de 4 caractères
+        AC    : une répétition de 2 caractères
 ```
 
-Alors à l'étape suivante on ait :
+Le tableau $T_b$ vaudra alors : $[0, 0, 0, 1, 0, 1, 2, 3, 4, 2]$.
 
-1. soit :
+0. $j=0$ par convention on note $T_b[0] = 0$
+1. $j=1$. On a `b[:2] = "AC"`. La fin ne correspond à aucun début de $b$ à part $b[:2]$ : $T[1] = 0$
+2. $j=2$. On a `b[:3] = "ACG"`. La fin ne correspond à aucun début de $b$ à part $b[:3]$: $T[2] = 0$
+3. $j=3$. On a `b[:4] = "ACGA"`. La fin correspond à `b[:1] = "A"` : $T[3] = 1$
+4. $j=4$. On a `b[:5] = "ACGAG"`. La fin ne correspond à aucun début de $b$ à par $b[:5]$ : $T[4] = 0$
+5. $j=5$. On a `b[:6] = "ACGAGA"`. La fin correspond à `b[:1] = "A"` :  : $T[5] = 1$
+6. $j=6$. On a `b[:7] = "ACGAGAC"`. La fin correspond à `b[:2] = "AC"` : $T[6] = 2$
+7. $j=7$. On a `b[:8] = "ACGAGACG"`. La fin correspond à `b[:3] = "ACG"` : $T[7] = 3$
+8. $j=8$. On a `b[:9] = "ACGAGACGA"`. La fin correspond à `b[:4] = "ACGA"` : $T[8] = 4$
+9. $j=9$. On a `b[:10] = "ACGAGACGAC"`. La fin correspond à `b[:1] = "AC"` : $T[9] = 2$
 
-    ```text
-    i + j :          v
-    a:       ....aaaaaaaaa....
-    b:           bbbbbb         
-    i/j:         i   j
-    ```
+Formalisons ça.
 
-    Qui correspond au fait que l'on continue de chercher si $b$ est une sous-chaine de $a$ à commençant à la position $i$
-2. soit :
-
-    ```text
-    i + j :         v
-    a:       ....aaaaaaaaa....
-    b:            bbbbbb         
-    i/j:          i j
-    ```
-
-    Qui correspond au fait que l'on chercher si $b$ est une sous-chaine de $a$ à commençant à une nouvelle position. Dans ce cas là, on est pas obligé de recommencer à $j=0$ car on connaît déjà les premiers caractères de $a$.
-
-> Le *curseur* `v` (à la position $i+j$ ne doit qu'augmenter)
+> Soit $T_b$ un tableau de longueur $m-1$
+>
+> * T_b[0] = 0
+> * pour tout $1 \leq j < m-1$, on note $T_b[j]$ le plus grand entier $k < j +1$ tel que $b[:k] = b[j+1-k:j+1]$.
+>
 {: .note}
+
+On peut noter que $T_b[j]$ existe toujours puisque $b[:0]$ et $b[k:k]$ sont la chaine vide pour tout $k$.
+
+On peut facilement calculer $T_b$, par exemple avec cet algorithme :
+
+```python
+def algo_naif_construction_t(b):
+    T_b = []
+
+    for j in range(1, len(b)):
+        T_b.append(0)
+        chaîne = b[1:j]
+        for k in range(len(chaîne)):
+            if b[:k] == chaîne[-k:]:
+                T_b[-1] = k
+
+    return T_b
+```
+
+La complexité de cet algorithme est cependant assez grande, puisqu'elle est en $\mathcal{O}(m^3)$.
+
+### algorithme
+
+Avec le tableau $T_b$ défini comme précédemment, on a un gain monumental par rapport à l'optimisation précédente. On a plus besoin de revenir en arrière : on peut faire augmenter (au sens large) $i+j$ à chaque étape.
 
 Prenons un cas concret. Supposons que l'on se trouve dans cette configuration :
 
@@ -430,7 +661,7 @@ b:           ATATCG
 i/j:         i   j
 ```
 
-On peut continuer la comparaison à la même position, mais en décalant $i$ :
+On peut continuer la comparaison à la même position, mais en décalant $i$ de $T_b[j-1] = T_b[3] = 2$ :
 
 ```text
 i + j :          v
@@ -441,52 +672,7 @@ i/j:           i j
 
 Le nombre $i+j$ n'augmentera pas, mais $i$ aura augmenté strictement.
 
-Le nombre minimum de décalage possible peut être formalisé comme suit :
-
-> Si à la fin d'une étape on a :
->
-> * $j > 0$
-> * $a[i + k] = b[k]$ pour tout $0 \leq k < j$
-> * $a[i + j] \neq b[j]$
->
-> Soit $l$ le plus petit entier strictement positif tel que $a[i + l + k] = b[k]$ pour tout $0 \leq k < j - l$.
->
-> On peut continuer l'étape suivante avec :
->
-> * $i' = i + l$
-> * $j' = j - l$
->
-{: .note}
-
-On peut noter que $l$ existe toujours, au pire il vaut $j$ et que comme $a[i + l + k] = b[l + k]$, cela revient à chercher $l$ tel que :
-
-* $0 < l \leq j < m$
-* $b[l + k] = b[k]$ pour tout $0 \leq k < j - l$
-
-> On a plus besoin de $a$ dans le calcul de $l$ !
-{: .note}
-
-On peut donc considérer, pour toute chaine $b$ de longueur $m$ un tableau $T_b$ tel que :
-
-* $T_b$ soit de longueur $m - 1$
-* $T_b[j - 1] = j - l$ pour $0 < j < m$, avec $l$ le plus petit entier tel que :
-  * $0 < l \leq j < m$
-  * $b[l + k] = b[k]$ pour tout $0 \leq k < j - l$
-
-> La valeur $T_b[j-1]$ correspond à la longueur maximale d'un début de $b$ qui correspond à une fin de $b[1:j]$ (ce n'est **pas** de $b[:j]$ car il **faut** décaler $b$ d'au moins 1 case).
-{: .note}
-
-Nous donnerons plus tard un moyen efficace de le calculer. Mais si $b$ vaut `ATATCG` on aurait par exemple $T_b = [0, 0, 1, 2, 0]$.
-
-```text
-00120 
-ATATCG
-  ATATCG
-```
-
-### algorithme
-
-En supposant que l'on connaisse un moyen de créer $T_b$, l'algorithme de recherche d'une sous-chaine de Knuth, Morris et Pratt est alors :
+En supposant que la fonction  `cree_tableau(b)` crée $T_b$, l'algorithme de recherche d'une sous-chaine de Knuth, Morris et Pratt est alors :
 
 ```python
 def sous_chaine_KMP(a, b):
@@ -512,73 +698,15 @@ def sous_chaine_KMP(a, b):
     return False
 ```
 
+> par rapport à l'algorithme précédent, $T_b$ est différent et la mise à jour de $j$ n'est plus forcément égale à 0.
+
 Comme à chaque itération, soit $i+j$ croit strictement, soit $i$ croit strictement il y a au plus $2n$ étapes à l'algorithme et donc sa complexité est de l'ordre $\mathcal{O}(n + K(m))$ où $K(m)$ est la complexité de la fonction `cree_tableau(b)`
 
 ### création de la table de décalage
 
-Créer la table de décalage revient à chercher les répétitions dans la chaîne $b$.
+L'algorithme naïf de création de la table est en $\mathcal{O}(m^3)$ ce qui n'est pas vraiment optimal. L'algorithme utilisé par Knutt, Morris-et Pratt est de complexité bien meilleure puisqu'il permet de créer le tableau $T_b$ en $\mathcal{O}(m)$ opérations !
 
-En reprenant la chaine $b$ valant `ACGAGACGACT` on note les répétitions possibles  :
-
-```text
-0123456789    : index
-ACGAGACGACT   : la chaîne b
-   A          : une répétition de 1 caractères
-     ACGA     : une répétition de 4 caractères
-        AC    : une répétition de 2 caractères
-```
-
-On peut maintenant construire le tableau $T_b$ tel que $T_b[j-1]$, $1 \leq j < m$, correspond à la longueur maximale d'un début de $b$ qui correspond à une fin de $b[1:j]$ :
-
-1. $j=1$. On a `b[1:1] = ""`. La fin  ne correspond à aucun début de $b$ : $T[1-1] = 0$
-2. $j=2$. On a `b[1:2] = "C"`. La fin ne correspond à aucun début de $b$ : $T[2-1] = 0$
-3. $j=3$. On a `b[1:3] = "CG"`. La fin ne correspond à aucun début de $b$ : $T[3-1] = 0$
-4. $j=4$. On a `b[1:4] = "CGA"`. La fin correspond à `b[:1] = "A"` : $T[4-1] = 1$
-5. $j=5$. On a `b[1:5] = "CGAG"`. La fin ne correspond à aucun début de $b$ : $T[5-1] = 0$
-6. $j=6$. On a `b[1:6] = "CGAGA"`. La fin correspond à `b[:1] = "A"` :  : $T[6-1] = 1$
-7. $j=7$. On a `b[1:7] = "CGAGAC"`. La fin correspond à `b[:2] = "AC"` : $T[7-1] = 2$
-8. $j=8$. On a `b[1:8] = "CGAGACG"`. La fin correspond à `b[:3] = "ACG"` : $T[8-1] = 3$
-9. $j=9$. On a `b[1:9] = "CGAGACGA"`. La fin correspond à `b[:4] = "ACGA"` : $T[9-1] = 4$
-10. $j=10$. On a `b[1:10] = "CGAGACGAC"`. La fin correspond à `b[:1] = "AC"` : $T[10-1] = 2$
-
-Le tableau $T_b$ vaut : $[0, 0, 0, 1, 0, 1, 2, 3, 4, 2]$.
-
-```text
-0123456789    : index
-ACGAGACGACT   : la chaîne b
-   A          : une répétition de 1 caractères
-     ACGA     : une répétition de 4 caractères
-        AC    : une répétition de 2 caractères
-0001012342    : Tb
-```
-
-Ceci nous permet de créer un algorithme naïf pour trouver $T_b$.
-{% details écrivez cet algorithme %}
-
-```python
-def algo_naif_construction_t(b):
-    T_b = []
-
-    for j in range(1, len(b)):
-        T_b.append(0)
-        chaîne = b[1:j]
-        for k in range(len(chaîne)):
-            if b[:k] == chaîne[-k:]:
-                T_b[-1] = k
-
-    return T_b
-```
-
-{% enddetails %}
-
-La complexité de cet algorithme est clairement en $\mathcal{O}(m^3)$. Utiliser cet algorithme pour créer $T_b$ nous donne alors une complexité de $\mathcal{O}(n + m^2)$ :
-
-* c'est mieux que l'algorithme naïf dans le cas le max
-* c'est moins bien en moyenne
-
-ON peut faire bien mieux avec un algorithme (très bel) algorithme de Knuth, Morris et Pratt. Ils ont en remarqué que l'on peut construire le tableau de façon itérative et en $\mathcal{O}(m)$ opérations !
-
-Décrivons cette idée. On commence avec un tableau où seul $T_b[0] = 0$ est rempli (pour $j=1$). On considère que $j \geq 2$ et on note $c = b[j-1]$
+Décrivons l'idée. On commence avec un tableau où seul $T_b[0] = 0$ est rempli (pour $j=1$). On considère que $j \geq 2$ et on note $c = b[j-1]$
 
 On cherche $i$ tel que $b[:i]$ coïncide avec la fin de la chaîne $b[1:j-1] + [c]$ : il y a 2 cas à considérer :
 
@@ -621,7 +749,7 @@ def cree_tableau(b):
     return T_b
 ```
 
-Calculons la complexité de cette algorithme. Elle est proportionnelle au nombre d'étapes puisque toutes les autres opérations sont en $\mathcal{O}(1)$. 
+Calculons la complexité de cette algorithme. Elle est proportionnelle au nombre d'étapes puisque toutes les autres opérations sont en $\mathcal{O}(1)$.
 
 À chaque étape :
 
@@ -631,7 +759,7 @@ Calculons la complexité de cette algorithme. Elle est proportionnelle au nombre
 
 Il y a donc au plus autant d'étapes où $k$ diminue que d'étapes où $k$ augmente ou reste constant.
 
-Comme $j$ augmente lorsque $k$ reste constant ou augmente, et que l'on s'arrête lorsque $j$ vaut $m-1$, il y a au plus $m$ étapes où $k$ reste constant ou augmente. 
+Comme $j$ augmente lorsque $k$ reste constant ou augmente, et que l'on s'arrête lorsque $j$ vaut $m-1$, il y a au plus $m$ étapes où $k$ reste constant ou augmente.
 
 On en déduit qu'il a donc également au plus $m$ étapes où $k$ diminue.
 
@@ -642,29 +770,9 @@ Le nombre total d'étape est en $\mathcal{O(m)}$.
 > La complexité de l'algorithme de Knuth-Morris-Pratt est en $\mathcal{O}(n +n)$ opérations : elle est minimale.
 {: .note}
 
-### trouver toutes les sous-chaines
-
-Si l'on cherche à trouver tous les indices où se trouvent $b$ dans $a$, il faut modifier l'algorithme.
-
-{% details solution %}
-
-> à faire
-{: .tbd}
-
-{% enddetails %}
-
-Quel est sa complexité ?
-
-{% details solution %}
-
-> à faire
-{: .tbd}
-
-{% enddetails %}
-
 ## Autre algorithmes
 
-Nous dne détaillerons pas les autres algorithmes, nous nous contenteront de donner les liens wikipedia et d'indiquer leur intérêt
+Nous ne détaillerons pas les autres algorithmes, nous nous contenteront de donner les liens wikipedia et d'indiquer leur intérêt
 
 * [Rabin-Karp](https://fr.wikipedia.org/wiki/Algorithme_de_Rabin-Karp). Cet algorithme est intéressant car :
   * plutôt que de chercher la sous-chaine directement, on passe par une fonction de hashage. On compare donc des valeur de hash plutôt que des sous-chaine ce qui est plus rapide en général

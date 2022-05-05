@@ -49,6 +49,7 @@ def suite_algorithme_BMH(a, b):
 
 # print(suite_algorithme_BMH("aaaaaaab", "abc"))
 
+
 def algo_naif_construction_t(b):
     T_b = []
 
@@ -61,35 +62,93 @@ def algo_naif_construction_t(b):
 
     return T_b
 
+
 # print(algo_naif_construction_t("ACGAGACGACT"))
 
 
+def sous_chaine_naif_tous(a, b):
+    indices = []
+    for i in range(len(a) - len(b) + 1):
+        trouvé = True
+        for j in range(len(b)):
+            if b[j] != a[i + j]:
+                trouvé = False
+                break
+        if trouvé:
+            indices.append(i)
+    return indices
+
+
+# print(sous_chaine_naif_tous("ACGAGACGACT", "AC"))
+
+
+def sous_chaine_naif_acceleration_1(a, b):
+    for i in sous_chaine_naif_tous(a, b[0]):
+        trouvé = True
+        for j in range(len(b)):
+            if b[j] != a[i + j]:
+                trouvé = False
+        if trouvé:
+            return True
+    return False
+
+
+print(sous_chaine_naif_acceleration_1("ACGAGACGACT", "ACZ"))
+
+
+def sous_chaine_naif_acceleration_2(a, b):
+    T_b = [0, 0, 1]
+
+    i = 0
+    j = 0
+
+    while i + j < len(a):
+        if a[i + j] == b[j]:
+            j += 1
+        
+            if j >= len(b):
+                return True
+
+        else:
+            if j == 0:
+                i += 1
+            else:
+                i = i + j - T_b[j - 1]
+                j = 0
+    return False
+
+
+print(sous_chaine_naif_acceleration_2("ACGAGACATGACT", "ACAT"))
+
 
 def cree_tableau(b):
-    T_b = [0]
+    T_b = [0, 0, 1]
 
     j = len(T_b) + 1
-    c = b[j-1]
+    c = b[j - 1]
 
     while len(T_b) < len(b) - 1:
-        k = T_b[j-2]
+        k = T_b[j - 2]
 
         if c == b[k]:
             T_b.append(k + 1)
-                        
-            j = len(T_b) + 1
-            c = b[j-1]
-        elif k <= 1:
-                T_b.append(0)
 
-                j = len(T_b) + 1
-                c = b[j-1]
+            j = len(T_b) + 1
+            c = b[j - 1]
+        elif k <= 1:
+            T_b.append(0)
+
+            j = len(T_b) + 1
+            c = b[j - 1]
         else:
             j = k + 1
 
     return T_b
 
-print(cree_tableau("ACGAGACGACT"))
+
+
+# print(cree_tableau("ACGAGACGACT"))
+
 
 def sous_chaine_KMP(a, b):
     # Tb = cree_tableau(b)
