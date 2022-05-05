@@ -61,112 +61,151 @@
 
   <div class="post-content">
     <blockquote class="chemin">
-  <p><a href="/cours_informatique/cours/algorithme-code-theorie/">Algorithme, code et théorie</a> / <a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/">algorithmie</a> / <a href="/cours_informatique/cours/algorithme-code-theorie/code/projet-alignement-sequences.html">projet : alignement de sequences</a></p>
+  <p><a href="/cours_informatique/cours/algorithme-code-theorie/">Algorithme, code et théorie</a> / <a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/">algorithmie</a> / <a href="/cours_informatique/cours/algorithme-code-theorie/code/projet-alignement-sequences.html">projet : alignement de séquences</a></p>
 
   <p>prérequis :</p>
 
   <ul>
-    <li><a href="/cours_informatique/cours/algorithme-code-theorie/code/projet-fichiers.html">projet : fichiers</a></li>
     <li><a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/etude-alignement-sequences.html">étude : alignement de séquences</a></li>
+    <li><a href="/cours_informatique/cours/algorithme-code-theorie/code/programmation-objet/heritage.html">héritage</a></li>
+    <li><a href="/cours_informatique/cours/algorithme-code-theorie/code/projet-fichiers.html">projet : fichiers</a></li>
   </ul>
 
 </blockquote>
 
-<p>On peut aussi généraliser en supposant que</p>
-<blockquote class="tbd">
-  <ul>
-    <li>dot plot : classes qui vont avec</li>
-    <li>coder l’algo (+ test) plus classes qui vont avec</li>
-    <li>comparer les batonnet couleurs</li>
-    <li>méthode de parcimonie entre 2 et généralisation</li>
-  </ul>
-</blockquote>
+<p>Le but de ce projet est de coder les différents algorithmes d’alignements de séquences vus dans la partie <a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/etude-alignement-sequences.html">étude</a>.</p>
 
-<h2 id="algorithme">algorithme</h2>
+<p>On considérera pour ce projet que le caractère <em>”-“</em> ne fait <strong>pas</strong> parti de l’alphabet $\mathcal{A}$ utilisé.</p>
 
-<p>Nous allons créer l’algorithme en plusieurs parties :</p>
+<h2 id="alignement">alignement</h2>
+
+<p>On rappelle qu’un alignement est un couple de deux séquences $(a^\star, b^\star)$ tels que :</p>
+
+<ul>
+  <li>$a^\star$ et $b^\star$ soient de même longueur $L$</li>
+  <li>chaque caractère de $a^\star$ et $b^\star$ soient soit dans $\mathcal{A} \cup { - }$</li>
+  <li>$(a^\star_i, b^\star_i) \neq (-,-)$ pour tout $0 \leq i &lt; L$</li>
+</ul>
 
 <ol>
-  <li>rendre une fonction de coût élémentaire</li>
-  <li>rendre la matrice d’édition</li>
-  <li>utiliser la matrice d’édition pour connaitre la distance d’édition</li>
-  <li>utiliser la matrice d’édition pour connaitre un alignement optimal</li>
+  <li>Représentez <em>graphiquement</em> l’alignement (les 2 chaines l’une sous l’autre avec les <code class="language-plaintext highlighter-rouge">|</code>, comme dans l’<a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/etude-alignement-sequences.html#distance-entre-chaines-">étude</a>)</li>
+  <li>pour un alignement $(a^\star, b^\star)$ donné, rendez les liste de chaînes de caraxtères permettant de passer de $a$ à $b$, comme fait dans l’<a href="/cours_informatique/cours/algorithme-code-theorie/algorithme/etude-alignement-sequences.html#%C3%A9volution-dune-s%C3%A9quence-en-lautre">étude</a>
+</li>
 </ol>
 
-<h3 id="distance-élémentaire">distance élémentaire</h3>
+<p>Pour cela :</p>
 
-<p>La distance élémentaire doit associer un réel positif à :</p>
+<blockquote class="a-faire">
+  <p>Vous créerez une classe <code class="language-plaintext highlighter-rouge">Alignement</code> telle que :</p>
 
-<ul>
-  <li>un couple de caractère pour une substitution</li>
-  <li>un caractère pour une insertion ou une suppression</li>
-</ul>
+  <ul>
+    <li>le constructeur prend les deux chaines $a^\star$ et $b^\star$</li>
+    <li>cette classe doit contenir les méthodes suivantes :
+      <ul>
+        <li>
+<code class="language-plaintext highlighter-rouge">a()</code> qui rend $a$</li>
+        <li>
+<code class="language-plaintext highlighter-rouge">b()</code> qui rend $b$</li>
+        <li>
+<code class="language-plaintext highlighter-rouge">affiche()</code> qui affiche l’alignement</li>
+        <li>
+<code class="language-plaintext highlighter-rouge">évolution()</code> qui rend la liste de chaines permettant de passer de $a$ à $b$</li>
+      </ul>
+    </li>
+  </ul>
 
-<p>Ces informations peuvent être stockées dans un dictionnaire <code class="language-plaintext highlighter-rouge">dist</code> avec comme clés :</p>
-
-<ul>
-  <li>$(x, y)$ avec $x$ et $y$ deux caractères. On peut de plus supposer que $x \leq y$</li>
-  <li>$x$ avec $x$ un caractère</li>
-</ul>
-
-<p>En supposant que l’on ait un dictionnaire <code class="language-plaintext highlighter-rouge">dist</code> de ce type, il sera plus aisé de d’avoir une fonction de signature <code class="language-plaintext highlighter-rouge">f(x, y=None)</code> telle que :</p>
-
-<ul>
-  <li>si $x$ et $y$ sont donné, rend <code class="language-plaintext highlighter-rouge">dist[(x, y)]</code> si $x &lt; y$ et <code class="language-plaintext highlighter-rouge">dist[(y, x)]</code> sinon.</li>
-  <li>si uniquement $x$ est renseigné ($y$ vaut <code class="language-plaintext highlighter-rouge">None</code>), la fonction devrait rendre $d[x]$.</li>
-</ul>
-
-<p>On peut alors créer une fonction qui prend en paramètre ce dictionnaire et rend une fonction de calcul. Ceci est facile à faire en python, et savoir créer une fonction qui rend une fonction est une compétence qui peut se révéler utile :</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">crer_fonction</span><span class="p">(</span><span class="n">dist</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">y</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">dist</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
-        <span class="k">elif</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">dist</span><span class="p">[(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)]</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">dist</span><span class="p">[(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)]</span>
-    <span class="k">return</span> <span class="n">f</span>
-</code></pre></div></div>
-
-<h3 id="matrice-dédition">matrice d’édition</h3>
-
-<p>Maintenant qu’on a la fonction d’édition élémentaire, on peut écrire l’algorithme qui crée la matrice d’édition</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">calcul_matrice</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
-    <span class="n">M</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)]</span>
-    <span class="n">M</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)):</span>
-        <span class="n">M</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">M</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)):</span>
-        <span class="n">M</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">M</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-    
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)):</span>
-        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)):</span>
-            <span class="n">M</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">][</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">M</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span>
-                                  <span class="n">M</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> 
-                                  <span class="n">M</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">]))</span>
-
-    <span class="k">return</span> <span class="n">M</span>
-</code></pre></div></div>
-
-<p>La distance d’édition entre $a$ et $b$ est alors <code class="language-plaintext highlighter-rouge">M[-1][-1]</code>.</p>
-
-<h3 id="alignement-à-partir-de-la-matrice-dédition">alignement à partir de la matrice d’édition</h3>
-
-<p>La matrice d’édition nous permet de retrouver l’alignement, en <em>remontant</em> la matrice.</p>
-
-<p>Ecrivez l’algorithme qui, à partir de deux séquences $a$ et $b$ et d’une distance élémentaire écrite sous forme d’une fonction rend la matrice d’édition.</p>
-
-<p>permet de rendre la matrice</p>
-<blockquote class="tbd">
-  <p>écrire l’algorithme + complexité</p>
 </blockquote>
 
-<blockquote class="tbd">
-  <p>chemin = alignement</p>
+<h2 id="distance-élémentaire">distance élémentaire</h2>
+
+<p>Pour deux séquences $a$ et $b$ il faut maintenant pouvoir calculer la distance d’édition avec la distance élémentaire :</p>
+
+<ol>
+  <li>calculer la matrice d’édition</li>
+  <li>rendre la distance d’édition</li>
+  <li>rendre un alignement</li>
+</ol>
+
+<p>Pour cela :</p>
+
+<blockquote class="a-faire">
+  <p>Vous créerez une classe <code class="language-plaintext highlighter-rouge">DistanceElem</code> telle que :</p>
+
+  <ul>
+    <li>le constructeur prend les deux chaines $a$ et $b$</li>
+    <li>cette classe doit contenir les méthodes suivantes :
+      <ul>
+        <li>
+<code class="language-plaintext highlighter-rouge">matrice()</code> qui rend la matrice d’édition en utilisant la distance élémentaire</li>
+        <li>
+<code class="language-plaintext highlighter-rouge">dist()</code> qui rend la distance d’édition associée à la matrice</li>
+        <li>
+<code class="language-plaintext highlighter-rouge">alignement()</code> qui rend un alignement associé à la matrice.</li>
+      </ul>
+    </li>
+  </ul>
+
 </blockquote>
 
+<p>Vous vérifierez bien que les 3 alignements suivants sont corrects :</p>
+
+<ul>
+  <li>“ACTGATT” et “GCTAATCG”</li>
+  <li>“ACTGATT” et “-“</li>
+  <li>”-“ et “GCTAATCG”</li>
+</ul>
+
+<h2 id="cas-général">cas général</h2>
+
+<p>On suppose que le coût est défini par une fonction dont la signature est <code class="language-plaintext highlighter-rouge">cout(x, y=None)</code> :</p>
+
+<ul>
+  <li>si on renseigne <code class="language-plaintext highlighter-rouge">x</code> et <code class="language-plaintext highlighter-rouge">y</code> la fonction rend le cout de substitution entre <code class="language-plaintext highlighter-rouge">x</code> et <code class="language-plaintext highlighter-rouge">y</code>
+</li>
+  <li>si on ne donne qu’un paramètre, la fonction rend le cout d’insertion/suppression de <code class="language-plaintext highlighter-rouge">x</code>
+</li>
+</ul>
+
+<blockquote class="a-faire">
+  <p>Définissez la fonction de cout pour l’exemple du cas général de l’étude</p>
+</blockquote>
+
+<p>On peut maintenant créer l’alignement général :</p>
+
+<blockquote class="a-faire">
+  <p>En héritant de la classe <code class="language-plaintext highlighter-rouge">DistanceElem</code>, créez la classe <code class="language-plaintext highlighter-rouge">Distance</code> qui réalise un alignement.</p>
+
+  <ul>
+    <li>le constructeur prend les deux chaines $a$ et $b$ et la fonction de coût</li>
+    <li>cette classe doit contenir les même méthodes que la classe <code class="language-plaintext highlighter-rouge">DistanceElem</code>.</li>
+  </ul>
+
+  <p>Arrangez vous pour conserver le plus de code possible entre les deux classes.</p>
+</blockquote>
+
+<h2 id="étude-biologique">étude biologique</h2>
+
+<p>Le fichier texte <a href="./pro-opsines.edi">pro-opsines.edi</a> contient le code (sous la formes d’acides aminées) 3 protéines d’<a href="https://fr.wikipedia.org/wiki/Opsine">opsines</a> qui permettent aux humain de voir en couleur. Ces 3 protéines dérivent d’un ancêtre commun.</p>
+
+<blockquote class="a-faire">
+  <ol>
+    <li>En utilisant les techniques de lecture de fichier, récupérez sous la forme de 3 chaines de caractères les 3 protéines</li>
+    <li>faites l’alignement élémentaire des 3 protéines 2 à 2</li>
+  </ol>
+</blockquote>
+
+<p>La distance élémentaire n’est pas très utilisée en pratique. POur l’étude de séquences protéiques, on utilise souvent la matrice de similarité <a href="https://en.wikipedia.org/wiki/BLOSUM">BLOSUM62</a>.</p>
+
+<p><strong>Attention</strong> :</p>
+
+<ul>
+  <li>pour la transformer en matrice de coût, il faut prendre l’opposé de sa valeur !</li>
+  <li>l’identité n’est plus de coût nul.</li>
+</ul>
+
+<blockquote class="a-faire">
+  <p>Faites un alignement 2 à 2 de ces 3 protéines en utilisant la matrice de coût associé. Le fichier de la matrice de similarité (dont il faut prendre l’opposé) peut être téléchargé <a href="https://www.ncbi.nlm.nih.gov/Class/FieldGuide/BLOSUM62.txt">là</a>).</p>
+</blockquote>
 
   </div>
 
