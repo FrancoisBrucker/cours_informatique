@@ -86,7 +86,7 @@ Ce cours est composée de trois grandes parties qui s'enchevêtrent.
 13. [projet : programmation événementielle]({% link cours/algorithme-code-theorie/code/projet-programmation-evenementielle.md %})
 14. [fichiers]({% link cours/algorithme-code-theorie/code/fichiers.md %})
 15. [projet : fichiers]({% link cours/algorithme-code-theorie/code/projet-fichiers.md %})
-16. [projet : alignement de sequences]({% link cours/algorithme-code-theorie/code/projet-alignement-sequences.md %})
+16. [projet : alignement de séquences]({% link cours/algorithme-code-theorie/code/projet-alignement-sequences.md %})
 
 ### autre
 
@@ -725,19 +725,24 @@ graph.links.push({
 })
 
 graph.nodes.push({
-id: "projet : alignement de sequences",
+id: "projet : alignement de séquences",
   link: "{% link cours/algorithme-code-theorie/code/projet-alignement-sequences.md %}",
   group: groups.code
 })
 
 graph.links.push({
   source: "étude : alignement de séquences",
-  target: "projet : alignement de sequences",
+  target: "projet : alignement de séquences",
 })
 
 graph.links.push({
   source: "projet : fichiers",
-  target: "projet : alignement de sequences",
+  target: "projet : alignement de séquences",
+})
+
+graph.links.push({
+  source: "héritage",
+  target: "projet : alignement de séquences",
 })
 
 </script>

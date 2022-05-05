@@ -543,7 +543,6 @@ On peut maintenant construire le tableau $T_b$ tel que $T_b[j-1]$, $1 \leq j < m
 
 Le tableau $T_b$ vaut : $[0, 0, 0, 1, 0, 1, 2, 3, 4, 2]$.
 
-
 ```text
 0123456789    : index
 ACGAGACGACT   : la chaîne b
@@ -552,7 +551,6 @@ ACGAGACGACT   : la chaîne b
         AC    : une répétition de 2 caractères
 0001012342    : Tb
 ```
-
 
 Ceci nous permet de créer un algorithme naïf pour trouver $T_b$.
 {% details écrivez cet algorithme %}

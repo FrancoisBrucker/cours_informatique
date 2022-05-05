@@ -242,7 +242,7 @@ d(a[:i+1], b[:j+1]) = \min \begin{cases}
     \end{cases}
 $$
 
-Et nous donne une représentation matricielle de l'alignement et de la distance d'édition :
+Et nous permet de créer une représentation matricielle de l'alignement et de la distance d'édition, appelée **matrice d'édition** :
 
 |           | $-$ | $a[0]$ | ... | $a[i-1]$           | $a[i]$                | $a[n-1]$|
 |-----------|-----|---------------|-----|--------------------|-----------------------|---------|
