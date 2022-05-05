@@ -494,23 +494,16 @@
   <li>ce qu’on fait en moins : on ne parcourt plus que certains indices $i$ et pas tous.</li>
 </ul>
 
-<p>Si la première lettre de $b$ est une lettre rare dans $a$, notre algorithme sera très accéléré mais cette lettre est très fréquente on ne gagnera rien.</p>
+<p>Mais au final, on ne gagne rien… En effet le temps gagné pour ne parcourir que certains indices est compenser par le fait qu’il faut les trouver. 
+L’algorithme naïf ne prend pas plus de temps que notre optimisation car si $a[i] \neq b[0]$ on passe tout de suite à l’indice suivant.</p>
 
-<p>Si on prend un modèle aléatoire, la première lettre de $b$ se retrouvera $\frac{n}{A}$ fois dans $a$ (avec $A$ le nombre de lettre de l’alphabet). La longueur du tableau d’indice sera donc de l’ordre de $\frac{n}{A} = \mathcal{O}(n)$ éléments. En moyenne, on ne gagne donc rien.</p>
-
-<blockquote class="note">
-  <p>Cet algorithme n’a pas une complexité théorique meilleure que l’algorithme naïf, mais en pratique il ira de l’ordre de $A$ fois plus vite.</p>
-</blockquote>
+<p>Si on veut augmenter la rapidité de l’algorithme, il faut travailler sur $b$ pour optimiser les décalages.</p>
 
 <h3 id="prétraitement-sur-b">prétraitement sur $b$</h3>
 
-<p>Faire un prétraitement sur la chaine la plus longue n’est pas forcément très pratique. De plus, dans le cas ou les données sont streamées par exemple, on ne connait pas $a$ en entier.</p>
+<p>Notre objectif est toujours de rendre la somme $i+j$ la plus croissante possible pour éviter les répétitions. Comment adapter l’idée précédente en ne travaillant que sur $b$ ?</p>
 
-<p>Ces deux raisons font que pour des algorithmes avec prétraitement, on préfère le faire sur les “petites” données que l’on connait. Ici ce serait $b$.</p>
-
-<p>Notre objectif est toujours de rendre la somme $i+j$ la plus croissante possible pour éviter les répétitions. Comment adapter l’idée précédente en ne connaissant pas $a$ ?</p>
-
-<p>Pour comprendre, regardons tous les cas possible avec notre algorithme naïf :</p>
+<p>Pour comprendre, regardons tous les cas possibles avec notre algorithme naïf :</p>
 
 <p>On débute une recherche en comparant $a[i + 0]$ à $b[0] :</p>
 
@@ -520,7 +513,7 @@ b:           bbbbbb
              j
 </code></pre></div></div>
 
-<p>Si $a[i] = b[0] alors on décale $j$ d’un cran :</p>
+<p>Si $a[i] = b[0]$ alors on décale $j$ d’un cran :</p>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>             i  
 a:     ...aaab?aaaaaaa....
@@ -538,7 +531,7 @@ b:            bbbbbb
 
 <p>Il n’y a pas vraiment de moyen de gagner des opérations dans ce cas là.</p>
 
-<p>Supposons maintenant que l’on ai un peu avancé :</p>
+<p>Supposons maintenant que l’on ait un peu avancé :</p>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>             i  
 a:     ...aaabbb?aaaaa....
@@ -651,7 +644,7 @@ b:           bbbbbb
 
 <p>Plus il y a de 0 dans $T_b$ plus les décalages seront importants</p>
 
-<p>Cependant, la forme de $T_b$ sera toujours $[0, 0, …, 0, 1, 2, …, k]$. On gagne de l’optimisation jusqu’à un certain point puis on ne décale plus beaucoup.</p>
+<p>Cependant, la forme de $T_b$ sera toujours $[0, 0, …, 0, 1, 2, …, k]$. On gagne de l’optimisation puisque l’on avance toujours du maximum possible jusqu’à la 1ère répétition.</p>
 
 <h2 id="algorithme-de-knuth-morris-pratt">Algorithme de Knuth-Morris-Pratt</h2>
 
@@ -663,7 +656,7 @@ b:           bbbbbb
 
 <p>L’idée force de l’algorithme est que les éléments $T_b[j]$ ne sont plus la distance à la première répétition du premier caractère, mais compte le nombre de caractères dont la fin de $b[:j+1]$ sont un début de $b$ différent de $b[:j+1]$.</p>
 
-<p>Avant de formaliser tout ça regardons ce que ça donne sur un exemple :</p>
+<p>Ce tableau permet également d’avancer $i$ plus que l’algorithme naïf. Avant de formaliser tout ça regardons ce que ça donne sur un exemple :</p>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0123456789    : index
 ACGAGACGACT   : la chaîne b
