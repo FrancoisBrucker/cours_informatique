@@ -24,7 +24,7 @@ $$
 D(a, b) = \vert \{i \mid a[i] \neq b[i], 0 \leq i < n \} \vert
 $$
 
-> La distance entre *"MISOS"* et *"TILOS"* est de 2 différences.
+> La distance entre *"MISO"* et *"SILO"* est de 2 différences.
 
 Cette définition de distance est cependant un peu frustre puisque qu'elle ne permet de comparer que deux mots ayant le même nombre de caractères. Il faut donc généraliser pour permettre de comparer deux chaînes de longueur différentes.
 
