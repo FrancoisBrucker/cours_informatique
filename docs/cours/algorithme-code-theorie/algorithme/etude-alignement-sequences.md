@@ -214,19 +214,19 @@ De la même façon que l'on a fait pour établir l'équation de récurrence pour
 * $(a_{n-1}, -)$ et donc $(a^\star_0\dots a^\star_{L-2}, b^\star_0\dots b^\star_{L-2})$ est un alignement des séquences $a_0\dots a_{n-2}$ et $b$
 * $(-, b_{m-1})$ et donc $(a^\star_0\dots a^\star_{L-2}, b^\star_0\dots b^\star_{L-2})$ est un alignement des séquences $a$ et $b_0\dots b_{m-2}$
 
-De là, si l'on connait :
+De là, si l'on connaît :
 
-* $d(a[:-1], b[:-1])$
-* $d(a[:-1], b)$
-* $d(a, b[:-1])$
+* $D(a[:-1], b[:-1])$
+* $D(a[:-1], b)$
+* $D(a, b[:-1])$
 
 on a :
 
 $$
-d(a, b) = \min  \begin{cases}
-      d(a[:-1], b[:-1]) + \delta(a_{n-1}, b_{m-1}) & \\
-     d(a[:-1], b) + 1 & \\
-      d(a, b[:-1]) + 1 &\\
+D(a, b) = \min  \begin{cases}
+      D(a[:-1], b[:-1]) + \delta(a_{n-1}, b_{m-1}) & \\
+     D(a[:-1], b) + 1 & \\
+      D(a, b[:-1]) + 1 &\\
     \end{cases}
 $$
 
@@ -236,10 +236,10 @@ $$
 Ceci se généralise pour tout $i$ et $j$ :
 
 $$
-d(a[:i+1], b[:j+1]) = \min \begin{cases}
-      d(a[:i], b[:j]) + \delta(a[i], b[j]) & \\
-      d(a[:i], b[:j + 1]) + 1 & \\
-      d(a[:i + 1], b[:j]) + 1 & \\
+D(a[:i+1], b[:j+1]) = \min \begin{cases}
+      D(a[:i], b[:j]) + \delta(a[i], b[j]) & \\
+      D(a[:i], b[:j + 1]) + 1 & \\
+      D(a[:i + 1], b[:j]) + 1 & \\
     \end{cases}
 $$
 
@@ -250,10 +250,10 @@ Et nous permet de créer une représentation matricielle de l'alignement et de l
 |    $-$    | 0   |  $1$ |     |    $i$                | $i+1$                    | $n$ |
 |$b[0]$     |$1$ |        |     |                    |                       |         |
 |...        |     |        |     |                    |                       |         |
-|$b[j-1]$   | $j$    |        |     | $d(a[:i],b[:j])$   | $d(a[:i+1],b[:j])$    |         |
-|$b[j]$     | $j+1$    |        |     | $d(a[:i],b[:j+1])$ |  $d(a[:i+1],b[:j+1])$ |         |
+|$b[j-1]$   | $j$    |        |     | $D(a[:i],b[:j])$   | $D(a[:i+1],b[:j])$    |         |
+|$b[j]$     | $j+1$    |        |     | $D(a[:i],b[:j+1])$ |  $D(a[:i+1],b[:j+1])$ |         |
 |...        |     |        |     |                    |                       |         |
-|$b[m-1]$   | $m$    |        |     |                    |                       |$d(a,b)$ |
+|$b[m-1]$   | $m$    |        |     |                    |                       |$D(a,b)$ |
 
 Et nous donne un algorithme très facile pour la calculer, puisqu'il suffit de remplir la première ligne et la première colonne, puis de progresser ligne à ligne avec la formule:
 
@@ -453,8 +453,8 @@ On en déduit une méthode itérative pour trouver cette distance grâce à l'é
 $$
 D_d(a[:i+1], b[:j+1]) = \min \begin{cases}
       D_d(a[:i], b[:j]) + d(a[i], b[j]) & \\
-      d(a[:i], b[:j + 1]) + d(a[i], -) & \\
-      d(a[:i + 1], b[:j]) + d(-, b[j]) & \\
+      D_d(a[:i], b[:j + 1]) + d(a[i], -) & \\
+      D_d(a[:i + 1], b[:j]) + d(-, b[j]) & \\
     \end{cases}
 $$
 
