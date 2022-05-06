@@ -494,7 +494,7 @@
   <li>ce qu’on fait en moins : on ne parcourt plus que certains indices $i$ et pas tous.</li>
 </ul>
 
-<p>Mais au final, on ne gagne rien… En effet le temps gagné pour ne parcourir que certains indices est compenser par le fait qu’il faut les trouver. 
+<p>Mais au final, on ne gagne rien… En effet le temps gagné pour ne parcourir que certains indices est compensé par le fait qu’il faut les trouver. 
 L’algorithme naïf ne prend pas plus de temps que notre optimisation car si $a[i] \neq b[0]$ on passe tout de suite à l’indice suivant.</p>
 
 <p>Si on veut augmenter la rapidité de l’algorithme, il faut travailler sur $b$ pour optimiser les décalages.</p>
@@ -648,7 +648,7 @@ b:           bbbbbb
 
 <h3 id="amélioration-de-lamélioration">amélioration de l’amélioration</h3>
 
-<p>L’amélioration précédente permet d’avancer $i$ jusqu’au second départ de $b$ — le premier indice $p &gt; 0$ tel que b[0] = b[p]$ — si $j &gt; p$. Plaçons nous dans ce cas là :</p>
+<p>L’amélioration précédente permet d’avancer $i$ jusqu’au second départ de $b$ — le premier indice $p &gt; 0$ tel que $b[0] = b[p]$ — si $j &gt; p$. Plaçons nous dans ce cas là :</p>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>            i  
 a:     .....abbbaa?aaa....
@@ -708,8 +708,8 @@ b:              bbbbbbbb
     <li>$a[i + j] \neq b[j]$</li>
   </ul>
 
-  <p>alors soit $k’$ le plus petit entier tel que $b[:k’] == b[j-k’:j]$ (au pire $k’=0$). 
-Avec :</p>
+  <p>Soit $k’$ le plus petit entier tel que $b[:k’] == b[j-k’:j]$ (au pire $k’=0$). 
+Alors en notant :</p>
 
   <ul>
     <li>$i’ = i + j - k$</li>
@@ -723,9 +723,13 @@ Avec :</p>
     <li>$a[i’ + l] = b[l]$ pour tout $0 \leq l &lt; j’$</li>
   </ul>
 
+  <p>On a de plus l’égalité : $i + j = i’ + j’$</p>
+
 </blockquote>
 
-<p>C’est cette procédure que mets (optimalement) en œuvre l’algorithme de Knuth, Morris et Pratt.</p>
+<p>Remplir le Tableau $T_b$ avec les valeurs de $k’$ pour tout $j$ nous donne un moyen encore pus efficace de décalage puisque l’on va décaler $i$ <strong>et</strong> $j$ de sorte que la somme $i+j$ soit croissante.</p>
+
+<p>C’est cette procédure que met (optimalement) en œuvre l’algorithme de Knuth, Morris et Pratt.</p>
 
 <h2 id="algorithme-de-knuth-morris-pratt">Algorithme de Knuth-Morris-Pratt</h2>
 
