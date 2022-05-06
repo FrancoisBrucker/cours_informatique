@@ -282,20 +282,20 @@ AC-GTC
   <li>$(-, b_{m-1})$ et donc $(a^\star_0\dots a^\star_{L-2}, b^\star_0\dots b^\star_{L-2})$ est un alignement des séquences $a$ et $b_0\dots b_{m-2}$</li>
 </ul>
 
-<p>De là, si l’on connait :</p>
+<p>De là, si l’on connaît :</p>
 
 <ul>
-  <li>$d(a[:-1], b[:-1])$</li>
-  <li>$d(a[:-1], b)$</li>
-  <li>$d(a, b[:-1])$</li>
+  <li>$D(a[:-1], b[:-1])$</li>
+  <li>$D(a[:-1], b)$</li>
+  <li>$D(a, b[:-1])$</li>
 </ul>
 
 <p>on a :</p>
 
-\[d(a, b) = \min  \begin{cases}
-      d(a[:-1], b[:-1]) + \delta(a_{n-1}, b_{m-1}) &amp; \\
-     d(a[:-1], b) + 1 &amp; \\
-      d(a, b[:-1]) + 1 &amp;\\
+\[D(a, b) = \min  \begin{cases}
+      D(a[:-1], b[:-1]) + \delta(a_{n-1}, b_{m-1}) &amp; \\
+     D(a[:-1], b) + 1 &amp; \\
+      D(a, b[:-1]) + 1 &amp;\\
     \end{cases}\]
 
 <blockquote class="note">
@@ -304,10 +304,10 @@ AC-GTC
 
 <p>Ceci se généralise pour tout $i$ et $j$ :</p>
 
-\[d(a[:i+1], b[:j+1]) = \min \begin{cases}
-      d(a[:i], b[:j]) + \delta(a[i], b[j]) &amp; \\
-      d(a[:i], b[:j + 1]) + 1 &amp; \\
-      d(a[:i + 1], b[:j]) + 1 &amp; \\
+\[D(a[:i+1], b[:j+1]) = \min \begin{cases}
+      D(a[:i], b[:j]) + \delta(a[i], b[j]) &amp; \\
+      D(a[:i], b[:j + 1]) + 1 &amp; \\
+      D(a[:i + 1], b[:j]) + 1 &amp; \\
     \end{cases}\]
 
 <p>Et nous permet de créer une représentation matricielle de l’alignement et de la distance d’édition, appelée <strong>matrice d’édition</strong> :</p>
@@ -357,8 +357,8 @@ AC-GTC
       <td>$j$</td>
       <td> </td>
       <td> </td>
-      <td>$d(a[:i],b[:j])$</td>
-      <td>$d(a[:i+1],b[:j])$</td>
+      <td>$D(a[:i],b[:j])$</td>
+      <td>$D(a[:i+1],b[:j])$</td>
       <td> </td>
     </tr>
     <tr>
@@ -366,8 +366,8 @@ AC-GTC
       <td>$j+1$</td>
       <td> </td>
       <td> </td>
-      <td>$d(a[:i],b[:j+1])$</td>
-      <td>$d(a[:i+1],b[:j+1])$</td>
+      <td>$D(a[:i],b[:j+1])$</td>
+      <td>$D(a[:i+1],b[:j+1])$</td>
       <td> </td>
     </tr>
     <tr>
@@ -386,7 +386,7 @@ AC-GTC
       <td> </td>
       <td> </td>
       <td> </td>
-      <td>$d(a,b)$</td>
+      <td>$D(a,b)$</td>
     </tr>
   </tbody>
 </table>
@@ -1106,8 +1106,8 @@ GCTAATCG
 
 \[D_d(a[:i+1], b[:j+1]) = \min \begin{cases}
       D_d(a[:i], b[:j]) + d(a[i], b[j]) &amp; \\
-      d(a[:i], b[:j + 1]) + d(a[i], -) &amp; \\
-      d(a[:i + 1], b[:j]) + d(-, b[j]) &amp; \\
+      D_d(a[:i], b[:j + 1]) + d(a[i], -) &amp; \\
+      D_d(a[:i + 1], b[:j]) + d(-, b[j]) &amp; \\
     \end{cases}\]
 
 <p>Et le terme général de la matrice d’édition :</p>
