@@ -419,7 +419,7 @@ Il faut maintenant tenir compte du prétraitement dans le calcul de la complexit
 * ce qu'on fait en plus : on parcourt toute la chaine $a$ pour rendre le tableau d'indices. Cela se fait en $\mathcal{O}(n)$ opérations
 * ce qu'on fait en moins : on ne parcourt plus que certains indices $i$ et pas tous.
 
-Mais au final, on ne gagne rien... En effet le temps gagné pour ne parcourir que certains indices est compenser par le fait qu'il faut les trouver. 
+Mais au final, on ne gagne rien... En effet le temps gagné pour ne parcourir que certains indices est compensé par le fait qu'il faut les trouver. 
 L'algorithme naïf ne prend pas plus de temps que notre optimisation car si $a[i] \neq b[0]$ on passe tout de suite à l'indice suivant.
 
 Si on veut augmenter la rapidité de l'algorithme, il faut travailler sur $b$ pour optimiser les décalages.
@@ -562,7 +562,7 @@ Cependant, la forme de $T_b$ sera toujours $[0, 0, ..., 0, 1, 2, ..., k]$. On ga
 
 ### amélioration de l'amélioration
 
-L'amélioration précédente permet d'avancer $i$ jusqu'au second départ de $b$ — le premier indice $p > 0$ tel que b[0] = b[p]$ — si $j > p$. Plaçons nous dans ce cas là :
+L'amélioration précédente permet d'avancer $i$ jusqu'au second départ de $b$ — le premier indice $p > 0$ tel que $b[0] = b[p]$ — si $j > p$. Plaçons nous dans ce cas là :
 
 ```text
             i  
@@ -614,8 +614,8 @@ Remarquez que ceci peut se faire sans $a$. Ceci nous donne une nouvelle possibil
 > * $a[i + k] = b[k]$ pour tout $0 \leq k < j$
 > * $a[i + j] \neq b[j]$
 >
-> alors soit $k'$ le plus petit entier tel que $b[:k'] == b[j-k':j]$ (au pire $k'=0$). 
-> Avec :
+> Soit $k'$ le plus petit entier tel que $b[:k'] == b[j-k':j]$ (au pire $k'=0$). 
+> Alors en notant :
 >
 > * $i' = i + j - k$
 > * $j' = k$
@@ -625,9 +625,13 @@ Remarquez que ceci peut se faire sans $a$. Ceci nous donne une nouvelle possibil
 > * $i'$ est le prochain indice de $a$ où $b$ peut être une sous-chaine de $a$ 
 > * $a[i' + l] = b[l]$ pour tout $0 \leq l < j'$
 >
+> On a de plus l'égalité : $i + j = i' + j'$
+>
 {: .note}
 
-C'est cette procédure que mets (optimalement) en œuvre l'algorithme de Knuth, Morris et Pratt.
+Remplir le Tableau $T_b$ avec les valeurs de $k'$ pour tout $j$ nous donne un moyen encore pus efficace de décalage puisque l'on va décaler $i$ **et** $j$ de sorte que la somme $i+j$ soit croissante.
+
+C'est cette procédure que met (optimalement) en œuvre l'algorithme de Knuth, Morris et Pratt.
 
 ## Algorithme de Knuth-Morris-Pratt
 

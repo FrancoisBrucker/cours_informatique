@@ -12,5 +12,9 @@
 - faire un cours juste sur fichier texte (après dictionnaire t set ?)
 - faire un cours juste sur les données csv et json
 
+- sous-chaines : mettre des exemples vrais et pas de aaa?aaa 
 - knutt-morris-pratt. surement trop dur. Mettre plut^t rabin-karp avant
-- knutt-miorris-pratt attention avec les indice T_b[j] plutôt que T_b[j-1]
+- knutt-morris-pratt attention avec les indice T_b[j] plutôt que T_b[j-1]
+
+- ajouter théorie thm de cook / NPC 
+- ajouter : hasard en informatique
