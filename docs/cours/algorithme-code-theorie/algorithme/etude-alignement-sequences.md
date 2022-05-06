@@ -175,7 +175,8 @@ $$
 Ce nombre est affreusement énorme :
 
 * pour $n = 10$, on a déjà  $f(10, 10) \sim 34537380$
-* pour $n = 100$, on a déjà  $f(100, 100) \sim 8.67 \cdot 10^{75}$
+* pour $n = 100$, on a $f(100, 100) \sim 8.67 \cdot 10^{75}$
+* pour $n = 200$, on a  $f(200, 200) \sim 2.2 \cdot 10^{152}$
 
 > Il n'y a qu'environ $10^{80}$ particules dans l'univers.
 
