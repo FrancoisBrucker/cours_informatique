@@ -62,16 +62,16 @@ L'algorithme de Boyer-Moore-Horspool est une modification de l'algorithme de rec
 
 \begin{itemize}
     \item pour un indice $i$ donné $j$ décroit de $m-1$ à $0$.
-    \item lors de la première non correspondance ($a_{i + j} \neq b_j$ et $a_{i + j'} = b_{j'}$ pour $j < j' < m$) $i$ est décalé de :
+    \item lors de la première non correspondance ($a_{i + j} \neq b_j$ et $a_{i + j'} = b_{j'}$ pour $j < j' < m$), l'indice $i$ est décalé :
     \begin{itemize}
-        \item $m$ si $a_{i +m-1}$ n'est pas un caractère de $b$.
-        \item $m-k-1$ où $k$ est l'indice le plus grand dans $b$ du caractère $a_{i + m -1}$.
+        \item de $m$ cases si $a_{i +m-1}$ n'est pas un caractère de $b$.
+        \item de $m-k-1$ cases où $k$ est l'indice le plus grand dans $b$ du caractère $a_{i + m -1}$.
     \end{itemize}
 \end{itemize}
 
 \begin{enumerate}
     \item démontrez que ce fonctionnement est bien une façon valide de chercher si $b$ est une sous-chaine de $a$.
-    \item proposez une structure permettant de connaitre le décalage à effectuer en $\mathcal{O}(1)$ opérations en moyenne ({\em indication} : vous pourrez utiliser un dictionnaire), puis utilisez la pour écrire un algorithme permettant de calculer le décalage. Vous en donnerez la complexité.
+    \item proposez une structure permettant de connaître le décalage à effectuer en $\mathcal{O}(1)$ opérations en moyenne ({\em indication} : vous pourrez utiliser un dictionnaire), puis utilisez la pour écrire un algorithme permettant de calculer le décalage. Vous en donnerez la complexité.
     \item proposez une modification de l'algorithme de la question~\ref{naif2} qui utilise la méthode de Boyer-Moore-Horspool pour la recherche.
     \item donnez et justifiez la complexité maximale et minimale de cet algorithme.
 \end{enumerate}
