@@ -1,0 +1,172 @@
+\documentclass
+[12pt]
+{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{amssymb}
+\usepackage[ruled, vlined, french]{algorithm2e}
+\usepackage[pdftex]{graphicx}
+\usepackage{hyperref}
+
+\usepackage{fullpage} \usepackage{setspace}
+
+\begin{document}
+
+\begin{center}
+  \begin{tabular}{c}
+  \hline\\%\vspace{0.1cm}
+  {\textsc{mpc\Large{I}}}\vspace{0.1cm}
+  \\
+%  
+    {\bf \Large \sc Programmation et Algorithmes} \\ 
+    \vspace*{.2cm}
+    {\bf Examen Terminal} \\
+    {\footnotesize Vendredi 13 mai 2022}\\
+    \hline
+  \end{tabular}
+\end{center}
+\vspace{0.6cm}
+%
+%
+\begin{center}
+{\em On rappelle qu'aucun document, ni équipement électrique ou électronique n'est autorisé. }
+
+~\\
+
+{\em Lorsque l'on vous demande d'écrire de décrire ou de donner un algorithme cela signifiera toujours en donner un pseudo-code}
+
+\end{center}
+
+\section{Chaines de caractères}
+
+On rappelle qu'une chaine de caractères est une suite finie $a = a_0\dots a_{n-1}$ d'un alphabet fini $\mathcal{A}$. Une suite $b=b_0\dots b_{m-1}$ est une {\em sous-suite} de $a$ s'il existe $0 \leq i < n$ tel que $a_{i + j} = b_j$ pour tout $j$ allant de $0$ à $m-1$.
+
+\subsection{Algorithme naïf\label{naif}}
+
+\begin{enumerate}
+    \item donnez l'algorithme {\em naïf} (c'est à dire qu'il reproduit exactement la définition) permettant de savoir si $b$ est une sous-chaine de $a$ ou non.
+    \item donnez et justifiez la complexité maximale et minimale de cet algorithme.
+    \item rappelez et donnez un argument de justification concernant sa complexité en moyenne lorsque $b$ n'est pas une sous-chaine de $a$.
+\end{enumerate}
+
+\subsection{Nombre d'occurrences\label{naif2}}
+
+\begin{enumerate}
+    \item modifiez l'algorithme de la question~\ref{naif} pour qu'il rende le nombre de fois où $b$ est une sous-chaine de $a$. Vous justifierez votre algorithme.
+    \item donnez et justifiez la complexité maximale et minimale de cet algorithme.
+\end{enumerate}
+
+\subsection{Modification}
+
+L'algorithme de Boyer-Moore-Horspool est une modification de l'algorithme de recherche naïf. Il fonctionne de la façon suivante :
+
+\begin{itemize}
+    \item pour un indice $i$ donné $j$ décroit de $m-1$ à $0$.
+    \item lors de la première non correspondance ($a_{i + j} \neq b_j$ et $a_{i + j'} = b_{j'}$ pour $j < j' < m$) $i$ est décalé de :
+    \begin{itemize}
+        \item $m$ si $a_{i +m-1}$ n'est pas un caractère de $b$.
+        \item $m-k-1$ où $k$ est l'indice le plus grand dans $b$ du caractère $a_{i + m -1}$.
+    \end{itemize}
+\end{itemize}
+
+\begin{enumerate}
+    \item démontrez que ce fonctionnement est bien une façon valide de chercher si $b$ est une sous-chaine de $a$.
+    \item proposez une structure permettant de connaitre le décalage à effectuer en $\mathcal{O}(1)$ opérations en moyenne ({\em indication} : vous pourrez utiliser un dictionnaire), puis utilisez la pour écrire un algorithme permettant de calculer le décalage. Vous en donnerez la complexité.
+    \item proposez une modification de l'algorithme de la question~\ref{naif2} qui utilise la méthode de Boyer-Moore-Horspool pour la recherche.
+    \item donnez et justifiez la complexité maximale et minimale de cet algorithme.
+\end{enumerate}
+
+\section{Algorithme glouton}
+
+On appelle {\em équilibrage de charge} le problème suivant : 
+
+\begin{itemize}
+    \item on possède $m$ machines et $n$ tâches à effectuer.
+    \item chaque tâche $j$ nécessite $t_j$ unités de temps pour être effectuée par une machine.
+    \item pour chaque machine $i$, on associe l'ensemble $M_i$ des tâches effectuées par celles-ci, et on note $T_i$ le temps passé à effectuer ses tâches : $T_i = \sum_{j \in M_i} t_j$.
+\end{itemize}
+
+On cherche à trouver les ensembles $M_i$ permettant de minimiser la quantité : $\max_{1\leq i \leq m} T_i$. On note $T^\star$ ce minimum.
+
+\subsection{Quelques propriétés}
+\begin{enumerate}
+    \item montrez que l'on a $T^\star \geq \max_j t_j$.
+    \item montrez que l'on a $T^\star \geq \frac{1}{m}\sum_j t_j$.
+\end{enumerate}
+
+\subsection{Un algorithme glouton}
+
+\begin{enumerate}
+    \item Proposez un algorithme glouton permettant de résoudre le problème. Cet algorithme glouton ajoutera itérativement une tâche à la machine $i$ réalisant $T_i = \min_j T_j$.
+    \item dans quel ordre proposez vous de ranger les tâches ? Justifiez votre réponse.
+    \item montrez que s'il y a $m$ tâches ou moins à classer, l'algorithme glouton trouve la solution optimale.
+\end{enumerate}
+
+\subsection{Propriétés}
+
+On considère une réalisation de l'algorithme. Soit $i^\star$ la machine réalisant $T_{i^\star} = \max_{1\leq i \leq m} T_i$ à la fin de l'algorithme, et $j$ l'indice de la dernière tâche qui lui a été assignée au cours de l'exécution de l'algorithme.
+
+\begin{enumerate}
+    \item montrez qu'à la fin de l'algorithme, on a $T_{i^\star} -t_j \leq T_k$ pour tout $k$.
+    \item en déduire que $T_{i ^\star} - t_j \leq \frac{1}{m}\sum_kT_k$.
+    \item déduire de la déduction que $T_{i ^\star} - t_j \leq T^\star$.
+    \item puis que $T_{i ^\star} \leq 2 \cdot T^\star$.
+\end{enumerate}
+
+\subsection{Performance}
+
+\begin{enumerate}
+    \item en utilisant 2.3.4, montrez que la solution proposée par l'algorithme glouton est au pire 2 fois moins bonne que la solution optimale.
+    \item montrer que cette performance est atteinte quelque soit l'ordre des tâches utilisé.
+\end{enumerate}
+
+\section{Problème}
+
+Ce problème est une adaptation d'un problème donné au phases de qualification de la coding jam de google 2022 (\url{https://codingcompetitions.withgoogle.com/codejam}) qui est un concours d'algorithmie et de code (comme quoi l'algorithmie sert pour trouver du travail :-)). Il n'y avait bien sur aucune indication pour résoudre le problème.
+
+\begin{itemize}
+    \item Une chaine de caractères $a=a_0\dots a_{n-1}$ est appelée une {\em tour} si pour tous $0\leq i < j < n$ tels que $a_i = a_j$, alors $a_i = a_k$ quelque soit $i \leq k \leq j$.
+    \item la concaténation $+$ de 2 chaines $a=a_0\dots a_{n-1}$ et $b = b_0\dots b_{m-1}$ est la chaine $a+b = a_0\dots a_{n-1}b_0 \dots b_{m-1}$.
+    \item pour une chaine $a = a_0\dots a_{n-1}$ donnée, on notera $a_{-1} = a_{n-1}$.
+\end{itemize}
+
+Le problème est le suivant : on possède un ensemble $\mathcal{T}$ de $k$ tours, peut-on concaténer ces $k$ tours entre elles pour former une tour ?
+
+Par exemple :
+
+\begin{itemize}
+    \item $aaaaabbbbbc$ est une tour.
+    \item $abba$ n'est pas une tour.
+    \item si $\mathcal{T} = \{ aaaaabbbbbc, ddd, cc \}$, il existe une solution : $aaaaabbbbbc + cc + ddd = aaaaabbbbbcccddd$. Notez que toutes les concaténations ne fonctionnent pas forcément, la concaténation $cc + aaaaabbbbbc + ddd = ccaaaaabbbbbcddd$ ne donne pas une tour par exemple.
+    \item si $\mathcal{T} = \{ aaaaabbbbbc, ddd, b \}$, il n'existe pas de solution.
+\end{itemize}
+
+\subsection{Vérification}
+
+Soit $a$ une chaine de caractères. Ecrivez un algorithme qui vérifie si $a$ est une tour ou non.
+
+Vous prouverez la véracité et vous indiquerez la complexité de cet algorithme.
+
+\subsection{Réduction du problème}
+
+\begin{enumerate}
+    \item montrer que s'il existe une solution au problème, alors pour toute tour $a \in \mathcal{T}$ telle que $a_0 = a_{-1}$, s'il existe $b \in \mathcal{T}$ telle que $b \neq a$ et $b_0 = a_0$  (respectivement $b_{-1} = a_0$), alors il existe une solution à $\mathcal{T} \backslash \{a, b\} \cup \{ c \}$ avec $c = a + b$ (respectivement $c=b+a$) et cette solution est aussi solution pour $\mathcal{T}$.
+    \item montrer que s'il existe une solution au problème, alors pour toute tour $a \in \mathcal{T}$ telle que $a_0 \neq a_{-1}$ il existe au plus une tour $b \neq a$ avec $b_0 \neq b_{-1}$ telle que $a_0 = b_{-1}$ et au plus une tour $b \neq a$ avec $b_0 \neq b_{-1}$ telle que $a_{-1} = b_0$. De plus, si ces deux tours existent, elles sont différentes.
+    \item montrer que s'il existe une solution au problème, alors pour toute paire de tours $a \neq b \in \mathcal{T}$ telles que $a_{-1} = b_0$ (respectivement $a_0 = b_{-1}$), alors il existe une solution à $\mathcal{T} \backslash \{a, b\} \cup \{ c \}$ avec $c = a + b$ (respectivement $c=b+a$)  et cette solution est aussi solution pour $\mathcal{T}$.
+    \item montrer que s'il existe une solution au problème, alors s'il existe une tour $a \in \mathcal{T}$ telle qu'il n'existe pas une autre tour $b \in \mathcal{T}$ avec $a_0 = b_{-1}$ ou $a_{-1} = b_0$ alors :
+    \begin{itemize}
+        \item il existe une solution $t^\star$ à $\mathcal{T}^\star = \mathcal{T} \backslash \{ a \}$.
+        \item $a + t^\star$ est une solution de $\mathcal{T}$.
+    \end{itemize}
+    \end{enumerate}
+
+\subsection{Résolution du problème}
+
+En utilisant la partie précédente, donnez un algorithme pour résoudre le problème.
+\end{document}
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 
