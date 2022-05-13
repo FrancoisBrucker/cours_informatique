@@ -30,5 +30,12 @@
 	- SAT -> 3-SAT
 - ajouter : hasard en informatique
 
+- ajouter exemple d'utilisation mour projet alignement. En particlier l'utilisation de la classe ALignement
 
+=======
+Remarques élèves :
 
+- faire des qcm
+- des dm en groupes
+
+- si les tests sont trop durs ça démotive (faire des étapes dans les tests ?)
