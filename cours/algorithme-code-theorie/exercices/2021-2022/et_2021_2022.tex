@@ -90,8 +90,8 @@ On cherche à trouver les ensembles $M_i$ permettant de minimiser la quantité :
 
 \subsection{Quelques propriétés}
 \begin{enumerate}
-    \item montrez que l'on a $T^\star \geq \max_j t_j$.
-    \item montrez que l'on a $T^\star \geq \frac{1}{m}\sum_j t_j$.
+    \item montrez que l'on a $T^\star \geq \max_{1 \leq j\leq n} t_j$.
+    \item montrez que l'on a $T^\star \geq \frac{1}{m}\sum_{1 \leq j\leq n} t_j$.
 \end{enumerate}
 
 \subsection{Un algorithme glouton}
@@ -108,7 +108,7 @@ On considère une réalisation de l'algorithme. Soit $i^\star$ la machine réali
 
 \begin{enumerate}
     \item montrez qu'à la fin de l'algorithme, on a $T_{i^\star} -t_j \leq T_k$ pour tout $k$.
-    \item en déduire que $T_{i ^\star} - t_j \leq \frac{1}{m}\sum_kT_k$.
+    \item en déduire que $T_{i ^\star} - t_j \leq \frac{1}{m}\sum_{1\leq k\leq m}T_k$.
     \item déduire de la déduction que $T_{i ^\star} - t_j \leq T^\star$.
     \item puis que $T_{i ^\star} \leq 2 \cdot T^\star$.
 \end{enumerate}
