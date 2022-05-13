@@ -30,9 +30,10 @@
 	- SAT -> 3-SAT
 - ajouter : hasard en informatique
 
-- ajouter exemple d'utilisation mour projet alignement. En particlier l'utilisation de la classe ALignement
+- ajouter exemple d'utilisation pour projet alignement. En particlier l'utilisation de la classe ALignement
 
-=======
+- glouton : voir p600 K&T sur les approximations.
+
 Remarques élèves :
 
 - faire des qcm
