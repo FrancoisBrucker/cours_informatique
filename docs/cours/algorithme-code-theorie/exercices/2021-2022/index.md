@@ -18,3 +18,4 @@ Tests et examens pour l'année scolaire 2021/2022
 5. classes et objets (le retour) : [sujet]({% link cours/algorithme-code-theorie/exercices/2021-2022/5_test_sujet.md %}) et [corrigé]({% link cours/algorithme-code-theorie/exercices/2021-2022/5_test_corrige.md %})
 6. DS 2 : [sujet]({% link cours/algorithme-code-theorie/exercices/2021-2022/ds_2_sujet.md %})
 7. algorithmes gloutons : [sujet]({% link cours/algorithme-code-theorie/exercices/2021-2022/6_test_sujet.md %})
+8. examen terminal : [sujet]({% link cours/algorithme-code-theorie/exercices/2021-2022/7_et_sujet.md %})
