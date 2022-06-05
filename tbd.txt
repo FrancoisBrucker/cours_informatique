@@ -1,5 +1,8 @@
 - spell check est mieux pour la correction orthorgraphique
 
+
+- figures : utiliser seaborn + approximation courbes pour les calculs de complexités
+
 - changer nom par variable partout dans le cours mémoire et objets
 - utf8 table à changer https://www.compart.com/en/unicode/block
 - utf8 hex converter online à trouver

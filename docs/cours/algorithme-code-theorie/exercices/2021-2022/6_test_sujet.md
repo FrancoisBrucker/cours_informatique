@@ -10,19 +10,19 @@ tags: code python
 
 Un automobiliste veut parcourir une route allant de la ville $A$ à la ville $B$. Cette route comporte $n$ stations services numérotées dans l’ordre du parcours, de $0$ à $n-1$. On suppose que les villes $A$ et $B$ possèdent une station service (stations numéros $0$ et $n-1$ respectivement).
 
-La distance de la ville $A$ à la station numéro $i$ est rangée dans une liste `d` (la station $i$ est à `d[i]` kilomètres de $A$). On suppose enfin que chaque litre d'essence permet de parcourir 1km et que la voiture possède un réservoir de $r$ litres.
+La distance de la ville $A$ à la station numéro $i$ est rangée dans une liste `d` (la station $i$ est à `d[i]` kilomètres de $A$). On suppose enfin que chaque litre d'essence permet de parcourir 1km et que la voiture possède un réservoir de $r$ litres, initialement vide (on **doit** acheter de l'essence à la station de la ville $A$).
 
-On cherche à rendre une liste `a` telle que $a[i]$ contient le nombre de litres d'essence acheté à la station $i$. On veut de plus que la quantité $A$ soit minimum :
+On cherche à rendre une liste `a` telle que $a[i]$ contient le nombre de litres d'essence acheté à la station $i$. On veut de plus que la quantité $Q$ soit minimum :
 
 $$
-A = \sum_{0 \leq i < n} a[i]
+Q = \sum_{0 \leq i < n} a[i]
 $$
 
 ## 1 
 
 ### 1.1
 
-S'il existe une solution, que vaut $A$ ?
+S'il existe une solution, que vaut $Q$ ?
 
 ### 1.2
 

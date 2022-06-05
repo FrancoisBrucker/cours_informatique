@@ -5,7 +5,7 @@ category: cours
 tags: code python
 ---
 
-> [Algorithme, code et théorie]({% link cours/algorithme-code-theorie/index.md %}) / [exercices]({% link cours/algorithme-code-theorie/exercices/index.md %}) / [2021-2022]({% link cours/algorithme-code-theorie/exercices/2021-2022/index.md %}) / [sujet Test 4 : classes et objets]({% link cours/algorithme-code-theorie/exercices/2021-2022/4_test_sujet.md %})
+> [Algorithme, code et théorie]({% link cours/algorithme-code-theorie/index.md %}) / [exercices]({% link cours/algorithme-code-theorie/exercices/index.md %}) / [2021-2022]({% link cours/algorithme-code-theorie/exercices/2021-2022/index.md %}) / [corrigé Test 4 : classes et objets]({% link cours/algorithme-code-theorie/exercices/2021-2022/4_test_corrige.md %})
 {: .chemin}
 
 ## 1
