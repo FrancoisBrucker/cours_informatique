@@ -1,8 +1,5 @@
 import random
 
-import pyglet
-from pyglet.window import key
-
 from fenetre import Fenetre
 
 
