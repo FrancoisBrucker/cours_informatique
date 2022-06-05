@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>corrigé DS 2 : projet de code | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0">
+<meta property="og:title" content="corrigé DS 2 : projet de code">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Support de cours/td d’informatique de François Brucker.">
+<meta property="og:description" content="Support de cours/td d’informatique de François Brucker.">
+<link rel="canonical" href="/cours_informatique/cours/algorithme-code-theorie/exercices/2021-2022/ds_2_corrige.html">
+<meta property="og:url" content="/cours_informatique/cours/algorithme-code-theorie/exercices/2021-2022/ds_2_corrige.html">
+<meta property="og:site_name" content="cours d’informatique">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="corrigé DS 2 : projet de code">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Support de cours/td d’informatique de François Brucker.","headline":"corrigé DS 2 : projet de code","url":"/cours_informatique/cours/algorithme-code-theorie/exercices/2021-2022/ds_2_corrige.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css">
+
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css">
+
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique">
+</head>
+
+<body>
+<header class="site-header" role="banner">
+
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/cours_informatique/">cours d'informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav>
+</div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">corrigé DS 2 : projet de code</h1>
+  </header>
+
+  <div class="post-content">
+    <blockquote class="chemin">
+  <p><a href="/cours_informatique/cours/algorithme-code-theorie/">Algorithme, code et théorie</a> / <a href="/cours_informatique/cours/algorithme-code-theorie/exercices/">exercices</a> / <a href="/cours_informatique/cours/algorithme-code-theorie/exercices/2021-2022/">2021-2022</a> / <a href="/cours_informatique/cours/algorithme-code-theorie/exercices/2021-2022/ds_2_corrige.html">corrige DS 2 : projet de code</a></p>
+</blockquote>
+
+<p>Un corrigé possible, sans tests, de la partie obligatoire du DS.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="kn">import</span> <span class="nn">pyglet</span>
+<span class="kn">from</span> <span class="nn">pyglet.window</span> <span class="kn">import</span> <span class="n">key</span>
+
+<span class="n">W_X</span> <span class="o">=</span> <span class="mi">640</span>
+<span class="n">W_Y</span> <span class="o">=</span> <span class="mi">480</span>
+
+<span class="n">GAUCHE</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">HAUT</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">DROITE</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">BAS</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">STOP</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="n">DELTA_SCORE</span> <span class="o">=</span> <span class="mi">1</span>
+
+
+<span class="k">class</span> <span class="nc">Snake</span><span class="p">:</span>
+    <span class="n">SIZE</span> <span class="o">=</span> <span class="mi">20</span>
+    
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">snake</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">snake</span><span class="p">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">pyglet</span><span class="p">.</span><span class="n">shapes</span><span class="p">.</span><span class="n">Rectangle</span><span class="p">(</span>
+                    <span class="p">(</span><span class="mi">16</span><span class="p">)</span> <span class="o">*</span> <span class="n">Snake</span><span class="p">.</span><span class="n">SIZE</span><span class="p">,</span> <span class="p">(</span><span class="mi">12</span> <span class="o">-</span> <span class="n">i</span><span class="p">)</span> <span class="o">*</span> <span class="n">Snake</span><span class="p">.</span><span class="n">SIZE</span><span class="p">,</span> <span class="n">Snake</span><span class="p">.</span><span class="n">SIZE</span><span class="p">,</span> <span class="n">Snake</span><span class="p">.</span><span class="n">SIZE</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mh">0xFF</span><span class="p">,</span> <span class="mh">0xFF</span><span class="p">,</span> <span class="mh">0xFF</span><span class="p">)</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+
+        <span class="bp">self</span><span class="p">.</span><span class="n">augmente_taille</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">position</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">snake</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">snake</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">y</span>
+    
+    <span class="k">def</span> <span class="nf">deplace</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">direction</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">snake</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">x</span> <span class="o">+</span> <span class="n">Snake</span><span class="p">.</span><span class="n">SIZE</span> <span class="o">*</span> <span class="n">direction</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">snake</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">y</span> <span class="o">+</span> <span class="n">Snake</span><span class="p">.</span><span class="n">SIZE</span> <span class="o">*</span> <span class="n">direction</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        
+        <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">augmente_taille</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">augmente_taille</span> <span class="o">-=</span> <span class="mi">1</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">snake</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span>
+                <span class="mi">0</span><span class="p">,</span> <span class="n">pyglet</span><span class="p">.</span><span class="n">shapes</span><span class="p">.</span><span class="n">Rectangle</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">Snake</span><span class="p">.</span><span class="n">SIZE</span><span class="p">,</span> <span class="n">Snake</span><span class="p">.</span><span class="n">SIZE</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mh">0xFF</span><span class="p">,</span> <span class="mh">0xFF</span><span class="p">,</span> <span class="mh">0xFF</span><span class="p">))</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">.</span><span class="n">snake</span><span class="p">:</span>
+                <span class="n">cell</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">cell</span><span class="p">.</span><span class="n">x</span>
+                <span class="n">cell</span><span class="p">.</span><span class="n">y</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">,</span> <span class="n">cell</span><span class="p">.</span><span class="n">y</span>
+
+    <span class="k">def</span> <span class="nf">recouvre</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">snake</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">snake</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">x</span> <span class="o">==</span> <span class="bp">self</span><span class="p">.</span><span class="n">snake</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">x</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">snake</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">y</span> <span class="o">==</span> <span class="bp">self</span><span class="p">.</span><span class="n">snake</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">y</span><span class="p">):</span>
+                <span class="k">return</span> <span class="bp">True</span>
+        <span class="k">return</span> <span class="bp">False</span>
+    
+    <span class="k">def</span> <span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">.</span><span class="n">snake</span><span class="p">:</span>
+            <span class="n">cell</span><span class="p">.</span><span class="n">draw</span><span class="p">()</span>
+
+
+<span class="k">class</span> <span class="nc">Bonus</span><span class="p">:</span>
+    <span class="n">DELTA</span> <span class="o">=</span> <span class="mi">5</span>
+    <span class="n">SIZE</span> <span class="o">=</span> <span class="mi">40</span>
+    
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">bonus</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">delta</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    
+    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">taille_x</span><span class="p">,</span> <span class="n">taille_y</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">delta</span> <span class="o">+=</span> <span class="n">dt</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">delta</span> <span class="o">&gt;=</span> <span class="n">Bonus</span><span class="p">.</span><span class="n">DELTA</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">delta</span> <span class="o">-=</span> <span class="n">Bonus</span><span class="p">.</span><span class="n">DELTA</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">bonus</span><span class="p">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">pyglet</span><span class="p">.</span><span class="n">shapes</span><span class="p">.</span><span class="n">Circle</span><span class="p">(</span>
+                    <span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="n">Bonus</span><span class="p">.</span><span class="n">SIZE</span><span class="p">,</span> <span class="n">taille_x</span> <span class="o">-</span> <span class="n">Bonus</span><span class="p">.</span><span class="n">SIZE</span><span class="p">),</span>
+                    <span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="n">Bonus</span><span class="p">.</span><span class="n">SIZE</span><span class="p">,</span> <span class="n">taille_y</span> <span class="o">-</span> <span class="n">Bonus</span><span class="p">.</span><span class="n">SIZE</span><span class="p">),</span>
+                    <span class="n">Bonus</span><span class="p">.</span><span class="n">SIZE</span><span class="p">,</span>
+                    <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mh">0x00</span><span class="p">,</span> <span class="mh">0xFF</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">),</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">intersection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rectangle</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">rectangle</span><span class="p">.</span><span class="n">x</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">rectangle</span><span class="p">.</span><span class="n">y</span>
+        <span class="n">largeur</span> <span class="o">=</span> <span class="n">rectangle</span><span class="p">.</span><span class="n">width</span>
+        <span class="n">hauteur</span> <span class="o">=</span> <span class="n">rectangle</span><span class="p">.</span><span class="n">height</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">bonus</span><span class="p">)):</span>
+            <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">bonus</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">bonus</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">y</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">bonus</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">radius</span>
+
+            <span class="k">if</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="p">.</span><span class="n">_dist2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">r</span><span class="o">**</span><span class="mi">2</span>
+                <span class="ow">or</span> <span class="bp">self</span><span class="p">.</span><span class="n">_dist2</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">largeur</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">r</span><span class="o">**</span><span class="mi">2</span>
+                <span class="ow">or</span> <span class="bp">self</span><span class="p">.</span><span class="n">_dist2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">hauteur</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">r</span><span class="o">**</span><span class="mi">2</span>
+                <span class="ow">or</span> <span class="bp">self</span><span class="p">.</span><span class="n">_dist2</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">largeur</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">hauteur</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">r</span><span class="o">**</span><span class="mi">2</span>
+            <span class="p">):</span>
+                <span class="k">del</span> <span class="bp">self</span><span class="p">.</span><span class="n">bonus</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+                <span class="k">return</span> <span class="bp">True</span>
+
+        <span class="k">return</span> <span class="bp">False</span>
+
+    <span class="k">def</span> <span class="nf">_dist2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">x1</span> <span class="o">-</span> <span class="n">x2</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">y1</span> <span class="o">-</span> <span class="n">y2</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+    
+    
+    <span class="k">def</span> <span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">bonus</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">.</span><span class="n">bonus</span><span class="p">:</span>
+            <span class="n">bonus</span><span class="p">.</span><span class="n">draw</span><span class="p">()</span>
+        
+        
+<span class="k">class</span> <span class="nc">Fenetre</span><span class="p">(</span><span class="n">pyglet</span><span class="p">.</span><span class="n">window</span><span class="p">.</span><span class="n">Window</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">().</span><span class="n">__init__</span><span class="p">(</span><span class="n">W_X</span><span class="p">,</span> <span class="n">W_Y</span><span class="p">,</span> <span class="s">"Snake"</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="p">.</span><span class="n">score</span> <span class="o">=</span> <span class="n">pyglet</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="n">Label</span><span class="p">(</span>
+            <span class="s">"0"</span><span class="p">,</span>
+            <span class="n">x</span><span class="o">=</span><span class="n">W_X</span><span class="p">,</span>
+            <span class="n">y</span><span class="o">=</span><span class="n">W_Y</span><span class="p">,</span>
+            <span class="n">anchor_x</span><span class="o">=</span><span class="s">"right"</span><span class="p">,</span>
+            <span class="n">anchor_y</span><span class="o">=</span><span class="s">"top"</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">chrono</span> <span class="o">=</span> <span class="mi">0</span>
+        
+        <span class="bp">self</span><span class="p">.</span><span class="n">snake</span> <span class="o">=</span> <span class="n">Snake</span><span class="p">()</span>
+        
+        <span class="bp">self</span><span class="p">.</span><span class="n">bonus</span> <span class="o">=</span> <span class="n">Bonus</span><span class="p">()</span>
+                
+        <span class="bp">self</span><span class="p">.</span><span class="n">mort</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">direction</span> <span class="o">=</span> <span class="n">STOP</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">direction_stockee</span> <span class="o">=</span> <span class="n">HAUT</span>
+        <span class="n">pyglet</span><span class="p">.</span><span class="n">clock</span><span class="p">.</span><span class="n">schedule_interval</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">update</span><span class="p">,</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">10</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">direction</span> <span class="o">==</span> <span class="n">STOP</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="bp">self</span><span class="p">.</span><span class="n">snake</span><span class="p">.</span><span class="n">deplace</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">direction</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_check_mort</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">mort</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="bp">self</span><span class="p">.</span><span class="n">_check_sur_un_bonus</span><span class="p">()</span>
+        
+        <span class="bp">self</span><span class="p">.</span><span class="n">_score_update</span><span class="p">(</span><span class="n">dt</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">bonus</span><span class="p">.</span><span class="n">update</span><span class="p">(</span><span class="n">dt</span><span class="p">,</span> <span class="n">W_X</span><span class="p">,</span> <span class="n">W_Y</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_check_mort</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">snake</span><span class="p">.</span><span class="n">position</span><span class="p">()</span>
+        
+        <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">mort</span> <span class="o">=</span> <span class="bp">True</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">direction</span> <span class="o">=</span> <span class="n">STOP</span>
+        <span class="k">elif</span> <span class="n">x</span> <span class="o">+</span> <span class="n">Snake</span><span class="p">.</span><span class="n">SIZE</span> <span class="o">&gt;</span> <span class="n">W_X</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">mort</span> <span class="o">=</span> <span class="bp">True</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">direction</span> <span class="o">=</span> <span class="n">STOP</span>
+
+        <span class="k">if</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">mort</span> <span class="o">=</span> <span class="bp">True</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">direction</span> <span class="o">=</span> <span class="n">STOP</span>
+        <span class="k">elif</span> <span class="n">y</span> <span class="o">+</span> <span class="n">Snake</span><span class="p">.</span><span class="n">SIZE</span> <span class="o">&gt;</span> <span class="n">W_Y</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">mort</span> <span class="o">=</span> <span class="bp">True</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">direction</span> <span class="o">=</span> <span class="n">STOP</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">snake</span><span class="p">.</span><span class="n">recouvre</span><span class="p">():</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">mort</span> <span class="o">=</span> <span class="bp">True</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">direction</span> <span class="o">=</span> <span class="n">STOP</span>            
+
+    <span class="k">def</span> <span class="nf">_check_sur_un_bonus</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>        
+        <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">bonus</span><span class="p">.</span><span class="n">intersection</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">snake</span><span class="p">.</span><span class="n">snake</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">score</span><span class="p">.</span><span class="n">text</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">score</span><span class="p">.</span><span class="n">text</span><span class="p">)</span> <span class="o">+</span> <span class="mi">5</span><span class="p">)</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">snake</span><span class="p">.</span><span class="n">augmente_taille</span> <span class="o">+=</span> <span class="mi">5</span>
+
+
+    <span class="k">def</span> <span class="nf">_score_update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">chrono</span> <span class="o">+=</span> <span class="n">dt</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">chrono</span> <span class="o">&gt;=</span> <span class="n">DELTA_SCORE</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">chrono</span> <span class="o">-=</span> <span class="n">DELTA_SCORE</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">score</span><span class="p">.</span><span class="n">text</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">score</span><span class="p">.</span><span class="n">text</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+        
+        
+    <span class="k">def</span> <span class="nf">on_key_press</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol</span><span class="p">,</span> <span class="n">modifiers</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">symbol</span> <span class="o">==</span> <span class="n">key</span><span class="p">.</span><span class="n">SPACE</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">direction</span> <span class="o">==</span> <span class="n">STOP</span><span class="p">:</span>
+                <span class="bp">self</span><span class="p">.</span><span class="n">direction</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">direction_stockee</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="p">.</span><span class="n">direction_stockee</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">direction</span>
+                <span class="bp">self</span><span class="p">.</span><span class="n">direction</span> <span class="o">=</span> <span class="n">STOP</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="p">.</span><span class="n">direction</span> <span class="o">==</span> <span class="n">STOP</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="k">if</span> <span class="n">symbol</span> <span class="o">==</span> <span class="n">key</span><span class="p">.</span><span class="n">UP</span> <span class="ow">and</span> <span class="bp">self</span><span class="p">.</span><span class="n">direction</span> <span class="o">!=</span> <span class="n">BAS</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">direction</span> <span class="o">=</span> <span class="n">HAUT</span>
+        <span class="k">elif</span> <span class="n">symbol</span> <span class="o">==</span> <span class="n">key</span><span class="p">.</span><span class="n">RIGHT</span> <span class="ow">and</span> <span class="bp">self</span><span class="p">.</span><span class="n">direction</span> <span class="o">!=</span> <span class="n">GAUCHE</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">direction</span> <span class="o">=</span> <span class="n">DROITE</span>
+        <span class="k">elif</span> <span class="n">symbol</span> <span class="o">==</span> <span class="n">key</span><span class="p">.</span><span class="n">LEFT</span> <span class="ow">and</span> <span class="bp">self</span><span class="p">.</span><span class="n">direction</span> <span class="o">!=</span> <span class="n">DROITE</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">direction</span> <span class="o">=</span> <span class="n">GAUCHE</span>
+        <span class="k">elif</span> <span class="n">symbol</span> <span class="o">==</span> <span class="n">key</span><span class="p">.</span><span class="n">DOWN</span> <span class="ow">and</span> <span class="bp">self</span><span class="p">.</span><span class="n">direction</span> <span class="o">!=</span> <span class="n">HAUT</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">direction</span> <span class="o">=</span> <span class="n">BAS</span>
+
+    <span class="k">def</span> <span class="nf">on_key_release</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol</span><span class="p">,</span> <span class="n">modifiers</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">on_draw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">clear</span><span class="p">()</span>
+        
+        <span class="bp">self</span><span class="p">.</span><span class="n">score</span><span class="p">.</span><span class="n">draw</span><span class="p">()</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">snake</span><span class="p">.</span><span class="n">draw</span><span class="p">()</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">bonus</span><span class="p">.</span><span class="n">draw</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
+    <span class="n">window</span> <span class="o">=</span> <span class="n">Fenetre</span><span class="p">()</span>
+
+    <span class="n">pyglet</span><span class="p">.</span><span class="n">app</span><span class="p">.</span><span class="n">run</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"c'est fini !"</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d'informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d'informatique</li>
+</ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+<ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d'informatique de François Brucker.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
