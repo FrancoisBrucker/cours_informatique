@@ -165,7 +165,7 @@ Calculons la complexité ligne à ligne :
 8. retour de fonction : $\mathcal{O}(1)$ opérations
 9. retour de fonction : $\mathcal{O}(1)$ opérations
 
-On en conclut que la complexité totale se niche dans l'exécution des deux boucles `for` imbriquées, et est donc de complexité : $\mathcal{O}((n - m) \cdot m) = \mathcal{O}(nm + m^2) \sim \mathcal{O}(n\cdot m)$ si $m \gg n$ ce qui est généralement le cas.
+On en conclut que la complexité totale se niche dans l'exécution des deux boucles `for` imbriquées, et est donc de complexité : $\mathcal{O}((n - m) \cdot m) = \mathcal{O}(nm + m^2) \sim \mathcal{O}(n\cdot m)$ si $n \gg m$ ce qui est généralement le cas.
 
 #### complexité minimale
 

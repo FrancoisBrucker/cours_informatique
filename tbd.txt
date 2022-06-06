@@ -19,10 +19,17 @@
 - voyageur de commerce : trop dur à remplacer.
 - pourquoi pas sac à dos avec bourrinage pour résoudre puis l'algo avec preuve fine.
 
+- faire plus de glouton avec du code en classes et des exo d'approximation (p600 Kleinberg et Tardos).
+
 - cours sous-chaines : 
-	1. naif avec idée de l'amélioration KMP
-	2. rabin-Karp
-	3. KMP
+	1. naif
+	2. amélioration "à la marge"
+	2.1 BMH avec amélioration complexité min 
+	2.2 naif avec break pour complexité en moyenne
+	3. rabin-Karp
+	4. KMP
+	4.1 naif avec idée de l'amélioration KMP
+	4.2 KMP
 	
 - sous-chaines : mettre des exemples vrais et pas de aaa?aaa 
 
@@ -33,9 +40,9 @@
 	- SAT -> 3-SAT
 - ajouter : hasard en informatique
 
-- ajouter exemple d'utilisation pour projet alignement. En particlier l'utilisation de la classe ALignement
+- ajouter exemple d'utilisation pour projet alignement. En particulier l'utilisation de la classe Alignement
 
-- glouton : voir p600 K&T sur les approximations.
+
 
 Remarques élèves :
 
