@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Bases de python : modules | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0">
+<meta property="og:title" content="Bases de python : modules">
+<meta name="author" content="Augustin Agbo-Kpati">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Support de cours/td d’informatique de François Brucker.">
+<meta property="og:description" content="Support de cours/td d’informatique de François Brucker.">
+<link rel="canonical" href="/cours_informatique/cours/bases-python/modules.html">
+<meta property="og:url" content="/cours_informatique/cours/bases-python/modules.html">
+<meta property="og:site_name" content="cours d’informatique">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Bases de python : modules">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Augustin Agbo-Kpati"},"description":"Support de cours/td d’informatique de François Brucker.","headline":"Bases de python : modules","url":"/cours_informatique/cours/bases-python/modules.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css">
+
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css">
+
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique">
+</head>
+
+<body>
+<header class="site-header" role="banner">
+
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/cours_informatique/">cours d'informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav>
+</div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Bases de python : modules</h1>Auteurs :
+      <ul>
+      
+        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Augustin Agbo-Kpati</span></span></li>
+      
+        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></li>
+      
+        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Pascal Préa</span></span></li>
+      
+      </ul>
+  </header>
+
+  <div class="post-content">
+    <p>Un <em>module</em> (aussi appelé <em>bibliothèque</em> ou <em>library</em>) est un ensemble de fonctions utiles, utilisables dans de nombreux programmes. Plutôt que de refaire à chaque fois ces fonctions ou (c’est pire) de les copier/coller dans chaque programme, on les importe directement pour les utiliser.</p>
+
+<blockquote class="note">
+  <p>Il existe de nombreux modules, réalisant une foultitude d’opérations. Avant de se mettre à coder quelque chose, commencez toujours par vérifier (google
+est votre ami) s’il n’existe pas un module tout fait, vous gagnerez du temps. Python en fournit déjà de <a href="https://docs.python.org/3/library/index.html">nombreux</a></p>
+</blockquote>
+
+<p>Pour utiliser un module, il faut commencer par l’importer avec la commande <code class="language-plaintext highlighter-rouge">import</code>. Par exemple avec le module <code class="language-plaintext highlighter-rouge">math</code>.</p>
+
+<h2 id="utiliser-un-module">utiliser un module</h2>
+
+<p>Il existe plusieurs façon de faire, mais toute fonctionne sur le même principe : python va lire le module et associer les nom qu’il trouve à un espace de nom. Le mot clé utilisé est <strong>import &lt;nom de module&gt;</strong> ou une de ses variations.</p>
+
+<h3 id="importation-directe-du-module">Importation directe du module</h3>
+
+<p>On met le nom complet avant chaque appel :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">math</span>
+<span class="n">pi_sur_deux</span> <span class="o">=</span> <span class="n">math</span><span class="p">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span> 
+<span class="n">x</span> <span class="o">=</span> <span class="n">math</span><span class="p">.</span><span class="n">cos</span><span class="p">(</span><span class="n">pi_sur_deux</span><span class="p">)</span> 
+</code></pre></div></div>
+
+<p>Lors de la ligne <code class="language-plaintext highlighter-rouge">import math</code> python crée un espace de nom qu’il appelle <code class="language-plaintext highlighter-rouge">math</code>. Il lit ensuite math avec cet espace de nom. Donc tout ce qui est défini dans math, le sera dasn l’espace de nom nommé <code class="language-plaintext highlighter-rouge">math</code>. On accède ensuite aux noms de math par la notation <code class="language-plaintext highlighter-rouge">.</code>.</p>
+
+<blockquote class="note">
+  <p>la notation <code class="language-plaintext highlighter-rouge">A.B</code> : se lit ainsi on cherche le nom <code class="language-plaintext highlighter-rouge">B</code> dans l’espace de nom <code class="language-plaintext highlighter-rouge">A</code></p>
+</blockquote>
+
+<h3 id="importation-dune-méthode-particulière">Importation d’une méthode particulière</h3>
+
+<p>Ceci peut être dangereux si des fonctions différentes possèdent le même nom.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">cos</span><span class="p">,</span> <span class="n">pi</span> <span class="c1">#importation directe de cos et de pi
+</span><span class="n">x</span> <span class="o">=</span> <span class="n">cos</span><span class="p">(</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Lors de la ligne <code class="language-plaintext highlighter-rouge">from math import cos, pi</code> python crée un espace de nom pour l’import. Il lit ensuite math avec cet espace de nom. Une fois la lecture finie, il cherche les noms <code class="language-plaintext highlighter-rouge">cos</code> et <code class="language-plaintext highlighter-rouge">pi</code> et les associe à l’espace de nom <strong>global</strong>.</p>
+
+<blockquote>
+  <p>Dans cette façon de faire, on associe des noms du module math à l’espace de nom global. Il n’y a aucune manière d’accéder aux autres noms défini dans math avec cette façon de faire.</p>
+</blockquote>
+
+<h3 id="importation-de-toutes-les-fonctions-du-modules">Importation de toutes les fonctions du modules</h3>
+
+<p>Déconseillée dans la plupart des cas car on ne sait pas vraiment ce qui a été importé.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">log</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Lors de la ligne <code class="language-plaintext highlighter-rouge">from math import *</code> python lit le module math <strong>dans</strong> l’espace de nom <strong>global</strong>.</p>
+
+<h2 id="installer-des-modules">installer des modules</h2>
+
+<p>Suivez le <a href="/cours_informatique/tutoriels/python/2021-08-20-installation-de-python.html#packages">tutorial des packages</a> dans le guide d’installation de python.</p>
+
+<h2 id="exécuter-un-module-dans-le-terminal">exécuter un module dans le terminal</h2>
+
+<p><code class="language-plaintext highlighter-rouge">python3 -m &lt;nom du module&gt;</code></p>
+
+<p>On en aura besoin pour exécuter <code class="language-plaintext highlighter-rouge">black</code> par exemple ou encore <code class="language-plaintext highlighter-rouge">pytest</code>.</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d'informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d'informatique</li>
+</ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+<ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d'informatique de François Brucker.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
