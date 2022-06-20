@@ -11,11 +11,11 @@ Liste des différents cours. La plupart de ceux-ci sont enseignés par bouts dan
 
 ## Liste
 
+* [bases de python]({% link cours/bases-python/index.md %})
 * [algorithme, code et théorie]({% link cours/algorithme-code-theorie/index.md %})
 * [web]({% link cours/web/index.md %})
 * [graphes]({% link cours/graphes/index.md %})
 * [développement]({% link cours/developpement/index.md %})
-* [introduction au code et à l'algorithmie]({% link cours/algorithmie_code/index.md %})
 * [git et github]({% link cours/git_et_github/index.md %})
 * [ssh et shell]({% link cours/ssh_et_shell/index.md %})
 * analyse des données

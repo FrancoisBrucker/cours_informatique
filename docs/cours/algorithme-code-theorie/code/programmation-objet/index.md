@@ -13,19 +13,3 @@ author: "François Brucker"
 4. [héritage]({% link cours/algorithme-code-theorie/code/programmation-objet/heritage.md %})
 5. [projet : héritage]({% link cours/algorithme-code-theorie/code/programmation-objet/projet-heritage.md %})
 6. [projet : TDD]({% link cours/algorithme-code-theorie/code/programmation-objet/projet-tdd.md %})
-
-### Deuxième partie : programmation objet
-
-Créer et utiliser les objets et les classes en python. On montrera également les principes fondamentaux de la programmation objet que sont la composition et l'agrégation d'objet et on s'intéressera un peu à l'héritage.
-
-1. [programmation événementielle]({% link cours/developpement/programmation-objet/programmation-evenementielle.md %}) ([le corrigé]({% link cours/developpement/programmation-objet/programmation-evenementielle-corrige.md %}))
-
-### Troisième partie : développement objet
-
-1. [Test Driven Development et test pattern](tdd_et_test_pattern)
-2. [design pattern]({% link cours/developpement/design-patterns.md %})
-
-### autres
-
-> structures avancées dict
-{: .tbd}

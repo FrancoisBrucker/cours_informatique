@@ -26,7 +26,7 @@ Il est important de comprendre que l’opérateur d’affectation `=` n’est pa
 
 Un **espace de noms** est un endroit où python stocke les noms. Une variable est un nom d'un espace de noms. Les espaces de noms sont hiérarchisées et tout en haut se trouve l'espace de nom **global** qui est créé lorsque l'interpréteur est lancé.
 
-l'interpéteur python va ensuite de temps en temps créer d'autres' espaces de noms, chacun associé à un [bloc]({% link cours/developpement/bases-python/index.md %}#bloc) de code.
+l'interpéteur python va ensuite de temps en temps créer d'autres' espaces de noms, chacun associé à un [bloc]({% link cours/bases-python/index.md %}#bloc) de code.
 
 ## affectation des objets à l'espace de noms
 

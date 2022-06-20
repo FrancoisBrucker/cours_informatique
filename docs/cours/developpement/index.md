@@ -9,7 +9,13 @@ author: "François Brucker"
 
 On donnera ici les bases nécessaire au développement logiciel. On prendra comme langage d'application le python et on ne présupposera aucune autre connaissances que ceux en prérequis.
 
+> A supprimer l'année prochaine en reprenant le cours de MPCI.
+> Garder le tp carte pour le refaire en pyglet.
+{: .tbd}
+
 ## Prérequis
+
+### base de python
 
 Les connaissances et les outils que vous devez avoir pour commencer le cours.
 
@@ -39,14 +45,8 @@ Langage, éditeur et petites habitude de bon code.
 Bases du langage python et prise en main d'un éditeur de texte.
 
 1. [installation python et vsc]({% link cours/developpement/installations.md %})
-2. [bases de python]({% link cours/developpement/bases-python/index.md %})
+2. [bases de python]({% link cours/bases-python/index.md %})
 
-#### méthode de développement {#partie-1.2}
-
-Cette partie comporte deux projets pédagogique qui vous entraîneront à coder avec vscode.
-
-1. [outils de développement]({% link cours/developpement/outils-de-developpement.md %})
-2. [routine de développement]({% link cours/developpement/routine-developpement.md %})
 
 ### Deuxième partie : programmation objet
 
@@ -59,10 +59,6 @@ Créer et utiliser les objets et les classes en python. On montrera également l
 5. [on s'entraine]({% link cours/developpement/programmation-objet/heritage-exercices.md %}) ([le corrigé]({% link cours/developpement/programmation-objet/heritage-exercices-corrige.md %}))
 6. [programmation événementielle]({% link cours/developpement/programmation-objet/programmation-evenementielle.md %}) ([le corrigé]({% link cours/developpement/programmation-objet/programmation-evenementielle-corrige.md %}))
 
-### Troisième partie : développement objet
-
-1. [Test Driven Development et test pattern](tdd_et_test_pattern)
-2. [design pattern]({% link cours/developpement/design-patterns.md %})
 
 ### autres
 

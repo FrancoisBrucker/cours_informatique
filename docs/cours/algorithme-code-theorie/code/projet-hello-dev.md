@@ -170,7 +170,7 @@ print(le_code.bonjour())
 
 La notation pointée se lit alors : exécute le nom `bonjour` définit dans *"le_code"*.
 
-> Pour plus d'information sur les modules vous pouvez lire [ceci]({% link cours/developpement/bases-python/modules.md %}).
+> Pour plus d'information sur les modules vous pouvez lire [ceci]({% link cours/bases-python/modules.md %}).
 
 Ne **jamais jamais jamais** utiliser `from le_code import *` qui importe tous les noms définis dans *"le_code.py"*. On ne sait pas vraiment ce qui a été importé en lisant *"le_code.py"*. : notre code n'est pas lisible ! Le gain d'écriture de `*` plutôt que `bonjour` sera perdu au centuple plus tard lorsque l'on devra chercher dans tous les fichiers du projet où l'on a bien pu définir `bonjour`...
 
