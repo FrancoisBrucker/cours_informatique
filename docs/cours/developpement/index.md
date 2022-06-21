@@ -44,9 +44,7 @@ Langage, éditeur et petites habitude de bon code.
 
 Bases du langage python et prise en main d'un éditeur de texte.
 
-1. [installation python et vsc]({% link cours/developpement/installations.md %})
-2. [bases de python]({% link cours/bases-python/index.md %})
-
+1. [bases de python]({% link cours/bases-python/index.md %})
 
 ### Deuxième partie : programmation objet
 
@@ -59,13 +57,12 @@ Créer et utiliser les objets et les classes en python. On montrera également l
 5. [on s'entraine]({% link cours/developpement/programmation-objet/heritage-exercices.md %}) ([le corrigé]({% link cours/developpement/programmation-objet/heritage-exercices-corrige.md %}))
 6. [programmation événementielle]({% link cours/developpement/programmation-objet/programmation-evenementielle.md %}) ([le corrigé]({% link cours/developpement/programmation-objet/programmation-evenementielle-corrige.md %}))
 
-
 ### autres
 
 * structures avancées dict
 
 ## les références
 
-* [installation complète de python]({% link _tutoriels/python/2021-08-20-installation-de-python.md %})
+* [installation complète de python]({% link _tutoriels/python/installation-de-python.md %})
 * [tutoriel python](https://docs.python.org/fr/3/tutorial/)
 * [figures uml](./programmation-objet/plantuml.txt)

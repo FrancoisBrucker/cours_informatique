@@ -5,19 +5,29 @@ tags:
     - installation 
     - configuration
     - python
+    - vscode
 ---
 
 Configuration d'outils supplémentaires pour [visual studio code](https://code.visualstudio.com/) et le développement en python.
 
 <!--more-->
 
-Ce tutoriel fait suite au [tutoriel python et vscode]({% link _tutoriels/editeur/vsc/2021-09-14-vsc-python.md %}). Il se consacre à l'installation d'extension non fondamentales mais bien sympathique pour le développement python. avec vscode.
+> prérequis
+>
+> * [vscode et python]({% link _tutoriels/editeur/vsc/2021-09-14-vsc-python.md %})
+>
+{: .chemin}
+
+Ce tutoriel se consacre à l'installation d'extensions non fondamentales mais bien sympathiques pour le développement en python avec vscode.
 
 ## tests
 
-> [tests avec vscode](https://code.visualstudio.com/docs/python/testing). Nous allons utiliser [pytest](https://docs.pytest.org/) comme bibliothèque de test.
+> [tests avec vscode](https://code.visualstudio.com/docs/python/testing)
+{: .chemin}
 
-### installation {#installation-pytest}
+Nous utilisons [pytest](https://docs.pytest.org/) comme bibliothèque de test.
+
+#### installation {#installation-pytest}
 
 {% details sous linux et mac %}
 
@@ -35,30 +45,38 @@ python -m pip install pytest
 
 {% enddetails %}
 
-### configuration {#configuration-pytest}
+#### configuration {#configuration-pytest}
 
 1. dans les préférences (*menu file/code > Préferences > settings*) tapez `python.testing.pytestEnabled`  dans la barre de recherche et cochez la case. Ceci dit à vscode que notre framework de test est pytest (il y en a d'autres possible comme [unittest](https://docs.python.org/fr/3.9/library/unittest.html) ou encore [nosetests](https://nose.readthedocs.io/en/latest/), mais on ne va pas les utiliser. Assurez vous cependant qu'un seul framework de test soit utilisé à la fois. Ca devrait être le cas si vous n'avez pas cliqué un peu partout).
 2. on configure les tests de notre projet en tapant la commande (dans la [palette de commande]({% link _tutoriels/editeur/vsc/vsc-installation-et-prise-en-main.md %}#palette-de-commande)) : *python : Configure tests* on choisit *pytest* puis *. (root)* qui donne le dossier de départ où aller chercher nos tests
 
-### utilisation {#utilisation-pytest}
+#### utilisation {#utilisation-pytest}
 
-#### avec l'interface
+> Créez un fichier que vous appellerez *"test_projet.py"* dans votre projet. Collez-y- le code suivant :
+{: .a-faire}
 
-On ouvre la fenêtre de tests avec *Menu Affichage testing* (le petit erlenmeyer de la [barre d'activité](https://code.visualstudio.com/docs/getstarted/userinterface)).
+```python
+
+def test_oui():
+    assert 4 = 2 + 2
+
+
+def test_non():
+    assert "4" == 2 + 2
+
+```
+
+Le fichier créé est un fichier de test. Il faut l'utiliser via la bibliothèque `pytest` que vous venez d'installer. Ceci peut se faire directement avec vscode en ouvrant la fenêtre de tests avec *Menu Affichage testing* (le petit erlenmeyer de la [barre d'activité](https://code.visualstudio.com/docs/getstarted/userinterface)).
 
 En suite le menu *TESTING* en haut de cette nouvelle fenêtre vous permet :
 
 * redécouvrir les tests
-* executez les tests.
+* exécutez les tests.
 * ...
 
 ![tests]({{ "/assets/tutos/vsc-python/python-pytest-env.png" | relative_url }}){:style="margin: auto;display: block}
 
-#### avec le terminal
-
-En tapant `pytest` alors que vous êtes dans le dossier du projet.
-
->si la commande `pytest` n'est pas reconnue, mais que `python` l'est vous pouvez exécuter `pytest`, via python en tapant la commande `python3 -m pytest`
+On peut également directement utiliser pytest avec le terminal, en tapant `python -m pytest` (`python3 -m pytest` si votre interpréteur est `python3`) alors que vous êtes dans le dossier du projet.
 
 ## linter
 

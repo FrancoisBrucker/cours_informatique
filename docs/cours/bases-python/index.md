@@ -4,13 +4,12 @@ title:  "Bases de python"
 authors: 
     - François Brucker
     - Pierre Brucker
-    - Augustin Agbo-Kpati
 ---
 
 > [bases de python]({% link cours/bases-python/index.md %})
 {: .chemin}
 
-Un court cours sur les bases de la programmation en utilisant le langage de programmation [python](https://www.python.org/).
+Un court cours sur les bases de la programmation en utilisant le langage de programmation [python](https://fr.wikipedia.org/wiki/Python_(langage)) dont le site est : <https://www.python.org/>
 
 Nous verrons dans ce cours comment est structuré un langage informatique et comment écrire puis exécuter du code. Ce n'est pas un cours d'informatique proprement dit, nous ne ferons quasiment pas d'algorithmie par exemple : le but est de pouvoir exécuter (de la façon la pus optimale possible) des lignes de code pour obtenir un résultat concret (qui n'aura souvent rien à voir avec de l'informatique).
 
@@ -18,13 +17,13 @@ Nous verrons dans ce cours comment est structuré un langage informatique et com
 
 Les connaissances et les outils que vous devez avoir pour commencer le cours.
 
-### un ordinateur pour le développement
+### Un ordinateur pour le développement
 
 Pour développer, il faudra coder et exécuter du code. Il vous faut donc un ordinateur (portable ou tour) en état de marche. Il devra être sous un des trois systèmes d'exploitation suivant windows, macos ou linux.
 
 Vous devez dans l'idéal être administrateur de votre ordinateur et avoir fait [une installation fraîche de tout votre système]({% link _tutoriels/systeme/2021-09-01-installation-ordinateur.md %}) pour éviter toutes interférences lors de nos installations.
 
-### connaissances système minimale
+### Connaissances système minimale
 
 * connaitre les bases d'un système d'exploitation, [les fichiers et les dossiers]({% link _tutoriels/systeme/fichiers-navigation.md %})
 * avoir accès à un [terminal]({% link _tutoriels/systeme/2021-08-24-terminal.md %}) (aucune autre copmpétence en terminal n'est requise)
@@ -36,60 +35,68 @@ Nous allons avoir besoin de deux programmes essentiels pour ce cours :
 * un programme nous permettant d'exécuter du code python
 * un programme nous permettant d'écrire du code python
 
-### exécuter du python
+### Exécuter du python
 
-> interprété
-{: .tbd}
+Il y a plusieurs moyens d'exécuter du code python, selon les usages voulus. Nous allons en utiliser deux :
 
-L'installation des plugins vscode pour python vous a fait écrire votre 1er programme python. Tout programme python est exécuté par l'interpréteur, c'est le cœur de python. Tout programme python est exécuté de la même manière :
+* exécution de *cellules de code* via un notebook
+* exécution de *fichiers de code* en ligne de commande
+
+Vous pouvez consulter le [tutoriel d'installation de python]({% link _tutoriels/python/installation-de-python.md %}) pour voir plusieurs façons d'installer python, mais si vous ne savez pas trop quel python installer, nous vous conseillons d'installer une distribution générique comme celle d'[anaconda](https://www.anaconda.com/products/distribution) :
+
+> Suivez [ce tutoriel]({% link _tutoriels/python/installation-anaconda.md %}) pour installer la distribution Anaconda.
+{: .a-faire}
+
+La distribution d'anaconda vous permettra d'utiliser python ou via un notebook ou en ligne de commande.
+
+#### Notebook
+
+Vous pouvez utiliser python via un notebook en installant la distribution anaconda comme vu précédemment, soit sur internet. Cette dernière solution permet d'exécuter du python sans installer quoi que ce soit sur votre ordinateur. Deux solutions principales s'offrent à vous :
+
+* <https://basthon.fr/> (utilisée dans les collèges et lycées français. L'installation de modules spécifiques est cependant impossible)
+* <https://colab.research.google.com/?hl=fr> (utilisé de façon professionnelle, mais nécessite un compte google pour être utilisé)
+
+#### Ligne de commande
+
+Si vous préférez installer uniquement l'interpréteur python, vous pouvez suivre [ce tutoriel]({% link _tutoriels/python/installation-de-python.md %}#gestionnaire-package-id).
+
+### Ecrire du python
+
+Ecrire et exécuter du python via un notebook est pratique lorsque l'on ne veut pas écrire de programme long ou que l'on utilise le code comme support à un rapport (le notebook fait alors office de rapport). De façon générale cependant, le code python est contenu dans un fichier de code écrit dans un éditeur. Nus vous conseillons [vscode](https://code.visualstudio.com/) qui est pratique et très utilisé.
+
+> En suivant [ce tutoriel]({% link _tutoriels/editeur/vsc/vsc-installation-et-prise-en-main.md %}) installez vscode sur votre ordinateur.
+{: .a-faire}
+
+### Configuration
+
+Une fois l'éditeur vscode et l'interpréteur python installés, on peut les configurer pour qu'ils puissent parler ensemble. Cette étape n'est pas indispensable mais elle permet de gagner du temps pour les développements futur et rend l'étape de développement bien plus agréable.
+
+> Suivez [ce tutoriel]({% link _tutoriels/editeur/vsc/2021-09-14-vsc-python.md %}) pour lier vscode à pyhton.
+{: .a-faire}
+
+## Interpréteur python
+
+L'installation des plugins vscode pour python vous a fait écrire et exécuter votre 1er programme python. Tout code python est exécuté par un programme nommé **interpréteur python**. Tout code python (un fichier ou une cellule) est exécuté de la même manière :
 
 1. on entre une ligne de code dans l'interpréteur
-2. l'interpréteur exécute cette ligne dans son *espace de noms global* (*global namespace*)
+2. l'interpréteur exécute cette ligne
 3. une fois la ligne exécutée, l'interpréteur redonne la main à l'utilisateur
 4. retour à la l'étape 1.
 
+Tant que l'interpréteur est actif (c'est à dire tant que le notebook est ouvert ou tant que le fichier de code n'est pas entièrement lu) un mécanisme de stockage permet de conserver des **objets** pour une utilisation future via des **variables**.
 
-#### notebook
+L'interpréteur python est toujours présent lorsque l'on exécute du python, quelque soit la forme utilisée :
 
-* jupyter notebook (avec anaconda)
-* <https://basthon.fr/>
-* <https://colab.research.google.com/?hl=fr>
+* via un [IDE](https://fr.wikipedia.org/wiki/Environnement_de_d%C3%A9veloppement) comme vscode et son *triangle vert*
+* via la console et le programme python
+* en utilisant un notebook
 
-#### interpréteur
-
-
-
-### écrire du python
-
-vscode
-
-
-
-Nous allons dans ce cours utiliser à la fois le langage python
-
-
-- avoir vscode d’installé sur leur ordinateur et quelques rudiment de son fonctionnement :
-	- tuto : https://francoisbrucker.github.io/cours_informatique/tutoriels/editeur/vsc/vsc-installation-et-prise-en-main.html 
-	- doc officielle : https://code.visualstudio.com/docs 
-- avoir installé python :
-	- sur leur ordinateur : https://francoisbrucker.github.io/cours_informatique/tutoriels/python/2021-08-20-installation-de-python.html 
-	- avoir essayé python en ligne avec basthon : https://basthon.fr/ 
-	- avoir survolé le tuto python : https://docs.python.org/fr/3/tutorial/ (au moins lu en diagonal la partie 3 et 4)
-- fait les liens entre vscode et python : https://francoisbrucker.github.io/cours_informatique/tutoriels/editeur/vsc/2021-09-14-vsc-python.html 
-
-
-## interpréteur
-
-
-Un *espace de noms* est un endroit où seront stockées les différentes variables par exemple. C'est tout ce dont il faut se souvenir pour les futures lignes de code. A chaque fois que l'on exécute l'interpréteur, un nouvel *espace de noms global* est crée et une fois que l'on stoppe l'interpréteur, cet *espace* est détruit.
-
-> Le fait qu'un espace de nom existe est crucial pour pouvoir utiliser des variables et le fait qu'il soit créé au début du programme (au lancement de l'interpréteur) détruit une fois le programme terminée (une fois que l'interpréteur s'arrête) permet d'assurer qu'un programme donnera toujours le même résultat (si l'espace de noms était toujours le même il resterait des variables d'un ancien programme dans un nouveau...).
-
-Les namespaces ne font que stocker des noms, ils peuvent donc être créés et détruits sans détruire des objets. Seul un objet qui n'est référencé dans aucun namespace est effacé car on ne peut plus y accéder.
+> Utilisez <https://basthon.fr/> pour exécuter la ligne de code `print("Bonjour monde !")` en console et dans un notebook
+{: .a-faire}
 
 ## objets de python
 
-[La partie objets types et types d'objets]({% link cours/bases-python/objets-types.md %}) vous dira tout sur les objets courant que vous manipulerez en python.
+La partie [objets types et types d'objets]({% link cours/bases-python/objets-types.md %}) vous dira tout sur les objets courant que vous manipulerez en python.
 
 ## variables
 

@@ -60,7 +60,7 @@ Lors de la ligne `from math import *` python lit le module math **dans** l'espac
 
 ## installer des modules
 
-Suivez le [tutorial des packages]({% link _tutoriels/python/2021-08-20-installation-de-python.md %}#packages) dans le guide d'installation de python.
+Suivez le [tutorial des packages]({% link _tutoriels/python/installation-de-python.md %}#packages) dans le guide d'installation de python.
 
 ## exécuter un module dans le terminal
 

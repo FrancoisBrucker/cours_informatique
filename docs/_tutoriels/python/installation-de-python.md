@@ -107,7 +107,7 @@ Une fois que vous aurez installé python (ou pour savoir si vous l'avez déjà i
 
 ### installation via anaconda {#install-anaconda}
 
-Suivez ce [tutoriel]({% link _tutoriels/python/2021-09-14-installation-anaconda.md %}) pour installer anaconda sur votre machine.
+Suivez ce [tutoriel]({% link _tutoriels/python/installation-anaconda.md %}) pour installer anaconda sur votre machine.
 
 ### installation via un gestionnaire de package {#gestionnaire-package-id}
 
