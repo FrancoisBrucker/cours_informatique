@@ -63,15 +63,26 @@
 
 <!--more-->
 
-<p>Ce tutoriel fait suite au <a href="/cours_informatique/tutoriels/editeur/vsc/2021-09-14-vsc-python.html">tutoriel python et vscode</a>. Il se consacre à l’installation d’extension non fondamentales mais bien sympathique pour le développement python. avec vscode.</p>
+<blockquote class="chemin">
+  <p>prérequis</p>
+
+  <ul>
+    <li><a href="/cours_informatique/tutoriels/editeur/vsc/2021-09-14-vsc-python.html">vscode et python</a></li>
+  </ul>
+
+</blockquote>
+
+<p>Ce tutoriel se consacre à l’installation d’extensions non fondamentales mais bien sympathiques pour le développement en python avec vscode.</p>
 
 <h2 id="tests">tests</h2>
 
-<blockquote>
-  <p><a href="https://code.visualstudio.com/docs/python/testing">tests avec vscode</a>. Nous allons utiliser <a href="https://docs.pytest.org/">pytest</a> comme bibliothèque de test.</p>
+<blockquote class="chemin">
+  <p><a href="https://code.visualstudio.com/docs/python/testing">tests avec vscode</a></p>
 </blockquote>
 
-<h3 id="installation-pytest">installation</h3>
+<p>Nous utilisons <a href="https://docs.pytest.org/">pytest</a> comme bibliothèque de test.</p>
+
+<h4 id="installation-pytest">installation</h4>
 
 <details><summary>sous linux et mac</summary><div>
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3 <span class="nt">-m</span> pip <span class="nb">install </span>pytest
@@ -85,36 +96,42 @@
 
 </div></details>
 
-<h3 id="configuration-pytest">configuration</h3>
+<h4 id="configuration-pytest">configuration</h4>
 
 <ol>
   <li>dans les préférences (<em>menu file/code &gt; Préferences &gt; settings</em>) tapez <code class="language-plaintext highlighter-rouge">python.testing.pytestEnabled</code>  dans la barre de recherche et cochez la case. Ceci dit à vscode que notre framework de test est pytest (il y en a d’autres possible comme <a href="https://docs.python.org/fr/3.9/library/unittest.html">unittest</a> ou encore <a href="https://nose.readthedocs.io/en/latest/">nosetests</a>, mais on ne va pas les utiliser. Assurez vous cependant qu’un seul framework de test soit utilisé à la fois. Ca devrait être le cas si vous n’avez pas cliqué un peu partout).</li>
   <li>on configure les tests de notre projet en tapant la commande (dans la <a href="/cours_informatique/tutoriels/editeur/vsc/vsc-installation-et-prise-en-main.html#palette-de-commande">palette de commande</a>) : <em>python : Configure tests</em> on choisit <em>pytest</em> puis <em>. (root)</em> qui donne le dossier de départ où aller chercher nos tests</li>
 </ol>
 
-<h3 id="utilisation-pytest">utilisation</h3>
+<h4 id="utilisation-pytest">utilisation</h4>
 
-<h4 id="avec-linterface">avec l’interface</h4>
+<blockquote class="a-faire">
+  <p>Créez un fichier que vous appellerez <em>“test_projet.py”</em> dans votre projet. Collez-y- le code suivant :</p>
+</blockquote>
 
-<p>On ouvre la fenêtre de tests avec <em>Menu Affichage testing</em> (le petit erlenmeyer de la <a href="https://code.visualstudio.com/docs/getstarted/userinterface">barre d’activité</a>).</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">def</span> <span class="nf">test_oui</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="mi">4</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span>
+
+
+<span class="k">def</span> <span class="nf">test_non</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="s">"4"</span> <span class="o">==</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span>
+
+</code></pre></div></div>
+
+<p>Le fichier créé est un fichier de test. Il faut l’utiliser via la bibliothèque <code class="language-plaintext highlighter-rouge">pytest</code> que vous venez d’installer. Ceci peut se faire directement avec vscode en ouvrant la fenêtre de tests avec <em>Menu Affichage testing</em> (le petit erlenmeyer de la <a href="https://code.visualstudio.com/docs/getstarted/userinterface">barre d’activité</a>).</p>
 
 <p>En suite le menu <em>TESTING</em> en haut de cette nouvelle fenêtre vous permet :</p>
 
 <ul>
   <li>redécouvrir les tests</li>
-  <li>executez les tests.</li>
+  <li>exécutez les tests.</li>
   <li>…</li>
 </ul>
 
 <p><img src="/cours_informatique/assets/tutos/vsc-python/python-pytest-env.png" alt="tests"></p>
 
-<h4 id="avec-le-terminal">avec le terminal</h4>
-
-<p>En tapant <code class="language-plaintext highlighter-rouge">pytest</code> alors que vous êtes dans le dossier du projet.</p>
-
-<blockquote>
-  <p>si la commande <code class="language-plaintext highlighter-rouge">pytest</code> n’est pas reconnue, mais que <code class="language-plaintext highlighter-rouge">python</code> l’est vous pouvez exécuter <code class="language-plaintext highlighter-rouge">pytest</code>, via python en tapant la commande <code class="language-plaintext highlighter-rouge">python3 -m pytest</code></p>
-</blockquote>
+<p>On peut également directement utiliser pytest avec le terminal, en tapant <code class="language-plaintext highlighter-rouge">python -m pytest</code> (<code class="language-plaintext highlighter-rouge">python3 -m pytest</code> si votre interpréteur est <code class="language-plaintext highlighter-rouge">python3</code>) alors que vous êtes dans le dossier du projet.</p>
 
 <h2 id="linter">linter</h2>
 

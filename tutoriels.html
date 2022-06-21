@@ -98,31 +98,7 @@
                 ? 'unset' 
                 : 'none';
                     
-            var cats = ["installation","python","terminal"]
-            id += 1;
-            
-            var postDiv = document.getElementById(id);
-            postDiv.style.display = (selectedTag == 'All' || cats.includes(selectedTag)) 
-                ? 'unset' 
-                : 'none';
-                    
-            var cats = ["système","terminal","CLI"]
-            id += 1;
-            
-            var postDiv = document.getElementById(id);
-            postDiv.style.display = (selectedTag == 'All' || cats.includes(selectedTag)) 
-                ? 'unset' 
-                : 'none';
-                    
             var cats = ["pycharm"]
-            id += 1;
-            
-            var postDiv = document.getElementById(id);
-            postDiv.style.display = (selectedTag == 'All' || cats.includes(selectedTag)) 
-                ? 'unset' 
-                : 'none';
-                    
-            var cats = ["système","terminal"]
             id += 1;
             
             var postDiv = document.getElementById(id);
@@ -138,7 +114,7 @@
                 ? 'unset' 
                 : 'none';
                     
-            var cats = ["installation","configuration","python"]
+            var cats = ["installation","configuration","python","vscode"]
             id += 1;
             
             var postDiv = document.getElementById(id);
@@ -146,7 +122,7 @@
                 ? 'unset' 
                 : 'none';
                     
-            var cats = ["installation","configuration","python"]
+            var cats = ["installation","configuration","python","vscode"]
             id += 1;
             
             var postDiv = document.getElementById(id);
@@ -155,22 +131,6 @@
                 : 'none';
                     
             var cats = ["installation","configuration","terminal"]
-            id += 1;
-            
-            var postDiv = document.getElementById(id);
-            postDiv.style.display = (selectedTag == 'All' || cats.includes(selectedTag)) 
-                ? 'unset' 
-                : 'none';
-                    
-            var cats = ["installation","python","anaconda"]
-            id += 1;
-            
-            var postDiv = document.getElementById(id);
-            postDiv.style.display = (selectedTag == 'All' || cats.includes(selectedTag)) 
-                ? 'unset' 
-                : 'none';
-                    
-            var cats = ["installation","WSL"]
             id += 1;
             
             var postDiv = document.getElementById(id);
@@ -195,6 +155,46 @@
                 : 'none';
                     
             var cats = ["langage","markdown"]
+            id += 1;
+            
+            var postDiv = document.getElementById(id);
+            postDiv.style.display = (selectedTag == 'All' || cats.includes(selectedTag)) 
+                ? 'unset' 
+                : 'none';
+                    
+            var cats = ["installation","python","anaconda"]
+            id += 1;
+            
+            var postDiv = document.getElementById(id);
+            postDiv.style.display = (selectedTag == 'All' || cats.includes(selectedTag)) 
+                ? 'unset' 
+                : 'none';
+                    
+            var cats = ["installation","python","terminal"]
+            id += 1;
+            
+            var postDiv = document.getElementById(id);
+            postDiv.style.display = (selectedTag == 'All' || cats.includes(selectedTag)) 
+                ? 'unset' 
+                : 'none';
+                    
+            var cats = ["système","terminal","CLI"]
+            id += 1;
+            
+            var postDiv = document.getElementById(id);
+            postDiv.style.display = (selectedTag == 'All' || cats.includes(selectedTag)) 
+                ? 'unset' 
+                : 'none';
+                    
+            var cats = ["système","terminal"]
+            id += 1;
+            
+            var postDiv = document.getElementById(id);
+            postDiv.style.display = (selectedTag == 'All' || cats.includes(selectedTag)) 
+                ? 'unset' 
+                : 'none';
+                    
+            var cats = ["installation","WSL"]
             id += 1;
             
             var postDiv = document.getElementById(id);
@@ -230,33 +230,35 @@
         
                 <button id="langage python" onclick="filterUsingTag(this.id)">langage python</button>
         
-                <button id="installation" onclick="filterUsingTag(this.id)">installation</button>
-        
-                <button id="python" onclick="filterUsingTag(this.id)">python</button>
-        
-                <button id="terminal" onclick="filterUsingTag(this.id)">terminal</button>
-        
-                <button id="système" onclick="filterUsingTag(this.id)">système</button>
-        
-                <button id="CLI" onclick="filterUsingTag(this.id)">CLI</button>
-        
                 <button id="pycharm" onclick="filterUsingTag(this.id)">pycharm</button>
         
                 <button id="langage" onclick="filterUsingTag(this.id)">langage</button>
         
                 <button id="jekyll" onclick="filterUsingTag(this.id)">jekyll</button>
         
+                <button id="installation" onclick="filterUsingTag(this.id)">installation</button>
+        
                 <button id="configuration" onclick="filterUsingTag(this.id)">configuration</button>
         
-                <button id="anaconda" onclick="filterUsingTag(this.id)">anaconda</button>
+                <button id="python" onclick="filterUsingTag(this.id)">python</button>
         
-                <button id="WSL" onclick="filterUsingTag(this.id)">WSL</button>
+                <button id="vscode" onclick="filterUsingTag(this.id)">vscode</button>
+        
+                <button id="terminal" onclick="filterUsingTag(this.id)">terminal</button>
         
                 <button id="React" onclick="filterUsingTag(this.id)">React</button>
         
                 <button id="node" onclick="filterUsingTag(this.id)">node</button>
         
                 <button id="markdown" onclick="filterUsingTag(this.id)">markdown</button>
+        
+                <button id="anaconda" onclick="filterUsingTag(this.id)">anaconda</button>
+        
+                <button id="système" onclick="filterUsingTag(this.id)">système</button>
+        
+                <button id="CLI" onclick="filterUsingTag(this.id)">CLI</button>
+        
+                <button id="WSL" onclick="filterUsingTag(this.id)">WSL</button>
         
                 <button id="fichiers" onclick="filterUsingTag(this.id)">fichiers</button>
         
@@ -322,64 +324,6 @@
         <li id="3">
             
             <h3>
-                <a class="post-link" href="/cours_informatique/tutoriels/python/2021-08-20-installation-de-python.html">
-                  Installation de python
-                </a>
-              </h3>
-              <div style="padding-left:20px;">
-                <div>
-                    catégories : 
-                    
-                    • <span class="post-meta">installation</span>
-                    
-                    • <span class="post-meta">python</span>
-                    
-                    • <span class="post-meta">terminal</span>
-                    
-                    • 
-                </div>
-                <p>
-                    </p>
-<p>Comment installer et utiliser python sur son ordinateur. On y verra différentes solutions.</p>
-
-                
-                
-              </div>                              
-              
-        </li>
-        
-        <li id="4">
-            
-            <h3>
-                <a class="post-link" href="/cours_informatique/tutoriels/systeme/2021-08-24-terminal.html">
-                  le terminal
-                </a>
-              </h3>
-              <div style="padding-left:20px;">
-                <div>
-                    catégories : 
-                    
-                    • <span class="post-meta">système</span>
-                    
-                    • <span class="post-meta">terminal</span>
-                    
-                    • <span class="post-meta">CLI</span>
-                    
-                    • 
-                </div>
-                <p>
-                    </p>
-<p>Qu’est-ce que le terminal ? Comment le trouver et taper des commandes.</p>
-
-                
-                
-              </div>                              
-              
-        </li>
-        
-        <li id="5">
-            
-            <h3>
                 <a class="post-link" href="/cours_informatique/tutoriels/editeur/pycharm/2021-08-30-configuration-pycharm.html">
                   Configuration Pycharm
                 </a>
@@ -402,34 +346,7 @@
               
         </li>
         
-        <li id="6">
-            
-            <h3>
-                <a class="post-link" href="/cours_informatique/tutoriels/systeme/2021-09-01-installation-ordinateur.html">
-                  Nouvelle installation de son système
-                </a>
-              </h3>
-              <div style="padding-left:20px;">
-                <div>
-                    catégories : 
-                    
-                    • <span class="post-meta">système</span>
-                    
-                    • <span class="post-meta">terminal</span>
-                    
-                    • 
-                </div>
-                <p>
-                    </p>
-<p>Comment bien préparer son ordinateur pour faire du développement. On ne montrera ici que le départ, c’est à dire l’installation fraiche d’un système sur lequel on pourra ensuite installer — proprement — les divers outils et logiciels utiles pour le développement.</p>
-
-                
-                
-              </div>                              
-              
-        </li>
-        
-        <li id="7">
+        <li id="4">
             
             <h3>
                 <a class="post-link" href="/cours_informatique/tutoriels/2021-09-03-jekyll-et-site.html">
@@ -456,7 +373,7 @@
               
         </li>
         
-        <li id="8">
+        <li id="5">
             
             <h3>
                 <a class="post-link" href="/cours_informatique/tutoriels/editeur/vsc/2021-09-14-vsc-python-modules-supplementaires.html">
@@ -473,6 +390,8 @@
                     
                     • <span class="post-meta">python</span>
                     
+                    • <span class="post-meta">vscode</span>
+                    
                     • 
                 </div>
                 <p>
@@ -485,7 +404,7 @@
               
         </li>
         
-        <li id="9">
+        <li id="6">
             
             <h3>
                 <a class="post-link" href="/cours_informatique/tutoriels/editeur/vsc/2021-09-14-vsc-python.html">
@@ -502,6 +421,8 @@
                     
                     • <span class="post-meta">python</span>
                     
+                    • <span class="post-meta">vscode</span>
+                    
                     • 
                 </div>
                 <p>
@@ -514,7 +435,7 @@
               
         </li>
         
-        <li id="10">
+        <li id="7">
             
             <h3>
                 <a class="post-link" href="/cours_informatique/tutoriels/editeur/vsc/2021-09-14-vsc-terminal.html">
@@ -543,10 +464,92 @@
               
         </li>
         
+        <li id="8">
+            
+            <h3>
+                <a class="post-link" href="/cours_informatique/tutoriels/2021-10-28-smartgrid.html">
+                  Smartgrid
+                </a>
+              </h3>
+              <div style="padding-left:20px;">
+                <div>
+                    catégories : 
+                    
+                    • <span class="post-meta">React</span>
+                    
+                    • <span class="post-meta">node</span>
+                    
+                    • 
+                </div>
+                <p>
+                    </p>
+<p>Le jeu smartgrid</p>
+
+                
+                
+              </div>                              
+              
+        </li>
+        
+        <li id="9">
+            
+            <h3>
+                <a class="post-link" href="/cours_informatique/tutoriels/editeur/vsc/vsc-installation-et-prise-en-main.html">
+                  Installation et prise en main de vscode
+                </a>
+              </h3>
+              <div style="padding-left:20px;">
+                <div>
+                    catégories : 
+                    
+                    • <span class="post-meta">installation</span>
+                    
+                    • <span class="post-meta">configuration</span>
+                    
+                    • 
+                </div>
+                <p>
+                    </p>
+<p>Installation et premières configurations de <a href="https://code.visualstudio.com/">visual studio code</a> (vsc).
+<!--more--></p>
+
+                
+                
+              </div>                              
+              
+        </li>
+        
+        <li id="10">
+            
+            <h3>
+                <a class="post-link" href="/cours_informatique/tutoriels/format-markdown.html">
+                  Format markdown
+                </a>
+              </h3>
+              <div style="padding-left:20px;">
+                <div>
+                    catégories : 
+                    
+                    • <span class="post-meta">langage</span>
+                    
+                    • <span class="post-meta">markdown</span>
+                    
+                    • 
+                </div>
+                <p>
+                    </p>
+<p>Une introduction au format markdown.</p>
+
+                
+                
+              </div>                              
+              
+        </li>
+        
         <li id="11">
             
             <h3>
-                <a class="post-link" href="/cours_informatique/tutoriels/python/2021-09-14-installation-anaconda.html">
+                <a class="post-link" href="/cours_informatique/tutoriels/python/installation-anaconda.html">
                   Installation d'Anaconda python
                 </a>
               </h3>
@@ -575,6 +578,91 @@
         <li id="12">
             
             <h3>
+                <a class="post-link" href="/cours_informatique/tutoriels/python/installation-de-python.html">
+                  Installation de python
+                </a>
+              </h3>
+              <div style="padding-left:20px;">
+                <div>
+                    catégories : 
+                    
+                    • <span class="post-meta">installation</span>
+                    
+                    • <span class="post-meta">python</span>
+                    
+                    • <span class="post-meta">terminal</span>
+                    
+                    • 
+                </div>
+                <p>
+                    </p>
+<p>Comment installer et utiliser python sur son ordinateur. On y verra différentes solutions.</p>
+
+                
+                
+              </div>                              
+              
+        </li>
+        
+        <li id="13">
+            
+            <h3>
+                <a class="post-link" href="/cours_informatique/tutoriels/systeme/2021-08-24-terminal.html">
+                  le terminal
+                </a>
+              </h3>
+              <div style="padding-left:20px;">
+                <div>
+                    catégories : 
+                    
+                    • <span class="post-meta">système</span>
+                    
+                    • <span class="post-meta">terminal</span>
+                    
+                    • <span class="post-meta">CLI</span>
+                    
+                    • 
+                </div>
+                <p>
+                    </p>
+<p>Qu’est-ce que le terminal ? Comment le trouver et taper des commandes.</p>
+
+                
+                
+              </div>                              
+              
+        </li>
+        
+        <li id="14">
+            
+            <h3>
+                <a class="post-link" href="/cours_informatique/tutoriels/systeme/2021-09-01-installation-ordinateur.html">
+                  Nouvelle installation de son système
+                </a>
+              </h3>
+              <div style="padding-left:20px;">
+                <div>
+                    catégories : 
+                    
+                    • <span class="post-meta">système</span>
+                    
+                    • <span class="post-meta">terminal</span>
+                    
+                    • 
+                </div>
+                <p>
+                    </p>
+<p>Comment bien préparer son ordinateur pour faire du développement. On ne montrera ici que le départ, c’est à dire l’installation fraiche d’un système sur lequel on pourra ensuite installer — proprement — les divers outils et logiciels utiles pour le développement.</p>
+
+                
+                
+              </div>                              
+              
+        </li>
+        
+        <li id="15">
+            
+            <h3>
                 <a class="post-link" href="/cours_informatique/tutoriels/systeme/2021-09-27-wsl-windows.html">
                   wsl ou linux dans windows
                 </a>
@@ -592,88 +680,6 @@
                 <p>
                     </p>
 <p>Comment installer et bien préparer wsl pur le développement.</p>
-
-                
-                
-              </div>                              
-              
-        </li>
-        
-        <li id="13">
-            
-            <h3>
-                <a class="post-link" href="/cours_informatique/tutoriels/2021-10-28-smartgrid.html">
-                  Smartgrid
-                </a>
-              </h3>
-              <div style="padding-left:20px;">
-                <div>
-                    catégories : 
-                    
-                    • <span class="post-meta">React</span>
-                    
-                    • <span class="post-meta">node</span>
-                    
-                    • 
-                </div>
-                <p>
-                    </p>
-<p>Le jeu smartgrid</p>
-
-                
-                
-              </div>                              
-              
-        </li>
-        
-        <li id="14">
-            
-            <h3>
-                <a class="post-link" href="/cours_informatique/tutoriels/editeur/vsc/vsc-installation-et-prise-en-main.html">
-                  Installation et prise en main de vscode
-                </a>
-              </h3>
-              <div style="padding-left:20px;">
-                <div>
-                    catégories : 
-                    
-                    • <span class="post-meta">installation</span>
-                    
-                    • <span class="post-meta">configuration</span>
-                    
-                    • 
-                </div>
-                <p>
-                    </p>
-<p>Installation et premières configurations de <a href="https://code.visualstudio.com/">visual studio code</a> (vsc).
-<!--more--></p>
-
-                
-                
-              </div>                              
-              
-        </li>
-        
-        <li id="15">
-            
-            <h3>
-                <a class="post-link" href="/cours_informatique/tutoriels/format-markdown.html">
-                  Format markdown
-                </a>
-              </h3>
-              <div style="padding-left:20px;">
-                <div>
-                    catégories : 
-                    
-                    • <span class="post-meta">langage</span>
-                    
-                    • <span class="post-meta">markdown</span>
-                    
-                    • 
-                </div>
-                <p>
-                    </p>
-<p>Une introduction au format markdown.</p>
 
                 
                 

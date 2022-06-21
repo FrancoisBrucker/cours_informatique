@@ -68,7 +68,7 @@
 
   <ul>
     <li><a href="/cours_informatique/tutoriels/editeur/vsc/vsc-installation-et-prise-en-main.html">vscode</a></li>
-    <li><a href="/cours_informatique/tutoriels/python/2021-08-20-installation-de-python.html">python installation</a></li>
+    <li><a href="/cours_informatique/tutoriels/python/installation-de-python.html">python installation</a></li>
   </ul>
 
 </blockquote>
@@ -91,13 +91,54 @@
   <p>Rendez vous dans la <a href="/cours_informatique/tutoriels/editeur/vsc/vsc-installation-et-prise-en-main.html#extensions">gestion des extensions de vscode</a>, puis tapez <em>python</em> dans la barre de recherche. Assurez vous d’installer les package créés par microsoft.</p>
 </blockquote>
 
-<h2 id="interpréteur-python">interpréteur python</h2>
+<h2 id="premier-programme">premier programme</h2>
 
-<blockquote>
-  <p>Si vous n’avez pas d’interpréteur python par défaut vscode vous demandera de le donner (il vous aide en cherchant lui même des possibilités) lors du premier chargement d’un fichier python.</p>
+<p>Nous allons créer un premier fichier de code python pour permettre de finaliser l’installation des liens entre l’interpréteur python et vscode.</p>
+
+<blockquote class="a-faire">
+  <p>Créez un dossier nommé <em>“cours-python”</em> sur votre ordinateur, et ouvrez le avec vscode (<em>menu Fichier &gt; ouvrir le dossier…</em>).</p>
 </blockquote>
 
-<p>Les paramètres de l’interpréteur se trouvent dans <a href="https://code.visualstudio.com/docs/getstarted/settings">les paramètres vscode</a> :</p>
+<p>Une fois que vous avez dit que vous faisiez confiance au développeur de ce projet, fermez l’onglet <em>Welcome</em>. Vous pouvez même fermer l’explorer en cliquant sur l’icône en sur-brillance dans la barre d’activité de <a href="https://code.visualstudio.com/docs/getstarted/userinterface">l’interface vsc</a>.</p>
+
+<blockquote class="a-faire">
+  <p>Créez un fichier <em>“programme.py”</em> (<em>menu Fichier &gt; nouveau fichier texte</em> puis sauvez le immédiatement <em>menu Fichier &gt; Enregistrer</em>).</p>
+</blockquote>
+
+<p>Si vous n’avez pas encore configuré python, vscode va vous demander le faire.</p>
+
+<blockquote class="a-faire">
+  <p>Suivez les instructions de vscode (vous n’avez normalement pas grand chose à faire, vscode trouvera normalement les bons paramètres) pour faire le lien entre votre interpréteur python et lui.</p>
+</blockquote>
+
+<p>Une fois la configuration terminée, écrivons notre code :</p>
+
+<blockquote class="a-faire">
+  <p>Ecrivez dans le fichier ouvert dans vscode :</p>
+
+  <div class="language-python highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">"Bonjour monde !"</span><span class="p">)</span>
+</code></pre></div>  </div>
+
+</blockquote>
+
+<p>Vous pouvez alors l’exécuter :</p>
+
+<blockquote class="a-faire">
+  <ul>
+    <li>en cliquant sur <a href="https://code.visualstudio.com/docs/python/python-tutorial#_run-hello-world">le triangle en haut à droite de la fenêtre vsc</a>
+</li>
+    <li>dans <a href="/cours_informatique/tutoriels/editeur/vsc/2021-09-14-vsc-terminal.html#terminal-integre">le terminal intégré à vscode</a> (<em>menu Affichage &gt; Terminal</em>) en tapant : <code class="language-plaintext highlighter-rouge">python programme.py</code> (si vous êtes sous windows) ou <code class="language-plaintext highlighter-rouge">python3 programme.py</code> (si vous êtes sous unix ou mac).</li>
+  </ul>
+</blockquote>
+
+<p>Remarquez que lorsque vous exécutez votre programme via la première solution, cela crée un nouveau terminal qui s’appelle <em>Python</em> (le triangle vert est un raccourci pour appeler automatiquement un terminal) :</p>
+
+<p><img src="/cours_informatique/assets/tutos/vsc-python/python-interpreteur-execution-python.png" alt="hello world"></p>
+
+<h2 id="paramètres">paramètres</h2>
+
+<p>Le lien entre vscode et python se fait par l’intermédiaires de <a href="https://code.visualstudio.com/docs/getstarted/settings">paramètres</a> :</p>
 
 <details><summary>sous linux</summary><div>
 <p><em>menu Fichier &gt; préférences &gt; paramètres</em></p>
@@ -114,13 +155,13 @@
 
 </div></details>
 
-<p>Puis, une fois dans l’onglet paramètres allez dans <em>extensions &gt; python</em> dans le menu de gauche. Les préférences vscode consistent en des variables (<em>ID du paramètre</em>) à positionner selon ses envies, chaque variable modifiant un comportement de vscode.</p>
+<p>Pour trouver les paramètres liés à python, une fois dans l’onglet paramètres, choisissez <em>extensions &gt; python</em> dans le menu de gauche. Les préférences vscode consistent en des variables (<em>ID du paramètre</em>) à positionner selon ses envies, chaque variable modifiant un comportement de vscode.</p>
 
 <blockquote>
   <p>Il y a deux fois les mêmes préférences : <strong>utilisateur</strong> et  <strong>espace de travail</strong>. Le premier concerne les préférences générales de vscode et le second les préférences du projet courant. Par défaut, modifiez les préférences <strong>utilisateur</strong>. Pour plus d’informations, lisez la <a href="https://code.visualstudio.com/docs/getstarted/settings">doc</a>.</p>
 </blockquote>
 
-<p>Il y a deux préférences qu’ils faut a priori modifier :</p>
+<p>Il y a deux préférences qui sont liés à l’interpréteur python :</p>
 
 <ul>
   <li>
@@ -129,9 +170,11 @@
 <strong>Conda Path</strong> dont l’ID est <code class="language-plaintext highlighter-rouge">python.condaPath</code>. C’est le chemin vers le programme <code class="language-plaintext highlighter-rouge">conda</code> si vous utilisez la version anaconda de python.</li>
 </ul>
 
-<p>Vous pouvez directement chercher le paramètre en tapant son nom dans la barre de recherche.</p>
+<blockquote>
+  <p>Vous pouvez directement chercher le paramètre en tapant son nom dans la barre de recherche.</p>
+</blockquote>
 
-<p>Si vous avez suivi le <a href="/cours_informatique/tutoriels/python/2021-09-14-installation-anaconda.html">tutoriel anaconda</a>, vérifiez ou faites en sorte que les paramètres soient :</p>
+<p>Si vous avez suivi le <a href="/cours_informatique/tutoriels/python/installation-anaconda.html">tutoriel anaconda</a>, vérifiez (ou faites en sorte) que les paramètres soient :</p>
 
 <details><summary>sous linux</summary><div>
 <blockquote class="tbd">
@@ -174,25 +217,11 @@
 
 <h3 id="triangle-vert">triangle vert</h3>
 
-<p>Vous pouvez exécuter l’onglet courant en python en <a href="https://code.visualstudio.com/docs/python/python-tutorial#_run-hello-world">cliquant sur le triangle en haut à droite de l’interface</a>.</p>
+<p>On a déjà vu comment exécuter l’onglet courant en python en <a href="https://code.visualstudio.com/docs/python/python-tutorial#_run-hello-world">cliquant sur le triangle en haut à droite de l’interface</a>.</p>
 
 <h3 id="terminal">terminal</h3>
 
 <p>Vous pouvez utiliser <a href="/cours_informatique/tutoriels/editeur/vsc/2021-09-14-vsc-terminal.html#terminal-integre">le terminal intégré</a> pour exécuter vous programmes python comme vous le feriez avec un terminal externe.</p>
-
-<h2 id="premier-programme">premier programme</h2>
-
-<h3 id="projet-vscode">projet vscode</h3>
-
-<blockquote class="a-faire">
-  <p>Créez un dossier nommé <em>“cours-python”</em> sur votre ordinateur, et ouvrez le avec vscode (<em>menu Fichier &gt; ouvrir le dossier…</em>).</p>
-</blockquote>
-
-<p>Une fois que vous avez dit que vous faisiez confiance au développeur de ce projet, fermez l’onglet <em>Welcome</em>. Vous pouvez même fermer l’explorer en cliquant sur l’icône en sur-brillance dans la barre d’activité de <a href="https://code.visualstudio.com/docs/getstarted/userinterface">l’interface vsc</a>.</p>
-
-<p>Nous allons commencer par utiliser le <a href="/cours_informatique/tutoriels/editeur/vsc/2021-09-14-vsc-terminal.html#terminal-integre">le terminal intégré</a> de vscode pour exécuter nos premiers programmes python avant d’écrire nos programmes de plusieurs lignes.</p>
-
-<h3 id="interpréteur-python-dans-le-terminal-vscode">interpréteur python dans le terminal vscode</h3>
 
 <blockquote class="a-faire">
   <p>Ouvrez un <a href="/cours_informatique/tutoriels/editeur/vsc/2021-09-14-vsc-terminal.html">terminal dans vscode</a> : <em>menu Affichage &gt; Terminal</em>.</p>
@@ -205,8 +234,6 @@
 </blockquote>
 
 <p><img src="/cours_informatique/assets/tutos/vsc-python/python-interpreteur.png" alt="interpreteur" style="margin: auto;display: block"></p>
-
-<h4 id="une-première-ligne-de-python">une première ligne de python</h4>
 
 <p>Dans l’interpréteur (à côté des <code class="language-plaintext highlighter-rouge">&gt;&gt;&gt;</code>, qu’on appelle <a href="https://fr.wikipedia.org/wiki/Interface_en_ligne_de_commande">invite de commande ou prompt</a>) :</p>
 
@@ -226,154 +253,17 @@
 
 <p>Ca a l’air d’avoir marché. La ligne de code a affiché à l’écran <code class="language-plaintext highlighter-rouge">Bonjour Monde</code>, puis l’invite de commande est revenue (une fois l’instruction exécutée, on attend la suivante).</p>
 
-<h4 id="quitter-linterpréteur">quitter l’interpréteur</h4>
-
 <p>Pour quitter l’interpréteur python :</p>
 
 <blockquote class="a-faire">
   <p>Tapez <code class="language-plaintext highlighter-rouge">quit()</code> puis appuyez sur la touche entrée.</p>
 </blockquote>
 
-<h3 id="création-dun-fichier">création d’un fichier</h3>
-
-<blockquote class="a-faire">
-  <p>Créez un fichier <em>“programme.py”</em> (<em>menu Fichier &gt; New File</em> puis sauvez le immédiatement <em>menu Fichier &gt; Save</em>).</p>
-</blockquote>
-
-<p>Si vous n’avez pas encore configuré python, vscode va vous demander le faire.</p>
-
-<blockquote class="a-faire">
-  <p>Ecrivez dans le fichier ouvert dans vscode :</p>
-
-  <div class="language-python highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">"Bonjour monde !"</span><span class="p">)</span>
-</code></pre></div>  </div>
-
-</blockquote>
-
-<p>Vous pouvez alors l’exécuter :</p>
-
-<blockquote class="a-faire">
-  <ul>
-    <li>dans le terminal en tapant : <code class="language-plaintext highlighter-rouge">python programme.py</code> ou <code class="language-plaintext highlighter-rouge">python3 programme.py</code> selon le nom de votre interpréteur</li>
-    <li>en cliquant sur <a href="https://code.visualstudio.com/docs/python/python-tutorial#_run-hello-world">le triangle en haut à droite de la fenêtre vsc</a>
-</li>
-  </ul>
-</blockquote>
-
-<p>Remarquez que lorsque vous exécutez votre programme via la seconde solution, cela crée un nouveau terminal qui s’appelle <em>Python</em>.</p>
-
-<p><img src="/cours_informatique/assets/tutos/vsc-python/python-interpreteur-execution-python.png" alt="hello world"></p>
-
-<h2 id="outils-indispensables">outils indispensables</h2>
+<h2 id="outils-supplémentaires-pour-le-développement">outils supplémentaires pour le développement</h2>
 
 <p>Il existe de nombreux plugins de vscode que l’on peut utiliser pour coder en python. Nous en montrerons deux ici, indispensables pour bien coder.</p>
 
-<h3 id="tests">tests</h3>
-
-<blockquote class="chemin">
-  <p><a href="https://code.visualstudio.com/docs/python/testing">tests avec vscode</a></p>
-</blockquote>
-
-<p>Nous usilisons <a href="https://docs.pytest.org/">pytest</a> comme bibliothèque de test.</p>
-
-<h4 id="installation-pytest">installation</h4>
-
-<details><summary>sous linux et mac</summary><div>
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3 <span class="nt">-m</span> pip <span class="nb">install </span>pytest
-</code></pre></div></div>
-
-</div></details>
-
-<details><summary>sous windows</summary><div>
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python <span class="nt">-m</span> pip <span class="nb">install </span>pytest
-</code></pre></div></div>
-
-</div></details>
-
-<h4 id="configuration-pytest">configuration</h4>
-
-<ol>
-  <li>dans les préférences (<em>menu file/code &gt; Préferences &gt; settings</em>) tapez <code class="language-plaintext highlighter-rouge">python.testing.pytestEnabled</code>  dans la barre de recherche et cochez la case. Ceci dit à vscode que notre framework de test est pytest (il y en a d’autres possible comme <a href="https://docs.python.org/fr/3.9/library/unittest.html">unittest</a> ou encore <a href="https://nose.readthedocs.io/en/latest/">nosetests</a>, mais on ne va pas les utiliser. Assurez vous cependant qu’un seul framework de test soit utilisé à la fois. Ca devrait être le cas si vous n’avez pas cliqué un peu partout).</li>
-  <li>on configure les tests de notre projet en tapant la commande (dans la <a href="/cours_informatique/tutoriels/editeur/vsc/vsc-installation-et-prise-en-main.html#palette-de-commande">palette de commande</a>) : <em>python : Configure tests</em> on choisit <em>pytest</em> puis <em>. (root)</em> qui donne le dossier de départ où aller chercher nos tests</li>
-</ol>
-
-<h4 id="utilisation-pytest">utilisation</h4>
-
-<blockquote class="a-faire">
-  <p>Créez un fichier que vous appellerez <em>“test_projet.py”</em> dans votre projet. Collez-y- le code suivant :</p>
-</blockquote>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="k">def</span> <span class="nf">test_oui</span><span class="p">():</span>
-    <span class="k">assert</span> <span class="mi">4</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span>
-
-
-<span class="k">def</span> <span class="nf">test_non</span><span class="p">():</span>
-    <span class="k">assert</span> <span class="s">"4"</span> <span class="o">==</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span>
-
-</code></pre></div></div>
-
-<p>Le fichier créé est un fichier de test. Il faut l’utiliser via la bibliothèque <code class="language-plaintext highlighter-rouge">pytest</code> que vous venez d’installer. Ceci peut se faire directement avec vscode en ouvrant la fenêtre de tests avec <em>Menu Affichage testing</em> (le petit erlenmeyer de la <a href="https://code.visualstudio.com/docs/getstarted/userinterface">barre d’activité</a>).</p>
-
-<p>En suite le menu <em>TESTING</em> en haut de cette nouvelle fenêtre vous permet :</p>
-
-<ul>
-  <li>redécouvrir les tests</li>
-  <li>exécutez les tests.</li>
-  <li>…</li>
-</ul>
-
-<p><img src="/cours_informatique/assets/tutos/vsc-python/python-pytest-env.png" alt="tests"></p>
-
-<p>On peut également directement utiliser pytest avec le terminal, en tapant <code class="language-plaintext highlighter-rouge">python -m pytest</code> (<code class="language-plaintext highlighter-rouge">python3 -m pytest</code> si votre interpréteur est <code class="language-plaintext highlighter-rouge">python3</code>) alors que vous êtes dans le dossier du projet.</p>
-
-<h3 id="linter">linter</h3>
-
-<p>Le <a href="https://code.visualstudio.com/docs/python/linting">linting en python avec vscode</a> permet de souligner les fautes de style de python.</p>
-
-<p>C’est une aide précieuse pour écrire du code qui est à la fois fonctionnel et lisible. Cela permet de supprimer la majorité des problèmes avant l’exécution.</p>
-
-<p>Il faut installer des plugins pythons spécifiques pour le linting. Il en existe de nombreux. On vous propose ici d’utiliser <a href="https://pycodestyle.pycqa.org/en/latest/intro.html">pycodestyle</a> qui permet de respecter la <a href="https://www.python.org/dev/peps/pep-0008/">PEP8</a>.</p>
-
-<h4 id="installation-pycodestyle">installation</h4>
-
-<p>Dans un <a href="/cours_informatique/tutoriels/systeme/2021-08-24-terminal.html">terminal</a>, qui peut être <a href="/cours_informatique/tutoriels/editeur/vsc/2021-09-14-vsc-terminal.html#terminal-integre">celui de vscode</a> tapez la commande :</p>
-
-<details><summary>sous linux et mac</summary><div>
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3 <span class="nt">-m</span> pip <span class="nb">install </span>pycodestyle
-</code></pre></div></div>
-
-</div></details>
-
-<details><summary>sous windows</summary><div>
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python <span class="nt">-m</span> pip <span class="nb">install </span>pycodestyle
-</code></pre></div></div>
-
-</div></details>
-
-<p>Une fois ce module python installé, on va pouvoir l’utiliser dans vscode</p>
-
-<h4 id="configuration-pycodestyle">configuration</h4>
-
-<p>Pour mettre en route le linting via pycodestyle, deux paramètres sont à positionner :</p>
-
-<ul>
-  <li>
-<code class="language-plaintext highlighter-rouge">python.linting.enabled</code> doit être coché pour mettre en route le linting</li>
-  <li>
-<code class="language-plaintext highlighter-rouge">python.linting.pycodestyleEnabled</code> doit être coché pour utiliser <code class="language-plaintext highlighter-rouge">pycodestyle</code> comme linter</li>
-  <li>
-<code class="language-plaintext highlighter-rouge">python.linting.pycodestylePath</code> doit donner le chemin vers <code class="language-plaintext highlighter-rouge">pycodestyle</code>. Il est par défaut positionné sur <code class="language-plaintext highlighter-rouge">pycodestyle</code> ce qui devrait être correct.</li>
-</ul>
-
-<blockquote>
-  <p>Notez que vous pouvez aussi accéder à ces commande via la <a href="/cours_informatique/tutoriels/editeur/vsc/vsc-installation-et-prise-en-main.html#palette-de-commande">palette de commande</a>,par exemple avec la commande <em>python: enable/disable linting</em>.</p>
-</blockquote>
-
-<h4 id="pycodestyle-dans-le-terminal">pycodestyle dans le terminal</h4>
-
-<p>Vous pouvez aussi toujours exécuter la commande <code class="language-plaintext highlighter-rouge">pycodestyle mon-fichier.py</code>  dans un <a href="/cours_informatique/tutoriels/editeur/vsc/2021-09-14-vsc-terminal.html#terminal-integre">terminal intégré</a> pour obtenir le linting de votre fichier. C’est moins pratique que lorsque vscode le fait puisque la ligne en question n’est pas soulignée dans l’interface.</p>
+<p>Vous pouvez consulter <a href="/cours_informatique/tutoriels/editeur/vsc/2021-09-14-vsc-python-modules-supplementaires.html">ce tutoriel</a> pour installer les plus utiles dans une optique de faire du développement python avec vscode.</p>
 
   </div>
 
