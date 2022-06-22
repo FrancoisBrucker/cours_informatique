@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Bases de python : module matplotlib | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0">
+<meta property="og:title" content="Bases de python : module matplotlib">
+<meta name="author" content="François Brucker">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Support de cours/td d’informatique de François Brucker.">
+<meta property="og:description" content="Support de cours/td d’informatique de François Brucker.">
+<link rel="canonical" href="/cours_informatique/cours/bases-python/module-matplotlib.html">
+<meta property="og:url" content="/cours_informatique/cours/bases-python/module-matplotlib.html">
+<meta property="og:site_name" content="cours d’informatique">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Bases de python : module matplotlib">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"François Brucker"},"description":"Support de cours/td d’informatique de François Brucker.","headline":"Bases de python : module matplotlib","url":"/cours_informatique/cours/bases-python/module-matplotlib.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css">
+
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css">
+
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique">
+<script>MathJax={"tex":{"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["\\[","\\]"]]},"svg":{"fontCache":"global"},"svg":{"fontCache":"global"}}</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<header class="site-header" role="banner">
+
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/cours_informatique/">cours d'informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav>
+</div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Bases de python : module matplotlib</h1>Auteurs :
+      <ul>
+      
+        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></li>
+      
+        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Pierre Brucker</span></span></li>
+      
+      </ul>
+  </header>
+
+  <div class="post-content">
+    <blockquote class="chemin">
+  <p><a href="/cours_informatique/cours/bases-python/">bases de python</a> / <a href="/cours_informatique/cours/bases-python/modules.html">module matplotlib</a></p>
+</blockquote>
+
+<p>Nous allons dans ce cours présenter un module très utilisé en python pour représenter ds graphiques : <a href="https://matplotlib.org/">https://matplotlib.org/</a>.</p>
+
+<h2 id="écrire-du-code-avec-matplotlib">écrire du code avec matplotlib</h2>
+
+<p>Pour cette partie du cours nous aurons besoin de plus que la console. Il faudra en effet exécuter plusieurs lignes de python à la suite. Nous allons utiliser un notebook pour cela.</p>
+
+<blockquote class="a-faire">
+  <p>Allez à <a href="https://basthon.fr/">https://basthon.fr/</a> et ouvrez un nouveau notebook.</p>
+</blockquote>
+
+<p>Une fois le notebook ouvert, on pourra écrire plusieurs lignes dans une cellule avant de l’exécuter.</p>
+
+<blockquote>
+  <p>Si vous utilisez un notebook depuis <a href="https://basthon.fr/">https://basthon.fr/</a> ou depuis la distribution anaconda, matplotlib devrait être installé, sinon, il vous faudra l’installer (<code class="language-plaintext highlighter-rouge">python -m pip install matplotlib</code>).</p>
+</blockquote>
+
+<p>Commençons par importer les bibliothèques dans la première cellule :</p>
+
+<ol>
+  <li>copier/coller le code ci-dessous dans la première cellule de votre notebook</li>
+  <li>exécutez la cellule</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="n">mpl</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+</code></pre></div></div>
+
+<p>Vous devriez arriver à quelque chose du genre :</p>
+
+<p><img src="./assets/notebook-matplotlib-1.png" alt="matplotlib import"></p>
+
+<h2 id="un-premier-graphique">un premier graphique</h2>
+
+<p><a href="https://matplotlib.org/">matplotlib</a> peut être une bibliothèque difficile à utiliser. Pour que tout se passe au mieux, on va toujours utiliser la même procédure :</p>
+
+<ol>
+  <li>on crée les données à représenter</li>
+  <li>créer le graphique avec matplotlib : <code class="language-plaintext highlighter-rouge">fig, ax = plt.subplots(figsize=(20, 5))</code>
+</li>
+  <li>ajouter des choses au dessin : plusieurs commandes ajoutant des choses au dessin, c’est à dire <code class="language-plaintext highlighter-rouge">ax</code>
+</li>
+  <li>représenter la figure (commande <code class="language-plaintext highlighter-rouge">plt.show()</code>) ou la sauver dans un fichier</li>
+</ol>
+
+<p>Le code suivant permet de représenter la courbe $y=x^2$ :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 1. création des données
+</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">y</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># 2. créer le dessin (ici ax)
+</span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="c1"># 2.1 limite des axes
+</span><span class="n">ax</span><span class="p">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000000</span><span class="p">)</span>
+
+<span class="c1"># 2.2 les légendes
+</span><span class="n">ax</span><span class="p">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">"la courbe y=x^2"</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">'x'</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">'x^2'</span><span class="p">)</span>
+
+<span class="c1"># 3. ajouter des choses au dessin
+</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># 4. représenter le graphique
+</span><span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+
+</code></pre></div></div>
+
+<blockquote class="a-faire">
+  <p>Copiez/coller le code précédent dans le notebook et exécutez la cellule</p>
+</blockquote>
+
+<p>Vous devriez arriver à quelque chose du genre :</p>
+
+<p><img src="./assets/notebook-matplotlib-2.png" alt="matplotlib import"></p>
+
+<p>Essayons de comprendre comment tout ça fonctionne :</p>
+
+<ol>
+  <li>la partie 1 crée deux listes, <code class="language-plaintext highlighter-rouge">x</code> et <code class="language-plaintext highlighter-rouge">y</code> qui vont représentez les points $(x[i], y[i])$  à représenter</li>
+  <li>la première ligne de la partie 2 crée les objets matplotlib sur lesquelles tracer les courbes.
+    <ul>
+      <li>On utilise ici <code class="language-plaintext highlighter-rouge">ax</code> qui représente un dessin de 20 unités sur 5.</li>
+      <li>on peut paramétrer l’objet <code class="language-plaintext highlighter-rouge">ax</code> pour limiter le graphique (par défaut, le dessin prendra la taille de ce qui est dessiné)</li>
+    </ul>
+  </li>
+  <li>la troisième partie dessine nos points (reliés par des segments) sur l’objet <code class="language-plaintext highlighter-rouge">ax</code>
+</li>
+  <li>enfin, on représente l’objet <code class="language-plaintext highlighter-rouge">ax</code> à l’écran.</li>
+</ol>
+
+<blockquote class="a-faire">
+  <p>Changez la taille de l’objet <code class="language-plaintext highlighter-rouge">ax</code> pour voir les différences de représentation</p>
+</blockquote>
+
+<blockquote class="a-faire">
+  <p>Changez la courbe pour représenter $y = \frac{1}{2}x^2$</p>
+</blockquote>
+
+<blockquote class="a-faire">
+  <p>Superposez les 2 courbes</p>
+</blockquote>
+<details><summary></summary><div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">math</span>
+<span class="c1"># 1. création des données
+</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">y</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">y2</span><span class="p">.</span><span class="n">append</span><span class="p">(.</span><span class="mi">5</span> <span class="o">*</span> <span class="n">i</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+
+<span class="n">ax</span><span class="p">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000000</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">"les courbes y=x^2 et y=.5 * x^2"</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">'x'</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">'x^2'</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+</div></details>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d'informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d'informatique</li>
+</ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+<ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d'informatique de François Brucker.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
