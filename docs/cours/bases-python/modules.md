@@ -83,7 +83,6 @@ import math as m
 import random as r
 ```
 
-
 ## installer des modules
 
 Suivez le [tutorial des packages]({% link _tutoriels/python/installation-de-python.md %}#packages) dans le guide d'installation de python.

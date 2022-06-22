@@ -124,6 +124,14 @@ Les [fonctions et méthodes]({% link cours/bases-python/fonctions-methodes.md %}
 
 les [modules python]({% link cours/bases-python/modules.md %}) permettent de se faciliter la vie dans l'écriture des programmes grâces aux méthodes qu'ils définissent.
 
+Si vous n'avez pas installé de distribution (par exemple anaconda) pour python, il vous sera surement nécessaire d'installer à la main certains modules pythons très utiles en python scientifique :
+
+* [numpy](https://numpy.org/)
+* [matplotlib](https://matplotlib.org/)
+* [scipy](https://scipy.org/)
+* [pillow](https://pillow.readthedocs.io/en/stable/)
+* [sklearn](https://scikit-learn.org/stable/)
+
 ## blocs de code
 
 Si python ne pouvait qu'exécuter ligne à ligne un code on ne pourrait pas faire grand chose. Le principe des programmes est de pouvoir grouper les instructions en bloc.
@@ -151,7 +159,6 @@ Ces différents blocs sont pratiques car ils vont nous permettre :
 ## créer ses propres fonctions
 
 Si un bloc de code est exécuté plusieurs fois à l'identique, on aimerait aussi pouvoir nommer ce groupe pour **pouvoir le réutiliser juste en appelant son nom**, ce sont les [fonctions]({% link cours/bases-python/creation-fonctions.md %})
-
 
 ## notation `.`
 
