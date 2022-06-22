@@ -11,6 +11,10 @@ authors:
 
 Nous allons dans ce cours présenter un module très utilisé en python pour représenter ds graphiques : <https://matplotlib.org/>.
 
+[matplotlib](https://matplotlib.org/) peut être une bibliothèque difficile à utiliser, car les notations ne sont pas cohérentes entre-elles, les paramètres sont souvent abscons et il y a toujours plusieurs façon d'arriver au même résultat. Bref, cela peut être très pénible de s'en sortir. 
+
+Nous allons présenter une procédure permettant de presque toujours s'en sortir. Au final, lorsque vous aurez les bases de matplotlib nous ne saurions trop vous conseiller de lui préférer <https://seaborn.pydata.org/> qui est une surcouche de matplotlib qui est d'une part plus jolie et d'autre part plus rationnelle dans son utilisation.
+
 
 ## écrire du code avec matplotlib
 
@@ -40,12 +44,13 @@ Vous devriez arriver à quelque chose du genre :
 
 ## un premier graphique
 
-[matplotlib](https://matplotlib.org/) peut être une bibliothèque difficile à utiliser. Pour que tout se passe au mieux, on va toujours utiliser la même procédure :
+Pour dessiner un graphique, on procédera toujours de la même façon :
 
 1. on crée les données à représenter
 2. créer le graphique avec matplotlib : `fig, ax = plt.subplots(figsize=(20, 5))`
 3. ajouter des choses au dessin : plusieurs commandes ajoutant des choses au dessin, c'est à dire `ax`
 4. représenter la figure (commande `plt.show()`) ou la sauver dans un fichier
+
 
 Le code suivant permet de représenter la courbe $y=x^2$ :
 
@@ -103,7 +108,7 @@ Essayons de comprendre comment tout ça fonctionne :
 
 > Superposez les 2 courbes
 {: .a-faire}
-{% details %}
+{% details solution %}
 
 ```python
 x = []
@@ -130,3 +135,62 @@ plt.show()
 ```
 
 {% enddetails %}
+
+Remarquez que les points ne sont pas représentés, uniquement les segments qui forment une courbe. Si vous voulez représenter des points, regardez du côté de la méthode [scatter](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.scatter.html).
+
+## tracé d'un histogramme
+
+Un histogramme se crée avec la méthode d'axes [bar](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.bar.html#matplotlib.axes.Axes.bar).
+
+```python
+# 1. création des données
+x = ['premier', 'deuxième', 'troisième', 'quatrième', 'cinquième']
+y = [2, 5, 3, 8, 11]
+
+# 2. créer le dessin (ici ax)
+fig, ax = plt.subplots(figsize=(10, 7))
+
+
+# 2.2 les légendes
+ax.set_title("un histogramme")
+ax.set_xticks(range(len(x)))
+ax.set_xticklabels(x, rotation=45)
+
+# 3. ajouter des choses au dessin
+ax.bar(range(len(y)), y, color="green", 
+        edgecolor = 'red', linewidth = 1, 
+        ecolor = 'black')
+
+# 4. représenter le graphique
+plt.show()
+```
+
+On a ajouté les attributs `ax.set_xticks` et `ax.set_xticklabels` pour représenter les significations dus histogrammes.
+
+## tracé camembert
+
+C'est la méthode [pie](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.pie.html) qui permet de tracer des camemberts.
+
+```python
+# 1. création des données
+nom = ["un", "deux", "trois", "quatre"]
+valeurs = [5000, 26000, 21400, 12000]
+separation = (0.1, 0.1, 0.1, 0.1)
+
+# 2. créer le dessin (ici ax)
+fig, ax = plt.subplots(figsize=(10, 7))
+
+
+# 2.2 les légendes
+ax.set_title("un camembert")
+
+# 3. ajouter des choses au dessin
+ax.pie(valeurs, explode=separation, labels=nom, autopct='%1.1f%%', shadow=True)
+
+# 4. représenter le graphique
+plt.show()
+```
+
+## plusieurs axes
+
+Il est possible de créer plusieurs axes dans la même figure. Consultez cette documentation : <https://matplotlib.org/stable/gallery/subplots_axes_and_figures/subplots_demo.html>
