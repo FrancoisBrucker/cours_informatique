@@ -87,7 +87,7 @@
 <h3 id="connaissances-système-minimale">Connaissances système minimale</h3>
 
 <ul>
-  <li>connaitre les bases d’un système d’exploitation, <a href="/cours_informatique/tutoriels/systeme/fichiers-navigation.html">les fichiers et les dossiers</a>
+  <li>connaître les bases d’un système d’exploitation, <a href="/cours_informatique/tutoriels/systeme/fichiers-navigation.html">les fichiers et les dossiers</a>
 </li>
   <li>avoir accès à un <a href="/cours_informatique/tutoriels/systeme/2021-08-24-terminal.html">terminal</a> (aucune autre copmpétence en terminal n’est requise)</li>
 </ul>
@@ -110,6 +110,21 @@
   <li>exécution de <em>fichiers de code</em> en ligne de commande</li>
 </ul>
 
+<h4 id="python-sur-internet">Python sur internet</h4>
+
+<p>La solution la plus simple si vous voulez juste tester python ou si vous ne voulez pas utiliser des modules spécifiques de python qui nécessiteraient une installation c’est d’utiliser python directement sur internet. Deux solutions principales s’offrent à vous :</p>
+
+<ul>
+  <li>
+<a href="https://basthon.fr/">https://basthon.fr/</a> (utilisée dans les collèges et lycées français. L’installation de modules spécifiques est cependant impossible).</li>
+  <li>
+<a href="https://colab.research.google.com/?hl=fr">https://colab.research.google.com/?hl=fr</a> (utilisé de façon professionnelle, mais nécessite un compte google pour être utilisé)</li>
+</ul>
+
+<p>Les deux solutions ci-dessus vous permettent d’exécuter du code python sous la frme de notebook.</p>
+
+<h4 id="installer-une-distribution-python-sur-son-ordinateur">Installer une distribution python sur son ordinateur</h4>
+
 <p>Vous pouvez consulter le <a href="/cours_informatique/tutoriels/python/installation-de-python.html">tutoriel d’installation de python</a> pour voir plusieurs façons d’installer python, mais si vous ne savez pas trop quel python installer, nous vous conseillons d’installer une distribution générique comme celle d’<a href="https://www.anaconda.com/products/distribution">anaconda</a> :</p>
 
 <blockquote class="a-faire">
@@ -118,24 +133,13 @@
 
 <p>La distribution d’anaconda vous permettra d’utiliser python ou via un notebook ou en ligne de commande.</p>
 
-<h4 id="notebook">Notebook</h4>
+<h4 id="installer-uniquement-linterpréteur-python">Installer uniquement l’interpréteur python</h4>
 
-<p>Vous pouvez utiliser python via un notebook en installant la distribution anaconda comme vu précédemment, soit sur internet. Cette dernière solution permet d’exécuter du python sans installer quoi que ce soit sur votre ordinateur. Deux solutions principales s’offrent à vous :</p>
+<p>Si vous préférez installer uniquement l’interpréteur python — ce qui est recommandé si vous voulez faire du développement et controller précisément ce qui est installé — vous pouvez suivre <a href="/cours_informatique/tutoriels/python/installation-de-python.html#gestionnaire-package-id">ce tutoriel</a>. Mais ceci dépasse le cadre de ce cours introductif à la programmation.</p>
 
-<ul>
-  <li>
-<a href="https://basthon.fr/">https://basthon.fr/</a> (utilisée dans les collèges et lycées français. L’installation de modules spécifiques est cependant impossible)</li>
-  <li>
-<a href="https://colab.research.google.com/?hl=fr">https://colab.research.google.com/?hl=fr</a> (utilisé de façon professionnelle, mais nécessite un compte google pour être utilisé)</li>
-</ul>
+<h3 id="écrire">Écrire</h3>
 
-<h4 id="ligne-de-commande">Ligne de commande</h4>
-
-<p>Si vous préférez installer uniquement l’interpréteur python, vous pouvez suivre <a href="/cours_informatique/tutoriels/python/installation-de-python.html#gestionnaire-package-id">ce tutoriel</a>.</p>
-
-<h3 id="ecrire-du-python">Ecrire du python</h3>
-
-<p>Ecrire et exécuter du python via un notebook est pratique lorsque l’on ne veut pas écrire de programme long ou que l’on utilise le code comme support à un rapport (le notebook fait alors office de rapport). De façon générale cependant, le code python est contenu dans un fichier de code écrit dans un éditeur. Nus vous conseillons <a href="https://code.visualstudio.com/">vscode</a> qui est pratique et très utilisé.</p>
+<p>Écrire et exécuter du python via un notebook est pratique lorsque l’on ne veut pas écrire de programme long ou que l’on utilise le code comme support à un rapport (le notebook fait alors office de rapport). De façon générale cependant, le code python est contenu dans un fichier de code écrit dans un éditeur. Nus vous conseillons <a href="https://code.visualstudio.com/">vscode</a> qui est pratique et très utilisé.</p>
 
 <blockquote class="a-faire">
   <p>En suivant <a href="/cours_informatique/tutoriels/editeur/vsc/vsc-installation-et-prise-en-main.html">ce tutoriel</a> installez vscode sur votre ordinateur.</p>
@@ -146,7 +150,7 @@
 <p>Une fois l’éditeur vscode et l’interpréteur python installés, on peut les configurer pour qu’ils puissent parler ensemble. Cette étape n’est pas indispensable mais elle permet de gagner du temps pour les développements futur et rend l’étape de développement bien plus agréable.</p>
 
 <blockquote class="a-faire">
-  <p>Suivez <a href="/cours_informatique/tutoriels/editeur/vsc/2021-09-14-vsc-python.html">ce tutoriel</a> pour lier vscode à pyhton.</p>
+  <p>Suivez <a href="/cours_informatique/tutoriels/editeur/vsc/2021-09-14-vsc-python.html">ce tutoriel</a> pour lier vscode à python.</p>
 </blockquote>
 
 <h2 id="interpréteur-python">Interpréteur python</h2>
@@ -171,25 +175,35 @@
   <li>en utilisant un notebook</li>
 </ul>
 
+<p>La façon la plus explicite d’utiliser l’interpréteur python est de le faire en console où l’on tape chaque ligne avant de l’exécuter.</p>
+
 <blockquote class="a-faire">
-  <p>Utilisez <a href="https://basthon.fr/">https://basthon.fr/</a> pour exécuter la ligne de code <code class="language-plaintext highlighter-rouge">print("Bonjour monde !")</code> en console et dans un notebook</p>
+  <p>Utilisez <a href="https://basthon.fr/">https://basthon.fr/</a> en console pour exécuter l’instruction <code class="language-plaintext highlighter-rouge">print("Bonjour monde !")</code>.</p>
+
+  <p>Cette instruction affiche la chaîne de caractère <em>Bonjour monde !</em> à l’écran.</p>
 </blockquote>
 
-<h2 id="objets-de-python">objets de python</h2>
+<p><img src="./assets/console-1.png" alt="hello world"></p>
 
-<p>La partie <a href="/cours_informatique/cours/bases-python/objets-types.html">objets types et types d’objets</a> vous dira tout sur les objets courant que vous manipulerez en python.</p>
+<p>Nous allons utiliser la console et l’accès direct à l’interpréteur pour comprendre les principes de bases de python, à savoir les objets et les variables.</p>
 
-<h2 id="variables">variables</h2>
+<h2 id="objets-et-variables-en-python">objets et variables en python</h2>
 
-<p><a href="/cours_informatique/cours/bases-python/variables.html">variable et espace de noms</a> vous montrera le principe de l’affectation des variables en python.</p>
-
-<h2 id="conteneur">conteneur</h2>
-
-<p>Les objets peuvent être stockés dans des structures nommées conteneur, comme la <a href="/cours_informatique/cours/bases-python/listes.html">structure de liste</a> par exemple : un conteneur est ainsi un objet qui en contient d’autres.</p>
+<ol>
+  <li>La partie <a href="/cours_informatique/cours/bases-python/objets-types.html">objets types et types d’objets</a> vous dira tout sur les objets courant que vous manipulerez en python.</li>
+  <li>La partie <a href="/cours_informatique/cours/bases-python/variables.html">variables</a> vous montrera le principe de l’affectation des variables en python.</li>
+  <li>conteneurs d’objets. En plus des 5 types de bases, python met à notre disposition plusieurs objets qui <em>contiennent</em> d’autres objets. Parmi ces conteneurs, la <a href="/cours_informatique/cours/bases-python/listes.html">structure de liste</a> est la plus utilisée.</li>
+</ol>
 
 <h2 id="opérations-sur-les-objets">opérations sur les objets</h2>
 
 <p>On peut facilement faire des <a href="/cours_informatique/cours/bases-python/operations.html">opérations sur les objets</a>.</p>
+
+<h2 id="fonctions">fonctions</h2>
+
+<p>fonctions utiles comme print, input (avec des exercices), etc</p>
+
+<h2 id="méthodes-dobjets">méthodes d’objets</h2>
 
 <h2 id="blocs-de-code">blocs de code</h2>
 

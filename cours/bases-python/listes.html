@@ -9,7 +9,7 @@
 <title>Bases de python : listes | cours d’informatique</title>
 <meta name="generator" content="Jekyll v4.2.0">
 <meta property="og:title" content="Bases de python : listes">
-<meta name="author" content="Augustin Agbo-Kpati">
+<meta name="author" content="François Brucker">
 <meta property="og:locale" content="en_US">
 <meta name="description" content="Support de cours/td d’informatique de François Brucker.">
 <meta property="og:description" content="Support de cours/td d’informatique de François Brucker.">
@@ -20,7 +20,7 @@
 <meta name="twitter:card" content="summary">
 <meta property="twitter:title" content="Bases de python : listes">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Augustin Agbo-Kpati"},"description":"Support de cours/td d’informatique de François Brucker.","headline":"Bases de python : listes","url":"/cours_informatique/cours/bases-python/listes.html"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"François Brucker"},"description":"Support de cours/td d’informatique de François Brucker.","headline":"Bases de python : listes","url":"/cours_informatique/cours/bases-python/listes.html"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
@@ -58,79 +58,63 @@
     <h1 class="post-title">Bases de python : listes</h1>Auteurs :
       <ul>
       
-        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Augustin Agbo-Kpati</span></span></li>
-      
         <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></li>
-      
-        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Pascal Préa</span></span></li>
       
       </ul>
   </header>
 
   <div class="post-content">
-    <blockquote>
-  <p><a href="https://docs.python.org/3/tutorial/datastructures.html#more-on-lists">https://docs.python.org/3/tutorial/datastructures.html#more-on-lists</a></p>
+    <p>Les listes sont la structure principale lorsque l’on veut stocker plusieurs objets. La liste est un conteneur dont on peut acceder les éléments un à un.</p>
+
+<p>L’exemple suivant crée une liste de nom <code class="language-plaintext highlighter-rouge">x</code> qui contient l’entier 1 en 1ère position, l’entier 4 en 2ème position et la chaque de caractères <code class="language-plaintext highlighter-rouge">"12"</code> en troisième position :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s">"douze"</span><span class="p">]</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>Une chaîne de caractère est considérée comme une liste de caractères.</p>
 </blockquote>
 
-<p>Les listes sont la structure principale lorsque l’on veut stocker plusieurs objets. La liste est un conteneur dont on peut acceder les éléments un à un.</p>
+<h2 id="accès-à-un-élément-dune-listes">accès à un élément d’une listes</h2>
 
-<p>L’exemple suivant crée une liste de nom <code class="language-plaintext highlighter-rouge">x</code> qui contient l’entier 1 en 1ère position, l’entier 4 en 2ème position et la chaque de caractères <code class="language-plaintext highlighter-rouge">"12"</code> en troisième position. On y accède par leur index, qui commence à zéro :</p>
+<p>On accède à un élément de la liste en faisant suivre le nom de la liste par des <code class="language-plaintext highlighter-rouge">[]</code> et en mettant l’index voulu dans les crochets :</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s">"12"</span><span class="p">]</span>
-<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># va afficher 1
-</span><span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="c1"># va afficher "12"
-</span></code></pre></div></div>
-
-<blockquote class="note">
-  <p>Les <code class="language-plaintext highlighter-rouge">[]</code> permettent d’accéder à un indice donné de la liste.</p>
-</blockquote>
-
-<p>Les listes, comme les chaines de caractères ont beaucoup de méthodes qui permettent de faire beaucoup d’opérations. Regardez du côté du tutoriel python et de <a href="https://docs.python.org/fr/3/tutorial/datastructures.html#more-on-lists">son complément sur les listes</a> pour avoir une idées des possibilités.</p>
-
-<h2 id="création-directe">Création directe</h2>
-
-<p>On peut créer une liste directement:</p>
-
-<ul>
-  <li>Soit en créant une liste vide puis en ajoutant des éléments un à un. <code class="language-plaintext highlighter-rouge">l = []</code> <code class="language-plaintext highlighter-rouge">l.append(1)</code>
-</li>
-  <li>Soit en créant la liste déjà pré-remplie. <code class="language-plaintext highlighter-rouge">l = [1, 2, True, "Hello World"]</code>. Cette liste contient 4 éléments et est <strong>indexée à partir de 0</strong>.</li>
-</ul>
-
-<p>La fonction <code class="language-plaintext highlighter-rouge">len()</code> permet d’obtenir la longueur de la liste. Sur le dernier exemple, <code class="language-plaintext highlighter-rouge">len(l)</code> rend <code class="language-plaintext highlighter-rouge">4</code>.
-On peut alors accéder aux éléments de la liste à l’aide d’un indice variant entre <code class="language-plaintext highlighter-rouge">0</code> et <code class="language-plaintext highlighter-rouge">len(l) - 1</code>. Ainsi  avec <code class="language-plaintext highlighter-rouge">l[3]</code> on obtient la chaîne de caractère “Hello World”.</p>
-
-<h2 id="création-à-laide-de-range">Création à l’aide de range()</h2>
-
-<p>La fonction <a href="https://docs.python.org/3/library/stdtypes.html#range">range</a> permet de créer des listes de nombres.</p>
-
-<p>Attention cependant, range rend un <em>itérateur</em> qui ne peut être utilisé tout seul. Il faut écrire <code class="language-plaintext highlighter-rouge">list(range(10))</code> et non pas juste <code class="language-plaintext highlighter-rouge">range(10)</code> si on veut la liste de tous les entiers de 0 à 9.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="mi">4</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="s">'douze'</span>
+</code></pre></div></div>
 
 <blockquote class="a-faire">
-  <p>Créez une liste de tous les multiples de 3 strictement plus grand que 1 jusqu’à 30</p>
+  <p>Quel est la treizième lettre du mot “anticonstitutionnellement” ?</p>
 </blockquote>
-<details class="a-faire"><summary>solution</summary><div>
-<p>list(range(3, 31, 3))</p>
+<details><summary>solution</summary><div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; "anticonstitutionnellement"[12]
+'t'
+</code></pre></div></div>
+
 </div></details>
 
-<h2 id="ajout-suppression-déléments-dune-liste">Ajout, suppression d’éléments d’une liste</h2>
+<p>On peut aussi commencer par la fin, d’index -1 :</p>
 
-<p>Trois méthode principal de listes :</p>
-
-<ul>
-  <li>
-<code class="language-plaintext highlighter-rouge">append</code> ajoute un élément à la fin d’une liste. Par exemple <code class="language-plaintext highlighter-rouge">l.append(3)</code> ajoute l’entier 3 à la fin d’une liste (si <code class="language-plaintext highlighter-rouge">l</code>valait <code class="language-plaintext highlighter-rouge">[1, 4]</code> avant, elle vaudra <code class="language-plaintext highlighter-rouge">[1, 4, 3]</code> après)</li>
-  <li>
-<code class="language-plaintext highlighter-rouge">insert</code> ajoute un élément à un index donné d la liste d’une liste. Par exemple <code class="language-plaintext highlighter-rouge">l.inster(1, "X")</code> insère <code class="language-plaintext highlighter-rouge">"X"</code> à l’indice 1 (si <code class="language-plaintext highlighter-rouge">l</code>valait <code class="language-plaintext highlighter-rouge">[1, 4]</code> avant, elle vaudra <code class="language-plaintext highlighter-rouge">[1, "X", 4]</code> après)</li>
-  <li>
-<code class="language-plaintext highlighter-rouge">del</code> supprime l’élément à l’indice de la liste. Par exemple <code class="language-plaintext highlighter-rouge">del l[0]</code> supprime l’élément d’indice 0 dune liste (si <code class="language-plaintext highlighter-rouge">l</code> valait <code class="language-plaintext highlighter-rouge">[1, 4]</code> avant, elle vaudra <code class="language-plaintext highlighter-rouge">[4]</code> après)</li>
-</ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="s">'douze'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+<span class="mi">4</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span>
+<span class="mi">1</span>
+</code></pre></div></div>
 
 <blockquote class="a-faire">
-  <p>Attention à <code class="language-plaintext highlighter-rouge">remove</code>, <code class="language-plaintext highlighter-rouge">extend</code> ou <code class="language-plaintext highlighter-rouge">pop</code> qui ne font pas ce qu’on croit qu’elle font. Que font-elles ?</p>
+  <p>Quel est la quatrième lettre avant la fin du mot “anticonstitutionnellement” ?</p>
 </blockquote>
-<details class="a-faire"><summary>solution</summary><div>
-<p>Voir la <a href="https://docs.python.org/3/tutorial/datastructures.html#more-on-lists">documentation du tutoriel</a>.</p>
+<details><summary>solution</summary><div>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; "anticonstitutionnellement"[-4]
+'m'
+</code></pre></div></div>
+
 </div></details>
 
 <h2 id="copie-dune-sous-liste">Copie d’une sous-liste</h2>
@@ -140,11 +124,9 @@ Pour <strong>copier la liste l à partir de l’indice i jusqu’à l’indice j
 Il n’est pas nécessaire de renseigner tous les champs.</p>
 
 <blockquote class="a-faire">
-  <p>que donne <code class="language-plaintext highlighter-rouge">l[::3]</code> ou <code class="language-plaintext highlighter-rouge">l[1::5]</code> pour la liste de tous les multiples de 3 strictement plus grand que 1 jusqu’à 30</p>
+  <p>que donne <code class="language-plaintext highlighter-rouge">l[::3]</code> ou <code class="language-plaintext highlighter-rouge">l[1::5]</code> pour la liste <code class="language-plaintext highlighter-rouge">[3, 6, 9, 12, 15, 18, 21, 24, 27, 30]</code> ?</p>
 </blockquote>
-<details class="a-faire"><summary>solution</summary><div>
-<p>Dans un terminal :</p>
-
+<details><summary>solution</summary><div>
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; l = list(range(3, 31, 3))
 &gt;&gt;&gt; l[::3]
 [3, 12, 21, 30]

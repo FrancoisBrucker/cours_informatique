@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Bases de python : Objets types et types d’objets | cours d’informatique</title>
+<meta name="generator" content="Jekyll v4.2.0">
+<meta property="og:title" content="Bases de python : Objets types et types d’objets">
+<meta name="author" content="Augustin Agbo-Kpati">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Support de cours/td d’informatique de François Brucker.">
+<meta property="og:description" content="Support de cours/td d’informatique de François Brucker.">
+<link rel="canonical" href="/cours_informatique/cours/bases-python/objets-types-reste.html">
+<meta property="og:url" content="/cours_informatique/cours/bases-python/objets-types-reste.html">
+<meta property="og:site_name" content="cours d’informatique">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Bases de python : Objets types et types d’objets">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Augustin Agbo-Kpati"},"description":"Support de cours/td d’informatique de François Brucker.","headline":"Bases de python : Objets types et types d’objets","url":"/cours_informatique/cours/bases-python/objets-types-reste.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/cours_informatique/assets/main.css">
+
+  <link rel="stylesheet" href="/cours_informatique/assets/custom.css">
+
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique">
+</head>
+
+<body>
+<header class="site-header" role="banner">
+
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/cours_informatique/">cours d'informatique</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+            <a class="page-link" href="/cours_informatique/about"> about </a>
+        </div>
+      </nav>
+</div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Bases de python : Objets types et types d'objets</h1>Auteurs :
+      <ul>
+      
+        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Augustin Agbo-Kpati</span></span></li>
+      
+        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></li>
+      
+        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Pascal Préa</span></span></li>
+      
+      </ul>
+  </header>
+
+  <div class="post-content">
+    <p>Dans les exemples qui suivent, nous allons ici utiliser des fonctions ou des classes sans véritablement les définir.</p>
+
+<p>Une fonction ou une classe s’utilise en mettant son nom suivi de parenthèses contenant zéro, un ou plusieurs paramètres (des objets) séparés par des virgules. 
+Par exemple la commande :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">"coucou"</span><span class="p">,</span> <span class="s">"les gens"</span><span class="p">,</span> <span class="s">"!"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Qui consiste à exécuter la fonction <code class="language-plaintext highlighter-rouge">print</code> avec les trois paramètres <code class="language-plaintext highlighter-rouge">"coucou"</code>, <code class="language-plaintext highlighter-rouge">"les gens"</code> et <code class="language-plaintext highlighter-rouge">"!"</code> affichera à l’écran les 3 paramètres séparé par un espace.</p>
+
+<h4 id="pour-aller-plus-loin">pour aller plus loin</h4>
+
+<blockquote class="a-faire">
+  <p>En utilisant <a href="https://docs.python.org/fr/3.9/library/functions.html#int">la classe int()</a> qui crée des entiers, trouvez la représentation décimale du nombre binaire : 1001100011</p>
+</blockquote>
+<details><summary>solution</summary><div>
+<p>On utilise le paramètre base de la classe <code class="language-plaintext highlighter-rouge">int</code> :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">int</span><span class="p">(</span><span class="s">"1001100011"</span><span class="p">,</span> <span class="n">base</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="mi">611</span>
+</code></pre></div></div>
+</div></details>
+
+<h2 id="action-sur-les-objets">Action sur les objets</h2>
+
+<p>Agir sur des objets en python prend deux formes (en apparence) différentes :</p>
+
+<ul>
+  <li>les opérateurs</li>
+  <li>les méthodes</li>
+</ul>
+
+<h3 id="opérateurs">opérateurs</h3>
+
+<h4 id="sur-les-entiers-et-réels">sur les entiers et réels</h4>
+
+<p>Outre les classiques opérations <code class="language-plaintext highlighter-rouge">+</code> (addition), <code class="language-plaintext highlighter-rouge">-</code> (soustraction), <code class="language-plaintext highlighter-rouge">/</code> (division) et <code class="language-plaintext highlighter-rouge">*</code> (multiplication), python possède aussi <code class="language-plaintext highlighter-rouge">//</code> division entière,  <code class="language-plaintext highlighter-rouge">%</code> reste de la division entière et <code class="language-plaintext highlighter-rouge">**</code> exposant.</p>
+
+<blockquote class="a-faire">
+  <p>que vaut le quotient et le reste de la division entière de 4538 par 23 ?</p>
+</blockquote>
+<details class="a-faire"><summary>solution</summary><div>
+<p>Dans un terminal :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; 4538 // 23
+197
+&gt;&gt;&gt; 4538 % 23
+7
+&gt;&gt;&gt; (4538 // 23) * 23 + 7
+4538
+</code></pre></div></div>
+
+</div></details>
+
+<h4 id="sur-les-chaînes-de-caractères">sur les chaînes de caractères</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="s">"x"</span> <span class="o">+</span> <span class="s">"y"</span>
+<span class="s">'xy'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">3</span> <span class="o">*</span> <span class="s">"x"</span>
+<span class="s">'xxx'</span>
+</code></pre></div></div>
+
+<blockquote class="a-faire">
+  <p>Recopiez 10 fois : <code class="language-plaintext highlighter-rouge">"j'aime bien faire du python"</code></p>
+</blockquote>
+<details class="a-faire"><summary>solution</summary><div>
+<p>Si l’on sait que le caractère <code class="language-plaintext highlighter-rouge">\n</code> correspond à aller à la ligne, on peut écrire :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="mi">10</span> <span class="o">*</span> <span class="s">"j'aime bien faire du python</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+<span class="n">j</span><span class="s">'aime bien faire du python
+j'</span><span class="n">aime</span> <span class="n">bien</span> <span class="n">faire</span> <span class="n">du</span> <span class="n">python</span>
+<span class="n">j</span><span class="s">'aime bien faire du python
+j'</span><span class="n">aime</span> <span class="n">bien</span> <span class="n">faire</span> <span class="n">du</span> <span class="n">python</span>
+<span class="n">j</span><span class="s">'aime bien faire du python
+j'</span><span class="n">aime</span> <span class="n">bien</span> <span class="n">faire</span> <span class="n">du</span> <span class="n">python</span>
+<span class="n">j</span><span class="s">'aime bien faire du python
+j'</span><span class="n">aime</span> <span class="n">bien</span> <span class="n">faire</span> <span class="n">du</span> <span class="n">python</span>
+<span class="n">j</span><span class="s">'aime bien faire du python
+j'</span><span class="n">aime</span> <span class="n">bien</span> <span class="n">faire</span> <span class="n">du</span> <span class="n">python</span>
+
+</code></pre></div></div>
+
+</div></details>
+
+<h4 id="sur-les-booléens">sur les booléens</h4>
+
+<h4 id="pour-aller-plus-loin-1">pour aller plus loin</h4>
+
+<blockquote class="a-faire">
+  <p>En utilisant le fait que la fonction <code class="language-plaintext highlighter-rouge">len(chaine de caractère)</code> donne le nombre de caractères de la chaîne (par exemple <code class="language-plaintext highlighter-rouge">len("abc")</code> rend <code class="language-plaintext highlighter-rouge">3</code>), et que l’exposant eb python s’écrit <code class="language-plaintext highlighter-rouge">**</code> (par exemple <code class="language-plaintext highlighter-rouge">2**8</code> rend <code class="language-plaintext highlighter-rouge">256</code>) donnez le nombre de chiffre du 27ème <a href="https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier">nombre de Mersenne premier</a>.</p>
+</blockquote>
+<details><summary>solution</summary><div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="mi">44497</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+<span class="mi">13395</span>
+</code></pre></div></div>
+
+</div></details>
+
+<h3 id="méthodes-dune-classes">méthodes d’une classes</h3>
+
+<p>Les méthodes sont moyens d’agir sur un objet. On les utilise de cette façon :</p>
+
+<pre><code class="language-pyhton">objet.methode(paramètre 1, paramètre 2, ..., paramètre n)
+</code></pre>
+
+<p>On applique <code class="language-plaintext highlighter-rouge">méthode</code> à <code class="language-plaintext highlighter-rouge">objet</code> en utilisant les <code class="language-plaintext highlighter-rouge">paramètres</code> de la méthode.</p>
+
+<blockquote>
+  <p>Une méthode ne s’utilise <strong>jamais</strong> seule. Elle s’applique à ce qu’il y a à gauche d’elle.</p>
+</blockquote>
+
+<p>Chaque classe vient avec des méthodes. Si les nombre et booléens ont peux de méthode, les <a href="https://docs.python.org/3/library/stdtypes.html#string-methods">chaines de caractères en ont tout un tas</a>.</p>
+
+<blockquote class="a-faire">
+  <p>Combien y a-t-il de 0 dans le 27ème <a href="https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier">nombre de Mersenne premier</a>.</p>
+</blockquote>
+<details class="a-faire"><summary>solution</summary><div>
+<p>Dans un interpréteur :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">str</span><span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="mi">44497</span> <span class="o">-</span> <span class="mi">1</span><span class="p">).</span><span class="n">count</span><span class="p">(</span><span class="s">""</span><span class="p">)</span>
+<span class="mi">1332</span>
+</code></pre></div></div>
+
+</div></details>
+
+<p>On peut chainer les méthodes, la sortie d’une méthode devenant l’entrée de la prochaine. Par exemple, avec 2 méthodes :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">objet</span><span class="p">.</span><span class="n">methode_1</span><span class="p">().</span><span class="n">methode_2</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>Signifie que méthode2() est appliquée à l’objet résultat de <code class="language-plaintext highlighter-rouge">objet.methode1()</code></p>
+
+<p>Et avec n méthodes :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">objet</span><span class="p">.</span><span class="n">methode1</span><span class="p">().</span><span class="n">methode2</span><span class="p">().</span> <span class="p">...</span> <span class="p">.</span><span class="n">methode_n</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>Signifie que <code class="language-plaintext highlighter-rouge">methode_n()</code> est appliquée au résultat de <code class="language-plaintext highlighter-rouge">objet.methode_1(). ... .methode_n-1()</code></p>
+
+<blockquote class="a-faire">
+  <p>Que fait :</p>
+
+  <div class="language-python highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nb">str</span><span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="mi">44497</span> <span class="o">-</span> <span class="mi">1</span><span class="p">).</span><span class="n">replace</span><span class="p">(</span><span class="s">"2"</span><span class="p">,</span><span class="s">"x"</span><span class="p">).</span><span class="n">replace</span><span class="p">(</span><span class="s">"7"</span><span class="p">,</span><span class="s">"2"</span><span class="p">).</span><span class="n">replace</span><span class="p">(</span><span class="s">"x"</span><span class="p">,</span><span class="s">"7"</span><span class="p">)</span>
+</code></pre></div>  </div>
+
+</blockquote>
+<details class="a-faire"><summary>solution</summary><div>
+<p>Il est aisé de comprendre ce que ça fait en procédant de droite à gauche :</p>
+
+<ol>
+  <li>
+<code class="language-plaintext highlighter-rouge">replace("x","7")</code> est appliqué à ce qui est à sa gauche donc <code class="language-plaintext highlighter-rouge">str(2 ** 44497 - 1).replace("2","x").replace("7","2")</code>
+</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">replace("7","2")</code> est appliqué à ce qui est à sa gauche donc <code class="language-plaintext highlighter-rouge">str(2 ** 44497 - 1).replace("2","x")</code>
+</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">replace("2","x")</code> est appliqué à ce qui est à sa gauche donc <code class="language-plaintext highlighter-rouge">str(2 ** 44497 - 1)</code>
+</li>
+</ol>
+
+<p>En remontant les opérations précédentes :</p>
+
+<ol>
+  <li>le résultat de <code class="language-plaintext highlighter-rouge">str(2 ** 44497 - 1)</code>  sera une chaine de caractère représentant le 27ème nombre premier de Mersenne</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">str(2 ** 44497 - 1).replace("2","x")</code> on a remplacé les 2 par des “x” dans la chaine précédente</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">str(2 ** 44497 - 1).replace("2","x").replace("7","2")</code> on a remplacé les 7 par des 2 de la chaine précédente</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">str(2 ** 44497 - 1).replace("2","x").replace("7","2").replace("x","7")</code> on a remplacé les “x” par des 2 dans la chaine précédente</li>
+</ol>
+
+<p>On a donc au final échangé les 2 et les 7 du 27ème nombre premier de Mersenne</p>
+
+</div></details>
+
+<h3 id="attributs-dune-classe">attributs d’une classe</h3>
+
+<p>C’est plus rare, mais certaines classes possèdent  des également des <em>attributs</em> en plus des méthodes. Ce sont des valeurs associées à l’objet.</p>
+
+<p>Par exemple les objets de la classe complex qui possède les attibuts <code class="language-plaintext highlighter-rouge">real</code> et <code class="language-plaintext highlighter-rouge">imag</code> pour rendre la partie réelle et imaginaire d’un complexe.</p>
+
+<pre><code class="language-pyhton">&gt;&gt;&gt; (1+2j).real
+1.0
+&gt;&gt;&gt; (1+2j).imag
+2.0
+</code></pre>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/cours_informatique/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">cours d'informatique</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">cours d'informatique</li>
+</ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+<ul class="social-media-list"><li><a href="https://github.com/FrancoisBrucker"><svg class="svg-icon"><use xlink:href="/cours_informatique/assets/minima-social-icons.svg#github"></use></svg> <span class="username">FrancoisBrucker</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Support de cours/td d'informatique de François Brucker.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
