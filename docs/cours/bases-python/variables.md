@@ -24,9 +24,9 @@ Il est important de comprendre que l’opérateur d’affectation `=` n’est pa
 
 ## espace de nom {#espace-nom}
 
-Un **espace de noms** est un endroit où python stocke les noms. Une variable est un nom d'un espace de noms. Les espaces de noms sont hiérarchisées et tout en haut se trouve l'espace de nom **global** qui est créé lorsque l'interpréteur est lancé.
+Un **espace de noms** est un endroit où python stocke les noms. Une variable est un nom d'un espace de noms. Les espaces de noms sont hiérarchisées et tout en haut se trouve l'espace de nom **global** qui est créé lorsque l'interpréteur est lancé. 
 
-l'interpéteur python va ensuite de temps en temps créer d'autres' espaces de noms, chacun associé à un [bloc]({% link cours/bases-python/index.md %}#bloc) de code.
+> Si vous voulez en savoir plus sur les espaces de noms, vous pouvez consulter le cours sur [la mémoire et espace de noms]({% link cours/algorithme-code-theorie/code/memoire-et-espace-noms.md %})
 
 ## affectation des objets à l'espace de noms
 
@@ -40,7 +40,7 @@ y = 1
 x = y
 ```
 
-![association nom variable]({{ "/assets/cours/developpement/python-nom-et-objets.png" | relative_url }}){:style="margin: auto;display: block;"}
+![association nom variable](./assets/python-nom-et-objets.png){:style="margin: auto;display: block;"}
 
 La figure montre le résultat après chaque instruction. On voit qu’un même objet peut parfaitement
 avoir plusieurs noms. Cependant, à un nom correspond un unique objet. Les objets qui n’ont plus de

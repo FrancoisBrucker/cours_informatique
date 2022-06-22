@@ -15,24 +15,7 @@ Les opérations sur les objets vont des opérations arithmétiques (addition) au
 
 Les opération peuvent s'effectuer sur les trois types numériques que sont les entier (classe `int`), les réels (classe `float`) et les complexes (classe `complex`)
 
-Outre les classiques opérations `+` (addition), `-` (soustraction), `/` (difision) et `*` (multiplication), python possède aussi `//` division entière,  `%` reste de la division entière et `**` exposant.
 
-> que vaut le quotient et le reste de la division entière de 4538 par 23 ?
-{: .a-faire}
-{% details solution %}
-Dans un terminal :
-
-```text
->>> 4538 // 23
-197
->>> 4538 % 23
-7
->>> (4538 // 23) * 23 + 7
-4538
-```
-
-{% enddetails %}
-{: .a-faire}
 
 Python permet aussi de faire l'opération et de procéder immédiatement à sa réaffectation avec les opérateurs :
 
@@ -43,35 +26,6 @@ Python permet aussi de faire l'opération et de procéder immédiatement à sa r
 
 ## chaines de caractères (concatenation et *)
 
-```python
->>> "x" + "y"
-'xy'
->>> 3 * "x"
-'xxx'
-```
-
-> Recopiez 10 fois : `"j'aime bien faire du python"`
-{: .a-faire}
-{% details solution %}
-Si l'on sait que le caractère `\n` correspond à aller à la ligne, on peut écrire :
-
-```python
->>> print(10 * "j'aime bien faire du python\n")
-j'aime bien faire du python
-j'aime bien faire du python
-j'aime bien faire du python
-j'aime bien faire du python
-j'aime bien faire du python
-j'aime bien faire du python
-j'aime bien faire du python
-j'aime bien faire du python
-j'aime bien faire du python
-j'aime bien faire du python
-
-```
-
-{% enddetails %}
-{: .a-faire}
 
 ## listes
 

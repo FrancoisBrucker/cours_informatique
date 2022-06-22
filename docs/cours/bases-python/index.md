@@ -25,7 +25,7 @@ Vous devez dans l'idéal être administrateur de votre ordinateur et avoir fait 
 
 ### Connaissances système minimale
 
-* connaitre les bases d'un système d'exploitation, [les fichiers et les dossiers]({% link _tutoriels/systeme/fichiers-navigation.md %})
+* connaître les bases d'un système d'exploitation, [les fichiers et les dossiers]({% link _tutoriels/systeme/fichiers-navigation.md %})
 * avoir accès à un [terminal]({% link _tutoriels/systeme/2021-08-24-terminal.md %}) (aucune autre copmpétence en terminal n'est requise)
 
 ## Installations
@@ -42,6 +42,17 @@ Il y a plusieurs moyens d'exécuter du code python, selon les usages voulus. Nou
 * exécution de *cellules de code* via un notebook
 * exécution de *fichiers de code* en ligne de commande
 
+#### Python sur internet
+
+La solution la plus simple si vous voulez juste tester python ou si vous ne voulez pas utiliser des modules spécifiques de python qui nécessiteraient une installation c'est d'utiliser python directement sur internet. Deux solutions principales s'offrent à vous :
+
+* <https://basthon.fr/> (utilisée dans les collèges et lycées français. L'installation de modules spécifiques est cependant impossible).
+* <https://colab.research.google.com/?hl=fr> (utilisé de façon professionnelle, mais nécessite un compte google pour être utilisé)
+
+Les deux solutions ci-dessus vous permettent d'exécuter du code python sous la frme de notebook.
+
+#### Installer une distribution python sur son ordinateur
+
 Vous pouvez consulter le [tutoriel d'installation de python]({% link _tutoriels/python/installation-de-python.md %}) pour voir plusieurs façons d'installer python, mais si vous ne savez pas trop quel python installer, nous vous conseillons d'installer une distribution générique comme celle d'[anaconda](https://www.anaconda.com/products/distribution) :
 
 > Suivez [ce tutoriel]({% link _tutoriels/python/installation-anaconda.md %}) pour installer la distribution Anaconda.
@@ -49,20 +60,13 @@ Vous pouvez consulter le [tutoriel d'installation de python]({% link _tutoriels/
 
 La distribution d'anaconda vous permettra d'utiliser python ou via un notebook ou en ligne de commande.
 
-#### Notebook
+#### Installer uniquement l'interpréteur python
 
-Vous pouvez utiliser python via un notebook en installant la distribution anaconda comme vu précédemment, soit sur internet. Cette dernière solution permet d'exécuter du python sans installer quoi que ce soit sur votre ordinateur. Deux solutions principales s'offrent à vous :
+Si vous préférez installer uniquement l'interpréteur python — ce qui est recommandé si vous voulez faire du développement et controller précisément ce qui est installé — vous pouvez suivre [ce tutoriel]({% link _tutoriels/python/installation-de-python.md %}#gestionnaire-package-id). Mais ceci dépasse le cadre de ce cours introductif à la programmation.
 
-* <https://basthon.fr/> (utilisée dans les collèges et lycées français. L'installation de modules spécifiques est cependant impossible)
-* <https://colab.research.google.com/?hl=fr> (utilisé de façon professionnelle, mais nécessite un compte google pour être utilisé)
+### Écrire
 
-#### Ligne de commande
-
-Si vous préférez installer uniquement l'interpréteur python, vous pouvez suivre [ce tutoriel]({% link _tutoriels/python/installation-de-python.md %}#gestionnaire-package-id).
-
-### Ecrire du python
-
-Ecrire et exécuter du python via un notebook est pratique lorsque l'on ne veut pas écrire de programme long ou que l'on utilise le code comme support à un rapport (le notebook fait alors office de rapport). De façon générale cependant, le code python est contenu dans un fichier de code écrit dans un éditeur. Nus vous conseillons [vscode](https://code.visualstudio.com/) qui est pratique et très utilisé.
+Écrire et exécuter du python via un notebook est pratique lorsque l'on ne veut pas écrire de programme long ou que l'on utilise le code comme support à un rapport (le notebook fait alors office de rapport). De façon générale cependant, le code python est contenu dans un fichier de code écrit dans un éditeur. Nus vous conseillons [vscode](https://code.visualstudio.com/) qui est pratique et très utilisé.
 
 > En suivant [ce tutoriel]({% link _tutoriels/editeur/vsc/vsc-installation-et-prise-en-main.md %}) installez vscode sur votre ordinateur.
 {: .a-faire}
@@ -71,7 +75,7 @@ Ecrire et exécuter du python via un notebook est pratique lorsque l'on ne veut 
 
 Une fois l'éditeur vscode et l'interpréteur python installés, on peut les configurer pour qu'ils puissent parler ensemble. Cette étape n'est pas indispensable mais elle permet de gagner du temps pour les développements futur et rend l'étape de développement bien plus agréable.
 
-> Suivez [ce tutoriel]({% link _tutoriels/editeur/vsc/2021-09-14-vsc-python.md %}) pour lier vscode à pyhton.
+> Suivez [ce tutoriel]({% link _tutoriels/editeur/vsc/2021-09-14-vsc-python.md %}) pour lier vscode à python.
 {: .a-faire}
 
 ## Interpréteur python
@@ -91,24 +95,33 @@ L'interpréteur python est toujours présent lorsque l'on exécute du python, qu
 * via la console et le programme python
 * en utilisant un notebook
 
-> Utilisez <https://basthon.fr/> pour exécuter la ligne de code `print("Bonjour monde !")` en console et dans un notebook
+La façon la plus explicite d'utiliser l'interpréteur python est de le faire en console où l'on tape chaque ligne avant de l'exécuter.
+
+> Utilisez <https://basthon.fr/> en console pour exécuter l'instruction `print("Bonjour monde !")`.
+>
+> Cette instruction affiche la chaîne de caractère *Bonjour monde !* à l'écran.
 {: .a-faire}
 
-## objets de python
+![hello world](./assets/console-1.png){:style="margin: auto;display: block}
 
-La partie [objets types et types d'objets]({% link cours/bases-python/objets-types.md %}) vous dira tout sur les objets courant que vous manipulerez en python.
+Nous allons utiliser la console et l'accès direct à l'interpréteur pour comprendre les principes de bases de python, à savoir les objets et les variables.
 
-## variables
+## objets et variables en python
 
-[variable et espace de noms]({% link cours/bases-python/variables.md %}) vous montrera le principe de l'affectation des variables en python.
-
-## conteneur
-
-Les objets peuvent être stockés dans des structures nommées conteneur, comme la [structure de liste]({% link cours/bases-python/listes.md %}) par exemple : un conteneur est ainsi un objet qui en contient d'autres.
+1. La partie [objets types et types d'objets]({% link cours/bases-python/objets-types.md %}) vous dira tout sur les objets courant que vous manipulerez en python.
+2. La partie [variables]({% link cours/bases-python/variables.md %}) vous montrera le principe de l'affectation des variables en python.
+3. conteneurs d'objets. En plus des 5 types de bases, python met à notre disposition plusieurs objets qui *contiennent* d'autres objets. Parmi ces conteneurs, la [structure de liste]({% link cours/bases-python/listes.md %}) est la plus utilisée.
 
 ## opérations sur les objets
 
 On peut facilement faire des [opérations sur les objets]({% link cours/bases-python/operations.md %}).
+
+## fonctions
+
+fonctions utiles comme print, input (avec des exercices), etc
+
+
+## méthodes d'objets
 
 ## blocs de code
 
