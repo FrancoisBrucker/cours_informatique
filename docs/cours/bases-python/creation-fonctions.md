@@ -1,11 +1,14 @@
 ---
 layout: page
-title:  "Bases de python : fonctions"
+title:  "Bases de python : création de fonctions"
 authors: 
     - Augustin Agbo-Kpati
     - François Brucker
     - Pascal Préa
 ---
+
+> [bases de python]({% link cours/bases-python/index.md %}) /  [création de fonctions]({% link cours/bases-python/creation-fonctions.md %})
+{: .chemin}
 
 Une fonction est un bloc de code exécutable. On peut lui associer un nom et exécuter ce code juste en l'appelant : ceci permet de ne pas copier/coller des lignes code identiques à différents endroit du programme.
 
@@ -128,9 +131,23 @@ Lorsque python exécute la deuxième du code précédent il va :
 
 1. créer un espace de nom pour la fonction
 2. regarder les objets passés en paramètre. Ici c'est l'objet associé au nom `x`. Python cherche l'objet, c'est un entier valant 12.
-3. python associe chaque objet à son nom **dans**l'espace de nom de la fonction : ici l'entier qui vaut 12 sera appelé `nombre` dans la fonction (le nom du paramètre dans la définition de la fonction).
+3. python associe chaque objet à son nom **dans** l'espace de nom de la fonction : ici l'entier qui vaut 12 sera appelé `nombre` dans la fonction (le nom du paramètre dans la définition de la fonction).
 4. python exécute la fonction.
 5. à la fin de la fonction, l'espace de nom de la fonction est détruit (on ne detruit que les noms, pas les objets associés).
+
+## paramètres par défaut
+
+```python
+def plus_moins(nombre, seuil=42):
+    if nombre > seuil:
+        print("Supérieur à 42")
+    else:
+        print("Inférieur à 42")
+```
+
+On peut alors utiliser la fonction comme précédemment ou en utilisant le paramètre seuil `plus_moins(12, seuil=34)`.
+
+> comme le paramètre par défaut est le deuxième on peut aussi l'utiliser sans le nommer : `plus_moins(12, 34)`.
 
 ## Retour d'une fonction
 

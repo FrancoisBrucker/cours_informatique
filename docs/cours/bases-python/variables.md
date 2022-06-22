@@ -1,11 +1,11 @@
 ---
 layout: page
 title:  "Bases de python : variables"
-authors: 
-    - Augustin Agbo-Kpati
-    - François Brucker
-    - Pascal Préa
+author: "François Brucker"
 ---
+
+> [bases de python]({% link cours/bases-python/index.md %}) / [variables]({% link cours/bases-python/variables.md %})
+{: .chemin}
 
 Une variable est un nom auquel est associé un objet.
 
@@ -24,7 +24,7 @@ Il est important de comprendre que l’opérateur d’affectation `=` n’est pa
 
 ## espace de nom {#espace-nom}
 
-Un **espace de noms** est un endroit où python stocke les noms. Une variable est un nom d'un espace de noms. Les espaces de noms sont hiérarchisées et tout en haut se trouve l'espace de nom **global** qui est créé lorsque l'interpréteur est lancé. 
+Un **espace de noms** est un endroit où python stocke les noms. Une variable est un nom d'un espace de noms. Les espaces de noms sont hiérarchisées et tout en haut se trouve l'espace de nom **global** qui est créé lorsque l'interpréteur est lancé.
 
 > Si vous voulez en savoir plus sur les espaces de noms, vous pouvez consulter le cours sur [la mémoire et espace de noms]({% link cours/algorithme-code-theorie/code/memoire-et-espace-noms.md %})
 
@@ -65,7 +65,7 @@ x = y = 1
 
 On peut supprimer un nom en utilisant le mot clé `del`.
 
-Dans un interpréteur :
+Dans une console :
 
 ```python
 >>> x = 2

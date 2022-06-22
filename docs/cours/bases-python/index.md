@@ -49,7 +49,7 @@ La solution la plus simple si vous voulez juste tester python ou si vous ne voul
 * <https://basthon.fr/> (utilisée dans les collèges et lycées français. L'installation de modules spécifiques est cependant impossible).
 * <https://colab.research.google.com/?hl=fr> (utilisé de façon professionnelle, mais nécessite un compte google pour être utilisé)
 
-Les deux solutions ci-dessus vous permettent d'exécuter du code python sous la frme de notebook.
+Les deux solutions ci-dessus vous permettent d'exécuter du code python sous la forme de notebook.
 
 #### Installer une distribution python sur son ordinateur
 
@@ -116,12 +116,13 @@ Nous allons utiliser la console et l'accès direct à l'interpréteur pour compr
 
 On peut facilement faire des [opérations sur les objets]({% link cours/bases-python/operations.md %}).
 
-## fonctions
+## fonctions et méthodes
 
-fonctions utiles comme print, input (avec des exercices), etc
+Les [fonctions et méthodes]({% link cours/bases-python/fonctions-methodes.md %}) permettent d'utiliser les objets de python de façon pratique et puissante.
 
+## modules
 
-## méthodes d'objets
+les [modules python]({% link cours/bases-python/modules.md %}) permettent de se faciliter la vie dans l'écriture des programmes grâces aux méthodes qu'ils définissent.
 
 ## blocs de code
 
@@ -147,14 +148,25 @@ Ces différents blocs sont pratiques car ils vont nous permettre :
 * d'**exécuter un certain nombre de fois un bloc donné** grâce aux [boucles]({% link cours/bases-python/boucles.md %}).
 * d'**exécuter si une condition est vraie** grâce aux [conditions]({% link cours/bases-python/conditions.md %})
 
-Si un bloc de code est exécuté plusieurs fois à l'identique, on aimerait aussi pouvoir nommer ce groupe pour **pouvoir le réutiliser juste en appelant son nom**, ce sont les [fonctions]({% link cours/bases-python/fonctions.md %})
+## créer ses propres fonctions
 
-## modules
+Si un bloc de code est exécuté plusieurs fois à l'identique, on aimerait aussi pouvoir nommer ce groupe pour **pouvoir le réutiliser juste en appelant son nom**, ce sont les [fonctions]({% link cours/bases-python/creation-fonctions.md %})
 
-les [modules python]({% link cours/bases-python/modules.md %}) permettent de se faciliter la vie dans l'écriture des programmes grâces aux méthodes qu'ils définissent.
 
 ## notation `.`
 
 On l'a vue pour les méthodes et les modules. De façon générale la notation `A.B` : se lit ainsi on cherche le nom `B` dans l'espace de nom `A`.
 
 > une méthode n'est rien d'autre qu'un nom appelable dans l'espace de nom de l'objet à gauche du point
+
+## tutoriel pyhton
+
+Incontournable pour qui veut faire du python, il est plus que recommendé que vous suiviez le tutirel python du site : <https://docs.python.org/fr/3/tutorial/index.html>
+
+## pour aller plus loin
+
+* mutable et non mutable
+* itérateurs ?
+* dictionnaires
+* lambda
+* list comprehension

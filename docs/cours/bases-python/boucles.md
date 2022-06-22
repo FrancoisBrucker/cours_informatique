@@ -92,5 +92,5 @@ for c in "bonjour":
     print(c)
 ```
 
-> essayez les deux exemple précédent dans un interpréteur.
+> essayez les deux exemples précédents dans un interpréteur.
 {: .a-faire}

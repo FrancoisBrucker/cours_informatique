@@ -7,10 +7,15 @@ authors:
     - Pascal Préa
 ---
 
+> [bases de python]({% link cours/bases-python/index.md %}) / [objets types et types d'objets]({% link cours/bases-python/objets-types.md %})
+{: .chemin}
+
 
 Python connaît 5 classes d'objets de base qui permettent de faire la grande majorité des programmes.
 
-## Les 5 classes de base
+> Utilisez <https://basthon.fr/> en console pour exécuter les divers exemples et exercices
+
+## Les 6 classes de base
 
 >[Documentation correspondante](https://docs.python.org/3/library/stdtypes.html#built-in-types).
 
@@ -29,6 +34,8 @@ Python connaît 5 classes d'objets de base qui permettent de faire la grande maj
 * Booléens
   * exemple : `True` ou `False`
   * que 2 possibilités, `True` ou `False`
+* le vide, utilisé pour noter l'absence de valeur
+  * ne contient qu'un unique élément noté `None`
 
 > Tout objet de python à sa classe.
 
@@ -63,7 +70,7 @@ Qui rendra :  `<class 'int'>`. Les entiers sont donc de classe `'int'` en python
 
 ## changer de classe
 
-Il est possible de créer un nouvel objet à partir d'un objet d'une autre classe en le convertissant. Pour cela, on utilise le nom de la classe comme une fonction : `a(b)` convertissant l'objet `b` dans un objet de la classe `a`. 
+Il est possible de créer un nouvel objet à partir d'un objet d'une autre classe en le convertissant. Pour cela, on utilise le nom de la classe comme une fonction : `a(b)` convertissant l'objet `b` dans un objet de la classe `a`.
 
 ### réels, entiers et chaînes de caractères
 

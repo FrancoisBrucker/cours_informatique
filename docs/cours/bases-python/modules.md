@@ -7,6 +7,10 @@ authors:
     - Pascal Préa
 ---
 
+> [bases de python]({% link cours/bases-python/index.md %}) / [modules python]({% link cours/bases-python/modules.md %})
+{: .chemin}
+
+
 Un *module* (aussi appelé *bibliothèque* ou *library*) est un ensemble de fonctions utiles, utilisables dans de nombreux programmes. Plutôt que de refaire à chaque fois ces fonctions ou (c'est pire) de les copier/coller dans chaque programme, on les importe directement pour les utiliser.
 
 >Il existe de nombreux modules, réalisant une foultitude d'opérations. Avant de se mettre à coder quelque chose, commencez toujours par vérifier (google

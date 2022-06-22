@@ -10,7 +10,7 @@ authors:
 
 > <https://docs.python.org/3/reference/compound_stmts.html#the-if-statement>
 
-Permet d'exécuter un bloc si une condition loigique est vraie :
+Permet d'exécuter un bloc si une condition logique est vraie :
 
 ```text
 if <condition logique>:
@@ -32,7 +32,7 @@ else:
 
 Notez qu'il peut y avoir autant de bloc `elif` que l'on veut (même 0) et qu'il n'est pas nécessaire d'avoir de `else`.
 
-> Utilisez ce que vous avez appris pour vrifier la [conjecture de syrcuse](https://fr.wikipedia.org/wiki/Conjecture_de_Syracuse) pour les 100 premiers entiers
+> Utilisez ce que vous avez appris pour vérifier la [conjecture de syarcuse](https://fr.wikipedia.org/wiki/Conjecture_de_Syracuse) pour les 100 premiers entiers
 Exemple :
 {:.a-faire}
 {% details solution %}
