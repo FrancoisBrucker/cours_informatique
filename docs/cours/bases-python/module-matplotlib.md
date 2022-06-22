@@ -106,9 +106,6 @@ Essayons de comprendre comment tout ça fonctionne :
 {% details %}
 
 ```python
-import math
-# 1. création des données
-
 x = []
 y = []
 y2 = []
