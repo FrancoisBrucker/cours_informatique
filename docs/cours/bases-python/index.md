@@ -159,9 +159,9 @@ On l'a vue pour les méthodes et les modules. De façon générale la notation `
 
 > une méthode n'est rien d'autre qu'un nom appelable dans l'espace de nom de l'objet à gauche du point
 
-## tutoriel pyhton
+## tutoriel python
 
-Incontournable pour qui veut faire du python, il est plus que recommendé que vous suiviez le tutirel python du site : <https://docs.python.org/fr/3/tutorial/index.html>
+Incontournable pour qui veut faire du python, il est plus que recommandé que vous suiviez le tutoriel python du site : <https://docs.python.org/fr/3/tutorial/index.html>
 
 ## pour aller plus loin
 
