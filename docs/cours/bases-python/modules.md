@@ -83,6 +83,70 @@ import math as m
 import random as r
 ```
 
+## exercices avec le module random
+
+Un module très utile dans python est le module [random](https://docs.python.org/fr/3/library/random.html)
+
+Utilisez le pour répondre aux questions suivantes :
+
+> Générez un entier aléatoire entre 10 et 234.
+{: .a-faire}
+{% details %}
+
+On utilise la fonction [`randint` du module `random`](https://docs.python.org/fr/3/library/random.html#random.randint) :
+
+```python
+>>> import random
+>>> random.randint(10, 234)
+51
+```
+
+{% enddetails %}
+
+
+
+> Générez un nombre réel uniformément dans $[0, 1[$
+{: .a-faire}
+{% details %}
+
+On utilise la fonction [`random` du module `random`](https://docs.python.org/fr/3/library/random.html#random.random) :
+
+```python
+>>> import random
+>>> random.random()
+0.07350177375024702
+```
+
+{% enddetails %}
+
+
+> Choisissez 2 éléments **avec** remise de la liste `["pomme", "abricot", "orange", "cerise"]`
+{: .a-faire}
+{% details %}
+
+On utilise la fonction [`choices` du module `random`](https://docs.python.org/fr/3/library/random.html#random.choices) :
+
+```python
+>>> import random
+>>> random.choices(["pomme", "abricot", "orange", "cerise"], k=2)
+['pomme', 'pomme']
+```
+{% enddetails %}
+
+> Choisissez 2 éléments **sans** remise de la liste `["pomme", "abricot", "orange", "cerise"]`
+{: .a-faire}
+{% details %}
+
+On utilise la fonction [`sample` du module `random`](https://docs.python.org/fr/3/library/random.html#random.sample) :
+
+```python
+>>> import random
+>>> random.sample(["pomme", "abricot", "orange", "cerise"], k=2)
+['cerise', 'pomme']
+```
+{% enddetails %}
+
+
 ## installer des modules
 
 Suivez le [tutorial des packages]({% link _tutoriels/python/installation-de-python.md %}#packages) dans le guide d'installation de python.

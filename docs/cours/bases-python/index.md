@@ -106,6 +106,26 @@ La façon la plus explicite d'utiliser l'interpréteur python est de le faire en
 
 Nous allons utiliser la console et l'accès direct à l'interpréteur pour comprendre les principes de bases de python, à savoir les objets et les variables.
 
+## commentaires
+
+Commençons par ne **pas** écrire du python. Dans une ligne de code python, tout ce qui suit un `#` n'est pas lu.
+
+Par exemple, le code suivant écrit dans une console ne produit pas d'erreur (il n'est même pas lu...) :
+
+```python
+>>> # coucou python !
+```
+
+Alors que le même code sans `#` est interprété par python et comme ce n'est pas du pyhton cela produit une erreur :
+
+```python
+>>> coucou python !
+  File "<stdin>", line 1
+    coucou python !
+           ^
+SyntaxError: invalid syntax
+```
+
 ## objets et variables en python
 
 1. La partie [objets types et types d'objets]({% link cours/bases-python/objets-types.md %}) vous dira tout sur les objets courant que vous manipulerez en python.
@@ -131,6 +151,8 @@ Si vous n'avez pas installé de distribution (par exemple anaconda) pour python,
 * [scipy](https://scipy.org/)
 * [pillow](https://pillow.readthedocs.io/en/stable/)
 * [sklearn](https://scikit-learn.org/stable/)
+
+Si vous voulez apprendre les bases de la bibliothèque de dessin [matplotlib](https://matplotlib.org), vous pouvez suivre cette [courte introduction à matplotlib]({% link cours/bases-python/module-matplotlib.md %}).
 
 ## blocs de code
 
