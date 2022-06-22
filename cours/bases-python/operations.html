@@ -6,10 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Bases de python : Objets types et types d’objets | cours d’informatique</title>
+<title>Bases de python : opérations sur les objets | cours d’informatique</title>
 <meta name="generator" content="Jekyll v4.2.0">
-<meta property="og:title" content="Bases de python : Objets types et types d’objets">
-<meta name="author" content="Augustin Agbo-Kpati">
+<meta property="og:title" content="Bases de python : opérations sur les objets">
+<meta name="author" content="François Brucker">
 <meta property="og:locale" content="en_US">
 <meta name="description" content="Support de cours/td d’informatique de François Brucker.">
 <meta property="og:description" content="Support de cours/td d’informatique de François Brucker.">
@@ -18,9 +18,9 @@
 <meta property="og:site_name" content="cours d’informatique">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary">
-<meta property="twitter:title" content="Bases de python : Objets types et types d’objets">
+<meta property="twitter:title" content="Bases de python : opérations sur les objets">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Augustin Agbo-Kpati"},"description":"Support de cours/td d’informatique de François Brucker.","headline":"Bases de python : Objets types et types d’objets","url":"/cours_informatique/cours/bases-python/operations.html"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"François Brucker"},"description":"Support de cours/td d’informatique de François Brucker.","headline":"Bases de python : opérations sur les objets","url":"/cours_informatique/cours/bases-python/operations.html"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
@@ -28,6 +28,7 @@
 
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <link type="application/atom+xml" rel="alternate" href="/cours_informatique/feed.xml" title="cours d'informatique">
+<script>MathJax={"tex":{"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["\\[","\\]"]]},"svg":{"fontCache":"global"},"svg":{"fontCache":"global"}}</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
 <body>
@@ -55,26 +56,63 @@
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Bases de python : Objets types et types d'objets</h1>Auteurs :
-      <ul>
-      
-        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Augustin Agbo-Kpati</span></span></li>
-      
-        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span></li>
-      
-        <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Pascal Préa</span></span></li>
-      
-      </ul>
+    <h1 class="post-title">Bases de python : opérations sur les objets</h1>Auteur : <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">François Brucker</span></span>
   </header>
 
   <div class="post-content">
-    <p>Les opérations sur les objets vont des opérations arithmétiques (addition) aux tests (est plus grand que) en passant par les opérations logiques (a et b)</p>
+    <blockquote class="chemin">
+  <p><a href="/cours_informatique/cours/bases-python/">bases de python</a> / <a href="/cours_informatique/cours/bases-python/operations.html">opérations sur les objets</a></p>
+</blockquote>
+
+<p>Les opérations sur les objets vont des opérations arithmétiques (a + b, a - b, …) aux tests (a &lt; b) en passant par les opérations logiques (a et b)</p>
 
 <h2 id="nombres">nombres</h2>
 
-<p><a href="https://docs.python.org/3/library/operator.html#mapping-operators-to-functions">https://docs.python.org/3/library/operator.html#mapping-operators-to-functions</a></p>
+<p>Les opérations peuvent s’effectuer sur les trois types numériques que sont les entier (classe <code class="language-plaintext highlighter-rouge">int</code>), les réels (classe <code class="language-plaintext highlighter-rouge">float</code>) et les complexes (classe <code class="language-plaintext highlighter-rouge">complex</code>)</p>
 
-<p>Les opération peuvent s’effectuer sur les trois types numériques que sont les entier (classe <code class="language-plaintext highlighter-rouge">int</code>), les réels (classe <code class="language-plaintext highlighter-rouge">float</code>) et les complexes (classe <code class="language-plaintext highlighter-rouge">complex</code>)</p>
+<h3 id="opérateurs">opérateurs</h3>
+
+<p>Outre les classiques opérations :</p>
+
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">+</code> (addition)</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">-</code> (soustraction)</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">/</code> (division)</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">*</code> (multiplication)</li>
+</ul>
+
+<p>python possède aussi :</p>
+
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">//</code> division entière</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">%</code> reste de la division</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">**</code> exposant.</li>
+</ul>
+
+<blockquote class="a-faire">
+  <p>que vaut le quotient et le reste de la division entière de 4538 par 23 ?</p>
+</blockquote>
+<details><summary>solution</summary><div>
+<p>Dans un terminal :</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; 4538 // 23
+197
+&gt;&gt;&gt; 4538 % 23
+7
+&gt;&gt;&gt; (4538 // 23) * 23 + 7
+4538
+</code></pre></div></div>
+
+</div></details>
+
+<h3 id="raccourcis-daffectation">raccourcis d’affectation</h3>
 
 <p>Python permet aussi de faire l’opération et de procéder immédiatement à sa réaffectation avec les opérateurs :</p>
 
@@ -95,22 +133,117 @@
 
 <h2 id="chaines-de-caractères-concatenation-et-">chaines de caractères (concatenation et *)</h2>
 
+<p>Les chaînes de caractères possède 2 opérateurs :</p>
+
+<ul>
+  <li>l’addition qui concatène deux chaînes</li>
+  <li>la multiplication d’un entier $i$ par une chaîne $c$ qui concatène $i$ fois $c$ à elle même.</li>
+</ul>
+
+<p>Par exemple :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="s">"x"</span> <span class="o">+</span> <span class="s">"y"</span>
+<span class="s">'xy'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">3</span> <span class="o">*</span> <span class="s">"x"</span>
+<span class="s">'xxx'</span>
+</code></pre></div></div>
+
+<blockquote class="a-faire">
+  <p>Recopiez 10 fois : <code class="language-plaintext highlighter-rouge">"j'aime bien faire du python"</code> en une ligne de python</p>
+</blockquote>
+<details><summary>solution</summary><div>
+<p>On peut écrire :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="mi">10</span> <span class="o">*</span> <span class="s">"J'aime bien faire du python. "</span>
+<span class="s">"J'aime bien faire du python. J'aime bien faire du python. J'aime bien faire du python. J'aime bien faire du python. J'aime bien faire du python. J'aime bien faire du python. J'aime bien faire du python. J'aime bien faire du python. J'aime bien faire du python. J'aime bien faire du python. "</span>
+
+</code></pre></div></div>
+
+</div></details>
+
 <h2 id="listes">listes</h2>
 
-<p>Comme pour les chaines de caractères, l’opération <code class="language-plaintext highlighter-rouge">+</code> désigne la concaténation. L’opération <code class="language-plaintext highlighter-rouge">*</code> par en entier, tout comme les chaine recopie la liste (ses éléments) plusieurs fois.</p>
+<p>Comme pour les chaines de caractères :</p>
+
+<ul>
+  <li>l’opération <code class="language-plaintext highlighter-rouge">+</code> désigne la concaténation entre deux listes</li>
+  <li>l’opération <code class="language-plaintext highlighter-rouge">*</code> par en entier $i$ recopie la liste (ses éléments) $i$ fois.</li>
+</ul>
+
+<p>Par exemple :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s">"douze"</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="mi">42</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s">'douze'</span><span class="p">,</span> <span class="mi">42</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s">"douze"</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s">'douze'</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s">'douze'</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s">'douze'</span><span class="p">]</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>Remarquez que :</p>
+
+  <ul>
+    <li>
+<code class="language-plaintext highlighter-rouge">[1, 4, "douze"] + [42]</code> produit une erreur puisque <code class="language-plaintext highlighter-rouge">42</code> est un entier et pas une liste.</li>
+    <li>
+<code class="language-plaintext highlighter-rouge">3 * [1, 4, "douze"]</code> fonctionne également</li>
+  </ul>
+</blockquote>
+
+<p>Attention aux effets de bords :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">M</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span> <span class="o">*</span> <span class="mi">3</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">M</span>
+<span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">M</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+</code></pre></div></div>
+
+<blockquote class="a-faire">
+  <p>Que vaut <code class="language-plaintext highlighter-rouge">M</code> ?</p>
+</blockquote>
+<details><summary></summary><div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">M</span>
+<span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
+</code></pre></div></div>
+
+<p>C’est en effet la <strong>même</strong> liste qui a été dupliquée !</p>
+
+</div></details>
 
 <h2 id="booleen">booleen</h2>
 
 <h3 id="comparaisons">comparaisons</h3>
 
-<p><a href="https://docs.python.org/3/library/stdtypes.html#comparisons">https://docs.python.org/3/library/stdtypes.html#comparisons</a></p>
+<p>Comparateurs classiques :</p>
+
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">&lt;</code> : strictement plus petit</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">&lt;=</code> : plus petit ou égal</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">&gt;</code> : strictement plus grand</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">&gt;=</code> : plus grand ou égal</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">==</code> : égal</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">!=</code> : différent</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">is</code> : égalité d’objets (en pratique uniquement utilisé pour comparer à <code class="language-plaintext highlighter-rouge">None</code>)</li>
+</ul>
 
 <p>Les comparaisons rendent un booléen. Par exemple : <code class="language-plaintext highlighter-rouge">2 &lt;= 3</code> rend le booléen <code class="language-plaintext highlighter-rouge">True</code>.</p>
 
 <h3 id="opérations-logiques">opérations logiques</h3>
 
-<p><a href="https://docs.python.org/3/library/stdtypes.html#boolean-operations-and-or-not">https://docs.python.org/3/library/stdtypes.html#boolean-operations-and-or-not</a></p>
-
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">or</code> : ou logique</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">and</code> : et logique</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">not</code> : négation</li>
+</ul>
 
   </div>
 

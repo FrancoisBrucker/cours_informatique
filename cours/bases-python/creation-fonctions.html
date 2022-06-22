@@ -6,21 +6,21 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Bases de python : fonctions | cours d’informatique</title>
+<title>Bases de python : création de fonctions | cours d’informatique</title>
 <meta name="generator" content="Jekyll v4.2.0">
-<meta property="og:title" content="Bases de python : fonctions">
+<meta property="og:title" content="Bases de python : création de fonctions">
 <meta name="author" content="Augustin Agbo-Kpati">
 <meta property="og:locale" content="en_US">
 <meta name="description" content="Support de cours/td d’informatique de François Brucker.">
 <meta property="og:description" content="Support de cours/td d’informatique de François Brucker.">
-<link rel="canonical" href="/cours_informatique/cours/bases-python/fonctions.html">
-<meta property="og:url" content="/cours_informatique/cours/bases-python/fonctions.html">
+<link rel="canonical" href="/cours_informatique/cours/bases-python/creation-fonctions.html">
+<meta property="og:url" content="/cours_informatique/cours/bases-python/creation-fonctions.html">
 <meta property="og:site_name" content="cours d’informatique">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary">
-<meta property="twitter:title" content="Bases de python : fonctions">
+<meta property="twitter:title" content="Bases de python : création de fonctions">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Augustin Agbo-Kpati"},"description":"Support de cours/td d’informatique de François Brucker.","headline":"Bases de python : fonctions","url":"/cours_informatique/cours/bases-python/fonctions.html"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Augustin Agbo-Kpati"},"description":"Support de cours/td d’informatique de François Brucker.","headline":"Bases de python : création de fonctions","url":"/cours_informatique/cours/bases-python/creation-fonctions.html"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/cours_informatique/assets/main.css">
 
@@ -56,7 +56,7 @@
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Bases de python : fonctions</h1>Auteurs :
+    <h1 class="post-title">Bases de python : création de fonctions</h1>Auteurs :
       <ul>
       
         <li><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Augustin Agbo-Kpati</span></span></li>
@@ -69,7 +69,11 @@
   </header>
 
   <div class="post-content">
-    <p>Une fonction est un bloc de code exécutable. On peut lui associer un nom et exécuter ce code juste en l’appelant : ceci permet de ne pas copier/coller des lignes code identiques à différents endroit du programme.</p>
+    <blockquote class="chemin">
+  <p><a href="/cours_informatique/cours/bases-python/">bases de python</a> /  <a href="/cours_informatique/cours/bases-python/creation-fonctions.html">création de fonctions</a></p>
+</blockquote>
+
+<p>Une fonction est un bloc de code exécutable. On peut lui associer un nom et exécuter ce code juste en l’appelant : ceci permet de ne pas copier/coller des lignes code identiques à différents endroit du programme.</p>
 
 <p>Il n’est en effet jamais bon de copier/coller un bout de programme qui se répète plusieurs fois (corriger un problème dans ce bout de code reviendrait à le corriger autant de fois qu’il a été dupliqué…). Il est de plus souvent utile de séparer les éléments logiques d’un programme en unités autonomes, ceci rend le programme plus facile à relire.</p>
 
@@ -192,10 +196,25 @@ La variable nombre sera associée à l’objet entier de valeur 17 dans la fonct
 <ol>
   <li>créer un espace de nom pour la fonction</li>
   <li>regarder les objets passés en paramètre. Ici c’est l’objet associé au nom <code class="language-plaintext highlighter-rouge">x</code>. Python cherche l’objet, c’est un entier valant 12.</li>
-  <li>python associe chaque objet à son nom <strong>dans</strong>l’espace de nom de la fonction : ici l’entier qui vaut 12 sera appelé <code class="language-plaintext highlighter-rouge">nombre</code> dans la fonction (le nom du paramètre dans la définition de la fonction).</li>
+  <li>python associe chaque objet à son nom <strong>dans</strong> l’espace de nom de la fonction : ici l’entier qui vaut 12 sera appelé <code class="language-plaintext highlighter-rouge">nombre</code> dans la fonction (le nom du paramètre dans la définition de la fonction).</li>
   <li>python exécute la fonction.</li>
   <li>à la fin de la fonction, l’espace de nom de la fonction est détruit (on ne detruit que les noms, pas les objets associés).</li>
 </ol>
+
+<h2 id="paramètres-par-défaut">paramètres par défaut</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">plus_moins</span><span class="p">(</span><span class="n">nombre</span><span class="p">,</span> <span class="n">seuil</span><span class="o">=</span><span class="mi">42</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">nombre</span> <span class="o">&gt;</span> <span class="n">seuil</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Supérieur à 42"</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Inférieur à 42"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>On peut alors utiliser la fonction comme précédemment ou en utilisant le paramètre seuil <code class="language-plaintext highlighter-rouge">plus_moins(12, seuil=34)</code>.</p>
+
+<blockquote>
+  <p>comme le paramètre par défaut est le deuxième on peut aussi l’utiliser sans le nommer : <code class="language-plaintext highlighter-rouge">plus_moins(12, 34)</code>.</p>
+</blockquote>
 
 <h2 id="retour-dune-fonction">Retour d’une fonction</h2>
 

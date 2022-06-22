@@ -64,18 +64,22 @@
   </header>
 
   <div class="post-content">
-    <p>Les listes sont la structure principale lorsque l’on veut stocker plusieurs objets. La liste est un conteneur dont on peut acceder les éléments un à un.</p>
+    <blockquote class="chemin">
+  <p><a href="/cours_informatique/cours/bases-python/">bases de python</a> / <a href="/cours_informatique/cours/bases-python/variables.html">variables</a> / <a href="/cours_informatique/cours/bases-python/listes.html">listes</a></p>
+</blockquote>
+
+<p>Les listes sont la structure principale lorsque l’on veut stocker plusieurs objets. La liste est un conteneur dont on peut accéder les éléments un à un.</p>
+
+<blockquote>
+  <p>Utilisez <a href="https://basthon.fr/">https://basthon.fr/</a> en console pour exécuter les divers exemples et exercices.</p>
+</blockquote>
 
 <p>L’exemple suivant crée une liste de nom <code class="language-plaintext highlighter-rouge">x</code> qui contient l’entier 1 en 1ère position, l’entier 4 en 2ème position et la chaque de caractères <code class="language-plaintext highlighter-rouge">"12"</code> en troisième position :</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s">"douze"</span><span class="p">]</span>
 </code></pre></div></div>
 
-<blockquote>
-  <p>Une chaîne de caractère est considérée comme une liste de caractères.</p>
-</blockquote>
-
-<h2 id="accès-à-un-élément-dune-listes">accès à un élément d’une listes</h2>
+<h2 id="accès-à-un-élément-dune-liste">accès à un élément d’une liste</h2>
 
 <p>On accède à un élément de la liste en faisant suivre le nom de la liste par des <code class="language-plaintext highlighter-rouge">[]</code> et en mettant l’index voulu dans les crochets :</p>
 
@@ -86,6 +90,8 @@
 <span class="o">&gt;&gt;&gt;</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
 <span class="s">'douze'</span>
 </code></pre></div></div>
+
+<p>Une chaîne de caractère, bien qu’elle ne soit pas une liste stricto sensu peut-être considérée comme une liste composée de caractères : on peut accéder à un caractère particulier de la chaîne comme on le ferait avec une liste.</p>
 
 <blockquote class="a-faire">
   <p>Quel est la treizième lettre du mot “anticonstitutionnellement” ?</p>
@@ -116,6 +122,54 @@
 </code></pre></div></div>
 
 </div></details>
+
+<h2 id="modifier-un-élément-dune-liste">modifier un élément d’une liste</h2>
+
+<p>Un élément d’une liste peut être considéré comme une variable. On peut donc réaffecter cet élément :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s">"douze"</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s">'douze'</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">42</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="s">'douze'</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>Attention aux effets de bords ! Modifier un objet le modifie quelque soit sont nom. Considérez l’exemple suivant :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s">"douze"</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">y</span> <span class="o">=</span> <span class="n">x</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">42</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="s">'douze'</span><span class="p">]</span>
+</code></pre></div></div>
+
+<blockquote class="a-faire">
+  <p>Que vaut <code class="language-plaintext highlighter-rouge">y</code> ?</p>
+</blockquote>
+<details><summary>solution</summary><div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">y</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="s">'douze'</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">x</code> et <code class="language-plaintext highlighter-rouge">y</code> sont le <strong>même</strong> objet sous deux noms différents.</p>
+
+</div></details>
+
+<h2 id="liste-de-listes">liste de listes</h2>
+
+<p>On peut créer des matrices facilement en utilisant des listes de listes. Considérez l’exemple suivant :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">M</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">]]</span>
+</code></pre></div></div>
+
+<p>On a crée une variable <code class="language-plaintext highlighter-rouge">M</code> qui contient une liste de 2 listes : c’est une matrice à 2 lignes et 3 colonnes.</p>
+
+<ul>
+  <li>La 1ère ligne de la matrice est <code class="language-plaintext highlighter-rouge">M[0]</code> et la seconde <code class="language-plaintext highlighter-rouge">M[1]</code>
+</li>
+  <li>l’élément à la 1ère ligne et deuxième colonne s’écrit : <code class="language-plaintext highlighter-rouge">M[0][1]</code>
+</li>
+</ul>
 
 <h2 id="copie-dune-sous-liste">Copie d’une sous-liste</h2>
 
