@@ -62,6 +62,28 @@ y = log(e)
 
 Lors de la ligne `from math import *` python lit le module math **dans** l'espace de nom **global**.
 
+### importation de modules sous la forme d'alias
+
+Quelques bibliothèques très utilisées s'importent avec des alias par exemple :
+
+```python
+import numpy as np
+```
+
+Ou encore :
+
+```python
+import matplotlib.pyplot as plt
+```
+
+Cela permet de raccourcir le nom, il suffira de taper `plt` à la place de `matplotlib.pyplot` mais cela se fait au **détriment** de la lisibilité. Il n'est donc pas recommandé du tout de le faire avec d'autres bibliothèque même s'il est tout à fait possible d'écrire ce genre d'horreurs :
+
+```python
+import math as m
+import random as r
+```
+
+
 ## installer des modules
 
 Suivez le [tutorial des packages]({% link _tutoriels/python/installation-de-python.md %}#packages) dans le guide d'installation de python.
