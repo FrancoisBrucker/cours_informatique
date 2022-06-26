@@ -100,7 +100,7 @@ Par exemple :
 
 > Remarquez que :
 >
-> * `[1, 4, "douze"] + [42]` produit une erreur puisque `42` est un entier et pas une liste.
+> * `[1, 4, "douze"] + 42` produit une erreur puisque `42` est un entier et pas une liste.
 > * `3 * [1, 4, "douze"]` fonctionne également
 
 Attention aux effets de bords :

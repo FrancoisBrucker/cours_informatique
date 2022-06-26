@@ -223,7 +223,7 @@ On demande à l'utilisateur de taper quelque chose puis d'appuyer sur la touche 
 
 #### range
 
-[range](https://docs.python.org/fr/3/library/stdtypes.html#ranges) est une méthode particulière, elle permet de créer, en combinaison avec `list` des listes.
+[range](https://docs.python.org/fr/3/library/stdtypes.html#ranges) est une fonction particulière, elle permet de créer, en combinaison avec `list` des listes.
 
 > On ne crée **pas** de liste directement avec `range`.
 {: .a-faire}
@@ -292,7 +292,7 @@ Essayons de les apprendre avec ces petits exercices :
 
 {% enddetails %}
 
-> Transformez le 27ème [nombre de Mersenne premier](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier) en une chaine de caractère
+> Transformez le 27ème [nombre de Mersenne premier](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier) en une chaîne de caractère
 {: .a-faire}
 {% details solution %}
 
@@ -388,7 +388,7 @@ Par exemple pour ajouter ou supprimer des éléments d'une liste :
 Voir la [documentation du tutoriel](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists) :
 
 * `remove` supprime le **premier** élément trouvé, pas tous
-* `extend` ajoute les élemnts d'une **liste** passée en paramètre à la la liste à gauche du `.`
+* `extend` ajoute les éléments d'une **liste** passée en paramètre à la la liste à gauche du `.`
 * `pop` supprime le dernier élément de la liste et le rend
 
 {% enddetails %}

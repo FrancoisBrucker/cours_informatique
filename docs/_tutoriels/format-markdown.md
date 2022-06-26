@@ -131,6 +131,7 @@ Dans le flot du texte, on peut mettre en exergue des parties de texte :
 
 * *en italique* : `*texte*`
 * **en gras** : `**texte**`
+* ***en gras et en italique*** : `***texte***`
 * ~~barré~~ : `~~texte~~`
 * `code` : `` `texte` ``
 * équations : `$\LaTeX$`

@@ -1,3 +1,10 @@
+- bases python : 
+	- ne faire l'install qu'à la fin. Après l'utilisation avec basthon en console et avec notebook.
+	- montrer notebook avec basthon et anaconda. 
+	- tuto cellule, execution. et attention à l'ordre d'éxécution
+
+- markdown : ajouter tableau
+
 - spell check est mieux pour la correction orthorgraphique
 
 

@@ -85,7 +85,7 @@ L'installation des plugins vscode pour python vous a fait écrire et exécuter v
 1. on entre une ligne de code dans l'interpréteur
 2. l'interpréteur exécute cette ligne
 3. une fois la ligne exécutée, l'interpréteur redonne la main à l'utilisateur
-4. retour à la l'étape 1.
+4. retour à l'étape 1.
 
 Tant que l'interpréteur est actif (c'est à dire tant que le notebook est ouvert ou tant que le fichier de code n'est pas entièrement lu) un mécanisme de stockage permet de conserver des **objets** pour une utilisation future via des **variables**.
 
@@ -116,7 +116,7 @@ Par exemple, le code suivant écrit dans une console ne produit pas d'erreur (il
 >>> # coucou python !
 ```
 
-Alors que le même code sans `#` est interprété par python et comme ce n'est pas du pyhton cela produit une erreur :
+Alors que le même code sans `#` est interprété par python et comme ce n'est pas du python cela produit une erreur :
 
 ```python
 >>> coucou python !
@@ -144,7 +144,7 @@ Les [fonctions et méthodes]({% link cours/bases-python/fonctions-methodes.md %}
 
 les [modules python]({% link cours/bases-python/modules.md %}) permettent de se faciliter la vie dans l'écriture des programmes grâces aux méthodes qu'ils définissent.
 
-Si vous n'avez pas installé de distribution (par exemple anaconda) pour python, il vous sera surement nécessaire d'installer à la main certains modules pythons très utiles en python scientifique :
+Si vous n'avez pas installé de distribution (par exemple anaconda) pour python, il vous sera sûrement nécessaire d'installer à la main certains modules pythons très utiles en python scientifique :
 
 * [numpy](https://numpy.org/)
 * [matplotlib](https://matplotlib.org/)
@@ -194,8 +194,11 @@ Incontournable pour qui veut faire du python, il est plus que recommandé que vo
 
 ## pour aller plus loin
 
-* mutable et non mutable
-* itérateurs ?
-* dictionnaires
-* lambda
-* list comprehension
+>
+> * mutable et non mutable
+> * itérateurs ?
+> * dictionnaires
+> * lambda
+> * list comprehension
+>
+{: .tbd}
