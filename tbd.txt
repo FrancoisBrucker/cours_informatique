@@ -1,3 +1,5 @@
+- nb d'algorithme. Faire avec le pseudo-code. On a pas besoin de cantor ?
+
 - bases python : 
 	- ne faire l'install qu'à la fin. Après l'utilisation avec basthon en console et avec notebook.
 	- montrer notebook avec basthon et anaconda. 
