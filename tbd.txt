@@ -5,7 +5,10 @@
 	- montrer notebook avec basthon et anaconda. 
 	- tuto cellule, execution. et attention à l'ordre d'éxécution
 
-- markdown : ajouter tableau
+- markdown : (j2 cours de pierre)
+	- ajouter tableau
+	- mettre des liens
+	- couleurs en ajoutant du html ?
 
 - spell check est mieux pour la correction orthorgraphique
 
