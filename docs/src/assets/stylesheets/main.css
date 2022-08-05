@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply font-sans;
+    }
+
+    img {
+      @apply mx-auto;
+    }
+
+    h2 {
+      @apply border-black border-0 border-b-4 border-solid;
+    }
+    h3 {
+    @apply border-black border-b-2 border-solid;
+    }
+
+    h4 {
+    @apply border-black border-b border-solid;
+    }
+            
+    h5 {
+        @apply border-black border-b border-dashed;
+    }
+
+    mjx-container[jax="SVG"] > svg {
+        display: inline;
+    }
+    
+    article {
+        @apply max-w-none prose prose-slate;
+    }
+    blockquote > p::before, blockquote > p::after {
+        content: "";
+    }
+    code[class*=language-]::before, code[class*=language-]::after {
+        content: "";
+    }
+
+}
+
+@layer components {
+    .wrapper {
+        @apply max-w-[1000px] mx-auto px-4;
+    }
+
+    a:not([class]), a:not([class]):visited {
+        text-decoration: none;
+        color: #629FDE;
+        border-bottom: 1px dotted #629FDE;  
+    }
+    a:not([class]):hover {
+        color: #5549DE;
+        border-bottom: 1px solid #5549DE;
+    }
+    a:not([class]):active {
+        color: #5549DE;
+        border-bottom: 3px solid #5549DE;
+    }
+
+    blockquote {
+        border-left-width: .5rem;
+    }    
+}
+

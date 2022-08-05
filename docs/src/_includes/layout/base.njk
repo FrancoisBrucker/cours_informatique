@@ -1,0 +1,45 @@
+---
+footer: Cours d'informatique à l'école centrale Marseille
+---
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>{{ title }}</title>
+
+    <link href={{ "/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" | url }} rel="stylesheet">
+    <link href={{ "/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" | url }} rel="stylesheet">
+
+    <link href={{ "/assets/stylesheets/main.css" | url }} rel="stylesheet">
+    <link href={{ "/assets/stylesheets/details.css" | url }} rel="stylesheet">
+    <link href={{ "/assets/stylesheets/custom.css" | url }} rel="stylesheet">
+
+  </head>
+  <body>
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="wrapper">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="{{ '/' | url }}">Home</a>
+          <a class="mx-2" href="{{ '/about' | url }}">About</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="wrapper">
+      {{ content | safe }}
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="wrapper">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            {{ footer | safe}}     
+          </p>
+        </div>
+      </div>
+    </footer>
+
+  </body>
+</html>
