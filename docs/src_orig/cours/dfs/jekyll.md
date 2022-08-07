@@ -19,7 +19,7 @@ author: Baptiste Mahé
 > TBD : à mettre dans le tuto.
 > * ajouter `gem "webrick"` dans *"Gemfile"* ce n'est plus dans bundle. 
 > * ruby avec brew (sous mac) attention au path (quelque part dans *"/usr/local/opt/ruby/bin/rub"*)
-{: .attention}
+{.attention}
 
 Ruby est un **langage de programmation** open-source dynamique qui met l'accent sur la simplicité et la productivité. Sa syntaxe élégante en facilite la lecture et l'écriture. [Example](https://www.includehelp.com/ruby/programs.aspx), Hello World en ruby :
 

@@ -1,33 +1,44 @@
 ---
-layout: page
-title:  "circuits eulérien"
-category: cours
-tags: informatique code graphes
-author : "François Brucker"
+layout: layout/post.njk
+title: circuits eulérien
+tags: ['graphes']
+
+authors: 
+    - François Brucker
 ---
 
-> [graphes]({% link cours/graphes/index.md %}) / [euleriens]({% link cours/graphes/circuits-euleriens.md %})
-{: .chemin}
+{% chemin %}
+[Graphes]({{ ".." }}) / [{{title}}]({{ "." }})
+{% endchemin %}
+{% pres-requis %}
+* [Parcours eulériens](../parcours-eulerien)
+* python pour le développement
+* des tests pour python 
+{% endpres-requis %}
 
-## Introduction
+> TBD : 
+> * fix prés-requis
+> * garder les tests ?
+> * écrire en français
+> * utiliser networkx
+
+<!-- début résumé -->
 
 Le but de ce cours est d'apprendre à coder un (multi-)graphe dirigé et de s'en servir pour trouver un circuit eulérien d'un de ces graphes (s'il existe).
 
+<!-- fin résumé -->
+
+{% info %}
 Le code complet de ce tutoriel est disponible sur [le github du projet](https://github.com/FrancoisBrucker/cours_informatique/tree/master/docs/cours/graphes/circuits-euleriens-code). Essayez tout de même de résoudre les questions par vous-même, vous apprendrez plus que juste lire le corrigé.
-
-## Outils
-
-Vous aurez besoin de connaitre un peu de python et que vous sachiez faire des tests. Suivez les 4 premières parties du [cours de développement]({% link cours/developpement/index.md %})
-
-Les tests vont s'ajouter petit à petit et à la fin de la séance votre fichier *"test_multi_graph.py"* contiendra plus d'une vingtaine de tests !
+{% endinfo %}
 
 ## Plan
 
-  1. modéliser un multi-graphe dirigé en python
-  2. algorithme du circuit eulérien
-  3. suppression itératives de circuits à un multi-graphe eulérien
-  4. création d'un multi-graphe à partir d'une suite de circuits
-  5. le programme qui trouve un circuit eulérien d'un multi-graphe donné.
+1. modéliser un multi-graphe dirigé en python
+2. algorithme du circuit eulérien
+3. suppression itératives de circuits à un multi-graphe eulérien
+4. création d'un multi-graphe à partir d'une suite de circuits
+5. le programme qui trouve un circuit eulérien d'un multi-graphe donné.
 
 ## code du projet
 
@@ -53,7 +64,7 @@ La structure python que nous utiliserons pour créer un graphe sera la liste d'a
 
 Par exemple, on pourra coder le graphe suivant :
 
-![un graphe orienté]({{ "/assets/cours/graphes/graphe_oriente_boucle.png" | relative_url }}){:style="margin: auto;display: block;"}
+![un graphe orienté](../assets/img/graphe_oriente_boucle.png)
 
 Par la liste de sommets :
 
@@ -61,7 +72,7 @@ Par la liste de sommets :
 vertices = ['a', 'b', 'c', 'd', 'e']
 ```
 
-Et les arcs codées sous forme de [liste d'adjacence]({% link cours/graphes/encodage.md %}#liste-adjacence) :
+Et les arcs codées sous forme de [liste d'adjacence](../encodage#liste-adjacence) :
 
 ```python
 edges = [[1, 4],
@@ -136,7 +147,7 @@ def test_multi_graph_several_edges():
 
 On a utilisé une structure sous la forme de listes pour stocker notre multi-graphe dirigé. En reprenant l'exemple du graphe :
 
-![un graphe orienté]({{ "/assets/cours/graphes/graphe_oriente_boucle.png" | relative_url }}){:style="margin: auto;display: block;"}
+![un graphe orienté](../assets/img/graphe_oriente_boucle.png)
 
 codé en python :
 
@@ -155,11 +166,12 @@ On pourra facilement accéder à :
 * savoir si $xy$ est une arête (avec $x$ et $y$ des indices) : `y in edges[x]` rendra `True`si $xy$ est une arête et `False` sinon.
 * aux voisins de `x` : `list(g[x])` (avec `x` un indice). On copie la liste plutôt que d'utiliser celle de `edges` pour éviter les soucis.
 
-> de part la structure proposée :
->
->* la complexité de `y in g[x]` est en $\mathcal{O}$(`len(g[x])`),
->* lorsque vous manipulez `g[x]` faites attention à ne pas la modifier sinon vous modifiez la structure du multi-graphe.
-{: .attention}
+{% attention %}
+de part la structure proposée :
+
+* la complexité de `y in g[x]` est en $\mathcal{O}$(`len(g[x])`),
+* lorsque vous manipulez `g[x]` faites attention à ne pas la modifier sinon vous modifiez la structure du multi-graphe.
+{% endattention %}
 
 ## multi-graphes eulérien
 

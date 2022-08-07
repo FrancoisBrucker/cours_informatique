@@ -6,7 +6,7 @@ tags: code python
 ---
 
 > [Algorithme, code et théorie]({% link cours/algorithme-code-theorie/index.md %}) / [exercices]({% link cours/algorithme-code-theorie/exercices/index.md %}) / [2021-2022]({% link cours/algorithme-code-theorie/exercices/2021-2022/index.md %}) / [sujet Test 2 : complexité et preuve]({% link cours/algorithme-code-theorie/exercices/2021-2022/2_test_sujet.md %})
-{: .chemin}
+{.chemin}
 
 Toute tentative d'enfumage sera sanctionnée avec des points en moins :
 
@@ -64,7 +64,7 @@ def recherche(T, k):
 Donnez la complexité de la fonction `recherche(T, k)`
 
 > Pour calculer la complexité de la fonction recherche, il vous faudra également calculer les complexités des fonctions utilisées par celle-ci.
-{: .attention}
+{.attention}
 
 ## 2
 
@@ -75,7 +75,7 @@ Quel est l'intérêt de la fonction `copie(T)` ?
 Démontrez que la fonction `recherche(T, k)` rend l'indice du $k$ème plus petit élément de $T$.
 
 > Pour démontrer ce que fait recherche, il vous faudra également trouver et démontrer ce que font les fonctions utilisées par celle-ci.
-{: .attention}
+{.attention}
 
 ## 4
 

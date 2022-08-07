@@ -13,14 +13,14 @@ Les divers contrôles intermédiaires seront à rendre directement sur [ametice]
 > Un tuto pour installer proprement un ordinateur pour le développement est [disponible ici](({% link _tutoriels/systeme/2021-09-01-installation-ordinateur.md %})).
 >
 > Sinon demandez au prof, il vous aidera à bien faire les choses.
-{: .attention}
+{.attention}
 
 ## Plan des cours
 
 L'ensemble du cours (et d'autres choses) est disponible [là]({% link cours/algorithme-code-theorie/index.md %})
 
 > Chaque **vendredi** à partir de la semaine 2 il y aura un contrôle de 15min en début de séance portant sur le programme de la semaine précédente.
-{: .attention}
+{.attention}
 
 ### semaine 1
 
@@ -103,7 +103,7 @@ Au programme :
 ### semaine 6
 
 > A partir de la semaine 6, les contrôles de début séance seront à écrire en [markdown]({% link _tutoriels/format-markdown.md %}) et envoyé converti en html (ou pdf) sur amétice.
-{: .attention}
+{.attention}
 
 #### mercredi {#m-6}
 

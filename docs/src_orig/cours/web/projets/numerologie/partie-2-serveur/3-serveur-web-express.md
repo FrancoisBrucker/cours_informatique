@@ -6,7 +6,7 @@ author: "François Brucker"
 ---
 
 > [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 2]({% link cours/web/projets/numerologie/partie-2-serveur/index.md %}) / [serveur web avec express]({% link cours/web/projets/numerologie/partie-2-serveur/3-serveur-web-express.md %})
-{: .chemin}
+{.chemin}
 
 On utilise le module express pour gérer plus élégamment notre site.
 
@@ -58,7 +58,7 @@ npm add --save express
 ```
 
 > N'oubliez pas `--save`, sinon le module sera installé mais la dépendance ne sera pas ajoutée au fichier *"package.json"* ce qui est tarte.
-{: .attention}
+{.attention}
 
 Cette commande a ajouté une dépendance à notre fichier *"package.json"* :
 
@@ -196,7 +196,7 @@ app.use(function (req, res, next) {
 
 > Notez Le format de la fonction change, remarquez qu'il y a un troisième paramètre, `next`.
 > Lorsque vous voulez utiliser `next` il faut que vous l'ajoutiez en paramètre de la fonction.
-{: .attention}
+{.attention}
 
 Toutes les requêtes satisfont cet appel, c'est un loggeur rudimentaire.
 

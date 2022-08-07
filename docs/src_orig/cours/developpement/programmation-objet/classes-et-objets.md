@@ -381,7 +381,7 @@ c2 = Compteur(1)
 ```
 
 >Notez bien que le premier paramètre de la définition de la classe est **TOUJOURS** self. Le premier paramètre de l'utilisation de la méthode est alors le second dans sa définition.
-{: .attention}
+{.attention}
 
 Et il faut modifier la méthode `ajoute(self)` pour qu'elle prenne en compte le pas :
 

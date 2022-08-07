@@ -30,11 +30,20 @@
         display: inline;
     }
     
+    summary p {
+        @apply m-0 inline-block;
+    }
+
+    .quote p, .quote ul, .quote li {
+        @apply m-0;
+    }
+
     article {
         @apply max-w-none prose prose-slate;
     }
-    blockquote > p::before, blockquote > p::after {
-        content: "";
+
+    blockquote {
+        @apply border-l-8;
     }
     code[class*=language-]::before, code[class*=language-]::after {
         content: "";
@@ -43,26 +52,11 @@
 }
 
 @layer components {
-    .wrapper {
-        @apply max-w-[1000px] mx-auto px-4;
-    }
-
     a:not([class]), a:not([class]):visited {
-        text-decoration: none;
-        color: #629FDE;
-        border-bottom: 1px dotted #629FDE;  
+        @apply underline decoration-purple-500 decoration-2 hover:text-purple-800 hover:decoration-purple-800 active:decoration-4;
     }
-    a:not([class]):hover {
-        color: #5549DE;
-        border-bottom: 1px solid #5549DE;
-    }
-    a:not([class]):active {
-        color: #5549DE;
-        border-bottom: 3px solid #5549DE;
-    }
-
-    blockquote {
-        border-left-width: .5rem;
-    }    
 }
 
+table.no-border tr {
+    @apply border-none;
+}

@@ -6,20 +6,20 @@ author: "François Brucker"
 ---
 
 > [commentaires]({% link cours/web/projets/commentaires/index.md %}) / [partie 4]({% link cours/web/projets/commentaires/partie-4-base-de-donnees/index.md %})
-{: .chemin}
+{.chemin}
 
 
 > TBD
 > A refaire.
 > ne garder que la partie sqlite et faire attention à windows avec le changement de path
-{: .note}
+{.note}
 
 ## sqlite
 
 Comme nous allons utiliser une base de données, on vous demande d'installer [sqlite](https://www.sqlite.org/index.html) sur votre système. C'est une base de données sql qui fonctionne sans serveur et sauve les données sur le disque. Ne l'utilisez en production que pour de *petites* applications ou pour vos tests. 
 
 > Il se peu que si vous utilisez sqlite sous mac, le système vous empêche de l'exécuter. Dans ce cas là, allez dans *préférences > sécurité et confidentialité > général* et choisissez autoriser quand même à côté de la requête sqlite (vous devrez certainement déverrouiller le cadenas pour le faire).
-{: .attention}
+{.attention}
 
 ### installation sqlite
 

@@ -12,7 +12,7 @@ Les fonctions de hachage. De la définition mathématique à son utilité en inf
 >
 > * [fonctions]({% link cours/algorithme-code-theorie/theorie/fonctions.md %})
 >
-{: .chemin}
+{.chemin}
 
 ## définition
 
@@ -23,14 +23,14 @@ Dans notre cas, en informatique, on peut définir une [fonction de hachage](http
 > $$f: \mathbb{N} \rightarrow [0 \mathrel{ {.}\,{.} } m]$$
 >
 > où $m$  est un entier positif.
-{: .note}
+{.note}
 
 Une définition alternative, également souvent utilisée, est :
 
 > Une **fonction de hachage** est une fonction $f$ qui associe à tout mot de $\\{0, 1\\}^\star$ un mot de $\\{0, 1\\}^k$.
 >
 > où $k$  est un entier positif.
-{: .note}
+{.note}
 
 Enfin, comme tout en informatique est codé comme une suite de 0 et de 1, une fonction de hachage peut ainsi être vue comme :
 
@@ -178,7 +178,7 @@ De là, si l'ensemble de nombre que l'on a à hacher n'est pas uniforme mais adm
 Pour palier ce problème :
 
 > Si l'on utilise le modulo comme fonction de hachage, il est recommandé d'utiliser un nombre $m$ premier.
-{: .note}
+{.note}
 
 #### hash de structures composées
 
@@ -201,7 +201,7 @@ Ceci assure :
 ## collisions
 
 > Une **collision** pour une fonction de hachage $h$ est deux nombre $a$ et $b$ telle que $f(a) = f(b)$
-{: .note}
+{.note}
 
 Le but est — bien sûr — de minimiser les collisions.
 
@@ -211,7 +211,7 @@ Le but est — bien sûr — de minimiser les collisions.
 > \bar{p}(n, m) = \prod_{i=1}^{n-1}(1-\frac{i}{m+1})
 > $$
 >
-{: .note}
+{.note}
 {% details preuve %}
 
 A chaque fois que l'on tire un nombre au hasard, il faut que son hash soit différent de ceux des tirages précédents. Au $i$ème essai il y a donc une probabilité de $\frac{i-1}{m+1}$ de tomber sur un hash déjà vu et une probabilité de $1-\frac{i-1}{m+1}$ d'en obtenir un nouveau.
@@ -232,7 +232,7 @@ On peut en extraire des solutions approchées si $m$ est très grand devant $n$ 
 > n \simeq \sqrt{2(m+1)\ln(\frac{1}{\bar{p}(n, m)})}
 > $$
 >
-{: .note}
+{.note}
 {% details preuve %}
 
 $$
@@ -266,7 +266,7 @@ Pour avoir 50% de chance d'obtenir une collision. Ce qui fait tout de même un s
 On l'a vue, si la taille du hashage est grand, il faut a priori un grand nombre d'objet pour espérer avoir une collision. C'est pourquoi on considère souvent que :
 
 > *En pratique* une fonction de hashage utile est une **injection** de l'ensemble des objets utilisés dans le programme dans $[0 \mathrel{ {.}\,{.} } m]$ ou $\\{0, 1\\}^k$  selon la fonction utilisée
-{: .note}
+{.note}
 
 Cette propriété permet d'utiliser les fonctions de hashage pour :
 
@@ -306,7 +306,7 @@ Plusieurs méthode de hash cryptographique existent. On peut en citer deux, issu
 * SHA256 (protocole [sha-2](https://fr.wikipedia.org/wiki/SHA-2))
 
 > On recommande actuellement d'utiliser l'algorithme SHA256 ou SHA512 pour un usage cryptographique.
-{: .note}
+{.note}
 
 Ils sont directement utilisable :
 

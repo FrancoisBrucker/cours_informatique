@@ -6,7 +6,7 @@ tags: code python
 ---
 
 > [Algorithme, code et théorie]({% link cours/algorithme-code-theorie/index.md %}) / [exercices]({% link cours/algorithme-code-theorie/exercices/index.md %}) / [2021-2022]({% link cours/algorithme-code-theorie/exercices/2021-2022/index.md %}) / [sujet DS 2 : projet de code]({% link cours/algorithme-code-theorie/exercices/2021-2022/ds_2_sujet.md %})
-{: .chemin}
+{.chemin}
 
 ## documents à rendre
 

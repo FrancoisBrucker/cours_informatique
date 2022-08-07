@@ -12,7 +12,7 @@ author: "François Brucker"
 >
 >* [projet : héritage]({% link cours/algorithme-code-theorie/code/programmation-objet/projet-heritage.md %})
 >
-{: .chemin}
+{.chemin}
 
 ## mise en place
 
@@ -27,7 +27,7 @@ python -m pip install pyglet
 > 1. créez un dossier nommé *"arkanoid"* où vous placerez vos fichiers
 > 2. créez un projet vcode dans ce dossier
 >
-{: .a-faire}
+{.a-faire}
 
 ### vérifications
 
@@ -36,7 +36,7 @@ python -m pip install pyglet
 > * on vérifie que le linter est actif dans vscode
 >* on vérifie que les tests fonctionnent (en créant un test bidon dans *"tests_tris"* et en vérifiant que `pytest` et vscode le trouvent)
 >
-{: .a-faire}
+{.a-faire}
 
 ## programmation événementielle
 
@@ -91,7 +91,7 @@ print("c'est fini !")
 ```
 
 > Exécutez le programme précédent.
-{: .a-faire}
+{.a-faire}
 
 Vous devriez voir apparaitre une fenêtre avec écrit "Hello, world!" en blanc sur fond noir en bas à gauche de la fenêtre. Vous devriez aussi voir dans le terminal le texte : `(400, 200)` qui est la taille de la fenêtre.
 En revanche, le texte `c'est fini !` ne devrait apparaître dans le terminal que lorsque la fenêtre se ferme.
@@ -102,7 +102,7 @@ En revanche, le texte `c'est fini !` ne devrait apparaître dans le terminal que
 > * l'héritage de la classe `Window` de pyglet
 > * la fonction de la ligne `pyglet.app.run()`
 >
-{: .a-faire}
+{.a-faire}
 
 #### une fenêtre redimensionnable
 
@@ -138,7 +138,7 @@ print("c'est fini !")
 > * l'ajout d'un `print` dans la méthode `on_draw`
 > * lorsque l'on change la taille de la fenêtre, la méthode `on_draw` est exécutée
 >
-{: .a-faire}
+{.a-faire}
 
 #### texte au milieu de la fenêtre
 
@@ -165,7 +165,7 @@ En exécutant le code, le texte est placé au milieu de l'écran ! En revanche, 
 >
 > Attention, `on_resize` est utilisée par `Window`, n’oubliez pas de l’appeler avec un `super`.
 >
-{: .a-faire}
+{.a-faire}
 {% details  solution %}
 l'origine est en bas à gauche de la fenêtre.
 
@@ -218,19 +218,19 @@ Nous n'avons pas utilisé de `super` pour appeler la méthode de la classe mère
 > * qu'après chaque touche appuyée ou relâchée l'évènement `on_draw` est lancé
 > * que même si on laisse appuyé la touche longtemps, il n'y a qu'un seul événement `on_key_press` qui est lancé.
 >
-{: .a-faire}
+{.a-faire}
 
 #### flèches gauche et droite
 
 Les code des différentes touches est disponible dans l'objet [pyglet.window.key](https://pyglet.readthedocs.io/en/latest/modules/window_key.html#module-pyglet.window.key). Chaque touche est une constante dont le nom correspond à la la touche et sa valeur au code. Par exemple, la constante `pyglet.window.key.SPACE` correspond au nombre 32.
 
 > Vérifiez que lorsque vous appuyez sur la touche espace de votre clavier, c'est bien le symbole 32 qui et affiché
-{: .a-faire}
+{.a-faire}
 
 Nous allons maintenant faire bouger d'un cran notre texte lorsque l'on appuie sur les touches "flèche gauche" et "flèche droite".
 
 > En utilisant le fait que les deux attributs `x` et `y` contiennent la position du label : faite en sorte que lorsque l'on appuie sur une flèche du clavier (le nom des constantes de  `pyglet.window.key` correspondant aux flèches sont disponible [là](https://pyglet.readthedocs.io/en/latest/modules/window_key.html#cursor-control-and-motion)), le texte se déplace de 10pixel vers la direction de la flèche.
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 ```python
@@ -300,7 +300,7 @@ Le code précédent fait en sorte que la méthode `update` soit exécutée toute
 > * à chaque appelle de `update`, bougez la position du label de `self.dx` et `self.dy`
 > * gérez les valeurs de `self.dx` et `self.dy` dans `on_key_press` et `on_key_release` (par exemple `self.dx = -10` lorsque l'on appuie sur la flèche gauche et `self.dx = 0` lorsque la flèche gauche est relâchée)
 >
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 ```python
@@ -357,7 +357,7 @@ Il reste un problème : le texte va sortir de la fenêtre si on reste appuyé tr
 >
 > Les dimensions de la fenêtres sont données par ses attributs `width` et `height`.
 >
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 ```python
@@ -418,7 +418,7 @@ Cerise sur le gâteau, lorsque vous cliquez ou relâchez le bouton de la souris 
 >
 > En utilisant l'événement `on_mouse_motion(self, x, y, dx, dy)` repérez quand la souris rentre et sort du label. N'hésitez pas à regarder [la documentation de l'événement](https://pyglet.readthedocs.io/en/latest/modules/window.html#pyglet.window.Window.on_mouse_motion) pour comprendre la définition de chaque paramètre.
 >
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 ```python
@@ -489,7 +489,7 @@ print("c'est fini !")
 ```
 
 > Testez l'exemple ci-dessus et comprenez ce qu'il fait.
-{: .a-faire}
+{.a-faire}
 
 Les couleurs sont décrites au [format RGB](https://fr.wikipedia.org/wiki/Rouge_vert_bleu) sous la forme de 3 entiers allant de 0 à 255 en base 10 :
 
@@ -528,7 +528,7 @@ A priori, les objets dont vous aurez besoin sont :
 * ... ?
 
 > Lister les différentes classes et événements que vous devrez gérer pour mener à bien le projet. et essayer de construire un premier jet du modèle UML du projet. Ce modèle n'a pas besoin d'être précis, il doit servir de guide à votre découpage en tâche.
-{: .a-faire}
+{.a-faire}
 
 ### découpage du projet en tâche
 
@@ -540,17 +540,17 @@ Commencez par découper le projet en classes et déterminez leurs attributs et m
 > * aux tests de ces méthodes
 > * à l'ajoute de cette fonctionnalité au programme
 >
-{: .note}
+{.note}
 
 Pour que votre première tâche ne soit pas *"faire un jeu arkanoïd"* on ajoute les contraintes :
 
 > La fonctionnalité doit pouvoir être ajoutée en 1/2 heure.
-{: .note}
+{.note}
 
 Enfin :
 
 > On vous demande de garder dans un fichier markdown les différentes taches que vous avez effectuées avec votre projet.
-{: .a-faire}
+{.a-faire}
 
 Si vous suivez ce principe, toutes les 1/2 heure votre jeu sera plus complet. **Ne passez pas 1 heure à coder quelque chose sans l'utiliser !**
 
@@ -563,12 +563,12 @@ Conservez en plus de votre projet un fichier markdown dans le quel vous décrire
 > 1. demandez l'aval de votre encadrant avant de commencer l'implémentation de la tâche
 > 2. conservez dans le fichier markdown de votre projet la fonctionnalité que vous allez ajouter
 >
-{: .a-faire}
+{.a-faire}
 
 N'oubliez pas :
 
 > Les tests et l'utilisation de tâches ne font pas perdre de temps à votre projet, il en font **gagner**.
-{: .attention}
+{.attention}
 
 ## exemple de déroulé
 

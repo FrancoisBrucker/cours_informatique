@@ -12,12 +12,12 @@ author: "François Brucker"
 >
 > * [étude : l'exponentiation]({% link cours/algorithme-code-theorie/algorithme/etude-exponentiation.md %})
 >
-{: .chemin}
+{.chemin}
 
 Avant toute chose :
 
 > Creéz un projet vscode pour implémenter, tester et utiliser les différents algorithmes.
-{: .a-faire}
+{.a-faire}
 
 Nous allons étudier ici deux algorithmes permettant de mélanger un tableau. Commençons par identifier le problème. Nous allons utiliser le problème suivant, qui consiste à rendre une permutation des $n$ premiers entiers :
 
@@ -40,7 +40,7 @@ On ne va pas définir plus que ça la notion d'aléatoire en informatique. On va
 ## remarques préliminaires
 
 > Lalgorithme suivant ne résout pas le problème "permutation". Pourquoi ?
-{: .a-faire}
+{.a-faire}
 
 ```text
 soit T un tableau à n cases
@@ -56,12 +56,12 @@ Il peut y avoir des répétitions.
 {% enddetails %}
 
 > Codez cette méthode (en utilisant la fonction [randint](https://docs.python.org/fr/3/library/random.html#random.randint) du module [random](https://docs.python.org/fr/3/library/random.html)) pour vous rendre compte par vous-même qu'elle ne résout pas le problème.
-{: .a-faire}
+{.a-faire}
 
 ## borne min du problème
 
 > Donnez la borne min du problème "permuation", même si on se sait pas si un tel algorithme
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 Comme il faut rendre un tableau de longueur $n$, une borne minimum du problème "permutation" est de $\mathcal{O}(n)$. Mais rien ne dit qu'un tel algorithme existe.
 
@@ -108,7 +108,7 @@ permutations(T):
 {% endhighlight %}
 
 > Codez cet algorithme et mettez en places des tests pour vérifier qu'il fonctionne.
-{: .a-faire}
+{.a-faire}
 {% details aide à la programmation %}
 
 Vous pourrez utiliser le fait que :
@@ -248,7 +248,7 @@ On remarque que :
 Un algorithme de mélange utilisant `permutations` est alors de choisir 1 permutation parmi toutes les permutations d'un tableau en entrée.
 
 > Codez un algorithme `melange(T)` qui commence par utiliser `permutations(T)` pour créer toutes les permutations possible, puis en choisi un au hasard (en utilisant la fonction [randint](https://docs.python.org/fr/3/library/random.html#random.randint) du module [random](https://docs.python.org/fr/3/library/random.html)) pour la rendre.
-{: .a-faire}
+{.a-faire}
 
 ```python
 from random import randint
@@ -266,7 +266,7 @@ Tester un algorithme avec du hasard est une technique avancée. Nous ne la trait
 > Toutes les permutaions apparaissent-elles *à peu prêt$ le même nombre de fois ?
 >
 > Vérifiez-le expérimentalement
-{: .a-faire}
+{.a-faire}
 
 A priori, oui, tout doit bien se passer si la la fonction [randint](https://docs.python.org/fr/3/library/random.html#random.randint) de python rend un nombre aléatoire : `melange` doit bien rendre qcache permutation de façon équiprobable.
 
@@ -275,7 +275,7 @@ C'est bien une solution au problème, mais sa complexité est cependant prohibit
 Comme on a considéré que la complexité de `randint` est de $\mathcal{O}(1)$, la complexité de `melange` est de l'ordre de la complexité de `permutations` donc : $\mathcal{O}((n+2)!)$ avec $n$ la taille du tableau `element`. L'algorithme `melange` n'est pas utilisable en pratique car [n! est trop gros]({% link cours/algorithme-code-theorie/algorithme/complexite-max-min.md %}#n_factoriel)
 
 > L'intérêt de `mélange` est théorique. Il montre qu'il existe un algorithme pour résoudre le problème (et en donne par là également une borne max).
-{: .note}
+{.note}
 
 ## algorithme de Fisher-Yates ou de Knuth {#algorithme-fisher-yates}
 
@@ -303,7 +303,7 @@ def melange_knuth(elements):
 {% endhighlight %}
 
 > Testez cet algorithme pour voir s'il rend bien des permutations du tableau en entrée.
-{: .a-faire}
+{.a-faire}
 
 > Notez que la boucle for pourrait aussi s'écrire `for i in range(len(copie_elements) - 1, 0, -1):` sans perte de généralité.
 
@@ -344,7 +344,7 @@ On va le vérifier expérimentalement en regardant les permutations du tableau `
 
 > Codez cette expérience.
 > Pour rendre le résultat graphiquem, vous pourrez représenter la courbe $(i, compte[i])$.
-{: .a-faire}
+{.a-faire}
 
 Pour la partie graphique, il faut que [matplotlib](https://matplotlib.org/) soit installé pour que le code fonctionne.  On a utilisé quelques trucs de matplotlib pour que la figue soit jolie :
 
@@ -435,7 +435,7 @@ Python utilise la méthode [shuffle](https://docs.python.org/fr/3/library/random
 > La méthode utilisée par shuffle est l'algorithme de Knuth / Fisher-Yates.
 
 > Regardez les 4 différentes méthodes pour mélanger en python de cet article : <https://www.geeksforgeeks.org/python-ways-to-shuffle-a-list/>. La 4ème méthode n'est pas optimale en complexité. Pourquoi ?
-{: .a-faire}
+{.a-faire}
 
 {% details  solution %}
 
@@ -460,7 +460,7 @@ On en déduit l'algorithme de mélange suivant :
    3. échanger $T[i]$ et $T[j]$
 
 > Codez cet algorithme et refaites l'expérience de la [vérification expérimentale](#verif-expe) pour cet algorithme.
-{: .a-faire}
+{.a-faire}
 
 Vous devirez obtenir quelque chose du type :
 
@@ -469,7 +469,7 @@ Vous devirez obtenir quelque chose du type :
 On remarque que les premières permutations sont surreprésentées par rapport à ce qu'on devrait avoir. On remarque aussi qui'l y a des pics réguliers que l'on n'observe pas avec le mélange de Knuth. Ceci est du au fait que l'on peut produire une même permutation de plusieurs manière avec cet algorithme : on produit plus facilement certaines permutations que d'autres, ce qui rend l'algorithme non équiprobable.
 
 > lisez et comprenez l'article : <https://datagenetics.com/blog/november42014/index.html>. Il explique pourquoi cette méthode n'est pas efficace.
-{: .a-faire}
+{.a-faire}
 
 Nous allons ici juste montrer que les permutations en sorties ne sont pas équiprobables. La probabilité que l'élément d'indice $l$ ne soit jamais choisi pendant l'algorithme est :
 
@@ -492,7 +492,7 @@ Ceci est incompatible avec l'équiprobabilité puisque :
 * il existe $N_0$ tel que pour tout $n \geq N_0$, on a  $\frac{1}{n} < (\frac{1}{e})^2$
 
 > Les remarques ci-dessus montrent que pour $n$ assez grand, la probabilité que l'élément $l$ soit en position $l$ à la fin de l'algorithme est strictement plus grande que l'équiprobabilité.
-{: .note}
+{.note}
 
 C'est bien ce qu'on remarque sur la figure avec la surreprésentation de la première permutation qui est la permutation où rien n'a bougé.
 
@@ -507,7 +507,7 @@ Par exemple, pour pouvoir mélanger un paquet de 52 cartes de façon équiprobab
 > Une suite pseudo-aléatoire simple a souvent une période de $2^{64}$, ce qui n'est vraiment pas assez grand pour pouvoir mélanger équiprobablement un jeu de carte.
 
 > Regardez la partie *A Shortage Of Random Numbers!* du lien suivant <https://www.i-programmer.info/programming/theory/2744-how-not-to-shuffle-the-kunth-fisher-yates-algorithm.html> qui explique celà.
-{: .a-faire}
+{.a-faire}
 
 ### attention aux humains
 
@@ -517,7 +517,7 @@ La perception de ce qu'est l'aléatoire n'est pas aisée. Lorsque l'on joue à u
 * lorsque l'on demande à des humains d'écrire une suite aléatoire de 200 nombres valant 0 ou 1, il y aura une sous-représentation des longues séquences avec le même nombre : celà ne *fait pas aléatoire* d'avoir plein de fois le même nombre à la suite (alors que statistiquement, il faut bien que ces séquences existent).
 
 > lisez l'article de <https://draftsim.com/mtg-arena-shuffler/> qui montre cela avec le mélangeur de [MTGA](https://magic.wizards.com/fr/mtgarena).
-{: .a-faire}
+{.a-faire}
 
 ## autres références
 

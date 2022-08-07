@@ -10,7 +10,7 @@ author: "François Brucker"
 Ce cours, tente de donner des notions de développement web.
 
 > TBD : en chantier
-{: .note}
+{.note}
 
 ## Prérequis
 
@@ -37,14 +37,14 @@ Bon. Ce n'est vraisemblablement pas une URL qu'on a tapé puisque l'on obtient l
 ### url
 
 > [introduction aux URLs]({% link cours/web/tuto_url.md %})
-{: .chemin}
+{.chemin}
 
 Petite introduction à ce qu'est une URL.
 
 ### outils de développement
 
 > [Tutorial sur les outils de développements]({% link cours/web/tuto_outils_dev.md %}).
-{: .chemin}
+{.chemin}
 
 
 L'informatique en général et le web en particulier sont des sciences incarnées. C'est à dire que le code produit un résultat et ce n'est que lorsque ce que l'on pense faire (le code) est conforme à la réalité (ce qu'il produit réellement) que l'on est content.
@@ -52,21 +52,21 @@ L'informatique en général et le web en particulier sont des sciences incarnée
 Il faudra donc sans cesse exécuter votre code (ici voir le résulta dans un navigateur) pour être sur que tout se passe comme prévu.
 
 > Si vous n'avez pas exécuté votre code depuis 10min, vous pouvez être sur qu'il ne fonctionne plus.
-{: .attention}
+{.attention}
 
 POur vous aider a comprendre comment votre code est exécuté, les navigateurs mettent à votre disposition des outils de développements. **Utilisez les** ! ils vous feront gagner un temps précieux.
 
 ### html/css/js
 
 > [tutorial html/css/js]({% link cours/web/tuto_html_css_js.md %})
-{: .chemin}
+{.chemin}
 
 Tout le web tourne autour du trio html (pour la structure des page), css (pour la mise en forme de la page) et le javascript (pour le dynamisme de la page). Avant de les étudier en détail, vous pouvez suivre le petit tuto introductif pour voir un peut de quoi il en retourne.
 
 ## plan du cours
 
 > TBD
-{: .note}
+{.note}
 
 ### projets
 

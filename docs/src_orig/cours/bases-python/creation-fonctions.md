@@ -8,7 +8,7 @@ authors:
 ---
 
 > [bases de python]({% link cours/bases-python/index.md %}) /  [création de fonctions]({% link cours/bases-python/creation-fonctions.md %})
-{: .chemin}
+{.chemin}
 
 Une fonction est un bloc de code exécutable. On peut lui associer un nom et exécuter ce code juste en l'appelant : ceci permet de ne pas copier/coller des lignes code identiques à différents endroit du programme.
 
@@ -118,7 +118,7 @@ La variable nombre sera associée à l'objet entier de valeur 17 dans la fonctio
 Python, à chaque exécution d'une fonction crée un espace de nom pour elle. Cet espace de nom sera détruit lorsque la fonction aura fini d'être exécutée. Une fois cet espace de nom crée, il associe le nom du paramètre à l'objet passé en paramètre.
 
 >Les *paramètres* d'une fonction sont des **noms** de variables qui ne seront connus qu'à l'intérieur de la fonction. À l'exécution de la fonction, le nom de chaque paramètre est associé à l'objet correspondant.
-{: .attention}
+{.attention}
 
 Regardons le bout de code suivant, qui utilise la fonction `plus_moins` définie précédemment :
 
@@ -162,7 +162,7 @@ def double(valeur):
 Il ne sert à rien de mettre des instructions après une instruction `return` car dès qu'une fonction exécute cette instruction, elle s'arrête en rendant l'objet en paramètre. Le retour d'une fonction est pratique pour calculer des choses et peut ainsi être affecté à une variable.
 
 > Dans un fichier, définissez la fonction précédente puis ajouter les 2 lignes ci-après. Quel est le résultat ?
-{: .a-faire}
+{.a-faire}
 
 ```python
 x = double(21)
@@ -174,7 +174,7 @@ Le code précédent exécute la fonction de nom `double` avec comme paramètre u
 Cette valeur retournée est utilisée par la commande `print` pour être affichée à l'écran.
 
 >Les noms de paramètres d'une fonction et les variables déclarée à l'intérieur de la fonction n'existent qu'à l'intérieur de celle-ci. En dehors de ce blocs, ces variables n'existent plus.
-{: .attention}
+{.attention}
 
 ## Fonctions v.s. méthodes
 
@@ -194,7 +194,7 @@ La première ligne crée une liste. La seconde instruction est une *méthode* (`
 Attention cependant lorsque vous utilisez des méthodes. Certaines méthodes ne rendent rien et modifient l'objet sur lequel elle est appliquée, c'est le cas des méthodes `append`, `insert` ou encore `reverse`, alors que d'autres rendent des objets, c'est le cas de `index` par exemple.
 
 > Testez le code suivant pour voir la différence ;
-{: .a-faire}
+{.a-faire}
 
 ```python
 ma_liste = list(range(5))
@@ -217,7 +217,7 @@ print(calcul(produit, 8))
 ```
 
 > exécutez le code précédent et expliquer son fonctionnement
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 On passe une fonction en paramètre de la fonction `calcul`. Le retour de `calcul(produit, 8)` est alors égal à $8 + (2 * 17) = 42$ puisque `fct` est alors la fonction `produit`.

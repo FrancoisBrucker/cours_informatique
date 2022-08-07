@@ -6,7 +6,7 @@ author: "François Brucker"
 ---
 
 > [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 2]({% link cours/web/projets/numerologie/partie-2-serveur/index.md %})
-{: .chemin}
+{.chemin}
 
 Numérologie partie 2. On utilise node/express pour créer un serveur web.
 

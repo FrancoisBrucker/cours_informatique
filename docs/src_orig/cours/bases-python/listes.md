@@ -6,7 +6,7 @@ authors:
 ---
 
 > [bases de python]({% link cours/bases-python/index.md %}) / [variables]({% link cours/bases-python/variables.md %}) / [listes]({% link cours/bases-python/listes.md %})
-{: .chemin}
+{.chemin}
 
 
 Les listes sont la structure principale lorsque l'on veut stocker plusieurs objets. La liste est un conteneur dont on peut accéder les éléments un à un.
@@ -35,7 +35,7 @@ On accède à un élément de la liste en faisant suivre le nom de la liste par 
 Une chaîne de caractère, bien qu'elle ne soit pas une liste stricto sensu peut-être considérée comme une liste composée de caractères : on peut accéder à un caractère particulier de la chaîne comme on le ferait avec une liste.
 
 > Quel est la treizième lettre du mot "anticonstitutionnellement" ?
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 ```text
@@ -57,7 +57,7 @@ On peut aussi commencer par la fin, d'index -1 :
 ```
 
 > Quel est la quatrième lettre avant la fin du mot "anticonstitutionnellement" ?
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 ```text
@@ -90,7 +90,7 @@ Attention aux effets de bords ! Modifier un objet le modifie quelque soit sont n
 ```
 
 > Que vaut `y` ?
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 ```python
@@ -122,7 +122,7 @@ Pour **copier la liste l à partir de l'indice i jusqu'à l'indice j avec un pas
 Il n'est pas nécessaire de renseigner tous les champs.
 
 > que donne `l[::3]` ou `l[1::5]` pour la liste `[3, 6, 9, 12, 15, 18, 21, 24, 27, 30]` ?
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 ```text

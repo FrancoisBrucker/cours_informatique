@@ -44,7 +44,7 @@ qui va afficher :
 ```
 
 > calculez la factorielle de 45.
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 ```python
@@ -56,7 +56,7 @@ print(factorielle)
 ```
 
 {% enddetails %}
-{: .a-faire}
+{.a-faire}
 
 ### Boucle for
 
@@ -93,4 +93,4 @@ for c in "bonjour":
 ```
 
 > essayez les deux exemples précédents dans un interpréteur.
-{: .a-faire}
+{.a-faire}

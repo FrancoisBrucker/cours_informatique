@@ -12,7 +12,7 @@ Le but de ce cours n'est pas de remplacer les tutoriaux du net, il y en a de trÃ
 2. pointer les problÃ¨mes classiques en javascript.
 
 > TBD : en chantier
-{: .note}
+{.note}
 
 ## Tutoriaux du net
 

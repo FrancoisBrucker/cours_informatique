@@ -14,7 +14,7 @@ Qu'est-ce qu'une chaine de caractères et comment on peut l'utiliser.
 >
 > * [mémoire et espace de noms]({% link cours/algorithme-code-theorie/code/memoire-et-espace-noms.md %})
 >
-{: .chemin}
+{.chemin}
 
 En informatique tout est nombre. La base étant l'octet (équivalent à un byte, 8bits, 0xFF en hexadécimal, 255 en décimal). Texte et caractères n'a donc pas vraiment de sens intrinsèque en informatique : ce sont des octets et on les fait correspondre à des caractères.
 
@@ -36,7 +36,7 @@ A priori lorsque l'on ouvre un fichier texte avec un éditeur rien ne dit quel e
 Il n'y a aucun moyen a priori de savoir en quel format le texte est codé. Pour éviter des problèmes :
 
 > Codez tous vos textes en utf-8, ce qui devrait être le comportement par défaut de votre éditeur de texte.
-{: .note}
+{.note}
 
 ## unicode
 
@@ -49,7 +49,7 @@ Ce n'est pas un format fixe, il évolue sans cesse en ajoutant de nouveaux carac
 > On a coutume de faire précéder ce nombre par `U+` pour préciser que c'est un code unicode écrit en hexadécimal.
 >
 > Ainsi `U+1823` correspond à la lettre mongole o : ᠣ
-{: .note}
+{.note}
 
 Allez voir <https://unicode-table.com/fr/#> et scrollez vers le bas pour voir tous les symboles unicode possibles (bizarrement ça ne marche pas le navigateur chrome).
 
@@ -62,7 +62,7 @@ Les caractères sont organisées [en blocs](https://unicode-table.com/fr/blocks/
 * ...
 
 > Unicode permet d'unifier tous les encodages de caractères en associant à tout caractère d'une langue humaine un numéro.
-{: .note}
+{.note}
 
 Cependant unicode n'est **pas** un système d'encodage de caractère, c'est juste une table de correspondance. Cette table est cependant utilisé dans les système d'encodage de caractères, comme l'utf-8.
 
@@ -128,7 +128,7 @@ x = input('entrez un nombre :')
 Dans le bout de code ci-dessus, `x` est une chaine de caractères. Pour la convertir en entier, on fera : `int(x)` qui rendra la conversion de `x` en entier.
 
 > **Toujours** convertir les données entrées par un utilisateur ou lues d'un fichier dans le type voulu.
-{: .note}
+{.note}
 
 ### byte et str
 
@@ -151,7 +151,7 @@ Les différents encoding possibles sont disponibles [dans la documentaion](https
 On utilisera [les nombres de Mersenne](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier) comme prétexte à la manipulation de chaines de caractères en python. Ces exercices sont pour une grande partie tirés d'un cours donné il y a quelques temps par Aristide Grange, à l'université Paul Verlaine de Metz).
 
 > Notez `m27` le 27ième nombre de Mersenne $2^{44497} -1$ :
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 ```python
@@ -161,7 +161,7 @@ m27 = 2 ** 444497 - 1
 {% enddetails %}
 
 > Combien de chiffres en base 10, 2 et 16 possède ce nombre ?
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 * en base 10 : `len(str(m27))` : conversion de l'entier en chaine de caractères puis son nombre de chiffres
@@ -175,7 +175,7 @@ m27 = 2 ** 444497 - 1
 Utilisez la documentation sur les [méthodes de chaines](https://docs.python.org/3/library/stdtypes.html#string-methods) en python pour résoudre les exercices suivants
 
 > Index de la première occurence de `1234` dans m27. Et de la deuxième ?
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 * `str(m27).find('1234')`
@@ -185,7 +185,7 @@ Utilisez la documentation sur les [méthodes de chaines](https://docs.python.org
 {% enddetails %}
 
 > Nombre de 2 dans m27, nombre de 7
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 * `str(m27).count('2')`
@@ -194,7 +194,7 @@ Utilisez la documentation sur les [méthodes de chaines](https://docs.python.org
 {% enddetails %}
 
 > Remplacer des 2 par des 7 dans m27.
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 `str(m27).replace('2', '7')`
@@ -202,7 +202,7 @@ Utilisez la documentation sur les [méthodes de chaines](https://docs.python.org
 {% enddetails %}
 
 > Echanger les 2 et les 7 dans m27
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 `str(m27).replace('2', 'X').replace('7', '2').replace('X', '7')`
@@ -216,12 +216,12 @@ L'extraction de sous-chaines en python se fait par une opération appelé [slice
 > Si `s` est une chaine de caractères, la chaîne de caractères `s[a:b:c]` est la sous chaine de `s` allant de l'indice `a` à l'indice `b-1` avec un pas de `c`.
 >
 > Par défaut `a=0`, `b=-1` et `c=1`
-{: .note}
+{.note}
 
 Ainsi `"abcdefghijklmnopqrstuvwxyz"[2:15:4]` vaut : `'cgko'`.
 
 > Quels sont les 10 premiers chiffres de m27 ?
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 `str(m27)[:10]`
@@ -229,7 +229,7 @@ Ainsi `"abcdefghijklmnopqrstuvwxyz"[2:15:4]` vaut : `'cgko'`.
 {% enddetails %}
 
 > Quels sont les 10 derniers chiffres de m27 ?
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 `str(m27)[-10:]`
@@ -237,7 +237,7 @@ Ainsi `"abcdefghijklmnopqrstuvwxyz"[2:15:4]` vaut : `'cgko'`.
 {% enddetails %}
 
 > Est-ce que m27 est un [palindrome](https://fr.wikipedia.org/wiki/Palindrome) ?
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 `str(m27) == str(m27)[::-1]` (`s[::-1]` renverse la chaine)

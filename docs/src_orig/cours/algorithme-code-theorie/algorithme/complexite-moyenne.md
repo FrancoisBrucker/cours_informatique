@@ -12,12 +12,12 @@ author: "François Brucker"
 >
 > * [complexité max/min]({% link cours/algorithme-code-theorie/algorithme/complexite-max-min.md %})
 >
-{: .chemin}
+{.chemin}
 
 Lorsque le nombre d'opérations d'un algorithme dépend non seulement de la taille de ses entrées mais également de la structure de celles-ci, on a coutume de calculer sa complexité en moyenne :
 
 > La **complexité en moyenne** d'un algorithme est le nombre moyen d'opérations nécessaires pour se terminer par rapport à une taille fixée de ses entrées.
-{: .note}
+{.note}
 
 Cette mesure est très utile en pratique car si la complexité maximale et minimale d'un algorithme est très différente, cela permet de savoir le nombre d'opérations espéré pour un tableau quelconque de taille donné.
 
@@ -38,7 +38,7 @@ Elle dépend des entrées de celui-ci et plus précisément du nombre de fois o�
 >
 > Avec $\mathcal{E}$ l'ensemble des données de taille $n$, $p_e$ la probabilité d'exécuter l'algorithme avec l'entrée $e \in \mathcal{E}$ et $C(e)$ le nombre d'opérations utilisé par l'algorithme pour se terminer avec l'entrée $e$.
 >
-{: .note}
+{.note}
 
 Si l'on a pas de modèle a priori, on considérera que chaque donnée est équiprobable : chaque entrée a la même probabilité d'être choisie, $p_e = \frac{1}{\mid \mathcal{E} \mid}$.
 
@@ -102,7 +102,7 @@ Comme $\sum_{i=0}^{i = n}(i + 1) = \frac{(n + 2)(n + 1)}{2}$ on en déduit que :
 $$C = \mathcal{O}(\frac{n+1}{2}) = \mathcal{O(n)}$$
 
 > En moyenne la complexité l'algorithme `est_dans_tableau` est la même que la complexité maximale. La complexité minimale est très rarement atteinte.
-{: .note}
+{.note}
 
 Pour aller plus vite dans le calcul, on aurait pu dire que si notre modèle est équiprobable, `valeur` va se trouver en moyenne au milieu de notre tableau, et donc qu'il faut parcourir de l'ordre de $\frac{n}{2}$ éléments de `tableau`, la complexité en moyenne est de $\mathcal{O}(n/2) = \mathcal{O}(n)$ qui est la même que la complexité maximale.
 
@@ -118,7 +118,7 @@ Pour tout algorithme, on a les inégalités suivantes :
 >La complexité en moyenne nous indique, pour un modèle de données, si les cas extrêmes (complexité minimale et maximale) arrivent fréquemment ou pas.
 >
 > La complexité en moyenne nous donne le nombre d'opérations *normal* qu'on aura si on exécute l'algorithme.
-{: .note}
+{.note}
 
 Ainsi :
 
@@ -129,4 +129,4 @@ Ainsi :
 En pratique — si l'algorithme dont on veut calculer les complexités est codé — la complexité en moyenne est très facile à estimer sans aucun calcul :
 
 > Pour estimer la complexité en moyenne d'un algorithme codé, il suffit de mesurer le temps pris par l'algorithme pour s'exécuter pour des données aléatoires et d'en faire la moyenne (c'est un [estimateur sans biais de la moyenne théorique](https://fr.wikipedia.org/wiki/Estimateur_(statistique)#Estimateur_de_la_moyenne_de_Y)).
-{: .note}
+{.note}

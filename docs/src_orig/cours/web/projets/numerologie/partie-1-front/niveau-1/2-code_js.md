@@ -6,7 +6,7 @@ author: "François Brucker"
 ---
 
 > [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 1]({% link cours/web/projets/numerologie/partie-1-front/index.md %}) / [niveau 1]({% link cours/web/projets/numerologie/partie-1-front/niveau-1/index.md %}) / [code js]({% link cours/web/projets/numerologie/partie-1-front/niveau-1/2-code_js.md %})
-{: .chemin}
+{.chemin}
 
 Code de la *logique métier* du projet.
 
@@ -45,7 +45,7 @@ Le programme ci-dessus cherche le code unicode de 'o' et de '你'. Est-ce correc
 Pour cela il faut encore convertir notre nombre décimal en nombre [hexadécmal](https://fr.wikipedia.org/wiki/Syst%C3%A8me_hexad%C3%A9cimal).
 
 > Testez la fonction [`parseInt`](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/parseInt) pour convertir une chaine de caractères en nombre (`parseInt("4F60", 16)` par exemple) et la méthode des nombres [`toString`](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Number/toString) qui fait le contraire (`(20320).toString(16)` par exemple).
-{: .note}
+{.note}
 
 ## Tâche 2 : nombre associé à une chaine de caractères {#tache-2}
 
@@ -129,7 +129,7 @@ function somme(nombre) {
 ### test de `somme(nombre)`
 
 > Comment marche le code de `somme(nombre)` ?
-{: .note}
+{.note}
 
 Plutôt que de réfléchir des heures pour tenter de comprendre, rien de tel qu'utiliser le code pour voir. Ca va bien plus vite et au moins on est sur du résultat.
 

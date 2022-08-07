@@ -14,7 +14,7 @@ authors:
 >
 > * [mémoire et espace de noms]({% link cours/algorithme-code-theorie/code/memoire-et-espace-noms.md %})
 >
-{: .chemin}
+{.chemin}
 
 Le but de la programmation objet n'est pas d'utiliser des concepts plus ou moins fumeux (classes abstraites, encapsulation et polymorphismes) mais d'écrire du code :
 
@@ -29,7 +29,7 @@ Si un concept objet va à l'encontre de ce principe dans votre programme **NE L'
 >* des fonctionnalités (des méthodes) qui sont communes à tous les objets de sa classe
 >* des choses à lui tout seul (des attributs) qui lui permettent de se différentier des autres objets de sa classe même s'il a les mêmes fonctionnalités.
 >
-{: .note}
+{.note}
 
 Un objet, n'est donc pas isolé, il partage ses fonctionnalités avec tous les objets de sa *classe*. Pour s'y retrouver entre, classes, objets méthode et attribut et trouver qui appartient à qui, python utilise les [espaces de noms]({% link cours/algorithme-code-theorie/code/memoire-et-espace-noms.md %}#espace-noms) (*namespaces*). Cela lui permet de réutiliser le même code pour plusieurs objets.
 
@@ -40,7 +40,7 @@ Lorsque l'on écrit du code python, on ne fait que manipuler des objets. Les ent
 De façon générale, on peut considérer que :
 
 > un **objet** est **une structure de données** sur laquelle on peut *effectuer des opérations*. Pour pouvoir facilement créer une structure particulière et donner un moyen simple d'effectuer les opérations sur celle-ci, on utilise des **classes** comme patron de ces objets.
-{: .note}
+{.note}
 
 Pour résumer, une classe :
 
@@ -102,7 +102,7 @@ La notation pointée permet de dire que c'est la méthode à droite du `.` que l
 > NameError: name 'upper' is not defined
 > ```
 >
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 C'est la méthode définie dans la classe `str` qui s'appelle `upper` qui existe...
 {% enddetails %}
@@ -114,7 +114,7 @@ On appelle les spécificités de chaque objet, c'est à dire les valeurs de sa s
 un objet `str` est bien plus que juste ses caractères :
   
 > Un objet est est constitué d'attributs défini pour lui et de méthodes définies dans sa classe.
-{: .note}
+{.note}
 
 #### entiers
 
@@ -303,7 +303,7 @@ class <nom de la classe>:
 * deux méthodes : `ajoute` et `donne_valeur`
 
 > En python, lorsque l'on définit une méthode d'une classe, le 1er paramètre de chaque méthode est **toujours** `self`. A l'exécution, python donnera à ce paramètre l'objet qui appelle la méthode, on ne le voit pas lorsque l'on écrit le code.
-{: .note}
+{.note}
 
 Par exemple dans le code la ligne `c1.ajoute()` sera transformée par python en : `Compteur.ajoute(c1)` qui peut se lire : on exécute la fonction `ajoute` de l'espace de noms du bloc `Compteur` avec comme paramètre `c1`.
 
@@ -314,7 +314,7 @@ La première façon d'écrire (`c1.ajoute()`) est plus simple à comprendre **po
 > `self`, le premier paramètre de la définition d'une méthode, est l'objet à gauche du `.` lors de l'appel celle-ci par une notation pointée.
 >
 > C'est la manière explicite de python de montrer quel objet est utilisé lors de l'appel de méthodes.
-{: .note}
+{.note}
 
 Vous pouvez appeler ce premier paramètre comme vous voulez, mais c'est **très très** déconseillé car votre code en deviendra moins lisible (tout le monde utilise le nom `self`).
 
@@ -328,7 +328,7 @@ Par exemple, considérons la ligne de code `"coucou".upper().count("U")` :
 ### exécution du code
 
 > Lorsque l'on définit une classe, python lui associe un espace de noms. Les différents noms définit dans la classes y seront consignés.
-{: .note}
+{.note}
 
 Dans l'exemple du compteur, lorsque le fichier *"main.py"* importe le fichier *"compteur.py"*, la classe `Compteur` y est définie. Dans son namespace seront alors placés les noms :
 
@@ -343,7 +343,7 @@ De même :
 > Lorsque l'on crée un objet, python lui associe un espace de noms.
 >
 > Son espace de noms parent est celui de sa classe.
-{: .note}
+{.note}
 
 L'espace de noms de l'objet est important, il est utilisé à chaque notation pointée. Par exemple dans la méthode `__init__`, la ligne `self._valeur = 0` crée un objet entier (valant 0) et l'affecte au nom `_valeur` dans l'espace de noms de l'objet nommé `self`.
 
@@ -377,7 +377,7 @@ Reprenons le code de *"main.py"*, et exécutons le ligne à ligne :
 8. `print(c1.donne_valeur())` : pareil que la ligne 4. `donne_valeur` est défini dans la classe. On essaye ici d'afficher à l'écran le résultat de l'exécution de la méthode `donne_valeur` appliquée à l'objet de nom `c1`
 
 > `objet.nom` est **toujours** résolu de façon identique en python : on commence par chercher le nom dans l'objet et si on ne le trouve pas on cherche dans sa classe
-{: .note}
+{.note}
 
 ## Deuxième exemple : Compteur à pas choisi
 
@@ -417,7 +417,7 @@ c2 = Compteur(1)
 ```
 
 >Notez bien que le premier paramètre de la définition de la classe est **TOUJOURS** self. Le premier paramètre de l'utilisation de la méthode est alors le second dans sa définition.
-{: .attention}
+{.attention}
 
 Et il faut modifier la méthode `ajoute(self)` pour qu'elle prenne en compte le pas :
 
@@ -436,7 +436,7 @@ class Compteur:
 > self.nom_attribut = valeur_attribut
 > ```
 >
-{: .note}
+{.note}
 
 Cette façon de faire :
 
@@ -446,7 +446,7 @@ Cette façon de faire :
 permet à chaque objet (le paramètre `self`) d'être différent tout en utilisant les mêmes méthodes.
 
 > Lors de l'utilisation de méthode l'objet est passé en premier paramètre, ce qui permet de réutiliser tous ses attributs.
-{: .note}
+{.note}
 
 ### paramètre par défaut
 
@@ -583,7 +583,7 @@ class Compteur
 ```
 
 > On peut maintenant comparer 2 compteurs, ou un compteur à toute autre objet qui possède l'attribut valeur.
-{: .note}
+{.note}
 
 ### code
 

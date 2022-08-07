@@ -121,7 +121,7 @@ print(panier.montre_panier())
 ### attention
 
 > Si une classe est composée d'autres objets, ces parties peuvent être modifiées en dehors de la classe, même pour une composition.
-{: .attention}
+{.attention}
 
 Dans notre exemple, une méthode retourne un objet qui est un attribut. Une fois qu'un objet a été *donné* au monde extérieur on ne contrôle plus son état et il peut être utilisé a priori par n'importe quoi d'autre dans le programme.
 

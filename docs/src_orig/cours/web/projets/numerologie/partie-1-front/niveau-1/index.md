@@ -6,7 +6,7 @@ author: "François Brucker"
 ---
 
 > [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 1]({% link cours/web/projets/numerologie/partie-1-front/index.md %}) / [niveau 1]({% link cours/web/projets/numerologie/partie-1-front/niveau-1/index.md %})
-{: .chemin}
+{.chemin}
 
 Numérologie partie 1 - niveau 1. On ne verra que le strict nécessaire pour pour faire fonctionner le code :
 

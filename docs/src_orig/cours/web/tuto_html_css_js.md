@@ -64,7 +64,7 @@ Vous voyez votre fichier html être interprété par chrome,
 
 >félicitations !
 > Vous venez d'écrire votre 1er fichier html.
-{: .note}
+{.note}
 
 ### validation du html 
 
@@ -90,7 +90,7 @@ Il y a un soucis, il vous demande d'ajouter la langue dans laquelle est écrit v
 Re-tentez une validation. Tout devrait être ok. 
 
 >Re-Félicitation, vous venez d'écrire votre 1er fichier html correct !
-{: .note}
+{.note}
 
 Cela peut semble anecdotique d'écrire du joli html correct puisque votre navigateur arrive à le lire même s'il est mal écrit. Mais ça ne l'est pas et ce principalement parce que c'est **bad karma** (ça va vous retomber sur le coin de la figure tôt ou tard). En effet, lorsque vous écrivez du code html non correct, le navigateur va essayer de le corriger en l'interprétant. Ca va souvent être ce que vous vouliez, mais le jour où cela ne le sera pas vous ne comprendrez pas pourquoi. Et une succession de petites erreurs va produire un code très difficile à corriger. 
 
@@ -243,7 +243,7 @@ Pour la suite, vous pouvez apprendre à structurer vos pages [ici](https://openc
 ## js
 
 > TBD : simplifier les exemple du js ?
-{: .note}
+{.note}
 
 ### modification de l'arbre dom
 
@@ -293,11 +293,11 @@ On y voit un rectangle rouge. Vous devriez comprendre ce qu'il se passe :
   * qu'il soit au centre (la classe `milieu`) avec la propriété [margin](https://www.w3schools.com/css/css_margin.asp) à 2 paramètres (le 1er paramètre c'est haut et bas (ici `10px` (px pour pixel)) et le second gauche et droite. `auto` voulant dire au milieu).
 
 >Testez le code sans la balise style pour voir la différence 
-{: . note}
+{. note}
 
 
 > `margin auto` ne marche que si la balise a une largeur. Si elle fait la taille de la fenêtre ce qui est le cas par défaut pour la balise `<div></div>` (en vrai, toutes les balises de type [display block](https://developer.mozilla.org/fr/docs/Glossary/Block/CSS)) `margin auto` ne fera rien puisqu'il n'y a rien à centrer.
-{: .attention}
+{.attention}
 
 Ajoutons du javascript qui va modifier l'arbre DOM. On va rendre notre rectangle bleu : 
 
@@ -344,7 +344,7 @@ On peut maintenant lire le tout dans l'ordre pour comprendre : On récupère l'�
 
 > Le javascript, comme le html et le css d'ailleurs sont exécutés lorsqu'ils sont lu. Si vous mettez le script en début de la balise `<body></body>` ça ne marchera pas puisque le `<div></div>` d'id `#mon_div`n'exite pas encore.
 > Teste le.
-{: .attention}
+{.attention}
 
 ### évènements
 
@@ -397,7 +397,7 @@ On a fait exactement pareil que tout à l'heure, sauf que :
 
 
 > une fonction est différent de son résultat. Dans l'exemple, `changeCouleur` est la fonction, `changeCouleur()` est le résultat de son exécution. On affecte une fonction à un évènement, pas son exécution.
-{: . attention}
+{. attention}
 
 Comme on va passer son temps à créer des fonction qui ne vont être utilisées que lors d'un évènement, javascript permet d'écrire ce que l'on nomme des [fonction anonyme](http://www.coursweb.ch/javascript/anonymous-functions.html) (elles n'ont pas de nom). Remplacez la balise script par ce qui suit pour voir comment définir et utiliser une fonction anonyme :
 
@@ -436,7 +436,7 @@ Si l'on veut pouvoir recliquer sur le rectangle pour faire repasser sa couleur �
 > En javascript, une variable est globale par défaut. C'est à dire qu'on peu en parler et la modifier partout. 
 > Dans le code ci-dessus par exemple, on modifie la variable dans une fonction alors que celle-ci n'est pas défini dans la fonction. 
 > Cela ne fonctionne **qu'en javascript**.
-{: .attention}
+{.attention}
 
 
 

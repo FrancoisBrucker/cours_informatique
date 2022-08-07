@@ -9,7 +9,7 @@ category: cours
 > prérequis :
 >
 > * [Algorithmes, fonctions et pseudo-code]({% link cours/algorithme-code-theorie/theorie/algorithmes-fonctions-pseudo-code.md %})
-{: .chemin}
+{.chemin}
 
 On a vu dans la partie [fonctions]({% link cours/algorithme-code-theorie/theorie/fonctions.md %}) qu'un algorithme ne pouvait pas tout calculer, qu'il y a avait même bien plus de choses qu'on ne pouvait pas faire avec un algorithme que de chose qu'on pouvait faire avec.
 
@@ -28,7 +28,7 @@ Ce qui faut retenir de cette partie :
 Commençons par définir un *problème de décision* :
 
 > Un **problème de décision**, est une question qui ne peut avoir que deux réponses *vrai* ou *fausse* selon l'entrée donnée.
-{: .note}
+{.note}
 
 Par exemple le problème suivant est un problème de décision :
 
@@ -39,7 +39,7 @@ Par exemple le problème suivant est un problème de décision :
 Un problème de décision est **décidable**,  si on peut lui associer un algorithme (on dit un *décideur*) qui répond comme lui :
 
 > Un **décideur** est un algorithme qui pour toute entrée, répond *Vrai* ou *faux*
-{: .note}
+{.note}
 
 Le problème de décision *premier* admet un décideur (il suffit de tester tous les entiers plus petit que $n$ pour voir si le reste de la division entière vaut 0), mais ce n'est pas de tous les les problèmes.
 
@@ -52,12 +52,12 @@ Par exemple le problème suivant [n'admet pas de décideur](#arret), il est **in
 La décidabilité est donc le fait de savoir si on peut reconnaitre l'ensemble $L$ des entrées qui satisfont une propriété donnée :
 
 > Un ensemble de mots $L$ est décidable s'il existe un **décideur** qui répond *vrai* si l'entrée est dans $L$ et *faux* sinon.
-{: .note}
+{.note}
 
 Il existe un cas plus faible que la décidabilité, c'est la *reconnaissabilité* :
 
 > Un ensemble de mots $L$ est **reconnaissable** s'il existe un algorithme $M$ telle que $L = \mathcal{L}(M)$ (l'algorithme ne va s'arrêter que pour les entrées de $L$)
-{: .note}
+{.note}
 
 Notez que tout problème décidable est reconnaissable (à la place de répondre *Faux* on boucle indéfiniment), mais ce n'est pas le cas de tous les problèmes ([ce problème](#poli-z) par exemple).
 
@@ -111,7 +111,7 @@ En revanche le problème suivant qui en est une généralisation n'est pas déci
 * **question** : $P(X)$ Possède-t-il une [racine](https://fr.wikipedia.org/wiki/Racine_d%27un_polyn%C3%B4me) dans $\mathbb{N}$ (un entier $a$ tel que $P(a) = 0$) ?
 
 > *"racine polynôme plusieurs variables"* est un problème **reconnaissable** mais **indécidable**.
-{: .note}
+{.note}
 {% details élément de la preuve %}
 Cela a été [démontré en 1970 par Matiiassevitch](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Matiiassevitch) en prouvant que l'on ne pouvait pas borner les racines d'un polynôme à plusieurs variables.
 
@@ -143,7 +143,7 @@ L'algorithme est très simple : à partir d'un entier $n$, il le divise par 2 s'
 > Testez chez vous pour plusieurs nombres, c'est assez bluffant.
 >
 > Affichez également la suite de nombre ou la représenter graphiquement pour voir l'évolution de votre nombre d'entrée jusqu'à 1.
-{: .a-faire}
+{.a-faire}
 
 Personne ne sait (à l'heure où je tape ces caractères) si cet algorithme s'arrête pour tout $n$.
 
@@ -156,7 +156,7 @@ De façon plus générale le problème de décision :
 > * **question** : $A$ s'arrête-t-il avec $E$ comme entrée ?
 >
 > est **indécidable**.
-{: .note}
+{.note}
 {% details preuve %}
 
 On doit la preuve à Turing lui-même, qui l'a démontrée dans le cadre de ses machines. Et comme une machine de Turing est équivalente à un algorithme, on peut reprendre directement sa preuve.
@@ -195,7 +195,7 @@ On peut montrer que le cas particulier suivant est lui aussi indécidable :
 > * **question** : $A$ s'arrête-t-il avec une entrée vide ?
 >
 > est **indécidable**.
-{: .note}
+{.note}
 {% details preuve %}
 Si $E$ est une entrée et $A$ un algorithme, il existe un algorithme $A_E$ qui commence par affecter l'entrée $E$ à une variable, puis exécute l'algorithme $A(E)$. On a donc que $A$ s'arête avec $E$ comme entrée si et seulement si $A_E$ s'arrête avec une entrée vide.
 
@@ -204,14 +204,14 @@ De là, un algorithme qui pourrait décider si $A_E$ s'arrête ou non avec une e
 {% enddetails %}
 
 > Il faut bien comprendre l'énoncé ci-dessus.
-{: .attention}
+{.attention}
 
 Il n'existe pas de décideur qui prend comme entrée **et** un algorithme **et** une entrée et qui rend *Vrai* si l'algorithme va s'arrêter : l'algorithme et le mot d'entrée sont les **entrées** du décideur.
 
 Cela ne contredit pas le fait qu'on puisse créer un décideur spécifique à un algorithme qui réponde *vrai* ou *faux* selon l'entrée de celui-ci. C'est l'algorithme général, indépendant de l'algorithme à tester, qui n'existe pas.
 
 > Lorsque l'on parle de décidabilité ou de problème **il faut toujours bien faire attention à ce qui est un paramètre d'entrée et ce qui est donné**.
-{: .note}
+{.note}
 
 Le théorème d'indécidabilité de l'arrêt d'un algorithme est fondamental théoriquement. Il est à la base de nombreux contre-exemples et :
 
@@ -231,7 +231,7 @@ Le [Théorème de Rice](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Rice
 > * **question** : Est-ce qu'il existe $A'$ dans $\mathcal{A}$ tel que $A(E) = A'(E)$ pour toute entrée $E$ ?
 >
 > est **indécidable**.
-{: .note}
+{.note}
 {% details preuve %}
 Soit $A0 \in \mathcal{A}$ et $M$ un algorithme. On peut alors construire l'algorithme suivant :
 
@@ -253,7 +253,7 @@ Ce théorème a de profondes implications. Il montre en effet que l'on ne peut p
 Par exemple : il est indécidable de savoir si un algorithme calcule $n!$
 
 > en revanche il est parfois possible de démonter si un algorithme donné calcule $n!$ ou pas.
-{: .attention}
+{.attention}
 
 Ceci rend impossible des méthodes automatisées de preuve d'algorithmes. Il est donc nécessaire :
 

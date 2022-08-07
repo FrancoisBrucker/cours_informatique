@@ -6,7 +6,7 @@ author: "François Brucker"
 ---
 
 > [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 1]({% link cours/web/projets/numerologie/partie-1-front/index.md %}) / [niveau 1]({% link cours/web/projets/numerologie/partie-1-front/niveau-1/index.md %}) / [préparation]({% link cours/web/projets/numerologie/partie-1-front/niveau-1/1-preparation.md %})
-{: .chemin}
+{.chemin}
 
 Avant de se lancer à corps perdu dans le développement et le code, vérifions que nous avons tous les outils nécessaires.
 
@@ -39,7 +39,7 @@ console.log("bonjour " + nom + " !")
 ```
 
 > Puis sauvez le fichier (*menu Fichier > Enregistrer*).
-{: .note}
+{.note}
 
 ### exécution du code
 
@@ -48,6 +48,6 @@ Tapez ">terminal" dans la [palette de commande]({% link _tutoriels/editeur/vsc/v
 Un nouveau terminal s'ouvre directement dans le dossier de votre projet. Magique non ?
 
 >On peut Maintenant exécuter notre fichier en tapant dans ce nouveau terminal : `node mes_tests.js`.
-{: .note}
+{.note}
 
 N'oubliez pas non plus le [termnial de vscode]({% link _tutoriels/editeur/vsc/2021-09-14-vsc-terminal.md %}#terminal-integre), ouvrez le (*"menu Affichage > Terminal"*) et exécutez votre code comme précédemment..

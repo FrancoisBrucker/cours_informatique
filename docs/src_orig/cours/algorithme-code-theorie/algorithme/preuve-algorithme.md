@@ -11,7 +11,7 @@ author: "François Brucker"
 > prérequis :
 >
 >* [algorithmie/pseudo-code]({% link cours/algorithme-code-theorie/algorithme/pseudo-code.md %})
-{: .chemin}
+{.chemin}
 
 Un algorithme a **toujours** un but, quelque chose pour quoi il est fait. Dans notre cas, un algorithme calculera la solution d'un problème.
 
@@ -27,7 +27,7 @@ Prouver qu'un algorithme s'arrête fait partie des problèmes théoriques diffic
 > * une équation de récurrence plus une condition d'arrêt pour prouver un algorithme récursif.
 > * [un invariant de boucle](https://fr.wikipedia.org/wiki/Invariant_de_boucle) pour des algorithme itératifs. Ces invariants vont alors être conservés jusqu'à la fin de l'algorithme et nous permettre de prouver son résultat.
 >
-{: .note}
+{.note}
 
 Notez que bien souvent prouver un algorithme et le créer est la même chose. Comprendre comment on peut résoudre un problème donné nous donnera l'algorithme et réciproquement.
 
@@ -61,7 +61,7 @@ On va voir ici 2 version du même algorithme. L'un qui construit la factorielle 
 > 2. on suppose l'invariant à la fin de l'itération $k$ de la boucle et on vérifie qu'il est toujours vérifié à la fin de l'itération $k + 1$.
 >
 > Pour simplifier l'écriture, on note avec un `'` (prim) les variables à la fin de la boucle d'itération $k+1$ pour les différentier des variables de la fin de l'itération $k$.
-{: .note}
+{.note}
 
 Un invariant doit résumer ce que fait la boucle avec une équation qui est toujours vérifiées, même si on modifie des variables.
 

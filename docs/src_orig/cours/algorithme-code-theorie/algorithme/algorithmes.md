@@ -5,7 +5,7 @@ category: cours
 ---
 
 > [Algorithme, code et théorie]({% link cours/algorithme-code-theorie/index.md %}) / [algorithme]({% link cours/algorithme-code-theorie/algorithme/index.md %}) / [algorithmes]({% link cours/algorithme-code-theorie/algorithme/algorithmes.md %})
-{: .chemin}
+{.chemin}
 
 Pseudo-code, calcul et code sont les trois faces d'une même pièce nommée algorithme. Nous allons voir les implications de ces trois termes, mais commençons par définir un algorithme.
 
@@ -18,7 +18,7 @@ On doit le mot algorithme à [Ada Lovelace](https://fr.wikipedia.org/wiki/Ada_Lo
 Définition du 'Petit Robert'  d'un **algorithme** :
 
 > ensemble des règles opératoires propres à un *calcul*
-{: .note}
+{.note}
 
 Qu'est-ce que ça veut dire ?
 
@@ -63,7 +63,7 @@ Donald Knuth (1938-) liste, comme prérequis d'un algorithme, [cinq propriétés
 On peut en déduire la **définition** suivante :
 
 > Un **algorithme** est une succession d'instructions simples et clairement définies. A partir d'entrées, il produit une sortie en un nombre fini d'instructions.
-{: .note}
+{.note}
 
 Ou, de façon équivalente :
 
@@ -74,7 +74,7 @@ Ou, de façon équivalente :
 >3. un humain doit pouvoir suivre chaque étape avec un papier et un crayon
 >4. exécuter une instruction ne doit pas nécessiter d'intelligence (à part celle pour comprendre l'instruction)
 >
-{: .note}
+{.note}
 
 Un algorithme est donc constitué de trois parties :
 
@@ -104,4 +104,4 @@ Quelque-soit la forme que prendra vos algorithmes (pseudo-code, code ou calcul),
 >    * preuve qu'il résout le problème demandé
 > 3. évaluer ses performances en calculant sa complexité, c'est à dire le nombre d'instructions qu'il a effectué avant de se terminer
 >
-{: .note}
+{.note}

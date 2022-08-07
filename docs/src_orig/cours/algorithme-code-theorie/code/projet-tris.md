@@ -13,7 +13,7 @@ author: "François Brucker"
 >* [étude : trier un tableau]({% link cours/algorithme-code-theorie/algorithme/etude-tris.md %})
 >* [projet : exponentiation]({% link cours/algorithme-code-theorie/code/projet-exponentiation.md %})
 >
-{: .chemin}
+{.chemin}
 
 Ce projet suit l'[étude des tris]({% link cours/algorithme-code-theorie/algorithme/etude-tris.md %}).
 
@@ -27,7 +27,7 @@ Ce projet suit l'[étude des tris]({% link cours/algorithme-code-theorie/algorit
 >    * *"tris.py"*
 >    * *"test_tris.py"*
 >
-{: .a-faire}
+{.a-faire}
 
 ### vérifications
 
@@ -36,7 +36,7 @@ Ce projet suit l'[étude des tris]({% link cours/algorithme-code-theorie/algorit
 > * on vérifie que le linter est actif dans vscode
 >* on vérifie que les tests fonctionnent (en créant un test bidon dans *"tests_tris"* et en vérifiant que `pytest` et vscode le trouvent)
 >
-{: .a-faire}
+{.a-faire}
 
 ## implémentation des tris
 
@@ -66,28 +66,28 @@ Pour faire cela, on utilisera ce que nous avons fait pendant le [projet exponent
 ### calcul des complexités temporelles
 
 > Créez un fichier *"mesure.py"*
-{: .a-faire}
+{.a-faire}
 
 ### tri par sélection
 
 > Créez dans le fichier *"mesure.py"* une fonction `temps_selection`  qui, à partir d'un tableau en entrée, rend le temps mis pour exécuter cet algorithme avec le tableau donné.
 >
-{: .a-faire}
+{.a-faire}
 
 > Dans un fichier *"main_selection"*, affichez sur un graphique courbe du temps mis (axe des ordonnées) pour trier avec `selection` le tableau des $n$ premiers entiers triés, pour une taille $n$ (axe des abcisses) allant de 1 à 2000 par pas de 10.
 >
 > A quel type de complexité correpond cette mesure ?
-{: .a-faire}
+{.a-faire}
 
 ### tri par insertion
 
 > Créez dans le fichier *"mesure.py"* une fonction `temps_insertion`  qui, à partir d'un tableau en entrée, rend le temps mis pour exécuter cet algorithme avec le tableau donné.
 >
-{: .a-faire}
+{.a-faire}
 
 > * pour quel type de tableau est atteint la complexité minimale de l'algorithme `insertion` ?
 > * pour quel type de tableau est atteint la complexité maximale de l'algorithme `insertion` ?
-{: .a-faire}
+{.a-faire}
 
 Utilisez ces tableaux pour :
 
@@ -97,17 +97,17 @@ Utilisez ces tableaux pour :
 > * la courbe du temps mis (axe des ordonnées) pour trier avec le tri par insertion  des tableaux de taille $n$ (axe des abcisses) réalisant la complexité maximale
 >
 > Faites varier la taille $n$ des tableaux de 1 à 2000 par pas de 10.
-{: .a-faire}
+{.a-faire}
 
 Comme la complexité minimale et maximale du tri par insertion sont différentes, les deux courbes doivent être distinctes.
 
 > l'allure des 2 courbes est-elle conforme aux résultats théorique de complexité ?
-{: .a-faire}
+{.a-faire}
 
 Pour connaitre l'espérance de la complexité, il faut calculer la complexité en moyenne de l'algorithme. Pour cela il faut pouvoir créer un tableau aléatoire et calculer le temps mis pour le trier. Pour éviter tout cas particulier, on fait des moyennes de mesures.
 
 > Créez dans le fichier *"mesure.py"* la fonction `temps_insertion_moyen` qui rend la moyenne de 10 temps pris pour trier avec `insertion` une permutation aléatoire du tableau en entrée.
-{: .a-faire}
+{.a-faire}
 
 Pour mélanger une liste python, vous pouvez utiliser la fonction [shuffle](https://docs.python.org/3/library/random.html#random.shuffle) du module random.
 
@@ -116,14 +116,14 @@ On peut maintenant visualiser les temps minimum, maximum et moyen de notre algor
 > Dans le fichier *"main_insertion"*, en utilisant `temps_insertion_moyen`, ajoutez au graphique la courbe de la moyenne des temps mis (axe des ordonnées) pour trier 10 tableaux aléatoire de taille $n$ (axe des abcisses) avec l'algorithme `insertion`.
 >
 > Faites varier la taille $n$ des tableaux de 1 à 2000 par pas de 10.
-{: .a-faire}
+{.a-faire}
 
 ### tri fusion
 
 La complexité minimum et maximum du tri fusion est la même. On peut juste tracer la complexité moyenne de l'algorithme :
 
 > Créez dans le fichier *"mesure.py"* une fonction `temps_fusion` qui rend la moyenne de 10 temps pris pour trier avec `fusion` une permutation aléatoire du tableau en entrée.
-{: .a-faire}
+{.a-faire}
 
 Pour ne pas refaire la même chose que pour le calcul de la complexité en moyenne du tri par `insertion`, vous pourrez utiliser le fait que l'on peut passer une fonction en paramètre d'une autre !
 
@@ -150,10 +150,10 @@ Si on doit choisir une complexité à afficher, on préfèrera toujours la compl
 > Dans le fichier *"main_fusion"*, en utilisant `temps_fusion`, ajoutez au graphique la courbe de la moyenne des temps mis (axe des ordonnées) pour trier 10 tableaux aléatoire de taille $n$ (axe des abcisses) avec l'algorithme `fusion`.
 >
 > Faites varier la taille $n$ des tableaux de 1 à 2000 par pas de 10.
-{: .a-faire}
+{.a-faire}
 
 > l'allure de la courbe est-elle conforme aux résultats théorique de complexité ?
-{: .a-faire}
+{.a-faire}
 
 ### tri rapide
 
@@ -165,17 +165,17 @@ La complexité du tri rapide est différente pour des tableaux déjà triés (la
 > * la courbe du temps mis (axe des ordonnées) pour trier avec le tri rapide des tableaux aléatoire de taille $n$ (axe des abcisses).
 >
 > Faites varier la taille $n$ des tableaux de 1 à 2000 par pas de 10. Pour chaque taille vous ferez une moyenne de 10 mesures.
-{: .a-faire}
+{.a-faire}
 
 Vous allez atteindre la limite de récursion de python. Pour éviter les récursions infinies, python met une limite très basse au nombre de récursions possible d'un algorithme (1000 par défaut). Mais pas de panique, il est facile d'augmenter ce nombre.
 
 > Suivez [ce tuto](https://www.pythoncentral.io/resetting-the-recursion-limit/) qui vous explique comment faire pour augmenter le nombre limite de récursions dans *"main_rapide"*.
-{: .a-faire}
+{.a-faire}
 
 ## visualisation
 
 > Copiez le code suivant dans un fichier *"main_visu.py"* :
-{: .a-faire}
+{.a-faire}
 
 ```python
 import random
@@ -230,7 +230,7 @@ Le [tri à bulles](https://fr.wikipedia.org/wiki/Tri_%C3%A0_bulles) est un tri i
 
 > Implémentez le tri à bulles et vérifiez que son temps moyen d'exécution est $\mathcal{O}(n^2)$.
 > Ajoutez le tri à bulles dans *"main_visu.py"* pour le voir trier un tableau.
-{: .a-faire}
+{.a-faire}
 
 ### bogo sort
 

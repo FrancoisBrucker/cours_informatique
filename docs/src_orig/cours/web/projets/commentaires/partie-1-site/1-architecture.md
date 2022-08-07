@@ -6,7 +6,7 @@ author: "François Brucker"
 ---
 
 > [commentaires]({% link cours/web/projets/commentaires/index.md %}) / [partie 1]({% link cours/web/projets/commentaires/partie-1-site/index.md %}) / [architecture]({% link cours/web/projets/commentaires/partie-1-site/1-architecture.md %})
-{: .chemin}
+{.chemin}
 
 ## plan du site
 
@@ -123,7 +123,7 @@ La partie `"scripts"` de *"package.json"* devient alors :
 ```
 
 > En json, il faut être très pointilleux sur l'écriture des objets : chaque attribut est séparé par une `,`, **sauf** le dernier. Si vous vous trompez le programme ne se lancera pas.
-{: .attention}
+{.attention}
 
 A partir de maintenant, on exécutera notre serveur avec la commande : `npm start` qui doit rendre, pour l'instant, quelque chose comme ça :
 

@@ -6,12 +6,12 @@ author: "François Brucker"
 ---
 
 > [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 2]({% link cours/web/projets/numerologie/partie-2-serveur/index.md %}) / [serveur web statique]({% link cours/web/projets/numerologie/partie-2-serveur/2-serveur-web-statique.md %})
-{: .chemin}
+{.chemin}
 
 On utilise node comme un serveur web de fichiers statiques.
 
 > Il ne faut jamais servir de fichier statique en **production** avec node. C'est **mal** car il n'est pas fait pour ça. L'usage veut qu'on utilise un serveur dédié comme [nginx](https://www.nginx.com/) qui fait du cache, de la répartition de charge et tout ce genre de choses.
-{: .attention}
+{.attention}
 
 ## But
 

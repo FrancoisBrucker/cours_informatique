@@ -6,7 +6,7 @@ author: "François Brucker"
 ---
 
 > [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 4]({% link cours/web/projets/numerologie/partie-4-jardinage/index.md %}) / [routes]({% link cours/web/projets/numerologie/partie-4-jardinage/1-routes.md %})
-{: .chemin}
+{.chemin}
 
 Si l'on continue comme ça, notre fichier *"numerologie/index.js"* va devenir énorme et contenir toutes les routes de notre projet. On a coutume de séparer les routes du server.
 
@@ -72,7 +72,7 @@ module.exports = router
 Ce fichier contient toutes les routes non statique et non `/` de notre serveur. Elles sont ranges dans un [router](http://expressjs.com/fr/guide/routing.html#express-router)
 
 > Les imports de nos fichiers sont dans le dossier parent, il faut donc mettre `../` devant pour les retrouver
-{: .attention}
+{.attention}
 
 On utilise ce fichier dans *"numerologie/index.js"* :
 

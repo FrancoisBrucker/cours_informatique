@@ -6,7 +6,7 @@ author: "François Brucker"
 ---
 
 > [commentaires]({% link cours/web/projets/commentaires/index.md %}) / [partie 3]({% link cours/web/projets/commentaires/partie-3-cookies/index.md %})
-{: .chemin}
+{.chemin}
 
 On ajoute un cookie pour stocker des données côté front, ici le pseudo du dernier message envoyé.
 

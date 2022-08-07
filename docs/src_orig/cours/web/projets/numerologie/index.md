@@ -6,7 +6,7 @@ author: "François Brucker"
 ---
 
 > [numérologie]({% link cours/web/projets/numerologie/index.md %})
-{: .chemin}
+{.chemin}
 
 Ce projet vise à découvrir les bases du développement de serveur web. On ne présuppose aucune connaissance en html/css ou javascript, mais il pourra être utile de voir les tutoriels spécifiques du [cours général]({% link cours/web/index.md %}) après avoir rencontré les notions ici pour aller plus loin.
 

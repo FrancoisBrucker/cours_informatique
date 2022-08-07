@@ -18,7 +18,7 @@ Votre ordinateur est composé de **fichiers** et de **dossiers** (aussi appelé 
 * un **fichier** est ce que vous pouvez utiliser. C'est une image, du texte, ou encore un programme.
 
 > Il existe un dossier spécial, appelé **racine** qui est le départ : on peut atteindre tous les fichiers/dossiers de votre ordinateur à partir de celui-ci.
-{: .note}
+{.note}
 
 Cette organisation est appelée [arborescence de fichiers](https://fr.wikipedia.org/wiki/R%C3%A9pertoire_(informatique)) et ressemble à un [arbre enraciné](https://fr.wikipedia.org/wiki/Arbre_enracin%C3%A9) où les fichiers sont des feuilles, comme dans la figure ci-dessous :
 
@@ -30,7 +30,7 @@ Chaque système d'exploitation fournit un outil pour naviguer dans l'arborescenc
 
 > Ouvrez une fenêtre de l'explorateur de fichier et placez vous à la racine de votre système de fichier.
 >
-{: .a-faire}
+{.a-faire}
 
 {% details sous linux %}
 
@@ -48,7 +48,7 @@ L'explorateur de fichier sous mac s'appelle [le finder](https://support.apple.co
 on voit le chemin sur la barre du chemin (si c'est pas un dossier spécial)
 
 > TBD
-{: .tbd}
+{.tbd}
 
 {% enddetails %}
 
@@ -62,7 +62,7 @@ On voit bien le chemin parcouru de la racine (appelé *"Macintosh HD"* sur un ma
 
 > Le nom des dossiers sur le disque dur et celui qui apparait dans l'explorateur de fichier peuvent être différents selon la langue du système d'exploitation.
 > Ainsi, le nom *Bureau* dans l'explorateur correspondra au dossier `Desktop` sur le disque dur.
-{: .attention}
+{.attention}
 
 ### chemin
 
@@ -75,17 +75,17 @@ Le chemin vers un fichier depuis la racine s'écrit en séparant tous les dossie
 Tout fichier ou dossier de l'arborescence de fichiers possède un chemin unique depuis la racine, c'est donc un moyen de l'identifier.
 
 > Le chemin du dossier racine est `/`.
-{: .note}
+{.note}
 
 Un chemin qui commence par `/` est dit **chemin absolu**, puisqu'il part de la racine. On a aussi souvent coutume de parler de **chemin relatif** lorsqu'il part d'un dossier particulier. Dans l'exemple précédent, en partant du dossier `/Users/fbrucker`, le chemin relatif vers l'image d'Ada est : `Desktop/ada_lovelace.png`.
 
 > Un chemin absolu commence **toujours** par `/`. Un chemin qui ne commence **pas** par `/` est **toujours** un chemin relatif.
-{: .note}
+{.note}
 
 Faites attention :
 
 > Sous Windows, on utilise souvent `\` à la place de `/`.
-{: .attention}
+{.attention}
 
 ### plusieurs racines
 
@@ -94,7 +94,7 @@ On considère parfois que chaque disque dur, chaque clé usb constitue sa propre
 C'est en réalité une vue de l'esprit. Il n'existe qu'une seule racine et chaque disque dur est [monté](https://fr.wikipedia.org/wiki/Point_de_montage).
 
 > Souvent sous windows ces racines sont explicites, c'est `c:` par exemple pour le disque dur principal.
-{: .attention}
+{.attention}
 
 ### dossiers . et .. {#block-.-..}
 
@@ -115,14 +115,14 @@ De là les 4 chemins suivants sont identiques :
 L'intérêt principal de ces dossiers est qu'ils permettent de naviguer dans l'arborescence à partir d'un dossier. Par exemple dans un projet, si l'on n'utilise que des chemins relatifs, on pourra facilement déplacer le dossier du projet (voire le donner à une autre personne) sans casser les liens.
 
 > Dans un projet, utilisez **toujours** des chemins relatifs lorsque vous donnez des chemins, cela permet de déplacer le dossier sans casser les liens.
-{: .note}
+{.note}
 
 ### copier le chemin absolu
 
 {% details sous linux %}
 
 Dans l'explorateur de fichiers cliquez droit sur le dossier, puis copiez. Collez ensuite dans le terminal.
-{: .note}
+{.note}
 
 {% enddetails %}
 
@@ -143,7 +143,7 @@ Dans explorateur de fichier cliquez sur le dossier, puis *copier le chemin d'acc
 La *maison* est le dossier principal d'un utilisateur. C'est à partir de ce dossier qu'il pourra créer et ranger ses données.
 
 > Il est recommandé que ce dossier ne comporte ni espace ni accent.
-{: .attention}
+{.attention}
 
 ### dossiers spéciaux
 
@@ -160,7 +160,7 @@ Cette extension ne sert à rien pour l'ordinateur, c'est seulement une aide pour
 Ainsi, même si l'extension d'un fichier texte est *".txt"*, rien ne vous empêche de la changer en *".exe"* par exemple. Cela ne change en rien la nature du fichier. Cela cependant apporte de la confusion car certaines applications vont penser que c'est un fichier exécutable et cela va planter quand elles vont tenter de le faire. Enfin, dans un éditeur de texte, l'extension d'un fichier permet de charger une coloration syntaxique par défaut : *".py"* pour les fichiers python par exemple, *".md"* pour les fichier markdown.
 
 > Ne soyez pas créatifs dans les extensions de fichiers, utilisez celle par défaut selon le type de fichier que vous utilisez.
-{: .note}
+{.note}
 
 ### fichiers exécutables
 
@@ -210,4 +210,4 @@ Naviguer dans un système de fichier et exécuter ds commandes est le but de l'[
 > * fichiers spéciaux (comme `/dev/audio` par exemple)
 > * une application mac est un dossier.
 > * comment écrire sur le disque dur, le [file system](https://en.wikipedia.org/wiki/Comparison_of_file_systems)
-{: .tbd}
+{.tbd}

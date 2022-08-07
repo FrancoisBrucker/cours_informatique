@@ -14,7 +14,7 @@ Comment utiliser un terminal.
 >
 >* [le terminal]({% link _tutoriels/systeme/2021-08-24-terminal.md %})
 >* [naviguer dans un système de fichiers]({% link _tutoriels/systeme/fichiers-navigation.md %})
-{: .chemin}
+{.chemin}
 
 Comment utiliser un terminal pour taper des commandes.
 
@@ -28,14 +28,14 @@ Lorsque l'on ouvre un terminal, on se retrouve devant un [prompt](https://fr.wik
 * soit une commande shell (comme `ls` par exemple) : [liste des commandes powershell](https://devblogs.microsoft.com/scripting/table-of-basic-powershell-commands/), [liste des commandes shell (bash)](https://manpages.ubuntu.com/manpages/bionic/man7/bash-builtins.7.html)
 
 > Une ligne de commande est **toujours** soit un fichier exécutable soit une commande shell.
-{: .note}
+{.note}
 
 ## dossier courant
 
 De plus un terminal est **toujours** positionné dans un dossier précis de votre arborescence de fichiers. C'est le **dossier courant**. L'exécution d'une ligne de commande se fera **toujours** par rapport à cet endroit.
 
 >Pour connaitre l'endroit où est positionné le terminal, on peut utiliser la commande shell `pwd`.
-{: .note}
+{.note}
 
 Lorsque l'on ouvre un terminal, son dossier courant est souvent le dossier principal de l'utilisateur. On peut également directement ouvrir un terminal dans un dossier spécifique :
 
@@ -69,7 +69,7 @@ Comme `python` n'est pas une commande c'est **forcément** un fichier exécutabl
 ### path
 
 > Le **path** permet de trouver l'endroit où est le fichier à exécuter.
-{: .note}
+{.note}
 
 Connaître le path :
 
@@ -145,12 +145,12 @@ Si je veux aller dans le dossier contenant ma plus belle photo d'Ada Lovelace, j
 
 > Notez que je ne peux pas aller dans un fichier.
 > Si j'avais tapé `/Users/fbrucker/Desktop/ada_lovelace.png` j'aurais eu une erreur. Sur mon mac, ça dit : `cd: not a directory: /Users/fbrucker/Desktop/ada_lovelace.png`
-{: .attention}
+{.attention}
 
 Sous unix, le caractère `~` est équivalent au chemin absolu vers la maison. En tapant `cd ~` je me retrouve alors directement à la maison. De là, `cd ~/Desktop` m'envoie dans le dossier `/Users/fbrucker/Desktop` quelque soit l'endroit où je me trouve.
 
 > ~ est-il aussi vrai avec powershell ?
-{: .tbd}
+{.tbd}
 
 ### fichier et dossiers du dossier courant
 
@@ -180,10 +180,10 @@ La commande `ls` a beaucoup de paramètres possible. Dans le monde du terminal, 
 On peut aussi combiner ces paramètres. Par exemple, si je veux voir tous les fichiers et dossiers (caché ou non) du dossier courant de façon longue, je peux taper : `ls -la` (je combine les options `l` et `a`)
 
 > sous powershell ?
-{: .tbd}
+{.tbd}
 
 > Pour les commandes unix, retenez quelques formes utiles de la commande (pour `ls`, je ne retiens que `ls -la`) et pour le reste ayez le réflexe de regarder la documentation
-{: .note}
+{.note}
 
 * [ls du powershell](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-childitem?view=powershell-7.2) alias vers la commande `Get-ChildItem`
 * [ls unix](http://manpagesfr.free.fr/man/man1/ls.1.html)

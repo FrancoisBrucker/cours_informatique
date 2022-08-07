@@ -8,7 +8,7 @@ authors:
 ---
 
 > [bases de python]({% link cours/bases-python/index.md %}) / [objets types et types d'objets]({% link cours/bases-python/objets-types.md %})
-{: .chemin}
+{.chemin}
 
 
 Python connaît 5 classes d'objets de base qui permettent de faire la grande majorité des programmes.
@@ -50,7 +50,7 @@ type(42)
 Qui rendra :  `<class 'int'>`. Les entiers sont donc de classe `'int'` en python.
 
 > Utiliser <https://basthon.fr/> en console pour connaître la classe de chaque objet de base.
-{: .a-faire}
+{.a-faire}
 
 {% details solution %}
 
@@ -81,7 +81,7 @@ int(3.1415)
 ```
 
 > Quel est le résultat de cette instruction ?
-{: .a-faire}
+{.a-faire}
 
 {% details solution %}
 
@@ -101,7 +101,7 @@ float(3)
 ```
 
 > Quel est le résultat de cette instruction ?
-{: .a-faire}
+{.a-faire}
 
 {% details solution %}
 
@@ -123,7 +123,7 @@ float("3.1415")
 Va rendre un objet réel valant 3.1415 à partir d'une chaîne de caractère avec le caractère "3.1415".
 
 > Une chaîne de caractère n'est **pas** un réel ou un entier.
-{: .attention}
+{.attention}
 
 >La conversion de chaînes de caractères en entier ou en réels est très courante lorsque l'on récupère des entrées tapées par un utilisateur qui sont toujours *a priori* considérées comme des chaînes de caractères
 
@@ -132,7 +132,7 @@ Va rendre un objet réel valant 3.1415 à partir d'une chaîne de caractère ave
 On effectue souvent ce genre d'opération de façon implicite pour les booléen. Ainsi, un entier est vrai s'il est non nul.
 
 > Vérifiez le.
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 ```python
@@ -143,7 +143,7 @@ True
 {% enddetails %}
 
 > Quand-est qu'une chaîne de caractère est fausse ?
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 Une chaîne de caractère est fausse si elle est vide et vraie sinon.

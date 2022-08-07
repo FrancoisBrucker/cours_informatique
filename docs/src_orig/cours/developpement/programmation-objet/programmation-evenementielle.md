@@ -23,7 +23,7 @@ Il y a 2 moyens d'[installer appjar](http://appjar.info/Install/) :
 * soit en [téléchargeant le module](https://github.com/RWBA/appJar/blob/appJar/releases/appJar.zip?raw=true) puis en décompressant le dossier dans votre projet (vous aurez un dossier nommé *"appJar"* dans votre projet). Si vous êtes sous windows et que vous n'avez pas de logiciel pour dézipper des dossiers, vous pouvez télécharger et installer le logiciel [7zip](https://www.7-zip.org/download.html) (prenez la version 64bit)
 
 > Si vous avez installé python avec anaconda, comme recommandé, tout devrait bien se passer. Sinon, il se peut qu'il vous faille installer un python avec tk.
-{: .attention}
+{.attention}
 
 ### un exemple
 

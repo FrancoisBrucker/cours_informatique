@@ -5,7 +5,7 @@ author: "François Brucker"
 ---
 
 > [bases de python]({% link cours/bases-python/index.md %}) / [opérations sur les objets]({% link cours/bases-python/operations.md %})
-{: .chemin}
+{.chemin}
 
 Les opérations sur les objets vont des opérations arithmétiques (a + b, a - b, ...) aux tests (a < b) en passant par les opérations logiques (a et b)
 
@@ -29,7 +29,7 @@ python possède aussi :
 * `**` exposant.
 
 > que vaut le quotient et le reste de la division entière de 4538 par 23 ?
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 Dans un terminal :
 
@@ -70,7 +70,7 @@ Par exemple :
 ```
 
 > Recopiez 10 fois : `"j'aime bien faire du python"` en une ligne de python
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 On peut écrire :
 
@@ -113,7 +113,7 @@ Attention aux effets de bords :
 ```
 
 > Que vaut `M` ?
-{: .a-faire}
+{.a-faire}
 {% details %}
 
 ```python

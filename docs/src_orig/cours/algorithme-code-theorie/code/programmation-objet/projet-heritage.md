@@ -13,7 +13,7 @@ authors:
 >
 > * [héritage]({% link cours/algorithme-code-theorie/code/programmation-objet/heritage.md %})
 > * [projet : composition et agrégation]({% link cours/algorithme-code-theorie/code/programmation-objet/projet-composition-agregation.md %})
-{: .chemin}
+{.chemin}
 
 Présentation du mécanisme d'héritage qui permet de factoriser du code entre classes.
 
@@ -91,7 +91,7 @@ Implémentez la classe `StatDice` qui hérite de `Dice`, retient le nombre de fo
 > * une nouvelle méthode `set_position` qui utilise la méthode `set_position` du dé classique et met à jour les décomptes de lancers du dé
 > * une méthode `stats` qui renvoie les nombres d'apparition de chaque valeur
 >
-{: .a-faire}
+{.a-faire}
 
 On pourra stocker le nombre d'apparition de chaque face dans une liste où l'indice + 1 correspond à la face.
 
@@ -100,7 +100,7 @@ On pourra stocker le nombre d'apparition de chaque face dans une liste où l'ind
 > Créez un programme qui lance $N=1000$  fois votre dé (par exemple) et rend ses statistiques.
 >
 > Vous utiliserez ensuite ces statistiques pour faire un [test d'adéquation du $\chi^2$](https://fr.wikipedia.org/wiki/Test_du_%CF%87%C2%B2#Exemple_1_:_d%C3%A9termination_de_l'%C3%A9quilibrage_d'un_d%C3%A9) pour vérifier que votre dés est bien équiprobable.
-{: .a-faire}
+{.a-faire}
 
 Un test d'adéquation du $\chi^2$ permet de s'assurer que le résultat d'une expérience est conforme à ce qu'on devrait avoir théoriquement.
 
@@ -138,7 +138,7 @@ C'est que l'on appelle le [risque de première espèce](https://fr.wikipedia.org
 En reprenant le cours :
 
 > Créez (et testez) les classes personnage, magicien et guerrière.
-{: .a-faire}
+{.a-faire}
 
 ### bataille
 
@@ -155,4 +155,4 @@ En reprenant le cours :
 > Le dernier héros en vie est ensuite tué par le magicien qui le kite en lui jetant des sorts (comme un fourbe), puis le loote pour aller tout revendre au marchand du bourg (mais c'est une autre histoire et d'autres implémentations).
 >  
 > Vous donnerez le nombre de tours nécessaires pour cela (testez plusieurs possibilités).
-{: .a-faire}
+{.a-faire}

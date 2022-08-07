@@ -34,14 +34,14 @@ Créez le code python de la classe `Dice` (fichier *"dice.py"*). Pour vérifier 
 * de lancer le dé et de vérifier que sa position est toujours cohérente avec le nombre de faces.
 
 > Vérifier que tout fonctionne dans vscode.
-{: .note}
+{.note}
 
 ### tests {#dice-tests}
 
 Ajoutez finalement les tests de chaque méthode de la classe `Dice` (fichier *"test_dice"*).
 
 > Vérifier que vos tests fonctionnent dans vscode.
-{: .note}
+{.note}
 
 ## 5 dés
 
@@ -72,14 +72,14 @@ Créez le code python de la classe `TapisVert` (fichier *"dice.py"*). Pour véri
 * de lancer les dés et de vérifier que leurs positions est toujours cohérente avec le nombre de faces.
 
 > Vérifier que tout fonctionne dans vscode.
-{: .note}
+{.note}
 
 ### tests {#tapis-vert-tests}
 
 Ajoutez finalement les tests de chaque méthode de la classe `Dice` (fichier *"test_dice"*).
 
 > Vérifier que vos tests fonctionnent dans vscode.
-{: .note}
+{.note}
 
 ### Analyse du code
 

@@ -23,4 +23,4 @@ Liste des différents cours. La plupart de ceux-ci sont enseignés par bouts dan
 > TBD
 >
 > * rassemebler toutes les parties traitant d'un sujet comme les tests et en faire un chapeau commun
-{: .note}
+{.note}

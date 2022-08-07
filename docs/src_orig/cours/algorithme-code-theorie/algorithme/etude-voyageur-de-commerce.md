@@ -11,7 +11,7 @@ category: cours
 > * [algorithmes gloutons]({% link cours/algorithme-code-theorie/algorithme/methode-gloutons.md %})
 > * [projet : exponentiation]({% link cours/algorithme-code-theorie/code/projet-exponentiation.md %})
 >
-{: .chemin}
+{.chemin}
 
 Nous allons étudier ici un problème d'intérêt pratique nommé le [problème du voyageur de commerce](https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_voyageur_de_commerce). On peut le formuler ainsi :
 
@@ -28,7 +28,7 @@ Les problèmes que nous allons étudier dans cette partie sont tous plus ou moin
 > Un **graphe** $G = (V, E)$ est un couple où $E$ est un ensemble de sous-ensembles à 2 éléments de $V$. $E$ est l'ensemble des **sommets** de $G$ et $E$ l'ensemble des **arêtes** (on notera les arêtes $xy$ plutôt que $\{x, y\}$ pour rendre les notations plus digestes).
 >
 > Une **valuation** d'un graphe $G = (V, E)$ est une fonction $\omega: E \rightarrow \mathbb{R}^+$
-{: .note}
+{.note}
 
 Nous allons en particulier nous intéresser aux problématiques de chemins et cycles dans un graphe, que l'on peut définir ainsi :
 
@@ -37,7 +37,7 @@ Nous allons en particulier nous intéresser aux problématiques de chemins et cy
 > * un **chemin** est une suite de sommets $v_1,\dots, v_i, \dots, v_m$ tels que $v_iv_{i+1} \in E$ pour tout $1\leq i < m$.
 > * un **cycle** est un chemin dont le premier et le dernier élément sont identiques.
 >
-{: .note}
+{.note}
 
 Enfin, nous introduisons la notion de connexité d'un graphe :
 
@@ -48,7 +48,7 @@ Enfin, nous introduisons la notion de connexité d'un graphe :
 > * **question** :
 >   * peut-on trouver un chemin entre $x$ et $y$, quelque soient $x, y \in V$ ?
 >
-{: .note}
+{.note}
 
 Les graphes qui répondent OUI à cette question sont dit **connexes**.
 
@@ -62,7 +62,7 @@ Remarquez que le problème de connexité est équivalent au problème suivant (p
 > * **question** :
 >   * peut-on trouver un chemin entre $x$ et $y$, quelque soit $xy \in V$ ?
 >
-{: .note}
+{.note}
 {% details preuve de l'équivalence %}
 
 Soit $G = (V, E)$ un graphe. Il est clair que s'il est connexe, le *problème des chemins à partir d'un sommet* est aussi vrai, $\forall x \in V$
@@ -85,19 +85,19 @@ Comme $x$ et $y$ ont été pris au hasard, on en conclut que $G$ est connexe.
 La preuve de l'équivalence entre ces deux problèmes nous donne une propriété fondamentale de la connexité :
 
 > Soit $G=(V, E)$ un graphe. S'il existe un chemin allant de $x$ à $y$ et un chemin allant de $y$ à $z$ dans $G$, alors il existe un chemin allant de $x$ à $z$.
-{: .note}
+{.note}
 
 De là, la propriété suivante :
 
 > Soit $G=(V, E)$ un graphe. Une **composante connexe** de $G$ est un sous-ensemble $A$ de sommets de $G$, maximal pour l'inclusion, tel que le graphe $G \vert_A = (A, \\{ uv \in E \mid u, v \in A\\})$, restriction de $G$ à $A$, est connexe.
 >
 > En ajoutant à $G$ une arête $xy$ où $x$ et $y$ sont dans des composantes connexes différentes, l'union de ces deux ensembles forme une unique composante connexe dans le nouveau graphe.
-{: .note}
+{.note}
 
 Il faut donc un petit nombre d'arête à un graphe pour qu'il soit connexe :
 
 > Si $G=(V, E)$ est un graphe connexe, alors $\vert E \vert \geq \vert V \vert -1$.
-{: .note}
+{.note}
 {% details preuve %}
 
 On le prouve par récurrence sur $\vert V \vert$. Si le graphe contient 1 sommet, la propriété est vérifiée. Supposons la propriété vrai pour $n-1$ sommet et considérons un graphe connexe à $n > 1$ sommet.
@@ -113,7 +113,7 @@ $$
 {% enddetails %}
 
 > La réciproque est cependant fausse... Il existe des graphes $G=(V, E)$ non connexes ayant plus de $\vert V\vert -1$ arêtes.
-{: .attention}
+{.attention}
 
 Ces diverses propriétés vont nous permettre de créer à coût min un réseau routier entre villes.
 
@@ -129,7 +129,7 @@ Avant de voyager de ville en ville, commençons par nous mettre dans la peau d'u
 > * **question** :
 >   * donnez un graphe $G=(V, E)$ connexe telle que $\sum_{xy \in E} c(x, y)$  soit minimum parmi tous les graphes connexes.
 >
-{: .note}
+{.note}
 
 On peut utiliser un algorithme glouton pour résoudre ce problème. Comme tout algorithme glouton, on peut le réduire à :
 
@@ -137,7 +137,7 @@ On peut utiliser un algorithme glouton pour résoudre ce problème. Comme tout a
 2. pour chaque couple $xy$ : si le graphe $G=(V, E \cup \{xy\})$ a moins de composantes connexes que $G=(V, E)$ alors $E = E \cup \{ xy \}$
 
 > Combien d'arêtes aura $E$ à la fin de l'algorithme ?
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 Lorsque l'on ajoute une arête, on diminue de 1 le nombre de composantes connexes de $G$. Comme au départ il y en a $n$, $E$ aura exactement $n-1$ arêtes : ce sera un graphe connexe avec un nombre minimum d'arêtes.
@@ -151,7 +151,7 @@ Il reste deux inconnues :
 En répondant à la première question, on démontrera que notre algorithme glouton est optimal et en répondant à la seconde question, on le fera rapidement.
 
 > Montrer qu'en parcourant les arêtes par coût croissant, on obtient un graphe connexe de coût minimum.
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 Soit $E^\star$ une solution optimale et considérons le déroulement de l'algorithme étape par étape. On suppose que $E \neq E^\star$. On s'arrête alors à la **première** étape telle que soit :
@@ -173,7 +173,7 @@ L'ensemble $E^\star \backslash \{ uv \} \cup \{ xy \}$ serait alors encore conne
 >
 > * quand est-ce que $x$ est dans la même composante connexe que $y$ ?
 > * comment mettre à jour $f$ si on ajoute l'arête $xy$ à $G$ ?
-{: .a-faire}
+{.a-faire}
 {% details algorithme %}
 
 Le sommet $x$ est dans la même composante connexe que $y$ si et seulement si $f(x) == f(y)$
@@ -188,12 +188,12 @@ for z in V:
 ```
 
 > la variable `c` est **indispensable**. Si on fait le fest `if f(z) == f(x):` à la place, une fois qu'on a examiné $x$, son $f$ aura changé et le test ne fonctionnera plus...
-{: .attention}
+{.attention}
 
 {% enddetails %}
 
 > Déduire de tout ce qu'on a fait précédemment un algorithme en $\mathcal{O}(n^2\log(n))$ permettant de résoudre le problème du **réseau routier à coût min** pour $n$ villes.
-{: .a-faire}
+{.a-faire}
 {% details algorithme %}
 
 ```text
@@ -237,7 +237,7 @@ Il existe de nombreuses formalisation du problème du voyageur de commerce, nous
 > \sum_{i=1}^{i=n-1} d(v_i, v_{i+1}) + d(v_n, v_1)
 > $$
 >
-{: .note}
+{.note}
 
 ## résolution exacte
 
@@ -247,7 +247,7 @@ Nous n'allons pas chercher à résoudre par un algorithme polynomial le problèm
 >
 > Ces problèmes sont théoriquement intéressants car ce sont des **problèmes universels** : si on sait résoudre un seul problème NP-difficile avec un algorithme polynomial, le même algorithme permettrait de résoudre non seulement tous les problèmes NP-difficiles mais également tous les problèmes résolubles par un ordinateur.
 >
-{: .note}
+{.note}
 
 ### énumération de tous les cycles
 
@@ -256,7 +256,7 @@ On peut tenter d'énumérer tous les cycles possibles et en garder le minimum.
 > Combien de cycles différents faut-il examiner ?
 >
 > Donnez un algorithme pour les générer.
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 Comme le cycle doit passer par tous les sommets, je peux considérer que je commence toujours en $v_1$, il faut donc ensuite passer par $n-1$ autres villes, dans un ordre donné (il y en a $(n-1)!$).
 
@@ -293,7 +293,7 @@ de i allant de 2 à n-1:
 >
 > Montrez que sa complexité peut être estimée à $\mathcal{O}(n!)$.
 >
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 ```text
@@ -315,7 +315,7 @@ Il faut parcourir les $\frac{(n-1)!}{2}$ cycles et pour chacun calculer son cout
 Générer tous les cycles prend énormément de temps. On va de plus refaire plein de fois les mêmes erreurs (faire plein de fois Brest -> Marseille -> Rennes -> Paris par exemple alors qu'on peut localement faire bien mieux) : on va utiliser une méthode de programmation appelé **programmation dynamique** qui va nous permettre de factoriser des résultats.
 
 > La [**programmation dynamique**](https://fr.wikipedia.org/wiki/Programmation_dynamique) est une méthode de création d'algorithme basée sur le fait qu'une solution minimale est composée de sous-solutions elles-mêmes minimales.
-{: .note}
+{.note}
 
 L'exemple classique donné pour expliquer la programmation dynamique est : si un chemin $\mathcal{C}$ le plus court entre 2 points $A$ et $B$ passe par le point $C$, alors le chemin de $A$ vers $C$ et le chemin de $C$ vers $B$ dans $\mathcal{C}$ sont tous deux minimaux (s'il existait par exemple un chemin plus court entre $A$ et $C$ il suffirait de l'emprunter et $\mathcal{C}$ ne serait plus minimal).
 
@@ -331,7 +331,7 @@ Ceci se concrétise souvent par une équation récurrente à vérifier. Dans le 
 > C(I, j) = \min_{k \in I \backslash \{ 1 \}} (C(I \backslash \{ k\}, k) + c(v_k, v_j))
 > $$
 >
-{: .note}
+{.note}
 
 L'équation ci-dessous nous donne un moyen de construire itérativement des chemins minimaux jusqu'à arriver au calcul final :
 
@@ -342,7 +342,7 @@ $$
 Qui est le coût minimal du voyageur de commerce.
 
 > En supposant que l'on connaisse $C(I, j)$ pour tous les sous-ensembles $I$ à $k$ éléments et tous les $j$, écrivez l'algorithme qui calcule tous les $C(I', j)$ pour tous les sous-ensembles $I'$ à $k+1$ éléments.
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 On a :
@@ -379,7 +379,7 @@ $$
 > Ecrivez l'algorithme de résolution du problème du voyageur de commerce itérativement en partant de l'ensemble $E = \{\{1\}\}$.
 >
 >Montrez que sa complexité peut être estimée à $\mathcal{O}(n^22^n)$.
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 Il suffit d'appliquer itérativement l'algorithme précédent jusqu'à obtenir $C(I, k)$ pour tous les sous-ensembles à $n-1$ éléments contenant 1.
@@ -399,7 +399,7 @@ Nous allons montrer ici quelques algorithmes approchés (appelées [heuristiques
 ### aléatoire
 
 > Créez un algorithme permettant de résoudre le problème du voyageur de commerce en donnant un cycle aléatoire.
-{: .a-faire}
+{.a-faire}
 
 Cet algorithme n'est pas du tout performant, mais va servir de base à d'autres algorithmes.
 
@@ -408,7 +408,7 @@ Cet algorithme n'est pas du tout performant, mais va servir de base à d'autres 
 > Créez un algorithme glouton permettant de résoudre le problème du voyageur de commerce.
 >
 > Montrez qu'il existe des cas où votre algorithme glouton ne trouvera pas la solution.
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 On commence par une ville au hasard, puis on prend à chaque étape la ville la pus proche de la dernière ville choisie.
@@ -441,7 +441,7 @@ La méthode couramment utilisée est appelée [2-opt](https://fr.wikipedia.org/w
 > 3. on considère le cycle $c' = v_1v_{i} v_{i-1}\dots v_{2} v_{i+1}\dots v_n v_1$
 > 4. si le coût de $c'$ est inférieure strictement au coût de $c$ on le conserve, sinon on le rejette et on conserve $c$.
 >
-{: .note}
+{.note}
 
 L'algorithme 2-opt permet de *décroiser* localement les cycles, comme dans l'exemple suivant :
 
@@ -535,7 +535,7 @@ Puis on supprime les villes par lesquelles on est déjà passé pour créer le c
 Ce qui est beau, c'est que la longueur de ce cycle est au pire 2 fois plus longueur que la longueur du cycle optimal.
 
 > Prouvez-le.
-{: .a-faire}
+{.a-faire}
 {% details preuve %}
 Le cycle optimal est un graphe connexe. Il est donc de cout plus grand que la somme de toutes les arêtes de notre réseau routier.
 
@@ -554,17 +554,17 @@ Enfin, le coût du cycle final ne peut être plus grand que le coût du parcours
 Nous allons ici générer des villes aléatoires dans un carré unité.
 
 > Créez un fonction `villes_aleatoires(n)` qui rend un tableau de `n` couples `(x, y)` où `x` et `y` sont des nombres réels aléatoires entre 0 et 1.
-{: .a-faire}
+{.a-faire}
 
 En utilisant ce que vous avez vu dans le [projet : exponentiation]({% link cours/algorithme-code-theorie/code/projet-exponentiation.md %}) :
 
 > Représentez graphiquement avec matplotlib la liste de villes crée par la fonction `villes_aleatoires(n)`.
-{: .a-faire}
+{.a-faire}
 
 ### réseau routier
 
 > A partir d'une liste de villes (représentées chacune par un couple de coordonnées) rendez une liste d'arêtes représentant le réseau routier de valuation minimal reliant toutes les villes entre elles
-{: .a-faire}
+{.a-faire}
 {% details indice d'implémentation %}
 
 Vous pourrez utiliser un dictionnaire pour gérer la marque `f(x)` associée à chaque ville.
@@ -593,24 +593,24 @@ print(ma_liste)
 Une fois l'algorithme crée et testé vous pourrez :
 
 > Représentez graphiquement avec matplotlib le réseau routier d'une liste de villes.
-{: .a-faire}
+{.a-faire}
 
 ### glouton
 
 > Créez l'algorithme glouton qui permet de créer de proche en proche un cycle.
-{: .a-faire}
+{.a-faire}
 
 Une fois crée et testé vous pourrez :
 
 > Représentez graphiquement avec matplotlib le cycle issu de l'algorithme glouton pour une liste de villes.
-{: .a-faire}
+{.a-faire}
 
 ### recuit simulé
 
 > Implémentez l'algorithme du recuit simulé qui , à partir d'un cycle aléatoire le raffine pendant $k$ itérations.
-{: .a-faire}
+{.a-faire}
 
 ### algorithme exact
 
 > Implémentez l'algorithme exact qui, à partir d'une liste de ville rend le cycle optimal.
-{: .a-faire}
+{.a-faire}

@@ -34,7 +34,7 @@ Si vous ne vous pouvez pas réinstaller un nouveau système, pour que tout se pa
 * votre login ne doit contenir aucun espace, ni accent.
 
 > le login est différent de votre nom.
-{: .attention}
+{.attention}
 
 compte admin :  sans accent ni espace
 
@@ -56,14 +56,14 @@ Installer un nouveau système nécessite de reformater votre disque dur. Avant c
 > Avec le cloud ([icloud](https://support.apple.com/fr-fr/guide/icloud/welcome/icloud) sur mac ou [onedrive](https://www.microsoft.com/fr-fr/microsoft-365/onedrive/online-cloud-storage) sous windows) les données personnelles sont souvent déjà sauvegardées. Mais il faut se souvenir du login/mot de passe pour réactiver le tout sur le nouveau système.
 
 > Notez votre wifi et son mot de passe, ou mieux connectez le réseau directement avec un fil si possible pour votre installation.
-{: .attention}
+{.attention}
 
 ### Linux
 
 {% details détails %}
 
 > TBD
-{: .note}
+{.note}
 
 {% enddetails %}
 
@@ -76,7 +76,7 @@ Installer un nouveau système nécessite de reformater votre disque dur. Avant c
 Le plus simple est d'installer une nouvelle version du système en utilisant internet. Redémarrez votre ordinateur en maintenant enfoncé les touches :  *"Maj + Option + Commande + R enfoncées"*
 
 > Notez votre login et mot de passe icloud. Vous en aurez besoin à l'installation
-{: .attention}
+{.attention}
 
 Une fois votre système installé, il faudra également installé [xcode](https://apps.apple.com/fr/app/xcode/id497799835?mt=12). Prenez votre mal en patience, ça va prendre du temps...
 
@@ -103,7 +103,7 @@ Le terminal va être un outil fondamental en développement. Ajoutez le aux icô
 {% details détails %}
 
 > Notez le numéro de série de votre windows 10. Vous en aurez besoin à l'installation
-{: .attention}
+{.attention}
 
 On va suivre la procédure de [mirosoft](https://support.microsoft.com/fr-fr/windows/r%C3%A9installer-windows-d8369486-3e33-7d9c-dccc-859e2b022fc7#ID0EBD=Windows_10) en suivant les instructions de *Installer une nouvelle installation Windows 10 à l’aide d’un support d’installation*.
 

@@ -5,7 +5,7 @@ category: cours
 ---
 
 > [Algorithme, code et théorie]({% link cours/algorithme-code-theorie/index.md %}) / [exercices]({% link cours/algorithme-code-theorie/exercices/index.md %}) / [2019-2020]({% link cours/algorithme-code-theorie/exercices/2019-2020/index.md %})
-{: .chemin}
+{.chemin}
 
 Examens de l'année scolaire 2019/2020
 

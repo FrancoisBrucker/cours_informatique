@@ -11,7 +11,7 @@ category: cours
 > * [fonctions de hash]({% link cours/algorithme-code-theorie/theorie/fonctions-hash.md %})
 > * [complexité en moyenne]({% link cours/algorithme-code-theorie/algorithme/complexite-moyenne.md %})
 >
-{: .chemin}
+{.chemin}
 
 Un dictionnaire, ou encore [tableau associatif](https://fr.wikipedia.org/wiki/Tableau_associatif) est une structure de donnée permettant d'indexer des objets par leur nom plutôt que par un nombre.
 
@@ -46,7 +46,7 @@ Mais cela peut être bien plus général que ça :
 * associer un nom (valeur) à un numéro de téléphone (clé) sans avoir besoin d'une liste allant de 0 à numéro max de téléphone.
 
 > Un ensemble peut être codé en utilisant la structure de tableau associatif en considérant que les valeurs sont toutes les mêmes. n ne considère que les clés qui représentent les éléments de l'ensemble.
-{: .note}
+{.note}
 
 ## en python
 
@@ -161,7 +161,7 @@ for x in d.items():
 > Combien de mots différents contient le texte `"coucou les gars coucou les filles"` ?
 >
 > Vous pourrez utiliser la méthode [split des ``str`](https://docs.python.org/fr/3/library/stdtypes.html#str.split)
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 ```python
@@ -181,7 +181,7 @@ Attention cependant aux caractères de ponctuation lors du `split`. `"x, x. x ?"
 > comptez les occurrences de chaque mot du texte `"coucou les gars coucou les filles"` ?
 >
 > Vous pourrez utiliser la méthode [split des ``str`](https://docs.python.org/fr/3/library/stdtypes.html#str.split)
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 ```python
@@ -242,7 +242,7 @@ C'est pourquoi, en réalité on n'utilise une fonction supplémentaire appelée 
 
 > Une fonction d'adressage $f_m$ est une fonction : de $\mathbb{N}$ dans $[0\mathrel{ {.}\,{.} } m-1]$.
 >
-{: .note}
+{.note}
 
 Une structure de dictionnaire est alors un couple :
 
@@ -285,14 +285,14 @@ La création de la structure est en $\mathcal{O}(m)$ puisqu'il faut créer une l
 Initialement, $m$ est une constante, on a donc :
 
 > La création d'une structure de dictionnaire prend $\mathcal{O}(1)$ opérations.
-{: .note}
+{.note}
 
 #### suppression de la structure
 
 La suppression de la structure en $\mathcal{O}(m)$ (il faut supprimer toutes les listes stockées).
 
 > La création d'une structure de dictionnaire prend $\mathcal{O}(m)$ opérations, où $m$ est la taille de la liste principale.
-{: .note}
+{.note}
 
 #### ajout/recherche et suppression d'un élément
 
@@ -315,7 +315,7 @@ C'est pourquoi, lorsque le nombre d'objet stocké augmente et que le ratio augme
 Cette technique, identique à celle utilisée dans les [listes]({% link cours/algorithme-code-theorie/algorithme/structure-liste.md %}) permet de maintenant un ratio à *peut prêt constant* et donc :
 
 > Le temps moyen de recherche, d'ajout et de suppression d'un élément dans un dictionnaire est de  $\mathcal{O}(1)$ opération.
-{: .note}
+{.note}
 
 La structure de dictionnaire est donc une structure très efficace ! N'hésitez pas à l'utiliser car son temps moyen d'exécution est très rapide.
 
@@ -333,7 +333,7 @@ On va essayer de répondre à cet exercice de trois façons différentes, toutes
 Comme il faut trouver deux indices différents dans la liste $p$ (à $n$ éléments), deux boucles imbriquées allant de $0$ à $n-1$ permettent de balayer tous les couples $(i, j)$ avec $0 \leq i, j < n$.
 
 > Créer cet algorithme et calculez-en sa complexité.
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 ```python

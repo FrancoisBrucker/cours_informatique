@@ -10,7 +10,7 @@ category: cours
 >
 > * [complexité en moyenne]({% link cours/algorithme-code-theorie/algorithme/complexite-moyenne.md %})
 >
-{: .chemin}
+{.chemin}
 
 ## tableau
 
@@ -113,7 +113,7 @@ Ajouter un élément à la structure peut très mal tomber. Cela peut être just
 On a même le résultat suivant :
 
 > L'ajout de $n$ éléments à une liste originellement vide prend $\mathcal{O}(n)$ opérations au maximum
-{: .note}
+{.note}
 {% details preuve %}
 Complexité d'ajout de $n$ éléments à une liste :
 
@@ -149,7 +149,7 @@ ${\mbox{complexité d'ajout de n éléments dans une liste }} / {n} = {\mathcal{
 
 Il est donc légitime d'admettre  que la complexité d'insertion d'un élément en fin de liste est en $\mathcal{O}(1)$ :
 > On considère que La complexité de l'ajout d'un élément en fin de liste est en $\mathcal{O}(1)$ opérations.
-{: .note}
+{.note}
 
 La complexité amortie est un concept avancé. Il ne faut pas le confondre avec la complexité en moyenne, c'est bien $n$ fois la complexité maximale que l'on considère lorsque l'on effectue les opération successivement. C'est un moyen efficace de calculer la complexité d'un algorithme lorsque l'on utilise des structures dont l'opération coûteuse n'est faite qu'un petit nombre de fois.
 

@@ -17,7 +17,7 @@ Configuration de python avec vscode.
 > * [vscode]({% link _tutoriels/editeur/vsc/vsc-installation-et-prise-en-main.md %})
 > * [python installation]({% link _tutoriels/python/installation-de-python.md %})
 >
-{: .chemin}
+{.chemin}
 
 configuration de  [visual studio code](https://code.visualstudio.com/) pour le développement en python.
 
@@ -26,31 +26,31 @@ configuration de  [visual studio code](https://code.visualstudio.com/) pour le d
 ## extension python pour vscode
 
 > La documentation officielle de vscode a [une partie consacrée à python](https://code.visualstudio.com/docs/languages/python).
-{: .chemin}
+{.chemin}
 
 La principale extension à installer lorsque l'on fait du python est [python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) développée par microsoft. Il est également recommandé d'installer [pylance](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance) (utilitaire puissant d'aide au code).
 
 Pour installer ces package :
 
 > Rendez vous dans la [gestion des extensions de vscode]({% link _tutoriels/editeur/vsc/vsc-installation-et-prise-en-main.md %}#extensions), puis tapez *python* dans la barre de recherche. Assurez vous d'installer les package créés par microsoft.
-{: .a-faire}
+{.a-faire}
 
 ## premier programme
 
 Nous allons créer un premier fichier de code python pour permettre de finaliser l'installation des liens entre l'interpréteur python et vscode.
 
 > Créez un dossier nommé *"cours-python"* sur votre ordinateur, et ouvrez le avec vscode (*menu Fichier > ouvrir le dossier...*).
-{: .a-faire}
+{.a-faire}
 
 Une fois que vous avez dit que vous faisiez confiance au développeur de ce projet, fermez l'onglet *Welcome*. Vous pouvez même fermer l'explorer en cliquant sur l'icône en sur-brillance dans la barre d'activité de [l'interface vsc](https://code.visualstudio.com/docs/getstarted/userinterface).
 
 > Créez un fichier *"programme.py"* (*menu Fichier > nouveau fichier texte* puis sauvez le immédiatement *menu Fichier > Enregistrer*).
-{: .a-faire}
+{.a-faire}
 
 Si vous n'avez pas encore configuré python, vscode va vous demander le faire.
 
 > Suivez les instructions de vscode (vous n'avez normalement pas grand chose à faire, vscode trouvera normalement les bons paramètres) pour faire le lien entre votre interpréteur python et lui.
-{: .a-faire}
+{.a-faire}
 
 Une fois la configuration terminée, écrivons notre code :
 
@@ -60,13 +60,13 @@ Une fois la configuration terminée, écrivons notre code :
 >print("Bonjour monde !")
 >```
 >
-{: .a-faire}
+{.a-faire}
 
 Vous pouvez alors l'exécuter :
 
 > * en cliquant sur [le triangle en haut à droite de la fenêtre vsc](https://code.visualstudio.com/docs/python/python-tutorial#_run-hello-world)
 > * dans [le terminal intégré à vscode]({% link _tutoriels/editeur/vsc/2021-09-14-vsc-terminal.md %}#terminal-integre) (*menu Affichage > Terminal*) en tapant : `python programme.py` (si vous êtes sous windows) ou `python3 programme.py` (si vous êtes sous unix ou mac).
-{: .a-faire}
+{.a-faire}
 
 Remarquez que lorsque vous exécutez votre programme via la première solution, cela crée un nouveau terminal qui s'appelle *Python* (le triangle vert est un raccourci pour appeler automatiquement un terminal) :
 
@@ -110,7 +110,7 @@ Si vous avez suivi le [tutoriel anaconda]({% link _tutoriels/python/installation
 {% details sous linux %}
 
 > trouver un linux pour savoir
-{: .tbd}
+{.tbd}
 
 {% enddetails %}
 
@@ -129,7 +129,7 @@ Si vous avez suivi le [tutoriel anaconda]({% link _tutoriels/python/installation
 {% enddetails %}
 
 > Faites en sorte que les paramètres python soient correct pour votre système.
-{: .a-faire}
+{.a-faire}
 
 ## exécuter du python {#execution-python}
 
@@ -144,12 +144,12 @@ On a déjà vu comment exécuter l'onglet courant en python en [cliquant sur le 
 Vous pouvez utiliser [le terminal intégré]({% link _tutoriels/editeur/vsc/2021-09-14-vsc-terminal.md %}#terminal-integre) pour exécuter vous programmes python comme vous le feriez avec un terminal externe.
 
 > Ouvrez un [terminal dans vscode]({% link _tutoriels/editeur/vsc/2021-09-14-vsc-terminal.md %}) : *menu Affichage > Terminal*.
-{: .a-faire}
+{.a-faire}
 
 Le [terminal]({% link _tutoriels/systeme/2021-08-24-terminal.md %}) permet d'exécuter des commandes de votre système.
 
 > taper `python` sous windows ou `python3` sous linux et mac pour rentrer dans l'interpréteur python.
-{: .a-faire}
+{.a-faire}
 
 ![interpreteur]({{ "/assets/tutos/vsc-python/python-interpreteur.png" | relative_url }}){:style="margin: auto;display: block"}
 
@@ -162,7 +162,7 @@ Dans l'interpréteur (à côté des `>>>`, qu'on appelle [invite de commande ou 
 >```
 >
 > Puis appuyez sur la touche entrée.
-{: .a-faire}
+{.a-faire}
 
 Vous devriez avoir quelque chose du genre à la sortie :
 
@@ -173,7 +173,7 @@ Ca a l'air d'avoir marché. La ligne de code a affiché à l'écran `Bonjour Mon
 Pour quitter l'interpréteur python :
 
 > Tapez `quit()` puis appuyez sur la touche entrée.
-{: .a-faire}
+{.a-faire}
 
 ## outils supplémentaires pour le développement
 

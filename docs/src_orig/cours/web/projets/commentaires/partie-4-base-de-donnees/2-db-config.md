@@ -6,7 +6,7 @@ author: "François Brucker"
 ---
 
 > [commentaires]({% link cours/web/projets/commentaires/index.md %}) / [partie 4]({% link cours/web/projets/commentaires/partie-4-base-de-donnees/index.md %}) / [intégration]({% link cours/web/projets/commentaires/partie-4-base-de-donnees/2-db-config.md %})
-{: .chemin}
+{.chemin}
 
 On incorpore la base de donnée et les modèles sequelize dans notre serveur.
 
@@ -127,7 +127,7 @@ Vous pouvez tester en remplaçant la fonction `async` par  le code suivant :
 ```
 
 >Si vous enlevez le mot `await`, le texte `"je suis là"` sera affiché avant le résultat de la fonction de synchronisation. Si à la place du `console.log` on avait tenté d'utiliser la base de données, on aurait eu une erreur.
-{: .attention}
+{.attention}
 
 ## modèle de base de données
 

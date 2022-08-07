@@ -6,7 +6,7 @@ author: "François Brucker"
 ---
 
 > [commentaires]({% link cours/web/projets/commentaires/index.md %}) / [partie 4]({% link cours/web/projets/commentaires/partie-4-base-de-donnees/index.md %}) / [modèle]({% link cours/web/projets/commentaires/partie-4-base-de-donnees/1-modele.md %})
-{: .chemin}
+{.chemin}
 
 ## sequelize
 
@@ -76,7 +76,7 @@ On demande qu'un message soit 3 chaînes de caractères non vide. Notez qu'on a 
 
 > TBD :
 > ne pas mettre force...
-{: .note}
+{.note}
 
 Nous n'avons pour l'instant que créé le modèle, il n'existe pas encore dans la base. Comme notre modèle est en mémoire, on va faire en sorte de recréer la base en changeant tous les modèles que nous avons défini (ici un seul). Ceci se fait avec la ligne :
 
@@ -286,7 +286,7 @@ const sequelize = new Sequelize({
 On vient de créer (si le fichier *"db.sqlite"* n'existait pas) ou d'utiliser la base de donnée sqlite dans un fichier dans le dossier *"commentaires"*.
 
 > Si vous utilisez une base de donnée persistante,  remplacez la ligne `await sequelize.sync({ force: true });` par `await sequelize.sync();`. Comme cela, la base est juste synchronisée (on ajoute les modèles qui ne sont pas encore dans la base) et non remise à plat. Ceci vous permet d'avoir une base qui va grandir au fil du temps.
-{: .attention}
+{.attention}
 
 ## fichier
 

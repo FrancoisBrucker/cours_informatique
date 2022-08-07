@@ -11,7 +11,7 @@ author: "François Brucker"
 > prérequis :
 >
 >* [algorithmie/pseudo-code]({% link cours/algorithme-code-theorie/algorithme/pseudo-code.md %})
-{: .chemin}
+{.chemin}
 
 Où l'on se donne des outils pour mesurer (théoriquement et en pratique) les performances d'un algorithme
 
@@ -20,7 +20,7 @@ Où l'on se donne des outils pour mesurer (théoriquement et en pratique) les pe
 Mesurer les performances d'un algorithme se fera presque exclusivement en utilisant des $\mathcal{O}$ (*grand O*)
 
 >Une fonction $f(N)$ est en $\mathcal{O}(f'(N))$ s'il existe 2 constantes $c_0$ et $N_0$ tels que $f(N) < c_0 \cdot f'(N)$ pour tout $N > N_0$.
-{: .note}
+{.note}
 
 Cela permet :
 
@@ -29,7 +29,7 @@ Cela permet :
 * de ne pas s'occuper de la proportionnalité car (on va le démontrer) une fonction en $\mathcal{O}(\mbox{constante} \cdot f(N))$ est également en $\mathcal{O}(f(N))$
 
 > Connaître le comportement en $\mathcal{O}$ d'une mesure dépendant de $N$ nous donne un majorant de son comportement lorsque $N$ devient grand. Si le majorant n'est pas trop éloigné de la mesure originale, cela nous donne une **idée générale** de la valeur de la mesure lorsque $N$ devient grand.
-{: .note}
+{.note}
 
 Ceci est plutôt intéressant en algorithmie car l'on ne connait pas toujours exactement le nombre d'opérations élémentaires utilisées, mais on peut les majorer de façon assez précise. On utilisera ainsi les $\mathcal{O}$ pour mesurer :
 
@@ -60,10 +60,10 @@ Par abus de langage, on notera :
 > * $\mathcal{O}(f(N)) + \mathcal{O}(g(N)) \Rightarrow \mathcal{O}(f(N) + g(N))$
 > * $\mathcal{O}(f(N)) \cdot \mathcal{O}(g(N)) \Rightarrow \mathcal{O}(f(N) \cdot g(N))$
 >
-{: .note}
+{.note}
 
 > Démontrez ces propriétés.
-{: .a-faire}
+{.a-faire}
 
 {% details  Démonstration de $\mathcal{O}(A) \Leftrightarrow \mathcal{O}(1)$, avec $A$ une constante strictement positive %}
 
@@ -132,17 +132,17 @@ On a alors $f'(N) \cdot g'(N) < \max \\{c_0, c'_0, 1 \\}^2 \cdot (f(N) \cdot g(N
 La règle (1) montre qu'un nombre constant est toujours en $\mathcal{O}(1)$. Pour un algorithme, il est souvent compliqué de savoir exactement de combien d'[opérations basiques]({% link cours/algorithme-code-theorie/algorithme/pseudo-code.md %}#instruction-basique) est constituée une opération, ou le temps exact qu'elle va prendre (pour un ordinateur, cela dépend du type de processeur. Par exemple, l'addition avec un x68 est faite [avec des registres](https://ensiwiki.ensimag.fr/index.php?title=Constructions_de_base_en_assembleur_x86), elle nécessite ainsi 2 opérations du processeur). On pourra cependant toujours montrer qu'il y en a un nombre constant (ou borné par un nombre constant) :
 
 > La complexité d'une opération basique nécessite $\mathcal{O}(1)$ opérations.
-{: .note}
+{.note}
 
 De là :
 
 > un nombre constant d'opérations basiques nécessite $\mathcal{O}(1)$ opérations.
-{: .note}
+{.note}
 
 Les règles précédentes permettent plus généralement de montrer :
 
 > $\mathcal{O}(A \cdot f(N)) \Leftrightarrow A \cdot \mathcal{O}(f(N)) \Leftrightarrow \mathcal{O}(f(N))$, avec $A$ une contante strictement positive et $f(N)$ une fonction strictement positive pour $N > N_0$
-{: .note}
+{.note}
 
 Ceci est pratique, car cela permet de ne pas compter toutes les opérations basiques précisément. Ainsi, en reprenant l'exemple de la partie [complexité des pseudo-code]({% link cours/algorithme-code-theorie/algorithme/pseudo-code.md %}#complexité) :
 
@@ -161,12 +161,12 @@ Un nombre total d'instructions de $3 \mathcal{O}(1) = \mathcal{O}(1)$ opération
 En revanche, faites attention, cela ne marche que pour les constantes !
 
 > Si le nombre d'opérations élémentaires est variable on a : $n \cdot \mathcal{O}(1) = \mathcal{O}(n)$. On ne peut pas simplifier les éléments variables.
-{: .attention}
+{.attention}
 
 Enfin, comme en algorithmie on manipulera souvent des polynômes, on peut montrer facilement avec les règles précédentes que :
 
 > $$\sum_{i=0}^na_i x^i = \mathcal{O}(x^n) \mbox{ si } a_n \neq 0$$
-{: .note}
+{.note}
 
 ## complexité d'un algorithme
 
@@ -181,12 +181,12 @@ On distinguera trois types de complexités :
 Les complexités vont toutes dépendre des entrées, plus précisément d'un paramètre rendant compte de leur **taille**, c'est à dire du nombre de cases mémoires nécessaires pour les stocker.
 
 > Lorsque l'on donne des complexités c'est toujours en fonction d'un ou plusieurs paramètres qu'il **faut** expliciter
-{: .attention}
+{.attention}
 
 ### nombre d'opérations basiques
 
 > La **complexité** (aussi parfois appelée **complexité maximale**) d'un algorithme est le **nombre maximum d'opérations basiques** effectué par celui-ci pour des entrées **de taille totale donnée**. Elle sera donnée en $\mathcal{O}(f(N))$, où $N$ est une variable rendant compte de la taille des données.
-{: .note}
+{.note}
 
 La **taille** d'une entrée est proportionnelle au nombre de cases mémoires que celle-ci nécessite.
 
@@ -195,7 +195,7 @@ La **taille** d'une entrée est proportionnelle au nombre de cases mémoires que
 Il arrive que certains algorithmes aient un comportement très différent selon les entrées. Parler seulement de la complexité (nombre maximum d'opérations) ne permet alors pas de le caractériser complètement. On parlera  aussi de :
 
 > La **complexité minimale** d'un algorithme est le **nombre minium d'opérations basiques** effectué par celui-ci pour des entrées **de taille totale donnée**. Elle sera donnée en $\mathcal{O}(f(N))$, où $N$ est une variable rendant compte de la taille des données.
-{: .note}
+{.note}
 
 Lorsque l'on calcule une complexité (maximale ou minimale) sous la forme d'un $\mathcal{O}(f(N))$, on tentera bien sur de trouver la fonction $f(N)$ la plus petite possible.
 
@@ -204,17 +204,17 @@ Lorsque l'on calcule une complexité (maximale ou minimale) sous la forme d'un $
 Un moyen efficace de mesurer la complexité d'un algorithme écrit sous la forme d'un code exécutable est de mesurer le temps mis par son exécution pour un jeu d'entrée donné.
 
 > la **complexité en temps** d'un algorithme est le temps mis pour l'exécuter en utilisant un jeu de donné **pour lequel la complexité (max) est atteinte** et d'une taille totale donnée.
-{: .note}
+{.note}
 
 Le temps pris sera bien sur différent si l'on prend une machine plus puissante ou si l'on change le code de l'algorithme mais **l'évolution de la complexité en temps par rapport à la taille des données est toujours proportionnelle à la complexité**. Pour le voir, il suffit de mesurer la durée d'exécution de chaque instruction basique et de la borner par le max.
 
 > Si vous ne prenez **pas** un jeu de donné pour lequel la complexité de l'algorithme est atteinte, vous ne mesurez **pas** la complexité temporelle de l'algorithme...
-{: .attention}
+{.attention}
 
 ### taille mémoire
 
 > la **complexité en espace** d'un algorithme est le nombre maximum de cases mémoires utilisées pour l'exécuter en utilisant un jeu de donnés de taille donnée.
-{: .note}
+{.note}
 
 Comme la complexité, on la mesurera avec des $\mathcal{O}$.
 
@@ -225,7 +225,7 @@ Notez que la complexité en espace n'est pas forcément atteinte pour un jeu de 
 Lorsque l'on code un algorithme, on a coutume (et c'est très bien) d'utiliser des fonctions, des méthodes ou des structures que l'on n'a pas écrites. Il faut en revanche bien connaître leurs complexités pour ne pas commettre d'erreur de calcul.
 
 > Lorsque l'on calcule une complexité toutes les méthodes et fonctions doivent être examinées
-{: .note}
+{.note}
 
 #### complexité de structure
 
@@ -237,7 +237,7 @@ En informatique, les **objets que l'on manipule ont des types**. On connait déj
 > * la suppression d'un objet de ce type
 > * chaque méthode liée au type
 >
-{: .note}
+{.note}
 
 Prenons le type [tableau](https://fr.wikipedia.org/wiki/Tableau_(structure_de_donn%C3%A9es)) comme exemple. Un tableau est un conteneur pouvant contenir $n$ objets (on appelle $n$ la taille d'un tableau). On peut accéder et affecter un objet au tableau grâce à un indice allant de $0$ à $n-1$ : si `t` est un tableau `t[i]` correspond à l'objet d'indice $i$ du tableau.
 
@@ -259,10 +259,10 @@ Le langage python ne connait pas les tableaux. Il utilise le type **liste** à l
 * **supprimer le dernier élément** d'une liste se fait en $\mathcal{O}(1)$ opérations
 
 > Une liste est un tableau dont on peut augmenter ou diminuer la taille par la fin en $\mathcal{O}(1)$ opérations.
-{: .note}
+{.note}
 
 > Ne confondez pas liste et [liste chaînée](https://fr.wikipedia.org/wiki/Liste_cha%C3%AEn%C3%A9e) ce n'est pas du tout la même structure !
-{: .attention}
+{.attention}
 
 #### fonction et méthodes données
 
@@ -325,12 +325,12 @@ On cherche le cas le pire, c'est à dire lorsque $k$ est maximum, donc lorsque l
 On en conclut que :
 
 > la complexité de l'algorithme `est_dans_tableau` est $\mathcal{O}(n)$ où $n$ est la taille du tableau qui est un paramètre d'entrée.
-{: .note}
+{.note}
 
 La complexité minimale est quant à elle atteinte lorsque l'on ne parcourt pas notre boucle, c'est à dire lorsque la valeur recherchée est la 1ère valeure du tableau :
 
 > la complexité minimale de l'algorithme `est_dans_tableau` est $\mathcal{O}(1)$.
-{: .note}
+{.note}
 
 ## types de complexité en algorithmie
 
@@ -344,7 +344,7 @@ En algorithmie, la plupart des complexités que l'on étudiera seront de cinq ty
 > * **complexité polynomiale** une complexité en $\mathcal{O}(n^k)$ où $n$ est le paramètre de taille de l'algorithme et $k$ une constante
 > * **complexité exponentielle** une complexité en $\mathcal{O}(k^n)$ où $n$ est le paramètre de taille de l'algorithme et $k$ une constante
 >
-{: .note}
+{.note}
 
 Les type de complexité ci-dessus sont rangés par taille, de la moins longue à la plus longue. Remarquez qu'un algorithme de complexité linaire nécessite de lire toutes les données au plus un nombre constant de fois pour s'exécuter. Un algorithme de complexité logarithmique n'a même pas besoin de lire une fois toutes les données pour s'exécuter ! Ceci n'est souvent possible que si les données en entrées ont une structure très particulière. Par exemple pour le problème de la recherche du plus grand élément d'une liste :
 
@@ -362,7 +362,7 @@ Il est crucial de chercher la meilleure complexité pour un algorithme car ses p
 
 > * il y a une **énorme différence** entre complexité linéaire et complexité polynomiale
 > * il y a une **énorme différence** entre complexité polynomiale et complexité exponentielle (qu'il ne faut donc jamais avoir si possible)
-{: .note}
+{.note}
 
 ### temps pour résoudre un problème de taille $n$
 
@@ -413,7 +413,7 @@ $$
 On a donc que $n!$ est de l'ordre de $\mathcal{O}(n^{n+1/2})$, qui est vachement plus grand que $\mathcal{O}(2^{n})$ qui est déjà gigantesque.
 
 >Si vous pensez que votre algorithme tout bête est en $\mathcal{O}(n!)$. Réfléchissez-y à deux fois. C'est presque sûrement une erreur...
-{: .note}
+{.note}
 
 ## règles de calcul de complexité
 
@@ -433,7 +433,7 @@ tant que condition:
 ```
 
 > La complexité est : $\mathcal{O}$(nombre de fois ou la condition est remplie) $\cdot$ ($\mathcal{O}$(complexité de la vérification de la condition) + $\mathcal{O}$(complexité du bloc d'instruction))
-{: .note}
+{.note}
 
 Souvent, $\mathcal{O}$(complexité de la vérification de la condition) sera égal à $\mathcal{O}(1)$ et pourra ne pas en tenir compte dans le calcul. C'est le cas, entre autre pour une boucle tant que :
 
@@ -445,14 +445,14 @@ pour chaque element de structure:
 ```
 
 > La complexité est : $\mathcal{O}$(nombre d'éléments de la structure) $\cdot$ $\mathcal{O}$(complexité du bloc d'instruction)
-{: .note}
+{.note}
 
 Si le bloc d'instructions est une suite d'instructions de complexité $\mathcal{O}(1)$, on pourra ne pas en tenir compte dans le calcul et la complexité est alors égale à la taille de la structure.
 
 En conclusion :
 
 > Si le bloc d'instruction est une suite d'instructions de complexité $\mathcal{O}(1)$ et que la vérification de la fin de la boucle est $\mathcal{O}(1)$, la complexité de la boucle est égal au nombre de fois où l'on effectue la boucle
-{: .note}
+{.note}
 
 ### boucles imbriquées indépendantes
 
@@ -469,7 +469,7 @@ boucle 1 éxecutée n1 fois:
 On peut utiliser la règle précédente de façon récursive, la partie $\mathcal{O}$(complexité du bloc d'instruction) contenant elle même une ou plusieurs boucles.
 
 > Si la condition à remplir pour rentrer dans la boucle est en $\mathcal{O}(1)$, la complexité des boucles imbriquées est le produit du nombre de fois où l'on rentre dans chaque boucle pris indépendamment multiplié par la complexité du bloc d'instructions.
-{: .note}
+{.note}
 
 Exemple :
 
@@ -496,7 +496,7 @@ Il arrive souvent que les boucles imbriquées d'un algorithme soient dépendante
 Il existe cependant un cas pratique (et qui arrive assez souvent) où l'on peut factoriser :
 
 > Si une boucle s'exécute un nombre variable de fois, mais que cette variation est croissante (respectivement décroissante), on peut considérer pour le calcul de la complexité qu'elle s'exécute à chaque fois de l'ordre du maximum de fois.
-{: .note}
+{.note}
 
 On va vérifier cela avec un exemple :
 
@@ -599,7 +599,7 @@ On retrouve bien le résultat attendu.
 Un algorithme récursif est un algorithme qui s'appelle lui-même jusqu'à ce qu'on arrive à une condition d'arrêt qui stope la récursion. On en calcule la complexité en posant une équation qu'il faut résoudre :
 
 > Pour calculer la complexité d'un algorithme récursif en fonction de la taille $n$ de l'entrée, on pose que $C(n)$ est la complexité et l'on utilise cette fonction pour estimer la complexité des appels récursifs. Une fois les complexités des éléments d'arrêts estimés, trouver $C(n)$ revient à résoudre une équation de récurrence.
-{: .note}
+{.note}
 
 Pour illustrer ce calcul, prenons l'exemple suivant :
 

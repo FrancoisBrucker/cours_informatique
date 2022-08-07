@@ -6,7 +6,7 @@ author: "François Brucker"
 ---
 
 > [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 4]({% link cours/web/projets/numerologie/partie-4-jardinage/index.md %}) / [scripts]({% link cours/web/projets/numerologie/partie-4-jardinage/3-scripts.md %})
-{: .chemin}
+{.chemin}
 
 Ajout des scripts permettant l'installation et l'exécution du serveur.
 

@@ -16,14 +16,14 @@ Configuration d'outils supplémentaires pour [visual studio code](https://code.v
 >
 > * [vscode et python]({% link _tutoriels/editeur/vsc/2021-09-14-vsc-python.md %})
 >
-{: .chemin}
+{.chemin}
 
 Ce tutoriel se consacre à l'installation d'extensions non fondamentales mais bien sympathiques pour le développement en python avec vscode.
 
 ## tests
 
 > [tests avec vscode](https://code.visualstudio.com/docs/python/testing)
-{: .chemin}
+{.chemin}
 
 Nous utilisons [pytest](https://docs.pytest.org/) comme bibliothèque de test.
 
@@ -53,7 +53,7 @@ python -m pip install pytest
 #### utilisation {#utilisation-pytest}
 
 > Créez un fichier que vous appellerez *"test_projet.py"* dans votre projet. Collez-y- le code suivant :
-{: .a-faire}
+{.a-faire}
 
 ```python
 

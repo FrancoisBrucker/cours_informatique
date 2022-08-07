@@ -79,7 +79,7 @@ Vous téléchargez la version courante de node : <https://nodejs.org/en/download
 {% enddetails %}
 
 > Il existe 2 versions de Node](https://nodejs.org/en/), la *LTS (long term support)* et la *current*. On choisira la version *current* qui est la plus récente. La version *LTS* est là pour des raisons de compatibilité.
-{: .attention}
+{.attention}
 
 #### utilisation de node
 
@@ -107,7 +107,7 @@ console.log("bonjour " + nom + " !")
 Qu'on pourra exécuter avec la commande : `node hello.js` dans un terminal se trouvant dans le dossier contenant le fichier *"hello.js"*.
 
 > Soyez à l'aise avec la notion de [terminal]({% link _tutoriels/systeme/2021-08-24-terminal.md %}) et de [dossiers]({% link _tutoriels/systeme/fichiers-navigation.md %}). Entraînez vous si nécessaire.
-{: .attention}
+{.attention}
 
 Pour la bonne bouche, un petit exemple de javascript utilisant node un peu plus compliqué : 
 
@@ -163,7 +163,7 @@ Rien n'est écrit dans la console et une croix rouge est apparu.
 
 >1. corrigez la faute et exécutez le code.
 >2. une fenêtre s'affiche. Elle est modale. Cela signifie que le code s'est mis en pause. `Hello world` ne s'affiche qu'une fois que l'on a tapé OK.
-{: .note}
+{.note}
 
 
 Il est **indispensable** d'exécuter le code javascript dans un html avec les outils de développement pour savoir quand il y a eu une erreur. Sans ça, il est impossible de dire si tout s'est bien passé.
@@ -172,7 +172,7 @@ Il est **indispensable** d'exécuter le code javascript dans un html avec les ou
 > Si vous tentez d'exécuter le code précédent dansun node, vous obtiendrez l'erreur : `Uncaught ReferenceError: window is not defined`. En effet, l'objet window c'est le navigateur. Il n'existe pas dans l'interpréteur node. 
 
 > l'utilisation de `window.alert` est certes marrant, mais c'est une action modale (le code est en pause jusqu'à ce que l'on ait appuyé sur `OK`), on ne sait donc pas tout de suite si le code fonctionne ou pas. Il vaut mieux faire ses tests avec la console en utilisant la fonction `console.log()`.
-{: .attention}
+{.attention}
 
 ### fonctions et variables
 
@@ -220,7 +220,7 @@ Le bout de code ci-dessus montre plusieurs spécificités de javascript :
 ### types d'objets 
 
 > A tester dans la console.
-{: .note}
+{.note}
 
 * basiques :
     * nombres (3 et 3.14)
@@ -245,12 +245,12 @@ Le bout de code ci-dessus montre plusieurs spécificités de javascript :
 ## gestion des dépendances
 
 > TBD : à faire propre
-{: .note}
+{.note}
 
 L'import de fichiers en javascript est différents de beaucoup d'autres langages. En gros : 
 
 > c'est le cirque.
-{: .attention}
+{.attention}
 
 ### bibliothèques node
 
@@ -297,4 +297,4 @@ require
 > par d'import sauf si module 
 > <https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Statements/import>
 > <https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Modules>
-{: .attention}
+{.attention}

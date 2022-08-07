@@ -8,14 +8,14 @@ authors:
 ---
 
 > [bases de python]({% link cours/bases-python/index.md %}) / [modules python]({% link cours/bases-python/modules.md %})
-{: .chemin}
+{.chemin}
 
 
 Un *module* (aussi appelé *bibliothèque* ou *library*) est un ensemble de fonctions utiles, utilisables dans de nombreux programmes. Plutôt que de refaire à chaque fois ces fonctions ou (c'est pire) de les copier/coller dans chaque programme, on les importe directement pour les utiliser.
 
 >Il existe de nombreux modules, réalisant une foultitude d'opérations. Avant de se mettre à coder quelque chose, commencez toujours par vérifier (google
 > est votre ami) s'il n'existe pas un module tout fait, vous gagnerez du temps. Python en fournit déjà de [nombreux](https://docs.python.org/3/library/index.html)
-{: .note}
+{.note}
 
 Pour utiliser un module, il faut commencer par l'importer avec la commande `import`. Par exemple avec le module `math`.
 
@@ -36,7 +36,7 @@ x = math.cos(pi_sur_deux)
 Lors de la ligne `import math` python crée un espace de nom qu'il appelle `math`. Il lit ensuite math avec cet espace de nom. Donc tout ce qui est défini dans math, le sera dasn l'espace de nom nommé `math`. On accède ensuite aux noms de math par la notation `.`.
 
 > la notation `A.B` : se lit ainsi on cherche le nom `B` dans l'espace de nom `A`
-{: .note}
+{.note}
 
 ### Importation d'une méthode particulière
 
@@ -90,7 +90,7 @@ Un module très utile dans python est le module [random](https://docs.python.org
 Utilisez le pour répondre aux questions suivantes :
 
 > Générez un entier aléatoire entre 10 et 234.
-{: .a-faire}
+{.a-faire}
 {% details %}
 
 On utilise la fonction [`randint` du module `random`](https://docs.python.org/fr/3/library/random.html#random.randint) :
@@ -106,7 +106,7 @@ On utilise la fonction [`randint` du module `random`](https://docs.python.org/fr
 
 
 > Générez un nombre réel uniformément dans $[0, 1[$
-{: .a-faire}
+{.a-faire}
 {% details %}
 
 On utilise la fonction [`random` du module `random`](https://docs.python.org/fr/3/library/random.html#random.random) :
@@ -121,7 +121,7 @@ On utilise la fonction [`random` du module `random`](https://docs.python.org/fr/
 
 
 > Choisissez 2 éléments **avec** remise de la liste `["pomme", "abricot", "orange", "cerise"]`
-{: .a-faire}
+{.a-faire}
 {% details %}
 
 On utilise la fonction [`choices` du module `random`](https://docs.python.org/fr/3/library/random.html#random.choices) :
@@ -134,7 +134,7 @@ On utilise la fonction [`choices` du module `random`](https://docs.python.org/fr
 {% enddetails %}
 
 > Choisissez 2 éléments **sans** remise de la liste `["pomme", "abricot", "orange", "cerise"]`
-{: .a-faire}
+{.a-faire}
 {% details %}
 
 On utilise la fonction [`sample` du module `random`](https://docs.python.org/fr/3/library/random.html#random.sample) :

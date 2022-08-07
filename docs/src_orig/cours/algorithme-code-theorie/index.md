@@ -5,7 +5,7 @@ category: cours
 ---
 
 > [Algorithme, code et théorie]({% link cours/algorithme-code-theorie/index.md %})
-{: .chemin}
+{.chemin}
 
 Ce cours montrera l'informatique sous trois aspects complémentaires — théorie, code et algorithmes — que tout [honnête informaticien](https://fr.wikipedia.org/wiki/Honn%C3%AAte_homme) devrait connaître. Il s'adresse à des personnes ayant des connaissances minimales en informatiques mais voulant (ou étant obligé d' :-)) approfondir le sujet.
 

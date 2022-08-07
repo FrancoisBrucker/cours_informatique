@@ -25,7 +25,7 @@ Le boulot d'un navigateur pour une url `protocole://serveur/ressource` donnée e
 2. d'interpréter la ressource récupérée pour l'afficher (c'est souvent du [html](https://fr.wikipedia.org/wiki/Hypertext_Markup_Language))
 
 > Ne confondez pas une [url ((Uniform Resource Locator))](https://fr.wikipedia.org/wiki/Uniform_Resource_Locator) avec une de ses deux soeurs que sont les [uri (Uniform Resource Identifier)](https://fr.wikipedia.org/wiki/Uniform_Resource_Identifier) et les [urn (Uniform Resource Name)](https://fr.wikipedia.org/wiki/Uniform_Resource_Name). Elles se ressemblent mais ne font pas la même chose.
-{: .attention}
+{.attention}
 
 ## protocole
 
@@ -40,7 +40,7 @@ Le protocole d'une url est le moyen d'accéder à une ressource. Dans le web, il
 > * faire du telnet
 > * RFC
 > * autre protocole (genre envoyer un mail ?)
-{: .note}
+{.note}
 
 
 ## serveur
@@ -72,7 +72,7 @@ Chaque protocole a cependant un port par défaut qui est utilisé s'il aucun por
 > * login
 > * numéro ou nom avec dns traceroute
 > * démon
-{: .note}
+{.note}
 
 ## ressource
 
@@ -93,4 +93,4 @@ Mais cela peut être ce que l'on veut.
 > * un serveur en python avec des fichiers en chroot.
 > * header
 > * post/get
-{: .note}
+{.note}

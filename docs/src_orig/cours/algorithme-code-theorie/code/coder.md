@@ -9,7 +9,7 @@ category: cours
 > **prérequis :**
 >
 >* [algorithmie/pseudo-code]({% link cours/algorithme-code-theorie/algorithme/pseudo-code.md %})
-{: .chemin}
+{.chemin}
 
 *Coder* c'est passer d'un algorithme *papier* (pseudo-code ou idées) à un programme informatique, appelé **code**. Par extension, on inclura dans cette partie la modification d'un code existant. Le **but** d'un code est d'être exécuté par un ordinateur pour réaliser une tâche.
 
@@ -22,7 +22,7 @@ Modifier du code est ce vous ferez le plus souvent : on passe son temps à modif
 Il en découle que :
 
 > **Vous allez passer plus de temps à lire du code qu'à en écrire.**
-{: .note}
+{.note}
 
 Comme il faut que : *ce qui se fait souvent doit se faire rapidement*, on utilisera une série de règles pour lire aisément son code et — surtout — se faire comprendre aisément de ses partenaires.
 
@@ -35,7 +35,7 @@ Nous allons maintenant lister les bonnes pratiques fondamentales à posséder lo
 ## quel langage utiliser ?
 
 > On utilise le langage qui est le plus adapté à notre problème
-{: .note}
+{.note}
 
 Nous utiliserons le python dans ce cours car il est très proche de l'algorithmie et qu'il est très facile de créer de petits programmes qui marchent.
 
@@ -44,7 +44,7 @@ En revanche, si vous créez d'énormes programmes avec des milliers de lignes de
 Bref, ne faites pas rentrer des carrés dans des ronds en utilisant un langage non adapté à votre problème. Vous allez perdre plus de temps qu'autre chose :
 
 > un langage informatique n'est **pas** une langue. C'est facile à apprendre !
-{: .note}
+{.note}
 
 ## noms explicites et découpage fonctionnel
 
@@ -56,12 +56,12 @@ Ceci permet de lire le code comme on lirait un texte, ce qui permet de rapidemen
 Le découpage fonctionnel de votre code permet d'éviter la duplication de code, qui est un mal absolu en code. Si l'on copie/colle du code et qu'il y a un bug ou qu'on veut modifier le fonctionnement de celui-ci, il faudra se rappeler de tous les endroits où il a été dupliqué, ce qui est impossible ! De plus, cela rend votre code peu lisible, il bégaie.
 
 > **Coding mantra :** [DRY](https://fr.wikipedia.org/wiki/Ne_vous_r%C3%A9p%C3%A9tez_pas)
-{: .note}
+{.note}
 
 Vous saurez que votre code est lisible lorsqu'il ne nécessitera **pas** de commentaires pour être compris. Ils sont en effet avantageusement remplacés par des noms de variables explicites et les noms de fonctions qui doivent expliquer ce qu'elles font.
 
 > **Coding mantra :** [NO COMMENTS !](https://www.developpez.com/actu/150066/Programmation-quand-faut-il-commenter-son-code-Google-s-invite-dans-le-debat-et-montre-que-les-commentaires-peuvent-tres-souvent-etre-evites/)
-{: .note}
+{.note}
 
 En plus d'être inutile, les commentaires :
 
@@ -69,7 +69,7 @@ En plus d'être inutile, les commentaires :
 * **cachent la difficulté**. S'il y a plein de commentaires, on ne les lira plus. Un commentaire se doit d'être rare. S'il est là c'est que l'on n'a pas vraiment pu faire autrement. Vous n'en aurez pas besoin dans 99% des cas...
 
 >**commentaires != documentation** :
-{: .attention}
+{.attention}
 
 * Si votre code est destiné à être utilisé uniquement par vous ou votre équipe, on n'a pas besoin de le documenter. Son organisation et son écriture doit se suffire à lui-même.
 * si votre code va être utilisé par des inconnus (lorsque vous créez une [bibliothèque](https://fr.wikipedia.org/wiki/Biblioth%C3%A8que_logicielle) par exemple), les fonctions publiques doivent être documentées. Un utilisateur doit pouvoir utiliser votre code sans effort et avoir à le lire pour le faire.
@@ -77,31 +77,31 @@ En plus d'être inutile, les commentaires :
 Lorsque l'on utilise une [API](https://fr.wikipedia.org/wiki/Interface_de_programmation), on a en effet jamais accès aux corps des méthodes, mais juste à leurs noms : on a besoin de savoir comment elles fonctionnent sans en connaitre le corps :
 
 > Toutes les méthodes destinées à être utilisées par des clients/utilisateurs différents de l'équipe de développement doivent être documentées.
-{: .note}
+{.note}
 
 ## lisibilité
 
 Un code est fait pour être relu et amélioré. On **doit** privilégier sa lecture à son écriture. Pour que votre équipe ou vous même puissiez le relire plus tard sans faire d'effort de compréhension.
 
 > Ecrire du code n'est pas un concours d'érudition.
-{: .note}
+{.note}
 
 Si on a le choix entre écrire du code utilisant des subtilités algorithmiques ou du langage utilisé mais qui le rend plus difficile à comprendre sans gain réel en complexité on choisira **TOUJOURS** le code lisible ou du code plus basique mais clair.
 
 > **Coding mantra :** [KISS](https://fr.wikipedia.org/wiki/Principe_KISS)
-{: .note}
+{.note}
 
 Si le fond doit être simple, la forme du code est importante aussi. Il se doit d'être agréable à lire et homogène. L'équipe de développement doit se mettre d'accord sur un [coding style](https://fr.wikipedia.org/wiki/Style_de_programmation). Par défaut on utilise le standard du langage. En python, c'est la  [PEP8](https://www.python.org/dev/peps/pep-0008/)
 
 > Utilisez un style de programmation homogène pour faciliter la lecture de code. Si possible, automatisez ce processus avec un outil automatique de formatage de code.
-{: .code}
+{.code}
 
 ## efficacité
 
 On ne doit jamais coder de choses inutiles : tout bout de code doit être utilisé au moment où il est écrit.
 
 > On ne codera jamais de fonctionnalités qui vont être utiles plus tard
-{: .note}
+{.note}
 
 Car *"plus tard"* le code ne sera plus le même et — le plus souvent — les besoins auront changés : votre fonctionnalités ne sera jamais utilisé... "plus tard" veut souvent dire *"jamais"*.
 De plus, du code inutile contraint le développement : il est là, ne sert à rien, mais pas sa seule présence il empêche de modifier le code comme on veut.
@@ -109,12 +109,12 @@ De plus, du code inutile contraint le développement : il est là, ne sert à ri
 En conséquence :
 
 > tout code qui n'est plus/pas utile doit être immédiatement supprimé.
-{: .note}
+{.note}
 
 Le mieux étant encore de ne jamais l'écrire au départ :
 
 > **Coding mantra :** [YAGNI](https://fr.wikipedia.org/wiki/YAGNI)
-{: .note}
+{.note}
 
 ## tests
 
@@ -126,19 +126,19 @@ Pour cela :
 
 > Lorsque l'on ajoute des fonctionnalités au code ou que l'on corrige un bug, on écrit un test qui vérifie la fonctionnalité ou qui montre que le bug n'existe pas/plus.
 > Ainsi, puisque les tests sont conservés, ce bug ne pourra plus jamais réapparaître et cette fonctionnalité ne pourra plus disparaître.
-{: .note}
+{.note}
 
 Une méthode très efficace de programmation consiste même à commencer par écrire le test, **avant** le code testé :
 
 > **Coding mantra :** [TDD](https://artificials.ch/test-driven-development-mantra/)
-{: .note}
+{.note}
 
 Nous n'utiliserons pas ici le mantra TDD dans son intégralité : on se permettra d'écrire les tests après avoir codé la fonctionnalité et pas avant. Mais, l'expérience venant, faites l'essai de coder vos tests avant la fonction, cela permet d'utiliser sa fonction avant de la coder et change souvent la façon dont on voulait la coder initialement.
 
 Les tests sont autant de cas d'utilisation de vos programmes qui montrent qu'il fonctionne et comment il fonctionne. Il permettent de montrer les différentes fonctionnalités de votre code :
 
 > **La fonctionnalité est plus importante que le code** : Le code va changer, les fonctionnalités doivent rester.
-{: .note}
+{.note}
 
 Enfin, le code et ses tests doivent être fait par la **même personne** et au **même moment**. Il ne faut pas attendre d'avoir codé plusieurs fonctions avant de faire ses tests. Vous n'êtes en effet pas sûr que votre 1ère fonction codée fonctionne avant d'avoir fait des tests. 
 
@@ -154,7 +154,7 @@ Tout ce qu'on vient de voir structure un projet informatique en trois entités :
 > * le **code** qui regroupe l'ensemble des fonctions utilisée par le programme principal
 > * les **tests** qui *certifient* que le code fonctionne.
 >
-{: .note}
+{.note}
 
 Ces trois entités sont **toujours** codées en même temps : un code doit être testé pour être sur qu'il fonctionne et comme on ne fait pas de code inutile, il doit être utilisé.
 

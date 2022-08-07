@@ -6,7 +6,7 @@ tags: informatique cours
 ---
 
 > [Algorithme, code et théorie]({% link cours/algorithme-code-theorie/index.md %}) / [exercices]({% link cours/algorithme-code-theorie/exercices/index.md %}) / [2021-2022]({% link cours/algorithme-code-theorie/exercices/2021-2022/index.md %}) / [corrigé Test 1 : code]({% link cours/algorithme-code-theorie/exercices/2021-2022/1_test_corrige.md %})
-{: .chemin}
+{.chemin}
 
 L'exercice portait sur la structure de [polynômes](https://fr.wikipedia.org/wiki/Polyn%C3%B4me).
 

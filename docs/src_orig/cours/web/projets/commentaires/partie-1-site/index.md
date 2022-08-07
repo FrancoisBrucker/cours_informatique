@@ -6,7 +6,7 @@ author: "François Brucker"
 ---
 
 > [commentaires]({% link cours/web/projets/commentaires/index.md %}) / [partie 1]({% link cours/web/projets/commentaires/partie-1-site/index.md %})
-{: .chemin}
+{.chemin}
 
 On prépare le terrain.
 

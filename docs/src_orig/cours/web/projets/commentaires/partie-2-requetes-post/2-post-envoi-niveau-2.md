@@ -6,7 +6,7 @@ author: "François Brucker"
 ---
 
 > [commentaires]({% link cours/web/projets/commentaires/index.md %}) / [partie 2]({% link cours/web/projets/commentaires/partie-2-requetes-post/index.md %}) / [envoyer les données]({% link cours/web/projets/commentaires/partie-2-requetes-post/2-post-envoi.md %})
-{: .chemin}
+{.chemin}
 
 > TBD 
 > * cors : pas bon sans serveur.

@@ -10,7 +10,7 @@ eleventyExcludeFromCollections: true
         <a href="{{ index.url | url }}">{{ index.data.title }}</a>
         <div class="px-4 py-2">
         <p class="px-4 m-0">
-            {{ index.data.page.excerpt | md | safe}}
+            {% résumé index %}
         </p>
         </div>
     </article>

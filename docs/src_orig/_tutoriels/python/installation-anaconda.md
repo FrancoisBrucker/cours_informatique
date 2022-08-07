@@ -23,7 +23,7 @@ Cependant, pour une utilisation basique de python ou une utilisation via [jupyte
 Il existe plusieurs distributions de python anaconda. Nous allons utiliser l'[édition individuelle](https://www.anaconda.com/products/individual) qui est open source.
 
 > Si vous avez déjà une ancienne version d'anaconda et que vous souhaitez installer une mise à jour, il vous faudra commencer par supprimer [le dossier contenant l'ancienne version](#ou-est-anaconda).
-{: .attention}
+{.attention}
 
 ### installateur
 
@@ -35,7 +35,7 @@ Il existe plusieurs distributions de python anaconda. Nous allons utiliser l'[é
 
 > Il faudra faire des choix qui ne sont pas par défaut lors de l'installation.
 > **Ne cliquez pas sur *suivant* comme des sauvages...** Lisez les choix qui vous sont proposés.
-{: .attention}
+{.attention}
 
 Lors de l'installation :
 
@@ -43,7 +43,7 @@ Lors de l'installation :
 
 > Je n'ai pas de linux sous la main. A tester.
 > Je pense que c'est comme mac, mais pas sur.
-{: .tbd}
+{.tbd}
 
 {% enddetails %}
 
@@ -98,7 +98,7 @@ Si vous avez suivi à la lettre le processus d'installation, anaconda devrait ê
 {% details sous linux %}
 
 > à faire avec un linux
-{: .tbd}
+{.tbd}
 
 {% enddetails %}
 
@@ -123,7 +123,7 @@ Il faudra surement [révéler les fichiers cachés]({% link _tutoriels/systeme/f
 Anaconda a installé des choses, en particulier l'application *Anaconda-Navigator* qui vous permet de lancer toutes les applications liées à Anaconda.
 
 > Le langage python est appelé : `python` sous windows et `python3` sous mac et linux
-{: .attention}
+{.attention}
 
 ### python avec jupyter
 
@@ -136,7 +136,7 @@ Lancez l'application *Notebook* puis :
 Vous devriez voir le texte `Hello World` en sortie de votre cellule.
 
 > sous windows, est-ce aussi python3 ?
-{: .tbd}
+{.tbd}
 
 ### python avec un terminal anaconda
 

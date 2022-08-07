@@ -1,4 +1,9 @@
-- nb d'algorithme. Faire avec le pseudo-code. On a pas besoin de cantor ?
+## autres
+
+- graphes : 
+	- prés-requis complexité, algo et python pour le cours.
+		- encodage.md
+	- arbres : combien d'arbre ? Encodage prüfer et application à un arbre aléatoire (!= différent de la structure).
 
 - bases python : 
 	- ne faire l'install qu'à la fin. Après l'utilisation avec basthon en console et avec notebook.
@@ -11,6 +16,12 @@
 	- couleurs en ajoutant du html ?
 
 - spell check est mieux pour la correction orthorgraphique
+
+## mpci
+
+- nb d'algorithme. Faire avec le pseudo-code. On a pas besoin de cantor ?
+- dire que pseudo-code := algorithme de la définition de knuth
+
 
 
 - figures : utiliser seaborn + approximation courbes pour les calculs de complexités

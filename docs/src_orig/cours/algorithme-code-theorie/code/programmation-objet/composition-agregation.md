@@ -12,7 +12,7 @@ authors:
 > **prérequis :**
 >
 > * [classes et objets]({% link cours/algorithme-code-theorie/code/programmation-objet/classes-et-objets.md %})
-{: .chemin}
+{.chemin}
 
 Le but de cette séance est de consolider les concepts fondamentaux de classe et d'objet et d'ajouter les notions de
 composition, d'agrégation et d'attributs de classe.
@@ -26,7 +26,7 @@ Ce qui les distingue :
 >
 >* **agrégation** : quand les objets utilisés sont créés en dehors de la classe,
 >* **composition** : quand les objets utilisés sont créés dans le constructeur de la classe qui les utilise.
-{: .note}
+{.note}
 
 Il est important de comprendre que si des objets n'ont pas été crées dans la classe qui l'utilise, ils peuvent être connus par d'autres méthodes du programme et donc être modifiées par celles-ci.
 
@@ -129,7 +129,7 @@ print(panier.montre_panier())
 ### attention
 
 > Si une classe est composée d'autres objets, ces parties peuvent être modifiées en dehors de la classe, même pour une composition.
-{: .attention}
+{.attention}
 
 Dans notre exemple, une méthode retourne un objet qui est un attribut. Une fois qu'un objet a été *donné* au monde extérieur on ne contrôle plus son état et il peut être utilisé a priori par n'importe quoi d'autre dans le programme.
 
@@ -207,7 +207,7 @@ Ces objets possèdent des valeurs et des méthodes pour y accéder mais que l'on
 Vous avez utilisé des value objects bien souvent en python comme : les  entiers, les réels ou encore les chaines de caractères. Enfin de nombreux objets modifiables en python ont leur contrepartie non modifiable comme les `tuple` qui sont des listes non modifiables ou encore les `frozenset` sont des ensembles non modifiables.
 
 > Une bonne façon de programmer est de n'utiliser par défaut que des objets non modifiables et que si le besoin s'en fait sentir de les rendre modifiables.
-{: .note}
+{.note}
 
 ## tests
 
@@ -253,7 +253,7 @@ def test_supprime_dans_panier():
 > * pour l'initialisation, on vérifie juste que notre objet existe. Comme il n'a pas de paramètre, on ne peut pas tester grand chose d'autre
 > * On crée pour chaque test un nouvel objet, pour être sur que les tests n'interfèrent pas les uns avec les autres
 > * Chaque test doit permettre d'utiliser la méthode testée comme elle doit être utilisée dans le code
-{: .note}
+{.note}
 
 ### couverture de code {#couverture-code}
 
@@ -280,7 +280,7 @@ TOTAL               39     10    74%
 On voit que l'exécution des tests a eu besoin d'utiliser 100% du fichier *"test_panier.py"* (ce qui est normal) et 100% du fichier *"panier.py"*. Le fichier *"main.py"* n'a pas été utilisé du tout (aucune des 10 lignes n'a été vue), ce qui est normal.
 
 > Il faut tenter de passer par 100% du code utile dans nos tests.
-{: .note}
+{.note}
 
 Pour s'en rendre compte, on peut commenter le test `test_supprime_dans_panier` et re-exécuter les tests. j'obtiens alors :
 

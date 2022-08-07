@@ -6,7 +6,7 @@ author: "François Brucker"
 ---
 
 > [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 2]({% link cours/web/projets/numerologie/partie-2-serveur/index.md %}) / [serveur web minimal]({% link cours/web/projets/numerologie/partie-2-serveur/1-serveur-web-minimal.md %})
-{: .chemin}
+{.chemin}
 
 On utilise node comme un serveur web qui dit bonjour.
 
@@ -69,7 +69,7 @@ Que fait le code :
 2. une fois le serveur crée on le place derrière un port de la machine, ici 3000.
 
 > La réponse aux requêtes du serveur est un objet qui existe déjà, ce n'est pas la réponse de notre fonction. Le boulot d'un serveur node est de renseigner les champs de cet objet puis de l'envoyer (avec [`res.end()`](https://nodejs.org/api/http.html#http_response_end_data_encoding_callback) par exemple).
-{: .attention}
+{.attention}
 
 ### protocole http
 

@@ -6,7 +6,7 @@ author: "François Brucker"
 ---
 
 > [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 1]({% link cours/web/projets/numerologie/partie-1-front/index.md %}) / [niveau 3]({% link cours/web/projets/numerologie/partie-1-front/niveau-3/index.md %}) / [html et css]({% link cours/web/projets/numerologie/partie-1-front/niveau-3/3-html_css.md %})
-{: .chemin}
+{.chemin}
 
 ## où sont les préférences de git ?
 
@@ -38,7 +38,7 @@ Créez un fichier *".gitignore"* à la racine de votre projet (vscode va crier u
 A partir de maintenant, tout le dossier *".vscode"* sera ignoré de git. On le voit dans l'application github. On a toujours 1 modification, mais c'est l'ajout du fichier *".gitignore".
 
 > Commitez ce changement et pushez sur l'origin'.
-{: .note}
+{.note}
 
 ## les tâches
 

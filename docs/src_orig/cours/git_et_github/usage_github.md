@@ -60,7 +60,7 @@ Deux entrées permettent de lier github à votre projet :
 - "master" qui est la branche principale sur le projet origin.
 
 > La méthode de récupération et de fusion sur le serveur remote origin utilise le protocole https.
-> {: .attention}
+> {.attention}
 
 #### avec un terminal
 
@@ -93,7 +93,7 @@ Deux entrées permettent de lier github à votre projet :
 - "master" qui est la branche principale sur le projet origin.
 
 > La methode de récupération et de fusion sur le serveur remote origin utilise le protocole ssh (`git@github.com`).
-> {: .attention}
+> {.attention}
 
 ### ajout d'un projet existant à github
 
@@ -114,7 +114,7 @@ On utilise la commande `git pull --rebase=merges origin master` pour récupérer
 Pour que cette commande fonctionne il faut que l'`origin` soit plus loin en commit que vous et que n'ayez pas fait de modification par rapport son histoire (vous devez juste être en retard, pas autre part)
 
 > N'oubliez pas `--rebase=merges`. En effet, `git pull` fera un merge par défaut, brisant la jolie linéarité de l'historique. Il faut, comme pour la synchronisation des branche faire un rebase. Je vous conseille la lecture de [cet article](https://delicious-insights.com/fr/articles/bien-utiliser-git-merge-et-rebase/) qui explique bien comment faire. L'article vous demande d'utiliser `--rebase=preserve` comme option mais cette commande est obsolète et remplacée par `--rebase-merges`qui fonctionne de la même manière.
-> {: .attention}
+> {.attention}
 
 Si vous avez suivi [nos conseils de configuration]({% link cours/git_et_github/index.md %}#configuration-git), on a fixé le comportement par défaut de `git pull` correctement, vous pouvez donc même taper uniquement `gt pull` et tout se fera correctement.
 

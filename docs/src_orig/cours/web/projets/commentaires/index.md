@@ -6,7 +6,7 @@ author: "François Brucker"
 ---
 
 > [commentaires]({% link cours/web/projets/commentaires/index.md %})
-{: .chemin}
+{.chemin}
 
 Ce projet vise à munir nos serveur web de persistance de données. Côté front avec la gestion des cookies et côté back avec la mise œuvre d'une base de données.
 
@@ -51,7 +51,7 @@ Chaque partie est organisée en niveaux. Chaque niveau ajoutant des outils de d�
 > * utiliser le dossier script pour la mise en prod.
 > * compiler son bootstrap ?
 > * gestion des routes.
-{: .note}
+{.note}
 
 ## ressources
 

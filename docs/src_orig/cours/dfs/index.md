@@ -11,23 +11,23 @@ Cours d'apprentissages des différents outils de développement et les bases du 
 ## Préparation d'un windows
 
 > ok. deleted
-{: .note}
+{.note}
 
 ## git et github
 
 > ok. deleted
-{: .note}
+{.note}
 
 
 ## shell
 
 > ok. deleted
-{: .note}
+{.note}
 
 ## ssh
 
 > ok. deleted
-{: .note}
+{.note}
 
 ## **Outils de développements web**
 
@@ -38,7 +38,7 @@ Cours d'apprentissages des différents outils de développement et les bases du 
 ## html/css/js/imports
 
 > ok. deleted
-{: .note}
+{.note}
 
 
   [imports]({% link cours/dfs/yarn.md %})

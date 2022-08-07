@@ -6,7 +6,7 @@ author: "François Brucker"
 ---
 
 > [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 1]({% link cours/web/projets/numerologie/partie-1-front/index.md %}) / [niveau 3]({% link cours/web/projets/numerologie/partie-1-front/niveau-3/index.md %})
-{: .chemin}
+{.chemin}
 
 Numérologie niveau 3. On ajoute l'utilisation (basique) d'un gestionnaire de sources (git), et mon met en production le site sur un serveur distant
 

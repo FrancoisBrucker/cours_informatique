@@ -6,7 +6,7 @@ author: "François Brucker"
 ---
 
 > [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 1]({% link cours/web/projets/numerologie/partie-1-front/index.md %})
-{: .chemin}
+{.chemin}
 
 Numérologie partie 1. On prépare notre site en créant tout ce qui est nécessaire et en le faisant fonctionner en *front*.
 

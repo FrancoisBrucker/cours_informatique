@@ -42,7 +42,7 @@ Ma méthode sera exacte.
 On utilise le mot clé [assert](http://www.tutorialspoint.com/python/assertions_in_python.htm) pour créer notre fonction de test. 
 
 > Les fonctions de tests doivent toutes commencer par ''test_''.
-{: .attention}
+{.attention}
 
 Ajouter la méthode ci-après à votre fichier :
 
@@ -83,7 +83,7 @@ Faites en sorte qu'il s'exécute sans problème (attention aux `import`. Vous po
 
 
 >On séparera toujours les tests du code. Tout fichier de test commence par ''test_''.
-{: .attention}
+{.attention}
 
 
 ## Utilisation de l'environnement de test avec pycharm
@@ -95,7 +95,7 @@ Commencez par supprimer l'exécution de `test_double` dans le fichier `test_aide
 
 
 >Un fichier de tests ne doit contenir que des fonctions.
-{: .attention}
+{.attention}
 
 
 Puis nous allons demander à [Pycharm](https://www.jetbrains.com/pycharm/) d'exécuter `test_aide_mathematiques.py` à l'aide de notre environnement de test.

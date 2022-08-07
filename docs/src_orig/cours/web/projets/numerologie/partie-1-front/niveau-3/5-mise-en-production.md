@@ -6,7 +6,7 @@ author: "François Brucker"
 ---
 
 > [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 1]({% link cours/web/projets/numerologie/partie-1-front/index.md %}) / [niveau 1]({% link cours/web/projets/numerologie/partie-1-front/niveau-3/index.md %}) / [html et css]({% link cours/web/projets/numerologie/partie-1-front/niveau-3/5-mise-en-production.md %})
-{: .chemin}
+{.chemin}
 
 Mise en production.
 
@@ -32,7 +32,7 @@ Si vous vous êtes élève de l'ecm et que vous voulez mettre à jour votre site
 
 > TBD
 > le perso/visible de l'école
-{: .note}
+{.note}
 
 ## transfert des fichier
 

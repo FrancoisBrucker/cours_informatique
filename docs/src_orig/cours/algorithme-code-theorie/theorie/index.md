@@ -5,12 +5,12 @@ category: cours
 ---
 
 > [Algorithme, code et théorie]({% link cours/algorithme-code-theorie/index.md %}) / [théorie]({% link cours/algorithme-code-theorie/theorie/index.md %})
-{: .chemin}
+{.chemin}
 
 Que peut ou pas faire un algorithme.
 
 > *L'informatique n'est pas plus la science des ordinateurs que l'astronomie n'est celle des télescopes* [E. Dijkstra](https://fr.wikipedia.org/wiki/Edsger_Dijkstra)
-{: .note}
+{.note}
 
 * [fonctions]({% link cours/algorithme-code-theorie/theorie/fonctions.md %})
 * [Algorithmes, fonctions et pseudo-code]({% link cours/algorithme-code-theorie/theorie/algorithmes-fonctions-pseudo-code.md %})
@@ -23,7 +23,7 @@ Que peut ou pas faire un algorithme.
 * problème de décision : sous ensemble vrai d'un ensemble. se dérive de langage décidable
 
 > ref à remanier propre)
-{: .tbd}
+{.tbd}
 
 ## refs
 

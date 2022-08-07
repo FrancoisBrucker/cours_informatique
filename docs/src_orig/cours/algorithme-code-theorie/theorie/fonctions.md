@@ -9,12 +9,12 @@ category: cours
 > **prérequis :**
 >
 > * [algorithmes]({% link cours/algorithme-code-theorie/algorithme/algorithmes.md %})
-{: .chemin}
+{.chemin}
 
 Un algorithme, [on l'a vu]({% link cours/algorithme-code-theorie/algorithme/algorithmes.md %}#algorithme), c'est :
 
 > Un algorithme est une succession d'instructions simples et clairement définies. A partir d'entrées, il produit une sortie en un nombre fini d'instructions.
-{: .note}
+{.note}
 
 Nous allons dans cette partie, sans aucun présupposé sur les instructions à utiliser, montrer que l'on peut préciser ce qu'est un algorithme sous la forme de fonctions, juste en utilisant la finitude de sa description.
 
@@ -33,7 +33,7 @@ Le terme **fini** de la définition d'un algorithme est crucial : pour qu'un hum
 On en déduit la définition (très générale) d'une instruction d'un algorithme :
 
 > Une **instruction** d'un algorithme est une règle définie par un nombre **fini** de symboles.
-{: .note}
+{.note}
 
 Fini ne veut pas dire petit nombre. Un algorithme peut utiliser des nombres entiers aussi grand qu'il
 le veut, du moment qu'ils ne soient pas infini.
@@ -43,7 +43,7 @@ le veut, du moment qu'ils ne soient pas infini.
 Puisque l'on a le droit de ne manipuler que des choses finies, un algorithme ne peut manipuler que des [mots d'un alphabet fini](https://fr.wikipedia.org/wiki/Mot_(math%C3%A9matiques)). La conséquence fondamentale de ceci est que :
 
 > **un algorithme ne peut pas manipuler de nombres réels**. On ne peut considérer un réel que comme une abstraction (un symbole particulier) ou une approximation (on ne considère qu'un nombre fini de décimales).
-{: .note}
+{.note}
 
 Prenons $\pi$ par exemple. Il existe des algorithmes qui [calculent les décimales de pi](https://fr.wikipedia.org/wiki/Approximation_de_%CF%80#Calcul_de_la_n-i%C3%A8me_d%C3%A9cimale_de_%CF%80), mais on ne pourra jamais écrire que pi est le résultat d'un algorithme, puisque l'algorithme doit s"arrêter : on aura qu'un nombre fini de décimales, donc on aura pas $\pi$.
 
@@ -61,7 +61,7 @@ En conclusion :
 > * les approximations finies de réels
 > * les chaînes de caractères
 >
-{: .note}
+{.note}
 
 ## nombre d'algorithmes {#nombre-algos}
 
@@ -70,12 +70,12 @@ Comme un algorithme peut-être décrit par une description finie de son déroul�
 De là :
 
 > Il ne peut y avoir plus d'algorithmes que de chaine de caractères écrites en Français.
-{: .note}
+{.note}
 
 Ça en fait un sacré paquet. Tentons d'être un peu plus précis. Comme chaque chaîne de caractères peut être associée à un entier en concaténant  un à un le code [unicode](https://fr.wikipedia.org/wiki/Unicode) associé à chaque caractère de la description de l'algorithme et des instructions utilisées (comme si on sauvait le fichier au format texte sur un ordinateur) :
 
 > Il ne peut y avoir plus d'algorithmes que de nombres entiers.
-{: .note}
+{.note}
 
 ## fonctions
 
@@ -86,14 +86,14 @@ Un algorithme, représenté par sa description, a des entrées et une sortie : c
 > $$f: \mathbb{N}^{q} \times R^r \times C^s \rightarrow \mathbb{N} \cup R \cup C$$
 >
 > où $\mathbb{N}$ est l'ensemble des entiers, $R$ l'ensemble des approximations de réels et $C$ l'ensemble des chaînes de caractères.
-{: .note}
+{.note}
 
 On a pas trop dit grand chose pour l'instant. On a fait que re-écrire ce qu'on savait déjà sous la forme de fonctions. On va montrer qu'on peut faire bien mieux en montrant qu'un algorithme est une fonction de $\mathbb{N}$ (les entiers) dans $\mathbb{N}$.
 
 Cela nous permettra de montrer qu'un algorithme ne peut pas **tout** calculer : il existe des fonctions de $\mathbb{N}$ dans $\mathbb{N}$ qu'aucun ordinateur ne pourra calculer (trouver des fonctions non calculables par un ordinateur n'est pas une tâche simple cependant. Il nous faudra un peut plus de connaissances pour en exhiber).
 
 > Dans la suite de cette partie on utilisera les [bijections](https://fr.wikipedia.org/wiki/Bijection) entre ensembles. Si deux ensembles sont en bijections on peut passer de l'un à autre (et réciproquement) sans soucis, les deux ensembles sont équivalents : on peut utiliser l'un ou l'autre sans perte de généralité.
-{: .attention}
+{.attention}
 
 ### fonctions à plusieurs paramètres entiers {#fonction-plusieurs-entier}
 
@@ -109,7 +109,7 @@ On peut donc reformuler notre assertion précédente en unifiant les paramètres
 >
 > $$f: \mathbb{N}^p \rightarrow \mathbb{N}$$
 >
-{: .note}
+{.note}
 
 C'est bien mieux mais on sépare encore les algorithmes par leur nombre de paramètres. Allons plus loin.
 
@@ -140,12 +140,12 @@ On chemine alors comme ça :
 L'entier $O((x, y))$ associé à $(x, y)$ est alors l'ordre dans ce cheminement (par exemple $O((2, 1)) = 8$) : on peut associer un unique entier à tout couple d'entiers et réciproquement ($O^{-1}(6) = (0, 2)$ par exemple). On en conclut que :
 
 > Il existe une bijection entre $\mathbb{N}^2$ et $\mathbb{N}$ : il y a autant de couples d'entiers que d'entiers.
-{: .note}
+{.note}
 
 De façon générale :
 
 > Il existe une bijection entre $\mathbb{N}^p$ et $\mathbb{N}$ : il y a autant de $p$-uplets d'entiers que d'entiers.
-{: .note}
+{.note}
 
 {% details preuve %}
 
@@ -176,7 +176,7 @@ La bijection entre $\mathbb{N}^p$ et $\mathbb{N}$ nous permet de dire que l'on p
 >
 > $$f: \mathbb{N} \rightarrow \mathbb{N}$$
 >
-{: .note}
+{.note}
 
 En remarquant que tout entier peut s'écrire sous sa [notation binaire](https://fr.wikipedia.org/wiki/Syst%C3%A8me_binaire), il existe une bijection entre $\mathbb{N}$ et l'ensemble des mots que l'on peut former avec $0$ et $1$. En notant cet ensemble $\\{0, 1\\}^\star$, on en conclut que :
 
@@ -184,7 +184,7 @@ En remarquant que tout entier peut s'écrire sous sa [notation binaire](https://
 >
 > $$f: \{0, 1\}^\star \rightarrow \{0, 1\}^\star$$
 >
-{: .note}
+{.note}
 
 C'est cette formulation que l'on utilisera le plus souvent.
 
@@ -209,7 +209,7 @@ En utilisant les notations binaires on a alors :
 >
 > $$f: \{0, 1\}^\star \rightarrow \{0, 1\}$$
 >
-{: .note}
+{.note}
 
 ## que calcule-t-on ?
 
@@ -218,7 +218,7 @@ On a démontré qu'un algorithme était une fonction de $\mathbb{N}$ dans $\math
 On ne donnera pas ici d'exemple concret de fonction qu'on ne peut pas décrire par un algorithme, on montre juste que contrairement à une idée répandue :
 
 > Un algorithme **ne peut pas** tout calculer.
-{: .note}
+{.note}
 
 Pour cela, on va montrer qu'il existe strictement plus de fonctions que d'algorithmes.
 
@@ -248,7 +248,7 @@ $$
 On vérifie facilement que si $A \neq A'$ on a $f_A \neq f_{A'}$ (si $x \in A$ et $x \notin A'$ $f_A(x) = x + 1 > 0 = f_{A'}$) et donc que tout sous-ensemble d'entiers peut être associé à une fonction $f: \mathbb{N} \rightarrow \mathbb{N}$ différente. On peut donc dire que :
 
 > Il y a plus de fonction $f: \mathbb{N} \rightarrow \mathbb{N}$ que de sous-ensembles de $\mathbb{N}$.
-{: .note}
+{.note}
 
 Réciproquement, on peut associer pour chaque fonction $f: \mathbb{N} \rightarrow \mathbb{N}$ le sous ensemble de $\mathbb{N}^2$ :
 
@@ -257,17 +257,17 @@ $$I(f) = \{ (n, f(n)) \vert n \in \mathbb{N} \}$$
 Si $f$ et $f'$ sont deux fonctions de $\mathbb{N} \rightarrow \mathbb{N}$ différentes on a clairement que $I(f) \neq I(f')$. Ceci nous permet de dire que :
 
 > Il y a moins de fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ que de sous-ensembles de $\mathbb{N}^2$
-{: .note}
+{.note}
 
 Comme on a vu qu'il y avait une bijection entre $\mathbb{N}^2$  et $\mathbb{N}$, il y a autant de sous-ensembles de $\mathbb{N}^2$ que de sous ensemble de $\mathbb{N}$, ce qui nous permet d'écrire :
 
 > Il y a moins de fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ que de sous-ensembles de $\mathbb{N}$
-{: .note}
+{.note}
 
 S'il y a à la fois plus et moins de fonction $f: \mathbb{N} \rightarrow \mathbb{N}$ que de sous-ensembles de $\mathbb{N}$, c'est que :
 
 > Il y a autant de fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ que de sous-ensembles de $\mathbb{N}$
-{: .note}
+{.note}
 
 ### nombre de sous-ensembles de $\mathbb{N}$ {#nb-ss-ensemble-N}
 
@@ -287,7 +287,7 @@ Par exemple, si on prend l'ensemble $\\{a, b, c\\}$. Les différents sous-ensemb
 Il y a 8 sous-ensemble d'un ensemble à 3 éléments. De façon plus générale, on montre facilement que :
 
 > Si $E$ est un ensemble fini et contient $n$ éléments, il y a $2^n$ sous-ensembles possibles à un ensemble à $n$ éléments.
-{: .note}
+{.note}
 {% details preuve %}
 
 Si l'ensemble $E$ est fini on peut ordonner ses éléments. On a alors $E = \\{ e_1, \dots, e_n\\}$.
@@ -303,7 +303,7 @@ Comme $2^n > n$ pour tout $n$, il y a strictement plus de sous-ensembles de $E$ 
 > [**Théorème de Cantor**](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Cantor) :
 >
 > Pour tout ensemble $E$ (même infini), il y a strictement plus de sous-ensembles de $E$ que d'éléments de $E$.
-{: .note}
+{.note}
 
 {% details  preuve du théorème de Cantor %}
 
@@ -325,19 +325,19 @@ On en conclut qu'il existe des sous-ensembles de $E$ qui ne sont pas des images 
 > Il stipule qu'il existe plusieurs infinis, de plus en plus gros. L'infini de $\mathbb{N}$ étant plus petit que celui de l'ensemble de ses sous-ensembles.
 >
 > Regardez ce lien <https://www.arte.tv/fr/videos/097454-005-A/voyages-au-pays-des-maths/> par exemple qui illustre parfaitement cela.
-{: .attention}
+{.attention}
 
 En utilisant le théorème de Cantor et le fait qu'il y ait autant de fonction $f: \mathbb{N} \rightarrow \mathbb{N}$ que de sous-ensembles de$\mathbb{N}$ on en déduit donc :
 
 > Il y a strictement plus de fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ que d'entiers.
-{: .note}
+{.note}
 
 ### conclusion {#nombre-fonction}
 
 [On a vu](#nombre-algos) qu'il ne pouvait pas y avoir plus d'algorithmes que d'entiers puisque chaque algorithme a une description finie. En utilisant ce qui précède on a alors :
 
 > Il existe des fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ qui ne peuvent pas être calculées par des algorithmes.
-{: .note}
+{.note}
 
 On ne peut pas encore en exhiber une, mais [ça viendra]({% link cours/algorithme-code-theorie/theorie/calculabilite.md %}#fct-non-calculable)
 
@@ -354,24 +354,24 @@ Exemple : Si $A = \\{0, 1, 4, 42\\}$ on lui associe le réel $R(A) = 0.101442$
 Il est clair que cette opération est une injection, c'est à dire que sir $A \neq A'$, on a bien $R(A) \neq R(A')$ et donc que :
 
 > Il y a plus d'éléments dans $]0, 1[$ que de sous-ensembles de $\mathbb{N}$
-{: .note}
+{.note}
 
 Prenons maintenant un réel $r$ dans l'intervalle $]0, 1[$. Son écriture décimale s'écrit : $0.a_1a_2\dots a_i\dots$ de longueur infinie, avec possiblement des 0 à la fin. On peut lui associer le sous ensemble infini : $S(r) = \\{a_i + 10 \cdot i \mid i > 0 \\}$.
 
 Il est clair que cette opération est une injection, c'est à dire que sir $r \neq r'$, on a bien $S(r) \neq S(r')$ et donc que :
 
 > Il y a plus de sous-ensembles de $\mathbb{N}$ que d'éléments dans $]0, 1[$
-{: .note}
+{.note}
 
 Il y a à la fois plus et moins d'éléments dans $]0, 1[$ que de sous ensembles de $\mathbb{N}$, donc :
 
 > Il y a autant de sous-ensembles de $\mathbb{N}$ que d'éléments dans $]0, 1[$
-{: .note}
+{.note}
 
 En remarquant que la fonction $f(x) = \tan(\frac{x-1}{2}\cdot \pi)$ est une bijection de $]0, 1[$ dans $]-\infty, +\infty[$, on en conlut qui'l y a autant de réels dans $]0, 1[$ que dans $]-\infty, +\infty[$ et donc :
 
 > Il y a autant de sous-ensembles de $\mathbb{N}$ que de réels
-{: .note}
+{.note}
 
 Le théorème de Cantor nous indique alors deux choses :
 
@@ -384,7 +384,7 @@ Concluant en re-bouclant sur nos algorithmes :
 
 > Un algorithme est une fonction $\mathbb{N} \rightarrow \mathbb{N}$.
 > Parmi les $\aleph_1$ fonctions de $\mathbb{N} \rightarrow \mathbb{N}$ possibles, seules au plus $\aleph_0$ peuvent être construites par des algorithmes.
-{: .note}
+{.note}
 
 ### mais lorsqu'on calcule, on calcule la même chose
 
@@ -400,7 +400,7 @@ On trouve même des langages désignées pour être les plus simples possibles (
 Le représentant de toute ces variabilités est la [machine de Turing]({% link cours/algorithme-code-theorie/theorie/machine-turing.md %}). C'est un outil simple qui capture merveilleusement les [4 règles générales](#regles-generales) dans le sens où c'est **et** un outil puissant de démonstration **et** un un moyen de créer des algorithmes. C'est pourquoi la [question sur l'équivalence entre algorithme et pseudo-code](#equi-algo-pseudo-code) est souvent écrite de cette façon  :
 
 > On est convaincu que tout ce qu'un humain, une machine, ou encore un système physique peut calculer (c'est à dire en suivant les 4 règles générales de l'algorithme) est exactement égal à ce qu'une machine de Turing peut calculer. C'est ce qu'on appelle [la thèse de Church-Turing](https://plato.stanford.edu/entries/turing-machine/#ThesDefiAxioTheo)
-{: .note}
+{.note}
 
 Pour répondre à notre question initiale, *que peut-on calculer ?*, on peut maintenant répondre : ce qu'une machine de Turing peut calculer (et ce n'est pas tout, mais c'est quand même pas mal de choses).
 

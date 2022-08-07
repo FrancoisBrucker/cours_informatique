@@ -1,5 +1,6 @@
 module.exports = {
-    content: ["./src/**/*.{html,js,njk}"],
+    content: ["./src/**/!(node_modules)/**/*.{html,js,njk}",
+              "./config/markdown/shortcodes/quotes/!(index).js"],
     theme: {
       extend: {},
     },

@@ -60,7 +60,7 @@ Le rendu d'une page web est faite en combinant trois parties :
 Pour un même fond, la forme peut changer radicalement. Le site <http://www.csszengarden.com/> en montre un effet extrême. Tout en bas de la page, vous pouvez changer le css pour changer la présentation. 
 
 > Testez vous-même les différences.en changeant de design (l'emplacement des liens va changer selon le design bien sur...)
-{: .note}
+{.note}
 
 #### description
 
@@ -98,7 +98,7 @@ Lorsque l'on crée des pages, il faut **toujours** voir le rendu le plus souvent
 
 En cliquant sur la flèche du menu (à gauche de *Elements*) : elle doit devenir bleue. On peut ensuite voir les différentes parties de la page en glissant sur la partie gauche du navigateur où est rendue la page ou sur la partie html.
 
-![utilisation du menu éléments]({{ "/assets/cours/web/tuto_outils_developpement/utilisation_elements_1.png" | relative_url}}){:style="margin: auto;display: block;width: 500px"}
+![utilisation du menu éléments]({{ "/assets/cours/web/tuto_outils_developpement/utilisation_elements_1.png){:style="margin: auto;display: block;width: 500px"}
 
 
 Dans l'image ci-dessus : 
@@ -113,23 +113,23 @@ Modifions tout ça :
 * le html : 
     * dans la partie html ouvrez le bloc paragraphe en cliquant sur le triangle à gauche du bloc : 
     
-    ![le bloc paragraphe ouvert]({{ "/assets/cours/web/tuto_outils_developpement/utilisation_elements_2.png" | relative_url}}){:style="margin: auto;display: block;width: 500px"}
+    ![le bloc paragraphe ouvert]({{ "/assets/cours/web/tuto_outils_developpement/utilisation_elements_2.png){:style="margin: auto;display: block;width: 500px"}
    
     * On peut changer le texte en cliquant sur le texte dans la partie html et en le modifiant. J'ai remplacé le texte
      `"Littering a dark and dreary road lay the past relics of browser-specific tags, incompatible"` par `coucou je fais du web !`
      
-     ![le bloc paragraphe ouvert]({{ "/assets/cours/web/tuto_outils_developpement/utilisation_elements_3.png" | relative_url}}){:style="margin: auto;display: block;width: 500px"}
+     ![le bloc paragraphe ouvert]({{ "/assets/cours/web/tuto_outils_developpement/utilisation_elements_3.png){:style="margin: auto;display: block;width: 500px"}
 
 * le css :
     * il est chargé au début du html, dans la balise `<head></head>`, à la ligne commençant par `<link ...`. Changez le nom du fichier (pour que chrome ne le trouve plus), et voir ce que donne le html sans css. `ctrl-z` pour le remettre.
     * <http://www.csszengarden.com/> est le site fait pour montrer l'importance du css. En bas de bage vous pouvez changer de css pour changer dramatiquement de présentation.
     * re-sélectionnez le paragraphe que l'on a modifié et scrollez dans la partie css jusqu'à voir une propriété `color` (elle devrait être tout en bas de la partie css)
     
-    ![partie css du paragraph la couleur]({{ "/assets/cours/web/tuto_outils_developpement/utilisation_elements_4.png" | relative_url}}){:style="margin: auto;display: block;width: 500px"}
+    ![partie css du paragraph la couleur]({{ "/assets/cours/web/tuto_outils_developpement/utilisation_elements_4.png){:style="margin: auto;display: block;width: 500px"}
 
     * en cliquant sur la couleur, vous pouvez la modifier. Le nombre est le code [RGB](https://fr.wikipedia.org/wiki/Rouge_vert_bleu) associé à la couleur.
 
-    ![en rouge]({{ "/assets/cours/web/tuto_outils_developpement/utilisation_elements_5.png" | relative_url}}){:style="margin: auto;display: block;width: 500px"}
+    ![en rouge]({{ "/assets/cours/web/tuto_outils_developpement/utilisation_elements_5.png){:style="margin: auto;display: block;width: 500px"}
     
 Changer la couleur change la couleur de tout le texte ! C'est normal, la couleur (l'attribut `color`) est associé non pas à notre paragraphe, mais au bloc `body` qui est le bloc contenant toute la structure à afficher (cherchez le dans le html) : 
 
@@ -144,7 +144,7 @@ body {
 
 Cela n'a en revanche pas affecté les titres. En cliquant sur un titre on voit que la couleur issue de body est barrée.
 
-![couleur du body non utilisée]({{ "/assets/cours/web/tuto_outils_developpement/utilisation_elements_6.png" | relative_url}}){:style="margin: auto;display: block;width: 500px"}
+![couleur du body non utilisée]({{ "/assets/cours/web/tuto_outils_developpement/utilisation_elements_6.png){:style="margin: auto;display: block;width: 500px"}
 
  Elle est surchargée par la propriété color associé à `h3`, plus précise car le bloc `h3` est à l'intérieur du bloc `body` (correspond à un [titre](https://developer.mozilla.org/fr/docs/Web/HTML/Element/Heading_Elements) de moyenne importance). S'il n'y avait pas eu de propriété css associé à `h3`, la couleur du titre aurait également été rouge : 
  
@@ -159,15 +159,15 @@ h3 {
 }
 ``` 
 
-![couleur du h3]({{ "/assets/cours/web/tuto_outils_developpement/utilisation_elements_7.png" | relative_url}}){:style="margin: auto;display: block;width: 500px"}
+![couleur du h3]({{ "/assets/cours/web/tuto_outils_developpement/utilisation_elements_7.png){:style="margin: auto;display: block;width: 500px"}
 
 
 > Allez sur le site du [monde](https://www.lemonde.fr/)  
 > * Changez la couleur des titres En mettant un vert qui pète ! Si vous voulez facilement voir les couleurs et leurs nombres associé, allez faire un tour du côté de <https://color.adobe.com>.
 > * Changez les titres du <https://www.lemonde.fr/> en quelque chose de plus joyeux. Et changez la couleur.  
-{: .note}
+{.note}
 
-![Le journal des bonnes nouvelles]({{ "/assets/cours/web/tuto_outils_developpement/utilisation_elements_8.png" | relative_url}}){:style="margin: auto;display: block;width: 500px"}
+![Le journal des bonnes nouvelles]({{ "/assets/cours/web/tuto_outils_developpement/utilisation_elements_8.png){:style="margin: auto;display: block;width: 500px"}
 
 
 ### le menu *sources*
@@ -182,7 +182,7 @@ tout les fichiers utilisés pour créer la page, réparties par [urls](https://f
 * depuis un autre site (ici google) : une fonte google est chargée (en ligne 66 du css principal) : son css (`fonts.googleapi.com`) et les images associées (depuis `fonts.gstatic.com`))
 
 > Que charge le site du <https://www.lemonde.fr/> ?
-{: .note}
+{.note}
 
 ### le menu *network*
 
@@ -191,11 +191,11 @@ tout les fichiers utilisés pour créer la page, réparties par [urls](https://f
 Montre tous les appels réseaux de la page web (ce qui correspond peu ou prou aux fichiers chargés) et le temps. C'est très utile pour déterminer la charge réseau de son site, en particulier lorsque l'on crée son propre site avec de grosses images, de la vidéo, *etc** et que tout devient lent une fois mis sur un site distant. 
 
 > Il ne faut **jamais** oublier que le réseau, même avec la fibre, ça ralenti le chargement.
-{: .attention}
+{.attention}
 
 Pour le site <http://www.csszengarden.com/>, voilà ce que donne l'onglet network :
 
-![network]({{ "/assets/cours/web/tuto_outils_developpement/network_1.png" | relative_url}}){:style="margin: auto;display: block;width: 500px"}
+![network]({{ "/assets/cours/web/tuto_outils_developpement/network_1.png){:style="margin: auto;display: block;width: 500px"}
 
 * l'appel à `www.csszengarden.com` a rendu un status de 200, c'était un document de 5kb et la durée entre l'appel et la réception du document a duré 235ms.
 * la feuille de style `214.css?v=8may2013` a également rendu un status de 200 et c'était une feuille de style css (*stylesheet*)
@@ -224,7 +224,7 @@ Si on demande à chrome de chercher un site qui n'existe pas sur <http://www.css
 Montre toutes les choses stockées sur votre ordinateur par le site, comme les [cookies](https://fr.wikipedia.org/wiki/Cookie_(informatique)) par exemple. 
 
 > Les cookies ne sont pas tous mauvais. Ils sont la seule façon pour un site de se rappeler de vous.
-{: .attention}
+{.attention}
 
 Exemple d'utilisation d'un cookie :
 

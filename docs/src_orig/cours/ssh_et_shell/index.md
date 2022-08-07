@@ -54,7 +54,7 @@ Start-Service ssh-agent
 ### redirection de port
 
 > TBD : redirection de port
-{: .note}
+{.note}
 
 ## shell
 
@@ -70,4 +70,4 @@ Pour s'en sortir devant un terminal, qu'il soit en local ou à distance.
 > * <https://docs.microsoft.com/fr-fr/powershell/scripting/overview?view=powershell-7.1>
 > * <https://docs.microsoft.com/fr-fr/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-7.1>
 > * <https://docs.microsoft.com/fr-fr/powershell/module/microsoft.powershell.core/about/about_environment_variables?view=powershell-7.1>
-{: .note}
+{.note}

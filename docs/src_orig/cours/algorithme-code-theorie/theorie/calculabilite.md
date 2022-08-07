@@ -10,7 +10,7 @@ category: cours
 >
 > * [décidabilité]({% link cours/algorithme-code-theorie/theorie/decidabilite.md %})
 > * [machine de Turing]({% link cours/algorithme-code-theorie/theorie/machine-turing.md %})
-{: .chemin}
+{.chemin}
 
 On a vu dans la partie [fonctions]({% link cours/algorithme-code-theorie/theorie/fonctions.md %}) qu'un algorithme ne pouvait pas tout calculer, qu'il y a avait même bien plus de choses qu'on ne pouvait pas faire avec un algorithme que de chose qu'on pouvait faire avec.
 
@@ -25,7 +25,7 @@ Nous allons ici, enfin, exhiber de tels exemples.
 > * $A(\mu) = f(\mu)$ si $\mu \in \mathcal{F}$
 > * $\mathcal{L}(M) = \mathcal{F}$
 >
-{: .note}
+{.note}
 
 ### exemples de fonctions calculables
 
@@ -60,7 +60,7 @@ Elle est donc calculable, mais on ne sait pas quel algorithme c'est (cas on ne s
 Décidabilité et calculabilité sont les deux faces d'une même pièce :
 
 > Si une fonction $f: \mathcal{F} \rightarrow \\{0, 1\\}^\star$ est **calculable** alors $\\{ (a, f(a) \mid a \in \mathcal{F}\\}$ est **reconnaissable**.
-{: .note}
+{.note}
 {% details preuve %}
 
 Si $f: \mathcal{F} \rightarrow \\{0, 1\\}^\star$ est calculable, l'algorithme $M$ prenant en entrée deux mots $a$ et $b$ et qui rend *Vrai* si $f(a) = b$ et ne s'arrête pas sinon est bien tel que $\mathcal{L}(M) = \\{ (a, f(a) \mid a \in \mathcal{F}\\}$.
@@ -70,7 +70,7 @@ Si $f: \mathcal{F} \rightarrow \\{0, 1\\}^\star$ est calculable, l'algorithme $M
 Et si $f$ est défini sur tout mot (ce qui est très souvent le cas) on a même :
 
 > Une fonction $f: \\{0, 1\\}^\star \rightarrow \\{0, 1\\}^\star$ est **calculable** si et seulement si $\\{ (a, f(a) \mid a \in \\{0, 1\\}^\star\\}$ est **décidable**.
-{: .note}
+{.note}
 {% details preuve %}
 
 Si $f: \mathcal{F} \rightarrow \\{0, 1\\}^\star$ est calculable, l'algoithme $M$ prenant en entrée deux mots $a$ et $b$ et qui rend *vrai* si $f(a) = b$ et *faux* sinon est bien un décideur sur $\\{ (a, f(a) \mid a \in \\{0, 1\\}^\star\\}$
@@ -89,12 +89,12 @@ Nous en donnons une ici, la plus célèbre : [les castors affairés](https://fr.
 >
 > La fonction du **castor affairé** $\Sigma : \mathbb{N} \rightarrow \mathbb{N}$ est définie telle que $\beta(n)$ vaut le score maximal pour toutes les machine de Turing à $n$ états acceptant le mot vide.
 >
-{: .note}
+{.note}
 
 La fonction est bien définie pour tout $n>0$ puisqu'il n'y a qu'un nombre fini de machine de Turing à $n$ états : la valeur $\beta(n)$ est un maximum d'un ensemble fini, ce nombre existe.
 
 > $\beta(n) \geq n - 1$ pour tout $n >0$
-{: .note}
+{.note}
 {% details  preuve %}
 
 Considérons la machine $M_n$ à $n$ états $(q_0, \dots, q_{n-1}) telle que :
@@ -107,7 +107,7 @@ On a $M_n() = \underbrace{1\cdots 1}_{n-1}{}$.
 {% enddetails %}
 
 > $\beta(n)$ est strictement croissante
-{: .note}
+{.note}
 {% details  preuve %}
 Soit $B_n$ une machine à $n$ états telle que $\rho(B_n) = \beta(n)$. La machine obtenue en enchaînant $B_n$ et $M_1$ (voir preuve précédente) en associant l'état final de $B_n$ à l'état initial de $M_1$ a $n+1$ états (les état de B_n$ plus l'état d'acceptation de $M_1$) et sa sorite produit un 1 de plus que $\beta_n$ : $\beta(n+1) \geq \beta(n) + 1$.
 
@@ -116,7 +116,7 @@ Soit $B_n$ une machine à $n$ états telle que $\rho(B_n) = \beta(n)$. La machin
 Ce qui nous permet de prouver que :
 
 > La fonction $\beta$ est non calculable.
-{: .note}
+{.note}
 {% details  preuve %}
 
 Supposons que $\beta$ soit calculable. Il existe alors une machine $F$ de pseudo code :
@@ -160,7 +160,7 @@ Tous les entiers sont calculables, il suffit de créer une machine qui écrit l'
 > * $X(0)$ rend la partie entière de $x$
 > * $X(i)$ rend la $i$-ème décimale de $x$, pour tout $i > 0$
 >
-{: .note}
+{.note}
 
 Il existe d'autres définitions équivalentes, voir [cette page wikipédia](https://fr.wikipedia.org/wiki/Nombre_r%C3%A9el_calculable), des nombres calculable.
 
@@ -169,7 +169,7 @@ Il existe d'autres définitions équivalentes, voir [cette page wikipédia](http
 Un cas particulier important est lorsque le nombre est la limite d'une suite $u_n$ :
 
 > Si $x$ est la limite d'une suite $(u_n)_{n \geq 0}$ et qu'il existe une machine de Turing $M$ telle que $M(n) = u_n$ pour tout $n$, alors $x$ est calculable.
-{: .note}
+{.note}
 {% details preuve %}
 
 Comme $u_n$ converge vers $x$, pour tout $i> 0$, il existe $N_i$ tel que $\mid x - u_n\mid < 10^{-i}$ pour tout $n > N_i$. Si l'on veut calculer la $i$-ème décimale de $x$, Il suffit de calculer $u_{N_{i}}$ et de prendre sa $i$-ème décimale
@@ -179,7 +179,7 @@ Comme $u_n$ converge vers $x$, pour tout $i> 0$, il existe $N_i$ tel que $\mid x
 Par exemple, $\pi$ est calculable en utilisant [la série de Leibniz de $\pi$](https://fr.wikipedia.org/wiki/Formule_de_Leibniz#S%C3%A9rie_altern%C3%A9e). De la même manière, on peut calculer $cos(x)$, $sin(x)$ ou encore $\sqrt{x}$ pour tout $x$ calculable grâce à leur [développement en séries entières](https://fr.wikipedia.org/wiki/Formulaire_de_d%C3%A9veloppements_en_s%C3%A9ries).
 
 > Si l'on pense à un réel calculé à partir d'une fonction mathématique usuelle, il y a toute les chances qu'il soit calculable
-{: .note}
+{.note}
 
 ### exemples de réels non calculables
 
@@ -223,7 +223,7 @@ A(m, n) = \left\{
 $$
 
 > La fonction d'ackermann est bien définie pour tout $m$ et $n$ entiers.
-{: .note}
+{.note}
 {% details preuve %}
 Pour chaque appel récursif de la fonction d'ackerman, soit m, soit $n$ est strictement plus petit dans la fonction appelée que dans la fonction appelante. On arrivera donc toujours à $m = 0$ qui stoppera la récursion ou $n = 0$ qui fera baisser la valeur de $m$.
 {% enddetails %}

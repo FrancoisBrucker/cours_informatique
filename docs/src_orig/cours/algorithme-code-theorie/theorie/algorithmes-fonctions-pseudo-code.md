@@ -10,7 +10,7 @@ category: cours
 >
 >* [fonctions]({% link cours/algorithme-code-theorie/theorie/fonctions.md %})
 >* [pseudo-code]({% link cours/algorithme-code-theorie/algorithme/pseudo-code.md %})
-{: .chemin}
+{.chemin}
 
 La partie [fonctions]({% link cours/algorithme-code-theorie/theorie/fonctions.md %}) montre qu'un algorithme peut être vu comme une fonction particulière de $\mathbb{N}$ dans $\mathbb{N}$, indépendamment des instructions utilisées.
 
@@ -19,14 +19,14 @@ La partie [pseudo-code]({% link cours/algorithme-code-theorie/algorithme/pseudo-
 La réponse est : *on ne sait pas mais on pense que ce n'est pas possible*:
 
 > [la thèse de Church-Turing](https://plato.stanford.edu/entries/turing-machine/#ThesDefiAxioTheo) stipule que pseudo-code et algorithmes sont deux notions équivalentes.
-{: .note}
+{.note}
 
 Nous ne démontrerons bien sur pas dans cette partie la thèse de Church-Turing, mais nous essayerons d'en détailler un peu plus les contours.
 
 Et au final, dans la suite de ce cours :
 
 > On supposera la thèse de Church-Turing vraie et on parlera indifféremment d'algorithme, de pseudo-code ou encore de machine de Turing de façon équivalente.
-{: .attention}
+{.attention}
 
 ## les multiples faces d'un algorithme
 
@@ -45,7 +45,7 @@ Notre quotidien est remplie de fonctions calculable par un algorithme.
 Un algorithme, [on l'a aussi vu]({% link cours/algorithme-code-theorie/algorithme/algorithmes.md %}#algorithme), c'est  :
 
 > Un **algorithme** est une succession d'instructions simples et clairement définies. A partir d'entrées, il produit une sortie en un nombre fini d'instructions.
-{: .note}
+{.note}
 
 Un [pseudo-code]({% link cours/algorithme-code-theorie/algorithme/pseudo-code.md %}#regles) est ainsi un algorithme particulier, ses [instructions]({% link cours/algorithme-code-theorie/algorithme/pseudo-code.md %}#regles) respectant bien la définition générale ci-dessus.
 
@@ -64,7 +64,7 @@ On peut même montrer que les règles d'un pseudo-code peuvent être réduites �
 > * exécuter une instruction puis une autre, **séquentiellement**
 > * exécuter une instruction si un test d'égalité est vrai
 > * exécuter un bloc d'instructions tant qu'un test d'égalité est vrai
-{: .note}
+{.note}
 
 Tous les pseudo-codes utilisant les 6 règles ci-dessus auront alors la même expressivité (on pourra faire exactement les mêmes choses) que ceux utilisant [les instruction d'un pseudo-code]({% link cours/algorithme-code-theorie/algorithme/pseudo-code.md %}#regles), ce sera juste plus long et compliqué à écrire, c'est pourquoi leur intérêt est uniquement théorique.
 
@@ -79,14 +79,14 @@ On trouve même des langages désignées pour être les plus simples possibles (
 Tous ces langages respectent les 6 règles ci-dessus :
 
 > On peut faire exactement la même chose avec chacun de ces langages et avec tout algorithme décrit par son pseudo-code
-{: .note}
+{.note}
 
 ### algorithme et machine de Turing
 
 Le jeu d'instruction minimale qui permet d'obtenir les 6 règles ci-dessus est la [machine de Turing]({% link cours/algorithme-code-theorie/theorie/machine-turing.md %}) :
 
 > On peut écrire tout pseudo-code en utilisant une machine de Turing et réciproquement
-{: .note}
+{.note}
 
 C'est ainsi un outil simple qui capture merveilleusement les différentes possibilités d'écrire un algorithme. On ne l'utilisera presque jamais directement (autant utiliser un pseudo-code puisque c'est équivalent) mais la machine de Turing est à la fois :
 
@@ -99,7 +99,7 @@ C'est ainsi un outil simple qui capture merveilleusement les différentes possib
 Toutes les tentatives de généraliser le modèle (essayer de calculer plus de fonctions que celle atteignable pas un pseudo-code) ou de supprimer des règles tout en en conservant l'expressivité ont échouées. Ceci conforte l'idée selon la quelle :
 
 > Algorithme et machine de Turing sont deux modèles équivalents
-{: .note}
+{.note}
 
 C'est ce qu'on appelle [la thèse de Church-Turing](https://plato.stanford.edu/entries/turing-machine/#ThesDefiAxioTheo) : tout ce qu'un humain, une machine, ou encore un système physique peut calculer  est exactement égal à ce qu'une machine de Turing peut calculer.
 
@@ -123,7 +123,7 @@ Code, pseudo-code et machine de Turing sont un seul et même modèle.
 On pense même très fort que c'est exactement la même chose qu'un algorithme ([la thèse de Church-Turing](https://plato.stanford.edu/entries/turing-machine/#ThesDefiAxioTheo)) : tout ce qui peut se décrire de façon finie peut se décrire comme une machine de Turing ou un pseudo-code.
 
 > En bons informaticiens, c'est exactement ce que l'on supposera par la suite : on utilisera indifféremment les notions d'algorithme, de pseudo-code, de code ou encore de machine de Turing.
-{: .attention}
+{.attention}
 
 Enfin, cette équivalence  signifie que l'on doit toujours utiliser le formalisme (ou langage) qui est le plus simple pour résoudre le problème qu'on s'est fixé :
 

@@ -68,7 +68,7 @@ Pour créer un nouvel environnement d'exécution :
   - Cliquez sur *OK* pour créer l'environnement.
 
 >Dans la fenêtre de gestion des contextes, ne modifiez pas les contextes par défaut. Ce sont des templates.
-{: .attention}
+{.attention}
 
 Pour plus d'informations, reportez vous à [la documentation de pycharm](https://www.jetbrains.com/help/pycharm/2016.3/working-with-run-debug-configurations.html?search=run).
 

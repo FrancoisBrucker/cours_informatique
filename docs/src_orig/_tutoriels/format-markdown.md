@@ -14,12 +14,12 @@ Une introduction au format markdown.
 >
 > * [vscode]({% link _tutoriels/editeur/vsc/vsc-installation-et-prise-en-main.md %})
 >
-{: .chemin}
+{.chemin}
 
 ## Qu'est-ce ?
 
 > [Markdown](https://fr.wikipedia.org/wiki/Markdown) est un format de fichier texte, donc modifiable par tout éditeur de texte. L'extension de fichier est *".md"*.
-{: .note}
+{.note}
 
 L'intérêt de ce format de fichier texte est qu'il est parfaitement lisible dans tout éditeur de texte et qu'on peut de plus le *compiler* dans un autre format comme le pdf ou encore le html si on veut le partager.
 
@@ -33,7 +33,7 @@ L'éditeur de texte [vscode](https://code.visualstudio.com/) permet d'écrire et
 * [markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint), un [linter](https://mindsers.blog/fr/post/linting-good-practices/) qui souligne en jaune les fautes de style de markdown (saut dans la hiérarchie des sections par exemple) pour que vous puissiez les corriger et écrire parfaitement du markdown
 
 > Installez les deux plugins ci-dessus dans votre vscode.
-{: .a-faire}
+{.a-faire}
 
 ### export en html
 
@@ -56,7 +56,7 @@ Le markdown est un format très simple. Il permet de structurer minimalement un 
 > Dans vscode, créez un nouveau fichier que vous appellerez *"exemple.md"* (*".md"* est l'extension par défaut des fichiers markdown).
 >
 > Copiez/collez-y- le texte ci-dessous et sauvez le fichier.
-{: .a-faire}
+{.a-faire}
 
 ```text
 
@@ -97,12 +97,12 @@ Vous voyez que ce format est *lisible* directement dans vscode (on comprend qu'u
 >
 > **Attention** : une commande dans la palette commence toujours par `>` qui doit être le 1er caractère.
 >
-{: .a-faire}
+{.a-faire}
 
 Après l'exécution de cette commande, vous aurez un fichier *"exemple.html"* dans le même dossier que votre fichier *"exemple.md"*.
 
 > Ouvrez le fichier *"exemple.html"* dans votre navigateur favori pour voir le résultat.
-{: .a-fair}
+{.a-fair}
 
 ### balise à connaître
 
@@ -198,7 +198,7 @@ $$
 Lorsque vous faites de l'exportation en html, les mathématiques sont représentées en utilisant la bibliothèque [Mathjax](https://www.mathjax.org/).
 
 >Il ne faut pas mettre d'espace après le premier `$` et avant le dernier `$` lorsque l'on écrit des équations, sinon les convertisseur ne reconnaitront pas que ce sont des équations que vous voulez écrire. Ansi `$ \frac{1}{2}$` affichera `$ \frac{1}{2}$`, alors que `$\frac{1}{2}$` affichera $\frac{1}{2}$.
-{: .attention}
+{.attention}
 
 ## pour aller plus loin
 

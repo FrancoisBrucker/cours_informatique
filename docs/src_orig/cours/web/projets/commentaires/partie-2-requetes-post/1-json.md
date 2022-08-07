@@ -6,7 +6,7 @@ author: "François Brucker"
 ---
 
 > [commentaires]({% link cours/web/projets/commentaires/index.md %}) / [partie 2]({% link cours/web/projets/commentaires/partie-2-requetes-post/index.md %}) / [préparer les données]({% link cours/web/projets/commentaires/partie-2-requetes-post/1-json.md %})
-{: .chemin}
+{.chemin}
 
 On va préparer les données à être envoyées au serveur.
 

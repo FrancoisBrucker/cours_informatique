@@ -6,7 +6,7 @@ author: "François Brucker"
 ---
 
 > [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 1]({% link cours/web/projets/numerologie/partie-1-front/niveau-2/index.md %}) / [niveau 2]({% link cours/web/projets/numerologie/partie-1-front/niveau-2/index.md %})
-{: .chemin}
+{.chemin}
 
 Numérologie niveau 2. On ajoute une partie gestion de projet avec des des todos, une user story, et un balbutiement de tests.
 

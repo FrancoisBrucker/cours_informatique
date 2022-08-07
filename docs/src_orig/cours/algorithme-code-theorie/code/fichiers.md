@@ -14,7 +14,7 @@ author: "François Brucker"
 > * [naviguer dans un système de fichiers]({% link _tutoriels/systeme/fichiers-navigation.md %})
 > * [structure : dictionnaire]({% link cours/algorithme-code-theorie/algorithme/structure-dictionnaire.md %})
 >
-{: .chemin}
+{.chemin}
 
 Stocker des données est une préoccupation depuis les origines de l'informatique : d'abord sur cartes perforée, puis sur bandes magnétiques et jusqu'aux disques durs et clés actuelles. Un [fichier](https://fr.wikipedia.org/wiki/Fichier_informatique) est ainsi un ensemble de données que l'on peut lire ou écrire pour le sauvegarder. Nous n'entrerons cependant pas dans les détails des [systèmes de fichiers](https://fr.wikipedia.org/wiki/Syst%C3%A8me_de_fichiers) (comment sont effectivement stockés les fichiers sur le disque dur), car c'est une affaire (très) compliquée. Nous n'aborderons que le strict nécessaire pour les manipuler en python.
 
@@ -43,7 +43,7 @@ Les limitations sont donc :
 > * **lire** un fichier : on fait avancer la *tête de lecture* du fichier, d'une ligne ou d'un nombre donné d'octets
 > * **écrire** un fichier : on ajoute des données à la fin d'un fichier (qui peut être initialement vide). Souvent on écrit pas tout de suite sur le disque dur, on attend d'avoir un nombre suffisant de données dans la mémoire tampon.
 >
-{: .note}
+{.note}
 
 Au niveau de l'ordinateur, utiliser un fichier, c'est compliqué.
 
@@ -61,14 +61,14 @@ Passer des octets à leurs significations pour un fichier se fait via un [codec]
 Savoir comment interpréter les données d'un fichier n'est pas une chose facile. L'[extension](https://fr.wikipedia.org/wiki/Extension_de_nom_de_fichier) permet au système d'exploitation d'associer une application spécifique (un visualiseur d'image si le fichier fini par *".jpg"* par exemple). Mais ce n'est qu'une indication. Un fichier python ne se transforme pas par magie en image si on ajoute une extension *".jpg"* au fichier...
 
 > Utilisez **toujours** une extension à vos fichiers. Cela permet de gagner beaucoup de temps pour ouvrir directement la bonne application pour lire votre fichier.
-{: .note}
+{.note}
 
 Sans extension ou sans idée de ce que contient un fichier, ce n'est qu'une suite d'octets. Pour s'en rendre compte :
 
 > Installez l'extension [Hex Editor](https://marketplace.visualstudio.com/items?itemName=ms-vscode.hexeditor) pour vscode.
 >
 > Vous pourrez la trouver dans le menu *menu Affichage > extension* puis recherchez **Hex Editor** dans la barre de recherche pour l'installer.
-{: .a-faire}
+{.a-faire}
 
 Cette extension permet d'ouvrir tout fichier comme la suite d'octet qu'il est réellement. Pour cela :
 
@@ -80,14 +80,14 @@ Cette extension permet d'ouvrir tout fichier comme la suite d'octet qu'il est r�
 >   ![hex editor](./assets/fichiers-hex-editor.png){:style="margin: auto;display: block;width:400px;"}
 > 5. on obtient quelque chose en 3 parties : les octets, l'interprétation ascii de chaque octet et des informations ;
 >     ![pannel](./assets/fichiers-pannel.png){:style="margin: auto;display: block;width:400px;"}
-{: .a-faire}
+{.a-faire}
 
 Certains type de fichiers sont reconnaissables par leurs premiers octets. On appelle ça des [*magic number* ou des *signatures*](https://en.wikipedia.org/wiki/List_of_file_signatures). Si vous ouvrez un fichier pdf par exemple, vous remarquerez qu'il commence par les caractères ascii : `%PDF-`. Mais ce n'est pas la norme. Donc pour vous éviter des soucis, pensez à bien bien les extensions de fichier pour aider votre système d'exploitation à trouver la bonne application à ouvrir.
 
 ## python
 
 > Lisez la doc : <https://docs.python.org/fr/3/tutorial/inputoutput.html#reading-and-writing-files>
-{: .a-faire}
+{.a-faire}
 
 En python, on utilise les fichiers *via* un objet `file`. On manipule les fichiers en 3 temps :
 
@@ -111,7 +111,7 @@ En python, on utilise les fichiers *via* un objet `file`. On manipule les fichie
 3. enfin, on ferme le fichier : `f.close()`
 
 > Si vous ouvrez un fichier en écriture alors qu'il existait déjà, son contenu **disparaît immédiatement et pour toujours**. Il n'y a aucun moyen de récupérer son contenu.
-{: .attention}
+{.attention}
 
 ### exemple
 
@@ -125,12 +125,12 @@ En python, on utilise les fichiers *via* un objet `file`. On manipule les fichie
 > Bashô.
 > ```
 >
-{: .a-faire}
+{.a-faire}
 
 #### Lecture du fichier en entier
 
 > Exécutez le code suivant pour lire le fichier qui doit être dans le même dossier que votre fichier python :
-{: .a-faire}
+{.a-faire}
 
 ```python
 f = open("haiku.txt", "r")  # ouverture d'un fichier texte en lecture  dans le même dossier que le fichier python
@@ -144,7 +144,7 @@ print(poeme)
 #### Lecture ligne à ligne
 
 > Exécutez le code suivant pour lire le fichier ligne à ligne :
-{: .a-faire}
+{.a-faire}
 
 ```python
 f = open("haiku.txt", "r")
@@ -158,7 +158,7 @@ f.close()
 #### Ajout au fichier
 
 > Exécutez le code suivant pour ajouter quelque chose à la fin d'un fichier :
-{: .a-faire}
+{.a-faire}
 
 ```python
 f = open("haiku.txt", "a")
@@ -174,7 +174,7 @@ Notez qu'aller à la ligne est un caractère comme un autre (il s'écrit `\n` et
 #### Écriture du fichier
 
 > Exécutez le code suivant pour remplacer le contenu du fichier :
-{: .a-faire}
+{.a-faire}
 
 ```pyhton
 f = open("haiku.txt", "w")
@@ -187,7 +187,7 @@ f.close()
 ```
 
 > Une fois ouvert le fichier en écriture tout son contenu précédent est perdu.
-{: .attention}
+{.attention}
 
 #### utilisation de `with`
 
@@ -255,7 +255,7 @@ Par défaut python va chercher les fichiers à ouvrir dans le dossier du fichier
 Commencez par intégrer la règle d'or :
 
 > On ne présuppose jamais de l'endroit où un fichier est stocké sur un ordinateur.
-{: .note}
+{.note}
 
 Supposons  que vous ayez un fichier python dans le dossier *"/Users/fbrucker/Documents/mon_projet/main.py"* et que ce programme python utilise le fichier *"/Users/fbrucker/Documents/mon_projet/donnees.txt"*.
 
@@ -285,7 +285,7 @@ La solution qui fonctionne tout le temps est de déterminer à l'exécution l'em
 > print(__file__)
 > ```
 >
-{: .a-faire}
+{.a-faire}
 
 On a fait que la moitié du chemin, puisque l'on a l'emplacement du fichier, mais pas le dossier. Ceci peut se faire en utilisant le module [`os.path` de python](https://docs.python.org/fr/3/library/os.path.html) :
 
@@ -299,14 +299,14 @@ On a fait que la moitié du chemin, puisque l'on a l'emplacement du fichier, mai
 > print(os.path.basename(__file__)) # le nom du fichier                                     
 > ```
 >
-{: .a-faire}
+{.a-faire}
 
 Cette méthode permet d'obtenir un chemin absolu de référence pour garantir l'accès aux fichiers de données sur toutes les machines où votre projet sera copié.
 
 Un fois un dossier de référence trouvé, on pourra l'utiliser pour accéder à nos données. Mais **jamais** à la main :
 
 > Lorsque l'on manipule des fichiers ou que l'on combine des dossiers on utilise **toujours** une bibliothèque dédiée pour cela, on ne manipule **jamais** les noms de fichiers et de dossiers en utilisant des méthodes de chaines de caractères
-{: .note}
+{.note}
 
 On va voir deux façon de faire en python, l'une classique avec le module [os.path](https://docs.python.org/fr/3/library/os.path.html), l'autre plus moderne qui utilise le module [pathlib](https://docs.python.org/fr/3/library/pathlib.html).
 
@@ -330,7 +330,7 @@ Le module [pathlib](https://docs.python.org/fr/3/library/pathlib.html) permet d'
 > * toujours travailler à partir de là pour les autres dossier
 > * utiliser un module python pour combiner les dossiers entre eux
 >
-{: .tbd}
+{.tbd}
 
 ### fichiers distants
 
@@ -360,7 +360,7 @@ Lorsque l'on manipule des données, il vaut mieux **toujours** utiliser un forma
 > * les fichiers csv pour des données de type tableaux excel
 > * les fichiers json pour des données structurées en fiches.
 >
-{: .note}
+{.note}
 
 ### les fichiers csv
 
@@ -378,7 +378,7 @@ F, Charlotte, 1988
 ```
 
 > Créez un fichier nommé *"data.csv"* dans le quel vous copierez le texte précédent.
-{: .a-faire}
+{.a-faire}
 
 La première ligne est souvent le noms des colonnes, chaque ligne représentant des données.
 
@@ -460,7 +460,7 @@ L'adresse <https://github.com/hbenbel/French-Dictionary/tree/master/dictionary> 
 > 2. importez le au format csv
 > 3. répondez à cette question existentielle : `nycthémères` est-il un mot français ?
 
-{: .a-faire}
+{.a-faire}
 {% details Solution %}
 
 ```python
@@ -494,7 +494,7 @@ for ligne in donnees:
 > * aisé à lire et modifier sous la forme d'un fichier : pas besoin d'un outil spécial, un simple éditeur de texte suffit.
 > * aisé à lire et modifier en python : les données json se manipulent sous la forme d'un dictionnaire en python.
 >
-{: .note}
+{.note}
 
 Ci-après, un exemple de fichier json contenant des super-héros (pris de <https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/JSON>) :
 

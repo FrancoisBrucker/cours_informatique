@@ -8,7 +8,7 @@ author: "François Brucker"
 
 > TBD
 > refaire propre. Choice et dice cohabitent là...
-{: .note}
+{.note}
 
 Les [design patterns](https://fr.wikipedia.org/wiki/Patron_de_conception), ou façons de faire, sont pour ainsi dire de l'algorithmie objet : ils permettent de résoudre nombre de problèmes courants en développement et d'éviter les [erreurs classiques](http://sahandsaba.com/nine-anti-patterns-every-programmer-should-be-aware-of-with-examples.html), aussi appelées [anti-pattern](https://fr.wikipedia.org/wiki/Antipattern).
 
@@ -57,7 +57,7 @@ class Choice:
 ```
 
 > Regardez le code de la méthode `roll` pourquoi rendre `self` ?
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 Pour vouvoir chainer nos opérations. En rendant self, on peut écrire des choses du genre :
 

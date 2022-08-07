@@ -6,7 +6,7 @@ author: "François Brucker"
 ---
 
 > [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 4]({% link cours/web/projets/numerologie/partie-4-jardinage/index.md %})
-{: .chemin}
+{.chemin}
 
 Dans tout projet, il y a 3 phases qu'il faut respecter, et dans cet ordre :
 

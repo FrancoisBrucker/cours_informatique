@@ -7,7 +7,7 @@ authors:
 ---
 
 > [bases de python]({% link cours/bases-python/index.md %}) / [module matplotlib]({% link cours/bases-python/modules.md %})
-{: .chemin}
+{.chemin}
 
 Nous allons dans ce cours présenter un module très utilisé en python pour représenter ds graphiques : <https://matplotlib.org/>.
 
@@ -21,7 +21,7 @@ Nous allons présenter une procédure permettant de presque toujours s'en sortir
 Pour cette partie du cours nous aurons besoin de plus que la console. Il faudra en effet exécuter plusieurs lignes de python à la suite. Nous allons utiliser un notebook pour cela.
 
 > Allez à <https://basthon.fr/> et ouvrez un nouveau notebook.
-{: .a-faire}
+{.a-faire}
 
 Une fois le notebook ouvert, on pourra écrire plusieurs lignes dans une cellule avant de l'exécuter.
 
@@ -85,7 +85,7 @@ plt.show()
 ```
 
 > Copiez/coller le code précédent dans le notebook et exécutez la cellule
-{: .a-faire}
+{.a-faire}
 
 Vous devriez arriver à quelque chose du genre :
 
@@ -101,13 +101,13 @@ Essayons de comprendre comment tout ça fonctionne :
 4. enfin, on représente l'objet `ax` à l'écran.
 
 > Changez la taille de l'objet `ax` pour voir les différences de représentation
-{: .a-faire}
+{.a-faire}
 
 > Changez la courbe pour représenter $y = \frac{1}{2}x^2$
-{: .a-faire}
+{.a-faire}
 
 > Superposez les 2 courbes
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 ```python

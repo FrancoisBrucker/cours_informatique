@@ -11,7 +11,7 @@ Une introduction générateur de site statique [jekyll](https://jekyllrb.com/). 
 ## Plan
 
 > TBD
-{: .note}
+{.note}
 
 * installation
 * markdown et header

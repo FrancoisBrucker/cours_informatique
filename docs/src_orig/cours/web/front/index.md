@@ -15,7 +15,7 @@ Web front
 > * vue.js
 
 
-{: .note}
+{.note}
 
 ## refs possible à mettre là ou il faut dans le cours.
 
@@ -32,7 +32,7 @@ Web front
 ## js 
 
 > TBD : à renvoyer sur le tuto.
-{: .note}
+{.note}
 
 * ici js dans du html et pas dans du node (les imports sont différents par exemple, pas de typescript)
 * transpilage : <https://babeljs.io/>

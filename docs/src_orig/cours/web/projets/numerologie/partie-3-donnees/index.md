@@ -6,7 +6,7 @@ author: "François Brucker"
 ---
 
 > [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 3]({% link cours/web/projets/numerologie/partie-3-donnees/index.md %})
-{: .chemin}
+{.chemin}
 
 Numérologie partie 3. On mets en place une petite base de données en mémoire.
 

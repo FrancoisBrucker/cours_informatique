@@ -54,7 +54,7 @@ def connexion(request, pseudo, pwd, mail):
 
 Ici un petit exemple de deux vues, l'une qui connecte et l'autre qui déconnecte.
 >Lorsque l'on utilise la fonction `logout`, il vaut mieux la renommer car cette dernière peut parfois déjà exister en tant que fonction native.
-{: .attention}
+{.attention}
 
 Pour le reste des modèles du site, nous en créerons un par jeu. Pour l'instant il n'y a donc que la classe JavelotThrow.
 

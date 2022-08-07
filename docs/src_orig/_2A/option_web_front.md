@@ -16,7 +16,7 @@ Pour majeure partie en *classe inversée*[^1], les élèves réaliseront en grou
 ## plan
 
 > TBD
-{: .note}
+{.note}
 
 
 ### compétences

@@ -5,7 +5,7 @@ category: cours
 ---
 
 > [Algorithme, code et théorie]({% link cours/algorithme-code-theorie/index.md %}) / [code]({% link cours/algorithme-code-theorie/code/index.md %})
-{: .chemin}
+{.chemin}
 
 Comment coder, maintenir et aimer ses programmes. Les projets constituent une progression, il est conseillé de les suivre dans l'ordre.
 

@@ -11,7 +11,7 @@ author: "François Brucker"
 Web back
 
 > TBD : en chantier
-{: .danger}
+{.danger}
 
 ## plan de construction 
 

@@ -1,0 +1,26 @@
+---
+layout: layout/base.njk
+title: Tutoriels
+tags: index
+
+---
+
+Les Tutoriels.
+
+---
+
+{% for post in collections.tutoriel %}
+  {% if post.data.tags %}
+    <article>
+      <a href="{{ post.url | url }}">{{ post.data.title }}</a>
+      <div class=" px-4 flex items-center">
+        <div>tags : </div>
+      <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+        {% for tag in post.data.tags %}
+          <li class="before:content-['•'] before:px-1">{{ tag }}</li>
+        {% endfor %}
+      </ul>
+      </div>
+    </article>
+  {% endif %}
+{% endfor %}

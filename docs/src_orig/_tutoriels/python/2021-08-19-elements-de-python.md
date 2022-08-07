@@ -158,7 +158,7 @@ Si vous n'avez pas de droits administrateur, ou pour une utilisation plus "pro" 
 On utilise l'utilitaire `pip` via python avec la commande : `python -m pip [des commandes pip]` (ou `python3 -m pip [des commandes pip]` si vous êtes sous mac ou linux)
 
 >Si vous utilisez un interpréteur qui s'appelle `python3` et pas `python`, il est fort possible que le programme `python`(sans le 3) soit un interpréteur de la version 2 de python. Il vous faut alors utiliser la commande `pip3`et non `pip` (qui sera elle associée à l'interpréteur `python`)
-{: .attention}
+{.attention}
 
 ### Le module random
 
@@ -225,7 +225,7 @@ print(nombre_mots)
 Pour lire-écrire, ouvrez le fichier avec 'r+' au lieu de 'r'. Pour l'écriture seule, 'w'.
 
 >Ouvrir en écriture un fichier existant **l'efface**. Pour ajouter des choses à la fin d'un fichier on utilise 'a' (pour append)
-{: .attention}
+{.attention}
 
 Utilisez ensuite la méthode `write()`:
 

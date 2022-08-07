@@ -7,13 +7,13 @@ authors: "François Brucker"
 ---
 
 > [Algorithme, code et théorie]({% link cours/algorithme-code-theorie/index.md %}) / [exercices]({% link cours/algorithme-code-theorie/exercices/index.md %}) / [2021-2022]({% link cours/algorithme-code-theorie/exercices/2021-2022/index.md %}) / [sucorrigéjet DS]({% link cours/algorithme-code-theorie/exercices/2021-2022/3_ds_corrige.md %})
-{: .chemin}
+{.chemin}
 
 ## Introduction
 
 > ventilation des notes
 >
-{: .tbd}
+{.tbd}
 
 ### remarques
 

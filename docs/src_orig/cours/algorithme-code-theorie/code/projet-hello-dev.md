@@ -12,7 +12,7 @@ author: "François Brucker"
 >
 >* [python et vscode]({% link _tutoriels/editeur/vsc/2021-09-14-vsc-python.md %})
 >
-{: .chemin}
+{.chemin}
 
 Un projet informatique a un début, lorsque l'on crée le dossier qui va le contenir, mais il n'a que rarement de fin : il y a toujours des fonctionnalités à ajouter et des bugs à corriger. Enfin, et c'est le plus important, un code est fait pour être utilisé.
 
@@ -25,7 +25,7 @@ De ces deux constatations, on en déduit trois règles fondamentales d'un code u
 Le langage d'application n'a que peu d'intérêt en soit. On choisit celui qui est le plus adapté à notre but. Ici, on utilisera le python mais tout ce qu'on verra est transposable pour tout autre langage sérieux. L'éditeur de texte que l'on utilisera sera vscode. Il en existe d'autres très bien aussi et tout ce qu'on verra avec vscode (les raccourcis claviers, et aides au développement) sont transposables à d'autres editeurs en lisant la doc.
 
 > Écrire du code nécessite de nombreuses automatisations et aides pour que ce ne soit pas pénible, ne vous privez pas d'outils parce que vous n'avez pas envie d'apprendre de nouvelles choses et que *ça suffit bien pour ce que je veux faire*. Vous allez au final perdre plus de temps que l'apprentissage initial (ce qui est tarte).
-{: .note}
+{.note}
 
 ## un projet
 
@@ -37,10 +37,10 @@ Nous allons préparer le projet dans lequel nous allons coder. Ceci se fait avec
 >1. Commencez par créer le dossier *"hello-dev"* dans un explorateur de fichier
 >2. dans vscode, choisissez : "*fichier > ouvrir le dossier...*" puis naviguez jusqu'à votre dossier *"hello-dev"*. On vous demande si vous faites confiances aux auteurs, puisque c'est vous dites oui.
 >
-{: .a-faire}
+{.a-faire}
 
 > Lorsque l'on code et que l'on ne veut pas de problèmes en développement, les noms de fichiers et de dossier doivent êtres **sans espaces et sans accents**.
-{: .note}
+{.note}
 
 ### fichier python
 
@@ -49,7 +49,7 @@ On va créer notre premier fichier python :
 > 1. allez dans *menu Fichier > Nouveau Fichier*
 > 2. et sauvez le de suite : *menu Fichier > Enregistrer* avec le nom *"main.py"*.
 >
-{: .a-faire}
+{.a-faire}
 
 Vscode à compris que c'était du python, il l'écrit dans la barre de statut (la dernière ligne, en bleu, de la fenêtre vscode, voir [user interface](https://code.visualstudio.com/docs/getstarted/userinterface)).
 
@@ -70,7 +70,7 @@ Vscode à compris que c'était du python, il l'écrit dans la barre de statut (l
 >
 >```
 >
-{: .a-faire}
+{.a-faire}
 
 En vous rappelant ce que vous avez vu dans [le tutorial python et vscode]({% link _tutoriels/editeur/vsc/2021-09-14-vsc-python.md %}#execution-python) :
 
@@ -79,7 +79,7 @@ En vous rappelant ce que vous avez vu dans [le tutorial python et vscode]({% lin
 > * avec le terminal
 > * avec le petit triangle
 >
-{: .a-faire}
+{.a-faire}
 
 ## du joli code {#linter}
 
@@ -94,7 +94,7 @@ Vous avez du installer le linter pycodestyle dans les prés-requis. Vérifions q
 >
 >```
 >
-{: .a-faire}
+{.a-faire}
 
 Une fois le fichier sauvé vous devriez voir que l'espace entre print et la parenthèse est souligné en rouge :
 
@@ -113,17 +113,17 @@ On a mis un espace entre le nom de la fonction et ses paramètres, c'est mal.
 > **style** : **NE JAMAIS METTRE D'ESPACE APRÈS UN NOM DE FONCTION**
 >
 > parce qu'on ne voit pas immédiatement si c'est une fonction ou un nom de variable.
-{: .note}
+{.note}
 
 Vous devriez peut-être aussi avoir la parenthèse de fin souligné en jaune. C'est parce que la dernière ligne de votre fichier n'est pas vide. Si ce n'est pas le cas, c'est que vous avez bien que 2 lignes dans votre fichier, la seconde étant vide.
 
 > **style** : **la dernière ligne d'un fichier python est vide**
-{: .note}
+{.note}
 
 La documentation de pycodestyle vous indique [toutes les erreurs qu'il reconnait](https://pycodestyle.pycqa.org/en/latest/intro.html#error-codes). Elles sont conformes aux recommandations de la [PEP8](https://realpython.com/python-pep8/).
 
 > Prenez l'habitude d'écrire du code sans aucune erreur de style. Et, surtout, **apprenez pourquoi cette règle existe**. Suivre une règle sans comprendre pourquoi elle existe n'est pas efficace... Parce qu'on ne sait pas s'il faut la suivre ou pas.
-{: .note}
+{.note}
 
 Tout au long de ce projet et des prochains, il faut faire en sorte qu'il n'y ait jamais d'erreur de style. Soyez donc vigilant au début avant que cela devienne naturel.
 
@@ -135,12 +135,12 @@ Tout au long de ce projet et des prochains, il faut faire en sorte qu'il n'y ait
 > * le main : le programme principal, c'est ce qu'on exécute lorsque veut faire marcher le projet
 > * les tests : ce qui garantit que le code fonctionne
 >
-{: .note}
+{.note}
 
 Pour séparer les différentes parties vous allez :
 
 > Créez deux fichiers dans notre projet, l'un nommé *"le_code.py"* qui contiendra notre code et l'autre nommé *"main.py"* qui sera notre programme principal
-{: .a-faire}
+{.a-faire}
 
 Fichier *le_code.py* :
 
@@ -175,7 +175,7 @@ La notation pointée se lit alors : exécute le nom `bonjour` définit dans *"le
 Ne **jamais jamais jamais** utiliser `from le_code import *` qui importe tous les noms définis dans *"le_code.py"*. On ne sait pas vraiment ce qui a été importé en lisant *"le_code.py"*. : notre code n'est pas lisible ! Le gain d'écriture de `*` plutôt que `bonjour` sera perdu au centuple plus tard lorsque l'on devra chercher dans tous les fichiers du projet où l'on a bien pu définir `bonjour`...
 
 > Comme on va passer plus de temps à lire/comprendre du code qu'à l'écrire, il faut **optimiser la lecture et non l'écriture de code**.  On préférera toujours **la lisibilité à la rapidité**.
-{: .note}
+{.note}
 
 ## tests
 
@@ -186,7 +186,7 @@ Les tests permettent de vérifier que notre code fonctionne. Ils font partie du 
 On y reviendra plus tard et à de nombreuses reprises :
 
 > les tests sont la pierre angulaire d'une bonne programmation : ils garantissent le fonctionnement de votre code et qu'[il ne peut régresser](https://blog.octo.com/via-negativa-tdd-et-la-conception-de-logiciel/).
-{: .note}
+{.note}
 
 Les tests sont de petites fonctions dont le but est de *tester* une fonctionnalité du programme (souvent le résultat de l'exécution d'une fonction). Le test consiste en une [assertion](https://fr.wikipedia.org/wiki/Assertion) que l'on veut être vraie si que le code fonctionne. Si l'assertion est fausse c'est qu'il y a un bug.
 
@@ -215,7 +215,7 @@ Essayons ça avec la plus simple des expressions logiques : `True`
 >
 > Exécutez-le.
 >
-{: .a-faire}
+{.a-faire}
 
 Lorsque vous exécutez ce fichier, vous devez obtenir le résultat suivant :
 
@@ -241,7 +241,7 @@ Changeons ça en mettant une condition logique fausse :
 >
 > Exécutez-le.
 >
-{: .a-faire}
+{.a-faire}
 
 Vous devez obtenir le résultat suivant :
 
@@ -277,7 +277,7 @@ D'habitude, nos expressions logiques vérifie qu'un comportement observé (l'ex�
 >
 > Exécutez-le.
 >
-{: .a-faire}
+{.a-faire}
 
 Pour tester la somme, j'ai décider de faire 3 tests :
 
@@ -301,7 +301,7 @@ Lorsque l'on exécute ce code, il ne se passe rien. Est-ce bon signe ?
 >
 > Exécutez le fichier *test_projet.py*.
 >
-{: .a-faire}
+{.a-faire}
 
 Le code s'exécute encore encombre. Bon, là, c'est pas normal car `0 + 0` ne peut être égal à `42`.
 
@@ -317,7 +317,7 @@ Nous allons utiliser la seconde option avec pytset.
 ### pytest
 
 > Tapez la commande `python -m pytest` dans un terminal.
-{: .a-faire}
+{.a-faire}
 
 Vous devriez obtenir quelque chose du genre :
 
@@ -325,12 +325,12 @@ Vous devriez obtenir quelque chose du genre :
 
 > Corrigez le test de *test_projet.py* qui rate et re-exécutez le code pour voir les 3 tests réussir.
 >
-{: .a-faire}
+{.a-faire}
 
 Que fait pytest :
 
 > pytest exécute toutes les fonctions commençant par `test_` de tous les fichiers commençant par `test_` d’un projet.
-{: .note}
+{.note}
 
 On peut aussi exécuter les tests directement avec vscode. Pour cela, cliquez sur [le petit erlenmeyer](https://code.visualstudio.com/docs/python/testing#_configure-tests). Vous pourrez ensuite :
 
@@ -352,7 +352,7 @@ Notre projet contient pour l'instant une fonction qui rend une constante. Tester
 >
 >```
 >
-{: .a-faire}
+{.a-faire}
 
 On peut maintenant remplacer les tests :
 
@@ -368,7 +368,7 @@ On peut maintenant remplacer les tests :
 >```
 >
 > Exécutez les tests pour vérifier que votre code fonctionne.
-{: .a-faire}
+{.a-faire}
 
 Maintenant que les tests passent, on peut modifier le programme principal.
 
@@ -382,7 +382,7 @@ Maintenant que les tests passent, on peut modifier le programme principal.
 >```
 >
 > Exécutez le programme principal.
-{: .a-faire}
+{.a-faire}
 
 Félicitations, vous avez fait votre premier projet fonctionnel !
 

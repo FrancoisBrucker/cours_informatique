@@ -6,7 +6,7 @@ author: "François Brucker"
 ---
 
 > [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 1]({% link cours/web/projets/numerologie/partie-1-front/index.md %}) / [niveau 3]({% link cours/web/projets/numerologie/partie-1-front/niveau-3/index.md %}) / [code]({% link cours/web/projets/numerologie/partie-1-front/niveau-3/2-code-js.md %})
-{: .chemin}
+{.chemin}
 
 Nous allons après chaque tâche faire un commit et, à la fin de chaque étape envoyer les modifications sur le serveur.
 
@@ -60,7 +60,7 @@ On implémente les [tâche 3 du niveau 1]({% link cours/web/projets/numerologie/
 Notre fenêtre du projet git montre 1 changement : la modification du fichier *"numérologie"*. Le format patch nous montre ce qui a changé. Avant de faire le commit, on va changer le message pour quelque chose de plus pertinent par rapport au projet. Pourquoi pas : "rend un chiffre à partir d'une chaine de caractères".
 
 >Ne vous trompez pas, c'est dans le message (cela remplace *update numerologie.js* qui est trop générique), on laisse la description vide
-{: .attention}
+{.attention}
 
 ![github history changement message]({{ "/assets/cours/web/numerologie/partie-1-niveau-3-desktop-history-changement-message.png" | relative_url }}){:style="margin: auto;display: block}
 

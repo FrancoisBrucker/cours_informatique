@@ -23,13 +23,13 @@ Il faut passer par une étape de conversion pour passer de l'un à l'autre.
 > * c'est du texte qui est converti en objet
 > * on peut l'utiliser en python mais c'est transformé en python
 > * exemple d'utilisation : attention ne marche pas sans serveur.
-{: .note}
+{.note}
 
 
 ## fichiers
 
 > TBD
-{: .note}
+{.note}
 
 node vs web
 

@@ -12,12 +12,12 @@ author: "François Brucker"
 >
 >* [étude : l'exponentiation]({% link cours/algorithme-code-theorie/algorithme/etude-exponentiation.md %})
 >
-{: .chemin}
+{.chemin}
 
 On l'a vu lors de l'[étude de l'exponentiation]({% link cours/algorithme-code-theorie/algorithme/etude-exponentiation.md %}), un même problème peut avoir plusieurs algorithmes solutions, certains étant meilleurs que d'autres. On peut alors se poser la question de la complexité d'un problème algorithmique. C'est à dire :
 
 > La complexité (maximale) d'un problème algorithmique est la complexité (maximale) du meilleur algorithme qui le résout.
-{: .note}
+{.note}
 
 Ce n'est pas une question facile car :
 
@@ -41,7 +41,7 @@ On supposera toujours ici qu'il existe un algorithme pour résoudre notre probl�
 > * **question** : ce que l'on cherche à résoudre
 > * **réponse** : la sortie de l'algorithme
 >
-{: .note}
+{.note}
 
 Par exemple :
 
@@ -66,7 +66,7 @@ On pourra définir pour un problème donné :
 > * une **borne maximale** de complexité du problème : le meilleur algorithme sera de complexité plus faible ou égale (mais on ne sait pas si un tel algorithme existe)
 >* la **complexité du problème** : la complexité maximale du meilleur algorithme permettant de résoudre le problème (cette complexité existe toujours puisqu'il existe un algorithme permettant de résoudre le problème et qu'il existe un [nombre dénombrable d'algorithmes]({% link cours/algorithme-code-theorie/theorie/fonctions.md %}#nombre-algos))
 >
-{: .note}
+{.note}
 
 ## exemple : recherche d'un élément dans un tableau
 
@@ -118,12 +118,12 @@ Au final on a :
 Donc :
 
 > La complexité du problème de la recherche est en $\mathcal{O}(n)$ où $n$ est la taille du tableau.
-{: .note}
+{.note}
 
 On peut en déduire une règle générale de la complexité d'un problème :
 
 > Si les données n'ont pas de structure particulière, très souvent, la complexité d'un problème est au moins égal à la taille de ses données.
-{: .note}
+{.note}
 
 Si ce n'est pas vrai, c'est que très souvent notre problème est mal posé et qu'on peut se passer de certaines entrées.
 
@@ -168,7 +168,7 @@ def recherche_dichotomique(valeur, tableau_trie):
 > Lorsque l'on code la recherche dichotomique, il faut faire **très** attention à ce que l'on prend comme milieu et comme condition d'arrêt. Sans quoi votre algorithme risque de tourner indéfiniment.
 >
 > On a utilisé ici le fait que  `(fin + debut) // 2` va donner la valeur entière de `(fin + debut) / 2`.
-{: .attention}
+{.attention}
 
 [Etude]({% link cours/algorithme-code-theorie/algorithme/algorithmes.md %}#étude) de l'algorithme :
 
@@ -214,7 +214,7 @@ $$
 Comme à chaque itération, `fin - debut` est divisé par 2 : il y a donc au plus $\log_2(n)$ itérations (avec $n$ la taille du tableau) :
 
 > l'algorithme `recherche_dichotomique` résout le problème "recherche ordonnée" en $\mathcal{O}(\ln(n))$ (avec $n$ la taille du tableau)
-{: .note}
+{.note}
 
 #### complexité du problème "recherche ordonnée" {#complexite-recherche-ordonnee}
 
@@ -254,7 +254,7 @@ En algorithmie, distinguer parmi plusieurs cas se fait par des tests (on utilise
 On a alors la proprité suivante :
 
 > Si un algorithme doit distinguer parmi $n$ cas, il devra posséder au moins $\log_2(n)$ tests. Sa complexité sera ainsi supérieure à $\mathcal{O}(\ln(n))$
-{: .note}
+{.note}
 
 Comme il y a $n+1$ cas au moins à traiter, notre algorithme sera de complexité supérieure à à $\mathcal{O}(\ln(n + 1)) = \mathcal{O}(\ln(n))$ opérations.
 
@@ -264,4 +264,4 @@ Au final, le problème de la "recherche ordonnée" pour un tableau à $n$ élém
 * la complexité de l'algorithme `recherche_dichotomique` est en $\mathcal{O}(\ln(n))$
 
 > La complexité du problème de la "recherche ordonnée" est en $\mathcal{O}(n)$ où $n$ est la taille du tableau.
-{: .note}
+{.note}

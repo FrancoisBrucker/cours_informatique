@@ -6,7 +6,7 @@ author: "François Brucker"
 ---
 
 > [commentaires]({% link cours/web/projets/commentaires/index.md %}) / [partie 5]({% link cours/web/projets/commentaires/partie-5-structures/index.md %})
-{: .chemin}
+{.chemin}
 
 ## structure du projet
 

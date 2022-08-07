@@ -1,17 +1,24 @@
 ---
-layout: page
-title:  "Théorie des graphes : mots de Brujin"
-category: cours
-tags: informatique graphes
-author: "François Brucker"
+layout: layout/post.njk
+title: "Mots de Brujin"
+tags: ['graphes']
+
+authors: 
+    - François Brucker
 ---
 
-> [graphes]({% link cours/graphes/index.md %}) / [Brujin]({% link cours/graphes/mots-brujin.md %})
-{: .chemin}
+{% chemin %}
+[Graphes]({{ ".." }}) / [{{title}}]({{ "." }})
+{% endchemin %}
+{% pres-requis %}
+* [Parcours eulériens](../parcours-eulerien)
+{% endpres-requis %}
 
-## But
+<!-- début résumé -->
 
 Des graphes eulérien là où ne s'y attend pas. Une application qui montre encore une fois comme preuve d'existence et algorithme de création de structure sont intimement liés.
+
+<!-- fin résumé -->
 
 ## Le problème du digicode
 
@@ -89,6 +96,6 @@ Ce mot, appelé *mot de brujin* a bien les propriétés suivantes :
 
 Le graphe de brujin associé aux mots de longueur 3 de l'alphabet $\\{0, 1\\}$ est :
 
-![graphe de brujin]({{ "/assets/cours/graphes/mot_3_01.png" | relative_url }}){:style="margin: auto;display: block;"}
+![graphe de brujin](../assets/img/mot_3_01.png)
 
 Un cycle eulérien associé est alors **10**-0**1**-1**1**-1**1**-1**0**-0**0**-0**0**-0**1**-1**0** ce qui donne le mot de Brujin associé : 1011100010.

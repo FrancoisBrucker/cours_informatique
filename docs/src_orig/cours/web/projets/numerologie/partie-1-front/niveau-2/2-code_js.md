@@ -6,7 +6,7 @@ author: "François Brucker"
 ---
 
 > [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 1]({% link cours/web/projets/numerologie/partie-1-front/index.md %}) / [niveau 2]({% link cours/web/projets/numerologie/partie-1-front/niveau-2/index.md %}) / [code js]({% link cours/web/projets/numerologie/partie-1-front/niveau-2/2-code_js.md %})
-{: .chemin}
+{.chemin}
 
 Code de la *logique métier* du projet. L'idée est de montrer comment on peut progresser en codant nous même, un item en amenant un autre à coder.
 
@@ -23,12 +23,12 @@ Il faut tout faire :
 ## choix de la première tâche
 
 > Quelle est la tâche la plus simple à réaliser dans nos todos ?
-{: .note}
+{.note}
 
 Le cœur du projet est d'associer un numéro à un nom, donc autant essayer de faire ça en javascript.
 
 > On modifie le fichier *"numerologie/todo/todos.md"* pour refléter le fait qu'on travaille sur cet item :
-{: .note}
+{.note}
 
 * [X] associer un chiffre à un nom
 * [ ] créer un champ texte dans un fichier html
@@ -169,7 +169,7 @@ C'est une pratique courante en javascript de déclarer tous les paramètres en 1
 #### évaluation d'un fichier
 
 > commentez nos précédents tests pour qu'ils ne soient pas évalués.
-{: .note}
+{.note}
 
 Puis on peut utiliser [eval](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/eval) :
 

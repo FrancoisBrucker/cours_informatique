@@ -40,7 +40,7 @@ Ca va préparer l'installation, puis après un reboot, finaliser l'installation.
 Une fois l'installation terminée, vous pourrez ouvrir un terminal unix dans votre windows.
 
 > Vous n'avez pas de fenêtre graphique par défaut sous WSL, vous n'avez accès qu'aux commandes unix en terminal. C'est comme si vous étiez sur un serveur distant à la maison.
-{: .attention}
+{.attention}
 
 ## mise à jour
 

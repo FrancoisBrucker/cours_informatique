@@ -319,7 +319,7 @@ Comprenez bien le code :
 * la méthode `se_faire_taper(personnage)` utilise la méthode `se_faire_taper` de la classe `Personnage` seulement si la guerrière ne bloque pas le coup. Le `super().methode_de_la_mere()` permet d'accéder à la méthode de la classe mère même de même nom qu'une méthode (différente) de la classe fille.
 
 > On utilise **toujours** le constructeur de la classe mère pour garantir que les méthodes définie dans la classe mère fonctionnent avec les objets de la classe fille. Sinon ici, `se_faire_taper` ne fonctionnerait pas puisque vie et attaque ne seraient pas défini
-{: .attention}
+{.attention}
 
 ### le magicien
 

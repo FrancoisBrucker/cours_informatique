@@ -9,7 +9,7 @@ authors:
 ---
 
 > [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 5]({% link cours/web/projets/numerologie/partie-5-tests/index.md %}) / [user stories]({% link cours/web/projets/numerologie/partie-5-tests/3-user-stories.md %})
-{: .chemin}
+{.chemin}
 
 Les user stories sont de utilisations possibles du site. Elles dépendent souvent de [persona](https://fr.wikipedia.org/wiki/Persona_(marketing)), sorte d'utilisateurs idéaux, qui ont des besoins précis et identifiés.
 

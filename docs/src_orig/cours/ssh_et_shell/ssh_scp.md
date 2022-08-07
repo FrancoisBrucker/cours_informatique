@@ -77,7 +77,7 @@ tar -xvf archive_dossier.tar
 * `x` signifie qu'on extrait l'archive.
 
 > ici le fichier .tar **n'est pas encore compressé**. Pour le compresser, on va ici choisir Lzma, la méhode utilisée par 7zip.
-{: .attention}
+{.attention}
 
 Vous pouvez compresser votre archive manuellement avec la commande `xz` :
 

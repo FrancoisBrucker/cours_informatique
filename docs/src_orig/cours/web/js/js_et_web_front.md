@@ -23,7 +23,7 @@ Nous allons ici plus particulièrement parler de ce qui est spécifique au web :
 *  gestion des callbacks (promise)
 
 > TBD
-{: .note}
+{.note}
 
 ## chargement de libs
 
@@ -57,7 +57,7 @@ promise ?
 ## old
 
 > TBD : vieux truc à ranger dans les nouvelles sections
-{: .note}
+{.note}
 
 ### manipulation de l'arbre dom 
 
@@ -308,7 +308,7 @@ Utilisation du nom `$(this)` qui, comme en java signifie : l'objet courant. Ici 
 ## js
 
 > TBD : mettre l'usage d'un array ici. Puis parler de jquery comme exemple d'import. t broder sur local/cdn/node_modules.
-{: .note}
+{.note}
 
 ### compliquons les choses
 
@@ -346,7 +346,7 @@ Imaginons maintenant que nous n'avons plus un seul div, mais deux.
 Cette fois on souhaite pouvoir changer la couleur de nos **DEUX** div, alors pourquoi pas attraper les éléments par `class` plutôt que par `id` ?
 
 > TBD : faire un array de boolean
-{: .danger}
+{.danger}
 ~~~~~html
 <script>
     bleu = false;

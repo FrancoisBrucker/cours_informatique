@@ -12,7 +12,7 @@ author: "François Brucker"
 >
 >* [complexité max/min]({% link cours/algorithme-code-theorie/algorithme/complexite-max-min.md %})
 >* [preuve d'algorithme]({% link cours/algorithme-code-theorie/algorithme/preuve-algorithme.md %})
-{: .chemin}
+{.chemin}
 
 On va étudier deux algorithmes permettant de calculer $a^b$  à partir de deux entiers $a$ et $b$. Pour chaque algorithme on étudiera son fonctionnement selon [3 axes]({% link cours/algorithme-code-theorie/algorithme/algorithmes.md %}#étude) :
 
@@ -36,7 +36,7 @@ x^y = \left\{
 $$
 
 > Ecrivez un algorithme récursif pour résoudre cette équation.
-{: .a-faire}
+{.a-faire}
 {% details  une solution possible %}
 
 ```python
@@ -53,7 +53,7 @@ Cet algorithme est exactement la transcription de la définition mathématique, 
 Pour cette étude, nous allons uniquement utiliser des algorithmes non récursifs (ils sont dit itératifs).
 
 > Ecrivez un algorithme itératif pour calculer $x^y$  avec $x$ et $y$ deux entiers positifs.
-{: .a-faire}
+{.a-faire}
 {% details une solution possible  %}
 
 <style>
@@ -89,7 +89,7 @@ On test l'algorithme itératif sur de petits exemples qui vont nous permettre d'
 > * on exécute ligne à ligne en notant les différents résultats.
 > * à la fin on vérifie que `résultat` vaut bien ce qu'il doit valoir.
 >
-{: .note}
+{.note}
 
 Les cas simples que l'on peut essayer sans peine, et permet de **tester les cas limites** :
 
@@ -102,7 +102,7 @@ Puis un cas un peu plus compliqué pour **tester si les boucles fonctionnent bie
 * nombre vaut 2 ou 3
 
 > Vérifiez que l'algorithme donne bien les bons résultats sur les exemples ci-dessus.
-{: .a-faire}
+{.a-faire}
 
 Une fois qu'on est convaincu que ça fonctionne, on prouvera sa finitude, sa preuve et on calculera sa complexité.
 
@@ -120,7 +120,7 @@ En deux temps. On commence par montrer qu'il se termine, puis on prouve qu'il ca
 > * L'égalité entre réels n'existe pas en informatique par exemple.
 > * dans l'exemple ci-dessus mettre des exposants négatifs ou des nombres réels ne fait pas boucler infiniment notre algorithme
 >
-{: .note}
+{.note}
 
 #### preuve de l'algorithme
 
@@ -128,7 +128,7 @@ Le fonctionnement de l'algorithme est *à peu prêt* clair si les entrées sont 
 
 > Si `nombre` et `exposant` sont des entiers naturels, on a l'invariant de boucle :
 > `resultat * nombre ** compteur = nombre ** exposant` (en utilisant l'opération `**` qui signifie exposant en python.)
-{: .note}
+{.note}
 
 Prouvons cet invariant.
 
@@ -144,7 +144,7 @@ On a alors :  `resultat' * nombre' ** compteur' = (resultat * nombre) * nombre *
 On a démontré notre invariant de boucle.
 
 > Notre invariant est vrai avant et après chaque itération, il est donc également vrai à la fin de l'algorithme, lorsque `compteur = 0`. Et là : `resultat * nombre ** compteur = resultat = nombre ** exposant`
-{: .note}
+{.note}
 
 ### complexité {#complexite-naif}
 
@@ -191,7 +191,7 @@ x^y = \left\{
 $$
 
 > Ecrivez un algorithme récursif pour résoudre cette équation.
-{: .a-faire}
+{.a-faire}
 {% details  une solution possible %}
 
 ```python
@@ -217,7 +217,7 @@ Cet algorithme est exactement la transcription de la définition mathématique, 
 Pour cette étude, nous allons uniquement utiliser des algorithmes non récursifs (ils sont dit itératifs).
 
 > Ecrivez un algorithme itératif utilisant l'exponentiation indienne pour résoudre $x^y$  avec $x$ et $y$ deux entiers positifs.
-{: .a-faire}
+{.a-faire}
 {% details une solution possible  %}
 
 <style>
@@ -261,7 +261,7 @@ Enfin, comme l'algorithme vérifie si `compteur` est pair ou impair, on peut ess
 * `nombre = 2` (pas trop grand pour pouvoir calculer facilement les résultats de tête)
 
 > Vérifiez que l'algorithme donne bien les bons résultats sur les exemples ci-dessus.
-{: .a-faire}
+{.a-faire}
 
 ### preuve de finitude {#finitude-rapide}
 

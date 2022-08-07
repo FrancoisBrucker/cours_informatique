@@ -14,7 +14,7 @@ Partie 3/3.
 >
 > * [partie 2/3]({% link cours/algorithme-code-theorie/code/programmation-objet/projet-tdd-2.md %})
 >
-{: .chemin}
+{.chemin}
 
 ## todo list initiale
 
@@ -49,7 +49,7 @@ Rappelez vous (et forcez vous à le faire jusqu'à ce que ça devienne un automa
 >    * élimine les duplications tout en conservant la validité des tests.
 >
 > La partie refactor, qui est la partie réelle où l'on code ne se fait **que sur du vert** : on est assuré de ne pas casser le code puisque les tests passent.
-{: .note}
+{.note}
 
 ## Addition 1/3
 
@@ -69,7 +69,7 @@ On s'assure dans le test qu'on ne somme pas deux fois la même chose pour évite
 > * utilisant la méthode `plus` de `Monnaie` qui prend une autre monnaie en paramètre et rend une monnaie
 >
 > * les objets de `Monnaie` sont toujours non mutable
-{: .a-faire}
+{.a-faire}
 
 Une fois les tests écris, une *obvious implementation* devrait faire l'affaire.
 {% details solution %}
@@ -108,7 +108,7 @@ class Monnaie:
 Rendons les choses jolies en utilisant `__add__` qui est le pendant pour l'addition de `__mul__`
 
 > Remplacez la méthode `plus` par `__add__`dans `Monnaie`.
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 easy peasy, on remplace juste `plus` par `+`
@@ -227,7 +227,7 @@ def test_conversion_addition():
 ```
 
 > Ajoutez le test dans *"test_monnaie.py"* et fakez le tout dans *"monnaie.py"*  pour que le test passe.
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 *"monnaie.py"* :
@@ -263,7 +263,7 @@ On change notre iitem de la todo list puique \\$5 + \\$2 ne sera plus égal à \
 > 1. supprimez le test `test_plus` qui vérifie que \\$5 + \\$2 = \\$7 ce qui n'est plus vrai
 > 2. on ajoute un test pour montrer que la somme de deux monnaies est un objet contenant une partie gauche (la partie à gauche du `+`) et une partie droite (la partie à droite du `+`)
 > 3. on implémente le tout en une petite *obvious implementation*
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 *"test_monnaie.py"* :
@@ -336,7 +336,7 @@ Le test `test_conversion_addition` affirme que `banque.conversion(monnaie.dollar
 >
 > * supposant que les parties `gauche` et `droite` de la somme sont des `Monnaie`
 > * que le taux de change est toujours de 1 pour 1
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 *"monnaie.py"* :
@@ -374,7 +374,7 @@ Lorsque l'on fait du développement objet, on aime pas trop que tous les objets 
 > * les méthodes de `C`
 >
 > Un bon programme utilise des objets qui interagissent entre eux mais qui ne connaissent pas l'implémentation des autres classes. Les objets doivent être le plus découplé possible.
-{: .note}
+{.note}
 
 En particulier, la loi de Déméter demande d'éviter d'appeler les méthodes d'un attribut d'un objet ce qui est exactement ce que l'on fait.
 
@@ -383,7 +383,7 @@ En particulier, la loi de Déméter demande d'éviter d'appeler les méthodes d'
 Pour éviter cette double indirection :
 
 > Remontez d'un cran le code de `Banque.conversion` en le plaçant dans une méthode `Somme.conversion(devise)`. Pour l'instant on suppose toujours que le taux de conversion est de 1 pour 1 quelque soient les monnaies et que les parties gauche et droite des `Somme` sont des `Monnaies`.
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 *"monnaie.py"* :
@@ -440,7 +440,7 @@ Monter la méthode `conversion` de la `Banque` à la `Somme` nous permet égalem
 > 2. implémentez le code correspondant
 >
 > De même que précédemment, on va considérer que le seul paramètre de la méthode `Monnaie.conversion` la devise d'arrivée et que — pour l'instant — le taux de change est de 1 pour 1
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 *"test_monnaie.py"* :
@@ -505,7 +505,7 @@ On va maintenant s'attaquer à la conversion. Commençons simple avec les objets
 > 2. créez un test qui vérifie que `Banque.change` fonctionne pour convertir des dollar en CHF avec un taux de 2 dollars pour 1 CHF.
 > 3. créez un test qui vérifie que `Banque.conversion(monnaie.dollar(2), "CHF")` donne 1
 > 4. utilisez la banque pour faire la conversion dans `Monnaie.conversion` (il faudra ajouter la banque comme paramètre)
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 *"test_monnaie.py"* :
@@ -601,7 +601,7 @@ Pour l'instant notre conversion pour les sommes ne considère que les mêmes dev
 Commençons simplement :
 
 > Faire un test qui convertit la somme de \\$2 et 1CHF en franc suisse et implémentez le tout.
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 *"test_monnaie.py"* :
@@ -665,7 +665,7 @@ Le design pattern utilisé pour cela est :
 > **design pattern :** [composite](https://refactoring.guru/fr/design-patterns/composite)
 >
 > Son but est de pouvoir traiter un groupe d'individu comme un seul. Il utilise une structuration récursive pour cela.
-{: .note}
+{.note}
 
 Le diagramme de classe du pattern composite peut -être vu comme ça :
 
@@ -695,7 +695,7 @@ def test_somme_de_somme():
 ```
 
 > pourquoi ?
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 La méthode conversion est récursive dans `Somme`. Les terminaison se faisant lorsque une partie de la somme est une `Monnaie`.
@@ -718,7 +718,7 @@ def test_somme_de_somme_2():
 ```
 
 > pourquoi ?
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 Le résultat des tests donne :
@@ -735,7 +735,7 @@ Nous n'avons pas implémenté de méthode `__add__` pour les `Somme`.
 {% enddetails %}
 
 > Faite passer les tests.
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 *"monnaie.py"* :
@@ -771,7 +771,7 @@ def test_mult_de_somme():
 ```
 
 > Faite passer le test ci-dessus
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 *"monnaie.py"* :
@@ -793,7 +793,7 @@ class Somme:
 {% enddetails %}
 
 > Pourquoi nous sera-t-il impossible d'écrire : `4 * (monnaie.franc(2) + monnaie.dollar(1))` ?
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 Parce qu'il faudrait modifier la méthode `__mul__` des entiers de python, ce qui est impossible.

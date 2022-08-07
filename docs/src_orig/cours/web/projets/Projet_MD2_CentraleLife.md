@@ -149,7 +149,7 @@ Comme Selenium va utiliser notre site, il lui faut un navigateur web :
 
 
 > Pour les fichiers avec des users stories, il est important de les appeler _nomdufuchier.user-story.js_.
-{: .attention}
+{.attention}
 
 Pour les installer :
 ```

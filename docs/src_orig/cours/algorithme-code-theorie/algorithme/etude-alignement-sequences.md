@@ -12,7 +12,7 @@ author: "François Brucker"
 >
 > * [étude : recherche de sous-chaines]({% link cours/algorithme-code-theorie/algorithme/etude-recherche-sous-chaines.md %})
 >
-{: .chemin}
+{.chemin}
 
 Nous allons voir dans cette étude comment définir/calculer une distance entre 2 chaînes de caractères. Nous utiliserons la [distance d'édition](https://fr.wikipedia.org/wiki/Distance_de_Levenshtein), très utilisée.
 
@@ -73,7 +73,7 @@ Il faut donc tout refaire... Une solution pour unifier les deux approches est de
 > * $(a^\star_i, b^\star_i) \neq (-, -)$ pour tout $0 \leq i < L$
 > * $a^\star$ (respectivement $b^\star$) privé des caractères `-` est égal à $a$ (*resp.* $b$)
 >
-{: .note}
+{.note}
 
 On remarque que : $\max(n, m) - 1 \leq L < n + m$.
 
@@ -231,7 +231,7 @@ D(a, b) = \min  \begin{cases}
 $$
 
 > C'est le principe de la [programmation dynamique](https://fr.wikipedia.org/wiki/Programmation_dynamique) : un chemin optimal est constitué de sous-chemins eux-mêmes optimaux.
-{: .note}
+{.note}
 
 Ceci se généralise pour tout $i$ et $j$ :
 
@@ -273,7 +273,7 @@ La distance entre $a$ et $b$ qui correspond à un alignement de distance minimal
 Distance de `ACTGATT` (horizontal) à `GCTAATCG` (vertical).
 
 > Créez la matrice d'édition *vierge* à utiliser
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 | |-|A|C|T|G|A|T|T
@@ -290,7 +290,7 @@ Distance de `ACTGATT` (horizontal) à `GCTAATCG` (vertical).
 {% enddetails  %}
 
 > Remplissez la première ligne et la première colonne
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 | |-|A|C|T|G|A|T|T
@@ -307,7 +307,7 @@ Distance de `ACTGATT` (horizontal) à `GCTAATCG` (vertical).
 {% enddetails  %}
 
 > Remplissez le reste de la matrice ligne à ligne
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 | |-|A|C|T|G|A|T|T
@@ -324,7 +324,7 @@ Distance de `ACTGATT` (horizontal) à `GCTAATCG` (vertical).
 {% enddetails  %}
 
 > Donnez la distance obtenue
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 C'est $M[-1][-1]$ et cela vaut 4
@@ -353,7 +353,7 @@ Avec la matrice d'édition, il est facile de retrouver un alignement qui a réal
 L'algorithme précédent est une idée de l'algorithme. Il faudra ajouter les conditions au bord de la matrice (lorsque $i=-m$ et $j > -n$ par exemple) pour ne pas déborder.
 
 > En reprenant l'exemple précédent, donner un alignement donnant le coût minimum
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 Le chemin dans la matrice est donné en gras :
@@ -480,7 +480,7 @@ Considérons le coût :
 Aller de `ACTGATT` (horizontal) à `GCTAATCG` (vertical).
 
 > Créez la matrice d'édition *vierge* à utiliser
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 | |-|A|C|T|G|A|T|T
@@ -497,7 +497,7 @@ Aller de `ACTGATT` (horizontal) à `GCTAATCG` (vertical).
 {% enddetails  %}
 
 > Remplissez la première ligne et la première colonne
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 | |-|A|C|T|G|A|T|T
@@ -514,7 +514,7 @@ Aller de `ACTGATT` (horizontal) à `GCTAATCG` (vertical).
 {% enddetails  %}
 
 > Remplissez le reste de la matrice ligne à ligne
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 | |-|A|C|T|G|A|T|T
@@ -531,7 +531,7 @@ Aller de `ACTGATT` (horizontal) à `GCTAATCG` (vertical).
 {% enddetails  %}
 
 > Quel est la distance entre les deux séquences ?
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 7

@@ -6,7 +6,7 @@ author: "François Brucker"
 ---
 
 > [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 3]({% link cours/web/projets/numerologie/partie-3-donnees/index.md %}) / [intégration]({% link cours/web/projets/numerologie/partie-3-donnees/2-integration.md %})
-{: .chemin}
+{.chemin}
 
 Création de la base de donnée associée au projet
 

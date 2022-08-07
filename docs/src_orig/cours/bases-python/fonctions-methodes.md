@@ -8,7 +8,7 @@ authors:
 
 
 > [bases de python]({% link cours/bases-python/index.md %}) / [fonctions et méthodes]({% link cours/bases-python/fonctions-methodes.md %})
-{: .chemin}
+{.chemin}
 
 Les fonctions et les méthodes sont des moyens d'effectuer des opérations sur les objets ou de créer de nouveaux objets. La puissance d'un langage de programmation vient aussi du fait de ses nombreuses fonctions et méthodes mises à la dispositions des utilisateurs.
 
@@ -67,7 +67,7 @@ print(...)
 On remarque que les premiers paramètres sont sans noms (value, ...) puis les paramètres ont des noms (`sep`, `end`, `file`, `flush`) suivi d'une valeur. Ce sont des paramètres qui ont une valeur par défaut (par défaut `sep` vaut `" "`).
 
 > Les paramètres sans valeurs par défaut sont obligatoires lorsque l'on appelle une fonction, les paramètres ayant une valeur par défaut sont optionnels.
-{: .note}
+{.note}
 
 On cependant bien sur utiliser, en le nommant, un paramètre ayant une valeur par défaut :
 
@@ -101,7 +101,7 @@ Donne le type d'un objet.
 Rend le nombre d'éléments d'un conteneur (liste ou chaîne de caractères).
 
 > Quel est le nombre de caractères du mot "anticonstitutionnellement" ?
-{: .a-faire}
+{.a-faire}
 {% details %}
 
 ```python
@@ -118,7 +118,7 @@ Rend le nombre d'éléments d'un conteneur (liste ou chaîne de caractères).
 On a déjà vu cette possibilité dans la partie [objets types et types d'objets]({% link cours/bases-python/objets-types.md %}), c'est très utile pour changer un objet de classe. Mais utilisons ce qu'on a vu maintenant pour aller plus loin :
 
 > Créez le nombre complexe $1+2i$
-{: .a-faire}
+{.a-faire}
 {% details %}
 
 L'aide de `complex` : <https://docs.python.org/fr/3/library/functions.html#complex>, nous indique l'on peut créer notre objet comme ça :
@@ -145,7 +145,7 @@ Voir, puisque les éléments sont nommées :
 {% enddetails %}
 
 > Créez une copie de la liste `x = [1, 2, 13]`
-{: .a-faire}
+{.a-faire}
 {% details %}
 
 ```python
@@ -178,7 +178,7 @@ Alors que :
 {% enddetails %}
 
 > En utilisant [int()](https://docs.python.org/fr/3/library/functions.html#int) qui crée des entiers, trouvez la représentation décimale du nombre binaire : 1001100011
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 On utilise le paramètre base de la classe `int` :
@@ -193,7 +193,7 @@ On utilise le paramètre base de la classe `int` :
 Allez, un dernier pour la route :
 
 > En utilisant le fait que la fonction `len(chaine de caractère)` donne le nombre de caractères de la chaîne (par exemple `len("abc")` rend `3`), et que l'exposant eb python s'écrit `**` (par exemple `2**8` rend `256`) donnez le nombre de chiffre du 27ème [nombre de Mersenne premier](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier).
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 ```python
@@ -219,14 +219,14 @@ Permet de demander une chaine de caractère à un utilisateur. Par exemple :
 On demande à l'utilisateur de taper quelque chose puis d'appuyer sur la touche entrée. Ce qu'à taper l'utilisateur est rendu sous la forme d'une **chaîne de caractère**.
 
 > Tout ce qui vient de l'utilisateur est une **chaîne de caractère**. Si l'on veut que ce soit un nombre par exemple, il faut le convertir. Comme par exemple : `i = int(input())` qui converti en entier le résultat de la fonction `input`.
-{: .attention}
+{.attention}
 
 #### range
 
 [range](https://docs.python.org/fr/3/library/stdtypes.html#ranges) est une fonction particulière, elle permet de créer, en combinaison avec `list` des listes.
 
 > On ne crée **pas** de liste directement avec `range`.
-{: .a-faire}
+{.a-faire}
 
 Par exemple :
 
@@ -263,7 +263,7 @@ objet.methode(paramètre 1, paramètre 2, ..., paramètre n)
 On applique `méthode` à `objet` en utilisant les `paramètres` de la méthode.
 
 > Une méthode ne s'utilise **jamais** seule. Elle s'applique à ce qu'il y a à gauche d'elle.
-{: .attention}
+{.attention}
 
 Prenez le temps de regarder les différentes méthodes des classes de base de python. Souvent elle vous permettent de faire rapidement une opération compliquée. C'est en particulier vrai pour les chaines de caractères et les listes.
 
@@ -278,7 +278,7 @@ Essayons de les apprendre avec ces petits exercices :
 > * combien y a-t-il de "ou" ?
 > * quel est l'indice du premier "e" ?
 > * quel est l'indice du dernier "e" ?
-{: .a-faire}
+{.a-faire}
 {% details %}
 
 ```python
@@ -293,7 +293,7 @@ Essayons de les apprendre avec ces petits exercices :
 {% enddetails %}
 
 > Transformez le 27ème [nombre de Mersenne premier](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier) en une chaîne de caractère
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 Dans un interpréteur :
@@ -305,7 +305,7 @@ Dans un interpréteur :
 {% enddetails %}
 
 > En utilisant la méthode [count](https://docs.python.org/fr/3/library/stdtypes.html#str.count), comptez le nombre de 0 du 27ème [nombre de Mersenne premier](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier).
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 Dans un interpréteur :
@@ -318,7 +318,7 @@ Dans un interpréteur :
 {% enddetails %}
 
 > En utilisant la méthode [replace](https://docs.python.org/fr/3/library/stdtypes.html#str.replace), changez les 2 en 7 dans le nombre de 0 du 27ème [nombre de Mersenne premier](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier).
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 Dans un interpréteur :
@@ -351,7 +351,7 @@ Signifie que `methode_n()` est appliquée au résultat de `objet.methode_1(). ..
 > str(2 ** 44497 - 1).replace("2","x").replace("7","2").replace("x","7")
 > ```
 >
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 Il est aisé de comprendre ce que ça fait en procédant de droite à gauche :
@@ -382,7 +382,7 @@ Par exemple pour ajouter ou supprimer des éléments d'une liste :
 * `del` supprime l'élément à l'indice de la liste. Par exemple `del l[0]` supprime l'élément d'indice 0 dune liste (si `l` valait `[1, 4]` avant, elle vaudra `[4]` après)
 
 > Attention à `remove`, `extend` ou `pop` qui ne font pas ce qu'on croit qu'elle font. Que font-elles ?
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 Voir la [documentation du tutoriel](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists) :

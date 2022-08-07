@@ -6,7 +6,7 @@ author: "François Brucker"
 ---
 
 > [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 1]({% link cours/web/projets/numerologie/partie-1-front/index.md %}) / [niveau 4]({% link cours/web/projets/numerologie/partie-1-front/niveau-4/index.md %}) / [préparation]({% link cours/web/projets/numerologie/partie-1-front/niveau-4/1-preparation.md %})
-{: .chemin}
+{.chemin}
 
 Initialisation du projet git.
 

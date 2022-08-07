@@ -5,7 +5,7 @@ category: cours
 ---
 
 > [Algorithme, code et théorie]({% link cours/algorithme-code-theorie/index.md %}) / [exercices]({% link cours/algorithme-code-theorie/exercices/index.md %})
-{: .chemin}
+{.chemin}
 
 Listes d'exercices, tests et examens données pour ce cours.
 

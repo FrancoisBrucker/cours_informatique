@@ -6,7 +6,7 @@ author: "François Brucker"
 ---
 
 > [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 1]({% link cours/web/projets/numerologie/partie-1-front/index.md %}) / [niveau 2]({% link cours/web/projets/numerologie/partie-1-front/niveau-2/index.md %}) / [html et css]({% link cours/web/projets/numerologie/partie-1-front/niveau-2/3-html_css.md %})
-{: .chemin}
+{.chemin}
 
 ## todos
 

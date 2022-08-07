@@ -16,7 +16,7 @@ Utiliation du terminal avec vscode
 >* [vscode]({% link _tutoriels/editeur/vsc/vsc-installation-et-prise-en-main.md %})
 >* [terminal]({% link _tutoriels/systeme/2021-08-24-terminal.md %})
 >
-{: .chemin}
+{.chemin}
 
 Les différentes manières d'invoquer un terminal avec  [visual studio code](https://code.visualstudio.com/). C'est un condensé de la documentation officielle qui bien plus complète : <https://code.visualstudio.com/docs/editor/integrated-terminal>
 

@@ -6,7 +6,7 @@ author: "François Brucker"
 ---
 
 > [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 5]({% link cours/web/projets/numerologie/partie-5-tests/index.md %})
-{: .chemin}
+{.chemin}
 
 Numérologie partie 5. On mets en place tous les tests nécessaire au bon fonctionnement et à la maintenance du projet
 

@@ -6,7 +6,7 @@ author: "François Brucker"
 ---
 
 > [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 3]({% link cours/web/projets/numerologie/partie-3-donnees/index.md %}) / [bases des bases de données]({% link cours/web/projets/numerologie/partie-3-donnees/1-bases-des-bases.md %})
-{: .chemin}
+{.chemin}
 
 Comment utiliser des bases de données avec express et node.
 
@@ -84,7 +84,7 @@ sequelize.sync()
 ```
 
 > Il est important d'attendre la fin de la synchronisation avant de lire ou sauver des données
-{: .attention}
+{.attention}
 
 Normalement, la synchronisation des bases ne se fait pas en production. On a un script de création des modèles et de synchronisation que l'on exécute que lorsque le modèle change.
 

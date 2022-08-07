@@ -7,7 +7,7 @@ authors:
 ---
 
 > [bases de python]({% link cours/bases-python/index.md %})
-{: .chemin}
+{.chemin}
 
 Un court cours sur les bases de la programmation en utilisant le langage de programmation [python](https://fr.wikipedia.org/wiki/Python_(langage)) dont le site est : <https://www.python.org/>
 
@@ -56,7 +56,7 @@ Les deux solutions ci-dessus vous permettent d'exécuter du code python sous la 
 Vous pouvez consulter le [tutoriel d'installation de python]({% link _tutoriels/python/installation-de-python.md %}) pour voir plusieurs façons d'installer python, mais si vous ne savez pas trop quel python installer, nous vous conseillons d'installer une distribution générique comme celle d'[anaconda](https://www.anaconda.com/products/distribution) :
 
 > Suivez [ce tutoriel]({% link _tutoriels/python/installation-anaconda.md %}) pour installer la distribution Anaconda.
-{: .a-faire}
+{.a-faire}
 
 La distribution d'anaconda vous permettra d'utiliser python ou via un notebook ou en ligne de commande.
 
@@ -69,14 +69,14 @@ Si vous préférez installer uniquement l'interpréteur python — ce qui est re
 Écrire et exécuter du python via un notebook est pratique lorsque l'on ne veut pas écrire de programme long ou que l'on utilise le code comme support à un rapport (le notebook fait alors office de rapport). De façon générale cependant, le code python est contenu dans un fichier de code écrit dans un éditeur. Nus vous conseillons [vscode](https://code.visualstudio.com/) qui est pratique et très utilisé.
 
 > En suivant [ce tutoriel]({% link _tutoriels/editeur/vsc/vsc-installation-et-prise-en-main.md %}) installez vscode sur votre ordinateur.
-{: .a-faire}
+{.a-faire}
 
 ### Configuration
 
 Une fois l'éditeur vscode et l'interpréteur python installés, on peut les configurer pour qu'ils puissent parler ensemble. Cette étape n'est pas indispensable mais elle permet de gagner du temps pour les développements futur et rend l'étape de développement bien plus agréable.
 
 > Suivez [ce tutoriel]({% link _tutoriels/editeur/vsc/2021-09-14-vsc-python.md %}) pour lier vscode à python.
-{: .a-faire}
+{.a-faire}
 
 ## Interpréteur python
 
@@ -100,7 +100,7 @@ La façon la plus explicite d'utiliser l'interpréteur python est de le faire en
 > Utilisez <https://basthon.fr/> en console pour exécuter l'instruction `print("Bonjour monde !")`.
 >
 > Cette instruction affiche la chaîne de caractère *Bonjour monde !* à l'écran.
-{: .a-faire}
+{.a-faire}
 
 ![hello world](./assets/console-1.png){:style="margin: auto;display: block}
 
@@ -201,4 +201,4 @@ Incontournable pour qui veut faire du python, il est plus que recommandé que vo
 > * lambda
 > * list comprehension
 >
-{: .tbd}
+{.tbd}

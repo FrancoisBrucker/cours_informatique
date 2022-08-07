@@ -74,7 +74,7 @@ Le TD consistera **toujours** à reprendre le cours de niveau 2 de la semaine et
 
 > TBD :
 > à refaire en faisant comme fil rouge 1 jeu du décathlon que les élèves ne pourront pas choisir.
-{: .note}
+{.note}
 
 Projet [numérologie]({% link cours/web/projets/numerologie/index.md %}), [partie 1]({% link cours/web/projets/numerologie/partie-1-front/index.md %})
 

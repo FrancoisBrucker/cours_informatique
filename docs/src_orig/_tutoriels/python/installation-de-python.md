@@ -20,7 +20,7 @@ Comment installer et utiliser python sur son ordinateur. On y verra différentes
 ## python ?
 
 > <https://fr.wikipedia.org/wiki/Python_(langage)>
-{: .chemin}
+{.chemin}
 
 Stricto sensu, [Python](https://www.python.org/) est un langage de programmation initialement développé par [Guido van Rossum](https://fr.wikipedia.org/wiki/Guido_van_Rossum) pour le bien des développeurs et de l'humanité.
 
@@ -35,7 +35,7 @@ Pour pouvoir écrire du code python et l'exécuter sur votre ordinateur, il vous
 **Utilisez la version 3 de python**. Il n'est pas nécessaire d'avoir la toute dernière itération de cette version (3.9.6 à l'heure où je tape ces caractères), toute version 3 de python pas trop ancienne doit convenir.
 
 > Si vous installez python pour la première fois sur votre ordinateur, choisissez d'installer la dernière version stable de python 3.
-{: .note}
+{.note}
 
 Une version de python est composée de 3 nombres [MAJOR.MINOR.PATCH](https://semver.org/) :
 
@@ -54,7 +54,7 @@ Depuis le 1er janvier 2020, la version majeure 2 de python est **obsolète**, il
 Il n'y a **aucune** bonne raison d'utiliser la version 2 de python pour écrire des programmes actuellement.
 
 > Il existe sur le net encore beaucoup d'exemples utilisant la version2 de python, ou certains profs un peu feignant qui ne passent pas leurs exemple/cours en python3. Plutôt que d'utiliser python2, il est recommandé de convertir ces programmes dans la version 3 et de demander la mise à jour des cours...
-{: .attention}
+{.attention}
 
 ### j'ai quoi comme python ? {#quel-python-jai}
 
@@ -136,7 +136,7 @@ Pour l'instant téléchargez le tout depuis le store. Suivez ce [tutoriel](https
 {% details sous linux %}
 
 > TBD : avec apt-get ?
-{: .note}
+{.note}
 
 {% enddetails %}
 
@@ -215,7 +215,7 @@ Python vient avec une [liste de packages](https://docs.python.org/3/library/) bi
 Pour installer de nouveaux packages python, on utilise la commande `pip`.
 
 > si votre interpréteur python est `python3`, vous devez utiliser la commande `pip3`
-{: .attention}
+{.attention}
 
 Testez le en ouvrant un terminal et en tapant :
 
@@ -234,7 +234,7 @@ python -m pip list
 Si vous avez une distribution anaconda, vous devriez avoir plein de choses, sinon, beaucoup moins.
 
 > Il est crucial de vérifier que pip est bien lié à l'interpréteur python que vous voulez. Sinon, vous installerez des packages pour un mauvais interpréteur.
-{: .attention}
+{.attention}
 
 On peut maintenant utiliser pip pour installer un nouveau package. Nous allons installer [black](https://pypi.org/project/black/) qui rendra joli tous nos programmes python. Dans un terminal tapez :
 
@@ -272,7 +272,7 @@ Il y a plusieurs dossiers :
 * *"/usr/local/lib/python3.9/site-packages"* qui contient les packages qui seront installés par pip.
 
 > La gestion des packages peut être compliquée. Normalement, si vous vous y prenez comme indiqué ici et en utilsant votre ordinateur personnel, tout devrait bien se passer. Si cela commence à ne plus aller, vous pouvez essayer d'installer les packages à un autre en endroit en suivant [ce tuto](https://opensource.com/article/19/4/managing-python-packages), ou, comme on le fera plus tard en utilisant un environnement virtuel. Mais, dans le doute, consultez un prof qui s'y connait.
-{: .attention}
+{.attention}
 
 ## éditeur
 

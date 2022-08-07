@@ -6,7 +6,7 @@ author: "François Brucker"
 ---
 
 > [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 1]({% link cours/web/projets/numerologie/partie-1-front/index.md %}) / [niveau 1]({% link cours/web/projets/numerologie/partie-1-front/niveau-1/index.md %}) / [html et css]({% link cours/web/projets/numerologie/partie-1-front/niveau-1/4-integration_html_js.md %})
-{: .chemin}
+{.chemin}
 
 On va lier le code javascript de la la [partie 2]({% link cours/web/projets/numerologie/partie-1-front/niveau-1/2-code_js.md %}) et le html/css de la [partie 3]({% link cours/web/projets/numerologie/partie-1-front/niveau-1/3-html_css.md %}).
 
@@ -66,7 +66,7 @@ document.querySelector("#form-input").value
 Et vous y découvrirez la valeur de votre input, qui est vide (`''`) si vous n'avez rien tapé dans ce champ.
 
 > Changez la valeur de l'input et vérifiez que la ligne précédente donne un autre résultat
-{: .note}
+{.note}
 
 Comment avons-nous réalisé ce prodige ?
 
@@ -89,7 +89,7 @@ document.querySelector("#form-button").addEventListener("click", (event) => {
 ```
 
 >Vous pouvez ensuite cliquer sur le bouton pour voir le code s'exécuter.
-{: .note}
+{.note}
 
 Le code se comprend comme ça :
 
@@ -149,7 +149,7 @@ Le fichier html *"numerologie/index.html"* est alors :
 Dès que vous cliquerez sur le bouton, la valeur sera envoyée dans la console.
 
 > Testez le !
-{: .note}
+{.note}
 
 ## Tâche 2 : chargement et utilisation de fichier javascript {#tache-2}
 
@@ -162,7 +162,7 @@ Cela se fait simplement avec l'attribut `src` de la balise `<script></script>` q
 ```
 
 > Il ne faut rien mettre d'autre dans script si on charge un fichier
-{: .attention}
+{.attention}
 
 Après cette ligne dans le html, la fonction `chiffreAssocie` sera connue. Cela donne le fichier *"numerologie/index.html"* suivant, qui commence par charger notre fichier dans une balise script, puis l'utilise dans une autre (c'est possible car l'interpréteur javascript est commun à la page) :
 

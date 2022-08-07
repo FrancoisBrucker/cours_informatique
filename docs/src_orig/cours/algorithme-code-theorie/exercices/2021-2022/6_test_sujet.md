@@ -6,7 +6,7 @@ tags: code python
 ---
 
 > [Algorithme, code et théorie]({% link cours/algorithme-code-theorie/index.md %}) / [exercices]({% link cours/algorithme-code-theorie/exercices/index.md %}) / [2021-2022]({% link cours/algorithme-code-theorie/exercices/2021-2022/index.md %}) / [sujet Test 6 : algorithmes gloutons]({% link cours/algorithme-code-theorie/exercices/2021-2022/6_test_sujet.md %})
-{: .chemin}
+{.chemin}
 
 Un automobiliste veut parcourir une route allant de la ville $A$ à la ville $B$. Cette route comporte $n$ stations services numérotées dans l’ordre du parcours, de $0$ à $n-1$. On suppose que les villes $A$ et $B$ possèdent une station service (stations numéros $0$ et $n-1$ respectivement).
 

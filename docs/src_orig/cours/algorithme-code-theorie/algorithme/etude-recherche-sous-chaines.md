@@ -14,7 +14,7 @@ author: "François Brucker"
 > * [structure : chaine de caractères]({% link cours/algorithme-code-theorie/algorithme/structure-chaine-de-caracteres.md %})
 > * [fonctions de hash]({% link cours/algorithme-code-theorie/theorie/fonctions-hash.md %})
 >
-{: .chemin}
+{.chemin}
 
 Nous allons dans cette partie analyser le problème de la *recherche d'une sous-chaîne* :
 
@@ -27,7 +27,7 @@ Nous allons dans cette partie analyser le problème de la *recherche d'une sous-
 >   * $b$ est-il une *sous-chaîne* de $a$ ?
 > * **réponse** :
 >   * oui ou non.
-{: .note}
+{.note}
 
 Une définition formelle de *sous-chaîne* étant :
 
@@ -39,7 +39,7 @@ Une définition formelle de *sous-chaîne* étant :
 > b[j] = a[i + j]
 > $$
 >
-{: .note}
+{.note}
 
 ## algorithme naïf
 
@@ -269,7 +269,7 @@ for element in L:
 Le second cas est bien plus clair.
 
 > L'utilisation de `break` et de `continue` permet de distinguer clairement dan l'algorithme ce qui est de l'ordre du cas général (la boucle) et du cas particulier (sortie de boucle)
-{: .note}
+{.note}
 
 #### calcul de la complexité en moyenne
 
@@ -348,7 +348,7 @@ Ceci s'explique par le fait que la probabilité de s'arrêter au bout de $j$ it�
 Ce résultat surprennent amène à un autre résultat tout aussi surprenant : comme le reste de l'algorithme est de complexité $\mathcal{O}(n)$ :
 
 > la complexité en moyenne de l'algorithme naif est $\mathcal{O}(n)$.
-{: .note}
+{.note}
 
 Un simple `break` a rendu linéaire la complexité en moyenne de l'algorithme.
 
@@ -627,7 +627,7 @@ Remarquez que ceci peut se faire sans $a$. Ceci nous donne une nouvelle possibil
 >
 > On a de plus l'égalité : $i + j = i' + j'$
 >
-{: .note}
+{.note}
 
 Remplir le Tableau $T_b$ avec les valeurs de $k'$ pour tout $j$ nous donne un moyen encore pus efficace de décalage puisque l'on va décaler $i$ **et** $j$ de sorte que la somme $i+j$ soit croissante.
 
@@ -673,7 +673,7 @@ Formalisons ça.
 > * T_b[0] = 0
 > * pour tout $1 \leq j < m-1$, on note $T_b[j]$ le plus grand entier $k < j +1$ tel que $b[:k] = b[j+1-k:j+1]$.
 >
-{: .note}
+{.note}
 
 On peut noter que $T_b[j]$ existe toujours puisque $b[:0]$ et $b[k:k]$ sont la chaine vide pour tout $k$.
 
@@ -835,7 +835,7 @@ Le nombre total d'étape est en $\mathcal{O(m)}$.
 > La complexité de la création de $T_b$ est en $\mathcal{O(m)}$.
 > 
 > La complexité de l'algorithme de Knuth-Morris-Pratt est en $\mathcal{O}(n +n)$ opérations : elle est minimale.
-{: .note}
+{.note}
 
 ## Autres algorithmes
 

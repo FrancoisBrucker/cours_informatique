@@ -14,7 +14,7 @@ Partie 2/3.
 >
 > * [partie 1/3]({% link cours/algorithme-code-theorie/code/programmation-objet/projet-tdd-1.md %})
 >
-{: .chemin}
+{.chemin}
 
 ## Principe du TDD
 
@@ -32,7 +32,7 @@ On rappelle le principe du TDD :
 >    * élimine les duplications tout en conservant la validité des tests.
 >
 > La partie refactor, qui est la partie réelle où l'on code ne se fait **que sur du vert** : on est assuré de ne pas casser le code puisque les tests passent.
-{: .note}
+{.note}
 
 Cela va être bien présent dans cette partie ou l'on va drastiquement modifier notre code. On va créer des tests qui seront notre filet de sécurité puis une fois que tout est vert on codera **tout en conservant le vert**.
 
@@ -90,7 +90,7 @@ def test_multiplication_franc():
 ```
 
 > Faite fonctionner les tests en copiant/collant de `Dollar` une classe `Franc`
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 *"monnaie.py"* :
@@ -152,7 +152,7 @@ Autant faire une classe abstraite qui les englobe tous les 2. On va ajouter pas 
 > 3. Vérifiez que les tests passent
 > 4. faites hériter `Dollar` et `Franc` de la classe `Monnaie`
 > 5. Vérifiez que les tests passent
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 *"monnaie.py"* :
@@ -175,7 +175,7 @@ class Franc(Monnaie):
 Maintenant on va faire monter les méthodes identiques des classes filles à la classe mère.
 
 > La méthode `__init__` est identique : remontez la dans la classe mère
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 *"monnaie.py"* :
@@ -202,7 +202,7 @@ class Franc(Monnaie):
 Attention, même si la méthode `__eq__` est identique pour les deux classe, on ne teste pas encore l'égalité ou non entre 2 `Franc`, on ne sait donc pas si le mouvement de `__eq__` dans la classe mère va se passer sans problème.
 
 > Ajoutez des tests d'égalité et de différence pour les Francs
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 *"test_monnaie.py"* :
@@ -233,12 +233,12 @@ def test_non_egalite_franc():
 On se rend compte que l'on ne teste pas l'inégalité entre `Dollar` et `Franc` : **on ne le fait pas tout de suite**, car on a pas fini notre item de la todo list
 
 > **Test pattern :** On ne fait pas 2 choses en même temps. On résout chaque item de la todo  list les uns à la suite des autres.
-{: .note}
+{.note}
 
 En revanche, comme il va falloir le faire :
 
 > ajoutez la comparaison entre franc et dollar dans la todo list
-{: .a-faire}
+{.a-faire}
 
 ### todo list {#todo-list-7.2}
 
@@ -257,7 +257,7 @@ En revanche, comme il va falloir le faire :
 Tout est prêt pour finaliser notre item :
 
 > Remontez la méthode `__eq__` dans la classe mère.
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 *"monnaie.py"* :
@@ -314,7 +314,7 @@ On peut maintenant s'occuper de la tâche que l'on vient de rajouter.
 ### faire {#faire-8.1}
 
 > Ajoutez un test qui vérifie que des francs ne sont pas des dollars
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 *"test_monnaie.py"* :
@@ -337,7 +337,7 @@ Une façon simple de corriger cela est de rajouter le fait que les 2 objets à c
 En python, la classe d'un objet est l'attribut spécial `__class__` présent dans chaque objet.
 
 > Modifiez le code de `__eq__` pour vérifier que les classes des 2 objets sont bien différentes.
-{: . a-faire}
+{. a-faire}
 {% details solution %}
 
 *"monnaie.py"* :
@@ -359,12 +359,12 @@ class Monnaie:
 {% enddetails %}
 
 > Votre **code smell** doit être en alerte maximale !
-{: .attention}
+{.attention}
 
 Ceci n'est en effet pas du tout une bonne façon de coder. Notre comparateur utilise ce que sont les devise d'un point de vue de python (deux classes différentes) pas d'un point de vue de la finance (devise ?). Ce n'est jamais bon. Ça risque (va) nous sauter à la figure tôt ou tard.
 
 > Dans la mesure du possible, votre code doit être écrit du point de vue de ce que représentent les objets codées et non comment ils sont codés
-{: .note}
+{.note}
 
 On rajoute donc un item dans la todo list pour montrer que cela nous embête tout de même un peu.
 
@@ -407,7 +407,7 @@ C'est même la seule chose qui diffère entre `Dollar` et `Franc`... L'existence
 Mais avant cela on va s'assurer que les fonctionnalités des `Franc` et des `Dollars` sont bien toutes représentées dans nos tests, ceci nous permettra de supprimer les classes en confiance : leurs fonctionnalités sont préservées grâce aux tests on ne risque pas de supprimer une fonctionnalité par inadvertance.
 
 > Regardez les fonctionnalités différentes ajouter un test pour chaque monnaie si ce n'est pas encore fait.
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 Il n'y a rien à changer, tous les tests sont fait et pour les `Dollar` et pour les `Franc`.
@@ -425,7 +425,7 @@ Gommer supprimer l'utilisation des classes, on va utiliser un design pattern :
 > Un [design patterns](https://fr.wikipedia.org/wiki/Patron_de_conception), ou façons de faire, est pour ainsi dire de l'algorithmie objet. C'est une organisation de classes pratique pour résoudre des problèmes courant en développement.
 >
 > Ils permettent de résoudre nombre de problèmes courants en développement et d'éviter les [erreurs classiques](http://sahandsaba.com/nine-anti-patterns-every-programmer-should-be-aware-of-with-examples.html), aussi appelées [anti-pattern](https://fr.wikipedia.org/wiki/Antipattern).
-{: .note}
+{.note}
 
 Le pattern que l'on va utiliser est appelé **factory**, puisqu'il utilise des fonctions pour créer des objets.
 
@@ -434,7 +434,7 @@ Le pattern que l'on va utiliser est appelé **factory**, puisqu'il utilise des f
 > On crée les objets via des fonctions sans (ou très peu) de paramètres plutôt qu'avec le constructeur.
 >
 > L'intérêt est que l'on a pas à se rappeler de toutes les possibilités du constructeur, les cas classiques d'objets sont directement accessible via une fonction.
-{: .note}
+{.note}
 
 Commençons par tester le *factory* la classe `Dollar`  dans le test `test_multiplication_dollar()` :
 
@@ -471,7 +471,7 @@ Ici la fonction `dollar` définie dans le module `monnaie` (le fichier *"monnaie
 *factory* des objets de classe `Dollar`.
 
 > Créez la fonction `dollar` dans le module `monnaie` pour faire passer les tests.
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 *"monnaie.py"* :
@@ -494,7 +494,7 @@ Et hop ! Les tests passent : on est sur du vert. On va pouvoir modifier massivem
 Maintenant que notre *factory* fonctionne (on est sur du vert), on remplace toute référence à `Dollar` en `monnaie.dollar` dans les tests.
 
 > Remplacez toute référence à `Dollar` par `monnaie.dollar` dans les tests
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 *"test_monnaie.py"* :
@@ -566,7 +566,7 @@ Maintenant que notre *factory* fonctionne (on est sur du vert), on remplace tout
 > 1. on modifie 1 occurence de `Franc`par `monnaie.franc`
 > 2. on fait passer les tests.
 > 3. Une fois sur du vert on fait la modification en masse.
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 *"monnaie.py"* :
@@ -682,7 +682,7 @@ def test_devise():
 ```
 
 > Faites passer les tests en créant cet attribut dans les classes `Dollar` et `Franc`
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 *"monnaie.py"* :
@@ -732,12 +732,12 @@ On va utiliser :
 > Le but est de faire remonter un champ de sous-classes à la classe mère.
 >
 > Pour cela, on rend **identique** le champ dans chacune des sous-classes puis on le déplace dans la classe mère.
-{: .note}
+{.note}
 
 En premier lieu :
 
 > Faite de l'attribut `devise` deux attributs affectés chacun affecté dans sa classe
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 *"monnaie.py"* :
@@ -796,7 +796,7 @@ monnaie.py:19: TypeError
 On a oublié de modifier l'appel au constructeur dans les constructeur des classes. 
 
 > Ajouter devise dans l'appel au `super` du constructeur des classes `Franc` et `Dollar`
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 *"monnaie.py"* :
@@ -826,7 +826,7 @@ class Franc(Monnaie):
 Et nos tests passent ! On est sur du vert, c'est bien. On peut finir notre refactoring pattern :
 
 > Faite remonter l'attribut `devise` dans `Monnaie`
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 *"monnaie.py"* :
@@ -869,7 +869,7 @@ Pour supprimer les classes, il faut créer nos objets avec la classe `Monnaie`. 
 > Le but est de faire remonter une méthode de sous-classes à la classe mère.
 >
 > Pour cela, on rend **identique** la méthode dans chacune des sous-classes puis on le déplace dans la classe mère.
-{: .note}
+{.note}
 
 Puisque si les constructeurs sont identique, on pourra facilement créer nos objets avec `Monnaie` plutôt qu'avec `Franc` ou `Dollar`. C'est encore impossible pour l'instant car les constructeurs sont :
 
@@ -879,7 +879,7 @@ Puisque si les constructeurs sont identique, on pourra facilement créer nos obj
 On va petit à petit modifier les constructeurs (et les effets de bords dans le code) pour les rendre identique.
 
 > Ajoutez un champ devise au constructeur de `Franc` et lancez les tests.
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 *"monnaie.py"* :
 
@@ -910,7 +910,7 @@ monnaie.py:6: TypeError
 C'est le factory.
 
 > Modifiez le factory pour qu'il corresponde au constructeur. On donnera `None` comme paramètre pour devise.
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 *"monnaie.py"* :
@@ -941,7 +941,7 @@ monnaie.py:31: TypeError
 Ah, c'est inattendu... On avait oublié `__mul__`: elle n'utilise pas le factory pour créer ses objets.
 
 > Modifiez la méthode `__mul__` de `Franc` pour qu'elle utilise le factory.
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 *"monnaie.py"* :
@@ -965,7 +965,7 @@ Et nos tests passent !
 > Faites la même chose pour `Dollar` en ajoutant un champ devise au constructeur.
 >
 > Faites en sorte que les tests passent.
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 
 *"monnaie.py"* :
@@ -995,7 +995,7 @@ class Dollar(Monnaie):
 Maintenant que les signatures des constructeurs sont les mêmes, pour finir le travail il faut que le corps des fonctions soient égales.
 
 > Le second paramètre du constructeur de `Franc` est pour l'instant inutile. Rendez le utile en utilisant son factory (la chaine `"CHF"` doit aller du factory au constructeur)
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 *"monnaie.py"* :
 
@@ -1022,7 +1022,7 @@ class Franc(Monnaie):
 Les tests passent, on peut donc faire pareil avec `Dollar` :
 
 > Le second paramètre du constructeur de `Dollar` est pour l'instant inutile. Rendez le utile en utilisant son factory (la chaine `"USD"` doit aller du factory au constructeur)
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 *"monnaie.py"* :
 
@@ -1049,7 +1049,7 @@ class Dollar(Monnaie):
 Tout est enfin prêt : nos constructeurs sont identiques.
 
 > Supprimez les constructeurs des classes `Dollar` et `Franc`
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 *"monnaie.py"* :
 
@@ -1113,7 +1113,7 @@ Il reste des duplications entre Franc et Dollar, mais pour les supprimer il faut
 Les deux `__mul__` ne changent que par le factory utilisé.
 
 > Remplacez le factory du retour de la méthode par un appel explicite à la classe.
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 *"monnaie.py"* :
 
@@ -1139,7 +1139,7 @@ les tests sont toujours Ok. Parfait.
 On peut maintenant ajouter une méthode `__mul__` dans la classe money :
 
 > Ajoutez une méthode `__mul__` dans `Monnaie`
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 *"monnaie.py"* :
 
@@ -1165,7 +1165,7 @@ class Monnaie:
 On va maintenant supprimer les méthodes `__mul__` des classes filles pour utiliser celle de `Monnaie`.
 
 > Supprimez la méthode `__mul__` de la classe `Franc` et lancez les tests.
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 *"monnaie.py"* :
 
@@ -1187,7 +1187,7 @@ Et oui, on le savait quand on l'a fait que ça allait nous sauter à la figure :
 En TDD il est **interdit** de modifier du code alors qu'on est rouge. On revient donc en arrière :
 
 > Replacez la méthode `__mul__` dans `Franc` et assurez vous que les tests passent.
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 *"monnaie.py"* :
 
@@ -1206,7 +1206,7 @@ class Franc(Monnaie):
 Maintenant qu'on est sur du vert, on peut modifier du code :
 
 > Modifiez `__eq__` de `Monnaie` pour qu'il utilise l'attribut `devise` plutôt que la classe
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 *"monnaie.py"* :
 
@@ -1229,7 +1229,7 @@ class Monnaie:
 Les tests repassent ! On peut retenter la suppression de `__mul__` :
 
 > Supprimez la méthode `__mul__` dans `Franc` et assurez vous que les tests passent.
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 *"monnaie.py"* :
 
@@ -1249,7 +1249,7 @@ class Franc(Monnaie):
 On procède de même avec `Dollar` :
 
 > Supprimez la méthode `__mul__` dans `Dollar` et assurez vous que les tests passent.
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 *"monnaie.py"* :
 
@@ -1287,7 +1287,7 @@ On a fini un item (`__mul__`) et on peut directement enchaîner sur le suivant :
 On se sent en confiance.
 
 > Utilisez le constructeur de `Monnaie`  pour les deux factory.
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 *"monnaie.py"* :
 
@@ -1309,7 +1309,7 @@ def franc(montant):
 Et enfin :
 
 > Supprimez les classes `Dollar` et `Franc`
-{: .a-faire}
+{.a-faire}
 
 ### todo list {#todo-list-11.3}
 
@@ -1330,7 +1330,7 @@ Et enfin :
 Maintenant les tests d'égalité et de multiplication des `Franc` sont vraiment inutiles puisque le code est le même que celui de dollar :
 
 > Suprimez les tests de concernant les francs.
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 *"test_monnaie.py"* :
 

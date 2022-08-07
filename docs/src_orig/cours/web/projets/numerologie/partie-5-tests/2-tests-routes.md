@@ -6,7 +6,7 @@ author: "François Brucker"
 ---
 
 > [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 5]({% link cours/web/projets/numerologie/partie-5-tests/index.md %}) / [tests fonctionnels]({% link cours/web/projets/numerologie/partie-5-tests/2-tests-routes.md %})
-{: .chemin}
+{.chemin}
 
 Le tests des routes du serveur nous permet de garantir que l'api fonctionne bien. C'est différent des tests unitaires car il faut que le serveur tourne pour les faire.
 

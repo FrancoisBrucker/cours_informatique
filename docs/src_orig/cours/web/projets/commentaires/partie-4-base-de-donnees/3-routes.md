@@ -6,7 +6,7 @@ author: "François Brucker"
 ---
 
 > [commentaires]({% link cours/web/projets/commentaires/index.md %}) / [partie 4]({% link cours/web/projets/commentaires/partie-4-base-de-donnees/index.md %}) / [routes]({% link cours/web/projets/commentaires/partie-4-base-de-donnees/3-routes.md %})
-{: .chemin}
+{.chemin}
 
 On crée les routes permettant d'accéder aux données dans notre serveur.
 

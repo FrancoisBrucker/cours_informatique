@@ -12,7 +12,7 @@ authors:
 > **prérequis :**
 >
 > * [coder]({% link cours/algorithme-code-theorie/code/coder.md %})
-{: .chemin}
+{.chemin}
 
 On montre comment on peut gérer les variables dans un programme, et l'utilité des espaces de noms (en prenant l'exemple de python) pour le faire.
 
@@ -29,7 +29,7 @@ On peut considérer la mémoire d'un ordinateur comme un long tableau de taille 
 Comme un programme n'est jamais seul à être exécuté sur un ordinateur et que — pour des raisons de sécurité — un programme $A$ ne doit pas pouvoir accéder à la mémoire utilisée par un programme $B$ :
 
 > Le **système d'exploitation** est le seul à pouvoir accéder à une case donnée de la mémoire via son indice, comme on pourrait le faire avec un tableau normal. Un programme spécifique en revanche, ne peut accéder qu'à la partie de la mémoire qui lui a été allouée par le système d'exploitation
-{: .note}
+{.note}
 
 ### accéder/allouer de la mémoire
 
@@ -48,7 +48,7 @@ On ne sait en effet pas si la mémoire à côté d'un bloc est libre ou non. Par
 ![mémoire partagée](./assets/memoire-partagee.png){:style="margin: auto;display: block;"}
 
 > C'est ce qui fait qu'il est impossible d'augmenter simplement la taille d'un tableau. Il faut le recréer et recopier toutes ses valeurs dans un autre endroit de la mémoire.
-{: .note}
+{.note}
 
 ### stocker en mémoire
 
@@ -69,7 +69,7 @@ Au début de l'informatique, il y avait plusieurs types d'entiers, selon ce qu'o
 On précisait dans notre programme quel type d'entier on voulait utiliser pour telle ou telle variable et un espace mémoire lui était alloué :
 
 > Dans l'**ancien temps** une variable était égale à son indice en mémoire et ne contenait qu'une donnée
-{: .note}
+{.note}
 
 ![un int](./assets/memoire-int.png){:style="margin: auto;display: block;"}
 
@@ -92,7 +92,7 @@ Actuellement, on préfère ne pas avoir à gérer directement la mémoire et sur
 Pour cela, il faut dissocier la variable de l'emplacement en mémoire de l'objet. La définition actuelle d'une *variable* est alors :
 
 > Une **variable** est une référence à un objet stocké en mémoire.
-{: .note}
+{.note}
 
 Le moyen de le plus simple de définir une référence, c'est de prendre l'indice de la première case mémoire contenant l'objet.
 
@@ -109,7 +109,7 @@ Les bénéfices de cette méthode sont énormes :
 * on peut facilement modifier un objet, sans avoir à changer toutes les variables qui le référencent.
 
 > Comme on manipule directement les objets, il faut faire attention aux effets de bords lorsqu'on les modifie.
-{: .attention}
+{.attention}
 
 Par exemple en python :
 
@@ -155,7 +155,7 @@ Ces langages permettent de créer des programmes en utilisant uniquement les deu
 > * un moyen de stocker des données et de les manipuler (les objets et leurs méthodes)
 > * un moyen d'y accéder (les variables)
 >
-{: .note}
+{.note}
 
 ### objets
 
@@ -179,12 +179,12 @@ variable = objet
 A gauche de l’opérateur `=` se trouve une **variable** (en gros, quelque chose ne pouvant commencer par un nombre) et à droite un **objet**. Dans toute la suite du programme, dès que le programme rencontrera le nom, il le remplacera par l'objet.
 
 > Un variable n'est **PAS** une chaîne de caractères. Une chaîne de caractère est un objet alors qu’une variable est un alias vers un objet.
-{: .attention}
+{.attention}
 
 Il est important de comprendre que l’opérateur d’affectation `=` n’est pas symétrique. À gauche, des variables et à droite, des objets.
 
 > Une variable n'est **pas** l'objet, c'est une référence à celui-ci
-{: .note}
+{.note}
 
 La variable peut être vue comme un **nom** de l'objet à ce moment du programme. Un objet pourra avoir plein de noms différents au cours de l'exécution du programme, voire plusieurs noms en même temps.
 
@@ -208,7 +208,7 @@ Pour chaque *espace de noms* :
 Lorsque l'on exécute un programme, un premier espace de noms est créé :
 
 > Au démarrage d'une exécution d'un programme, l'espace de noms principal, nommé `global` est créé.
-{: .note}
+{.note}
 
 Au départ, il ne contient rien, à part des noms commençant et finissant par `__`, qui sont utilisés par python.
 
@@ -217,7 +217,7 @@ Au départ, il ne contient rien, à part des noms commençant et finissant par `
 A tout moment de l'exécution d'un programme, un espace de noms pourra être créé. En  revanche :
 
 > A tout moment du programme, on pourra créer un nouvel espace de noms : de nombreux espaces de noms pourront être définis, mais il existera toujours **un** espace de noms courant où l'on créera les variables et où on cherchera les noms par défaut.
-{: .note}
+{.note}
 
 On donnera dans la suite de cette partie des exemples qui permettront de mieux comprendre ce processus.
 
@@ -276,7 +276,7 @@ Exécutons le ligne à ligne :
 Notez que le fait qu'un nom identique existe déjà n'est pas important. Le nouveau nom écrase l'autre :
 
 > Dans un espace de noms, chaque nom est différent. Réutiliser le même nom remplace le nom précédent.
-{: .note}
+{.note}
 
 Le programme a créé **2 objets** (un entier valant 1 et un entier valant 3), mais à la fin de la deuxième ligne du programme, seul l'entier valant 3 a un nom (`x`).
 
@@ -285,7 +285,7 @@ Comme il est maintenant impossible d'accéder à l'entier valant `1` : python le
 ![cas-2-2](./assets/cas-2-2.png){:style="margin: auto;display: block;"}
 
 > Tout objet qui n'est plus référencé par une variable est détruit par un mécanisme appelé [ramasse-miettes](https://fr.wikipedia.org/wiki/Ramasse-miettes_(informatique)).
-{: .note}
+{.note}
 
 #### un objet peut avoir plusieurs noms
 
@@ -311,12 +311,12 @@ Exécutons le ligne à ligne :
 Le programme n'a crée qu'un objet (un entier valant 1) et il a deux noms (`x` et `y`) :
 
 > Dans un même espace de noms, un même objet peut être référencé plusieurs fois, sous plusieurs noms différents.
-{: .note}
+{.note}
 
 Les noms ne sont jamais utilisés en tant que tel. Dès qu'ils sont rencontrés, ils sont immédiatement remplacés par les objets qu'ils référencent.
 
 > Pour exécuter une instruction, on commence **toujours** par remplacer les variables par les objets qu'elles référencent.
-{: .note}
+{.note}
 
 La remarque précédente permet de comprendre mieux ce que fait le code suivant (et pourquoi cela fonctionne) :
 
@@ -345,7 +345,7 @@ L'exécution d'une fonction est un moment où un espace de noms est créé. Cela
 > 5. on exécute ligne à ligne la fonction
 > 6. le parent de $F$ devient le nouvel espace de noms courant
 > 7. on supprime l'espace de noms $F$
-{: .note}
+{.note}
 
 #### exécution d'une fonction
 
@@ -402,7 +402,7 @@ Exécutons le ligne à ligne :
 L'espace de noms parent sert lorsque l'on cherche un nom qui n'est pas défini dans l'espace de noms courant :
 
 > Si un nom est recherché, mais que celui-ci n'est défini dans l'espace de noms courant, le nom est recherché dans l'espace de noms parent de l'espace courant.
-{: .note}
+{.note}
 
 <style>
     table, td, tr, th, pre {
@@ -435,7 +435,7 @@ La variable `C` n'existe pas dans l'espace de noms courant (celui de `f`), le pr
 Lorsque l'on importe un fichier, un espace de noms est créé et le fichier entier est lu. Lors de sa lecture, les noms définis sont placés dans cet espace.
 
 > Les modules possèdent un espace de noms qui contient les variables qui y sont définies
-{: .note}
+{.note}
 
 ```python
 import random

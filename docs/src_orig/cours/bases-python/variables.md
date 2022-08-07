@@ -5,7 +5,7 @@ author: "François Brucker"
 ---
 
 > [bases de python]({% link cours/bases-python/index.md %}) / [variables]({% link cours/bases-python/variables.md %})
-{: .chemin}
+{.chemin}
 
 Une variable est un nom auquel est associé un objet.
 
@@ -18,7 +18,7 @@ nom = objet
 A gauche de l’opérateur `=` se trouve un **nom** (en gros, quelque chose ne pouvant commencer par un nombre) et à droite un **objet**. Dans toute la suite du programme, dès que l'interpréteur python rencontrera le nom, il le remplacera par l'objet.
 
 > Un nom n'est **PAS** une chaîne de caractères. Une chaîne de caractère est un objet alors qu’un nom n’est qu’un alias vers un objet.
-{: .attention}
+{.attention}
 
 Il est important de comprendre que l’opérateur d’affectation `=` n’est pas symétrique. À gauche, des noms et à droite, des objets.
 

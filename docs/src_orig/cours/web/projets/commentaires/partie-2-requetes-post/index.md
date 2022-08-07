@@ -6,7 +6,7 @@ author: "François Brucker"
 ---
 
 > [commentaires]({% link cours/web/projets/commentaires/index.md %}) / [partie 2]({% link cours/web/projets/commentaires/partie-2-requetes-post/index.md %})
-{: .chemin}
+{.chemin}
 
 On va envoyer les réponses au questionnaire vers le serveur. Pour cela on va utiliser les requêtes de type POST.
 

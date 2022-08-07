@@ -6,14 +6,14 @@ author: "François Brucker"
 ---
 
 > [commentaires]({% link cours/web/projets/commentaires/index.md %}) / [partie 2]({% link cours/web/projets/commentaires/partie-2-requetes-post/index.md %}) / [recevoir les données]({% link cours/web/projets/commentaires/partie-2-requetes-post/3-post-recevoir.md %})
-{: .chemin}
+{.chemin}
 
 On récupère les données POST envoyées au serveur par le front.
 
 ## gestion avec express
 
 > Vous verrez des tutoriaux qui vous font installer `body-parser`, ils sont obsolètes. Depuis express 4.16, on peut utiliser express pour cela.
-{: .attention}
+{.attention}
 
 Comme il faut récupérer le corps de la réquête POST, on va faire passer toutes les requêtes par *middleware* qui va ajouter un attribut `body` contenant le corps de la requête.
 

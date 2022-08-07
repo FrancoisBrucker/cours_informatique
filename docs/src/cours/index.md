@@ -1,14 +1,15 @@
 ---
 layout: layout/post.njk
 title: Cours
-tags: index
+tags: ['index']
 
 ---
 
-Tous les cours donnés cette année.
+<!-- début résumé -->
 
----
+Liste des cours qui constituent les différents enseignements.
 
-* [Cours à l'ecm](./ecm)
-* [Cours à l'ecc](./ecc)
-* [Cours en mpci](./mpci)
+<!-- fin résumé -->
+
+
+* [graphes](./graphes)

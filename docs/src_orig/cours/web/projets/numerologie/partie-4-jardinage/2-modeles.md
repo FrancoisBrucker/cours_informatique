@@ -6,7 +6,7 @@ author: "François Brucker"
 ---
 
 > [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 4]({% link cours/web/projets/numerologie/partie-4-jardinage/index.md %}) / [modèles]({% link cours/web/projets/numerologie/partie-4-jardinage/2-modeles.md %})
-{: .chemin}
+{.chemin}
 
 Le principe qui nous a fait séparer nos routes nous fait également séparer les modèles.
 

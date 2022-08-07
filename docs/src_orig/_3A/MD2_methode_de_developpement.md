@@ -33,7 +33,7 @@ On vous donne les clés d'un serveur [ovh](https://www.ovh.com/fr/) où vous ser
 2. [git et github]({% link cours/git_et_github/index.md %})
 
 > Une fois que vous aurez compris git/github et que vous arriverez à vous connecter sur l'`ovh1.ec-m.fr` sans soucis, inspirez vous du projet [numérologie]({% link cours/web/projets/numerologie/index.md %}) (faite le si vous ne l'avez jamais fait) pour mettre en production un site nécessitant la triplette html/css/js.
-{: .note}
+{.note}
 
 **achievement** : vous aurez un site sur l'internet ! Et ce se sera le votre à vous.
 
@@ -56,7 +56,7 @@ Créez un site permettant de jouer à un jeu solo pnp ou à un jeu à plusieurs 
 
 > Un demi-jeu n'est pas un jeu. On ne commencera à noter que lorsque le jeu fonctionnera (l'early access/démo technique/faites moi confiance ça va marcher un jour/[insert your excuse here] ne marchera pas). 
 > Donc choisissez un jeu que vous pourrez implémenter en entier.
-{: .attention}
+{.attention}
 
 * <https://www.youtube.com/results?search_query=solo+pnp+games> donne plein de résultats (même si j'admet c'est *un peu* de niche). Voir <https://www.youtube.com/c/VeselkoKelava/videos> (connait pas mais a l'air de faire plein de review), elle fait plein de jeu solo <https://www.youtube.com/channel/UCxvtBSy1zJCvuY2lUfKSltw/videos> (mais elle parle vraiment trop lentement) ou encore <https://www.youtube.com/channel/UC1ubZ0hz4amLG9NcKZR5eJg/videos>.
 * Il existe plein de type de jeux différents en solo et en pnp, mais les *roll & write* seront peut-être les jeux les plus facile à créer :
@@ -88,4 +88,4 @@ Créez un site permettant de jouer à un jeu solo pnp ou à un jeu à plusieurs 
 ## old
 
 > TBD : [vieux cours à remanier]({% link cours/dfs/index.md %})
-{: .note}
+{.note}

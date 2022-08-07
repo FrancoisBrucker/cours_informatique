@@ -5,13 +5,13 @@ author: "François Brucker"
 ---
 
 > [développement]({% link cours/developpement/index.md %})
-{: .chemin}
+{.chemin}
 
 On donnera ici les bases nécessaire au développement logiciel. On prendra comme langage d'application le python et on ne présupposera aucune autre connaissances que ceux en prérequis.
 
 > A supprimer l'année prochaine en reprenant le cours de MPCI.
 > Garder le tp carte pour le refaire en pyglet.
-{: .tbd}
+{.tbd}
 
 ## Prérequis
 

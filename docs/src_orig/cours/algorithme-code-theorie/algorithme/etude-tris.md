@@ -13,7 +13,7 @@ author: "François Brucker"
 >* [complexité moyenne]({% link cours/algorithme-code-theorie/algorithme/complexite-moyenne.md %})
 >* [complexité d'un problème]({% link cours/algorithme-code-theorie/algorithme/complexite-probleme.md %})
 >
-{: .chemin}
+{.chemin}
 
 Les informaticiens adorent les [algorithmes de tris](https://fr.wikipedia.org/wiki/). Pas parce qu'ils aiment l'ordre — loin de là — mais parce qu'il existe des millions de façons différentes de trier. Commençons par définir le problème :
 
@@ -22,7 +22,7 @@ Les informaticiens adorent les [algorithmes de tris](https://fr.wikipedia.org/wi
 > * données : un tableau d'entiers
 > * réponse : un tableau contenant les valeurs du tableau en entrée triées selon l'ordre croissant
 >
-{: .note}
+{.note}
 
 ## problème de reconnaissance
 
@@ -34,7 +34,7 @@ Commençons par travailler sur un problème connexe au problème du tri, celui d
 > * question : $T$ est-il trié de façon croissante ?
 > * réponse : OUI ou NON.
 >
-{: .note}
+{.note}
 
 ### algorithme {#algo-est-trie}
 
@@ -79,7 +79,7 @@ Au final :
 * si on utilise le retour de la ligne 5 c'est qu'il existe $i$ avec $\mbox{tableau}[i] < \mbox{tableau}[i-1]$, donc $\mbox{tableau}$ ne peut être trié.
 
 > L'algorithme `est_trie` est une solution au problème *"est trié ?"*
-{: .note}
+{.note}
 
 #### complexité de l'algorithme
 
@@ -95,14 +95,14 @@ Ligne à ligne :
 Que l'on sorte par le retour de la ligne 5 ou 6, le complexité est : $\mathcal{O}(k)$. Dans le cas le pire, on parcourt tout le tableau, donc :
 
 > La complexité de l'algorithme `est_trie` est $\mathcal{O}(n)$ avec $n$ la taille du tableau en entrée.
-{: .note}
+{.note}
 
 ### complexité du problème
 
 Comme toute case du tableau peut rendre le tableau non trié, on utilise l'argument de [complexité du problème de la *"recherche"*]({% link cours/algorithme-code-theorie/algorithme/complexite-probleme.md %}#complexite-recherche), un algorithme résolvant ce problème doit considérer toutes les cases du tableau et donc une borne min du problème *"est trié ?"* est $\mathcal{O}(n)$ où $n$ est la taille du talbeau en entrée. Comme la complexité de `est_trie`  est égalemnt de $\mathcal{O}(n)$.On en conclut :
 
 > La complexité du problème *"est trié ?"* est de $\mathcal{O}(n)$ où $n$ est la taille du tableau en entrée
-{: .note}
+{.note}
 
 ## bornes du problème
 
@@ -131,7 +131,7 @@ def trie_long(T):
 La complexité de `trie_long` est égale à la complexité de `permutations`  ($\mathcal{O}(n+2)!$) plus la complexité de  `est_trie` ($\mathcal{O}(n)$) multiplié par le nombre de permutations ($n!$) : ce qui donne une complexité finale de $\mathcal{O}(n+2)!$.
 
 > Une borne maximum du problème *"tri"* existe, et est de complexité $\mathcal{O}((n+2)!)$ où $n$ est la taille du tableau passé en entrée.
-{: .note}
+{.note}
 
 Comme [n! est trop gros]({% link cours/algorithme-code-theorie/algorithme/complexite-max-min.md %}#n_factoriel), ce n'est vraiment pas un algorithme à utiliser si on peut faire mieux... Mais il nous permet d'énoncer la propriété :
 
@@ -141,7 +141,7 @@ Comme [n! est trop gros]({% link cours/algorithme-code-theorie/algorithme/comple
 > * un algorithme permettant de vérifier si un cas donné est une solution
 >
 > Alors la combinaison des deux algorithmes est une solution au problème initial.
-{: .note}
+{.note}
 
 Souvent les algorithmes produits par la remarque précédente ne sont pas optimaux car on explore bien trop de cas.
 
@@ -163,7 +163,7 @@ Quelque soit la forme de l'entrée (de 1 à 6), l'algorithme de tri doit rendre 
 Tout algorithme de tri d'un tableau à $n$ élément doit distinguer parmi $n!$ cas, il est donc au minimum de complexité $\mathcal{O}(\ln(n!))$. On rend cette borne min un peu plus jolie en utilisant le fait que ;
 
 >Toute fonction en $\mathcal{O}(\ln(n!))$ est également une fonction en $\mathcal{O}(n\ln(n))$ et réciproquement.
-{: .note}
+{.note}
 {% details démonstration %}
 
 On a :
@@ -212,7 +212,7 @@ Enfin, on peut montrer les équivalences de $\mathcal{O}$ :
 {% enddetails %}
 
 > Tout algorithme de tri d'une liste à $n$ éléments a au moins une complexité de $\mathcal{O}(n\ln(n))$ opérations.
-{: .note}
+{.note}
 
 Une borne min du problème du *"tri"* est donc $\mathcal{O}(n\ln(n))$ où $n$ est la taille du tableau en entrée, mais on ne sait pas si un tel algorithme existe.
 
@@ -229,7 +229,7 @@ Notre algorithme pour trier un tableau est un monstre de complexité. Il en exis
 L'algorithme procède alors ainsi : à chaque itération de l'algorithme, on place à l'indice $i$ du tableau son $i$-ème plus petit élément.
 
 > Ecrivez un algorithme qui met en œuvre ce principe
-{: .a-faire}
+{.a-faire}
 {% details  une solution %}
 <style>
     table, td, tr, th, pre {
@@ -308,7 +308,7 @@ Le nombre d'itérations est constant quelque soit le tableau, on a donc :
 >* la **complexité min** vaut $\mathcal{O}(n^2)$
 >* la **complexité (max)** vaut $\mathcal{O}(n^2)$
 >
-{: .note}
+{.note}
 
 Puisque la complexité min et max sont égales, on en déduit que la **complexité en moyenne** vaut également $\mathcal{O}(n^2)$.
 
@@ -333,7 +333,7 @@ Cette analyse (ce n'est pas encore une preuve formelle) nous permet de dégager 
 On vérifie itérativement que `tableau[i] >= tableau[i-1]` et si ce n'est pas le cas on fait *remonter* `tableau[i]` par échanges successifs à la première place où il sera plus grand que le précédent.
 
 > Ecrivez un algorithme qui met en œuvre ce principe
-{: .a-faire}
+{.a-faire}
 {% details  une solution %}
 <style>
     table, td, tr, th, pre {
@@ -430,7 +430,7 @@ $$
 >* la **complexité min** est atteinte pour $k=0$, c'est à dire lorsque le tableau est déjà trié, et vaut $\mathcal{O}(n)$
 >* la **complexité (max)** est atteinte pour $k=n-1$, c'est à dire lorsque le tableau est trié par ordre décroissant, et vaut $\mathcal{O}(n^2)$
 >
-{: .note}
+{.note}
 
 La complexité min est différente de la complexité maximale. On va donc calculer la complexité en moyenne pour connaitre la complexité pour des données *standard*.
 Pour savoir ce que veut dire *standard*, il faut déterminer le modèle de données : prenons le équiprobable.
@@ -457,20 +457,20 @@ C_m &=& \mbox{complexité hors boucle for} + \sum_{i=1}^{n-1}(\mbox{complexité 
 $$
 
 > La **complexité en moyenne** de l'algorithme `insertion` est $\mathcal{O}(n^2)$ où $n$ est la taille du tableau passé en entrée.
-{: .note}
+{.note}
 
 Le cas le meilleur arrive très rarement par rapport au cas le pire (parmi les $n!$ ordres possibles, il y en a très peu qui sont presque triés).
 
 Si l'on change le modèle de données et que l'on considère des tableaux *presque triées*, la complexité en moyenne va être de l'ordre de la complexité minimale, à savoir : $\mathcal{O}(n)$
 
 > On utilise le tri par insertion lorsque nos données seront presque toujours déjà triées ou très peu en désordre.
-{: .note}
+{.note}
 
 Ce calcul de complexité nous permet d'utiliser la règle suivante, qui va se révéler très utile :
 
 > Soit $A$ un ensemble de $n$ nombres aléatoires, et $x$ un nombre également aléatoire.
 > Pour tout $ y \in A$, il y a 50% de chances que $x \leq y$. Il y a donc en moyenne $\frac{n}{2}$ éléments de $A$ qui sont plus grand que $x$.
-{: .note}
+{.note}
 
 ## tri fusion
 
@@ -494,13 +494,13 @@ L'algorithme fonctionne en effet ainsi :
 3. on recolle les deux listes triées en une unique liste triée
 
 > L'algorithme de tri `fusion` utilise la méthode de création d'algorithme nommée [diviser pour régner](https://fr.wikipedia.org/wiki/Diviser_pour_r%C3%A9gner_(informatique)) qui est une méthode se révélant souvent efficace lorsqu'il est facile de reconstruire une solution globale à un problème à partir de solutions partielles.
-{: .note}
+{.note}
 
 ### algorithme colle
 
 > Pour comprendre pourquoi c'est une bonne idée, écrivez un algorithme qui implémente la fonction `colle(T1, T2)`. Il faut que sa complexité soit égale à $\mathcal{O}(n_1 + n_2)$ avec $n_1$ et $n_2$ les tailles des tableaux `T1` et `T2` respectivement.
 >
-{: .a-faire}
+{.a-faire}
 {% details   une solution %}
 
 <style>
@@ -552,7 +552,7 @@ Allons un peu plus vite :
 * chaque ligne de l'algorithme est en $\mathcal{O}(1)$
 
 > La complexité max et min de `colle` est $\mathcal{O}(n_1 + n_2)$ avec $n_1$ et $n_2$ les tailles des tableaux `T1` et `T2` respectivement.
-{: .note}
+{.note}
 
 ### algorithme fusion
 
@@ -605,12 +605,12 @@ Pour connaître la valeur de la complexité on utilise le [master theorem](https
 > * si $d = \log_b(a)$ alors $T(n)  = \mathcal{O}(n^d \cdot \ln(n))$
 > * si $d > \log_b(a)$ alors $T(n)  = \mathcal{O}(n^d)$
 >
-{: .note}
+{.note}
 
 Dans notre cas on a $a = 2$, $b = 2$  et $d = 1$ donc $d = \log_2(a)$ :
 
 > La complexité de l'algorithme `fusion` est $\mathcal{O}(n\ln(n))$ où $n$ est la taille de la liste en entrée
-{: .note}
+{.note}
 
 Tout comme le tri par sélection, le tri fusion a la particularité d'avoir toujours le même nombre d'opérations quelque soit la liste en entrée.
 
@@ -654,7 +654,7 @@ Le tri de python est **in place**. L'algorithme utilisé est [timsort](https://e
 > * La complexité min de l'algorithme timsort est $\mathcal{O}(n)$
 > * La complexité en moyenne de l'algorithme timsort est $\mathcal{O}(n\ln(n))$
 >
-{: .note}
+{.note}
 
 ## tri rapide {#tri-rapide}
 
@@ -670,7 +670,7 @@ Son principe est le suivant, si on souhaite trier le tableau $T$ :
 4. on constitue le tableau initial trié : $T'_1 + [T[0]] + T'_2$
 
 > Ecrivez cet algorithme en python
-{: .a-faire}
+{.a-faire}
 {% details   une solution %}
 
 <style>
@@ -737,7 +737,7 @@ On va montrer que :
 > * la complexité en moyenne est $\mathcal{O}(n\ln (n))$,
 > * la complexité minimale est $\mathcal{O}(n\ln (n))$,
 >
-{: .note}
+{.note}
 
 Retenez les complexités ci-dessus et les raisons intuitives de leurs calculs. Si vous voulez aller plus loin, vous pouvez étudier les preuves formelles, surtout qu'elles sont jolies et vous apprendront à calculer des complexités dans des cas non triviaux.
 
@@ -798,7 +798,7 @@ $$\mathcal{O}(n^2) \leq C(n) \leq \mathcal{O}(n^2)$$
 {% enddetails %}
 
 > La complexité du tri rapide pour un tableau de taille $n$ est $\mathcal{O}(n^2)$
-{: .note}
+{.note}
 
 #### complexité minimale du tri rapide
 
@@ -880,7 +880,7 @@ $$
 {% enddetails %}
 
 > La complexité **minimale** du tri rapide pour un tableau de taille $n$ est $\mathcal{O}(n\ln(n))$
-{: .note}
+{.note}
 
 #### complexité en moyenne du tri rapide
 
@@ -991,7 +991,7 @@ ouf.
 {% enddetails %}
 
 > La complexité **en moyenne** du tri rapide pour un tableau de taille $n$ est $\mathcal{O}(n\ln(n))$
-{: .note}
+{.note}
 
 ### conclusion
 
@@ -1003,4 +1003,4 @@ Le tri rapide a :
 C'est donc *rigolo* :
 
 > Commencer par mélanger un tableau pour le trier avec `rapide` ensuite est plus rapide en moyenne que de le trier directement.
-{: .note}
+{.note}

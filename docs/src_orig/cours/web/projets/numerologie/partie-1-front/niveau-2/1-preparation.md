@@ -6,7 +6,7 @@ author: "François Brucker"
 ---
 
 > [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 1]({% link cours/web/projets/numerologie/partie-1-front/index.md %}) / [niveau 2]({% link cours/web/projets/numerologie/partie-1-front/niveau-2/index.md %}) / [préparation]({% link cours/web/projets/numerologie/partie-1-front/niveau-2/1-preparation.md %})
-{: .chemin}
+{.chemin}
 
 Ajout d'outils de gestion de projet.
 
@@ -56,7 +56,7 @@ Heureusement, il existe plusieurs *langages* qui permettent d'écrire du texte s
 ### fichiers de user stories
 
 > Ajoutez un dossier *"user-stories"* à votre projet.
-{: .note}
+{.note}
 
 Vous pouvez ajouter ce dossier avec l'explorateur de fichier de ordinateur ou directement avec vscode :
 
@@ -97,7 +97,7 @@ Le retour de cette url doit être le numéro associé au prénom : XXXX
 Dans la palette de commande (*menu Affichage > Palette de commandes...*), regardez tout ce que l'on peut faire en tapant "markdown".
 
 > Par exemple essayez : *Markdown All in One: Print current document to html*
-{: . note}
+{. note}
 
 Votre markdown a magiquement été transformé en un joli html que vous pouvez ouvrir avec votre navigateur préféré (c'est tellement beau que j'en ai les larmes aux yeux). Vous pouvez supprimer ce fichier html en lui cliquant droit dessus puis : *delete file*.
 
@@ -106,7 +106,7 @@ Votre markdown a magiquement été transformé en un joli html que vous pouvez o
 ### todos
 
 > Créez un dossier "todo" et à l'interieur de celui-ci un fichier *"todos.md"*
-{: .note}
+{.note}
 
 On va ajouter nos liste des taches à faire, et marquer ces tâches effectuées lorsqu'elles sont réalisées. Le projet sera fini lorsqu'il n'y aura plus de tâche dans le todo.
 

@@ -14,7 +14,7 @@ Partie 1/3.
 >
 > * [projet : TDD]({% link cours/algorithme-code-theorie/code/programmation-objet/projet-tdd.md %})
 >
-{: .chemin}
+{.chemin}
 
 ## 1 - départ
 
@@ -35,7 +35,7 @@ Cette todo-list (ou *backlog*) nous indique :
 > 2. On a besoin que d'un unique fichier pour l'instant : *"test_monnaie.py"*.
 > 3. Prenez également une feuille de papier pour vos todos.
 >
-{: .a-faire}
+{.a-faire}
 
 ### todo list {#todo-list-1.1}
 
@@ -62,7 +62,7 @@ La deuxième ligne semble la plus simple. Donc allons-y, mettons en **gras** l'i
 Puis :
 
 > codons un test qui  valide cette item dans le fichier *"test_monnaie.py"*
-{: .a-faire}
+{.a-faire}
 
 ```python
 from monnaie import Dollar
@@ -78,7 +78,7 @@ def test_multiplication():
 Nous n'avons pas encore écrit de classe `Dollar`, mais on l'utilise déjà...
 
 > En TDD on utilise notre code avant de l'écrire. Avoir une idée de comment utiliser le code nous donne une idée de comment il doit fonctionner.
-{: .note}
+{.note}
 
 L'écriture de notre test (un cas d'utilisation de la classe dollar qui valide l'item courant de la todo list) nous montre des choses que l'on doit pouvoir faire, et par là augmente notre todo list avec des choses à implémenter ou des questions auxquelles il va falloir répondre un jour.
 
@@ -127,7 +127,7 @@ Mais c'est une chance, car les messages d'erreurs vont nous permettre de faire u
 > Apprenez à **lire** les messages d'erreurs !
 >
 > Il est est souvent plus simple d'exécuter un code et de lire ce qui ne marche pas plutôt qe de réfléchir pour savoir si ça va fonctionner.
-{: .note}
+{.note}
 
 On va donc lire attentivement les messages d'erreurs de python et les régler petit à petit. Un message d'erreur **est informatif** si on se force à les lire.
 
@@ -140,7 +140,7 @@ E   ModuleNotFoundError: No module named 'monnaie'
 L'erreur est explicite :
 
 > Créez un fichier *"monnaie.py"* vide dans le projet.
-{: .a-faire}
+{.a-faire}
 
 On relance nos tests et maintenant l'erreur est :
 
@@ -151,7 +151,7 @@ E   ImportError: cannot import name 'Dollar' from 'monnaie' (/projet-tdd/monnaie
 Encore une fois, l'erreur est explicite : il n'existe pas de module `monnaie`. Créons en un :
 
 > Créez une classe `Dollar` vide dans le fichier *"monnaie.py"*.
-{: .a-faire}
+{.a-faire}
 
 Pour créer une classe vide, il suffit de mettre une unique instruction `pass` (qui ne fait rien mais permet de ne pas faire d'erreur lorsque l'on crée un bloc sans instructions) :
 
@@ -179,7 +179,7 @@ Qu'à cela ne tienne, ajoutons un argument à la création de dollar :
 >
 > ```
 >
-{: .a-faire}
+{.a-faire}
 
 On relance nos tests et maintenant :
 
@@ -201,7 +201,7 @@ On sait faire, on ajoute une méthode vide pour que cette erreur disparaisse :
 >
 > ```
 >
-{: .a-faire}
+{.a-faire}
 
 On relance nos tests et... encore une erreur. Heureusement, comme toutes les autres elle est facile à résoudre :
 
@@ -228,7 +228,7 @@ On voit de plus que `montant`doit être égal à 10, donc vite vite, on corrige 
 >
 > ```
 >
-{: .a-faire}
+{.a-faire}
 
 On relance nos tests et...
 
@@ -247,7 +247,7 @@ test_monnaie.py .
  **Incroyable !** Nos tests passent (c'est émouvant).
 
 > Corriger petit à petit un test pour qu'il passe ne nécessite presque pas d'intelligence. Il suffit de se laisser guider par l'interpréteur python.
-{: .note}
+{.note}
 
 ### faire {#faire-1.4}
 
@@ -347,7 +347,7 @@ La méthode qu'on a utilisé pour faire passer nos tests en dupliquant la répon
 
 > **premier pattern du TDD :**
 > Dupliquer la réponse du test dans le code est la méthode appelée : **fake it**.
-{: .note}
+{.note}
 
 ## 2 - value object
 
@@ -363,7 +363,7 @@ On veut faire du **clean code that works**. Mais c'est très difficile même pou
 > 3. faire du code rapide
 >
 > Il ne faut cependant pas s'arrêter à 1, sinon votre code ne sera pas maintenable dans le temps.
-{: .note}
+{.note}
 
 Que faire maintenant ?
 
@@ -396,7 +396,7 @@ def test_multiplication():
 ```
 
 > On exécute nos tests et — comme attendu — ça rate.
-{: .a-faire}
+{.a-faire}
 
 Ce test n'est cependant pas vraiment satisfaisant pour au moins deux raisons :
 
@@ -408,12 +408,12 @@ La seconde raison est de loin la plus importante. Notre code est étrange et peu
 > Le **[code smell](https://en.wikipedia.org/wiki/Code_smell)** est la capacité qu'à un bon développeur de reconnaître un soucis profond juste en lisant l'organisation ou l'utilisation d'un code.
 >
 > Le *code smell* s'acquiert avec le temps, mais vous pouvez accélérer son acquisition en lisant du bon code
-{: .note}
+{.note}
 
 Une façon simple et élégante de régler notre soucis est d'utiliser des objet qui ne peuvent être modifiés.
 
 > Un objet non modifiable est appelé [**value object**](https://martinfowler.com/bliki/ValueObject.html).
-{: .note}
+{.note}
 
 C'est super chouette d'avoir des objets non modifiable, on a pas besoin de faire attention à eux : une fois créés ils ne bougent plus.
 
@@ -446,15 +446,15 @@ def test_multiplication():
 Le test est bien plus joli : il est lisible et compréhensible. Bon bien sur, ce n'est que le début :
 
 > On exécute nos tests et — comme attendu — ça rate.
-{: .a-faire}
+{.a-faire}
 
 Ce coup ci, pas besoin de grandes manipulations pour faire passer le test. Il faut que la méthode *fois* rende un objet `Dollar`. Si l'implémentation semble évidente, autant la coder de suite (mais après le test !).  On vient de découvrir une autre règle :
 
 > **Second pattern du TDD :** l'implémentation directe du test est appelée : **obvious implementation**.
-{: .note}
+{.note}
 
 > Faite une implémentation de la méthode `fois`
-{: .a-faire}
+{.a-faire}
 
 {% details solution %}
 *"monnaie.py"* :
@@ -471,7 +471,7 @@ class Dollar:
 {% enddetails %}
 
 > On exécute nos tests et ça passe !
-{: .a-faire}
+{.a-faire}
 
 On a en même temps fait passer le test et fini l'implémentation.
 
@@ -512,14 +512,14 @@ def test_egalite():
 ```
 
 > On lance les tests.
-{: .a-faire}
+{.a-faire}
 
 Bien sur, le test rate. Par défaut, lorsque l'on a pas défini de méthode `__eq__`, l'opérateur `==` regarde si ce sont les mêmes objets, ce qui n'est pas le cas.
 
 L'implémentation n'étant pas forcément évidente :
 
 > Commençons par faire marcher le test en utilisant la technique *fake it* :
-{: .a-faire}
+{.a-faire}
 {% details solution %}
 *"monnaie.py"* :
 
@@ -551,7 +551,7 @@ On ajoute alors autant de tests que nécessaire jusqu'à ce que toutes les dupli
 Dans notre cas, on répond toujours `True`, on va donc forger un test qui doit répondre `False`.
 
 > Créez un test qui répond `False` à l'égalité
-{: .a-faire}
+{.a-faire}
 
 {% details solution %}
 
@@ -573,12 +573,12 @@ def test_non_egalite():
 {% enddetails %}
 
 > On lance les tests et maintenant un teste rate.
-{: .a-faire}
+{.a-faire}
 
 La duplication est dans le montant de l'objet.
 
 > Supprimez la duplication de la méthode `__eq__`.
-{: .a-faire}
+{.a-faire}
 
 {% details solution %}
 *"monnaie.py"* :
@@ -592,7 +592,7 @@ class Dollar:
 
 {% enddetails %}
 > On peut maintenant re-exécuter le test, qui passe.
-{: .a-faire}
+{.a-faire}
 
 Ce traitement de l'égalité est frustre, on ne vérifie pas :
 
@@ -653,7 +653,7 @@ def test_multiplication():
 ```
 
 > En faire une *obvious implementation* :
-{: .a-faire}
+{.a-faire}
 
 {% details solution %}
 *"monnaie.py"* :
@@ -741,12 +741,12 @@ Notez que l'on a utilisé une fonctionnalité que l'on vient de créer (`__mul__
 > Maintenant si 2 tests plantent en même temps (si le `==` commence à rater par exemple), il faudra se rappeler quel est le test qui plante et les tests qui ne fonctionnent plus.
 >
 > Ceci arrive inévitablement.
-{: .attention}
+{.attention}
 
 On fait petit à petit disparaitre des tests les références explicites à l'implémentation des classes. C'est une bonne pratique.
 
 > **Test pattern :** Lorsque l'on teste, il est important de toujours tester du point de vue de l'utilisation. Il faut éviter le plus possible de tester des attributs internes à la classe.
-{: .note}
+{.note}
 
 ### todo list {#todo-list-5.2}
 

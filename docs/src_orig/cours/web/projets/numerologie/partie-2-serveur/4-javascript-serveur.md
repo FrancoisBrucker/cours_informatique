@@ -6,7 +6,7 @@ author: "François Brucker"
 ---
 
 > [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 2]({% link cours/web/projets/numerologie/partie-2-serveur/index.md %}) / [javascript serveur]({% link cours/web/projets/numerologie/partie-2-serveur/4-javascript-serveur.md %})
-{: .chemin}
+{.chemin}
 
 On crée notre première route écrite en javascript et on récupère le résultat dans le front.
 
@@ -48,7 +48,7 @@ Cela ne se voit cependant pas dans le code node car les paramètres sont reconve
 
 > Ce n'est cependant pas le cas pour la requête de base, ainsi une route qui aura comme base : `'/chaîne/:prenom'` donnera tout le temps un 404. C'est la route `cha%C3%AEne/:prenom` qui sera reconnue.
 > Pour ne pas à avoir à se rappeler des encodage, on pourra utiliser les fonction [encodeURI()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/encodeURI) et [decodeURI](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/decodeURI)
-{: .attention}
+{.attention}
 
 ### paramètres dans `req.query`
 
@@ -112,7 +112,7 @@ app.get(encodeURI('/prénom'), (req, res) => {
 > TBD :
 > expliquer mieux fetch, son retour et ce qu'est une promesse.
 >
-{: . note}
+{. note}
 
 Pour récupérer ce json dans le fichier html, il faut que l'on envoie une requête avec la query lorsque l'on clique sur le bouton et que l'on attende la réponse du serveur avant de changer la valeur dans le paragraphe.
 

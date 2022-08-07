@@ -9,7 +9,7 @@ category: cours
 > prérequis
 >
 >* [algorithmie/algorithmes]({% link cours/algorithme-code-theorie/algorithme/algorithmes.md %})
-{: .chemin}
+{.chemin}
 
 La [définition générale d'un algorithme]({% link cours/algorithme-code-theorie/algorithme/algorithmes.md %}#algorithme) ne spécifie rien sur les instructions à utiliser, juste qu'elles doivent être décrites en un nombre fini de mots. Un **pseudo-code** est une proposition d'instructions possibles pour décrire un algorithme, compréhensibles par un humain.
 
@@ -229,7 +229,7 @@ nom(entrée 1, ..., entrée n)
 ```
 
 > Ne confondez pas `nom`qui est l'algorithme et `nom(a, b)` qui est le résultat de son exécution avec les paramètres `a` et `b`
-{: .attention}
+{.attention}
 
 Si l'algorithme a un retour, on peut directement l'utiliser, en l'affectant à une variable par exemple :
 
@@ -261,7 +261,7 @@ affiche à l'écran e
 On affichera bien 4 à l'écran et pas 6 (le nom de variable `e` défini dans recherche reste dans recherche).
 
 > Lorsque l'on calcule la complexité d'un pseudo-code utilisant des fonctions, il faut compter le nombre d'instructions de l'exécution des fonctions !
-{: .attention}
+{.attention}
 
 Prenons par exemple le code précédent et comptons les instructions utilisées ligne à ligne :
 

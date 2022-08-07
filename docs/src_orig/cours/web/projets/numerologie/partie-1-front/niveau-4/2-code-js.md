@@ -6,7 +6,7 @@ author: "François Brucker"
 ---
 
 > [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 1]({% link cours/web/projets/numerologie/partie-1-front/index.md %}) / [niveau 4]({% link cours/web/projets/numerologie/partie-1-front/niveau-4/index.md %}) / [code]({% link cours/web/projets/numerologie/partie-1-front/niveau-4/2-code-js.md %})
-{: .chemin}
+{.chemin}
 
 Nous allons après chaque tâche faire un commit et, à la fin de chaque étape envoyer les modifications sur le serveur.
 
@@ -76,7 +76,7 @@ On a un fichier non suivi (*numerologie.js*). On procède à notre petit workflo
 Après ce commit, un `git status`  nous indique que l'on est 1 commit plus loin que l'origin.
 
 >Ce n'est que sa connaissance de l'origine (la dernière fois qu'on a push), il n'est pas allé le vérifier. POur le faire, on utilise la commande `git fetch` qui récupère l'état de l'origin. Si on le fait là il n'y aura pas de modification puisque l'on a rien fait sur le serveur.
-{: .attention}
+{.attention}
 
 Nous n'allons pas pousser tout de suite nos changement sur le serveur. On va attendre d'avoir fait des changements significatifs dans le code.
 

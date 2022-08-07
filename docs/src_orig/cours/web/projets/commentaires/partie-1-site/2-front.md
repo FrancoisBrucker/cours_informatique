@@ -6,7 +6,7 @@ author: "François Brucker"
 ---
 
 > [commentaires]({% link cours/web/projets/commentaires/index.md %}) / [partie 1]({% link cours/web/projets/commentaires/partie-1-site/index.md %}) / [front]({% link cours/web/projets/commentaires/partie-1-site/2-front.md %})
-{: .chemin}
+{.chemin}
 
 On va créer le site front en utilisant (un peu) la bibliothèque front [bootstrap](https://getbootstrap.com/).
 

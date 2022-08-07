@@ -10,7 +10,7 @@ category: cours
 >
 > * [complexité max/min]({% link cours/algorithme-code-theorie/algorithme/complexite-max-min.md %})
 >
-{: .chemin}
+{.chemin}
 
 Montrer l'intérêt des algorithmes gloutons, la façon de les construire et de prouver qu'ils fonctionnent. On s'attachera dans ce cours à prouver qu'ils rendent une solution optimale à un problème donné.
 
@@ -23,7 +23,7 @@ On va voir la construction et la preuve des algorithmes gloutons à l'aide d'exe
 ## Algorithmes gloutons
 
 > Un [algorithme glouton](https://fr.wikipedia.org/wiki/Algorithme_glouton) choisit à chaque étape la meilleure possibilité localement et ne se remet jamais en question.
-{: .note}
+{.note}
 
 On voit en creux que ce type d'algorithmes :
 
@@ -43,7 +43,7 @@ Attention cependant :
 En conclusion :
 
 > Ce type d'algorithmes est très utilisé pour résoudre des problèmes où l'on veut une réponse rapidement, mais pas forcément une réponse optimale. D'un point de vue théorique, ces algorithmes sont extrêmement importants. Il sont, par exemple, en bijection avec la [structure de matroïde](https://fr.wikipedia.org/wiki/Matro%C3%AFde).
-{: .note}
+{.note}
 
 Pour beaucoup de problèmes d'optimisation réels, un algorithme glouton est optimal pour une version simplifiée du problème. Comme l'algorithme va vite, on peut recommencer plusieurs fois pour trouver une meilleure solution.
 
@@ -233,7 +233,7 @@ Un ensemble de produits est dit *compatible* s'il existe un ordonnancement de le
 On a la proposition suivante :
 
 > Un ensemble de produits est compatible si et seulement si la production par date $d_i$ croissante permet de tous les vendre.
-{: .note}
+{.note}
 
 Preuve :
 

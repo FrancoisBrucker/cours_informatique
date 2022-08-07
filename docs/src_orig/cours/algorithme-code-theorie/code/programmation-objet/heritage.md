@@ -12,7 +12,7 @@ authors:
 > **prérequis :**
 >
 > * [composition et agrégation]({% link cours/algorithme-code-theorie/code/programmation-objet/composition-agregation.md %})
-{: .chemin}
+{.chemin}
 
 Présentation du mécanisme d'héritage qui permet de factoriser du code entre classes.
 
@@ -328,7 +328,7 @@ Comprenez bien le code :
 * la méthode `se_faire_taper(personnage)` utilise la méthode `se_faire_taper` de la classe `Personnage` seulement si la guerrière ne bloque pas le coup. Le `super().methode_de_la_mere()` permet d'accéder à la méthode de la classe mère même de même nom qu'une méthode (différente) de la classe fille.
 
 > On utilise **toujours** le constructeur de la classe mère pour garantir que les méthodes définies dans la classe mère fonctionnent avec les objets de la classe fille. Sinon ici, `se_faire_taper` ne fonctionnerait pas puisque vie et attaque ne seraient pas définies
-{: .attention}
+{.attention}
 
 ### le magicien
 

@@ -6,7 +6,7 @@ author: "François Brucker"
 ---
 
 > [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 1]({% link cours/web/projets/numerologie/partie-1-front/index.md %}) / [niveau 2]({% link cours/web/projets/numerologie/partie-1-front/niveau-2/index.md %}) / [html et css]({% link cours/web/projets/numerologie/partie-1-front/niveau-2/4-integration_html_js.md %})
-{: .chemin}
+{.chemin}
 
 On va lier le code javascript de la la [partie 2]({% link cours/web/projets/numerologie/partie-1-front/niveau-2/2-code_js.md %}) et le html/css de la [partie 3]({% link cours/web/projets/numerologie/partie-1-front/niveau-2/3-html_css.md %}).
 

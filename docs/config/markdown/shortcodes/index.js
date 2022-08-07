@@ -1,8 +1,7 @@
 
-module.exports = function (markdownItLibrary, eleventyConfig) {
+module.exports = function (eleventyConfig) {
 
-    require('./details')(markdownItLibrary, eleventyConfig);
-    require('./exercice')(markdownItLibrary, eleventyConfig);
-
+    require('./quotes')(eleventyConfig);
+    require('./resume')(eleventyConfig);
 };
 

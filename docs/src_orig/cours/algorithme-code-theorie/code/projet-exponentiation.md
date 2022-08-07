@@ -12,7 +12,7 @@ author: "François Brucker"
 >
 >* [projet : pourcentages]({% link cours/algorithme-code-theorie/code/projet-pourcentages.md %})
 >* [étude : l'exponentiation]({% link cours/algorithme-code-theorie/algorithme/etude-exponentiation.md %})
-{: .chemin}
+{.chemin}
 
 Ce projet suit l'[étude de l'exponentiation]({% link cours/algorithme-code-theorie/algorithme/etude-exponentiation.md %}). Vous allez vérifier expérimentalement que la complexité de l'[algorithme naïf]({% link cours/algorithme-code-theorie/algorithme/etude-exponentiation.md %}#algo-naif) est en $\mathcal{O}(\mbox{exposant})$ et celle de l'[exponentiation indienne]({% link cours/algorithme-code-theorie/algorithme/etude-exponentiation.md %}#algo-rapide) en $\mathcal{O}(\ln(\mbox{exposant}))$.
 
@@ -27,7 +27,7 @@ Ce projet suit l'[étude de l'exponentiation]({% link cours/algorithme-code-theo
 >    * *"exponentiation.py"*
 >    * *"test_exponentiation.py"*
 >
-{: .a-faire}
+{.a-faire}
 
 ### vscode
 
@@ -38,7 +38,7 @@ Ce projet suit l'[étude de l'exponentiation]({% link cours/algorithme-code-theo
 2. on vérifie que le linter est actif (en faisant une faute de style)
 
 > On se force, jusqu'à que cela devienne un automatisme, à écrire du code stylé. C'est à dire sans que le linter ne se fâche.
-{: .a-faire}
+{.a-faire}
 
 ### bibliothèques
 
@@ -48,7 +48,7 @@ Nous aurons besoin d'utiliser deux bibliothèques ([matplotlib](https://matplotl
 >
 > 1. vérifiez les bibliothèques déjà installées pour votre interpréteur : `python -m pip list` (remarquez bien qu'ici `list` est un paramètre de `pip` et non de `python`)
 > 2. si besoin installez [matplotlib](https://matplotlib.org/) (`python -m pip install matplotlib`) et [pytest](https://docs.pytest.org/en/6.2.x/) : `python -m pip install pytest`
-{: .a-faire}
+{.a-faire}
 
 ## le code
 
@@ -62,7 +62,7 @@ Nous aurons besoin d'utiliser deux bibliothèques ([matplotlib](https://matplotl
 >
 > Vérifier que vos tests se lancent bien avec l'erlenmeyer et dans le terminal.
 >
-{: .a-faire}
+{.a-faire}
 
 Pour les tests, on utilisera les règles suivantes :
 
@@ -72,7 +72,7 @@ Pour les tests, on utilisera les règles suivantes :
 > * chaque test sera nommé en 3 parties : `test_[nom de la fonction_testée]_[ce que l'on teste]` où `[nom de la fonction_testée]` est le nom de la fonction testée (ne mettez pas les *[]*) et `[ce que l'on teste]` une description succincte (en 1 ou 2 mots max) de ce que l'on teste.
 > * un unique `assert` par fonction de test : on ne doit tester qu'**une seule chose** par test
 >
-{: .note}
+{.note}
 
 ### algorithme rapide
 
@@ -81,10 +81,10 @@ Pour les tests, on utilisera les règles suivantes :
 >
 > Vérifier que vos tests se lancent bien avec l'erlenmeyer et dans le terminal.
 >
-{: .a-faire}
+{.a-faire}
 
 > Ne supprimez pas les tests de l'algorithme naïf en créant ceux pour l'algorithme rapide ! Vos deux fonctions DOIVENT être testées.
-{: .attention}
+{.attention}
 
 ## complexité temporelle
 
@@ -113,7 +113,7 @@ La complexité temporelle sera alors : $\Delta = t_2 - t_1$.
 On va utiliser les fonctions simple du module [time](https://docs.python.org/fr/3/library/time.html). Faisons une petite fonction de test pour voir comment on peut utiliser la mesure du temps dans notre programme.
 
 > Créez un fichier *"temp_mesure.py"* (*temp* pour *temporaire*) et mettez y le code suivant :
-{: .a-faire}
+{.a-faire}
 
 ```python
 import time
@@ -133,12 +133,12 @@ Le code précédent utilise deux fonction du module [time](https://docs.python.o
 * [`time.sleep(1)`](https://docs.python.org/fr/3/library/time.html#time.sleep) qui ne fait rien pendant un nombre de secondes données en entrée.
 
 > Exécutez plusieurs fois le code précédent pour voir que l'on passe bien environ 1 seconde à ne rien faire.
-{: .a-faire}
+{.a-faire}
 
 ### expérimentations
 
 > Créer un programme principal (dans le fichier *"main.py"*) qui demande à l'utilisateur un exposant $y$. Ce programme donne ensuite le temps mis pour exécuter $3^y$ avec l'algorithme naïf et avec l'algorithme rapide.
-{: .a-faire}
+{.a-faire}
 
 ## graphique de la complexité temporelle
 
@@ -154,7 +154,7 @@ On veut maintenant voir l'évolution de la complexité selon la taille de l'expo
 4. représenter la figure (commande `plt.show()`) ou la sauver dans un fichier
 
 > Créez un fichier *"temp_matplotlib.py"*  et mettez y le code suivant :
-{: .a-faire}
+{.a-faire}
 
 ```python
 import matplotlib.pyplot as plt
@@ -192,11 +192,11 @@ plt.show()
 ### expérimentations {#graphique-test}
 
 > Créez un fichier *"main_graphique.py"* et représentez sur le même graphique (il suffit de mettre deux instructions `ax.plot`) le temps mis par les deux algorithmes pour effectuer l'exponentiation de $ 3^y$  où $y$ varie de $0$ à $100000$ par pas de $1000$.
-{: .a-faire}
+{.a-faire}
 
 Attention aux constantes de votre code :
 
 > Mantra : pas de [magic numbers](https://en.wikipedia.org/wiki/Magic_number_(programming)#Unnamed_numerical_constants) dans le code.
 >
 > On remplace les nombres pas des constantes que l'on identifie dans le code par un nom (en majuscules) signifiant.
-{: .note}
+{.note}

@@ -6,7 +6,7 @@ author: "François Brucker"
 ---
 
 > [numérologie]({% link cours/web/projets/numerologie/index.md %}) / [partie 1]({% link cours/web/projets/numerologie/partie-1-front/index.md %}) / [niveau 1]({% link cours/web/projets/numerologie/partie-1-front/niveau-1/index.md %}) / [html et css]({% link cours/web/projets/numerologie/partie-1-front/niveau-1/3-html_css.md %})
-{: .chemin}
+{.chemin}
 
 Codage de la page web.
 
@@ -49,7 +49,7 @@ Les nom des balises sont importantes, elles définissent leurs fonctions. Par ex
   * `<body></body>` qui est le corps de la page et contiendra par là toutes les informations à afficher.
 
 > Glisser/déposez le fichier *"numerologie/index.html"* depuis l'explorateur de fichier vers une fenêtre chrome pour que chrome interprète votre fichier (vous pouvez aussi taper *ctrl+o* souq windows ou *menu Fichier > ouvrir le fichier* sous mac).
-{: .note}
+{.note}
 
 Bon c'est un peu nul mais on voit bien les différentes *balises* html :
 

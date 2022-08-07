@@ -16,7 +16,7 @@ Initialement écrit pour le java, nous allons appliquer ses enseignements au pyt
 >
 > * [projet : héritage]({% link cours/algorithme-code-theorie/code/programmation-objet/projet-heritage.md %})
 >
-{: .chemin}
+{.chemin}
 
 ## But
 
@@ -26,7 +26,7 @@ Vous allez y apprendre le [nindo](https://naruto.fandom.com/fr/wiki/Nind%C3%B4) 
 > Créer du code **propre** qui **fonctionne**
 >
 > (*clean code that works* en version originale)
-{: .note}
+{.note}
 
 Outre la méthode, nous verrons également quelques tehcniques pour y arriver de façon claire et pratique, comme des règles de refactoring (issues de [Refactoring: Improving the Design of Existing Code](https://www.amazon.fr/Refactoring-Improving-Design-Existing-Code/dp/0201485672/ref=sr_1_2?ie=UTF8&qid=1539066441&sr=8-2) de [Martin fowler](https://martinfowler.com) (allez voir son site, y'a moult choses chouettes sur le code, l'agile, la vie et le reste)).
 
@@ -35,7 +35,7 @@ Ceci devrait vous permettre de diminuer le nombre de WTFs/minute, qui est le mei
 ![WTFs/minute](./assets/wtfm.jpg){:style="margin: auto;display: block"}
 
 > Faites l'effort de suivre cette séance en codant **en même temps** le projet. Tout est donné mais le voir fonctionner pour de vrai est plus impressionnant que de juste le lire.
-{: .note}
+{.note}
 
 On va exécuter les tests un million de fois. Pour éviter la luxation de l'index il faut retenir les raccourcis claviers qui vont vous permettre de lancer les tests sans problème :
 
@@ -69,7 +69,7 @@ Nous n'utiliserons pas ici notre code. Mais il faudra tout faire *from scratch*.
 On verra tout au long du cours divers patterns de test et de développement pour que tout aille pour le mieux. Notre but est ici de faire du :
 
 > *clean code that works*
-{: .note}
+{.note}
 
 Pour cela on va se fixer quelques règles :
 
@@ -90,7 +90,7 @@ Ces 2 règles impliquent un mode de fonctionnement de note production code :
 >    * élimine les duplications tout en conservant la validité des tests.
 >
 > La partie refactor, qui est la partie réelle où l'on code ne se fait **que sur du vert** : on est assuré de ne pas casser le code puisque les tests passent.
-{: .note}
+{.note}
 
 Cela permet de prendre du plaisir à coder :
 
@@ -99,7 +99,7 @@ Cela permet de prendre du plaisir à coder :
 * comme tous les tests sont conservés on sait que l'on ne travaille pas pour rien
 
 > Toutes ces règles visent à diminuer la peur qui bloque tout progrès
-{: .note}
+{.note}
 
 ### Code
 
@@ -113,7 +113,7 @@ On va développer petit à petit notre propre application de change en utilisant
 ## Déroulé
 
 > Créez un dossier *"projet-tdd"* qui contiendra votre projet.
-{: .a-faire}
+{.a-faire}
 
 Le déroulé du projet est séparé en trois parties :
 

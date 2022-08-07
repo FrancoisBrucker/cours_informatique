@@ -78,7 +78,7 @@ npm add --save express
 ```
 
 > N'oubliez pas `--save`, sinon le module sera installé mais la dépendance ne sera pas ajoutée au fichier *"package.json"* ce qui est tarte.
-{: .attention}
+{.attention}
 
 Cette commande a ajouté une dépendance à notre fichier *"package.json"* :
 

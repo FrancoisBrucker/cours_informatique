@@ -128,7 +128,7 @@ Ceci nous permettra par défaut :
 Vous pourrez ensuite faire des `git pull` tout seul et ils seront rebasé par défaut et préserveront les merges existant. Le meilleur des deux monde en somme.
 
 > ceci ne peut se faire qu'à partir de git 2.22. Mettez à jour votre git si nécessaire. On est (à l'heure où je tape ces caractères) à la version 2.32.0 de git.
-{: .attention}
+{.attention}
 
 ## usages
 
