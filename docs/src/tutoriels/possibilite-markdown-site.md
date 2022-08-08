@@ -5,6 +5,12 @@ title: Les possibilités d'édition en markdown
 tags: ['tutoriel', 'markdown', 'eleventy']
 ---
 
+<!-- début résumé -->
+
+Les différentes possibilités d'écriture de post pour ce site. On rappellera des possibilités de [commonMark](https://spec.commonmark.org/) (extension de Markdown utilisé ici) ainsi que des shortcodes spécialement écrites.
+
+<!-- fin résumé -->
+
 Comparer le résultat au [code source](https://raw.githubusercontent.com/FrancoisBrucker/do-it/main/src/blog/possibilite-markdown.md).
 
 ## titre `##`
@@ -21,6 +27,10 @@ Comparer le résultat au [code source](https://raw.githubusercontent.com/Francoi
 * [post 2 chemin absolu]({{ "/blog/post-2" | url }})
 * [post 2 chemin relatif avec une ancre](../post-2#images)
 * [post 2 chemin absolu avec une ancre]({{ "/blog/post-2" | url }}#images)
+
+{% attention %}
+Notez le `..` pour accéder au dossier courant des sources.
+{% endattention %}
 
 ## listes
 
@@ -139,9 +149,9 @@ print(l.max())
 
 ## images {#images}
 
-![WTFs/minute](../possibilite-markdown-wtfm.jpg)
+![WTFs/minute](../possibilite-markdown-wtfm-site.jpg)
 
-> Notez le `..` qui est important dans tous les liens.
+
 
 ## équations
 

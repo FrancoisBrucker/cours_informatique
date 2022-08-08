@@ -1,4 +1,10 @@
+## site :
+
+
+- NAVIGATION PLUGIN pour remonter la hiérarchie automatiquement
+
 ## autres
+
 
 - graphes : 
 	- prés-requis complexité, algo et python pour le cours.

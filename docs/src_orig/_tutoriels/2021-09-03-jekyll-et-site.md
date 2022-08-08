@@ -20,6 +20,6 @@ Une introduction générateur de site statique [jekyll](https://jekyllrb.com/). 
 * option clean, serve, compile
 * github actions
 * css, sass et assets
-* _posts et architechture du site
+* _posts et architecture du site
 * collections
 

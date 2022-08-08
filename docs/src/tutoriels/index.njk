@@ -1,26 +1,130 @@
 ---
-layout: layout/base.njk
+layout: layout/index.njk
 title: Tutoriels
 tags: index
-
 ---
 
-Les Tutoriels.
+<p class="prose m-4">
 
----
+<!-- début résumé -->
 
+Tutoriels abordants toute une gamme de sujets différents.
+
+<!-- fin résumé -->
+</p>
+
+<script>
+  var allTags = new Set(){% for post in collections.tutoriel %}
+    {% for tag in post.data.tags %}
+      {% if tag != "tutoriel" %}
+        allTags.add("{{tag}}")
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+</script>
+
+<script type="text/javascript">
+  // functions
+  //
+  // borrowed from : https://langrsoft.com/2020/03/26/filtering-blog-posts-by-category-with-jekyll/
+
+  SELECTED_COLOR = 'green'
+  // set currentTag global variable.
+  function setNewTagButtonColor(selectedTag) {
+    if (typeof currentTag !== 'undefined') {
+      catButton = document.getElementById(currentTag);
+      catButton.style.backgroundColor = ''
+    }
+    currentTag = selectedTag // global variable by default.
+
+    catButton = document.getElementById(currentTag);
+    catButton.style.backgroundColor = SELECTED_COLOR
+
+  }
+
+  function filterUsingTag(selectedTag) {
+    setNewTagButtonColor(selectedTag)
+
+    var id = 0;
+
+    {% for post in collections.tutoriel %}
+      {% if post.data.tags %}
+        var cats = "{{ post.data.tags }}"
+
+        id += 1;
+
+        var postDiv = document.getElementById(id);
+        console.log(selectedTag, (selectedTag == 'Aucun' || cats.includes(selectedTag)))
+        postDiv.style.display = (selectedTag == 'Aucun' || cats.includes(selectedTag))
+          ? 'block'
+          : 'none';
+        console.log(postDiv.style.display)
+      {% endif %}
+    {% endfor %}
+  }
+</script>
+
+<div class='py-4 flex items-center'>
+  <div>Tag sélectionné :</div>
+  <ul id="allTags" class="flex not-prose my-0 list-none last:after:px-1 mx-0 px-1">
+    <li class="">
+      <button id="Aucun" onclick="filterUsingTag('Aucun')">
+        <strong>Aucun</strong>
+      </button>
+    </li>
+  </ul>
+</div>
+
+<script>
+  t = Array.from(allTags)
+  t.sort()
+  t.forEach((cat) => {
+    li = document.createElement('li')
+    x = document.createElement('span')
+    x.setAttribute("class", "mx-1")
+    x.appendChild(document.createTextNode('•'))
+    li.appendChild(x)
+    button = document.createElement('button')
+    button.appendChild(document.createTextNode(cat))
+    button.setAttribute("id", cat)
+    button.setAttribute("onclick", "filterUsingTag(this.id)")
+
+    li.appendChild(button)
+
+    document
+      .getElementById("allTags")
+      .appendChild(li)
+  })
+</script>
+
+{% set id = 0 %}
 {% for post in collections.tutoriel %}
-  {% if post.data.tags %}
-    <article>
-      <a href="{{ post.url | url }}">{{ post.data.title }}</a>
-      <div class=" px-4 flex items-center">
-        <div>tags : </div>
+{% if post.data.tags %}
+  {% set id = id + 1 %}
+  <div id="{{ id }}" class="my-3 p-1 border-solid border-2 rounded">
+    <div class="text-3xl mb-3"> <a href="{{ post.url | url }}">{{ post.data.title }}</a></div>
+    <div class=" px-4 flex items-center">
+      <div>tags : </div>
       <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
-        {% for tag in post.data.tags %}
-          <li class="before:content-['•'] before:px-1">{{ tag }}</li>
+        {% for tag in post.data.tags | sort %}
+          {% if tag != "tutoriel" %}
+            <li class="before:content-['•'] before:px-1">{{ tag }}</li>
+          {% endif %}
         {% endfor %}
       </ul>
-      </div>
-    </article>
-  {% endif %}
+    </div>
+    <div class=" pt-4 px-4 flex items-top">
+      <div>résumé : </div>
+        <p class="px-2 m-0">
+            {% résumé post %}
+        </p>
+    </div>
+
+  </div>
+
+{% endif %}
 {% endfor %}
+
+<script>
+filterUsingTag('Aucun')
+</script>
