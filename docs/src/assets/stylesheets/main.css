@@ -34,7 +34,7 @@
         @apply m-0 inline-block;
     }
 
-    .quote p, .quote ul, .quote li {
+    .quote p, .quote ul, .quote ol, .quote li {
         @apply m-0;
     }
 
@@ -59,4 +59,8 @@
 
 table.no-border tr {
     @apply border-none;
+}
+
+.prose .fichier {
+    @apply underline decoration-1;
 }

@@ -5,6 +5,13 @@
 
 ## autres
 
+- système de fichier : 
+	* liens
+	* permissions
+	* unix et tout est fichier
+	* fichiers spéciaux (comme `/dev/audio` par exemple)
+	* une application mac est un dossier.
+	* comment écrire sur le disque dur, le [file system](https://en.wikipedia.org/wiki/Comparison_of_file_systems)
 
 - graphes : 
 	- prés-requis complexité, algo et python pour le cours.

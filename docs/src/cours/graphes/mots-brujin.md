@@ -10,9 +10,9 @@ authors:
 {% chemin %}
 [Graphes]({{ ".." }}) / [{{title}}]({{ "." }})
 {% endchemin %}
-{% pres-requis %}
+{% prerequis "**Prérequis** :" %}
 * [Parcours eulériens](../parcours-eulerien)
-{% endpres-requis %}
+{% endprerequis %}
 
 <!-- début résumé -->
 

@@ -10,11 +10,11 @@ authors:
 {% chemin %}
 [Graphes]({{ ".." }}) / [{{title}}]({{ "." }})
 {% endchemin %}
-{% pres-requis %}
+{% prerequis "**Prérequis** :" %}
 * [Parcours eulériens](../parcours-eulerien)
 * python pour le développement
 * des tests pour python 
-{% endpres-requis %}
+{% endprerequis %}
 
 > TBD : 
 > * fix prés-requis

@@ -10,10 +10,10 @@ authors:
 {% chemin %}
 [Graphes]({{ ".." }}) / [{{title}}]({{ "." }})
 {% endchemin %}
-{% pres-requis %}
+{% prerequis "**Prérequis** :" %}
 * [Arbres](../arbres)
 * python code
-{% endpres-requis %}
+{% endprerequis %}
 
 > TBD : FIX prés-requis
 

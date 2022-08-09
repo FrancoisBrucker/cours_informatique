@@ -64,11 +64,12 @@ Tutoriels abordants toute une gamme de sujets différents.
   }
 </script>
 
-<div class='py-4 flex items-center'>
-  <div>Tag sélectionné :</div>
-  <ul id="allTags" class="flex not-prose my-0 list-none last:after:px-1 mx-0 px-1">
+<div class='py-8 flex items-center'>
+  <span>Tag sélectionné :</span>
+  <ul id="allTags" class="list-none flex flex-wrap items-center not-prose my-0 mx-0 px-1">
+    
     <li class="">
-      <button id="Aucun" onclick="filterUsingTag('Aucun')">
+      <button id="Aucun" class="m-1 rounded border p-2" onclick="filterUsingTag('Aucun')">
         <strong>Aucun</strong>
       </button>
     </li>
@@ -80,15 +81,11 @@ Tutoriels abordants toute une gamme de sujets différents.
   t.sort()
   t.forEach((cat) => {
     li = document.createElement('li')
-    x = document.createElement('span')
-    x.setAttribute("class", "mx-1")
-    x.appendChild(document.createTextNode('•'))
-    li.appendChild(x)
     button = document.createElement('button')
     button.appendChild(document.createTextNode(cat))
     button.setAttribute("id", cat)
     button.setAttribute("onclick", "filterUsingTag(this.id)")
-
+    button.setAttribute("class", "m-1 rounded border p-2")
     li.appendChild(button)
 
     document
@@ -101,7 +98,7 @@ Tutoriels abordants toute une gamme de sujets différents.
 {% for post in collections.tutoriel %}
 {% if post.data.tags %}
   {% set id = id + 1 %}
-  <div id="{{ id }}" class="my-3 p-1 border-solid border-2 rounded">
+  <div id="{{ id }}" class="my-3 px-2 p-1 border-solid border-2 rounded">
     <div class="text-3xl mb-3"> <a href="{{ post.url | url }}">{{ post.data.title }}</a></div>
     <div class=" px-4 flex items-center">
       <div>tags : </div>

@@ -3,7 +3,24 @@ layout: layout/post.njk
 title: Les possibilités d'édition en markdown
 
 tags: ['tutoriel', 'markdown', 'eleventy']
+
+authors:
+    - François Brucker
 ---
+
+{% chemin %}
+[Tutoriels]({{ ".." }}) / [{{title}}]({{ "." }})
+{% endchemin %}
+{% prerequis "**Prérequis** :" %}
+
+* installation du site
+
+{% endprerequis %}
+
+> TBD :
+>
+> * fix prés-requis
+> * le lien vers le code source
 
 <!-- début résumé -->
 
@@ -34,7 +51,7 @@ Notez le `..` pour accéder au dossier courant des sources.
 
 ## listes
 
-### non ordonnées 
+### non ordonnées
 
 * un
 * deux
@@ -49,6 +66,7 @@ Notez le `..` pour accéder au dossier courant des sources.
 ## quotes
 
 ### une quote normale
+
 > Une quote normale
 > sur deux lignes.
 
@@ -66,67 +84,69 @@ Une mise en garde.
 Une *grosse* mise en garde.
 {% endattention %}
 
+### Une note
 
-### une note
-
-#### sans titre
+#### Note sans titre
 
 {% note %}
 Une note à retenir.
 {% endnote %}
 
-#### avec titre
+#### Note avec titre
 
 {% note "**Proposition**" %}
 Un énoncé de proposition.
 {% endnote %}
 
-### une information
+### Une information
 
-#### sans titre
+#### Information sans titre
 
 {% info %}
 Un truc marrant ou une information utile, mais pas indispensable.
 {% endinfo %}
 
-#### avec titre
+#### Information avec titre
 
 {% info "***lol* !**" %}
 Un truc marrant ou une information utile, mais pas indispensable.
 {% endinfo %}
 
-### un chemin
+### Un chemin
 
 {% chemin %}
 [Tutoriels]({{ ".." | url }}) / [{{title}}]({{ "." | url }})
 {% endchemin %}
 
-### un chemin  plus un prés-requis
+### Un chemin  plus un prérequis
 
-#### sans titre
+#### Prérequis sans titre
 
 {% chemin %}
 [Tutoriels]({{ ".." | url }}) / [{{title}}]({{ "." | url }})
 {% endchemin %}
-{% pres-requis %}
+{% prerequis %}
+
 * un cerveau en état de marche
 * notion de web
-{% endpres-requis %}
 
+{% endprerequis %}
 
-#### avec titre
+#### Prérequis avec titre
 
 {% chemin %}
 [Tutoriels]({{ ".." | url }}) / [{{title}}]({{ "." | url }})
 {% endchemin %}
-{% pres-requis "À lire avant de commencer :" %}
+{% prerequis "À lire avant de commencer :" %}
+
 * *graphes* de Claude Berge
 * *hypergraphes* de Claude Berge
-{% endpres-requis %}
 
-## algorithmes
+{% endprerequis %}
 
-### programme
+## Algorithmes
+
+### Programme
 
 ```python
 permutations(T):
@@ -134,7 +154,7 @@ l = [1, 3, 2, 6, 4, 5]
 print(l.max())
 ```
 
-### avec lignes numérotées
+### Avec lignes numérotées
 
 ```python#
 permutations(T):
@@ -142,24 +162,28 @@ l = [1, 3, 2, 6, 4, 5]
 print(l.max())
 ```
 
-### dans le texte 
+### Dans le texte
 
 * par défaut : `l = [1, 3, 2, 6, 4, 5]`
 * on dit que c'est un langage : `l = [1, 3, 2, 6, 4, 5]`{.language-python}.
 
-## images {#images}
+## Images {#images}
 
-![WTFs/minute](../possibilite-markdown-wtfm-site.jpg)
+![WTFs/minute](wtfm.jpg)
 
+{% attention %}
+On a pas mis de `..` ici car le fichier est un index.
+{% endattention %}
 
-
-## équations
+## Equations
 
 $$2+2 = \frac{1}{2}$$
 
 Et un $\log(3)^2$ dans une phrase.
 
-## exercice
+## Interactions avec le lecteur
+
+### Exercice
 
 Un texte avant.
 {% exercice %}
@@ -167,17 +191,25 @@ Une **question** ou un **exercice** à faire. Avec du $\LaTeX$ dedans : $\sum_x\
 {% endexercice %}
 Un texte après.
 
-## details
+### A faire
 
-### dans le texte
+Un texte avant.
+{% a-faire %}
+Quelque-chose à faire.
+{% enda-faire %}
+Un texte après.
+
+## Details
+
+### Details dans le texte
 
 Un texte avant.
 {% details "spoiler" %}
-Quelque chose de caché. Que l'on peut *écrire* en `Markdown` 
+Quelque chose de caché. Que l'on peut *écrire* en `Markdown`
 {% enddetails %}
 Un texte après.
 
-### dans un exercice
+### Solution d'un exercice
 
 Un texte avant.
 {% exercice %}
@@ -188,36 +220,30 @@ Le corrigé de l'exercice.
 {% enddetails %}
 Un texte après.
 
-## tables
+## Tables
 
 On utilise les possibilités de [multimarkdown](https://fletcher.github.io/MultiMarkdown-6/syntax/tables.html)
 
-### de base 
+### Tables de base
 
 | titre colonne 1  | titre colonne 2 |
 | ---------------- | --------------- |
 | Content Cell     | Content Cell  |
 | Content Cell     | Content Cell  |
 
-
-### sans titre
-
-
+### Tables sans titre
 
 | ------------- | ------------- |
 | Content Cell  | Content Cell  |
 | Content Cell  | Content Cell  |
 
-
-### multi-colonne
-
+### Tables multi-colonne
 
 | ------------- | ------------- |
 |     Content Cell             ||
 | Content Cell  | Content Cell  |
 
-
-### multi-ligne
+### Tables multi-ligne
 
 | ------------- | ------------- |
 | Content Cell  | Content Cell  |
@@ -230,37 +256,65 @@ On utilise les possibilités de [multimarkdown](https://fletcher.github.io/Multi
 | Content Cell  | * Content Cell  |
 | Content Cell  | Content Cell  |
 
-
-### alignement horizontal
+### Alignement horizontal
 
 | :- | :-: | -: |
 | Content Cell  | Content Cell  | Content Cell |
 | Content Cell  | Content Cell  |Content Cell  |
 | Content Cell  | Content Cell  |Content Cell  |
 
+### Alignement vertical
 
-### alignement vertical
-
-On ajoute un style, mais il ne faut pas que ce soit la dernière colonne. 
+On ajoute un style, mais il ne faut pas que ce soit la dernière colonne.
 
 | ------------- | ------------- |
-| Content Cell  {style="vertical-align:middle"}| Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eleifend, orci nec pharetra lacinia, lacus dolor euismod ipsum, quis pulvinar ipsum urna non purus. Cras accumsan ex ligula, eu pellentesque mauris congue ac. Integer venenatis elementum est ac imperdiet. Etiam lectus purus, imperdiet gravida commodo non, faucibus at metus. Maecenas elit nibh, venenatis a efficitur vitae, placerat vitae nulla. Fusce volutpat nisl sem, vel iaculis risus sagittis vel. Nunc felis tellus, sollicitudin eu felis vel, cursus egestas arcu. Sed laoreet ex a nisl vestibulum, id placerat leo pellentesque. Praesent nec ultrices purus, ut congue elit. Pellentesque in diam ultrices purus volutpat lacinia. | 
+| Content Cell  {style="vertical-align:middle"}| Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eleifend, orci nec pharetra lacinia, lacus dolor euismod ipsum, quis pulvinar ipsum urna non purus. Cras accumsan ex ligula, eu pellentesque mauris congue ac. Integer venenatis elementum est ac imperdiet. Etiam lectus purus, imperdiet gravida commodo non, faucibus at metus. Maecenas elit nibh, venenatis a efficitur vitae, placerat vitae nulla. Fusce volutpat nisl sem, vel iaculis risus sagittis vel. Nunc felis tellus, sollicitudin eu felis vel, cursus egestas arcu. Sed laoreet ex a nisl vestibulum, id placerat leo pellentesque. Praesent nec ultrices purus, ut congue elit. Pellentesque in diam ultrices purus volutpat lacinia. |
 | Content Cell  | Content Cell  |
 
-Pour la dernière colonne, il faut ajouter une colonne vide : 
+Pour la dernière colonne, il faut ajouter une colonne vide :
 
 | ------------- | ------------- | - |
-| Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eleifend, orci nec pharetra lacinia, lacus dolor euismod ipsum, quis pulvinar ipsum urna non purus. Cras accumsan ex ligula, eu pellentesque mauris congue ac. Integer venenatis elementum est ac imperdiet. Etiam lectus purus, imperdiet gravida commodo non, faucibus at metus. Maecenas elit nibh, venenatis a efficitur vitae, placerat vitae nulla. Fusce volutpat nisl sem, vel iaculis risus sagittis vel. Nunc felis tellus, sollicitudin eu felis vel, cursus egestas arcu. Sed laoreet ex a nisl vestibulum, id placerat leo pellentesque. Praesent nec ultrices purus, ut congue elit. Pellentesque in diam ultrices purus volutpat lacinia. | Content Cell  {style="vertical-align:middle"}| | 
+| Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eleifend, orci nec pharetra lacinia, lacus dolor euismod ipsum, quis pulvinar ipsum urna non purus. Cras accumsan ex ligula, eu pellentesque mauris congue ac. Integer venenatis elementum est ac imperdiet. Etiam lectus purus, imperdiet gravida commodo non, faucibus at metus. Maecenas elit nibh, venenatis a efficitur vitae, placerat vitae nulla. Fusce volutpat nisl sem, vel iaculis risus sagittis vel. Nunc felis tellus, sollicitudin eu felis vel, cursus egestas arcu. Sed laoreet ex a nisl vestibulum, id placerat leo pellentesque. Praesent nec ultrices purus, ut congue elit. Pellentesque in diam ultrices purus volutpat lacinia. | Content Cell  {style="vertical-align:middle"}| |
 | Content Cell  | Content Cell  | |
 
-## résumé
+## Ecrire un post
 
-Deux balises à placer entre le résumé de votre post : 
+### Structure
+
+* si un unique ficher : `nom.md`{.fichier}
+* si plusieurs fichiers de ressources ou des des sous parties :
+  * un dossier `nom`{.fichier} et tous les fichiers à l'intérieur
+  * fichier principal : `nom/index.md`{.fichier}
+
+### Résumé
+
+Deux balises à placer entre le résumé de votre post. Il est à placer entre les balises :
+
+* `<!-- début résumé -->`
+* `<!-- fin résumé -->`
+
+### Entête
 
 ```text
-<!-- début résumé -->
+---
+layout: layout/post.njk 
+title: Vsc extension Markdown
+tags: ['vsc', 'tutoriel', 'markdown']
 
-Ici le résumé. 
+authors: 
+    - François Brucker
+    - Esprit Lesaint
+---
 
-<!-- fin résumé -->
 ```
+
+Changez le :
+
+* titre
+* le ou les auteurs (vous pouvez ne mettre qu'un seul auteur)
+
+Puis ajoutez :
+
+* un chemin
+* des prerequis
+* un résumé

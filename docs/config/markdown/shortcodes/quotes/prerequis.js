@@ -2,7 +2,7 @@ const { template } = require("./utils")
 
 module.exports = function (eleventyConfig) {
 
-  eleventyConfig.addPairedShortcode('pres-requis', (content, arg) => {
+  eleventyConfig.addPairedShortcode('prerequis', (content, arg) => {
 
     return `
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">

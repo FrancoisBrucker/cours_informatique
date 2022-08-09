@@ -9,9 +9,9 @@ authors:
 {% chemin %}
 [Graphes]({{ ".." }}) / [{{title}}]({{ "." }})
 {% endchemin %}
-{% pres-requis %}
+{% prerequis "**Prérequis** :" %}
 * [Structure d'un graphe](../structure)
-{% endpres-requis %}
+{% endprerequis %}
 
 > TBD : fix les prés-requis.
 

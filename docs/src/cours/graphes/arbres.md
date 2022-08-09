@@ -9,9 +9,9 @@ authors:
 {% chemin %}
 [Graphes]({{ ".." }}) / [{{title}}]({{ "." }})
 {% endchemin %}
-{% pres-requis %}
+{% prerequis "**Prérequis** :" %}
 * [Chemins, cycles et connexité](../chemins-cycles-connexite)
-{% endpres-requis %}
+{% endprerequis %}
 
 <!-- début résumé -->
 

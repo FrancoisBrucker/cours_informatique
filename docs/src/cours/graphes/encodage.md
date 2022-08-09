@@ -8,12 +8,12 @@ authors:
 {% chemin %}
 [Graphes]({{ ".." }}) / [{{title}}]({{ "." }})
 {% endchemin %}
-{% pres-requis %}
+{% prerequis "**Prérequis** :" %}
 * [Structure d'un graphe](../structure)
 * complexité d'une méthode/structure
 * bases de bython
 * list compréhension en python
-{% endpres-requis %}
+{% endprerequis %}
 
 > TBD : fix les prés-requis.
 
