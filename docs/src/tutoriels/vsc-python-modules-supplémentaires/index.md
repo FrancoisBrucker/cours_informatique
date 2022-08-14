@@ -22,7 +22,7 @@ Ce tutoriel se consacre à l'installation d'extensions non fondamentales mais bi
 
 <!-- fin résumé -->
 
-## tests
+## tests {#pytest}
 
 {% chemin "[tests avec vscode](https://code.visualstudio.com/docs/python/testing)" %}
 {% endchemin %}
@@ -76,7 +76,7 @@ En suite le menu *TESTING* en haut de cette nouvelle fenêtre vous permet :
 
 On peut également directement utiliser pytest avec le terminal, en tapant `python -m pytest` (`python3 -m pytest` si votre interpréteur est `python3`) alors que vous êtes dans le dossier du projet.
 
-## Linter
+## Linter {#pycodestyle}
 
 Le [linting en python avec vscode](https://code.visualstudio.com/docs/python/linting) permet de souligner les fautes de style de python.
 

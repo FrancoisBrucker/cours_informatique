@@ -19,9 +19,9 @@ layout: layout/base.njk
     {% if tags %}
       <div class=" px-4 flex items-center">
         {% if tags | length > 1 %}
-        <div>Tags : </div>
+        <div class="font-bold">Tags : </div>
         {% else %}
-        <div>Tag : </div>
+        <div class="font-bold">Tag : </div>
         {% endif %}
         <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
           {% for tag in tags %}
@@ -34,9 +34,9 @@ layout: layout/base.njk
     {% if authors %}
       <div class=" px-4 flex items-center">
         {% if authors | length > 1 %}
-        <div>Auteurs : </div>
+        <div class="font-bold">Auteurs : </div>
         {% else %}
-        <div>Auteur : </div>
+        <div class="font-bold">Auteur : </div>
         {% endif %}
         <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
           {% for author in authors %}

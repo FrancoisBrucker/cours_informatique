@@ -181,6 +181,46 @@ $$2+2 = \frac{1}{2}$$
 
 Et un $\log(3)^2$ dans une phrase.
 
+{% attention "Il faut escaper les caractères d contrôle" %}
+
+Par exemple, pour écrire le code latex :
+
+```text
+$$
+\sigma(s,i) = \left\{
+    \begin{array}{ll}
+        \tau_{si} & \mbox{si } \{s,i\} \in E \\
+        \infty & \mbox{sinon.}
+    \end{array}
+\right.
+$$
+```
+
+Il faut écrire :
+
+```text
+$$
+\sigma(s,i) = \left\\\{
+    \begin{array}{ll}
+        \tau_{si} & \mbox{si } \{s,i\} \in E \\\\
+        \infty & \mbox{sinon.}
+    \end{array}
+\right.
+$$
+```
+
+Pour obtenir :
+
+$$
+\sigma(s,i) = \left\\\{
+    \begin{array}{ll}
+        \tau_{si} & \mbox{si } \{s,i\} \in E \\\\
+        \infty & \mbox{sinon.}
+    \end{array}
+\right.
+$$
+
+{% endattention %}
 ## Interactions avec le lecteur
 
 ### Exercice

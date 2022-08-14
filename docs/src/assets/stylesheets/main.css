@@ -34,10 +34,6 @@
         @apply m-0 inline-block;
     }
 
-    .quote p, .quote ul, .quote ol, .quote li {
-        @apply m-0;
-    }
-
     article {
         @apply max-w-none prose prose-slate;
     }
@@ -63,4 +59,12 @@ table.no-border tr {
 
 .prose .fichier {
     @apply underline decoration-1;
+}
+
+.quote p, .quote ul, .quote ol, .quote li {
+        @apply m-0;
+}
+
+details p {
+    @apply mb-0;
 }

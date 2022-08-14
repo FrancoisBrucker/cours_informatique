@@ -28,7 +28,7 @@ Cette définition permet de considérer des ensemble a priori infini, mais elle 
 
 En pratique, on aura toujours un nombre fini de sommets et d'arêtes, on choisit donc une définition plus restrictive, mais plus facilement manipulable en informatique  :
 
-{% note "**définition**" %}
+{% note "**Définition**" %}
 
 Un ***multi-graphe*** est un couple $G = (V, E)$ où :
 
@@ -111,7 +111,7 @@ Ainsi, un ***multi-graphe non orienté sans boucle*** est un multigraphe tel que
 Le cas le plus simple (et donc celui que l'on utilisera en priorité) est le multi-graphe sans boucle, sans arcs multiples et non orienté. On les appelle ***graphes*** et on peut les définir comme suit :
 
 {#definition-graphe}
-{% note "**définition**" %}
+{% note "**Définition**" %}
 
 Un **graphe** est un couple $G = (V, E)$ où :
 
@@ -154,13 +154,13 @@ Pour un graphe (orienté ou non) $G = (V, E)$ on appelle :
 A ordre fixe, les graphes de taille maximum son dit ***complet*** :
 
 {#definition-graphe-complet}
-{% note "**définition**" %}
+{% note "**Définition**" %}
 Un graphe est ***complet*** s'il possède toutes les arêtes : pour tous $x, y \in V$ $xy$ est une arête. On le note $K_n$ et $m = n(n-1)/2$. 
 {% endnote %}
 
 On peut noter qu'un graphe orienté ayant un nombre maximum d'arêtes est en fait un graphe (non orienté) complet. C'est pour cela que la définition d'un ***graphe orienté complet*** n'existe pas. On préfère parler de [tournoi](https://fr.wikipedia.org/wiki/Tournoi_(th%C3%A9orie_des_graphes)) :
 
-{% note "**définition**" %}
+{% note "**Définition**" %}
 Un ***tournoi*** est un graphe orienté $G=(V, E)$ tel que :
 
 * si $xy \in E$ alors $yx \notin E$
@@ -175,7 +175,7 @@ Un ***arc*** $xy$ est un élément de $E$ pour les graphes orientés. On le repr
 
 Quelques notations et définitions relatives aux arcs : 
 
-{% note "**définitions**" %}
+{% note "**Définitions**" %}
 * $x$ est l'***origine*** de l'arc,
 * $y$ est la ***destination*** de l'arc
   
@@ -202,7 +202,7 @@ Une ***arête*** $xy$ est un élément de $E$ pour les graphes non orienté. On 
 
 Contrairement aux arcs, il n'y a pas de distinction entre origine et destination : 
 
-{% note "**définitions**" %}
+{% note "**Définitions**" %}
 Le ***voisinage*** d'un sommet $x$ est l'ensemble des sommets $y$ tels que $xy \in E$. ON le note : 
 
 $$N(x) = \\{ y \mid  xy \in E\\}$$

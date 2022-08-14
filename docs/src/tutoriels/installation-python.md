@@ -250,6 +250,14 @@ python3 -m pip install black
 
 Une fois l'installation terminée, black devrait apparaître dans la liste des packages installés (vous pouvez le voir avec `python3 -m pip list`).
 
+### Exécuter un module dans le terminal
+
+Une fois installé, il est tout à fait possible d'exécuter un module :
+
+`python3 -m <nom du module>`
+
+On en aura besoin pour exécuter [`black`](../vsc-python-modules-supplémentaires#black) par exemple ou encore [`pytest`](../vsc-python-modules-supplémentaires#pytest).
+
 ### Où sont les packages ?
 
  Les répertoires où python va cherchez les packages est dans la liste `sys.path`.

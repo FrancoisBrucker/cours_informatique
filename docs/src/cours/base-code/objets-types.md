@@ -1,0 +1,175 @@
+---
+layout: layout/post.njk 
+title: Objets types et types d'objets
+
+---
+
+{% chemin %}
+[Cours]({{ "../.." }}) / [Bases en code et python]({{ ".." }}) / [{{title}}]({{ "." }})
+{% endchemin %}
+
+{% info %}
+Utilisez la console de <https://console.basthon.fr/> pour exécuter les divers exemples et exercices
+{% endinfo %}
+
+<!-- début résumé -->
+
+Python connaît 6 classes d'objets de base qui permettent de faire la grande majorité des programmes.
+
+<!-- end résumé -->
+
+## Six classes de base
+
+{% chemin "**Documentation :**" %}
+<https://docs.python.org/3/library/stdtypes.html#built-in-types>
+{% endchemin %}
+
+* Chaînes de caractères
+  * exemple : `"python"`{.language-python} ou `'python'`{.language-python}
+  * quelque chose qui commence et fini par `"`{.language-python} ou qui commence et fini par `'`{.language-python} ou encore qui commence et fini par `"""`{.language-python}.
+* Réels
+  * exemple : `2.91`{.language-python} ou `2.0`{.language-python}
+  * un nombre avec une décimale (qui peut être nulle) notée par un `.`{.language-python}
+* Entiers
+  * exemple : `42`{.language-python} ou `0`{.language-python}
+  * un nombre sans décimale
+* Complexes (la notation utilise j à la place de i)
+  * exemple : `3+2j`{.language-python}, `1j`{.language-python}
+  * un réel ou entier avec une partie imaginaire, notée `j`{.language-python}, entière ou imaginaire.
+* Booléens
+  * exemple : `True`{.language-python} ou `False`{.language-python}
+  * que 2 possibilités, `True`{.language-python} ou `False`{.language-python}
+* le vide, utilisé pour noter l'absence de valeur
+  * ne contient qu'un unique élément noté `None`{.language-python}
+
+{% note %}
+Tout objet de python à sa classe.
+{% endnote %}
+
+## Classes d'un objet
+
+Tout objet a une ***classe***, aussi appelé ***type***. Pour connaître la classe d'un objet, on peut utiliser la fonction `type`{.language-python}. Par exemple :
+
+```python
+type(42) 
+```
+
+Qui rendra :  `<class 'int'>`. Les entiers sont donc de classe `'int'` en python.
+
+{% exercice %}
+Dans la console de <https://console.basthon.fr/>, donnez la classe de chaque objet de base/
+{% endexercice %}
+
+{% details "solution" %}
+
+```python
+>>> type("2")
+<class 'str'>
+>>> type(2.0)
+<class 'float'>
+>>> type(2)
+<class 'int'>
+>>> type(2+0j)
+<class 'complex'>
+>>> type(True)
+<class 'bool'>
+```
+
+{% enddetails %}
+
+## Changer de classe
+
+Il est possible de créer un nouvel objet à partir d'un objet d'une autre classe en le convertissant. Pour cela, on utilise le nom de la classe comme une fonction : `a(b)` convertissant l'objet `b` dans un objet de la classe `a`.
+
+### Réels, entiers et chaînes de caractères
+
+On peut par exemple transformer un réel en entier :
+
+```python
+int(3.1415)
+```
+
+{% exercice %}
+Quel est le résultat de cette instruction ?
+{% endexercice %}
+{% details "solution" %}
+
+```python
+>>> int(3.1415)
+3
+```
+
+C'est un entier valant 3.
+
+{% enddetails %}
+
+Ou en entier en réel :
+
+```python
+float(3)
+```
+
+{% exercice %}
+Quel est le résultat de cette instruction ?
+{% endexercice %}
+{% details "solution" %}
+
+```python
+>>> float(3)
+3.0
+```
+
+C'est un réel valant 3.0
+
+{% enddetails %}
+
+On peut aussi transformer une chaîne de caractères en entier ou en réel. Par exemple :
+
+```python
+float("3.1415")
+```
+
+Va rendre un objet réel valant 3.1415 à partir d'une chaîne de caractère avec le caractère "3.1415".
+
+{% attention %}
+Une chaîne de caractère n'est **pas** un réel ou un entier.
+{% endattention %}
+
+{% note %}
+La conversion de chaînes de caractères en entier ou en réels est très courante lorsque l'on récupère des entrées tapées par un utilisateur qui sont **toujours** des chaînes de caractères
+{% endnote %}
+
+### Conversion booléennes
+
+On effectue souvent ce genre d'opération de façon implicite pour les booléens. Ainsi, un entier est vrai s'il est non nul.
+
+{% exercice %}
+Vérifiez le.
+{% endexercice %}
+{% details "solution" %}
+
+```python
+>>> bool(42)
+True
+```
+
+{% enddetails %}
+
+Quasiment tous les objets peuvent être converti en booléen.
+
+{% exercice %}
+Quand-est qu'une chaîne de caractère est fausse ?
+{% endexercice %}
+
+{% details "solution" %}
+
+Une chaîne de caractère est fausse si elle est vide et vraie sinon.
+
+```python
+>>> bool("")
+False
+>>> bool("False")
+True
+```
+
+{% enddetails %}

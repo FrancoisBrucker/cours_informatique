@@ -110,6 +110,38 @@ Comme chaque bloc, les listes commencent et finissent toujours par une ligne vid
 * [non ordonnées](https://www.markdownguide.org/basic-syntax/#unordered-lists). Chaque item peut commencer par un `*`, un `-` ou encore un `+`. Choisissez en un et tenez vous y dans tout le document.
 * [ordonnées](https://www.markdownguide.org/basic-syntax/#ordered-lists)
 
+### Liens
+
+Il y a plusieurs possibilités :
+
+* via un nom : `[nom](lien)`. Par exemple `[LMGTFY](https://www.google.fr)` qui se compile en : [LMGTFY](https://www.google.fr)
+* lien direct : `<https://www.google.fr>` qui se compile en : <https://www.google.fr>.
+
+On utilise les liens pour les images, il suffit de rajouter un `!` avant. Par exemple `![ada lovelace](https://upload.wikimedia.org/wikipedia/commons/0/0f/Ada_lovelace.jpg)` qui se compile en : ![ada lovelace](https://upload.wikimedia.org/wikipedia/commons/0/0f/Ada_lovelace.jpg)
+
+## Tableaux
+
+```text
+| nom colonne 1 | nom colonne 2 | nom colonne 3 |
+|---------------|---------------|---------------|
+|   m-(1, 1)    | m (1, 2)      | m (1, 3)      |
+|   m-(2, 1)    | m (2, 2)      | m (2, 3)      |
+```
+
+Qui se compile en :
+
+| nom colonne 1 | nom colonne 2 | nom colonne 3 |
+|---------------|---------------|---------------|
+|   m-(1, 1)    | m (1, 2)      | m (1, 3)      |
+|   m-(2, 1)    | m (2, 2)      | m (2, 3)      |
+
+
+En markdown un tableau a forcément des noms de colonnes. Les deux premières lignes sont donc indispensables.
+
+{% info %}
+IL existe des extentions de markdown, comme [commonMark](https://spec.commonmark.org/) utilisé pour ce site. qui permettent de faire beaucoup plus de choses avec des tableaux.
+{% endinfo %}
+
 ## Formules mathématiques
 
 Lorsque l'on écrit des textes scientifiques, vient inévitablement la question de l'écriture des équations.
