@@ -24,7 +24,7 @@ Si python ne pouvait qu'exécuter ligne à ligne un code on ne pourrait pas fair
 
 En python, un bloc est toujours défini de la même manière  :
 
-* Ce qui va identifier le bloc pour son exécution (une condition, son nombre d'exécution, son nom) et se finit par un `:`{.language-python}
+* Ce qui va identifier le bloc pour son exécution (une condition, son nombre d'exécution, son nom) et se finit par un `:`{.language-}
 * Les instructions le constituant.
 
 Pour séparer les blocs les un des autres, et savoir ce qui le définit, le langage Python utilise l'indentation (4 espaces par défaut): un bloc est donc une suite d'instructions ayant la même indentation.
@@ -44,7 +44,7 @@ Ces différents blocs sont pratiques car ils vont nous permettre :
 
 ## Répétition de blocs
 
-Deux types de boucles existent en python : les boucles *tant que* (`while`{.language-python}) et les boucles *pour chaque* (`for`{.language-python})
+Deux types de boucles existent en python : les boucles *tant que* (`while`{.language-}) et les boucles *pour chaque* (`for`{.language-})
 
 ### Bloc while : boucle tant que
 
@@ -60,7 +60,7 @@ while <condition logique>:
     instruction n
 ```
 
-Par exemple le bloc `while`{.language-python} suivant :
+Par exemple le bloc `while`{.language-} suivant :
 
 ```python
 b = 6
@@ -195,7 +195,7 @@ else:
     instruction n
 ```
 
-Notez qu'il peut y avoir autant de bloc `elif`{.language-python} que l'on veut (même 0) et qu'il n'est pas nécessaire d'avoir de `else`{.language-python}.
+Notez qu'il peut y avoir autant de bloc `elif`{.language-} que l'on veut (même 0) et qu'il n'est pas nécessaire d'avoir de `else`{.language-}.
 
 {% exercice %}
 Utilisez ce que vous avez appris pour vérifier la [conjecture de Syracuse](https://fr.wikipedia.org/wiki/Conjecture_de_Syracuse) pour les 100 premiers entiers

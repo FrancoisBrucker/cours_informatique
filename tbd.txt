@@ -1,9 +1,13 @@
 ## site :
 
+- dépendances cours mpci avec un json
+- mettre escape html latex avec un shortcode 
 
 - NAVIGATION PLUGIN pour remonter la hiérarchie automatiquement
 
 ## autres
+
+- faire un tuto seaborn. (utiliser le projet-tris comme base)
 
 - notions python :
 	* mutable et non mutable
@@ -42,10 +46,11 @@
 
 ## mpci
 
-- nb d'algorithme. Faire avec le pseudo-code. On a pas besoin de cantor ?
-- dire que pseudo-code := algorithme de la définition de knuth
+- faire mélange juste avant tri.
 
+- projet exponentiation : trop court ?
 
+- trier un tableau : ne faire que les compliqués.
 
 - figures : utiliser seaborn + approximation courbes pour les calculs de complexités
 

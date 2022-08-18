@@ -20,7 +20,7 @@ Les fonctions et les méthodes sont des moyens d'effectuer des opérations sur l
 
 ## Fonctions
 
-Une fonction est un type d'objet pouvant être exécuté. Par exemple la fonction `print`{.language-python}.
+Une fonction est un type d'objet pouvant être exécuté. Par exemple la fonction `print`{.language-}.
 
 C'est un objet :
 
@@ -36,7 +36,7 @@ On *exécute* l'objet en faisant suivre son nom de parenthèses :
 
 ```
 
-L'exécution de la fonction `print`{.language-python} à produit un retour à la ligne.
+L'exécution de la fonction `print`{.language-} à produit un retour à la ligne.
 
 De nombreuses fonctions peuvent être exécutées avec des *paramètres* qui sont placées les un à la suite des autres entre les parenthèses et séparés par des virgules :
 
@@ -45,12 +45,12 @@ De nombreuses fonctions peuvent être exécutées avec des *paramètres* qui son
 coucou les gens !
 ```
 
-L'exécution de la fonction `print`{.language-python} avec les trois paramètres `"coucou"`{.language-python}, `"les gens"`{.language-python} et `"!"`{.language-python} affichera à l'écran les 3 paramètres éspacé d'un caractère (séparé par un caractère espace " ") puis ira à la ligne.
+L'exécution de la fonction `print`{.language-} avec les trois paramètres `"coucou"`{.language-}, `"les gens"`{.language-} et `"!"`{.language-} affichera à l'écran les 3 paramètres éspacé d'un caractère (séparé par un caractère espace " ") puis ira à la ligne.
 
 Toutes les fonctions de python sont documentées. On peut y accéder :
 
-* via le site de python. L'aide de la fonction `print`{.language-python} est là : <https://docs.python.org/fr/3/library/functions.html#print>
-* en console en utilisant la fonction `help`{.language-python} : `help(print)`{.language-python} donne l'aide de `print`{.language-python}
+* via le site de python. L'aide de la fonction `print`{.language-} est là : <https://docs.python.org/fr/3/library/functions.html#print>
+* en console en utilisant la fonction `help`{.language-} : `help(print)`{.language-} donne l'aide de `print`{.language-}
 
 {% exercice %}
 Affichez l'aide de la fonction print dans la console.
@@ -81,7 +81,7 @@ Si votre fenêtre est trop petite, l'affichage peut être différent.
 
 ### Paramètres d'une fonction
 
-En regardant l'aide de la fonction `print`{.language-python}, on remarque que les premiers paramètres sont sans noms (value, ...) puis les paramètres ont des noms (`sep`{.language-python}, `end`{.language-python}, `file`{.language-python}, `flush`{.language-python}) suivi d'une valeur. Ce sont des paramètres qui ont une valeur par défaut (par défaut `sep` vaut `" "`{.language-python}).
+En regardant l'aide de la fonction `print`{.language-}, on remarque que les premiers paramètres sont sans noms (value, ...) puis les paramètres ont des noms (`sep`{.language-}, `end`{.language-}, `file`{.language-}, `flush`{.language-}) suivi d'une valeur. Ce sont des paramètres qui ont une valeur par défaut (par défaut `sep` vaut `" "`{.language-}).
 
 {% note %}
 Les paramètres sans valeurs par défaut sont **obligatoires** lorsque l'on appelle une fonction, les paramètres ayant une valeur par défaut sont **optionnels**.
@@ -118,11 +118,11 @@ La classe `int` a pour définition `int(x, base=10)` si `x` est une chaîne de c
 
 Peut-on écrire :
 
-1. `int("12")`{.language-python} ?
-2. `int(base=2)`{.language-python} ?
-3. `int("12", base=8)`{.language-python} ?
-4. `int("12", 8)`{.language-python} ?
-5. `int(base=8, "12")`{.language-python} ?
+1. `int("12")`{.language-} ?
+2. `int(base=2)`{.language-} ?
+3. `int("12", base=8)`{.language-} ?
+4. `int("12", 8)`{.language-} ?
+5. `int(base=8, "12")`{.language-} ?
 
 {% endexercice %}
 {% details "solution" %}
@@ -171,7 +171,7 @@ C'est **un raccourci d'écriture**, ce n'est pas une structure python. Cela sign
 
 Certaines sont plus utiles que d'autres. Nous allons en citer certaines, parmi les plus utilisées.
 
-#### `print`{.language-python}
+#### `print`{.language-}
 
 {% chemin "**Documentation :**" %}
 <https://docs.python.org/fr/3/library/functions.html#print>
@@ -179,7 +179,7 @@ Certaines sont plus utiles que d'autres. Nous allons en citer certaines, parmi l
 
 Affiche à l'écran ses paramètres.
 
-#### `type`{.language-python}
+#### `type`{.language-}
 
 {% chemin "**Documentation :**" %}
 <https://docs.python.org/fr/3/library/functions.html#type>
@@ -191,7 +191,7 @@ Donne le type d'un objet.
 On l'a utilisée dans la partie [objets types et types d'objets](../objets-types).
 {% endinfo %}
 
-#### `len`{.language-python}
+#### `len`{.language-}
 
 {% chemin "**Documentation :**" %}
 <https://docs.python.org/fr/3/library/functions.html#len>
@@ -279,7 +279,7 @@ En utilisant le fait que la fonction `len(chaine de caractère)` donne le nombre
 
 {% enddetails %}
 
-#### `input`{.language-python}
+#### `input`{.language-}
 
 {% chemin "**Documentation :**" %}
 <https://docs.python.org/fr/3/library/functions.html#input>
@@ -300,7 +300,7 @@ On demande à l'utilisateur de taper quelque chose puis d'appuyer sur la touche 
 Tout ce qui vient de l'utilisateur est une **chaîne de caractère**. Si l'on veut que ce soit un nombre par exemple, il faut le convertir. Comme par exemple : `i = int(input())` qui converti en entier le résultat de la fonction `input`.
 {% endattention %}
 
-#### `range`{.language-python}
+#### `range`{.language-}
 
 {% chemin "**Documentation :**" %}
 <https://docs.python.org/fr/3/library/stdtypes.html#ranges>
@@ -309,7 +309,7 @@ Tout ce qui vient de l'utilisateur est une **chaîne de caractère**. Si l'on ve
 [range](https://docs.python.org/fr/3/library/stdtypes.html#ranges) est une fonction particulière, elle permet de créer — en combinaison avec `list` — des listes.
 
 {% attention %}
-On ne crée **pas** de liste directement avec `range`{.language-python}.
+On ne crée **pas** de liste directement avec `range`{.language-}.
 {% endattention %}
 
 Par exemple :
@@ -332,9 +332,9 @@ N'est **pas** une liste.
 
 La fonction range peut être utilisée de plusieurs manières :
 
-* avec un paramètre : va créer des entiers allant de 0 à *juste avant* le premier paramètre. Exemple `list(range(5))`{.language-python} rend la liste `[0, 1, 2, 3, 4]`{.language-python}
-* avec deux paramètres : va créer des entiers allant du premier paramètre  à *juste avant* le second paramètre. Exemple `list(range(2, 5))`{.language-python} rend la liste `[2, 3, 4]`{.language-python}
-* avec trois paramètres : va créer des entiers allant du premier paramètre  à *juste avant* le second paramètre touts les troisièmes paramètres. Exemple `list(range(1, 12, 3))`{.language-python} rend la liste `[1, 4, 7, 10]`{.language-python}
+* avec un paramètre : va créer des entiers allant de 0 à *juste avant* le premier paramètre. Exemple `list(range(5))`{.language-} rend la liste `[0, 1, 2, 3, 4]`{.language-}
+* avec deux paramètres : va créer des entiers allant du premier paramètre  à *juste avant* le second paramètre. Exemple `list(range(2, 5))`{.language-} rend la liste `[2, 3, 4]`{.language-}
+* avec trois paramètres : va créer des entiers allant du premier paramètre  à *juste avant* le second paramètre touts les troisièmes paramètres. Exemple `list(range(1, 12, 3))`{.language-} rend la liste `[1, 4, 7, 10]`{.language-}
 
 ## Méthodes
 
@@ -423,7 +423,7 @@ On peut chaîner les méthodes, la sortie d'une méthode devenant l'entrée de l
 objet.méthode_1().méthode_2()
 ```
 
-Signifie que méthode2() est appliquée à l'objet résultat de `objet.méthode_1()`{.language-python}
+Signifie que méthode2() est appliquée à l'objet résultat de `objet.méthode_1()`{.language-}
 
 Et avec $n$ méthodes :
 
@@ -431,7 +431,7 @@ Et avec $n$ méthodes :
 objet.methode_1().methode_2(). ... .methode_n()
 ```
 
-Signifie que `methode_n()`{.language-python} est appliquée au résultat de `objet.methode_1(). ... .methode_n-1()`{.language-python}
+Signifie que `methode_n()`{.language-} est appliquée au résultat de `objet.methode_1(). ... .methode_n-1()`{.language-}
 
 {% exercice %}
 Que fait :
@@ -445,16 +445,16 @@ str(2 ** 44497 - 1).replace("2","x").replace("7","2").replace("x","7")
 
 Il est aisé de comprendre ce que ça fait en procédant de droite à gauche :
 
-1. `replace("x","7")`{.language-python} est appliqué à ce qui est à sa gauche donc `str(2 ** 44497 - 1).replace("2","x").replace("7","2")`{.language-python}
-2. `replace("7","2")`{.language-python} est appliqué à ce qui est à sa gauche donc `str(2 ** 44497 - 1).replace("2","x")`{.language-python}
-3. `replace("2","x")`{.language-python} est appliqué à ce qui est à sa gauche donc `str(2 ** 44497 - 1)`{.language-python}
+1. `replace("x","7")`{.language-} est appliqué à ce qui est à sa gauche donc `str(2 ** 44497 - 1).replace("2","x").replace("7","2")`{.language-}
+2. `replace("7","2")`{.language-} est appliqué à ce qui est à sa gauche donc `str(2 ** 44497 - 1).replace("2","x")`{.language-}
+3. `replace("2","x")`{.language-} est appliqué à ce qui est à sa gauche donc `str(2 ** 44497 - 1)`{.language-}
 
 En remontant les opérations précédentes :
 
-1. le résultat de `str(2 ** 44497 - 1)`{.language-python}  sera une chaîne de caractère représentant le 27ème nombre premier de Mersenne
-2. `str(2 ** 44497 - 1).replace("2","x")`{.language-python} on a remplacé les 2 par des "x" dans la chaîne précédente
-3. `str(2 ** 44497 - 1).replace("2","x").replace("7","2")`{.language-python} on a remplacé les 7 par des 2 de la chaîne précédente
-4. `str(2 ** 44497 - 1).replace("2","x").replace("7","2").replace("x","7")`{.language-python} on a remplacé les "x" par des 2 dans la chaîne précédente
+1. le résultat de `str(2 ** 44497 - 1)`{.language-}  sera une chaîne de caractère représentant le 27ème nombre premier de Mersenne
+2. `str(2 ** 44497 - 1).replace("2","x")`{.language-} on a remplacé les 2 par des "x" dans la chaîne précédente
+3. `str(2 ** 44497 - 1).replace("2","x").replace("7","2")`{.language-} on a remplacé les 7 par des 2 de la chaîne précédente
+4. `str(2 ** 44497 - 1).replace("2","x").replace("7","2").replace("x","7")`{.language-} on a remplacé les "x" par des 2 dans la chaîne précédente
 
 On a donc au final échangé les 2 et les 7 du 27ème nombre premier de Mersenne
 
@@ -470,12 +470,12 @@ Les méthodes de listes, comme les méthodes de chaînes de caractères, sont tr
 
 Par exemple pour ajouter ou supprimer des éléments d'une liste :
 
-* `append`{.language-python} ajoute un élément à la fin d'une liste. Par exemple `l.append(3)`{.language-python} ajoute l'entier 3 à la fin d'une liste (si `l`{.language-python} valait `[1, 4]`{.language-python} avant, elle vaudra `[1, 4, 3]`{.language-python} après)
-* `insert`{.language-python} ajoute un élément à un index donné d la liste d'une liste. Par exemple `l.insert(1, "X")`{.language-python} insère `"X"`{.language-python} à l'indice 1 (si `l`{.language-python} valait `[1, 4]`{.language-python} avant, elle vaudra `[1, "X", 4]`{.language-python} après)
-* `del`{.language-python} supprime l'élément à l'indice de la liste. Par exemple `del l[0]`{.language-python} supprime l'élément d'indice 0 dune liste (si `l`{.language-python} valait `[1, 4]`{.language-python} avant, elle vaudra `[4]`{.language-python} après)
+* `append`{.language-} ajoute un élément à la fin d'une liste. Par exemple `l.append(3)`{.language-} ajoute l'entier 3 à la fin d'une liste (si `l`{.language-} valait `[1, 4]`{.language-} avant, elle vaudra `[1, 4, 3]`{.language-} après)
+* `insert`{.language-} ajoute un élément à un index donné d la liste d'une liste. Par exemple `l.insert(1, "X")`{.language-} insère `"X"`{.language-} à l'indice 1 (si `l`{.language-} valait `[1, 4]`{.language-} avant, elle vaudra `[1, "X", 4]`{.language-} après)
+* `del`{.language-} supprime l'élément à l'indice de la liste. Par exemple `del l[0]`{.language-} supprime l'élément d'indice 0 dune liste (si `l`{.language-} valait `[1, 4]`{.language-} avant, elle vaudra `[4]`{.language-} après)
 
 {% exercice %}
-Attention à `remove`{.language-python}, `extend`{.language-python} ou `pop`{.language-python} qui ne font pas ce qu'on croit qu'elle font.
+Attention à `remove`{.language-}, `extend`{.language-} ou `pop`{.language-} qui ne font pas ce qu'on croit qu'elle font.
 
 Que font-elles ?
 {% endexercice %}
@@ -483,9 +483,9 @@ Que font-elles ?
 
 Voir la [documentation du tutoriel](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists) :
 
-* `remove`{.language-python} supprime le **premier** élément trouvé, pas tous
-* `extend`{.language-python} ajoute les éléments d'une **liste** passée en paramètre à la la liste à gauche du `.`
-* `pop`{.language-python} supprime le dernier élément de la liste et le rend
+* `remove`{.language-} supprime le **premier** élément trouvé, pas tous
+* `extend`{.language-} ajoute les éléments d'une **liste** passée en paramètre à la la liste à gauche du `.`
+* `pop`{.language-} supprime le dernier élément de la liste et le rend
 
 {% enddetails %}
 
@@ -493,8 +493,8 @@ Voir la [documentation du tutoriel](https://docs.python.org/3/tutorial/datastruc
 
 Juste quelques méthodes utiles :
 
-* `split()`{.language-python} est une méthode de `str`{.language-python} qui produit des chaines
-* `join(liste)`{.language-python} est une méthode de `str{.language-python} qui produit une chaîne à partir d'une liste de chaines de caractère passé en paramètre
+* `split()`{.language-} est une méthode de `str`{.language-} qui produit des chaines
+* `join(liste)`{.language-} est une méthode de `str{.language-} qui produit une chaîne à partir d'une liste de chaines de caractère passé en paramètre
 
 ## Fonctions v.s. méthodes
 
@@ -505,13 +505,13 @@ ma_liste = list(range(5))
 ma_liste.append(10)
 ```
 
-La première ligne crée une liste. La seconde instruction est une *méthode* (`append`{.language-python}) qui s'applique à l'objet de nom `ma_liste` et qui a un paramètre (ici un entier valant `10`).
+La première ligne crée une liste. La seconde instruction est une *méthode* (`append`{.language-}) qui s'applique à l'objet de nom `ma_liste` et qui a un paramètre (ici un entier valant `10`).
 
 {% info %}
 On peut voir les méthodes comme des fonctions définies dans l'espace de nom de l'objet.
 {% endinfo %}
 
-Attention cependant lorsque vous utilisez des méthodes. Certaines méthodes ne rendent rien et modifient l'objet sur lequel elle est appliquée, c'est le cas des méthodes `append`{.language-python}, `insert`{.language-python} ou encore `reverse`{.language-python}, alors que d'autres rendent des objets, c'est le cas de `index`{.language-python} par exemple.
+Attention cependant lorsque vous utilisez des méthodes. Certaines méthodes ne rendent rien et modifient l'objet sur lequel elle est appliquée, c'est le cas des méthodes `append`{.language-}, `insert`{.language-} ou encore `reverse`{.language-}, alors que d'autres rendent des objets, c'est le cas de `index`{.language-} par exemple.
 
 {% a-faire %}
 Testez le code suivant pour voir la différence ;
@@ -530,7 +530,7 @@ print(ma_liste[un_indice])
 
 C'est plus rare, mais certaines classes possèdent  des également des *attributs* en plus des méthodes. Ce sont des valeurs associées à l'objet.
 
-Par exemple les objets de la classe `complex`{.language-python} qui possède les attributs `real`{.language-python} et `imag`{.language-python} pour rendre la partie réelle et imaginaire d'un complexe.
+Par exemple les objets de la classe `complex`{.language-} qui possède les attributs `real`{.language-} et `imag`{.language-} pour rendre la partie réelle et imaginaire d'un complexe.
 
 ```python
 >>> (1+2j).real

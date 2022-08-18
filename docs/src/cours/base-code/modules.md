@@ -27,9 +27,9 @@ Il existe de nombreux modules, réalisant une foultitude d'opérations. Avant de
 
 ## Utiliser un module
 
-Pour utiliser un module, il faut commencer par l'importer avec la commande `import`{.language-python}. Par exemple avec le module `math`{.language-python}.
+Pour utiliser un module, il faut commencer par l'importer avec la commande `import`{.language-}. Par exemple avec le module `math`{.language-}.
 
-Il existe plusieurs façon de faire, mais toutes fonctionnent sur le même principe : python va lire le module et associer les noms qu'il trouve à un espace de nom. Le mot clé utilisé est `import <nom de module>`{.language-python} ou une de ses variations.
+Il existe plusieurs façon de faire, mais toutes fonctionnent sur le même principe : python va lire le module et associer les noms qu'il trouve à un espace de nom. Le mot clé utilisé est `import <nom de module>`{.language-} ou une de ses variations.
 
 ### Importation directe du module
 
@@ -41,7 +41,7 @@ pi_sur_deux = math.pi / 2
 x = math.cos(pi_sur_deux) 
 ```
 
-Lors de la ligne `import math`{.language-python} python crée un espace de nom qu'il appelle `math`{.language-python}. Il lit ensuite math avec cet espace de nom. Donc tout ce qui est défini dans math, le sera dans l'espace de nom nommé `math`. On accède ensuite aux noms de math par la notation `.`.
+Lors de la ligne `import math`{.language-} python crée un espace de nom qu'il appelle `math`{.language-}. Il lit ensuite math avec cet espace de nom. Donc tout ce qui est défini dans math, le sera dans l'espace de nom nommé `math`. On accède ensuite aux noms de math par la notation `.`.
 
 {% note %}
 La notation `A.B` : se lit ainsi on cherche le nom `B` dans l'espace de nom `A`
@@ -56,7 +56,7 @@ from math import cos, pi #importation directe de cos et de pi
 x = cos(pi / 2)
 ```
 
-Lors de la ligne `from math import cos, pi`{.language-python} python crée un espace de nom pour l'import. Il lit ensuite math avec cet espace de nom. Une fois la lecture finie, il cherche les noms `cos` et `pi` et les associe à l'espace de nom **global**.
+Lors de la ligne `from math import cos, pi`{.language-} python crée un espace de nom pour l'import. Il lit ensuite math avec cet espace de nom. Une fois la lecture finie, il cherche les noms `cos` et `pi` et les associe à l'espace de nom **global**.
 
 {% info %}
 Dans cette façon de faire, on associe des noms du module math à l'espace de nom global. Il n'y a aucune manière d'accéder aux autres noms défini dans math avec cette façon de faire.
@@ -71,7 +71,7 @@ from math import *
 y = log(e)
 ```
 
-Lors de la ligne `from math import *`{.language-python} python lit le module math **dans** l'espace de nom **global**.
+Lors de la ligne `from math import *`{.language-} python lit le module math **dans** l'espace de nom **global**.
 
 ### Importation de modules sous la forme d'alias
 
@@ -105,7 +105,7 @@ Générez un entier aléatoire entre 10 et 234.
 {% enda-faire %}
 {% details "solution" %}
 
-On utilise la fonction [`randint`{.language-python} du module `random`{.language-python}](https://docs.python.org/fr/3/library/random.html#random.randint) :
+On utilise la fonction [`randint`{.language-} du module `random`{.language-}](https://docs.python.org/fr/3/library/random.html#random.randint) :
 
 ```python
 >>> import random
@@ -120,7 +120,7 @@ Générez un nombre réel uniformément dans $[0, 1[$
 {% enda-faire %}
 {% details "solution" %}
 
-On utilise la fonction [`random`{.language-python} du module `random`{.language-python}](https://docs.python.org/fr/3/library/random.html#random.random) :
+On utilise la fonction [`random`{.language-} du module `random`{.language-}](https://docs.python.org/fr/3/library/random.html#random.random) :
 
 ```python
 >>> import random
@@ -131,11 +131,11 @@ On utilise la fonction [`random`{.language-python} du module `random`{.language-
 {% enddetails %}
 
 {% a-faire %}
-Choisissez 2 éléments **avec** remise de la liste `["pomme", "abricot", "orange", "cerise"]`{.language-python}
+Choisissez 2 éléments **avec** remise de la liste `["pomme", "abricot", "orange", "cerise"]`{.language-}
 {% enda-faire %}
 {% details "solution" %}
 
-On utilise la fonction [`choices`{.language-python} du module `random`{.language-python}](https://docs.python.org/fr/3/library/random.html#random.choices) :
+On utilise la fonction [`choices`{.language-} du module `random`{.language-}](https://docs.python.org/fr/3/library/random.html#random.choices) :
 
 ```python
 >>> import random
@@ -147,11 +147,11 @@ On utilise la fonction [`choices`{.language-python} du module `random`{.language
 
 {% a-faire %}
 Choisissez 2 éléments **sans** remise de la liste `["pomme", "abricot", "orange", "cerise"]`
-{.language-python}
+{.language-}
 {% enda-faire %}
 {% details "solution" %}
 
-On utilise la fonction [`sample`{.language-python} du module `random`{.language-python}](https://docs.python.org/fr/3/library/random.html#random.sample) :
+On utilise la fonction [`sample`{.language-} du module `random`{.language-}](https://docs.python.org/fr/3/library/random.html#random.sample) :
 
 ```python
 >>> import random

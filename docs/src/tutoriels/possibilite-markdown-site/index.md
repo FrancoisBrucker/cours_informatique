@@ -165,7 +165,7 @@ print(l.max())
 ### Dans le texte
 
 * par défaut : `l = [1, 3, 2, 6, 4, 5]`
-* on dit que c'est un langage : `l = [1, 3, 2, 6, 4, 5]`{.language-python}.
+* on dit que c'est un langage : `l = [1, 3, 2, 6, 4, 5]`{.language-}.
 
 ## Images {#images}
 
@@ -181,11 +181,20 @@ $$2+2 = \frac{1}{2}$$
 
 Et un $\log(3)^2$ dans une phrase.
 
-{% attention "Il faut escaper les caractères d contrôle" %}
+{% attention "Il faut escaper les caractères de contrôle" %}
 
-Par exemple, pour écrire le code latex :
+$$
+\sigma(s,i) = \left\\\{
+    \begin{array}{ll}
+        \tau_{si} & \mbox{si } \{s,i\} \in E \\\\
+        \infty & \mbox{sinon.}
+    \end{array}
+\right.
+$$
 
-```text
+Ou inclure dans du html (ce qui est plus simple) :
+
+<div>
 $$
 \sigma(s,i) = \left\{
     \begin{array}{ll}
@@ -194,33 +203,10 @@ $$
     \end{array}
 \right.
 $$
-```
-
-Il faut écrire :
-
-```text
-$$
-\sigma(s,i) = \left\\\{
-    \begin{array}{ll}
-        \tau_{si} & \mbox{si } \{s,i\} \in E \\\\
-        \infty & \mbox{sinon.}
-    \end{array}
-\right.
-$$
-```
-
-Pour obtenir :
-
-$$
-\sigma(s,i) = \left\\\{
-    \begin{array}{ll}
-        \tau_{si} & \mbox{si } \{s,i\} \in E \\\\
-        \infty & \mbox{sinon.}
-    \end{array}
-\right.
-$$
+</div>
 
 {% endattention %}
+
 ## Interactions avec le lecteur
 
 ### Exercice

@@ -47,7 +47,7 @@ Si votre notebook n'est pas vide, recréez en un nouveau : *menu Fichier > Nouve
 
 {% a-faire %}
 
-1. Dans la cellule votre notebook écrivez : `print("Bonjour Monde !")`{.language-python}
+1. Dans la cellule votre notebook écrivez : `print("Bonjour Monde !")`{.language-}
 2. assurez vous que le type de la cellule soit bien *code*
 3. cliquez sur le bouton *Exécuter*
 
@@ -97,7 +97,7 @@ La valeur de la dernière ligne est souvent le résultat d'une fonction, mais ce
 
 {% a-faire %}
 
-Dans la deuxième cellule votre notebook écrivez : `"Bonjour Monde !"`{.language-python} puis exécutez là.
+Dans la deuxième cellule votre notebook écrivez : `"Bonjour Monde !"`{.language-} puis exécutez là.
 
 {% enda-faire %}
 
@@ -107,7 +107,7 @@ Vous devriez avoir quelque chose du genre :
 
 La deuxième cellule contient une chaîne de caractère, elle est affichée comme sa sortie après exécution.
 
-La différence avec la sortie de la première cellule est que `print`{.language-python} est une fonction **qui ne rend rien**, elle ne fait qu'afficher des choses à l'écran.
+La différence avec la sortie de la première cellule est que `print`{.language-} est une fonction **qui ne rend rien**, elle ne fait qu'afficher des choses à l'écran.
 
 ```python
 >>> x = print("Bonjour monde !")
@@ -124,10 +124,10 @@ Essayons de rendre tout ça un peu plus clair :
 {% a-faire %}
 Dans un notebook :
 
-1. tapez `2`{.language-python} dans une cellule puis exécutez là.
-2. tapez `1 + 1`{.language-python} dans une cellule puis exécutez là.
-3. tapez `None`{.language-python} dans une cellule puis exécutez là.
-4. tapez `"coucou".upper()`{.language-python} dans une cellule puis exécutez là.
+1. tapez `2`{.language-} dans une cellule puis exécutez là.
+2. tapez `1 + 1`{.language-} dans une cellule puis exécutez là.
+3. tapez `None`{.language-} dans une cellule puis exécutez là.
+4. tapez `"coucou".upper()`{.language-} dans une cellule puis exécutez là.
 
 {% enda-faire %}
 
@@ -135,10 +135,10 @@ Vous devriez avoir quelque chose du genre :
 
 ![console python](notebook-4.png)
 
-1. La valeur de la cellule contenant `2`{.language-python} est un entier valant 2
-2. La valeur de la cellule contenant `1 + 1`{.language-python} est un entier valant 2
-3. La valeur de la cellule contenant `None`{.language-python} est rien du tout et n'est donc pas affiché
-4. La valeur de la cellule contenant `"coucou".upper()`{.language-python} est le résultat de la méthode `upper()` appliquée à la chaîne `"coucou"`{.language-python} : c'est la chaîne de caractère `"COUCOU"`{.language-python}
+1. La valeur de la cellule contenant `2`{.language-} est un entier valant 2
+2. La valeur de la cellule contenant `1 + 1`{.language-} est un entier valant 2
+3. La valeur de la cellule contenant `None`{.language-} est rien du tout et n'est donc pas affiché
+4. La valeur de la cellule contenant `"coucou".upper()`{.language-} est le résultat de la méthode `upper()` appliquée à la chaîne `"coucou"`{.language-} : c'est la chaîne de caractère `"COUCOU"`{.language-}
 
 ### Type de cellules
 
@@ -189,9 +189,9 @@ Comme le noyau est unique, les variables définies dans une cellule peuvent êtr
 {% a-faire %}
 Dans un nouveau notebook :
 
-1. dans la première cellule, écrivez le code `x = 1`{.language-python} puis exécutez la cellule
-2. dans la seconde cellule, écrivez le code `y = 2 * x + 4`{.language-python} puis exécutez la cellule
-3. dans la troisième cellule, écrivez le code `3 * y`{.language-python} puis exécutez la cellule
+1. dans la première cellule, écrivez le code `x = 1`{.language-} puis exécutez la cellule
+2. dans la seconde cellule, écrivez le code `y = 2 * x + 4`{.language-} puis exécutez la cellule
+3. dans la troisième cellule, écrivez le code `3 * y`{.language-} puis exécutez la cellule
 {% enda-faire %}
 
 Vous devriez obtenir ceci :
@@ -207,7 +207,7 @@ Une affectation est considérée comme ne rendant rien. Il n'y a donc pas de sor
 
 Le numéro entre crochet à gauche de la cellule est son ordre d'exécution. En re-exécutant une cellule, elle repasse dans l'interpréteur et son ordre d'exécution va changer.
 
-Dans la figure ci-après, on a remplacé le code de la cellule d'ordre deux par `x = 3`{.language-python} puis on l'a re-exécuté. Son ordre d'exécution vaut maintenant 4 et non plus 1 :
+Dans la figure ci-après, on a remplacé le code de la cellule d'ordre deux par `x = 3`{.language-} puis on l'a re-exécuté. Son ordre d'exécution vaut maintenant 4 et non plus 1 :
 
 ![console python](notebook-7.png)
 

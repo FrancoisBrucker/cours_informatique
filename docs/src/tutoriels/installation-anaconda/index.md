@@ -129,10 +129,10 @@ Le langage python est appelé : `python` sous windows et `python3` sous mac et l
 Lancez l'application *Notebook* puis :
 
   1. créez un nouveau notebook `python` sous windows et `python3` sous mac et linux.
-  2. dans la cellule tapez `print("Hello world!")`{.language-python}
+  2. dans la cellule tapez `print("Hello world!")`{.language-}
   3. cliquez sur l'icône *Exécuter* sur la bannière de titre ou appuyer sur `shift + entrée`.
   
-Vous devriez voir le texte `Hello World`{.language-python} en sortie de votre cellule.
+Vous devriez voir le texte `Hello World`{.language-} en sortie de votre cellule.
 
 ### Python avec un terminal anaconda
 

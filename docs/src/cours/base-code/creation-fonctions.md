@@ -33,7 +33,7 @@ def <nom>(paramètre 1, paramètre 2, ..., paramètre n):
 
 {% endnote %}
 {% info %}
-Les paramètres et la dernière la dernière ligne avec `return`{.language-python} sont optionnelles.
+Les paramètres et la dernière la dernière ligne avec `return`{.language-} sont optionnelles.
 {% endinfo %}
 
 La partie de programme suivant définit une fonction :
@@ -70,7 +70,7 @@ Dans le code suivant, exécuté dans un interpréteur on regarde le type d'un no
 <class 'function'>
 ```
 
-On peut aussi associer la fonction à une autre variable comme on le ferait avec n'importe quel autre objet. Dans l'exemple suivant on associe la fonction à une autre variable, `x`{.language-python} :
+On peut aussi associer la fonction à une autre variable comme on le ferait avec n'importe quel autre objet. Dans l'exemple suivant on associe la fonction à une autre variable, `x`{.language-} :
 
 ```python
 >>> def bonjour():
@@ -93,7 +93,7 @@ Traceback (most recent call last):
 TypeError: 'int' object is not callable
 ```
 
-Enfin, en python être une fonction n'est rien d'autre que d'être un ***objet appelable***. Savoir si un objet est appelable ou pas se fait par la fonction `callable`{.language-python} :
+Enfin, en python être une fonction n'est rien d'autre que d'être un ***objet appelable***. Savoir si un objet est appelable ou pas se fait par la fonction `callable`{.language-} :
 
 ```python
 >>> def bonjour():
@@ -121,7 +121,7 @@ def plus_moins(nombre):
         print("Inférieur à 42")
 ```
 
-Cette fonction nécessite donc un paramètre pour être invoquée. Testez alors `plus_moins(17)`{.language-python}.
+Cette fonction nécessite donc un paramètre pour être invoquée. Testez alors `plus_moins(17)`{.language-}.
 La variable nombre sera associée à l'objet entier de valeur 17 dans la fonction. La variable nombre n'existe que dans la fonction.
 
 Python, à chaque exécution d'une fonction crée un espace de nom pour elle. Cet espace de nom sera détruit lorsque la fonction aura fini d'être exécutée. Une fois cet espace de nom crée, il associe le nom du paramètre à l'objet passé en paramètre.
@@ -130,7 +130,7 @@ Python, à chaque exécution d'une fonction crée un espace de nom pour elle. Ce
 Les *paramètres* d'une fonction sont des **noms** de variables qui ne seront connus qu'à l'intérieur de la fonction. À l'exécution de la fonction, le nom de chaque paramètre est associé à l'objet correspondant.
 {% endattention %}
 
-Regardons le bout de code suivant, qui utilise la fonction `plus_moins`{.language-python} définie précédemment :
+Regardons le bout de code suivant, qui utilise la fonction `plus_moins`{.language-} définie précédemment :
 
 ```python
 x = 12
@@ -155,15 +155,15 @@ def plus_moins(nombre, seuil=42):
         print("Inférieur à 42")
 ```
 
-On peut alors utiliser la fonction comme précédemment ou en utilisant le paramètre seuil `plus_moins(12, seuil=34)`{.language-python}.
+On peut alors utiliser la fonction comme précédemment ou en utilisant le paramètre seuil `plus_moins(12, seuil=34)`{.language-}.
 
 {% info %}
-Comme le paramètre par défaut est le deuxième on peut aussi l'utiliser sans le nommer : `plus_moins(12, 34)`{.language-python}
+Comme le paramètre par défaut est le deuxième on peut aussi l'utiliser sans le nommer : `plus_moins(12, 34)`{.language-}
 {% endinfo %}
 
 ## Retour d'une fonction
 
-Toute fonction peut rendre une valeur. On utilise le mot-clef `return`{.language-python} suivi de la valeur à rendre pour cela. Le fonction suivante rend le double de la valeur de l'objet passé en paramètre:
+Toute fonction peut rendre une valeur. On utilise le mot-clef `return`{.language-} suivi de la valeur à rendre pour cela. Le fonction suivante rend le double de la valeur de l'objet passé en paramètre:
 
 ```python
 def double(valeur):
@@ -171,7 +171,7 @@ def double(valeur):
     return x
 ```
 
-Il ne sert à rien de mettre des instructions après une instruction `return`{.language-python} car dès qu'une fonction exécute cette instruction, elle s'arrête en rendant l'objet en paramètre. Le retour d'une fonction est pratique pour calculer des choses et peut ainsi être affecté à une variable.
+Il ne sert à rien de mettre des instructions après une instruction `return`{.language-} car dès qu'une fonction exécute cette instruction, elle s'arrête en rendant l'objet en paramètre. Le retour d'une fonction est pratique pour calculer des choses et peut ainsi être affecté à une variable.
 
 {% a-faire %}
 Dans un [notebook](../notebooks), définissez la fonction précédente dans une cellule puis exécutez là.
@@ -186,9 +186,9 @@ double(21)
 
 Le résultat de la cellule devrait être : 42.
 
-En effet, le code précédent exécute la fonction de nom `double`{.language-python} avec comme paramètre un entier de valeur 21. La fonction commence par associer à une variable nommée `valeur`{.language-python} l'objet passé en paramètre (ici un entier de valeur `21`{.language-python}), puis crée une variable de nom `x`{.language-python} à laquelle est associée un entier de valeur `42`{.language-python} et enfin se termine en retournant comme valeur l'objet de nom `x`{.language-python}. Les variables `valeur`{.language-python} et `x`{.language-python} définies à l'intérieur de la fonction sont ensuite effacées (pas les objets, seulement les noms).
+En effet, le code précédent exécute la fonction de nom `double`{.language-} avec comme paramètre un entier de valeur 21. La fonction commence par associer à une variable nommée `valeur`{.language-} l'objet passé en paramètre (ici un entier de valeur `21`{.language-}), puis crée une variable de nom `x`{.language-} à laquelle est associée un entier de valeur `42`{.language-} et enfin se termine en retournant comme valeur l'objet de nom `x`{.language-}. Les variables `valeur`{.language-} et `x`{.language-} définies à l'intérieur de la fonction sont ensuite effacées (pas les objets, seulement les noms).
 
-Cette valeur retournée est utilisée par la commande `print`{.language-python} pour être affichée à l'écran.
+Cette valeur retournée est utilisée par la commande `print`{.language-} pour être affichée à l'écran.
 
 {% attention %}
 Les noms de paramètres d'une fonction et les variables déclarée à l'intérieur de la fonction n'existent qu'à l'intérieur de celle-ci. En dehors de ce blocs, ces variables n'existent plus.

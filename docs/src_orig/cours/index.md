@@ -12,7 +12,7 @@ Liste des différents cours. La plupart de ceux-ci sont enseignés par bouts dan
 ## Liste
 
 * [bases de python]({% link cours/bases-python/index.md %})
-* [algorithme, code et théorie]({% link cours/algorithme-code-theorie/index.md %})
+* [algorithme, code et théorie]({% link cours/algorithme-code-théorie/index.md %})
 * [web]({% link cours/web/index.md %})
 * [graphes]({% link cours/graphes/index.md %})
 * [développement]({% link cours/developpement/index.md %})

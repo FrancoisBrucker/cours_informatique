@@ -50,7 +50,7 @@ Intéressons nous pour l'instant à la partie de droite nommée la ***console***
 Allons-y ! Exécutons notre premier programme :
 
 {% a-faire %}
-A droite du prompt, écrivez le code `print("Bonjour monde !")`{.language-python} puis appuyez sur la touche *entrée*.
+A droite du prompt, écrivez le code `print("Bonjour monde !")`{.language-} puis appuyez sur la touche *entrée*.
 {% enda-faire %}
 
 Vous devriez obtenir quelque chose du type :

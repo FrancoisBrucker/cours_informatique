@@ -112,13 +112,13 @@ Structure de stockage la plus simple. N'est optimisé pour aucune opération sp�
 
 * manipulation de la structure :
   * savoir si $xy$ est une arête : 
-    * implémentation : `('a', 'b') in E`{.language-python}
+    * implémentation : `('a', 'b') in E`{.language-}
     * complexité : $\mathcal{O}(m)$ il faut parcourir toute la liste $E$
   * savoir si $x$ est un sommet : 
-    * implémentation : `'a' in V`{.language-python}
+    * implémentation : `'a' in V`{.language-}
     * complexité : $\mathcal{O}(n)$ il faut parcourir toute la liste $V$
   * parcourir tous les voisins d'un sommet : 
-    * implémentation : `[uv for uv in E if uv[1] == 'b']`{.language-python} (rend tous les arcs de destination `'b'`{.language-python})
+    * implémentation : `[uv for uv in E if uv[1] == 'b']`{.language-} (rend tous les arcs de destination `'b'`{.language-})
     * complexité : $\mathcal{O}(m)$ il faut parcourir toute la liste $E$
 
   
@@ -126,7 +126,7 @@ Structure de stockage la plus simple. N'est optimisé pour aucune opération sp�
   * parcourir toutes les arêtes : $\mathcal{O}(m)$
 
 {% attention %}
-Ce n'est pas parce qu'en python on peut écrire `'a' in V`{.language-python} que sa complexité est $\mathcal{O}(1)$... Il **faut** parcourir toute la liste `V`{.language-python} pour savoir si `'a'`{.language-python} y est.
+Ce n'est pas parce qu'en python on peut écrire `'a' in V`{.language-} que sa complexité est $\mathcal{O}(1)$... Il **faut** parcourir toute la liste `V`{.language-} pour savoir si `'a'`{.language-} y est.
 {% endattention %}
 
 ### liste d'adjacence {#liste-adjacence}
@@ -157,7 +157,7 @@ Ajout/suppression de sommets/arcs :
 * ajout d'un arc : $\mathcal{O}(1)$ car on l'on ajoute en fin de liste
 * suppression d'un sommet : $\mathcal{O}(n + m)$ car il faut décaler tous les indices des sommets de $V$ et les répercuter dans $E$ (il faut tout re-écrire)
 * suppression d'un arc : 
-  * implémentation : `del E[4].(3)`{.language-python} pour supprimer l'arc $(e, d)$
+  * implémentation : `del E[4].(3)`{.language-} pour supprimer l'arc $(e, d)$
   * complexité : $\mathcal{O}(n)$. Si on veut supprimer l'arc $(i, j)$  il faut supprimer $j$ dans $E[i]$ ce qui prend $\delta^+(i) < n$ opérations (il faut supprimer un élément quelconque d'une liste)
 
 
@@ -171,17 +171,17 @@ L'intérêt de cette encodage est que certaines opérations sont optimisées :
 
 * manipulation de la structure :
   * savoir si $(i, j)$ est un arc : 
-    * implémentation : `j in E[i]`{.language-python}
+    * implémentation : `j in E[i]`{.language-}
     * complexité $\mathcal{O}(\delta(i))$
   * savoir si $i$ est un sommet : 
-    * implémentation : `0 <= i < len(V)`{.language-python}
+    * implémentation : `0 <= i < len(V)`{.language-}
     * complexité : $\mathcal{O}(1)$ c'est un entier.
   * parcourir tous les voisins d'un sommet $i$ : 
-    * implémentation : `E[i]`{.language-python}
+    * implémentation : `E[i]`{.language-}
     * complexité : $\mathcal{O}(\delta(i))$. On parcourt $E[i]$.
   * parcourir tous les sommets : $\mathcal{O}(n)$
   * parcourir toutes les arêtes : 
-    * implémentation : `[(i, j) for j in E[i] for i in range(len(V))]`{.language-python}
+    * implémentation : `[(i, j) for j in E[i] for i in range(len(V))]`{.language-}
     * complexité : $\mathcal{O}(m)$ : on parcourt tous les $E[i]$ pour $0\leq i < n$
 
 
@@ -227,17 +227,17 @@ L'intérêt de cette encodage est que le fait de savoir si un arête est présen
 
 * manipulation de la structure :
   * savoir si $(i, j)$ est un arc : 
-    * implémentation : `E[i][j] == 1`{.language-python}
+    * implémentation : `E[i][j] == 1`{.language-}
     * complexité : $\mathcal{O}(1)$
   * savoir si $i$ est un sommet : 
-    * implémentation : `0 <= i < len(V)`{.language-python}
+    * implémentation : `0 <= i < len(V)`{.language-}
     * complexité : $\mathcal{O}(1)$ c'est un entier.
   * parcourir tous les voisins d'un sommet $i$ : 
-    * implémentation : `[j for j in range(len(V) if E[i](j] == 1]`{.language-python}
+    * implémentation : `[j for j in range(len(V) if E[i](j] == 1]`{.language-}
     * complexité :   $\mathcal{O}(n)$ On parcourt toute la ligne $E[i]$
   * parcourir tous les sommets : $\mathcal{O}(n)$
   * parcourir toutes les arêtes : 
-    * implémentation : ` [(i, j) for i in range(len(V)) for j in range(len(V)) if E[i][j] == 1]`{.language-python}
+    * implémentation : ` [(i, j) for i in range(len(V)) for j in range(len(V)) if E[i][j] == 1]`{.language-}
     * complexité : $\mathcal{O}(n^2)$ : on parcourt toute la matrice $E[i][j]$ pour $0\leq i, j < n$
 
 ## quand utiliser quoi ?

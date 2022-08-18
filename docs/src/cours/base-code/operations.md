@@ -26,16 +26,16 @@ Les opérations peuvent s'effectuer sur les trois types numériques que sont les
 
 Outre les classiques opérations :
 
-* `+`{.language-python} (addition)
-* `-`{.language-python} (soustraction)
-* `/`{.language-python} (division)
-* `*`{.language-python} (multiplication)
+* `+`{.language-} (addition)
+* `-`{.language-} (soustraction)
+* `/`{.language-} (division)
+* `*`{.language-} (multiplication)
 
 python possède aussi :
 
-* `//`{.language-python} division entière
-* `%`{.language-python} reste de la division
-* `**`{.language-python} exposant.
+* `//`{.language-} division entière
+* `%`{.language-} reste de la division
+* `**`{.language-} exposant.
 
 {% exercice %}
 Que vaut le quotient et le reste de la division entière de 4538 par 23 ?
@@ -57,10 +57,10 @@ Que vaut le quotient et le reste de la division entière de 4538 par 23 ?
 
 Python permet aussi de faire l'opération et de procéder immédiatement à sa réaffectation avec les opérateurs :
 
-* `x += 1`{.language-python} est équivalent à `x = x + 1`{.language-python}
-* `x -= 1`{.language-python} est équivalent à `x = x - 1`{.language-python}
-* `x /= 3`{.language-python} est équivalent à `x = x / 3`{.language-python}
-* `x *= 2`{.language-python} est équivalent à `x = x * 2`{.language-python}
+* `x += 1`{.language-} est équivalent à `x = x + 1`{.language-}
+* `x -= 1`{.language-} est équivalent à `x = x - 1`{.language-}
+* `x /= 3`{.language-} est équivalent à `x = x / 3`{.language-}
+* `x *= 2`{.language-} est équivalent à `x = x * 2`{.language-}
 
 ## Chaînes de caractères (concatenation et *)
 
@@ -96,8 +96,8 @@ On peut écrire :
 
 Comme pour les chaines de caractères :
 
-* l'opération `+`{.language-python} désigne la concaténation entre deux listes
-* l'opération `*`{.language-python} par en entier $i$ recopie la liste (ses éléments) $i$ fois.
+* l'opération `+`{.language-} désigne la concaténation entre deux listes
+* l'opération `*`{.language-} par en entier $i$ recopie la liste (ses éléments) $i$ fois.
 
 Par exemple :
 
@@ -110,8 +110,8 @@ Par exemple :
 
 Remarquez que :
 
-* `[1, 4, "douze"] + 42`{.language-python} produit une erreur puisque `42`{.language-python} est un entier et pas une liste.
-* `3 * [1, 4, "douze"]`{.language-python} fonctionne également
+* `[1, 4, "douze"] + 42`{.language-} produit une erreur puisque `42`{.language-} est un entier et pas une liste.
+* `3 * [1, 4, "douze"]`{.language-} fonctionne également
 
 Attention aux effets de bords :
 
@@ -142,18 +142,18 @@ C'est en effet la **même** liste qui a été dupliquée !
 
 Comparateurs classiques :
 
-* `<`{.language-python} : strictement plus petit
-* `<=`{.language-python} : plus petit ou égal
-* `>`{.language-python} : strictement plus grand
-* `>=`{.language-python} : plus grand ou égal
-* `==`{.language-python} : égal
-* `!=`{.language-python} : différent
-* `is`{.language-python} : égalité d'objets (en pratique uniquement utilisé pour comparer à `None`)
+* `<`{.language-} : strictement plus petit
+* `<=`{.language-} : plus petit ou égal
+* `>`{.language-} : strictement plus grand
+* `>=`{.language-} : plus grand ou égal
+* `==`{.language-} : égal
+* `!=`{.language-} : différent
+* `is`{.language-} : égalité d'objets (en pratique uniquement utilisé pour comparer à `None`)
 
-Les comparaisons rendent un booléen. Par exemple : `2 <= 3`{.language-python} rend le booléen `True`{.language-python}.
+Les comparaisons rendent un booléen. Par exemple : `2 <= 3`{.language-} rend le booléen `True`{.language-}.
 
 ### Opérations logiques
 
-* `or`{.language-python} : ou logique
-* `and`{.language-python} : et logique
-* `not`{.language-python} : négation
+* `or`{.language-} : ou logique
+* `and`{.language-} : et logique
+* `not`{.language-} : négation

@@ -117,7 +117,7 @@ Avec <https://colab.research.google.com> il est même possible d'[installer ses 
 
 ### Blocs
 
-Les blocs python permettent de grouper un ensemble de lignes de codes ensemble. On verra les blocs `while`{.language-python}, `for`{.language-python} et les blocs `if/elif/else`{.language-python}.
+Les blocs python permettent de grouper un ensemble de lignes de codes ensemble. On verra les blocs `while`{.language-}, `for`{.language-} et les blocs `if/elif/else`{.language-}.
 
 {% chemin %}
 [Blocs](blocs)

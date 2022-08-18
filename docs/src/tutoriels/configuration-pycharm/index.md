@@ -57,7 +57,7 @@ Notre premier projet avec pycharm :
 
 1. créons un fichier *file > new... > python file* et appelons le `main.py`{.fichier}
 2. à gauche de la fenêtre vous voyez les différents fichiers et à droite des fichiers. Pour l'instant nous n'en avons qu'un seul et il est vide.
-3. écrivez `print("Hello World")`{.language-python} dans le fichier. Vous n'avez pas à vous préoccuper de sauver, *pycharm* le fait automatiquement.
+3. écrivez `print("Hello World")`{.language-} dans le fichier. Vous n'avez pas à vous préoccuper de sauver, *pycharm* le fait automatiquement.
 4. exécuter votre code en allant dans le menu *Run > Run...*, une petite fenêtre s'affiche et choisissez `main.py`{.fichier}, c'est le fichier qui sera exécuté.
 5. Regardez la fenêtre du bas de *pycharm* où vous voyez le résultat de votre programme.
   

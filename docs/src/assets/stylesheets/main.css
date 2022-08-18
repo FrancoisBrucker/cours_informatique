@@ -23,7 +23,7 @@
     }
             
     h5 {
-        @apply border-black border-b border-dashed;
+        @apply border-black border-b border-dashed font-bold mt-6 mb-2;
     }
 
     mjx-container[jax="SVG"] > svg {

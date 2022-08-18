@@ -23,7 +23,7 @@ Les listes sont la structure principale lorsque l'on veut stocker plusieurs obje
 
 ## Création
 
-L'exemple suivant crée une liste de nom `x`{.language-python} qui contient l'entier 1 en 1ère position, l'entier 4 en 2ème position et la chaîne de caractères `"douze"`{.language-python} en troisième position :
+L'exemple suivant crée une liste de nom `x`{.language-} qui contient l'entier 1 en 1ère position, l'entier 4 en 2ème position et la chaîne de caractères `"douze"`{.language-} en troisième position :
 
 ```python
 >>> x = [1, 4, "douze"]
@@ -111,7 +111,7 @@ Que vaut `y` ?
 [1, 42, 'douze']
 ```
 
-`x`{.language-python} et `y`{.language-python} sont le **même** objet sous deux noms différents.
+`x`{.language-} et `y`{.language-} sont le **même** objet sous deux noms différents.
 
 {% enddetails %}
 
@@ -123,19 +123,24 @@ On peut créer des matrices facilement en utilisant des listes de listes. Consid
 >>> M = [[1, 2, 3], [4, 4, 6]]
 ```
 
-On a crée une variable `M`{.language-python} qui contient une liste de 2 listes : c'est une matrice à 2 lignes et 3 colonnes.
+On a crée une variable `M`{.language-} qui contient une liste de 2 listes : c'est une matrice à 2 lignes et 3 colonnes.
 
-* La 1ère ligne de la matrice est `M[0]`{.language-python} et la seconde `M[1]`{.language-python}
-* l'élément à la 1ère ligne et deuxième colonne s'écrit : `M[0][1]`{.language-python}
+* La 1ère ligne de la matrice est `M[0]`{.language-} et la seconde `M[1]`{.language-}
+* l'élément à la 1ère ligne et deuxième colonne s'écrit : `M[0][1]`{.language-}
 
-## Copie d'une sous-liste
+## Copie d'une sous-liste {#slice}
 
 On peut copier une partie d'une liste.
-Pour **copier la liste l à partir de l'indice i jusqu'à l'indice j avec un pas de k** par exemple : `l[i:j:k]`{.language-python}
-Il n'est pas nécessaire de renseigner tous les champs.
+Pour **copier la liste l à partir de l'indice i jusqu'à l'indice j avec un pas de k** par exemple : `l[i:j:k]`{.language-}
+
+Il n'est pas nécessaire de renseigner tous les champs. Si $l = [l_0, \dots, l_{n-1}]$, alors :
+
+* `l[i:]`{.language-} sera la liste $[l_0, \dots, l_{i-1}]$
+* `l[:i]`{.language-} sera la liste $[l_i, \dots, l_{n-1}]$
+* `l[i:j]`{.language-} sera la liste $[l_i, \dots, l_{j-1}]$
 
 {% exercice %}
-que donne `l[::3]`{.language-python} ou `l[1::5]`{.language-python} pour la liste `[3, 6, 9, 12, 15, 18, 21, 24, 27, 30]`{.language-python} ?
+que donne `l[::3]`{.language-} ou `l[1::5]`{.language-} pour la liste `[3, 6, 9, 12, 15, 18, 21, 24, 27, 30]`{.language-} ?
 {% endexercice %}
 {% details "solution" %}
 

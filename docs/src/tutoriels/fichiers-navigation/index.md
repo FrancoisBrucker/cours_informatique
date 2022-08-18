@@ -215,5 +215,4 @@ Si vous voulez aller dans un dossier particulier, vous pouvez utiliser : *menu A
 
 ## Utiliser le terminal
 
-Naviguer dans un système de fichier et exécuter ds commandes est le but de l'[application terminal](../terminal-utilisation %})
-
+Naviguer dans un système de fichier et exécuter ds commandes est le but de l'[application terminal](../terminal-utilisation)

@@ -65,9 +65,9 @@ Vous devriez arriver à quelque chose du genre :
 Pour dessiner un graphique, on procédera toujours de la même façon :
 
 1. on crée les données à représenter
-2. créer le graphique avec matplotlib : `fig, ax = plt.subplots(figsize=(20, 5))`{.language-python}
-3. ajouter des choses au dessin : plusieurs commandes ajoutant des choses au dessin, c'est à dire `ax`{.language-python}
-4. représenter la figure (commande `plt.show()`{.language-python}) ou la sauver dans un fichier
+2. créer le graphique avec matplotlib : `fig, ax = plt.subplots(figsize=(20, 5))`{.language-}
+3. ajouter des choses au dessin : plusieurs commandes ajoutant des choses au dessin, c'est à dire `ax`{.language-}
+4. représenter la figure (commande `plt.show()`{.language-}) ou la sauver dans un fichier
 
 Le code suivant permet de représenter la courbe $y=x^2$ :
 
@@ -111,12 +111,12 @@ Vous devriez arriver à quelque chose du genre :
 
 Essayons de comprendre comment tout ça fonctionne :
 
-1. la partie 1 crée deux listes, `x`{.language-python} et `y`{.language-python} qui vont représentez les points $(x[i], y[i])$  à représenter
+1. la partie 1 crée deux listes, `x`{.language-} et `y`{.language-} qui vont représentez les points $(x[i], y[i])$  à représenter
 2. la première ligne de la partie 2 crée les objets matplotlib sur lesquelles tracer les courbes.
-    * On utilise ici `ax`{.language-python} qui représente un dessin de 20 unités sur 5.
-    * on peut paramétrer l'objet `ax`{.language-python} pour limiter le graphique (par défaut, le dessin prendra la taille de ce qui est dessiné)
-3. la troisième partie dessine nos points (reliés par des segments) sur l'objet `ax`{.language-python}
-4. enfin, on représente l'objet `ax`{.language-python} à l'écran.
+    * On utilise ici `ax`{.language-} qui représente un dessin de 20 unités sur 5.
+    * on peut paramétrer l'objet `ax`{.language-} pour limiter le graphique (par défaut, le dessin prendra la taille de ce qui est dessiné)
+3. la troisième partie dessine nos points (reliés par des segments) sur l'objet `ax`{.language-}
+4. enfin, on représente l'objet `ax`{.language-} à l'écran.
 
 {% exercice %}
 Changez la courbe pour représenter $y = \frac{1}{2}x^2$
@@ -235,7 +235,7 @@ ax.bar(range(len(y)), y, color="green",
 plt.show()
 ```
 
-On a ajouté les attributs `ax.set_xticks`{.language-python} et `ax.set_xticklabels`{.language-python} pour représenter les significations dus histogrammes.
+On a ajouté les attributs `ax.set_xticks`{.language-} et `ax.set_xticklabels`{.language-} pour représenter les significations dus histogrammes.
 
 ## Tracé camembert
 
