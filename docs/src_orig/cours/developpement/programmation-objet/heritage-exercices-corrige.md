@@ -11,7 +11,7 @@ authors:
 
 ### odds and ends
 
-refaite les exercice de la partie [odds and ends]({% link cours/developpement/programmation-objet/heritage.md %}#odds-and-ends) du cours sans regarder la solution.
+refaite les exercice de la partie [odds and ends]({% link cours/developpement/programmation-objet/héritage.md %}#odds-and-ends) du cours sans regarder la solution.
 
 Puis créez un objet `objet_a` de la classe `A` et un objet `objet_b` de la classe `B`.
 

@@ -164,7 +164,7 @@ Vous allez lancer des dés avec appJar
 
 ### un dé
 
-Reprenez le code du dé de la [séance d'exercices sur l'héritage]({% link cours/developpement/programmation-objet/heritage-exercices.md %}#code-dice)
+Reprenez le code du dé de la [séance d'exercices sur l'héritage]({% link cours/developpement/programmation-objet/héritage-exercices.md %}#code-dice)
 
 ### l'interface
 

@@ -19,7 +19,7 @@ Que peut ou pas faire un algorithme.
 
 * [fonctions](fonctions)
 * [complexité d'un problème](complexité-problème)
+* [fonctions de hash](fonctions-hash)
 * [machine de Turing](machine-turing)
 * [décidabilité](decidabilite)
 * [calculabilité](calculabilite)
-* [fonctions de hash](fonctions-hash)

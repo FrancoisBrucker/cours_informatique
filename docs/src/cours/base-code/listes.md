@@ -21,12 +21,19 @@ Les listes sont la structure principale lorsque l'on veut stocker plusieurs obje
 <https://docs.python.org/fr/3/tutorial/introduction.html#lists>
 {% endchemin %}
 
-## Création
+## Création directe
 
 L'exemple suivant crée une liste de nom `x`{.language-} qui contient l'entier 1 en 1ère position, l'entier 4 en 2ème position et la chaîne de caractères `"douze"`{.language-} en troisième position :
 
 ```python
 >>> x = [1, 4, "douze"]
+```
+
+La fonction `len`{.language-}. L'instruction `len(x)`{.language-} rendra un objet de type entier contenant comme valeur la longueur de la liste, ici 3 :
+
+```python
+>>> len(x)
+3
 ```
 
 ## Accès à un élément d'une liste
@@ -127,6 +134,60 @@ On a crée une variable `M`{.language-} qui contient une liste de 2 listes : c'e
 
 * La 1ère ligne de la matrice est `M[0]`{.language-} et la seconde `M[1]`{.language-}
 * l'élément à la 1ère ligne et deuxième colonne s'écrit : `M[0][1]`{.language-}
+
+## Suppression d'un élément d'une liste
+
+On peut utiliser la commande `del`{.language-} pour supprimer un indice d'une liste~: l'instruction `del l[1]`{.language-} supprime de la liste de nom `l`{.language-} l'indice 1. L'objet associé au nom `l` est **modifié**, il n'est plus que de longueur 2.
+
+```python
+>>> x = [1, 4, "douze"]
+>>> del x[1]
+>>> x
+[1, 'douze']
+```
+
+## Ajout d'un élément dans une liste
+
+Nous utiliserons essentiellement deux façons d'ajouter des éléments à une liste, tous les deux utilisant des [méthodes](../fonctions-méthodes#méthodes) des objets de type liste.
+
+Nous verrons plus tard ce qu'est exactement une méthode, mais pour l'instant, voyons juste comment les utiliser.
+
+{% note "Utilisation des méthodes d'une classe" %}
+Supposons que l'on ait un objet de nom `obj`{.language-} et une méthode nommée `meth`{.language-} associée au type de l'objet de nom  `obj`{.language-}.
+
+L'instruction `obj.meth()`{.language-} exécutera la méthode `meth`{.language-} pour l'objet `obj`{.language-}. Si la méthode nécessite des paramètres, ils seront placés à l'intérieur de la parenthèse, séparés par des virgules. Par exemple `obj.meth(param1, param2)`{.language-}).
+{% endnote %}
+
+Pour ajouter des éléments à une liste, nous utiliserons les méthodes :
+
+* `append` qui ajoutent un élément en fin de liste :
+
+    ```python
+    >>> x = [1, 4, "douze"]
+    >>> x.append("a la fin")
+    >>> x
+    [1, 4, 'douze', 'a la fin']
+    ```
+
+* `insert` qui permettent d'ajouter un élément **avant** un indice passé en paramètre. Dans l'exemple, on ajoute un élément avant le l'élément d'indice 0, c'est à dire au début :
+
+    ```python
+    >>> x = [1, 4, "douze"]
+    >>> x.insert(0, "au debut")
+    >>> x
+    ['au debut', 1, 4, 'douze']
+    >>> 
+    ```
+
+## Création avec `range`{.language-}
+
+La fonction `range`{.language-} crée un générateur (quelque chose qui produit des nombres). Elle peut s'utiliser de trois façons différentes qu'elle soit appelée avec un, deux ou trois paramètres :
+
+* de `0`{.language-} à juste avant `paramètre`{.language-}. Par exemple `range(10)`{.language-} rendra un générateur de la suite des 10 entiers allant de 0 à 9.
+* de `premier paramètre`{.language-} à juste avant `deuxième paramètre`{.language-}. Par exemple `range(4, 10)`{.language-} rendra un générateur de la suite des 6 entiers allant de 4 à 9.
+* `premier paramètre`{.language-} à juste avant `deuxième paramètre`{.language-}, avec un saut de `troisième paramètre`{.language-}. Par exemple `range(10, -1, -1)`{.language-} rendra un générateur de la suite 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0.
+
+Un générateur **n'est pas** une liste. On peut l'utiliser tel quel dans les boucles, mais si on veut créer une liste contenant la suite des nombres produits par le générateur, on le convertit en liste avec le type `list`{.language-}. Ainsi `list(range(10))`{.language-} crée une liste `[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]`{.language-}.
 
 ## Copie d'une sous-liste {#slice}
 

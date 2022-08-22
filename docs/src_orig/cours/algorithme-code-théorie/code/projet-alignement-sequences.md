@@ -11,7 +11,7 @@ author: "François Brucker"
 > prérequis :
 >
 > * [étude : alignement de séquences]({% link cours/algorithme-code-théorie/algorithme/etude-alignement-sequences.md %})
-> * [héritage]({% link cours/algorithme-code-théorie/code/programmation-objet/heritage.md %})
+> * [héritage]({% link cours/algorithme-code-théorie/code/programmation-objet/héritage.md %})
 > * [projet : fichiers]({% link cours/algorithme-code-théorie/code/projet-fichiers.md %})
 >
 {.chemin}

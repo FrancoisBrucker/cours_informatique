@@ -7,7 +7,10 @@
 
 ## autres
 
-- faire un tuto seaborn. (utiliser le projet-tris comme base)
+- cours base/code ajout prérequis au cours
+- faire un tuto seaborn. 
+	-utiliser le projet-tris comme base
+	- parler des palettes
 
 - notions python :
 	* mutable et non mutable

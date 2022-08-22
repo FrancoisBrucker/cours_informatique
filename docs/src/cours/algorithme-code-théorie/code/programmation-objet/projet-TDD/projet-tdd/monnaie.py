@@ -28,8 +28,8 @@ class Banque:
     def conversion(self, expression, devise):
         return expression.conversion(self, devise)
 
-    def change(self, devise_depart, devise_arrivee):
-        if devise_depart == devise_arrivee:
+    def change(self, devise_depart, devise_arrivée):
+        if devise_depart == devise_arrivée:
             return 1
         elif devise_depart == "USD":
             return 0.5

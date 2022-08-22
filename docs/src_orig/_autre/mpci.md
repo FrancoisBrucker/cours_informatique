@@ -92,13 +92,13 @@ Au programme :
 
 #### mercredi {#m-5}
 
-1. [mémoire et espace de noms]({% link cours/algorithme-code-théorie/code/memoire-et-espace-noms.md %})
+1. [mémoire et espace de noms]({% link cours/algorithme-code-théorie/code/mémoire-espace-noms.md %})
 2. [classes et objets]({% link cours/algorithme-code-théorie/code/programmation-objet/classes-et-objets.md %})
 
 #### vendredi {#v-5}
 
-1. [composition et agrégation]({% link cours/algorithme-code-théorie/code/programmation-objet/composition-agregation.md %})
-2. [projet : composition et agrégation]({% link cours/algorithme-code-théorie/code/programmation-objet/projet-composition-agregation.md %})
+1. [composition et agrégation]({% link cours/algorithme-code-théorie/code/programmation-objet/composition-agrégation.md %})
+2. [projet : composition et agrégation]({% link cours/algorithme-code-théorie/code/programmation-objet/projet-composition-agrégation.md %})
 
 ### semaine 6
 
@@ -107,13 +107,13 @@ Au programme :
 
 #### mercredi {#m-6}
 
-1. corrigé du [projet : composition et agrégation]({% link cours/algorithme-code-théorie/code/programmation-objet/projet-composition-agregation.md %})
-2. [héritage]({% link cours/algorithme-code-théorie/code/programmation-objet/heritage.md %}) (début)
+1. corrigé du [projet : composition et agrégation]({% link cours/algorithme-code-théorie/code/programmation-objet/projet-composition-agrégation.md %})
+2. [héritage]({% link cours/algorithme-code-théorie/code/programmation-objet/héritage.md %}) (début)
 
 #### vendredi {#v-6}
 
-1. [héritage]({% link cours/algorithme-code-théorie/code/programmation-objet/heritage.md %}) (fin)
-2. [projet : héritage]({% link cours/algorithme-code-théorie/code/programmation-objet/projet-heritage.md %})
+1. [héritage]({% link cours/algorithme-code-théorie/code/programmation-objet/héritage.md %}) (fin)
+2. [projet : héritage]({% link cours/algorithme-code-théorie/code/programmation-objet/projet-héritage.md %})
 3. pour aller plus loin : [projet : TDD]({% link cours/algorithme-code-théorie/code/programmation-objet/projet-tdd.md %})
 
 ### semaine 7

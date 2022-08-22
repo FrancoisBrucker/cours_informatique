@@ -40,24 +40,24 @@ Cours sur les objets et les classes et comment on les code en python.
 
 Comment composer et agréger les objets pour créer des objets plus fonctionnels :
 
-1. [composition et agrégation]({% link cours/developpement/programmation-objet/composition-agregation.md %})
+1. [composition et agrégation]({% link cours/developpement/programmation-objet/composition-agrégation.md %})
 
 ### séance 4 (**SM**)
 
 Exercice de modélisation objet en python :
 
-1. [exercices]({% link cours/developpement/programmation-objet/objets-composition-agregation-exercices.md %})
-2. [corrigé]({% link cours/developpement/programmation-objet/objets-composition-agregation-exercices-corrige.md %})
+1. [exercices]({% link cours/developpement/programmation-objet/objets-composition-agrégation-exercices.md %})
+2. [corrigé]({% link cours/developpement/programmation-objet/objets-composition-agrégation-exercices-corrige.md %})
 
 ### séance 5 (**CM**)
 
-1. [héritage en programmation objet]({% link cours/developpement/programmation-objet/heritage.md %})
+1. [héritage en programmation objet]({% link cours/developpement/programmation-objet/héritage.md %})
 
 ### séance 6 (**SM**)
 
-1. [exercices sur l'héritage]({% link cours/developpement/programmation-objet/heritage-exercices.md %})
+1. [exercices sur l'héritage]({% link cours/developpement/programmation-objet/héritage-exercices.md %})
 Codons des classes qui héritent les unes des autres
-2. [corrigé]({% link cours/developpement/programmation-objet/heritage-exercices-corrige.md %})
+2. [corrigé]({% link cours/developpement/programmation-objet/héritage-exercices-corrige.md %})
 
 ### séance 7 (**SM**)
 

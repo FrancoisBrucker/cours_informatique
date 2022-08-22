@@ -13,7 +13,7 @@ Présentation du mécanisme d'héritage qui permettant de factoriser du code ent
 
 Dans un programme, les classes sont organisées hiérarchiquement, la classe *racine* étant appelé *object*.
 
-![classes héritage]({{ "/assets/cours/developpement/programmation-objet/classes_heritage.png" | relative_url }}){:style="margin: auto;display: block}
+![classes héritage]({{ "/assets/cours/developpement/programmation-objet/classes_héritage.png" | relative_url }}){:style="margin: auto;display: block}
 
 Dans la figure précédente :
 
@@ -112,7 +112,7 @@ On va supposer que le [polygone est simple](https://fr.wikipedia.org/wiki/Polygo
 
 Point et polygone entretiennent un lien d'agrégation (les points sont passé au polygone à sa construction). Le modèle UML suivant :
 
-![point polygone]({{ "/assets/cours/developpement/programmation-objet/heritage_point_poly.png" | relative_url }}){:style="margin: auto;display: block}
+![point polygone]({{ "/assets/cours/developpement/programmation-objet/héritage_point_poly.png" | relative_url }}){:style="margin: auto;display: block}
 
 #### code python
 
@@ -204,7 +204,7 @@ Comme un triangle **est un** polygone simple, on peut utiliser l'héritage pour 
 
 Elle est très simple :
 
-![triangle]({{ "/assets/cours/developpement/programmation-objet/heritage_triangle.png" | relative_url }}){:style="margin: auto;display: block}
+![triangle]({{ "/assets/cours/developpement/programmation-objet/héritage_triangle.png" | relative_url }}){:style="margin: auto;display: block}
 
 Notez que pour l'héritage, on ne remet pas les attributs/méthodes définis dans les classes mères.
 
@@ -262,7 +262,7 @@ Le personnage générique doit :
 
 #### UML du personnage
 
-![personnage]({{ "/assets/cours/developpement/programmation-objet/heritage_personnage.png" | relative_url }}){:style="margin: auto;display: block}
+![personnage]({{ "/assets/cours/developpement/programmation-objet/héritage_personnage.png" | relative_url }}){:style="margin: auto;display: block}
 
 #### code python du personnage
 
@@ -291,7 +291,7 @@ La guerrière dispose d'un score de bloquage qui représente son pourcentage de 
 
 c'est un personnage, on peut donc utiliser l'héritage.
 
-![Guerrière]({{ "/assets/cours/developpement/programmation-objet/heritage_guerriere.png" | relative_url }}){:style="margin: auto;display: block}
+![Guerrière]({{ "/assets/cours/developpement/programmation-objet/héritage_guerriere.png" | relative_url }}){:style="margin: auto;display: block}
 
 On ne met que les méthodes qui changent, donc le constructeur et se faire taper.
 
@@ -329,7 +329,7 @@ Le magicien peut faire tout ce que peut faire un personnage normal mais il dispo
 
 On ajoute une nouvelle méthode qui n'existe pas dans la classe mère :
 
-![Magicien]({{ "/assets/cours/developpement/programmation-objet/heritage_magicien.png" | relative_url }}){:style="margin: auto;display: block}
+![Magicien]({{ "/assets/cours/developpement/programmation-objet/héritage_magicien.png" | relative_url }}){:style="margin: auto;display: block}
 
 #### code python du magicien
 

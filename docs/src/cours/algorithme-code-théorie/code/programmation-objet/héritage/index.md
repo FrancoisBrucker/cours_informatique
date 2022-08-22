@@ -1,67 +1,77 @@
 ---
-layout: page
-title:  "Héritage"
-category: cours
-authors: 
-  - François Brucker
-  - Célia Châtel
+layout: layout/post.njk 
+title: "Héritage"
 ---
 
-> [Algorithme, code et théorie]({% link cours/algorithme-code-théorie/index.md %}) / [code]({% link cours/algorithme-code-théorie/code/index.md %}) / [programmation objet]({% link cours/algorithme-code-théorie/code/programmation-objet/index.md %}) / [héritage]({% link cours/algorithme-code-théorie/code/programmation-objet/heritage.md %})
->
-> **prérequis :**
->
-> * [composition et agrégation]({% link cours/algorithme-code-théorie/code/programmation-objet/composition-agregation.md %})
-{.chemin}
+{% chemin %}
+[Cours]({{ "../../.." }}) / [Algorithme, code et théorie]({{ "../.." }}) / [Code]({{ "../.." }}) / [Programmation Objet]({{ ".." }}) / [{{title}}]({{ "." }})
+{% endchemin %}
+{% prerequis "**Prérequis** :" %}
+
+* [Composition et agrégation](../composition-agrégation)
+
+{% endprerequis %}
+
+<!-- début résumé -->
 
 Présentation du mécanisme d'héritage qui permet de factoriser du code entre classes.
 
-## principe de l'héritage
+<!-- end résumé -->
 
-Dans un programme, les classes sont organisées hiérarchiquement, la classe *racine* étant la classe la plus haute (ici elle s'appelle **object**).
+## Principe de l'héritage
 
-![classes héritage](./assets/heritage-classes.png){:style="margin: auto;display: block;"}
+Dans un programme, les classes sont organisées hiérarchiquement, la classe *racine* étant la classe la plus haute (ici elle s'appelle `object`).
+
+![classes héritage](héritage-classes.png)
 
 Dans la figure précédente :
 
-* la classe **object** est la *racine* de la hiérarchie, c'est la classe la plus haute
-* la classe **1** est la *classe mère* de la classe **2**
-* la classe **2** est une *classe fille* de la classe **1**
+* la classe `object` est la *racine* de la hiérarchie, c'est la classe la plus haute
+* la `classe 1` est la *classe mère* de la `classe 2`
+* la `classe 2` est une *classe fille* de la `classe 1`
 
 La figure montre également la désignation UML de l'héritage : une flèche avec un triangle vide.
 
-> En python, toutes les classes héritent de la classe `object`. Par exemple `issubclass(list, object)` répond `True`.
+{% info %}
+En python, toutes les classes héritent de la classe `object`{.language-}. Par exemple `issubclass(list, object)`{.language-} répond `True`{.language-}.
+{% endinfo %}
 
-### utilisation de l'héritage
+### Utilisation de l'héritage
 
 L'héritage permet d'utiliser les attributs et méthodes créées dans les classes mères de façon simple :
 
 1. soit en cherchant dans la hiérarchie des classes l'attribut ou l'objet appelé depuis une classe fille
 2. soit en appelant directement un attribut ou un objet de la classe mère.
 
-#### chercher dans la hiérarchie
+#### Chercher dans la hiérarchie
 
-Supposons que j'ai un objet de la "classe 2" `obj` qui veut appeler la méthode 1 : `obj.methode1()`
+Supposons que j'ai un objet nommé `obj`{.language-} de classe `classe 2` qui veut appeler la méthode 1 : `obj.méthode1()`{.language-}
 
-1. on va chercher `methode1` dans l'espace de nom de `obj` : il n'y est pas.
-2. on va alors chercher dans sa classe, `classe2` : elle ne définit pas `méthode1`
-3. on cherche alors dans la classe mère de classe 2, `classe1` : `méthode1` est définie, on utilise son code.
+1. on va chercher `méthode1`{.language-} dans l'espace de nom de `obj`{.language-} : il n'y est pas.
+2. on va alors chercher dans sa classe, `classe 2` : elle ne définit pas `méthode1`{.language-}
+3. on cherche alors dans la classe mère de `classe 2`, `classe 1` : `méthode1`{.language-} est définie, on utilise son code.
 
-> si l'on arrive jusqu'à la classe `object` et qu'elle ne contient pas le nom recherché une erreur est lancée.
+{% note %}
+Si l'on arrive jusqu'à la classe `object` et qu'elle ne contient pas le nom recherché une erreur est lancée.
+{% endnote %}
 
-#### appeler directement
+#### Appeler directement une sous/sur-classe
 
-Supposons que dans la définition de `méthode1` de la "classe 2'" on particularise la méthode `méthode1` de la `classe1`. On appelle alors la méthode `méthode1` de la classe 1 dans la définition de la `méthode1` de la classe `2'`.
+Supposons que dans la définition de `méthode1`{.language-} de la `classe 2'` on particularise la méthode `méthode1`{.language-} de la `classe 1`. On appelle alors la méthode `méthode1`{.language-} de la `classe 1` dans la définition de la `méthode1`{.language-} de la `classe 2'`.
 
->si l'on ne retrouve pas la méthode dans la classe mère, on remonte la hiérarchie. De là, tenter d'utiliser la méthode `méthode1`  de la classe `1'` en définissant la  méthode `méthode1`  de la classe `2''` va en fait exécuter la méthode  méthode `méthode1`  de la classe `object`
+{% note %}
 
-### connaitre la hiérarchie
+Si l'on ne retrouve pas la méthode dans la classe mère, on remonte la hiérarchie. De là, tenter d'utiliser la méthode `méthode1`  de la `classe 1'` en définissant la  méthode `méthode1`  de la `classe 2''` va en fait exécuter la méthode  méthode `méthode1`  de la classe `object`.
 
-En python, si l'on veut connaitre l'ordre dans lequel les classes vont être examinée lors de la remontée de la hiérarchie, on peut utiliser la méthode `mro()` (pour "method resolution order") des classes. Cette méthode regarde l'attribut `__mro__`.
+{% endnote %}
+
+### Connaître la hiérarchie
+
+En python, si l'on veut connaître l'ordre dans lequel les classes vont être examinée lors de la remontée de la hiérarchie, on peut utiliser la méthode `mro()`{.language-} (pour "method resolution order") des classes. Cette méthode regarde l'attribut `__mro__`{.language-}.
 
 Par exemple, dans un interpréteur :
 
-```text
+```python
 >>> str.mro()
 [<class 'str'>, <class 'object'>]
 >>> str.__mro__
@@ -69,11 +79,13 @@ Par exemple, dans un interpréteur :
 >>> 
 ```
 
-L'ordre dans lequel est examinée les classe pour les chaines de caractères est donc : d'abord la classe `str` puis la classe `object`
+L'ordre dans lequel est examinée les classe pour les chaines de caractères est donc : d'abord la classe `str`{.language-} puis la classe `object`{.language-}
 
-> La classe `object` est toujours le dernier élément de la liste
+{% info %}
+La classe `object`{.language-} est toujours le dernier élément de la liste
+{% endinfo %}
 
-### quand utiliser l'héritage
+### Quand utiliser l'héritage
 
 La composition et l'agrégation permettent de factoriser des fonctionnalités alors que l'héritage factorise du code. On va donc toujours favoriser la composition à l'héritage si c'est possible.
 
@@ -84,13 +96,15 @@ Il y a cependant des cas où l'héritage est très utile :
 
 La règle est que lorsque l'héritage doit ré-écrire toutes les méthodes de sa classe mère pour qu'il n'y ait pas de conflit, alors il faut changer d'approche. Une classe et sa classe mère doivent partager beaucoup de méthodes (ou que les méthodes soient des cas particuliers).
 
-### héritage multiple
+### Héritage multiple
 
 Python autorise l'[héritage multiple](https://docs.python.org/fr/3/tutorial/classes.html#multiple-inheritance), mais sans très bonne raison il est plus que recommandé de ne pas l'utiliser. Il existe **toujours** une solution utilisant l'héritage simple qui sera plus facile à comprendre et surtout à maintenir dans le temps.
 
 D'ailleurs, certains langages, comme le java par exemple, interdisent carrément l'héritage multiple.
 
-> Si cela vous intéresse, python utilise la règle [de linéarisation C3](https://en.wikipedia.org/wiki/C3_linearization) pour réaliser l'ordre de priorité des classes (le mro), ceci permet de résoudre le [problème du diamant](https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_diamant) en héritage multiple.
+{% info %}
+Si cela vous intéresse, python utilise la règle [de linéarisation C3](https://en.wikipedia.org/wiki/C3_linearization) pour réaliser l'ordre de priorité des classes (le mro), ceci permet de résoudre le [problème du diamant](https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_diamant) en héritage multiple.
+{% endinfo %}
 
 ## Exemple 1 : héritage simple
 
@@ -104,26 +118,26 @@ On veut manipuler des polygones. On veut pouvoir :
 
 ### classes Point et Polygone
 
-Pour cela, on va créer une classe `Point` et une classe `Polygone` :
+Pour cela, on va créer une classe `Point`{.language-} et une classe `Polygone`{.language-} :
 
-* classe `Point` :
+* classe `Point`{.language-} :
   * on se restreint à la 2D
   * coordonnées cartésiennes
   * distance à un autre point pour pouvoir plus facilement calculer le périmètre ensuite
-* classe `Polygone` :
+* classe `Polygone`{.language-} :
   * création avec une liste de Point
   * calcul du périmètre
   * calcul de l'aire
 
 On va supposer que le [polygone est simple](https://fr.wikipedia.org/wiki/Polygone_simple) pour simplifier le calcul de l'aire...
 
-#### uml
+#### Uml
 
 Point et polygone entretiennent un lien d'agrégation (les points sont passés au polygone à sa construction). Le modèle UML suivant :
 
-![point polygone]({{ "/assets/cours/developpement/programmation-objet/heritage_point_poly.png" | relative_url }}){:style="margin: auto;display: block}
+![point polygone](héritage_point_poly.png)
 
-#### code python
+#### Code python
 
 On peut alors avoir le code python suivant pour créer les classes :
 
@@ -186,7 +200,9 @@ class Polygone:
 
 ```
 
-> On a rendu les attributs des classes privés. La convention en python pour rendre un attribut privé est de lui coller un `_` avant son nom.
+{% info %}
+On a rendu les attributs des classes privés. La convention en python pour rendre un attribut privé est de lui coller un `_` avant son nom.
+{% endinfo %}
 
 Remarques :
 
@@ -203,23 +219,23 @@ print(polygone.périmètre())
 print(polygone.aire())
 ```
 
-### un polygone particulier
+### Un polygone particulier
 
 Comment modéliser une classe triangle ?
 
 Comme un triangle **est un** polygone simple, on peut utiliser l'héritage pour cela.
 
-#### modélisation UML
+#### Modélisation UML
 
 Elle est très simple :
 
-![triangle]({{ "/assets/cours/developpement/programmation-objet/heritage_triangle.png" | relative_url }}){:style="margin: auto;display: block}
+![triangle](héritage_triangle.png)
 
 Notez que pour l'héritage, on ne remet pas les attributs/méthodes définis dans les classes mères.
 
-#### code python du Triangle
+#### Code python du Triangle
 
-La classe `Triangle` hérite de `Polygon`, on appelle donc le constructeur de ce dernier lors de la création d'un `Triangle`.
+La classe `Triangle`{.language-} hérite de `Polygon`{.language-}, on appelle donc le constructeur de ce dernier lors de la création d'un `Triangle`{.language-}.
 
 Ceci est explicite en python :
 
@@ -229,17 +245,19 @@ class Triangle(Polygone):
         super().__init__([point1, point2, point3])
 ```
 
-Le mot clé `super()` désigne la classe parente, ici `Polygone`. Ce mot clé permet d'utiliser toutes les méthodes de la classe parente, ici `__init__`. Remarquez que l'on utilise la méthode `__init__` sans utiliser le premier paramètre (`self`) qui est implicitement l'objet courant.
+Le mot clé `super()`{.language-} désigne la classe parente, ici `Polygone`{.language-}. Ce mot clé permet d'utiliser toutes les méthodes de la classe parente, ici `__init__`{.language-}. Remarquez que l'on utilise la méthode `__init__`{.language-} sans utiliser le premier paramètre (`self`{.language-}) qui est implicitement l'objet courant.
 
-Si on regarde l'ordre dans lequel est examiné les espaces de nom, on a (c'est la commande `Triangle.mro()`) :
+Si on regarde l'ordre dans lequel est examiné les espaces de nom, on a (c'est la commande `Triangle.mro()`{.language-}) :
 
-```text
+```python
 [<class '__main__.Triangle'>, <class '__main__.Polygone'>, <class 'object'>]
 ```
 
-> Un petit tuto sur [la fonction super](https://he-arc.github.io/livre-python/super/index.html )
+{% info %}
+Un petit tuto sur [la fonction super](https://he-arc.github.io/livre-python/super/index.html )
+{% endinfo %}
 
-On peut maintenant utiliser toutes les méthodes définies dans Polygone puisque le constructeur de `Triangle` appelle directement le constructeur de `Polygone` : à la fin du constructeur, il existera une liste de points dans le triangle.
+On peut maintenant utiliser toutes les méthodes définies dans Polygone puisque le constructeur de `Triangle`{.language-} appelle directement le constructeur de `Polygone`{.language-} : à la fin du constructeur, il existera une liste de points dans le triangle.
 
 ```python
 triangle = Triangle(Point(0, 0), Point(1, 1), Point(2, 0))
@@ -249,17 +267,17 @@ print(triangle.aire())
 
 Pour trouver le périmètre, python fonctionne ainsi :
 
-1. existe-t-il un nom `périmètre` dans l'objet `triangle` : NON
-2. existe-t-il un nom `périmètre` dans la classe de l'objet `triangle`, `Triangle` : NON
-3. existe-t-il un nom `périmètre` dans la classe mère de `Triangle`, `Polygone` : OUI
+1. existe-t-il un nom `périmètre`{.language-} dans l'objet `triangle`{.language-} : NON
+2. existe-t-il un nom `périmètre`{.language-} dans la classe de l'objet `triangle`{.language-}, `Triangle`{.language-} : NON
+3. existe-t-il un nom `périmètre`{.language-} dans la classe mère de `Triangle`{.language-}, `Polygone`{.language-} : OUI
 
-Une fois la méthode trouvée, on l'exécute en plaçant l'objet (ici notre `triangle` en 1er paramètre, c'est à dire `self` de la méthode `périmètre` définie dans `Polygone`).
+Une fois la méthode trouvée, on l'exécute en plaçant l'objet (ici notre `triangle`{.language-} en 1er paramètre, c'est à dire `self`{.language-} de la méthode `périmètre`{.language-} définie dans `Polygone`{.language-}).
 
-## Exemple 2 : donjons et dragons
+## Exemple 2 : donjons et dragons {#exemple-D&D}
 
-On va simuler des personnage d'*heroic fantasy*. Pour cela, on commence par créer une classe `Personnage` qui sera particularisée petit à petit.
+On va simuler des personnage d'*heroic fantasy*. Pour cela, on commence par créer une classe `Personnage`{.language-} qui sera particularisée petit à petit.
 
-### classe Personnage
+### Classe Personnage
 
 Le personnage générique doit :
 
@@ -271,9 +289,9 @@ Le personnage générique doit :
 
 #### UML du personnage
 
-![personnage]({{ "/assets/cours/developpement/programmation-objet/heritage_personnage.png" | relative_url }}){:style="margin: auto;display: block}
+![personnage](héritage_personnage.png)
 
-#### code python du personnage
+#### Code python du personnage
 
 On a décidé ici de ne pas mettre de méthode get et set, mais de laisser libre accès aux attributs. C'est un choix possible. L'UML dérive donc un peu du code python ce qui est normal, chaque langage ayant ses spécificités.
 
@@ -290,28 +308,30 @@ class Personnage:
         personnage.se_faire_taper(self)
 ```
 
-Voyez comment on a utilisé la méthode `se_faire_taper` pour définir la méthode `taper`.
+Voyez comment on a utilisé la méthode `se_faire_taper`{.language-} pour définir la méthode `taper`{.language-}.
 
-### la classe guerrière
+### La classe guerrière
 
-La guerrière dispose d'un score de bloquage qui représente son pourcentage de chances de ne pas perdre de vie quand un autre personnage l'attaque.
+La guerrière dispose d'un score de blocage qui représente son pourcentage de chances de ne pas perdre de vie quand un autre personnage l'attaque.
 
-#### modèle UML de la guerrière
+#### Modèle UML de la guerrière
 
 c'est un personnage, on peut donc utiliser l'héritage.
 
-![Guerrière]({{ "/assets/cours/developpement/programmation-objet/heritage_guerriere.png" | relative_url }}){:style="margin: auto;display: block}
+![Guerrière](héritage_guerrière.png)
 
 On ne met que les méthodes qui changent, donc le constructeur et se faire taper.
 
-#### code python de la guerrière
+#### Code python de la guerrière
 
 ```python
 # ... 
+
 import random
+
 #...
 
-class Guerriere(Personnage):
+class Guerrière(Personnage):
     def __init__(self, vie, attaque, blocage):
         super().__init__(vie, attaque)
         self.blocage = blocage
@@ -323,24 +343,27 @@ class Guerriere(Personnage):
 
 Comprenez bien le code :
 
-* On commence par appeler le constructeur de la classe mère (`super().__init__()`) puis on applique le cas particulier de notre classe (`self.blocage = blocage`).
+* On commence par appeler le constructeur de la classe mère (`super().__init__()`{.language-}) puis on applique le cas particulier de notre classe (`self.blocage = blocage`{.language-}).
 * on ajoute un attribut à la guerrière par rapport au personnage normal,
-* la méthode `se_faire_taper(personnage)` utilise la méthode `se_faire_taper` de la classe `Personnage` seulement si la guerrière ne bloque pas le coup. Le `super().methode_de_la_mere()` permet d'accéder à la méthode de la classe mère même de même nom qu'une méthode (différente) de la classe fille.
+* la méthode `se_faire_taper(personnage)`{.language-} utilise la méthode `se_faire_taper`{.language-} de la classe `Personnage`{.language-} seulement si la guerrière ne bloque pas le coup. Le `super().méthode_de_la_mere()`{.language-} permet d'accéder à la méthode de la classe mère même de même nom qu'une méthode (différente) de la classe fille.
 
-> On utilise **toujours** le constructeur de la classe mère pour garantir que les méthodes définies dans la classe mère fonctionnent avec les objets de la classe fille. Sinon ici, `se_faire_taper` ne fonctionnerait pas puisque vie et attaque ne seraient pas définies
-{.attention}
+{% attention %}
 
-### le magicien
+On utilise **toujours** le constructeur de la classe mère pour garantir que les méthodes définies dans la classe mère fonctionnent avec les objets de la classe fille. Sinon ici, `se_faire_taper`{.language-} ne fonctionnerait pas puisque vie et attaque ne seraient pas définies
+
+{% endattention %}
+
+### Le magicien
 
 Le magicien peut faire tout ce que peut faire un personnage normal mais il dispose en plus d'un score d'attaque magique qui détermine les dégâts qu'il fait en lançant un sort.
 
-#### modèle UML du magicien
+#### Modèle UML du magicien
 
 On ajoute une nouvelle méthode qui n'existe pas dans la classe mère :
 
-![Magicien]({{ "/assets/cours/developpement/programmation-objet/heritage_magicien.png" | relative_url }}){:style="margin: auto;display: block}
+![Magicien](héritage_magicien.png)
 
-#### code python du magicien
+#### Code python du magicien
 
 ```python
 class Magicien(Personnage):
@@ -378,19 +401,20 @@ class Personnage:
             print("je suis mort")
 ```
 
-## on vérifie qu'on a compris
+## On vérifie qu'on a compris
 
 Quelques petit tests qui ne servent à rien en pratique mais qui permettent de vérifier qu'on a bien compris.
 
-### héritage de méthodes
+### Héritage de méthodes
 
-Comment faire une classe `A` qui a :
+{% exercice %}
+Comment faire une classe `A`{.language-} qui a :
 
-* un attribut `a`
-* une méthode `truc_que_fait_a()` qui affiche "Truc défini dans la classe mère"
-* une méthode `autre_truc()` qui affiche "Autre truc dans la classe mère"
-
-{% details solution %}
+* un attribut `a`{.language-}
+* une méthode `truc_que_fait_a()`{.language-} qui affiche "Truc défini dans la classe mère"
+* une méthode `autre_truc()`{.language-} qui affiche "Autre truc dans la classe mère"
+{% endexercice %}
+{% details "solution" %}
 
 ```python
 class A:
@@ -406,14 +430,15 @@ class A:
 
 {% enddetails %}
 
-Écrivez une classe `B` qui hérite de `A` et qui a :
+{% exercice %}
+Écrivez une classe `B`{.language-} qui hérite de `A`{.language-} et qui a :
 
-* un attribut `b`
+* un attribut `b`{.language-}
 * le constructeur à 2 paramètres (a et b), un qui est initialisé dans la classe A (a), l'autre initialisé dans B (b)
-* une méthode `autre_truc()` qui affiche "C'est mon autre truc à moi"
-* une méthode `que_de_b()` qui affiche "Méthode seulement de la classe fille"
-
-{% details solution %}
+* une méthode `autre_truc()`{.language-} qui affiche "C'est mon autre truc à moi"
+* une méthode `que_de_b()`{.language-} qui affiche "Méthode seulement de la classe fille"
+{% endexercice %}
+{% details "solution" %}
 
 ```python
 class B(A):
@@ -428,15 +453,16 @@ class B(A):
         print("Méthode seulement de la classe fille")
 ```
 
-Faites bien attention à utiliser proprement le mot-clé `super` dans le constructeur de la classe fille.
+Faites bien attention à utiliser proprement le mot-clé `super`{.language-} dans le constructeur de la classe fille.
 
 {% enddetails %}
 
-### attribut de classe
+### Attribut de classe
 
-Ajoutez dans `A` un attribut de classe `CTE` constante valant `un attribut de classe`
-
-{% details solution %}
+{% exercice %}
+Ajoutez dans `A`{.language-} un attribut de classe `CTE`{.language-} constante valant `un attribut de classe`{.language-}
+{% endexercice %}
+{% details "solution" %}
 
 ```python
 class A:
@@ -454,14 +480,15 @@ class A:
 
 {% enddetails %}
 
-### combinaison de méthodes
+### Combinaison de méthodes
 
+{% exercice %}
 Ajoutez :
 
-* dans la  classe `A` : une méthode `j_herite(x)` qui prend un paramètre `x` qui est une chaine de caractère et affiche la valeur de x
-* dans la  classe `B` : une méthode `j_herite(x)` qui commence par appeler la méthode de la classe mère puis affiche la valeur de x en majuscules
-
-{% details solution %}
+* dans la  classe `A`{.language-} : une méthode `j_hérite(x)`{.language-} qui prend un paramètre `x`{.language-} qui est une chaîne de caractère et affiche la valeur de x
+* dans la  classe `B`{.language-} : une méthode `j_hérite(x)`{.language-} qui commence par appeler la méthode de la classe mère puis affiche la valeur de x en majuscules
+{% endexercice %}
+{% details "solution" %}
 
 ```python
 class A:
@@ -476,7 +503,7 @@ class A:
     def truc_que_fait_a(self):
         print("Autre truc dans la classe mère")
 
-    def j_herite(self, x):
+    def j_hérite(self, x):
         print(x)
 
 
@@ -491,7 +518,7 @@ class B(A):
     def que_de_b(self):
         print("Méthode seulement de la classe fille")
 
-    def j_herite(self, x):
+    def j_hérite(self, x):
         super().j_herite(x)
         print(x.upper())
 ```

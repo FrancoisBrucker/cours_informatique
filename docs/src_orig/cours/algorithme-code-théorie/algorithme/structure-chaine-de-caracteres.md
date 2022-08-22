@@ -12,7 +12,7 @@ Qu'est-ce qu'une chaine de caractères et comment on peut l'utiliser.
 >
 > **prérequis :**
 >
-> * [mémoire et espace de noms]({% link cours/algorithme-code-théorie/code/memoire-et-espace-noms.md %})
+> * [mémoire et espace de noms]({% link cours/algorithme-code-théorie/code/mémoire-espace-noms.md %})
 >
 {.chemin}
 

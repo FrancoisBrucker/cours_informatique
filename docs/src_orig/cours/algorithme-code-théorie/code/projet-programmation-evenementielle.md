@@ -10,7 +10,7 @@ author: "François Brucker"
 >
 > prérequis :
 >
->* [projet : héritage]({% link cours/algorithme-code-théorie/code/programmation-objet/projet-heritage.md %})
+>* [projet : héritage]({% link cours/algorithme-code-théorie/code/programmation-objet/projet-héritage.md %})
 >
 {.chemin}
 

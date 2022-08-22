@@ -1,31 +1,28 @@
 ---
-layout: page
-title:  "TDD et test pattern : partie 3/3"
-author: "François Brucker"
+layout: layout/post.njk 
+title: "Partie 3 / 3"
 ---
 
-Partie 3/3.
+{% chemin %}
+[Cours]({{ "../../../.." }}) / [Algorithme, code et théorie]({{ "../../.." }}) / [Code]({{ "../../.." }}) / [Programmation Objet]({{ "../.." }}) / [Projet TDD]({{ ".." }}) / [{{title}}]({{ "." }})
+{% endchemin %}
 
-<!--more-->
+<!-- début résumé -->
 
-> [Algorithme, code et théorie]({% link cours/algorithme-code-théorie/index.md %}) / [code]({% link cours/algorithme-code-théorie/code/index.md %}) / [programmation objet]({% link cours/algorithme-code-théorie/code/programmation-objet/index.md %}) / [projet : TDD]({% link cours/algorithme-code-théorie/code/programmation-objet/projet-tdd.md %}) / [partie 3/3]({% link cours/algorithme-code-théorie/code/programmation-objet/projet-tdd-3.md %})
->
-> **prérequis :**
->
-> * [partie 2/3]({% link cours/algorithme-code-théorie/code/programmation-objet/projet-tdd-2.md %})
->
-{.chemin}
+Troisième et dernière partie du projet TDD.
 
-## todo list initiale
+<!-- end résumé -->
+
+## Todo list initiale
 
 * [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
 * [ ] gestion des arrondis (lorsque les montants seront des réels)
-* [ ] `== None`
-* [ ] `==` avec autre chose qu'un `Dollar`
+* [ ] `== None`{.language-}
+* [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
 
-On est arrivé à un point clé de notre projet. La classe `Monnaie` permet de gérer plusieurs devises et de multiplier les montant par un entier.
+On est arrivé à un point clé de notre projet. La classe `Monnaie`{.language-} permet de gérer plusieurs devises et de multiplier les montant par un entier.
 
-On va encore épurer la todo list en supprimant les améliorations possibles de `==` et la gestion des arrondis (que l'on vous laisse en exercice :-)) :
+On va encore épurer la todo list en supprimant les améliorations possibles de `==`{.language-} et la gestion des arrondis (que l'on vous laisse en exercice :-)) :
 
 * [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
 
@@ -37,19 +34,19 @@ Nous allons ici faire en sorte que l'on puisse additionner des devises ensemble 
 
 Rappelez vous (et forcez vous à le faire jusqu'à ce que ça devienne un automatisme) que l'on écrit **d'abord** le test, puis que l'on code **après** : on ne code que sur du **vert**, il n'y a **aucune** exception.
 
-> **Principe du TDD :**
->
-> 1. **rouge** :
->    * écrire *rapidement* un *petit* test
->    * lancer les tests et les voir planter, voir même  ne correspondre à aucun code.
-> 2. **vert** :
->    * écrire le code *minimal* qui permet de faire passer le test
->    * lancer les tests et les voir tous réussir
-> 3. **code/refactor** :
->    * élimine les duplications tout en conservant la validité des tests.
->
-> La partie refactor, qui est la partie réelle où l'on code ne se fait **que sur du vert** : on est assuré de ne pas casser le code puisque les tests passent.
-{.note}
+{% note "**Principe du TDD :**" %}
+
+1. **rouge** :
+   * écrire *rapidement* un *petit* test
+   * lancer les tests et les voir planter, voir même  ne correspondre à aucun code.
+2. **vert** :
+   * écrire le code *minimal* qui permet de faire passer le test
+   * lancer les tests et les voir tous réussir
+3. **code/refactor** :
+   * élimine les duplications tout en conservant la validité des tests.
+
+La partie refactor, qui est la partie réelle où l'on code ne se fait **que sur du vert** : on est assuré de ne pas casser le code puisque les tests passent.
+{% endnote %}
 
 ## Addition 1/3
 
@@ -64,17 +61,17 @@ On s'assure dans le test qu'on ne somme pas deux fois la même chose pour évite
 
 ### faire {#faire-add-1-1}
 
-> Ecrivez un test permettant de tester que \\$5 + \\$2 = \\$7 en :
->
-> * utilisant la méthode `plus` de `Monnaie` qui prend une autre monnaie en paramètre et rend une monnaie
->
-> * les objets de `Monnaie` sont toujours non mutable
-{.a-faire}
+{% exercice %}
+Écrivez un test permettant de tester que \\$5 + \\$2 = \\$7 en :
+
+* utilisant la méthode `plus`{.language-} de `Monnaie`{.language-} qui prend une autre monnaie en paramètre et rend une monnaie
+* les objets de `Monnaie`{.language-} sont toujours non mutable
 
 Une fois les tests écris, une *obvious implementation* devrait faire l'affaire.
-{% details solution %}
+{% endexercice %}
+{% details "solution" %}
 
-*"test_monnaie.py"* :
+Fichier `test_monnaie.py`{.fichier} :
 
 ```python
 # ...
@@ -85,7 +82,7 @@ def test_plus():
 # ...
 ```
 
-*"monnaie.py"* :
+Fichier `monnaie.py`{.fichier}
 
 ```python
 # ...
@@ -103,17 +100,18 @@ class Monnaie:
 
 {% enddetails %}
 
-### faire {#faire-add-1-2}
+### Faire {#faire-add-1-2}
 
-Rendons les choses jolies en utilisant `__add__` qui est le pendant pour l'addition de `__mul__`
+Rendons les choses jolies en utilisant `__add__`{.language-} qui est le pendant pour l'addition de `__mul__`{.language-}
 
-> Remplacez la méthode `plus` par `__add__`dans `Monnaie`.
-{.a-faire}
-{% details solution %}
+{% exercice %}
+Remplacez la méthode `plus`{.language-} par `__add__`{.language-} dans `Monnaie`{.language-}.
+{% endexercice %}
+{% details "solution" %}
 
-easy peasy, on remplace juste `plus` par `+`
+*easy peasy*, on remplace juste `plus`{.language-} par `+`{.language-}
 
-*"test_monnaie.py"* :
+Fichier `test_monnaie.py`{.fichier} :
 
 ```python
 # ...
@@ -124,9 +122,9 @@ def test_plus():
 # ...
 ```
 
-et  `plus` par `__add__`
+et  `plus`{.language-} par `__add__`{.language-}
 
-*"monnaie.py"* :
+Fichier `monnaie.py`{.fichier} :
 
 ```python
 # ...
@@ -144,28 +142,28 @@ class Monnaie:
 
 {% enddetails %}
 
-### todo list {#todo-list-add-1-2}
+### Todo list {#todo-list-add-1-2}
 
 * [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
 * [X] \\$5 + \\$2 = \\$7
 
 ## Addition 2/3
 
-Notre implémentation de `+` qui rend un objet de type `Mnnaie` ne sera pas tenable longtemps.
+Notre implémentation de `+`{.language-} qui rend un objet de type `Monnaie`{.language-} ne sera pas tenable longtemps.
 
-En effet `$5 + 2.5CHF` **ne peut pas être** un objet de type `Monnaie`. Ce sont en effet deux devises différentes dont la valeur va dépendre d'un cours [qui change au cours du temps](https://fr.tradingview.com/symbols/USDCHF/). La somme `$5 + 2.5CHF` peut ainsi valoir `$10` en 2022 et `$7` en 2034.
+En effet `$5 + 2.5CHF` **ne peut pas être** un objet de type `Monnaie`{.language-}. Ce sont en effet deux devises différentes dont la valeur va dépendre d'un cours [qui change au cours du temps](https://fr.tradingview.com/symbols/USDCHF/). La somme `$5 + 2.5CHF` peut ainsi valoir `$10` en 2022 et `$7` en 2034.
 
 Il faut donc résoudre deux problèmes :
 
 * comment stocker une somme sous la forme de plusieurs devises ?
 * comment convertir une monnaie ou un ensemble de monnaies en une autre ?
 
-### todo list {#todo-list-add-2-1}
+### Todo list {#todo-list-add-2-1}
 
 * [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
 * **[-] \\$5 + \\$2 = quelque chose qui correspond à $7**
 
-### faire {#faire-add-2-1}
+### Faire {#faire-add-2-1}
 
 Pour imaginer cela rien de mieux qu'un test ! On va l'écrire à l'envers, en partant du résultat, car  on sait où on veut arriver : à $10 :
 
@@ -226,11 +224,12 @@ def test_conversion_addition():
 # ...
 ```
 
-> Ajoutez le test dans *"test_monnaie.py"* et fakez le tout dans *"monnaie.py"*  pour que le test passe.
-{.a-faire}
-{% details solution %}
+{% exercice %}
+Ajoutez le test dans `test_monnaie.py`{.fichier} et fakez le tout dans `monnaie.py`{.fichier}  pour que le test passe.
+{% endexercice %}
+{% details "solution" %}
 
-*"monnaie.py"* :
+Fichier `monnaie.py`{.fichier} :
 
 ```python
 # ...
@@ -248,25 +247,28 @@ class Banque:
 
 L'implémentation réelle de tout ce qu'on a *faké* n'est pas si évidente que ça. On va donc devoir faire des choix restrictifs et ajouter à la todo list les généralisations à effectuer pour terminer le travail.
 
-On va considérer que toute somme de deux monnaies est une nouvelle classe `Somme` (on va cependant ajouter que la somme de 2 monnaies identiques devrait rendre une monnaie, comme pour la multiplication,  dans la todo list).
+On va considérer que toute somme de deux monnaies est une nouvelle classe `Somme`{.language-} (on va cependant ajouter que la somme de 2 monnaies identiques devrait rendre une monnaie, comme pour la multiplication,  dans la todo list).
 
-### todo list {#todo-list-add-3-1}
+### Todo list {#todo-list-add-3-1}
 
-On change notre iitem de la todo list puique \\$5 + \\$2 ne sera plus égal à \\$7, mais que ce serait bien qu'il soit :
+On change notre item de la todo list puisque \\$5 + \\$2 ne sera plus égal à \\$7, mais que ce serait bien qu'il soit :
 
 * [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
 * [ ] \\$5 + \\$2 doit être égal à \\$7
 * **[-] \\$5 + \\$2 = quelque chose qui correspond à $7**
 
-### faire {#faire-add-3-1}
+### Taire {#faire-add-3-1}
 
-> 1. supprimez le test `test_plus` qui vérifie que \\$5 + \\$2 = \\$7 ce qui n'est plus vrai
-> 2. on ajoute un test pour montrer que la somme de deux monnaies est un objet contenant une partie gauche (la partie à gauche du `+`) et une partie droite (la partie à droite du `+`)
-> 3. on implémente le tout en une petite *obvious implementation*
-{.a-faire}
-{% details solution %}
+{% exercice %}
 
-*"test_monnaie.py"* :
+1. supprimez le test `test_plus`{.language-} qui vérifie que \\$5 + \\$2 = \\$7 ce qui n'est plus vrai
+2. on ajoute un test pour montrer que la somme de deux monnaies est un objet contenant une partie gauche (la partie à gauche du `+`) et une partie droite (la partie à droite du `+`)
+3. on implémente le tout en une petite *obvious implementation*
+
+{% endexercice %}
+{% details "solution" %}
+
+Fichier `test_monnaie.py`{.fichier} :
 
 ```python
 # ...
@@ -280,7 +282,7 @@ def test_plus_est_une_Somme():
 # ...
 ```
 
-*"monnaie.py"* :
+Fichier `monnaie.py`{.fichier} :
 
 ```python
 # ...
@@ -305,7 +307,7 @@ class Monnaie:
 
 {% enddetails %}
 
-### todo list {#todo-list-add-3-2}
+### Todo list {#todo-list-add-3-2}
 
 On a pas fini notre item.
 
@@ -313,33 +315,35 @@ On a pas fini notre item.
 * [ ] \\$5 + \\$2 doit être égal à \\$7
 * **[-] \\$5 + \\$2 = quelque chose qui correspond à $7**
 
-Mais on a bien avancé puisque  \\$5 + \\$2 n'est plus une `Monnaie`. Il nous reste à faire en sorte que ce quelque chose corresponde à \\$7.
+Mais on a bien avancé puisque  \\$5 + \\$2 n'est plus une `Monnaie`{.language-}. Il nous reste à faire en sorte que ce quelque chose corresponde à \\$7.
 
-## conversion 1/3
+## Conversion 1/3
 
-Pour que \\$5 + \\$2 corresponde à quelque chose qui vaut à \\$7, on doit travailler sur la méthode `conversion` de la `Banque`. C'est elle qui doit pouvoir faire le change (pour l'instant c'est un *fake* qui rend \\$7).
+Pour que \\$5 + \\$2 corresponde à quelque chose qui vaut à \\$7, on doit travailler sur la méthode `conversion`{.language-} de la `Banque`{.language-}. C'est elle qui doit pouvoir faire le change (pour l'instant c'est un *fake* qui rend \\$7).
 
-### todo list {#todo-list-conv-1-2}
+### Todo list {#todo-list-conversion-1-2}
 
-Pour l'instant, `Banque.conversion` prend pour une `Somme` en paramètre. Nous n'allons pas ous en occuper tout de suite, mais il pourrait être intéressant qu'elle puisse aussi prendre une `Monnaie` en paramètre pour faire le change :
+Pour l'instant, `Banque.conversion`{.language-} prend pour une `Somme`{.language-} en paramètre. Nous n'allons pas ous en occuper tout de suite, mais il pourrait être intéressant qu'elle puisse aussi prendre une `Monnaie`{.language-} en paramètre pour faire le change :
 
 * [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
 * [ ] \\$5 + \\$2 doit être égal à \\$7
 * **[-] \\$5 + \\$2 = quelque chose qui correspond à $7**
-* [ ] `Banque.conversion(Monnaie)`
+* [ ] `Banque.conversion(Monnaie)`{.language-}
 
-### faire {#faire-conv-1-1}
+### faire {#faire-conversion-1-1}
 
-Le test `test_conversion_addition` affirme que `banque.conversion(monnaie.dollar(5) + monaie.dollar(2), "USD")` vaut  `monnaie.dollar(7)`. Mais n'otre implémentation est encore un fake (il reste plein de duplications.
+Le test `test_conversion_addition`{.language-} affirme que `banque.conversion(monnaie.dollar(5) + monnaie.dollar(2), "USD")`{.language-} vaut  `monnaie.dollar(7)`{.language-}. Mais notre implémentation est encore un fake (il reste plein de duplications).
 
-> Supprimer les duplication de la méthode `Banque.conversion` en :
->
-> * supposant que les parties `gauche` et `droite` de la somme sont des `Monnaie`
-> * que le taux de change est toujours de 1 pour 1
-{.a-faire}
-{% details solution %}
+{% exercice %}
+Supprimer les duplication de la méthode `Banque.conversion`{.language-} en :
 
-*"monnaie.py"* :
+* supposant que les parties `gauche`{.language-} et `droite`{.language-} de la somme sont des `Monnaie`{.language-}
+* que le taux de change est toujours de 1 pour 1
+
+{% endexercice %}
+{% details "solution" %}
+
+Fichier `monnaie.py`{.fichier} :
 
 ```python
 # ...
@@ -355,38 +359,39 @@ class Banque:
 
 C'est un début. Il nous reste à gérer :
 
-* lorsque les deux parties de la `Somme` ne sont pas des `Monnaie`
+* lorsque les deux parties de la `Somme`{.language-} ne sont pas des `Monnaie`{.language-}
 * le taux de change
 
-## conversion 2/3
+## Conversion 2/3
 
-L'implémentation actuelle de la méthode `Banque.conversion` — même si incomplète — pose déjà des soucis. En particulier : la banque doit connaître l'implémentation de `Monnaie` pour avoir accès à l'attribut `montant`.
+L'implémentation actuelle de la méthode `Banque.conversion`{.language-} — même si incomplète — pose déjà des soucis. En particulier : la banque doit connaître l'implémentation de `Monnaie`{.language-} pour avoir accès à l'attribut `montant`{.language-}.
 
-Lorsque l'on fait du développement objet, on aime pas trop que tous les objets conaissent les attributs de tout le monde. Cela couple les objets entre eux et le code en devient moins maniable (en changeant une classe, il faut changer toutes les autres...)
+Lorsque l'on fait du développement objet, on aime pas trop que tous les objets connaissent les attributs de tout le monde. Cela couple les objets entre eux et le code en devient moins maniable (en changeant une classe, il faut changer toutes les autres...)
 
-> **Principe de développement objet :** [loi de Déméter](https://fr.wikipedia.org/wiki/Loi_de_D%C3%A9m%C3%A9ter)
->
-> Toute méthode `m` d'un objet `o` de classe `C` ne peut invoquer que :
->
-> * les paramètres de `m`
-> * les objets créés par `m`
-> * lui-même
-> * les méthodes de `C`
->
-> Un bon programme utilise des objets qui interagissent entre eux mais qui ne connaissent pas l'implémentation des autres classes. Les objets doivent être le plus découplé possible.
-{.note}
+{% note "**Principe de développement objet :** [loi de Déméter](https://fr.wikipedia.org/wiki/Loi_de_D%C3%A9m%C3%A9ter)" %}
+
+Toute méthode `m`{.language-} d'un objet `o`{.language-} de classe `C`{.language-} ne peut invoquer que :
+
+* les paramètres de `m`{.language-}
+* les objets créés par `m`{.language-}
+* lui-même
+* les méthodes de `C`{.language-}
+
+Un bon programme utilise des objets qui interagissent entre eux mais qui ne connaissent pas l'implémentation des autres classes. Les objets doivent être le plus découplé possible.
+{% endnote %}
 
 En particulier, la loi de Déméter demande d'éviter d'appeler les méthodes d'un attribut d'un objet ce qui est exactement ce que l'on fait.
 
-### faire {#faire-conv-2-1}
+### Faire {#faire-conversion-2-1}
 
 Pour éviter cette double indirection :
 
-> Remontez d'un cran le code de `Banque.conversion` en le plaçant dans une méthode `Somme.conversion(devise)`. Pour l'instant on suppose toujours que le taux de conversion est de 1 pour 1 quelque soient les monnaies et que les parties gauche et droite des `Somme` sont des `Monnaies`.
-{.a-faire}
-{% details solution %}
+{% exercice %}
+Remontez d'un cran le code de `Banque.conversion`{.language-} en le plaçant dans une méthode `Somme.conversion(devise)`{.language-}. Pour l'instant on suppose toujours que le taux de conversion est de 1 pour 1 quelque soient les monnaies et que les parties gauche et droite des `Somme`{.language-} sont des `Monnaies`{.language-}.
+{% endexercice %}
+{% details "solution" %}
 
-*"monnaie.py"* :
+Fichier `monnaie.py`{.fichier} :
 
 ```python
 # ...
@@ -410,40 +415,42 @@ class Somme:
 
 {% enddetails %}
 
-### todo list {#todo-list-conv-2-1}
+### Todo list {#todo-list-conversion-2-1}
 
 On a fini un item, mais avec plein de restrictions. Ajoutons les à la la todo list.
 
 * [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
 * [ ] \\$5 + \\$2 doit être égal à \\$7
 * [X] \\$5 + \\$2 = quelque chose qui correspond à $7
-* [ ] `Banque.conversion(Monnaie)`
-* [ ] `Somme.conversion(devise)` doit vraiment faire des conversions
+* [ ] `Banque.conversion(Monnaie)`{.language-}
+* [ ] `Somme.conversion(devise)`{.language-} doit vraiment faire des conversions
 
-## conversion 3/3
+## Conversion 3/3
 
 L'étape précédente a permis de baisser le niveau de connaissance de la banque des objets qui l'entourent. C'est une bonne chose car cela suit la loi de Déméter.
 
-Monter la méthode `conversion` de la `Banque` à la `Somme` nous permet également de traiter le cas où `Banque.reducconversiontion` a une  `Monnaie` comme paramètre : il suffit de rajouter une méthode `Monnaie.conversion` !
+Monter la méthode `conversion`{.language-} de la `Banque`{.language-} à la `Somme`{.language-} nous permet également de traiter le cas où `Banque.conversion`{.language-} a une  `Monnaie`{.language-} comme paramètre : il suffit de rajouter une méthode `Monnaie.conversion`{.language-} !
 
-### todo list {#todo-list-conv-3-1}
+### Todo list {#todo-list-conversion-3-1}
 
 * [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
 * [ ] \\$5 + \\$2 doit être égal à \\$7
 * [X] \\$5 + \\$2 = quelque chose qui correspond à $7
-* **[-] `Banque.conversion(Monnaie)`**
-* [ ] `Somme.conversion(devise)` doit vraiment faire des conversions
+* **[-] `Banque.conversion(Monnaie)`{.language-}**
+* [ ] `Somme.conversion(devise)`{.language-} doit vraiment faire des conversions
 
-### faire {#faire-conv-3-1}
+### Faire {#faire-conversion-3-1}
 
-> 1. créez un test où l'argument de `Banque.conversion` est un objet de type `Monnaie`
-> 2. implémentez le code correspondant
->
-> De même que précédemment, on va considérer que le seul paramètre de la méthode `Monnaie.conversion` la devise d'arrivée et que — pour l'instant — le taux de change est de 1 pour 1
-{.a-faire}
-{% details solution %}
+{% exercice %}
 
-*"test_monnaie.py"* :
+1. créez un test où l'argument de `Banque.conversion`{.language-} est un objet de type `Monnaie`{.language-}
+2. implémentez le code correspondant
+
+De même que précédemment, on va considérer que le seul paramètre de la méthode `Monnaie.conversion`{.language-} la devise d'arrivée et que — pour l'instant — le taux de change est de 1 pour 1
+{% endexercice %}
+{% details "solution" %}
+
+Fichier `test_monnaie.py`{.fichier} :
 
 ```python
 # ...
@@ -455,7 +462,7 @@ def test_banque_conversion_monnaie_identique():
 # ...
 ```
 
-*"monnaie.py"* :
+Fichier `monnaie.py`{.fichier} :
 
 ```python
 # ...
@@ -473,42 +480,44 @@ class Monnaie:
 
 {% enddetails %}
 
-### todo list {#todo-list-conv-3-2}
+### todo list {#todo-list-conversion-3-2}
 
 On a fini un item, mais avec plein de restrictions. Ajoutons les à la la todo list :
 
 * [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
 * [ ] \\$5 + \\$2 doit être égal à \\$7
 * [X] \\$5 + \\$2 = quelque chose qui correspond à $7
-* [X] `Banque.conversion(Monnaie)`
-* [ ] `Somme.conversion(devise)` doit vraiment faire des conversions
-* [ ] `Monnaie.conversion(devise)` doit vraiment faire des conversions
+* [X] `Banque.conversion(Monnaie)`{.language-}
+* [ ] `Somme.conversion(devise)`{.language-} doit vraiment faire des conversions
+* [ ] `Monnaie.conversion(devise)`{.language-} doit vraiment faire des conversions
 
 ## Taux de change 1/2
 
-On va maintenant s'attaquer à la conversion. Commençons simple avec les objets de type `Monnaie`
+On va maintenant s'attaquer à la conversion. Commençons simple avec les objets de type `Monnaie`{.language-}
 
-### todo list {#todo-list-change-1-1}
+### Todo list {#todo-list-change-1-1}
 
 * [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
 * [ ] \\$5 + \\$2 doit être égal à \\$7
 * [X] \\$5 + \\$2 = quelque chose qui correspond à $7
-* [X] `Banque.conversion(Monnaie)`
-* [ ] `Somme.conversion(devise)` doit vraiment faire des conversions
-* **[-] `Monnaie.conversion(devise)` doit vraiment faire des conversions**
+* [X] `Banque.conversion(Monnaie)`{.language-}
+* [ ] `Somme.conversion(devise)`{.language-} doit vraiment faire des conversions
+* **[-] `Monnaie.conversion(devise)`{.language-} doit vraiment faire des conversions**
 
-### faire {#faire-change-1-1}
+### Faire {#faire-change-1-1}
 
-> On veut que `Banque.conversion(monnaie.dollar(2), "CHF")` donne 1. On doit pour cela utilisez un taux de change donné par `Banque.change` qui prend 2 devises en paramètres, celle de départ et celle d'arrivée.
->
-> 1. créez un test qui vérifie que `Banque.change` fonctionne pour deux devises identiques et utilisez cette méthode dans `Banque.conversion`.
-> 2. créez un test qui vérifie que `Banque.change` fonctionne pour convertir des dollar en CHF avec un taux de 2 dollars pour 1 CHF.
-> 3. créez un test qui vérifie que `Banque.conversion(monnaie.dollar(2), "CHF")` donne 1
-> 4. utilisez la banque pour faire la conversion dans `Monnaie.conversion` (il faudra ajouter la banque comme paramètre)
-{.a-faire}
-{% details solution %}
+{% exercice %}
+On veut que `Banque.conversion(monnaie.dollar(2), "CHF")`{.language-} donne 1. On doit pour cela utilisez un taux de change donné par `Banque.change`{.language-} qui prend 2 devises en paramètres, celle de départ et celle d'arrivée.
 
-*"test_monnaie.py"* :
+1. créez un test qui vérifie que `Banque.change`{.language-} fonctionne pour deux devises identiques et utilisez cette méthode dans `Banque.conversion`{.language-}.
+2. créez un test qui vérifie que `Banque.change`{.language-} fonctionne pour convertir des dollar en CHF avec un taux de 2 dollars pour 1 CHF.
+3. créez un test qui vérifie que `Banque.conversion(monnaie.dollar(2), "CHF")`{.language-} donne 1
+4. utilisez la banque pour faire la conversion dans `Monnaie.conversion`{.language-} (il faudra ajouter la banque comme paramètre)
+
+{% endexercice %}
+{% details "solution" %}
+
+Fichier `test_monnaie.py`{.fichier} :
 
 ```python
 # ...
@@ -530,7 +539,7 @@ def test_banque_conversion_monnaie_differente():
 # ...
 ```
 
-*"monnaie.py"* :
+Fichier `monnaie.py`{.fichier} :
 
 ```python
 # ...
@@ -539,8 +548,8 @@ class Banque:
     def conversion(self, expression, devise):
         return expression.conversion(self, devise)
 
-    def change(self, devise_depart, devise_arrivee):
-        if devise_depart == devise_arrivee:
+    def change(self, devise_depart, devise_arrivée):
+        if devise_depart == devise_arrivée:
             return 1
         elif devise_depart == "USD":
             return .5
@@ -570,18 +579,18 @@ class Monnaie:
 # ...
 ```
 
-Remarquez qu'on a du également modifier `Somme.conversion` pour que les tests continuent de passer.
+Remarquez qu'on a du également modifier `Somme.conversion`{.language-} pour que les tests continuent de passer.
 
 {% enddetails %}
 
-### todo list {#todo-list-change-1-2}
+### Todo list {#todo-list-change-1-2}
 
 * [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
 * [ ] \\$5 + \\$2 doit être égal à \\$7
 * [X] \\$5 + \\$2 = quelque chose qui correspond à $7
-* [X] `Banque.conversion(Monnaie)`
-* [ ] `Somme.conversion(devise)` doit vraiment faire des conversions
-* [X] `Monnaie.conversion(devise)` doit vraiment faire des conversions
+* [X] `Banque.conversion(Monnaie)`{.language-}
+* [ ] `Somme.conversion(devise)`{.language-} doit vraiment faire des conversions
+* [X] `Monnaie.conversion(devise)`{.language-} doit vraiment faire des conversions
 
 ### Taux de change 2/2
 
@@ -592,19 +601,20 @@ Pour l'instant notre conversion pour les sommes ne considère que les mêmes dev
 * [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
 * [ ] \\$5 + \\$2 doit être égal à \\$7
 * [X] \\$5 + \\$2 = quelque chose qui correspond à $7
-* [X] `Banque.conversion(Monnaie)`
-* **[-] `Somme.conversion(devise)` doit vraiment faire des conversions**
-* [X] `Monnaie.conversion(devise)` doit vraiment faire des conversions
+* [X] `Banque.conversion(Monnaie)`{.language-}
+* **[-] `Somme.conversion(devise)`{.language-} doit vraiment faire des conversions**
+* [X] `Monnaie.conversion(devise)`{.language-} doit vraiment faire des conversions
 
-### faire {#faire-change-2-1}
+### Faire {#faire-change-2-1}
 
 Commençons simplement :
 
-> Faire un test qui convertit la somme de \\$2 et 1CHF en franc suisse et implémentez le tout.
-{.a-faire}
-{% details solution %}
+{% exercice %}
+Faire un test qui convertit la somme de \\$2 et 1CHF en franc suisse et implémentez le tout.
+{% endexercice %}
+{% details "solution" %}
 
-*"test_monnaie.py"* :
+Fichier `test_monnaie.py`{.fichier} :
 
 ```python
 # ...
@@ -615,7 +625,7 @@ def test_somme_conversion_deux_monnaies():
 # ...
 ```
 
-*"monnaie.py"* :
+Fichier `monnaie.py`{.fichier} :
 
 ```python
 # ...
@@ -643,7 +653,7 @@ class Monnaie:
 # ...
 ```
 
-Remarquez qu'on a du également modifier `Somme.conversion` pour que les tests continuent de passer.
+Remarquez qu'on a du également modifier `Somme.conversion`{.language-} pour que les tests continuent de passer.
 
 {% enddetails %}
 
@@ -652,36 +662,36 @@ Remarquez qu'on a du également modifier `Somme.conversion` pour que les tests c
 * [X] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
 * [ ] \\$5 + \\$2 doit être égal à \\$7
 * [X] \\$5 + \\$2 = quelque chose qui correspond à $7
-* [X] `Banque.conversion(Monnaie)`
-* [X] `Somme.conversion(devise)` doit vraiment faire des conversions**
-* [X] `Monnaie.conversion(devise)` doit vraiment faire des conversions
+* [X] `Banque.conversion(Monnaie)`{.language-}
+* [X] `Somme.conversion(devise)`{.language-} doit vraiment faire des conversions**
+* [X] `Monnaie.conversion(devise)`{.language-} doit vraiment faire des conversions
 
 ## Expressions
 
-Pour finir, il nous reste à généraliser le tout. C'est à dire que l'on aimerait bien pouvoir multiplier une `Somme` par un entier par exemple ou additionner des `Somme` entre elles.
+Pour finir, il nous reste à généraliser le tout. C'est à dire que l'on aimerait bien pouvoir multiplier une `Somme`{.language-} par un entier par exemple ou additionner des `Somme`{.language-} entre elles.
 
 Le design pattern utilisé pour cela est :
 
-> **design pattern :** [composite](https://refactoring.guru/fr/design-patterns/composite)
->
-> Son but est de pouvoir traiter un groupe d'individu comme un seul. Il utilise une structuration récursive pour cela.
-{.note}
+{% note "**Design pattern :** [composite](https://refactoring.guru/fr/design-patterns/composite)" %}
+
+Son but est de pouvoir traiter un groupe d'individu comme un seul. Il utilise une structuration récursive pour cela.
+{% endnote %}
 
 Le diagramme de classe du pattern composite peut -être vu comme ça :
 
-![composite](./assets/composite.png){:style="margin: auto;display: block"}
+![composite](composite.png)
 
-Un noeud va être composé d'autre noeud ou de feuilles, les deux classes ayant une méthode `opération`. La méthode `opération` de la classe noeud consistant uniquement à successivement appeler la méthode `opérations` pour chacun de ses enfants. La terminaison intervenant lorsqu'est appelé la méthode opération d'une feuille.
+Un nœud va être composé d'autre nœud ou de feuilles, les deux classes ayant une méthode `opération`{.language-}. La méthode `opération`{.language-} de la classe nœud consistant uniquement à successivement appeler la méthode `opérations`{.language-} pour chacun de ses enfants. La terminaison intervenant lorsqu'est appelé la méthode opération d'une feuille.
 
-L'intérêt principal de ce design pattern est que la façon d'appeler la méthode `opération` est identique pour un ensemble ou un unique élément.
+L'intérêt principal de ce design pattern est que la façon d'appeler la méthode `opération`{.language-} est identique pour un ensemble ou un unique élément.
 
-### faire {#faire-exp-1}
+### Faire {#faire-exp-1}
 
-A priori, une partie de la somme de sommes est déjà implémentée. Regardez comment `Somme` est construite, en particulier la méthode `__add__`.
+A priori, une partie de la somme de sommes est déjà implémentée. Regardez comment `Somme`{.language-} est construite, en particulier la méthode `__add__`{.language-}.
 
 Par exemple, le test suivant doit passer :
 
-*"test_monnaie.py"* :
+Fichier `test_monnaie.py`{.fichier} :
 
 ```python
 # ...
@@ -694,17 +704,18 @@ def test_somme_de_somme():
 # ...
 ```
 
-> pourquoi ?
-{.a-faire}
-{% details solution %}
+{% exercice %}
+Pourquoi ?
+{% endexercice %}
+{% details "solution" %}
 
-La méthode conversion est récursive dans `Somme`. Les terminaison se faisant lorsque une partie de la somme est une `Monnaie`.
+La méthode conversion est récursive dans `Somme`{.language-}. Les terminaison se faisant lorsque une partie de la somme est une `Monnaie`{.language-}.
 
 {% enddetails %}
 
 En revanche, ce test ne passe pas encore :
 
-*"test_monnaie.py"* :
+Fichier `test_monnaie.py`{.fichier} :
 
 ```python
 # ...
@@ -717,9 +728,10 @@ def test_somme_de_somme_2():
 # ...
 ```
 
-> pourquoi ?
-{.a-faire}
-{% details solution %}
+{% exercice %}
+Pourquoi ?
+{% endexercice %}
+{% details "solution" %}
 
 Le résultat des tests donne :
 
@@ -731,14 +743,15 @@ Le résultat des tests donne :
 E       TypeError: unsupported operand type(s) for +: 'Somme' and 'Monnaie'
 ```
 
-Nous n'avons pas implémenté de méthode `__add__` pour les `Somme`.
+Nous n'avons pas implémenté de méthode `__add__`{.language-} pour les `Somme`{.language-}.
 {% enddetails %}
 
-> Faite passer les tests.
-{.a-faire}
-{% details solution %}
+{% exercice %}
+Faite passer les tests.
+{% endexercice %}
+{% details "solution" %}
 
-*"monnaie.py"* :
+Fichier `monnaie.py`{.fichier} :
 
 ```python
 # ...
@@ -756,11 +769,11 @@ class Somme:
 
 {% enddetails %}
 
-### faire {#faire-exp-2}
+### Faire {#faire-exp-2}
 
 Il ne reste plus qu'à tester la multiplication pour finir.
 
-*"test_monnaie.py"* :
+Fichier `test_monnaie.py`{.fichier} :
 
 ```python
 def test_mult_de_somme():
@@ -770,11 +783,11 @@ def test_mult_de_somme():
     assert monnaie.franc(10) == banque.conversion(expression, "CHF")
 ```
 
-> Faite passer le test ci-dessus
-{.a-faire}
-{% details solution %}
-
-*"monnaie.py"* :
+{% exercice %}
+Faite passer le test ci-dessus
+{% endexercice %}
+{% details "solution" %}
+Fichier `monnaie.py`{.fichier} :
 
 ```python
 # ...
@@ -792,21 +805,22 @@ class Somme:
 
 {% enddetails %}
 
-> Pourquoi nous sera-t-il impossible d'écrire : `4 * (monnaie.franc(2) + monnaie.dollar(1))` ?
-{.a-faire}
-{% details solution %}
+{% exercice %}
+Pourquoi nous sera-t-il impossible d'écrire : `4 * (monnaie.franc(2) + monnaie.dollar(1))`{.language-} ?
+{% endexercice %}
+{% details "solution" %}
 
-Parce qu'il faudrait modifier la méthode `__mul__` des entiers de python, ce qui est impossible.
+Parce qu'il faudrait modifier la méthode `__mul__`{.language-} des entiers de python, ce qui est impossible.
 
 {% enddetails %}
 
-## bilan
+## Bilan
 
 Vous avez suivi tout un projet de développement par les tests. J'espère vous avoir convaincu que cette méthode permet de développer rapidement et proprement du code (*"clean code that works*").
 
 ### code
 
-#### *"test_monnaie.py"*
+#### test_monnaie.py`{.fichier}
 
 ```python
 from pytest import approx
@@ -897,7 +911,7 @@ def test_mult_de_somme():
 
 ```
 
-#### *"monnaie.py"*
+#### `monnaie.py`{.fichier}
 
 ```python
 def dollar(montant):
@@ -930,8 +944,8 @@ class Banque:
     def conversion(self, expression, devise):
         return expression.conversion(self, devise)
 
-    def change(self, devise_depart, devise_arrivee):
-        if devise_depart == devise_arrivee:
+    def change(self, devise_depart, devise_arrivée):
+        if devise_depart == devise_arrivée:
             return 1
         elif devise_depart == "USD":
             return 0.5

@@ -50,8 +50,8 @@ Ce cours est composée de trois grandes parties qui s'enchevêtrent.
 6. [étude : mélanger un tableau](algorithme/étude-mélange)
 7. [complexité en moyenne](algorithme/complexité-moyenne)
 8. [étude : trier un tableau](algorithme/étude-tris)
-9. [structure : dictionnaire](algorithme/structure-dictionnaire)
-10. [structure : liste](algorithme/structure-liste)
+9. [structure : liste](algorithme/structure-liste)
+10. [structure : dictionnaire](algorithme/structure-dictionnaire)
 11. [algorithmes gloutons](algorithme/methode-gloutons)
 12. [étude : voyageur de commerce](algorithme/etude-voyageur-de-commerce)
 13. [structure : chaîne de caractères](algorithme/structure-chaine-de-caracteres)
@@ -62,10 +62,10 @@ Ce cours est composée de trois grandes parties qui s'enchevêtrent.
 
 1. [fonctions](théorie/fonctions)
 2. [complexité d'un problème](théorie/complexité-problème)
-3. [machines de Turing](théorie/machine-turing)
-4. [décidabilité](théorie/decidabilite)
-5. [calculabilité](théorie/calculabilite)
-6. [fonctions de hash](théorie/fonctions-hash)
+3. [fonctions de hash](théorie/fonctions-hash)
+4. [machines de Turing](théorie/machine-turing)
+5. [décidabilité](théorie/decidabilite)
+6. [calculabilité](théorie/calculabilite)
 
 ### Code
 
@@ -74,12 +74,12 @@ Ce cours est composée de trois grandes parties qui s'enchevêtrent.
 3. [projet : pourcentages](code/projet-pourcentages)
 4. [projet : exponentiation](code/projet-exponentiation)
 5. [projet : tris](code/projet-tris)
-6. [mémoire et espace de noms](code/memoire-et-espace-noms)
+6. [mémoire et espace de noms](code/mémoire-espace-noms)
 7. [classes et objets](code/programmation-objet/classes-et-objets)
-8. [composition et agrégation](code/programmation-objet/composition-agregation)
-9. [projet : composition et agrégation](code/programmation-objet/projet-composition-agregation)
-10. [héritage](code/programmation-objet/heritage)
-11. [projet : héritage](code/programmation-objet/projet-heritage)
+8. [composition et agrégation](code/programmation-objet/composition-agrégation)
+9. [projet : composition et agrégation](code/programmation-objet/projet-composition-agrégation)
+10. [héritage](code/programmation-objet/héritage)
+11. [projet : héritage](code/programmation-objet/projet-héritage)
 12. [projet : TDD](code/programmation-objet/projet-tdd)
 13. [projet : programmation événementielle](code/projet-programmation-evenementielle)
 14. [fichiers](code/fichiers)
@@ -453,7 +453,7 @@ graph.links.push({
 
 graph.nodes.push({
   id: 'mémoire et espace de noms',
-  link: "code/memoire-et-espace-noms",
+  link: "code/mémoire-espace-noms",
   group: groups.code
 })
 graph.links.push({
@@ -474,7 +474,7 @@ graph.links.push({
 
 graph.nodes.push({
 id: "composition et agrégation",
-  link: "code/programmation-objet/composition-agregation",
+  link: "code/programmation-objet/composition-agrégation",
   group: groups.code
 })
 
@@ -485,7 +485,7 @@ graph.links.push({
 
 graph.nodes.push({
 id: "projet : composition et agrégation",
-  link: "code/programmation-objet/projet-composition-agregation",
+  link: "code/programmation-objet/projet-composition-agrégation",
   group: groups.code
 })
 
@@ -496,7 +496,7 @@ graph.links.push({
 
 graph.nodes.push({
 id: "héritage",
-  link: "code/programmation-objet/heritage",
+  link: "code/programmation-objet/héritage",
   group: groups.code
 })
 
@@ -507,7 +507,7 @@ graph.links.push({
 
 graph.nodes.push({
 id: "projet : héritage",
-  link: "code/programmation-objet/projet-heritage",
+  link: "code/programmation-objet/projet-héritage",
   group: groups.code
 })
 

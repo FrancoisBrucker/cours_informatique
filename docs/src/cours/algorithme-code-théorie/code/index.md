@@ -20,7 +20,7 @@ Les projets constituent une progression, il est conseillé de les suivre dans l'
 3. [projet : pourcentages](projet-pourcentages)
 4. [projet : exponentiation](projet-exponentiation)
 5. [projet : tris](projet-tris)
-6. [mémoire et espace de noms](memoire-et-espace-noms)
+6. [mémoire et espace de noms](mémoire-espace-noms)
 7. [programmation objets](programmation-objet)
 8. [projet : programmation événementielle](projet-programmation-evenementielle)
 9. [fichiers](fichiers)
