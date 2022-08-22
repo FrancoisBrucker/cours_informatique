@@ -2,12 +2,12 @@
 layout: layout/post.njk 
 title: Théorie des graphes
 date: 2019-06-01
-tags: ['enseignement', 'ecm', '1A']
+tags: ['enseignement', 'ECM', '1A']
 ---
 
 <!-- début résumé -->
 
-Une semaine pour s'initier à la théorie des graphes. Outre un intérêt scientifique et théorique certain, la théorie des graphes permet de résoudre un nombre important de problèmes concrets courant pour un ingénieur. 
+Une semaine pour s'initier à la théorie des graphes. Outre un intérêt scientifique et théorique certain, la théorie des graphes permet de résoudre un nombre important de problèmes concrets courant pour un ingénieur.
 
 Ce cours est séparer en trois parties, contenant chacune un volet théorique  où et un volet applicatif où seront mis en œuvre et en python le concepts théoriques abordés.
 

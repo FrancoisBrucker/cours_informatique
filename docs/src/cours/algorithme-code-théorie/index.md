@@ -81,7 +81,7 @@ Ce cours est composée de trois grandes parties qui s'enchevêtrent.
 10. [héritage](code/programmation-objet/héritage)
 11. [projet : héritage](code/programmation-objet/projet-héritage)
 12. [projet : TDD](code/programmation-objet/projet-tdd)
-13. [projet : programmation événementielle](code/projet-programmation-evenementielle)
+13. [projet : programmation événementielle](code/projet-programmation-évènementielle)
 14. [fichiers](code/fichiers)
 15. [projet : fichiers](code/projet-fichiers)
 16. [projet : alignement de séquences](code/projet-alignement-sequences)
@@ -614,7 +614,7 @@ graph.links.push({
 
 graph.nodes.push({
 id: "projet : programmation événementielle",
-  link: "code/projet-programmation-evenementielle",
+  link: "code/projet-programmation-évènementielle",
   group: groups.code
 })
 

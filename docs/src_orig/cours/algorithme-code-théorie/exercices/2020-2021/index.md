@@ -20,4 +20,4 @@ Tests et examens pour l'année scolaire 2020/2021
 ## DS
 
 1. DS : [sujet]({% link cours/algorithme-code-théorie/exercices/2020-2021/4_ds_sujet.md %}) et [corrigé]({% link cours/algorithme-code-théorie/exercices/2020-2021/4_ds_corrige.md %})
-2. [examen terminal (sujet)](./mpci_et_2020_2021.pdf)
+2. [examen terminal (sujet)](./MPCI_et_2020_2021.pdf)

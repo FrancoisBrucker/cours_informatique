@@ -15,11 +15,13 @@
   "license": "ISC",
   "devDependencies": {
     "@11ty/eleventy": "^1.0.1",
+    "@11ty/eleventy-navigation": "^0.3.5",
     "@11ty/eleventy-plugin-syntaxhighlight": "^4.1.0",
     "@pborenstein/eleventy-md-syntax-highlight": "^1.0.2",
     "@tailwindcss/typography": "^0.5.4",
     "autoprefixer": "^10.4.7",
     "eleventy-plugin-mathjax": "^2.0.4",
+    "eleventy-plugin-youtube-embed": "^1.7.1",
     "eleventy-postcss-extension": "^1.0.0",
     "markdown-it-attrs": "^4.1.4",
     "markdown-it-multimd-table": "^4.2.0",

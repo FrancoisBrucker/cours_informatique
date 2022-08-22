@@ -1,6 +1,6 @@
 ## site :
 
-- dépendances cours mpci avec un json
+- dépendances cours MPCI avec un json
 - mettre escape html latex avec un shortcode 
 
 - NAVIGATION PLUGIN pour remonter la hiérarchie automatiquement
@@ -47,7 +47,7 @@
 		<http://pageperso.lif.univ-mrs.fr/~kevin.perrot/documents/2016/calculabilite/Cours_16.pdf>
 		<https://www.cs.odu.edu/~zeil/cs390/latest/Public/turing-complete/index.html>
 
-## mpci
+## MPCI
 
 - faire mélange juste avant tri.
 

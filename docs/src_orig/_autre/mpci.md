@@ -126,7 +126,7 @@ Au programme :
 
 #### vendredi {#v-7}
 
-1. [projet : programmation événementielle]({% link cours/algorithme-code-théorie/code/projet-programmation-evenementielle.md %})
+1. [projet : programmation événementielle]({% link cours/algorithme-code-théorie/code/projet-programmation-évènementielle.md %})
 
 ### semaine 8
 

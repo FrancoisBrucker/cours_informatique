@@ -1,11 +1,11 @@
 ---
 layout: layout/post.njk 
-title: Formations en mpci.
-date: 2019-06-01
-tags: ['formation', 'mpci']
+title: Formations en MPCI.
+
+tags: ['formation', 'MPCI']
 ---
 
-Formation donnée actuellement en mpci :
+Formation donnée actuellement en MPCI :
 
 1. [Un algorithme ?]({{ "/cours/algorithme-code-théorie/algorithme/définition" | url }})
 2. [Pseudo-code]({{ "/cours/algorithme-code-théorie/algorithme/pseudo-code" | url }})
@@ -32,3 +32,4 @@ Formation donnée actuellement en mpci :
 23. [structure : liste]({{ "/cours/algorithme-code-théorie/algorithme/structure-liste" | url }})
 24. [fonctions de hash]({{ "/cours/algorithme-code-théorie/théorie/fonctions-hash" | url }})
 25. [structure : dictionnaire]({{ "/cours/algorithme-code-théorie/algorithme/structure-dictionnaire" | url }})
+26. [Projet : programmation événementielle]({{ "/cours/algorithme-code-théorie/code/projet-programmation-évènementielle" | url }})
