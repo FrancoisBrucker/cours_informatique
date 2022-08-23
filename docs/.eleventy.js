@@ -20,6 +20,7 @@ module.exports = function (eleventyConfig) {
       input: "src",
       output: "dist"
     },
+    markdownTemplateEngine: "njk",
   }
 
 };

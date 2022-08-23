@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk 
-title: Vsc extension Markdown
-tags: ['vsc', 'tutoriel', 'markdown']
+title: Outils complémentaires pour Vsc et python
+tags: ['tutoriel', 'vsc', 'python']
 
 authors: 
     - François Brucker
@@ -12,125 +12,221 @@ authors:
 {% endchemin %}
 {% prerequis "**Prérequis** :" %}
 
-* [Installation et prise en main de vsc](../vsc-installation-et-prise-en-main)
+* [vsc et python](../vsc-python)
 
 {% endprerequis %}
 
 <!-- début résumé -->
 
-Écrire et *compiler* du markdown avec vsc.
+Ce tutoriel se consacre à l'installation d'extensions non fondamentales mais bien sympathiques pour le développement en python avec vscode.
 
 <!-- fin résumé -->
 
-L'éditeur de texte [vscode](https://code.visualstudio.com/) permet d'écrire et d'exporter facilement du markdown.
+## tests { #pytest }
+
+{% chemin "[tests avec vscode](https://code.visualstudio.com/docs/python/testing)" %}
+{% endchemin %}
+
+Nous utilisons [pytest](https://docs.pytest.org/) comme bibliothèque de test.
+
+### Installation { #installation-pytest }
+
+{% details "sous linux et mac" %}
+
+`python3 -m pip install pytest`
+
+{% enddetails %}
+
+{% details "sous windows" %}
+
+`python -m pip install pytest`
+
+{% enddetails %}
+
+### Configuration { #configuration-pytest }
+
+1. dans les préférences (*menu file/code > Préferences > settings*) tapez `python.testing.pytestEnabled`  dans la barre de recherche et cochez la case. Ceci dit à vscode que notre framework de test est pytest (il y en a d'autres possible comme [unittest](https://docs.python.org/fr/3.9/library/unittest.html) ou encore [nosetests](https://nose.readthedocs.io/en/latest/), mais on ne va pas les utiliser. Assurez vous cependant qu'un seul framework de test soit utilisé à la fois. Ca devrait être le cas si vous n'avez pas cliqué un peu partout).
+2. on configure les tests de notre projet en tapant la commande (dans la [palette de commande](../vsc-installation-et-prise-en-main#palette-de-commande)) : *python : Configure tests* on choisit *pytest* puis *. (root)* qui donne le dossier de départ où aller chercher nos tests
+
+### Utilisation { #utilisation-pytest }
+
+{% faire %}
+Créez un fichier que vous appellerez `test_projet.py`{.fichier} dans votre projet. Collez-y- le code suivant :
+
+```python
+def test_oui():
+    assert 4 = 2 + 2
+
+
+def test_non():
+    assert "4" == 2 + 2
+```
+
+{% endfaire %}
+
+Le fichier créé est un fichier de test. Il faut l'utiliser via la bibliothèque `pytest` que vous venez d'installer. Ceci peut se faire directement avec vscode en ouvrant la fenêtre de tests avec *Menu Affichage testing* (le petit erlenmeyer de la [barre d'activité](https://code.visualstudio.com/docs/getstarted/userinterface)).
+
+En suite le menu *TESTING* en haut de cette nouvelle fenêtre vous permet :
+
+* redécouvrir les tests
+* exécutez les tests.
+* ...
+
+![tests](python-pytest-env.png)
+
+On peut également directement utiliser pytest avec le terminal, en tapant `python -m pytest` (`python3 -m pytest` si votre interpréteur est `python3`) alors que vous êtes dans le dossier du projet.
+
+## Linter { #pycodestyle }
+
+Le [linting en python avec vscode](https://code.visualstudio.com/docs/python/linting) permet de souligner les fautes de style de python.
+
+C'est une aide précieuse pour écrire du code qui est à la fois fonctionnel et lisible. Cela permet de supprimer la majorité des problèmes avant l'exécution.
+
+Il faut installer des plugins pythons spécifiques pour le linting. Il en existe de nombreux. On vous propose ici d'utiliser [pycodestyle](https://pycodestyle.pycqa.org/en/latest/intro.html) qui permet de respecter la [PEP8](https://www.python.org/dev/peps/pep-0008/).
+
+### Installation { #installation-pycodestyle }
+
+Dans un [terminal](../terminal),
+qui peut être [celui de vscode](vsc-terminal#terminal-intégré) tapez la commande :
+
+{% details "sous linux et mac" %}
+
+`python3 -m pip install pycodestyle`
+
+{% enddetails %}
+
+{% details "sous windows" %}
+
+`python -m pip install pycodestyle`
+
+{% enddetails %}
+
+Une fois ce module python installé, on va pouvoir l'utiliser dans vscode
+
+### Configuration { #configuration-pycodestyle }
+
+Pour mettre en route le linting via pycodestyle, deux paramètres sont à positionner :
+
+* `python.linting.enabled` doit être coché pour mettre en route le linting
+* `python.linting.pycodestyleEnabled` doit être coché pour utiliser `pycodestyle` comme linter
+* `python.linting.pycodestylePath` doit donner le chemin vers `pycodestyle`. Il est par défaut positionné sur `pycodestyle` ce qui devrait être correct.
 
 {% info %}
-Sa documentation comporte une [partie consacrée au markdown](https://code.visualstudio.com/docs/languages/markdown), n'hésitez pas à aller y jeter un coup d'œil.
+Notez que vous pouvez aussi accéder à ces commande via la [palette de commande](../vsc-installation-et-prise-en-main#palette-de-commande),par exemple avec la commande *python: enable/disable linting*.
 {% endinfo %}
 
-## extensions markdown
+### Pycodestyle dans le terminal
 
-Deux extensions sont très utiles pour écrire du markdown dans vscode :
+Vous pouvez aussi toujours exécuter la commande `pycodestyle mon-fichier.py` dans un [terminal intégré](../vsc-terminal#terminal-intégré) pour obtenir le linting de votre fichier. C'est moins pratique que lorsque vscode le fait puisque la ligne en question n'est pas soulignée dans l'interface.
 
-* [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one) qui permet de fluidifier l'écriture de markdown et permet un export de celui-ci en html.
-* [markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint), un [linter](https://mindsers.blog/fr/post/linting-good-practices/) qui souligne en jaune les fautes de style de markdown (saut dans la hiérarchie des sections par exemple) pour que vous puissiez les corriger et écrire parfaitement du markdown
+### Style
 
-{% faire %}
-Installez les deux extensions ci-dessus dans votre vscode.
-{% endfaire %}
+Certaines erreurs de pycodestyle sont énervante, car ce n'en sont pas vraiment (comme le nombre maximum de caractère dans une ligne). On peut le configurer pour qu'il *oublie* ces erreurs.
 
-## exemple {#exemple}
+La liste des différentes erreur est [disponible dans la doc](https://pycodestyle.pycqa.org/en/latest/intro.html#error-codes). L'erreur de ligne trop longue est ainsi l'erreur `E501`.
 
-### fichier markdown
+Nous pouvons ajouter dans la configuration de pycodestyle pour vscode au paramètre `python.linting.pycodestyleArgs` la ligne `--ignore=E501`.
 
-{% faire %}
-Dans vscode, créez un nouveau fichier que vous appellerez *"exemple.md"* (*".md"* est l'extension par défaut des fichiers markdown).
+## Black { #black }
 
-Copiez/collez-y- le texte ci-dessous et sauvez le fichier.
-{% endfaire %}
+[Black](https://black.readthedocs.io/en/stable/index.html) est un bijou. Ne pas l'utiliser tout le temps est bête.
 
-```text
+Son but est de re-formater sans faute de style tout programme python.
 
-# Un petit peu de Markdown
+### Installation { #installation-black }
 
-## quoi ?
+Dans un [terminal](../terminal),
+qui peut être [celui de vscode](../vsc-terminal#terminal-intégré) tapez la commande :
 
-Le [Markdown](https://fr.wikipedia.org/wiki/Markdown) est un format texte éditable et visualisable dans tout éditeur.
+{% details "sous linux et mac" %}
 
-## comment ?
+`python3 -m pip install black`
 
-### style
+{% enddetails %}
 
-* peut écrire en *italique*
-* ou en **gras**
-* du `code`
-* des équations latex comme $2 \pi + \frac{1}{2}$
+{% details "sous windows" %}
 
-### bloc
+`python -m pip install black`
 
-On peut aussi écrire des blocs de code, comme :
+{% enddetails %}
 
-1. des équations en latex
-2. du code python
-3. du texte brut
+Une fois ce module python installé, on va pouvoir l'utiliser dans vscode
 
-```
+### Configuration { #configuration-black }
 
-Le texte ci-dessus est un petit panel de ce qu'on peut faire en markdown. Il montre en particulier comment on peut représenter :
+A priori tout est ok sans aucune autre configuration sous vscode. On peut lister deux paramètre auxquels faire attention :
 
-* des sections
-* des liste ordonnées ou non
-* du style (italique, gras, code, équations)
+* `python.formatting.blackPath`: qui vaut `black` par défaut
+* `python.formatting.provider` : qui donne l'outil de formatage de fichier par défaut utilisé, et qui vaut `black` par défaut.
 
-Vous voyez que ce format est *lisible* directement dans vscode (on comprend qu'un titre est un titre par exemple).
+### Utilisation
 
-### linter
+Si vous avez le paramètre `editor.formatOnSave` de coché à chaque sauvegarde de votre fichier, il sera reformaté. Notez que cela ne marche pas si votre fichier est sauvegardé automatiquement après un délai.
 
-L'intérêt de l'extension [markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint) est qu'elle souligne les fautes de style. Il ne devrait pas y en avoir dans l'exemple précédent. Ajoutons en :
+Vous pouvez aussi :
 
-{% faire %}
+* exécuter directement la commande *format document* dans [palette de commande](../vsc-installation-et-prise-en-main#palette-de-commande).
+* utiliser son [raccourci clavier](https://code.visualstudio.com/docs/editor/codebasics#_formatting)
 
-* ajoutez un espace à la fin d'un titre
-* sautez deux ligne après un titre
+### Black dans le terminal
 
-{% endfaire %}
+{% details "sous linux et mac" %}
 
-Vous devriez voir apparaître des marques jaunes, comme sur l'image ci-dessous :
+`python3 -m black mon-fichier.py`
 
-![marques jaunes](marques-jaunes.png)
+{% enddetails %}
 
-Pour connaître la raison de la mise en garde, passer votre curseur dessus :
+{% details "sous windows" %}
 
-![curseur sur une marque jaune](curseur-marques-jaunes.png)
+`python -m black mon-fichier.py`
 
-Plus d'un saut de ligne après un titre est considéré comme une faute de style.
+{% enddetails %}
 
-{% faire %}
+## Couverture de code { #code-coverage }
 
-Corrigez les fautes de style pur ne plus avoir de marques jaunes.
+Permet de voir le code couvert par les tests.
 
-{% endfaire %}
+### Installation { #installation-coverage }
 
-## export en html
+#### Coverage pour pytest
 
-Si le markdown est pratique pour être écrit et lu rapidement, pour de long documents ou le partage de ceux-ci, il est important de les exporter dans un format comme le html.
+On va utiliser le *code coverage* de pytest :
 
-Avec le plugin *Markdown All in One* de vscode, il suffit de taper la commande :
+{% details "sous linux et mac" %}
 
-```text
-markdown All in One: Print current document to HTML
-```
+`python3 -m pip install pytest-cov`
 
-dans la [palette de commande](../vsc-installation-et-prise-en-main#palette-de-commande) (que l'on peut copier/coller). Ceci va créer un fichier html contenant votre code markdown *compilé* dans le même dossier que le fichier markdown.
+{% enddetails %}
 
-{% faire %}
-Dans vscode, en ayant comme onglet actif celui contenant le fichier *"exemple.md"*, ouvrez la [palette de commande](../vsc-installation-et-prise-en-main#palette-de-commande) et taper la commande `markdown All in One: Print current document to HTML`.
-{% endfaire %}
+{% details "sous windows" %}
 
-Après l'exécution de cette commande, vous aurez un fichier *"exemple.html"* dans le même dossier que votre fichier *"exemple.md"*.
+`python -m pip install pytest-cov`
 
-{% faire %}
+{% enddetails %}
 
-Ouvrez le fichier *"exemple.html"* dans votre navigateur favori pour voir le résultat.
+#### Extension vscode
 
-{% endfaire %}
+Puis l'extension de vscode qui permet de rendre compte du coverage dans l'interface. Tapez [Coverage Gutters](https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters) dans le *menu affichage > extensions*.
+
+### Utilisation { #code-coverge }
+
+La documentation complète du module est disponible à cette adresse : <https://pytest-cov.readthedocs.io/en/latest/>.
+
+Ce module utilise [coverage](https://coverage.readthedocs.io/en/6.3.1/index.html), qui est le module de couverture de code utilisé. Il est très configurable.
+
+#### Sans l'extension
+
+Dans un terminal tapez `python3 -m pytest --cov=.`. Cela exécute les tests à partir du dossier courant (`.`) avec le coverage qui sera retourné au format texte.
+
+Si l'on veut les ligne manquantes, on peut utiliser la commande : `--cov-report term-missing`
+
+Enfin, pour avoir un rapport html complet on peut utiliser la ligne : `python3 -m pytest --cov=. --cov-report html`.
+
+#### Utilisation de l'extension
+
+La commande `python3 -m pytest --cov=.` crée un fichier de coverage qui s'appelle `.coverage`. Il n'est cependant pas lisible dans ce format par défaut par l'extension. Il faut générer un format de sorti en [xml](https://fr.wikipedia.org/wiki/Extensible_Markup_Language) avec la commande : `python3 -m pytest --cov=.  --cov-report xml:cov.xml`
+
+{% info %}
+Si le petit *watch* n'est pas visible dans la barre de status, vous pouvez le faire à la main dans avec la [palette de commande](../vsc-installation-et-prise-en-main#palette-de-commande))
+ *Coverage Gutters: Display Coverage*.
+{% endinfo %}

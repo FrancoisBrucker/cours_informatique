@@ -1,12 +1,17 @@
 ---
 layout: layout/post.njk 
 title: "Partie 3 / 3"
+
+eleventyNavigation:
+  key: "Projet : TDD 3/3"
+  parent: "Projet : TDD"
 ---
 
 {% chemin %}
-[Cours]({{ "../../../.." }}) / [Algorithme, code et théorie]({{ "../../.." }}) / [Code]({{ "../../.." }}) / [Programmation Objet]({{ "../.." }}) / [Projet TDD]({{ ".." }}) / [{{title}}]({{ "." }})
+{%- for page in collections.all | eleventyNavigationBreadcrumb(eleventyNavigation.key, { includeSelf: true}) -%}
+{% if not loop.first %} / {%endif%} [{{page.title}}]({{ page.url | url }})
+{%- endfor -%}
 {% endchemin %}
-
 <!-- début résumé -->
 
 Troisième et dernière partie du projet TDD.
@@ -52,14 +57,14 @@ La partie refactor, qui est la partie réelle où l'on code ne se fait **que sur
 
 Avant de traiter l'addition de deux monnaies différentes, commençons par traiter le cas de 1 unique monnaie.
 
-### todo list {#todo-list-add-1-1}
+### todo list { #todo-list-add-1-1 }
 
 * [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
 * **[-] \\$5 + \\$2 = \\$7**
 
 On s'assure dans le test qu'on ne somme pas deux fois la même chose pour éviter des effets de bord possible dans le code (c'est du code smell).
 
-### faire {#faire-add-1-1}
+### faire { #faire-add-1-1 }
 
 {% exercice %}
 Écrivez un test permettant de tester que \\$5 + \\$2 = \\$7 en :
@@ -100,7 +105,7 @@ class Monnaie:
 
 {% enddetails %}
 
-### Faire {#faire-add-1-2}
+### Faire { #faire-add-1-2 }
 
 Rendons les choses jolies en utilisant `__add__`{.language-} qui est le pendant pour l'addition de `__mul__`{.language-}
 
@@ -142,7 +147,7 @@ class Monnaie:
 
 {% enddetails %}
 
-### Todo list {#todo-list-add-1-2}
+### Todo list { #todo-list-add-1-2 }
 
 * [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
 * [X] \\$5 + \\$2 = \\$7
@@ -158,12 +163,12 @@ Il faut donc résoudre deux problèmes :
 * comment stocker une somme sous la forme de plusieurs devises ?
 * comment convertir une monnaie ou un ensemble de monnaies en une autre ?
 
-### Todo list {#todo-list-add-2-1}
+### Todo list { #todo-list-add-2-1 }
 
 * [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
 * **[-] \\$5 + \\$2 = quelque chose qui correspond à $7**
 
-### Faire {#faire-add-2-1}
+### Faire { #faire-add-2-1 }
 
 Pour imaginer cela rien de mieux qu'un test ! On va l'écrire à l'envers, en partant du résultat, car  on sait où on veut arriver : à $10 :
 
@@ -249,7 +254,7 @@ L'implémentation réelle de tout ce qu'on a *faké* n'est pas si évidente que 
 
 On va considérer que toute somme de deux monnaies est une nouvelle classe `Somme`{.language-} (on va cependant ajouter que la somme de 2 monnaies identiques devrait rendre une monnaie, comme pour la multiplication,  dans la todo list).
 
-### Todo list {#todo-list-add-3-1}
+### Todo list { #todo-list-add-3-1 }
 
 On change notre item de la todo list puisque \\$5 + \\$2 ne sera plus égal à \\$7, mais que ce serait bien qu'il soit :
 
@@ -257,7 +262,7 @@ On change notre item de la todo list puisque \\$5 + \\$2 ne sera plus égal à \
 * [ ] \\$5 + \\$2 doit être égal à \\$7
 * **[-] \\$5 + \\$2 = quelque chose qui correspond à $7**
 
-### Taire {#faire-add-3-1}
+### Taire { #faire-add-3-1 }
 
 {% exercice %}
 
@@ -307,7 +312,7 @@ class Monnaie:
 
 {% enddetails %}
 
-### Todo list {#todo-list-add-3-2}
+### Todo list { #todo-list-add-3-2 }
 
 On a pas fini notre item.
 
@@ -321,7 +326,7 @@ Mais on a bien avancé puisque  \\$5 + \\$2 n'est plus une `Monnaie`{.language-}
 
 Pour que \\$5 + \\$2 corresponde à quelque chose qui vaut à \\$7, on doit travailler sur la méthode `conversion`{.language-} de la `Banque`{.language-}. C'est elle qui doit pouvoir faire le change (pour l'instant c'est un *fake* qui rend \\$7).
 
-### Todo list {#todo-list-conversion-1-2}
+### Todo list { #todo-list-conversion-1-2 }
 
 Pour l'instant, `Banque.conversion`{.language-} prend pour une `Somme`{.language-} en paramètre. Nous n'allons pas ous en occuper tout de suite, mais il pourrait être intéressant qu'elle puisse aussi prendre une `Monnaie`{.language-} en paramètre pour faire le change :
 
@@ -330,7 +335,7 @@ Pour l'instant, `Banque.conversion`{.language-} prend pour une `Somme`{.language
 * **[-] \\$5 + \\$2 = quelque chose qui correspond à $7**
 * [ ] `Banque.conversion(Monnaie)`{.language-}
 
-### faire {#faire-conversion-1-1}
+### faire { #faire-conversion-1-1 }
 
 Le test `test_conversion_addition`{.language-} affirme que `banque.conversion(monnaie.dollar(5) + monnaie.dollar(2), "USD")`{.language-} vaut  `monnaie.dollar(7)`{.language-}. Mais notre implémentation est encore un fake (il reste plein de duplications).
 
@@ -382,7 +387,7 @@ Un bon programme utilise des objets qui interagissent entre eux mais qui ne conn
 
 En particulier, la loi de Déméter demande d'éviter d'appeler les méthodes d'un attribut d'un objet ce qui est exactement ce que l'on fait.
 
-### Faire {#faire-conversion-2-1}
+### Faire { #faire-conversion-2-1 }
 
 Pour éviter cette double indirection :
 
@@ -415,7 +420,7 @@ class Somme:
 
 {% enddetails %}
 
-### Todo list {#todo-list-conversion-2-1}
+### Todo list { #todo-list-conversion-2-1 }
 
 On a fini un item, mais avec plein de restrictions. Ajoutons les à la la todo list.
 
@@ -431,7 +436,7 @@ L'étape précédente a permis de baisser le niveau de connaissance de la banque
 
 Monter la méthode `conversion`{.language-} de la `Banque`{.language-} à la `Somme`{.language-} nous permet également de traiter le cas où `Banque.conversion`{.language-} a une  `Monnaie`{.language-} comme paramètre : il suffit de rajouter une méthode `Monnaie.conversion`{.language-} !
 
-### Todo list {#todo-list-conversion-3-1}
+### Todo list { #todo-list-conversion-3-1 }
 
 * [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
 * [ ] \\$5 + \\$2 doit être égal à \\$7
@@ -439,7 +444,7 @@ Monter la méthode `conversion`{.language-} de la `Banque`{.language-} à la `So
 * **[-] `Banque.conversion(Monnaie)`{.language-}**
 * [ ] `Somme.conversion(devise)`{.language-} doit vraiment faire des conversions
 
-### Faire {#faire-conversion-3-1}
+### Faire { #faire-conversion-3-1 }
 
 {% exercice %}
 
@@ -480,7 +485,7 @@ class Monnaie:
 
 {% enddetails %}
 
-### todo list {#todo-list-conversion-3-2}
+### todo list { #todo-list-conversion-3-2 }
 
 On a fini un item, mais avec plein de restrictions. Ajoutons les à la la todo list :
 
@@ -495,7 +500,7 @@ On a fini un item, mais avec plein de restrictions. Ajoutons les à la la todo l
 
 On va maintenant s'attaquer à la conversion. Commençons simple avec les objets de type `Monnaie`{.language-}
 
-### Todo list {#todo-list-change-1-1}
+### Todo list { #todo-list-change-1-1 }
 
 * [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
 * [ ] \\$5 + \\$2 doit être égal à \\$7
@@ -504,7 +509,7 @@ On va maintenant s'attaquer à la conversion. Commençons simple avec les objets
 * [ ] `Somme.conversion(devise)`{.language-} doit vraiment faire des conversions
 * **[-] `Monnaie.conversion(devise)`{.language-} doit vraiment faire des conversions**
 
-### Faire {#faire-change-1-1}
+### Faire { #faire-change-1-1 }
 
 {% exercice %}
 On veut que `Banque.conversion(monnaie.dollar(2), "CHF")`{.language-} donne 1. On doit pour cela utilisez un taux de change donné par `Banque.change`{.language-} qui prend 2 devises en paramètres, celle de départ et celle d'arrivée.
@@ -583,7 +588,7 @@ Remarquez qu'on a du également modifier `Somme.conversion`{.language-} pour que
 
 {% enddetails %}
 
-### Todo list {#todo-list-change-1-2}
+### Todo list { #todo-list-change-1-2 }
 
 * [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
 * [ ] \\$5 + \\$2 doit être égal à \\$7
@@ -596,7 +601,7 @@ Remarquez qu'on a du également modifier `Somme.conversion`{.language-} pour que
 
 Pour l'instant notre conversion pour les sommes ne considère que les mêmes devises. On va travailler maintenant sur des devises différentes.
 
-### todo list {#todo-list-change-2-1}
+### todo list { #todo-list-change-2-1 }
 
 * [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
 * [ ] \\$5 + \\$2 doit être égal à \\$7
@@ -605,7 +610,7 @@ Pour l'instant notre conversion pour les sommes ne considère que les mêmes dev
 * **[-] `Somme.conversion(devise)`{.language-} doit vraiment faire des conversions**
 * [X] `Monnaie.conversion(devise)`{.language-} doit vraiment faire des conversions
 
-### Faire {#faire-change-2-1}
+### Faire { #faire-change-2-1 }
 
 Commençons simplement :
 
@@ -657,7 +662,7 @@ Remarquez qu'on a du également modifier `Somme.conversion`{.language-} pour que
 
 {% enddetails %}
 
-### todo list {#todo-list-change-2-2}
+### todo list { #todo-list-change-2-2 }
 
 * [X] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
 * [ ] \\$5 + \\$2 doit être égal à \\$7
@@ -685,7 +690,7 @@ Un nœud va être composé d'autre nœud ou de feuilles, les deux classes ayant 
 
 L'intérêt principal de ce design pattern est que la façon d'appeler la méthode `opération`{.language-} est identique pour un ensemble ou un unique élément.
 
-### Faire {#faire-exp-1}
+### Faire { #faire-exp-1 }
 
 A priori, une partie de la somme de sommes est déjà implémentée. Regardez comment `Somme`{.language-} est construite, en particulier la méthode `__add__`{.language-}.
 
@@ -769,7 +774,7 @@ class Somme:
 
 {% enddetails %}
 
-### Faire {#faire-exp-2}
+### Faire { #faire-exp-2 }
 
 Il ne reste plus qu'à tester la multiplication pour finir.
 

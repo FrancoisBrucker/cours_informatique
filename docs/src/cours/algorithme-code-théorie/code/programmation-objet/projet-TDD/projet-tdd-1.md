@@ -1,10 +1,16 @@
 ---
 layout: layout/post.njk 
 title: "Partie 1 / 3"
+
+eleventyNavigation:
+  key: "Projet : TDD 1/3"
+  parent: "Projet : TDD"
 ---
 
 {% chemin %}
-[Cours]({{ "../../../.." }}) / [Algorithme, code et théorie]({{ "../../.." }}) / [Code]({{ "../../.." }}) / [Programmation Objet]({{ "../.." }}) / [Projet TDD]({{ ".." }}) / [{{title}}]({{ "." }})
+{%- for page in collections.all | eleventyNavigationBreadcrumb(eleventyNavigation.key, { includeSelf: true}) -%}
+{% if not loop.first %} / {%endif%} [{{page.title}}]({{ page.url | url }})
+{%- endfor -%}
 {% endchemin %}
 
 <!-- début résumé -->
@@ -15,7 +21,7 @@ Première partie du projet TDD.
 
 ## 1 - départ
 
-### Faire {#faire-1.1}
+### Faire { #faire-1.1 }
 
 Commençons par noter ce qu'il faut faire pour que notre application de change fonctionne :
 
@@ -36,14 +42,14 @@ Cette todo-list (ou *backlog*) nous indique :
 
 {% endfaire %}
 
-### Todo list {#todo-list-1.1}
+### Todo list { #todo-list-1.1 }
 
 Première todo list :
 
 * [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
 * [ ] \\$5 * 2 = \\$10
 
-### Faire {#faire-1.2}
+### Faire { #faire-1.2 }
 
 Par quoi on commence ?
 
@@ -83,7 +89,7 @@ En TDD on utilise notre code avant de l'écrire. Avoir une idée de comment util
 
 L'écriture de notre test (un cas d'utilisation de la classe dollar qui valide l'item courant de la todo list) nous montre des choses que l'on doit pouvoir faire, et par là augmente notre todo list avec des choses à implémenter ou des questions auxquelles il va falloir répondre un jour.
 
-### Todo list {#todo-list-1.2}
+### Todo list { #todo-list-1.2 }
 
 Le test nous pose quelques questions quand à l'utilisation de la classe dollar. Notre todo list devient :
 
@@ -93,7 +99,7 @@ Le test nous pose quelques questions quand à l'utilisation de la classe dollar.
 * [ ] `cinq == $10`{.language-} (ce n'est pas vraiment super car nos \\$5 initiaux valent maintenant \\$10). rendre `Dollar`{.language-} non modifiable
 * [ ] gestion des arrondis (lorsque les montants seront des réels)
 
-### Faire {#faire-1.3}
+### Faire { #faire-1.3 }
 
 Rien ne marche avec nos tests lorsqu'on les exécute via le terminal :
 
@@ -254,7 +260,7 @@ test_monnaie.py .
 Corriger petit à petit un test pour qu'il passe ne nécessite presque pas d'intelligence. Il suffit de se laisser guider par l'interpréteur python.
 {% endnote %}
 
-### Faire {#faire-1.4}
+### Faire { #faire-1.4 }
 
 **Halte là !** Ce n'est pas fini.
 
@@ -328,7 +334,7 @@ class Dollar:
 
 Nos tests continuent de passer et nous n'avons plus de duplication: on peut supprimer la tâche de la todo list
 
-### Todo list {#todo-list-1.3}
+### Todo list { #todo-list-1.3 }
 
 Le test nous pose quelques questions quand à l'utilisation de la classe dollar. Notre todo list devient :
 
@@ -338,7 +344,7 @@ Le test nous pose quelques questions quand à l'utilisation de la classe dollar.
 * [ ] `cinq == $10`{.language-} (ce n'est pas vraiment super car nos \\$5 initiaux valent maintenant \\$10). rendre `Dollar`{.language-} non modifiable
 * [ ] gestion des arrondis (lorsque les montants seront des réels)
 
-#### Bilan {#bilan-1}
+#### Bilan { #bilan-1 }
 
 La procédure utilisée dans cette étape sera générale :
 
@@ -378,7 +384,7 @@ Il ne faut cependant pas s'arrêter à 1, sinon votre code ne sera pas maintenab
 
 Que faire maintenant ?
 
-### Todo list {#todo-list-2.1}
+### Todo list { #todo-list-2.1 }
 
 On choisit **toujours** l'élément le plus simple à faire dans la todo list. Ici, le quatrième item semble le facilement implémentable :
 
@@ -388,7 +394,7 @@ On choisit **toujours** l'élément le plus simple à faire dans la todo list. I
 * **[-] `cinq == $10`{.language-} (ce n'est pas vraiment super car nos \\$5 initiaux valent maintenant \\$10). rendre `Dollar`{.language-} non modifiable**
 * [ ] gestion des arrondis (lorsque les montants seront des réels)
 
-### Faire {#faire-2.1}
+### Faire { #faire-2.1 }
 
 Pour vérifier que nos 5 dollars restent 5 dollars, on peut faire un test du style :
 
@@ -495,7 +501,7 @@ On exécute nos tests et ça passe !
 
 On a en même temps fait passer le test et fini l'implémentation.
 
-### Todo list {#todo-list-2.2}
+### Todo list { #todo-list-2.2 }
 
 * [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
 * [X] \\$5 * 2 = \\$10
@@ -507,7 +513,7 @@ On a en même temps fait passer le test et fini l'implémentation.
 
 Pour vérifier que deux objets sont égaux, on ne va pas passer son temps à vérifier que tous leurs attributs soient les mêmes. On va le faire une fois pour toute (ce qui évitera en plus les duplications). On le rajoute donc dans la todo list :
 
-### Todo list {#todo-list-3.1}
+### Todo list { #todo-list-3.1 }
 
 * [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
 * [X] \\$5 * 2 = \\$10
@@ -516,7 +522,7 @@ Pour vérifier que deux objets sont égaux, on ne va pas passer son temps à vé
 * [ ] gestion des arrondis (lorsque les montants seront des réels)
 * **[-] `==`{.language-}**
 
-### faire {#faire-3.1}
+### faire { #faire-3.1 }
 
 On va utiliser pour cela des méthodes spéciales de python qui permettent d'utiliser les opérateurs `==`{.language-} et `!=`{.language-} même si ce n'est pas pour comparer des entiers. Mais avant d'aller plus loin, les tests.
 
@@ -627,7 +633,7 @@ Ce traitement de l'égalité est frustre, on ne vérifie pas :
 
 On va pas s'embêter avec ça pour l'instant, mais on va tout de même le rajouter à notre todo list.
 
-### Todo list {#todo-list-3.2}
+### Todo list { #todo-list-3.2 }
 
 * [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
 * [X] \\$5 * 2 = \\$10
@@ -644,7 +650,7 @@ La méthode `__eq__`{.language-} n'est pas la seule utilisée en python pour don
 
 Commençons par implémenter [`__mul__`{.language-}](https://docs.python.org/3/library/operator.html#operator.__mul__).
 
-### Todo list {#todo-list-4.1}
+### Todo list { #todo-list-4.1 }
 
 * [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
 * [X] \\$5 * 2 = \\$10
@@ -656,7 +662,7 @@ Commençons par implémenter [`__mul__`{.language-}](https://docs.python.org/3/l
 * [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
 * **[-] `__mul__`{.language-}**
 
-### Faire {#faire-4.1}
+### Faire { #faire-4.1 }
 
 Pour le test, il suffit de modifier le test de la multiplication :
 
@@ -700,7 +706,7 @@ class Dollar:
 
 {% enddetails %}
 
-### Todo list {#todo-list-4.2}
+### Todo list { #todo-list-4.2 }
 
 * [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
 * [X] \\$5 * 2 = \\$10
@@ -716,7 +722,7 @@ class Dollar:
 
 Tout est prêt pour travailler sur l'attribut `montant`{.language-}.
 
-### Todo list {#todo-list-5.1}
+### Todo list { #todo-list-5.1 }
 
 * [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
 * [X] \\$5 * 2 = \\$10
@@ -728,7 +734,7 @@ Tout est prêt pour travailler sur l'attribut `montant`{.language-}.
 * [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
 * [X] `__mul__`{.language-}
 
-### Faire {#faire-5.1}
+### Faire { #faire-5.1 }
 
 Il ne manque pas grand chose pour que `montant`{.language-} soit privé. Il suffit de ne pas en parler dans les tests et de ne comparer que des objets entres eux :
 
@@ -778,7 +784,7 @@ On fait petit à petit disparaître des tests les références explicites à l'i
  Lorsque l'on teste, il est important de toujours tester du point de vue de l'utilisation. Il faut éviter le plus possible de tester des attributs internes à la classe.
 {% endnote %}
 
-### Todo list {#todo-list-5.2}
+### Todo list { #todo-list-5.2 }
 
 * [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
 * [X] \\$5 * 2 = \\$10
@@ -792,7 +798,7 @@ On fait petit à petit disparaître des tests les références explicites à l'i
 
 ## Fin de la partie 1
 
-### Todo list {#todo-list-fin-1}
+### Todo list { #todo-list-fin-1 }
 
 On peut épurer notre todo list en supprimant les items déjà résolus. On obtient :
 
@@ -801,7 +807,7 @@ On peut épurer notre todo list en supprimant les items déjà résolus. On obti
 * [ ] `== None`{.language-}
 * [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
 
-### code {#code-fin-1}
+### code { #code-fin-1 }
 
 A la fin de cette partie, on a 2 fichiers.
 

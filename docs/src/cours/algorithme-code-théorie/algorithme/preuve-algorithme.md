@@ -1,10 +1,16 @@
 ---
 layout: layout/post.njk 
 title: Prouver un algorithme
+
+eleventyNavigation:
+  key: "Prouver un algorithme"
+  parent: Algorithme
 ---
 
 {% chemin %}
-[Cours]({{ "../../.." }}) / [Algorithme, code et théorie]({{ "../.." }}) / [Algorithme]({{ ".." }}) / [{{title}}]({{ "." }})
+{%- for page in collections.all | eleventyNavigationBreadcrumb(eleventyNavigation.key, { includeSelf: true}) -%}
+{% if not loop.first %} / {%endif%} [{{page.title}}]({{ page.url | url }})
+{%- endfor -%}
 {% endchemin %}
 {% prerequis "**Prérequis** :" %}
 
@@ -42,7 +48,7 @@ Dans la suite, les algorithmes seront tous donnés en python
 
 ## Factorielle
 
-### Algorithme récursif {#facto-rec}
+### Algorithme récursif { #facto-rec }
 
 {% note "Schéma de preuve :" %}
 Pour les preuves d'algorithme récursif, le schéma de preuve est quasi-toujours le même : faire une preuve par récurrence.
@@ -66,7 +72,7 @@ Par récurrence sur $n$, avec $n$ entier positif.
 Pour $n \leq 1$ `factorielle(0)`{.language-} vaut bien $1 = 0! = 1!$.
 On suppose notre hypothèse de récurrence vraie pour $n-1 \geq 1$. Pour $n > 1$, le retour de `factorielle(n)`{.language-} est `n * factorielle(n-1)`{.language-} qui vaut donc $n \cdot (n-1)! = n!$ par hypothèse de récurrence.
 
-### Algorithme itératif {#facto-iter}
+### Algorithme itératif { #facto-iter }
 
 On va voir ici 2 versions du même algorithme. L'un qui construit la factorielle en *montant*, et l'autre qui la construit en *descendant*. On prouvera ces 2 algorithme en utilisant des invariants de boucles :
 
@@ -103,11 +109,11 @@ def factorielle(n):
 On utilise la possibilité que donne python d'écrire `x += y`{.language-} (*resp.* `x -= y`{.language-}, `x *= y`{.language-} ou encore `x /= y`{.language-}) à la place de `x = x + y`{.language-} (*resp.* `x = x - y`{.language-}, `x = x * y`{.language-}, `x = x / y`{.language-}).
 {% endinfo %}
 
-##### Finitude {#F-iter-1}
+##### Finitude { #F-iter-1 }
 
 Si $n$ est un entier non nul, l'algorithme va s'arrêter car $i$ croît strictement à chaque itération de la boucle `while`{.language-}.
 
-##### Preuve {#P-iter-1}
+##### Preuve { #P-iter-1 }
 
 Par invariant de boucle !
 
@@ -160,11 +166,11 @@ def factorielle(n):
 L'algorithme construit la factorielle en *descendant.
 {% endinfo %}
 
-##### Finitude {#F-iter-2}
+##### Finitude { #F-iter-2 }
 
 Si $n$ est un entier non nul, l'algorithme va s'arrêter car $n$ décroît strictement à chaque itération de la boucle `while`.
 
-##### Preuve {#P-iter-2}
+##### Preuve { #P-iter-2 }
 
 par invariant de boucle (et oui).
 
@@ -192,7 +198,7 @@ L'invariant étant vérifié à la fin de chaque itération, il est donc aussi v
 
 On va voir 2 algorithmes pour calculer la valeur maximum d'un tableau de réels.
 
-### Algorithme récursif {#max-rec}
+### Algorithme récursif { #max-rec }
 
 ```python
 def maximum(tab, debut=0):
@@ -209,15 +215,15 @@ def maximum(tab, debut=0):
 On a utilisé la possibilité d'avoir des [arguments par défaut](https://docs.python.org/fr/3.9/tutorial/controlflow.html#default-argument-values) en python. Ceci nous permet d'exécuter la fonction maximum comme si elle n'avait qu'un seul paramètre.
 {% endinfo %}
 
-#### Finitude {#M-F-rec-1}
+#### Finitude { #M-F-rec-1 }
 
 Début augmente strictement et s'arrête lorsqu'il vaut `len(tableau) - 1`{.language-}
 
-#### Preuve {#M-P-rec-1}
+#### Preuve { #M-P-rec-1 }
 
 Par récurrence sur la longueur d'un tableau. On vérifie que l'algorithme fonctionne pour une longueur de tableau valant 1, puis on effectue preuve par récurrence sur la longueur du tableau.
 
-### Algorithme itératif {#max-iter}
+### Algorithme itératif { #max-iter }
 
 ```python
 def maximum(t):
@@ -228,11 +234,11 @@ def maximum(t):
     return m
 ```
 
-#### Finitude {#M-F-iter-1}
+#### Finitude { #M-F-iter-1 }
 
 Clair car une unique boucle for.
 
-#### Preuve {#M-P-iter-1}
+#### Preuve { #M-P-iter-1 }
 
 par invariant de boucle.
 
@@ -288,7 +294,7 @@ def euclide(a, b):
 Notez que le retour de la fonction est un [tuple](https://docs.python.org/fr/3/tutorial/datastructures.html#tuples-and-sequences) à 2 éléments (c'est à dire un tableau à 2 éléments que l'on ne peut pas modifier)
 {% endinfo %}
 
-### Finitude {#div-fini}
+### Finitude { #div-fini }
 
 le programme s'arrête ? : Oui si a et b sont des entiers positifs. Car
 
@@ -296,7 +302,7 @@ le programme s'arrête ? : Oui si a et b sont des entiers positifs. Car
 * `r`{.language-} après une itération est **strictement plus petit** que le `r`{.language-} avant itération
 * on s'arrête si `r`{.language-} est strictement plus petit que `b`{.language-}.
 
-### Preuve {#div-preuve}
+### Preuve { #div-preuve }
 
 On veut montrer que l'on obtient bien une division euclidienne de $a$ par $b$. C'est à dire que $a = bq + r$ avec $r < b$. Pour cela on va s'aider de l'invariant de boucle : `a = r + q * b`{.language-}
 

@@ -1,10 +1,16 @@
 ---
 layout: layout/post.njk 
 title: "Fonction de hash"
+
+eleventyNavigation:
+  key: "Fonction de hash"
+  parent: Théorie
 ---
 
 {% chemin %}
-[Cours]({{ "../../.." }}) / [Algorithme, code et théorie]({{ "../.." }}) / [Théorie]({{ ".." }}) / [{{title}}]({{ "." }})
+{%- for page in collections.all | eleventyNavigationBreadcrumb(eleventyNavigation.key, { includeSelf: true}) -%}
+{% if not loop.first %} / {%endif%} [{{page.title}}]({{ page.url | url }})
+{%- endfor -%}
 {% endchemin %}
 {% prerequis "**Prérequis** :" %}
 

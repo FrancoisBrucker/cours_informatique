@@ -1,10 +1,16 @@
 ---
 layout: layout/post.njk 
 title: "Complexité d'un problème"
+
+eleventyNavigation:
+  key: "Complexité d'un problème"
+  parent: Théorie
 ---
 
 {% chemin %}
-[Cours]({{ "../../.." }}) / [Algorithme, code et théorie]({{ "../.." }}) / [Algorithme]({{ ".." }}) / [{{title}}]({{ "." }})
+{%- for page in collections.all | eleventyNavigationBreadcrumb(eleventyNavigation.key, { includeSelf: true}) -%}
+{% if not loop.first %} / {%endif%} [{{page.title}}]({{ page.url | url }})
+{%- endfor -%}
 {% endchemin %}
 {% prerequis "**Prérequis** :" %}
 
@@ -109,7 +115,7 @@ def est_dans_tableau(valeur, tableau):
     return False
 ```
 
-### Complexité du problème "recherche" {#complexité-recherche}
+### Complexité du problème "recherche" { #complexité-recherche }
 
 Notre borne minimale de $\mathcal{O}(1)$ semble irréaliste. Supposons de façon plus générale qu'il existe un algorithme qui résout le problème en prenant strictement moins de $n$ opérations où $n$ est la taille du tableau, pour tout $n > N_0$.
 
@@ -242,7 +248,7 @@ Comme à chaque itération, `fin - debut`{.language-} est divisé par 2 : il y a
 L'algorithme `recherche_dichotomique`{.language-} résout le problème "recherche ordonnée" en $\mathcal{O}(\ln(n))$ (avec $n$ la taille du tableau)
 {% endnote %}
 
-#### Complexité du problème "recherche ordonnée" {#complexité-recherche-ordonnée}
+#### Complexité du problème "recherche ordonnée" { #complexité-recherche-ordonnée }
 
 L'algorithme de la recherche dichotomique résout le problème de la "recherche ordonnée" de façon bien plus efficace que l'algorithme `est_dans_tableau`{.language-} : il n'a pas besoin de connaître toutes les cases du tableau pour répondre à la question car le tableau est trié. Une borne maximum de la complexité du problème "recherche ordonnée" est alors $\mathcal{O}(\ln(n))$ (avec $n$ la taille du tableau).
 
@@ -281,7 +287,7 @@ En algorithmie, distinguer parmi plusieurs cas se fait par des tests (on utilise
 
 On a alors la propriété suivante :
 
-{#n-test-2n}
+{ #n-test-2n }
 {% note %}
 Si un algorithme doit distinguer parmi $n$ cas, il devra posséder au moins $\log_2(n)$ tests. Sa complexité sera ainsi supérieure à $\mathcal{O}(\ln(n))$
 {% endnote %}

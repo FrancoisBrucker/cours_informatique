@@ -1,10 +1,16 @@
 ---
 layout: layout/post.njk 
-title: Projet tris
+title: "Projet : tris"
+
+eleventyNavigation:
+  key: "Projet : tris"
+  parent: Code
 ---
 
 {% chemin %}
-[Cours]({{ "../../.." }}) / [Algorithme, code et théorie]({{ "../.." }}) / [Algorithme]({{ ".." }}) / [{{title}}]({{ "." }})
+{%- for page in collections.all | eleventyNavigationBreadcrumb(eleventyNavigation.key, { includeSelf: true}) -%}
+{% if not loop.first %} / {%endif%} [{{page.title}}]({{ page.url | url }})
+{%- endfor -%}
 {% endchemin %}
 {% prerequis "**Prérequis** :" %}
 

@@ -1,10 +1,16 @@
 ---
 layout: layout/post.njk 
 title: "Héritage"
+
+eleventyNavigation:
+  key: "Héritage"
+  parent: "Programmation Objet"
 ---
 
 {% chemin %}
-[Cours]({{ "../../.." }}) / [Algorithme, code et théorie]({{ "../.." }}) / [Code]({{ "../.." }}) / [Programmation Objet]({{ ".." }}) / [{{title}}]({{ "." }})
+{%- for page in collections.all | eleventyNavigationBreadcrumb(eleventyNavigation.key, { includeSelf: true}) -%}
+{% if not loop.first %} / {%endif%} [{{page.title}}]({{ page.url | url }})
+{%- endfor -%}
 {% endchemin %}
 {% prerequis "**Prérequis** :" %}
 
@@ -273,7 +279,7 @@ Pour trouver le périmètre, python fonctionne ainsi :
 
 Une fois la méthode trouvée, on l'exécute en plaçant l'objet (ici notre `triangle`{.language-} en 1er paramètre, c'est à dire `self`{.language-} de la méthode `périmètre`{.language-} définie dans `Polygone`{.language-}).
 
-## Exemple 2 : donjons et dragons {#exemple-D&D}
+## Exemple 2 : donjons et dragons { #exemple-D&D }
 
 On va simuler des personnage d'*heroic fantasy*. Pour cela, on commence par créer une classe `Personnage`{.language-} qui sera particularisée petit à petit.
 

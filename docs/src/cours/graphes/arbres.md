@@ -174,7 +174,7 @@ Montrez que quels que soient deux sommets $x$ et $y$, il n'existe qu'un seul che
 S'il existait 2 chemins distincts pour aller de $x$ à $y$ on se placerait au premier élément distinct et au premier élément en commun après celui-ci et on aurait un cycle.
 {% enddetails %}
 
-### ordonnancement des sommets {#ordo-sommets}
+### ordonnancement des sommets { #ordo-sommets }
 
 L'unicité des chemins permet d'ordonner les sommets par rapport à leur chemin par rapport à la racine. On a coutume de les faire *"tomber"* depuis la racine. On peut en effet les ranger par rapport à **leur chemin** par rapport à celle ci :
 
@@ -210,7 +210,7 @@ Donnez un exemple de chacun des termes pour le graphe ci-avant.
 
 Cet ordonnancement est [très utilisé en biologie](https://fr.wikipedia.org/wiki/Arbre_phylog%C3%A9n%C3%A9tique) par exemple car il permet de rendre compte de l'évolution des espèces. En analyse des données on utilise ce paradigme pour classer les données (qui sont les feuilles) selon ce qu'elles ont en commun (les leurs ancêtres).
 
-## arbre binaire planté {#arbre-binaire}
+## arbre binaire planté { #arbre-binaire }
 
 En informatique, c'est souvent les arbres binaires planté que l'on utilise :
 
@@ -484,7 +484,7 @@ Toutes les preuves de cette partie et de la partie suivante vont fonctionner la 
 * Si le graphe de départ est un arbre, il n'y a qu'un seul arbre couvant et les valuations peuvent être égales.
 {% enddetails %}
 
-#### un algorithme {#algo-prim}
+#### un algorithme { #algo-prim }
 
 Ce problème a l'air dur, mais il possède un algorithme (assez) simple pour le résoudre. L'algorithme suivant est l'algorithme de Prim (1957) :
 

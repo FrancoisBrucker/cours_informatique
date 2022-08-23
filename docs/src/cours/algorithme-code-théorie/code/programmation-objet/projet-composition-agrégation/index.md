@@ -1,10 +1,16 @@
 ---
 layout: layout/post.njk 
 title: "Projet : composition et agrégation"
+
+eleventyNavigation:
+  key: "Projet : composition et agrégation"
+  parent: "Programmation Objet"
 ---
 
 {% chemin %}
-[Cours]({{ "../../.." }}) / [Algorithme, code et théorie]({{ "../.." }}) / [Code]({{ "../.." }}) / [Programmation Objet]({{ ".." }}) / [{{title}}]({{ "." }})
+{%- for page in collections.all | eleventyNavigationBreadcrumb(eleventyNavigation.key, { includeSelf: true}) -%}
+{% if not loop.first %} / {%endif%} [{{page.title}}]({{ page.url | url }})
+{%- endfor -%}
 {% endchemin %}
 {% prerequis "**Prérequis** :" %}
 
@@ -51,7 +57,7 @@ Jouez avec [black](https://black.readthedocs.io/en/stable/) sur le code du proje
 **Utilisez le toujours et souvent dans vos projets !**
 {% endfaire %}
 
-### Tests et couverture de code {#couverture-code}
+### Tests et couverture de code { #couverture-code }
 
 Les tests sont bien sur toujours obligatoires ! Vous testerez chaque fonction que vous développerez.
 
@@ -164,7 +170,7 @@ Pour justifier de passer par des méthodes plutôt que d'accéder directement au
 Créez un dossier `des-des`{.fichier} qui sera la racine de votre projet.
 {% endfaire %}
 
-### Modèle {#dice-modèle}
+### Modèle { #dice-modèle }
 
 {% faire %}
 
@@ -177,7 +183,7 @@ Créez un dossier `des-des`{.fichier} qui sera la racine de votre projet.
 
 {% endfaire %}
 
-### code python {#dice-python}
+### code python { #dice-python }
 
 {% faire %}
 Créez le code python de la classe `Dice`{.language-} (fichier `dice.py`{.language-}).
@@ -236,7 +242,7 @@ Nous allons créer une classe permettant de gérer nos 5 dès de façon plus pra
 
 Pour pouvoir jouer à des jeux de dés, implémentons une classe `TapisVert`{.language-}.
 
-### Modèle {#tapis-vert-modèle}
+### Modèle { #tapis-vert-modèle }
 
 {% faire %}
 
@@ -248,7 +254,7 @@ Pour pouvoir jouer à des jeux de dés, implémentons une classe `TapisVert`{.la
 
 {% endfaire %}
 
-### Code python {#tapis-vert-python}
+### Code python { #tapis-vert-python }
 
 {% faire %}
 Créez le code python de la classe `TapisVert`{.language-} (dans le fichier `dice.py`{.fichier})

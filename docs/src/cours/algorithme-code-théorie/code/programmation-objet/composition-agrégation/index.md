@@ -1,12 +1,17 @@
 ---
 layout: layout/post.njk 
 title: Composition et agrégation
+
+eleventyNavigation:
+  key: "Composition et agrégation"
+  parent: "Programmation Objet"
 ---
 
 {% chemin %}
-[Cours]({{ "../../.." }}) / [Algorithme, code et théorie]({{ "../.." }}) / [Code]({{ "../.." }}) / [Programmation Objet]({{ ".." }}) / [{{title}}]({{ "." }})
+{%- for page in collections.all | eleventyNavigationBreadcrumb(eleventyNavigation.key, { includeSelf: true}) -%}
+{% if not loop.first %} / {%endif%} [{{page.title}}]({{ page.url | url }})
+{%- endfor -%}
 {% endchemin %}
-
 {% prerequis "**Prérequis** :" %}
 
 * [classes et objets](../classes-et-objets)
@@ -265,7 +270,7 @@ def test_supprime_dans_panier():
 
 {% endnote %}
 
-## Code final {#code-final}
+## Code final { #code-final }
 
 Vous devez avoir 3 fichiers :
 

@@ -1,10 +1,16 @@
 ---
 layout: layout/post.njk 
 title: Mémoire et espace de noms
+
+eleventyNavigation:
+  key: "Mémoire et espace de noms"
+  parent: Code
 ---
 
 {% chemin %}
-[Cours]({{ "../../.." }}) / [Algorithme, code et théorie]({{ "../.." }}) / [Algorithme]({{ ".." }}) / [{{title}}]({{ "." }})
+{%- for page in collections.all | eleventyNavigationBreadcrumb(eleventyNavigation.key, { includeSelf: true}) -%}
+{% if not loop.first %} / {%endif%} [{{page.title}}]({{ page.url | url }})
+{%- endfor -%}
 {% endchemin %}
 {% prerequis "**Prérequis** :" %}
 
@@ -202,7 +208,7 @@ La variable peut être vue comme un **nom** de l'objet à ce moment du programme
 
 Pour s'y retrouver et et avoir une procédure déterministe pour retrouver les objets associés aux variables, voire choisir parmi plusieurs variables de même noms, elles sont regroupées par ensembles — nommés **espaces de noms** — hiérarchiquement ordonnés.
 
-## Espaces de noms {#espace-noms}
+## Espaces de noms { #espace-noms }
 
 Les espaces de noms nous permettent d'abstraire ce qu'il se passe en mémoire :
 
@@ -469,7 +475,7 @@ On accède à l'espace de noms du module par la notation pointée : `random.rand
 Notez que le module `math`{.language-} n'a plus d'espace de noms associé puisque l'on a juste *récupéré* un nom qui y est défini.
 {% endinfo %}
 
-## notation pointée {#notation-pointée}
+## notation pointée { #notation-pointée }
 
 En python, (pratiquement) tout a un espace de nom. On s'en sert dès qu'on utilise la notation pointée.
 

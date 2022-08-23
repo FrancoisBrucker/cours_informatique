@@ -78,7 +78,7 @@ Les différentes implémentations sont faites en python.
 
 Structure simple, on utilise deux listes (une pour les sommets, une pour les arcs). 
 
-#### construction {#exemple-liste}
+#### construction { #exemple-liste }
 
 ```python
   V = ['a', 'b', 'c', 'd', 'e']
@@ -106,7 +106,7 @@ On essaiera **toujours** d'ajouter/supprimer des éléments en fin de liste.
 * suppression d'un sommet : $\mathcal{O}(n)$ dans le cas général car on ne sait pas la position du sommet à supprimer dans la liste $V$
 * suppression d'un arc : $\mathcal{O}(m)$ dans le cas général car on ne sait pas la position de l'arc à supprimer dans la liste $E$
 
-#### opérations {#prop-liste}
+#### opérations { #prop-liste }
 
 Structure de stockage la plus simple. N'est optimisé pour aucune opération spécifique :
 
@@ -129,11 +129,11 @@ Structure de stockage la plus simple. N'est optimisé pour aucune opération sp�
 Ce n'est pas parce qu'en python on peut écrire `'a' in V`{.language-} que sa complexité est $\mathcal{O}(1)$... Il **faut** parcourir toute la liste `V`{.language-} pour savoir si `'a'`{.language-} y est.
 {% endattention %}
 
-### liste d'adjacence {#liste-adjacence}
+### liste d'adjacence { #liste-adjacence }
 
 Structure plus complexe que la liste, elle nécessite un re-codage des sommets sous la forme d'entiers pour fonctionner.
 
-#### construction {#exemple-liste-adj}
+#### construction { #exemple-liste-adj }
 
 ```python
   V = ['a', 'b', 'c', 'd', 'e']
@@ -165,7 +165,7 @@ Ajout/suppression de sommets/arcs :
 On utilise souvent une variante de cette structure qui utilise des [tableaux associatifs](https://fr.wikipedia.org/wiki/Tableau_associatif) à la place des listes. Voir par exemple [l'implémentation en python](https://www.python.org/doc/essays/graphs/). On troque alors les complexités maximale par des complexités en moyennes, mais on a plus besoin de l'encodage des éléments sous la forme d'entiers.
 {% endinfo %}
 
-#### opérations {#prop-liste-adj}
+#### opérations { #prop-liste-adj }
 
 L'intérêt de cette encodage est que certaines opérations sont optimisées :
 
@@ -189,7 +189,7 @@ L'intérêt de cette encodage est que certaines opérations sont optimisées :
 
 Tout comme la liste d'adjacence, cette structure nécessite un re-codage des sommets sous la forme d'entiers pour fonctionner.
 
-#### construction {#exemple-mat-adj}
+#### construction { #exemple-mat-adj }
 
 ```python
 V = ['a', 'b', 'c', 'd', 'e']
@@ -221,7 +221,7 @@ Ajout/suppression de sommets/arcs :
 Cet encodage permet de traiter les ***graphes valués*** (la valeurs de $E[i][j]$ est la valuation de l'arête $xy$).
 {% endinfo %}
 
-#### opérations {#prop-mat-adj}
+#### opérations { #prop-mat-adj }
 
 L'intérêt de cette encodage est que le fait de savoir si un arête est présente dans le graphe est optimisé :
 

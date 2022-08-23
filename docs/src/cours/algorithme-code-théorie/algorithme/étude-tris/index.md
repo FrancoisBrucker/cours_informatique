@@ -1,10 +1,16 @@
 ---
 layout: layout/post.njk 
 title: "Etude : algorithmes de tri"
+
+eleventyNavigation:
+  key: "Etude : algorithmes de tri"
+  parent: Algorithme
 ---
 
 {% chemin %}
-[Cours]({{ "../../.." }}) / [Algorithme, code et théorie]({{ "../.." }}) / [Algorithme]({{ ".." }}) / [{{title}}]({{ "." }})
+{%- for page in collections.all | eleventyNavigationBreadcrumb(eleventyNavigation.key, { includeSelf: true}) -%}
+{% if not loop.first %} / {%endif%} [{{page.title}}]({{ page.url | url }})
+{%- endfor -%}
 {% endchemin %}
 {% prerequis "**Prérequis** :" %}
 
@@ -42,7 +48,7 @@ Commençons par travailler sur un problème connexe au problème du tri, celui d
 
 {% endnote %}
 
-### Algorithme {#algo-est-trie}
+### Algorithme { #algo-est-trie }
 
 ```python#
 def est_trie(T):
@@ -106,7 +112,7 @@ La complexité du problème *"est trié ?"* est de $\mathcal{O}(n)$ où $n$ est 
 
 ## Bornes du problème
 
-### Borne maximum {#borne-max}
+### Borne maximum { #borne-max }
 
 Étant donné un tableau $T$ de taille $n$, on peut utiliser l'algorithme `permutations(T)`{.language-} de l'[étude sur les mélanges](../étude-mélange#algo-toutes-permutations) qui rend toutes les permutations d'un tableau donné en $\mathcal{O}((n+2)!)$ opérations.
 
@@ -226,7 +232,7 @@ Une borne min du problème du *"tri"* est donc $\mathcal{O}(n\ln(n))$ où $n$ es
 
 Notre algorithme pour trier un tableau est un monstre de complexité. Il en existe de très simples et de complexité bien plus faible. Nous en montrons 2, classiques.
 
-### Tri par sélection {#tri-sélection}
+### Tri par sélection { #tri-sélection }
 
 L'algorithme procède alors ainsi : à chaque itération de l'algorithme, on place à l'indice $i$ du tableau son $i$-ème plus petit élément.
 
@@ -244,14 +250,14 @@ def sélection(T):
 
 L'algorithme `sélection`{.language-} **modifie** le tableau passé en paramètre. On appelle ces algorithmes [in place](https://en.wikipedia.org/wiki/In-place_algorithm) car ils ne rendent rien, mais modifient les données en entrées.
 
-#### Fonctionnement {#fonctionnement-sélection}
+#### Fonctionnement { #fonctionnement-sélection }
 
 On vérifie que l'algorithme fonctionne pour :
 
 * un petit tableau trié : `[1, 2, 3]`{.language-}
 * un petit tableau non trié où le plus petit est en dernière place : `[3, 2, 1]`{.language-}
 
-#### Preuve {#preuve-sélection}
+#### Preuve { #preuve-sélection }
 
 Le principe de fonctionnement est clair. Il reste à prouver que c'est bien ce que l'algorithme `sélection`{.language-} fait.
 
@@ -259,7 +265,7 @@ Le principe de fonctionnement est clair. Il reste à prouver que c'est bien ce q
 2. la ligne 7 échange le minimum du tableau `T[i:]`{.language-} avec `T[i]`{.language-}
 3. comme la boucle `for`{.language-} de la ligne 2 incrémente $i$, on a l'invariant de boucle : *"à la fin de chaque étape $i$ de l'algorithme les $i$ plus petites valeurs du tableau sont triées aux $i$ premiers indices du tableau"*
 
-#### Complexités {#complexités-sélection}
+#### Complexités { #complexités-sélection }
 
 On suppose que la taille du tableau est $n$.
 
@@ -304,7 +310,7 @@ La complexité de l'algorithme `sélection`{.language-} est ($n$ est la taille d
 
 {% endnote %}
 
-### Tri par insertion {#tri-insertion}
+### Tri par insertion { #tri-insertion }
 
 Le tri par insertion est une extension de l'[algorithme `est_trie`](#algorithme-algo-est-trie). Plutôt que de rendre `False`{.language-} il répare. L'algorithme `est_trie`{.language-} répond `False`{.language-} au plus petit `i`{.language-} tel que `T[i] < T[i-1]`{.language-}. On est alors dans le cas où :
 
@@ -341,14 +347,14 @@ L'algorithme `insertion`{.language-}, comme l'algorithme `sélection`{.language-
 
 Pour garantir que `T[j - 1]`{.language-} soit toujours valide (il faut que $j-1 \geq 0$), on place en tête de la condition `(courant < T[j - 1])`{.language-} de la ligne 5 la [sentinelle](https://en.wikipedia.org/wiki/Sentinel_value) `(j > 0)`{.language-}. Les deux conditions étant liées par un `and`{.language-}, python (et tout autre langage de programmation) n'évaluera la seconde condition **que si la première est vérifiée** (un `and`{.language-} ne peut être vrai que si les deux conditions sont vraies. Si la première condition est fausse, il est impossible que le `and`{.language-} soit vrai il est donc inutile de vérifier la seconde condition). Cette technique est très utile, ça vaut le coup de la connaître.
 
-#### Fonctionnement {#fonctionnement-insertion}
+#### Fonctionnement { #fonctionnement-insertion }
 
 Tout comme pour l'algorithme de tri par sélection, on vérifie que l'algorithme fonctionne pour :
 
 * un petit tableau trié : `[1, 2, 3]`{.language-}
 * un petit tableau non trié où le plus petit est en dernière place : `[3, 2, 1]`{.language-}
 
-#### Preuve {#preuve-insertion}
+#### Preuve { #preuve-insertion }
 
 Le principe de programmation du tri par insertion est correct puisque `est_trie`{.language-} est prouvé. Mais il faut vérifier qu'il est bien mis en œuvre dans l'algorithme. On utilise ici celui donné en solution.
 
@@ -365,7 +371,7 @@ A chaque itération $i$ de la boucle `for`{.language-} (ligne 2), l'algorithme f
 
 Notre invariant de boucle est donc : *"à la fin de l'itération i, les i premiers éléments du tableau sont triés"*
 
-#### Complexités {#complexités-insertion}
+#### Complexités { #complexités-insertion }
 
 Ligne à ligne :
 
@@ -514,7 +520,7 @@ def combiner(T1, T2):
     return T
 ```
 
-#### Fonctionnement {#fonctionnement-colle}
+#### Fonctionnement { #fonctionnement-colle }
 
 On vérifie pour deux petits tableaux **triés**. Par exemple pour `T1=[1, 4, 7]`{.language-} et `T2=[0, 2, 3, 98]`{.language-}. `T`{.language-} vaudra :
 
@@ -526,7 +532,7 @@ On vérifie pour deux petits tableaux **triés**. Par exemple pour `T1=[1, 4, 7]
 6. `[0, 1, 2, 3, 4, 7]`{.language-} après la 6ème itération (`i1=3`{.language-} et `i2=3`{.language-})
 7. `[0, 1, 2, 3, 4, 7, 98]`{.language-} après la 7ème itération (`i1=3`{.language-} et `i2=4`{.language-})
 
-#### Preuve {#preuve-colle}
+#### Preuve { #preuve-colle }
 
 L'algorithme se finit bien puisqu'à chaque itération de la boucle while soit `i1`{.language-} soit `i2`{.language-} augmente. Au bout de `len(T1) + len(T2)`{.language-} itération on aura `i1`{.language-} = `len(T1)`{.language-} et `i2`{.language-} = `len(T1)`{.language-}, donc la condition `i1 < len(T1) or i2 < len(T2)`{.language-} ne sera plus vérifiée.
 
@@ -534,7 +540,7 @@ L'invariant de boucle que l'on peut facilement prouver est :
 
 > à la fin de chaque itération, `T[:i1 +i2]`{.language-} est trié et contient les `i1`{.language-} premiers éléments de `T1`{.language-} et les `i2`{.language-} premiers éléments de `T2`{.language-}
 
-#### Complexités {#complexités-colle}
+#### Complexités { #complexités-colle }
 
 Allons un peu plus vite :
 
@@ -567,11 +573,11 @@ def fusion(T):
 
 ```
 
-### Preuve {#preuve-fusion}
+### Preuve { #preuve-fusion }
 
 Comme  `milieu < len(T)`{.language-} si `len(T) > 1`{.language-}, l'algorithme va bien converger. De plus, comme l'algorithme `combiner`{.language-} est démontré, `fusion`{.language-} est bien un algorithme de tri.
 
-### Complexités {#complexités-fusion}
+### Complexités { #complexités-fusion }
 
 La complexité de l'algorithme `fusion`{.language-} est (avec $n$ la taille du tableau passé en entrée) :
 
@@ -660,7 +666,7 @@ Pour un tableau de taille $n$ :
 Ne perdez donc pas de temps à recoder un algorithme de tri : utilisez celui de python !
 {% endinfo %}
 
-## Tri rapide {#tri-rapide}
+## Tri rapide { #tri-rapide }
 
 Le tri rapide est un algorithme qui a été très utilisé par le passé. On le montre encore maintenant car c'est un exemple de [diviser pour régner](#diviser-pour-régner) et, surtout, le calcul des complexités est très intéressant.
 
@@ -692,13 +698,13 @@ def rapide(T):
 On a utilisé les [list comprehension](https://python.doctor/page-comprehension-list-listes-python-cours-debutants) de python. C'est un moyen clair et efficace de générer des listes. Utilisez-les, ça rend le code plus clair et facile à écrire.
 {% endinfo %}
 
-### Preuve {#preuve-rapide}
+### Preuve { #preuve-rapide }
 
 Comme `rapide`{.language-} est une implémentation de la méthode diviser pour régner, son fonctionnement est assuré **si** les récursions s'arrêtent.
 
 C'est effectivement le cas ici puisque les tableaux  `T1`{.language-} et  `T2`{.language-} sont strictement plus petit que  `T`{.language-} et qu'il y a une condition d'arrêt sur la taille du tableau.
 
-### Complexités {#complexités-rapide}
+### Complexités { #complexités-rapide }
 
 En notant $n$ la taille de la liste on a comme équation de récurrence pour la complexité $C(n)$ :
 

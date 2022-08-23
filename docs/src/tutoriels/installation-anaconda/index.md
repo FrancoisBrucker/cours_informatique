@@ -96,7 +96,7 @@ Juste avant l'installation, vous pourrez choisir des options. Cochez les deux, *
 
 A la fin de l'installation vous devriez avoir un python qui fonctionne.
 
-### Où est anaconda ? {#ou-est-anaconda}
+### Où est anaconda ? { #ou-est-anaconda }
 
 Si vous avez suivi à la lettre le processus d'installation, anaconda devrait être installé :
 

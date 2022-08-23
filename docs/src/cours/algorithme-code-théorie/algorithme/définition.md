@@ -1,12 +1,17 @@
 ---
 layout: layout/post.njk 
 title: Définition d'un algorithme
+
+eleventyNavigation:
+  key: "Définition d'un algorithme"
+  parent: Algorithme
 ---
 
 {% chemin %}
-[Cours]({{ "../../.." }}) / [Algorithme, code et théorie]({{ "../.." }}) / [Algorithme]({{ ".." }}) / [{{title}}]({{ "." }})
+{%- for page in collections.all | eleventyNavigationBreadcrumb(eleventyNavigation.key, { includeSelf: true}) -%}
+{% if not loop.first %} / {%endif%} [{{page.title}}]({{ page.url | url }})
+{%- endfor -%}
 {% endchemin %}
-
 <!-- début résumé -->
 
 Définition d'un algorithme
@@ -23,7 +28,7 @@ Une super introduction aux algorithmes : <https://www.arte.tv/fr/videos/094414-0
 
 On doit le mot algorithme à [Ada Lovelace](https://fr.wikipedia.org/wiki/Ada_Lovelace) (1815-1852) qui est le(a) premier(e) informaticien(ne) de l'histoire. Elle a donné ce nom en hommage à un savant persan du 9ème siècle (né vers 780 et mort en 850 à Bagdad) nommé [Al-Khwârizmî](https://fr.wikipedia.org/wiki/Al-Khw%C3%A2rizm%C3%AE) qui a publié le premier manuel d'algèbre connu à ce jour.
 
-## Algorithme ? {#algorithme}
+## Algorithme ? { #algorithme }
 
 {% note "Définition du 'Petit Robert'  d'un **algorithme** :" %}
 Ensemble des règles opératoires propres à un *calcul*
@@ -88,7 +93,7 @@ Ou, de façon équivalente :
 
 Une recette de cuisine est donc un algorithme, un trajet google maps, etc.
 
-## Algorithmes ! {#algorithmes-trois-voies}
+## Algorithmes ! { #algorithmes-trois-voies }
 
 La définition très générale d'un algorithme se décline usuellement sous trois formes concrètes :
 
@@ -223,7 +228,7 @@ $f$ est une injection et une surjection : **$f$ une bijection**.
 
 On peut donc préciser le nombre infini d'algorithmes :
 
-{#nb-dénombrable-algorithmes}
+{ #nb-dénombrable-algorithmes }
 {% note %}
 Il y a exactement autant d'algorithmes différents que de nombres entier.
 {% endnote %}

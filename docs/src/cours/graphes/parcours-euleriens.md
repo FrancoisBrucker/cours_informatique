@@ -97,7 +97,7 @@ Soit $C = u_0 \dots u_k$ un chemin avec $u_0 \neq u_k$ et on suppose qu'il exist
 
 La suite $C' = u_0 \dots u_i u_{j+1} \dots u_k$ est toujours un chemin de longueur strictement plus petite que le chemin initial. La longueur minimale d'un chemin étant positive, on a une procédure qui diminue strictement le chemin s'il existe un cycle dans ce chemin, on va donc arriver à un minimum, c'est à dire un chemin sans cycle.
 
-#### existence de cycles {#prop-cycles-graphe}
+#### existence de cycles { #prop-cycles-graphe }
 
 On suppose qu'un graphe $G=(V, E)$ est tel que $\delta(x) \geq 2$ quelque soit le sommet $x$. Il existe alors un cycle dans ce graphe.
 

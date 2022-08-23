@@ -37,7 +37,7 @@ Un nom n'est **PAS** une chaîne de caractères. Une chaîne de caractère est u
 
 Il est important de comprendre que l’opérateur d’affectation `=` n’est pas symétrique. À gauche, des noms et à droite, des objets.
 
-## Espace de nom {#espace-nom}
+## Espace de nom { #espace-nom }
 
 Un **espace de noms** est un endroit où python stocke les noms. Une variable est un nom d'un espace de noms. Les espaces de noms sont hiérarchisées et tout en haut se trouve l'espace de nom **global** qui est créé lorsque l'interpréteur est lancé.
 

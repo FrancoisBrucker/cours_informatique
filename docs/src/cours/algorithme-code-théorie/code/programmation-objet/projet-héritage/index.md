@@ -1,10 +1,16 @@
 ---
 layout: layout/post.njk 
 title: "Projet : héritage"
+
+eleventyNavigation:
+  key: "Projet : héritage"
+  parent: "Programmation Objet"
 ---
 
 {% chemin %}
-[Cours]({{ "../../.." }}) / [Algorithme, code et théorie]({{ "../.." }}) / [Code]({{ "../.." }}) / [Programmation Objet]({{ ".." }}) / [{{title}}]({{ "." }})
+{%- for page in collections.all | eleventyNavigationBreadcrumb(eleventyNavigation.key, { includeSelf: true}) -%}
+{% if not loop.first %} / {%endif%} [{{page.title}}]({{ page.url | url }})
+{%- endfor -%}
 {% endchemin %}
 {% prerequis "**Prérequis** :" %}
 
@@ -23,7 +29,7 @@ Mise en œuvre du mécanisme d'héritage.
 
 Nous allons ici réutiliser la classe `Dice`{.language-} entamée lors du [projet : composition et agrégation](../projet-composition-agrégation). Pour être sûr de repartir sur de bonnes bases, utilisez l'implémentation minimale ci-après.
 
-### Code {#code-dice}
+### Code { #code-dice }
 
 {% faire %}
 

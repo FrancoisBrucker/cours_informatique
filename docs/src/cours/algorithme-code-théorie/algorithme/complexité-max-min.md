@@ -1,10 +1,16 @@
 ---
 layout: layout/post.njk 
 title: Complexité max/min
+
+eleventyNavigation:
+  key: "Complexité max/min"
+  parent: Algorithme
 ---
 
 {% chemin %}
-[Cours]({{ "../../.." }}) / [Algorithme, code et théorie]({{ "../.." }}) / [Algorithme]({{ ".." }}) / [{{title}}]({{ "." }})
+{%- for page in collections.all | eleventyNavigationBreadcrumb(eleventyNavigation.key, { includeSelf: true}) -%}
+{% if not loop.first %} / {%endif%} [{{page.title}}]({{ page.url | url }})
+{%- endfor -%}
 {% endchemin %}
 {% prerequis "**Prérequis** :" %}
 
@@ -223,7 +229,7 @@ La **complexité minimale** d'un algorithme est le **nombre minium d'opérations
 
 Lorsque l'on calcule une complexité (maximale ou minimale) sous la forme d'un $\mathcal{O}(f(N))$, on tentera bien sur de trouver la fonction $f(N)$ la plus petite possible.
 
-### Temps d'exécution {#temps-exécution}
+### Temps d'exécution { #temps-exécution }
 
 Un moyen efficace de mesurer la complexité d'un algorithme écrit sous la forme d'un code exécutable est de mesurer le temps mis par son exécution pour un jeu d'entrée donné.
 
@@ -308,7 +314,7 @@ print(l.max())
 
 Est de complexité $\mathcal{O}(n)$  où $n$ est la taille de la liste `l` et pas $\mathcal{O}(1)$. Il **faut** en effet parcourir tous les éléments d'une liste (a priori non triée) pour en trouver le maximum.
 
-## Exemple de la recherche d'un élément dans un tableau {#exemple-recherche}
+## Exemple de la recherche d'un élément dans un tableau { #exemple-recherche }
 
 Prenons par exemple l'algorithme suivant, écrit en python :
 
@@ -436,7 +442,7 @@ La encore, l'évolution est dramatique plus la complexité augmente. Pour des co
 Pour générer le tableau, on suppose que l'on peut résoudre $K$ opérations en 1 heure. On cherche alors $n$ tel que $f(n)$ soit égal à $K$ et donc $n = f^{-1}(K)$. En remarquant que $K$ est égal à la taille maximale d'un problème de complexité linéaire résoluble en 1heure, on la taille maximale $n$ d'un problème de complexité $f(n)$ résoluble en 1 heure pour une machine allant $k$ fois pus vite qu'une machine actuelle vaut $f^{-1}(k \cdot N1)$.
 {% endinfo %}
 
-### Le cas particulier de $n!$ {#n_factoriel}
+### Le cas particulier de $n!$ { #n_factoriel }
 
 Souvent les étudiants veulent que leurs algorithmes soient en $\mathcal{O}(n!)$. Ce n'est **presque jamais exact** ! En effet, la [formule de Stirling](https://fr.wikipedia.org/wiki/Formule_de_Stirling) donne l'équivalent suivant pour $n!$ :
 
@@ -538,7 +544,7 @@ La boucle en $i$ est exécuté $n-1$ fois ($i$ va de 1 à $n-1$), donc $\mathcal
 Ne comptez pas trop précisément le nombre de fois où l'on rentre dans une boucle $n-3$ exécutions de la boucle pouvant être avantageusement remplacé par $\mathcal{O}(n)$
 {% endinfo %}
 
-### Boucles dépendantes mais monotones {#règle-croissance}
+### Boucles dépendantes mais monotones { #règle-croissance }
 
 Il arrive souvent que les boucles imbriquées d'un algorithme soient dépendantes les unes des autres. Dans le cas général on ne peut pas factoriser le calcul de la complexité et il faut alors dérouler tout l'algorithme en additionnant les complexités de chaque ligne comme s'il n'y avait pas de boucles.
 

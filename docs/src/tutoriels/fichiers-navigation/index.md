@@ -106,7 +106,7 @@ C'est en réalité une vue de l'esprit. Il n'existe qu'une seule racine et chaqu
 Souvent sous windows ces racines sont explicites, c'est `c:` par exemple pour le disque dur principal.
 {% endinfo %}
 
-### Dossiers `.` et `..` {#block-.-..}
+### Dossiers `.` et `..` { #block-.-.. }
 
 Les dossiers `.` et `..` sont des dossiers spéciaux qui signifient :
 
@@ -183,7 +183,7 @@ Les fichiers exécutables sont **des programmes**, ils sont exécutés directeme
 Un fichier python n'est **pas** un fichier exécutable. C'est un fichier texte qui est est lu — on dit **interprété** — par l'*interpréteur python* qui lui est un fichier exécutable.
 {% endattention %}
 
-## Dossiers et fichiers cachés {#fichier-cache}
+## Dossiers et fichiers cachés { #fichier-cache }
 
 Ce sont souvent des fichiers (ou des dossiers) de préférences. Ils sont invisible lorsque l'on regarde ces fichiers avec un explorateur de fichier.
 
@@ -207,7 +207,7 @@ Pour que la manipulation de touche décrite dans la page fonctionne, il faut ég
 Si vous voulez aller dans un dossier particulier, vous pouvez utiliser : *menu Aller > Aller au dossier...*
 
 {% enddetails %}
-{% details sous windows %}
+{% details "sous windows" %}
 
 [afficher les dossiers cachés sous windows](https://support.microsoft.com/fr-fr/windows/voir-les-fichiers-et-les-dossiers-cach%C3%A9s-dans-windows-97fbc472-c603-9d90-91d0-1166d1d9f4b5)
 

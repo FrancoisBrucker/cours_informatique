@@ -189,7 +189,7 @@ La fonction `range`{.language-} crée un générateur (quelque chose qui produit
 
 Un générateur **n'est pas** une liste. On peut l'utiliser tel quel dans les boucles, mais si on veut créer une liste contenant la suite des nombres produits par le générateur, on le convertit en liste avec le type `list`{.language-}. Ainsi `list(range(10))`{.language-} crée une liste `[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]`{.language-}.
 
-## Copie d'une sous-liste {#slice}
+## Copie d'une sous-liste { #slice }
 
 On peut copier une partie d'une liste.
 Pour **copier la liste l à partir de l'indice i jusqu'à l'indice j avec un pas de k** par exemple : `l[i:j:k]`{.language-}

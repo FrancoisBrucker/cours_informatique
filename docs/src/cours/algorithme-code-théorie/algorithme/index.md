@@ -1,10 +1,16 @@
 ---
 layout: layout/post.njk 
 title: Algorithme
+
+eleventyNavigation:
+  key: Algorithme
+  parent: "Algorithme, code et théorie"
 ---
 
 {% chemin %}
-[Cours]({{ "../.." }}) / [Algorithme, code et théorie]({{ ".." }}) / [{{title}}]({{ "." }})
+{%- for page in collections.all | eleventyNavigationBreadcrumb(eleventyNavigation.key, { includeSelf: true}) -%}
+{% if not loop.first %} / {%endif%} [{{page.title}}]({{ page.url | url }})
+{%- endfor -%}
 {% endchemin %}
 
 <!-- début résumé -->

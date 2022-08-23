@@ -1,10 +1,16 @@
 ---
 layout: layout/post.njk 
 title: "Etude : mélanger un tableau"
+
+eleventyNavigation:
+  key: "Etude : mélanger un tableau"
+  parent: Algorithme
 ---
 
 {% chemin %}
-[Cours]({{ "../../.." }}) / [Algorithme, code et théorie]({{ "../.." }}) / [Algorithme]({{ ".." }}) / [{{title}}]({{ "." }})
+{%- for page in collections.all | eleventyNavigationBreadcrumb(eleventyNavigation.key, { includeSelf: true}) -%}
+{% if not loop.first %} / {%endif%} [{{page.title}}]({{ page.url | url }})
+{%- endfor -%}
 {% endchemin %}
 {% prerequis "**Prérequis** :" %}
 
@@ -103,7 +109,7 @@ rendre P[i]
 
 Il nous reste à créer toutes les permutations possibles d'un tableau. C'est ce que fait l'algorithme suivant.
 
-## Toutes les permutations {#algo-toutes-permutations}
+## Toutes les permutations { #algo-toutes-permutations }
 
 {% note "**Définition** :" %}
 Si $L = [l_1, \dots, l_n]$ et $L'= [{l'}\_1, \dots, {l'}\_{n'}]$, alors la [***concaténation***](https://fr.wikipedia.org/wiki/Concat%C3%A9nation#Programmation) de $L$ et $L'$, notée $L + L'$ est égale à la liste :
@@ -151,18 +157,18 @@ Pour placer dans la liste de listes `P` toutes les permutations de `[1, 2, 3, 4]
 
 Analysons cet algorithme pour vérifier qu'il fait bien ce qu'on pense qu'il fait (bien).
 
-### Finitude {#finitude-permutations}
+### Finitude { #finitude-permutations }
 
 A chaque récursion, le tableau `T`{.language-} a strictement moins d'éléments. Il arrivera donc une récursion où `T`{.language-} sera vide : le test de la ligne 2 stoppera la récursion.
 
-### Preuve {#preuve-permutations}
+### Preuve { #preuve-permutations }
 
 on prouve par récurrence sur la taille du tableau `T`{.language-} que `permutations(T)`{.language-} donne un tableau contenant toutes les permutations de `T`{.language-}.
 
    1. pour `len(T) == 0`{.language-} c'est clair.
    2. on suppose la propriété vrai pour `len(T) == p`{.language-}. Pour `len(T) == p + 1`{.language-}, par hypothèse de récurrence, le retour de la récursion `permutations(T[:i] + T[i+1:])`{.language-} sera l'ensemble des permutations `T[:i] + T[i+1:]`. Pour un `i`{.language-}  donné on obtient alors toutes les permutations de `T` ayant `T[i]` en première position (on concatène `[T[i]]`{.language-} à toutes les permutations de `T[:i] + T[i+1:]`{.language-}). Comme `i`{.language-} prend tous les indice de `T`{.language-}, on obtient au final toutes les permutations du tableau `T`{.language-}.
 
-### Complexité {#complexité-permutations}
+### Complexité { #complexité-permutations }
 
 La complexité de l'algorithme va dépendre de la taille $n$ du tableau `T`{.language-} : on note sa complexité $C(n)$. Comme il est récursif, on va chercher une équation de récurrence que satisfait $C(n)$ à résoudre.
 
@@ -347,7 +353,7 @@ Comme on a considéré que la complexité de `randint`{.language-} est de $\math
 L'intérêt de `mélange`{.language-} est théorique. Il montre qu'il existe un algorithme pour résoudre le problème (et en donne par là également une borne max).
 {% endnote %}
 
-## Algorithme de Fisher-Yates ou de Knuth {#algorithme-fisher-yates}
+## Algorithme de Fisher-Yates ou de Knuth { #algorithme-fisher-yates }
 
 L'algorithme que l'on va montrer maintenant, dit de [fisher-yates ou encore de Knuth](https://fr.wikipedia.org/wiki/M%C3%A9lange_de_Fisher-Yates), va également résoudre le problème "permutation", mais de façon bien plus élégante.
 
@@ -374,11 +380,11 @@ Testez cet algorithme pour voir s'il rend bien des permutations du tableau en en
 Notez que la boucle for pourrait aussi s'écrire `for i in range(len(T2) - 1, -1, -1)`{.language-} sans perte de généralité.
 {% endinfo %}
 
-### Finitude {#finitude-Knuth}
+### Finitude { #finitude-Knuth }
 
 Une unique boucle for sur la longueur du tableau : l'algorithme finit toujours.
 
-### complexité {#complexité-Knuth}
+### complexité { #complexité-Knuth }
 
 Comme `randint`{.language-} est considérée en $\mathcal{O}(1)$, la complexité totale de l'algorithme est (ligne à ligne) :
 
@@ -403,7 +409,7 @@ C(n) & = & \mathcal{O}(n) + \mathcal{O}(n) \cdot (\mathcal{O}(1) + \mathcal{O}(1
 $$
 </div>
 
-### Vérification expérimentale {#vérification-expérimentale}
+### Vérification expérimentale { #vérification-expérimentale }
 
 Si, en exécutant l'algorithme on se rend bien compte qu'il *mélange* le tableau en entrée, ce n'est pas très clair à première vue que toutes les permutations sont équiprobables.
 

@@ -1,10 +1,16 @@
 ---
 layout: layout/post.njk 
 title: "Etude : exponentiation"
+
+eleventyNavigation:
+  key: "Etude : exponentiation"
+  parent: Algorithme
 ---
 
 {% chemin %}
-[Cours]({{ "../../.." }}) / [Algorithme, code et théorie]({{ "../.." }}) / [Algorithme]({{ ".." }}) / [{{title}}]({{ "." }})
+{%- for page in collections.all | eleventyNavigationBreadcrumb(eleventyNavigation.key, { includeSelf: true}) -%}
+{% if not loop.first %} / {%endif%} [{{page.title}}]({{ page.url | url }})
+{%- endfor -%}
 {% endchemin %}
 {% prerequis "**Prérequis** :" %}
 
@@ -27,7 +33,7 @@ On va étudier deux algorithmes permettant de calculer $a^b$  à partir de deux 
 On utilisera le python comme langage de pseudo-code
 {% endinfo %}
 
-## Algorithme naïf {#algo-naif}
+## Algorithme naïf { #algo-naif }
 
 Le calcul *naïf* de l'exponentiel est basé sur sa définition mathématique, qui peut être décrite, pour deux entiers positifs $x$ et $y$,  par l'équation suivante :
 
@@ -80,7 +86,7 @@ def puissance(nombre, exposant):
 
 C'est cet algorithme itératif que nous allons étudier maintenant.
 
-### Est-ce que ça marche ? {#marche-naïf}
+### Est-ce que ça marche ? { #marche-naïf }
 
 On test l'algorithme itératif sur de petits exemples qui vont nous permettre d'appréhender son fonctionnement :
 
@@ -110,11 +116,11 @@ Vérifiez que l'algorithme donne bien les bons résultats sur les exemples ci-de
 
 Une fois qu'on est convaincu que ça fonctionne, on prouvera sa finitude, sa preuve et on calculera sa complexité.
 
-### Preuve {#preuve-naif}
+### Preuve { #preuve-naif }
 
 En deux temps. On commence par montrer qu'il se termine, puis on prouve qu'il calcule bien l'exponentiation.
 
-#### Finitude {#finitude-naif}
+#### Finitude { #finitude-naif }
 
 * `compteur`{.language-} diminue strictement à chaque boucle et la condition d'arrêt est lorsqu'il vaut 0
 * condition : il faut que `compteur`{.language-} soit un nombre positif pour que l'algorithme s'arrête. Donc `exposant`{.language-} doit être un nombre positif.
@@ -154,7 +160,7 @@ On a démontré notre invariant de boucle.
 Notre invariant est vrai avant et après chaque itération, il est donc également vrai à la fin de l'algorithme, lorsque `compteur = 0`{.language-}. Et là : `résultat * nombre ** compteur = résultat = nombre ** exposant`{.language-}
 {% endnote %}
 
-### Complexité {#complexité-naif}
+### Complexité { #complexité-naif }
 
 Ligne à ligne :
 
@@ -186,7 +192,7 @@ C&=& \mathcal{O}(\mbox{exposant})\\
 $$
 </div>
 
-## Exponentiation indienne {#algo-rapide}
+## Exponentiation indienne { #algo-rapide }
 
 Aussi appelé [exponentiation rapide](https://fr.wikipedia.org/wiki/Exponentiation_rapide), cette façon de calculer l'exponentielle est basée sur l'équation suivante, pour deux entiers positifs $x$ et $y$ :
 
@@ -254,7 +260,7 @@ def puissance(nombre, exposant):
 
 C'est cet algorithme itératif que nous allons étudier maintenant.
 
-### Est-ce que ça marche ? {#marche-rapide}
+### Est-ce que ça marche ? { #marche-rapide }
 
 Comme pour l'algorithme naïf, on vérifie que tout fonctionne avec les cas simples :
 
@@ -270,19 +276,19 @@ Enfin, comme l'algorithme vérifie si `compteur`{.language-} est pair ou impair,
 Vérifiez que l'algorithme donne bien les bons résultats sur les exemples ci-dessus.
 {% endfaire %}
 
-### Preuve de finitude {#finitude-rapide}
+### Preuve de finitude { #finitude-rapide }
 
 De même que pour l'algorithme simple, `compteur`{.language-} diminue strictement à chaque boucle (ou il diminue de `-1`{.language-} ou il est divisé par 2). Si `exposant`{.language-} est un entier naturel en entrée, `compteur`{.language-} reste entier après chaque boucle (on ne le divise par 2 que s'il est pair) et est strictement plus petit : l'algorithme va s'arrêter à un moment.
 
-### Preuve de l’algorithme {#preuve-rapide}
+### Preuve de l’algorithme { #preuve-rapide }
 
 On va montrer que l'invariant de l'algorithme naïf fonctionne aussi. En notant `compteur_initial`{.language-}, la valeur de compteur en entrée de l'algorithme, on a l'invariant suivant : `résultat * nombre ** compteur = nombre_initial ** exposant`{.language-}
 
-#### Conditions initiales {#invariant-rapide-init}
+#### Conditions initiales { #invariant-rapide-init }
 
 Juste avant la première itération de la boucle, `résultat = 1`{.language-} et `compteur = exposant`{.language-} notre invariant est donc vérifié.
 
-#### Preuve de l'invariant {#invariant-rapide-preuve}
+#### Preuve de l'invariant { #invariant-rapide-preuve }
 
 On suppose l'invariant vrai au début de la boucle d'itération $i$. Regardons comment les variables ont été modifiées lors de cette itération :
 
@@ -299,11 +305,11 @@ On suppose l'invariant vrai au début de la boucle d'itération $i$. Regardons c
 
 Dans tous les cas, l'invariant est toujours vérifié puisqu'en début de boucle notre invariant vaut `résultat * nombre ** compteur = nombre_initial ** exposant`{.language-}.
 
-#### Preuve de l'algorithme {#preuve-rapide}
+#### Preuve de l'algorithme { #preuve-rapide }
 
 Notre invariant est vrai avant et après chaque itération, il est donc également vrai à la fin de l'algorithme, lorsque `compteur = 0`. Et là : `résultat * nombre ** compteur = résultat = nombre_initial ** exposant`{.language-}
 
-### Complexité {#complexité-rapide}
+### Complexité { #complexité-rapide }
 
 Pourquoi s'embêter avec la parité de compteur ? Parce que ça permet d'aller vachement plus vite !
 

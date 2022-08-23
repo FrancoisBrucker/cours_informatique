@@ -332,8 +332,6 @@ En notant :
 * $P^\star(s, p)$ le nombre de chemins deux à deux disjoints entre $s$ et $p$ dans $G^\star$
 * $N^\star(s, p)$ le nombre d'arcs qu'il faut supprimer dans $G^\star$ pour qu'il n'existe plus de chemins entre $s$ et $p$
 
-
-
 {% exercice %}
 Montrez que : $N(s, P) = N^\star(s, P) = P(s, p) = P^\star(s, p) = \mbox{val}(f)$
 {% endexercice %}
@@ -343,14 +341,14 @@ Montrez que : $N(s, P) = N^\star(s, P) = P(s, p) = P^\star(s, p) = \mbox{val}(f)
 
 On considère le graphe ci-après :
 
-![flot menger](../assets/img/flot-menger-2.png)
+![flot Menger](../assets/img/flot-menger-2.png)
 
 {% exercice %}
 Quel est son arc connectivité ?
 {% endexercice %}
 {% details "solution" %}
-Ce graphe s'appelle le [graphe de petersen](https://fr.wikipedia.org/wiki/Graphe_de_Petersen)) graphe est 3 et 2 pour le second (il suffit de supprimer les arêtes rouges)
-{% enddetails "solution" %}
+Ce graphe s'appelle le [graphe de Petersen](https://fr.wikipedia.org/wiki/Graphe_de_Petersen)) graphe est 3 et 2 pour le second (il suffit de supprimer les arêtes rouges)
+{% enddetails %}
 
 Et lui ?
 

@@ -336,7 +336,7 @@ La fonction range peut être utilisée de plusieurs manières :
 * avec deux paramètres : va créer des entiers allant du premier paramètre  à *juste avant* le second paramètre. Exemple `list(range(2, 5))`{.language-} rend la liste `[2, 3, 4]`{.language-}
 * avec trois paramètres : va créer des entiers allant du premier paramètre  à *juste avant* le second paramètre touts les troisièmes paramètres. Exemple `list(range(1, 12, 3))`{.language-} rend la liste `[1, 4, 7, 10]`{.language-}
 
-## Méthodes {#méthodes}
+## Méthodes { #méthodes }
 
 Les méthodes sont un autre moyen d'agir sur un objet. On les utilise de cette façon :
 

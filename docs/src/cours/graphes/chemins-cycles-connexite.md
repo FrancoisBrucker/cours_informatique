@@ -24,4 +24,4 @@ Chemins, cycle et connexité dans les graphes.
 
 
 lien à garder car référencé. : 
-existence de cycles {#prop-cycles-graphe}
+existence de cycles { #prop-cycles-graphe }

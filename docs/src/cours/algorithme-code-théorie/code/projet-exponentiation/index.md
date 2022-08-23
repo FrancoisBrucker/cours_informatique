@@ -1,10 +1,16 @@
 ---
 layout: layout/post.njk 
 title: Projet exponentiation
+
+eleventyNavigation:
+  key: "Projet exponentiation"
+  parent: Code
 ---
 
 {% chemin %}
-[Cours]({{ "../../.." }}) / [Algorithme, code et théorie]({{ "../.." }}) / [Algorithme]({{ ".." }}) / [{{title}}]({{ "." }})
+{%- for page in collections.all | eleventyNavigationBreadcrumb(eleventyNavigation.key, { includeSelf: true}) -%}
+{% if not loop.first %} / {%endif%} [{{page.title}}]({{ page.url | url }})
+{%- endfor -%}
 {% endchemin %}
 {% prerequis "**Prérequis** :" %}
 
@@ -191,7 +197,7 @@ Vérifiez que le rapport entre les deux valeurs tant vers l'infini lorsque $y$ a
 
 On veut maintenant voir l'évolution de la complexité selon la taille de l'exposant. On va pour cela représenter graphiquement cette évolution en utilisant [matplotlib](https://matplotlib.org/).
 
-### Comment faire {#graphique-comment}
+### Comment faire { #graphique-comment }
 
 #### Matplotlib
 
@@ -266,7 +272,7 @@ Mettez les courbes sur un même graphique avec 2 figures.
 Mettez les courbes sur un même graphique avec 1 seule figure (il suffit de mettre deux instructions `ax.plot`{.language-}).
 {% endfaire %}
 
-### Expérimentations {#graphique-test}
+### Expérimentations { #graphique-test }
 
 {% faire %}
 Créez un fichier `main_graphique.py`{.fichier} et représentez sur le même graphique le temps mis par les deux algorithmes pour effectuer l'exponentiation de $ 3^y$  où $y$ varie de $0$ à $100000$ par pas de $1000$.

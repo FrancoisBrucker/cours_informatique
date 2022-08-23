@@ -110,7 +110,7 @@ Ainsi, un ***multi-graphe non orienté sans boucle*** est un multigraphe tel que
 
 Le cas le plus simple (et donc celui que l'on utilisera en priorité) est le multi-graphe sans boucle, sans arcs multiples et non orienté. On les appelle ***graphes*** et on peut les définir comme suit :
 
-{#definition-graphe}
+{ #definition-graphe }
 {% note "**Définition**" %}
 
 Un **graphe** est un couple $G = (V, E)$ où :
@@ -153,7 +153,7 @@ Pour un graphe (orienté ou non) $G = (V, E)$ on appelle :
 
 A ordre fixe, les graphes de taille maximum son dit ***complet*** :
 
-{#definition-graphe-complet}
+{ #definition-graphe-complet }
 {% note "**Définition**" %}
 Un graphe est ***complet*** s'il possède toutes les arêtes : pour tous $x, y \in V$ $xy$ est une arête. On le note $K_n$ et $m = n(n-1)/2$. 
 {% endnote %}

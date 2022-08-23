@@ -111,7 +111,7 @@ En suivant les instructions de *Installer une nouvelle installation à l’aide 
 Procédez aux premières configuration pour finaliser l'installation minimale de votre système.
 {% endfaire %}
 
-### Sous mac {#configuration-sous-mac}
+### Sous mac { #configuration-sous-mac }
 
 #### finder
 
@@ -130,7 +130,7 @@ Le finder est l'outil principal qui vous permettra de naviguer dans les fichiers
 * imprimante
 * tablette graphique si vous en avez une
 
-### Sous windows {#configuration-sous-mac}
+### Sous windows { #configuration-sous-mac }
 
 #### Windows update
 

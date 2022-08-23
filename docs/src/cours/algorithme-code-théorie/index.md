@@ -6,11 +6,16 @@ tags: ['cours', 'algorithmie', 'code', 'théorie']
 
 authors:
     - François Brucker
+
+eleventyNavigation:
+  key: "Algorithme, code et théorie"
+  parent: Cours
 ---
 
-
 {% chemin %}
-[Cours]({{ ".." }}) / [{{title}}]({{ "." }})
+{%- for page in collections.all | eleventyNavigationBreadcrumb(eleventyNavigation.key, { includeSelf: true}) -%}
+{% if not loop.first %} / {%endif%} [{{page.title}}]({{ page.url | url }})
+{%- endfor -%}
 {% endchemin %}
 {% prerequis "**Prérequis** :" %}
 

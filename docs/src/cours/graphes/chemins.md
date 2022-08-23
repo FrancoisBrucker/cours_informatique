@@ -97,7 +97,7 @@ Les différentes étapes de l'algorithme sont représentées dans les graphes ci
 {% enddetails %}
 
 
-### preuve {#preuve-dijkstra}
+### preuve { #preuve-dijkstra }
 
 {% exercice %}
 En utilisant la preuve de l'algorithme de Prim, montrez que l'algorithme de Dijkstra rend un chemin de longueur minimum entre $d$ et $a$
@@ -151,7 +151,7 @@ Montrez que pour tous les sommets $x$ qui ne peuvent pas entrer dans $V'$, il n'
 A chaque fois que l'on ajoute un élément dans `V'` on vérifie tous ses voisins pour mettre à jour le coût d'entrée dans la structure. On procède comme le parcours en largeur et on a montré qu'il trouvait la composante connexe de sa racine.
 {% enddetails %}
 
-### preuve {#preuve-dijkstra-arborescence}
+### preuve { #preuve-dijkstra-arborescence }
 
 {% exercice %}
 Montrez que si l'on peut continuer l'algorithme de Dijkstra jusqu'à ce que $V'$ soit égal à $V$ on obtient un graphe $G' = (V, E')$ tel que :

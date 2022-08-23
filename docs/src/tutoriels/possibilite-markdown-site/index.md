@@ -167,7 +167,7 @@ print(l.max())
 * par défaut : `l = [1, 3, 2, 6, 4, 5]`
 * on dit que c'est un langage : `l = [1, 3, 2, 6, 4, 5]`{.language-}.
 
-## Images {#images}
+## Images { #images }
 
 ![WTFs/minute](wtfm.jpg)
 

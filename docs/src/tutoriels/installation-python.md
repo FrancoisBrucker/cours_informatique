@@ -25,7 +25,7 @@ Comment installer et utiliser python sur son ordinateur. On y verra différentes
 3. [tests de fonctionnement avec un terminal](#interpréteur-id)
 4. [installation de nouveaux packages](#packages)
 
-## Python ? {#python-}
+## Python ? { #python- }
 
 {% chemin %}
 <https://fr.wikipedia.org/wiki/Python_(langage)>
@@ -69,7 +69,7 @@ Il n'y a **aucune** bonne raison d'utiliser la version 2 de python pour écrire 
 Il existe sur le net encore beaucoup d'exemples utilisant la version 2 de python, ou certains profs un peu feignant qui ne passent pas leurs exemple/cours en python3. Plutôt que d'utiliser python2, il est recommandé de convertir ces programmes dans la version 3 et de demander la mise à jour des cours...
 {% endattention %}
 
-### J'ai quoi comme python ? {#quel-python-jai}
+### J'ai quoi comme python ? { #quel-python-jai }
 
 Nous y reviendrons, mais si vous pouvez exécuter du code python mais vous ne savez pas trop quel interpréteur vous utilisez (par exemple vous utilisez [Jupyter](https://jupyter.org/) via un intranet ou [spider](https://www.spyder-ide.org/)), il existe quelques lignes de code simples pour savoir quelle version de python on utilise.
 
@@ -107,7 +107,7 @@ qui rend chez moi :
 
 C'est à dire que j'utilise la version 3.9.6 de python et que mon interpréteur a été compilé par [Clang](https://clang.llvm.org/) (c'est sur un mac).
 
-## Installation {#installation}
+## Installation { #installation }
 
 Nous allons ici nous concentrer sur l'installation de l'interpréteur python. Il existe plusieurs façon de faire. Nous en présenterons 2 :
 
@@ -120,11 +120,11 @@ Parfois, il n'y a rien à faire (c'est souvent le cas sous mac ou linux qui arri
 
 Une fois que vous aurez installé python (ou pour savoir si vous l'avez déjà installé), vérifiez le en tentant d'[exécuter l'interpréteur python dans un terminal](#interpréteur-id).
 
-## Installation via anaconda {#install-anaconda}
+## Installation via anaconda { #install-anaconda }
 
 Suivez ce [tutoriel](../installation-anaconda) pour installer anaconda sur votre machine.
 
-### Installation via un gestionnaire de package {#gestionnaire-package-id}
+### Installation via un gestionnaire de package { #gestionnaire-package-id }
 
 Une bonne pratique d'installation de logiciel sur son ordinateur est d'utiliser un gestionnaire de package. Il vous permet de savoir exactement ce qui est utilisé, quelle version, et surtout gère tout seul les mise à jours.
 
@@ -154,16 +154,16 @@ Pour l'instant téléchargez le tout depuis le store. Suivez ce [tutoriel](https
 
 {% enddetails %}
 
-## Utiliser l'interpréteur python {#interpréteur-id}
+## Utiliser l'interpréteur python { #interpréteur-id }
 
 Commencer par ouvrir une fenêtre Terminal. Si vous ne savez ps ce que c'est regardez ce [tutoriel](../terminal)
 
 ### Exécution de l'interpréteur python
 
-L'interpréteur python s'appelle soit *"python"*, soit *"python3"*. Regardez celui que vous possédez.
+L'interpréteur python s'appelle soit `python`, soit `python3`. Regardez celui que vous possédez.
 
-{% attention "Sous windows, c'est souvent *"python"* qu'il s'appelle, sous mac et linux c'est *"python3"*." %}
-Pour le reste du tuto, je considérerai que c'est *"python3"*. SI Ca ne marque pas, supprimez le 3.
+{% attention "Sous windows, c'est souvent `python` qu'il s'appelle, sous mac et linux c'est `python3`." %}
+Pour le reste du tuto, je considérerai que c'est `python3`. Si ca ne marche pas, supprimez le 3.
 {% endattention %}
 
 Dans un terminal, tapez la commande :
@@ -218,7 +218,7 @@ get-command python
 
 La commande devrait vous rendre l'emplacement sur votre disque dur de votre interpréteur. Vérifiez le avec un explorateur de fichier.
 
-## Packages {#packages}
+## Packages { #packages }
 
 Python vient avec une [liste de packages](https://docs.python.org/3/library/) bien fournie. On peut les utiliser via le mot clé `import` en python. Il en existe une foultitude d'autres qui permettent d'aider à coder rapidement. La liste des différents packages est disponible sur <https://pypi.org/>
 

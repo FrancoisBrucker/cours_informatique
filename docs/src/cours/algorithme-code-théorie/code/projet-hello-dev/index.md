@@ -1,10 +1,16 @@
 ---
 layout: layout/post.njk 
 title: "Mise en œuvre d'un projet informatique"
+
+eleventyNavigation:
+  key: "Mise en œuvre d'un projet informatique"
+  parent: Code
 ---
 
 {% chemin %}
-[Cours]({{ "../../.." }}) / [Algorithme, code et théorie]({{ "../.." }}) / [Algorithme]({{ ".." }}) / [{{title}}]({{ "." }})
+{%- for page in collections.all | eleventyNavigationBreadcrumb(eleventyNavigation.key, { includeSelf: true}) -%}
+{% if not loop.first %} / {%endif%} [{{page.title}}]({{ page.url | url }})
+{%- endfor -%}
 {% endchemin %}
 {% prerequis "**Prérequis** :" %}
 
@@ -105,7 +111,7 @@ Exécutez le code de deux manières différentes :
 
 {% endfaire %}
 
-## Du joli code {#linter}
+## Du joli code { #linter }
 
 Vous allez passer beaucoup de temps à lire du code, le votre et celui des autres. Il est important que ce soit facile. Pour cela il faut que le style de code soit cohérent. Python donne des règle de style, c'est ce qu'on appelle la [PEP8](https://www.python.org/dev/peps/pep-0008/).
 

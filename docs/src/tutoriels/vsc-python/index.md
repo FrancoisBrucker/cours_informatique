@@ -129,7 +129,7 @@ Si vous avez suivi le [tutoriel anaconda](../installation-anaconda), vérifiez (
 Faites en sorte que les paramètres python soient correct pour votre système.
 {% endfaire %}
 
-## Exécuter du python {#execution-python}
+## Exécuter du python { #execution-python }
 
 Il y a deux façons principales d'exécuter du code python avec vscode. Chacune avec avantages et inconvénients. Il est donc recommandé de toutes les connaître.
 

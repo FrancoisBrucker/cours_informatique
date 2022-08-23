@@ -1,10 +1,16 @@
 ---
 layout: layout/post.njk 
-title: Algorithmes et fonctions
+title: "Algorithmes et fonctions"
+
+eleventyNavigation:
+  key: "Algorithmes et fonctions"
+  parent: "Théorie"
 ---
 
 {% chemin %}
-[Cours]({{ "../../.." }}) / [Algorithme, code et théorie]({{ "../.." }}) / [Algorithme]({{ ".." }}) / [{{title}}]({{ "." }})
+{%- for page in collections.all | eleventyNavigationBreadcrumb(eleventyNavigation.key, { includeSelf: true}) -%}
+{% if not loop.first %} / {%endif%} [{{page.title}}]({{ page.url | url }})
+{%- endfor -%}
 {% endchemin %}
 {% prerequis "**Prérequis** :" %}
 
@@ -101,7 +107,7 @@ Dans la suite de cette partie on utilisera les [bijections](https://fr.wikipedia
 On peut utiliser l'un ou l'autre de façon équivalente.
 {% endinfo %}
 
-### Fonctions à plusieurs paramètres entiers {#fonction-plusieurs-entier}
+### Fonctions à plusieurs paramètres entiers { #fonction-plusieurs-entier }
 
 Les paramètres d'un algorithme peuvent tous être représentés par des entiers :
 
@@ -120,7 +126,7 @@ $$f: \mathbb{N}^p \rightarrow \mathbb{N}$$
 
 C'est bien mieux mais on sépare encore les algorithmes par leur nombre de paramètres. Allons plus loin.
 
-### Fonctions à un paramètre entier {#fonction-un-entier}
+### Fonctions à un paramètre entier { #fonction-un-entier }
 
 Démontrons que tout élément de $\mathbb{N}^p$ peut être représenté par un entier. Pour ce faire on exhibera une bijection entre $\mathbb{N}^p$ ($p>1$) et $\mathbb{N}$.
 
@@ -399,7 +405,7 @@ Et donc :
 Il existe des fonctions de $\mathbb{N}$ dans $\\{0, 1 \\}$ qui ne sont pas des algorithmes.
 {% endnote %}
 
-## Nombre de fonctions {#r-et-n}
+## Nombre de fonctions { #r-et-n }
 
 Je ne saurais vous laisser dans l'ignorance du nombre de fonctions de $\mathbb{N}$ dans $\\{0, 1 \\}$, c'est à dire du nombre de sous-ensembles de $\mathbb{N}$ :
 

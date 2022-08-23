@@ -27,7 +27,7 @@ Téléchargez [vscode](https://code.visualstudio.com/) et installez le.
 Sous Ubuntu, si vous voulez l'installer via le package manager, il vous sera peut-être nécessaire d'utiliser la commande `sudo snap install code --classic` dans un terminal)
 {% endinfo %}
 
-## Installation d'extensions {#extensions}
+## Installation d'extensions { #extensions }
 
 Normalement, vscode a reconnu que vous êtes français et vous demande de le relancer car il a téléchargé le module Français.
 
@@ -164,7 +164,7 @@ Si vous ne comprenez pas pourquoi votre programme python ne fonctionne pas alors
 ![pas sauvé](non-sauvé.png) | ![sauvé](sauvé.png)
 fichier non sauvé | fichier sauvé
 
-### palette de commande {#palette-de-commande}
+### palette de commande { #palette-de-commande }
 
 Ce qu'il y a de bien avec vscode c'est que toute commande est aussi appelable par son nom grâce à la [palette de commande](https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette).
 
